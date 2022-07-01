@@ -119,6 +119,13 @@ func (s *Server) VariableInfo(
 	return info.VariableInfo(ctx, in, s.store)
 }
 
+// VariableGroupInfo implements API for mixer.VariableGroupInfo.
+func (s *Server) VariableGroupInfo(
+	ctx context.Context, in *pb.VariableGroupInfoRequest,
+) (*pb.StatVarGroupNode, error) {
+	return info.VariableGroupInfo(ctx, in, s.store, s.cache)
+}
+
 // BulkVariableInfo implements API for mixer.BulkVariableInfo.
 func (s *Server) BulkVariableInfo(
 	ctx context.Context, in *pb.BulkVariableInfoRequest,

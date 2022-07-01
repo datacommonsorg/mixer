@@ -18,6 +18,7 @@ import (
 	"context"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/server/statvar"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/util"
@@ -35,17 +36,14 @@ func VariableInfo(
 	if !util.CheckValidDCIDs([]string{entity}) {
 		return nil, status.Errorf(codes.InvalidArgument, "Invalid entity")
 	}
-
 	statVarToSummary, err := statvar.GetStatVarSummaryHelper(ctx, []string{entity}, store)
 	if err != nil {
 		return nil, err
 	}
-
 	resp := &pb.VariableInfoResponse{Entity: entity}
 	if summary, ok := statVarToSummary[entity]; ok {
 		resp.Info = summary
 	}
-
 	return resp, nil
 }
 
@@ -62,12 +60,10 @@ func BulkVariableInfo(
 	if !util.CheckValidDCIDs(entities) {
 		return nil, status.Errorf(codes.InvalidArgument, "Invalid entities")
 	}
-
 	statVarToSummary, err := statvar.GetStatVarSummaryHelper(ctx, entities, store)
 	if err != nil {
 		return nil, err
 	}
-
 	resp := &pb.BulkVariableInfoResponse{}
 	for _, entity := range entities {
 		item := &pb.VariableInfoResponse{Entity: entity}
@@ -76,6 +72,23 @@ func BulkVariableInfo(
 		}
 		resp.Data = append(resp.Data, item)
 	}
-
 	return resp, nil
+}
+
+// VariableGroupInfo implements API for Mixer.VariableGroupInfo.
+func VariableGroupInfo(
+	ctx context.Context,
+	in *pb.VariableGroupInfoRequest,
+	store *store.Store,
+	cache *resource.Cache,
+) (*pb.StatVarGroupNode, error) {
+	return statvar.GetStatVarGroupNode(
+		ctx,
+		&pb.GetStatVarGroupNodeRequest{
+			StatVarGroup: in.GetDcid(),
+			Places:       in.GetEntities(),
+		},
+		store,
+		cache,
+	)
 }

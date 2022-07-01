@@ -426,6 +426,65 @@ func (x *BulkVariableInfoResponse) GetData() []*VariableInfoResponse {
 	return nil
 }
 
+type VariableGroupInfoRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// The variable group dcid to query for.
+	Dcid string `protobuf:"bytes,1,opt,name=dcid,proto3" json:"dcid,omitempty"`
+	// The entities that the variable group is associated with. The response should
+	// only contain the children variable (group) if it has data for at least one
+	// of the entities.
+	Entities []string `protobuf:"bytes,2,rep,name=entities,proto3" json:"entities,omitempty"`
+}
+
+func (x *VariableGroupInfoRequest) Reset() {
+	*x = VariableGroupInfoRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_v1_info_proto_msgTypes[8]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *VariableGroupInfoRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*VariableGroupInfoRequest) ProtoMessage() {}
+
+func (x *VariableGroupInfoRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_v1_info_proto_msgTypes[8]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use VariableGroupInfoRequest.ProtoReflect.Descriptor instead.
+func (*VariableGroupInfoRequest) Descriptor() ([]byte, []int) {
+	return file_v1_info_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *VariableGroupInfoRequest) GetDcid() string {
+	if x != nil {
+		return x.Dcid
+	}
+	return ""
+}
+
+func (x *VariableGroupInfoRequest) GetEntities() []string {
+	if x != nil {
+		return x.Entities
+	}
+	return nil
+}
+
 var File_v1_info_proto protoreflect.FileDescriptor
 
 var file_v1_info_proto_rawDesc = []byte{
@@ -467,8 +526,13 @@ var file_v1_info_proto_rawDesc = []byte{
 	0x64, 0x61, 0x74, 0x61, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x24, 0x2e, 0x64, 0x61, 0x74,
 	0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e, 0x76, 0x31, 0x2e, 0x56, 0x61, 0x72, 0x69,
 	0x61, 0x62, 0x6c, 0x65, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65,
-	0x52, 0x04, 0x64, 0x61, 0x74, 0x61, 0x42, 0x09, 0x5a, 0x07, 0x2e, 0x2f, 0x70, 0x72, 0x6f, 0x74,
-	0x6f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x52, 0x04, 0x64, 0x61, 0x74, 0x61, 0x22, 0x4a, 0x0a, 0x18, 0x56, 0x61, 0x72, 0x69, 0x61, 0x62,
+	0x6c, 0x65, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x65, 0x71, 0x75, 0x65,
+	0x73, 0x74, 0x12, 0x12, 0x0a, 0x04, 0x64, 0x63, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09,
+	0x52, 0x04, 0x64, 0x63, 0x69, 0x64, 0x12, 0x1a, 0x0a, 0x08, 0x65, 0x6e, 0x74, 0x69, 0x74, 0x69,
+	0x65, 0x73, 0x18, 0x02, 0x20, 0x03, 0x28, 0x09, 0x52, 0x08, 0x65, 0x6e, 0x74, 0x69, 0x74, 0x69,
+	0x65, 0x73, 0x42, 0x09, 0x5a, 0x07, 0x2e, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x06, 0x70,
+	0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -483,7 +547,7 @@ func file_v1_info_proto_rawDescGZIP() []byte {
 	return file_v1_info_proto_rawDescData
 }
 
-var file_v1_info_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
+var file_v1_info_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
 var file_v1_info_proto_goTypes = []interface{}{
 	(*PlaceInfoRequest)(nil),         // 0: datacommons.v1.PlaceInfoRequest
 	(*PlaceInfoResponse)(nil),        // 1: datacommons.v1.PlaceInfoResponse
@@ -493,19 +557,20 @@ var file_v1_info_proto_goTypes = []interface{}{
 	(*VariableInfoResponse)(nil),     // 5: datacommons.v1.VariableInfoResponse
 	(*BulkVariableInfoRequest)(nil),  // 6: datacommons.v1.BulkVariableInfoRequest
 	(*BulkVariableInfoResponse)(nil), // 7: datacommons.v1.BulkVariableInfoResponse
-	(*PlaceMetadata)(nil),            // 8: datacommons.PlaceMetadata
-	(*StatVarSummary)(nil),           // 9: datacommons.StatVarSummary
+	(*VariableGroupInfoRequest)(nil), // 8: datacommons.v1.VariableGroupInfoRequest
+	(*PlaceMetadata)(nil),            // 9: datacommons.PlaceMetadata
+	(*StatVarSummary)(nil),           // 10: datacommons.StatVarSummary
 }
 var file_v1_info_proto_depIdxs = []int32{
-	8, // 0: datacommons.v1.PlaceInfoResponse.info:type_name -> datacommons.PlaceMetadata
-	1, // 1: datacommons.v1.BulkPlaceInfoResponse.data:type_name -> datacommons.v1.PlaceInfoResponse
-	9, // 2: datacommons.v1.VariableInfoResponse.info:type_name -> datacommons.StatVarSummary
-	5, // 3: datacommons.v1.BulkVariableInfoResponse.data:type_name -> datacommons.v1.VariableInfoResponse
-	4, // [4:4] is the sub-list for method output_type
-	4, // [4:4] is the sub-list for method input_type
-	4, // [4:4] is the sub-list for extension type_name
-	4, // [4:4] is the sub-list for extension extendee
-	0, // [0:4] is the sub-list for field type_name
+	9,  // 0: datacommons.v1.PlaceInfoResponse.info:type_name -> datacommons.PlaceMetadata
+	1,  // 1: datacommons.v1.BulkPlaceInfoResponse.data:type_name -> datacommons.v1.PlaceInfoResponse
+	10, // 2: datacommons.v1.VariableInfoResponse.info:type_name -> datacommons.StatVarSummary
+	5,  // 3: datacommons.v1.BulkVariableInfoResponse.data:type_name -> datacommons.v1.VariableInfoResponse
+	4,  // [4:4] is the sub-list for method output_type
+	4,  // [4:4] is the sub-list for method input_type
+	4,  // [4:4] is the sub-list for extension type_name
+	4,  // [4:4] is the sub-list for extension extendee
+	0,  // [0:4] is the sub-list for field type_name
 }
 
 func init() { file_v1_info_proto_init() }
@@ -612,6 +677,18 @@ func file_v1_info_proto_init() {
 				return nil
 			}
 		}
+		file_v1_info_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*VariableGroupInfoRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -619,7 +696,7 @@ func file_v1_info_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_v1_info_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   8,
+			NumMessages:   9,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
