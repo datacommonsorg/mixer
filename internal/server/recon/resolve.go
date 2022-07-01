@@ -29,8 +29,11 @@ import (
 )
 
 var (
-	// This is a preferred list.
-	// The props ranked higher are preferred over those ranked lower for resolving.
+	// This is a preferred list.  The props ranked higher are preferred over
+	// those ranked lower for resolving.
+	//
+	// NOTE: Needs to be kept in sync with PLACE_RESOLVABLE_AND_ASSIGNABLE_IDS in
+	// https://github.com/datacommonsorg/import repo.
 	rankedIDProps = []string{
 		"dcid",
 		"geoId",
@@ -41,6 +44,9 @@ var (
 		"istatId",
 		"austrianMunicipalityKey",
 		"indianCensusAreaCode2011",
+		"indianCensusAreaCode2001",
+		"lgdCode",
+		"udiseCode",
 	}
 )
 

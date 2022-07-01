@@ -2208,14 +2208,6 @@
               "provenanceId": "dc/5n63hr1"
             },
             {
-              "name": "Asgardia",
-              "types": [
-                "Country"
-              ],
-              "dcid": "wikidataId/Q27304761",
-              "provenanceId": "dc/5j06ly1"
-            },
-            {
               "name": "Kingdom of the Netherlands",
               "types": [
                 "Country"

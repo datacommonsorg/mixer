@@ -97,6 +97,13 @@
     {
       "cells": [
         {
+          "value": "CDC_OtherRace"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
           "value": "CDC_RaceUnknownOrNotStated"
         }
       ]

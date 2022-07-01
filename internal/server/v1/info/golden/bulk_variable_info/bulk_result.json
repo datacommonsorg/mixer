@@ -580,7 +580,7 @@
             "maxValue": 660361000
           },
           "County": {
-            "placeCount": 3222,
+            "placeCount": 3223,
             "topPlaces": [
               {
                 "dcid": "geoId/06037",
@@ -1623,6 +1623,141 @@
               }
             ]
           },
+          "dc/vnd0tf2": {
+            "importName": "USCensusPEP_By_Sex_Race",
+            "observationCount": 162561,
+            "timeSeriesCount": 6386,
+            "releaseFrequency": "P1Y",
+            "seriesSummary": [
+              {
+                "seriesKey": {
+                  "measurementMethod": "CensusPEPSurvey",
+                  "observationPeriod": "P1Y"
+                },
+                "earliestDate": "1900",
+                "latestDate": "2020",
+                "observationCount": 67132,
+                "timeSeriesCount": 3196,
+                "placeTypeSummary": {
+                  "Country": {
+                    "placeCount": 1,
+                    "topPlaces": [
+                      {
+                        "dcid": "country/USA",
+                        "name": "United States"
+                      }
+                    ],
+                    "minValue": 37227000,
+                    "maxValue": 155964075
+                  },
+                  "County": {
+                    "placeCount": 3144,
+                    "topPlaces": [
+                      {
+                        "dcid": "geoId/06037",
+                        "name": "Los Angeles County"
+                      },
+                      {
+                        "dcid": "geoId/17031",
+                        "name": "Cook County"
+                      },
+                      {
+                        "dcid": "geoId/48201",
+                        "name": "Harris County"
+                      }
+                    ],
+                    "minValue": 26,
+                    "maxValue": 5119774
+                  },
+                  "State": {
+                    "placeCount": 51,
+                    "topPlaces": [
+                      {
+                        "dcid": "geoId/06",
+                        "name": "California"
+                      },
+                      {
+                        "dcid": "geoId/48",
+                        "name": "Texas"
+                      },
+                      {
+                        "dcid": "geoId/12",
+                        "name": "Florida"
+                      }
+                    ],
+                    "minValue": 245327,
+                    "maxValue": 19829641
+                  }
+                },
+                "minValue": 26,
+                "maxValue": 155964075
+              },
+              {
+                "seriesKey": {
+                  "measurementMethod": "CensusPEPSurvey",
+                  "observationPeriod": "P1Y",
+                  "isDcAggregate": true
+                },
+                "earliestDate": "1970",
+                "latestDate": "2020",
+                "observationCount": 95429,
+                "timeSeriesCount": 3190,
+                "placeTypeSummary": {
+                  "Country": {
+                    "placeCount": 1,
+                    "topPlaces": [
+                      {
+                        "dcid": "country/USA",
+                        "name": "United States"
+                      }
+                    ],
+                    "minValue": 117962478,
+                    "maxValue": 167227921
+                  },
+                  "County": {
+                    "placeCount": 3138,
+                    "topPlaces": [
+                      {
+                        "dcid": "geoId/06037",
+                        "name": "Los Angeles County"
+                      },
+                      {
+                        "dcid": "geoId/17031",
+                        "name": "Cook County"
+                      },
+                      {
+                        "dcid": "geoId/48201",
+                        "name": "Harris County"
+                      }
+                    ],
+                    "minValue": 20,
+                    "maxValue": 4707081
+                  },
+                  "State": {
+                    "placeCount": 51,
+                    "topPlaces": [
+                      {
+                        "dcid": "geoId/06",
+                        "name": "California"
+                      },
+                      {
+                        "dcid": "geoId/48",
+                        "name": "Texas"
+                      },
+                      {
+                        "dcid": "geoId/12",
+                        "name": "Florida"
+                      }
+                    ],
+                    "minValue": 138616,
+                    "maxValue": 16565414
+                  }
+                },
+                "minValue": 20,
+                "maxValue": 167227921
+              }
+            ]
+          },
           "dc/yd4sfb": {
             "importName": "EurostatData",
             "observationCount": 47169,
@@ -1912,8 +2047,8 @@
                 "name": "United States"
               }
             ],
-            "minValue": 7608035,
-            "maxValue": 9650795
+            "minValue": 5523282,
+            "maxValue": 10441573
           },
           "County": {
             "placeCount": 3222,
@@ -1931,7 +2066,7 @@
                 "name": "Harris County"
               }
             ],
-            "maxValue": 794118
+            "maxValue": 829975
           },
           "ElementarySchoolDistrict": {
             "placeCount": 10,
@@ -2018,8 +2153,8 @@
                 "name": "Florida"
               }
             ],
-            "minValue": 2343,
-            "maxValue": 3063404
+            "minValue": 1684,
+            "maxValue": 3265079
           },
           "StateComponent": {
             "placeCount": 550,
@@ -2322,6 +2457,101 @@
                 },
                 "minValue": 7608035,
                 "maxValue": 9650795
+              }
+            ]
+          },
+          "dc/vnd0tf2": {
+            "importName": "USCensusPEP_By_Sex_Race",
+            "observationCount": 67063,
+            "timeSeriesCount": 3197,
+            "releaseFrequency": "P1Y",
+            "seriesSummary": [
+              {
+                "seriesKey": {
+                  "measurementMethod": "CensusPEPSurvey",
+                  "observationPeriod": "P1Y"
+                },
+                "earliestDate": "2000",
+                "latestDate": "2020",
+                "observationCount": 67052,
+                "timeSeriesCount": 3196,
+                "placeTypeSummary": {
+                  "Country": {
+                    "placeCount": 1,
+                    "topPlaces": [
+                      {
+                        "dcid": "country/USA",
+                        "name": "United States"
+                      }
+                    ],
+                    "minValue": 5523282,
+                    "maxValue": 7762568
+                  },
+                  "County": {
+                    "placeCount": 3144,
+                    "topPlaces": [
+                      {
+                        "dcid": "geoId/06037",
+                        "name": "Los Angeles County"
+                      },
+                      {
+                        "dcid": "geoId/17031",
+                        "name": "Cook County"
+                      },
+                      {
+                        "dcid": "geoId/48201",
+                        "name": "Harris County"
+                      }
+                    ],
+                    "maxValue": 829975
+                  },
+                  "State": {
+                    "placeCount": 51,
+                    "topPlaces": [
+                      {
+                        "dcid": "geoId/06",
+                        "name": "California"
+                      },
+                      {
+                        "dcid": "geoId/48",
+                        "name": "Texas"
+                      },
+                      {
+                        "dcid": "geoId/12",
+                        "name": "Florida"
+                      }
+                    ],
+                    "minValue": 1684,
+                    "maxValue": 3265079
+                  }
+                },
+                "maxValue": 7762568
+              },
+              {
+                "seriesKey": {
+                  "measurementMethod": "CensusPEPSurvey",
+                  "observationPeriod": "P1Y",
+                  "isDcAggregate": true
+                },
+                "earliestDate": "2010",
+                "latestDate": "2020",
+                "observationCount": 11,
+                "timeSeriesCount": 1,
+                "placeTypeSummary": {
+                  "Country": {
+                    "placeCount": 1,
+                    "topPlaces": [
+                      {
+                        "dcid": "country/USA",
+                        "name": "United States"
+                      }
+                    ],
+                    "minValue": 7996766,
+                    "maxValue": 10441573
+                  }
+                },
+                "minValue": 7996766,
+                "maxValue": 10441573
               }
             ]
           }

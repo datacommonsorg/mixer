@@ -666,6 +666,45 @@
             "measurement_method": "OECDRegionalStatistics",
             "observation_period": "P1Y"
           }
+        },
+        {
+          "date_place_count": {
+            "1970": 51,
+            "1971": 51,
+            "1972": 51,
+            "1973": 51,
+            "1974": 51,
+            "1975": 51,
+            "1976": 51,
+            "1977": 51,
+            "1978": 51,
+            "1979": 51,
+            "1981": 51,
+            "1982": 51,
+            "1983": 51,
+            "1984": 51,
+            "1985": 51,
+            "1986": 51,
+            "1987": 51,
+            "1988": 51,
+            "1989": 51,
+            "1990": 51,
+            "1991": 51,
+            "1992": 51,
+            "1993": 51,
+            "1994": 51,
+            "1995": 51,
+            "1996": 51,
+            "1997": 51,
+            "1998": 51,
+            "1999": 51
+          },
+          "metadata": {
+            "import_name": "USCensusPEP_By_Sex_Race",
+            "provenance_url": "https://www2.census.gov/programs-surveys/popest/tables",
+            "measurement_method": "CensusPEPSurvey",
+            "observation_period": "P1Y"
+          }
         }
       ]
     }
