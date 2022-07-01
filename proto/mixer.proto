@@ -460,6 +460,13 @@ service Mixer {
     };
   }
 
+  rpc VariableGroupInfo(datacommons.v1.VariableGroupInfoRequest)
+      returns (StatVarGroupNode) {
+    option (google.api.http) = {
+      get : "/v1/info/variable/group/{dcid=**}"
+    };
+  }
+
   rpc BulkVariableInfo(datacommons.v1.BulkVariableInfoRequest)
       returns (datacommons.v1.BulkVariableInfoResponse) {
     option (google.api.http) = {

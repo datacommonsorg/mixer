@@ -22,7 +22,7 @@ import "stat_var.proto";
 message PlaceInfoRequest {
   string entity = 1;
 }
-  
+
 message PlaceInfoResponse {
   string entity = 1;
   datacommons.PlaceMetadata info = 2;
@@ -39,7 +39,7 @@ message BulkPlaceInfoResponse {
 message VariableInfoRequest {
   string entity = 1;
 }
-  
+
 message VariableInfoResponse {
   string entity = 1;
   datacommons.StatVarSummary info = 2;
@@ -51,4 +51,13 @@ message BulkVariableInfoRequest {
 
 message BulkVariableInfoResponse {
   repeated VariableInfoResponse data = 1;
+}
+
+message VariableGroupInfoRequest {
+  // The variable group dcid to query for.
+  string dcid = 1;
+  // The entities that the variable group is associated with. The response should
+  // only contain the child variable (group) if it has data for at least one
+  // of the entities.
+  repeated string entities = 2;
 }

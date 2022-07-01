@@ -258,6 +258,26 @@
     "relatedChart": {}
   },
   {
+    "title": "Mortality events",
+    "statsVars": [
+      "Count_Death_DiseasesOfTheCirculatorySystem",
+      "Count_Death_Neoplasms",
+      "Count_Death_DiseasesOfTheRespiratorySystem",
+      "Count_Death_ExternalCauses",
+      "Count_Death_DiseasesOfTheNervousSystem"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "Count_Death_DiseasesOfTheCirculatorySystem",
+        "Count_Death_Neoplasms",
+        "Count_Death_DiseasesOfTheRespiratorySystem",
+        "Count_Death_ExternalCauses",
+        "Count_Death_DiseasesOfTheNervousSystem"
+      ]
+    }
+  },
+  {
     "title": "Outward remittance",
     "statsVars": [
       "Amount_Remittance_OutwardRemittance"
