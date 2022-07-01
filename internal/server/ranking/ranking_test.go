@@ -48,6 +48,10 @@ func TestGetScorePb(t *testing.T) {
 			&pb.SourceSeries{ImportName: "NASA_NEXDCP30", MeasurementMethod: "NASA_Mean_CCSM4", ObservationPeriod: "P1M"},
 			2,
 		},
+        { // test that an import name that does not exist returns the BaseRank
+			&pb.SourceSeries{ImportName: "THIS_IMPORT_DOES_NOT_EXIST", MeasurementMethod: "DOES_NOT_EXIST", ObservationPeriod: "DOES_NOT_EXIST"},
+			100,
+        },
 	} {
 		score := GetScorePb(c.series)
 		if diff := cmp.Diff(score, c.score); diff != "" {

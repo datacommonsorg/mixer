@@ -28,8 +28,8 @@ import (
 // Import Name should be non-empty.
 // Can use "*" for wildcard match for MeasurementMethod and ObservationPeriod
 type RankKey struct {
-	MeasurementMethod string
-	ObservationPeriod string
+    MeasurementMethod string
+    ObservationPeriod string
 }
 
 // StatsRanking is used to rank multiple source series for the same
@@ -84,7 +84,6 @@ var StatsRanking = map[string]map[RankKey]int{
     "FBIHateCrimePublications": {{"*", "*"}: 0,}, // FBI Hate Crime Publications
     "FBIHateCrime": {{"*", "*"}:             1,}, // FBI Hate Crime Aggregations
 }
-
 // BaseRank is the base ranking score for sources. If a source is prefered, it
 // should be given a score lower than BaseRank in StatsRanking. If a source is not
 // prefered, it should be given a score higher than BaseRank in StatsRanking
@@ -110,30 +109,38 @@ type CohortByRank []*pb.SourceSeries
 //
 // If no entry is found, a BaseRank is assigned to the source series.
 func GetScoreRk(importName string, rk RankKey) int {
-    importStatsRanking, ok := StatsRanking[importName]
+    importNameStatsRanking, ok := StatsRanking[importName]
     if ! ok {
         return BaseRank
     }
-	for _, propCombination := range []struct {
-		mm string
-		op string
-	}{
-		// Check exact match first
-        {rk.MeasurementMethod, rk.ObservationPeriod},
-		{rk.MeasurementMethod, "*"},
-		{"*", rk.ObservationPeriod},
-		{"*", "*"},
-	} {
-		key := RankKey{
-			MeasurementMethod: propCombination.mm,
-			ObservationPeriod: propCombination.op,
-		}
-		score, ok := importStatsRanking[key]
-		if ok {
-			return score
-		}
-	}
-	return BaseRank
+    score_of_most_exact_match := BaseRank
+    most_matches := -1
+    for k, score := range importNameStatsRanking {
+        matches := 0
+        is_match := true
+        if k.MeasurementMethod != "*" {
+            if k.MeasurementMethod == rk.MeasurementMethod {
+                matches++
+            } else {
+                is_match = false
+            }
+        }
+
+        if k.ObservationPeriod != "*" {
+            if k.ObservationPeriod == rk.ObservationPeriod {
+                matches++
+            } else {
+                is_match = false
+            }
+        }
+
+        if is_match && (matches > most_matches) || (score > score_of_most_exact_match && matches == most_matches) {
+            score_of_most_exact_match = score
+            most_matches = matches
+        }
+    }
+
+    return score_of_most_exact_match
 }
 
 // GetScoreRk adapter for pb.SourceSeries
