@@ -93,7 +93,7 @@ const BaseRank = 100
 // cohort instead of time series.
 type CohortByRank []*pb.SourceSeries
 
-// GetScorePb derives the ranking score for a source series.
+// GetScoreRk derives the ranking score for a source series.
 //
 // The score depends on ImportName and other SVObs properties, by checking the
 // StatsRanking dict. To get the score, ImportName is required, with optional
@@ -105,9 +105,6 @@ type CohortByRank []*pb.SourceSeries
 // score, otherwise can also match to wildcard options (indicated by *).
 //
 // If no entry is found, a BaseRank is assigned to the source series.
-
-// Uses the Get Score algorithm for a RankKey struct that is used to hold
-// the different fields that we use when scoring.
 func GetScoreRk(rk RankKey) int {
 	for _, propCombination := range []struct {
 		mm string
@@ -132,6 +129,7 @@ func GetScoreRk(rk RankKey) int {
 	return BaseRank
 }
 
+// GetScoreRk adapter for pb.SourceSeries
 func GetScorePb(s *pb.SourceSeries) int {
     rk := RankKey{
         ImportName:        s.ImportName,
@@ -141,7 +139,7 @@ func GetScorePb(s *pb.SourceSeries) int {
 	return GetScoreRk(rk)
 }
 
-// GetMetadataScore computes score for pb.StatMetadata
+// GetScoreRk adapter for pb.StatMetadata
 func GetMetadataScore(m *pb.StatMetadata) int {
     rk := RankKey{
         ImportName:        m.ImportName,
@@ -256,18 +254,7 @@ func (a SeriesByRank) Less(i, j int) bool {
 }
 
 // TODO(shifucun): Remove `SourceSeries` and use pb.SourceSeries everywhere.
-// GetScore derives the ranking score for a source series.
-//
-// The score depends on ImportName and other SVObs properties, by checking the
-// StatsRanking dict. To get the score, ImportName is required, with optional
-// properties:
-// - MeasurementMethod
-// - ObservationPeriod
-//
-// When there are exact match of the properties in StatsRanking, then use that
-// score, otherwise can also match to wildcard options (indicated by *).
-//
-// If no entry is found, a BaseRank is assigned to the source series.
+// GetScoreRk adapter for model.SourceSeries 
 func GetScore(s *model.SourceSeries) int {
     rk := RankKey{
         ImportName:        s.ImportName,
