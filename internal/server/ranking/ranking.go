@@ -134,7 +134,9 @@ func GetScoreRk(importName string, rk RankKey) int {
             }
         }
 
-        if is_match && (matches > most_matches) || (score > score_of_most_exact_match && matches == most_matches) {
+        is_more_exact_match := matches > most_matches
+        is_same_exactness_match_with_better_score := score > score_of_most_exact_match && matches == most_matches
+        if is_match && (is_more_exact_match || is_same_exactness_match_with_better_score) {
             score_of_most_exact_match = score
             most_matches = matches
         }
