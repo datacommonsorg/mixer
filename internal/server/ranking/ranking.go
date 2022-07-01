@@ -145,7 +145,7 @@ func GetScoreRk(importName string, rk RankKey) int {
     return scoreOfMostExactMatch
 }
 
-// GetScoreGb is a GetScoreRk adapter for pb.SourceSeries
+// GetScorePb is a GetScoreRk adapter for pb.SourceSeries
 func GetScorePb(s *pb.SourceSeries) int {
     rk := RankKey{
         MeasurementMethod: s.MeasurementMethod,
