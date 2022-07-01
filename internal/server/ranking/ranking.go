@@ -105,6 +105,33 @@ type CohortByRank []*pb.SourceSeries
 // score, otherwise can also match to wildcard options (indicated by *).
 //
 // If no entry is found, a BaseRank is assigned to the source series.
+
+// Uses the Get Score algorithm for a RankKey struct that is used to hold
+// the different fields that we use when scoring.
+func GetScoreRk(rk RankKey) int {
+	for _, propCombination := range []struct {
+		mm string
+		op string
+	}{
+		// Check exact match first
+        {rk.MeasurementMethod, rk.ObservationPeriod},
+		{rk.MeasurementMethod, "*"},
+		{"*", rk.ObservationPeriod},
+		{"*", "*"},
+	} {
+		key := RankKey{
+			ImportName:        rk.ImportName,
+			MeasurementMethod: propCombination.mm,
+			ObservationPeriod: propCombination.op,
+		}
+		score, ok := StatsRanking[key]
+		if ok {
+			return score
+		}
+	}
+	return BaseRank
+}
+
 func GetScorePb(s *pb.SourceSeries) int {
 	for _, propCombination := range []struct {
 		mm string
