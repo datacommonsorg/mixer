@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2022 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -25,76 +25,95 @@ import (
 )
 
 // RankKey represents keys used for ranking.
-// Can use a nil pointer for wildcard match for any field that is a *string type
+// Can use a nil pointer for wildcard match for any field that is a *string type.
 type RankKey struct {
-    MM *string // MeasurementMethod
-    OP *string // ObservationPeriod
+	MM   *string // MeasurementMethod
+	OP   *string // ObservationPeriod
 	Unit *string
 }
 
-// S returns a pointer to the string that is passed to it
+// s returns a pointer to the string that is passed to it.
 func s(str string) *string {
 	return &str
 }
 
 // StatsRanking is used to rank multiple source series for the same
 // StatisticalVariable, where lower value means higher ranking.
-// Outer key is Import Name, inner key is Rank Key, value is score
+// Outer key is Import Name, inner key is Rank Key, value is score.
 var StatsRanking = map[string]map[RankKey]int{
-	"CensusPEP": {{MM: s("CensusPEPSurvey")}:                                0,}, // Population
-	"CensusACS5YearSurvey": {{MM: s("CensusACS5yrSurvey")}:                  1,}, // Population
-	"CensusACS5YearSurvey_AggCountry": {{MM: s("CensusACS5yrSurvey")}:       1,}, // Population
-	"CensusUSAMedianAgeIncome": {{MM: s("CensusACS5yrSurvey")}:              1,}, // Population
-	"USDecennialCensus_RedistrictingRelease": {{MM: s("USDecennialCensus")}: 2,}, // Population
-    "EurostatData": {
-		{MM: s("EurostatRegionalPopulationData")}:                        3, // Population
-		{MM: s("")}:                                                      2,// Unemployment Rate
-    },
-    "WorldDevelopmentIndicators": {{}:                             4,}, // Population
+	"CensusPEP": {{MM: s("CensusPEPSurvey")}: 0}, // Population
+
+	"CensusACS5YearSurvey": {{MM: s("CensusACS5yrSurvey")}: 1}, // Population
+
+	"CensusACS5YearSurvey_AggCountry": {{MM: s("CensusACS5yrSurvey")}: 1}, // Population
+
+	"CensusUSAMedianAgeIncome": {{MM: s("CensusACS5yrSurvey")}: 1}, // Population
+
+	"USDecennialCensus_RedistrictingRelease": {{MM: s("USDecennialCensus")}: 2}, // Population
+
+	"EurostatData": {
+		{MM: s("EurostatRegionalPopulationData")}: 3, // Population
+		{MM: s("")}: 2, // Unemployment Rate
+	},
+
+	"WorldDevelopmentIndicators": {{}: 4}, // Population
+
 	// Prefer Indian Census population for Indian states, over something like OECD.
-    "IndiaCensus_Primary":{{}:                 5,},    // Population
-	"WikipediaStatsData": {{MM: s("Wikipedia")}:          1001,}, // Population
-	"HumanCuratedStats": {{MM: s("HumanCuratedStats")}:   1002,}, // Population
-	"WikidataPopulation": {{MM: s("WikidataPopulation")}: 1003,}, // Population
+	"IndiaCensus_Primary": {{}: 5}, // Population
 
-	"BLS_LAUS": {{MM: s("BLSSeasonallyUnadjusted")}: 0, },// Unemployment Rate
-	"BLS_CPS": {{MM: s("BLSSeasonallyAdjusted")}:    1, },// Labor Force data ranked higher than WDI (above)}, or Eurostat
+	"WikipediaStatsData": {{MM: s("Wikipedia")}: 1001}, // Population
 
-	"NYT_COVID19": {{MM: s("NYT_COVID19_GitHub")}: 0,}, // Covid
+	"HumanCuratedStats": {{MM: s("HumanCuratedStats")}: 1002}, // Population
 
-	"CDC500": {{MM: s("AgeAdjustedPrevalence")}: 0,}, // CDC500
+	"WikidataPopulation": {{MM: s("WikidataPopulation")}: 1003}, // Population
 
-	"UNEnergy": {{MM: s("")}:         0,}, // Electricity
-	"EIA_Electricity": {{}: 1,}, // Electricity
+	"BLS_LAUS": {{MM: s("BLSSeasonallyUnadjusted")}: 0}, // Unemployment Rate
+
+	"BLS_CPS": {{MM: s("BLSSeasonallyAdjusted")}: 1}, // Labor Force data ranked higher than WDI (above)}, or Eurostat
+
+	"NYT_COVID19": {{MM: s("NYT_COVID19_GitHub")}: 0}, // Covid
+
+	"CDC500": {{MM: s("AgeAdjustedPrevalence")}: 0}, // CDC500
+
+	"UNEnergy": {{MM: s("")}: 0}, // Electricity
+
+	"EIA_Electricity": {{}: 1}, // Electricity
 
 	// Prefer observational weather over gridded over projections
-    "NOAA_EPA_Observed_Historical_Weather": {{}: 0,}, // Observational
-    "Copernicus_ECMWF_ERA5_Monthly": {{}:        1, }, // Gridded reanalysis
-	"NASA_NEXDCP30": {{MM: s("NASA_Mean_CCSM4"), OP: s("P1M")}:        2, }, // IPCC Projections
-	"NASA_NEXDCP30_AggrDiffStats": {{OP: s("P1M")}:        3, }, // IPCC Projections
-	// TODO: Remove this once disppears from backend (replaced by NASA_NEXDCP30_AggrDiffStats).
-	"NASA_NEXDCP30_StatVarSeriesAggr": {{OP: s("P1M")}: 4,}, // IPCC Projections
+	"NOAA_EPA_Observed_Historical_Weather": {{}: 0}, // Observational
 
-    "NASA_WetBulbComputation_Aggregation": { // Wet bulb year aggregation
+	"Copernicus_ECMWF_ERA5_Monthly": {{}: 1}, // Gridded reanalysis
+
+	"NASA_NEXDCP30": {{MM: s("NASA_Mean_CCSM4"), OP: s("P1M")}: 2}, // IPCC Projections
+
+	"NASA_NEXDCP30_AggrDiffStats": {{OP: s("P1M")}: 3}, // IPCC Projections
+
+	// TODO: Remove this once disppears from backend (replaced by NASA_NEXDCP30_AggrDiffStats).
+	"NASA_NEXDCP30_StatVarSeriesAggr": {{OP: s("P1M")}: 4}, // IPCC Projections
+
+	"NASA_WetBulbComputation_Aggregation": { // Wet bulb year aggregation
 		{MM: s("NASA_Mean_HadGEM2-AO")}: 0,
-        {}:                    1,
-    },
-	"NASA_WetBulbComputation": {{MM: s("NASA_Mean_HadGEM2-AO")}:             2,}, // Wet bulb
+		{}:                              1,
+	},
+
+	"NASA_WetBulbComputation": {{MM: s("NASA_Mean_HadGEM2-AO")}: 2}, // Wet bulb
 
 	// Prefer FBI Hate Crime Publications over Data Commons Aggregate
 	// Note: https://autopush.datacommons.org/tools/timeline#statsVar=Count_CriminalIncidents_IsHateCrime&place=country%2FUSA
 	// Expected data 2010-2020: 6628, 6222, 5796, 5928, 5479, 5850, 6121, 7175, 7120, 7314, 8263
 	// Note: https://autopush.datacommons.org/tools/timeline#place=geoId%2F06&statsVar=Count_CriminalIncidents_IsHateCrime
 	// Expected data 2004-2010: 1393, 1379, 1297, 1400, 1381, 1015, 1092
-    "FBIHateCrimePublications": {{}: 0,}, // FBI Hate Crime Publications
-    "FBIHateCrime": {{}:             1,}, // FBI Hate Crime Aggregations
+	"FBIHateCrimePublications": {{}: 0}, // FBI Hate Crime Publications
+
+	"FBIHateCrime": {{}: 1}, // FBI Hate Crime Aggregations
 
 	// Prefer USDollar over Risk Score for Expected Annual Loss in FEMA National Risk Index (NRI)
 	"USFEMA_NationalRiskIndex": {
-		{Unit: s("USDollar")} : 0,
+		{Unit: s("USDollar")}:              0,
 		{Unit: s("FemaNationalRiskScore")}: 1,
 	},
 }
+
 // BaseRank is the base ranking score for sources. If a source is prefered, it
 // should be given a score lower than BaseRank in StatsRanking. If a source is not
 // prefered, it should be given a score higher than BaseRank in StatsRanking
@@ -121,30 +140,30 @@ type CohortByRank []*pb.SourceSeries
 //
 // If no entry is found, a BaseRank is assigned to the source series.
 func GetScoreRk(importName string, rk RankKey) int {
-    importNameStatsRanking, ok := StatsRanking[importName]
-    if ! ok {
-        return BaseRank
-    }
-    rankScore := BaseRank
-    mostMatches := -1
-    for k, score := range importNameStatsRanking {
-        matches := 0
-        isMatch := true
-        if k.MM != nil && rk.MM != nil {
-            if *k.MM == *rk.MM {
-                matches++
-            } else {
-                isMatch = false
-            }
-        }
+	importNameStatsRanking, ok := StatsRanking[importName]
+	if !ok {
+		return BaseRank
+	}
+	rankScore := BaseRank
+	mostMatches := -1
+	for k, score := range importNameStatsRanking {
+		matches := 0
+		isMatch := true
+		if k.MM != nil && rk.MM != nil {
+			if *k.MM == *rk.MM {
+				matches++
+			} else {
+				isMatch = false
+			}
+		}
 
-        if k.OP != nil && rk.OP != nil {
-            if *k.OP == *rk.OP {
-                matches++
-            } else {
-                isMatch = false
-            }
-        }
+		if k.OP != nil && rk.OP != nil {
+			if *k.OP == *rk.OP {
+				matches++
+			} else {
+				isMatch = false
+			}
+		}
 
 		if k.Unit != nil && rk.Unit != nil {
 			if *k.Unit == *rk.Unit {
@@ -166,28 +185,28 @@ func GetScoreRk(importName string, rk RankKey) int {
 
 		rankScore = score
 		mostMatches = matches
-    }
+	}
 
-    return rankScore
+	return rankScore
 }
 
 // GetScorePb is a GetScoreRk adapter for pb.SourceSeries
 func GetScorePb(ss *pb.SourceSeries) int {
-    rk := RankKey{
-        MM: s(ss.MeasurementMethod),
-        OP: s(ss.ObservationPeriod),
+	rk := RankKey{
+		MM:   s(ss.MeasurementMethod),
+		OP:   s(ss.ObservationPeriod),
 		Unit: s(ss.Unit),
-    }
+	}
 	return GetScoreRk(ss.ImportName, rk)
 }
 
 // GetMetadataScore is a GetScoreRk adapter for pb.StatMetadata
 func GetMetadataScore(m *pb.StatMetadata) int {
-    rk := RankKey{
-        MM: s(m.MeasurementMethod),
-        OP: s(m.ObservationPeriod),
+	rk := RankKey{
+		MM:   s(m.MeasurementMethod),
+		OP:   s(m.ObservationPeriod),
 		Unit: s(m.Unit),
-    }
+	}
 	return GetScoreRk(m.ImportName, rk)
 }
 
@@ -298,12 +317,12 @@ func (a SeriesByRank) Less(i, j int) bool {
 // GetScore is a GetScoreRk adapter for model.SourceSeries
 // TODO(shifucun): Remove `SourceSeries` and use pb.SourceSeries everywhere.
 func GetScore(ss *model.SourceSeries) int {
-    rk := RankKey{
-        MM: s(ss.MeasurementMethod),
-        OP: s(ss.ObservationPeriod),
+	rk := RankKey{
+		MM:   s(ss.MeasurementMethod),
+		OP:   s(ss.ObservationPeriod),
 		Unit: s(ss.Unit),
-    }
-    return GetScoreRk(ss.ImportName, rk)
+	}
+	return GetScoreRk(ss.ImportName, rk)
 }
 
 // ByRank implements sort.Interface for []*SourceSeries based on
