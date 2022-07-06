@@ -134,12 +134,18 @@ func GetScoreRk(importName string, rk RankKey) int {
             }
         }
 
-        isMoreExactMatch := matches > mostMatches
-        isSameExactnessMatchWithBetterScore := score < rankScore && matches == mostMatches
-        if isMatch && (isMoreExactMatch || isSameExactnessMatchWithBetterScore) {
-            rankScore = score
-            mostMatches = matches
-        }
+		if !isMatch {
+			continue
+		}
+		if matches < mostMatches {
+			continue
+		}
+		if matches == mostMatches && score > rankScore {
+			continue
+		}
+
+		rankScore = score
+		mostMatches = matches
     }
 
     return rankScore
