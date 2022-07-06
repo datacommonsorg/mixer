@@ -113,7 +113,7 @@ func GetScoreRk(importName string, rk RankKey) int {
     if ! ok {
         return BaseRank
     }
-    scoreOfMostExactMatch := BaseRank
+    rankScore := BaseRank
     mostMatches := -1
     for k, score := range importNameStatsRanking {
         matches := 0
@@ -135,14 +135,14 @@ func GetScoreRk(importName string, rk RankKey) int {
         }
 
         isMoreExactMatch := matches > mostMatches
-        isSameExactnessMatchWithBetterScore := score < scoreOfMostExactMatch && matches == mostMatches
+        isSameExactnessMatchWithBetterScore := score < rankScore && matches == mostMatches
         if isMatch && (isMoreExactMatch || isSameExactnessMatchWithBetterScore) {
-            scoreOfMostExactMatch = score
+            rankScore = score
             mostMatches = matches
         }
     }
 
-    return scoreOfMostExactMatch
+    return rankScore
 }
 
 // GetScorePb is a GetScoreRk adapter for pb.SourceSeries
