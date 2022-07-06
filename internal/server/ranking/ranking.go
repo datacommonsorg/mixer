@@ -25,11 +25,10 @@ import (
 )
 
 // RankKey represents keys used for ranking.
-// Import Name should be non-empty.
-// Can use "*" for wildcard match for MeasurementMethod and ObservationPeriod
+// Can use a nil pointer for wildcard match for any field that is a *string type
 type RankKey struct {
-    MM *string
-    OP *string
+    MM *string // MeasurementMethod
+    OP *string // ObservationPeriod
 }
 
 // S returns a pointer to the string that is passed to it
@@ -104,13 +103,14 @@ type CohortByRank []*pb.SourceSeries
 // GetScoreRk derives the ranking score for a source series.
 //
 // The score depends on ImportName and other SVObs properties, by checking the
-// StatsRanking dict. To get the score, ImportName is required, with optional
-// properties:
+// StatsRanking dict. To get the score, ImportName is required, and a RankKey
+// with these optional fields:
 // - MM: MeasurementMethod
 // - OP: ObservationPeriod
 //
 // When there are exact match of the properties in StatsRanking, then use that
-// score, otherwise can also match to wildcard options (indicated by *).
+// score, otherwise can also match to wildcard options (indicated by a nil
+// pointer).
 //
 // If no entry is found, a BaseRank is assigned to the source series.
 func GetScoreRk(importName string, rk RankKey) int {
@@ -157,19 +157,19 @@ func GetScoreRk(importName string, rk RankKey) int {
 }
 
 // GetScorePb is a GetScoreRk adapter for pb.SourceSeries
-func GetScorePb(s *pb.SourceSeries) int {
+func GetScorePb(ss *pb.SourceSeries) int {
     rk := RankKey{
-        MM: &(s.MeasurementMethod),
-        OP: &(s.ObservationPeriod),
+        MM: s(ss.MeasurementMethod),
+        OP: s(ss.ObservationPeriod),
     }
-	return GetScoreRk(s.ImportName, rk)
+	return GetScoreRk(ss.ImportName, rk)
 }
 
 // GetMetadataScore is a GetScoreRk adapter for pb.StatMetadata
 func GetMetadataScore(m *pb.StatMetadata) int {
     rk := RankKey{
-        MM: &(m.MeasurementMethod),
-        OP: &(m.ObservationPeriod),
+        MM: s(m.MeasurementMethod),
+        OP: s(m.ObservationPeriod),
     }
 	return GetScoreRk(m.ImportName, rk)
 }
@@ -280,12 +280,12 @@ func (a SeriesByRank) Less(i, j int) bool {
 
 // GetScore is a GetScoreRk adapter for model.SourceSeries
 // TODO(shifucun): Remove `SourceSeries` and use pb.SourceSeries everywhere.
-func GetScore(s *model.SourceSeries) int {
+func GetScore(ss *model.SourceSeries) int {
     rk := RankKey{
-        MM: &(s.MeasurementMethod),
-        OP: &(s.ObservationPeriod),
+        MM: s(ss.MeasurementMethod),
+        OP: s(ss.ObservationPeriod),
     }
-    return GetScoreRk(s.ImportName, rk)
+    return GetScoreRk(ss.ImportName, rk)
 }
 
 // ByRank implements sort.Interface for []*SourceSeries based on
