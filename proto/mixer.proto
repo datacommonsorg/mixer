@@ -521,10 +521,10 @@ service Mixer {
     };
   }
 
-  rpc ProteinPage(datacommons.v1.ProteinPageRequest)
+  rpc BioPage(datacommons.v1.BioPageRequest)
       returns (GraphNodes) {
     option (google.api.http) = {
-      get : "/v1/internal/page/protein/{entity=**}"
+      get : "/v1/internal/page/bio/{entity=**}"
     };
   }
 

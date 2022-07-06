@@ -25,10 +25,10 @@ import (
 	"google.golang.org/grpc/status"
 )
 
-// ProteinPage implements API for Mixer.ProteinPage.
-func ProteinPage(
+// BioPage implements API for Mixer.BioPage.
+func BioPage(
 	ctx context.Context,
-	in *pb.ProteinPageRequest,
+	in *pb.BioPageRequest,
 	store *store.Store,
 ) (*pb.GraphNodes, error) {
 	entity := in.GetEntity()

@@ -32,7 +32,7 @@ func GetBioPageDataHelper(
 	btDataList, err := bigtable.Read(
 		ctx,
 		store.BtGroup,
-		bigtable.BtProteinPagePrefix,
+		bigtable.BtBioPagePrefix,
 		[][]string{{dcid}},
 		func(jsonRaw []byte) (interface{}, error) {
 			var graph pb.GraphNodes
@@ -54,5 +54,5 @@ func GetBioPageDataHelper(
 			}
 		}
 	}
-	return nil, nil
+	return &pb.GraphNodes{}, nil
 }

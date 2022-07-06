@@ -434,7 +434,7 @@ type VariableGroupInfoRequest struct {
 	// The variable group dcid to query for.
 	Dcid string `protobuf:"bytes,1,opt,name=dcid,proto3" json:"dcid,omitempty"`
 	// The entities that the variable group is associated with. The response should
-	// only contain the children variable (group) if it has data for at least one
+	// only contain the child variable (group) if it has data for at least one
 	// of the entities.
 	Entities []string `protobuf:"bytes,2,rep,name=entities,proto3" json:"entities,omitempty"`
 }
