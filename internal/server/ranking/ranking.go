@@ -146,13 +146,14 @@ func GetScoreRk(importName string, rk RankKey) int {
             }
         }
 
-        if k.Unit != nil && rk.Unit != nil {
-            if *k.Unit == *rk.Unit {
-                matches++
-            } else {
-                isMatch = false
-            }
-        }
+		if k.Unit != nil && rk.Unit != nil {
+			if *k.Unit == *rk.Unit {
+				matches++
+			} else {
+				isMatch = false
+			}
+		}
+
 		if !isMatch {
 			continue
 		}
