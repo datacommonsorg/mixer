@@ -175,11 +175,11 @@ func (s *Server) BulkObservationsSeriesLinked(
 	return observations.BulkSeriesLinked(ctx, in, s.store)
 }
 
-// ProteinPage implements API for mixer.ProteinPage.
-func (s *Server) ProteinPage(
-	ctx context.Context, in *pb.ProteinPageRequest,
+// BioPage implements API for mixer.BioPage.
+func (s *Server) BioPage(
+	ctx context.Context, in *pb.BioPageRequest,
 ) (*pb.GraphNodes, error) {
-	return page.ProteinPage(ctx, in, s.store)
+	return page.BioPage(ctx, in, s.store)
 }
 
 // PlacePage implements API for mixer.PlacePage.
