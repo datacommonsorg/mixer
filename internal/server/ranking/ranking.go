@@ -28,61 +28,66 @@ import (
 // Import Name should be non-empty.
 // Can use "*" for wildcard match for MeasurementMethod and ObservationPeriod
 type RankKey struct {
-    MeasurementMethod string
-    ObservationPeriod string
+    MM *string
+    OP *string
+}
+
+// S returns a pointer to the string that is passed to it
+func s(str string) *string {
+	return &str
 }
 
 // StatsRanking is used to rank multiple source series for the same
 // StatisticalVariable, where lower value means higher ranking.
 // Outer key is Import Name, inner key is Rank Key, value is score
 var StatsRanking = map[string]map[RankKey]int{
-    "CensusPEP": {{"CensusPEPSurvey", "*"}:                                0,}, // Population
-    "CensusACS5YearSurvey": {{"CensusACS5yrSurvey", "*"}:                  1,}, // Population
-    "CensusACS5YearSurvey_AggCountry": {{"CensusACS5yrSurvey", "*"}:       1,}, // Population
-    "CensusUSAMedianAgeIncome": {{"CensusACS5yrSurvey", "*"}:              1,}, // Population
-    "USDecennialCensus_RedistrictingRelease": {{"USDecennialCensus", "*"}: 2,}, // Population
+	"CensusPEP": {{MM: s("CensusPEPSurvey")}:                                0,}, // Population
+	"CensusACS5YearSurvey": {{MM: s("CensusACS5yrSurvey")}:                  1,}, // Population
+	"CensusACS5YearSurvey_AggCountry": {{MM: s("CensusACS5yrSurvey")}:       1,}, // Population
+	"CensusUSAMedianAgeIncome": {{MM: s("CensusACS5yrSurvey")}:              1,}, // Population
+	"USDecennialCensus_RedistrictingRelease": {{MM: s("USDecennialCensus")}: 2,}, // Population
     "EurostatData": {
-        {"EurostatRegionalPopulationData", "*"}:                        3, // Population
-        {"", "*"}:                                                      2,// Unemployment Rate
+		{MM: s("EurostatRegionalPopulationData")}:                        3, // Population
+		{MM: s("")}:                                                      2,// Unemployment Rate
     },
-    "WorldDevelopmentIndicators": {{"*", "*"}:                             4,}, // Population
+    "WorldDevelopmentIndicators": {{}:                             4,}, // Population
 	// Prefer Indian Census population for Indian states, over something like OECD.
-    "IndiaCensus_Primary":{{"*", "*"}:                 5,},    // Population
-    "WikipediaStatsData": {{"Wikipedia", "*"}:          1001,}, // Population
-    "HumanCuratedStats": {{"HumanCuratedStats", "*"}:   1002,}, // Population
-    "WikidataPopulation": {{"WikidataPopulation", "*"}: 1003,}, // Population
+    "IndiaCensus_Primary":{{}:                 5,},    // Population
+	"WikipediaStatsData": {{MM: s("Wikipedia")}:          1001,}, // Population
+	"HumanCuratedStats": {{MM: s("HumanCuratedStats")}:   1002,}, // Population
+	"WikidataPopulation": {{MM: s("WikidataPopulation")}: 1003,}, // Population
 
-    "BLS_LAUS": {{"BLSSeasonallyUnadjusted", "*"}: 0, },// Unemployment Rate
-    "BLS_CPS": {{"BLSSeasonallyAdjusted", "*"}:    1, },// Labor Force data ranked higher than WDI (above)}, or Eurostat
+	"BLS_LAUS": {{MM: s("BLSSeasonallyUnadjusted")}: 0, },// Unemployment Rate
+	"BLS_CPS": {{MM: s("BLSSeasonallyAdjusted")}:    1, },// Labor Force data ranked higher than WDI (above)}, or Eurostat
 
-    "NYT_COVID19": {{"NYT_COVID19_GitHub", "*"}: 0,}, // Covid
+	"NYT_COVID19": {{MM: s("NYT_COVID19_GitHub")}: 0,}, // Covid
 
-    "CDC500": {{"AgeAdjustedPrevalence", "*"}: 0,}, // CDC500
+	"CDC500": {{MM: s("AgeAdjustedPrevalence")}: 0,}, // CDC500
 
-    "UNEnergy": {{"", "*"}:         0,}, // Electricity
-    "EIA_Electricity": {{"*", "*"}: 1,}, // Electricity
+	"UNEnergy": {{MM: s("")}:         0,}, // Electricity
+	"EIA_Electricity": {{}: 1,}, // Electricity
 
 	// Prefer observational weather over gridded over projections
-    "NOAA_EPA_Observed_Historical_Weather": {{"*", "*"}: 0,}, // Observational
-    "Copernicus_ECMWF_ERA5_Monthly": {{"*", "*"}:        1, }, // Gridded reanalysis
-    "NASA_NEXDCP30": {{"NASA_Mean_CCSM4", "P1M"}:        2, }, // IPCC Projections
-    "NASA_NEXDCP30_AggrDiffStats": {{"*", "P1M"}:        3, }, // IPCC Projections
+    "NOAA_EPA_Observed_Historical_Weather": {{}: 0,}, // Observational
+    "Copernicus_ECMWF_ERA5_Monthly": {{}:        1, }, // Gridded reanalysis
+	"NASA_NEXDCP30": {{MM: s("NASA_Mean_CCSM4"), OP: s("P1M")}:        2, }, // IPCC Projections
+	"NASA_NEXDCP30_AggrDiffStats": {{OP: s("P1M")}:        3, }, // IPCC Projections
 	// TODO: Remove this once disppears from backend (replaced by NASA_NEXDCP30_AggrDiffStats).
-    "NASA_NEXDCP30_StatVarSeriesAggr": {{"*", "P1M"}: 4,}, // IPCC Projections
+	"NASA_NEXDCP30_StatVarSeriesAggr": {{OP: s("P1M")}: 4,}, // IPCC Projections
 
     "NASA_WetBulbComputation_Aggregation": { // Wet bulb year aggregation
-        {"NASA_Mean_HadGEM2-AO", "*"}: 0,
-        {"*", "*"}:                    1,
+		{MM: s("NASA_Mean_HadGEM2-AO")}: 0,
+        {}:                    1,
     },
-    "NASA_WetBulbComputation": {{"NASA_Mean_HadGEM2-AO", "*"}:             2,}, // Wet bulb
+	"NASA_WetBulbComputation": {{MM: s("NASA_Mean_HadGEM2-AO")}:             2,}, // Wet bulb
 
 	// Prefer FBI Hate Crime Publications over Data Commons Aggregate
 	// Note: https://autopush.datacommons.org/tools/timeline#statsVar=Count_CriminalIncidents_IsHateCrime&place=country%2FUSA
 	// Expected data 2010-2020: 6628, 6222, 5796, 5928, 5479, 5850, 6121, 7175, 7120, 7314, 8263
 	// Note: https://autopush.datacommons.org/tools/timeline#place=geoId%2F06&statsVar=Count_CriminalIncidents_IsHateCrime
 	// Expected data 2004-2010: 1393, 1379, 1297, 1400, 1381, 1015, 1092
-    "FBIHateCrimePublications": {{"*", "*"}: 0,}, // FBI Hate Crime Publications
-    "FBIHateCrime": {{"*", "*"}:             1,}, // FBI Hate Crime Aggregations
+    "FBIHateCrimePublications": {{}: 0,}, // FBI Hate Crime Publications
+    "FBIHateCrime": {{}:             1,}, // FBI Hate Crime Aggregations
 }
 // BaseRank is the base ranking score for sources. If a source is prefered, it
 // should be given a score lower than BaseRank in StatsRanking. If a source is not
@@ -101,8 +106,8 @@ type CohortByRank []*pb.SourceSeries
 // The score depends on ImportName and other SVObs properties, by checking the
 // StatsRanking dict. To get the score, ImportName is required, with optional
 // properties:
-// - MeasurementMethod
-// - ObservationPeriod
+// - MM: MeasurementMethod
+// - OP: ObservationPeriod
 //
 // When there are exact match of the properties in StatsRanking, then use that
 // score, otherwise can also match to wildcard options (indicated by *).
@@ -118,16 +123,16 @@ func GetScoreRk(importName string, rk RankKey) int {
     for k, score := range importNameStatsRanking {
         matches := 0
         isMatch := true
-        if k.MeasurementMethod != "*" {
-            if k.MeasurementMethod == rk.MeasurementMethod {
+        if k.MM != nil {
+            if *k.MM == *rk.MM {
                 matches++
             } else {
                 isMatch = false
             }
         }
 
-        if k.ObservationPeriod != "*" {
-            if k.ObservationPeriod == rk.ObservationPeriod {
+        if k.OP != nil {
+            if *k.OP == *rk.OP {
                 matches++
             } else {
                 isMatch = false
@@ -154,8 +159,8 @@ func GetScoreRk(importName string, rk RankKey) int {
 // GetScorePb is a GetScoreRk adapter for pb.SourceSeries
 func GetScorePb(s *pb.SourceSeries) int {
     rk := RankKey{
-        MeasurementMethod: s.MeasurementMethod,
-        ObservationPeriod: s.ObservationPeriod,
+        MM: &(s.MeasurementMethod),
+        OP: &(s.ObservationPeriod),
     }
 	return GetScoreRk(s.ImportName, rk)
 }
@@ -163,8 +168,8 @@ func GetScorePb(s *pb.SourceSeries) int {
 // GetMetadataScore is a GetScoreRk adapter for pb.StatMetadata
 func GetMetadataScore(m *pb.StatMetadata) int {
     rk := RankKey{
-        MeasurementMethod: m.MeasurementMethod,
-        ObservationPeriod: m.ObservationPeriod,
+        MM: &(m.MeasurementMethod),
+        OP: &(m.ObservationPeriod),
     }
 	return GetScoreRk(m.ImportName, rk)
 }
@@ -277,8 +282,8 @@ func (a SeriesByRank) Less(i, j int) bool {
 // TODO(shifucun): Remove `SourceSeries` and use pb.SourceSeries everywhere.
 func GetScore(s *model.SourceSeries) int {
     rk := RankKey{
-        MeasurementMethod: s.MeasurementMethod,
-        ObservationPeriod: s.ObservationPeriod,
+        MM: &(s.MeasurementMethod),
+        OP: &(s.ObservationPeriod),
     }
     return GetScoreRk(s.ImportName, rk)
 }
