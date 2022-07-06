@@ -29,6 +29,7 @@ import (
 type RankKey struct {
     MM *string // MeasurementMethod
     OP *string // ObservationPeriod
+	Unit *string
 }
 
 // S returns a pointer to the string that is passed to it
@@ -87,6 +88,12 @@ var StatsRanking = map[string]map[RankKey]int{
 	// Expected data 2004-2010: 1393, 1379, 1297, 1400, 1381, 1015, 1092
     "FBIHateCrimePublications": {{}: 0,}, // FBI Hate Crime Publications
     "FBIHateCrime": {{}:             1,}, // FBI Hate Crime Aggregations
+
+	// Prefer USDollar over Risk Score for Expected Annual Loss in FEMA National Risk Index (NRI)
+	"USFEMA_NationalRiskIndex": {
+		{Unit: s("USDollar")} : 0,
+		{Unit: s("FemaNationalRiskScore")}: 1,
+	},
 }
 // BaseRank is the base ranking score for sources. If a source is prefered, it
 // should be given a score lower than BaseRank in StatsRanking. If a source is not
@@ -123,7 +130,7 @@ func GetScoreRk(importName string, rk RankKey) int {
     for k, score := range importNameStatsRanking {
         matches := 0
         isMatch := true
-        if k.MM != nil {
+        if k.MM != nil && rk.MM != nil {
             if *k.MM == *rk.MM {
                 matches++
             } else {
@@ -131,7 +138,7 @@ func GetScoreRk(importName string, rk RankKey) int {
             }
         }
 
-        if k.OP != nil {
+        if k.OP != nil && rk.OP != nil {
             if *k.OP == *rk.OP {
                 matches++
             } else {
@@ -139,6 +146,13 @@ func GetScoreRk(importName string, rk RankKey) int {
             }
         }
 
+        if k.Unit != nil && rk.Unit != nil {
+            if *k.Unit == *rk.Unit {
+                matches++
+            } else {
+                isMatch = false
+            }
+        }
 		if !isMatch {
 			continue
 		}
@@ -161,6 +175,7 @@ func GetScorePb(ss *pb.SourceSeries) int {
     rk := RankKey{
         MM: s(ss.MeasurementMethod),
         OP: s(ss.ObservationPeriod),
+		Unit: s(ss.Unit),
     }
 	return GetScoreRk(ss.ImportName, rk)
 }
@@ -170,6 +185,7 @@ func GetMetadataScore(m *pb.StatMetadata) int {
     rk := RankKey{
         MM: s(m.MeasurementMethod),
         OP: s(m.ObservationPeriod),
+		Unit: s(m.Unit),
     }
 	return GetScoreRk(m.ImportName, rk)
 }
@@ -284,6 +300,7 @@ func GetScore(ss *model.SourceSeries) int {
     rk := RankKey{
         MM: s(ss.MeasurementMethod),
         OP: s(ss.ObservationPeriod),
+		Unit: s(ss.Unit),
     }
     return GetScoreRk(ss.ImportName, rk)
 }
