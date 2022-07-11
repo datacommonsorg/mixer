@@ -330,7 +330,7 @@ func (x *GetPlacePageDataResponse) GetNearbyPlaces() []string {
 	return nil
 }
 
-// Request to get all data in protein page.
+// Request to get all data in bio page.
 type GetBioPageDataRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

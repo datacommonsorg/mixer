@@ -65,7 +65,7 @@ message GetPlacePageDataResponse {
   repeated string nearby_places = 7;
 }
 
-// Request to get all data in protein page.
+// Request to get all data in bio page.
 message GetBioPageDataRequest {
   // The dcid of the entity
   string dcid = 1;

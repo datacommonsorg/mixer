@@ -26,11 +26,11 @@ import (
 	"google.golang.org/protobuf/testing/protocmp"
 )
 
-func TestProteinPage(t *testing.T) {
+func TestBioPage(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
 	_, filename, _, _ := runtime.Caller(0)
-	goldenPath := path.Join(path.Dir(filename), "protein_page")
+	goldenPath := path.Join(path.Dir(filename), "bio_page")
 
 	testSuite := func(mixer pb.MixerClient, recon pb.ReconClient, latencyTest bool) {
 		for _, c := range []struct {
@@ -41,11 +41,15 @@ func TestProteinPage(t *testing.T) {
 				"yeast.json",
 				"bio/AHP1_YEAST",
 			},
+			{
+				"chlamydia.json",
+				"bio/DOID_11263",
+			},
 		} {
-			req := &pb.ProteinPageRequest{
+			req := &pb.BioPageRequest{
 				Entity: c.entity,
 			}
-			resp, err := mixer.ProteinPage(ctx, req)
+			resp, err := mixer.BioPage(ctx, req)
 			if err != nil {
 				t.Errorf("could not GetBioPageData: %s", err)
 				continue
@@ -73,7 +77,7 @@ func TestProteinPage(t *testing.T) {
 	}
 
 	if err := test.TestDriver(
-		"ProteinPage", &test.TestOption{}, testSuite); err != nil {
+		"BioPage", &test.TestOption{}, testSuite); err != nil {
 		t.Errorf("TestDriver() = %s", err)
 	}
 }

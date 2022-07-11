@@ -29,8 +29,8 @@ const (
 	BtObsTimeSeries = "d/3/"
 	// BtPlacePagePrefix for place page cache.
 	BtPlacePagePrefix = "d/4/"
-	// BtProteinPagePrefix for protein page cache.
-	BtProteinPagePrefix = "d/6/"
+	// BtBioPagePrefix for biology page cache.
+	BtBioPagePrefix = "d/6/"
 	// BtObsCollectionDateFrequency for obs collection cache that contains the frequency of each
 	// date across places.
 	BtObsCollectionDateFrequency = "d/8/"

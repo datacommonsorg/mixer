@@ -16,7 +16,7 @@ syntax = "proto3";
 option go_package = "./proto";
 package datacommons.v1;
 
-message ProteinPageRequest {
+message BioPageRequest {
   string entity = 1;
 }
 
