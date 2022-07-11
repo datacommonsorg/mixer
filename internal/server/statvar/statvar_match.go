@@ -140,7 +140,11 @@ func computeSignature(terms []string) int {
 	sort.Strings(terms)
 	hasher := fnv.New32()
 	for _, term := range terms {
-		hasher.Write([]byte(term))
+		_, err := hasher.Write([]byte(term))
+		// Ignore the error.
+		if err != nil {
+			continue
+		}
 	}
 	return int(hasher.Sum32())
 }
@@ -221,7 +225,10 @@ func parseSqlQueryResults(err error, rows *sql.Rows, result *pb.GetStatVarMatchR
 	for rows.Next() {
 		var score float64
 		matchInfo := &pb.GetStatVarMatchResponse_MatchInfo{}
-		rows.Scan(&score, &matchInfo.StatVar, &matchInfo.StatVarName, &matchInfo.Explanation)
+		err := rows.Scan(&score, &matchInfo.StatVar, &matchInfo.StatVarName, &matchInfo.Explanation)
+		if err != nil {
+			return err
+		}
 		matchInfo.Score = roundFloat(score, 4)
 		result.MatchInfo = append(result.MatchInfo, matchInfo)
 	}
@@ -306,7 +313,10 @@ func GetStatVarMatch(
 	}
 	queryTerms := tokenizeQuery(in.GetQuery())
 	result := &pb.GetStatVarMatchResponse{}
-	SearchRelatedStatvars(cache.SQLiteDb, queryTerms, limit, result)
+	err := SearchRelatedStatvars(cache.SQLiteDb, queryTerms, limit, result)
+	if err != nil {
+		return nil, err
+	}
 	sort.SliceStable(result.MatchInfo, func(i, j int) bool {
 		return result.MatchInfo[i].Score > result.MatchInfo[j].Score
 	})

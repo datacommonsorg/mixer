@@ -30,7 +30,6 @@ import (
 )
 
 type QueryTestDefinition struct {
-	query          string
 	propertyValues map[string]string
 	goldenFile     string
 }
