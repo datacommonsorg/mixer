@@ -182,7 +182,7 @@ func main() {
 			cache, err = server.NewCache(ctx, store, server.SearchOptions{
 				UseSearch:           true,
 				BuildSvgSearchIndex: true,
-				BuildBleveIndex:     true,
+				BuildSqliteIndex:    true,
 			})
 			if err != nil {
 				log.Fatalf("Failed to create cache: %v", err)

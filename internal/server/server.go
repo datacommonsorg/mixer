@@ -134,7 +134,7 @@ func (s *Server) SubscribeBranchCacheUpdate(ctx context.Context,
 type SearchOptions struct {
 	UseSearch           bool
 	BuildSvgSearchIndex bool
-	BuildBleveIndex     bool
+	BuildSqliteIndex    bool
 }
 
 // NewCache initializes the cache for stat var hierarchy.
@@ -154,12 +154,12 @@ func NewCache(ctx context.Context, store *store.Store, searchOptions SearchOptio
 		if searchOptions.BuildSvgSearchIndex {
 			result.SvgSearchIndex = statvar.BuildStatVarSearchIndex(rawSvg, parentSvgMap)
 		}
-		if searchOptions.BuildBleveIndex {
-			bleveIndex, err := statvar.BuildBleveIndex(rawSvg)
+		if searchOptions.BuildSqliteIndex {
+			sqliteDb, err := statvar.BuildSQLiteIndex(rawSvg)
 			if err != nil {
 				return nil, err
 			}
-			result.BleveSearchIndex = bleveIndex
+			result.SQLiteDb = sqliteDb
 		}
 	}
 	return result, nil

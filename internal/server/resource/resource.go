@@ -15,9 +15,9 @@
 package resource
 
 import (
+	"database/sql"
 	"strings"
 
-	bleve "github.com/blevesearch/bleve/v2"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/translator/types"
 )
@@ -43,9 +43,9 @@ type Cache struct {
 	// ParentSvg is a map of sv/svg id to a list of its parent svgs sorted alphabetically.
 	ParentSvg map[string][]string
 	// SvgInfo is a map of svg id to its information.
-	RawSvg           map[string]*pb.StatVarGroupNode
-	SvgSearchIndex   *SearchIndex
-	BleveSearchIndex bleve.Index
+	RawSvg         map[string]*pb.StatVarGroupNode
+	SvgSearchIndex *SearchIndex
+	SQLiteDb       *sql.DB
 }
 
 // Metadata represents the metadata used by the server.

@@ -43,4 +43,4 @@ else
 fi
 
 export GENERATE_GOLDEN=true
-go test ./... $ARG
+go test -tags sqlite_fts5 ./... $ARG
