@@ -52,7 +52,6 @@ func TestGetStatVarMatch(t *testing.T) {
 	testSuite := func(mixer pb.MixerClient, recon pb.ReconClient, latencyTest bool) {
 		for _, c := range []QueryTestDefinition{
 			{
-				"number of women foreign born",
 				map[string]string{
 					"gender":   "Female",
 					"mp":       "count",
@@ -61,7 +60,6 @@ func TestGetStatVarMatch(t *testing.T) {
 				"female_usc_foreignborn.json",
 			},
 			{
-				"",
 				map[string]string{
 					"mp":     "count",
 					"pt":     "Person",
@@ -70,7 +68,6 @@ func TestGetStatVarMatch(t *testing.T) {
 				"female.json",
 			},
 			{
-				"energy in us",
 				map[string]string{
 					"mp":    "count",
 					"pt":    "USCEstablishment",
@@ -80,7 +77,6 @@ func TestGetStatVarMatch(t *testing.T) {
 				"energy_in_us.json",
 			},
 			{
-				"",
 				map[string]string{
 					"mp":    "count",
 					"pt":    "USCEstablishment",
@@ -90,7 +86,6 @@ func TestGetStatVarMatch(t *testing.T) {
 				"energy_in_us_noquery.json",
 			},
 			{
-				"energy in us",
 				map[string]string{},
 				"energy_in_us_nomodel.json",
 			},
