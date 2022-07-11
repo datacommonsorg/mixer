@@ -40,7 +40,7 @@ CREATE TABLE statvars(
 	doc_id INTEGER PRIMARY KEY,
 	dcid TEXT,
 	name TEXT,
-	signature INTEGER,
+	signature INTEGER UNIQUE NOT NULL,
 	num_constraints INTEGER,
 	content TEXT);
 
@@ -153,6 +153,9 @@ func buildSortedDocumentSet(rawSvg map[string]*pb.StatVarGroupNode) []StatVarDoc
 	documents := make([]StatVarDocument, 0)
 	for _, svgData := range rawSvg {
 		for _, svData := range svgData.ChildStatVars {
+			if strings.HasPrefix(svData.Id, "dc/") {
+				continue
+			}
 			numConstraints := int32(strings.Count(svData.Definition, ",") + 1)
 			keyValueText := strings.Replace(strings.Replace(svData.Definition, ",", " ", -1), "=", " ", -1)
 			signature := computeSignature(strings.Split(keyValueText, " "))
@@ -198,7 +201,8 @@ func BuildSQLiteIndex(
 	for index, doc := range docSet {
 		_, err = stmt.Exec(index, doc.Id, doc.Title, doc.Signature, doc.NumConstraints, doc.KeyValueText)
 		if err != nil {
-			return nil, err
+			fmt.Printf("Ignoring statvar with DCID=%s as its signature is not unique.\n", doc.Id)
+			continue
 		}
 	}
 	err = tx.Commit()
