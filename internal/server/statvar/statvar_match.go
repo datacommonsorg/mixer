@@ -25,7 +25,7 @@ import (
 	"strings"
 	"time"
 
-	_ "github.com/mattn/go-sqlite3"
+	_ "github.com/mattn/go-sqlite3" // sqlite3 used for the search database.
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
@@ -35,6 +35,10 @@ import (
 
 const defaultLimit = 5
 
+// Table and triggers creation:
+// - 'statvars' is the main table containing information about a single statistical variable.
+// - 'statvars_fts_idx' is a virtual FTS5 table used for providing full-text search capabilities on the statvars' content field.
+// The setup follow the "External Content Tables" in the FTS5 documentation: https://www.sqlite.org/fts5.html
 const sqlCreateTables = `
 CREATE TABLE statvars(
 	doc_id INTEGER PRIMARY KEY,
@@ -71,6 +75,7 @@ BEGIN
 END;
 `
 
+// See "The 'optimize' Command" in https://www.sqlite.org/fts5.html
 const sqlOptimize = `INSERT INTO statvars_fts_idx(content) VALUES('optimize');`
 
 const sqlInsert = `
@@ -83,6 +88,8 @@ INSERT INTO statvars(
 	content) VALUES (?, ?, ?, ?, ?, ?);
 `
 
+// Returns the highest scoring result.
+// In case of ties, returns statvars in descending order by number of constraints.
 const sqlSearch = `
 WITH statvars_rows AS (
 	SELECT
@@ -108,6 +115,7 @@ LIMIT
 	%d;
 `
 
+// Exact search by signature.
 const sqlSearchBySignature = `
 SELECT
 	1.0 AS rank,
@@ -122,10 +130,10 @@ LIMIT
 	1;
 `
 
-// A StatVarDocument models a document indexed by the sqlite db.
-type StatVarDocument struct {
-	// Id of the statvar.
-	Id string
+// A Document models a statvar indexed in the sqlite DB.
+type Document struct {
+	// ID of the statvar.
+	ID string
 	// Title of the document. For a statvar this will be the DisplayName.
 	Title string
 	// A signature text that uniquely identifies the statvar from the key value text.
@@ -149,8 +157,8 @@ func computeSignature(terms []string) int {
 	return int(hasher.Sum32())
 }
 
-func buildSortedDocumentSet(rawSvg map[string]*pb.StatVarGroupNode) []StatVarDocument {
-	documents := make([]StatVarDocument, 0)
+func buildSortedDocumentSet(rawSvg map[string]*pb.StatVarGroupNode) []Document {
+	documents := make([]Document, 0)
 	for _, svgData := range rawSvg {
 		for _, svData := range svgData.ChildStatVars {
 			if strings.HasPrefix(svData.Id, "dc/") {
@@ -160,8 +168,8 @@ func buildSortedDocumentSet(rawSvg map[string]*pb.StatVarGroupNode) []StatVarDoc
 			keyValueText := strings.Replace(strings.Replace(svData.Definition, ",", " ", -1), "=", " ", -1)
 			signature := computeSignature(strings.Split(keyValueText, " "))
 
-			documents = append(documents, StatVarDocument{
-				Id:             svData.Id,
+			documents = append(documents, Document{
+				ID:             svData.Id,
 				Title:          svData.DisplayName,
 				Signature:      signature,
 				KeyValueText:   keyValueText,
@@ -170,7 +178,7 @@ func buildSortedDocumentSet(rawSvg map[string]*pb.StatVarGroupNode) []StatVarDoc
 		}
 	}
 	sort.Slice(documents, func(i, j int) bool {
-		return documents[i].Id < documents[j].Id
+		return documents[i].ID < documents[j].ID
 	})
 	return documents
 }
@@ -199,9 +207,9 @@ func BuildSQLiteIndex(
 	defer stmt.Close()
 	docSet := buildSortedDocumentSet(rawSvg)
 	for index, doc := range docSet {
-		_, err = stmt.Exec(index, doc.Id, doc.Title, doc.Signature, doc.NumConstraints, doc.KeyValueText)
+		_, err = stmt.Exec(index, doc.ID, doc.Title, doc.Signature, doc.NumConstraints, doc.KeyValueText)
 		if err != nil {
-			fmt.Printf("Ignoring statvar with DCID=%s as its signature is not unique.\n", doc.Id)
+			fmt.Printf("Ignoring statvar with DCID=%s as its signature is not unique.\n", doc.ID)
 			continue
 		}
 	}
@@ -221,7 +229,7 @@ func roundFloat(val float64, precision uint) float64 {
 	return math.Round(val*ratio) / ratio
 }
 
-func parseSqlQueryResults(err error, rows *sql.Rows, result *pb.GetStatVarMatchResponse) error {
+func parseSQLQueryResults(err error, rows *sql.Rows, result *pb.GetStatVarMatchResponse) error {
 	if err != nil {
 		return err
 	}
@@ -241,12 +249,12 @@ func parseSqlQueryResults(err error, rows *sql.Rows, result *pb.GetStatVarMatchR
 
 func searchByTerms(db *sql.DB, escapedQuery string, explanationPrefix string, limit int32, result *pb.GetStatVarMatchResponse) error {
 	rows, err := db.Query(fmt.Sprintf(sqlSearch, explanationPrefix, limit), escapedQuery)
-	return parseSqlQueryResults(err, rows, result)
+	return parseSQLQueryResults(err, rows, result)
 }
 
 func searchBySignature(db *sql.DB, queryTerms []string, result *pb.GetStatVarMatchResponse) error {
 	rows, err := db.Query(sqlSearchBySignature, computeSignature(queryTerms))
-	return parseSqlQueryResults(err, rows, result)
+	return parseSQLQueryResults(err, rows, result)
 }
 
 func escapeForSqliteSearch(terms []string) []string {
@@ -258,7 +266,7 @@ func escapeForSqliteSearch(terms []string) []string {
 	return escapedTerms
 }
 
-func SearchRelatedStatvars(db *sql.DB, queryTerms []string, limit int32, result *pb.GetStatVarMatchResponse) error {
+func searchRelatedStatvars(db *sql.DB, queryTerms []string, limit int32, result *pb.GetStatVarMatchResponse) error {
 	err := searchBySignature(db, queryTerms, result)
 	if err != nil {
 		return err
@@ -317,7 +325,7 @@ func GetStatVarMatch(
 	}
 	queryTerms := tokenizeQuery(in.GetQuery())
 	result := &pb.GetStatVarMatchResponse{}
-	err := SearchRelatedStatvars(cache.SQLiteDb, queryTerms, limit, result)
+	err := searchRelatedStatvars(cache.SQLiteDb, queryTerms, limit, result)
 	if err != nil {
 		return nil, err
 	}
