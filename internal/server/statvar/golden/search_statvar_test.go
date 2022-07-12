@@ -146,7 +146,7 @@ func TestSearchStatVar(t *testing.T) {
 		&test.TestOption{UseCache: true, SearchOptions: server.SearchOptions{
 			UseSearch:           true,
 			BuildSvgSearchIndex: true,
-			BuildBleveIndex:     false,
+			BuildSqliteIndex:    false,
 		}},
 		testSuite,
 	); err != nil {

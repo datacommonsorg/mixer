@@ -19,7 +19,6 @@ import (
 	"fmt"
 	"path"
 	"runtime"
-	"sort"
 	"strings"
 	"testing"
 
@@ -31,27 +30,14 @@ import (
 )
 
 type QueryTestDefinition struct {
-	query          string
 	propertyValues map[string]string
 	goldenFile     string
 }
 
 func buildQuery(c QueryTestDefinition) string {
 	var sb strings.Builder
-	for _, queryToken := range strings.Split(c.query, " ") {
-		sb.WriteString(fmt.Sprintf("sn:\"%s\" ", queryToken))
-	}
-	// Sort by keys to get a consistent debug output.
-	sortedKeys := make([]string, 0, len(c.propertyValues))
-	for k := range c.propertyValues {
-		sortedKeys = append(sortedKeys, k)
-	}
-	sort.Strings(sortedKeys)
-	for _, key := range sortedKeys {
-		value := c.propertyValues[key]
-		sb.WriteString(fmt.Sprintf("kv:\"%s_%s\" ", key, value))
-		sb.WriteString(fmt.Sprintf("k:\"%s\" ", key))
-		sb.WriteString(fmt.Sprintf("v:\"%s\" ", value))
+	for key, value := range c.propertyValues {
+		sb.WriteString(fmt.Sprintf("%s %s ", key, value))
 	}
 	return sb.String()
 }
@@ -66,7 +52,6 @@ func TestGetStatVarMatch(t *testing.T) {
 	testSuite := func(mixer pb.MixerClient, recon pb.ReconClient, latencyTest bool) {
 		for _, c := range []QueryTestDefinition{
 			{
-				"number of women foreign born",
 				map[string]string{
 					"gender":   "Female",
 					"mp":       "count",
@@ -75,7 +60,6 @@ func TestGetStatVarMatch(t *testing.T) {
 				"female_usc_foreignborn.json",
 			},
 			{
-				"",
 				map[string]string{
 					"mp":     "count",
 					"pt":     "Person",
@@ -84,7 +68,6 @@ func TestGetStatVarMatch(t *testing.T) {
 				"female.json",
 			},
 			{
-				"energy in us",
 				map[string]string{
 					"mp":    "count",
 					"pt":    "USCEstablishment",
@@ -94,7 +77,6 @@ func TestGetStatVarMatch(t *testing.T) {
 				"energy_in_us.json",
 			},
 			{
-				"",
 				map[string]string{
 					"mp":    "count",
 					"pt":    "USCEstablishment",
@@ -103,15 +85,14 @@ func TestGetStatVarMatch(t *testing.T) {
 				},
 				"energy_in_us_noquery.json",
 			},
-			// {
-			// 	"energy in us",
-			// 	map[string]string{},
-			// 	"energy_in_us_nomodel.json",
-			// },
+			{
+				map[string]string{},
+				"energy_in_us_nomodel.json",
+			},
 		} {
 			resp, err := mixer.GetStatVarMatch(ctx, &pb.GetStatVarMatchRequest{
 				Query: buildQuery(c),
-				Debug: false,
+				Debug: true,
 			})
 			if err != nil {
 				t.Errorf("could not GetStatVarMatch: %s", err)
@@ -145,7 +126,7 @@ func TestGetStatVarMatch(t *testing.T) {
 		&test.TestOption{UseCache: true, SearchOptions: server.SearchOptions{
 			UseSearch:           true,
 			BuildSvgSearchIndex: false,
-			BuildBleveIndex:     true,
+			BuildSqliteIndex:    true,
 		}},
 		testSuite,
 	); err != nil {

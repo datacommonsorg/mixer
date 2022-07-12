@@ -1,54 +1,10 @@
 {
   "matchInfo": [
     {
-      "statVar": "Annual_Exports_Energy_Heat",
-      "statVarName": "Annual Exports of Energy: Heat",
-      "score": 2.9918
-    },
-    {
-      "statVar": "Annual_Generation_Energy_Coal",
-      "statVarName": "Annual Generation of Energy: Coal",
-      "score": 2.9918
-    },
-    {
-      "statVar": "Annual_Generation_Energy_Heat",
-      "statVarName": "Annual Generation of Energy: Heat",
-      "score": 2.9918
-    },
-    {
-      "statVar": "Annual_Generation_Energy_Peat",
-      "statVarName": "Annual Generation of Energy: Peat",
-      "score": 2.9918
-    },
-    {
-      "statVar": "Annual_Consumption_Energy_Heat",
-      "statVarName": "Annual Consumption of Energy: Heat",
-      "score": 2.9918
-    },
-    {
-      "statVar": "Annual_Generation_Energy_Solar",
-      "statVarName": "Annual Generation of Energy: Solar",
-      "score": 2.9918
-    },
-    {
-      "statVar": "Annual_Generation_Energy_Water",
-      "statVarName": "Annual Generation of Energy: EIA_Water",
-      "score": 2.9918
-    },
-    {
-      "statVar": "Annual_Generation_Energy_Bagasse",
-      "statVarName": "Annual Generation of Energy: Bagasse",
-      "score": 2.9918
-    },
-    {
-      "statVar": "Annual_Generation_Energy_Geothermal",
-      "statVarName": "Annual Generation of Energy: Geothermal",
-      "score": 2.9918
-    },
-    {
-      "statVar": "Annual_Consumption_Energy_Geothermal",
-      "statVarName": "Annual Consumption of Energy: Geothermal",
-      "score": 2.9918
+      "statVar": "Count_BirthControlEvent_IUCDInsertion",
+      "statVarName": "Total IUCD Insertions done",
+      "score": 1,
+      "explanation": "Full match on: "
     }
   ]
 }

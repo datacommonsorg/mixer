@@ -9,7 +9,6 @@ require (
 	cloud.google.com/go/pubsub v1.19.0
 	cloud.google.com/go/secretmanager v1.3.0
 	cloud.google.com/go/storage v1.21.0
-	github.com/blevesearch/bleve/v2 v2.3.2
 	github.com/census-instrumentation/opencensus-proto v0.3.0 // indirect
 	github.com/cespare/xxhash/v2 v2.1.2 // indirect
 	github.com/cncf/udpa/go v0.0.0-20220112060539-c52dc94e7fbe // indirect
@@ -21,6 +20,7 @@ require (
 	github.com/golang/groupcache v0.0.0-20210331224755-41bb18bfe9da // indirect
 	github.com/google/go-cmp v0.5.7
 	github.com/google/pprof v0.0.0-20220331180315-85950bbee156 // indirect
+	github.com/mattn/go-sqlite3 v1.14.14
 	golang.org/x/oauth2 v0.0.0-20220309155454-6242fa91716a
 	golang.org/x/sync v0.0.0-20210220032951-036812b2e83c
 	golang.org/x/sys v0.0.0-20220330033206-e17cdc41300f // indirect
