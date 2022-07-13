@@ -47,6 +47,7 @@ var (
 		"indianCensusAreaCode2001",
 		"lgdCode",
 		"udiseCode",
+		"fips52AlphaCode",
 	}
 )
 
