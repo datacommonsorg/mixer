@@ -80,8 +80,8 @@
       "stat": {
         "country/FRA": {},
         "country/USA": {
-          "date": "2022-05",
-          "value": 5950000,
+          "date": "2022-06",
+          "value": 5912000,
           "metaHash": 3707913853
         },
         "geoId/06": {
@@ -90,8 +90,8 @@
           "metaHash": 324358135
         },
         "geoId/0649670": {
-          "date": "2022-04",
-          "value": 751,
+          "date": "2022-05",
+          "value": 666,
           "metaHash": 324358135
         }
       }
@@ -100,13 +100,13 @@
       "stat": {
         "country/FRA": {},
         "country/USA": {
-          "date": "2022-06-27",
-          "value": 87031752,
+          "date": "2022-07-19",
+          "value": 89677803,
           "metaHash": 2232540893
         },
         "geoId/06": {
-          "date": "2022-06-27",
-          "value": 10038765,
+          "date": "2022-07-19",
+          "value": 10506662,
           "metaHash": 2232540893
         },
         "geoId/0649670": {}

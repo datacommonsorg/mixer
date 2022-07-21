@@ -453,6 +453,14 @@
       "dcid": "Count_Person_5OrMoreYears_ChineseInclMandarinCantoneseSpokenAtHome"
     },
     {
+      "name": "Population: Citizen",
+      "dcid": "Count_Person_Citizen"
+    },
+    {
+      "name": "Population: Citizen Outside EU28",
+      "dcid": "Count_Person_CitizenOutsideEU28"
+    },
+    {
       "name": "Population: Civilian",
       "dcid": "Count_Person_Civilian"
     },
@@ -599,6 +607,14 @@
     {
       "name": "Population: Foreign Born",
       "dcid": "Count_Person_ForeignBorn"
+    },
+    {
+      "name": "Population: Foreign Born Outside EU28",
+      "dcid": "Count_Person_ForeignBornOutsideEU28"
+    },
+    {
+      "name": "Population: Foreign Born Within EU28",
+      "dcid": "Count_Person_ForeignBornWithinEU28"
     },
     {
       "name": "Population: French Creole",
@@ -749,6 +765,26 @@
       "dcid": "Count_Person_5OrMoreYears_IlocanoSamoanHawaiianOrOtherAustronesianLanguagesSpokenAtHome"
     },
     {
+      "name": "Population: Income Of 0 To 20 Percentile",
+      "dcid": "Count_Person_IncomeOf0To20Percentile"
+    },
+    {
+      "name": "Population: Income Of 20 To 40 Percentile",
+      "dcid": "Count_Person_IncomeOf20To40Percentile"
+    },
+    {
+      "name": "Population: Income Of 40 To 60 Percentile",
+      "dcid": "Count_Person_IncomeOf40To60Percentile"
+    },
+    {
+      "name": "Population: Income Of 60 To 80 Percentile",
+      "dcid": "Count_Person_IncomeOf60To80Percentile"
+    },
+    {
+      "name": "Population: Income Of 80 To 100 Percentile",
+      "dcid": "Count_Person_IncomeOf80To100Percentile"
+    },
+    {
       "name": "Population: Independent Living Difficulty",
       "dcid": "Count_Person_IndependentLivingDifficulty"
     },
@@ -801,6 +837,14 @@
       "dcid": "Count_Person_EducationalAttainmentLessThanHighSchoolGraduate"
     },
     {
+      "name": "Population: Less Than Primary Education Or Primary Education Or Lower Secondary Education",
+      "dcid": "Count_Person_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation"
+    },
+    {
+      "name": "Population: Limited Activity Limitation",
+      "dcid": "Count_Person_LimitedActivityLimitation"
+    },
+    {
       "name": "Population: Literate",
       "dcid": "Count_Person_Literate"
     },
@@ -841,6 +885,10 @@
       "dcid": "Count_Person_ResidesInMilitaryQuartersOrMilitaryShips"
     },
     {
+      "name": "Population: Moderate Activity Limitation",
+      "dcid": "Count_Person_ModerateActivityLimitation"
+    },
+    {
       "name": "Population: Mon Khmer Cambodian",
       "dcid": "Count_Person_5OrMoreYears_MonKhmerCambodianSpokenAtHome"
     },
@@ -877,6 +925,10 @@
       "dcid": "Count_Person_NeverMarried"
     },
     {
+      "name": "Population: No Activity Limitation",
+      "dcid": "Count_Person_NoActivityLimitation"
+    },
+    {
       "name": "Population: No Disability",
       "dcid": "Count_Person_NoDisability"
     },
@@ -899,6 +951,14 @@
     {
       "name": "Population: Noninstitutionalized Group Quarters",
       "dcid": "Count_Person_ResidesInNoninstitutionalizedGroupQuarters"
+    },
+    {
+      "name": "Population: Normalweight",
+      "dcid": "Count_Person_Normalweight"
+    },
+    {
+      "name": "Population: Not A Citizen",
+      "dcid": "Count_Person_NotACitizen"
     },
     {
       "name": "Population: Not A US Citizen",
@@ -965,6 +1025,10 @@
       "dcid": "Count_Person_ResidesInNursingFacilities"
     },
     {
+      "name": "Population: Obesity",
+      "dcid": "Count_Person_Obesity"
+    },
+    {
       "name": "Population: One Race",
       "dcid": "Count_Person_OneRace"
     },
@@ -1013,6 +1077,10 @@
       "dcid": "Count_Person_5OrMoreYears_OtherWestGermanicLanguagesSpokenAtHome"
     },
     {
+      "name": "Population: Overweight",
+      "dcid": "Count_Person_Overweight"
+    },
+    {
       "name": "Population: Persian",
       "dcid": "Count_Person_5OrMoreYears_PersianSpokenAtHome"
     },
@@ -1035,6 +1103,10 @@
     {
       "name": "Population: Poverty Status Determined",
       "dcid": "Count_Person_PovertyStatusDetermined"
+    },
+    {
+      "name": "Population: Pre Obese",
+      "dcid": "Count_Person_PreObese"
     },
     {
       "name": "Population: PrimarySchool",
@@ -1097,12 +1169,20 @@
       "dcid": "Count_Person_SelfCareDifficulty"
     },
     {
+      "name": "Population: Semi Urban",
+      "dcid": "Count_Person_SemiUrban"
+    },
+    {
       "name": "Population: Separated",
       "dcid": "Count_Person_Separated"
     },
     {
       "name": "Population: Serbo Croatian",
       "dcid": "Count_Person_5OrMoreYears_SerboCroatianSpokenAtHome"
+    },
+    {
+      "name": "Population: Severe Activity Limitation",
+      "dcid": "Count_Person_SevereActivityLimitation"
     },
     {
       "name": "Population: Some College 1 or More Years No Degree",
@@ -1173,6 +1253,14 @@
       "dcid": "Count_Person_5OrMoreYears_TeluguSpokenAtHome"
     },
     {
+      "name": "Population: Tertiary Education",
+      "dcid": "Count_Person_TertiaryEducation"
+    },
+    {
+      "name": "Population: Tertiary Education Stage One Or Tertiary Education Stage Two",
+      "dcid": "Count_Person_TertiaryEducationStageOneOrTertiaryEducationStageTwo"
+    },
+    {
       "name": "Population: Thai",
       "dcid": "Count_Person_5OrMoreYears_ThaiSpokenAtHome"
     },
@@ -1213,8 +1301,16 @@
       "dcid": "Count_Person_5OrMoreYears_UkrainianOrOtherSlavicLanguagesSpokenAtHome"
     },
     {
+      "name": "Population: Underweight",
+      "dcid": "Count_Person_Underweight"
+    },
+    {
       "name": "Population: Unemployed",
       "dcid": "Count_Person_Unemployed"
+    },
+    {
+      "name": "Population: Upper Secondary Education Or Post Secondary Non Tertiary Education",
+      "dcid": "Count_Person_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation"
     },
     {
       "name": "Population: Urban",
@@ -1331,6 +1427,10 @@
     {
       "name": "Population: With VAHealth Care Only",
       "dcid": "Count_Person_WithVAHealthCareOnly"
+    },
+    {
+      "name": "Population: Within EU28 And Not A Citizen",
+      "dcid": "Count_Person_WithinEU28AndNotACitizen"
     },
     {
       "name": "Population: Worker",
@@ -3899,106 +3999,6 @@
     {
       "name": "Population: 25 - 34 Years, Native Born Outside The United States",
       "dcid": "Count_Person_25To34Years_NativeBornOutsideTheUnitedStates"
-    },
-    {
-      "name": "Population: 25 - 34 Years, No Health Insurance",
-      "dcid": "Count_Person_25To34Years_NoHealthInsurance"
-    },
-    {
-      "name": "Population: 25 - 34 Years, Noninstitutionalized Group Quarters",
-      "dcid": "Count_Person_25To34Years_ResidesInNoninstitutionalizedGroupQuarters"
-    },
-    {
-      "name": "Population: 25 - 34 Years, Nursing Facilities",
-      "dcid": "Count_Person_25To34Years_ResidesInNursingFacilities"
-    },
-    {
-      "name": "Population: 25 - 34 Years, With Health Insurance",
-      "dcid": "Count_Person_25To34Years_WithHealthInsurance"
-    },
-    {
-      "name": "Population: 25 - 34 Years, With Private Health Insurance",
-      "dcid": "Count_Person_25To34Years_WithPrivateHealthInsurance"
-    },
-    {
-      "name": "Population: 25 - 34 Years, With Public Health Insurance",
-      "dcid": "Count_Person_25To34Years_WithPublicHealthInsurance"
-    },
-    {
-      "name": "Population: 25 - 39 Years, Arts Humanities And Other Major",
-      "dcid": "Count_Person_25To39Years_BachelorOfArtsHumanitiesAndOtherMajor"
-    },
-    {
-      "name": "Population: 25 - 39 Years, Bachelors Degree or Higher",
-      "dcid": "Count_Person_25To39Years_EducationalAttainmentBachelorsDegreeOrHigher"
-    },
-    {
-      "name": "Population: 25 - 39 Years, Business Major",
-      "dcid": "Count_Person_25To39Years_BachelorOfBusinessMajor"
-    },
-    {
-      "name": "Population: 25 - 39 Years, Education Major",
-      "dcid": "Count_Person_25To39Years_BachelorOfEducationMajor"
-    },
-    {
-      "name": "Population: 25 - 39 Years, Science And Engineering Major",
-      "dcid": "Count_Person_25To39Years_BachelorOfScienceAndEngineeringMajor"
-    },
-    {
-      "name": "Population: 25 - 39 Years, Science And Engineering Related Major",
-      "dcid": "Count_Person_25To39Years_BachelorOfScienceAndEngineeringRelatedMajor"
-    },
-    {
-      "name": "Population: 25 Years or More, Adult Correctional Facilities",
-      "dcid": "Count_Person_25OrMoreYears_ResidesInAdultCorrectionalFacilities"
-    },
-    {
-      "name": "Population: 25 Years or More, American Indian or Alaska Native Alone",
-      "dcid": "Count_Person_25OrMoreYears_AmericanIndianOrAlaskaNativeAlone"
-    },
-    {
-      "name": "Population: 25 Years or More, Asian Alone",
-      "dcid": "Count_Person_25OrMoreYears_AsianAlone"
-    },
-    {
-      "name": "Population: 25 Years or More, Black or African American Alone",
-      "dcid": "Count_Person_25OrMoreYears_BlackOrAfricanAmericanAlone"
-    },
-    {
-      "name": "Population: 25 Years or More, College or University Student Housing",
-      "dcid": "Count_Person_25OrMoreYears_ResidesInCollegeOrUniversityStudentHousing"
-    },
-    {
-      "name": "Population: 25 Years or More, Different House Abroad",
-      "dcid": "Count_Person_25OrMoreYears_DifferentHouseAbroad"
-    },
-    {
-      "name": "Population: 25 Years or More, Different House in Different County Different State",
-      "dcid": "Count_Person_25OrMoreYears_DifferentHouseInDifferentCountyDifferentState"
-    },
-    {
-      "name": "Population: 25 Years or More, Different House in Different County Same State",
-      "dcid": "Count_Person_25OrMoreYears_DifferentHouseInDifferentCountySameState"
-    },
-    {
-      "name": "Population: 25 Years or More, Different House in Same County",
-      "dcid": "Count_Person_25OrMoreYears_DifferentHouseInSameCounty"
-    },
-    {
-      "name": "Population: 25 Years or More, Female",
-      "dcid": "Count_Person_25OrMoreYears_Female"
-    },
-    {
-      "name": "Population: 25 Years or More, Group Quarters",
-      "dcid": "Count_Person_25OrMoreYears_ResidesInGroupQuarters"
-    },
-    {
-      "name": "Population: 25 Years or More, Hispanic or Latino",
-      "dcid": "Count_Person_25OrMoreYears_HispanicOrLatino"
-    },
-    {
-      "name": "Population: 25 Years or More, Institutionalized Group Quarters",
-      "dcid": "Count_Person_25OrMoreYears_ResidesInInstitutionalizedGroupQuarters"
     }
   ],
   "matches": [

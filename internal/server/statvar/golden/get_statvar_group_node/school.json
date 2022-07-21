@@ -252,6 +252,11 @@
       "displayName": "Person With Educational Attainment = Less Than Primary Education \u0026 Primary Education \u0026 Lower Secondary Education"
     },
     {
+      "id": "dc/g/Person_EducationalAttainment-LessThanPrimaryEducationPrimaryEducationLowerSecondaryEducation",
+      "specializedEntity": "Less Than Primary Education Primary Education Lower Secondary Education",
+      "displayName": "Person With Educational Attainment = Less Than Primary Education \u0026 Primary Education \u0026 Lower Secondary Education"
+    },
+    {
       "id": "dc/g/Person_EducationalAttainment-MastersDegree",
       "specializedEntity": "Masters Degree",
       "displayName": "Person With Educational Attainment = Masters Degree",
@@ -312,8 +317,18 @@
       "descendentStatVarCount": 3
     },
     {
+      "id": "dc/g/Person_EducationalAttainment-TertiaryEducationStageOneTertiaryEducationStageTwo",
+      "specializedEntity": "Tertiary Education Stage One Tertiary Education Stage Two",
+      "displayName": "Person With Educational Attainment = Tertiary Education Stage One \u0026 Tertiary Education Stage Two"
+    },
+    {
       "id": "dc/g/Person_EducationalAttainment-UpperSecondaryEducation\u0026PostSecondaryNonTertiaryEducation",
       "specializedEntity": "Upper Secondary Education \u0026 Post Secondary Non Tertiary Education",
+      "displayName": "Person With Educational Attainment = Upper Secondary Education \u0026 Post Secondary Non Tertiary Education"
+    },
+    {
+      "id": "dc/g/Person_EducationalAttainment-UpperSecondaryEducationPostSecondaryNonTertiaryEducation",
+      "specializedEntity": "Upper Secondary Education Post Secondary Non Tertiary Education",
       "displayName": "Person With Educational Attainment = Upper Secondary Education \u0026 Post Secondary Non Tertiary Education"
     },
     {
