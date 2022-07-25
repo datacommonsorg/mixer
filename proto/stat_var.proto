@@ -32,7 +32,7 @@ package datacommons;
 
 import "entity.proto";
 
-message PlaceStatVarExistence {
+message EntityStatVarExistence {
   // Set if this value is for a place+SVG-ID key, but not for place+SV-ID key.
   int32 descendent_stat_var_count = 2;
 
