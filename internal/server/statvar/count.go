@@ -40,7 +40,7 @@ func Count(
 		bigtable.BtSVAndSVGExistence,
 		[][]string{places, svOrSvgs},
 		func(jsonRaw []byte) (interface{}, error) {
-			var statVarExistence pb.EntitytatVarExistence
+			var statVarExistence pb.EntityStatVarExistence
 			if err := proto.Unmarshal(jsonRaw, &statVarExistence); err != nil {
 				return nil, err
 			}
