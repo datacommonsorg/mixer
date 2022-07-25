@@ -35,10 +35,11 @@
 package proto
 
 import (
-	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
-	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
 	sync "sync"
+
+	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
+	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 )
 
 const (
@@ -48,7 +49,7 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-type PlaceStatVarExistence struct {
+type EntityStatVarExistence struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
@@ -57,8 +58,8 @@ type PlaceStatVarExistence struct {
 	DescendentStatVarCount int32 `protobuf:"varint,2,opt,name=descendent_stat_var_count,json=descendentStatVarCount,proto3" json:"descendent_stat_var_count,omitempty"`
 }
 
-func (x *PlaceStatVarExistence) Reset() {
-	*x = PlaceStatVarExistence{}
+func (x *EntityStatVarExistence) Reset() {
+	*x = EntityStatVarExistence{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_stat_var_proto_msgTypes[0]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -66,13 +67,13 @@ func (x *PlaceStatVarExistence) Reset() {
 	}
 }
 
-func (x *PlaceStatVarExistence) String() string {
+func (x *EntityStatVarExistence) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*PlaceStatVarExistence) ProtoMessage() {}
+func (*EntityStatVarExistence) ProtoMessage() {}
 
-func (x *PlaceStatVarExistence) ProtoReflect() protoreflect.Message {
+func (x *EntityStatVarExistence) ProtoReflect() protoreflect.Message {
 	mi := &file_stat_var_proto_msgTypes[0]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -84,12 +85,12 @@ func (x *PlaceStatVarExistence) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use PlaceStatVarExistence.ProtoReflect.Descriptor instead.
-func (*PlaceStatVarExistence) Descriptor() ([]byte, []int) {
+// Deprecated: Use EntityStatVarExistence.ProtoReflect.Descriptor instead.
+func (*EntityStatVarExistence) Descriptor() ([]byte, []int) {
 	return file_stat_var_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *PlaceStatVarExistence) GetDescendentStatVarCount() int32 {
+func (x *EntityStatVarExistence) GetDescendentStatVarCount() int32 {
 	if x != nil {
 		return x.DescendentStatVarCount
 	}
@@ -1835,7 +1836,7 @@ func file_stat_var_proto_rawDescGZIP() []byte {
 
 var file_stat_var_proto_msgTypes = make([]protoimpl.MessageInfo, 28)
 var file_stat_var_proto_goTypes = []interface{}{
-	(*PlaceStatVarExistence)(nil),                  // 0: datacommons.PlaceStatVarExistence
+	(*EntityStatVarExistence)(nil),                 // 0: datacommons.EntityStatVarExistence
 	(*StatVarSummary)(nil),                         // 1: datacommons.StatVarSummary
 	(*StatVarGroups)(nil),                          // 2: datacommons.StatVarGroups
 	(*StatVarGroupNode)(nil),                       // 3: datacommons.StatVarGroupNode
@@ -1900,7 +1901,7 @@ func file_stat_var_proto_init() {
 	file_entity_proto_init()
 	if !protoimpl.UnsafeEnabled {
 		file_stat_var_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PlaceStatVarExistence); i {
+			switch v := v.(*EntityStatVarExistence); i {
 			case 0:
 				return &v.state
 			case 1:
