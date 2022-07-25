@@ -59,7 +59,7 @@ type EntityStatVarExistence struct {
 }
 
 func (x *EntityStatVarExistence) Reset() {
-	*x = EntitytatVarExistence{}
+	*x = EntityStatVarExistence{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_stat_var_proto_msgTypes[0]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
