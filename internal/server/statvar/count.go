@@ -60,7 +60,7 @@ func Count(
 		for _, row := range btData {
 			p := row.Parts[0]
 			sv := row.Parts[1]
-			c := row.Data.(*pb.PlaceStatVarExistence)
+			c := row.Data.(*pb.EntityStatVarExistence)
 			descSVCount := c.GetDescendentStatVarCount()
 			if _, ok := result[sv][p]; !ok {
 				// When c.NumDescendentStatVars = 0, placeSv.StatVar is a stat var
