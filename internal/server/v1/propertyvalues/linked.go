@@ -16,6 +16,7 @@ package propertyvalues
 
 import (
 	"context"
+	"strings"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/placein"
@@ -31,8 +32,13 @@ func LinkedPropertyValues(
 	in *pb.LinkedPropertyValuesRequest,
 	store *store.Store,
 ) (*pb.PropertyValuesResponse, error) {
-	property := in.GetProperty()
-	entity := in.GetEntity()
+	entityProperty := in.GetEntityProperty()
+	parts := strings.Split(entityProperty, "/")
+	if len(parts) < 2 {
+		return nil, status.Errorf(codes.InvalidArgument, "Invalid request URI")
+	}
+	property := parts[len(parts)-1]
+	entity := strings.Join(parts[0:len(parts)-1], "/")
 	valueEntityType := in.GetValueEntityType()
 	// Check arguments
 	if property != "containedInPlace" {

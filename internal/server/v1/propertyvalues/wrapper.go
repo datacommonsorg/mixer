@@ -16,6 +16,7 @@ package propertyvalues
 
 import (
 	"context"
+	"strings"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/store"
@@ -31,11 +32,17 @@ func PropertyValues(
 	in *pb.PropertyValuesRequest,
 	store *store.Store,
 ) (*pb.PropertyValuesResponse, error) {
-	property := in.GetProperty()
-	entity := in.GetEntity()
+	entityProperty := in.GetEntityProperty()
 	limit := int(in.GetLimit())
 	token := in.GetNextToken()
 	direction := in.GetDirection()
+
+	parts := strings.Split(entityProperty, "/")
+	if len(parts) < 2 {
+		return nil, status.Errorf(codes.InvalidArgument, "Invalid request URI")
+	}
+	property := parts[len(parts)-1]
+	entity := strings.Join(parts[0:len(parts)-1], "/")
 
 	// Check arguments
 	if property == "" {

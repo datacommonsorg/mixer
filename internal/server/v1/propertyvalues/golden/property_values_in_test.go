@@ -78,11 +78,10 @@ func TestPropertyValuesIn(t *testing.T) {
 			},
 		} {
 			req := &pb.PropertyValuesRequest{
-				Property:  c.property,
-				Entity:    c.entity,
-				Direction: "in",
-				Limit:     c.limit,
-				NextToken: c.token,
+				EntityProperty: c.entity + "/" + c.property,
+				Direction:      "in",
+				Limit:          c.limit,
+				NextToken:      c.token,
 			}
 			resp, err := mixer.PropertyValues(ctx, req)
 			if err != nil {

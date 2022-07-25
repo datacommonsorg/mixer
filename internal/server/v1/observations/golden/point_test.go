@@ -91,9 +91,8 @@ func TestObservationsPoint(t *testing.T) {
 		} {
 
 			resp, err := mixer.ObservationsPoint(ctx, &pb.ObservationsPointRequest{
-				Variable: c.variable,
-				Entity:   c.entity,
-				Date:     c.date,
+				EntityVariable: c.entity + "/" + c.variable,
+				Date:           c.date,
 			})
 			if err != nil {
 				t.Errorf("could not run ObservationsPoint: %s", err)

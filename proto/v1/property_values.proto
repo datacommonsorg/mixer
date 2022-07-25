@@ -19,8 +19,7 @@ package datacommons.v1;
 import "entity.proto";
 
 message PropertyValuesRequest {
-  string property = 1;
-  string entity = 2;
+  string entity_property = 1;
   // [Optional]
   // The limit of the number of values to return. The maximium limit is 1000.
   // If not specified, the default limit is 1000.
@@ -72,8 +71,7 @@ message BulkPropertyValuesResponse {
 // Note this API request only supports property "containedInPlace" now.
 // This is effectively used to query containing places for certain type.
 message LinkedPropertyValuesRequest {
-  string property = 1;
-  string entity = 2;
+  string entity_property = 1;
   string value_entity_type = 3;
 }
 
