@@ -65,11 +65,10 @@ func TestPropertyValuesOut(t *testing.T) {
 			},
 		} {
 			req := &pb.PropertyValuesRequest{
-				Property:  c.property,
-				Entity:    c.entity,
-				Direction: util.DirectionOut,
-				Limit:     c.limit,
-				NextToken: c.token,
+				EntityProperty: c.entity + "/" + c.property,
+				Direction:      util.DirectionOut,
+				Limit:          c.limit,
+				NextToken:      c.token,
 			}
 			resp, err := mixer.PropertyValues(ctx, req)
 			if err != nil {

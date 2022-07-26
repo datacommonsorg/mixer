@@ -77,8 +77,7 @@ func TestObservationsSeries(t *testing.T) {
 		} {
 
 			resp, err := mixer.ObservationsSeries(ctx, &pb.ObservationsSeriesRequest{
-				Variable: c.variable,
-				Entity:   c.entity,
+				EntityVariable: c.entity + "/" + c.variable,
 			})
 			if err != nil {
 				t.Errorf("could not run ObservationsSeries: %s", err)

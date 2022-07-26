@@ -16,6 +16,7 @@ package observations
 
 import (
 	"context"
+	"strings"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/stat"
@@ -30,8 +31,13 @@ func Point(
 	in *pb.ObservationsPointRequest,
 	store *store.Store,
 ) (*pb.PointStat, error) {
-	entity := in.GetEntity()
-	variable := in.GetVariable()
+	entityVariable := in.GetEntityVariable()
+	parts := strings.Split(entityVariable, "/")
+	if len(parts) < 2 {
+		return nil, status.Errorf(codes.InvalidArgument, "Invalid request URI")
+	}
+	variable := parts[len(parts)-1]
+	entity := strings.Join(parts[0:len(parts)-1], "/")
 
 	if entity == "" {
 		return nil, status.Errorf(codes.InvalidArgument,

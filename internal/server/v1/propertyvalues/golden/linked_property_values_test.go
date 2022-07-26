@@ -51,8 +51,7 @@ func TestLinkedPropertyValues(t *testing.T) {
 			},
 		} {
 			req := &pb.LinkedPropertyValuesRequest{
-				Property:        "containedInPlace",
-				Entity:          c.entity,
+				EntityProperty:  c.entity + "/" + "containedInPlace",
 				ValueEntityType: c.typ,
 			}
 			resp, err := mixer.LinkedPropertyValues(ctx, req)

@@ -17,6 +17,7 @@ package observations
 import (
 	"context"
 	"sort"
+	"strings"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/ranking"
@@ -32,8 +33,13 @@ func Series(
 	in *pb.ObservationsSeriesRequest,
 	store *store.Store,
 ) (*pb.ObservationsSeriesResponse, error) {
-	entity := in.GetEntity()
-	variable := in.GetVariable()
+	entityVariable := in.GetEntityVariable()
+	parts := strings.Split(entityVariable, "/")
+	if len(parts) < 2 {
+		return nil, status.Errorf(codes.InvalidArgument, "Invalid request URI")
+	}
+	variable := parts[len(parts)-1]
+	entity := strings.Join(parts[0:len(parts)-1], "/")
 
 	if entity == "" {
 		return nil, status.Errorf(codes.InvalidArgument,
