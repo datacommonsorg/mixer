@@ -1157,9 +1157,9 @@
           "meta_hash": 3981252704
         },
         "country/USA": {
-          "date": "2020",
-          "value": 329824950,
-          "meta_hash": 1273233945
+          "date": "2021",
+          "value": 331893745,
+          "meta_hash": 2176550201
         },
         "country/UZB": {
           "date": "2020",
@@ -1255,15 +1255,16 @@
       "provenance_url": "https://www.wikipedia.org",
       "measurement_method": "Wikipedia"
     },
+    "2176550201": {
+      "import_name": "USCensusPEP_Annual_Population",
+      "provenance_url": "https://www2.census.gov/programs-surveys/popest/tables",
+      "measurement_method": "CensusPEPSurvey",
+      "observation_period": "P1Y"
+    },
     "2458695583": {
       "import_name": "WikidataPopulation",
       "provenance_url": "https://www.wikidata.org/wiki/Wikidata:Main_Page",
       "measurement_method": "WikidataPopulation"
-    },
-    "2517965213": {
-      "import_name": "CensusPEP",
-      "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
-      "measurement_method": "CensusPEPSurvey"
     },
     "3114843463": {
       "import_name": "HumanCuratedStats",

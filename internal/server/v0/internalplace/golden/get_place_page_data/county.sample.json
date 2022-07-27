@@ -16369,51 +16369,21 @@
         },
         "Count_Person": {
           "val": {
-            "1980": 656331,
-            "1981": 667293,
-            "1982": 678903,
-            "1983": 690150,
-            "1984": 698814,
-            "1985": 711446,
-            "1986": 725367,
-            "1987": 739987,
-            "1988": 759242,
-            "1989": 784395,
-            "1990": 809199,
-            "1991": 822332,
-            "1992": 838364,
-            "1993": 850732,
-            "1994": 859872,
-            "1995": 869437,
-            "1996": 881213,
-            "1997": 899494,
-            "1998": 917970,
-            "1999": 933141,
-            "2000": 953124,
-            "2001": 972322,
-            "2002": 982242,
-            "2003": 990852,
-            "2004": 996658,
-            "2005": 1004079,
-            "2006": 1006545,
-            "2007": 1015661,
-            "2008": 1030584,
-            "2009": 1045804,
-            "2010": 1052559,
-            "2011": 1065440,
-            "2012": 1077548,
-            "2013": 1093401,
-            "2014": 1108876,
-            "2015": 1124405,
-            "2016": 1137268,
-            "2017": 1145535,
-            "2018": 1150519,
-            "2019": 1153526
+            "2011": 1037817,
+            "2012": 1052047,
+            "2013": 1065794,
+            "2014": 1081232,
+            "2015": 1096068,
+            "2016": 1107925,
+            "2017": 1123678,
+            "2018": 1133247,
+            "2019": 1142251,
+            "2020": 1147788
           },
           "metadata": {
-            "importName": "CensusPEP",
-            "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
-            "measurementMethod": "CensusPEPSurvey"
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey"
           }
         },
         "Count_Person_15OrMoreYears": {
@@ -17522,7 +17492,8 @@
             "2022-01": 522394,
             "2022-02": 531185,
             "2022-03": 537631,
-            "2022-04": 531462
+            "2022-04": 532012,
+            "2022-05": 534400
           },
           "metadata": {
             "importName": "BLS_LAUS",
@@ -17996,7 +17967,8 @@
             "2022-01": 548199,
             "2022-02": 553950,
             "2022-03": 557041,
-            "2022-04": 548312
+            "2022-04": 548891,
+            "2022-05": 549285
           },
           "metadata": {
             "importName": "BLS_LAUS",
@@ -27339,7 +27311,8 @@
             "2022-01": 4.7,
             "2022-02": 4.1,
             "2022-03": 3.5,
-            "2022-04": 3.1
+            "2022-04": 3.1,
+            "2022-05": 2.7
           },
           "metadata": {
             "importName": "BLS_LAUS",
@@ -28739,40 +28712,21 @@
         },
         "Count_Person": {
           "val": {
-            "1990": 783362,
-            "1991": 787847,
-            "1992": 795555,
-            "1993": 804223,
-            "1994": 811545,
-            "1995": 821467,
-            "1996": 836136,
-            "1997": 851528,
-            "1998": 862637,
-            "1999": 867675,
-            "2000": 906352,
-            "2001": 912842,
-            "2002": 905244,
-            "2003": 904218,
-            "2004": 907561,
-            "2005": 916002,
-            "2006": 926177,
-            "2007": 938909,
-            "2008": 956255,
-            "2009": 971323,
-            "2010": 954492,
-            "2011": 969948,
-            "2012": 983322,
-            "2013": 1001253,
-            "2014": 1014418,
-            "2015": 1026099,
-            "2016": 1030359,
-            "2017": 1032136,
-            "2018": 1030119
+            "2011": 939688,
+            "2012": 954379,
+            "2013": 968903,
+            "2014": 986320,
+            "2015": 1000860,
+            "2016": 1009363,
+            "2017": 1023031,
+            "2018": 1026658,
+            "2019": 1027690,
+            "2020": 1029409
           },
           "metadata": {
-            "importName": "CensusPEP",
-            "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
-            "measurementMethod": "CensusPEPSurvey"
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey"
           }
         },
         "Count_Person_15OrMoreYears": {
@@ -29881,7 +29835,8 @@
             "2022-01": 525190,
             "2022-02": 532056,
             "2022-03": 538473,
-            "2022-04": 535914
+            "2022-04": 535314,
+            "2022-05": 536072
           },
           "metadata": {
             "importName": "BLS_LAUS",
@@ -30355,7 +30310,8 @@
             "2022-01": 544508,
             "2022-02": 549081,
             "2022-03": 552958,
-            "2022-04": 548165
+            "2022-04": 547683,
+            "2022-05": 546817
           },
           "metadata": {
             "importName": "BLS_LAUS",
@@ -36262,7 +36218,8 @@
             "2022-01": 3.5,
             "2022-02": 3.1,
             "2022-03": 2.6,
-            "2022-04": 2.2
+            "2022-04": 2.3,
+            "2022-05": 2
           },
           "metadata": {
             "importName": "BLS_LAUS",
@@ -36281,62 +36238,62 @@
         {
           "dcid": "geoId/0668000",
           "name": "San Jose",
-          "pop": 1030119
+          "pop": 1029409
         },
         {
           "dcid": "geoId/0677000",
           "name": "Sunnyvale",
-          "pop": 153185
+          "pop": 152569
         },
         {
           "dcid": "geoId/0669084",
           "name": "Santa Clara",
-          "pop": 129488
+          "pop": 126723
         },
         {
           "dcid": "geoId/0649670",
           "name": "Mountain View",
-          "pop": 83377
+          "pop": 80104
         },
         {
           "dcid": "geoId/0647766",
           "name": "Milpitas",
-          "pop": 80430
+          "pop": 75182
         },
         {
           "dcid": "geoId/0655282",
           "name": "Palo Alto",
-          "pop": 66666
+          "pop": 67973
         },
         {
           "dcid": "geoId/0617610",
           "name": "Cupertino",
-          "pop": 60170
+          "pop": 59799
         },
         {
           "dcid": "geoId/0629504",
           "name": "Gilroy",
-          "pop": 58756
+          "pop": 55227
         },
         {
           "dcid": "geoId/0649278",
           "name": "Morgan Hill",
-          "pop": 45135
+          "pop": 44789
         },
         {
           "dcid": "geoId/0610345",
           "name": "Campbell",
-          "pop": 42466
+          "pop": 42891
         },
         {
           "dcid": "geoId/0670280",
           "name": "Saratoga",
-          "pop": 30599
+          "pop": 31084
         },
         {
           "dcid": "geoId/0643280",
           "name": "Los Altos",
-          "pop": 30531
+          "pop": 30878
         },
         {
           "dcid": "geoId/0673906",
@@ -36366,7 +36323,7 @@
         {
           "dcid": "geoId/0648956",
           "name": "Monte Sereno",
-          "pop": 3487
+          "pop": 3511
         },
         {
           "dcid": "geoId/0644378",
@@ -36395,177 +36352,195 @@
         {
           "dcid": "geoId/0644112",
           "name": "Los Gatos",
-          "pop": 30680
+          "pop": 31943
         },
         {
           "dcid": "geoId/0643294",
           "name": "Los Altos Hills",
-          "pop": 8559
+          "pop": 8496
         }
       ]
     }
   },
   "latestPopulation": {
     "country/USA": {
-      "date": "2020",
-      "value": 329824950,
+      "date": "2021",
+      "value": 331893745,
       "metadata": {
-        "importName": "CensusACS5YearSurvey_AggCountry",
-        "provenanceUrl": "https://www.census.gov/",
-        "measurementMethod": "CensusACS5yrSurvey"
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
       }
     },
     "geoId/04013": {
-      "date": "2020",
-      "value": 4412779,
+      "date": "2021",
+      "value": 4496588,
       "metadata": {
-        "importName": "CensusACS5YearSurvey",
-        "provenanceUrl": "https://www.census.gov/",
-        "measurementMethod": "CensusACS5yrSurvey"
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
       }
     },
     "geoId/06": {
-      "date": "2020",
-      "value": 39346023,
+      "date": "2021",
+      "value": 39237836,
       "metadata": {
-        "importName": "CensusACS5YearSurvey",
-        "provenanceUrl": "https://www.census.gov/",
-        "measurementMethod": "CensusACS5yrSurvey"
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
       }
     },
     "geoId/06001": {
-      "date": "2020",
-      "value": 1661584,
+      "date": "2021",
+      "value": 1648556,
       "metadata": {
-        "importName": "CensusACS5YearSurvey",
-        "provenanceUrl": "https://www.census.gov/",
-        "measurementMethod": "CensusACS5yrSurvey"
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
       }
     },
     "geoId/06013": {
-      "date": "2020",
-      "value": 1147788,
+      "date": "2021",
+      "value": 1161413,
       "metadata": {
-        "importName": "CensusACS5YearSurvey",
-        "provenanceUrl": "https://www.census.gov/",
-        "measurementMethod": "CensusACS5yrSurvey"
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
       }
     },
     "geoId/06067": {
-      "date": "2020",
-      "value": 1537948,
+      "date": "2021",
+      "value": 1588921,
       "metadata": {
-        "importName": "CensusACS5YearSurvey",
-        "provenanceUrl": "https://www.census.gov/",
-        "measurementMethod": "CensusACS5yrSurvey"
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
       }
     },
     "geoId/06075": {
-      "date": "2020",
-      "value": 874784,
+      "date": "2021",
+      "value": 815201,
       "metadata": {
-        "importName": "CensusACS5YearSurvey",
-        "provenanceUrl": "https://www.census.gov/",
-        "measurementMethod": "CensusACS5yrSurvey"
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
       }
     },
     "geoId/06081": {
-      "date": "2020",
-      "value": 765623,
+      "date": "2021",
+      "value": 737888,
       "metadata": {
-        "importName": "CensusACS5YearSurvey",
-        "provenanceUrl": "https://www.census.gov/",
-        "measurementMethod": "CensusACS5yrSurvey"
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
       }
     },
     "geoId/06085": {
-      "date": "2020",
-      "value": 1924379,
+      "date": "2021",
+      "value": 1885508,
       "metadata": {
-        "importName": "CensusACS5YearSurvey",
-        "provenanceUrl": "https://www.census.gov/",
-        "measurementMethod": "CensusACS5yrSurvey"
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
       }
     },
     "geoId/0647766": {
-      "date": "2020",
-      "value": 75182,
+      "date": "2021",
+      "value": 79066,
       "metadata": {
-        "importName": "CensusACS5YearSurvey",
-        "provenanceUrl": "https://www.census.gov/",
-        "measurementMethod": "CensusACS5yrSurvey"
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
       }
     },
     "geoId/0649670": {
-      "date": "2020",
-      "value": 80104,
+      "date": "2021",
+      "value": 81516,
       "metadata": {
-        "importName": "CensusACS5YearSurvey",
-        "provenanceUrl": "https://www.census.gov/",
-        "measurementMethod": "CensusACS5yrSurvey"
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
       }
     },
     "geoId/0668000": {
-      "date": "2020",
-      "value": 1029409,
+      "date": "2021",
+      "value": 983489,
       "metadata": {
-        "importName": "CensusACS5YearSurvey",
-        "provenanceUrl": "https://www.census.gov/",
-        "measurementMethod": "CensusACS5yrSurvey"
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
       }
     },
     "geoId/0669084": {
-      "date": "2020",
-      "value": 126723,
+      "date": "2021",
+      "value": 127151,
       "metadata": {
-        "importName": "CensusACS5YearSurvey",
-        "provenanceUrl": "https://www.census.gov/",
-        "measurementMethod": "CensusACS5yrSurvey"
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
       }
     },
     "geoId/0677000": {
-      "date": "2020",
-      "value": 152569,
+      "date": "2021",
+      "value": 152258,
       "metadata": {
-        "importName": "CensusACS5YearSurvey",
-        "provenanceUrl": "https://www.census.gov/",
-        "measurementMethod": "CensusACS5yrSurvey"
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
       }
     },
     "geoId/08059": {
-      "date": "2020",
-      "value": 578795,
+      "date": "2021",
+      "value": 579581,
       "metadata": {
-        "importName": "CensusACS5YearSurvey",
-        "provenanceUrl": "https://www.census.gov/",
-        "measurementMethod": "CensusACS5yrSurvey"
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
       }
     },
     "geoId/12031": {
-      "date": "2020",
-      "value": 948651,
+      "date": "2021",
+      "value": 999935,
       "metadata": {
-        "importName": "CensusACS5YearSurvey",
-        "provenanceUrl": "https://www.census.gov/",
-        "measurementMethod": "CensusACS5yrSurvey"
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
       }
     },
     "geoId/48113": {
-      "date": "2020",
-      "value": 2622634,
+      "date": "2021",
+      "value": 2586050,
       "metadata": {
-        "importName": "CensusACS5YearSurvey",
-        "provenanceUrl": "https://www.census.gov/",
-        "measurementMethod": "CensusACS5yrSurvey"
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
       }
     },
     "geoId/51059": {
-      "date": "2020",
-      "value": 1149439,
+      "date": "2021",
+      "value": 1139720,
       "metadata": {
-        "importName": "CensusACS5YearSurvey",
-        "provenanceUrl": "https://www.census.gov/",
-        "measurementMethod": "CensusACS5yrSurvey"
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
       }
     }
   },

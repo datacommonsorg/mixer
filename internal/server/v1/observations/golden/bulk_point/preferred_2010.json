@@ -17,34 +17,13 @@
           ]
         },
         {
-          "entity": "country/USA",
-          "points_by_facet": [
-            {
-              "date": "2010",
-              "value": 309326085,
-              "facet": 2517965213
-            }
-          ]
+          "entity": "country/USA"
         },
         {
-          "entity": "geoId/06",
-          "points_by_facet": [
-            {
-              "date": "2010",
-              "value": 37266600,
-              "facet": 2517965213
-            }
-          ]
+          "entity": "geoId/06"
         },
         {
-          "entity": "geoId/0649670",
-          "points_by_facet": [
-            {
-              "date": "2010",
-              "value": 74227,
-              "facet": 2517965213
-            }
-          ]
+          "entity": "geoId/0649670"
         }
       ]
     },
@@ -145,6 +124,16 @@
     }
   ],
   "facets": {
+    "1145703171": {
+      "import_name": "CensusACS5YearSurvey",
+      "provenance_url": "https://www.census.gov/",
+      "measurement_method": "CensusACS5yrSurvey"
+    },
+    "1273233945": {
+      "import_name": "CensusACS5YearSurvey_AggCountry",
+      "provenance_url": "https://www.census.gov/",
+      "measurement_method": "CensusACS5yrSurvey"
+    },
     "2171028778": {
       "import_name": "WorldDevelopmentIndicators",
       "provenance_url": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
@@ -155,11 +144,6 @@
       "import_name": "FBIGovCrime_AggCountry",
       "provenance_url": "http://www.fbi.gov/services/cjis/ucr",
       "observation_period": "P1Y"
-    },
-    "2517965213": {
-      "import_name": "CensusPEP",
-      "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
-      "measurement_method": "CensusPEPSurvey"
     },
     "4277990144": {
       "import_name": "FBIGovCrime",

@@ -262,527 +262,527 @@
     "Count_Person": {
       "stat": {
         "geoId/01": {
-          "date": "2020",
-          "value": 4893186,
-          "meta_hash": 1145703171
+          "date": "2021",
+          "value": 5039877,
+          "meta_hash": 2176550201
         },
         "geoId/02": {
-          "date": "2020",
-          "value": 736990,
-          "meta_hash": 1145703171
+          "date": "2021",
+          "value": 732673,
+          "meta_hash": 2176550201
         },
         "geoId/04": {
-          "date": "2020",
-          "value": 7174064,
-          "meta_hash": 1145703171
+          "date": "2021",
+          "value": 7276316,
+          "meta_hash": 2176550201
         },
         "geoId/05": {
-          "date": "2020",
-          "value": 3011873,
-          "meta_hash": 1145703171
+          "date": "2021",
+          "value": 3025891,
+          "meta_hash": 2176550201
         },
         "geoId/06": {
-          "date": "2020",
-          "value": 39346023,
-          "meta_hash": 1145703171
+          "date": "2021",
+          "value": 39237836,
+          "meta_hash": 2176550201
         },
         "geoId/08": {
-          "date": "2020",
-          "value": 5684926,
-          "meta_hash": 1145703171
+          "date": "2021",
+          "value": 5812069,
+          "meta_hash": 2176550201
         },
         "geoId/09": {
-          "date": "2020",
-          "value": 3570549,
-          "meta_hash": 1145703171
+          "date": "2021",
+          "value": 3605597,
+          "meta_hash": 2176550201
         },
         "geoId/10": {
-          "date": "2020",
-          "value": 967679,
-          "meta_hash": 1145703171
+          "date": "2021",
+          "value": 1003384,
+          "meta_hash": 2176550201
         },
         "geoId/11": {
-          "date": "2020",
-          "value": 701974,
-          "meta_hash": 1145703171
+          "date": "2021",
+          "value": 670050,
+          "meta_hash": 2176550201
         },
         "geoId/12": {
-          "date": "2020",
-          "value": 21216924,
-          "meta_hash": 1145703171
+          "date": "2021",
+          "value": 21781128,
+          "meta_hash": 2176550201
         },
         "geoId/13": {
-          "date": "2020",
-          "value": 10516579,
-          "meta_hash": 1145703171
+          "date": "2021",
+          "value": 10799566,
+          "meta_hash": 2176550201
         },
         "geoId/15": {
-          "date": "2020",
-          "value": 1420074,
-          "meta_hash": 1145703171
+          "date": "2021",
+          "value": 1441553,
+          "meta_hash": 2176550201
         },
         "geoId/16": {
-          "date": "2020",
-          "value": 1754367,
-          "meta_hash": 1145703171
+          "date": "2021",
+          "value": 1900923,
+          "meta_hash": 2176550201
         },
         "geoId/17": {
-          "date": "2020",
-          "value": 12716164,
-          "meta_hash": 1145703171
+          "date": "2021",
+          "value": 12671469,
+          "meta_hash": 2176550201
         },
         "geoId/18": {
-          "date": "2020",
-          "value": 6696893,
-          "meta_hash": 1145703171
+          "date": "2021",
+          "value": 6805985,
+          "meta_hash": 2176550201
         },
         "geoId/19": {
-          "date": "2020",
-          "value": 3150011,
-          "meta_hash": 1145703171
+          "date": "2021",
+          "value": 3193079,
+          "meta_hash": 2176550201
         },
         "geoId/20": {
-          "date": "2020",
-          "value": 2912619,
-          "meta_hash": 1145703171
+          "date": "2021",
+          "value": 2934582,
+          "meta_hash": 2176550201
         },
         "geoId/21": {
-          "date": "2020",
-          "value": 4461952,
-          "meta_hash": 1145703171
+          "date": "2021",
+          "value": 4509394,
+          "meta_hash": 2176550201
         },
         "geoId/22": {
-          "date": "2020",
-          "value": 4664616,
-          "meta_hash": 1145703171
+          "date": "2021",
+          "value": 4624047,
+          "meta_hash": 2176550201
         },
         "geoId/23": {
-          "date": "2020",
-          "value": 1340825,
-          "meta_hash": 1145703171
+          "date": "2021",
+          "value": 1372247,
+          "meta_hash": 2176550201
         },
         "geoId/24": {
-          "date": "2020",
-          "value": 6037624,
-          "meta_hash": 1145703171
+          "date": "2021",
+          "value": 6165129,
+          "meta_hash": 2176550201
         },
         "geoId/25": {
-          "date": "2020",
-          "value": 6873003,
-          "meta_hash": 1145703171
+          "date": "2021",
+          "value": 6984723,
+          "meta_hash": 2176550201
         },
         "geoId/26": {
-          "date": "2020",
-          "value": 9973907,
-          "meta_hash": 1145703171
+          "date": "2021",
+          "value": 10050811,
+          "meta_hash": 2176550201
         },
         "geoId/27": {
-          "date": "2020",
-          "value": 5600166,
-          "meta_hash": 1145703171
+          "date": "2021",
+          "value": 5707390,
+          "meta_hash": 2176550201
         },
         "geoId/28": {
-          "date": "2020",
-          "value": 2981835,
-          "meta_hash": 1145703171
+          "date": "2021",
+          "value": 2949965,
+          "meta_hash": 2176550201
         },
         "geoId/29": {
-          "date": "2020",
-          "value": 6124160,
-          "meta_hash": 1145703171
+          "date": "2021",
+          "value": 6168187,
+          "meta_hash": 2176550201
         },
         "geoId/30": {
-          "date": "2020",
-          "value": 1061705,
-          "meta_hash": 1145703171
+          "date": "2021",
+          "value": 1104271,
+          "meta_hash": 2176550201
         },
         "geoId/31": {
-          "date": "2020",
-          "value": 1923826,
-          "meta_hash": 1145703171
+          "date": "2021",
+          "value": 1963692,
+          "meta_hash": 2176550201
         },
         "geoId/32": {
-          "date": "2020",
-          "value": 3030281,
-          "meta_hash": 1145703171
+          "date": "2021",
+          "value": 3143991,
+          "meta_hash": 2176550201
         },
         "geoId/33": {
-          "date": "2020",
-          "value": 1355244,
-          "meta_hash": 1145703171
+          "date": "2021",
+          "value": 1388992,
+          "meta_hash": 2176550201
         },
         "geoId/34": {
-          "date": "2020",
-          "value": 8885418,
-          "meta_hash": 1145703171
+          "date": "2021",
+          "value": 9267130,
+          "meta_hash": 2176550201
         },
         "geoId/35": {
-          "date": "2020",
-          "value": 2097021,
-          "meta_hash": 1145703171
+          "date": "2021",
+          "value": 2115877,
+          "meta_hash": 2176550201
         },
         "geoId/36": {
-          "date": "2020",
-          "value": 19514849,
-          "meta_hash": 1145703171
+          "date": "2021",
+          "value": 19835913,
+          "meta_hash": 2176550201
         },
         "geoId/37": {
-          "date": "2020",
-          "value": 10386227,
-          "meta_hash": 1145703171
+          "date": "2021",
+          "value": 10551162,
+          "meta_hash": 2176550201
         },
         "geoId/38": {
-          "date": "2020",
-          "value": 760394,
-          "meta_hash": 1145703171
+          "date": "2021",
+          "value": 774948,
+          "meta_hash": 2176550201
         },
         "geoId/39": {
-          "date": "2020",
-          "value": 11675275,
-          "meta_hash": 1145703171
+          "date": "2021",
+          "value": 11780017,
+          "meta_hash": 2176550201
         },
         "geoId/40": {
-          "date": "2020",
-          "value": 3949342,
-          "meta_hash": 1145703171
+          "date": "2021",
+          "value": 3986639,
+          "meta_hash": 2176550201
         },
         "geoId/41": {
-          "date": "2020",
-          "value": 4176346,
-          "meta_hash": 1145703171
+          "date": "2021",
+          "value": 4246155,
+          "meta_hash": 2176550201
         },
         "geoId/42": {
-          "date": "2020",
-          "value": 12794885,
-          "meta_hash": 1145703171
+          "date": "2021",
+          "value": 12964056,
+          "meta_hash": 2176550201
         },
         "geoId/44": {
-          "date": "2020",
-          "value": 1057798,
-          "meta_hash": 1145703171
+          "date": "2021",
+          "value": 1095610,
+          "meta_hash": 2176550201
         },
         "geoId/45": {
-          "date": "2020",
-          "value": 5091517,
-          "meta_hash": 1145703171
+          "date": "2021",
+          "value": 5190705,
+          "meta_hash": 2176550201
         },
         "geoId/46": {
-          "date": "2020",
-          "value": 879336,
-          "meta_hash": 1145703171
+          "date": "2021",
+          "value": 895376,
+          "meta_hash": 2176550201
         },
         "geoId/47": {
-          "date": "2020",
-          "value": 6772268,
-          "meta_hash": 1145703171
+          "date": "2021",
+          "value": 6975218,
+          "meta_hash": 2176550201
         },
         "geoId/48": {
-          "date": "2020",
-          "value": 28635442,
-          "meta_hash": 1145703171
+          "date": "2021",
+          "value": 29527941,
+          "meta_hash": 2176550201
         },
         "geoId/49": {
-          "date": "2020",
-          "value": 3151239,
-          "meta_hash": 1145703171
+          "date": "2021",
+          "value": 3337975,
+          "meta_hash": 2176550201
         },
         "geoId/50": {
-          "date": "2020",
-          "value": 624340,
-          "meta_hash": 1145703171
+          "date": "2021",
+          "value": 645570,
+          "meta_hash": 2176550201
         },
         "geoId/51": {
-          "date": "2020",
-          "value": 8509358,
-          "meta_hash": 1145703171
+          "date": "2021",
+          "value": 8642274,
+          "meta_hash": 2176550201
         },
         "geoId/53": {
-          "date": "2020",
-          "value": 7512465,
-          "meta_hash": 1145703171
+          "date": "2021",
+          "value": 7738692,
+          "meta_hash": 2176550201
         },
         "geoId/54": {
-          "date": "2020",
-          "value": 1807426,
-          "meta_hash": 1145703171
+          "date": "2021",
+          "value": 1782959,
+          "meta_hash": 2176550201
         },
         "geoId/55": {
-          "date": "2020",
-          "value": 5806975,
-          "meta_hash": 1145703171
+          "date": "2021",
+          "value": 5895908,
+          "meta_hash": 2176550201
         },
         "geoId/56": {
-          "date": "2020",
-          "value": 581348,
-          "meta_hash": 1145703171
+          "date": "2021",
+          "value": 578803,
+          "meta_hash": 2176550201
         },
         "geoId/72": {
-          "date": "2020",
-          "value": 3255642,
-          "meta_hash": 1145703171
+          "date": "2021",
+          "value": 3263584,
+          "meta_hash": 2176550201
         }
       }
     },
     "Count_Person_Employed": {
       "stat": {
         "geoId/01": {
-          "date": "2022-05",
-          "value": 2231978,
+          "date": "2022-06",
+          "value": 2225995,
           "meta_hash": 324358135
         },
         "geoId/02": {
-          "date": "2022-05",
-          "value": 346702,
+          "date": "2022-06",
+          "value": 348511,
           "meta_hash": 324358135
         },
         "geoId/04": {
-          "date": "2022-05",
-          "value": 3456628,
+          "date": "2022-06",
+          "value": 3442726,
           "meta_hash": 324358135
         },
         "geoId/05": {
-          "date": "2022-05",
-          "value": 1306752,
+          "date": "2022-06",
+          "value": 1315905,
           "meta_hash": 324358135
         },
         "geoId/06": {
-          "date": "2022-05",
-          "value": 18530488,
+          "date": "2022-06",
+          "value": 18346910,
           "meta_hash": 324358135
         },
         "geoId/08": {
-          "date": "2022-05",
-          "value": 3123942,
+          "date": "2022-06",
+          "value": 3139049,
           "meta_hash": 324358135
         },
         "geoId/09": {
-          "date": "2022-05",
-          "value": 1826860,
+          "date": "2022-06",
+          "value": 1840684,
           "meta_hash": 324358135
         },
         "geoId/10": {
-          "date": "2022-05",
-          "value": 476555,
+          "date": "2022-06",
+          "value": 477614,
           "meta_hash": 324358135
         },
         "geoId/11": {
-          "date": "2022-05",
-          "value": 363166,
+          "date": "2022-06",
+          "value": 363515,
           "meta_hash": 324358135
         },
         "geoId/12": {
-          "date": "2022-05",
-          "value": 10364051,
+          "date": "2022-06",
+          "value": 10377803,
           "meta_hash": 324358135
         },
         "geoId/13": {
-          "date": "2022-05",
-          "value": 5121184,
+          "date": "2022-06",
+          "value": 5110195,
           "meta_hash": 324358135
         },
         "geoId/15": {
-          "date": "2022-05",
-          "value": 647118,
+          "date": "2022-06",
+          "value": 641580,
           "meta_hash": 324358135
         },
         "geoId/16": {
-          "date": "2022-05",
-          "value": 932312,
+          "date": "2022-06",
+          "value": 936977,
           "meta_hash": 324358135
         },
         "geoId/17": {
-          "date": "2022-05",
-          "value": 6119630,
+          "date": "2022-06",
+          "value": 6183117,
           "meta_hash": 324358135
         },
         "geoId/18": {
-          "date": "2022-05",
-          "value": 3298437,
+          "date": "2022-06",
+          "value": 3313114,
           "meta_hash": 324358135
         },
         "geoId/19": {
-          "date": "2022-05",
-          "value": 1659331,
+          "date": "2022-06",
+          "value": 1672270,
           "meta_hash": 324358135
         },
         "geoId/20": {
-          "date": "2022-05",
-          "value": 1463873,
+          "date": "2022-06",
+          "value": 1470198,
           "meta_hash": 324358135
         },
         "geoId/21": {
-          "date": "2022-05",
-          "value": 1975240,
+          "date": "2022-06",
+          "value": 1988600,
           "meta_hash": 324358135
         },
         "geoId/22": {
-          "date": "2022-05",
-          "value": 2020069,
+          "date": "2022-06",
+          "value": 2018394,
           "meta_hash": 324358135
         },
         "geoId/23": {
-          "date": "2022-05",
-          "value": 651226,
+          "date": "2022-06",
+          "value": 667948,
           "meta_hash": 324358135
         },
         "geoId/24": {
-          "date": "2022-05",
-          "value": 3067796,
+          "date": "2022-06",
+          "value": 3097174,
           "meta_hash": 324358135
         },
         "geoId/25": {
-          "date": "2022-05",
-          "value": 3598508,
+          "date": "2022-06",
+          "value": 3647840,
           "meta_hash": 324358135
         },
         "geoId/26": {
-          "date": "2022-05",
-          "value": 4634416,
+          "date": "2022-06",
+          "value": 4645458,
           "meta_hash": 324358135
         },
         "geoId/27": {
-          "date": "2022-05",
-          "value": 3030026,
+          "date": "2022-06",
+          "value": 3028710,
           "meta_hash": 324358135
         },
         "geoId/28": {
-          "date": "2022-05",
-          "value": 1217817,
+          "date": "2022-06",
+          "value": 1216347,
           "meta_hash": 324358135
         },
         "geoId/29": {
-          "date": "2022-05",
-          "value": 2979177,
+          "date": "2022-06",
+          "value": 2992352,
           "meta_hash": 324358135
         },
         "geoId/30": {
-          "date": "2022-05",
-          "value": 550037,
+          "date": "2022-06",
+          "value": 556733,
           "meta_hash": 324358135
         },
         "geoId/31": {
-          "date": "2022-05",
-          "value": 1044592,
+          "date": "2022-06",
+          "value": 1043287,
           "meta_hash": 324358135
         },
         "geoId/32": {
-          "date": "2022-05",
-          "value": 1456630,
+          "date": "2022-06",
+          "value": 1448986,
           "meta_hash": 324358135
         },
         "geoId/33": {
-          "date": "2022-05",
-          "value": 744680,
+          "date": "2022-06",
+          "value": 757026,
           "meta_hash": 324358135
         },
         "geoId/34": {
-          "date": "2022-05",
-          "value": 4481992,
+          "date": "2022-06",
+          "value": 4503493,
           "meta_hash": 324358135
         },
         "geoId/35": {
-          "date": "2022-05",
-          "value": 901279,
+          "date": "2022-06",
+          "value": 903366,
           "meta_hash": 324358135
         },
         "geoId/36": {
-          "date": "2022-05",
-          "value": 9116203,
+          "date": "2022-06",
+          "value": 9136594,
           "meta_hash": 324358135
         },
         "geoId/37": {
-          "date": "2022-05",
-          "value": 4949923,
+          "date": "2022-06",
+          "value": 4935844,
           "meta_hash": 324358135
         },
         "geoId/38": {
-          "date": "2022-05",
-          "value": 401634,
+          "date": "2022-06",
+          "value": 404540,
           "meta_hash": 324358135
         },
         "geoId/39": {
-          "date": "2022-05",
-          "value": 5583950,
+          "date": "2022-06",
+          "value": 5547992,
           "meta_hash": 324358135
         },
         "geoId/40": {
-          "date": "2022-05",
-          "value": 1826612,
+          "date": "2022-06",
+          "value": 1814068,
           "meta_hash": 324358135
         },
         "geoId/41": {
-          "date": "2022-05",
-          "value": 2130816,
+          "date": "2022-06",
+          "value": 2119639,
           "meta_hash": 324358135
         },
         "geoId/42": {
-          "date": "2022-05",
-          "value": 6211999,
+          "date": "2022-06",
+          "value": 6171007,
           "meta_hash": 324358135
         },
         "geoId/44": {
-          "date": "2022-05",
-          "value": 552441,
+          "date": "2022-06",
+          "value": 562713,
           "meta_hash": 324358135
         },
         "geoId/45": {
-          "date": "2022-05",
-          "value": 2335660,
+          "date": "2022-06",
+          "value": 2336977,
           "meta_hash": 324358135
         },
         "geoId/46": {
-          "date": "2022-05",
-          "value": 468450,
+          "date": "2022-06",
+          "value": 473303,
           "meta_hash": 324358135
         },
         "geoId/47": {
-          "date": "2022-05",
-          "value": 3293464,
+          "date": "2022-06",
+          "value": 3275769,
           "meta_hash": 324358135
         },
         "geoId/48": {
-          "date": "2022-05",
-          "value": 13946477,
+          "date": "2022-06",
+          "value": 13945797,
           "meta_hash": 324358135
         },
         "geoId/49": {
-          "date": "2022-05",
-          "value": 1687759,
+          "date": "2022-06",
+          "value": 1691006,
           "meta_hash": 324358135
         },
         "geoId/50": {
-          "date": "2022-05",
-          "value": 324239,
+          "date": "2022-06",
+          "value": 331700,
           "meta_hash": 324358135
         },
         "geoId/51": {
-          "date": "2022-05",
-          "value": 4214642,
+          "date": "2022-06",
+          "value": 4248204,
           "meta_hash": 324358135
         },
         "geoId/53": {
-          "date": "2022-05",
-          "value": 3866907,
+          "date": "2022-06",
+          "value": 3857475,
           "meta_hash": 324358135
         },
         "geoId/54": {
-          "date": "2022-05",
-          "value": 770155,
+          "date": "2022-06",
+          "value": 776441,
           "meta_hash": 324358135
         },
         "geoId/55": {
-          "date": "2022-05",
-          "value": 3025982,
+          "date": "2022-06",
+          "value": 3044300,
           "meta_hash": 324358135
         },
         "geoId/56": {
-          "date": "2022-05",
-          "value": 279546,
+          "date": "2022-06",
+          "value": 282618,
           "meta_hash": 324358135
         },
         "geoId/72": {
-          "date": "2022-05",
-          "value": 1124172,
+          "date": "2022-06",
+          "value": 1107892,
           "meta_hash": 324358135
         }
       }
@@ -794,15 +794,16 @@
       "provenance_url": "https://www.census.gov/",
       "measurement_method": "CensusACS5yrSurvey"
     },
+    "2176550201": {
+      "import_name": "USCensusPEP_Annual_Population",
+      "provenance_url": "https://www2.census.gov/programs-surveys/popest/tables",
+      "measurement_method": "CensusPEPSurvey",
+      "observation_period": "P1Y"
+    },
     "2392525955": {
       "import_name": "EIA_Electricity",
       "provenance_url": "https://www.eia.gov/opendata/qb.php?category=0",
       "unit": "KilowattHour"
-    },
-    "2517965213": {
-      "import_name": "CensusPEP",
-      "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
-      "measurement_method": "CensusPEPSurvey"
     },
     "324358135": {
       "import_name": "BLS_LAUS",

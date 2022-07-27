@@ -41,6 +41,7 @@ func TestFilterAndRank(t *testing.T) {
 						MeasurementMethod: "CensusPEPSurvey",
 						ImportName:        "CensusPEP",
 						ProvenanceURL:     "census.gov",
+						ObservationPeriod: "P1Y",
 					},
 					{
 						Val:               map[string]float64{"2011": 101, "2012": 102, "2013": 103},
@@ -60,6 +61,7 @@ func TestFilterAndRank(t *testing.T) {
 						MeasurementMethod: "CensusPEPSurvey",
 						ImportName:        "CensusPEP",
 						ProvenanceURL:     "census.gov",
+						ObservationPeriod: "P1Y",
 					},
 					{
 						Val:               map[string]float64{"2011": 101, "2012": 102, "2013": 103},
@@ -195,6 +197,7 @@ func TestByRank(t *testing.T) {
 			Val:               map[string]float64{"2011": 100, "2012": 101},
 			MeasurementMethod: "CensusPEPSurvey",
 			ImportName:        "CensusPEP",
+			ObservationPeriod: "P1Y",
 			ProvenanceURL:     "census.gov",
 		},
 	}
@@ -226,6 +229,7 @@ func TestGetLatest(t *testing.T) {
 				Val:               map[string]float64{"2011": 100, "2012": 101},
 				MeasurementMethod: "CensusPEPSurvey",
 				ImportName:        "CensusPEP",
+				ObservationPeriod: "P1Y",
 				ProvenanceURL:     "census.gov",
 			},
 		},

@@ -60,19 +60,19 @@
           "metaHash": 3981252704
         },
         "country/USA": {
-          "date": "2020",
-          "value": 329824950,
-          "metaHash": 1273233945
+          "date": "2021",
+          "value": 331893745,
+          "metaHash": 2176550201
         },
         "geoId/06": {
-          "date": "2020",
-          "value": 39346023,
-          "metaHash": 1145703171
+          "date": "2021",
+          "value": 39237836,
+          "metaHash": 2176550201
         },
         "geoId/0649670": {
-          "date": "2020",
-          "value": 80104,
-          "metaHash": 1145703171
+          "date": "2021",
+          "value": 81516,
+          "metaHash": 2176550201
         }
       }
     },
@@ -80,18 +80,18 @@
       "stat": {
         "country/FRA": {},
         "country/USA": {
-          "date": "2022-05",
-          "value": 5950000,
+          "date": "2022-06",
+          "value": 5912000,
           "metaHash": 3707913853
         },
         "geoId/06": {
-          "date": "2022-05",
-          "value": 660683,
+          "date": "2022-06",
+          "value": 763347,
           "metaHash": 324358135
         },
         "geoId/0649670": {
-          "date": "2022-04",
-          "value": 751,
+          "date": "2022-05",
+          "value": 666,
           "metaHash": 324358135
         }
       }
@@ -100,13 +100,13 @@
       "stat": {
         "country/FRA": {},
         "country/USA": {
-          "date": "2022-06-27",
-          "value": 87031752,
+          "date": "2022-07-25",
+          "value": 90415556,
           "metaHash": 2232540893
         },
         "geoId/06": {
-          "date": "2022-06-27",
-          "value": 10038765,
+          "date": "2022-07-25",
+          "value": 10594052,
           "metaHash": 2232540893
         },
         "geoId/0649670": {}
@@ -120,21 +120,17 @@
       "measurementMethod": "BLSSeasonallyUnadjusted",
       "observationPeriod": "P1M"
     },
-    "1145703171": {
-      "importName": "CensusACS5YearSurvey",
-      "provenanceUrl": "https://www.census.gov/",
-      "measurementMethod": "CensusACS5yrSurvey"
-    },
-    "1273233945": {
-      "importName": "CensusACS5YearSurvey_AggCountry",
-      "provenanceUrl": "https://www.census.gov/",
-      "measurementMethod": "CensusACS5yrSurvey"
-    },
     "2171028778": {
       "importName": "WorldDevelopmentIndicators",
       "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
       "observationPeriod": "P1Y",
       "unit": "InternationalDollar"
+    },
+    "2176550201": {
+      "importName": "USCensusPEP_Annual_Population",
+      "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+      "measurementMethod": "CensusPEPSurvey",
+      "observationPeriod": "P1Y"
     },
     "2232540893": {
       "importName": "NYT_COVID19",

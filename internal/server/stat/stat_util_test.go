@@ -58,6 +58,7 @@ func TestGetValueFromBestSourcePb(t *testing.T) {
 						ImportName:        "CensusPEP",
 						ProvenanceUrl:     "https://www.census.gov/programs-surveys/popest.html",
 						MeasurementMethod: "CensusPEPSurvey",
+						ObservationPeriod: "P1Y",
 					},
 				},
 			},
@@ -70,6 +71,7 @@ func TestGetValueFromBestSourcePb(t *testing.T) {
 				ImportName:        "CensusPEP",
 				ProvenanceUrl:     "https://www.census.gov/programs-surveys/popest.html",
 				MeasurementMethod: "CensusPEPSurvey",
+				ObservationPeriod: "P1Y",
 			},
 		},
 		{
@@ -96,6 +98,7 @@ func TestGetValueFromBestSourcePb(t *testing.T) {
 						ImportName:        "CensusPEP",
 						ProvenanceUrl:     "https://www.census.gov/programs-surveys/popest.html",
 						MeasurementMethod: "CensusPEPSurvey",
+						ObservationPeriod: "P1Y",
 					},
 				},
 			},

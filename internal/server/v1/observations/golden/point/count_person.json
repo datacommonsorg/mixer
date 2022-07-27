@@ -1,9 +1,10 @@
 {
-  "date": "2020",
-  "value": 329824950,
+  "date": "2021",
+  "value": 331893745,
   "metadata": {
-    "import_name": "CensusACS5YearSurvey_AggCountry",
-    "provenance_url": "https://www.census.gov/",
-    "measurement_method": "CensusACS5yrSurvey"
+    "import_name": "USCensusPEP_Annual_Population",
+    "provenance_url": "https://www2.census.gov/programs-surveys/popest/tables",
+    "measurement_method": "CensusPEPSurvey",
+    "observation_period": "P1Y"
   }
 }

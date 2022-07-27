@@ -40,9 +40,9 @@
           "entity": "country/USA",
           "points_by_facet": [
             {
-              "date": "2020",
-              "value": 329824950,
-              "facet": 1273233945
+              "date": "2021",
+              "value": 331893745,
+              "facet": 2176550201
             }
           ]
         },
@@ -50,9 +50,9 @@
           "entity": "geoId/06",
           "points_by_facet": [
             {
-              "date": "2020",
-              "value": 39346023,
-              "facet": 1145703171
+              "date": "2021",
+              "value": 39237836,
+              "facet": 2176550201
             }
           ]
         },
@@ -60,9 +60,9 @@
           "entity": "geoId/0649670",
           "points_by_facet": [
             {
-              "date": "2020",
-              "value": 80104,
-              "facet": 1145703171
+              "date": "2021",
+              "value": 81516,
+              "facet": 2176550201
             }
           ]
         }
@@ -190,8 +190,8 @@
           "entity": "country/USA",
           "points_by_facet": [
             {
-              "date": "2022-03",
-              "value": 6245000,
+              "date": "2022-06",
+              "value": 5934000,
               "facet": 1714978719
             }
           ]
@@ -200,8 +200,8 @@
           "entity": "geoId/06",
           "points_by_facet": [
             {
-              "date": "2022-05",
-              "value": 835058,
+              "date": "2022-06",
+              "value": 819453,
               "facet": 1249140336
             }
           ]
@@ -231,8 +231,8 @@
           "entity": "country/USA",
           "points_by_facet": [
             {
-              "date": "2022-06-27",
-              "value": 87031752,
+              "date": "2022-07-25",
+              "value": 90415556,
               "facet": 2232540893
             }
           ]
@@ -241,8 +241,8 @@
           "entity": "geoId/06",
           "points_by_facet": [
             {
-              "date": "2022-06-27",
-              "value": 10038765,
+              "date": "2022-07-25",
+              "value": 10594052,
               "facet": 2232540893
             }
           ]
