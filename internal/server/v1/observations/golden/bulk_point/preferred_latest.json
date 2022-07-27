@@ -40,9 +40,9 @@
           "entity": "country/USA",
           "points_by_facet": [
             {
-              "date": "2021",
-              "value": 331893745,
-              "facet": 2176550201
+              "date": "2020",
+              "value": 329824950,
+              "facet": 1273233945
             }
           ]
         },
@@ -50,9 +50,9 @@
           "entity": "geoId/06",
           "points_by_facet": [
             {
-              "date": "2021",
-              "value": 39237836,
-              "facet": 2176550201
+              "date": "2020",
+              "value": 39346023,
+              "facet": 1145703171
             }
           ]
         },
@@ -60,9 +60,9 @@
           "entity": "geoId/0649670",
           "points_by_facet": [
             {
-              "date": "2021",
-              "value": 81516,
-              "facet": 2176550201
+              "date": "2020",
+              "value": 80104,
+              "facet": 1145703171
             }
           ]
         }

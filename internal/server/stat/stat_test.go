@@ -39,7 +39,7 @@ func TestFilterAndRank(t *testing.T) {
 					{
 						Val:               map[string]float64{"2011": 100, "2012": 101},
 						MeasurementMethod: "CensusPEPSurvey",
-						ImportName:        "CensusPEP",
+						ImportName:        "USCensusPEP_Annual_Population",
 						ProvenanceURL:     "census.gov",
 						ObservationPeriod: "P1Y",
 					},
@@ -59,7 +59,7 @@ func TestFilterAndRank(t *testing.T) {
 					{
 						Val:               map[string]float64{"2011": 100, "2012": 101},
 						MeasurementMethod: "CensusPEPSurvey",
-						ImportName:        "CensusPEP",
+						ImportName:        "USCensusPEP_Annual_Population",
 						ProvenanceURL:     "census.gov",
 						ObservationPeriod: "P1Y",
 					},
@@ -79,7 +79,7 @@ func TestFilterAndRank(t *testing.T) {
 					{
 						Val:               map[string]float64{"2011": 100, "2012": 101},
 						MeasurementMethod: "CensusPEPSurvey",
-						ImportName:        "CensusPEP",
+						ImportName:        "USCensusPEP_Annual_Population",
 						ProvenanceURL:     "census.gov",
 					},
 					{
@@ -196,13 +196,13 @@ func TestByRank(t *testing.T) {
 		{
 			Val:               map[string]float64{"2011": 100, "2012": 101},
 			MeasurementMethod: "CensusPEPSurvey",
-			ImportName:        "CensusPEP",
+			ImportName:        "USCensusPEP_Annual_Population",
 			ObservationPeriod: "P1Y",
 			ProvenanceURL:     "census.gov",
 		},
 	}
 	sort.Sort(ranking.ByRank(sourceSeries))
-	expectImportName := []string{"CensusPEP", "CensusACS5YearSurvey", "randomImportName"}
+	expectImportName := []string{"USCensusPEP_Annual_Population", "CensusACS5YearSurvey", "randomImportName"}
 	for index, series := range sourceSeries {
 		if expectImportName[index] != series.ImportName {
 			t.Errorf("Bad ranking for %d, %s", index, series.ImportName)
@@ -228,7 +228,7 @@ func TestGetLatest(t *testing.T) {
 			{
 				Val:               map[string]float64{"2011": 100, "2012": 101},
 				MeasurementMethod: "CensusPEPSurvey",
-				ImportName:        "CensusPEP",
+				ImportName:        "USCensusPEP_Annual_Population",
 				ObservationPeriod: "P1Y",
 				ProvenanceURL:     "census.gov",
 			},

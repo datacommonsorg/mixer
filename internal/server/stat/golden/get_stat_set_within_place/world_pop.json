@@ -1245,11 +1245,6 @@
     }
   },
   "metadata": {
-    "1273233945": {
-      "import_name": "CensusACS5YearSurvey_AggCountry",
-      "provenance_url": "https://www.census.gov/",
-      "measurement_method": "CensusACS5yrSurvey"
-    },
     "1456184638": {
       "import_name": "WikipediaStatsData",
       "provenance_url": "https://www.wikipedia.org",

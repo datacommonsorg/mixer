@@ -145,105 +145,6 @@
           "sourceSeries": [
             {
               "val": {
-                "2011": 310346358,
-                "2012": 312855438,
-                "2013": 315219560,
-                "2014": 317746049,
-                "2015": 320098094,
-                "2016": 322087547,
-                "2017": 324473370,
-                "2018": 326289971,
-                "2019": 328016242,
-                "2020": 329824950
-              },
-              "measurementMethod": "CensusACS5yrSurvey",
-              "importName": "CensusACS5YearSurvey_AggCountry",
-              "provenanceDomain": "census.gov",
-              "isDcAggregate": true,
-              "provenanceUrl": "https://www.census.gov/"
-            },
-            {
-              "val": {
-                "2000": 281421906,
-                "2010": 308745538,
-                "2020": 331449281
-              },
-              "measurementMethod": "USDecennialCensus",
-              "importName": "USDecennialCensus_RedistrictingRelease",
-              "provenanceDomain": "census.gov",
-              "provenanceUrl": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html"
-            },
-            {
-              "val": {
-                "1960": 180671000,
-                "1961": 183691000,
-                "1962": 186538000,
-                "1963": 189242000,
-                "1964": 191889000,
-                "1965": 194303000,
-                "1966": 196560000,
-                "1967": 198712000,
-                "1968": 200706000,
-                "1969": 202677000,
-                "1970": 205052000,
-                "1971": 207661000,
-                "1972": 209896000,
-                "1973": 211909000,
-                "1974": 213854000,
-                "1975": 215973000,
-                "1976": 218035000,
-                "1977": 220239000,
-                "1978": 222585000,
-                "1979": 225055000,
-                "1980": 227225000,
-                "1981": 229466000,
-                "1982": 231664000,
-                "1983": 233792000,
-                "1984": 235825000,
-                "1985": 237924000,
-                "1986": 240133000,
-                "1987": 242289000,
-                "1988": 244499000,
-                "1989": 246819000,
-                "1990": 249623000,
-                "1991": 252981000,
-                "1992": 256514000,
-                "1993": 259919000,
-                "1994": 263126000,
-                "1995": 266278000,
-                "1996": 269394000,
-                "1997": 272657000,
-                "1998": 275854000,
-                "1999": 279040000,
-                "2000": 282162411,
-                "2001": 284968955,
-                "2002": 287625193,
-                "2003": 290107933,
-                "2004": 292805298,
-                "2005": 295516599,
-                "2006": 298379912,
-                "2007": 301231207,
-                "2008": 304093966,
-                "2009": 306771529,
-                "2010": 309327143,
-                "2011": 311583481,
-                "2012": 313877662,
-                "2013": 316059947,
-                "2014": 318386329,
-                "2015": 320738994,
-                "2016": 323071755,
-                "2017": 325122128,
-                "2018": 326838199,
-                "2019": 328329953,
-                "2020": 329484123
-              },
-              "observationPeriod": "P1Y",
-              "importName": "WorldDevelopmentIndicators",
-              "provenanceDomain": "worldbank.org",
-              "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
-            },
-            {
-              "val": {
                 "1900": 76094000,
                 "1901": 77584000,
                 "1902": 79163000,
@@ -372,6 +273,105 @@
               "importName": "USCensusPEP_Annual_Population",
               "provenanceDomain": "census.gov",
               "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables"
+            },
+            {
+              "val": {
+                "2011": 310346358,
+                "2012": 312855438,
+                "2013": 315219560,
+                "2014": 317746049,
+                "2015": 320098094,
+                "2016": 322087547,
+                "2017": 324473370,
+                "2018": 326289971,
+                "2019": 328016242,
+                "2020": 329824950
+              },
+              "measurementMethod": "CensusACS5yrSurvey",
+              "importName": "CensusACS5YearSurvey_AggCountry",
+              "provenanceDomain": "census.gov",
+              "isDcAggregate": true,
+              "provenanceUrl": "https://www.census.gov/"
+            },
+            {
+              "val": {
+                "2000": 281421906,
+                "2010": 308745538,
+                "2020": 331449281
+              },
+              "measurementMethod": "USDecennialCensus",
+              "importName": "USDecennialCensus_RedistrictingRelease",
+              "provenanceDomain": "census.gov",
+              "provenanceUrl": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html"
+            },
+            {
+              "val": {
+                "1960": 180671000,
+                "1961": 183691000,
+                "1962": 186538000,
+                "1963": 189242000,
+                "1964": 191889000,
+                "1965": 194303000,
+                "1966": 196560000,
+                "1967": 198712000,
+                "1968": 200706000,
+                "1969": 202677000,
+                "1970": 205052000,
+                "1971": 207661000,
+                "1972": 209896000,
+                "1973": 211909000,
+                "1974": 213854000,
+                "1975": 215973000,
+                "1976": 218035000,
+                "1977": 220239000,
+                "1978": 222585000,
+                "1979": 225055000,
+                "1980": 227225000,
+                "1981": 229466000,
+                "1982": 231664000,
+                "1983": 233792000,
+                "1984": 235825000,
+                "1985": 237924000,
+                "1986": 240133000,
+                "1987": 242289000,
+                "1988": 244499000,
+                "1989": 246819000,
+                "1990": 249623000,
+                "1991": 252981000,
+                "1992": 256514000,
+                "1993": 259919000,
+                "1994": 263126000,
+                "1995": 266278000,
+                "1996": 269394000,
+                "1997": 272657000,
+                "1998": 275854000,
+                "1999": 279040000,
+                "2000": 282162411,
+                "2001": 284968955,
+                "2002": 287625193,
+                "2003": 290107933,
+                "2004": 292805298,
+                "2005": 295516599,
+                "2006": 298379912,
+                "2007": 301231207,
+                "2008": 304093966,
+                "2009": 306771529,
+                "2010": 309327143,
+                "2011": 311583481,
+                "2012": 313877662,
+                "2013": 316059947,
+                "2014": 318386329,
+                "2015": 320738994,
+                "2016": 323071755,
+                "2017": 325122128,
+                "2018": 326838199,
+                "2019": 328329953,
+                "2020": 329484123
+              },
+              "observationPeriod": "P1Y",
+              "importName": "WorldDevelopmentIndicators",
+              "provenanceDomain": "worldbank.org",
+              "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
             },
             {
               "val": {
@@ -722,35 +722,6 @@
           "sourceSeries": [
             {
               "val": {
-                "2011": 36969200,
-                "2012": 37325068,
-                "2013": 37659181,
-                "2014": 38066920,
-                "2015": 38421464,
-                "2016": 38654206,
-                "2017": 38982847,
-                "2018": 39148760,
-                "2019": 39283497,
-                "2020": 39346023
-              },
-              "measurementMethod": "CensusACS5yrSurvey",
-              "importName": "CensusACS5YearSurvey",
-              "provenanceDomain": "census.gov",
-              "provenanceUrl": "https://www.census.gov/"
-            },
-            {
-              "val": {
-                "2000": 33871648,
-                "2010": 37253956,
-                "2020": 39538223
-              },
-              "measurementMethod": "USDecennialCensus",
-              "importName": "USDecennialCensus_RedistrictingRelease",
-              "provenanceDomain": "census.gov",
-              "provenanceUrl": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html"
-            },
-            {
-              "val": {
                 "1900": 1490000,
                 "1901": 1550000,
                 "1902": 1623000,
@@ -879,6 +850,35 @@
               "importName": "USCensusPEP_Annual_Population",
               "provenanceDomain": "census.gov",
               "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables"
+            },
+            {
+              "val": {
+                "2011": 36969200,
+                "2012": 37325068,
+                "2013": 37659181,
+                "2014": 38066920,
+                "2015": 38421464,
+                "2016": 38654206,
+                "2017": 38982847,
+                "2018": 39148760,
+                "2019": 39283497,
+                "2020": 39346023
+              },
+              "measurementMethod": "CensusACS5yrSurvey",
+              "importName": "CensusACS5YearSurvey",
+              "provenanceDomain": "census.gov",
+              "provenanceUrl": "https://www.census.gov/"
+            },
+            {
+              "val": {
+                "2000": 33871648,
+                "2010": 37253956,
+                "2020": 39538223
+              },
+              "measurementMethod": "USDecennialCensus",
+              "importName": "USDecennialCensus_RedistrictingRelease",
+              "provenanceDomain": "census.gov",
+              "provenanceUrl": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html"
             },
             {
               "val": {
@@ -1179,35 +1179,6 @@
           "sourceSeries": [
             {
               "val": {
-                "2011": 73394,
-                "2012": 74447,
-                "2013": 75477,
-                "2014": 76741,
-                "2015": 77973,
-                "2016": 78827,
-                "2017": 80076,
-                "2018": 80993,
-                "2019": 81656,
-                "2020": 80104
-              },
-              "measurementMethod": "CensusACS5yrSurvey",
-              "importName": "CensusACS5YearSurvey",
-              "provenanceDomain": "census.gov",
-              "provenanceUrl": "https://www.census.gov/"
-            },
-            {
-              "val": {
-                "2000": 70708,
-                "2010": 74066,
-                "2020": 82376
-              },
-              "measurementMethod": "USDecennialCensus",
-              "importName": "USDecennialCensus_RedistrictingRelease",
-              "provenanceDomain": "census.gov",
-              "provenanceUrl": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html"
-            },
-            {
-              "val": {
                 "1990": 66731,
                 "1991": 66734,
                 "1992": 66936,
@@ -1246,6 +1217,35 @@
               "importName": "USCensusPEP_Annual_Population",
               "provenanceDomain": "census.gov",
               "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables"
+            },
+            {
+              "val": {
+                "2011": 73394,
+                "2012": 74447,
+                "2013": 75477,
+                "2014": 76741,
+                "2015": 77973,
+                "2016": 78827,
+                "2017": 80076,
+                "2018": 80993,
+                "2019": 81656,
+                "2020": 80104
+              },
+              "measurementMethod": "CensusACS5yrSurvey",
+              "importName": "CensusACS5YearSurvey",
+              "provenanceDomain": "census.gov",
+              "provenanceUrl": "https://www.census.gov/"
+            },
+            {
+              "val": {
+                "2000": 70708,
+                "2010": 74066,
+                "2020": 82376
+              },
+              "measurementMethod": "USDecennialCensus",
+              "importName": "USDecennialCensus_RedistrictingRelease",
+              "provenanceDomain": "census.gov",
+              "provenanceUrl": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html"
             },
             {
               "val": {

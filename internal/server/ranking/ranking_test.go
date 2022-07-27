@@ -33,7 +33,7 @@ func TestGetScorePb(t *testing.T) {
 			100,
 		},
 		{
-			&pb.SourceSeries{ImportName: "CensusPEP", MeasurementMethod: "CensusPEPSurvey", ObservationPeriod: "P1Y"},
+			&pb.SourceSeries{ImportName: "USCensusPEP_Annual_Population", MeasurementMethod: "CensusPEPSurvey", ObservationPeriod: "P1Y"},
 			0,
 		},
 		{
@@ -68,10 +68,10 @@ func TestSeriesByRank(t *testing.T) {
 		{
 			[]*pb.SourceSeries{
 				{ImportName: "CensusACS5YearSurvey", MeasurementMethod: "CensusACS5yrSurvey"},
-				{ImportName: "CensusPEP", MeasurementMethod: "CensusPEPSurvey", ObservationPeriod: "P1Y"},
+				{ImportName: "USCensusPEP_Annual_Population", MeasurementMethod: "CensusPEPSurvey", ObservationPeriod: "P1Y"},
 			},
 			[]*pb.SourceSeries{
-				{ImportName: "CensusPEP", MeasurementMethod: "CensusPEPSurvey", ObservationPeriod: "P1Y"},
+				{ImportName: "USCensusPEP_Annual_Population", MeasurementMethod: "CensusPEPSurvey", ObservationPeriod: "P1Y"},
 				{ImportName: "CensusACS5YearSurvey", MeasurementMethod: "CensusACS5yrSurvey"},
 			},
 		},

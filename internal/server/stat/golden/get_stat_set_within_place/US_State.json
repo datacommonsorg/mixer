@@ -789,11 +789,6 @@
     }
   },
   "metadata": {
-    "1145703171": {
-      "import_name": "CensusACS5YearSurvey",
-      "provenance_url": "https://www.census.gov/",
-      "measurement_method": "CensusACS5yrSurvey"
-    },
     "2176550201": {
       "import_name": "USCensusPEP_Annual_Population",
       "provenance_url": "https://www2.census.gov/programs-surveys/popest/tables",

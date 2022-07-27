@@ -17,13 +17,34 @@
           ]
         },
         {
-          "entity": "country/USA"
+          "entity": "country/USA",
+          "points_by_facet": [
+            {
+              "date": "2010",
+              "value": 309327143,
+              "facet": 2176550201
+            }
+          ]
         },
         {
-          "entity": "geoId/06"
+          "entity": "geoId/06",
+          "points_by_facet": [
+            {
+              "date": "2010",
+              "value": 37319550,
+              "facet": 2176550201
+            }
+          ]
         },
         {
-          "entity": "geoId/0649670"
+          "entity": "geoId/0649670",
+          "points_by_facet": [
+            {
+              "date": "2010",
+              "value": 73759,
+              "facet": 2176550201
+            }
+          ]
         }
       ]
     },
@@ -124,21 +145,17 @@
     }
   ],
   "facets": {
-    "1145703171": {
-      "import_name": "CensusACS5YearSurvey",
-      "provenance_url": "https://www.census.gov/",
-      "measurement_method": "CensusACS5yrSurvey"
-    },
-    "1273233945": {
-      "import_name": "CensusACS5YearSurvey_AggCountry",
-      "provenance_url": "https://www.census.gov/",
-      "measurement_method": "CensusACS5yrSurvey"
-    },
     "2171028778": {
       "import_name": "WorldDevelopmentIndicators",
       "provenance_url": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
       "observation_period": "P1Y",
       "unit": "InternationalDollar"
+    },
+    "2176550201": {
+      "import_name": "USCensusPEP_Annual_Population",
+      "provenance_url": "https://www2.census.gov/programs-surveys/popest/tables",
+      "measurement_method": "CensusPEPSurvey",
+      "observation_period": "P1Y"
     },
     "2343540064": {
       "import_name": "FBIGovCrime_AggCountry",

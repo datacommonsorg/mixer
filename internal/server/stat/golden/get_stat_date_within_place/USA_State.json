@@ -4,37 +4,6 @@
       "stat_date": [
         {
           "date_place_count": {
-            "2011": 52,
-            "2012": 52,
-            "2013": 52,
-            "2014": 52,
-            "2015": 52,
-            "2016": 52,
-            "2017": 52,
-            "2018": 52,
-            "2019": 52,
-            "2020": 52
-          },
-          "metadata": {
-            "import_name": "CensusACS5YearSurvey",
-            "provenance_url": "https://www.census.gov/",
-            "measurement_method": "CensusACS5yrSurvey"
-          }
-        },
-        {
-          "date_place_count": {
-            "2000": 52,
-            "2010": 52,
-            "2020": 52
-          },
-          "metadata": {
-            "import_name": "USDecennialCensus_RedistrictingRelease",
-            "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
-            "measurement_method": "USDecennialCensus"
-          }
-        },
-        {
-          "date_place_count": {
             "1900": 49,
             "1901": 49,
             "1902": 49,
@@ -163,6 +132,37 @@
             "provenance_url": "https://www2.census.gov/programs-surveys/popest/tables",
             "measurement_method": "CensusPEPSurvey",
             "observation_period": "P1Y"
+          }
+        },
+        {
+          "date_place_count": {
+            "2011": 52,
+            "2012": 52,
+            "2013": 52,
+            "2014": 52,
+            "2015": 52,
+            "2016": 52,
+            "2017": 52,
+            "2018": 52,
+            "2019": 52,
+            "2020": 52
+          },
+          "metadata": {
+            "import_name": "CensusACS5YearSurvey",
+            "provenance_url": "https://www.census.gov/",
+            "measurement_method": "CensusACS5yrSurvey"
+          }
+        },
+        {
+          "date_place_count": {
+            "2000": 52,
+            "2010": 52,
+            "2020": 52
+          },
+          "metadata": {
+            "import_name": "USDecennialCensus_RedistrictingRelease",
+            "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+            "measurement_method": "USDecennialCensus"
           }
         },
         {

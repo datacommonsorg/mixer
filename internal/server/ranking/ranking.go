@@ -41,7 +41,7 @@ func s(str string) *string {
 // StatisticalVariable, where lower value means higher ranking.
 // Outer key is Import Name, inner key is Rank Key, value is score.
 var StatsRanking = map[string]map[RankKey]int{
-	"CensusPEP": {{MM: s("CensusPEPSurvey"), OP: s("P1Y")}: 0}, // Population
+	"USCensusPEP_Annual_Population": {{MM: s("CensusPEPSurvey"), OP: s("P1Y")}: 0}, // Population
 
 	"CensusACS5YearSurvey": {{MM: s("CensusACS5yrSurvey")}: 1}, // Population
 
