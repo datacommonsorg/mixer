@@ -11,19 +11,19 @@
       "id": "dc/g/Demographics",
       "specializedEntity": "Demographics",
       "displayName": "Demographics",
-      "descendentStatVarCount": 28384
+      "descendentStatVarCount": 30530
     },
     {
       "id": "dc/g/Economy",
       "specializedEntity": "Economy",
       "displayName": "Economy",
-      "descendentStatVarCount": 60730
+      "descendentStatVarCount": 62584
     },
     {
       "id": "dc/g/Education",
       "specializedEntity": "Education",
       "displayName": "Education",
-      "descendentStatVarCount": 3930
+      "descendentStatVarCount": 4521
     },
     {
       "id": "dc/g/Energy",
@@ -41,7 +41,7 @@
       "id": "dc/g/Health",
       "specializedEntity": "Health",
       "displayName": "Health",
-      "descendentStatVarCount": 7343
+      "descendentStatVarCount": 12237
     },
     {
       "id": "dc/g/Housing",
@@ -59,7 +59,7 @@
       "id": "dc/g/Uncategorized",
       "specializedEntity": "Uncategorized",
       "displayName": "Uncategorized",
-      "descendentStatVarCount": 6001
+      "descendentStatVarCount": 5371
     },
     {
       "id": "g/Feeding_America",
@@ -67,5 +67,5 @@
       "descendentStatVarCount": 9
     }
   ],
-  "descendentStatVarCount": 95996
+  "descendentStatVarCount": 100940
 }

@@ -21,8 +21,8 @@
           "points_by_facet": [
             {
               "date": "2010",
-              "value": 309326085,
-              "facet": 2517965213
+              "value": 309327143,
+              "facet": 2176550201
             }
           ]
         },
@@ -31,8 +31,8 @@
           "points_by_facet": [
             {
               "date": "2010",
-              "value": 37266600,
-              "facet": 2517965213
+              "value": 37319550,
+              "facet": 2176550201
             }
           ]
         },
@@ -41,8 +41,8 @@
           "points_by_facet": [
             {
               "date": "2010",
-              "value": 74227,
-              "facet": 2517965213
+              "value": 73759,
+              "facet": 2176550201
             }
           ]
         }
@@ -151,15 +151,16 @@
       "observation_period": "P1Y",
       "unit": "InternationalDollar"
     },
+    "2176550201": {
+      "import_name": "USCensusPEP_Annual_Population",
+      "provenance_url": "https://www2.census.gov/programs-surveys/popest/tables",
+      "measurement_method": "CensusPEPSurvey",
+      "observation_period": "P1Y"
+    },
     "2343540064": {
       "import_name": "FBIGovCrime_AggCountry",
       "provenance_url": "http://www.fbi.gov/services/cjis/ucr",
       "observation_period": "P1Y"
-    },
-    "2517965213": {
-      "import_name": "CensusPEP",
-      "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
-      "measurement_method": "CensusPEPSurvey"
     },
     "4277990144": {
       "import_name": "FBIGovCrime",

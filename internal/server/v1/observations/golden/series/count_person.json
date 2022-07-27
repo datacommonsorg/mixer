@@ -442,48 +442,57 @@
     },
     {
       "date": "2010",
-      "value": 309326085
+      "value": 309327143
     },
     {
       "date": "2011",
-      "value": 311580009
+      "value": 311583481
     },
     {
       "date": "2012",
-      "value": 313874218
+      "value": 313877662
     },
     {
       "date": "2013",
-      "value": 316057727
+      "value": 316059947
     },
     {
       "date": "2014",
-      "value": 318386421
+      "value": 318386329
     },
     {
       "date": "2015",
-      "value": 320742673
+      "value": 320738994
     },
     {
       "date": "2016",
-      "value": 323071342
+      "value": 323071755
     },
     {
       "date": "2017",
-      "value": 325147121
+      "value": 325122128
     },
     {
       "date": "2018",
-      "value": 327167434
+      "value": 326838199
     },
     {
       "date": "2019",
-      "value": 328239523
+      "value": 328329953
+    },
+    {
+      "date": "2020",
+      "value": 329484123
+    },
+    {
+      "date": "2021",
+      "value": 331893745
     }
   ],
   "facet": {
-    "import_name": "CensusPEP",
-    "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
-    "measurement_method": "CensusPEPSurvey"
+    "import_name": "USCensusPEP_Annual_Population",
+    "provenance_url": "https://www2.census.gov/programs-surveys/popest/tables",
+    "measurement_method": "CensusPEPSurvey",
+    "observation_period": "P1Y"
   }
 }

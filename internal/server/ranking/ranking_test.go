@@ -30,10 +30,10 @@ func TestGetScorePb(t *testing.T) {
 	}{
 		{
 			&pb.SourceSeries{ImportName: "CensusPEP", MeasurementMethod: "CensusPEPSurvey"},
-			0,
+			100,
 		},
 		{
-			&pb.SourceSeries{ImportName: "CensusPEP", MeasurementMethod: "CensusPEPSurvey", ObservationPeriod: "P1Y"},
+			&pb.SourceSeries{ImportName: "USCensusPEP_Annual_Population", MeasurementMethod: "CensusPEPSurvey", ObservationPeriod: "P1Y"},
 			0,
 		},
 		{
@@ -48,10 +48,10 @@ func TestGetScorePb(t *testing.T) {
 			&pb.SourceSeries{ImportName: "NASA_NEXDCP30", MeasurementMethod: "NASA_Mean_CCSM4", ObservationPeriod: "P1M"},
 			2,
 		},
-        { // test that an import name that does not exist returns the BaseRank
+		{ // test that an import name that does not exist returns the BaseRank
 			&pb.SourceSeries{ImportName: "THIS_IMPORT_DOES_NOT_EXIST", MeasurementMethod: "DOES_NOT_EXIST", ObservationPeriod: "DOES_NOT_EXIST"},
 			100,
-        },
+		},
 	} {
 		score := GetScorePb(c.series)
 		if diff := cmp.Diff(score, c.score); diff != "" {
@@ -68,10 +68,10 @@ func TestSeriesByRank(t *testing.T) {
 		{
 			[]*pb.SourceSeries{
 				{ImportName: "CensusACS5YearSurvey", MeasurementMethod: "CensusACS5yrSurvey"},
-				{ImportName: "CensusPEP", MeasurementMethod: "CensusPEPSurvey"},
+				{ImportName: "USCensusPEP_Annual_Population", MeasurementMethod: "CensusPEPSurvey", ObservationPeriod: "P1Y"},
 			},
 			[]*pb.SourceSeries{
-				{ImportName: "CensusPEP", MeasurementMethod: "CensusPEPSurvey"},
+				{ImportName: "USCensusPEP_Annual_Population", MeasurementMethod: "CensusPEPSurvey", ObservationPeriod: "P1Y"},
 				{ImportName: "CensusACS5YearSurvey", MeasurementMethod: "CensusACS5yrSurvey"},
 			},
 		},
