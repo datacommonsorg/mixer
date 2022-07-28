@@ -16,6 +16,9 @@ package main
 
 import (
 	"context"
+	"runtime"
+	"runtime/pprof"
+	"os"
 	"flag"
 	"fmt"
 	"log"
@@ -65,6 +68,8 @@ var (
 	// Specify what services to serve
 	serveMixerService = flag.Bool("serve_mixer_service", true, "Serve Mixer service")
 	serveReconService = flag.Bool("serve_recon_service", false, "Serve Recon service")
+	// Profile startup memory instead of listening for requests
+	memprofile = flag.String("memprofile", "", "write memory profile to `file`")
 )
 
 const (
@@ -214,13 +219,26 @@ func main() {
 	healthService := healthcheck.NewHealthChecker()
 	grpc_health_v1.RegisterHealthServer(srv, healthService)
 
-	// Listen on network
-	lis, err := net.Listen("tcp", fmt.Sprintf(":%d", *port))
-	if err != nil {
-		log.Fatalf("Failed to listen on network: %v", err)
-	}
-	log.Println("Mixer ready to serve!!")
-	if err := srv.Serve(lis); err != nil {
-		log.Fatalf("Failed to serve: %v", err)
+	if *memprofile != "" {
+		f, err := os.Create(*memprofile)
+        if err != nil {
+            log.Fatalf("could not create memory profile: ", err)
+        }
+        defer f.Close() // error handling omitted for example
+        runtime.GC() // get up-to-date statistics
+        if err := pprof.WriteHeapProfile(f); err != nil {
+            log.Fatalf("could not write memory profile: ", err)
+        }
+
+	} else {
+		// Listen on network
+		lis, err := net.Listen("tcp", fmt.Sprintf(":%d", *port))
+		if err != nil {
+			log.Fatalf("Failed to listen on network: %v", err)
+		}
+		log.Println("Mixer ready to serve!!")
+		if err := srv.Serve(lis); err != nil {
+			log.Fatalf("Failed to serve: %v", err)
+		}
 	}
 }
