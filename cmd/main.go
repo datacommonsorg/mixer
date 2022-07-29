@@ -24,6 +24,8 @@ import (
 	"log"
 	"net"
 	"path"
+	_ "net/http/pprof"
+	"net/http"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server"
@@ -232,6 +234,11 @@ func main() {
 
 	} else {
 		// Listen on network
+		go func(){
+			log.Println("pre-net/http/pprof")
+			log.Println(http.ListenAndServe("localhost:6060", nil))
+			log.Println("post-net/http/pprof")
+		}()
 		lis, err := net.Listen("tcp", fmt.Sprintf(":%d", *port))
 		if err != nil {
 			log.Fatalf("Failed to listen on network: %v", err)
