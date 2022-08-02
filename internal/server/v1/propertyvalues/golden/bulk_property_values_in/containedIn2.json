@@ -8009,6 +8009,38 @@
       "entity": "geoId/06053",
       "values": [
         {
+          "name": "grid_4km/36.33333_-121.33333",
+          "types": [
+            "GeoGridPlace_4KM"
+          ],
+          "dcid": "grid_4km/36.33333_-121.33333",
+          "provenanceId": "dc/1cvgxf"
+        },
+        {
+          "name": "grid_4km/36.33333_-121.37500",
+          "types": [
+            "GeoGridPlace_4KM"
+          ],
+          "dcid": "grid_4km/36.33333_-121.37500",
+          "provenanceId": "dc/1cvgxf"
+        },
+        {
+          "name": "grid_4km/36.33333_-121.41667",
+          "types": [
+            "GeoGridPlace_4KM"
+          ],
+          "dcid": "grid_4km/36.33333_-121.41667",
+          "provenanceId": "dc/1cvgxf"
+        },
+        {
+          "name": "grid_4km/36.33333_-121.45833",
+          "types": [
+            "GeoGridPlace_4KM"
+          ],
+          "dcid": "grid_4km/36.33333_-121.45833",
+          "provenanceId": "dc/1cvgxf"
+        },
+        {
           "name": "grid_4km/36.33333_-121.50000",
           "types": [
             "GeoGridPlace_4KM"
