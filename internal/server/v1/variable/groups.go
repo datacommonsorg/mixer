@@ -35,7 +35,7 @@ func Groups(
 	// to here direclty. Should also move the golden tests here.
 	tmp, err := statvar.GetStatVarGroup(
 		ctx,
-		&pb.GetStatVarGroupRequest{Places: entities},
+		&pb.GetStatVarGroupRequest{Entities: entities},
 		store,
 		cache,
 	)

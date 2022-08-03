@@ -8,6 +8,7 @@ package proto
 
 import (
 	context "context"
+
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
@@ -88,9 +89,9 @@ type MixerClient interface {
 	GetPlaceStatVars(ctx context.Context, in *GetPlaceStatVarsRequest, opts ...grpc.CallOption) (*GetPlaceStatVarsResponse, error)
 	// Give a list of place dcids, return metadata for each place.
 	GetPlaceMetadata(ctx context.Context, in *GetPlaceMetadataRequest, opts ...grpc.CallOption) (*GetPlaceMetadataResponse, error)
-	// Given a list of place dcids, returns the union of available
-	// statistical variables for the places.
-	GetPlaceStatVarsUnionV1(ctx context.Context, in *GetPlaceStatVarsUnionRequest, opts ...grpc.CallOption) (*GetPlaceStatVarsUnionResponse, error)
+	// Given a list of entity dcids, returns the union of available
+	// statistical variables for the entities.
+	GetEntityStatVarsUnionV1(ctx context.Context, in *GetEntityStatVarsUnionRequest, opts ...grpc.CallOption) (*GetEntityStatVarsUnionResponse, error)
 	// Given ancestor place, child place type and stat vars, return the dates that
 	// have data for each stat var across all child places.
 	// [!! Deprecated] in favor of GetStatDateWithinPlace
@@ -98,10 +99,10 @@ type MixerClient interface {
 	// Given ancestor place, child place type and stat vars, return the dates and
 	// place count for each source
 	GetStatDateWithinPlace(ctx context.Context, in *GetStatDateWithinPlaceRequest, opts ...grpc.CallOption) (*GetStatDateWithinPlaceResponse, error)
-	// Given a place, get the statvar group for stat vars that have data for it.
+	// Given an entity, get the statvar group for stat vars that have data for it.
 	GetStatVarGroup(ctx context.Context, in *GetStatVarGroupRequest, opts ...grpc.CallOption) (*StatVarGroups, error)
 	// Get the stat var group node info. The children stat var and stat var group
-	// should have data for at least one of the give places.
+	// should have data for at least one of the given entities.
 	GetStatVarGroupNode(ctx context.Context, in *GetStatVarGroupNodeRequest, opts ...grpc.CallOption) (*StatVarGroupNode, error)
 	// Get the path from a stat var or a stat var group path to the root
 	// of stat var hierarchy
@@ -364,9 +365,9 @@ func (c *mixerClient) GetPlaceMetadata(ctx context.Context, in *GetPlaceMetadata
 	return out, nil
 }
 
-func (c *mixerClient) GetPlaceStatVarsUnionV1(ctx context.Context, in *GetPlaceStatVarsUnionRequest, opts ...grpc.CallOption) (*GetPlaceStatVarsUnionResponse, error) {
-	out := new(GetPlaceStatVarsUnionResponse)
-	err := c.cc.Invoke(ctx, "/datacommons.Mixer/GetPlaceStatVarsUnionV1", in, out, opts...)
+func (c *mixerClient) GetEntityStatVarsUnionV1(ctx context.Context, in *GetEntityStatVarsUnionRequest, opts ...grpc.CallOption) (*GetEntityStatVarsUnionResponse, error) {
+	out := new(GetEntityStatVarsUnionResponse)
+	err := c.cc.Invoke(ctx, "/datacommons.Mixer/GetEntityStatVarsUnionV1", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -740,9 +741,9 @@ type MixerServer interface {
 	GetPlaceStatVars(context.Context, *GetPlaceStatVarsRequest) (*GetPlaceStatVarsResponse, error)
 	// Give a list of place dcids, return metadata for each place.
 	GetPlaceMetadata(context.Context, *GetPlaceMetadataRequest) (*GetPlaceMetadataResponse, error)
-	// Given a list of place dcids, returns the union of available
-	// statistical variables for the places.
-	GetPlaceStatVarsUnionV1(context.Context, *GetPlaceStatVarsUnionRequest) (*GetPlaceStatVarsUnionResponse, error)
+	// Given a list of entity dcids, returns the union of available
+	// statistical variables for the entities.
+	GetEntityStatVarsUnionV1(context.Context, *GetEntityStatVarsUnionRequest) (*GetEntityStatVarsUnionResponse, error)
 	// Given ancestor place, child place type and stat vars, return the dates that
 	// have data for each stat var across all child places.
 	// [!! Deprecated] in favor of GetStatDateWithinPlace
@@ -750,10 +751,10 @@ type MixerServer interface {
 	// Given ancestor place, child place type and stat vars, return the dates and
 	// place count for each source
 	GetStatDateWithinPlace(context.Context, *GetStatDateWithinPlaceRequest) (*GetStatDateWithinPlaceResponse, error)
-	// Given a place, get the statvar group for stat vars that have data for it.
+	// Given an entity, get the statvar group for stat vars that have data for it.
 	GetStatVarGroup(context.Context, *GetStatVarGroupRequest) (*StatVarGroups, error)
 	// Get the stat var group node info. The children stat var and stat var group
-	// should have data for at least one of the give places.
+	// should have data for at least one of the given entities.
 	GetStatVarGroupNode(context.Context, *GetStatVarGroupNodeRequest) (*StatVarGroupNode, error)
 	// Get the path from a stat var or a stat var group path to the root
 	// of stat var hierarchy
@@ -868,8 +869,8 @@ func (UnimplementedMixerServer) GetPlaceStatVars(context.Context, *GetPlaceStatV
 func (UnimplementedMixerServer) GetPlaceMetadata(context.Context, *GetPlaceMetadataRequest) (*GetPlaceMetadataResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetPlaceMetadata not implemented")
 }
-func (UnimplementedMixerServer) GetPlaceStatVarsUnionV1(context.Context, *GetPlaceStatVarsUnionRequest) (*GetPlaceStatVarsUnionResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetPlaceStatVarsUnionV1 not implemented")
+func (UnimplementedMixerServer) GetEntityStatVarsUnionV1(context.Context, *GetEntityStatVarsUnionRequest) (*GetEntityStatVarsUnionResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetEntityStatVarsUnionV1 not implemented")
 }
 func (UnimplementedMixerServer) GetPlaceStatDateWithinPlace(context.Context, *GetPlaceStatDateWithinPlaceRequest) (*GetPlaceStatDateWithinPlaceResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetPlaceStatDateWithinPlace not implemented")
@@ -1414,20 +1415,20 @@ func _Mixer_GetPlaceMetadata_Handler(srv interface{}, ctx context.Context, dec f
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Mixer_GetPlaceStatVarsUnionV1_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetPlaceStatVarsUnionRequest)
+func _Mixer_GetEntityStatVarsUnionV1_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetEntityStatVarsUnionRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(MixerServer).GetPlaceStatVarsUnionV1(ctx, in)
+		return srv.(MixerServer).GetEntityStatVarsUnionV1(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/datacommons.Mixer/GetPlaceStatVarsUnionV1",
+		FullMethod: "/datacommons.Mixer/GetEntityStatVarsUnionV1",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).GetPlaceStatVarsUnionV1(ctx, req.(*GetPlaceStatVarsUnionRequest))
+		return srv.(MixerServer).GetEntityStatVarsUnionV1(ctx, req.(*GetEntityStatVarsUnionRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -2130,8 +2131,8 @@ var Mixer_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _Mixer_GetPlaceMetadata_Handler,
 		},
 		{
-			MethodName: "GetPlaceStatVarsUnionV1",
-			Handler:    _Mixer_GetPlaceStatVarsUnionV1_Handler,
+			MethodName: "GetEntityStatVarsUnionV1",
+			Handler:    _Mixer_GetEntityStatVarsUnionV1_Handler,
 		},
 		{
 			MethodName: "GetPlaceStatDateWithinPlace",

@@ -209,11 +209,11 @@ func (s *Server) GetPlaceStatVars(
 	return placestatvar.GetPlaceStatVars(ctx, in, s.store)
 }
 
-// GetPlaceStatVarsUnionV1 implements API for Mixer.GetPlaceStatVarsUnionV1.
-func (s *Server) GetPlaceStatVarsUnionV1(
-	ctx context.Context, in *pb.GetPlaceStatVarsUnionRequest,
-) (*pb.GetPlaceStatVarsUnionResponse, error) {
-	return statvar.GetPlaceStatVarsUnionV1(ctx, in, s.store)
+// GetEntityStatVarsUnionV1 implements API for Mixer.GetEntityStatVarsUnionV1.
+func (s *Server) GetEntityStatVarsUnionV1(
+	ctx context.Context, in *pb.GetEntityStatVarsUnionRequest,
+) (*pb.GetEntityStatVarsUnionResponse, error) {
+	return statvar.GetEntityStatVarsUnionV1(ctx, in, s.store)
 }
 
 // GetStatVarGroup implements API for Mixer.GetStatVarGroup.

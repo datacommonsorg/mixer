@@ -117,15 +117,15 @@ func GetStatVarGroup(
 	store *store.Store,
 	cache *resource.Cache,
 ) (*pb.StatVarGroups, error) {
-	places := in.GetPlaces()
+	entities := in.GetEntities()
 	var statVars []string
-	// Only read place stat vars when the place is provided.
+	// Only read entity stat vars when the entity is provided.
 	// User can provide any arbitrary dcid, which might not be associated with
 	// stat vars. In this case, an empty response is returned.
-	if len(places) > 0 {
-		svUnionResp, err := GetPlaceStatVarsUnionV1(
+	if len(entities) > 0 {
+		svUnionResp, err := GetEntityStatVarsUnionV1(
 			ctx,
-			&pb.GetPlaceStatVarsUnionRequest{Dcids: places},
+			&pb.GetEntityStatVarsUnionRequest{Dcids: entities},
 			store,
 		)
 		if err != nil {
@@ -180,7 +180,7 @@ func GetStatVarGroup(
 			},
 		)
 	}
-	if len(places) > 0 {
+	if len(entities) > 0 {
 		result = filterSVG(result, statVars)
 	}
 	return result, nil
@@ -193,7 +193,7 @@ func GetStatVarGroupNode(
 	store *store.Store,
 	cache *resource.Cache,
 ) (*pb.StatVarGroupNode, error) {
-	places := in.GetPlaces()
+	entities := in.GetEntities()
 	svg := in.GetStatVarGroup()
 
 	if svg == "" {
@@ -215,10 +215,10 @@ func GetStatVarGroupNode(
 	}
 	result.ParentStatVarGroups = cache.ParentSvg[svg]
 
-	// Filter result based on places
-	if len(places) > 0 {
+	// Filter result based on entities
+	if len(entities) > 0 {
 		// Get the stat var and stat var group IDs to check if they are valid for
-		// given places.
+		// given entities.
 		allIDs := []string{svg}
 		for _, item := range result.ChildStatVarGroups {
 			allIDs = append(allIDs, item.Id)
@@ -227,8 +227,8 @@ func GetStatVarGroupNode(
 			allIDs = append(allIDs, item.Id)
 		}
 		allIDs = append(allIDs, result.ParentStatVarGroups...)
-		// Check if stat data exists for given places
-		statVarCount, err := Count(ctx, store, allIDs, places)
+		// Check if stat data exists for given entities
+		statVarCount, err := Count(ctx, store, allIDs, entities)
 		if err != nil {
 			return nil, err
 		}
@@ -236,7 +236,7 @@ func GetStatVarGroupNode(
 		result.DescendentStatVarCount = 0
 		if existence, ok := statVarCount[svg]; ok && len(existence) > 0 {
 			for _, count := range existence {
-				// Use the largest count among all places.
+				// Use the largest count among all entities.
 				if count > result.GetDescendentStatVarCount() {
 					result.DescendentStatVarCount = count
 				}
@@ -247,7 +247,7 @@ func GetStatVarGroupNode(
 			item.DescendentStatVarCount = 0
 			if existence, ok := statVarCount[item.Id]; ok && len(existence) > 0 {
 				for _, count := range existence {
-					// Use the largest count among all places
+					// Use the largest count among all entities
 					if count > item.DescendentStatVarCount {
 						item.DescendentStatVarCount = count
 					}

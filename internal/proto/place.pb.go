@@ -38,10 +38,11 @@
 package proto
 
 import (
-	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
-	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
 	sync "sync"
+
+	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
+	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 )
 
 const (
@@ -926,20 +927,20 @@ func (x *GetPlaceStatVarsResponse) GetPlaces() map[string]*StatVars {
 	return nil
 }
 
-// Request message for GetPlaceStatVarsUnionV1 API.
-type GetPlaceStatVarsUnionRequest struct {
+// Request message for GetEntityStatVarsUnionV1 API.
+type GetEntityStatVarsUnionRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// DCIDs of the places.
+	// DCIDs of the entities.
 	Dcids []string `protobuf:"bytes,1,rep,name=dcids,proto3" json:"dcids,omitempty"`
 	// (optional) DCID of stat vars to filter for
 	StatVars []string `protobuf:"bytes,2,rep,name=stat_vars,json=statVars,proto3" json:"stat_vars,omitempty"`
 }
 
-func (x *GetPlaceStatVarsUnionRequest) Reset() {
-	*x = GetPlaceStatVarsUnionRequest{}
+func (x *GetEntityStatVarsUnionRequest) Reset() {
+	*x = GetEntityStatVarsUnionRequest{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_place_proto_msgTypes[16]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -947,13 +948,13 @@ func (x *GetPlaceStatVarsUnionRequest) Reset() {
 	}
 }
 
-func (x *GetPlaceStatVarsUnionRequest) String() string {
+func (x *GetEntityStatVarsUnionRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetPlaceStatVarsUnionRequest) ProtoMessage() {}
+func (*GetEntityStatVarsUnionRequest) ProtoMessage() {}
 
-func (x *GetPlaceStatVarsUnionRequest) ProtoReflect() protoreflect.Message {
+func (x *GetEntityStatVarsUnionRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_place_proto_msgTypes[16]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -965,27 +966,27 @@ func (x *GetPlaceStatVarsUnionRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetPlaceStatVarsUnionRequest.ProtoReflect.Descriptor instead.
-func (*GetPlaceStatVarsUnionRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use GetEntityStatVarsUnionRequest.ProtoReflect.Descriptor instead.
+func (*GetEntityStatVarsUnionRequest) Descriptor() ([]byte, []int) {
 	return file_place_proto_rawDescGZIP(), []int{16}
 }
 
-func (x *GetPlaceStatVarsUnionRequest) GetDcids() []string {
+func (x *GetEntityStatVarsUnionRequest) GetDcids() []string {
 	if x != nil {
 		return x.Dcids
 	}
 	return nil
 }
 
-func (x *GetPlaceStatVarsUnionRequest) GetStatVars() []string {
+func (x *GetEntityStatVarsUnionRequest) GetStatVars() []string {
 	if x != nil {
 		return x.StatVars
 	}
 	return nil
 }
 
-// Response message for GetPlaceStatVarsUnionV1 API.
-type GetPlaceStatVarsUnionResponse struct {
+// Response message for GetEntityStatVarsUnionV1 API.
+type GetEntityStatVarsUnionResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
@@ -993,8 +994,8 @@ type GetPlaceStatVarsUnionResponse struct {
 	StatVars []string `protobuf:"bytes,1,rep,name=stat_vars,json=statVars,proto3" json:"stat_vars,omitempty"`
 }
 
-func (x *GetPlaceStatVarsUnionResponse) Reset() {
-	*x = GetPlaceStatVarsUnionResponse{}
+func (x *GetEntityStatVarsUnionResponse) Reset() {
+	*x = GetEntityStatVarsUnionResponse{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_place_proto_msgTypes[17]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1002,13 +1003,13 @@ func (x *GetPlaceStatVarsUnionResponse) Reset() {
 	}
 }
 
-func (x *GetPlaceStatVarsUnionResponse) String() string {
+func (x *GetEntityStatVarsUnionResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetPlaceStatVarsUnionResponse) ProtoMessage() {}
+func (*GetEntityStatVarsUnionResponse) ProtoMessage() {}
 
-func (x *GetPlaceStatVarsUnionResponse) ProtoReflect() protoreflect.Message {
+func (x *GetEntityStatVarsUnionResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_place_proto_msgTypes[17]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1020,12 +1021,12 @@ func (x *GetPlaceStatVarsUnionResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetPlaceStatVarsUnionResponse.ProtoReflect.Descriptor instead.
-func (*GetPlaceStatVarsUnionResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use GetEntityStatVarsUnionResponse.ProtoReflect.Descriptor instead.
+func (*GetEntityStatVarsUnionResponse) Descriptor() ([]byte, []int) {
 	return file_place_proto_rawDescGZIP(), []int{17}
 }
 
-func (x *GetPlaceStatVarsUnionResponse) GetStatVars() []string {
+func (x *GetEntityStatVarsUnionResponse) GetStatVars() []string {
 	if x != nil {
 		return x.StatVars
 	}
@@ -1830,8 +1831,8 @@ var file_place_proto_goTypes = []interface{}{
 	(*StatVars)(nil),                            // 13: datacommons.StatVars
 	(*GetPlaceStatVarsRequest)(nil),             // 14: datacommons.GetPlaceStatVarsRequest
 	(*GetPlaceStatVarsResponse)(nil),            // 15: datacommons.GetPlaceStatVarsResponse
-	(*GetPlaceStatVarsUnionRequest)(nil),        // 16: datacommons.GetPlaceStatVarsUnionRequest
-	(*GetPlaceStatVarsUnionResponse)(nil),       // 17: datacommons.GetPlaceStatVarsUnionResponse
+	(*GetEntityStatVarsUnionRequest)(nil),       // 16: datacommons.GetEntityStatVarsUnionRequest
+	(*GetEntityStatVarsUnionResponse)(nil),      // 17: datacommons.GetEntityStatVarsUnionResponse
 	(*GetPlaceStatDateWithinPlaceRequest)(nil),  // 18: datacommons.GetPlaceStatDateWithinPlaceRequest
 	(*GetPlaceStatDateWithinPlaceResponse)(nil), // 19: datacommons.GetPlaceStatDateWithinPlaceResponse
 	(*PlaceMetadataCache)(nil),                  // 20: datacommons.PlaceMetadataCache
@@ -2075,7 +2076,7 @@ func file_place_proto_init() {
 			}
 		}
 		file_place_proto_msgTypes[16].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetPlaceStatVarsUnionRequest); i {
+			switch v := v.(*GetEntityStatVarsUnionRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2087,7 +2088,7 @@ func file_place_proto_init() {
 			}
 		}
 		file_place_proto_msgTypes[17].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetPlaceStatVarsUnionResponse); i {
+			switch v := v.(*GetEntityStatVarsUnionResponse); i {
 			case 0:
 				return &v.state
 			case 1:

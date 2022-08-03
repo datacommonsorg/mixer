@@ -28,10 +28,11 @@
 package proto
 
 import (
+	reflect "reflect"
+
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
-	reflect "reflect"
 )
 
 const (
@@ -642,7 +643,7 @@ var file_mixer_proto_goTypes = []interface{}{
 	(*GetPlaceStatsVarRequest)(nil),             // 20: datacommons.GetPlaceStatsVarRequest
 	(*GetPlaceStatVarsRequest)(nil),             // 21: datacommons.GetPlaceStatVarsRequest
 	(*GetPlaceMetadataRequest)(nil),             // 22: datacommons.GetPlaceMetadataRequest
-	(*GetPlaceStatVarsUnionRequest)(nil),        // 23: datacommons.GetPlaceStatVarsUnionRequest
+	(*GetEntityStatVarsUnionRequest)(nil),       // 23: datacommons.GetEntityStatVarsUnionRequest
 	(*GetPlaceStatDateWithinPlaceRequest)(nil),  // 24: datacommons.GetPlaceStatDateWithinPlaceRequest
 	(*GetStatDateWithinPlaceRequest)(nil),       // 25: datacommons.GetStatDateWithinPlaceRequest
 	(*GetStatVarGroupRequest)(nil),              // 26: datacommons.GetStatVarGroupRequest
@@ -696,7 +697,7 @@ var file_mixer_proto_goTypes = []interface{}{
 	(*GetPlaceStatsVarResponse)(nil),            // 74: datacommons.GetPlaceStatsVarResponse
 	(*GetPlaceStatVarsResponse)(nil),            // 75: datacommons.GetPlaceStatVarsResponse
 	(*GetPlaceMetadataResponse)(nil),            // 76: datacommons.GetPlaceMetadataResponse
-	(*GetPlaceStatVarsUnionResponse)(nil),       // 77: datacommons.GetPlaceStatVarsUnionResponse
+	(*GetEntityStatVarsUnionResponse)(nil),      // 77: datacommons.GetEntityStatVarsUnionResponse
 	(*GetPlaceStatDateWithinPlaceResponse)(nil), // 78: datacommons.GetPlaceStatDateWithinPlaceResponse
 	(*GetStatDateWithinPlaceResponse)(nil),      // 79: datacommons.GetStatDateWithinPlaceResponse
 	(*StatVarGroups)(nil),                       // 80: datacommons.StatVarGroups
@@ -749,7 +750,7 @@ var file_mixer_proto_depIdxs = []int32{
 	20,  // 21: datacommons.Mixer.GetPlaceStatsVar:input_type -> datacommons.GetPlaceStatsVarRequest
 	21,  // 22: datacommons.Mixer.GetPlaceStatVars:input_type -> datacommons.GetPlaceStatVarsRequest
 	22,  // 23: datacommons.Mixer.GetPlaceMetadata:input_type -> datacommons.GetPlaceMetadataRequest
-	23,  // 24: datacommons.Mixer.GetPlaceStatVarsUnionV1:input_type -> datacommons.GetPlaceStatVarsUnionRequest
+	23,  // 24: datacommons.Mixer.GetEntityStatVarsUnionV1:input_type -> datacommons.GetEntityStatVarsUnionRequest
 	24,  // 25: datacommons.Mixer.GetPlaceStatDateWithinPlace:input_type -> datacommons.GetPlaceStatDateWithinPlaceRequest
 	25,  // 26: datacommons.Mixer.GetStatDateWithinPlace:input_type -> datacommons.GetStatDateWithinPlaceRequest
 	26,  // 27: datacommons.Mixer.GetStatVarGroup:input_type -> datacommons.GetStatVarGroupRequest
@@ -807,7 +808,7 @@ var file_mixer_proto_depIdxs = []int32{
 	74,  // 79: datacommons.Mixer.GetPlaceStatsVar:output_type -> datacommons.GetPlaceStatsVarResponse
 	75,  // 80: datacommons.Mixer.GetPlaceStatVars:output_type -> datacommons.GetPlaceStatVarsResponse
 	76,  // 81: datacommons.Mixer.GetPlaceMetadata:output_type -> datacommons.GetPlaceMetadataResponse
-	77,  // 82: datacommons.Mixer.GetPlaceStatVarsUnionV1:output_type -> datacommons.GetPlaceStatVarsUnionResponse
+	77,  // 82: datacommons.Mixer.GetEntityStatVarsUnionV1:output_type -> datacommons.GetEntityStatVarsUnionResponse
 	78,  // 83: datacommons.Mixer.GetPlaceStatDateWithinPlace:output_type -> datacommons.GetPlaceStatDateWithinPlaceResponse
 	79,  // 84: datacommons.Mixer.GetStatDateWithinPlace:output_type -> datacommons.GetStatDateWithinPlaceResponse
 	80,  // 85: datacommons.Mixer.GetStatVarGroup:output_type -> datacommons.StatVarGroups
