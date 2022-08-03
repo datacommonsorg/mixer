@@ -50,9 +50,9 @@ func GetPlaceStatVars(
 	return resp, nil
 }
 
-// GetPlaceStatVarsUnionV1 implements API for Mixer.GetPlaceStatVarsUnionV1.
-func GetPlaceStatVarsUnionV1(
-	ctx context.Context, in *pb.GetPlaceStatVarsUnionRequest, store *store.Store,
-) (*pb.GetPlaceStatVarsUnionResponse, error) {
+// GetEntityStatVarsUnionV1 implements API for Mixer.GetEntityStatVarsUnionV1.
+func GetEntityStatVarsUnionV1(
+	ctx context.Context, in *pb.GetEntityStatVarsUnionRequest, store *store.Store,
+) (*pb.GetEntityStatVarsUnionResponse, error) {
 	return nil, nil
 }

@@ -94,13 +94,13 @@ func GetEntityStatVarsHelper(
 	return resp, nil
 }
 
-// GetPlaceStatVarsUnionV1 implements API for Mixer.GetPlaceStatVarsUnionV1.
-func GetPlaceStatVarsUnionV1(
-	ctx context.Context, in *pb.GetPlaceStatVarsUnionRequest, store *store.Store,
-) (*pb.GetPlaceStatVarsUnionResponse, error) {
-	// Check places
-	places := in.GetDcids()
-	if len(places) == 0 {
+// GetEntityStatVarsUnionV1 implements API for Mixer.GetEntityStatVarsUnionV1.
+func GetEntityStatVarsUnionV1(
+	ctx context.Context, in *pb.GetEntityStatVarsUnionRequest, store *store.Store,
+) (*pb.GetEntityStatVarsUnionResponse, error) {
+	// Check entities
+	entities := in.GetDcids()
+	if len(entities) == 0 {
 		return nil, status.Error(
 			codes.InvalidArgument, "Missing required arguments: dcids")
 	}
@@ -111,14 +111,14 @@ func GetPlaceStatVarsUnionV1(
 	for _, sv := range filterStatVars {
 		filterStatVarSet[sv] = struct{}{}
 	}
-	result := &pb.GetPlaceStatVarsUnionResponse{}
+	result := &pb.GetEntityStatVarsUnionResponse{}
 
 	// When given a list of stat vars to filter for, we can use the existence
 	// cache instead to check the existence of each stat var for the list of
-	// places. This is faster than getting all the stat vars for each place and
+	// entities. This is faster than getting all the stat vars for each entity and
 	// then filtering.
-	if len(filterStatVars) > 0 && len(places) > 0 {
-		statVarCount, err := Count(ctx, store, filterStatVars, places)
+	if len(filterStatVars) > 0 && len(entities) > 0 {
+		statVarCount, err := Count(ctx, store, filterStatVars, entities)
 		if err != nil {
 			return nil, err
 		}
@@ -128,18 +128,18 @@ func GetPlaceStatVarsUnionV1(
 			}
 		}
 	} else {
-		resp, err := GetEntityStatVarsHelper(ctx, places, store)
+		resp, err := GetEntityStatVarsHelper(ctx, entities, store)
 		if err != nil {
 			return nil, err
 		}
 		place2StatVars := resp
 
-		// For single place, return directly.
-		if len(places) == 1 {
-			return &pb.GetPlaceStatVarsUnionResponse{StatVars: place2StatVars[places[0]].StatVars}, nil
+		// For single entity, return directly.
+		if len(entities) == 1 {
+			return &pb.GetEntityStatVarsUnionResponse{StatVars: place2StatVars[entities[0]].StatVars}, nil
 		}
 
-		// Get union of the statvars for multiple places.
+		// Get union of the statvars for multiple entities.
 		set := map[string]bool{}
 		for _, statVars := range place2StatVars {
 			for _, sv := range statVars.GetStatVars() {
@@ -152,7 +152,7 @@ func GetPlaceStatVarsUnionV1(
 	// Also check from in-memory database
 	if !store.MemDb.IsEmpty() {
 		set := map[string]bool{}
-		hasDataStatVars, _ := store.MemDb.GetStatVars(places)
+		hasDataStatVars, _ := store.MemDb.GetStatVars(entities)
 		for _, sv := range hasDataStatVars {
 			if len(filterStatVarSet) == 0 {
 				set[sv] = true

@@ -54,7 +54,8 @@ type EntityStatVarExistence struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Set if this value is for a place+SVG-ID key, but not for place+SV-ID key.
+	// Set if this value is for an entity+SVG-ID key, but not for an entity+SV-ID
+	// key.
 	DescendentStatVarCount int32 `protobuf:"varint,2,opt,name=descendent_stat_var_count,json=descendentStatVarCount,proto3" json:"descendent_stat_var_count,omitempty"`
 }
 
@@ -292,7 +293,7 @@ type GetStatVarGroupRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Places []string `protobuf:"bytes,2,rep,name=places,proto3" json:"places,omitempty"`
+	Entities []string `protobuf:"bytes,2,rep,name=entities,proto3" json:"entities,omitempty"`
 }
 
 func (x *GetStatVarGroupRequest) Reset() {
@@ -327,9 +328,9 @@ func (*GetStatVarGroupRequest) Descriptor() ([]byte, []int) {
 	return file_stat_var_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *GetStatVarGroupRequest) GetPlaces() []string {
+func (x *GetStatVarGroupRequest) GetEntities() []string {
 	if x != nil {
-		return x.Places
+		return x.Entities
 	}
 	return nil
 }
@@ -341,10 +342,10 @@ type GetStatVarGroupNodeRequest struct {
 
 	// The stat var or stat var group ID to query for.
 	StatVarGroup string `protobuf:"bytes,1,opt,name=stat_var_group,json=statVarGroup,proto3" json:"stat_var_group,omitempty"`
-	// The places that the stat var group is associated with. The response should
-	// only contain the children stat var (group) if it has data for at least one
-	// of the places.
-	Places []string `protobuf:"bytes,2,rep,name=places,proto3" json:"places,omitempty"`
+	// The entities that the stat var group is associated with. The response
+	// should only contain the children stat var (group) if it has data for at
+	// least one of the entities.
+	Entities []string `protobuf:"bytes,2,rep,name=entities,proto3" json:"entities,omitempty"`
 }
 
 func (x *GetStatVarGroupNodeRequest) Reset() {
@@ -386,9 +387,9 @@ func (x *GetStatVarGroupNodeRequest) GetStatVarGroup() string {
 	return ""
 }
 
-func (x *GetStatVarGroupNodeRequest) GetPlaces() []string {
+func (x *GetStatVarGroupNodeRequest) GetEntities() []string {
 	if x != nil {
-		return x.Places
+		return x.Entities
 	}
 	return nil
 }

@@ -22,7 +22,7 @@ import (
 	"github.com/datacommonsorg/mixer/test"
 )
 
-func TestGetPlaceStatVarsUnionV1(t *testing.T) {
+func TestGetEntityStatVarsUnionV1(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
 
@@ -63,13 +63,13 @@ func TestGetPlaceStatVarsUnionV1(t *testing.T) {
 				2,
 			},
 		} {
-			req := &pb.GetPlaceStatVarsUnionRequest{
+			req := &pb.GetEntityStatVarsUnionRequest{
 				Dcids:    c.dcids,
 				StatVars: c.statVars,
 			}
-			resp, err := mixer.GetPlaceStatVarsUnionV1(ctx, req)
+			resp, err := mixer.GetEntityStatVarsUnionV1(ctx, req)
 			if err != nil {
-				t.Errorf("Could not GetPlaceStatsVarUnionV1: %s", err)
+				t.Errorf("Could not GetEntityStatVarUnionV1: %s", err)
 				continue
 			}
 			if len(resp.StatVars) < c.minCount {
@@ -95,7 +95,7 @@ func TestGetPlaceStatVarsUnionV1(t *testing.T) {
 	}
 
 	if err := test.TestDriver(
-		"GetPlaceStatVarsUnionV1", &test.TestOption{UseMemdb: true}, testSuite); err != nil {
+		"GetEntityStatVarsUnionV1", &test.TestOption{UseMemdb: true}, testSuite); err != nil {
 		t.Errorf("TestDriver() = %s", err)
 	}
 }

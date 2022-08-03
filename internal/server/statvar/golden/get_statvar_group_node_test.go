@@ -35,7 +35,7 @@ func TestGetStatVarGroupNode(t *testing.T) {
 
 	testSuite := func(mixer pb.MixerClient, recon pb.ReconClient, latencyTest bool) {
 		for _, c := range []struct {
-			places     []string
+			entities   []string
 			svg        string
 			goldenFile string
 		}{
@@ -88,7 +88,7 @@ func TestGetStatVarGroupNode(t *testing.T) {
 			},
 		} {
 			resp, err := mixer.GetStatVarGroupNode(ctx, &pb.GetStatVarGroupNodeRequest{
-				Places:       c.places,
+				Entities:     c.entities,
 				StatVarGroup: c.svg,
 			})
 			if err != nil {
