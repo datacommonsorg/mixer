@@ -29,7 +29,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/v1/variables"
 )
 
-// Query implements API for Mixer.Query.
+// QueryV1 implements API for Mixer.Query.
 func (s *Server) QueryV1(
 	ctx context.Context, in *pb.QueryRequest,
 ) (*pb.QueryResponse, error) {
