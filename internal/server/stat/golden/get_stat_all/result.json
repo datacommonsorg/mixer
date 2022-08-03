@@ -652,7 +652,7 @@
               },
               "measurementMethod": "WikidataPopulation",
               "importName": "WikidataPopulation",
-              "provenanceDomain": "wikidata.org",
+              "provenanceDomain": "wikimediafoundation.org",
               "provenanceUrl": "https://www.wikidata.org/wiki/Wikidata:Main_Page"
             }
           ]
@@ -1140,7 +1140,7 @@
               },
               "measurementMethod": "WikidataPopulation",
               "importName": "WikidataPopulation",
-              "provenanceDomain": "wikidata.org",
+              "provenanceDomain": "wikimediafoundation.org",
               "provenanceUrl": "https://www.wikidata.org/wiki/Wikidata:Main_Page"
             }
           ]
@@ -1317,7 +1317,7 @@
               },
               "measurementMethod": "WikidataPopulation",
               "importName": "WikidataPopulation",
-              "provenanceDomain": "wikidata.org",
+              "provenanceDomain": "wikimediafoundation.org",
               "provenanceUrl": "https://www.wikidata.org/wiki/Wikidata:Main_Page"
             }
           ]
