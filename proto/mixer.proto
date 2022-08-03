@@ -353,6 +353,15 @@ service Mixer {
   }
 
   // ======================  V1   V1   V1   V1  ======================
+
+  // Query DataCommons Graph with Sparql.
+  rpc QueryV1(QueryRequest) returns (QueryResponse) {
+    option (google.api.http) = {
+      get : "/v1/query"
+      additional_bindings : {post : "/query" body : "*"}
+    };
+  }
+
   rpc Properties(datacommons.v1.PropertiesRequest)
       returns (datacommons.v1.PropertiesResponse) {
     option (google.api.http) = {
