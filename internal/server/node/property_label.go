@@ -54,7 +54,7 @@ func GetPropertiesHelper(
 		}
 		inLabelList := [][]string{}
 		outLabelList := [][]string{}
-		// Merge cache value from base and branch caches
+		// Merge cache value from all import groups
 		for _, btData := range btDataList {
 			for _, row := range btData {
 				if row.Parts[0] == entity {

@@ -18,6 +18,13 @@ package datacommons.v1;
 
 import "entity.proto";
 
+
+// Full lists of in and out types for a given node ID and property.
+message PropertyTypes {
+  repeated string in_types = 1;
+  repeated string out_types = 2;
+}
+
 message PropertyValuesRequest {
   string entity_property = 1;
   // [Optional]

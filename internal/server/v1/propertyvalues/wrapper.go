@@ -16,6 +16,7 @@ package propertyvalues
 
 import (
 	"context"
+	"sort"
 	"strings"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
@@ -76,10 +77,18 @@ func PropertyValues(
 			return nil, err
 		}
 	}
-	return &pb.PropertyValuesResponse{
-		Values:    data[property][entity],
+	types := []string{}
+	for t := range data[property][entity] {
+		types = append(types, t)
+	}
+	sort.Strings(types)
+	res := &pb.PropertyValuesResponse{
 		NextToken: nextToken,
-	}, nil
+	}
+	for _, t := range types {
+		res.Values = append(res.Values, data[property][entity][t]...)
+	}
+	return res, nil
 }
 
 // BulkPropertyValues implements mixer.BulkPropertyValues handler.
@@ -130,11 +139,15 @@ func BulkPropertyValues(
 		NextToken: nextToken,
 	}
 	for _, e := range entities {
+		vals := []*pb.EntityInfo{}
+		for _, v := range data[property][e] {
+			vals = append(vals, v...)
+		}
 		res.Data = append(
 			res.Data,
 			&pb.BulkPropertyValuesResponse_EntityPropertyValues{
 				Entity: e,
-				Values: data[property][e],
+				Values: vals,
 			},
 		)
 	}
