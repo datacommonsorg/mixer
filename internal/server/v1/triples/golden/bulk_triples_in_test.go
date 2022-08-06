@@ -47,7 +47,7 @@ func TestBulkTriplesIn(t *testing.T) {
 			{
 				"result2.json",
 				[]string{"Country", "BiologicalSpecimen", "Count_Person", "dummy"},
-				"H4sIAAAAAAAA/+Iy5mJ3zi/NKymq5BLLTU0sLi1KzU3NK3FJzcvPzcxLLMkvEmIQYuJgFGLiYBJi4mAWYuJg4bLjEnLKzM/JT89MTswJLkhNzsxNzSNBvwMXD9jS+IDUouJ8fDpZOBgFGIVYOJjAJDOYZBFg5DLkYk0pzc0lxdEGCJ/yFiXmpad65iXnlKakFqNZA1IPscQUqzcxNKNbpI/mO4IaNGCeIahSE+EHtpLKglT/NJyON8DqeIQumNGgUGWCOgPV3ZhqYc5QhDkYpxIAAAAA//8BAAD//wiZxtFYAgAA",
+				"H4sIAAAAAAAA/6TOwUrDQBDG8SZddBkUwhR8DbFHD0JtL54sFL3KmI5lIJkNsxMhby+NqGCtl153+f3ng1s4X6Ze3Qa4NNIdP2jd9FvOENeWOjYfcIIhFlWBIZZVgWWcYoihKuDux5750PHjG8wW21ZUshu5vPPCmG5O9POj/vrQh6X8M3h+CL4ejpoV4L2kJu2kpmbTcS0t6zf/4w8nWMZ9ocQQp2MrwBNcjIde1mw5KVy1TLk3bll9xZpaUfJkMNs4uWTfB5/JhF4b/jXtMzqO+wAAAP//AQAA//9POo95vgEAAA==",
 			},
 		} {
 			req := &pb.BulkTriplesRequest{

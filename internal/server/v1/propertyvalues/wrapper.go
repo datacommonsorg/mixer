@@ -61,8 +61,8 @@ func PropertyValues(
 	data, pi, err := Fetch(
 		ctx,
 		store,
-		[]string{property},
 		[]string{entity},
+		[]string{property},
 		limit,
 		token,
 		direction,
@@ -78,7 +78,7 @@ func PropertyValues(
 		}
 	}
 	types := []string{}
-	for t := range data[property][entity] {
+	for t := range data[entity][property] {
 		types = append(types, t)
 	}
 	sort.Strings(types)
@@ -86,7 +86,12 @@ func PropertyValues(
 		NextToken: nextToken,
 	}
 	for _, t := range types {
-		res.Values = append(res.Values, data[property][entity][t]...)
+		for _, e := range data[entity][property][t] {
+			if t != "" {
+				e.Types = []string{t}
+			}
+			res.Values = append(res.Values, e)
+		}
 	}
 	return res, nil
 }
@@ -119,8 +124,8 @@ func BulkPropertyValues(
 	data, pi, err := Fetch(
 		ctx,
 		store,
-		[]string{property},
 		entities,
+		[]string{property},
 		limit,
 		token,
 		direction,
@@ -140,8 +145,13 @@ func BulkPropertyValues(
 	}
 	for _, e := range entities {
 		vals := []*pb.EntityInfo{}
-		for _, v := range data[property][e] {
-			vals = append(vals, v...)
+		for t, v := range data[e][property] {
+			for _, e := range v {
+				if t != "" {
+					e.Types = []string{t}
+				}
+				vals = append(vals, e)
+			}
 		}
 		res.Data = append(
 			res.Data,

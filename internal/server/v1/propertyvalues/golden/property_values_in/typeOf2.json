@@ -91,7 +91,6 @@
     {
       "name": "Christmas Island",
       "types": [
-        "AdministrativeArea1",
         "Country"
       ],
       "dcid": "country/CXR",
@@ -100,7 +99,6 @@
     {
       "name": "Cayman Islands",
       "types": [
-        "AdministrativeArea1",
         "Country"
       ],
       "dcid": "country/CYM",
@@ -165,7 +163,6 @@
     {
       "name": "Denmark",
       "types": [
-        "AdministrativeArea1",
         "Country"
       ],
       "dcid": "country/DNK",
@@ -262,7 +259,6 @@
     {
       "name": "Falkland Islands",
       "types": [
-        "AdministrativeArea1",
         "Country"
       ],
       "dcid": "country/FLK",
@@ -279,7 +275,6 @@
     {
       "name": "Faroe Islands",
       "types": [
-        "AdministrativeArea1",
         "Country"
       ],
       "dcid": "country/FRO",
@@ -352,7 +347,6 @@
     {
       "name": "Gibraltar",
       "types": [
-        "AdministrativeArea1",
         "Country"
       ],
       "dcid": "country/GIB",
@@ -369,8 +363,6 @@
     {
       "name": "Guadeloupe",
       "types": [
-        "AdministrativeArea1",
-        "AdministrativeArea2",
         "Country"
       ],
       "dcid": "country/GLP",
@@ -419,7 +411,6 @@
     {
       "name": "Greenland",
       "types": [
-        "AdministrativeArea1",
         "Country"
       ],
       "dcid": "country/GRL",
@@ -436,8 +427,6 @@
     {
       "name": "French Guiana",
       "types": [
-        "AdministrativeArea1",
-        "AdministrativeArea2",
         "Country"
       ],
       "dcid": "country/GUF",
@@ -446,7 +435,6 @@
     {
       "name": "Guam",
       "types": [
-        "AdministrativeArea1",
         "Country"
       ],
       "dcid": "country/GUM",
@@ -463,8 +451,6 @@
     {
       "name": "Hong Kong",
       "types": [
-        "AdministrativeArea1",
-        "City",
         "Country"
       ],
       "dcid": "country/HKG",
@@ -473,7 +459,6 @@
     {
       "name": "Heard Island and McDonald Islands",
       "types": [
-        "AdministrativeArea1",
         "Country"
       ],
       "dcid": "country/HMD",
@@ -546,7 +531,6 @@
     {
       "name": "British Indian Ocean Territory",
       "types": [
-        "AdministrativeArea1",
         "Country"
       ],
       "dcid": "country/IOT",
@@ -787,8 +771,6 @@
     {
       "name": "Macau",
       "types": [
-        "AdministrativeArea1",
-        "City",
         "Country"
       ],
       "dcid": "country/MAC",
@@ -909,7 +891,6 @@
     {
       "name": "Northern Mariana Islands",
       "types": [
-        "AdministrativeArea1",
         "Country"
       ],
       "dcid": "country/MNP",
@@ -934,7 +915,6 @@
     {
       "name": "Montserrat",
       "types": [
-        "AdministrativeArea1",
         "Country"
       ],
       "dcid": "country/MSR",
@@ -943,8 +923,6 @@
     {
       "name": "Martinique",
       "types": [
-        "AdministrativeArea1",
-        "AdministrativeArea2",
         "Country"
       ],
       "dcid": "country/MTQ",
@@ -977,8 +955,6 @@
     {
       "name": "Mayotte",
       "types": [
-        "AdministrativeArea1",
-        "AdministrativeArea2",
         "Country"
       ],
       "dcid": "country/MYT",
@@ -1011,7 +987,6 @@
     {
       "name": "Norfolk Island",
       "types": [
-        "AdministrativeArea1",
         "Country"
       ],
       "dcid": "country/NFK",
@@ -1116,7 +1091,6 @@
     {
       "name": "Pitcairn Islands",
       "types": [
-        "AdministrativeArea1",
         "Country"
       ],
       "dcid": "country/PCN",
@@ -1221,8 +1195,6 @@
     {
       "name": "Réunion",
       "types": [
-        "AdministrativeArea1",
-        "AdministrativeArea2",
         "Country"
       ],
       "dcid": "country/REU",
@@ -1295,7 +1267,6 @@
     {
       "name": "South Georgia and the South Sandwich Islands",
       "types": [
-        "AdministrativeArea1",
         "Country"
       ],
       "dcid": "country/SGS",
@@ -1304,7 +1275,6 @@
     {
       "name": "Saint Helena",
       "types": [
-        "AdministrativeArea1",
         "Country"
       ],
       "dcid": "country/SHN",
@@ -1465,7 +1435,6 @@
     {
       "name": "Turks and Caicos Islands",
       "types": [
-        "AdministrativeArea1",
         "Country"
       ],
       "dcid": "country/TCA",
@@ -1602,7 +1571,6 @@
     {
       "name": "U.S. Minor Outlying Islands",
       "types": [
-        "AdministrativeArea1",
         "Country"
       ],
       "dcid": "country/UMI",
@@ -1659,7 +1627,6 @@
     {
       "name": "British Virgin Islands",
       "types": [
-        "AdministrativeArea1",
         "Country"
       ],
       "dcid": "country/VGB",

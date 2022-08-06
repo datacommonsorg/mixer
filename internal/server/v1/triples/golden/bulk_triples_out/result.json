@@ -15,9 +15,6 @@
           "entities": [
             {
               "name": "https://datacommons.org",
-              "types": [
-                "Provenance"
-              ],
               "dcid": "dc/5l5zxr1",
               "provenanceId": "dc/5l5zxr1"
             }
@@ -27,9 +24,6 @@
           "entities": [
             {
               "name": "AdministrativeArea",
-              "types": [
-                "Class"
-              ],
               "dcid": "AdministrativeArea",
               "provenanceId": "dc/5l5zxr1"
             }
@@ -39,9 +33,6 @@
           "entities": [
             {
               "name": "Class",
-              "types": [
-                "Class"
-              ],
               "dcid": "Class",
               "provenanceId": "dc/5l5zxr1"
             }
@@ -72,9 +63,6 @@
           "entities": [
             {
               "name": "https://datacommons.org",
-              "types": [
-                "Provenance"
-              ],
               "dcid": "dc/5l5zxr1",
               "provenanceId": "dc/5l5zxr1"
             }
@@ -84,9 +72,6 @@
           "entities": [
             {
               "name": "Thing",
-              "types": [
-                "Class"
-              ],
               "dcid": "Thing",
               "provenanceId": "dc/5l5zxr1"
             }
@@ -96,9 +81,6 @@
           "entities": [
             {
               "name": "Class",
-              "types": [
-                "Class"
-              ],
               "dcid": "Class",
               "provenanceId": "dc/5l5zxr1"
             }
@@ -113,9 +95,10 @@
           "entities": [
             {
               "name": "count",
-              "types": [
-                "Property"
-              ],
+              "dcid": "count",
+              "provenanceId": "dc/d7tbsb1"
+            },
+            {
               "dcid": "count",
               "provenanceId": "dc/d7tbsb1"
             }
@@ -125,9 +108,6 @@
           "entities": [
             {
               "name": "Demographics",
-              "types": [
-                "StatVarGroup"
-              ],
               "dcid": "dc/g/Demographics",
               "provenanceId": "dc/d7tbsb1"
             }
@@ -145,9 +125,10 @@
           "entities": [
             {
               "name": "Person",
-              "types": [
-                "Class"
-              ],
+              "dcid": "Person",
+              "provenanceId": "dc/d7tbsb1"
+            },
+            {
               "dcid": "Person",
               "provenanceId": "dc/d7tbsb1"
             }
@@ -157,9 +138,6 @@
           "entities": [
             {
               "name": "https://datacommons.org",
-              "types": [
-                "Provenance"
-              ],
               "dcid": "dc/d7tbsb1",
               "provenanceId": "dc/d7tbsb1"
             }
@@ -168,10 +146,11 @@
         "statType": {
           "entities": [
             {
+              "dcid": "measuredValue",
+              "provenanceId": "dc/d7tbsb1"
+            },
+            {
               "name": "measuredValue",
-              "types": [
-                "Property"
-              ],
               "dcid": "measuredValue",
               "provenanceId": "dc/d7tbsb1"
             }
@@ -181,9 +160,10 @@
           "entities": [
             {
               "name": "StatisticalVariable",
-              "types": [
-                "Class"
-              ],
+              "dcid": "StatisticalVariable",
+              "provenanceId": "dc/d7tbsb1"
+            },
+            {
               "dcid": "StatisticalVariable",
               "provenanceId": "dc/d7tbsb1"
             }

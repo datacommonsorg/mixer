@@ -67,8 +67,8 @@ func LinkedPropertyValues(
 	data, _, err := Fetch(
 		ctx,
 		store,
-		[]string{"name"},
 		valueDcids,
+		[]string{"name"},
 		0,
 		"",
 		"out",
@@ -79,7 +79,7 @@ func LinkedPropertyValues(
 	result := &pb.PropertyValuesResponse{}
 	for _, dcid := range valueDcids {
 		var name string
-		if tmp, ok := data["name"][dcid]; ok {
+		if tmp, ok := data[dcid]["name"]; ok {
 			name = tmp[""][0].Value
 		}
 		result.Values = append(result.Values,
@@ -131,8 +131,8 @@ func BulkLinkedPropertyValues(
 	data, _, err := Fetch(
 		ctx,
 		store,
-		[]string{"name"},
 		valueDcids,
+		[]string{"name"},
 		0,
 		"",
 		"out",
@@ -148,8 +148,13 @@ func BulkLinkedPropertyValues(
 		}
 		for _, dcid := range children {
 			var name string
-			if nameValues, ok := data["name"][dcid]; ok {
-				name = nameValues[""][0].Value
+			if nameValues, ok := data[dcid]["name"]; ok {
+				if len(nameValues) > 0 {
+					name = nameValues[""][0].Value
+				} else {
+					name = ""
+				}
+
 			}
 			oneEntityResult.Values = append(oneEntityResult.Values,
 				&pb.EntityInfo{
