@@ -45,7 +45,7 @@ func TestPropertyValuesIn(t *testing.T) {
 				"containedIn1.json",
 				"containedInPlace",
 				"geoId/06",
-				1002,
+				502,
 				"",
 			},
 			{
@@ -53,13 +53,13 @@ func TestPropertyValuesIn(t *testing.T) {
 				"containedInPlace",
 				"geoId/06",
 				500,
-				"H4sIAAAAAAAA/+Iy4OJIT833TNE3MOMSSM7PK0nMzEtN8cwLyElMThViEGLiYBRi4mASYuJgFmLhYBFgAgAAAP//AQAA//9ymf/GMgAAAA==",
+				"H4sIAAAAAAAA/4zUzU6rQBQH8Aul90642iBq0rfwY+HCj5gKSqtJQ0J1a6ZwhJNMZ5phaNM39jEM7UJjM6ddTVj8f5wPGP/BZyWoUXF2fuUHuZKGo4RiJFPBc/APxoBlNVW6UqoI/4QecwIn9JgbOKHLOqHHvMDxb0ijuz6s4ZgM9zLDDURqNlcSpLEqT6QSTLCAhDcltBwqaXXuSOffGwrBS3szz2T8JAJZN3WkGmlWMS6wpkoZkNb/jTXRPLdP5YUkTiMlSw11WwUXMdZGI4GNSaz/KGAG0nC9yvJKqd0evbLeltJlTv+zE3aZ2x77zukwa+agPxpZZGi+F+cy9wdxTRLeRC3taxqR2eNBMUPZNsENLmCggV9aqR1lRGhW1mxCZo8SUInGYv30fhFDaYXu6XGmzVRg/mpQbKpx2e9hDkkg3B6ItZQd0hDLas9v7ZaU/FQtQaeCry+Y7Y7o9N/N/2x79xcAAAD//wEAAP//XVK+mGIFAAA=",
 			},
 			{
 				"geoOverlaps.json",
 				"geoOverlaps",
 				"geoId/0649670",
-				1000,
+				500,
 				"",
 			},
 			{
@@ -74,7 +74,7 @@ func TestPropertyValuesIn(t *testing.T) {
 				"typeOf",
 				"Country",
 				0,
-				"H4sIAAAAAAAA/+LS5GJ3zi/NKymq5GIrqSxI9U8TYhBi4WCUMBJi4WCSMBJi4mAWYuFgkTACAAAA//8BAAD//3IiQtwrAAAA",
+				"H4sIAAAAAAAA/+LS52J3zi/NKymq5GIrqSxI9U/jYnHOLKkUYhBi4WAUYBRi4WASYBRi4mAWYuFgEWDkMsLUABOA6JEwAumRMILpkTDissPUI+yYkpuZl1lcUpRYklmW6liUmmiI007i9Bvh0g8AAAD//wEAAP//jbVf3eUAAAA=",
 			},
 		} {
 			req := &pb.PropertyValuesRequest{

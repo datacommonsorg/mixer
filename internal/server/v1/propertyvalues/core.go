@@ -34,8 +34,8 @@ import (
 func Fetch(
 	ctx context.Context,
 	store *store.Store,
-	properties []string,
 	entities []string,
+	properties []string,
 	limit int,
 	token string,
 	direction string,
@@ -52,7 +52,7 @@ func Fetch(
 	// Empty cursor groups when no token is given.
 	var cursorGroups []*pb.CursorGroup
 	if token == "" {
-		cursorGroups = buildDefaultCursorGroups(properties, entities, propType, len(store.BtGroup.Tables()))
+		cursorGroups = buildDefaultCursorGroups(entities, properties, propType, len(store.BtGroup.Tables()))
 	} else {
 		pi, err := pagination.Decode(token)
 		if err != nil {
@@ -69,20 +69,20 @@ func Fetch(
 		// Key is  [entity, property, type]
 		if len(keys) != 3 {
 			return nil, nil, status.Errorf(
-				codes.Internal, "cursor should have two keys, cursor: %s", g)
+				codes.Internal, "cursor should have three keys, cursor: %s", g)
 		}
-		e, p, t := keys[1], keys[0], keys[2]
-		if _, ok := cursorGroup[p]; !ok {
-			cursorGroup[p] = map[string]map[string][]*pb.Cursor{}
+		e, p, t := keys[0], keys[1], keys[2]
+		if _, ok := cursorGroup[e]; !ok {
+			cursorGroup[e] = map[string]map[string][]*pb.Cursor{}
 		}
-		if _, ok := cursorGroup[p][e]; !ok {
-			cursorGroup[p][e] = map[string][]*pb.Cursor{}
+		if _, ok := cursorGroup[e][p]; !ok {
+			cursorGroup[e][p] = map[string][]*pb.Cursor{}
 		}
-		cursorGroup[p][e][t] = g.GetCursors()
+		cursorGroup[e][p][t] = g.GetCursors()
 	}
 	if direction == util.DirectionOut {
 		s := &outState{}
-		if err = s.init(ctx, store.BtGroup, properties, entities, limit, cursorGroup); err != nil {
+		if err = s.init(ctx, store.BtGroup, entities, properties, limit, cursorGroup); err != nil {
 			return nil, nil, err
 		}
 		for {
@@ -96,10 +96,10 @@ func Fetch(
 		}
 		// Out property values only use one (the preferred) import group. So here
 		// should only check if that import group has more data to compute the token.
-		for p := range s.rawEntities {
-			for e := range s.rawEntities[p] {
-				for t := range s.rawEntities[p][e] {
-					if s.rawEntities[p][e][t][s.usedImportGroup[p][e][t]] != nil {
+		for e := range s.rawEntities {
+			for p := range s.rawEntities[e] {
+				for t := range s.rawEntities[e][p] {
+					if s.rawEntities[e][p][t][s.usedImportGroup[e][p][t]] != nil {
 						return s.mergedEntities, s.getPagination(), nil
 					}
 				}
@@ -108,7 +108,7 @@ func Fetch(
 		return s.mergedEntities, nil, nil
 	} else {
 		s := &inState{}
-		if err = s.init(ctx, store.BtGroup, properties, entities, limit, cursorGroup); err != nil {
+		if err = s.init(ctx, store.BtGroup, entities, properties, limit, cursorGroup); err != nil {
 			return nil, nil, err
 		}
 		for {
@@ -123,11 +123,13 @@ func Fetch(
 		// If rawEntities is not empty, there is leftover data to be fetched via
 		// pagination. Need to return the pagination info. Otherwise, this reached
 		// the end of all data, no need to return pagination info.
-		for p := range s.rawEntities {
-			for e := range s.rawEntities[p] {
-				for _, d := range s.rawEntities[p][e] {
-					if d != nil {
-						return s.mergedEntities, s.getPagination(), nil
+		for e := range s.rawEntities {
+			for p := range s.rawEntities[e] {
+				for t := range s.rawEntities[e][p] {
+					for _, d := range s.rawEntities[e][p][t] {
+						if d != nil {
+							return s.mergedEntities, s.getPagination(), nil
+						}
 					}
 				}
 			}
@@ -142,40 +144,40 @@ func Fetch(
 // is used.
 func nextOut(ctx context.Context, s *outState, btGroup *bigtable.Group) (bool, error) {
 	accs := []*bigtable.Accessor{}
-	for _, p := range s.properties {
-		for _, e := range s.entities {
-			for t := range s.cursorGroup[p][e] {
+	for _, e := range s.entities {
+		for _, p := range s.properties {
+			for t := range s.cursorGroup[e][p] {
 				// No raw data for this "property", "entity", "type"
-				if _, ok := s.next[p][e][t]; !ok {
+				if _, ok := s.next[e][p][t]; !ok {
 					continue
 				}
-				if len(s.mergedEntities[p][e][t]) == s.limit {
-					delete(s.next[p][e], t)
+				if len(s.mergedEntities[e][p][t]) == s.limit {
+					delete(s.next[e][p], t)
 					continue
 				}
-				ig := s.usedImportGroup[p][e][t]
+				ig := s.usedImportGroup[e][p][t]
 				// Update the cursor.
-				cursor := s.cursorGroup[p][e][t][ig]
-				if _, ok := s.mergedEntities[p][e][t]; !ok {
-					s.mergedEntities[p][e][t] = []*pb.EntityInfo{}
+				cursor := s.cursorGroup[e][p][t][ig]
+				if _, ok := s.mergedEntities[e][p][t]; !ok {
+					s.mergedEntities[e][p][t] = []*pb.EntityInfo{}
 				}
-				s.mergedEntities[p][e][t] = append(
-					s.mergedEntities[p][e][t],
-					s.rawEntities[p][e][t][ig][cursor.Item],
+				s.mergedEntities[e][p][t] = append(
+					s.mergedEntities[e][p][t],
+					s.rawEntities[e][p][t][ig][cursor.Item],
 				)
 				cursor.Item++
 				// Still need more data, mark in s.hasNext
-				s.next[p][e][t] = cursor
+				s.next[e][p][t] = cursor
 				// Reach the end of the current page, should advance to next page.
-				if int(cursor.Item) == len(s.rawEntities[p][e][t][ig]) {
+				if int(cursor.Item) == len(s.rawEntities[e][p][t][ig]) {
 					cursor.Page++
 					cursor.Item = 0
 					// No more pages
-					if cursor.Page == int32(s.totalPage[p][e][t][ig]) {
-						s.rawEntities[p][e][t][ig] = nil
-						delete(s.next[p][e], t)
+					if cursor.Page == int32(s.totalPage[e][p][t][ig]) {
+						s.rawEntities[e][p][t][ig] = nil
+						delete(s.next[e][p], t)
 					} else {
-						s.next[p][e][t] = cursor
+						s.next[e][p][t] = cursor
 						accs = append(accs, &bigtable.Accessor{
 							ImportGroup: ig,
 							Body: [][]string{
@@ -197,9 +199,14 @@ func nextOut(ctx context.Context, s *outState, btGroup *bigtable.Group) (bool, e
 		}
 	}
 	hasNext := false
-	for p := range s.next {
-		if len(s.next[p]) > 0 {
-			hasNext = true
+	for e := range s.next {
+		for p := range s.next[e] {
+			if len(s.next[e][p]) > 0 {
+				hasNext = true
+				break
+			}
+		}
+		if hasNext {
 			break
 		}
 	}
@@ -213,23 +220,23 @@ func nextOut(ctx context.Context, s *outState, btGroup *bigtable.Group) (bool, e
 // in a merge sort.
 func nextIn(ctx context.Context, s *inState, btGroup *bigtable.Group) (bool, error) {
 	accs := []*bigtable.Accessor{}
-	for _, p := range s.properties {
-		for _, e := range s.entities {
-			for t := range s.cursorGroup[p][e] {
+	for _, e := range s.entities {
+		for _, p := range s.properties {
+			for t := range s.next[e][p] {
 				// All entities in all import groups have been exhausted.
-				if s.heap[p][e][t].Len() == 0 {
-					delete(s.next[p], e)
+				if s.heap[e][p][t].Len() == 0 {
+					delete(s.next[e][p], t)
 					continue
 				}
-				elem := heap.Pop(s.heap[p][e][t]).(*heapElem)
+				elem := heap.Pop(s.heap[e][p][t]).(*heapElem)
 				entity, ig := elem.data, elem.ig
-				if len(s.mergedEntities[p][e][t]) == 0 {
-					s.mergedEntities[p][e][t] = []*pb.EntityInfo{entity}
+				if len(s.mergedEntities[e][p][t]) == 0 {
+					s.mergedEntities[e][p][t] = []*pb.EntityInfo{entity}
 				} else {
-					prev := s.mergedEntities[p][e][t][len(s.mergedEntities[p][e][t])-1]
+					prev := s.mergedEntities[e][p][t][len(s.mergedEntities[e][p][t])-1]
 					if entity.Dcid != prev.Dcid || entity.Value != prev.Value {
 						// Find a new entity, add to the result.
-						s.mergedEntities[p][e][t] = append(s.mergedEntities[p][e][t], entity)
+						s.mergedEntities[e][p][t] = append(s.mergedEntities[e][p][t], entity)
 					}
 				}
 				// Got enough entities, should stop.
@@ -244,22 +251,22 @@ func nextIn(ctx context.Context, s *inState, btGroup *bigtable.Group) (bool, err
 
 				// import group 1: ["a", "a", "b"]
 				// import group 2: ["a", "c"]
-				if len(s.mergedEntities[p][e][t]) == s.limit+1 {
-					s.mergedEntities[p][e][t] = s.mergedEntities[p][e][t][:s.limit]
-					delete(s.next[p][e], t)
+				if len(s.mergedEntities[e][p][t]) == s.limit+1 {
+					s.mergedEntities[e][p][t] = s.mergedEntities[e][p][t][:s.limit]
+					delete(s.next[e][p], t)
 				}
-				if _, ok := s.next[p][e][t]; ok {
+				if _, ok := s.next[e][p][t]; ok {
 					// Update the cursor.
-					cursor := s.cursorGroup[p][e][t][ig]
+					cursor := s.cursorGroup[e][p][t][ig]
 					cursor.Item++
 					// Reach the end of the current page, should advance to next page.
-					if int(cursor.Item) == len(s.rawEntities[p][e][t][ig]) {
+					if int(cursor.Item) == len(s.rawEntities[e][p][t][ig]) {
 						cursor.Page++
 						cursor.Item = 0
 						// No more pages
-						if cursor.Page == int32(s.totalPage[p][e][t][ig]) {
-							s.rawEntities[p][e][t][ig] = nil
-							delete(s.next[p][e], t)
+						if cursor.Page == int32(s.totalPage[e][p][t][ig]) {
+							s.rawEntities[e][p][t][ig] = nil
+							delete(s.next[e][p], t)
 						} else {
 							accs = append(accs, &bigtable.Accessor{
 								ImportGroup: ig,
@@ -272,7 +279,7 @@ func nextIn(ctx context.Context, s *inState, btGroup *bigtable.Group) (bool, err
 							})
 						}
 					}
-					s.next[p][e][t] = cursor
+					s.next[e][p][t] = cursor
 				}
 			}
 		}
@@ -283,18 +290,18 @@ func nextIn(ctx context.Context, s *inState, btGroup *bigtable.Group) (bool, err
 			return false, err
 		}
 	}
-	for _, p := range s.properties {
-		for _, e := range s.entities {
-			for t := range s.cursorGroup[p][e] {
-				if cursor, ok := s.next[p][e][t]; ok {
+	for _, e := range s.entities {
+		for _, p := range s.properties {
+			for t := range s.cursorGroup[e][p] {
+				if cursor, ok := s.next[e][p][t]; ok {
 					// If there is data available in the current import group, push to the heap.
-					if s.rawEntities[p][e][t][cursor.GetImportGroup()] != nil {
+					if s.rawEntities[e][p][t][cursor.GetImportGroup()] != nil {
 						elem := &heapElem{
 							ig:   int(cursor.GetImportGroup()),
 							pos:  cursor.GetItem(),
-							data: s.rawEntities[p][e][t][cursor.GetImportGroup()][cursor.GetItem()],
+							data: s.rawEntities[e][p][t][cursor.GetImportGroup()][cursor.GetItem()],
 						}
-						heap.Push(s.heap[p][e][t], elem)
+						heap.Push(s.heap[e][p][t], elem)
 					}
 				}
 			}
@@ -302,9 +309,14 @@ func nextIn(ctx context.Context, s *inState, btGroup *bigtable.Group) (bool, err
 	}
 
 	hasNext := false
-	for p := range s.next {
-		if len(s.next[p]) > 0 {
-			hasNext = true
+	for e := range s.next {
+		for p := range s.next[e] {
+			if len(s.next[e][p]) > 0 {
+				hasNext = true
+				break
+			}
+		}
+		if hasNext {
 			break
 		}
 	}

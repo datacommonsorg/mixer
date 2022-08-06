@@ -57,6 +57,9 @@ func getEntityPropType(
 			} else {
 				types = propTypes.InTypes
 			}
+			if result[row.Parts[0]] == nil {
+				result[row.Parts[0]] = map[string][]string{}
+			}
 			if result[row.Parts[0]][row.Parts[1]] == nil {
 				result[row.Parts[0]][row.Parts[1]] = types
 			} else {

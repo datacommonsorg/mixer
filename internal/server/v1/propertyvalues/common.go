@@ -20,20 +20,19 @@ import (
 )
 
 // Cache builder generates page size of 500.
-// This (approximately) allows one request to be fulfilled by reading one page
-// from all import groups after merging.
-var defaultLimit = 1000
+// This limit applies to per type of a property, not the total response
+var defaultLimit = 500
 
 func buildDefaultCursorGroups(
-	properties []string,
 	entities []string,
+	properties []string,
 	propType map[string]map[string][]string,
 	n int,
 ) []*pb.CursorGroup {
 	result := []*pb.CursorGroup{}
-	for _, p := range properties {
-		for _, e := range entities {
-			for _, t := range propType[p][e] {
+	for _, e := range entities {
+		for _, p := range properties {
+			for _, t := range propType[e][p] {
 				cg := &pb.CursorGroup{
 					Keys: []string{e, p, t},
 				}

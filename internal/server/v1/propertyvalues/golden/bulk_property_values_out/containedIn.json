@@ -19,8 +19,15 @@
         {
           "name": "California",
           "types": [
-            "AdministrativeArea1",
             "State"
+          ],
+          "dcid": "geoId/06",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "California",
+          "types": [
+            "AdministrativeArea1"
           ],
           "dcid": "geoId/06",
           "provenanceId": "dc/5n63hr1"
