@@ -18,6 +18,7 @@ import (
 	"context"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	"github.com/datacommonsorg/mixer/internal/server/translator"
 	"github.com/datacommonsorg/mixer/internal/server/v1/info"
 	"github.com/datacommonsorg/mixer/internal/server/v1/observations"
 	"github.com/datacommonsorg/mixer/internal/server/v1/page"
@@ -27,6 +28,13 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/v1/variable"
 	"github.com/datacommonsorg/mixer/internal/server/v1/variables"
 )
+
+// QueryV1 implements API for Mixer.Query.
+func (s *Server) QueryV1(
+	ctx context.Context, in *pb.QueryRequest,
+) (*pb.QueryResponse, error) {
+	return translator.Query(ctx, in, s.metadata, s.store)
+}
 
 // Properties implements API for mixer.Properties.
 func (s *Server) Properties(

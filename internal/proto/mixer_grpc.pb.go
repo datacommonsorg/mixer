@@ -8,7 +8,6 @@ package proto
 
 import (
 	context "context"
-
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
@@ -113,7 +112,8 @@ type MixerClient interface {
 	GetStatVarSummary(ctx context.Context, in *GetStatVarSummaryRequest, opts ...grpc.CallOption) (*GetStatVarSummaryResponse, error)
 	// Find matched stat vars given constraint properties
 	GetStatVarMatch(ctx context.Context, in *GetStatVarMatchRequest, opts ...grpc.CallOption) (*GetStatVarMatchResponse, error)
-	// ======================  V1   V1   V1   V1  ======================
+	// Query DataCommons Graph with Sparql.
+	QueryV1(ctx context.Context, in *QueryRequest, opts ...grpc.CallOption) (*QueryResponse, error)
 	Properties(ctx context.Context, in *PropertiesRequest, opts ...grpc.CallOption) (*PropertiesResponse, error)
 	BulkProperties(ctx context.Context, in *BulkPropertiesRequest, opts ...grpc.CallOption) (*BulkPropertiesResponse, error)
 	PropertyValues(ctx context.Context, in *PropertyValuesRequest, opts ...grpc.CallOption) (*PropertyValuesResponse, error)
@@ -446,6 +446,15 @@ func (c *mixerClient) GetStatVarMatch(ctx context.Context, in *GetStatVarMatchRe
 	return out, nil
 }
 
+func (c *mixerClient) QueryV1(ctx context.Context, in *QueryRequest, opts ...grpc.CallOption) (*QueryResponse, error) {
+	out := new(QueryResponse)
+	err := c.cc.Invoke(ctx, "/datacommons.Mixer/QueryV1", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *mixerClient) Properties(ctx context.Context, in *PropertiesRequest, opts ...grpc.CallOption) (*PropertiesResponse, error) {
 	out := new(PropertiesResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/Properties", in, out, opts...)
@@ -765,7 +774,8 @@ type MixerServer interface {
 	GetStatVarSummary(context.Context, *GetStatVarSummaryRequest) (*GetStatVarSummaryResponse, error)
 	// Find matched stat vars given constraint properties
 	GetStatVarMatch(context.Context, *GetStatVarMatchRequest) (*GetStatVarMatchResponse, error)
-	// ======================  V1   V1   V1   V1  ======================
+	// Query DataCommons Graph with Sparql.
+	QueryV1(context.Context, *QueryRequest) (*QueryResponse, error)
 	Properties(context.Context, *PropertiesRequest) (*PropertiesResponse, error)
 	BulkProperties(context.Context, *BulkPropertiesRequest) (*BulkPropertiesResponse, error)
 	PropertyValues(context.Context, *PropertyValuesRequest) (*PropertyValuesResponse, error)
@@ -895,6 +905,9 @@ func (UnimplementedMixerServer) GetStatVarSummary(context.Context, *GetStatVarSu
 }
 func (UnimplementedMixerServer) GetStatVarMatch(context.Context, *GetStatVarMatchRequest) (*GetStatVarMatchResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetStatVarMatch not implemented")
+}
+func (UnimplementedMixerServer) QueryV1(context.Context, *QueryRequest) (*QueryResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method QueryV1 not implemented")
 }
 func (UnimplementedMixerServer) Properties(context.Context, *PropertiesRequest) (*PropertiesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Properties not implemented")
@@ -1577,6 +1590,24 @@ func _Mixer_GetStatVarMatch_Handler(srv interface{}, ctx context.Context, dec fu
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Mixer_QueryV1_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MixerServer).QueryV1(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/datacommons.Mixer/QueryV1",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MixerServer).QueryV1(ctx, req.(*QueryRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _Mixer_Properties_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(PropertiesRequest)
 	if err := dec(in); err != nil {
@@ -2165,6 +2196,10 @@ var Mixer_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetStatVarMatch",
 			Handler:    _Mixer_GetStatVarMatch_Handler,
+		},
+		{
+			MethodName: "QueryV1",
+			Handler:    _Mixer_QueryV1_Handler,
 		},
 		{
 			MethodName: "Properties",
