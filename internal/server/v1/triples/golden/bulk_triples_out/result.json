@@ -146,11 +146,11 @@
         "statType": {
           "entities": [
             {
+              "name": "measuredValue",
               "dcid": "measuredValue",
               "provenanceId": "dc/d7tbsb1"
             },
             {
-              "name": "measuredValue",
               "dcid": "measuredValue",
               "provenanceId": "dc/d7tbsb1"
             }
@@ -159,11 +159,11 @@
         "typeOf": {
           "entities": [
             {
-              "name": "StatisticalVariable",
               "dcid": "StatisticalVariable",
               "provenanceId": "dc/d7tbsb1"
             },
             {
+              "name": "StatisticalVariable",
               "dcid": "StatisticalVariable",
               "provenanceId": "dc/d7tbsb1"
             }

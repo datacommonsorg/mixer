@@ -1274,7 +1274,6 @@
       ],
       "predicate": "statType",
       "objectId": "measuredValue",
-      "objectName": "measuredValue",
       "provenanceId": "dc/d7tbsb1"
     },
     {
@@ -1286,6 +1285,18 @@
       ],
       "predicate": "statType",
       "objectId": "measuredValue",
+      "objectName": "measuredValue",
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Count_Person_Female",
+      "subjectName": "Population: Female",
+      "subjectTypes": [
+        "StatisticalVariable",
+        "StatisticalVariable"
+      ],
+      "predicate": "typeOf",
+      "objectId": "StatisticalVariable",
       "provenanceId": "dc/d7tbsb1"
     },
     {
@@ -1298,17 +1309,6 @@
       "predicate": "typeOf",
       "objectId": "StatisticalVariable",
       "objectName": "StatisticalVariable",
-      "provenanceId": "dc/d7tbsb1"
-    },
-    {
-      "subjectId": "Count_Person_Female",
-      "subjectName": "Population: Female",
-      "subjectTypes": [
-        "StatisticalVariable",
-        "StatisticalVariable"
-      ],
-      "predicate": "typeOf",
-      "objectId": "StatisticalVariable",
       "provenanceId": "dc/d7tbsb1"
     },
     {

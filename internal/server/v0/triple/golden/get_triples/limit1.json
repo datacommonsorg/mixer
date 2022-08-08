@@ -75,8 +75,8 @@
       "provenanceId": "dc/d7tbsb1"
     },
     {
-      "subjectId": "dc/g/Agriculture",
-      "subjectName": "Agriculture",
+      "subjectId": "AvailableVehicles0",
+      "subjectName": "AvailableVehicles 0",
       "predicate": "provenance",
       "objectId": "dc/d7tbsb1",
       "objectName": "HumanReadableStatVars",

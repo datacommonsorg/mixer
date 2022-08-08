@@ -158,13 +158,30 @@ func nextOut(ctx context.Context, s *outState, btGroup *bigtable.Group) (bool, e
 				ig := s.usedImportGroup[e][p][t]
 				// Update the cursor.
 				cursor := s.cursorGroup[e][p][t][ig]
-				if _, ok := s.mergedEntities[e][p][t]; !ok {
-					s.mergedEntities[e][p][t] = []*pb.EntityInfo{}
+				entity := s.rawEntities[e][p][t][ig][cursor.Item]
+				// If this entity has multiple types, check if it has been processed
+				// for the other types already.
+				processed := false
+				if len(entity.Types) > 0 {
+					for _, t := range entity.Types {
+						l := s.mergedEntities[e][p][t]
+						if len(l) > 0 && entity.Dcid < l[len(l)-1].Dcid {
+							// This entity has been processed for type "t".
+							processed = true
+							break
+						}
+					}
 				}
-				s.mergedEntities[e][p][t] = append(
-					s.mergedEntities[e][p][t],
-					s.rawEntities[e][p][t][ig][cursor.Item],
-				)
+				if !processed {
+					if _, ok := s.mergedEntities[e][p][t]; !ok {
+						s.mergedEntities[e][p][t] = []*pb.EntityInfo{}
+					}
+					s.mergedEntities[e][p][t] = append(
+						s.mergedEntities[e][p][t],
+						entity,
+					)
+				}
+				// Proceed cursor
 				cursor.Item++
 				// Still need more data, mark in s.hasNext
 				s.next[e][p][t] = cursor
@@ -223,20 +240,37 @@ func nextIn(ctx context.Context, s *inState, btGroup *bigtable.Group) (bool, err
 	for _, e := range s.entities {
 		for _, p := range s.properties {
 			for t := range s.next[e][p] {
-				// All entities in all import groups have been exhausted.
 				if s.heap[e][p][t].Len() == 0 {
+					// All entities in all import groups for [e, p, t]have been exhausted.
+					// Delete this entry in "s.next" so the outer for loop can skip it.
 					delete(s.next[e][p], t)
 					continue
 				}
 				elem := heap.Pop(s.heap[e][p][t]).(*heapElem)
 				entity, ig := elem.data, elem.ig
-				if len(s.mergedEntities[e][p][t]) == 0 {
-					s.mergedEntities[e][p][t] = []*pb.EntityInfo{entity}
-				} else {
-					prev := s.mergedEntities[e][p][t][len(s.mergedEntities[e][p][t])-1]
-					if entity.Dcid != prev.Dcid || entity.Value != prev.Value {
-						// Find a new entity, add to the result.
-						s.mergedEntities[e][p][t] = append(s.mergedEntities[e][p][t], entity)
+				// If this entity has multiple types, check if it has been processed
+				// for the other types already.
+				processed := false
+				if len(entity.Types) > 0 {
+					for _, t := range entity.Types {
+						l := s.mergedEntities[e][p][t]
+						if len(l) > 0 && entity.Dcid < l[len(l)-1].Dcid {
+							// This entity has been processed for type "t".
+							processed = true
+							break
+						}
+					}
+				}
+				if !processed {
+					// Add the entity to "mergedEntities".
+					if len(s.mergedEntities[e][p][t]) == 0 {
+						s.mergedEntities[e][p][t] = []*pb.EntityInfo{entity}
+					} else {
+						prev := s.mergedEntities[e][p][t][len(s.mergedEntities[e][p][t])-1]
+						if entity.Dcid != prev.Dcid || entity.Value != prev.Value {
+							// Find a new entity, add to the result.
+							s.mergedEntities[e][p][t] = append(s.mergedEntities[e][p][t], entity)
+						}
 					}
 				}
 				// Got enough entities, should stop.
