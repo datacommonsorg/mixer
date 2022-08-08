@@ -3,6 +3,33 @@
     "geoId/06085": {
       "in": [
         {
+          "name": "Alum Rock",
+          "types": [
+            "City",
+            "Neighborhood"
+          ],
+          "dcid": "geoId/0601458",
+          "provenanceId": "dc/sm3m2w3"
+        },
+        {
+          "name": "Burbank",
+          "types": [
+            "City",
+            "Neighborhood"
+          ],
+          "dcid": "geoId/0608968",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "East Foothills",
+          "types": [
+            "City",
+            "Neighborhood"
+          ],
+          "dcid": "geoId/0620598",
+          "provenanceId": "dc/sm3m2w3"
+        },
+        {
           "name": "Los Altos Hills",
           "types": [
             "City",
@@ -207,33 +234,6 @@
           ],
           "dcid": "geoId/0677000",
           "provenanceId": "dc/5n63hr1"
-        },
-        {
-          "name": "Alum Rock",
-          "types": [
-            "City",
-            "Neighborhood"
-          ],
-          "dcid": "geoId/0601458",
-          "provenanceId": "dc/sm3m2w3"
-        },
-        {
-          "name": "Burbank",
-          "types": [
-            "City",
-            "Neighborhood"
-          ],
-          "dcid": "geoId/0608968",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
-          "name": "East Foothills",
-          "types": [
-            "City",
-            "Neighborhood"
-          ],
-          "dcid": "geoId/0620598",
-          "provenanceId": "dc/sm3m2w3"
         }
       ]
     },
