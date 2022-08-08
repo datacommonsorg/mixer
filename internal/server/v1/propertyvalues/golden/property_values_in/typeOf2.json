@@ -1,46 +1,6 @@
 {
   "values": [
     {
-      "name": "Congo [DRC]",
-      "types": [
-        "Country"
-      ],
-      "dcid": "country/COD",
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "name": "Congo [Republic]",
-      "types": [
-        "Country"
-      ],
-      "dcid": "country/COG",
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "name": "Cook Islands",
-      "types": [
-        "Country"
-      ],
-      "dcid": "country/COK",
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "name": "Colombia",
-      "types": [
-        "Country"
-      ],
-      "dcid": "country/COL",
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "name": "Comoros",
-      "types": [
-        "Country"
-      ],
-      "dcid": "country/COM",
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
       "name": "Cape Verde",
       "types": [
         "Country"
@@ -1168,7 +1128,7 @@
         "Country"
       ],
       "dcid": "country/PRI",
-      "provenanceId": "dc/5jztpr1"
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "name": "North Korea",

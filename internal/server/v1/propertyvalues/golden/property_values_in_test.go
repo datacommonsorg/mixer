@@ -41,27 +41,27 @@ func TestPropertyValuesIn(t *testing.T) {
 			limit      int32
 			token      string
 		}{
-			// {
-			// 	"containedIn1.json",
-			// 	"containedInPlace",
-			// 	"geoId/06",
-			// 	502,
-			// 	"",
-			// },
-			// {
-			// 	"containedIn2.json",
-			// 	"containedInPlace",
-			// 	"geoId/06",
-			// 	500,
-			// 	"H4sIAAAAAAAA/4zUzU6rQBQH8Aul90642iBq0rfwY+HCj5gKSqtJQ0J1a6ZwhJNMZ5phaNM39jEM7UJjM6ddTVj8f5wPGP/BZyWoUXF2fuUHuZKGo4RiJFPBc/APxoBlNVW6UqoI/4QecwIn9JgbOKHLOqHHvMDxb0ijuz6s4ZgM9zLDDURqNlcSpLEqT6QSTLCAhDcltBwqaXXuSOffGwrBS3szz2T8JAJZN3WkGmlWMS6wpkoZkNb/jTXRPLdP5YUkTiMlSw11WwUXMdZGI4GNSaz/KGAG0nC9yvJKqd0evbLeltJlTv+zE3aZ2x77zukwa+agPxpZZGi+F+cy9wdxTRLeRC3taxqR2eNBMUPZNsENLmCggV9aqR1lRGhW1mxCZo8SUInGYv30fhFDaYXu6XGmzVRg/mpQbKpx2e9hDkkg3B6ItZQd0hDLas9v7ZaU/FQtQaeCry+Y7Y7o9N/N/2x79xcAAAD//wEAAP//XVK+mGIFAAA=",
-			// },
-			// {
-			// 	"geoOverlaps.json",
-			// 	"geoOverlaps",
-			// 	"geoId/0649670",
-			// 	500,
-			// 	"",
-			// },
+			{
+				"containedIn1.json",
+				"containedInPlace",
+				"geoId/06",
+				502,
+				"",
+			},
+			{
+				"containedIn2.json",
+				"containedInPlace",
+				"geoId/06",
+				500,
+				"H4sIAAAAAAAA/4yUTa+TQBSGBREpWoOoCf/Cj4ULP6IVlFaThoTq1kzhCCeZzmmGoU3/vYEuem9653BXhMXz5J2Z857wUxg0QKv69Zv3YVSRMgIV1CtVSFFB6KfUK3OKH8Re4ERO7AVu5MRu8DD2Ai9ywo8s/Wj8WOEvLDwv+q3E6rdBiWMCNxhg94YgYwXPSiMMpLTbkwJlrDF+sJZogzXkom9g0CEpq+cD6/E2dLSzv1j2VUqq0dB1SErIDDujsbIfaMHKnqSgur7baMEo1qwi+S5hB8oIfSqrlmg6Us76nudAucZ6/Pv7NoPGKvrGip6uAZt2S7olqq2OqbG560juaLkMnztxy/Oy34P+16u6RHOpwO35/ckqXp4f6tzADA/YcdO3ZF3xEpv2nm/Fb4SwoCPoQoqxUdedXLH0i0W9QzUkEAYPsNAg3lmDfOULlZ7Xgj+wySz2BzqZjbw/8Mks/MwaHv9BKUVjX1ATd3p9FpvpPwAAAP//AQAA//9s7FgNZgUAAA==",
+			},
+			{
+				"geoOverlaps.json",
+				"geoOverlaps",
+				"geoId/0649670",
+				500,
+				"",
+			},
 			{
 				"typeOf1.json",
 				"typeOf",
@@ -74,7 +74,7 @@ func TestPropertyValuesIn(t *testing.T) {
 				"typeOf",
 				"Country",
 				0,
-				"H4sIAAAAAAAA/+LS52J3zi/NKymq5GIrqSxI9U/jYnHOLKkUYhBi4WAUYBRi4WASYBRi4mAWYuFgEWDkMsLUABOA6JEwAumRMILpkTDissPUI+yYkpuZl1lcUpRYklmW6liUmmiI007i9Bvh0g8AAAD//wEAAP//jbVf3eUAAAA=",
+				"H4sIAAAAAAAA/+LS52J3zi/NKymq5GIrqSxI9U/jYnHOLKkUYhBi4WAUYBRi4WASYBRi4mAWYuFgEWDkMsLUABOA6JEwB+mRMIfpkTDnssPUI+yYkpuZl1lcUpRYklmW6liUmmiI007i9Bvh0g8AAAD//wEAAP//SLHFAOUAAAA=",
 			},
 		} {
 			req := &pb.PropertyValuesRequest{

@@ -31,6 +31,312 @@
     "typeOf": {
       "entities": [
         {
+          "name": "Anguilla",
+          "types": [
+            "AdministrativeArea1",
+            "Country"
+          ],
+          "dcid": "country/AIA",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "American Samoa",
+          "types": [
+            "AdministrativeArea1",
+            "Country"
+          ],
+          "dcid": "country/ASM",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "British Antarctic Territory",
+          "types": [
+            "AdministrativeArea1",
+            "Country"
+          ],
+          "dcid": "country/ATB",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Bermuda",
+          "types": [
+            "AdministrativeArea1",
+            "Country"
+          ],
+          "dcid": "country/BMU",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Cocos (Keeling) Islands",
+          "types": [
+            "AdministrativeArea1",
+            "Country"
+          ],
+          "dcid": "country/CCK",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Christmas Island",
+          "types": [
+            "AdministrativeArea1",
+            "Country"
+          ],
+          "dcid": "country/CXR",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Cayman Islands",
+          "types": [
+            "AdministrativeArea1",
+            "Country"
+          ],
+          "dcid": "country/CYM",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Denmark",
+          "types": [
+            "AdministrativeArea1",
+            "Country"
+          ],
+          "dcid": "country/DNK",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Falkland Islands",
+          "types": [
+            "AdministrativeArea1",
+            "Country"
+          ],
+          "dcid": "country/FLK",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Faroe Islands",
+          "types": [
+            "AdministrativeArea1",
+            "Country"
+          ],
+          "dcid": "country/FRO",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Gibraltar",
+          "types": [
+            "AdministrativeArea1",
+            "Country"
+          ],
+          "dcid": "country/GIB",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Greenland",
+          "types": [
+            "AdministrativeArea1",
+            "Country"
+          ],
+          "dcid": "country/GRL",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Guam",
+          "types": [
+            "AdministrativeArea1",
+            "Country"
+          ],
+          "dcid": "country/GUM",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Heard Island and McDonald Islands",
+          "types": [
+            "AdministrativeArea1",
+            "Country"
+          ],
+          "dcid": "country/HMD",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "British Indian Ocean Territory",
+          "types": [
+            "AdministrativeArea1",
+            "Country"
+          ],
+          "dcid": "country/IOT",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Macau",
+          "types": [
+            "AdministrativeArea1",
+            "City",
+            "Country"
+          ],
+          "dcid": "country/MAC",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Northern Mariana Islands",
+          "types": [
+            "AdministrativeArea1",
+            "Country"
+          ],
+          "dcid": "country/MNP",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Montserrat",
+          "types": [
+            "AdministrativeArea1",
+            "Country"
+          ],
+          "dcid": "country/MSR",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Norfolk Island",
+          "types": [
+            "AdministrativeArea1",
+            "Country"
+          ],
+          "dcid": "country/NFK",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Pitcairn Islands",
+          "types": [
+            "AdministrativeArea1",
+            "Country"
+          ],
+          "dcid": "country/PCN",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Réunion",
+          "types": [
+            "AdministrativeArea1",
+            "AdministrativeArea2",
+            "Country"
+          ],
+          "dcid": "country/REU",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "South Georgia and the South Sandwich Islands",
+          "types": [
+            "AdministrativeArea1",
+            "Country"
+          ],
+          "dcid": "country/SGS",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Saint Helena",
+          "types": [
+            "AdministrativeArea1",
+            "Country"
+          ],
+          "dcid": "country/SHN",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Turks and Caicos Islands",
+          "types": [
+            "AdministrativeArea1",
+            "Country"
+          ],
+          "dcid": "country/TCA",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "U.S. Minor Outlying Islands",
+          "types": [
+            "AdministrativeArea1",
+            "Country"
+          ],
+          "dcid": "country/UMI",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "British Virgin Islands",
+          "types": [
+            "AdministrativeArea1",
+            "Country"
+          ],
+          "dcid": "country/VGB",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Guadeloupe",
+          "types": [
+            "AdministrativeArea1",
+            "AdministrativeArea2",
+            "Country"
+          ],
+          "dcid": "country/GLP",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "French Guiana",
+          "types": [
+            "AdministrativeArea1",
+            "AdministrativeArea2",
+            "Country"
+          ],
+          "dcid": "country/GUF",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Martinique",
+          "types": [
+            "AdministrativeArea1",
+            "AdministrativeArea2",
+            "Country"
+          ],
+          "dcid": "country/MTQ",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Mayotte",
+          "types": [
+            "AdministrativeArea1",
+            "AdministrativeArea2",
+            "Country"
+          ],
+          "dcid": "country/MYT",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Réunion",
+          "types": [
+            "AdministrativeArea1",
+            "AdministrativeArea2",
+            "Country"
+          ],
+          "dcid": "country/REU",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Hong Kong",
+          "types": [
+            "AdministrativeArea1",
+            "City",
+            "Country"
+          ],
+          "dcid": "country/HKG",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Macau",
+          "types": [
+            "AdministrativeArea1",
+            "City",
+            "Country"
+          ],
+          "dcid": "country/MAC",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
           "name": "Aruba",
           "types": [
             "Country"
@@ -1958,312 +2264,6 @@
           ],
           "dcid": "wikidataId/Q756617",
           "provenanceId": "dc/5j06ly1"
-        },
-        {
-          "name": "Anguilla",
-          "types": [
-            "AdministrativeArea1",
-            "Country"
-          ],
-          "dcid": "country/AIA",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
-          "name": "American Samoa",
-          "types": [
-            "AdministrativeArea1",
-            "Country"
-          ],
-          "dcid": "country/ASM",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
-          "name": "British Antarctic Territory",
-          "types": [
-            "AdministrativeArea1",
-            "Country"
-          ],
-          "dcid": "country/ATB",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
-          "name": "Bermuda",
-          "types": [
-            "AdministrativeArea1",
-            "Country"
-          ],
-          "dcid": "country/BMU",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
-          "name": "Cocos (Keeling) Islands",
-          "types": [
-            "AdministrativeArea1",
-            "Country"
-          ],
-          "dcid": "country/CCK",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
-          "name": "Christmas Island",
-          "types": [
-            "AdministrativeArea1",
-            "Country"
-          ],
-          "dcid": "country/CXR",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
-          "name": "Cayman Islands",
-          "types": [
-            "AdministrativeArea1",
-            "Country"
-          ],
-          "dcid": "country/CYM",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
-          "name": "Denmark",
-          "types": [
-            "AdministrativeArea1",
-            "Country"
-          ],
-          "dcid": "country/DNK",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
-          "name": "Falkland Islands",
-          "types": [
-            "AdministrativeArea1",
-            "Country"
-          ],
-          "dcid": "country/FLK",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
-          "name": "Faroe Islands",
-          "types": [
-            "AdministrativeArea1",
-            "Country"
-          ],
-          "dcid": "country/FRO",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
-          "name": "Gibraltar",
-          "types": [
-            "AdministrativeArea1",
-            "Country"
-          ],
-          "dcid": "country/GIB",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
-          "name": "Greenland",
-          "types": [
-            "AdministrativeArea1",
-            "Country"
-          ],
-          "dcid": "country/GRL",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
-          "name": "Guam",
-          "types": [
-            "AdministrativeArea1",
-            "Country"
-          ],
-          "dcid": "country/GUM",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
-          "name": "Heard Island and McDonald Islands",
-          "types": [
-            "AdministrativeArea1",
-            "Country"
-          ],
-          "dcid": "country/HMD",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
-          "name": "British Indian Ocean Territory",
-          "types": [
-            "AdministrativeArea1",
-            "Country"
-          ],
-          "dcid": "country/IOT",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
-          "name": "Macau",
-          "types": [
-            "AdministrativeArea1",
-            "City",
-            "Country"
-          ],
-          "dcid": "country/MAC",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
-          "name": "Northern Mariana Islands",
-          "types": [
-            "AdministrativeArea1",
-            "Country"
-          ],
-          "dcid": "country/MNP",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
-          "name": "Montserrat",
-          "types": [
-            "AdministrativeArea1",
-            "Country"
-          ],
-          "dcid": "country/MSR",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
-          "name": "Norfolk Island",
-          "types": [
-            "AdministrativeArea1",
-            "Country"
-          ],
-          "dcid": "country/NFK",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
-          "name": "Pitcairn Islands",
-          "types": [
-            "AdministrativeArea1",
-            "Country"
-          ],
-          "dcid": "country/PCN",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
-          "name": "Réunion",
-          "types": [
-            "AdministrativeArea1",
-            "AdministrativeArea2",
-            "Country"
-          ],
-          "dcid": "country/REU",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
-          "name": "South Georgia and the South Sandwich Islands",
-          "types": [
-            "AdministrativeArea1",
-            "Country"
-          ],
-          "dcid": "country/SGS",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
-          "name": "Saint Helena",
-          "types": [
-            "AdministrativeArea1",
-            "Country"
-          ],
-          "dcid": "country/SHN",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
-          "name": "Turks and Caicos Islands",
-          "types": [
-            "AdministrativeArea1",
-            "Country"
-          ],
-          "dcid": "country/TCA",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
-          "name": "U.S. Minor Outlying Islands",
-          "types": [
-            "AdministrativeArea1",
-            "Country"
-          ],
-          "dcid": "country/UMI",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
-          "name": "British Virgin Islands",
-          "types": [
-            "AdministrativeArea1",
-            "Country"
-          ],
-          "dcid": "country/VGB",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
-          "name": "Guadeloupe",
-          "types": [
-            "AdministrativeArea1",
-            "AdministrativeArea2",
-            "Country"
-          ],
-          "dcid": "country/GLP",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
-          "name": "French Guiana",
-          "types": [
-            "AdministrativeArea1",
-            "AdministrativeArea2",
-            "Country"
-          ],
-          "dcid": "country/GUF",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
-          "name": "Martinique",
-          "types": [
-            "AdministrativeArea1",
-            "AdministrativeArea2",
-            "Country"
-          ],
-          "dcid": "country/MTQ",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
-          "name": "Mayotte",
-          "types": [
-            "AdministrativeArea1",
-            "AdministrativeArea2",
-            "Country"
-          ],
-          "dcid": "country/MYT",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
-          "name": "Réunion",
-          "types": [
-            "AdministrativeArea1",
-            "AdministrativeArea2",
-            "Country"
-          ],
-          "dcid": "country/REU",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
-          "name": "Hong Kong",
-          "types": [
-            "AdministrativeArea1",
-            "City",
-            "Country"
-          ],
-          "dcid": "country/HKG",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
-          "name": "Macau",
-          "types": [
-            "AdministrativeArea1",
-            "City",
-            "Country"
-          ],
-          "dcid": "country/MAC",
-          "provenanceId": "dc/5n63hr1"
         }
       ]
     }
