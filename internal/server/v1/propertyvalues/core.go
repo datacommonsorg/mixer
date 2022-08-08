@@ -17,6 +17,7 @@ package propertyvalues
 import (
 	"container/heap"
 	"context"
+	"sort"
 	"strconv"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
@@ -146,7 +147,12 @@ func nextOut(ctx context.Context, s *outState, btGroup *bigtable.Group) (bool, e
 	accs := []*bigtable.Accessor{}
 	for _, e := range s.entities {
 		for _, p := range s.properties {
+			types := []string{}
 			for t := range s.cursorGroup[e][p] {
+				types = append(types, t)
+			}
+			sort.Strings(types)
+			for _, t := range types {
 				// No raw data for this "property", "entity", "type"
 				if _, ok := s.next[e][p][t]; !ok {
 					continue
@@ -239,7 +245,12 @@ func nextIn(ctx context.Context, s *inState, btGroup *bigtable.Group) (bool, err
 	accs := []*bigtable.Accessor{}
 	for _, e := range s.entities {
 		for _, p := range s.properties {
+			types := []string{}
 			for t := range s.next[e][p] {
+				types = append(types, t)
+			}
+			sort.Strings(types)
+			for _, t := range types {
 				if s.heap[e][p][t].Len() == 0 {
 					// All entities in all import groups for [e, p, t]have been exhausted.
 					// Delete this entry in "s.next" so the outer for loop can skip it.
@@ -326,7 +337,12 @@ func nextIn(ctx context.Context, s *inState, btGroup *bigtable.Group) (bool, err
 	}
 	for _, e := range s.entities {
 		for _, p := range s.properties {
+			types := []string{}
 			for t := range s.cursorGroup[e][p] {
+				types = append(types, t)
+			}
+			sort.Strings(types)
+			for _, t := range types {
 				if cursor, ok := s.next[e][p][t]; ok {
 					// If there is data available in the current import group, push to the heap.
 					if s.rawEntities[e][p][t][cursor.GetImportGroup()] != nil {

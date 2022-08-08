@@ -145,7 +145,13 @@ func BulkPropertyValues(
 	}
 	for _, e := range entities {
 		vals := []*pb.EntityInfo{}
-		for t, v := range data[e][property] {
+		types := []string{}
+		for t := range data[e][property] {
+			types = append(types, t)
+		}
+		sort.Strings(types)
+		for _, t := range types {
+			v := data[e][property][t]
 			for _, e := range v {
 				if e.GetTypes() == nil && t != "" {
 					e.Types = []string{t}

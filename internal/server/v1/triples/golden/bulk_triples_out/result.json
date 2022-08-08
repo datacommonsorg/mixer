@@ -112,8 +112,9 @@
         "measuredProperty": {
           "entities": [
             {
+              "name": "count",
               "types": [
-                "Thing"
+                "Property"
               ],
               "dcid": "count",
               "provenanceId": "dc/d7tbsb1"
@@ -181,8 +182,9 @@
         "statType": {
           "entities": [
             {
+              "name": "measuredValue",
               "types": [
-                "Thing"
+                "Property"
               ],
               "dcid": "measuredValue",
               "provenanceId": "dc/d7tbsb1"

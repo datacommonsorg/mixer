@@ -17,6 +17,7 @@ package propertyvalues
 import (
 	"container/heap"
 	"context"
+	"sort"
 	"strconv"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
@@ -255,5 +256,16 @@ func (s *state) getPagination() *pb.PaginationInfo {
 			}
 		}
 	}
+	sort.SliceStable(cursorGroups, func(i, j int) bool {
+		keysi := cursorGroups[i].Keys
+		keysj := cursorGroups[j].Keys
+		if keysi[0] == keysj[0] {
+			if keysi[1] == keysj[1] {
+				return keysi[2] < keysj[2]
+			}
+			return keysi[1] < keysj[1]
+		}
+		return keysi[0] < keysj[0]
+	})
 	return &pb.PaginationInfo{CursorGroups: cursorGroups}
 }

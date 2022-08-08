@@ -42,16 +42,16 @@
     "populationType": {
       "entities": [
         {
+          "name": "Person",
           "types": [
-            "Thing"
+            "Class"
           ],
           "dcid": "Person",
           "provenanceId": "dc/d7tbsb1"
         },
         {
-          "name": "Person",
           "types": [
-            "Class"
+            "Thing"
           ],
           "dcid": "Person",
           "provenanceId": "dc/d7tbsb1"
