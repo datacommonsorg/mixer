@@ -3,6 +3,24 @@
     "geoId/06085": {
       "in": [
         {
+          "name": "Los Altos Hills",
+          "types": [
+            "City",
+            "Town"
+          ],
+          "dcid": "geoId/0643294",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Los Gatos",
+          "types": [
+            "City",
+            "Town"
+          ],
+          "dcid": "geoId/0644112",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
           "name": "Alum Rock",
           "types": [
             "City",
@@ -28,24 +46,6 @@
           ],
           "dcid": "geoId/0620598",
           "provenanceId": "dc/sm3m2w3"
-        },
-        {
-          "name": "Los Altos Hills",
-          "types": [
-            "City",
-            "Town"
-          ],
-          "dcid": "geoId/0643294",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
-          "name": "Los Gatos",
-          "types": [
-            "City",
-            "Town"
-          ],
-          "dcid": "geoId/0644112",
-          "provenanceId": "dc/5n63hr1"
         },
         {
           "name": "Alum Rock",

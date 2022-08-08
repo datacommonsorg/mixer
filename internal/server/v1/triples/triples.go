@@ -16,6 +16,7 @@ package triples
 
 import (
 	"context"
+	"sort"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/v1/properties"
@@ -71,8 +72,13 @@ func Triples(
 		Triples: map[string]*pb.EntityInfoCollection{},
 	}
 	for p := range data[entity] {
+		types := []string{}
+		for t := range data[entity][p] {
+			types = append(types, t)
+		}
 		entities := []*pb.EntityInfo{}
-		for t, v := range data[entity][p] {
+		for _, t := range types {
+			v := data[entity][p][t]
 			for _, item := range v {
 				if item.GetTypes() == nil && t != "" {
 					item.Types = []string{t}
@@ -155,7 +161,13 @@ func BulkTriples(
 	for e := range data {
 		for p := range data[e] {
 			if _, ok := entityProps[e][p]; ok {
-				for t, v := range data[e][p] {
+				types := []string{}
+				for t := range data[e][p] {
+					types = append(types, t)
+				}
+				for _, t := range types {
+					v := data[e][p][t]
+					sort.Strings(types)
 					for _, item := range v {
 						if item.GetTypes() == nil && t != "" {
 							item.Types = []string{t}

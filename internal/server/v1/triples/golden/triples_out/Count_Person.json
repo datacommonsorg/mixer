@@ -3,16 +3,16 @@
     "measuredProperty": {
       "entities": [
         {
+          "name": "count",
           "types": [
-            "Thing"
+            "Property"
           ],
           "dcid": "count",
           "provenanceId": "dc/d7tbsb1"
         },
         {
-          "name": "count",
           "types": [
-            "Property"
+            "Thing"
           ],
           "dcid": "count",
           "provenanceId": "dc/d7tbsb1"
