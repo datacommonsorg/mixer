@@ -112,9 +112,8 @@
         "measuredProperty": {
           "entities": [
             {
-              "name": "count",
               "types": [
-                "Property"
+                "Thing"
               ],
               "dcid": "count",
               "provenanceId": "dc/d7tbsb1"
@@ -151,16 +150,16 @@
         "populationType": {
           "entities": [
             {
+              "name": "Person",
               "types": [
-                "Thing"
+                "Class"
               ],
               "dcid": "Person",
               "provenanceId": "dc/d7tbsb1"
             },
             {
-              "name": "Person",
               "types": [
-                "Class"
+                "Thing"
               ],
               "dcid": "Person",
               "provenanceId": "dc/d7tbsb1"
@@ -182,9 +181,8 @@
         "statType": {
           "entities": [
             {
-              "name": "measuredValue",
               "types": [
-                "Property"
+                "Thing"
               ],
               "dcid": "measuredValue",
               "provenanceId": "dc/d7tbsb1"

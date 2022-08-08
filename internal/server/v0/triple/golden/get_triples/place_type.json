@@ -123,21 +123,6 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
-      "subjectId": "country/AIA",
-      "subjectName": "Anguilla",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
       "subjectId": "country/ALB",
       "subjectName": "Albania",
       "subjectTypes": [
@@ -222,21 +207,6 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
-      "subjectId": "country/ASM",
-      "subjectName": "American Samoa",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
       "subjectId": "country/ATA",
       "subjectName": "Antarctica",
       "subjectTypes": [
@@ -249,21 +219,6 @@
         "Class"
       ],
       "provenanceId": "dc/sm3m2w3"
-    },
-    {
-      "subjectId": "country/ATB",
-      "subjectName": "British Antarctic Territory",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "country/ATF",
@@ -532,21 +487,6 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
-      "subjectId": "country/BMU",
-      "subjectName": "Bermuda",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
       "subjectId": "country/BOL",
       "subjectName": "Bolivia",
       "subjectTypes": [
@@ -676,21 +616,6 @@
       "subjectId": "country/CAN",
       "subjectName": "Canada",
       "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "country/CCK",
-      "subjectName": "Cocos (Keeling) Islands",
-      "subjectTypes": [
-        "AdministrativeArea1",
         "Country"
       ],
       "predicate": "typeOf",
@@ -926,36 +851,6 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
-      "subjectId": "country/CXR",
-      "subjectName": "Christmas Island",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "country/CYM",
-      "subjectName": "Cayman Islands",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
       "subjectId": "country/CYP",
       "subjectName": "Cyprus",
       "subjectTypes": [
@@ -1043,21 +938,6 @@
       "subjectId": "country/DMA",
       "subjectName": "Dominica",
       "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "country/DNK",
-      "subjectName": "Denmark",
-      "subjectTypes": [
-        "AdministrativeArea1",
         "Country"
       ],
       "predicate": "typeOf",
@@ -1223,39 +1103,9 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
-      "subjectId": "country/FLK",
-      "subjectName": "Falkland Islands",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
       "subjectId": "country/FRA",
       "subjectName": "France",
       "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "country/FRO",
-      "subjectName": "Faroe Islands",
-      "subjectTypes": [
-        "AdministrativeArea1",
         "Country"
       ],
       "predicate": "typeOf",
@@ -1379,10 +1229,9 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
-      "subjectId": "country/GIB",
-      "subjectName": "Gibraltar",
+      "subjectId": "country/GIN",
+      "subjectName": "Guinea",
       "subjectTypes": [
-        "AdministrativeArea1",
         "Country"
       ],
       "predicate": "typeOf",
@@ -1394,9 +1243,11 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
-      "subjectId": "country/GIN",
-      "subjectName": "Guinea",
+      "subjectId": "country/GLP",
+      "subjectName": "Guadeloupe",
       "subjectTypes": [
+        "AdministrativeArea1",
+        "AdministrativeArea2",
         "Country"
       ],
       "predicate": "typeOf",
@@ -1494,21 +1345,6 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
-      "subjectId": "country/GRL",
-      "subjectName": "Greenland",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
       "subjectId": "country/GTM",
       "subjectName": "Guatemala",
       "subjectTypes": [
@@ -1539,10 +1375,11 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
-      "subjectId": "country/GUM",
-      "subjectName": "Guam",
+      "subjectId": "country/GUF",
+      "subjectName": "French Guiana",
       "subjectTypes": [
         "AdministrativeArea1",
+        "AdministrativeArea2",
         "Country"
       ],
       "predicate": "typeOf",
@@ -1573,21 +1410,6 @@
       "subjectTypes": [
         "AdministrativeArea1",
         "City",
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "country/HMD",
-      "subjectName": "Heard Island and McDonald Islands",
-      "subjectTypes": [
-        "AdministrativeArea1",
         "Country"
       ],
       "predicate": "typeOf",
@@ -1709,21 +1531,6 @@
         "Class"
       ],
       "provenanceId": "dc/rdj6vy2"
-    },
-    {
-      "subjectId": "country/IOT",
-      "subjectName": "British Indian Ocean Territory",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
     },
     {
       "subjectId": "country/IRL",
@@ -2148,22 +1955,6 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
-      "subjectId": "country/MAC",
-      "subjectName": "Macau",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "City",
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
       "subjectId": "country/MAF",
       "subjectName": "Saint Martin",
       "subjectTypes": [
@@ -2360,21 +2151,6 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
-      "subjectId": "country/MNP",
-      "subjectName": "Northern Mariana Islands",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
       "subjectId": "country/MOZ",
       "subjectName": "Mozambique",
       "subjectTypes": [
@@ -2403,10 +2179,11 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
-      "subjectId": "country/MSR",
-      "subjectName": "Montserrat",
+      "subjectId": "country/MTQ",
+      "subjectName": "Martinique",
       "subjectTypes": [
         "AdministrativeArea1",
+        "AdministrativeArea2",
         "Country"
       ],
       "predicate": "typeOf",
@@ -2492,6 +2269,22 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
+      "subjectId": "country/MYT",
+      "subjectName": "Mayotte",
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "AdministrativeArea2",
+        "Country"
+      ],
+      "predicate": "typeOf",
+      "objectId": "Country",
+      "objectName": "Country",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
       "subjectId": "country/NAM",
       "subjectName": "Namibia",
       "subjectTypes": [
@@ -2523,21 +2316,6 @@
       "subjectId": "country/NER",
       "subjectName": "Niger",
       "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "country/NFK",
-      "subjectName": "Norfolk Island",
-      "subjectTypes": [
-        "AdministrativeArea1",
         "Country"
       ],
       "predicate": "typeOf",
@@ -2706,21 +2484,6 @@
       "subjectId": "country/PAN",
       "subjectName": "Panama",
       "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "country/PCN",
-      "subjectName": "Pitcairn Islands",
-      "subjectTypes": [
-        "AdministrativeArea1",
         "Country"
       ],
       "predicate": "typeOf",
@@ -3044,36 +2807,6 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
-      "subjectId": "country/SGS",
-      "subjectName": "South Georgia and the South Sandwich Islands",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "country/SHN",
-      "subjectName": "Saint Helena",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
       "subjectId": "country/SJM",
       "subjectName": "Svalbard and Jan Mayen",
       "subjectTypes": [
@@ -3340,21 +3073,6 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
-      "subjectId": "country/TCA",
-      "subjectName": "Turks and Caicos Islands",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
       "subjectId": "country/TCD",
       "subjectName": "Chad",
       "subjectTypes": [
@@ -3579,21 +3297,6 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
-      "subjectId": "country/UMI",
-      "subjectName": "U.S. Minor Outlying Islands",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
       "subjectId": "country/URY",
       "subjectName": "Uruguay",
       "subjectTypes": [
@@ -3667,21 +3370,6 @@
       "subjectId": "country/VEN",
       "subjectName": "Venezuela",
       "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "country/VGB",
-      "subjectName": "British Virgin Islands",
-      "subjectTypes": [
-        "AdministrativeArea1",
         "Country"
       ],
       "predicate": "typeOf",
@@ -5586,8 +5274,50 @@
       "provenanceId": "dc/78h3b73"
     },
     {
+      "subjectId": "geoId/60",
+      "subjectName": "American Samoa",
+      "subjectTypes": [
+        "State"
+      ],
+      "predicate": "typeOf",
+      "objectId": "State",
+      "objectName": "State",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/78h3b73"
+    },
+    {
       "subjectId": "geoId/64",
       "subjectName": "Federated States of Micronesia",
+      "subjectTypes": [
+        "State"
+      ],
+      "predicate": "typeOf",
+      "objectId": "State",
+      "objectName": "State",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "subjectId": "geoId/64",
+      "subjectName": "Federated States of Micronesia",
+      "subjectTypes": [
+        "State"
+      ],
+      "predicate": "typeOf",
+      "objectId": "State",
+      "objectName": "State",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "subjectId": "geoId/66",
+      "subjectName": "Guam",
       "subjectTypes": [
         "State"
       ],
@@ -5627,8 +5357,49 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
+      "subjectId": "geoId/67",
+      "subjectTypes": [
+        "State"
+      ],
+      "predicate": "typeOf",
+      "objectId": "State",
+      "objectName": "State",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
       "subjectId": "geoId/68",
       "subjectName": "Marshall Islands",
+      "subjectTypes": [
+        "State"
+      ],
+      "predicate": "typeOf",
+      "objectId": "State",
+      "objectName": "State",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "subjectId": "geoId/68",
+      "subjectName": "Marshall Islands",
+      "subjectTypes": [
+        "State"
+      ],
+      "predicate": "typeOf",
+      "objectId": "State",
+      "objectName": "State",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "subjectId": "geoId/69",
+      "subjectName": "Northern Mariana Islands",
       "subjectTypes": [
         "State"
       ],
@@ -5669,10 +5440,9 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
-      "subjectId": "geoId/71",
-      "subjectName": "Midway Atoll",
+      "subjectId": "geoId/70",
+      "subjectName": "Palau",
       "subjectTypes": [
-        "AdministrativeArea1",
         "State"
       ],
       "predicate": "typeOf",
@@ -5681,22 +5451,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "geoId/72",
-      "subjectName": "Puerto Rico",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "geoId/74",
@@ -5713,10 +5468,9 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
-      "subjectId": "geoId/76",
-      "subjectName": "Navassa Island",
+      "subjectId": "geoId/74",
+      "subjectName": "U.S. Minor Outlying Islands",
       "subjectTypes": [
-        "AdministrativeArea1",
         "State"
       ],
       "predicate": "typeOf",
@@ -5725,7 +5479,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "geoId/78",
@@ -5742,10 +5496,9 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
-      "subjectId": "geoId/79",
-      "subjectName": "Wake Island",
+      "subjectId": "geoId/78",
+      "subjectName": "Virgin Islands of the U.S.",
       "subjectTypes": [
-        "AdministrativeArea1",
         "State"
       ],
       "predicate": "typeOf",
@@ -5754,28 +5507,11 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/sm3m2w3"
     },
     {
-      "subjectId": "geoId/81",
-      "subjectName": "Baker Island",
+      "subjectId": "geoId/86",
       "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "geoId/84",
-      "subjectName": "Howland Island",
-      "subjectTypes": [
-        "AdministrativeArea1",
         "State"
       ],
       "predicate": "typeOf",
@@ -5813,10 +5549,8 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
-      "subjectId": "geoId/95",
-      "subjectName": "Palmyra Atoll",
+      "subjectId": "geoId/89",
       "subjectTypes": [
-        "AdministrativeArea1",
         "State"
       ],
       "predicate": "typeOf",
@@ -5841,10 +5575,8 @@
       "provenanceId": "dc/crpej11"
     },
     {
-      "subjectId": "wikidataId/Q1061",
-      "subjectName": "Gujarat",
+      "subjectId": "udiseCode/99",
       "subjectTypes": [
-        "AdministrativeArea1",
         "State"
       ],
       "predicate": "typeOf",
@@ -5853,232 +5585,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/rdj6vy2"
-    },
-    {
-      "subjectId": "wikidataId/Q1159",
-      "subjectName": "Andhra Pradesh",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/rdj6vy2"
-    },
-    {
-      "subjectId": "wikidataId/Q1162",
-      "subjectName": "Arunachal Pradesh",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/rdj6vy2"
-    },
-    {
-      "subjectId": "wikidataId/Q1164",
-      "subjectName": "Assam",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/rdj6vy2"
-    },
-    {
-      "subjectId": "wikidataId/Q1165",
-      "subjectName": "Bihar",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/rdj6vy2"
-    },
-    {
-      "subjectId": "wikidataId/Q1168",
-      "subjectName": "Chhattisgarh",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/rdj6vy2"
-    },
-    {
-      "subjectId": "wikidataId/Q1171",
-      "subjectName": "Goa",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/rdj6vy2"
-    },
-    {
-      "subjectId": "wikidataId/Q1174",
-      "subjectName": "Haryana",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/rdj6vy2"
-    },
-    {
-      "subjectId": "wikidataId/Q1177",
-      "subjectName": "Himachal Pradesh",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/rdj6vy2"
-    },
-    {
-      "subjectId": "wikidataId/Q1184",
-      "subjectName": "Jharkhand",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/rdj6vy2"
-    },
-    {
-      "subjectId": "wikidataId/Q1185",
-      "subjectName": "Karnataka",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/rdj6vy2"
-    },
-    {
-      "subjectId": "wikidataId/Q1186",
-      "subjectName": "Kerala",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/rdj6vy2"
-    },
-    {
-      "subjectId": "wikidataId/Q1188",
-      "subjectName": "Madhya Pradesh",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/rdj6vy2"
-    },
-    {
-      "subjectId": "wikidataId/Q1191",
-      "subjectName": "Maharashtra",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/rdj6vy2"
-    },
-    {
-      "subjectId": "wikidataId/Q1193",
-      "subjectName": "Manipur",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/rdj6vy2"
-    },
-    {
-      "subjectId": "wikidataId/Q1195",
-      "subjectName": "Meghalaya",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/rdj6vy2"
+      "provenanceId": "dc/crpej11"
     },
     {
       "subjectId": "wikidataId/Q1353",
@@ -6097,216 +5604,6 @@
       "provenanceId": "dc/pnqh772"
     },
     {
-      "subjectId": "wikidataId/Q1356",
-      "subjectName": "West Bengal",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/rdj6vy2"
-    },
-    {
-      "subjectId": "wikidataId/Q1363",
-      "subjectName": "Tripura",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/rdj6vy2"
-    },
-    {
-      "subjectId": "wikidataId/Q1437",
-      "subjectName": "Rajasthan",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/rdj6vy2"
-    },
-    {
-      "subjectId": "wikidataId/Q1445",
-      "subjectName": "Tamil Nadu",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/rdj6vy2"
-    },
-    {
-      "subjectId": "wikidataId/Q1498",
-      "subjectName": "Uttar Pradesh",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/rdj6vy2"
-    },
-    {
-      "subjectId": "wikidataId/Q1499",
-      "subjectName": "Uttarakhand",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/rdj6vy2"
-    },
-    {
-      "subjectId": "wikidataId/Q1502",
-      "subjectName": "Mizoram",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/rdj6vy2"
-    },
-    {
-      "subjectId": "wikidataId/Q1505",
-      "subjectName": "Sikkim",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/rdj6vy2"
-    },
-    {
-      "subjectId": "wikidataId/Q1599",
-      "subjectName": "Nagaland",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/rdj6vy2"
-    },
-    {
-      "subjectId": "wikidataId/Q200667",
-      "subjectName": "Ladakh",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/vtdd2t1"
-    },
-    {
-      "subjectId": "wikidataId/Q22048",
-      "subjectName": "Odisha",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/rdj6vy2"
-    },
-    {
-      "subjectId": "wikidataId/Q22424",
-      "subjectName": "Punjab",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/rdj6vy2"
-    },
-    {
-      "subjectId": "wikidataId/Q26927",
-      "subjectName": "Lakshadweep",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/rdj6vy2"
-    },
-    {
-      "subjectId": "wikidataId/Q40888",
-      "subjectName": "Andaman and Nicobar Islands",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/rdj6vy2"
-    },
-    {
       "subjectId": "wikidataId/Q43433",
       "subjectName": "Chandigarh",
       "subjectTypes": [
@@ -6321,22 +5618,6 @@
         "Class"
       ],
       "provenanceId": "dc/pnqh772"
-    },
-    {
-      "subjectId": "wikidataId/Q43433",
-      "subjectName": "Chandigarh",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "City",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/rdj6vy2"
     },
     {
       "subjectId": "wikidataId/Q46107",
@@ -6369,10 +5650,10 @@
       "provenanceId": "dc/p1b12e3"
     },
     {
-      "subjectId": "wikidataId/Q66278313",
-      "subjectName": "Jammu and Kashmir",
+      "subjectId": "wikidataId/Q46107",
+      "subjectName": "Dadra and Nagar Haveli",
       "subjectTypes": [
-        "AdministrativeArea1",
+        "AdministrativeArea2",
         "State"
       ],
       "predicate": "typeOf",
@@ -6381,37 +5662,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/rdj6vy2"
-    },
-    {
-      "subjectId": "wikidataId/Q66710",
-      "subjectName": "Daman and Diu",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/rdj6vy2"
-    },
-    {
-      "subjectId": "wikidataId/Q66743",
-      "subjectName": "Puducherry",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/rdj6vy2"
+      "provenanceId": "dc/p1b12e3"
     },
     {
       "subjectId": "wikidataId/Q677037",
@@ -6441,7 +5692,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/vtdd2t1"
+      "provenanceId": "dc/pnqh772"
     }
   ]
 }

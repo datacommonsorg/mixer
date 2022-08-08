@@ -9,9 +9,8 @@
       ],
       "predicate": "measuredProperty",
       "objectId": "count",
-      "objectName": "count",
       "objectTypes": [
-        "Property"
+        "Thing"
       ],
       "provenanceId": "dc/d7tbsb1"
     },
@@ -1461,9 +1460,8 @@
       ],
       "predicate": "gender",
       "objectId": "Female",
-      "objectName": "Female",
       "objectTypes": [
-        "GenderType"
+        "Thing"
       ],
       "provenanceId": "dc/d7tbsb1"
     },
@@ -1603,9 +1601,8 @@
       ],
       "predicate": "statType",
       "objectId": "measuredValue",
-      "objectName": "measuredValue",
       "objectTypes": [
-        "Property"
+        "Thing"
       ],
       "provenanceId": "dc/d7tbsb1"
     },
@@ -1618,9 +1615,8 @@
       ],
       "predicate": "typeOf",
       "objectId": "StatisticalVariable",
-      "objectName": "StatisticalVariable",
       "objectTypes": [
-        "Class"
+        "Thing"
       ],
       "provenanceId": "dc/d7tbsb1"
     },

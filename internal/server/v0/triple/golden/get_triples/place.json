@@ -287,20 +287,6 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
-      "subjectId": "geoId/7200500788",
-      "subjectName": "Aguadilla",
-      "subjectTypes": [
-        "CensusCountyDivision"
-      ],
-      "predicate": "containedInPlace",
-      "objectId": "zip/00603",
-      "objectName": "00603",
-      "objectTypes": [
-        "CensusZipCodeTabulationArea"
-      ],
-      "provenanceId": "dc/sm3m2w3"
-    },
-    {
       "subjectId": "geoId/7200503626",
       "subjectName": "Arenales",
       "subjectTypes": [
@@ -315,110 +301,12 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
-      "subjectId": "geoId/7200508313",
-      "subjectName": "Borinquen",
-      "subjectTypes": [
-        "CensusCountyDivision"
-      ],
-      "predicate": "containedInPlace",
-      "objectId": "zip/00603",
-      "objectName": "00603",
-      "objectTypes": [
-        "CensusZipCodeTabulationArea"
-      ],
-      "provenanceId": "dc/sm3m2w3"
-    },
-    {
-      "subjectId": "geoId/7200510592",
-      "subjectName": "Caimital Alto",
-      "subjectTypes": [
-        "CensusCountyDivision"
-      ],
-      "predicate": "containedInPlace",
-      "objectId": "zip/00603",
-      "objectName": "00603",
-      "objectTypes": [
-        "CensusZipCodeTabulationArea"
-      ],
-      "provenanceId": "dc/sm3m2w3"
-    },
-    {
-      "subjectId": "geoId/7200510635",
-      "subjectName": "Caimital Bajo",
-      "subjectTypes": [
-        "CensusCountyDivision"
-      ],
-      "predicate": "containedInPlace",
-      "objectId": "zip/00603",
-      "objectName": "00603",
-      "objectTypes": [
-        "CensusZipCodeTabulationArea"
-      ],
-      "provenanceId": "dc/sm3m2w3"
-    },
-    {
-      "subjectId": "geoId/7200511237",
-      "subjectName": "Camaceyes",
-      "subjectTypes": [
-        "CensusCountyDivision"
-      ],
-      "predicate": "containedInPlace",
-      "objectId": "zip/00603",
-      "objectName": "00603",
-      "objectTypes": [
-        "CensusZipCodeTabulationArea"
-      ],
-      "provenanceId": "dc/sm3m2w3"
-    },
-    {
       "subjectId": "geoId/7200516225",
       "subjectName": "Ceiba Alta",
       "subjectTypes": [
         "CensusCountyDivision"
       ],
       "predicate": "geoOverlaps",
-      "objectId": "zip/00603",
-      "objectName": "00603",
-      "objectTypes": [
-        "CensusZipCodeTabulationArea"
-      ],
-      "provenanceId": "dc/sm3m2w3"
-    },
-    {
-      "subjectId": "geoId/7200516268",
-      "subjectName": "Ceiba Baja",
-      "subjectTypes": [
-        "CensusCountyDivision"
-      ],
-      "predicate": "containedInPlace",
-      "objectId": "zip/00603",
-      "objectName": "00603",
-      "objectTypes": [
-        "CensusZipCodeTabulationArea"
-      ],
-      "provenanceId": "dc/sm3m2w3"
-    },
-    {
-      "subjectId": "geoId/7200520955",
-      "subjectName": "Corrales",
-      "subjectTypes": [
-        "CensusCountyDivision"
-      ],
-      "predicate": "containedInPlace",
-      "objectId": "zip/00603",
-      "objectName": "00603",
-      "objectTypes": [
-        "CensusZipCodeTabulationArea"
-      ],
-      "provenanceId": "dc/sm3m2w3"
-    },
-    {
-      "subjectId": "geoId/7200532694",
-      "subjectName": "Guerrero",
-      "subjectTypes": [
-        "CensusCountyDivision"
-      ],
-      "predicate": "containedInPlace",
       "objectId": "zip/00603",
       "objectName": "00603",
       "objectTypes": [
@@ -679,24 +567,10 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
-      "subjectId": "geoId/7200557935",
-      "subjectName": "Palmar",
+      "subjectId": "geoId/7200745",
+      "subjectName": "Aguadilla zona urbana",
       "subjectTypes": [
-        "CensusCountyDivision"
-      ],
-      "predicate": "containedInPlace",
-      "objectId": "zip/00603",
-      "objectName": "00603",
-      "objectTypes": [
-        "CensusZipCodeTabulationArea"
-      ],
-      "provenanceId": "dc/sm3m2w3"
-    },
-    {
-      "subjectId": "geoId/7200585842",
-      "subjectName": "Victoria",
-      "subjectTypes": [
-        "CensusCountyDivision"
+        "City"
       ],
       "predicate": "containedInPlace",
       "objectId": "zip/00603",
@@ -723,6 +597,34 @@
     {
       "subjectId": "geoId/7209689",
       "subjectName": "Cabán comunidad",
+      "subjectTypes": [
+        "City"
+      ],
+      "predicate": "containedInPlace",
+      "objectId": "zip/00603",
+      "objectName": "00603",
+      "objectTypes": [
+        "CensusZipCodeTabulationArea"
+      ],
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "subjectId": "geoId/7209689",
+      "subjectName": "Cabán comunidad",
+      "subjectTypes": [
+        "City"
+      ],
+      "predicate": "containedInPlace",
+      "objectId": "zip/00603",
+      "objectName": "00603",
+      "objectTypes": [
+        "CensusZipCodeTabulationArea"
+      ],
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "subjectId": "geoId/7268599",
+      "subjectName": "Rafael Hernández comunidad",
       "subjectTypes": [
         "City"
       ],
