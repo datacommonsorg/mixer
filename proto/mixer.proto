@@ -358,7 +358,7 @@ service Mixer {
   rpc QueryV1(QueryRequest) returns (QueryResponse) {
     option (google.api.http) = {
       get : "/v1/query"
-      additional_bindings : {post : "/query" body : "*"}
+      additional_bindings : {post : "/v1/query" body : "*"}
     };
   }
 
