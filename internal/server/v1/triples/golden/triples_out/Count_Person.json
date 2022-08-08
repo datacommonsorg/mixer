@@ -3,11 +3,11 @@
     "measuredProperty": {
       "entities": [
         {
-          "name": "count",
           "dcid": "count",
           "provenanceId": "dc/d7tbsb1"
         },
         {
+          "name": "count",
           "dcid": "count",
           "provenanceId": "dc/d7tbsb1"
         }

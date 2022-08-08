@@ -36370,11 +36370,6 @@
           "pop": 42754
         },
         {
-          "dcid": "geoId/0644112",
-          "name": "Los Gatos",
-          "pop": 32538
-        },
-        {
           "dcid": "geoId/0643280",
           "name": "Los Altos",
           "pop": 30700
@@ -36395,9 +36390,14 @@
           "pop": 11798
         },
         {
-          "dcid": "geoId/0643294",
-          "name": "Los Altos Hills",
-          "pop": 8295
+          "dcid": "geoId/0601458",
+          "name": "Alum Rock",
+          "pop": 11798
+        },
+        {
+          "dcid": "geoId/0620598",
+          "name": "East Foothills",
+          "pop": 6815
         },
         {
           "dcid": "geoId/0620598",
@@ -36408,6 +36408,11 @@
           "dcid": "geoId/0668238",
           "name": "San Martin",
           "pop": 6498
+        },
+        {
+          "dcid": "geoId/0608968",
+          "name": "Burbank",
+          "pop": 5377
         },
         {
           "dcid": "geoId/0608968",
@@ -36443,6 +36448,11 @@
     },
     "Town": {
       "places": [
+        {
+          "dcid": "geoId/0644112",
+          "name": "Los Gatos",
+          "pop": 32538
+        },
         {
           "dcid": "geoId/0644112",
           "name": "Los Gatos",
@@ -36607,6 +36617,16 @@
         "observationPeriod": "P1Y"
       }
     },
+    "geoId/12031": {
+      "date": "2021",
+      "value": 999935,
+      "metadata": {
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
+      }
+    },
     "geoId/12057": {
       "date": "2021",
       "value": 1478194,
@@ -36617,19 +36637,9 @@
         "observationPeriod": "P1Y"
       }
     },
-    "geoId/36081": {
+    "geoId/39035": {
       "date": "2021",
-      "value": 2331143,
-      "metadata": {
-        "importName": "USCensusPEP_Annual_Population",
-        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
-        "measurementMethod": "CensusPEPSurvey",
-        "observationPeriod": "P1Y"
-      }
-    },
-    "geoId/51059": {
-      "date": "2021",
-      "value": 1139720,
+      "value": 1249387,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
@@ -36652,9 +36662,9 @@
     "northamerica"
   ],
   "similarPlaces": [
-    "geoId/36081",
+    "geoId/39035",
     "geoId/06029",
-    "geoId/51059",
+    "geoId/12031",
     "geoId/06073",
     "geoId/12057"
   ],

@@ -19,6 +19,7 @@
         {
           "name": "California",
           "types": [
+            "AdministrativeArea1",
             "State"
           ],
           "dcid": "geoId/06",
@@ -27,7 +28,8 @@
         {
           "name": "California",
           "types": [
-            "AdministrativeArea1"
+            "AdministrativeArea1",
+            "State"
           ],
           "dcid": "geoId/06",
           "provenanceId": "dc/5n63hr1"
@@ -38,19 +40,19 @@
       "entity": "geoId/06",
       "values": [
         {
-          "name": "United States",
-          "types": [
-            "Country"
-          ],
-          "dcid": "country/USA",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
           "name": "Pacific Division",
           "types": [
             "CensusDivision"
           ],
           "dcid": "usc/PacificDivision",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "United States",
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/USA",
           "provenanceId": "dc/5n63hr1"
         }
       ]
