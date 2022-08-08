@@ -19,6 +19,9 @@
       "predicate": "provenance",
       "objectId": "dc/5l5zxr1",
       "objectName": "https://datacommons.org",
+      "objectTypes": [
+        "Provenance"
+      ],
       "provenanceId": "dc/5l5zxr1"
     },
     {
@@ -30,6 +33,9 @@
       "predicate": "subClassOf",
       "objectId": "AdministrativeArea",
       "objectName": "AdministrativeArea",
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/5l5zxr1"
     },
     {
@@ -41,11 +47,17 @@
       "predicate": "typeOf",
       "objectId": "Class",
       "objectName": "Class",
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/5l5zxr1"
     },
     {
       "subjectId": "administrativeCapital",
       "subjectName": "administrativeCapital",
+      "subjectTypes": [
+        "Property"
+      ],
       "predicate": "rangeIncludes",
       "objectId": "City",
       "objectName": "City",
@@ -55,40 +67,11 @@
       "provenanceId": "dc/5l5zxr1"
     },
     {
-      "subjectId": "country/HKG",
-      "subjectName": "Hong Kong",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "City",
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "City",
-      "objectName": "City",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "country/MAC",
-      "subjectName": "Macau",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "City",
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "City",
-      "objectName": "City",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
       "subjectId": "geoId/0100100",
       "subjectName": "Abanda",
+      "subjectTypes": [
+        "City"
+      ],
       "predicate": "typeOf",
       "objectId": "City",
       "objectName": "City",
@@ -100,6 +83,9 @@
     {
       "subjectId": "geoId/0100124",
       "subjectName": "Abbeville",
+      "subjectTypes": [
+        "City"
+      ],
       "predicate": "typeOf",
       "objectId": "City",
       "objectName": "City",
@@ -111,6 +97,9 @@
     {
       "subjectId": "geoId/0100148",
       "subjectName": "Abel",
+      "subjectTypes": [
+        "City"
+      ],
       "predicate": "typeOf",
       "objectId": "City",
       "objectName": "City",
@@ -122,6 +111,9 @@
     {
       "subjectId": "geoId/0100220",
       "subjectName": "Abernant",
+      "subjectTypes": [
+        "City"
+      ],
       "predicate": "typeOf",
       "objectId": "City",
       "objectName": "City",
@@ -133,65 +125,8 @@
     {
       "subjectId": "geoId/0100388",
       "subjectName": "Ada, Alabama",
-      "predicate": "typeOf",
-      "objectId": "City",
-      "objectName": "City",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "geoId/0105015",
-      "subjectName": "Bee Hive",
       "subjectTypes": [
-        "City",
-        "Neighborhood"
-      ],
-      "predicate": "typeOf",
-      "objectId": "City",
-      "objectName": "City",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "geoId/0108728",
-      "subjectName": "Boylston",
-      "subjectTypes": [
-        "City",
-        "Neighborhood"
-      ],
-      "predicate": "typeOf",
-      "objectId": "City",
-      "objectName": "City",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "geoId/0111248",
-      "subjectName": "Cahaba Heights",
-      "subjectTypes": [
-        "City",
-        "Neighborhood"
-      ],
-      "predicate": "typeOf",
-      "objectId": "City",
-      "objectName": "City",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "geoId/0151674",
-      "subjectName": "Mountainboro",
-      "subjectTypes": [
-        "City",
-        "Neighborhood"
+        "City"
       ],
       "predicate": "typeOf",
       "objectId": "City",
@@ -240,52 +175,6 @@
         "AdministrativeArea2",
         "City",
         "County"
-      ],
-      "predicate": "typeOf",
-      "objectId": "City",
-      "objectName": "City",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "geoId/02230",
-      "subjectName": "Skagway",
-      "subjectTypes": [
-        "AdministrativeArea2",
-        "City",
-        "County"
-      ],
-      "predicate": "typeOf",
-      "objectId": "City",
-      "objectName": "City",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "geoId/0276700",
-      "subjectName": "Thane",
-      "subjectTypes": [
-        "City",
-        "Neighborhood"
-      ],
-      "predicate": "typeOf",
-      "objectId": "City",
-      "objectName": "City",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "geoId/0667000",
-      "subjectName": "San Francisco",
-      "subjectTypes": [
-        "AdministrativeArea2",
-        "City"
       ],
       "predicate": "typeOf",
       "objectId": "City",
@@ -446,6 +335,40 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "subjectId": "nuts/AT13",
+      "subjectName": "Vienna",
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "AdministrativeArea2",
+        "City",
+        "EurostatNUTS2"
+      ],
+      "predicate": "typeOf",
+      "objectId": "City",
+      "objectName": "City",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "subjectId": "nuts/DE3",
+      "subjectName": "Berlin",
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "AdministrativeArea4",
+        "City",
+        "EurostatNUTS1"
+      ],
+      "predicate": "typeOf",
+      "objectId": "City",
+      "objectName": "City",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
       "subjectId": "nuts/DE6",
       "subjectName": "Hamburg",
       "subjectTypes": [
@@ -463,12 +386,30 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
-      "subjectId": "nuts/LV006",
-      "subjectName": "Riga",
+      "subjectId": "nuts/ES63",
+      "subjectName": "Ceuta",
       "subjectTypes": [
         "AdministrativeArea1",
+        "AdministrativeArea3",
         "City",
-        "EurostatNUTS3"
+        "EurostatNUTS2"
+      ],
+      "predicate": "typeOf",
+      "objectId": "City",
+      "objectName": "City",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "subjectId": "nuts/ES64",
+      "subjectName": "Ciudad Autónoma de Melilla",
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "AdministrativeArea3",
+        "City",
+        "EurostatNUTS2"
       ],
       "predicate": "typeOf",
       "objectId": "City",
@@ -555,6 +496,22 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
+      "subjectId": "wikidataId/Q1001424",
+      "subjectName": "Wuzhishan City",
+      "subjectTypes": [
+        "AdministrativeArea2",
+        "AdministrativeArea3",
+        "City"
+      ],
+      "predicate": "typeOf",
+      "objectId": "City",
+      "objectName": "City",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
       "subjectId": "wikidataId/Q1002900",
       "subjectName": "Edéa",
       "subjectTypes": [
@@ -570,10 +527,27 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
-      "subjectId": "wikidataId/Q1012924",
-      "subjectName": "Ceadîr-Lunga",
+      "subjectId": "wikidataId/Q1005059",
+      "subjectName": "Qionghai",
       "subjectTypes": [
-        "AdministrativeArea1",
+        "AdministrativeArea2",
+        "AdministrativeArea3",
+        "City"
+      ],
+      "predicate": "typeOf",
+      "objectId": "City",
+      "objectName": "City",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "subjectId": "wikidataId/Q1018525",
+      "subjectName": "L'Hospitalet-près-l'Andorre",
+      "subjectTypes": [
+        "AdministrativeArea4",
+        "AdministrativeArea5",
         "City"
       ],
       "predicate": "typeOf",
@@ -630,6 +604,22 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
+      "subjectId": "wikidataId/Q1073017",
+      "subjectName": "Gognies-Chaussée",
+      "subjectTypes": [
+        "AdministrativeArea4",
+        "AdministrativeArea5",
+        "City"
+      ],
+      "predicate": "typeOf",
+      "objectId": "City",
+      "objectName": "City",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
       "subjectId": "wikidataId/Q1100812",
       "subjectName": "Campo",
       "subjectTypes": [
@@ -645,12 +635,12 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
-      "subjectId": "wikidataId/Q1313398",
-      "subjectName": "Eiserfeld",
+      "subjectId": "wikidataId/Q1104693",
+      "subjectName": "Vieux-Reng",
       "subjectTypes": [
         "AdministrativeArea4",
-        "City",
-        "Neighborhood"
+        "AdministrativeArea5",
+        "City"
       ],
       "predicate": "typeOf",
       "objectId": "City",
@@ -661,28 +651,12 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
-      "subjectId": "wikidataId/Q1652632",
-      "subjectName": "Hüttental",
+      "subjectId": "wikidataId/Q1110585",
+      "subjectName": "Aragnouet",
       "subjectTypes": [
         "AdministrativeArea4",
-        "City",
-        "Neighborhood"
-      ],
-      "predicate": "typeOf",
-      "objectId": "City",
-      "objectName": "City",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5j06ly1"
-    },
-    {
-      "subjectId": "wikidataId/Q1982226",
-      "subjectName": "Neviges",
-      "subjectTypes": [
-        "AdministrativeArea4",
-        "City",
-        "Neighborhood"
+        "AdministrativeArea5",
+        "City"
       ],
       "predicate": "typeOf",
       "objectId": "City",
@@ -693,28 +667,12 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
-      "subjectId": "wikidataId/Q19832995",
-      "subjectName": "St Annes",
+      "subjectId": "wikidataId/Q1160249",
+      "subjectName": "Toufflers",
       "subjectTypes": [
         "AdministrativeArea4",
-        "City",
-        "Neighborhood"
-      ],
-      "predicate": "typeOf",
-      "objectId": "City",
-      "objectName": "City",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "wikidataId/Q2014884",
-      "subjectName": "Oebisfelde",
-      "subjectTypes": [
-        "AdministrativeArea4",
-        "City",
-        "Neighborhood"
+        "AdministrativeArea5",
+        "City"
       ],
       "predicate": "typeOf",
       "objectId": "City",
@@ -745,6 +703,9 @@
       "predicate": "provenance",
       "objectId": "dc/5l5zxr1",
       "objectName": "https://datacommons.org",
+      "objectTypes": [
+        "Provenance"
+      ],
       "provenanceId": "dc/5l5zxr1"
     },
     {
@@ -756,6 +717,9 @@
       "predicate": "subClassOf",
       "objectId": "AdministrativeArea",
       "objectName": "AdministrativeArea",
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/5l5zxr1"
     },
     {
@@ -767,11 +731,17 @@
       "predicate": "typeOf",
       "objectId": "Class",
       "objectName": "Class",
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/5l5zxr1"
     },
     {
       "subjectId": "dc/phx9z7k0d8ne7",
       "subjectName": "Plant Name",
+      "subjectTypes": [
+        "PowerPlantUnit"
+      ],
       "predicate": "containedInPlace",
       "objectId": "County",
       "objectName": "County",
@@ -858,6 +828,9 @@
     {
       "subjectId": "geoId/02195",
       "subjectName": "Petersburg Borough",
+      "subjectTypes": [
+        "County"
+      ],
       "predicate": "typeOf",
       "objectId": "County",
       "objectName": "County",
@@ -1019,6 +992,9 @@
     {
       "subjectId": "zipsWithAccessToHealthyFoods",
       "subjectName": "zipsWithAccessToHealthyFoods",
+      "subjectTypes": [
+        "Property"
+      ],
       "predicate": "domainIncludes",
       "objectId": "County",
       "objectName": "County",

@@ -72,8 +72,13 @@ func Triples(
 	}
 	for p := range data[entity] {
 		entities := []*pb.EntityInfo{}
-		for t := range data[entity][p] {
-			entities = append(entities, data[entity][p][t]...)
+		for t, v := range data[entity][p] {
+			for _, item := range v {
+				if item.GetTypes() == nil && t != "" {
+					item.Types = []string{t}
+				}
+				entities = append(entities, item)
+			}
 		}
 		res.Triples[p] = &pb.EntityInfoCollection{
 			Entities: entities,
@@ -150,8 +155,13 @@ func BulkTriples(
 	for e := range data {
 		for p := range data[e] {
 			if _, ok := entityProps[e][p]; ok {
-				for t := range data[e][p] {
-					triplesByEntity[e][p] = append(triplesByEntity[e][p], data[e][p][t]...)
+				for t, v := range data[e][p] {
+					for _, item := range v {
+						if item.GetTypes() == nil && t != "" {
+							item.Types = []string{t}
+						}
+						triplesByEntity[e][p] = append(triplesByEntity[e][p], item)
+					}
 				}
 			}
 		}

@@ -3,11 +3,17 @@
     "measuredProperty": {
       "entities": [
         {
+          "types": [
+            "Thing"
+          ],
           "dcid": "count",
           "provenanceId": "dc/d7tbsb1"
         },
         {
           "name": "count",
+          "types": [
+            "Property"
+          ],
           "dcid": "count",
           "provenanceId": "dc/d7tbsb1"
         }
@@ -17,6 +23,9 @@
       "entities": [
         {
           "name": "Demographics",
+          "types": [
+            "StatVarGroup"
+          ],
           "dcid": "dc/g/Demographics",
           "provenanceId": "dc/d7tbsb1"
         }
@@ -33,11 +42,17 @@
     "populationType": {
       "entities": [
         {
-          "name": "Person",
+          "types": [
+            "Thing"
+          ],
           "dcid": "Person",
           "provenanceId": "dc/d7tbsb1"
         },
         {
+          "name": "Person",
+          "types": [
+            "Class"
+          ],
           "dcid": "Person",
           "provenanceId": "dc/d7tbsb1"
         }
@@ -47,6 +62,9 @@
       "entities": [
         {
           "name": "https://datacommons.org",
+          "types": [
+            "Provenance"
+          ],
           "dcid": "dc/d7tbsb1",
           "provenanceId": "dc/d7tbsb1"
         }
@@ -55,11 +73,17 @@
     "statType": {
       "entities": [
         {
+          "name": "measuredValue",
+          "types": [
+            "Property"
+          ],
           "dcid": "measuredValue",
           "provenanceId": "dc/d7tbsb1"
         },
         {
-          "name": "measuredValue",
+          "types": [
+            "Thing"
+          ],
           "dcid": "measuredValue",
           "provenanceId": "dc/d7tbsb1"
         }
@@ -68,11 +92,17 @@
     "typeOf": {
       "entities": [
         {
+          "name": "StatisticalVariable",
+          "types": [
+            "Class"
+          ],
           "dcid": "StatisticalVariable",
           "provenanceId": "dc/d7tbsb1"
         },
         {
-          "name": "StatisticalVariable",
+          "types": [
+            "Thing"
+          ],
           "dcid": "StatisticalVariable",
           "provenanceId": "dc/d7tbsb1"
         }

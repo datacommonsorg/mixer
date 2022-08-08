@@ -39,6 +39,9 @@
       "predicate": "containedInPlace",
       "objectId": "geoId/7298",
       "objectName": "Resident Commissioner District (at Large) (113th Congress), Puerto Rico",
+      "objectTypes": [
+        "CongressionalDistrict"
+      ],
       "provenanceId": "dc/sm3m2w3"
     },
     {
@@ -70,6 +73,9 @@
       "predicate": "geoOverlaps",
       "objectId": "geoId/7200500530",
       "objectName": "Aguacate",
+      "objectTypes": [
+        "CensusCountyDivision"
+      ],
       "provenanceId": "dc/sm3m2w3"
     },
     {
@@ -81,6 +87,9 @@
       "predicate": "geoOverlaps",
       "objectId": "geoId/7200503626",
       "objectName": "Arenales",
+      "objectTypes": [
+        "CensusCountyDivision"
+      ],
       "provenanceId": "dc/sm3m2w3"
     },
     {
@@ -92,6 +101,9 @@
       "predicate": "geoOverlaps",
       "objectId": "geoId/7200516225",
       "objectName": "Ceiba Alta",
+      "objectTypes": [
+        "CensusCountyDivision"
+      ],
       "provenanceId": "dc/sm3m2w3"
     },
     {
@@ -103,6 +115,9 @@
       "predicate": "geoOverlaps",
       "objectId": "geoId/72005400100",
       "objectName": "Census Tract 4001, Aguadilla Municipio, Puerto Rico",
+      "objectTypes": [
+        "CensusTract"
+      ],
       "provenanceId": "dc/sm3m2w3"
     },
     {
@@ -114,6 +129,9 @@
       "predicate": "geoOverlaps",
       "objectId": "geoId/72005400300",
       "objectName": "Census Tract 4003, Aguadilla Municipio, Puerto Rico",
+      "objectTypes": [
+        "CensusTract"
+      ],
       "provenanceId": "dc/sm3m2w3"
     },
     {
@@ -125,6 +143,9 @@
       "predicate": "geoOverlaps",
       "objectId": "geoId/72005401302",
       "objectName": "Census Tract 4013.02, Aguadilla Municipio, Puerto Rico",
+      "objectTypes": [
+        "CensusTract"
+      ],
       "provenanceId": "dc/sm3m2w3"
     },
     {
@@ -136,6 +157,9 @@
       "predicate": "geoOverlaps",
       "objectId": "geoId/7200549292",
       "objectName": "Maleza Alta",
+      "objectTypes": [
+        "CensusCountyDivision"
+      ],
       "provenanceId": "dc/sm3m2w3"
     },
     {
@@ -147,6 +171,9 @@
       "predicate": "geoOverlaps",
       "objectId": "geoId/7200549335",
       "objectName": "Maleza Baja",
+      "objectTypes": [
+        "CensusCountyDivision"
+      ],
       "provenanceId": "dc/sm3m2w3"
     },
     {
@@ -168,6 +195,9 @@
       "predicate": "landArea",
       "objectId": "SquareMeter81887185",
       "objectName": "SquareMeter 81887185",
+      "objectTypes": [
+        "Quantity"
+      ],
       "provenanceId": "dc/sm3m2w3"
     },
     {
@@ -209,6 +239,9 @@
       "predicate": "provenance",
       "objectId": "dc/sm3m2w3",
       "objectName": "https://www.census.gov/geographies/reference-files.html",
+      "objectTypes": [
+        "Provenance"
+      ],
       "provenanceId": "dc/sm3m2w3"
     },
     {
@@ -220,6 +253,9 @@
       "predicate": "typeOf",
       "objectId": "CensusZipCodeTabulationArea",
       "objectName": "CensusZipCodeTabulationArea",
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/sm3m2w3"
     },
     {
@@ -231,11 +267,17 @@
       "predicate": "waterArea",
       "objectId": "SquareMeter181411",
       "objectName": "SquareMeter 181411",
+      "objectTypes": [
+        "Quantity"
+      ],
       "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "geoId/7200500530",
       "subjectName": "Aguacate",
+      "subjectTypes": [
+        "CensusCountyDivision"
+      ],
       "predicate": "geoOverlaps",
       "objectId": "zip/00603",
       "objectName": "00603",
@@ -247,6 +289,9 @@
     {
       "subjectId": "geoId/7200500788",
       "subjectName": "Aguadilla",
+      "subjectTypes": [
+        "CensusCountyDivision"
+      ],
       "predicate": "containedInPlace",
       "objectId": "zip/00603",
       "objectName": "00603",
@@ -258,6 +303,9 @@
     {
       "subjectId": "geoId/7200503626",
       "subjectName": "Arenales",
+      "subjectTypes": [
+        "CensusCountyDivision"
+      ],
       "predicate": "geoOverlaps",
       "objectId": "zip/00603",
       "objectName": "00603",
@@ -269,6 +317,9 @@
     {
       "subjectId": "geoId/7200508313",
       "subjectName": "Borinquen",
+      "subjectTypes": [
+        "CensusCountyDivision"
+      ],
       "predicate": "containedInPlace",
       "objectId": "zip/00603",
       "objectName": "00603",
@@ -280,6 +331,9 @@
     {
       "subjectId": "geoId/7200510592",
       "subjectName": "Caimital Alto",
+      "subjectTypes": [
+        "CensusCountyDivision"
+      ],
       "predicate": "containedInPlace",
       "objectId": "zip/00603",
       "objectName": "00603",
@@ -291,6 +345,9 @@
     {
       "subjectId": "geoId/7200510635",
       "subjectName": "Caimital Bajo",
+      "subjectTypes": [
+        "CensusCountyDivision"
+      ],
       "predicate": "containedInPlace",
       "objectId": "zip/00603",
       "objectName": "00603",
@@ -302,6 +359,9 @@
     {
       "subjectId": "geoId/7200511237",
       "subjectName": "Camaceyes",
+      "subjectTypes": [
+        "CensusCountyDivision"
+      ],
       "predicate": "containedInPlace",
       "objectId": "zip/00603",
       "objectName": "00603",
@@ -313,6 +373,9 @@
     {
       "subjectId": "geoId/7200516225",
       "subjectName": "Ceiba Alta",
+      "subjectTypes": [
+        "CensusCountyDivision"
+      ],
       "predicate": "geoOverlaps",
       "objectId": "zip/00603",
       "objectName": "00603",
@@ -324,6 +387,9 @@
     {
       "subjectId": "geoId/7200516268",
       "subjectName": "Ceiba Baja",
+      "subjectTypes": [
+        "CensusCountyDivision"
+      ],
       "predicate": "containedInPlace",
       "objectId": "zip/00603",
       "objectName": "00603",
@@ -335,6 +401,9 @@
     {
       "subjectId": "geoId/7200520955",
       "subjectName": "Corrales",
+      "subjectTypes": [
+        "CensusCountyDivision"
+      ],
       "predicate": "containedInPlace",
       "objectId": "zip/00603",
       "objectName": "00603",
@@ -346,6 +415,9 @@
     {
       "subjectId": "geoId/7200532694",
       "subjectName": "Guerrero",
+      "subjectTypes": [
+        "CensusCountyDivision"
+      ],
       "predicate": "containedInPlace",
       "objectId": "zip/00603",
       "objectName": "00603",
@@ -357,6 +429,9 @@
     {
       "subjectId": "geoId/72005400100",
       "subjectName": "Census Tract 4001, Aguadilla Municipio, Puerto Rico",
+      "subjectTypes": [
+        "CensusTract"
+      ],
       "predicate": "geoOverlaps",
       "objectId": "zip/00603",
       "objectName": "00603",
@@ -368,6 +443,9 @@
     {
       "subjectId": "geoId/72005400300",
       "subjectName": "Census Tract 4003, Aguadilla Municipio, Puerto Rico",
+      "subjectTypes": [
+        "CensusTract"
+      ],
       "predicate": "geoOverlaps",
       "objectId": "zip/00603",
       "objectName": "00603",
@@ -379,6 +457,9 @@
     {
       "subjectId": "geoId/72005400400",
       "subjectName": "Census Tract 4004, Aguadilla Municipio, Puerto Rico",
+      "subjectTypes": [
+        "CensusTract"
+      ],
       "predicate": "containedInPlace",
       "objectId": "zip/00603",
       "objectName": "00603",
@@ -390,6 +471,9 @@
     {
       "subjectId": "geoId/72005400501",
       "subjectName": "Census Tract 4005.01, Aguadilla Municipio, Puerto Rico",
+      "subjectTypes": [
+        "CensusTract"
+      ],
       "predicate": "containedInPlace",
       "objectId": "zip/00603",
       "objectName": "00603",
@@ -401,6 +485,9 @@
     {
       "subjectId": "geoId/72005400502",
       "subjectName": "Census Tract 4005.02, Aguadilla Municipio, Puerto Rico",
+      "subjectTypes": [
+        "CensusTract"
+      ],
       "predicate": "containedInPlace",
       "objectId": "zip/00603",
       "objectName": "00603",
@@ -412,6 +499,9 @@
     {
       "subjectId": "geoId/72005400600",
       "subjectName": "Census Tract 4006, Aguadilla Municipio, Puerto Rico",
+      "subjectTypes": [
+        "CensusTract"
+      ],
       "predicate": "containedInPlace",
       "objectId": "zip/00603",
       "objectName": "00603",
@@ -423,6 +513,9 @@
     {
       "subjectId": "geoId/72005400700",
       "subjectName": "Census Tract 4007, Aguadilla Municipio, Puerto Rico",
+      "subjectTypes": [
+        "CensusTract"
+      ],
       "predicate": "containedInPlace",
       "objectId": "zip/00603",
       "objectName": "00603",
@@ -434,6 +527,9 @@
     {
       "subjectId": "geoId/72005400800",
       "subjectName": "Census Tract 4008, Aguadilla Municipio, Puerto Rico",
+      "subjectTypes": [
+        "CensusTract"
+      ],
       "predicate": "containedInPlace",
       "objectId": "zip/00603",
       "objectName": "00603",
@@ -445,6 +541,9 @@
     {
       "subjectId": "geoId/72005400900",
       "subjectName": "Census Tract 4009, Aguadilla Municipio, Puerto Rico",
+      "subjectTypes": [
+        "CensusTract"
+      ],
       "predicate": "containedInPlace",
       "objectId": "zip/00603",
       "objectName": "00603",
@@ -456,6 +555,9 @@
     {
       "subjectId": "geoId/72005401000",
       "subjectName": "Census Tract 4010, Aguadilla Municipio, Puerto Rico",
+      "subjectTypes": [
+        "CensusTract"
+      ],
       "predicate": "containedInPlace",
       "objectId": "zip/00603",
       "objectName": "00603",
@@ -467,6 +569,9 @@
     {
       "subjectId": "geoId/72005401100",
       "subjectName": "Census Tract 4011, Aguadilla Municipio, Puerto Rico",
+      "subjectTypes": [
+        "CensusTract"
+      ],
       "predicate": "containedInPlace",
       "objectId": "zip/00603",
       "objectName": "00603",
@@ -478,6 +583,9 @@
     {
       "subjectId": "geoId/72005401200",
       "subjectName": "Census Tract 4012, Aguadilla Municipio, Puerto Rico",
+      "subjectTypes": [
+        "CensusTract"
+      ],
       "predicate": "containedInPlace",
       "objectId": "zip/00603",
       "objectName": "00603",
@@ -489,6 +597,9 @@
     {
       "subjectId": "geoId/72005401301",
       "subjectName": "Census Tract 4013.01, Aguadilla Municipio, Puerto Rico",
+      "subjectTypes": [
+        "CensusTract"
+      ],
       "predicate": "containedInPlace",
       "objectId": "zip/00603",
       "objectName": "00603",
@@ -500,6 +611,9 @@
     {
       "subjectId": "geoId/72005401302",
       "subjectName": "Census Tract 4013.02, Aguadilla Municipio, Puerto Rico",
+      "subjectTypes": [
+        "CensusTract"
+      ],
       "predicate": "geoOverlaps",
       "objectId": "zip/00603",
       "objectName": "00603",
@@ -511,6 +625,9 @@
     {
       "subjectId": "geoId/72005401401",
       "subjectName": "Census Tract 4014.01, Aguadilla Municipio, Puerto Rico",
+      "subjectTypes": [
+        "CensusTract"
+      ],
       "predicate": "containedInPlace",
       "objectId": "zip/00603",
       "objectName": "00603",
@@ -522,6 +639,9 @@
     {
       "subjectId": "geoId/72005401402",
       "subjectName": "Census Tract 4014.02, Aguadilla Municipio, Puerto Rico",
+      "subjectTypes": [
+        "CensusTract"
+      ],
       "predicate": "containedInPlace",
       "objectId": "zip/00603",
       "objectName": "00603",
@@ -533,6 +653,9 @@
     {
       "subjectId": "geoId/7200549292",
       "subjectName": "Maleza Alta",
+      "subjectTypes": [
+        "CensusCountyDivision"
+      ],
       "predicate": "geoOverlaps",
       "objectId": "zip/00603",
       "objectName": "00603",
@@ -544,6 +667,9 @@
     {
       "subjectId": "geoId/7200549335",
       "subjectName": "Maleza Baja",
+      "subjectTypes": [
+        "CensusCountyDivision"
+      ],
       "predicate": "geoOverlaps",
       "objectId": "zip/00603",
       "objectName": "00603",
@@ -555,6 +681,9 @@
     {
       "subjectId": "geoId/7200557935",
       "subjectName": "Palmar",
+      "subjectTypes": [
+        "CensusCountyDivision"
+      ],
       "predicate": "containedInPlace",
       "objectId": "zip/00603",
       "objectName": "00603",
@@ -566,6 +695,9 @@
     {
       "subjectId": "geoId/7200585842",
       "subjectName": "Victoria",
+      "subjectTypes": [
+        "CensusCountyDivision"
+      ],
       "predicate": "containedInPlace",
       "objectId": "zip/00603",
       "objectName": "00603",
@@ -577,6 +709,9 @@
     {
       "subjectId": "geoId/7200745",
       "subjectName": "Aguadilla zona urbana",
+      "subjectTypes": [
+        "City"
+      ],
       "predicate": "containedInPlace",
       "objectId": "zip/00603",
       "objectName": "00603",
@@ -588,6 +723,9 @@
     {
       "subjectId": "geoId/7209689",
       "subjectName": "Cabán comunidad",
+      "subjectTypes": [
+        "City"
+      ],
       "predicate": "containedInPlace",
       "objectId": "zip/00603",
       "objectName": "00603",
@@ -599,6 +737,9 @@
     {
       "subjectId": "geoId/7268599",
       "subjectName": "Rafael Hernández comunidad",
+      "subjectTypes": [
+        "City"
+      ],
       "predicate": "containedInPlace",
       "objectId": "zip/00603",
       "objectName": "00603",
@@ -610,6 +751,9 @@
     {
       "subjectId": "ipedsId/242626",
       "subjectName": "Inter American University of Puerto Rico-Aguadilla",
+      "subjectTypes": [
+        "CollegeOrUniversity"
+      ],
       "predicate": "postalCode",
       "objectId": "zip/00603",
       "objectName": "00603",
@@ -621,6 +765,9 @@
     {
       "subjectId": "ipedsId/376385",
       "subjectName": "Universal Technology College of Puerto Rico",
+      "subjectTypes": [
+        "CollegeOrUniversity"
+      ],
       "predicate": "postalCode",
       "objectId": "zip/00603",
       "objectName": "00603",
@@ -632,6 +779,9 @@
     {
       "subjectId": "ipedsId/443951",
       "subjectName": "Charlie's Guard-Detective Bureau and Academy Inc",
+      "subjectTypes": [
+        "CollegeOrUniversity"
+      ],
       "predicate": "postalCode",
       "objectId": "zip/00603",
       "objectName": "00603",
@@ -643,6 +793,9 @@
     {
       "subjectId": "ipedsId/445984",
       "subjectName": "Xtreme Career Institute",
+      "subjectTypes": [
+        "CollegeOrUniversity"
+      ],
       "predicate": "postalCode",
       "objectId": "zip/00603",
       "objectName": "00603",

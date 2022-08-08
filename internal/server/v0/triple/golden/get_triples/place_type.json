@@ -19,6 +19,9 @@
       "predicate": "provenance",
       "objectId": "dc/5l5zxr1",
       "objectName": "https://datacommons.org",
+      "objectTypes": [
+        "Provenance"
+      ],
       "provenanceId": "dc/5l5zxr1"
     },
     {
@@ -30,6 +33,9 @@
       "predicate": "subClassOf",
       "objectId": "AdministrativeArea",
       "objectName": "AdministrativeArea",
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/5l5zxr1"
     },
     {
@@ -41,11 +47,17 @@
       "predicate": "typeOf",
       "objectId": "Class",
       "objectName": "Class",
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/5l5zxr1"
     },
     {
       "subjectId": "addressCountry",
       "subjectName": "addressCountry",
+      "subjectTypes": [
+        "Property"
+      ],
       "predicate": "rangeIncludes",
       "objectId": "Country",
       "objectName": "Country",
@@ -57,6 +69,9 @@
     {
       "subjectId": "country/ABW",
       "subjectName": "Aruba",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -68,6 +83,9 @@
     {
       "subjectId": "country/AFG",
       "subjectName": "Afghanistan",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -79,6 +97,9 @@
     {
       "subjectId": "country/AFI",
       "subjectName": "French Afars and Issas",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -90,6 +111,9 @@
     {
       "subjectId": "country/AGO",
       "subjectName": "Angola",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -116,6 +140,9 @@
     {
       "subjectId": "country/ALB",
       "subjectName": "Albania",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -127,6 +154,9 @@
     {
       "subjectId": "country/AND",
       "subjectName": "Andorra",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -138,6 +168,9 @@
     {
       "subjectId": "country/ANT",
       "subjectName": "Netherlands Antilles",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -149,6 +182,9 @@
     {
       "subjectId": "country/ARE",
       "subjectName": "United Arab Emirates",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -160,6 +196,9 @@
     {
       "subjectId": "country/ARG",
       "subjectName": "Argentina",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -171,6 +210,9 @@
     {
       "subjectId": "country/ARM",
       "subjectName": "Armenia",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -197,6 +239,9 @@
     {
       "subjectId": "country/ATA",
       "subjectName": "Antarctica",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -223,6 +268,9 @@
     {
       "subjectId": "country/ATF",
       "subjectName": "French Southern Territories",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -234,6 +282,9 @@
     {
       "subjectId": "country/ATG",
       "subjectName": "Antigua and Barbuda",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -245,6 +296,9 @@
     {
       "subjectId": "country/ATN",
       "subjectName": "Dronning Maud Land",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -256,6 +310,9 @@
     {
       "subjectId": "country/AUS",
       "subjectName": "Australia",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -267,6 +324,9 @@
     {
       "subjectId": "country/AUT",
       "subjectName": "Austria",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -278,6 +338,9 @@
     {
       "subjectId": "country/AZE",
       "subjectName": "Azerbaijan",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -289,6 +352,9 @@
     {
       "subjectId": "country/BDI",
       "subjectName": "Burundi",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -300,6 +366,9 @@
     {
       "subjectId": "country/BEL",
       "subjectName": "Belgium",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -311,6 +380,9 @@
     {
       "subjectId": "country/BEN",
       "subjectName": "Benin",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -322,6 +394,9 @@
     {
       "subjectId": "country/BES",
       "subjectName": "Bonaire, Sint Eustatius and Saba",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -333,6 +408,9 @@
     {
       "subjectId": "country/BFA",
       "subjectName": "Burkina Faso",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -344,6 +422,9 @@
     {
       "subjectId": "country/BGD",
       "subjectName": "Bangladesh",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -355,6 +436,9 @@
     {
       "subjectId": "country/BGR",
       "subjectName": "Bulgaria",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -366,6 +450,9 @@
     {
       "subjectId": "country/BHR",
       "subjectName": "Bahrain",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -377,6 +464,9 @@
     {
       "subjectId": "country/BHS",
       "subjectName": "Bahamas",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -388,6 +478,9 @@
     {
       "subjectId": "country/BIH",
       "subjectName": "Bosnia and Herzegovina",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -399,6 +492,9 @@
     {
       "subjectId": "country/BLM",
       "subjectName": "Saint Barthélemy",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -410,6 +506,9 @@
     {
       "subjectId": "country/BLR",
       "subjectName": "Belarus",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -421,6 +520,9 @@
     {
       "subjectId": "country/BLZ",
       "subjectName": "Belize",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -447,6 +549,9 @@
     {
       "subjectId": "country/BOL",
       "subjectName": "Bolivia",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -458,6 +563,9 @@
     {
       "subjectId": "country/BRA",
       "subjectName": "Brazil",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -469,6 +577,9 @@
     {
       "subjectId": "country/BRB",
       "subjectName": "Barbados",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -480,6 +591,9 @@
     {
       "subjectId": "country/BRN",
       "subjectName": "Brunei",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -491,6 +605,9 @@
     {
       "subjectId": "country/BTN",
       "subjectName": "Bhutan",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -502,6 +619,9 @@
     {
       "subjectId": "country/BVT",
       "subjectName": "Bouvet Island",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -513,6 +633,9 @@
     {
       "subjectId": "country/BWA",
       "subjectName": "Botswana",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -524,6 +647,9 @@
     {
       "subjectId": "country/BYS",
       "subjectName": "Byelorussian SSR",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -535,6 +661,9 @@
     {
       "subjectId": "country/CAF",
       "subjectName": "Central African Republic",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -546,6 +675,9 @@
     {
       "subjectId": "country/CAN",
       "subjectName": "Canada",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -572,6 +704,9 @@
     {
       "subjectId": "country/CHE",
       "subjectName": "Switzerland",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -583,6 +718,9 @@
     {
       "subjectId": "country/CHL",
       "subjectName": "Chile",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -594,6 +732,9 @@
     {
       "subjectId": "country/CHN",
       "subjectName": "China",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -605,6 +746,9 @@
     {
       "subjectId": "country/CIV",
       "subjectName": "Côte d'Ivoire",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -616,6 +760,9 @@
     {
       "subjectId": "country/CMR",
       "subjectName": "Cameroon",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -627,6 +774,9 @@
     {
       "subjectId": "country/COD",
       "subjectName": "Congo [DRC]",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -638,6 +788,9 @@
     {
       "subjectId": "country/COG",
       "subjectName": "Congo [Republic]",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -649,6 +802,9 @@
     {
       "subjectId": "country/COK",
       "subjectName": "Cook Islands",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -660,6 +816,9 @@
     {
       "subjectId": "country/COL",
       "subjectName": "Colombia",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -671,6 +830,9 @@
     {
       "subjectId": "country/COM",
       "subjectName": "Comoros",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -682,6 +844,9 @@
     {
       "subjectId": "country/CPV",
       "subjectName": "Cape Verde",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -693,6 +858,9 @@
     {
       "subjectId": "country/CRI",
       "subjectName": "Costa Rica",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -704,6 +872,9 @@
     {
       "subjectId": "country/CSK",
       "subjectName": "Czechoslovakia",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -715,6 +886,9 @@
     {
       "subjectId": "country/CTE",
       "subjectName": "Canton and Enderbury Islands",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -726,6 +900,9 @@
     {
       "subjectId": "country/CUB",
       "subjectName": "Cuba",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -737,6 +914,9 @@
     {
       "subjectId": "country/CUW",
       "subjectName": "Curaçao",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -778,6 +958,9 @@
     {
       "subjectId": "country/CYP",
       "subjectName": "Cyprus",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -789,6 +972,9 @@
     {
       "subjectId": "country/CZE",
       "subjectName": "Czech Republic",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -800,6 +986,9 @@
     {
       "subjectId": "country/DDR",
       "subjectName": "German Democratic Republic",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -811,6 +1000,9 @@
     {
       "subjectId": "country/DEU",
       "subjectName": "Germany",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -822,6 +1014,9 @@
     {
       "subjectId": "country/DHY",
       "subjectName": "Dahomey",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -833,6 +1028,9 @@
     {
       "subjectId": "country/DJI",
       "subjectName": "Djibouti",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -844,6 +1042,9 @@
     {
       "subjectId": "country/DMA",
       "subjectName": "Dominica",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -870,6 +1071,9 @@
     {
       "subjectId": "country/DOM",
       "subjectName": "Dominican Republic",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -881,6 +1085,9 @@
     {
       "subjectId": "country/DZA",
       "subjectName": "Algeria",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -892,6 +1099,9 @@
     {
       "subjectId": "country/ECU",
       "subjectName": "Ecuador",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -903,6 +1113,9 @@
     {
       "subjectId": "country/EGY",
       "subjectName": "Egypt",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -914,6 +1127,9 @@
     {
       "subjectId": "country/ERI",
       "subjectName": "Eritrea",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -925,6 +1141,9 @@
     {
       "subjectId": "country/ESH",
       "subjectName": "Western Sahara",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -936,6 +1155,9 @@
     {
       "subjectId": "country/ESP",
       "subjectName": "Spain",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -947,6 +1169,9 @@
     {
       "subjectId": "country/EST",
       "subjectName": "Estonia",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -958,6 +1183,9 @@
     {
       "subjectId": "country/ETH",
       "subjectName": "Ethiopia",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -969,6 +1197,9 @@
     {
       "subjectId": "country/FIN",
       "subjectName": "Finland",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -980,6 +1211,9 @@
     {
       "subjectId": "country/FJI",
       "subjectName": "Fiji",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -1006,6 +1240,9 @@
     {
       "subjectId": "country/FRA",
       "subjectName": "France",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -1032,6 +1269,9 @@
     {
       "subjectId": "country/FSM",
       "subjectName": "Federated States of Micronesia",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -1043,6 +1283,9 @@
     {
       "subjectId": "country/FXX",
       "subjectName": "Metropolitan France",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -1054,6 +1297,9 @@
     {
       "subjectId": "country/GAB",
       "subjectName": "Gabon",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -1065,6 +1311,9 @@
     {
       "subjectId": "country/GBR",
       "subjectName": "United Kingdom",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -1076,6 +1325,9 @@
     {
       "subjectId": "country/GEL",
       "subjectName": "Gilbert and Ellice Islands",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -1087,6 +1339,9 @@
     {
       "subjectId": "country/GEO",
       "subjectName": "Georgia",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -1098,6 +1353,9 @@
     {
       "subjectId": "country/GGY",
       "subjectName": "Guernsey",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -1109,6 +1367,9 @@
     {
       "subjectId": "country/GHA",
       "subjectName": "Ghana",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -1135,6 +1396,9 @@
     {
       "subjectId": "country/GIN",
       "subjectName": "Guinea",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -1162,6 +1426,9 @@
     {
       "subjectId": "country/GMB",
       "subjectName": "Gambia",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -1173,6 +1440,9 @@
     {
       "subjectId": "country/GNB",
       "subjectName": "Guinea-Bissau",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -1184,6 +1454,9 @@
     {
       "subjectId": "country/GNQ",
       "subjectName": "Equatorial Guinea",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -1195,6 +1468,9 @@
     {
       "subjectId": "country/GRC",
       "subjectName": "Greece",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -1206,6 +1482,9 @@
     {
       "subjectId": "country/GRD",
       "subjectName": "Grenada",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -1232,6 +1511,9 @@
     {
       "subjectId": "country/GTM",
       "subjectName": "Guatemala",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -1274,6 +1556,9 @@
     {
       "subjectId": "country/GUY",
       "subjectName": "Guyana",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -1316,6 +1601,9 @@
     {
       "subjectId": "country/HND",
       "subjectName": "Honduras",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -1327,6 +1615,9 @@
     {
       "subjectId": "country/HRV",
       "subjectName": "Croatia",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -1338,6 +1629,9 @@
     {
       "subjectId": "country/HTI",
       "subjectName": "Haiti",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -1349,6 +1643,9 @@
     {
       "subjectId": "country/HUN",
       "subjectName": "Hungary",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -1360,6 +1657,9 @@
     {
       "subjectId": "country/HVO",
       "subjectName": "Upper Volta",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -1371,6 +1671,9 @@
     {
       "subjectId": "country/IDN",
       "subjectName": "Indonesia",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -1382,6 +1685,9 @@
     {
       "subjectId": "country/IMN",
       "subjectName": "Isle of Man",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -1393,6 +1699,9 @@
     {
       "subjectId": "country/IND",
       "subjectName": "India",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -1419,6 +1728,9 @@
     {
       "subjectId": "country/IRL",
       "subjectName": "Ireland",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -1430,6 +1742,9 @@
     {
       "subjectId": "country/IRN",
       "subjectName": "Iran",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -1441,6 +1756,9 @@
     {
       "subjectId": "country/IRQ",
       "subjectName": "Iraq",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -1452,6 +1770,9 @@
     {
       "subjectId": "country/ISL",
       "subjectName": "Iceland",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -1463,6 +1784,9 @@
     {
       "subjectId": "country/ISR",
       "subjectName": "Israel",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -1474,6 +1798,9 @@
     {
       "subjectId": "country/ITA",
       "subjectName": "Italy",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -1485,6 +1812,9 @@
     {
       "subjectId": "country/JAM",
       "subjectName": "Jamaica",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -1496,6 +1826,9 @@
     {
       "subjectId": "country/JEY",
       "subjectName": "Jersey",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -1507,6 +1840,9 @@
     {
       "subjectId": "country/JOR",
       "subjectName": "Jordan",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -1518,6 +1854,9 @@
     {
       "subjectId": "country/JPN",
       "subjectName": "Japan",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -1529,6 +1868,9 @@
     {
       "subjectId": "country/KAZ",
       "subjectName": "Kazakhstan",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -1540,6 +1882,9 @@
     {
       "subjectId": "country/KEN",
       "subjectName": "Kenya",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -1551,6 +1896,9 @@
     {
       "subjectId": "country/KGZ",
       "subjectName": "Kyrgyzstan",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -1562,6 +1910,9 @@
     {
       "subjectId": "country/KHM",
       "subjectName": "Cambodia",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -1573,6 +1924,9 @@
     {
       "subjectId": "country/KIR",
       "subjectName": "Kiribati",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -1584,6 +1938,9 @@
     {
       "subjectId": "country/KNA",
       "subjectName": "Saint Kitts and Nevis",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -1595,6 +1952,9 @@
     {
       "subjectId": "country/KOR",
       "subjectName": "South Korea",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -1606,6 +1966,9 @@
     {
       "subjectId": "country/KWT",
       "subjectName": "Kuwait",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -1617,6 +1980,9 @@
     {
       "subjectId": "country/LAO",
       "subjectName": "Laos",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -1628,6 +1994,9 @@
     {
       "subjectId": "country/LBN",
       "subjectName": "Lebanon",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -1639,6 +2008,9 @@
     {
       "subjectId": "country/LBR",
       "subjectName": "Liberia",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -1650,6 +2022,9 @@
     {
       "subjectId": "country/LBY",
       "subjectName": "Libya",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -1661,6 +2036,9 @@
     {
       "subjectId": "country/LCA",
       "subjectName": "Saint Lucia",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -1672,6 +2050,9 @@
     {
       "subjectId": "country/LIE",
       "subjectName": "Liechtenstein",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -1683,6 +2064,9 @@
     {
       "subjectId": "country/LKA",
       "subjectName": "Sri Lanka",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -1694,6 +2078,9 @@
     {
       "subjectId": "country/LSO",
       "subjectName": "Lesotho",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -1705,6 +2092,9 @@
     {
       "subjectId": "country/LTU",
       "subjectName": "Lithuania",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -1716,6 +2106,9 @@
     {
       "subjectId": "country/LUX",
       "subjectName": "Luxembourg",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -1727,6 +2120,9 @@
     {
       "subjectId": "country/LVA",
       "subjectName": "Latvia",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -1770,6 +2166,9 @@
     {
       "subjectId": "country/MAF",
       "subjectName": "Saint Martin",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -1781,6 +2180,9 @@
     {
       "subjectId": "country/MAR",
       "subjectName": "Morocco",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -1792,6 +2194,9 @@
     {
       "subjectId": "country/MCO",
       "subjectName": "Monaco",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -1803,6 +2208,9 @@
     {
       "subjectId": "country/MDA",
       "subjectName": "Moldova",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -1814,6 +2222,9 @@
     {
       "subjectId": "country/MDG",
       "subjectName": "Madagascar",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -1825,6 +2236,9 @@
     {
       "subjectId": "country/MDV",
       "subjectName": "Maldives",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -1836,6 +2250,9 @@
     {
       "subjectId": "country/MEX",
       "subjectName": "Mexico",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -1847,6 +2264,9 @@
     {
       "subjectId": "country/MHL",
       "subjectName": "Marshall Islands",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -1858,6 +2278,9 @@
     {
       "subjectId": "country/MKD",
       "subjectName": "Macedonia [FYROM]",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -1869,6 +2292,9 @@
     {
       "subjectId": "country/MLI",
       "subjectName": "Mali",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -1880,6 +2306,9 @@
     {
       "subjectId": "country/MLT",
       "subjectName": "Malta",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -1891,6 +2320,9 @@
     {
       "subjectId": "country/MMR",
       "subjectName": "Myanmar",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -1902,6 +2334,9 @@
     {
       "subjectId": "country/MNE",
       "subjectName": "Montenegro",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -1913,6 +2348,9 @@
     {
       "subjectId": "country/MNG",
       "subjectName": "Mongolia",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -1939,6 +2377,9 @@
     {
       "subjectId": "country/MOZ",
       "subjectName": "Mozambique",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -1950,6 +2391,9 @@
     {
       "subjectId": "country/MRT",
       "subjectName": "Mauritania",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -1992,6 +2436,9 @@
     {
       "subjectId": "country/MUS",
       "subjectName": "Mauritius",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2003,6 +2450,9 @@
     {
       "subjectId": "country/MWI",
       "subjectName": "Malawi",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2014,6 +2464,9 @@
     {
       "subjectId": "country/MYS",
       "subjectName": "Malaysia",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2041,6 +2494,9 @@
     {
       "subjectId": "country/NAM",
       "subjectName": "Namibia",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2052,6 +2508,9 @@
     {
       "subjectId": "country/NCL",
       "subjectName": "New Caledonia",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2063,6 +2522,9 @@
     {
       "subjectId": "country/NER",
       "subjectName": "Niger",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2089,6 +2551,9 @@
     {
       "subjectId": "country/NGA",
       "subjectName": "Nigeria",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2100,6 +2565,9 @@
     {
       "subjectId": "country/NHB",
       "subjectName": "New Hebrides",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2111,6 +2579,9 @@
     {
       "subjectId": "country/NIC",
       "subjectName": "Nicaragua",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2122,6 +2593,9 @@
     {
       "subjectId": "country/NIU",
       "subjectName": "Niue",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2133,6 +2607,9 @@
     {
       "subjectId": "country/NLD",
       "subjectName": "Netherlands",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2144,6 +2621,9 @@
     {
       "subjectId": "country/NOR",
       "subjectName": "Norway",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2155,6 +2635,9 @@
     {
       "subjectId": "country/NPL",
       "subjectName": "Nepal",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2166,6 +2649,9 @@
     {
       "subjectId": "country/NRU",
       "subjectName": "Nauru",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2177,6 +2663,9 @@
     {
       "subjectId": "country/NZL",
       "subjectName": "New Zealand",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2188,6 +2677,9 @@
     {
       "subjectId": "country/OMN",
       "subjectName": "Oman",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2199,6 +2691,9 @@
     {
       "subjectId": "country/PAK",
       "subjectName": "Pakistan",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2210,6 +2705,9 @@
     {
       "subjectId": "country/PAN",
       "subjectName": "Panama",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2236,6 +2734,9 @@
     {
       "subjectId": "country/PER",
       "subjectName": "Peru",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2247,6 +2748,9 @@
     {
       "subjectId": "country/PHL",
       "subjectName": "Philippines",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2258,6 +2762,9 @@
     {
       "subjectId": "country/PLW",
       "subjectName": "Palau",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2269,6 +2776,9 @@
     {
       "subjectId": "country/PNG",
       "subjectName": "Papua New Guinea",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2280,6 +2790,9 @@
     {
       "subjectId": "country/POL",
       "subjectName": "Poland",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2291,6 +2804,9 @@
     {
       "subjectId": "country/PRI",
       "subjectName": "Puerto Rico",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2302,6 +2818,9 @@
     {
       "subjectId": "country/PRK",
       "subjectName": "North Korea",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2313,6 +2832,9 @@
     {
       "subjectId": "country/PRT",
       "subjectName": "Portugal",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2324,6 +2846,9 @@
     {
       "subjectId": "country/PRY",
       "subjectName": "Paraguay",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2335,6 +2860,9 @@
     {
       "subjectId": "country/PSE",
       "subjectName": "Palestinian Territories",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2346,6 +2874,9 @@
     {
       "subjectId": "country/PYF",
       "subjectName": "French Polynesia",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2357,6 +2888,9 @@
     {
       "subjectId": "country/QAT",
       "subjectName": "Qatar",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2400,6 +2934,9 @@
     {
       "subjectId": "country/ROU",
       "subjectName": "Romania",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2411,6 +2948,9 @@
     {
       "subjectId": "country/RUS",
       "subjectName": "Russia",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2422,6 +2962,9 @@
     {
       "subjectId": "country/RWA",
       "subjectName": "Rwanda",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2433,6 +2976,9 @@
     {
       "subjectId": "country/SAU",
       "subjectName": "Saudi Arabia",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2444,6 +2990,9 @@
     {
       "subjectId": "country/SCG",
       "subjectName": "Serbia and Montenegro",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2455,6 +3004,9 @@
     {
       "subjectId": "country/SDN",
       "subjectName": "Sudan",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2466,6 +3018,9 @@
     {
       "subjectId": "country/SEN",
       "subjectName": "Senegal",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2477,6 +3032,9 @@
     {
       "subjectId": "country/SGP",
       "subjectName": "Singapore",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2518,6 +3076,9 @@
     {
       "subjectId": "country/SJM",
       "subjectName": "Svalbard and Jan Mayen",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2529,6 +3090,9 @@
     {
       "subjectId": "country/SLB",
       "subjectName": "Solomon Islands",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2540,6 +3104,9 @@
     {
       "subjectId": "country/SLE",
       "subjectName": "Sierra Leone",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2551,6 +3118,9 @@
     {
       "subjectId": "country/SLV",
       "subjectName": "El Salvador",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2562,6 +3132,9 @@
     {
       "subjectId": "country/SMR",
       "subjectName": "San Marino",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2573,6 +3146,9 @@
     {
       "subjectId": "country/SOM",
       "subjectName": "Somalia",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2584,6 +3160,9 @@
     {
       "subjectId": "country/SPM",
       "subjectName": "Saint Pierre and Miquelon",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2595,6 +3174,9 @@
     {
       "subjectId": "country/SRB",
       "subjectName": "Serbia",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2606,6 +3188,9 @@
     {
       "subjectId": "country/SSD",
       "subjectName": "South Sudan",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2617,6 +3202,9 @@
     {
       "subjectId": "country/STP",
       "subjectName": "São Tomé and Príncipe",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2628,6 +3216,9 @@
     {
       "subjectId": "country/SUN",
       "subjectName": "Union of Soviet Socialist Republics",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2639,6 +3230,9 @@
     {
       "subjectId": "country/SUR",
       "subjectName": "Suriname",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2650,6 +3244,9 @@
     {
       "subjectId": "country/SVK",
       "subjectName": "Slovakia",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2661,6 +3258,9 @@
     {
       "subjectId": "country/SVN",
       "subjectName": "Slovenia",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2672,6 +3272,9 @@
     {
       "subjectId": "country/SWE",
       "subjectName": "Sweden",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2683,6 +3286,9 @@
     {
       "subjectId": "country/SWZ",
       "subjectName": "Eswatini",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2694,6 +3300,9 @@
     {
       "subjectId": "country/SXM",
       "subjectName": "Sint Maarten",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2705,6 +3314,9 @@
     {
       "subjectId": "country/SYC",
       "subjectName": "Seychelles",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2716,6 +3328,9 @@
     {
       "subjectId": "country/SYR",
       "subjectName": "Syria",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2742,6 +3357,9 @@
     {
       "subjectId": "country/TCD",
       "subjectName": "Chad",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2753,6 +3371,9 @@
     {
       "subjectId": "country/TGO",
       "subjectName": "Togo",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2764,6 +3385,9 @@
     {
       "subjectId": "country/THA",
       "subjectName": "Thailand",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2775,6 +3399,9 @@
     {
       "subjectId": "country/TJK",
       "subjectName": "Tajikistan",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2786,6 +3413,9 @@
     {
       "subjectId": "country/TKL",
       "subjectName": "Tokelau",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2797,6 +3427,9 @@
     {
       "subjectId": "country/TKM",
       "subjectName": "Turkmenistan",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2808,6 +3441,9 @@
     {
       "subjectId": "country/TLS",
       "subjectName": "East Timor",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2819,6 +3455,9 @@
     {
       "subjectId": "country/TON",
       "subjectName": "Tonga",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2830,6 +3469,9 @@
     {
       "subjectId": "country/TTO",
       "subjectName": "Trinidad and Tobago",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2841,6 +3483,9 @@
     {
       "subjectId": "country/TUN",
       "subjectName": "Tunisia",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2852,6 +3497,9 @@
     {
       "subjectId": "country/TUR",
       "subjectName": "Turkey",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2863,6 +3511,9 @@
     {
       "subjectId": "country/TUV",
       "subjectName": "Tuvalu",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2874,6 +3525,9 @@
     {
       "subjectId": "country/TWN",
       "subjectName": "Taiwan",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2885,6 +3539,9 @@
     {
       "subjectId": "country/TZA",
       "subjectName": "Tanzania",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2896,6 +3553,9 @@
     {
       "subjectId": "country/UGA",
       "subjectName": "Uganda",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2907,6 +3567,9 @@
     {
       "subjectId": "country/UKR",
       "subjectName": "Ukraine",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2933,6 +3596,9 @@
     {
       "subjectId": "country/URY",
       "subjectName": "Uruguay",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2944,6 +3610,9 @@
     {
       "subjectId": "country/USA",
       "subjectName": "United States",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2955,6 +3624,9 @@
     {
       "subjectId": "country/UZB",
       "subjectName": "Uzbekistan",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2966,6 +3638,9 @@
     {
       "subjectId": "country/VAT",
       "subjectName": "Vatican City",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2977,6 +3652,9 @@
     {
       "subjectId": "country/VCT",
       "subjectName": "Saint Vincent and the Grenadines",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -2988,6 +3666,9 @@
     {
       "subjectId": "country/VEN",
       "subjectName": "Venezuela",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -3029,6 +3710,9 @@
     {
       "subjectId": "country/VIR",
       "subjectName": "U.S. Virgin Islands",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -3040,6 +3724,9 @@
     {
       "subjectId": "country/VNM",
       "subjectName": "Vietnam",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -3051,6 +3738,9 @@
     {
       "subjectId": "country/VUT",
       "subjectName": "Vanuatu",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -3062,6 +3752,9 @@
     {
       "subjectId": "country/WLF",
       "subjectName": "Wallis and Futuna",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -3073,6 +3766,9 @@
     {
       "subjectId": "country/WSM",
       "subjectName": "Samoa",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -3084,6 +3780,9 @@
     {
       "subjectId": "country/XKS",
       "subjectName": "Kosovo",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -3095,6 +3794,9 @@
     {
       "subjectId": "country/YEM",
       "subjectName": "Yemen",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -3106,6 +3808,9 @@
     {
       "subjectId": "country/YUG",
       "subjectName": "Yugoslavia",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -3117,6 +3822,9 @@
     {
       "subjectId": "country/ZAF",
       "subjectName": "South Africa",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -3128,6 +3836,9 @@
     {
       "subjectId": "country/ZMB",
       "subjectName": "Zambia",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -3139,6 +3850,9 @@
     {
       "subjectId": "country/ZWE",
       "subjectName": "Zimbabwe",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -3150,6 +3864,9 @@
     {
       "subjectId": "countryOfOrigin",
       "subjectName": "countryOfOrigin",
+      "subjectTypes": [
+        "Property"
+      ],
       "predicate": "rangeIncludes",
       "objectId": "Country",
       "objectName": "Country",
@@ -3161,6 +3878,9 @@
     {
       "subjectId": "nationality",
       "subjectName": "nationality",
+      "subjectTypes": [
+        "Property"
+      ],
       "predicate": "rangeIncludes",
       "objectId": "Country",
       "objectName": "Country",
@@ -3172,6 +3892,9 @@
     {
       "subjectId": "wikidataId/Q23681",
       "subjectName": "Turkish Republic of Northern Cyprus",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -3183,6 +3906,9 @@
     {
       "subjectId": "wikidataId/Q244165",
       "subjectName": "Artsakh",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -3194,6 +3920,9 @@
     {
       "subjectId": "wikidataId/Q29999",
       "subjectName": "Kingdom of the Netherlands",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -3205,6 +3934,9 @@
     {
       "subjectId": "wikidataId/Q31354462",
       "subjectName": "Republic of Abkhazia",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -3216,6 +3948,9 @@
     {
       "subjectId": "wikidataId/Q40362",
       "subjectName": "Sahrawi Arab Democratic Republic",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -3227,6 +3962,9 @@
     {
       "subjectId": "wikidataId/Q756617",
       "subjectName": "Kingdom of Denmark",
+      "subjectTypes": [
+        "Country"
+      ],
       "predicate": "typeOf",
       "objectId": "Country",
       "objectName": "Country",
@@ -3256,6 +3994,9 @@
       "predicate": "provenance",
       "objectId": "dc/5l5zxr1",
       "objectName": "https://datacommons.org",
+      "objectTypes": [
+        "Provenance"
+      ],
       "provenanceId": "dc/5l5zxr1"
     },
     {
@@ -3267,6 +4008,9 @@
       "predicate": "subClassOf",
       "objectId": "AdministrativeArea",
       "objectName": "AdministrativeArea",
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/5l5zxr1"
     },
     {
@@ -3278,11 +4022,17 @@
       "predicate": "typeOf",
       "objectId": "Class",
       "objectName": "Class",
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/5l5zxr1"
     },
     {
       "subjectId": "dc/w69kmen1t5l19",
       "subjectName": "Plant Name",
+      "subjectTypes": [
+        "PowerPlant"
+      ],
       "predicate": "containedInPlace",
       "objectId": "State",
       "objectName": "State",
@@ -4824,6 +5574,9 @@
     {
       "subjectId": "geoId/60",
       "subjectName": "American Samoa",
+      "subjectTypes": [
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
@@ -4835,6 +5588,9 @@
     {
       "subjectId": "geoId/64",
       "subjectName": "Federated States of Micronesia",
+      "subjectTypes": [
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
@@ -4846,6 +5602,9 @@
     {
       "subjectId": "geoId/66",
       "subjectName": "Guam",
+      "subjectTypes": [
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
@@ -4856,6 +5615,9 @@
     },
     {
       "subjectId": "geoId/67",
+      "subjectTypes": [
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
@@ -4867,6 +5629,9 @@
     {
       "subjectId": "geoId/68",
       "subjectName": "Marshall Islands",
+      "subjectTypes": [
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
@@ -4878,6 +5643,9 @@
     {
       "subjectId": "geoId/69",
       "subjectName": "Northern Mariana Islands",
+      "subjectTypes": [
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
@@ -4889,6 +5657,9 @@
     {
       "subjectId": "geoId/70",
       "subjectName": "Palau",
+      "subjectTypes": [
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
@@ -4930,6 +5701,9 @@
     {
       "subjectId": "geoId/74",
       "subjectName": "U.S. Minor Outlying Islands",
+      "subjectTypes": [
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
@@ -4956,6 +5730,9 @@
     {
       "subjectId": "geoId/78",
       "subjectName": "Virgin Islands of the U.S.",
+      "subjectTypes": [
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
@@ -5011,6 +5788,9 @@
     },
     {
       "subjectId": "geoId/86",
+      "subjectTypes": [
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
@@ -5021,6 +5801,9 @@
     },
     {
       "subjectId": "geoId/89",
+      "subjectTypes": [
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
@@ -5046,6 +5829,9 @@
     },
     {
       "subjectId": "udiseCode/99",
+      "subjectTypes": [
+        "State"
+      ],
       "predicate": "typeOf",
       "objectId": "State",
       "objectName": "State",
@@ -5534,7 +6320,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/rdj6vy2"
+      "provenanceId": "dc/pnqh772"
     },
     {
       "subjectId": "wikidataId/Q43433",
@@ -5550,7 +6336,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/pnqh772"
+      "provenanceId": "dc/rdj6vy2"
     },
     {
       "subjectId": "wikidataId/Q46107",

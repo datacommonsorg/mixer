@@ -4,2501 +4,4001 @@
       "entities": [
         {
           "name": "Trifolium arvense L.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0000t2q5233vf",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Bryum erythrinum Mitt.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/00014wkhftqg2",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Symphoricarpos oreophilus var. utahensis (Rydb.) A.Nelson",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0001ejpjhb733",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Astragalus nothoxys A.Gray",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0001rjjwllbbc",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Lithospermum incisum Lehm.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0001t23b03kq9",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Guatteria punctata (Aubl.) R.A.Howard",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0001zyyyhevn2",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Blechnum schlimense Fée",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0002w3vd29n67",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Centaurea nigra L.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0002xfndsz1z8",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Ilex retusa Klotzsch",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0003bhq7hegm1",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Leprocaulon adhaerens (K.Knudsen, Elix \u0026 Lendemer) Lendemer \u0026 B.P. Hodk.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0003c1ybd0nqg",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Syntrichia ruralis (Hedw.) F.Weber \u0026 D.Mohr",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0003en7nz69j5",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Panicum virgatum L.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0003jcdd11sq6",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Psychotria flaviflora (K.Krause) C.M.Taylor",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0003r37nj9md8",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Puccinia rata H.S.Jacks. \u0026 Holw.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0003s655t97pc",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Guarea fulva Triana \u0026 Planch.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0003vp1ph3ks5",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Dasyochloa pulchella (Kunth) Willd. ex Rydb.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0003y8lb7xrs9",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Nectria coccinea (Pers.) Fr.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0003yjw1vlffd",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Caltha palustris L.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0004b4h373yj4",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Andira macrothyrsa Ducke",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0004k68nfzx54",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Encelia frutescens var. virginensis (A.Nelson) S.F.Blake",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0004xx62f9bf4",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Cerastium commersonianum DC.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/00052htwy3bdc",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Campyloneurum brevifolium (Lodd. ex Link) Link",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0006jrbhxbl07",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Cirsium undulatum (Nutt.) Spreng.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0006n2n60qwrf",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Lantana fucata Lindl.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0006tk9cw1724",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Boletus frostii J.L.Russell in Frost",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0006wwdsgl8d7",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Pedicularis racemosa var. alba (Pennell) Cronquist",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0007jm4fe9zrg",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Conocarpus erectus L.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0007jycfxt9zf",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Puccinia recondita Roberge ex Desm.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0007qc185nr98",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Puccinia sparganioides Ellis \u0026 Barthol.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/000834t8w1wc3",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Digitaria",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/00089gs3cy7wc",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Carex swanii (Fernald) Mack.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0008dn63kkpk5",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Eriogonum annuum Nutt.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0008dv6ehjf68",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Senecio ekmanii Alain",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/00090hmzy88dh",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Huperzia occidentalis (Clute) Kartesz \u0026 Gandhi",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0009607trwn77",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Packera neomexicana (A.Gray) W.A.Weber \u0026 Ã.LÃ¶ve var. neomexicana",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0009hvmgqve54",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Hyptis suaveolens (L.) Poit.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0009y0yr8hvw7",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Mimulus primuloides var. linearifolius A.L.Grant",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/000bhvqyt4vbb",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Polyporus tenuiculus P.Beauv.:Fr.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/000cbjnw9vt5f",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Frullania oakesiana Austin",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/000cnv9p4qvhb",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Hypoxylon fendleri Berk. ex Cooke",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/000dm5wglh7n6",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Helenium amarum (Raf.) H.Rock",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/000dsdk2cpwq1",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Pilotrichum bipinnatum (SchwÃ¤gr.) Brid.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/000dsx06qgn37",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Homalia trichomanoides (Hedw.) Schimp.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/000dtxf8ew1e",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Valsa rubi Fuckel",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/000e5z7ms7zz4",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Lythrum salicaria L.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/000ep9px281tg",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Zoopsidella integrifolia (Spruce) R.M.Schust.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/000etq2dcygm6",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Acacia retinodes Schltdl.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/000ey46rnrej7",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Ranunculus cymbalaria Pursh",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/000f1588cwhgf",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Taphrina betulina Rostr.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/000f3rm1h61cd",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Bursera penicillata (DC.) Engl.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/000fcmx0jl3v8",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Thuidium urceolatum Lorentz",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/000fylg9dszld",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Thuidium urceolatum Lorentz",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/000g3fcppqnpc",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Anastrophyllum piligerum (Reinw., Blume \u0026 Nees) Steph.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/000g8nfkhfttg",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Peperomia trineura Miq.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/000geq46r56c8",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Irenopsis cryptocarpa (Ellis \u0026 G.Martin) Hansf.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/000gfryh2qck9",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Chenopodium pratericola Rydb.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/000gst890rgl",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Ranunculus glaberrimus var. ellipticus (Greene) Greene",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/000gxjjqlwvn5",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Clusia guayanae Pipoly",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/000h4qd1qjv41",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Nephroma bellum (Spreng.) Tuck.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/000h50rpjx2mh",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Uromyces viciae-fabae (Pers.) J.SchrÃ¶t.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/000h5vyw1e709",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Cirsium calcareum Wooton \u0026 Standl.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/000hg3qf52gn4",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Campomanesia guaviroba (DC.) Kiaersk.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/000j8zg1q43xf",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Schoenoplectiella purshiana var. purshiana",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/000je0bmng0r5",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Crocicreas cyathoideum (Bull.) S.E.Carp. var. cyathoideum",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/000jg0sdylxkd",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Oncosiphon grandiflorus (Thunb.) Källersjö",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/000l2std7tpgd",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Minutoexcipula tuckerae V.Atienza \u0026 D.Hawksw.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/000lj397wpne3",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Monostroma lactuca J.Agardh",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/000ls0zep39bc",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Psiguria pedata (L.) R.A.Howard",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/000lxpc9cdzcg",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Canavalia parviflora Benth.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/000m04053kyrd",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Balduina angustifolia (Pursh) B.L.Rob.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/000m8bfc0phvb",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Peronospora lamii A.Braun",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/000mkp5krdgv8",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Tricyrtis 'Sinoneme'",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/000ncx3rb1g8d",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Lessingianthus elegans (Gardner) H.Rob.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/000ncyjpxw752",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Cordia goeldiana Huber",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/000njkygbeeq9",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Moussonia deppeana (Schltdl. \u0026 Cham.) Hanst.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/000q0884sw0k1",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Carex bebbii (L.H.Bailey) Fernald",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/000q392yyv2c5",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Xanthium strumarium var. canadense (Mill.) Torr. \u0026 A.Gray",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/000r6ehl8nh7c",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Plagiochila asplenioides (L.) Dumort.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/000r7fjbc87b8",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Vaccinium ovalifolium Sm.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/000rj2ngg0rw9",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Berberis multiflora Benth.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/000rwht0n3ekb",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Pedicularis crenulata Benth.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/000rwyt1qecg5",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Clarkia purpurea (Curtis) A.Nelson \u0026 J.F.Macbr.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/000s4tekg64e6",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Trifolium amplectens Torr. \u0026 A.Gray",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/000sctyegxb89",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Calliandra tergemina var. emarginata (Willd.) Barneby",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/000smh8pd26dh",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Dilomilis montana (Sw.) Summerh.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/000sv9z3ejk87",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Usnea mutabilis Stirt.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/000tb2ge5ltr2",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Mnium stellare Reichard ex Hedw.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/000tj3rzkqcch",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Erodium cicutarium (L.) L'HÃ©r. ex Aiton",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/000tjjs4tbkf5",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Desmarestia viridis (O.F.MÃ¼ll.) J.V.Lamour.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/000trb78w71k8",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Ligustrum glabrinerve Elmer",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/000tz809ej7d9",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Acer spicatum Lam.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/000vbdgv9nl76",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Potamogeton nodosus Poir.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/000vg620x62m2",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Alnus incana var. occidentalis (Dippel) C.L.Hitchc.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/000vtndb6q1lb",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Picramnia glazioviana Engl.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/000vvsqlxg1",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Leucobryum crispum MÃ¼ll.Hal.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/000x4b4bb1v44",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Fuscidea recensa (Stirt.) Hertel, V.Wirth \u0026 Vezda",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/000x9ss0zer5g",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Anthostomella nigroannulata (Berk. \u0026 M.A.Curtis) Sacc.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/000xf8n5efftf",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Desmodium nudiflorum (L.) DC.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/000xqbevmfz34",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Dichanthelium commutatum (Schult.) Gould",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/000xsv29pskw6",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Fuscocephaloziopsis pleniceps (Austin) VÃ¡Åa \u0026 L.SÃ¶derstr.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/000xxh88y6023",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Brunfelsia grandiflora D.Don",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/000z073wycpy3",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Philonotis uncinata (SchwÃ¤gr.) Brid.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/000z4ny92fjxd",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Cosmarium reniforme (Ralfs) W.Archer",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/000z7vf6y1vpc",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Adenocalymma uleanum Kraenzl.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/000zfxy7bf6j8",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Heracleum lanatum Michx.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/000zh5jg9dv67",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Blechnum imperiale (FÃ©e \u0026 Glaz.) Christ",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/000zlcz6grk1c",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Calepina irregularis (Asso) Thell.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/000zne6cyyxk5",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Securidaca diversifolia (L.) S.F.Blake",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/000zsbmyn3ep3",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Brachyotum naudinii Triana",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/00102mdgxxwr5",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Hypnum imponens Hedw.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001083l2l7rch",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Tubeufia helicoma (W.Phillips \u0026 Plowr.) Piroz.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0010fwnrmted1",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Ranunculus inamoenus Greene var. inamoenus",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/00110gpgswwk1",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Anomodon rostratus (Hedw.) Schimp.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0011634eghzn9",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Melampodium paniculatum Gardner",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0011jhsexgx0b",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Clitocybe gibba (Pers.:Fr.) P.Kumm.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0011qmehyvrs",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Osmorhiza mexicana subsp. bipatriata (Constance \u0026 R.H.Shan) Lowry \u0026 A.G.Jones",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0011s7g0342d5",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Erysimum capitatum (Douglas ex Hook.) Greene subsp. capitatum",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0011w3vnsgkqd",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Eriogonum rosense var. beatleyae (Reveal) Reveal",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0011yrp0rqy4f",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Leptocereus paniculatus (Lam.) D.R.Hunt",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/00120bexc7v6b",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Couratari oligantha A.C.Sm.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/00120spwff1mf",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Dryopteris",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/00129xzjy816",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Plagiogyria pycnophylla (Kunze) Mett.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0012epzvlxz91",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Bryoandersonia illecebra (Hedw.) H.Rob.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0012nrlqjwppd",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Agelaea everettii Merr.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0012yt70dpjtf",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Solanum pedemontanum M.Nee",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0013mc6bjp142",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Haematomma accolens (Stirt.) Hillmann",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0013ve787p1r7",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Crocicreas",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/00146h8lb3vjf",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Mollisia incrustata Ellis",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/00146jwnbrsx6",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Arnica",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001543w6pw0p2",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Penstemon cobaea Nutt. var. cobaea",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0015fmflbrs87",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Physalis chenopodifolia var. viridis Waterf.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0015hs4xc287h",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Bryoandersonia illecebra (Hedw.) H.Rob.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0015n384185vg",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Gyromitra esculenta (Pers.:Fr.) Fr.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0015qcm97kps",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Populus candicans Aiton",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0016py6fttxz9",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Vaccinium microcarpum (Turcz. ex Rupr.) Schmalh.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0016sn9w4nzf",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Carex maritima Gunnerus",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/00173bbbw1sjc",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Casearia praecox Griseb.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/00174kzp5nncc",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Anticlea elegans Rydb.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0017dns4kmm21",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Rhodocybe nitellina (Fr.) Singer",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0017gnz46qvh1",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Resupinatus silvanus (Sacc.) Singer",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001825p1l6jp8",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Cavendishia speciosa A.C.Sm.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/00183t4dq81n8",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Chloroscypha",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0018c391gmhyc",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Lecanora subpallens Zahlbr.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0018q4gzhge54",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Carex vallicola Dewey",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0018tztsqenc8",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Tillandsia geminiflora Brongn.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0019l88zkmw4f",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Inocybe lacera (Fr.) P.Kumm.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0019nkcntlmc9",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Manihot nogueirae Allem",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0019wxlb0cmh5",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Melampodium cinereum DC. var. cinereum",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001b0f30yvyzd",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Racomitrium lanuginosum (Hedw.) Brid.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001bgyz184yx1",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Pylaisia polyantha (Hedw.) Schimp.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001c4h1x4z5m2",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Ranunculus eschscholtzii var. oxynotus (A.Gray) Jeps.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001cc626gwxlf",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Spermacoce tenuior L.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001cd7mp5ve3f",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Inga",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001cf03hw4t5g",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Pteridium caudatum (L.) Maxon",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001cr43gm3lb2",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Cinchona calisaya Wedd.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001crgd2gvxpd",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Mimosa quitensis Benth.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001crwe4pl083",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Dictyota crenulata J.Agardh",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001csh0qxvmbd",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Aliciella pinnatifida (Nutt. ex A.Gray) J.M.Porter",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001dnmglpnb8g",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Cyperus sphacelatus Rottb.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001dqn38935bh",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Pogonatum brachyphyllum (Michx.) P.Beauv.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001eg9wcg8h08",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Mastigolejeunea auriculata (Wilson \u0026 Hook.) Schiffn.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001ewj0zqb872",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Halimeda J.V.Lamour.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001f7ggj6ghf5",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Sterile sorediate crust",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001f8gkk0p5cg",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Melampodium nutans Stuessy",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001fhmpyj0hk7",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Monarda clinopodia L.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001flpegwjp4f",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Plagiomnium cuspidatum (Hedw.) T.J.Kop.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001fpfx78jy2f",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Marssonina castagnei (Desm. \u0026 Mont.) Magnus",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001ftkn7btyt1",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Galium stellatum Kellogg",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001fxqbg656w2",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Gymnosporangium clavariaeforme (Jacq.) DC.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001g6c59rv0r9",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Buellia curtisii (Tuck.) Imshaug",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001g7e11pmgnd",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Helodium blandowii (F.Weber \u0026 D.Mohr) Warnst.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001gd6y7dfgm3",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Sepedonium chrysospermum (Bull.) Fr.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001gk024rtm18",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Parmelia sulcata Taylor",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001gsn7g1ykyh",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Ilex verticillata (L.) A.Gray",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001h0x2c1ffxh",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Solidago bicolor L.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001hlhy853yyg",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Dendropanax arboreus (L.) Decne. \u0026 Planch.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001hx7zbrw5r4",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Rhynchanthera serrulata (Rich.) DC.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001jcg908z81",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Trachyxiphium guadalupense (Brid.) W.R.Buck",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001jlmycv5hl4",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Sphaerotheca fusca (Fr.) S.Blumer",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001jqzf5pyr8",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Poa annua L.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001jr36dj8wdg",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Penstemon jamesii Benth.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001jtpm77ywlb",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Chaetomorpha linum (O.F.MÃ¼ll.) KÃ¼tz.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001jvbxxc3xy",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Diphasiastrum digitatum (A.Braun) Holub",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001k2yvmn6bh1",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Scleroderma areolatum Ehrenb.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001k5zf9w4wb2",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "LeucothoÃ«",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001kfntndxdrc",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Atrichum undulatum (Hedw.) P.Beauv.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001kp7v4t516f",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Helichrysum globosum Sch.Bip.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001l6wtcvx3e3",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Bryum capillare Hedw.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001lpc1xm6qs8",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Martiodendron mediterraneum (Mart. ex Benth.) R.C.Koeppen",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001m5xywmgmt9",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Tilia americana L.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001m6pmsxnbt",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Cyperus nanus Willd.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001n1p6jvy6q2",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Leskea gracilescens Hedw.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001n1vcdv7xe5",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Synthyris dissecta Rydb. var. dissecta",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001n70dyb79n8",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Ptychomitrium incurvum (SchwÃ¤gr.) Spruce",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001nzz5sdz802",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Digitaria pauciflora Hitchc.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001p26mggccy8",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Sterculia frondosa Rich.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001p5l0hk60l",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Penicillium diversum Raper \u0026 Fennell",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001p8c3btw29h",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Hygroamblystegium tenax (Hedw.) Jenn.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001pylj6tnzdf",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Tauschia parishii (J.M.Coult. \u0026 Rose) J.F.Macbr.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001q74hmy5rr7",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Plagiothecium cavifolium (Brid.) Z.Iwats.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001qd5sf7chyg",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Cavendishia complectens Hemsl.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001qjbr1h9tw4",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Pellaea glabella Mett. ex Kuhn var. glabella",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001rexjgsqx83",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Micranthemum callitrichoides (Griseb.) C.Wright",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001s494882zr5",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Dryopteris ludoviciana (Kunze) Small",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001szd5mzehcc",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Syrrhopodon leprieurii Mont.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001t56eyytfgh",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Lejeunea solanicola Spruce",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001tc97v7p35c",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Eriogonum abertianum Torr.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001tsnlfvm07f",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Didymodon rigidulus Hedw.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001vgk30vpse1",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Dalea candida var. oligophylla (Torr.) Shinners",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001vx2e0nt17c",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Pinus lambertiana Douglas",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001w8s4t7fjmd",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Nitella paucicostata Allen",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001whc53qqvc9",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Dicranella crispa (Hedw.) Schimp.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001wsj9vbfwl6",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Bouteloua gracilis (Humb., Bonpl. \u0026 Kunth) Lag. ex Griffiths",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001wvdqb0yk71",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Datura wrightii Regel",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001xhywtlphn",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Puccinia clintonii Peck",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001xy26y4s1c1",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Masdevallia paivaeana Rchb.f.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001y459w32zn4",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Bangia fuscopurpurea (Dillwyn) Lyngb.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001yehmlbpyng",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Inga stenoptera Benth.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001yjd1lbvsq5",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Solanum aquartia Dunal",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001yms4vm0ry8",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Carex swanii (Fernald) Mack.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001ynhsdlr051",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Celtis schippii Trel. ex Standl.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001yt3e26w59h",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Cyperus strigosus L.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001zpbbtbyqm3",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Graphis chlorotica A.Massal.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/001zrx08j7xxg",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Sarcocephalus ramosus Lauterb.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/00204j0ew5v26",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Cyclodium meniscioides (Willd.) C.Presl",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0020bcc83p85c",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Juncus articulatus L.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0020mjlrs1bnh",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Aptychopsis pyrrophylla (MÃ¼ll.Hal.) Wijk \u0026 Margad.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0020q9s16ptb7",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Persicaria lapathifolia (L.) Delarbre",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0021f316p44w3",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Setaria parviflora (Poir.) KerguÃ©len",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0021yj4t49jkb",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Uromyces laburni (DC.) G.H.Otth",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0021z8z55xnrc",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Avicennia germinans (L.) L.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/00223qrj5efvb",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Aronia arbutifolia (L.) Pers.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0022kdtv72he3",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Antennaria neglecta Greene",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0022qrt3d13qh",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Juglans microcarpa Berland.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0023342rczel5",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Leandra solenifera Cogn.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/00238wcds6zw2",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Steinchisma hians (Elliott) Nash",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0023m39se1mf7",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Margaritaria nobilis L.f.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0023rmy0xs12b",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Leymus condensatus (J.Presl) Ã.LÃ¶ve",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0023v200gp2c1",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Helicteres guazumifolia Kunth",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0023vs6s9zcr1",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Drepanocladus polygamus (Schimp.) HedenÃ¤s",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0024dg1ndvbbd",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Protium amazonicum (Cuatrec.) Daly",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0024dkwfbt0q5",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Festuca minutiflora Rydb.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0024kbm1mxgk5",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Hevea brasiliensis (Willd. ex A.Juss.) MÃ¼ll.Arg.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0024q080yh6e5",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Rhynchospora filifolia A.Gray",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0025t4wc43bgh",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Solanum nudum Dunal",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/00260s7gemj98",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Monarda punctata L.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/00261x26xls51",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Lotus micranthus Benth.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/00265rs5p75y1",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Panicum virgatum L.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0026mcdh9flj6",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Hyperbaena prioriana Miers",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0026q19e16vgd",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Microgramma squamulosa (Kaulf.) de la Sota",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0026qr0gllj9d",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Solanum carolinense L.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0026yyv3k45c3",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Amphiroa fragilissima (L.) J.V.Lamour.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/00270q4szh5rh",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Brickellia desertorum Coville",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/00277xvdwyrl9",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Rhexia virginica L.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0027ev5jy7et3",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Waltheria indica L.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0027gggle28cb",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Dicranolejeunea axillaris (Mont.) Steph.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0027ye1yddy22",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Gackstroemia magellanica (Lam.) Trevis.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0028eyekj3161",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Bauhinia grandifolia D.Dietr.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/00292qdhhq8g8",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Thuidium recognitum (Hedw.) Lindb.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0029zwd4m2p9f",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Hypogymnia incurvoides Rass.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/002bc2tq64bmd",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Hypocrea pallida Ellis \u0026 Everh.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/002bxnd589jj8",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Carex brunnescens (Pers.) Poir.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/002cj7m1b2qk1",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Sphagnum imbricatum Hornsch. ex Russow",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/002cvgy41fzd6",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Phyllosticta concentrica Sacc.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/002d1m1b93skb",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Tortella fragilis (Hook. \u0026 Wilson) Limpr.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/002dp8w936rd8",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Botryoglossum platycarpum (W.B.Turner) KÃ¼tz.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/002e1wfgfr6zh",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Doliocarpus brevipedicellatus subsp. hilarianus Kubitzki",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/002e8543fl6v",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Cephaloziella divaricata (Sm.) Warnst.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/002ecb2r1zw17",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Viola primulifolia L.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/002ejjstpt3w6",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Rhodoptilum plumosum (Harv. \u0026 Bailey) Kylin",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/002ekmz3jebb3",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Isoetes echinospora Durieu",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/002epdv6d9v35",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Calophyllum brasiliense Cambess.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/002ezq4jxt9b7",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Penstemon confertus Douglas ex Lindl.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/002f1xzr0fg26",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Tibouchina clinopodifolia (DC.) Cogn.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/002fplfbbf1h",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Marchantia polymorpha L.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/002frnf497r95",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Lewinskya sordida (Sull. \u0026 Lesq.) F.Lara, Garilleti \u0026 Goffinet",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/002ftbnkl0sk3",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Eriastrum",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/002gdxg71gnq6",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Banisteriopsis argyrophylla (A.Juss.) B.Gates",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/002gq1ypq11pf",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Salix brachycarpa subsp. niphoclada (Rydb.) Argus",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/002gqwhp4xw11",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Graphiola phoenicis (Mong.) Poit.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/002gry3dcs9pf",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Packera greenei (A.Gray) W.A.Weber \u0026 Ã.LÃ¶ve",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/002hby95mv864",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Conostegia xalapensis (Bonpl.) D.Don ex DC.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/002hegw9yzg14",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Grimmia trichophylla Grev.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/002j0f8513j5b",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Pulveroboletus viridipilatus",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/002jy3dp88w99",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Potentilla rockiana Melch.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/002jzzc0m878g",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Chrysophyllum sanguinolentum subsp. spurium (Ducke) T.D.Penn.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/002k52pjq9x78",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Eriogonum pauciflorum var. pauciflorum",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/002l0w01g0l89",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Xanthoparmelia cumberlandia (Gyeln.) Hale",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/002l5v8crmd93",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Peronospora parasitica (Pers.:Fr.) Fr.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/002leyc6fzde3",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Sesquicillium microsporum (Jaap) Veenb.-Rijks \u0026 W.Gams",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/002lyzzzd86x7",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Trichostomum thomsonii MÃ¼ll.Hal.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/002mb7r0hjxec",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Carex griffithii Boott",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/002meg1j99wt3",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Lomatium foeniculaceum var. macdougalii (J.M.Coult. \u0026 Rose) Cronquist",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/002mlrlyd6648",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Lithocarpus elegans (Blume) Hatus. ex Soepadmo",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/002mrd9fepkr",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Inga",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/002mt3472bb",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Elymus glaucus Buckley",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/002mtc5k73hs8",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Phakopsora crotonis (Cooke) Arthur",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/002n30lele83b",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Brachythecium plumosum (Hedw.) Schimp.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/002n79lv30hq2",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Declieuxia fruticosa (Willd. ex Roem. \u0026 Schult.) Kuntze",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/002n847pprbd4",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Bryum pseudotriquetrum (Hedw.) P.Gaertn., B.Mey. \u0026 Scherb.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/002nnpffrtgn9",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Agrostis stolonifera L.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/002nwsdc33st",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Sphagnum recurvum P.Beauv.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/002nytdlk9d7c",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Adiantum pulverulentum L.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/002pqztg04zq5",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Layia glandulosa (Hook.) Hook. \u0026 Arn.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/002ps8719h8c6",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Achnatherum x bloomeri (Bol.) Barkworth",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/002pst7vzrc5h",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Euphorbia heterophylla L.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/002q6x1nl6nxh",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Trametes versicolor (L.:Fr.) Lloyd",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/002q7hb3yk5wh",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Symblepharis vaginata (Wilson) Wijk \u0026 Margad.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/002qd2c7skvd",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Clitocybe americana H.E.Bigelow",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/002qdq455l103",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Ustilago utriculosa (Nees) Tul.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/002qj8v5fqw19",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Phragmidium fusiforme J.Schröt.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/002qy770yw9qh",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Cladium californicum (S.Watson) O'Neill",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/002r5ndceqy65",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Clidemia hirta (L.) D.Don",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/002rek9p80cc6",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Amasonia lasiocaulis var. macrophylla Moldenke",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/002rf8hwf5926",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Phoenix hanceana Naudin",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/002rh68357ge7",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Potentilla glandulosa var. glandulosa",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/002ry51xkwmx",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Paspalidium geminatum (Forssk.) Stapf",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/002set85wf8gh",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Baptisia leucophaea Nutt.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/002t2pryj96w4",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Gutierrezia microcephala (DC.) A.Gray",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/002tr6l0bm3t2",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Mohavea confertiflora (Benth.) A.Heller",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/002tzpwfkgec7",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Rhytidiadelphus triquetrus (Hedw.) Warnst.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/002v5p1nep6t9",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Mimosa goldmanii B.L.Rob.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/002w94cmdvhgf",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Nitophyllum bonnemaisonii (Kylin) Kylin",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/002wwdcyqwmt6",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Trichilia elegans subsp. richardiana (A.Juss.) T.D.Penn.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/002xhv2bss3q2",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Carex digitalis Willd.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/002xzdz4kgnv3",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Galinsoga quadriradiata Ruiz \u0026 Pav.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/002yyshq8l302",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Rosa rugosa Thunb.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/002yzz3sm3xt6",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Viburnum lantanoides Michx.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/002z9mw8f8vxd",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Hymenoxys acaulis var. arizonica (Greene) K.L.Parker",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/002zq1g31qds",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Amelanchier oblongifolia (Torr. \u0026 A.Gray) M.Roem.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0030nqf1rkwl1",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Lesquerella lescurii (A.Gray) S.Watson",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0030yve98bg02",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Veronica scutellata L.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/00310cq1lhbxf",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Chara aspera Willd.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0032107fwxlt3",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Inga ingoides (Rich.) Willd.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0032cglbq2v55",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Omphalina hudsoniana (H.S.Jenn.) H.E.Bigelow",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0032dtezyy38h",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Andropogon bicornis L.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0032fe14lepd4",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Couratari guianensis Aubl.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0032nwgqrn4sh",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Conomorpha duidae Gleason \u0026 Moldenke",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0032wnegk14vc",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Oxyria digyna (L.) Hill",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/003346c4g26b5",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Astragalus nutzotinensis J.Rousseau",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0033w8nvb60nd",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Polystichum acrostichoides (Michx.) Schott",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/00342rkm776k",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Populus tremuloides Michx.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0034tk5er917",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Oenothera villosa var. strigosa (Rydb.) Dorn",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/00354nl0k745b",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Phoma aucubae Westend.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0035hj5qg8j94",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Salix serissima (L.H.Bailey) Fernald",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0035mhmh69wh2",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Asplenium serra Langsd. \u0026 Fisch.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0035mqtkky2f1",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Pellaea truncata Goodd.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0035vjxkw8x98",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Carex scirpoidea Michx.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/00360s4m1rm3h",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Carex interior L.H.Bailey",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0036gfg1cdcxb",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Eschweilera coriacea (DC.) S.A.Mori",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0036lwzrt0w62",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Boletus chrysenteron Bull.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0036rjkd2emt4",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Anagallis",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0037076vlsq7c",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Eriodictyon crassifolium Benth.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0037768gqbf",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Guettarda elliptica Sw.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/00383q82mdhk8",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Cavendishia tarapotana (Meisn.) Benth. \u0026 Hook.f. var. tarapotana",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0038h4zfdf8tg",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Ceramium rubrum C.Agardh",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0038kknhd0xhg",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Chlorophyllum molybdites (G.Mey.:Fr.) Massee",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/00394n03kb973",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Ropalospora viridis (TÃ¸nsberg) TÃ¸nsberg",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0039jz0jkxbt9",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Eupatorium coelestinum L.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0039qpywfcpm2",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Paraeccilia Largent",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/003b35lnlp2zh",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Botrychium strictum Underw.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/003b6q1970rrf",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Russula",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/003bwfcb0t0k8",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Collinsia parviflora Douglas ex Lindl.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/003c0fv8pvcvc",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Cryptantha recurvata Coville",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/003c7fkm5428d",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Paspalum pubiflorum Rupr. ex E.Fourn.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/003cjsrey4n9c",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Sphagnum palustre L.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/003cws3b2dzw9",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Geophila cordifolia Miq.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/003db1dn7j96h",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Hymenaea stigonocarpa Mart. ex Hayne",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/003dcdym0vfdb",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Ageratina havanensis (Kunth) R.M.King \u0026 H.Rob.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/003dgdxy11f2d",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Ditassa obcordata Mart.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/003djwf17xl64",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Rhizomnium nudum (E.Britton \u0026 R.S.Williams) T.J.Kop.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/003dmj4jk8c54",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Hymenopappus scabiosaeus var. corymbosus (Torr. \u0026 A.Gray) B.L.Turner",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/003ec48hc8ddd",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Erigeron pumilus Nutt. subsp. pumilus",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/003egpge8dlph",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Triumfetta semitriloba Jacq.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/003f0w1rdtx24",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Gnaphalium wrightii A.Gray",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/003fgwhccm6q8",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Distichium capillaceum (Hedw.) Bruch \u0026 Schimp.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/003fybwhbqs71",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Aulacomnium palustre (Hedw.) SchwÃ¤gr.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/003gqyjqh8ec5",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Pouteria vestita Baehni",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/003gz6zn9y508",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Phacelia procera A.Gray",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/003h7gbw3thf6",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Asperococcus compressus A.W.Griffiths ex Hook.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/003hn3xp8b902",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Nuttallanthus floridanus (Chapm.) D.A.Sutton",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/003hx4tzjlx86",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Puccinia arechavaletae Speg.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/003jvr4s0hp56",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Dicranoloma chilense (De Not.) Ochyra \u0026 Matteri",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/003jz1k1mey58",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Puccinia spegazzinii De Toni",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/003jzc88hkf65",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Lupinus bicolor subsp. marginatus D.B.Dunn",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/003k0fp3lygtg",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Tragia giardellii M.M.Gut. \u0026 MÃºlgura",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/003k6kptk1mph",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Themistoclesia dependens (Benth.) A.C.Sm.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/003khh9yykgy7",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Lonicera x bella Zabel",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/003ksbpd2m764",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Carex oligosperma Michx.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/003l1jbtfe76g",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Sphenopholis interrupta (Buckley) Scribn.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/003lrnq5zc9e8",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Geonoma macrostachys Mart.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/003lzncbkjc38",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Aulacomnium palustre (Hedw.) SchwÃ¤gr.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/003mdhp4r5r4f",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Cystopleura turgida (Ehrenb.) Kuntze",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/003mmlp46m816",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Blechnum",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/003n91hww4tb4",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Hypolytrum pulchrum (Rudge) H.Pfeiff.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/003p3fde0tqm4",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Cyclopeltis semicordata (Sw.) J.Sm.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/003p7yjwwq9m2",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Flavoparmelia baltimorensis (Gyeln. \u0026 FÃ³riss) Hale",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/003p833cq4j9f",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Scutellaria integrifolia L.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/003qh2gq8cpl6",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Berteroa incana (L.) DC.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/003qrlf0q4wkf",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Thlaspi L.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/003qvwz609z8h",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Carex scirpoidea var. stenochlaena Holm",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/003r00mx3q145",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Puccinia swertiae (Opiz) G.Winter",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/003r37jcev18g",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Dalea lachnostachya A.Gray",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/003skn59z2crb",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Graphis handelii Zahlbr.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/003sr0ebj66v6",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Symphyotrichum jessicae (Piper) G.L.Nesom",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/003tdf4s6rkdd",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Isopterygium tenerum (Sw.) Mitt.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/003tdl65fwrz2",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Pilosocereus royenii (L.) Byles \u0026 G.D.Rowley",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/003tkdywp6hxf",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Panicum L.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/003tpfjw8m0y",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Juncus brevicaudatus (Engelm.) Fernald",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/003vmfp7qdcn2",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Geastrum saccatum Fr.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/003vxsgvpstn",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Protium llanorum Cuatrec.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/003wcdyv0j2eg",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Puccinia extensicola Plowr.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/003ws2nczlnsd",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Cladium glomerulatum Merr. \u0026 Chun",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/003wyydenh3c2",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Peroneutypa scoparia (Schwein.) Carmarán \u0026 A.I.Romero",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/003x1xl99lmlb",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Lindernia dubia (L.) Pennell",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/003x2zdezfwk7",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Scleria georgiana Core",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/003xgd6nxkgp6",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Hypnum subeugyrium Renauld \u0026 Cardot",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/003xlnvzrsh4",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Uromyces muscari (Duby) LÃ©v.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/003xmyr82xpk6",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Alpova alexsmithii Trappe",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/003xvt03r7vy2",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Volvox",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/003ye83smktt7",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Arthuriomyces peckianus (Howe) Cummins \u0026 Y.Hirats.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/003yn5nbchn77",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Achyrocline satureioides (Lam.) DC.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/003yrdkrdyhp4",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Eschweilera rufifolia S.A.Mori",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/003z7cjgqnbk1",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Hedwigidium integrifolium (P.Beauv.) Dixon",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/003zce11qq0l",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Kindbergia praelonga (Hedw.) Ochyra",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/003zg92jl8rz9",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Leiomela bartramioides (Hook.) Paris",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/003zt6jrm19d5",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Potentilla villosa Pall. ex Pursh",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/00401pcxstvs7",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Eriogonum lonchophyllum var. intermontanum (Reveal) Reveal",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0040f0r9sg5c6",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Prasiola furfuracea (Mert. \u0026 Hornem.) KÃ¼tz.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0040nkl2d3hcb",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Phyllopsora confusa Swinscow \u0026 Krog",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0040yrk5f9q0f",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Platanus racemosa var. racemosa",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/004166wd5bxd8",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Phoma pruni Peck",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/00416bvw87fg6",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Acer glabrum var. douglasii (Hook.) Dippel",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/00416drxgq3z9",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Pycnoporus sanguineus (L. ex Fr. \u0026 HÃ¶k) Murrill",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0041dl34h7yfh",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Asplenium platyneuron (L.) Britton, Sterns \u0026 Poggenb.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0041fyl4xqemg",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Salvia azurea var. azurea",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0041vhv4hfwh7",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Macromitrium cirrosum (Hedw.) Brid.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0041xcvc17x2b",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Sida acuta Burm.f.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0042h88vdgse7",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Eriogonum calcareum (M.Peck) Grady \u0026 Reveal",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0042vzefzw8v3",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Cimicifuga foetida L.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/00430y58hnkg7",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Machaeranthera pinnatifida (Hook.) Shinners",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/004493g7z2lf3",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Eupatorium coelestinum L.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0044c65zyrzx1",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Chrysothamnus nauseosus var. oreophilus (A.Nelson) H.M.Hall",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0044d4tp9mztd",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Senecio amplectens var. holmii (Greene) H.D.Harr.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0044h4dpc4bj6",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Carex subfusca W.Boott",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0044jx5ccd4t8",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Plenogemma phyllantha (Brid.) PlÃ¡Å¡ek, Sawicki \u0026 Ochyra",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0045pkypq47b7",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Symphyotrichum lanceolatum var. lanceolatum",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0045zs5z235dd",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Scapania cuspiduligera (Nees) MÃ¼ll.Frib.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/00460dpd5jn54",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Miconia alboglandulosa Gamba \u0026 Almeda",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0046b59x4xnb1",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Eleocharis ambigens Torr.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0046nxrch45f4",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Connarus marlenei Forero",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0047lr5z9nhnb",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Ribes cereum Douglas",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0047nrcy0w755",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Romanzoffia californica Greene",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0047r9e0n0ty9",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Cirsium horridulum var. vittatum (Small) R.W.Long",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/0048fz195wpdd",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Schlotheimia krauseana Hampe \u0026 Lorentz",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/00497tjk6r6lh",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Achillea millefolium L.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/004b8q2c1sc6b",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Chloroleucon tenuiflorum (Benth.) Barneby \u0026 J.W.Grimes",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/004clnsw5kbk1",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Luehea candicans Mart.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/004cx8zle0r51",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Asparagus setaceus (Kunth) Jessop",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/004d4cqfpfh18",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Miconia chamissois Naudin",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/004egs1p2dws7",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Eryngium juncifolium (Urb.) Mathias \u0026 Constance",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/004em8t15tv8d",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Crepis runcinata var. glauca (Nutt.) B.Boivin",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/004et7jj2qx55",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Hypomyces badius Rogerson \u0026 Samuels",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/004fkesthzckd",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Philonotis uncinata (SchwÃ¤gr.) Brid.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/004g039r2tyc7",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Carex laxiflora Lam.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/004g5hdb144x1",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Commelina erecta L.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/004gr93800q15",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Fraxinus americana L.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/004h0n95n0sx3",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Fissidens puiggarii (Geh. \u0026 Hampe) Paris",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/004hdy0rkbdld",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Sphagneticola trilobata (L.) Pruski",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/004hhk9sfnzzb",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Carex willdenowii Schkuhr",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/004hn490gkv0c",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Pouteria macrophylla (Lam.) Eyma",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/004j6wczr57e7",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Astragalus beckwithii var. weiserensis M.E.Jones",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/004jgcpj05pp3",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Anacardium nanum A.St.-Hil.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/004jgm6clr6c1",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Melampyrum lineare Desr.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/004jjg9wlz236",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Climacium dendroides (Hedw.) F.Weber \u0026 D.Mohr",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/004kkz9jsvfg3",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Astragalus scopulorum Porter",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/004kwkv1hcld7",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Gnaphalium obtusifolium L.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/004lgldghyzq9",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Gliricidia sepium (Jacq.) Kunth ex Walp.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/004lresyqeef7",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Spermacoce ocymifolia Willd. ex Roem. \u0026 Schult.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/004lvgwdynz4",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Erigeron spinosus Benth.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/004m4hvtymt6",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Megalospora porphyritis (Tuck.) R.C.Harris",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/004m853ff4429",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Hymenochaete rubiginosa (Dicks.:Fr.) Lév.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/004mcfwljw923",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Hylocomium splendens (Hedw.) Schimp.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/004mvcl3p1kph",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Solanum sisymbriifolium Lam.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/004n9b3zxlhn9",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Fissidens vogelianus Mitt.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/004nqbk03kbj8",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Senecio rosulatus Rydb.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/004ntxw7qm696",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Sphagnum isoviitae Flatberg",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/004p3lpj1cqq1",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Eleocharis radicans (Poir.) Kunth",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/004pdsxl3mmgc",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Solanum arboreum Dunal",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/004pjs4s2dx0c",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Lupinus polyphyllus var. ammophilus (Greene) Barneby",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/004pm3vlwxd35",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Corylus cornuta Marshall",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/004pn4gc3h683",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Cakile edentula (Bigelow) Hook.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/004qdnq3w5wpf",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Prasiola crispa (Lightf.) KÃ¼tz.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/004qe1rxxxwg1",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Puccinia tumidipes Peck",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/004se3gv63vcd",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Parkia nitida Miq.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/004sjb940wzwh",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Sloanea monosperma Vell.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/004smp2j7lv7d",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Physaria chambersii Rollins var. chambersii",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/004t6f3cfgxfc",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Baccharis montana DC.",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/004t6r2nd3np6",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Solidago petiolaris var. angusta (Torr. \u0026 A.Gray) A.Gray",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/004tqes68q58h",
           "provenanceId": "dc/93qydx3"
         },
         {
           "name": "Scorpidium revolvens (Sw.) Rubers",
+          "types": [
+            "BiologicalSpecimen"
+          ],
           "dcid": "dc/004vptfrhj83c",
           "provenanceId": "dc/93qydx3"
         }

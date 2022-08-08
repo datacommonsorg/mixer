@@ -10,6 +10,9 @@
       "predicate": "measuredProperty",
       "objectId": "count",
       "objectName": "count",
+      "objectTypes": [
+        "Property"
+      ],
       "provenanceId": "dc/d7tbsb1"
     },
     {
@@ -21,6 +24,9 @@
       ],
       "predicate": "measuredProperty",
       "objectId": "count",
+      "objectTypes": [
+        "Thing"
+      ],
       "provenanceId": "dc/d7tbsb1"
     },
     {
@@ -33,6 +39,9 @@
       "predicate": "memberOf",
       "objectId": "dc/g/Demographics",
       "objectName": "Demographics",
+      "objectTypes": [
+        "StatVarGroup"
+      ],
       "provenanceId": "dc/d7tbsb1"
     },
     {
@@ -56,6 +65,9 @@
       "predicate": "populationType",
       "objectId": "Person",
       "objectName": "Person",
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/d7tbsb1"
     },
     {
@@ -67,6 +79,9 @@
       ],
       "predicate": "populationType",
       "objectId": "Person",
+      "objectTypes": [
+        "Thing"
+      ],
       "provenanceId": "dc/d7tbsb1"
     },
     {
@@ -79,6 +94,9 @@
       "predicate": "provenance",
       "objectId": "dc/d7tbsb1",
       "objectName": "https://datacommons.org",
+      "objectTypes": [
+        "Provenance"
+      ],
       "provenanceId": "dc/d7tbsb1"
     },
     {
@@ -91,6 +109,9 @@
       "predicate": "statType",
       "objectId": "measuredValue",
       "objectName": "measuredValue",
+      "objectTypes": [
+        "Property"
+      ],
       "provenanceId": "dc/d7tbsb1"
     },
     {
@@ -102,6 +123,9 @@
       ],
       "predicate": "statType",
       "objectId": "measuredValue",
+      "objectTypes": [
+        "Thing"
+      ],
       "provenanceId": "dc/d7tbsb1"
     },
     {
@@ -114,6 +138,9 @@
       "predicate": "typeOf",
       "objectId": "StatisticalVariable",
       "objectName": "StatisticalVariable",
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/d7tbsb1"
     },
     {
@@ -125,11 +152,17 @@
       ],
       "predicate": "typeOf",
       "objectId": "StatisticalVariable",
+      "objectTypes": [
+        "Thing"
+      ],
       "provenanceId": "dc/d7tbsb1"
     },
     {
       "subjectId": "Amount_EconomicActivity_ExpenditureActivity_HealthcareExpenditure_AsFractionOf_Count_Person",
       "subjectName": "Amount of Economic Activity: Expenditure Activity, Healthcare Expenditure (Per Capita)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -142,6 +175,9 @@
     {
       "subjectId": "Amount_EconomicActivity_GrossDomesticProduction_Nominal_AsAFractionOf_Count_Person",
       "subjectName": "Amount of Economic Activity (Nominal): Gross Domestic Production (Per Capita)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -154,6 +190,9 @@
     {
       "subjectId": "Count_BirthEvent_AsAFractionOfCount_Person",
       "subjectName": "Count of Birth Event (Per Capita)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -166,6 +205,9 @@
     {
       "subjectId": "Count_BirthEvent_LiveBirth_AsFractionOf_Count_Person",
       "subjectName": "Count of Birth Event: Live Birth (Per Capita)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -178,6 +220,9 @@
     {
       "subjectId": "Count_CriminalActivities_MurderAndNonNegligentManslaughter_AsFractionOf_Count_Person",
       "subjectName": "Count of Criminal Activities: Murder And Non Negligent Manslaughter (Per Capita)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -190,6 +235,9 @@
     {
       "subjectId": "Count_Death_AgeAdjusted_AsAFractionOf_Count_Person",
       "subjectName": "Count of Mortality Event (Age Adjusted) (Per Capita)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -202,6 +250,9 @@
     {
       "subjectId": "Count_Death_AsAFractionOfCount_Person",
       "subjectName": "Count of Mortality Event (Per Capita)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -214,6 +265,9 @@
     {
       "subjectId": "Count_Death_IntentionalSelfHarm_AsFractionOf_Count_Person",
       "subjectName": "Count of Mortality Event: X60-X84 (Intentional Self-harm) (Per Capita)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -226,6 +280,9 @@
     {
       "subjectId": "Count_Person_BelowPovertyLevelInThePast12Months_AsFractionOf_Count_Person",
       "subjectName": "Population: Below Poverty Level in The Past 12 Months (Per Capita)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -238,6 +295,9 @@
     {
       "subjectId": "Count_Person_ResidingLessThan5MetersAboveSeaLevel_AsFractionOf_Count_Person",
       "subjectName": "Percent of Population Living in Areas Below 5 Meters Elevation",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -250,6 +310,9 @@
     {
       "subjectId": "Count_Product_MobileCellularSubscription_AsFractionOf_Count_Person",
       "subjectName": "Mobile Subscriptions Per Capita",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -262,6 +325,9 @@
     {
       "subjectId": "Percent_0Minutes_HealthEnhancingPhysicalActivity_In_Count_Person",
       "subjectName": "Percentage 0 Minutes, Health Enhancing Physical Activity Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -274,6 +340,9 @@
     {
       "subjectId": "Percent_150OrMoreMinutes_HealthEnhancingPhysicalActivity_In_Count_Person",
       "subjectName": "Percentage 150 Or More Minutes, Health Enhancing Physical Activity Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -286,6 +355,9 @@
     {
       "subjectId": "Percent_150To299Minutes_HealthEnhancingPhysicalActivity_In_Count_Person",
       "subjectName": "Percentage 150 To 299 Minutes, Health Enhancing Physical Activity Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -298,6 +370,9 @@
     {
       "subjectId": "Percent_1To149Minutes_HealthEnhancingPhysicalActivity_In_Count_Person",
       "subjectName": "Percentage 1 To 149 Minutes, Health Enhancing Physical Activity Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -310,6 +385,9 @@
     {
       "subjectId": "Percent_300OrMoreMinutes_HealthEnhancingPhysicalActivity_In_Count_Person",
       "subjectName": "Percentage 300 Or More Minutes, Health Enhancing Physical Activity Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -322,6 +400,9 @@
     {
       "subjectId": "Percent_AerobicOrMuscleStrengthening_HealthEnhancingPhysicalActivity_In_Count_Person",
       "subjectName": "Percentage Aerobic Or Muscle Strengthening, Health Enhancing Physical Activity Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -334,6 +415,9 @@
     {
       "subjectId": "Percent_AerobicSports_NonWorkRelatedPhysicalActivity_In_Count_Person",
       "subjectName": "Percentage Aerobic Sports, Non Work Related Physical Activity Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -346,6 +430,9 @@
     {
       "subjectId": "Percent_Aerobic_HealthEnhancingPhysicalActivity_In_Count_Person",
       "subjectName": "Percentage Aerobic, Health Enhancing Physical Activity Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -358,6 +445,9 @@
     {
       "subjectId": "Percent_AtLeast30MinutesPerDay_WalkingOrCycling_PhysicalActivity_In_Count_Person",
       "subjectName": "Percentage At Least 30 Minutes Per Day, Walking Or Cycling, Physical Activity Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -370,6 +460,9 @@
     {
       "subjectId": "Percent_AtLeastOnceAWeek_BingeDrinking_In_Count_Person",
       "subjectName": "Percentage At Least Once A Week, Binge Drinking Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -382,6 +475,9 @@
     {
       "subjectId": "Percent_AtLeastOnceAWeek_ExposureToTobaccoSmoke_In_Count_Person",
       "subjectName": "Percentage At Least Once A Week, Exposure To Tobacco Smoke Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -394,6 +490,9 @@
     {
       "subjectId": "Percent_AtLeastOneHourPerDay_ExposureToTobaccoSmoke_In_Count_Person",
       "subjectName": "Percentage At Least One Hour Per Day, Exposure To Tobacco Smoke Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -406,6 +505,9 @@
     {
       "subjectId": "Percent_Cycling_NonWorkRelatedPhysicalActivity_In_Count_Person",
       "subjectName": "Percentage Cycling, Non Work Related Physical Activity Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -418,6 +520,9 @@
     {
       "subjectId": "Percent_Daily_20OrMoreCigarettesPerDay_TobaccoSmoking_Cigarettes_In_Count_Person",
       "subjectName": "Percentage Daily, 20 Or More Cigarettes Per Day, Tobacco Smoking, Cigarettes Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -430,6 +535,9 @@
     {
       "subjectId": "Percent_Daily_AlcoholConsumption_In_Count_Person",
       "subjectName": "Percentage Daily, Alcohol Consumption Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -442,6 +550,9 @@
     {
       "subjectId": "Percent_Daily_BingeDrinking_In_Count_Person",
       "subjectName": "Percentage Daily, Binge Drinking Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -454,6 +565,9 @@
     {
       "subjectId": "Percent_Daily_LessThan20CigarettesPerDay_TobaccoSmoking_Cigarettes_In_Count_Person",
       "subjectName": "Percentage Daily, Less Than 20 Cigarettes Per Day, Tobacco Smoking, Cigarettes Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -466,6 +580,9 @@
     {
       "subjectId": "Percent_Daily_TobaccoSmoking_10YearsOrOver_TobaccoProducts_In_Count_Person",
       "subjectName": "Percentage Daily, Tobacco Smoking, 10 Years Or Over Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -478,6 +595,9 @@
     {
       "subjectId": "Percent_Daily_TobaccoSmoking_Cigarettes_In_Count_Person",
       "subjectName": "Percentage Daily, Tobacco Smoking, Cigarettes Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -490,6 +610,9 @@
     {
       "subjectId": "Percent_Daily_TobaccoSmoking_ECigarettes_In_Count_Person",
       "subjectName": "Percentage Daily, Tobacco Smoking, E Cigarettes Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -502,6 +625,9 @@
     {
       "subjectId": "Percent_Daily_TobaccoSmoking_From1To5Years_TobaccoProducts_In_Count_Person",
       "subjectName": "Percentage Daily, Tobacco Smoking, From 1 To 5 Years Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -514,6 +640,9 @@
     {
       "subjectId": "Percent_Daily_TobaccoSmoking_From5To10Years_TobaccoProducts_In_Count_Person",
       "subjectName": "Percentage Daily, Tobacco Smoking, From 5 To 10 Years Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -526,6 +655,9 @@
     {
       "subjectId": "Percent_Daily_TobaccoSmoking_LessThan1Year_TobaccoProducts_In_Count_Person",
       "subjectName": "Percentage Daily, Tobacco Smoking, Less Than 1 Year Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -538,6 +670,9 @@
     {
       "subjectId": "Percent_Daily_TobaccoSmoking_TobaccoProducts_In_Count_Person",
       "subjectName": "Percentage Daily, Tobacco Smoking Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -550,6 +685,9 @@
     {
       "subjectId": "Percent_EveryMonth_AlcoholConsumption_In_Count_Person",
       "subjectName": "Percentage Every Month, Alcohol Consumption Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -562,6 +700,9 @@
     {
       "subjectId": "Percent_EveryMonth_BingeDrinking_In_Count_Person",
       "subjectName": "Percentage Every Month, Binge Drinking Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -574,6 +715,9 @@
     {
       "subjectId": "Percent_EveryWeek_AlcoholConsumption_In_Count_Person",
       "subjectName": "Percentage Every Week, Alcohol Consumption Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -586,6 +730,9 @@
     {
       "subjectId": "Percent_EveryWeek_BingeDrinking_In_Count_Person",
       "subjectName": "Percentage Every Week, Binge Drinking Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -598,6 +745,9 @@
     {
       "subjectId": "Percent_FormerSmoker_Daily_TobaccoProducts_In_Count_Person",
       "subjectName": "Percentage Former Smoker, Daily Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -610,6 +760,9 @@
     {
       "subjectId": "Percent_FormerSmoker_Formerly_ECigarettes_In_Count_Person",
       "subjectName": "Percentage Former Smoker, E Cigarettes Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -622,6 +775,9 @@
     {
       "subjectId": "Percent_HazardousAlcoholConsumption_In_Count_Person",
       "subjectName": "Percentage Hazardous Alcohol Consumption Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -634,6 +790,9 @@
     {
       "subjectId": "Percent_LessThanOnceAMonth_AlcoholConsumption_In_Count_Person",
       "subjectName": "Percentage Less Than Once A Month, Alcohol Consumption Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -646,6 +805,9 @@
     {
       "subjectId": "Percent_LessThanOnceAMonth_BingeDrinking_In_Count_Person",
       "subjectName": "Percentage Less Than Once A Month, Binge Drinking Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -658,6 +820,9 @@
     {
       "subjectId": "Percent_LessThanOnceAWeek_ExposureToTobaccoSmoke_In_Count_Person",
       "subjectName": "Percentage Less Than Once A Week, Exposure To Tobacco Smoke Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -670,6 +835,9 @@
     {
       "subjectId": "Percent_LessThanOneHourPerDay_ExposureToTobaccoSmoke_In_Count_Person",
       "subjectName": "Percentage Less Than One Hour Per Day, Exposure To Tobacco Smoke Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -682,6 +850,9 @@
     {
       "subjectId": "Percent_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_PhysicalActivity_In_Count_Person",
       "subjectName": "Percentage Less Than Primary Education Or Primary Education Or Lower Secondary Education, Physical Activity Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -694,6 +865,9 @@
     {
       "subjectId": "Percent_MuscleStrengthening_HealthEnhancingPhysicalActivity_In_Count_Person",
       "subjectName": "Percentage Muscle Strengthening, Health Enhancing Physical Activity Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -706,6 +880,9 @@
     {
       "subjectId": "Percent_MuscleStrengthening_NonWorkRelatedPhysicalActivity_In_Count_Person",
       "subjectName": "Percentage Muscle Strengthening, Non Work Related Physical Activity Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -718,6 +895,9 @@
     {
       "subjectId": "Percent_NeverOrNotInTheLast12Months_AlcoholConsumption_In_Count_Person",
       "subjectName": "Percentage Never Or Not In The Last 12 Months, Alcohol Consumption Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -730,6 +910,9 @@
     {
       "subjectId": "Percent_NeverOrNotInTheLast12Months_BingeDrinking_In_Count_Person",
       "subjectName": "Percentage Never Or Not In The Last 12 Months, Binge Drinking Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -742,6 +925,9 @@
     {
       "subjectId": "Percent_NeverOrOccasional_BingeDrinking_In_Count_Person",
       "subjectName": "Percentage Never Or Occasional, Binge Drinking Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -754,6 +940,9 @@
     {
       "subjectId": "Percent_Never_AlcoholConsumption_In_Count_Person",
       "subjectName": "Percentage Never, Alcohol Consumption Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -766,6 +955,9 @@
     {
       "subjectId": "Percent_Never_BingeDrinking_In_Count_Person",
       "subjectName": "Percentage Never, Binge Drinking Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -778,6 +970,9 @@
     {
       "subjectId": "Percent_NonSmoker_TobaccoProducts_In_Count_Person",
       "subjectName": "Percentage Non Smoker Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -790,6 +985,9 @@
     {
       "subjectId": "Percent_Normalweight_In_Count_Person",
       "subjectName": "Population: Percentage Normalweight Among",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -802,6 +1000,9 @@
     {
       "subjectId": "Percent_NotInTheLast12Months_AlcoholConsumption_In_Count_Person",
       "subjectName": "Percentage Not In The Last 12 Months, Alcohol Consumption Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -814,6 +1015,9 @@
     {
       "subjectId": "Percent_Obesity_In_Count_Person",
       "subjectName": "Population: Percentage Obesity Among",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -826,6 +1030,9 @@
     {
       "subjectId": "Percent_Occasional_TobaccoSmoking_ECigarettes_In_Count_Person",
       "subjectName": "Percentage Occasional, Tobacco Smoking, E Cigarettes Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -838,6 +1045,9 @@
     {
       "subjectId": "Percent_Occasional_TobaccoSmoking_TobaccoProducts_In_Count_Person",
       "subjectName": "Percentage Occasional, Tobacco Smoking Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -850,6 +1060,9 @@
     {
       "subjectId": "Percent_Overweight_In_Count_Person",
       "subjectName": "Population: Percentage Overweight Among",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -862,6 +1075,9 @@
     {
       "subjectId": "Percent_PhysicalActivity_In_Count_Person",
       "subjectName": "Percentage Physical Activity Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -874,6 +1090,9 @@
     {
       "subjectId": "Percent_PreObese_In_Count_Person",
       "subjectName": "Population: Percentage Pre Obese Among",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -886,6 +1105,9 @@
     {
       "subjectId": "Percent_RarelyOrNever_ExposureToTobaccoSmoke_In_Count_Person",
       "subjectName": "Percentage Rarely Or Never, Exposure To Tobacco Smoke Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -898,6 +1120,9 @@
     {
       "subjectId": "Percent_TertiaryEducationStageOneOrTertiaryEducationStageTwo_PhysicalActivity_In_Count_Person",
       "subjectName": "Percentage Tertiary Education Stage One Or Tertiary Education Stage Two, Physical Activity Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -910,6 +1135,9 @@
     {
       "subjectId": "Percent_TobaccoSmoking_NeverUsed_ECigarettes_In_Count_Person",
       "subjectName": "Percentage Tobacco Smoking, E Cigarettes Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -922,6 +1150,9 @@
     {
       "subjectId": "Percent_TobaccoSmoking_TobaccoProducts_In_Count_Person",
       "subjectName": "Percentage Tobacco Smoking Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -934,6 +1165,9 @@
     {
       "subjectId": "Percent_Underweight_In_Count_Person",
       "subjectName": "Population: Percentage Underweight Among",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -946,6 +1180,9 @@
     {
       "subjectId": "Percent_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_PhysicalActivity_In_Count_Person",
       "subjectName": "Percentage Upper Secondary Education Or Post Secondary Non Tertiary Education, Physical Activity Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -958,6 +1195,9 @@
     {
       "subjectId": "Percent_Walking_NonWorkRelatedPhysicalActivity_In_Count_Person",
       "subjectName": "Percentage Walking, Non Work Related Physical Activity Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -970,6 +1210,9 @@
     {
       "subjectId": "Percent_WorkRelatedPhysicalActivity_HeavyActivity_In_Count_Person",
       "subjectName": "Percentage Work Related Physical Activity, Heavy Activity Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -982,6 +1225,9 @@
     {
       "subjectId": "Percent_WorkRelatedPhysicalActivity_ModerateActivityOrHeavyActivity_In_Count_Person",
       "subjectName": "Percentage Work Related Physical Activity, Moderate Activity Or Heavy Activity Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -994,6 +1240,9 @@
     {
       "subjectId": "Percent_WorkRelatedPhysicalActivity_ModerateActivity_In_Count_Person",
       "subjectName": "Percentage Work Related Physical Activity, Moderate Activity Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -1006,6 +1255,9 @@
     {
       "subjectId": "Percent_WorkRelatedPhysicalActivity_NoActivityOrLightActivity_In_Count_Person",
       "subjectName": "Percentage Work Related Physical Activity, No Activity Or Light Activity Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -1017,6 +1269,9 @@
     },
     {
       "subjectId": "dc/06w4nhpt1vz26",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -1028,6 +1283,9 @@
     },
     {
       "subjectId": "dc/1xmcs407enr51",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -1039,6 +1297,9 @@
     },
     {
       "subjectId": "dc/64exg7jchnekb",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -1050,6 +1311,9 @@
     },
     {
       "subjectId": "dc/6kk2e7env541h",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -1061,6 +1325,9 @@
     },
     {
       "subjectId": "dc/btjrtzjfksspd",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -1072,6 +1339,9 @@
     },
     {
       "subjectId": "dc/cwk07wqzew6t8",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -1083,6 +1353,9 @@
     },
     {
       "subjectId": "dc/d20yq6r828zrc",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -1094,6 +1367,9 @@
     },
     {
       "subjectId": "dc/h00kfxhs73dhc",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -1105,6 +1381,9 @@
     },
     {
       "subjectId": "dc/jzqt6tmmb7p0h",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -1116,6 +1395,9 @@
     },
     {
       "subjectId": "dc/me61e2819fr9g",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -1127,6 +1409,9 @@
     },
     {
       "subjectId": "dc/vec47kj93z2m6",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
       "objectName": "Population",
@@ -1148,6 +1433,9 @@
       "predicate": "constraintProperties",
       "objectId": "gender",
       "objectName": "gender",
+      "objectTypes": [
+        "Property"
+      ],
       "provenanceId": "dc/d7tbsb1"
     },
     {
@@ -1159,6 +1447,9 @@
       ],
       "predicate": "constraintProperties",
       "objectId": "gender",
+      "objectTypes": [
+        "Thing"
+      ],
       "provenanceId": "dc/d7tbsb1"
     },
     {
@@ -1171,6 +1462,9 @@
       "predicate": "gender",
       "objectId": "Female",
       "objectName": "Female",
+      "objectTypes": [
+        "GenderType"
+      ],
       "provenanceId": "dc/d7tbsb1"
     },
     {
@@ -1182,6 +1476,9 @@
       ],
       "predicate": "gender",
       "objectId": "Female",
+      "objectTypes": [
+        "Thing"
+      ],
       "provenanceId": "dc/d7tbsb1"
     },
     {
@@ -1194,6 +1491,9 @@
       "predicate": "measuredProperty",
       "objectId": "count",
       "objectName": "count",
+      "objectTypes": [
+        "Property"
+      ],
       "provenanceId": "dc/d7tbsb1"
     },
     {
@@ -1205,6 +1505,9 @@
       ],
       "predicate": "measuredProperty",
       "objectId": "count",
+      "objectTypes": [
+        "Thing"
+      ],
       "provenanceId": "dc/d7tbsb1"
     },
     {
@@ -1217,6 +1520,9 @@
       "predicate": "memberOf",
       "objectId": "dc/g/Person_Gender-Female",
       "objectName": "Person With Gender = Female",
+      "objectTypes": [
+        "StatVarGroup"
+      ],
       "provenanceId": "dc/d7tbsb1"
     },
     {
@@ -1240,6 +1546,9 @@
       "predicate": "populationType",
       "objectId": "Person",
       "objectName": "Person",
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/d7tbsb1"
     },
     {
@@ -1251,6 +1560,9 @@
       ],
       "predicate": "populationType",
       "objectId": "Person",
+      "objectTypes": [
+        "Thing"
+      ],
       "provenanceId": "dc/d7tbsb1"
     },
     {
@@ -1263,6 +1575,9 @@
       "predicate": "provenance",
       "objectId": "dc/d7tbsb1",
       "objectName": "https://datacommons.org",
+      "objectTypes": [
+        "Provenance"
+      ],
       "provenanceId": "dc/d7tbsb1"
     },
     {
@@ -1274,6 +1589,9 @@
       ],
       "predicate": "statType",
       "objectId": "measuredValue",
+      "objectTypes": [
+        "Thing"
+      ],
       "provenanceId": "dc/d7tbsb1"
     },
     {
@@ -1286,17 +1604,9 @@
       "predicate": "statType",
       "objectId": "measuredValue",
       "objectName": "measuredValue",
-      "provenanceId": "dc/d7tbsb1"
-    },
-    {
-      "subjectId": "Count_Person_Female",
-      "subjectName": "Population: Female",
-      "subjectTypes": [
-        "StatisticalVariable",
-        "StatisticalVariable"
+      "objectTypes": [
+        "Property"
       ],
-      "predicate": "typeOf",
-      "objectId": "StatisticalVariable",
       "provenanceId": "dc/d7tbsb1"
     },
     {
@@ -1309,11 +1619,31 @@
       "predicate": "typeOf",
       "objectId": "StatisticalVariable",
       "objectName": "StatisticalVariable",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Count_Person_Female",
+      "subjectName": "Population: Female",
+      "subjectTypes": [
+        "StatisticalVariable",
+        "StatisticalVariable"
+      ],
+      "predicate": "typeOf",
+      "objectId": "StatisticalVariable",
+      "objectTypes": [
+        "Thing"
+      ],
       "provenanceId": "dc/d7tbsb1"
     },
     {
       "subjectId": "Count_CriminalActivities_MurderAndNonNegligentManslaughter_Female_AsFractionOf_Count_Person_Female",
       "subjectName": "Count of Criminal Activities: Murder And Non Negligent Manslaughter, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
       "objectName": "Population: Female",
@@ -1326,6 +1656,9 @@
     {
       "subjectId": "Count_Death_Female_AgeAdjusted_AsAFractionOf_Count_Person_Female",
       "subjectName": "Count of Mortality Event (Age Adjusted): Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
       "objectName": "Population: Female",
@@ -1338,6 +1671,9 @@
     {
       "subjectId": "Count_Death_Female_AsAFractionOf_Count_Person_Female",
       "subjectName": "Count of Mortality Event: Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
       "objectName": "Population: Female",
@@ -1350,6 +1686,9 @@
     {
       "subjectId": "Count_Death_IntentionalSelfHarm_Female_AsFractionOf_Count_Person_Female",
       "subjectName": "Count of Mortality Event: X60-X84 (Intentional Self-harm), Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
       "objectName": "Population: Female",
@@ -1362,6 +1701,9 @@
     {
       "subjectId": "Percent_0Minutes_HealthEnhancingPhysicalActivity_In_Count_Person_Female",
       "subjectName": "Percentage 0 Minutes, Health Enhancing Physical Activity Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
       "objectName": "Population: Female",
@@ -1374,6 +1716,9 @@
     {
       "subjectId": "Percent_150OrMoreMinutes_HealthEnhancingPhysicalActivity_In_Count_Person_Female",
       "subjectName": "Percentage 150 Or More Minutes, Health Enhancing Physical Activity Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
       "objectName": "Population: Female",
@@ -1386,6 +1731,9 @@
     {
       "subjectId": "Percent_150To299Minutes_HealthEnhancingPhysicalActivity_In_Count_Person_Female",
       "subjectName": "Percentage 150 To 299 Minutes, Health Enhancing Physical Activity Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
       "objectName": "Population: Female",
@@ -1398,6 +1746,9 @@
     {
       "subjectId": "Percent_1To149Minutes_HealthEnhancingPhysicalActivity_In_Count_Person_Female",
       "subjectName": "Percentage 1 To 149 Minutes, Health Enhancing Physical Activity Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
       "objectName": "Population: Female",
@@ -1410,6 +1761,9 @@
     {
       "subjectId": "Percent_300OrMoreMinutes_HealthEnhancingPhysicalActivity_In_Count_Person_Female",
       "subjectName": "Percentage 300 Or More Minutes, Health Enhancing Physical Activity Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
       "objectName": "Population: Female",
@@ -1422,6 +1776,9 @@
     {
       "subjectId": "Percent_AerobicOrMuscleStrengthening_HealthEnhancingPhysicalActivity_In_Count_Person_Female",
       "subjectName": "Percentage Aerobic Or Muscle Strengthening, Health Enhancing Physical Activity Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
       "objectName": "Population: Female",
@@ -1434,6 +1791,9 @@
     {
       "subjectId": "Percent_AerobicSports_NonWorkRelatedPhysicalActivity_In_Count_Person_Female",
       "subjectName": "Percentage Aerobic Sports, Non Work Related Physical Activity Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
       "objectName": "Population: Female",
@@ -1446,6 +1806,9 @@
     {
       "subjectId": "Percent_Aerobic_HealthEnhancingPhysicalActivity_In_Count_Person_Female",
       "subjectName": "Percentage Aerobic, Health Enhancing Physical Activity Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
       "objectName": "Population: Female",
@@ -1458,6 +1821,9 @@
     {
       "subjectId": "Percent_AtLeast30MinutesPerDay_WalkingOrCycling_PhysicalActivity_In_Count_Person_Female",
       "subjectName": "Percentage At Least 30 Minutes Per Day, Walking Or Cycling, Physical Activity Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
       "objectName": "Population: Female",
@@ -1470,6 +1836,9 @@
     {
       "subjectId": "Percent_AtLeastOnceAWeek_BingeDrinking_In_Count_Person_Female",
       "subjectName": "Percentage At Least Once A Week, Binge Drinking Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
       "objectName": "Population: Female",
@@ -1482,6 +1851,9 @@
     {
       "subjectId": "Percent_AtLeastOnceAWeek_ExposureToTobaccoSmoke_In_Count_Person_Female",
       "subjectName": "Percentage At Least Once A Week, Exposure To Tobacco Smoke Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
       "objectName": "Population: Female",
@@ -1494,6 +1866,9 @@
     {
       "subjectId": "Percent_AtLeastOneHourPerDay_ExposureToTobaccoSmoke_In_Count_Person_Female",
       "subjectName": "Percentage At Least One Hour Per Day, Exposure To Tobacco Smoke Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
       "objectName": "Population: Female",
@@ -1506,6 +1881,9 @@
     {
       "subjectId": "Percent_Cycling_NonWorkRelatedPhysicalActivity_In_Count_Person_Female",
       "subjectName": "Percentage Cycling, Non Work Related Physical Activity Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
       "objectName": "Population: Female",
@@ -1518,6 +1896,9 @@
     {
       "subjectId": "Percent_Daily_20OrMoreCigarettesPerDay_TobaccoSmoking_Cigarettes_In_Count_Person_Female",
       "subjectName": "Percentage Daily, 20 Or More Cigarettes Per Day, Tobacco Smoking, Cigarettes Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
       "objectName": "Population: Female",
@@ -1530,6 +1911,9 @@
     {
       "subjectId": "Percent_Daily_AlcoholConsumption_In_Count_Person_Female",
       "subjectName": "Percentage Daily, Alcohol Consumption Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
       "objectName": "Population: Female",
@@ -1542,6 +1926,9 @@
     {
       "subjectId": "Percent_Daily_BingeDrinking_In_Count_Person_Female",
       "subjectName": "Percentage Daily, Binge Drinking Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
       "objectName": "Population: Female",
@@ -1554,6 +1941,9 @@
     {
       "subjectId": "Percent_Daily_LessThan20CigarettesPerDay_TobaccoSmoking_Cigarettes_In_Count_Person_Female",
       "subjectName": "Percentage Daily, Less Than 20 Cigarettes Per Day, Tobacco Smoking, Cigarettes Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
       "objectName": "Population: Female",
@@ -1566,6 +1956,9 @@
     {
       "subjectId": "Percent_Daily_TobaccoSmoking_10YearsOrOver_TobaccoProducts_In_Count_Person_Female",
       "subjectName": "Percentage Daily, Tobacco Smoking, 10 Years Or Over Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
       "objectName": "Population: Female",
@@ -1578,6 +1971,9 @@
     {
       "subjectId": "Percent_Daily_TobaccoSmoking_Cigarettes_In_Count_Person_Female",
       "subjectName": "Percentage Daily, Tobacco Smoking, Cigarettes Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
       "objectName": "Population: Female",
@@ -1590,6 +1986,9 @@
     {
       "subjectId": "Percent_Daily_TobaccoSmoking_ECigarettes_In_Count_Person_Female",
       "subjectName": "Percentage Daily, Tobacco Smoking, E Cigarettes Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
       "objectName": "Population: Female",
@@ -1602,6 +2001,9 @@
     {
       "subjectId": "Percent_Daily_TobaccoSmoking_From1To5Years_TobaccoProducts_In_Count_Person_Female",
       "subjectName": "Percentage Daily, Tobacco Smoking, From 1 To 5 Years Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
       "objectName": "Population: Female",
@@ -1614,6 +2016,9 @@
     {
       "subjectId": "Percent_Daily_TobaccoSmoking_From5To10Years_TobaccoProducts_In_Count_Person_Female",
       "subjectName": "Percentage Daily, Tobacco Smoking, From 5 To 10 Years Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
       "objectName": "Population: Female",
@@ -1626,6 +2031,9 @@
     {
       "subjectId": "Percent_Daily_TobaccoSmoking_LessThan1Year_TobaccoProducts_In_Count_Person_Female",
       "subjectName": "Percentage Daily, Tobacco Smoking, Less Than 1 Year Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
       "objectName": "Population: Female",
@@ -1638,6 +2046,9 @@
     {
       "subjectId": "Percent_Daily_TobaccoSmoking_TobaccoProducts_In_Count_Person_Female",
       "subjectName": "Percentage Daily, Tobacco Smoking Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
       "objectName": "Population: Female",
@@ -1650,6 +2061,9 @@
     {
       "subjectId": "Percent_EveryMonth_AlcoholConsumption_In_Count_Person_Female",
       "subjectName": "Percentage Every Month, Alcohol Consumption Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
       "objectName": "Population: Female",
@@ -1662,6 +2076,9 @@
     {
       "subjectId": "Percent_EveryMonth_BingeDrinking_In_Count_Person_Female",
       "subjectName": "Percentage Every Month, Binge Drinking Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
       "objectName": "Population: Female",
@@ -1674,6 +2091,9 @@
     {
       "subjectId": "Percent_EveryWeek_AlcoholConsumption_In_Count_Person_Female",
       "subjectName": "Percentage Every Week, Alcohol Consumption Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
       "objectName": "Population: Female",
@@ -1686,6 +2106,9 @@
     {
       "subjectId": "Percent_EveryWeek_BingeDrinking_In_Count_Person_Female",
       "subjectName": "Percentage Every Week, Binge Drinking Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
       "objectName": "Population: Female",
@@ -1698,6 +2121,9 @@
     {
       "subjectId": "Percent_FormerSmoker_Daily_TobaccoProducts_In_Count_Person_Female",
       "subjectName": "Percentage Former Smoker, Daily Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
       "objectName": "Population: Female",
@@ -1710,6 +2136,9 @@
     {
       "subjectId": "Percent_FormerSmoker_Formerly_ECigarettes_In_Count_Person_Female",
       "subjectName": "Percentage Former Smoker, E Cigarettes Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
       "objectName": "Population: Female",
@@ -1722,6 +2151,9 @@
     {
       "subjectId": "Percent_HazardousAlcoholConsumption_In_Count_Person_Female",
       "subjectName": "Percentage Hazardous Alcohol Consumption Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
       "objectName": "Population: Female",
@@ -1734,6 +2166,9 @@
     {
       "subjectId": "Percent_LessThanOnceAMonth_AlcoholConsumption_In_Count_Person_Female",
       "subjectName": "Percentage Less Than Once A Month, Alcohol Consumption Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
       "objectName": "Population: Female",
@@ -1746,6 +2181,9 @@
     {
       "subjectId": "Percent_LessThanOnceAMonth_BingeDrinking_In_Count_Person_Female",
       "subjectName": "Percentage Less Than Once A Month, Binge Drinking Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
       "objectName": "Population: Female",
@@ -1758,6 +2196,9 @@
     {
       "subjectId": "Percent_LessThanOnceAWeek_ExposureToTobaccoSmoke_In_Count_Person_Female",
       "subjectName": "Percentage Less Than Once A Week, Exposure To Tobacco Smoke Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
       "objectName": "Population: Female",
@@ -1770,6 +2211,9 @@
     {
       "subjectId": "Percent_LessThanOneHourPerDay_ExposureToTobaccoSmoke_In_Count_Person_Female",
       "subjectName": "Percentage Less Than One Hour Per Day, Exposure To Tobacco Smoke Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
       "objectName": "Population: Female",
@@ -1782,6 +2226,9 @@
     {
       "subjectId": "Percent_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_PhysicalActivity_In_Count_Person_Female",
       "subjectName": "Percentage Less Than Primary Education Or Primary Education Or Lower Secondary Education, Physical Activity Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
       "objectName": "Population: Female",
@@ -1794,6 +2241,9 @@
     {
       "subjectId": "Percent_MuscleStrengthening_HealthEnhancingPhysicalActivity_In_Count_Person_Female",
       "subjectName": "Percentage Muscle Strengthening, Health Enhancing Physical Activity Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
       "objectName": "Population: Female",
@@ -1806,6 +2256,9 @@
     {
       "subjectId": "Percent_MuscleStrengthening_NonWorkRelatedPhysicalActivity_In_Count_Person_Female",
       "subjectName": "Percentage Muscle Strengthening, Non Work Related Physical Activity Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
       "objectName": "Population: Female",
@@ -1818,6 +2271,9 @@
     {
       "subjectId": "Percent_NeverOrNotInTheLast12Months_AlcoholConsumption_In_Count_Person_Female",
       "subjectName": "Percentage Never Or Not In The Last 12 Months, Alcohol Consumption Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
       "objectName": "Population: Female",
@@ -1830,6 +2286,9 @@
     {
       "subjectId": "Percent_NeverOrNotInTheLast12Months_BingeDrinking_In_Count_Person_Female",
       "subjectName": "Percentage Never Or Not In The Last 12 Months, Binge Drinking Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
       "objectName": "Population: Female",
@@ -1842,6 +2301,9 @@
     {
       "subjectId": "Percent_NeverOrOccasional_BingeDrinking_In_Count_Person_Female",
       "subjectName": "Percentage Never Or Occasional, Binge Drinking Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
       "objectName": "Population: Female",
@@ -1854,6 +2316,9 @@
     {
       "subjectId": "Percent_Never_AlcoholConsumption_In_Count_Person_Female",
       "subjectName": "Percentage Never, Alcohol Consumption Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
       "objectName": "Population: Female",
@@ -1866,6 +2331,9 @@
     {
       "subjectId": "Percent_Never_BingeDrinking_In_Count_Person_Female",
       "subjectName": "Percentage Never, Binge Drinking Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
       "objectName": "Population: Female",
@@ -1878,6 +2346,9 @@
     {
       "subjectId": "Percent_NonSmoker_TobaccoProducts_In_Count_Person_Female",
       "subjectName": "Percentage Non Smoker Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
       "objectName": "Population: Female",
@@ -1890,6 +2361,9 @@
     {
       "subjectId": "Percent_Normalweight_In_Count_Person_Female",
       "subjectName": "Population: Percentage Normalweight Among Female",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
       "objectName": "Population: Female",
@@ -1902,6 +2376,9 @@
     {
       "subjectId": "Percent_NotInTheLast12Months_AlcoholConsumption_In_Count_Person_Female",
       "subjectName": "Percentage Not In The Last 12 Months, Alcohol Consumption Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
       "objectName": "Population: Female",
@@ -1914,6 +2391,9 @@
     {
       "subjectId": "Percent_Obesity_In_Count_Person_Female",
       "subjectName": "Population: Percentage Obesity Among Female",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
       "objectName": "Population: Female",
@@ -1926,6 +2406,9 @@
     {
       "subjectId": "Percent_Occasional_TobaccoSmoking_ECigarettes_In_Count_Person_Female",
       "subjectName": "Percentage Occasional, Tobacco Smoking, E Cigarettes Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
       "objectName": "Population: Female",
@@ -1938,6 +2421,9 @@
     {
       "subjectId": "Percent_Occasional_TobaccoSmoking_TobaccoProducts_In_Count_Person_Female",
       "subjectName": "Percentage Occasional, Tobacco Smoking Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
       "objectName": "Population: Female",
@@ -1950,6 +2436,9 @@
     {
       "subjectId": "Percent_Overweight_In_Count_Person_Female",
       "subjectName": "Population: Percentage Overweight Among Female",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
       "objectName": "Population: Female",
@@ -1962,6 +2451,9 @@
     {
       "subjectId": "Percent_PhysicalActivity_In_Count_Person_Female",
       "subjectName": "Percentage Physical Activity Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
       "objectName": "Population: Female",
@@ -1974,6 +2466,9 @@
     {
       "subjectId": "Percent_PreObese_In_Count_Person_Female",
       "subjectName": "Population: Percentage Pre Obese Among Female",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
       "objectName": "Population: Female",
@@ -1986,6 +2481,9 @@
     {
       "subjectId": "Percent_RarelyOrNever_ExposureToTobaccoSmoke_In_Count_Person_Female",
       "subjectName": "Percentage Rarely Or Never, Exposure To Tobacco Smoke Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
       "objectName": "Population: Female",
@@ -1998,6 +2496,9 @@
     {
       "subjectId": "Percent_TertiaryEducationStageOneOrTertiaryEducationStageTwo_PhysicalActivity_In_Count_Person_Female",
       "subjectName": "Percentage Tertiary Education Stage One Or Tertiary Education Stage Two, Physical Activity Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
       "objectName": "Population: Female",
@@ -2010,6 +2511,9 @@
     {
       "subjectId": "Percent_TobaccoSmoking_NeverUsed_ECigarettes_In_Count_Person_Female",
       "subjectName": "Percentage Tobacco Smoking, E Cigarettes Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
       "objectName": "Population: Female",
@@ -2022,6 +2526,9 @@
     {
       "subjectId": "Percent_TobaccoSmoking_TobaccoProducts_In_Count_Person_Female",
       "subjectName": "Percentage Tobacco Smoking Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
       "objectName": "Population: Female",
@@ -2034,6 +2541,9 @@
     {
       "subjectId": "Percent_Underweight_In_Count_Person_Female",
       "subjectName": "Population: Percentage Underweight Among Female",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
       "objectName": "Population: Female",
@@ -2046,6 +2556,9 @@
     {
       "subjectId": "Percent_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_PhysicalActivity_In_Count_Person_Female",
       "subjectName": "Percentage Upper Secondary Education Or Post Secondary Non Tertiary Education, Physical Activity Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
       "objectName": "Population: Female",
@@ -2058,6 +2571,9 @@
     {
       "subjectId": "Percent_Walking_NonWorkRelatedPhysicalActivity_In_Count_Person_Female",
       "subjectName": "Percentage Walking, Non Work Related Physical Activity Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
       "objectName": "Population: Female",
@@ -2070,6 +2586,9 @@
     {
       "subjectId": "Percent_WorkRelatedPhysicalActivity_HeavyActivity_In_Count_Person_Female",
       "subjectName": "Percentage Work Related Physical Activity, Heavy Activity Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
       "objectName": "Population: Female",
@@ -2082,6 +2601,9 @@
     {
       "subjectId": "Percent_WorkRelatedPhysicalActivity_ModerateActivityOrHeavyActivity_In_Count_Person_Female",
       "subjectName": "Percentage Work Related Physical Activity, Moderate Activity Or Heavy Activity Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
       "objectName": "Population: Female",
@@ -2094,6 +2616,9 @@
     {
       "subjectId": "Percent_WorkRelatedPhysicalActivity_ModerateActivity_In_Count_Person_Female",
       "subjectName": "Percentage Work Related Physical Activity, Moderate Activity Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
       "objectName": "Population: Female",
@@ -2106,6 +2631,9 @@
     {
       "subjectId": "Percent_WorkRelatedPhysicalActivity_NoActivityOrLightActivity_In_Count_Person_Female",
       "subjectName": "Percentage Work Related Physical Activity, No Activity Or Light Activity Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
       "objectName": "Population: Female",
@@ -2117,6 +2645,9 @@
     },
     {
       "subjectId": "dc/3n1cbgh69ys4c",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
       "objectName": "Population: Female",
@@ -2128,6 +2659,9 @@
     },
     {
       "subjectId": "dc/begqg4vhfbtdb",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
       "objectName": "Population: Female",
@@ -2139,6 +2673,9 @@
     },
     {
       "subjectId": "dc/twktdj71ngkz1",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
       "objectName": "Population: Female",
@@ -2150,6 +2687,9 @@
     },
     {
       "subjectId": "dc/yhbqx0489qcc",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person_Female",
       "objectName": "Population: Female",

@@ -4,17 +4,22 @@
       "subjectId": "dc/d7tbsb1",
       "subjectName": "HumanReadableStatVars",
       "subjectTypes": [
+        "Provenance",
         "Provenance"
       ],
       "predicate": "curator",
       "objectId": "dc/cjj7vp",
       "objectName": "imports@datacommons.org",
+      "objectTypes": [
+        "Curator"
+      ],
       "provenanceId": "dc/d7tbsb1"
     },
     {
       "subjectId": "dc/d7tbsb1",
       "subjectName": "HumanReadableStatVars",
       "subjectTypes": [
+        "Provenance",
         "Provenance"
       ],
       "predicate": "importTime",
@@ -25,6 +30,7 @@
       "subjectId": "dc/d7tbsb1",
       "subjectName": "HumanReadableStatVars",
       "subjectTypes": [
+        "Provenance",
         "Provenance"
       ],
       "predicate": "name",
@@ -35,39 +41,66 @@
       "subjectId": "dc/d7tbsb1",
       "subjectName": "HumanReadableStatVars",
       "subjectTypes": [
+        "Provenance",
         "Provenance"
       ],
       "predicate": "provenance",
       "objectId": "dc/d7tbsb1",
       "objectName": "https://datacommons.org",
+      "objectTypes": [
+        "Provenance"
+      ],
       "provenanceId": "dc/d7tbsb1"
     },
     {
       "subjectId": "dc/d7tbsb1",
       "subjectName": "HumanReadableStatVars",
       "subjectTypes": [
+        "Provenance",
         "Provenance"
       ],
       "predicate": "source",
       "objectId": "dc/s/DataCommons",
       "objectName": "datacommons.org",
+      "objectTypes": [
+        "Source"
+      ],
       "provenanceId": "dc/d7tbsb1"
     },
     {
       "subjectId": "dc/d7tbsb1",
       "subjectName": "HumanReadableStatVars",
       "subjectTypes": [
+        "Provenance",
         "Provenance"
       ],
       "predicate": "typeOf",
       "objectId": "Provenance",
       "objectName": "Provenance",
+      "objectTypes": [
+        "Class"
+      ],
       "provenanceId": "dc/d7tbsb1"
     },
     {
       "subjectId": "dc/d7tbsb1",
       "subjectName": "HumanReadableStatVars",
       "subjectTypes": [
+        "Provenance",
+        "Provenance"
+      ],
+      "predicate": "typeOf",
+      "objectId": "Provenance",
+      "objectTypes": [
+        "Thing"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "dc/d7tbsb1",
+      "subjectName": "HumanReadableStatVars",
+      "subjectTypes": [
+        "Provenance",
         "Provenance"
       ],
       "predicate": "url",
@@ -75,12 +108,61 @@
       "provenanceId": "dc/d7tbsb1"
     },
     {
-      "subjectId": "AvailableVehicles0",
-      "subjectName": "AvailableVehicles 0",
+      "subjectId": "Acre1000Onwards",
+      "subjectName": "Acre 1000 Onwards",
+      "subjectTypes": [
+        "QuantityRange"
+      ],
       "predicate": "provenance",
       "objectId": "dc/d7tbsb1",
       "objectName": "HumanReadableStatVars",
       "objectTypes": [
+        "Provenance",
+        "Provenance"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "AggregateMax_MedianAcrossModels_DifferenceRelativeToBaseDate1990_Max_Temperature",
+      "subjectName": "Max Temperature (Difference Relative To Base Date): Relative To 1990, Highest Value, Median Across Models",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "provenance",
+      "objectId": "dc/d7tbsb1",
+      "objectName": "HumanReadableStatVars",
+      "objectTypes": [
+        "Provenance",
+        "Provenance"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "AvailableVehicles0",
+      "subjectName": "AvailableVehicles 0",
+      "subjectTypes": [
+        "Quantity"
+      ],
+      "predicate": "provenance",
+      "objectId": "dc/d7tbsb1",
+      "objectName": "HumanReadableStatVars",
+      "objectTypes": [
+        "Provenance",
+        "Provenance"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "dc/g/Agriculture",
+      "subjectName": "Agriculture",
+      "subjectTypes": [
+        "StatVarGroup"
+      ],
+      "predicate": "provenance",
+      "objectId": "dc/d7tbsb1",
+      "objectName": "HumanReadableStatVars",
+      "objectTypes": [
+        "Provenance",
         "Provenance"
       ],
       "provenanceId": "dc/d7tbsb1"

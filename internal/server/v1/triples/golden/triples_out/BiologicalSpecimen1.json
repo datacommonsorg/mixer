@@ -20,6 +20,9 @@
       "entities": [
         {
           "name": "https://datacommons.org",
+          "types": [
+            "Provenance"
+          ],
           "dcid": "dc/5l5zxr1",
           "provenanceId": "dc/5l5zxr1"
         }
@@ -29,6 +32,9 @@
       "entities": [
         {
           "name": "Thing",
+          "types": [
+            "Class"
+          ],
           "dcid": "Thing",
           "provenanceId": "dc/5l5zxr1"
         }
@@ -38,6 +44,9 @@
       "entities": [
         {
           "name": "Class",
+          "types": [
+            "Class"
+          ],
           "dcid": "Class",
           "provenanceId": "dc/5l5zxr1"
         }
