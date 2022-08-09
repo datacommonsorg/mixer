@@ -75,7 +75,7 @@ func main() {
 	flag.Parse()
 
 	// Ensure the temp output path exists
-	err := os.MkdirAll(*temp_path, os.ModePerm)
+	err := os.MkdirAll(*temp_path, 0700)
 	if err != nil {
 		log.Fatalf("could not create temp directory at %v: %v", temp_path, err)
 	}
