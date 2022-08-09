@@ -58,7 +58,6 @@ func GetTotalSpaceAllocFromProfile(filename string) (int64) {
 		for _, sample := range prof.Sample {
 			var v int64
 			v = value(sample.Value)
-			fmt.Println(v)
 			if v < 0 {
 				v = -v
 			}
@@ -117,27 +116,32 @@ func compute_memory_profDiff (profBefore, profAfter, outPath string) {
 	fmt.Println(stdout.String())
 }
 
-func run_with_profile (f_identifier string, f func()) {
+func run_with_profile (key string, f func() (string, error)) {
 	profile_location_template := *temp_path + "/go_http_memprof.%v.%v.pb"
 
-	profBefore := fmt.Sprintf(profile_location_template, "before", f_identifier)
-	profAfter := fmt.Sprintf(profile_location_template, "after", f_identifier)
-	//profDiff := fmt.Sprintf(profile_location_template, "diff", f_identifier)
+	profBefore := fmt.Sprintf(profile_location_template, "before", key)
+	profAfter := fmt.Sprintf(profile_location_template, "after", key)
+	//profDiff := fmt.Sprintf(profile_location_template, "diff", key)
 
 	save_profile(profBefore)
-	f()
+
+	respStr, err := f()
+	if err != nil {
+		log.Fatalf("could not run %d: %s", key, err)
+	}
+
 	save_profile(profAfter)
+
 	allocBefore := GetTotalSpaceAllocFromProfile(profBefore)
 	allocAfter := GetTotalSpaceAllocFromProfile(profAfter)
 	allocDiff := allocAfter - allocBefore
 	allocDiffMb := BytesToMegabytes(allocDiff)
-	fmt.Printf("That call took %d MB [%d bytes]", allocDiffMb, allocDiff)
+	fmt.Printf("%v used %d MB and returned a response of length %d\n", key, allocDiffMb, len(respStr))
 
 	// TODO(snny): use this so that a detailed proto file of the diff is
 	// available for further inspection
 	// compute_memory_profDiff(profBefore, profAfter, profDiff)
 	//totalMb := BytesToMegabytes(GetTotalSpaceAllocFromProfile(profDiff))
-	//fmt.Printf("That call took %d", totalMb)
 }
 
 func main() {
@@ -163,9 +167,9 @@ func main() {
 	c := pb.NewMixerClient(conn)
 	ctx := context.Background()
 
-	funcs_to_profile := make(map[string]func())
+	funcs_to_profile := make(map[string]func() (string, error))
 
-	funcs_to_profile["BulkObservationsSeriesLinked_USA"] = func(){
+	funcs_to_profile["BulkObservationsSeriesLinked_USA"] = func() (string, error) {
 			req := &pb.BulkObservationsSeriesLinkedRequest{
 				Variables:      []string{"Median_Age_Person_AmericanIndianOrAlaskaNativeAlone"},
 				EntityType:     "City",
@@ -173,13 +177,12 @@ func main() {
 				LinkedProperty: "containedInPlace",
 				AllFacets:      false,
 			}
-			_, err := c.BulkObservationsSeriesLinked(ctx,req)
+			resp, err := c.BulkObservationsSeriesLinked(ctx,req)
 			if err != nil {
-				log.Fatalf("could not run BulkObservationsSeriesLinked: %s", err)
+				return "", err
 			}
-			fmt.Printf("BulkObservationsSeriesLinked returned succesfully\n")
-			// Commenting for now because output floods screen
-			// fmt.Printf("%d\n", proto.MarshalTextString(r))
+			respStr := resp.String()
+			return respStr, nil
 		}
 
 		for key, f := range funcs_to_profile {
