@@ -45,15 +45,6 @@
           "provenanceId": "dc/5n63hr1"
         },
         {
-          "name": "East Foothills",
-          "types": [
-            "City",
-            "Neighborhood"
-          ],
-          "dcid": "geoId/0620598",
-          "provenanceId": "dc/sm3m2w3"
-        },
-        {
           "name": "Fruitdale",
           "types": [
             "City"
@@ -83,15 +74,6 @@
             "City"
           ],
           "dcid": "geoId/0643280",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
-          "name": "Los Gatos",
-          "types": [
-            "City",
-            "Town"
-          ],
-          "dcid": "geoId/0644112",
           "provenanceId": "dc/5n63hr1"
         },
         {
@@ -188,24 +170,6 @@
             "City"
           ],
           "dcid": "geoId/0677000",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
-          "name": "Alum Rock",
-          "types": [
-            "City",
-            "Neighborhood"
-          ],
-          "dcid": "geoId/0601458",
-          "provenanceId": "dc/sm3m2w3"
-        },
-        {
-          "name": "Burbank",
-          "types": [
-            "City",
-            "Neighborhood"
-          ],
-          "dcid": "geoId/0608968",
           "provenanceId": "dc/5n63hr1"
         },
         {
