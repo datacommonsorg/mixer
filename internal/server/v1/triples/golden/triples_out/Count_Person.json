@@ -9,13 +9,6 @@
           ],
           "dcid": "count",
           "provenanceId": "dc/d7tbsb1"
-        },
-        {
-          "types": [
-            "Thing"
-          ],
-          "dcid": "count",
-          "provenanceId": "dc/d7tbsb1"
         }
       ]
     },
@@ -48,13 +41,6 @@
           ],
           "dcid": "Person",
           "provenanceId": "dc/d7tbsb1"
-        },
-        {
-          "types": [
-            "Thing"
-          ],
-          "dcid": "Person",
-          "provenanceId": "dc/d7tbsb1"
         }
       ]
     },
@@ -79,13 +65,6 @@
           ],
           "dcid": "measuredValue",
           "provenanceId": "dc/d7tbsb1"
-        },
-        {
-          "types": [
-            "Thing"
-          ],
-          "dcid": "measuredValue",
-          "provenanceId": "dc/d7tbsb1"
         }
       ]
     },
@@ -95,13 +74,6 @@
           "name": "StatisticalVariable",
           "types": [
             "Class"
-          ],
-          "dcid": "StatisticalVariable",
-          "provenanceId": "dc/d7tbsb1"
-        },
-        {
-          "types": [
-            "Thing"
           ],
           "dcid": "StatisticalVariable",
           "provenanceId": "dc/d7tbsb1"

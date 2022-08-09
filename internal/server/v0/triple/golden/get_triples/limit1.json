@@ -4,7 +4,6 @@
       "subjectId": "dc/d7tbsb1",
       "subjectName": "HumanReadableStatVars",
       "subjectTypes": [
-        "Provenance",
         "Provenance"
       ],
       "predicate": "curator",
@@ -19,7 +18,6 @@
       "subjectId": "dc/d7tbsb1",
       "subjectName": "HumanReadableStatVars",
       "subjectTypes": [
-        "Provenance",
         "Provenance"
       ],
       "predicate": "importTime",
@@ -30,7 +28,6 @@
       "subjectId": "dc/d7tbsb1",
       "subjectName": "HumanReadableStatVars",
       "subjectTypes": [
-        "Provenance",
         "Provenance"
       ],
       "predicate": "name",
@@ -41,7 +38,6 @@
       "subjectId": "dc/d7tbsb1",
       "subjectName": "HumanReadableStatVars",
       "subjectTypes": [
-        "Provenance",
         "Provenance"
       ],
       "predicate": "provenance",
@@ -56,7 +52,6 @@
       "subjectId": "dc/d7tbsb1",
       "subjectName": "HumanReadableStatVars",
       "subjectTypes": [
-        "Provenance",
         "Provenance"
       ],
       "predicate": "source",
@@ -71,7 +66,6 @@
       "subjectId": "dc/d7tbsb1",
       "subjectName": "HumanReadableStatVars",
       "subjectTypes": [
-        "Provenance",
         "Provenance"
       ],
       "predicate": "typeOf",
@@ -86,21 +80,6 @@
       "subjectId": "dc/d7tbsb1",
       "subjectName": "HumanReadableStatVars",
       "subjectTypes": [
-        "Provenance",
-        "Provenance"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Provenance",
-      "objectTypes": [
-        "Thing"
-      ],
-      "provenanceId": "dc/d7tbsb1"
-    },
-    {
-      "subjectId": "dc/d7tbsb1",
-      "subjectName": "HumanReadableStatVars",
-      "subjectTypes": [
-        "Provenance",
         "Provenance"
       ],
       "predicate": "url",
@@ -117,7 +96,6 @@
       "objectId": "dc/d7tbsb1",
       "objectName": "HumanReadableStatVars",
       "objectTypes": [
-        "Provenance",
         "Provenance"
       ],
       "provenanceId": "dc/d7tbsb1"
@@ -132,7 +110,6 @@
       "objectId": "dc/d7tbsb1",
       "objectName": "HumanReadableStatVars",
       "objectTypes": [
-        "Provenance",
         "Provenance"
       ],
       "provenanceId": "dc/d7tbsb1"
@@ -147,7 +124,6 @@
       "objectId": "dc/d7tbsb1",
       "objectName": "HumanReadableStatVars",
       "objectTypes": [
-        "Provenance",
         "Provenance"
       ],
       "provenanceId": "dc/d7tbsb1"
@@ -162,7 +138,6 @@
       "objectId": "dc/d7tbsb1",
       "objectName": "HumanReadableStatVars",
       "objectTypes": [
-        "Provenance",
         "Provenance"
       ],
       "provenanceId": "dc/d7tbsb1"
