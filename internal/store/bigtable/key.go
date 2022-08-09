@@ -31,6 +31,8 @@ const (
 	BtPlacePagePrefix = "d/4/"
 	// BtBioPagePrefix for biology page cache.
 	BtBioPagePrefix = "d/6/"
+	// BtPropType is the prefix for getting the types for given entity and property
+	BtPropType = "d/7/"
 	// BtObsCollectionDateFrequency for obs collection cache that contains the frequency of each
 	// date across places.
 	BtObsCollectionDateFrequency = "d/8/"
@@ -44,12 +46,12 @@ const (
 	BtPlacesMetadataPrefix = "d/d/"
 	// BtObsCollection for obs collection cache.
 	BtObsCollection = "d/e/"
-	// BtPagedPropValIn for in-arc paged entities.
-	// Key: <dcid^predicate^page>
-	BtPagedPropValIn = "d/h/"
-	// BtPagedPropValOut for out-arc paged entities.
-	// Key: <dcid^predicate^page>
-	BtPagedPropValOut = "d/i/"
+	// BtPagedPropTypeValIn for in-arc paged entities by type.
+	// Key: <dcid^predicate^type^page>
+	BtPagedPropTypeValIn = "d/l/"
+	// BtPagedPropTypeValOut for out-arc paged entities.
+	// Key: <dcid^predicate^type^page>
+	BtPagedPropTypeValOut = "d/m/"
 	// BtRelatedLocationsSameTypePrefix for related places with same type.
 	BtRelatedLocationsSameTypePrefix = "d/o/"
 	// BtRelatedLocationsSameTypeAndAncestorPrefix for related places with same type and ancestor.
@@ -78,8 +80,8 @@ type Accessor struct {
 	// Import group table index.
 	ImportGroup int
 	// A list of body components, each component contains all the key element
-	// for that part. One key would constructed by taking one element from each
-	// component and concate them together.
+	// for that part.
+	// One key is constructed by concatenating one element from each component.
 	Body [][]string
 }
 

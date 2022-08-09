@@ -30,32 +30,34 @@ type state struct {
 	entities   []string
 	limit      int
 	// CursorGroup that tracks the state of current data.
-	// Key: property, entity
-	cursorGroup map[string]map[string][]*pb.Cursor
+	// Key: property, entity, neighbour node type
+	cursorGroup map[string]map[string]map[string][]*pb.Cursor
 	// Raw entities read from BigTable
-	// Key: property, entity
-	rawEntities map[string]map[string][][]*pb.EntityInfo
+	// Key: property, entity, neighbour node type
+	rawEntities map[string]map[string]map[string][][]*pb.EntityInfo
 	// Merged entities
-	// Key: property, entity
-	mergedEntities map[string]map[string][]*pb.EntityInfo
+	// Key: property, entity, neighbour node type
+	mergedEntities map[string]map[string]map[string][]*pb.EntityInfo
 	// Total page count for each import group
-	totalPage map[string]map[string]map[int]int
+	// Key: property, entity, neighbour node type, import group index
+	totalPage map[string]map[string]map[string]map[int]int
 	// Record the import group for next item to read
-	next map[string]map[string]*pb.Cursor
+	// Key: property, entity, neighbour node type
+	next map[string]map[string]map[string]*pb.Cursor
 }
 
 type inState struct {
 	state
 	// Min heap for entity merge sort
-	// Key: property, entity
-	heap map[string]map[string]*entityHeap
+	// Key: property, entity, neighbour node type
+	heap map[string]map[string]map[string]*entityHeap
 }
 
 type outState struct {
 	state
 	// The used import group (only one import group is used for out property values).
-	// Key: property, entity
-	usedImportGroup map[string]map[string]int
+	// Key: property, entity, neighbour node type
+	usedImportGroup map[string]map[string]map[string]int
 }
 
 // init builds a new state given property, entity and cursor group.
@@ -65,35 +67,38 @@ func (s *state) init(
 	properties []string,
 	entities []string,
 	limit int,
-	cursorGroup map[string]map[string][]*pb.Cursor,
+	cursorGroup map[string]map[string]map[string][]*pb.Cursor,
 	arcOut bool,
 ) error {
 	// Constructor
 	s.properties = properties
 	s.entities = entities
 	s.cursorGroup = cursorGroup
-	s.rawEntities = map[string]map[string][][]*pb.EntityInfo{}
-	s.mergedEntities = map[string]map[string][]*pb.EntityInfo{}
+	s.rawEntities = map[string]map[string]map[string][][]*pb.EntityInfo{}
+	s.mergedEntities = map[string]map[string]map[string][]*pb.EntityInfo{}
 	s.limit = limit
-	s.totalPage = map[string]map[string]map[int]int{}
-	s.next = map[string]map[string]*pb.Cursor{}
+	s.totalPage = map[string]map[string]map[string]map[int]int{}
+	s.next = map[string]map[string]map[string]*pb.Cursor{}
 	for _, p := range properties {
-		s.next[p] = map[string]*pb.Cursor{}
-		s.mergedEntities[p] = map[string][]*pb.EntityInfo{}
+		s.next[p] = map[string]map[string]*pb.Cursor{}
+		s.mergedEntities[p] = map[string]map[string][]*pb.EntityInfo{}
 	}
 	accs := []*bigtable.Accessor{}
 	for property := range cursorGroup {
 		for entity := range cursorGroup[property] {
-			for _, c := range cursorGroup[property][entity] {
-				if c != nil {
-					accs = append(accs, &bigtable.Accessor{
-						ImportGroup: int(c.GetImportGroup()),
-						Body: [][]string{
-							{entity},
-							{property},
-							{strconv.Itoa(int(c.GetPage()))},
-						},
-					})
+			for typ := range cursorGroup[property][entity] {
+				for _, c := range cursorGroup[property][entity][typ] {
+					if c != nil {
+						accs = append(accs, &bigtable.Accessor{
+							ImportGroup: int(c.GetImportGroup()),
+							Body: [][]string{
+								{entity},
+								{property},
+								{typ},
+								{strconv.Itoa(int(c.GetPage()))},
+							},
+						})
+					}
 				}
 			}
 		}
@@ -107,9 +112,9 @@ func (s *state) readBt(
 	arcOut bool,
 	accs []*bigtable.Accessor,
 ) error {
-	prefix := bigtable.BtPagedPropValOut
+	prefix := bigtable.BtPagedPropTypeValOut
 	if !arcOut {
-		prefix = bigtable.BtPagedPropValIn
+		prefix = bigtable.BtPagedPropTypeValIn
 	}
 	btDataList, err := bigtable.ReadWithGroupRowList(
 		ctx,
@@ -129,23 +134,27 @@ func (s *state) readBt(
 			continue
 		}
 		for _, row := range btData {
-			e := row.Parts[0]
-			p := row.Parts[1]
+			e := row.Parts[0] // entity
+			p := row.Parts[1] // property
+			t := row.Parts[2] // type
 			values := row.Data.(*pb.PagedEntities)
 			if _, ok := s.rawEntities[p]; !ok {
-				s.rawEntities[p] = map[string][][]*pb.EntityInfo{}
+				s.rawEntities[p] = map[string]map[string][][]*pb.EntityInfo{}
 			}
 			if _, ok := s.rawEntities[p][e]; !ok {
-				s.rawEntities[p][e] = make([][]*pb.EntityInfo, n)
+				s.rawEntities[p][e] = make(map[string][][]*pb.EntityInfo, n)
 			}
-			s.rawEntities[p][e][idx] = values.Entities
+			s.rawEntities[p][e][t][idx] = values.Entities
 			if _, ok := s.totalPage[p]; !ok {
-				s.totalPage[p] = map[string]map[int]int{}
+				s.totalPage[p] = map[string]map[string]map[int]int{}
 			}
 			if _, ok := s.totalPage[p][e]; !ok {
-				s.totalPage[p][e] = map[int]int{}
+				s.totalPage[p][e] = map[string]map[int]int{}
 			}
-			s.totalPage[p][e][idx] = int(values.TotalPageCount)
+			if _, ok := s.totalPage[p][e][t]; !ok {
+				s.totalPage[p][e][t] = map[int]int{}
+			}
+			s.totalPage[p][e][t][idx] = int(values.TotalPageCount)
 		}
 	}
 	return nil
@@ -158,30 +167,33 @@ func (s *inState) init(
 	properties []string,
 	entities []string,
 	limit int,
-	cursorGroup map[string]map[string][]*pb.Cursor,
+	cursorGroup map[string]map[string]map[string][]*pb.Cursor,
 ) error {
 	err := s.state.init(ctx, btGroup, properties, entities, limit, cursorGroup, false)
 	if err != nil {
 		return err
 	}
-	s.heap = map[string]map[string]*entityHeap{}
+	s.heap = map[string]map[string]map[string]*entityHeap{}
 	for _, p := range properties {
-		s.heap[p] = map[string]*entityHeap{}
+		s.heap[p] = map[string]map[string]*entityHeap{}
 		for _, e := range entities {
-			s.heap[p][e] = &entityHeap{}
-			// Init the min heap
-			heap.Init(s.heap[p][e])
+			s.heap[p][e] = map[string]*entityHeap{}
 			// Push the next entity of each import group to the heap.
-			for idx, entityList := range s.rawEntities[p][e] {
-				cursor := cursorGroup[p][e][idx]
-				if int(cursor.GetItem()) < len(entityList) {
-					elem := &heapElem{
-						ig:   idx,
-						pos:  cursor.GetItem(),
-						data: entityList[cursor.GetItem()],
+			for t, typedEntityList := range s.rawEntities[p][e] {
+				s.heap[p][e][t] = &entityHeap{}
+				// Init the min heap
+				heap.Init(s.heap[p][e][t])
+				for idx, entityList := range typedEntityList {
+					cursor := cursorGroup[p][e][t][idx]
+					if int(cursor.GetItem()) < len(entityList) {
+						elem := &heapElem{
+							ig:   idx,
+							pos:  cursor.GetItem(),
+							data: entityList[cursor.GetItem()],
+						}
+						heap.Push(s.heap[p][e][t], elem)
+						s.next[p][e][t] = cursor
 					}
-					heap.Push(s.heap[p][e], elem)
-					s.next[p][e] = cursor
 				}
 			}
 		}
@@ -196,21 +208,23 @@ func (s *outState) init(
 	properties []string,
 	entities []string,
 	limit int,
-	cursorGroup map[string]map[string][]*pb.Cursor,
+	cursorGroup map[string]map[string]map[string][]*pb.Cursor,
 ) error {
 	err := s.state.init(ctx, btGroup, properties, entities, limit, cursorGroup, true)
 	if err != nil {
 		return err
 	}
-	s.usedImportGroup = map[string]map[string]int{}
+	s.usedImportGroup = map[string]map[string]map[string]int{}
 	for p := range s.rawEntities {
-		s.usedImportGroup[p] = map[string]int{}
+		s.usedImportGroup[p] = map[string]map[string]int{}
 		for e := range s.rawEntities[p] {
-			for idx, data := range s.rawEntities[p][e] {
-				if len(data) > 0 {
-					s.usedImportGroup[p][e] = idx
-					s.next[p][e] = cursorGroup[p][e][idx]
-					break
+			for t, typedData := range s.rawEntities[p][e] {
+				for idx, data := range typedData {
+					if len(data) > 0 {
+						s.usedImportGroup[p][e][t] = idx
+						s.next[p][e][t] = cursorGroup[p][e][t][idx]
+						break
+					}
 				}
 			}
 		}
@@ -220,15 +234,17 @@ func (s *outState) init(
 
 func (s *state) getPagination() *pb.PaginationInfo {
 	cursorGroups := []*pb.CursorGroup{}
-	for _, p := range s.properties {
-		for _, e := range s.entities {
-			cursorGroups = append(
-				cursorGroups,
-				&pb.CursorGroup{
-					Keys:    []string{e, p},
-					Cursors: s.cursorGroup[p][e],
-				},
-			)
+	for p := range s.cursorGroup {
+		for e := range s.cursorGroup[p] {
+			for t := range s.cursorGroup[p][e] {
+				cursorGroups = append(
+					cursorGroups,
+					&pb.CursorGroup{
+						Keys:    []string{e, p, t},
+						Cursors: s.cursorGroup[p][e][t],
+					},
+				)
+			}
 		}
 	}
 	return &pb.PaginationInfo{CursorGroups: cursorGroups}

@@ -80,7 +80,7 @@ func LinkedPropertyValues(
 	for _, dcid := range valueDcids {
 		var name string
 		if tmp, ok := data["name"][dcid]; ok {
-			name = tmp[0].Value
+			name = tmp[""][0].Value
 		}
 		result.Values = append(result.Values,
 			&pb.EntityInfo{
@@ -149,7 +149,7 @@ func BulkLinkedPropertyValues(
 		for _, dcid := range children {
 			var name string
 			if nameValues, ok := data["name"][dcid]; ok {
-				name = nameValues[0].Value
+				name = nameValues[""][0].Value
 			}
 			oneEntityResult.Values = append(oneEntityResult.Values,
 				&pb.EntityInfo{

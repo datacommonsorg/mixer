@@ -27,18 +27,21 @@ var defaultLimit = 1000
 func buildDefaultCursorGroups(
 	properties []string,
 	entities []string,
+	propType map[string]map[string][]string,
 	n int,
 ) []*pb.CursorGroup {
 	result := []*pb.CursorGroup{}
 	for _, p := range properties {
 		for _, e := range entities {
-			cg := &pb.CursorGroup{
-				Keys: []string{e, p},
+			for _, t := range propType[p][e] {
+				cg := &pb.CursorGroup{
+					Keys: []string{e, p, t},
+				}
+				for i := 0; i < n; i++ {
+					cg.Cursors = append(cg.Cursors, &pb.Cursor{ImportGroup: int32(i)})
+				}
+				result = append(result, cg)
 			}
-			for i := 0; i < n; i++ {
-				cg.Cursors = append(cg.Cursors, &pb.Cursor{ImportGroup: int32(i)})
-			}
-			result = append(result, cg)
 		}
 	}
 	return result

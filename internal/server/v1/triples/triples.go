@@ -71,8 +71,12 @@ func Triples(
 		Triples: map[string]*pb.EntityInfoCollection{},
 	}
 	for property := range data {
+		entities := []*pb.EntityInfo{}
+		for t := range data[property][entity] {
+			entities = append(entities, data[property][entity][t]...)
+		}
 		res.Triples[property] = &pb.EntityInfoCollection{
-			Entities: data[property][entity],
+			Entities: entities,
 		}
 	}
 	if pi != nil {
@@ -146,7 +150,9 @@ func BulkTriples(
 	for p := range data {
 		for e := range data[p] {
 			if _, ok := entityProps[e][p]; ok {
-				triplesByEntity[e][p] = data[p][e]
+				for t := range data[p][e] {
+					triplesByEntity[e][p] = append(triplesByEntity[e][p], data[p][e][t]...)
+				}
 			}
 		}
 	}
