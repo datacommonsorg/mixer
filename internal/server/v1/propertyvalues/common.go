@@ -15,6 +15,8 @@
 package propertyvalues
 
 import (
+	"container/heap"
+
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"google.golang.org/protobuf/proto"
 )
@@ -50,4 +52,32 @@ var unmarshalFunc = func(jsonRaw []byte) (interface{}, error) {
 	var p pb.PagedEntities
 	err := proto.Unmarshal(jsonRaw, &p)
 	return &p, err
+}
+
+// MergeTypedEntities merges entities by type into ordered flat list of entities.
+func MergeTypedEntities(data map[string][]*pb.EntityInfo) []*pb.EntityInfo {
+	res := []*pb.EntityInfo{}
+	h := &entityHeap{}
+	heap.Init(h)
+	for t, items := range data {
+		heap.Push(h, &heapElem{typ: t, pos: 0, data: items[0]})
+	}
+	for h.Len() > 0 {
+		elem := heap.Pop(h).(*heapElem)
+		e, t, pos := elem.data, elem.typ, elem.pos
+		if e.GetTypes() == nil && t != "" {
+			e.Types = []string{t}
+		}
+		res = append(res, e)
+		if pos < int32(len(data[t])-1) {
+			heap.Push(
+				h,
+				&heapElem{
+					typ:  t,
+					pos:  pos + 1,
+					data: data[t][pos+1],
+				})
+		}
+	}
+	return res
 }

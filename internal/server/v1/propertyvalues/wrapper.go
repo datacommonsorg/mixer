@@ -16,7 +16,6 @@ package propertyvalues
 
 import (
 	"context"
-	"sort"
 	"strings"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
@@ -77,21 +76,9 @@ func PropertyValues(
 			return nil, err
 		}
 	}
-	types := []string{}
-	for t := range data[entity][property] {
-		types = append(types, t)
-	}
-	sort.Strings(types)
 	res := &pb.PropertyValuesResponse{
 		NextToken: nextToken,
-	}
-	for _, t := range types {
-		for _, e := range data[entity][property][t] {
-			if e.GetTypes() == nil && t != "" {
-				e.Types = []string{t}
-			}
-			res.Values = append(res.Values, e)
-		}
+		Values:    MergeTypedEntities(data[entity][property]),
 	}
 	return res, nil
 }
@@ -144,26 +131,11 @@ func BulkPropertyValues(
 		NextToken: nextToken,
 	}
 	for _, e := range entities {
-		vals := []*pb.EntityInfo{}
-		types := []string{}
-		for t := range data[e][property] {
-			types = append(types, t)
-		}
-		sort.Strings(types)
-		for _, t := range types {
-			v := data[e][property][t]
-			for _, e := range v {
-				if e.GetTypes() == nil && t != "" {
-					e.Types = []string{t}
-				}
-				vals = append(vals, e)
-			}
-		}
 		res.Data = append(
 			res.Data,
 			&pb.BulkPropertyValuesResponse_EntityPropertyValues{
 				Entity: e,
-				Values: vals,
+				Values: MergeTypedEntities(data[e][property]),
 			},
 		)
 	}

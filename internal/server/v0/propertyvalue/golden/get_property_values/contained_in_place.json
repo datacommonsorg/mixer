@@ -45,6 +45,15 @@
           "provenanceId": "dc/5n63hr1"
         },
         {
+          "name": "East Foothills",
+          "types": [
+            "City",
+            "Neighborhood"
+          ],
+          "dcid": "geoId/0620598",
+          "provenanceId": "dc/sm3m2w3"
+        },
+        {
           "name": "Fruitdale",
           "types": [
             "City"
@@ -74,6 +83,24 @@
             "City"
           ],
           "dcid": "geoId/0643280",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Los Altos Hills",
+          "types": [
+            "City",
+            "Town"
+          ],
+          "dcid": "geoId/0643294",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Los Gatos",
+          "types": [
+            "City",
+            "Town"
+          ],
+          "dcid": "geoId/0644112",
           "provenanceId": "dc/5n63hr1"
         },
         {
@@ -170,33 +197,6 @@
             "City"
           ],
           "dcid": "geoId/0677000",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
-          "name": "East Foothills",
-          "types": [
-            "City",
-            "Neighborhood"
-          ],
-          "dcid": "geoId/0620598",
-          "provenanceId": "dc/sm3m2w3"
-        },
-        {
-          "name": "Los Altos Hills",
-          "types": [
-            "City",
-            "Town"
-          ],
-          "dcid": "geoId/0643294",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
-          "name": "Los Gatos",
-          "types": [
-            "City",
-            "Town"
-          ],
-          "dcid": "geoId/0644112",
           "provenanceId": "dc/5n63hr1"
         }
       ]

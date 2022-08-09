@@ -36589,9 +36589,9 @@
         "observationPeriod": "P1Y"
       }
     },
-    "geoId/12057": {
+    "geoId/48113": {
       "date": "2021",
-      "value": 1478194,
+      "value": 2586050,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
@@ -36599,9 +36599,9 @@
         "observationPeriod": "P1Y"
       }
     },
-    "geoId/36005": {
+    "geoId/51059": {
       "date": "2021",
-      "value": 1424948,
+      "value": 1139720,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
@@ -36624,10 +36624,10 @@
     "northamerica"
   ],
   "similarPlaces": [
-    "geoId/36005",
-    "geoId/12057",
-    "geoId/04013",
+    "geoId/51059",
     "geoId/12031",
+    "geoId/04013",
+    "geoId/48113",
     "geoId/08059"
   ],
   "nearbyPlaces": [

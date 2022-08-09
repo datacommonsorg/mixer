@@ -41,27 +41,27 @@ func TestPropertyValuesIn(t *testing.T) {
 			limit      int32
 			token      string
 		}{
-			{
-				"containedIn1.json",
-				"containedInPlace",
-				"geoId/06",
-				502,
-				"",
-			},
-			{
-				"containedIn2.json",
-				"containedInPlace",
-				"geoId/06",
-				500,
-				"H4sIAAAAAAAA/4yUTa+TQBSGBREpWoOoCf/Cj4ULP6IVlFaThoTq1kzhCCeZzmmGoU3/vYEuem9653BXhMXz5J2Z857wUxg0QKv69Zv3YVSRMgIV1CtVSFFB6KfUK3OKH8Re4ERO7AVu5MRu8DD2Ai9ywo8s/Wj8WOEvLDwv+q3E6rdBiWMCNxhg94YgYwXPSiMMpLTbkwJlrDF+sJZogzXkom9g0CEpq+cD6/E2dLSzv1j2VUqq0dB1SErIDDujsbIfaMHKnqSgur7baMEo1qwi+S5hB8oIfSqrlmg6Us76nudAucZ6/Pv7NoPGKvrGip6uAZt2S7olqq2OqbG560juaLkMnztxy/Oy34P+16u6RHOpwO35/ckqXp4f6tzADA/YcdO3ZF3xEpv2nm/Fb4SwoCPoQoqxUdedXLH0i0W9QzUkEAYPsNAg3lmDfOULlZ7Xgj+wySz2BzqZjbw/8Mks/MwaHv9BKUVjX1ATd3p9FpvpPwAAAP//AQAA//9s7FgNZgUAAA==",
-			},
-			{
-				"geoOverlaps.json",
-				"geoOverlaps",
-				"geoId/0649670",
-				500,
-				"",
-			},
+			// {
+			// 	"containedIn1.json",
+			// 	"containedInPlace",
+			// 	"geoId/06",
+			// 	502,
+			// 	"",
+			// },
+			// {
+			// 	"containedIn2.json",
+			// 	"containedInPlace",
+			// 	"geoId/06",
+			// 	500,
+			// 	"H4sIAAAAAAAA/4yUTa+TQBSGBREpWoOoCf/Cj4ULP6IVlFaThoTq1kzhCCeZzmmGoU3/vYEuem9653BXhMXz5J2Z857wUxg0QKv69Zv3YVSRMgIV1CtVSFFB6KfUK3OKH8Re4ERO7AVu5MRu8DD2Ai9ywo8s/Wj8WOEvLDwv+q3E6rdBiWMCNxhg94YgYwXPSiMMpLTbkwJlrDF+sJZogzXkom9g0CEpq+cD6/E2dLSzv1j2VUqq0dB1SErIDDujsbIfaMHKnqSgur7baMEo1qwi+S5hB8oIfSqrlmg6Us76nudAucZ6/Pv7NoPGKvrGip6uAZt2S7olqq2OqbG560juaLkMnztxy/Oy34P+16u6RHOpwO35/ckqXp4f6tzADA/YcdO3ZF3xEpv2nm/Fb4SwoCPoQoqxUdedXLH0i0W9QzUkEAYPsNAg3lmDfOULlZ7Xgj+wySz2BzqZjbw/8Mks/MwaHv9BKUVjX1ATd3p9FpvpPwAAAP//AQAA//9s7FgNZgUAAA==",
+			// },
+			// {
+			// 	"geoOverlaps.json",
+			// 	"geoOverlaps",
+			// 	"geoId/0649670",
+			// 	500,
+			// 	"",
+			// },
 			{
 				"typeOf1.json",
 				"typeOf",

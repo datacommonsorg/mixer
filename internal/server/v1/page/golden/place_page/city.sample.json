@@ -20780,9 +20780,9 @@
         "observationPeriod": "P1Y"
       }
     },
-    "geoId/0666000": {
+    "geoId/0668084": {
       "date": "2021",
-      "value": 1381611,
+      "value": 88868,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
@@ -20790,9 +20790,9 @@
         "observationPeriod": "P1Y"
       }
     },
-    "geoId/0668084": {
+    "geoId/0820000": {
       "date": "2021",
-      "value": 88868,
+      "value": 711463,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
@@ -20883,7 +20883,7 @@
   "similarPlaces": [
     "geoId/4752006",
     "geoId/4261000",
-    "geoId/0666000",
+    "geoId/0820000",
     "geoId/2836000",
     "geoId/4055000"
   ],
