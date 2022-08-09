@@ -167,15 +167,35 @@ func main() {
 	c := pb.NewMixerClient(conn)
 	ctx := context.Background()
 
-	funcs_to_profile := make(map[string]func() (string, error))
+	type Request struct{
+		key string // describe the request for reports
+		requestable func() (string, error) // string is the response string
+	}
 
-	funcs_to_profile["BulkObservationsSeriesLinked_USA"] = func() (string, error) {
+	var funcsToProfile []*Request
+
+	for _, r := range []struct{
+		Variables []string
+		EntityType string
+		LinkedEntity string
+		LinkedProperty string
+		AllFacets bool
+	}{
+		{
+				[]string{"Median_Age_Person_AmericanIndianOrAlaskaNativeAlone"},
+				"City",
+				"country/USA",
+				"containedInPlace",
+				false,
+		},
+	}{
+		requestFunc := func() (string, error) {
 			req := &pb.BulkObservationsSeriesLinkedRequest{
-				Variables:      []string{"Median_Age_Person_AmericanIndianOrAlaskaNativeAlone"},
-				EntityType:     "City",
-				LinkedEntity:   "country/USA",
-				LinkedProperty: "containedInPlace",
-				AllFacets:      false,
+				Variables:      r.Variables,
+				EntityType:     r.EntityType,
+				LinkedEntity:   r.LinkedEntity,
+				LinkedProperty: r.LinkedProperty,
+				AllFacets:      r.AllFacets,
 			}
 			resp, err := c.BulkObservationsSeriesLinked(ctx,req)
 			if err != nil {
@@ -184,11 +204,16 @@ func main() {
 			respStr := resp.String()
 			return respStr, nil
 		}
+		funcsToProfile = append(funcsToProfile, &Request{
+			key: "BulkObservationsSeriesLinked_USA",
+			requestable: requestFunc,
+		})
+	}
 
-		for key, f := range funcs_to_profile {
-			run_with_profile(key, f)
-		}
 
+	for _, r := range funcsToProfile {
+		run_with_profile((*r).key, (*r).requestable)
+	}
 
 	return;
 }
