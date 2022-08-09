@@ -167,52 +167,63 @@ func main() {
 	c := pb.NewMixerClient(conn)
 	ctx := context.Background()
 
-	type Request struct{
-		key string // describe the request for reports
-		requestable func() (string, error) // string is the response string
-	}
-
-	var funcsToProfile []*Request
-
-	for _, r := range []struct{
-		Variables []string
-		EntityType string
-		LinkedEntity string
-		LinkedProperty string
-		AllFacets bool
-	}{
-		{
-				[]string{"Median_Age_Person_AmericanIndianOrAlaskaNativeAlone"},
-				"City",
-				"country/USA",
-				"containedInPlace",
-				false,
-		},
-	}{
-		requestFunc := func() (string, error) {
-			req := &pb.BulkObservationsSeriesLinkedRequest{
-				Variables:      r.Variables,
-				EntityType:     r.EntityType,
-				LinkedEntity:   r.LinkedEntity,
-				LinkedProperty: r.LinkedProperty,
-				AllFacets:      r.AllFacets,
+	var BOSL int64
+	for _, allFacets := range []bool{true, false} {
+		for _, r := range []struct{
+			entityType   string
+			linkedEntity string
+			variables    []string
+		}{
+				{
+					"County",
+					"country/USA",
+					[]string{"dummy", "Median_Age_Person_AmericanIndianOrAlaskaNativeAlone"},
+				},
+				{
+					"City",
+					"country/USA",
+					[]string{"Median_Age_Person_AmericanIndianOrAlaskaNativeAlone"},
+				},
+				{
+					"State",
+					"country/USA",
+					[]string{"Count_Person_FoodInsecure"},
+				},
+				{
+					"Country",
+					"Earth",
+					[]string{"Median_Age_Person"},
+				},
+				{
+					"EpaReportingFacility",
+					"geoId/06",
+					[]string{"Annual_Emissions_GreenhouseGas_NonBiogenic"},
+				},
+				{
+					"AdministrativeArea2",
+					"country/FRA",
+					[]string{"Count_Person"},
+				},
+		}{
+			funcKey := fmt.Sprintf("BulkObservationsSeriesLinked_%d", BOSL)
+			funcToProfile := func() (string, error) {
+				req := &pb.BulkObservationsSeriesLinkedRequest{
+					Variables:      r.variables,
+					EntityType:     r.entityType,
+					LinkedEntity:   r.linkedEntity,
+					LinkedProperty: "containedInPlace",
+					AllFacets:      allFacets,
+				}
+				resp, err := c.BulkObservationsSeriesLinked(ctx,req)
+				if err != nil {
+					return "", err
+				}
+				respStr := resp.String()
+				return respStr, nil
 			}
-			resp, err := c.BulkObservationsSeriesLinked(ctx,req)
-			if err != nil {
-				return "", err
-			}
-			respStr := resp.String()
-			return respStr, nil
+			run_with_profile(funcKey, funcToProfile)
+			BOSL++
 		}
-		funcsToProfile = append(funcsToProfile, &Request{
-			key: "BulkObservationsSeriesLinked_USA",
-			requestable: requestFunc,
-		})
-	}
-
-
-	for _, r := range funcsToProfile {
-		run_with_profile((*r).key, (*r).requestable)
 	}
 
 	return;
