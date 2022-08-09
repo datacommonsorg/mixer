@@ -41,27 +41,27 @@ func TestPropertyValuesIn(t *testing.T) {
 			limit      int32
 			token      string
 		}{
-			// {
-			// 	"containedIn1.json",
-			// 	"containedInPlace",
-			// 	"geoId/06",
-			// 	502,
-			// 	"",
-			// },
-			// {
-			// 	"containedIn2.json",
-			// 	"containedInPlace",
-			// 	"geoId/06",
-			// 	500,
-			// 	"H4sIAAAAAAAA/4yUTa+TQBSGBREpWoOoCf/Cj4ULP6IVlFaThoTq1kzhCCeZzmmGoU3/vYEuem9653BXhMXz5J2Z857wUxg0QKv69Zv3YVSRMgIV1CtVSFFB6KfUK3OKH8Re4ERO7AVu5MRu8DD2Ai9ywo8s/Wj8WOEvLDwv+q3E6rdBiWMCNxhg94YgYwXPSiMMpLTbkwJlrDF+sJZogzXkom9g0CEpq+cD6/E2dLSzv1j2VUqq0dB1SErIDDujsbIfaMHKnqSgur7baMEo1qwi+S5hB8oIfSqrlmg6Us76nudAucZ6/Pv7NoPGKvrGip6uAZt2S7olqq2OqbG560juaLkMnztxy/Oy34P+16u6RHOpwO35/ckqXp4f6tzADA/YcdO3ZF3xEpv2nm/Fb4SwoCPoQoqxUdedXLH0i0W9QzUkEAYPsNAg3lmDfOULlZ7Xgj+wySz2BzqZjbw/8Mks/MwaHv9BKUVjX1ATd3p9FpvpPwAAAP//AQAA//9s7FgNZgUAAA==",
-			// },
-			// {
-			// 	"geoOverlaps.json",
-			// 	"geoOverlaps",
-			// 	"geoId/0649670",
-			// 	500,
-			// 	"",
-			// },
+			{
+				"containedIn1.json",
+				"containedInPlace",
+				"geoId/06",
+				502,
+				"",
+			},
+			{
+				"containedIn2.json",
+				"containedInPlace",
+				"geoId/06",
+				500,
+				"H4sIAAAAAAAA/3zPwQrCIBzH8WkynBHI/+Rb1KlTULE67BJC9QDmpARTcI7Y24d1CQIf4PPl92N7Ru8mdP1ytWZcB5+U9abvvHRKGzZvjR/G4RKVTlABoYgjIBRzBJjOgFDCEdsVE6S1aYIK6mxFA3XWovn4OnvRsFOxII7OPI1PKk5n/QjBHeyQoi0s2hR7TIaXidIpnwuYZol/9LaoF3K8Oauvybrvsb/AGwAA//8BAAD//3fBjKFUAQAA",
+			},
+			{
+				"geoOverlaps.json",
+				"geoOverlaps",
+				"geoId/0649670",
+				500,
+				"",
+			},
 			{
 				"typeOf1.json",
 				"typeOf",
@@ -74,7 +74,7 @@ func TestPropertyValuesIn(t *testing.T) {
 				"typeOf",
 				"Country",
 				0,
-				"H4sIAAAAAAAA/+LS52J3zi/NKymq5GIrqSxI9U/jYnHOLKkUYhBi4WAUYBRi4WASYBRi4mAWYuFgEWDkMsLUABOA6JEwB+mRMIfpkTDnssPUI+yYkpuZl1lcUpRYklmW6liUmmiI007i9Bvh0g8AAAD//wEAAP//SLHFAOUAAAA=",
+				"H4sIAAAAAAAA/+Iy4mJ3zi/NKymq5GIrqSxI9U+DCwgxCLFwMEqYC7FwMEmYCzFxMAuxcLBImAMAAAD//wEAAP//bbVZhjQAAAA=",
 			},
 		} {
 			req := &pb.PropertyValuesRequest{

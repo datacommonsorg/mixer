@@ -246,13 +246,15 @@ func (s *state) getPagination() *pb.PaginationInfo {
 	for e := range s.cursorGroup {
 		for p := range s.cursorGroup[e] {
 			for t := range s.cursorGroup[e][p] {
-				cursorGroups = append(
-					cursorGroups,
-					&pb.CursorGroup{
-						Keys:    []string{e, p, t},
-						Cursors: s.cursorGroup[e][p][t],
-					},
-				)
+				if s.cursorGroup[e][p][t] != nil {
+					cursorGroups = append(
+						cursorGroups,
+						&pb.CursorGroup{
+							Keys:    []string{e, p, t},
+							Cursors: s.cursorGroup[e][p][t],
+						},
+					)
+				}
 			}
 		}
 	}

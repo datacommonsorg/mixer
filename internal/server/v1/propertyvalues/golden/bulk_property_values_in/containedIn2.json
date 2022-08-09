@@ -22868,15 +22868,6 @@
           "provenanceId": "dc/5n63hr1"
         },
         {
-          "name": "Guerneville",
-          "types": [
-            "City",
-            "Neighborhood"
-          ],
-          "dcid": "geoId/0631470",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
           "name": "Guinda",
           "types": [
             "City"
@@ -23139,15 +23130,6 @@
           ],
           "dcid": "geoId/0633633",
           "provenanceId": "dc/sm3m2w3"
-        },
-        {
-          "name": "Hillsborough",
-          "types": [
-            "City",
-            "Town"
-          ],
-          "dcid": "geoId/0633798",
-          "provenanceId": "dc/5n63hr1"
         },
         {
           "name": "Hilmar-Irwin",
@@ -24686,15 +24668,6 @@
           "provenanceId": "dc/sm3m2w3"
         },
         {
-          "name": "Loomis",
-          "types": [
-            "City",
-            "Town"
-          ],
-          "dcid": "geoId/0643140",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
           "name": "Los Alamitos",
           "types": [
             "City"
@@ -24716,15 +24689,6 @@
             "City"
           ],
           "dcid": "geoId/0643280",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
-          "name": "Los Altos Hills",
-          "types": [
-            "City",
-            "Town"
-          ],
-          "dcid": "geoId/0643294",
           "provenanceId": "dc/5n63hr1"
         },
         {
@@ -24750,15 +24714,6 @@
           ],
           "dcid": "geoId/0644042",
           "provenanceId": "dc/sm3m2w3"
-        },
-        {
-          "name": "Los Gatos",
-          "types": [
-            "City",
-            "Town"
-          ],
-          "dcid": "geoId/0644112",
-          "provenanceId": "dc/5n63hr1"
         },
         {
           "name": "Los Molinos",
@@ -25006,15 +24961,6 @@
             "City"
           ],
           "dcid": "geoId/0645246",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
-          "name": "Mammoth Lakes",
-          "types": [
-            "City",
-            "Town"
-          ],
-          "dcid": "geoId/0645358",
           "provenanceId": "dc/5n63hr1"
         },
         {
@@ -25650,15 +25596,6 @@
           "provenanceId": "dc/sm3m2w3"
         },
         {
-          "name": "Moraga",
-          "types": [
-            "City",
-            "Town"
-          ],
-          "dcid": "geoId/0649187",
-          "provenanceId": "dc/sm3m2w3"
-        },
-        {
           "name": "Moreno Valley",
           "types": [
             "City"
@@ -25920,15 +25857,6 @@
             "City"
           ],
           "dcid": "geoId/0651042",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
-          "name": "Newhall",
-          "types": [
-            "City",
-            "Neighborhood"
-          ],
-          "dcid": "geoId/0651070",
           "provenanceId": "dc/5n63hr1"
         },
         {
@@ -26444,166 +26372,68 @@
           "provenanceId": "dc/5n63hr1"
         },
         {
-          "name": "Washington Union Elementary School District",
+          "name": "Pajaro",
           "types": [
-            "ElementarySchoolDistrict",
-            "SchoolDistrict"
+            "City"
           ],
-          "dcid": "geoId/sch0641610",
-          "provenanceId": "dc/sm3m2w3"
-        },
-        {
-          "name": "Waugh Elementary",
-          "types": [
-            "ElementarySchoolDistrict",
-            "SchoolDistrict"
-          ],
-          "dcid": "geoId/sch0641790",
-          "provenanceId": "dc/mzy8we"
-        },
-        {
-          "name": "Waukena Joint Union Elementary School District",
-          "types": [
-            "ElementarySchoolDistrict",
-            "SchoolDistrict"
-          ],
-          "dcid": "geoId/sch0641820",
-          "provenanceId": "dc/sm3m2w3"
-        },
-        {
-          "name": "Weaver Union Elementary School District",
-          "types": [
-            "ElementarySchoolDistrict",
-            "SchoolDistrict"
-          ],
-          "dcid": "geoId/sch0641880",
-          "provenanceId": "dc/sm3m2w3"
-        },
-        {
-          "name": "Weed Union Elementary",
-          "types": [
-            "ElementarySchoolDistrict",
-            "SchoolDistrict"
-          ],
-          "dcid": "geoId/sch0641980",
-          "provenanceId": "dc/mzy8we"
-        },
-        {
-          "name": "West Park Elementary School District",
-          "types": [
-            "ElementarySchoolDistrict",
-            "SchoolDistrict"
-          ],
-          "dcid": "geoId/sch0642060",
-          "provenanceId": "dc/sm3m2w3"
-        },
-        {
-          "name": "Westside Union Elementary School District",
-          "types": [
-            "ElementarySchoolDistrict",
-            "SchoolDistrict"
-          ],
-          "dcid": "geoId/sch0642120",
-          "provenanceId": "dc/sm3m2w3"
-        },
-        {
-          "name": "Westminster",
-          "types": [
-            "ElementarySchoolDistrict",
-            "SchoolDistrict"
-          ],
-          "dcid": "geoId/sch0642150",
+          "dcid": "geoId/0655044",
           "provenanceId": "dc/5n63hr1"
         },
         {
-          "name": "Westmorland Union Elementary School District",
+          "name": "Pajaro Dunes",
           "types": [
-            "ElementarySchoolDistrict",
-            "SchoolDistrict"
+            "City"
           ],
-          "dcid": "geoId/sch0642180",
+          "dcid": "geoId/0655048",
           "provenanceId": "dc/sm3m2w3"
         },
         {
-          "name": "Westside Elementary School District",
+          "name": "Pala",
           "types": [
-            "ElementarySchoolDistrict",
-            "SchoolDistrict"
+            "City"
           ],
-          "dcid": "geoId/sch0642210",
+          "dcid": "geoId/0655058",
           "provenanceId": "dc/sm3m2w3"
         },
         {
-          "name": "West Side Union Elementary",
+          "name": "Palermo",
           "types": [
-            "ElementarySchoolDistrict",
-            "SchoolDistrict"
+            "City"
           ],
-          "dcid": "geoId/sch0642270",
-          "provenanceId": "dc/mzy8we"
-        },
-        {
-          "name": "Wheatland Elementary School District",
-          "types": [
-            "ElementarySchoolDistrict",
-            "SchoolDistrict"
-          ],
-          "dcid": "geoId/sch0642330",
+          "dcid": "geoId/0655086",
           "provenanceId": "dc/sm3m2w3"
         },
         {
-          "name": "Whitmore Union Elementary School District",
+          "name": "Palmdale",
           "types": [
-            "ElementarySchoolDistrict",
-            "SchoolDistrict"
+            "City"
           ],
-          "dcid": "geoId/sch0642420",
-          "provenanceId": "dc/sm3m2w3"
+          "dcid": "geoId/0655156",
+          "provenanceId": "dc/5n63hr1"
         },
         {
-          "name": "Whittier City Elementary",
+          "name": "Palm Desert",
           "types": [
-            "ElementarySchoolDistrict",
-            "SchoolDistrict"
+            "City"
           ],
-          "dcid": "geoId/sch0642450",
-          "provenanceId": "dc/mzy8we"
+          "dcid": "geoId/0655184",
+          "provenanceId": "dc/5n63hr1"
         },
         {
-          "name": "Willow Creek Elementary School District",
+          "name": "Palo Alto",
           "types": [
-            "ElementarySchoolDistrict",
-            "SchoolDistrict"
+            "City"
           ],
-          "dcid": "geoId/sch0642600",
-          "provenanceId": "dc/sm3m2w3"
+          "dcid": "geoId/0655282",
+          "provenanceId": "dc/5n63hr1"
         },
         {
-          "name": "Willow Grove Union Elementary School District",
+          "name": "Palo Cedro",
           "types": [
-            "ElementarySchoolDistrict",
-            "SchoolDistrict"
+            "City"
           ],
-          "dcid": "geoId/sch0642630",
-          "provenanceId": "dc/sm3m2w3"
-        },
-        {
-          "name": "Wilmar Union Elementary",
-          "types": [
-            "ElementarySchoolDistrict",
-            "SchoolDistrict"
-          ],
-          "dcid": "geoId/sch0642750",
-          "provenanceId": "dc/mzy8we"
-        },
-        {
-          "name": "Wilsona Elementary School District",
-          "types": [
-            "ElementarySchoolDistrict",
-            "SchoolDistrict"
-          ],
-          "dcid": "geoId/sch0642810",
-          "provenanceId": "dc/sm3m2w3"
+          "dcid": "geoId/0655296",
+          "provenanceId": "dc/5n63hr1"
         },
         {
           "name": "Winship Robbins Elementary School District",
@@ -26614,51 +26444,15 @@
           "provenanceId": "dc/sm3m2w3"
         },
         {
-          "name": "Winton School District",
-          "types": [
-            "ElementarySchoolDistrict",
-            "SchoolDistrict"
-          ],
-          "dcid": "geoId/sch0642960",
-          "provenanceId": "dc/sm3m2w3"
-        },
-        {
-          "name": "Woodside Elementary School District",
-          "types": [
-            "ElementarySchoolDistrict",
-            "SchoolDistrict"
-          ],
-          "dcid": "geoId/sch0643140",
-          "provenanceId": "dc/sm3m2w3"
-        },
-        {
           "name": "Woodville Elementary School District",
           "types": [
             "ElementarySchoolDistrict"
           ],
           "dcid": "geoId/sch0643170",
           "provenanceId": "dc/sm3m2w3"
-        },
-        {
-          "name": "Wright Elementary",
-          "types": [
-            "ElementarySchoolDistrict",
-            "SchoolDistrict"
-          ],
-          "dcid": "geoId/sch0643200",
-          "provenanceId": "dc/mzy8we"
-        },
-        {
-          "name": "Yreka Union Elementary School District",
-          "types": [
-            "ElementarySchoolDistrict",
-            "SchoolDistrict"
-          ],
-          "dcid": "geoId/sch0643380",
-          "provenanceId": "dc/sm3m2w3"
         }
       ]
     }
   ],
-  "nextToken": "H4sIAAAAAAAA/6SW4U/aQBjGR4dYTzFd5xKSJfsTJrqxD9vUYYHKmIYJbolflqN9Vy4pd+R61fDfL9cKAcvdoftkDHl+ee59n/cB9APtBiylgs8ObwZN5ASMCkwohF3aj3EA6HUznBBKEsGxIHfQ5ICP3Bdu2S45JbdsW07JteyXbtkuOyX020R75wFN0sRjHM5xAuFAYEESQQIcS/ID2MrA1gJsobYJvJeDryEijCr9dUyYqscmk1QQGt0yCko730ycbS//WOnku4nwygfmcxJm//05akGkdHNqdOPHOCDAF24s21ryYh5ut+95uZFG/fk2tuS2QTmSrknvDEkIPk4jyGKj2fMFsiNg3fCw/mkNxy1GWmNKR1pzHMealetQB/PLSKmYtcgdSXQPbGpZuzlryHEgNBnWIcoeETK9Famt7bgVqa7tZPqK1Nd2UE9LeOMxGnFI5Dtw3JJDIgs7xRd91cIq+VyU6iututaOYQJUYD4bBGPGHrspDsfX8pS3+eQkXpBovNZSkXSuJe1dAYnGI8bHjIVKxhctYyv788wNoT67B96PMZVPsOzVkrHQmVZd7aejmAQ3gsR57oqAlhawv+FiTRTZUB6bTBkFqt6F/vyqg3QK/G9KwwFZ6rvV0u1oEZtX3Wf9GQ/ZvVp7otVu/yJxjCN1IHpody6vNz78Z9F6Jth+k/CfKZb5eBjr44yU0KUJ8rSWbZlwa4q2SBmaKG9zyi2ZeiyEIR6lcbZz7bxOTNR5gyu/bA2Tak/xNUwZlz+GOjhQHeYGMThYqcv6++PGcmOuwnwTzFmBfexdKkCnJpCh7c5Men3hbRCeTWriHwAAAP//AQAA//9BTwUloAsAAA=="
+  "nextToken": "H4sIAAAAAAAA/4TOsYuDMBTHcc0FCc8bcm/yv9Ab7qYbTnKH2CnQdi4hBhEkgRgp/vcldulQ7fiG7+f94AC5drMNfinPxxq4djaowZqutXJU2sBHY1zjh269Lp9/pscEKUs5QcoIJ0jYG1JGOYH/V9Z7K4W4Q1/VJlMD641ru7L6fmLkwthpnk5e6bBJ/O4SVAxhwQSz2BaIWawLXPss9gXCz64A0l2Nl6OycQNhKRL28P8GAAD//wEAAP//GkqF5lYBAAA="
 }

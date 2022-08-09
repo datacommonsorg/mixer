@@ -54,7 +54,7 @@ func TestBulkPropertyValuesIn(t *testing.T) {
 				"containedInPlace",
 				[]string{"country/USA", "geoId/06053", "geoId/06"},
 				0,
-				"H4sIAAAAAAAA/6SW/2/SQBjGpTLWlbnUqgmJiX+CY1P8Qd0XVqDrcAsOpsl+MUf7Wi457sj1uoX/3rQVHY67F+JPhJDnk+eee957cY6deiQyruR8/2bYdtxIcEUohzjkA0YicLaGiijwnnhVu+JWvKptuRXPsp96VbvqVpwQ07sjGkNAsgRyEBVci/qOod74wNMs9YWEM5JCXABTRSPC2hKIFtzFwLsl+BoSk78LDPM8ABFIGhfffhx0INGy0Ni3A0YiCvIPwbKtjY4UDny/NNJqam18wTAv2vGUcpoqSRS9gzzmAy2th9Ge+WI6zRTlya3g+k6douH45c9aQsepJyDCeL/5odl6t8rJMJuB/JnxeEgftHs55COMUvWp0pvoY/KXS31pvj1sPazMspcAg7lLsPf9Sw0IjaZeDsNIkkhpzzbCKK9Lyi2d+SKGERlnrJh+46CGaGLdGbmGmZB5h3okoqy8AMv+95jHGGqr+NBaOcH0zkDcgxwwwtVKA+jte49HS+vGx2B7bSq/ZiSP43ehHzu6RNNdvK8ZV/MOvaOp6TnsOfYC91/P/pGRs/2NMkYS/UVdGOWbHalvZL3yBU8kpDmCsE5+c9QwImdG2O4V0GQyFnIiRKxlfDIykAp/Noqx/p4b1ZuU99RIWryhtVzb2PFqubqxU+hrub6x41wZCY0ugylwReR8GE2EwK8mMPI2WOMdI2hvpR2roPyN2nJCI2XFCj7UGvpoznok7vXtbxu1a21MM2KtzWJuba2cZK0aae05TSZrduTEnMYgGzMa3Sj9BsK6kf+t9sV0JjhwrY1fAAAA//8BAAD//5gG1JigCwAA",
+				"H4sIAAAAAAAA/4TQwUr0MBDA8W2/UtLst1Bz6slX2PWgJ0Frdl3qQQp1EbxITIcaSBNIp0jfXrq9CNr0OIf/j5mhr3QtbW/QDdtTldNUWoNCGagLU2ohgV5yMF3fcevgQXRQVyhQdaik0LkDwVYsIkEasIiEacBC8o9FJEoD+rgEb7ht2x6Vad6sgVnnacm5OII9OlWfp/erPTSz1mHJ+l+UnE/Q9W6WySlpwBb1dnfzh7GeHvbihMRZ4t5LRFzhwFYsHtssYfFYZ8m5j8c+S+izV8gOGlowKNxQyU9r9V516JRno1uvR0v7Ba7UwoxCSMYy/FHfeetN2X9oJU+o9HTYL+AbAAD//wEAAP//xE8WrogCAAA=",
 			},
 			{
 				"typeOf.json",

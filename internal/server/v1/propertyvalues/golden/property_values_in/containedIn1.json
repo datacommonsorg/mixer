@@ -11865,6 +11865,15 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Alameda County",
+      "types": [
+        "AdministrativeArea2",
+        "County"
+      ],
+      "dcid": "geoId/06001",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
       "name": "Acton",
       "types": [
         "City"
@@ -11910,6 +11919,15 @@
         "City"
       ],
       "dcid": "geoId/0600394",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Alpine County",
+      "types": [
+        "AdministrativeArea2",
+        "County"
+      ],
+      "dcid": "geoId/06003",
       "provenanceId": "dc/5n63hr1"
     },
     {
@@ -12055,6 +12073,15 @@
       ],
       "dcid": "geoId/0600593300",
       "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Amador County",
+      "types": [
+        "AdministrativeArea2",
+        "County"
+      ],
+      "dcid": "geoId/06005",
+      "provenanceId": "dc/5n63hr1"
     },
     {
       "name": "Alamo",
@@ -12561,6 +12588,15 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Butte County",
+      "types": [
+        "AdministrativeArea2",
+        "County"
+      ],
+      "dcid": "geoId/06007",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
       "name": "Alhambra",
       "types": [
         "City"
@@ -12705,6 +12741,15 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Calaveras County",
+      "types": [
+        "AdministrativeArea2",
+        "County"
+      ],
+      "dcid": "geoId/06009",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
       "name": "Allensworth",
       "types": [
         "City"
@@ -12807,6 +12852,15 @@
       ],
       "dcid": "geoId/0601193610",
       "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Colusa County",
+      "types": [
+        "AdministrativeArea2",
+        "County"
+      ],
+      "dcid": "geoId/06011",
+      "provenanceId": "dc/5n63hr1"
     },
     {
       "name": "Alpine Village",
@@ -13393,6 +13447,15 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Contra Costa County",
+      "types": [
+        "AdministrativeArea2",
+        "County"
+      ],
+      "dcid": "geoId/06013",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
       "name": "Alto",
       "types": [
         "City"
@@ -13407,6 +13470,15 @@
       ],
       "dcid": "geoId/0601444",
       "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Alum Rock",
+      "types": [
+        "City",
+        "Neighborhood"
+      ],
+      "dcid": "geoId/0601458",
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "name": "Amador City",
@@ -13439,6 +13511,15 @@
       ],
       "dcid": "geoId/0601593040",
       "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Del Norte County",
+      "types": [
+        "AdministrativeArea2",
+        "County"
+      ],
+      "dcid": "geoId/06015",
+      "provenanceId": "dc/5n63hr1"
     },
     {
       "name": "American Canyon",
@@ -13487,6 +13568,15 @@
       ],
       "dcid": "geoId/0601793160",
       "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "El Dorado County",
+      "types": [
+        "AdministrativeArea2",
+        "County"
+      ],
+      "dcid": "geoId/06017",
+      "provenanceId": "dc/5n63hr1"
     },
     {
       "name": "Caruthers-Raisin City CCD",
@@ -13633,6 +13723,15 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Fresno County",
+      "types": [
+        "AdministrativeArea2",
+        "County"
+      ],
+      "dcid": "geoId/06019",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
       "name": "Congressional District 1 (113th Congress), California",
       "types": [
         "CongressionalDistrict"
@@ -13697,6 +13796,15 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Glenn County",
+      "types": [
+        "AdministrativeArea2",
+        "County"
+      ],
+      "dcid": "geoId/06021",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
       "name": "Antelope",
       "types": [
         "City"
@@ -13719,6 +13827,15 @@
       ],
       "dcid": "geoId/0602294",
       "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Apple Valley",
+      "types": [
+        "City",
+        "Town"
+      ],
+      "dcid": "geoId/0602364",
+      "provenanceId": "dc/5n63hr1"
     },
     {
       "name": "Aptos",
@@ -13791,6 +13908,15 @@
       ],
       "dcid": "geoId/0602393745",
       "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Humboldt County",
+      "types": [
+        "AdministrativeArea2",
+        "County"
+      ],
+      "dcid": "geoId/06023",
+      "provenanceId": "dc/5n63hr1"
     },
     {
       "name": "Arbuckle",
@@ -13897,6 +14023,15 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Imperial County",
+      "types": [
+        "AdministrativeArea2",
+        "County"
+      ],
+      "dcid": "geoId/06025",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
       "name": "Armona",
       "types": [
         "City"
@@ -13943,6 +14078,15 @@
       ],
       "dcid": "geoId/0602791720",
       "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Inyo County",
+      "types": [
+        "AdministrativeArea2",
+        "County"
+      ],
+      "dcid": "geoId/06027",
+      "provenanceId": "dc/5n63hr1"
     },
     {
       "name": "Aromas",
@@ -14089,6 +14233,15 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Kern County",
+      "types": [
+        "AdministrativeArea2",
+        "County"
+      ],
+      "dcid": "geoId/06029",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
       "name": "Congressional District 2 (113th Congress), California",
       "types": [
         "CongressionalDistrict"
@@ -14110,6 +14263,15 @@
         "City"
       ],
       "dcid": "geoId/0603064",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Atherton",
+      "types": [
+        "City",
+        "Town"
+      ],
+      "dcid": "geoId/0603092",
       "provenanceId": "dc/5n63hr1"
     },
     {
@@ -14175,6 +14337,15 @@
       ],
       "dcid": "geoId/0603193250",
       "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Kings County",
+      "types": [
+        "AdministrativeArea2",
+        "County"
+      ],
+      "dcid": "geoId/06031",
+      "provenanceId": "dc/5n63hr1"
     },
     {
       "name": "Auburn",
@@ -14329,6 +14500,15 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Lake County",
+      "types": [
+        "AdministrativeArea2",
+        "County"
+      ],
+      "dcid": "geoId/06033",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
       "name": "Baker",
       "types": [
         "City"
@@ -14383,6 +14563,15 @@
       ],
       "dcid": "geoId/0603593710",
       "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Lassen County",
+      "types": [
+        "AdministrativeArea2",
+        "County"
+      ],
+      "dcid": "geoId/06035",
+      "provenanceId": "dc/5n63hr1"
     },
     {
       "name": "Baldwin Park",
@@ -14577,6 +14766,15 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Los Angeles County",
+      "types": [
+        "AdministrativeArea2",
+        "County"
+      ],
+      "dcid": "geoId/06037",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
       "name": "Banning",
       "types": [
         "City"
@@ -14631,6 +14829,15 @@
       ],
       "dcid": "geoId/0603993802",
       "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Madera County",
+      "types": [
+        "AdministrativeArea2",
+        "County"
+      ],
+      "dcid": "geoId/06039",
+      "provenanceId": "dc/5n63hr1"
     },
     {
       "name": "Congressional District 3 (113th Congress), California",
@@ -14705,6 +14912,15 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Marin County",
+      "types": [
+        "AdministrativeArea2",
+        "County"
+      ],
+      "dcid": "geoId/06041",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
       "name": "Coulterville CCD",
       "types": [
         "CensusCountyDivision"
@@ -14727,6 +14943,15 @@
       ],
       "dcid": "geoId/0604393804",
       "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Mariposa County",
+      "types": [
+        "AdministrativeArea2",
+        "County"
+      ],
+      "dcid": "geoId/06043",
+      "provenanceId": "dc/5n63hr1"
     },
     {
       "name": "Bay Point",
@@ -14831,6 +15056,15 @@
       ],
       "dcid": "geoId/0604593740",
       "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Mendocino County",
+      "types": [
+        "AdministrativeArea2",
+        "County"
+      ],
+      "dcid": "geoId/06045",
+      "provenanceId": "dc/5n63hr1"
     },
     {
       "name": "Bear Creek",
@@ -14953,6 +15187,15 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Merced County",
+      "types": [
+        "AdministrativeArea2",
+        "County"
+      ],
+      "dcid": "geoId/06047",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
       "name": "Belden",
       "types": [
         "City"
@@ -15033,6 +15276,15 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
+      "name": "Modoc County",
+      "types": [
+        "AdministrativeArea2",
+        "County"
+      ],
+      "dcid": "geoId/06049",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
       "name": "Congressional District 4 (113th Congress), California",
       "types": [
         "CongressionalDistrict"
@@ -15071,6 +15323,15 @@
       ],
       "dcid": "geoId/0605192195",
       "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Mono County",
+      "types": [
+        "AdministrativeArea2",
+        "County"
+      ],
+      "dcid": "geoId/06051",
+      "provenanceId": "dc/5n63hr1"
     },
     {
       "name": "Benbow",
@@ -15217,6 +15478,15 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Monterey County",
+      "types": [
+        "AdministrativeArea2",
+        "County"
+      ],
+      "dcid": "geoId/06053",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
       "name": "Angwin CCD",
       "types": [
         "CensusCountyDivision"
@@ -15257,6 +15527,15 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Napa County",
+      "types": [
+        "AdministrativeArea2",
+        "County"
+      ],
+      "dcid": "geoId/06055",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
       "name": "Donner CCD",
       "types": [
         "CensusCountyDivision"
@@ -15279,6 +15558,15 @@
       ],
       "dcid": "geoId/0605792090",
       "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Nevada County",
+      "types": [
+        "AdministrativeArea2",
+        "County"
+      ],
+      "dcid": "geoId/06057",
+      "provenanceId": "dc/5n63hr1"
     },
     {
       "name": "Anaheim-Santa Ana-Garden Grove CCD",
@@ -15335,6 +15623,15 @@
       ],
       "dcid": "geoId/0605993110",
       "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Orange County",
+      "types": [
+        "AdministrativeArea2",
+        "County"
+      ],
+      "dcid": "geoId/06059",
+      "provenanceId": "dc/5n63hr1"
     },
     {
       "name": "Congressional District 5 (113th Congress), California",
@@ -15433,6 +15730,15 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Placer County",
+      "types": [
+        "AdministrativeArea2",
+        "County"
+      ],
+      "dcid": "geoId/06061",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
       "name": "Bethel Island",
       "types": [
         "City"
@@ -15503,6 +15809,15 @@
       ],
       "dcid": "geoId/0606392540",
       "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Plumas County",
+      "types": [
+        "AdministrativeArea2",
+        "County"
+      ],
+      "dcid": "geoId/06063",
+      "provenanceId": "dc/5n63hr1"
     },
     {
       "name": "Big Bear City",
@@ -15689,6 +16004,15 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Riverside County",
+      "types": [
+        "AdministrativeArea2",
+        "County"
+      ],
+      "dcid": "geoId/06065",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
       "name": "Big Pine",
       "types": [
         "City"
@@ -15777,6 +16101,15 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
+      "name": "Sacramento County",
+      "types": [
+        "AdministrativeArea2",
+        "County"
+      ],
+      "dcid": "geoId/06067",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
       "name": "Blackhawk",
       "types": [
         "City"
@@ -15830,6 +16163,15 @@
         "City"
       ],
       "dcid": "geoId/0606994",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "San Benito County",
+      "types": [
+        "AdministrativeArea2",
+        "County"
+      ],
+      "dcid": "geoId/06069",
       "provenanceId": "dc/5n63hr1"
     },
     {
@@ -15967,6 +16309,15 @@
       ],
       "dcid": "geoId/0607193850",
       "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "San Bernardino County",
+      "types": [
+        "AdministrativeArea2",
+        "County"
+      ],
+      "dcid": "geoId/06071",
+      "provenanceId": "dc/5n63hr1"
     },
     {
       "name": "Blythe",
@@ -16129,6 +16480,15 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "San Diego County",
+      "types": [
+        "AdministrativeArea2",
+        "County"
+      ],
+      "dcid": "geoId/06073",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
       "name": "Bonita",
       "types": [
         "City"
@@ -16199,6 +16559,15 @@
       ],
       "dcid": "geoId/0607596",
       "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "San Francisco County",
+      "types": [
+        "AdministrativeArea2",
+        "County"
+      ],
+      "dcid": "geoId/06075",
+      "provenanceId": "dc/wg3fkq2"
     },
     {
       "name": "Bostonia",
@@ -16305,6 +16674,15 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "San Joaquin County",
+      "types": [
+        "AdministrativeArea2",
+        "County"
+      ],
+      "dcid": "geoId/06077",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
       "name": "Boyes Hot Springs",
       "types": [
         "City"
@@ -16369,6 +16747,15 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "San Luis Obispo County",
+      "types": [
+        "AdministrativeArea2",
+        "County"
+      ],
+      "dcid": "geoId/06079",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
       "name": "Congressional District 7 (113th Congress), California",
       "types": [
         "CongressionalDistrict"
@@ -16431,6 +16818,15 @@
       ],
       "dcid": "geoId/0608193170",
       "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "San Mateo County",
+      "types": [
+        "AdministrativeArea2",
+        "County"
+      ],
+      "dcid": "geoId/06081",
+      "provenanceId": "dc/5n63hr1"
     },
     {
       "name": "Bridgeport",
@@ -16513,6 +16909,15 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Santa Barbara County",
+      "types": [
+        "AdministrativeArea2",
+        "County"
+      ],
+      "dcid": "geoId/06083",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
       "name": "Brookdale",
       "types": [
         "City"
@@ -16575,6 +16980,15 @@
       ],
       "dcid": "geoId/0608593660",
       "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Santa Clara County",
+      "types": [
+        "AdministrativeArea2",
+        "County"
+      ],
+      "dcid": "geoId/06085",
+      "provenanceId": "dc/5n63hr1"
     },
     {
       "name": "Buckhorn",
@@ -16657,6 +17071,15 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Santa Cruz County",
+      "types": [
+        "AdministrativeArea2",
+        "County"
+      ],
+      "dcid": "geoId/06087",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
       "name": "Buena Vista",
       "types": [
         "City"
@@ -16670,6 +17093,15 @@
         "City"
       ],
       "dcid": "geoId/0608954",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Burbank",
+      "types": [
+        "City",
+        "Neighborhood"
+      ],
+      "dcid": "geoId/0608968",
       "provenanceId": "dc/5n63hr1"
     },
     {
@@ -16711,6 +17143,15 @@
       ],
       "dcid": "geoId/0608993210",
       "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Shasta County",
+      "types": [
+        "AdministrativeArea2",
+        "County"
+      ],
+      "dcid": "geoId/06089",
+      "provenanceId": "dc/5n63hr1"
     },
     {
       "name": "Congressional District 8 (113th Congress), California",
@@ -16759,6 +17200,15 @@
       ],
       "dcid": "geoId/0609193680",
       "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Sierra County",
+      "types": [
+        "AdministrativeArea2",
+        "County"
+      ],
+      "dcid": "geoId/06091",
+      "provenanceId": "dc/5n63hr1"
     },
     {
       "name": "Butte Creek Canyon",
@@ -16913,6 +17363,15 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Siskiyou County",
+      "types": [
+        "AdministrativeArea2",
+        "County"
+      ],
+      "dcid": "geoId/06093",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
       "name": "Dixon CCD",
       "types": [
         "CensusCountyDivision"
@@ -16958,6 +17417,15 @@
         "City"
       ],
       "dcid": "geoId/0609598",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Solano County",
+      "types": [
+        "AdministrativeArea2",
+        "County"
+      ],
+      "dcid": "geoId/06095",
       "provenanceId": "dc/5n63hr1"
     },
     {
@@ -17031,6 +17499,15 @@
       ],
       "dcid": "geoId/0609793070",
       "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Sonoma County",
+      "types": [
+        "AdministrativeArea2",
+        "County"
+      ],
+      "dcid": "geoId/06097",
+      "provenanceId": "dc/5n63hr1"
     },
     {
       "name": "California Hot Springs",
@@ -17161,6 +17638,15 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Stanislaus County",
+      "types": [
+        "AdministrativeArea2",
+        "County"
+      ],
+      "dcid": "geoId/06099",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
       "name": "Congressional District 9 (113th Congress), California",
       "types": [
         "CongressionalDistrict"
@@ -17273,6 +17759,15 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Sutter County",
+      "types": [
+        "AdministrativeArea2",
+        "County"
+      ],
+      "dcid": "geoId/06101",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
       "name": "Cameron Park",
       "types": [
         "City"
@@ -17337,6 +17832,15 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Tehama County",
+      "types": [
+        "AdministrativeArea2",
+        "County"
+      ],
+      "dcid": "geoId/06103",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
       "name": "Camp Nelson",
       "types": [
         "City"
@@ -17399,6 +17903,15 @@
       ],
       "dcid": "geoId/0610593595",
       "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Trinity County",
+      "types": [
+        "AdministrativeArea2",
+        "County"
+      ],
+      "dcid": "geoId/06105",
+      "provenanceId": "dc/5n63hr1"
     },
     {
       "name": "Camptonville",
@@ -17537,6 +18050,15 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Tulare County",
+      "types": [
+        "AdministrativeArea2",
+        "County"
+      ],
+      "dcid": "geoId/06107",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
       "name": "Cantua Creek",
       "types": [
         "City"
@@ -17591,6 +18113,15 @@
       ],
       "dcid": "geoId/0610993470",
       "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Tuolumne County",
+      "types": [
+        "AdministrativeArea2",
+        "County"
+      ],
+      "dcid": "geoId/06109",
+      "provenanceId": "dc/5n63hr1"
     },
     {
       "name": "Congressional District 10 (113th Congress), California",
@@ -17721,6 +18252,15 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
+      "name": "Ventura County",
+      "types": [
+        "AdministrativeArea2",
+        "County"
+      ],
+      "dcid": "geoId/06111",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
       "name": "Carmel-by-the-Sea",
       "types": [
         "City"
@@ -17809,6 +18349,15 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Yolo County",
+      "types": [
+        "AdministrativeArea2",
+        "County"
+      ],
+      "dcid": "geoId/06113",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
       "name": "Carnelian Bay",
       "types": [
         "City"
@@ -17895,6 +18444,15 @@
       ],
       "dcid": "geoId/0611593830",
       "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Yuba County",
+      "types": [
+        "AdministrativeArea2",
+        "County"
+      ],
+      "dcid": "geoId/06115",
+      "provenanceId": "dc/5n63hr1"
     },
     {
       "name": "Cartago",
@@ -18457,6 +19015,15 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Colma",
+      "types": [
+        "City",
+        "Town"
+      ],
+      "dcid": "geoId/0614736",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
       "name": "Coloma",
       "types": [
         "City"
@@ -18606,6 +19173,15 @@
         "City"
       ],
       "dcid": "geoId/0616434",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Corte Madera",
+      "types": [
+        "City",
+        "Town"
+      ],
+      "dcid": "geoId/0616462",
       "provenanceId": "dc/5n63hr1"
     },
     {
@@ -18854,6 +19430,15 @@
         "City"
       ],
       "dcid": "geoId/0617946",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Danville",
+      "types": [
+        "City",
+        "Town"
+      ],
+      "dcid": "geoId/0617988",
       "provenanceId": "dc/5n63hr1"
     },
     {
@@ -19327,6 +19912,15 @@
       ],
       "dcid": "geoId/0620438",
       "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "East Foothills",
+      "types": [
+        "City",
+        "Neighborhood"
+      ],
+      "dcid": "geoId/0620598",
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "name": "East Hemet",
@@ -19807,6 +20401,15 @@
       ],
       "dcid": "geoId/0623150",
       "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Fairfax",
+      "types": [
+        "City",
+        "Town"
+      ],
+      "dcid": "geoId/0623168",
+      "provenanceId": "dc/5n63hr1"
     },
     {
       "name": "Fairfield",
@@ -20329,6 +20932,15 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Guerneville",
+      "types": [
+        "City",
+        "Neighborhood"
+      ],
+      "dcid": "geoId/0631470",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
       "name": "Congressional District 31 (113th Congress), California",
       "types": [
         "CongressionalDistrict"
@@ -20343,6 +20955,15 @@
       ],
       "dcid": "geoId/0632",
       "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Hillsborough",
+      "types": [
+        "City",
+        "Town"
+      ],
+      "dcid": "geoId/0633798",
+      "provenanceId": "dc/5n63hr1"
     },
     {
       "name": "Congressional District 33 (113th Congress), California",
@@ -20425,6 +21046,24 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Loomis",
+      "types": [
+        "City",
+        "Town"
+      ],
+      "dcid": "geoId/0643140",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Los Altos Hills",
+      "types": [
+        "City",
+        "Town"
+      ],
+      "dcid": "geoId/0643294",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
       "name": "Congressional District 43 (113th Congress), California",
       "types": [
         "CongressionalDistrict"
@@ -20433,12 +21072,30 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Los Gatos",
+      "types": [
+        "City",
+        "Town"
+      ],
+      "dcid": "geoId/0644112",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
       "name": "Congressional District 44 (113th Congress), California",
       "types": [
         "CongressionalDistrict"
       ],
       "dcid": "geoId/0644",
       "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Mammoth Lakes",
+      "types": [
+        "City",
+        "Town"
+      ],
+      "dcid": "geoId/0645358",
+      "provenanceId": "dc/5n63hr1"
     },
     {
       "name": "Congressional District 45 (113th Congress), California",
@@ -20473,6 +21130,15 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Moraga",
+      "types": [
+        "City",
+        "Town"
+      ],
+      "dcid": "geoId/0649187",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
       "name": "Congressional District 49 (113th Congress), California",
       "types": [
         "CongressionalDistrict"
@@ -20487,6 +21153,15 @@
       ],
       "dcid": "geoId/0650",
       "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Newhall",
+      "types": [
+        "City",
+        "Neighborhood"
+      ],
+      "dcid": "geoId/0651070",
+      "provenanceId": "dc/5n63hr1"
     },
     {
       "name": "Congressional District 51 (113th Congress), California",
@@ -20511,6 +21186,123 @@
       ],
       "dcid": "geoId/0653",
       "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Palm Springs",
+      "types": [
+        "City",
+        "Neighborhood"
+      ],
+      "dcid": "geoId/0655254",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Paradise",
+      "types": [
+        "City",
+        "Town"
+      ],
+      "dcid": "geoId/0655520",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Portola Valley",
+      "types": [
+        "City",
+        "Town"
+      ],
+      "dcid": "geoId/0658380",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Ross",
+      "types": [
+        "City",
+        "Town"
+      ],
+      "dcid": "geoId/0662980",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "San Anselmo",
+      "types": [
+        "City",
+        "Town"
+      ],
+      "dcid": "geoId/0664434",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "San Francisco",
+      "types": [
+        "AdministrativeArea2",
+        "City"
+      ],
+      "dcid": "geoId/0667000",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Saugus",
+      "types": [
+        "City",
+        "Neighborhood"
+      ],
+      "dcid": "geoId/0670350",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Tiburon",
+      "types": [
+        "City",
+        "Town"
+      ],
+      "dcid": "geoId/0678666",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Truckee",
+      "types": [
+        "City",
+        "Town"
+      ],
+      "dcid": "geoId/0680588",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "West Hollywood",
+      "types": [
+        "City",
+        "Neighborhood"
+      ],
+      "dcid": "geoId/0684410",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Windsor",
+      "types": [
+        "City",
+        "Town"
+      ],
+      "dcid": "geoId/0685922",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Woodside",
+      "types": [
+        "City",
+        "Town"
+      ],
+      "dcid": "geoId/0686440",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Yucca Valley",
+      "types": [
+        "City",
+        "Town"
+      ],
+      "dcid": "geoId/0687056",
+      "provenanceId": "dc/5n63hr1"
     },
     {
       "name": "California -- In metropolitan or micropolitan statistical area",
@@ -20609,6 +21401,15 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Ross Valley Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0600006",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
       "name": "Cuyama Joint Unified School District",
       "types": [
         "SchoolDistrict"
@@ -20623,6 +21424,15 @@
       ],
       "dcid": "geoId/sch0600011",
       "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Twin Ridges Elementary",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0600012",
+      "provenanceId": "dc/mzy8we"
     },
     {
       "name": "Rocklin Unified School District",
@@ -21089,6 +21899,15 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Fortuna Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0601420",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
       "name": "Santa Paula Unified",
       "types": [
         "SchoolDistrict"
@@ -21110,6 +21929,15 @@
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0601426",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Penn Valley Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0601427",
       "provenanceId": "dc/sm3m2w3"
     },
     {
@@ -21137,6 +21965,33 @@
       "provenanceId": "dc/mzy8we"
     },
     {
+      "name": "Acalanes Union High School District",
+      "types": [
+        "HighSchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0601650",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Ackerman Charter",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0601680",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Adelanto Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0601710",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
       "name": "Alameda City Unified School District",
       "types": [
         "SchoolDistrict"
@@ -21150,6 +22005,33 @@
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0601860",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Alexander Valley Union School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0601890",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Alisal Union",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0601950",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Allensworth Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0601980",
       "provenanceId": "dc/sm3m2w3"
     },
     {
@@ -21169,6 +22051,69 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Alpine Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0602100",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Alta Loma Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0602160",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Alta Vista Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0602220",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Alta-Dutch Flat Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0602250",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Alum Rock Union Elementary",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0602310",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Alview-Dairyland Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0602360",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Alvina Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0602370",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
       "name": "Alvord Unified",
       "types": [
         "SchoolDistrict"
@@ -21185,12 +22130,66 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
+      "name": "Anaheim Elementary",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0602610",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Anaheim Union High",
+      "types": [
+        "HighSchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0602630",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "West Sonoma County Union High School District",
+      "types": [
+        "HighSchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0602670",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Anderson Union High School District",
+      "types": [
+        "HighSchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0602700",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
       "name": "Anderson Valley Unified School District",
       "types": [
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0602730",
       "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Antelope Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0602760",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Antelope Valley Union High",
+      "types": [
+        "HighSchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0602820",
+      "provenanceId": "dc/mzy8we"
     },
     {
       "name": "Antioch Unified",
@@ -21209,6 +22208,33 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Arcata Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0603000",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Northern Humboldt Union High School District",
+      "types": [
+        "HighSchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0603030",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Arcohe Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0603060",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
       "name": "Arena Union Elementary School District",
       "types": [
         "ElementarySchoolDistrict"
@@ -21217,11 +22243,47 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Armona Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0603180",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Arvin Union",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0603270",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
       "name": "Atascadero Unified School District",
       "types": [
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0603300",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Atwater Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0603420",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Auburn Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0603480",
       "provenanceId": "dc/sm3m2w3"
     },
     {
@@ -21241,11 +22303,47 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Bakersfield City",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0603630",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
       "name": "Baldwin Park Unified School District",
       "types": [
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0603690",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Ballard Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0603720",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Ballico-Cressey Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0603750",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Bangor Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0603780",
       "provenanceId": "dc/sm3m2w3"
     },
     {
@@ -21257,11 +22355,29 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Banta Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0603870",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
       "name": "Barstow Unified School District",
       "types": [
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0604020",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Bass Lake Joint Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0604080",
       "provenanceId": "dc/sm3m2w3"
     },
     {
@@ -21273,11 +22389,29 @@
       "provenanceId": "dc/mzy8we"
     },
     {
+      "name": "Bayshore Elementary",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0604200",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
       "name": "Bear Valley Unified School District",
       "types": [
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0604230",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Beardsley Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0604260",
       "provenanceId": "dc/sm3m2w3"
     },
     {
@@ -21289,11 +22423,56 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Bella Vista Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0604350",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Bellevue Union",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0604380",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
       "name": "Bellflower Unified School District",
       "types": [
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0604440",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Belleview Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0604500",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Belmont-Redwood Shores Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0604530",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Belridge Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0604560",
       "provenanceId": "dc/sm3m2w3"
     },
     {
@@ -21305,12 +22484,30 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Bennett Valley Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0604650",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
       "name": "Berkeley Unified School District",
       "types": [
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0604740",
       "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Berryessa Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0604800",
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "name": "Beverly Hills Unified",
@@ -21321,11 +22518,38 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
+      "name": "Big Creek Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0604860",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Big Lagoon Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0604890",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
       "name": "Big Pine Unified School District",
       "types": [
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0604950",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Big Springs Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0604980",
       "provenanceId": "dc/sm3m2w3"
     },
     {
@@ -21345,11 +22569,83 @@
       "provenanceId": "dc/mzy8we"
     },
     {
+      "name": "Bitterwater-Tully Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0605190",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Black Butte Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0605220",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
       "name": "Black Oak Mine Unified School District",
       "types": [
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0605240",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Blake Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0605250",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Blochman Union Elementary",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0605280",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Blue Lake Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0605400",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Bogus Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0605490",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Bolinas-Stinson Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0605520",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Santa Maria-Bonita Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0605580",
       "provenanceId": "dc/sm3m2w3"
     },
     {
@@ -21361,6 +22657,15 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Bonny Doon Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0605640",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
       "name": "Borrego Springs Unified School District",
       "types": [
         "SchoolDistrict"
@@ -21369,11 +22674,65 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Bradley Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0605730",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Brawley Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0605790",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Brawley Union High School District",
+      "types": [
+        "HighSchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0605820",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
       "name": "Brea-Olinda Unified School District",
       "types": [
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0605880",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Brentwood Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0605910",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Bret Harte Union High School District",
+      "types": [
+        "HighSchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0605940",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Bridgeville Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0606000",
       "provenanceId": "dc/sm3m2w3"
     },
     {
@@ -21505,6 +22864,15 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Briggs Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0606030",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
       "name": "Tracy Unified School District (9-12)",
       "types": [
         "HighSchoolDistrict"
@@ -21545,12 +22913,84 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Brisbane Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0606060",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Brittan Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0606090",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Browns Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0606100",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
       "name": "Porterville Unified School District (9-12)",
       "types": [
         "HighSchoolDistrict"
       ],
       "dcid": "geoId/sch0606107",
       "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Buckeye Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0606270",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Buellton Union Elementary",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0606330",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Buena Park Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0606360",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Panama-Buena Vista School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0606390",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Buena Vista Elementary",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0606420",
+      "provenanceId": "dc/mzy8we"
     },
     {
       "name": "Burbank Unified School District",
@@ -21561,11 +23001,74 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
+      "name": "Burlingame Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0606480",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Burnt Ranch Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0606510",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Burrel Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0606540",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Burton Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0606570",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
       "name": "Butte Valley Unified School District",
       "types": [
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0606580",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Butteville Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0606690",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Buttonwillow Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0606720",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Byron Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0606750",
       "provenanceId": "dc/sm3m2w3"
     },
     {
@@ -21575,6 +23078,15 @@
       ],
       "dcid": "geoId/sch0606780",
       "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Cajon Valley Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0606810",
+      "provenanceId": "dc/5n63hr1"
     },
     {
       "name": "Calaveras Unified School District",
@@ -21590,6 +23102,15 @@
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0606900",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Caliente Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0606960",
       "provenanceId": "dc/sm3m2w3"
     },
     {
@@ -21609,12 +23130,84 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Cambrian Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0607140",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Camino Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0607170",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Campbell Union",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0607200",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Campbell Union High School District",
+      "types": [
+        "HighSchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0607230",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Camptonville Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0607260",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Canyon Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0607350",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Capay Joint Union Elementary",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0607410",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
       "name": "Capistrano Unified School District",
       "types": [
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0607440",
       "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Cardiff Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0607470",
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "name": "Carlsbad Unified",
@@ -21641,11 +23234,47 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Cascade Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0607680",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Castaic Union School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0607740",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Castle Rock Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0607770",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
       "name": "Castro Valley Unified School District",
       "types": [
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0607800",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Cayucos Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0607840",
       "provenanceId": "dc/sm3m2w3"
     },
     {
@@ -21657,12 +23286,57 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Centinela Valley Union High",
+      "types": [
+        "HighSchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0607920",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Central Elementary",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0607950",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
       "name": "Central Unified School District",
       "types": [
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0607970",
       "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Central Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0607980",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Central Union High School District",
+      "types": [
+        "HighSchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0608010",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Centralia Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0608070",
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "name": "Ceres Unified",
@@ -21673,12 +23347,39 @@
       "provenanceId": "dc/mzy8we"
     },
     {
+      "name": "Chaffey Joint Union High School District",
+      "types": [
+        "HighSchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0608160",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
       "name": "Charter Oak Unified School District",
       "types": [
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0608190",
       "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Chatom Union",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0608250",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Chicago Park Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0608340",
+      "provenanceId": "dc/5n63hr1"
     },
     {
       "name": "Chico Unified School District",
@@ -21697,11 +23398,83 @@
       "provenanceId": "dc/mzy8we"
     },
     {
+      "name": "Chowchilla Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0608520",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Chowchilla Union High",
+      "types": [
+        "HighSchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0608550",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Chualar Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0608580",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Chula Vista Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0608610",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Cienega Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0608640",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Cinnabar Elementary",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0608700",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
       "name": "Claremont Unified School District",
       "types": [
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0608760",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Clay Joint Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0608850",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Clear Creek Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0608880",
       "provenanceId": "dc/sm3m2w3"
     },
     {
@@ -21737,11 +23510,74 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Coffee Creek Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0609240",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Cold Spring Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0609270",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Colfax Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0609300",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "College Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0609330",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
       "name": "Colton Joint Unified School District",
       "types": [
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0609390",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Columbia Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0609450",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Columbia Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0609480",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Columbine Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0609510",
       "provenanceId": "dc/sm3m2w3"
     },
     {
@@ -21785,6 +23621,24 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Corning Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0609780",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Corning Union High School District",
+      "types": [
+        "HighSchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0609810",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
       "name": "Corona-Norco Unified School District",
       "types": [
         "SchoolDistrict"
@@ -21809,11 +23663,29 @@
       "provenanceId": "dc/mzy8we"
     },
     {
+      "name": "Cottonwood Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0609990",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
       "name": "Covina-Valley Unified School District",
       "types": [
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0610050",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Cuddeback Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0610230",
       "provenanceId": "dc/sm3m2w3"
     },
     {
@@ -21825,11 +23697,47 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Cupertino Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0610290",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Curtis Creek Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0610320",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
       "name": "Cutler-Orosi Joint Unified School District",
       "types": [
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0610350",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Cutten Elementary",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0610380",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Cypress Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0610440",
       "provenanceId": "dc/sm3m2w3"
     },
     {
@@ -21849,11 +23757,56 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Dehesa Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0610710",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Del Mar Union Elementary",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0610740",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
       "name": "Del Norte County Unified School District",
       "types": [
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0610770",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Delano Joint Union High School District",
+      "types": [
+        "HighSchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0610860",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Delano Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0610890",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Delphic Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0610980",
       "provenanceId": "dc/sm3m2w3"
     },
     {
@@ -21881,11 +23834,38 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
+      "name": "Di Giorgio Elementary",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0611130",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Dixie Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0611220",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
       "name": "Dixon Unified School District",
       "types": [
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0611280",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Douglas City Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0611430",
       "provenanceId": "dc/sm3m2w3"
     },
     {
@@ -21897,11 +23877,56 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Dry Creek Joint Elementary",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0611490",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
       "name": "Duarte Unified",
       "types": [
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0611520",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Ducor Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0611550",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Dunham Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0611610",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Dunsmuir Elementary",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0611670",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Dunsmuir Joint Union High",
+      "types": [
+        "HighSchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0611700",
       "provenanceId": "dc/mzy8we"
     },
     {
@@ -21913,11 +23938,110 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Earlimart Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0611760",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "East Nicolaus Joint Union High School District",
+      "types": [
+        "HighSchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0611780",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "East Side Union High School District",
+      "types": [
+        "HighSchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0611820",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "East Whittier City Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0611850",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
       "name": "Eastern Sierra Unified School District",
       "types": [
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0611870",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Eastside Union Elementary",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0611910",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Edison Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0611940",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "El Centro Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0612030",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "El Dorado Union High",
+      "types": [
+        "HighSchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0612070",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "El Monte City",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0612090",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "El Monte Union High School District",
+      "types": [
+        "HighSchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0612120",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "El Nido Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0612150",
       "provenanceId": "dc/sm3m2w3"
     },
     {
@@ -21945,12 +24069,66 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
+      "name": "Elk Hills Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0612360",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Elkins Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0612420",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Elverta Joint Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0612600",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
       "name": "Emery Unified",
       "types": [
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0612630",
       "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Empire Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0612690",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Encinitas Union Elementary",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0612750",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Enterprise Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0612810",
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "name": "Escalon Unified School District",
@@ -21961,11 +24139,74 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Escondido Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0612880",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Escondido Union High School District",
+      "types": [
+        "HighSchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0612910",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
       "name": "Esparto School District",
       "types": [
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0612930",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Etiwanda Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0612960",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Eureka Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0613080",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Evergreen Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0613140",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Evergreen Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0613170",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Fairfax Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0613290",
       "provenanceId": "dc/sm3m2w3"
     },
     {
@@ -21985,6 +24226,42 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Fallbrook Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0613500",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Fallbrook Union High School District",
+      "types": [
+        "HighSchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0613530",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Feather Falls Union Elementary",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0613710",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Fieldbrook Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0613740",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
       "name": "Fillmore Unified",
       "types": [
         "SchoolDistrict"
@@ -21998,6 +24275,15 @@
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0613840",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Flournoy Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0613860",
       "provenanceId": "dc/sm3m2w3"
     },
     {
@@ -22017,12 +24303,66 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Foresthill Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0613980",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Forestville Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0614010",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Forks of Salmon Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0614040",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
       "name": "Fort Bragg Unified School District",
       "types": [
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0614070",
       "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Fort Ross Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0614130",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Fortuna Union High School District",
+      "types": [
+        "HighSchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0614190",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Fountain Valley Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0614220",
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "name": "Fowler Unified",
@@ -22041,12 +24381,48 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Franklin-McKinley Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0614370",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
       "name": "Fremont Unified",
       "types": [
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0614400",
       "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Fremont Union High School District",
+      "types": [
+        "HighSchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0614430",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "French Gulch-Whiskeytown Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0614490",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Freshwater Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0614520",
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "name": "Fresno Unified School District",
@@ -22057,6 +24433,51 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
+      "name": "Fruitvale Elementary",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0614700",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Fullerton Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0614730",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Fullerton Joint Union High",
+      "types": [
+        "HighSchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0614760",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Galt Joint Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0614790",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Galt Joint Union High School District",
+      "types": [
+        "HighSchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0614820",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
       "name": "Garden Grove Unified School District",
       "types": [
         "SchoolDistrict"
@@ -22065,11 +24486,56 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
+      "name": "Garfield Elementary",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0614910",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Garvey Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0614940",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
       "name": "Gateway Unified School District",
       "types": [
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0614950",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Gazelle Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0614970",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "General Shafter Elementary",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0615000",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Gerber Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0615090",
       "provenanceId": "dc/sm3m2w3"
     },
     {
@@ -22105,11 +24571,164 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Gold Oak Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0615390",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Gold Trail Union Elementary",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0615450",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Golden Feather Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0615480",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Goleta Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0615510",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Gorman Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0615600",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Grant Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0615690",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Grass Valley Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0615780",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Gratton Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0615810",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Gravenstein Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0615840",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Graves Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0615870",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Green Point Elementary",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0615990",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Greenfield Union School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0616050",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
       "name": "Greenfield Union Elementary School District",
       "types": [
         "ElementarySchoolDistrict"
       ],
       "dcid": "geoId/sch0616080",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Grenada Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0616110",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Grossmont Union High School District",
+      "types": [
+        "HighSchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0616230",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Guadalupe Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0616260",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Cucamonga Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0616300",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Guerneville Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0616320",
       "provenanceId": "dc/sm3m2w3"
     },
     {
@@ -22129,12 +24748,102 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
+      "name": "Hanford Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0616470",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Hanford Joint Union High",
+      "types": [
+        "HighSchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0616500",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Happy Camp Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0616530",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Happy Valley Elementary",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0616560",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Happy Valley Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0616570",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Harmony Union School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0616620",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Hart-Ransom Union Elementary",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0616650",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Hawthorne Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0616680",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
       "name": "Hayward Unified School District",
       "types": [
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0616740",
       "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Heber Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0616830",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Helendale Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0616860",
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "name": "Hemet Unified School District",
@@ -22145,11 +24854,47 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
+      "name": "Hermosa Beach City Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0617040",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Hickman Community Charter School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0617160",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Hillsborough City Elementary",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0617190",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
       "name": "Hilmar Unified School District",
       "types": [
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0617220",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Hollister School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0617340",
       "provenanceId": "dc/sm3m2w3"
     },
     {
@@ -22161,6 +24906,114 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Hope Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0617490",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Hope Elementary",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0617520",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Horicon Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0617580",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Hornbrook Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0617620",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Hot Springs Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0617640",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Howell Mountain Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0617760",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Hueneme Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0617850",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Hughes-Elizabeth Lakes Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0617880",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Huntington Beach City Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0618030",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Huntington Beach Union High School District",
+      "types": [
+        "HighSchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0618060",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Hydesville Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0618120",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Igo, Ono, Platina Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0618160",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
       "name": "Imperial Unified",
       "types": [
         "SchoolDistrict"
@@ -22169,11 +25022,38 @@
       "provenanceId": "dc/mzy8we"
     },
     {
+      "name": "Indian Diggings Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0618240",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Indian Springs Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0618270",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
       "name": "Inglewood Unified",
       "types": [
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0618390",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Island Union Elementary",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0618510",
       "provenanceId": "dc/mzy8we"
     },
     {
@@ -22185,6 +25065,33 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Jamestown Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0618690",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Jamul-Dulzura Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0618730",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Janesville Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0618780",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
       "name": "Jefferson Elementary School District",
       "types": [
         "ElementarySchoolDistrict"
@@ -22193,11 +25100,92 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Jefferson Elementary",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0618840",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Jefferson Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0618870",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Jefferson Union High School District",
+      "types": [
+        "HighSchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0618930",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
       "name": "John Swett Unified School District",
       "types": [
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0618990",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Johnstonville Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0619050",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Julian Union High School District",
+      "types": [
+        "HighSchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0619110",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Julian Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0619140",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Junction City Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0619170",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Junction Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0619200",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Junction Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0619230",
       "provenanceId": "dc/sm3m2w3"
     },
     {
@@ -22217,11 +25205,56 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Kentfield Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0619380",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Kenwood Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0619410",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Keppel Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0619440",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
       "name": "Kerman Unified School District",
       "types": [
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0619490",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Kern High School District",
+      "types": [
+        "HighSchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0619540",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Kernville Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0619590",
       "provenanceId": "dc/sm3m2w3"
     },
     {
@@ -22233,11 +25266,92 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "South Monterey County Joint Union High School District",
+      "types": [
+        "HighSchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0619650",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "King City Union",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0619680",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
       "name": "Kings Canyon Joint Unified School District",
       "types": [
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0619700",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Kings River Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0619740",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Kings River-Hardwick Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0619770",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Kingsburg Elementary Charter",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0619800",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Kingsburg Joint Union High",
+      "types": [
+        "HighSchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0619830",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Kirkwood Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0619860",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Kit Carson Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0619890",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Klamath River Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0619920",
       "provenanceId": "dc/sm3m2w3"
     },
     {
@@ -22247,6 +25361,33 @@
       ],
       "dcid": "geoId/sch0619950",
       "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Kneeland Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0619980",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Knights Ferry Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0620010",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Knightsen Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0620040",
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "name": "Konocti Unified School District",
@@ -22265,6 +25406,15 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "La Habra City Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0620190",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
       "name": "La Honda-Pescadero Unified School District",
       "types": [
         "SchoolDistrict"
@@ -22273,12 +25423,75 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "La Mesa-Spring Valley School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0620250",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Lafayette Elementary",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0620310",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
       "name": "Laguna Beach Unified School District",
       "types": [
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0620370",
       "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Laguna Joint Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0620430",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Pacifica School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0620460",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Lagunita Elementary",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0620490",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Lagunitas Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0620520",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Lake Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0620610",
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "name": "Lake Tahoe Unified School District",
@@ -22297,11 +25510,92 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Lakeside Joint",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0620700",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Lakeside Union School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0620730",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Lakeside Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0620760",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Lakeside Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0620790",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Lamont Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0620850",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Lancaster Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0620880",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Larkspur Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0620910",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
       "name": "Las Virgenes Unified School District",
       "types": [
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0621000",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Lassen Union High School District",
+      "types": [
+        "HighSchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0621060",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Lassen View Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0621090",
       "provenanceId": "dc/sm3m2w3"
     },
     {
@@ -22313,11 +25607,128 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Latrobe Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0621180",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Lawndale Elementary",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0621210",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Le Grand Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0621240",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Le Grand Union High School District",
+      "types": [
+        "HighSchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0621270",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Lemon Grove Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0621330",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Lemoore Union Elementary",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0621360",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Lemoore Union High",
+      "types": [
+        "HighSchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0621400",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Lennox Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0621420",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
       "name": "Richland Union School District",
       "types": [
         "ElementarySchoolDistrict"
       ],
       "dcid": "geoId/sch0621450",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Lewiston Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0621480",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Liberty Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0621540",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Liberty Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0621570",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Liberty Union High School District",
+      "types": [
+        "HighSchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0621600",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Lincoln Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0621660",
       "provenanceId": "dc/sm3m2w3"
     },
     {
@@ -22345,6 +25756,42 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Linns Valley-Poso Flat Union School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0621900",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Little Lake City Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0621930",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Little Shasta Elementary",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0621960",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Live Oak Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0621990",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
       "name": "Live Oak Unified",
       "types": [
         "SchoolDistrict"
@@ -22361,12 +25808,48 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Livingston Union School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0622170",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
       "name": "Lodi Unified",
       "types": [
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0622230",
       "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Loleta Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0622320",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Loma Prieta Joint Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0622350",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Las Lomitas Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0622380",
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "name": "Lompoc Unified School District",
@@ -22393,12 +25876,30 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
+      "name": "Loomis Union Elementary",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0622560",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
       "name": "Los Alamitos Unified School District",
       "types": [
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0622590",
       "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Los Altos Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0622650",
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "name": "Los Angeles Unified School District",
@@ -22417,6 +25918,24 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
+      "name": "Los Gatos-Saratoga Joint Union School District",
+      "types": [
+        "HighSchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0622800",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Los Gatos Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0622830",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
       "name": "Los Molinos Unified School District",
       "types": [
         "SchoolDistrict"
@@ -22425,11 +25944,65 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Los Nietos",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0622890",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Los Olivos Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0622920",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Lost Hills Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0622950",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Lowell Joint",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0623010",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Lucerne Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0623040",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
       "name": "Lucia Mar Unified School District",
       "types": [
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0623080",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Luther Burbank Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0623130",
       "provenanceId": "dc/sm3m2w3"
     },
     {
@@ -22449,6 +26022,15 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Magnolia Elementary",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0623430",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
       "name": "Magnolia Union Elementary School District",
       "types": [
         "ElementarySchoolDistrict"
@@ -22465,11 +26047,56 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Manchester Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0623550",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
       "name": "Manteca Unified School District",
       "types": [
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0623610",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Manzanita Elementary",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0623700",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Maple Creek Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0623730",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Maple Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0623760",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Marcum-Illinois Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0623800",
       "provenanceId": "dc/sm3m2w3"
     },
     {
@@ -22487,6 +26114,24 @@
       ],
       "dcid": "geoId/sch0623940",
       "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Mark Twain Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0623970",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Mark West Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0624000",
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "name": "Martinez Unified School District",
@@ -22513,11 +26158,65 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "McCabe Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0624180",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "McCloud Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0624210",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
       "name": "McFarland Unified School District",
       "types": [
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0624230",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "McKinleyville Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0624300",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "McKittrick Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0624330",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "McSwain Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0624360",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Meadows Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0624390",
       "provenanceId": "dc/sm3m2w3"
     },
     {
@@ -22537,11 +26236,137 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
+      "name": "Menifee Union Elementary",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0624540",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Menlo Park City Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0624570",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Merced City Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0624600",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Merced River Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0624630",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Merced Union High",
+      "types": [
+        "HighSchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0624660",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Meridian Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0624690",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Mesa Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0624720",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
       "name": "Middletown Unified School District",
       "types": [
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0624750",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Midway Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0624780",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Mill Valley Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0624870",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Millbrae Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0624900",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Millville Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0624930",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Mission Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0625110",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Modesto City Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0625130",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Modesto City High School District",
+      "types": [
+        "HighSchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0625150",
       "provenanceId": "dc/sm3m2w3"
     },
     {
@@ -22561,11 +26386,47 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Monroe Elementary",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0625290",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
       "name": "Monrovia Unified School District",
       "types": [
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0625320",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Monson-Sultana Joint Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0625350",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Montague Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0625380",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Monte Rio Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0625410",
       "provenanceId": "dc/sm3m2w3"
     },
     {
@@ -22577,11 +26438,29 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
+      "name": "Montecito Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0625500",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
       "name": "Monterey Peninsula Unified School District",
       "types": [
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0625530",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Montgomery Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0625650",
       "provenanceId": "dc/sm3m2w3"
     },
     {
@@ -22591,6 +26470,24 @@
       ],
       "dcid": "geoId/sch0625690",
       "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Moraga Elementary",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0625740",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Moreland School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0625770",
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "name": "Moreno Valley Unified",
@@ -22617,11 +26514,92 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Mother Lode Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0625980",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Mount Shasta Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0626040",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Mountain Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0626070",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
       "name": "Mountain Empire Unified School District",
       "types": [
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0626100",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Mountain House Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0626130",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Mountain View Elementary",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0626190",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Mountain View Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0626220",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Mountain View Whisman Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0626280",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Mountain View-Los Altos Union School District",
+      "types": [
+        "HighSchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0626310",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Mount Baldy Joint Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0626340",
       "provenanceId": "dc/sm3m2w3"
     },
     {
@@ -22631,6 +26609,33 @@
       ],
       "dcid": "geoId/sch0626370",
       "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Mount Pleasant Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0626400",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Mulberry Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0626430",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Mupu Elementary",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0626460",
+      "provenanceId": "dc/mzy8we"
     },
     {
       "name": "Muroc Joint Unified School District",
@@ -22649,12 +26654,39 @@
       "provenanceId": "dc/mzy8we"
     },
     {
+      "name": "National Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0626670",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
       "name": "Needles Unified School District",
       "types": [
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0626760",
       "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Nevada City Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0626820",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Nevada Joint Union High",
+      "types": [
+        "HighSchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0626880",
+      "provenanceId": "dc/mzy8we"
     },
     {
       "name": "New Haven Unified School District",
@@ -22665,12 +26697,57 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "New Hope Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0626970",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "New Jerusalem Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0627030",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Mountain Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0627040",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
       "name": "Newark Unified",
       "types": [
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0627060",
       "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Newcastle Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0627120",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Newhall Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0627180",
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "name": "Newman-Crows Landing Unified",
@@ -22686,6 +26763,42 @@
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0627240",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Nicasio Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0627300",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Norris Elementary",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0627450",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "North County Joint Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0627480",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "North Cow Creek Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0627510",
       "provenanceId": "dc/sm3m2w3"
     },
     {
@@ -22713,11 +26826,74 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Nuestro Elementary",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0627750",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Nuview Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0627780",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Oak Grove Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0627810",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Oak Grove Union Elementary",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0627840",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
       "name": "Oak Park Unified School District",
       "types": [
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0627850",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Oak Run Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0627870",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Oak Valley Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0627900",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Oak View Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0627930",
       "provenanceId": "dc/sm3m2w3"
     },
     {
@@ -22727,6 +26903,33 @@
       ],
       "dcid": "geoId/sch0628050",
       "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Oakley Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0628080",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Ocean View Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0628140",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Ocean View",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0628170",
+      "provenanceId": "dc/mzy8we"
     },
     {
       "name": "Oceanside Unified",
@@ -22745,12 +26948,111 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Old Adobe Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0628320",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Ontario-Montclair School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0628470",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Orange Center",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0628530",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
       "name": "Orange Unified School District",
       "types": [
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0628650",
       "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Orchard Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0628680",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Orcutt Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0628710",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Orick Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0628830",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Orinda Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0628860",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Oro Grande Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0628950",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Oroville City Elementary",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0629100",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Oroville Union High School District",
+      "types": [
+        "HighSchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0629130",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Outside Creek Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0629160",
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "name": "Owens Valley Unified School District",
@@ -22761,12 +27063,66 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Oxnard Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0629220",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Oxnard Union High School District",
+      "types": [
+        "HighSchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0629270",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Pacheco Union Elementary",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0629280",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Pacific Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0629340",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
       "name": "Pacific Grove Unified School District",
       "types": [
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0629370",
       "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Pacific Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0629400",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Pacific Union Elementary",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0629430",
+      "provenanceId": "dc/mzy8we"
     },
     {
       "name": "Pajaro Valley Joint Unified School District",
@@ -22793,6 +27149,15 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
+      "name": "Palmdale Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0629580",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
       "name": "Palo Alto Unified School District",
       "types": [
         "SchoolDistrict"
@@ -22809,11 +27174,38 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Palo Verde Union Elementary",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0629670",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
       "name": "Palos Verdes Peninsula Unified School District",
       "types": [
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0629700",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Panoche Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0629770",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Paradise Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0629790",
       "provenanceId": "dc/sm3m2w3"
     },
     {
@@ -22857,6 +27249,42 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Peninsula Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0630090",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Perris Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0630180",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Perris Union High",
+      "types": [
+        "HighSchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0630210",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Petaluma City Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0630230",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
       "name": "Petaluma Joint Union High School District",
       "types": [
         "HighSchoolDistrict"
@@ -22881,12 +27309,39 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Pine Ridge Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0630390",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Piner-Olivet Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0630450",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
       "name": "Pioneer Union Elementary School District",
       "types": [
         "ElementarySchoolDistrict"
       ],
       "dcid": "geoId/sch0630480",
       "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Pioneer Union Elementary",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0630510",
+      "provenanceId": "dc/mzy8we"
     },
     {
       "name": "Pioneer Union Elementary School District",
@@ -22905,11 +27360,74 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Pixley Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0630630",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
       "name": "Placentia-Yorba Linda Unified School District",
       "types": [
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0630660",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Placer Hills Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0630720",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Placer Union High School District",
+      "types": [
+        "HighSchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0630750",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Placerville Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0630780",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Plainsburg Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0630810",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Planada Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0630840",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Plaza Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0630870",
       "provenanceId": "dc/sm3m2w3"
     },
     {
@@ -22921,11 +27439,74 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Pleasant Ridge Union Elementary",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0630930",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Pleasant Valley Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0630990",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Pleasant Valley Joint Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0631020",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Pleasant View Elementary",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0631050",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
       "name": "Plumas Unified School District",
       "types": [
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0631170",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Plumas Lake Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0631180",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Point Arena Joint Union High",
+      "types": [
+        "HighSchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0631230",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Pollock Pines Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0631290",
       "provenanceId": "dc/sm3m2w3"
     },
     {
@@ -22937,11 +27518,38 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Pond Union Elementary",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0631350",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Pope Valley Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0631380",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
       "name": "Potter Valley Community Unified School District",
       "types": [
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0631400",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Portola Valley Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0631470",
       "provenanceId": "dc/sm3m2w3"
     },
     {
@@ -22961,12 +27569,84 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Raisin City Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0631680",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
       "name": "Ramona City Unified School District",
       "types": [
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0631710",
       "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Rancho Santa Fe Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0631740",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Ravendale-Termo Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0631830",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Ravenswood City Elementary",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0631860",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Raymond-Knowles Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0631920",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Red Bluff Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0631980",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Red Bluff Joint Union High School District",
+      "types": [
+        "HighSchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0632010",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Redding Elementary",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0632040",
+      "provenanceId": "dc/mzy8we"
     },
     {
       "name": "Redlands Unified School District",
@@ -22977,6 +27657,33 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Redwood City Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0632130",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Reed Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0632160",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Reeds Creek Elementary",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0632250",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
       "name": "Reef-Sunset Unified",
       "types": [
         "SchoolDistrict"
@@ -22985,12 +27692,57 @@
       "provenanceId": "dc/mzy8we"
     },
     {
+      "name": "Rescue Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0632310",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Kashia Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0632340",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
       "name": "Rialto Unified",
       "types": [
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0632370",
       "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Richfield Elementary",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0632400",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Richgrove Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0632430",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Richmond Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0632520",
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "name": "West Contra Costa Unified School District",
@@ -23007,6 +27759,42 @@
       ],
       "dcid": "geoId/sch0632610",
       "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Rincon Valley Union Elementary",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0632640",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Rio Bravo-Greeley Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0632710",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Rio Dell Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0632730",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Rio Elementary",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0632760",
+      "provenanceId": "dc/mzy8we"
     },
     {
       "name": "Ripon Unified School District",
@@ -23031,6 +27819,105 @@
       ],
       "dcid": "geoId/sch0633150",
       "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Roberts Ferry Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0633210",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Robla Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0633240",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Rockford Elementary",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0633270",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Romoland Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0633390",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Rosedale Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0633480",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Roseland",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0633510",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Rosemead Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0633570",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Roseville City Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0633600",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Roseville Joint Union High School District",
+      "types": [
+        "HighSchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0633630",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Ross Elementary",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0633660",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Round Valley Joint Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0633690",
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "name": "Round Valley Unified School District",
@@ -23065,6 +27952,60 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
+      "name": "Salida Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0633900",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Salinas City Elementary",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0633930",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Salinas Union High",
+      "types": [
+        "HighSchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0633980",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "San Antonio Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0634050",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "San Ardo Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0634080",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "San Benito High School District",
+      "types": [
+        "HighSchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0634140",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
       "name": "San Bernardino City Unified School District",
       "types": [
         "SchoolDistrict"
@@ -23073,11 +28014,38 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
+      "name": "San Bruno Park Elementary",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0634230",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "San Carlos Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0634290",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
       "name": "San Diego City Unified School District",
       "types": [
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0634320",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "San Dieguito Union High School District",
+      "types": [
+        "HighSchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0634380",
       "provenanceId": "dc/5n63hr1"
     },
     {
@@ -23145,6 +28113,15 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "San Lucas Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0634770",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
       "name": "San Luis Coastal Unified",
       "types": [
         "SchoolDistrict"
@@ -23169,11 +28146,38 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "San Mateo-Foster City",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0634920",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "San Mateo Union High",
+      "types": [
+        "HighSchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0634980",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
       "name": "San Miguel Joint Union Elementary School District",
       "types": [
         "ElementarySchoolDistrict"
       ],
       "dcid": "geoId/sch0635010",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "San Pasqual Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0635040",
       "provenanceId": "dc/sm3m2w3"
     },
     {
@@ -23185,12 +28189,39 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "San Rafael City Elementary",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0635090",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "San Rafael City High School District",
+      "types": [
+        "HighSchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0635110",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
       "name": "San Ramon Valley Unified",
       "types": [
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0635130",
       "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "San Ysidro Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0635220",
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "name": "Sanger Unified School District",
@@ -23217,6 +28248,42 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
+      "name": "Santa Clara Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0635490",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Santa Cruz City Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0635590",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Santa Cruz City High School District",
+      "types": [
+        "HighSchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0635600",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Santa Maria Joint Union High",
+      "types": [
+        "HighSchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0635670",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
       "name": "Santa Monica-Malibu Unified School District",
       "types": [
         "SchoolDistrict"
@@ -23225,11 +28292,128 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
+      "name": "Santa Rita Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0635790",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Santa Rosa Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0635810",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Santa Rosa City Schools",
+      "types": [
+        "HighSchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0635830",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
       "name": "Santa Ynez Valley Union High School District",
       "types": [
         "HighSchoolDistrict"
       ],
       "dcid": "geoId/sch0635850",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Santee",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0635880",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Saratoga Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0635910",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Saucelito Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0635940",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Saugus Union",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0635970",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Sausalito Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0636000",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Savanna Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0636030",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Scotia Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0636100",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Sebastopol Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0636180",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Seeley Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0636210",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Seiad Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0636240",
       "provenanceId": "dc/sm3m2w3"
     },
     {
@@ -23241,11 +28425,74 @@
       "provenanceId": "dc/mzy8we"
     },
     {
+      "name": "Semitropic Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0636330",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Sequoia Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0636360",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Sequoia Union High",
+      "types": [
+        "HighSchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0636390",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Shaffer Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0636420",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
       "name": "Shandon Joint Unified School District",
       "types": [
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0636450",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Shasta Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0636570",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Shasta Union High School District",
+      "types": [
+        "HighSchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0636600",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Shiloh Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0636660",
       "provenanceId": "dc/sm3m2w3"
     },
     {
@@ -23281,6 +28528,15 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Silver Fork Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0636810",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
       "name": "Silver Valley Unified School District",
       "types": [
         "SchoolDistrict"
@@ -23297,11 +28553,47 @@
       "provenanceId": "dc/mzy8we"
     },
     {
+      "name": "Siskiyou Union High School District",
+      "types": [
+        "HighSchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0636940",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Snelling-Merced Falls Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0636960",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
       "name": "Snowline Joint Unified School District",
       "types": [
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0636970",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Victor Valley Union High",
+      "types": [
+        "HighSchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0636972",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Solana Beach Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0636990",
       "provenanceId": "dc/sm3m2w3"
     },
     {
@@ -23313,12 +28605,93 @@
       "provenanceId": "dc/mzy8we"
     },
     {
+      "name": "Solvang Elementary",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0637110",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Somis Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0637140",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
       "name": "Sonoma Valley Unified",
       "types": [
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0637200",
       "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Sonora Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0637230",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Sonora Union High School District",
+      "types": [
+        "HighSchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0637260",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Soquel Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0637290",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Soulsbyville Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0637320",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "South Bay Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0637350",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "South Bay Union",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0637380",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "South Fork Union School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0637470",
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "name": "South Pasadena Unified",
@@ -23334,6 +28707,15 @@
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0637530",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "South Whittier Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0637560",
       "provenanceId": "dc/sm3m2w3"
     },
     {
@@ -23361,11 +28743,65 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Southside Elementary",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0637650",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Spencer Valley Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0637680",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Spreckels Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0637710",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Springville Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0637770",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
       "name": "St. Helena Unified School District",
       "types": [
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0637830",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Standard Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0637890",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Stanislaus Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0637950",
       "provenanceId": "dc/sm3m2w3"
     },
     {
@@ -23377,12 +28813,84 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Stone Corral Elementary",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0638040",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
       "name": "Stony Creek Joint Unified School District",
       "types": [
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0638070",
       "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Strathmore Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0638130",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Sulphur Springs Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0638220",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Summerville Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0638250",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Summerville Union High School District",
+      "types": [
+        "HighSchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0638280",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Sundale Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0638340",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Sunnyside Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0638430",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Sunnyvale",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0638460",
+      "provenanceId": "dc/mzy8we"
     },
     {
       "name": "Surprise Valley Joint Unified School District",
@@ -23393,11 +28901,74 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Susanville Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0638550",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Sutter Union High School District",
+      "types": [
+        "HighSchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0638610",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Sweetwater Union High School District",
+      "types": [
+        "HighSchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0638640",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Sylvan Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0638670",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Taft City",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0638700",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Taft Union High School District",
+      "types": [
+        "HighSchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0638730",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
       "name": "Tahoe-Truckee Unified",
       "types": [
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0638770",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Tamalpais Union High",
+      "types": [
+        "HighSchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0638790",
       "provenanceId": "dc/mzy8we"
     },
     {
@@ -23425,12 +28996,57 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Terra Bella Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0639060",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Thermalito Union School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0639180",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Three Rivers Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0639210",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Tipton Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0639300",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
       "name": "Torrance Unified",
       "types": [
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0639420",
       "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Traver Joint Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0639600",
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "name": "Travis Unified School District",
@@ -23441,11 +29057,56 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Tres Pinos Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0639690",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Trinidad Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0639720",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Trinity Center Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0639750",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
       "name": "Trona Joint Unified School District",
       "types": [
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0639840",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Tulare City",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0639870",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Tulare Joint Union High School District",
+      "types": [
+        "HighSchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0639930",
       "provenanceId": "dc/sm3m2w3"
     },
     {
@@ -23465,11 +29126,56 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
+      "name": "Twain Harte School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0640200",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Twin Hills Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0640230",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Two Rock Union",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0640260",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
       "name": "Ukiah Unified School District",
       "types": [
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0640300",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0640320",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Union Hill Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0640380",
       "provenanceId": "dc/sm3m2w3"
     },
     {
@@ -23481,6 +29187,33 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Valle Lindo Elementary",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0640650",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Vallecito Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0640680",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Vallecitos Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0640710",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
       "name": "Vallejo City Unified",
       "types": [
         "SchoolDistrict"
@@ -23489,11 +29222,38 @@
       "provenanceId": "dc/mzy8we"
     },
     {
+      "name": "Valley Home Joint Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0640800",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
       "name": "Ventura Unified School District",
       "types": [
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0640980",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Victor Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0641040",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Vineland Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0641130",
       "provenanceId": "dc/sm3m2w3"
     },
     {
@@ -23513,11 +29273,56 @@
       "provenanceId": "dc/mzy8we"
     },
     {
+      "name": "Vista del Mar Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0641220",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Walnut Creek Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0641250",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
       "name": "Walnut Valley Unified",
       "types": [
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0641280",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Wasco Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0641400",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Wasco Union High School District",
+      "types": [
+        "HighSchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0641430",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Washington Colony Elementary",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0641460",
       "provenanceId": "dc/mzy8we"
     },
     {
@@ -23529,11 +29334,74 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Washington Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0641610",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Waugh Elementary",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0641790",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Waukena Joint Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0641820",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Weaver Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0641880",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Weed Union Elementary",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0641980",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
       "name": "West Covina Unified School District",
       "types": [
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0642000",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "West Park Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0642060",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Westside Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0642120",
       "provenanceId": "dc/sm3m2w3"
     },
     {
@@ -23545,11 +29413,101 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Westminster School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0642150",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "Westmorland Union Elementary",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0642180",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Westside Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0642210",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "West Side Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0642270",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
       "name": "Westwood Unified School District",
       "types": [
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0642300",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Wheatland Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0642330",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Wheatland Union High",
+      "types": [
+        "HighSchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0642350",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Whitmore Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0642420",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Whittier City Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0642450",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Whittier Union High School District",
+      "types": [
+        "HighSchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0642480",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "William S. Hart Union High School District",
+      "types": [
+        "HighSchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0642510",
       "provenanceId": "dc/sm3m2w3"
     },
     {
@@ -23577,12 +29535,57 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Willow Creek Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0642600",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Willow Grove Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0642630",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
       "name": "Willows Unified",
       "types": [
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0642710",
       "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Wilmar Union Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0642750",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Wilsona Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0642810",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Winship Robbins Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0642900",
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "name": "Winters Joint Unified School District",
@@ -23593,12 +29596,66 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "name": "Winton School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0642960",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
       "name": "Woodland Joint Unified School District",
       "types": [
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0643080",
       "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Woodside Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0643140",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Woodville Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0643170",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Wright Elementary School District",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0643200",
+      "provenanceId": "dc/sm3m2w3"
+    },
+    {
+      "name": "Yreka Union Elementary",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0643380",
+      "provenanceId": "dc/mzy8we"
+    },
+    {
+      "name": "Yreka Union High",
+      "types": [
+        "HighSchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0643410",
+      "provenanceId": "dc/mzy8we"
     },
     {
       "name": "Yuba City Unified School District",
@@ -27262,5 +33319,5 @@
       "provenanceId": "dc/5n63hr1"
     }
   ],
-  "nextToken": "H4sIAAAAAAAA/5zUzY7TMBAH8CaEkAaKggEpb8HHgQMfgpJAWpCqSC1cV24ym4zk2pXjtOrbr5weuquup6s9RTn8f5oZjx3P4qgBNa/fvf8UJ5WShqOEei5LwSuI2bTeoMTOaG5wB1MNnI1YEHmJx4LITzzmR09YEAWJF89J6fW59NFJ/SGpNxnIru8y1UtzyHGHHSrptKak9fxorTSvjJP4QRJBhubARiy02XTMQptOx0M+tPl0HP8lhbeZko2GzvbBRW6HhEQ5X0ksPM7FmV6Q6fSXgA1Iw/VhWbVKXa6mIL1XBahCYz38XX3IoXFCFzZxhk37wJJ+ktKLBWDTrpVulaqdxhfSeDp8HnlCcan2oEvBpW3Bj2zSv5X+TqYnZb8WWP0zKI57dw7kJPDy3in6QxMnxb+oGG4gU5utkiDdZ0Ffv8my34K+7mW9RHOa5912fpNEssIaCt43YCuiXoLP9DVeqb07+43MPvuPQvDGuRA3AAAA//8BAAD//+CeeLdmBQAA"
+  "nextToken": "H4sIAAAAAAAA/3zPwQrCIBzH8WkynBHI/+Rb1KlTULE67BJC9QDmpARTcI7Y24d1CQIf4PPl92N7Ru8mdP1ytWZcB5+U9abvvHRKGzZvjR/G4RKVTlABoYgjIBRzBJjOgFDCEdsVE6S1aYIK6mxFA3XWovn4OnvRsFOxII7OPI1PKk5n/QjBHeyQoi0s2hR7TIaXidIpnwuYZol/9LaoF3K8Oauvybrvsb/AGwAA//8BAAD//3fBjKFUAQAA"
 }

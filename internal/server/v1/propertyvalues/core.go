@@ -170,6 +170,12 @@ func nextOut(ctx context.Context, s *outState, btGroup *bigtable.Group) (bool, e
 				processed := false
 				if len(entity.Types) > 0 {
 					for _, t := range entity.Types {
+						if s.cursorGroup[e][p][t] == nil {
+							// The cursor group for <e,p,t> is nil, which has been fully
+							// processed in previous page.
+							processed = true
+							break
+						}
 						l := s.mergedEntities[e][p][t]
 						if len(l) > 0 && entity.Dcid <= l[len(l)-1].Dcid {
 							// This entity has been processed for type "t".
@@ -195,9 +201,11 @@ func nextOut(ctx context.Context, s *outState, btGroup *bigtable.Group) (bool, e
 				if int(cursor.Item) == len(s.rawEntities[e][p][t][ig]) {
 					cursor.Page++
 					cursor.Item = 0
-					// No more pages
+					// No more pages for the import group. As out prop values only use
+					// a single import group, so no more data for this <e,p,t> combination.
 					if cursor.Page == int32(s.totalPage[e][p][t][ig]) {
 						s.rawEntities[e][p][t][ig] = nil
+						s.cursorGroup[e][p][t] = nil
 						delete(s.next[e][p], t)
 					} else {
 						s.next[e][p][t] = cursor
@@ -255,6 +263,7 @@ func nextIn(ctx context.Context, s *inState, btGroup *bigtable.Group) (bool, err
 					// All entities in all import groups for [e, p, t]have been exhausted.
 					// Delete this entry in "s.next" so the outer for loop can skip it.
 					delete(s.next[e][p], t)
+					s.cursorGroup[e][p][t] = nil
 					continue
 				}
 				elem := heap.Pop(s.heap[e][p][t]).(*heapElem)
@@ -264,6 +273,12 @@ func nextIn(ctx context.Context, s *inState, btGroup *bigtable.Group) (bool, err
 				processed := false
 				if len(entity.Types) > 0 {
 					for _, t := range entity.Types {
+						if s.cursorGroup[e][p][t] == nil {
+							// The cursor group for <e,p,t> is nil, which has been fully
+							// processed in previous page.
+							processed = true
+							break
+						}
 						l := s.mergedEntities[e][p][t]
 						if len(l) > 0 && entity.Dcid <= l[len(l)-1].Dcid {
 							// This entity has been processed for type "t".
@@ -311,7 +326,6 @@ func nextIn(ctx context.Context, s *inState, btGroup *bigtable.Group) (bool, err
 						// No more pages
 						if cursor.Page == int32(s.totalPage[e][p][t][ig]) {
 							s.rawEntities[e][p][t][ig] = nil
-							delete(s.next[e][p], t)
 						} else {
 							accs = append(accs, &bigtable.Accessor{
 								ImportGroup: ig,
