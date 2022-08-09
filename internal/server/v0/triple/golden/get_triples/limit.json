@@ -398,23 +398,6 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
-      "subjectId": "nuts/AT13",
-      "subjectName": "Vienna",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "AdministrativeArea2",
-        "City",
-        "EurostatNUTS2"
-      ],
-      "predicate": "typeOf",
-      "objectId": "City",
-      "objectName": "City",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
       "subjectId": "nuts/DE111",
       "subjectName": "Stuttgart",
       "subjectTypes": [
@@ -485,23 +468,6 @@
         "AdministrativeArea4",
         "City",
         "EurostatNUTS3"
-      ],
-      "predicate": "typeOf",
-      "objectId": "City",
-      "objectName": "City",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "nuts/DE6",
-      "subjectName": "Hamburg",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "AdministrativeArea4",
-        "City",
-        "EurostatNUTS1"
       ],
       "predicate": "typeOf",
       "objectId": "City",
@@ -608,6 +574,36 @@
       "subjectName": "Edéa",
       "subjectTypes": [
         "AdministrativeArea5",
+        "City"
+      ],
+      "predicate": "typeOf",
+      "objectId": "City",
+      "objectName": "City",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "subjectId": "wikidataId/Q1012924",
+      "subjectName": "Ceadîr-Lunga",
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "City"
+      ],
+      "predicate": "typeOf",
+      "objectId": "City",
+      "objectName": "City",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "subjectId": "wikidataId/Q1017402",
+      "subjectName": "Frisange",
+      "subjectTypes": [
+        "AdministrativeArea1",
         "City"
       ],
       "predicate": "typeOf",

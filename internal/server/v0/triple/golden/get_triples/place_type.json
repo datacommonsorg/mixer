@@ -2148,22 +2148,6 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
-      "subjectId": "country/MAC",
-      "subjectName": "Macau",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "City",
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
       "subjectId": "country/MAF",
       "subjectName": "Saint Martin",
       "subjectTypes": [
@@ -2889,22 +2873,6 @@
       "subjectId": "country/QAT",
       "subjectName": "Qatar",
       "subjectTypes": [
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "country/REU",
-      "subjectName": "Réunion",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "AdministrativeArea2",
         "Country"
       ],
       "predicate": "typeOf",
@@ -3693,21 +3661,6 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
-      "subjectId": "country/VGB",
-      "subjectName": "British Virgin Islands",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "Country"
-      ],
-      "predicate": "typeOf",
-      "objectId": "Country",
-      "objectName": "Country",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
       "subjectId": "country/VIR",
       "subjectName": "U.S. Virgin Islands",
       "subjectTypes": [
@@ -4057,53 +4010,8 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
-      "subjectId": "geoId/01",
-      "subjectName": "Alabama",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
       "subjectId": "geoId/02",
       "subjectName": "Alaska",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "geoId/02",
-      "subjectName": "Alaska",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "geoId/04",
-      "subjectName": "Arizona",
       "subjectTypes": [
         "AdministrativeArea1",
         "State"
@@ -4147,53 +4055,8 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
-      "subjectId": "geoId/05",
-      "subjectName": "Arkansas",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
       "subjectId": "geoId/06",
       "subjectName": "California",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "geoId/06",
-      "subjectName": "California",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "geoId/08",
-      "subjectName": "Colorado",
       "subjectTypes": [
         "AdministrativeArea1",
         "State"
@@ -4237,53 +4100,8 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
-      "subjectId": "geoId/09",
-      "subjectName": "Connecticut",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
       "subjectId": "geoId/10",
       "subjectName": "Delaware",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "geoId/10",
-      "subjectName": "Delaware",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "geoId/11",
-      "subjectName": "District of Columbia",
       "subjectTypes": [
         "AdministrativeArea1",
         "State"
@@ -4327,53 +4145,8 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
-      "subjectId": "geoId/12",
-      "subjectName": "Florida",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
       "subjectId": "geoId/13",
       "subjectName": "Georgia",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "geoId/13",
-      "subjectName": "Georgia",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "geoId/15",
-      "subjectName": "Hawaii",
       "subjectTypes": [
         "AdministrativeArea1",
         "State"
@@ -4417,53 +4190,8 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
-      "subjectId": "geoId/16",
-      "subjectName": "Idaho",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
       "subjectId": "geoId/17",
       "subjectName": "Illinois",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "geoId/17",
-      "subjectName": "Illinois",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "geoId/18",
-      "subjectName": "Indiana",
       "subjectTypes": [
         "AdministrativeArea1",
         "State"
@@ -4507,53 +4235,8 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
-      "subjectId": "geoId/19",
-      "subjectName": "Iowa",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
       "subjectId": "geoId/20",
       "subjectName": "Kansas",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "geoId/20",
-      "subjectName": "Kansas",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "geoId/21",
-      "subjectName": "Kentucky",
       "subjectTypes": [
         "AdministrativeArea1",
         "State"
@@ -4597,53 +4280,8 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
-      "subjectId": "geoId/22",
-      "subjectName": "Louisiana",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
       "subjectId": "geoId/23",
       "subjectName": "Maine",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "geoId/23",
-      "subjectName": "Maine",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "geoId/24",
-      "subjectName": "Maryland",
       "subjectTypes": [
         "AdministrativeArea1",
         "State"
@@ -4687,53 +4325,8 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
-      "subjectId": "geoId/25",
-      "subjectName": "Massachusetts",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
       "subjectId": "geoId/26",
       "subjectName": "Michigan",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "geoId/26",
-      "subjectName": "Michigan",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "geoId/27",
-      "subjectName": "Minnesota",
       "subjectTypes": [
         "AdministrativeArea1",
         "State"
@@ -4777,53 +4370,8 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
-      "subjectId": "geoId/28",
-      "subjectName": "Mississippi",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
       "subjectId": "geoId/29",
       "subjectName": "Missouri",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "geoId/29",
-      "subjectName": "Missouri",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "geoId/30",
-      "subjectName": "Montana",
       "subjectTypes": [
         "AdministrativeArea1",
         "State"
@@ -4867,53 +4415,8 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
-      "subjectId": "geoId/31",
-      "subjectName": "Nebraska",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
       "subjectId": "geoId/32",
       "subjectName": "Nevada",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "geoId/32",
-      "subjectName": "Nevada",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "geoId/33",
-      "subjectName": "New Hampshire",
       "subjectTypes": [
         "AdministrativeArea1",
         "State"
@@ -4957,53 +4460,8 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
-      "subjectId": "geoId/34",
-      "subjectName": "New Jersey",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
       "subjectId": "geoId/35",
       "subjectName": "New Mexico",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "geoId/35",
-      "subjectName": "New Mexico",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "geoId/36",
-      "subjectName": "New York",
       "subjectTypes": [
         "AdministrativeArea1",
         "State"
@@ -5047,53 +4505,8 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
-      "subjectId": "geoId/37",
-      "subjectName": "North Carolina",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
       "subjectId": "geoId/38",
       "subjectName": "North Dakota",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "geoId/38",
-      "subjectName": "North Dakota",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "geoId/39",
-      "subjectName": "Ohio",
       "subjectTypes": [
         "AdministrativeArea1",
         "State"
@@ -5137,53 +4550,8 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
-      "subjectId": "geoId/40",
-      "subjectName": "Oklahoma",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
       "subjectId": "geoId/41",
       "subjectName": "Oregon",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "geoId/41",
-      "subjectName": "Oregon",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "geoId/42",
-      "subjectName": "Pennsylvania",
       "subjectTypes": [
         "AdministrativeArea1",
         "State"
@@ -5227,53 +4595,8 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
-      "subjectId": "geoId/44",
-      "subjectName": "Rhode Island",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
       "subjectId": "geoId/45",
       "subjectName": "South Carolina",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "geoId/45",
-      "subjectName": "South Carolina",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "geoId/46",
-      "subjectName": "South Dakota",
       "subjectTypes": [
         "AdministrativeArea1",
         "State"
@@ -5317,53 +4640,8 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
-      "subjectId": "geoId/47",
-      "subjectName": "Tennessee",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
       "subjectId": "geoId/48",
       "subjectName": "Texas",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "geoId/48",
-      "subjectName": "Texas",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "geoId/49",
-      "subjectName": "Utah",
       "subjectTypes": [
         "AdministrativeArea1",
         "State"
@@ -5407,53 +4685,8 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
-      "subjectId": "geoId/50",
-      "subjectName": "Vermont",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
       "subjectId": "geoId/51",
       "subjectName": "Virginia",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "geoId/51",
-      "subjectName": "Virginia",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "geoId/53",
-      "subjectName": "Washington",
       "subjectTypes": [
         "AdministrativeArea1",
         "State"
@@ -5497,53 +4730,8 @@
       "provenanceId": "dc/5n63hr1"
     },
     {
-      "subjectId": "geoId/54",
-      "subjectName": "West Virginia",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
       "subjectId": "geoId/55",
       "subjectName": "Wisconsin",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "geoId/55",
-      "subjectName": "Wisconsin",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "geoId/56",
-      "subjectName": "Wyoming",
       "subjectTypes": [
         "AdministrativeArea1",
         "State"
@@ -6320,38 +5508,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/rdj6vy2"
-    },
-    {
-      "subjectId": "wikidataId/Q43433",
-      "subjectName": "Chandigarh",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "City",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
       "provenanceId": "dc/pnqh772"
-    },
-    {
-      "subjectId": "wikidataId/Q46107",
-      "subjectName": "Dadra and Nagar Haveli",
-      "subjectTypes": [
-        "AdministrativeArea2",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/p1b12e3"
     },
     {
       "subjectId": "wikidataId/Q46107",
@@ -6427,21 +5584,6 @@
         "Class"
       ],
       "provenanceId": "dc/vtdd2t1"
-    },
-    {
-      "subjectId": "wikidataId/Q677037",
-      "subjectName": "Telangana",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "State"
-      ],
-      "predicate": "typeOf",
-      "objectId": "State",
-      "objectName": "State",
-      "objectTypes": [
-        "Class"
-      ],
-      "provenanceId": "dc/pnqh772"
     }
   ]
 }

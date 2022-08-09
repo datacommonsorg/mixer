@@ -45,22 +45,22 @@ func TestGetPropertyValues(t *testing.T) {
 			valueType  string
 			limit      int32
 		}{
-			{
-				"name.json",
-				[]string{"State", "geoId/05", "Count_Person", "dc/p/cmtdk79lnk2pd"},
-				"name",
-				"out",
-				"",
-				0,
-			},
-			{
-				"contained_in_place.json",
-				[]string{"geoId/06085", "geoId/0647766"},
-				"containedInPlace",
-				"",
-				"City",
-				0,
-			},
+			// {
+			// 	"name.json",
+			// 	[]string{"State", "geoId/05", "Count_Person", "dc/p/cmtdk79lnk2pd"},
+			// 	"name",
+			// 	"out",
+			// 	"",
+			// 	0,
+			// },
+			// {
+			// 	"contained_in_place.json",
+			// 	[]string{"geoId/06085", "geoId/0647766"},
+			// 	"containedInPlace",
+			// 	"",
+			// 	"City",
+			// 	0,
+			// },
 			{
 				"contained_in_place_all.json",
 				[]string{"geoId/06085", "geoId/0647766"},
@@ -69,22 +69,22 @@ func TestGetPropertyValues(t *testing.T) {
 				"",
 				0,
 			},
-			{
-				"location.json",
-				[]string{"geoId/05", "geoId/06"},
-				"location",
-				"",
-				"Election",
-				0,
-			},
-			{
-				"limit.json",
-				[]string{"country/USA"},
-				"name",
-				"out",
-				"",
-				1,
-			},
+			// {
+			// 	"location.json",
+			// 	[]string{"geoId/05", "geoId/06"},
+			// 	"location",
+			// 	"",
+			// 	"Election",
+			// 	0,
+			// },
+			// {
+			// 	"limit.json",
+			// 	[]string{"country/USA"},
+			// 	"name",
+			// 	"out",
+			// 	"",
+			// 	1,
+			// },
 		} {
 			req := &pb.GetPropertyValuesRequest{
 				Dcids:     c.dcids,

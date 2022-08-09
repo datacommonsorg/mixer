@@ -169,16 +169,6 @@
               "provenanceId": "dc/5n63hr1"
             },
             {
-              "name": "Macau",
-              "types": [
-                "AdministrativeArea1",
-                "City",
-                "Country"
-              ],
-              "dcid": "country/MAC",
-              "provenanceId": "dc/5n63hr1"
-            },
-            {
               "name": "Northern Mariana Islands",
               "types": [
                 "AdministrativeArea1",
@@ -212,16 +202,6 @@
                 "Country"
               ],
               "dcid": "country/PCN",
-              "provenanceId": "dc/5n63hr1"
-            },
-            {
-              "name": "Réunion",
-              "types": [
-                "AdministrativeArea1",
-                "AdministrativeArea2",
-                "Country"
-              ],
-              "dcid": "country/REU",
               "provenanceId": "dc/5n63hr1"
             },
             {
@@ -2121,15 +2101,6 @@
                 "Country"
               ],
               "dcid": "country/VEN",
-              "provenanceId": "dc/5n63hr1"
-            },
-            {
-              "name": "British Virgin Islands",
-              "types": [
-                "AdministrativeArea1",
-                "Country"
-              ],
-              "dcid": "country/VGB",
               "provenanceId": "dc/5n63hr1"
             },
             {

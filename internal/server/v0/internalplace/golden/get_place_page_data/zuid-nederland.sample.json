@@ -17904,16 +17904,6 @@
           "pop": 2544806
         },
         {
-          "dcid": "nuts/NL41",
-          "name": "Noord-Brabant",
-          "pop": 2544806
-        },
-        {
-          "dcid": "nuts/NL42",
-          "name": "Limburg",
-          "pop": 1116137
-        },
-        {
           "dcid": "nuts/NL42",
           "name": "Limburg",
           "pop": 1116137
@@ -17926,16 +17916,6 @@
           "dcid": "nuts/NL41",
           "name": "Noord-Brabant",
           "pop": 2544806
-        },
-        {
-          "dcid": "nuts/NL41",
-          "name": "Noord-Brabant",
-          "pop": 2544806
-        },
-        {
-          "dcid": "nuts/NL42",
-          "name": "Limburg",
-          "pop": 1116137
         },
         {
           "dcid": "nuts/NL42",
@@ -17985,8 +17965,6 @@
   "childPlacesType": "AdministrativeArea1",
   "childPlaces": [
     "nuts/NL41",
-    "nuts/NL41",
-    "nuts/NL42",
     "nuts/NL42"
   ],
   "parentPlaces": [

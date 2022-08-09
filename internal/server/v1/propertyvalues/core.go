@@ -171,7 +171,7 @@ func nextOut(ctx context.Context, s *outState, btGroup *bigtable.Group) (bool, e
 				if len(entity.Types) > 0 {
 					for _, t := range entity.Types {
 						l := s.mergedEntities[e][p][t]
-						if len(l) > 0 && entity.Dcid < l[len(l)-1].Dcid {
+						if len(l) > 0 && entity.Dcid <= l[len(l)-1].Dcid {
 							// This entity has been processed for type "t".
 							processed = true
 							break
@@ -265,7 +265,7 @@ func nextIn(ctx context.Context, s *inState, btGroup *bigtable.Group) (bool, err
 				if len(entity.Types) > 0 {
 					for _, t := range entity.Types {
 						l := s.mergedEntities[e][p][t]
-						if len(l) > 0 && entity.Dcid < l[len(l)-1].Dcid {
+						if len(l) > 0 && entity.Dcid <= l[len(l)-1].Dcid {
 							// This entity has been processed for type "t".
 							processed = true
 							break

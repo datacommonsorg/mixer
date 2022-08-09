@@ -22,21 +22,6 @@
         "CensusZipCodeTabulationArea"
       ],
       "predicate": "containedInPlace",
-      "objectId": "geoId/72005",
-      "objectName": "Aguadilla",
-      "objectTypes": [
-        "AdministrativeArea2",
-        "County"
-      ],
-      "provenanceId": "dc/sm3m2w3"
-    },
-    {
-      "subjectId": "zip/00603",
-      "subjectName": "00603",
-      "subjectTypes": [
-        "CensusZipCodeTabulationArea"
-      ],
-      "predicate": "containedInPlace",
       "objectId": "geoId/7298",
       "objectName": "Resident Commissioner District (at Large) (113th Congress), Puerto Rico",
       "objectTypes": [
