@@ -32,7 +32,7 @@ import (
 var (
 	grpcAddr = flag.String("grpc_addr", "127.0.0.1:12345", "Address of grpc server.")
 	profAddr = flag.String("prof_addr", "http://localhost:6060", "Address of HTTP profile server.")
-	temp_path = flag.String("temp_path", "http_memprof_out", "Folder to store temporary output of memory profiles over HTTP")
+	tempPath = flag.String("temp_path", "http_memprof_out", "Folder to store temporary output of memory profiles over HTTP")
 )
 
 func readProfile (filename string) (*profile.Profile, error) {
@@ -73,27 +73,27 @@ func GetTotalSpaceAllocFromProfile(filename string) (int64) {
 		return total
 	}
 	// sample index of alloc_space in neap profiles from http/net/pprof
-	const alloc_space_sample_index = 1;
+	const allocSpaceSampleIndex = 1;
 
 	prof, err := readProfile(filename)
 	if err != nil {
 		log.Fatal(err)
 	}
 	valuef := func(v []int64) int64 {
-		return v[alloc_space_sample_index]
+		return v[allocSpaceSampleIndex]
 	}
 	total := computeTotal(prof, valuef)
 	return total
 }
 
-func BytesToMegabytes(bytes int64) int64 {
+func bytesToMegabytes(bytes int64) int64 {
 	return bytes / (1024 * 1024);
 }
 
-func save_profile(outPath string) {
-	output_location_flag := fmt.Sprintf("-output=%v", outPath)
+func saveProfile(outPath string) {
+	outputFlag := fmt.Sprintf("-output=%v", outPath)
 	heapProfileHttpPath := fmt.Sprintf("%v/debug/pprof/heap?gc=1", *profAddr)
-	cmd := exec.Command("go", "tool", "pprof", output_location_flag, "-proto", heapProfileHttpPath)
+	cmd := exec.Command("go", "tool", "pprof", outputFlag "-proto", heapProfileHttpPath)
 	var stderr bytes.Buffer
 	cmd.Stderr = &stderr
 	err := cmd.Run()
@@ -103,47 +103,40 @@ func save_profile(outPath string) {
 	}
 }
 
-func compute_memory_profDiff (profBefore, profAfter, outPath string) {
-	// TODO(snny): outPath is currently not used
-	cmd := exec.Command("go", "tool", "pprof", "-top", "-nodecount=10", "-sample_index=alloc_space", "-base", profBefore, profAfter)
-	var stdout bytes.Buffer
-	var stderr bytes.Buffer
-	cmd.Stdout = &stdout
-	cmd.Stderr = &stderr
-	err := cmd.Run()
-	if err != nil {
-		fmt.Println(fmt.Sprint(err) + ": " + stderr.String())
-		return
-	}
-	fmt.Println(stdout.String())
-}
+func runWithProfile (key string, f func() (string, error)) {
+	profileLocationTemplate := *tempPath + "/go_http_memprof.%v.%v.pb"
 
-func run_with_profile (key string, f func() (string, error)) {
-	profile_location_template := *temp_path + "/go_http_memprof.%v.%v.pb"
+	profBefore := fmt.Sprintf(profileLocationTemplate, "before", key)
+	profAfter := fmt.Sprintf(profileLocationTemplate, "after", key)
 
-	profBefore := fmt.Sprintf(profile_location_template, "before", key)
-	profAfter := fmt.Sprintf(profile_location_template, "after", key)
-	//profDiff := fmt.Sprintf(profile_location_template, "diff", key)
-
-	save_profile(profBefore)
-
+	saveProfile(profBefore)
 	respStr, err := f()
 	if err != nil {
 		log.Fatalf("could not run %d: %s", key, err)
 	}
-
-	save_profile(profAfter)
+	saveProfile(profAfter)
 
 	allocBefore := GetTotalSpaceAllocFromProfile(profBefore)
 	allocAfter := GetTotalSpaceAllocFromProfile(profAfter)
+
 	allocDiff := allocAfter - allocBefore
-	allocDiffMb := BytesToMegabytes(allocDiff)
+	allocDiffMb := bytesToMegabytes(allocDiff)
+
 	fmt.Printf("%v used %d MB and returned a response of length %d\n", key, allocDiffMb, len(respStr))
 
-	// TODO(snny): use this so that a detailed proto file of the diff is
-	// available for further inspection
-	// compute_memory_profDiff(profBefore, profAfter, profDiff)
-	//totalMb := BytesToMegabytes(GetTotalSpaceAllocFromProfile(profDiff))
+	// NOTE: Another approach here would be to use go tool pprof to compute a
+	// profile with "substraction", where the profile consists of the
+	// differences with the "base profile". The numerical diff can be read from
+	// that "diff profile" the same way we read the total memory allocated in
+	// the "before" and "after" profiles currently.
+	// To achieve this, one could do something like the following:
+	//////////
+	// profDiff := fmt.Sprintf(profileLocationTemplate, "diff", key)
+	// outputFlag := fmt.Sprintf("-output=%v", profDiff)
+	// // error-checking omitted from the following
+	// cmd := exec.Command("go", "tool", "pprof", "-proto", outputFlag, "-sample_index=alloc_space", "-base", profBefore, profAfter)
+	// allocDiffMb := bytesToMegabytes(GetTotalSpaceAllocFromProfile(profDiff)
+	//////////
 }
 
 func main() {
@@ -152,9 +145,9 @@ func main() {
 	flag.Parse()
 
 	// Ensure the temp output path exists
-	err := os.MkdirAll(*temp_path, 0o0700)
+	err := os.MkdirAll(*tempPath, 0o0700)
 	if err != nil {
-		log.Fatalf("could not create temp directory at %v: %v", temp_path, err)
+		log.Fatalf("could not create temp directory at %v: %v", tempPath, err)
 	}
 
 	// Set up a connection to the server.
@@ -169,7 +162,7 @@ func main() {
 	c := pb.NewMixerClient(conn)
 	ctx := context.Background()
 
-	var BOSL int64
+	var count int64
 	for _, allFacets := range []bool{true, false} {
 		for _, r := range []struct{
 			entityType   string
@@ -207,7 +200,7 @@ func main() {
 					[]string{"Count_Person"},
 				},
 		}{
-			funcKey := fmt.Sprintf("BulkObservationsSeriesLinked_%d", BOSL)
+			funcKey := fmt.Sprintf("BulkObservationsSeriesLinked_%d", count)
 			funcToProfile := func() (string, error) {
 				req := &pb.BulkObservationsSeriesLinkedRequest{
 					Variables:      r.variables,
@@ -223,8 +216,8 @@ func main() {
 				respStr := resp.String()
 				return respStr, nil
 			}
-			run_with_profile(funcKey, funcToProfile)
-			BOSL++
+			runWithProfile(funcKey, funcToProfile)
+			count++
 		}
 	}
 
