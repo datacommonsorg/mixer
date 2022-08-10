@@ -73,7 +73,7 @@ var (
 	// Profile startup memory instead of listening for requests
 	startupMemoryProfile = flag.String("startup_memprof", "", "File path to write the memory profile of mixer startup to")
 	// Serve live profiles of the process (CPU, memory, etc.) over HTTP on this port
-	httpProfilePort = flag.Int("httpprof_port", nil, "Port to serve HTTP profiles from")
+	httpProfilePort = flag.Int("httpprof_port", 0, "Port to serve HTTP profiles from")
 )
 
 const (
@@ -242,8 +242,8 @@ func main() {
 	}
 
 	// Launch a goroutine that will serve memory requests using net/http/pprof
-	if *httpProfilePort != nil {
-		go func()
+	if *httpProfilePort != 0 {
+		go func(){
 			// Code from https://pkg.go.dev/net/http/pprof README
 			httpProfileFrom := fmt.Sprintf("localhost:%d", *httpProfilePort)
 			log.Printf("Serving profile over HTTP on %v", httpProfileFrom)
