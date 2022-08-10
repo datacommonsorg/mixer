@@ -5,7 +5,7 @@ GetLocationsRankings,0.434
 GetPlaceMetadata,0.394
 GetPlaceStatDateWithinPlace,0.302
 GetPlaceStatVars,1.108
-GetPlaceStatVarsUnionV1,0.831
+GetEntityStatVarsUnionV1,0.831
 GetPlacesIn,0.415
 GetPropertyLabels,0.362
 GetPropertyValues,0.756

@@ -71,7 +71,9 @@ var (
 	serveMixerService = flag.Bool("serve_mixer_service", true, "Serve Mixer service")
 	serveReconService = flag.Bool("serve_recon_service", false, "Serve Recon service")
 	// Profile startup memory instead of listening for requests
-	memprofile = flag.String("memprofile", "", "write memory profile to `file`")
+	startupMemoryProfile = flag.String("startup_memprof", "", "File path to write the memory profile of mixer startup to")
+	// Serve live profiles of the process (CPU, memory, etc.) over HTTP on this port
+	httpProfilePort = flag.Int("httpprof_port", nil, "Port to serve HTTP profiles from")
 )
 
 const (
@@ -221,31 +223,40 @@ func main() {
 	healthService := healthcheck.NewHealthChecker()
 	grpc_health_v1.RegisterHealthServer(srv, healthService)
 
-	if *memprofile != "" {
-		f, err := os.Create(*memprofile)
+	// Gather and write memory profile and quit right before listening for
+	// requests
+	if *startupMemoryProfile != "" {
+		// Code from https://pkg.go.dev/runtime/pprof README
+		f, err := os.Create(*startupMemoryProfile)
         if err != nil {
-            log.Fatalf("could not create memory profile: ", err)
+            log.Fatalf("could not create memory profile: %s", err)
         }
-        defer f.Close() // error handling omitted for example
-        runtime.GC() // get up-to-date statistics
+        defer f.Close()
+		// explicitly trigger garbage collection to accurately understand memory
+		// still in use
+        runtime.GC()
         if err := pprof.WriteHeapProfile(f); err != nil {
-            log.Fatalf("could not write memory profile: ", err)
+            log.Fatalf("could not write memory profile: %s", err)
         }
+		return;
+	}
 
-	} else {
-		// Listen on network
-		go func(){
-			log.Println("pre-net/http/pprof")
-			log.Println(http.ListenAndServe("localhost:6060", nil))
-			log.Println("post-net/http/pprof")
+	// Launch a goroutine that will serve memory requests using net/http/pprof
+	if *httpProfilePort != nil {
+		go func()
+			httpProfileFrom := fmt.Sprintf("localhost:%d", *httpProfilePort)
+			log.Printf("Serving profile over HTTP on %v", httpProfileFrom)
+			log.Println(http.ListenAndServe(httpProfileFrom, nil))
 		}()
-		lis, err := net.Listen("tcp", fmt.Sprintf(":%d", *port))
-		if err != nil {
-			log.Fatalf("Failed to listen on network: %v", err)
-		}
-		log.Println("Mixer ready to serve!!")
-		if err := srv.Serve(lis); err != nil {
-			log.Fatalf("Failed to serve: %v", err)
-		}
+	}
+
+	// Listen on network
+	lis, err := net.Listen("tcp", fmt.Sprintf(":%d", *port))
+	if err != nil {
+		log.Fatalf("Failed to listen on network: %v", err)
+	}
+	log.Println("Mixer ready to serve!!")
+	if err := srv.Serve(lis); err != nil {
+		log.Fatalf("Failed to serve: %v", err)
 	}
 }

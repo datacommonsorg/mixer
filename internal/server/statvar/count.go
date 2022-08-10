@@ -23,22 +23,22 @@ import (
 	"google.golang.org/protobuf/proto"
 )
 
-// Count checks if places have data for stat vars and stat var groups.
+// Count checks if entities have data for stat vars and stat var groups.
 //
-// Returns a two level map from stat var dcid to place dcid to the number of
-// stat vars with data. For a given stat var, if a place has no data, it will
+// Returns a two level map from stat var dcid to entity dcid to the number of
+// stat vars with data. For a given stat var, if an entity has no data, it will
 // not show up in the second level map.
 func Count(
 	ctx context.Context,
 	st *store.Store,
 	svOrSvgs []string,
-	places []string,
+	entities []string,
 ) (map[string]map[string]int32, error) {
 	btDataList, err := bigtable.Read(
 		ctx,
 		st.BtGroup,
 		bigtable.BtSVAndSVGExistence,
-		[][]string{places, svOrSvgs},
+		[][]string{entities, svOrSvgs},
 		func(jsonRaw []byte) (interface{}, error) {
 			var statVarExistence pb.EntityStatVarExistence
 			if err := proto.Unmarshal(jsonRaw, &statVarExistence); err != nil {
@@ -58,18 +58,18 @@ func Count(
 	// Populate the count
 	for _, btData := range btDataList {
 		for _, row := range btData {
-			p := row.Parts[0]
+			e := row.Parts[0]
 			sv := row.Parts[1]
 			c := row.Data.(*pb.EntityStatVarExistence)
 			descSVCount := c.GetDescendentStatVarCount()
-			if _, ok := result[sv][p]; !ok {
-				// When c.NumDescendentStatVars = 0, placeSv.StatVar is a stat var
+			if _, ok := result[sv][e]; !ok {
+				// When c.NumDescendentStatVars = 0, entitySv.StatVar is a stat var
 				// (not a stat var group). In this case the check here is necessary,
 				// otherwise the proto default 0 is compared, and this map field will
 				// not be populated.
-				result[sv][p] = descSVCount
-			} else if descSVCount > result[sv][p] {
-				result[sv][p] = descSVCount
+				result[sv][e] = descSVCount
+			} else if descSVCount > result[sv][e] {
+				result[sv][e] = descSVCount
 			}
 		}
 	}
@@ -77,9 +77,9 @@ func Count(
 	if st.MemDb.GetSvg() != nil {
 		for sv, placeData := range st.MemDb.GetPlaceSvExistence() {
 			result[sv] = map[string]int32{}
-			for _, place := range places {
-				if count, ok := placeData[place]; ok {
-					result[sv][place] = count
+			for _, entity := range entities {
+				if count, ok := placeData[entity]; ok {
+					result[sv][entity] = count
 				}
 			}
 		}

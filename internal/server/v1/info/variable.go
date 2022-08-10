@@ -86,7 +86,7 @@ func VariableGroupInfo(
 		ctx,
 		&pb.GetStatVarGroupNodeRequest{
 			StatVarGroup: in.GetDcid(),
-			Places:       in.GetEntities(),
+			Entities:     in.GetEntities(),
 		},
 		store,
 		cache,

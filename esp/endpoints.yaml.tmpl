@@ -35,6 +35,71 @@ endpoints:
 
 usage:
   rules:
-  # All methods can be called without an API Key.
+  # V0 APIs can be called without an API Key.
+  # This will be removed once the V0 users are fully migrated.
   - selector: "*"
+    allow_unregistered_calls: false
+  - selector: "*.Mixer.Query"
+    allow_unregistered_calls: true
+  - selector: "*.Mixer.GetPropertyLabels"
+    allow_unregistered_calls: true
+  - selector: "*.Mixer.GetPropertyValues"
+    allow_unregistered_calls: true
+  - selector: "*.Mixer.GetTriples"
+    allow_unregistered_calls: true
+  - selector: "*.Mixer.GetPlacesIn"
+    allow_unregistered_calls: true
+  - selector: "*.Mixer.GetStats"
+    allow_unregistered_calls: true
+  - selector: "*.Mixer.GetStatSetSeries"
+    allow_unregistered_calls: true
+  - selector: "*.Mixer.GetStatValue"
+    allow_unregistered_calls: true
+  - selector: "*.Mixer.GetStatSeries"
+    allow_unregistered_calls: true
+  - selector: "*.Mixer.GetStatAll"
+    allow_unregistered_calls: true
+  - selector: "*.Mixer.GetStatSetWithinPlace"
+    allow_unregistered_calls: true
+  - selector: "*.Mixer.GetStatSetWithinPlaceAll"
+    allow_unregistered_calls: true
+  - selector: "*.Mixer.GetStatSet"
+    allow_unregistered_calls: true
+  - selector: "*.Mixer.GetStatSetSeriesWithinPlace"
+    allow_unregistered_calls: true
+  - selector: "*.Mixer.GetLocationsRankings"
+    allow_unregistered_calls: true
+  - selector: "*.Mixer.GetRelatedLocations"
+    allow_unregistered_calls: true
+  - selector: "*.Mixer.GetPlacePageData"
+    allow_unregistered_calls: true
+  - selector: "*.Mixer.GetBioPageData"
+    allow_unregistered_calls: true
+  - selector: "*.Mixer.Translate"
+    allow_unregistered_calls: true
+  - selector: "*.Mixer.Search"
+    allow_unregistered_calls: true
+  - selector: "*.Mixer.GetVersion"
+    allow_unregistered_calls: true
+  - selector: "*.Mixer.GetPlaceStatsVar"
+    allow_unregistered_calls: true
+  - selector: "*.Mixer.GetPlaceMetadata"
+    allow_unregistered_calls: true
+  - selector: "*.Mixer.GetPlaceStatVarsUnionV1"
+    allow_unregistered_calls: true
+  - selector: "*.Mixer.GetPlaceStatDateWithinPlace"
+    allow_unregistered_calls: true
+  - selector: "*.Mixer.GetStatDateWithinPlace"
+    allow_unregistered_calls: true
+  - selector: "*.Mixer.GetStatVarGroup"
+    allow_unregistered_calls: true
+  - selector: "*.Mixer.GetStatVarGroupNode"
+    allow_unregistered_calls: true
+  - selector: "*.Mixer.GetStatVarPath"
+    allow_unregistered_calls: true
+  - selector: "*.Mixer.SearchStatVar"
+    allow_unregistered_calls: true
+  - selector: "*.Mixer.GetStatVarSummary"
+    allow_unregistered_calls: true
+  - selector: "*.Mixer.GetStatVarMatch"
     allow_unregistered_calls: true
