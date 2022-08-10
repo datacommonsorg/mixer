@@ -225,14 +225,14 @@ func main() {
 		// Code from https://pkg.go.dev/runtime/pprof README
 		f, err := os.Create(*startupMemoryProfile)
         if err != nil {
-            log.Fatalf("could not create memory profile: ", err)
+            log.Fatalf("could not create memory profile: %s", err)
         }
         defer f.Close()
 		// explicitly trigger garbage collection to accurately understand memory
 		// still in use
         runtime.GC()
         if err := pprof.WriteHeapProfile(f); err != nil {
-            log.Fatalf("could not write memory profile: ", err)
+            log.Fatalf("could not write memory profile: %s", err)
         }
 		return;
 	}
