@@ -93,7 +93,7 @@ func bytesToMegabytes(bytes int64) int64 {
 func saveProfile(outPath string) {
 	outputFlag := fmt.Sprintf("-output=%v", outPath)
 	heapProfileHttpPath := fmt.Sprintf("%v/debug/pprof/heap?gc=1", *profAddr)
-	cmd := exec.Command("go", "tool", "pprof", outputFlag "-proto", heapProfileHttpPath)
+	cmd := exec.Command("go", "tool", "pprof", outputFlag, "-proto", heapProfileHttpPath)
 	var stderr bytes.Buffer
 	cmd.Stderr = &stderr
 	err := cmd.Run()
