@@ -244,6 +244,7 @@ func main() {
 	// Launch a goroutine that will serve memory requests using net/http/pprof
 	if *httpProfilePort != nil {
 		go func()
+			// Code from https://pkg.go.dev/net/http/pprof README
 			httpProfileFrom := fmt.Sprintf("localhost:%d", *httpProfilePort)
 			log.Printf("Serving profile over HTTP on %v", httpProfileFrom)
 			log.Println(http.ListenAndServe(httpProfileFrom, nil))
