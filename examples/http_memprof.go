@@ -1,4 +1,4 @@
-// Copyright 2019 Google LLC
+// Copyright 2022 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -30,7 +30,8 @@ import (
 
 
 var (
-	addr = flag.String("addr", "127.0.0.1:12345", "Address of grpc server.")
+	grpcAddr = flag.String("grpc_addr", "127.0.0.1:12345", "Address of grpc server.")
+	profAddr = flag.String("prof_addr", "http://localhost:6060", "Address of HTTP profile server.")
 	temp_path = flag.String("temp_path", "http_memprof_out", "Folder to store temporary output of memory profiles over HTTP")
 )
 
@@ -91,7 +92,8 @@ func BytesToMegabytes(bytes int64) int64 {
 
 func save_profile(outPath string) {
 	output_location_flag := fmt.Sprintf("-output=%v", outPath)
-	cmd := exec.Command("go", "tool", "pprof", output_location_flag, "-proto", "http://localhost:6060/debug/pprof/heap?gc=1")
+	heapProfileHttpPath := fmt.Sprintf("%v/debug/pprof/heap?gc=1", *profAddr)
+	cmd := exec.Command("go", "tool", "pprof", output_location_flag, "-proto", heapProfileHttpPath)
 	var stderr bytes.Buffer
 	cmd.Stderr = &stderr
 	err := cmd.Run()
@@ -156,7 +158,7 @@ func main() {
 	}
 
 	// Set up a connection to the server.
-	conn, err := grpc.Dial(*addr,
+	conn, err := grpc.Dial(*grpcAddr,
 		grpc.WithInsecure(),
 		grpc.WithDefaultCallOptions(grpc.MaxCallRecvMsgSize(100000000 /* 100M */)),
 	)
