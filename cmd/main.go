@@ -219,6 +219,8 @@ func main() {
 	healthService := healthcheck.NewHealthChecker()
 	grpc_health_v1.RegisterHealthServer(srv, healthService)
 
+	// Gather and write memory profile and quit right before listening for
+	// requests
 	if *startupMemoryProfile != "" {
 		// Code from https://pkg.go.dev/runtime/pprof README
 		f, err := os.Create(*startupMemoryProfile)
@@ -226,19 +228,21 @@ func main() {
             log.Fatalf("could not create memory profile: ", err)
         }
         defer f.Close()
-        runtime.GC() // get up-to-date statistics by triggering garbage collection
+		// explicitly trigger garbage collection to accurately understand memory
+		// still in use
+        runtime.GC()
         if err := pprof.WriteHeapProfile(f); err != nil {
             log.Fatalf("could not write memory profile: ", err)
         }
-	} else {
-		// Listen on network
-		lis, err := net.Listen("tcp", fmt.Sprintf(":%d", *port))
-		if err != nil {
-			log.Fatalf("Failed to listen on network: %v", err)
-		}
-		log.Println("Mixer ready to serve!!")
-		if err := srv.Serve(lis); err != nil {
-			log.Fatalf("Failed to serve: %v", err)
-		}
+		return;
+	}
+	// Listen on network
+	lis, err := net.Listen("tcp", fmt.Sprintf(":%d", *port))
+	if err != nil {
+		log.Fatalf("Failed to listen on network: %v", err)
+	}
+	log.Println("Mixer ready to serve!!")
+	if err := srv.Serve(lis); err != nil {
+		log.Fatalf("Failed to serve: %v", err)
 	}
 }
