@@ -48,6 +48,8 @@ var (
 		"lgdCode",
 		"udiseCode",
 		"fips52AlphaCode",
+		"countryAlpha3Code",
+		"countryNumericCode",
 	}
 )
 

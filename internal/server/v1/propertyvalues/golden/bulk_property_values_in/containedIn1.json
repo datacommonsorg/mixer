@@ -9475,22 +9475,6 @@
           "provenanceId": "dc/1cvgxf"
         },
         {
-          "name": "grid_0.25deg/36.12500_-121.12500",
-          "types": [
-            "GeoGridPlace_0.25Deg"
-          ],
-          "dcid": "grid_0.25deg/36.12500_-121.12500",
-          "provenanceId": "dc/1cvgxf"
-        },
-        {
-          "name": "grid_0.25deg/36.12500_-121.37500",
-          "types": [
-            "GeoGridPlace_0.25Deg"
-          ],
-          "dcid": "grid_0.25deg/36.12500_-121.37500",
-          "provenanceId": "dc/1cvgxf"
-        },
-        {
           "name": "grid_0.25deg/36.37500_-120.62500",
           "types": [
             "GeoGridPlace_0.25Deg"
@@ -9523,14 +9507,6 @@
           "provenanceId": "dc/1cvgxf"
         },
         {
-          "name": "grid_0.25deg/36.37500_-121.62500",
-          "types": [
-            "GeoGridPlace_0.25Deg"
-          ],
-          "dcid": "grid_0.25deg/36.37500_-121.62500",
-          "provenanceId": "dc/1cvgxf"
-        },
-        {
           "name": "grid_0.25deg/36.62500_-121.12500",
           "types": [
             "GeoGridPlace_0.25Deg"
@@ -9544,14 +9520,6 @@
             "GeoGridPlace_0.25Deg"
           ],
           "dcid": "grid_0.25deg/36.62500_-121.37500",
-          "provenanceId": "dc/1cvgxf"
-        },
-        {
-          "name": "grid_0.25deg/36.62500_-121.62500",
-          "types": [
-            "GeoGridPlace_0.25Deg"
-          ],
-          "dcid": "grid_0.25deg/36.62500_-121.62500",
           "provenanceId": "dc/1cvgxf"
         },
         {
