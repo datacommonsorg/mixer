@@ -206,6 +206,51 @@ go run cmd/main.go \
 go tool pprof -sample_index=alloc_space -png grpc.memprof
 ```
 
+### Profile API Requests against a Running Mixer Instance
+
+Run the regular `go run cmd/main.go` command that you'd like to profile with the
+flag `--httpprof_port=<port, recommended 6060>`. This will run the mixer server
+with an HTTP handler at that port serving memory and CPU profiles of the running
+server.
+
+```bash
+# Command from ### Start Mixer as a gRPC server backed by TMCF + CSV files
+# In repo root directory
+go run cmd/main.go \
+    --mixer_project=datcom-mixer-staging \
+    --store_project=datcom-store \
+    --bq_dataset=$(head -1 deploy/storage/bigquery.version) \
+    --import_group_tables=$(head -1 deploy/storage/bigtable_import_groups.version) \
+    --schema_path=$PWD/deploy/mapping/ \
+    --use_branch_bt=true
+    --httpprof_port=6060     # <-- note the additional flag here
+```
+
+Once this server is ready to serve requests, you can send it requests and use
+the profile handler to retrieve memory and CPU profiles. `test/http_memprof.go`
+is able to run any number of requests specified, and log their memory usage. You
+can update this file to your profiling needs or use it as a starting point for
+an independent script that will automatically run a suite of tests.
+
+```bash
+# in another process...
+go run test/http_memprof.go
+	--grpc_addr=127.0.0.1:12345 # optional; where to find the Mixer server
+	--prof_addr=localhost:6060 # optional; where to find the live profile handler
+```
+
+`go tool pprof` also supports ad-hoc profiling of servers started as described
+above. To use, specify the URL at which the HTTP handler can be found as the
+input file argument. `pprof` will download a profile from the handler and open
+in interactive mode to run queries.
+
+```bash
+# ?gc=1 triggers a garbage collection run before the memory profile is served
+# See net/http/pprof for other URLs and profiles available https://pkg.go.dev/net/http/pprof
+# with no flags specifying output, pprof goes into interactive mode
+go tool pprof -sample_index=alloc_space localhost:6060/debug/pprof/heap?gc=1
+```
+
 ## Update prod golden files
 
 Run the following commands to update prod golden files from staging golden files
