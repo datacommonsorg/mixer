@@ -61,7 +61,7 @@ func Fetch(
 		}
 		cursorGroups = pi.CursorGroups
 	}
-	if limit == 0 || limit > defaultLimit {
+	if limit <= 0 || limit > defaultLimit {
 		limit = defaultLimit
 	}
 	cursorGroup := map[string]map[string]map[string][]*pb.Cursor{}

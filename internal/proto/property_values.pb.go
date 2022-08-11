@@ -97,8 +97,7 @@ type PropertyValuesRequest struct {
 
 	EntityProperty string `protobuf:"bytes,1,opt,name=entity_property,json=entityProperty,proto3" json:"entity_property,omitempty"`
 	// [Optional]
-	// The limit of the number of values to return. The maximium limit is 1000.
-	// If not specified, the default limit is 1000.
+	// The limit of number of values per type. If not specified, the default limit is 500.
 	Limit int32 `protobuf:"varint,3,opt,name=limit,proto3" json:"limit,omitempty"`
 	// [Optional]
 	// The pagination token for getting the next set of entries. This is empty
@@ -233,8 +232,7 @@ type BulkPropertyValuesRequest struct {
 	Property string   `protobuf:"bytes,1,opt,name=property,proto3" json:"property,omitempty"`
 	Entities []string `protobuf:"bytes,2,rep,name=entities,proto3" json:"entities,omitempty"`
 	// [Optional]
-	// The limit of the number of values to return. The maximium limit is 1000.
-	// If not specified, the default limit is 1000.
+	// The limit of number of values per type. If not specified, the default limit is 500.
 	// This limit is applied for each entity, instead of the bulk result.
 	Limit int32 `protobuf:"varint,3,opt,name=limit,proto3" json:"limit,omitempty"`
 	// [Optional]
