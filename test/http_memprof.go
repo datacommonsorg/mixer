@@ -151,13 +151,21 @@ func main() {
 	}
 
 	// Set up a connection to the server.
+	// gRPC server start listening last, so if we have connected to gRPC, we can
+	// assume that the pprof HTTP handlers is also on.
+	fmt.Printf("Attempting to make a connection to the gRPC server at %v\n", *grpcAddr)
 	conn, err := grpc.Dial(*grpcAddr,
 		grpc.WithInsecure(),
 		grpc.WithDefaultCallOptions(grpc.MaxCallRecvMsgSize(100000000 /* 100M */)),
+		// The grpc.WithBlock() option make this call block until a connection is
+		// established, internally retrying until needed.
+		grpc.WithBlock(),
 	)
 	if err != nil {
-		log.Fatalf("did not connect: %v", err)
+		log.Printf("Could not connect: %v\n", err)
 	}
+	log.Println("Connected to gRPC succesfully")
+
 	defer conn.Close()
 	c := pb.NewMixerClient(conn)
 	ctx := context.Background()
