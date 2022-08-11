@@ -16,6 +16,9 @@ package main
 
 import (
 	"context"
+	"runtime"
+	"runtime/pprof"
+	"os"
 	"flag"
 	"fmt"
 	"log"
@@ -65,6 +68,8 @@ var (
 	// Specify what services to serve
 	serveMixerService = flag.Bool("serve_mixer_service", true, "Serve Mixer service")
 	serveReconService = flag.Bool("serve_recon_service", false, "Serve Recon service")
+	// Profile startup memory instead of listening for requests
+	startupMemoryProfile = flag.String("startup_memprof", "", "File path to write the memory profile of mixer startup to")
 )
 
 const (
@@ -214,6 +219,23 @@ func main() {
 	healthService := healthcheck.NewHealthChecker()
 	grpc_health_v1.RegisterHealthServer(srv, healthService)
 
+	// Gather and write memory profile and quit right before listening for
+	// requests
+	if *startupMemoryProfile != "" {
+		// Code from https://pkg.go.dev/runtime/pprof README
+		f, err := os.Create(*startupMemoryProfile)
+        if err != nil {
+            log.Fatalf("could not create memory profile: %s", err)
+        }
+        defer f.Close()
+		// explicitly trigger garbage collection to accurately understand memory
+		// still in use
+        runtime.GC()
+        if err := pprof.WriteHeapProfile(f); err != nil {
+            log.Fatalf("could not write memory profile: %s", err)
+        }
+		return;
+	}
 	// Listen on network
 	lis, err := net.Listen("tcp", fmt.Sprintf(":%d", *port))
 	if err != nil {

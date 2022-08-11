@@ -182,6 +182,30 @@ go tool pprof -png cpu.prof
 go tool pprof -png mem.prof
 ```
 
+### Profile Mixer Startup Memory
+
+Run the regular `go run cmd/main.go` command that you'd like to profile with the
+flag `--startup_memprof=<output_file_path>`. This will save the memory profile
+to that path, and you can use `go tool pprof` to analyze it. For example;
+
+```bash
+# Command from ### Start Mixer as a gRPC server backed by TMCF + CSV files
+# In repo root directory
+go run cmd/main.go \
+    --mixer_project=datcom-mixer-staging \
+    --store_project=datcom-store \
+    --bq_dataset=$(head -1 deploy/storage/bigquery.version) \
+    --import_group_tables=$(head -1 deploy/storage/bigtable_import_groups.version) \
+    --schema_path=$PWD/deploy/mapping/ \
+    --use_branch_bt=true
+    --startup_memprof=grpc.memprof     # <-- note the additional flag here
+
+# -sample_index=alloc_space reports on all memory allocations, including those
+# that have been garbage collected. use -sample_index=inuse_space for memory
+# still in use after garbage collection
+go tool pprof -sample_index=alloc_space -png grpc.memprof
+```
+
 ## Update prod golden files
 
 Run the following commands to update prod golden files from staging golden files
