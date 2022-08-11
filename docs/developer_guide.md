@@ -228,15 +228,16 @@ go run cmd/main.go \
 
 Once this server is ready to serve requests, you can send it requests and use
 the profile handler to retrieve memory and CPU profiles. `test/http_memprof.go`
-is able to run any number of requests specified, and log their memory usage. You
-can update this file to your profiling needs or use it as a starting point for
-an independent script that will automatically run a suite of tests.
+is a program that automatically sends and profiles the memory usage of given
+gRPC calls. You can update this file to your profiling needs or use it as a
+starting point for an independent script that will automatically run a suite of
+tests.
 
 ```bash
 # in another process...
 go run test/http_memprof.go
-	--grpc_addr=127.0.0.1:12345 # optional; where to find the Mixer server
-	--prof_addr=localhost:6060 # optional; where to find the live profile handler
+	--grpc_addr=127.0.0.1:12345 # default is given; where to find the Mixer server
+	--prof_addr=localhost:6060 # default is given; where to find the live profile handler
 ```
 
 `go tool pprof` also supports ad-hoc profiling of servers started as described
