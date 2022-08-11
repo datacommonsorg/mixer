@@ -60,8 +60,8 @@ func PropertyValues(
 	data, pi, err := Fetch(
 		ctx,
 		store,
-		[]string{property},
 		[]string{entity},
+		[]string{property},
 		limit,
 		token,
 		direction,
@@ -76,10 +76,11 @@ func PropertyValues(
 			return nil, err
 		}
 	}
-	return &pb.PropertyValuesResponse{
-		Values:    data[property][entity],
+	res := &pb.PropertyValuesResponse{
 		NextToken: nextToken,
-	}, nil
+		Values:    MergeTypedEntities(data[entity][property]),
+	}
+	return res, nil
 }
 
 // BulkPropertyValues implements mixer.BulkPropertyValues handler.
@@ -110,8 +111,8 @@ func BulkPropertyValues(
 	data, pi, err := Fetch(
 		ctx,
 		store,
-		[]string{property},
 		entities,
+		[]string{property},
 		limit,
 		token,
 		direction,
@@ -134,7 +135,7 @@ func BulkPropertyValues(
 			res.Data,
 			&pb.BulkPropertyValuesResponse_EntityPropertyValues{
 				Entity: e,
-				Values: data[property][e],
+				Values: MergeTypedEntities(data[e][property]),
 			},
 		)
 	}

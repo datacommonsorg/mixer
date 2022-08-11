@@ -54,7 +54,7 @@ func TestBulkPropertyValuesIn(t *testing.T) {
 				"containedInPlace",
 				[]string{"country/USA", "geoId/06053", "geoId/06"},
 				0,
-				"H4sIAAAAAAAA/+Iy5+JOzi/NKymq1A8NduQSSM7PK0nMzEtN8cwLyElMThViEGLhYBRgEmLhYBJgEmLiYBZi4WARYAJpTE/N90zRNzAzMDXGqZERrJERrpGRy4CLA6YRqy4mDpBqJKsAAAAA//8BAAD///etg82kAAAA",
+				"H4sIAAAAAAAA/4TQwUr0MBDA8W2/UtLst1Bz6slX2PWgJ0Frdl3qQQp1EbxITIcaSBNIp0jfXrq9CNr0OIf/j5mhr3QtbW/QDdtTldNUWoNCGagLU2ohgV5yMF3fcevgQXRQVyhQdaik0LkDwVYsIkEasIiEacBC8o9FJEoD+rgEb7ht2x6Vad6sgVnnacm5OII9OlWfp/erPTSz1mHJ+l+UnE/Q9W6WySlpwBb1dnfzh7GeHvbihMRZ4t5LRFzhwFYsHtssYfFYZ8m5j8c+S+izV8gOGlowKNxQyU9r9V516JRno1uvR0v7Ba7UwoxCSMYy/FHfeetN2X9oJU+o9HTYL+AbAAD//wEAAP//xE8WrogCAAA=",
 			},
 			{
 				"typeOf.json",

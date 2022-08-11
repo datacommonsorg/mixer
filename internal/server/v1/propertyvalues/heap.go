@@ -21,6 +21,7 @@ import (
 type heapElem struct {
 	ig   int
 	pos  int32
+	typ  string
 	data *pb.EntityInfo
 }
 
