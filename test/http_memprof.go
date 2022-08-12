@@ -23,6 +23,7 @@ import (
 	"os"
 	"os/exec"
 	"errors"
+	"path/filepath"
 	"github.com/google/pprof/profile"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"google.golang.org/grpc"
@@ -32,7 +33,8 @@ import (
 var (
 	grpcAddr = flag.String("grpc_addr", "127.0.0.1:12345", "Address of grpc server.")
 	profAddr = flag.String("prof_addr", "http://localhost:6060", "Address of HTTP profile server.")
-	tempPath = flag.String("temp_path", "http_memprof_out", "Folder to store temporary output of memory profiles over HTTP")
+	outFolder = flag.String("outFolder", "http_memprof_out", "Folder to store temporary output of memory profiles over HTTP")
+	resultCsvFilename = "results.csv"
 )
 
 func readProfile (filename string) (*profile.Profile, error) {
@@ -86,12 +88,12 @@ func GetTotalSpaceAllocFromProfile(filename string) (int64) {
 	return total
 }
 
-func bytesToMegabytes(bytes int64) int64 {
-	return bytes / (1024 * 1024);
+func bytesToMegabytes(bytes int64) float64 {
+	return float64(bytes) / (1024 * 1024);
 }
 
-func saveProfile(outPath string) {
-	outputFlag := fmt.Sprintf("-output=%v", outPath)
+func saveProfile(outFolder string) {
+	outputFlag := fmt.Sprintf("-output=%v", outFolder)
 	heapProfileHttpPath := fmt.Sprintf("%v/debug/pprof/heap?gc=1", *profAddr)
 	cmd := exec.Command("go", "tool", "pprof", outputFlag, "-proto", heapProfileHttpPath)
 	var stderr bytes.Buffer
@@ -103,8 +105,14 @@ func saveProfile(outPath string) {
 	}
 }
 
-func runWithProfile (key string, f func() (string, error)) {
-	profileLocationTemplate := *tempPath + "/go_http_memprof.%v.%v.pb"
+type MemoryProfileResult struct{
+	profileKey string
+	allocMB float64
+	responseLength int
+}
+
+func runWithProfile (key string, f func() (string, error)) *MemoryProfileResult {
+	profileLocationTemplate := *outFolder + "/go_http_memprof.%v.%v.pb"
 
 	profBefore := fmt.Sprintf(profileLocationTemplate, "before", key)
 	profAfter := fmt.Sprintf(profileLocationTemplate, "after", key)
@@ -122,7 +130,12 @@ func runWithProfile (key string, f func() (string, error)) {
 	allocDiff := allocAfter - allocBefore
 	allocDiffMb := bytesToMegabytes(allocDiff)
 
-	fmt.Printf("%v used %d MB and returned a response of length %d\n", key, allocDiffMb, len(respStr))
+	fmt.Printf("%v used %.2f MB and returned a response of length %d\n", key, allocDiffMb, len(respStr))
+	return &MemoryProfileResult{
+		profileKey: key,
+		allocMB: allocDiffMb,
+		responseLength: len(respStr),
+	}
 
 	// NOTE: Another approach here would be to use go tool pprof to compute a
 	// profile with "substraction", where the profile consists of the
@@ -139,15 +152,30 @@ func runWithProfile (key string, f func() (string, error)) {
 	//////////
 }
 
+func writeResultsToCsv(results []*MemoryProfileResult, outputPath string) {
+	f, err := os.Create(outputPath)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer f.Close()
+
+	header := "ProfileKey,AllocatedMemoryMB,ResponseLength"
+	fmt.Fprintln(f, header)
+
+	for _, result := range results {
+		fmt.Fprintf(f, "%v,%.2f,%d\n", (*result).profileKey, (*result).allocMB, (*result).responseLength)
+	}
+}
+
 func main() {
 	log.SetFlags(log.LstdFlags | log.Lshortfile)
 
 	flag.Parse()
 
 	// Ensure the temp output path exists
-	err := os.MkdirAll(*tempPath, 0o0700)
+	err := os.MkdirAll(*outFolder, 0o0700)
 	if err != nil {
-		log.Fatalf("could not create temp directory at %v: %v", tempPath, err)
+		log.Fatalf("could not create temp directory at %v: %v", outFolder, err)
 	}
 
 	// Set up a connection to the server.
@@ -170,6 +198,7 @@ func main() {
 	c := pb.NewMixerClient(conn)
 	ctx := context.Background()
 
+	var profileResults []*MemoryProfileResult
 	var count int64
 	for _, allFacets := range []bool{true, false} {
 		for _, r := range []struct{
@@ -224,10 +253,13 @@ func main() {
 				respStr := resp.String()
 				return respStr, nil
 			}
-			runWithProfile(funcKey, funcToProfile)
+			result := runWithProfile(funcKey, funcToProfile)
+			profileResults = append(profileResults, result)
 			count++
 		}
 	}
+
+	writeResultsToCsv(profileResults, filepath.Join(*outFolder,resultCsvFilename))
 
 	return;
 }
