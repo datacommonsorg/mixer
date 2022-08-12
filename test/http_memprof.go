@@ -51,6 +51,9 @@ func readProfile(filename string) (*profile.Profile, error) {
 	return prof, err
 }
 
+// GetTotalSpaceAllocFromProfile reads the pprof compatible report file at the
+// given path and returns the total allocated space it recorded. Assumes that
+// the memory profile sample_index for alloc_space is 1
 func GetTotalSpaceAllocFromProfile(filename string) int64 {
 	// Modified from https://github.com/google/pprof/blob/c488b8fa1db3fa467bf30beb5a1d6f4f10bb1b87/internal/report/report.go
 	// =======================
@@ -95,8 +98,8 @@ func bytesToMegabytes(bytes int64) float64 {
 
 func saveProfile(outFolder string) {
 	outputFlag := fmt.Sprintf("-output=%v", outFolder)
-	heapProfileHttpPath := fmt.Sprintf("%v/debug/pprof/heap?gc=1", *profAddr)
-	cmd := exec.Command("go", "tool", "pprof", outputFlag, "-proto", heapProfileHttpPath)
+	heapProfileHTTPPath := fmt.Sprintf("%v/debug/pprof/heap?gc=1", *profAddr)
+	cmd := exec.Command("go", "tool", "pprof", outputFlag, "-proto", heapProfileHTTPPath)
 	var stderr bytes.Buffer
 	cmd.Stderr = &stderr
 	err := cmd.Run()
@@ -106,6 +109,8 @@ func saveProfile(outFolder string) {
 	}
 }
 
+// MemoryProfileResult holds the results from one gRPC call that was
+// profiled for its total memory allocation
 type MemoryProfileResult struct {
 	profileKey     string
 	allocMB        float64
