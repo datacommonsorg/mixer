@@ -86,6 +86,7 @@ func (s *Server) Triples(
 }
 
 // BulkTriples implements API for mixer.BulkTriples.
+// no op
 func (s *Server) BulkTriples(
 	ctx context.Context, in *pb.BulkTriplesRequest,
 ) (*pb.BulkTriplesResponse, error) {
