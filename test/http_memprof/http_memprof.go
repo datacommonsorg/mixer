@@ -18,6 +18,7 @@
 package main
 
 import (
+	"insecure"
 	"bytes"
 	"context"
 	"errors"
@@ -197,7 +198,7 @@ func main() {
 	// assume that the pprof HTTP handlers is also on.
 	fmt.Printf("Attempting to make a connection to the gRPC server at %v\n", *grpcAddr)
 	conn, err := grpc.Dial(*grpcAddr,
-		grpc.WithInsecure(),
+		grpc.WithTransportCredentials(insecure.NewCredentials()),
 		grpc.WithDefaultCallOptions(grpc.MaxCallRecvMsgSize(100000000 /* 100M */)),
 		// The grpc.WithBlock() option make this call block until a connection is
 		// established, internally retrying until needed.
