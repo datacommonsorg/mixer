@@ -20,9 +20,11 @@ import (
 	"log"
 	"bytes"
 	"fmt"
+	"time"
 	"os"
 	"os/exec"
 	"errors"
+	"strconv"
 	"path/filepath"
 	"github.com/google/pprof/profile"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
@@ -33,9 +35,10 @@ import (
 var (
 	grpcAddr = flag.String("grpc_addr", "127.0.0.1:12345", "Address of grpc server.")
 	profAddr = flag.String("prof_addr", "http://localhost:6060", "Address of HTTP profile server.")
-	outFolder = flag.String("outFolder", "http_memprof_out", "Folder to store temporary output of memory profiles over HTTP")
+	outFolderParent = flag.String("out_folder", "http_memprof_out", "Folder to store output of memory profiles over HTTP")
 	resultCsvFilename = "results.csv"
 )
+
 
 func readProfile (filename string) (*profile.Profile, error) {
 	reader, err := os.Open(filename)
@@ -111,8 +114,8 @@ type MemoryProfileResult struct{
 	responseLength int
 }
 
-func runWithProfile (key string, f func() (string, error)) *MemoryProfileResult {
-	profileLocationTemplate := *outFolder + "/go_http_memprof.%v.%v.pb"
+func runWithProfile (outFolder string, key string, f func() (string, error)) *MemoryProfileResult {
+	profileLocationTemplate := outFolder + "/go_http_memprof.%v.%v.pb"
 
 	profBefore := fmt.Sprintf(profileLocationTemplate, "before", key)
 	profAfter := fmt.Sprintf(profileLocationTemplate, "after", key)
@@ -172,8 +175,13 @@ func main() {
 
 	flag.Parse()
 
-	// Ensure the temp output path exists
-	err := os.MkdirAll(*outFolder, 0o0744)
+	// Create the output folder, if it doesn't exist.
+	// Form the actual output folder as <flag_value>/<unix_time> to preserve
+	// data from previous runs
+	now := time.Now()
+	outFolder := filepath.Join(*outFolderParent, strconv.FormatInt(now.Unix(),10))
+	fmt.Println(outFolder)
+	err := os.MkdirAll(outFolder, 0o0755)
 	if err != nil {
 		log.Fatalf("could not create temp directory at %v: %v", outFolder, err)
 	}
@@ -253,13 +261,13 @@ func main() {
 				respStr := resp.String()
 				return respStr, nil
 			}
-			result := runWithProfile(funcKey, funcToProfile)
+			result := runWithProfile(outFolder, funcKey, funcToProfile)
 			profileResults = append(profileResults, result)
 			count++
 		}
 	}
 
-	writeResultsToCsv(profileResults, filepath.Join(*outFolder,resultCsvFilename))
+	writeResultsToCsv(profileResults, filepath.Join(outFolder,resultCsvFilename))
 
 	return;
 }
