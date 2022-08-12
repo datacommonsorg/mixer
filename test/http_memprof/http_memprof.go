@@ -129,7 +129,7 @@ func runWithProfile(outFolder string, key string, f func() (string, error)) *Mem
 	saveProfile(profBefore)
 	respStr, err := f()
 	if err != nil {
-		log.Fatalf("could not run %d: %s", key, err)
+		log.Fatalf("could not run %v: %s", key, err)
 	}
 	saveProfile(profAfter)
 
@@ -274,6 +274,4 @@ func main() {
 	}
 
 	writeResultsToCsv(profileResults, filepath.Join(outFolder, resultCsvFilename))
-
-	return
 }
