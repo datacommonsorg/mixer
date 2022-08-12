@@ -19,7 +19,7 @@ require (
 	github.com/golang/geo v0.0.0-20210211234256-740aa86cb551
 	github.com/golang/groupcache v0.0.0-20210331224755-41bb18bfe9da // indirect
 	github.com/google/go-cmp v0.5.7
-	github.com/google/pprof v0.0.0-20220331180315-85950bbee156 // indirect
+	github.com/google/pprof v0.0.0-20220331180315-85950bbee156
 	github.com/mattn/go-sqlite3 v1.14.14
 	golang.org/x/oauth2 v0.0.0-20220309155454-6242fa91716a
 	golang.org/x/sync v0.0.0-20210220032951-036812b2e83c
