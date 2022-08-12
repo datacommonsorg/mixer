@@ -12,6 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+// this code is a utility to monitor an already running mixer instance, and such
+// does not run with regular tests, so disable deadcode warning on it.
+//nolint:deadcode
 package main
 
 import (
@@ -183,7 +186,7 @@ func main() {
 	// data from previous runs
 	now := time.Now()
 	outFolder := filepath.Join(*outFolderParent, strconv.FormatInt(now.Unix(), 10))
-	fmt.Println(outFolder)
+	fmt.Println("Writing results to path:", outFolder)
 	err := os.MkdirAll(outFolder, 0o0755)
 	if err != nil {
 		log.Fatalf("could not create temp directory at %v: %v", outFolder, err)
