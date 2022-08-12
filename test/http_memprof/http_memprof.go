@@ -18,7 +18,6 @@
 package main
 
 import (
-	"insecure"
 	"bytes"
 	"context"
 	"errors"
@@ -27,6 +26,7 @@ import (
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/google/pprof/profile"
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/credentials/insecure"
 	"log"
 	"os"
 	"os/exec"
