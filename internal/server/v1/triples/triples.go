@@ -58,8 +58,8 @@ func Triples(
 	data, pi, err := propertyvalues.Fetch(
 		ctx,
 		store,
-		properties,
 		[]string{entity},
+		properties,
 		0,
 		token,
 		direction,
@@ -70,9 +70,9 @@ func Triples(
 	res := &pb.TriplesResponse{
 		Triples: map[string]*pb.EntityInfoCollection{},
 	}
-	for property := range data {
-		res.Triples[property] = &pb.EntityInfoCollection{
-			Entities: data[property][entity],
+	for p := range data[entity] {
+		res.Triples[p] = &pb.EntityInfoCollection{
+			Entities: propertyvalues.MergeTypedEntities(data[entity][p]),
 		}
 	}
 	if pi != nil {
@@ -127,8 +127,8 @@ func BulkTriples(
 	data, pi, err := propertyvalues.Fetch(
 		ctx,
 		store,
-		properties,
 		entities,
+		properties,
 		0,
 		token,
 		direction,
@@ -143,10 +143,13 @@ func BulkTriples(
 	for _, e := range entities {
 		triplesByEntity[e] = map[string][]*pb.EntityInfo{}
 	}
-	for p := range data {
-		for e := range data[p] {
+	for e := range data {
+		for p := range data[e] {
 			if _, ok := entityProps[e][p]; ok {
-				triplesByEntity[e][p] = data[p][e]
+				entities := propertyvalues.MergeTypedEntities(data[e][p])
+				if len(entities) > 0 {
+					triplesByEntity[e][p] = entities
+				}
 			}
 		}
 	}

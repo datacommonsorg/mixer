@@ -113,6 +113,34 @@
         "Provenance"
       ],
       "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "AvailableVehicles0",
+      "subjectName": "AvailableVehicles 0",
+      "subjectTypes": [
+        "Quantity"
+      ],
+      "predicate": "provenance",
+      "objectId": "dc/d7tbsb1",
+      "objectName": "HumanReadableStatVars",
+      "objectTypes": [
+        "Provenance"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "dc/g/Agriculture",
+      "subjectName": "Agriculture",
+      "subjectTypes": [
+        "StatVarGroup"
+      ],
+      "predicate": "provenance",
+      "objectId": "dc/d7tbsb1",
+      "objectName": "HumanReadableStatVars",
+      "objectTypes": [
+        "Provenance"
+      ],
+      "provenanceId": "dc/d7tbsb1"
     }
   ]
 }
