@@ -15,32 +15,30 @@
 package main
 
 import (
-	"context"
-	"flag"
-	"log"
 	"bytes"
+	"context"
+	"errors"
+	"flag"
 	"fmt"
-	"time"
+	pb "github.com/datacommonsorg/mixer/internal/proto"
+	"github.com/google/pprof/profile"
+	"google.golang.org/grpc"
+	"log"
 	"os"
 	"os/exec"
-	"errors"
-	"strconv"
 	"path/filepath"
-	"github.com/google/pprof/profile"
-	pb "github.com/datacommonsorg/mixer/internal/proto"
-	"google.golang.org/grpc"
+	"strconv"
+	"time"
 )
 
-
 var (
-	grpcAddr = flag.String("grpc_addr", "127.0.0.1:12345", "Address of grpc server.")
-	profAddr = flag.String("prof_addr", "http://localhost:6060", "Address of HTTP profile server.")
-	outFolderParent = flag.String("out_folder", "http_memprof_out", "Folder to store output of memory profiles over HTTP")
+	grpcAddr          = flag.String("grpc_addr", "127.0.0.1:12345", "Address of grpc server.")
+	profAddr          = flag.String("prof_addr", "http://localhost:6060", "Address of HTTP profile server.")
+	outFolderParent   = flag.String("out_folder", "http_memprof_out", "Folder to store output of memory profiles over HTTP")
 	resultCsvFilename = "results.csv"
 )
 
-
-func readProfile (filename string) (*profile.Profile, error) {
+func readProfile(filename string) (*profile.Profile, error) {
 	reader, err := os.Open(filename)
 	if err != nil {
 		return nil, errors.New("file could not be opened: " + filename)
@@ -53,13 +51,13 @@ func readProfile (filename string) (*profile.Profile, error) {
 	return prof, err
 }
 
-func GetTotalSpaceAllocFromProfile(filename string) (int64) {
+func GetTotalSpaceAllocFromProfile(filename string) int64 {
 	// Modified from https://github.com/google/pprof/blob/c488b8fa1db3fa467bf30beb5a1d6f4f10bb1b87/internal/report/report.go
 	// =======================
 	// computeTotal computes the sum of the absolute value of all sample values.
 	// If any samples have label indicating they belong to the diff base, then the
 	// total will only include samples with that label.
-	computeTotal := func (prof *profile.Profile, value func(v []int64) int64) int64 {
+	computeTotal := func(prof *profile.Profile, value func(v []int64) int64) int64 {
 		var total, diffTotal int64
 		for _, sample := range prof.Sample {
 			var v int64
@@ -78,7 +76,7 @@ func GetTotalSpaceAllocFromProfile(filename string) (int64) {
 		return total
 	}
 	// sample index of alloc_space in neap profiles from http/net/pprof
-	const allocSpaceSampleIndex = 1;
+	const allocSpaceSampleIndex = 1
 
 	prof, err := readProfile(filename)
 	if err != nil {
@@ -92,7 +90,7 @@ func GetTotalSpaceAllocFromProfile(filename string) (int64) {
 }
 
 func bytesToMegabytes(bytes int64) float64 {
-	return float64(bytes) / (1024 * 1024);
+	return float64(bytes) / (1024 * 1024)
 }
 
 func saveProfile(outFolder string) {
@@ -108,13 +106,13 @@ func saveProfile(outFolder string) {
 	}
 }
 
-type MemoryProfileResult struct{
-	profileKey string
-	allocMB float64
+type MemoryProfileResult struct {
+	profileKey     string
+	allocMB        float64
 	responseLength int
 }
 
-func runWithProfile (outFolder string, key string, f func() (string, error)) *MemoryProfileResult {
+func runWithProfile(outFolder string, key string, f func() (string, error)) *MemoryProfileResult {
 	profileLocationTemplate := outFolder + "/go_http_memprof.%v.%v.pb"
 
 	profBefore := fmt.Sprintf(profileLocationTemplate, "before", key)
@@ -135,8 +133,8 @@ func runWithProfile (outFolder string, key string, f func() (string, error)) *Me
 
 	fmt.Printf("%v used %.2f MB and returned a response of length %d\n", key, allocDiffMb, len(respStr))
 	return &MemoryProfileResult{
-		profileKey: key,
-		allocMB: allocDiffMb,
+		profileKey:     key,
+		allocMB:        allocDiffMb,
 		responseLength: len(respStr),
 	}
 
@@ -179,7 +177,7 @@ func main() {
 	// Form the actual output folder as <flag_value>/<unix_time> to preserve
 	// data from previous runs
 	now := time.Now()
-	outFolder := filepath.Join(*outFolderParent, strconv.FormatInt(now.Unix(),10))
+	outFolder := filepath.Join(*outFolderParent, strconv.FormatInt(now.Unix(), 10))
 	fmt.Println(outFolder)
 	err := os.MkdirAll(outFolder, 0o0755)
 	if err != nil {
@@ -209,42 +207,42 @@ func main() {
 	var profileResults []*MemoryProfileResult
 	var count int64
 	for _, allFacets := range []bool{true, false} {
-		for _, r := range []struct{
+		for _, r := range []struct {
 			entityType   string
 			linkedEntity string
 			variables    []string
 		}{
-				{
-					"County",
-					"country/USA",
-					[]string{"dummy", "Median_Age_Person_AmericanIndianOrAlaskaNativeAlone"},
-				},
-				{
-					"City",
-					"country/USA",
-					[]string{"Median_Age_Person_AmericanIndianOrAlaskaNativeAlone"},
-				},
-				{
-					"State",
-					"country/USA",
-					[]string{"Count_Person_FoodInsecure"},
-				},
-				{
-					"Country",
-					"Earth",
-					[]string{"Median_Age_Person"},
-				},
-				{
-					"EpaReportingFacility",
-					"geoId/06",
-					[]string{"Annual_Emissions_GreenhouseGas_NonBiogenic"},
-				},
-				{
-					"AdministrativeArea2",
-					"country/FRA",
-					[]string{"Count_Person"},
-				},
-		}{
+			{
+				"County",
+				"country/USA",
+				[]string{"dummy", "Median_Age_Person_AmericanIndianOrAlaskaNativeAlone"},
+			},
+			{
+				"City",
+				"country/USA",
+				[]string{"Median_Age_Person_AmericanIndianOrAlaskaNativeAlone"},
+			},
+			{
+				"State",
+				"country/USA",
+				[]string{"Count_Person_FoodInsecure"},
+			},
+			{
+				"Country",
+				"Earth",
+				[]string{"Median_Age_Person"},
+			},
+			{
+				"EpaReportingFacility",
+				"geoId/06",
+				[]string{"Annual_Emissions_GreenhouseGas_NonBiogenic"},
+			},
+			{
+				"AdministrativeArea2",
+				"country/FRA",
+				[]string{"Count_Person"},
+			},
+		} {
 			funcKey := fmt.Sprintf("BulkObservationsSeriesLinked_%d", count)
 			funcToProfile := func() (string, error) {
 				req := &pb.BulkObservationsSeriesLinkedRequest{
@@ -254,7 +252,7 @@ func main() {
 					LinkedProperty: "containedInPlace",
 					AllFacets:      allFacets,
 				}
-				resp, err := c.BulkObservationsSeriesLinked(ctx,req)
+				resp, err := c.BulkObservationsSeriesLinked(ctx, req)
 				if err != nil {
 					return "", err
 				}
@@ -267,7 +265,7 @@ func main() {
 		}
 	}
 
-	writeResultsToCsv(profileResults, filepath.Join(outFolder,resultCsvFilename))
+	writeResultsToCsv(profileResults, filepath.Join(outFolder, resultCsvFilename))
 
-	return;
+	return
 }
