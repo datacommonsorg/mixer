@@ -213,6 +213,7 @@ func main() {
 	c := pb.NewMixerClient(conn)
 	ctx := context.Background()
 
+	// TODO: move the definition of requests to make to a config file
 	var profileResults []*MemoryProfileResult
 	var count int64
 	for _, allFacets := range []bool{true, false} {
