@@ -22219,7 +22219,7 @@
           "dcid": "Percent_NonSmoker_TobaccoProducts_In_Count_Person_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_Female"
         },
         {
-          "name": "Population: Percentage Normalweight Among Less Than Primary Education Or Primary Education Or Lower Secondary Education, Female",
+          "name": "Population: Percentage Normal Weight Among Less Than Primary Education Or Primary Education Or Lower Secondary Education, Female",
           "dcid": "Percent_Normalweight_In_Count_Person_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_Female"
         },
         {
@@ -22253,7 +22253,7 @@
           "dcid": "Percent_NonSmoker_TobaccoProducts_In_Count_Person_TertiaryEducation_Female"
         },
         {
-          "name": "Population: Percentage Normalweight Among Tertiary Education, Female",
+          "name": "Population: Percentage Normal Weight Among Tertiary Education, Female",
           "dcid": "Percent_Normalweight_In_Count_Person_TertiaryEducation_Female"
         },
         {
@@ -22287,7 +22287,7 @@
           "dcid": "Percent_NonSmoker_TobaccoProducts_In_Count_Person_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female"
         },
         {
-          "name": "Population: Percentage Normalweight Among Upper Secondary Education Or Post Secondary Non Tertiary Education, Female",
+          "name": "Population: Percentage Normal Weight Among Upper Secondary Education Or Post Secondary Non Tertiary Education, Female",
           "dcid": "Percent_Normalweight_In_Count_Person_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female"
         },
         {
@@ -22809,7 +22809,7 @@
           "dcid": "Percent_NonSmoker_TobaccoProducts_In_Count_Person_CitizenOutsideEU28_Female"
         },
         {
-          "name": "Population: Percentage Normalweight Among Citizen Outside EU28, Female",
+          "name": "Population: Percentage Normal Weight Among Citizen Outside EU28, Female",
           "dcid": "Percent_Normalweight_In_Count_Person_CitizenOutsideEU28_Female"
         },
         {
@@ -22839,7 +22839,7 @@
           "dcid": "Percent_NonSmoker_TobaccoProducts_In_Count_Person_Citizen_Female"
         },
         {
-          "name": "Population: Percentage Normalweight Among Citizen, Female",
+          "name": "Population: Percentage Normal Weight Among Citizen, Female",
           "dcid": "Percent_Normalweight_In_Count_Person_Citizen_Female"
         },
         {
@@ -22869,7 +22869,7 @@
           "dcid": "Percent_NonSmoker_TobaccoProducts_In_Count_Person_NotACitizen_Female"
         },
         {
-          "name": "Population: Percentage Normalweight Among Not A Citizen, Female",
+          "name": "Population: Percentage Normal Weight Among Not A Citizen, Female",
           "dcid": "Percent_Normalweight_In_Count_Person_NotACitizen_Female"
         },
         {
@@ -22899,7 +22899,7 @@
           "dcid": "Percent_NonSmoker_TobaccoProducts_In_Count_Person_WithinEU28AndNotACitizen_Female"
         },
         {
-          "name": "Population: Percentage Normalweight Among Within EU28 And Not A Citizen, Female",
+          "name": "Population: Percentage Normal Weight Among Within EU28 And Not A Citizen, Female",
           "dcid": "Percent_Normalweight_In_Count_Person_WithinEU28AndNotACitizen_Female"
         },
         {
@@ -22951,7 +22951,7 @@
       "name": "Person With Activity Duration = 1 - 149 Minute, Gender = Female, Health Behavior",
       "statVars": [
         {
-          "name": "Percentage 1 To 149 Minutes, Non Work Related Physical Activity Among Female, Normalweight Population",
+          "name": "Percentage 1 To 149 Minutes, Non Work Related Physical Activity Among Female, Normal Weight Population",
           "dcid": "Percent_1To149Minutes_NonWorkRelatedPhysicalActivity_In_Count_Person_Female_Normalweight"
         },
         {
@@ -23003,7 +23003,7 @@
       "name": "Person With Activity Duration = 150 - 299 Minute, Gender = Female, Health Behavior",
       "statVars": [
         {
-          "name": "Percentage 150 To 299 Minutes, Non Work Related Physical Activity Among Female, Normalweight Population",
+          "name": "Percentage 150 To 299 Minutes, Non Work Related Physical Activity Among Female, Normal Weight Population",
           "dcid": "Percent_150To299Minutes_NonWorkRelatedPhysicalActivity_In_Count_Person_Female_Normalweight"
         },
         {
@@ -23055,7 +23055,7 @@
       "name": "Person With Activity Duration = 150 Minute or More, Gender = Female, Health Behavior",
       "statVars": [
         {
-          "name": "Percentage 150 Or More Minutes, Non Work Related Physical Activity Among Female, Normalweight Population",
+          "name": "Percentage 150 Or More Minutes, Non Work Related Physical Activity Among Female, Normal Weight Population",
           "dcid": "Percent_150OrMoreMinutes_NonWorkRelatedPhysicalActivity_In_Count_Person_Female_Normalweight"
         },
         {
@@ -23107,7 +23107,7 @@
       "name": "Person With Activity Duration = 300 Minute or More, Gender = Female, Health Behavior",
       "statVars": [
         {
-          "name": "Percentage 300 Or More Minutes, Non Work Related Physical Activity Among Female, Normalweight Population",
+          "name": "Percentage 300 Or More Minutes, Non Work Related Physical Activity Among Female, Normal Weight Population",
           "dcid": "Percent_300OrMoreMinutes_NonWorkRelatedPhysicalActivity_In_Count_Person_Female_Normalweight"
         },
         {
@@ -23159,7 +23159,7 @@
       "name": "Person With Activity Duration = Minute 0, Gender = Female, Health Behavior",
       "statVars": [
         {
-          "name": "Percentage 0 Minutes, Non Work Related Physical Activity Among Female, Normalweight Population",
+          "name": "Percentage 0 Minutes, Non Work Related Physical Activity Among Female, Normal Weight Population",
           "dcid": "Percent_0Minutes_NonWorkRelatedPhysicalActivity_In_Count_Person_Female_Normalweight"
         },
         {
@@ -23683,7 +23683,7 @@
           "dcid": "Percent_TertiaryEducationStageOneOrTertiaryEducationStageTwo_PhysicalActivity_In_Count_Person_Female"
         },
         {
-          "name": "Population: Percentage Normalweight Among Tertiary Education Stage One Or Tertiary Education Stage Two, Female",
+          "name": "Population: Percentage Normal Weight Among Tertiary Education Stage One Or Tertiary Education Stage Two, Female",
           "dcid": "Percent_Normalweight_In_Count_Person_TertiaryEducationStageOneOrTertiaryEducationStageTwo_Female"
         },
         {
@@ -23887,7 +23887,7 @@
       "name": "Person With Gender = Female, Global Activity Limitationindicator = Limited Activity Limitation, Health Behavior",
       "statVars": [
         {
-          "name": "Population: Percentage Normalweight Among Female, Limited Activity Limitation",
+          "name": "Population: Percentage Normal Weight Among Female, Limited Activity Limitation",
           "dcid": "Percent_Normalweight_In_Count_Person_Female_LimitedActivityLimitation"
         },
         {
@@ -23913,7 +23913,7 @@
       "name": "Person With Gender = Female, Global Activity Limitationindicator = Moderate Activity Limitation, Health Behavior",
       "statVars": [
         {
-          "name": "Population: Percentage Normalweight Among Female, Moderate Activity Limitation",
+          "name": "Population: Percentage Normal Weight Among Female, Moderate Activity Limitation",
           "dcid": "Percent_Normalweight_In_Count_Person_Female_ModerateActivityLimitation"
         },
         {
@@ -23939,7 +23939,7 @@
       "name": "Person With Gender = Female, Global Activity Limitationindicator = No Activity Limitation, Health Behavior",
       "statVars": [
         {
-          "name": "Population: Percentage Normalweight Among Female, No Activity Limitation",
+          "name": "Population: Percentage Normal Weight Among Female, No Activity Limitation",
           "dcid": "Percent_Normalweight_In_Count_Person_Female_NoActivityLimitation"
         },
         {
@@ -23965,7 +23965,7 @@
       "name": "Person With Gender = Female, Global Activity Limitationindicator = Severe Activity Limitation, Health Behavior",
       "statVars": [
         {
-          "name": "Population: Percentage Normalweight Among Female, Severe Activity Limitation",
+          "name": "Population: Percentage Normal Weight Among Female, Severe Activity Limitation",
           "dcid": "Percent_Normalweight_In_Count_Person_Female_SevereActivityLimitation"
         },
         {
@@ -24069,23 +24069,23 @@
       "name": "Person With Gender = Female, Health Behavior = Normalweight, Income",
       "statVars": [
         {
-          "name": "Population: Percentage Normalweight Among Female, Income Of 0 To 20 Percentile",
+          "name": "Population: Percentage Normal Weight Among Female, Income Of 0 To 20 Percentile",
           "dcid": "Percent_Normalweight_In_Count_Person_Female_IncomeOf0To20Percentile"
         },
         {
-          "name": "Population: Percentage Normalweight Among Female, Income Of 20 To 40 Percentile",
+          "name": "Population: Percentage Normal Weight Among Female, Income Of 20 To 40 Percentile",
           "dcid": "Percent_Normalweight_In_Count_Person_Female_IncomeOf20To40Percentile"
         },
         {
-          "name": "Population: Percentage Normalweight Among Female, Income Of 40 To 60 Percentile",
+          "name": "Population: Percentage Normal Weight Among Female, Income Of 40 To 60 Percentile",
           "dcid": "Percent_Normalweight_In_Count_Person_Female_IncomeOf40To60Percentile"
         },
         {
-          "name": "Population: Percentage Normalweight Among Female, Income Of 60 To 80 Percentile",
+          "name": "Population: Percentage Normal Weight Among Female, Income Of 60 To 80 Percentile",
           "dcid": "Percent_Normalweight_In_Count_Person_Female_IncomeOf60To80Percentile"
         },
         {
-          "name": "Population: Percentage Normalweight Among Female, Income Of 80 To 100 Percentile",
+          "name": "Population: Percentage Normal Weight Among Female, Income Of 80 To 100 Percentile",
           "dcid": "Percent_Normalweight_In_Count_Person_Female_IncomeOf80To100Percentile"
         }
       ]
@@ -25533,19 +25533,19 @@
       "name": "Person With Gender = Female, Health Behavior = Normalweight, Nativity",
       "statVars": [
         {
-          "name": "Population: Percentage Normalweight Among Female, Foreign Born",
+          "name": "Population: Percentage Normal Weight Among Female, Foreign Born",
           "dcid": "Percent_Normalweight_In_Count_Person_Female_ForeignBorn"
         },
         {
-          "name": "Population: Percentage Normalweight Among Female, Foreign Born Outside EU28",
+          "name": "Population: Percentage Normal Weight Among Female, Foreign Born Outside EU28",
           "dcid": "Percent_Normalweight_In_Count_Person_Female_ForeignBornOutsideEU28"
         },
         {
-          "name": "Population: Percentage Normalweight Among Female, Foreign Born Within EU28",
+          "name": "Population: Percentage Normal Weight Among Female, Foreign Born Within EU28",
           "dcid": "Percent_Normalweight_In_Count_Person_Female_ForeignBornWithinEU28"
         },
         {
-          "name": "Population: Percentage Normalweight Among Female, Native",
+          "name": "Population: Percentage Normal Weight Among Female, Native",
           "dcid": "Percent_Normalweight_In_Count_Person_Female_Native"
         }
       ]
@@ -28331,15 +28331,15 @@
       "name": "Person With Gender = Female, Health Behavior = Normalweight, Place of Residence Classification",
       "statVars": [
         {
-          "name": "Population: Percentage Normalweight Among Rural, Female",
+          "name": "Population: Percentage Normal Weight Among Rural, Female",
           "dcid": "Percent_Normalweight_In_Count_Person_Rural_Female"
         },
         {
-          "name": "Population: Percentage Normalweight Among Semi Urban, Female",
+          "name": "Population: Percentage Normal Weight Among Semi Urban, Female",
           "dcid": "Percent_Normalweight_In_Count_Person_SemiUrban_Female"
         },
         {
-          "name": "Population: Percentage Normalweight Among Urban, Female",
+          "name": "Population: Percentage Normal Weight Among Urban, Female",
           "dcid": "Percent_Normalweight_In_Count_Person_Urban_Female"
         }
       ]
@@ -29583,24 +29583,6 @@
         {
           "name": "Population: 15 - 50 Years, Birth in The Past 12 Months, Bachelors Degree or Higher, Female (As Fraction of Count Person 15 To 50 Years Educational Attainment Graduate or Professional Degree Female)",
           "dcid": "dc/pz6y0f6897ded"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_IncomeStatus-WithEarnings_RecentWorkStatus-FullTimeYearRoundWorker",
-      "name": "Person With Age = 16 Years or More, Gender = Female, Income Status = With Earnings, Recent Work Status = Full Time Year Round Worker",
-      "statVars": [
-        {
-          "name": "Population: 16 Years or More, Female, With Earnings, Full Time Year Round Worker",
-          "dcid": "Count_Person_Female_WithEarnings_FullTimeYearRoundWorker"
-        },
-        {
-          "name": "Mean Earnings: 16 Years or More, Female, With Earnings, Full Time Year Round Worker",
-          "dcid": "Mean_Earnings_Person_Female_FullTimeYearRoundWorker"
-        },
-        {
-          "name": "Median Earnings: 16 Years or More, Female, With Earnings, Full Time Year Round Worker",
-          "dcid": "Median_Earnings_Person_Female_FullTimeYearRoundWorker"
         }
       ]
     },
@@ -31301,7 +31283,7 @@
           "dcid": "Count_Person_Female_Normalweight"
         },
         {
-          "name": "Population: Percentage Normalweight Among Female",
+          "name": "Population: Percentage Normal Weight Among Female",
           "dcid": "Percent_Normalweight_In_Count_Person_Female"
         }
       ]
@@ -35783,6 +35765,20 @@
         {
           "name": "Population: 18 - 64 Years, 1.4 Ratio To Poverty Line or Less, Female, No Health Insurance",
           "dcid": "dc/djczl24xvzw37"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years18To64_Gender-Female_HealthInsurance-WithHealthInsurance_IncomeRelativeToPovertyLine-RatioToPovertyLineUpto1.38",
+      "name": "Person With Age = 18 - 64 Years, Income Relative To Poverty Line = 1.4 Ratio To Poverty Line or Less, Gender = Female, Health Insurance = With Health Insurance",
+      "statVars": [
+        {
+          "name": "Percent: 18 - 64 Years, 1.4 Ratio To Poverty Line or Less, Female, With Health Insurance",
+          "dcid": "dc/d0g2dhkj041sg"
+        },
+        {
+          "name": "Population: 18 - 64 Years, 1.4 Ratio To Poverty Line or Less, Female, With Health Insurance",
+          "dcid": "dc/ev7mp4ne33tr7"
         }
       ]
     }

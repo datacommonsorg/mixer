@@ -76,6 +76,13 @@ func TestPropertyValuesIn(t *testing.T) {
 				0,
 				"H4sIAAAAAAAA/+Iy4mJ3zi/NKymq5GIrqSxI9U+DCwgxCLFwMEqYC7FwMEmYCzFxMAuxcLBImAMAAAD//wEAAP//bbVZhjQAAAA=",
 			},
+			{
+				"nasa_source.json",
+				"isPartOf",
+				"dc/s/UsNationalAeronauticsAndSpaceAdministrationNasa",
+				500,
+				"",
+			},
 		} {
 			req := &pb.PropertyValuesRequest{
 				EntityProperty: c.entity + "/" + c.property,

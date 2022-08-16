@@ -10,7 +10,7 @@
             "Country"
           ],
           "dcid": "country/ASM",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/sgvysq3"
         },
         {
           "name": "Alabama",
@@ -16553,19 +16553,19 @@
           "provenanceId": "dc/g4e6nf2"
         },
         {
-          "name": "psmslId/1352",
-          "types": [
-            "TideGaugeStation"
-          ],
-          "dcid": "psmslId/1352",
-          "provenanceId": "dc/g4e6nf2"
-        },
-        {
           "name": "psmslId/135",
           "types": [
             "TideGaugeStation"
           ],
           "dcid": "psmslId/135",
+          "provenanceId": "dc/g4e6nf2"
+        },
+        {
+          "name": "psmslId/1352",
+          "types": [
+            "TideGaugeStation"
+          ],
+          "dcid": "psmslId/1352",
           "provenanceId": "dc/g4e6nf2"
         },
         {
@@ -29969,19 +29969,19 @@
           "provenanceId": "dc/6zs0212"
         },
         {
-          "name": "FPL Energy Operating Services Inc - SEGS",
-          "types": [
-            "PublicUtility"
-          ],
-          "dcid": "eia/u/55711",
-          "provenanceId": "dc/6zs0212"
-        },
-        {
           "name": "East Bay Municipal Util Dist",
           "types": [
             "PublicUtility"
           ],
           "dcid": "eia/u/5571",
+          "provenanceId": "dc/6zs0212"
+        },
+        {
+          "name": "FPL Energy Operating Services Inc - SEGS",
+          "types": [
+            "PublicUtility"
+          ],
+          "dcid": "eia/u/55711",
           "provenanceId": "dc/6zs0212"
         },
         {
@@ -31273,6 +31273,14 @@
           "provenanceId": "dc/6zs0212"
         },
         {
+          "name": "City of Anaheim - (CA)",
+          "types": [
+            "PublicUtility"
+          ],
+          "dcid": "eia/u/590",
+          "provenanceId": "dc/6zs0212"
+        },
+        {
           "name": "Sequoia PV 3 LLC",
           "types": [
             "PublicUtility"
@@ -31294,14 +31302,6 @@
             "PublicUtility"
           ],
           "dcid": "eia/u/5906",
-          "provenanceId": "dc/6zs0212"
-        },
-        {
-          "name": "City of Anaheim - (CA)",
-          "types": [
-            "PublicUtility"
-          ],
-          "dcid": "eia/u/590",
           "provenanceId": "dc/6zs0212"
         },
         {
@@ -33591,6 +33591,15 @@
           ],
           "dcid": "epaSuperfundSiteId/CAT080034234",
           "provenanceId": "dc/999wb02"
+        },
+        {
+          "name": "Alameda County",
+          "types": [
+            "AdministrativeArea2",
+            "County"
+          ],
+          "dcid": "geoId/06001",
+          "provenanceId": "dc/5n63hr1"
         },
         {
           "name": "Acalanes Ridge",
@@ -36545,15 +36554,6 @@
           "provenanceId": "dc/sm3m2w3"
         },
         {
-          "name": "Alameda County",
-          "types": [
-            "AdministrativeArea2",
-            "County"
-          ],
-          "dcid": "geoId/06001",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
           "name": "Acton",
           "types": [
             "City"
@@ -36567,6 +36567,15 @@
             "City"
           ],
           "dcid": "geoId/0600296",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Alpine County",
+          "types": [
+            "AdministrativeArea2",
+            "County"
+          ],
+          "dcid": "geoId/06003",
           "provenanceId": "dc/5n63hr1"
         },
         {
@@ -36602,15 +36611,6 @@
           "provenanceId": "dc/5n63hr1"
         },
         {
-          "name": "Alpine County",
-          "types": [
-            "AdministrativeArea2",
-            "County"
-          ],
-          "dcid": "geoId/06003",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
           "name": "Agua Dulce",
           "types": [
             "City"
@@ -36632,6 +36632,15 @@
             "City"
           ],
           "dcid": "geoId/0600478",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Amador County",
+          "types": [
+            "AdministrativeArea2",
+            "County"
+          ],
+          "dcid": "geoId/06005",
           "provenanceId": "dc/5n63hr1"
         },
         {
@@ -36755,15 +36764,6 @@
           "provenanceId": "dc/sm3m2w3"
         },
         {
-          "name": "Amador County",
-          "types": [
-            "AdministrativeArea2",
-            "County"
-          ],
-          "dcid": "geoId/06005",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
           "name": "Alamo",
           "types": [
             "City"
@@ -36777,6 +36777,15 @@
             "City"
           ],
           "dcid": "geoId/0600674",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Butte County",
+          "types": [
+            "AdministrativeArea2",
+            "County"
+          ],
+          "dcid": "geoId/06007",
           "provenanceId": "dc/5n63hr1"
         },
         {
@@ -37268,15 +37277,6 @@
           "provenanceId": "dc/sm3m2w3"
         },
         {
-          "name": "Butte County",
-          "types": [
-            "AdministrativeArea2",
-            "County"
-          ],
-          "dcid": "geoId/06007",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
           "name": "Alhambra",
           "types": [
             "City"
@@ -37291,6 +37291,15 @@
           ],
           "dcid": "geoId/0600898",
           "provenanceId": "dc/sm3m2w3"
+        },
+        {
+          "name": "Calaveras County",
+          "types": [
+            "AdministrativeArea2",
+            "County"
+          ],
+          "dcid": "geoId/06009",
+          "provenanceId": "dc/5n63hr1"
         },
         {
           "name": "Census Tract 1.20, Calaveras County, California",
@@ -37421,13 +37430,12 @@
           "provenanceId": "dc/sm3m2w3"
         },
         {
-          "name": "Calaveras County",
+          "name": "Congressional District 1 (113th Congress), California",
           "types": [
-            "AdministrativeArea2",
-            "County"
+            "CongressionalDistrict"
           ],
-          "dcid": "geoId/06009",
-          "provenanceId": "dc/5n63hr1"
+          "dcid": "geoId/0601",
+          "provenanceId": "dc/sm3m2w3"
         },
         {
           "name": "Allensworth",
@@ -37443,6 +37451,15 @@
             "City"
           ],
           "dcid": "geoId/0601094",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Colusa County",
+          "types": [
+            "AdministrativeArea2",
+            "County"
+          ],
+          "dcid": "geoId/06011",
           "provenanceId": "dc/5n63hr1"
         },
         {
@@ -37534,15 +37551,6 @@
           "provenanceId": "dc/sm3m2w3"
         },
         {
-          "name": "Colusa County",
-          "types": [
-            "AdministrativeArea2",
-            "County"
-          ],
-          "dcid": "geoId/06011",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
           "name": "Alpine Village",
           "types": [
             "City"
@@ -37564,6 +37572,15 @@
             "City"
           ],
           "dcid": "geoId/0601290",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Contra Costa County",
+          "types": [
+            "AdministrativeArea2",
+            "County"
+          ],
+          "dcid": "geoId/06013",
           "provenanceId": "dc/5n63hr1"
         },
         {
@@ -38127,15 +38144,6 @@
           "provenanceId": "dc/sm3m2w3"
         },
         {
-          "name": "Contra Costa County",
-          "types": [
-            "AdministrativeArea2",
-            "County"
-          ],
-          "dcid": "geoId/06013",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
           "name": "Alto",
           "types": [
             "City"
@@ -38159,6 +38167,15 @@
           ],
           "dcid": "geoId/0601458",
           "provenanceId": "dc/sm3m2w3"
+        },
+        {
+          "name": "Del Norte County",
+          "types": [
+            "AdministrativeArea2",
+            "County"
+          ],
+          "dcid": "geoId/06015",
+          "provenanceId": "dc/5n63hr1"
         },
         {
           "name": "Amador City",
@@ -38193,15 +38210,6 @@
           "provenanceId": "dc/sm3m2w3"
         },
         {
-          "name": "Del Norte County",
-          "types": [
-            "AdministrativeArea2",
-            "County"
-          ],
-          "dcid": "geoId/06015",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
           "name": "American Canyon",
           "types": [
             "City"
@@ -38216,6 +38224,15 @@
           ],
           "dcid": "geoId/0601651",
           "provenanceId": "dc/sm3m2w3"
+        },
+        {
+          "name": "El Dorado County",
+          "types": [
+            "AdministrativeArea2",
+            "County"
+          ],
+          "dcid": "geoId/06017",
+          "provenanceId": "dc/5n63hr1"
         },
         {
           "name": "North El Dorado CCD",
@@ -38250,12 +38267,12 @@
           "provenanceId": "dc/sm3m2w3"
         },
         {
-          "name": "El Dorado County",
+          "name": "Fresno County",
           "types": [
             "AdministrativeArea2",
             "County"
           ],
-          "dcid": "geoId/06017",
+          "dcid": "geoId/06019",
           "provenanceId": "dc/5n63hr1"
         },
         {
@@ -38403,20 +38420,11 @@
           "provenanceId": "dc/sm3m2w3"
         },
         {
-          "name": "Fresno County",
-          "types": [
-            "AdministrativeArea2",
-            "County"
-          ],
-          "dcid": "geoId/06019",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
-          "name": "Congressional District 1 (113th Congress), California",
+          "name": "Congressional District 2 (113th Congress), California",
           "types": [
             "CongressionalDistrict"
           ],
-          "dcid": "geoId/0601",
+          "dcid": "geoId/0602",
           "provenanceId": "dc/sm3m2w3"
         },
         {
@@ -38441,6 +38449,15 @@
             "City"
           ],
           "dcid": "geoId/0602042",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Glenn County",
+          "types": [
+            "AdministrativeArea2",
+            "County"
+          ],
+          "dcid": "geoId/06021",
           "provenanceId": "dc/5n63hr1"
         },
         {
@@ -38476,15 +38493,6 @@
           "provenanceId": "dc/sm3m2w3"
         },
         {
-          "name": "Glenn County",
-          "types": [
-            "AdministrativeArea2",
-            "County"
-          ],
-          "dcid": "geoId/06021",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
           "name": "Antelope",
           "types": [
             "City"
@@ -38507,6 +38515,15 @@
           ],
           "dcid": "geoId/0602294",
           "provenanceId": "dc/sm3m2w3"
+        },
+        {
+          "name": "Humboldt County",
+          "types": [
+            "AdministrativeArea2",
+            "County"
+          ],
+          "dcid": "geoId/06023",
+          "provenanceId": "dc/5n63hr1"
         },
         {
           "name": "Apple Valley",
@@ -38590,15 +38607,6 @@
           "provenanceId": "dc/sm3m2w3"
         },
         {
-          "name": "Humboldt County",
-          "types": [
-            "AdministrativeArea2",
-            "County"
-          ],
-          "dcid": "geoId/06023",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
           "name": "Arbuckle",
           "types": [
             "City"
@@ -38620,6 +38628,15 @@
             "City"
           ],
           "dcid": "geoId/0602476",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Imperial County",
+          "types": [
+            "AdministrativeArea2",
+            "County"
+          ],
+          "dcid": "geoId/06025",
           "provenanceId": "dc/5n63hr1"
         },
         {
@@ -38703,12 +38720,12 @@
           "provenanceId": "dc/sm3m2w3"
         },
         {
-          "name": "Imperial County",
+          "name": "Inyo County",
           "types": [
             "AdministrativeArea2",
             "County"
           ],
-          "dcid": "geoId/06025",
+          "dcid": "geoId/06027",
           "provenanceId": "dc/5n63hr1"
         },
         {
@@ -38760,15 +38777,6 @@
           "provenanceId": "dc/sm3m2w3"
         },
         {
-          "name": "Inyo County",
-          "types": [
-            "AdministrativeArea2",
-            "County"
-          ],
-          "dcid": "geoId/06027",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
           "name": "Aromas",
           "types": [
             "City"
@@ -38790,6 +38798,15 @@
             "City"
           ],
           "dcid": "geoId/0602896",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Kern County",
+          "types": [
+            "AdministrativeArea2",
+            "County"
+          ],
+          "dcid": "geoId/06029",
           "provenanceId": "dc/5n63hr1"
         },
         {
@@ -38913,20 +38930,11 @@
           "provenanceId": "dc/sm3m2w3"
         },
         {
-          "name": "Kern County",
-          "types": [
-            "AdministrativeArea2",
-            "County"
-          ],
-          "dcid": "geoId/06029",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
-          "name": "Congressional District 2 (113th Congress), California",
+          "name": "Congressional District 3 (113th Congress), California",
           "types": [
             "CongressionalDistrict"
           ],
-          "dcid": "geoId/0602",
+          "dcid": "geoId/0603",
           "provenanceId": "dc/sm3m2w3"
         },
         {
@@ -38955,11 +38963,28 @@
           "provenanceId": "dc/5n63hr1"
         },
         {
+          "name": "Kings County",
+          "types": [
+            "AdministrativeArea2",
+            "County"
+          ],
+          "dcid": "geoId/06031",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
           "name": "Atwater",
           "types": [
             "City"
           ],
           "dcid": "geoId/0603162",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Auberry",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/0603190",
           "provenanceId": "dc/5n63hr1"
         },
         {
@@ -38977,14 +39002,6 @@
           ],
           "dcid": "geoId/0603190570",
           "provenanceId": "dc/sm3m2w3"
-        },
-        {
-          "name": "Auberry",
-          "types": [
-            "City"
-          ],
-          "dcid": "geoId/0603190",
-          "provenanceId": "dc/5n63hr1"
         },
         {
           "name": "Hanford CCD",
@@ -39017,15 +39034,6 @@
           ],
           "dcid": "geoId/0603193250",
           "provenanceId": "dc/sm3m2w3"
-        },
-        {
-          "name": "Kings County",
-          "types": [
-            "AdministrativeArea2",
-            "County"
-          ],
-          "dcid": "geoId/06031",
-          "provenanceId": "dc/5n63hr1"
         },
         {
           "name": "Auburn",
@@ -39065,6 +39073,15 @@
             "City"
           ],
           "dcid": "geoId/0603295",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Lake County",
+          "types": [
+            "AdministrativeArea2",
+            "County"
+          ],
+          "dcid": "geoId/06033",
           "provenanceId": "dc/5n63hr1"
         },
         {
@@ -39180,12 +39197,12 @@
           "provenanceId": "dc/sm3m2w3"
         },
         {
-          "name": "Lake County",
+          "name": "Lassen County",
           "types": [
             "AdministrativeArea2",
             "County"
           ],
-          "dcid": "geoId/06033",
+          "dcid": "geoId/06035",
           "provenanceId": "dc/5n63hr1"
         },
         {
@@ -39245,15 +39262,6 @@
           "provenanceId": "dc/sm3m2w3"
         },
         {
-          "name": "Lassen County",
-          "types": [
-            "AdministrativeArea2",
-            "County"
-          ],
-          "dcid": "geoId/06035",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
           "name": "Baldwin Park",
           "types": [
             "City"
@@ -39267,6 +39275,15 @@
             "City"
           ],
           "dcid": "geoId/0603694",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Los Angeles County",
+          "types": [
+            "AdministrativeArea2",
+            "County"
+          ],
+          "dcid": "geoId/06037",
           "provenanceId": "dc/5n63hr1"
         },
         {
@@ -39334,6 +39351,14 @@
           "provenanceId": "dc/sm3m2w3"
         },
         {
+          "name": "Bangor",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/0603792",
+          "provenanceId": "dc/sm3m2w3"
+        },
+        {
           "name": "Newhall CCD",
           "types": [
             "CensusCountyDivision"
@@ -39379,14 +39404,6 @@
             "CensusCountyDivision"
           ],
           "dcid": "geoId/0603792920",
-          "provenanceId": "dc/sm3m2w3"
-        },
-        {
-          "name": "Bangor",
-          "types": [
-            "City"
-          ],
-          "dcid": "geoId/0603792",
           "provenanceId": "dc/sm3m2w3"
         },
         {
@@ -39446,20 +39463,20 @@
           "provenanceId": "dc/sm3m2w3"
         },
         {
-          "name": "Los Angeles County",
-          "types": [
-            "AdministrativeArea2",
-            "County"
-          ],
-          "dcid": "geoId/06037",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
           "name": "Banning",
           "types": [
             "City"
           ],
           "dcid": "geoId/0603820",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Madera County",
+          "types": [
+            "AdministrativeArea2",
+            "County"
+          ],
+          "dcid": "geoId/06039",
           "provenanceId": "dc/5n63hr1"
         },
         {
@@ -39511,20 +39528,11 @@
           "provenanceId": "dc/sm3m2w3"
         },
         {
-          "name": "Madera County",
-          "types": [
-            "AdministrativeArea2",
-            "County"
-          ],
-          "dcid": "geoId/06039",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
-          "name": "Congressional District 3 (113th Congress), California",
+          "name": "Congressional District 4 (113th Congress), California",
           "types": [
             "CongressionalDistrict"
           ],
-          "dcid": "geoId/0603",
+          "dcid": "geoId/0604",
           "provenanceId": "dc/sm3m2w3"
         },
         {
@@ -39533,6 +39541,15 @@
             "City"
           ],
           "dcid": "geoId/0604030",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Marin County",
+          "types": [
+            "AdministrativeArea2",
+            "County"
+          ],
+          "dcid": "geoId/06041",
           "provenanceId": "dc/5n63hr1"
         },
         {
@@ -39592,12 +39609,12 @@
           "provenanceId": "dc/sm3m2w3"
         },
         {
-          "name": "Marin County",
+          "name": "Mariposa County",
           "types": [
             "AdministrativeArea2",
             "County"
           ],
-          "dcid": "geoId/06041",
+          "dcid": "geoId/06043",
           "provenanceId": "dc/5n63hr1"
         },
         {
@@ -39625,15 +39642,6 @@
           "provenanceId": "dc/sm3m2w3"
         },
         {
-          "name": "Mariposa County",
-          "types": [
-            "AdministrativeArea2",
-            "County"
-          ],
-          "dcid": "geoId/06043",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
           "name": "Bay Point",
           "types": [
             "City"
@@ -39655,6 +39663,15 @@
             "City"
           ],
           "dcid": "geoId/0604478",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Mendocino County",
+          "types": [
+            "AdministrativeArea2",
+            "County"
+          ],
+          "dcid": "geoId/06045",
           "provenanceId": "dc/5n63hr1"
         },
         {
@@ -39738,21 +39755,21 @@
           "provenanceId": "dc/sm3m2w3"
         },
         {
-          "name": "Mendocino County",
-          "types": [
-            "AdministrativeArea2",
-            "County"
-          ],
-          "dcid": "geoId/06045",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
           "name": "Bear Creek",
           "types": [
             "City"
           ],
           "dcid": "geoId/0604632",
           "provenanceId": "dc/sm3m2w3"
+        },
+        {
+          "name": "Merced County",
+          "types": [
+            "AdministrativeArea2",
+            "County"
+          ],
+          "dcid": "geoId/06047",
+          "provenanceId": "dc/5n63hr1"
         },
         {
           "name": "Bear Valley",
@@ -39867,15 +39884,6 @@
           "provenanceId": "dc/sm3m2w3"
         },
         {
-          "name": "Merced County",
-          "types": [
-            "AdministrativeArea2",
-            "County"
-          ],
-          "dcid": "geoId/06047",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
           "name": "Belden",
           "types": [
             "City"
@@ -39889,6 +39897,15 @@
             "City"
           ],
           "dcid": "geoId/0604870",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Modoc County",
+          "types": [
+            "AdministrativeArea2",
+            "County"
+          ],
+          "dcid": "geoId/06049",
           "provenanceId": "dc/5n63hr1"
         },
         {
@@ -39956,21 +39973,21 @@
           "provenanceId": "dc/5n63hr1"
         },
         {
-          "name": "Modoc County",
+          "name": "Congressional District 5 (113th Congress), California",
+          "types": [
+            "CongressionalDistrict"
+          ],
+          "dcid": "geoId/0605",
+          "provenanceId": "dc/sm3m2w3"
+        },
+        {
+          "name": "Mono County",
           "types": [
             "AdministrativeArea2",
             "County"
           ],
-          "dcid": "geoId/06049",
+          "dcid": "geoId/06051",
           "provenanceId": "dc/5n63hr1"
-        },
-        {
-          "name": "Congressional District 4 (113th Congress), California",
-          "types": [
-            "CongressionalDistrict"
-          ],
-          "dcid": "geoId/0604",
-          "provenanceId": "dc/sm3m2w3"
         },
         {
           "name": "Belmont",
@@ -40005,15 +40022,6 @@
           "provenanceId": "dc/sm3m2w3"
         },
         {
-          "name": "Mono County",
-          "types": [
-            "AdministrativeArea2",
-            "County"
-          ],
-          "dcid": "geoId/06051",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
           "name": "Benbow",
           "types": [
             "City"
@@ -40035,6 +40043,15 @@
             "City"
           ],
           "dcid": "geoId/0605290",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Monterey County",
+          "types": [
+            "AdministrativeArea2",
+            "County"
+          ],
+          "dcid": "geoId/06053",
           "provenanceId": "dc/5n63hr1"
         },
         {
@@ -40158,12 +40175,12 @@
           "provenanceId": "dc/sm3m2w3"
         },
         {
-          "name": "Monterey County",
+          "name": "Napa County",
           "types": [
             "AdministrativeArea2",
             "County"
           ],
-          "dcid": "geoId/06053",
+          "dcid": "geoId/06055",
           "provenanceId": "dc/5n63hr1"
         },
         {
@@ -40207,12 +40224,12 @@
           "provenanceId": "dc/sm3m2w3"
         },
         {
-          "name": "Napa County",
+          "name": "Nevada County",
           "types": [
             "AdministrativeArea2",
             "County"
           ],
-          "dcid": "geoId/06055",
+          "dcid": "geoId/06057",
           "provenanceId": "dc/5n63hr1"
         },
         {
@@ -40240,12 +40257,12 @@
           "provenanceId": "dc/sm3m2w3"
         },
         {
-          "name": "Nevada County",
+          "name": "Orange County",
           "types": [
             "AdministrativeArea2",
             "County"
           ],
-          "dcid": "geoId/06057",
+          "dcid": "geoId/06059",
           "provenanceId": "dc/5n63hr1"
         },
         {
@@ -40305,20 +40322,11 @@
           "provenanceId": "dc/sm3m2w3"
         },
         {
-          "name": "Orange County",
-          "types": [
-            "AdministrativeArea2",
-            "County"
-          ],
-          "dcid": "geoId/06059",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
-          "name": "Congressional District 5 (113th Congress), California",
+          "name": "Congressional District 6 (113th Congress), California",
           "types": [
             "CongressionalDistrict"
           ],
-          "dcid": "geoId/0605",
+          "dcid": "geoId/0606",
           "provenanceId": "dc/sm3m2w3"
         },
         {
@@ -40343,6 +40351,15 @@
             "City"
           ],
           "dcid": "geoId/0606070",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Placer County",
+          "types": [
+            "AdministrativeArea2",
+            "County"
+          ],
+          "dcid": "geoId/06061",
           "provenanceId": "dc/5n63hr1"
         },
         {
@@ -40410,21 +40427,21 @@
           "provenanceId": "dc/sm3m2w3"
         },
         {
-          "name": "Placer County",
-          "types": [
-            "AdministrativeArea2",
-            "County"
-          ],
-          "dcid": "geoId/06061",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
           "name": "Bethel Island",
           "types": [
             "City"
           ],
           "dcid": "geoId/0606210",
           "provenanceId": "dc/sm3m2w3"
+        },
+        {
+          "name": "Plumas County",
+          "types": [
+            "AdministrativeArea2",
+            "County"
+          ],
+          "dcid": "geoId/06063",
+          "provenanceId": "dc/5n63hr1"
         },
         {
           "name": "Beverly Hills",
@@ -40491,15 +40508,6 @@
           "provenanceId": "dc/sm3m2w3"
         },
         {
-          "name": "Plumas County",
-          "types": [
-            "AdministrativeArea2",
-            "County"
-          ],
-          "dcid": "geoId/06063",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
           "name": "Big Bear City",
           "types": [
             "City"
@@ -40522,6 +40530,15 @@
           ],
           "dcid": "geoId/0606475",
           "provenanceId": "dc/sm3m2w3"
+        },
+        {
+          "name": "Riverside County",
+          "types": [
+            "AdministrativeArea2",
+            "County"
+          ],
+          "dcid": "geoId/06065",
+          "provenanceId": "dc/5n63hr1"
         },
         {
           "name": "Big Creek",
@@ -40684,15 +40701,6 @@
           "provenanceId": "dc/sm3m2w3"
         },
         {
-          "name": "Riverside County",
-          "types": [
-            "AdministrativeArea2",
-            "County"
-          ],
-          "dcid": "geoId/06065",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
           "name": "Big Pine",
           "types": [
             "City"
@@ -40706,6 +40714,15 @@
             "City"
           ],
           "dcid": "geoId/0606635",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Sacramento County",
+          "types": [
+            "AdministrativeArea2",
+            "County"
+          ],
+          "dcid": "geoId/06067",
           "provenanceId": "dc/5n63hr1"
         },
         {
@@ -40781,12 +40798,12 @@
           "provenanceId": "dc/5n63hr1"
         },
         {
-          "name": "Sacramento County",
+          "name": "San Benito County",
           "types": [
             "AdministrativeArea2",
             "County"
           ],
-          "dcid": "geoId/06067",
+          "dcid": "geoId/06069",
           "provenanceId": "dc/5n63hr1"
         },
         {
@@ -40846,20 +40863,11 @@
           "provenanceId": "dc/5n63hr1"
         },
         {
-          "name": "San Benito County",
-          "types": [
-            "AdministrativeArea2",
-            "County"
-          ],
-          "dcid": "geoId/06069",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
-          "name": "Congressional District 6 (113th Congress), California",
+          "name": "Congressional District 7 (113th Congress), California",
           "types": [
             "CongressionalDistrict"
           ],
-          "dcid": "geoId/0606",
+          "dcid": "geoId/0607",
           "provenanceId": "dc/sm3m2w3"
         },
         {
@@ -40876,6 +40884,15 @@
             "City"
           ],
           "dcid": "geoId/0607064",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "San Bernardino County",
+          "types": [
+            "AdministrativeArea2",
+            "County"
+          ],
+          "dcid": "geoId/06071",
           "provenanceId": "dc/5n63hr1"
         },
         {
@@ -40991,15 +41008,6 @@
           "provenanceId": "dc/sm3m2w3"
         },
         {
-          "name": "San Bernardino County",
-          "types": [
-            "AdministrativeArea2",
-            "County"
-          ],
-          "dcid": "geoId/06071",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
           "name": "Blythe",
           "types": [
             "City"
@@ -41029,6 +41037,15 @@
             "City"
           ],
           "dcid": "geoId/0607274",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "San Diego County",
+          "types": [
+            "AdministrativeArea2",
+            "County"
+          ],
+          "dcid": "geoId/06073",
           "provenanceId": "dc/5n63hr1"
         },
         {
@@ -41160,15 +41177,6 @@
           "provenanceId": "dc/sm3m2w3"
         },
         {
-          "name": "San Diego County",
-          "types": [
-            "AdministrativeArea2",
-            "County"
-          ],
-          "dcid": "geoId/06073",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
           "name": "Bonita",
           "types": [
             "City"
@@ -41191,6 +41199,15 @@
           ],
           "dcid": "geoId/0607498",
           "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "San Francisco County",
+          "types": [
+            "AdministrativeArea2",
+            "County"
+          ],
+          "dcid": "geoId/06075",
+          "provenanceId": "dc/wg3fkq2"
         },
         {
           "name": "Boonville",
@@ -41241,15 +41258,6 @@
           "provenanceId": "dc/5n63hr1"
         },
         {
-          "name": "San Francisco County",
-          "types": [
-            "AdministrativeArea2",
-            "County"
-          ],
-          "dcid": "geoId/06075",
-          "provenanceId": "dc/wg3fkq2"
-        },
-        {
           "name": "Bostonia",
           "types": [
             "City"
@@ -41271,6 +41279,15 @@
             "City"
           ],
           "dcid": "geoId/0607694",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "San Joaquin County",
+          "types": [
+            "AdministrativeArea2",
+            "County"
+          ],
+          "dcid": "geoId/06077",
           "provenanceId": "dc/5n63hr1"
         },
         {
@@ -41354,20 +41371,20 @@
           "provenanceId": "dc/sm3m2w3"
         },
         {
-          "name": "San Joaquin County",
-          "types": [
-            "AdministrativeArea2",
-            "County"
-          ],
-          "dcid": "geoId/06077",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
           "name": "Boyes Hot Springs",
           "types": [
             "City"
           ],
           "dcid": "geoId/0607848",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "San Luis Obispo County",
+          "types": [
+            "AdministrativeArea2",
+            "County"
+          ],
+          "dcid": "geoId/06079",
           "provenanceId": "dc/5n63hr1"
         },
         {
@@ -41427,20 +41444,11 @@
           "provenanceId": "dc/sm3m2w3"
         },
         {
-          "name": "San Luis Obispo County",
-          "types": [
-            "AdministrativeArea2",
-            "County"
-          ],
-          "dcid": "geoId/06079",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
-          "name": "Congressional District 7 (113th Congress), California",
+          "name": "Congressional District 8 (113th Congress), California",
           "types": [
             "CongressionalDistrict"
           ],
-          "dcid": "geoId/0607",
+          "dcid": "geoId/0608",
           "provenanceId": "dc/sm3m2w3"
         },
         {
@@ -41449,6 +41457,15 @@
             "City"
           ],
           "dcid": "geoId/0608058",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "San Mateo County",
+          "types": [
+            "AdministrativeArea2",
+            "County"
+          ],
+          "dcid": "geoId/06081",
           "provenanceId": "dc/5n63hr1"
         },
         {
@@ -41500,20 +41517,20 @@
           "provenanceId": "dc/sm3m2w3"
         },
         {
-          "name": "San Mateo County",
-          "types": [
-            "AdministrativeArea2",
-            "County"
-          ],
-          "dcid": "geoId/06081",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
           "name": "Bridgeport",
           "types": [
             "City"
           ],
           "dcid": "geoId/0608240",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Santa Barbara County",
+          "types": [
+            "AdministrativeArea2",
+            "County"
+          ],
+          "dcid": "geoId/06083",
           "provenanceId": "dc/5n63hr1"
         },
         {
@@ -41589,21 +41606,21 @@
           "provenanceId": "dc/sm3m2w3"
         },
         {
-          "name": "Santa Barbara County",
-          "types": [
-            "AdministrativeArea2",
-            "County"
-          ],
-          "dcid": "geoId/06083",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
           "name": "Brookdale",
           "types": [
             "City"
           ],
           "dcid": "geoId/0608478",
           "provenanceId": "dc/sm3m2w3"
+        },
+        {
+          "name": "Santa Clara County",
+          "types": [
+            "AdministrativeArea2",
+            "County"
+          ],
+          "dcid": "geoId/06085",
+          "provenanceId": "dc/5n63hr1"
         },
         {
           "name": "Brooktrails",
@@ -41662,21 +41679,21 @@
           "provenanceId": "dc/sm3m2w3"
         },
         {
-          "name": "Santa Clara County",
-          "types": [
-            "AdministrativeArea2",
-            "County"
-          ],
-          "dcid": "geoId/06085",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
           "name": "Buckhorn",
           "types": [
             "City"
           ],
           "dcid": "geoId/0608680",
           "provenanceId": "dc/sm3m2w3"
+        },
+        {
+          "name": "Santa Cruz County",
+          "types": [
+            "AdministrativeArea2",
+            "County"
+          ],
+          "dcid": "geoId/06087",
+          "provenanceId": "dc/5n63hr1"
         },
         {
           "name": "Buck Meadows",
@@ -41751,21 +41768,21 @@
           "provenanceId": "dc/sm3m2w3"
         },
         {
-          "name": "Santa Cruz County",
-          "types": [
-            "AdministrativeArea2",
-            "County"
-          ],
-          "dcid": "geoId/06087",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
           "name": "Buena Vista",
           "types": [
             "City"
           ],
           "dcid": "geoId/0608828",
           "provenanceId": "dc/sm3m2w3"
+        },
+        {
+          "name": "Shasta County",
+          "types": [
+            "AdministrativeArea2",
+            "County"
+          ],
+          "dcid": "geoId/06089",
+          "provenanceId": "dc/5n63hr1"
         },
         {
           "name": "Burbank",
@@ -41825,20 +41842,11 @@
           "provenanceId": "dc/sm3m2w3"
         },
         {
-          "name": "Shasta County",
-          "types": [
-            "AdministrativeArea2",
-            "County"
-          ],
-          "dcid": "geoId/06089",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
-          "name": "Congressional District 8 (113th Congress), California",
+          "name": "Congressional District 9 (113th Congress), California",
           "types": [
             "CongressionalDistrict"
           ],
-          "dcid": "geoId/0608",
+          "dcid": "geoId/0609",
           "provenanceId": "dc/sm3m2w3"
         },
         {
@@ -41847,6 +41855,15 @@
             "City"
           ],
           "dcid": "geoId/0609066",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Sierra County",
+          "types": [
+            "AdministrativeArea2",
+            "County"
+          ],
+          "dcid": "geoId/06091",
           "provenanceId": "dc/5n63hr1"
         },
         {
@@ -41882,12 +41899,12 @@
           "provenanceId": "dc/sm3m2w3"
         },
         {
-          "name": "Sierra County",
+          "name": "Siskiyou County",
           "types": [
             "AdministrativeArea2",
             "County"
           ],
-          "dcid": "geoId/06091",
+          "dcid": "geoId/06093",
           "provenanceId": "dc/5n63hr1"
         },
         {
@@ -42043,12 +42060,12 @@
           "provenanceId": "dc/sm3m2w3"
         },
         {
-          "name": "Siskiyou County",
+          "name": "Solano County",
           "types": [
             "AdministrativeArea2",
             "County"
           ],
-          "dcid": "geoId/06093",
+          "dcid": "geoId/06095",
           "provenanceId": "dc/5n63hr1"
         },
         {
@@ -42100,12 +42117,12 @@
           "provenanceId": "dc/5n63hr1"
         },
         {
-          "name": "Solano County",
+          "name": "Sonoma County",
           "types": [
             "AdministrativeArea2",
             "County"
           ],
-          "dcid": "geoId/06095",
+          "dcid": "geoId/06097",
           "provenanceId": "dc/5n63hr1"
         },
         {
@@ -42181,15 +42198,6 @@
           "provenanceId": "dc/sm3m2w3"
         },
         {
-          "name": "Sonoma County",
-          "types": [
-            "AdministrativeArea2",
-            "County"
-          ],
-          "dcid": "geoId/06097",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
           "name": "California Hot Springs",
           "types": [
             "City"
@@ -42227,6 +42235,15 @@
             "City"
           ],
           "dcid": "geoId/0609892",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Stanislaus County",
+          "types": [
+            "AdministrativeArea2",
+            "County"
+          ],
+          "dcid": "geoId/06099",
           "provenanceId": "dc/5n63hr1"
         },
         {
@@ -42318,20 +42335,11 @@
           "provenanceId": "dc/sm3m2w3"
         },
         {
-          "name": "Stanislaus County",
-          "types": [
-            "AdministrativeArea2",
-            "County"
-          ],
-          "dcid": "geoId/06099",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
-          "name": "Congressional District 9 (113th Congress), California",
+          "name": "Congressional District 10 (113th Congress), California",
           "types": [
             "CongressionalDistrict"
           ],
-          "dcid": "geoId/0609",
+          "dcid": "geoId/0610",
           "provenanceId": "dc/sm3m2w3"
         },
         {
@@ -42391,6 +42399,15 @@
           "provenanceId": "dc/sm3m2w3"
         },
         {
+          "name": "Sutter County",
+          "types": [
+            "AdministrativeArea2",
+            "County"
+          ],
+          "dcid": "geoId/06101",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
           "name": "Live Oak CCD",
           "types": [
             "CensusCountyDivision"
@@ -42439,15 +42456,6 @@
           "provenanceId": "dc/sm3m2w3"
         },
         {
-          "name": "Sutter County",
-          "types": [
-            "AdministrativeArea2",
-            "County"
-          ],
-          "dcid": "geoId/06101",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
           "name": "Cameron Park",
           "types": [
             "City"
@@ -42461,6 +42469,15 @@
             "City"
           ],
           "dcid": "geoId/0610270",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Tehama County",
+          "types": [
+            "AdministrativeArea2",
+            "County"
+          ],
+          "dcid": "geoId/06103",
           "provenanceId": "dc/5n63hr1"
         },
         {
@@ -42512,20 +42529,20 @@
           "provenanceId": "dc/sm3m2w3"
         },
         {
-          "name": "Tehama County",
-          "types": [
-            "AdministrativeArea2",
-            "County"
-          ],
-          "dcid": "geoId/06103",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
           "name": "Camp Nelson",
           "types": [
             "City"
           ],
           "dcid": "geoId/0610494",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Trinity County",
+          "types": [
+            "AdministrativeArea2",
+            "County"
+          ],
+          "dcid": "geoId/06105",
           "provenanceId": "dc/5n63hr1"
         },
         {
@@ -42585,20 +42602,20 @@
           "provenanceId": "dc/sm3m2w3"
         },
         {
-          "name": "Trinity County",
-          "types": [
-            "AdministrativeArea2",
-            "County"
-          ],
-          "dcid": "geoId/06105",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
           "name": "Camptonville",
           "types": [
             "City"
           ],
           "dcid": "geoId/0610676",
+          "provenanceId": "dc/sm3m2w3"
+        },
+        {
+          "name": "Tulare County",
+          "types": [
+            "AdministrativeArea2",
+            "County"
+          ],
+          "dcid": "geoId/06107",
           "provenanceId": "dc/sm3m2w3"
         },
         {
@@ -42730,20 +42747,20 @@
           "provenanceId": "dc/sm3m2w3"
         },
         {
-          "name": "Tulare County",
-          "types": [
-            "AdministrativeArea2",
-            "County"
-          ],
-          "dcid": "geoId/06107",
-          "provenanceId": "dc/sm3m2w3"
-        },
-        {
           "name": "Cantua Creek",
           "types": [
             "City"
           ],
           "dcid": "geoId/0610816",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Tuolumne County",
+          "types": [
+            "AdministrativeArea2",
+            "County"
+          ],
+          "dcid": "geoId/06109",
           "provenanceId": "dc/5n63hr1"
         },
         {
@@ -42795,20 +42812,11 @@
           "provenanceId": "dc/sm3m2w3"
         },
         {
-          "name": "Tuolumne County",
-          "types": [
-            "AdministrativeArea2",
-            "County"
-          ],
-          "dcid": "geoId/06109",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
-          "name": "Congressional District 10 (113th Congress), California",
+          "name": "Congressional District 11 (113th Congress), California",
           "types": [
             "CongressionalDistrict"
           ],
-          "dcid": "geoId/0610",
+          "dcid": "geoId/0611",
           "provenanceId": "dc/sm3m2w3"
         },
         {
@@ -42817,6 +42825,15 @@
             "City"
           ],
           "dcid": "geoId/0611040",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Ventura County",
+          "types": [
+            "AdministrativeArea2",
+            "County"
+          ],
+          "dcid": "geoId/06111",
           "provenanceId": "dc/5n63hr1"
         },
         {
@@ -42932,20 +42949,20 @@
           "provenanceId": "dc/5n63hr1"
         },
         {
-          "name": "Ventura County",
-          "types": [
-            "AdministrativeArea2",
-            "County"
-          ],
-          "dcid": "geoId/06111",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
           "name": "Carmel-by-the-Sea",
           "types": [
             "City"
           ],
           "dcid": "geoId/0611250",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Yolo County",
+          "types": [
+            "AdministrativeArea2",
+            "County"
+          ],
+          "dcid": "geoId/06113",
           "provenanceId": "dc/5n63hr1"
         },
         {
@@ -42963,6 +42980,14 @@
           ],
           "dcid": "geoId/0611376",
           "provenanceId": "dc/sm3m2w3"
+        },
+        {
+          "name": "Carmichael",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/0611390",
+          "provenanceId": "dc/5n63hr1"
         },
         {
           "name": "Clarksburg CCD",
@@ -42997,14 +43022,6 @@
           "provenanceId": "dc/sm3m2w3"
         },
         {
-          "name": "Carmichael",
-          "types": [
-            "City"
-          ],
-          "dcid": "geoId/0611390",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
           "name": "Knights Landing CCD",
           "types": [
             "CensusCountyDivision"
@@ -43029,15 +43046,6 @@
           "provenanceId": "dc/sm3m2w3"
         },
         {
-          "name": "Yolo County",
-          "types": [
-            "AdministrativeArea2",
-            "County"
-          ],
-          "dcid": "geoId/06113",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
           "name": "Carnelian Bay",
           "types": [
             "City"
@@ -43060,6 +43068,15 @@
           ],
           "dcid": "geoId/0611481",
           "provenanceId": "dc/sm3m2w3"
+        },
+        {
+          "name": "Yuba County",
+          "types": [
+            "AdministrativeArea2",
+            "County"
+          ],
+          "dcid": "geoId/06115",
+          "provenanceId": "dc/5n63hr1"
         },
         {
           "name": "Carson",
@@ -43124,15 +43141,6 @@
           ],
           "dcid": "geoId/0611593830",
           "provenanceId": "dc/sm3m2w3"
-        },
-        {
-          "name": "Yuba County",
-          "types": [
-            "AdministrativeArea2",
-            "County"
-          ],
-          "dcid": "geoId/06115",
-          "provenanceId": "dc/5n63hr1"
         },
         {
           "name": "Cartago",
@@ -43223,11 +43231,11 @@
           "provenanceId": "dc/5n63hr1"
         },
         {
-          "name": "Congressional District 11 (113th Congress), California",
+          "name": "Congressional District 12 (113th Congress), California",
           "types": [
             "CongressionalDistrict"
           ],
-          "dcid": "geoId/0611",
+          "dcid": "geoId/0612",
           "provenanceId": "dc/sm3m2w3"
         },
         {
@@ -43383,11 +43391,11 @@
           "provenanceId": "dc/5n63hr1"
         },
         {
-          "name": "Congressional District 12 (113th Congress), California",
+          "name": "Congressional District 13 (113th Congress), California",
           "types": [
             "CongressionalDistrict"
           ],
-          "dcid": "geoId/0612",
+          "dcid": "geoId/0613",
           "provenanceId": "dc/sm3m2w3"
         },
         {
@@ -43543,11 +43551,11 @@
           "provenanceId": "dc/sm3m2w3"
         },
         {
-          "name": "Congressional District 13 (113th Congress), California",
+          "name": "Congressional District 14 (113th Congress), California",
           "types": [
             "CongressionalDistrict"
           ],
-          "dcid": "geoId/0613",
+          "dcid": "geoId/0614",
           "provenanceId": "dc/sm3m2w3"
         },
         {
@@ -43744,11 +43752,11 @@
           "provenanceId": "dc/5n63hr1"
         },
         {
-          "name": "Congressional District 14 (113th Congress), California",
+          "name": "Congressional District 15 (113th Congress), California",
           "types": [
             "CongressionalDistrict"
           ],
-          "dcid": "geoId/0614",
+          "dcid": "geoId/0615",
           "provenanceId": "dc/sm3m2w3"
         },
         {
@@ -43768,11 +43776,11 @@
           "provenanceId": "dc/5n63hr1"
         },
         {
-          "name": "Congressional District 15 (113th Congress), California",
+          "name": "Congressional District 16 (113th Congress), California",
           "types": [
             "CongressionalDistrict"
           ],
-          "dcid": "geoId/0615",
+          "dcid": "geoId/0616",
           "provenanceId": "dc/sm3m2w3"
         },
         {
@@ -43945,11 +43953,11 @@
           "provenanceId": "dc/sm3m2w3"
         },
         {
-          "name": "Congressional District 16 (113th Congress), California",
+          "name": "Congressional District 17 (113th Congress), California",
           "types": [
             "CongressionalDistrict"
           ],
-          "dcid": "geoId/0616",
+          "dcid": "geoId/0617",
           "provenanceId": "dc/sm3m2w3"
         },
         {
@@ -44130,11 +44138,11 @@
           "provenanceId": "dc/sm3m2w3"
         },
         {
-          "name": "Congressional District 17 (113th Congress), California",
+          "name": "Congressional District 18 (113th Congress), California",
           "types": [
             "CongressionalDistrict"
           ],
-          "dcid": "geoId/0617",
+          "dcid": "geoId/0618",
           "provenanceId": "dc/sm3m2w3"
         },
         {
@@ -44306,11 +44314,11 @@
           "provenanceId": "dc/5n63hr1"
         },
         {
-          "name": "Congressional District 18 (113th Congress), California",
+          "name": "Congressional District 19 (113th Congress), California",
           "types": [
             "CongressionalDistrict"
           ],
-          "dcid": "geoId/0618",
+          "dcid": "geoId/0619",
           "provenanceId": "dc/sm3m2w3"
         },
         {
@@ -44514,11 +44522,11 @@
           "provenanceId": "dc/5n63hr1"
         },
         {
-          "name": "Congressional District 19 (113th Congress), California",
+          "name": "Congressional District 20 (113th Congress), California",
           "types": [
             "CongressionalDistrict"
           ],
-          "dcid": "geoId/0619",
+          "dcid": "geoId/0620",
           "provenanceId": "dc/sm3m2w3"
         },
         {
@@ -44667,11 +44675,11 @@
           "provenanceId": "dc/5n63hr1"
         },
         {
-          "name": "Congressional District 20 (113th Congress), California",
+          "name": "Congressional District 21 (113th Congress), California",
           "types": [
             "CongressionalDistrict"
           ],
-          "dcid": "geoId/0620",
+          "dcid": "geoId/0621",
           "provenanceId": "dc/sm3m2w3"
         },
         {
@@ -44851,11 +44859,11 @@
           "provenanceId": "dc/sm3m2w3"
         },
         {
-          "name": "Congressional District 21 (113th Congress), California",
+          "name": "Congressional District 22 (113th Congress), California",
           "types": [
             "CongressionalDistrict"
           ],
-          "dcid": "geoId/0621",
+          "dcid": "geoId/0622",
           "provenanceId": "dc/sm3m2w3"
         },
         {
@@ -45043,11 +45051,11 @@
           "provenanceId": "dc/5n63hr1"
         },
         {
-          "name": "Congressional District 22 (113th Congress), California",
+          "name": "Congressional District 23 (113th Congress), California",
           "types": [
             "CongressionalDistrict"
           ],
-          "dcid": "geoId/0622",
+          "dcid": "geoId/0623",
           "provenanceId": "dc/sm3m2w3"
         },
         {
@@ -45204,11 +45212,11 @@
           "provenanceId": "dc/5n63hr1"
         },
         {
-          "name": "Congressional District 23 (113th Congress), California",
+          "name": "Congressional District 24 (113th Congress), California",
           "types": [
             "CongressionalDistrict"
           ],
-          "dcid": "geoId/0623",
+          "dcid": "geoId/0624",
           "provenanceId": "dc/sm3m2w3"
         },
         {
@@ -45364,11 +45372,11 @@
           "provenanceId": "dc/5n63hr1"
         },
         {
-          "name": "Congressional District 24 (113th Congress), California",
+          "name": "Congressional District 25 (113th Congress), California",
           "types": [
             "CongressionalDistrict"
           ],
-          "dcid": "geoId/0624",
+          "dcid": "geoId/0625",
           "provenanceId": "dc/sm3m2w3"
         },
         {
@@ -45492,11 +45500,11 @@
           "provenanceId": "dc/sm3m2w3"
         },
         {
-          "name": "Congressional District 25 (113th Congress), California",
+          "name": "Congressional District 26 (113th Congress), California",
           "types": [
             "CongressionalDistrict"
           ],
-          "dcid": "geoId/0625",
+          "dcid": "geoId/0626",
           "provenanceId": "dc/sm3m2w3"
         },
         {
@@ -45532,11 +45540,11 @@
           "provenanceId": "dc/sm3m2w3"
         },
         {
-          "name": "Congressional District 26 (113th Congress), California",
+          "name": "Congressional District 27 (113th Congress), California",
           "types": [
             "CongressionalDistrict"
           ],
-          "dcid": "geoId/0626",
+          "dcid": "geoId/0627",
           "provenanceId": "dc/sm3m2w3"
         },
         {
@@ -45580,14 +45588,6 @@
           "provenanceId": "dc/sm3m2w3"
         },
         {
-          "name": "Congressional District 27 (113th Congress), California",
-          "types": [
-            "CongressionalDistrict"
-          ],
-          "dcid": "geoId/0627",
-          "provenanceId": "dc/sm3m2w3"
-        },
-        {
           "name": "Congressional District 28 (113th Congress), California",
           "types": [
             "CongressionalDistrict"
@@ -45612,6 +45612,14 @@
           "provenanceId": "dc/sm3m2w3"
         },
         {
+          "name": "Congressional District 31 (113th Congress), California",
+          "types": [
+            "CongressionalDistrict"
+          ],
+          "dcid": "geoId/0631",
+          "provenanceId": "dc/sm3m2w3"
+        },
+        {
           "name": "Guerneville",
           "types": [
             "City",
@@ -45619,14 +45627,6 @@
           ],
           "dcid": "geoId/0631470",
           "provenanceId": "dc/5n63hr1"
-        },
-        {
-          "name": "Congressional District 31 (113th Congress), California",
-          "types": [
-            "CongressionalDistrict"
-          ],
-          "dcid": "geoId/0631",
-          "provenanceId": "dc/sm3m2w3"
         },
         {
           "name": "Congressional District 32 (113th Congress), California",
@@ -45637,6 +45637,14 @@
           "provenanceId": "dc/sm3m2w3"
         },
         {
+          "name": "Congressional District 33 (113th Congress), California",
+          "types": [
+            "CongressionalDistrict"
+          ],
+          "dcid": "geoId/0633",
+          "provenanceId": "dc/sm3m2w3"
+        },
+        {
           "name": "Hillsborough",
           "types": [
             "City",
@@ -45644,14 +45652,6 @@
           ],
           "dcid": "geoId/0633798",
           "provenanceId": "dc/5n63hr1"
-        },
-        {
-          "name": "Congressional District 33 (113th Congress), California",
-          "types": [
-            "CongressionalDistrict"
-          ],
-          "dcid": "geoId/0633",
-          "provenanceId": "dc/sm3m2w3"
         },
         {
           "name": "Congressional District 34 (113th Congress), California",
@@ -45726,6 +45726,14 @@
           "provenanceId": "dc/sm3m2w3"
         },
         {
+          "name": "Congressional District 43 (113th Congress), California",
+          "types": [
+            "CongressionalDistrict"
+          ],
+          "dcid": "geoId/0643",
+          "provenanceId": "dc/sm3m2w3"
+        },
+        {
           "name": "Loomis",
           "types": [
             "City",
@@ -45744,11 +45752,11 @@
           "provenanceId": "dc/5n63hr1"
         },
         {
-          "name": "Congressional District 43 (113th Congress), California",
+          "name": "Congressional District 44 (113th Congress), California",
           "types": [
             "CongressionalDistrict"
           ],
-          "dcid": "geoId/0643",
+          "dcid": "geoId/0644",
           "provenanceId": "dc/sm3m2w3"
         },
         {
@@ -45761,11 +45769,11 @@
           "provenanceId": "dc/5n63hr1"
         },
         {
-          "name": "Congressional District 44 (113th Congress), California",
+          "name": "Congressional District 45 (113th Congress), California",
           "types": [
             "CongressionalDistrict"
           ],
-          "dcid": "geoId/0644",
+          "dcid": "geoId/0645",
           "provenanceId": "dc/sm3m2w3"
         },
         {
@@ -45776,14 +45784,6 @@
           ],
           "dcid": "geoId/0645358",
           "provenanceId": "dc/5n63hr1"
-        },
-        {
-          "name": "Congressional District 45 (113th Congress), California",
-          "types": [
-            "CongressionalDistrict"
-          ],
-          "dcid": "geoId/0645",
-          "provenanceId": "dc/sm3m2w3"
         },
         {
           "name": "Congressional District 46 (113th Congress), California",
@@ -45810,20 +45810,20 @@
           "provenanceId": "dc/sm3m2w3"
         },
         {
+          "name": "Congressional District 49 (113th Congress), California",
+          "types": [
+            "CongressionalDistrict"
+          ],
+          "dcid": "geoId/0649",
+          "provenanceId": "dc/sm3m2w3"
+        },
+        {
           "name": "Moraga",
           "types": [
             "City",
             "Town"
           ],
           "dcid": "geoId/0649187",
-          "provenanceId": "dc/sm3m2w3"
-        },
-        {
-          "name": "Congressional District 49 (113th Congress), California",
-          "types": [
-            "CongressionalDistrict"
-          ],
-          "dcid": "geoId/0649",
           "provenanceId": "dc/sm3m2w3"
         },
         {
@@ -45835,6 +45835,14 @@
           "provenanceId": "dc/sm3m2w3"
         },
         {
+          "name": "Congressional District 51 (113th Congress), California",
+          "types": [
+            "CongressionalDistrict"
+          ],
+          "dcid": "geoId/0651",
+          "provenanceId": "dc/sm3m2w3"
+        },
+        {
           "name": "Newhall",
           "types": [
             "City",
@@ -45842,14 +45850,6 @@
           ],
           "dcid": "geoId/0651070",
           "provenanceId": "dc/5n63hr1"
-        },
-        {
-          "name": "Congressional District 51 (113th Congress), California",
-          "types": [
-            "CongressionalDistrict"
-          ],
-          "dcid": "geoId/0651",
-          "provenanceId": "dc/sm3m2w3"
         },
         {
           "name": "Congressional District 52 (113th Congress), California",

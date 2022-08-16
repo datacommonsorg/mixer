@@ -63,6 +63,13 @@ func TestBulkPropertyValuesIn(t *testing.T) {
 				100,
 				"",
 			},
+			{
+				"nasa_source.json",
+				"isPartOf",
+				[]string{"dc/s/UsNationalAeronauticsAndSpaceAdministrationNasa"},
+				500,
+				"",
+			},
 		} {
 			req := &pb.BulkPropertyValuesRequest{
 				Property:  c.property,

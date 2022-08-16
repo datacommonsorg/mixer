@@ -16,6 +16,14 @@
             {
               "prop": "dcid",
               "val": "country/VNM"
+            },
+            {
+              "prop": "countryNumericCode",
+              "val": "704"
+            },
+            {
+              "prop": "countryAlpha3Code",
+              "val": "VNM"
             }
           ],
           "probability": 1
