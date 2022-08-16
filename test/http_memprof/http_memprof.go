@@ -121,12 +121,18 @@ func RunWithProfile(outFolder string, key string, f func() (string, error)) (*Me
 	profBefore := fmt.Sprintf(profileLocationTemplate, "before", key)
 	profAfter := fmt.Sprintf(profileLocationTemplate, "after", key)
 
-	saveProfile(profBefore)
+	err := saveProfile(profBefore)
+	if err != nil {
+		return nil, err
+	}
 	respStr, err := f()
 	if err != nil {
 		return nil, err
 	}
-	saveProfile(profAfter)
+	err := saveProfile(profAfter)
+	if err != nil {
+		return nil, err
+	}
 
 	allocBefore, err := GetTotalSpaceAllocFromProfile(profBefore)
 	if err != nil {
