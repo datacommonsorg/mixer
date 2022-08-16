@@ -127,7 +127,7 @@ func RunWithProfile(outFolder string, key string, f func() (string, error)) (*Me
 	if err != nil {
 		return nil, err
 	}
-	err := saveProfile(profAfter)
+	err = saveProfile(profAfter)
 	if err != nil {
 		return nil, err
 	}
