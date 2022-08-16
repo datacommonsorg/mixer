@@ -237,7 +237,7 @@ tests.
 # in another process...
 go run test/http_memprof/http_memprof.go
 	--grpc_addr=127.0.0.1:12345 # default is given; where to find the Mixer server
-	--prof_addr=localhost:6060 # default is given; where to find the live profile handler
+	--prof_addr=127.0.0.1:6060 # default is given; where to find the live profile handler
 ```
 
 `go tool pprof` also supports ad-hoc profiling of servers started as described
@@ -249,7 +249,7 @@ in interactive mode to run queries.
 # ?gc=1 triggers a garbage collection run before the memory profile is served
 # See net/http/pprof for other URLs and profiles available https://pkg.go.dev/net/http/pprof
 # with no flags specifying output, pprof goes into interactive mode
-go tool pprof -sample_index=alloc_space localhost:6060/debug/pprof/heap?gc=1
+go tool pprof -sample_index=alloc_space 127.0.0.1:6060/debug/pprof/heap?gc=1
 ```
 
 ## Update prod golden files

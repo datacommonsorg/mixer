@@ -37,7 +37,7 @@ import (
 
 var (
 	grpcAddr          = flag.String("grpc_addr", "127.0.0.1:12345", "Address of grpc server.")
-	profAddr          = flag.String("prof_addr", "http://localhost:6060", "Address of HTTP profile server.")
+	profAddr          = flag.String("prof_addr", "127.0.0.1:6060", "Address of HTTP profile server.")
 	outFolderParent   = flag.String("out_folder", "http_memprof_out", "Folder to store output of memory profiles over HTTP")
 	resultCsvFilename = "results.csv"
 )
