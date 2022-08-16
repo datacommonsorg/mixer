@@ -18,9 +18,7 @@
 package main
 
 import (
-	"bytes"
 	"context"
-	"errors"
 	"flag"
 	"fmt"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
@@ -90,7 +88,7 @@ func GetTotalSpaceAllocFromProfile(filename string) (int64, error) {
 		return v[allocSpaceSampleIndex]
 	}
 	total := computeTotal(prof, valuef)
-	return total
+	return total, nil
 }
 
 func bytesToMegabytes(bytes int64) float64 {
@@ -113,7 +111,11 @@ type MemoryProfileResult struct {
 	responseLength int
 }
 
-func runWithProfile(outFolder string, key string, f func() (string, error)) *MemoryProfileResult {
+// RunWithProfile runs the function f identified by name key. f is expected to
+// make a request to the mixer server and return a string representing the API
+// response gathered within f. Returns a MemoryProfileResult including the
+// memory allocated at the mixer server over the lifetime of f.
+func RunWithProfile(outFolder string, key string, f func() (string, error)) (*MemoryProfileResult, error) {
 	profileLocationTemplate := outFolder + "/go_http_memprof.%v.%v.pb"
 
 	profBefore := fmt.Sprintf(profileLocationTemplate, "before", key)
@@ -122,12 +124,18 @@ func runWithProfile(outFolder string, key string, f func() (string, error)) *Mem
 	saveProfile(profBefore)
 	respStr, err := f()
 	if err != nil {
-		log.Fatalf("could not run %v: %s", key, err)
+		return nil, err
 	}
 	saveProfile(profAfter)
 
-	allocBefore := GetTotalSpaceAllocFromProfile(profBefore)
-	allocAfter := GetTotalSpaceAllocFromProfile(profAfter)
+	allocBefore, err := GetTotalSpaceAllocFromProfile(profBefore)
+	if err != nil {
+		return nil, err
+	}
+	allocAfter, err := GetTotalSpaceAllocFromProfile(profAfter)
+	if err != nil {
+		return nil, err
+	}
 
 	allocDiff := allocAfter - allocBefore
 	allocDiffMb := bytesToMegabytes(allocDiff)
@@ -137,7 +145,7 @@ func runWithProfile(outFolder string, key string, f func() (string, error)) *Mem
 		profileKey:     key,
 		allocMB:        allocDiffMb,
 		responseLength: len(respStr),
-	}
+	}, nil
 
 	// NOTE: Another approach here would be to use go tool pprof to compute a
 	// profile with "substraction", where the profile consists of the
@@ -260,7 +268,10 @@ func main() {
 				respStr := resp.String()
 				return respStr, nil
 			}
-			result := runWithProfile(outFolder, funcKey, funcToProfile)
+			result, err := RunWithProfile(outFolder, funcKey, funcToProfile)
+			if err != nil {
+				log.Fatal(err)
+			}
 			profileResults = append(profileResults, result)
 			count++
 		}
