@@ -13,8 +13,6 @@
 // limitations under the License.
 
 // this code is a utility to monitor an already running mixer instance, and such
-// does not run with regular tests, so disable deadcode warning on it.
-//nolint:deadcode
 package main
 
 import (
