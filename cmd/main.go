@@ -247,7 +247,7 @@ func main() {
 			// Code from https://pkg.go.dev/net/http/pprof README
 			httpProfileFrom := fmt.Sprintf("localhost:%d", *httpProfilePort)
 			log.Printf("Serving profile over HTTP on %v", httpProfileFrom)
-			log.Println(http.ListenAndServe(httpProfileFrom, nil))
+			log.Printf("%s\n", http.ListenAndServe(httpProfileFrom, nil))
 		}()
 	}
 

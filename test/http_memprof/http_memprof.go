@@ -45,20 +45,17 @@ var (
 func readProfile(filename string) (*profile.Profile, error) {
 	reader, err := os.Open(filename)
 	if err != nil {
-		return nil, errors.New("file could not be opened: " + filename)
+		return nil, err
 	}
 
 	prof, err := profile.Parse(reader)
-	if err != nil {
-		return nil, fmt.Errorf("could not parse proto file: %v", filename)
-	}
 	return prof, err
 }
 
 // GetTotalSpaceAllocFromProfile reads the pprof compatible report file at the
 // given path and returns the total allocated space it recorded. Assumes that
 // the memory profile sample_index for alloc_space is 1
-func GetTotalSpaceAllocFromProfile(filename string) int64 {
+func GetTotalSpaceAllocFromProfile(filename string) (int64, error) {
 	// Modified from https://github.com/google/pprof/blob/c488b8fa1db3fa467bf30beb5a1d6f4f10bb1b87/internal/report/report.go
 	// =======================
 	// computeTotal computes the sum of the absolute value of all sample values.
@@ -87,7 +84,7 @@ func GetTotalSpaceAllocFromProfile(filename string) int64 {
 
 	prof, err := readProfile(filename)
 	if err != nil {
-		log.Fatal(err)
+		return 0, err
 	}
 	valuef := func(v []int64) int64 {
 		return v[allocSpaceSampleIndex]
@@ -100,17 +97,12 @@ func bytesToMegabytes(bytes int64) float64 {
 	return float64(bytes) / (1024 * 1024)
 }
 
-func saveProfile(outFolder string) {
+func saveProfile(outFolder string) error {
 	outputFlag := fmt.Sprintf("-output=%v", outFolder)
 	heapProfileHTTPPath := fmt.Sprintf("%v/debug/pprof/heap?gc=1", *profAddr)
 	cmd := exec.Command("go", "tool", "pprof", outputFlag, "-proto", heapProfileHTTPPath)
-	var stderr bytes.Buffer
-	cmd.Stderr = &stderr
 	err := cmd.Run()
-	if err != nil {
-		fmt.Println(fmt.Sprint(err) + ": " + stderr.String())
-		return
-	}
+	return err
 }
 
 // MemoryProfileResult holds the results from one gRPC call that was
@@ -205,7 +197,7 @@ func main() {
 		grpc.WithBlock(),
 	)
 	if err != nil {
-		log.Printf("Could not connect: %v\n", err)
+		log.Fatalf("Could not connect: %v\n", err)
 	}
 	log.Println("Connected to gRPC succesfully")
 
