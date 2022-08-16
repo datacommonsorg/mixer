@@ -82,7 +82,7 @@ func GetTotalSpaceAllocFromProfile(filename string) int64 {
 		}
 		return total
 	}
-	// sample index of alloc_space in neap profiles from http/net/pprof
+	// sample index of alloc_space in heap profiles from http/net/pprof
 	const allocSpaceSampleIndex = 1
 
 	prof, err := readProfile(filename)
