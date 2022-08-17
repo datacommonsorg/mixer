@@ -443,7 +443,7 @@
           "provenanceId": "dc/d7tbsb1"
         },
         {
-          "name": "Population: Percentage Normalweight Among",
+          "name": "Population: Percentage Normal Weight",
           "types": [
             "StatisticalVariable"
           ],
@@ -459,7 +459,7 @@
           "provenanceId": "dc/d7tbsb1"
         },
         {
-          "name": "Population: Percentage Obesity Among",
+          "name": "Population: Percentage Obese",
           "types": [
             "StatisticalVariable"
           ],
@@ -483,7 +483,7 @@
           "provenanceId": "dc/d7tbsb1"
         },
         {
-          "name": "Population: Percentage Overweight Among",
+          "name": "Population: Percentage Overweight",
           "types": [
             "StatisticalVariable"
           ],
@@ -499,7 +499,7 @@
           "provenanceId": "dc/d7tbsb1"
         },
         {
-          "name": "Population: Percentage Pre Obese Among",
+          "name": "Population: Percentage Pre-obese",
           "types": [
             "StatisticalVariable"
           ],
@@ -539,7 +539,7 @@
           "provenanceId": "dc/d7tbsb1"
         },
         {
-          "name": "Population: Percentage Underweight Among",
+          "name": "Population: Percentage Underweight",
           "types": [
             "StatisticalVariable"
           ],

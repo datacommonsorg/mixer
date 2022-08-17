@@ -16,21 +16,21 @@
     "geoId/0647766": {
       "out": [
         {
-          "name": "Santa Clara County",
-          "types": [
-            "AdministrativeArea2",
-            "County"
-          ],
-          "dcid": "geoId/06085",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
           "name": "California",
           "types": [
             "AdministrativeArea1",
             "State"
           ],
           "dcid": "geoId/06",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "Santa Clara County",
+          "types": [
+            "AdministrativeArea2",
+            "County"
+          ],
+          "dcid": "geoId/06085",
           "provenanceId": "dc/5n63hr1"
         },
         {

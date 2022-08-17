@@ -866,7 +866,7 @@
     },
     {
       "subjectId": "Percent_Normalweight_In_Count_Person",
-      "subjectName": "Population: Percentage Normalweight Among",
+      "subjectName": "Population: Percentage Normal Weight",
       "subjectTypes": [
         "StatisticalVariable"
       ],
@@ -894,7 +894,7 @@
     },
     {
       "subjectId": "Percent_Obesity_In_Count_Person",
-      "subjectName": "Population: Percentage Obesity Among",
+      "subjectName": "Population: Percentage Obese",
       "subjectTypes": [
         "StatisticalVariable"
       ],
@@ -936,7 +936,7 @@
     },
     {
       "subjectId": "Percent_Overweight_In_Count_Person",
-      "subjectName": "Population: Percentage Overweight Among",
+      "subjectName": "Population: Percentage Overweight",
       "subjectTypes": [
         "StatisticalVariable"
       ],
@@ -964,7 +964,7 @@
     },
     {
       "subjectId": "Percent_PreObese_In_Count_Person",
-      "subjectName": "Population: Percentage Pre Obese Among",
+      "subjectName": "Population: Percentage Pre-obese",
       "subjectTypes": [
         "StatisticalVariable"
       ],
@@ -1034,7 +1034,7 @@
     },
     {
       "subjectId": "Percent_Underweight_In_Count_Person",
-      "subjectName": "Population: Percentage Underweight Among",
+      "subjectName": "Population: Percentage Underweight",
       "subjectTypes": [
         "StatisticalVariable"
       ],
@@ -2071,7 +2071,7 @@
     },
     {
       "subjectId": "Percent_Normalweight_In_Count_Person_Female",
-      "subjectName": "Population: Percentage Normalweight Among Female",
+      "subjectName": "Population: Percentage Normal Weight Among Female",
       "subjectTypes": [
         "StatisticalVariable"
       ],
