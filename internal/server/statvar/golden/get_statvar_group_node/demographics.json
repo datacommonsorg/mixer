@@ -146,12 +146,6 @@
       "descendentStatVarCount": 139
     },
     {
-      "id": "dc/g/Person_EnrollmentLevel",
-      "specializedEntity": "Enrollment Level (Student)",
-      "displayName": "Person by Enrollment Level",
-      "descendentStatVarCount": 361
-    },
-    {
       "id": "dc/g/Person_Gender",
       "specializedEntity": "Gender",
       "displayName": "Person by Gender",
@@ -260,7 +254,7 @@
       "descendentStatVarCount": 3471
     }
   ],
-  "descendentStatVarCount": 30564,
+  "descendentStatVarCount": 30530,
   "parentStatVarGroups": [
     "dc/g/Root"
   ]
