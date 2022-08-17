@@ -24,6 +24,8 @@ import (
 	"log"
 	"net"
 	"path"
+	_ "net/http/pprof"
+	"net/http"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server"
@@ -70,6 +72,8 @@ var (
 	serveReconService = flag.Bool("serve_recon_service", false, "Serve Recon service")
 	// Profile startup memory instead of listening for requests
 	startupMemoryProfile = flag.String("startup_memprof", "", "File path to write the memory profile of mixer startup to")
+	// Serve live profiles of the process (CPU, memory, etc.) over HTTP on this port
+	httpProfilePort = flag.Int("httpprof_port", 0, "Port to serve HTTP profiles from")
 )
 
 const (
@@ -236,6 +240,17 @@ func main() {
         }
 		return;
 	}
+
+	// Launch a goroutine that will serve memory requests using net/http/pprof
+	if *httpProfilePort != 0 {
+		go func(){
+			// Code from https://pkg.go.dev/net/http/pprof README
+			httpProfileFrom := fmt.Sprintf("localhost:%d", *httpProfilePort)
+			log.Printf("Serving profile over HTTP on %v", httpProfileFrom)
+			log.Printf("%s\n", http.ListenAndServe(httpProfileFrom, nil))
+		}()
+	}
+
 	// Listen on network
 	lis, err := net.Listen("tcp", fmt.Sprintf(":%d", *port))
 	if err != nil {
