@@ -1,6 +1,5 @@
 """Simple loadtesting using BulkObservationsSeriesLinked rpc."""
 
-import time
 from locust import HttpUser, task, between
 
 
@@ -43,7 +42,7 @@ class BulkObservationsSeriesLinkedCaller(HttpUser):
             })
 
     @task
-    def bulk_observations_series_linked_2(self):
+    def bulk_observations_series_linked_3(self):
         self.client.post(
             '/v1/bulk/observations/series/linked',
             json={
@@ -59,7 +58,7 @@ class BulkObservationsSeriesLinkedCaller(HttpUser):
             })
 
     @task
-    def bulk_observations_series_linked_3(self):
+    def bulk_observations_series_linked_4(self):
         self.client.post('/v1/bulk/observations/series/linked',
                          json={
                              "entity_type": "State",
@@ -69,7 +68,7 @@ class BulkObservationsSeriesLinkedCaller(HttpUser):
                          })
 
     @task
-    def bulk_observations_series_linked_4(self):
+    def bulk_observations_series_linked_5(self):
         self.client.post('/v1/bulk/observations/series/linked',
                          json={
                              "entity_type": "Country",
@@ -79,7 +78,7 @@ class BulkObservationsSeriesLinkedCaller(HttpUser):
                          })
 
     @task
-    def bulk_observations_series_linked_5(self):
+    def bulk_observations_series_linked_6(self):
         self.client.post(
             '/v1/bulk/observations/series/linked',
             json={
@@ -90,7 +89,7 @@ class BulkObservationsSeriesLinkedCaller(HttpUser):
             })
 
     @task
-    def bulk_observations_series_linked_6(self):
+    def bulk_observations_series_linked_7(self):
         self.client.post('/v1/bulk/observations/series/linked',
                          json={
                              "entity_type": "AdministrativeArea2",
