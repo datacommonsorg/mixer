@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mixer-loadtester
+spec:
+  containers:
+  - name: locust
+    image: us-docker.pkg.dev/datcom-ci/mixer/loadtester:v1
+    ports:
+    - containerPort: 8089
