@@ -29,9 +29,6 @@
                           "nodes": [
                             {
                               "value": "0.35"
-                            },
-                            {
-                              "value": "0.35"
                             }
                           ]
                         }
@@ -64,21 +61,6 @@
                           "property": "value",
                           "direction": "DIRECTION_OUT",
                           "nodes": [
-                            {
-                              "value": "0.40"
-                            },
-                            {
-                              "value": "0.40"
-                            },
-                            {
-                              "value": "0.40"
-                            },
-                            {
-                              "value": "0.40"
-                            },
-                            {
-                              "value": "0.40"
-                            },
                             {
                               "value": "0.40"
                             }
@@ -183,21 +165,6 @@
                           "nodes": [
                             {
                               "value": "0.40"
-                            },
-                            {
-                              "value": "0.40"
-                            },
-                            {
-                              "value": "0.40"
-                            },
-                            {
-                              "value": "0.40"
-                            },
-                            {
-                              "value": "0.40"
-                            },
-                            {
-                              "value": "0.40"
                             }
                           ]
                         }
@@ -232,21 +199,6 @@
                           "nodes": [
                             {
                               "value": "0.40"
-                            },
-                            {
-                              "value": "0.40"
-                            },
-                            {
-                              "value": "0.40"
-                            },
-                            {
-                              "value": "0.40"
-                            },
-                            {
-                              "value": "0.40"
-                            },
-                            {
-                              "value": "0.40"
                             }
                           ]
                         }
@@ -279,9 +231,6 @@
                           "property": "value",
                           "direction": "DIRECTION_OUT",
                           "nodes": [
-                            {
-                              "value": "0.35"
-                            },
                             {
                               "value": "0.35"
                             }
@@ -386,21 +335,6 @@
                           "nodes": [
                             {
                               "value": "0.40"
-                            },
-                            {
-                              "value": "0.40"
-                            },
-                            {
-                              "value": "0.40"
-                            },
-                            {
-                              "value": "0.40"
-                            },
-                            {
-                              "value": "0.40"
-                            },
-                            {
-                              "value": "0.40"
                             }
                           ]
                         }
@@ -435,21 +369,6 @@
                           "nodes": [
                             {
                               "value": "0.40"
-                            },
-                            {
-                              "value": "0.40"
-                            },
-                            {
-                              "value": "0.40"
-                            },
-                            {
-                              "value": "0.40"
-                            },
-                            {
-                              "value": "0.40"
-                            },
-                            {
-                              "value": "0.40"
                             }
                           ]
                         }
@@ -482,21 +401,6 @@
                           "property": "value",
                           "direction": "DIRECTION_OUT",
                           "nodes": [
-                            {
-                              "value": "0.40"
-                            },
-                            {
-                              "value": "0.40"
-                            },
-                            {
-                              "value": "0.40"
-                            },
-                            {
-                              "value": "0.40"
-                            },
-                            {
-                              "value": "0.40"
-                            },
                             {
                               "value": "0.40"
                             }
