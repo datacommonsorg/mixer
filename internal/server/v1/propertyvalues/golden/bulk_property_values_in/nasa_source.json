@@ -26,22 +26,6 @@
           ],
           "dcid": "dc/d/UsNationalAeronauticsAndSpaceAdministrationNasa_Nex-gddp-cmip6",
           "provenanceId": "dc/6l6wd42"
-        },
-        {
-          "name": "NEX-GGDP",
-          "types": [
-            "Dataset"
-          ],
-          "dcid": "dc/d/UsNationalAeronauticsAndSpaceAdministrationNasa_Nex-ggdp",
-          "provenanceId": "dc/6l6wd42"
-        },
-        {
-          "name": "NEX-GGDP-CMIP6",
-          "types": [
-            "Dataset"
-          ],
-          "dcid": "dc/d/UsNationalAeronauticsAndSpaceAdministrationNasa_Nex-ggdp-cmip6",
-          "provenanceId": "dc/6l6wd42"
         }
       ]
     }

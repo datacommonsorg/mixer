@@ -23,7 +23,7 @@
       "id": "dc/g/Education",
       "specializedEntity": "Education",
       "displayName": "Education",
-      "descendentStatVarCount": 4521
+      "descendentStatVarCount": 4528
     },
     {
       "id": "dc/g/Energy",
@@ -59,7 +59,7 @@
       "id": "dc/g/Uncategorized",
       "specializedEntity": "Uncategorized",
       "displayName": "Uncategorized",
-      "descendentStatVarCount": 5643
+      "descendentStatVarCount": 5446
     },
     {
       "id": "g/Feeding_America",
@@ -67,5 +67,5 @@
       "descendentStatVarCount": 9
     }
   ],
-  "descendentStatVarCount": 101120
+  "descendentStatVarCount": 101127
 }
