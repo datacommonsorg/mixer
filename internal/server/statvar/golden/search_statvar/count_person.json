@@ -233,6 +233,10 @@
       "dcid": "Count_Person_55To64Years"
     },
     {
+      "name": "Population: 5th And 6th Grade",
+      "dcid": "Count_Person_Years25Onwards_EducationalAttainment_5ThAnd6ThGrade"
+    },
+    {
       "name": "Population: 5th Grade",
       "dcid": "Count_Person_EducationalAttainment5ThGrade"
     },
@@ -305,6 +309,10 @@
       "dcid": "Count_Person_IncomeOf75000OrMoreUSDollar"
     },
     {
+      "name": "Population: 7th And 8th Grade",
+      "dcid": "Count_Person_Years25Onwards_EducationalAttainment_7ThAnd8ThGrade"
+    },
+    {
       "name": "Population: 7th Grade",
       "dcid": "Count_Person_EducationalAttainment7ThGrade"
     },
@@ -339,6 +347,10 @@
     {
       "name": "Population: 9th Grade",
       "dcid": "Count_Person_EducationalAttainment9ThGrade"
+    },
+    {
+      "name": "Population: 9th To 12th Grade No Diploma",
+      "dcid": "Count_Person_EducationalAttainment_9ThTo12ThGradeNoDiploma"
     },
     {
       "name": "Population: Above Poverty Level in The Past 12 Months",
@@ -833,6 +845,14 @@
       "dcid": "Count_Person_5OrMoreYears_LaotianSpokenAtHome"
     },
     {
+      "name": "Population: Less Than 9th Grade",
+      "dcid": "Count_Person_EducationalAttainment_LessThan9ThGrade"
+    },
+    {
+      "name": "Population: Less Than High School Diploma",
+      "dcid": "Count_Person_EducationalAttainment_LessThanHighSchoolDiploma"
+    },
+    {
       "name": "Population: Less Than High School Graduate",
       "dcid": "Count_Person_EducationalAttainmentLessThanHighSchoolGraduate"
     },
@@ -1029,6 +1049,10 @@
       "dcid": "Count_Person_EducationalAttainmentNurserySchool"
     },
     {
+      "name": "Population: Nursery To 4th Grade",
+      "dcid": "Count_Person_Years25Onwards_EducationalAttainment_NurseryTo4ThGrade"
+    },
+    {
       "name": "Population: Nursing Facilities",
       "dcid": "Count_Person_ResidesInNursingFacilities"
     },
@@ -1199,6 +1223,10 @@
     {
       "name": "Population: Some College Less Than 1 Year",
       "dcid": "Count_Person_EducationalAttainmentSomeCollegeLessThan1Year"
+    },
+    {
+      "name": "Population: Some College No Degree",
+      "dcid": "Count_Person_EducationalAttainment_SomeCollegeNoDegree"
     },
     {
       "name": "Population: Some College or Associates Degree",
@@ -3971,34 +3999,6 @@
     {
       "name": "Population: 25 - 34 Years, Different House Abroad",
       "dcid": "Count_Person_25To34Years_DifferentHouseAbroad"
-    },
-    {
-      "name": "Population: 25 - 34 Years, Different House in Different County Different State",
-      "dcid": "Count_Person_25To34Years_DifferentHouseInDifferentCountyDifferentState"
-    },
-    {
-      "name": "Population: 25 - 34 Years, Different House in Different County Same State",
-      "dcid": "Count_Person_25To34Years_DifferentHouseInDifferentCountySameState"
-    },
-    {
-      "name": "Population: 25 - 34 Years, Different House in Same County",
-      "dcid": "Count_Person_25To34Years_DifferentHouseInSameCounty"
-    },
-    {
-      "name": "Population: 25 - 34 Years, Female",
-      "dcid": "Count_Person_25To34Years_Female"
-    },
-    {
-      "name": "Population: 25 - 34 Years, Foreign Born",
-      "dcid": "Count_Person_25To34Years_ForeignBorn"
-    },
-    {
-      "name": "Population: 25 - 34 Years, Group Quarters",
-      "dcid": "Count_Person_25To34Years_ResidesInGroupQuarters"
-    },
-    {
-      "name": "Population: 25 - 34 Years, Institutionalized Group Quarters",
-      "dcid": "Count_Person_25To34Years_ResidesInInstitutionalizedGroupQuarters"
     }
   ],
   "matches": [
