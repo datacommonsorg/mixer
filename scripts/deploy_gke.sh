@@ -84,6 +84,7 @@ kubectl apply -f kustomize-build.yaml
 
 # Deploy Cloud Endpoints
 cp $ROOT/esp/endpoints.yaml.tmpl endpoints.yaml
+sed -i -e "s/<DOMAIN>/$DOMAIN/g" endpoints.yaml
 yq eval -i '.name = env(DOMAIN)' endpoints.yaml
 yq eval -i '.title = env(API_TITLE)' endpoints.yaml
 yq eval -i '.apis[0].name = env(API)' endpoints.yaml
