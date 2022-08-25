@@ -40,47 +40,7 @@ port forwarding.
   gcloud auth application-default login
   ```
 
-## Develop mixer locally with Docker and Kubernetes (Recommended)
-
-Mixer and [ESP](https://cloud.google.com/endpoints/docs/grpc/running-esp-localdev)
-is deployed on a local Minikube cluster.
-To avoid using Endpoints API management and talking to GCP,
-local deployment uses Json API configuration,
-which is compiled using [API Compiler](https://github.com/googleapis/api-compiler).
-
-### Start mixer in minikube
-
-```bash
-minikube start
-minikube addons enable gcp-auth
-eval $(minikube docker-env)
-kubectl config use-context minikube
-skaffold dev --port-forward -n mixer
-```
-
-This exposes the local mixer service at `localhost:8081`.
-
-To verify the server serving request:
-
-```bash
-curl http://localhost:8081/node/property-labels?dcids=Class
-```
-
-After code edit, the container images are automatically rebuilt and re-deployed to the local cluster.
-
-### Run Tests
-
-```bash
-./scripts/run_test.sh -d
-```
-
-### Update e2e test golden files
-
-```bash
-./scripts/update_golden.sh -d
-```
-
-## Develop mixer locally as a Go server (non-Docker)
+## Develop mixer locally as a Go server (Recommended)
 
 **NOTE** This can only develop and test the gRPC server. Since the [ESP](https://cloud.google.com/endpoints/docs/grpc/running-esp-localdev) is not
 brought up here, can not test the REST API.
@@ -113,7 +73,7 @@ Run the following code to start mixer gRPC server (without branch cache)
 
 ```bash
 # In repo root directory
-go run cmd/main.go \
+go run --tags sqlite_fts5 cmd/main.go \
     --mixer_project=datcom-mixer-staging \
     --store_project=datcom-store \
     --bq_dataset=$(head -1 deploy/storage/bigquery.version) \
@@ -142,7 +102,7 @@ Run the following code to start mixer gRPC server with TMCF + CSV files stored i
 
 ```bash
 # In repo root directory
-go run cmd/main.go \
+go run --tags sqlite_fts5 cmd/main.go \
     --mixer_project=datcom-mixer-dev-316822 \
     --tmcf_csv_bucket=datcom-mixer-dev-resources \
     --tmcf_csv_folder=test \
@@ -191,7 +151,7 @@ to that path, and you can use `go tool pprof` to analyze it. For example;
 ```bash
 # Command from ### Start Mixer as a gRPC server backed by TMCF + CSV files
 # In repo root directory
-go run cmd/main.go \
+go run --tags sqlite_fts5 cmd/main.go \
     --mixer_project=datcom-mixer-staging \
     --store_project=datcom-store \
     --bq_dataset=$(head -1 deploy/storage/bigquery.version) \
@@ -235,9 +195,9 @@ tests.
 
 ```bash
 # in another process...
-go run test/http_memprof/http_memprof.go
-	--grpc_addr=127.0.0.1:12345 # default is given; where to find the Mixer server
-	--prof_addr=127.0.0.1:6060 # default is given; where to find the live profile handler
+go run test/http_memprof/http_memprof.go \
+  --grpc_addr=127.0.0.1:12345 \ # default is given; where to find the Mixer server
+  --prof_addr=127.0.0.1:6060 # default is given; where to find the live profile handler
 ```
 
 `go tool pprof` also supports ad-hoc profiling of servers started as described
@@ -250,6 +210,46 @@ in interactive mode to run queries.
 # See net/http/pprof for other URLs and profiles available https://pkg.go.dev/net/http/pprof
 # with no flags specifying output, pprof goes into interactive mode
 go tool pprof -sample_index=alloc_space 127.0.0.1:6060/debug/pprof/heap?gc=1
+```
+
+## Develop mixer locally with Docker and Kubernetes
+
+Mixer and [ESP](https://cloud.google.com/endpoints/docs/grpc/running-esp-localdev)
+is deployed on a local Minikube cluster.
+To avoid using Endpoints API management and talking to GCP,
+local deployment uses Json API configuration,
+which is compiled using [API Compiler](https://github.com/googleapis/api-compiler).
+
+### Start mixer in minikube
+
+```bash
+minikube start
+minikube addons enable gcp-auth
+eval $(minikube docker-env)
+kubectl config use-context minikube
+skaffold dev --port-forward -n mixer
+```
+
+This exposes the local mixer service at `localhost:8081`.
+
+To verify the server serving request:
+
+```bash
+curl http://localhost:8081/node/property-labels?dcids=Class
+```
+
+After code edit, the container images are automatically rebuilt and re-deployed to the local cluster.
+
+### Run Tests
+
+```bash
+./scripts/run_test.sh -d
+```
+
+### Update e2e test golden files
+
+```bash
+./scripts/update_golden.sh -d
 ```
 
 ## Update prod golden files
