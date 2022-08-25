@@ -209,7 +209,7 @@ func BuildSQLiteIndex(
 	for index, doc := range docSet {
 		_, err = stmt.Exec(index, doc.ID, doc.Title, doc.Signature, doc.NumConstraints, doc.KeyValueText)
 		if err != nil {
-			fmt.Printf("Ignoring statvar with DCID=%s as its signature is not unique.\n", doc.ID)
+			// fmt.Printf("Ignoring statvar with DCID=%s as its signature is not unique.\n", doc.ID)
 			continue
 		}
 	}

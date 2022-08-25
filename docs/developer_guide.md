@@ -113,7 +113,7 @@ Run the following code to start mixer gRPC server (without branch cache)
 
 ```bash
 # In repo root directory
-go run cmd/main.go \
+go run --tags sqlite_fts5 cmd/main.go \
     --mixer_project=datcom-mixer-staging \
     --store_project=datcom-store \
     --bq_dataset=$(head -1 deploy/storage/bigquery.version) \
@@ -142,7 +142,7 @@ Run the following code to start mixer gRPC server with TMCF + CSV files stored i
 
 ```bash
 # In repo root directory
-go run cmd/main.go \
+go run --tags sqlite_fts5 cmd/main.go \
     --mixer_project=datcom-mixer-dev-316822 \
     --tmcf_csv_bucket=datcom-mixer-dev-resources \
     --tmcf_csv_folder=test \
@@ -191,7 +191,7 @@ to that path, and you can use `go tool pprof` to analyze it. For example;
 ```bash
 # Command from ### Start Mixer as a gRPC server backed by TMCF + CSV files
 # In repo root directory
-go run cmd/main.go \
+go run --tags sqlite_fts5 cmd/main.go \
     --mixer_project=datcom-mixer-staging \
     --store_project=datcom-store \
     --bq_dataset=$(head -1 deploy/storage/bigquery.version) \
@@ -235,9 +235,9 @@ tests.
 
 ```bash
 # in another process...
-go run test/http_memprof/http_memprof.go
-	--grpc_addr=127.0.0.1:12345 # default is given; where to find the Mixer server
-	--prof_addr=127.0.0.1:6060 # default is given; where to find the live profile handler
+go run test/http_memprof/http_memprof.go \
+  --grpc_addr=127.0.0.1:12345 \ # default is given; where to find the Mixer server
+  --prof_addr=127.0.0.1:6060 # default is given; where to find the live profile handler
 ```
 
 `go tool pprof` also supports ad-hoc profiling of servers started as described
