@@ -40,47 +40,7 @@ port forwarding.
   gcloud auth application-default login
   ```
 
-## Develop mixer locally with Docker and Kubernetes (Recommended)
-
-Mixer and [ESP](https://cloud.google.com/endpoints/docs/grpc/running-esp-localdev)
-is deployed on a local Minikube cluster.
-To avoid using Endpoints API management and talking to GCP,
-local deployment uses Json API configuration,
-which is compiled using [API Compiler](https://github.com/googleapis/api-compiler).
-
-### Start mixer in minikube
-
-```bash
-minikube start
-minikube addons enable gcp-auth
-eval $(minikube docker-env)
-kubectl config use-context minikube
-skaffold dev --port-forward -n mixer
-```
-
-This exposes the local mixer service at `localhost:8081`.
-
-To verify the server serving request:
-
-```bash
-curl http://localhost:8081/node/property-labels?dcids=Class
-```
-
-After code edit, the container images are automatically rebuilt and re-deployed to the local cluster.
-
-### Run Tests
-
-```bash
-./scripts/run_test.sh -d
-```
-
-### Update e2e test golden files
-
-```bash
-./scripts/update_golden.sh -d
-```
-
-## Develop mixer locally as a Go server (non-Docker)
+## Develop mixer locally as a Go server (Recommended)
 
 **NOTE** This can only develop and test the gRPC server. Since the [ESP](https://cloud.google.com/endpoints/docs/grpc/running-esp-localdev) is not
 brought up here, can not test the REST API.
@@ -250,6 +210,46 @@ in interactive mode to run queries.
 # See net/http/pprof for other URLs and profiles available https://pkg.go.dev/net/http/pprof
 # with no flags specifying output, pprof goes into interactive mode
 go tool pprof -sample_index=alloc_space 127.0.0.1:6060/debug/pprof/heap?gc=1
+```
+
+## Develop mixer locally with Docker and Kubernetes
+
+Mixer and [ESP](https://cloud.google.com/endpoints/docs/grpc/running-esp-localdev)
+is deployed on a local Minikube cluster.
+To avoid using Endpoints API management and talking to GCP,
+local deployment uses Json API configuration,
+which is compiled using [API Compiler](https://github.com/googleapis/api-compiler).
+
+### Start mixer in minikube
+
+```bash
+minikube start
+minikube addons enable gcp-auth
+eval $(minikube docker-env)
+kubectl config use-context minikube
+skaffold dev --port-forward -n mixer
+```
+
+This exposes the local mixer service at `localhost:8081`.
+
+To verify the server serving request:
+
+```bash
+curl http://localhost:8081/node/property-labels?dcids=Class
+```
+
+After code edit, the container images are automatically rebuilt and re-deployed to the local cluster.
+
+### Run Tests
+
+```bash
+./scripts/run_test.sh -d
+```
+
+### Update e2e test golden files
+
+```bash
+./scripts/update_golden.sh -d
 ```
 
 ## Update prod golden files
