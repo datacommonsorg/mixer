@@ -37,69 +37,67 @@ usage:
   rules:
   # V0 APIs can be called without an API Key.
   # This will be removed once the V0 users are fully migrated.
-  - selector: "*"
-    allow_unregistered_calls: false
-  - selector: "<DOMAIN>.Mixer.Query"
+  - selector: "datacommons.Mixer.Query"
     allow_unregistered_calls: true
-  - selector: "<DOMAIN>.Mixer.GetPropertyLabels"
+  - selector: "datacommons.Mixer.GetPropertyLabels"
     allow_unregistered_calls: true
-  - selector: "<DOMAIN>.Mixer.GetPropertyValues"
+  - selector: "datacommons.Mixer.GetPropertyValues"
     allow_unregistered_calls: true
-  - selector: "<DOMAIN>.Mixer.GetTriples"
+  - selector: "datacommons.Mixer.GetTriples"
     allow_unregistered_calls: true
-  - selector: "<DOMAIN>.Mixer.GetPlacesIn"
+  - selector: "datacommons.Mixer.GetPlacesIn"
     allow_unregistered_calls: true
-  - selector: "<DOMAIN>.Mixer.GetStats"
+  - selector: "datacommons.Mixer.GetStats"
     allow_unregistered_calls: true
-  - selector: "<DOMAIN>.Mixer.GetStatSetSeries"
+  - selector: "datacommons.Mixer.GetStatSetSeries"
     allow_unregistered_calls: true
-  - selector: "<DOMAIN>.Mixer.GetStatValue"
+  - selector: "datacommons.Mixer.GetStatValue"
     allow_unregistered_calls: true
-  - selector: "<DOMAIN>.Mixer.GetStatSeries"
+  - selector: "datacommons.Mixer.GetStatSeries"
     allow_unregistered_calls: true
-  - selector: "<DOMAIN>.Mixer.GetStatAll"
+  - selector: "datacommons.Mixer.GetStatAll"
     allow_unregistered_calls: true
-  - selector: "<DOMAIN>.Mixer.GetStatSetWithinPlace"
+  - selector: "datacommons.Mixer.GetStatSetWithinPlace"
     allow_unregistered_calls: true
-  - selector: "<DOMAIN>.Mixer.GetStatSetWithinPlaceAll"
+  - selector: "datacommons.Mixer.GetStatSetWithinPlaceAll"
     allow_unregistered_calls: true
-  - selector: "<DOMAIN>.Mixer.GetStatSet"
+  - selector: "datacommons.Mixer.GetStatSet"
     allow_unregistered_calls: true
-  - selector: "<DOMAIN>.Mixer.GetStatSetSeriesWithinPlace"
+  - selector: "datacommons.Mixer.GetStatSetSeriesWithinPlace"
     allow_unregistered_calls: true
-  - selector: "<DOMAIN>.Mixer.GetLocationsRankings"
+  - selector: "datacommons.Mixer.GetLocationsRankings"
     allow_unregistered_calls: true
-  - selector: "<DOMAIN>.Mixer.GetRelatedLocations"
+  - selector: "datacommons.Mixer.GetRelatedLocations"
     allow_unregistered_calls: true
-  - selector: "<DOMAIN>.Mixer.GetPlacePageData"
+  - selector: "datacommons.Mixer.GetPlacePageData"
     allow_unregistered_calls: true
-  - selector: "<DOMAIN>.Mixer.GetBioPageData"
+  - selector: "datacommons.Mixer.GetBioPageData"
     allow_unregistered_calls: true
-  - selector: "<DOMAIN>.Mixer.Translate"
+  - selector: "datacommons.Mixer.Translate"
     allow_unregistered_calls: true
-  - selector: "<DOMAIN>.Mixer.Search"
+  - selector: "datacommons.Mixer.Search"
     allow_unregistered_calls: true
-  - selector: "<DOMAIN>.Mixer.GetVersion"
+  - selector: "datacommons.Mixer.GetVersion"
     allow_unregistered_calls: true
-  - selector: "<DOMAIN>.Mixer.GetPlaceStatsVar"
+  - selector: "datacommons.Mixer.GetPlaceStatsVar"
     allow_unregistered_calls: true
-  - selector: "<DOMAIN>.Mixer.GetPlaceMetadata"
+  - selector: "datacommons.Mixer.GetPlaceMetadata"
     allow_unregistered_calls: true
-  - selector: "<DOMAIN>.Mixer.GetPlaceStatVarsUnionV1"
+  - selector: "datacommons.Mixer.GetPlaceStatVarsUnionV1"
     allow_unregistered_calls: true
-  - selector: "<DOMAIN>.Mixer.GetPlaceStatDateWithinPlace"
+  - selector: "datacommons.Mixer.GetPlaceStatDateWithinPlace"
     allow_unregistered_calls: true
-  - selector: "<DOMAIN>.Mixer.GetStatDateWithinPlace"
+  - selector: "datacommons.Mixer.GetStatDateWithinPlace"
     allow_unregistered_calls: true
-  - selector: "<DOMAIN>.Mixer.GetStatVarGroup"
+  - selector: "datacommons.Mixer.GetStatVarGroup"
     allow_unregistered_calls: true
-  - selector: "<DOMAIN>.Mixer.GetStatVarGroupNode"
+  - selector: "datacommons.Mixer.GetStatVarGroupNode"
     allow_unregistered_calls: true
-  - selector: "<DOMAIN>.Mixer.GetStatVarPath"
+  - selector: "datacommons.Mixer.GetStatVarPath"
     allow_unregistered_calls: true
-  - selector: "<DOMAIN>.Mixer.SearchStatVar"
+  - selector: "datacommons.Mixer.SearchStatVar"
     allow_unregistered_calls: true
-  - selector: "<DOMAIN>.Mixer.GetStatVarSummary"
+  - selector: "datacommons.Mixer.GetStatVarSummary"
     allow_unregistered_calls: true
-  - selector: "<DOMAIN>.Mixer.GetStatVarMatch"
+  - selector: "datacommons.Mixer.GetStatVarMatch"
     allow_unregistered_calls: true
