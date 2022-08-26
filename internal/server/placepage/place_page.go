@@ -219,14 +219,16 @@ func fetchBtData(
 ) (map[string]*pb.StatVarSeries, map[string]*pb.PointStat, error) {
 	// Fetch place page cache data in parallel.
 	action := [][]string{places}
+	prefix := bigtable.BtPlacePagePrefix
 	if category != "" {
 		action = [][]string{places, {category}}
+		prefix = bigtable.BtPlacePageCategoricalPrefix
 	}
 
 	btDataList, err := bigtable.Read(
 		ctx,
 		store.BtGroup,
-		bigtable.BtPlacePagePrefix,
+		prefix,
 		action,
 		func(jsonRaw []byte) (interface{}, error) {
 			var placePageData pb.StatVarObsSeries
