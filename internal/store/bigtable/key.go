@@ -46,6 +46,8 @@ const (
 	BtPlacesMetadataPrefix = "d/d/"
 	// BtObsCollection for obs collection cache.
 	BtObsCollection = "d/e/"
+  // BtPlacePageCategoricalPrefix for place page Categorical cache.
+	BtPlacePageCategoricalPrefix = "d/f/"
 	// BtPagedPropTypeValIn for in-arc paged entities by type.
 	// Key: <dcid^predicate^type^page>
 	BtPagedPropTypeValIn = "d/l/"
