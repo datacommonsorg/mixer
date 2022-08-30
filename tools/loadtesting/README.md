@@ -8,24 +8,31 @@ The specific APIs that are called are defined by a [locustfile](https://docs.loc
 
 If the mixer instance to be tested lives as a k8s service that is not exposed to the internet, we can run a containerized version in the same cluster.
 
-1.  Deploy the pod into the same namespace as Mixer.
+1.  Make sure that the k8s credentials are configured. You can visit the GCP UI and click "CONNECT" on your cluster's page to get the command to configure the credentials.
 
-```sh
-kubectl apply -f tools/loadtesting/pod.yaml --namespace=<mixer namespace>
-```
+    The command below should point to your cluster.
+    ```sh
+    kubectl config current-context
+    ```
 
-2.  Make sure the pod is running with `kubectl -n <mixer namespace> get pod mixer-loadtester`. Output below means successful.
+2.  Deploy the pod into the same namespace as Mixer.
 
-```sh
-NAME                                           READY   STATUS    RESTARTS      AGE
-mixer-loadtester                               1/1     Running   0             0m
-```
+    ```sh
+    kubectl apply -f tools/loadtesting/pod.yaml --namespace=<mixer namespace>
+    ```
+
+3.  Make sure the pod is running with `kubectl -n <mixer namespace> get pod mixer-loadtester`. Output below means successful.
+
+    ```sh
+    NAME                                           READY   STATUS    RESTARTS      AGE
+    mixer-loadtester                               1/1     Running   0             0m
+    ```
 
 3.  Forward loadtester port to localhost.
 
-```sh
-kubectl -n <mixer namespace> port-forward mixer-loadtester 8089:8089
-```
+    ```sh
+    kubectl -n <mixer namespace> port-forward mixer-loadtester 8089:8089
+    ```
 
 4.  Go to http://localhost:8089/ in browser. You should see the locust UI.
 5.  Click "New test", set the parameters(described below) and click "Start swarming".
@@ -40,12 +47,12 @@ kubectl -n <mixer namespace> port-forward mixer-loadtester 8089:8089
 
 1.  Set up the local environment.
 
-`virtualenv env && source env/bin/active && pip install -r requirements.txt`
+    `virtualenv env && source env/bin/active && pip install -r requirements.txt`
 
 2.  After desired changes (most likely edit/add of a locustfile), you may want to change the default locust file inside `Dockerfile`.
 3.  Build a new image and stored it in [AR](https://cloud.google.com/artifact-registry/docs)(Below assumes that you are in the loadtesting dir.).
 
-```sh
-gcloud builds submit --project=datcom-ci --tag=us-docker.pkg.dev/datcom-ci/mixer/loadtester:v2
-```
+    ```sh
+    gcloud builds submit --project=datcom-ci --tag=us-docker.pkg.dev/datcom-ci/mixer/loadtester:v2
+    ```
 4.  Increment both the image tag version in pod.yaml and the cloud build command above. Submit all changes into 1 PR.
