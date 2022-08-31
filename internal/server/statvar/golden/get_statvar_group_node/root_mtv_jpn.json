@@ -16,13 +16,13 @@
       "id": "dc/g/Economy",
       "specializedEntity": "Economy",
       "displayName": "Economy",
-      "descendentStatVarCount": 8314
+      "descendentStatVarCount": 8323
     },
     {
       "id": "dc/g/Education",
       "specializedEntity": "Education",
       "displayName": "Education",
-      "descendentStatVarCount": 891
+      "descendentStatVarCount": 898
     },
     {
       "id": "dc/g/Energy",
@@ -65,5 +65,5 @@
       "specializedEntity": "Feeding America"
     }
   ],
-  "descendentStatVarCount": 11211
+  "descendentStatVarCount": 11218
 }

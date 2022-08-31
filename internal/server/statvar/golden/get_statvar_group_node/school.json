@@ -155,13 +155,13 @@
       "id": "dc/g/Person_EducationalAttainment-5ThAnd6ThGrade",
       "specializedEntity": "5th And 6th Grade",
       "displayName": "Person With Educational Attainment = 5th And 6th Grade",
-      "descendentStatVarCount": 2
+      "descendentStatVarCount": 3
     },
     {
       "id": "dc/g/Person_EducationalAttainment-7ThAnd8ThGrade",
       "specializedEntity": "7th And 8th Grade",
       "displayName": "Person With Educational Attainment = 7th And 8th Grade",
-      "descendentStatVarCount": 2
+      "descendentStatVarCount": 3
     },
     {
       "id": "dc/g/Person_EducationalAttainment-9ThGrade",
@@ -173,7 +173,7 @@
       "id": "dc/g/Person_EducationalAttainment-9ThTo12ThGradeNoDiploma",
       "specializedEntity": "9th To 12th Grade No Diploma",
       "displayName": "Person With Educational Attainment = 9th To 12th Grade No Diploma",
-      "descendentStatVarCount": 10
+      "descendentStatVarCount": 11
     },
     {
       "id": "dc/g/Person_EducationalAttainment-AssociatesDegree",
@@ -232,13 +232,13 @@
       "id": "dc/g/Person_EducationalAttainment-LessThan9ThGrade",
       "specializedEntity": "Less Than 9th Grade",
       "displayName": "Person With Educational Attainment = Less Than 9th Grade",
-      "descendentStatVarCount": 10
+      "descendentStatVarCount": 11
     },
     {
       "id": "dc/g/Person_EducationalAttainment-LessThanHighSchoolDiploma",
       "specializedEntity": "Less Than High School Diploma",
       "displayName": "Person With Educational Attainment = Less Than High School Diploma",
-      "descendentStatVarCount": 18
+      "descendentStatVarCount": 19
     },
     {
       "id": "dc/g/Person_EducationalAttainment-LessThanHighSchoolGraduate",
@@ -278,7 +278,7 @@
       "id": "dc/g/Person_EducationalAttainment-NurseryTo4ThGrade",
       "specializedEntity": "Nursery To 4th Grade",
       "displayName": "Person With Educational Attainment = Nursery To 4th Grade",
-      "descendentStatVarCount": 2
+      "descendentStatVarCount": 3
     },
     {
       "id": "dc/g/Person_EducationalAttainment-ProfessionalSchoolDegree",
@@ -302,7 +302,7 @@
       "id": "dc/g/Person_EducationalAttainment-SomeCollegeNoDegree",
       "specializedEntity": "Some College No Degree",
       "displayName": "Person With Educational Attainment = Some College No Degree",
-      "descendentStatVarCount": 10
+      "descendentStatVarCount": 11
     },
     {
       "id": "dc/g/Person_EducationalAttainment-SomeCollegeOrAssociatesDegree",
@@ -337,7 +337,7 @@
       "displayName": "Person With Educational Attainment = Upper Secondary Education or Higher"
     }
   ],
-  "descendentStatVarCount": 480,
+  "descendentStatVarCount": 487,
   "parentStatVarGroups": [
     "dc/g/Education"
   ]
