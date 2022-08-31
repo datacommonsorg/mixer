@@ -53,6 +53,7 @@ If the mixer instance to be tested lives as a k8s service that is not exposed to
     ```
 
 2.  After desired changes (most likely edit/add of a locustfile), you may want to change the default locust file inside `Dockerfile`.
+
 3.  Build a new image and stored it in [AR](https://cloud.google.com/artifact-registry/docs)(Below assumes that you are in the loadtesting dir.).
 
     ```sh
