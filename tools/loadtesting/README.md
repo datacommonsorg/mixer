@@ -33,7 +33,9 @@ If the mixer instance to be tested lives as a k8s service that is not exposed to
     ```sh
     kubectl -n <mixer namespace> port-forward mixer-loadtester 8089:8089
     ```
+
 5.  Go to http://localhost:8089/ in browser. You should see the locust UI.
+
 6.  Click "New test", set the parameters(described below) and click "Start swarming".
 
 | Parameter | Definition |
@@ -47,6 +49,7 @@ If the mixer instance to be tested lives as a k8s service that is not exposed to
 1.  Set up the local environment.
 
     `virtualenv env && source env/bin/active && pip install -r requirements.txt`
+
 2.  After desired changes (most likely edit/add of a locustfile), you may want to change the default locust file inside `Dockerfile`.
 3.  Build a new image and stored it in [AR](https://cloud.google.com/artifact-registry/docs)(Below assumes that you are in the loadtesting dir.).
 
