@@ -1,0 +1,1636 @@
+{
+  "statVarSeries": {
+    "geoId/06059": {
+      "data": {
+        "Count_Household_IncomeOf100000To124999USDollar": {
+          "val": {
+            "2011": 106162,
+            "2012": 103768,
+            "2013": 104158,
+            "2014": 103122,
+            "2015": 103588,
+            "2016": 104640,
+            "2017": 107071,
+            "2018": 106933,
+            "2019": 108938,
+            "2020": 112305
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Household_IncomeOf10000To14999USDollar": {
+          "val": {
+            "2011": 32854,
+            "2012": 33302,
+            "2013": 34341,
+            "2014": 34301,
+            "2015": 34964,
+            "2016": 32680,
+            "2017": 31551,
+            "2018": 30304,
+            "2019": 28288,
+            "2020": 27574
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Household_IncomeOf125000To149999USDollar": {
+          "val": {
+            "2011": 73758,
+            "2012": 74765,
+            "2013": 74144,
+            "2014": 74465,
+            "2015": 74662,
+            "2016": 75565,
+            "2017": 77515,
+            "2018": 82232,
+            "2019": 83863,
+            "2020": 89106
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Household_IncomeOf150000To199999USDollar": {
+          "val": {
+            "2011": 87624,
+            "2012": 88066,
+            "2013": 87957,
+            "2014": 91544,
+            "2015": 92711,
+            "2016": 95223,
+            "2017": 100361,
+            "2018": 107421,
+            "2019": 115175,
+            "2020": 117592
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Household_IncomeOf200000OrMoreUSDollar": {
+          "val": {
+            "2011": 97455,
+            "2012": 99311,
+            "2013": 101935,
+            "2014": 106570,
+            "2015": 112048,
+            "2016": 120249,
+            "2017": 133098,
+            "2018": 147231,
+            "2019": 161050,
+            "2020": 173543
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Household_IncomeOf20000To24999USDollar": {
+          "val": {
+            "2011": 36128,
+            "2012": 36422,
+            "2013": 37305,
+            "2014": 37223,
+            "2015": 37859,
+            "2016": 37032,
+            "2017": 36161,
+            "2018": 34267,
+            "2019": 31746,
+            "2020": 28877
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Household_IncomeOf40000To44999USDollar": {
+          "val": {
+            "2011": 37612,
+            "2012": 36449,
+            "2013": 36014,
+            "2014": 36469,
+            "2015": 35798,
+            "2016": 36168,
+            "2017": 34596,
+            "2018": 34300,
+            "2019": 31670,
+            "2020": 31165
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Household_IncomeOf50000To59999USDollar": {
+          "val": {
+            "2011": 70558,
+            "2012": 70617,
+            "2013": 70537,
+            "2014": 70171,
+            "2015": 69153,
+            "2016": 69344,
+            "2017": 67323,
+            "2018": 65187,
+            "2019": 63366,
+            "2020": 60588
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Household_IncomeOf60000To74999USDollar": {
+          "val": {
+            "2011": 95390,
+            "2012": 94446,
+            "2013": 92733,
+            "2014": 91405,
+            "2015": 92114,
+            "2016": 93421,
+            "2017": 93470,
+            "2018": 91896,
+            "2019": 88193,
+            "2020": 86558
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Household_IncomeOf75000To99999USDollar": {
+          "val": {
+            "2011": 133367,
+            "2012": 132919,
+            "2013": 132255,
+            "2014": 131486,
+            "2015": 131085,
+            "2016": 131384,
+            "2017": 132491,
+            "2018": 132431,
+            "2019": 133015,
+            "2020": 130136
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Household_IncomeOfUpto10000USDollar": {
+          "val": {
+            "2011": 38785,
+            "2012": 40527,
+            "2013": 42554,
+            "2014": 43966,
+            "2015": 45292,
+            "2016": 45635,
+            "2017": 44811,
+            "2018": 43771,
+            "2019": 43296,
+            "2020": 42707
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_BelowPovertyLevelInThePast12Months": {
+          "val": {
+            "2011": 320473,
+            "2012": 349220,
+            "2013": 373049,
+            "2014": 391705,
+            "2015": 395483,
+            "2016": 385556,
+            "2017": 378459,
+            "2018": 359503,
+            "2019": 340048,
+            "2020": 317682
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_IncomeOf10000To14999USDollar": {
+          "val": {
+            "2011": 199592,
+            "2012": 204888,
+            "2013": 203733,
+            "2014": 207869,
+            "2015": 211448,
+            "2016": 209665,
+            "2017": 207546,
+            "2018": 199762,
+            "2019": 188576,
+            "2020": 182222
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_IncomeOf15000To24999USDollar": {
+          "val": {
+            "2011": 296256,
+            "2012": 300614,
+            "2013": 310329,
+            "2014": 312925,
+            "2015": 318158,
+            "2016": 319298,
+            "2017": 315040,
+            "2018": 303139,
+            "2019": 295147,
+            "2020": 283016
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_IncomeOf25000To34999USDollar": {
+          "val": {
+            "2011": 226811,
+            "2012": 227741,
+            "2013": 229782,
+            "2014": 232785,
+            "2015": 231645,
+            "2016": 232671,
+            "2017": 237616,
+            "2018": 246121,
+            "2019": 250668,
+            "2020": 254246
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_IncomeOf35000To49999USDollar": {
+          "val": {
+            "2011": 246923,
+            "2012": 245060,
+            "2013": 242318,
+            "2014": 242922,
+            "2015": 245935,
+            "2016": 247753,
+            "2017": 251769,
+            "2018": 255582,
+            "2019": 258746,
+            "2020": 262404
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_IncomeOf50000To64999USDollar": {
+          "val": {
+            "2011": 189052,
+            "2012": 190291,
+            "2013": 185218,
+            "2014": 182473,
+            "2015": 187102,
+            "2016": 191982,
+            "2017": 199076,
+            "2018": 202662,
+            "2019": 209296,
+            "2020": 206979
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_IncomeOf65000To74999USDollar": {
+          "val": {
+            "2011": 88645,
+            "2012": 85145,
+            "2013": 84487,
+            "2014": 87606,
+            "2015": 85616,
+            "2016": 89443,
+            "2017": 90575,
+            "2018": 90526,
+            "2019": 85765,
+            "2020": 98926
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_IncomeOf75000OrMoreUSDollar": {
+          "val": {
+            "2011": 405647,
+            "2012": 409087,
+            "2013": 416508,
+            "2014": 427337,
+            "2015": 438131,
+            "2016": 451812,
+            "2017": 478336,
+            "2018": 513826,
+            "2019": 550488,
+            "2020": 575334
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_IncomeOfUpto9999USDollar": {
+          "val": {
+            "2011": 338170,
+            "2012": 344354,
+            "2013": 351504,
+            "2014": 353972,
+            "2015": 358978,
+            "2016": 358364,
+            "2017": 351055,
+            "2018": 337229,
+            "2019": 325837,
+            "2020": 319424
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Median_Income_Household": {
+          "val": {
+            "2011": 75762,
+            "2012": 75566,
+            "2013": 75422,
+            "2014": 75998,
+            "2015": 76509,
+            "2016": 78145,
+            "2017": 81851,
+            "2018": 85398,
+            "2019": 90234,
+            "2020": 94441
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "unit": "USDollar"
+          }
+        },
+        "Median_Income_Person": {
+          "val": {
+            "2011": 31679,
+            "2012": 31213,
+            "2013": 30995,
+            "2014": 31036,
+            "2015": 31005,
+            "2016": 31386,
+            "2017": 32206,
+            "2018": 34196,
+            "2019": 36135,
+            "2020": 37499
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "unit": "USDollar"
+          }
+        }
+      }
+    },
+    "geoId/22": {
+      "data": {
+        "Count_Household_IncomeOf100000To124999USDollar": {
+          "val": {
+            "2011": 114387,
+            "2012": 118332,
+            "2013": 121521,
+            "2014": 124268,
+            "2015": 126367,
+            "2016": 127013,
+            "2017": 131911,
+            "2018": 131031,
+            "2019": 133916,
+            "2020": 138850
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Household_IncomeOf10000To14999USDollar": {
+          "val": {
+            "2011": 118274,
+            "2012": 119506,
+            "2013": 119061,
+            "2014": 119002,
+            "2015": 118936,
+            "2016": 116057,
+            "2017": 112002,
+            "2018": 108333,
+            "2019": 103200,
+            "2020": 96888
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Household_IncomeOf125000To149999USDollar": {
+          "val": {
+            "2011": 64542,
+            "2012": 68077,
+            "2013": 68934,
+            "2014": 70804,
+            "2015": 71409,
+            "2016": 74489,
+            "2017": 76701,
+            "2018": 82248,
+            "2019": 85313,
+            "2020": 88853
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Household_IncomeOf150000To199999USDollar": {
+          "val": {
+            "2011": 56639,
+            "2012": 58974,
+            "2013": 62525,
+            "2014": 65446,
+            "2015": 67770,
+            "2016": 71073,
+            "2017": 76074,
+            "2018": 81945,
+            "2019": 87590,
+            "2020": 93472
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Household_IncomeOf200000OrMoreUSDollar": {
+          "val": {
+            "2011": 47969,
+            "2012": 51777,
+            "2013": 54446,
+            "2014": 58088,
+            "2015": 60464,
+            "2016": 63592,
+            "2017": 68989,
+            "2018": 74483,
+            "2019": 80808,
+            "2020": 83119
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Household_IncomeOf20000To24999USDollar": {
+          "val": {
+            "2011": 102179,
+            "2012": 102583,
+            "2013": 103808,
+            "2014": 103588,
+            "2015": 105117,
+            "2016": 104920,
+            "2017": 104682,
+            "2018": 104135,
+            "2019": 103171,
+            "2020": 114060
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Household_IncomeOf40000To44999USDollar": {
+          "val": {
+            "2011": 81399,
+            "2012": 81037,
+            "2013": 79263,
+            "2014": 79567,
+            "2015": 78503,
+            "2016": 80312,
+            "2017": 81610,
+            "2018": 77475,
+            "2019": 73122,
+            "2020": 75120
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Household_IncomeOf50000To59999USDollar": {
+          "val": {
+            "2011": 126034,
+            "2012": 127307,
+            "2013": 126976,
+            "2014": 126672,
+            "2015": 125217,
+            "2016": 125452,
+            "2017": 126001,
+            "2018": 126646,
+            "2019": 128090,
+            "2020": 133413
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Household_IncomeOf60000To74999USDollar": {
+          "val": {
+            "2011": 155661,
+            "2012": 155754,
+            "2013": 154963,
+            "2014": 154792,
+            "2015": 154956,
+            "2016": 156880,
+            "2017": 157683,
+            "2018": 154607,
+            "2019": 152180,
+            "2020": 151853
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Household_IncomeOf75000To99999USDollar": {
+          "val": {
+            "2011": 188064,
+            "2012": 191633,
+            "2013": 191885,
+            "2014": 189756,
+            "2015": 188830,
+            "2016": 187431,
+            "2017": 187041,
+            "2018": 188543,
+            "2019": 194770,
+            "2020": 199702
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Household_IncomeOfUpto10000USDollar": {
+          "val": {
+            "2011": 165466,
+            "2012": 165883,
+            "2013": 169096,
+            "2014": 172143,
+            "2015": 177658,
+            "2016": 175389,
+            "2017": 173429,
+            "2018": 167068,
+            "2019": 166483,
+            "2020": 155441
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_BelowPovertyLevelInThePast12Months": {
+          "val": {
+            "2011": 800705,
+            "2012": 821224,
+            "2013": 846780,
+            "2014": 874638,
+            "2015": 888280,
+            "2016": 889570,
+            "2017": 887574,
+            "2018": 878394,
+            "2019": 871467,
+            "2020": 845230
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_InLaborForce": {
+          "val": {
+            "2010": 2131989.204,
+            "2011": 2161505.25,
+            "2012": 2192841.545,
+            "2013": 2204023.36,
+            "2014": 2205727.719,
+            "2015": 2209571.104,
+            "2016": 2207567.452,
+            "2017": 2204404.2,
+            "2018": 2195754.06,
+            "2019": 2191205.31
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_SubjectTables_S2601A",
+            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S2601A\u0026tid=ACSST5Y2019.S2601A",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
+          }
+        },
+        "Count_Person_IncomeOf10000To14999USDollar": {
+          "val": {
+            "2011": 357951,
+            "2012": 357660,
+            "2013": 359907,
+            "2014": 363814,
+            "2015": 365441,
+            "2016": 367154,
+            "2017": 362880,
+            "2018": 358477,
+            "2019": 349195,
+            "2020": 326904
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_IncomeOf15000To24999USDollar": {
+          "val": {
+            "2011": 520084,
+            "2012": 522901,
+            "2013": 530373,
+            "2014": 529365,
+            "2015": 530097,
+            "2016": 529184,
+            "2017": 532636,
+            "2018": 530101,
+            "2019": 530092,
+            "2020": 545717
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_IncomeOf25000To34999USDollar": {
+          "val": {
+            "2011": 388524,
+            "2012": 390793,
+            "2013": 386966,
+            "2014": 386619,
+            "2015": 385883,
+            "2016": 387920,
+            "2017": 389543,
+            "2018": 400001,
+            "2019": 397129,
+            "2020": 387875
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_IncomeOf35000To49999USDollar": {
+          "val": {
+            "2011": 401212,
+            "2012": 401156,
+            "2013": 401162,
+            "2014": 403505,
+            "2015": 406557,
+            "2016": 410501,
+            "2017": 415138,
+            "2018": 411346,
+            "2019": 412344,
+            "2020": 424743
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_IncomeOf50000To64999USDollar": {
+          "val": {
+            "2011": 253591,
+            "2012": 266578,
+            "2013": 267027,
+            "2014": 263716,
+            "2015": 267917,
+            "2016": 273254,
+            "2017": 282247,
+            "2018": 292553,
+            "2019": 301833,
+            "2020": 312132
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_IncomeOf65000To74999USDollar": {
+          "val": {
+            "2011": 99781,
+            "2012": 101721,
+            "2013": 103552,
+            "2014": 110178,
+            "2015": 107652,
+            "2016": 109853,
+            "2017": 112754,
+            "2018": 110102,
+            "2019": 107594,
+            "2020": 126060
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_IncomeOf75000OrMoreUSDollar": {
+          "val": {
+            "2011": 293688,
+            "2012": 308501,
+            "2013": 323381,
+            "2014": 336893,
+            "2015": 347213,
+            "2016": 358657,
+            "2017": 375882,
+            "2018": 400127,
+            "2019": 427413,
+            "2020": 450886
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_IncomeOfUpto9999USDollar": {
+          "val": {
+            "2011": 727029,
+            "2012": 720526,
+            "2013": 710409,
+            "2014": 700361,
+            "2015": 699473,
+            "2016": 691668,
+            "2017": 671347,
+            "2018": 647296,
+            "2019": 632160,
+            "2020": 596744
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Median_Income_Household": {
+          "val": {
+            "2011": 44086,
+            "2012": 44673,
+            "2013": 44874,
+            "2014": 44991,
+            "2015": 45047,
+            "2016": 45652,
+            "2017": 46710,
+            "2018": 47942,
+            "2019": 49469,
+            "2020": 50800
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "unit": "USDollar"
+          }
+        },
+        "Median_Income_Person": {
+          "val": {
+            "2011": 22790,
+            "2012": 23227,
+            "2013": 23497,
+            "2014": 23838,
+            "2015": 24014,
+            "2016": 24408,
+            "2017": 25086,
+            "2018": 25737,
+            "2019": 26295,
+            "2020": 27139
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "unit": "USDollar"
+          }
+        }
+      }
+    },
+    "geoId/72": {
+      "data": {
+        "Count_Household_IncomeOf100000To124999USDollar": {
+          "val": {
+            "2011": 20269,
+            "2012": 20197,
+            "2013": 20886,
+            "2014": 21374,
+            "2015": 21037,
+            "2016": 21682,
+            "2017": 21816,
+            "2018": 22355,
+            "2019": 22295,
+            "2020": 23007
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Household_IncomeOf10000To14999USDollar": {
+          "val": {
+            "2011": 152681,
+            "2012": 146039,
+            "2013": 145614,
+            "2014": 145702,
+            "2015": 147226,
+            "2016": 145159,
+            "2017": 144795,
+            "2018": 143400,
+            "2019": 140202,
+            "2020": 140728
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Household_IncomeOf125000To149999USDollar": {
+          "val": {
+            "2011": 9489,
+            "2012": 9618,
+            "2013": 9909,
+            "2014": 10381,
+            "2015": 10052,
+            "2016": 10158,
+            "2017": 11073,
+            "2018": 10992,
+            "2019": 11451,
+            "2020": 12023
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Household_IncomeOf150000To199999USDollar": {
+          "val": {
+            "2011": 8261,
+            "2012": 8630,
+            "2013": 9145,
+            "2014": 9579,
+            "2015": 10019,
+            "2016": 10315,
+            "2017": 10184,
+            "2018": 10094,
+            "2019": 10693,
+            "2020": 10964
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Household_IncomeOf200000OrMoreUSDollar": {
+          "val": {
+            "2011": 8179,
+            "2012": 8108,
+            "2013": 8207,
+            "2014": 8720,
+            "2015": 8472,
+            "2016": 8869,
+            "2017": 9779,
+            "2018": 10527,
+            "2019": 11125,
+            "2020": 11500
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Household_IncomeOf20000To24999USDollar": {
+          "val": {
+            "2011": 95794,
+            "2012": 96437,
+            "2013": 99077,
+            "2014": 99090,
+            "2015": 100137,
+            "2016": 99637,
+            "2017": 98947,
+            "2018": 96672,
+            "2019": 95029,
+            "2020": 98371
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Household_IncomeOf40000To44999USDollar": {
+          "val": {
+            "2011": 47478,
+            "2012": 48719,
+            "2013": 49001,
+            "2014": 48791,
+            "2015": 47537,
+            "2016": 47786,
+            "2017": 46757,
+            "2018": 47119,
+            "2019": 46732,
+            "2020": 48106
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Household_IncomeOf50000To59999USDollar": {
+          "val": {
+            "2011": 59615,
+            "2012": 59878,
+            "2013": 61158,
+            "2014": 61155,
+            "2015": 60023,
+            "2016": 59846,
+            "2017": 59928,
+            "2018": 61015,
+            "2019": 61740,
+            "2020": 63844
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Household_IncomeOf60000To74999USDollar": {
+          "val": {
+            "2011": 55669,
+            "2012": 56188,
+            "2013": 56728,
+            "2014": 58507,
+            "2015": 57890,
+            "2016": 58223,
+            "2017": 58662,
+            "2018": 59464,
+            "2019": 57871,
+            "2020": 59024
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Household_IncomeOf75000To99999USDollar": {
+          "val": {
+            "2011": 43157,
+            "2012": 43493,
+            "2013": 45147,
+            "2014": 45367,
+            "2015": 44660,
+            "2016": 45651,
+            "2017": 47101,
+            "2018": 46497,
+            "2019": 49486,
+            "2020": 51495
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Household_IncomeOfUpto10000USDollar": {
+          "val": {
+            "2011": 359423,
+            "2012": 348497,
+            "2013": 349323,
+            "2014": 352530,
+            "2015": 360761,
+            "2016": 355712,
+            "2017": 347977,
+            "2018": 333145,
+            "2019": 322645,
+            "2020": 318170
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_BelowPovertyLevelInThePast12Months": {
+          "val": {
+            "2011": 1676055,
+            "2012": 1658412,
+            "2013": 1644128,
+            "2014": 1630965,
+            "2015": 1616117,
+            "2016": 1577075,
+            "2017": 1543220,
+            "2018": 1495160,
+            "2019": 1449091,
+            "2020": 1400958
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_InLaborForce": {
+          "val": {
+            "2010": 1383734.08,
+            "2011": 1376332.559,
+            "2012": 1366373.046,
+            "2013": 1348600.18,
+            "2014": 1324516.83,
+            "2015": 1300753.003,
+            "2016": 1282918.336,
+            "2017": 1262146.38,
+            "2018": 1240092,
+            "2019": 1227766.125
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_SubjectTables_S2601APR",
+            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S2601APR\u0026tid=ACSST5Y2019.S2601APR",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
+          }
+        },
+        "Count_Person_IncomeOf10000To14999USDollar": {
+          "val": {
+            "2010": 388127,
+            "2011": 382235,
+            "2012": 376372,
+            "2013": 368724,
+            "2014": 361315,
+            "2015": 360604,
+            "2016": 359326,
+            "2017": 360985,
+            "2018": 360407,
+            "2019": 354841
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0701PR",
+            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S0701PR\u0026tid=ACSST5Y2019.S0701PR",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
+          }
+        },
+        "Count_Person_IncomeOf15000To24999USDollar": {
+          "val": {
+            "2010": 398400,
+            "2011": 411461,
+            "2012": 427559,
+            "2013": 440083,
+            "2014": 445464,
+            "2015": 441129,
+            "2016": 440928,
+            "2017": 440921,
+            "2018": 444625,
+            "2019": 451816
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0701PR",
+            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S0701PR\u0026tid=ACSST5Y2019.S0701PR",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
+          }
+        },
+        "Count_Person_IncomeOf25000To34999USDollar": {
+          "val": {
+            "2010": 200819,
+            "2011": 208354,
+            "2012": 209360,
+            "2013": 205105,
+            "2014": 206264,
+            "2015": 197716,
+            "2016": 198367,
+            "2017": 196607,
+            "2018": 203893,
+            "2019": 202681
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0701PR",
+            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S0701PR\u0026tid=ACSST5Y2019.S0701PR",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
+          }
+        },
+        "Count_Person_IncomeOf35000To49999USDollar": {
+          "val": {
+            "2010": 121201,
+            "2011": 126641,
+            "2012": 129653,
+            "2013": 132059,
+            "2014": 134008,
+            "2015": 132288,
+            "2016": 133759,
+            "2017": 136340,
+            "2018": 136183,
+            "2019": 137919
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0701PR",
+            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S0701PR\u0026tid=ACSST5Y2019.S0701PR",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
+          }
+        },
+        "Count_Person_IncomeOf50000To64999USDollar": {
+          "val": {
+            "2010": 49760,
+            "2011": 52835,
+            "2012": 53803,
+            "2013": 55992,
+            "2014": 55880,
+            "2015": 57179,
+            "2016": 57578,
+            "2017": 59361,
+            "2018": 61443,
+            "2019": 63193
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0701PR",
+            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S0701PR\u0026tid=ACSST5Y2019.S0701PR",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
+          }
+        },
+        "Count_Person_IncomeOf65000To74999USDollar": {
+          "val": {
+            "2010": 17946,
+            "2011": 18020,
+            "2012": 17780,
+            "2013": 18951,
+            "2014": 21174,
+            "2015": 20541,
+            "2016": 20841,
+            "2017": 21075,
+            "2018": 19828,
+            "2019": 20339
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0701PR",
+            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S0701PR\u0026tid=ACSST5Y2019.S0701PR",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
+          }
+        },
+        "Count_Person_IncomeOf75000OrMoreUSDollar": {
+          "val": {
+            "2010": 50605,
+            "2011": 51928,
+            "2012": 52467,
+            "2013": 53583,
+            "2014": 55208,
+            "2015": 54476,
+            "2016": 56168,
+            "2017": 58333,
+            "2018": 59804,
+            "2019": 62386
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0701PR",
+            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S0701PR\u0026tid=ACSST5Y2019.S0701PR",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
+          }
+        },
+        "Count_Person_IncomeOfUpto9999USDollar": {
+          "val": {
+            "2010": 975365,
+            "2011": 943866,
+            "2012": 914902,
+            "2013": 895323,
+            "2014": 874781,
+            "2015": 867233,
+            "2016": 854187,
+            "2017": 834379,
+            "2018": 799540,
+            "2019": 775365
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0701PR",
+            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S0701PR\u0026tid=ACSST5Y2019.S0701PR",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
+          }
+        },
+        "Median_Income_Household": {
+          "val": {
+            "2011": 19122,
+            "2012": 19515,
+            "2013": 19624,
+            "2014": 19686,
+            "2015": 19350,
+            "2016": 19606,
+            "2017": 19775,
+            "2018": 20166,
+            "2019": 20539,
+            "2020": 21058
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "unit": "USDollar"
+          }
+        },
+        "Median_Income_Person": {
+          "val": {
+            "2011": 11932,
+            "2012": 12277,
+            "2013": 12455,
+            "2014": 12640,
+            "2015": 12516,
+            "2016": 12654,
+            "2017": 12853,
+            "2018": 13280,
+            "2019": 13547,
+            "2020": 13814
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "unit": "USDollar"
+          }
+        }
+      }
+    }
+  },
+  "allChildPlaces": {
+    "County": {
+      "places": [
+        {
+          "dcid": "geoId/06037",
+          "name": "Los Angeles County",
+          "pop": 9829544
+        },
+        {
+          "dcid": "geoId/06073",
+          "name": "San Diego County",
+          "pop": 3286069
+        },
+        {
+          "dcid": "geoId/06059",
+          "name": "Orange County",
+          "pop": 3167809
+        },
+        {
+          "dcid": "geoId/06065",
+          "name": "Riverside County",
+          "pop": 2458395
+        },
+        {
+          "dcid": "geoId/06071",
+          "name": "San Bernardino County",
+          "pop": 2194710
+        },
+        {
+          "dcid": "geoId/06085",
+          "name": "Santa Clara County",
+          "pop": 1885508
+        },
+        {
+          "dcid": "geoId/06001",
+          "name": "Alameda County",
+          "pop": 1648556
+        },
+        {
+          "dcid": "geoId/06067",
+          "name": "Sacramento County",
+          "pop": 1588921
+        },
+        {
+          "dcid": "geoId/06013",
+          "name": "Contra Costa County",
+          "pop": 1161413
+        },
+        {
+          "dcid": "geoId/06019",
+          "name": "Fresno County",
+          "pop": 1013581
+        },
+        {
+          "dcid": "geoId/06029",
+          "name": "Kern County",
+          "pop": 917673
+        },
+        {
+          "dcid": "geoId/06111",
+          "name": "Ventura County",
+          "pop": 839784
+        },
+        {
+          "dcid": "geoId/06075",
+          "name": "San Francisco County",
+          "pop": 815201
+        },
+        {
+          "dcid": "geoId/06077",
+          "name": "San Joaquin County",
+          "pop": 789410
+        },
+        {
+          "dcid": "geoId/06081",
+          "name": "San Mateo County",
+          "pop": 737888
+        },
+        {
+          "dcid": "geoId/06099",
+          "name": "Stanislaus County",
+          "pop": 552999
+        },
+        {
+          "dcid": "geoId/06097",
+          "name": "Sonoma County",
+          "pop": 485887
+        },
+        {
+          "dcid": "geoId/06107",
+          "name": "Tulare County",
+          "pop": 477054
+        },
+        {
+          "dcid": "geoId/06095",
+          "name": "Solano County",
+          "pop": 451716
+        },
+        {
+          "dcid": "geoId/06083",
+          "name": "Santa Barbara County",
+          "pop": 446475
+        },
+        {
+          "dcid": "geoId/06053",
+          "name": "Monterey County",
+          "pop": 437325
+        },
+        {
+          "dcid": "geoId/06061",
+          "name": "Placer County",
+          "pop": 412300
+        },
+        {
+          "dcid": "geoId/06047",
+          "name": "Merced County",
+          "pop": 286461
+        },
+        {
+          "dcid": "geoId/06079",
+          "name": "San Luis Obispo County",
+          "pop": 283159
+        },
+        {
+          "dcid": "geoId/06087",
+          "name": "Santa Cruz County",
+          "pop": 267792
+        },
+        {
+          "dcid": "geoId/06041",
+          "name": "Marin County",
+          "pop": 260206
+        },
+        {
+          "dcid": "geoId/06113",
+          "name": "Yolo County",
+          "pop": 216986
+        },
+        {
+          "dcid": "geoId/06007",
+          "name": "Butte County",
+          "pop": 208309
+        },
+        {
+          "dcid": "geoId/06017",
+          "name": "El Dorado County",
+          "pop": 193221
+        },
+        {
+          "dcid": "geoId/06089",
+          "name": "Shasta County",
+          "pop": 182139
+        },
+        {
+          "dcid": "geoId/06025",
+          "name": "Imperial County",
+          "pop": 179851
+        },
+        {
+          "dcid": "geoId/06039",
+          "name": "Madera County",
+          "pop": 159410
+        },
+        {
+          "dcid": "geoId/06031",
+          "name": "Kings County",
+          "pop": 153443
+        },
+        {
+          "dcid": "geoId/06023",
+          "name": "Humboldt County",
+          "pop": 136310
+        },
+        {
+          "dcid": "geoId/06055",
+          "name": "Napa County",
+          "pop": 136207
+        },
+        {
+          "dcid": "geoId/06057",
+          "name": "Nevada County",
+          "pop": 103487
+        },
+        {
+          "dcid": "geoId/06101",
+          "name": "Sutter County",
+          "pop": 99063
+        },
+        {
+          "dcid": "geoId/06045",
+          "name": "Mendocino County",
+          "pop": 91305
+        },
+        {
+          "dcid": "geoId/06115",
+          "name": "Yuba County",
+          "pop": 83421
+        },
+        {
+          "dcid": "geoId/06033",
+          "name": "Lake County",
+          "pop": 68766
+        },
+        {
+          "dcid": "geoId/06069",
+          "name": "San Benito County",
+          "pop": 66677
+        },
+        {
+          "dcid": "geoId/06103",
+          "name": "Tehama County",
+          "pop": 65498
+        },
+        {
+          "dcid": "geoId/06109",
+          "name": "Tuolumne County",
+          "pop": 55810
+        },
+        {
+          "dcid": "geoId/06009",
+          "name": "Calaveras County",
+          "pop": 46221
+        },
+        {
+          "dcid": "geoId/06093",
+          "name": "Siskiyou County",
+          "pop": 44118
+        },
+        {
+          "dcid": "geoId/06005",
+          "name": "Amador County",
+          "pop": 41259
+        },
+        {
+          "dcid": "geoId/06035",
+          "name": "Lassen County",
+          "pop": 33159
+        },
+        {
+          "dcid": "geoId/06021",
+          "name": "Glenn County",
+          "pop": 28805
+        },
+        {
+          "dcid": "geoId/06015",
+          "name": "Del Norte County",
+          "pop": 28100
+        },
+        {
+          "dcid": "geoId/06011",
+          "name": "Colusa County",
+          "pop": 21917
+        },
+        {
+          "dcid": "geoId/06063",
+          "name": "Plumas County",
+          "pop": 19915
+        },
+        {
+          "dcid": "geoId/06027",
+          "name": "Inyo County",
+          "pop": 18970
+        },
+        {
+          "dcid": "geoId/06043",
+          "name": "Mariposa County",
+          "pop": 17147
+        },
+        {
+          "dcid": "geoId/06105",
+          "name": "Trinity County",
+          "pop": 16060
+        },
+        {
+          "dcid": "geoId/06051",
+          "name": "Mono County",
+          "pop": 13247
+        },
+        {
+          "dcid": "geoId/06049",
+          "name": "Modoc County",
+          "pop": 8661
+        },
+        {
+          "dcid": "geoId/06091",
+          "name": "Sierra County",
+          "pop": 3283
+        },
+        {
+          "dcid": "geoId/06003",
+          "name": "Alpine County",
+          "pop": 1235
+        }
+      ]
+    }
+  },
+  "childPlacesType": "County",
+  "childPlaces": [
+    "geoId/06037",
+    "geoId/06073",
+    "geoId/06059",
+    "geoId/06065",
+    "geoId/06071"
+  ],
+  "parentPlaces": [
+    "country/USA",
+    "northamerica"
+  ],
+  "similarPlaces": [
+    "geoId/38",
+    "geoId/18",
+    "geoId/72",
+    "geoId/47",
+    "geoId/22"
+  ],
+  "nearbyPlaces": [
+    "geoId/48",
+    "geoId/53",
+    "geoId/04",
+    "geoId/29",
+    "geoId/08"
+  ]
+}
