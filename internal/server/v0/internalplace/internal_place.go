@@ -35,5 +35,5 @@ func GetPlacePageData(
 	}
 	seed := in.GetSeed()
 	newStatVars := in.GetNewStatVars()
-	return placepage.GetPlacePageDataHelper(ctx, placeDcid, newStatVars, seed, store)
+	return placepage.GetPlacePageDataHelper(ctx, placeDcid, newStatVars, seed, store, "")
 }

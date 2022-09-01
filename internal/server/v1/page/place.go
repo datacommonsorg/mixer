@@ -36,6 +36,7 @@ func PlacePage(
 		return nil, status.Errorf(codes.InvalidArgument, "Invalid entity")
 	}
 	seed := in.GetSeed()
+	category := in.GetCategory()
 	newStatVars := in.GetNewStatVars()
-	return placepage.GetPlacePageDataHelper(ctx, entity, newStatVars, seed, store)
+	return placepage.GetPlacePageDataHelper(ctx, entity, newStatVars, seed, store, category)
 }

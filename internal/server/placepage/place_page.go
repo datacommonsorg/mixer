@@ -215,13 +215,21 @@ func fetchBtData(
 	store *store.Store,
 	places []string,
 	statVars []string,
+	category string,
 ) (map[string]*pb.StatVarSeries, map[string]*pb.PointStat, error) {
 	// Fetch place page cache data in parallel.
+	action := [][]string{places}
+	prefix := bigtable.BtPlacePagePrefix
+	if category != "" {
+		action = [][]string{places, {category}}
+		prefix = bigtable.BtPlacePageCategoricalPrefix
+	}
+
 	btDataList, err := bigtable.Read(
 		ctx,
 		store.BtGroup,
-		bigtable.BtPlacePagePrefix,
-		[][]string{places},
+		prefix,
+		action,
 		func(jsonRaw []byte) (interface{}, error) {
 			var placePageData pb.StatVarObsSeries
 			if err := proto.Unmarshal(jsonRaw, &placePageData); err != nil {
@@ -535,13 +543,14 @@ func GetPlacePageDataHelper(
 	newStatVars []string,
 	seed int64,
 	store *store.Store,
+	category string,
 ) (*pb.GetPlacePageDataResponse, error) {
 	placeType, err := getPlaceType(ctx, store, placeDcid)
 	if err != nil {
 		return nil, err
 	}
 
-	// Fetch child and prarent places in go routines.
+	// Fetch child and parent places in go routines.
 	errs, errCtx := errgroup.WithContext(ctx)
 	relatedPlaceChan := make(chan *relatedPlace, 4)
 	allChildPlaceChan := make(chan map[string][]*pb.Place, 1)
@@ -616,7 +625,8 @@ func GetPlacePageDataHelper(
 		}
 		allPlaces = append(allPlaces, relatedPlace.places...)
 	}
-	statData, popData, err := fetchBtData(ctx, store, allPlaces, newStatVars)
+
+	statData, popData, err := fetchBtData(ctx, store, allPlaces, newStatVars, category)
 	if err != nil {
 		return nil, err
 	}

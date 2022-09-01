@@ -29,4 +29,6 @@ message PlacePageRequest {
   repeated string new_stat_vars = 2;
   // Seed value for random selection. Used by test to get deterministic result.
   int64 seed = 3;
+  // The category for which data needs to be fetched.
+  string category = 4;
 }

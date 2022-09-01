@@ -51,6 +51,7 @@ func TestPlacePage(t *testing.T) {
 			seed       int64
 			statVars   []string
 			maxPlace   int
+			category   string
 		}{
 			{
 				"asm.sample.json",
@@ -58,6 +59,15 @@ func TestPlacePage(t *testing.T) {
 				1,
 				[]string{},
 				3,
+				"",
+			},
+			{
+				"ca_economics.sample.json",
+				"geoId/06",
+				1,
+				[]string{},
+				3,
+				"Economics",
 			},
 			{
 				"tha.sample.json",
@@ -65,6 +75,7 @@ func TestPlacePage(t *testing.T) {
 				1,
 				[]string{},
 				5,
+				"",
 			},
 			{
 				"county.sample.json",
@@ -72,6 +83,7 @@ func TestPlacePage(t *testing.T) {
 				1,
 				[]string{"Count_HousingUnit_2000To2004DateBuilt"},
 				3,
+				"",
 			},
 			{
 				"state.sample.json",
@@ -79,6 +91,7 @@ func TestPlacePage(t *testing.T) {
 				1,
 				[]string{"Annual_Generation_Electricity"},
 				3,
+				"",
 			},
 			{
 				"city.sample.json",
@@ -86,6 +99,7 @@ func TestPlacePage(t *testing.T) {
 				1,
 				[]string{"Median_GrossRent_HousingUnit_WithCashRent_OccupiedHousingUnit_RenterOccupied"},
 				3,
+				"",
 			},
 			{
 				"zuid-nederland.sample.json",
@@ -93,6 +107,7 @@ func TestPlacePage(t *testing.T) {
 				1,
 				[]string{},
 				5,
+				"",
 			},
 			{
 				"dummy.json",
@@ -100,12 +115,14 @@ func TestPlacePage(t *testing.T) {
 				1,
 				[]string{},
 				5,
+				"",
 			},
 		} {
 			req := &pb.PlacePageRequest{
 				Entity:      c.entity,
 				NewStatVars: c.statVars,
 				Seed:        c.seed,
+				Category:    c.category,
 			}
 			resp, err := mixer.PlacePage(ctx, req)
 			if err != nil {
