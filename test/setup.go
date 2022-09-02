@@ -106,7 +106,7 @@ func setupInternal(
 		log.Fatalf("failed to create Bigquery client: %v", err)
 	}
 
-	branchTableName := "dcbranch_2022_03_06_18_18_49"
+	branchTableName := "dcbranch_2022_08_31_18_28_28"
 	tables := []*bigtable.Table{}
 	branchTable, err := bigtable.NewBtTable(ctx, storeProject, branchInstance, branchTableName)
 	if err != nil {
