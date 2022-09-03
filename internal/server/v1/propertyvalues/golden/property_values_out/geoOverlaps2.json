@@ -1,0 +1,28 @@
+{
+  "values": [
+    {
+      "name": "94087",
+      "types": [
+        "CensusZipCodeTabulationArea"
+      ],
+      "dcid": "zip/94087",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "94303",
+      "types": [
+        "CensusZipCodeTabulationArea"
+      ],
+      "dcid": "zip/94303",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "94306",
+      "types": [
+        "CensusZipCodeTabulationArea"
+      ],
+      "dcid": "zip/94306",
+      "provenanceId": "dc/5n63hr1"
+    }
+  ]
+}

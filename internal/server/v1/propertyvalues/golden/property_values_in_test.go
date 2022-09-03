@@ -53,7 +53,7 @@ func TestPropertyValuesIn(t *testing.T) {
 				"containedInPlace",
 				"geoId/06",
 				500,
-				"H4sIAAAAAAAA/3zPwQrCIBzH8WkynBHI/+Rb1KlTULE67BJC9QDmpARTcI7Y24d1CQIf4PPl92N7Ru8mdP1ytWZcB5+U9abvvHRKGzZvjR/G4RKVTlABoYgjIBRzBJjOgFDCEdsVE6S1aYIK6mxFA3XWovn4OnvRsFOxII7OPI1PKk5n/QjBHeyQoi0s2hR7TIaXidIpnwuYZol/9LaoF3K8Oauvybrvsb/AGwAA//8BAAD//3fBjKFUAQAA",
+				"H4sIAAAAAAAA/3zPQcoCIRjG8U8/GRwjkHflLWoVQbWaWkwroTqAOVKCKTjvEHP7mFYR5AF+D89f7AS/udR2i+VKSJsiGh9d10YdjHVi1rjYD/05G4tAJQHGiSRAOQXG/yUR2yJnjccRmCSqhmqSqn7barKqFseiVofgHi6iyePJ3lMKe99j9j+erItbQqenyzqYiPAHlH/KTVHO9XAN3l7QhynmC78AAAD//wEAAP//+w5Qx0ABAAA=",
 			},
 			{
 				"geoOverlaps.json",
@@ -74,7 +74,7 @@ func TestPropertyValuesIn(t *testing.T) {
 				"typeOf",
 				"Country",
 				0,
-				"H4sIAAAAAAAA/+Iy4mJ3zi/NKymq5GIrqSxI9U+DCwgxCLFwMEqYC7FwMEmYCzFxMAuxcLBImAMAAAD//wEAAP//bbVZhjQAAAA=",
+				"H4sIAAAAAAAA/+LS42J3zi/NKymq5GIrqSxI9U+DCwgxSZgLsXAwSpgLMXEwCbFwMEuYAwAAAP//AQAA//+KaJIrMAAAAA==",
 			},
 			{
 				"nasa_source.json",

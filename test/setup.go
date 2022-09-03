@@ -106,13 +106,14 @@ func setupInternal(
 		log.Fatalf("failed to create Bigquery client: %v", err)
 	}
 
-	branchTableName := "dcbranch_2022_03_06_18_18_49"
 	tables := []*bigtable.Table{}
-	branchTable, err := bigtable.NewBtTable(ctx, storeProject, branchInstance, branchTableName)
-	if err != nil {
-		return nil, nil, err
-	}
-	tables = append(tables, bigtable.NewTable(branchTableName, branchTable))
+
+	// branchTableName := "dcbranch_2022_08_31_18_28_28"
+	// branchTable, err := bigtable.NewBtTable(ctx, storeProject, branchInstance, branchTableName)
+	// if err != nil {
+	// 	return nil, nil, err
+	// }
+	// tables = append(tables, bigtable.NewTable(branchTableName, branchTable))
 
 	for _, name := range tableNames {
 		table, err := bigtable.NewBtTable(ctx, storeProject, baseInstance, name)
@@ -138,7 +139,7 @@ func setupInternal(
 			log.Fatalf("Failed to load tmcf and csv from GCS: %v", err)
 		}
 	}
-	st := store.NewStore(bqClient, memDb, tables, branchTableName)
+	st := store.NewStore(bqClient, memDb, tables, "")
 	var cache *resource.Cache
 	if useCache {
 		cache, err = server.NewCache(ctx, st, searchOptions)

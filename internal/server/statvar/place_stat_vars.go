@@ -16,7 +16,6 @@ package statvar
 
 import (
 	"context"
-	"sort"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/store"
@@ -75,21 +74,22 @@ func GetEntityStatVarsHelper(
 	for _, entity := range entities {
 		resp[entity] = &pb.StatVars{StatVars: []string{}}
 		allStatVars := [][]string{}
+		// btDataList is a list of import group data
 		for _, btData := range btDataList {
+			// Each row in btData represent one entity data.
 			for _, row := range btData {
 				if row.Parts[0] != entity {
 					continue
 				}
 				allStatVars = append(allStatVars, row.Data.([]string))
 			}
-			// Also merge from memdb
-			if !store.MemDb.IsEmpty() {
-				hasDataStatVars, _ := store.MemDb.GetStatVars([]string{entity})
-				allStatVars = append(allStatVars, hasDataStatVars)
-			}
-			resp[entity].StatVars = util.MergeDedupe(allStatVars...)
-			sort.Strings(resp[entity].StatVars)
 		}
+		// Also merge from memdb
+		if !store.MemDb.IsEmpty() {
+			hasDataStatVars, _ := store.MemDb.GetStatVars([]string{entity})
+			allStatVars = append(allStatVars, hasDataStatVars)
+		}
+		resp[entity].StatVars = util.MergeDedupe(allStatVars...)
 	}
 	return resp, nil
 }
