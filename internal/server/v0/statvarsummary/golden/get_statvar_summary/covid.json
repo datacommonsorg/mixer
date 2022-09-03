@@ -74,7 +74,7 @@
       "provenanceSummary": {
         "dc/e9k9ze": {
           "importName": "NYT_COVID19",
-          "observationCount": 2299132,
+          "observationCount": 2531002,
           "timeSeriesCount": 3277,
           "releaseFrequency": "P1D",
           "seriesSummary": [
@@ -83,8 +83,8 @@
                 "measurementMethod": "NYT_COVID19_GitHub"
               },
               "earliestDate": "2020-01-21",
-              "latestDate": "2022-03-05",
-              "observationCount": 2299132,
+              "latestDate": "2022-08-22",
+              "observationCount": 2531002,
               "timeSeriesCount": 3277,
               "placeTypeSummary": {
                 "City": {
@@ -102,7 +102,9 @@
                       "dcid": "geoId/2937592",
                       "name": "Joplin"
                     }
-                  ]
+                  ],
+                  "minValue": 1,
+                  "maxValue": 2422658
                 },
                 "Country": {
                   "placeCount": 1,
@@ -111,7 +113,9 @@
                       "dcid": "country/USA",
                       "name": "United States"
                     }
-                  ]
+                  ],
+                  "minValue": 1,
+                  "maxValue": 93447844
                 },
                 "County": {
                   "placeCount": 3217,
@@ -128,7 +132,9 @@
                       "dcid": "geoId/48201",
                       "name": "Harris County"
                     }
-                  ]
+                  ],
+                  "minValue": 1,
+                  "maxValue": 2908425
                 },
                 "State": {
                   "placeCount": 56,
@@ -145,11 +151,13 @@
                       "dcid": "geoId/12",
                       "name": "Florida"
                     }
-                  ]
+                  ],
+                  "minValue": 1,
+                  "maxValue": 10987530
                 }
               },
               "minValue": 1,
-              "maxValue": 79166521
+              "maxValue": 93447844
             }
           ]
         }
@@ -229,7 +237,7 @@
       "provenanceSummary": {
         "dc/e9k9ze": {
           "importName": "NYT_COVID19",
-          "observationCount": 2375876,
+          "observationCount": 2614471,
           "timeSeriesCount": 6554,
           "releaseFrequency": "P1D",
           "seriesSummary": [
@@ -238,8 +246,8 @@
                 "measurementMethod": "dcDerivedStat/NYT_COVID19_GitHub"
               },
               "earliestDate": "2020-01-22",
-              "latestDate": "2022-03-05",
-              "observationCount": 2295847,
+              "latestDate": "2022-08-22",
+              "observationCount": 2527717,
               "timeSeriesCount": 3277,
               "placeTypeSummary": {
                 "City": {
@@ -257,7 +265,9 @@
                       "dcid": "geoId/2937592",
                       "name": "Joplin"
                     }
-                  ]
+                  ],
+                  "minValue": -794,
+                  "maxValue": 54828
                 },
                 "Country": {
                   "placeCount": 1,
@@ -266,7 +276,9 @@
                       "dcid": "country/USA",
                       "name": "United States"
                     }
-                  ]
+                  ],
+                  "minValue": -23999,
+                  "maxValue": 1433977
                 },
                 "County": {
                   "placeCount": 3217,
@@ -283,7 +295,9 @@
                       "dcid": "geoId/48201",
                       "name": "Harris County"
                     }
-                  ]
+                  ],
+                  "minValue": -18817,
+                  "maxValue": 110441
                 },
                 "State": {
                   "placeCount": 56,
@@ -300,7 +314,9 @@
                       "dcid": "geoId/12",
                       "name": "Florida"
                     }
-                  ]
+                  ],
+                  "minValue": -40527,
+                  "maxValue": 227972
                 }
               },
               "minValue": -40527,
@@ -312,8 +328,8 @@
                 "observationPeriod": "P1M"
               },
               "earliestDate": "2020-01",
-              "latestDate": "2022-03",
-              "observationCount": 80029,
+              "latestDate": "2022-08",
+              "observationCount": 86754,
               "timeSeriesCount": 3277,
               "placeTypeSummary": {
                 "City": {
@@ -331,7 +347,8 @@
                       "dcid": "geoId/2937592",
                       "name": "Joplin"
                     }
-                  ]
+                  ],
+                  "maxValue": 685785
                 },
                 "Country": {
                   "placeCount": 1,
@@ -340,7 +357,9 @@
                       "dcid": "country/USA",
                       "name": "United States"
                     }
-                  ]
+                  ],
+                  "minValue": 6,
+                  "maxValue": 20300128
                 },
                 "County": {
                   "placeCount": 3217,
@@ -357,7 +376,9 @@
                       "dcid": "geoId/48201",
                       "name": "Harris County"
                     }
-                  ]
+                  ],
+                  "minValue": -3451,
+                  "maxValue": 962832
                 },
                 "State": {
                   "placeCount": 56,
@@ -374,11 +395,12 @@
                       "dcid": "geoId/12",
                       "name": "Florida"
                     }
-                  ]
+                  ],
+                  "maxValue": 2896206
                 }
               },
               "minValue": -3451,
-              "maxValue": 20301167
+              "maxValue": 20300128
             }
           ]
         }

@@ -1,28 +1,45 @@
 {
   "values": [
     {
-      "name": "94087",
+      "name": "94024",
       "types": [
         "CensusZipCodeTabulationArea"
       ],
-      "dcid": "zip/94087",
+      "dcid": "zip/94024",
       "provenanceId": "dc/5n63hr1"
     },
     {
-      "name": "94303",
+      "name": "94040",
       "types": [
         "CensusZipCodeTabulationArea"
       ],
-      "dcid": "zip/94303",
+      "dcid": "zip/94040",
       "provenanceId": "dc/5n63hr1"
     },
     {
-      "name": "94306",
+      "name": "94043",
       "types": [
         "CensusZipCodeTabulationArea"
       ],
-      "dcid": "zip/94306",
+      "dcid": "zip/94043",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "94085",
+      "types": [
+        "CensusZipCodeTabulationArea"
+      ],
+      "dcid": "zip/94085",
+      "provenanceId": "dc/5n63hr1"
+    },
+    {
+      "name": "94086",
+      "types": [
+        "CensusZipCodeTabulationArea"
+      ],
+      "dcid": "zip/94086",
       "provenanceId": "dc/5n63hr1"
     }
-  ]
+  ],
+  "nextToken": "H4sIAAAAAAAA/+Ly5OJNT833TNE3MDOxNDM34OJOT833L0stykksKOaSdk7NKy4tjsoscM5PSQ1JTCrNSSzJzM9zLEpNFGKSYBVi4mAUYuJgEmLiYAYAAAD//wEAAP//VEWMIUsAAAA="
 }
