@@ -108,13 +108,6 @@ func setupInternal(
 
 	tables := []*bigtable.Table{}
 
-	// branchTableName := "dcbranch_2022_08_31_18_28_28"
-	// branchTable, err := bigtable.NewBtTable(ctx, storeProject, branchInstance, branchTableName)
-	// if err != nil {
-	// 	return nil, nil, err
-	// }
-	// tables = append(tables, bigtable.NewTable(branchTableName, branchTable))
-
 	for _, name := range tableNames {
 		table, err := bigtable.NewBtTable(ctx, storeProject, baseInstance, name)
 		if err != nil {
