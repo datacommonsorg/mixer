@@ -65,7 +65,6 @@ const (
 	storeProject     = "datcom-store"
 	tmcfCsvBucket    = "datcom-public"
 	tmcfCsvPrefix    = "food"
-	branchInstance   = "prophet-branch-cache"
 )
 
 // Setup creates local server and client.
