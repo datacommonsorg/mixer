@@ -133,7 +133,7 @@ func (s *state) readBt(
 	}
 	// Store the raw cache data.
 	// The outer for loop is on the import group.
-	num_import_group := len(btDataList)
+	numImportGroup := len(btDataList)
 	for idx, btData := range btDataList {
 		if len(btData) == 0 {
 			continue
@@ -147,10 +147,10 @@ func (s *state) readBt(
 				s.rawNodes[n] = map[string]map[string][][]*pb.EntityInfo{}
 			}
 			if _, ok := s.rawNodes[n][p]; !ok {
-				s.rawNodes[n][p] = make(map[string][][]*pb.EntityInfo, num_import_group)
+				s.rawNodes[n][p] = make(map[string][][]*pb.EntityInfo, numImportGroup)
 			}
 			if _, ok := s.rawNodes[n][p][t]; !ok {
-				s.rawNodes[n][p][t] = make([][]*pb.EntityInfo, num_import_group)
+				s.rawNodes[n][p][t] = make([][]*pb.EntityInfo, numImportGroup)
 			}
 			s.rawNodes[n][p][t][idx] = values.Nodes
 			if _, ok := s.totalPage[n]; !ok {
