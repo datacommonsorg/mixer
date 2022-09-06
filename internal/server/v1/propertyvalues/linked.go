@@ -32,37 +32,37 @@ func LinkedPropertyValues(
 	in *pb.LinkedPropertyValuesRequest,
 	store *store.Store,
 ) (*pb.PropertyValuesResponse, error) {
-	entityProperty := in.GetEntityProperty()
-	parts := strings.Split(entityProperty, "/")
+	nodeProperty := in.GetNodeProperty()
+	parts := strings.Split(nodeProperty, "/")
 	if len(parts) < 2 {
 		return nil, status.Errorf(codes.InvalidArgument, "Invalid request URI")
 	}
 	property := parts[len(parts)-1]
-	entity := strings.Join(parts[0:len(parts)-1], "/")
-	valueEntityType := in.GetValueEntityType()
+	node := strings.Join(parts[0:len(parts)-1], "/")
+	valueNodeType := in.GetValueNodeType()
 	// Check arguments
 	if property != "containedInPlace" {
 		return nil, status.Errorf(
 			codes.InvalidArgument, "only support property 'containedInPlace'")
 	}
-	if valueEntityType == "" {
+	if valueNodeType == "" {
 		return nil, status.Errorf(
-			codes.InvalidArgument, "missing argument: value_entity_type")
+			codes.InvalidArgument, "missing argument: value_node_type")
 	}
-	if !util.CheckValidDCIDs([]string{entity}) {
+	if !util.CheckValidDCIDs([]string{node}) {
 		return nil, status.Errorf(
-			codes.InvalidArgument, "invalid entity %s", entity)
+			codes.InvalidArgument, "invalid node %s", node)
 	}
 	resp, err := placein.GetPlacesIn(
 		ctx,
 		store,
-		[]string{entity},
-		valueEntityType,
+		[]string{node},
+		valueNodeType,
 	)
 	if err != nil {
 		return nil, err
 	}
-	valueDcids := resp[entity]
+	valueDcids := resp[node]
 	// Fetch names
 	data, _, err := Fetch(
 		ctx,
@@ -99,26 +99,26 @@ func BulkLinkedPropertyValues(
 	store *store.Store,
 ) (*pb.BulkPropertyValuesResponse, error) {
 	property := in.GetProperty()
-	entities := in.GetEntities()
-	valueEntityType := in.GetValueEntityType()
+	nodes := in.GetNodes()
+	valueNodeType := in.GetValueNodeType()
 	// Check arguments
 	if property != "containedInPlace" {
 		return nil, status.Errorf(
 			codes.InvalidArgument, "only support property 'containedInPlace'")
 	}
-	if valueEntityType == "" {
+	if valueNodeType == "" {
 		return nil, status.Errorf(
-			codes.InvalidArgument, "missing argument: value_entity_type")
+			codes.InvalidArgument, "missing argument: value_node_type")
 	}
-	if !util.CheckValidDCIDs(entities) {
+	if !util.CheckValidDCIDs(nodes) {
 		return nil, status.Errorf(
-			codes.InvalidArgument, "invalid entities %s", entities)
+			codes.InvalidArgument, "invalid nodes %s", nodes)
 	}
 	resp, err := placein.GetPlacesIn(
 		ctx,
 		store,
-		entities,
-		valueEntityType,
+		nodes,
+		valueNodeType,
 	)
 	if err != nil {
 		return nil, err
@@ -141,10 +141,10 @@ func BulkLinkedPropertyValues(
 		return nil, err
 	}
 	result := &pb.BulkPropertyValuesResponse{}
-	for _, e := range entities {
-		children := resp[e]
-		oneEntityResult := &pb.BulkPropertyValuesResponse_EntityPropertyValues{
-			Entity: e,
+	for _, n := range nodes {
+		children := resp[n]
+		oneNodeResult := &pb.BulkPropertyValuesResponse_NodePropertyValues{
+			Node: n,
 		}
 		for _, dcid := range children {
 			var name string
@@ -156,14 +156,14 @@ func BulkLinkedPropertyValues(
 				}
 
 			}
-			oneEntityResult.Values = append(oneEntityResult.Values,
+			oneNodeResult.Values = append(oneNodeResult.Values,
 				&pb.EntityInfo{
 					Dcid: dcid,
 					Name: name,
 				},
 			)
 		}
-		result.Data = append(result.Data, oneEntityResult)
+		result.Data = append(result.Data, oneNodeResult)
 	}
 	return result, nil
 }

@@ -38,7 +38,7 @@ func TestBulkPropertyValuesIn(t *testing.T) {
 		for _, c := range []struct {
 			goldenFile string
 			property   string
-			entities   []string
+			nodes      []string
 			limit      int32
 			token      string
 		}{
@@ -73,7 +73,7 @@ func TestBulkPropertyValuesIn(t *testing.T) {
 		} {
 			req := &pb.BulkPropertyValuesRequest{
 				Property:  c.property,
-				Entities:  c.entities,
+				Nodes:     c.nodes,
 				Direction: util.DirectionIn,
 				Limit:     c.limit,
 				NextToken: c.token,

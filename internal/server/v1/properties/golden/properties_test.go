@@ -38,7 +38,7 @@ func TestProperties(t *testing.T) {
 	testSuite := func(mixer pb.MixerClient, recon pb.ReconClient, latencyTest bool) {
 		for _, c := range []struct {
 			goldenFile string
-			entity     string
+			node       string
 			direction  string
 		}{
 			{
@@ -68,7 +68,7 @@ func TestProperties(t *testing.T) {
 			},
 		} {
 			req := &pb.PropertiesRequest{
-				Entity:    c.entity,
+				Node:      c.node,
 				Direction: c.direction,
 			}
 			resp, err := mixer.Properties(ctx, req)

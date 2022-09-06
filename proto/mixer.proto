@@ -38,6 +38,7 @@ import "v1/properties.proto";
 import "v1/property_values.proto";
 import "v1/variables.proto";
 import "v1/variable.proto";
+import "v1/variable_group.proto";
 import "v1/info.proto";
 import "v1/observations.proto";
 import "v1/page.proto";
@@ -219,7 +220,7 @@ service Mixer {
     };
   }
 
-  // Given a text search query, return all entities matching the query.
+  // Given a text search query, return all nodes matching the query.
   rpc Search(SearchRequest) returns (SearchResponse) {
     option (google.api.http) = {
       get : "/search"
@@ -365,7 +366,7 @@ service Mixer {
   rpc Properties(datacommons.v1.PropertiesRequest)
       returns (datacommons.v1.PropertiesResponse) {
     option (google.api.http) = {
-      get : "/v1/properties/{direction}/{entity=**}"
+      get : "/v1/properties/{direction}/{node=**}"
     };
   }
 
@@ -383,14 +384,14 @@ service Mixer {
   rpc PropertyValues(datacommons.v1.PropertyValuesRequest)
       returns (datacommons.v1.PropertyValuesResponse) {
     option (google.api.http) = {
-      get : "/v1/property/values/{direction}/{entity_property=**}"
+      get : "/v1/property/values/{direction}/{node_property=**}"
     };
   }
 
   rpc LinkedPropertyValues(datacommons.v1.LinkedPropertyValuesRequest)
       returns (datacommons.v1.PropertyValuesResponse) {
     option (google.api.http) = {
-      get : "/v1/property/values/in/linked/{entity_property=**}"
+      get : "/v1/property/values/in/linked/{node_property=**}"
     };
   }
 
@@ -418,7 +419,7 @@ service Mixer {
 
   rpc Triples(datacommons.v1.TriplesRequest) returns (datacommons.v1.TriplesResponse) {
     option (google.api.http) = {
-      get : "/v1/triples/{direction}/{entity=**}"
+      get : "/v1/triples/{direction}/{node=**}"
     };
   }
 
@@ -450,7 +451,7 @@ service Mixer {
   rpc PlaceInfo(datacommons.v1.PlaceInfoRequest)
       returns (datacommons.v1.PlaceInfoResponse) {
     option (google.api.http) = {
-      get : "/v1/info/place/{entity=**}"
+      get : "/v1/info/place/{dcid=**}"
     };
   }
 
@@ -465,7 +466,7 @@ service Mixer {
   rpc VariableInfo(datacommons.v1.VariableInfoRequest)
       returns (datacommons.v1.VariableInfoResponse) {
     option (google.api.http) = {
-      get : "/v1/info/variable/{entity=**}"
+      get : "/v1/info/variable/{dcid=**}"
     };
   }
 
@@ -533,21 +534,21 @@ service Mixer {
   rpc BioPage(datacommons.v1.BioPageRequest)
       returns (GraphNodes) {
     option (google.api.http) = {
-      get : "/v1/internal/page/bio/{entity=**}"
+      get : "/v1/internal/page/bio/{dcid=**}"
     };
   }
 
   rpc PlacePage(datacommons.v1.PlacePageRequest)
       returns (GetPlacePageDataResponse) {
     option (google.api.http) = {
-      get : "/v1/internal/page/place/{entity=**}"
+      get : "/v1/internal/page/place/{dcid=**}"
     };
   }
 
   rpc VariableAncestors(datacommons.v1.VariableAncestorsRequest)
       returns (datacommons.v1.VariableAncestorsResponse) {
     option (google.api.http) = {
-      get : "/variable/ancestors/{entity=**}"
+      get : "/variable/ancestors/{dcid=**}"
     };
   }
 

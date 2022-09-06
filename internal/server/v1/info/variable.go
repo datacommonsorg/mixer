@@ -32,16 +32,16 @@ func VariableInfo(
 	in *pb.VariableInfoRequest,
 	store *store.Store,
 ) (*pb.VariableInfoResponse, error) {
-	entity := in.GetEntity()
-	if !util.CheckValidDCIDs([]string{entity}) {
-		return nil, status.Errorf(codes.InvalidArgument, "Invalid entity")
+	dcid := in.GetDcid()
+	if !util.CheckValidDCIDs([]string{dcid}) {
+		return nil, status.Errorf(codes.InvalidArgument, "Invalid dcid")
 	}
-	statVarToSummary, err := statvar.GetStatVarSummaryHelper(ctx, []string{entity}, store)
+	statVarToSummary, err := statvar.GetStatVarSummaryHelper(ctx, []string{dcid}, store)
 	if err != nil {
 		return nil, err
 	}
-	resp := &pb.VariableInfoResponse{Entity: entity}
-	if summary, ok := statVarToSummary[entity]; ok {
+	resp := &pb.VariableInfoResponse{Dcid: dcid}
+	if summary, ok := statVarToSummary[dcid]; ok {
 		resp.Info = summary
 	}
 	return resp, nil
@@ -53,21 +53,21 @@ func BulkVariableInfo(
 	in *pb.BulkVariableInfoRequest,
 	store *store.Store,
 ) (*pb.BulkVariableInfoResponse, error) {
-	entities := in.GetEntities()
-	if len(entities) == 0 {
-		return nil, status.Error(codes.InvalidArgument, "Missing required arguments: entities")
+	dcids := in.GetDcids()
+	if len(dcids) == 0 {
+		return nil, status.Error(codes.InvalidArgument, "Missing required arguments: dcids")
 	}
-	if !util.CheckValidDCIDs(entities) {
-		return nil, status.Errorf(codes.InvalidArgument, "Invalid entities")
+	if !util.CheckValidDCIDs(dcids) {
+		return nil, status.Errorf(codes.InvalidArgument, "Invalid dcids")
 	}
-	statVarToSummary, err := statvar.GetStatVarSummaryHelper(ctx, entities, store)
+	statVarToSummary, err := statvar.GetStatVarSummaryHelper(ctx, dcids, store)
 	if err != nil {
 		return nil, err
 	}
 	resp := &pb.BulkVariableInfoResponse{}
-	for _, entity := range entities {
-		item := &pb.VariableInfoResponse{Entity: entity}
-		if summary, ok := statVarToSummary[entity]; ok {
+	for _, dcid := range dcids {
+		item := &pb.VariableInfoResponse{Dcid: dcid}
+		if summary, ok := statVarToSummary[dcid]; ok {
 			item.Info = summary
 		}
 		resp.Data = append(resp.Data, item)
@@ -86,7 +86,7 @@ func VariableGroupInfo(
 		ctx,
 		&pb.GetStatVarGroupNodeRequest{
 			StatVarGroup: in.GetDcid(),
-			Entities:     in.GetEntities(),
+			Entities:     in.GetConstrainedEntities(),
 		},
 		store,
 		cache,

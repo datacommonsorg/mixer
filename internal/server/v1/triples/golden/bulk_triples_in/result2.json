@@ -1,10 +1,10 @@
 {
   "data": [
     {
-      "entity": "Country"
+      "node": "Country"
     },
     {
-      "entity": "BiologicalSpecimen",
+      "node": "BiologicalSpecimen",
       "triples": {
         "typeOf": {
           "entities": [
@@ -4013,10 +4013,10 @@
       }
     },
     {
-      "entity": "Count_Person"
+      "node": "Count_Person"
     },
     {
-      "entity": "dummy"
+      "node": "dummy"
     }
   ],
   "nextToken": "H4sIAAAAAAAA/+Jy4BJyyszPyU/PTE7MCS5ITc7MTc3jYiupLEj1T8MmJ8QgxMTBKMTCwSTAJMTEwQwAAAD//wEAAP//XlKZc0IAAAA="

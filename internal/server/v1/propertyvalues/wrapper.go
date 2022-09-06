@@ -32,17 +32,17 @@ func PropertyValues(
 	in *pb.PropertyValuesRequest,
 	store *store.Store,
 ) (*pb.PropertyValuesResponse, error) {
-	entityProperty := in.GetEntityProperty()
+	nodeProperty := in.GetNodeProperty()
 	limit := int(in.GetLimit())
 	token := in.GetNextToken()
 	direction := in.GetDirection()
 
-	parts := strings.Split(entityProperty, "/")
+	parts := strings.Split(nodeProperty, "/")
 	if len(parts) < 2 {
 		return nil, status.Errorf(codes.InvalidArgument, "Invalid request URI")
 	}
 	property := parts[len(parts)-1]
-	entity := strings.Join(parts[0:len(parts)-1], "/")
+	node := strings.Join(parts[0:len(parts)-1], "/")
 
 	// Check arguments
 	if property == "" {
@@ -53,14 +53,14 @@ func PropertyValues(
 		return nil, status.Errorf(
 			codes.InvalidArgument, "uri should be /v1/property/out/ or /v1/property/in/")
 	}
-	if !util.CheckValidDCIDs([]string{entity}) {
+	if !util.CheckValidDCIDs([]string{node}) {
 		return nil, status.Errorf(
-			codes.InvalidArgument, "invalid entity %s", entity)
+			codes.InvalidArgument, "invalid node %s", node)
 	}
 	data, pi, err := Fetch(
 		ctx,
 		store,
-		[]string{entity},
+		[]string{node},
 		[]string{property},
 		limit,
 		token,
@@ -78,7 +78,7 @@ func PropertyValues(
 	}
 	res := &pb.PropertyValuesResponse{
 		NextToken: nextToken,
-		Values:    MergeTypedEntities(data[entity][property]),
+		Values:    MergeTypedNodes(data[node][property]),
 	}
 	return res, nil
 }
@@ -90,7 +90,7 @@ func BulkPropertyValues(
 	store *store.Store,
 ) (*pb.BulkPropertyValuesResponse, error) {
 	property := in.GetProperty()
-	entities := in.GetEntities()
+	nodes := in.GetNodes()
 	limit := int(in.GetLimit())
 	token := in.GetNextToken()
 	direction := in.GetDirection()
@@ -104,14 +104,14 @@ func BulkPropertyValues(
 		return nil, status.Errorf(
 			codes.InvalidArgument, "uri should be /v1/bulk/property/out/** or /v1/bulk/property/in/**")
 	}
-	if !util.CheckValidDCIDs(entities) {
+	if !util.CheckValidDCIDs(nodes) {
 		return nil, status.Errorf(
-			codes.InvalidArgument, "invalid entities %s", entities)
+			codes.InvalidArgument, "invalid nodes: %s", nodes)
 	}
 	data, pi, err := Fetch(
 		ctx,
 		store,
-		entities,
+		nodes,
 		[]string{property},
 		limit,
 		token,
@@ -130,12 +130,12 @@ func BulkPropertyValues(
 	res := &pb.BulkPropertyValuesResponse{
 		NextToken: nextToken,
 	}
-	for _, e := range entities {
+	for _, n := range nodes {
 		res.Data = append(
 			res.Data,
-			&pb.BulkPropertyValuesResponse_EntityPropertyValues{
-				Entity: e,
-				Values: MergeTypedEntities(data[e][property]),
+			&pb.BulkPropertyValuesResponse_NodePropertyValues{
+				Node:   n,
+				Values: MergeTypedNodes(data[n][property]),
 			},
 		)
 	}

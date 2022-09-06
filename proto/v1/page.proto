@@ -17,11 +17,11 @@ option go_package = "./proto";
 package datacommons.v1;
 
 message BioPageRequest {
-  string entity = 1;
+  string dcid = 1;
 }
 
 message PlacePageRequest {
-  string entity = 1;
+  string dcid = 1;
   // A list of additional stat vars need to be fetched in addition to the
   // data in cache. This is to be used in local development, where new chart is
   // added to chart config but data is not added to cache (delay from cache

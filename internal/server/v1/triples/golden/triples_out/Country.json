@@ -1,7 +1,7 @@
 {
   "triples": {
     "name": {
-      "entities": [
+      "nodes": [
         {
           "provenanceId": "dc/5l5zxr1",
           "value": "Country"
@@ -9,7 +9,7 @@
       ]
     },
     "provenance": {
-      "entities": [
+      "nodes": [
         {
           "name": "https://datacommons.org",
           "types": [
@@ -21,7 +21,7 @@
       ]
     },
     "subClassOf": {
-      "entities": [
+      "nodes": [
         {
           "name": "AdministrativeArea",
           "types": [
@@ -33,7 +33,7 @@
       ]
     },
     "typeOf": {
-      "entities": [
+      "nodes": [
         {
           "name": "Class",
           "types": [

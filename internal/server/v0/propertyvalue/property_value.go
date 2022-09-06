@@ -101,7 +101,7 @@ func GetPropertyValues(
 func GetPropertyValuesHelper(
 	ctx context.Context,
 	store *store.Store,
-	dcids []string,
+	nodes []string,
 	prop string,
 	arcOut bool,
 ) (map[string][]*pb.EntityInfo, error) {
@@ -115,7 +115,7 @@ func GetPropertyValuesHelper(
 		ctx,
 		&pb.BulkPropertyValuesRequest{
 			Property:  prop,
-			Entities:  dcids,
+			Nodes:     nodes,
 			Direction: direction,
 		},
 		store,
@@ -125,7 +125,7 @@ func GetPropertyValuesHelper(
 	}
 	result := map[string][]*pb.EntityInfo{}
 	for _, item := range resp.Data {
-		result[item.GetEntity()] = item.GetValues()
+		result[item.GetNode()] = item.GetValues()
 	}
 	return result, nil
 }

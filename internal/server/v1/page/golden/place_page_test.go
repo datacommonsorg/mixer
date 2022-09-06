@@ -47,7 +47,7 @@ func TestPlacePage(t *testing.T) {
 	testSuite := func(mixer pb.MixerClient, recon pb.ReconClient, latencyTest bool) {
 		for _, c := range []struct {
 			goldenFile string
-			entity     string
+			dcid       string
 			seed       int64
 			statVars   []string
 			maxPlace   int
@@ -119,7 +119,7 @@ func TestPlacePage(t *testing.T) {
 			},
 		} {
 			req := &pb.PlacePageRequest{
-				Entity:      c.entity,
+				Dcid:        c.dcid,
 				NewStatVars: c.statVars,
 				Seed:        c.seed,
 				Category:    c.category,

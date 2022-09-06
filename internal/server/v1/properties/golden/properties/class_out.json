@@ -1,5 +1,5 @@
 {
-  "entity": "Class",
+  "node": "Class",
   "properties": [
     "isPartOf",
     "name",

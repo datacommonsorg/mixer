@@ -31,18 +31,18 @@ func PlaceInfo(
 	in *pb.PlaceInfoRequest,
 	store *store.Store,
 ) (*pb.PlaceInfoResponse, error) {
-	entity := in.GetEntity()
-	if !util.CheckValidDCIDs([]string{entity}) {
-		return nil, status.Errorf(codes.InvalidArgument, "Invalid entity")
+	dcid := in.GetDcid()
+	if !util.CheckValidDCIDs([]string{dcid}) {
+		return nil, status.Errorf(codes.InvalidArgument, "Invalid dcid")
 	}
 
-	placeToMetadata, err := place.GetPlaceMetadataHelper(ctx, []string{entity}, store)
+	placeToMetadata, err := place.GetPlaceMetadataHelper(ctx, []string{dcid}, store)
 	if err != nil {
 		return nil, err
 	}
 
-	resp := &pb.PlaceInfoResponse{Entity: entity}
-	if metadata, ok := placeToMetadata[entity]; ok {
+	resp := &pb.PlaceInfoResponse{Dcid: dcid}
+	if metadata, ok := placeToMetadata[dcid]; ok {
 		resp.Info = metadata
 	}
 
@@ -55,23 +55,23 @@ func BulkPlaceInfo(
 	in *pb.BulkPlaceInfoRequest,
 	store *store.Store,
 ) (*pb.BulkPlaceInfoResponse, error) {
-	entities := in.GetEntities()
-	if len(entities) == 0 {
-		return nil, status.Error(codes.InvalidArgument, "Missing required arguments: entities")
+	dcids := in.GetDcids()
+	if len(dcids) == 0 {
+		return nil, status.Error(codes.InvalidArgument, "Missing required arguments: dcids")
 	}
-	if !util.CheckValidDCIDs(entities) {
-		return nil, status.Errorf(codes.InvalidArgument, "Invalid entities")
+	if !util.CheckValidDCIDs(dcids) {
+		return nil, status.Errorf(codes.InvalidArgument, "Invalid dcids")
 	}
 
-	placeToMetadata, err := place.GetPlaceMetadataHelper(ctx, entities, store)
+	placeToMetadata, err := place.GetPlaceMetadataHelper(ctx, dcids, store)
 	if err != nil {
 		return nil, err
 	}
 
 	resp := &pb.BulkPlaceInfoResponse{}
-	for _, entity := range entities {
-		item := &pb.PlaceInfoResponse{Entity: entity}
-		if metadata, ok := placeToMetadata[entity]; ok {
+	for _, dcid := range dcids {
+		item := &pb.PlaceInfoResponse{Dcid: dcid}
+		if metadata, ok := placeToMetadata[dcid]; ok {
 			item.Info = metadata
 		}
 		resp.Data = append(resp.Data, item)

@@ -36,7 +36,7 @@ func TestPlaceInfo(t *testing.T) {
 	testSuite := func(mixer pb.MixerClient, recon pb.ReconClient, latencyTest bool) {
 		for _, c := range []struct {
 			goldenFile string
-			entity     string
+			dcid       string
 			wantErr    bool
 		}{
 			{
@@ -56,7 +56,7 @@ func TestPlaceInfo(t *testing.T) {
 			},
 		} {
 			req := &pb.PlaceInfoRequest{
-				Entity: c.entity,
+				Dcid: c.dcid,
 			}
 			resp, err := mixer.PlaceInfo(ctx, req)
 			if c.wantErr {

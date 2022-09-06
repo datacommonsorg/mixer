@@ -1,7 +1,7 @@
 {
   "triples": {
     "measuredProperty": {
-      "entities": [
+      "nodes": [
         {
           "name": "count",
           "types": [
@@ -13,7 +13,7 @@
       ]
     },
     "memberOf": {
-      "entities": [
+      "nodes": [
         {
           "name": "Demographics",
           "types": [
@@ -25,7 +25,7 @@
       ]
     },
     "name": {
-      "entities": [
+      "nodes": [
         {
           "provenanceId": "dc/d7tbsb1",
           "value": "Population"
@@ -33,7 +33,7 @@
       ]
     },
     "populationType": {
-      "entities": [
+      "nodes": [
         {
           "name": "Person",
           "types": [
@@ -45,7 +45,7 @@
       ]
     },
     "provenance": {
-      "entities": [
+      "nodes": [
         {
           "name": "https://datacommons.org",
           "types": [
@@ -57,7 +57,7 @@
       ]
     },
     "statType": {
-      "entities": [
+      "nodes": [
         {
           "name": "measuredValue",
           "types": [
@@ -69,7 +69,7 @@
       ]
     },
     "typeOf": {
-      "entities": [
+      "nodes": [
         {
           "name": "StatisticalVariable",
           "types": [

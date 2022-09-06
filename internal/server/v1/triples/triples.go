@@ -33,20 +33,20 @@ func Triples(
 	in *pb.TriplesRequest,
 	store *store.Store,
 ) (*pb.TriplesResponse, error) {
-	entity := in.GetEntity()
+	node := in.GetNode()
 	direction := in.GetDirection()
 	token := in.GetNextToken()
 	if direction != util.DirectionOut && direction != util.DirectionIn {
 		return nil, status.Errorf(
 			codes.InvalidArgument, "uri should be /v1/triples/out/ or /v1/triples/in/")
 	}
-	if !util.CheckValidDCIDs([]string{entity}) {
+	if !util.CheckValidDCIDs([]string{node}) {
 		return nil, status.Errorf(
-			codes.InvalidArgument, "invalid entity %s", entity)
+			codes.InvalidArgument, "invalid node %s", node)
 	}
 	propsResp, err := properties.Properties(
 		ctx, &pb.PropertiesRequest{
-			Entity:    entity,
+			Node:      node,
 			Direction: direction,
 		},
 		store,
@@ -58,7 +58,7 @@ func Triples(
 	data, pi, err := propertyvalues.Fetch(
 		ctx,
 		store,
-		[]string{entity},
+		[]string{node},
 		properties,
 		0,
 		token,
@@ -68,11 +68,11 @@ func Triples(
 		return nil, err
 	}
 	res := &pb.TriplesResponse{
-		Triples: map[string]*pb.EntityInfoCollection{},
+		Triples: map[string]*pb.NodeInfoCollection{},
 	}
-	for p := range data[entity] {
-		res.Triples[p] = &pb.EntityInfoCollection{
-			Entities: propertyvalues.MergeTypedEntities(data[entity][p]),
+	for p := range data[node] {
+		res.Triples[p] = &pb.NodeInfoCollection{
+			Nodes: propertyvalues.MergeTypedNodes(data[node][p]),
 		}
 	}
 	if pi != nil {
@@ -91,20 +91,20 @@ func BulkTriples(
 	in *pb.BulkTriplesRequest,
 	store *store.Store,
 ) (*pb.BulkTriplesResponse, error) {
-	entities := in.GetEntities()
+	nodes := in.GetNodes()
 	direction := in.GetDirection()
 	token := in.GetNextToken()
 	if direction != util.DirectionOut && direction != util.DirectionIn {
 		return nil, status.Errorf(
 			codes.InvalidArgument, "uri should be /v1/triples/out/ or /v1/triples/in/")
 	}
-	if !util.CheckValidDCIDs(entities) {
+	if !util.CheckValidDCIDs(nodes) {
 		return nil, status.Errorf(
-			codes.InvalidArgument, "invalid entities %s", entities)
+			codes.InvalidArgument, "invalid nodes %s", nodes)
 	}
 	bulkPropsResp, err := properties.BulkProperties(
 		ctx, &pb.BulkPropertiesRequest{
-			Entities:  entities,
+			Nodes:     nodes,
 			Direction: direction,
 		},
 		store,
@@ -114,20 +114,20 @@ func BulkTriples(
 	}
 	bulkProps := bulkPropsResp.GetData()
 	entityProps := map[string]map[string]struct{}{}
-	for _, e := range entities {
+	for _, e := range nodes {
 		entityProps[e] = map[string]struct{}{}
 	}
 	properties := []string{}
 	for _, resp := range bulkProps {
 		for _, p := range resp.GetProperties() {
-			entityProps[resp.GetEntity()][p] = struct{}{}
+			entityProps[resp.GetNode()][p] = struct{}{}
 		}
 		properties = util.MergeDedupe(properties, resp.GetProperties())
 	}
 	data, pi, err := propertyvalues.Fetch(
 		ctx,
 		store,
-		entities,
+		nodes,
 		properties,
 		0,
 		token,
@@ -137,30 +137,30 @@ func BulkTriples(
 		return nil, err
 	}
 	res := &pb.BulkTriplesResponse{
-		Data: []*pb.BulkTriplesResponse_EntityTriples{},
+		Data: []*pb.BulkTriplesResponse_NodeTriples{},
 	}
 	triplesByEntity := map[string]map[string][]*pb.EntityInfo{}
-	for _, e := range entities {
-		triplesByEntity[e] = map[string][]*pb.EntityInfo{}
+	for _, n := range nodes {
+		triplesByEntity[n] = map[string][]*pb.EntityInfo{}
 	}
-	for e := range data {
-		for p := range data[e] {
-			if _, ok := entityProps[e][p]; ok {
-				entities := propertyvalues.MergeTypedEntities(data[e][p])
-				if len(entities) > 0 {
-					triplesByEntity[e][p] = entities
+	for n := range data {
+		for p := range data[n] {
+			if _, ok := entityProps[n][p]; ok {
+				nodes := propertyvalues.MergeTypedNodes(data[n][p])
+				if len(nodes) > 0 {
+					triplesByEntity[n][p] = nodes
 				}
 			}
 		}
 	}
-	for _, e := range entities {
-		entityTriples := &pb.BulkTriplesResponse_EntityTriples{
-			Entity:  e,
+	for _, n := range nodes {
+		entityTriples := &pb.BulkTriplesResponse_NodeTriples{
+			Node:    n,
 			Triples: map[string]*pb.EntityInfoCollection{},
 		}
-		for p := range triplesByEntity[e] {
+		for p := range triplesByEntity[n] {
 			entityTriples.Triples[p] = &pb.EntityInfoCollection{
-				Entities: triplesByEntity[e][p],
+				Entities: triplesByEntity[n][p],
 			}
 		}
 		res.Data = append(res.Data, entityTriples)

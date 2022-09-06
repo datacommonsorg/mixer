@@ -1,7 +1,7 @@
 {
   "data": [
     {
-      "entity": "Country",
+      "node": "Country",
       "triples": {
         "name": {
           "entities": [
@@ -50,7 +50,7 @@
       }
     },
     {
-      "entity": "BiologicalSpecimen",
+      "node": "BiologicalSpecimen",
       "triples": {
         "description": {
           "entities": [
@@ -107,7 +107,7 @@
       }
     },
     {
-      "entity": "Count_Person",
+      "node": "Count_Person",
       "triples": {
         "measuredProperty": {
           "entities": [

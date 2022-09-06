@@ -1,10 +1,10 @@
 {
   "data": [
     {
-      "entity": "country/USA"
+      "node": "country/USA"
     },
     {
-      "entity": "geoId/06053",
+      "node": "geoId/06053",
       "values": [
         {
           "name": "95004",
@@ -25,7 +25,7 @@
       ]
     },
     {
-      "entity": "geoId/06"
+      "node": "geoId/06"
     }
   ]
 }

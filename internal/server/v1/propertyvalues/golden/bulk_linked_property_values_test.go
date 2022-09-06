@@ -36,7 +36,7 @@ func TestBulkLinkedPropertyValues(t *testing.T) {
 	testSuite := func(mixer pb.MixerClient, recon pb.ReconClient, latencyTest bool) {
 		for _, c := range []struct {
 			goldenFile string
-			entities   []string
+			nodes      []string
 			typ        string
 		}{
 			{
@@ -46,9 +46,9 @@ func TestBulkLinkedPropertyValues(t *testing.T) {
 			},
 		} {
 			req := &pb.BulkLinkedPropertyValuesRequest{
-				Property:        "containedInPlace",
-				Entities:        c.entities,
-				ValueEntityType: c.typ,
+				Property:      "containedInPlace",
+				Nodes:         c.nodes,
+				ValueNodeType: c.typ,
 			}
 			resp, err := mixer.BulkLinkedPropertyValues(ctx, req)
 			if err != nil {

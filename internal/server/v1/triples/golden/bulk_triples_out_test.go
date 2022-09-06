@@ -36,7 +36,7 @@ func TestBulkTriplesOut(t *testing.T) {
 	testSuite := func(mixer pb.MixerClient, recon pb.ReconClient, latencyTest bool) {
 		for _, c := range []struct {
 			goldenFile string
-			entities   []string
+			nodes      []string
 			token      string
 		}{
 			{
@@ -46,7 +46,7 @@ func TestBulkTriplesOut(t *testing.T) {
 			},
 		} {
 			req := &pb.BulkTriplesRequest{
-				Entities:  c.entities,
+				Nodes:     c.nodes,
 				Direction: "out",
 				NextToken: c.token,
 			}

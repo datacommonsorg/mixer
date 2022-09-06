@@ -1,7 +1,7 @@
 {
   "data": [
     {
-      "entity": "country/USA",
+      "node": "country/USA",
       "values": [
         {
           "name": "North America",
@@ -14,7 +14,7 @@
       ]
     },
     {
-      "entity": "geoId/06053",
+      "node": "geoId/06053",
       "values": [
         {
           "name": "California",
@@ -28,7 +28,7 @@
       ]
     },
     {
-      "entity": "geoId/06",
+      "node": "geoId/06",
       "values": [
         {
           "name": "United States",

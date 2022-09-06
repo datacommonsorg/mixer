@@ -23,7 +23,7 @@ option go_package = "./proto";
 package datacommons;
 import "mcf.proto";
 
-// Basic info for an entity (subject or object).
+// Basic info for a node (subject or object).
 message EntityInfo {
   string name = 1;
   repeated string types = 2;
@@ -32,15 +32,15 @@ message EntityInfo {
   string value = 5; // Only for object value.
 }
 
-// A page of entities. The page number starts from 0, and is in the cache key.
+// A page of nodes. The page number starts from 0, and is in the cache key.
 // Page size is set by ::datacommons::prophet::kPageSize.
-message PagedEntities {
+message PagedNodes {
   // A list of EntityInfo messages for PagedPropVal{In|Out} cache result.
-  repeated datacommons.EntityInfo entities = 1;
+  repeated EntityInfo nodes = 1;
   double total_page_count = 2;
 }
 
-// Basic info for a collection of entities.
+// Basic info for a collection of nodes.
 message EntityInfoCollection {
   repeated EntityInfo entities = 1;
   double total = 3;

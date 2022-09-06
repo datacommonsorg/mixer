@@ -19,6 +19,7 @@ import (
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/node"
+	nodewrapper "github.com/datacommonsorg/mixer/internal/server/node"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
@@ -32,22 +33,22 @@ func Properties(
 	in *pb.PropertiesRequest,
 	store *store.Store,
 ) (*pb.PropertiesResponse, error) {
-	entity := in.GetEntity()
+	node := in.GetNode()
 	direction := in.GetDirection()
 	if direction != util.DirectionIn && direction != util.DirectionOut {
 		return nil, status.Errorf(codes.InvalidArgument, "Invalid direction: should be 'in' or 'out'")
 	}
-	data, err := node.GetPropertiesHelper(ctx, []string{entity}, store)
+	data, err := nodewrapper.GetPropertiesHelper(ctx, []string{node}, store)
 	if err != nil {
 		return nil, err
 	}
 	result := &pb.PropertiesResponse{
-		Entity: entity,
+		Node: node,
 	}
 	if direction == util.DirectionIn {
-		result.Properties = data[entity].InLabels
+		result.Properties = data[node].InLabels
 	} else if direction == util.DirectionOut {
-		result.Properties = data[entity].OutLabels
+		result.Properties = data[node].OutLabels
 	}
 	if result.Properties == nil {
 		result.Properties = []string{}
@@ -61,35 +62,35 @@ func BulkProperties(
 	in *pb.BulkPropertiesRequest,
 	store *store.Store,
 ) (*pb.BulkPropertiesResponse, error) {
-	entities := in.GetEntities()
+	nodes := in.GetNodes()
 	direction := in.GetDirection()
 	if direction != util.DirectionIn && direction != util.DirectionOut {
 		return nil, status.Errorf(codes.InvalidArgument, "Invalid direction: should be 'in' or 'out'")
 	}
-	resp, err := node.GetPropertiesHelper(ctx, entities, store)
+	resp, err := node.GetPropertiesHelper(ctx, nodes, store)
 	if err != nil {
 		return nil, err
 	}
 	result := &pb.BulkPropertiesResponse{
 		Data: []*pb.PropertiesResponse{},
 	}
-	for _, entity := range entities {
-		if _, ok := resp[entity]; !ok {
+	for _, node := range nodes {
+		if _, ok := resp[node]; !ok {
 			result.Data = append(result.Data, &pb.PropertiesResponse{
-				Entity:     entity,
+				Node:       node,
 				Properties: []string{},
 			})
 			continue
 		}
 		if direction == util.DirectionIn {
 			result.Data = append(result.Data, &pb.PropertiesResponse{
-				Entity:     entity,
-				Properties: resp[entity].InLabels,
+				Node:       node,
+				Properties: resp[node].InLabels,
 			})
 		} else if direction == util.DirectionOut {
 			result.Data = append(result.Data, &pb.PropertiesResponse{
-				Entity:     entity,
-				Properties: resp[entity].OutLabels,
+				Node:       node,
+				Properties: resp[node].OutLabels,
 			})
 		}
 	}
