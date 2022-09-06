@@ -1,0 +1,18 @@
+# Helm config
+mixer:
+  gcpProjectID: datcom-mixer-dev-316822
+  serviceName: dev.api.datacommons.org
+
+ingress:
+  name: mixer-ingress-dev
+  annotations: {
+    kubernetes.io/ingress.global-static-ip-name: alex-2022-09-02,
+    ingress.gcp.kubernetes.io/pre-shared-cert: mixer-certificate
+  }
+
+# GCP level config
+ip: 35.244.157.41
+region: us-central1
+api_title: DataCommons API (Dev)
+api: datacommons.Mixer
+nodes: 1

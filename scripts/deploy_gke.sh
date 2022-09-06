@@ -18,9 +18,9 @@
 #
 # Usage:
 #
-# ./deploy_key.sh <"prod"|"staging"|"autopush"|"encode"|"dev"|"private"> <commit_hash>
+# ./deploy_key.sh <"mixer_prod"|"mixer_staging"|"mixer_autopush"|"mixer_encode"|"mixer_dev"|"mixer_private"> <commit_hash>
 #
-# First argument is either "prod" or "staging" or "autopush" or "encode" or "dev".
+# First argument is either "mixer_prod" or "mixer_staging" or "mixer_autopush" or "mixer_encode" or "mixer_dev" or "mixer_private".
 # (Optional) second argument is the git commit hash of the mixer repo.
 #
 # !!! WARNING: Run this script in a clean Git checkout at the desired commit.
@@ -33,24 +33,22 @@ set -e
 
 ENV=$1
 
-if [[ $ENV != "staging" && $ENV != "prod" && $ENV != "autopush" && $ENV != "encode" && $ENV != "dev" && $ENV != "private" && $ENV != "recon-prod" && $ENV != "recon-staging" && $ENV != "recon-autopush" ]]; then
-  echo "First argument should be 'staging' or 'prod' or 'autopush' or 'encode' or 'dev' or 'recon-prod' or 'recon-staging' or 'recon-autopush'"
+if [[ $ENV != "mixer_staging" && $ENV != "mixer_prod" && $ENV != "mixer_autopush" && $ENV != "mixer_encode" && $ENV != "mixer_dev" && $ENV != "mixer_private" ]]; then
+  echo "First argument should be 'mixer_staging' or 'mixer_prod' or 'mixer_autopush' or 'mixer_encode' or 'mixer_dev' or 'mixer_private'"
   exit
 fi
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 ROOT="$(dirname "$DIR")"
 
-TAG=$(git rev-parse --short=7 HEAD)
+GITHASH=$(git rev-parse --short=7 HEAD)
 if [[ $2 != "" ]]; then
-  TAG=$2
+  GITHASH=$2
   cd "$ROOT"
   # This is important to get the correct BT and BQ version
-  git checkout "$TAG"
+  git checkout "$GITHASH"
 fi
-
-cd "$ROOT/deploy/git"
-echo -n "$TAG" > mixer_hash.txt
+TAG=$GITHASH
 
 cd $ROOT
 
@@ -64,23 +62,34 @@ if [[ $ENV == "autopush" ]]; then
     echo $(gsutil cat "$src") >> deploy/storage/bigtable_import_groups.version
   done
 fi
-export PROJECT_ID=$(yq eval '.project' deploy/gke/$ENV.yaml)
-export REGION=$(yq eval '.region' deploy/gke/$ENV.yaml)
-export IP=$(yq eval '.ip' deploy/gke/$ENV.yaml)
-export DOMAIN=$(yq eval '.domain' deploy/gke/$ENV.yaml)
-export API_TITLE=$(yq eval '.api_title' deploy/gke/$ENV.yaml)
-export API=$(yq eval '.api' deploy/gke/$ENV.yaml)
+export PROJECT_ID=$(yq eval '.mixer.gcpProjectID' deploy/envs/$ENV.yaml)
+export REGION=$(yq eval '.region' deploy/envs/$ENV.yaml)
+export IP=$(yq eval '.ip' deploy/envs/$ENV.yaml)
+export DOMAIN=$(yq eval '.mixer.serviceName' deploy/envs/$ENV.yaml)
+export API_TITLE=$(yq eval '.api_title' deploy/envs/$ENV.yaml)
+export API=$(yq eval '.api' deploy/envs/$ENV.yaml)
 export CLUSTER_NAME=mixer-$REGION
 
-cd $ROOT/deploy/overlays/$ENV
 
 # Deploy to GKE
-kustomize edit set image gcr.io/datcom-ci/datacommons-mixer=gcr.io/datcom-ci/datacommons-mixer:$TAG
-kustomize build > kustomize-build.yaml
-cp kustomization.yaml kustomize-deployed.yaml
 gcloud config set project $PROJECT_ID
 gcloud container clusters get-credentials $CLUSTER_NAME --region $REGION
-kubectl apply -f kustomize-build.yaml
+
+# Change "mixer_prod" for example, to "mixer-prod". 
+RELEASE=${ENV//_/-}
+
+helm upgrade --install $RELEASE deploy/mixer \
+  --atomic \
+  -f deploy/envs/$ENV.yaml \
+  --dry-run \
+  --set mixer.image.tag=$TAG \
+  --set mixer.githash=$GITHASH \
+  --set-file mixer.configmaps."base\.mcf"=deploy/mapping/base.mcf \
+  --set-file mixer.configmaps."encode\.mcf"=deploy/mapping/encode.mcf \
+  --set-file mixer.configmaps."dailyweather\.mcf"=deploy/mapping/dailyweather.mcf \
+  --set-file mixer.configmaps."monthlyweather\.mcf"=deploy/mapping/monthlyweather.mcf \
+  --set-file kgStoreConfig.bigqueryVersion=deploy/storage/bigquery.version \
+  --set-file kgStoreConfig.bigtableImportGroupsVersion=deploy/storage/bigtable_import_groups.version
 
 # Deploy Cloud Endpoints
 cp $ROOT/esp/endpoints.yaml.tmpl endpoints.yaml
@@ -91,9 +100,3 @@ yq eval -i '.endpoints[0].target = env(IP)' endpoints.yaml
 yq eval -i '.endpoints[0].name = env(DOMAIN)' endpoints.yaml
 gsutil cp gs://datcom-mixer-grpc/mixer-grpc/mixer-grpc.$TAG.pb .
 gcloud endpoints services deploy mixer-grpc.$TAG.pb endpoints.yaml --project $PROJECT_ID
-
-
-# Reset changed file
-git checkout HEAD -- kustomization.yaml
-cd $ROOT
-git checkout HEAD -- deploy/git/mixer_hash.txt

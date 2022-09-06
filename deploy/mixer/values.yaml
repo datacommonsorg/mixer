@@ -1,0 +1,119 @@
+# Default values for mixer.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+# Name of the Chart.
+nameOverride: ""
+# Full name of the release in the following format.
+# <release name>-<chart name>
+fullnameOverride: ""
+
+# Namespace for the deployment.
+# Set enabled to false to deploy into an existing namespace.
+namespace:
+  create: false
+  name: "mixer"
+
+# Mixer service config.
+mixer:
+  gcpProjectID:
+  githash:
+
+  useTMCFCSVData: false
+  tmcfCSVBucket:
+  tmcfCSVFolder:
+
+  
+  # If bigqueryOnly is True, bigqueryTableRef must be specified.
+  bigqueryOnly: false
+  # Example: google.com:datcom-store-dev.dc_v3_encode_clustered
+  bigqueryTableRef: 
+
+  serviceName: 
+ 
+  image:
+    repository: gcr.io/datcom-ci/datacommons-mixer
+    pullPolicy: IfNotPresent
+    tag: "latest"
+
+  configmaps:
+    base.mcf: 
+    dailyweather.mcf:
+    monthlyweather.mcf:
+    encode.mcf: 
+
+esp:
+  image:
+    repository: gcr.io/endpoints-release/endpoints-runtime
+    pullPolicy: IfNotPresent
+    tag: "1"
+
+# Config for k8s-sa(service account). The k8s-sa will be bound to a
+# GCP-sa using annotations, specified below.
+serviceAccount:
+  create: false
+  name: mixer-ksa
+  # Google Service Account name.
+  gsaName: mixer-robot
+
+podAnnotations: {}
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+ingress:
+  name: mixer-ingress
+  enabled: true
+  annotations: {
+    kubernetes.io/ingress.global-static-ip-name: mixer-ip,
+    ingress.gcp.kubernetes.io/pre-shared-cert: mixer-certificate
+  }
+
+kgStoreConfig:
+  bigqueryVersion:
+  bigtableImportGroupsVersion:
+  storeProjectID: datcom-store
+
+memdbJSON: ""
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+serviceGroups:
+  - svg: 
+      urlPaths:
+        - "/place/stat-var-group/*"
+        - "/stat-var/*"
+        - "/v1/info/variable/group/*"
+        - "/v1/variable/*"
+        - "/variable/ancestors/*"
+      replicas:
+        default: 2
+        min: 2
+        max: 24
+      resources:
+        memoryRequest: "8G"
+        memoryLimit: "8G"
+  - default:
+      urlPaths:
+        - "/*"
+      replicas:
+        default: 2
+        min: 2
+        max: 24
+      resources:
+        memoryRequest: "2G"
+        memoryLimit: "2G"
+  
+    
