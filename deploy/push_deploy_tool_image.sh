@@ -24,5 +24,6 @@ ROOT="$(dirname "$DIR")"
 
 cd "$ROOT"
 
-docker build -t gcr.io/datcom-ci/deploy-tool:latest -f deploy/Dockerfile .
-docker push gcr.io/datcom-ci/deploy-tool:latest
+gcloud builds submit ./deploy \
+    --project=datcom-ci \
+    --config=deploy/cloudbuild.yaml
