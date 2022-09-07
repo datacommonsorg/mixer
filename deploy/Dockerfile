@@ -21,7 +21,7 @@ RUN \
     apt-get install kubectl && \
     curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh"  | bash && \
     mv kustomize /bin/ && \
-    curl https://github.com/mikefarah/yq/releases/download/v4.12.1/yq_linux_386 -o /usr/bin/yq && \
+    curl -L https://github.com/mikefarah/yq/releases/download/v4.27.3/yq_linux_386 -o /usr/bin/yq && \
     chmod +x /usr/bin/yq && \
     curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 && \
     chmod 700 get_helm.sh && \

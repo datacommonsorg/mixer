@@ -24,6 +24,13 @@ ROOT="$(dirname "$DIR")"
 
 cd "$ROOT"
 
+TAG="latest"
+if [[ $1 != "" ]]; then
+  TAG=$1
+fi
+echo "Using tag=$TAG for the deploy-tool image."
+
 gcloud builds submit ./deploy \
     --project=datcom-ci \
+    --substitutions=_TAG="$TAG" \
     --config=deploy/cloudbuild.yaml
