@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package variable
+package info
 
 import (
 	"context"
@@ -23,16 +23,38 @@ import (
 	"github.com/datacommonsorg/mixer/internal/store"
 )
 
-// Groups implements API for Mixer.VariableGroups.
-func Groups(
+// VariableGroupInfo implements API for Mixer.VariableGroupInfo.
+func VariableGroupInfo(
 	ctx context.Context,
-	in *pb.VariableGroupsRequest,
+	in *pb.VariableGroupInfoRequest,
 	store *store.Store,
 	cache *resource.Cache,
-) (*pb.VariableGroupsResponse, error) {
+) (*pb.VariableGroupInfoResponse, error) {
+	data, err := statvar.GetStatVarGroupNode(
+		ctx,
+		&pb.GetStatVarGroupNodeRequest{
+			StatVarGroup: in.GetNode(),
+			Entities:     in.GetConstrainedEntities(),
+		},
+		store,
+		cache,
+	)
+	if err != nil {
+		return nil, err
+	}
+	return &pb.VariableGroupInfoResponse{Node: in.GetNode(), Info: data}, nil
+}
+
+// BulkVariableGroupInfo implements API for Mixer.BulkVariableGroupInfo.
+func BulkVariableGroupInfo(
+	ctx context.Context,
+	in *pb.BulkVariableGroupInfoRequest,
+	store *store.Store,
+	cache *resource.Cache,
+) (*pb.BulkVariableGroupInfoResponse, error) {
+	// TODO(shifucun): handle "nodes" in request, now always return all the
+	// varible group data.
 	entities := in.GetConstrainedEntities()
-	// TODO: after deprecating v0 API, move the logic from GetStatVarGroup
-	// to here direclty. Should also move the golden tests here.
 	tmp, err := statvar.GetStatVarGroup(
 		ctx,
 		&pb.GetStatVarGroupRequest{Entities: entities},
@@ -42,5 +64,12 @@ func Groups(
 	if err != nil {
 		return nil, err
 	}
-	return &pb.VariableGroupsResponse{Data: tmp.StatVarGroups}, nil
+	resp := &pb.BulkVariableGroupInfoResponse{Data: []*pb.VariableGroupInfoResponse{}}
+	for node, info := range tmp.StatVarGroups {
+		resp.Data = append(resp.Data, &pb.VariableGroupInfoResponse{
+			Node: node,
+			Info: info,
+		})
+	}
+	return resp, nil
 }

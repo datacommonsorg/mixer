@@ -36,9 +36,7 @@ import "translate.proto";
 
 import "v1/properties.proto";
 import "v1/property_values.proto";
-import "v1/variables.proto";
 import "v1/variable.proto";
-import "v1/variable_group.proto";
 import "v1/info.proto";
 import "v1/observations.proto";
 import "v1/page.proto";
@@ -470,18 +468,26 @@ service Mixer {
     };
   }
 
-  rpc VariableGroupInfo(datacommons.v1.VariableGroupInfoRequest)
-      returns (StatVarGroupNode) {
-    option (google.api.http) = {
-      get : "/v1/info/variable/group/{node=**}"
-    };
-  }
-
   rpc BulkVariableInfo(datacommons.v1.BulkVariableInfoRequest)
       returns (datacommons.v1.BulkVariableInfoResponse) {
     option (google.api.http) = {
       get : "/v1/bulk/info/variable"
       additional_bindings : {post : "/v1/bulk/info/variable" body : "*"}
+    };
+  }
+
+  rpc VariableGroupInfo(datacommons.v1.VariableGroupInfoRequest)
+      returns (datacommons.v1.VariableGroupInfoResponse) {
+    option (google.api.http) = {
+      get : "/v1/info/variable-group/{node=**}"
+    };
+  }
+
+  rpc BulkVariableGroupInfo(datacommons.v1.BulkVariableGroupInfoRequest)
+      returns (datacommons.v1.BulkVariableGroupInfoResponse) {
+    option (google.api.http) = {
+      get : "/v1/bulk/info/variable-group"
+      additional_bindings : {post : "/v1/bulk/info/variable-group" body : "*"}
     };
   }
 
@@ -549,14 +555,6 @@ service Mixer {
       returns (datacommons.v1.VariableAncestorsResponse) {
     option (google.api.http) = {
       get : "/variable/ancestors/{node=**}"
-    };
-  }
-
-  rpc VariableGroups(datacommons.v1.VariableGroupsRequest)
-      returns (datacommons.v1.VariableGroupsResponse) {
-    option (google.api.http) = {
-      get : "/v1/variable/groups"
-      additional_bindings : {post : "/v1/variable/groups" body : "*"}
     };
   }
 }

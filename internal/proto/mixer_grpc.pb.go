@@ -127,8 +127,9 @@ type MixerClient interface {
 	PlaceInfo(ctx context.Context, in *PlaceInfoRequest, opts ...grpc.CallOption) (*PlaceInfoResponse, error)
 	BulkPlaceInfo(ctx context.Context, in *BulkPlaceInfoRequest, opts ...grpc.CallOption) (*BulkPlaceInfoResponse, error)
 	VariableInfo(ctx context.Context, in *VariableInfoRequest, opts ...grpc.CallOption) (*VariableInfoResponse, error)
-	VariableGroupInfo(ctx context.Context, in *VariableGroupInfoRequest, opts ...grpc.CallOption) (*StatVarGroupNode, error)
 	BulkVariableInfo(ctx context.Context, in *BulkVariableInfoRequest, opts ...grpc.CallOption) (*BulkVariableInfoResponse, error)
+	VariableGroupInfo(ctx context.Context, in *VariableGroupInfoRequest, opts ...grpc.CallOption) (*VariableGroupInfoResponse, error)
+	BulkVariableGroupInfo(ctx context.Context, in *BulkVariableGroupInfoRequest, opts ...grpc.CallOption) (*BulkVariableGroupInfoResponse, error)
 	ObservationsPoint(ctx context.Context, in *ObservationsPointRequest, opts ...grpc.CallOption) (*PointStat, error)
 	BulkObservationsPoint(ctx context.Context, in *BulkObservationsPointRequest, opts ...grpc.CallOption) (*BulkObservationsPointResponse, error)
 	BulkObservationsPointLinked(ctx context.Context, in *BulkObservationsPointLinkedRequest, opts ...grpc.CallOption) (*BulkObservationsPointResponse, error)
@@ -138,7 +139,6 @@ type MixerClient interface {
 	BioPage(ctx context.Context, in *BioPageRequest, opts ...grpc.CallOption) (*GraphNodes, error)
 	PlacePage(ctx context.Context, in *PlacePageRequest, opts ...grpc.CallOption) (*GetPlacePageDataResponse, error)
 	VariableAncestors(ctx context.Context, in *VariableAncestorsRequest, opts ...grpc.CallOption) (*VariableAncestorsResponse, error)
-	VariableGroups(ctx context.Context, in *VariableGroupsRequest, opts ...grpc.CallOption) (*VariableGroupsResponse, error)
 }
 
 type mixerClient struct {
@@ -572,8 +572,17 @@ func (c *mixerClient) VariableInfo(ctx context.Context, in *VariableInfoRequest,
 	return out, nil
 }
 
-func (c *mixerClient) VariableGroupInfo(ctx context.Context, in *VariableGroupInfoRequest, opts ...grpc.CallOption) (*StatVarGroupNode, error) {
-	out := new(StatVarGroupNode)
+func (c *mixerClient) BulkVariableInfo(ctx context.Context, in *BulkVariableInfoRequest, opts ...grpc.CallOption) (*BulkVariableInfoResponse, error) {
+	out := new(BulkVariableInfoResponse)
+	err := c.cc.Invoke(ctx, "/datacommons.Mixer/BulkVariableInfo", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *mixerClient) VariableGroupInfo(ctx context.Context, in *VariableGroupInfoRequest, opts ...grpc.CallOption) (*VariableGroupInfoResponse, error) {
+	out := new(VariableGroupInfoResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/VariableGroupInfo", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -581,9 +590,9 @@ func (c *mixerClient) VariableGroupInfo(ctx context.Context, in *VariableGroupIn
 	return out, nil
 }
 
-func (c *mixerClient) BulkVariableInfo(ctx context.Context, in *BulkVariableInfoRequest, opts ...grpc.CallOption) (*BulkVariableInfoResponse, error) {
-	out := new(BulkVariableInfoResponse)
-	err := c.cc.Invoke(ctx, "/datacommons.Mixer/BulkVariableInfo", in, out, opts...)
+func (c *mixerClient) BulkVariableGroupInfo(ctx context.Context, in *BulkVariableGroupInfoRequest, opts ...grpc.CallOption) (*BulkVariableGroupInfoResponse, error) {
+	out := new(BulkVariableGroupInfoResponse)
+	err := c.cc.Invoke(ctx, "/datacommons.Mixer/BulkVariableGroupInfo", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -665,15 +674,6 @@ func (c *mixerClient) PlacePage(ctx context.Context, in *PlacePageRequest, opts 
 func (c *mixerClient) VariableAncestors(ctx context.Context, in *VariableAncestorsRequest, opts ...grpc.CallOption) (*VariableAncestorsResponse, error) {
 	out := new(VariableAncestorsResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/VariableAncestors", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *mixerClient) VariableGroups(ctx context.Context, in *VariableGroupsRequest, opts ...grpc.CallOption) (*VariableGroupsResponse, error) {
-	out := new(VariableGroupsResponse)
-	err := c.cc.Invoke(ctx, "/datacommons.Mixer/VariableGroups", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -789,8 +789,9 @@ type MixerServer interface {
 	PlaceInfo(context.Context, *PlaceInfoRequest) (*PlaceInfoResponse, error)
 	BulkPlaceInfo(context.Context, *BulkPlaceInfoRequest) (*BulkPlaceInfoResponse, error)
 	VariableInfo(context.Context, *VariableInfoRequest) (*VariableInfoResponse, error)
-	VariableGroupInfo(context.Context, *VariableGroupInfoRequest) (*StatVarGroupNode, error)
 	BulkVariableInfo(context.Context, *BulkVariableInfoRequest) (*BulkVariableInfoResponse, error)
+	VariableGroupInfo(context.Context, *VariableGroupInfoRequest) (*VariableGroupInfoResponse, error)
+	BulkVariableGroupInfo(context.Context, *BulkVariableGroupInfoRequest) (*BulkVariableGroupInfoResponse, error)
 	ObservationsPoint(context.Context, *ObservationsPointRequest) (*PointStat, error)
 	BulkObservationsPoint(context.Context, *BulkObservationsPointRequest) (*BulkObservationsPointResponse, error)
 	BulkObservationsPointLinked(context.Context, *BulkObservationsPointLinkedRequest) (*BulkObservationsPointResponse, error)
@@ -800,7 +801,6 @@ type MixerServer interface {
 	BioPage(context.Context, *BioPageRequest) (*GraphNodes, error)
 	PlacePage(context.Context, *PlacePageRequest) (*GetPlacePageDataResponse, error)
 	VariableAncestors(context.Context, *VariableAncestorsRequest) (*VariableAncestorsResponse, error)
-	VariableGroups(context.Context, *VariableGroupsRequest) (*VariableGroupsResponse, error)
 }
 
 // UnimplementedMixerServer should be embedded to have forward compatible implementations.
@@ -948,11 +948,14 @@ func (UnimplementedMixerServer) BulkPlaceInfo(context.Context, *BulkPlaceInfoReq
 func (UnimplementedMixerServer) VariableInfo(context.Context, *VariableInfoRequest) (*VariableInfoResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method VariableInfo not implemented")
 }
-func (UnimplementedMixerServer) VariableGroupInfo(context.Context, *VariableGroupInfoRequest) (*StatVarGroupNode, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method VariableGroupInfo not implemented")
-}
 func (UnimplementedMixerServer) BulkVariableInfo(context.Context, *BulkVariableInfoRequest) (*BulkVariableInfoResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BulkVariableInfo not implemented")
+}
+func (UnimplementedMixerServer) VariableGroupInfo(context.Context, *VariableGroupInfoRequest) (*VariableGroupInfoResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method VariableGroupInfo not implemented")
+}
+func (UnimplementedMixerServer) BulkVariableGroupInfo(context.Context, *BulkVariableGroupInfoRequest) (*BulkVariableGroupInfoResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method BulkVariableGroupInfo not implemented")
 }
 func (UnimplementedMixerServer) ObservationsPoint(context.Context, *ObservationsPointRequest) (*PointStat, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ObservationsPoint not implemented")
@@ -980,9 +983,6 @@ func (UnimplementedMixerServer) PlacePage(context.Context, *PlacePageRequest) (*
 }
 func (UnimplementedMixerServer) VariableAncestors(context.Context, *VariableAncestorsRequest) (*VariableAncestorsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method VariableAncestors not implemented")
-}
-func (UnimplementedMixerServer) VariableGroups(context.Context, *VariableGroupsRequest) (*VariableGroupsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method VariableGroups not implemented")
 }
 
 // UnsafeMixerServer may be embedded to opt out of forward compatibility for this service.
@@ -1842,6 +1842,24 @@ func _Mixer_VariableInfo_Handler(srv interface{}, ctx context.Context, dec func(
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Mixer_BulkVariableInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(BulkVariableInfoRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MixerServer).BulkVariableInfo(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/datacommons.Mixer/BulkVariableInfo",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MixerServer).BulkVariableInfo(ctx, req.(*BulkVariableInfoRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _Mixer_VariableGroupInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(VariableGroupInfoRequest)
 	if err := dec(in); err != nil {
@@ -1860,20 +1878,20 @@ func _Mixer_VariableGroupInfo_Handler(srv interface{}, ctx context.Context, dec 
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Mixer_BulkVariableInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(BulkVariableInfoRequest)
+func _Mixer_BulkVariableGroupInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(BulkVariableGroupInfoRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(MixerServer).BulkVariableInfo(ctx, in)
+		return srv.(MixerServer).BulkVariableGroupInfo(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/datacommons.Mixer/BulkVariableInfo",
+		FullMethod: "/datacommons.Mixer/BulkVariableGroupInfo",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).BulkVariableInfo(ctx, req.(*BulkVariableInfoRequest))
+		return srv.(MixerServer).BulkVariableGroupInfo(ctx, req.(*BulkVariableGroupInfoRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -2036,24 +2054,6 @@ func _Mixer_VariableAncestors_Handler(srv interface{}, ctx context.Context, dec 
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(MixerServer).VariableAncestors(ctx, req.(*VariableAncestorsRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Mixer_VariableGroups_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(VariableGroupsRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(MixerServer).VariableGroups(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/datacommons.Mixer/VariableGroups",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).VariableGroups(ctx, req.(*VariableGroupsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -2254,12 +2254,16 @@ var Mixer_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _Mixer_VariableInfo_Handler,
 		},
 		{
+			MethodName: "BulkVariableInfo",
+			Handler:    _Mixer_BulkVariableInfo_Handler,
+		},
+		{
 			MethodName: "VariableGroupInfo",
 			Handler:    _Mixer_VariableGroupInfo_Handler,
 		},
 		{
-			MethodName: "BulkVariableInfo",
-			Handler:    _Mixer_BulkVariableInfo_Handler,
+			MethodName: "BulkVariableGroupInfo",
+			Handler:    _Mixer_BulkVariableGroupInfo_Handler,
 		},
 		{
 			MethodName: "ObservationsPoint",
@@ -2296,10 +2300,6 @@ var Mixer_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "VariableAncestors",
 			Handler:    _Mixer_VariableAncestors_Handler,
-		},
-		{
-			MethodName: "VariableGroups",
-			Handler:    _Mixer_VariableGroups_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
