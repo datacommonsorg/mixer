@@ -64,7 +64,7 @@ message VariableGroupInfoRequest {
 
 
 message BulkVariableGroupInfoRequest {
-  // The variable group dcids to query for.
+  // (optional) The variable group dcids to query for.
   // If not specified, then return all the variable group info.
   repeated string nodes = 1;
   // (optional) When specified, only return the variable groups that the entities

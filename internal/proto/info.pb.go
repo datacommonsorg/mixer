@@ -490,7 +490,7 @@ type BulkVariableGroupInfoRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// The variable group dcids to query for.
+	// (optional) The variable group dcids to query for.
 	// If not specified, then return all the variable group info.
 	Nodes []string `protobuf:"bytes,1,rep,name=nodes,proto3" json:"nodes,omitempty"`
 	// (optional) When specified, only return the variable groups that the entities
