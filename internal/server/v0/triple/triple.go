@@ -190,17 +190,17 @@ func GetTriples(
 func ReadTriples(
 	ctx context.Context,
 	store *store.Store,
-	dcids []string,
+	nodes []string,
 ) (*pb.GetTriplesResponse, error) {
 	result := &pb.GetTriplesResponse{Triples: make(map[string]*pb.Triples)}
-	for _, dcid := range dcids {
-		result.Triples[dcid] = &pb.Triples{}
+	for _, node := range nodes {
+		result.Triples[node] = &pb.Triples{}
 	}
 	for _, direction := range []string{util.DirectionOut, util.DirectionIn} {
 		v1Resp, err := triples.BulkTriples(
 			ctx,
 			&pb.BulkTriplesRequest{
-				Entities:  dcids,
+				Nodes:     nodes,
 				Direction: direction,
 			},
 			store,
@@ -210,9 +210,9 @@ func ReadTriples(
 		}
 		for _, item := range v1Resp.GetData() {
 			if direction == util.DirectionIn {
-				result.Triples[item.GetEntity()].InNodes = item.GetTriples()
+				result.Triples[item.GetNode()].InNodes = item.GetTriples()
 			} else {
-				result.Triples[item.GetEntity()].OutNodes = item.GetTriples()
+				result.Triples[item.GetNode()].OutNodes = item.GetTriples()
 			}
 		}
 	}

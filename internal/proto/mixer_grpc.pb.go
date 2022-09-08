@@ -74,7 +74,7 @@ type MixerClient interface {
 	GetBioPageData(ctx context.Context, in *GetBioPageDataRequest, opts ...grpc.CallOption) (*GraphNodes, error)
 	// Translate Sparql Query into translation results.
 	Translate(ctx context.Context, in *TranslateRequest, opts ...grpc.CallOption) (*TranslateResponse, error)
-	// Given a text search query, return all entities matching the query.
+	// Given a text search query, return all nodes matching the query.
 	Search(ctx context.Context, in *SearchRequest, opts ...grpc.CallOption) (*SearchResponse, error)
 	// Retrieves the version metadata.
 	GetVersion(ctx context.Context, in *GetVersionRequest, opts ...grpc.CallOption) (*GetVersionResponse, error)
@@ -736,7 +736,7 @@ type MixerServer interface {
 	GetBioPageData(context.Context, *GetBioPageDataRequest) (*GraphNodes, error)
 	// Translate Sparql Query into translation results.
 	Translate(context.Context, *TranslateRequest) (*TranslateResponse, error)
-	// Given a text search query, return all entities matching the query.
+	// Given a text search query, return all nodes matching the query.
 	Search(context.Context, *SearchRequest) (*SearchResponse, error)
 	// Retrieves the version metadata.
 	GetVersion(context.Context, *GetVersionRequest) (*GetVersionResponse, error)

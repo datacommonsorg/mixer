@@ -35,7 +35,7 @@ func TestBulkVariableInfo(t *testing.T) {
 
 	testSuite := func(mixer pb.MixerClient, recon pb.ReconClient, latencyTest bool) {
 		for _, c := range []struct {
-			entities   []string
+			nodes      []string
 			goldenFile string
 			wantErr    bool
 		}{
@@ -57,7 +57,7 @@ func TestBulkVariableInfo(t *testing.T) {
 			},
 		} {
 			resp, err := mixer.BulkVariableInfo(ctx, &pb.BulkVariableInfoRequest{
-				Entities: c.entities,
+				Nodes: c.nodes,
 			})
 			if c.wantErr {
 				if err == nil {

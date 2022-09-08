@@ -26,7 +26,7 @@ message PropertyTypes {
 }
 
 message PropertyValuesRequest {
-  string entity_property = 1;
+  string node_property = 1;
   // [Optional]
   // The limit of number of values per type. If not specified, the default limit is 500.
   int32 limit = 3;
@@ -48,10 +48,10 @@ message PropertyValuesResponse {
 
 message BulkPropertyValuesRequest {
   string property = 1;
-  repeated string entities = 2;
+  repeated string nodes = 2;
   // [Optional]
   // The limit of number of values per type. If not specified, the default limit is 500.
-  // This limit is applied for each entity, instead of the bulk result.
+  // This limit is applied for each node, instead of the bulk result.
   int32 limit = 3;
   // [Optional]
   // The pagination token for getting the next set of entries. This is empty
@@ -63,11 +63,11 @@ message BulkPropertyValuesRequest {
 }
 
 message BulkPropertyValuesResponse {
-  message EntityPropertyValues {
-    string entity = 1;
+  message NodePropertyValues {
+    string node = 1;
     repeated datacommons.EntityInfo values = 2;
   }
-  repeated EntityPropertyValues data = 1;
+  repeated NodePropertyValues data = 1;
   // The pagination token for getting the next set of entries.
   string next_token = 2;
 }
@@ -76,14 +76,14 @@ message BulkPropertyValuesResponse {
 // Note this API request only supports property "containedInPlace" now.
 // This is effectively used to query containing places for certain type.
 message LinkedPropertyValuesRequest {
-  string entity_property = 1;
-  string value_entity_type = 3;
+  string node_property = 1;
+  string value_node_type = 3;
 }
 
 // Note this API request only supports property "containedInPlace" now.
 // This is effectively used to query containing places for certain type.
 message BulkLinkedPropertyValuesRequest {
   string property = 1;
-  repeated string entities = 2;
-  string value_entity_type = 3;
+  repeated string nodes = 2;
+  string value_node_type = 3;
 }

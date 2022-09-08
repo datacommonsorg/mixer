@@ -35,7 +35,7 @@ func TestVariableInfo(t *testing.T) {
 
 	testSuite := func(mixer pb.MixerClient, recon pb.ReconClient, latencyTest bool) {
 		for _, c := range []struct {
-			entity     string
+			node       string
 			goldenFile string
 			wantErr    bool
 		}{
@@ -51,7 +51,7 @@ func TestVariableInfo(t *testing.T) {
 			},
 		} {
 			resp, err := mixer.VariableInfo(ctx, &pb.VariableInfoRequest{
-				Entity: c.entity,
+				Node: c.node,
 			})
 			if c.wantErr {
 				if err == nil {

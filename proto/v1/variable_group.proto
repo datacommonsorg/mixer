@@ -16,21 +16,15 @@ syntax = "proto3";
 option go_package = "./proto";
 package datacommons.v1;
 
-message PropertiesRequest {
-  string node = 1;
-  // Direction can only be "in" or "out"
-  string direction = 2;
-}
-message PropertiesResponse {
-  string node = 1;
-  repeated string properties = 2;
+import "stat_var.proto";
+
+message VariableGroupsRequest {
+  // (optional) When specified, only return the variable groups that the entities
+  // have data for.
+  repeated string constrained_entities = 1;
 }
 
-message BulkPropertiesRequest {
-  repeated string nodes = 1;
-  // Direction can only be "in" or "out"
-  string direction = 2;
-}
-message BulkPropertiesResponse {
-  repeated PropertiesResponse data = 1;
+message VariableGroupsResponse {
+  // Key is StatVar Group ID.
+  map<string, StatVarGroupNode> data = 1;
 }

@@ -1,7 +1,7 @@
 {
   "data": [
     {
-      "entity": "Class",
+      "node": "Class",
       "properties": [
         "domainIncludes",
         "rangeIncludes",
@@ -10,7 +10,7 @@
       ]
     },
     {
-      "entity": "geoId/06",
+      "node": "geoId/06",
       "properties": [
         "affectedPlace",
         "containedInPlace",
@@ -20,7 +20,7 @@
       ]
     },
     {
-      "entity": "Place",
+      "node": "Place",
       "properties": [
         "domainIncludes",
         "populationType",

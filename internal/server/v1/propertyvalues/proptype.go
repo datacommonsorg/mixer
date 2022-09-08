@@ -23,10 +23,10 @@ import (
 	"google.golang.org/protobuf/proto"
 )
 
-func getEntityPropType(
+func getNodePropType(
 	ctx context.Context,
 	btGroup *bigtable.Group,
-	entities []string,
+	nodes []string,
 	properites []string,
 	direction string,
 ) (map[string]map[string][]string, error) {
@@ -34,7 +34,7 @@ func getEntityPropType(
 		ctx,
 		btGroup,
 		bigtable.BtPropType,
-		[][]string{entities, properites},
+		[][]string{nodes, properites},
 		func(jsonRaw []byte) (interface{}, error) {
 			var propertyTypes pb.PropertyTypes
 			if err := proto.Unmarshal(jsonRaw, &propertyTypes); err != nil {

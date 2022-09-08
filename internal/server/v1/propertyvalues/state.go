@@ -27,77 +27,77 @@ import (
 // state holds raw and processed data for property values API.
 // This struct is to be extended for in / out state.
 type state struct {
-	entities   []string
+	nodes      []string
 	properties []string
 	limit      int
 	// CursorGroup that tracks the state of current data.
-	// Key: entity, property, type
+	// Key: node, property, type
 	cursorGroup map[string]map[string]map[string][]*pb.Cursor
-	// Raw entities read from BigTable
-	// Key: entity, property, type
-	rawEntities map[string]map[string]map[string][][]*pb.EntityInfo
-	// Merged entities
-	// Key: entity, property, type
-	mergedEntities map[string]map[string]map[string][]*pb.EntityInfo
+	// Raw nodes read from BigTable
+	// Key: node, property, type
+	rawNodes map[string]map[string]map[string][][]*pb.EntityInfo
+	// Merged nodes
+	// Key: node, property, type
+	mergedNodes map[string]map[string]map[string][]*pb.EntityInfo
 	// Total page count for each import group
-	// Key: entity, property, type, import group index
+	// Key: node, property, type, import group index
 	totalPage map[string]map[string]map[string]map[int]int
 	// Record the import group for next item to read
-	// Key: entity, property, type
+	// Key: node, property, type
 	next map[string]map[string]map[string]*pb.Cursor
 }
 
 type inState struct {
 	state
-	// Min heap for entity merge sort
-	// Key: entity, property, type
-	heap map[string]map[string]map[string]*entityHeap
+	// Min heap for node merge sort
+	// Key: node, property, type
+	heap map[string]map[string]map[string]*nodeHeap
 }
 
 type outState struct {
 	state
 	// The used import group (only one import group is used for out property values).
-	// Key: entity, property, type
+	// Key: node, property, type
 	usedImportGroup map[string]map[string]map[string]int
 }
 
-// init builds a new state given entity, property and cursor group.
+// init builds a new state given node, property and cursor group.
 func (s *state) init(
 	ctx context.Context,
 	btGroup *bigtable.Group,
-	entities []string,
+	nodes []string,
 	properties []string,
 	limit int,
 	cursorGroup map[string]map[string]map[string][]*pb.Cursor,
 	arcOut bool,
 ) error {
 	// Constructor
-	s.entities = entities
+	s.nodes = nodes
 	s.properties = properties
 	s.cursorGroup = cursorGroup
-	s.rawEntities = map[string]map[string]map[string][][]*pb.EntityInfo{}
-	s.mergedEntities = map[string]map[string]map[string][]*pb.EntityInfo{}
+	s.rawNodes = map[string]map[string]map[string][][]*pb.EntityInfo{}
+	s.mergedNodes = map[string]map[string]map[string][]*pb.EntityInfo{}
 	s.limit = limit
 	s.totalPage = map[string]map[string]map[string]map[int]int{}
 	s.next = map[string]map[string]map[string]*pb.Cursor{}
-	for _, e := range entities {
-		s.next[e] = map[string]map[string]*pb.Cursor{}
-		s.mergedEntities[e] = map[string]map[string][]*pb.EntityInfo{}
+	for _, n := range nodes {
+		s.next[n] = map[string]map[string]*pb.Cursor{}
+		s.mergedNodes[n] = map[string]map[string][]*pb.EntityInfo{}
 		for _, p := range properties {
-			s.next[e][p] = map[string]*pb.Cursor{}
-			s.mergedEntities[e][p] = map[string][]*pb.EntityInfo{}
+			s.next[n][p] = map[string]*pb.Cursor{}
+			s.mergedNodes[n][p] = map[string][]*pb.EntityInfo{}
 		}
 	}
 	accs := []*bigtable.Accessor{}
-	for e := range cursorGroup {
-		for p := range cursorGroup[e] {
-			for t := range cursorGroup[e][p] {
-				for _, c := range cursorGroup[e][p][t] {
+	for n := range cursorGroup {
+		for p := range cursorGroup[n] {
+			for t := range cursorGroup[n][p] {
+				for _, c := range cursorGroup[n][p][t] {
 					if c != nil {
 						accs = append(accs, &bigtable.Accessor{
 							ImportGroup: int(c.GetImportGroup()),
 							Body: [][]string{
-								{e},
+								{n},
 								{p},
 								{t},
 								{strconv.Itoa(int(c.GetPage()))},
@@ -133,36 +133,36 @@ func (s *state) readBt(
 	}
 	// Store the raw cache data.
 	// The outer for loop is on the import group.
-	n := len(btDataList)
+	numImportGroup := len(btDataList)
 	for idx, btData := range btDataList {
 		if len(btData) == 0 {
 			continue
 		}
 		for _, row := range btData {
-			e := row.Parts[0] // entity
+			n := row.Parts[0] // node
 			p := row.Parts[1] // property
 			t := row.Parts[2] // type
-			values := row.Data.(*pb.PagedEntities)
-			if _, ok := s.rawEntities[e]; !ok {
-				s.rawEntities[e] = map[string]map[string][][]*pb.EntityInfo{}
+			values := row.Data.(*pb.PagedNodes)
+			if _, ok := s.rawNodes[n]; !ok {
+				s.rawNodes[n] = map[string]map[string][][]*pb.EntityInfo{}
 			}
-			if _, ok := s.rawEntities[e][p]; !ok {
-				s.rawEntities[e][p] = make(map[string][][]*pb.EntityInfo, n)
+			if _, ok := s.rawNodes[n][p]; !ok {
+				s.rawNodes[n][p] = make(map[string][][]*pb.EntityInfo, numImportGroup)
 			}
-			if _, ok := s.rawEntities[e][p][t]; !ok {
-				s.rawEntities[e][p][t] = make([][]*pb.EntityInfo, n)
+			if _, ok := s.rawNodes[n][p][t]; !ok {
+				s.rawNodes[n][p][t] = make([][]*pb.EntityInfo, numImportGroup)
 			}
-			s.rawEntities[e][p][t][idx] = values.Entities
-			if _, ok := s.totalPage[e]; !ok {
-				s.totalPage[e] = map[string]map[string]map[int]int{}
+			s.rawNodes[n][p][t][idx] = values.Nodes
+			if _, ok := s.totalPage[n]; !ok {
+				s.totalPage[n] = map[string]map[string]map[int]int{}
 			}
-			if _, ok := s.totalPage[e][p]; !ok {
-				s.totalPage[e][p] = map[string]map[int]int{}
+			if _, ok := s.totalPage[n][p]; !ok {
+				s.totalPage[n][p] = map[string]map[int]int{}
 			}
-			if _, ok := s.totalPage[e][p][t]; !ok {
-				s.totalPage[e][p][t] = map[int]int{}
+			if _, ok := s.totalPage[n][p][t]; !ok {
+				s.totalPage[n][p][t] = map[int]int{}
 			}
-			s.totalPage[e][p][t][idx] = int(values.TotalPageCount)
+			s.totalPage[n][p][t][idx] = int(values.TotalPageCount)
 		}
 	}
 	return nil
@@ -172,35 +172,35 @@ func (s *state) readBt(
 func (s *inState) init(
 	ctx context.Context,
 	btGroup *bigtable.Group,
-	entities []string,
+	nodes []string,
 	properties []string,
 	limit int,
 	cursorGroup map[string]map[string]map[string][]*pb.Cursor,
 ) error {
-	err := s.state.init(ctx, btGroup, entities, properties, limit, cursorGroup, false)
+	err := s.state.init(ctx, btGroup, nodes, properties, limit, cursorGroup, false)
 	if err != nil {
 		return err
 	}
-	s.heap = map[string]map[string]map[string]*entityHeap{}
-	for _, e := range entities {
-		s.heap[e] = map[string]map[string]*entityHeap{}
+	s.heap = map[string]map[string]map[string]*nodeHeap{}
+	for _, n := range nodes {
+		s.heap[n] = map[string]map[string]*nodeHeap{}
 		for _, p := range properties {
-			s.heap[e][p] = map[string]*entityHeap{}
-			// Push the next entity of each import group to the heap.
-			for t, typedEntityList := range s.rawEntities[e][p] {
-				s.heap[e][p][t] = &entityHeap{}
+			s.heap[n][p] = map[string]*nodeHeap{}
+			// Push the next node of each import group to the heap.
+			for t, typedNodeList := range s.rawNodes[n][p] {
+				s.heap[n][p][t] = &nodeHeap{}
 				// Init the min heap
-				heap.Init(s.heap[e][p][t])
-				for idx, entityList := range typedEntityList {
-					cursor := cursorGroup[e][p][t][idx]
-					if int(cursor.GetItem()) < len(entityList) {
+				heap.Init(s.heap[n][p][t])
+				for idx, nodeList := range typedNodeList {
+					cursor := cursorGroup[n][p][t][idx]
+					if int(cursor.GetItem()) < len(nodeList) {
 						elem := &heapElem{
 							ig:   idx,
 							pos:  cursor.GetItem(),
-							data: entityList[cursor.GetItem()],
+							data: nodeList[cursor.GetItem()],
 						}
-						heap.Push(s.heap[e][p][t], elem)
-						s.next[e][p][t] = cursor
+						heap.Push(s.heap[n][p][t], elem)
+						s.next[n][p][t] = cursor
 					}
 				}
 			}
@@ -213,25 +213,25 @@ func (s *inState) init(
 func (s *outState) init(
 	ctx context.Context,
 	btGroup *bigtable.Group,
-	entities []string,
+	nodes []string,
 	properties []string,
 	limit int,
 	cursorGroup map[string]map[string]map[string][]*pb.Cursor,
 ) error {
-	err := s.state.init(ctx, btGroup, entities, properties, limit, cursorGroup, true)
+	err := s.state.init(ctx, btGroup, nodes, properties, limit, cursorGroup, true)
 	if err != nil {
 		return err
 	}
 	s.usedImportGroup = map[string]map[string]map[string]int{}
-	for e := range s.rawEntities {
-		s.usedImportGroup[e] = map[string]map[string]int{}
-		for p := range s.rawEntities[e] {
-			s.usedImportGroup[e][p] = map[string]int{}
-			for t := range s.rawEntities[e][p] {
-				for idx, data := range s.rawEntities[e][p][t] {
+	for n := range s.rawNodes {
+		s.usedImportGroup[n] = map[string]map[string]int{}
+		for p := range s.rawNodes[n] {
+			s.usedImportGroup[n][p] = map[string]int{}
+			for t := range s.rawNodes[n][p] {
+				for idx, data := range s.rawNodes[n][p][t] {
 					if len(data) > 0 {
-						s.usedImportGroup[e][p][t] = idx
-						s.next[e][p][t] = cursorGroup[e][p][t][idx]
+						s.usedImportGroup[n][p][t] = idx
+						s.next[n][p][t] = cursorGroup[n][p][t][idx]
 						break
 					}
 				}
@@ -243,15 +243,15 @@ func (s *outState) init(
 
 func (s *state) getPagination() *pb.PaginationInfo {
 	cursorGroups := []*pb.CursorGroup{}
-	for e := range s.cursorGroup {
-		for p := range s.cursorGroup[e] {
-			for t := range s.cursorGroup[e][p] {
-				if s.cursorGroup[e][p][t] != nil {
+	for n := range s.cursorGroup {
+		for p := range s.cursorGroup[n] {
+			for t := range s.cursorGroup[n][p] {
+				if s.cursorGroup[n][p][t] != nil {
 					cursorGroups = append(
 						cursorGroups,
 						&pb.CursorGroup{
-							Keys:    []string{e, p, t},
-							Cursors: s.cursorGroup[e][p][t],
+							Keys:    []string{n, p, t},
+							Cursors: s.cursorGroup[n][p][t],
 						},
 					)
 				}

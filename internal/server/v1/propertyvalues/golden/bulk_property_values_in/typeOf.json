@@ -1,7 +1,7 @@
 {
   "data": [
     {
-      "entity": "Country",
+      "node": "Country",
       "values": [
         {
           "name": "Aruba",
@@ -1092,7 +1092,7 @@
       ]
     },
     {
-      "entity": "State",
+      "node": "State",
       "values": [
         {
           "name": "Alabama",
@@ -2046,7 +2046,7 @@
       ]
     },
     {
-      "entity": "City",
+      "node": "City",
       "values": [
         {
           "name": "Hong Kong",

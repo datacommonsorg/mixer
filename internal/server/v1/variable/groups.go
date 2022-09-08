@@ -30,7 +30,7 @@ func Groups(
 	store *store.Store,
 	cache *resource.Cache,
 ) (*pb.VariableGroupsResponse, error) {
-	entities := in.GetEntities()
+	entities := in.GetConstrainedEntities()
 	// TODO: after deprecating v0 API, move the logic from GetStatVarGroup
 	// to here direclty. Should also move the golden tests here.
 	tmp, err := statvar.GetStatVarGroup(

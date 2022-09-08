@@ -36,7 +36,7 @@ func TestTriplesOut(t *testing.T) {
 	testSuite := func(mixer pb.MixerClient, recon pb.ReconClient, latencyTest bool) {
 		for _, c := range []struct {
 			goldenFile string
-			entity     string
+			node       string
 			token      string
 		}{
 			{
@@ -61,7 +61,7 @@ func TestTriplesOut(t *testing.T) {
 			},
 		} {
 			req := &pb.TriplesRequest{
-				Entity:    c.entity,
+				Node:      c.node,
 				NextToken: c.token,
 				Direction: "out",
 			}

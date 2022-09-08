@@ -18,8 +18,14 @@ package datacommons.v1;
 
 import "entity.proto";
 
+
+// Basic info for a collection of nodes.
+message NodeInfoCollection {
+  repeated datacommons.EntityInfo nodes = 1;
+}
+
 message TriplesRequest {
-  string entity = 1;
+  string node = 1;
   // Direction can only be "in" and "out"
   string direction = 2;
   // [Optional]
@@ -31,14 +37,14 @@ message TriplesRequest {
 
 message TriplesResponse {
   // Key is property.
-  map<string, datacommons.EntityInfoCollection> triples = 1;
+  map<string, NodeInfoCollection> triples = 1;
   // The pagination token for getting the next set of entries.
   string next_token = 2;
 }
 
 
 message BulkTriplesRequest {
-  repeated string entities = 1;
+  repeated string nodes = 1;
   // Direction can only be "in" and "out"
   string direction = 2;
   // [Optional]
@@ -49,12 +55,13 @@ message BulkTriplesRequest {
 }
 
 message BulkTriplesResponse {
-  message EntityTriples {
-    string entity = 1;
+
+  message NodeTriples {
+    string node = 1;
     // Key is property.
     map<string, datacommons.EntityInfoCollection> triples = 2;
   }
-  repeated EntityTriples data = 1;
+  repeated NodeTriples data = 1;
   // The pagination token for getting the next set of entries.
   string next_token = 2;
 }

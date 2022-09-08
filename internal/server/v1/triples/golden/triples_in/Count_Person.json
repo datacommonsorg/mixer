@@ -1,7 +1,7 @@
 {
   "triples": {
     "measurementDenominator": {
-      "entities": [
+      "nodes": [
         {
           "name": "Amount of Economic Activity: Expenditure Activity, Healthcare Expenditure (Per Capita)",
           "types": [

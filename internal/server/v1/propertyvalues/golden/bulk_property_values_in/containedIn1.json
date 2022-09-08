@@ -1,7 +1,7 @@
 {
   "data": [
     {
-      "entity": "country/USA",
+      "node": "country/USA",
       "values": [
         {
           "name": "American Samoa",
@@ -18548,7 +18548,7 @@
       ]
     },
     {
-      "entity": "geoId/06053",
+      "node": "geoId/06053",
       "values": [
         {
           "name": "Moss Landing",
@@ -24678,7 +24678,7 @@
       ]
     },
     {
-      "entity": "geoId/06",
+      "node": "geoId/06",
       "values": [
         {
           "name": "Big Creek 1",

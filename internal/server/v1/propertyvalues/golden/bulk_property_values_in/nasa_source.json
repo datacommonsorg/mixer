@@ -1,7 +1,7 @@
 {
   "data": [
     {
-      "entity": "dc/s/UsNationalAeronauticsAndSpaceAdministrationNasa",
+      "node": "dc/s/UsNationalAeronauticsAndSpaceAdministrationNasa",
       "values": [
         {
           "name": "NEX-DCP30",

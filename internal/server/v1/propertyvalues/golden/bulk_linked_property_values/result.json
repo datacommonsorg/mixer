@@ -1,7 +1,7 @@
 {
   "data": [
     {
-      "entity": "geoId/05",
+      "node": "geoId/05",
       "values": [
         {
           "name": "Adona",
@@ -7465,7 +7465,7 @@
       ]
     },
     {
-      "entity": "geoId/06",
+      "node": "geoId/06",
       "values": [
         {
           "name": "Acalanes Ridge",
@@ -14224,7 +14224,7 @@
       ]
     },
     {
-      "entity": "dummy"
+      "node": "dummy"
     }
   ]
 }

@@ -35,7 +35,7 @@ func TestBioPage(t *testing.T) {
 	testSuite := func(mixer pb.MixerClient, recon pb.ReconClient, latencyTest bool) {
 		for _, c := range []struct {
 			goldenFile string
-			entity     string
+			node       string
 		}{
 			{
 				"yeast.json",
@@ -47,7 +47,7 @@ func TestBioPage(t *testing.T) {
 			},
 		} {
 			req := &pb.BioPageRequest{
-				Entity: c.entity,
+				Node: c.node,
 			}
 			resp, err := mixer.BioPage(ctx, req)
 			if err != nil {

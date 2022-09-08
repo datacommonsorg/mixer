@@ -26,19 +26,19 @@ import (
 var defaultLimit = 500
 
 func buildDefaultCursorGroups(
-	entities []string,
+	nodes []string,
 	properties []string,
 	propType map[string]map[string][]string,
-	n int,
+	size int,
 ) []*pb.CursorGroup {
 	result := []*pb.CursorGroup{}
-	for _, e := range entities {
+	for _, n := range nodes {
 		for _, p := range properties {
-			for _, t := range propType[e][p] {
+			for _, t := range propType[n][p] {
 				cg := &pb.CursorGroup{
-					Keys: []string{e, p, t},
+					Keys: []string{n, p, t},
 				}
-				for i := 0; i < n; i++ {
+				for i := 0; i < size; i++ {
 					cg.Cursors = append(cg.Cursors, &pb.Cursor{ImportGroup: int32(i)})
 				}
 				result = append(result, cg)
@@ -49,15 +49,15 @@ func buildDefaultCursorGroups(
 }
 
 var unmarshalFunc = func(jsonRaw []byte) (interface{}, error) {
-	var p pb.PagedEntities
+	var p pb.PagedNodes
 	err := proto.Unmarshal(jsonRaw, &p)
 	return &p, err
 }
 
-// MergeTypedEntities merges entities by type into ordered flat list of entities.
-func MergeTypedEntities(data map[string][]*pb.EntityInfo) []*pb.EntityInfo {
+// MergeTypedNodes merges nodes by type into ordered flat list of nodes.
+func MergeTypedNodes(data map[string][]*pb.EntityInfo) []*pb.EntityInfo {
 	res := []*pb.EntityInfo{}
-	h := &entityHeap{}
+	h := &nodeHeap{}
 	heap.Init(h)
 	for t, items := range data {
 		heap.Push(h, &heapElem{typ: t, pos: 0, data: items[0]})

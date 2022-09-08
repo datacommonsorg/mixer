@@ -31,11 +31,11 @@ import (
 )
 
 // Fetch is the generic handler to fetch property values for multiple
-// properties and entities.
+// properties and nodes.
 func Fetch(
 	ctx context.Context,
 	store *store.Store,
-	entities []string,
+	nodes []string,
 	properties []string,
 	limit int,
 	token string,
@@ -46,14 +46,14 @@ func Fetch(
 	error,
 ) {
 	var err error
-	propType, err := getEntityPropType(ctx, store.BtGroup, entities, properties, direction)
+	propType, err := getNodePropType(ctx, store.BtGroup, nodes, properties, direction)
 	if err != nil {
 		return nil, nil, err
 	}
 	// Empty cursor groups when no token is given.
 	var cursorGroups []*pb.CursorGroup
 	if token == "" {
-		cursorGroups = buildDefaultCursorGroups(entities, properties, propType, len(store.BtGroup.Tables()))
+		cursorGroups = buildDefaultCursorGroups(nodes, properties, propType, len(store.BtGroup.Tables()))
 	} else {
 		pi, err := pagination.Decode(token)
 		if err != nil {
@@ -67,23 +67,23 @@ func Fetch(
 	cursorGroup := map[string]map[string]map[string][]*pb.Cursor{}
 	for _, g := range cursorGroups {
 		keys := g.GetKeys()
-		// Key is  [entity, property, type]
+		// Key is  [node, property, type]
 		if len(keys) != 3 {
 			return nil, nil, status.Errorf(
 				codes.Internal, "cursor should have three keys, cursor: %s", g)
 		}
-		e, p, t := keys[0], keys[1], keys[2]
-		if _, ok := cursorGroup[e]; !ok {
-			cursorGroup[e] = map[string]map[string][]*pb.Cursor{}
+		n, p, t := keys[0], keys[1], keys[2]
+		if _, ok := cursorGroup[n]; !ok {
+			cursorGroup[n] = map[string]map[string][]*pb.Cursor{}
 		}
-		if _, ok := cursorGroup[e][p]; !ok {
-			cursorGroup[e][p] = map[string][]*pb.Cursor{}
+		if _, ok := cursorGroup[n][p]; !ok {
+			cursorGroup[n][p] = map[string][]*pb.Cursor{}
 		}
-		cursorGroup[e][p][t] = g.GetCursors()
+		cursorGroup[n][p][t] = g.GetCursors()
 	}
 	if direction == util.DirectionOut {
 		s := &outState{}
-		if err = s.init(ctx, store.BtGroup, entities, properties, limit, cursorGroup); err != nil {
+		if err = s.init(ctx, store.BtGroup, nodes, properties, limit, cursorGroup); err != nil {
 			return nil, nil, err
 		}
 		for {
@@ -97,19 +97,19 @@ func Fetch(
 		}
 		// Out property values only use one (the preferred) import group. So here
 		// should only check if that import group has more data to compute the token.
-		for e := range s.rawEntities {
-			for p := range s.rawEntities[e] {
-				for t := range s.rawEntities[e][p] {
-					if s.rawEntities[e][p][t][s.usedImportGroup[e][p][t]] != nil {
-						return s.mergedEntities, s.getPagination(), nil
+		for n := range s.rawNodes {
+			for p := range s.rawNodes[n] {
+				for t := range s.rawNodes[n][p] {
+					if s.rawNodes[n][p][t][s.usedImportGroup[n][p][t]] != nil {
+						return s.mergedNodes, s.getPagination(), nil
 					}
 				}
 			}
 		}
-		return s.mergedEntities, nil, nil
+		return s.mergedNodes, nil, nil
 	} else {
 		s := &inState{}
-		if err = s.init(ctx, store.BtGroup, entities, properties, limit, cursorGroup); err != nil {
+		if err = s.init(ctx, store.BtGroup, nodes, properties, limit, cursorGroup); err != nil {
 			return nil, nil, err
 		}
 		for {
@@ -121,98 +121,98 @@ func Fetch(
 				break
 			}
 		}
-		// If rawEntities is not empty, there is leftover data to be fetched via
+		// If rawNodes is not empty, there is leftover data to be fetched via
 		// pagination. Need to return the pagination info. Otherwise, this reached
 		// the end of all data, no need to return pagination info.
-		for e := range s.rawEntities {
-			for p := range s.rawEntities[e] {
-				for t := range s.rawEntities[e][p] {
-					for _, d := range s.rawEntities[e][p][t] {
+		for n := range s.rawNodes {
+			for p := range s.rawNodes[n] {
+				for t := range s.rawNodes[n][p] {
+					for _, d := range s.rawNodes[n][p][t] {
 						if d != nil {
-							return s.mergedEntities, s.getPagination(), nil
+							return s.mergedNodes, s.getPagination(), nil
 						}
 					}
 				}
 			}
 		}
-		return s.mergedEntities, nil, nil
+		return s.mergedNodes, nil, nil
 	}
 }
 
-// Process the next entity for out property value
+// Process the next node for out property value
 //
 // Out property values are not merged, only the preferred import group result
 // is used.
 func nextOut(ctx context.Context, s *outState, btGroup *bigtable.Group) (bool, error) {
 	accs := []*bigtable.Accessor{}
-	for _, e := range s.entities {
+	for _, n := range s.nodes {
 		for _, p := range s.properties {
 			types := []string{}
-			for t := range s.cursorGroup[e][p] {
+			for t := range s.cursorGroup[n][p] {
 				types = append(types, t)
 			}
 			sort.Strings(types)
 			for _, t := range types {
-				// No raw data for this "property", "entity", "type"
-				if _, ok := s.next[e][p][t]; !ok {
+				// No raw data for this "property", "node", "type"
+				if _, ok := s.next[n][p][t]; !ok {
 					continue
 				}
-				if len(s.mergedEntities[e][p][t]) == s.limit {
-					delete(s.next[e][p], t)
+				if len(s.mergedNodes[n][p][t]) == s.limit {
+					delete(s.next[n][p], t)
 					continue
 				}
-				ig := s.usedImportGroup[e][p][t]
+				ig := s.usedImportGroup[n][p][t]
 				// Update the cursor.
-				cursor := s.cursorGroup[e][p][t][ig]
-				entity := s.rawEntities[e][p][t][ig][cursor.Item]
-				// If this entity has multiple types, check if it has been processed
+				cursor := s.cursorGroup[n][p][t][ig]
+				node := s.rawNodes[n][p][t][ig][cursor.Item]
+				// If this node has multiple types, check if it has been processed
 				// for the other types already.
 				processed := false
-				if len(entity.Types) > 0 {
-					for _, t := range entity.Types {
-						if s.cursorGroup[e][p][t] == nil {
+				if len(node.Types) > 0 {
+					for _, t := range node.Types {
+						if s.cursorGroup[n][p][t] == nil {
 							// The cursor group for <e,p,t> is nil, which has been fully
 							// processed in previous page.
 							processed = true
 							break
 						}
-						l := s.mergedEntities[e][p][t]
-						if len(l) > 0 && entity.Dcid <= l[len(l)-1].Dcid {
-							// This entity has been processed for type "t".
+						l := s.mergedNodes[n][p][t]
+						if len(l) > 0 && node.Dcid <= l[len(l)-1].Dcid {
+							// This node has been processed for type "t".
 							processed = true
 							break
 						}
 					}
 				}
 				if !processed {
-					if _, ok := s.mergedEntities[e][p][t]; !ok {
-						s.mergedEntities[e][p][t] = []*pb.EntityInfo{}
+					if _, ok := s.mergedNodes[n][p][t]; !ok {
+						s.mergedNodes[n][p][t] = []*pb.EntityInfo{}
 					}
-					s.mergedEntities[e][p][t] = append(
-						s.mergedEntities[e][p][t],
-						entity,
+					s.mergedNodes[n][p][t] = append(
+						s.mergedNodes[n][p][t],
+						node,
 					)
 				}
 				// Proceed cursor
 				cursor.Item++
 				// Still need more data, mark in s.hasNext
-				s.next[e][p][t] = cursor
+				s.next[n][p][t] = cursor
 				// Reach the end of the current page, should advance to next page.
-				if int(cursor.Item) == len(s.rawEntities[e][p][t][ig]) {
+				if int(cursor.Item) == len(s.rawNodes[n][p][t][ig]) {
 					cursor.Page++
 					cursor.Item = 0
 					// No more pages for the import group. As out prop values only use
 					// a single import group, so no more data for this <e,p,t> combination.
-					if cursor.Page == int32(s.totalPage[e][p][t][ig]) {
-						s.rawEntities[e][p][t][ig] = nil
-						s.cursorGroup[e][p][t] = nil
-						delete(s.next[e][p], t)
+					if cursor.Page == int32(s.totalPage[n][p][t][ig]) {
+						s.rawNodes[n][p][t][ig] = nil
+						s.cursorGroup[n][p][t] = nil
+						delete(s.next[n][p], t)
 					} else {
-						s.next[e][p][t] = cursor
+						s.next[n][p][t] = cursor
 						accs = append(accs, &bigtable.Accessor{
 							ImportGroup: ig,
 							Body: [][]string{
-								{e},
+								{n},
 								{p},
 								{t},
 								{strconv.Itoa(int(cursor.Page))},
@@ -230,9 +230,9 @@ func nextOut(ctx context.Context, s *outState, btGroup *bigtable.Group) (bool, e
 		}
 	}
 	hasNext := false
-	for e := range s.next {
-		for p := range s.next[e] {
-			if len(s.next[e][p]) > 0 {
+	for n := range s.next {
+		for p := range s.next[n] {
+			if len(s.next[n][p]) > 0 {
 				hasNext = true
 				break
 			}
@@ -244,65 +244,65 @@ func nextOut(ctx context.Context, s *outState, btGroup *bigtable.Group) (bool, e
 	return hasNext, nil
 }
 
-// Process the next entity for in property value
+// Process the next node for in property value
 //
 // As the data in each import group is sorted already. The duplication is
 // handled by advancing the pointer in each import group simultaneously like
 // in a merge sort.
 func nextIn(ctx context.Context, s *inState, btGroup *bigtable.Group) (bool, error) {
 	accs := []*bigtable.Accessor{}
-	for _, e := range s.entities {
+	for _, n := range s.nodes {
 		for _, p := range s.properties {
 			types := []string{}
-			for t := range s.next[e][p] {
+			for t := range s.next[n][p] {
 				types = append(types, t)
 			}
 			sort.Strings(types)
 			for _, t := range types {
-				if s.heap[e][p][t].Len() == 0 {
-					// All entities in all import groups for [e, p, t]have been exhausted.
+				if s.heap[n][p][t].Len() == 0 {
+					// All nodes in all import groups for [n, p, t] have been exhausted.
 					// Delete this entry in "s.next" so the outer for loop can skip it.
-					delete(s.next[e][p], t)
-					s.cursorGroup[e][p][t] = nil
+					delete(s.next[n][p], t)
+					s.cursorGroup[n][p][t] = nil
 					continue
 				}
-				elem := heap.Pop(s.heap[e][p][t]).(*heapElem)
-				entity, ig := elem.data, elem.ig
-				// If this entity has multiple types, check if it has been processed
+				elem := heap.Pop(s.heap[n][p][t]).(*heapElem)
+				node, ig := elem.data, elem.ig
+				// If this node has multiple types, check if it has been processed
 				// for the other types already.
 				processed := false
-				if len(entity.Types) > 0 {
-					for _, t := range entity.Types {
-						if s.cursorGroup[e][p][t] == nil {
+				if len(node.Types) > 0 {
+					for _, t := range node.Types {
+						if s.cursorGroup[n][p][t] == nil {
 							// The cursor group for <e,p,t> is nil, which has been fully
 							// processed in previous page.
 							processed = true
 							break
 						}
-						l := s.mergedEntities[e][p][t]
-						if len(l) > 0 && entity.Dcid <= l[len(l)-1].Dcid {
-							// This entity has been processed for type "t".
+						l := s.mergedNodes[n][p][t]
+						if len(l) > 0 && node.Dcid <= l[len(l)-1].Dcid {
+							// This node has been processed for type "t".
 							processed = true
 							break
 						}
 					}
 				}
 				if !processed {
-					// Add the entity to "mergedEntities".
-					if len(s.mergedEntities[e][p][t]) == 0 {
-						s.mergedEntities[e][p][t] = []*pb.EntityInfo{entity}
+					// Add the node to "mergedNodes".
+					if len(s.mergedNodes[n][p][t]) == 0 {
+						s.mergedNodes[n][p][t] = []*pb.EntityInfo{node}
 					} else {
-						prev := s.mergedEntities[e][p][t][len(s.mergedEntities[e][p][t])-1]
-						if entity.Dcid != prev.Dcid || entity.Value != prev.Value {
-							// Find a new entity, add to the result.
-							s.mergedEntities[e][p][t] = append(s.mergedEntities[e][p][t], entity)
+						prev := s.mergedNodes[n][p][t][len(s.mergedNodes[n][p][t])-1]
+						if node.Dcid != prev.Dcid || node.Value != prev.Value {
+							// Find a new node, add to the result.
+							s.mergedNodes[n][p][t] = append(s.mergedNodes[n][p][t], node)
 						}
 					}
 				}
-				// Got enough entities, should stop.
+				// Got enough nodes, should stop.
 				// Cursor is now at the next read item, ready to be returned.
 				//
-				// Here go past one entity over limit to ensure all duplicated entries have
+				// Here go past one node over limit to ensure all duplicated entries have
 				// been processed. Otherwise, next API request could get duplicate entries.
 
 				// For example, given the two import groups data below and limit of 1, this
@@ -311,26 +311,26 @@ func nextIn(ctx context.Context, s *inState, btGroup *bigtable.Group) (bool, err
 
 				// import group 1: ["a", "a", "b"]
 				// import group 2: ["a", "c"]
-				if len(s.mergedEntities[e][p][t]) == s.limit+1 {
-					s.mergedEntities[e][p][t] = s.mergedEntities[e][p][t][:s.limit]
-					delete(s.next[e][p], t)
+				if len(s.mergedNodes[n][p][t]) == s.limit+1 {
+					s.mergedNodes[n][p][t] = s.mergedNodes[n][p][t][:s.limit]
+					delete(s.next[n][p], t)
 				}
-				if _, ok := s.next[e][p][t]; ok {
+				if _, ok := s.next[n][p][t]; ok {
 					// Update the cursor.
-					cursor := s.cursorGroup[e][p][t][ig]
+					cursor := s.cursorGroup[n][p][t][ig]
 					cursor.Item++
 					// Reach the end of the current page, should advance to next page.
-					if int(cursor.Item) == len(s.rawEntities[e][p][t][ig]) {
+					if int(cursor.Item) == len(s.rawNodes[n][p][t][ig]) {
 						cursor.Page++
 						cursor.Item = 0
 						// No more pages
-						if cursor.Page == int32(s.totalPage[e][p][t][ig]) {
-							s.rawEntities[e][p][t][ig] = nil
+						if cursor.Page == int32(s.totalPage[n][p][t][ig]) {
+							s.rawNodes[n][p][t][ig] = nil
 						} else {
 							accs = append(accs, &bigtable.Accessor{
 								ImportGroup: ig,
 								Body: [][]string{
-									{e},
+									{n},
 									{p},
 									{t},
 									{strconv.Itoa(int(cursor.Page))},
@@ -338,7 +338,7 @@ func nextIn(ctx context.Context, s *inState, btGroup *bigtable.Group) (bool, err
 							})
 						}
 					}
-					s.next[e][p][t] = cursor
+					s.next[n][p][t] = cursor
 				}
 			}
 		}
@@ -349,23 +349,23 @@ func nextIn(ctx context.Context, s *inState, btGroup *bigtable.Group) (bool, err
 			return false, err
 		}
 	}
-	for _, e := range s.entities {
+	for _, n := range s.nodes {
 		for _, p := range s.properties {
 			types := []string{}
-			for t := range s.cursorGroup[e][p] {
+			for t := range s.cursorGroup[n][p] {
 				types = append(types, t)
 			}
 			sort.Strings(types)
 			for _, t := range types {
-				if cursor, ok := s.next[e][p][t]; ok {
+				if cursor, ok := s.next[n][p][t]; ok {
 					// If there is data available in the current import group, push to the heap.
-					if s.rawEntities[e][p][t][cursor.GetImportGroup()] != nil {
+					if s.rawNodes[n][p][t][cursor.GetImportGroup()] != nil {
 						elem := &heapElem{
 							ig:   int(cursor.GetImportGroup()),
 							pos:  cursor.GetItem(),
-							data: s.rawEntities[e][p][t][cursor.GetImportGroup()][cursor.GetItem()],
+							data: s.rawNodes[n][p][t][cursor.GetImportGroup()][cursor.GetItem()],
 						}
-						heap.Push(s.heap[e][p][t], elem)
+						heap.Push(s.heap[n][p][t], elem)
 					}
 				}
 			}
@@ -373,9 +373,9 @@ func nextIn(ctx context.Context, s *inState, btGroup *bigtable.Group) (bool, err
 	}
 
 	hasNext := false
-	for e := range s.next {
-		for p := range s.next[e] {
-			if len(s.next[e][p]) > 0 {
+	for n := range s.next {
+		for p := range s.next[n] {
+			if len(s.next[n][p]) > 0 {
 				hasNext = true
 				break
 			}

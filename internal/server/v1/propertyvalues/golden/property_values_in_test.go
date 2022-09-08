@@ -37,7 +37,7 @@ func TestPropertyValuesIn(t *testing.T) {
 		for _, c := range []struct {
 			goldenFile string
 			property   string
-			entity     string
+			node       string
 			limit      int32
 			token      string
 		}{
@@ -85,10 +85,10 @@ func TestPropertyValuesIn(t *testing.T) {
 			},
 		} {
 			req := &pb.PropertyValuesRequest{
-				EntityProperty: c.entity + "/" + c.property,
-				Direction:      "in",
-				Limit:          c.limit,
-				NextToken:      c.token,
+				NodeProperty: c.node + "/" + c.property,
+				Direction:    "in",
+				Limit:        c.limit,
+				NextToken:    c.token,
 			}
 			resp, err := mixer.PropertyValues(ctx, req)
 			if err != nil {
