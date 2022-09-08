@@ -62,6 +62,11 @@ message VariableGroupInfoRequest {
   repeated string constrained_entities = 2;
 }
 
+message VariableGroupInfoResponse {
+  string node = 1;
+  datacommons.StatVarGroupNode info = 2;
+}
+
 
 message BulkVariableGroupInfoRequest {
   // (optional) The variable group dcids to query for.
@@ -73,6 +78,5 @@ message BulkVariableGroupInfoRequest {
 }
 
 message BulkVariableGroupInfoResponse {
-  // Key is variable Group dcid.
-  map<string, StatVarGroupNode> data = 1;
+  repeated VariableGroupInfoResponse data = 1;
 }

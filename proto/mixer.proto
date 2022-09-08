@@ -477,7 +477,7 @@ service Mixer {
   }
 
   rpc VariableGroupInfo(datacommons.v1.VariableGroupInfoRequest)
-      returns (StatVarGroupNode) {
+      returns (datacommons.v1.VariableGroupInfoResponse) {
     option (google.api.http) = {
       get : "/v1/info/variable-group/{node=**}"
     };

@@ -29,8 +29,8 @@ func VariableGroupInfo(
 	in *pb.VariableGroupInfoRequest,
 	store *store.Store,
 	cache *resource.Cache,
-) (*pb.StatVarGroupNode, error) {
-	return statvar.GetStatVarGroupNode(
+) (*pb.VariableGroupInfoResponse, error) {
+	data, err := statvar.GetStatVarGroupNode(
 		ctx,
 		&pb.GetStatVarGroupNodeRequest{
 			StatVarGroup: in.GetNode(),
@@ -39,6 +39,10 @@ func VariableGroupInfo(
 		store,
 		cache,
 	)
+	if err != nil {
+		return nil, err
+	}
+	return &pb.VariableGroupInfoResponse{Node: in.GetNode(), Info: data}, nil
 }
 
 // BulkVariableGroupInfo implements API for Mixer.BulkVariableGroupInfo.
@@ -60,5 +64,12 @@ func BulkVariableGroupInfo(
 	if err != nil {
 		return nil, err
 	}
-	return &pb.BulkVariableGroupInfoResponse{Data: tmp.StatVarGroups}, nil
+	resp := &pb.BulkVariableGroupInfoResponse{Data: []*pb.VariableGroupInfoResponse{}}
+	for node, info := range tmp.StatVarGroups {
+		resp.Data = append(resp.Data, &pb.VariableGroupInfoResponse{
+			Node: node,
+			Info: info,
+		})
+	}
+	return resp, nil
 }

@@ -128,7 +128,7 @@ type MixerClient interface {
 	BulkPlaceInfo(ctx context.Context, in *BulkPlaceInfoRequest, opts ...grpc.CallOption) (*BulkPlaceInfoResponse, error)
 	VariableInfo(ctx context.Context, in *VariableInfoRequest, opts ...grpc.CallOption) (*VariableInfoResponse, error)
 	BulkVariableInfo(ctx context.Context, in *BulkVariableInfoRequest, opts ...grpc.CallOption) (*BulkVariableInfoResponse, error)
-	VariableGroupInfo(ctx context.Context, in *VariableGroupInfoRequest, opts ...grpc.CallOption) (*StatVarGroupNode, error)
+	VariableGroupInfo(ctx context.Context, in *VariableGroupInfoRequest, opts ...grpc.CallOption) (*VariableGroupInfoResponse, error)
 	BulkVariableGroupInfo(ctx context.Context, in *BulkVariableGroupInfoRequest, opts ...grpc.CallOption) (*BulkVariableGroupInfoResponse, error)
 	ObservationsPoint(ctx context.Context, in *ObservationsPointRequest, opts ...grpc.CallOption) (*PointStat, error)
 	BulkObservationsPoint(ctx context.Context, in *BulkObservationsPointRequest, opts ...grpc.CallOption) (*BulkObservationsPointResponse, error)
@@ -581,8 +581,8 @@ func (c *mixerClient) BulkVariableInfo(ctx context.Context, in *BulkVariableInfo
 	return out, nil
 }
 
-func (c *mixerClient) VariableGroupInfo(ctx context.Context, in *VariableGroupInfoRequest, opts ...grpc.CallOption) (*StatVarGroupNode, error) {
-	out := new(StatVarGroupNode)
+func (c *mixerClient) VariableGroupInfo(ctx context.Context, in *VariableGroupInfoRequest, opts ...grpc.CallOption) (*VariableGroupInfoResponse, error) {
+	out := new(VariableGroupInfoResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/VariableGroupInfo", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -790,7 +790,7 @@ type MixerServer interface {
 	BulkPlaceInfo(context.Context, *BulkPlaceInfoRequest) (*BulkPlaceInfoResponse, error)
 	VariableInfo(context.Context, *VariableInfoRequest) (*VariableInfoResponse, error)
 	BulkVariableInfo(context.Context, *BulkVariableInfoRequest) (*BulkVariableInfoResponse, error)
-	VariableGroupInfo(context.Context, *VariableGroupInfoRequest) (*StatVarGroupNode, error)
+	VariableGroupInfo(context.Context, *VariableGroupInfoRequest) (*VariableGroupInfoResponse, error)
 	BulkVariableGroupInfo(context.Context, *BulkVariableGroupInfoRequest) (*BulkVariableGroupInfoResponse, error)
 	ObservationsPoint(context.Context, *ObservationsPointRequest) (*PointStat, error)
 	BulkObservationsPoint(context.Context, *BulkObservationsPointRequest) (*BulkObservationsPointResponse, error)
@@ -951,7 +951,7 @@ func (UnimplementedMixerServer) VariableInfo(context.Context, *VariableInfoReque
 func (UnimplementedMixerServer) BulkVariableInfo(context.Context, *BulkVariableInfoRequest) (*BulkVariableInfoResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BulkVariableInfo not implemented")
 }
-func (UnimplementedMixerServer) VariableGroupInfo(context.Context, *VariableGroupInfoRequest) (*StatVarGroupNode, error) {
+func (UnimplementedMixerServer) VariableGroupInfo(context.Context, *VariableGroupInfoRequest) (*VariableGroupInfoResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method VariableGroupInfo not implemented")
 }
 func (UnimplementedMixerServer) BulkVariableGroupInfo(context.Context, *BulkVariableGroupInfoRequest) (*BulkVariableGroupInfoResponse, error) {
