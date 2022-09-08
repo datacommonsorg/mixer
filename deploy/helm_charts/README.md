@@ -13,13 +13,15 @@ Note: Helm uses k8s config for authentication. You can visit the GCP UI and clic
 
 ### Example 1: Install/update Mixer dev instance using local mixer
 
-Run the following after changes are made locally and are committed.
+Run the following after changes are made locally and are committed. push_binary.sh creates a new Mixer image
+based on local change. Helm then deploys a release that refers to the newly created image.
+
 ```sh
 ./scripts/push_binary.sh
 
-helm upgrade --install mixer-dev deploy/charts/mixer \
+helm upgrade --install mixer-dev deploy/helm_charts/mixer \
     --atomic \
-    -f deploy/charts/envs/mixer_dev.yaml \
+    -f deploy/helm_charts/envs/mixer_dev.yaml \
     --set mixer.githash=$(git rev-parse --short=7 HEAD) \
     --set-file mixer.configmaps."base.mcf"=deploy/mapping/base.mcf \
     --set-file mixer.configmaps."encode.mcf"=deploy/mapping/encode.mcf \

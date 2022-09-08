@@ -12,10 +12,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Ingress routes external traffic into the cluster by creating
+# GCP loadbalancers. Mixer ingress routes requests according to urls.
+#
 # Note:
-#   - Ingress is not release specific.
-#   - Only 1 ingress resource will be created in a cluster.
-#   - If an ingress already exists, it will overwrite the old one.
+# Ingress is not release specific.
+# If an ingress already exists, it will overwrite the old one
+# with the new routes. Please be extra careful when creating
+# an ingress, because the loadbalancers are bound to IPs, which
+# are bound to DNS names.
 # TODO(alex): Support ingress per release.
 
 {{- if .Values.ingress.enabled }}

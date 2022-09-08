@@ -11,6 +11,14 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+
+# A k8s deployment defines what containers to servce,
+# how many pods should be served, and how much resources
+# should be allocated, and how new pods are rolled out.
+#
+# Mixer defines 1 deployment per service group.
+# A deployment is what autoscalers scale.
+
 {{- range $index, $serviceGroup := .Values.serviceGroups }}
 {{- range $serviceName, $unused := . }}
 {{- if gt $index 0 }}
@@ -30,10 +38,11 @@ spec:
     type: RollingUpdate
     rollingUpdate:
       # maximum number of Pods that can be created over the desired number of Pods
-      maxSurge: 4
+      # 25% of default pods (+1 in case default < 4)
+      maxSurge: {{ div .replicas.default 4 | add 1 }}
       # Maximum number of pods that can be unavailable during the update process
-      # Environment have different number of pods, this is roughly 8% in prod.
-      maxUnavailable: 5
+      # 25% of default pods (+1 in case default < 4)
+      maxUnavailable: {{ div .replicas.default | add 1 }}
   selector:
     matchLabels:
       service:  {{ include "mixer.fullname" $ }}-{{ $serviceName }}

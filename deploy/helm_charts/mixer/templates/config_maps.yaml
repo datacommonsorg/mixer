@@ -12,6 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# All things that can vary for the same mixer code should be 
+# in config maps. This includes BT, BQ versions, schema mcfs, so on.
+#
+# Note: Please prefix the name of each config map with
+# {{ include "mixer.fullname" . }}- so that each release
+# will have a separate config that does not interfere with other releases.
+
 kind: ConfigMap
 apiVersion: v1
 metadata:
@@ -62,7 +69,7 @@ metadata:
   name: {{ include "mixer.fullname" . }}-schema-mapping
   namespace: {{ .Values.namespace.name }}
 data:
-  {{- range $key, $val := .Values.mixer.configmaps }}
+  {{- range $key, $val := .Values.mixer.schemaConfigs }}
   {{ $key }}: |
     {{ $val | nindent 4 }}
   {{- end  }}

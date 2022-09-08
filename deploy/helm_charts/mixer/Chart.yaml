@@ -1,6 +1,7 @@
+# This is a Helm Chart.yaml file.
+# https://helm.sh/docs/topics/charts/#the-chartyaml-file
 apiVersion: v2
 name: mixer
 description: A Helm chart for Data Commons Mixer API server.
-kubeVersion: ">= 1.19.0"
 type: application
 version: 0.1.0
