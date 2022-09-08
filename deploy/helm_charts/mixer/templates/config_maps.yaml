@@ -18,6 +18,9 @@
 # Note: Please prefix the name of each config map with
 # {{ include "mixer.fullname" . }}- so that each release
 # will have a separate config that does not interfere with other releases.
+#
+# For more on k8s config maps, see:
+# https://kubernetes.io/docs/concepts/configuration/configmap/
 
 kind: ConfigMap
 apiVersion: v1

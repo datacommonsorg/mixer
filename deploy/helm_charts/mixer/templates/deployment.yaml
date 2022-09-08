@@ -42,7 +42,7 @@ spec:
       maxSurge: {{ div .replicas.default 4 | add 1 }}
       # Maximum number of pods that can be unavailable during the update process
       # 25% of default pods (+1 in case default < 4)
-      maxUnavailable: {{ div .replicas.default | add 1 }}
+      maxUnavailable: {{ div .replicas.default 4 | add 1 }}
   selector:
     matchLabels:
       service:  {{ include "mixer.fullname" $ }}-{{ $serviceName }}

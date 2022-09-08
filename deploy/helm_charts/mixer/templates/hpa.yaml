@@ -19,7 +19,7 @@
 # For each service group, the autoscalers will scale up
 # deployments according to memory usage.
 #
-# For more on HPAs, refer to the offical doc.
+# For more on HPAs, see:
 # https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale
 
 {{- range $index, $unused := .Values.serviceGroups }}
