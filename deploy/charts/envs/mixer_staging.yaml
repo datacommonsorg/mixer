@@ -1,0 +1,16 @@
+# Helm config
+mixer:
+  gcpProjectID: datcom-mixer-staging
+  serviceName: staging.api.datacommons.org
+
+ingress:
+  annotations: {
+    ingress.gcp.kubernetes.io/pre-shared-cert: "mixer-certificate,multi-domain-2022"
+  }
+
+# GCP level config
+ip: 34.107.161.252
+region: us-central1
+api_title: DataCommons API (Staging)
+api: datacommons.Mixer
+nodes: 2

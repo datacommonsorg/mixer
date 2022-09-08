@@ -1,0 +1,16 @@
+# Helm config
+mixer:
+  gcpProjectID: datcom-mixer-autopush
+  serviceName: autopush.api.datacommons.org
+
+ingress:
+  annotations: {
+    ingress.gcp.kubernetes.io/pre-shared-cert: "mixer-certificate,multi-domain-2022"
+  }
+
+# GCP level config
+ip: 34.117.145.125
+region: us-central1
+api_title: DataCommons API (Autopush)
+api: datacommons.Mixer
+nodes: 4
