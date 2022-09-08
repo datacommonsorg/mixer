@@ -451,7 +451,7 @@ service Mixer {
   rpc PlaceInfo(datacommons.v1.PlaceInfoRequest)
       returns (datacommons.v1.PlaceInfoResponse) {
     option (google.api.http) = {
-      get : "/v1/info/place/{dcid=**}"
+      get : "/v1/info/place/{node=**}"
     };
   }
 
@@ -466,14 +466,14 @@ service Mixer {
   rpc VariableInfo(datacommons.v1.VariableInfoRequest)
       returns (datacommons.v1.VariableInfoResponse) {
     option (google.api.http) = {
-      get : "/v1/info/variable/{dcid=**}"
+      get : "/v1/info/variable/{node=**}"
     };
   }
 
   rpc VariableGroupInfo(datacommons.v1.VariableGroupInfoRequest)
       returns (StatVarGroupNode) {
     option (google.api.http) = {
-      get : "/v1/info/variable/group/{dcid=**}"
+      get : "/v1/info/variable/group/{node=**}"
     };
   }
 
@@ -534,21 +534,21 @@ service Mixer {
   rpc BioPage(datacommons.v1.BioPageRequest)
       returns (GraphNodes) {
     option (google.api.http) = {
-      get : "/v1/internal/page/bio/{dcid=**}"
+      get : "/v1/internal/page/bio/{node=**}"
     };
   }
 
   rpc PlacePage(datacommons.v1.PlacePageRequest)
       returns (GetPlacePageDataResponse) {
     option (google.api.http) = {
-      get : "/v1/internal/page/place/{dcid=**}"
+      get : "/v1/internal/page/place/{node=**}"
     };
   }
 
   rpc VariableAncestors(datacommons.v1.VariableAncestorsRequest)
       returns (datacommons.v1.VariableAncestorsResponse) {
     option (google.api.http) = {
-      get : "/variable/ancestors/{dcid=**}"
+      get : "/variable/ancestors/{node=**}"
     };
   }
 

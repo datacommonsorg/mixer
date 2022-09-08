@@ -18,7 +18,7 @@ package datacommons.v1;
 
 message VariableAncestorsRequest {
   // DCID of a stat var (group)
-  string dcid = 1;
+  string node = 1;
 }
 
 message VariableAncestorsResponse {

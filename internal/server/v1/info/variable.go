@@ -32,16 +32,16 @@ func VariableInfo(
 	in *pb.VariableInfoRequest,
 	store *store.Store,
 ) (*pb.VariableInfoResponse, error) {
-	dcid := in.GetDcid()
-	if !util.CheckValidDCIDs([]string{dcid}) {
-		return nil, status.Errorf(codes.InvalidArgument, "Invalid dcid")
+	node := in.GetNode()
+	if !util.CheckValidDCIDs([]string{node}) {
+		return nil, status.Errorf(codes.InvalidArgument, "Invalid node")
 	}
-	statVarToSummary, err := statvar.GetStatVarSummaryHelper(ctx, []string{dcid}, store)
+	statVarToSummary, err := statvar.GetStatVarSummaryHelper(ctx, []string{node}, store)
 	if err != nil {
 		return nil, err
 	}
-	resp := &pb.VariableInfoResponse{Dcid: dcid}
-	if summary, ok := statVarToSummary[dcid]; ok {
+	resp := &pb.VariableInfoResponse{Node: node}
+	if summary, ok := statVarToSummary[node]; ok {
 		resp.Info = summary
 	}
 	return resp, nil
@@ -53,21 +53,21 @@ func BulkVariableInfo(
 	in *pb.BulkVariableInfoRequest,
 	store *store.Store,
 ) (*pb.BulkVariableInfoResponse, error) {
-	dcids := in.GetDcids()
-	if len(dcids) == 0 {
-		return nil, status.Error(codes.InvalidArgument, "Missing required arguments: dcids")
+	nodes := in.GetNodes()
+	if len(nodes) == 0 {
+		return nil, status.Error(codes.InvalidArgument, "Missing required arguments: nodes")
 	}
-	if !util.CheckValidDCIDs(dcids) {
-		return nil, status.Errorf(codes.InvalidArgument, "Invalid dcids")
+	if !util.CheckValidDCIDs(nodes) {
+		return nil, status.Errorf(codes.InvalidArgument, "Invalid nodes")
 	}
-	statVarToSummary, err := statvar.GetStatVarSummaryHelper(ctx, dcids, store)
+	statVarToSummary, err := statvar.GetStatVarSummaryHelper(ctx, nodes, store)
 	if err != nil {
 		return nil, err
 	}
 	resp := &pb.BulkVariableInfoResponse{}
-	for _, dcid := range dcids {
-		item := &pb.VariableInfoResponse{Dcid: dcid}
-		if summary, ok := statVarToSummary[dcid]; ok {
+	for _, node := range nodes {
+		item := &pb.VariableInfoResponse{Node: node}
+		if summary, ok := statVarToSummary[node]; ok {
 			item.Info = summary
 		}
 		resp.Data = append(resp.Data, item)
@@ -85,7 +85,7 @@ func VariableGroupInfo(
 	return statvar.GetStatVarGroupNode(
 		ctx,
 		&pb.GetStatVarGroupNodeRequest{
-			StatVarGroup: in.GetDcid(),
+			StatVarGroup: in.GetNode(),
 			Entities:     in.GetConstrainedEntities(),
 		},
 		store,

@@ -35,7 +35,7 @@ func TestVariableAncestors(t *testing.T) {
 
 	testSuite := func(mixer pb.MixerClient, recon pb.ReconClient, latencyTest bool) {
 		for _, c := range []struct {
-			dcid       string
+			node       string
 			goldenFile string
 		}{
 			{
@@ -52,7 +52,7 @@ func TestVariableAncestors(t *testing.T) {
 			},
 		} {
 			resp, err := mixer.VariableAncestors(ctx, &pb.VariableAncestorsRequest{
-				Dcid: c.dcid,
+				Node: c.node,
 			})
 			if err != nil {
 				t.Errorf("could not VariableAncestors: %s", err)

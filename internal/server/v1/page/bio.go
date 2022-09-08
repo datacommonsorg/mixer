@@ -31,9 +31,9 @@ func BioPage(
 	in *pb.BioPageRequest,
 	store *store.Store,
 ) (*pb.GraphNodes, error) {
-	dcid := in.GetDcid()
-	if !util.CheckValidDCIDs([]string{dcid}) {
-		return nil, status.Errorf(codes.InvalidArgument, "Invalid dcid")
+	node := in.GetNode()
+	if !util.CheckValidDCIDs([]string{node}) {
+		return nil, status.Errorf(codes.InvalidArgument, "Invalid node")
 	}
-	return biopage.GetBioPageDataHelper(ctx, dcid, store)
+	return biopage.GetBioPageDataHelper(ctx, node, store)
 }

@@ -1,7 +1,7 @@
 {
   "data": [
     {
-      "dcid": "UnemploymentRate_Person",
+      "node": "UnemploymentRate_Person",
       "info": {
         "placeTypeSummary": {
           "City": {
@@ -371,7 +371,7 @@
       }
     },
     {
-      "dcid": "Count_Person_Female",
+      "node": "Count_Person_Female",
       "info": {
         "placeTypeSummary": {
           "AdministrativeArea": {
@@ -1893,7 +1893,7 @@
       }
     },
     {
-      "dcid": "Count_Person_Female_AsianAlone",
+      "node": "Count_Person_Female_AsianAlone",
       "info": {
         "placeTypeSummary": {
           "CensusCoreBasedStatisticalArea": {
@@ -2513,7 +2513,7 @@
       }
     },
     {
-      "dcid": "FertilityRate_Person_Female",
+      "node": "FertilityRate_Person_Female",
       "info": {
         "placeTypeSummary": {
           "City": {
@@ -2773,7 +2773,7 @@
       }
     },
     {
-      "dcid": "IncrementalCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase",
+      "node": "IncrementalCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase",
       "info": {
         "placeTypeSummary": {
           "City": {

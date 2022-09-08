@@ -32,13 +32,13 @@ func Ancestors(
 	store *store.Store,
 	cache *resource.Cache,
 ) (*pb.VariableAncestorsResponse, error) {
-	dcid := in.GetDcid()
-	if dcid == "" {
+	node := in.GetNode()
+	if node == "" {
 		return nil, status.Errorf(
-			codes.InvalidArgument, "Missing required argument: dcid")
+			codes.InvalidArgument, "Missing required argument: node")
 	}
 	ancestors := []string{}
-	curr := dcid
+	curr := node
 	for {
 		if parents, ok := cache.ParentSvg[curr]; ok {
 			curr = parents[0]
