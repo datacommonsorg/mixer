@@ -127,6 +127,13 @@ func (s *Server) VariableInfo(
 	return info.VariableInfo(ctx, in, s.store)
 }
 
+// BulkVariableInfo implements API for mixer.BulkVariableInfo.
+func (s *Server) BulkVariableInfo(
+	ctx context.Context, in *pb.BulkVariableInfoRequest,
+) (*pb.BulkVariableInfoResponse, error) {
+	return info.BulkVariableInfo(ctx, in, s.store)
+}
+
 // VariableGroupInfo implements API for mixer.VariableGroupInfo.
 func (s *Server) VariableGroupInfo(
 	ctx context.Context, in *pb.VariableGroupInfoRequest,
@@ -134,11 +141,11 @@ func (s *Server) VariableGroupInfo(
 	return info.VariableGroupInfo(ctx, in, s.store, s.cache)
 }
 
-// BulkVariableInfo implements API for mixer.BulkVariableInfo.
-func (s *Server) BulkVariableInfo(
-	ctx context.Context, in *pb.BulkVariableInfoRequest,
-) (*pb.BulkVariableInfoResponse, error) {
-	return info.BulkVariableInfo(ctx, in, s.store)
+// BulkVariableGroupInfo implements API for mixer.BulkVariableGroupInfo.
+func (s *Server) BulkVariableGroupInfo(
+	ctx context.Context, in *pb.BulkVariableGroupInfoRequest,
+) (*pb.BulkVariableGroupInfoResponse, error) {
+	return info.BulkVariableGroupInfo(ctx, in, s.store, s.cache)
 }
 
 // ObservationsPoint implements API for mixer.ObservationsPoint.
@@ -202,11 +209,4 @@ func (s *Server) VariableAncestors(
 	ctx context.Context, in *pb.VariableAncestorsRequest,
 ) (*pb.VariableAncestorsResponse, error) {
 	return variable.Ancestors(ctx, in, s.store, s.cache)
-}
-
-// VariableGroups implements API for Mixer.VariableGroups.
-func (s *Server) VariableGroups(
-	ctx context.Context, in *pb.VariableGroupsRequest,
-) (*pb.VariableGroupsResponse, error) {
-	return variable.Groups(ctx, in, s.store, s.cache)
 }

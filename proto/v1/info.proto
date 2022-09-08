@@ -61,3 +61,18 @@ message VariableGroupInfoRequest {
   // of the entities.
   repeated string constrained_entities = 2;
 }
+
+
+message BulkVariableGroupInfoRequest {
+  // The variable group dcids to query for.
+  // If not specified, then return all the variable group info.
+  repeated string nodes = 1;
+  // (optional) When specified, only return the variable groups that the entities
+  // have data for.
+  repeated string constrained_entities = 2;
+}
+
+message BulkVariableGroupInfoResponse {
+  // Key is variable Group dcid.
+  map<string, StatVarGroupNode> data = 1;
+}

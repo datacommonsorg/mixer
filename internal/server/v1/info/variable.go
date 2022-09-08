@@ -18,7 +18,6 @@ import (
 	"context"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
-	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/server/statvar"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/util"
@@ -73,22 +72,4 @@ func BulkVariableInfo(
 		resp.Data = append(resp.Data, item)
 	}
 	return resp, nil
-}
-
-// VariableGroupInfo implements API for Mixer.VariableGroupInfo.
-func VariableGroupInfo(
-	ctx context.Context,
-	in *pb.VariableGroupInfoRequest,
-	store *store.Store,
-	cache *resource.Cache,
-) (*pb.StatVarGroupNode, error) {
-	return statvar.GetStatVarGroupNode(
-		ctx,
-		&pb.GetStatVarGroupNodeRequest{
-			StatVarGroup: in.GetNode(),
-			Entities:     in.GetConstrainedEntities(),
-		},
-		store,
-		cache,
-	)
 }
