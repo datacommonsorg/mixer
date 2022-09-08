@@ -23,5 +23,8 @@ cd "$ROOT"
 
 TAG=$(git rev-parse --short=7 HEAD)
 
-cloud-build-local --config=build/ci/cloudbuild.push.yaml --dryrun=false \
---substitutions SHORT_SHA="$TAG" .
+gcloud builds submit \
+    --project=datcom-ci \
+    --config=build/ci/cloudbuild.push.yaml \
+    --substitutions SHORT_SHA="$TAG" \
+    .

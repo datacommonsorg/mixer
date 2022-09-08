@@ -24,5 +24,13 @@ ROOT="$(dirname "$DIR")"
 
 cd "$ROOT"
 
-docker build -t gcr.io/datcom-ci/deploy-tool:latest -f deploy/Dockerfile .
-docker push gcr.io/datcom-ci/deploy-tool:latest
+TAG="latest"
+if [[ $1 != "" ]]; then
+  TAG=$1
+fi
+echo "Using tag=$TAG for the deploy-tool image."
+
+gcloud builds submit ./deploy \
+    --project=datcom-ci \
+    --substitutions=_TAG="$TAG" \
+    --config=deploy/cloudbuild.yaml
