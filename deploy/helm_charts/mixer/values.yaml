@@ -91,6 +91,9 @@ kgStoreConfig:
 
 memdbJSON: ""
 
+# To overwrite any portion of serviceGroups, please copy and paste 
+# the entire serviceGroups below into the custom values yaml file,
+# and make changes to it.
 serviceGroups:
   - svg: 
       urlPaths:
@@ -106,6 +109,18 @@ serviceGroups:
       resources:
         memoryRequest: "8G"
         memoryLimit: "8G"
+  - recon: 
+      urlPaths:
+        - "/entity/*"
+        - "/coordinate/*"
+        - "/id/*"
+      replicas:
+        default: 1
+        min: 1
+        max: 4
+      resources:
+        memoryRequest: "3G"
+        memoryLimit: "3G"
   - default:
       urlPaths:
         - "/*"

@@ -71,13 +71,18 @@ spec:
             requests:
               memory:  {{ .resources.memoryRequest }}
           args:
+            # Import group tables are need for both Mixer and Recon services.
+            - --import_group_tables=$(IMPORT_GROUP_TABLES)
+            {{- if eq $serviceName "recon"}}
+            - --serve_recon_service=true
+            - --serve_mixer_service=false
+            {{ else }}
             - --mixer_project=$(MIXER_PROJECT)
             - --store_project=$(STORE_PROJECT)
             - --bq_dataset=$(BIG_QUERY)
-            - --serve_recon_service=true
             - --schema_path=/datacommons/mapping
-            - --import_group_tables=$(IMPORT_GROUP_TABLES)
             - --memdb_path=/datacommons/memdb
+            {{- end }}
             {{- if eq $.Values.mixer.bigqueryOnly true }}
             - --bigquery_only=true
             {{- end }}
