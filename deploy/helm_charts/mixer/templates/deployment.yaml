@@ -1,0 +1,175 @@
+# Copyright 2022 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     https://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# A k8s deployment defines what containers to servce,
+# how many pods should be served, and how much resources
+# should be allocated, and how new pods are rolled out.
+#
+# Mixer defines 1 deployment per service group.
+# A deployment is what autoscalers scale.
+
+{{- range $index, $serviceGroup := .Values.serviceGroups }}
+{{- range $serviceName, $unused := . }}
+{{- if gt $index 0 }}
+---
+{{- end  }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "mixer.fullname" $ }}-{{ $serviceName }}
+  namespace: {{ $.Values.namespace.name }}
+  labels:
+    service:  {{ include "mixer.fullname" $ }}-{{ $serviceName }}
+    {{- include "mixer.labels" $ | nindent 4 }}
+spec:
+  replicas: {{ .replicas.default }}
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      # maximum number of Pods that can be created over the desired number of Pods
+      # 25% of default pods (+1 in case default < 4)
+      maxSurge: {{ div .replicas.default 4 | add 1 }}
+      # Maximum number of pods that can be unavailable during the update process
+      # 25% of default pods (+1 in case default < 4)
+      maxUnavailable: {{ div .replicas.default 4 | add 1 }}
+  selector:
+    matchLabels:
+      service:  {{ include "mixer.fullname" $ }}-{{ $serviceName }}
+      {{- include "mixer.selectorLabels" $ | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        service:  {{ include "mixer.fullname" $ }}-{{ $serviceName }}
+        {{- include "mixer.selectorLabels" $ | nindent 8 }}
+    spec:
+      serviceAccountName: {{ $.Values.serviceAccount.name }}
+      volumes:
+        - name: memdb-config
+          configMap:
+            name: {{ include "mixer.fullname" $ }}-memdb-config
+        - name: schema-mapping
+          configMap:
+            name: {{ include "mixer.fullname" $ }}-schema-mapping
+      containers:
+        - name: mixer
+          image:  "{{ $.Values.mixer.image.repository }}:{{ $.Values.mixer.image.tag | default $.Chart.AppVersion }}"
+          imagePullPolicy: {{ $.Values.mixer.image.pullPolicy }}
+          resources:
+            limits:
+              memory: {{ .resources.memoryLimit }}
+            requests:
+              memory:  {{ .resources.memoryRequest }}
+          args:
+            - --mixer_project=$(MIXER_PROJECT)
+            - --store_project=$(STORE_PROJECT)
+            - --bq_dataset=$(BIG_QUERY)
+            - --serve_recon_service=true
+            - --schema_path=/datacommons/mapping
+            - --import_group_tables=$(IMPORT_GROUP_TABLES)
+            - --memdb_path=/datacommons/memdb
+            {{- if eq $.Values.mixer.bigqueryOnly true }}
+            - --bigquery_only=true
+            {{- end }}
+            {{- if eq $.Values.mixer.useTMCFCSVData true }}
+            - --use_tmcf_csv_data=true
+            - --tmcf_csv_bucket={{ $.Values.mixer.tmcfCSVBucket }}
+            - --tmcf_csv_folder={{ $.Values.mixer.tmcfCSVFolder }}
+            {{- end }}
+          volumeMounts:
+            - name: schema-mapping
+              mountPath: /datacommons/mapping
+            - name: memdb-config
+              mountPath: /datacommons/memdb
+          env:
+            - name: MIXER_PROJECT
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "mixer.fullname" $ }}-mixer-config
+                  key: mixerProject
+            - name: STORE_PROJECT
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "mixer.fullname" $ }}-store-config
+                  key: store.project
+            - name: BIG_QUERY
+              {{- if eq $.Values.mixer.bigqueryOnly true }}
+              value: {{ $.Values.mixer.bigqueryTableRef }}
+              {{- else }}
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "mixer.fullname" $ }}-store-config
+                  key: bigquery.version
+              {{- end }}
+            - name: IMPORT_GROUP_TABLES
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "mixer.fullname" $ }}-store-config
+                  key: bigtable_import_groups.version
+            - name: MIXER_HASH
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "mixer.fullname" $ }}-githash
+                  key: mixer_hash.txt
+          ports:
+            - containerPort: 12345
+          startupProbe:
+            exec:
+              command: ["/bin/grpc_health_probe", "-addr=:12345"]
+            failureThreshold: 30
+            periodSeconds: 10
+          readinessProbe:
+            exec:
+              command: ["/bin/grpc_health_probe", "-addr=:12345"]
+            periodSeconds: 10
+          livenessProbe:
+            exec:
+              command: ["/bin/grpc_health_probe", "-addr=:12345"]
+            periodSeconds: 10
+            initialDelaySeconds: 10
+        - name: esp
+          image:  "{{ $.Values.esp.image.repository }}:{{ $.Values.esp.image.tag | default $.Chart.AppVersion }}"
+          imagePullPolicy: {{ $.Values.esp.image.pullPolicy }}
+          resources:
+            limits:
+              memory: "0.2G"
+            requests:
+              memory: "0.2G"
+          args:
+            - --service=$(SERVICE_NAME)
+            - --rollout_strategy=managed
+            - --http_port=8081
+            - --backend=grpc://127.0.0.1:12345
+            - --cors_preset=basic
+            - --healthz=healthz
+          env:
+            - name: SERVICE_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "mixer.fullname" $ }}-mixer-config
+                  key: serviceName
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: 8081
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 8081
+            periodSeconds: 5
+            initialDelaySeconds: 5
+          ports:
+            - containerPort: 8081
+{{- end }}
+{{- end }}

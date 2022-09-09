@@ -1,0 +1,61 @@
+# Copyright 2022 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     https://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# HPAs are autoscalers that scale the number of 
+# deployments (and therefore pods).
+#
+# Mixer APIs are deployed by service groups (sets of APIs). 
+# For each service group, the autoscalers will scale up
+# deployments according to memory usage.
+#
+# For more on HPAs, see:
+# https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale
+
+{{- range $index, $unused := .Values.serviceGroups }}
+{{- range $serviceName, $unused := . }}
+{{- if gt $index 0 }}
+---
+{{- end  }}
+
+apiVersion: autoscaling/v2beta2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: {{ include "mixer.fullname" $ }}-{{ $serviceName }}
+  namespace: {{ $.Values.namespace.name }}
+  labels:
+    service:  {{ $serviceName }}
+    {{- include "mixer.labels" $ | nindent 4 }}
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: {{ include "mixer.fullname" $ }}-{{ $serviceName }}
+  behavior:
+    scaleUp:
+      stabilizationWindowSeconds: 0
+      policies:
+      - type: Pods
+        value: 2
+        periodSeconds: 5
+  minReplicas: {{ .replicas.min }}
+  maxReplicas: {{ .replicas.max }}
+  metrics:
+    - type: Resource
+      resource:
+        name: memory
+        target:
+          type: Utilization
+          averageUtilization: 75
+{{- end }}
+{{- end }}
