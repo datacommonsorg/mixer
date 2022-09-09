@@ -35,9 +35,9 @@ func TestVariableGroupInfo(t *testing.T) {
 
 	testSuite := func(mixer pb.MixerClient, recon pb.ReconClient, latencyTest bool) {
 		for _, c := range []struct {
-			node                 string
-			constrained_entities []string
-			goldenFile           string
+			node                string
+			constrainedEntities []string
+			goldenFile          string
 		}{
 			{
 				"dc/g/Economy",
@@ -52,7 +52,7 @@ func TestVariableGroupInfo(t *testing.T) {
 		} {
 			resp, err := mixer.VariableGroupInfo(ctx, &pb.VariableGroupInfoRequest{
 				Node:                c.node,
-				ConstrainedEntities: c.constrained_entities,
+				ConstrainedEntities: c.constrainedEntities,
 			})
 			if err != nil {
 				t.Errorf("VariableGroupInfo() = %s", err)
