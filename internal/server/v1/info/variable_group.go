@@ -52,9 +52,16 @@ func BulkVariableGroupInfo(
 	store *store.Store,
 	cache *resource.Cache,
 ) (*pb.BulkVariableGroupInfoResponse, error) {
-	// TODO(shifucun): handle "nodes" in request, now always return all the
-	// varible group data.
+	// TODO (shifucun):
+	// The response here is directly from the raw SVG group, not consistent
+	// with the VariableGroupInfo() API.
+	// Ideally, both APIs need to filter out the child variable (group) that has
+	// no data, but this is indicated with a "has_data" field, to
+	// accomocate the "Show all statistical variables" in UI widget. The UI
+	// should call this API twice, w/o constrained_entities to achieve that.
+	nodes := in.GetNodes()
 	entities := in.GetConstrainedEntities()
+	resp := &pb.BulkVariableGroupInfoResponse{Data: []*pb.VariableGroupInfoResponse{}}
 	tmp, err := statvar.GetStatVarGroup(
 		ctx,
 		&pb.GetStatVarGroupRequest{Entities: entities},
@@ -64,12 +71,21 @@ func BulkVariableGroupInfo(
 	if err != nil {
 		return nil, err
 	}
-	resp := &pb.BulkVariableGroupInfoResponse{Data: []*pb.VariableGroupInfoResponse{}}
-	for node, info := range tmp.StatVarGroups {
-		resp.Data = append(resp.Data, &pb.VariableGroupInfoResponse{
-			Node: node,
-			Info: info,
-		})
+	if len(nodes) > 0 {
+		for _, n := range nodes {
+			info := tmp.StatVarGroups[n]
+			resp.Data = append(resp.Data, &pb.VariableGroupInfoResponse{
+				Node: n,
+				Info: info,
+			})
+		}
+	} else {
+		for n, info := range tmp.StatVarGroups {
+			resp.Data = append(resp.Data, &pb.VariableGroupInfoResponse{
+				Node: n,
+				Info: info,
+			})
+		}
 	}
 	return resp, nil
 }

@@ -1,0 +1,27 @@
+{
+  "data": [
+    {
+      "node": "dc/g/Economy",
+      "info": {
+        "childStatVars": [
+          {
+            "id": "Count_Product_MobileCellularSubscription_AsFractionOf_Count_Person",
+            "searchName": "Count of Product With Product Type is Mobile Cellular Subscription (Per Capita)",
+            "searchNames": [
+              "Count of Product With Product Type is Mobile Cellular Subscription (Per Capita)"
+            ],
+            "displayName": "Mobile Subscriptions Per Capita",
+            "definition": "md=Count_Person,mp=count,pt=Product,productType=MobileCellularSubscription"
+          }
+        ],
+        "childStatVarGroups": [
+          {
+            "id": "dc/g/EconomicActivity",
+            "specializedEntity": "Economic Activity"
+          }
+        ]
+      }
+    },
+    {}
+  ]
+}
