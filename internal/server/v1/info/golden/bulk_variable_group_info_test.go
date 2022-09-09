@@ -40,7 +40,7 @@ func TestBulkVariableGroupInfo(t *testing.T) {
 			goldenFile          string
 		}{
 			{
-				[]string{"dc/g/Economy", ""},
+				[]string{"dc/g/Economy", "invalid"},
 				[]string{"country/ASM"},
 				"economy.json",
 			},
