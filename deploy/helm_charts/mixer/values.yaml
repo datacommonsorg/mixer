@@ -109,6 +109,8 @@ serviceGroups:
       resources:
         memoryRequest: "8G"
         memoryLimit: "8G"
+    # If the name of the recon service is changed here,
+    # please also change the name in the deployment.yaml template.
   - recon: 
       urlPaths:
         - "/entity/*"
