@@ -346,6 +346,7 @@ type EntitySubGraph struct {
 	// `ids`.
 	SourceId string `protobuf:"bytes,1,opt,name=source_id,json=sourceId,proto3" json:"source_id,omitempty"`
 	// Types that are assignable to GraphRepresentation:
+	//
 	//	*EntitySubGraph_SubGraph
 	//	*EntitySubGraph_EntityIds
 	GraphRepresentation isEntitySubGraph_GraphRepresentation `protobuf_oneof:"graph_representation"`

@@ -25629,6 +25629,14 @@
       }
     }
   },
+  "validCategories": {
+    "country/ASM": {},
+    "country/CHN": {},
+    "country/DEU": {},
+    "country/NGA": {},
+    "country/NZL": {},
+    "country/USA": {}
+  },
   "parentPlaces": [
     "oceania",
     "country/USA",

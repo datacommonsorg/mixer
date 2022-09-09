@@ -134,6 +134,7 @@ message PlaceStat {
 message StatVarObsSeries {
   // Key is stat var dcid.
   map<string, ObsTimeSeries> data = 1;
+  repeated string categories = 2;
 }
 
 // Hold mapping from stat var id to Series struct. This is different from
@@ -410,4 +411,8 @@ message GetStatDateWithinPlaceRequest {
 message GetStatDateWithinPlaceResponse {
   // Keyed by stat var.
   map<string, StatDateList> data = 1;
+}
+
+message Categories {
+  repeated string category = 1;
 }

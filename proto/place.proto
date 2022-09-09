@@ -139,6 +139,7 @@ message GetPlaceStatVarsRequest {
 message GetPlaceStatVarsResponse {
   // A map from place dcid to a list of statistical variable dcids.
   map<string, StatVars> places = 1;
+  repeated string categories = 2;
 }
 
 // Request message for GetEntityStatVarsUnionV1 API.

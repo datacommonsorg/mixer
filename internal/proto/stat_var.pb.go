@@ -1322,7 +1322,7 @@ type StatVarGroupNode_ChildSVG struct {
 	// The specialized entity of the child StatVarGroup relative to the parent.
 	// This can be used for naming when the child appears in the hierarchy.
 	SpecializedEntity string `protobuf:"bytes,2,opt,name=specialized_entity,json=specializedEntity,proto3" json:"specialized_entity,omitempty"`
-	//==== Below are fields not in original cache.
+	// ==== Below are fields not in original cache.
 	// Name suitable for display in tree.
 	DisplayName string `protobuf:"bytes,101,opt,name=display_name,json=displayName,proto3" json:"display_name,omitempty"`
 	// Number of unique descendent stat-vars.
@@ -1408,7 +1408,7 @@ type StatVarGroupNode_ChildSV struct {
 	// abbreviated (populationType is 'pt', statType is 'st', etc).  For
 	// example, "median income of women" is:
 	//
-	//    "st=medianValue,pt=Person,mp=income,gender=Female"
+	//	"st=medianValue,pt=Person,mp=income,gender=Female"
 	//
 	// When statType is "measuredValue" (default), it is skipped.
 	Definition string `protobuf:"bytes,5,opt,name=definition,proto3" json:"definition,omitempty"`
