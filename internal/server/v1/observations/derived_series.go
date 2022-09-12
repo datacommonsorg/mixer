@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+// API Implementation for /v1/derived/observations/series/...
 package observations
 
 import (
@@ -228,12 +229,14 @@ func (c *varCalculator) chooseSeries() error {
 	longestDateKeySet := map[string]struct{}{}
 	maxDateKeyLength := 0
 	for k := range commonDateKeys {
-		l := len(k)
-		if l >= maxDateKeyLength {
-			longestDateKeySet[k] = struct{}{}
-			if l > maxDateKeyLength {
-				maxDateKeyLength = l
+		if l := len(k); l > maxDateKeyLength {
+			for k := range longestDateKeySet {
+				delete(longestDateKeySet, k)
 			}
+			longestDateKeySet[k] = struct{}{}
+			maxDateKeyLength = l
+		} else if l == maxDateKeyLength {
+			longestDateKeySet[k] = struct{}{}
 		}
 	}
 
