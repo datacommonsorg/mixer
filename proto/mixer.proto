@@ -415,19 +415,18 @@ service Mixer {
     };
   }
 
-  rpc Triples(datacommons.v1.TriplesRequest) returns (datacommons.v1.TriplesResponse) {
+  rpc Triples(datacommons.v1.TriplesRequest)
+      returns (datacommons.v1.TriplesResponse) {
     option (google.api.http) = {
       get : "/v1/triples/{direction}/{node=**}"
     };
   }
 
-  rpc BulkTriples(datacommons.v1.BulkTriplesRequest) returns (datacommons.v1.BulkTriplesResponse) {
+  rpc BulkTriples(datacommons.v1.BulkTriplesRequest)
+      returns (datacommons.v1.BulkTriplesResponse) {
     option (google.api.http) = {
       get : "/v1/bulk/triples/{direction}"
-      additional_bindings : {
-        post : "/v1/bulk/triples/{direction}"
-        body : "*"
-      }
+      additional_bindings : {post : "/v1/bulk/triples/{direction}" body : "*"}
     };
   }
 
@@ -506,11 +505,15 @@ service Mixer {
     };
   }
 
-  rpc BulkObservationsPointLinked(datacommons.v1.BulkObservationsPointLinkedRequest)
+  rpc BulkObservationsPointLinked(
+      datacommons.v1.BulkObservationsPointLinkedRequest)
       returns (datacommons.v1.BulkObservationsPointResponse) {
     option (google.api.http) = {
       get : "/v1/bulk/observations/point/linked"
-      additional_bindings : {post : "/v1/bulk/observations/point/linked" body : "*"}
+      additional_bindings : {
+        post : "/v1/bulk/observations/point/linked"
+        body : "*"
+      }
     };
   }
 
@@ -529,16 +532,19 @@ service Mixer {
     };
   }
 
-  rpc BulkObservationsSeriesLinked(datacommons.v1.BulkObservationsSeriesLinkedRequest)
+  rpc BulkObservationsSeriesLinked(
+      datacommons.v1.BulkObservationsSeriesLinkedRequest)
       returns (datacommons.v1.BulkObservationsSeriesResponse) {
     option (google.api.http) = {
       get : "/v1/bulk/observations/series/linked"
-      additional_bindings : {post : "/v1/bulk/observations/series/linked" body : "*"}
+      additional_bindings : {
+        post : "/v1/bulk/observations/series/linked"
+        body : "*"
+      }
     };
   }
 
-  rpc BioPage(datacommons.v1.BioPageRequest)
-      returns (GraphNodes) {
+  rpc BioPage(datacommons.v1.BioPageRequest) returns (GraphNodes) {
     option (google.api.http) = {
       get : "/v1/internal/page/bio/{node=**}"
     };
@@ -555,6 +561,17 @@ service Mixer {
       returns (datacommons.v1.VariableAncestorsResponse) {
     option (google.api.http) = {
       get : "/variable/ancestors/{node=**}"
+    };
+  }
+
+  rpc DerivedObservationsSeries(datacommons.v1.DerivedObservationsSeriesRequest)
+      returns (datacommons.v1.DerivedObservationsSeriesResponse) {
+    option (google.api.http) = {
+      get : "/v1/derived/observations/series"
+      additional_bindings : {
+        post : "/v1/derived/observations/series"
+        body : "*"
+      }
     };
   }
 }

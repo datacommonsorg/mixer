@@ -103,3 +103,12 @@ message BulkObservationsSeriesLinkedRequest {
   // [Optional] Whether to fetch data from all facets
   bool all_facets = 5;
 }
+
+message DerivedObservationsSeriesRequest {
+  string entity = 1;
+  string formula = 2;
+}
+
+message DerivedObservationsSeriesResponse {
+  repeated datacommons.PointStat observations = 1;
+}
