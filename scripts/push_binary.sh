@@ -22,6 +22,10 @@ ROOT="$(dirname "$DIR")"
 cd "$ROOT"
 
 TAG=$(git rev-parse --short=7 HEAD)
+if [[ $1 != "" ]]; then
+  TAG=$1
+  git checkout "$TAG"
+fi
 
 gcloud builds submit \
     --project=datcom-ci \

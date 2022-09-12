@@ -46,7 +46,6 @@ steps:
           -t gcr.io/datcom-ci/datacommons-mixer:latest \
           .
         docker push gcr.io/datcom-ci/datacommons-mixer:$SHORT_SHA
-        docker push gcr.io/datcom-ci/datacommons-mixer:latest
 
   # Push the grpc descriptor to gcs.
   - id: push-grpc-descriptor
@@ -59,16 +58,19 @@ steps:
         gsutil cp mixer-grpc.$SHORT_SHA.pb gs://datcom-mixer-grpc/mixer-grpc/mixer-grpc.$SHORT_SHA.pb
         gsutil cp mixer-grpc.$SHORT_SHA.pb gs://datcom-mixer-grpc/mixer-grpc/mixer-grpc.latest.pb
         gsutil acl ch -u AllUsers:R gs://datcom-mixer-grpc/mixer-grpc/mixer-grpc.$SHORT_SHA.pb
-        gsutil acl ch -u AllUsers:R gs://datcom-mixer-grpc/mixer-grpc/mixer-grpc.latest.pb
 
-  # Update all the versions.
-  - id: update-version
+  # Update autopush version in the GCP repo "deployment".
+  - id: update-autopush-version
     name: "gcr.io/cloud-builders/git"
     entrypoint: /bin/bash
     args:
       - -c
       - |
+        if [ "$_SKIP_AUTOPUSH_UPDATE" == "true" ] ; then exit 0 ; fi
         ./scripts/update_autopush_version.sh $SHORT_SHA
+
+substitutions:
+    _SKIP_AUTOPUSH_UPDATE: "true"
 
 options:
   volumes:

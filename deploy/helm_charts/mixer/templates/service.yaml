@@ -31,7 +31,7 @@ metadata:
     {{- include "mixer.labels" $ | nindent 4 }}
   annotations:
     # This is to get longer timeout for the Cloud Load Balancer.
-    cloud.google.com/backend-config: '{"ports": {"8081":"backendconfig"}}'
+    cloud.google.com/backend-config: '{"ports": {"8081":"{{ include "mixer.fullname" $ }}-backendconfig"}}'
 spec:
   type: NodePort
   ports:
@@ -50,8 +50,7 @@ spec:
 apiVersion: cloud.google.com/v1
 kind: BackendConfig
 metadata:
-  # TODO(alexyfchen): Change name to {{ include "mixer.fullname" . }}
-  name: backendconfig
+  name: {{ include "mixer.fullname" . }}-backendconfig
   namespace: {{ .Values.namespace.name }}
 spec:
   timeoutSec: 600
