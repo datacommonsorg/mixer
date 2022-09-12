@@ -80,14 +80,14 @@ gcloud container clusters get-credentials $CLUSTER_NAME --region $REGION
 RELEASE=${ENV//_/-}
 
 # Create a release specific image for the deployment.
-./scripts/push_binary.sh $TAG
+./scripts/push_binary.sh "$TAG"
 
 # Upgrade or install Mixer helm chart into the cluster
-helm upgrade --install $RELEASE deploy/helm_charts/mixer \
+helm upgrade --install "$RELEASE" deploy/helm_charts/mixer \
   --atomic \
-  -f deploy/helm_charts/envs/$ENV.yaml \
-  --set mixer.image.tag=$TAG \
-  --set mixer.githash=$TAG \
+  -f "deploy/helm_charts/envs/$ENV.yaml" \
+  --set mixer.image.tag="$TAG" \
+  --set mixer.githash="$TAG" \
   --set-file mixer.schemaConfigs."base\.mcf"=deploy/mapping/base.mcf \
   --set-file mixer.schemaConfigs."encode\.mcf"=deploy/mapping/encode.mcf \
   --set-file mixer.schemaConfigs."dailyweather\.mcf"=deploy/mapping/dailyweather.mcf \
