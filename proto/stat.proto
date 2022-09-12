@@ -412,7 +412,3 @@ message GetStatDateWithinPlaceResponse {
   // Keyed by stat var.
   map<string, StatDateList> data = 1;
 }
-
-message Categories {
-  repeated string category = 1;
-}

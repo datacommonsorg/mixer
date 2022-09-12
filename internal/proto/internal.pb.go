@@ -387,6 +387,53 @@ func (x *GetBioPageDataRequest) GetDcid() string {
 	return ""
 }
 
+type Categories struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Category []string `protobuf:"bytes,1,rep,name=category,proto3" json:"category,omitempty"`
+}
+
+func (x *Categories) Reset() {
+	*x = Categories{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_internal_proto_msgTypes[5]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *Categories) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Categories) ProtoMessage() {}
+
+func (x *Categories) ProtoReflect() protoreflect.Message {
+	mi := &file_internal_proto_msgTypes[5]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Categories.ProtoReflect.Descriptor instead.
+func (*Categories) Descriptor() ([]byte, []int) {
+	return file_internal_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *Categories) GetCategory() []string {
+	if x != nil {
+		return x.Category
+	}
+	return nil
+}
+
 var File_internal_proto protoreflect.FileDescriptor
 
 var file_internal_proto_rawDesc = []byte{
@@ -472,8 +519,10 @@ var file_internal_proto_rawDesc = []byte{
 	0x75, 0x65, 0x3a, 0x02, 0x38, 0x01, 0x22, 0x2b, 0x0a, 0x15, 0x47, 0x65, 0x74, 0x42, 0x69, 0x6f,
 	0x50, 0x61, 0x67, 0x65, 0x44, 0x61, 0x74, 0x61, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12,
 	0x12, 0x0a, 0x04, 0x64, 0x63, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x64,
-	0x63, 0x69, 0x64, 0x42, 0x09, 0x5a, 0x07, 0x2e, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x06,
-	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x63, 0x69, 0x64, 0x22, 0x28, 0x0a, 0x0a, 0x43, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x69, 0x65,
+	0x73, 0x12, 0x1a, 0x0a, 0x08, 0x63, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x18, 0x01, 0x20,
+	0x03, 0x28, 0x09, 0x52, 0x08, 0x63, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x42, 0x09, 0x5a,
+	0x07, 0x2e, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -488,31 +537,31 @@ func file_internal_proto_rawDescGZIP() []byte {
 	return file_internal_proto_rawDescData
 }
 
-var file_internal_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
+var file_internal_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
 var file_internal_proto_goTypes = []interface{}{
 	(*Place)(nil),                    // 0: datacommons.Place
 	(*Places)(nil),                   // 1: datacommons.Places
 	(*GetPlacePageDataRequest)(nil),  // 2: datacommons.GetPlacePageDataRequest
 	(*GetPlacePageDataResponse)(nil), // 3: datacommons.GetPlacePageDataResponse
 	(*GetBioPageDataRequest)(nil),    // 4: datacommons.GetBioPageDataRequest
-	nil,                              // 5: datacommons.GetPlacePageDataResponse.StatVarSeriesEntry
-	nil,                              // 6: datacommons.GetPlacePageDataResponse.AllChildPlacesEntry
-	nil,                              // 7: datacommons.GetPlacePageDataResponse.LatestPopulationEntry
-	nil,                              // 8: datacommons.GetPlacePageDataResponse.ValidCategoriesEntry
-	(*StatVarSeries)(nil),            // 9: datacommons.StatVarSeries
-	(*PointStat)(nil),                // 10: datacommons.PointStat
-	(*Categories)(nil),               // 11: datacommons.Categories
+	(*Categories)(nil),               // 5: datacommons.Categories
+	nil,                              // 6: datacommons.GetPlacePageDataResponse.StatVarSeriesEntry
+	nil,                              // 7: datacommons.GetPlacePageDataResponse.AllChildPlacesEntry
+	nil,                              // 8: datacommons.GetPlacePageDataResponse.LatestPopulationEntry
+	nil,                              // 9: datacommons.GetPlacePageDataResponse.ValidCategoriesEntry
+	(*StatVarSeries)(nil),            // 10: datacommons.StatVarSeries
+	(*PointStat)(nil),                // 11: datacommons.PointStat
 }
 var file_internal_proto_depIdxs = []int32{
 	0,  // 0: datacommons.Places.places:type_name -> datacommons.Place
-	5,  // 1: datacommons.GetPlacePageDataResponse.stat_var_series:type_name -> datacommons.GetPlacePageDataResponse.StatVarSeriesEntry
-	6,  // 2: datacommons.GetPlacePageDataResponse.all_child_places:type_name -> datacommons.GetPlacePageDataResponse.AllChildPlacesEntry
-	7,  // 3: datacommons.GetPlacePageDataResponse.latest_population:type_name -> datacommons.GetPlacePageDataResponse.LatestPopulationEntry
-	8,  // 4: datacommons.GetPlacePageDataResponse.valid_categories:type_name -> datacommons.GetPlacePageDataResponse.ValidCategoriesEntry
-	9,  // 5: datacommons.GetPlacePageDataResponse.StatVarSeriesEntry.value:type_name -> datacommons.StatVarSeries
+	6,  // 1: datacommons.GetPlacePageDataResponse.stat_var_series:type_name -> datacommons.GetPlacePageDataResponse.StatVarSeriesEntry
+	7,  // 2: datacommons.GetPlacePageDataResponse.all_child_places:type_name -> datacommons.GetPlacePageDataResponse.AllChildPlacesEntry
+	8,  // 3: datacommons.GetPlacePageDataResponse.latest_population:type_name -> datacommons.GetPlacePageDataResponse.LatestPopulationEntry
+	9,  // 4: datacommons.GetPlacePageDataResponse.valid_categories:type_name -> datacommons.GetPlacePageDataResponse.ValidCategoriesEntry
+	10, // 5: datacommons.GetPlacePageDataResponse.StatVarSeriesEntry.value:type_name -> datacommons.StatVarSeries
 	1,  // 6: datacommons.GetPlacePageDataResponse.AllChildPlacesEntry.value:type_name -> datacommons.Places
-	10, // 7: datacommons.GetPlacePageDataResponse.LatestPopulationEntry.value:type_name -> datacommons.PointStat
-	11, // 8: datacommons.GetPlacePageDataResponse.ValidCategoriesEntry.value:type_name -> datacommons.Categories
+	11, // 7: datacommons.GetPlacePageDataResponse.LatestPopulationEntry.value:type_name -> datacommons.PointStat
+	5,  // 8: datacommons.GetPlacePageDataResponse.ValidCategoriesEntry.value:type_name -> datacommons.Categories
 	9,  // [9:9] is the sub-list for method output_type
 	9,  // [9:9] is the sub-list for method input_type
 	9,  // [9:9] is the sub-list for extension type_name
@@ -587,6 +636,18 @@ func file_internal_proto_init() {
 				return nil
 			}
 		}
+		file_internal_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*Categories); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -594,7 +655,7 @@ func file_internal_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_internal_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   9,
+			NumMessages:   10,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

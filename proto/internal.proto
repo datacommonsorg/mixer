@@ -71,3 +71,7 @@ message GetBioPageDataRequest {
   // The dcid of the entity
   string dcid = 1;
 }
+
+message Categories {
+  repeated string category = 1;
+}
