@@ -106,6 +106,21 @@ message BulkObservationsSeriesLinkedRequest {
 
 message DerivedObservationsSeriesRequest {
   string entity = 1;
+  // Supported operators: +, -, *, /, along with parentheses.
+  //
+  // The items of the formula have a form of "StatVar[OptionalFilters]".
+  //
+  // The following filters are supported:
+  // 1. m: MeasurementMethod
+  // 2. p: ObservationPeriod
+  // 3. u: Unit
+  // 4. s: ScalingFactor
+  //
+  // For example:
+  // 1. Person_Count - Person_Count_Female
+  // 2. Person_Count_Female / Person_Count[m=CensusACS5yrSurvey;p=P5Y]
+  // 3. Person_Count - Person_Count_Female - Person_Count_Male[p=P5Y]
+  // 4. (Person_Count_Male - Person_Count_Female) / Person_Count
   string formula = 2;
 }
 

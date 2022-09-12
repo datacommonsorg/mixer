@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// API Implementation for /v1/derived/observations/series/...
+// Package observations implements for /v1/derived/observations/series/...
 package observations
 
 import (
