@@ -79,8 +79,9 @@ gcloud container clusters get-credentials $CLUSTER_NAME --region $REGION
 # Change "mixer_prod" for example, to "mixer-prod"
 RELEASE=${ENV//_/-}
 
-# Create a release specific image for the deployment.
-./scripts/push_binary.sh "$TAG"
+# Create a release specific image for the deployment, if it does not exist.
+IMAGE_ERR=$(gcloud container images describe gcr.io/datcom-ci/datacommons-mixer:"$TAG" > /dev/null ; echo $?)
+if [[ "$IMAGE_ERR" == "1" ]];  then ./scripts/push_binary.sh "$TAG"; fi
 
 # Upgrade or install Mixer helm chart into the cluster
 helm upgrade --install "$RELEASE" deploy/helm_charts/mixer \
