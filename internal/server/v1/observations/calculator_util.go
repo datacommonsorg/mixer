@@ -14,6 +14,7 @@
 
 // Calculator util.
 
+// Package observations contain code for observations.
 package observations
 
 import (

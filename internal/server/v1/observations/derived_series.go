@@ -14,6 +14,7 @@
 
 // API Implementation for /v1/bulk/observations/series/derived
 
+// Package observations contain code for observations.
 package observations
 
 import (
