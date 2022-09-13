@@ -678,6 +678,7 @@ type ChartStore struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Types that are assignable to Val:
+	//
 	//	*ChartStore_ObsTimeSeries
 	//	*ChartStore_ObsCollection
 	Val isChartStore_Val `protobuf_oneof:"val"`
@@ -1011,6 +1012,7 @@ type SVOObservation struct {
 	ScalingFactor     string `protobuf:"bytes,6,opt,name=scaling_factor,json=scalingFactor,proto3" json:"scaling_factor,omitempty"`
 	ProvenanceId      string `protobuf:"bytes,7,opt,name=provenance_id,json=provenanceId,proto3" json:"provenance_id,omitempty"`
 	// Types that are assignable to Val:
+	//
 	//	*SVOObservation_StrValue
 	//	*SVOObservation_DblValue
 	Val  isSVOObservation_Val `protobuf_oneof:"val"`
@@ -1820,39 +1822,41 @@ func (x *GetStatAllRequest) GetStatVars() []string {
 // https://cloud.google.com/endpoints/docs/grpc/grpc-service-config Example
 // response after esp transcoding is like below.
 // {
-//   placeData: {
-//     "geoId/01": {
-//       statVarData: {
-//         "statvar1": {
-//           "placeName": "City of Mountain View",
-//           "sourceSeries": [
-//             {
-//               "val": {
-//                 "2008": 2116,
-//                 "2009": 2155,
-//                 "2010": 1633,
-//                 "2011": 1509,
-//                 "2012": 1581,
-//                 "2013": 1867,
-//                 "2014": 1770,
-//                 "2015": 2201,
-//                 "2016": 1913,
-//                 "2017": 2138
-//               },
-//               "observationPeriod": "P1Y",
-//               "importName": "FBIGovCrime",
-//               "provenanceDomain": "fbi.gov"
-//             }
-//           ]
-//         },
-//       }
-//     },
-//     "geoId/02": {
-//       statVarData: {
-//         "statvar3": {...},
-//       }
-//     }
-//   }
+//
+//	placeData: {
+//	  "geoId/01": {
+//	    statVarData: {
+//	      "statvar1": {
+//	        "placeName": "City of Mountain View",
+//	        "sourceSeries": [
+//	          {
+//	            "val": {
+//	              "2008": 2116,
+//	              "2009": 2155,
+//	              "2010": 1633,
+//	              "2011": 1509,
+//	              "2012": 1581,
+//	              "2013": 1867,
+//	              "2014": 1770,
+//	              "2015": 2201,
+//	              "2016": 1913,
+//	              "2017": 2138
+//	            },
+//	            "observationPeriod": "P1Y",
+//	            "importName": "FBIGovCrime",
+//	            "provenanceDomain": "fbi.gov"
+//	          }
+//	        ]
+//	      },
+//	    }
+//	  },
+//	  "geoId/02": {
+//	    statVarData: {
+//	      "statvar3": {...},
+//	    }
+//	  }
+//	}
+//
 // }
 type GetStatAllResponse struct {
 	state         protoimpl.MessageState

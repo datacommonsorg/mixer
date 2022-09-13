@@ -20874,6 +20874,25 @@
       }
     }
   },
+  "validCategories": {
+    "country/USA": {},
+    "geoId/06": {},
+    "geoId/06001": {},
+    "geoId/0600562": {},
+    "geoId/0606000": {},
+    "geoId/0653000": {},
+    "geoId/0656938": {},
+    "geoId/0660620": {},
+    "geoId/0668084": {},
+    "geoId/0820000": {},
+    "geoId/2836000": {},
+    "geoId/4055000": {},
+    "geoId/4261000": {},
+    "geoId/4752006": {},
+    "zip/94610": {},
+    "zip/94611": {},
+    "zip/94618": {}
+  },
   "childPlacesType": "CensusZipCodeTabulationArea",
   "childPlaces": [
     "zip/94611",

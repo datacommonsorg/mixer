@@ -36616,6 +36616,26 @@
       }
     }
   },
+  "validCategories": {
+    "country/USA": {},
+    "geoId/04013": {},
+    "geoId/06": {},
+    "geoId/06001": {},
+    "geoId/06013": {},
+    "geoId/06067": {},
+    "geoId/06075": {},
+    "geoId/06077": {},
+    "geoId/06085": {},
+    "geoId/0647766": {},
+    "geoId/0649670": {},
+    "geoId/0668000": {},
+    "geoId/0669084": {},
+    "geoId/0677000": {},
+    "geoId/08059": {},
+    "geoId/12031": {},
+    "geoId/48113": {},
+    "geoId/51059": {}
+  },
   "childPlacesType": "City",
   "childPlaces": [
     "geoId/0668000",

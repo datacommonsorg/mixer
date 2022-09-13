@@ -4,6 +4,7 @@ mixer:
   serviceName: staging.api.datacommons.org
 
 ingress:
+  name: mixer-ingress-staging
   annotations: {
     ingress.gcp.kubernetes.io/pre-shared-cert: "mixer-certificate,multi-domain-2022"
   }

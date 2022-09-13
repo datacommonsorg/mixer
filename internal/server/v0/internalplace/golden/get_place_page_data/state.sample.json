@@ -37749,6 +37749,25 @@
       }
     }
   },
+  "validCategories": {
+    "country/USA": {},
+    "geoId/04": {},
+    "geoId/06": {},
+    "geoId/06037": {},
+    "geoId/06059": {},
+    "geoId/06065": {},
+    "geoId/06071": {},
+    "geoId/06073": {},
+    "geoId/08": {},
+    "geoId/18": {},
+    "geoId/22": {},
+    "geoId/29": {},
+    "geoId/38": {},
+    "geoId/47": {},
+    "geoId/48": {},
+    "geoId/53": {},
+    "geoId/72": {}
+  },
   "childPlacesType": "County",
   "childPlaces": [
     "geoId/06037",

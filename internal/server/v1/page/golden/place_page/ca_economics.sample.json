@@ -1607,6 +1607,234 @@
       ]
     }
   },
+  "validCategories": {
+    "country/USA": {
+      "category": [
+        "Education",
+        "Demographics",
+        "Health",
+        "Crime",
+        "Energy",
+        "Overview",
+        "Equity",
+        "Housing",
+        "Economics",
+        "Climate"
+      ]
+    },
+    "geoId/04": {
+      "category": [
+        "Equity",
+        "Overview",
+        "Climate",
+        "Education",
+        "Energy",
+        "Housing",
+        "Health",
+        "Economics",
+        "Crime",
+        "Demographics"
+      ]
+    },
+    "geoId/06": {
+      "category": [
+        "Overview",
+        "Housing",
+        "Climate",
+        "Equity",
+        "Education",
+        "Crime",
+        "Health",
+        "Demographics",
+        "Economics",
+        "Energy"
+      ]
+    },
+    "geoId/06037": {
+      "category": [
+        "Education",
+        "Health",
+        "Housing",
+        "Equity",
+        "Economics",
+        "Demographics",
+        "Overview",
+        "Climate"
+      ]
+    },
+    "geoId/06059": {
+      "category": [
+        "Equity",
+        "Health",
+        "Climate",
+        "Economics",
+        "Education",
+        "Overview",
+        "Demographics",
+        "Housing"
+      ]
+    },
+    "geoId/06065": {
+      "category": [
+        "Climate",
+        "Equity",
+        "Overview",
+        "Health",
+        "Housing",
+        "Education",
+        "Economics",
+        "Demographics"
+      ]
+    },
+    "geoId/06071": {
+      "category": [
+        "Economics",
+        "Health",
+        "Education",
+        "Housing",
+        "Equity",
+        "Demographics",
+        "Climate",
+        "Overview"
+      ]
+    },
+    "geoId/06073": {
+      "category": [
+        "Education",
+        "Economics",
+        "Climate",
+        "Overview",
+        "Housing",
+        "Demographics",
+        "Equity",
+        "Health"
+      ]
+    },
+    "geoId/08": {
+      "category": [
+        "Crime",
+        "Equity",
+        "Demographics",
+        "Climate",
+        "Education",
+        "Economics",
+        "Housing",
+        "Energy",
+        "Overview",
+        "Health"
+      ]
+    },
+    "geoId/18": {
+      "category": [
+        "Education",
+        "Demographics",
+        "Overview",
+        "Equity",
+        "Housing",
+        "Climate",
+        "Economics",
+        "Crime",
+        "Health",
+        "Energy"
+      ]
+    },
+    "geoId/22": {
+      "category": [
+        "Economics",
+        "Housing",
+        "Education",
+        "Climate",
+        "Equity",
+        "Overview",
+        "Demographics",
+        "Crime",
+        "Health",
+        "Energy"
+      ]
+    },
+    "geoId/29": {
+      "category": [
+        "Climate",
+        "Housing",
+        "Equity",
+        "Health",
+        "Economics",
+        "Education",
+        "Overview",
+        "Crime",
+        "Energy",
+        "Demographics"
+      ]
+    },
+    "geoId/38": {
+      "category": [
+        "Economics",
+        "Demographics",
+        "Overview",
+        "Crime",
+        "Housing",
+        "Equity",
+        "Health",
+        "Education",
+        "Climate",
+        "Energy"
+      ]
+    },
+    "geoId/47": {
+      "category": [
+        "Climate",
+        "Education",
+        "Energy",
+        "Economics",
+        "Overview",
+        "Equity",
+        "Crime",
+        "Demographics",
+        "Housing",
+        "Health"
+      ]
+    },
+    "geoId/48": {
+      "category": [
+        "Economics",
+        "Education",
+        "Climate",
+        "Crime",
+        "Energy",
+        "Health",
+        "Overview",
+        "Housing",
+        "Equity",
+        "Demographics"
+      ]
+    },
+    "geoId/53": {
+      "category": [
+        "Education",
+        "Climate",
+        "Housing",
+        "Crime",
+        "Equity",
+        "Overview",
+        "Energy",
+        "Health",
+        "Economics",
+        "Demographics"
+      ]
+    },
+    "geoId/72": {
+      "category": [
+        "Education",
+        "Climate",
+        "Economics",
+        "Housing",
+        "Equity",
+        "Overview",
+        "Health",
+        "Demographics"
+      ]
+    }
+  },
   "childPlacesType": "County",
   "childPlaces": [
     "geoId/06037",

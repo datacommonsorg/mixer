@@ -4,6 +4,7 @@ mixer:
   serviceName: autopush.api.datacommons.org
 
 ingress:
+  name: mixer-ingress-autopush
   annotations: {
     ingress.gcp.kubernetes.io/pre-shared-cert: "mixer-certificate,multi-domain-2022"
   }

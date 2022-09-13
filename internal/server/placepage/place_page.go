@@ -216,7 +216,8 @@ func fetchBtData(
 	places []string,
 	statVars []string,
 	category string,
-) (map[string]*pb.StatVarSeries, map[string]*pb.PointStat, error) {
+) (map[string]*pb.StatVarSeries, map[string]*pb.PointStat,
+	map[string]*pb.Categories, error) {
 	// Fetch place page cache data in parallel.
 	action := [][]string{places}
 	prefix := bigtable.BtPlacePagePrefix
@@ -231,7 +232,7 @@ func fetchBtData(
 		prefix,
 		action,
 		func(jsonRaw []byte) (interface{}, error) {
-			var placePageData pb.StatVarObsSeries
+			var placePageData pb.LandingPageCache
 			if err := proto.Unmarshal(jsonRaw, &placePageData); err != nil {
 				return nil, err
 			}
@@ -239,21 +240,22 @@ func fetchBtData(
 		},
 	)
 	if err != nil {
-		return nil, nil, err
+		return nil, nil, nil, err
 	}
 
 	// Populate result from place page cache
 	pageData := map[string]*pb.StatVarSeries{}
 	popData := map[string]*pb.PointStat{}
+	categoryData := map[string]*pb.Categories{}
 
-	mergedPlacePageData := map[string]*pb.StatVarObsSeries{}
+	mergedPlacePageData := map[string]*pb.LandingPageCache{}
 	for _, btData := range btDataList {
 		for _, row := range btData {
 			if row.Data == nil {
 				continue
 			}
 			place := row.Parts[0]
-			placePageData := row.Data.(*pb.StatVarObsSeries)
+			placePageData := row.Data.(*pb.LandingPageCache)
 			if _, ok := mergedPlacePageData[place]; !ok {
 				mergedPlacePageData[place] = placePageData
 			}
@@ -272,6 +274,9 @@ func fetchBtData(
 
 	for place, data := range mergedPlacePageData {
 		finalData := &pb.StatVarSeries{Data: map[string]*pb.Series{}}
+		categoryData[place] = &pb.Categories{}
+		categoryData[place].Category = append(categoryData[place].Category,
+			data.Categories...)
 		for statVar, obsTimeSeries := range data.Data {
 			series, _ := stat.GetBestSeries(obsTimeSeries, "", false /* useLatest */)
 			finalData.Data[statVar] = series
@@ -302,7 +307,7 @@ func fetchBtData(
 			StatVars: statVars,
 		}, store)
 		if err != nil {
-			return nil, popData, err
+			return nil, popData, nil, err
 		}
 		// Add additional data to the cache result
 		for place, seriesMap := range resp.Data {
@@ -322,7 +327,7 @@ func fetchBtData(
 			}
 		}
 	}
-	return pageData, popData, nil
+	return pageData, popData, categoryData, nil
 }
 
 // Pick child places with the largest average population.
@@ -626,11 +631,13 @@ func GetPlacePageDataHelper(
 		allPlaces = append(allPlaces, relatedPlace.places...)
 	}
 
-	statData, popData, err := fetchBtData(ctx, store, allPlaces, newStatVars, category)
+	statData, popData, categoryData, err := fetchBtData(
+		ctx, store, allPlaces, newStatVars, category)
 	if err != nil {
 		return nil, err
 	}
 	resp.StatVarSeries = statData
 	resp.LatestPopulation = popData
+	resp.ValidCategories = categoryData
 	return &resp, nil
 }
