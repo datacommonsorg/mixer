@@ -23,6 +23,18 @@ serviceGroups:
       resources:
         memoryRequest: "8G"
         memoryLimit: "8G"
+  - recon: 
+      urlPaths:
+        - "/entity/*"
+        - "/coordinate/*"
+        - "/id/*"
+      replicas:
+        default: 4
+        min: 4
+        max: 8
+      resources:
+        memoryRequest: "3G"
+        memoryLimit: "3G"
   - mixer-default-service:
       urlPaths:
         - "/*"

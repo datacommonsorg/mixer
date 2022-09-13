@@ -33,8 +33,8 @@ set -e
 
 ENV=$1
 
-if [[ $ENV != "staging" && $ENV != "prod" && $ENV != "autopush" && $ENV != "encode" && $ENV != "dev" && $ENV != "private" && $ENV != "recon-prod" && $ENV != "recon-staging" && $ENV != "recon-autopush" ]]; then
-  echo "First argument should be 'staging' or 'prod' or 'autopush' or 'encode' or 'dev' or 'recon-prod' or 'recon-staging' or 'recon-autopush'"
+if [[ $ENV != "mixer_staging" && $ENV != "mixer_prod" && $ENV != "mixer_autopush" && $ENV != "mixer_encode" && $ENV != "mixer_dev" && $ENV != "mixer_private" ]]; then
+  echo "First argument should be 'mixer_staging' or 'mixer_prod' or 'mixer_autopush' or 'mixer_encode' or 'mixer_dev' or 'mixer_private'"
   exit
 fi
 
@@ -54,7 +54,7 @@ echo -n "$TAG" > mixer_hash.txt
 
 cd $ROOT
 
-if [[ $ENV == "autopush" ]]; then
+if [[ $ENV == "mixer_autopush" ]]; then
   # Update bigquery version
   gsutil cp gs://datcom-control/latest_base_bigquery_version.txt deploy/storage/bigquery.version
   # Import group
@@ -64,23 +64,37 @@ if [[ $ENV == "autopush" ]]; then
     echo $(gsutil cat "$src") >> deploy/storage/bigtable_import_groups.version
   done
 fi
-export PROJECT_ID=$(yq eval '.project' deploy/gke/$ENV.yaml)
-export REGION=$(yq eval '.region' deploy/gke/$ENV.yaml)
-export IP=$(yq eval '.ip' deploy/gke/$ENV.yaml)
-export DOMAIN=$(yq eval '.domain' deploy/gke/$ENV.yaml)
-export API_TITLE=$(yq eval '.api_title' deploy/gke/$ENV.yaml)
-export API=$(yq eval '.api' deploy/gke/$ENV.yaml)
+export PROJECT_ID=$(yq eval '.mixer.gcpProjectID' deploy/helm_charts/envs/$ENV.yaml)
+export REGION=$(yq eval '.region' deploy/helm_charts/envs/$ENV.yaml)
+export IP=$(yq eval '.ip' deploy/helm_charts/envs/$ENV.yaml)
+export DOMAIN=$(yq eval '.mixer.serviceName' deploy/helm_charts/envs/$ENV.yaml)
+export API_TITLE=$(yq eval '.api_title' deploy/helm_charts/envs/$ENV.yaml)
+export API=$(yq eval '.api' deploy/helm_charts/envs/$ENV.yaml)
 export CLUSTER_NAME=mixer-$REGION
 
-cd $ROOT/deploy/overlays/$ENV
-
 # Deploy to GKE
-kustomize edit set image gcr.io/datcom-ci/datacommons-mixer=gcr.io/datcom-ci/datacommons-mixer:$TAG
-kustomize build > kustomize-build.yaml
-cp kustomization.yaml kustomize-deployed.yaml
 gcloud config set project $PROJECT_ID
 gcloud container clusters get-credentials $CLUSTER_NAME --region $REGION
-kubectl apply -f kustomize-build.yaml
+
+# Change "mixer_prod" for example, to "mixer-prod"
+RELEASE=${ENV//_/-}
+
+# Create a release specific image for the deployment, if it does not exist.
+IMAGE_ERR=$(gcloud container images describe gcr.io/datcom-ci/datacommons-mixer:"$TAG" > /dev/null ; echo $?)
+if [[ "$IMAGE_ERR" == "1" ]];  then ./scripts/push_binary.sh "$TAG"; fi
+
+# Upgrade or install Mixer helm chart into the cluster
+helm upgrade --install "$RELEASE" deploy/helm_charts/mixer \
+  --atomic \
+  -f "deploy/helm_charts/envs/$ENV.yaml" \
+  --set mixer.image.tag="$TAG" \
+  --set mixer.githash="$TAG" \
+  --set-file mixer.schemaConfigs."base\.mcf"=deploy/mapping/base.mcf \
+  --set-file mixer.schemaConfigs."encode\.mcf"=deploy/mapping/encode.mcf \
+  --set-file mixer.schemaConfigs."dailyweather\.mcf"=deploy/mapping/dailyweather.mcf \
+  --set-file mixer.schemaConfigs."monthlyweather\.mcf"=deploy/mapping/monthlyweather.mcf \
+  --set-file kgStoreConfig.bigqueryVersion=deploy/storage/bigquery.version \
+  --set-file kgStoreConfig.bigtableImportGroupsVersion=deploy/storage/bigtable_import_groups.version
 
 # Deploy Cloud Endpoints
 cp $ROOT/esp/endpoints.yaml.tmpl endpoints.yaml
@@ -94,6 +108,5 @@ gcloud endpoints services deploy mixer-grpc.$TAG.pb endpoints.yaml --project $PR
 
 
 # Reset changed file
-git checkout HEAD -- kustomization.yaml
 cd $ROOT
 git checkout HEAD -- deploy/git/mixer_hash.txt

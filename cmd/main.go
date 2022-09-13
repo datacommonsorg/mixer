@@ -118,13 +118,6 @@ func main() {
 	// Create grpc server.
 	srv := grpc.NewServer(opts...)
 
-	// Metadata.
-	metadata, err := server.NewMetadata(
-		*bqDataset, *storeProject, branchBtInstance, *schemaPath)
-	if err != nil {
-		log.Fatalf("Failed to create metadata: %v", err)
-	}
-
 	branchCachePubsubTopic := "proto-branch-cache-reload"
 	branchCacheVersionFile := "latest_proto_branch_cache_version.txt"
 
@@ -196,6 +189,13 @@ func main() {
 			if err != nil {
 				log.Fatalf("Failed to create cache: %v", err)
 			}
+		}
+
+		// Metadata.
+		metadata, err := server.NewMetadata(
+			*bqDataset, *storeProject, branchBtInstance, *schemaPath)
+		if err != nil {
+			log.Fatalf("Failed to create metadata: %v", err)
 		}
 
 		// Create server object
