@@ -46,7 +46,7 @@ func TestDerivedObservationsSeries(t *testing.T) {
 			},
 			{
 				"geoId/06",
-				"Count_Person_Female[m=CensusACS5yrSurvey] / Count_Person_Male[m=CensusACS5yrSurvey]",
+				"Count_Person_Female[mm=CensusACS5yrSurvey] / Count_Person_Male[mm=CensusACS5yrSurvey]",
 				"case2.json",
 			},
 			{

@@ -567,9 +567,9 @@ service Mixer {
   rpc DerivedObservationsSeries(datacommons.v1.DerivedObservationsSeriesRequest)
       returns (datacommons.v1.DerivedObservationsSeriesResponse) {
     option (google.api.http) = {
-      get : "/v1/derived/observations/series"
+      get : "/v1/observations/series/derived"
       additional_bindings : {
-        post : "/v1/derived/observations/series"
+        post : "/v1/observations/series/derived"
         body : "*"
       }
     };
