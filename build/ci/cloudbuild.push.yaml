@@ -70,11 +70,9 @@ steps:
       - |
         if [ "$_SKIP_AUTOPUSH_UPDATE" == "true" ] ; then exit 0 ; fi
         ./scripts/update_autopush_version.sh $SHORT_SHA
-substitutions:
-    _SKIP_AUTOPUSH_UPDATE: "false"
 
 substitutions:
-    _SKIP_AUTOPUSH_UPDATE: "true"
+    _SKIP_AUTOPUSH_UPDATE: "false"
 
 options:
   volumes:
