@@ -36,3 +36,29 @@ helm upgrade --install mixer-dev deploy/helm_charts/mixer \
     --set-file kgStoreConfig.bigqueryVersion=deploy/storage/bigquery.version \
     --set-file kgStoreConfig.bigtableImportGroupsVersion=deploy/storage/bigtable_import_groups.version
 ```
+
+## Releasing a helm chart
+
+Releasing a helm chart packages and uploads a helm chart into [AR(Artifact Registry)](https://cloud.google.com/artifact-registry/docs/overview) as a versioned artifact. Once released, the chart will be accessible by the public, given that the access to AR repository is configured.
+
+1.  Skip this step for upgrades. Make sure that an AR docker repository exists. If not, please follow the instructions [here](https://cloud.google.com/artifact-registry/docs/helm) to create one.
+2.  Update the version field in Chart.yaml. The version follows the [semantic versioning](https://semver.org/) format.
+3.  Go the specific chart. Ex: mixer.
+
+```sh
+cd deploy/helm_charts/mixer
+```
+
+4.  Run the [helm package](https://helm.sh/docs/helm/helm_package/) command.
+
+```sh
+helm package .
+```
+
+5.  Run the [helm push](https://helm.sh/docs/helm/helm_push/) command. Replace the tgz file with the filename from step 4.
+
+```sh
+helm push \
+  mixer-0.1.0.tgz \
+  oci://us-docker.pkg.dev/datcom-ci/mixer-helm-chart
+```
