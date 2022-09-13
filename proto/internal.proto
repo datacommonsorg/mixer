@@ -58,6 +58,7 @@ message GetPlacePageDataResponse {
   map<string, StatVarSeries> stat_var_series = 1;
   map<string, Places> all_child_places = 2;
   map<string, PointStat> latest_population = 8;
+  map<string, Categories> valid_categories = 9;
   string child_places_type = 3;
   repeated string child_places = 4;
   repeated string parent_places = 5;
@@ -69,4 +70,15 @@ message GetPlacePageDataResponse {
 message GetBioPageDataRequest {
   // The dcid of the entity
   string dcid = 1;
+}
+
+message Categories {
+  repeated string category = 1;
+}
+
+// Data received from the cache for the landing page.
+message LandingPageCache {
+  // Key is stat var dcid.
+  map<string, ObsTimeSeries> data = 1;
+  repeated string categories = 2;
 }

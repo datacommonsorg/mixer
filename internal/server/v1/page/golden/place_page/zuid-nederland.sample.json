@@ -18049,6 +18049,12 @@
       }
     }
   },
+  "validCategories": {
+    "country/NLD": {},
+    "nuts/NL4": {},
+    "nuts/NL41": {},
+    "nuts/NL42": {}
+  },
   "childPlacesType": "AdministrativeArea1",
   "childPlaces": [
     "nuts/NL41",

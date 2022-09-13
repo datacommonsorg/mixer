@@ -13281,6 +13281,19 @@
       }
     }
   },
+  "validCategories": {
+    "country/CHN": {},
+    "country/DEU": {},
+    "country/NGA": {},
+    "country/NZL": {},
+    "country/THA": {},
+    "country/USA": {},
+    "wikidataId/Q1861": {},
+    "wikidataId/Q233588": {},
+    "wikidataId/Q271737": {},
+    "wikidataId/Q327533": {},
+    "wikidataId/Q629024": {}
+  },
   "childPlacesType": "AdministrativeArea1",
   "childPlaces": [
     "wikidataId/Q1861",
