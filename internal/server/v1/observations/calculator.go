@@ -22,7 +22,6 @@ import (
 	"go/ast"
 	"go/parser"
 	"reflect"
-	"sort"
 	"strings"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
@@ -223,80 +222,4 @@ func (c *calculator) evaluateExpr(node ast.Node) (*calculatorSeries, error) {
 	default:
 		return nil, fmt.Errorf("unsupported ast type %T", t)
 	}
-}
-
-// This implements ast.Visitor, used by ast.Walk, which iterates AST with a depth-first order.
-// For each ast.BinaryExpr, it extracts the "Name" property of X and Y.
-// For example, for an expression "Count_Person - Count_Person_Female[mm=USCensus]", it returns
-// {Count_Person, Count_Person_Female[mm=USCensus]}.
-type varNameVisitor struct {
-	varNameSet map[string]struct{}
-}
-
-func newVarNameVisitor() *varNameVisitor {
-	return &varNameVisitor{varNameSet: map[string]struct{}{}}
-}
-
-func (v *varNameVisitor) Visit(node ast.Node) (w ast.Visitor) {
-	switch t := node.(type) {
-	case *ast.BinaryExpr:
-		if reflect.TypeOf(t.X).String() == "*ast.Ident" {
-			v.varNameSet[t.X.(*ast.Ident).Name] = struct{}{}
-		}
-		if reflect.TypeOf(t.Y).String() == "*ast.Ident" {
-			v.varNameSet[t.Y.(*ast.Ident).Name] = struct{}{}
-		}
-	}
-	return v
-}
-
-func toCalculatorSeries(sourceSeries *pb.SourceSeries) *calculatorSeries {
-	series := &calculatorSeries{
-		statMetadata: &pb.StatMetadata{
-			MeasurementMethod: sourceSeries.GetMeasurementMethod(),
-			ObservationPeriod: sourceSeries.GetObservationPeriod(),
-			Unit:              sourceSeries.GetUnit(),
-			ScalingFactor:     sourceSeries.GetScalingFactor(),
-		},
-		points: []*pb.PointStat{},
-	}
-
-	var dates []string
-	for date := range sourceSeries.GetVal() {
-		dates = append(dates, date)
-	}
-	sort.Strings(dates)
-	for _, date := range dates {
-		series.points = append(series.points, &pb.PointStat{
-			Date:  date,
-			Value: sourceSeries.GetVal()[date],
-		})
-	}
-
-	return series
-}
-
-// TODO(spaceenter): Implement better ranking algorithm than simple string comparisons.
-//
-// The input `seriesCandidates` all have the same dates.
-func rankCalculatorSeries(seriesCandidates []*calculatorSeries) *calculatorSeries {
-	statMetadataKey := func(statMetadata *pb.StatMetadata) string {
-		return strings.Join([]string{
-			statMetadata.GetMeasurementMethod(),
-			statMetadata.GetObservationPeriod(),
-			statMetadata.GetUnit(),
-			statMetadata.GetScalingFactor()}, "-")
-	}
-
-	var res *calculatorSeries
-	var maxKey string
-	for _, series := range seriesCandidates {
-		key := statMetadataKey(series.statMetadata)
-		if maxKey == "" || maxKey < key {
-			maxKey = key
-			res = series
-		}
-	}
-
-	return res
 }

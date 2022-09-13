@@ -20,6 +20,7 @@ package observations
 import (
 	"fmt"
 	"go/token"
+	"sort"
 	"strings"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
@@ -141,4 +142,55 @@ func evaluateBinaryExpr(
 	}
 
 	return res, nil
+}
+
+func toCalculatorSeries(sourceSeries *pb.SourceSeries) *calculatorSeries {
+	series := &calculatorSeries{
+		statMetadata: &pb.StatMetadata{
+			MeasurementMethod: sourceSeries.GetMeasurementMethod(),
+			ObservationPeriod: sourceSeries.GetObservationPeriod(),
+			Unit:              sourceSeries.GetUnit(),
+			ScalingFactor:     sourceSeries.GetScalingFactor(),
+		},
+		points: []*pb.PointStat{},
+	}
+
+	var dates []string
+	for date := range sourceSeries.GetVal() {
+		dates = append(dates, date)
+	}
+	sort.Strings(dates)
+	for _, date := range dates {
+		series.points = append(series.points, &pb.PointStat{
+			Date:  date,
+			Value: sourceSeries.GetVal()[date],
+		})
+	}
+
+	return series
+}
+
+// TODO(spaceenter): Implement better ranking algorithm than simple string comparisons.
+//
+// The input `seriesCandidates` all have the same dates.
+func rankCalculatorSeries(seriesCandidates []*calculatorSeries) *calculatorSeries {
+	statMetadataKey := func(statMetadata *pb.StatMetadata) string {
+		return strings.Join([]string{
+			statMetadata.GetMeasurementMethod(),
+			statMetadata.GetObservationPeriod(),
+			statMetadata.GetUnit(),
+			statMetadata.GetScalingFactor()}, "-")
+	}
+
+	var res *calculatorSeries
+	var maxKey string
+	for _, series := range seriesCandidates {
+		key := statMetadataKey(series.statMetadata)
+		if maxKey == "" || maxKey < key {
+			maxKey = key
+			res = series
+		}
+	}
+
+	return res
 }
