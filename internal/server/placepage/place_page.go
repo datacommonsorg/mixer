@@ -232,7 +232,7 @@ func fetchBtData(
 		prefix,
 		action,
 		func(jsonRaw []byte) (interface{}, error) {
-			var placePageData pb.StatVarObsSeries
+			var placePageData pb.LandingPageCache
 			if err := proto.Unmarshal(jsonRaw, &placePageData); err != nil {
 				return nil, err
 			}
@@ -248,14 +248,14 @@ func fetchBtData(
 	popData := map[string]*pb.PointStat{}
 	categoryData := map[string]*pb.Categories{}
 
-	mergedPlacePageData := map[string]*pb.StatVarObsSeries{}
+	mergedPlacePageData := map[string]*pb.LandingPageCache{}
 	for _, btData := range btDataList {
 		for _, row := range btData {
 			if row.Data == nil {
 				continue
 			}
 			place := row.Parts[0]
-			placePageData := row.Data.(*pb.StatVarObsSeries)
+			placePageData := row.Data.(*pb.LandingPageCache)
 			if _, ok := mergedPlacePageData[place]; !ok {
 				mergedPlacePageData[place] = placePageData
 			}

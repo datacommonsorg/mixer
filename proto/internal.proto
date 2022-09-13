@@ -75,3 +75,10 @@ message GetBioPageDataRequest {
 message Categories {
   repeated string category = 1;
 }
+
+// Data received from the cache for the landing page.
+message LandingPageCache {
+  // Key is stat var dcid.
+  map<string, ObsTimeSeries> data = 1;
+  repeated string categories = 2;
+}
