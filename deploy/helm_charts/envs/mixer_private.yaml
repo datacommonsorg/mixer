@@ -7,6 +7,9 @@ mixer:
   tmcfCSVBucket: datcom-public
   tmcfCSVFolder: food
 
+ingress:
+  name: mixer-ingress-private
+
 memdbJSON: |
   {
     "importName": "Feeding America",

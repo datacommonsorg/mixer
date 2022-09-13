@@ -77,7 +77,7 @@ serviceAccount:
   gsaName: mixer-robot
 
 ingress:
-  name: mixer-ingress
+  name:
   enabled: true
   annotations: {
     kubernetes.io/ingress.global-static-ip-name: mixer-ip,
