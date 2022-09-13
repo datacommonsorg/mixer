@@ -6,6 +6,9 @@ mixer:
   bigqueryOnly: true
   bigqueryTableRef: google.com:datcom-store-dev.dc_v3_encode_clustered
 
+ingress:
+  name: mixer-ingress-encode
+
 # Encode instance only services SPARQL
 serviceGroups:
   - mixer-sparql-service:
