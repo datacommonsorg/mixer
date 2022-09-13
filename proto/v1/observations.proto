@@ -103,3 +103,27 @@ message BulkObservationsSeriesLinkedRequest {
   // [Optional] Whether to fetch data from all facets
   bool all_facets = 5;
 }
+
+message DerivedObservationsSeriesRequest {
+  string entity = 1;
+  // Supported operators: +, -, *, /, along with parentheses.
+  //
+  // The items of the formula have a form of "StatVar[OptionalFilters]".
+  //
+  // The following filters are supported:
+  // 1. mm: MeasurementMethod
+  // 2. op: ObservationPeriod
+  // 3. ut: Unit
+  // 4. sf: ScalingFactor
+  //
+  // For example:
+  // 1. Person_Count - Person_Count_Female
+  // 2. Person_Count_Female / Person_Count[mm=CensusACS5yrSurvey;op=P5Y]
+  // 3. Person_Count - Person_Count_Female - Person_Count_Male[op=P5Y]
+  // 4. (Person_Count_Male - Person_Count_Female) / Person_Count
+  string formula = 2;
+}
+
+message DerivedObservationsSeriesResponse {
+  repeated datacommons.PointStat observations = 1;
+}

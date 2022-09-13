@@ -467,3 +467,35 @@ func EncodeProto(m proto.Message) (string, error) {
 	}
 	return ZipAndEncode(data)
 }
+
+// StringListIntersection finds common strings among a list of string lists.
+// For example, for input [[a,b,c],[a,c,d],[a,c,e]], it returns [a,c].
+func StringListIntersection(list [][]string) []string {
+	uniqueStringSet := map[string]struct{}{}
+	listOfStringSets := []map[string]struct{}{}
+	for _, strs := range list {
+		strSet := map[string]struct{}{}
+		for _, str := range strs {
+			uniqueStringSet[str] = struct{}{}
+			strSet[str] = struct{}{}
+		}
+		listOfStringSets = append(listOfStringSets, strSet)
+	}
+
+	res := []string{}
+	for str := range uniqueStringSet {
+		isCommonStr := true
+		for _, set := range listOfStringSets {
+			if _, ok := set[str]; !ok {
+				isCommonStr = false
+				break
+			}
+		}
+		if isCommonStr {
+			res = append(res, str)
+		}
+	}
+	sort.Strings(res)
+
+	return res
+}

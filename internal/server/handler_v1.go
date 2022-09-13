@@ -210,3 +210,10 @@ func (s *Server) VariableAncestors(
 ) (*pb.VariableAncestorsResponse, error) {
 	return variable.Ancestors(ctx, in, s.store, s.cache)
 }
+
+// DerivedObservationsSeries implements API for mixer.ObservationsSeries.
+func (s *Server) DerivedObservationsSeries(
+	ctx context.Context, in *pb.DerivedObservationsSeriesRequest,
+) (*pb.DerivedObservationsSeriesResponse, error) {
+	return observations.DerivedSeries(ctx, in, s.store)
+}

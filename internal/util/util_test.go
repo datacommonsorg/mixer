@@ -363,3 +363,24 @@ func TestEncode(t *testing.T) {
 		}
 	}
 }
+
+func TestStringListIntersection(t *testing.T) {
+	for _, c := range []struct {
+		list [][]string
+		want []string
+	}{
+		{
+			[][]string{
+				{"a", "b", "c"},
+				{"a", "c", "d"},
+				{"a", "c", "e", "f"},
+			},
+			[]string{"a", "c"},
+		},
+	} {
+		got := StringListIntersection(c.list)
+		if !reflect.DeepEqual(got, c.want) {
+			t.Errorf("StringListIntersection() = %v, want %v", got, c.want)
+		}
+	}
+}
