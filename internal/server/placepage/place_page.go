@@ -259,6 +259,7 @@ func fetchBtData(
 			placePageData := row.Data.(*pb.LandingPageCache)
 			if _, ok := mergedPlacePageData[place]; !ok {
 				mergedPlacePageData[place] = placePageData
+				sort.Strings(mergedPlacePageData[place].Categories)
 			} else {
 				mergedPlacePageData[place].Categories = util.MergeDedupe(
 					mergedPlacePageData[place].Categories, placePageData.Categories)
@@ -278,9 +279,7 @@ func fetchBtData(
 
 	for place, data := range mergedPlacePageData {
 		finalData := &pb.StatVarSeries{Data: map[string]*pb.Series{}}
-		categoryData[place] = &pb.Categories{}
-		categoryData[place].Category = data.Categories
-		sort.Strings(categoryData[place].Category)
+		categoryData[place] = &pb.Categories{Category: data.Categories}
 		for statVar, obsTimeSeries := range data.Data {
 			series, _ := stat.GetBestSeries(obsTimeSeries, "", false /* useLatest */)
 			finalData.Data[statVar] = series
