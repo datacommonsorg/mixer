@@ -72,8 +72,8 @@ helm package .
 4.  Run the [helm push](https://helm.sh/docs/helm/helm_push/) command to upload the package to AR.
 
     Note
-    - Replace the tgz file with the filename from step 4.
-    - Replace the repo (the porttion after "oci://") with a custom repo. 
+    -   Replace the tgz file with the filename from step 4.
+    -   Replace the repo (the porttion after "oci://") with a custom repo. 
 
 ```sh
 helm push \
