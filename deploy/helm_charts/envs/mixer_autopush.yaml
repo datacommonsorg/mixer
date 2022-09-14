@@ -18,9 +18,9 @@ serviceGroups:
         - "/v1/variable/*"
         - "/variable/ancestors/*"
       replicas:
-        default: 10
-        min: 10
-        max: 40
+        default: 2
+        min: 2
+        max: 8
       resources:
         memoryRequest: "8G"
         memoryLimit: "8G"
