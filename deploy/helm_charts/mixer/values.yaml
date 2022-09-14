@@ -113,9 +113,7 @@ serviceGroups:
     # please also change the name in the deployment.yaml template.
   - recon: 
       urlPaths:
-        - "/entity/*"
-        - "/coordinate/*"
-        - "/id/*"
+        - "/v1/recon/*"
       replicas:
         default: 1
         min: 1
