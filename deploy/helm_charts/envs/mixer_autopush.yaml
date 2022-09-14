@@ -9,6 +9,44 @@ ingress:
     ingress.gcp.kubernetes.io/pre-shared-cert: "mixer-certificate,multi-domain-2022"
   }
 
+serviceGroups:
+  - mixer-svg-service: 
+      urlPaths:
+        - "/place/stat-var-group/*"
+        - "/stat-var/*"
+        - "/v1/info/variable/group/*"
+        - "/v1/variable/*"
+        - "/variable/ancestors/*"
+      replicas:
+        default: 10
+        min: 10
+        max: 40
+      resources:
+        memoryRequest: "8G"
+        memoryLimit: "8G"
+  - recon: 
+      urlPaths:
+        - "/entity/*"
+        - "/coordinate/*"
+        - "/id/*"
+      replicas:
+        default: 4
+        min: 4
+        max: 8
+      resources:
+        memoryRequest: "3G"
+        memoryLimit: "3G"
+  - mixer-default-service:
+      urlPaths:
+        - "/*"
+      replicas:
+        default: 15
+        min: 15
+        max: 30
+      resources:
+        memoryRequest: "3G"
+        memoryLimit: "3G"
+
 # GCP level config
 ip: 34.117.145.125
 region: us-central1
