@@ -18,9 +18,9 @@
 #
 # Usage:
 #
-# ./deploy_key.sh <"prod"|"staging"|"autopush"|"encode"|"dev"|"private"> <commit_hash>
+# ./deploy_key.sh <"mixer_prod"|"mixer_staging"|"mixer_autopush"|"mixer_encode"|"mixer_dev"|"mixer_private"> <commit_hash>
 #
-# First argument is either "prod" or "staging" or "autopush" or "encode" or "dev".
+# First argument is either "mixer_prod" or "mixer_staging" or "mixer_autopush" or "mixer_encode" or "mixer_dev" or mixer_private.
 # (Optional) second argument is the git commit hash of the mixer repo.
 #
 # !!! WARNING: Run this script in a clean Git checkout at the desired commit.
@@ -70,7 +70,7 @@ export IP=$(yq eval '.ip' deploy/helm_charts/envs/$ENV.yaml)
 export DOMAIN=$(yq eval '.mixer.serviceName' deploy/helm_charts/envs/$ENV.yaml)
 export API_TITLE=$(yq eval '.api_title' deploy/helm_charts/envs/$ENV.yaml)
 export CLUSTER_NAME=mixer-$REGION
-SPACE_SEPARATED_APIS=$(yq eval '.api' deploy/helm_charts/envs/$ENV.yaml | sed 's/-/ /g')
+SPACE_SEPARATED_APIS=$(yq eval '.api' "deploy/helm_charts/envs/$ENV.yaml" | sed 's/-/ /g')
 export APIS=($SPACE_SEPARATED_APIS)
 
 # Deploy to GKE
