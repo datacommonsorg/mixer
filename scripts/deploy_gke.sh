@@ -69,8 +69,9 @@ export REGION=$(yq eval '.region' deploy/helm_charts/envs/$ENV.yaml)
 export IP=$(yq eval '.ip' deploy/helm_charts/envs/$ENV.yaml)
 export DOMAIN=$(yq eval '.mixer.serviceName' deploy/helm_charts/envs/$ENV.yaml)
 export API_TITLE=$(yq eval '.api_title' deploy/helm_charts/envs/$ENV.yaml)
-export API=$(yq eval '.api' deploy/helm_charts/envs/$ENV.yaml)
 export CLUSTER_NAME=mixer-$REGION
+SPACE_SEPARATED_APIS=$(yq eval '.api' deploy/helm_charts/envs/$ENV.yaml | sed 's/-/ /g')
+export APIS=($SPACE_SEPARATED_APIS)
 
 # Deploy to GKE
 gcloud config set project $PROJECT_ID
@@ -100,9 +101,18 @@ helm upgrade --install "$RELEASE" deploy/helm_charts/mixer \
 cp $ROOT/esp/endpoints.yaml.tmpl endpoints.yaml
 yq eval -i '.name = env(DOMAIN)' endpoints.yaml
 yq eval -i '.title = env(API_TITLE)' endpoints.yaml
-yq eval -i '.apis[0].name = env(API)' endpoints.yaml
 yq eval -i '.endpoints[0].target = env(IP)' endpoints.yaml
 yq eval -i '.endpoints[0].name = env(DOMAIN)' endpoints.yaml
+# Append apis (ex: datacommons.Mixer) one by one.
+for api in "${APIS[@]}"
+do
+  export API=$api
+  echo "Adding api $API to cloud endpoint config."
+  yq -i '.apis += [{"name": env(API)}]' endpoints.yaml
+done
+echo "endpoints.yaml content:"
+cat endpoints.yaml
+
 gsutil cp gs://datcom-mixer-grpc/mixer-grpc/mixer-grpc.$TAG.pb .
 gcloud endpoints services deploy mixer-grpc.$TAG.pb endpoints.yaml --project $PROJECT_ID
 

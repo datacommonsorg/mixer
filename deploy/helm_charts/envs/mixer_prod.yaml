@@ -26,9 +26,7 @@ serviceGroups:
         memoryLimit: "8G"
   - recon: 
       urlPaths:
-        - "/entity/*"
-        - "/coordinate/*"
-        - "/id/*"
+        - "/v1/recon/*"
       replicas:
         default: 4
         min: 4
@@ -51,5 +49,7 @@ serviceGroups:
 ip: 35.244.133.155
 region: us-central1
 api_title: DataCommons API
-api: datacommons.Mixer
+api:
+- datacommons.Mixer
+- datacommons.Recon
 nodes: 6
