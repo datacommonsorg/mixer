@@ -70,6 +70,14 @@ func TestPlacePage(t *testing.T) {
 				"Economics",
 			},
 			{
+				"ca_overview.sample.json",
+				"geoId/06",
+				1,
+				[]string{},
+				3,
+				"Overview",
+			},
+			{
 				"tha.sample.json",
 				"country/THA",
 				1,

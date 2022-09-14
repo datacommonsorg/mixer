@@ -29,6 +29,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/v0/propertyvalue"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
+	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/protobuf/proto"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
@@ -259,6 +260,8 @@ func fetchBtData(
 			if _, ok := mergedPlacePageData[place]; !ok {
 				mergedPlacePageData[place] = placePageData
 			}
+			mergedPlacePageData[place].Categories = util.MergeDedupe(
+				mergedPlacePageData[place].Categories, placePageData.Categories)
 			for statVar, obsTimeSeries := range placePageData.Data {
 				if _, ok := mergedPlacePageData[place].Data[statVar]; !ok {
 					mergedPlacePageData[place].Data[statVar] = obsTimeSeries
@@ -274,9 +277,7 @@ func fetchBtData(
 
 	for place, data := range mergedPlacePageData {
 		finalData := &pb.StatVarSeries{Data: map[string]*pb.Series{}}
-		categoryData[place] = &pb.Categories{}
-		categoryData[place].Category = append(categoryData[place].Category,
-			data.Categories...)
+		categoryData[place] = &pb.Categories{Category: data.Categories}
 		for statVar, obsTimeSeries := range data.Data {
 			series, _ := stat.GetBestSeries(obsTimeSeries, "", false /* useLatest */)
 			finalData.Data[statVar] = series
