@@ -1610,228 +1610,228 @@
   "validCategories": {
     "country/USA": {
       "category": [
-        "Education",
-        "Demographics",
-        "Health",
+        "Climate",
         "Crime",
-        "Energy",
-        "Overview",
-        "Equity",
-        "Housing",
+        "Demographics",
         "Economics",
-        "Climate"
+        "Education",
+        "Energy",
+        "Equity",
+        "Health",
+        "Housing",
+        "Overview"
       ]
     },
     "geoId/04": {
       "category": [
-        "Equity",
-        "Overview",
         "Climate",
+        "Crime",
+        "Demographics",
+        "Economics",
         "Education",
         "Energy",
-        "Housing",
+        "Equity",
         "Health",
-        "Economics",
-        "Crime",
-        "Demographics"
+        "Housing",
+        "Overview"
       ]
     },
     "geoId/06": {
       "category": [
-        "Overview",
-        "Housing",
         "Climate",
-        "Equity",
-        "Education",
         "Crime",
-        "Health",
         "Demographics",
         "Economics",
-        "Energy"
+        "Education",
+        "Energy",
+        "Equity",
+        "Health",
+        "Housing",
+        "Overview"
       ]
     },
     "geoId/06037": {
       "category": [
+        "Climate",
+        "Demographics",
+        "Economics",
         "Education",
+        "Equity",
         "Health",
         "Housing",
-        "Equity",
-        "Economics",
-        "Demographics",
-        "Overview",
-        "Climate"
+        "Overview"
       ]
     },
     "geoId/06059": {
       "category": [
-        "Equity",
-        "Health",
         "Climate",
+        "Demographics",
         "Economics",
         "Education",
-        "Overview",
-        "Demographics",
-        "Housing"
+        "Equity",
+        "Health",
+        "Housing",
+        "Overview"
       ]
     },
     "geoId/06065": {
       "category": [
         "Climate",
+        "Demographics",
+        "Economics",
+        "Education",
         "Equity",
-        "Overview",
         "Health",
         "Housing",
-        "Education",
-        "Economics",
-        "Demographics"
+        "Overview"
       ]
     },
     "geoId/06071": {
       "category": [
-        "Economics",
-        "Health",
-        "Education",
-        "Housing",
-        "Equity",
-        "Demographics",
         "Climate",
+        "Demographics",
+        "Economics",
+        "Education",
+        "Equity",
+        "Health",
+        "Housing",
         "Overview"
       ]
     },
     "geoId/06073": {
       "category": [
-        "Education",
-        "Economics",
         "Climate",
-        "Overview",
-        "Housing",
         "Demographics",
+        "Economics",
+        "Education",
         "Equity",
-        "Health"
+        "Health",
+        "Housing",
+        "Overview"
       ]
     },
     "geoId/08": {
       "category": [
-        "Crime",
-        "Equity",
-        "Demographics",
         "Climate",
-        "Education",
+        "Crime",
+        "Demographics",
         "Economics",
-        "Housing",
+        "Education",
         "Energy",
-        "Overview",
-        "Health"
+        "Equity",
+        "Health",
+        "Housing",
+        "Overview"
       ]
     },
     "geoId/18": {
       "category": [
-        "Education",
-        "Demographics",
-        "Overview",
-        "Equity",
-        "Housing",
         "Climate",
-        "Economics",
         "Crime",
+        "Demographics",
+        "Economics",
+        "Education",
+        "Energy",
+        "Equity",
         "Health",
-        "Energy"
+        "Housing",
+        "Overview"
       ]
     },
     "geoId/22": {
       "category": [
-        "Economics",
-        "Housing",
-        "Education",
         "Climate",
-        "Equity",
-        "Overview",
-        "Demographics",
         "Crime",
+        "Demographics",
+        "Economics",
+        "Education",
+        "Energy",
+        "Equity",
         "Health",
-        "Energy"
+        "Housing",
+        "Overview"
       ]
     },
     "geoId/29": {
       "category": [
         "Climate",
-        "Housing",
-        "Equity",
-        "Health",
+        "Crime",
+        "Demographics",
         "Economics",
         "Education",
-        "Overview",
-        "Crime",
         "Energy",
-        "Demographics"
+        "Equity",
+        "Health",
+        "Housing",
+        "Overview"
       ]
     },
     "geoId/38": {
       "category": [
-        "Economics",
-        "Demographics",
-        "Overview",
+        "Climate",
         "Crime",
-        "Housing",
+        "Demographics",
+        "Economics",
+        "Education",
+        "Energy",
         "Equity",
         "Health",
-        "Education",
-        "Climate",
-        "Energy"
+        "Housing",
+        "Overview"
       ]
     },
     "geoId/47": {
       "category": [
         "Climate",
-        "Education",
-        "Energy",
-        "Economics",
-        "Overview",
-        "Equity",
         "Crime",
         "Demographics",
+        "Economics",
+        "Education",
+        "Energy",
+        "Equity",
+        "Health",
         "Housing",
-        "Health"
+        "Overview"
       ]
     },
     "geoId/48": {
       "category": [
-        "Economics",
-        "Education",
         "Climate",
         "Crime",
+        "Demographics",
+        "Economics",
+        "Education",
         "Energy",
-        "Health",
-        "Overview",
-        "Housing",
         "Equity",
-        "Demographics"
+        "Health",
+        "Housing",
+        "Overview"
       ]
     },
     "geoId/53": {
       "category": [
-        "Education",
         "Climate",
-        "Housing",
         "Crime",
-        "Equity",
-        "Overview",
-        "Energy",
-        "Health",
+        "Demographics",
         "Economics",
-        "Demographics"
+        "Education",
+        "Energy",
+        "Equity",
+        "Health",
+        "Housing",
+        "Overview"
       ]
     },
     "geoId/72": {
       "category": [
-        "Education",
         "Climate",
+        "Demographics",
         "Economics",
-        "Housing",
+        "Education",
         "Equity",
-        "Overview",
         "Health",
-        "Demographics"
+        "Housing",
+        "Overview"
       ]
     }
   },
