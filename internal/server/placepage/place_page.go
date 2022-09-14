@@ -279,8 +279,8 @@ func fetchBtData(
 	for place, data := range mergedPlacePageData {
 		finalData := &pb.StatVarSeries{Data: map[string]*pb.Series{}}
 		categoryData[place] = &pb.Categories{}
-		categoryData[place].Category = util.MergeDedupe(
-			categoryData[place].Category, data.Categories)
+		categoryData[place].Category = data.Categories
+		sort.Strings(categoryData[place].Category)
 		for statVar, obsTimeSeries := range data.Data {
 			series, _ := stat.GetBestSeries(obsTimeSeries, "", false /* useLatest */)
 			finalData.Data[statVar] = series
