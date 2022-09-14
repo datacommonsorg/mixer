@@ -41,21 +41,39 @@ helm upgrade --install mixer-dev deploy/helm_charts/mixer \
 
 Releasing a helm chart packages and uploads a helm chart into [AR(Artifact Registry)](https://cloud.google.com/artifact-registry/docs/overview) as a versioned artifact. Once released, the chart will be accessible by the public, given that the access to AR repository is configured.
 
-1.  Skip this step for upgrades. Make sure that an AR docker repository exists. If not, please follow the instructions [here](https://cloud.google.com/artifact-registry/docs/helm) to create one.
-2.  Update the version field in Chart.yaml. The version follows the [semantic versioning](https://semver.org/) format.
-3.  Go the specific chart. Ex: mixer.
+### Prerequisites
+
+Make sure that the repository exists with the following gcloud command.
+
+```sh
+ gcloud artifacts repositories describe mixer-helm-chart  \
+    --location=us  --project=datcom-ci
+ ```
+
+If it does not, please follow the instructions [here](https://cloud.google.com/artifact-registry/docs/helm) to create a new repository.
+
+### Steps
+
+The following steps are for Mixer's server chart, located at `deploy/helm_charts/mixer`.
+    
+1.  Update the version field in Chart.yaml. The version follows the [semantic versioning](https://semver.org/) format.
+2.  Go the specific chart's root directory.
 
 ```sh
 cd deploy/helm_charts/mixer
 ```
 
-4.  Run the [helm package](https://helm.sh/docs/helm/helm_package/) command.
+3.  Run the [helm package](https://helm.sh/docs/helm/helm_package/) command to create a package locally, to be uploaded later.
 
 ```sh
 helm package .
 ```
 
-5.  Run the [helm push](https://helm.sh/docs/helm/helm_push/) command. Replace the tgz file with the filename from step 4.
+4.  Run the [helm push](https://helm.sh/docs/helm/helm_push/) command to upload the package to AR.
+
+    Note
+    - Replace the tgz file with the filename from step 4.
+    - Replace the repo (the porttion after "oci://") with a custom repo. 
 
 ```sh
 helm push \

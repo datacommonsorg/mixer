@@ -59,3 +59,6 @@ deploy/git/mixer_hash.txt
 
 # Memory profiling output
 http_memprof_out
+
+# helm charts
+deploy/helm_charts/**/*.tgz
