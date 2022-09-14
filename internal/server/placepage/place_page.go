@@ -16,7 +16,6 @@ package placepage
 
 import (
 	"context"
-	"fmt"
 	"hash/fnv"
 	"math/rand"
 	"regexp"
@@ -257,13 +256,11 @@ func fetchBtData(
 			}
 			place := row.Parts[0]
 			placePageData := row.Data.(*pb.LandingPageCache)
-			fmt.Println("place:", place)
-			fmt.Println("categories:", placePageData.Categories)
 			if _, ok := mergedPlacePageData[place]; !ok {
 				mergedPlacePageData[place] = placePageData
 			} else {
-				mergedPlacePageData[place].Categories = append(mergedPlacePageData[place].Categories,
-					placePageData.Categories...)
+				mergedPlacePageData[place].Categories = append(
+					mergedPlacePageData[place].Categories, placePageData.Categories...)
 			}
 			for statVar, obsTimeSeries := range placePageData.Data {
 				if _, ok := mergedPlacePageData[place].Data[statVar]; !ok {
@@ -281,8 +278,8 @@ func fetchBtData(
 	for place, data := range mergedPlacePageData {
 		finalData := &pb.StatVarSeries{Data: map[string]*pb.Series{}}
 		categoryData[place] = &pb.Categories{}
-		categoryData[place].Category = append(categoryData[place].Category,
-			data.Categories...)
+		categoryData[place].Category = removeDuplicateStr(
+			append(categoryData[place].Category, data.Categories...))
 		for statVar, obsTimeSeries := range data.Data {
 			series, _ := stat.GetBestSeries(obsTimeSeries, "", false /* useLatest */)
 			finalData.Data[statVar] = series
@@ -646,4 +643,16 @@ func GetPlacePageDataHelper(
 	resp.LatestPopulation = popData
 	resp.ValidCategories = categoryData
 	return &resp, nil
+}
+
+func removeDuplicateStr(strSlice []string) []string {
+	allKeys := make(map[string]bool)
+	list := []string{}
+	for _, item := range strSlice {
+		if _, value := allKeys[item]; !value {
+			allKeys[item] = true
+			list = append(list, item)
+		}
+	}
+	return list
 }
