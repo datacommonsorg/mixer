@@ -16,6 +16,7 @@ package placepage
 
 import (
 	"context"
+	"fmt"
 	"hash/fnv"
 	"math/rand"
 	"regexp"
@@ -256,8 +257,13 @@ func fetchBtData(
 			}
 			place := row.Parts[0]
 			placePageData := row.Data.(*pb.LandingPageCache)
+			fmt.Println("place:", place)
+			fmt.Println("categories:", placePageData.Categories)
 			if _, ok := mergedPlacePageData[place]; !ok {
 				mergedPlacePageData[place] = placePageData
+			} else {
+				mergedPlacePageData[place].Categories = append(mergedPlacePageData[place].Categories,
+					placePageData.Categories...)
 			}
 			for statVar, obsTimeSeries := range placePageData.Data {
 				if _, ok := mergedPlacePageData[place].Data[statVar]; !ok {
