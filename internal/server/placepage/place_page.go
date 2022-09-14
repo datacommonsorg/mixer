@@ -259,11 +259,9 @@ func fetchBtData(
 			placePageData := row.Data.(*pb.LandingPageCache)
 			if _, ok := mergedPlacePageData[place]; !ok {
 				mergedPlacePageData[place] = placePageData
-				sort.Strings(mergedPlacePageData[place].Categories)
-			} else {
-				mergedPlacePageData[place].Categories = util.MergeDedupe(
-					mergedPlacePageData[place].Categories, placePageData.Categories)
 			}
+			mergedPlacePageData[place].Categories = util.MergeDedupe(
+				mergedPlacePageData[place].Categories, placePageData.Categories)
 			for statVar, obsTimeSeries := range placePageData.Data {
 				if _, ok := mergedPlacePageData[place].Data[statVar]; !ok {
 					mergedPlacePageData[place].Data[statVar] = obsTimeSeries
