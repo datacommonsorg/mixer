@@ -5,18 +5,18 @@ mixer:
 
 ingress:
   name: mixer-ingress-staging
-  annotations: {
-    ingress.gcp.kubernetes.io/pre-shared-cert: "mixer-certificate,multi-domain-2022"
-  }
+  annotations:
+    {
+      ingress.gcp.kubernetes.io/pre-shared-cert: "mixer-certificate,multi-domain-2022",
+    }
 
 serviceGroups:
-  - mixer-svg-service: 
+  - mixer-svg-service:
       urlPaths:
         - "/place/stat-var-group/*"
         - "/stat-var/*"
         - "/v1/info/variable/group/*"
         - "/v1/variable/*"
-        - "/variable/ancestors/*"
       replicas:
         default: 2
         min: 2
@@ -24,7 +24,7 @@ serviceGroups:
       resources:
         memoryRequest: "8G"
         memoryLimit: "8G"
-  - recon: 
+  - recon:
       urlPaths:
         - "/v1/recon/*"
       replicas:
@@ -44,12 +44,12 @@ serviceGroups:
       resources:
         memoryRequest: "3G"
         memoryLimit: "3G"
-        
+
 # GCP level config
 ip: 34.107.161.252
 region: us-central1
 api_title: DataCommons API (Staging)
 api:
-- datacommons.Mixer
-- datacommons.Recon
+  - datacommons.Mixer
+  - datacommons.Recon
 nodes: 2
