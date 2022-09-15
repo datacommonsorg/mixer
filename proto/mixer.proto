@@ -560,7 +560,7 @@ service Mixer {
   rpc VariableAncestors(datacommons.v1.VariableAncestorsRequest)
       returns (datacommons.v1.VariableAncestorsResponse) {
     option (google.api.http) = {
-      get : "/variable/ancestors/{node=**}"
+      get : "/v1/variable/ancestors/{node=**}"
     };
   }
 

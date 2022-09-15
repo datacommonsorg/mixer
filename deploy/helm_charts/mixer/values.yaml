@@ -40,26 +40,25 @@ mixer:
   # Folder under the CSV bucket.
   tmcfCSVFolder:
 
-  
   # If bigqueryOnly is True, bigqueryTableRef must be specified.
   bigqueryOnly: false
   # Example: google.com:datcom-store-dev.dc_v3_encode_clustered
-  bigqueryTableRef: 
+  bigqueryTableRef:
 
   # URL root for the mixer service launched.
   # Example: dev.api.datacommons.org
-  serviceName: 
- 
+  serviceName:
+
   image:
     repository: gcr.io/datcom-ci/datacommons-mixer
     pullPolicy: IfNotPresent
     tag: "latest"
 
   schemaConfigs:
-    base.mcf: 
+    base.mcf:
     dailyweather.mcf:
     monthlyweather.mcf:
-    encode.mcf: 
+    encode.mcf:
 
 esp:
   image:
@@ -79,10 +78,11 @@ serviceAccount:
 ingress:
   name:
   enabled: true
-  annotations: {
-    kubernetes.io/ingress.global-static-ip-name: mixer-ip,
-    ingress.gcp.kubernetes.io/pre-shared-cert: mixer-certificate
-  }
+  annotations:
+    {
+      kubernetes.io/ingress.global-static-ip-name: mixer-ip,
+      ingress.gcp.kubernetes.io/pre-shared-cert: mixer-certificate,
+    }
 
 kgStoreConfig:
   bigqueryVersion:
@@ -91,17 +91,16 @@ kgStoreConfig:
 
 memdbJSON: ""
 
-# To overwrite any portion of serviceGroups, please copy and paste 
+# To overwrite any portion of serviceGroups, please copy and paste
 # the entire serviceGroups below into the custom values yaml file,
 # and make changes to it.
 serviceGroups:
-  - svg: 
+  - svg:
       urlPaths:
         - "/place/stat-var-group/*"
         - "/stat-var/*"
         - "/v1/info/variable/group/*"
         - "/v1/variable/*"
-        - "/variable/ancestors/*"
       replicas:
         default: 2
         min: 2
@@ -111,7 +110,7 @@ serviceGroups:
         memoryLimit: "8G"
     # If the name of the recon service is changed here,
     # please also change the name in the deployment.yaml template.
-  - recon: 
+  - recon:
       urlPaths:
         - "/v1/recon/*"
       replicas:
