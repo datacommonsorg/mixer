@@ -21,7 +21,7 @@ import (
 	"github.com/google/go-cmp/cmp/cmpopts"
 )
 
-func TestVarCalculatorParseFormula(t *testing.T) {
+func TestCalculatorParseFormula(t *testing.T) {
 	strCmpOpts := cmpopts.SortSlices(func(a, b string) bool { return a < b })
 
 	for _, c := range []struct {
@@ -41,13 +41,13 @@ func TestVarCalculatorParseFormula(t *testing.T) {
 			[]string{"Person_Count_Female", "Person_Count"},
 		},
 	} {
-		varCalculator, err := newCalculator(c.formula)
+		calculator, err := newCalculator(c.formula)
 		if err != nil {
 			t.Errorf("newCalculator(%s) = %s", c.formula, err)
 		}
-		gotStatVars := varCalculator.statVars()
+		gotStatVars := calculator.statVars()
 		if diff := cmp.Diff(gotStatVars, c.wantStatVars, strCmpOpts); diff != "" {
-			t.Errorf("varCalculator.statVars() diff (-want +got):\n%s", diff)
+			t.Errorf("calculator.statVars(%s) diff (-want +got):\n%s", c.formula, diff)
 		}
 	}
 }

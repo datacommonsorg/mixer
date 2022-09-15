@@ -21,18 +21,18 @@ import (
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 )
 
-func TestParseVarName(t *testing.T) {
+func TestParseNodeName(t *testing.T) {
 	for _, c := range []struct {
-		varName     string
-		wantVarInfo *varInfo
+		nodeName string
+		want     *nodeInfo
 	}{
 		{
 			"Person_Count",
-			&varInfo{statVar: "Person_Count"},
+			&nodeInfo{statVar: "Person_Count"},
 		},
 		{
 			"Person_Count_Female[ut=NumberUnit;mm=dcAggregate/Census;op=P1Y;sf=100]",
-			&varInfo{
+			&nodeInfo{
 				statVar: "Person_Count_Female",
 				statMetadata: &pb.StatMetadata{
 					MeasurementMethod: "dcAggregate/Census",
@@ -43,13 +43,13 @@ func TestParseVarName(t *testing.T) {
 			},
 		},
 	} {
-		gotVarInfo, err := parseVarName(c.varName)
+		got, err := parseNodeName(c.nodeName)
 		if err != nil {
-			t.Errorf("parseVarName(%s) = %s", c.varName, err)
+			t.Errorf("parseNodeName(%s) = %s", c.nodeName, err)
 		}
-		if ok := reflect.DeepEqual(gotVarInfo, c.wantVarInfo); !ok {
+		if ok := reflect.DeepEqual(got, c.want); !ok {
 			t.Errorf("parseVarName(%s) = %v, want %v",
-				c.varName, gotVarInfo, c.wantVarInfo)
+				c.nodeName, got, c.want)
 		}
 	}
 }
