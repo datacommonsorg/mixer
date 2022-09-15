@@ -28,24 +28,24 @@ import (
 	"github.com/datacommonsorg/mixer/internal/util"
 )
 
-// An calculable item that belong to a node in the AST tree.
+// A calculable item that belong to a node in the AST tree.
 // The item can be a number, a time series, a map from entity to number, etc.
 type calcItem interface {
 	key() string
 }
 
 // The info of a node in the AST tree.
-type nodeInfo struct {
+type nodeData struct {
 	statVar        string
 	statMetadata   *pb.StatMetadata
-	itemCandidates []calcItem
+	candidateItems []calcItem
 	chosenItem     calcItem
 }
 
 type calculator struct {
 	expr ast.Expr
 	// Key is encodeForParse(nodeName).
-	nodeInfoMap map[string]*nodeInfo
+	nodeDataMap map[string]*nodeData
 }
 
 func newCalculator(formula string) (*calculator, error) {
@@ -54,7 +54,7 @@ func newCalculator(formula string) (*calculator, error) {
 		return nil, err
 	}
 
-	c := &calculator{expr: expr, nodeInfoMap: map[string]*nodeInfo{}}
+	c := &calculator{expr: expr, nodeDataMap: map[string]*nodeData{}}
 	if err := c.processNodeInfo(c.expr); err != nil {
 		return nil, err
 	}
@@ -62,18 +62,18 @@ func newCalculator(formula string) (*calculator, error) {
 	return c, nil
 }
 
-// Recursively iterate through the AST tree, extract and parse nodeName, then fill nodeInfo.
+// Recursively iterate through the AST tree, extract and parse nodeName, then fill nodeData.
 func (c *calculator) processNodeInfo(node ast.Node) error {
 	switch t := node.(type) {
 	case *ast.BinaryExpr:
 		for _, node := range []ast.Node{t.X, t.Y} {
 			if reflect.TypeOf(node).String() == "*ast.Ident" {
 				nodeName := node.(*ast.Ident).Name
-				nodeInfo, err := parseNodeName(decodeForParse(nodeName))
+				nodeData, err := parseNode(decodeForParse(nodeName))
 				if err != nil {
 					return err
 				}
-				c.nodeInfoMap[nodeName] = nodeInfo
+				c.nodeDataMap[nodeName] = nodeData
 			} else {
 				if err := c.processNodeInfo(node); err != nil {
 					return err
@@ -91,8 +91,8 @@ func (c *calculator) processNodeInfo(node ast.Node) error {
 
 func (c *calculator) statVars() []string {
 	statVarSet := map[string]struct{}{}
-	for k := range c.nodeInfoMap {
-		statVarSet[c.nodeInfoMap[k].statVar] = struct{}{}
+	for k := range c.nodeDataMap {
+		statVarSet[c.nodeDataMap[k].statVar] = struct{}{}
 	}
 	statVars := []string{}
 	for k := range statVarSet {
@@ -103,8 +103,7 @@ func (c *calculator) statVars() []string {
 
 func (c *calculator) calculate(
 	dataMap interface{},
-	extractItemCandidates func(
-		btData interface{}, statVar string,
+	extractItemCandidates func(btData interface{}, statVar string,
 		statMetadata *pb.StatMetadata) ([]calcItem, error),
 	evalBinaryExpr func(x, y calcItem, op token.Token) (calcItem, error),
 	rankCalcItem func(items []calcItem) calcItem,
@@ -127,13 +126,13 @@ func (c *calculator) fillItemCandidates(
 		statVar string,
 		statMetadata *pb.StatMetadata) ([]calcItem, error),
 ) error {
-	for _, nodeInfo := range c.nodeInfoMap {
+	for _, nodeData := range c.nodeDataMap {
 		calcItems, err := extractItemCandidates(
-			btData, nodeInfo.statVar, nodeInfo.statMetadata)
+			btData, nodeData.statVar, nodeData.statMetadata)
 		if err != nil {
 			return err
 		}
-		nodeInfo.itemCandidates = append(nodeInfo.itemCandidates, calcItems...)
+		nodeData.candidateItems = append(nodeData.candidateItems, calcItems...)
 	}
 	return nil
 }
@@ -143,9 +142,9 @@ func (c *calculator) chooseItem(
 ) error {
 	// Get common date keys across all the varInfos.
 	list := [][]string{} // A list of lists of series date keys.
-	for _, nodeInfo := range c.nodeInfoMap {
+	for _, nodeData := range c.nodeDataMap {
 		itemKeys := []string{}
-		for _, item := range nodeInfo.itemCandidates {
+		for _, item := range nodeData.candidateItems {
 			itemKeys = append(itemKeys, item.key())
 		}
 		list = append(list, itemKeys)
@@ -155,7 +154,7 @@ func (c *calculator) chooseItem(
 		return fmt.Errorf("no same date range for input time series sets")
 	}
 
-	// Choose the longest item key(s), used for selecting series among itemCandidates.
+	// Choose the longest item key(s), used for selecting series among candidateItems.
 	// For time series, the key represents the longest coverage of dates.
 	// For obs collection, the key represents the largest set of entities.
 	longestItemKeySet := map[string]struct{}{}
@@ -172,15 +171,15 @@ func (c *calculator) chooseItem(
 		}
 	}
 
-	// Set chosenItem for each nodeInfo.
-	for _, nodeInfo := range c.nodeInfoMap {
+	// Set chosenItem for each nodeData.
+	for _, nodeData := range c.nodeDataMap {
 		filteredItemCandidates := []calcItem{}
-		for _, item := range nodeInfo.itemCandidates {
+		for _, item := range nodeData.candidateItems {
 			if _, ok := longestItemKeySet[item.key()]; ok {
 				filteredItemCandidates = append(filteredItemCandidates, item)
 			}
 		}
-		nodeInfo.chosenItem = rankCalcItem(filteredItemCandidates)
+		nodeData.chosenItem = rankCalcItem(filteredItemCandidates)
 	}
 
 	return nil
@@ -196,7 +195,7 @@ func (c *calculator) evalExpr(
 	// compute the series value for the subtree..
 	computeChildSeries := func(node ast.Node) (calcItem, error) {
 		if reflect.TypeOf(node).String() == "*ast.Ident" {
-			return c.nodeInfoMap[node.(*ast.Ident).Name].chosenItem, nil
+			return c.nodeDataMap[node.(*ast.Ident).Name].chosenItem, nil
 		}
 		return c.evalExpr(node, evalBinaryExpr)
 	}

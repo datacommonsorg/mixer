@@ -67,8 +67,8 @@ func decodeForParse(s string) string {
 //
 // Parse nodeName, which contains a variable and a set of filters.
 // For example: Person_Count[mm=US_Census;p=P1Y].
-func parseNodeName(nodeName string) (*nodeInfo, error) {
-	res := &nodeInfo{}
+func parseNode(nodeName string) (*nodeData, error) {
+	res := &nodeData{}
 
 	if strings.Contains(nodeName, "[") { // With filters.
 		if !strings.Contains(nodeName, "]") {

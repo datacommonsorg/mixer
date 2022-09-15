@@ -24,15 +24,15 @@ import (
 func TestParseNodeName(t *testing.T) {
 	for _, c := range []struct {
 		nodeName string
-		want     *nodeInfo
+		want     *nodeData
 	}{
 		{
 			"Person_Count",
-			&nodeInfo{statVar: "Person_Count"},
+			&nodeData{statVar: "Person_Count"},
 		},
 		{
 			"Person_Count_Female[ut=NumberUnit;mm=dcAggregate/Census;op=P1Y;sf=100]",
-			&nodeInfo{
+			&nodeData{
 				statVar: "Person_Count_Female",
 				statMetadata: &pb.StatMetadata{
 					MeasurementMethod: "dcAggregate/Census",
@@ -43,7 +43,7 @@ func TestParseNodeName(t *testing.T) {
 			},
 		},
 	} {
-		got, err := parseNodeName(c.nodeName)
+		got, err := parseNode(c.nodeName)
 		if err != nil {
 			t.Errorf("parseNodeName(%s) = %s", c.nodeName, err)
 		}
