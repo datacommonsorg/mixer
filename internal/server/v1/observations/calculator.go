@@ -133,9 +133,7 @@ func (c *calculator) fillItemCandidates(
 		if err != nil {
 			return err
 		}
-		for _, item := range calcItems {
-			nodeInfo.itemCandidates = append(nodeInfo.itemCandidates, item)
-		}
+		nodeInfo.itemCandidates = append(nodeInfo.itemCandidates, calcItems...)
 	}
 	return nil
 }
