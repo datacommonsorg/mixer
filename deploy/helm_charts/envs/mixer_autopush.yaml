@@ -26,9 +26,7 @@ serviceGroups:
         memoryLimit: "8G"
   - recon: 
       urlPaths:
-        - "/entity/*"
-        - "/coordinate/*"
-        - "/id/*"
+        - "/v1/recon/*"
       replicas:
         default: 4
         min: 4
