@@ -21,39 +21,31 @@ import (
 	"fmt"
 	"go/ast"
 	"go/parser"
+	"go/token"
 	"reflect"
-	"strings"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/util"
 )
 
-type calculatorSeries struct {
-	statMetadata *pb.StatMetadata
-	// Sorted by date.
-	points []*pb.PointStat
+// A calculable item that belong to a node in the AST tree.
+// The item can be a number, a time series, a map from entity to number, etc.
+type calcItem interface {
+	key() string
 }
 
-// The date key of a time series is concatenation of all sorted dates.
-func (s *calculatorSeries) dateKey() string {
-	dates := []string{}
-	for _, point := range s.points {
-		dates = append(dates, point.GetDate())
-	}
-	return strings.Join(dates, "")
-}
-
-type varInfo struct {
-	statVar          string
-	statMetadata     *pb.StatMetadata
-	seriesCandidates []*calculatorSeries
-	chosenSeries     *calculatorSeries
+// The info of a node in the AST tree.
+type nodeData struct {
+	statVar        string
+	statMetadata   *pb.StatMetadata
+	candidateItems []calcItem
+	chosenItem     calcItem
 }
 
 type calculator struct {
 	expr ast.Expr
-	// Key is encodeForParse(varName).
-	varInfoMap map[string]*varInfo
+	// Key is encodeForParse(nodeName).
+	nodeDataMap map[string]*nodeData
 }
 
 func newCalculator(formula string) (*calculator, error) {
@@ -62,26 +54,45 @@ func newCalculator(formula string) (*calculator, error) {
 		return nil, err
 	}
 
-	// Iterate the AST, extract var names (variable with optional filters).
-	varNameVisitor := newVarNameVisitor()
-	ast.Walk(varNameVisitor, expr)
-
-	varInfoMap := map[string]*varInfo{}
-	for varName := range varNameVisitor.varNameSet {
-		varInfo, err := parseVarName(decodeForParse(varName))
-		if err != nil {
-			return nil, err
-		}
-		varInfoMap[varName] = varInfo
+	c := &calculator{expr: expr, nodeDataMap: map[string]*nodeData{}}
+	if err := c.processNodeInfo(c.expr); err != nil {
+		return nil, err
 	}
 
-	return &calculator{expr: expr, varInfoMap: varInfoMap}, nil
+	return c, nil
+}
+
+// Recursively iterate through the AST tree, extract and parse nodeName, then fill nodeData.
+func (c *calculator) processNodeInfo(node ast.Node) error {
+	switch t := node.(type) {
+	case *ast.BinaryExpr:
+		for _, node := range []ast.Node{t.X, t.Y} {
+			if reflect.TypeOf(node).String() == "*ast.Ident" {
+				nodeName := node.(*ast.Ident).Name
+				nodeData, err := parseNode(decodeForParse(nodeName))
+				if err != nil {
+					return err
+				}
+				c.nodeDataMap[nodeName] = nodeData
+			} else {
+				if err := c.processNodeInfo(node); err != nil {
+					return err
+				}
+			}
+		}
+	case *ast.ParenExpr:
+		return c.processNodeInfo(t.X)
+	default:
+		return fmt.Errorf("unsupported AST type %T", t)
+	}
+
+	return nil
 }
 
 func (c *calculator) statVars() []string {
 	statVarSet := map[string]struct{}{}
-	for k := range c.varInfoMap {
-		statVarSet[c.varInfoMap[k].statVar] = struct{}{}
+	for k := range c.nodeDataMap {
+		statVarSet[c.nodeDataMap[k].statVar] = struct{}{}
 	}
 	statVars := []string{}
 	for k := range statVarSet {
@@ -91,119 +102,102 @@ func (c *calculator) statVars() []string {
 }
 
 func (c *calculator) calculate(
-	entityData map[string]*pb.ObsTimeSeries) (*calculatorSeries, error) {
-	if err := c.extractSeriesCandidates(entityData); err != nil {
+	dataMap interface{},
+	extractItemCandidates func(btData interface{}, statVar string,
+		statMetadata *pb.StatMetadata) ([]calcItem, error),
+	evalBinaryExpr func(x, y calcItem, op token.Token) (calcItem, error),
+	rankCalcItem func(items []calcItem) calcItem,
+) (calcItem, error) {
+	if err := c.fillItemCandidates(dataMap, extractSeriesCandidates); err != nil {
 		return nil, err
 	}
 
-	if err := c.chooseSeries(); err != nil {
+	if err := c.chooseItem(rankCalcItem); err != nil {
 		return nil, err
 	}
 
-	return c.evaluateExpr(c.expr)
+	return c.evalExpr(c.expr, evalBinaryExpr)
 }
 
-func (c *calculator) extractSeriesCandidates(
-	entityData map[string]*pb.ObsTimeSeries) error {
-
-	for varInfoKey, varInfo := range c.varInfoMap {
-		statMetadata := varInfo.statMetadata
-		if obsTimeSeries, ok := entityData[varInfo.statVar]; ok {
-			for _, sourceSeries := range obsTimeSeries.GetSourceSeries() {
-				if m := statMetadata.GetMeasurementMethod(); m != "" {
-					if m != sourceSeries.GetMeasurementMethod() {
-						continue
-					}
-				}
-				if p := statMetadata.GetObservationPeriod(); p != "" {
-					if p != sourceSeries.GetObservationPeriod() {
-						continue
-					}
-				}
-				if u := statMetadata.GetUnit(); u != "" {
-					if u != sourceSeries.GetUnit() {
-						continue
-					}
-				}
-				if s := statMetadata.GetScalingFactor(); s != "" {
-					if s != sourceSeries.GetScalingFactor() {
-						continue
-					}
-				}
-				varInfo.seriesCandidates = append(varInfo.seriesCandidates,
-					toCalculatorSeries(sourceSeries))
-			}
-			if len(varInfo.seriesCandidates) == 0 {
-				return fmt.Errorf("no data for %s",
-					decodeForParse(varInfoKey))
-			}
-		} else {
-			return fmt.Errorf("no data for %s",
-				decodeForParse(varInfoKey))
+func (c *calculator) fillItemCandidates(
+	btData interface{},
+	extractItemCandidates func(
+		btData interface{},
+		statVar string,
+		statMetadata *pb.StatMetadata) ([]calcItem, error),
+) error {
+	for _, nodeData := range c.nodeDataMap {
+		calcItems, err := extractItemCandidates(
+			btData, nodeData.statVar, nodeData.statMetadata)
+		if err != nil {
+			return err
 		}
+		nodeData.candidateItems = append(nodeData.candidateItems, calcItems...)
 	}
 	return nil
 }
 
-func (c *calculator) chooseSeries() error {
+func (c *calculator) chooseItem(
+	rankCalcItem func(items []calcItem) calcItem,
+) error {
 	// Get common date keys across all the varInfos.
 	list := [][]string{} // A list of lists of series date keys.
-	for _, varInfo := range c.varInfoMap {
-		dateKeys := []string{}
-		for _, series := range varInfo.seriesCandidates {
-			dateKeys = append(dateKeys, series.dateKey())
+	for _, nodeData := range c.nodeDataMap {
+		itemKeys := []string{}
+		for _, item := range nodeData.candidateItems {
+			itemKeys = append(itemKeys, item.key())
 		}
-		list = append(list, dateKeys)
+		list = append(list, itemKeys)
 	}
-	commonDateKeys := util.StringListIntersection(list)
-	if len(commonDateKeys) == 0 {
+	commonItemKeys := util.StringListIntersection(list)
+	if len(commonItemKeys) == 0 {
 		return fmt.Errorf("no same date range for input time series sets")
 	}
 
-	// Choose the longest date key(s), used for selecting series among seriesCandidates.
-	// The longest date key represents the longest coverage of dates for time series.
-	longestDateKeySet := map[string]struct{}{}
-	maxDateKeyLength := 0
-	for _, k := range commonDateKeys {
-		if l := len(k); l > maxDateKeyLength {
-			for k := range longestDateKeySet {
-				delete(longestDateKeySet, k)
+	// Choose the longest item key(s), used for selecting series among candidateItems.
+	// For time series, the key represents the longest coverage of dates.
+	// For obs collection, the key represents the largest set of entities.
+	longestItemKeySet := map[string]struct{}{}
+	maxItemKeyLength := 0
+	for _, k := range commonItemKeys {
+		if l := len(k); l > maxItemKeyLength {
+			for k := range longestItemKeySet {
+				delete(longestItemKeySet, k)
 			}
-			longestDateKeySet[k] = struct{}{}
-			maxDateKeyLength = l
-		} else if l == maxDateKeyLength {
-			longestDateKeySet[k] = struct{}{}
+			longestItemKeySet[k] = struct{}{}
+			maxItemKeyLength = l
+		} else if l == maxItemKeyLength {
+			longestItemKeySet[k] = struct{}{}
 		}
 	}
 
-	// Set chosenSeries for each varInfo.
-	for _, varInfo := range c.varInfoMap {
-		filteredSeriesCandidates := []*calculatorSeries{}
-		for _, series := range varInfo.seriesCandidates {
-			if _, ok := longestDateKeySet[series.dateKey()]; ok {
-				filteredSeriesCandidates = append(filteredSeriesCandidates, series)
+	// Set chosenItem for each nodeData.
+	for _, nodeData := range c.nodeDataMap {
+		filteredItemCandidates := []calcItem{}
+		for _, item := range nodeData.candidateItems {
+			if _, ok := longestItemKeySet[item.key()]; ok {
+				filteredItemCandidates = append(filteredItemCandidates, item)
 			}
 		}
-		varInfo.chosenSeries = rankCalculatorSeries(filteredSeriesCandidates)
+		nodeData.chosenItem = rankCalcItem(filteredItemCandidates)
 	}
 
 	return nil
 }
 
-// Recursively iterate through the AST and compute the result.
-//
-// The existing ast.Walk() doesn't work here, because in ast.Walk(), visiting children is the last
-// step of the function that visits parent, so the information in child nodes cannot be passed
-// above in the iteration.
-func (c *calculator) evaluateExpr(node ast.Node) (*calculatorSeries, error) {
+// Recursively iterate through the AST and perform the calculation.
+func (c *calculator) evalExpr(
+	node ast.Node,
+	evalBinaryExpr func(x, y calcItem, op token.Token) (calcItem, error),
+) (calcItem, error) {
 	// If a node is of type *ast.Ident, it is a leaf with a series value.
 	// Otherwise, it might be *ast.ParenExpr or *ast.BinaryExpr, so we continue recursing it to
 	// compute the series value for the subtree..
-	computeChildSeries := func(node ast.Node) (*calculatorSeries, error) {
+	computeChildSeries := func(node ast.Node) (calcItem, error) {
 		if reflect.TypeOf(node).String() == "*ast.Ident" {
-			return c.varInfoMap[node.(*ast.Ident).Name].chosenSeries, nil
+			return c.nodeDataMap[node.(*ast.Ident).Name].chosenItem, nil
 		}
-		return c.evaluateExpr(node)
+		return c.evalExpr(node, evalBinaryExpr)
 	}
 
 	switch t := node.(type) {
@@ -216,9 +210,9 @@ func (c *calculator) evaluateExpr(node ast.Node) (*calculatorSeries, error) {
 		if err != nil {
 			return nil, err
 		}
-		return evaluateBinaryExpr(xSeries, ySeries, t.Op)
+		return evalBinaryExpr(xSeries, ySeries, t.Op)
 	case *ast.ParenExpr:
-		return c.evaluateExpr(t.X)
+		return c.evalExpr(t.X, evalBinaryExpr)
 	default:
 		return nil, fmt.Errorf("unsupported ast type %T", t)
 	}
