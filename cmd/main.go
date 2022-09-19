@@ -16,16 +16,16 @@ package main
 
 import (
 	"context"
-	"runtime"
-	"runtime/pprof"
-	"os"
 	"flag"
 	"fmt"
 	"log"
 	"net"
-	"path"
-	_ "net/http/pprof"
 	"net/http"
+	_ "net/http/pprof"
+	"os"
+	"path"
+	"runtime"
+	"runtime/pprof"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server"
@@ -193,7 +193,7 @@ func main() {
 
 		// Metadata.
 		metadata, err := server.NewMetadata(
-			*bqDataset, *storeProject, branchBtInstance, *schemaPath)
+			*mixerProject, *bqDataset, *storeProject, branchBtInstance, *schemaPath)
 		if err != nil {
 			log.Fatalf("Failed to create metadata: %v", err)
 		}
@@ -228,22 +228,22 @@ func main() {
 	if *startupMemoryProfile != "" {
 		// Code from https://pkg.go.dev/runtime/pprof README
 		f, err := os.Create(*startupMemoryProfile)
-        if err != nil {
-            log.Fatalf("could not create memory profile: %s", err)
-        }
-        defer f.Close()
+		if err != nil {
+			log.Fatalf("could not create memory profile: %s", err)
+		}
+		defer f.Close()
 		// explicitly trigger garbage collection to accurately understand memory
 		// still in use
-        runtime.GC()
-        if err := pprof.WriteHeapProfile(f); err != nil {
-            log.Fatalf("could not write memory profile: %s", err)
-        }
-		return;
+		runtime.GC()
+		if err := pprof.WriteHeapProfile(f); err != nil {
+			log.Fatalf("could not write memory profile: %s", err)
+		}
+		return
 	}
 
 	// Launch a goroutine that will serve memory requests using net/http/pprof
 	if *httpProfilePort != 0 {
-		go func(){
+		go func() {
 			// Code from https://pkg.go.dev/net/http/pprof README
 			httpProfileFrom := fmt.Sprintf("localhost:%d", *httpProfilePort)
 			log.Printf("Serving profile over HTTP on %v", httpProfileFrom)
