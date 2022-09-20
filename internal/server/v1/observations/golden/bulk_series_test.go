@@ -35,11 +35,11 @@ func TestBulkObservationsSeries(t *testing.T) {
 
 	testSuite := func(mixer pb.MixerClient, recon pb.ReconClient, latencyTest bool) {
 		for _, c := range []struct {
-			variables            []string
-			entities             []string
-			custom_import_groups []string
-			allFacets            bool
-			goldenFile           string
+			variables          []string
+			entities           []string
+			customImportGroups []string
+			allFacets          bool
+			goldenFile         string
 		}{
 			{
 				[]string{
@@ -77,7 +77,7 @@ func TestBulkObservationsSeries(t *testing.T) {
 				resp, err := mixer.BulkObservationsSeries(ctx, &pb.BulkObservationsSeriesRequest{
 					Variables:          c.variables,
 					Entities:           c.entities,
-					CustomImportGroups: c.custom_import_groups,
+					CustomImportGroups: c.customImportGroups,
 					AllFacets:          allFacets,
 				})
 				if err != nil {
