@@ -99,6 +99,7 @@ func TestMerge(t *testing.T) {
 				bigtable.NewTable("borgcron_branch", branchTable),
 			},
 			"borgcron_branch",
+			nil,
 		)
 
 		got, err := GetPropertyLabels(ctx,

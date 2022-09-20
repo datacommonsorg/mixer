@@ -23,6 +23,13 @@ import (
 	"sync"
 
 	cbt "cloud.google.com/go/bigtable"
+	"github.com/datacommonsorg/mixer/internal/server/resource"
+)
+
+type ContextKey int
+
+const (
+	CustomImportGroups ContextKey = iota
 )
 
 var groupRank = map[string]int{
@@ -60,17 +67,20 @@ type Group struct {
 	tables          []*Table
 	lock            sync.RWMutex
 	branchTableName string
+	metadata        *resource.Metadata
 }
 
 // NewGroup creates a BigtableGroup
 func NewGroup(
 	tables []*Table,
 	branchTableName string,
+	metadata *resource.Metadata,
 ) *Group {
 	SortTables(tables)
 	return &Group{
 		tables:          tables,
 		branchTableName: branchTableName,
+		metadata:        metadata,
 	}
 }
 

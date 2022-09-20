@@ -173,8 +173,15 @@ func main() {
 			tables = append(tables, bigtable.NewTable(branchTableName, branchTable))
 		}
 
+		// Metadata.
+		metadata, err := server.NewMetadata(
+			*mixerProject, *bqDataset, *storeProject, branchBtInstance, *schemaPath)
+		if err != nil {
+			log.Fatalf("Failed to create metadata: %v", err)
+		}
+
 		// Store
-		store := store.NewStore(bqClient, memDb, tables, branchTableName)
+		store := store.NewStore(bqClient, memDb, tables, branchTableName, metadata)
 		// Build the cache that includes stat var group info and stat var search
 		// Index.
 		// !!Important: do this after creating the memdb, since the cache will
@@ -189,13 +196,6 @@ func main() {
 			if err != nil {
 				log.Fatalf("Failed to create cache: %v", err)
 			}
-		}
-
-		// Metadata.
-		metadata, err := server.NewMetadata(
-			*mixerProject, *bqDataset, *storeProject, branchBtInstance, *schemaPath)
-		if err != nil {
-			log.Fatalf("Failed to create metadata: %v", err)
 		}
 
 		// Create server object
@@ -214,7 +214,7 @@ func main() {
 
 	// Register for Recon Service.
 	if *serveReconService {
-		store := store.NewStore(nil, nil, tables, "")
+		store := store.NewStore(nil, nil, tables, "", nil)
 		reconServer := server.NewReconServer(store)
 		pb.RegisterReconServer(srv, reconServer)
 	}

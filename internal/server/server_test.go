@@ -24,7 +24,7 @@ import (
 
 func TestNoBigTable(t *testing.T) {
 	ctx := context.Background()
-	s := NewMixerServer(store.NewStore(nil, nil, nil, ""), nil, nil)
+	s := NewMixerServer(store.NewStore(nil, nil, nil, "", nil), nil, nil)
 	_, err := s.GetPlacePageData(ctx, &pb.GetPlacePageDataRequest{
 		Place: "geoId/06",
 	})
