@@ -3,7 +3,6 @@
   "childStatVars": [
     {
       "id": "FertilityRate_Person_Female",
-      "searchName": "Fertility Rate of Person",
       "searchNames": [
         "Fertility Rate of Person"
       ],
@@ -13,7 +12,6 @@
     },
     {
       "id": "GenderIncomeInequality_Person_15OrMoreYears_WithIncome",
-      "searchName": "Gender Income Inequality of Person",
       "searchNames": [
         "Gender Income Inequality of Person"
       ],
@@ -22,7 +20,6 @@
     },
     {
       "id": "LifeExpectancy_Person",
-      "searchName": "Life Expectancy of Person",
       "searchNames": [
         "Life Expectancy of Person"
       ],
@@ -32,7 +29,6 @@
     },
     {
       "id": "Median_Age_Person",
-      "searchName": "Median Age of Person",
       "searchNames": [
         "Median Age of Person"
       ],
@@ -41,7 +37,6 @@
     },
     {
       "id": "Median_Income_Person",
-      "searchName": "Median Income of Person",
       "searchNames": [
         "Median Income of Person"
       ],
@@ -50,7 +45,6 @@
     },
     {
       "id": "Count_Person_IsInternetUser_PerCapita",
-      "searchName": "Population Count of Person With is Internet User is True (As Fraction of Per Capita)",
       "searchNames": [
         "Population Count of Person With is Internet User is True (As Fraction of Per Capita)"
       ],
@@ -60,7 +54,6 @@
     },
     {
       "id": "Count_Person",
-      "searchName": "Population Count of Person",
       "searchNames": [
         "Population Count of Person"
       ],
@@ -70,7 +63,6 @@
     },
     {
       "id": "IncrementalCount_Person",
-      "searchName": "Incremental Count of Person",
       "searchNames": [
         "Incremental Count of Person"
       ],
@@ -79,7 +71,6 @@
     },
     {
       "id": "Count_Person_PerArea",
-      "searchName": "Population Count of Person (As Fraction of Area)",
       "searchNames": [
         "Population Count of Person (As Fraction of Area)"
       ],
@@ -89,7 +80,6 @@
     },
     {
       "id": "GrowthRate_Count_Person",
-      "searchName": "Growth Rate Population Count of Person",
       "searchNames": [
         "Growth Rate Population Count of Person"
       ],
@@ -228,6 +218,11 @@
       "specializedEntity": "Residence",
       "displayName": "Residence",
       "descendentStatVarCount": 390
+    },
+    {
+      "id": "dc/g/Household_TransportationType",
+      "specializedEntity": "Transportation Type",
+      "displayName": "Household by Transportation Type"
     }
   ],
   "descendentStatVarCount": 2540,

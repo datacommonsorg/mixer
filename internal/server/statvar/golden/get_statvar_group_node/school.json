@@ -3,7 +3,6 @@
   "childStatVars": [
     {
       "id": "Count_Person_EducationalAttainment1StGrade",
-      "searchName": "Population Count of Person With Educational Attainment is 1st Grade",
       "searchNames": [
         "Population Count of Person With Educational Attainment is 1st Grade"
       ],
@@ -13,7 +12,6 @@
     },
     {
       "id": "Count_Person_EducationalAttainment2NdGrade",
-      "searchName": "Population Count of Person With Educational Attainment is 2nd Grade",
       "searchNames": [
         "Population Count of Person With Educational Attainment is 2nd Grade"
       ],
@@ -23,7 +21,6 @@
     },
     {
       "id": "Count_Person_EducationalAttainment3RdGrade",
-      "searchName": "Population Count of Person With Educational Attainment is 3rd Grade",
       "searchNames": [
         "Population Count of Person With Educational Attainment is 3rd Grade"
       ],
@@ -33,7 +30,6 @@
     },
     {
       "id": "Count_Person_EducationalAttainment4ThGrade",
-      "searchName": "Population Count of Person With Educational Attainment is 4th Grade",
       "searchNames": [
         "Population Count of Person With Educational Attainment is 4th Grade"
       ],
@@ -43,7 +39,6 @@
     },
     {
       "id": "Count_Person_EducationalAttainment5ThGrade",
-      "searchName": "Population Count of Person With Educational Attainment is 5th Grade",
       "searchNames": [
         "Population Count of Person With Educational Attainment is 5th Grade"
       ],
@@ -53,7 +48,6 @@
     },
     {
       "id": "Count_Person_EducationalAttainment6ThGrade",
-      "searchName": "Population Count of Person With Educational Attainment is 6th Grade",
       "searchNames": [
         "Population Count of Person With Educational Attainment is 6th Grade"
       ],
@@ -63,7 +57,6 @@
     },
     {
       "id": "Count_Person_EducationalAttainment7ThGrade",
-      "searchName": "Population Count of Person With Educational Attainment is 7th Grade",
       "searchNames": [
         "Population Count of Person With Educational Attainment is 7th Grade"
       ],
@@ -73,7 +66,6 @@
     },
     {
       "id": "Count_Person_EducationalAttainment8ThGrade",
-      "searchName": "Population Count of Person With Educational Attainment is 8th Grade",
       "searchNames": [
         "Population Count of Person With Educational Attainment is 8th Grade"
       ],
@@ -83,7 +75,6 @@
     },
     {
       "id": "Count_Person_EducationalAttainmentGedOrAlternativeCredential",
-      "searchName": "Population Count of Person With Educational Attainment is Ged or Alternative Credential",
       "searchNames": [
         "Population Count of Person With Educational Attainment is Ged or Alternative Credential"
       ],
@@ -93,7 +84,6 @@
     },
     {
       "id": "Count_Person_EducationalAttainmentKindergarten",
-      "searchName": "Population Count of Person With Educational Attainment is Kindergarten",
       "searchNames": [
         "Population Count of Person With Educational Attainment is Kindergarten"
       ],
@@ -103,7 +93,6 @@
     },
     {
       "id": "Count_Person_EducationalAttainmentNurserySchool",
-      "searchName": "Population Count of Person With Educational Attainment is Nursery School",
       "searchNames": [
         "Population Count of Person With Educational Attainment is Nursery School"
       ],
@@ -113,7 +102,6 @@
     },
     {
       "id": "Count_Person_EducationalAttainmentPrimarySchool",
-      "searchName": "Population Count of Person With Educational Attainment is Primary School",
       "searchNames": [
         "Population Count of Person With Educational Attainment is Primary School"
       ],
@@ -123,7 +111,6 @@
     },
     {
       "id": "Count_Person_EducationalAttainmentRegularHighSchoolDiploma",
-      "searchName": "Population Count of Person With Educational Attainment is Regular High School Diploma",
       "searchNames": [
         "Population Count of Person With Educational Attainment is Regular High School Diploma"
       ],
