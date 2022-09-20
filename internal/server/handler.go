@@ -334,7 +334,7 @@ func (s *Server) GetBioPageData(
 func (s *Server) Search(
 	ctx context.Context, in *pb.SearchRequest,
 ) (*pb.SearchResponse, error) {
-	return search.Search(ctx, in, s.store.BqClient, s.metadata.Bq)
+	return search.Search(ctx, in, s.store.BqClient, s.metadata.BigQueryDataset)
 }
 
 // GetVersion implements API for Mixer.GetVersion.
@@ -342,8 +342,8 @@ func (s *Server) GetVersion(
 	ctx context.Context, in *pb.GetVersionRequest,
 ) (*pb.GetVersionResponse, error) {
 	return &pb.GetVersionResponse{
-		Store:    s.metadata.BtProject,
-		BigQuery: s.metadata.Bq,
+		Store:    s.metadata.CoreBigtableProject,
+		BigQuery: s.metadata.BigQueryDataset,
 		Tables:   s.store.BtGroup.TableNames(),
 		GitHash:  os.Getenv("MIXER_HASH"),
 	}, nil
