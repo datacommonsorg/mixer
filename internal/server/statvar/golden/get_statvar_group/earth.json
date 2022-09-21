@@ -2786,10 +2786,6 @@
         {
           "id": "dc/g/Consumption",
           "specializedEntity": "Consumption"
-        },
-        {
-          "id": "dc/g/SeaBodyOfWater",
-          "specializedEntity": "Sea Body of Water"
         }
       ]
     },

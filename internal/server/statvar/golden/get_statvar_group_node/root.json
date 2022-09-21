@@ -11,7 +11,7 @@
       "id": "dc/g/Demographics",
       "specializedEntity": "Demographics",
       "displayName": "Demographics",
-      "descendentStatVarCount": 30632
+      "descendentStatVarCount": 30876
     },
     {
       "id": "dc/g/Economy",
@@ -59,7 +59,7 @@
       "id": "dc/g/Uncategorized",
       "specializedEntity": "Uncategorized",
       "displayName": "Uncategorized",
-      "descendentStatVarCount": 14472
+      "descendentStatVarCount": 14435
     },
     {
       "id": "g/Feeding_America",
