@@ -24429,6 +24429,28 @@
       ]
     },
     {
+      "dcid": "dc/g/LiveBirthPregnancyEvent_PostpartumFamilyPlanning-MaleOrFemaleSterilization",
+      "name": "Live Birth Pregnancy Event With Postpartum Family Planning = Male or Female Sterilization",
+      "statVars": [
+        {
+          "name": "Count of Live Birth Pregnancy Event: Male or Female Sterilization (As Fraction of Count Birth Event Live Birth)",
+          "dcid": "Percent_LiveBirthPregnancyEvent_MaleOrFemaleSterilization_AsAFractionOf_Count_BirthEvent_LiveBirth"
+        },
+        {
+          "name": "Sample Size Count of Live Birth Pregnancy Event: Male or Female Sterilization",
+          "dcid": "SampleSize_Count_LiveBirthPregnancyEvent_MaleOrFemaleSterilization"
+        },
+        {
+          "name": "Confidence Interval Lower Limit Count of Live Birth Pregnancy Event: Male or Female Sterilization (As Fraction of Count Birth Event Live Birth)",
+          "dcid": "ConfidenceIntervalLowerLimit_Percent_LiveBirthPregnancyEvent_MaleOrFemaleSterilization_AsAFractionOf_Count_BirthEvent_LiveBirth"
+        },
+        {
+          "name": "Confidence Interval Upper Limit Count of Live Birth Pregnancy Event: Male or Female Sterilization (As Fraction of Count Birth Event Live Birth)",
+          "dcid": "ConfidenceIntervalUpperLimit_Percent_LiveBirthPregnancyEvent_MaleOrFemaleSterilization_AsAFractionOf_Count_BirthEvent_LiveBirth"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_TargetedGender-Female",
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Targeted Gender = Female",
       "statVars": [
@@ -29587,24 +29609,6 @@
       ]
     },
     {
-      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_IncomeStatus-WithEarnings_RecentWorkStatus-FullTimeYearRoundWorker",
-      "name": "Person With Age = 16 Years or More, Gender = Female, Income Status = With Earnings, Recent Work Status = Full Time Year Round Worker",
-      "statVars": [
-        {
-          "name": "Population: 16 Years or More, Female, With Earnings, Full Time Year Round Worker",
-          "dcid": "Count_Person_Female_WithEarnings_FullTimeYearRoundWorker"
-        },
-        {
-          "name": "Mean Earnings: 16 Years or More, Female, With Earnings, Full Time Year Round Worker",
-          "dcid": "Mean_Earnings_Person_Female_FullTimeYearRoundWorker"
-        },
-        {
-          "name": "Median Earnings: 16 Years or More, Female, With Earnings, Full Time Year Round Worker",
-          "dcid": "Median_Earnings_Person_Female_FullTimeYearRoundWorker"
-        }
-      ]
-    },
-    {
       "dcid": "dc/g/Person_ExerciseType-MuscleStrengthening_Gender-Female_HealthBehavior-HealthEnhancingPhysicalActivity_PlaceOfResidenceClassification",
       "name": "Person With Exercise Type = Muscle Strengthening, Gender = Female, Health Behavior = Health Enhancing Physical Activity, Place of Residence Classification",
       "statVars": [
@@ -29861,20 +29865,6 @@
         {
           "name": "Count of Indigenous, Female Measles incidents",
           "dcid": "Count_MedicalConditionIncident_Female_ConditionMeasles_IndigenousCase"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/MedicareEnrollee_Gender-Female_Race",
-      "name": "Medicare Enrollee With Gender = Female, Race",
-      "statVars": [
-        {
-          "name": "Mean Count of Medicare Enrollee: 67 - 69 Years, Female, Mammography, Medicare B, Black",
-          "dcid": "dc/vswm7x47tv8p3"
-        },
-        {
-          "name": "Mean Count of Medicare Enrollee: 67 - 69 Years, Female, Mammography, Medicare B, Non Black",
-          "dcid": "dc/508xlwpsn7jwc"
         }
       ]
     },
@@ -35783,6 +35773,20 @@
         {
           "name": "Population: 18 - 64 Years, 1.4 Ratio To Poverty Line or Less, Female, No Health Insurance",
           "dcid": "dc/djczl24xvzw37"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years18To64_Gender-Female_HealthInsurance-WithHealthInsurance_IncomeRelativeToPovertyLine-RatioToPovertyLineUpto1.38",
+      "name": "Person With Age = 18 - 64 Years, Income Relative To Poverty Line = 1.4 Ratio To Poverty Line or Less, Gender = Female, Health Insurance = With Health Insurance",
+      "statVars": [
+        {
+          "name": "Percent: 18 - 64 Years, 1.4 Ratio To Poverty Line or Less, Female, With Health Insurance",
+          "dcid": "dc/d0g2dhkj041sg"
+        },
+        {
+          "name": "Population: 18 - 64 Years, 1.4 Ratio To Poverty Line or Less, Female, With Health Insurance",
+          "dcid": "dc/ev7mp4ne33tr7"
         }
       ]
     }

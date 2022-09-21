@@ -46,7 +46,8 @@
           },
           {
             "dcid": "usc/WestRegion",
-            "name": "West Region"
+            "name": "West Region",
+            "type": "CensusRegion"
           },
           {
             "dcid": "northamerica",
@@ -87,7 +88,8 @@
           },
           {
             "dcid": "usc/WestRegion",
-            "name": "West Region"
+            "name": "West Region",
+            "type": "CensusRegion"
           },
           {
             "dcid": "northamerica",
@@ -127,7 +129,8 @@
           },
           {
             "dcid": "usc/WestRegion",
-            "name": "West Region"
+            "name": "West Region",
+            "type": "CensusRegion"
           },
           {
             "dcid": "northamerica",

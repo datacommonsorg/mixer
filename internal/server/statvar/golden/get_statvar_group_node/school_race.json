@@ -3,7 +3,6 @@
   "childStatVars": [
     {
       "id": "dc/mwbmxs2q9zcgd",
-      "searchName": "Population Count of Person With Enrollment Level is Enrolled in College Undergraduate Years, Race is American Indian or Alaska Native Alone",
       "searchNames": [
         "Population Count of Person With Enrollment Level is Enrolled in College Undergraduate Years, Race is American Indian or Alaska Native Alone"
       ],
@@ -13,7 +12,6 @@
     },
     {
       "id": "dc/nhmjhp72kjr48",
-      "searchName": "Population Count of Person With Enrollment Level is Enrolled in College Undergraduate Years, Race is Asian Alone",
       "searchNames": [
         "Population Count of Person With Enrollment Level is Enrolled in College Undergraduate Years, Race is Asian Alone"
       ],
@@ -23,7 +21,6 @@
     },
     {
       "id": "dc/wjtdrd9wq4m2g",
-      "searchName": "Population Count of Person With Enrollment Level is Enrolled in College Undergraduate Years, Race is Black or African American Alone",
       "searchNames": [
         "Population Count of Person With Enrollment Level is Enrolled in College Undergraduate Years, Race is Black or African American Alone"
       ],
@@ -33,7 +30,6 @@
     },
     {
       "id": "dc/0jtctjm33mgh1",
-      "searchName": "Population Count of Person With Enrollment Level is Enrolled in College Undergraduate Years, Race is Hispanic or Latino",
       "searchNames": [
         "Population Count of Person With Enrollment Level is Enrolled in College Undergraduate Years, Race is Hispanic or Latino"
       ],
@@ -43,7 +39,6 @@
     },
     {
       "id": "dc/1t989xd1tn701",
-      "searchName": "Population Count of Person With Enrollment Level is Enrolled in College Undergraduate Years, Race is Native Hawaiian or Other Pacific Islander Alone",
       "searchNames": [
         "Population Count of Person With Enrollment Level is Enrolled in College Undergraduate Years, Race is Native Hawaiian or Other Pacific Islander Alone"
       ],
@@ -53,7 +48,6 @@
     },
     {
       "id": "dc/50yq5l3ek70t7",
-      "searchName": "Population Count of Person With Enrollment Level is Enrolled in College Undergraduate Years, Race is Some Other Race Alone",
       "searchNames": [
         "Population Count of Person With Enrollment Level is Enrolled in College Undergraduate Years, Race is Some Other Race Alone"
       ],
@@ -63,7 +57,6 @@
     },
     {
       "id": "dc/zv5g19y8dl9r1",
-      "searchName": "Population Count of Person With Enrollment Level is Enrolled in College Undergraduate Years, Race is Two or More Races",
       "searchNames": [
         "Population Count of Person With Enrollment Level is Enrolled in College Undergraduate Years, Race is Two or More Races"
       ],
@@ -73,7 +66,6 @@
     },
     {
       "id": "dc/55d9n710f1l43",
-      "searchName": "Population Count of Person With Enrollment Level is Enrolled in College Undergraduate Years, Race is White Alone",
       "searchNames": [
         "Population Count of Person With Enrollment Level is Enrolled in College Undergraduate Years, Race is White Alone"
       ],
@@ -83,7 +75,6 @@
     },
     {
       "id": "dc/4wkzsq23w6reb",
-      "searchName": "Population Count of Person With Enrollment Level is Enrolled in College Undergraduate Years, Race is White Alone Not Hispanic or Latino",
       "searchNames": [
         "Population Count of Person With Enrollment Level is Enrolled in College Undergraduate Years, Race is White Alone Not Hispanic or Latino"
       ],

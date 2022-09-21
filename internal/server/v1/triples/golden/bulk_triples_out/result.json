@@ -14,7 +14,7 @@
         "provenance": {
           "entities": [
             {
-              "name": "https://datacommons.org",
+              "name": "BaseSchema",
               "types": [
                 "Provenance"
               ],
@@ -71,7 +71,7 @@
         "provenance": {
           "entities": [
             {
-              "name": "https://datacommons.org",
+              "name": "BaseSchema",
               "types": [
                 "Provenance"
               ],
@@ -156,7 +156,7 @@
         "provenance": {
           "entities": [
             {
-              "name": "https://datacommons.org",
+              "name": "HumanReadableStatVars",
               "types": [
                 "Provenance"
               ],

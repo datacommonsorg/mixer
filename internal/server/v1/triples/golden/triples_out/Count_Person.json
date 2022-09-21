@@ -47,7 +47,7 @@
     "provenance": {
       "nodes": [
         {
-          "name": "https://datacommons.org",
+          "name": "HumanReadableStatVars",
           "types": [
             "Provenance"
           ],

@@ -223,7 +223,7 @@
       ],
       "predicate": "provenance",
       "objectId": "dc/sm3m2w3",
-      "objectName": "https://www.census.gov/geographies/reference-files.html",
+      "objectName": "BaseGeos",
       "objectTypes": [
         "Provenance"
       ],

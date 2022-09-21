@@ -2355,18 +2355,6 @@
         {
           "name": "Population: Years 15, Female, Not Hispanic or Latino",
           "dcid": "Count_Person_15Years_Female_NotHispanicOrLatino"
-        },
-        {
-          "name": "Population: Years 15, Female, Not Hispanic or Latino \u0026 American Indian And Alaska Native Alone or In Combination With One or More Other Races",
-          "dcid": "Count_Person_15Years_Female_NotHispanicOrLatino_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRaces"
-        },
-        {
-          "name": "Population: Years 15, Female, Not Hispanic or Latino \u0026 American Indian or Alaska Native Alone",
-          "dcid": "Count_Person_15Years_Female_NotHispanicOrLatino_AmericanIndianAndAlaskaNativeAlone"
-        },
-        {
-          "name": "Population: Years 15, Female, Not Hispanic or Latino \u0026 Asian Alone",
-          "dcid": "Count_Person_15Years_Female_NotHispanicOrLatino_AsianAlone"
         }
       ]
     },
@@ -5131,6 +5119,16 @@
         {
           "name": "Population: Female, Enrolled in Nursery School Preschool, Public School",
           "dcid": "dc/lr4ve69p16sch"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/LiveBirthPregnancyEvent_PostpartumFamilyPlanning-MaleOrFemaleSterilization",
+      "name": "Live Birth Pregnancy Event With Postpartum Family Planning = Male or Female Sterilization",
+      "statVars": [
+        {
+          "name": "Count of Live Birth Pregnancy Event: Male or Female Sterilization (As Fraction of Count Birth Event Live Birth)",
+          "dcid": "Percent_LiveBirthPregnancyEvent_MaleOrFemaleSterilization_AsAFractionOf_Count_BirthEvent_LiveBirth"
         }
       ]
     },
@@ -8555,16 +8553,6 @@
       ]
     },
     {
-      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_IncomeStatus-WithEarnings",
-      "name": "Person With Age = 16 Years or More, Gender = Female, Income Status = With Earnings",
-      "statVars": [
-        {
-          "name": "Population: 16 Years or More, Female, With Earnings",
-          "dcid": "Count_Person_16OrMoreYears_Female_WithEarnings"
-        }
-      ]
-    },
-    {
       "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_MaritalStatus-Divorced",
       "name": "Person With Age = 16 Years or More, Gender = Female, Marital Status = Divorced",
       "statVars": [
@@ -10953,10 +10941,6 @@
       "name": "Person With Enrollment Level = Not Enrolled in College or Graduate School, Gender = Female"
     },
     {
-      "dcid": "dc/g/Person_EnrollmentLevel_Gender-Female",
-      "name": "Person With Enrollment Level, Gender = Female"
-    },
-    {
       "dcid": "dc/g/Person_EstablishmentOwnership-FederalGovernmentOwned_Gender-Female",
       "name": "Person With Establishment Ownership = Federal Government Owned, Gender = Female"
     },
@@ -11007,6 +10991,10 @@
     {
       "dcid": "dc/g/Person_DetailedWorkerClassification-Worker_Gender-Female",
       "name": "Person With Gender = Female, Detailed Worker Classification = Worker"
+    },
+    {
+      "dcid": "dc/g/Person_EnrollmentLevel_Gender-Female",
+      "name": "Person With Gender = Female, Enrollment Level"
     },
     {
       "dcid": "dc/g/Person_Gender-Female_HealthBehavior",

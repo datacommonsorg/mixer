@@ -21,7 +21,7 @@
         "Provenance"
       ],
       "predicate": "importTime",
-      "objectValue": "1661328885",
+      "objectValue": "1663748031",
       "provenanceId": "dc/d7tbsb1"
     },
     {
@@ -42,7 +42,7 @@
       ],
       "predicate": "provenance",
       "objectId": "dc/d7tbsb1",
-      "objectName": "https://datacommons.org",
+      "objectName": "HumanReadableStatVars",
       "objectTypes": [
         "Provenance"
       ],
@@ -56,7 +56,7 @@
       ],
       "predicate": "source",
       "objectId": "dc/s/DataCommons",
-      "objectName": "datacommons.org",
+      "objectName": "Data Commons",
       "objectTypes": [
         "Source"
       ],
