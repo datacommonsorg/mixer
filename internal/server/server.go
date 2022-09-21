@@ -44,7 +44,7 @@ type Server struct {
 
 func (s *Server) updateBranchTable(ctx context.Context, branchTableName string) {
 	branchTable, err := bigtable.NewBtTable(
-		ctx, s.metadata.BtProject, s.metadata.BranchBtInstance, branchTableName)
+		ctx, s.metadata.CoreBigtableProject, s.metadata.BranchBigtableInstance, branchTableName)
 	if err != nil {
 		log.Printf("Failed to udpate branch cache Bigtable client: %v", err)
 		return
@@ -74,7 +74,12 @@ func ReadBranchTableName(
 
 // NewMetadata initialize the metadata for translator.
 func NewMetadata(
-	bqDataset, storeProject, branchInstance, schemaPath string) (*resource.Metadata, error) {
+	mixerProject,
+	bigQueryDataset,
+	storeProject,
+	branchBigtableInstance,
+	schemaPath string,
+) (*resource.Metadata, error) {
 	_, filename, _, _ := runtime.Caller(0)
 	subTypeMap, err := solver.GetSubTypeMap(
 		path.Join(path.Dir(filename), "../translator/table_types.json"))
@@ -92,7 +97,7 @@ func NewMetadata(
 			if err != nil {
 				return nil, err
 			}
-			mapping, err := mcf.ParseMapping(string(mappingStr), bqDataset)
+			mapping, err := mcf.ParseMapping(string(mappingStr), bigQueryDataset)
 			if err != nil {
 				return nil, err
 			}
@@ -102,13 +107,14 @@ func NewMetadata(
 	outArcInfo := map[string]map[string][]types.OutArcInfo{}
 	inArcInfo := map[string][]types.InArcInfo{}
 	return &resource.Metadata{
-			Mappings:         mappings,
-			OutArcInfo:       outArcInfo,
-			InArcInfo:        inArcInfo,
-			SubTypeMap:       subTypeMap,
-			Bq:               bqDataset,
-			BtProject:        storeProject,
-			BranchBtInstance: branchInstance,
+			Mappings:               mappings,
+			OutArcInfo:             outArcInfo,
+			InArcInfo:              inArcInfo,
+			SubTypeMap:             subTypeMap,
+			MixerProject:           mixerProject,
+			BigQueryDataset:        bigQueryDataset,
+			CoreBigtableProject:    storeProject,
+			BranchBigtableInstance: branchBigtableInstance,
 		},
 		nil
 }

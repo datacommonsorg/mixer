@@ -115,7 +115,7 @@ func setupInternal(
 		tables = append(tables, bigtable.NewTable(name, table))
 	}
 
-	metadata, err := server.NewMetadata(
+	metadata, err := server.NewMetadata("",
 		strings.TrimSpace(string(bqTableID)), storeProject, "", schemaPath)
 	if err != nil {
 		return nil, nil, err
@@ -158,6 +158,7 @@ func SetupBqOnly() (pb.MixerClient, pb.ReconClient, error) {
 		log.Fatalf("failed to create Bigquery client: %v", err)
 	}
 	metadata, err := server.NewMetadata(
+		"",
 		strings.TrimSpace(string(bqTableID)),
 		storeProject,
 		"",
