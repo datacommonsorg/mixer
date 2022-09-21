@@ -4,7 +4,7 @@
       "node": "Country",
       "triples": {
         "rangeIncludes": {
-          "entities": [
+          "nodes": [
             {
               "name": "addressCountry",
               "types": [
@@ -32,7 +32,7 @@
           ]
         },
         "typeOf": {
-          "entities": [
+          "nodes": [
             {
               "name": "Aruba",
               "types": [
@@ -2247,7 +2247,7 @@
       "node": "BiologicalSpecimen",
       "triples": {
         "typeOf": {
-          "entities": [
+          "nodes": [
             {
               "name": "Trifolium arvense L.",
               "types": [
@@ -6256,7 +6256,7 @@
       "node": "Count_Person",
       "triples": {
         "measurementDenominator": {
-          "entities": [
+          "nodes": [
             {
               "name": "Amount of Economic Activity: Expenditure Activity, Healthcare Expenditure (Per Capita)",
               "types": [

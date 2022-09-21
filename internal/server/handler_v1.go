@@ -82,14 +82,14 @@ func (s *Server) BulkPropertyValues(
 func (s *Server) Triples(
 	ctx context.Context, in *pb.TriplesRequest,
 ) (*pb.TriplesResponse, error) {
-	return triples.Triples(ctx, in, s.store)
+	return triples.Triples(ctx, in, s.store, s.metadata)
 }
 
 // BulkTriples implements API for mixer.BulkTriples.
 func (s *Server) BulkTriples(
 	ctx context.Context, in *pb.BulkTriplesRequest,
 ) (*pb.BulkTriplesResponse, error) {
-	return triples.BulkTriples(ctx, in, s.store)
+	return triples.BulkTriples(ctx, in, s.store, s.metadata)
 }
 
 // Variables implements API for mixer.Variables.

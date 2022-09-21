@@ -18,7 +18,6 @@ import (
 	"context"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
-	"github.com/datacommonsorg/mixer/internal/server/node"
 	nodewrapper "github.com/datacommonsorg/mixer/internal/server/node"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/codes"
@@ -67,7 +66,7 @@ func BulkProperties(
 	if direction != util.DirectionIn && direction != util.DirectionOut {
 		return nil, status.Errorf(codes.InvalidArgument, "Invalid direction: should be 'in' or 'out'")
 	}
-	resp, err := node.GetPropertiesHelper(ctx, nodes, store)
+	resp, err := nodewrapper.GetPropertiesHelper(ctx, nodes, store)
 	if err != nil {
 		return nil, err
 	}

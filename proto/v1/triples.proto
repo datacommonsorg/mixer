@@ -59,7 +59,7 @@ message BulkTriplesResponse {
   message NodeTriples {
     string node = 1;
     // Key is property.
-    map<string, datacommons.EntityInfoCollection> triples = 2;
+    map<string, NodeInfoCollection> triples = 2;
   }
   repeated NodeTriples data = 1;
   // The pagination token for getting the next set of entries.
