@@ -28,9 +28,9 @@ serviceGroups:
       urlPaths:
         - "/v1/recon/*"
       replicas:
-        default: 4
-        min: 4
-        max: 8
+        default: 20
+        min: 20
+        max: 30
       resources:
         memoryRequest: "3G"
         memoryLimit: "3G"
@@ -38,9 +38,9 @@ serviceGroups:
       urlPaths:
         - "/*"
       replicas:
-        default: 15
-        min: 15
-        max: 30
+        default: 10
+        min: 10
+        max: 20
       resources:
         memoryRequest: "3G"
         memoryLimit: "3G"
