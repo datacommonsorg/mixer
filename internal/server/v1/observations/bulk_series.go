@@ -24,6 +24,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/ranking"
 	"github.com/datacommonsorg/mixer/internal/server/stat"
 	"github.com/datacommonsorg/mixer/internal/store"
+	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"github.com/datacommonsorg/mixer/internal/util"
 )
 
@@ -36,6 +37,9 @@ func BulkSeries(
 	entities := in.GetEntities()
 	variables := in.GetVariables()
 	allFacets := in.GetAllFacets()
+	customImportGroups := in.GetCustomImportGroups()
+	// Add custom import groups to the context so bigtable reader can use it.
+	ctx = context.WithValue(ctx, bigtable.CustomImportGroups, customImportGroups)
 
 	result := &pb.BulkObservationsSeriesResponse{
 		Facets: map[uint32]*pb.StatMetadata{},

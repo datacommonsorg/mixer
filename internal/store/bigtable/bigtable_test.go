@@ -33,7 +33,7 @@ func TestReadOneTable(t *testing.T) {
 	}
 	btData, err := Read(
 		ctx,
-		NewGroup([]*Table{{name: "test", table: btTable}}, ""),
+		NewGroup([]*Table{{name: "test", table: btTable}}, "", nil),
 		"dc/1/",
 		[][]string{{"key1", "key2"}},
 		func(jsonRaw []byte) (interface{}, error) {
@@ -82,6 +82,7 @@ func TestReadTwoTables(t *testing.T) {
 				{name: "t2_t", table: btTable2},
 			},
 			"t2",
+			nil,
 		),
 		"",
 		[][]string{{"key1", "key2"}},

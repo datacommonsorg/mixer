@@ -60,11 +60,12 @@ var (
 // It needs Application Default Credentials to run locally or need to
 // provide service account credential when running on GCP.
 const (
-	baseInstance     = "prophet-cache"
-	bqBillingProject = "datcom-ci"
-	storeProject     = "datcom-store"
-	tmcfCsvBucket    = "datcom-public"
-	tmcfCsvPrefix    = "food"
+	baseInstance          = "prophet-cache"
+	bqBillingProject      = "datcom-ci"
+	storeProject          = "datcom-store"
+	tmcfCsvBucket         = "datcom-public"
+	tmcfCsvPrefix         = "food"
+	customBigtableProject = "datcom-mixer-autopush"
 )
 
 // Setup creates local server and client.
@@ -115,7 +116,7 @@ func setupInternal(
 		tables = append(tables, bigtable.NewTable(name, table))
 	}
 
-	metadata, err := server.NewMetadata("",
+	metadata, err := server.NewMetadata(customBigtableProject,
 		strings.TrimSpace(string(bqTableID)), storeProject, "", schemaPath)
 	if err != nil {
 		return nil, nil, err
@@ -131,7 +132,7 @@ func setupInternal(
 			log.Fatalf("Failed to load tmcf and csv from GCS: %v", err)
 		}
 	}
-	st := store.NewStore(bqClient, memDb, tables, "")
+	st := store.NewStore(bqClient, memDb, tables, "", metadata)
 	var cache *resource.Cache
 	if useCache {
 		cache, err = server.NewCache(ctx, st, searchOptions)
@@ -166,7 +167,7 @@ func SetupBqOnly() (pb.MixerClient, pb.ReconClient, error) {
 	if err != nil {
 		return nil, nil, err
 	}
-	st := store.NewStore(bqClient, nil, nil, "")
+	st := store.NewStore(bqClient, nil, nil, "", nil)
 	return newClient(st, nil, metadata, nil)
 }
 
@@ -176,7 +177,7 @@ func newClient(
 	metadata *resource.Metadata,
 	cache *resource.Cache,
 ) (pb.MixerClient, pb.ReconClient, error) {
-	reconStore := store.NewStore(nil, nil, tables, "")
+	reconStore := store.NewStore(nil, nil, tables, "", metadata)
 	mixerServer := server.NewMixerServer(mixerStore, metadata, cache)
 	reconServer := server.NewReconServer(reconStore)
 	srv := grpc.NewServer()
