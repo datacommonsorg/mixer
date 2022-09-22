@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Package for node related operations
+// Package node holds helper functions for node related operations.
 package node
 
 import (
