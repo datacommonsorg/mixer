@@ -18,9 +18,9 @@ serviceGroups:
         - "/v1/info/variable/group/*"
         - "/v1/variable/*"
       replicas:
-        default: 10
-        min: 10
-        max: 40
+        default: 30
+        min: 30
+        max: 50
       resources:
         memoryRequest: "8G"
         memoryLimit: "8G"
@@ -28,19 +28,19 @@ serviceGroups:
       urlPaths:
         - "/v1/recon/*"
       replicas:
-        default: 4
-        min: 4
-        max: 8
+        default: 80
+        min: 80
+        max: 120
       resources:
-        memoryRequest: "3G"
-        memoryLimit: "3G"
+        memoryRequest: "400M"
+        memoryLimit: "400M"
   - mixer-default-service:
       urlPaths:
         - "/*"
       replicas:
-        default: 20
-        min: 20
-        max: 40
+        default: 80
+        min: 80
+        max: 120
       resources:
         memoryRequest: "2G"
         memoryLimit: "2G"
