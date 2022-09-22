@@ -153,9 +153,9 @@ spec:
           imagePullPolicy: {{ $.Values.esp.image.pullPolicy }}
           resources:
             limits:
-              memory: "0.2G"
+              memory: "100M"
             requests:
-              memory: "0.2G"
+              memory: "100M"
           args:
             - --service=$(SERVICE_NAME)
             - --rollout_strategy=managed

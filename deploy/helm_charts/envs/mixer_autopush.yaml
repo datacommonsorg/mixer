@@ -32,8 +32,8 @@ serviceGroups:
         min: 20
         max: 30
       resources:
-        memoryRequest: "3G"
-        memoryLimit: "3G"
+        memoryRequest: "400M"
+        memoryLimit: "400M"
   - mixer-default-service:
       urlPaths:
         - "/*"
