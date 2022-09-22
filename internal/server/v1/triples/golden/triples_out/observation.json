@@ -1,0 +1,56 @@
+{
+  "triples": {
+    "measurementMethod": {
+      "nodes": [
+        {
+          "name": "CensusACS5yrSurvey",
+          "dcid": "CensusACS5yrSurvey",
+          "provenanceId": "dc/gg17432"
+        }
+      ]
+    },
+    "observationAbout": {
+      "nodes": [
+        {
+          "name": "Mountain View",
+          "dcid": "geoId/0649670",
+          "provenanceId": "dc/gg17432"
+        }
+      ]
+    },
+    "observationDate": {
+      "nodes": [
+        {
+          "provenanceId": "dc/gg17432",
+          "value": "2016"
+        }
+      ]
+    },
+    "unit": {
+      "nodes": [
+        {
+          "name": "Year",
+          "dcid": "Year",
+          "provenanceId": "dc/gg17432"
+        }
+      ]
+    },
+    "value": {
+      "nodes": [
+        {
+          "provenanceId": "dc/gg17432",
+          "value": "35"
+        }
+      ]
+    },
+    "variableMeasured": {
+      "nodes": [
+        {
+          "name": "Median Age",
+          "dcid": "Median_Age_Person",
+          "provenanceId": "dc/gg17432"
+        }
+      ]
+    }
+  }
+}

@@ -41,7 +41,7 @@ func TestBulkTriplesOut(t *testing.T) {
 		}{
 			{
 				"result.json",
-				[]string{"Country", "BiologicalSpecimen", "Count_Person"},
+				[]string{"Country", "BiologicalSpecimen", "Count_Person", "dc/o/vs51dzghn79eg"},
 				"",
 			},
 		} {

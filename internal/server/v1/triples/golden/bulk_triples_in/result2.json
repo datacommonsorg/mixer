@@ -7,7 +7,7 @@
       "node": "BiologicalSpecimen",
       "triples": {
         "typeOf": {
-          "entities": [
+          "nodes": [
             {
               "name": "Hypnum cupressiforme Hedw. var. cupressiforme",
               "types": [
