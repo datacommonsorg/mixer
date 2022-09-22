@@ -28,12 +28,12 @@ serviceGroups:
       urlPaths:
         - "/v1/recon/*"
       replicas:
-        default: 4
-        min: 4
-        max: 8
+        default: 30
+        min: 30
+        max: 40
       resources:
-        memoryRequest: "3G"
-        memoryLimit: "3G"
+        memoryRequest: "400M"
+        memoryLimit: "400M"
   - mixer-default-service:
       urlPaths:
         - "/*"
