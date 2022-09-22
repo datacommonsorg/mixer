@@ -19,7 +19,7 @@
     "provenance": {
       "nodes": [
         {
-          "name": "https://datacommons.org",
+          "name": "BaseSchema",
           "types": [
             "Provenance"
           ],

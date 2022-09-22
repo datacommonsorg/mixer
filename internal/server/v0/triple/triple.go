@@ -16,13 +16,11 @@ package triple
 
 import (
 	"context"
-	"fmt"
 	"sort"
 	"strings"
 
+	"github.com/datacommonsorg/mixer/internal/server/node"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
-	"github.com/datacommonsorg/mixer/internal/server/translator"
-	"github.com/datacommonsorg/mixer/internal/server/v0/propertyvalue"
 	"github.com/datacommonsorg/mixer/internal/server/v1/triples"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
@@ -31,105 +29,6 @@ import (
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )
-
-type prop struct {
-	name  string
-	isObj bool
-}
-
-var obsProps = []prop{
-	{"observationAbout", true},
-	{"variableMeasured", true},
-	{"value", false},
-	{"observationDate", false},
-	{"observationPeriod", false},
-	{"measurementMethod", true},
-	{"unit", true},
-	{"scalingFactor", false},
-	{"samplePopulation", true},
-	{"location", true},
-}
-
-func getObsTriples(
-	ctx context.Context,
-	store *store.Store,
-	metadata *resource.Metadata,
-	obsDcids []string,
-) (map[string][]*pb.Triple, error) {
-	dcidList := ""
-	for _, dcid := range obsDcids {
-		dcidList += fmt.Sprintf("\"%s\" ", dcid)
-	}
-	selectStatment := "SELECT ?o ?provenance "
-	tripleStatment := "?o typeOf StatVarObservation . ?o provenance ?provenance . "
-	for _, prop := range obsProps {
-		selectStatment += fmt.Sprintf("?%s ", prop.name)
-		tripleStatment += fmt.Sprintf("?o %s ?%s . ", prop.name, prop.name)
-	}
-	tripleStatment += fmt.Sprintf("?o dcid (%s)", dcidList)
-	sparql := fmt.Sprintf(
-		`%s
-			WHERE {
-				%s
-			}
-		`, selectStatment, tripleStatment,
-	)
-	resp, err := translator.Query(
-		ctx, &pb.QueryRequest{Sparql: sparql}, metadata, store)
-	if err != nil {
-		return nil, err
-	}
-	result := map[string][]*pb.Triple{}
-	for _, row := range resp.GetRows() {
-		dcid := row.GetCells()[0].Value
-		prov := row.GetCells()[1].Value
-		objDcids := []string{}
-		objTriples := map[string]*pb.Triple{}
-		for i, prop := range obsProps {
-			objCell := row.GetCells()[i+2].Value
-			if objCell != "" {
-				if prop.isObj {
-					// The object is a node; need to fetch the name.
-					objDcid := objCell
-					objDcids = append(objDcids, objDcid)
-					objTriples[objDcid] = &pb.Triple{
-						SubjectId:    dcid,
-						Predicate:    prop.name,
-						ObjectId:     objDcid,
-						ProvenanceId: prov,
-					}
-				} else {
-					result[dcid] = append(result[dcid], &pb.Triple{
-						SubjectId:    dcid,
-						Predicate:    prop.name,
-						ObjectValue:  objCell,
-						ProvenanceId: prov,
-					})
-				}
-			}
-		}
-		nameNodes, err := propertyvalue.GetPropertyValuesHelper(
-			ctx, store, objDcids, "name", true)
-		if err != nil {
-			return nil, err
-		}
-		for prop, nodes := range nameNodes {
-			if len(nodes) > 0 {
-				objTriples[prop].ObjectName = nodes[0].Value
-			}
-		}
-		// Sort the triples to get determinisic result.
-		keys := make([]string, 0)
-		for k := range objTriples {
-			keys = append(keys, k)
-		}
-		sort.Strings(keys)
-		for _, key := range keys {
-			result[dcid] = append(result[dcid], objTriples[key])
-		}
-	}
-	return result, nil
-}
 
 // GetTriples implements API for Mixer.GetTriples.
 func GetTriples(
@@ -162,7 +61,7 @@ func GetTriples(
 	var err error
 	// Regular DCIDs.
 	if len(regDcids) > 0 {
-		result, err = ReadTriples(ctx, store, regDcids)
+		result, err = ReadTriples(ctx, store, metadata, regDcids)
 		if err != nil {
 			return nil, err
 		}
@@ -172,7 +71,7 @@ func GetTriples(
 	}
 	// Observation DCIDs.
 	if len(obsDcids) > 0 {
-		obsResult, err := getObsTriples(ctx, store, metadata, obsDcids)
+		obsResult, err := node.GetObsTriples(ctx, store, metadata, obsDcids)
 		if err != nil {
 			return nil, err
 		}
@@ -190,6 +89,7 @@ func GetTriples(
 func ReadTriples(
 	ctx context.Context,
 	store *store.Store,
+	metadata *resource.Metadata,
 	nodes []string,
 ) (*pb.GetTriplesResponse, error) {
 	result := &pb.GetTriplesResponse{Triples: make(map[string]*pb.Triples)}
@@ -204,19 +104,31 @@ func ReadTriples(
 				Direction: direction,
 			},
 			store,
+			metadata,
 		)
 		if err != nil {
 			return nil, err
 		}
 		for _, item := range v1Resp.GetData() {
 			if direction == util.DirectionIn {
-				result.Triples[item.GetNode()].InNodes = item.GetTriples()
+				result.Triples[item.GetNode()].InNodes = convert(item.GetTriples())
 			} else {
-				result.Triples[item.GetNode()].OutNodes = item.GetTriples()
+				result.Triples[item.GetNode()].OutNodes = convert(item.GetTriples())
 			}
 		}
 	}
 	return result, nil
+}
+
+func convert(data map[string]*pb.NodeInfoCollection) map[string]*pb.EntityInfoCollection {
+	result := map[string]*pb.EntityInfoCollection{}
+	for key, nodeCollection := range data {
+		entityCollection := &pb.EntityInfoCollection{
+			Entities: nodeCollection.Nodes,
+		}
+		result[key] = entityCollection
+	}
+	return result
 }
 
 // Filter triples in place.

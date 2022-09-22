@@ -60,7 +60,7 @@
       ],
       "predicate": "provenance",
       "objectId": "dc/d7tbsb1",
-      "objectName": "https://datacommons.org",
+      "objectName": "HumanReadableStatVars",
       "objectTypes": [
         "Provenance"
       ],
@@ -1363,7 +1363,7 @@
       ],
       "predicate": "provenance",
       "objectId": "dc/d7tbsb1",
-      "objectName": "https://datacommons.org",
+      "objectName": "HumanReadableStatVars",
       "objectTypes": [
         "Provenance"
       ],

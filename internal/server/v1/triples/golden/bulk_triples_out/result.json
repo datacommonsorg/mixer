@@ -4,7 +4,7 @@
       "node": "Country",
       "triples": {
         "name": {
-          "entities": [
+          "nodes": [
             {
               "provenanceId": "dc/5l5zxr1",
               "value": "Country"
@@ -12,9 +12,9 @@
           ]
         },
         "provenance": {
-          "entities": [
+          "nodes": [
             {
-              "name": "https://datacommons.org",
+              "name": "BaseSchema",
               "types": [
                 "Provenance"
               ],
@@ -24,7 +24,7 @@
           ]
         },
         "subClassOf": {
-          "entities": [
+          "nodes": [
             {
               "name": "AdministrativeArea",
               "types": [
@@ -36,7 +36,7 @@
           ]
         },
         "typeOf": {
-          "entities": [
+          "nodes": [
             {
               "name": "Class",
               "types": [
@@ -53,7 +53,7 @@
       "node": "BiologicalSpecimen",
       "triples": {
         "description": {
-          "entities": [
+          "nodes": [
             {
               "provenanceId": "dc/5l5zxr1",
               "value": "Biological Specimens facilitate the sharing of information about biological diversity by providing identifiers, labels, and definitions. The class definition is loosely based on the Darwin Core schema."
@@ -61,7 +61,7 @@
           ]
         },
         "name": {
-          "entities": [
+          "nodes": [
             {
               "provenanceId": "dc/5l5zxr1",
               "value": "BiologicalSpecimen"
@@ -69,9 +69,9 @@
           ]
         },
         "provenance": {
-          "entities": [
+          "nodes": [
             {
-              "name": "https://datacommons.org",
+              "name": "BaseSchema",
               "types": [
                 "Provenance"
               ],
@@ -81,7 +81,7 @@
           ]
         },
         "subClassOf": {
-          "entities": [
+          "nodes": [
             {
               "name": "Thing",
               "types": [
@@ -93,7 +93,7 @@
           ]
         },
         "typeOf": {
-          "entities": [
+          "nodes": [
             {
               "name": "Class",
               "types": [
@@ -110,7 +110,7 @@
       "node": "Count_Person",
       "triples": {
         "measuredProperty": {
-          "entities": [
+          "nodes": [
             {
               "name": "count",
               "types": [
@@ -122,7 +122,7 @@
           ]
         },
         "memberOf": {
-          "entities": [
+          "nodes": [
             {
               "name": "Demographics",
               "types": [
@@ -134,7 +134,7 @@
           ]
         },
         "name": {
-          "entities": [
+          "nodes": [
             {
               "provenanceId": "dc/d7tbsb1",
               "value": "Population"
@@ -142,7 +142,7 @@
           ]
         },
         "populationType": {
-          "entities": [
+          "nodes": [
             {
               "name": "Person",
               "types": [
@@ -154,9 +154,9 @@
           ]
         },
         "provenance": {
-          "entities": [
+          "nodes": [
             {
-              "name": "https://datacommons.org",
+              "name": "HumanReadableStatVars",
               "types": [
                 "Provenance"
               ],
@@ -166,7 +166,7 @@
           ]
         },
         "statType": {
-          "entities": [
+          "nodes": [
             {
               "name": "measuredValue",
               "types": [
@@ -178,7 +178,7 @@
           ]
         },
         "typeOf": {
-          "entities": [
+          "nodes": [
             {
               "name": "StatisticalVariable",
               "types": [
@@ -186,6 +186,63 @@
               ],
               "dcid": "StatisticalVariable",
               "provenanceId": "dc/d7tbsb1"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "node": "dc/o/vs51dzghn79eg",
+      "triples": {
+        "measurementMethod": {
+          "nodes": [
+            {
+              "name": "CensusACS5yrSurvey",
+              "dcid": "CensusACS5yrSurvey",
+              "provenanceId": "dc/gg17432"
+            }
+          ]
+        },
+        "observationAbout": {
+          "nodes": [
+            {
+              "name": "Mountain View",
+              "dcid": "geoId/0649670",
+              "provenanceId": "dc/gg17432"
+            }
+          ]
+        },
+        "observationDate": {
+          "nodes": [
+            {
+              "provenanceId": "dc/gg17432",
+              "value": "2016"
+            }
+          ]
+        },
+        "unit": {
+          "nodes": [
+            {
+              "name": "Year",
+              "dcid": "Year",
+              "provenanceId": "dc/gg17432"
+            }
+          ]
+        },
+        "value": {
+          "nodes": [
+            {
+              "provenanceId": "dc/gg17432",
+              "value": "35"
+            }
+          ]
+        },
+        "variableMeasured": {
+          "nodes": [
+            {
+              "name": "Median Age",
+              "dcid": "Median_Age_Person",
+              "provenanceId": "dc/gg17432"
             }
           ]
         }
