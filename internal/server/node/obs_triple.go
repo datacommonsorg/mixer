@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+// Package for node related operations
 package node
 
 import (
@@ -45,6 +46,8 @@ var obsProps = []prop{
 	{"location", true},
 }
 
+// GetObsTriples is a helper function to fetch triples for
+// StatisticalObservation node from BigQuery.
 func GetObsTriples(
 	ctx context.Context,
 	store *store.Store,
