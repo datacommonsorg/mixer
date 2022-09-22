@@ -87,6 +87,7 @@ if [[ "$IMAGE_ERR" == "1" ]];  then ./scripts/push_binary.sh "$TAG"; fi
 # Upgrade or install Mixer helm chart into the cluster
 helm upgrade --install "$RELEASE" deploy/helm_charts/mixer \
   --atomic \
+  --debug \
   -f "deploy/helm_charts/envs/$ENV.yaml" \
   --set mixer.image.tag="$TAG" \
   --set mixer.githash="$TAG" \

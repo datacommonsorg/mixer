@@ -18,9 +18,9 @@ serviceGroups:
         - "/v1/info/variable/group/*"
         - "/v1/variable/*"
       replicas:
-        default: 10
-        min: 10
-        max: 20
+        default: 2
+        min: 2
+        max: 8
       resources:
         memoryRequest: "8G"
         memoryLimit: "8G"
@@ -28,9 +28,9 @@ serviceGroups:
       urlPaths:
         - "/v1/recon/*"
       replicas:
-        default: 50
-        min: 50
-        max: 80
+        default: 20
+        min: 20
+        max: 30
       resources:
         memoryRequest: "400M"
         memoryLimit: "400M"
@@ -38,9 +38,9 @@ serviceGroups:
       urlPaths:
         - "/*"
       replicas:
-        default: 15
-        min: 15
-        max: 30
+        default: 10
+        min: 10
+        max: 20
       resources:
         memoryRequest: "3G"
         memoryLimit: "3G"
