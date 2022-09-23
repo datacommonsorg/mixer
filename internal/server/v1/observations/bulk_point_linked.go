@@ -29,6 +29,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
+	"google.golang.org/protobuf/proto"
 )
 
 // BulkPointLinked implements API for Mixer.BulkObservationsPointLinked.
@@ -110,7 +111,7 @@ func BulkPointLinked(
 					entityResult[entity].PointsByFacet,
 					&pb.PointStat{
 						Date:  respDate,
-						Value: val,
+						Value: proto.Float64(val),
 						Facet: facetID,
 					},
 				)

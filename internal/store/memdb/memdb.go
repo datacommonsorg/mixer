@@ -34,6 +34,7 @@ import (
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/encoding/protojson"
+	"google.golang.org/protobuf/proto"
 )
 
 // MemDb holds imported data in memory.
@@ -118,7 +119,7 @@ func (memDb *MemDb) ReadPointValue(statVar, place, date string) (
 			if val, ok := series.Val[date]; ok {
 				return &pb.PointStat{
 					Date:  date,
-					Value: val,
+					Value: proto.Float64(val),
 				}, series.Metadata
 			}
 		}
@@ -139,7 +140,7 @@ func (memDb *MemDb) ReadPointValue(statVar, place, date string) (
 		if latestDate != "" {
 			return &pb.PointStat{
 				Date:  latestDate,
-				Value: latestVal,
+				Value: proto.Float64(latestVal),
 			}, meta
 		}
 	}

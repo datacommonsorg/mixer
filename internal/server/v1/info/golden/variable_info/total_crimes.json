@@ -18,6 +18,7 @@
             "name": "Lakewood"
           }
         ],
+        "minValue": 0,
         "maxValue": 36325
       },
       "City": {
@@ -36,6 +37,7 @@
             "name": "Chicago"
           }
         ],
+        "minValue": 0,
         "maxValue": 198419
       },
       "Country": {
@@ -112,6 +114,7 @@
                     "name": "Lakewood"
                   }
                 ],
+                "minValue": 0,
                 "maxValue": 36325
               },
               "City": {
@@ -130,6 +133,7 @@
                     "name": "Chicago"
                   }
                 ],
+                "minValue": 0,
                 "maxValue": 198419
               },
               "County": {
@@ -163,6 +167,7 @@
                 "maxValue": 1265920
               }
             },
+            "minValue": 0,
             "maxValue": 1265920
           }
         ]

@@ -19,6 +19,7 @@ import (
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/google/go-cmp/cmp"
+	"google.golang.org/protobuf/proto"
 	"google.golang.org/protobuf/testing/protocmp"
 )
 
@@ -65,7 +66,7 @@ func TestGetValueFromBestSourcePb(t *testing.T) {
 			"2018",
 			&pb.PointStat{
 				Date:  "2018",
-				Value: 205,
+				Value: proto.Float64(205),
 			},
 			&pb.StatMetadata{
 				ImportName:        "USCensusPEP_Annual_Population",
@@ -105,7 +106,7 @@ func TestGetValueFromBestSourcePb(t *testing.T) {
 			"",
 			&pb.PointStat{
 				Date:  "2020",
-				Value: 400,
+				Value: proto.Float64(400),
 			},
 			&pb.StatMetadata{
 				ImportName:        "CensusACS5YearSurvey",

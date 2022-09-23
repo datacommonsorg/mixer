@@ -25,6 +25,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/stat"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/util"
+	"google.golang.org/protobuf/proto"
 )
 
 // BulkPoint implements API for Mixer.BulkObservationsPoint.
@@ -70,7 +71,7 @@ func BulkPoint(
 						if value, ok := series.Val[date]; ok {
 							ps := &pb.PointStat{
 								Date:  date,
-								Value: value,
+								Value: proto.Float64(value),
 								Facet: facet,
 							}
 							entityObservations.PointsByFacet = append(
@@ -96,7 +97,7 @@ func BulkPoint(
 								latestDate = date
 								ps = &pb.PointStat{
 									Date:  date,
-									Value: value,
+									Value: proto.Float64(value),
 									Facet: facet,
 								}
 							}

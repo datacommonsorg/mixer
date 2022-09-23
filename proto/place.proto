@@ -44,7 +44,7 @@ message RelatedPlacesInfo {
   message Ranking {
     message RankInfo {
       int32 rank = 1;
-      double value = 2;
+      optional double value = 2;
       string place_dcid = 3;
     }
     repeated RankInfo info = 1;

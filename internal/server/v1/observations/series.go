@@ -25,6 +25,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/store"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
+	"google.golang.org/protobuf/proto"
 )
 
 // Series implements API for Mixer.ObservationsSeries.
@@ -77,7 +78,7 @@ func Series(
 	for _, date := range dates {
 		resp.Observations = append(resp.Observations, &pb.PointStat{
 			Date:  date,
-			Value: series[0].Val[date],
+			Value: proto.Float64(series[0].Val[date]),
 		})
 	}
 	return resp, nil

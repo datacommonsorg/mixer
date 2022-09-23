@@ -292,7 +292,7 @@ func fetchBtData(
 					}
 					popData[place] = &pb.PointStat{
 						Date:     *latestDate,
-						Value:    popSeries.Val[*latestDate],
+						Value:    proto.Float64(popSeries.Val[*latestDate]),
 						Metadata: popSeries.Metadata,
 					}
 				}

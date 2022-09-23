@@ -29,6 +29,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
+	"google.golang.org/protobuf/proto"
 )
 
 func getStatSet(
@@ -122,7 +123,7 @@ func getStatSetAll(
 					if value, ok := series.Val[date]; ok {
 						tmpResult[statVar][metaHash].Stat[place] = &pb.PointStat{
 							Date:  date,
-							Value: value,
+							Value: proto.Float64(value),
 						}
 					}
 				} else {
@@ -134,7 +135,7 @@ func getStatSetAll(
 							latestDate = date
 							ps = &pb.PointStat{
 								Date:  date,
-								Value: value,
+								Value: proto.Float64(value),
 							}
 						}
 					}
@@ -275,7 +276,7 @@ func GetStatSetWithinPlace(
 				if shouldSetValue || shouldResetValue {
 					result.Data[statVar].Stat[place] = &pb.PointStat{
 						Date:     respDate,
-						Value:    val,
+						Value:    proto.Float64(val),
 						MetaHash: metaHash,
 					}
 					result.Metadata[metaHash] = metaData
@@ -404,7 +405,7 @@ func GetStatSetWithinPlaceAll(
 				}
 				pointStat.Stat[place] = &pb.PointStat{
 					Date:  usedDate,
-					Value: val,
+					Value: proto.Float64(val),
 				}
 			}
 			result.Data[statVar].StatList = append(result.Data[statVar].StatList, pointStat)

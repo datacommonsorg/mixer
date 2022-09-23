@@ -1,13 +1,16 @@
 {
   "observations": [
     {
-      "date": "1985"
+      "date": "1985",
+      "value": 0
     },
     {
-      "date": "1990"
+      "date": "1990",
+      "value": 0
     },
     {
-      "date": "1995"
+      "date": "1995",
+      "value": 0
     },
     {
       "date": "2000",
