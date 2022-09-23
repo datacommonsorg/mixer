@@ -23,15 +23,15 @@
 
 # =========  protoc stage ==========
 
-FROM golang:1.16 AS go-protoc
+FROM golang:1.19 AS go-protoc
 # Install protoc
 RUN apt-get update && \
     apt-get upgrade -y && \
     apt-get install -y protobuf-compiler
 # Install protobuf go plugin
 ENV GO111MODULE=on
-RUN go get google.golang.org/protobuf/cmd/protoc-gen-go@v1.28.0
-RUN go get google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.2.0
+RUN go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.28.0
+RUN go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.2.0
 
 
 # =========  base stage ==========
