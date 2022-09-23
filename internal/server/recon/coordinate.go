@@ -97,9 +97,13 @@ func ResolveCoordinates(
 	if err != nil {
 		return nil, err
 	}
-	geoJSONMap := map[string]string{}
+	s2PolygonMap := map[string]*s2.Polygon{}
 	for place, entities := range geoJSONData {
-		geoJSONMap[place] = entities[0].Value
+		s2Polygon, err := parseGeoJSON(entities[0].Value)
+		if err != nil {
+			return nil, err
+		}
+		s2PolygonMap[place] = s2Polygon
 	}
 
 	// Assemble response.
@@ -125,11 +129,11 @@ func ResolveCoordinates(
 							place.GetDcid(),
 						)
 					} else { // Not fully cover the tile.
-						geoJSON, ok := geoJSONMap[place.GetDcid()]
+						s2Polygon, ok := s2PolygonMap[place.GetDcid()]
 						if !ok {
 							continue
 						}
-						contained, err := isContainedIn(geoJSON, co.GetLatitude(), co.GetLongitude())
+						contained, err := isContainedIn(s2Polygon, co.GetLatitude(), co.GetLongitude())
 						if err != nil {
 							return res, err
 						}
@@ -253,11 +257,7 @@ func parseGeoJSON(geoJSON string) (*s2.Polygon, error) {
 	}
 }
 
-func isContainedIn(geoJSON string, lat float64, lng float64) (bool, error) {
-	s2Polygon, err := parseGeoJSON(geoJSON)
-	if err != nil {
-		return false, err
-	}
+func isContainedIn(s2Polygon *s2.Polygon, lat float64, lng float64) (bool, error) {
 	s2Point := s2.PointFromLatLng(s2.LatLngFromDegrees(lat, lng))
 	return s2Polygon.ContainsPoint(s2Point), nil
 }
