@@ -27,7 +27,12 @@ FROM golang:1.19 AS go-protoc
 # Install protoc
 RUN apt-get update && \
     apt-get upgrade -y && \
-    apt-get install -y protobuf-compiler
+    apt-get install -y unzip
+
+RUN curl -LO https://github.com/protocolbuffers/protobuf/releases/download/v3.20.2/protoc-3.20.2-linux-x86_64.zip
+RUN unzip protoc-3.20.2-linux-x86_64.zip -d $HOME/.local
+RUN export PATH="$PATH:$HOME/.local/bin"
+
 # Install protobuf go plugin
 ENV GO111MODULE=on
 RUN go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.28.0
