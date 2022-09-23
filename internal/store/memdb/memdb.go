@@ -155,8 +155,8 @@ func (memDb *MemDb) ReadStatDate(statVar string) *pb.StatDateList {
 	if !ok {
 		return result
 	}
-	tmp := map[uint32]map[string]float64{}
-	metaMap := map[uint32]*pb.StatMetadata{}
+	tmp := map[string]map[string]float64{}
+	metaMap := map[string]*pb.StatMetadata{}
 	for _, seriesList := range placeData {
 		for _, series := range seriesList {
 			metahash := util.GetMetadataHash(series.Metadata)

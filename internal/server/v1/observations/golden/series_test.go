@@ -55,6 +55,11 @@ func TestObservationsSeries(t *testing.T) {
 				"electricity_generation.json",
 			},
 			{
+				"WithdrawalRate_Water_Aquaculture",
+				"geoId/06",
+				"water_withdraw.json",
+			},
+			{
 				"Median_Age_Person",
 				"geoId/0649670",
 				"median_age.json",

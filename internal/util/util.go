@@ -447,7 +447,7 @@ func ParseBigtableGroup(s string) []string {
 
 // GetMetadataHash retrieves a hash string for a given protobuf message.
 // Note this should be restrict to a request scope.
-func GetMetadataHash(m *pb.StatMetadata) uint32 {
+func GetMetadataHash(m *pb.StatMetadata) string {
 	h := fnv.New32a()
 	_, _ = h.Write([]byte(strings.Join([]string{
 		m.ImportName,
@@ -456,7 +456,7 @@ func GetMetadataHash(m *pb.StatMetadata) uint32 {
 		m.ScalingFactor,
 		m.Unit,
 	}, "-")))
-	return h.Sum32()
+	return fmt.Sprint(h.Sum32())
 }
 
 // EncodeProto encodes a protobuf message into a compressed string

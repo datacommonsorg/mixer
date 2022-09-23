@@ -38,7 +38,7 @@ func getStatSet(
 	ts := time.Now()
 	result := &pb.GetStatSetResponse{
 		Data:     make(map[string]*pb.PlacePointStat),
-		Metadata: make(map[uint32]*pb.StatMetadata),
+		Metadata: make(map[string]*pb.StatMetadata),
 	}
 	for _, statVar := range statVars {
 		result.Data[statVar] = &pb.PlacePointStat{
@@ -88,11 +88,11 @@ func getStatSetAll(
 	}
 	// Use a temporary result to hold statVar->source->(place,value) data, then
 	// convert to final result
-	tmpResult := map[string]map[uint32]*pb.PlacePointStat{}
+	tmpResult := map[string]map[string]*pb.PlacePointStat{}
 	// Initialize result with stat vars and place dcids.
 	result := &pb.GetStatSetAllResponse{
 		Data:     make(map[string]*pb.PlacePointStatAll),
-		Metadata: make(map[uint32]*pb.StatMetadata),
+		Metadata: make(map[string]*pb.StatMetadata),
 	}
 
 	// Populate tmp result
@@ -107,7 +107,7 @@ func getStatSetAll(
 				continue
 			}
 			if _, ok := tmpResult[statVar]; !ok {
-				tmpResult[statVar] = map[uint32]*pb.PlacePointStat{}
+				tmpResult[statVar] = map[string]*pb.PlacePointStat{}
 			}
 			for _, series := range ObsTimeSeries.SourceSeries {
 				metadata := stat.GetMetadata(series)
@@ -153,7 +153,7 @@ func getStatSetAll(
 		}
 	}
 	for statVar, sourceData := range tmpResult {
-		metaHashList := []uint32{}
+		metaHashList := []string{}
 		for metaHash := range sourceData {
 			metaHashList = append(metaHashList, metaHash)
 		}
@@ -227,7 +227,7 @@ func GetStatSetWithinPlace(
 	// Pre-populate result
 	result := &pb.GetStatSetResponse{
 		Data:     make(map[string]*pb.PlacePointStat),
-		Metadata: make(map[uint32]*pb.StatMetadata),
+		Metadata: make(map[string]*pb.StatMetadata),
 	}
 	for _, statVar := range statVars {
 		result.Data[statVar] = &pb.PlacePointStat{
@@ -364,7 +364,7 @@ func GetStatSetWithinPlaceAll(
 	// Pre-populate result
 	result := &pb.GetStatSetAllResponse{
 		Data:     make(map[string]*pb.PlacePointStatAll),
-		Metadata: make(map[uint32]*pb.StatMetadata),
+		Metadata: make(map[string]*pb.StatMetadata),
 	}
 	for _, statVar := range statVars {
 		result.Data[statVar] = &pb.PlacePointStatAll{
@@ -445,7 +445,7 @@ func GetStatSetWithinPlaceAll(
 			}
 			for i, place := range childPlaces {
 				pointValue, metaData := store.MemDb.ReadPointValue(statVar, place, date)
-				var metaHash uint32
+				var metaHash string
 				if pointValue != nil {
 					if i == 0 {
 						metaHash = util.GetMetadataHash(metaData)

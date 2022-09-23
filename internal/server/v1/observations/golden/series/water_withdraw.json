@@ -1,0 +1,35 @@
+{
+  "observations": [
+    {
+      "date": "1985"
+    },
+    {
+      "date": "1990"
+    },
+    {
+      "date": "1995"
+    },
+    {
+      "date": "2000",
+      "value": 537.4900000000001
+    },
+    {
+      "date": "2005",
+      "value": 645.6099999999999
+    },
+    {
+      "date": "2010",
+      "value": 973.3400000000001
+    },
+    {
+      "date": "2015",
+      "value": 726.7499999999998
+    }
+  ],
+  "facet": {
+    "import_name": "USGSWaterUse",
+    "provenance_url": "https://waterdata.usgs.gov/nwis/wu",
+    "observation_period": "P1Y",
+    "unit": "MillionGallonsPerDay"
+  }
+}
