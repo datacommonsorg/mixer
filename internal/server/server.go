@@ -16,8 +16,9 @@ package server
 
 import (
 	"context"
-	"io/ioutil"
+	"io"
 	"log"
+	"os"
 	"path"
 	"path/filepath"
 	"runtime"
@@ -65,7 +66,7 @@ func ReadBranchTableName(
 		return "", err
 	}
 	defer rc.Close()
-	folder, err := ioutil.ReadAll(rc)
+	folder, err := io.ReadAll(rc)
 	if err != nil {
 		return "", err
 	}
@@ -86,14 +87,14 @@ func NewMetadata(
 	if err != nil {
 		return nil, err
 	}
-	files, err := ioutil.ReadDir(schemaPath)
+	files, err := os.ReadDir(schemaPath)
 	if err != nil {
 		return nil, err
 	}
 	mappings := []*types.Mapping{}
 	for _, f := range files {
 		if strings.HasSuffix(f.Name(), ".mcf") {
-			mappingStr, err := ioutil.ReadFile(filepath.Join(schemaPath, f.Name()))
+			mappingStr, err := os.ReadFile(filepath.Join(schemaPath, f.Name()))
 			if err != nil {
 				return nil, err
 			}

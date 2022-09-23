@@ -18,6 +18,7 @@
               "name": "Chicago"
             }
           ],
+          "minValue": 0,
           "maxValue": 100
         },
         "Country": {
@@ -55,6 +56,7 @@
               "name": "Harris County"
             }
           ],
+          "minValue": 0,
           "maxValue": 58.7
         },
         "State": {
@@ -212,6 +214,7 @@
                       "name": "Chicago"
                     }
                   ],
+                  "minValue": 0,
                   "maxValue": 100
                 },
                 "County": {
@@ -230,6 +233,7 @@
                       "name": "Harris County"
                     }
                   ],
+                  "minValue": 0,
                   "maxValue": 58.7
                 },
                 "State": {
@@ -252,6 +256,7 @@
                   "maxValue": 27.5
                 }
               },
+              "minValue": 0,
               "maxValue": 100
             },
             {
@@ -280,6 +285,7 @@
                       "name": "Chicago"
                     }
                   ],
+                  "minValue": 0,
                   "maxValue": 100
                 },
                 "County": {
@@ -321,6 +327,7 @@
                   "maxValue": 23.4
                 }
               },
+              "minValue": 0,
               "maxValue": 100
             }
           ]

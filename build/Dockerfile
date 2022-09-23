@@ -23,15 +23,22 @@
 
 # =========  protoc stage ==========
 
-FROM golang:1.16 AS go-protoc
+FROM golang:1.19 AS go-protoc
+WORKDIR /mixer
 # Install protoc
 RUN apt-get update && \
     apt-get upgrade -y && \
-    apt-get install -y protobuf-compiler
+    apt-get install -y unzip
+
+RUN curl -LO https://github.com/protocolbuffers/protobuf/releases/download/v3.19.4/protoc-3.19.4-linux-x86_64.zip
+RUN unzip protoc-3.19.4-linux-x86_64.zip
+RUN chmod +x /mixer/bin/protoc
+ENV PATH="${PATH}:/mixer/bin/"
+
 # Install protobuf go plugin
 ENV GO111MODULE=on
-RUN go get google.golang.org/protobuf/cmd/protoc-gen-go@v1.28.0
-RUN go get google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.2.0
+RUN go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.28.1
+RUN go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.2.0
 
 
 # =========  base stage ==========
@@ -74,7 +81,7 @@ ENTRYPOINT ["/go/bin/mixer"]
 FROM base as test
 WORKDIR /mixer
 # Golint
-RUN wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s v1.33.0
+RUN wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s v1.49.0
 RUN ./bin/golangci-lint run --timeout=600s
 # Test
 COPY test/ test

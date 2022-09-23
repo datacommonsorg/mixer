@@ -15,7 +15,7 @@
 package recon
 
 import (
-	"io/ioutil"
+	"os"
 	"path"
 	"runtime"
 	"testing"
@@ -50,9 +50,9 @@ func TestIsContainedIn(t *testing.T) {
 		_, filename, _, _ := runtime.Caller(0)
 		geoJSONFilePath := path.Join(
 			path.Dir(filename), "test_data", c.geoJSONFileName)
-		geoJSONBytes, err := ioutil.ReadFile(geoJSONFilePath)
+		geoJSONBytes, err := os.ReadFile(geoJSONFilePath)
 		if err != nil {
-			t.Errorf("ioutil.ReadFile(%s) = %s", c.geoJSONFileName, err)
+			t.Errorf("os.ReadFile(%s) = %s", c.geoJSONFileName, err)
 			continue
 		}
 		s2Polygon, err := parseGeoJSON(string(geoJSONBytes))

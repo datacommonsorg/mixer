@@ -16,7 +16,7 @@ package solver
 
 import (
 	"encoding/json"
-	"io/ioutil"
+	"os"
 
 	"github.com/datacommonsorg/mixer/internal/parser/tmcf"
 	"github.com/datacommonsorg/mixer/internal/translator/types"
@@ -43,7 +43,7 @@ type data struct {
 
 // GetSubTypeMap gets subtype map.
 func GetSubTypeMap(tableTypesJSONFilePath string) (map[string]string, error) {
-	tableTypesJSON, err := ioutil.ReadFile(tableTypesJSONFilePath)
+	tableTypesJSON, err := os.ReadFile(tableTypesJSONFilePath)
 	if err != nil {
 		return nil, err
 	}

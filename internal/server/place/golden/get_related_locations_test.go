@@ -16,7 +16,7 @@ package golden
 
 import (
 	"context"
-	"io/ioutil"
+	"os"
 	"path"
 	"runtime"
 	"testing"
@@ -91,7 +91,7 @@ func TestGetRelatedLocations(t *testing.T) {
 			}
 
 			var expected pb.GetRelatedLocationsResponse
-			file, _ := ioutil.ReadFile(goldenFile)
+			file, _ := os.ReadFile(goldenFile)
 			if err := protojson.Unmarshal(file, &expected); err != nil {
 				t.Errorf("Can not Unmarshal golden file %s: %v", c.goldenFile, err)
 				continue

@@ -15,7 +15,7 @@
 package tmcf
 
 import (
-	"io/ioutil"
+	"os"
 	"testing"
 
 	"github.com/google/go-cmp/cmp"
@@ -59,7 +59,7 @@ func TestParseMcf(t *testing.T) {
 			},
 		},
 	} {
-		tmcf, err := ioutil.ReadFile("testdata/" + c.file)
+		tmcf, err := os.ReadFile("testdata/" + c.file)
 		if err != nil {
 			t.Fatalf("reading tmcf: %s", err)
 		}

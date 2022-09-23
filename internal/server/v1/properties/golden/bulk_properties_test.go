@@ -16,7 +16,7 @@ package golden
 
 import (
 	"context"
-	"io/ioutil"
+	"os"
 	"path"
 	"runtime"
 	"testing"
@@ -72,7 +72,7 @@ func TestBulkProperties(t *testing.T) {
 				continue
 			}
 			var expected pb.BulkPropertiesResponse
-			file, _ := ioutil.ReadFile(goldenFile)
+			file, _ := os.ReadFile(goldenFile)
 			if err := protojson.Unmarshal(file, &expected); err != nil {
 				t.Errorf("Can not Unmarshal golden file %s: %v", goldenFile, err)
 				continue

@@ -17,7 +17,7 @@ package statvar
 import (
 	"context"
 	"encoding/json"
-	"io/ioutil"
+	"os"
 	"path"
 	"runtime"
 	"sort"
@@ -100,7 +100,7 @@ func getIgnoredSVGHelper(
 func getSynonymMap() map[string][]string {
 	synonymMap := map[string][]string{}
 	_, filename, _, _ := runtime.Caller(0)
-	bytes, err := ioutil.ReadFile(path.Join(path.Dir(filename), "../resource/synonyms.json"))
+	bytes, err := os.ReadFile(path.Join(path.Dir(filename), "../resource/synonyms.json"))
 	if err == nil {
 		var synonyms [][]string
 		err = json.Unmarshal(bytes, &synonyms)

@@ -18,8 +18,8 @@ import (
 	"context"
 	"encoding/csv"
 	"io"
-	"io/ioutil"
 	"log"
+	"os"
 	"path/filepath"
 	"sort"
 	"strconv"
@@ -34,6 +34,7 @@ import (
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/encoding/protojson"
+	"google.golang.org/protobuf/proto"
 )
 
 // MemDb holds imported data in memory.
@@ -118,7 +119,7 @@ func (memDb *MemDb) ReadPointValue(statVar, place, date string) (
 			if val, ok := series.Val[date]; ok {
 				return &pb.PointStat{
 					Date:  date,
-					Value: val,
+					Value: proto.Float64(val),
 				}, series.Metadata
 			}
 		}
@@ -139,7 +140,7 @@ func (memDb *MemDb) ReadPointValue(statVar, place, date string) (
 		if latestDate != "" {
 			return &pb.PointStat{
 				Date:  latestDate,
-				Value: latestVal,
+				Value: proto.Float64(latestVal),
 			}, meta
 		}
 	}
@@ -231,7 +232,7 @@ func getParentSvg(svgMap map[string]*pb.StatVarGroupNode) map[string]string {
 
 // LoadConfig loads the memdb config from file.
 func (memDb *MemDb) LoadConfig(ctx context.Context, file string) error {
-	bytes, err := ioutil.ReadFile(file)
+	bytes, err := os.ReadFile(file)
 	if err != nil {
 		return status.Errorf(codes.Internal, "Failed to read memdb config: %v", err)
 	}

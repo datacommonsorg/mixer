@@ -18,7 +18,6 @@ import (
 	"bytes"
 	"context"
 	"encoding/json"
-	"io/ioutil"
 	"log"
 	"net"
 	"os"
@@ -94,10 +93,10 @@ func setupInternal(
 ) (pb.MixerClient, pb.ReconClient, error) {
 	ctx := context.Background()
 	_, filename, _, _ := runtime.Caller(0)
-	bqTableID, _ := ioutil.ReadFile(path.Join(path.Dir(filename), bq))
+	bqTableID, _ := os.ReadFile(path.Join(path.Dir(filename), bq))
 	schemaPath := path.Join(path.Dir(filename), mcfPath)
 
-	btGroupString, _ := ioutil.ReadFile(path.Join(path.Dir(filename), btGroup))
+	btGroupString, _ := os.ReadFile(path.Join(path.Dir(filename), btGroup))
 	tableNames := util.ParseBigtableGroup(string(btGroupString))
 
 	// BigQuery.
@@ -149,7 +148,7 @@ func setupInternal(
 func SetupBqOnly() (pb.MixerClient, pb.ReconClient, error) {
 	ctx := context.Background()
 	_, filename, _, _ := runtime.Caller(0)
-	bqTableID, _ := ioutil.ReadFile(
+	bqTableID, _ := os.ReadFile(
 		path.Join(path.Dir(filename), "../deploy/storage/bigquery.version"))
 	schemaPath := path.Join(path.Dir(filename), "../deploy/mapping/")
 
@@ -219,7 +218,7 @@ func UpdateGolden(v interface{}, root, fname string) {
 	if err != nil {
 		log.Printf("could not encode golden response %v", err)
 	}
-	if ioutil.WriteFile(
+	if os.WriteFile(
 		path.Join(root, fname), bytes.TrimRight(buf.Bytes(), "\n"), 0644) != nil {
 		log.Printf("could not write golden files to %s", fname)
 	}
@@ -244,15 +243,15 @@ func UpdateProtoGolden(
 		log.Printf("json.MarshalIndent(%s) = %s", fname, err)
 		return
 	}
-	err = ioutil.WriteFile(path.Join(root, fname), jsonByte, 0644)
+	err = os.WriteFile(path.Join(root, fname), jsonByte, 0644)
 	if err != nil {
-		log.Printf("ioutil.WriteFile(%s) = %s", fname, err)
+		log.Printf("os.WriteFile(%s) = %s", fname, err)
 	}
 }
 
 // ReadJSON reads in the golden Json file.
 func ReadJSON(dir, fname string, resp protoreflect.ProtoMessage) error {
-	bytes, err := ioutil.ReadFile(path.Join(dir, fname))
+	bytes, err := os.ReadFile(path.Join(dir, fname))
 	if err != nil {
 		return err
 	}

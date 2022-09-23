@@ -23,6 +23,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
+	"google.golang.org/protobuf/proto"
 )
 
 const inferiorFacetThreshold = 1000
@@ -193,7 +194,7 @@ func GetValueFromBestSourcePb(
 				meta := GetMetadata(series)
 				return &pb.PointStat{
 					Date:  date,
-					Value: value,
+					Value: proto.Float64(value),
 				}, meta
 			}
 		}
@@ -216,7 +217,7 @@ func GetValueFromBestSourcePb(
 				latestDate = date
 				ps = &pb.PointStat{
 					Date:  date,
-					Value: value,
+					Value: proto.Float64(value),
 				}
 				meta = GetMetadata(series)
 			}

@@ -348,6 +348,7 @@
                       "name": "Joplin"
                     }
                   ],
+                  "minValue": 0,
                   "maxValue": 685785
                 },
                 "Country": {
@@ -396,6 +397,7 @@
                       "name": "Florida"
                     }
                   ],
+                  "minValue": 0,
                   "maxValue": 2896206
                 }
               },

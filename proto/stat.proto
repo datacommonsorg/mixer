@@ -47,7 +47,7 @@ message StatMetadata {
 message PointStat {
   // date in IOS-8601 format
   string date = 1;
-  double value = 2;
+  optional double value = 2;
   // Full metadata of the stat. This is set when the proto is used statalone,
   // ex, in place page cache.
   StatMetadata metadata = 3;
@@ -266,7 +266,7 @@ message GetStatValueRequest {
   string scaling_factor = 7;
 }
 
-message GetStatValueResponse { double value = 1; }
+message GetStatValueResponse { optional double value = 1; }
 
 // Request for GetStatSeries service.
 message GetStatSeriesRequest {

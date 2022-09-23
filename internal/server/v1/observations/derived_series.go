@@ -27,6 +27,7 @@ import (
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/stat"
 	"github.com/datacommonsorg/mixer/internal/store"
+	"google.golang.org/protobuf/proto"
 )
 
 // DerivedSeries implements API for Mixer.DerivedObservationsSeries.
@@ -68,7 +69,7 @@ func DerivedSeries(
 	for _, p := range result.(*calcSeries).points {
 		resp.Observations = append(resp.Observations, &pb.PointStat{
 			Date:  p.GetDate(),
-			Value: p.GetValue(),
+			Value: proto.Float64(p.GetValue()),
 		})
 	}
 
@@ -164,7 +165,7 @@ func evalSeriesBinaryExpr(x, y calcItem, op token.Token) (calcItem, error) {
 		}
 		res.points = append(res.points, &pb.PointStat{
 			Date:  xx.points[i].GetDate(),
-			Value: val,
+			Value: proto.Float64(val),
 		})
 	}
 
@@ -216,7 +217,7 @@ func toCalcSeries(sourceSeries *pb.SourceSeries) *calcSeries {
 	for _, date := range dates {
 		series.points = append(series.points, &pb.PointStat{
 			Date:  date,
-			Value: sourceSeries.GetVal()[date],
+			Value: proto.Float64(sourceSeries.GetVal()[date]),
 		})
 	}
 

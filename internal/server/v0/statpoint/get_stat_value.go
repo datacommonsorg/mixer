@@ -23,6 +23,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/store"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
+	"google.golang.org/protobuf/proto"
 )
 
 // GetStatValue implements API for Mixer.GetStatValue.
@@ -62,6 +63,6 @@ func GetStatValue(ctx context.Context, in *pb.GetStatValueRequest, store *store.
 	if err != nil {
 		return result, nil
 	}
-	result.Value = value
+	result.Value = proto.Float64(value)
 	return result, nil
 }

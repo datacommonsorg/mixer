@@ -26,6 +26,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"github.com/datacommonsorg/mixer/internal/util"
+	"google.golang.org/protobuf/proto"
 )
 
 // BulkSeries implements API for Mixer.BulkObservationsSeries.
@@ -76,7 +77,7 @@ func BulkSeries(
 					for date, value := range series.Val {
 						ps := &pb.PointStat{
 							Date:  date,
-							Value: value,
+							Value: proto.Float64(value),
 						}
 						timeSeries.Series = append(timeSeries.Series, ps)
 						sort.SliceStable(timeSeries.Series, func(i, j int) bool {
@@ -103,7 +104,7 @@ func BulkSeries(
 					for date, value := range series.Val {
 						ps := &pb.PointStat{
 							Date:  date,
-							Value: value,
+							Value: proto.Float64(value),
 						}
 						timeSeries.Series = append(timeSeries.Series, ps)
 						sort.SliceStable(timeSeries.Series, func(i, j int) bool {
