@@ -24,14 +24,16 @@
 # =========  protoc stage ==========
 
 FROM golang:1.19 AS go-protoc
+WORKDIR /mixer
 # Install protoc
 RUN apt-get update && \
     apt-get upgrade -y && \
     apt-get install -y unzip
 
-RUN curl -LO https://github.com/protocolbuffers/protobuf/releases/download/v3.20.2/protoc-3.20.2-linux-x86_64.zip
-RUN unzip protoc-3.20.2-linux-x86_64.zip -d $HOME/.local
-RUN export PATH="$PATH:$HOME/.local/bin"
+RUN curl -LO https://github.com/protocolbuffers/protobuf/releases/download/v3.19.4/protoc-3.19.4-linux-x86_64.zip
+RUN unzip protoc-3.19.4-linux-x86_64.zip
+RUN chmod +x /mixer/bin/protoc
+ENV PATH="${PATH}:/mixer/bin/"
 
 # Install protobuf go plugin
 ENV GO111MODULE=on
