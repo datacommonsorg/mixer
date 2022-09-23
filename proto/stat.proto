@@ -54,16 +54,16 @@ message PointStat {
   // Hash of the metadata, this is to be used together with a map from
   // the hash to the full metatdata. This is set in /stat/set/within-place/*
   // APIs.
-  uint32 meta_hash = 4;
+  string meta_hash = 4;
   // Same as meta_hash, used in V1 API.
-  uint32 facet = 5;
+  string facet = 5;
 }
 
 message PlacePointStat {
   // Keyed by place DCID.
   map<string, PointStat> stat = 1;
   // Hash of the matdata, which applies to all the PointStat in `stat` field.
-  uint32 meta_hash = 2;
+  string meta_hash = 2;
 }
 
 message PlacePointStatAll {
@@ -381,14 +381,14 @@ message GetStatSetResponse {
   // Keyed by statVar.
   map<string, PlacePointStat> data = 1;
   // Keyed by metadata hash.
-  map<uint32, StatMetadata> metadata = 2;
+  map<string, StatMetadata> metadata = 2;
 }
 
 message GetStatSetAllResponse {
   // Keyed by statVar.
   map<string, PlacePointStatAll> data = 1;
   // Keyed by metadata hash.
-  map<uint32, StatMetadata> metadata = 2;
+  map<string, StatMetadata> metadata = 2;
 }
 
 message StatDate {

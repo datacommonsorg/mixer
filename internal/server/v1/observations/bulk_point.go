@@ -44,7 +44,7 @@ func BulkPoint(
 	}
 
 	result := &pb.BulkObservationsPointResponse{
-		Facets: map[uint32]*pb.StatMetadata{},
+		Facets: map[string]*pb.StatMetadata{},
 	}
 	tmpResult := map[string]*pb.VariableObservations{}
 	for _, entity := range entities {

@@ -42,7 +42,7 @@ func BulkSeries(
 	ctx = context.WithValue(ctx, bigtable.CustomImportGroups, customImportGroups)
 
 	result := &pb.BulkObservationsSeriesResponse{
-		Facets: map[uint32]*pb.StatMetadata{},
+		Facets: map[string]*pb.StatMetadata{},
 	}
 	btData, err := stat.ReadStatsPb(ctx, store.BtGroup, entities, variables)
 	if err != nil {

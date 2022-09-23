@@ -72,7 +72,7 @@ func BulkPointLinked(
 		return nil, err
 	}
 	result := &pb.BulkObservationsPointResponse{
-		Facets: map[uint32]*pb.StatMetadata{},
+		Facets: map[string]*pb.StatMetadata{},
 	}
 	// gotResult is a state that covers all variables. As of 2022-05, the cache
 	// should have data for all variables and all ancenstor <--> child place type

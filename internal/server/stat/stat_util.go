@@ -241,7 +241,7 @@ func GetMetadata(s *pb.SourceSeries) *pb.StatMetadata {
 }
 
 // getSourceSeriesKey computes the metahash for *pb.SourceSeries.
-func getSourceSeriesHash(series *pb.SourceSeries) uint32 {
+func getSourceSeriesHash(series *pb.SourceSeries) string {
 	return util.GetMetadataHash(GetMetadata(series))
 }
 
@@ -250,7 +250,7 @@ func getSourceSeriesHash(series *pb.SourceSeries) uint32 {
 // this is the series with the latest data as well.
 func CollectDistinctSourceSeries(seriesList ...[]*pb.SourceSeries) []*pb.SourceSeries {
 	result := []*pb.SourceSeries{}
-	resultMap := map[uint32]*pb.SourceSeries{}
+	resultMap := map[string]*pb.SourceSeries{}
 	for _, series := range seriesList {
 		for _, s := range series {
 			metahash := getSourceSeriesHash(s)
