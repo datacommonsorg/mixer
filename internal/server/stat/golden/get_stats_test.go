@@ -17,8 +17,8 @@ package golden
 import (
 	"context"
 	"encoding/json"
-	"io/ioutil"
 	"math"
+	"os"
 	"path"
 	"runtime"
 	"testing"
@@ -129,9 +129,9 @@ func TestGetStats(t *testing.T) {
 			}
 
 			var expected map[string]*model.GetStatsResponse
-			file, err := ioutil.ReadFile(goldenFile)
+			file, err := os.ReadFile(goldenFile)
 			if err != nil {
-				t.Errorf("ioutil.ReadFile() = %s", err)
+				t.Errorf("os.ReadFile() = %s", err)
 				continue
 			}
 			if err := json.Unmarshal(file, &expected); err != nil {

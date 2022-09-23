@@ -17,8 +17,9 @@ package test
 import (
 	"context"
 	"encoding/json"
-	"io/ioutil"
+	"io"
 	"net/http"
+	"os"
 	"path"
 	"runtime"
 	"sort"
@@ -59,7 +60,7 @@ func readChartConfig() ([]*Chart, error) {
 		if err != nil {
 			return nil, err
 		}
-		body, err := ioutil.ReadAll(resp.Body)
+		body, err := io.ReadAll(resp.Body)
 		if err != nil {
 			return nil, err
 		}
@@ -203,7 +204,7 @@ func TestChartConfigRankings(t *testing.T) {
 			}
 
 			var expected []*Chart
-			file, _ := ioutil.ReadFile(goldenFile)
+			file, _ := os.ReadFile(goldenFile)
 			err = json.Unmarshal(file, &expected)
 			if err != nil {
 				t.Errorf("Can not Unmarshal golden file %s: %v", c.goldenFile, err)

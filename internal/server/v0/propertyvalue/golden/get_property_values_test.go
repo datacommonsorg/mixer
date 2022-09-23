@@ -16,7 +16,7 @@ package golden
 
 import (
 	"context"
-	"io/ioutil"
+	"os"
 	"path"
 	"runtime"
 	"testing"
@@ -122,7 +122,7 @@ func TestGetPropertyValues(t *testing.T) {
 			}
 
 			var expected pb.GetPropertyValuesResponse
-			file, _ := ioutil.ReadFile(goldenFile)
+			file, _ := os.ReadFile(goldenFile)
 			if err := protojson.Unmarshal(file, &expected); err != nil {
 				t.Errorf("Can not Unmarshal golden file %s: %v", c.goldenFile, err)
 				continue

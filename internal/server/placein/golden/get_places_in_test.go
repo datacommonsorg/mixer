@@ -17,7 +17,7 @@ package golden
 import (
 	"context"
 	"encoding/json"
-	"io/ioutil"
+	"os"
 	"path"
 	"runtime"
 	"testing"
@@ -84,7 +84,7 @@ func TestGetPlacesIn(t *testing.T) {
 			}
 
 			var expected []map[string]string
-			file, _ := ioutil.ReadFile(goldenFile)
+			file, _ := os.ReadFile(goldenFile)
 			err = json.Unmarshal(file, &expected)
 			if err != nil {
 				t.Errorf("Can not Unmarshal golden file %s: %v", goldenFile, err)

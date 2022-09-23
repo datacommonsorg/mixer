@@ -23,10 +23,10 @@ import (
 	"fmt"
 	"hash/fnv"
 	"io"
-	"io/ioutil"
 	"log"
 	"math"
 	"math/rand"
+	"os"
 	"regexp"
 	"runtime"
 	"sort"
@@ -34,6 +34,8 @@ import (
 	"time"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	"golang.org/x/text/cases"
+	"golang.org/x/text/language"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/proto"
@@ -123,7 +125,7 @@ func UnzipAndDecode(contents string) ([]byte, error) {
 		return nil, err
 	}
 	defer gzReader.Close()
-	gzResult, err := ioutil.ReadAll(gzReader)
+	gzResult, err := io.ReadAll(gzReader)
 	if err != nil {
 		return nil, err
 	}
@@ -152,7 +154,7 @@ func StringContainedIn(target string, strs []string) bool {
 
 // GetContainedIn returns the contained in relation change given two types.
 func GetContainedIn(typeRelationJSONFilePath string) (map[TypePair][]string, error) {
-	typeRelationJSON, err := ioutil.ReadFile(typeRelationJSONFilePath)
+	typeRelationJSON, err := os.ReadFile(typeRelationJSONFilePath)
 	if err != nil {
 		return nil, err
 	}
@@ -203,7 +205,7 @@ func SnakeToCamel(s string) string {
 			result += p
 			capitalize = true
 		} else {
-			result += strings.Title(p)
+			result += cases.Title(language.Und, cases.NoLower).String(p)
 		}
 	}
 	return result

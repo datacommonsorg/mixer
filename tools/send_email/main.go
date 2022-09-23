@@ -18,9 +18,9 @@ import (
 	"context"
 	"flag"
 	"fmt"
-	"io/ioutil"
 	"log"
 	"net/smtp"
+	"os"
 
 	secretmanager "cloud.google.com/go/secretmanager/apiv1"
 	secretmanagerpb "google.golang.org/genproto/googleapis/cloud/secretmanager/v1"
@@ -64,7 +64,7 @@ func main() {
 	smtpHost := "smtp.gmail.com"
 	smtpPort := "587"
 
-	bodyByte, err := ioutil.ReadFile(*bodyFile)
+	bodyByte, err := os.ReadFile(*bodyFile)
 	if err != nil {
 		log.Fatal(err)
 	}

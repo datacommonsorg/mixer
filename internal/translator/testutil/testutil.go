@@ -15,7 +15,7 @@
 package testutil
 
 import (
-	"io/ioutil"
+	"os"
 	"testing"
 
 	"github.com/datacommonsorg/mixer/internal/parser/mcf"
@@ -29,7 +29,7 @@ const DB = "dc_v3"
 func ReadTestMapping(t *testing.T, files []string) []*types.Mapping {
 	mappings := []*types.Mapping{}
 	for _, f := range files {
-		mappingStr, err := ioutil.ReadFile(f)
+		mappingStr, err := os.ReadFile(f)
 		if err != nil {
 			t.Fatalf("reading test schema mapping file: %s", err)
 		}

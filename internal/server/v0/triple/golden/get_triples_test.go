@@ -17,7 +17,7 @@ package golden
 import (
 	"context"
 	"encoding/json"
-	"io/ioutil"
+	"os"
 	"path"
 	"runtime"
 	"testing"
@@ -129,7 +129,7 @@ func TestGetTriples(t *testing.T) {
 			}
 
 			var expected map[string][]*model.Triple
-			file, _ := ioutil.ReadFile(goldenFile)
+			file, _ := os.ReadFile(goldenFile)
 			err = json.Unmarshal(file, &expected)
 			if err != nil {
 				t.Errorf("Can not Unmarshal golden file %s: %v", c.goldenFile, err)
