@@ -55,7 +55,11 @@ func TestIsContainedIn(t *testing.T) {
 			t.Errorf("ioutil.ReadFile(%s) = %s", c.geoJSONFileName, err)
 			continue
 		}
-		contained, err := isContainedIn(string(geoJSONBytes), c.lat, c.lng)
+		s2Polygon, err := parseGeoJSON(string(geoJSONBytes))
+		if err != nil {
+			t.Errorf("parseGeoJSON(%s) = %s", c.geoJSONFileName, err)
+		}
+		contained, err := isContainedIn(s2Polygon, c.lat, c.lng)
 		if err != nil {
 			t.Errorf("isContainedIn(%s) = %s", c.geoJSONFileName, err)
 			continue
