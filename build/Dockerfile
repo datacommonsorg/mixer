@@ -37,7 +37,7 @@ ENV PATH="${PATH}:/mixer/bin/"
 
 # Install protobuf go plugin
 ENV GO111MODULE=on
-RUN go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.28.0
+RUN go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.28.1
 RUN go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.2.0
 
 
