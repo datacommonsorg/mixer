@@ -554,6 +554,10 @@ service Mixer {
       returns (GetPlacePageDataResponse) {
     option (google.api.http) = {
       get : "/v1/internal/page/place/{node=**}"
+      additional_bindings : {
+        post : "/v1/internal/page/place"
+        body : "*"
+      }
     };
   }
 
