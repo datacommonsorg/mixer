@@ -170,7 +170,7 @@ description: C:Provenance->provenance_description
 importUrl: C:Provenance->mcf_url
 importTime: C:Provenance->timestamp_secs
 importDuration: C:Provenance->duration_secs
-isPartOf: C:Provenance->is_part_of
+isPartOf: E:Provenance->E5
 provenance: E:Provenance->E4
 functionalDeps: dcid
 
@@ -230,7 +230,7 @@ dcid: C:Dataset->id
 provenance: E:Dataset->E2
 name: C:Dataset->name
 url: C:Dataset->url
-isPartOf: C:Dataset->is_part_of
+isPartOf: E:Dataset->E3
 functionalDeps: dcid
 
 Node: E:Dataset->E2
