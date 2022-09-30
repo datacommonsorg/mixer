@@ -171,6 +171,7 @@ importUrl: C:Provenance->mcf_url
 importTime: C:Provenance->timestamp_secs
 importDuration: C:Provenance->duration_secs
 provenance: E:Provenance->E4
+isPartOf: E:Provenance->E5
 functionalDeps: dcid
 
 Node: E:Provenance->E2
@@ -186,6 +187,11 @@ functionalDeps: dcid
 Node: E:Provenance->E4
 typeOf: Provenance
 dcid: C:Provenance->prov_id
+functionalDeps: dcid
+
+Node: E:Provenance->E5
+typeOf: Dataset
+dcid: C:Provenance->is_part_of
 functionalDeps: dcid
 
 
@@ -208,11 +214,33 @@ typeOf: Source
 dcid: C:Source->id
 provenance: E:Source->E2
 domain: C:Source->domain
+name: C:Source->name
+url: C:Source->url
 functionalDeps: dcid
 
 Node: E:Source->E2
 typeOf: Provenance
 dcid: C:Source->prov_id
+functionalDeps: dcid
+
+
+Node: E:Dataset->E1
+typeOf: Dataset
+dcid: C:Dataset->id
+provenance: E:Dataset->E2
+name: C:Dataset->name
+url: C:Dataset->url
+isPartOf: E:Dataset->E3
+functionalDeps: dcid
+
+Node: E:Dataset->E2
+typeOf: Provenance
+dcid: C:Dataset->prov_id
+functionalDeps: dcid
+
+Node: E:Dataset->E3
+typeOf: Source
+dcid: C:Dataset->is_part_of
 functionalDeps: dcid
 
 
