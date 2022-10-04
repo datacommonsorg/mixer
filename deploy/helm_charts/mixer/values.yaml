@@ -120,6 +120,17 @@ serviceGroups:
       resources:
         memoryRequest: "400M"
         memoryLimit: "400M"
+  - mixer-default-service:
+      urlPaths:
+        - "/v1/observations/*"
+        - "/v1/bulk/observations/*"
+      replicas:
+        default: 2
+        min: 2
+        max: 24
+      resources:
+        memoryRequest: "4G"
+        memoryLimit: "4G"
   - default:
       urlPaths:
         - "/*"
