@@ -11,7 +11,7 @@ ingress:
 
 # Encode instance only services SPARQL
 serviceGroups:
-  - mixer-sparql-service:
+  - sparql:
       urlPaths:
         - "/v1/query"
       replicas:
