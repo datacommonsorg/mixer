@@ -140,7 +140,7 @@
         },
         "dc/lly3yc1": {
           "importName": "BLS_LAUS",
-          "observationCount": 2639913,
+          "observationCount": 2646210,
           "timeSeriesCount": 12769,
           "releaseFrequency": "P1M",
           "seriesSummary": [
@@ -195,7 +195,7 @@
               },
               "earliestDate": "1976-01",
               "latestDate": "2022-08",
-              "observationCount": 2412945,
+              "observationCount": 2419242,
               "timeSeriesCount": 6358,
               "placeTypeSummary": {
                 "City": {

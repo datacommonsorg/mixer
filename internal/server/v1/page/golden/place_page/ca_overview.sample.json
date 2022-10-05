@@ -15937,7 +15937,8 @@
             "2022-04": 1535966,
             "2022-05": 1542875,
             "2022-06": 1529544,
-            "2022-07": 1550830
+            "2022-07": 1548888,
+            "2022-08": 1545577
           },
           "metadata": {
             "importName": "BLS_LAUS",
@@ -16357,7 +16358,8 @@
             "2022-04": 1579308,
             "2022-05": 1581406,
             "2022-06": 1574917,
-            "2022-07": 1595122
+            "2022-07": 1593371,
+            "2022-08": 1593887
           },
           "metadata": {
             "importName": "BLS_LAUS",
@@ -19281,7 +19283,8 @@
             "2022-04": 2.7,
             "2022-05": 2.4,
             "2022-06": 2.9,
-            "2022-07": 2.8
+            "2022-07": 2.8,
+            "2022-08": 3
           },
           "metadata": {
             "importName": "BLS_LAUS",
@@ -23195,7 +23198,9 @@
             "2022-08-20": 13820,
             "2022-08-27": 13033,
             "2022-09-03": 13314,
-            "2022-09-10": 12482
+            "2022-09-10": 12482,
+            "2022-09-17": 12332,
+            "2022-09-24": 11953
           },
           "metadata": {
             "importName": "USDOL_ETA539",
@@ -24130,7 +24135,20 @@
             "2022-09-16": 1448503,
             "2022-09-17": 1448503,
             "2022-09-18": 1448503,
-            "2022-09-19": 1449815
+            "2022-09-19": 1449815,
+            "2022-09-20": 1450613,
+            "2022-09-21": 1451304,
+            "2022-09-22": 1451927,
+            "2022-09-23": 1452495,
+            "2022-09-24": 1452495,
+            "2022-09-25": 1452495,
+            "2022-09-26": 1453293,
+            "2022-09-27": 1453976,
+            "2022-09-28": 1454450,
+            "2022-09-29": 1454828,
+            "2022-09-30": 1455290,
+            "2022-10-01": 1455290,
+            "2022-10-02": 1455290
           },
           "metadata": {
             "importName": "NYT_COVID19",
@@ -25064,7 +25082,20 @@
             "2022-09-16": 17978,
             "2022-09-17": 17978,
             "2022-09-18": 17978,
-            "2022-09-19": 17982
+            "2022-09-19": 17982,
+            "2022-09-20": 17988,
+            "2022-09-21": 17993,
+            "2022-09-22": 17996,
+            "2022-09-23": 18009,
+            "2022-09-24": 18009,
+            "2022-09-25": 18009,
+            "2022-09-26": 18023,
+            "2022-09-27": 18031,
+            "2022-09-28": 18046,
+            "2022-09-29": 18058,
+            "2022-09-30": 18066,
+            "2022-10-01": 18066,
+            "2022-10-02": 18066
           },
           "metadata": {
             "importName": "NYT_COVID19",
@@ -29777,7 +29808,9 @@
             "2022-08-20": 18000,
             "2022-08-27": 15701,
             "2022-09-03": 15547,
-            "2022-09-10": 14715
+            "2022-09-10": 14715,
+            "2022-09-17": 14715,
+            "2022-09-24": 14715
           },
           "metadata": {
             "importName": "USDOL_ETA539",
@@ -29841,7 +29874,7 @@
             "2020-05-02": 1755,
             "2020-05-03": 1806,
             "2020-05-04": 1875,
-            "2020-05-05": 1924,
+            "2020-05-05": 1922,
             "2020-05-06": 1968,
             "2020-05-07": 2031,
             "2020-05-08": 2156,
@@ -30028,9 +30061,9 @@
             "2020-11-05": 69416,
             "2020-11-06": 70519,
             "2020-11-07": 71532,
-            "2020-11-08": 71715,
-            "2020-11-09": 72196,
-            "2020-11-10": 72471,
+            "2020-11-08": 71625,
+            "2020-11-09": 72101,
+            "2020-11-10": 72310,
             "2020-11-11": 72735,
             "2020-11-12": 74067,
             "2020-11-13": 74734,
@@ -30708,7 +30741,20 @@
             "2022-09-16": 980581,
             "2022-09-17": 980975,
             "2022-09-18": 981287,
-            "2022-09-19": 981287
+            "2022-09-19": 981287,
+            "2022-09-20": 981287,
+            "2022-09-21": 981287,
+            "2022-09-22": 981667,
+            "2022-09-23": 981930,
+            "2022-09-24": 983686,
+            "2022-09-25": 984792,
+            "2022-09-26": 985305,
+            "2022-09-27": 985369,
+            "2022-09-28": 985993,
+            "2022-09-29": 989508,
+            "2022-09-30": 990505,
+            "2022-10-01": 991269,
+            "2022-10-02": 991953
           },
           "metadata": {
             "importName": "NYT_COVID19",
@@ -31638,7 +31684,20 @@
             "2022-09-16": 5066,
             "2022-09-17": 5071,
             "2022-09-18": 5074,
-            "2022-09-19": 5074
+            "2022-09-19": 5074,
+            "2022-09-20": 5077,
+            "2022-09-21": 5085,
+            "2022-09-22": 5095,
+            "2022-09-23": 5104,
+            "2022-09-24": 5112,
+            "2022-09-25": 5118,
+            "2022-09-26": 5118,
+            "2022-09-27": 5125,
+            "2022-09-28": 5129,
+            "2022-09-29": 5133,
+            "2022-09-30": 5152,
+            "2022-10-01": 5154,
+            "2022-10-02": 5154
           },
           "metadata": {
             "importName": "NYT_COVID19",
@@ -33169,12 +33228,12 @@
   "validCategories": {
     "country/USA": {
       "category": [
-        "Climate",
         "Crime",
         "Demographics",
         "Economics",
         "Education",
         "Energy",
+        "Environment",
         "Equity",
         "Health",
         "Housing",
@@ -33183,12 +33242,12 @@
     },
     "geoId/04": {
       "category": [
-        "Climate",
         "Crime",
         "Demographics",
         "Economics",
         "Education",
         "Energy",
+        "Environment",
         "Equity",
         "Health",
         "Housing",
@@ -33197,12 +33256,12 @@
     },
     "geoId/06": {
       "category": [
-        "Climate",
         "Crime",
         "Demographics",
         "Economics",
         "Education",
         "Energy",
+        "Environment",
         "Equity",
         "Health",
         "Housing",
@@ -33211,12 +33270,10 @@
     },
     "geoId/06037": {
       "category": [
-        "Climate",
-        "Crime",
         "Demographics",
         "Economics",
         "Education",
-        "Energy",
+        "Environment",
         "Equity",
         "Health",
         "Housing",
@@ -33225,12 +33282,10 @@
     },
     "geoId/06059": {
       "category": [
-        "Climate",
-        "Crime",
         "Demographics",
         "Economics",
         "Education",
-        "Energy",
+        "Environment",
         "Equity",
         "Health",
         "Housing",
@@ -33239,12 +33294,10 @@
     },
     "geoId/06065": {
       "category": [
-        "Climate",
-        "Crime",
         "Demographics",
         "Economics",
         "Education",
-        "Energy",
+        "Environment",
         "Equity",
         "Health",
         "Housing",
@@ -33253,12 +33306,10 @@
     },
     "geoId/06071": {
       "category": [
-        "Climate",
-        "Crime",
         "Demographics",
         "Economics",
         "Education",
-        "Energy",
+        "Environment",
         "Equity",
         "Health",
         "Housing",
@@ -33267,12 +33318,10 @@
     },
     "geoId/06073": {
       "category": [
-        "Climate",
-        "Crime",
         "Demographics",
         "Economics",
         "Education",
-        "Energy",
+        "Environment",
         "Equity",
         "Health",
         "Housing",
@@ -33281,12 +33330,12 @@
     },
     "geoId/08": {
       "category": [
-        "Climate",
         "Crime",
         "Demographics",
         "Economics",
         "Education",
         "Energy",
+        "Environment",
         "Equity",
         "Health",
         "Housing",
@@ -33295,12 +33344,12 @@
     },
     "geoId/18": {
       "category": [
-        "Climate",
         "Crime",
         "Demographics",
         "Economics",
         "Education",
         "Energy",
+        "Environment",
         "Equity",
         "Health",
         "Housing",
@@ -33309,12 +33358,12 @@
     },
     "geoId/22": {
       "category": [
-        "Climate",
         "Crime",
         "Demographics",
         "Economics",
         "Education",
         "Energy",
+        "Environment",
         "Equity",
         "Health",
         "Housing",
@@ -33323,12 +33372,12 @@
     },
     "geoId/29": {
       "category": [
-        "Climate",
         "Crime",
         "Demographics",
         "Economics",
         "Education",
         "Energy",
+        "Environment",
         "Equity",
         "Health",
         "Housing",
@@ -33337,12 +33386,12 @@
     },
     "geoId/38": {
       "category": [
-        "Climate",
         "Crime",
         "Demographics",
         "Economics",
         "Education",
         "Energy",
+        "Environment",
         "Equity",
         "Health",
         "Housing",
@@ -33351,12 +33400,12 @@
     },
     "geoId/47": {
       "category": [
-        "Climate",
         "Crime",
         "Demographics",
         "Economics",
         "Education",
         "Energy",
+        "Environment",
         "Equity",
         "Health",
         "Housing",
@@ -33365,12 +33414,12 @@
     },
     "geoId/48": {
       "category": [
-        "Climate",
         "Crime",
         "Demographics",
         "Economics",
         "Education",
         "Energy",
+        "Environment",
         "Equity",
         "Health",
         "Housing",
@@ -33379,12 +33428,12 @@
     },
     "geoId/53": {
       "category": [
-        "Climate",
         "Crime",
         "Demographics",
         "Economics",
         "Education",
         "Energy",
+        "Environment",
         "Equity",
         "Health",
         "Housing",
@@ -33393,12 +33442,10 @@
     },
     "geoId/72": {
       "category": [
-        "Climate",
-        "Crime",
         "Demographics",
         "Economics",
         "Education",
-        "Energy",
+        "Environment",
         "Equity",
         "Health",
         "Housing",
