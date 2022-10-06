@@ -39,8 +39,8 @@ serviceGroups:
         - "/v1/observations/*"
         - "/v1/bulk/observations/*"
       replicas:
-        default: 10
-        min: 10
+        default: 20
+        min: 20
         max: 20
       resources:
         memoryRequest: "4G"
@@ -49,12 +49,12 @@ serviceGroups:
       urlPaths:
         - "/*"
       replicas:
-        default: 10
-        min: 10
+        default: 20
+        min: 20
         max: 20
       resources:
-        memoryRequest: "3G"
-        memoryLimit: "3G"
+        memoryRequest: "4G"
+        memoryLimit: "4G"
 
 # GCP level config
 ip: 34.117.145.125
