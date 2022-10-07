@@ -56,7 +56,7 @@ serviceGroups:
         memoryRequest: "4G"
         memoryLimit: "4G"
 
-# GCP level config
+# GCP level config.
 ip: 34.117.145.125
 region: us-central1
 api_title: DataCommons API (Autopush)
