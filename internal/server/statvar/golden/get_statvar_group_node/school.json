@@ -326,7 +326,6 @@
   ],
   "descendentStatVarCount": 487,
   "parentStatVarGroups": [
-    "dc/g/Demographics",
     "dc/g/Education"
   ]
 }

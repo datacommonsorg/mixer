@@ -81,13 +81,6 @@
     "relatedChart": {}
   },
   {
-    "title": "Earthquakes",
-    "statsVars": [
-      "Count_EarthquakeEvent"
-    ],
-    "relatedChart": {}
-  },
-  {
     "title": "Electricity consumption per capita",
     "statsVars": [
       "Amount_Consumption_Electricity_PerCapita"

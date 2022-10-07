@@ -30921,15 +30921,6 @@
               "value": "A commensal bacterial infectious disease that is caused by Chlamydia trachomatis."
             }
           ]
-        },
-        {
-          "property": "commonName",
-          "direction": "DIRECTION_OUT",
-          "nodes": [
-            {
-              "value": "\"chlamydia\""
-            }
-          ]
         }
       ],
       "value": "bio/DOID_11263"

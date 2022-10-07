@@ -4661,6 +4661,20 @@
       ]
     },
     {
+      "dcid": "dc/g/LiveBirthPregnancyEvent_PostpartumFamilyPlanning-MaleOrFemaleSterilization",
+      "name": "Live Birth Pregnancy Event With Postpartum Family Planning = Male or Female Sterilization",
+      "statVars": [
+        {
+          "name": "Count of Live Birth Pregnancy Event: Male or Female Sterilization (As Fraction of Count Birth Event Live Birth)",
+          "dcid": "Percent_LiveBirthPregnancyEvent_MaleOrFemaleSterilization_AsAFractionOf_Count_BirthEvent_LiveBirth"
+        },
+        {
+          "name": "Sample Size Count of Live Birth Pregnancy Event: Male or Female Sterilization",
+          "dcid": "SampleSize_Count_LiveBirthPregnancyEvent_MaleOrFemaleSterilization"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/MedicalConditionIncident_Gender-Female_MedicalStatus",
       "name": "Medical Condition Incident With Gender = Female, Medical Status",
       "statVars": [
@@ -5119,16 +5133,6 @@
         {
           "name": "Population: Female, Enrolled in Nursery School Preschool, Public School",
           "dcid": "dc/lr4ve69p16sch"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/LiveBirthPregnancyEvent_PostpartumFamilyPlanning-MaleOrFemaleSterilization",
-      "name": "Live Birth Pregnancy Event With Postpartum Family Planning = Male or Female Sterilization",
-      "statVars": [
-        {
-          "name": "Count of Live Birth Pregnancy Event: Male or Female Sterilization (As Fraction of Count Birth Event Live Birth)",
-          "dcid": "Percent_LiveBirthPregnancyEvent_MaleOrFemaleSterilization_AsAFractionOf_Count_BirthEvent_LiveBirth"
         }
       ]
     },
@@ -10941,6 +10945,10 @@
       "name": "Person With Enrollment Level = Not Enrolled in College or Graduate School, Gender = Female"
     },
     {
+      "dcid": "dc/g/Person_EnrollmentLevel_Gender-Female",
+      "name": "Person With Enrollment Level, Gender = Female"
+    },
+    {
       "dcid": "dc/g/Person_EstablishmentOwnership-FederalGovernmentOwned_Gender-Female",
       "name": "Person With Establishment Ownership = Federal Government Owned, Gender = Female"
     },
@@ -10991,10 +10999,6 @@
     {
       "dcid": "dc/g/Person_DetailedWorkerClassification-Worker_Gender-Female",
       "name": "Person With Gender = Female, Detailed Worker Classification = Worker"
-    },
-    {
-      "dcid": "dc/g/Person_EnrollmentLevel_Gender-Female",
-      "name": "Person With Gender = Female, Enrollment Level"
     },
     {
       "dcid": "dc/g/Person_Gender-Female_HealthBehavior",

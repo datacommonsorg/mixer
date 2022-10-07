@@ -126,12 +126,6 @@
       "displayName": "Person by Earnings"
     },
     {
-      "id": "dc/g/Person_EducationalAttainment",
-      "specializedEntity": "Educational Attainment",
-      "displayName": "Person by Educational Attainment",
-      "descendentStatVarCount": 399
-    },
-    {
       "id": "dc/g/Person_Gender",
       "specializedEntity": "Gender",
       "displayName": "Person by Gender",

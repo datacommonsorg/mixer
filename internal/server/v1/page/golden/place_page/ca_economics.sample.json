@@ -741,7 +741,8 @@
             "2022-04": 1535966,
             "2022-05": 1542875,
             "2022-06": 1529544,
-            "2022-07": 1550830
+            "2022-07": 1548888,
+            "2022-08": 1545577
           },
           "metadata": {
             "importName": "BLS_LAUS",
@@ -1142,7 +1143,8 @@
             "2022-04": 1579308,
             "2022-05": 1581406,
             "2022-06": 1574917,
-            "2022-07": 1595122
+            "2022-07": 1593371,
+            "2022-08": 1593887
           },
           "metadata": {
             "importName": "BLS_LAUS",
@@ -1735,7 +1737,8 @@
             "2022-04": 2.7,
             "2022-05": 2.4,
             "2022-06": 2.9,
-            "2022-07": 2.8
+            "2022-07": 2.8,
+            "2022-08": 3
           },
           "metadata": {
             "importName": "BLS_LAUS",
@@ -5364,7 +5367,9 @@
             "2022-08-20": 13820,
             "2022-08-27": 13033,
             "2022-09-03": 13314,
-            "2022-09-10": 12482
+            "2022-09-10": 12482,
+            "2022-09-17": 12332,
+            "2022-09-24": 11953
           },
           "metadata": {
             "importName": "USDOL_ETA539",
@@ -9488,7 +9493,9 @@
             "2022-08-20": 18000,
             "2022-08-27": 15701,
             "2022-09-03": 15547,
-            "2022-09-10": 14715
+            "2022-09-10": 14715,
+            "2022-09-17": 14715,
+            "2022-09-24": 14715
           },
           "metadata": {
             "importName": "USDOL_ETA539",
@@ -10579,12 +10586,12 @@
   "validCategories": {
     "country/USA": {
       "category": [
-        "Climate",
         "Crime",
         "Demographics",
         "Economics",
         "Education",
         "Energy",
+        "Environment",
         "Equity",
         "Health",
         "Housing",
@@ -10593,12 +10600,12 @@
     },
     "geoId/04": {
       "category": [
-        "Climate",
         "Crime",
         "Demographics",
         "Economics",
         "Education",
         "Energy",
+        "Environment",
         "Equity",
         "Health",
         "Housing",
@@ -10607,12 +10614,12 @@
     },
     "geoId/06": {
       "category": [
-        "Climate",
         "Crime",
         "Demographics",
         "Economics",
         "Education",
         "Energy",
+        "Environment",
         "Equity",
         "Health",
         "Housing",
@@ -10621,12 +10628,10 @@
     },
     "geoId/06037": {
       "category": [
-        "Climate",
-        "Crime",
         "Demographics",
         "Economics",
         "Education",
-        "Energy",
+        "Environment",
         "Equity",
         "Health",
         "Housing",
@@ -10635,12 +10640,10 @@
     },
     "geoId/06059": {
       "category": [
-        "Climate",
-        "Crime",
         "Demographics",
         "Economics",
         "Education",
-        "Energy",
+        "Environment",
         "Equity",
         "Health",
         "Housing",
@@ -10649,12 +10652,10 @@
     },
     "geoId/06065": {
       "category": [
-        "Climate",
-        "Crime",
         "Demographics",
         "Economics",
         "Education",
-        "Energy",
+        "Environment",
         "Equity",
         "Health",
         "Housing",
@@ -10663,12 +10664,10 @@
     },
     "geoId/06071": {
       "category": [
-        "Climate",
-        "Crime",
         "Demographics",
         "Economics",
         "Education",
-        "Energy",
+        "Environment",
         "Equity",
         "Health",
         "Housing",
@@ -10677,12 +10676,10 @@
     },
     "geoId/06073": {
       "category": [
-        "Climate",
-        "Crime",
         "Demographics",
         "Economics",
         "Education",
-        "Energy",
+        "Environment",
         "Equity",
         "Health",
         "Housing",
@@ -10691,12 +10688,12 @@
     },
     "geoId/08": {
       "category": [
-        "Climate",
         "Crime",
         "Demographics",
         "Economics",
         "Education",
         "Energy",
+        "Environment",
         "Equity",
         "Health",
         "Housing",
@@ -10705,12 +10702,12 @@
     },
     "geoId/18": {
       "category": [
-        "Climate",
         "Crime",
         "Demographics",
         "Economics",
         "Education",
         "Energy",
+        "Environment",
         "Equity",
         "Health",
         "Housing",
@@ -10719,12 +10716,12 @@
     },
     "geoId/22": {
       "category": [
-        "Climate",
         "Crime",
         "Demographics",
         "Economics",
         "Education",
         "Energy",
+        "Environment",
         "Equity",
         "Health",
         "Housing",
@@ -10733,12 +10730,12 @@
     },
     "geoId/29": {
       "category": [
-        "Climate",
         "Crime",
         "Demographics",
         "Economics",
         "Education",
         "Energy",
+        "Environment",
         "Equity",
         "Health",
         "Housing",
@@ -10747,12 +10744,12 @@
     },
     "geoId/38": {
       "category": [
-        "Climate",
         "Crime",
         "Demographics",
         "Economics",
         "Education",
         "Energy",
+        "Environment",
         "Equity",
         "Health",
         "Housing",
@@ -10761,12 +10758,12 @@
     },
     "geoId/47": {
       "category": [
-        "Climate",
         "Crime",
         "Demographics",
         "Economics",
         "Education",
         "Energy",
+        "Environment",
         "Equity",
         "Health",
         "Housing",
@@ -10775,12 +10772,12 @@
     },
     "geoId/48": {
       "category": [
-        "Climate",
         "Crime",
         "Demographics",
         "Economics",
         "Education",
         "Energy",
+        "Environment",
         "Equity",
         "Health",
         "Housing",
@@ -10789,12 +10786,12 @@
     },
     "geoId/53": {
       "category": [
-        "Climate",
         "Crime",
         "Demographics",
         "Economics",
         "Education",
         "Energy",
+        "Environment",
         "Equity",
         "Health",
         "Housing",
@@ -10803,12 +10800,10 @@
     },
     "geoId/72": {
       "category": [
-        "Climate",
-        "Crime",
         "Demographics",
         "Economics",
         "Education",
-        "Energy",
+        "Environment",
         "Equity",
         "Health",
         "Housing",
