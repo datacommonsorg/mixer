@@ -5,16 +5,17 @@ mixer:
 
 ingress:
   name: mixer-ingress-dev
-  annotations: {
-    kubernetes.io/ingress.global-static-ip-name: mixer-ip,
-    ingress.gcp.kubernetes.io/pre-shared-cert: mixer-certificate
-  }
+  annotations:
+    {
+      kubernetes.io/ingress.global-static-ip-name: mixer-ip,
+      ingress.gcp.kubernetes.io/pre-shared-cert: mixer-certificate,
+    }
 
 # GCP level config
 ip: 35.244.157.41
 region: us-central1
 api_title: DataCommons API (Dev)
 api:
-- datacommons.Mixer
-- datacommons.Recon
+  - datacommons.Mixer
+  - datacommons.Recon
 nodes: 2

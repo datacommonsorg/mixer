@@ -109,7 +109,7 @@ for api in "${APIS[@]}"
 do
   export API=$api
   echo "Adding api $API to cloud endpoint config."
-  yq -i '.apis += [{"name": env(API)}]' endpoints.yaml
+  yq eval -i '.apis += [{"name": env(API)}]' endpoints.yaml
 done
 echo "endpoints.yaml content:"
 cat endpoints.yaml

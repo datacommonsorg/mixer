@@ -26,5 +26,6 @@ serviceGroups:
 ip: 34.107.228.109
 region: us-central1
 api_title: DataCommons API (Encode)
-api: datacommons.Mixer
+api:
+  - datacommons.Mixer
 nodes: 1
