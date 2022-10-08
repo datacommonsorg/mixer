@@ -48,6 +48,7 @@ bin/
 # Kubernetes
 gke/config.yaml
 gke/endpoints.yaml
+endpoints.yaml
 
 mixer-grpc.*.pb
 deploy/overlays/**/endpoints.yaml
