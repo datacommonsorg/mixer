@@ -9,6 +9,8 @@ mixer:
 
 ingress:
   name: mixer-ingress-private
+  annotations:
+    { ingress.gcp.kubernetes.io/pre-shared-cert: "mixer-certificate" }
 
 memdbJSON: |
   {
@@ -121,5 +123,7 @@ memdbJSON: |
 ip: 35.244.175.66
 region: us-central1
 api_title: DataCommons API (Private)
-api: datacommons.Mixer
-nodes: 1
+api:
+  - datacommons.Mixer
+  - datacommons.Recon
+nodes: 3
