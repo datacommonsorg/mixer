@@ -179,6 +179,38 @@
           "provenanceId": "dc/d7tbsb1"
         },
         {
+          "name": "Percentage At Least Once A Week, Non Relatives, Providing Informal Care Or Assistance Among Population",
+          "types": [
+            "StatisticalVariable"
+          ],
+          "dcid": "Percent_AtLeastOnceAWeek_NonRelatives_ProvidingInformalCareOrAssistance_In_Count_Person",
+          "provenanceId": "dc/d7tbsb1"
+        },
+        {
+          "name": "Percentage At Least Once A Week, Not Providing Informal Care Or Assistance Among Population",
+          "types": [
+            "StatisticalVariable"
+          ],
+          "dcid": "Percent_AtLeastOnceAWeek_NotProvidingInformalCareOrAssistance_In_Count_Person",
+          "provenanceId": "dc/d7tbsb1"
+        },
+        {
+          "name": "Percentage At Least Once A Week, Providing Informal Care Or Assistance Among Population",
+          "types": [
+            "StatisticalVariable"
+          ],
+          "dcid": "Percent_AtLeastOnceAWeek_ProvidingInformalCareOrAssistance_In_Count_Person",
+          "provenanceId": "dc/d7tbsb1"
+        },
+        {
+          "name": "Percentage At Least Once A Week, Relatives, Providing Informal Care Or Assistance Among Population",
+          "types": [
+            "StatisticalVariable"
+          ],
+          "dcid": "Percent_AtLeastOnceAWeek_Relatives_ProvidingInformalCareOrAssistance_In_Count_Person",
+          "provenanceId": "dc/d7tbsb1"
+        },
+        {
           "name": "Percentage At Least One Hour Per Day, Exposure To Tobacco Smoke Among Population",
           "types": [
             "StatisticalVariable"
@@ -512,6 +544,30 @@
             "StatisticalVariable"
           ],
           "dcid": "Percent_RarelyOrNever_ExposureToTobaccoSmoke_In_Count_Person",
+          "provenanceId": "dc/d7tbsb1"
+        },
+        {
+          "name": "Percentage Receiving Intermediate Social Support Among Population",
+          "types": [
+            "StatisticalVariable"
+          ],
+          "dcid": "Percent_ReceivingIntermediateSocialSupport_In_Count_Person",
+          "provenanceId": "dc/d7tbsb1"
+        },
+        {
+          "name": "Percentage Receiving Poor Social Support Among Population",
+          "types": [
+            "StatisticalVariable"
+          ],
+          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person",
+          "provenanceId": "dc/d7tbsb1"
+        },
+        {
+          "name": "Percentage Receiving Strong Social Support Among Population",
+          "types": [
+            "StatisticalVariable"
+          ],
+          "dcid": "Percent_ReceivingStrongSocialSupport_In_Count_Person",
           "provenanceId": "dc/d7tbsb1"
         },
         {
