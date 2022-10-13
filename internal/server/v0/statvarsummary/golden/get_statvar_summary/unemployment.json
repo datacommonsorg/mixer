@@ -82,7 +82,7 @@
       "provenanceSummary": {
         "dc/2xghn33": {
           "importName": "BLS_CPS",
-          "observationCount": 1194,
+          "observationCount": 1196,
           "timeSeriesCount": 2,
           "releaseFrequency": "P1M",
           "seriesSummary": [
@@ -92,8 +92,8 @@
                 "observationPeriod": "P1M"
               },
               "earliestDate": "1948-01",
-              "latestDate": "2022-08",
-              "observationCount": 896,
+              "latestDate": "2022-09",
+              "observationCount": 897,
               "timeSeriesCount": 1,
               "placeTypeSummary": {
                 "Country": {
@@ -117,8 +117,8 @@
                 "observationPeriod": "P3M"
               },
               "earliestDate": "1948-03",
-              "latestDate": "2022-06",
-              "observationCount": 298,
+              "latestDate": "2022-09",
+              "observationCount": 299,
               "timeSeriesCount": 1,
               "placeTypeSummary": {
                 "Country": {

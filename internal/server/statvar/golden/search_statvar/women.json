@@ -27449,24 +27449,6 @@
       ]
     },
     {
-      "dcid": "dc/g/Person_ActivityFrequency-AtLeastOnceAWeek_Gender-Female_PlaceOfResidenceClassification",
-      "name": "Person With Activity Frequency = At Least Once AWeek, Gender = Female, Place of Residence Classification",
-      "statVars": [
-        {
-          "name": "Percentage At Least Once A Week, Binge Drinking Among Rural, Female Population",
-          "dcid": "Percent_AtLeastOnceAWeek_BingeDrinking_In_Count_Person_Rural_Female"
-        },
-        {
-          "name": "Percentage At Least Once A Week, Binge Drinking Among Semi Urban, Female Population",
-          "dcid": "Percent_AtLeastOnceAWeek_BingeDrinking_In_Count_Person_SemiUrban_Female"
-        },
-        {
-          "name": "Percentage At Least Once A Week, Binge Drinking Among Urban, Female Population",
-          "dcid": "Percent_AtLeastOnceAWeek_BingeDrinking_In_Count_Person_Urban_Female"
-        }
-      ]
-    },
-    {
       "dcid": "dc/g/Person_ActivityFrequency-AtLeastOneHourPerDay_EducationalAttainment_Gender-Female",
       "name": "Person With Activity Frequency = At Least One Hour Per Day, Educational Attainment, Gender = Female",
       "statVars": [
@@ -28133,6 +28115,24 @@
       ]
     },
     {
+      "dcid": "dc/g/Person_CitizenshipStatus-CitizenOutsideEU28_Gender-Female_SocialSupportLevel",
+      "name": "Person With Citizenship Status = Citizen Outside EU 28, Gender = Female, Social Support Level",
+      "statVars": [
+        {
+          "name": "Percentage Receiving Intermediate Social Support Among Citizen Outside EU28, Female Population",
+          "dcid": "Percent_ReceivingIntermediateSocialSupport_In_Count_Person_CitizenOutsideEU28_Female"
+        },
+        {
+          "name": "Percentage Receiving Poor Social Support Among Citizen Outside EU28, Female Population",
+          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_CitizenOutsideEU28_Female"
+        },
+        {
+          "name": "Percentage Receiving Strong Social Support Among Citizen Outside EU28, Female Population",
+          "dcid": "Percent_ReceivingStrongSocialSupport_In_Count_Person_CitizenOutsideEU28_Female"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/Person_CitizenshipStatus-Citizen_ExerciseType_Gender-Female",
       "name": "Person With Citizenship Status = Citizen, Exercise Type, Gender = Female",
       "statVars": [
@@ -28147,6 +28147,24 @@
         {
           "name": "Percentage Muscle Strengthening, Health Enhancing Physical Activity Among Citizen, Female Population",
           "dcid": "Percent_MuscleStrengthening_HealthEnhancingPhysicalActivity_In_Count_Person_Citizen_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_CitizenshipStatus-Citizen_Gender-Female_SocialSupportLevel",
+      "name": "Person With Citizenship Status = Citizen, Gender = Female, Social Support Level",
+      "statVars": [
+        {
+          "name": "Percentage Receiving Intermediate Social Support Among Citizen, Female Population",
+          "dcid": "Percent_ReceivingIntermediateSocialSupport_In_Count_Person_Citizen_Female"
+        },
+        {
+          "name": "Percentage Receiving Poor Social Support Among Citizen, Female Population",
+          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Citizen_Female"
+        },
+        {
+          "name": "Percentage Receiving Strong Social Support Among Citizen, Female Population",
+          "dcid": "Percent_ReceivingStrongSocialSupport_In_Count_Person_Citizen_Female"
         }
       ]
     },
@@ -28169,6 +28187,24 @@
       ]
     },
     {
+      "dcid": "dc/g/Person_CitizenshipStatus-NotACitizen_Gender-Female_SocialSupportLevel",
+      "name": "Person With Citizenship Status = Not ACitizen, Gender = Female, Social Support Level",
+      "statVars": [
+        {
+          "name": "Percentage Receiving Intermediate Social Support Among Not A Citizen, Female Population",
+          "dcid": "Percent_ReceivingIntermediateSocialSupport_In_Count_Person_NotACitizen_Female"
+        },
+        {
+          "name": "Percentage Receiving Poor Social Support Among Not A Citizen, Female Population",
+          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_NotACitizen_Female"
+        },
+        {
+          "name": "Percentage Receiving Strong Social Support Among Not A Citizen, Female Population",
+          "dcid": "Percent_ReceivingStrongSocialSupport_In_Count_Person_NotACitizen_Female"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/Person_CitizenshipStatus-WithinEU28AndNotACitizen_ExerciseType_Gender-Female",
       "name": "Person With Citizenship Status = Within EU 28 And Not ACitizen, Exercise Type, Gender = Female",
       "statVars": [
@@ -28183,6 +28219,24 @@
         {
           "name": "Percentage Muscle Strengthening, Health Enhancing Physical Activity Among Within EU28 And Not A Citizen, Female Population",
           "dcid": "Percent_MuscleStrengthening_HealthEnhancingPhysicalActivity_In_Count_Person_WithinEU28AndNotACitizen_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_CitizenshipStatus-WithinEU28AndNotACitizen_Gender-Female_SocialSupportLevel",
+      "name": "Person With Citizenship Status = Within EU 28 And Not ACitizen, Gender = Female, Social Support Level",
+      "statVars": [
+        {
+          "name": "Percentage Receiving Intermediate Social Support Among Within EU28 And Not A Citizen, Female Population",
+          "dcid": "Percent_ReceivingIntermediateSocialSupport_In_Count_Person_WithinEU28AndNotACitizen_Female"
+        },
+        {
+          "name": "Percentage Receiving Poor Social Support Among Within EU28 And Not A Citizen, Female Population",
+          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_WithinEU28AndNotACitizen_Female"
+        },
+        {
+          "name": "Percentage Receiving Strong Social Support Among Within EU28 And Not A Citizen, Female Population",
+          "dcid": "Percent_ReceivingStrongSocialSupport_In_Count_Person_WithinEU28AndNotACitizen_Female"
         }
       ]
     },
@@ -28219,6 +28273,60 @@
         {
           "name": "Percentage Daily, 20 Or More Cigarettes Per Day, Tobacco Smoking, Cigarettes Among Urban, Female Population",
           "dcid": "Percent_Daily_20OrMoreCigarettesPerDay_TobaccoSmoking_Cigarettes_In_Count_Person_Urban_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_EducationalAttainment-LessThanPrimaryEducationPrimaryEducationLowerSecondaryEducation_Gender-Female_SocialSupportLevel",
+      "name": "Person With Educational Attainment = Less Than Primary Education \u0026 Primary Education \u0026 Lower Secondary Education, Gender = Female, Social Support Level",
+      "statVars": [
+        {
+          "name": "Percentage Receiving Intermediate Social Support Among Less Than Primary Education Or Primary Education Or Lower Secondary Education, Female Population",
+          "dcid": "Percent_ReceivingIntermediateSocialSupport_In_Count_Person_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_Female"
+        },
+        {
+          "name": "Percentage Receiving Poor Social Support Among Less Than Primary Education Or Primary Education Or Lower Secondary Education, Female Population",
+          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_Female"
+        },
+        {
+          "name": "Percentage Receiving Strong Social Support Among Less Than Primary Education Or Primary Education Or Lower Secondary Education, Female Population",
+          "dcid": "Percent_ReceivingStrongSocialSupport_In_Count_Person_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_EducationalAttainment-TertiaryEducation_Gender-Female_SocialSupportLevel",
+      "name": "Person With Educational Attainment = Tertiary Education, Gender = Female, Social Support Level",
+      "statVars": [
+        {
+          "name": "Percentage Receiving Intermediate Social Support Among Tertiary Education, Female Population",
+          "dcid": "Percent_ReceivingIntermediateSocialSupport_In_Count_Person_TertiaryEducation_Female"
+        },
+        {
+          "name": "Percentage Receiving Poor Social Support Among Tertiary Education, Female Population",
+          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_TertiaryEducation_Female"
+        },
+        {
+          "name": "Percentage Receiving Strong Social Support Among Tertiary Education, Female Population",
+          "dcid": "Percent_ReceivingStrongSocialSupport_In_Count_Person_TertiaryEducation_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_EducationalAttainment-UpperSecondaryEducationPostSecondaryNonTertiaryEducation_Gender-Female_SocialSupportLevel",
+      "name": "Person With Educational Attainment = Upper Secondary Education \u0026 Post Secondary Non Tertiary Education, Gender = Female, Social Support Level",
+      "statVars": [
+        {
+          "name": "Percentage Receiving Intermediate Social Support Among Upper Secondary Education Or Post Secondary Non Tertiary Education, Female Population",
+          "dcid": "Percent_ReceivingIntermediateSocialSupport_In_Count_Person_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female"
+        },
+        {
+          "name": "Percentage Receiving Poor Social Support Among Upper Secondary Education Or Post Secondary Non Tertiary Education, Female Population",
+          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female"
+        },
+        {
+          "name": "Percentage Receiving Strong Social Support Among Upper Secondary Education Or Post Secondary Non Tertiary Education, Female Population",
+          "dcid": "Percent_ReceivingStrongSocialSupport_In_Count_Person_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female"
         }
       ]
     },
@@ -28309,6 +28417,78 @@
         {
           "name": "Percentage Walking, Non Work Related Physical Activity Among Urban, Female Population",
           "dcid": "Percent_Walking_NonWorkRelatedPhysicalActivity_In_Count_Person_Urban_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_GlobalActivityLimitationindicator-LimitedActivityLimitation_SocialSupportLevel",
+      "name": "Person With Gender = Female, Global Activity Limitationindicator = Limited Activity Limitation, Social Support Level",
+      "statVars": [
+        {
+          "name": "Percentage Receiving Intermediate Social Support Among Female, Limited Activity Limitation Population",
+          "dcid": "Percent_ReceivingIntermediateSocialSupport_In_Count_Person_Female_LimitedActivityLimitation"
+        },
+        {
+          "name": "Percentage Receiving Poor Social Support Among Female, Limited Activity Limitation Population",
+          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Female_LimitedActivityLimitation"
+        },
+        {
+          "name": "Percentage Receiving Strong Social Support Among Female, Limited Activity Limitation Population",
+          "dcid": "Percent_ReceivingStrongSocialSupport_In_Count_Person_Female_LimitedActivityLimitation"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_GlobalActivityLimitationindicator-ModerateActivityLimitation_SocialSupportLevel",
+      "name": "Person With Gender = Female, Global Activity Limitationindicator = Moderate Activity Limitation, Social Support Level",
+      "statVars": [
+        {
+          "name": "Percentage Receiving Intermediate Social Support Among Female, Moderate Activity Limitation Population",
+          "dcid": "Percent_ReceivingIntermediateSocialSupport_In_Count_Person_Female_ModerateActivityLimitation"
+        },
+        {
+          "name": "Percentage Receiving Poor Social Support Among Female, Moderate Activity Limitation Population",
+          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Female_ModerateActivityLimitation"
+        },
+        {
+          "name": "Percentage Receiving Strong Social Support Among Female, Moderate Activity Limitation Population",
+          "dcid": "Percent_ReceivingStrongSocialSupport_In_Count_Person_Female_ModerateActivityLimitation"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_GlobalActivityLimitationindicator-NoActivityLimitation_SocialSupportLevel",
+      "name": "Person With Gender = Female, Global Activity Limitationindicator = No Activity Limitation, Social Support Level",
+      "statVars": [
+        {
+          "name": "Percentage Receiving Intermediate Social Support Among Female, No Activity Limitation Population",
+          "dcid": "Percent_ReceivingIntermediateSocialSupport_In_Count_Person_Female_NoActivityLimitation"
+        },
+        {
+          "name": "Percentage Receiving Poor Social Support Among Female, No Activity Limitation Population",
+          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Female_NoActivityLimitation"
+        },
+        {
+          "name": "Percentage Receiving Strong Social Support Among Female, No Activity Limitation Population",
+          "dcid": "Percent_ReceivingStrongSocialSupport_In_Count_Person_Female_NoActivityLimitation"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_GlobalActivityLimitationindicator-SevereActivityLimitation_SocialSupportLevel",
+      "name": "Person With Gender = Female, Global Activity Limitationindicator = Severe Activity Limitation, Social Support Level",
+      "statVars": [
+        {
+          "name": "Percentage Receiving Intermediate Social Support Among Female, Severe Activity Limitation Population",
+          "dcid": "Percent_ReceivingIntermediateSocialSupport_In_Count_Person_Female_SevereActivityLimitation"
+        },
+        {
+          "name": "Percentage Receiving Poor Social Support Among Female, Severe Activity Limitation Population",
+          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Female_SevereActivityLimitation"
+        },
+        {
+          "name": "Percentage Receiving Strong Social Support Among Female, Severe Activity Limitation Population",
+          "dcid": "Percent_ReceivingStrongSocialSupport_In_Count_Person_Female_SevereActivityLimitation"
         }
       ]
     },
@@ -28583,6 +28763,78 @@
       ]
     },
     {
+      "dcid": "dc/g/Person_Gender-Female_Nativity-ForeignBornOutsideEU28_SocialSupportLevel",
+      "name": "Person With Gender = Female, Nativity = Foreign Born Outside EU 28, Social Support Level",
+      "statVars": [
+        {
+          "name": "Percentage Receiving Intermediate Social Support Among Female, Foreign Born Outside EU28 Population",
+          "dcid": "Percent_ReceivingIntermediateSocialSupport_In_Count_Person_Female_ForeignBornOutsideEU28"
+        },
+        {
+          "name": "Percentage Receiving Poor Social Support Among Female, Foreign Born Outside EU28 Population",
+          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Female_ForeignBornOutsideEU28"
+        },
+        {
+          "name": "Percentage Receiving Strong Social Support Among Female, Foreign Born Outside EU28 Population",
+          "dcid": "Percent_ReceivingStrongSocialSupport_In_Count_Person_Female_ForeignBornOutsideEU28"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_Nativity-ForeignBornWithinEU28_SocialSupportLevel",
+      "name": "Person With Gender = Female, Nativity = Foreign Born Within EU 28, Social Support Level",
+      "statVars": [
+        {
+          "name": "Percentage Receiving Intermediate Social Support Among Female, Foreign Born Within EU28 Population",
+          "dcid": "Percent_ReceivingIntermediateSocialSupport_In_Count_Person_Female_ForeignBornWithinEU28"
+        },
+        {
+          "name": "Percentage Receiving Poor Social Support Among Female, Foreign Born Within EU28 Population",
+          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Female_ForeignBornWithinEU28"
+        },
+        {
+          "name": "Percentage Receiving Strong Social Support Among Female, Foreign Born Within EU28 Population",
+          "dcid": "Percent_ReceivingStrongSocialSupport_In_Count_Person_Female_ForeignBornWithinEU28"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_Nativity-ForeignBorn_SocialSupportLevel",
+      "name": "Person With Gender = Female, Nativity = Foreign Born, Social Support Level",
+      "statVars": [
+        {
+          "name": "Percentage Receiving Intermediate Social Support Among Female, Foreign Born Population",
+          "dcid": "Percent_ReceivingIntermediateSocialSupport_In_Count_Person_Female_ForeignBorn"
+        },
+        {
+          "name": "Percentage Receiving Poor Social Support Among Female, Foreign Born Population",
+          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Female_ForeignBorn"
+        },
+        {
+          "name": "Percentage Receiving Strong Social Support Among Female, Foreign Born Population",
+          "dcid": "Percent_ReceivingStrongSocialSupport_In_Count_Person_Female_ForeignBorn"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_Nativity-Native_SocialSupportLevel",
+      "name": "Person With Gender = Female, Nativity = Native, Social Support Level",
+      "statVars": [
+        {
+          "name": "Percentage Receiving Intermediate Social Support Among Female, Native Population",
+          "dcid": "Percent_ReceivingIntermediateSocialSupport_In_Count_Person_Female_Native"
+        },
+        {
+          "name": "Percentage Receiving Poor Social Support Among Female, Native Population",
+          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Female_Native"
+        },
+        {
+          "name": "Percentage Receiving Strong Social Support Among Female, Native Population",
+          "dcid": "Percent_ReceivingStrongSocialSupport_In_Count_Person_Female_Native"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/Person_Gender-Female_PhysicalActivityEffortLevel-HeavyActivityLevel_PlaceOfResidenceClassification",
       "name": "Person With Gender = Female, Physical Activity Effort Level = Heavy Activity Level, Place of Residence Classification",
       "statVars": [
@@ -28691,6 +28943,42 @@
       ]
     },
     {
+      "dcid": "dc/g/Person_Gender-Female_PlaceOfResidenceClassification-Rural_SocialSupportLevel",
+      "name": "Person With Gender = Female, Place of Residence Classification = Rural, Social Support Level",
+      "statVars": [
+        {
+          "name": "Percentage Receiving Intermediate Social Support Among Rural, Female Population",
+          "dcid": "Percent_ReceivingIntermediateSocialSupport_In_Count_Person_Rural_Female"
+        },
+        {
+          "name": "Percentage Receiving Poor Social Support Among Rural, Female Population",
+          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Rural_Female"
+        },
+        {
+          "name": "Percentage Receiving Strong Social Support Among Rural, Female Population",
+          "dcid": "Percent_ReceivingStrongSocialSupport_In_Count_Person_Rural_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_PlaceOfResidenceClassification-SemiUrban_SocialSupportLevel",
+      "name": "Person With Gender = Female, Place of Residence Classification = Semi Urban, Social Support Level",
+      "statVars": [
+        {
+          "name": "Percentage Receiving Intermediate Social Support Among Semi Urban, Female Population",
+          "dcid": "Percent_ReceivingIntermediateSocialSupport_In_Count_Person_SemiUrban_Female"
+        },
+        {
+          "name": "Percentage Receiving Poor Social Support Among Semi Urban, Female Population",
+          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_SemiUrban_Female"
+        },
+        {
+          "name": "Percentage Receiving Strong Social Support Among Semi Urban, Female Population",
+          "dcid": "Percent_ReceivingStrongSocialSupport_In_Count_Person_SemiUrban_Female"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/Person_Gender-Female_PlaceOfResidenceClassification-Urban_SocialCategory-ScheduledCaste",
       "name": "Person With Gender = Female, Place of Residence Classification = Urban, Social Category = Scheduled Caste",
       "statVars": [
@@ -28723,6 +29011,24 @@
         {
           "name": "Population: Female, Houseless, Urban, Scheduled Tribe",
           "dcid": "Count_Person_Houseless_ScheduledTribe_Urban_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_PlaceOfResidenceClassification-Urban_SocialSupportLevel",
+      "name": "Person With Gender = Female, Place of Residence Classification = Urban, Social Support Level",
+      "statVars": [
+        {
+          "name": "Percentage Receiving Intermediate Social Support Among Urban, Female Population",
+          "dcid": "Percent_ReceivingIntermediateSocialSupport_In_Count_Person_Urban_Female"
+        },
+        {
+          "name": "Percentage Receiving Poor Social Support Among Urban, Female Population",
+          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Urban_Female"
+        },
+        {
+          "name": "Percentage Receiving Strong Social Support Among Urban, Female Population",
+          "dcid": "Percent_ReceivingStrongSocialSupport_In_Count_Person_Urban_Female"
         }
       ]
     },
@@ -33887,6 +34193,20 @@
       ]
     },
     {
+      "dcid": "dc/g/Person_EducationalAttainment-LessThanPrimaryEducationPrimaryEducationLowerSecondaryEducation_Gender-Female_SocialSupportBeneficiaryType",
+      "name": "Person With Educational Attainment = Less Than Primary Education \u0026 Primary Education \u0026 Lower Secondary Education, Gender = Female, Social Support Beneficiary Type",
+      "statVars": [
+        {
+          "name": "Percentage At Least Once A Week, Non Relatives, Providing Informal Care Or Assistance Among Less Than Primary Education Or Primary Education Or Lower Secondary Education, Female Population",
+          "dcid": "Percent_AtLeastOnceAWeek_NonRelatives_ProvidingInformalCareOrAssistance_In_Count_Person_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_Female"
+        },
+        {
+          "name": "Percentage At Least Once A Week, Relatives, Providing Informal Care Or Assistance Among Less Than Primary Education Or Primary Education Or Lower Secondary Education, Female Population",
+          "dcid": "Percent_AtLeastOnceAWeek_Relatives_ProvidingInformalCareOrAssistance_In_Count_Person_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_Female"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/Person_EducationalAttainment-TertiaryEducation_Gender-Female_HealthBehavior-FormerSmoker",
       "name": "Person With Educational Attainment = Tertiary Education, Gender = Female, Health Behavior = Former Smoker",
       "statVars": [
@@ -33901,6 +34221,20 @@
       ]
     },
     {
+      "dcid": "dc/g/Person_EducationalAttainment-TertiaryEducation_Gender-Female_SocialSupportBeneficiaryType",
+      "name": "Person With Educational Attainment = Tertiary Education, Gender = Female, Social Support Beneficiary Type",
+      "statVars": [
+        {
+          "name": "Percentage At Least Once A Week, Non Relatives, Providing Informal Care Or Assistance Among Tertiary Education, Female Population",
+          "dcid": "Percent_AtLeastOnceAWeek_NonRelatives_ProvidingInformalCareOrAssistance_In_Count_Person_TertiaryEducation_Female"
+        },
+        {
+          "name": "Percentage At Least Once A Week, Relatives, Providing Informal Care Or Assistance Among Tertiary Education, Female Population",
+          "dcid": "Percent_AtLeastOnceAWeek_Relatives_ProvidingInformalCareOrAssistance_In_Count_Person_TertiaryEducation_Female"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/Person_EducationalAttainment-UpperSecondaryEducationPostSecondaryNonTertiaryEducation_Gender-Female_HealthBehavior-FormerSmoker",
       "name": "Person With Educational Attainment = Upper Secondary Education \u0026 Post Secondary Non Tertiary Education, Gender = Female, Health Behavior = Former Smoker",
       "statVars": [
@@ -33911,6 +34245,20 @@
         {
           "name": "Percentage Former Smoker, E Cigarettes Among Upper Secondary Education Or Post Secondary Non Tertiary Education, Female Population",
           "dcid": "Percent_FormerSmoker_Formerly_ECigarettes_In_Count_Person_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_EducationalAttainment-UpperSecondaryEducationPostSecondaryNonTertiaryEducation_Gender-Female_SocialSupportBeneficiaryType",
+      "name": "Person With Educational Attainment = Upper Secondary Education \u0026 Post Secondary Non Tertiary Education, Gender = Female, Social Support Beneficiary Type",
+      "statVars": [
+        {
+          "name": "Percentage At Least Once A Week, Non Relatives, Providing Informal Care Or Assistance Among Upper Secondary Education Or Post Secondary Non Tertiary Education, Female Population",
+          "dcid": "Percent_AtLeastOnceAWeek_NonRelatives_ProvidingInformalCareOrAssistance_In_Count_Person_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female"
+        },
+        {
+          "name": "Percentage At Least Once A Week, Relatives, Providing Informal Care Or Assistance Among Upper Secondary Education Or Post Secondary Non Tertiary Education, Female Population",
+          "dcid": "Percent_AtLeastOnceAWeek_Relatives_ProvidingInformalCareOrAssistance_In_Count_Person_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female"
         }
       ]
     },
@@ -34209,6 +34557,20 @@
       ]
     },
     {
+      "dcid": "dc/g/Person_Gender-Female_PlaceOfResidenceClassification-Rural_SocialSupportBeneficiaryType",
+      "name": "Person With Gender = Female, Place of Residence Classification = Rural, Social Support Beneficiary Type",
+      "statVars": [
+        {
+          "name": "Percentage At Least Once A Week, Non Relatives, Providing Informal Care Or Assistance Among Rural, Female Population",
+          "dcid": "Percent_AtLeastOnceAWeek_NonRelatives_ProvidingInformalCareOrAssistance_In_Count_Person_Rural_Female"
+        },
+        {
+          "name": "Percentage At Least Once A Week, Relatives, Providing Informal Care Or Assistance Among Rural, Female Population",
+          "dcid": "Percent_AtLeastOnceAWeek_Relatives_ProvidingInformalCareOrAssistance_In_Count_Person_Rural_Female"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/Person_Gender-Female_PlaceOfResidenceClassification-Rural_WorkerClassification-NonWorker",
       "name": "Person With Gender = Female, Place of Residence Classification = Rural, Worker Classification = Non Worker",
       "statVars": [
@@ -34219,6 +34581,20 @@
         {
           "name": "Population: Female, Houseless, Rural, Non Worker",
           "dcid": "Count_Person_Houseless_NonWorker_Rural_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_PlaceOfResidenceClassification-SemiUrban_SocialSupportBeneficiaryType",
+      "name": "Person With Gender = Female, Place of Residence Classification = Semi Urban, Social Support Beneficiary Type",
+      "statVars": [
+        {
+          "name": "Percentage At Least Once A Week, Non Relatives, Providing Informal Care Or Assistance Among Semi Urban, Female Population",
+          "dcid": "Percent_AtLeastOnceAWeek_NonRelatives_ProvidingInformalCareOrAssistance_In_Count_Person_SemiUrban_Female"
+        },
+        {
+          "name": "Percentage At Least Once A Week, Relatives, Providing Informal Care Or Assistance Among Semi Urban, Female Population",
+          "dcid": "Percent_AtLeastOnceAWeek_Relatives_ProvidingInformalCareOrAssistance_In_Count_Person_SemiUrban_Female"
         }
       ]
     },
@@ -34331,6 +34707,20 @@
         {
           "name": "Population: 6 Years or Less, Female, Urban, Sikhism",
           "dcid": "indianCensus/Count_Person_Religion_Sikh_YearsUpto6_Urban_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_PlaceOfResidenceClassification-Urban_SocialSupportBeneficiaryType",
+      "name": "Person With Gender = Female, Place of Residence Classification = Urban, Social Support Beneficiary Type",
+      "statVars": [
+        {
+          "name": "Percentage At Least Once A Week, Non Relatives, Providing Informal Care Or Assistance Among Urban, Female Population",
+          "dcid": "Percent_AtLeastOnceAWeek_NonRelatives_ProvidingInformalCareOrAssistance_In_Count_Person_Urban_Female"
+        },
+        {
+          "name": "Percentage At Least Once A Week, Relatives, Providing Informal Care Or Assistance Among Urban, Female Population",
+          "dcid": "Percent_AtLeastOnceAWeek_Relatives_ProvidingInformalCareOrAssistance_In_Count_Person_Urban_Female"
         }
       ]
     },
@@ -35465,328 +35855,6 @@
         {
           "name": "Population: 15 - 50 Years, Birth in The Past 12 Months, Female, 1 Ratio To Poverty Line or Less (As Fraction of Count Person 15 To 50 Years Female 1.0 or Less Ratio To Poverty Line)",
           "dcid": "Count_Person_15To50Years_BirthInThePast12Months_Female_1.0OrLessRatioToPovertyLine_AsAFractionOf_Count_Person_15To50Years_Female_1.0OrLessRatioToPovertyLine"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years15To50_BirthEventStatus-BirthInThePast12Months_Gender-Female_PovertyStatus-RatioToPovertyLine2.0Onwards",
-      "name": "Person With Age = 15 - 50 Years, Birth Event Status = Birth in The Past 12 Months, Gender = Female, Poverty Status = 2 Ratio To Poverty Line or More",
-      "statVars": [
-        {
-          "name": "Population: 15 - 50 Years, Birth in The Past 12 Months, Female, 2 Ratio To Poverty Line or More",
-          "dcid": "Count_Person_15To50Years_BirthInThePast12Months_Female_2OrMoreRatioToPovertyLine"
-        },
-        {
-          "name": "Population: 15 - 50 Years, Birth in The Past 12 Months, Female, 2 Ratio To Poverty Line or More (As Fraction of Count Person 15 To 50 Years Female 2 or More Ratio To Poverty Line)",
-          "dcid": "Count_Person_15To50Years_BirthInThePast12Months_Female_2OrMoreRatioToPovertyLine_AsAFractionOf_Count_Person_15To50Years_Female_2OrMoreRatioToPovertyLine"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years15To50_BirthEventStatus-BirthInThePast12Months_Gender-Female_PovertyStatus-PovertyStatusDetermined",
-      "name": "Person With Age = 15 - 50 Years, Birth Event Status = Birth in The Past 12 Months, Gender = Female, Poverty Status = Poverty Status Determined",
-      "statVars": [
-        {
-          "name": "Population: 15 - 50 Years, Birth in The Past 12 Months, Female, Poverty Status Determined",
-          "dcid": "Count_Person_15To50Years_BirthInThePast12Months_Female_PovertyStatusDetermined"
-        },
-        {
-          "name": "Population: 15 - 50 Years, Birth in The Past 12 Months, Female, Poverty Status Determined (As Fraction of Count Person 15 To 50 Years Female Poverty Status Determined)",
-          "dcid": "Count_Person_15To50Years_BirthInThePast12Months_Female_PovertyStatusDetermined_AsAFractionOf_Count_Person_15To50Years_Female_PovertyStatusDetermined"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years15To50_BirthEventStatus-BirthInThePast12Months_Gender-Female_Race-AmericanIndianOrAlaskaNativeAlone",
-      "name": "Person With Age = 15 - 50 Years, Birth Event Status = Birth in The Past 12 Months, Gender = Female, Race = American Indian or Alaska Native Alone",
-      "statVars": [
-        {
-          "name": "Population: 15 - 50 Years, Birth in The Past 12 Months, Female, American Indian or Alaska Native Alone",
-          "dcid": "Count_Person_15To50Years_BirthInThePast12Months_Female_AmericanIndianOrAlaskaNativeAlone"
-        },
-        {
-          "name": "Population: 15 - 50 Years, Birth in The Past 12 Months, Female, American Indian or Alaska Native Alone (As Fraction of Count Person 15 To 50 Years Female American Indian or Alaska Native Alone)",
-          "dcid": "Count_Person_15To50Years_BirthInThePast12Months_Female_AmericanIndianOrAlaskaNativeAlone_AsAFractionOf_Count_Person_15To50Years_Female_AmericanIndianOrAlaskaNativeAlone"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years15To50_BirthEventStatus-BirthInThePast12Months_Gender-Female_Race-AsianAlone",
-      "name": "Person With Age = 15 - 50 Years, Birth Event Status = Birth in The Past 12 Months, Gender = Female, Race = Asian Alone",
-      "statVars": [
-        {
-          "name": "Population: 15 - 50 Years, Birth in The Past 12 Months, Female, Asian Alone",
-          "dcid": "Count_Person_15To50Years_BirthInThePast12Months_Female_AsianAlone"
-        },
-        {
-          "name": "Population: 15 - 50 Years, Birth in The Past 12 Months, Female, Asian Alone (As Fraction of Count Person 15 To 50 Years Female Asian Alone)",
-          "dcid": "Count_Person_15To50Years_BirthInThePast12Months_Female_AsianAlone_AsAFractionOf_Count_Person_15To50Years_Female_AsianAlone"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years15To50_BirthEventStatus-BirthInThePast12Months_Gender-Female_Race-BlackOrAfricanAmericanAlone",
-      "name": "Person With Age = 15 - 50 Years, Birth Event Status = Birth in The Past 12 Months, Gender = Female, Race = Black or African American Alone",
-      "statVars": [
-        {
-          "name": "Population: 15 - 50 Years, Birth in The Past 12 Months, Female, Black or African American Alone",
-          "dcid": "Count_Person_15To50Years_BirthInThePast12Months_Female_BlackOrAfricanAmericanAlone"
-        },
-        {
-          "name": "Population: 15 - 50 Years, Birth in The Past 12 Months, Female, Black or African American Alone (As Fraction of Count Person 15 To 50 Years Female Black or African American Alone)",
-          "dcid": "Count_Person_15To50Years_BirthInThePast12Months_Female_BlackOrAfricanAmericanAlone_AsAFractionOf_Count_Person_15To50Years_Female_BlackOrAfricanAmericanAlone"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years15To50_BirthEventStatus-BirthInThePast12Months_Gender-Female_Race-HispanicOrLatino",
-      "name": "Person With Age = 15 - 50 Years, Birth Event Status = Birth in The Past 12 Months, Gender = Female, Race = Hispanic or Latino",
-      "statVars": [
-        {
-          "name": "Population: 15 - 50 Years, Birth in The Past 12 Months, Female, Hispanic or Latino",
-          "dcid": "Count_Person_15To50Years_BirthInThePast12Months_Female_HispanicOrLatino"
-        },
-        {
-          "name": "Population: 15 - 50 Years, Birth in The Past 12 Months, Female, Hispanic or Latino (As Fraction of Count Person 15 To 50 Years Female Hispanic or Latino)",
-          "dcid": "Count_Person_15To50Years_BirthInThePast12Months_Female_HispanicOrLatino_AsAFractionOf_Count_Person_15To50Years_Female_HispanicOrLatino"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years15To50_BirthEventStatus-BirthInThePast12Months_Gender-Female_Race-NativeHawaiianOrOtherPacificIslanderAlone",
-      "name": "Person With Age = 15 - 50 Years, Birth Event Status = Birth in The Past 12 Months, Gender = Female, Race = Native Hawaiian or Other Pacific Islander Alone",
-      "statVars": [
-        {
-          "name": "Population: 15 - 50 Years, Birth in The Past 12 Months, Female, Native Hawaiian or Other Pacific Islander Alone",
-          "dcid": "Count_Person_15To50Years_BirthInThePast12Months_Female_NativeHawaiianOrOtherPacificIslanderAlone"
-        },
-        {
-          "name": "Population: 15 - 50 Years, Birth in The Past 12 Months, Female, Native Hawaiian or Other Pacific Islander Alone (As Fraction of Count Person 15 To 50 Years Female Native Hawaiian or Other Pacific Islander Alone)",
-          "dcid": "Count_Person_15To50Years_BirthInThePast12Months_Female_NativeHawaiianOrOtherPacificIslanderAlone_AsAFractionOf_Count_Person_15To50Years_Female_NativeHawaiianOrOtherPacificIslanderAlone"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years15To50_BirthEventStatus-BirthInThePast12Months_Gender-Female_Race-OneRace",
-      "name": "Person With Age = 15 - 50 Years, Birth Event Status = Birth in The Past 12 Months, Gender = Female, Race = One Race",
-      "statVars": [
-        {
-          "name": "Population: 15 - 50 Years, Birth in The Past 12 Months, Female, One Race",
-          "dcid": "Count_Person_15To50Years_BirthInThePast12Months_Female_OneRace"
-        },
-        {
-          "name": "Population: 15 - 50 Years, Birth in The Past 12 Months, Female, One Race (As Fraction of Count Person 15 To 50 Years Female One Race)",
-          "dcid": "Count_Person_15To50Years_BirthInThePast12Months_Female_OneRace_AsAFractionOf_Count_Person_15To50Years_Female_OneRace"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years15To50_BirthEventStatus-BirthInThePast12Months_Gender-Female_Race-SomeOtherRaceAlone",
-      "name": "Person With Age = 15 - 50 Years, Birth Event Status = Birth in The Past 12 Months, Gender = Female, Race = Some Other Race Alone",
-      "statVars": [
-        {
-          "name": "Population: 15 - 50 Years, Birth in The Past 12 Months, Female, Some Other Race Alone",
-          "dcid": "Count_Person_15To50Years_BirthInThePast12Months_Female_SomeOtherRaceAlone"
-        },
-        {
-          "name": "Population: 15 - 50 Years, Birth in The Past 12 Months, Female, Some Other Race Alone (As Fraction of Count Person 15 To 50 Years Female Some Other Race Alone)",
-          "dcid": "Count_Person_15To50Years_BirthInThePast12Months_Female_SomeOtherRaceAlone_AsAFractionOf_Count_Person_15To50Years_Female_SomeOtherRaceAlone"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years15To50_BirthEventStatus-BirthInThePast12Months_Gender-Female_Race-TwoOrMoreRaces",
-      "name": "Person With Age = 15 - 50 Years, Birth Event Status = Birth in The Past 12 Months, Gender = Female, Race = Two or More Races",
-      "statVars": [
-        {
-          "name": "Population: 15 - 50 Years, Birth in The Past 12 Months, Female, Two or More Races",
-          "dcid": "Count_Person_15To50Years_BirthInThePast12Months_Female_TwoOrMoreRaces"
-        },
-        {
-          "name": "Population: 15 - 50 Years, Birth in The Past 12 Months, Female, Two or More Races (As Fraction of Count Person 15 To 50 Years Female Two or More Races)",
-          "dcid": "Count_Person_15To50Years_BirthInThePast12Months_Female_TwoOrMoreRaces_AsAFractionOf_Count_Person_15To50Years_Female_TwoOrMoreRaces"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years15To50_BirthEventStatus-BirthInThePast12Months_Gender-Female_Race-WhiteAlone",
-      "name": "Person With Age = 15 - 50 Years, Birth Event Status = Birth in The Past 12 Months, Gender = Female, Race = White Alone",
-      "statVars": [
-        {
-          "name": "Population: 15 - 50 Years, Birth in The Past 12 Months, Female, White Alone",
-          "dcid": "Count_Person_15To50Years_BirthInThePast12Months_Female_WhiteAlone"
-        },
-        {
-          "name": "Population: 15 - 50 Years, Birth in The Past 12 Months, Female, White Alone (As Fraction of Count Person 15 To 50 Years Female White Alone)",
-          "dcid": "Count_Person_15To50Years_BirthInThePast12Months_Female_WhiteAlone_AsAFractionOf_Count_Person_15To50Years_Female_WhiteAlone"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years15To50_BirthEventStatus-BirthInThePast12Months_Gender-Female_Race-WhiteAloneNotHispanicOrLatino",
-      "name": "Person With Age = 15 - 50 Years, Birth Event Status = Birth in The Past 12 Months, Gender = Female, Race = White Alone Not Hispanic or Latino",
-      "statVars": [
-        {
-          "name": "Population: 15 - 50 Years, Birth in The Past 12 Months, Female, White Alone Not Hispanic or Latino",
-          "dcid": "Count_Person_15To50Years_BirthInThePast12Months_Female_WhiteAloneNotHispanicOrLatino"
-        },
-        {
-          "name": "Population: 15 - 50 Years, Birth in The Past 12 Months, Female, White Alone Not Hispanic or Latino (As Fraction of Count Person 15 To 50 Years Female White Alone Not Hispanic or Latino)",
-          "dcid": "Count_Person_15To50Years_BirthInThePast12Months_Female_WhiteAloneNotHispanicOrLatino_AsAFractionOf_Count_Person_15To50Years_Female_WhiteAloneNotHispanicOrLatino"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years16To50_BirthEventStatus-BirthInThePast12Months_Gender-Female_LaborForceStatus-InLaborForce",
-      "name": "Person With Age = 16 - 50 Years, Birth Event Status = Birth in The Past 12 Months, Labor Force Status = in Labor Force, Gender = Female",
-      "statVars": [
-        {
-          "name": "Population: 16 - 50 Years, Birth in The Past 12 Months, in Labor Force, Female",
-          "dcid": "Count_Person_16To50Years_BirthInThePast12Months_InLaborForce_Female"
-        },
-        {
-          "name": "Population: 16 - 50 Years, Birth in The Past 12 Months, in Labor Force, Female (As Fraction of Count Person 16 To 50 Years in Labor Force Female)",
-          "dcid": "Count_Person_16To50Years_BirthInThePast12Months_InLaborForce_Female_AsAFractionOf_Count_Person_16To50Years_InLaborForce_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years18To64_Gender-Female_HealthInsurance-NoHealthInsurance_Race-BlackOrAfricanAmericanAlone",
-      "name": "Person With Age = 18 - 64 Years, Gender = Female, Health Insurance = No Health Insurance, Race = Black or African American Alone",
-      "statVars": [
-        {
-          "name": "Percent: 18 - 64 Years, Female, No Health Insurance, Black or African American Alone",
-          "dcid": "dc/kj81jzgxt0ssc"
-        },
-        {
-          "name": "Population: 18 - 64 Years, Female, No Health Insurance, Black or African American Alone",
-          "dcid": "dc/5fb2cy53rcfgg"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years18To64_Gender-Female_HealthInsurance-NoHealthInsurance_Race-HispanicOrLatino",
-      "name": "Person With Age = 18 - 64 Years, Gender = Female, Health Insurance = No Health Insurance, Race = Hispanic or Latino",
-      "statVars": [
-        {
-          "name": "Percent: 18 - 64 Years, Female, No Health Insurance, Hispanic or Latino",
-          "dcid": "dc/rgtm8zlvlbcg9"
-        },
-        {
-          "name": "Population: 18 - 64 Years, Female, No Health Insurance, Hispanic or Latino",
-          "dcid": "dc/n19z6fqtj4c44"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years18To64_Gender-Female_HealthInsurance-NoHealthInsurance_Race-WhiteAlone",
-      "name": "Person With Age = 18 - 64 Years, Gender = Female, Health Insurance = No Health Insurance, Race = White Alone",
-      "statVars": [
-        {
-          "name": "Percent: 18 - 64 Years, Female, No Health Insurance, White Alone",
-          "dcid": "dc/3m14w3e7sqqqg"
-        },
-        {
-          "name": "Population: 18 - 64 Years, Female, No Health Insurance, White Alone",
-          "dcid": "dc/t34hxn7czbff7"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years18To64_Gender-Female_HealthInsurance-WithHealthInsurance_Race-BlackOrAfricanAmericanAlone",
-      "name": "Person With Age = 18 - 64 Years, Gender = Female, Health Insurance = With Health Insurance, Race = Black or African American Alone",
-      "statVars": [
-        {
-          "name": "Percent: 18 - 64 Years, Female, With Health Insurance, Black or African American Alone",
-          "dcid": "dc/pqvy3pndh9eg6"
-        },
-        {
-          "name": "Population: 18 - 64 Years, Female, With Health Insurance, Black or African American Alone",
-          "dcid": "dc/5b8q2q5sz0l5"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years18To64_Gender-Female_HealthInsurance-WithHealthInsurance_Race-HispanicOrLatino",
-      "name": "Person With Age = 18 - 64 Years, Gender = Female, Health Insurance = With Health Insurance, Race = Hispanic or Latino",
-      "statVars": [
-        {
-          "name": "Percent: 18 - 64 Years, Female, With Health Insurance, Hispanic or Latino",
-          "dcid": "dc/9y4dj19e606v4"
-        },
-        {
-          "name": "Population: 18 - 64 Years, Female, With Health Insurance, Hispanic or Latino",
-          "dcid": "dc/4f8tvq5vg5zq5"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years18To64_Gender-Female_HealthInsurance-WithHealthInsurance_Race-WhiteAlone",
-      "name": "Person With Age = 18 - 64 Years, Gender = Female, Health Insurance = With Health Insurance, Race = White Alone",
-      "statVars": [
-        {
-          "name": "Percent: 18 - 64 Years, Female, With Health Insurance, White Alone",
-          "dcid": "dc/h806n8ln13pt5"
-        },
-        {
-          "name": "Population: 18 - 64 Years, Female, With Health Insurance, White Alone",
-          "dcid": "dc/mqt7bj4806v5h"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years18To64_Gender-Female_HealthInsurance-NoHealthInsurance_IncomeRelativeToPovertyLine-RatioToPovertyLine1.38To4",
-      "name": "Person With Age = 18 - 64 Years, Income Relative To Poverty Line = 1.4 - 4 Ratio To Poverty Line, Gender = Female, Health Insurance = No Health Insurance",
-      "statVars": [
-        {
-          "name": "Percent: 18 - 64 Years, 1.4 - 4 Ratio To Poverty Line, Female, No Health Insurance",
-          "dcid": "dc/hcg8bgt9ne75h"
-        },
-        {
-          "name": "Population: 18 - 64 Years, 1.4 - 4 Ratio To Poverty Line, Female, No Health Insurance",
-          "dcid": "dc/hz9b0bmpfzyxh"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years18To64_Gender-Female_HealthInsurance-WithHealthInsurance_IncomeRelativeToPovertyLine-RatioToPovertyLine1.38To4",
-      "name": "Person With Age = 18 - 64 Years, Income Relative To Poverty Line = 1.4 - 4 Ratio To Poverty Line, Gender = Female, Health Insurance = With Health Insurance",
-      "statVars": [
-        {
-          "name": "Percent: 18 - 64 Years, 1.4 - 4 Ratio To Poverty Line, Female, With Health Insurance",
-          "dcid": "dc/vb3b0ry6qdhvd"
-        },
-        {
-          "name": "Population: 18 - 64 Years, 1.4 - 4 Ratio To Poverty Line, Female, With Health Insurance",
-          "dcid": "dc/cd74zc68krh89"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years18To64_Gender-Female_HealthInsurance-NoHealthInsurance_IncomeRelativeToPovertyLine-RatioToPovertyLineUpto1.38",
-      "name": "Person With Age = 18 - 64 Years, Income Relative To Poverty Line = 1.4 Ratio To Poverty Line or Less, Gender = Female, Health Insurance = No Health Insurance",
-      "statVars": [
-        {
-          "name": "Percent: 18 - 64 Years, 1.4 Ratio To Poverty Line or Less, Female, No Health Insurance",
-          "dcid": "dc/s0ywx1qw7v582"
-        },
-        {
-          "name": "Population: 18 - 64 Years, 1.4 Ratio To Poverty Line or Less, Female, No Health Insurance",
-          "dcid": "dc/djczl24xvzw37"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years18To64_Gender-Female_HealthInsurance-WithHealthInsurance_IncomeRelativeToPovertyLine-RatioToPovertyLineUpto1.38",
-      "name": "Person With Age = 18 - 64 Years, Income Relative To Poverty Line = 1.4 Ratio To Poverty Line or Less, Gender = Female, Health Insurance = With Health Insurance",
-      "statVars": [
-        {
-          "name": "Percent: 18 - 64 Years, 1.4 Ratio To Poverty Line or Less, Female, With Health Insurance",
-          "dcid": "dc/d0g2dhkj041sg"
-        },
-        {
-          "name": "Population: 18 - 64 Years, 1.4 Ratio To Poverty Line or Less, Female, With Health Insurance",
-          "dcid": "dc/ev7mp4ne33tr7"
         }
       ]
     }

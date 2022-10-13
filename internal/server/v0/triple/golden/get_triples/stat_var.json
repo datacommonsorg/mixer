@@ -403,6 +403,62 @@
       "provenanceId": "dc/d7tbsb1"
     },
     {
+      "subjectId": "Percent_AtLeastOnceAWeek_NonRelatives_ProvidingInformalCareOrAssistance_In_Count_Person",
+      "subjectName": "Percentage At Least Once A Week, Non Relatives, Providing Informal Care Or Assistance Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectName": "Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Percent_AtLeastOnceAWeek_NotProvidingInformalCareOrAssistance_In_Count_Person",
+      "subjectName": "Percentage At Least Once A Week, Not Providing Informal Care Or Assistance Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectName": "Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Percent_AtLeastOnceAWeek_ProvidingInformalCareOrAssistance_In_Count_Person",
+      "subjectName": "Percentage At Least Once A Week, Providing Informal Care Or Assistance Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectName": "Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Percent_AtLeastOnceAWeek_Relatives_ProvidingInformalCareOrAssistance_In_Count_Person",
+      "subjectName": "Percentage At Least Once A Week, Relatives, Providing Informal Care Or Assistance Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectName": "Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
       "subjectId": "Percent_AtLeastOneHourPerDay_ExposureToTobaccoSmoke_In_Count_Person",
       "subjectName": "Percentage At Least One Hour Per Day, Exposure To Tobacco Smoke Among Population",
       "subjectTypes": [
@@ -991,6 +1047,48 @@
       "provenanceId": "dc/d7tbsb1"
     },
     {
+      "subjectId": "Percent_ReceivingIntermediateSocialSupport_In_Count_Person",
+      "subjectName": "Percentage Receiving Intermediate Social Support Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectName": "Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Percent_ReceivingPoorSocialSupport_In_Count_Person",
+      "subjectName": "Percentage Receiving Poor Social Support Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectName": "Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Percent_ReceivingStrongSocialSupport_In_Count_Person",
+      "subjectName": "Percentage Receiving Strong Social Support Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectName": "Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
       "subjectId": "Percent_TertiaryEducationStageOneOrTertiaryEducationStageTwo_PhysicalActivity_In_Count_Person",
       "subjectName": "Percentage Tertiary Education Stage One Or Tertiary Education Stage Two, Physical Activity Among Population",
       "subjectTypes": [
@@ -1453,6 +1551,62 @@
     {
       "subjectId": "Percent_AtLeastOnceAWeek_ExposureToTobaccoSmoke_In_Count_Person_Female",
       "subjectName": "Percentage At Least Once A Week, Exposure To Tobacco Smoke Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Population: Female",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Percent_AtLeastOnceAWeek_NonRelatives_ProvidingInformalCareOrAssistance_In_Count_Person_Female",
+      "subjectName": "Percentage At Least Once A Week, Non Relatives, Providing Informal Care Or Assistance Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Population: Female",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Percent_AtLeastOnceAWeek_NotProvidingInformalCareOrAssistance_In_Count_Person_Female",
+      "subjectName": "Percentage At Least Once A Week, Not Providing Informal Care Or Assistance Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Population: Female",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Percent_AtLeastOnceAWeek_ProvidingInformalCareOrAssistance_In_Count_Person_Female",
+      "subjectName": "Percentage At Least Once A Week, Providing Informal Care Or Assistance Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Population: Female",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Percent_AtLeastOnceAWeek_Relatives_ProvidingInformalCareOrAssistance_In_Count_Person_Female",
+      "subjectName": "Percentage At Least Once A Week, Relatives, Providing Informal Care Or Assistance Among Female Population",
       "subjectTypes": [
         "StatisticalVariable"
       ],
@@ -2041,6 +2195,48 @@
     {
       "subjectId": "Percent_RarelyOrNever_ExposureToTobaccoSmoke_In_Count_Person_Female",
       "subjectName": "Percentage Rarely Or Never, Exposure To Tobacco Smoke Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Population: Female",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Percent_ReceivingIntermediateSocialSupport_In_Count_Person_Female",
+      "subjectName": "Percentage Receiving Intermediate Social Support Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Population: Female",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Female",
+      "subjectName": "Percentage Receiving Poor Social Support Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Population: Female",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Percent_ReceivingStrongSocialSupport_In_Count_Person_Female",
+      "subjectName": "Percentage Receiving Strong Social Support Among Female Population",
       "subjectTypes": [
         "StatisticalVariable"
       ],
