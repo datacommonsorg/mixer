@@ -2293,72 +2293,6 @@
       ]
     },
     {
-      "dcid": "dc/g/Person_Age-Years15_Gender-Female_Race",
-      "name": "Person With Age = Years 15, Gender = Female, Race",
-      "statVars": [
-        {
-          "name": "Population: Years 15, Female, Asian or Pacific Islander",
-          "dcid": "Count_Person_15Years_Female_AsianOrPacificIslander"
-        },
-        {
-          "name": "Population: Years 15, Female, Hispanic or Latino \u0026 American Indian And Alaska Native Alone or In Combination With One or More Other Races",
-          "dcid": "Count_Person_15Years_Female_HispanicOrLatino_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRaces"
-        },
-        {
-          "name": "Population: Years 15, Female, Hispanic or Latino \u0026 American Indian or Alaska Native Alone",
-          "dcid": "Count_Person_15Years_Female_HispanicOrLatino_AmericanIndianAndAlaskaNativeAlone"
-        },
-        {
-          "name": "Population: Years 15, Female, Hispanic or Latino \u0026 Asian Alone",
-          "dcid": "Count_Person_15Years_Female_HispanicOrLatino_AsianAlone"
-        },
-        {
-          "name": "Population: Years 15, Female, Hispanic or Latino \u0026 Asian Alone or In Combination With One or More Other Races",
-          "dcid": "Count_Person_15Years_Female_HispanicOrLatino_AsianAloneOrInCombinationWithOneOrMoreOtherRaces"
-        },
-        {
-          "name": "Population: Years 15, Female, Hispanic or Latino \u0026 Asian or Pacific Islander",
-          "dcid": "Count_Person_15Years_Female_HispanicOrLatino_AsianOrPacificIslander"
-        },
-        {
-          "name": "Population: Years 15, Female, Hispanic or Latino \u0026 Black or African American Alone",
-          "dcid": "Count_Person_15Years_Female_HispanicOrLatino_BlackOrAfricanAmericanAlone"
-        },
-        {
-          "name": "Population: Years 15, Female, Hispanic or Latino \u0026 Black or African American Alone or In Combination With One or More Other Races",
-          "dcid": "Count_Person_15Years_Female_HispanicOrLatino_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces"
-        },
-        {
-          "name": "Population: Years 15, Female, Hispanic or Latino \u0026 Native Hawaiian And Other Pacific Islander Alone or In Combination With One or More Other Races",
-          "dcid": "Count_Person_15Years_Female_HispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAloneOrInCombinationWithOneOrMoreOtherRaces"
-        },
-        {
-          "name": "Population: Years 15, Female, Hispanic or Latino \u0026 Native Hawaiian or Other Pacific Islander Alone",
-          "dcid": "Count_Person_15Years_Female_HispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAlone"
-        },
-        {
-          "name": "Population: Years 15, Female, Hispanic or Latino \u0026 Two or More Races",
-          "dcid": "Count_Person_15Years_Female_HispanicOrLatino_TwoOrMoreRaces"
-        },
-        {
-          "name": "Population: Years 15, Female, Hispanic or Latino \u0026 White Alone",
-          "dcid": "Count_Person_15Years_Female_HispanicOrLatino_WhiteAlone"
-        },
-        {
-          "name": "Population: Years 15, Female, Hispanic or Latino \u0026 White Alone or In Combination With One or More Other Races",
-          "dcid": "Count_Person_15Years_Female_HispanicOrLatino_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
-        },
-        {
-          "name": "Population: Years 15, Female, Non White",
-          "dcid": "Count_Person_15Years_Female_NonWhite"
-        },
-        {
-          "name": "Population: Years 15, Female, Not Hispanic or Latino",
-          "dcid": "Count_Person_15Years_Female_NotHispanicOrLatino"
-        }
-      ]
-    },
-    {
       "dcid": "dc/g/Person_EducationalAttainment_Gender-Female",
       "name": "Person With Educational Attainment, Gender = Female",
       "statVars": [
@@ -2413,6 +2347,64 @@
         {
           "name": "Population: Masters Degree or Higher, Female (As Fraction of Count Person 25 or More Years Female)",
           "dcid": "Count_Person_25OrMoreYears_Female_MastersDegreeOrHigher_AsFractionOf_Count_Person_25OrMoreYears_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years15_Gender-Female_Race",
+      "name": "Person With Age = Years 15, Gender = Female, Race",
+      "statVars": [
+        {
+          "name": "Population: Years 15, Female, Asian or Pacific Islander",
+          "dcid": "Count_Person_15Years_Female_AsianOrPacificIslander"
+        },
+        {
+          "name": "Population: Years 15, Female, Hispanic or Latino \u0026 American Indian And Alaska Native Alone or In Combination With One or More Other Races",
+          "dcid": "Count_Person_15Years_Female_HispanicOrLatino_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRaces"
+        },
+        {
+          "name": "Population: Years 15, Female, Hispanic or Latino \u0026 American Indian or Alaska Native Alone",
+          "dcid": "Count_Person_15Years_Female_HispanicOrLatino_AmericanIndianAndAlaskaNativeAlone"
+        },
+        {
+          "name": "Population: Years 15, Female, Hispanic or Latino \u0026 Asian Alone",
+          "dcid": "Count_Person_15Years_Female_HispanicOrLatino_AsianAlone"
+        },
+        {
+          "name": "Population: Years 15, Female, Hispanic or Latino \u0026 Asian Alone or In Combination With One or More Other Races",
+          "dcid": "Count_Person_15Years_Female_HispanicOrLatino_AsianAloneOrInCombinationWithOneOrMoreOtherRaces"
+        },
+        {
+          "name": "Population: Years 15, Female, Hispanic or Latino \u0026 Asian or Pacific Islander",
+          "dcid": "Count_Person_15Years_Female_HispanicOrLatino_AsianOrPacificIslander"
+        },
+        {
+          "name": "Population: Years 15, Female, Hispanic or Latino \u0026 Black or African American Alone",
+          "dcid": "Count_Person_15Years_Female_HispanicOrLatino_BlackOrAfricanAmericanAlone"
+        },
+        {
+          "name": "Population: Years 15, Female, Hispanic or Latino \u0026 Black or African American Alone or In Combination With One or More Other Races",
+          "dcid": "Count_Person_15Years_Female_HispanicOrLatino_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces"
+        },
+        {
+          "name": "Population: Years 15, Female, Hispanic or Latino \u0026 Native Hawaiian And Other Pacific Islander Alone or In Combination With One or More Other Races",
+          "dcid": "Count_Person_15Years_Female_HispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAloneOrInCombinationWithOneOrMoreOtherRaces"
+        },
+        {
+          "name": "Population: Years 15, Female, Hispanic or Latino \u0026 Native Hawaiian or Other Pacific Islander Alone",
+          "dcid": "Count_Person_15Years_Female_HispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAlone"
+        },
+        {
+          "name": "Population: Years 15, Female, Hispanic or Latino \u0026 Two or More Races",
+          "dcid": "Count_Person_15Years_Female_HispanicOrLatino_TwoOrMoreRaces"
+        },
+        {
+          "name": "Population: Years 15, Female, Hispanic or Latino \u0026 White Alone",
+          "dcid": "Count_Person_15Years_Female_HispanicOrLatino_WhiteAlone"
+        },
+        {
+          "name": "Population: Years 15, Female, Hispanic or Latino \u0026 White Alone or In Combination With One or More Other Races",
+          "dcid": "Count_Person_15Years_Female_HispanicOrLatino_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
         }
       ]
     },
@@ -10487,16 +10479,6 @@
       ]
     },
     {
-      "dcid": "dc/g/Person_Age-Years15_Gender-Female_Race-NativeHawaiianOrOtherPacificIslanderAlone",
-      "name": "Person With Age = Years 15, Gender = Female, Race = Native Hawaiian or Other Pacific Islander Alone",
-      "statVars": [
-        {
-          "name": "Population: Years 15, Female, Native Hawaiian or Other Pacific Islander Alone",
-          "dcid": "Count_Person_15Years_Female_NativeHawaiianAndOtherPacificIslanderAlone"
-        }
-      ]
-    },
-    {
       "dcid": "dc/g/Person_EducationalAttainment-BachelorsDegreeOrHigher_Gender-Female_MaritalStatus-DivorcedInThePast12Months",
       "name": "Person With Educational Attainment = Bachelors Degree or Higher, Gender = Female, Marital Status = Divorced in The Past 12 Months",
       "statVars": [
@@ -10945,10 +10927,6 @@
       "name": "Person With Enrollment Level = Not Enrolled in College or Graduate School, Gender = Female"
     },
     {
-      "dcid": "dc/g/Person_EnrollmentLevel_Gender-Female",
-      "name": "Person With Enrollment Level, Gender = Female"
-    },
-    {
       "dcid": "dc/g/Person_EstablishmentOwnership-FederalGovernmentOwned_Gender-Female",
       "name": "Person With Establishment Ownership = Federal Government Owned, Gender = Female"
     },
@@ -10999,6 +10977,10 @@
     {
       "dcid": "dc/g/Person_DetailedWorkerClassification-Worker_Gender-Female",
       "name": "Person With Gender = Female, Detailed Worker Classification = Worker"
+    },
+    {
+      "dcid": "dc/g/Person_EnrollmentLevel_Gender-Female",
+      "name": "Person With Gender = Female, Enrollment Level"
     },
     {
       "dcid": "dc/g/Person_Gender-Female_HealthBehavior",
@@ -11871,6 +11853,10 @@
     {
       "dcid": "dc/g/HateCrimeIncidents_OffenderRace-BlackOrAfricanAmericanAlone_OffenderType-OffenderRaceKnown_TargetedGender-Female",
       "name": "Hate Crime Incidents With Offender Race = Black or African American Alone, Offender Type = Offender Race Known, Targeted Gender = Female"
+    },
+    {
+      "dcid": "dc/g/HateCrimeIncidents_OffenderRace-BlackOrAfricanAmericanAlone_OffenderType_TargetedGender-Female",
+      "name": "Hate Crime Incidents With Offender Race = Black or African American Alone, Offender Type, Targeted Gender = Female"
     }
   ],
   "matches": [

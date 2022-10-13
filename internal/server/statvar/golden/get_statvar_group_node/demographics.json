@@ -139,7 +139,7 @@
       "id": "dc/g/Person_Gender",
       "specializedEntity": "Gender",
       "displayName": "Person by Gender",
-      "descendentStatVarCount": 17766
+      "descendentStatVarCount": 17936
     },
     {
       "id": "dc/g/Person_HealthInsurance",
@@ -169,7 +169,7 @@
       "id": "dc/g/ImmigrationAndCitizenship",
       "specializedEntity": "Immigration and Citizenship",
       "displayName": "Immigration and Citizenship",
-      "descendentStatVarCount": 2798
+      "descendentStatVarCount": 2870
     },
     {
       "id": "dc/g/Person_Income",
@@ -241,7 +241,7 @@
       "id": "dc/g/Residence",
       "specializedEntity": "Residence",
       "displayName": "Residence",
-      "descendentStatVarCount": 3471
+      "descendentStatVarCount": 3534
     },
     {
       "id": "dc/g/Household_TransportationType",
@@ -250,7 +250,7 @@
       "descendentStatVarCount": 104
     }
   ],
-  "descendentStatVarCount": 30632,
+  "descendentStatVarCount": 30847,
   "parentStatVarGroups": [
     "dc/g/Root"
   ]
