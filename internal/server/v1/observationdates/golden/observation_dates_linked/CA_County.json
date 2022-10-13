@@ -850,99 +850,7 @@
       ]
     },
     {
-      "variable": "Median_Age_Person",
-      "observation_dates": [
-        {
-          "date": "2011",
-          "entity_count": [
-            {
-              "count": 58,
-              "facet": "3795540742"
-            }
-          ]
-        },
-        {
-          "date": "2012",
-          "entity_count": [
-            {
-              "count": 58,
-              "facet": "3795540742"
-            }
-          ]
-        },
-        {
-          "date": "2013",
-          "entity_count": [
-            {
-              "count": 58,
-              "facet": "3795540742"
-            }
-          ]
-        },
-        {
-          "date": "2014",
-          "entity_count": [
-            {
-              "count": 58,
-              "facet": "3795540742"
-            }
-          ]
-        },
-        {
-          "date": "2015",
-          "entity_count": [
-            {
-              "count": 58,
-              "facet": "3795540742"
-            }
-          ]
-        },
-        {
-          "date": "2016",
-          "entity_count": [
-            {
-              "count": 58,
-              "facet": "3795540742"
-            }
-          ]
-        },
-        {
-          "date": "2017",
-          "entity_count": [
-            {
-              "count": 58,
-              "facet": "3795540742"
-            }
-          ]
-        },
-        {
-          "date": "2018",
-          "entity_count": [
-            {
-              "count": 58,
-              "facet": "3795540742"
-            }
-          ]
-        },
-        {
-          "date": "2019",
-          "entity_count": [
-            {
-              "count": 58,
-              "facet": "3795540742"
-            }
-          ]
-        },
-        {
-          "date": "2020",
-          "entity_count": [
-            {
-              "count": 58,
-              "facet": "3795540742"
-            }
-          ]
-        }
-      ]
+      "variable": "dummy"
     }
   ],
   "facets": {
@@ -981,12 +889,6 @@
       "import_name": "HumanCuratedStats",
       "provenance_url": "https://google.com",
       "measurement_method": "HumanCuratedStats"
-    },
-    "3795540742": {
-      "import_name": "CensusACS5YearSurvey",
-      "provenance_url": "https://www.census.gov/",
-      "measurement_method": "CensusACS5yrSurvey",
-      "unit": "Year"
     }
   }
 }

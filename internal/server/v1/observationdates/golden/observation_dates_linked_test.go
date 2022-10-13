@@ -44,7 +44,7 @@ func TestBulkObservationDatesLinked(t *testing.T) {
 			{
 				"geoId/06",
 				"County",
-				[]string{"Count_Person", "Median_Age_Person"},
+				[]string{"Count_Person", "dummy"},
 				"CA_County.json",
 			},
 			{

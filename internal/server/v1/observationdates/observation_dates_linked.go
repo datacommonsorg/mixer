@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+// observationdates holds API implementation for observation dates.
+
 package observationdates
 
 import (
@@ -68,7 +70,8 @@ func BulkObservationDatesLinked(
 	if err != nil {
 		return nil, err
 	}
-	for sv, data := range cacheData {
+	for _, sv := range variables {
+		data := cacheData[sv]
 		if data == nil || len(data.SourceCohorts) == 0 {
 			if store.MemDb.HasStatVar(sv) {
 				data, facets := store.MemDb.ReadObservationDates(sv)
@@ -76,9 +79,14 @@ func BulkObservationDatesLinked(
 					result.DatesByVariable,
 					data,
 				)
-				for facetId, facet := range facets {
-					result.Facets[facetId] = facet
+				for facetID, facet := range facets {
+					result.Facets[facetID] = facet
 				}
+			} else {
+				result.DatesByVariable = append(result.DatesByVariable,
+					&pb.VariableObservationDates{
+						Variable: sv,
+					})
 			}
 			continue
 		}
@@ -86,17 +94,17 @@ func BulkObservationDatesLinked(
 		datesCount := map[string][]*pb.EntityCount{}
 		for _, cohort := range data.SourceCohorts {
 			facet := stat.GetMetadata(cohort)
-			facetId := util.GetMetadataHash(facet)
+			facetID := util.GetMetadataHash(facet)
 			for date := range cohort.Val {
 				if _, ok := datesCount[date]; !ok {
 					datesCount[date] = []*pb.EntityCount{}
 				}
 				datesCount[date] = append(datesCount[date], &pb.EntityCount{
 					Count: cohort.Val[date],
-					Facet: facetId,
+					Facet: facetID,
 				})
 			}
-			result.Facets[facetId] = facet
+			result.Facets[facetID] = facet
 		}
 		tmp := &pb.VariableObservationDates{
 			Variable:         sv,
