@@ -39,6 +39,7 @@ import "v1/property_values.proto";
 import "v1/variable.proto";
 import "v1/info.proto";
 import "v1/observations.proto";
+import "v1/observation_dates.proto";
 import "v1/page.proto";
 import "v1/triples.proto";
 
@@ -544,6 +545,29 @@ service Mixer {
     };
   }
 
+  rpc DerivedObservationsSeries(datacommons.v1.DerivedObservationsSeriesRequest)
+      returns (datacommons.v1.DerivedObservationsSeriesResponse) {
+    option (google.api.http) = {
+      get : "/v1/observations/series/derived"
+      additional_bindings : {
+        post : "/v1/observations/series/derived"
+        body : "*"
+      }
+    };
+  }
+
+  rpc BulkObservationDatesLinked(
+      datacommons.v1.BulkObservationDatesLinkedRequest)
+      returns (datacommons.v1.BulkObservationDatesLinkedResponse) {
+    option (google.api.http) = {
+      get : "/v1/bulk/observation-dates/linked"
+      additional_bindings : {
+        post : "/v1/bulk/observation-dates/linked"
+        body : "*"
+      }
+    };
+  }
+
   rpc BioPage(datacommons.v1.BioPageRequest) returns (GraphNodes) {
     option (google.api.http) = {
       get : "/v1/internal/page/bio/{node=**}"
@@ -565,17 +589,6 @@ service Mixer {
       returns (datacommons.v1.VariableAncestorsResponse) {
     option (google.api.http) = {
       get : "/v1/variable/ancestors/{node=**}"
-    };
-  }
-
-  rpc DerivedObservationsSeries(datacommons.v1.DerivedObservationsSeriesRequest)
-      returns (datacommons.v1.DerivedObservationsSeriesResponse) {
-    option (google.api.http) = {
-      get : "/v1/observations/series/derived"
-      additional_bindings : {
-        post : "/v1/observations/series/derived"
-        body : "*"
-      }
     };
   }
 }

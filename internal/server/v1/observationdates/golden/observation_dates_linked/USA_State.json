@@ -1,0 +1,3189 @@
+{
+  "dates_by_variable": [
+    {
+      "variable": "Count_Person",
+      "observation_dates": [
+        {
+          "date": "1790",
+          "entity_count": [
+            {
+              "count": 1,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "1800",
+          "entity_count": [
+            {
+              "count": 1,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "1810",
+          "entity_count": [
+            {
+              "count": 1,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "1820",
+          "entity_count": [
+            {
+              "count": 3,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "1830",
+          "entity_count": [
+            {
+              "count": 4,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "1840",
+          "entity_count": [
+            {
+              "count": 3,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "1850",
+          "entity_count": [
+            {
+              "count": 3,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "1860",
+          "entity_count": [
+            {
+              "count": 4,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "1870",
+          "entity_count": [
+            {
+              "count": 5,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "1880",
+          "entity_count": [
+            {
+              "count": 6,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "1890",
+          "entity_count": [
+            {
+              "count": 5,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "1900",
+          "entity_count": [
+            {
+              "count": 49,
+              "facet": "2176550201"
+            },
+            {
+              "count": 48,
+              "facet": "2517965213"
+            },
+            {
+              "count": 5,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "1901",
+          "entity_count": [
+            {
+              "count": 49,
+              "facet": "2176550201"
+            },
+            {
+              "count": 48,
+              "facet": "2517965213"
+            },
+            {
+              "count": 3,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "1902",
+          "entity_count": [
+            {
+              "count": 49,
+              "facet": "2176550201"
+            },
+            {
+              "count": 48,
+              "facet": "2517965213"
+            },
+            {
+              "count": 3,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "1903",
+          "entity_count": [
+            {
+              "count": 49,
+              "facet": "2176550201"
+            },
+            {
+              "count": 48,
+              "facet": "2517965213"
+            },
+            {
+              "count": 2,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "1904",
+          "entity_count": [
+            {
+              "count": 49,
+              "facet": "2176550201"
+            },
+            {
+              "count": 48,
+              "facet": "2517965213"
+            },
+            {
+              "count": 1,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "1905",
+          "entity_count": [
+            {
+              "count": 49,
+              "facet": "2176550201"
+            },
+            {
+              "count": 48,
+              "facet": "2517965213"
+            },
+            {
+              "count": 1,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "1906",
+          "entity_count": [
+            {
+              "count": 49,
+              "facet": "2176550201"
+            },
+            {
+              "count": 48,
+              "facet": "2517965213"
+            },
+            {
+              "count": 1,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "1907",
+          "entity_count": [
+            {
+              "count": 49,
+              "facet": "2176550201"
+            },
+            {
+              "count": 48,
+              "facet": "2517965213"
+            },
+            {
+              "count": 2,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "1908",
+          "entity_count": [
+            {
+              "count": 49,
+              "facet": "2176550201"
+            },
+            {
+              "count": 48,
+              "facet": "2517965213"
+            },
+            {
+              "count": 2,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "1909",
+          "entity_count": [
+            {
+              "count": 49,
+              "facet": "2176550201"
+            },
+            {
+              "count": 48,
+              "facet": "2517965213"
+            },
+            {
+              "count": 1,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "1910",
+          "entity_count": [
+            {
+              "count": 49,
+              "facet": "2176550201"
+            },
+            {
+              "count": 48,
+              "facet": "2517965213"
+            },
+            {
+              "count": 48,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "1911",
+          "entity_count": [
+            {
+              "count": 49,
+              "facet": "2176550201"
+            },
+            {
+              "count": 48,
+              "facet": "2517965213"
+            },
+            {
+              "count": 1,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "1912",
+          "entity_count": [
+            {
+              "count": 49,
+              "facet": "2176550201"
+            },
+            {
+              "count": 48,
+              "facet": "2517965213"
+            },
+            {
+              "count": 1,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "1913",
+          "entity_count": [
+            {
+              "count": 49,
+              "facet": "2176550201"
+            },
+            {
+              "count": 48,
+              "facet": "2517965213"
+            },
+            {
+              "count": 2,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "1914",
+          "entity_count": [
+            {
+              "count": 49,
+              "facet": "2176550201"
+            },
+            {
+              "count": 48,
+              "facet": "2517965213"
+            },
+            {
+              "count": 1,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "1915",
+          "entity_count": [
+            {
+              "count": 49,
+              "facet": "2176550201"
+            },
+            {
+              "count": 48,
+              "facet": "2517965213"
+            },
+            {
+              "count": 1,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "1916",
+          "entity_count": [
+            {
+              "count": 49,
+              "facet": "2176550201"
+            },
+            {
+              "count": 48,
+              "facet": "2517965213"
+            },
+            {
+              "count": 1,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "1917",
+          "entity_count": [
+            {
+              "count": 49,
+              "facet": "2176550201"
+            },
+            {
+              "count": 48,
+              "facet": "2517965213"
+            },
+            {
+              "count": 1,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "1918",
+          "entity_count": [
+            {
+              "count": 49,
+              "facet": "2176550201"
+            },
+            {
+              "count": 48,
+              "facet": "2517965213"
+            },
+            {
+              "count": 1,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "1919",
+          "entity_count": [
+            {
+              "count": 49,
+              "facet": "2176550201"
+            },
+            {
+              "count": 48,
+              "facet": "2517965213"
+            },
+            {
+              "count": 2,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "1920",
+          "entity_count": [
+            {
+              "count": 49,
+              "facet": "2176550201"
+            },
+            {
+              "count": 49,
+              "facet": "2458695583"
+            },
+            {
+              "count": 48,
+              "facet": "2517965213"
+            }
+          ]
+        },
+        {
+          "date": "1921",
+          "entity_count": [
+            {
+              "count": 49,
+              "facet": "2176550201"
+            },
+            {
+              "count": 48,
+              "facet": "2517965213"
+            }
+          ]
+        },
+        {
+          "date": "1922",
+          "entity_count": [
+            {
+              "count": 49,
+              "facet": "2176550201"
+            },
+            {
+              "count": 48,
+              "facet": "2517965213"
+            }
+          ]
+        },
+        {
+          "date": "1923",
+          "entity_count": [
+            {
+              "count": 49,
+              "facet": "2176550201"
+            },
+            {
+              "count": 48,
+              "facet": "2517965213"
+            }
+          ]
+        },
+        {
+          "date": "1924",
+          "entity_count": [
+            {
+              "count": 49,
+              "facet": "2176550201"
+            },
+            {
+              "count": 48,
+              "facet": "2517965213"
+            }
+          ]
+        },
+        {
+          "date": "1925",
+          "entity_count": [
+            {
+              "count": 49,
+              "facet": "2176550201"
+            },
+            {
+              "count": 48,
+              "facet": "2517965213"
+            }
+          ]
+        },
+        {
+          "date": "1926",
+          "entity_count": [
+            {
+              "count": 49,
+              "facet": "2176550201"
+            },
+            {
+              "count": 48,
+              "facet": "2517965213"
+            }
+          ]
+        },
+        {
+          "date": "1927",
+          "entity_count": [
+            {
+              "count": 49,
+              "facet": "2176550201"
+            },
+            {
+              "count": 48,
+              "facet": "2517965213"
+            }
+          ]
+        },
+        {
+          "date": "1928",
+          "entity_count": [
+            {
+              "count": 49,
+              "facet": "2176550201"
+            },
+            {
+              "count": 48,
+              "facet": "2517965213"
+            }
+          ]
+        },
+        {
+          "date": "1929",
+          "entity_count": [
+            {
+              "count": 49,
+              "facet": "2176550201"
+            },
+            {
+              "count": 48,
+              "facet": "2517965213"
+            }
+          ]
+        },
+        {
+          "date": "1930",
+          "entity_count": [
+            {
+              "count": 49,
+              "facet": "2176550201"
+            },
+            {
+              "count": 49,
+              "facet": "2458695583"
+            },
+            {
+              "count": 48,
+              "facet": "2517965213"
+            }
+          ]
+        },
+        {
+          "date": "1931",
+          "entity_count": [
+            {
+              "count": 49,
+              "facet": "2176550201"
+            },
+            {
+              "count": 48,
+              "facet": "2517965213"
+            }
+          ]
+        },
+        {
+          "date": "1932",
+          "entity_count": [
+            {
+              "count": 49,
+              "facet": "2176550201"
+            },
+            {
+              "count": 48,
+              "facet": "2517965213"
+            }
+          ]
+        },
+        {
+          "date": "1933",
+          "entity_count": [
+            {
+              "count": 49,
+              "facet": "2176550201"
+            },
+            {
+              "count": 48,
+              "facet": "2517965213"
+            }
+          ]
+        },
+        {
+          "date": "1934",
+          "entity_count": [
+            {
+              "count": 49,
+              "facet": "2176550201"
+            },
+            {
+              "count": 48,
+              "facet": "2517965213"
+            }
+          ]
+        },
+        {
+          "date": "1935",
+          "entity_count": [
+            {
+              "count": 49,
+              "facet": "2176550201"
+            },
+            {
+              "count": 48,
+              "facet": "2517965213"
+            }
+          ]
+        },
+        {
+          "date": "1936",
+          "entity_count": [
+            {
+              "count": 49,
+              "facet": "2176550201"
+            },
+            {
+              "count": 48,
+              "facet": "2517965213"
+            }
+          ]
+        },
+        {
+          "date": "1937",
+          "entity_count": [
+            {
+              "count": 49,
+              "facet": "2176550201"
+            },
+            {
+              "count": 48,
+              "facet": "2517965213"
+            }
+          ]
+        },
+        {
+          "date": "1938",
+          "entity_count": [
+            {
+              "count": 49,
+              "facet": "2176550201"
+            },
+            {
+              "count": 48,
+              "facet": "2517965213"
+            }
+          ]
+        },
+        {
+          "date": "1939",
+          "entity_count": [
+            {
+              "count": 49,
+              "facet": "2176550201"
+            },
+            {
+              "count": 48,
+              "facet": "2517965213"
+            }
+          ]
+        },
+        {
+          "date": "1940",
+          "entity_count": [
+            {
+              "count": 49,
+              "facet": "2176550201"
+            },
+            {
+              "count": 49,
+              "facet": "2458695583"
+            },
+            {
+              "count": 48,
+              "facet": "2517965213"
+            }
+          ]
+        },
+        {
+          "date": "1941",
+          "entity_count": [
+            {
+              "count": 49,
+              "facet": "2176550201"
+            },
+            {
+              "count": 48,
+              "facet": "2517965213"
+            }
+          ]
+        },
+        {
+          "date": "1942",
+          "entity_count": [
+            {
+              "count": 49,
+              "facet": "2176550201"
+            },
+            {
+              "count": 48,
+              "facet": "2517965213"
+            }
+          ]
+        },
+        {
+          "date": "1943",
+          "entity_count": [
+            {
+              "count": 49,
+              "facet": "2176550201"
+            },
+            {
+              "count": 48,
+              "facet": "2517965213"
+            }
+          ]
+        },
+        {
+          "date": "1944",
+          "entity_count": [
+            {
+              "count": 49,
+              "facet": "2176550201"
+            },
+            {
+              "count": 48,
+              "facet": "2517965213"
+            }
+          ]
+        },
+        {
+          "date": "1945",
+          "entity_count": [
+            {
+              "count": 49,
+              "facet": "2176550201"
+            },
+            {
+              "count": 48,
+              "facet": "2517965213"
+            }
+          ]
+        },
+        {
+          "date": "1946",
+          "entity_count": [
+            {
+              "count": 49,
+              "facet": "2176550201"
+            },
+            {
+              "count": 45,
+              "facet": "2517965213"
+            }
+          ]
+        },
+        {
+          "date": "1947",
+          "entity_count": [
+            {
+              "count": 49,
+              "facet": "2176550201"
+            },
+            {
+              "count": 45,
+              "facet": "2517965213"
+            }
+          ]
+        },
+        {
+          "date": "1948",
+          "entity_count": [
+            {
+              "count": 49,
+              "facet": "2176550201"
+            },
+            {
+              "count": 45,
+              "facet": "2517965213"
+            }
+          ]
+        },
+        {
+          "date": "1949",
+          "entity_count": [
+            {
+              "count": 49,
+              "facet": "2176550201"
+            },
+            {
+              "count": 45,
+              "facet": "2517965213"
+            }
+          ]
+        },
+        {
+          "date": "1950",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "2176550201"
+            },
+            {
+              "count": 50,
+              "facet": "2517965213"
+            },
+            {
+              "count": 49,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "1951",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "2176550201"
+            },
+            {
+              "count": 50,
+              "facet": "2517965213"
+            }
+          ]
+        },
+        {
+          "date": "1952",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "2176550201"
+            },
+            {
+              "count": 50,
+              "facet": "2517965213"
+            }
+          ]
+        },
+        {
+          "date": "1953",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "2176550201"
+            },
+            {
+              "count": 50,
+              "facet": "2517965213"
+            }
+          ]
+        },
+        {
+          "date": "1954",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "2176550201"
+            },
+            {
+              "count": 50,
+              "facet": "2517965213"
+            }
+          ]
+        },
+        {
+          "date": "1955",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "2176550201"
+            },
+            {
+              "count": 50,
+              "facet": "2517965213"
+            }
+          ]
+        },
+        {
+          "date": "1956",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "2176550201"
+            },
+            {
+              "count": 50,
+              "facet": "2517965213"
+            }
+          ]
+        },
+        {
+          "date": "1957",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "2176550201"
+            },
+            {
+              "count": 50,
+              "facet": "2517965213"
+            }
+          ]
+        },
+        {
+          "date": "1958",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "2176550201"
+            },
+            {
+              "count": 50,
+              "facet": "2517965213"
+            }
+          ]
+        },
+        {
+          "date": "1959",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "2176550201"
+            },
+            {
+              "count": 50,
+              "facet": "2517965213"
+            }
+          ]
+        },
+        {
+          "date": "1960",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "2176550201"
+            },
+            {
+              "count": 51,
+              "facet": "2458695583"
+            },
+            {
+              "count": 50,
+              "facet": "2517965213"
+            }
+          ]
+        },
+        {
+          "date": "1961",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "2176550201"
+            },
+            {
+              "count": 50,
+              "facet": "2517965213"
+            },
+            {
+              "count": 1,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "1962",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "2176550201"
+            },
+            {
+              "count": 50,
+              "facet": "2517965213"
+            },
+            {
+              "count": 1,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "1963",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "2176550201"
+            },
+            {
+              "count": 50,
+              "facet": "2517965213"
+            },
+            {
+              "count": 1,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "1964",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "2176550201"
+            },
+            {
+              "count": 50,
+              "facet": "2517965213"
+            },
+            {
+              "count": 1,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "1965",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "2176550201"
+            },
+            {
+              "count": 50,
+              "facet": "2517965213"
+            },
+            {
+              "count": 1,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "1966",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "2176550201"
+            },
+            {
+              "count": 50,
+              "facet": "2517965213"
+            },
+            {
+              "count": 1,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "1967",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "2176550201"
+            },
+            {
+              "count": 50,
+              "facet": "2517965213"
+            },
+            {
+              "count": 1,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "1968",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "2176550201"
+            },
+            {
+              "count": 50,
+              "facet": "2517965213"
+            },
+            {
+              "count": 1,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "1969",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "2176550201"
+            },
+            {
+              "count": 50,
+              "facet": "2517965213"
+            },
+            {
+              "count": 1,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "1970",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "2176550201"
+            },
+            {
+              "count": 51,
+              "facet": "2458695583"
+            },
+            {
+              "count": 50,
+              "facet": "2517965213"
+            }
+          ]
+        },
+        {
+          "date": "1971",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "2176550201"
+            },
+            {
+              "count": 50,
+              "facet": "2517965213"
+            },
+            {
+              "count": 1,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "1972",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "2176550201"
+            },
+            {
+              "count": 50,
+              "facet": "2517965213"
+            },
+            {
+              "count": 1,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "1973",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "2176550201"
+            },
+            {
+              "count": 50,
+              "facet": "2517965213"
+            },
+            {
+              "count": 1,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "1974",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "2176550201"
+            },
+            {
+              "count": 50,
+              "facet": "2517965213"
+            },
+            {
+              "count": 1,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "1975",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "2176550201"
+            },
+            {
+              "count": 50,
+              "facet": "2517965213"
+            },
+            {
+              "count": 1,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "1976",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "2176550201"
+            },
+            {
+              "count": 50,
+              "facet": "2517965213"
+            },
+            {
+              "count": 1,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "1977",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "2176550201"
+            },
+            {
+              "count": 50,
+              "facet": "2517965213"
+            },
+            {
+              "count": 1,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "1978",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "2176550201"
+            },
+            {
+              "count": 50,
+              "facet": "2517965213"
+            },
+            {
+              "count": 1,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "1979",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "2176550201"
+            },
+            {
+              "count": 50,
+              "facet": "2517965213"
+            },
+            {
+              "count": 1,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "1980",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "2176550201"
+            },
+            {
+              "count": 51,
+              "facet": "2458695583"
+            },
+            {
+              "count": 50,
+              "facet": "2517965213"
+            }
+          ]
+        },
+        {
+          "date": "1981",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "2176550201"
+            },
+            {
+              "count": 50,
+              "facet": "2517965213"
+            },
+            {
+              "count": 1,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "1982",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "2176550201"
+            },
+            {
+              "count": 50,
+              "facet": "2517965213"
+            },
+            {
+              "count": 1,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "1983",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "2176550201"
+            },
+            {
+              "count": 50,
+              "facet": "2517965213"
+            },
+            {
+              "count": 1,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "1984",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "2176550201"
+            },
+            {
+              "count": 50,
+              "facet": "2517965213"
+            },
+            {
+              "count": 1,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "1985",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "2176550201"
+            },
+            {
+              "count": 50,
+              "facet": "2517965213"
+            },
+            {
+              "count": 1,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "1986",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "2176550201"
+            },
+            {
+              "count": 50,
+              "facet": "2517965213"
+            },
+            {
+              "count": 1,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "1987",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "2176550201"
+            },
+            {
+              "count": 50,
+              "facet": "2517965213"
+            },
+            {
+              "count": 1,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "1988",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "2176550201"
+            },
+            {
+              "count": 50,
+              "facet": "2517965213"
+            },
+            {
+              "count": 1,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "1989",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "2176550201"
+            },
+            {
+              "count": 50,
+              "facet": "2517965213"
+            },
+            {
+              "count": 1,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "1990",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "2176550201"
+            },
+            {
+              "count": 51,
+              "facet": "2458695583"
+            },
+            {
+              "count": 50,
+              "facet": "2517965213"
+            }
+          ]
+        },
+        {
+          "date": "1991",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "2176550201"
+            },
+            {
+              "count": 50,
+              "facet": "2517965213"
+            },
+            {
+              "count": 1,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "1992",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "2176550201"
+            },
+            {
+              "count": 50,
+              "facet": "2517965213"
+            },
+            {
+              "count": 1,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "1993",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "2176550201"
+            },
+            {
+              "count": 50,
+              "facet": "2517965213"
+            },
+            {
+              "count": 1,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "1994",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "2176550201"
+            },
+            {
+              "count": 50,
+              "facet": "2517965213"
+            },
+            {
+              "count": 1,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "1995",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "2176550201"
+            },
+            {
+              "count": 51,
+              "facet": "1151455814"
+            },
+            {
+              "count": 50,
+              "facet": "2517965213"
+            },
+            {
+              "count": 1,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "1996",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "2176550201"
+            },
+            {
+              "count": 51,
+              "facet": "1151455814"
+            },
+            {
+              "count": 50,
+              "facet": "2517965213"
+            },
+            {
+              "count": 1,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "1997",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "2176550201"
+            },
+            {
+              "count": 51,
+              "facet": "1151455814"
+            },
+            {
+              "count": 50,
+              "facet": "2517965213"
+            },
+            {
+              "count": 1,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "1998",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "2176550201"
+            },
+            {
+              "count": 51,
+              "facet": "1151455814"
+            },
+            {
+              "count": 50,
+              "facet": "2517965213"
+            },
+            {
+              "count": 1,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "1999",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "2176550201"
+            },
+            {
+              "count": 51,
+              "facet": "1151455814"
+            },
+            {
+              "count": 50,
+              "facet": "2517965213"
+            },
+            {
+              "count": 1,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "2000",
+          "entity_count": [
+            {
+              "count": 52,
+              "facet": "2176550201"
+            },
+            {
+              "count": 52,
+              "facet": "1541763368"
+            },
+            {
+              "count": 51,
+              "facet": "1151455814"
+            },
+            {
+              "count": 50,
+              "facet": "2517965213"
+            },
+            {
+              "count": 50,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "2000-04-01",
+          "entity_count": [
+            {
+              "count": 1,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "2001",
+          "entity_count": [
+            {
+              "count": 52,
+              "facet": "2176550201"
+            },
+            {
+              "count": 51,
+              "facet": "1151455814"
+            },
+            {
+              "count": 50,
+              "facet": "2517965213"
+            },
+            {
+              "count": 1,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "2002",
+          "entity_count": [
+            {
+              "count": 52,
+              "facet": "2176550201"
+            },
+            {
+              "count": 51,
+              "facet": "1151455814"
+            },
+            {
+              "count": 50,
+              "facet": "2517965213"
+            },
+            {
+              "count": 1,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "2003",
+          "entity_count": [
+            {
+              "count": 52,
+              "facet": "2176550201"
+            },
+            {
+              "count": 51,
+              "facet": "1151455814"
+            },
+            {
+              "count": 50,
+              "facet": "2517965213"
+            },
+            {
+              "count": 1,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "2004",
+          "entity_count": [
+            {
+              "count": 52,
+              "facet": "2176550201"
+            },
+            {
+              "count": 51,
+              "facet": "1151455814"
+            },
+            {
+              "count": 50,
+              "facet": "2517965213"
+            },
+            {
+              "count": 1,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "2005",
+          "entity_count": [
+            {
+              "count": 52,
+              "facet": "2176550201"
+            },
+            {
+              "count": 51,
+              "facet": "1151455814"
+            },
+            {
+              "count": 50,
+              "facet": "2517965213"
+            },
+            {
+              "count": 1,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "2006",
+          "entity_count": [
+            {
+              "count": 52,
+              "facet": "2176550201"
+            },
+            {
+              "count": 51,
+              "facet": "1151455814"
+            },
+            {
+              "count": 50,
+              "facet": "2517965213"
+            },
+            {
+              "count": 1,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "2007",
+          "entity_count": [
+            {
+              "count": 52,
+              "facet": "2176550201"
+            },
+            {
+              "count": 51,
+              "facet": "1151455814"
+            },
+            {
+              "count": 50,
+              "facet": "2517965213"
+            },
+            {
+              "count": 1,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "2008",
+          "entity_count": [
+            {
+              "count": 52,
+              "facet": "2176550201"
+            },
+            {
+              "count": 51,
+              "facet": "1151455814"
+            },
+            {
+              "count": 50,
+              "facet": "2517965213"
+            },
+            {
+              "count": 1,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "2009",
+          "entity_count": [
+            {
+              "count": 52,
+              "facet": "2176550201"
+            },
+            {
+              "count": 51,
+              "facet": "1151455814"
+            },
+            {
+              "count": 50,
+              "facet": "2517965213"
+            },
+            {
+              "count": 1,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "2010",
+          "entity_count": [
+            {
+              "count": 52,
+              "facet": "1541763368"
+            },
+            {
+              "count": 52,
+              "facet": "1226172227"
+            },
+            {
+              "count": 51,
+              "facet": "2176550201"
+            },
+            {
+              "count": 51,
+              "facet": "1151455814"
+            },
+            {
+              "count": 51,
+              "facet": "10983471"
+            },
+            {
+              "count": 50,
+              "facet": "2517965213"
+            },
+            {
+              "count": 2,
+              "facet": "377779557"
+            },
+            {
+              "count": 1,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "2010-04-01",
+          "entity_count": [
+            {
+              "count": 49,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "2011",
+          "entity_count": [
+            {
+              "count": 52,
+              "facet": "1145703171"
+            },
+            {
+              "count": 52,
+              "facet": "1226172227"
+            },
+            {
+              "count": 51,
+              "facet": "2176550201"
+            },
+            {
+              "count": 51,
+              "facet": "1151455814"
+            },
+            {
+              "count": 51,
+              "facet": "10983471"
+            },
+            {
+              "count": 50,
+              "facet": "2517965213"
+            },
+            {
+              "count": 41,
+              "facet": "3114843463"
+            },
+            {
+              "count": 2,
+              "facet": "377779557"
+            },
+            {
+              "count": 2,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "2012",
+          "entity_count": [
+            {
+              "count": 52,
+              "facet": "1145703171"
+            },
+            {
+              "count": 52,
+              "facet": "1226172227"
+            },
+            {
+              "count": 51,
+              "facet": "2176550201"
+            },
+            {
+              "count": 51,
+              "facet": "1151455814"
+            },
+            {
+              "count": 51,
+              "facet": "10983471"
+            },
+            {
+              "count": 50,
+              "facet": "2517965213"
+            },
+            {
+              "count": 3,
+              "facet": "2458695583"
+            },
+            {
+              "count": 2,
+              "facet": "377779557"
+            },
+            {
+              "count": 1,
+              "facet": "3114843463"
+            }
+          ]
+        },
+        {
+          "date": "2013",
+          "entity_count": [
+            {
+              "count": 52,
+              "facet": "1145703171"
+            },
+            {
+              "count": 52,
+              "facet": "1226172227"
+            },
+            {
+              "count": 51,
+              "facet": "2176550201"
+            },
+            {
+              "count": 51,
+              "facet": "1151455814"
+            },
+            {
+              "count": 51,
+              "facet": "10983471"
+            },
+            {
+              "count": 50,
+              "facet": "2517965213"
+            },
+            {
+              "count": 4,
+              "facet": "2458695583"
+            },
+            {
+              "count": 2,
+              "facet": "377779557"
+            }
+          ]
+        },
+        {
+          "date": "2013-07-01",
+          "entity_count": [
+            {
+              "count": 1,
+              "facet": "3114843463"
+            }
+          ]
+        },
+        {
+          "date": "2014",
+          "entity_count": [
+            {
+              "count": 52,
+              "facet": "1145703171"
+            },
+            {
+              "count": 52,
+              "facet": "1226172227"
+            },
+            {
+              "count": 51,
+              "facet": "2176550201"
+            },
+            {
+              "count": 51,
+              "facet": "1151455814"
+            },
+            {
+              "count": 51,
+              "facet": "10983471"
+            },
+            {
+              "count": 50,
+              "facet": "2517965213"
+            },
+            {
+              "count": 2,
+              "facet": "377779557"
+            },
+            {
+              "count": 1,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "2015",
+          "entity_count": [
+            {
+              "count": 52,
+              "facet": "1145703171"
+            },
+            {
+              "count": 52,
+              "facet": "1226172227"
+            },
+            {
+              "count": 52,
+              "facet": "2458695583"
+            },
+            {
+              "count": 51,
+              "facet": "2176550201"
+            },
+            {
+              "count": 51,
+              "facet": "1151455814"
+            },
+            {
+              "count": 51,
+              "facet": "10983471"
+            },
+            {
+              "count": 50,
+              "facet": "2517965213"
+            },
+            {
+              "count": 2,
+              "facet": "377779557"
+            },
+            {
+              "count": 1,
+              "facet": "3114843463"
+            }
+          ]
+        },
+        {
+          "date": "2016",
+          "entity_count": [
+            {
+              "count": 52,
+              "facet": "1145703171"
+            },
+            {
+              "count": 52,
+              "facet": "1226172227"
+            },
+            {
+              "count": 51,
+              "facet": "2176550201"
+            },
+            {
+              "count": 51,
+              "facet": "1151455814"
+            },
+            {
+              "count": 51,
+              "facet": "10983471"
+            },
+            {
+              "count": 50,
+              "facet": "2517965213"
+            },
+            {
+              "count": 3,
+              "facet": "2458695583"
+            },
+            {
+              "count": 2,
+              "facet": "377779557"
+            }
+          ]
+        },
+        {
+          "date": "2017",
+          "entity_count": [
+            {
+              "count": 52,
+              "facet": "1145703171"
+            },
+            {
+              "count": 52,
+              "facet": "1226172227"
+            },
+            {
+              "count": 51,
+              "facet": "2176550201"
+            },
+            {
+              "count": 51,
+              "facet": "1151455814"
+            },
+            {
+              "count": 51,
+              "facet": "10983471"
+            },
+            {
+              "count": 51,
+              "facet": "196790193"
+            },
+            {
+              "count": 50,
+              "facet": "2517965213"
+            },
+            {
+              "count": 2,
+              "facet": "377779557"
+            },
+            {
+              "count": 2,
+              "facet": "3144703963"
+            }
+          ]
+        },
+        {
+          "date": "2018",
+          "entity_count": [
+            {
+              "count": 52,
+              "facet": "1145703171"
+            },
+            {
+              "count": 52,
+              "facet": "1226172227"
+            },
+            {
+              "count": 51,
+              "facet": "2176550201"
+            },
+            {
+              "count": 51,
+              "facet": "1151455814"
+            },
+            {
+              "count": 51,
+              "facet": "10983471"
+            },
+            {
+              "count": 51,
+              "facet": "196790193"
+            },
+            {
+              "count": 50,
+              "facet": "2517965213"
+            },
+            {
+              "count": 2,
+              "facet": "377779557"
+            },
+            {
+              "count": 2,
+              "facet": "3144703963"
+            },
+            {
+              "count": 1,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "2018-04",
+          "entity_count": [
+            {
+              "count": 1,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "2019",
+          "entity_count": [
+            {
+              "count": 52,
+              "facet": "1145703171"
+            },
+            {
+              "count": 52,
+              "facet": "1226172227"
+            },
+            {
+              "count": 51,
+              "facet": "2176550201"
+            },
+            {
+              "count": 51,
+              "facet": "1151455814"
+            },
+            {
+              "count": 51,
+              "facet": "10983471"
+            },
+            {
+              "count": 51,
+              "facet": "196790193"
+            },
+            {
+              "count": 50,
+              "facet": "2517965213"
+            },
+            {
+              "count": 6,
+              "facet": "3114843463"
+            },
+            {
+              "count": 2,
+              "facet": "377779557"
+            },
+            {
+              "count": 2,
+              "facet": "3144703963"
+            }
+          ]
+        },
+        {
+          "date": "2020",
+          "entity_count": [
+            {
+              "count": 52,
+              "facet": "1145703171"
+            },
+            {
+              "count": 52,
+              "facet": "1541763368"
+            },
+            {
+              "count": 51,
+              "facet": "2176550201"
+            },
+            {
+              "count": 1,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "2021",
+          "entity_count": [
+            {
+              "count": 52,
+              "facet": "2176550201"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "variable": "Count_Person_Female",
+      "observation_dates": [
+        {
+          "date": "1970",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "1822159333"
+            }
+          ]
+        },
+        {
+          "date": "1971",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "1822159333"
+            }
+          ]
+        },
+        {
+          "date": "1972",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "1822159333"
+            }
+          ]
+        },
+        {
+          "date": "1973",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "1822159333"
+            }
+          ]
+        },
+        {
+          "date": "1974",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "1822159333"
+            }
+          ]
+        },
+        {
+          "date": "1975",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "1822159333"
+            }
+          ]
+        },
+        {
+          "date": "1976",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "1822159333"
+            }
+          ]
+        },
+        {
+          "date": "1977",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "1822159333"
+            }
+          ]
+        },
+        {
+          "date": "1978",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "1822159333"
+            }
+          ]
+        },
+        {
+          "date": "1979",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "1822159333"
+            }
+          ]
+        },
+        {
+          "date": "1980",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "1822159333"
+            }
+          ]
+        },
+        {
+          "date": "1981",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "1822159333"
+            }
+          ]
+        },
+        {
+          "date": "1982",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "1822159333"
+            }
+          ]
+        },
+        {
+          "date": "1983",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "1822159333"
+            }
+          ]
+        },
+        {
+          "date": "1984",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "1822159333"
+            }
+          ]
+        },
+        {
+          "date": "1985",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "1822159333"
+            }
+          ]
+        },
+        {
+          "date": "1986",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "1822159333"
+            }
+          ]
+        },
+        {
+          "date": "1987",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "1822159333"
+            }
+          ]
+        },
+        {
+          "date": "1988",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "1822159333"
+            }
+          ]
+        },
+        {
+          "date": "1989",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "1822159333"
+            }
+          ]
+        },
+        {
+          "date": "1990",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "1822159333"
+            }
+          ]
+        },
+        {
+          "date": "1991",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "1822159333"
+            }
+          ]
+        },
+        {
+          "date": "1992",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "1822159333"
+            }
+          ]
+        },
+        {
+          "date": "1993",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "1822159333"
+            }
+          ]
+        },
+        {
+          "date": "1994",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "1822159333"
+            }
+          ]
+        },
+        {
+          "date": "1995",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "1822159333"
+            },
+            {
+              "count": 51,
+              "facet": "1151455814"
+            }
+          ]
+        },
+        {
+          "date": "1996",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "1822159333"
+            },
+            {
+              "count": 51,
+              "facet": "1151455814"
+            }
+          ]
+        },
+        {
+          "date": "1997",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "1822159333"
+            },
+            {
+              "count": 51,
+              "facet": "1151455814"
+            }
+          ]
+        },
+        {
+          "date": "1998",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "1822159333"
+            },
+            {
+              "count": 51,
+              "facet": "1151455814"
+            }
+          ]
+        },
+        {
+          "date": "1999",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "1822159333"
+            },
+            {
+              "count": 51,
+              "facet": "1151455814"
+            }
+          ]
+        },
+        {
+          "date": "2000",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "1822159333"
+            },
+            {
+              "count": 51,
+              "facet": "1151455814"
+            }
+          ]
+        },
+        {
+          "date": "2001",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "1822159333"
+            },
+            {
+              "count": 51,
+              "facet": "1151455814"
+            }
+          ]
+        },
+        {
+          "date": "2002",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "1822159333"
+            },
+            {
+              "count": 51,
+              "facet": "1151455814"
+            }
+          ]
+        },
+        {
+          "date": "2003",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "1822159333"
+            },
+            {
+              "count": 51,
+              "facet": "1151455814"
+            }
+          ]
+        },
+        {
+          "date": "2004",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "1822159333"
+            },
+            {
+              "count": 51,
+              "facet": "1151455814"
+            }
+          ]
+        },
+        {
+          "date": "2005",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "1822159333"
+            },
+            {
+              "count": 51,
+              "facet": "1151455814"
+            }
+          ]
+        },
+        {
+          "date": "2006",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "1822159333"
+            },
+            {
+              "count": 51,
+              "facet": "1151455814"
+            }
+          ]
+        },
+        {
+          "date": "2007",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "1822159333"
+            },
+            {
+              "count": 51,
+              "facet": "1151455814"
+            }
+          ]
+        },
+        {
+          "date": "2008",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "1822159333"
+            },
+            {
+              "count": 51,
+              "facet": "1151455814"
+            }
+          ]
+        },
+        {
+          "date": "2009",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "1822159333"
+            },
+            {
+              "count": 51,
+              "facet": "1151455814"
+            }
+          ]
+        },
+        {
+          "date": "2010",
+          "entity_count": [
+            {
+              "count": 52,
+              "facet": "1226172227"
+            },
+            {
+              "count": 51,
+              "facet": "1822159333"
+            },
+            {
+              "count": 51,
+              "facet": "10983471"
+            },
+            {
+              "count": 51,
+              "facet": "1151455814"
+            },
+            {
+              "count": 1,
+              "facet": "377779557"
+            }
+          ]
+        },
+        {
+          "date": "2011",
+          "entity_count": [
+            {
+              "count": 52,
+              "facet": "1145703171"
+            },
+            {
+              "count": 52,
+              "facet": "1226172227"
+            },
+            {
+              "count": 51,
+              "facet": "1822159333"
+            },
+            {
+              "count": 51,
+              "facet": "10983471"
+            },
+            {
+              "count": 51,
+              "facet": "1151455814"
+            },
+            {
+              "count": 1,
+              "facet": "377779557"
+            }
+          ]
+        },
+        {
+          "date": "2012",
+          "entity_count": [
+            {
+              "count": 52,
+              "facet": "1145703171"
+            },
+            {
+              "count": 52,
+              "facet": "1226172227"
+            },
+            {
+              "count": 51,
+              "facet": "1822159333"
+            },
+            {
+              "count": 51,
+              "facet": "10983471"
+            },
+            {
+              "count": 51,
+              "facet": "1151455814"
+            },
+            {
+              "count": 1,
+              "facet": "377779557"
+            }
+          ]
+        },
+        {
+          "date": "2013",
+          "entity_count": [
+            {
+              "count": 52,
+              "facet": "1145703171"
+            },
+            {
+              "count": 52,
+              "facet": "1226172227"
+            },
+            {
+              "count": 51,
+              "facet": "1822159333"
+            },
+            {
+              "count": 51,
+              "facet": "10983471"
+            },
+            {
+              "count": 51,
+              "facet": "1151455814"
+            },
+            {
+              "count": 1,
+              "facet": "377779557"
+            }
+          ]
+        },
+        {
+          "date": "2014",
+          "entity_count": [
+            {
+              "count": 52,
+              "facet": "1145703171"
+            },
+            {
+              "count": 52,
+              "facet": "1226172227"
+            },
+            {
+              "count": 51,
+              "facet": "1822159333"
+            },
+            {
+              "count": 51,
+              "facet": "10983471"
+            },
+            {
+              "count": 51,
+              "facet": "1151455814"
+            },
+            {
+              "count": 1,
+              "facet": "377779557"
+            }
+          ]
+        },
+        {
+          "date": "2015",
+          "entity_count": [
+            {
+              "count": 52,
+              "facet": "1145703171"
+            },
+            {
+              "count": 52,
+              "facet": "1226172227"
+            },
+            {
+              "count": 51,
+              "facet": "1822159333"
+            },
+            {
+              "count": 51,
+              "facet": "10983471"
+            },
+            {
+              "count": 51,
+              "facet": "1151455814"
+            },
+            {
+              "count": 1,
+              "facet": "377779557"
+            }
+          ]
+        },
+        {
+          "date": "2016",
+          "entity_count": [
+            {
+              "count": 52,
+              "facet": "1145703171"
+            },
+            {
+              "count": 52,
+              "facet": "1226172227"
+            },
+            {
+              "count": 51,
+              "facet": "1822159333"
+            },
+            {
+              "count": 51,
+              "facet": "10983471"
+            },
+            {
+              "count": 51,
+              "facet": "1151455814"
+            },
+            {
+              "count": 1,
+              "facet": "377779557"
+            }
+          ]
+        },
+        {
+          "date": "2017",
+          "entity_count": [
+            {
+              "count": 52,
+              "facet": "1145703171"
+            },
+            {
+              "count": 52,
+              "facet": "1226172227"
+            },
+            {
+              "count": 51,
+              "facet": "1822159333"
+            },
+            {
+              "count": 51,
+              "facet": "10983471"
+            },
+            {
+              "count": 51,
+              "facet": "196790193"
+            },
+            {
+              "count": 51,
+              "facet": "1151455814"
+            },
+            {
+              "count": 1,
+              "facet": "377779557"
+            },
+            {
+              "count": 1,
+              "facet": "3144703963"
+            }
+          ]
+        },
+        {
+          "date": "2018",
+          "entity_count": [
+            {
+              "count": 52,
+              "facet": "1145703171"
+            },
+            {
+              "count": 52,
+              "facet": "1226172227"
+            },
+            {
+              "count": 51,
+              "facet": "1822159333"
+            },
+            {
+              "count": 51,
+              "facet": "10983471"
+            },
+            {
+              "count": 51,
+              "facet": "196790193"
+            },
+            {
+              "count": 51,
+              "facet": "1151455814"
+            },
+            {
+              "count": 1,
+              "facet": "377779557"
+            },
+            {
+              "count": 1,
+              "facet": "3144703963"
+            }
+          ]
+        },
+        {
+          "date": "2019",
+          "entity_count": [
+            {
+              "count": 52,
+              "facet": "1145703171"
+            },
+            {
+              "count": 52,
+              "facet": "1226172227"
+            },
+            {
+              "count": 51,
+              "facet": "1822159333"
+            },
+            {
+              "count": 51,
+              "facet": "10983471"
+            },
+            {
+              "count": 51,
+              "facet": "196790193"
+            },
+            {
+              "count": 1,
+              "facet": "377779557"
+            },
+            {
+              "count": 1,
+              "facet": "3144703963"
+            }
+          ]
+        },
+        {
+          "date": "2020",
+          "entity_count": [
+            {
+              "count": 52,
+              "facet": "1145703171"
+            },
+            {
+              "count": 51,
+              "facet": "1822159333"
+            }
+          ]
+        },
+        {
+          "date": "2021",
+          "entity_count": [
+            {
+              "count": 51,
+              "facet": "1822159333"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "facets": {
+    "10983471": {
+      "import_name": "CensusACS5YearSurvey_SubjectTables_S2601A",
+      "provenance_url": "https://data.census.gov/cedsci/table?q=S2601A&tid=ACSST5Y2019.S2601A",
+      "measurement_method": "CensusACS5yrSurveySubjectTable"
+    },
+    "1145703171": {
+      "import_name": "CensusACS5YearSurvey",
+      "provenance_url": "https://www.census.gov/",
+      "measurement_method": "CensusACS5yrSurvey"
+    },
+    "1151455814": {
+      "import_name": "OECDRegionalDemography",
+      "provenance_url": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#",
+      "measurement_method": "OECDRegionalStatistics",
+      "observation_period": "P1Y"
+    },
+    "1226172227": {
+      "import_name": "CensusACS1YearSurvey",
+      "provenance_url": "https://www.census.gov/",
+      "measurement_method": "CensusACS1yrSurvey"
+    },
+    "1541763368": {
+      "import_name": "USDecennialCensus_RedistrictingRelease",
+      "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+      "measurement_method": "USDecennialCensus"
+    },
+    "1822159333": {
+      "import_name": "USCensusPEP_Sex",
+      "provenance_url": "https://www2.census.gov/programs-surveys/popest/tables",
+      "measurement_method": "CensusPEPSurvey_PartialAggregate",
+      "observation_period": "P1Y"
+    },
+    "196790193": {
+      "import_name": "CensusACS5YearSurvey_SubjectTables_S2602",
+      "provenance_url": "https://data.census.gov/cedsci/table?q=S2602&tid=ACSST5Y2019.S2602",
+      "measurement_method": "CensusACS5yrSurveySubjectTable"
+    },
+    "2176550201": {
+      "import_name": "USCensusPEP_Annual_Population",
+      "provenance_url": "https://www2.census.gov/programs-surveys/popest/tables",
+      "measurement_method": "CensusPEPSurvey",
+      "observation_period": "P1Y"
+    },
+    "2458695583": {
+      "import_name": "WikidataPopulation",
+      "provenance_url": "https://www.wikidata.org/wiki/Wikidata:Main_Page",
+      "measurement_method": "WikidataPopulation"
+    },
+    "2517965213": {
+      "import_name": "CensusPEP",
+      "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
+      "measurement_method": "CensusPEPSurvey"
+    },
+    "3114843463": {
+      "import_name": "HumanCuratedStats",
+      "provenance_url": "https://google.com",
+      "measurement_method": "HumanCuratedStats"
+    },
+    "3144703963": {
+      "import_name": "CensusACS5YearSurvey_SubjectTables_S2602PR",
+      "provenance_url": "https://data.census.gov/cedsci/table?q=S2602PR&tid=ACSST5Y2019.S2602PR",
+      "measurement_method": "CensusACS5yrSurveySubjectTable"
+    },
+    "377779557": {
+      "import_name": "CensusACS5YearSurvey_SubjectTables_S2601APR",
+      "provenance_url": "https://data.census.gov/cedsci/table?q=S2601APR&tid=ACSST5Y2019.S2601APR",
+      "measurement_method": "CensusACS5yrSurveySubjectTable"
+    }
+  }
+}

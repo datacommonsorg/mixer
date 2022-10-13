@@ -179,6 +179,62 @@ func (memDb *MemDb) ReadStatDate(statVar string) *pb.StatDateList {
 	return result
 }
 
+// ReadStatDate reads observation date frequency for a given stat var.
+func (memDb *MemDb) ReadObservationDates(statVar string) (
+	*pb.VariableObservationDates,
+	map[string]*pb.StatMetadata,
+) {
+	memDb.lock.RLock()
+	defer memDb.lock.RUnlock()
+	data := &pb.VariableObservationDates{
+		Variable:         statVar,
+		ObservationDates: []*pb.ObservationDates{},
+	}
+	placeData, ok := memDb.statSeries[statVar]
+	if !ok {
+		return data, nil
+	}
+	// keyed by date, metahash, value is the count of places
+	tmp := map[string]map[string]float64{}
+	metaMap := map[string]*pb.StatMetadata{}
+	for _, seriesList := range placeData {
+		for _, series := range seriesList {
+			metahash := util.GetMetadataHash(series.Metadata)
+			metaMap[metahash] = series.Metadata
+			for date := range series.Val {
+				if _, ok := tmp[date]; !ok {
+					tmp[date] = map[string]float64{}
+				}
+				tmp[date][metahash]++
+			}
+		}
+	}
+	allDates := []string{}
+	for date := range tmp {
+		allDates = append(allDates, date)
+	}
+	sort.Strings(allDates)
+	for _, date := range allDates {
+		obsDates := &pb.ObservationDates{
+			Date:        date,
+			EntityCount: []*pb.EntityCount{},
+		}
+		for metahash, count := range tmp[date] {
+			obsDates.EntityCount = append(obsDates.EntityCount, &pb.EntityCount{
+				Count: count,
+				Facet: metahash,
+			})
+		}
+		sort.SliceStable(obsDates.EntityCount, func(i, j int) bool {
+			return obsDates.EntityCount[i].Count > obsDates.EntityCount[j].Count
+		})
+		data.ObservationDates = append(
+			data.ObservationDates, obsDates,
+		)
+	}
+	return data, metaMap
+}
+
 // GetStatVars retrieves the stat vars from private import that have data for
 // the given places.
 func (memDb *MemDb) GetStatVars(places []string) ([]string, []string) {
