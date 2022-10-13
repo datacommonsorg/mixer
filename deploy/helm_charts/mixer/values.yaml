@@ -104,7 +104,7 @@ serviceGroups:
       replicas:
         default: 2
         min: 2
-        max: 24
+        max: 2
       resources:
         memoryRequest: "8G"
         memoryLimit: "8G"
@@ -114,9 +114,9 @@ serviceGroups:
       urlPaths:
         - "/v1/recon/*"
       replicas:
-        default: 10
-        min: 10
-        max: 20
+        default: 4
+        min: 4
+        max: 4
       resources:
         memoryRequest: "400M"
         memoryLimit: "400M"
@@ -125,9 +125,9 @@ serviceGroups:
         - "/v1/observations/*"
         - "/v1/bulk/observations/*"
       replicas:
-        default: 2
-        min: 2
-        max: 24
+        default: 4
+        min: 4
+        max: 4
       resources:
         memoryRequest: "4G"
         memoryLimit: "4G"
@@ -135,9 +135,9 @@ serviceGroups:
       urlPaths:
         - "/*"
       replicas:
-        default: 2
-        min: 2
-        max: 24
+        default: 4
+        min: 4
+        max: 4
       resources:
-        memoryRequest: "2G"
-        memoryLimit: "2G"
+        memoryRequest: "4G"
+        memoryLimit: "4G"
