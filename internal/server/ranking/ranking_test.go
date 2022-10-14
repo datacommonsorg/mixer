@@ -111,6 +111,16 @@ func TestSeriesByRank(t *testing.T) {
 				{ImportName: "USFEMA_NationalRiskIndex", Unit: "FemaNationalRiskScore"},
 			},
 		},
+		{
+			[]*pb.SourceSeries{
+				{ImportName: "EarthquakeUSGS_Agg", MeasurementMethod: "GridWeightedPearson", ObservationPeriod: "P1M"},
+				{ImportName: "EarthquakeUSGS_Agg", MeasurementMethod: "GridWeightedPearson", ObservationPeriod: "P1Y"},
+			},
+			[]*pb.SourceSeries{
+				{ImportName: "EarthquakeUSGS_Agg", MeasurementMethod: "GridWeightedPearson", ObservationPeriod: "P1Y"},
+				{ImportName: "EarthquakeUSGS_Agg", MeasurementMethod: "GridWeightedPearson", ObservationPeriod: "P1M"},
+			},
+		},
 	} {
 		sort.Sort(SeriesByRank(c.series))
 		if diff := cmp.Diff(c.expected, c.series, protocmp.Transform()); diff != "" {

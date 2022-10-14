@@ -112,6 +112,9 @@ var StatsRanking = map[string]map[RankKey]int{
 		{Unit: s("USDollar")}:              0,
 		{Unit: s("FemaNationalRiskScore")}: 1,
 	},
+
+	// Disaster
+	"EarthquakeUSGS_Agg": {{OP: s("P1Y")}: 0},
 }
 
 // BaseRank is the base ranking score for sources. If a source is prefered, it
