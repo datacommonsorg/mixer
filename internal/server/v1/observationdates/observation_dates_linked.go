@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// observationdates holds API implementation for observation dates.
+// Package observationdates holds API implementation for observation dates.
 
 package observationdates
 

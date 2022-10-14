@@ -18,18 +18,25 @@ package datacommons.v1;
 
 import "stat.proto";
 
+// Holds the count of entities for a particular facet.
 message EntityCount {
+  // Count of the entity.
   double count = 1;
+  // The facet hash string.
   string facet = 2;
 }
 
 message ObservationDates {
+  // Date of observation
   string date = 1;
+  // For each facet, record the number of entities that have observations.
   repeated EntityCount entity_count = 2;
 }
 
 message VariableObservationDates {
+  // The stat var DCID.
   string variable = 1;
+  // A list of observation data information for each stat var.
   repeated ObservationDates observation_dates = 3;
 }
 
