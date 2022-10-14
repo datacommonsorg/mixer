@@ -136,10 +136,11 @@ type MixerClient interface {
 	ObservationsSeries(ctx context.Context, in *ObservationsSeriesRequest, opts ...grpc.CallOption) (*ObservationsSeriesResponse, error)
 	BulkObservationsSeries(ctx context.Context, in *BulkObservationsSeriesRequest, opts ...grpc.CallOption) (*BulkObservationsSeriesResponse, error)
 	BulkObservationsSeriesLinked(ctx context.Context, in *BulkObservationsSeriesLinkedRequest, opts ...grpc.CallOption) (*BulkObservationsSeriesResponse, error)
+	DerivedObservationsSeries(ctx context.Context, in *DerivedObservationsSeriesRequest, opts ...grpc.CallOption) (*DerivedObservationsSeriesResponse, error)
+	BulkObservationDatesLinked(ctx context.Context, in *BulkObservationDatesLinkedRequest, opts ...grpc.CallOption) (*BulkObservationDatesLinkedResponse, error)
 	BioPage(ctx context.Context, in *BioPageRequest, opts ...grpc.CallOption) (*GraphNodes, error)
 	PlacePage(ctx context.Context, in *PlacePageRequest, opts ...grpc.CallOption) (*GetPlacePageDataResponse, error)
 	VariableAncestors(ctx context.Context, in *VariableAncestorsRequest, opts ...grpc.CallOption) (*VariableAncestorsResponse, error)
-	DerivedObservationsSeries(ctx context.Context, in *DerivedObservationsSeriesRequest, opts ...grpc.CallOption) (*DerivedObservationsSeriesResponse, error)
 }
 
 type mixerClient struct {
@@ -654,6 +655,24 @@ func (c *mixerClient) BulkObservationsSeriesLinked(ctx context.Context, in *Bulk
 	return out, nil
 }
 
+func (c *mixerClient) DerivedObservationsSeries(ctx context.Context, in *DerivedObservationsSeriesRequest, opts ...grpc.CallOption) (*DerivedObservationsSeriesResponse, error) {
+	out := new(DerivedObservationsSeriesResponse)
+	err := c.cc.Invoke(ctx, "/datacommons.Mixer/DerivedObservationsSeries", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *mixerClient) BulkObservationDatesLinked(ctx context.Context, in *BulkObservationDatesLinkedRequest, opts ...grpc.CallOption) (*BulkObservationDatesLinkedResponse, error) {
+	out := new(BulkObservationDatesLinkedResponse)
+	err := c.cc.Invoke(ctx, "/datacommons.Mixer/BulkObservationDatesLinked", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *mixerClient) BioPage(ctx context.Context, in *BioPageRequest, opts ...grpc.CallOption) (*GraphNodes, error) {
 	out := new(GraphNodes)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/BioPage", in, out, opts...)
@@ -675,15 +694,6 @@ func (c *mixerClient) PlacePage(ctx context.Context, in *PlacePageRequest, opts 
 func (c *mixerClient) VariableAncestors(ctx context.Context, in *VariableAncestorsRequest, opts ...grpc.CallOption) (*VariableAncestorsResponse, error) {
 	out := new(VariableAncestorsResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/VariableAncestors", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *mixerClient) DerivedObservationsSeries(ctx context.Context, in *DerivedObservationsSeriesRequest, opts ...grpc.CallOption) (*DerivedObservationsSeriesResponse, error) {
-	out := new(DerivedObservationsSeriesResponse)
-	err := c.cc.Invoke(ctx, "/datacommons.Mixer/DerivedObservationsSeries", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -808,10 +818,11 @@ type MixerServer interface {
 	ObservationsSeries(context.Context, *ObservationsSeriesRequest) (*ObservationsSeriesResponse, error)
 	BulkObservationsSeries(context.Context, *BulkObservationsSeriesRequest) (*BulkObservationsSeriesResponse, error)
 	BulkObservationsSeriesLinked(context.Context, *BulkObservationsSeriesLinkedRequest) (*BulkObservationsSeriesResponse, error)
+	DerivedObservationsSeries(context.Context, *DerivedObservationsSeriesRequest) (*DerivedObservationsSeriesResponse, error)
+	BulkObservationDatesLinked(context.Context, *BulkObservationDatesLinkedRequest) (*BulkObservationDatesLinkedResponse, error)
 	BioPage(context.Context, *BioPageRequest) (*GraphNodes, error)
 	PlacePage(context.Context, *PlacePageRequest) (*GetPlacePageDataResponse, error)
 	VariableAncestors(context.Context, *VariableAncestorsRequest) (*VariableAncestorsResponse, error)
-	DerivedObservationsSeries(context.Context, *DerivedObservationsSeriesRequest) (*DerivedObservationsSeriesResponse, error)
 }
 
 // UnimplementedMixerServer should be embedded to have forward compatible implementations.
@@ -986,6 +997,12 @@ func (UnimplementedMixerServer) BulkObservationsSeries(context.Context, *BulkObs
 func (UnimplementedMixerServer) BulkObservationsSeriesLinked(context.Context, *BulkObservationsSeriesLinkedRequest) (*BulkObservationsSeriesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BulkObservationsSeriesLinked not implemented")
 }
+func (UnimplementedMixerServer) DerivedObservationsSeries(context.Context, *DerivedObservationsSeriesRequest) (*DerivedObservationsSeriesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DerivedObservationsSeries not implemented")
+}
+func (UnimplementedMixerServer) BulkObservationDatesLinked(context.Context, *BulkObservationDatesLinkedRequest) (*BulkObservationDatesLinkedResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method BulkObservationDatesLinked not implemented")
+}
 func (UnimplementedMixerServer) BioPage(context.Context, *BioPageRequest) (*GraphNodes, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BioPage not implemented")
 }
@@ -994,9 +1011,6 @@ func (UnimplementedMixerServer) PlacePage(context.Context, *PlacePageRequest) (*
 }
 func (UnimplementedMixerServer) VariableAncestors(context.Context, *VariableAncestorsRequest) (*VariableAncestorsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method VariableAncestors not implemented")
-}
-func (UnimplementedMixerServer) DerivedObservationsSeries(context.Context, *DerivedObservationsSeriesRequest) (*DerivedObservationsSeriesResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DerivedObservationsSeries not implemented")
 }
 
 // UnsafeMixerServer may be embedded to opt out of forward compatibility for this service.
@@ -2018,6 +2032,42 @@ func _Mixer_BulkObservationsSeriesLinked_Handler(srv interface{}, ctx context.Co
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Mixer_DerivedObservationsSeries_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DerivedObservationsSeriesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MixerServer).DerivedObservationsSeries(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/datacommons.Mixer/DerivedObservationsSeries",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MixerServer).DerivedObservationsSeries(ctx, req.(*DerivedObservationsSeriesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Mixer_BulkObservationDatesLinked_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(BulkObservationDatesLinkedRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MixerServer).BulkObservationDatesLinked(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/datacommons.Mixer/BulkObservationDatesLinked",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MixerServer).BulkObservationDatesLinked(ctx, req.(*BulkObservationDatesLinkedRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _Mixer_BioPage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(BioPageRequest)
 	if err := dec(in); err != nil {
@@ -2068,24 +2118,6 @@ func _Mixer_VariableAncestors_Handler(srv interface{}, ctx context.Context, dec 
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(MixerServer).VariableAncestors(ctx, req.(*VariableAncestorsRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Mixer_DerivedObservationsSeries_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DerivedObservationsSeriesRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(MixerServer).DerivedObservationsSeries(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/datacommons.Mixer/DerivedObservationsSeries",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).DerivedObservationsSeries(ctx, req.(*DerivedObservationsSeriesRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -2322,6 +2354,14 @@ var Mixer_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _Mixer_BulkObservationsSeriesLinked_Handler,
 		},
 		{
+			MethodName: "DerivedObservationsSeries",
+			Handler:    _Mixer_DerivedObservationsSeries_Handler,
+		},
+		{
+			MethodName: "BulkObservationDatesLinked",
+			Handler:    _Mixer_BulkObservationDatesLinked_Handler,
+		},
+		{
 			MethodName: "BioPage",
 			Handler:    _Mixer_BioPage_Handler,
 		},
@@ -2332,10 +2372,6 @@ var Mixer_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "VariableAncestors",
 			Handler:    _Mixer_VariableAncestors_Handler,
-		},
-		{
-			MethodName: "DerivedObservationsSeries",
-			Handler:    _Mixer_DerivedObservationsSeries_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

@@ -20,6 +20,7 @@ import (
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/translator"
 	"github.com/datacommonsorg/mixer/internal/server/v1/info"
+	"github.com/datacommonsorg/mixer/internal/server/v1/observationdates"
 	"github.com/datacommonsorg/mixer/internal/server/v1/observations"
 	"github.com/datacommonsorg/mixer/internal/server/v1/page"
 	"github.com/datacommonsorg/mixer/internal/server/v1/properties"
@@ -188,6 +189,13 @@ func (s *Server) BulkObservationsSeriesLinked(
 	ctx context.Context, in *pb.BulkObservationsSeriesLinkedRequest,
 ) (*pb.BulkObservationsSeriesResponse, error) {
 	return observations.BulkSeriesLinked(ctx, in, s.store)
+}
+
+// BulkObservationDatesLinked implements API for mixer.BulkObservationDatesLinked.
+func (s *Server) BulkObservationDatesLinked(
+	ctx context.Context, in *pb.BulkObservationDatesLinkedRequest,
+) (*pb.BulkObservationDatesLinkedResponse, error) {
+	return observationdates.BulkObservationDatesLinked(ctx, in, s.store)
 }
 
 // BioPage implements API for mixer.BioPage.

@@ -1,0 +1,63 @@
+{
+  "dates_by_variable": [
+    {
+      "variable": "Count_Person_FoodInsecure",
+      "observation_dates": [
+        {
+          "date": "2018",
+          "entity_count": [
+            {
+              "count": 3193,
+              "facet": "180485622"
+            }
+          ]
+        },
+        {
+          "date": "2019",
+          "entity_count": [
+            {
+              "count": 3193,
+              "facet": "180485622"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "variable": "Mean_MealCost_Person_FoodSecure",
+      "observation_dates": [
+        {
+          "date": "2018",
+          "entity_count": [
+            {
+              "count": 3193,
+              "facet": "2363575468"
+            }
+          ]
+        },
+        {
+          "date": "2019",
+          "entity_count": [
+            {
+              "count": 3193,
+              "facet": "2363575468"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "facets": {
+    "180485622": {
+      "import_name": "Feeding America",
+      "provenance_url": "https://www.feedingamerica.org/",
+      "measurement_method": "FeedingAmerica_Estimate"
+    },
+    "2363575468": {
+      "import_name": "Feeding America",
+      "provenance_url": "https://www.feedingamerica.org/",
+      "measurement_method": "FeedingAmerica_Estimate",
+      "unit": "USDollar"
+    }
+  }
+}
