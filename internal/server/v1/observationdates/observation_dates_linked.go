@@ -43,7 +43,7 @@ func BulkObservationDatesLinked(
 	variables := in.GetVariables()
 	if linkedEntity == "" {
 		return nil, status.Errorf(codes.InvalidArgument,
-			"Missing required argument: ancestor_place")
+			"Missing required argument: linked_entity")
 	}
 	if entityType == "" {
 		return nil, status.Errorf(codes.InvalidArgument,

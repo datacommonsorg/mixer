@@ -179,7 +179,7 @@ func (memDb *MemDb) ReadStatDate(statVar string) *pb.StatDateList {
 	return result
 }
 
-// ReadStatDate reads observation date frequency for a given stat var.
+// ReadObservationDates reads observation date frequency for a given stat var.
 func (memDb *MemDb) ReadObservationDates(statVar string) (
 	*pb.VariableObservationDates,
 	map[string]*pb.StatMetadata,
