@@ -6,12 +6,12 @@ A single helm chart organizes a collection of templatized k8s yaml files.
 
 ## Installing a Helm chart
 
-Installing a Helm chart means filling in the templates with a set of values and 
+Installing a Helm chart means filling in the templates with a set of values and
 applying the resources to a live cluster.
 
 Note: Helm uses [k8s config](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-access-for-kubectl) for authentication. You can visit the GCP UI and click "CONNECT" on your cluster's page to get the command to configure the k8s config.
 
-![Alt text](images/gke_connect.png?raw=true "credentials")
+![Alt text](images/gke_connect.png?raw=true 'credentials')
 
 Check if the k8s config points to the right cluster with `kubectl config current-context`.
 
@@ -27,6 +27,7 @@ based on local change. Helm then deploys a release that refers to the newly crea
 
 helm upgrade --install mixer-dev deploy/helm_charts/mixer \
     --atomic \
+    --timeout 10m \
     -f deploy/helm_charts/envs/mixer_dev.yaml \
     --set mixer.githash=$(git rev-parse --short=7 HEAD) \
     --set-file mixer.schemaConfigs."base.mcf"=deploy/mapping/base.mcf \
