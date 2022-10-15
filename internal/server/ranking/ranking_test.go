@@ -111,6 +111,20 @@ func TestSeriesByRank(t *testing.T) {
 				{ImportName: "USFEMA_NationalRiskIndex", Unit: "FemaNationalRiskScore"},
 			},
 		},
+		{
+			[]*pb.SourceSeries{
+				{ImportName: "NASA_WetBulbComputation", MeasurementMethod: "NASA_Mean_CCSM4", ObservationPeriod: "P1Y"},
+				{ImportName: "EarthquakeUSGS_Agg", MeasurementMethod: "GridWeightedPearson", ObservationPeriod: "P1M"},
+				{ImportName: "EarthquakeUSGS_Agg", MeasurementMethod: "GridWeightedPearson", ObservationPeriod: "P1D"},
+				{ImportName: "EarthquakeUSGS_Agg", MeasurementMethod: "GridWeightedPearson", ObservationPeriod: "P1Y"},
+			},
+			[]*pb.SourceSeries{
+				{ImportName: "EarthquakeUSGS_Agg", MeasurementMethod: "GridWeightedPearson", ObservationPeriod: "P1Y"},
+				{ImportName: "EarthquakeUSGS_Agg", MeasurementMethod: "GridWeightedPearson", ObservationPeriod: "P1D"},
+				{ImportName: "EarthquakeUSGS_Agg", MeasurementMethod: "GridWeightedPearson", ObservationPeriod: "P1M"},
+				{ImportName: "NASA_WetBulbComputation", MeasurementMethod: "NASA_Mean_CCSM4", ObservationPeriod: "P1Y"},
+			},
+		},
 	} {
 		sort.Sort(SeriesByRank(c.series))
 		if diff := cmp.Diff(c.expected, c.series, protocmp.Transform()); diff != "" {

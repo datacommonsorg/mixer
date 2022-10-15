@@ -1180,40 +1180,30 @@
         },
         "Count_EarthquakeEvent": {
           "val": {
-            "1932-11": 1,
-            "1975-06": 1,
-            "1985-12": 1,
-            "1989-01": 1,
-            "1989-12": 1,
-            "1992-04": 7,
-            "1992-05": 2,
-            "1992-07": 1,
-            "1994-08": 1,
-            "1994-09": 1,
-            "1995-01": 1,
-            "1997-02": 1,
-            "1999-09": 1,
-            "2000-12": 2,
-            "2001-03": 4,
-            "2001-06": 3,
-            "2001-07": 1,
-            "2001-09": 1,
-            "2002-07": 1,
-            "2002-08": 1,
-            "2003-03": 1,
-            "2003-11": 1,
-            "2004-06": 1,
-            "2006-08": 1,
-            "2006-11": 1,
-            "2008-10": 1,
-            "2012-08": 1,
-            "2013-02": 1,
-            "2019-05": 1
+            "1932": 1,
+            "1975": 1,
+            "1985": 1,
+            "1989": 2,
+            "1992": 10,
+            "1994": 2,
+            "1995": 1,
+            "1997": 1,
+            "1999": 1,
+            "2000": 2,
+            "2001": 9,
+            "2002": 2,
+            "2003": 2,
+            "2004": 1,
+            "2006": 2,
+            "2008": 1,
+            "2012": 1,
+            "2013": 1,
+            "2019": 1
           },
           "metadata": {
             "importName": "EarthquakeUSGS_Agg",
             "provenanceUrl": "https://earthquake.usgs.gov/",
-            "observationPeriod": "P1M"
+            "observationPeriod": "P1Y"
           }
         },
         "Count_Person": {
@@ -8081,15 +8071,15 @@
       "data": {
         "Count_EarthquakeEvent": {
           "val": {
-            "1932-11": 1,
-            "2001-06": 2,
-            "2003-03": 1,
-            "2011-09": 1
+            "1932": 1,
+            "2001": 2,
+            "2003": 1,
+            "2011": 1
           },
           "metadata": {
             "importName": "EarthquakeUSGS_Agg",
             "provenanceUrl": "https://earthquake.usgs.gov/",
-            "observationPeriod": "P1M"
+            "observationPeriod": "P1Y"
           }
         },
         "Count_Person": {
@@ -11264,12 +11254,12 @@
       "data": {
         "Count_EarthquakeEvent": {
           "val": {
-            "1932-11": 1
+            "1932": 1
           },
           "metadata": {
             "importName": "EarthquakeUSGS_Agg",
             "provenanceUrl": "https://earthquake.usgs.gov/",
-            "observationPeriod": "P1M"
+            "observationPeriod": "P1Y"
           }
         },
         "Count_Person": {
@@ -14673,14 +14663,14 @@
       "data": {
         "Count_EarthquakeEvent": {
           "val": {
-            "2001-06": 2,
-            "2003-03": 1,
-            "2011-09": 1
+            "2001": 2,
+            "2003": 1,
+            "2011": 1
           },
           "metadata": {
             "importName": "EarthquakeUSGS_Agg",
             "provenanceUrl": "https://earthquake.usgs.gov/",
-            "observationPeriod": "P1M"
+            "observationPeriod": "P1Y"
           }
         },
         "Count_Person": {
