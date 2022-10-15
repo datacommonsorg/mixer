@@ -40,6 +40,7 @@ func s(str string) *string {
 // StatsRanking is used to rank multiple source series for the same
 // StatisticalVariable, where lower value means higher ranking.
 // Outer key is Import Name, inner key is Rank Key, value is score.
+// When making changes to ranking, please also make sure to update golden files.
 var StatsRanking = map[string]map[RankKey]int{
 	"USCensusPEP_Annual_Population": {{MM: s("CensusPEPSurvey"), OP: s("P1Y")}: 0}, // Population
 

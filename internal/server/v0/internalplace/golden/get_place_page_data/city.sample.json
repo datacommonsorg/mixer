@@ -9192,14 +9192,14 @@
         },
         "Count_EarthquakeEvent": {
           "val": {
-            "2011-09": 1,
-            "2012-06": 1,
-            "2013-11": 5
+            "2011": 1,
+            "2012": 1,
+            "2013": 5
           },
           "metadata": {
             "importName": "EarthquakeUSGS_Agg",
             "provenanceUrl": "https://earthquake.usgs.gov/",
-            "observationPeriod": "P1M"
+            "observationPeriod": "P1Y"
           }
         },
         "Count_Household": {

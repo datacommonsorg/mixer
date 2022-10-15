@@ -113,12 +113,16 @@ func TestSeriesByRank(t *testing.T) {
 		},
 		{
 			[]*pb.SourceSeries{
+				{ImportName: "NASA_WetBulbComputation", MeasurementMethod: "NASA_Mean_CCSM4", ObservationPeriod: "P1Y"},
 				{ImportName: "EarthquakeUSGS_Agg", MeasurementMethod: "GridWeightedPearson", ObservationPeriod: "P1M"},
+				{ImportName: "EarthquakeUSGS_Agg", MeasurementMethod: "GridWeightedPearson", ObservationPeriod: "P1D"},
 				{ImportName: "EarthquakeUSGS_Agg", MeasurementMethod: "GridWeightedPearson", ObservationPeriod: "P1Y"},
 			},
 			[]*pb.SourceSeries{
 				{ImportName: "EarthquakeUSGS_Agg", MeasurementMethod: "GridWeightedPearson", ObservationPeriod: "P1Y"},
+				{ImportName: "EarthquakeUSGS_Agg", MeasurementMethod: "GridWeightedPearson", ObservationPeriod: "P1D"},
 				{ImportName: "EarthquakeUSGS_Agg", MeasurementMethod: "GridWeightedPearson", ObservationPeriod: "P1M"},
+				{ImportName: "NASA_WetBulbComputation", MeasurementMethod: "NASA_Mean_CCSM4", ObservationPeriod: "P1Y"},
 			},
 		},
 	} {
