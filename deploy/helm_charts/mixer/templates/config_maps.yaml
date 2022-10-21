@@ -28,7 +28,7 @@ metadata:
   name: {{ include "mixer.fullname" . }}-githash
   namespace: {{ .Values.namespace.name }}
 data:
-  mixer_hash.txt: {{ required "mixer githash is required" .Values.mixer.githash | quote }}
+  mixer_hash.txt: {{ required "mixer githash is required" .Values.mixer.githash }}
 
 ---
 
@@ -41,7 +41,7 @@ data:
   bigquery.version: {{ required "kgStoreConfig.bigqueryVersion is required." .Values.kgStoreConfig.bigqueryVersion }}
   bigtable_import_groups.version: |
   {{-  required "bigtableImportGroupsVersion is required." .Values.kgStoreConfig.bigtableImportGroupsVersion | nindent 4 }}
-  store.project: {{ required "storeProjectID is required." .Values.kgStoreConfig.storeProjectID | quote }}
+  store.project: {{ required "storeProjectID is required." .Values.kgStoreConfig.storeProjectID }}
 
 ---
 
@@ -61,8 +61,8 @@ metadata:
   name: {{ include "mixer.fullname" . }}-mixer-config
   namespace: {{ .Values.namespace.name }}
 data:
-  mixerProject: {{ required "Mixer GCP project is required." .Values.mixer.gcpProjectID | quote }}
-  serviceName:  {{ required "Mixer service name is required." .Values.mixer.serviceName | quote }}
+  mixerProject: {{ required "Mixer GCP project is required." .Values.mixer.gcpProjectID }}
+  serviceName:  {{ required "Mixer service name is required." .Values.mixer.serviceName }}
 
 ---
 
@@ -74,5 +74,5 @@ metadata:
 data:
   {{- range $key, $val := .Values.mixer.schemaConfigs }}
   {{ $key }}: |
-    {{ $val | nindent 4 | quote }}
+    {{ $val | nindent 4 }}
   {{- end  }}
