@@ -79,9 +79,9 @@ func FilterAndRank(in *model.ObsTimeSeries, prop *model.StatObsProp) {
 
 // GetBestSeries gets the best series for a collection of series with different metadata.
 //
-// - If "importName" is set, pick the series with the import name.
-// - If "useLatest" is true, pick the series with latest date and set the
-//   second return value to be the latest date.
+//   - If "importName" is set, pick the series with the import name.
+//   - If "useLatest" is true, pick the series with latest date and set the
+//     second return value to be the latest date.
 //
 // Note "importName" is preferred over "useLatest".
 func GetBestSeries(
@@ -255,7 +255,9 @@ func CollectDistinctSourceSeries(seriesList ...[]*pb.SourceSeries) []*pb.SourceS
 	for _, series := range seriesList {
 		for _, s := range series {
 			metahash := getSourceSeriesHash(s)
-			if _, ok := resultMap[metahash]; ok && len(s.Val) < len(resultMap[metahash].Val) {
+			// The input series list is sorted, so the for loop is from the msot
+			// preferred sereis to the less preferred series
+			if _, ok := resultMap[metahash]; ok && len(s.Val) <= len(resultMap[metahash].Val) {
 				continue
 			}
 			resultMap[metahash] = s
