@@ -247,8 +247,9 @@ func getSourceSeriesHash(series *pb.SourceSeries) string {
 }
 
 // CollectDistinctSourceSeries merges lists of SourceSeries.
-// For same source series, use the seriers with most recent latest date. If the
-// latest dates are the same, choose based on the import order.
+// For the same source series, use the series with the most recent latest date.
+// If the latest dates are the same, choose based on the import group ranking,
+// which is by the order of the input source series.
 func CollectDistinctSourceSeries(seriesList ...[]*pb.SourceSeries) []*pb.SourceSeries {
 	result := []*pb.SourceSeries{}
 	resultMap := map[string]*pb.SourceSeries{}
