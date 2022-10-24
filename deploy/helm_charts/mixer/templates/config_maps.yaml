@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# All things that can vary for the same mixer code should be 
+# All things that can vary for the same mixer code should be
 # in config maps. This includes BT, BQ versions, schema mcfs, so on.
 #
 # Note: Please prefix the name of each config map with
@@ -74,5 +74,5 @@ metadata:
 data:
   {{- range $key, $val := .Values.mixer.schemaConfigs }}
   {{ $key }}: |
-    {{ $val | nindent 4 | quote }}
+    {{ $val | nindent 4 }}
   {{- end  }}
