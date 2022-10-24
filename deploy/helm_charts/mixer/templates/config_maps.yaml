@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# All things that can vary for the same mixer code should be 
+# All things that can vary for the same mixer code should be
 # in config maps. This includes BT, BQ versions, schema mcfs, so on.
 #
 # Note: Please prefix the name of each config map with
@@ -41,7 +41,7 @@ data:
   bigquery.version: {{ required "kgStoreConfig.bigqueryVersion is required." .Values.kgStoreConfig.bigqueryVersion }}
   bigtable_import_groups.version: |
   {{-  required "bigtableImportGroupsVersion is required." .Values.kgStoreConfig.bigtableImportGroupsVersion | nindent 4 }}
-  store.project: {{ required "storeProjectID is required." .Values.kgStoreConfig.storeProjectID | quote }}
+  store.project: {{ required "storeProjectID is required." .Values.kgStoreConfig.storeProjectID }}
 
 ---
 
@@ -51,7 +51,7 @@ metadata:
   name: {{ include "mixer.fullname" . }}-memdb-config
   namespace: {{ .Values.namespace.name }}
 data:
-  memdb.json: {{ .Values.memdbJSON | quote }}
+  memdb.json: {{ .Values.memdbJSON }}
 
 ---
 
@@ -61,8 +61,8 @@ metadata:
   name: {{ include "mixer.fullname" . }}-mixer-config
   namespace: {{ .Values.namespace.name }}
 data:
-  mixerProject: {{ required "Mixer GCP project is required." .Values.mixer.gcpProjectID | quote }}
-  serviceName:  {{ required "Mixer service name is required." .Values.mixer.serviceName | quote }}
+  mixerProject: {{ required "Mixer GCP project is required." .Values.mixer.gcpProjectID }}
+  serviceName:  {{ required "Mixer service name is required." .Values.mixer.serviceName }}
 
 ---
 
@@ -74,5 +74,5 @@ metadata:
 data:
   {{- range $key, $val := .Values.mixer.schemaConfigs }}
   {{ $key }}: |
-    {{ $val | nindent 4 | quote }}
+    {{ $val | nindent 4 }}
   {{- end  }}
