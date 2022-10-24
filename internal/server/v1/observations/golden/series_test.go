@@ -40,6 +40,11 @@ func TestObservationsSeries(t *testing.T) {
 			goldenFile string
 		}{
 			{
+				"Amount_EconomicActivity_GrossDomesticProduction_Nominal",
+				"country/IRN",
+				"irn_gdp.json",
+			},
+			{
 				"Count_Person",
 				"country/USA",
 				"count_person.json",

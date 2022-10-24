@@ -79,9 +79,9 @@ func FilterAndRank(in *model.ObsTimeSeries, prop *model.StatObsProp) {
 
 // GetBestSeries gets the best series for a collection of series with different metadata.
 //
-// - If "importName" is set, pick the series with the import name.
-// - If "useLatest" is true, pick the series with latest date and set the
-//   second return value to be the latest date.
+//   - If "importName" is set, pick the series with the import name.
+//   - If "useLatest" is true, pick the series with latest date and set the
+//     second return value to be the latest date.
 //
 // Note "importName" is preferred over "useLatest".
 func GetBestSeries(
@@ -247,16 +247,25 @@ func getSourceSeriesHash(series *pb.SourceSeries) string {
 }
 
 // CollectDistinctSourceSeries merges lists of SourceSeries.
-// For same source series, the one with more data points is used. In most cases,
-// this is the series with the latest data as well.
+// For the same source series, use the series with the most recent latest date.
+// If the latest dates are the same, choose based on the import group ranking,
+// which is by the order of the input source series.
 func CollectDistinctSourceSeries(seriesList ...[]*pb.SourceSeries) []*pb.SourceSeries {
 	result := []*pb.SourceSeries{}
 	resultMap := map[string]*pb.SourceSeries{}
+	metahashToDate := map[string]string{}
 	for _, series := range seriesList {
 		for _, s := range series {
 			metahash := getSourceSeriesHash(s)
-			if _, ok := resultMap[metahash]; ok && len(s.Val) < len(resultMap[metahash].Val) {
-				continue
+			if _, ok := resultMap[metahash]; ok {
+				if _, ok := metahashToDate[metahash]; !ok {
+					metahashToDate[metahash] = getLatestDate(resultMap[metahash].Val)
+				}
+				latestDate := getLatestDate(s.Val)
+				if latestDate <= metahashToDate[metahash] {
+					continue
+				}
+				metahashToDate[metahash] = latestDate
 			}
 			resultMap[metahash] = s
 		}
@@ -266,4 +275,14 @@ func CollectDistinctSourceSeries(seriesList ...[]*pb.SourceSeries) []*pb.SourceS
 	}
 	sort.Sort(ranking.SeriesByRank(result))
 	return result
+}
+
+func getLatestDate(val map[string]float64) string {
+	latestDate := ""
+	for date := range val {
+		if date > latestDate {
+			latestDate = date
+		}
+	}
+	return latestDate
 }
