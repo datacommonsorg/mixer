@@ -51,7 +51,7 @@ metadata:
   name: {{ include "mixer.fullname" . }}-memdb-config
   namespace: {{ .Values.namespace.name }}
 data:
-  memdb.json: {{ .Values.memdbJSON }}
+  memdb.json: {{ .Values.memdbJSON | quote }}
 
 ---
 
