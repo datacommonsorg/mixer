@@ -3,13 +3,13 @@
     "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita": {
       "stat": {
         "country/FRA": {
-          "date": "2019",
-          "value": 50400,
+          "date": "2021",
+          "value": 51850,
           "metaHash": "2171028778"
         },
         "country/USA": {
-          "date": "2019",
-          "value": 66060,
+          "date": "2021",
+          "value": 70480,
           "metaHash": "2171028778"
         },
         "geoId/06": {},
@@ -55,8 +55,8 @@
     "Count_Person": {
       "stat": {
         "country/FRA": {
-          "date": "2020",
-          "value": 67391582,
+          "date": "2021",
+          "value": 67499343,
           "metaHash": "3981252704"
         },
         "country/USA": {
@@ -85,8 +85,8 @@
           "metaHash": "3707913853"
         },
         "geoId/06": {
-          "date": "2022-08",
-          "value": 782707,
+          "date": "2022-09",
+          "value": 716263,
           "metaHash": "324358135"
         },
         "geoId/0649670": {
@@ -100,13 +100,13 @@
       "stat": {
         "country/FRA": {},
         "country/USA": {
-          "date": "2022-10-11",
-          "value": 96523530,
+          "date": "2022-10-23",
+          "value": 96958151,
           "metaHash": "2232540893"
         },
         "geoId/06": {
-          "date": "2022-10-11",
-          "value": 11294163,
+          "date": "2022-10-23",
+          "value": 11339108,
           "metaHash": "2232540893"
         },
         "geoId/0649670": {}

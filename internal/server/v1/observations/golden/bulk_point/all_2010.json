@@ -195,7 +195,7 @@
           "points_by_facet": [
             {
               "date": "2010",
-              "value": 36760,
+              "value": 36730,
               "facet": "2171028778"
             }
           ]
@@ -205,7 +205,7 @@
           "points_by_facet": [
             {
               "date": "2010",
-              "value": 48910,
+              "value": 49050,
               "facet": "2171028778"
             }
           ]
@@ -247,7 +247,7 @@
     },
     "1145703171": {
       "import_name": "CensusACS5YearSurvey",
-      "provenance_url": "https://www.census.gov/",
+      "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
       "measurement_method": "CensusACS5yrSurvey"
     },
     "1151455814": {
@@ -258,7 +258,7 @@
     },
     "1226172227": {
       "import_name": "CensusACS1YearSurvey",
-      "provenance_url": "https://www.census.gov/",
+      "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
       "measurement_method": "CensusACS1yrSurvey"
     },
     "1273233945": {

@@ -142,7 +142,7 @@
           },
           "dc/lly3yc1": {
             "importName": "BLS_LAUS",
-            "observationCount": 2646210,
+            "observationCount": 2646318,
             "timeSeriesCount": 12769,
             "releaseFrequency": "P1M",
             "seriesSummary": [
@@ -152,8 +152,8 @@
                   "observationPeriod": "P1M"
                 },
                 "earliestDate": "1976-01",
-                "latestDate": "2022-08",
-                "observationCount": 29678,
+                "latestDate": "2022-09",
+                "observationCount": 29730,
                 "timeSeriesCount": 53,
                 "placeTypeSummary": {
                   "City": {
@@ -196,8 +196,8 @@
                   "observationPeriod": "P1M"
                 },
                 "earliestDate": "1976-01",
-                "latestDate": "2022-08",
-                "observationCount": 2419242,
+                "latestDate": "2022-09",
+                "observationCount": 2419298,
                 "timeSeriesCount": 6358,
                 "placeTypeSummary": {
                   "City": {
@@ -2605,7 +2605,7 @@
                 "name": "United States"
               }
             ],
-            "minValue": 0.86,
+            "minValue": 0.837,
             "maxValue": 8.864
           },
           "EurostatNUTS1": {
@@ -2673,21 +2673,21 @@
                 "name": "Earth"
               }
             ],
-            "minValue": 2.40270684766091,
+            "minValue": 2.38712292764477,
             "maxValue": 5.05647011634277
           }
         },
         "provenanceSummary": {
           "dc/jccrh82": {
             "importName": "WorldDevelopmentIndicators",
-            "observationCount": 11709,
+            "observationCount": 11908,
             "timeSeriesCount": 207,
             "seriesSummary": [
               {
                 "seriesKey": {},
                 "earliestDate": "1960",
-                "latestDate": "2019",
-                "observationCount": 11709,
+                "latestDate": "2020",
+                "observationCount": 11908,
                 "timeSeriesCount": 207,
                 "placeTypeSummary": {
                   "Country": {
@@ -2706,7 +2706,7 @@
                         "name": "United States"
                       }
                     ],
-                    "minValue": 0.86,
+                    "minValue": 0.837,
                     "maxValue": 8.864
                   },
                   "Place": {
@@ -2717,11 +2717,11 @@
                         "name": "Earth"
                       }
                     ],
-                    "minValue": 2.40270684766091,
+                    "minValue": 2.38712292764477,
                     "maxValue": 5.05647011634277
                   }
                 },
-                "minValue": 0.86,
+                "minValue": 0.837,
                 "maxValue": 8.864
               }
             ]
@@ -2902,7 +2902,7 @@
         "provenanceSummary": {
           "dc/e9k9ze": {
             "importName": "NYT_COVID19",
-            "observationCount": 2617435,
+            "observationCount": 2618119,
             "timeSeriesCount": 6554,
             "releaseFrequency": "P1D",
             "seriesSummary": [
@@ -2911,8 +2911,8 @@
                   "measurementMethod": "dcDerivedStat/NYT_COVID19_GitHub"
                 },
                 "earliestDate": "2020-01-22",
-                "latestDate": "2022-10-11",
-                "observationCount": 2530567,
+                "latestDate": "2022-10-23",
+                "observationCount": 2531251,
                 "timeSeriesCount": 3277,
                 "placeTypeSummary": {
                   "City": {

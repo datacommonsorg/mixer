@@ -4,13 +4,13 @@
       "data": {
         "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita": {
           "val": {
-            "1990": 1190,
+            "1990": 1180,
             "1991": 1210,
             "1992": 1280,
             "1993": 1350,
             "1994": 1440,
             "1995": 1560,
-            "1996": 1680,
+            "1996": 1670,
             "1997": 1740,
             "1998": 1840,
             "1999": 1990,
@@ -20,7 +20,7 @@
             "2003": 2450,
             "2004": 2680,
             "2005": 2930,
-            "2006": 3210,
+            "2006": 3220,
             "2007": 3510,
             "2008": 3630,
             "2009": 3890,
@@ -33,8 +33,9 @@
             "2016": 5720,
             "2017": 6120,
             "2018": 6600,
-            "2019": 6930,
-            "2020": 6390
+            "2019": 6900,
+            "2020": 6440,
+            "2021": 7220
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
@@ -145,7 +146,8 @@
             "2017": 1338676779,
             "2018": 1352642283,
             "2019": 1366417756,
-            "2020": 1380004385
+            "2020": 1380004385,
+            "2021": 1393409033
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
@@ -193,7 +195,8 @@
             "2016": 16.5,
             "2017": 18.2,
             "2018": 20.08130004,
-            "2019": 41
+            "2019": 29.4,
+            "2020": 43
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
@@ -1431,36 +1434,38 @@
       "data": {
         "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita": {
           "val": {
-            "1990": 19720,
-            "1991": 20990,
-            "1992": 21600,
-            "1993": 21930,
-            "1994": 22550,
-            "1995": 23610,
-            "1996": 24800,
-            "1997": 25470,
-            "1998": 25380,
-            "1999": 25630,
-            "2000": 27220,
-            "2001": 27890,
-            "2002": 28560,
-            "2003": 29380,
-            "2004": 30920,
-            "2005": 32350,
-            "2006": 33960,
-            "2007": 35540,
-            "2008": 35710,
-            "2009": 34010,
-            "2010": 35890,
-            "2011": 36790,
-            "2012": 38190,
-            "2013": 40280,
-            "2014": 40590,
-            "2015": 41940,
-            "2016": 41310,
-            "2017": 42430,
-            "2018": 43220,
-            "2019": 43760
+            "1990": 20130,
+            "1991": 21420,
+            "1992": 22050,
+            "1993": 22390,
+            "1994": 23010,
+            "1995": 24060,
+            "1996": 25300,
+            "1997": 25960,
+            "1998": 25820,
+            "1999": 26050,
+            "2000": 27680,
+            "2001": 28380,
+            "2002": 29040,
+            "2003": 29870,
+            "2004": 31430,
+            "2005": 32880,
+            "2006": 34530,
+            "2007": 36090,
+            "2008": 36220,
+            "2009": 34390,
+            "2010": 36280,
+            "2011": 37270,
+            "2012": 38640,
+            "2013": 40760,
+            "2014": 41030,
+            "2015": 42510,
+            "2016": 42010,
+            "2017": 42980,
+            "2018": 43730,
+            "2019": 43930,
+            "2020": 43630,
+            "2021": 44570
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
@@ -1568,11 +1573,12 @@
             "2013": 127445000,
             "2014": 127276000,
             "2015": 127141000,
-            "2016": 126994511,
-            "2017": 126785797,
-            "2018": 126529100,
-            "2019": 126264931,
-            "2020": 125836021
+            "2016": 127076000,
+            "2017": 126972000,
+            "2018": 126811000,
+            "2019": 126633000,
+            "2020": 126261000,
+            "2021": 125681593
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
@@ -1645,7 +1651,8 @@
             "2016": 93.18272128,
             "2017": 91.72654724,
             "2018": 91.28,
-            "2019": 92.73039781
+            "2019": 92.73039781,
+            "2020": 90.21945812
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
@@ -2892,27 +2899,29 @@
             "1996": 29870,
             "1997": 31500,
             "1998": 33120,
-            "1999": 34720,
+            "1999": 34730,
             "2000": 36800,
-            "2001": 37700,
+            "2001": 37710,
             "2002": 38430,
-            "2003": 39740,
-            "2004": 42060,
-            "2005": 44560,
-            "2006": 47160,
-            "2007": 48280,
-            "2008": 48290,
-            "2009": 46940,
-            "2010": 48910,
-            "2011": 50820,
-            "2012": 53110,
-            "2013": 54330,
-            "2014": 56710,
-            "2015": 58290,
-            "2016": 59030,
-            "2017": 61410,
-            "2018": 64110,
-            "2019": 66060
+            "2003": 39760,
+            "2004": 42070,
+            "2005": 44550,
+            "2006": 47140,
+            "2007": 48300,
+            "2008": 48400,
+            "2009": 47030,
+            "2010": 49050,
+            "2011": 50870,
+            "2012": 53130,
+            "2013": 54380,
+            "2014": 56670,
+            "2015": 58180,
+            "2016": 58870,
+            "2017": 61190,
+            "2018": 64090,
+            "2019": 66120,
+            "2020": 64210,
+            "2021": 70480
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
@@ -3164,7 +3173,8 @@
             "2016": 85.54442129,
             "2017": 87.27488917,
             "2018": 88.49890317,
-            "2019": 89.43028486
+            "2019": 89.43028486,
+            "2020": 90.9
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
@@ -4164,7 +4174,7 @@
           },
           "metadata": {
             "importName": "CensusUSAMedianAgeIncome",
-            "provenanceUrl": "https://www.census.gov/",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
             "measurementMethod": "CensusACS5yrSurvey",
             "unit": "Year"
           }
@@ -5522,7 +5532,7 @@
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey",
-            "provenanceUrl": "https://www.census.gov/",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
             "measurementMethod": "CensusACS5yrSurvey"
           }
         },
@@ -6088,7 +6098,8 @@
             "2022-05": 663331,
             "2022-06": 768615,
             "2022-07": 754073,
-            "2022-08": 782707
+            "2022-08": 785810,
+            "2022-09": 716263
           },
           "metadata": {
             "importName": "BLS_LAUS",
@@ -6113,7 +6124,7 @@
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey",
-            "provenanceUrl": "https://www.census.gov/",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
             "measurementMethod": "CensusACS5yrSurvey",
             "unit": "Year"
           }
@@ -6203,7 +6214,7 @@
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey",
-            "provenanceUrl": "https://www.census.gov/",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
             "measurementMethod": "CensusACS5yrSurvey"
           }
         },
@@ -6626,7 +6637,7 @@
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey",
-            "provenanceUrl": "https://www.census.gov/",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
             "measurementMethod": "CensusACS5yrSurvey",
             "unit": "Year"
           }
@@ -7854,7 +7865,7 @@
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey",
-            "provenanceUrl": "https://www.census.gov/",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
             "measurementMethod": "CensusACS5yrSurvey"
           }
         },
@@ -8277,7 +8288,7 @@
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey",
-            "provenanceUrl": "https://www.census.gov/",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
             "measurementMethod": "CensusACS5yrSurvey",
             "unit": "Year"
           }

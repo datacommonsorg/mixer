@@ -27,7 +27,7 @@
           },
           "metadata": {
             "importName": "CensusACS1YearSurvey",
-            "provenanceUrl": "https://www.census.gov/",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
             "measurementMethod": "CensusACS1yrSurvey"
           }
         }
@@ -50,7 +50,7 @@
           },
           "metadata": {
             "importName": "CensusACS1YearSurvey",
-            "provenanceUrl": "https://www.census.gov/",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
             "measurementMethod": "CensusACS1yrSurvey"
           }
         }
@@ -73,7 +73,7 @@
           },
           "metadata": {
             "importName": "CensusACS1YearSurvey",
-            "provenanceUrl": "https://www.census.gov/",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
             "measurementMethod": "CensusACS1yrSurvey"
           }
         }
@@ -96,7 +96,7 @@
           },
           "metadata": {
             "importName": "CensusACS1YearSurvey",
-            "provenanceUrl": "https://www.census.gov/",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
             "measurementMethod": "CensusACS1yrSurvey"
           }
         }
