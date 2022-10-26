@@ -151,6 +151,26 @@ func GetLocationsRankings(
 				statVar = row.Parts[2]
 			}
 			if _, ok := result.Data[statVar]; ok {
+				// Temporary hack to handle ranking for Count_Person so that we pick the
+				// most complete ranking
+				if statVar == "Count_Person" && row.Data != nil {
+					currRankAll := result.Data[statVar].GetRankAll()
+					newRankAll := row.Data.(*pb.RelatedPlacesInfo).GetRankAll()
+					// If there is no ranking information in the new row, continue
+					if newRankAll == nil || newRankAll.GetInfo() == nil {
+						continue
+					}
+					// if there is no ranking information in the current row, use the new
+					// row
+					if currRankAll == nil || currRankAll.GetInfo() == nil {
+						result.Data[statVar] = row.Data.(*pb.RelatedPlacesInfo)
+					}
+					// if there is more ranking information in the new row, use the new
+					// row
+					if len(newRankAll.GetInfo()) > len(currRankAll.GetInfo()) {
+						result.Data[statVar] = row.Data.(*pb.RelatedPlacesInfo)
+					}
+				}
 				continue
 			}
 			if row.Data == nil {
