@@ -258,6 +258,20 @@
       "provenanceId": "dc/sm3m2w3"
     },
     {
+      "subjectId": "earthquake/pr71347623",
+      "subjectName": "3 km NNW of Caban, Puerto Rico",
+      "subjectTypes": [
+        "EarthquakeEvent"
+      ],
+      "predicate": "affectedPlace",
+      "objectId": "zip/00603",
+      "objectName": "00603",
+      "objectTypes": [
+        "CensusZipCodeTabulationArea"
+      ],
+      "provenanceId": "dc/xz8ndk3"
+    },
+    {
       "subjectId": "geoId/7200500530",
       "subjectName": "Aguacate",
       "subjectTypes": [

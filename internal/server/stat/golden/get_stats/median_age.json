@@ -13,7 +13,7 @@
       "2020": 36.7
     },
     "placeName": "California",
-    "provenanceUrl": "https://www.census.gov/"
+    "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html"
   },
   "geoId/06085": {
     "data": {
@@ -29,7 +29,7 @@
       "2020": 37.2
     },
     "placeName": "Santa Clara County",
-    "provenanceUrl": "https://www.census.gov/"
+    "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html"
   },
   "geoId/0649670": {
     "data": {
@@ -45,6 +45,6 @@
       "2020": 35.2
     },
     "placeName": "Mountain View",
-    "provenanceUrl": "https://www.census.gov/"
+    "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html"
   }
 }

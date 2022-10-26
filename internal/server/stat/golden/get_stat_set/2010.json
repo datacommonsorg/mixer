@@ -4,12 +4,12 @@
       "stat": {
         "country/FRA": {
           "date": "2010",
-          "value": 36760,
+          "value": 36730,
           "metaHash": "2171028778"
         },
         "country/USA": {
           "date": "2010",
-          "value": 48910,
+          "value": 49050,
           "metaHash": "2171028778"
         },
         "geoId/06": {},

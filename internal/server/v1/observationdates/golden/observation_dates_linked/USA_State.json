@@ -3124,7 +3124,7 @@
     },
     "1145703171": {
       "import_name": "CensusACS5YearSurvey",
-      "provenance_url": "https://www.census.gov/",
+      "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
       "measurement_method": "CensusACS5yrSurvey"
     },
     "1151455814": {
@@ -3135,7 +3135,7 @@
     },
     "1226172227": {
       "import_name": "CensusACS1YearSurvey",
-      "provenance_url": "https://www.census.gov/",
+      "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
       "measurement_method": "CensusACS1yrSurvey"
     },
     "1541763368": {

@@ -2220,7 +2220,7 @@
               "name": "United States"
             }
           ],
-          "minValue": 0.86,
+          "minValue": 0.837,
           "maxValue": 8.864
         },
         "EurostatNUTS1": {
@@ -2288,21 +2288,21 @@
               "name": "Earth"
             }
           ],
-          "minValue": 2.40270684766091,
+          "minValue": 2.38712292764477,
           "maxValue": 5.05647011634277
         }
       },
       "provenanceSummary": {
         "dc/jccrh82": {
           "importName": "WorldDevelopmentIndicators",
-          "observationCount": 11709,
+          "observationCount": 11908,
           "timeSeriesCount": 207,
           "seriesSummary": [
             {
               "seriesKey": {},
               "earliestDate": "1960",
-              "latestDate": "2019",
-              "observationCount": 11709,
+              "latestDate": "2020",
+              "observationCount": 11908,
               "timeSeriesCount": 207,
               "placeTypeSummary": {
                 "Country": {
@@ -2321,7 +2321,7 @@
                       "name": "United States"
                     }
                   ],
-                  "minValue": 0.86,
+                  "minValue": 0.837,
                   "maxValue": 8.864
                 },
                 "Place": {
@@ -2332,11 +2332,11 @@
                       "name": "Earth"
                     }
                   ],
-                  "minValue": 2.40270684766091,
+                  "minValue": 2.38712292764477,
                   "maxValue": 5.05647011634277
                 }
               },
-              "minValue": 0.86,
+              "minValue": 0.837,
               "maxValue": 8.864
             }
           ]
