@@ -63,6 +63,7 @@ var (
 	useBranchBt = flag.Bool("use_branch_bt", true, "Use branch bigtable cache")
 	branchBTProject = flag.String("branch_bt_project", "", "GCP project for branch Bigtable cache.")
 	branchBtInstance = flag.String("branch_bt_instance", "", "branch Bigtable instance.")
+	branchCacheVersionBucket = flag.String("branch_cache_version_bucket", "", "branch cache version bucket.")
 	// GCS to hold memdb data.
 	// Note GCS bucket and pubsub should be within the mixer project.
 	useTmcfCsvData = flag.Bool("use_tmcf_csv_data", false, "Use tmcf and csv data")
@@ -81,7 +82,6 @@ var (
 const (
 	// Base BigTable
 	baseBtInstance = "prophet-cache"
-	branchCacheVersionBucket    = "datcom-control"
 	branchCacheSubscriberPrefix = "branch-cache-subscriber-"
 	// Memdb config file name
 	memdbConfig = "memdb.json"
@@ -162,7 +162,7 @@ func main() {
 		var branchTableName string
 		if *useBranchBt {
 			branchTableName, err = server.ReadBranchTableName(
-				ctx, branchCacheVersionBucket, branchCacheVersionFile)
+				ctx, *branchCacheVersionBucket, branchCacheVersionFile)
 			if err != nil {
 				log.Fatalf("Failed to read branch cache folder: %v", err)
 			}
