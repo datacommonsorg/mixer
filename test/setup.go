@@ -116,7 +116,7 @@ func setupInternal(
 	}
 
 	metadata, err := server.NewMetadata(customBigtableProject,
-		strings.TrimSpace(string(bqTableID)), storeProject, "", schemaPath)
+		strings.TrimSpace(string(bqTableID)), storeProject, "", "", schemaPath)
 	if err != nil {
 		return nil, nil, err
 	}
@@ -161,6 +161,7 @@ func SetupBqOnly() (pb.MixerClient, pb.ReconClient, error) {
 		"",
 		strings.TrimSpace(string(bqTableID)),
 		storeProject,
+		"",
 		"",
 		schemaPath)
 	if err != nil {

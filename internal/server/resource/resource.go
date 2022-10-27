@@ -58,6 +58,7 @@ type Metadata struct {
 	BigQueryDataset        string
 	CoreBigtableProject    string
 	BranchBigtableInstance string
+	BranchBigTableProject  string
 }
 
 // SearchIndex holds the index for searching stat var (group).

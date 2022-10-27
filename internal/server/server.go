@@ -79,6 +79,7 @@ func NewMetadata(
 	bigQueryDataset,
 	storeProject,
 	branchBigtableInstance,
+	branch_bt_project,
 	schemaPath string,
 ) (*resource.Metadata, error) {
 	_, filename, _, _ := runtime.Caller(0)
@@ -116,6 +117,7 @@ func NewMetadata(
 			BigQueryDataset:        bigQueryDataset,
 			CoreBigtableProject:    storeProject,
 			BranchBigtableInstance: branchBigtableInstance,
+			BranchBigTableProject:  branch_bt_project,
 		},
 		nil
 }

@@ -61,6 +61,8 @@ var (
 	importGroupTables = flag.String("import_group_tables", "", "Newline separated list of import group tables")
 	// Branch Bigtable Cache
 	useBranchBt = flag.Bool("use_branch_bt", true, "Use branch bigtable cache")
+	branchBTProject = flag.String("branch_bt_project", "", "GCP project for branch Bigtable cache.")
+	branchBtInstance = flag.String("branch_bt_instance", "", "branch Bigtable instance.")
 	// GCS to hold memdb data.
 	// Note GCS bucket and pubsub should be within the mixer project.
 	useTmcfCsvData = flag.Bool("use_tmcf_csv_data", false, "Use tmcf and csv data")
@@ -79,8 +81,6 @@ var (
 const (
 	// Base BigTable
 	baseBtInstance = "prophet-cache"
-	// Branch BigTable and Pubsub
-	branchBtInstance            = "prophet-branch-cache"
 	branchCacheVersionBucket    = "datcom-control"
 	branchCacheSubscriberPrefix = "branch-cache-subscriber-"
 	// Memdb config file name
@@ -166,7 +166,7 @@ func main() {
 			if err != nil {
 				log.Fatalf("Failed to read branch cache folder: %v", err)
 			}
-			branchTable, err := bigtable.NewBtTable(ctx, *storeProject, branchBtInstance, branchTableName)
+			branchTable, err := bigtable.NewBtTable(ctx, *branchBTProject, *branchBtInstance, branchTableName)
 			if err != nil {
 				log.Fatalf("Failed to create BigTable client: %v", err)
 			}
@@ -175,7 +175,7 @@ func main() {
 
 		// Metadata.
 		metadata, err := server.NewMetadata(
-			*mixerProject, *bqDataset, *storeProject, branchBtInstance, *schemaPath)
+			*mixerProject, *bqDataset, *storeProject, *branchBtInstance, *branchBTProject, *schemaPath)
 		if err != nil {
 			log.Fatalf("Failed to create metadata: %v", err)
 		}
@@ -204,7 +204,7 @@ func main() {
 
 		// Subscribe to branch cache update
 		if *useBranchBt {
-			err := mixerServer.SubscribeBranchCacheUpdate(ctx, *storeProject,
+			err := mixerServer.SubscribeBranchCacheUpdate(ctx, *branchBTProject,
 				branchCacheSubscriberPrefix, branchCachePubsubTopic)
 			if err != nil {
 				log.Fatalf("Failed to subscribe to branch cache update: %v", err)
