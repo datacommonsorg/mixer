@@ -75,11 +75,10 @@ Run the following code to start mixer gRPC server (without branch cache)
 # In repo root directory
 go run --tags sqlite_fts5 cmd/main.go \
     --mixer_project=datcom-mixer-staging \
-    --store_project=datcom-store \
     --bq_dataset=$(head -1 deploy/storage/bigquery.version) \
-    --import_group_tables=$(head -1 deploy/storage/bigtable_import_groups.version) \
+    --base_bigtable="$(cat deploy/storage/base_bigtable.yaml)" \
     --schema_path=$PWD/deploy/mapping/ \
-    --use_branch_bt=true
+    --use_branch_bt=false
 
 go run examples/main.go
 ```
@@ -153,9 +152,8 @@ to that path, and you can use `go tool pprof` to analyze it. For example;
 # In repo root directory
 go run --tags sqlite_fts5 cmd/main.go \
     --mixer_project=datcom-mixer-staging \
-    --store_project=datcom-store \
     --bq_dataset=$(head -1 deploy/storage/bigquery.version) \
-    --import_group_tables=$(head -1 deploy/storage/bigtable_import_groups.version) \
+    --base_bigtable="$(cat deploy/storage/base_bigtable.yaml)" \
     --schema_path=$PWD/deploy/mapping/ \
     --use_branch_bt=true
     --startup_memprof=grpc.memprof     # <-- note the additional flag here
@@ -178,9 +176,8 @@ server.
 # In repo root directory
 go run cmd/main.go \
     --mixer_project=datcom-mixer-staging \
-    --store_project=datcom-store \
     --bq_dataset=$(head -1 deploy/storage/bigquery.version) \
-    --import_group_tables=$(head -1 deploy/storage/bigtable_import_groups.version) \
+    --base_bigtable="$(cat deploy/storage/base_bigtable.yaml)" \
     --schema_path=$PWD/deploy/mapping/ \
     --use_branch_bt=true
     --httpprof_port=6060     # <-- note the additional flag here

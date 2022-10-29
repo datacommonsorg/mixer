@@ -16,7 +16,6 @@ package server
 
 import (
 	"context"
-	"io"
 	"log"
 	"os"
 	"path"
@@ -25,7 +24,6 @@ import (
 	"strings"
 
 	pubsub "cloud.google.com/go/pubsub"
-	"cloud.google.com/go/storage"
 	"github.com/datacommonsorg/mixer/internal/parser/mcf"
 	dcpubsub "github.com/datacommonsorg/mixer/internal/pubsub"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
@@ -45,7 +43,11 @@ type Server struct {
 
 func (s *Server) updateBranchTable(ctx context.Context, branchTableName string) {
 	branchTable, err := bigtable.NewBtTable(
-		ctx, s.metadata.CoreBigtableProject, s.metadata.BranchBigtableInstance, branchTableName)
+		ctx,
+		bigtable.BranchBigtableProject,
+		bigtable.BranchBigtableInstance,
+		branchTableName,
+	)
 	if err != nil {
 		log.Printf("Failed to udpate branch cache Bigtable client: %v", err)
 		return
@@ -54,31 +56,10 @@ func (s *Server) updateBranchTable(ctx context.Context, branchTableName string) 
 	log.Printf("Updated branch table to use %s", branchTableName)
 }
 
-// ReadBranchTableName reads branch cache folder from GCS.
-func ReadBranchTableName(
-	ctx context.Context, bucket, versionFile string) (string, error) {
-	client, err := storage.NewClient(ctx)
-	if err != nil {
-		return "", err
-	}
-	rc, err := client.Bucket(bucket).Object(versionFile).NewReader(ctx)
-	if err != nil {
-		return "", err
-	}
-	defer rc.Close()
-	folder, err := io.ReadAll(rc)
-	if err != nil {
-		return "", err
-	}
-	return string(folder), nil
-}
-
 // NewMetadata initialize the metadata for translator.
 func NewMetadata(
 	mixerProject,
 	bigQueryDataset,
-	storeProject,
-	branchBigtableInstance,
 	schemaPath string,
 ) (*resource.Metadata, error) {
 	_, filename, _, _ := runtime.Caller(0)
@@ -108,27 +89,24 @@ func NewMetadata(
 	outArcInfo := map[string]map[string][]types.OutArcInfo{}
 	inArcInfo := map[string][]types.InArcInfo{}
 	return &resource.Metadata{
-			Mappings:               mappings,
-			OutArcInfo:             outArcInfo,
-			InArcInfo:              inArcInfo,
-			SubTypeMap:             subTypeMap,
-			MixerProject:           mixerProject,
-			BigQueryDataset:        bigQueryDataset,
-			CoreBigtableProject:    storeProject,
-			BranchBigtableInstance: branchBigtableInstance,
+			Mappings:        mappings,
+			OutArcInfo:      outArcInfo,
+			InArcInfo:       inArcInfo,
+			SubTypeMap:      subTypeMap,
+			MixerProject:    mixerProject,
+			BigQueryDataset: bigQueryDataset,
 		},
 		nil
 }
 
 // SubscribeBranchCacheUpdate subscribe for branch cache update.
 func (s *Server) SubscribeBranchCacheUpdate(ctx context.Context,
-	pubsubProject, subscriberPrefix, pubsubTopic string,
 ) error {
 	return dcpubsub.Subscribe(
 		ctx,
-		pubsubProject,
-		subscriberPrefix,
-		pubsubTopic,
+		bigtable.BranchBigtableProject,
+		bigtable.BranchCacheSubscriberPrefix,
+		bigtable.BranchCachePubsubTopic,
 		func(ctx context.Context, msg *pubsub.Message) error {
 			branchTableName := string(msg.Data)
 			log.Printf("branch cache subscriber message received with table name: %s\n", branchTableName)

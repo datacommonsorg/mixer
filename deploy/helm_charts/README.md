@@ -11,7 +11,7 @@ applying the resources to a live cluster.
 
 Note: Helm uses [k8s config](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-access-for-kubectl) for authentication. You can visit the GCP UI and click "CONNECT" on your cluster's page to get the command to configure the k8s config.
 
-![Alt text](images/gke_connect.png?raw=true 'credentials')
+![Alt text](images/gke_connect.png?raw=true "credentials")
 
 Check if the k8s config points to the right cluster with `kubectl config current-context`.
 
@@ -35,5 +35,5 @@ helm upgrade --install mixer-dev deploy/helm_charts/mixer \
     --set-file mixer.schemaConfigs."dailyweather.mcf"=deploy/mapping/dailyweather.mcf \
     --set-file mixer.schemaConfigs."monthlyweather.mcf"=deploy/mapping/monthlyweather.mcf \
     --set-file kgStoreConfig.bigqueryVersion=deploy/storage/bigquery.version \
-    --set-file kgStoreConfig.bigtableImportGroupsVersion=deploy/storage/bigtable_import_groups.version
+    --set-file kgStoreConfig.baseBigtable=deploy/storage/base_bigtable.yaml
 ```

@@ -27,6 +27,15 @@ syntax = "proto3";
 option go_package = "./proto";
 package datacommons;
 
+
+// Represent information about Bigtable in a project.
+// This is repsented in yaml format, used as server config.
+message BigtableInfo {
+  string project = 1;
+  string instance = 2;
+  repeated string tables = 3;
+}
+
 // Wrapper for all entities returned from search which belong to a single type.
 message SearchResultSection {
   // Type of entities in this section.
@@ -68,14 +77,10 @@ message GetVersionRequest {}
 
 // Get version response.
 message GetVersionResponse {
-  // Store project
-  string store = 1;
+  // Bigtable table names
+  repeated string tables = 1;
   // Big Query dataset
   string big_query = 2;
-  // Bigtable instance
-  repeated string tables = 5;
   // Github commit hash
-  string git_hash = 4;
-
-  reserved 3, 6;
+  string git_hash = 3;
 }

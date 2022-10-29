@@ -86,8 +86,8 @@ ingress:
 
 kgStoreConfig:
   bigqueryVersion:
-  bigtableImportGroupsVersion:
-  storeProjectID: datcom-store
+  baseBigtable:
+  customBigtable:
 
 memdbJSON: ""
 

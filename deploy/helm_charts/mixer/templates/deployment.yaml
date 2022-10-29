@@ -72,8 +72,8 @@ spec:
               memory:  {{ .resources.memoryRequest }}
           args:
             # Common arguments both Mixer and Recon services.
-            - --import_group_tables=$(IMPORT_GROUP_TABLES)
-            - --store_project=$(STORE_PROJECT)
+            - --base_bigtable=$(BASE_BIGTABLE)
+            - --custom_bigtable=$(CUSTOM_BIGTABLE)
             {{- if eq $serviceName "recon"}}
             - --serve_recon_service=true
             - --serve_mixer_service=false
@@ -108,11 +108,6 @@ spec:
                 configMapKeyRef:
                   name: {{ include "mixer.fullname" $ }}-mixer-config
                   key: mixerProject
-            - name: STORE_PROJECT
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ include "mixer.fullname" $ }}-store-config
-                  key: store.project
             - name: BIG_QUERY
               {{- if eq $.Values.mixer.bigqueryOnly true }}
               value: {{ $.Values.mixer.bigqueryTableRef }}
@@ -122,11 +117,16 @@ spec:
                   name: {{ include "mixer.fullname" $ }}-store-config
                   key: bigquery.version
               {{- end }}
-            - name: IMPORT_GROUP_TABLES
+            - name: BASE_BIGTABLE
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "mixer.fullname" $ }}-store-config
-                  key: bigtable_import_groups.version
+                  key: base_bigtable.yaml
+            - name: CUSTOM_BIGTABLE
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "mixer.fullname" $ }}-store-config
+                  key: custom_bigtable.yaml
             - name: MIXER_HASH
               valueFrom:
                 configMapKeyRef:
