@@ -44,7 +44,7 @@ func (t *Table) Name() string {
 	return t.name
 }
 
-// NewTable creates a new cbt.Table instance.
+// NewBtTable creates a new cbt.Table instance.
 func NewBtTable(ctx context.Context, projectID, instanceID, tableID string) (
 	*cbt.Table, error) {
 	btClient, err := cbt.NewClient(ctx, projectID, instanceID)

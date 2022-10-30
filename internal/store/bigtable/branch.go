@@ -22,11 +22,14 @@ import (
 )
 
 const (
-	// Branch BigTable and Pubsub constants
-	BranchBigtableProject       = "datcom-store"
-	BranchBigtableInstance      = "prophet-branch-cache"
+	// BranchBigtableProject is the branch bigtable project
+	BranchBigtableProject = "datcom-store"
+	// BranchBigtableProject is the branch bigtable instance
+	BranchBigtableInstance = "prophet-branch-cache"
+	// BranchBigtableProject is the branch cache subscriber prefix
 	BranchCacheSubscriberPrefix = "branch-cache-subscriber-"
-	BranchCachePubsubTopic      = "proto-branch-cache-reload"
+	// BranchBigtableProject is the branch cache pubsub topic
+	BranchCachePubsubTopic = "proto-branch-cache-reload"
 
 	branchCacheVersionBucket = "datcom-control"
 	branchCacheVersionFile   = "latest_proto_branch_cache_version.txt"
