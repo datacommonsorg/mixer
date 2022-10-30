@@ -45,6 +45,8 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+// Represent information about Bigtable in a project.
+// This is repsented in yaml format, used as server config.
 type BigtableInfo struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

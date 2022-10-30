@@ -66,12 +66,12 @@ if [[ $ENV == "mixer_autopush" ]]; then
   # Update bigquery version
   gsutil cp gs://datcom-control/latest_base_bigquery_version.txt deploy/storage/bigquery.version
   # Import group
-  yq eval -i 'del(.tables)' deploy/storage/base_table.yaml
-  yq eval -i '.tables = []' deploy/storage/base_table.yaml
+  yq eval -i 'del(.tables)' deploy/storage/base_bigtable.yaml
+  yq eval -i '.tables = []' deploy/storage/base_bigtable.yaml
   for src in $(gsutil ls gs://datcom-control/autopush/*_latest_base_cache_version.txt); do
     echo "Copying $src"
-    export TABLE = "$(gsutil cat $src)"
-    yq eval -i '.tables += ["env(TABLE)"]' deploy/storage/base_table.yaml
+    export TABLE="$(gsutil cat $src)"
+    yq eval -i '.tables += [env(TABLE)]' deploy/storage/base_bigtable.yaml
   done
 fi
 export PROJECT_ID=$(yq eval '.mixer.gcpProjectID' deploy/helm_charts/envs/$ENV.yaml)
