@@ -33,8 +33,16 @@ set -e
 
 ENV=$1
 
-if [[ $ENV != "mixer_staging" && $ENV != "mixer_prod" && $ENV != "mixer_autopush" && $ENV != "mixer_encode" && $ENV != "mixer_dev" && $ENV != "mixer_private" ]]; then
-  echo "First argument should be 'mixer_staging' or 'mixer_prod' or 'mixer_autopush' or 'mixer_encode' or 'mixer_dev' or 'mixer_private'"
+if [[
+  $ENV != "mixer_staging" &&
+  $ENV != "mixer_prod" &&
+  $ENV != "mixer_autopush" &&
+  $ENV != "mixer_encode" &&
+  $ENV != "mixer_dev" &&
+  $ENV != "mixer_private" &&
+  $ENV != "mixer_stanford"
+]]; then
+  echo "First argument should be 'mixer_staging' or 'mixer_prod' or 'mixer_autopush' or 'mixer_encode' or 'mixer_dev' or 'mixer_private' or 'mixer_stanford'"
   exit
 fi
 
@@ -58,12 +66,12 @@ if [[ $ENV == "mixer_autopush" ]]; then
   # Update bigquery version
   gsutil cp gs://datcom-control/latest_base_bigquery_version.txt deploy/storage/bigquery.version
   # Import group
-  yq eval -i 'del(.tables)' deploy/storage/base_tables.yaml
-  yq eval -i '.tables = []' deploy/storage/base_tables.yaml
+  yq eval -i 'del(.tables)' deploy/storage/base_table.yaml
+  yq eval -i '.tables = []' deploy/storage/base_table.yaml
   for src in $(gsutil ls gs://datcom-control/autopush/*_latest_base_cache_version.txt); do
     echo "Copying $src"
     export TABLE = "$(gsutil cat $src)"
-    yq eval -i '.tables += ["env(TABLE)"]' deploy/storage/base_tables.yaml
+    yq eval -i '.tables += ["env(TABLE)"]' deploy/storage/base_table.yaml
   done
 fi
 export PROJECT_ID=$(yq eval '.mixer.gcpProjectID' deploy/helm_charts/envs/$ENV.yaml)
