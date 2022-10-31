@@ -25856,12 +25856,75 @@
     }
   },
   "validCategories": {
-    "country/ASM": {},
-    "country/CHN": {},
-    "country/DEU": {},
-    "country/NGA": {},
-    "country/NZL": {},
-    "country/USA": {}
+    "country/ASM": {
+      "category": [
+        "Demographics",
+        "Economics",
+        "Energy",
+        "Environment",
+        "Health",
+        "Overview"
+      ]
+    },
+    "country/CHN": {
+      "category": [
+        "Demographics",
+        "Economics",
+        "Energy",
+        "Environment",
+        "Equity",
+        "Health",
+        "Overview"
+      ]
+    },
+    "country/DEU": {
+      "category": [
+        "Demographics",
+        "Economics",
+        "Energy",
+        "Environment",
+        "Equity",
+        "Health",
+        "Overview"
+      ]
+    },
+    "country/NGA": {
+      "category": [
+        "Demographics",
+        "Economics",
+        "Energy",
+        "Environment",
+        "Equity",
+        "Health",
+        "Overview"
+      ]
+    },
+    "country/NZL": {
+      "category": [
+        "Demographics",
+        "Economics",
+        "Energy",
+        "Environment",
+        "Health",
+        "Overview"
+      ]
+    },
+    "country/USA": {
+      "category": [
+        "Crime",
+        "Demographics",
+        "Economics",
+        "Education",
+        "Energy",
+        "Environment",
+        "Equity",
+        "Health",
+        "Housing",
+        "Overview"
+      ]
+    },
+    "northamerica": {},
+    "oceania": {}
   },
   "parentPlaces": [
     "oceania",

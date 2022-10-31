@@ -29,6 +29,8 @@ const (
 	BtObsTimeSeries = "d/3/"
 	// BtPlacePagePrefix for place page cache.
 	BtPlacePagePrefix = "d/4/"
+	// BtReconIDMapPrefix for ID mapping for ID-based recon. The key excludes DCID.
+	BtReconIDMapPrefix = "d/5/"
 	// BtBioPagePrefix for biology page cache.
 	BtBioPagePrefix = "d/6/"
 	// BtPropType is the prefix for getting the types for given entity and property
@@ -40,14 +42,18 @@ const (
 	BtArcsPrefix = "d/9/"
 	// BtStatVarSummary for stat var summary cache.
 	BtStatVarSummary = "d/a/"
+	// BtCoordinateReconPrefix for coordinate recon.
+	BtCoordinateReconPrefix = "d/b/"
 	// BtPlacesInPrefix for GetPlacesIn cache.
 	BtPlacesInPrefix = "d/c/"
 	// BtPlacesMetadataPrefix for GetPlaceMetadata cache.
 	BtPlacesMetadataPrefix = "d/d/"
 	// BtObsCollection for obs collection cache.
 	BtObsCollection = "d/e/"
-  // BtPlacePageCategoricalPrefix for place page Categorical cache.
+	// BtPlacePageCategoricalPrefix for place page Categorical cache.
 	BtPlacePageCategoricalPrefix = "d/f/"
+	// LandingPage Menu Categories
+	BtLandingPageCategories = "d/h/"
 	// BtPagedPropTypeValIn for in-arc paged entities by type.
 	// Key: <dcid^predicate^type^page>
 	BtPagedPropTypeValIn = "d/l/"
@@ -56,18 +62,14 @@ const (
 	BtPagedPropTypeValOut = "d/m/"
 	// BtRelatedLocationsSameTypePrefix for related places with same type.
 	BtRelatedLocationsSameTypePrefix = "d/o/"
-	// BtRelatedLocationsSameTypeAndAncestorPrefix for related places with same type and ancestor.
-	BtRelatedLocationsSameTypeAndAncestorPrefix = "d/q/"
 	// BtRelatedLocationsSameTypePCPrefix for related places with same type, per capita.
 	BtRelatedLocationsSameTypePCPrefix = "d/o0/"
+	// BtRelatedLocationsSameTypeAndAncestorPrefix for related places with same
+	// type and ancestor.
+	BtRelatedLocationsSameTypeAndAncestorPrefix = "d/q/"
 	// BtRelatedLocationsSameTypeAndAncestorPCPrefix for related places with same type and ancestor,
 	// per capita.
 	BtRelatedLocationsSameTypeAndAncestorPCPrefix = "d/q0/"
-
-	// BtReconIDMapPrefix for ID mapping for ID-based recon. The key excludes DCID.
-	BtReconIDMapPrefix = "d/5/"
-	// BtCoordinateReconPrefix for coordinate recon.
-	BtCoordinateReconPrefix = "d/b/"
 
 	// BtFamily is the key for the row.
 	BtFamily = "csv"
