@@ -356,18 +356,25 @@ func (s *Server) ResolveIds(
 	return recon.ResolveIds(ctx, in, s.store)
 }
 
-// ResolveEntities implements API for ReconServer.ResolveEntities.
+// ResolveEntities implements API for Recon.ResolveEntities.
 func (s *Server) ResolveEntities(
 	ctx context.Context, in *pb.ResolveEntitiesRequest,
 ) (*pb.ResolveEntitiesResponse, error) {
 	return recon.ResolveEntities(ctx, in, s.store)
 }
 
-// ResolveCoordinates implements API for ReconServer.ResolveCoordinates.
+// ResolveCoordinates implements API for Recon.ResolveCoordinates.
 func (s *Server) ResolveCoordinates(
 	ctx context.Context, in *pb.ResolveCoordinatesRequest,
 ) (*pb.ResolveCoordinatesResponse, error) {
 	return recon.ResolveCoordinates(ctx, in, s.store)
+}
+
+// ResolvePlaceNames implements API for Recon.ResolvePlaceNames.
+func (s *Server) ResolvePlaceNames(
+	ctx context.Context, in *pb.ResolvePlaceNamesRequest,
+) (*pb.ResolvePlaceNamesResponse, error) {
+	return recon.ResolvePlaceNames(ctx, in, s.store, s.mapsClient)
 }
 
 // CompareEntities implements API for Recon.CompareEntities.

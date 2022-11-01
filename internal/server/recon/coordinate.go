@@ -34,7 +34,7 @@ const (
 
 // TODO(Spaceenter): Also add place types to the results.
 
-// ResolveCoordinates implements API for ReconServer.ResolveCoordinates.
+// ResolveCoordinates implements API for Recon.ResolveCoordinates.
 func ResolveCoordinates(
 	ctx context.Context, in *pb.ResolveCoordinatesRequest, store *store.Store) (
 	*pb.ResolveCoordinatesResponse, error,

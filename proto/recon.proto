@@ -112,6 +112,24 @@ message ResolveIdsResponse {
   repeated Entity entities = 1;
 }
 
+message ResolvePlaceNamesRequest {
+  message Place {
+    string name = 1;
+    string type = 2;
+  }
+  repeated Place places = 1;
+}
+
+message ResolvePlaceNamesResponse {
+  message Place {
+    string name = 1;
+    string type = 2;
+    // A list of possible DCIDs, ranked by probabilities.
+    repeated string dcids = 3;
+  }
+  repeated Place places = 1;
+}
+
 service Recon {
   // Compare two entities to determine if they are the same entity.
   rpc CompareEntities(CompareEntitiesRequest)
@@ -144,6 +162,14 @@ service Recon {
   rpc ResolveIds(ResolveIdsRequest) returns (ResolveIdsResponse) {
     option (google.api.http) = {
       post : "/v1/recon/resolve/id"
+      body : "*"
+    };
+  }
+
+  // Resolve a list of places, given the place names and (optional) types.
+  rpc ResolvePlaceNames(ResolvePlaceNamesRequest) returns (ResolvePlaceNamesResponse) {
+    option (google.api.http) = {
+      post : "/v1/recon/resolve/place/name"
       body : "*"
     };
   }

@@ -66,7 +66,7 @@ func getPropVal(node *pb.McfGraph_PropertyValues, prop string) string {
 	return typedValues[0].GetValue()
 }
 
-// ResolveEntities implements API for ReconServer.ResolveEntities.
+// ResolveEntities implements API for Recon.ResolveEntities.
 func ResolveEntities(
 	ctx context.Context, in *pb.ResolveEntitiesRequest, store *store.Store,
 ) (

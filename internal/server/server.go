@@ -34,13 +34,15 @@ import (
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"github.com/datacommonsorg/mixer/internal/translator/solver"
 	"github.com/datacommonsorg/mixer/internal/translator/types"
+	"googlemaps.github.io/maps"
 )
 
-// Server holds resources for a mixer server
+// Server holds resources for a mixer or recon server.
 type Server struct {
-	store    *store.Store
-	metadata *resource.Metadata
-	cache    *resource.Cache
+	store      *store.Store
+	metadata   *resource.Metadata
+	cache      *resource.Cache
+	mapsClient *maps.Client
 }
 
 func (s *Server) updateBranchTable(ctx context.Context, branchTableName string) {
@@ -186,6 +188,6 @@ func NewMixerServer(
 }
 
 // NewReconServer creates a new recon server instance.
-func NewReconServer(store *store.Store) *Server {
-	return &Server{store: store}
+func NewReconServer(store *store.Store, mapsClient *maps.Client) *Server {
+	return &Server{store: store, mapsClient: mapsClient}
 }

@@ -18,6 +18,7 @@ import (
 	"bufio"
 	"bytes"
 	"compress/gzip"
+	"context"
 	"encoding/base64"
 	"encoding/json"
 	"fmt"
@@ -33,6 +34,8 @@ import (
 	"strings"
 	"time"
 
+	secretmanager "cloud.google.com/go/secretmanager/apiv1"
+	"cloud.google.com/go/secretmanager/apiv1/secretmanagerpb"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"golang.org/x/text/cases"
 	"golang.org/x/text/language"
@@ -40,6 +43,7 @@ import (
 	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/proto"
 	"google.golang.org/protobuf/reflect/protoreflect"
+	"googlemaps.github.io/maps"
 )
 
 const (
@@ -499,5 +503,35 @@ func StringListIntersection(list [][]string) []string {
 	}
 	sort.Strings(res)
 
+	return res
+}
+
+// MapsClient gets the client for Maps API.
+// NOTE: `cloudProject` should be the project that hosts the secret of the Maps API key.
+func MapsClient(ctx context.Context,
+	mapsAPIKeySecretVersion string) (*maps.Client, error) {
+
+	secretClient, err := secretmanager.NewClient(ctx)
+	if err != nil {
+		return nil, err
+	}
+	defer secretClient.Close()
+
+	secret, err := secretClient.AccessSecretVersion(ctx,
+		&secretmanagerpb.AccessSecretVersionRequest{
+			Name: mapsAPIKeySecretVersion,
+		})
+	if err != nil {
+		return nil, err
+	}
+
+	return maps.NewClient(maps.WithAPIKey(string(secret.Payload.Data)))
+}
+
+func StringSetToSlice(s map[string]struct{}) []string {
+	res := []string{}
+	for k := range s {
+		res = append(res, k)
+	}
 	return res
 }

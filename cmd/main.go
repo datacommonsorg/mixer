@@ -27,6 +27,8 @@ import (
 	"runtime"
 	"runtime/pprof"
 
+	"cloud.google.com/go/bigquery"
+	"cloud.google.com/go/profiler"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server"
 	"github.com/datacommonsorg/mixer/internal/server/healthcheck"
@@ -36,9 +38,6 @@ import (
 	"github.com/datacommonsorg/mixer/internal/store/memdb"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"golang.org/x/oauth2/google"
-
-	"cloud.google.com/go/bigquery"
-	"cloud.google.com/go/profiler"
 	"google.golang.org/api/compute/v1"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/alts"
@@ -85,6 +84,8 @@ const (
 	branchCacheSubscriberPrefix = "branch-cache-subscriber-"
 	// Memdb config file name
 	memdbConfig = "memdb.json"
+	// The secret is stored in the project datcom-store.
+	mapsAPIKeySecretVersion = "projects/429015563165/secrets/maps-api-key/versions/latest"
 )
 
 func main() {
@@ -215,7 +216,11 @@ func main() {
 	// Register for Recon Service.
 	if *serveReconService {
 		store := store.NewStore(nil, nil, tables, "", nil)
-		reconServer := server.NewReconServer(store)
+		mapsClient, err := util.MapsClient(ctx, mapsAPIKeySecretVersion)
+		if err != nil {
+			log.Fatalf("Failed to create Maps client: %v", err)
+		}
+		reconServer := server.NewReconServer(store, mapsClient)
 		pb.RegisterReconServer(srv, reconServer)
 	}
 
