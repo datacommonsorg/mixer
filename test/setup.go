@@ -32,7 +32,6 @@ import (
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"github.com/datacommonsorg/mixer/internal/store/memdb"
-	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 	"google.golang.org/grpc/reflection"
@@ -78,7 +77,7 @@ func Setup(option ...*TestOption) (pb.MixerClient, pb.ReconClient, error) {
 	}
 	return setupInternal(
 		"../deploy/storage/bigquery.version",
-		"../deploy/storage/bigtable_import_groups.version",
+		"../deploy/storage/base_bigtable_info.yaml",
 		"../deploy/mapping",
 		storeProject,
 		useCache,
@@ -88,7 +87,7 @@ func Setup(option ...*TestOption) (pb.MixerClient, pb.ReconClient, error) {
 }
 
 func setupInternal(
-	bq, btGroup, mcfPath, storeProject string,
+	bq, baseBigtableFile, mcfPath, storeProject string,
 	useCache bool, useMemdb bool, searchOptions server.SearchOptions,
 ) (pb.MixerClient, pb.ReconClient, error) {
 	ctx := context.Background()
@@ -96,27 +95,20 @@ func setupInternal(
 	bqTableID, _ := os.ReadFile(path.Join(path.Dir(filename), bq))
 	schemaPath := path.Join(path.Dir(filename), mcfPath)
 
-	btGroupString, _ := os.ReadFile(path.Join(path.Dir(filename), btGroup))
-	tableNames := util.ParseBigtableGroup(string(btGroupString))
+	baseBigtableInfo, _ := os.ReadFile(path.Join(path.Dir(filename), baseBigtableFile))
 
+	tables, err := bigtable.CreateBigtables(ctx, string(baseBigtableInfo))
+	if err != nil {
+		log.Fatalf("failed to create Bigtable tables: %v", err)
+	}
 	// BigQuery.
 	bqClient, err := bigquery.NewClient(ctx, bqBillingProject)
 	if err != nil {
 		log.Fatalf("failed to create Bigquery client: %v", err)
 	}
 
-	tables := []*bigtable.Table{}
-
-	for _, name := range tableNames {
-		table, err := bigtable.NewBtTable(ctx, storeProject, baseInstance, name)
-		if err != nil {
-			return nil, nil, err
-		}
-		tables = append(tables, bigtable.NewTable(name, table))
-	}
-
 	metadata, err := server.NewMetadata(customBigtableProject,
-		strings.TrimSpace(string(bqTableID)), storeProject, "", schemaPath)
+		strings.TrimSpace(string(bqTableID)), schemaPath)
 	if err != nil {
 		return nil, nil, err
 	}
@@ -160,8 +152,6 @@ func SetupBqOnly() (pb.MixerClient, pb.ReconClient, error) {
 	metadata, err := server.NewMetadata(
 		"",
 		strings.TrimSpace(string(bqTableID)),
-		storeProject,
-		"",
 		schemaPath)
 	if err != nil {
 		return nil, nil, err

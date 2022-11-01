@@ -109,13 +109,15 @@ func ReadWithGroupRowList(
 	unmarshalFunc func([]byte) (interface{}, error),
 ) ([][]BtRow, error) {
 	tables := btGroup.Tables()
+	// CustomImportGroups is passed in at request level.
 	if ctx.Value(CustomImportGroups) != nil {
 		customImportGroups := ctx.Value(CustomImportGroups).([]string)
 		for _, ig := range customImportGroups {
 			customTable, err := NewBtTable(
 				ctx,
 				btGroup.metadata.MixerProject,
-				customBigtableInstance, ig,
+				customBigtableInstance,
+				ig,
 			)
 			if err != nil {
 				log.Printf("Failed to create custom Bigtable client: %v", err)

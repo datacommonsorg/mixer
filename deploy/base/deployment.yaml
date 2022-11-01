@@ -60,7 +60,7 @@ spec:
           args:
             - --mixer_project=$(MIXER_PROJECT)
             - --store_project=$(STORE_PROJECT)
-            - --bq_dataset=$(BIG_QUERY)
+            - --bq_dataset=$(BIGQUERY)
             - --import_group_tables=$(IMPORT_GROUP_TABLES)
             - --schema_path=/datacommons/mapping
             - --memdb_path=/datacommons/memdb
@@ -80,7 +80,7 @@ spec:
                 configMapKeyRef:
                   name: store-configmap
                   key: store.project
-            - name: BIG_QUERY
+            - name: BIGQUERY
               valueFrom:
                 configMapKeyRef:
                   name: store-configmap

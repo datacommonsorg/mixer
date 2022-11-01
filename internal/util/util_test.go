@@ -227,21 +227,6 @@ func TestKeysToSlice(t *testing.T) {
 	}
 }
 
-func TestParseBigtableGroup(t *testing.T) {
-	for _, c := range []struct {
-		input string
-		want  []string
-	}{
-		{"table1\ntable2\n\n", []string{"table1", "table2"}},
-		{"table1 \n table2\n", []string{"table1", "table2"}},
-	} {
-		got := ParseBigtableGroup(c.input)
-		if diff := cmp.Diff(got, c.want); diff != "" {
-			t.Errorf("ParseBigtableGroup got diff %+v", diff)
-		}
-	}
-}
-
 func TestEncode(t *testing.T) {
 	for _, c := range []struct {
 		info  *pb.PaginationInfo

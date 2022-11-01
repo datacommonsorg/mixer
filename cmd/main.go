@@ -34,7 +34,6 @@ import (
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"github.com/datacommonsorg/mixer/internal/store/memdb"
-	"github.com/datacommonsorg/mixer/internal/util"
 	"golang.org/x/oauth2/google"
 
 	"cloud.google.com/go/bigquery"
@@ -50,15 +49,14 @@ var (
 	port         = flag.Int("port", 12345, "Port on which to run the server.")
 	useALTS      = flag.Bool("use_alts", false, "Whether to use ALTS server authentication")
 	mixerProject = flag.String("mixer_project", "", "The GCP project to run the mixer instance.")
-	// Bigtable and BigQuery project
-	storeProject = flag.String("store_project", "", "GCP project stores Bigtable and BigQuery.")
 	// BigQuery (Sparql)
 	useBigquery = flag.Bool("use_bigquery", true, "Use Bigquery to serve Sparql Query")
 	bqDataset   = flag.String("bq_dataset", "", "DataCommons BigQuery dataset.")
 	schemaPath  = flag.String("schema_path", "", "The directory that contains the schema mapping files")
 	// Base Bigtable Cache
-	useBaseBt         = flag.Bool("use_base_bt", true, "Use base bigtable cache")
-	importGroupTables = flag.String("import_group_tables", "", "Newline separated list of import group tables")
+	useBaseBt          = flag.Bool("use_base_bt", true, "Use base bigtable cache")
+	baseBigtableInfo   = flag.String("base_bigtable_info", "", "Yaml formatted text containing information for base Bigtable")
+	customBigtableInfo = flag.String("custom_bigtable_info", "", "Yaml formatted text containing information for custom Bigtable")
 	// Branch Bigtable Cache
 	useBranchBt = flag.Bool("use_branch_bt", true, "Use branch bigtable cache")
 	// GCS to hold memdb data.
@@ -77,12 +75,6 @@ var (
 )
 
 const (
-	// Base BigTable
-	baseBtInstance = "prophet-cache"
-	// Branch BigTable and Pubsub
-	branchBtInstance            = "prophet-branch-cache"
-	branchCacheVersionBucket    = "datcom-control"
-	branchCacheSubscriberPrefix = "branch-cache-subscriber-"
 	// Memdb config file name
 	memdbConfig = "memdb.json"
 )
@@ -100,7 +92,7 @@ func main() {
 	if err == nil && credentials.ProjectID != "" {
 		cfg := profiler.Config{
 			Service:        "datacommons-api",
-			ServiceVersion: *importGroupTables,
+			ServiceVersion: *baseBigtableInfo + *customBigtableInfo,
 		}
 		err := profiler.Start(cfg)
 		if err != nil {
@@ -118,20 +110,19 @@ func main() {
 	// Create grpc server.
 	srv := grpc.NewServer(opts...)
 
-	branchCachePubsubTopic := "proto-branch-cache-reload"
-	branchCacheVersionFile := "latest_proto_branch_cache_version.txt"
-
 	// Base Bigtable cache
 	var tables []*bigtable.Table
 	if *useBaseBt {
-		tableNames := util.ParseBigtableGroup(*importGroupTables)
-		for _, name := range tableNames {
-			t, err := bigtable.NewBtTable(ctx, *storeProject, baseBtInstance, name)
-			if err != nil {
-				log.Fatalf("Failed to create BigTable client: %v", err)
-			}
-			tables = append(tables, bigtable.NewTable(name, t))
+		baseTables, err := bigtable.CreateBigtables(ctx, *baseBigtableInfo)
+		if err != nil {
+			log.Fatalf("Failed to create base Bigtables: %v", err)
 		}
+		customTables, err := bigtable.CreateBigtables(ctx, *customBigtableInfo)
+		if err != nil {
+			log.Fatalf("Failed to create custom Bigtables: %v", err)
+		}
+		// Custom tables ranked highere than base tables.
+		tables = append(customTables, baseTables...)
 	}
 
 	if *serveMixerService {
@@ -161,12 +152,16 @@ func main() {
 		// Branch Bigtable cache
 		var branchTableName string
 		if *useBranchBt {
-			branchTableName, err = server.ReadBranchTableName(
-				ctx, branchCacheVersionBucket, branchCacheVersionFile)
+			branchTableName, err = bigtable.ReadBranchTableName(ctx)
 			if err != nil {
 				log.Fatalf("Failed to read branch cache folder: %v", err)
 			}
-			branchTable, err := bigtable.NewBtTable(ctx, *storeProject, branchBtInstance, branchTableName)
+			branchTable, err := bigtable.NewBtTable(
+				ctx,
+				bigtable.BranchBigtableProject,
+				bigtable.BranchBigtableInstance,
+				branchTableName,
+			)
 			if err != nil {
 				log.Fatalf("Failed to create BigTable client: %v", err)
 			}
@@ -175,7 +170,10 @@ func main() {
 
 		// Metadata.
 		metadata, err := server.NewMetadata(
-			*mixerProject, *bqDataset, *storeProject, branchBtInstance, *schemaPath)
+			*mixerProject,
+			*bqDataset,
+			*schemaPath,
+		)
 		if err != nil {
 			log.Fatalf("Failed to create metadata: %v", err)
 		}
@@ -204,8 +202,7 @@ func main() {
 
 		// Subscribe to branch cache update
 		if *useBranchBt {
-			err := mixerServer.SubscribeBranchCacheUpdate(ctx, *storeProject,
-				branchCacheSubscriberPrefix, branchCachePubsubTopic)
+			err := mixerServer.SubscribeBranchCacheUpdate(ctx)
 			if err != nil {
 				log.Fatalf("Failed to subscribe to branch cache update: %v", err)
 			}

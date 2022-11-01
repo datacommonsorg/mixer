@@ -39,9 +39,8 @@ metadata:
   namespace: {{ .Values.namespace.name }}
 data:
   bigquery.version: {{ required "kgStoreConfig.bigqueryVersion is required." .Values.kgStoreConfig.bigqueryVersion }}
-  bigtable_import_groups.version: |
-  {{-  required "bigtableImportGroupsVersion is required." .Values.kgStoreConfig.bigtableImportGroupsVersion | nindent 4 }}
-  store.project: {{ required "storeProjectID is required." .Values.kgStoreConfig.storeProjectID }}
+  base_bigtable_info.yaml: {{  required "baseBigtableInfo is required." .Values.kgStoreConfig.baseBigtableInfo | quote }}
+  custom_bigtable_info.yaml: {{ .Values.kgStoreConfig.customBigtableInfo | quote }}
 
 ---
 
@@ -72,7 +71,7 @@ metadata:
   name: {{ include "mixer.fullname" . }}-schema-mapping
   namespace: {{ .Values.namespace.name }}
 data:
-  {{- range $key, $val := .Values.mixer.schemaConfigs }}
+  {{ range $key, $val := .Values.mixer.schemaConfigs }}
   {{ $key }}: |
     {{ $val | nindent 4 }}
-  {{- end  }}
+  {{ end  }}

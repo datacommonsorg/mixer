@@ -50,14 +50,12 @@ type Cache struct {
 
 // Metadata represents the metadata used by the server.
 type Metadata struct {
-	Mappings               []*types.Mapping
-	OutArcInfo             map[string]map[string][]types.OutArcInfo
-	InArcInfo              map[string][]types.InArcInfo
-	SubTypeMap             map[string]string
-	MixerProject           string
-	BigQueryDataset        string
-	CoreBigtableProject    string
-	BranchBigtableInstance string
+	Mappings        []*types.Mapping
+	OutArcInfo      map[string]map[string][]types.OutArcInfo
+	InArcInfo       map[string][]types.InArcInfo
+	SubTypeMap      map[string]string
+	MixerProject    string
+	BigQueryDataset string
 }
 
 // SearchIndex holds the index for searching stat var (group).

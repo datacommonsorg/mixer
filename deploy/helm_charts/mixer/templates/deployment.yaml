@@ -72,8 +72,8 @@ spec:
               memory:  {{ .resources.memoryRequest }}
           args:
             # Common arguments both Mixer and Recon services.
-            - --import_group_tables=$(IMPORT_GROUP_TABLES)
-            - --store_project=$(STORE_PROJECT)
+            - --base_bigtable_info=$(BASE_BIGTABLE_INFO)
+            - --custom_bigtable_info=$(CUSTOM_BIGTABLE_INFO)
             {{- if eq $serviceName "recon"}}
             - --serve_recon_service=true
             - --serve_mixer_service=false
@@ -85,7 +85,7 @@ spec:
             # Note: all non-recon services are mixer services.
             {{- if ne $serviceName "recon" }}
             - --mixer_project=$(MIXER_PROJECT)
-            - --bq_dataset=$(BIG_QUERY)
+            - --bq_dataset=$(BIGQUERY)
             - --schema_path=/datacommons/mapping
             - --memdb_path=/datacommons/memdb
             {{- end }}
@@ -108,12 +108,7 @@ spec:
                 configMapKeyRef:
                   name: {{ include "mixer.fullname" $ }}-mixer-config
                   key: mixerProject
-            - name: STORE_PROJECT
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ include "mixer.fullname" $ }}-store-config
-                  key: store.project
-            - name: BIG_QUERY
+            - name: BIGQUERY
               {{- if eq $.Values.mixer.bigqueryOnly true }}
               value: {{ $.Values.mixer.bigqueryTableRef }}
               {{- else }}
@@ -122,11 +117,16 @@ spec:
                   name: {{ include "mixer.fullname" $ }}-store-config
                   key: bigquery.version
               {{- end }}
-            - name: IMPORT_GROUP_TABLES
+            - name: BASE_BIGTABLE_INFO
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "mixer.fullname" $ }}-store-config
-                  key: bigtable_import_groups.version
+                  key: base_bigtable_info.yaml
+            - name: CUSTOM_BIGTABLE_INFO
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "mixer.fullname" $ }}-store-config
+                  key: custom_bigtable_info.yaml
             - name: MIXER_HASH
               valueFrom:
                 configMapKeyRef:

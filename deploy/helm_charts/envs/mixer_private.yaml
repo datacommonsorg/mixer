@@ -123,7 +123,4 @@ memdbJSON: |
 ip: 35.244.175.66
 region: us-central1
 api_title: DataCommons API (Private)
-api:
-  - datacommons.Mixer
-  - datacommons.Recon
 nodes: 3
