@@ -97,6 +97,7 @@ spec:
             - --tmcf_csv_bucket={{ $.Values.mixer.tmcfCSVBucket }}
             - --tmcf_csv_folder={{ $.Values.mixer.tmcfCSVFolder }}
             {{- end }}
+            - --use_search={{ default false .useSearch }}
           volumeMounts:
             - name: schema-mapping
               mountPath: /datacommons/mapping

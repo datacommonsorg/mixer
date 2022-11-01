@@ -59,6 +59,8 @@ var (
 	customBigtableInfo = flag.String("custom_bigtable_info", "", "Yaml formatted text containing information for custom Bigtable")
 	// Branch Bigtable Cache
 	useBranchBt = flag.Bool("use_branch_bt", true, "Use branch bigtable cache")
+	// Stat-var search cache
+	useSearch      = flag.Bool("use_search", true, "Uses stat-var search. Will build search indexes.")
 	// GCS to hold memdb data.
 	// Note GCS bucket and pubsub should be within the mixer project.
 	useTmcfCsvData = flag.Bool("use_tmcf_csv_data", false, "Use tmcf and csv data")
@@ -185,7 +187,7 @@ func main() {
 		// !!Important: do this after creating the memdb, since the cache will
 		// need to merge svg info from memdb.
 		var cache *resource.Cache
-		if *serveMixerService {
+		if *useSearch {
 			cache, err = server.NewCache(ctx, store, server.SearchOptions{
 				UseSearch:           true,
 				BuildSvgSearchIndex: true,
