@@ -65,8 +65,6 @@ const (
 	tmcfCsvBucket         = "datcom-public"
 	tmcfCsvPrefix         = "food"
 	customBigtableProject = "datcom-mixer-autopush"
-	// The secret is stored in the project datcom-store.
-	mapsAPIKeySecretVersion = "projects/429015563165/secrets/maps-api-key/versions/latest"
 )
 
 // Setup creates local server and client.
@@ -181,7 +179,7 @@ func newClient(
 ) (pb.MixerClient, pb.ReconClient, error) {
 	reconStore := store.NewStore(nil, nil, tables, "", metadata)
 
-	mapsClient, err := util.MapsClient(ctx, mapsAPIKeySecretVersion)
+	mapsClient, err := util.MapsClient(ctx)
 	if err != nil {
 		return nil, nil, err
 	}

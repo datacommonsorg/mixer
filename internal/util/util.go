@@ -37,8 +37,10 @@ import (
 	secretmanager "cloud.google.com/go/secretmanager/apiv1"
 	"cloud.google.com/go/secretmanager/apiv1/secretmanagerpb"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	"golang.org/x/oauth2/google"
 	"golang.org/x/text/cases"
 	"golang.org/x/text/language"
+	"google.golang.org/api/compute/v1"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/proto"
@@ -55,7 +57,8 @@ const (
 	// String to represent in arc direction
 	DirectionIn = "in"
 	// String to represent out arc direction
-	DirectionOut = "out"
+	DirectionOut            = "out"
+	mapsAPIKeySecretVersion = "projects/%s/secrets/maps-api-key/versions/latest"
 )
 
 // PlaceStatVar holds a place and a stat var dcid.
@@ -507,9 +510,14 @@ func StringListIntersection(list [][]string) []string {
 }
 
 // MapsClient gets the client for Maps API.
-// NOTE: `cloudProject` should be the project that hosts the secret of the Maps API key.
-func MapsClient(ctx context.Context,
-	mapsAPIKeySecretVersion string) (*maps.Client, error) {
+func MapsClient(ctx context.Context) (*maps.Client, error) {
+	var projectID string
+	credentials, err := google.FindDefaultCredentials(ctx, compute.ComputeScope)
+	if err != nil || credentials == nil || credentials.ProjectID == "" {
+		projectID = "datcom-store"
+	} else {
+		projectID = credentials.ProjectID
+	}
 
 	secretClient, err := secretmanager.NewClient(ctx)
 	if err != nil {
@@ -519,7 +527,7 @@ func MapsClient(ctx context.Context,
 
 	secret, err := secretClient.AccessSecretVersion(ctx,
 		&secretmanagerpb.AccessSecretVersionRequest{
-			Name: mapsAPIKeySecretVersion,
+			Name: fmt.Sprintf(mapsAPIKeySecretVersion, projectID),
 		})
 	if err != nil {
 		return nil, err

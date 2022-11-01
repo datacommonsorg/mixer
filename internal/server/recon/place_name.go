@@ -17,6 +17,7 @@ package recon
 import (
 	"context"
 	"fmt"
+	"sort"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/v1/propertyvalues"
@@ -96,6 +97,8 @@ func ResolvePlaceNames(
 					allDCIDs = append(allDCIDs, dcids...)
 				}
 			}
+			sort.Strings(allDCIDs)
+
 			if len(allDCIDs) != 0 {
 				if info.placeType == "" {
 					// No type filtering.

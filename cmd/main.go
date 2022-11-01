@@ -84,8 +84,6 @@ const (
 	branchCacheSubscriberPrefix = "branch-cache-subscriber-"
 	// Memdb config file name
 	memdbConfig = "memdb.json"
-	// The secret is stored in the project datcom-store.
-	mapsAPIKeySecretVersion = "projects/429015563165/secrets/maps-api-key/versions/latest"
 )
 
 func main() {
@@ -216,7 +214,7 @@ func main() {
 	// Register for Recon Service.
 	if *serveReconService {
 		store := store.NewStore(nil, nil, tables, "", nil)
-		mapsClient, err := util.MapsClient(ctx, mapsAPIKeySecretVersion)
+		mapsClient, err := util.MapsClient(ctx)
 		if err != nil {
 			log.Fatalf("Failed to create Maps client: %v", err)
 		}
