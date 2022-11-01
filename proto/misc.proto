@@ -80,7 +80,7 @@ message GetVersionResponse {
   // Bigtable table names
   repeated string tables = 1;
   // Big Query dataset
-  string big_query = 2;
+  string bigquery = 2;
   // Github commit hash
   string git_hash = 3;
 }

@@ -17,6 +17,7 @@
 package bigtable
 
 import (
+	"sort"
 	"strings"
 	"sync"
 
@@ -78,6 +79,33 @@ func GetFrequentGroup(g *Group) *Group {
 		}
 	}
 	return result
+}
+
+// SortTables sorts the bigtable by import group preferences
+//   - frequent should always be the highest rank
+//   - infrequent should always be the lowest rank
+//   - if a group is not in ranking list, put it right before "infrequent" and
+//     after other groups with ranking.
+func SortTables(tables []*Table) {
+	sort.SliceStable(tables, func(i, j int) bool {
+		// This is to parse the table name like "frequent_2022_02_01_14_20_47"
+		// and get the actual import group name.
+		ni := strings.Split(tables[i].name, "_")[0]
+		ri, ok := groupRank[ni]
+		if !ok {
+			ri = defaultRank
+		}
+		// ranking for j
+		nj := strings.Split(tables[j].name, "_")[0]
+		rj, ok := groupRank[nj]
+		if !ok {
+			rj = defaultRank
+		}
+		if ri == rj {
+			return strings.TrimPrefix(tables[i].name, ni) > strings.TrimPrefix(tables[j].name, nj)
+		}
+		return ri < rj
+	})
 }
 
 // Tables is the accessor for all the Bigtable client stubs.

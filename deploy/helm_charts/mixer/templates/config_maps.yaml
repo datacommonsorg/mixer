@@ -39,8 +39,8 @@ metadata:
   namespace: {{ .Values.namespace.name }}
 data:
   bigquery.version: {{ required "kgStoreConfig.bigqueryVersion is required." .Values.kgStoreConfig.bigqueryVersion }}
-  base_bigtable.yaml: {{  required "baseBigtable is required." .Values.kgStoreConfig.baseBigtable | quote }}
-  custom_bigtable.yaml: {{ .Values.kgStoreConfig.customBigtable | quote }}
+  base_bigtable_info.yaml: {{  required "baseBigtableInfo is required." .Values.kgStoreConfig.baseBigtableInfo | quote }}
+  custom_bigtable_info.yaml: {{ .Values.kgStoreConfig.customBigtableInfo | quote }}
 
 ---
 

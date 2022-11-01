@@ -66,12 +66,12 @@ if [[ $ENV == "mixer_autopush" ]]; then
   # Update bigquery version
   gsutil cp gs://datcom-control/latest_base_bigquery_version.txt deploy/storage/bigquery.version
   # Import group
-  yq eval -i 'del(.tables)' deploy/storage/base_bigtable.yaml
-  yq eval -i '.tables = []' deploy/storage/base_bigtable.yaml
+  yq eval -i 'del(.tables)' deploy/storage/base_bigtable_info.yaml
+  yq eval -i '.tables = []' deploy/storage/base_bigtable_info.yaml
   for src in $(gsutil ls gs://datcom-control/autopush/*_latest_base_cache_version.txt); do
     echo "Copying $src"
     export TABLE="$(gsutil cat "$src")"
-    yq eval -i '.tables += [env(TABLE)]' deploy/storage/base_bigtable.yaml
+    yq eval -i '.tables += [env(TABLE)]' deploy/storage/base_bigtable_info.yaml
   done
 fi
 export PROJECT_ID=$(yq eval '.mixer.gcpProjectID' deploy/helm_charts/envs/$ENV.yaml)
@@ -105,7 +105,7 @@ helm upgrade --install "$RELEASE" deploy/helm_charts/mixer \
   --set-file mixer.schemaConfigs."dailyweather\.mcf"=deploy/mapping/dailyweather.mcf \
   --set-file mixer.schemaConfigs."monthlyweather\.mcf"=deploy/mapping/monthlyweather.mcf \
   --set-file kgStoreConfig.bigqueryVersion=deploy/storage/bigquery.version \
-  --set-file kgStoreConfig.baseBigtable=deploy/storage/base_bigtable.yaml
+  --set-file kgStoreConfig.baseBigtableInfo=deploy/storage/base_bigtable_info.yaml
 
 # Deploy Cloud Endpoints
 cp $ROOT/esp/endpoints.yaml.tmpl endpoints.yaml

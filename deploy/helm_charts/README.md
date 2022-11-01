@@ -35,5 +35,5 @@ helm upgrade --install mixer-dev deploy/helm_charts/mixer \
     --set-file mixer.schemaConfigs."dailyweather.mcf"=deploy/mapping/dailyweather.mcf \
     --set-file mixer.schemaConfigs."monthlyweather.mcf"=deploy/mapping/monthlyweather.mcf \
     --set-file kgStoreConfig.bigqueryVersion=deploy/storage/bigquery.version \
-    --set-file kgStoreConfig.baseBigtable=deploy/storage/base_bigtable.yaml
+    --set-file kgStoreConfig.baseBigtableInfo=deploy/storage/base_bigtable_info.yaml
 ```

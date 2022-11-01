@@ -54,9 +54,9 @@ var (
 	bqDataset   = flag.String("bq_dataset", "", "DataCommons BigQuery dataset.")
 	schemaPath  = flag.String("schema_path", "", "The directory that contains the schema mapping files")
 	// Base Bigtable Cache
-	useBaseBt      = flag.Bool("use_base_bt", true, "Use base bigtable cache")
-	baseBigtable   = flag.String("base_bigtable", "", "Yaml file containing information for base Bigtable")
-	customBigtable = flag.String("custom_bigtable", "", "Yaml file containing information for custom Bigtable")
+	useBaseBt          = flag.Bool("use_base_bt", true, "Use base bigtable cache")
+	baseBigtableInfo   = flag.String("base_bigtable_info", "", "Yaml formatted text containing information for base Bigtable")
+	customBigtableInfo = flag.String("custom_bigtable_info", "", "Yaml formatted text containing information for custom Bigtable")
 	// Branch Bigtable Cache
 	useBranchBt = flag.Bool("use_branch_bt", true, "Use branch bigtable cache")
 	// GCS to hold memdb data.
@@ -92,7 +92,7 @@ func main() {
 	if err == nil && credentials.ProjectID != "" {
 		cfg := profiler.Config{
 			Service:        "datacommons-api",
-			ServiceVersion: *baseBigtable + *customBigtable,
+			ServiceVersion: *baseBigtableInfo + *customBigtableInfo,
 		}
 		err := profiler.Start(cfg)
 		if err != nil {
@@ -113,11 +113,11 @@ func main() {
 	// Base Bigtable cache
 	var tables []*bigtable.Table
 	if *useBaseBt {
-		baseTables, err := bigtable.CreateBigtables(ctx, *baseBigtable)
+		baseTables, err := bigtable.CreateBigtables(ctx, *baseBigtableInfo)
 		if err != nil {
 			log.Fatalf("Failed to create base Bigtables: %v", err)
 		}
-		customTables, err := bigtable.CreateBigtables(ctx, *customBigtable)
+		customTables, err := bigtable.CreateBigtables(ctx, *customBigtableInfo)
 		if err != nil {
 			log.Fatalf("Failed to create custom Bigtables: %v", err)
 		}

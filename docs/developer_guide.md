@@ -76,7 +76,7 @@ Run the following code to start mixer gRPC server (without branch cache)
 go run --tags sqlite_fts5 cmd/main.go \
     --mixer_project=datcom-mixer-staging \
     --bq_dataset=$(head -1 deploy/storage/bigquery.version) \
-    --base_bigtable="$(cat deploy/storage/base_bigtable.yaml)" \
+    --base_bigtable_info="$(cat deploy/storage/base_bigtable_info.yaml)" \
     --schema_path=$PWD/deploy/mapping/ \
     --use_branch_bt=false
 
@@ -153,7 +153,7 @@ to that path, and you can use `go tool pprof` to analyze it. For example;
 go run --tags sqlite_fts5 cmd/main.go \
     --mixer_project=datcom-mixer-staging \
     --bq_dataset=$(head -1 deploy/storage/bigquery.version) \
-    --base_bigtable="$(cat deploy/storage/base_bigtable.yaml)" \
+    --base_bigtable_info="$(cat deploy/storage/base_bigtable_info.yaml)" \
     --schema_path=$PWD/deploy/mapping/ \
     --use_branch_bt=true
     --startup_memprof=grpc.memprof     # <-- note the additional flag here
@@ -177,7 +177,7 @@ server.
 go run cmd/main.go \
     --mixer_project=datcom-mixer-staging \
     --bq_dataset=$(head -1 deploy/storage/bigquery.version) \
-    --base_bigtable="$(cat deploy/storage/base_bigtable.yaml)" \
+    --base_bigtable_info="$(cat deploy/storage/base_bigtable_info.yaml)" \
     --schema_path=$PWD/deploy/mapping/ \
     --use_branch_bt=true
     --httpprof_port=6060     # <-- note the additional flag here

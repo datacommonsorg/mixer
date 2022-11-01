@@ -77,7 +77,7 @@ func Setup(option ...*TestOption) (pb.MixerClient, pb.ReconClient, error) {
 	}
 	return setupInternal(
 		"../deploy/storage/bigquery.version",
-		"../deploy/storage/base_bigtable.yaml",
+		"../deploy/storage/base_bigtable_info.yaml",
 		"../deploy/mapping",
 		storeProject,
 		useCache,
@@ -95,9 +95,9 @@ func setupInternal(
 	bqTableID, _ := os.ReadFile(path.Join(path.Dir(filename), bq))
 	schemaPath := path.Join(path.Dir(filename), mcfPath)
 
-	baseBigtable, _ := os.ReadFile(path.Join(path.Dir(filename), baseBigtableFile))
+	baseBigtableInfo, _ := os.ReadFile(path.Join(path.Dir(filename), baseBigtableFile))
 
-	tables, err := bigtable.CreateBigtables(ctx, string(baseBigtable))
+	tables, err := bigtable.CreateBigtables(ctx, string(baseBigtableInfo))
 	if err != nil {
 		log.Fatalf("failed to create Bigtable tables: %v", err)
 	}

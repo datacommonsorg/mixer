@@ -12,7 +12,7 @@ ingress:
     }
 
 kgStoreConfig:
-  customBigtable: |
+  customBigtableInfo: |
     project: datcom-stanford
     instance: dc-graph
     tables:

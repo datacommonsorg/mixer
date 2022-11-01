@@ -86,8 +86,8 @@ ingress:
 
 kgStoreConfig:
   bigqueryVersion:
-  baseBigtable: ""
-  customBigtable: ""
+  baseBigtableInfo: ""
+  customBigtableInfo: ""
 
 memdbJSON: ""
 
