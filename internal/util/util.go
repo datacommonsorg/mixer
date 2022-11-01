@@ -536,6 +536,7 @@ func MapsClient(ctx context.Context) (*maps.Client, error) {
 	return maps.NewClient(maps.WithAPIKey(string(secret.Payload.Data)))
 }
 
+// StringSetToSlice is a helper to convert a string set to a string slice.
 func StringSetToSlice(s map[string]struct{}) []string {
 	res := []string{}
 	for k := range s {
