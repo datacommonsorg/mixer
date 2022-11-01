@@ -166,6 +166,7 @@ func resolvePlaceIDs(
 	}()
 
 	// Call Maps API to find place IDs in parallel.
+	// The errors in the Goroutines need to be captured, so we use errgroup.
 	eg, errCtx := errgroup.WithContext(ctx)
 	for i := 0; i < maxMapsAPICallsInParallel; i++ {
 		eg.Go(func() error {
