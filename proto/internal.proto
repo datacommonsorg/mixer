@@ -58,7 +58,7 @@ message GetPlacePageDataResponse {
   map<string, StatVarSeries> stat_var_series = 1;
   map<string, Places> all_child_places = 2;
   map<string, PointStat> latest_population = 8;
-  map<string, Categories> valid_categories = 9;
+  map<string, ObsCategories> valid_categories = 9;
   string child_places_type = 3;
   repeated string child_places = 4;
   repeated string parent_places = 5;
@@ -72,13 +72,19 @@ message GetBioPageDataRequest {
   string dcid = 1;
 }
 
-message Categories {
+// List of categories of observations for a given place. These correspond to the
+// sections of the Place Explorer (https://datacommons.org/place/geoId/06).
+// This is a copied proto from g3.
+message ObsCategories {
   repeated string category = 1;
+  optional string place_name = 2;
+  optional string place_dcid = 3;
 }
 
 // Data received from the cache for the landing page.
 message LandingPageCache {
   // Key is stat var dcid.
   map<string, ObsTimeSeries> data = 1;
-  repeated string categories = 2;
+
+  reserved 2;
 }

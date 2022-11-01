@@ -220,7 +220,7 @@ func fetchBtData(
 ) (
 	map[string]*pb.StatVarSeries,
 	map[string]*pb.PointStat,
-	map[string]*pb.Categories,
+	map[string]*pb.ObsCategories,
 	error,
 ) {
 	// Fetch place page cache data in parallel.
@@ -254,7 +254,7 @@ func fetchBtData(
 		bigtable.BtLandingPageCategories,
 		[][]string{places},
 		func(jsonRaw []byte) (interface{}, error) {
-			var categories pb.Categories
+			var categories pb.ObsCategories
 			if err := proto.Unmarshal(jsonRaw, &categories); err != nil {
 				return nil, err
 			}
@@ -264,9 +264,9 @@ func fetchBtData(
 	if err != nil {
 		return nil, nil, nil, err
 	}
-	categoryData := map[string]*pb.Categories{}
+	categoryData := map[string]*pb.ObsCategories{}
 	for _, place := range places {
-		categoryData[place] = &pb.Categories{Category: []string{}}
+		categoryData[place] = &pb.ObsCategories{Category: []string{}}
 	}
 	for _, btData := range btCategoryData {
 		for _, row := range btData {
@@ -274,7 +274,7 @@ func fetchBtData(
 				continue
 			}
 			place := row.Parts[0]
-			categories := row.Data.(*pb.Categories)
+			categories := row.Data.(*pb.ObsCategories)
 			categoryData[place].Category = util.MergeDedupe(
 				categories.Category, categoryData[place].Category)
 		}
