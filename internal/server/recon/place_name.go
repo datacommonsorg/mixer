@@ -149,7 +149,7 @@ func resolvePlaceIDs(
 	// Receive and process resolved place IDs.
 	nameToPlaceIDs := map[string][]string{}
 	placeIDSet := map[string]struct{}{}
-	placeInfoChan := make(chan placeInfo)
+	placeInfoChan := make(chan placeInfo, maxMapsAPICallsInParallel)
 	go func() {
 		for placeInfo := range placeInfoChan {
 			nameToPlaceIDs[placeInfo.name] = placeInfo.placeIDs
