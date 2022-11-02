@@ -1,16 +1,18 @@
 {
   "places": [
     {
-      "name": "Santa Clara County",
+      "name": "Cambridge",
       "dcids": [
-        "geoId/06085"
+        "geoId/2511000",
+        "wikidataId/Q350"
       ]
     },
     {
-      "name": "Santa Clara County",
-      "type": "County",
+      "name": "Cambridge",
+      "type": "City",
       "dcids": [
-        "geoId/06085"
+        "geoId/2511000",
+        "wikidataId/Q350"
       ]
     }
   ]

@@ -41,11 +41,13 @@ func TestResolvePlaceNames(t *testing.T) {
 			{
 				&pb.ResolvePlaceNamesRequest{
 					Places: []*pb.ResolvePlaceNamesRequest_Place{
-						{Name: "Santa Clara County"},
-						{Name: "Santa Clara County", Type: "County"},
 						/*
-							{Name: "Cambridge"},
-							{Name: "Cambridge", Type: "City"},
+							{Name: "Santa Clara County"},
+							{Name: "Santa Clara County", Type: "County"},
+						*/
+						{Name: "Cambridge"},
+						{Name: "Cambridge", Type: "City"},
+						/*
 							{Name: "mountain view"},
 							{Name: "Mountain View, CA"},
 							// Typo on purpose.
