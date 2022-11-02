@@ -30,7 +30,7 @@ import (
 
 const (
 	maxNumPlacesPerRequest    = 5000
-	maxMapsAPICallsInParallel = 25
+	maxMapsAPICallsInParallel = 1
 )
 
 // ResolvePlaceNames implements API for Recon.ResolvePlaceNames.
