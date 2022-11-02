@@ -19,6 +19,7 @@ import (
 	"context"
 	"fmt"
 	"sort"
+	"strings"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/v1/propertyvalues"
@@ -159,6 +160,7 @@ func resolvePlaceIDs(
 				if err != nil {
 					return err
 				}
+				fmt.Println("aaaaaaa - " + name + " @@ " + strings.Join(placeIDs, ","))
 				placeInfoChan <- placeInfo{name: name, placeIDs: placeIDs}
 			}
 			return nil
