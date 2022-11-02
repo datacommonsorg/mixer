@@ -52,7 +52,7 @@ const (
 	BtObsCollection = "d/e/"
 	// BtPlacePageCategoricalPrefix for place page Categorical cache.
 	BtPlacePageCategoricalPrefix = "d/f/"
-	// LandingPage Menu Categories
+	// BtLandingPageCategories is the prefix for place page menu categories cache.
 	BtLandingPageCategories = "d/h/"
 	// BtPagedPropTypeValIn for in-arc paged entities by type.
 	// Key: <dcid^predicate^type^page>
