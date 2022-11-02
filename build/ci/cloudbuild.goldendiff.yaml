@@ -16,7 +16,7 @@
 # data change.
 
 steps:
-  - name: gcr.io/cloud-builders/gcloud
+  - name: gcr.io/datcom-ci/deploy-tool
     entrypoint: "bash"
     args:
       - "-c"
