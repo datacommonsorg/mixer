@@ -217,8 +217,12 @@ func fetchBtData(
 	places []string,
 	statVars []string,
 	category string,
-) (map[string]*pb.StatVarSeries, map[string]*pb.PointStat,
-	map[string]*pb.Categories, error) {
+) (
+	map[string]*pb.StatVarSeries,
+	map[string]*pb.PointStat,
+	map[string]*pb.ObsCategories,
+	error,
+) {
 	// Fetch place page cache data in parallel.
 	action := [][]string{places}
 	prefix := bigtable.BtPlacePagePrefix
@@ -226,7 +230,6 @@ func fetchBtData(
 		action = [][]string{places, {category}}
 		prefix = bigtable.BtPlacePageCategoricalPrefix
 	}
-
 	btDataList, err := bigtable.Read(
 		ctx,
 		store.BtGroup,
@@ -244,11 +247,42 @@ func fetchBtData(
 		return nil, nil, nil, err
 	}
 
+	// Fetch categories data
+	btCategoryData, err := bigtable.Read(
+		ctx,
+		store.BtGroup,
+		bigtable.BtLandingPageCategories,
+		[][]string{places},
+		func(jsonRaw []byte) (interface{}, error) {
+			var categories pb.ObsCategories
+			if err := proto.Unmarshal(jsonRaw, &categories); err != nil {
+				return nil, err
+			}
+			return &categories, nil
+		},
+	)
+	if err != nil {
+		return nil, nil, nil, err
+	}
+	categoryData := map[string]*pb.ObsCategories{}
+	for _, place := range places {
+		categoryData[place] = &pb.ObsCategories{Category: []string{}}
+	}
+	for _, btData := range btCategoryData {
+		for _, row := range btData {
+			if row.Data == nil {
+				continue
+			}
+			place := row.Parts[0]
+			categories := row.Data.(*pb.ObsCategories)
+			categoryData[place].Category = util.MergeDedupe(
+				categories.Category, categoryData[place].Category)
+		}
+	}
+
 	// Populate result from place page cache
 	pageData := map[string]*pb.StatVarSeries{}
 	popData := map[string]*pb.PointStat{}
-	categoryData := map[string]*pb.Categories{}
-
 	mergedPlacePageData := map[string]*pb.LandingPageCache{}
 	for _, btData := range btDataList {
 		for _, row := range btData {
@@ -260,8 +294,6 @@ func fetchBtData(
 			if _, ok := mergedPlacePageData[place]; !ok {
 				mergedPlacePageData[place] = placePageData
 			}
-			mergedPlacePageData[place].Categories = util.MergeDedupe(
-				mergedPlacePageData[place].Categories, placePageData.Categories)
 			for statVar, obsTimeSeries := range placePageData.Data {
 				if _, ok := mergedPlacePageData[place].Data[statVar]; !ok {
 					mergedPlacePageData[place].Data[statVar] = obsTimeSeries
@@ -277,7 +309,6 @@ func fetchBtData(
 
 	for place, data := range mergedPlacePageData {
 		finalData := &pb.StatVarSeries{Data: map[string]*pb.Series{}}
-		categoryData[place] = &pb.Categories{Category: data.Categories}
 		for statVar, obsTimeSeries := range data.Data {
 			series, _ := stat.GetBestSeries(obsTimeSeries, "", false /* useLatest */)
 			finalData.Data[statVar] = series

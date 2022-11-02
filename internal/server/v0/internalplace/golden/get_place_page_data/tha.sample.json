@@ -13404,17 +13404,107 @@
     }
   },
   "validCategories": {
-    "country/CHN": {},
-    "country/DEU": {},
-    "country/NGA": {},
-    "country/NZL": {},
-    "country/THA": {},
-    "country/USA": {},
-    "wikidataId/Q1861": {},
-    "wikidataId/Q233588": {},
-    "wikidataId/Q271737": {},
-    "wikidataId/Q327533": {},
-    "wikidataId/Q629024": {}
+    "asia": {},
+    "country/CHN": {
+      "category": [
+        "Demographics",
+        "Economics",
+        "Energy",
+        "Environment",
+        "Equity",
+        "Health",
+        "Overview"
+      ]
+    },
+    "country/DEU": {
+      "category": [
+        "Demographics",
+        "Economics",
+        "Energy",
+        "Environment",
+        "Equity",
+        "Health",
+        "Overview"
+      ]
+    },
+    "country/NGA": {
+      "category": [
+        "Demographics",
+        "Economics",
+        "Energy",
+        "Environment",
+        "Equity",
+        "Health",
+        "Overview"
+      ]
+    },
+    "country/NZL": {
+      "category": [
+        "Demographics",
+        "Economics",
+        "Energy",
+        "Environment",
+        "Health",
+        "Overview"
+      ]
+    },
+    "country/THA": {
+      "category": [
+        "Demographics",
+        "Economics",
+        "Energy",
+        "Environment",
+        "Equity",
+        "Health",
+        "Overview"
+      ]
+    },
+    "country/USA": {
+      "category": [
+        "Crime",
+        "Demographics",
+        "Economics",
+        "Education",
+        "Energy",
+        "Environment",
+        "Equity",
+        "Health",
+        "Housing",
+        "Overview"
+      ]
+    },
+    "wikidataId/Q1861": {
+      "category": [
+        "Demographics",
+        "Overview"
+      ]
+    },
+    "wikidataId/Q233588": {
+      "category": [
+        "Demographics",
+        "Overview"
+      ]
+    },
+    "wikidataId/Q271737": {
+      "category": [
+        "Demographics",
+        "Environment",
+        "Overview"
+      ]
+    },
+    "wikidataId/Q327533": {
+      "category": [
+        "Demographics",
+        "Environment",
+        "Overview"
+      ]
+    },
+    "wikidataId/Q629024": {
+      "category": [
+        "Demographics",
+        "Overview"
+      ]
+    }
   },
   "childPlacesType": "AdministrativeArea1",
   "childPlaces": [

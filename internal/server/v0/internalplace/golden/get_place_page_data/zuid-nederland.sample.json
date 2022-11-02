@@ -18133,10 +18133,41 @@
     }
   },
   "validCategories": {
-    "country/NLD": {},
-    "nuts/NL4": {},
-    "nuts/NL41": {},
-    "nuts/NL42": {}
+    "country/NLD": {
+      "category": [
+        "Demographics",
+        "Economics",
+        "Energy",
+        "Environment",
+        "Equity",
+        "Health",
+        "Overview"
+      ]
+    },
+    "europe": {},
+    "nuts/NL4": {
+      "category": [
+        "Demographics",
+        "Environment",
+        "Overview"
+      ]
+    },
+    "nuts/NL41": {
+      "category": [
+        "Demographics",
+        "Environment",
+        "Health",
+        "Overview"
+      ]
+    },
+    "nuts/NL42": {
+      "category": [
+        "Demographics",
+        "Environment",
+        "Health",
+        "Overview"
+      ]
+    }
   },
   "childPlacesType": "AdministrativeArea1",
   "childPlaces": [
