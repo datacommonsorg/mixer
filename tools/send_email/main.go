@@ -23,7 +23,7 @@ import (
 	"os"
 
 	secretmanager "cloud.google.com/go/secretmanager/apiv1"
-	secretmanagerpb "cloud.google.com/go/secretmanager/apiv1/secretmanagerpb"
+	secretmanagerpb "google.golang.org/genproto/googleapis/cloud/secretmanager/v1"
 )
 
 var (

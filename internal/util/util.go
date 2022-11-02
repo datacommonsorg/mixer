@@ -35,12 +35,12 @@ import (
 	"time"
 
 	secretmanager "cloud.google.com/go/secretmanager/apiv1"
-	"cloud.google.com/go/secretmanager/apiv1/secretmanagerpb"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"golang.org/x/oauth2/google"
 	"golang.org/x/text/cases"
 	"golang.org/x/text/language"
 	"google.golang.org/api/compute/v1"
+	secretmanagerpb "google.golang.org/genproto/googleapis/cloud/secretmanager/v1"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/proto"
