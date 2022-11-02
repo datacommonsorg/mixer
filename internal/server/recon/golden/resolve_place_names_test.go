@@ -43,13 +43,15 @@ func TestResolvePlaceNames(t *testing.T) {
 					Places: []*pb.ResolvePlaceNamesRequest_Place{
 						{Name: "Santa Clara County"},
 						{Name: "Santa Clara County", Type: "County"},
-						{Name: "Cambridge"},
-						{Name: "Cambridge", Type: "City"},
-						{Name: "mountain view"},
-						{Name: "Mountain View, CA"},
-						// Typo on purpose.
-						{Name: "mmountan view"},
-						{Name: "non-existing place wow"},
+						/*
+							{Name: "Cambridge"},
+							{Name: "Cambridge", Type: "City"},
+							{Name: "mountain view"},
+							{Name: "Mountain View, CA"},
+							// Typo on purpose.
+							{Name: "mmountan view"},
+							{Name: "non-existing place wow"},
+						*/
 					},
 				},
 				"result.json",

@@ -1,42 +1,6 @@
 {
   "places": [
     {
-      "name": "Cambridge",
-      "dcids": [
-        "geoId/2511000",
-        "wikidataId/Q350"
-      ]
-    },
-    {
-      "name": "Cambridge",
-      "type": "City",
-      "dcids": [
-        "geoId/2511000",
-        "wikidataId/Q350"
-      ]
-    },
-    {
-      "name": "mountain view",
-      "dcids": [
-        "geoId/0649670"
-      ]
-    },
-    {
-      "name": "Mountain View, CA",
-      "dcids": [
-        "geoId/0649670"
-      ]
-    },
-    {
-      "name": "mmountan view",
-      "dcids": [
-        "geoId/0649670"
-      ]
-    },
-    {
-      "name": "non-existing place wow"
-    },
-    {
       "name": "Santa Clara County",
       "dcids": [
         "geoId/06085"
