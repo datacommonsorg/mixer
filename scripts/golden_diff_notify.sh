@@ -19,7 +19,7 @@
 
 set -e
 
-IMPORT_GROUP_VERSIONS=$1
+BASE_BIGTABLE_INFO=$1
 
 apt-get update -y
 apt-get install -y gawk
@@ -27,7 +27,7 @@ apt-get install -y gawk
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 ROOT="$(dirname "$DIR")"
 
-echo "$IMPORT_GROUP_VERSIONS" | tee "$ROOT/deploy/storage/bigtable_import_groups.version"
+echo "$BASE_BIGTABLE_INFO" | tee "$ROOT/deploy/storage/base_bigtable_info.yaml"
 
 # Script to convert terminal colors and attributes to HTML
 # https://github.com/pixelb/scripts/blob/master/scripts/ansi2html.sh

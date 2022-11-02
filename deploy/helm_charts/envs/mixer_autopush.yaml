@@ -24,6 +24,7 @@ serviceGroups:
       resources:
         memoryRequest: "8G"
         memoryLimit: "8G"
+      useSearch: true
   - recon:
       urlPaths:
         - "/v1/recon/*"
@@ -60,7 +61,4 @@ serviceGroups:
 ip: 34.117.145.125
 region: us-central1
 api_title: DataCommons API (Autopush)
-api:
-  - datacommons.Mixer
-  - datacommons.Recon
 nodes: 4

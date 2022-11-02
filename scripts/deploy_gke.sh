@@ -33,8 +33,16 @@ set -e
 
 ENV=$1
 
-if [[ $ENV != "mixer_staging" && $ENV != "mixer_prod" && $ENV != "mixer_autopush" && $ENV != "mixer_encode" && $ENV != "mixer_dev" && $ENV != "mixer_private" ]]; then
-  echo "First argument should be 'mixer_staging' or 'mixer_prod' or 'mixer_autopush' or 'mixer_encode' or 'mixer_dev' or 'mixer_private'"
+if [[
+  $ENV != "mixer_staging" &&
+  $ENV != "mixer_prod" &&
+  $ENV != "mixer_autopush" &&
+  $ENV != "mixer_encode" &&
+  $ENV != "mixer_dev" &&
+  $ENV != "mixer_private" &&
+  $ENV != "mixer_stanford"
+]]; then
+  echo "First argument should be 'mixer_staging' or 'mixer_prod' or 'mixer_autopush' or 'mixer_encode' or 'mixer_dev' or 'mixer_private' or 'mixer_stanford'"
   exit
 fi
 
@@ -58,10 +66,12 @@ if [[ $ENV == "mixer_autopush" ]]; then
   # Update bigquery version
   gsutil cp gs://datcom-control/latest_base_bigquery_version.txt deploy/storage/bigquery.version
   # Import group
-  > deploy/storage/bigtable_import_groups.version
+  yq eval -i 'del(.tables)' deploy/storage/base_bigtable_info.yaml
+  yq eval -i '.tables = []' deploy/storage/base_bigtable_info.yaml
   for src in $(gsutil ls gs://datcom-control/autopush/*_latest_base_cache_version.txt); do
     echo "Copying $src"
-    echo $(gsutil cat "$src") >> deploy/storage/bigtable_import_groups.version
+    export TABLE="$(gsutil cat "$src")"
+    yq eval -i '.tables += [env(TABLE)]' deploy/storage/base_bigtable_info.yaml
   done
 fi
 export PROJECT_ID=$(yq eval '.mixer.gcpProjectID' deploy/helm_charts/envs/$ENV.yaml)
@@ -70,8 +80,6 @@ export IP=$(yq eval '.ip' deploy/helm_charts/envs/$ENV.yaml)
 export DOMAIN=$(yq eval '.mixer.serviceName' deploy/helm_charts/envs/$ENV.yaml)
 export API_TITLE=$(yq eval '.api_title' deploy/helm_charts/envs/$ENV.yaml)
 export CLUSTER_NAME=mixer-$REGION
-SPACE_SEPARATED_APIS=$(yq eval '.api' "deploy/helm_charts/envs/$ENV.yaml" | sed 's/-/ /g')
-export APIS=($SPACE_SEPARATED_APIS)
 
 # Deploy to GKE
 gcloud config set project $PROJECT_ID
@@ -97,7 +105,7 @@ helm upgrade --install "$RELEASE" deploy/helm_charts/mixer \
   --set-file mixer.schemaConfigs."dailyweather\.mcf"=deploy/mapping/dailyweather.mcf \
   --set-file mixer.schemaConfigs."monthlyweather\.mcf"=deploy/mapping/monthlyweather.mcf \
   --set-file kgStoreConfig.bigqueryVersion=deploy/storage/bigquery.version \
-  --set-file kgStoreConfig.bigtableImportGroupsVersion=deploy/storage/bigtable_import_groups.version
+  --set-file kgStoreConfig.baseBigtableInfo=deploy/storage/base_bigtable_info.yaml
 
 # Deploy Cloud Endpoints
 cp $ROOT/esp/endpoints.yaml.tmpl endpoints.yaml
@@ -105,13 +113,6 @@ yq eval -i '.name = env(DOMAIN)' endpoints.yaml
 yq eval -i '.title = env(API_TITLE)' endpoints.yaml
 yq eval -i '.endpoints[0].target = env(IP)' endpoints.yaml
 yq eval -i '.endpoints[0].name = env(DOMAIN)' endpoints.yaml
-# Append apis (ex: datacommons.Mixer) one by one.
-for api in "${APIS[@]}"
-do
-  export API=$api
-  echo "Adding api $API to cloud endpoint config."
-  yq eval -i '.apis += [{"name": env(API)}]' endpoints.yaml
-done
 echo "endpoints.yaml content:"
 cat endpoints.yaml
 

@@ -13,10 +13,12 @@ function update_version() {
   echo ""
   echo "==== Updating BT and BQ versions ===="
 
-  > deploy/storage/bigtable_import_groups.version
+  yq eval -i 'del(.tables)' deploy/storage/base_tables.yaml
+  yq eval -i '.tables = []' deploy/storage/base_tables.yaml
   for src in $(gsutil ls gs://datcom-control/autopush/*_latest_base_cache_version.txt); do
     echo "Copying $src"
-    echo $(gsutil cat "$src") >> deploy/storage/bigtable_import_groups.version
+    export TABLE="$(gsutil cat "$src")"
+     yq eval -i '.tables += [env(TABLE)]' deploy/storage/base_tables.yaml
   done
 
   BQ=$(curl https://autopush.datacommons.org/version 2>/dev/null | awk '{ if ($1~/^datcom-store/) print $1; }')

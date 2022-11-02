@@ -15,7 +15,4 @@ ingress:
 ip: 35.244.157.41
 region: us-central1
 api_title: DataCommons API (Dev)
-api:
-  - datacommons.Mixer
-  - datacommons.Recon
 nodes: 2

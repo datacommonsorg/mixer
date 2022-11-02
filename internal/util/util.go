@@ -15,7 +15,6 @@
 package util
 
 import (
-	"bufio"
 	"bytes"
 	"compress/gzip"
 	"encoding/base64"
@@ -427,24 +426,6 @@ func KeysToSlice(m map[string]bool) []string {
 	}
 	sort.Strings(s)
 	return s
-}
-
-// ParseBigtableGroup retrieves Bigtable names for import group from
-// newline separated list.
-func ParseBigtableGroup(s string) []string {
-	r := bufio.NewReader(strings.NewReader(s))
-	tables := []string{}
-	for {
-		line, _, err := r.ReadLine()
-		if err == io.EOF {
-			break
-		}
-		t := strings.TrimSpace(string(line))
-		if t != "" {
-			tables = append(tables, t)
-		}
-	}
-	return tables
 }
 
 // GetMetadataHash retrieves a hash string for a given protobuf message.

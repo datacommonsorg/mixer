@@ -17,7 +17,6 @@
 package bigtable
 
 import (
-	"context"
 	"sort"
 	"strings"
 	"sync"
@@ -47,22 +46,6 @@ var groupRank = map[string]int{
 // Import group with unspecified rank should be ranked right before the
 // infrequent group and after all other groups.
 const defaultRank = 9999
-
-// Table holds the bigtable name and client stub.
-type Table struct {
-	name  string
-	table *cbt.Table
-}
-
-// NewTable creates a new Table struct.
-func NewTable(name string, table *cbt.Table) *Table {
-	return &Table{name: name, table: table}
-}
-
-// Name access the name of a table
-func (t *Table) Name() string {
-	return t.name
-}
 
 // Group represents all the cloud bigtables that mixer talks to.
 type Group struct {
@@ -96,6 +79,33 @@ func GetFrequentGroup(g *Group) *Group {
 		}
 	}
 	return result
+}
+
+// SortTables sorts the bigtable by import group preferences
+//   - frequent should always be the highest rank
+//   - infrequent should always be the lowest rank
+//   - if a group is not in ranking list, put it right before "infrequent" and
+//     after other groups with ranking.
+func SortTables(tables []*Table) {
+	sort.SliceStable(tables, func(i, j int) bool {
+		// This is to parse the table name like "frequent_2022_02_01_14_20_47"
+		// and get the actual import group name.
+		ni := strings.Split(tables[i].name, "_")[0]
+		ri, ok := groupRank[ni]
+		if !ok {
+			ri = defaultRank
+		}
+		// ranking for j
+		nj := strings.Split(tables[j].name, "_")[0]
+		rj, ok := groupRank[nj]
+		if !ok {
+			rj = defaultRank
+		}
+		if ri == rj {
+			return strings.TrimPrefix(tables[i].name, ni) > strings.TrimPrefix(tables[j].name, nj)
+		}
+		return ri < rj
+	})
 }
 
 // Tables is the accessor for all the Bigtable client stubs.
@@ -134,41 +144,4 @@ func (g *Group) UpdateBranchTable(branchTable *Table) {
 	g.branchTableName = branchTable.name
 	g.tables = tables
 	SortTables(g.tables)
-}
-
-// NewTable creates a new cbt.Table instance.
-func NewBtTable(ctx context.Context, projectID, instanceID, tableID string) (
-	*cbt.Table, error) {
-	btClient, err := cbt.NewClient(ctx, projectID, instanceID)
-	if err != nil {
-		return nil, err
-	}
-	return btClient.Open(tableID), nil
-}
-
-// SortTables sorts the bigtable by import group preferences
-// - frequent should always be the highest rank
-// - infrequent should always be the lowest rank
-// - if a group is not in ranking list, put it right before "infrequent" and
-//   after other groups with ranking.
-func SortTables(tables []*Table) {
-	sort.SliceStable(tables, func(i, j int) bool {
-		// This is to parse the table name like "frequent_2022_02_01_14_20_47"
-		// and get the actual import group name.
-		ni := strings.Split(tables[i].name, "_")[0]
-		ri, ok := groupRank[ni]
-		if !ok {
-			ri = defaultRank
-		}
-		// ranking for j
-		nj := strings.Split(tables[j].name, "_")[0]
-		rj, ok := groupRank[nj]
-		if !ok {
-			rj = defaultRank
-		}
-		if ri == rj {
-			return strings.TrimPrefix(tables[i].name, ni) > strings.TrimPrefix(tables[j].name, nj)
-		}
-		return ri < rj
-	})
 }
