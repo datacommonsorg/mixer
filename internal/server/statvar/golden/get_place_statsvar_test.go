@@ -25,7 +25,7 @@ import (
 func TestGetPlaceStatsVar(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
-	client, _, err := test.Setup(&test.TestOption{UseCache: true})
+	client, err := test.Setup(&test.TestOption{UseCache: true})
 	if err != nil {
 		t.Fatalf("Failed to set up mixer and client")
 	}

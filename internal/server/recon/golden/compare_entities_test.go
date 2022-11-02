@@ -32,7 +32,7 @@ func TestCompareEntities(t *testing.T) {
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(path.Dir(filename), "compare_entities")
 
-	testSuite := func(mixer pb.MixerClient, recon pb.ReconClient, latencyTest bool) {
+	testSuite := func(mixer pb.MixerClient, latencyTest bool) {
 		for _, c := range []struct {
 			req        *pb.CompareEntitiesRequest
 			goldenFile string
@@ -43,7 +43,7 @@ func TestCompareEntities(t *testing.T) {
 				"result.json",
 			},
 		} {
-			resp, err := recon.CompareEntities(ctx, c.req)
+			resp, err := mixer.CompareEntities(ctx, c.req)
 			if err != nil {
 				t.Errorf("could not CompareEntities: %s", err)
 				continue

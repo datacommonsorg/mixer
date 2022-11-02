@@ -60,16 +60,13 @@ var (
 	// Branch Bigtable Cache
 	useBranchBt = flag.Bool("use_branch_bt", true, "Use branch bigtable cache")
 	// Stat-var search cache
-	useSearch      = flag.Bool("use_search", true, "Uses stat-var search. Will build search indexes.")
+	useSearch = flag.Bool("use_search", true, "Uses stat-var search. Will build search indexes.")
 	// GCS to hold memdb data.
 	// Note GCS bucket and pubsub should be within the mixer project.
 	useTmcfCsvData = flag.Bool("use_tmcf_csv_data", false, "Use tmcf and csv data")
 	tmcfCsvBucket  = flag.String("tmcf_csv_bucket", "", "The GCS bucket that contains tmcf and csv files")
 	tmcfCsvFolder  = flag.String("tmcf_csv_folder", "", "GCS folder for an import. An import must have a unique prefix within a bucket.")
 	memdbPath      = flag.String("memdb_path", "", "File path of memdb config")
-	// Specify what services to serve
-	serveMixerService = flag.Bool("serve_mixer_service", true, "Serve Mixer service")
-	serveReconService = flag.Bool("serve_recon_service", false, "Serve Recon service")
 	// Profile startup memory instead of listening for requests
 	startupMemoryProfile = flag.String("startup_memprof", "", "File path to write the memory profile of mixer startup to")
 	// Serve live profiles of the process (CPU, memory, etc.) over HTTP on this port
@@ -127,95 +124,86 @@ func main() {
 		tables = append(customTables, baseTables...)
 	}
 
-	if *serveMixerService {
-		// TMCF + CSV from GCS
-		memDb := memdb.NewMemDb()
-		if *useTmcfCsvData && *tmcfCsvBucket != "" {
-			// Read memdb config
-			err = memDb.LoadConfig(ctx, path.Join(*memdbPath, memdbConfig))
-			if err != nil {
-				log.Fatalf("Failed to load config: %v", err)
-			}
-			err = memDb.LoadFromGcs(ctx, *tmcfCsvBucket, *tmcfCsvFolder)
-			if err != nil {
-				log.Fatalf("Failed to load tmcf and csv from GCS: %v", err)
-			}
-		}
-
-		// BigQuery.
-		var bqClient *bigquery.Client
-		if *useBigquery {
-			bqClient, err = bigquery.NewClient(ctx, *mixerProject)
-			if err != nil {
-				log.Fatalf("Failed to create Bigquery client: %v", err)
-			}
-		}
-
-		// Branch Bigtable cache
-		var branchTableName string
-		if *useBranchBt {
-			branchTableName, err = bigtable.ReadBranchTableName(ctx)
-			if err != nil {
-				log.Fatalf("Failed to read branch cache folder: %v", err)
-			}
-			branchTable, err := bigtable.NewBtTable(
-				ctx,
-				bigtable.BranchBigtableProject,
-				bigtable.BranchBigtableInstance,
-				branchTableName,
-			)
-			if err != nil {
-				log.Fatalf("Failed to create BigTable client: %v", err)
-			}
-			tables = append(tables, bigtable.NewTable(branchTableName, branchTable))
-		}
-
-		// Metadata.
-		metadata, err := server.NewMetadata(
-			*mixerProject,
-			*bqDataset,
-			*schemaPath,
-		)
+	// TMCF + CSV from GCS
+	memDb := memdb.NewMemDb()
+	if *useTmcfCsvData && *tmcfCsvBucket != "" {
+		// Read memdb config
+		err = memDb.LoadConfig(ctx, path.Join(*memdbPath, memdbConfig))
 		if err != nil {
-			log.Fatalf("Failed to create metadata: %v", err)
+			log.Fatalf("Failed to load config: %v", err)
 		}
-
-		// Store
-		store := store.NewStore(bqClient, memDb, tables, branchTableName, metadata)
-		// Build the cache that includes stat var group info and stat var search
-		// Index.
-		// !!Important: do this after creating the memdb, since the cache will
-		// need to merge svg info from memdb.
-		var cache *resource.Cache
-		if *useSearch {
-			cache, err = server.NewCache(ctx, store, server.SearchOptions{
-				UseSearch:           true,
-				BuildSvgSearchIndex: true,
-				BuildSqliteIndex:    true,
-			})
-			if err != nil {
-				log.Fatalf("Failed to create cache: %v", err)
-			}
-		}
-
-		// Create server object
-		mixerServer := server.NewMixerServer(store, metadata, cache)
-		pb.RegisterMixerServer(srv, mixerServer)
-
-		// Subscribe to branch cache update
-		if *useBranchBt {
-			err := mixerServer.SubscribeBranchCacheUpdate(ctx)
-			if err != nil {
-				log.Fatalf("Failed to subscribe to branch cache update: %v", err)
-			}
+		err = memDb.LoadFromGcs(ctx, *tmcfCsvBucket, *tmcfCsvFolder)
+		if err != nil {
+			log.Fatalf("Failed to load tmcf and csv from GCS: %v", err)
 		}
 	}
 
-	// Register for Recon Service.
-	if *serveReconService {
-		store := store.NewStore(nil, nil, tables, "", nil)
-		reconServer := server.NewReconServer(store)
-		pb.RegisterReconServer(srv, reconServer)
+	// BigQuery.
+	var bqClient *bigquery.Client
+	if *useBigquery {
+		bqClient, err = bigquery.NewClient(ctx, *mixerProject)
+		if err != nil {
+			log.Fatalf("Failed to create Bigquery client: %v", err)
+		}
+	}
+
+	// Branch Bigtable cache
+	var branchTableName string
+	if *useBranchBt {
+		branchTableName, err = bigtable.ReadBranchTableName(ctx)
+		if err != nil {
+			log.Fatalf("Failed to read branch cache folder: %v", err)
+		}
+		branchTable, err := bigtable.NewBtTable(
+			ctx,
+			bigtable.BranchBigtableProject,
+			bigtable.BranchBigtableInstance,
+			branchTableName,
+		)
+		if err != nil {
+			log.Fatalf("Failed to create BigTable client: %v", err)
+		}
+		tables = append(tables, bigtable.NewTable(branchTableName, branchTable))
+	}
+
+	// Metadata.
+	metadata, err := server.NewMetadata(
+		*mixerProject,
+		*bqDataset,
+		*schemaPath,
+	)
+	if err != nil {
+		log.Fatalf("Failed to create metadata: %v", err)
+	}
+
+	// Store
+	store := store.NewStore(bqClient, memDb, tables, branchTableName, metadata)
+	// Build the cache that includes stat var group info and stat var search
+	// Index.
+	// !!Important: do this after creating the memdb, since the cache will
+	// need to merge svg info from memdb.
+	var cache *resource.Cache
+	if *useSearch {
+		cache, err = server.NewCache(ctx, store, server.SearchOptions{
+			UseSearch:           true,
+			BuildSvgSearchIndex: true,
+			BuildSqliteIndex:    true,
+		})
+		if err != nil {
+			log.Fatalf("Failed to create cache: %v", err)
+		}
+	}
+
+	// Create server object
+	mixerServer := server.NewMixerServer(store, metadata, cache)
+	pb.RegisterMixerServer(srv, mixerServer)
+
+	// Subscribe to branch cache update
+	if *useBranchBt {
+		err := mixerServer.SubscribeBranchCacheUpdate(ctx)
+		if err != nil {
+			log.Fatalf("Failed to subscribe to branch cache update: %v", err)
+		}
 	}
 
 	// Register for healthcheck.

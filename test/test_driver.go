@@ -30,7 +30,7 @@ const numTestTimes = 4
 func TestDriver(
 	apiName string,
 	opt *TestOption,
-	testSuite func(pb.MixerClient, pb.ReconClient, bool),
+	testSuite func(pb.MixerClient, bool),
 ) error {
 	if LatencyTest {
 		return latencyTest(apiName, opt, testSuite)
@@ -40,30 +40,30 @@ func TestDriver(
 
 func goldenTest(
 	opt *TestOption,
-	testSuite func(pb.MixerClient, pb.ReconClient, bool),
+	testSuite func(pb.MixerClient, bool),
 ) error {
-	mixer, recon, err := Setup(opt)
+	mixer, err := Setup(opt)
 	if err != nil {
 		return fmt.Errorf("failed to set up mixer and client: %s", err)
 	}
-	testSuite(mixer, recon, false /* latencyTest */)
+	testSuite(mixer, false /* latencyTest */)
 	return nil
 }
 
 func latencyTest(
 	apiName string,
 	opt *TestOption,
-	testSuite func(pb.MixerClient, pb.ReconClient, bool),
+	testSuite func(pb.MixerClient, bool),
 ) error {
 	durationStore := []float64{}
-	mixer, recon, err := Setup(opt)
+	mixer, err := Setup(opt)
 	if err != nil {
 		return fmt.Errorf("failed to set up mixer and client")
 	}
 	// Run multiple times to reduce fluctuations.
 	for i := 0; i < numTestTimes; i++ {
 		startTime := time.Now()
-		testSuite(mixer, recon, true /* latencyTest */)
+		testSuite(mixer, true /* latencyTest */)
 		durationStore = append(durationStore, time.Since(startTime).Seconds())
 	}
 	value := meanValue(durationStore)

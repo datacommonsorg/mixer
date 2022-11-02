@@ -29,7 +29,7 @@ import (
 func TestSparql(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
-	client, _, err := test.SetupBqOnly()
+	client, err := test.SetupBqOnly()
 	if err != nil {
 		t.Fatalf("Failed to set up mixer and client")
 	}
@@ -85,7 +85,7 @@ func TestSparql(t *testing.T) {
 func TestBt(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
-	client, _, err := test.SetupBqOnly()
+	client, err := test.SetupBqOnly()
 	if err != nil {
 		t.Fatalf("Failed to set up mixer and client")
 	}

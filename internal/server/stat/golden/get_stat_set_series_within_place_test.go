@@ -34,7 +34,7 @@ func TestGetStatSetSeriesWithinPlace(t *testing.T) {
 	goldenPath := path.Join(
 		path.Dir(filename), "get_stat_set_series_within_place")
 
-	testSuite := func(mixer pb.MixerClient, recon pb.ReconClient, latencyTest bool) {
+	testSuite := func(mixer pb.MixerClient, latencyTest bool) {
 		for _, c := range []struct {
 			parentPlace string
 			childType   string

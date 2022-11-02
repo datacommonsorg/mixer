@@ -34,7 +34,7 @@ func TestGetPlaceStatDateWithinPlace(t *testing.T) {
 	goldenPath := path.Join(
 		path.Dir(filename), "get_place_stat_date_within_place")
 
-	testSuite := func(mixer pb.MixerClient, recon pb.ReconClient, latencyTest bool) {
+	testSuite := func(mixer pb.MixerClient, latencyTest bool) {
 		for _, c := range []struct {
 			ancestorPlace string
 			placeType     string

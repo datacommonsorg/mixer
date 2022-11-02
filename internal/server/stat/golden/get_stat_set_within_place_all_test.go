@@ -34,7 +34,7 @@ func TestGetStatSetWithinPlaceAll(t *testing.T) {
 	goldenPath := path.Join(
 		path.Dir(filename), "get_stat_set_within_place_all")
 
-	testSuite := func(mixer pb.MixerClient, recon pb.ReconClient, latencyTest bool) {
+	testSuite := func(mixer pb.MixerClient, latencyTest bool) {
 		for _, c := range []struct {
 			parentPlace string
 			childType   string

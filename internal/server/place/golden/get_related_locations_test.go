@@ -35,7 +35,7 @@ func TestGetRelatedLocations(t *testing.T) {
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(path.Dir(filename), "get_related_locations")
 
-	testSuite := func(mixer pb.MixerClient, recon pb.ReconClient, latencyTest bool) {
+	testSuite := func(mixer pb.MixerClient, latencyTest bool) {
 		for _, c := range []struct {
 			goldenFile   string
 			dcid         string

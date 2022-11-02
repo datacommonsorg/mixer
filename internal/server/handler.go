@@ -348,28 +348,28 @@ func (s *Server) GetVersion(
 	}, nil
 }
 
-// ResolveIds implements API for Recon.ResolveIds.
+// ResolveIds implements API for Mixer.ResolveIds.
 func (s *Server) ResolveIds(
 	ctx context.Context, in *pb.ResolveIdsRequest,
 ) (*pb.ResolveIdsResponse, error) {
 	return recon.ResolveIds(ctx, in, s.store)
 }
 
-// ResolveEntities implements API for ReconServer.ResolveEntities.
+// ResolveEntities implements API for Mixer.ResolveEntities.
 func (s *Server) ResolveEntities(
 	ctx context.Context, in *pb.ResolveEntitiesRequest,
 ) (*pb.ResolveEntitiesResponse, error) {
 	return recon.ResolveEntities(ctx, in, s.store)
 }
 
-// ResolveCoordinates implements API for ReconServer.ResolveCoordinates.
+// ResolveCoordinates implements API for Mixer.ResolveCoordinates.
 func (s *Server) ResolveCoordinates(
 	ctx context.Context, in *pb.ResolveCoordinatesRequest,
 ) (*pb.ResolveCoordinatesResponse, error) {
 	return recon.ResolveCoordinates(ctx, in, s.store)
 }
 
-// CompareEntities implements API for Recon.CompareEntities.
+// CompareEntities implements API for Mixer.CompareEntities.
 func (s *Server) CompareEntities(
 	ctx context.Context, in *pb.CompareEntitiesRequest,
 ) (

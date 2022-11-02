@@ -141,6 +141,14 @@ type MixerClient interface {
 	BioPage(ctx context.Context, in *BioPageRequest, opts ...grpc.CallOption) (*GraphNodes, error)
 	PlacePage(ctx context.Context, in *PlacePageRequest, opts ...grpc.CallOption) (*GetPlacePageDataResponse, error)
 	VariableAncestors(ctx context.Context, in *VariableAncestorsRequest, opts ...grpc.CallOption) (*VariableAncestorsResponse, error)
+	// Compare two entities to determine if they are the same entity.
+	CompareEntities(ctx context.Context, in *CompareEntitiesRequest, opts ...grpc.CallOption) (*CompareEntitiesResponse, error)
+	// Resolve a list of entities, given their descriptions.
+	ResolveEntities(ctx context.Context, in *ResolveEntitiesRequest, opts ...grpc.CallOption) (*ResolveEntitiesResponse, error)
+	// Resolve a list of places, given their latitude and longitude coordinates.
+	ResolveCoordinates(ctx context.Context, in *ResolveCoordinatesRequest, opts ...grpc.CallOption) (*ResolveCoordinatesResponse, error)
+	// Resolve a list of IDs, given the input prop and output prop.
+	ResolveIds(ctx context.Context, in *ResolveIdsRequest, opts ...grpc.CallOption) (*ResolveIdsResponse, error)
 }
 
 type mixerClient struct {
@@ -700,6 +708,42 @@ func (c *mixerClient) VariableAncestors(ctx context.Context, in *VariableAncesto
 	return out, nil
 }
 
+func (c *mixerClient) CompareEntities(ctx context.Context, in *CompareEntitiesRequest, opts ...grpc.CallOption) (*CompareEntitiesResponse, error) {
+	out := new(CompareEntitiesResponse)
+	err := c.cc.Invoke(ctx, "/datacommons.Mixer/CompareEntities", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *mixerClient) ResolveEntities(ctx context.Context, in *ResolveEntitiesRequest, opts ...grpc.CallOption) (*ResolveEntitiesResponse, error) {
+	out := new(ResolveEntitiesResponse)
+	err := c.cc.Invoke(ctx, "/datacommons.Mixer/ResolveEntities", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *mixerClient) ResolveCoordinates(ctx context.Context, in *ResolveCoordinatesRequest, opts ...grpc.CallOption) (*ResolveCoordinatesResponse, error) {
+	out := new(ResolveCoordinatesResponse)
+	err := c.cc.Invoke(ctx, "/datacommons.Mixer/ResolveCoordinates", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *mixerClient) ResolveIds(ctx context.Context, in *ResolveIdsRequest, opts ...grpc.CallOption) (*ResolveIdsResponse, error) {
+	out := new(ResolveIdsResponse)
+	err := c.cc.Invoke(ctx, "/datacommons.Mixer/ResolveIds", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // MixerServer is the server API for Mixer service.
 // All implementations should embed UnimplementedMixerServer
 // for forward compatibility
@@ -823,6 +867,14 @@ type MixerServer interface {
 	BioPage(context.Context, *BioPageRequest) (*GraphNodes, error)
 	PlacePage(context.Context, *PlacePageRequest) (*GetPlacePageDataResponse, error)
 	VariableAncestors(context.Context, *VariableAncestorsRequest) (*VariableAncestorsResponse, error)
+	// Compare two entities to determine if they are the same entity.
+	CompareEntities(context.Context, *CompareEntitiesRequest) (*CompareEntitiesResponse, error)
+	// Resolve a list of entities, given their descriptions.
+	ResolveEntities(context.Context, *ResolveEntitiesRequest) (*ResolveEntitiesResponse, error)
+	// Resolve a list of places, given their latitude and longitude coordinates.
+	ResolveCoordinates(context.Context, *ResolveCoordinatesRequest) (*ResolveCoordinatesResponse, error)
+	// Resolve a list of IDs, given the input prop and output prop.
+	ResolveIds(context.Context, *ResolveIdsRequest) (*ResolveIdsResponse, error)
 }
 
 // UnimplementedMixerServer should be embedded to have forward compatible implementations.
@@ -1011,6 +1063,18 @@ func (UnimplementedMixerServer) PlacePage(context.Context, *PlacePageRequest) (*
 }
 func (UnimplementedMixerServer) VariableAncestors(context.Context, *VariableAncestorsRequest) (*VariableAncestorsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method VariableAncestors not implemented")
+}
+func (UnimplementedMixerServer) CompareEntities(context.Context, *CompareEntitiesRequest) (*CompareEntitiesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CompareEntities not implemented")
+}
+func (UnimplementedMixerServer) ResolveEntities(context.Context, *ResolveEntitiesRequest) (*ResolveEntitiesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ResolveEntities not implemented")
+}
+func (UnimplementedMixerServer) ResolveCoordinates(context.Context, *ResolveCoordinatesRequest) (*ResolveCoordinatesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ResolveCoordinates not implemented")
+}
+func (UnimplementedMixerServer) ResolveIds(context.Context, *ResolveIdsRequest) (*ResolveIdsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ResolveIds not implemented")
 }
 
 // UnsafeMixerServer may be embedded to opt out of forward compatibility for this service.
@@ -2122,6 +2186,78 @@ func _Mixer_VariableAncestors_Handler(srv interface{}, ctx context.Context, dec 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Mixer_CompareEntities_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CompareEntitiesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MixerServer).CompareEntities(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/datacommons.Mixer/CompareEntities",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MixerServer).CompareEntities(ctx, req.(*CompareEntitiesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Mixer_ResolveEntities_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ResolveEntitiesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MixerServer).ResolveEntities(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/datacommons.Mixer/ResolveEntities",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MixerServer).ResolveEntities(ctx, req.(*ResolveEntitiesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Mixer_ResolveCoordinates_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ResolveCoordinatesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MixerServer).ResolveCoordinates(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/datacommons.Mixer/ResolveCoordinates",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MixerServer).ResolveCoordinates(ctx, req.(*ResolveCoordinatesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Mixer_ResolveIds_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ResolveIdsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MixerServer).ResolveIds(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/datacommons.Mixer/ResolveIds",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MixerServer).ResolveIds(ctx, req.(*ResolveIdsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Mixer_ServiceDesc is the grpc.ServiceDesc for Mixer service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -2372,6 +2508,22 @@ var Mixer_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "VariableAncestors",
 			Handler:    _Mixer_VariableAncestors_Handler,
+		},
+		{
+			MethodName: "CompareEntities",
+			Handler:    _Mixer_CompareEntities_Handler,
+		},
+		{
+			MethodName: "ResolveEntities",
+			Handler:    _Mixer_ResolveEntities_Handler,
+		},
+		{
+			MethodName: "ResolveCoordinates",
+			Handler:    _Mixer_ResolveCoordinates_Handler,
+		},
+		{
+			MethodName: "ResolveIds",
+			Handler:    _Mixer_ResolveIds_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
