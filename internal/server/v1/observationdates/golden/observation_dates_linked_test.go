@@ -34,7 +34,7 @@ func TestBulkObservationDatesLinked(t *testing.T) {
 	goldenPath := path.Join(
 		path.Dir(filename), "observation_dates_linked")
 
-	testSuite := func(mixer pb.MixerClient, recon pb.ReconClient, latencyTest bool) {
+	testSuite := func(mixer pb.MixerClient, latencyTest bool) {
 		for _, c := range []struct {
 			linkedEntity string
 			entityType   string

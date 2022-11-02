@@ -29,7 +29,7 @@ import (
 func TestQuery(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
-	client, _, err := test.Setup()
+	client, err := test.Setup()
 	if err != nil {
 		t.Fatalf("Failed to set up mixer and client")
 	}

@@ -162,8 +162,3 @@ func NewMixerServer(
 		cache:    cache,
 	}
 }
-
-// NewReconServer creates a new recon server instance.
-func NewReconServer(store *store.Store) *Server {
-	return &Server{store: store}
-}

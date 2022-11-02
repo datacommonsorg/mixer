@@ -35,7 +35,7 @@ func TestSearchStatVar(t *testing.T) {
 	goldenPath := path.Join(
 		path.Dir(filename), "search_statvar")
 
-	testSuite := func(mixer pb.MixerClient, recon pb.ReconClient, latencyTest bool) {
+	testSuite := func(mixer pb.MixerClient, latencyTest bool) {
 		for _, c := range []struct {
 			query      string
 			places     []string

@@ -23,7 +23,6 @@ syntax = "proto3";
 option go_package = "./proto";
 package datacommons;
 
-import "google/api/annotations.proto";
 import "entity.proto";
 
 // Lists of entities (with their known IDs) for a given {idProp, idVal}.
@@ -110,41 +109,4 @@ message ResolveIdsResponse {
     repeated string out_ids = 2;
   }
   repeated Entity entities = 1;
-}
-
-service Recon {
-  // Compare two entities to determine if they are the same entity.
-  rpc CompareEntities(CompareEntitiesRequest)
-      returns (CompareEntitiesResponse) {
-    option (google.api.http) = {
-      post : "/v1/recon/entity/compare"
-      body : "*"
-    };
-  }
-
-  // Resolve a list of entities, given their descriptions.
-  rpc ResolveEntities(ResolveEntitiesRequest)
-      returns (ResolveEntitiesResponse) {
-    option (google.api.http) = {
-      post : "/v1/recon/entity/resolve"
-      body : "*"
-    };
-  }
-
-  // Resolve a list of places, given their latitude and longitude coordinates.
-  rpc ResolveCoordinates(ResolveCoordinatesRequest)
-      returns (ResolveCoordinatesResponse) {
-    option (google.api.http) = {
-      post : "/v1/recon/resolve/coordinate"
-      body : "*"
-    };
-  }
-
-  // Resolve a list of IDs, given the input prop and output prop.
-  rpc ResolveIds(ResolveIdsRequest) returns (ResolveIdsResponse) {
-    option (google.api.http) = {
-      post : "/v1/recon/resolve/id"
-      body : "*"
-    };
-  }
 }

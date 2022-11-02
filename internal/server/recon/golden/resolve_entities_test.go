@@ -34,7 +34,7 @@ func TestResolveEntities(t *testing.T) {
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(path.Dir(filename), "resolve_entities")
 
-	testSuite := func(mixer pb.MixerClient, recon pb.ReconClient, latencyTest bool) {
+	testSuite := func(mixer pb.MixerClient, latencyTest bool) {
 		for _, c := range []struct {
 			req        *pb.ResolveEntitiesRequest
 			goldenFile string
@@ -149,7 +149,7 @@ func TestResolveEntities(t *testing.T) {
 				"result.json",
 			},
 		} {
-			resp, err := recon.ResolveEntities(ctx, c.req)
+			resp, err := mixer.ResolveEntities(ctx, c.req)
 			if err != nil {
 				t.Errorf("could not ResolveEntities: %s", err)
 				continue

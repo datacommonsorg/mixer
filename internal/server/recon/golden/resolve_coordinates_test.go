@@ -33,7 +33,7 @@ func TestResolveCoordinates(t *testing.T) {
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(path.Dir(filename), "resolve_coordinates")
 
-	testSuite := func(mixer pb.MixerClient, recon pb.ReconClient, latencyTest bool) {
+	testSuite := func(mixer pb.MixerClient, latencyTest bool) {
 		for _, c := range []struct {
 			req        *pb.ResolveCoordinatesRequest
 			goldenFile string
@@ -54,7 +54,7 @@ func TestResolveCoordinates(t *testing.T) {
 				"result.json",
 			},
 		} {
-			resp, err := recon.ResolveCoordinates(ctx, c.req)
+			resp, err := mixer.ResolveCoordinates(ctx, c.req)
 			if err != nil {
 				t.Errorf("could not ResolveCoordinates: %s", err)
 				continue

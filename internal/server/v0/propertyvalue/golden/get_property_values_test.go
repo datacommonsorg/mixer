@@ -36,7 +36,7 @@ func TestGetPropertyValues(t *testing.T) {
 	goldenPath := path.Join(
 		path.Dir(filename), "get_property_values")
 
-	testSuite := func(mixer pb.MixerClient, recon pb.ReconClient, latencyTest bool) {
+	testSuite := func(mixer pb.MixerClient, latencyTest bool) {
 		for _, c := range []struct {
 			goldenFile string
 			dcids      []string

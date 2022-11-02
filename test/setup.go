@@ -67,7 +67,7 @@ const (
 )
 
 // Setup creates local server and client.
-func Setup(option ...*TestOption) (pb.MixerClient, pb.ReconClient, error) {
+func Setup(option ...*TestOption) (pb.MixerClient, error) {
 	useCache, useMemdb := false, false
 	var searchOptions server.SearchOptions
 	if len(option) == 1 {
@@ -89,7 +89,7 @@ func Setup(option ...*TestOption) (pb.MixerClient, pb.ReconClient, error) {
 func setupInternal(
 	bq, baseBigtableFile, mcfPath, storeProject string,
 	useCache bool, useMemdb bool, searchOptions server.SearchOptions,
-) (pb.MixerClient, pb.ReconClient, error) {
+) (pb.MixerClient, error) {
 	ctx := context.Background()
 	_, filename, _, _ := runtime.Caller(0)
 	bqTableID, _ := os.ReadFile(path.Join(path.Dir(filename), bq))
@@ -110,7 +110,7 @@ func setupInternal(
 	metadata, err := server.NewMetadata(customBigtableProject,
 		strings.TrimSpace(string(bqTableID)), schemaPath)
 	if err != nil {
-		return nil, nil, err
+		return nil, err
 	}
 	memDb := memdb.NewMemDb()
 	if useMemdb {
@@ -128,7 +128,7 @@ func setupInternal(
 	if useCache {
 		cache, err = server.NewCache(ctx, st, searchOptions)
 		if err != nil {
-			return nil, nil, err
+			return nil, err
 		}
 	} else {
 		cache = &resource.Cache{}
@@ -137,7 +137,7 @@ func setupInternal(
 }
 
 // SetupBqOnly creates local server and client with access to BigQuery only.
-func SetupBqOnly() (pb.MixerClient, pb.ReconClient, error) {
+func SetupBqOnly() (pb.MixerClient, error) {
 	ctx := context.Background()
 	_, filename, _, _ := runtime.Caller(0)
 	bqTableID, _ := os.ReadFile(
@@ -154,7 +154,7 @@ func SetupBqOnly() (pb.MixerClient, pb.ReconClient, error) {
 		strings.TrimSpace(string(bqTableID)),
 		schemaPath)
 	if err != nil {
-		return nil, nil, err
+		return nil, err
 	}
 	st := store.NewStore(bqClient, nil, nil, "", nil)
 	return newClient(st, nil, metadata, nil)
@@ -165,17 +165,14 @@ func newClient(
 	tables []*bigtable.Table,
 	metadata *resource.Metadata,
 	cache *resource.Cache,
-) (pb.MixerClient, pb.ReconClient, error) {
-	reconStore := store.NewStore(nil, nil, tables, "", metadata)
+) (pb.MixerClient, error) {
 	mixerServer := server.NewMixerServer(mixerStore, metadata, cache)
-	reconServer := server.NewReconServer(reconStore)
 	srv := grpc.NewServer()
 	pb.RegisterMixerServer(srv, mixerServer)
-	pb.RegisterReconServer(srv, reconServer)
 	reflection.Register(srv)
 	lis, err := net.Listen("tcp", "localhost:0")
 	if err != nil {
-		return nil, nil, err
+		return nil, err
 	}
 	// Start mixer at localhost:0
 	go func() {
@@ -191,11 +188,10 @@ func newClient(
 		grpc.WithTransportCredentials(insecure.NewCredentials()),
 		grpc.WithDefaultCallOptions(grpc.MaxCallRecvMsgSize(300000000 /* 300M */)))
 	if err != nil {
-		return nil, nil, err
+		return nil, err
 	}
 	mixerClient := pb.NewMixerClient(conn)
-	reconClient := pb.NewReconClient(conn)
-	return mixerClient, reconClient, nil
+	return mixerClient, nil
 }
 
 // UpdateGolden updates the golden file for native typed response.

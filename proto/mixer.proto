@@ -33,6 +33,7 @@ import "query.proto";
 import "stat.proto";
 import "stat_var.proto";
 import "translate.proto";
+import "recon.proto";
 
 import "v1/properties.proto";
 import "v1/property_values.proto";
@@ -589,6 +590,43 @@ service Mixer {
       returns (datacommons.v1.VariableAncestorsResponse) {
     option (google.api.http) = {
       get : "/v1/variable/ancestors/{node=**}"
+    };
+  }
+
+  // ==================  RECON   RECON   RECON   RECON  ================
+
+  // Compare two entities to determine if they are the same entity.
+  rpc CompareEntities(CompareEntitiesRequest)
+      returns (CompareEntitiesResponse) {
+    option (google.api.http) = {
+      post : "/v1/recon/entity/compare"
+      body : "*"
+    };
+  }
+
+  // Resolve a list of entities, given their descriptions.
+  rpc ResolveEntities(ResolveEntitiesRequest)
+      returns (ResolveEntitiesResponse) {
+    option (google.api.http) = {
+      post : "/v1/recon/entity/resolve"
+      body : "*"
+    };
+  }
+
+  // Resolve a list of places, given their latitude and longitude coordinates.
+  rpc ResolveCoordinates(ResolveCoordinatesRequest)
+      returns (ResolveCoordinatesResponse) {
+    option (google.api.http) = {
+      post : "/v1/recon/resolve/coordinate"
+      body : "*"
+    };
+  }
+
+  // Resolve a list of IDs, given the input prop and output prop.
+  rpc ResolveIds(ResolveIdsRequest) returns (ResolveIdsResponse) {
+    option (google.api.http) = {
+      post : "/v1/recon/resolve/id"
+      body : "*"
     };
   }
 }

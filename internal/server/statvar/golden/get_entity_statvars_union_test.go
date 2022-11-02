@@ -26,7 +26,7 @@ func TestGetEntityStatVarsUnionV1(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
 
-	testSuite := func(mixer pb.MixerClient, recon pb.ReconClient, latencyTest bool) {
+	testSuite := func(mixer pb.MixerClient, latencyTest bool) {
 		for _, c := range []struct {
 			dcids          []string
 			statVars       []string
