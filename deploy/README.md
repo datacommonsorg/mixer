@@ -6,8 +6,8 @@ Mixer is deployed to Kubernetes cluster either locally on
 
 ## Folder structure
 
-- `storage`: BigQuery and Bigtable version config
-- `base`: Base Kubernetes config yaml files.
+- `storage`: BigQuery and Bigtable version config.
+- `mapping`: Schema mapping files for Sparql Query.
 - `helm_charts`: Helm charts configuration used for Kubernetes deployment.
 - `gke`: GKE cluster config.
 
