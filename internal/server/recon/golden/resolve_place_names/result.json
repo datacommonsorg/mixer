@@ -1,18 +1,9 @@
 {
   "places": [
     {
-      "name": "Cambridge",
+      "name": "Cambridge, MA",
       "dcids": [
-        "geoId/2511000",
-        "wikidataId/Q350"
-      ]
-    },
-    {
-      "name": "Cambridge",
-      "type": "City",
-      "dcids": [
-        "geoId/2511000",
-        "wikidataId/Q350"
+        "geoId/2511000"
       ]
     }
   ]

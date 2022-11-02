@@ -45,8 +45,8 @@ func TestResolvePlaceNames(t *testing.T) {
 							{Name: "Santa Clara County"},
 							{Name: "Santa Clara County", Type: "County"},
 						*/
-						{Name: "Cambridge"},
-						{Name: "Cambridge", Type: "City"},
+						{Name: "Cambridge, MA"},
+						// {Name: "Cambridge", Type: "City"},
 						/*
 							{Name: "mountain view"},
 							{Name: "Mountain View, CA"},
