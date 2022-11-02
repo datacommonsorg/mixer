@@ -19,7 +19,6 @@ import (
 	"context"
 	"fmt"
 	"sort"
-	"sync"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/v1/propertyvalues"
@@ -92,9 +91,9 @@ func ResolvePlaceNames(
 			Type: info.placeType,
 		}
 
-		if placeIDs, ok := nameToPlaceIDs.Load(info.placeName); ok {
+		if placeIDs, ok := nameToPlaceIDs[info.placeName]; ok {
 			allDCIDs := []string{}
-			for _, placeID := range placeIDs.([]string) {
+			for _, placeID := range placeIDs {
 				if dcids, ok := placeIDToDCIDs[placeID]; ok {
 					allDCIDs = append(allDCIDs, dcids...)
 				}
@@ -132,60 +131,60 @@ func resolvePlaceIDs(
 	ctx context.Context,
 	mapsClient *maps.Client,
 	nameSet map[string]struct{},
-) (*sync.Map /* name -> place IDs */, *sync.Map /* place ID set */, error) {
+) (map[string][]string, map[string]struct{}, error) {
 	type placeInfo struct {
 		name     string
 		placeIDs []string
 	}
-	var wg sync.WaitGroup
 
-	// Send place names to channel.
-	nameChan := make(chan string)
-	wg.Add(1)
-	go func() {
-		defer wg.Done()
-		defer close(nameChan)
-		for name := range nameSet {
-			nameChan <- name
+	// Distribute names in nameSet to maxMapsAPICallsInParallel shards for parallel processing.
+	nameListShards := make([][]string, maxMapsAPICallsInParallel)
+	idx := 0
+	for name := range nameSet {
+		nameListShards[idx] = append(nameListShards[idx], name)
+		idx++
+		if idx >= maxMapsAPICallsInParallel {
+			idx = 0
 		}
-	}()
+	}
 
-	// Receive and process resolved place IDs.
-	nameToPlaceIDs := &sync.Map{}
-	placeIDSet := &sync.Map{}
-	placeInfoChan := make(chan placeInfo, maxMapsAPICallsInParallel)
-	wg.Add(1)
-	go func() {
-		defer wg.Done()
-		for placeInfo := range placeInfoChan {
-			nameToPlaceIDs.Store(placeInfo.name, placeInfo.placeIDs)
-			for _, placeID := range placeInfo.placeIDs {
-				placeIDSet.Store(placeID, struct{}{})
-			}
-		}
-	}()
+	// The channel to receive results from parallel workers.
+	placeInfoChan := make(chan placeInfo, len(nameSet))
 
-	// Call Maps API to find place IDs in parallel.
-	// The errors in the Goroutines need to be captured, so we use errgroup.
-	eg, errCtx := errgroup.WithContext(ctx)
-	for i := 0; i < maxMapsAPICallsInParallel; i++ {
-		eg.Go(func() error {
-			for name := range nameChan {
-				placeIDs, err := findPlaceIDsFromName(errCtx, mapsClient, name)
+	// Worker function.
+	mapsAPICallWorkerFunc := func(ctx context.Context, i int) func() error {
+		return func() error {
+			for _, name := range nameListShards[i] {
+				placeIDs, err := findPlaceIDsFromName(ctx, mapsClient, name)
 				if err != nil {
 					return err
 				}
 				placeInfoChan <- placeInfo{name: name, placeIDs: placeIDs}
 			}
 			return nil
-		})
+		}
+	}
+
+	// Call Maps API to find place IDs in parallel.
+	// The errors in the Goroutines need to be captured, so we use errgroup.
+	eg, errCtx := errgroup.WithContext(ctx)
+	for i := 0; i < maxMapsAPICallsInParallel; i++ {
+		eg.Go(mapsAPICallWorkerFunc(errCtx, i))
 	}
 	if err := eg.Wait(); err != nil {
 		return nil, nil, err
 	}
 	close(placeInfoChan)
 
-	wg.Wait()
+	// Read out the results sent by workers.
+	nameToPlaceIDs := map[string][]string{}
+	placeIDSet := map[string]struct{}{}
+	for placeInfo := range placeInfoChan {
+		nameToPlaceIDs[placeInfo.name] = placeInfo.placeIDs
+		for _, placeID := range placeInfo.placeIDs {
+			placeIDSet[placeID] = struct{}{}
+		}
+	}
 
 	return nameToPlaceIDs, placeIDSet, nil
 }
@@ -214,20 +213,14 @@ func findPlaceIDsFromName(
 
 func resolveDCIDs(
 	ctx context.Context,
-	placeIDSet *sync.Map,
+	placeIDSet map[string]struct{},
 	store *store.Store,
 ) (map[string][]string, map[string]struct{}, error) {
-	placeIDs := []string{}
-	placeIDSet.Range(func(placeID any, dummy any) bool {
-		placeIDs = append(placeIDs, placeID.(string))
-		return true
-	})
-
 	resolveResp, err := ResolveIds(ctx,
 		&pb.ResolveIdsRequest{
 			InProp:  "placeId",
 			OutProp: "dcid",
-			Ids:     placeIDs,
+			Ids:     util.StringSetToSlice(placeIDSet),
 		},
 		store)
 	if err != nil {
