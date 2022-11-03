@@ -141,8 +141,6 @@ type MixerClient interface {
 	BioPage(ctx context.Context, in *BioPageRequest, opts ...grpc.CallOption) (*GraphNodes, error)
 	PlacePage(ctx context.Context, in *PlacePageRequest, opts ...grpc.CallOption) (*GetPlacePageDataResponse, error)
 	VariableAncestors(ctx context.Context, in *VariableAncestorsRequest, opts ...grpc.CallOption) (*VariableAncestorsResponse, error)
-	// Compare two entities to determine if they are the same entity.
-	CompareEntities(ctx context.Context, in *CompareEntitiesRequest, opts ...grpc.CallOption) (*CompareEntitiesResponse, error)
 	// Resolve a list of entities, given their descriptions.
 	ResolveEntities(ctx context.Context, in *ResolveEntitiesRequest, opts ...grpc.CallOption) (*ResolveEntitiesResponse, error)
 	// Resolve a list of places, given their latitude and longitude coordinates.
@@ -710,15 +708,6 @@ func (c *mixerClient) VariableAncestors(ctx context.Context, in *VariableAncesto
 	return out, nil
 }
 
-func (c *mixerClient) CompareEntities(ctx context.Context, in *CompareEntitiesRequest, opts ...grpc.CallOption) (*CompareEntitiesResponse, error) {
-	out := new(CompareEntitiesResponse)
-	err := c.cc.Invoke(ctx, "/datacommons.Mixer/CompareEntities", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *mixerClient) ResolveEntities(ctx context.Context, in *ResolveEntitiesRequest, opts ...grpc.CallOption) (*ResolveEntitiesResponse, error) {
 	out := new(ResolveEntitiesResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/ResolveEntities", in, out, opts...)
@@ -878,8 +867,6 @@ type MixerServer interface {
 	BioPage(context.Context, *BioPageRequest) (*GraphNodes, error)
 	PlacePage(context.Context, *PlacePageRequest) (*GetPlacePageDataResponse, error)
 	VariableAncestors(context.Context, *VariableAncestorsRequest) (*VariableAncestorsResponse, error)
-	// Compare two entities to determine if they are the same entity.
-	CompareEntities(context.Context, *CompareEntitiesRequest) (*CompareEntitiesResponse, error)
 	// Resolve a list of entities, given their descriptions.
 	ResolveEntities(context.Context, *ResolveEntitiesRequest) (*ResolveEntitiesResponse, error)
 	// Resolve a list of places, given their latitude and longitude coordinates.
@@ -1076,9 +1063,6 @@ func (UnimplementedMixerServer) PlacePage(context.Context, *PlacePageRequest) (*
 }
 func (UnimplementedMixerServer) VariableAncestors(context.Context, *VariableAncestorsRequest) (*VariableAncestorsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method VariableAncestors not implemented")
-}
-func (UnimplementedMixerServer) CompareEntities(context.Context, *CompareEntitiesRequest) (*CompareEntitiesResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CompareEntities not implemented")
 }
 func (UnimplementedMixerServer) ResolveEntities(context.Context, *ResolveEntitiesRequest) (*ResolveEntitiesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ResolveEntities not implemented")
@@ -2202,24 +2186,6 @@ func _Mixer_VariableAncestors_Handler(srv interface{}, ctx context.Context, dec 
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Mixer_CompareEntities_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CompareEntitiesRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(MixerServer).CompareEntities(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/datacommons.Mixer/CompareEntities",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).CompareEntities(ctx, req.(*CompareEntitiesRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _Mixer_ResolveEntities_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ResolveEntitiesRequest)
 	if err := dec(in); err != nil {
@@ -2542,10 +2508,6 @@ var Mixer_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "VariableAncestors",
 			Handler:    _Mixer_VariableAncestors_Handler,
-		},
-		{
-			MethodName: "CompareEntities",
-			Handler:    _Mixer_CompareEntities_Handler,
 		},
 		{
 			MethodName: "ResolveEntities",

@@ -369,22 +369,6 @@ func (s *Server) ResolveCoordinates(
 	return recon.ResolveCoordinates(ctx, in, s.store)
 }
 
-// CompareEntities implements API for Mixer.CompareEntities.
-func (s *Server) CompareEntities(
-	ctx context.Context, in *pb.CompareEntitiesRequest,
-) (
-	*pb.CompareEntitiesResponse, error) {
-	// TODO(spaceenter): Implement.
-	return &pb.CompareEntitiesResponse{
-		Comparisons: []*pb.CompareEntitiesResponse_Comparison{
-			{
-				SourceIds:   []string{"aaa", "bbb"},
-				Probability: 0.67,
-			},
-		},
-	}, nil
-}
-
 // BulkFindEntities implements API for Mixer.BulkFindEntities.
 func (s *Server) BulkFindEntities(
 	ctx context.Context, in *pb.BulkFindEntitiesRequest,

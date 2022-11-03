@@ -51,17 +51,6 @@ message CoordinateRecon {
   repeated Place places = 1;
 }
 
-message CompareEntitiesRequest { repeated EntityPair entity_pairs = 1; }
-
-message CompareEntitiesResponse {
-  message Comparison {
-    // Must have two source_ids, one for each entity.
-    repeated string source_ids = 1;
-    double probability = 2;
-  }
-  repeated Comparison comparisons = 1;
-}
-
 message ResolveEntitiesRequest {
   repeated EntitySubGraph entities = 1;
   // The properties of IDs to find. If empty, all known IDs are returned.
