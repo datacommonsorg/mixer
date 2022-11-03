@@ -1,34 +1,18 @@
 {
   "entities": [
     {
-      "description": "Santa Clara County",
-      "type": "County",
-      "dcids": [
-        "geoId/06085"
-      ]
-    },
-    {
-      "description": "non-existing place wow"
-    },
-    {
       "description": "Mountain View, CA",
       "dcids": [
         "geoId/0649670"
       ]
     },
     {
-      "description": "Newton",
-      "type": "City",
-      "dcids": [
-        "geoId/2545560",
-        "geoId/3747000",
-        "geoId/1956505"
-      ]
+      "description": "non-existing place wow"
     },
     {
-      "description": "Santa Clara County",
+      "description": "mmountan view",
       "dcids": [
-        "geoId/06085"
+        "geoId/0649670"
       ]
     },
     {
@@ -38,13 +22,20 @@
       ]
     },
     {
-      "description": "mountain view",
+      "description": "Santa Clara County",
       "dcids": [
-        "geoId/0649670"
+        "geoId/06085"
       ]
     },
     {
-      "description": "mmountan view",
+      "description": "Santa Clara County",
+      "type": "County",
+      "dcids": [
+        "geoId/06085"
+      ]
+    },
+    {
+      "description": "mountain view",
       "dcids": [
         "geoId/0649670"
       ]
