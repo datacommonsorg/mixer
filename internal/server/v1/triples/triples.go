@@ -87,6 +87,9 @@ func Triples(
 		if err != nil {
 			return nil, err
 		}
+		if len(resp) == 0 {
+			return &pb.TriplesResponse{}, nil
+		}
 		return &pb.TriplesResponse{
 			Triples: resp[0].Triples,
 		}, nil

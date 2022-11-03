@@ -97,6 +97,13 @@ func TestBulkObservationsPointLinked(t *testing.T) {
 				"2016",
 				"FRA_AA2_2016.json",
 			},
+			{
+				"DummyType",
+				"country/FRA",
+				[]string{"Count_Person"},
+				"",
+				"dummy_type.json",
+			},
 		} {
 			for _, allFacets := range []bool{true, false} {
 				goldenFile := c.goldenFile

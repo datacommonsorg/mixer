@@ -60,6 +60,11 @@ func TestTriplesOut(t *testing.T) {
 				"",
 			},
 			{
+				"fake_observation.json",
+				"dc/o/fake",
+				"",
+			},
+			{
 				"dummy.json",
 				"dummy",
 				"",
