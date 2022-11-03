@@ -17,6 +17,7 @@ package util
 import (
 	"bytes"
 	"compress/gzip"
+	"context"
 	"encoding/base64"
 	"encoding/json"
 	"fmt"
@@ -32,13 +33,18 @@ import (
 	"strings"
 	"time"
 
+	secretmanager "cloud.google.com/go/secretmanager/apiv1"
+	"cloud.google.com/go/secretmanager/apiv1/secretmanagerpb"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	"golang.org/x/oauth2/google"
 	"golang.org/x/text/cases"
 	"golang.org/x/text/language"
+	"google.golang.org/api/compute/v1"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/proto"
 	"google.golang.org/protobuf/reflect/protoreflect"
+	"googlemaps.github.io/maps"
 )
 
 const (
@@ -51,6 +57,10 @@ const (
 	DirectionIn = "in"
 	// String to represent out arc direction
 	DirectionOut = "out"
+	// Pattern of the Maps API key secret version.
+	mapsAPIKeySecretVersion = "projects/%s/secrets/maps-api-key/versions/latest"
+	// Default project ID.
+	defaultProjectID = "datcom-store"
 )
 
 // PlaceStatVar holds a place and a stat var dcid.
@@ -480,5 +490,41 @@ func StringListIntersection(list [][]string) []string {
 	}
 	sort.Strings(res)
 
+	return res
+}
+
+// MapsClient gets the client for Maps API.
+func MapsClient(ctx context.Context) (*maps.Client, error) {
+	var projectID string
+	credentials, err := google.FindDefaultCredentials(ctx, compute.ComputeScope)
+	if err != nil || credentials == nil || credentials.ProjectID == "" {
+		projectID = defaultProjectID
+	} else {
+		projectID = credentials.ProjectID
+	}
+
+	secretClient, err := secretmanager.NewClient(ctx)
+	if err != nil {
+		return nil, err
+	}
+	defer secretClient.Close()
+
+	secret, err := secretClient.AccessSecretVersion(ctx,
+		&secretmanagerpb.AccessSecretVersionRequest{
+			Name: fmt.Sprintf(mapsAPIKeySecretVersion, projectID),
+		})
+	if err != nil {
+		return nil, err
+	}
+
+	return maps.NewClient(maps.WithAPIKey(string(secret.Payload.Data)))
+}
+
+// StringSetToSlice is a helper to convert a string set to a string slice.
+func StringSetToSlice(s map[string]struct{}) []string {
+	res := []string{}
+	for k := range s {
+		res = append(res, k)
+	}
 	return res
 }

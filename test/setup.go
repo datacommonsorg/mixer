@@ -32,11 +32,13 @@ import (
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"github.com/datacommonsorg/mixer/internal/store/memdb"
+	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 	"google.golang.org/grpc/reflection"
 	"google.golang.org/protobuf/encoding/protojson"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
+	"googlemaps.github.io/maps"
 )
 
 // TestOption holds the options for integration test.
@@ -133,7 +135,13 @@ func setupInternal(
 	} else {
 		cache = &resource.Cache{}
 	}
-	return newClient(st, tables, metadata, cache)
+
+	mapsClient, err := util.MapsClient(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	return newClient(st, tables, metadata, cache, mapsClient)
 }
 
 // SetupBqOnly creates local server and client with access to BigQuery only.
@@ -157,7 +165,7 @@ func SetupBqOnly() (pb.MixerClient, error) {
 		return nil, err
 	}
 	st := store.NewStore(bqClient, nil, nil, "", nil)
-	return newClient(st, nil, metadata, nil)
+	return newClient(st, nil, metadata, nil, nil)
 }
 
 func newClient(
@@ -165,8 +173,9 @@ func newClient(
 	tables []*bigtable.Table,
 	metadata *resource.Metadata,
 	cache *resource.Cache,
+	mapsClient *maps.Client,
 ) (pb.MixerClient, error) {
-	mixerServer := server.NewMixerServer(mixerStore, metadata, cache)
+	mixerServer := server.NewMixerServer(mixerStore, metadata, cache, mapsClient)
 	srv := grpc.NewServer()
 	pb.RegisterMixerServer(srv, mixerServer)
 	reflection.Register(srv)

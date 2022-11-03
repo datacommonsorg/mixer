@@ -110,3 +110,22 @@ message ResolveIdsResponse {
   }
   repeated Entity entities = 1;
 }
+
+message BulkFindEntitiesRequest {
+  message Entity {
+    string description = 1;
+    // Optional.
+    string type = 2;
+  }
+  repeated Entity entities = 1;
+}
+
+message BulkFindEntitiesResponse {
+  message Entity {
+    string description = 1;
+    // Optional.
+    string type = 2;
+    repeated string dcids = 3;
+  }
+  repeated Entity entities = 1;
+}
