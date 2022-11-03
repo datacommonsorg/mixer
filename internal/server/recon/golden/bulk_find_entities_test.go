@@ -44,7 +44,6 @@ func TestBulkFindEntities(t *testing.T) {
 						{Description: "Santa Clara County"},
 						{Description: "Santa Clara County", Type: "County"},
 						{Description: "Cambridge, MA"},
-						{Description: "Newton", Type: "City"},
 						{Description: "mountain view"},
 						{Description: "Mountain View, CA"},
 						// Typo on purpose.
