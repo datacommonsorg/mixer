@@ -196,7 +196,7 @@ func main() {
 	}
 
 	// Maps client.
-	mapsClient, err := util.MapsClient(ctx)
+	mapsClient, err := util.MapsClient(ctx, metadata.MixerProject)
 	if err != nil {
 		log.Fatalf("Failed to create Maps client: %v", err)
 	}

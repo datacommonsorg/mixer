@@ -136,7 +136,7 @@ func setupInternal(
 		cache = &resource.Cache{}
 	}
 
-	mapsClient, err := util.MapsClient(ctx)
+	mapsClient, err := util.MapsClient(ctx, metadata.MixerProject)
 	if err != nil {
 		return nil, err
 	}

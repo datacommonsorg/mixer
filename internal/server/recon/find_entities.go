@@ -35,7 +35,7 @@ const (
 
 type entityInfo struct {
 	description string
-	entityType  string
+	typ         string
 }
 
 // BulkFindEntities implements API for Mixer.BulkFindEntities.
@@ -58,7 +58,7 @@ func BulkFindEntities(
 	for _, entity := range in.GetEntities() {
 		description := entity.GetDescription()
 		if description == "" {
-			return nil, fmt.Errorf("empty entity description")
+			continue
 		}
 		entityInfoSet[entityInfo{description, entity.GetType()}] = struct{}{}
 	}
@@ -86,7 +86,7 @@ func BulkFindEntities(
 	for entityInfo, placeIDs := range entityInfoToPlaceIDs {
 		entity := &pb.BulkFindEntitiesResponse_Entity{
 			Description: entityInfo.description,
-			Type:        entityInfo.entityType,
+			Type:        entityInfo.typ,
 		}
 
 		allDCIDs := []string{}
@@ -97,7 +97,7 @@ func BulkFindEntities(
 		}
 
 		if len(allDCIDs) != 0 {
-			if entityInfo.entityType == "" {
+			if entityInfo.typ == "" {
 				// No type filtering.
 				entity.Dcids = allDCIDs
 			} else {
@@ -108,7 +108,7 @@ func BulkFindEntities(
 					if !ok {
 						continue
 					}
-					if _, ok := typeSet[entityInfo.entityType]; ok {
+					if _, ok := typeSet[entityInfo.typ]; ok {
 						filteredDCIDs = append(filteredDCIDs, dcid)
 					}
 				}
@@ -129,7 +129,8 @@ func resolvePlaceIDs(
 ) (
 	map[entityInfo][]string, /* entityInfo -> [place ID] */
 	map[string]struct{}, /* [place ID] for all entities */
-	error) {
+	error,
+) {
 	type resolveResult struct {
 		entityInfo *entityInfo
 		placeIDs   []string
@@ -194,7 +195,7 @@ func findPlaceIDsForEntity(
 ) ([]string, error) {
 	// When type is supplied, we append it to the description to increase the accuracy.
 	input := entityInfo.description
-	if t := entityInfo.entityType; t != "" {
+	if t := entityInfo.typ; t != "" {
 		input += (" " + t)
 	}
 
@@ -222,7 +223,8 @@ func resolveDCIDs(
 ) (
 	map[string][]string, /* Place ID -> [DCID] */
 	map[string]struct{}, /* [DCID] for all place IDs */
-	error) {
+	error,
+) {
 	resolveResp, err := ResolveIds(ctx,
 		&pb.ResolveIdsRequest{
 			InProp:  "placeId",
@@ -256,7 +258,8 @@ func getPlaceTypes(
 	store *store.Store,
 ) (
 	map[string]map[string]struct{}, /* DCID -> {type} */
-	error) {
+	error,
+) {
 	resp, err := propertyvalues.BulkPropertyValues(ctx,
 		&pb.BulkPropertyValuesRequest{
 			Property:  "typeOf",
