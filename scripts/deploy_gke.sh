@@ -118,8 +118,3 @@ cat endpoints.yaml
 
 gsutil cp gs://datcom-mixer-grpc/mixer-grpc/mixer-grpc.$TAG.pb .
 gcloud endpoints services deploy mixer-grpc.$TAG.pb endpoints.yaml --project $PROJECT_ID
-
-
-# Reset changed file
-cd $ROOT
-git checkout HEAD -- deploy/git/mixer_hash.txt
