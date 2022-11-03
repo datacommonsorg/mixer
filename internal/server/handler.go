@@ -384,3 +384,10 @@ func (s *Server) CompareEntities(
 		},
 	}, nil
 }
+
+// BulkFindEntities implements API for Mixer.BulkFindEntities.
+func (s *Server) BulkFindEntities(
+	ctx context.Context, in *pb.BulkFindEntitiesRequest,
+) (*pb.BulkFindEntitiesResponse, error) {
+	return recon.BulkFindEntities(ctx, in, s.store, s.mapsClient)
+}

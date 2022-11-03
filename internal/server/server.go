@@ -32,13 +32,15 @@ import (
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"github.com/datacommonsorg/mixer/internal/translator/solver"
 	"github.com/datacommonsorg/mixer/internal/translator/types"
+	"googlemaps.github.io/maps"
 )
 
 // Server holds resources for a mixer server
 type Server struct {
-	store    *store.Store
-	metadata *resource.Metadata
-	cache    *resource.Cache
+	store      *store.Store
+	metadata   *resource.Metadata
+	cache      *resource.Cache
+	mapsClient *maps.Client
 }
 
 func (s *Server) updateBranchTable(ctx context.Context, branchTableName string) {
@@ -155,10 +157,12 @@ func NewMixerServer(
 	store *store.Store,
 	metadata *resource.Metadata,
 	cache *resource.Cache,
+	mapsClient *maps.Client,
 ) *Server {
 	return &Server{
-		store:    store,
-		metadata: metadata,
-		cache:    cache,
+		store:      store,
+		metadata:   metadata,
+		cache:      cache,
+		mapsClient: mapsClient,
 	}
 }

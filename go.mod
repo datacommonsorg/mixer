@@ -45,7 +45,9 @@ require (
 	go.opencensus.io v0.23.0 // indirect
 	golang.org/x/net v0.1.0 // indirect
 	golang.org/x/sys v0.1.0 // indirect
+	golang.org/x/time v0.0.0-20220922220347-f3bd1da661af // indirect
 	golang.org/x/xerrors v0.0.0-20220907171357-04be3eba64a2 // indirect
 	google.golang.org/appengine v1.6.7 // indirect
+	googlemaps.github.io/maps v1.3.2 // indirect
 	rsc.io/binaryregexp v0.2.0 // indirect
 )

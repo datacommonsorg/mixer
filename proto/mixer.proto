@@ -629,4 +629,18 @@ service Mixer {
       body : "*"
     };
   }
+
+
+  // TODO(spaceenter): Add a non-bulk method FindEntities().
+
+  // Find entities from descriptions, with optional filters on types.
+  rpc BulkFindEntities(BulkFindEntitiesRequest) returns (BulkFindEntitiesResponse) {
+    option (google.api.http) = {
+      additional_bindings : {
+        post : "/v1/bulk/find/entities"
+        body : "*"
+      }
+    };
+  }
+
 }

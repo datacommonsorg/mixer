@@ -34,6 +34,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"github.com/datacommonsorg/mixer/internal/store/memdb"
+	"github.com/datacommonsorg/mixer/internal/util"
 	"golang.org/x/oauth2/google"
 
 	"cloud.google.com/go/bigquery"
@@ -194,8 +195,14 @@ func main() {
 		}
 	}
 
+	// Maps client.
+	mapsClient, err := util.MapsClient(ctx, metadata.MixerProject)
+	if err != nil {
+		log.Fatalf("Failed to create Maps client: %v", err)
+	}
+
 	// Create server object
-	mixerServer := server.NewMixerServer(store, metadata, cache)
+	mixerServer := server.NewMixerServer(store, metadata, cache, mapsClient)
 	pb.RegisterMixerServer(srv, mixerServer)
 
 	// Subscribe to branch cache update
