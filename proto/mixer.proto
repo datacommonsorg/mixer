@@ -595,15 +595,6 @@ service Mixer {
 
   // ==================  RECON   RECON   RECON   RECON  ================
 
-  // Compare two entities to determine if they are the same entity.
-  rpc CompareEntities(CompareEntitiesRequest)
-      returns (CompareEntitiesResponse) {
-    option (google.api.http) = {
-      post : "/v1/recon/entity/compare"
-      body : "*"
-    };
-  }
-
   // Resolve a list of entities, given their descriptions.
   rpc ResolveEntities(ResolveEntitiesRequest)
       returns (ResolveEntitiesResponse) {
