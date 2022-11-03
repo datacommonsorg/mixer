@@ -57,6 +57,7 @@ if [[ $2 != "" ]]; then
   git checkout "$TAG"
 fi
 
+mkdir "$ROOT/deploy/git"
 cd "$ROOT/deploy/git"
 echo -n "$TAG" > mixer_hash.txt
 
