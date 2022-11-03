@@ -111,6 +111,19 @@ go run --tags sqlite_fts5 cmd/main.go \
     --use_branch_bt=false
 ```
 
+### Update Go package dependencies
+
+To view possible updates:
+```
+go list -m -u all
+```
+
+To update:
+```
+go get -u ./...
+go mod tidy
+```
+
 ### Run Tests (Go)
 
 ```bash
