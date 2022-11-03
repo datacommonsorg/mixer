@@ -7,15 +7,6 @@
       ]
     },
     {
-      "description": "Cambridge",
-      "type": "City",
-      "dcids": [
-        "geoId/1809874",
-        "geoId/2511000",
-        "wikidataId/Q350"
-      ]
-    },
-    {
       "description": "mountain view",
       "dcids": [
         "geoId/0649670"
