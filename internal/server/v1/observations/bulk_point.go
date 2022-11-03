@@ -129,8 +129,9 @@ func BulkPoint(
 		}
 	}
 	for _, variable := range variables {
-		result.ObservationsByVariable = append(
-			result.ObservationsByVariable, tmpResult[variable])
+		if obs, ok := tmpResult[variable]; ok {
+			result.ObservationsByVariable = append(result.ObservationsByVariable, obs)
+		}
 	}
 	return result, nil
 }
