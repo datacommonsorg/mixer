@@ -95,20 +95,6 @@ service Mixer {
     };
   }
 
-  // Get stat of a set of places and statistical variables.
-  //
-  // If multiple time series data are avaialable, the highest ranked one by
-  // measurement method, scaling factor and import will be returned.
-  // This is a newer version of GetStats() that takes multiple stat vars and
-  // returns protobuf field instead of "payload" of json string.
-  rpc GetStatSetSeries(GetStatSetSeriesRequest)
-      returns (GetStatSetSeriesResponse) {
-    option (google.api.http) = {
-      get : "/v1/stat/set/series"
-      additional_bindings : {post : "/v1/stat/set/series" body : "*"}
-    };
-  }
-
   // Get a single stat value given a place, a statistical variable and a date.
   // If no date is given, the latest statistical variable will be returned.
   rpc GetStatValue(GetStatValueRequest) returns (GetStatValueResponse) {
@@ -163,15 +149,6 @@ service Mixer {
     option (google.api.http) = {
       get : "/stat/set"
       additional_bindings : {post : "/stat/set" body : "*"}
-    };
-  }
-
-  // Get the stat series for given parent places and child place type.
-  rpc GetStatSetSeriesWithinPlace(GetStatSetSeriesWithinPlaceRequest)
-      returns (GetStatSetSeriesResponse) {
-    option (google.api.http) = {
-      get : "/stat/set/series/within-place"
-      additional_bindings : {post : "/stat/set/series/within-place" body : "*"}
     };
   }
 
