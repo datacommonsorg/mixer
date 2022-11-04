@@ -60,9 +60,7 @@ var (
 // It needs Application Default Credentials to run locally or need to
 // provide service account credential when running on GCP.
 const (
-	baseInstance          = "prophet-cache"
 	bqBillingProject      = "datcom-ci"
-	storeProject          = "datcom-store"
 	tmcfCsvBucket         = "datcom-public"
 	tmcfCsvPrefix         = "food"
 	customBigtableProject = "datcom-mixer-autopush"
@@ -81,7 +79,6 @@ func Setup(option ...*TestOption) (pb.MixerClient, error) {
 		"../deploy/storage/bigquery.version",
 		"../deploy/storage/base_bigtable_info.yaml",
 		"../deploy/mapping",
-		storeProject,
 		useCache,
 		useMemdb,
 		searchOptions,
@@ -89,8 +86,8 @@ func Setup(option ...*TestOption) (pb.MixerClient, error) {
 }
 
 func setupInternal(
-	bq, baseBigtableFile, mcfPath, storeProject string,
-	useCache bool, useMemdb bool, searchOptions server.SearchOptions,
+	bq, baseBigtableFile, mcfPath string,
+	useCache, useMemdb bool, searchOptions server.SearchOptions,
 ) (pb.MixerClient, error) {
 	ctx := context.Background()
 	_, filename, _, _ := runtime.Caller(0)
