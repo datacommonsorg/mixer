@@ -1,24 +1,15 @@
 {
   "entities": [
     {
-      "description": "Mountain View, CA",
-      "dcids": [
-        "geoId/0649670"
-      ]
-    },
-    {
-      "description": "non-existing place wow"
-    },
-    {
-      "description": "mmountan view",
-      "dcids": [
-        "geoId/0649670"
-      ]
-    },
-    {
       "description": "Cambridge, MA",
       "dcids": [
         "geoId/2511000"
+      ]
+    },
+    {
+      "description": "Mountain View, CA",
+      "dcids": [
+        "geoId/0649670"
       ]
     },
     {
@@ -35,10 +26,19 @@
       ]
     },
     {
+      "description": "mmountan view",
+      "dcids": [
+        "geoId/0649670"
+      ]
+    },
+    {
       "description": "mountain view",
       "dcids": [
         "geoId/0649670"
       ]
+    },
+    {
+      "description": "non-existing place wow"
     }
   ]
 }
