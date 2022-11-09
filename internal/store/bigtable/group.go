@@ -69,18 +69,6 @@ func NewGroup(
 	}
 }
 
-// GetHighestRankGroup creates a group that only has the highest rank import
-// group table.
-func GetHighestRankGroup(g *Group) *Group {
-	SortTables(g.tables)
-	result := &Group{tables: []*Table{}}
-	for _, t := range g.tables {
-		result.tables = append(result.tables, t)
-		break
-	}
-	return result
-}
-
 // SortTables sorts the bigtable by import group preferences
 //   - custom import group should be the highest rank
 //   - For non-custom import groups:
