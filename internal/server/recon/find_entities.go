@@ -89,6 +89,7 @@ func BulkFindEntities(
 			Type:        entityInfo.typ,
 		}
 
+		fmt.Print(entityInfoToPlaceIDs)
 		allDCIDs := []string{}
 		for _, placeID := range placeIDs {
 			if dcids, ok := placeIDToDCIDs[placeID]; ok {
@@ -167,12 +168,16 @@ func resolvePlaceIDs(
 					return err
 				}
 				if len(placeIDs) == 0 {
-					continue
+					resolveResultChan <- resolveResult{
+						entityInfo: &entityInfo,
+						placeIDs:   []string{}}
+
+				} else {
+					// Only keep the first place ID, as the rest ones are usually much less accurate.
+					resolveResultChan <- resolveResult{
+						entityInfo: &entityInfo,
+						placeIDs:   []string{placeIDs[0]}}
 				}
-				// Only keep the first place ID, as the rest ones are usually much less accurate.
-				resolveResultChan <- resolveResult{
-					entityInfo: &entityInfo,
-					placeIDs:   []string{placeIDs[0]}}
 			}
 			return nil
 		}
