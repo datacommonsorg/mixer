@@ -69,37 +69,51 @@ func NewGroup(
 	}
 }
 
-// GetFrequentGroup creates a group that only has frequent import group table.
-func GetFrequentGroup(g *Group) *Group {
+// GetHighestRankGroup creates a group that only has the highest rank import
+// group table.
+func GetHighestRankGroup(g *Group) *Group {
+	SortTables(g.tables)
 	result := &Group{tables: []*Table{}}
 	for _, t := range g.tables {
-		if strings.HasPrefix(t.name, "frequent_") {
-			result.tables = append(result.tables, t)
-			break
-		}
+		result.tables = append(result.tables, t)
+		break
 	}
 	return result
 }
 
 // SortTables sorts the bigtable by import group preferences
-//   - frequent should always be the highest rank
-//   - infrequent should always be the lowest rank
-//   - if a group is not in ranking list, put it right before "infrequent" and
+//   - custom import group should be the highest rank
+//   - For non-custom import groups:
+//     . branch import group ranks #1
+//     . frequent import group ranks #2
+//     . infrequent should always be the lowest rank
+//     . if a group is not in ranking list, put it right before "infrequent" and
 //     after other groups with ranking.
 func SortTables(tables []*Table) {
 	sort.SliceStable(tables, func(i, j int) bool {
 		// This is to parse the table name like "frequent_2022_02_01_14_20_47"
 		// and get the actual import group name.
-		ni := strings.Split(tables[i].name, "_")[0]
-		ri, ok := groupRank[ni]
-		if !ok {
-			ri = defaultRank
+		var ri, rj int
+		var ni, nj string
+		var ok bool
+		if tables[i].isCustom {
+			ri = -1
+		} else {
+			ni := strings.Split(tables[i].name, "_")[0]
+			ri, ok = groupRank[ni]
+			if !ok {
+				ri = defaultRank
+			}
 		}
 		// ranking for j
-		nj := strings.Split(tables[j].name, "_")[0]
-		rj, ok := groupRank[nj]
-		if !ok {
-			rj = defaultRank
+		if tables[j].isCustom {
+			rj = -1
+		} else {
+			nj := strings.Split(tables[j].name, "_")[0]
+			rj, ok = groupRank[nj]
+			if !ok {
+				rj = defaultRank
+			}
 		}
 		if ri == rj {
 			return strings.TrimPrefix(tables[i].name, ni) > strings.TrimPrefix(tables[j].name, nj)
