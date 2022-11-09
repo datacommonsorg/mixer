@@ -167,6 +167,7 @@ func resolvePlaceIDs(
 					return err
 				}
 				if len(placeIDs) == 0 {
+					// If no results, set placeIDs to empty []string.
 					resolveResultChan <- resolveResult{
 						entityInfo: &entityInfo,
 						placeIDs:   []string{}}
