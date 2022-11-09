@@ -44,9 +44,8 @@ func Ancestors(
 		if parents, ok := cache.ParentSvg[curr]; ok {
 			curr = parents[0]
 			for _, parent := range parents {
-				parts := strings.Split(parent, "/")
 				// Prefer parent from custom import group
-				if strings.HasPrefix(parts[2], "Custom") {
+				if strings.HasPrefix(parent, "dc/g/Custom_") {
 					curr = parent
 					break
 				}
