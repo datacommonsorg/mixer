@@ -114,12 +114,14 @@ go run --tags sqlite_fts5 cmd/main.go \
 ### Update Go package dependencies
 
 To view possible updates:
-```
+
+```bash
 go list -m -u all
 ```
 
 To update:
-```
+
+```bash
 go get -u ./...
 go mod tidy
 ```
