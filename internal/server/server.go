@@ -55,7 +55,7 @@ func (s *Server) updateBranchTable(ctx context.Context, branchTableName string) 
 		return
 	}
 	s.store.BtGroup.UpdateBranchTable(
-		bigtable.NewTable(branchTableName, branchTable, false))
+		bigtable.NewTable(branchTableName, branchTable, false /*is_custom=*/))
 	log.Printf("Updated branch table to use %s", branchTableName)
 }
 

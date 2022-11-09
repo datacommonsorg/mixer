@@ -82,9 +82,10 @@ func GetHighestRankGroup(g *Group) *Group {
 }
 
 // SortTables sorts the bigtable by import group preferences
-//   - custom import group shold be the highest rank
+//   - custom import group should be the highest rank
 //   - For non-custom import groups:
-//     . frequent should always be the highest rank
+//     . branch import group ranks #1
+//     . frequent import group ranks #2
 //     . infrequent should always be the lowest rank
 //     . if a group is not in ranking list, put it right before "infrequent" and
 //     after other groups with ranking.
