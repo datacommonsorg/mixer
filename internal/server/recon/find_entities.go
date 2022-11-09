@@ -89,7 +89,6 @@ func BulkFindEntities(
 			Type:        entityInfo.typ,
 		}
 
-		fmt.Print(entityInfoToPlaceIDs)
 		allDCIDs := []string{}
 		for _, placeID := range placeIDs {
 			if dcids, ok := placeIDToDCIDs[placeID]; ok {
