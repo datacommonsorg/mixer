@@ -141,7 +141,7 @@ func GetStatVarGroup(
 		// other import groups.
 		btDataList, err := bigtable.Read(
 			ctx,
-			bigtable.GetHighestRankGroup(store.BtGroup),
+			store.BtGroup,
 			bigtable.BtStatVarGroup,
 			[][]string{{""}},
 			func(jsonRaw []byte) (interface{}, error) {
@@ -158,7 +158,7 @@ func GetStatVarGroup(
 		for _, btData := range btDataList {
 			for _, row := range btData {
 				svg, ok := row.Data.(*pb.StatVarGroups)
-				if ok {
+				if ok && svg.StatVarGroups != nil {
 					result = svg
 				}
 			}
