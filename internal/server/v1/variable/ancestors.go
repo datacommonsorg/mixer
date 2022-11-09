@@ -16,6 +16,7 @@ package variable
 
 import (
 	"context"
+	"strings"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
@@ -42,6 +43,14 @@ func Ancestors(
 	for {
 		if parents, ok := cache.ParentSvg[curr]; ok {
 			curr = parents[0]
+			for _, parent := range parents {
+				parts := strings.Split(parent, "/")
+				// Prefer parent from custom import group
+				if strings.HasPrefix(parts[2], "Custom") {
+					curr = parent
+					break
+				}
+			}
 			if curr == statvar.SvgRoot {
 				break
 			}
