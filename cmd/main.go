@@ -113,11 +113,13 @@ func main() {
 	// Base Bigtable cache
 	var tables []*bigtable.Table
 	if *useBaseBt {
-		baseTables, err := bigtable.CreateBigtables(ctx, *baseBigtableInfo)
+		baseTables, err := bigtable.CreateBigtables(
+			ctx, *baseBigtableInfo, false /*isCustom=*/)
 		if err != nil {
 			log.Fatalf("Failed to create base Bigtables: %v", err)
 		}
-		customTables, err := bigtable.CreateBigtables(ctx, *customBigtableInfo)
+		customTables, err := bigtable.CreateBigtables(
+			ctx, *customBigtableInfo, true /*isCustom=*/)
 		if err != nil {
 			log.Fatalf("Failed to create custom Bigtables: %v", err)
 		}
@@ -139,7 +141,7 @@ func main() {
 		}
 	}
 
-	// BigQuery.
+	// BigQuery
 	var bqClient *bigquery.Client
 	if *useBigquery {
 		bqClient, err = bigquery.NewClient(ctx, *mixerProject)
@@ -164,7 +166,7 @@ func main() {
 		if err != nil {
 			log.Fatalf("Failed to create BigTable client: %v", err)
 		}
-		tables = append(tables, bigtable.NewTable(branchTableName, branchTable))
+		tables = append(tables, bigtable.NewTable(branchTableName, branchTable, false /*isCustom=*/))
 	}
 
 	// Metadata.
@@ -195,7 +197,7 @@ func main() {
 		}
 	}
 
-	// Maps client.
+	// Maps client
 	mapsClient, err := util.MapsClient(ctx, metadata.MixerProject)
 	if err != nil {
 		log.Fatalf("Failed to create Maps client: %v", err)
@@ -213,7 +215,7 @@ func main() {
 		}
 	}
 
-	// Register for healthcheck.
+	// Register for healthcheck
 	healthService := healthcheck.NewHealthChecker()
 	grpc_health_v1.RegisterHealthServer(srv, healthService)
 

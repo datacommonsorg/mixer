@@ -141,7 +141,7 @@ func GetStatVarGroup(
 		// other import groups.
 		btDataList, err := bigtable.Read(
 			ctx,
-			bigtable.GetFrequentGroup(store.BtGroup),
+			bigtable.GetHighestRankGroup(store.BtGroup),
 			bigtable.BtStatVarGroup,
 			[][]string{{""}},
 			func(jsonRaw []byte) (interface{}, error) {
