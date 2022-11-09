@@ -55,14 +55,6 @@ func TestBulkObservationsSeries(t *testing.T) {
 				true,
 				"result.json",
 			},
-			{
-				[]string{
-					"Monthly_Generation_Electricity_CombustibleFuel",
-				},
-				[]string{"country/AUT"},
-				true,
-				"custom.json",
-			},
 		} {
 			for _, allFacets := range []bool{true, false} {
 				goldenFile := c.goldenFile

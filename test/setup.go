@@ -43,9 +43,10 @@ import (
 
 // TestOption holds the options for integration test.
 type TestOption struct {
-	UseCache      bool
-	UseMemdb      bool
-	SearchOptions server.SearchOptions
+	UseCache       bool
+	UseMemdb       bool
+	UseCustomTable bool
+	SearchOptions  server.SearchOptions
 }
 
 var (
@@ -68,11 +69,12 @@ const (
 
 // Setup creates local server and client.
 func Setup(option ...*TestOption) (pb.MixerClient, error) {
-	useCache, useMemdb := false, false
+	useCache, useMemdb, useCustomTable := false, false, false
 	var searchOptions server.SearchOptions
 	if len(option) == 1 {
 		useCache = option[0].UseCache
 		useMemdb = option[0].UseMemdb
+		useCustomTable = option[0].UseCustomTable
 		searchOptions = option[0].SearchOptions
 	}
 	return setupInternal(
@@ -82,13 +84,14 @@ func Setup(option ...*TestOption) (pb.MixerClient, error) {
 		"../deploy/mapping",
 		useCache,
 		useMemdb,
+		useCustomTable,
 		searchOptions,
 	)
 }
 
 func setupInternal(
 	bigqueryVersionFile, baseBigtableInfoYaml, testBigtableInfoYaml, mcfPath string,
-	useCache, useMemdb bool, searchOptions server.SearchOptions,
+	useCache, useMemdb, useCustomTable bool, searchOptions server.SearchOptions,
 ) (pb.MixerClient, error) {
 	ctx := context.Background()
 	_, filename, _, _ := runtime.Caller(0)
@@ -100,12 +103,14 @@ func setupInternal(
 	if err != nil {
 		log.Fatalf("failed to create Bigtable tables: %v", err)
 	}
-	testBigtableInfo, _ := os.ReadFile(path.Join(path.Dir(filename), testBigtableInfoYaml))
-	testTables, err := bigtable.CreateBigtables(ctx, string(testBigtableInfo), true /*isCustom=*/)
-	if err != nil {
-		log.Fatalf("failed to create Bigtable tables: %v", err)
+	if useCustomTable {
+		customBigtableInfo, _ := os.ReadFile(path.Join(path.Dir(filename), testBigtableInfoYaml))
+		customTables, err := bigtable.CreateBigtables(ctx, string(customBigtableInfo), true /*isCustom=*/)
+		if err != nil {
+			log.Fatalf("failed to create Bigtable tables: %v", err)
+		}
+		tables = append(tables, customTables...)
 	}
-	tables = append(tables, testTables...)
 	// BigQuery.
 	bqClient, err := bigquery.NewClient(ctx, bigqueryBillingProject)
 	if err != nil {
