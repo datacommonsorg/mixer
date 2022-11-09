@@ -155,12 +155,18 @@ func GetStatVarGroup(
 		if err != nil {
 			return nil, err
 		}
+		found := false
 		for _, btData := range btDataList {
 			for _, row := range btData {
 				svg, ok := row.Data.(*pb.StatVarGroups)
 				if ok && svg.StatVarGroups != nil {
 					result = svg
+					found = true
+					break
 				}
+			}
+			if found {
+				break
 			}
 		}
 	} else {
