@@ -2525,7 +2525,8 @@
             "2022-05": 201989,
             "2022-06": 200676,
             "2022-07": 202486,
-            "2022-08": 202713
+            "2022-08": 202629,
+            "2022-09": 202969
           },
           "metadata": {
             "importName": "BLS_LAUS",
@@ -3003,7 +3004,8 @@
             "2022-05": 208232,
             "2022-06": 207930,
             "2022-07": 209652,
-            "2022-08": 210507
+            "2022-08": 210477,
+            "2022-09": 210160
           },
           "metadata": {
             "importName": "BLS_LAUS",
@@ -8934,7 +8936,8 @@
             "2022-05": 3,
             "2022-06": 3.5,
             "2022-07": 3.4,
-            "2022-08": 3.7
+            "2022-08": 3.7,
+            "2022-09": 3.4
           },
           "metadata": {
             "importName": "BLS_LAUS",
@@ -11454,7 +11457,8 @@
             "2022-05": 323799,
             "2022-06": 322185,
             "2022-07": 325511,
-            "2022-08": 323740
+            "2022-08": 323014,
+            "2022-09": 323642
           },
           "metadata": {
             "importName": "BLS_LAUS",
@@ -11932,7 +11936,8 @@
             "2022-05": 333182,
             "2022-06": 333429,
             "2022-07": 335738,
-            "2022-08": 334593
+            "2022-08": 333932,
+            "2022-09": 334322
           },
           "metadata": {
             "importName": "BLS_LAUS",
@@ -17863,7 +17868,8 @@
             "2022-05": 2.8,
             "2022-06": 3.4,
             "2022-07": 3,
-            "2022-08": 3.2
+            "2022-08": 3.3,
+            "2022-09": 3.2
           },
           "metadata": {
             "importName": "BLS_LAUS",
@@ -20963,6 +20969,7 @@
         "Demographics",
         "Economics",
         "Education",
+        "Environment",
         "Equity",
         "Health",
         "Housing",
@@ -21001,6 +21008,7 @@
         "Demographics",
         "Economics",
         "Education",
+        "Environment",
         "Equity",
         "Health",
         "Housing",
@@ -21013,6 +21021,7 @@
         "Demographics",
         "Economics",
         "Education",
+        "Environment",
         "Equity",
         "Health",
         "Housing",
@@ -21038,6 +21047,7 @@
         "Demographics",
         "Economics",
         "Education",
+        "Environment",
         "Equity",
         "Health",
         "Housing",
@@ -21050,6 +21060,7 @@
         "Demographics",
         "Economics",
         "Education",
+        "Environment",
         "Equity",
         "Health",
         "Housing",
@@ -21075,6 +21086,7 @@
         "Demographics",
         "Economics",
         "Education",
+        "Environment",
         "Equity",
         "Health",
         "Housing",
@@ -21087,6 +21099,7 @@
         "Demographics",
         "Economics",
         "Education",
+        "Environment",
         "Equity",
         "Health",
         "Housing",

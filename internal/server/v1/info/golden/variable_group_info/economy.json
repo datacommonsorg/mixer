@@ -49,6 +49,11 @@
         "descendentStatVarCount": 5
       },
       {
+        "id": "dc/g/Household_HouseholdType",
+        "specializedEntity": "Household Type",
+        "displayName": "Household by Household Type"
+      },
+      {
         "id": "dc/g/Household_Income",
         "specializedEntity": "Income (Household)",
         "displayName": "Household by Income"
@@ -57,6 +62,11 @@
         "id": "dc/g/Person_Income",
         "specializedEntity": "Income (Individual)",
         "displayName": "Person by Income"
+      },
+      {
+        "id": "dc/g/Household_IncomeStatus",
+        "specializedEntity": "Income Status",
+        "displayName": "Household by Income Status"
       },
       {
         "id": "dc/g/Person_IncomeStatus",
