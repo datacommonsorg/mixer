@@ -95,8 +95,8 @@ func TestMerge(t *testing.T) {
 			nil,
 			nil,
 			[]*bigtable.Table{
-				bigtable.NewTable("borgcron_base", baseTable, false /*is_custom=*/),
-				bigtable.NewTable("borgcron_branch", branchTable, false /*is_custom=*/),
+				bigtable.NewTable("borgcron_base", baseTable, false /*isCustom=*/),
+				bigtable.NewTable("borgcron_branch", branchTable, false /*isCustom=*/),
 			},
 			"borgcron_branch",
 			nil,

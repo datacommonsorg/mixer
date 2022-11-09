@@ -96,7 +96,7 @@ func setupInternal(
 
 	baseBigtableInfo, _ := os.ReadFile(path.Join(path.Dir(filename), baseBigtableFile))
 
-	tables, err := bigtable.CreateBigtables(ctx, string(baseBigtableInfo), false /*is_custom=*/)
+	tables, err := bigtable.CreateBigtables(ctx, string(baseBigtableInfo), false /*isCustom=*/)
 	if err != nil {
 		log.Fatalf("failed to create Bigtable tables: %v", err)
 	}

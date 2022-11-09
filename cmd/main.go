@@ -114,12 +114,12 @@ func main() {
 	var tables []*bigtable.Table
 	if *useBaseBt {
 		baseTables, err := bigtable.CreateBigtables(
-			ctx, *baseBigtableInfo, false /*is_custom=*/)
+			ctx, *baseBigtableInfo, false /*isCustom=*/)
 		if err != nil {
 			log.Fatalf("Failed to create base Bigtables: %v", err)
 		}
 		customTables, err := bigtable.CreateBigtables(
-			ctx, *customBigtableInfo, true /*is_custom=*/)
+			ctx, *customBigtableInfo, true /*isCustom=*/)
 		if err != nil {
 			log.Fatalf("Failed to create custom Bigtables: %v", err)
 		}
@@ -166,7 +166,7 @@ func main() {
 		if err != nil {
 			log.Fatalf("Failed to create BigTable client: %v", err)
 		}
-		tables = append(tables, bigtable.NewTable(branchTableName, branchTable, false /*is_custom=*/))
+		tables = append(tables, bigtable.NewTable(branchTableName, branchTable, false /*isCustom=*/))
 	}
 
 	// Metadata.

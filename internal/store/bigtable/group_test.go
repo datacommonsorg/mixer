@@ -33,10 +33,10 @@ func TestSortTables(t *testing.T) {
 				{name: "frequent_2022_02_01_14_20_47", table: nil},
 				{name: "dcbranch_2022_02_01_14_00_49", table: nil},
 				{name: "ipcc_2022_01_31_20_56_49", table: nil},
-				{name: "private_01_02", table: nil, is_custom: true},
+				{name: "private_01_02", table: nil, isCustom: true},
 			},
 			expected: []*Table{
-				{name: "private_01_02", table: nil, is_custom: true},
+				{name: "private_01_02", table: nil, isCustom: true},
 				{name: "dcbranch_2022_02_01_14_00_49", table: nil},
 				{name: "frequent_2022_02_01_14_20_47", table: nil},
 				{name: "ipcc_2022_01_31_20_56_49", table: nil},

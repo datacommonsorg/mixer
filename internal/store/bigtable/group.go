@@ -96,7 +96,7 @@ func SortTables(tables []*Table) {
 		var ri, rj int
 		var ni, nj string
 		var ok bool
-		if tables[i].is_custom {
+		if tables[i].isCustom {
 			ri = -1
 		} else {
 			ni := strings.Split(tables[i].name, "_")[0]
@@ -106,7 +106,7 @@ func SortTables(tables []*Table) {
 			}
 		}
 		// ranking for j
-		if tables[j].is_custom {
+		if tables[j].isCustom {
 			rj = -1
 		} else {
 			nj := strings.Split(tables[j].name, "_")[0]
