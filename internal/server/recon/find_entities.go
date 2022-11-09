@@ -170,7 +170,6 @@ func resolvePlaceIDs(
 					resolveResultChan <- resolveResult{
 						entityInfo: &entityInfo,
 						placeIDs:   []string{}}
-
 				} else {
 					// Only keep the first place ID, as the rest ones are usually much less accurate.
 					resolveResultChan <- resolveResult{
