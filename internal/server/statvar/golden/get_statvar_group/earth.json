@@ -229,6 +229,10 @@
           "specializedEntity": "Gender"
         },
         {
+          "id": "dc/g/Person_PlaceOfResidenceClassification",
+          "specializedEntity": "Place of Residence Classification"
+        },
+        {
           "id": "dc/g/Residence",
           "specializedEntity": "Residence"
         }
@@ -766,6 +770,10 @@
     },
     "dc/g/Energy": {
       "childStatVarGroups": [
+        {
+          "id": "dc/g/Consumption",
+          "specializedEntity": "Consumption"
+        },
         {
           "id": "eia/g/Root"
         },
@@ -1876,10 +1884,6 @@
         {
           "id": "dc/g/Crime",
           "specializedEntity": "Crime"
-        },
-        {
-          "id": "dc/g/Uncategorized",
-          "specializedEntity": "Uncategorized"
         }
       ]
     },
@@ -2778,18 +2782,6 @@
           ],
           "displayName": "Amount of Stock (As Fraction of Amount Economic Activity Gross Domestic Production Nominal)",
           "definition": "md=Amount_EconomicActivity_GrossDomesticProduction_Nominal,mp=amount,pt=Stock"
-        }
-      ]
-    },
-    "dc/g/Uncategorized": {
-      "childStatVarGroups": [
-        {
-          "id": "dc/g/Consumption",
-          "specializedEntity": "Consumption"
-        },
-        {
-          "id": "dc/g/SeaBodyOfWater",
-          "specializedEntity": "Sea Body of Water"
         }
       ]
     },

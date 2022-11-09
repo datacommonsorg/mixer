@@ -96,6 +96,11 @@
       "descendentStatVarCount": 666
     },
     {
+      "id": "dc/g/Household_BenefitsStatus",
+      "specializedEntity": "Benefits Status",
+      "displayName": "Household by Benefits Status"
+    },
+    {
       "id": "dc/g/Person_BenefitsStatus",
       "specializedEntity": "Benefits Status",
       "displayName": "Person by Benefits Status"
@@ -194,9 +199,25 @@
       "displayName": "Military Service"
     },
     {
+      "id": "dc/g/Household_Nativity",
+      "specializedEntity": "Nativity",
+      "displayName": "Household by Nativity"
+    },
+    {
+      "id": "dc/g/Household_PlaceOfBirth",
+      "specializedEntity": "Place of Birth",
+      "displayName": "Household by Place of Birth"
+    },
+    {
       "id": "dc/g/Person_PlaceOfBirth",
       "specializedEntity": "Place of Birth",
       "displayName": "Person by Place of Birth"
+    },
+    {
+      "id": "dc/g/Person_PlaceOfResidenceClassification",
+      "specializedEntity": "Place of Residence Classification",
+      "displayName": "Person by Place of Residence Classification",
+      "descendentStatVarCount": 452
     },
     {
       "id": "dc/g/Person_PovertyStatus",
