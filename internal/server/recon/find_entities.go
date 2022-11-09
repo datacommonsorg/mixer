@@ -166,10 +166,14 @@ func resolvePlaceIDs(
 				if err != nil {
 					return err
 				}
-				// Only keep the first place ID, as the rest ones are usually much less accurate.
+				usedPlaceIds := []string{}
+				if len(placeIDs) > 0 {
+					// Only keep the first place ID, as the rest ones are usually much less accurate.
+					usedPlaceIds = []string{placeIDs[0]}
+				}
 				resolveResultChan <- resolveResult{
 					entityInfo: &entityInfo,
-					placeIDs:   []string{placeIDs[0]}}
+					placeIDs:   usedPlaceIds}
 			}
 			return nil
 		}
