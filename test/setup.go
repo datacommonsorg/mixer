@@ -60,10 +60,10 @@ var (
 // It needs Application Default Credentials to run locally or need to
 // provide service account credential when running on GCP.
 const (
-	bqBillingProject      = "datcom-ci"
-	tmcfCsvBucket         = "datcom-public"
-	tmcfCsvPrefix         = "food"
-	customBigtableProject = "datcom-mixer-autopush"
+	bigqueryBillingProject = "datcom-ci"
+	tmcfCsvBucket          = "datcom-public"
+	tmcfCsvPrefix          = "food"
+	mixerProject           = "datcom-ci"
 )
 
 // Setup creates local server and client.
@@ -78,6 +78,7 @@ func Setup(option ...*TestOption) (pb.MixerClient, error) {
 	return setupInternal(
 		"../deploy/storage/bigquery.version",
 		"../deploy/storage/base_bigtable_info.yaml",
+		"./custom_bigtable_info.yaml",
 		"../deploy/mapping",
 		useCache,
 		useMemdb,
@@ -86,28 +87,32 @@ func Setup(option ...*TestOption) (pb.MixerClient, error) {
 }
 
 func setupInternal(
-	bq, baseBigtableFile, mcfPath string,
+	bigqueryVersionFile, baseBigtableInfoYaml, testBigtableInfoYaml, mcfPath string,
 	useCache, useMemdb bool, searchOptions server.SearchOptions,
 ) (pb.MixerClient, error) {
 	ctx := context.Background()
 	_, filename, _, _ := runtime.Caller(0)
-	bqTableID, _ := os.ReadFile(path.Join(path.Dir(filename), bq))
+	bqTableID, _ := os.ReadFile(path.Join(path.Dir(filename), bigqueryVersionFile))
 	schemaPath := path.Join(path.Dir(filename), mcfPath)
 
-	baseBigtableInfo, _ := os.ReadFile(path.Join(path.Dir(filename), baseBigtableFile))
-
+	baseBigtableInfo, _ := os.ReadFile(path.Join(path.Dir(filename), baseBigtableInfoYaml))
 	tables, err := bigtable.CreateBigtables(ctx, string(baseBigtableInfo), false /*isCustom=*/)
 	if err != nil {
 		log.Fatalf("failed to create Bigtable tables: %v", err)
 	}
+	testBigtableInfo, _ := os.ReadFile(path.Join(path.Dir(filename), testBigtableInfoYaml))
+	testTables, err := bigtable.CreateBigtables(ctx, string(testBigtableInfo), true /*isCustom=*/)
+	if err != nil {
+		log.Fatalf("failed to create Bigtable tables: %v", err)
+	}
+	tables = append(tables, testTables...)
 	// BigQuery.
-	bqClient, err := bigquery.NewClient(ctx, bqBillingProject)
+	bqClient, err := bigquery.NewClient(ctx, bigqueryBillingProject)
 	if err != nil {
 		log.Fatalf("failed to create Bigquery client: %v", err)
 	}
 
-	metadata, err := server.NewMetadata(customBigtableProject,
-		strings.TrimSpace(string(bqTableID)), schemaPath)
+	metadata, err := server.NewMetadata(mixerProject, strings.TrimSpace(string(bqTableID)), schemaPath)
 	if err != nil {
 		return nil, err
 	}
@@ -150,7 +155,7 @@ func SetupBqOnly() (pb.MixerClient, error) {
 	schemaPath := path.Join(path.Dir(filename), "../deploy/mapping/")
 
 	// BigQuery.
-	bqClient, err := bigquery.NewClient(ctx, bqBillingProject)
+	bqClient, err := bigquery.NewClient(ctx, bigqueryBillingProject)
 	if err != nil {
 		log.Fatalf("failed to create Bigquery client: %v", err)
 	}

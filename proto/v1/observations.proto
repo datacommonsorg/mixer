@@ -84,9 +84,6 @@ message BulkObservationsSeriesRequest {
   repeated string entities = 1;
   repeated string variables = 2;
   bool all_facets = 3;
-  // Additional custom import groups from user. The custom built Bigtable
-  // cache is in the GCP project the mixer is deployed.
-  repeated string custom_import_groups = 4;
 }
 
 message BulkObservationsSeriesResponse {
