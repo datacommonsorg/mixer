@@ -25,14 +25,6 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 )
 
-// ContextKey is used to store addtional values in the context.
-type ContextKey int
-
-const (
-	// CustomImportGroups is the context key for custom import groups.
-	CustomImportGroups ContextKey = iota
-)
-
 var groupRank = map[string]int{
 	"dcbranch":   0, // Used for the latest proto branch cache
 	"branch":     0, // Used for legacy branch cache

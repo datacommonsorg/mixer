@@ -16,7 +16,6 @@ package bigtable
 
 import (
 	"context"
-	"log"
 	"strings"
 
 	cbt "cloud.google.com/go/bigtable"
@@ -24,10 +23,6 @@ import (
 	"golang.org/x/sync/errgroup"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
-)
-
-const (
-	customBigtableInstance = "dc-graph"
 )
 
 // BtRow contains the BT read key tokens and the cache data.
@@ -85,12 +80,8 @@ func Read(
 	body [][]string,
 	action func([]byte) (interface{}, error),
 ) ([][]BtRow, error) {
-	customImportGroups := []string{}
-	if ctx.Value(CustomImportGroups) != nil {
-		customImportGroups = ctx.Value(CustomImportGroups).([]string)
-	}
 	accs := []*Accessor{}
-	for i := 0; i < len(btGroup.Tables())+len(customImportGroups); i++ {
+	for i := 0; i < len(btGroup.Tables()); i++ {
 		accs = append(accs, &Accessor{i, body})
 	}
 	return ReadWithGroupRowList(ctx, btGroup, prefix, accs, action)
@@ -109,23 +100,6 @@ func ReadWithGroupRowList(
 	unmarshalFunc func([]byte) (interface{}, error),
 ) ([][]BtRow, error) {
 	tables := btGroup.Tables()
-	// CustomImportGroups is passed in at request level.
-	if ctx.Value(CustomImportGroups) != nil {
-		customImportGroups := ctx.Value(CustomImportGroups).([]string)
-		for _, ig := range customImportGroups {
-			customTable, err := NewBtTable(
-				ctx,
-				btGroup.metadata.MixerProject,
-				customBigtableInstance,
-				ig,
-			)
-			if err != nil {
-				log.Printf("Failed to create custom Bigtable client: %v", err)
-				return nil, err
-			}
-			tables = append([]*cbt.Table{customTable}, tables...)
-		}
-	}
 	if len(tables) == 0 {
 		return nil, status.Errorf(codes.NotFound, "Bigtable instance is not specified")
 	}
