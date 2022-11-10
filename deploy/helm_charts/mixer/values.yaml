@@ -56,8 +56,6 @@ mixer:
 
   schemaConfigs:
     base.mcf:
-    dailyweather.mcf:
-    monthlyweather.mcf:
     encode.mcf:
 
 esp:
