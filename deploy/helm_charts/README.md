@@ -41,16 +41,6 @@ helm upgrade --install mixer-dev deploy/helm_charts/mixer \
 
 Releasing a helm chart packages and uploads a helm chart into [AR(Artifact Registry)](https://cloud.google.com/artifact-registry/docs/overview) as a versioned artifact. Once released, the chart will be accessible by the public, given that the access to AR repository is configured.
 
-### Prerequisites
-
-Make sure that the repository exists with the following gcloud command.
-
-```sh
- gcloud artifacts repositories describe mixer-helm-chart  \
-    --location=us  --project=datcom-ci
- ```
-
-If it does not, please follow the instructions [here](https://cloud.google.com/artifact-registry/docs/helm) to create a new repository.
 
 ### Steps
 
