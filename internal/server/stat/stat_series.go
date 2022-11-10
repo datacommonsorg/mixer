@@ -24,7 +24,6 @@ import (
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/model"
-	"github.com/datacommonsorg/mixer/internal/server/placein"
 	"github.com/datacommonsorg/mixer/internal/server/ranking"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"google.golang.org/grpc/codes"
@@ -176,100 +175,4 @@ func GetStats(ctx context.Context, in *pb.GetStatsRequest, store *store.Store) (
 		return nil, err
 	}
 	return &pb.GetStatsResponse{Payload: string(jsonRaw)}, nil
-}
-
-// GetStatSetSeries implements API for Mixer.GetStatSetSeries.
-func GetStatSetSeries(ctx context.Context, in *pb.GetStatSetSeriesRequest, store *store.Store) (
-	*pb.GetStatSetSeriesResponse, error) {
-	places := in.GetPlaces()
-	statVars := in.GetStatVars()
-	importName := in.GetImportName()
-	if len(places) == 0 {
-		return nil, status.Errorf(
-			codes.InvalidArgument, "Missing required argument: places")
-	}
-	if len(statVars) == 0 {
-		return nil, status.Errorf(
-			codes.InvalidArgument, "Missing required argument: stat_vars")
-	}
-
-	// Initialize result with place and stat var dcids.
-	result := &pb.GetStatSetSeriesResponse{
-		Data: make(map[string]*pb.SeriesMap),
-	}
-	for _, place := range places {
-		result.Data[place] = &pb.SeriesMap{
-			Data: make(map[string]*pb.Series),
-		}
-		for _, statVar := range statVars {
-			result.Data[place].Data[statVar] = nil
-		}
-	}
-	// Read data from Cloud Bigtable.
-	if store.BtGroup.Tables() != nil {
-		// Read data from BigTable.
-		cacheData, err := ReadStatsPb(ctx, store.BtGroup, places, statVars)
-		if err != nil {
-			return nil, err
-		}
-		for place, placeData := range cacheData {
-			for statVar, data := range placeData {
-				if data != nil {
-					series, _ := GetBestSeries(data, importName, false /* useLatest */)
-					result.Data[place].Data[statVar] = series
-				}
-			}
-		}
-	}
-	// Read data from in-memory cache (private data).
-	// When there is data in both BigTable and private data. Prefer private data
-	// as this instance is for a private DC.
-	if !store.MemDb.IsEmpty() {
-		for _, place := range places {
-			for _, statVar := range statVars {
-				series := store.MemDb.ReadSeries(statVar, place)
-				if len(series) > 0 {
-					// TODO: add ranking function for *pb.Series. Now only pick one series
-					// from the private import.
-					result.Data[place].Data[statVar] = series[0]
-				}
-			}
-		}
-	}
-	return result, nil
-}
-
-// GetStatSetSeriesWithinPlace implements API for Mixer.GetStatSetSeriesWithinPlace.
-func GetStatSetSeriesWithinPlace(
-	ctx context.Context, in *pb.GetStatSetSeriesWithinPlaceRequest, store *store.Store) (
-	*pb.GetStatSetSeriesResponse, error,
-) {
-	parentPlace := in.GetParentPlace()
-	statVars := in.GetStatVars()
-	childType := in.GetChildType()
-	if parentPlace == "" {
-		return nil, status.Errorf(codes.InvalidArgument,
-			"Missing required argument: parent_place")
-	}
-	if len(statVars) == 0 {
-		return nil, status.Errorf(codes.InvalidArgument,
-			"Missing required argument: stat_vars")
-	}
-	if childType == "" {
-		return nil, status.Errorf(codes.InvalidArgument,
-			"Missing required argument: child_type")
-	}
-	childPlacesMap, err := placein.GetPlacesIn(ctx, store, []string{parentPlace}, childType)
-	if err != nil {
-		return nil, err
-	}
-	childPlaces := childPlacesMap[parentPlace]
-	return GetStatSetSeries(
-		ctx,
-		&pb.GetStatSetSeriesRequest{
-			Places:   childPlaces,
-			StatVars: statVars,
-		},
-		store,
-	)
 }

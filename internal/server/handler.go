@@ -114,22 +114,6 @@ func (s *Server) GetStatAll(ctx context.Context, in *pb.GetStatAllRequest,
 	return stat.GetStatAll(ctx, in, s.store)
 }
 
-// GetStatSetSeries implements API for Mixer.GetStatSetSeries.
-// Endpoint: /v1/stat/set/series
-func (s *Server) GetStatSetSeries(
-	ctx context.Context, in *pb.GetStatSetSeriesRequest,
-) (*pb.GetStatSetSeriesResponse, error) {
-	return stat.GetStatSetSeries(ctx, in, s.store)
-}
-
-// GetStatSetSeriesWithinPlace implements API for Mixer.GetStatSetSeriesWithinPlace.
-// Endpoint: /v1/stat/set/series/within-place
-func (s *Server) GetStatSetSeriesWithinPlace(
-	ctx context.Context, in *pb.GetStatSetSeriesWithinPlaceRequest,
-) (*pb.GetStatSetSeriesResponse, error) {
-	return stat.GetStatSetSeriesWithinPlace(ctx, in, s.store)
-}
-
 // GetStatDateWithinPlace implements API for Mixer.GetStatDateWithinPlace.
 // Endpoint: /v1/stat/date/within-place
 func (s *Server) GetStatDateWithinPlace(

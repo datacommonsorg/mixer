@@ -26,7 +26,6 @@
 //    /stat/series
 //    /stat/set/within-place
 //    /stat/value
-//    /v1/stat/set/series
 // ========================================
 
 syntax = "proto3";
@@ -226,28 +225,6 @@ message GetStatsResponse {
   string payload = 2;
 }
 
-// Request for GetStatSetSeries API.
-// TODO(shifucun): Deprecate GetStats() once all clients are switched to use
-// this API.
-// Request message for GetStatSetSeries.
-message GetStatSetSeriesRequest {
-  // The dcids of the place.
-  repeated string places = 1;
-
-  // The dcids of the statistical variables.
-  repeated string stat_vars = 2;
-
-  // (Optional) Import name of the desired series.
-  // TODO(shifucun): consider add other SVObs properties for filtering.
-  string import_name = 3;
-}
-
-// Response of GetStatSetSeries
-message GetStatSetSeriesResponse {
-  // A map from place dcid to series map.
-  map<string, SeriesMap> data = 1;
-}
-
 // Request for GetStat service.
 message GetStatValueRequest {
   // dcid of the place.
@@ -356,15 +333,6 @@ message GetStatSetWithinPlaceRequest {
   // If the date is not given, then the latest observation for each place is
   // returned, where they could be from different sources.
   string date = 4;
-}
-
-message GetStatSetSeriesWithinPlaceRequest {
-  // Parent place dcid.
-  string parent_place = 1;
-  // Child place type.
-  string child_type = 2;
-  // Stat Var dcids.
-  repeated string stat_vars = 3;
 }
 
 message GetStatSetRequest {

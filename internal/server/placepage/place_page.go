@@ -27,6 +27,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/stat"
 	"github.com/datacommonsorg/mixer/internal/server/v0/placemetadata"
 	"github.com/datacommonsorg/mixer/internal/server/v0/propertyvalue"
+	"github.com/datacommonsorg/mixer/internal/server/v1/observations"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"github.com/datacommonsorg/mixer/internal/util"
@@ -175,27 +176,24 @@ func getLatestPop(ctx context.Context, store *store.Store, placeDcids []string) 
 	if len(placeDcids) == 0 {
 		return nil, nil
 	}
-	req := &pb.GetStatSetSeriesRequest{
-		Places:   placeDcids,
-		StatVars: []string{"Count_Person"},
+	req := &pb.BulkObservationsSeriesRequest{
+		Entities:  placeDcids,
+		Variables: []string{"Count_Person"},
 	}
-	resp, err := stat.GetStatSetSeries(ctx, req, store)
+	resp, err := observations.BulkSeries(ctx, req, store)
 	if err != nil {
 		return nil, err
 	}
 	result := map[string]int32{}
-	for place, series := range resp.Data {
-		if series != nil && series.Data["Count_Person"] != nil {
-			latestDate := ""
-			latestValue := 0.0
-			for date, value := range series.Data["Count_Person"].Val {
-				if date > latestDate {
-					latestValue = value
-					latestDate = date
-				}
-			}
-			if latestDate != "" {
-				result[place] = int32(latestValue)
+	for _, obsByVariable := range resp.ObservationsByVariable {
+		// There should be only one item for "Count_Person"
+		for _, obsByEntity := range obsByVariable.ObservationsByEntity {
+			place := obsByEntity.Entity
+			seriesList := obsByEntity.SeriesByFacet
+			if len(seriesList) > 0 {
+				topSeries := seriesList[0]
+				latestValue := topSeries.Series[len(topSeries.Series)-1].Value
+				result[place] = int32(*latestValue)
 			}
 		}
 	}
@@ -334,20 +332,31 @@ func fetchBtData(
 
 	// Fetch additional stats as requested.
 	if len(statVars) > 0 {
-		resp, err := stat.GetStatSetSeries(ctx, &pb.GetStatSetSeriesRequest{
-			Places:   places,
-			StatVars: statVars,
+		resp, err := observations.BulkSeries(ctx, &pb.BulkObservationsSeriesRequest{
+			Entities:  places,
+			Variables: statVars,
 		}, store)
 		if err != nil {
 			return nil, popData, nil, err
 		}
 		// Add additional data to the cache result
-		for place, seriesMap := range resp.Data {
-			for statVar, series := range seriesMap.Data {
+		for _, obsByVariable := range resp.ObservationsByVariable {
+			variable := obsByVariable.Variable
+			for _, obsByEntity := range obsByVariable.ObservationsByEntity {
+				place := obsByEntity.Entity
 				if pageData[place] == nil {
 					pageData[place] = &pb.StatVarSeries{Data: map[string]*pb.Series{}}
 				}
-				pageData[place].Data[statVar] = series
+				if len(obsByEntity.SeriesByFacet) == 0 {
+					continue
+				}
+				pageData[place].Data[variable] = &pb.Series{
+					Val:      map[string]float64{},
+					Metadata: resp.Facets[obsByEntity.SeriesByFacet[0].Facet],
+				}
+				for _, point := range obsByEntity.SeriesByFacet[0].Series {
+					pageData[place].Data[variable].Val[point.Date] = *point.Value
+				}
 			}
 		}
 	}
