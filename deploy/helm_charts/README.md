@@ -47,7 +47,7 @@ Releasing a helm chart packages and uploads a helm chart into [AR(Artifact Regis
 The following steps are for Mixer's server chart, located at `deploy/helm_charts/mixer`.
     
 1.  Update the version field in Chart.yaml. The version follows the [semantic versioning](https://semver.org/) format.
-2.  Go the specific chart's root directory.
+2.  Go to the specific chart's root directory.
 
 ```sh
 cd deploy/helm_charts/mixer
