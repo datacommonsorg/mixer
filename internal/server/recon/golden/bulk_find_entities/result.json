@@ -7,19 +7,6 @@
       ]
     },
     {
-      "description": "Santa Clara County",
-      "type": "County",
-      "dcids": [
-        "geoId/06085"
-      ]
-    },
-    {
-      "description": "mountain view",
-      "dcids": [
-        "geoId/0649670"
-      ]
-    },
-    {
       "description": "Mountain View, CA",
       "dcids": [
         "geoId/0649670"
@@ -32,13 +19,26 @@
       ]
     },
     {
-      "description": "non-existing place wow"
+      "description": "Santa Clara County",
+      "type": "County",
+      "dcids": [
+        "geoId/06085"
+      ]
     },
     {
       "description": "mmountan view",
       "dcids": [
         "geoId/0649670"
       ]
+    },
+    {
+      "description": "mountain view",
+      "dcids": [
+        "geoId/0649670"
+      ]
+    },
+    {
+      "description": "non-existing place wow"
     }
   ]
 }

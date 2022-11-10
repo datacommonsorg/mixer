@@ -556,10 +556,7 @@ service Mixer {
       returns (GetPlacePageDataResponse) {
     option (google.api.http) = {
       get : "/v1/internal/page/place/{node=**}"
-      additional_bindings : {
-        post : "/v1/internal/page/place"
-        body : "*"
-      }
+      additional_bindings : {post : "/v1/internal/page/place" body : "*"}
     };
   }
 
@@ -598,17 +595,14 @@ service Mixer {
     };
   }
 
-
   // TODO(spaceenter): Add a non-bulk method FindEntities().
 
   // Find entities from descriptions, with optional filters on types.
-  rpc BulkFindEntities(BulkFindEntitiesRequest) returns (BulkFindEntitiesResponse) {
+  rpc BulkFindEntities(BulkFindEntitiesRequest)
+      returns (BulkFindEntitiesResponse) {
     option (google.api.http) = {
-      additional_bindings : {
-        post : "/v1/bulk/find/entities"
-        body : "*"
-      }
+      post : "/v1/bulk/find/entities"
+      body : "*"
     };
   }
-
 }

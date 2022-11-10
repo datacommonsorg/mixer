@@ -28,13 +28,14 @@ import (
 
 // Table holds the bigtable name and client stub.
 type Table struct {
-	name  string
-	table *cbt.Table
+	name     string
+	isCustom bool
+	table    *cbt.Table
 }
 
 // NewTable creates a new Table struct.
-func NewTable(name string, table *cbt.Table) *Table {
-	return &Table{name: name, table: table}
+func NewTable(name string, table *cbt.Table, isCustom bool) *Table {
+	return &Table{name: name, table: table, isCustom: isCustom}
 }
 
 // Name access the name of a table
@@ -62,7 +63,7 @@ func parseTableInfo(s string) (*pb.BigtableInfo, error) {
 }
 
 // CreateBigtables creates a list of Bigtable from a yaml config file.
-func CreateBigtables(ctx context.Context, s string) ([]*Table, error) {
+func CreateBigtables(ctx context.Context, s string, isCustom bool) ([]*Table, error) {
 	bigtableInfo, err := parseTableInfo(s)
 	if err != nil {
 		return nil, err
@@ -74,7 +75,7 @@ func CreateBigtables(ctx context.Context, s string) ([]*Table, error) {
 		if err != nil {
 			log.Fatalf("Failed to create BigTable client: %v", err)
 		}
-		tables = append(tables, NewTable(name, t))
+		tables = append(tables, NewTable(name, t, isCustom))
 	}
 	return tables, nil
 }

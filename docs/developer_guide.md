@@ -77,6 +77,7 @@ go run --tags sqlite_fts5 cmd/main.go \
     --mixer_project=datcom-mixer-staging \
     --bq_dataset=$(head -1 deploy/storage/bigquery.version) \
     --base_bigtable_info="$(cat deploy/storage/base_bigtable_info.yaml)" \
+    --custom_bigtable_info="$(cat test/custom_bigtable_info.yaml)" \
     --schema_path=$PWD/deploy/mapping/ \
     --use_branch_bt=false
 

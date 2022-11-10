@@ -29915,24 +29915,6 @@
       ]
     },
     {
-      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_IncomeStatus-WithEarnings_RecentWorkStatus-FullTimeYearRoundWorker",
-      "name": "Person With Age = 16 Years or More, Gender = Female, Income Status = With Earnings, Recent Work Status = Full Time Year Round Worker",
-      "statVars": [
-        {
-          "name": "Population: 16 Years or More, Female, With Earnings, Full Time Year Round Worker",
-          "dcid": "Count_Person_Female_WithEarnings_FullTimeYearRoundWorker"
-        },
-        {
-          "name": "Mean Earnings: 16 Years or More, Female, With Earnings, Full Time Year Round Worker",
-          "dcid": "Mean_Earnings_Person_Female_FullTimeYearRoundWorker"
-        },
-        {
-          "name": "Median Earnings: 16 Years or More, Female, With Earnings, Full Time Year Round Worker",
-          "dcid": "Median_Earnings_Person_Female_FullTimeYearRoundWorker"
-        }
-      ]
-    },
-    {
       "dcid": "dc/g/Person_ExerciseType-MuscleStrengthening_Gender-Female_HealthBehavior-HealthEnhancingPhysicalActivity_PlaceOfResidenceClassification",
       "name": "Person With Exercise Type = Muscle Strengthening, Gender = Female, Health Behavior = Health Enhancing Physical Activity, Place of Residence Classification",
       "statVars": [
@@ -35859,6 +35841,20 @@
         {
           "name": "Population: 15 - 50 Years, Birth in The Past 12 Months, Female, 1 - 2.0 Ratio To Poverty Line (As Fraction of Count Person 15 To 50 Years Female 1 To 1.99 Ratio To Poverty Line)",
           "dcid": "Count_Person_15To50Years_BirthInThePast12Months_Female_1To1.99RatioToPovertyLine_AsAFractionOf_Count_Person_15To50Years_Female_1To1.99RatioToPovertyLine"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years15To50_BirthEventStatus-BirthInThePast12Months_Gender-Female_PovertyStatus-RatioToPovertyLineUpto1.0",
+      "name": "Person With Age = 15 - 50 Years, Birth Event Status = Birth in The Past 12 Months, Gender = Female, Poverty Status = 1 Ratio To Poverty Line or Less",
+      "statVars": [
+        {
+          "name": "Population: 15 - 50 Years, Birth in The Past 12 Months, Female, 1 Ratio To Poverty Line or Less",
+          "dcid": "Count_Person_15To50Years_BirthInThePast12Months_Female_1.0OrLessRatioToPovertyLine"
+        },
+        {
+          "name": "Population: 15 - 50 Years, Birth in The Past 12 Months, Female, 1 Ratio To Poverty Line or Less (As Fraction of Count Person 15 To 50 Years Female 1.0 or Less Ratio To Poverty Line)",
+          "dcid": "Count_Person_15To50Years_BirthInThePast12Months_Female_1.0OrLessRatioToPovertyLine_AsAFractionOf_Count_Person_15To50Years_Female_1.0OrLessRatioToPovertyLine"
         }
       ]
     }

@@ -119,6 +119,14 @@ func BulkFindEntities(
 		resp.Entities = append(resp.Entities, entity)
 	}
 
+	// Sort to make results determistic.
+	sort.Slice(resp.Entities, func(i, j int) bool {
+		if resp.Entities[i].GetDescription() == resp.Entities[j].GetDescription() {
+			return resp.Entities[i].GetType() < resp.Entities[j].GetType()
+		}
+		return resp.Entities[i].GetDescription() < resp.Entities[j].GetDescription()
+	})
+
 	return resp, nil
 }
 
@@ -158,7 +166,14 @@ func resolvePlaceIDs(
 				if err != nil {
 					return err
 				}
-				resolveResultChan <- resolveResult{entityInfo: &entityInfo, placeIDs: placeIDs}
+				usedPlaceIds := []string{}
+				if len(placeIDs) > 0 {
+					// Only keep the first place ID, as the rest ones are usually much less accurate.
+					usedPlaceIds = []string{placeIDs[0]}
+				}
+				resolveResultChan <- resolveResult{
+					entityInfo: &entityInfo,
+					placeIDs:   usedPlaceIds}
 			}
 			return nil
 		}

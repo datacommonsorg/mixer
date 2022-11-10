@@ -57,7 +57,7 @@ if [[ $2 != "" ]]; then
   git checkout "$TAG"
 fi
 
-mkdir "$ROOT/deploy/git"
+mkdir -p "$ROOT/deploy/git"
 cd "$ROOT/deploy/git"
 echo -n "$TAG" > mixer_hash.txt
 
@@ -103,8 +103,6 @@ helm upgrade --install "$RELEASE" deploy/helm_charts/mixer \
   --set mixer.githash="$TAG" \
   --set-file mixer.schemaConfigs."base\.mcf"=deploy/mapping/base.mcf \
   --set-file mixer.schemaConfigs."encode\.mcf"=deploy/mapping/encode.mcf \
-  --set-file mixer.schemaConfigs."dailyweather\.mcf"=deploy/mapping/dailyweather.mcf \
-  --set-file mixer.schemaConfigs."monthlyweather\.mcf"=deploy/mapping/monthlyweather.mcf \
   --set-file kgStoreConfig.bigqueryVersion=deploy/storage/bigquery.version \
   --set-file kgStoreConfig.baseBigtableInfo=deploy/storage/base_bigtable_info.yaml
 

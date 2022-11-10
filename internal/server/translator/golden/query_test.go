@@ -43,35 +43,6 @@ func TestQuery(t *testing.T) {
 		goldenFile string
 	}{
 		{
-			`BASE <http://schema.org/>
-			SELECT ?MeanTemp
-			WHERE {
-				?o typeOf DailyWeatherObservation .
-				?o measuredProperty temperature .
-				?o meanValue ?MeanTemp .
-				?o observationDate "2019-01-01" .
-				?o observedNode ?place .
-				?place dcid geoId/4261000
-			}
-			LIMIT 10`,
-			"weather1.json",
-		},
-		{
-			`
-			SELECT ?date ?mean ?unit
-			WHERE {
-				?o typeOf MonthlyWeatherObservation .
-				?o observedNode geoId/0649670 .
-				?o measuredProperty temperature .
-				?o observationDate ?date .
-				?o unit ?unit .
-				?o meanValue ?mean .
-			}
-			ORDER BY ASC(?date)
-			`,
-			"weather2.json",
-		},
-		{
 			`SELECT ?a WHERE {?a typeOf RaceCodeEnum} ORDER BY ASC(?a)`,
 			"race_code_enum.json",
 		},

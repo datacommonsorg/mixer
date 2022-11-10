@@ -50,6 +50,10 @@ func TestVariableAncestors(t *testing.T) {
 				"Count_Person_FoodInsecure",
 				"memdb.json",
 			},
+			{
+				"Max_Concentration_AirPollutant_CO",
+				"custom.json",
+			},
 		} {
 			resp, err := mixer.VariableAncestors(ctx, &pb.VariableAncestorsRequest{
 				Node: c.node,
@@ -83,7 +87,7 @@ func TestVariableAncestors(t *testing.T) {
 
 	if err := test.TestDriver(
 		"VariableAncestors",
-		&test.TestOption{UseCache: true, UseMemdb: true},
+		&test.TestOption{UseCache: true, UseMemdb: true, UseCustomTable: true},
 		testSuite,
 	); err != nil {
 		t.Errorf("TestDriver() = %s", err)
