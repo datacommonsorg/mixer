@@ -23,6 +23,7 @@ import (
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/test"
 	"github.com/google/go-cmp/cmp"
+	"google.golang.org/protobuf/testing/protocmp"
 )
 
 func TestFindEntities(t *testing.T) {
@@ -71,7 +72,8 @@ func TestFindEntities(t *testing.T) {
 				continue
 			}
 
-			if diff := cmp.Diff(resp, &expected); diff != "" {
+			cmpOpts := cmp.Options{protocmp.Transform()}
+			if diff := cmp.Diff(resp, &expected, cmpOpts); diff != "" {
 				t.Errorf("payload got diff: %v", diff)
 				continue
 			}
