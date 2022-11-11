@@ -100,6 +100,16 @@ message ResolveIdsResponse {
   repeated Entity entities = 1;
 }
 
+message FindEntitiesRequest {
+  string description = 1;
+  // Optional.
+  string type = 2;
+}
+
+message FindEntitiesResponse {
+  repeated string dcids = 1;
+}
+
 message BulkFindEntitiesRequest {
   message Entity {
     string description = 1;
