@@ -74,6 +74,11 @@
         "displayName": "Person by Income Status"
       },
       {
+        "id": "dc/g/NetworkSubscriber",
+        "specializedEntity": "Network Subscriber",
+        "displayName": "Network Subscriber"
+      },
+      {
         "id": "dc/g/Remittance",
         "specializedEntity": "Remittance",
         "displayName": "Remittance"

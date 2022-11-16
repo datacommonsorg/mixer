@@ -837,6 +837,76 @@
       "provenanceId": "dc/d7tbsb1"
     },
     {
+      "subjectId": "Percent_NetworkSubscriber_Broadband",
+      "subjectName": "Count of Network Subscriber: Broadband (Per Capita)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectName": "Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Percent_NetworkSubscriber_PSTN",
+      "subjectName": "Count of Network Subscriber: PSTN (Per Capita)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectName": "Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Percent_NetworkSubscriber_VOIP",
+      "subjectName": "Count of Network Subscriber: VOIP (Per Capita)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectName": "Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Percent_NetworkSubscriber_WirelessAll",
+      "subjectName": "Count of Network Subscriber: Wireless All (Per Capita)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectName": "Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Percent_NetworkSubscriber_WirelineAll",
+      "subjectName": "Count of Network Subscriber: Wireline All (Per Capita)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectName": "Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
       "subjectId": "Percent_NeverOrNotInTheLast12Months_AlcoholConsumption_In_Count_Person",
       "subjectName": "Percentage Never Or Not In The Last 12 Months, Alcohol Consumption Among Population",
       "subjectTypes": [
