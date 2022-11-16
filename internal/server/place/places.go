@@ -238,13 +238,19 @@ func GetPlaceMetadataHelper(
 				if _, ok := visited[curr]; ok {
 					continue
 				}
+				// To handle potential data issue in the cache, where parent node
+				// is not in the PlaceInfo.Places field.
+				info, ok := metaMap[curr]
+				if !ok {
+					continue
+				}
 				processed.Parents = append(processed.Parents, &pb.PlaceMetadata_PlaceInfo{
 					Dcid: curr,
-					Name: metaMap[curr].Name,
-					Type: metaMap[curr].Type,
+					Name: info.Name,
+					Type: info.Type,
 				})
 				visited[curr] = struct{}{}
-				parents = append(parents, metaMap[curr].Parents...)
+				parents = append(parents, info.Parents...)
 			}
 			result[entity] = &processed
 		}
