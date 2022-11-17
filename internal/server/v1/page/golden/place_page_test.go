@@ -16,6 +16,7 @@ package golden
 
 import (
 	"context"
+	"fmt"
 	"path"
 	"runtime"
 	"testing"
@@ -26,6 +27,19 @@ import (
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/testing/protocmp"
 )
+
+var categories = []string{
+	"Crime",
+	"Demographics",
+	"Economics",
+	"Education",
+	"Energy",
+	"Environment",
+	"Equity",
+	"Health",
+	"Housing",
+	"Overview",
+}
 
 func buildStrategy(maxPlace int) *util.SamplingStrategy {
 	return &util.SamplingStrategy{
@@ -48,118 +62,71 @@ func TestPlacePage(t *testing.T) {
 		for _, c := range []struct {
 			goldenFile string
 			node       string
-			seed       int64
 			statVars   []string
-			maxPlace   int
-			category   string
 		}{
 			{
-				"asm.sample.json",
+				"asm",
 				"country/ASM",
-				1,
 				[]string{},
-				3,
-				"Energy",
 			},
 			{
-				"ca_economics.sample.json",
+				"ca",
 				"geoId/06",
-				1,
 				[]string{},
-				3,
-				"Economics",
 			},
 			{
-				"ca_overview.sample.json",
-				"geoId/06",
-				1,
-				[]string{},
-				3,
-				"Overview",
-			},
-			{
-				"tha.sample.json",
-				"country/THA",
-				1,
-				[]string{},
-				5,
-				"Environment",
-			},
-			{
-				"county.sample.json",
-				"geoId/06085",
-				1,
-				[]string{"Count_HousingUnit_2000To2004DateBuilt"},
-				3,
-				"Demographics",
-			},
-			{
-				"state.sample.json",
-				"geoId/06",
-				1,
-				[]string{"Annual_Generation_Electricity"},
-				3,
-				"Demographics",
-			},
-			{
-				"city.sample.json",
+				"city",
 				"geoId/0656938",
-				1,
-				[]string{"Median_GrossRent_HousingUnit_WithCashRent_OccupiedHousingUnit_RenterOccupied"},
-				3,
-				"Equity",
+				[]string{},
 			},
 			{
-				"zuid-nederland.sample.json",
-				"nuts/NL4",
-				1,
-				[]string{},
-				5,
-				"Overview",
+				"county",
+				"geoId/06085",
+				[]string{"Count_HousingUnit_2000To2004DateBuilt"},
 			},
 			{
 				"dummy.json",
 				"dummy",
-				1,
-				[]string{},
-				5,
-				"Overview",
+				[]string{"Count_Person"},
 			},
 		} {
-			req := &pb.PlacePageRequest{
-				Node:        c.node,
-				NewStatVars: c.statVars,
-				Seed:        c.seed,
-				Category:    c.category,
+			if len(c.statVars) > 0 {
+				// Test for additional stat vars, only use one category.
+				categories = []string{"Overview"}
 			}
-			resp, err := mixer.PlacePage(ctx, req)
-			if err != nil {
-				t.Errorf("could not GetPlacePageData: %s", err)
-				continue
-			}
-
-			if latencyTest {
-				continue
-			}
-
-			resp = util.Sample(
-				resp,
-				buildStrategy(c.maxPlace)).(*pb.PlacePageResponse)
-
-			if test.GenerateGolden {
-				test.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
-				continue
-			}
-
-			var expected pb.PlacePageResponse
-			err = test.ReadJSON(goldenPath, c.goldenFile, &expected)
-			if err != nil {
-				t.Errorf("Can not read golden file %s: %v", c.goldenFile, err)
-				continue
-			}
-			if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
-				t.Errorf("%s, response got diff: %v", c.goldenFile, diff)
-				continue
+			for _, category := range categories {
+				req := &pb.PlacePageRequest{
+					Node:        c.node,
+					NewStatVars: c.statVars,
+					Seed:        1,
+					Category:    category,
+				}
+				resp, err := mixer.PlacePage(ctx, req)
+				if err != nil {
+					t.Errorf("could not GetPlacePageData: %s", err)
+					continue
+				}
+				if latencyTest {
+					continue
+				}
+				resp = util.Sample(
+					resp,
+					buildStrategy(3)).(*pb.PlacePageResponse)
+				goldenFile := fmt.Sprintf("%s.%s.json", c.goldenFile, category)
+				if test.GenerateGolden {
+					test.UpdateProtoGolden(resp, goldenPath, goldenFile)
+					continue
+				}
+				var expected pb.PlacePageResponse
+				err = test.ReadJSON(goldenPath, goldenFile, &expected)
+				if err != nil {
+					t.Errorf("Can not read golden file %s: %v", goldenFile, err)
+					continue
+				}
+				if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
+					t.Errorf("%s, response got diff: %v", goldenFile, diff)
+					continue
+				}
 			}
 		}
 	}
