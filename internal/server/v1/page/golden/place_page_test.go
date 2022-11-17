@@ -144,14 +144,14 @@ func TestPlacePage(t *testing.T) {
 
 			resp = util.Sample(
 				resp,
-				buildStrategy(c.maxPlace)).(*pb.GetPlacePageDataResponse)
+				buildStrategy(c.maxPlace)).(*pb.PlacePageResponse)
 
 			if test.GenerateGolden {
 				test.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
 				continue
 			}
 
-			var expected pb.GetPlacePageDataResponse
+			var expected pb.PlacePageResponse
 			err = test.ReadJSON(goldenPath, c.goldenFile, &expected)
 			if err != nil {
 				t.Errorf("Can not read golden file %s: %v", c.goldenFile, err)

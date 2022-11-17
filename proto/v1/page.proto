@@ -16,6 +16,34 @@ syntax = "proto3";
 option go_package = "./proto";
 package datacommons.v1;
 
+import "stat.proto";
+
+message Place {
+  string dcid = 1;
+  string name = 2;
+  int32 pop = 3;
+}
+
+message Places { repeated Place places = 1; }
+
+// List of categories of observations for a given place. These correspond to the
+// sections of the Place Explorer (https://datacommons.org/place/geoId/06).
+// This is a copied proto from g3.
+message ObsCategories {
+  repeated string category = 1;
+  optional string place_name = 2;
+  optional string place_dcid = 3;
+}
+
+// Data received from the cache for the landing page.
+message LandingPageCache {
+  // Key is stat var dcid.
+  map<string, ObsTimeSeries> data = 1;
+
+  reserved 2;
+}
+
+
 message BioPageRequest {
   string node = 1;
 }
@@ -31,4 +59,18 @@ message PlacePageRequest {
   int64 seed = 3;
   // The category for which data needs to be fetched.
   string category = 4;
+}
+
+// Response to get place page info for a place.
+message PlacePageResponse {
+  // Keyed by place dcid.
+  map<string, datacommons.StatVarSeries> stat_var_series = 1;
+  map<string, Places> all_child_places = 2;
+  map<string, datacommons.PointStat> latest_population = 8;
+  map<string, ObsCategories> valid_categories = 9;
+  string child_places_type = 3;
+  repeated string child_places = 4;
+  repeated string parent_places = 5;
+  repeated string similar_places = 6;
+  repeated string nearby_places = 7;
 }

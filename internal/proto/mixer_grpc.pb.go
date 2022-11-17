@@ -59,8 +59,6 @@ type MixerClient interface {
 	GetLocationsRankings(ctx context.Context, in *GetLocationsRankingsRequest, opts ...grpc.CallOption) (*GetLocationsRankingsResponse, error)
 	// Get related locations for given stat var DCIDs.
 	GetRelatedLocations(ctx context.Context, in *GetRelatedLocationsRequest, opts ...grpc.CallOption) (*GetRelatedLocationsResponse, error)
-	// Get place page info for a place.
-	GetPlacePageData(ctx context.Context, in *GetPlacePageDataRequest, opts ...grpc.CallOption) (*GetPlacePageDataResponse, error)
 	// Get bio page data given a dcid.
 	GetBioPageData(ctx context.Context, in *GetBioPageDataRequest, opts ...grpc.CallOption) (*GraphNodes, error)
 	// Translate Sparql Query into translation results.
@@ -130,7 +128,7 @@ type MixerClient interface {
 	DerivedObservationsSeries(ctx context.Context, in *DerivedObservationsSeriesRequest, opts ...grpc.CallOption) (*DerivedObservationsSeriesResponse, error)
 	BulkObservationDatesLinked(ctx context.Context, in *BulkObservationDatesLinkedRequest, opts ...grpc.CallOption) (*BulkObservationDatesLinkedResponse, error)
 	BioPage(ctx context.Context, in *BioPageRequest, opts ...grpc.CallOption) (*GraphNodes, error)
-	PlacePage(ctx context.Context, in *PlacePageRequest, opts ...grpc.CallOption) (*GetPlacePageDataResponse, error)
+	PlacePage(ctx context.Context, in *PlacePageRequest, opts ...grpc.CallOption) (*PlacePageResponse, error)
 	VariableAncestors(ctx context.Context, in *VariableAncestorsRequest, opts ...grpc.CallOption) (*VariableAncestorsResponse, error)
 	// Resolve a list of entities, given their descriptions.
 	ResolveEntities(ctx context.Context, in *ResolveEntitiesRequest, opts ...grpc.CallOption) (*ResolveEntitiesResponse, error)
@@ -272,15 +270,6 @@ func (c *mixerClient) GetLocationsRankings(ctx context.Context, in *GetLocations
 func (c *mixerClient) GetRelatedLocations(ctx context.Context, in *GetRelatedLocationsRequest, opts ...grpc.CallOption) (*GetRelatedLocationsResponse, error) {
 	out := new(GetRelatedLocationsResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/GetRelatedLocations", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *mixerClient) GetPlacePageData(ctx context.Context, in *GetPlacePageDataRequest, opts ...grpc.CallOption) (*GetPlacePageDataResponse, error) {
-	out := new(GetPlacePageDataResponse)
-	err := c.cc.Invoke(ctx, "/datacommons.Mixer/GetPlacePageData", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -665,8 +654,8 @@ func (c *mixerClient) BioPage(ctx context.Context, in *BioPageRequest, opts ...g
 	return out, nil
 }
 
-func (c *mixerClient) PlacePage(ctx context.Context, in *PlacePageRequest, opts ...grpc.CallOption) (*GetPlacePageDataResponse, error) {
-	out := new(GetPlacePageDataResponse)
+func (c *mixerClient) PlacePage(ctx context.Context, in *PlacePageRequest, opts ...grpc.CallOption) (*PlacePageResponse, error) {
+	out := new(PlacePageResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/PlacePage", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -769,8 +758,6 @@ type MixerServer interface {
 	GetLocationsRankings(context.Context, *GetLocationsRankingsRequest) (*GetLocationsRankingsResponse, error)
 	// Get related locations for given stat var DCIDs.
 	GetRelatedLocations(context.Context, *GetRelatedLocationsRequest) (*GetRelatedLocationsResponse, error)
-	// Get place page info for a place.
-	GetPlacePageData(context.Context, *GetPlacePageDataRequest) (*GetPlacePageDataResponse, error)
 	// Get bio page data given a dcid.
 	GetBioPageData(context.Context, *GetBioPageDataRequest) (*GraphNodes, error)
 	// Translate Sparql Query into translation results.
@@ -840,7 +827,7 @@ type MixerServer interface {
 	DerivedObservationsSeries(context.Context, *DerivedObservationsSeriesRequest) (*DerivedObservationsSeriesResponse, error)
 	BulkObservationDatesLinked(context.Context, *BulkObservationDatesLinkedRequest) (*BulkObservationDatesLinkedResponse, error)
 	BioPage(context.Context, *BioPageRequest) (*GraphNodes, error)
-	PlacePage(context.Context, *PlacePageRequest) (*GetPlacePageDataResponse, error)
+	PlacePage(context.Context, *PlacePageRequest) (*PlacePageResponse, error)
 	VariableAncestors(context.Context, *VariableAncestorsRequest) (*VariableAncestorsResponse, error)
 	// Resolve a list of entities, given their descriptions.
 	ResolveEntities(context.Context, *ResolveEntitiesRequest) (*ResolveEntitiesResponse, error)
@@ -899,9 +886,6 @@ func (UnimplementedMixerServer) GetLocationsRankings(context.Context, *GetLocati
 }
 func (UnimplementedMixerServer) GetRelatedLocations(context.Context, *GetRelatedLocationsRequest) (*GetRelatedLocationsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetRelatedLocations not implemented")
-}
-func (UnimplementedMixerServer) GetPlacePageData(context.Context, *GetPlacePageDataRequest) (*GetPlacePageDataResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetPlacePageData not implemented")
 }
 func (UnimplementedMixerServer) GetBioPageData(context.Context, *GetBioPageDataRequest) (*GraphNodes, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetBioPageData not implemented")
@@ -1029,7 +1013,7 @@ func (UnimplementedMixerServer) BulkObservationDatesLinked(context.Context, *Bul
 func (UnimplementedMixerServer) BioPage(context.Context, *BioPageRequest) (*GraphNodes, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BioPage not implemented")
 }
-func (UnimplementedMixerServer) PlacePage(context.Context, *PlacePageRequest) (*GetPlacePageDataResponse, error) {
+func (UnimplementedMixerServer) PlacePage(context.Context, *PlacePageRequest) (*PlacePageResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PlacePage not implemented")
 }
 func (UnimplementedMixerServer) VariableAncestors(context.Context, *VariableAncestorsRequest) (*VariableAncestorsResponse, error) {
@@ -1310,24 +1294,6 @@ func _Mixer_GetRelatedLocations_Handler(srv interface{}, ctx context.Context, de
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(MixerServer).GetRelatedLocations(ctx, req.(*GetRelatedLocationsRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Mixer_GetPlacePageData_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetPlacePageDataRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(MixerServer).GetPlacePageData(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/datacommons.Mixer/GetPlacePageData",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).GetPlacePageData(ctx, req.(*GetPlacePageDataRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -2276,10 +2242,6 @@ var Mixer_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetRelatedLocations",
 			Handler:    _Mixer_GetRelatedLocations_Handler,
-		},
-		{
-			MethodName: "GetPlacePageData",
-			Handler:    _Mixer_GetPlacePageData_Handler,
 		},
 		{
 			MethodName: "GetBioPageData",

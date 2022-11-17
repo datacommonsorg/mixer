@@ -30,7 +30,7 @@ func PlacePage(
 	ctx context.Context,
 	in *pb.PlacePageRequest,
 	store *store.Store,
-) (*pb.GetPlacePageDataResponse, error) {
+) (*pb.PlacePageResponse, error) {
 	node := in.GetNode()
 	if !util.CheckValidDCIDs([]string{node}) {
 		return nil, status.Errorf(codes.InvalidArgument, "Invalid entity")

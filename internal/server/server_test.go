@@ -25,8 +25,8 @@ import (
 func TestNoBigTable(t *testing.T) {
 	ctx := context.Background()
 	s := NewMixerServer(store.NewStore(nil, nil, nil, "", nil), nil, nil, nil)
-	_, err := s.GetPlacePageData(ctx, &pb.GetPlacePageDataRequest{
-		Place: "geoId/06",
+	_, err := s.PlacePage(ctx, &pb.PlacePageRequest{
+		Node: "geoId/06",
 	})
 	if err.Error() != "rpc error: code = NotFound desc = Bigtable instance is not specified" {
 		t.Errorf("Error invalid: %s", err)

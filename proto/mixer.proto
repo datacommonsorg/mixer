@@ -170,17 +170,6 @@ service Mixer {
     };
   }
 
-  // Get place page info for a place.
-  rpc GetPlacePageData(GetPlacePageDataRequest)
-      returns (GetPlacePageDataResponse) {
-    option (google.api.http) = {
-      get : "/landing-page"
-      additional_bindings : {post : "/landing-page" body : "*"}
-      additional_bindings : {get : "/internal/place"}
-      additional_bindings : {post : "/internal/place" body : "*"}
-    };
-  }
-
   // Get bio page data given a dcid.
   rpc GetBioPageData(GetBioPageDataRequest) returns (GraphNodes) {
     option (google.api.http) = {
@@ -553,7 +542,7 @@ service Mixer {
   }
 
   rpc PlacePage(datacommons.v1.PlacePageRequest)
-      returns (GetPlacePageDataResponse) {
+      returns (datacommons.v1.PlacePageResponse) {
     option (google.api.http) = {
       get : "/v1/internal/page/place/{node=**}"
       additional_bindings : {post : "/v1/internal/page/place" body : "*"}
