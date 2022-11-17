@@ -1,0 +1,654 @@
+{
+  "statVarSeries": {
+    "country/CHN": {
+      "data": {
+        "Count_Person": {
+          "val": {
+            "1960": 667070000,
+            "1961": 660330000,
+            "1962": 665770000,
+            "1963": 682335000,
+            "1964": 698355000,
+            "1965": 715185000,
+            "1966": 735400000,
+            "1967": 754550000,
+            "1968": 774510000,
+            "1969": 796025000,
+            "1970": 818315000,
+            "1971": 841105000,
+            "1972": 862030000,
+            "1973": 881940000,
+            "1974": 900350000,
+            "1975": 916395000,
+            "1976": 930685000,
+            "1977": 943455000,
+            "1978": 956165000,
+            "1979": 969005000,
+            "1980": 981235000,
+            "1981": 993885000,
+            "1982": 1008630000,
+            "1983": 1023310000,
+            "1984": 1036825000,
+            "1985": 1051040000,
+            "1986": 1066790000,
+            "1987": 1084035000,
+            "1988": 1101630000,
+            "1989": 1118650000,
+            "1990": 1135185000,
+            "1991": 1150780000,
+            "1992": 1164970000,
+            "1993": 1178440000,
+            "1994": 1191835000,
+            "1995": 1204855000,
+            "1996": 1217550000,
+            "1997": 1230075000,
+            "1998": 1241935000,
+            "1999": 1252735000,
+            "2000": 1262645000,
+            "2001": 1271850000,
+            "2002": 1280400000,
+            "2003": 1288400000,
+            "2004": 1296075000,
+            "2005": 1303720000,
+            "2006": 1311020000,
+            "2007": 1317885000,
+            "2008": 1324655000,
+            "2009": 1331260000,
+            "2010": 1337705000,
+            "2011": 1345035000,
+            "2012": 1354190000,
+            "2013": 1363240000,
+            "2014": 1371860000,
+            "2015": 1379860000,
+            "2016": 1387790000,
+            "2017": 1396215000,
+            "2018": 1402760000,
+            "2019": 1407745000,
+            "2020": 1411100000,
+            "2021": 1412360000
+          },
+          "metadata": {
+            "importName": "WorldDevelopmentIndicators",
+            "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+            "observationPeriod": "P1Y"
+          }
+        }
+      }
+    },
+    "country/NGA": {
+      "data": {
+        "Count_Person": {
+          "val": {
+            "1960": 45138460,
+            "1961": 46063570,
+            "1962": 47029818,
+            "1963": 48032932,
+            "1964": 49066762,
+            "1965": 50127920,
+            "1966": 51217969,
+            "1967": 52342231,
+            "1968": 53506201,
+            "1969": 54717035,
+            "1970": 55982142,
+            "1971": 57296988,
+            "1972": 58665813,
+            "1973": 60114615,
+            "1974": 61677167,
+            "1975": 63374289,
+            "1976": 65221379,
+            "1977": 67203134,
+            "1978": 69271915,
+            "1979": 71361141,
+            "1980": 73423646,
+            "1981": 75440505,
+            "1982": 77427539,
+            "1983": 79414841,
+            "1984": 81448757,
+            "1985": 83562776,
+            "1986": 85766396,
+            "1987": 88048029,
+            "1988": 90395278,
+            "1989": 92788039,
+            "1990": 95212454,
+            "1991": 97667632,
+            "1992": 100161708,
+            "1993": 102700751,
+            "1994": 105293701,
+            "1995": 107948339,
+            "1996": 110668784,
+            "1997": 113457661,
+            "1998": 116319763,
+            "1999": 119260055,
+            "2000": 122283853,
+            "2001": 125394046,
+            "2002": 128596079,
+            "2003": 131900634,
+            "2004": 135320420,
+            "2005": 138865014,
+            "2006": 142538305,
+            "2007": 146339971,
+            "2008": 150269622,
+            "2009": 154324939,
+            "2010": 158503203,
+            "2011": 162805080,
+            "2012": 167228803,
+            "2013": 171765819,
+            "2014": 176404931,
+            "2015": 181137454,
+            "2016": 185960244,
+            "2017": 190873247,
+            "2018": 195874685,
+            "2019": 200963603,
+            "2020": 206139587,
+            "2021": 211400704
+          },
+          "metadata": {
+            "importName": "WorldDevelopmentIndicators",
+            "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+            "observationPeriod": "P1Y"
+          }
+        }
+      }
+    },
+    "country/USA": {
+      "data": {
+        "Count_CriminalActivities_CombinedCrime": {
+          "val": {
+            "2008": 11111207,
+            "2009": 10602842,
+            "2010": 10292375,
+            "2011": 10229672,
+            "2012": 10151302,
+            "2013": 9785011,
+            "2014": 9433470,
+            "2015": 9185231,
+            "2016": 9161163,
+            "2017": 8940603,
+            "2018": 8403390,
+            "2019": 8132863
+          },
+          "metadata": {
+            "importName": "FBIGovCrime_AggCountry",
+            "provenanceUrl": "http://www.fbi.gov/services/cjis/ucr",
+            "observationPeriod": "P1Y"
+          }
+        },
+        "Count_CriminalActivities_PropertyCrime": {
+          "val": {
+            "2008": 9737704,
+            "2009": 9292515,
+            "2010": 9054131,
+            "2011": 9033537,
+            "2012": 8944702,
+            "2013": 8601429,
+            "2014": 8243682,
+            "2015": 7962196,
+            "2016": 7886319,
+            "2017": 7664357,
+            "2018": 7165321,
+            "2019": 6894856
+          },
+          "metadata": {
+            "importName": "FBIGovCrime_AggCountry",
+            "provenanceUrl": "http://www.fbi.gov/services/cjis/ucr",
+            "observationPeriod": "P1Y"
+          }
+        },
+        "Count_CriminalActivities_ViolentCrime": {
+          "val": {
+            "2008": 1373503,
+            "2009": 1310327,
+            "2010": 1238244,
+            "2011": 1196135,
+            "2012": 1206600,
+            "2013": 1183582,
+            "2014": 1189788,
+            "2015": 1223035,
+            "2016": 1274844,
+            "2017": 1276246,
+            "2018": 1238069,
+            "2019": 1238007
+          },
+          "metadata": {
+            "importName": "FBIGovCrime_AggCountry",
+            "provenanceUrl": "http://www.fbi.gov/services/cjis/ucr",
+            "observationPeriod": "P1Y"
+          }
+        },
+        "Count_CriminalIncidents_BiasMotivationDisabilityStatus_IsHateCrime": {
+          "val": {
+            "2004": 57,
+            "2005": 53,
+            "2006": 79,
+            "2007": 79,
+            "2008": 78,
+            "2009": 96,
+            "2010": 43,
+            "2011": 53,
+            "2012": 92,
+            "2013": 83,
+            "2014": 84,
+            "2015": 74,
+            "2016": 70,
+            "2017": 116,
+            "2018": 159,
+            "2019": 157,
+            "2020": 130
+          },
+          "metadata": {
+            "importName": "FBIHateCrimePublications",
+            "provenanceUrl": "https://www.fbi.gov/services/cjis/ucr/hate-crime",
+            "observationPeriod": "P1Y"
+          }
+        },
+        "Count_CriminalIncidents_BiasMotivationEthnicity_IsHateCrime": {
+          "val": {
+            "2004": 972,
+            "2005": 944,
+            "2006": 984,
+            "2007": 1007,
+            "2008": 894,
+            "2009": 777,
+            "2010": 847,
+            "2011": 720,
+            "2012": 667,
+            "2013": 655,
+            "2014": 648
+          },
+          "metadata": {
+            "importName": "FBIHateCrimePublications",
+            "provenanceUrl": "https://www.fbi.gov/services/cjis/ucr/hate-crime",
+            "observationPeriod": "P1Y"
+          }
+        },
+        "Count_CriminalIncidents_BiasMotivationGender_IsHateCrime": {
+          "val": {
+            "2013": 18,
+            "2014": 33,
+            "2015": 23,
+            "2016": 31,
+            "2017": 46,
+            "2018": 47,
+            "2019": 69,
+            "2020": 75
+          },
+          "metadata": {
+            "importName": "FBIHateCrimePublications",
+            "provenanceUrl": "https://www.fbi.gov/services/cjis/ucr/hate-crime",
+            "observationPeriod": "P1Y"
+          }
+        },
+        "Count_CriminalIncidents_BiasMotivationRace_IsHateCrime": {
+          "val": {
+            "2004": 4042,
+            "2005": 3919,
+            "2006": 4000,
+            "2007": 3870,
+            "2008": 3992,
+            "2009": 3199,
+            "2010": 3135,
+            "2011": 2917,
+            "2012": 2797,
+            "2013": 2871,
+            "2014": 2568
+          },
+          "metadata": {
+            "importName": "FBIHateCrimePublications",
+            "provenanceUrl": "https://www.fbi.gov/services/cjis/ucr/hate-crime",
+            "observationPeriod": "P1Y"
+          }
+        },
+        "Count_CriminalIncidents_BiasMotivationReligion_IsHateCrime": {
+          "val": {
+            "2004": 1374,
+            "2005": 1227,
+            "2006": 1462,
+            "2007": 1400,
+            "2008": 1519,
+            "2009": 1303,
+            "2010": 1322,
+            "2011": 1233,
+            "2012": 1099,
+            "2013": 1031,
+            "2014": 1014,
+            "2015": 1244,
+            "2016": 1273,
+            "2017": 1564,
+            "2018": 1419,
+            "2019": 1521,
+            "2020": 1244
+          },
+          "metadata": {
+            "importName": "FBIHateCrimePublications",
+            "provenanceUrl": "https://www.fbi.gov/services/cjis/ucr/hate-crime",
+            "observationPeriod": "P1Y"
+          }
+        },
+        "Count_CriminalIncidents_BiasMotivationSexualOrientation_IsHateCrime": {
+          "val": {
+            "2004": 1197,
+            "2005": 1017,
+            "2006": 1195,
+            "2007": 1265,
+            "2008": 1297,
+            "2009": 1223,
+            "2010": 1277,
+            "2011": 1293,
+            "2012": 1135,
+            "2013": 1233,
+            "2014": 1017,
+            "2015": 1053,
+            "2016": 1076,
+            "2017": 1130,
+            "2018": 1196,
+            "2019": 1195,
+            "2020": 1110
+          },
+          "metadata": {
+            "importName": "FBIHateCrimePublications",
+            "provenanceUrl": "https://www.fbi.gov/services/cjis/ucr/hate-crime",
+            "observationPeriod": "P1Y"
+          }
+        },
+        "Count_CriminalIncidents_IsHateCrime": {
+          "val": {
+            "2004": 7649,
+            "2005": 7163,
+            "2006": 7722,
+            "2007": 7624,
+            "2008": 7783,
+            "2009": 6604,
+            "2010": 6628,
+            "2011": 6222,
+            "2012": 5796,
+            "2013": 5928,
+            "2014": 5479,
+            "2015": 5850,
+            "2016": 6121,
+            "2017": 7175,
+            "2018": 7120,
+            "2019": 7314,
+            "2020": 8263
+          },
+          "metadata": {
+            "importName": "FBIHateCrimePublications",
+            "provenanceUrl": "https://www.fbi.gov/services/cjis/ucr/hate-crime",
+            "observationPeriod": "P1Y"
+          }
+        },
+        "Count_Person": {
+          "val": {
+            "1900": 76094000,
+            "1901": 77584000,
+            "1902": 79163000,
+            "1903": 80632000,
+            "1904": 82166000,
+            "1905": 83822000,
+            "1906": 85450000,
+            "1907": 87008000,
+            "1908": 88710000,
+            "1909": 90490000,
+            "1910": 92407000,
+            "1911": 93863000,
+            "1912": 95335000,
+            "1913": 97225000,
+            "1914": 99111000,
+            "1915": 100546000,
+            "1916": 101961000,
+            "1917": 103268000,
+            "1918": 103208000,
+            "1919": 104514000,
+            "1920": 106461000,
+            "1921": 108538000,
+            "1922": 110049000,
+            "1923": 111947000,
+            "1924": 114109000,
+            "1925": 115829000,
+            "1926": 117397000,
+            "1927": 119035000,
+            "1928": 120509000,
+            "1929": 121767000,
+            "1930": 123076741,
+            "1931": 124039648,
+            "1932": 124840471,
+            "1933": 125578763,
+            "1934": 126373773,
+            "1935": 127250232,
+            "1936": 128053180,
+            "1937": 128824829,
+            "1938": 129824939,
+            "1939": 130879718,
+            "1940": 132122446,
+            "1941": 133402471,
+            "1942": 134859553,
+            "1943": 136739353,
+            "1944": 138397345,
+            "1945": 139928165,
+            "1946": 141388566,
+            "1947": 144126071,
+            "1948": 146631302,
+            "1949": 149188130,
+            "1950": 152271417,
+            "1951": 154877889,
+            "1952": 157552740,
+            "1953": 160184192,
+            "1954": 163025854,
+            "1955": 165931202,
+            "1956": 168903031,
+            "1957": 171984130,
+            "1958": 174881904,
+            "1959": 177829628,
+            "1960": 180671158,
+            "1961": 183691481,
+            "1962": 186537737,
+            "1963": 189241798,
+            "1964": 191888791,
+            "1965": 194302963,
+            "1966": 196560338,
+            "1967": 198712056,
+            "1968": 200706052,
+            "1969": 202676946,
+            "1970": 205052174,
+            "1971": 207660677,
+            "1972": 209896021,
+            "1973": 211908788,
+            "1974": 213853928,
+            "1975": 215973199,
+            "1976": 218035164,
+            "1977": 220239425,
+            "1978": 222584545,
+            "1979": 225055487,
+            "1980": 226542250,
+            "1981": 229465744,
+            "1982": 231664432,
+            "1983": 233792014,
+            "1984": 235824908,
+            "1985": 237923734,
+            "1986": 240132831,
+            "1987": 242288936,
+            "1988": 244499004,
+            "1989": 246819222,
+            "1990": 250131894,
+            "1991": 253492503,
+            "1992": 256894189,
+            "1993": 260255352,
+            "1994": 263435673,
+            "1995": 266557091,
+            "1996": 269667391,
+            "1997": 272911760,
+            "1998": 276115288,
+            "1999": 279294713,
+            "2000": 282162411,
+            "2001": 284968955,
+            "2002": 287625193,
+            "2003": 290107933,
+            "2004": 292805298,
+            "2005": 295516599,
+            "2006": 298379912,
+            "2007": 301231207,
+            "2008": 304093966,
+            "2009": 306771529,
+            "2010": 309327143,
+            "2011": 311583481,
+            "2012": 313877662,
+            "2013": 316059947,
+            "2014": 318386329,
+            "2015": 320738994,
+            "2016": 323071755,
+            "2017": 325122128,
+            "2018": 326838199,
+            "2019": 328329953,
+            "2020": 329484123,
+            "2021": 331893745
+          },
+          "metadata": {
+            "importName": "USCensusPEP_Annual_Population",
+            "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+            "measurementMethod": "CensusPEPSurvey",
+            "observationPeriod": "P1Y"
+          }
+        }
+      }
+    }
+  },
+  "latestPopulation": {
+    "country/ASM": {
+      "date": "2021",
+      "value": 55103,
+      "metadata": {
+        "importName": "WorldDevelopmentIndicators",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+        "observationPeriod": "P1Y"
+      }
+    },
+    "country/CHN": {
+      "date": "2021",
+      "value": 1412360000,
+      "metadata": {
+        "importName": "WorldDevelopmentIndicators",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+        "observationPeriod": "P1Y"
+      }
+    },
+    "country/DEU": {
+      "date": "2021",
+      "value": 83129285,
+      "metadata": {
+        "importName": "WorldDevelopmentIndicators",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+        "observationPeriod": "P1Y"
+      }
+    },
+    "country/NGA": {
+      "date": "2021",
+      "value": 211400704,
+      "metadata": {
+        "importName": "WorldDevelopmentIndicators",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+        "observationPeriod": "P1Y"
+      }
+    },
+    "country/NZL": {
+      "date": "2021",
+      "value": 5122600,
+      "metadata": {
+        "importName": "WorldDevelopmentIndicators",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+        "observationPeriod": "P1Y"
+      }
+    },
+    "country/USA": {
+      "date": "2021",
+      "value": 331893745,
+      "metadata": {
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
+      }
+    }
+  },
+  "validCategories": {
+    "country/ASM": {
+      "category": [
+        "Demographics",
+        "Economics",
+        "Energy",
+        "Environment",
+        "Health",
+        "Overview"
+      ]
+    },
+    "country/CHN": {
+      "category": [
+        "Demographics",
+        "Economics",
+        "Energy",
+        "Environment",
+        "Equity",
+        "Health",
+        "Overview"
+      ]
+    },
+    "country/DEU": {
+      "category": [
+        "Demographics",
+        "Economics",
+        "Energy",
+        "Environment",
+        "Equity",
+        "Health",
+        "Overview"
+      ]
+    },
+    "country/NGA": {
+      "category": [
+        "Demographics",
+        "Economics",
+        "Energy",
+        "Environment",
+        "Equity",
+        "Health",
+        "Overview"
+      ]
+    },
+    "country/NZL": {
+      "category": [
+        "Demographics",
+        "Economics",
+        "Energy",
+        "Environment",
+        "Health",
+        "Overview"
+      ]
+    },
+    "country/USA": {
+      "category": [
+        "Crime",
+        "Demographics",
+        "Economics",
+        "Education",
+        "Energy",
+        "Environment",
+        "Equity",
+        "Health",
+        "Housing",
+        "Overview"
+      ]
+    },
+    "northamerica": {},
+    "oceania": {}
+  },
+  "parentPlaces": [
+    "oceania",
+    "country/USA",
+    "northamerica"
+  ],
+  "similarPlaces": [
+    "country/NZL",
+    "country/NGA",
+    "country/USA",
+    "country/DEU",
+    "country/CHN"
+  ]
+}

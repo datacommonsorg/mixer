@@ -1,0 +1,2973 @@
+{
+  "statVarSeries": {
+    "geoId/0606000": {
+      "data": {
+        "Count_Household": {
+          "val": {
+            "2011": 44904,
+            "2012": 44877,
+            "2013": 45423,
+            "2014": 45569,
+            "2015": 45917,
+            "2016": 45923,
+            "2017": 45515,
+            "2018": 44978,
+            "2019": 45352,
+            "2020": 45884
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person": {
+          "val": {
+            "1990": 102847,
+            "1991": 103137,
+            "1992": 102952,
+            "1993": 104636,
+            "1994": 104816,
+            "1995": 105422,
+            "1996": 105407,
+            "1997": 106886,
+            "1998": 108070,
+            "1999": 108319,
+            "2000": 102936,
+            "2001": 103714,
+            "2002": 102990,
+            "2003": 101575,
+            "2004": 100819,
+            "2005": 100200,
+            "2006": 100579,
+            "2007": 100667,
+            "2008": 101380,
+            "2009": 103070,
+            "2010": 112938,
+            "2011": 114477,
+            "2012": 115819,
+            "2013": 117373,
+            "2014": 119348,
+            "2015": 121175,
+            "2016": 122175,
+            "2017": 123084,
+            "2018": 123541,
+            "2019": 123757,
+            "2020": 119463,
+            "2021": 117145
+          },
+          "metadata": {
+            "importName": "USCensusPEP_Annual_Population",
+            "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+            "measurementMethod": "CensusPEPSurvey",
+            "observationPeriod": "P1Y"
+          }
+        },
+        "Count_Person_15OrMoreYears": {
+          "val": {
+            "2011": 98704,
+            "2012": 100809,
+            "2013": 102065,
+            "2014": 103512,
+            "2015": 105428,
+            "2016": 106324,
+            "2017": 107657,
+            "2018": 108329,
+            "2019": 109171,
+            "2020": 110972
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_18To24Years": {
+          "val": {
+            "2011": 26920,
+            "2012": 28604,
+            "2013": 28250,
+            "2014": 29659,
+            "2015": 29769,
+            "2016": 29710,
+            "2017": 30109,
+            "2018": 30574,
+            "2019": 30174,
+            "2020": 29548
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_25To34Years": {
+          "val": {
+            "2011": 17101,
+            "2012": 17869,
+            "2013": 19327,
+            "2014": 19696,
+            "2015": 20075,
+            "2016": 20686,
+            "2017": 21660,
+            "2018": 21803,
+            "2019": 22124,
+            "2020": 21912
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_35To44Years": {
+          "val": {
+            "2011": 13018,
+            "2012": 12703,
+            "2013": 12736,
+            "2014": 12713,
+            "2015": 13017,
+            "2016": 12935,
+            "2017": 13313,
+            "2018": 13287,
+            "2019": 13204,
+            "2020": 13411
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_45To54Years": {
+          "val": {
+            "2011": 12979,
+            "2012": 12660,
+            "2013": 12021,
+            "2014": 11625,
+            "2015": 11851,
+            "2016": 11508,
+            "2017": 11380,
+            "2018": 11243,
+            "2019": 11179,
+            "2020": 11239
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_55To59Years": {
+          "val": {
+            "2011": 6799,
+            "2012": 6577,
+            "2013": 6365,
+            "2014": 5956,
+            "2015": 5935,
+            "2016": 6409,
+            "2017": 6045,
+            "2018": 5986,
+            "2019": 6093,
+            "2020": 6571
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_5To17Years": {
+          "val": {
+            "2011": 10490,
+            "2012": 10396,
+            "2013": 10040,
+            "2014": 10242,
+            "2015": 10483,
+            "2016": 10467,
+            "2017": 10478,
+            "2018": 10854,
+            "2019": 10868,
+            "2020": 10931
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_60To61Years": {
+          "val": {
+            "2011": 2829,
+            "2012": 2850,
+            "2013": 2868,
+            "2014": 2580,
+            "2015": 2457,
+            "2016": 2400,
+            "2017": 2131,
+            "2018": 2200,
+            "2019": 2309,
+            "2020": 2316
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_62To64Years": {
+          "val": {
+            "2011": 3175,
+            "2012": 3261,
+            "2013": 3583,
+            "2014": 3714,
+            "2015": 3667,
+            "2016": 3735,
+            "2017": 4067,
+            "2018": 3953,
+            "2019": 3782,
+            "2020": 3878
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_65To74Years": {
+          "val": {
+            "2011": 7908,
+            "2012": 8266,
+            "2013": 8773,
+            "2014": 9095,
+            "2015": 9518,
+            "2016": 9757,
+            "2017": 10121,
+            "2018": 10455,
+            "2019": 11174,
+            "2020": 12499
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_75OrMoreYears": {
+          "val": {
+            "2011": 5265,
+            "2012": 5273,
+            "2013": 5596,
+            "2014": 5962,
+            "2015": 6478,
+            "2016": 6514,
+            "2017": 6148,
+            "2018": 6108,
+            "2019": 6255,
+            "2020": 6552
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_AmericanIndianOrAlaskaNativeAlone": {
+          "val": {
+            "2011": 240,
+            "2012": 398,
+            "2013": 429,
+            "2014": 492,
+            "2015": 610,
+            "2016": 590,
+            "2017": 560,
+            "2018": 636,
+            "2019": 635,
+            "2020": 769
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_AsianAlone": {
+          "val": {
+            "2011": 22918,
+            "2012": 22228,
+            "2013": 22898,
+            "2014": 22707,
+            "2015": 23044,
+            "2016": 22746,
+            "2017": 23676,
+            "2018": 24404,
+            "2019": 25474,
+            "2020": 25672
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_BlackOrAfricanAmericanAlone": {
+          "val": {
+            "2011": 10310,
+            "2012": 9929,
+            "2013": 9760,
+            "2014": 9853,
+            "2015": 8927,
+            "2016": 10003,
+            "2017": 10284,
+            "2018": 9758,
+            "2019": 9594,
+            "2020": 9820
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_Divorced": {
+          "val": {
+            "2011": 8400,
+            "2012": 8443,
+            "2013": 7970,
+            "2014": 7876,
+            "2015": 8012,
+            "2016": 8442,
+            "2017": 8200,
+            "2018": 7779,
+            "2019": 8118,
+            "2020": 8024
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_Female": {
+          "val": {
+            "2011": 56560,
+            "2012": 57624,
+            "2013": 58956,
+            "2014": 59698,
+            "2015": 60139,
+            "2016": 61122,
+            "2017": 61937,
+            "2018": 61406,
+            "2019": 61363,
+            "2020": 62839
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_HispanicOrLatino": {
+          "val": {
+            "2011": 11635,
+            "2012": 12516,
+            "2013": 11804,
+            "2014": 12564,
+            "2015": 13434,
+            "2016": 13187,
+            "2017": 13180,
+            "2018": 13772,
+            "2019": 13853,
+            "2020": 13416
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_Male": {
+          "val": {
+            "2011": 54448,
+            "2012": 55038,
+            "2013": 55081,
+            "2014": 55990,
+            "2015": 57245,
+            "2016": 57463,
+            "2017": 58242,
+            "2018": 59520,
+            "2019": 60122,
+            "2020": 60226
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_MarriedAndNotSeparated": {
+          "val": {
+            "2011": 31982,
+            "2012": 32358,
+            "2013": 33138,
+            "2014": 33986,
+            "2015": 34390,
+            "2016": 34460,
+            "2017": 34888,
+            "2018": 35830,
+            "2019": 35808,
+            "2020": 37107
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_NativeHawaiianOrOtherPacificIslanderAlone": {
+          "val": {
+            "2011": 382,
+            "2012": 337,
+            "2013": 345,
+            "2014": 258,
+            "2015": 249,
+            "2016": 356,
+            "2017": 567,
+            "2018": 560,
+            "2019": 570,
+            "2020": 503
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_NeverMarried": {
+          "val": {
+            "2011": 53388,
+            "2012": 55507,
+            "2013": 56149,
+            "2014": 56896,
+            "2015": 58319,
+            "2016": 58781,
+            "2017": 60197,
+            "2018": 60417,
+            "2019": 60943,
+            "2020": 61231
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_NotAUSCitizen": {
+          "val": {
+            "2011": 13575,
+            "2012": 14438,
+            "2013": 14219,
+            "2014": 14167,
+            "2015": 14091,
+            "2016": 14088,
+            "2017": 14125,
+            "2018": 14462,
+            "2019": 14790,
+            "2020": 14764
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_Separated": {
+          "val": {
+            "2011": 1312,
+            "2012": 1124,
+            "2013": 1301,
+            "2014": 1256,
+            "2015": 1255,
+            "2016": 1320,
+            "2017": 1279,
+            "2018": 1186,
+            "2019": 1276,
+            "2020": 1531
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_SomeOtherRaceAlone": {
+          "val": {
+            "2011": 3139,
+            "2012": 2889,
+            "2013": 3099,
+            "2014": 3614,
+            "2015": 4044,
+            "2016": 4172,
+            "2017": 4278,
+            "2018": 4786,
+            "2019": 4645,
+            "2020": 4665
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_TwoOrMoreRaces": {
+          "val": {
+            "2011": 5789,
+            "2012": 6191,
+            "2013": 6392,
+            "2014": 6739,
+            "2015": 7255,
+            "2016": 7984,
+            "2017": 8495,
+            "2018": 9072,
+            "2019": 9122,
+            "2020": 10187
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_USCitizenBornAbroadOfAmericanParents": {
+          "val": {
+            "2011": 1544,
+            "2012": 1716,
+            "2013": 1731,
+            "2014": 1986,
+            "2015": 2035,
+            "2016": 1888,
+            "2017": 1854,
+            "2018": 1905,
+            "2019": 2063,
+            "2020": 2164
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_USCitizenBornInTheUnitedStates": {
+          "val": {
+            "2011": 84948,
+            "2012": 86374,
+            "2013": 88035,
+            "2014": 89501,
+            "2015": 90619,
+            "2016": 92120,
+            "2017": 93728,
+            "2018": 93828,
+            "2019": 93512,
+            "2020": 94478
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_USCitizenByNaturalization": {
+          "val": {
+            "2011": 10746,
+            "2012": 10030,
+            "2013": 9935,
+            "2014": 9903,
+            "2015": 10499,
+            "2016": 10330,
+            "2017": 10174,
+            "2018": 10427,
+            "2019": 10813,
+            "2020": 11384
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_WhiteAlone": {
+          "val": {
+            "2011": 68230,
+            "2012": 70690,
+            "2013": 71114,
+            "2014": 72025,
+            "2015": 73255,
+            "2016": 72734,
+            "2017": 72319,
+            "2018": 71710,
+            "2019": 71445,
+            "2020": 71449
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_Widowed": {
+          "val": {
+            "2011": 3622,
+            "2012": 3377,
+            "2013": 3507,
+            "2014": 3498,
+            "2015": 3452,
+            "2016": 3321,
+            "2017": 3093,
+            "2018": 3117,
+            "2019": 3026,
+            "2020": 3079
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Median_Age_Person": {
+          "val": {
+            "2011": 32.7,
+            "2012": 31.7,
+            "2013": 31.8,
+            "2014": 31.1,
+            "2015": 31.4,
+            "2016": 31.4,
+            "2017": 31,
+            "2018": 30.8,
+            "2019": 31.1,
+            "2020": 32.1
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "unit": "Year"
+          }
+        },
+        "Median_Age_Person_AmericanIndianOrAlaskaNativeAlone": {
+          "val": {
+            "2011": 49.3,
+            "2012": 44.9,
+            "2013": 48.6,
+            "2014": 48.2,
+            "2015": 36.9,
+            "2016": 36.4,
+            "2017": 28,
+            "2018": 34.5,
+            "2019": 34.9,
+            "2020": 46.3
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "unit": "Year"
+          }
+        },
+        "Median_Age_Person_AsianAlone": {
+          "val": {
+            "2011": 23.1,
+            "2012": 22.9,
+            "2013": 22.8,
+            "2014": 22.9,
+            "2015": 23.3,
+            "2016": 23.4,
+            "2017": 23.4,
+            "2018": 23.6,
+            "2019": 24.1,
+            "2020": 24.8
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "unit": "Year"
+          }
+        },
+        "Median_Age_Person_BlackOrAfricanAmericanAlone": {
+          "val": {
+            "2011": 44.4,
+            "2012": 44.1,
+            "2013": 46.7,
+            "2014": 41.9,
+            "2015": 43,
+            "2016": 42.9,
+            "2017": 41.3,
+            "2018": 41.2,
+            "2019": 40.2,
+            "2020": 40.9
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "unit": "Year"
+          }
+        },
+        "Median_Age_Person_Female": {
+          "val": {
+            "2011": 33.5,
+            "2012": 32.4,
+            "2013": 32.2,
+            "2014": 31.8,
+            "2015": 32.2,
+            "2016": 32.3,
+            "2017": 32,
+            "2018": 31.5,
+            "2019": 31.8,
+            "2020": 32.5
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "unit": "Year"
+          }
+        },
+        "Median_Age_Person_HispanicOrLatino": {
+          "val": {
+            "2011": 26.1,
+            "2012": 24.7,
+            "2013": 25.7,
+            "2014": 25.2,
+            "2015": 25.3,
+            "2016": 25.3,
+            "2017": 25.1,
+            "2018": 24.9,
+            "2019": 25.4,
+            "2020": 25.6
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "unit": "Year"
+          }
+        },
+        "Median_Age_Person_Male": {
+          "val": {
+            "2011": 31.7,
+            "2012": 31,
+            "2013": 31.5,
+            "2014": 30.7,
+            "2015": 30.7,
+            "2016": 30.6,
+            "2017": 30.2,
+            "2018": 30.3,
+            "2019": 30.6,
+            "2020": 31.7
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "unit": "Year"
+          }
+        },
+        "Median_Age_Person_NativeHawaiianOrOtherPacificIslanderAlone": {
+          "val": {
+            "2011": 21.5,
+            "2012": 21.4,
+            "2013": 22.1,
+            "2014": 22.8,
+            "2015": 24.6,
+            "2016": 28.4,
+            "2017": 28.7,
+            "2018": 26.7,
+            "2019": 26.8,
+            "2020": 26.4
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "unit": "Year"
+          }
+        },
+        "Median_Age_Person_SomeOtherRaceAlone": {
+          "val": {
+            "2011": 25.3,
+            "2012": 23.7,
+            "2013": 26,
+            "2014": 23.5,
+            "2015": 23.9,
+            "2016": 25.7,
+            "2017": 25.6,
+            "2018": 25.4,
+            "2019": 26.8,
+            "2020": 27.8
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "unit": "Year"
+          }
+        },
+        "Median_Age_Person_TwoOrMoreRaces": {
+          "val": {
+            "2011": 20.6,
+            "2012": 21.1,
+            "2013": 21.1,
+            "2014": 22,
+            "2015": 21.8,
+            "2016": 21.8,
+            "2017": 22,
+            "2018": 22.1,
+            "2019": 21.7,
+            "2020": 22.7
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "unit": "Year"
+          }
+        },
+        "Median_Age_Person_WhiteAlone": {
+          "val": {
+            "2011": 36.7,
+            "2012": 36.5,
+            "2013": 36.1,
+            "2014": 35.8,
+            "2015": 36.4,
+            "2016": 35.9,
+            "2017": 35.7,
+            "2018": 35.7,
+            "2019": 36.4,
+            "2020": 38.2
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "unit": "Year"
+          }
+        }
+      }
+    },
+    "geoId/2836000": {
+      "data": {
+        "Count_Household": {
+          "val": {
+            "2011": 62192,
+            "2012": 62260,
+            "2013": 62254,
+            "2014": 62417,
+            "2015": 62671,
+            "2016": 63467,
+            "2017": 62895,
+            "2018": 62109,
+            "2019": 62108,
+            "2020": 62861
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person": {
+          "val": {
+            "1990": 196575,
+            "1991": 196526,
+            "1992": 195371,
+            "1993": 194282,
+            "1994": 190655,
+            "1995": 188284,
+            "1996": 186656,
+            "1997": 184294,
+            "1998": 182919,
+            "1999": 180664,
+            "2000": 186375,
+            "2001": 184343,
+            "2002": 182710,
+            "2003": 181918,
+            "2004": 181834,
+            "2005": 180520,
+            "2006": 180821,
+            "2007": 178426,
+            "2008": 176409,
+            "2009": 176259,
+            "2010": 173703,
+            "2011": 175166,
+            "2012": 174853,
+            "2013": 172970,
+            "2014": 172065,
+            "2015": 170970,
+            "2016": 169074,
+            "2017": 166864,
+            "2018": 163784,
+            "2019": 160658,
+            "2020": 152846,
+            "2021": 149761
+          },
+          "metadata": {
+            "importName": "USCensusPEP_Annual_Population",
+            "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+            "measurementMethod": "CensusPEPSurvey",
+            "observationPeriod": "P1Y"
+          }
+        },
+        "Count_Person_15OrMoreYears": {
+          "val": {
+            "2011": 134096,
+            "2012": 134489,
+            "2013": 134591,
+            "2014": 134376,
+            "2015": 135071,
+            "2016": 134630,
+            "2017": 133798,
+            "2018": 133053,
+            "2019": 131660,
+            "2020": 130071
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_18To24Years": {
+          "val": {
+            "2011": 21313,
+            "2012": 21813,
+            "2013": 21503,
+            "2014": 21683,
+            "2015": 21878,
+            "2016": 21427,
+            "2017": 20935,
+            "2018": 20921,
+            "2019": 20056,
+            "2020": 19470
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_25To34Years": {
+          "val": {
+            "2011": 25550,
+            "2012": 25595,
+            "2013": 26024,
+            "2014": 26447,
+            "2015": 27199,
+            "2016": 26791,
+            "2017": 26763,
+            "2018": 26890,
+            "2019": 25946,
+            "2020": 25557
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_35To44Years": {
+          "val": {
+            "2011": 21205,
+            "2012": 20829,
+            "2013": 20655,
+            "2014": 20375,
+            "2015": 20101,
+            "2016": 20320,
+            "2017": 19945,
+            "2018": 19953,
+            "2019": 19655,
+            "2020": 19607
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_45To54Years": {
+          "val": {
+            "2011": 22989,
+            "2012": 22645,
+            "2013": 22283,
+            "2014": 20995,
+            "2015": 20257,
+            "2016": 19766,
+            "2017": 19243,
+            "2018": 18631,
+            "2019": 18572,
+            "2020": 17882
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_55To59Years": {
+          "val": {
+            "2011": 9803,
+            "2012": 10306,
+            "2013": 10341,
+            "2014": 10409,
+            "2015": 11245,
+            "2016": 11357,
+            "2017": 11067,
+            "2018": 10534,
+            "2019": 10531,
+            "2020": 9684
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_5To17Years": {
+          "val": {
+            "2011": 34945,
+            "2012": 34586,
+            "2013": 33835,
+            "2014": 33997,
+            "2015": 33056,
+            "2016": 32440,
+            "2017": 31543,
+            "2018": 30862,
+            "2019": 29898,
+            "2020": 28591
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_60To61Years": {
+          "val": {
+            "2011": 3243,
+            "2012": 3381,
+            "2013": 3377,
+            "2014": 3374,
+            "2015": 3389,
+            "2016": 3200,
+            "2017": 3380,
+            "2018": 3519,
+            "2019": 3516,
+            "2020": 3860
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_62To64Years": {
+          "val": {
+            "2011": 4150,
+            "2012": 4247,
+            "2013": 4680,
+            "2014": 4983,
+            "2015": 4933,
+            "2016": 5243,
+            "2017": 5342,
+            "2018": 5560,
+            "2019": 5777,
+            "2020": 6257
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_65To74Years": {
+          "val": {
+            "2011": 9147,
+            "2012": 9359,
+            "2013": 9824,
+            "2014": 10165,
+            "2015": 10453,
+            "2016": 10895,
+            "2017": 11553,
+            "2018": 11705,
+            "2019": 12272,
+            "2020": 13010
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_75OrMoreYears": {
+          "val": {
+            "2011": 8528,
+            "2012": 8306,
+            "2013": 8283,
+            "2014": 8234,
+            "2015": 8114,
+            "2016": 8154,
+            "2017": 8258,
+            "2018": 8021,
+            "2019": 8318,
+            "2020": 8250
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_AmericanIndianOrAlaskaNativeAlone": {
+          "val": {
+            "2011": 189,
+            "2012": 249,
+            "2013": 204,
+            "2014": 247,
+            "2015": 132,
+            "2016": 152,
+            "2017": 116,
+            "2018": 122,
+            "2019": 168,
+            "2020": 131
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_AsianAlone": {
+          "val": {
+            "2011": 505,
+            "2012": 504,
+            "2013": 471,
+            "2014": 542,
+            "2015": 641,
+            "2016": 642,
+            "2017": 665,
+            "2018": 664,
+            "2019": 535,
+            "2020": 545
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_BlackOrAfricanAmericanAlone": {
+          "val": {
+            "2011": 138031,
+            "2012": 137891,
+            "2013": 139200,
+            "2014": 138816,
+            "2015": 138745,
+            "2016": 139627,
+            "2017": 139196,
+            "2018": 138501,
+            "2019": 136728,
+            "2020": 135069
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_Divorced": {
+          "val": {
+            "2011": 16342,
+            "2012": 17326,
+            "2013": 17364,
+            "2014": 16481,
+            "2015": 16484,
+            "2016": 16311,
+            "2017": 15629,
+            "2018": 15581,
+            "2019": 15885,
+            "2020": 15904
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_Female": {
+          "val": {
+            "2011": 93963,
+            "2012": 94012,
+            "2013": 93690,
+            "2014": 93725,
+            "2015": 93001,
+            "2016": 92621,
+            "2017": 91166,
+            "2018": 90434,
+            "2019": 89741,
+            "2020": 88453
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_HispanicOrLatino": {
+          "val": {
+            "2011": 2988,
+            "2012": 3174,
+            "2013": 2840,
+            "2014": 2712,
+            "2015": 2630,
+            "2016": 2276,
+            "2017": 1940,
+            "2018": 2092,
+            "2019": 2327,
+            "2020": 2054
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_Male": {
+          "val": {
+            "2011": 80811,
+            "2012": 80370,
+            "2013": 80307,
+            "2014": 79906,
+            "2015": 80211,
+            "2016": 79418,
+            "2017": 79227,
+            "2018": 78428,
+            "2019": 76642,
+            "2020": 75325
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_MarriedAndNotSeparated": {
+          "val": {
+            "2011": 41379,
+            "2012": 39926,
+            "2013": 39910,
+            "2014": 39466,
+            "2015": 38434,
+            "2016": 38189,
+            "2017": 38478,
+            "2018": 38075,
+            "2019": 38305,
+            "2020": 39165
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_NativeHawaiianOrOtherPacificIslanderAlone": {
+          "val": {
+            "2011": 127,
+            "2012": 0,
+            "2013": 30,
+            "2014": 31,
+            "2015": 22,
+            "2016": 83,
+            "2017": 85,
+            "2018": 53,
+            "2019": 74,
+            "2020": 73
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_NeverMarried": {
+          "val": {
+            "2011": 62281,
+            "2012": 63675,
+            "2013": 63818,
+            "2014": 64471,
+            "2015": 66388,
+            "2016": 66442,
+            "2017": 65608,
+            "2018": 65730,
+            "2019": 64176,
+            "2020": 61625
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_NotAUSCitizen": {
+          "val": {
+            "2011": 1947,
+            "2012": 2304,
+            "2013": 1905,
+            "2014": 1873,
+            "2015": 1833,
+            "2016": 1823,
+            "2017": 1433,
+            "2018": 1471,
+            "2019": 1351,
+            "2020": 1221
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_Separated": {
+          "val": {
+            "2011": 5320,
+            "2012": 4943,
+            "2013": 5071,
+            "2014": 5390,
+            "2015": 5479,
+            "2016": 5220,
+            "2017": 5624,
+            "2018": 5222,
+            "2019": 5046,
+            "2020": 5203
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_SomeOtherRaceAlone": {
+          "val": {
+            "2011": 1448,
+            "2012": 1668,
+            "2013": 1395,
+            "2014": 1085,
+            "2015": 1217,
+            "2016": 916,
+            "2017": 492,
+            "2018": 470,
+            "2019": 487,
+            "2020": 311
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_TwoOrMoreRaces": {
+          "val": {
+            "2011": 691,
+            "2012": 963,
+            "2013": 980,
+            "2014": 1127,
+            "2015": 1271,
+            "2016": 1094,
+            "2017": 1004,
+            "2018": 989,
+            "2019": 871,
+            "2020": 1140
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_USCitizenBornAbroadOfAmericanParents": {
+          "val": {
+            "2011": 419,
+            "2012": 326,
+            "2013": 482,
+            "2014": 590,
+            "2015": 554,
+            "2016": 552,
+            "2017": 627,
+            "2018": 617,
+            "2019": 532,
+            "2020": 518
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_USCitizenBornInTheUnitedStates": {
+          "val": {
+            "2011": 171436,
+            "2012": 170729,
+            "2013": 170547,
+            "2014": 170063,
+            "2015": 169577,
+            "2016": 168636,
+            "2017": 167205,
+            "2018": 165694,
+            "2019": 163575,
+            "2020": 161407
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_USCitizenByNaturalization": {
+          "val": {
+            "2011": 911,
+            "2012": 995,
+            "2013": 997,
+            "2014": 1000,
+            "2015": 927,
+            "2016": 713,
+            "2017": 752,
+            "2018": 754,
+            "2019": 671,
+            "2020": 609
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_WhiteAlone": {
+          "val": {
+            "2011": 33783,
+            "2012": 33107,
+            "2013": 31717,
+            "2014": 31783,
+            "2015": 31184,
+            "2016": 29525,
+            "2017": 28835,
+            "2018": 28063,
+            "2019": 27520,
+            "2020": 26509
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_Widowed": {
+          "val": {
+            "2011": 8774,
+            "2012": 8619,
+            "2013": 8428,
+            "2014": 8568,
+            "2015": 8286,
+            "2016": 8468,
+            "2017": 8459,
+            "2018": 8445,
+            "2019": 8248,
+            "2020": 8174
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Median_Age_Person": {
+          "val": {
+            "2011": 31.2,
+            "2012": 31.3,
+            "2013": 31.6,
+            "2014": 31.6,
+            "2015": 31.7,
+            "2016": 32.1,
+            "2017": 32.4,
+            "2018": 32.4,
+            "2019": 33,
+            "2020": 33.5
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "unit": "Year"
+          }
+        },
+        "Median_Age_Person_AmericanIndianOrAlaskaNativeAlone": {
+          "val": {
+            "2011": 36.5,
+            "2012": 40.3,
+            "2013": 21.7,
+            "2014": 21.7,
+            "2015": 52.5,
+            "2016": 55.4,
+            "2017": 55.7,
+            "2018": 63.7,
+            "2019": 44.4,
+            "2020": 45.8
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "unit": "Year"
+          }
+        },
+        "Median_Age_Person_AsianAlone": {
+          "val": {
+            "2011": 35.4,
+            "2012": 33.5,
+            "2013": 33.9,
+            "2014": 33.2,
+            "2015": 31.7,
+            "2016": 33.2,
+            "2017": 33.4,
+            "2018": 33.2,
+            "2019": 32.9,
+            "2020": 37.6
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "unit": "Year"
+          }
+        },
+        "Median_Age_Person_BlackOrAfricanAmericanAlone": {
+          "val": {
+            "2011": 28.9,
+            "2012": 29,
+            "2013": 29.4,
+            "2014": 29.6,
+            "2015": 29.9,
+            "2016": 30.1,
+            "2017": 30.5,
+            "2018": 30.7,
+            "2019": 31.3,
+            "2020": 32.1
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "unit": "Year"
+          }
+        },
+        "Median_Age_Person_Female": {
+          "val": {
+            "2011": 32.5,
+            "2012": 32.5,
+            "2013": 32.9,
+            "2014": 33,
+            "2015": 33.2,
+            "2016": 33.6,
+            "2017": 33.8,
+            "2018": 33.6,
+            "2019": 33.9,
+            "2020": 34.7
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "unit": "Year"
+          }
+        },
+        "Median_Age_Person_HispanicOrLatino": {
+          "val": {
+            "2011": 26.9,
+            "2012": 26.9,
+            "2013": 28.2,
+            "2014": 28.2,
+            "2015": 27.3,
+            "2016": 24.1,
+            "2017": 25.6,
+            "2018": 25.4,
+            "2019": 22.4,
+            "2020": 23.3
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "unit": "Year"
+          }
+        },
+        "Median_Age_Person_Male": {
+          "val": {
+            "2011": 29.7,
+            "2012": 30.1,
+            "2013": 30.4,
+            "2014": 30.2,
+            "2015": 30.2,
+            "2016": 30.4,
+            "2017": 30.6,
+            "2018": 30.7,
+            "2019": 31.7,
+            "2020": 32.2
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "unit": "Year"
+          }
+        },
+        "Median_Age_Person_NativeHawaiianOrOtherPacificIslanderAlone": {
+          "val": {
+            "2011": 18.1,
+            "2016": 31.3,
+            "2017": 31.2,
+            "2018": 31.4,
+            "2019": 31.4,
+            "2020": 31.3
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "unit": "Year"
+          }
+        },
+        "Median_Age_Person_SomeOtherRaceAlone": {
+          "val": {
+            "2011": 26.6,
+            "2012": 26.7,
+            "2013": 27.5,
+            "2014": 24.6,
+            "2015": 23.4,
+            "2016": 21.4,
+            "2017": 22.4,
+            "2018": 22.4,
+            "2019": 27.1,
+            "2020": 19
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "unit": "Year"
+          }
+        },
+        "Median_Age_Person_TwoOrMoreRaces": {
+          "val": {
+            "2011": 23.6,
+            "2012": 21.7,
+            "2013": 21.9,
+            "2014": 19.3,
+            "2015": 21.6,
+            "2016": 28.4,
+            "2017": 28.6,
+            "2018": 28.3,
+            "2019": 33.9,
+            "2020": 37.3
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "unit": "Year"
+          }
+        },
+        "Median_Age_Person_WhiteAlone": {
+          "val": {
+            "2011": 45.4,
+            "2012": 45.7,
+            "2013": 46.7,
+            "2014": 45,
+            "2015": 44.7,
+            "2016": 45.4,
+            "2017": 45,
+            "2018": 42.5,
+            "2019": 43.5,
+            "2020": 43.5
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "unit": "Year"
+          }
+        }
+      }
+    },
+    "zip/94618": {
+      "data": {
+        "Count_Household": {
+          "val": {
+            "2011": 7532,
+            "2012": 7566,
+            "2013": 7434,
+            "2014": 7205,
+            "2015": 7106,
+            "2016": 6991,
+            "2017": 7054,
+            "2018": 7285,
+            "2019": 7156,
+            "2020": 7136
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person": {
+          "val": {
+            "2011": 16753,
+            "2012": 17074,
+            "2013": 17226,
+            "2014": 17007,
+            "2015": 16884,
+            "2016": 16620,
+            "2017": 16566,
+            "2018": 17041,
+            "2019": 17252,
+            "2020": 17110
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_15OrMoreYears": {
+          "val": {
+            "2011": 13969,
+            "2012": 14300,
+            "2013": 14633,
+            "2014": 14311,
+            "2015": 14217,
+            "2016": 13937,
+            "2017": 14011,
+            "2018": 14352,
+            "2019": 14492,
+            "2020": 14654
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_18To24Years": {
+          "val": {
+            "2011": 799,
+            "2012": 789,
+            "2013": 845,
+            "2014": 729,
+            "2015": 762,
+            "2016": 815,
+            "2017": 896,
+            "2018": 888,
+            "2019": 899,
+            "2020": 958
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_25To34Years": {
+          "val": {
+            "2011": 2143,
+            "2012": 2155,
+            "2013": 2715,
+            "2014": 2691,
+            "2015": 2909,
+            "2016": 2642,
+            "2017": 2742,
+            "2018": 2705,
+            "2019": 2755,
+            "2020": 2940
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_35To44Years": {
+          "val": {
+            "2011": 3182,
+            "2012": 3171,
+            "2013": 2910,
+            "2014": 3020,
+            "2015": 2712,
+            "2016": 2542,
+            "2017": 2367,
+            "2018": 2478,
+            "2019": 2319,
+            "2020": 2072
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_45To54Years": {
+          "val": {
+            "2011": 2759,
+            "2012": 2718,
+            "2013": 2773,
+            "2014": 2525,
+            "2015": 2562,
+            "2016": 2557,
+            "2017": 2548,
+            "2018": 2471,
+            "2019": 2645,
+            "2020": 2374
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_55To59Years": {
+          "val": {
+            "2011": 1204,
+            "2012": 1205,
+            "2013": 1184,
+            "2014": 1183,
+            "2015": 1122,
+            "2016": 1215,
+            "2017": 1282,
+            "2018": 1282,
+            "2019": 1227,
+            "2020": 1384
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_5To17Years": {
+          "val": {
+            "2011": 2278,
+            "2012": 2135,
+            "2013": 2001,
+            "2014": 2110,
+            "2015": 2048,
+            "2016": 2127,
+            "2017": 2222,
+            "2018": 2195,
+            "2019": 2396,
+            "2020": 2431
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_60To61Years": {
+          "val": {
+            "2011": 333,
+            "2012": 384,
+            "2013": 369,
+            "2014": 356,
+            "2015": 346,
+            "2016": 377,
+            "2017": 338,
+            "2018": 357,
+            "2019": 380,
+            "2020": 416
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_62To64Years": {
+          "val": {
+            "2011": 779,
+            "2012": 809,
+            "2013": 720,
+            "2014": 668,
+            "2015": 660,
+            "2016": 563,
+            "2017": 547,
+            "2018": 547,
+            "2019": 531,
+            "2020": 512
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_65To74Years": {
+          "val": {
+            "2011": 1372,
+            "2012": 1612,
+            "2013": 1723,
+            "2014": 1752,
+            "2015": 1867,
+            "2016": 1896,
+            "2017": 1895,
+            "2018": 2057,
+            "2019": 1975,
+            "2020": 2004
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_75OrMoreYears": {
+          "val": {
+            "2011": 1059,
+            "2012": 1106,
+            "2013": 1051,
+            "2014": 1047,
+            "2015": 924,
+            "2016": 934,
+            "2017": 956,
+            "2018": 1114,
+            "2019": 1243,
+            "2020": 1331
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_AmericanIndianOrAlaskaNativeAlone": {
+          "val": {
+            "2011": 93,
+            "2012": 34,
+            "2013": 37,
+            "2014": 30,
+            "2015": 29,
+            "2016": 13,
+            "2017": 12,
+            "2018": 14,
+            "2019": 12,
+            "2020": 31
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_AsianAlone": {
+          "val": {
+            "2011": 1587,
+            "2012": 1974,
+            "2013": 2308,
+            "2014": 2515,
+            "2015": 2542,
+            "2016": 2086,
+            "2017": 1977,
+            "2018": 2159,
+            "2019": 2228,
+            "2020": 2308
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_BlackOrAfricanAmericanAlone": {
+          "val": {
+            "2011": 1011,
+            "2012": 1285,
+            "2013": 1416,
+            "2014": 1098,
+            "2015": 985,
+            "2016": 910,
+            "2017": 625,
+            "2018": 569,
+            "2019": 639,
+            "2020": 746
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_Divorced": {
+          "val": {
+            "2011": 1275,
+            "2012": 1245,
+            "2013": 1127,
+            "2014": 1036,
+            "2015": 1014,
+            "2016": 974,
+            "2017": 1093,
+            "2018": 1158,
+            "2019": 1196,
+            "2020": 1399
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_Female": {
+          "val": {
+            "2011": 8772,
+            "2012": 9242,
+            "2013": 9166,
+            "2014": 9094,
+            "2015": 9070,
+            "2016": 8899,
+            "2017": 8744,
+            "2018": 9099,
+            "2019": 9235,
+            "2020": 8973
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_HispanicOrLatino": {
+          "val": {
+            "2011": 1304,
+            "2012": 1243,
+            "2013": 1344,
+            "2014": 1345,
+            "2015": 1253,
+            "2016": 1295,
+            "2017": 1470,
+            "2018": 1433,
+            "2019": 1524,
+            "2020": 1540
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_Male": {
+          "val": {
+            "2011": 7981,
+            "2012": 7832,
+            "2013": 8060,
+            "2014": 7913,
+            "2015": 7814,
+            "2016": 7721,
+            "2017": 7822,
+            "2018": 7942,
+            "2019": 8017,
+            "2020": 8137
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_MarriedAndNotSeparated": {
+          "val": {
+            "2011": 7241,
+            "2012": 7728,
+            "2013": 7832,
+            "2014": 7605,
+            "2015": 7712,
+            "2016": 7174,
+            "2017": 6920,
+            "2018": 7209,
+            "2019": 7409,
+            "2020": 7139
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_NativeHawaiianOrOtherPacificIslanderAlone": {
+          "val": {
+            "2011": 0,
+            "2012": 27,
+            "2013": 25,
+            "2014": 37,
+            "2015": 43,
+            "2016": 86,
+            "2017": 70,
+            "2018": 76,
+            "2019": 56,
+            "2020": 73
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_NeverMarried": {
+          "val": {
+            "2011": 4658,
+            "2012": 4569,
+            "2013": 4869,
+            "2014": 4773,
+            "2015": 4650,
+            "2016": 4830,
+            "2017": 5138,
+            "2018": 4995,
+            "2019": 4982,
+            "2020": 5092
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_NotAUSCitizen": {
+          "val": {
+            "2011": 799,
+            "2012": 861,
+            "2013": 983,
+            "2014": 983,
+            "2015": 862,
+            "2016": 736,
+            "2017": 742,
+            "2018": 761,
+            "2019": 840,
+            "2020": 835
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_Separated": {
+          "val": {
+            "2011": 207,
+            "2012": 190,
+            "2013": 222,
+            "2014": 262,
+            "2015": 222,
+            "2016": 194,
+            "2017": 141,
+            "2018": 133,
+            "2019": 132,
+            "2020": 145
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_SomeOtherRaceAlone": {
+          "val": {
+            "2011": 230,
+            "2012": 171,
+            "2013": 255,
+            "2014": 211,
+            "2015": 241,
+            "2016": 321,
+            "2017": 471,
+            "2018": 494,
+            "2019": 577,
+            "2020": 655
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_TwoOrMoreRaces": {
+          "val": {
+            "2011": 1067,
+            "2012": 1010,
+            "2013": 962,
+            "2014": 1047,
+            "2015": 954,
+            "2016": 1067,
+            "2017": 1206,
+            "2018": 1266,
+            "2019": 1140,
+            "2020": 1432
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_USCitizenBornAbroadOfAmericanParents": {
+          "val": {
+            "2011": 253,
+            "2012": 306,
+            "2013": 297,
+            "2014": 338,
+            "2015": 330,
+            "2016": 369,
+            "2017": 281,
+            "2018": 399,
+            "2019": 479,
+            "2020": 423
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_USCitizenBornInTheUnitedStates": {
+          "val": {
+            "2011": 14401,
+            "2012": 14467,
+            "2013": 14378,
+            "2014": 14094,
+            "2015": 13943,
+            "2016": 13848,
+            "2017": 13786,
+            "2018": 14042,
+            "2019": 14021,
+            "2020": 14110
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_USCitizenByNaturalization": {
+          "val": {
+            "2011": 1278,
+            "2012": 1417,
+            "2013": 1543,
+            "2014": 1566,
+            "2015": 1721,
+            "2016": 1642,
+            "2017": 1733,
+            "2018": 1813,
+            "2019": 1870,
+            "2020": 1705
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_WhiteAlone": {
+          "val": {
+            "2011": 12765,
+            "2012": 12573,
+            "2013": 12223,
+            "2014": 12069,
+            "2015": 12090,
+            "2016": 12137,
+            "2017": 12205,
+            "2018": 12463,
+            "2019": 12600,
+            "2020": 11865
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_Widowed": {
+          "val": {
+            "2011": 588,
+            "2012": 568,
+            "2013": 583,
+            "2014": 635,
+            "2015": 619,
+            "2016": 765,
+            "2017": 719,
+            "2018": 857,
+            "2019": 773,
+            "2020": 879
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Median_Age_Person": {
+          "val": {
+            "2011": 42.2,
+            "2012": 42.7,
+            "2013": 42.3,
+            "2014": 42,
+            "2015": 41.8,
+            "2016": 42.5,
+            "2017": 42.6,
+            "2018": 42.9,
+            "2019": 42.4,
+            "2020": 42.3
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "unit": "Year"
+          }
+        },
+        "Median_Age_Person_AmericanIndianOrAlaskaNativeAlone": {
+          "val": {
+            "2011": 57.1,
+            "2012": 54.1,
+            "2013": 54.7,
+            "2014": 54.8,
+            "2015": 54.7,
+            "2018": 56,
+            "2019": 65.6,
+            "2020": 62.6
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "unit": "Year"
+          }
+        },
+        "Median_Age_Person_AsianAlone": {
+          "val": {
+            "2011": 37.9,
+            "2012": 36.3,
+            "2013": 36,
+            "2014": 37.7,
+            "2015": 37.9,
+            "2016": 37.2,
+            "2017": 38.5,
+            "2018": 39.2,
+            "2019": 39.3,
+            "2020": 39.4
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "unit": "Year"
+          }
+        },
+        "Median_Age_Person_BlackOrAfricanAmericanAlone": {
+          "val": {
+            "2011": 45.3,
+            "2012": 46.8,
+            "2013": 45.2,
+            "2014": 42.6,
+            "2015": 38.6,
+            "2016": 49,
+            "2017": 42.1,
+            "2018": 46.6,
+            "2019": 39.2,
+            "2020": 36.2
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "unit": "Year"
+          }
+        },
+        "Median_Age_Person_Female": {
+          "val": {
+            "2011": 43.4,
+            "2012": 43.3,
+            "2013": 42.7,
+            "2014": 42.1,
+            "2015": 41.3,
+            "2016": 42.4,
+            "2017": 42.8,
+            "2018": 43.4,
+            "2019": 43.1,
+            "2020": 44.1
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "unit": "Year"
+          }
+        },
+        "Median_Age_Person_HispanicOrLatino": {
+          "val": {
+            "2011": 32.6,
+            "2012": 32.2,
+            "2013": 34,
+            "2014": 32.9,
+            "2015": 33.1,
+            "2016": 34.3,
+            "2017": 30.5,
+            "2018": 28.9,
+            "2019": 28.6,
+            "2020": 32.3
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "unit": "Year"
+          }
+        },
+        "Median_Age_Person_Male": {
+          "val": {
+            "2011": 41,
+            "2012": 42.1,
+            "2013": 42,
+            "2014": 41.9,
+            "2015": 42,
+            "2016": 42.6,
+            "2017": 42.5,
+            "2018": 41.8,
+            "2019": 41.5,
+            "2020": 40.6
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "unit": "Year"
+          }
+        },
+        "Median_Age_Person_NativeHawaiianOrOtherPacificIslanderAlone": {
+          "val": {
+            "2012": 26.7,
+            "2014": 53.2,
+            "2015": 54,
+            "2016": 51.8,
+            "2017": 54.3,
+            "2018": 54.4,
+            "2019": 58.8,
+            "2020": 58.6
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "unit": "Year"
+          }
+        },
+        "Median_Age_Person_SomeOtherRaceAlone": {
+          "val": {
+            "2011": 36.7,
+            "2012": 35.6,
+            "2013": 35.6,
+            "2014": 39.1,
+            "2015": 45.1,
+            "2016": 37.1,
+            "2017": 28.1,
+            "2018": 28.4,
+            "2019": 23.7,
+            "2020": 23
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "unit": "Year"
+          }
+        },
+        "Median_Age_Person_TwoOrMoreRaces": {
+          "val": {
+            "2011": 11.6,
+            "2012": 17.7,
+            "2013": 12.8,
+            "2014": 17.8,
+            "2015": 18.1,
+            "2016": 15.3,
+            "2017": 15.9,
+            "2018": 19,
+            "2019": 19.2,
+            "2020": 20.3
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "unit": "Year"
+          }
+        },
+        "Median_Age_Person_WhiteAlone": {
+          "val": {
+            "2011": 43.7,
+            "2012": 45,
+            "2013": 44.4,
+            "2014": 43.9,
+            "2015": 43.6,
+            "2016": 44.2,
+            "2017": 44.5,
+            "2018": 45.1,
+            "2019": 45.9,
+            "2020": 47
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "unit": "Year"
+          }
+        }
+      }
+    }
+  },
+  "allChildPlaces": {
+    "CensusZipCodeTabulationArea": {
+      "places": [
+        {
+          "dcid": "zip/94611",
+          "name": "94611",
+          "pop": 39042
+        },
+        {
+          "dcid": "zip/94610",
+          "name": "94610",
+          "pop": 31553
+        },
+        {
+          "dcid": "zip/94618",
+          "name": "94618",
+          "pop": 17110
+        }
+      ]
+    }
+  },
+  "latestPopulation": {
+    "country/USA": {
+      "date": "2021",
+      "value": 331893745,
+      "metadata": {
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
+      }
+    },
+    "geoId/06": {
+      "date": "2021",
+      "value": 39237836,
+      "metadata": {
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
+      }
+    },
+    "geoId/06001": {
+      "date": "2021",
+      "value": 1648556,
+      "metadata": {
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
+      }
+    },
+    "geoId/0600562": {
+      "date": "2021",
+      "value": 76362,
+      "metadata": {
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
+      }
+    },
+    "geoId/0606000": {
+      "date": "2021",
+      "value": 117145,
+      "metadata": {
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
+      }
+    },
+    "geoId/0653000": {
+      "date": "2021",
+      "value": 433823,
+      "metadata": {
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
+      }
+    },
+    "geoId/0656938": {
+      "date": "2021",
+      "value": 11107,
+      "metadata": {
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
+      }
+    },
+    "geoId/0660620": {
+      "date": "2021",
+      "value": 115639,
+      "metadata": {
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
+      }
+    },
+    "geoId/0668084": {
+      "date": "2021",
+      "value": 88868,
+      "metadata": {
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
+      }
+    },
+    "geoId/0820000": {
+      "date": "2021",
+      "value": 711463,
+      "metadata": {
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
+      }
+    },
+    "geoId/2836000": {
+      "date": "2021",
+      "value": 149761,
+      "metadata": {
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
+      }
+    },
+    "geoId/4055000": {
+      "date": "2021",
+      "value": 687725,
+      "metadata": {
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
+      }
+    },
+    "geoId/4261000": {
+      "date": "2021",
+      "value": 300431,
+      "metadata": {
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
+      }
+    },
+    "geoId/4752006": {
+      "date": "2021",
+      "value": 678851,
+      "metadata": {
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
+      }
+    },
+    "zip/94610": {
+      "date": "2020",
+      "value": 31553,
+      "metadata": {
+        "importName": "CensusACS5YearSurvey",
+        "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+        "measurementMethod": "CensusACS5yrSurvey"
+      }
+    },
+    "zip/94611": {
+      "date": "2020",
+      "value": 39042,
+      "metadata": {
+        "importName": "CensusACS5YearSurvey",
+        "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+        "measurementMethod": "CensusACS5yrSurvey"
+      }
+    },
+    "zip/94618": {
+      "date": "2020",
+      "value": 17110,
+      "metadata": {
+        "importName": "CensusACS5YearSurvey",
+        "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+        "measurementMethod": "CensusACS5yrSurvey"
+      }
+    }
+  },
+  "validCategories": {
+    "country/USA": {
+      "category": [
+        "Crime",
+        "Demographics",
+        "Economics",
+        "Education",
+        "Energy",
+        "Environment",
+        "Equity",
+        "Health",
+        "Housing",
+        "Overview"
+      ]
+    },
+    "geoId/06": {
+      "category": [
+        "Crime",
+        "Demographics",
+        "Economics",
+        "Education",
+        "Energy",
+        "Environment",
+        "Equity",
+        "Health",
+        "Housing",
+        "Overview"
+      ]
+    },
+    "geoId/06001": {
+      "category": [
+        "Demographics",
+        "Economics",
+        "Education",
+        "Environment",
+        "Equity",
+        "Health",
+        "Housing",
+        "Overview"
+      ]
+    },
+    "geoId/0600562": {
+      "category": [
+        "Crime",
+        "Demographics",
+        "Economics",
+        "Education",
+        "Environment",
+        "Equity",
+        "Health",
+        "Housing",
+        "Overview"
+      ]
+    },
+    "geoId/0606000": {
+      "category": [
+        "Crime",
+        "Demographics",
+        "Economics",
+        "Education",
+        "Environment",
+        "Equity",
+        "Health",
+        "Housing",
+        "Overview"
+      ]
+    },
+    "geoId/0653000": {
+      "category": [
+        "Crime",
+        "Demographics",
+        "Economics",
+        "Education",
+        "Environment",
+        "Equity",
+        "Health",
+        "Housing",
+        "Overview"
+      ]
+    },
+    "geoId/0656938": {
+      "category": [
+        "Crime",
+        "Demographics",
+        "Economics",
+        "Education",
+        "Environment",
+        "Equity",
+        "Health",
+        "Housing",
+        "Overview"
+      ]
+    },
+    "geoId/0660620": {
+      "category": [
+        "Crime",
+        "Demographics",
+        "Economics",
+        "Education",
+        "Environment",
+        "Equity",
+        "Health",
+        "Housing",
+        "Overview"
+      ]
+    },
+    "geoId/0668084": {
+      "category": [
+        "Crime",
+        "Demographics",
+        "Economics",
+        "Education",
+        "Environment",
+        "Equity",
+        "Health",
+        "Housing",
+        "Overview"
+      ]
+    },
+    "geoId/0820000": {
+      "category": [
+        "Crime",
+        "Demographics",
+        "Economics",
+        "Education",
+        "Environment",
+        "Equity",
+        "Health",
+        "Housing",
+        "Overview"
+      ]
+    },
+    "geoId/2836000": {
+      "category": [
+        "Crime",
+        "Demographics",
+        "Economics",
+        "Education",
+        "Environment",
+        "Equity",
+        "Health",
+        "Housing",
+        "Overview"
+      ]
+    },
+    "geoId/4055000": {
+      "category": [
+        "Crime",
+        "Demographics",
+        "Economics",
+        "Education",
+        "Environment",
+        "Equity",
+        "Health",
+        "Housing",
+        "Overview"
+      ]
+    },
+    "geoId/4261000": {
+      "category": [
+        "Crime",
+        "Demographics",
+        "Economics",
+        "Education",
+        "Environment",
+        "Equity",
+        "Health",
+        "Housing",
+        "Overview"
+      ]
+    },
+    "geoId/4752006": {
+      "category": [
+        "Crime",
+        "Demographics",
+        "Economics",
+        "Education",
+        "Environment",
+        "Equity",
+        "Health",
+        "Housing",
+        "Overview"
+      ]
+    },
+    "northamerica": {},
+    "zip/94610": {
+      "category": [
+        "Demographics",
+        "Economics",
+        "Education",
+        "Equity",
+        "Health",
+        "Housing",
+        "Overview"
+      ]
+    },
+    "zip/94611": {
+      "category": [
+        "Demographics",
+        "Economics",
+        "Education",
+        "Equity",
+        "Health",
+        "Housing",
+        "Overview"
+      ]
+    },
+    "zip/94618": {
+      "category": [
+        "Demographics",
+        "Economics",
+        "Education",
+        "Equity",
+        "Health",
+        "Housing",
+        "Overview"
+      ]
+    }
+  },
+  "childPlacesType": "CensusZipCodeTabulationArea",
+  "childPlaces": [
+    "zip/94611",
+    "zip/94610",
+    "zip/94618"
+  ],
+  "parentPlaces": [
+    "geoId/06001",
+    "geoId/06",
+    "country/USA",
+    "northamerica"
+  ],
+  "similarPlaces": [
+    "geoId/4752006",
+    "geoId/4261000",
+    "geoId/0820000",
+    "geoId/2836000",
+    "geoId/4055000"
+  ],
+  "nearbyPlaces": [
+    "geoId/0653000",
+    "geoId/0606000",
+    "geoId/0660620",
+    "geoId/0668084",
+    "geoId/0600562"
+  ]
+}

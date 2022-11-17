@@ -1,0 +1,920 @@
+{
+  "statVarSeries": {
+    "geoId/0606000": {
+      "data": {
+        "Count_CriminalActivities_Arson": {
+          "val": {
+            "2008": 28,
+            "2009": 21,
+            "2010": 25,
+            "2011": 25,
+            "2012": 15,
+            "2013": 16,
+            "2014": 15,
+            "2015": 22,
+            "2016": 24,
+            "2017": 30,
+            "2018": 31,
+            "2019": 17
+          },
+          "metadata": {
+            "importName": "FBIGovCrime",
+            "provenanceUrl": "http://www.fbi.gov/services/cjis/ucr",
+            "observationPeriod": "P1Y"
+          }
+        },
+        "Count_CriminalActivities_CombinedCrime": {
+          "val": {
+            "2008": 7517,
+            "2009": 7103,
+            "2010": 6501,
+            "2011": 5571,
+            "2012": 6198,
+            "2013": 5955,
+            "2014": 5548,
+            "2015": 6458,
+            "2016": 6046,
+            "2017": 6716,
+            "2018": 5998,
+            "2019": 6891
+          },
+          "metadata": {
+            "importName": "FBIGovCrime",
+            "provenanceUrl": "http://www.fbi.gov/services/cjis/ucr",
+            "observationPeriod": "P1Y"
+          }
+        },
+        "Count_CriminalActivities_PropertyCrime": {
+          "val": {
+            "2008": 6837,
+            "2009": 6467,
+            "2010": 5943,
+            "2011": 5064,
+            "2012": 5696,
+            "2013": 5377,
+            "2014": 5102,
+            "2015": 5906,
+            "2016": 5420,
+            "2017": 6020,
+            "2018": 5381,
+            "2019": 6256
+          },
+          "metadata": {
+            "importName": "FBIGovCrime",
+            "provenanceUrl": "http://www.fbi.gov/services/cjis/ucr",
+            "observationPeriod": "P1Y"
+          }
+        },
+        "Count_CriminalActivities_ViolentCrime": {
+          "val": {
+            "2008": 652,
+            "2009": 615,
+            "2010": 533,
+            "2011": 482,
+            "2012": 487,
+            "2013": 562,
+            "2014": 431,
+            "2015": 530,
+            "2016": 602,
+            "2017": 666,
+            "2018": 586,
+            "2019": 618
+          },
+          "metadata": {
+            "importName": "FBIGovCrime",
+            "provenanceUrl": "http://www.fbi.gov/services/cjis/ucr",
+            "observationPeriod": "P1Y"
+          }
+        },
+        "Count_CriminalIncidents_BiasMotivationDisabilityStatus_IsHateCrime": {
+          "val": {
+            "2004": 0,
+            "2005": 0,
+            "2006": 0,
+            "2007": 0,
+            "2009": 0,
+            "2010": 0,
+            "2011": 0,
+            "2012": 0,
+            "2013": 0,
+            "2014": 0,
+            "2015": 0,
+            "2016": 0,
+            "2017": 0,
+            "2018": 0,
+            "2020": 0
+          },
+          "metadata": {
+            "importName": "FBIHateCrimePublications",
+            "provenanceUrl": "https://www.fbi.gov/services/cjis/ucr/hate-crime",
+            "observationPeriod": "P1Y"
+          }
+        },
+        "Count_CriminalIncidents_BiasMotivationEthnicity_IsHateCrime": {
+          "val": {
+            "2004": 2,
+            "2005": 0,
+            "2006": 0,
+            "2007": 1,
+            "2009": 1,
+            "2010": 0,
+            "2011": 0,
+            "2012": 2,
+            "2013": 1,
+            "2014": 1
+          },
+          "metadata": {
+            "importName": "FBIHateCrimePublications",
+            "provenanceUrl": "https://www.fbi.gov/services/cjis/ucr/hate-crime",
+            "observationPeriod": "P1Y"
+          }
+        },
+        "Count_CriminalIncidents_BiasMotivationGender_IsHateCrime": {
+          "val": {
+            "2013": 0,
+            "2014": 0,
+            "2015": 0,
+            "2016": 0,
+            "2017": 0,
+            "2018": 0,
+            "2020": 0
+          },
+          "metadata": {
+            "importName": "FBIHateCrimePublications",
+            "provenanceUrl": "https://www.fbi.gov/services/cjis/ucr/hate-crime",
+            "observationPeriod": "P1Y"
+          }
+        },
+        "Count_CriminalIncidents_BiasMotivationRace_IsHateCrime": {
+          "val": {
+            "2004": 3,
+            "2005": 3,
+            "2006": 3,
+            "2007": 1,
+            "2009": 0,
+            "2010": 0,
+            "2011": 0,
+            "2012": 3,
+            "2013": 7,
+            "2014": 0
+          },
+          "metadata": {
+            "importName": "FBIHateCrimePublications",
+            "provenanceUrl": "https://www.fbi.gov/services/cjis/ucr/hate-crime",
+            "observationPeriod": "P1Y"
+          }
+        },
+        "Count_CriminalIncidents_BiasMotivationReligion_IsHateCrime": {
+          "val": {
+            "2004": 0,
+            "2005": 1,
+            "2006": 4,
+            "2007": 0,
+            "2009": 0,
+            "2010": 0,
+            "2011": 2,
+            "2012": 2,
+            "2013": 1,
+            "2014": 2,
+            "2015": 1,
+            "2016": 2,
+            "2017": 4,
+            "2018": 5,
+            "2020": 2
+          },
+          "metadata": {
+            "importName": "FBIHateCrimePublications",
+            "provenanceUrl": "https://www.fbi.gov/services/cjis/ucr/hate-crime",
+            "observationPeriod": "P1Y"
+          }
+        },
+        "Count_CriminalIncidents_BiasMotivationSexualOrientation_IsHateCrime": {
+          "val": {
+            "2004": 4,
+            "2005": 4,
+            "2006": 3,
+            "2007": 1,
+            "2009": 0,
+            "2010": 1,
+            "2011": 2,
+            "2012": 1,
+            "2013": 4,
+            "2014": 0,
+            "2015": 1,
+            "2016": 2,
+            "2017": 6,
+            "2018": 4,
+            "2020": 1
+          },
+          "metadata": {
+            "importName": "FBIHateCrimePublications",
+            "provenanceUrl": "https://www.fbi.gov/services/cjis/ucr/hate-crime",
+            "observationPeriod": "P1Y"
+          }
+        },
+        "Count_CriminalIncidents_IsHateCrime": {
+          "val": {
+            "2007-03": 2,
+            "2007-06": 1,
+            "2007-09": 0,
+            "2007-12": 0,
+            "2008-03": 0,
+            "2008-06": 0,
+            "2008-09": 0,
+            "2008-12": 0,
+            "2009-03": 0,
+            "2009-06": 0,
+            "2009-09": 0,
+            "2009-12": 1,
+            "2010-03": 1,
+            "2010-06": 0,
+            "2010-09": 0,
+            "2010-12": 0,
+            "2011-03": 2,
+            "2011-06": 1,
+            "2011-09": 1,
+            "2011-12": 0,
+            "2012-03": 1,
+            "2012-06": 1,
+            "2012-09": 5,
+            "2012-12": 1,
+            "2013-03": 6,
+            "2013-06": 2,
+            "2013-09": 4,
+            "2013-12": 1,
+            "2014-03": 2,
+            "2014-06": 0,
+            "2014-09": 1,
+            "2014-12": 0,
+            "2015-03": 0,
+            "2015-06": 1,
+            "2015-09": 0,
+            "2015-12": 3,
+            "2016-03": 5,
+            "2016-06": 3,
+            "2016-09": 2,
+            "2016-12": 3,
+            "2017-03": 7,
+            "2017-06": 6,
+            "2017-09": 4,
+            "2017-12": 6,
+            "2018-03": 5,
+            "2018-06": 3,
+            "2018-09": 5,
+            "2018-12": 4,
+            "2020-03": 1,
+            "2020-06": 0,
+            "2020-09": 3,
+            "2020-12": 3
+          },
+          "metadata": {
+            "importName": "FBIHateCrimePublications",
+            "provenanceUrl": "https://www.fbi.gov/services/cjis/ucr/hate-crime",
+            "observationPeriod": "P3M"
+          }
+        },
+        "Count_Person": {
+          "val": {
+            "1990": 102847,
+            "1991": 103137,
+            "1992": 102952,
+            "1993": 104636,
+            "1994": 104816,
+            "1995": 105422,
+            "1996": 105407,
+            "1997": 106886,
+            "1998": 108070,
+            "1999": 108319,
+            "2000": 102936,
+            "2001": 103714,
+            "2002": 102990,
+            "2003": 101575,
+            "2004": 100819,
+            "2005": 100200,
+            "2006": 100579,
+            "2007": 100667,
+            "2008": 101380,
+            "2009": 103070,
+            "2010": 112938,
+            "2011": 114477,
+            "2012": 115819,
+            "2013": 117373,
+            "2014": 119348,
+            "2015": 121175,
+            "2016": 122175,
+            "2017": 123084,
+            "2018": 123541,
+            "2019": 123757,
+            "2020": 119463,
+            "2021": 117145
+          },
+          "metadata": {
+            "importName": "USCensusPEP_Annual_Population",
+            "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+            "measurementMethod": "CensusPEPSurvey",
+            "observationPeriod": "P1Y"
+          }
+        }
+      }
+    },
+    "geoId/2836000": {
+      "data": {
+        "Count_CriminalActivities_Arson": {
+          "val": {
+            "2008": 81,
+            "2009": 113,
+            "2010": 83,
+            "2011": 86,
+            "2012": 63,
+            "2013": 124,
+            "2014": 241,
+            "2015": 83,
+            "2016": 95,
+            "2017": 75,
+            "2018": 74,
+            "2019": 82
+          },
+          "metadata": {
+            "importName": "FBIGovCrime",
+            "provenanceUrl": "http://www.fbi.gov/services/cjis/ucr",
+            "observationPeriod": "P1Y"
+          }
+        },
+        "Count_CriminalActivities_CombinedCrime": {
+          "val": {
+            "2008": 14768,
+            "2009": 14810,
+            "2010": 15051,
+            "2011": 14517,
+            "2012": 13299,
+            "2013": 12039,
+            "2014": 12216,
+            "2015": 10275,
+            "2016": 9430,
+            "2017": 8717,
+            "2018": 9081,
+            "2019": 8722
+          },
+          "metadata": {
+            "importName": "FBIGovCrime",
+            "provenanceUrl": "http://www.fbi.gov/services/cjis/ucr",
+            "observationPeriod": "P1Y"
+          }
+        },
+        "Count_CriminalActivities_PropertyCrime": {
+          "val": {
+            "2008": 13035,
+            "2009": 13182,
+            "2010": 13250,
+            "2011": 12811,
+            "2012": 11568,
+            "2013": 10284,
+            "2014": 10382,
+            "2015": 8621,
+            "2016": 7884,
+            "2017": 7449,
+            "2018": 7855,
+            "2019": 7411
+          },
+          "metadata": {
+            "importName": "FBIGovCrime",
+            "provenanceUrl": "http://www.fbi.gov/services/cjis/ucr",
+            "observationPeriod": "P1Y"
+          }
+        },
+        "Count_CriminalActivities_ViolentCrime": {
+          "val": {
+            "2008": 1652,
+            "2009": 1515,
+            "2010": 1718,
+            "2011": 1620,
+            "2012": 1668,
+            "2013": 1631,
+            "2014": 1593,
+            "2015": 1571,
+            "2016": 1451,
+            "2017": 1193,
+            "2018": 1152,
+            "2019": 1229
+          },
+          "metadata": {
+            "importName": "FBIGovCrime",
+            "provenanceUrl": "http://www.fbi.gov/services/cjis/ucr",
+            "observationPeriod": "P1Y"
+          }
+        },
+        "Count_CriminalIncidents_IsHateCrime": {
+          "val": {
+            "2013-12": 0,
+            "2014-03": 0
+          },
+          "metadata": {
+            "importName": "FBIHateCrimePublications",
+            "provenanceUrl": "https://www.fbi.gov/services/cjis/ucr/hate-crime",
+            "observationPeriod": "P3M"
+          }
+        },
+        "Count_Person": {
+          "val": {
+            "1990": 196575,
+            "1991": 196526,
+            "1992": 195371,
+            "1993": 194282,
+            "1994": 190655,
+            "1995": 188284,
+            "1996": 186656,
+            "1997": 184294,
+            "1998": 182919,
+            "1999": 180664,
+            "2000": 186375,
+            "2001": 184343,
+            "2002": 182710,
+            "2003": 181918,
+            "2004": 181834,
+            "2005": 180520,
+            "2006": 180821,
+            "2007": 178426,
+            "2008": 176409,
+            "2009": 176259,
+            "2010": 173703,
+            "2011": 175166,
+            "2012": 174853,
+            "2013": 172970,
+            "2014": 172065,
+            "2015": 170970,
+            "2016": 169074,
+            "2017": 166864,
+            "2018": 163784,
+            "2019": 160658,
+            "2020": 152846,
+            "2021": 149761
+          },
+          "metadata": {
+            "importName": "USCensusPEP_Annual_Population",
+            "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+            "measurementMethod": "CensusPEPSurvey",
+            "observationPeriod": "P1Y"
+          }
+        }
+      }
+    },
+    "zip/94618": {
+      "data": {
+        "Count_Person": {
+          "val": {
+            "2011": 16753,
+            "2012": 17074,
+            "2013": 17226,
+            "2014": 17007,
+            "2015": 16884,
+            "2016": 16620,
+            "2017": 16566,
+            "2018": 17041,
+            "2019": 17252,
+            "2020": 17110
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        }
+      }
+    }
+  },
+  "allChildPlaces": {
+    "CensusZipCodeTabulationArea": {
+      "places": [
+        {
+          "dcid": "zip/94611",
+          "name": "94611",
+          "pop": 39042
+        },
+        {
+          "dcid": "zip/94610",
+          "name": "94610",
+          "pop": 31553
+        },
+        {
+          "dcid": "zip/94618",
+          "name": "94618",
+          "pop": 17110
+        }
+      ]
+    }
+  },
+  "latestPopulation": {
+    "country/USA": {
+      "date": "2021",
+      "value": 331893745,
+      "metadata": {
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
+      }
+    },
+    "geoId/06": {
+      "date": "2021",
+      "value": 39237836,
+      "metadata": {
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
+      }
+    },
+    "geoId/06001": {
+      "date": "2021",
+      "value": 1648556,
+      "metadata": {
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
+      }
+    },
+    "geoId/0600562": {
+      "date": "2021",
+      "value": 76362,
+      "metadata": {
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
+      }
+    },
+    "geoId/0606000": {
+      "date": "2021",
+      "value": 117145,
+      "metadata": {
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
+      }
+    },
+    "geoId/0653000": {
+      "date": "2021",
+      "value": 433823,
+      "metadata": {
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
+      }
+    },
+    "geoId/0656938": {
+      "date": "2021",
+      "value": 11107,
+      "metadata": {
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
+      }
+    },
+    "geoId/0660620": {
+      "date": "2021",
+      "value": 115639,
+      "metadata": {
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
+      }
+    },
+    "geoId/0668084": {
+      "date": "2021",
+      "value": 88868,
+      "metadata": {
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
+      }
+    },
+    "geoId/0820000": {
+      "date": "2021",
+      "value": 711463,
+      "metadata": {
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
+      }
+    },
+    "geoId/2836000": {
+      "date": "2021",
+      "value": 149761,
+      "metadata": {
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
+      }
+    },
+    "geoId/4055000": {
+      "date": "2021",
+      "value": 687725,
+      "metadata": {
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
+      }
+    },
+    "geoId/4261000": {
+      "date": "2021",
+      "value": 300431,
+      "metadata": {
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
+      }
+    },
+    "geoId/4752006": {
+      "date": "2021",
+      "value": 678851,
+      "metadata": {
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
+      }
+    },
+    "zip/94610": {
+      "date": "2020",
+      "value": 31553,
+      "metadata": {
+        "importName": "CensusACS5YearSurvey",
+        "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+        "measurementMethod": "CensusACS5yrSurvey"
+      }
+    },
+    "zip/94611": {
+      "date": "2020",
+      "value": 39042,
+      "metadata": {
+        "importName": "CensusACS5YearSurvey",
+        "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+        "measurementMethod": "CensusACS5yrSurvey"
+      }
+    },
+    "zip/94618": {
+      "date": "2020",
+      "value": 17110,
+      "metadata": {
+        "importName": "CensusACS5YearSurvey",
+        "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+        "measurementMethod": "CensusACS5yrSurvey"
+      }
+    }
+  },
+  "validCategories": {
+    "country/USA": {
+      "category": [
+        "Crime",
+        "Demographics",
+        "Economics",
+        "Education",
+        "Energy",
+        "Environment",
+        "Equity",
+        "Health",
+        "Housing",
+        "Overview"
+      ]
+    },
+    "geoId/06": {
+      "category": [
+        "Crime",
+        "Demographics",
+        "Economics",
+        "Education",
+        "Energy",
+        "Environment",
+        "Equity",
+        "Health",
+        "Housing",
+        "Overview"
+      ]
+    },
+    "geoId/06001": {
+      "category": [
+        "Demographics",
+        "Economics",
+        "Education",
+        "Environment",
+        "Equity",
+        "Health",
+        "Housing",
+        "Overview"
+      ]
+    },
+    "geoId/0600562": {
+      "category": [
+        "Crime",
+        "Demographics",
+        "Economics",
+        "Education",
+        "Environment",
+        "Equity",
+        "Health",
+        "Housing",
+        "Overview"
+      ]
+    },
+    "geoId/0606000": {
+      "category": [
+        "Crime",
+        "Demographics",
+        "Economics",
+        "Education",
+        "Environment",
+        "Equity",
+        "Health",
+        "Housing",
+        "Overview"
+      ]
+    },
+    "geoId/0653000": {
+      "category": [
+        "Crime",
+        "Demographics",
+        "Economics",
+        "Education",
+        "Environment",
+        "Equity",
+        "Health",
+        "Housing",
+        "Overview"
+      ]
+    },
+    "geoId/0656938": {
+      "category": [
+        "Crime",
+        "Demographics",
+        "Economics",
+        "Education",
+        "Environment",
+        "Equity",
+        "Health",
+        "Housing",
+        "Overview"
+      ]
+    },
+    "geoId/0660620": {
+      "category": [
+        "Crime",
+        "Demographics",
+        "Economics",
+        "Education",
+        "Environment",
+        "Equity",
+        "Health",
+        "Housing",
+        "Overview"
+      ]
+    },
+    "geoId/0668084": {
+      "category": [
+        "Crime",
+        "Demographics",
+        "Economics",
+        "Education",
+        "Environment",
+        "Equity",
+        "Health",
+        "Housing",
+        "Overview"
+      ]
+    },
+    "geoId/0820000": {
+      "category": [
+        "Crime",
+        "Demographics",
+        "Economics",
+        "Education",
+        "Environment",
+        "Equity",
+        "Health",
+        "Housing",
+        "Overview"
+      ]
+    },
+    "geoId/2836000": {
+      "category": [
+        "Crime",
+        "Demographics",
+        "Economics",
+        "Education",
+        "Environment",
+        "Equity",
+        "Health",
+        "Housing",
+        "Overview"
+      ]
+    },
+    "geoId/4055000": {
+      "category": [
+        "Crime",
+        "Demographics",
+        "Economics",
+        "Education",
+        "Environment",
+        "Equity",
+        "Health",
+        "Housing",
+        "Overview"
+      ]
+    },
+    "geoId/4261000": {
+      "category": [
+        "Crime",
+        "Demographics",
+        "Economics",
+        "Education",
+        "Environment",
+        "Equity",
+        "Health",
+        "Housing",
+        "Overview"
+      ]
+    },
+    "geoId/4752006": {
+      "category": [
+        "Crime",
+        "Demographics",
+        "Economics",
+        "Education",
+        "Environment",
+        "Equity",
+        "Health",
+        "Housing",
+        "Overview"
+      ]
+    },
+    "northamerica": {},
+    "zip/94610": {
+      "category": [
+        "Demographics",
+        "Economics",
+        "Education",
+        "Equity",
+        "Health",
+        "Housing",
+        "Overview"
+      ]
+    },
+    "zip/94611": {
+      "category": [
+        "Demographics",
+        "Economics",
+        "Education",
+        "Equity",
+        "Health",
+        "Housing",
+        "Overview"
+      ]
+    },
+    "zip/94618": {
+      "category": [
+        "Demographics",
+        "Economics",
+        "Education",
+        "Equity",
+        "Health",
+        "Housing",
+        "Overview"
+      ]
+    }
+  },
+  "childPlacesType": "CensusZipCodeTabulationArea",
+  "childPlaces": [
+    "zip/94611",
+    "zip/94610",
+    "zip/94618"
+  ],
+  "parentPlaces": [
+    "geoId/06001",
+    "geoId/06",
+    "country/USA",
+    "northamerica"
+  ],
+  "similarPlaces": [
+    "geoId/4752006",
+    "geoId/4261000",
+    "geoId/0820000",
+    "geoId/2836000",
+    "geoId/4055000"
+  ],
+  "nearbyPlaces": [
+    "geoId/0653000",
+    "geoId/0606000",
+    "geoId/0660620",
+    "geoId/0668084",
+    "geoId/0600562"
+  ]
+}

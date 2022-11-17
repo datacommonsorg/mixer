@@ -1,0 +1,1006 @@
+{
+  "statVarSeries": {
+    "geoId/0606000": {
+      "data": {
+        "Count_Person": {
+          "val": {
+            "1990": 102847,
+            "1991": 103137,
+            "1992": 102952,
+            "1993": 104636,
+            "1994": 104816,
+            "1995": 105422,
+            "1996": 105407,
+            "1997": 106886,
+            "1998": 108070,
+            "1999": 108319,
+            "2000": 102936,
+            "2001": 103714,
+            "2002": 102990,
+            "2003": 101575,
+            "2004": 100819,
+            "2005": 100200,
+            "2006": 100579,
+            "2007": 100667,
+            "2008": 101380,
+            "2009": 103070,
+            "2010": 112938,
+            "2011": 114477,
+            "2012": 115819,
+            "2013": 117373,
+            "2014": 119348,
+            "2015": 121175,
+            "2016": 122175,
+            "2017": 123084,
+            "2018": 123541,
+            "2019": 123757,
+            "2020": 119463,
+            "2021": 117145
+          },
+          "metadata": {
+            "importName": "USCensusPEP_Annual_Population",
+            "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+            "measurementMethod": "CensusPEPSurvey",
+            "observationPeriod": "P1Y"
+          }
+        },
+        "Count_Person_25OrMoreYears": {
+          "val": {
+            "2011": 69074,
+            "2012": 69459,
+            "2013": 71269,
+            "2014": 71341,
+            "2015": 72998,
+            "2016": 73944,
+            "2017": 74865,
+            "2018": 75035,
+            "2019": 76120,
+            "2020": 78378
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_3OrMoreYears": {
+          "val": {
+            "2011": 108308,
+            "2012": 109972,
+            "2013": 111358,
+            "2014": 113076,
+            "2015": 114929,
+            "2016": 115978,
+            "2017": 117435,
+            "2018": 118161,
+            "2019": 118958,
+            "2020": 120624
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_EducationalAttainmentBachelorsDegree": {
+          "val": {
+            "2012": 21934,
+            "2013": 22991,
+            "2014": 23169,
+            "2015": 23980,
+            "2016": 24640,
+            "2017": 25242,
+            "2018": 25298,
+            "2019": 25851,
+            "2020": 26376
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_EducationalAttainmentDoctorateDegree": {
+          "val": {
+            "2012": 6295,
+            "2013": 6329,
+            "2014": 6071,
+            "2015": 6588,
+            "2016": 6652,
+            "2017": 6994,
+            "2018": 7215,
+            "2019": 7786,
+            "2020": 7669
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_EducationalAttainmentMastersDegree": {
+          "val": {
+            "2012": 15552,
+            "2013": 15850,
+            "2014": 16310,
+            "2015": 16563,
+            "2016": 16946,
+            "2017": 16852,
+            "2018": 17092,
+            "2019": 17325,
+            "2020": 17863
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_EducationalAttainmentNoSchoolingCompleted": {
+          "val": {
+            "2012": 446,
+            "2013": 569,
+            "2014": 522,
+            "2015": 589,
+            "2016": 642,
+            "2017": 501,
+            "2018": 434,
+            "2019": 441,
+            "2020": 559
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_EducationalAttainmentRegularHighSchoolDiploma": {
+          "val": {
+            "2012": 4718,
+            "2013": 4904,
+            "2014": 5046,
+            "2015": 4623,
+            "2016": 4350,
+            "2017": 4220,
+            "2018": 4131,
+            "2019": 3954,
+            "2020": 4970
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_EnrolledInSchool": {
+          "val": {
+            "2011": 44930,
+            "2012": 46621,
+            "2013": 45665,
+            "2014": 46762,
+            "2015": 46857,
+            "2016": 46341,
+            "2017": 46749,
+            "2018": 47572,
+            "2019": 47243,
+            "2020": 45378
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_NotEnrolledInSchool": {
+          "val": {
+            "2011": 63378,
+            "2012": 63351,
+            "2013": 65693,
+            "2014": 66314,
+            "2015": 68072,
+            "2016": 69637,
+            "2017": 70686,
+            "2018": 70589,
+            "2019": 71715,
+            "2020": 75246
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        }
+      }
+    },
+    "geoId/2836000": {
+      "data": {
+        "Count_Person": {
+          "val": {
+            "1990": 196575,
+            "1991": 196526,
+            "1992": 195371,
+            "1993": 194282,
+            "1994": 190655,
+            "1995": 188284,
+            "1996": 186656,
+            "1997": 184294,
+            "1998": 182919,
+            "1999": 180664,
+            "2000": 186375,
+            "2001": 184343,
+            "2002": 182710,
+            "2003": 181918,
+            "2004": 181834,
+            "2005": 180520,
+            "2006": 180821,
+            "2007": 178426,
+            "2008": 176409,
+            "2009": 176259,
+            "2010": 173703,
+            "2011": 175166,
+            "2012": 174853,
+            "2013": 172970,
+            "2014": 172065,
+            "2015": 170970,
+            "2016": 169074,
+            "2017": 166864,
+            "2018": 163784,
+            "2019": 160658,
+            "2020": 152846,
+            "2021": 149761
+          },
+          "metadata": {
+            "importName": "USCensusPEP_Annual_Population",
+            "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+            "measurementMethod": "CensusPEPSurvey",
+            "observationPeriod": "P1Y"
+          }
+        },
+        "Count_Person_25OrMoreYears": {
+          "val": {
+            "2011": 104615,
+            "2012": 104668,
+            "2013": 105467,
+            "2014": 104982,
+            "2015": 105691,
+            "2016": 105726,
+            "2017": 105551,
+            "2018": 104813,
+            "2019": 104587,
+            "2020": 104107
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_3OrMoreYears": {
+          "val": {
+            "2011": 166405,
+            "2012": 166355,
+            "2013": 166298,
+            "2014": 166273,
+            "2015": 166042,
+            "2016": 164954,
+            "2017": 163506,
+            "2018": 161968,
+            "2019": 159595,
+            "2020": 157312
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_EducationalAttainmentBachelorsDegree": {
+          "val": {
+            "2012": 16382,
+            "2013": 16558,
+            "2014": 16289,
+            "2015": 16141,
+            "2016": 16333,
+            "2017": 16346,
+            "2018": 16588,
+            "2019": 16583,
+            "2020": 16551
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_EducationalAttainmentDoctorateDegree": {
+          "val": {
+            "2012": 1393,
+            "2013": 1324,
+            "2014": 1474,
+            "2015": 1661,
+            "2016": 1606,
+            "2017": 1420,
+            "2018": 1230,
+            "2019": 1225,
+            "2020": 1545
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_EducationalAttainmentMastersDegree": {
+          "val": {
+            "2012": 6929,
+            "2013": 6889,
+            "2014": 6879,
+            "2015": 7235,
+            "2016": 7632,
+            "2017": 8000,
+            "2018": 8181,
+            "2019": 7945,
+            "2020": 9059
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_EducationalAttainmentNoSchoolingCompleted": {
+          "val": {
+            "2012": 1327,
+            "2013": 1443,
+            "2014": 1382,
+            "2015": 1539,
+            "2016": 1473,
+            "2017": 1430,
+            "2018": 1267,
+            "2019": 1218,
+            "2020": 1227
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_EducationalAttainmentRegularHighSchoolDiploma": {
+          "val": {
+            "2012": 22163,
+            "2013": 22658,
+            "2014": 21657,
+            "2015": 22063,
+            "2016": 21834,
+            "2017": 22672,
+            "2018": 22021,
+            "2019": 22536,
+            "2020": 21523
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_EnrolledInSchool": {
+          "val": {
+            "2011": 56102,
+            "2012": 56337,
+            "2013": 55928,
+            "2014": 56725,
+            "2015": 56064,
+            "2016": 54420,
+            "2017": 52494,
+            "2018": 51290,
+            "2019": 48782,
+            "2020": 46384
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_NotEnrolledInSchool": {
+          "val": {
+            "2011": 110303,
+            "2012": 110018,
+            "2013": 110370,
+            "2014": 109548,
+            "2015": 109978,
+            "2016": 110534,
+            "2017": 111012,
+            "2018": 110678,
+            "2019": 110813,
+            "2020": 110928
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        }
+      }
+    },
+    "zip/94618": {
+      "data": {
+        "Count_Person_25OrMoreYears": {
+          "val": {
+            "2011": 12831,
+            "2012": 13160,
+            "2013": 13445,
+            "2014": 13242,
+            "2015": 13102,
+            "2016": 12726,
+            "2017": 12675,
+            "2018": 13011,
+            "2019": 13075,
+            "2020": 13033
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_3OrMoreYears": {
+          "val": {
+            "2011": 16152,
+            "2012": 16409,
+            "2013": 16629,
+            "2014": 16421,
+            "2015": 16280,
+            "2016": 16088,
+            "2017": 16131,
+            "2018": 16444,
+            "2019": 16722,
+            "2020": 16686
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_EducationalAttainmentBachelorsDegree": {
+          "val": {
+            "2012": 4934,
+            "2013": 4963,
+            "2014": 4719,
+            "2015": 4660,
+            "2016": 4585,
+            "2017": 4367,
+            "2018": 4790,
+            "2019": 4915,
+            "2020": 5047
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_EducationalAttainmentDoctorateDegree": {
+          "val": {
+            "2012": 1107,
+            "2013": 1118,
+            "2014": 1135,
+            "2015": 984,
+            "2016": 785,
+            "2017": 756,
+            "2018": 922,
+            "2019": 946,
+            "2020": 934
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_EducationalAttainmentMastersDegree": {
+          "val": {
+            "2012": 3601,
+            "2013": 3474,
+            "2014": 3351,
+            "2015": 3315,
+            "2016": 3324,
+            "2017": 3249,
+            "2018": 3128,
+            "2019": 3250,
+            "2020": 3476
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_EducationalAttainmentNoSchoolingCompleted": {
+          "val": {
+            "2012": 14,
+            "2013": 44,
+            "2014": 73,
+            "2015": 70,
+            "2016": 51,
+            "2017": 48,
+            "2018": 21,
+            "2019": 6,
+            "2020": 6
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_EducationalAttainmentRegularHighSchoolDiploma": {
+          "val": {
+            "2012": 623,
+            "2013": 722,
+            "2014": 746,
+            "2015": 657,
+            "2016": 588,
+            "2017": 613,
+            "2018": 541,
+            "2019": 555,
+            "2020": 507
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_EnrolledInSchool": {
+          "val": {
+            "2011": 3742,
+            "2012": 3811,
+            "2013": 3964,
+            "2014": 3843,
+            "2015": 3845,
+            "2016": 3890,
+            "2017": 3937,
+            "2018": 3739,
+            "2019": 4048,
+            "2020": 4164
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_NotEnrolledInSchool": {
+          "val": {
+            "2011": 12410,
+            "2012": 12598,
+            "2013": 12665,
+            "2014": 12578,
+            "2015": 12435,
+            "2016": 12198,
+            "2017": 12194,
+            "2018": 12705,
+            "2019": 12674,
+            "2020": 12522
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        }
+      }
+    }
+  },
+  "allChildPlaces": {
+    "CensusZipCodeTabulationArea": {
+      "places": [
+        {
+          "dcid": "zip/94611",
+          "name": "94611",
+          "pop": 39042
+        },
+        {
+          "dcid": "zip/94610",
+          "name": "94610",
+          "pop": 31553
+        },
+        {
+          "dcid": "zip/94618",
+          "name": "94618",
+          "pop": 17110
+        }
+      ]
+    }
+  },
+  "latestPopulation": {
+    "country/USA": {
+      "date": "2021",
+      "value": 331893745,
+      "metadata": {
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
+      }
+    },
+    "geoId/06": {
+      "date": "2021",
+      "value": 39237836,
+      "metadata": {
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
+      }
+    },
+    "geoId/06001": {
+      "date": "2021",
+      "value": 1648556,
+      "metadata": {
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
+      }
+    },
+    "geoId/0600562": {
+      "date": "2021",
+      "value": 76362,
+      "metadata": {
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
+      }
+    },
+    "geoId/0606000": {
+      "date": "2021",
+      "value": 117145,
+      "metadata": {
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
+      }
+    },
+    "geoId/0653000": {
+      "date": "2021",
+      "value": 433823,
+      "metadata": {
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
+      }
+    },
+    "geoId/0656938": {
+      "date": "2021",
+      "value": 11107,
+      "metadata": {
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
+      }
+    },
+    "geoId/0660620": {
+      "date": "2021",
+      "value": 115639,
+      "metadata": {
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
+      }
+    },
+    "geoId/0668084": {
+      "date": "2021",
+      "value": 88868,
+      "metadata": {
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
+      }
+    },
+    "geoId/0820000": {
+      "date": "2021",
+      "value": 711463,
+      "metadata": {
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
+      }
+    },
+    "geoId/2836000": {
+      "date": "2021",
+      "value": 149761,
+      "metadata": {
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
+      }
+    },
+    "geoId/4055000": {
+      "date": "2021",
+      "value": 687725,
+      "metadata": {
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
+      }
+    },
+    "geoId/4261000": {
+      "date": "2021",
+      "value": 300431,
+      "metadata": {
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
+      }
+    },
+    "geoId/4752006": {
+      "date": "2021",
+      "value": 678851,
+      "metadata": {
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
+      }
+    }
+  },
+  "validCategories": {
+    "country/USA": {
+      "category": [
+        "Crime",
+        "Demographics",
+        "Economics",
+        "Education",
+        "Energy",
+        "Environment",
+        "Equity",
+        "Health",
+        "Housing",
+        "Overview"
+      ]
+    },
+    "geoId/06": {
+      "category": [
+        "Crime",
+        "Demographics",
+        "Economics",
+        "Education",
+        "Energy",
+        "Environment",
+        "Equity",
+        "Health",
+        "Housing",
+        "Overview"
+      ]
+    },
+    "geoId/06001": {
+      "category": [
+        "Demographics",
+        "Economics",
+        "Education",
+        "Environment",
+        "Equity",
+        "Health",
+        "Housing",
+        "Overview"
+      ]
+    },
+    "geoId/0600562": {
+      "category": [
+        "Crime",
+        "Demographics",
+        "Economics",
+        "Education",
+        "Environment",
+        "Equity",
+        "Health",
+        "Housing",
+        "Overview"
+      ]
+    },
+    "geoId/0606000": {
+      "category": [
+        "Crime",
+        "Demographics",
+        "Economics",
+        "Education",
+        "Environment",
+        "Equity",
+        "Health",
+        "Housing",
+        "Overview"
+      ]
+    },
+    "geoId/0653000": {
+      "category": [
+        "Crime",
+        "Demographics",
+        "Economics",
+        "Education",
+        "Environment",
+        "Equity",
+        "Health",
+        "Housing",
+        "Overview"
+      ]
+    },
+    "geoId/0656938": {
+      "category": [
+        "Crime",
+        "Demographics",
+        "Economics",
+        "Education",
+        "Environment",
+        "Equity",
+        "Health",
+        "Housing",
+        "Overview"
+      ]
+    },
+    "geoId/0660620": {
+      "category": [
+        "Crime",
+        "Demographics",
+        "Economics",
+        "Education",
+        "Environment",
+        "Equity",
+        "Health",
+        "Housing",
+        "Overview"
+      ]
+    },
+    "geoId/0668084": {
+      "category": [
+        "Crime",
+        "Demographics",
+        "Economics",
+        "Education",
+        "Environment",
+        "Equity",
+        "Health",
+        "Housing",
+        "Overview"
+      ]
+    },
+    "geoId/0820000": {
+      "category": [
+        "Crime",
+        "Demographics",
+        "Economics",
+        "Education",
+        "Environment",
+        "Equity",
+        "Health",
+        "Housing",
+        "Overview"
+      ]
+    },
+    "geoId/2836000": {
+      "category": [
+        "Crime",
+        "Demographics",
+        "Economics",
+        "Education",
+        "Environment",
+        "Equity",
+        "Health",
+        "Housing",
+        "Overview"
+      ]
+    },
+    "geoId/4055000": {
+      "category": [
+        "Crime",
+        "Demographics",
+        "Economics",
+        "Education",
+        "Environment",
+        "Equity",
+        "Health",
+        "Housing",
+        "Overview"
+      ]
+    },
+    "geoId/4261000": {
+      "category": [
+        "Crime",
+        "Demographics",
+        "Economics",
+        "Education",
+        "Environment",
+        "Equity",
+        "Health",
+        "Housing",
+        "Overview"
+      ]
+    },
+    "geoId/4752006": {
+      "category": [
+        "Crime",
+        "Demographics",
+        "Economics",
+        "Education",
+        "Environment",
+        "Equity",
+        "Health",
+        "Housing",
+        "Overview"
+      ]
+    },
+    "northamerica": {},
+    "zip/94610": {
+      "category": [
+        "Demographics",
+        "Economics",
+        "Education",
+        "Equity",
+        "Health",
+        "Housing",
+        "Overview"
+      ]
+    },
+    "zip/94611": {
+      "category": [
+        "Demographics",
+        "Economics",
+        "Education",
+        "Equity",
+        "Health",
+        "Housing",
+        "Overview"
+      ]
+    },
+    "zip/94618": {
+      "category": [
+        "Demographics",
+        "Economics",
+        "Education",
+        "Equity",
+        "Health",
+        "Housing",
+        "Overview"
+      ]
+    }
+  },
+  "childPlacesType": "CensusZipCodeTabulationArea",
+  "childPlaces": [
+    "zip/94611",
+    "zip/94610",
+    "zip/94618"
+  ],
+  "parentPlaces": [
+    "geoId/06001",
+    "geoId/06",
+    "country/USA",
+    "northamerica"
+  ],
+  "similarPlaces": [
+    "geoId/4752006",
+    "geoId/4261000",
+    "geoId/0820000",
+    "geoId/2836000",
+    "geoId/4055000"
+  ],
+  "nearbyPlaces": [
+    "geoId/0653000",
+    "geoId/0606000",
+    "geoId/0660620",
+    "geoId/0668084",
+    "geoId/0600562"
+  ]
+}
