@@ -35,8 +35,11 @@ func PlacePage(
 	if !util.CheckValidDCIDs([]string{node}) {
 		return nil, status.Errorf(codes.InvalidArgument, "Invalid entity")
 	}
-	seed := in.GetSeed()
 	category := in.GetCategory()
+	if category == "" {
+		return nil, status.Error(codes.InvalidArgument, "category should not be empty")
+	}
+	seed := in.GetSeed()
 	newStatVars := in.GetNewStatVars()
 	return placepage.GetPlacePageDataHelper(ctx, node, newStatVars, seed, store, category)
 }

@@ -222,12 +222,8 @@ func fetchBtData(
 	error,
 ) {
 	// Fetch place page cache data in parallel.
-	action := [][]string{places}
-	prefix := bigtable.BtPlacePagePrefix
-	if category != "" {
-		action = [][]string{places, {category}}
-		prefix = bigtable.BtPlacePageCategoricalPrefix
-	}
+	action := [][]string{places, {category}}
+	prefix := bigtable.BtPlacePageCategoricalPrefix
 	btDataList, err := bigtable.Read(
 		ctx,
 		store.BtGroup,
