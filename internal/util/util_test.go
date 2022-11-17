@@ -103,7 +103,7 @@ func TestSample(t *testing.T) {
 		strategy *SamplingStrategy
 	}{
 		{
-			&pb.GetPlacePageDataResponse{
+			&pb.PlacePageResponse{
 				ChildPlacesType: "Country",
 				ChildPlaces: []string{
 					"geoId/12345",
@@ -147,7 +147,7 @@ func TestSample(t *testing.T) {
 					},
 				},
 			},
-			&pb.GetPlacePageDataResponse{
+			&pb.PlacePageResponse{
 				ChildPlacesType: "Country",
 				ChildPlaces: []string{
 					"geoId/12345",

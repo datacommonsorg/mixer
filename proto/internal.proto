@@ -27,64 +27,8 @@ syntax = "proto3";
 option go_package = "./proto";
 package datacommons;
 
-import "stat.proto";
-
-message Place {
-  string dcid = 1;
-  string name = 2;
-  int32 pop = 3;
-}
-
-message Places { repeated Place places = 1; }
-
-// Request to get all data in place page.
-message GetPlacePageDataRequest {
-  // The dcid of the place.
-  string place = 1;
-  // A list of additional stat vars need to be fetched in addition to the
-  // data in cache. This is to be used in local development, where new chart is
-  // added to chart config but data is not added to cache (delay from cache
-  // build).
-  repeated string new_stat_vars = 4;
-  // Seed value for random selection. Used by test to get deterministic result.
-  int64 seed = 3;
-
-  reserved 2;
-}
-
-// Response to get place page info for a place.
-message GetPlacePageDataResponse {
-  // Keyed by place dcid.
-  map<string, StatVarSeries> stat_var_series = 1;
-  map<string, Places> all_child_places = 2;
-  map<string, PointStat> latest_population = 8;
-  map<string, ObsCategories> valid_categories = 9;
-  string child_places_type = 3;
-  repeated string child_places = 4;
-  repeated string parent_places = 5;
-  repeated string similar_places = 6;
-  repeated string nearby_places = 7;
-}
-
 // Request to get all data in bio page.
 message GetBioPageDataRequest {
   // The dcid of the entity
   string dcid = 1;
-}
-
-// List of categories of observations for a given place. These correspond to the
-// sections of the Place Explorer (https://datacommons.org/place/geoId/06).
-// This is a copied proto from g3.
-message ObsCategories {
-  repeated string category = 1;
-  optional string place_name = 2;
-  optional string place_dcid = 3;
-}
-
-// Data received from the cache for the landing page.
-message LandingPageCache {
-  // Key is stat var dcid.
-  map<string, ObsTimeSeries> data = 1;
-
-  reserved 2;
 }
