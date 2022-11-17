@@ -30,7 +30,6 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/statvar"
 	"github.com/datacommonsorg/mixer/internal/server/translator"
 	"github.com/datacommonsorg/mixer/internal/server/v0/internalbio"
-	"github.com/datacommonsorg/mixer/internal/server/v0/internalplace"
 	"github.com/datacommonsorg/mixer/internal/server/v0/placemetadata"
 	"github.com/datacommonsorg/mixer/internal/server/v0/placestatvar"
 	"github.com/datacommonsorg/mixer/internal/server/v0/propertylabel"
@@ -292,19 +291,6 @@ func (s *Server) GetTriples(ctx context.Context, in *pb.GetTriplesRequest,
 		return nil, err
 	}
 	return &pb.PayloadResponse{Payload: string(jsonRaw)}, nil
-}
-
-// GetPlacePageData implements API for Mixer.GetPlacePageData.
-//
-// TODO(shifucun):For each related place, it is supposed to have dcid, name and
-// population but it's not complete now as the client in most cases only requires
-// the dcid. Should consider have the full name, even with parent place
-// abbreviations like "CA" filled in here so the client won't bother to fetch
-// those again.
-func (s *Server) GetPlacePageData(
-	ctx context.Context, in *pb.GetPlacePageDataRequest,
-) (*pb.GetPlacePageDataResponse, error) {
-	return internalplace.GetPlacePageData(ctx, in, s.store)
 }
 
 // GetBioPageData implements API for Mixer.GetBioPageData.

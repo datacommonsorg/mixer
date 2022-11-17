@@ -222,12 +222,8 @@ func fetchBtData(
 	error,
 ) {
 	// Fetch place page cache data in parallel.
-	action := [][]string{places}
-	prefix := bigtable.BtPlacePagePrefix
-	if category != "" {
-		action = [][]string{places, {category}}
-		prefix = bigtable.BtPlacePageCategoricalPrefix
-	}
+	action := [][]string{places, {category}}
+	prefix := bigtable.BtPlacePageCategoricalPrefix
 	btDataList, err := bigtable.Read(
 		ctx,
 		store.BtGroup,
@@ -590,7 +586,7 @@ func GetPlacePageDataHelper(
 	seed int64,
 	store *store.Store,
 	category string,
-) (*pb.GetPlacePageDataResponse, error) {
+) (*pb.PlacePageResponse, error) {
 	placeType, err := getPlaceType(ctx, store, placeDcid)
 	if err != nil {
 		return nil, err
@@ -644,7 +640,7 @@ func GetPlacePageDataHelper(
 	close(allChildPlaceChan)
 	close(relatedPlaceChan)
 
-	resp := pb.GetPlacePageDataResponse{}
+	resp := pb.PlacePageResponse{}
 
 	allChildPlaces := map[string]*pb.Places{}
 	for tmp := range allChildPlaceChan {

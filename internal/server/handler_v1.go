@@ -208,7 +208,7 @@ func (s *Server) BioPage(
 // PlacePage implements API for mixer.PlacePage.
 func (s *Server) PlacePage(
 	ctx context.Context, in *pb.PlacePageRequest,
-) (*pb.GetPlacePageDataResponse, error) {
+) (*pb.PlacePageResponse, error) {
 	return page.PlacePage(ctx, in, s.store)
 }
 
