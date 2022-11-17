@@ -4,21 +4,44 @@
       "data": {
         "Count_Person": {
           "val": {
-            "2011": 389397,
-            "2012": 392890,
-            "2013": 397011,
-            "2014": 402339,
-            "2015": 408073,
-            "2016": 412040,
-            "2017": 417442,
-            "2018": 421042,
-            "2019": 425097,
-            "2020": 422575
+            "1990": 399886,
+            "1991": 398559,
+            "1992": 393023,
+            "1993": 387893,
+            "1994": 378617,
+            "1995": 368032,
+            "1996": 367291,
+            "1997": 366224,
+            "1998": 365762,
+            "1999": 365210,
+            "2000": 400498,
+            "2001": 403638,
+            "2002": 401052,
+            "2003": 398500,
+            "2004": 395635,
+            "2005": 393594,
+            "2006": 393684,
+            "2007": 399015,
+            "2008": 404670,
+            "2009": 410584,
+            "2010": 391350,
+            "2011": 395416,
+            "2012": 400720,
+            "2013": 406609,
+            "2014": 412677,
+            "2015": 418539,
+            "2016": 421454,
+            "2017": 421938,
+            "2018": 421837,
+            "2019": 422738,
+            "2020": 439341,
+            "2021": 433823
           },
           "metadata": {
-            "importName": "CensusACS5YearSurvey",
-            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "importName": "USCensusPEP_Annual_Population",
+            "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+            "measurementMethod": "CensusPEPSurvey",
+            "observationPeriod": "P1Y"
           }
         },
         "Count_Person_25To34Years_EducationalAttainmentAssociatesDegree_Female": {
@@ -344,137 +367,6 @@
             "measurementMethod": "CensusACS5yrSurvey"
           }
         },
-<<<<<<< HEAD
-        "Count_Person_Divorced": {
-          "val": {
-            "2011": 33451,
-            "2012": 33615,
-            "2013": 33925,
-            "2014": 34197,
-            "2015": 34849,
-            "2016": 34311,
-            "2017": 35286,
-            "2018": 34517,
-            "2019": 34120,
-            "2020": 33702
-          },
-          "metadata": {
-            "importName": "CensusACS5YearSurvey",
-            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
-            "measurementMethod": "CensusACS5yrSurvey"
-          }
-        },
-        "Count_Person_EducationalAttainmentBachelorsDegree": {
-          "val": {
-            "2012": 58905,
-            "2013": 59393,
-            "2014": 61572,
-            "2015": 63049,
-            "2016": 65326,
-            "2017": 68295,
-            "2018": 73964,
-            "2019": 77864,
-            "2020": 83097
-          },
-          "metadata": {
-            "importName": "CensusACS5YearSurvey",
-            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
-            "measurementMethod": "CensusACS5yrSurvey"
-          }
-        },
-        "Count_Person_EducationalAttainmentDoctorateDegree": {
-          "val": {
-            "2012": 6508,
-            "2013": 7058,
-            "2014": 7082,
-            "2015": 6901,
-            "2016": 7029,
-            "2017": 7023,
-            "2018": 7272,
-            "2019": 7821,
-            "2020": 7703
-          },
-          "metadata": {
-            "importName": "CensusACS5YearSurvey",
-            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
-            "measurementMethod": "CensusACS5yrSurvey"
-          }
-        },
-        "Count_Person_EducationalAttainmentMastersDegree": {
-          "val": {
-            "2012": 28950,
-            "2013": 29579,
-            "2014": 30688,
-            "2015": 32563,
-            "2016": 33199,
-            "2017": 35017,
-            "2018": 36915,
-            "2019": 38590,
-            "2020": 40079
-          },
-          "metadata": {
-            "importName": "CensusACS5YearSurvey",
-            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
-            "measurementMethod": "CensusACS5yrSurvey"
-          }
-        },
-        "Count_Person_EducationalAttainmentNoSchoolingCompleted": {
-          "val": {
-            "2012": 9197,
-            "2013": 9155,
-            "2014": 10066,
-            "2015": 11114,
-            "2016": 10969,
-            "2017": 11591,
-            "2018": 11392,
-            "2019": 11429,
-            "2020": 11429
-          },
-          "metadata": {
-            "importName": "CensusACS5YearSurvey",
-            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
-            "measurementMethod": "CensusACS5yrSurvey"
-          }
-        },
-        "Count_Person_EducationalAttainmentRegularHighSchoolDiploma": {
-          "val": {
-            "2012": 42985,
-            "2013": 43655,
-            "2014": 43156,
-            "2015": 42401,
-            "2016": 41356,
-            "2017": 41751,
-            "2018": 41547,
-            "2019": 43544,
-            "2020": 44944
-          },
-          "metadata": {
-            "importName": "CensusACS5YearSurvey",
-            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
-            "measurementMethod": "CensusACS5yrSurvey"
-          }
-        },
-        "Count_Person_EnrolledInSchool": {
-          "val": {
-            "2011": 100179,
-            "2012": 100520,
-            "2013": 101216,
-            "2014": 100753,
-            "2015": 100561,
-            "2016": 99224,
-            "2017": 97903,
-            "2018": 95929,
-            "2019": 96873,
-            "2020": 94072
-          },
-          "metadata": {
-            "importName": "CensusACS5YearSurvey",
-            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
-            "measurementMethod": "CensusACS5yrSurvey"
-          }
-        },
-=======
->>>>>>> 3a46e01e206821ffaa66b859364612c70c7e277e
         "Count_Person_Female": {
           "val": {
             "2011": 201462,
@@ -532,161 +424,6 @@
             "measurementMethod": "CensusACS5yrSurvey"
           }
         },
-<<<<<<< HEAD
-        "Count_Person_IncomeOf10000To14999USDollar": {
-          "val": {
-            "2011": 32738,
-            "2012": 33309,
-            "2013": 34253,
-            "2014": 34964,
-            "2015": 34794,
-            "2016": 35171,
-            "2017": 35486,
-            "2018": 34102,
-            "2019": 32342,
-            "2020": 29379
-          },
-          "metadata": {
-            "importName": "CensusACS5YearSurvey",
-            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
-            "measurementMethod": "CensusACS5yrSurvey"
-          }
-        },
-        "Count_Person_IncomeOf15000To24999USDollar": {
-          "val": {
-            "2011": 42637,
-            "2012": 42869,
-            "2013": 43581,
-            "2014": 43666,
-            "2015": 44591,
-            "2016": 44175,
-            "2017": 43648,
-            "2018": 41096,
-            "2019": 40578,
-            "2020": 36307
-          },
-          "metadata": {
-            "importName": "CensusACS5YearSurvey",
-            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
-            "measurementMethod": "CensusACS5yrSurvey"
-          }
-        },
-        "Count_Person_IncomeOf25000To34999USDollar": {
-          "val": {
-            "2011": 30687,
-            "2012": 30625,
-            "2013": 30772,
-            "2014": 30723,
-            "2015": 31711,
-            "2016": 31903,
-            "2017": 32556,
-            "2018": 34413,
-            "2019": 34343,
-            "2020": 33538
-          },
-          "metadata": {
-            "importName": "CensusACS5YearSurvey",
-            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
-            "measurementMethod": "CensusACS5yrSurvey"
-          }
-        },
-        "Count_Person_IncomeOf35000To49999USDollar": {
-          "val": {
-            "2011": 33324,
-            "2012": 33552,
-            "2013": 33320,
-            "2014": 33805,
-            "2015": 34161,
-            "2016": 35141,
-            "2017": 36090,
-            "2018": 36083,
-            "2019": 36066,
-            "2020": 37682
-          },
-          "metadata": {
-            "importName": "CensusACS5YearSurvey",
-            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
-            "measurementMethod": "CensusACS5yrSurvey"
-          }
-        },
-        "Count_Person_IncomeOf50000To64999USDollar": {
-          "val": {
-            "2011": 24778,
-            "2012": 25199,
-            "2013": 24887,
-            "2014": 25389,
-            "2015": 26286,
-            "2016": 27279,
-            "2017": 28052,
-            "2018": 29744,
-            "2019": 30467,
-            "2020": 30340
-          },
-          "metadata": {
-            "importName": "CensusACS5YearSurvey",
-            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
-            "measurementMethod": "CensusACS5yrSurvey"
-          }
-        },
-        "Count_Person_IncomeOf65000To74999USDollar": {
-          "val": {
-            "2011": 11321,
-            "2012": 11493,
-            "2013": 11401,
-            "2014": 11436,
-            "2015": 12009,
-            "2016": 12228,
-            "2017": 13471,
-            "2018": 14098,
-            "2019": 13962,
-            "2020": 16211
-          },
-          "metadata": {
-            "importName": "CensusACS5YearSurvey",
-            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
-            "measurementMethod": "CensusACS5yrSurvey"
-          }
-        },
-        "Count_Person_IncomeOf75000OrMoreUSDollar": {
-          "val": {
-            "2011": 44871,
-            "2012": 45809,
-            "2013": 47388,
-            "2014": 48515,
-            "2015": 51034,
-            "2016": 54870,
-            "2017": 60297,
-            "2018": 68344,
-            "2019": 76589,
-            "2020": 83590
-          },
-          "metadata": {
-            "importName": "CensusACS5YearSurvey",
-            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
-            "measurementMethod": "CensusACS5yrSurvey"
-          }
-        },
-        "Count_Person_IncomeOfUpto9999USDollar": {
-          "val": {
-            "2011": 53467,
-            "2012": 53483,
-            "2013": 55294,
-            "2014": 56507,
-            "2015": 55875,
-            "2016": 53937,
-            "2017": 51247,
-            "2018": 46843,
-            "2019": 43878,
-            "2020": 41247
-          },
-          "metadata": {
-            "importName": "CensusACS5YearSurvey",
-            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
-            "measurementMethod": "CensusACS5yrSurvey"
-          }
-        },
-=======
->>>>>>> 3a46e01e206821ffaa66b859364612c70c7e277e
         "Count_Person_Male": {
           "val": {
             "2011": 187935,
@@ -942,153 +679,6 @@
             "measurementMethod": "CensusACS5yrSurvey",
             "unit": "USDollar"
           }
-<<<<<<< HEAD
-        },
-        "Percent_Person_BingeDrinking": {
-          "val": {
-            "2014": 14,
-            "2015": 14.9,
-            "2016": 16.7,
-            "2017": 17.8,
-            "2018": 16.4
-          },
-          "metadata": {
-            "importName": "CDC500",
-            "provenanceUrl": "https://www.cdc.gov/places/index.html",
-            "measurementMethod": "AgeAdjustedPrevalence",
-            "observationPeriod": "P1Y"
-          }
-        },
-        "Percent_Person_Obesity": {
-          "val": {
-            "2014": 25.8,
-            "2015": 23.9,
-            "2016": 25,
-            "2017": 26.7,
-            "2018": 28.4
-          },
-          "metadata": {
-            "importName": "CDC500",
-            "provenanceUrl": "https://www.cdc.gov/places/index.html",
-            "measurementMethod": "AgeAdjustedPrevalence",
-            "observationPeriod": "P1Y"
-          }
-        },
-        "Percent_Person_PhysicalInactivity": {
-          "val": {
-            "2014": 24.5,
-            "2015": 21.5,
-            "2016": 21.7,
-            "2017": 21.4,
-            "2018": 21.7
-          },
-          "metadata": {
-            "importName": "CDC500",
-            "provenanceUrl": "https://www.cdc.gov/places/index.html",
-            "measurementMethod": "AgeAdjustedPrevalence",
-            "observationPeriod": "P1Y"
-          }
-        },
-        "Percent_Person_SleepLessThan7Hours": {
-          "val": {
-            "2014": 36,
-            "2016": 37,
-            "2018": 35.1
-          },
-          "metadata": {
-            "importName": "CDC500",
-            "provenanceUrl": "https://www.cdc.gov/places/index.html",
-            "measurementMethod": "AgeAdjustedPrevalence",
-            "observationPeriod": "P1Y"
-          }
-        },
-        "Percent_Person_Smoking": {
-          "val": {
-            "2014": 15.2,
-            "2015": 14.3,
-            "2016": 15.1,
-            "2017": 14.2,
-            "2018": 13.3
-          },
-          "metadata": {
-            "importName": "CDC500",
-            "provenanceUrl": "https://www.cdc.gov/places/index.html",
-            "measurementMethod": "AgeAdjustedPrevalence",
-            "observationPeriod": "P1Y"
-          }
-        },
-        "Percent_Person_WithArthritis": {
-          "val": {
-            "2014": 21,
-            "2015": 20.4,
-            "2016": 19.7,
-            "2017": 19.8,
-            "2018": 20.6
-          },
-          "metadata": {
-            "importName": "CDC500",
-            "provenanceUrl": "https://www.cdc.gov/places/index.html",
-            "measurementMethod": "AgeAdjustedPrevalence",
-            "observationPeriod": "P1Y"
-          }
-        },
-        "Percent_Person_WithHighBloodPressure": {
-          "val": {
-            "2013": 29.3,
-            "2015": 29.6,
-            "2017": 29.3
-          },
-          "metadata": {
-            "importName": "CDC500",
-            "provenanceUrl": "https://www.cdc.gov/places/index.html",
-            "measurementMethod": "AgeAdjustedPrevalence",
-            "observationPeriod": "P1Y"
-          }
-        },
-        "Percent_Person_WithHighCholesterol": {
-          "val": {
-            "2013": 31.7,
-            "2015": 27.9,
-            "2017": 25.9
-          },
-          "metadata": {
-            "importName": "CDC500",
-            "provenanceUrl": "https://www.cdc.gov/places/index.html",
-            "measurementMethod": "AgeAdjustedPrevalence",
-            "observationPeriod": "P1Y"
-          }
-        },
-        "Percent_Person_WithMentalHealthNotGood": {
-          "val": {
-            "2014": 12.5,
-            "2015": 12.2,
-            "2016": 12.2,
-            "2017": 12.4,
-            "2018": 12.9
-          },
-          "metadata": {
-            "importName": "CDC500",
-            "provenanceUrl": "https://www.cdc.gov/places/index.html",
-            "measurementMethod": "AgeAdjustedPrevalence",
-            "observationPeriod": "P1Y"
-          }
-        },
-        "Percent_Person_WithPhysicalHealthNotGood": {
-          "val": {
-            "2014": 13.3,
-            "2015": 12.4,
-            "2016": 12.1,
-            "2017": 11.8,
-            "2018": 12.9
-          },
-          "metadata": {
-            "importName": "CDC500",
-            "provenanceUrl": "https://www.cdc.gov/places/index.html",
-            "measurementMethod": "AgeAdjustedPrevalence",
-            "observationPeriod": "P1Y"
-          }
-=======
->>>>>>> 3a46e01e206821ffaa66b859364612c70c7e277e
         }
       }
     },
@@ -1096,21 +686,44 @@
       "data": {
         "Count_Person": {
           "val": {
-            "2011": 572742,
-            "2012": 581094,
-            "2013": 590995,
-            "2014": 600729,
-            "2015": 610672,
-            "2016": 620015,
-            "2017": 629191,
-            "2018": 637284,
-            "2019": 643692,
-            "2020": 649821
+            "1990": 444605,
+            "1991": 444956,
+            "1992": 447888,
+            "1993": 452646,
+            "1994": 461034,
+            "1995": 461622,
+            "1996": 464682,
+            "1997": 468197,
+            "1998": 471475,
+            "1999": 475322,
+            "2000": 507089,
+            "2001": 512451,
+            "2002": 519351,
+            "2003": 524172,
+            "2004": 527963,
+            "2005": 533477,
+            "2006": 540915,
+            "2007": 547790,
+            "2008": 553751,
+            "2009": 562343,
+            "2010": 582560,
+            "2011": 591042,
+            "2012": 601040,
+            "2013": 612147,
+            "2014": 621673,
+            "2015": 632188,
+            "2016": 640010,
+            "2017": 642903,
+            "2018": 648241,
+            "2019": 655334,
+            "2020": 682760,
+            "2021": 687725
           },
           "metadata": {
-            "importName": "CensusACS5YearSurvey",
-            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "importName": "USCensusPEP_Annual_Population",
+            "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+            "measurementMethod": "CensusPEPSurvey",
+            "observationPeriod": "P1Y"
           }
         },
         "Count_Person_25To34Years_EducationalAttainmentAssociatesDegree_Female": {
@@ -1436,137 +1049,6 @@
             "measurementMethod": "CensusACS5yrSurvey"
           }
         },
-<<<<<<< HEAD
-        "Count_Person_Divorced": {
-          "val": {
-            "2011": 57843,
-            "2012": 59250,
-            "2013": 59815,
-            "2014": 61599,
-            "2015": 61543,
-            "2016": 62933,
-            "2017": 63841,
-            "2018": 65878,
-            "2019": 66221,
-            "2020": 65954
-          },
-          "metadata": {
-            "importName": "CensusACS5YearSurvey",
-            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
-            "measurementMethod": "CensusACS5yrSurvey"
-          }
-        },
-        "Count_Person_EducationalAttainmentBachelorsDegree": {
-          "val": {
-            "2012": 70065,
-            "2013": 72058,
-            "2014": 74461,
-            "2015": 76150,
-            "2016": 78163,
-            "2017": 79424,
-            "2018": 81715,
-            "2019": 82523,
-            "2020": 84674
-          },
-          "metadata": {
-            "importName": "CensusACS5YearSurvey",
-            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
-            "measurementMethod": "CensusACS5yrSurvey"
-          }
-        },
-        "Count_Person_EducationalAttainmentDoctorateDegree": {
-          "val": {
-            "2012": 3306,
-            "2013": 3351,
-            "2014": 3723,
-            "2015": 3987,
-            "2016": 3941,
-            "2017": 4193,
-            "2018": 4364,
-            "2019": 4637,
-            "2020": 5165
-          },
-          "metadata": {
-            "importName": "CensusACS5YearSurvey",
-            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
-            "measurementMethod": "CensusACS5yrSurvey"
-          }
-        },
-        "Count_Person_EducationalAttainmentMastersDegree": {
-          "val": {
-            "2012": 24250,
-            "2013": 23886,
-            "2014": 25094,
-            "2015": 26673,
-            "2016": 27586,
-            "2017": 28460,
-            "2018": 30586,
-            "2019": 31312,
-            "2020": 32598
-          },
-          "metadata": {
-            "importName": "CensusACS5YearSurvey",
-            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
-            "measurementMethod": "CensusACS5yrSurvey"
-          }
-        },
-        "Count_Person_EducationalAttainmentNoSchoolingCompleted": {
-          "val": {
-            "2012": 4162,
-            "2013": 4438,
-            "2014": 4829,
-            "2015": 5378,
-            "2016": 6104,
-            "2017": 6565,
-            "2018": 6746,
-            "2019": 6936,
-            "2020": 7508
-          },
-          "metadata": {
-            "importName": "CensusACS5YearSurvey",
-            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
-            "measurementMethod": "CensusACS5yrSurvey"
-          }
-        },
-        "Count_Person_EducationalAttainmentRegularHighSchoolDiploma": {
-          "val": {
-            "2012": 80528,
-            "2013": 81723,
-            "2014": 83155,
-            "2015": 84222,
-            "2016": 84428,
-            "2017": 85984,
-            "2018": 86757,
-            "2019": 88179,
-            "2020": 86781
-          },
-          "metadata": {
-            "importName": "CensusACS5YearSurvey",
-            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
-            "measurementMethod": "CensusACS5yrSurvey"
-          }
-        },
-        "Count_Person_EnrolledInSchool": {
-          "val": {
-            "2011": 150234,
-            "2012": 151398,
-            "2013": 155158,
-            "2014": 156550,
-            "2015": 160648,
-            "2016": 160886,
-            "2017": 163508,
-            "2018": 167030,
-            "2019": 167926,
-            "2020": 168923
-          },
-          "metadata": {
-            "importName": "CensusACS5YearSurvey",
-            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
-            "measurementMethod": "CensusACS5yrSurvey"
-          }
-        },
-=======
->>>>>>> 3a46e01e206821ffaa66b859364612c70c7e277e
         "Count_Person_Female": {
           "val": {
             "2011": 290355,
@@ -1624,161 +1106,6 @@
             "measurementMethod": "CensusACS5yrSurvey"
           }
         },
-<<<<<<< HEAD
-        "Count_Person_IncomeOf10000To14999USDollar": {
-          "val": {
-            "2011": 43228,
-            "2012": 42002,
-            "2013": 41932,
-            "2014": 42544,
-            "2015": 41818,
-            "2016": 41300,
-            "2017": 40520,
-            "2018": 39352,
-            "2019": 38021,
-            "2020": 36608
-          },
-          "metadata": {
-            "importName": "CensusACS5YearSurvey",
-            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
-            "measurementMethod": "CensusACS5yrSurvey"
-          }
-        },
-        "Count_Person_IncomeOf15000To24999USDollar": {
-          "val": {
-            "2011": 70296,
-            "2012": 72647,
-            "2013": 74807,
-            "2014": 74951,
-            "2015": 76152,
-            "2016": 74653,
-            "2017": 72797,
-            "2018": 71279,
-            "2019": 71324,
-            "2020": 69367
-          },
-          "metadata": {
-            "importName": "CensusACS5YearSurvey",
-            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
-            "measurementMethod": "CensusACS5yrSurvey"
-          }
-        },
-        "Count_Person_IncomeOf25000To34999USDollar": {
-          "val": {
-            "2011": 58253,
-            "2012": 58968,
-            "2013": 59663,
-            "2014": 60347,
-            "2015": 60107,
-            "2016": 61246,
-            "2017": 62475,
-            "2018": 62526,
-            "2019": 60735,
-            "2020": 62208
-          },
-          "metadata": {
-            "importName": "CensusACS5YearSurvey",
-            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
-            "measurementMethod": "CensusACS5yrSurvey"
-          }
-        },
-        "Count_Person_IncomeOf35000To49999USDollar": {
-          "val": {
-            "2011": 55337,
-            "2012": 57093,
-            "2013": 57554,
-            "2014": 58697,
-            "2015": 59313,
-            "2016": 61943,
-            "2017": 63927,
-            "2018": 65200,
-            "2019": 68043,
-            "2020": 71151
-          },
-          "metadata": {
-            "importName": "CensusACS5YearSurvey",
-            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
-            "measurementMethod": "CensusACS5yrSurvey"
-          }
-        },
-        "Count_Person_IncomeOf50000To64999USDollar": {
-          "val": {
-            "2011": 34815,
-            "2012": 35002,
-            "2013": 35030,
-            "2014": 36347,
-            "2015": 38281,
-            "2016": 39598,
-            "2017": 41028,
-            "2018": 43836,
-            "2019": 45721,
-            "2020": 45943
-          },
-          "metadata": {
-            "importName": "CensusACS5YearSurvey",
-            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
-            "measurementMethod": "CensusACS5yrSurvey"
-          }
-        },
-        "Count_Person_IncomeOf65000To74999USDollar": {
-          "val": {
-            "2011": 12592,
-            "2012": 12680,
-            "2013": 12934,
-            "2014": 13649,
-            "2015": 13929,
-            "2016": 15106,
-            "2017": 16147,
-            "2018": 17183,
-            "2019": 17061,
-            "2020": 21043
-          },
-          "metadata": {
-            "importName": "CensusACS5YearSurvey",
-            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
-            "measurementMethod": "CensusACS5yrSurvey"
-          }
-        },
-        "Count_Person_IncomeOf75000OrMoreUSDollar": {
-          "val": {
-            "2011": 38840,
-            "2012": 40443,
-            "2013": 41746,
-            "2014": 44490,
-            "2015": 45916,
-            "2016": 50147,
-            "2017": 54564,
-            "2018": 59265,
-            "2019": 63646,
-            "2020": 65979
-          },
-          "metadata": {
-            "importName": "CensusACS5YearSurvey",
-            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
-            "measurementMethod": "CensusACS5yrSurvey"
-          }
-        },
-        "Count_Person_IncomeOfUpto9999USDollar": {
-          "val": {
-            "2011": 83699,
-            "2012": 83098,
-            "2013": 82119,
-            "2014": 80218,
-            "2015": 80081,
-            "2016": 78472,
-            "2017": 75940,
-            "2018": 74548,
-            "2019": 73225,
-            "2020": 72838
-          },
-          "metadata": {
-            "importName": "CensusACS5YearSurvey",
-            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
-            "measurementMethod": "CensusACS5yrSurvey"
-          }
-        },
-=======
->>>>>>> 3a46e01e206821ffaa66b859364612c70c7e277e
         "Count_Person_Male": {
           "val": {
             "2011": 282387,
@@ -2034,153 +1361,6 @@
             "measurementMethod": "CensusACS5yrSurvey",
             "unit": "USDollar"
           }
-<<<<<<< HEAD
-        },
-        "Percent_Person_BingeDrinking": {
-          "val": {
-            "2014": 13.4,
-            "2015": 13.4,
-            "2016": 12.6,
-            "2017": 14.2,
-            "2018": 14
-          },
-          "metadata": {
-            "importName": "CDC500",
-            "provenanceUrl": "https://www.cdc.gov/places/index.html",
-            "measurementMethod": "AgeAdjustedPrevalence",
-            "observationPeriod": "P1Y"
-          }
-        },
-        "Percent_Person_Obesity": {
-          "val": {
-            "2014": 32.4,
-            "2015": 31.5,
-            "2016": 32.9,
-            "2017": 34.4,
-            "2018": 36.5
-          },
-          "metadata": {
-            "importName": "CDC500",
-            "provenanceUrl": "https://www.cdc.gov/places/index.html",
-            "measurementMethod": "AgeAdjustedPrevalence",
-            "observationPeriod": "P1Y"
-          }
-        },
-        "Percent_Person_PhysicalInactivity": {
-          "val": {
-            "2014": 28.5,
-            "2015": 32.5,
-            "2016": 29.7,
-            "2017": 32.6,
-            "2018": 27.8
-          },
-          "metadata": {
-            "importName": "CDC500",
-            "provenanceUrl": "https://www.cdc.gov/places/index.html",
-            "measurementMethod": "AgeAdjustedPrevalence",
-            "observationPeriod": "P1Y"
-          }
-        },
-        "Percent_Person_SleepLessThan7Hours": {
-          "val": {
-            "2014": 35.9,
-            "2016": 34.3,
-            "2018": 38.9
-          },
-          "metadata": {
-            "importName": "CDC500",
-            "provenanceUrl": "https://www.cdc.gov/places/index.html",
-            "measurementMethod": "AgeAdjustedPrevalence",
-            "observationPeriod": "P1Y"
-          }
-        },
-        "Percent_Person_Smoking": {
-          "val": {
-            "2014": 20.5,
-            "2015": 21.2,
-            "2016": 18.8,
-            "2017": 19.9,
-            "2018": 19.5
-          },
-          "metadata": {
-            "importName": "CDC500",
-            "provenanceUrl": "https://www.cdc.gov/places/index.html",
-            "measurementMethod": "AgeAdjustedPrevalence",
-            "observationPeriod": "P1Y"
-          }
-        },
-        "Percent_Person_WithArthritis": {
-          "val": {
-            "2014": 24.2,
-            "2015": 23.4,
-            "2016": 24.9,
-            "2017": 24.7,
-            "2018": 25.3
-          },
-          "metadata": {
-            "importName": "CDC500",
-            "provenanceUrl": "https://www.cdc.gov/places/index.html",
-            "measurementMethod": "AgeAdjustedPrevalence",
-            "observationPeriod": "P1Y"
-          }
-        },
-        "Percent_Person_WithHighBloodPressure": {
-          "val": {
-            "2013": 34.7,
-            "2015": 33,
-            "2017": 36.3
-          },
-          "metadata": {
-            "importName": "CDC500",
-            "provenanceUrl": "https://www.cdc.gov/places/index.html",
-            "measurementMethod": "AgeAdjustedPrevalence",
-            "observationPeriod": "P1Y"
-          }
-        },
-        "Percent_Person_WithHighCholesterol": {
-          "val": {
-            "2013": 34.9,
-            "2015": 32.2,
-            "2017": 32.5
-          },
-          "metadata": {
-            "importName": "CDC500",
-            "provenanceUrl": "https://www.cdc.gov/places/index.html",
-            "measurementMethod": "AgeAdjustedPrevalence",
-            "observationPeriod": "P1Y"
-          }
-        },
-        "Percent_Person_WithMentalHealthNotGood": {
-          "val": {
-            "2014": 13.8,
-            "2015": 13.4,
-            "2016": 14.3,
-            "2017": 15.4,
-            "2018": 15.6
-          },
-          "metadata": {
-            "importName": "CDC500",
-            "provenanceUrl": "https://www.cdc.gov/places/index.html",
-            "measurementMethod": "AgeAdjustedPrevalence",
-            "observationPeriod": "P1Y"
-          }
-        },
-        "Percent_Person_WithPhysicalHealthNotGood": {
-          "val": {
-            "2014": 14.1,
-            "2015": 13.5,
-            "2016": 14.1,
-            "2017": 14.4,
-            "2018": 14.1
-          },
-          "metadata": {
-            "importName": "CDC500",
-            "provenanceUrl": "https://www.cdc.gov/places/index.html",
-            "measurementMethod": "AgeAdjustedPrevalence",
-            "observationPeriod": "P1Y"
-          }
-=======
->>>>>>> 3a46e01e206821ffaa66b859364612c70c7e277e
         }
       }
     },
@@ -2840,126 +2020,140 @@
       "date": "2021",
       "value": 331893745,
       "metadata": {
-        "importName": "WorldDevelopmentIndicators",
-        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
         "observationPeriod": "P1Y"
       }
     },
     "geoId/06": {
-      "date": "2020",
-      "value": 39346023,
+      "date": "2021",
+      "value": 39237836,
       "metadata": {
-        "importName": "CensusACS5YearSurvey",
-        "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
-        "measurementMethod": "CensusACS5yrSurvey"
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
       }
     },
     "geoId/06001": {
-      "date": "2020",
-      "value": 1661584,
+      "date": "2021",
+      "value": 1648556,
       "metadata": {
-        "importName": "CensusACS5YearSurvey",
-        "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
-        "measurementMethod": "CensusACS5yrSurvey"
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
       }
     },
     "geoId/0600562": {
-      "date": "2020",
-      "value": 79827,
+      "date": "2021",
+      "value": 76362,
       "metadata": {
-        "importName": "CensusACS5YearSurvey",
-        "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
-        "measurementMethod": "CensusACS5yrSurvey"
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
       }
     },
     "geoId/0606000": {
-      "date": "2020",
-      "value": 123065,
+      "date": "2021",
+      "value": 117145,
       "metadata": {
-        "importName": "CensusACS5YearSurvey",
-        "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
-        "measurementMethod": "CensusACS5yrSurvey"
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
       }
     },
     "geoId/0653000": {
-      "date": "2020",
-      "value": 422575,
+      "date": "2021",
+      "value": 433823,
       "metadata": {
-        "importName": "CensusACS5YearSurvey",
-        "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
-        "measurementMethod": "CensusACS5yrSurvey"
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
       }
     },
     "geoId/0656938": {
-      "date": "2020",
-      "value": 11454,
+      "date": "2021",
+      "value": 11107,
       "metadata": {
-        "importName": "CensusACS5YearSurvey",
-        "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
-        "measurementMethod": "CensusACS5yrSurvey"
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
       }
     },
     "geoId/0660620": {
-      "date": "2020",
-      "value": 110051,
+      "date": "2021",
+      "value": 115639,
       "metadata": {
-        "importName": "CensusACS5YearSurvey",
-        "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
-        "measurementMethod": "CensusACS5yrSurvey"
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
       }
     },
     "geoId/0668084": {
-      "date": "2020",
-      "value": 90489,
+      "date": "2021",
+      "value": 88868,
       "metadata": {
-        "importName": "CensusACS5YearSurvey",
-        "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
-        "measurementMethod": "CensusACS5yrSurvey"
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
       }
     },
     "geoId/0820000": {
-      "date": "2020",
-      "value": 715878,
+      "date": "2021",
+      "value": 711463,
       "metadata": {
-        "importName": "CensusACS5YearSurvey",
-        "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
-        "measurementMethod": "CensusACS5yrSurvey"
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
       }
     },
     "geoId/2836000": {
-      "date": "2020",
-      "value": 163778,
+      "date": "2021",
+      "value": 149761,
       "metadata": {
-        "importName": "CensusACS5YearSurvey",
-        "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
-        "measurementMethod": "CensusACS5yrSurvey"
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
       }
     },
     "geoId/4055000": {
-      "date": "2020",
-      "value": 649821,
+      "date": "2021",
+      "value": 687725,
       "metadata": {
-        "importName": "CensusACS5YearSurvey",
-        "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
-        "measurementMethod": "CensusACS5yrSurvey"
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
       }
     },
     "geoId/4261000": {
-      "date": "2020",
-      "value": 301286,
+      "date": "2021",
+      "value": 300431,
       "metadata": {
-        "importName": "CensusACS5YearSurvey",
-        "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
-        "measurementMethod": "CensusACS5yrSurvey"
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
       }
     },
     "geoId/4752006": {
-      "date": "2020",
-      "value": 667070,
+      "date": "2021",
+      "value": 678851,
       "metadata": {
-        "importName": "CensusACS5YearSurvey",
-        "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
-        "measurementMethod": "CensusACS5yrSurvey"
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
       }
     },
     "zip/94610": {
