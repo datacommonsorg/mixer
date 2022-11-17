@@ -59,7 +59,7 @@ func TestPlacePage(t *testing.T) {
 				1,
 				[]string{},
 				3,
-				"",
+				"Energy",
 			},
 			{
 				"ca_economics.sample.json",
@@ -83,7 +83,7 @@ func TestPlacePage(t *testing.T) {
 				1,
 				[]string{},
 				5,
-				"",
+				"Environment",
 			},
 			{
 				"county.sample.json",
@@ -91,7 +91,7 @@ func TestPlacePage(t *testing.T) {
 				1,
 				[]string{"Count_HousingUnit_2000To2004DateBuilt"},
 				3,
-				"",
+				"Demographics",
 			},
 			{
 				"state.sample.json",
@@ -99,7 +99,7 @@ func TestPlacePage(t *testing.T) {
 				1,
 				[]string{"Annual_Generation_Electricity"},
 				3,
-				"",
+				"Demographics",
 			},
 			{
 				"city.sample.json",
@@ -107,7 +107,7 @@ func TestPlacePage(t *testing.T) {
 				1,
 				[]string{"Median_GrossRent_HousingUnit_WithCashRent_OccupiedHousingUnit_RenterOccupied"},
 				3,
-				"",
+				"Equity",
 			},
 			{
 				"zuid-nederland.sample.json",
@@ -115,7 +115,7 @@ func TestPlacePage(t *testing.T) {
 				1,
 				[]string{},
 				5,
-				"",
+				"Overview",
 			},
 			{
 				"dummy.json",
@@ -123,7 +123,7 @@ func TestPlacePage(t *testing.T) {
 				1,
 				[]string{},
 				5,
-				"",
+				"Overview",
 			},
 		} {
 			req := &pb.PlacePageRequest{
