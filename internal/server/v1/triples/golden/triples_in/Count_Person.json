@@ -427,6 +427,46 @@
           "provenanceId": "dc/d7tbsb1"
         },
         {
+          "name": "Count of Network Subscriber: Broadband (Per Capita)",
+          "types": [
+            "StatisticalVariable"
+          ],
+          "dcid": "Percent_NetworkSubscriber_Broadband",
+          "provenanceId": "dc/d7tbsb1"
+        },
+        {
+          "name": "Count of Network Subscriber: PSTN (Per Capita)",
+          "types": [
+            "StatisticalVariable"
+          ],
+          "dcid": "Percent_NetworkSubscriber_PSTN",
+          "provenanceId": "dc/d7tbsb1"
+        },
+        {
+          "name": "Count of Network Subscriber: VOIP (Per Capita)",
+          "types": [
+            "StatisticalVariable"
+          ],
+          "dcid": "Percent_NetworkSubscriber_VOIP",
+          "provenanceId": "dc/d7tbsb1"
+        },
+        {
+          "name": "Count of Network Subscriber: Wireless All (Per Capita)",
+          "types": [
+            "StatisticalVariable"
+          ],
+          "dcid": "Percent_NetworkSubscriber_WirelessAll",
+          "provenanceId": "dc/d7tbsb1"
+        },
+        {
+          "name": "Count of Network Subscriber: Wireline All (Per Capita)",
+          "types": [
+            "StatisticalVariable"
+          ],
+          "dcid": "Percent_NetworkSubscriber_WirelineAll",
+          "provenanceId": "dc/d7tbsb1"
+        },
+        {
           "name": "Percentage Never Or Not In The Last 12 Months, Alcohol Consumption Among Population",
           "types": [
             "StatisticalVariable"

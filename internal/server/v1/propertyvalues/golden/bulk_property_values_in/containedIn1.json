@@ -23940,6 +23940,134 @@
           "provenanceId": "dc/1cvgxf"
         },
         {
+          "name": "Junipero Serra School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00074254_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "San Carlos School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00074298_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Palma School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00074356_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Sacred Heart School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00074367_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Anthem Christian School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00079671_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "All Saints' Episcopal Day School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00080428_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Stevenson School - Pebble Beach Campus",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00080869_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Monterey Bay Christian School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00091484_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Santa Catalina School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/02187528_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Trinity Christian High School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/A0100776_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Hills View Christian School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/A1500324_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Ryan Ranch Childrens Center Preschool",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/A1970526_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Chartwell School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/A9100656_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Peninsula Adventist School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/A9101234_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Temple Philadelphia Christian Academy",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/A9500833_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Stevenson School Carmel Campus",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/Y2009613_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
           "name": "Pebble Beach",
           "types": [
             "AdministrativeArea"
@@ -54866,6 +54994,4006 @@
           "provenanceId": "dc/g4e6nf2"
         },
         {
+          "name": "St Thomas More School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00068579_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Holy Angels School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00068604_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Our Lady Of Fatima School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00068615_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Bernard School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00068626_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Dominic Savio School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00068637_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Francis Xavier School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00068648_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Robert Bellarmine Elementary School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00068659_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Our Lady Of The Valley School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00068681_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Our Lady Of The Assumption School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00068717_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Anthony Of Padua School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00068772_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Holy Family Grade School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00068783_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Incarnation Parish School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00068794_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Matthias Elementary School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00068819_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St James-Holy Redeemer School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00068852_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Paul Of The Cross School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00068874_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Joseph Elementary School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00068885_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Martha School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00068896_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Sacred Heart Elementary School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00068921_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Holy Innocents Elementary School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00068932_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Anthony Elementary School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00068943_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Athanasius Elementary School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00068954_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Cathedral Chapel School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00068987_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Divine Saviour School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00068998_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Dolores Mission Elementary School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00069007_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Immaculate Heart Of Mary School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00069051_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Our Mother Of Good Counsel School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00069084_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Francis Of Assisi School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00069153_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Jerome School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00069186_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Martin Of Tours Elementary School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00069197_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Paul Elementary School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00069222_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Timothy School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00069233_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "School Of Santa Isabel",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00069244_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Our Lady Of Malibu School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00069277_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Our Lady Of Perpetual Help School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00069299_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Our Lady Of Lourdes School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00069302_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St John Of God School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00069313_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Linus Catholic Elementary School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00069324_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Our Lady Of Guadalupe School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00069335_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Santa Clara Elementary School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00069346_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Anthony School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00069368_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Corpus Christi Elementary School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00069379_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Mayfield Junior School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00069415_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Hilary Elementary School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00069437_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Madeleine School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00069459_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St John Fisher School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00069481_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Holy Name Of Mary Elementary School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00069506_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Santa Rosa De Lima Catholic School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00069517_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Ferdinand Elementary School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00069528_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Ss Felicitas \u0026 Perpetua School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00069539_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Our Lady Of Mount Carmel School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00069583_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Monica Catholic Elementary School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00069641_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Francis De Sales School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00069652_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Rita School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00069663_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Paschal Baylon School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00069721_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Catherine Laboure School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00069732_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Our Lady Of Lourdes School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00069743_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Mark Elementary School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00069754_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Our Lady Of The Assumption School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00069765_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Sebastian School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00069776_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Gregory The Great School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00069787_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Bernardine Of Siena School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00069801_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Marymount Of Santa Barbara",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00069812_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Bruno Parish School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00069845_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Christopher Parish School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00069856_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Bridget Of Sweden",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00069878_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Didacus School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00069903_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Patrick School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00069914_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Jane Frances De Chantal",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00069925_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Epiphany Catholic School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00069947_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Alverno Heights Academy",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00069958_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Monica Catholic High School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00069991_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Annes School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00070001_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "San Gabriel Mission Elementary School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00070023_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Anthony School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00070034_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Catherine Of Siena School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00070045_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Assumption Of The Bvm Elementary School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00070078_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Genevieve Elementary School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00070114_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Joseph High School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00070125_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Paul High School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00070147_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Notre Dame School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00070158_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Notre Dame Academy Elementary School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00070169_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Notre Dame Academy Girls High School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00070191_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Sacred Heart Elementary School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00070282_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Sacred Heart High School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00070293_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Columbkille Elementary School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00070373_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Eugene School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00070384_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Ignatius Of Loyola School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00070395_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Raphael Elementary School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00070453_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Teresa Of Avila School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00070464_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Turibius School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00070475_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Vincent School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00070486_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Visitation School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00070497_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Benedict School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00070533_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Crespi Carmelite High School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00070577_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Anthony High School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00070602_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "La Purisima Concepcion School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00070613_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Paraclete High School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00070624_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Holy Family High School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00070635_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Cyril Of Jerusalem School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00070657_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Our Lady Of Grace School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00070668_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Finbar Parish School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00070679_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Nativity School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00070737_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Holy Name Of Jesus School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00070748_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Christ The King School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00070781_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Joseph Elementary School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00070806_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Cyprian Elementary School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00070817_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Pancratius Elementary School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00070828_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Mary'S Academy",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00070861_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Our Lady Of Perpetual Help School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00070883_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Holy Cross School @ San Buenaventura Mission",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00070941_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St James Elementary School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00070952_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Nativity School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00070963_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Francis High School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00070974_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Lucys Priory High School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00070985_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "La Reina High School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00070996_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Don Bosco Technical Institute",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00071005_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Mayfield Senior School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00071027_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Bernard Elementary School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00071038_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Ascension Catholic School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00071071_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Joseph High School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00071093_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Louisville High School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00071107_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Ss Peter \u0026 Paul Elementary School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00071118_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Bonaventure High School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00071129_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "American Martyrs School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00071162_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Thomas Aquinas School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00071173_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Immaculate Conception Catholic School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00071184_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Mary Of The Assumption School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00071195_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Joseph Elementary School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00071253_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Rose Of Lima School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00071275_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Thomas The Apostle Elementary School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00071286_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Resurrection School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00071322_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Our Lady Of Talpa School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00071333_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Our Lady Of Refuge School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00071344_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Euphrasia School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00071355_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Dorothy Elementary School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00071366_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Good Shepherd Catholic School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00071377_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Chaminade College Preparatory-High School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00071424_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Frances Of Rome School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00071435_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "La Salle High School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00071457_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Cantwell Sacred Heart Of Mary",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00071468_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Immaculate Conception School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00071504_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Mary Magdalen School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00071515_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St John The Baptist School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00071526_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Therese Carmelite School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00071537_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Providence High School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00071559_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Mary'S Catholic School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00071581_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Villanova Preparatory School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00071592_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Lucy School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00071628_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Damien High School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00071639_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Odilia School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00071694_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Our Lady Of Victory School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00071785_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Assumption School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00071832_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "De La Salle School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00071843_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Flintridge Sacred Heart Academy",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00071854_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Mother Of Sorrows School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00071923_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Our Lady Of Guadalupe School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00071945_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Cecilia Catholic School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00071978_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Mary School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00072053_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Verbum Dei High School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00072086_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Good Shepherd Elementary School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00072279_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Our Lady Of Mt Carmel School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00072326_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Anselm School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00072348_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Charles School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00072359_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Ecole Notre Dame Des Victoires School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00072439_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Epiphany School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00072461_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Holy Name Elementary School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00072472_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Ica Cristo Rey",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00072483_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Mercy High School San Francisco",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00072519_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Mission Dolores Academy",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00072541_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Our Lady Of The Visitacion School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00072574_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Sacred Heart Cathedral Preparatory",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00072632_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Anne Elementary School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00072654_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Brigid School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00072687_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Cecilia School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00072698_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Gabriel Elementary School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00072756_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Ignatius College Preparatory",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00072767_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St James Catholic School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00072778_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Peter'S School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00072869_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Philip School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00072905_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Stephen School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00072927_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Thomas The Apostle Elementary School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00072938_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Thomas More Elementary School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00072949_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Matthew Catholic School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00073126_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Timothy School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00073137_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Junipero Serra High School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00073148_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Raphael School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00073181_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "All Souls Elementary School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00073228_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Veronica Catholic School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00073261_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Dunstan Catholic School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00073272_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Raymond Elementary School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00073283_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Nativity Elementary School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00073294_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Patrick School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00073363_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Marin Catholic High School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00073374_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Our Lady Perpetual Help School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00073421_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Catherine Of Siena School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00073476_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Our Lady Of Angels School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00073487_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Robert Catholic School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00073625_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Pius Elementary School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00073636_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Hilary School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00073738_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Sacred Heart Schools Atherton",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00073771_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Anthony School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00073895_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Anthony Of Padua School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00073931_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "San Joaquin Memorial High School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00073942_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Rose-Mccarthy Catholic School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00073975_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Helens School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00073997_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Francis Parish School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00074006_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Our Lady Of Perpetual Help School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00074028_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Our Lady Of Guadalupe School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00074039_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Joachim School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00074061_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Our Lady Of Fatima School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00074072_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Anne School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00074094_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "George Mccann Memorial Catholic School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00074119_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Aloysius Elementary School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00074141_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Ann School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00074152_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St La Salle Elementary School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00074163_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Our Lady Of Perpetual Help School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00074221_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Junipero Serra School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00074254_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Mission College Prep High School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00074265_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Rose Catholic School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00074287_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "San Carlos School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00074298_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Patricks Catholic School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00074301_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Sacred Heart Parish School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00074312_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Moreland Notre Dame School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00074323_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Holy Cross School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00074334_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Good Shepherd Catholic School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00074345_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Palma School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00074356_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Sacred Heart School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00074367_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Salesian Elementary \u0026 Junior High School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00074403_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Old Mission School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00074425_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Christ The King Catholic School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00074458_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Agnes Elementary School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00074469_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Peter Martyr",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00074505_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Elizabeth Elementary School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00074571_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "School Of Saint Leo The Great",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00074618_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Salesian High School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00074695_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Assumption School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00074709_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Felicitas Catholic School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00074731_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St John Catholic School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00074753_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Holy Names High School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00074822_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Bishop O Dowd High School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00074833_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Edward Elementary School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00074844_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Moreau Catholic High School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00074866_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Our Lady Of Guadalupe School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00074877_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Holy Spirit School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00074888_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Isidore School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00074899_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "De La Salle High School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00074902_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Joseph Elementary School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00074968_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "School Of The Madeleine",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00074979_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Joachim School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00075021_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Perpetua School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00075032_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Catherine Of Siena School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00075054_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Joseph Elementary School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00075065_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Cornelius School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00075076_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St David School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00075087_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Patrick School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00075098_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Bede School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00075112_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Queen Of All Saints School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00075156_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Our Lade Of Grace Catholic School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00075178_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Holy Rosary Elementary School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00075189_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Philip Neri School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00075203_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Joseph School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00075225_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Mary Elementary School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00075236_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Jeanne De Lestonnac School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00075305_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Barbara School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00075327_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Our Lady Of Fatima School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00075371_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Our Lady Queen Of Angels School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00075382_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Our Lady Of Guadalupe School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00075407_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Sts Simon \u0026 Jude School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00075418_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Juliana Falconieri School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00075473_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Rosary Academy",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00075484_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Irenaeus Parish School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00075495_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St John The Baptist Catholic School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00075509_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Justin Martyr Elementary School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00075542_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Catherine'S Academy",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00075553_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Cornelia Connelly School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00075575_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Cecilia School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00075622_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Joseph Elementary School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00075633_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Anne School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00075644_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Angela Merici Parish School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00075655_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Mission Basilica School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00075688_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Joseph Elementary School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00075699_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Holy Family Cathedral School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00075724_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Catherine Of Siena Parish School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00075735_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Columban School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00075746_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St John Vianney School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00075779_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Joseph School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00075804_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Rose School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00075815_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Holy Spirit Parish School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00075837_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Jesuit High School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00075859_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Ignatius Parish School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00075892_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Francis Catholic High School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00075906_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Mary School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00075917_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Philomene Elementary School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00075928_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Holy Spirit School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00075983_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Our Lady Of The Assumption School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00075994_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Dominic Elementary School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00076003_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Joseph Catholic School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00076014_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Mercy High School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00076105_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St James School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00076116_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Notre Dame School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00076127_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Christian Brothers High School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00076149_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Holy Rosary Catholic School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00076171_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Vincent Ferrer School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00076251_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Patrick-St Vincent High School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00076262_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Thomas The Apostle Catholic School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00076284_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Holy Family Catholic School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00076309_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St John-Evangelist School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00076331_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Sacred Heart Elementary School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00076375_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Mount St Marys Academy",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00076386_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St John Notre Dame School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00076397_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Our Lady Of Lourdes School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00076422_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Edward Catholic School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00076455_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Sacred Heart Parish School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00076466_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St George Parish School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00076499_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Theresa Elementary School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00076502_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Our Lady Of The Assumption School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00076513_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Hyacinth Academy",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00076535_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Joseph School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00076546_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Adelaide Academy",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00076557_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Sacred Heart Academy",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00076568_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Thomas The Apostle School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00076579_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Holy Rosary Academy",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00076604_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Resurrection Academy",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00076648_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Our Lady Of Lourdes School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00076659_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Aquinas High School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00076706_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Francis De Sales School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00076739_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Catherine Of Alexandria School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00076772_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Catherine Of Siena School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00076794_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Pius X School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00076841_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Our Lady Of Grace Elementary School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00076852_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Mary'S School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00076863_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "All Hallows Academy",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00076874_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Martin Of Tours Academy",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00076885_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Our Lady'S School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00076932_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Augustine High School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00076954_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Didacus School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00076965_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Michael Academy",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00076976_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Vincent Memorial Catholic High School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00076987_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Patrick Catholic School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00076998_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Rose Of Lima School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00077007_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Holy Trinity Elementary School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00077018_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Mary S School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00077029_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Stella Maris Academy",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00077062_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Mary Star Of The Sea School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00077095_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Michael School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00077131_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Academy Of Our Lady Of Peace",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00077164_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Nazareth School San Diego",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00077175_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Patrick School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00077211_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Rita'S School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00077222_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Vincent De Paul Elementary School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00077233_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Sacred Heart  School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00077266_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Sacred Heart Parish School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00077288_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Charles Catholic School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00077299_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Katharine Drexel Academy",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00077324_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "School Of The Madeleine",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00077404_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Santa Sophia Academy",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00077437_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Francis Of Assisi Catholic School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00077448_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Columba School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00077459_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St John The Baptist Catholic School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00077517_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Apollinaris School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00077528_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Justin-Siena",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00077539_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Bernard'S Academy",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00077572_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Mary At The Angels Catholic School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00077619_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Francis Solano School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00077652_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Archbishop Hanna High School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00077663_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Rose Elementary School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00077685_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Eugene'S Cathedral School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00077696_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Cardinal Newman High School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00077721_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Vincent De Paul High School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00077732_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Vincent De Paul Elementary School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00077743_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Anne School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00077776_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Anthony Catholic School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00077787_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Our Lady Of Fatima Catholic School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00077801_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Stanislaus Catholic School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00077812_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Annunciation Elementary School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00077823_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Presentation Elementary School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00077834_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St George Parish School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00077845_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Mary'S High School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00077867_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Bernards Catholic School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00077889_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Sacred Heart School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00077903_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Trinity School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00078361_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "The Bishop'S School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00078419_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Mark'S Episcopal School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00078565_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "El Rancho School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00078598_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Hebrew Academy",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00078714_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Agbu Manoogian-Demirdjian School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00078736_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Switzer Learning Center",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00078747_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Gindi Maimonides Academy",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00078758_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Montessori In Redlands",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00078995_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Whittier Friends School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00079004_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Bethel Apostolic Academy",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00079106_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Fairmont Private School North Tustin Campus",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00079128_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Mirman School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00079183_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Patten Academy Of Christian Education",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00079296_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Berkeley Hall School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00079365_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "The Buckley School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00079398_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Gloria Dei Lutheran Elementary School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00079478_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Live Oak School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00079514_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Anthem Christian School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00079671_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Westview School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00079707_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Dubnoff Center For Child Development",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00079729_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Mardan School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00079751_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "South Hills Academy",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00079864_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Arrow Montessori School Of San Dimas",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00079922_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Maywood Christian School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00079988_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Warren-Walker School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00080075_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Southwestern Academy",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00080155_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Armenian Mesrobian School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00080166_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Sinai Akiba Academy",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00080304_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Orange Lutheran High School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00080406_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "All Saints' Episcopal Day School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00080428_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Andrew'S Episcopal School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00080439_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Pauls School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00080472_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Red Hill Lutheran School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00080519_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Ascension Lutheran School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00080665_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Salem Lutheran School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00080687_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Trinity Christian School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00080698_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "First Lutheran School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00080701_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Riviera Hall Lutheran School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00080712_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Good Shepherd Lutheran School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00080745_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "The Thacher School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00080814_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Town School For Boys",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00080858_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Stevenson School - Pebble Beach Campus",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00080869_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Sacramento Country Day School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00080905_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Menlo School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00080916_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Arcadia Montessori School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00080927_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Cate School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00080949_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "John Thomas Dye School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00080971_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Army \u0026 Navy Academy",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00080982_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Ivycrest Montessori Private School - Chapman",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00081002_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Wildwood School K-12",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00081057_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Mother Lode Christian School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00081104_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Kings Valley Christian School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00081181_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Abiding Savior Lutheran Church",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00081272_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Bais Yaakov School For Girls",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00081294_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Le Lycee Francais De Los Angeles",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00081341_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Seven Hills School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00081421_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Berean Christian High School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00081443_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Victor Valley Christian Schools",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00081512_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Matthew'S Episcopal Day School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00081556_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Trinity Lutheran School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00081589_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Montebello Christian School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00081691_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Rolling Hills Country Day School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00081738_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Montessori Center School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00081829_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "South Peninsula Hebrew Day School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00081873_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Viewpoint School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00081895_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Soille San Diego Hebrew Bay School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00081942_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Valley Torah High School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00081953_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Ojai Valley School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00081997_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Palm Valley School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00082006_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Paul'S First Lutheran School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00082028_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "El Sobrante Christian School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00082039_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Fremont Christian School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00082061_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Marks Lutheran School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00082094_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Arcata Christian School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00082152_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St John'S Lutheran School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00082254_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Redeemer Lutheran School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00082312_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Prince Of Peace Lutheran School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00082334_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "West Portal Lutheran School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00082345_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Zion Lutheran School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00082356_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Hope Lutheran Elementary School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00082447_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Victory Christian Academy",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00082491_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Grace Christian School (Changed The Name 6/15)",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00082505_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Paul'S Lutheran School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00082527_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Immanuel Lutheran Schools",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00082549_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Christ Lutheran School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00082571_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Paul'S Lutheran School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00082582_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Johns Lutheran School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00082593_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Prince Of Peace Lutheran School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00082629_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Zion Lutheran School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00082651_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St John'S Lutheran School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00082662_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Zion Lutheran School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00082673_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "St Johns Lutheran School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00082684_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Grace Lutheran Christian School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00082709_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Bethany Lutheran School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00082797_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Christ Lutheran Church \u0026 School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00082811_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Hanford Christian School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00082946_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Ripon Christian Schools",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00082957_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Walnut Creek Christian Academy",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00083032_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Hillbrook School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00083054_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Monte Vista Christian School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00083065_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "San Francisco Christian School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00083145_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Pilgrim School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00083167_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "West Covina Christian School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00083203_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "San Gabriel Christian School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00083214_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Pinewood School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00083236_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Monica Ros School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00083258_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "The Country School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00083291_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Pasadena Christian School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00083393_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Chadwick School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00083407_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Marlborough School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00083418_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Head Royce School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00083429_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "La Jolla Country Day School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00083462_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Marin Academy",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00083473_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "The Webb Schools",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00083484_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Katherine Delmar Burke School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00083495_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "San Francisco University High School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00083509_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Westridge School For Girls",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00083531_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Castilleja School",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00083542_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
+          "name": "Midland School Corporation",
+          "types": [
+            "PrivateSchool"
+          ],
+          "dcid": "nces/00083564_06",
+          "provenanceId": "dc/bk7c433"
+        },
+        {
           "name": "psmslId/1352",
           "types": [
             "TideGaugeStation"
@@ -58001,5 +62129,5 @@
       ]
     }
   ],
-  "nextToken": "H4sIAAAAAAAA/4TQwUrDQBCAYRNDSbYW4p5y8hVaD4qgHtKtlngKxF68yLoZ4sJmBzYTJG8vaS8i2+Q4h+9nZljFlgp7S25YH6qcpQotSW2hLmxppAJ2I8B2fSfQwVZ2UFckSXeklTS5A8nDNOBRHKQBD+OQR/FlGrDtXHQlsG170rb5QAvexutc43oPuHe6Pk6ftztovJ18rnNVlEKcIncbb+KZxQ1gUa839x6/PD3o3UlFXv40ySOhaeBRGmQJX4wyS452MdosYW+TOnsx0IIl6YZKfSOane7I6TObPEy2WIk/4EojLfELHsZ/5eOkXJX9l9HqQNqMx/zDvwAAAP//AQAA///Pf2GPZAIAAA=="
+  "nextToken": "H4sIAAAAAAAA/4TQwUrDQBCAYZOGst1aiHvKyVdoPSiCemi3WuopEHvxIutmiAObXdhMlLy9JEEQiclxDt8/w/CML7WrLflmfcq2PNbOkkIL+dGmRmnglxJsVVfSedipCvKMFGFFqJXZelAijAMRsSAORMhCEbFZHPDdVHQlXVnWhLZ4dRYGG09TjYsDuIPHvJvervZQDHa2U53zYyplH7neDCYeOCvAHfP15mbAL/sHvXilaZDfj/JIIjUiioNkIeatTBadnbc2WfDnUZ08GijBkvJNpj+cM3usyOM/l9yOtnjqvsCnRlkSZyJkv+XdqFylHj8VQX9Ct/qHh2w2iet3g/pEaNpP/Nn8DQAA//8BAAD//87C0MmhAgAA"
 }
