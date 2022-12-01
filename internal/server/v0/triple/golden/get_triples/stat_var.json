@@ -375,6 +375,62 @@
       "provenanceId": "dc/d7tbsb1"
     },
     {
+      "subjectId": "Percent_AtLeastOnceADay_ConsumptionOfFruits_In_Count_Person",
+      "subjectName": "Percentage At Least Once a Day, Consumption Of Fruits Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectName": "Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Percent_AtLeastOnceADay_ConsumptionOfPureFruitOrConsumptionOfVegetableJuice_In_Count_Person",
+      "subjectName": "Percentage At Least Once a Day, Consumption Of Pure Fruit Or Consumption Of Vegetable Juice Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectName": "Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Percent_AtLeastOnceADay_ConsumptionOfSugarSweetenedSoftDrinks_In_Count_Person",
+      "subjectName": "Percentage At Least Once a Day, Consumption Of Sugar Sweetened Soft Drinks Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectName": "Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Percent_AtLeastOnceADay_ConsumptionOfVegetables_In_Count_Person",
+      "subjectName": "Percentage At Least Once a Day, Consumption Of Vegetables Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectName": "Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
       "subjectId": "Percent_AtLeastOnceAWeek_BingeDrinking_In_Count_Person",
       "subjectName": "Percentage At Least Once A Week, Binge Drinking Among Population",
       "subjectTypes": [
@@ -473,6 +529,34 @@
       "provenanceId": "dc/d7tbsb1"
     },
     {
+      "subjectId": "Percent_AtleastTwiceADay_ConsumptionOfFruits_In_Count_Person",
+      "subjectName": "Percentage Atleast Twice a Day, Consumption Of Fruits Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectName": "Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Percent_AtleastTwiceADay_ConsumptionOfVegetables_In_Count_Person",
+      "subjectName": "Percentage Atleast Twice a Day, Consumption Of Vegetables Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectName": "Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
       "subjectId": "Percent_Cycling_NonWorkRelatedPhysicalActivity_In_Count_Person",
       "subjectName": "Percentage Cycling, Non Work Related Physical Activity Among Population",
       "subjectTypes": [
@@ -487,8 +571,36 @@
       "provenanceId": "dc/d7tbsb1"
     },
     {
+      "subjectId": "Percent_Daily_0Portion_ConsumptionOfFruitsOrConsumptionOfVegetables_In_Count_Person",
+      "subjectName": "Percentage Daily, 0 Portions, Consumption Of Fruits Or Consumption Of Vegetables Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectName": "Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
       "subjectId": "Percent_Daily_20OrMoreCigarettesPerDay_TobaccoSmoking_Cigarettes_In_Count_Person",
       "subjectName": "Percentage Daily, 20 Or More Cigarettes Per Day, Tobacco Smoking, Cigarettes Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectName": "Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Percent_Daily_5PortionOrMore_ConsumptionOfFruitsOrConsumptionOfVegetables_In_Count_Person",
+      "subjectName": "Percentage Daily, 5 Portions Or More, Consumption Of Fruits Or Consumption Of Vegetables Among Population",
       "subjectTypes": [
         "StatisticalVariable"
       ],
@@ -517,6 +629,20 @@
     {
       "subjectId": "Percent_Daily_BingeDrinking_In_Count_Person",
       "subjectName": "Percentage Daily, Binge Drinking Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectName": "Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Percent_Daily_From1To4Portion_ConsumptionOfFruitsOrConsumptionOfVegetables_In_Count_Person",
+      "subjectName": "Percentage Daily, From 1 To 4 Portions, Consumption Of Fruits Or Consumption Of Vegetables Among Population",
       "subjectTypes": [
         "StatisticalVariable"
       ],
@@ -725,6 +851,118 @@
       "provenanceId": "dc/d7tbsb1"
     },
     {
+      "subjectId": "Percent_From1To3TimesAWeek_ConsumptionOfFruits_In_Count_Person",
+      "subjectName": "Percentage From 1 To 3 Times a Week, Consumption Of Fruits Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectName": "Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Percent_From1To3TimesAWeek_ConsumptionOfPureFruitOrConsumptionOfVegetableJuice_In_Count_Person",
+      "subjectName": "Percentage From 1 To 3 Times a Week, Consumption Of Pure Fruit Or Consumption Of Vegetable Juice Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectName": "Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Percent_From1To3TimesAWeek_ConsumptionOfSugarSweetenedSoftDrinks_In_Count_Person",
+      "subjectName": "Percentage From 1 To 3 Times a Week, Consumption Of Sugar Sweetened Soft Drinks Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectName": "Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Percent_From1To3TimesAWeek_ConsumptionOfVegetables_In_Count_Person",
+      "subjectName": "Percentage From 1 To 3 Times a Week, Consumption Of Vegetables Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectName": "Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Percent_From4To6TimesAWeek_ConsumptionOfFruits_In_Count_Person",
+      "subjectName": "Percentage From 4 To 6 Times a Week, Consumption Of Fruits Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectName": "Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Percent_From4To6TimesAWeek_ConsumptionOfPureFruitOrConsumptionOfVegetableJuice_In_Count_Person",
+      "subjectName": "Percentage From 4 To 6 Times a Week, Consumption Of Pure Fruit Or Consumption Of Vegetable Juice Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectName": "Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Percent_From4To6TimesAWeek_ConsumptionOfSugarSweetenedSoftDrinks_In_Count_Person",
+      "subjectName": "Percentage From 4 To 6 Times a Week, Consumption Of Sugar Sweetened Soft Drinks Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectName": "Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Percent_From4To6TimesAWeek_ConsumptionOfVegetables_In_Count_Person",
+      "subjectName": "Percentage From 4 To 6 Times a Week, Consumption Of Vegetables Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectName": "Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
       "subjectId": "Percent_HazardousAlcoholConsumption_In_Count_Person",
       "subjectName": "Percentage Hazardous Alcohol Consumption Among Population",
       "subjectTypes": [
@@ -755,6 +993,34 @@
     {
       "subjectId": "Percent_LessThanOnceAMonth_BingeDrinking_In_Count_Person",
       "subjectName": "Percentage Less Than Once A Month, Binge Drinking Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectName": "Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Percent_LessThanOnceAWeek_ConsumptionOfFruits_In_Count_Person",
+      "subjectName": "Percentage Less Than Once a Week, Consumption Of Fruits Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectName": "Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Percent_LessThanOnceAWeek_ConsumptionOfVegetables_In_Count_Person",
+      "subjectName": "Percentage Less Than Once a Week, Consumption Of Vegetables Among Population",
       "subjectTypes": [
         "StatisticalVariable"
       ],
@@ -949,6 +1215,62 @@
       "provenanceId": "dc/d7tbsb1"
     },
     {
+      "subjectId": "Percent_NeverOrOccasionally_ConsumptionOfFruits_In_Count_Person",
+      "subjectName": "Percentage Never Or Occasionally, Consumption Of Fruits Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectName": "Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Percent_NeverOrOccasionally_ConsumptionOfPureFruitOrConsumptionOfVegetableJuice_In_Count_Person",
+      "subjectName": "Percentage Never Or Occasionally, Consumption Of Pure Fruit Or Consumption Of Vegetable Juice Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectName": "Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Percent_NeverOrOccasionally_ConsumptionOfSugarSweetenedSoftDrinks_In_Count_Person",
+      "subjectName": "Percentage Never Or Occasionally, Consumption Of Sugar Sweetened Soft Drinks Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectName": "Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Percent_NeverOrOccasionally_ConsumptionOfVegetables_In_Count_Person",
+      "subjectName": "Percentage Never Or Occasionally, Consumption Of Vegetables Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectName": "Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
       "subjectId": "Percent_Never_AlcoholConsumption_In_Count_Person",
       "subjectName": "Percentage Never, Alcohol Consumption Among Population",
       "subjectTypes": [
@@ -965,6 +1287,34 @@
     {
       "subjectId": "Percent_Never_BingeDrinking_In_Count_Person",
       "subjectName": "Percentage Never, Binge Drinking Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectName": "Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Percent_Never_ConsumptionOfFruits_In_Count_Person",
+      "subjectName": "Percentage Never, Consumption Of Fruits Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectName": "Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Percent_Never_ConsumptionOfVegetables_In_Count_Person",
+      "subjectName": "Percentage Never, Consumption Of Vegetables Among Population",
       "subjectTypes": [
         "StatisticalVariable"
       ],
@@ -1049,6 +1399,34 @@
     {
       "subjectId": "Percent_Occasional_TobaccoSmoking_TobaccoProducts_In_Count_Person",
       "subjectName": "Percentage Occasional, Tobacco Smoking Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectName": "Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Percent_OnceADay_ConsumptionOfFruits_In_Count_Person",
+      "subjectName": "Percentage Once a Day, Consumption Of Fruits Among Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectName": "Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Percent_OnceADay_ConsumptionOfVegetables_In_Count_Person",
+      "subjectName": "Percentage Once a Day, Consumption Of Vegetables Among Population",
       "subjectTypes": [
         "StatisticalVariable"
       ],
@@ -1605,6 +1983,62 @@
       "provenanceId": "dc/d7tbsb1"
     },
     {
+      "subjectId": "Percent_AtLeastOnceADay_ConsumptionOfFruits_In_Count_Person_Female",
+      "subjectName": "Percentage At Least Once a Day, Consumption Of Fruits Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Population: Female",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Percent_AtLeastOnceADay_ConsumptionOfPureFruitOrConsumptionOfVegetableJuice_In_Count_Person_Female",
+      "subjectName": "Percentage At Least Once a Day, Consumption Of Pure Fruit Or Consumption Of Vegetable Juice Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Population: Female",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Percent_AtLeastOnceADay_ConsumptionOfSugarSweetenedSoftDrinks_In_Count_Person_Female",
+      "subjectName": "Percentage At Least Once a Day, Consumption Of Sugar Sweetened Soft Drinks Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Population: Female",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Percent_AtLeastOnceADay_ConsumptionOfVegetables_In_Count_Person_Female",
+      "subjectName": "Percentage At Least Once a Day, Consumption Of Vegetables Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Population: Female",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
       "subjectId": "Percent_AtLeastOnceAWeek_BingeDrinking_In_Count_Person_Female",
       "subjectName": "Percentage At Least Once A Week, Binge Drinking Among Female Population",
       "subjectTypes": [
@@ -1703,6 +2137,34 @@
       "provenanceId": "dc/d7tbsb1"
     },
     {
+      "subjectId": "Percent_AtleastTwiceADay_ConsumptionOfFruits_In_Count_Person_Female",
+      "subjectName": "Percentage Atleast Twice a Day, Consumption Of Fruits Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Population: Female",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Percent_AtleastTwiceADay_ConsumptionOfVegetables_In_Count_Person_Female",
+      "subjectName": "Percentage Atleast Twice a Day, Consumption Of Vegetables Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Population: Female",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
       "subjectId": "Percent_Cycling_NonWorkRelatedPhysicalActivity_In_Count_Person_Female",
       "subjectName": "Percentage Cycling, Non Work Related Physical Activity Among Female Population",
       "subjectTypes": [
@@ -1717,8 +2179,36 @@
       "provenanceId": "dc/d7tbsb1"
     },
     {
+      "subjectId": "Percent_Daily_0Portion_ConsumptionOfFruitsOrConsumptionOfVegetables_In_Count_Person_Female",
+      "subjectName": "Percentage Daily, 0 Portions, Consumption Of Fruits Or Consumption Of Vegetables Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Population: Female",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
       "subjectId": "Percent_Daily_20OrMoreCigarettesPerDay_TobaccoSmoking_Cigarettes_In_Count_Person_Female",
       "subjectName": "Percentage Daily, 20 Or More Cigarettes Per Day, Tobacco Smoking, Cigarettes Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Population: Female",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Percent_Daily_5PortionOrMore_ConsumptionOfFruitsOrConsumptionOfVegetables_In_Count_Person_Female",
+      "subjectName": "Percentage Daily, 5 Portions Or More, Consumption Of Fruits Or Consumption Of Vegetables Among Female Population",
       "subjectTypes": [
         "StatisticalVariable"
       ],
@@ -1747,6 +2237,20 @@
     {
       "subjectId": "Percent_Daily_BingeDrinking_In_Count_Person_Female",
       "subjectName": "Percentage Daily, Binge Drinking Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Population: Female",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Percent_Daily_From1To4Portion_ConsumptionOfFruitsOrConsumptionOfVegetables_In_Count_Person_Female",
+      "subjectName": "Percentage Daily, From 1 To 4 Portions, Consumption Of Fruits Or Consumption Of Vegetables Among Female Population",
       "subjectTypes": [
         "StatisticalVariable"
       ],
@@ -1955,6 +2459,118 @@
       "provenanceId": "dc/d7tbsb1"
     },
     {
+      "subjectId": "Percent_From1To3TimesAWeek_ConsumptionOfFruits_In_Count_Person_Female",
+      "subjectName": "Percentage From 1 To 3 Times a Week, Consumption Of Fruits Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Population: Female",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Percent_From1To3TimesAWeek_ConsumptionOfPureFruitOrConsumptionOfVegetableJuice_In_Count_Person_Female",
+      "subjectName": "Percentage From 1 To 3 Times a Week, Consumption Of Pure Fruit Or Consumption Of Vegetable Juice Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Population: Female",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Percent_From1To3TimesAWeek_ConsumptionOfSugarSweetenedSoftDrinks_In_Count_Person_Female",
+      "subjectName": "Percentage From 1 To 3 Times a Week, Consumption Of Sugar Sweetened Soft Drinks Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Population: Female",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Percent_From1To3TimesAWeek_ConsumptionOfVegetables_In_Count_Person_Female",
+      "subjectName": "Percentage From 1 To 3 Times a Week, Consumption Of Vegetables Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Population: Female",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Percent_From4To6TimesAWeek_ConsumptionOfFruits_In_Count_Person_Female",
+      "subjectName": "Percentage From 4 To 6 Times a Week, Consumption Of Fruits Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Population: Female",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Percent_From4To6TimesAWeek_ConsumptionOfPureFruitOrConsumptionOfVegetableJuice_In_Count_Person_Female",
+      "subjectName": "Percentage From 4 To 6 Times a Week, Consumption Of Pure Fruit Or Consumption Of Vegetable Juice Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Population: Female",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Percent_From4To6TimesAWeek_ConsumptionOfSugarSweetenedSoftDrinks_In_Count_Person_Female",
+      "subjectName": "Percentage From 4 To 6 Times a Week, Consumption Of Sugar Sweetened Soft Drinks Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Population: Female",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Percent_From4To6TimesAWeek_ConsumptionOfVegetables_In_Count_Person_Female",
+      "subjectName": "Percentage From 4 To 6 Times a Week, Consumption Of Vegetables Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Population: Female",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
       "subjectId": "Percent_HazardousAlcoholConsumption_In_Count_Person_Female",
       "subjectName": "Percentage Hazardous Alcohol Consumption Among Female Population",
       "subjectTypes": [
@@ -1985,6 +2601,34 @@
     {
       "subjectId": "Percent_LessThanOnceAMonth_BingeDrinking_In_Count_Person_Female",
       "subjectName": "Percentage Less Than Once A Month, Binge Drinking Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Population: Female",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Percent_LessThanOnceAWeek_ConsumptionOfFruits_In_Count_Person_Female",
+      "subjectName": "Percentage Less Than Once a Week, Consumption Of Fruits Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Population: Female",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Percent_LessThanOnceAWeek_ConsumptionOfVegetables_In_Count_Person_Female",
+      "subjectName": "Percentage Less Than Once a Week, Consumption Of Vegetables Among Female Population",
       "subjectTypes": [
         "StatisticalVariable"
       ],
@@ -2109,6 +2753,62 @@
       "provenanceId": "dc/d7tbsb1"
     },
     {
+      "subjectId": "Percent_NeverOrOccasionally_ConsumptionOfFruits_In_Count_Person_Female",
+      "subjectName": "Percentage Never Or Occasionally, Consumption Of Fruits Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Population: Female",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Percent_NeverOrOccasionally_ConsumptionOfPureFruitOrConsumptionOfVegetableJuice_In_Count_Person_Female",
+      "subjectName": "Percentage Never Or Occasionally, Consumption Of Pure Fruit Or Consumption Of Vegetable Juice Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Population: Female",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Percent_NeverOrOccasionally_ConsumptionOfSugarSweetenedSoftDrinks_In_Count_Person_Female",
+      "subjectName": "Percentage Never Or Occasionally, Consumption Of Sugar Sweetened Soft Drinks Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Population: Female",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Percent_NeverOrOccasionally_ConsumptionOfVegetables_In_Count_Person_Female",
+      "subjectName": "Percentage Never Or Occasionally, Consumption Of Vegetables Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Population: Female",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
       "subjectId": "Percent_Never_AlcoholConsumption_In_Count_Person_Female",
       "subjectName": "Percentage Never, Alcohol Consumption Among Female Population",
       "subjectTypes": [
@@ -2125,6 +2825,34 @@
     {
       "subjectId": "Percent_Never_BingeDrinking_In_Count_Person_Female",
       "subjectName": "Percentage Never, Binge Drinking Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Population: Female",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Percent_Never_ConsumptionOfFruits_In_Count_Person_Female",
+      "subjectName": "Percentage Never, Consumption Of Fruits Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Population: Female",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Percent_Never_ConsumptionOfVegetables_In_Count_Person_Female",
+      "subjectName": "Percentage Never, Consumption Of Vegetables Among Female Population",
       "subjectTypes": [
         "StatisticalVariable"
       ],
@@ -2209,6 +2937,34 @@
     {
       "subjectId": "Percent_Occasional_TobaccoSmoking_TobaccoProducts_In_Count_Person_Female",
       "subjectName": "Percentage Occasional, Tobacco Smoking Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Population: Female",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Percent_OnceADay_ConsumptionOfFruits_In_Count_Person_Female",
+      "subjectName": "Percentage Once a Day, Consumption Of Fruits Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Population: Female",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Percent_OnceADay_ConsumptionOfVegetables_In_Count_Person_Female",
+      "subjectName": "Percentage Once a Day, Consumption Of Vegetables Among Female Population",
       "subjectTypes": [
         "StatisticalVariable"
       ],

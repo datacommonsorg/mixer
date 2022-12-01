@@ -737,7 +737,7 @@
                 "Country"
               ],
               "dcid": "country/FXX",
-              "provenanceId": "dc/5n63hr1"
+              "provenanceId": "dc/5j06ly1"
             },
             {
               "name": "Gabon",
@@ -2205,7 +2205,7 @@
                 "Country"
               ],
               "dcid": "wikidataId/Q244165",
-              "provenanceId": "dc/5n63hr1"
+              "provenanceId": "dc/5j06ly1"
             },
             {
               "name": "Kingdom of the Netherlands",
@@ -6418,6 +6418,38 @@
               "provenanceId": "dc/d7tbsb1"
             },
             {
+              "name": "Percentage At Least Once a Day, Consumption Of Fruits Among Population",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "Percent_AtLeastOnceADay_ConsumptionOfFruits_In_Count_Person",
+              "provenanceId": "dc/d7tbsb1"
+            },
+            {
+              "name": "Percentage At Least Once a Day, Consumption Of Pure Fruit Or Consumption Of Vegetable Juice Among Population",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "Percent_AtLeastOnceADay_ConsumptionOfPureFruitOrConsumptionOfVegetableJuice_In_Count_Person",
+              "provenanceId": "dc/d7tbsb1"
+            },
+            {
+              "name": "Percentage At Least Once a Day, Consumption Of Sugar Sweetened Soft Drinks Among Population",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "Percent_AtLeastOnceADay_ConsumptionOfSugarSweetenedSoftDrinks_In_Count_Person",
+              "provenanceId": "dc/d7tbsb1"
+            },
+            {
+              "name": "Percentage At Least Once a Day, Consumption Of Vegetables Among Population",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "Percent_AtLeastOnceADay_ConsumptionOfVegetables_In_Count_Person",
+              "provenanceId": "dc/d7tbsb1"
+            },
+            {
               "name": "Percentage At Least Once A Week, Binge Drinking Among Population",
               "types": [
                 "StatisticalVariable"
@@ -6474,6 +6506,22 @@
               "provenanceId": "dc/d7tbsb1"
             },
             {
+              "name": "Percentage Atleast Twice a Day, Consumption Of Fruits Among Population",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "Percent_AtleastTwiceADay_ConsumptionOfFruits_In_Count_Person",
+              "provenanceId": "dc/d7tbsb1"
+            },
+            {
+              "name": "Percentage Atleast Twice a Day, Consumption Of Vegetables Among Population",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "Percent_AtleastTwiceADay_ConsumptionOfVegetables_In_Count_Person",
+              "provenanceId": "dc/d7tbsb1"
+            },
+            {
               "name": "Percentage Cycling, Non Work Related Physical Activity Among Population",
               "types": [
                 "StatisticalVariable"
@@ -6482,11 +6530,27 @@
               "provenanceId": "dc/d7tbsb1"
             },
             {
+              "name": "Percentage Daily, 0 Portions, Consumption Of Fruits Or Consumption Of Vegetables Among Population",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "Percent_Daily_0Portion_ConsumptionOfFruitsOrConsumptionOfVegetables_In_Count_Person",
+              "provenanceId": "dc/d7tbsb1"
+            },
+            {
               "name": "Percentage Daily, 20 Or More Cigarettes Per Day, Tobacco Smoking, Cigarettes Among Population",
               "types": [
                 "StatisticalVariable"
               ],
               "dcid": "Percent_Daily_20OrMoreCigarettesPerDay_TobaccoSmoking_Cigarettes_In_Count_Person",
+              "provenanceId": "dc/d7tbsb1"
+            },
+            {
+              "name": "Percentage Daily, 5 Portions Or More, Consumption Of Fruits Or Consumption Of Vegetables Among Population",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "Percent_Daily_5PortionOrMore_ConsumptionOfFruitsOrConsumptionOfVegetables_In_Count_Person",
               "provenanceId": "dc/d7tbsb1"
             },
             {
@@ -6503,6 +6567,14 @@
                 "StatisticalVariable"
               ],
               "dcid": "Percent_Daily_BingeDrinking_In_Count_Person",
+              "provenanceId": "dc/d7tbsb1"
+            },
+            {
+              "name": "Percentage Daily, From 1 To 4 Portions, Consumption Of Fruits Or Consumption Of Vegetables Among Population",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "Percent_Daily_From1To4Portion_ConsumptionOfFruitsOrConsumptionOfVegetables_In_Count_Person",
               "provenanceId": "dc/d7tbsb1"
             },
             {
@@ -6618,6 +6690,70 @@
               "provenanceId": "dc/d7tbsb1"
             },
             {
+              "name": "Percentage From 1 To 3 Times a Week, Consumption Of Fruits Among Population",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "Percent_From1To3TimesAWeek_ConsumptionOfFruits_In_Count_Person",
+              "provenanceId": "dc/d7tbsb1"
+            },
+            {
+              "name": "Percentage From 1 To 3 Times a Week, Consumption Of Pure Fruit Or Consumption Of Vegetable Juice Among Population",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "Percent_From1To3TimesAWeek_ConsumptionOfPureFruitOrConsumptionOfVegetableJuice_In_Count_Person",
+              "provenanceId": "dc/d7tbsb1"
+            },
+            {
+              "name": "Percentage From 1 To 3 Times a Week, Consumption Of Sugar Sweetened Soft Drinks Among Population",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "Percent_From1To3TimesAWeek_ConsumptionOfSugarSweetenedSoftDrinks_In_Count_Person",
+              "provenanceId": "dc/d7tbsb1"
+            },
+            {
+              "name": "Percentage From 1 To 3 Times a Week, Consumption Of Vegetables Among Population",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "Percent_From1To3TimesAWeek_ConsumptionOfVegetables_In_Count_Person",
+              "provenanceId": "dc/d7tbsb1"
+            },
+            {
+              "name": "Percentage From 4 To 6 Times a Week, Consumption Of Fruits Among Population",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "Percent_From4To6TimesAWeek_ConsumptionOfFruits_In_Count_Person",
+              "provenanceId": "dc/d7tbsb1"
+            },
+            {
+              "name": "Percentage From 4 To 6 Times a Week, Consumption Of Pure Fruit Or Consumption Of Vegetable Juice Among Population",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "Percent_From4To6TimesAWeek_ConsumptionOfPureFruitOrConsumptionOfVegetableJuice_In_Count_Person",
+              "provenanceId": "dc/d7tbsb1"
+            },
+            {
+              "name": "Percentage From 4 To 6 Times a Week, Consumption Of Sugar Sweetened Soft Drinks Among Population",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "Percent_From4To6TimesAWeek_ConsumptionOfSugarSweetenedSoftDrinks_In_Count_Person",
+              "provenanceId": "dc/d7tbsb1"
+            },
+            {
+              "name": "Percentage From 4 To 6 Times a Week, Consumption Of Vegetables Among Population",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "Percent_From4To6TimesAWeek_ConsumptionOfVegetables_In_Count_Person",
+              "provenanceId": "dc/d7tbsb1"
+            },
+            {
               "name": "Percentage Hazardous Alcohol Consumption Among Population",
               "types": [
                 "StatisticalVariable"
@@ -6639,6 +6775,22 @@
                 "StatisticalVariable"
               ],
               "dcid": "Percent_LessThanOnceAMonth_BingeDrinking_In_Count_Person",
+              "provenanceId": "dc/d7tbsb1"
+            },
+            {
+              "name": "Percentage Less Than Once a Week, Consumption Of Fruits Among Population",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "Percent_LessThanOnceAWeek_ConsumptionOfFruits_In_Count_Person",
+              "provenanceId": "dc/d7tbsb1"
+            },
+            {
+              "name": "Percentage Less Than Once a Week, Consumption Of Vegetables Among Population",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "Percent_LessThanOnceAWeek_ConsumptionOfVegetables_In_Count_Person",
               "provenanceId": "dc/d7tbsb1"
             },
             {
@@ -6746,6 +6898,38 @@
               "provenanceId": "dc/d7tbsb1"
             },
             {
+              "name": "Percentage Never Or Occasionally, Consumption Of Fruits Among Population",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "Percent_NeverOrOccasionally_ConsumptionOfFruits_In_Count_Person",
+              "provenanceId": "dc/d7tbsb1"
+            },
+            {
+              "name": "Percentage Never Or Occasionally, Consumption Of Pure Fruit Or Consumption Of Vegetable Juice Among Population",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "Percent_NeverOrOccasionally_ConsumptionOfPureFruitOrConsumptionOfVegetableJuice_In_Count_Person",
+              "provenanceId": "dc/d7tbsb1"
+            },
+            {
+              "name": "Percentage Never Or Occasionally, Consumption Of Sugar Sweetened Soft Drinks Among Population",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "Percent_NeverOrOccasionally_ConsumptionOfSugarSweetenedSoftDrinks_In_Count_Person",
+              "provenanceId": "dc/d7tbsb1"
+            },
+            {
+              "name": "Percentage Never Or Occasionally, Consumption Of Vegetables Among Population",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "Percent_NeverOrOccasionally_ConsumptionOfVegetables_In_Count_Person",
+              "provenanceId": "dc/d7tbsb1"
+            },
+            {
               "name": "Percentage Never, Alcohol Consumption Among Population",
               "types": [
                 "StatisticalVariable"
@@ -6759,6 +6943,22 @@
                 "StatisticalVariable"
               ],
               "dcid": "Percent_Never_BingeDrinking_In_Count_Person",
+              "provenanceId": "dc/d7tbsb1"
+            },
+            {
+              "name": "Percentage Never, Consumption Of Fruits Among Population",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "Percent_Never_ConsumptionOfFruits_In_Count_Person",
+              "provenanceId": "dc/d7tbsb1"
+            },
+            {
+              "name": "Percentage Never, Consumption Of Vegetables Among Population",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "Percent_Never_ConsumptionOfVegetables_In_Count_Person",
               "provenanceId": "dc/d7tbsb1"
             },
             {
@@ -6807,6 +7007,22 @@
                 "StatisticalVariable"
               ],
               "dcid": "Percent_Occasional_TobaccoSmoking_TobaccoProducts_In_Count_Person",
+              "provenanceId": "dc/d7tbsb1"
+            },
+            {
+              "name": "Percentage Once a Day, Consumption Of Fruits Among Population",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "Percent_OnceADay_ConsumptionOfFruits_In_Count_Person",
+              "provenanceId": "dc/d7tbsb1"
+            },
+            {
+              "name": "Percentage Once a Day, Consumption Of Vegetables Among Population",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "Percent_OnceADay_ConsumptionOfVegetables_In_Count_Person",
               "provenanceId": "dc/d7tbsb1"
             },
             {
