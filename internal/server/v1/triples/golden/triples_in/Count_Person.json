@@ -251,6 +251,22 @@
           "provenanceId": "dc/d7tbsb1"
         },
         {
+          "name": "Percentage At Least Twice a Day, Consumption Of Fruits Among Population",
+          "types": [
+            "StatisticalVariable"
+          ],
+          "dcid": "Percent_AtLeastTwiceADay_ConsumptionOfFruits_In_Count_Person",
+          "provenanceId": "dc/d7tbsb1"
+        },
+        {
+          "name": "Percentage At Least Twice a Day, Consumption Of Vegetables Among Population",
+          "types": [
+            "StatisticalVariable"
+          ],
+          "dcid": "Percent_AtLeastTwiceADay_ConsumptionOfVegetables_In_Count_Person",
+          "provenanceId": "dc/d7tbsb1"
+        },
+        {
           "name": "Percentage Atleast Twice a Day, Consumption Of Fruits Among Population",
           "types": [
             "StatisticalVariable"

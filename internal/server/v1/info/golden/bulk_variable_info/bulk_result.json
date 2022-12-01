@@ -2902,7 +2902,7 @@
         "provenanceSummary": {
           "dc/e9k9ze": {
             "importName": "NYT_COVID19",
-            "observationCount": 2620228,
+            "observationCount": 2620285,
             "timeSeriesCount": 6554,
             "releaseFrequency": "P1D",
             "seriesSummary": [
@@ -2911,8 +2911,8 @@
                   "measurementMethod": "dcDerivedStat/NYT_COVID19_GitHub"
                 },
                 "earliestDate": "2020-01-22",
-                "latestDate": "2022-11-28",
-                "observationCount": 2533303,
+                "latestDate": "2022-11-29",
+                "observationCount": 2533360,
                 "timeSeriesCount": 3277,
                 "placeTypeSummary": {
                   "City": {
