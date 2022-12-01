@@ -321,6 +321,62 @@
       "dcid": "dc/9lq3bgx0gq5x6"
     },
     {
+      "name": "Population: Female, Enrolled in College Undergraduate Years, Private School",
+      "dcid": "dc/f0l20sfp6tg34"
+    },
+    {
+      "name": "Population: Female, Enrolled in College Undergraduate Years, Public School",
+      "dcid": "dc/fgssbtlcqy5bf"
+    },
+    {
+      "name": "Population: Female, Enrolled in Grade 1 To Grade 4, Private School",
+      "dcid": "dc/3d1k0tygkzrc9"
+    },
+    {
+      "name": "Population: Female, Enrolled in Grade 1 To Grade 4, Public School",
+      "dcid": "dc/f6yygkvshe2sc"
+    },
+    {
+      "name": "Population: Female, Enrolled in Grade 5 To Grade 8, Private School",
+      "dcid": "dc/vg4dvk67ynl7"
+    },
+    {
+      "name": "Population: Female, Enrolled in Grade 5 To Grade 8, Public School",
+      "dcid": "dc/938xr48xyz1v3"
+    },
+    {
+      "name": "Population: Female, Enrolled in Grade 9 To Grade 12, Private School",
+      "dcid": "dc/lq7sly0t34sc4"
+    },
+    {
+      "name": "Population: Female, Enrolled in Grade 9 To Grade 12, Public School",
+      "dcid": "dc/b37t6pmrzqkmh"
+    },
+    {
+      "name": "Population: Female, Enrolled in Graduate or Professional School, Private School",
+      "dcid": "dc/c8tyqc3f69xs5"
+    },
+    {
+      "name": "Population: Female, Enrolled in Graduate or Professional School, Public School",
+      "dcid": "dc/b50mk8kek4fz3"
+    },
+    {
+      "name": "Population: Female, Enrolled in Kindergarten, Private School",
+      "dcid": "dc/kzyx3ll4kpfk1"
+    },
+    {
+      "name": "Population: Female, Enrolled in Kindergarten, Public School",
+      "dcid": "dc/wvxlkgg1rw7k7"
+    },
+    {
+      "name": "Population: Female, Enrolled in Nursery School Preschool, Private School",
+      "dcid": "dc/c9y5pyd6tt8p1"
+    },
+    {
+      "name": "Population: Female, Enrolled in Nursery School Preschool, Public School",
+      "dcid": "dc/lr4ve69p16sch"
+    },
+    {
       "name": "Population: Female, Foreign Born, Adult Correctional Facilities",
       "dcid": "Count_Person_Female_ForeignBorn_ResidesInAdultCorrectionalFacilities"
     },
@@ -5027,104 +5083,6 @@
         {
           "name": "Population: 85 Years or More, Female, Native Hawaiian or Other Pacific Islander Alone",
           "dcid": "Count_Person_85OrMoreYears_Female_NativeHawaiianOrOtherPacificIslanderAlone"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_EnrollmentLevel-EnrolledInCollegeUndergraduateYears_Gender-Female_TypeOfSchool",
-      "name": "Person With Gender = Female, Enrollment Level = Enrolled in College Undergraduate Years, Type of School",
-      "statVars": [
-        {
-          "name": "Population: Female, Enrolled in College Undergraduate Years, Private School",
-          "dcid": "dc/f0l20sfp6tg34"
-        },
-        {
-          "name": "Population: Female, Enrolled in College Undergraduate Years, Public School",
-          "dcid": "dc/fgssbtlcqy5bf"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_EnrollmentLevel-EnrolledInGrade1ToGrade4_Gender-Female_TypeOfSchool",
-      "name": "Person With Gender = Female, Enrollment Level = Enrolled in Grade 1 To Grade 4, Type of School",
-      "statVars": [
-        {
-          "name": "Population: Female, Enrolled in Grade 1 To Grade 4, Private School",
-          "dcid": "dc/3d1k0tygkzrc9"
-        },
-        {
-          "name": "Population: Female, Enrolled in Grade 1 To Grade 4, Public School",
-          "dcid": "dc/f6yygkvshe2sc"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_EnrollmentLevel-EnrolledInGrade5ToGrade8_Gender-Female_TypeOfSchool",
-      "name": "Person With Gender = Female, Enrollment Level = Enrolled in Grade 5 To Grade 8, Type of School",
-      "statVars": [
-        {
-          "name": "Population: Female, Enrolled in Grade 5 To Grade 8, Private School",
-          "dcid": "dc/vg4dvk67ynl7"
-        },
-        {
-          "name": "Population: Female, Enrolled in Grade 5 To Grade 8, Public School",
-          "dcid": "dc/938xr48xyz1v3"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_EnrollmentLevel-EnrolledInGrade9ToGrade12_Gender-Female_TypeOfSchool",
-      "name": "Person With Gender = Female, Enrollment Level = Enrolled in Grade 9 To Grade 12, Type of School",
-      "statVars": [
-        {
-          "name": "Population: Female, Enrolled in Grade 9 To Grade 12, Private School",
-          "dcid": "dc/lq7sly0t34sc4"
-        },
-        {
-          "name": "Population: Female, Enrolled in Grade 9 To Grade 12, Public School",
-          "dcid": "dc/b37t6pmrzqkmh"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_EnrollmentLevel-EnrolledInGraduateOrProfessionalSchool_Gender-Female_TypeOfSchool",
-      "name": "Person With Gender = Female, Enrollment Level = Enrolled in Graduate or Professional School, Type of School",
-      "statVars": [
-        {
-          "name": "Population: Female, Enrolled in Graduate or Professional School, Private School",
-          "dcid": "dc/c8tyqc3f69xs5"
-        },
-        {
-          "name": "Population: Female, Enrolled in Graduate or Professional School, Public School",
-          "dcid": "dc/b50mk8kek4fz3"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_EnrollmentLevel-EnrolledInKindergarten_Gender-Female_TypeOfSchool",
-      "name": "Person With Gender = Female, Enrollment Level = Enrolled in Kindergarten, Type of School",
-      "statVars": [
-        {
-          "name": "Population: Female, Enrolled in Kindergarten, Private School",
-          "dcid": "dc/kzyx3ll4kpfk1"
-        },
-        {
-          "name": "Population: Female, Enrolled in Kindergarten, Public School",
-          "dcid": "dc/wvxlkgg1rw7k7"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_EnrollmentLevel-EnrolledInNurserySchoolPreschool_Gender-Female_TypeOfSchool",
-      "name": "Person With Gender = Female, Enrollment Level = Enrolled in Nursery School Preschool, Type of School",
-      "statVars": [
-        {
-          "name": "Population: Female, Enrolled in Nursery School Preschool, Private School",
-          "dcid": "dc/c9y5pyd6tt8p1"
-        },
-        {
-          "name": "Population: Female, Enrolled in Nursery School Preschool, Public School",
-          "dcid": "dc/lr4ve69p16sch"
         }
       ]
     },
@@ -11857,6 +11815,34 @@
     {
       "dcid": "dc/g/HateCrimeIncidents_OffenderRace-BlackOrAfricanAmericanAlone_OffenderType_TargetedGender-Female",
       "name": "Hate Crime Incidents With Offender Race = Black or African American Alone, Offender Type, Targeted Gender = Female"
+    },
+    {
+      "dcid": "dc/g/HateCrimeIncidents_OffenderRace-TwoOrMoreRaces_OffenderType-OffenderRaceKnown_TargetedGender-Female",
+      "name": "Hate Crime Incidents With Offender Race = Two or More Races, Offender Type = Offender Race Known, Targeted Gender = Female"
+    },
+    {
+      "dcid": "dc/g/HateCrimeIncidents_OffenderRace-TwoOrMoreRaces_OffenderType_TargetedGender-Female",
+      "name": "Hate Crime Incidents With Offender Race = Two or More Races, Offender Type, Targeted Gender = Female"
+    },
+    {
+      "dcid": "dc/g/HateCrimeIncidents_OffenderRace-WhiteAlone_OffenderType-OffenderRaceKnown_TargetedGender-Female",
+      "name": "Hate Crime Incidents With Offender Race = White Alone, Offender Type = Offender Race Known, Targeted Gender = Female"
+    },
+    {
+      "dcid": "dc/g/HateCrimeIncidents_OffenderRace-WhiteAlone_OffenderType_TargetedGender-Female",
+      "name": "Hate Crime Incidents With Offender Race = White Alone, Offender Type, Targeted Gender = Female"
+    },
+    {
+      "dcid": "dc/g/HateCrimeIncidents_OffenderRace_OffenderType-OffenderRaceKnown_TargetedGender-Female",
+      "name": "Hate Crime Incidents With Offender Race, Offender Type = Offender Race Known, Targeted Gender = Female"
+    },
+    {
+      "dcid": "dc/g/MedicalConditionIncident_Age-Years0To4_ClimaticSeason-SummerSeason_Gender-Female",
+      "name": "Medical Condition Incident With Age = 0 - 4 Years, Climatic Season = Summer Season, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/MedicalConditionIncident_Age-Years0To4_ClimaticSeason_Gender-Female",
+      "name": "Medical Condition Incident With Age = 0 - 4 Years, Climatic Season, Gender = Female"
     }
   ],
   "matches": [

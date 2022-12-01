@@ -3,31 +3,31 @@
     {
       "statVar": "Count_Establishment_NAICSArtsEntertainmentRecreation",
       "statVarName": "Count of Establishment: Arts, Entertainment, And Recreation (NAICS/71)",
-      "score": 20.9965,
+      "score": 21.137,
       "explanation": "OR query: [mp] [count] [pt] [USCEstablishment] [naics] [NAICS/71]"
     },
     {
       "statVar": "WagesAnnual_Establishment_NAICSArtsEntertainmentRecreation",
       "statVarName": "Wages Annual of Establishment: Arts, Entertainment, And Recreation (NAICS/71)",
-      "score": 20.9965,
+      "score": 21.137,
       "explanation": "OR query: [mp] wagesAnnual [pt] [USCEstablishment] [naics] [NAICS/71]"
     },
     {
       "statVar": "Count_Establishment_NAICSArtsEntertainmentRecreation_WithPayroll_ExemptFromFederalIncomeTax",
       "statVarName": "Count of Establishment: Arts, Entertainment, And Recreation (NAICS/71), Exempt From Federal Income Tax",
-      "score": 19.3858,
+      "score": 19.5235,
       "explanation": "OR query: [mp] [count] [pt] [USCEstablishment] [naics] [NAICS/71] taxStatus ExemptFromFederalIncomeTax"
     },
     {
       "statVar": "Count_Establishment_NAICSArtsEntertainmentRecreation_WithPayroll_SubjectToFederalIncomeTax",
       "statVarName": "Count of Establishment: Arts, Entertainment, And Recreation (NAICS/71), Subject To Federal Income Tax",
-      "score": 19.3858,
+      "score": 19.5235,
       "explanation": "OR query: [mp] [count] [pt] [USCEstablishment] [naics] [NAICS/71] taxStatus SubjectToFederalIncomeTax"
     },
     {
       "statVar": "ReceiptsOrRevenue_Establishment_NAICSArtsEntertainmentRecreation_WithPayroll",
       "statVarName": "Receipts or Revenue of Establishment: Arts, Entertainment, And Recreation (NAICS/71), With Payroll",
-      "score": 19.3858,
+      "score": 19.5235,
       "explanation": "OR query: [mp] receiptsOrRevenue [pt] [USCEstablishment] [naics] [NAICS/71] payrollStatus WithPayroll"
     }
   ]
