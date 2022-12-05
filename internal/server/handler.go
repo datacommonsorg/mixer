@@ -35,7 +35,6 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/v0/propertylabel"
 	"github.com/datacommonsorg/mixer/internal/server/v0/propertyvalue"
 	"github.com/datacommonsorg/mixer/internal/server/v0/statpoint"
-	"github.com/datacommonsorg/mixer/internal/server/v0/statset"
 	"github.com/datacommonsorg/mixer/internal/server/v0/statvarpath"
 	"github.com/datacommonsorg/mixer/internal/server/v0/statvarsummary"
 	"github.com/datacommonsorg/mixer/internal/server/v0/triple"
@@ -62,30 +61,6 @@ func (s *Server) GetStatValue(ctx context.Context, in *pb.GetStatValueRequest) (
 	*pb.GetStatValueResponse, error,
 ) {
 	return statpoint.GetStatValue(ctx, in, s.store)
-}
-
-// GetStatSet implements API for Mixer.GetStatSet.
-// Endpoint: /stat/set
-func (s *Server) GetStatSet(ctx context.Context, in *pb.GetStatSetRequest) (
-	*pb.GetStatSetResponse, error,
-) {
-	return statset.GetStatSet(ctx, in, s.store)
-}
-
-// GetStatSetWithinPlace implements API for Mixer.GetStatSetWithinPlace.
-// Endpoint: /stat/set/within-place
-func (s *Server) GetStatSetWithinPlace(
-	ctx context.Context, in *pb.GetStatSetWithinPlaceRequest,
-) (*pb.GetStatSetResponse, error) {
-	return statset.GetStatSetWithinPlace(ctx, in, s.store)
-}
-
-// GetStatSetWithinPlaceAll implements API for Mixer.GetStatSetWithinPlaceAll.
-// Endpoint: /stat/set/within-place/all
-func (s *Server) GetStatSetWithinPlaceAll(
-	ctx context.Context, in *pb.GetStatSetWithinPlaceRequest,
-) (*pb.GetStatSetAllResponse, error) {
-	return statset.GetStatSetWithinPlaceAll(ctx, in, s.store)
 }
 
 // GetStatSeries implements API for Mixer.GetStatSeries.
