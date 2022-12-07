@@ -1,0 +1,69 @@
+{
+  "node": "dc/g/Root",
+  "info": {
+    "absoluteName": "Data Commons Variables",
+    "childStatVarGroups": [
+      {
+        "id": "dc/g/Agriculture",
+        "specializedEntity": "Agriculture",
+        "displayName": "Agriculture",
+        "descendentStatVarCount": 157
+      },
+      {
+        "id": "dc/g/Demographics",
+        "specializedEntity": "Demographics",
+        "displayName": "Demographics",
+        "descendentStatVarCount": 32041
+      },
+      {
+        "id": "dc/g/Economy",
+        "specializedEntity": "Economy",
+        "displayName": "Economy",
+        "descendentStatVarCount": 64026
+      },
+      {
+        "id": "dc/g/Education",
+        "specializedEntity": "Education",
+        "displayName": "Education",
+        "descendentStatVarCount": 4845
+      },
+      {
+        "id": "dc/g/Energy",
+        "specializedEntity": "Energy",
+        "displayName": "Energy",
+        "descendentStatVarCount": 9754
+      },
+      {
+        "id": "dc/g/Environment",
+        "specializedEntity": "Environment",
+        "displayName": "Environment",
+        "descendentStatVarCount": 2349
+      },
+      {
+        "id": "dc/g/Health",
+        "specializedEntity": "Health",
+        "displayName": "Health",
+        "descendentStatVarCount": 13922
+      },
+      {
+        "id": "dc/g/Housing",
+        "specializedEntity": "Housing",
+        "displayName": "Housing",
+        "descendentStatVarCount": 528
+      },
+      {
+        "id": "dc/g/Crime",
+        "specializedEntity": "Crime",
+        "displayName": "Crime",
+        "descendentStatVarCount": 8616
+      },
+      {
+        "id": "dc/g/Uncategorized",
+        "specializedEntity": "Uncategorized",
+        "displayName": "Uncategorized",
+        "descendentStatVarCount": 14403
+      }
+    ],
+    "descendentStatVarCount": 113171
+  }
+}
