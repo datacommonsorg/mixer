@@ -61,6 +61,10 @@
         "specializedEntity": "Uncategorized",
         "displayName": "Uncategorized",
         "descendentStatVarCount": 2381
+      },
+      {
+        "id": "g/Feeding_America",
+        "specializedEntity": "Feeding America"
       }
     ],
     "descendentStatVarCount": 11231
