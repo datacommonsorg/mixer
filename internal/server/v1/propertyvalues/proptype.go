@@ -70,5 +70,22 @@ func getNodePropType(
 			}
 		}
 	}
+	// In an import group, if a node is referenced but not defined, it would have
+	// a typeOf "Thing" whenever it appears in node related caches. This should
+	// be removed if other import group has a more meaningful type information.
+	for node := range result {
+		for prop := range result[node] {
+			types := result[node][prop]
+			if len(types) > 1 {
+				filtered_types := []string{}
+				for _, t := range types {
+					if t != "Thing" {
+						filtered_types = append(filtered_types, t)
+					}
+				}
+				result[node][prop] = filtered_types
+			}
+		}
+	}
 	return result, nil
 }

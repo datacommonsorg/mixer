@@ -1,0 +1,20 @@
+{
+  "values": [
+    {
+      "name": "dengue shock syndrome",
+      "types": [
+        "Disease"
+      ],
+      "dcid": "bio/DOID_0050125",
+      "provenanceId": "dc/5l5zxr1"
+    },
+    {
+      "name": "dengue hemorrhagic fever",
+      "types": [
+        "Disease"
+      ],
+      "dcid": "bio/DOID_12206",
+      "provenanceId": "dc/5l5zxr1"
+    }
+  ]
+}
