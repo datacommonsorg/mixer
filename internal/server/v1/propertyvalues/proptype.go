@@ -77,13 +77,13 @@ func getNodePropType(
 		for prop := range result[node] {
 			types := result[node][prop]
 			if len(types) > 1 {
-				filtered_types := []string{}
+				filteredTypes := []string{}
 				for _, t := range types {
 					if t != "Thing" {
-						filtered_types = append(filtered_types, t)
+						filteredTypes = append(filteredTypes, t)
 					}
 				}
-				result[node][prop] = filtered_types
+				result[node][prop] = filteredTypes
 			}
 		}
 	}
