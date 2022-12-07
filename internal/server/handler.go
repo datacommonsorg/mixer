@@ -35,7 +35,6 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/v0/propertylabel"
 	"github.com/datacommonsorg/mixer/internal/server/v0/propertyvalue"
 	"github.com/datacommonsorg/mixer/internal/server/v0/statpoint"
-	"github.com/datacommonsorg/mixer/internal/server/v0/statvarpath"
 	"github.com/datacommonsorg/mixer/internal/server/v0/statvarsummary"
 	"github.com/datacommonsorg/mixer/internal/server/v0/triple"
 	"google.golang.org/protobuf/encoding/protojson"
@@ -172,27 +171,6 @@ func (s *Server) GetEntityStatVarsUnionV1(
 	ctx context.Context, in *pb.GetEntityStatVarsUnionRequest,
 ) (*pb.GetEntityStatVarsUnionResponse, error) {
 	return statvar.GetEntityStatVarsUnionV1(ctx, in, s.store)
-}
-
-// GetStatVarGroup implements API for Mixer.GetStatVarGroup.
-func (s *Server) GetStatVarGroup(
-	ctx context.Context, in *pb.GetStatVarGroupRequest,
-) (*pb.StatVarGroups, error) {
-	return statvar.GetStatVarGroup(ctx, in, s.store, s.cache)
-}
-
-// GetStatVarGroupNode implements API for Mixer.GetStatVarGroupNode.
-func (s *Server) GetStatVarGroupNode(
-	ctx context.Context, in *pb.GetStatVarGroupNodeRequest,
-) (*pb.StatVarGroupNode, error) {
-	return statvar.GetStatVarGroupNode(ctx, in, s.store, s.cache)
-}
-
-// GetStatVarPath implements API for Mixer.GetStatVarPath.
-func (s *Server) GetStatVarPath(
-	ctx context.Context, in *pb.GetStatVarPathRequest,
-) (*pb.GetStatVarPathResponse, error) {
-	return statvarpath.GetStatVarPath(ctx, in, s.store, s.cache)
 }
 
 // GetStatVarSummary implements API for Mixer.GetStatVarSummary.
