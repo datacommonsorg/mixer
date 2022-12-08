@@ -27,16 +27,6 @@ serviceGroups:
         memoryRequest: "8G"
         memoryLimit: "8G"
       useSearch: true
-  - recon:
-      urlPaths:
-        - "/v1/recon/*"
-      replicas:
-        default: 10
-        min: 10
-        max: 20
-      resources:
-        memoryRequest: "400M"
-        memoryLimit: "400M"
   - observation:
       urlPaths:
         - "/v1/observations/*"
