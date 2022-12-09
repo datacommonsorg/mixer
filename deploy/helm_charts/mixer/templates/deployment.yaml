@@ -49,6 +49,8 @@ spec:
       {{- include "mixer.selectorLabels" $ | nindent 6 }}
   template:
     metadata:
+      annotations:
+        timestamp: {{ now | quote }}
       labels:
         service:  {{ include "mixer.fullname" $ }}-{{ $serviceName }}
         {{- include "mixer.selectorLabels" $ | nindent 8 }}
