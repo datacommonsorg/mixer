@@ -19,12 +19,9 @@
 
 // REST API URL from the proto in this file:
 // ========================================
-//    /bulk/place-obs
 //    /bulk/stats
 //    /stat/all
-//    /stat/set
 //    /stat/series
-//    /stat/set/within-place
 //    /stat/value
 // ========================================
 
@@ -58,18 +55,6 @@ message PointStat {
   string facet = 5;
 }
 
-message PlacePointStat {
-  // Keyed by place DCID.
-  map<string, PointStat> stat = 1;
-  // Hash of the matdata, which applies to all the PointStat in `stat` field.
-  string meta_hash = 2;
-}
-
-message PlacePointStatAll {
-  // A list of PlacePointStat, with each one from one source.
-  repeated PlacePointStat stat_list = 1;
-}
-
 message SourceSeries {
   map<string, double> val = 1;
   string measurement_method = 3;
@@ -91,11 +76,6 @@ message Series {
   map<string, double> val = 1;
   // Series metadata.
   StatMetadata metadata = 2;
-}
-
-message SeriesMap {
-  // A wrapper proto for a map of series.
-  map<string, Series> data = 1;
 }
 
 // Represents observation time series data.
@@ -128,12 +108,6 @@ message PlaceStat {
   map<string, ObsTimeSeries> stat_var_data = 3;
 }
 
-// This is effectively the same proto as PlaceStat with different field name.
-// This is used to match the place page cache data.
-message StatVarObsSeries {
-  // Key is stat var dcid.
-  map<string, ObsTimeSeries> data = 1;
-}
 
 // Hold mapping from stat var id to Series struct. This is different from
 // StatVarObsSeries that the "Series" is processed time series with metadata
@@ -142,58 +116,6 @@ message StatVarSeries {
   // Key is stat var dcid.
   map<string, Series> data = 1;
 }
-
-// SVOPlace holds basic information about a DC place along with its associated
-// StatVarObservations.
-//
-// NOTE: Equivalent to legacy PopObsPlace.
-message SVOPlace {
-  string name = 1;
-  string type = 2;
-  string dcid = 3;
-  // All StatVarObservations associated with the place.
-  repeated SVOObservation observations = 4;
-  string provenance_id = 5;
-
-  // Not persisted in cache.
-  message Temp {
-    repeated string child_places = 2;
-    repeated string mids = 3;
-    reserved 1;
-  }
-  Temp temp = 6;
-}
-
-// Stores a StatVarObservation node.
-//
-// NOTE: Equivalent to legacy PopObsObservation.
-message SVOObservation {
-  string dcid = 1;
-  string observation_date = 2;
-  string observation_period = 3;
-  string measurement_method = 4;
-  string unit = 5;
-  string scaling_factor = 6;
-  string provenance_id = 7;
-
-  oneof val {
-    // Represents value for statType == "measurementResult"
-    string str_value = 8;
-    // Represents value for statType != "measurementResult"
-    double dbl_value = 9;
-  }
-
-  // Not persisted in cache.
-  message Temp {
-    string observation_about = 1;
-    string variable_measured = 2;
-    string import_name = 3;
-  }
-  Temp temp = 10;
-}
-
-// SVOCollection holds information for multiple SVOPlace instances.
-message SVOCollection { repeated SVOPlace places = 1; }
 
 // Request message for GetStats.
 message GetStatsRequest {
@@ -321,43 +243,6 @@ message GetStatAllRequest {
 //   }
 // }
 message GetStatAllResponse { map<string, PlaceStat> place_data = 1; }
-
-message GetStatSetWithinPlaceRequest {
-  // Parent place dcid.
-  string parent_place = 1;
-  // Child place type.
-  string child_type = 2;
-  // Dcid of the stat var.
-  repeated string stat_vars = 3;
-  // [Optional] Date for the stat in ISO format.
-  // If the date is not given, then the latest observation for each place is
-  // returned, where they could be from different sources.
-  string date = 4;
-}
-
-message GetStatSetRequest {
-  // A list of place DCIDs.
-  repeated string places = 1;
-  // A list of statistical variable DCIDs.
-  repeated string stat_vars = 2;
-  // (Optional) date of the stat.
-  // If not sepcified, the latest stat of a chosen source will be returned.
-  string date = 3;
-}
-
-message GetStatSetResponse {
-  // Keyed by statVar.
-  map<string, PlacePointStat> data = 1;
-  // Keyed by metadata hash.
-  map<string, StatMetadata> metadata = 2;
-}
-
-message GetStatSetAllResponse {
-  // Keyed by statVar.
-  map<string, PlacePointStatAll> data = 1;
-  // Keyed by metadata hash.
-  map<string, StatMetadata> metadata = 2;
-}
 
 message StatDate {
   // Map from date to the number of places.
