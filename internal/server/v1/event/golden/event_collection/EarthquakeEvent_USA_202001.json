@@ -1,5 +1,5 @@
 {
-  "event_collection": {
+  "eventCollection": {
     "events": [
       {
         "places": [
@@ -13,20 +13,18 @@
           "ipcc_50/67.75_-160.75_USA",
           "zip/99752"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 67.5132,
-                "longitude": -160.9215
-              }
+            "point": {
+              "latitude": 67.5132,
+              "longitude": -160.9215
             }
           }
         ],
         "dates": [
           "2020-01-22T05:58:35"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitude",
             "val": [
@@ -74,20 +72,18 @@
           "ipcc_50/61.25_-149.75_USA",
           "zip/99654"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 61.2897,
-                "longitude": -149.9862
-              }
+            "point": {
+              "latitude": 61.2897,
+              "longitude": -149.9862
             }
           }
         ],
         "dates": [
           "2020-01-22T09:01:38"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeType",
             "val": [
@@ -133,20 +129,18 @@
           "geoId/sch0200840",
           "ipcc_50/60.25_-141.25_USA"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 60.3633,
-                "longitude": -141.356
-              }
+            "point": {
+              "latitude": 60.3633,
+              "longitude": -141.356
             }
           }
         ],
         "dates": [
           "2020-01-22T14:10:09"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depthError",
             "val": [
@@ -186,20 +180,18 @@
           "country/USA",
           "ipcc_50/51.75_-177.75_USA"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 51.8576,
-                "longitude": -177.8712
-              }
+            "point": {
+              "latitude": 51.8576,
+              "longitude": -177.8712
             }
           }
         ],
         "dates": [
           "2020-01-23T16:56:58"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeType",
             "val": [
@@ -245,20 +237,18 @@
           "geoId/sch0200010",
           "ipcc_50/51.75_-177.75_USA"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 51.8218,
-                "longitude": -177.8453
-              }
+            "point": {
+              "latitude": 51.8218,
+              "longitude": -177.8453
             }
           }
         ],
         "dates": [
           "2020-01-23T18:23:48"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeType",
             "val": [
@@ -305,20 +295,18 @@
           "ipcc_50/59.75_-150.75_USA",
           "zip/99664"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 59.6529,
-                "longitude": -150.5461
-              }
+            "point": {
+              "latitude": 59.6529,
+              "longitude": -150.5461
             }
           }
         ],
         "dates": [
           "2020-01-23T20:12:59"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitude",
             "val": [
@@ -365,20 +353,18 @@
           "ipcc_50/65.75_-166.25_USA",
           "zip/99772"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 65.985,
-                "longitude": -166.2558
-              }
+            "point": {
+              "latitude": 65.985,
+              "longitude": -166.2558
             }
           }
         ],
         "dates": [
           "2020-01-25T09:44:13"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "name",
             "val": [
@@ -425,20 +411,18 @@
           "ipcc_50/61.75_-150.25_USA",
           "zip/99688"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 61.8012,
-                "longitude": -150.31
-              }
+            "point": {
+              "latitude": 61.8012,
+              "longitude": -150.31
             }
           }
         ],
         "dates": [
           "2020-01-26T01:27:27"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "name",
             "val": [
@@ -484,20 +468,18 @@
           "geoId/sch0200775",
           "ipcc_50/66.75_-146.25_USA"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 66.8858,
-                "longitude": -146.4284
-              }
+            "point": {
+              "latitude": 66.8858,
+              "longitude": -146.4284
             }
           }
         ],
         "dates": [
           "2020-01-27T13:03:48"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitude",
             "val": [
@@ -542,20 +524,18 @@
           "geoId/sch0200800",
           "zip/99686"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 60.8709,
-                "longitude": -146.1862
-              }
+            "point": {
+              "latitude": 60.8709,
+              "longitude": -146.1862
             }
           }
         ],
         "dates": [
           "2020-01-27T13:25:20"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeType",
             "val": [
@@ -602,20 +582,18 @@
           "ipcc_50/61.75_-151.25_USA",
           "zip/99667"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 61.6355,
-                "longitude": -151.0912
-              }
+            "point": {
+              "latitude": 61.6355,
+              "longitude": -151.0912
             }
           }
         ],
         "dates": [
           "2020-01-27T18:01:13"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeType",
             "val": [
@@ -661,20 +639,18 @@
           "geoId/sch0200485",
           "ipcc_50/60.25_-153.75_USA"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 60.2128,
-                "longitude": -153.561
-              }
+            "point": {
+              "latitude": 60.2128,
+              "longitude": -153.561
             }
           }
         ],
         "dates": [
           "2020-01-28T14:52:45"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitude",
             "val": [
@@ -720,20 +696,18 @@
           "geoId/sch0200485",
           "ipcc_50/57.25_-156.75_USA"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 57.2162,
-                "longitude": -156.9263
-              }
+            "point": {
+              "latitude": 57.2162,
+              "longitude": -156.9263
             }
           }
         ],
         "dates": [
           "2020-01-30T02:17:38"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depthError",
             "val": [
@@ -780,20 +754,18 @@
           "ipcc_50/61.75_-146.75_USA",
           "zip/99573"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 61.5048,
-                "longitude": -146.5539
-              }
+            "point": {
+              "latitude": 61.5048,
+              "longitude": -146.5539
             }
           }
         ],
         "dates": [
           "2020-01-30T21:26:40"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depth",
             "val": [
@@ -839,20 +811,18 @@
           "geoId/sch0200390",
           "ipcc_50/58.75_-153.75_USA"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 58.8784,
-                "longitude": -153.8081
-              }
+            "point": {
+              "latitude": 58.8784,
+              "longitude": -153.8081
             }
           }
         ],
         "dates": [
           "2020-01-30T23:12:29"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeType",
             "val": [
@@ -898,20 +868,18 @@
           "geoId/sch0200480",
           "ipcc_50/58.75_-153.75_USA"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 58.8314,
-                "longitude": -153.6106
-              }
+            "point": {
+              "latitude": 58.8314,
+              "longitude": -153.6106
             }
           }
         ],
         "dates": [
           "2020-01-31T05:49:12"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeType",
             "val": [
@@ -957,20 +925,18 @@
           "geoId/sch0200480",
           "ipcc_50/58.75_-153.75_USA"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 58.8306,
-                "longitude": -153.5903
-              }
+            "point": {
+              "latitude": 58.8306,
+              "longitude": -153.5903
             }
           }
         ],
         "dates": [
           "2020-01-31T06:58:43"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeType",
             "val": [
@@ -1016,20 +982,18 @@
           "geoId/sch0200390",
           "ipcc_50/58.75_-153.75_USA"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 58.8618,
-                "longitude": -153.8253
-              }
+            "point": {
+              "latitude": 58.8618,
+              "longitude": -153.8253
             }
           }
         ],
         "dates": [
           "2020-01-31T07:03:24"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeType",
             "val": [
@@ -1075,20 +1039,18 @@
           "geoId/sch0200840",
           "ipcc_50/60.25_-141.25_USA"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 60.2948,
-                "longitude": -141.0884
-              }
+            "point": {
+              "latitude": 60.2948,
+              "longitude": -141.0884
             }
           }
         ],
         "dates": [
           "2020-01-31T11:54:09"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "name",
             "val": [
@@ -1135,20 +1097,18 @@
           "ipcc_50/66.25_-157.25_USA",
           "zip/99746"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 66.3018,
-                "longitude": -157.2157
-              }
+            "point": {
+              "latitude": 66.3018,
+              "longitude": -157.2157
             }
           }
         ],
         "dates": [
           "2020-01-31T12:47:50"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depthError",
             "val": [
@@ -1195,20 +1155,18 @@
           "ipcc_50/66.25_-157.25_USA",
           "zip/99746"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 66.2815,
-                "longitude": -157.2501
-              }
+            "point": {
+              "latitude": 66.2815,
+              "longitude": -157.2501
             }
           }
         ],
         "dates": [
           "2020-01-31T18:21:48"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depth",
             "val": [
@@ -1255,20 +1213,18 @@
           "geoId/sch0200240",
           "ipcc_50/57.25_-135.75_USA"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 57.1019,
-                "longitude": -135.7592
-              }
+            "point": {
+              "latitude": 57.1019,
+              "longitude": -135.7592
             }
           }
         ],
         "dates": [
           "2020-01-02T07:02:17"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depth",
             "val": [
@@ -1314,20 +1270,18 @@
           "geoId/sch0200485",
           "ipcc_50/58.25_-156.25_USA"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 58.486,
-                "longitude": -156.3196
-              }
+            "point": {
+              "latitude": 58.486,
+              "longitude": -156.3196
             }
           }
         ],
         "dates": [
           "2020-01-02T19:08:39"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "name",
             "val": [
@@ -1374,20 +1328,18 @@
           "ipcc_50/65.75_-143.25_USA",
           "zip/99738"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 65.5963,
-                "longitude": -143.0715
-              }
+            "point": {
+              "latitude": 65.5963,
+              "longitude": -143.0715
             }
           }
         ],
         "dates": [
           "2020-01-03T00:16:59"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeType",
             "val": [
@@ -1433,20 +1385,18 @@
           "geoId/sch0200390",
           "ipcc_50/60.75_-150.25_USA"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 60.6699,
-                "longitude": -150.3617
-              }
+            "point": {
+              "latitude": 60.6699,
+              "longitude": -150.3617
             }
           }
         ],
         "dates": [
           "2020-01-03T06:44:28"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitude",
             "val": [
@@ -1492,20 +1442,18 @@
           "geoId/sch0200610",
           "ipcc_50/69.75_-144.75_USA"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 69.5427,
-                "longitude": -144.7874
-              }
+            "point": {
+              "latitude": 69.5427,
+              "longitude": -144.7874
             }
           }
         ],
         "dates": [
           "2020-01-03T13:16:17"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeType",
             "val": [
@@ -1551,20 +1499,18 @@
           "geoId/sch0200840",
           "ipcc_50/60.25_-139.25_USA"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 60.0149,
-                "longitude": -139.2099
-              }
+            "point": {
+              "latitude": 60.0149,
+              "longitude": -139.2099
             }
           }
         ],
         "dates": [
           "2020-01-04T15:37:57"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "name",
             "val": [
@@ -1610,20 +1556,18 @@
           "geoId/sch0200775",
           "ipcc_50/65.75_-150.75_USA"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 65.8322,
-                "longitude": -150.803
-              }
+            "point": {
+              "latitude": 65.8322,
+              "longitude": -150.803
             }
           }
         ],
         "dates": [
           "2020-01-06T01:20:21"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depth",
             "val": [
@@ -1670,20 +1614,18 @@
           "ipcc_50/66.25_-157.25_USA",
           "zip/99746"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 66.2051,
-                "longitude": -157.1132
-              }
+            "point": {
+              "latitude": 66.2051,
+              "longitude": -157.1132
             }
           }
         ],
         "dates": [
           "2020-01-06T15:24:32"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "name",
             "val": [
@@ -1729,20 +1671,18 @@
           "geoId/sch0200775",
           "ipcc_50/65.75_-150.75_USA"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 65.8026,
-                "longitude": -150.8751
-              }
+            "point": {
+              "latitude": 65.8026,
+              "longitude": -150.8751
             }
           }
         ],
         "dates": [
           "2020-01-07T11:06:01"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depth",
             "val": [
@@ -1788,20 +1728,18 @@
           "geoId/sch0200770",
           "ipcc_50/63.25_-151.25_USA"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 63.1186,
-                "longitude": -151.4743
-              }
+            "point": {
+              "latitude": 63.1186,
+              "longitude": -151.4743
             }
           }
         ],
         "dates": [
           "2020-01-07T16:10:14"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "name",
             "val": [
@@ -1848,20 +1786,18 @@
           "ipcc_50/60.25_-152.75_USA",
           "zip/99682"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 60.0295,
-                "longitude": -152.8434
-              }
+            "point": {
+              "latitude": 60.0295,
+              "longitude": -152.8434
             }
           }
         ],
         "dates": [
           "2020-01-08T04:40:51"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "name",
             "val": [
@@ -1907,20 +1843,18 @@
           "geoId/sch0200485",
           "ipcc_50/57.75_-156.25_USA"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 57.8973,
-                "longitude": -156.2684
-              }
+            "point": {
+              "latitude": 57.8973,
+              "longitude": -156.2684
             }
           }
         ],
         "dates": [
           "2020-01-09T02:46:34"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "name",
             "val": [
@@ -1966,20 +1900,18 @@
           "geoId/sch0200510",
           "ipcc_50/62.75_-148.75_USA"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 62.7187,
-                "longitude": -148.6308
-              }
+            "point": {
+              "latitude": 62.7187,
+              "longitude": -148.6308
             }
           }
         ],
         "dates": [
           "2020-01-10T21:01:43"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depth",
             "val": [
@@ -2026,20 +1958,18 @@
           "ipcc_50/60.25_-152.75_USA",
           "zip/99682"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 60.167,
-                "longitude": -152.7229
-              }
+            "point": {
+              "latitude": 60.167,
+              "longitude": -152.7229
             }
           }
         ],
         "dates": [
           "2020-01-11T04:34:31"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeType",
             "val": [
@@ -2079,20 +2009,18 @@
           "geoId/sch0200770",
           "ipcc_50/63.25_-151.25_USA"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 63.2042,
-                "longitude": -151.4148
-              }
+            "point": {
+              "latitude": 63.2042,
+              "longitude": -151.4148
             }
           }
         ],
         "dates": [
           "2020-01-11T11:36:33"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "name",
             "val": [
@@ -2139,20 +2067,18 @@
           "ipcc_50/61.75_-147.75_USA",
           "zip/99674"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 61.6408,
-                "longitude": -147.9089
-              }
+            "point": {
+              "latitude": 61.6408,
+              "longitude": -147.9089
             }
           }
         ],
         "dates": [
           "2020-01-13T02:03:42"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depth",
             "val": [
@@ -2199,20 +2125,18 @@
           "ipcc_50/64.75_-148.75_USA",
           "zip/99760"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 64.716,
-                "longitude": -148.53
-              }
+            "point": {
+              "latitude": 64.716,
+              "longitude": -148.53
             }
           }
         ],
         "dates": [
           "2020-01-14T20:46:55"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depthError",
             "val": [
@@ -2260,20 +2184,18 @@
           "ipcc_50/57.75_-152.25_USA",
           "zip/99615"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 57.5747,
-                "longitude": -152.329
-              }
+            "point": {
+              "latitude": 57.5747,
+              "longitude": -152.329
             }
           }
         ],
         "dates": [
           "2020-01-15T15:42:53"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depthError",
             "val": [
@@ -2319,20 +2241,18 @@
           "geoId/sch0200485",
           "ipcc_50/57.75_-156.75_USA"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 57.5617,
-                "longitude": -156.6478
-              }
+            "point": {
+              "latitude": 57.5617,
+              "longitude": -156.6478
             }
           }
         ],
         "dates": [
           "2020-01-15T17:16:48"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depthError",
             "val": [
@@ -2379,20 +2299,18 @@
           "ipcc_50/60.75_-152.75_USA",
           "zip/99682"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 60.6992,
-                "longitude": -152.837
-              }
+            "point": {
+              "latitude": 60.6992,
+              "longitude": -152.837
             }
           }
         ],
         "dates": [
           "2020-01-16T09:53:18"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depthError",
             "val": [
@@ -2438,20 +2356,18 @@
           "geoId/sch0200510",
           "ipcc_50/62.75_-148.25_USA"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 62.8679,
-                "longitude": -148.1649
-              }
+            "point": {
+              "latitude": 62.8679,
+              "longitude": -148.1649
             }
           }
         ],
         "dates": [
           "2020-01-17T20:05:43"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depthError",
             "val": [
@@ -2499,20 +2415,18 @@
           "ipcc_50/61.25_-149.75_USA",
           "zip/99652"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 61.4931,
-                "longitude": -149.9424
-              }
+            "point": {
+              "latitude": 61.4931,
+              "longitude": -149.9424
             }
           }
         ],
         "dates": [
           "2020-01-19T01:48:51"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeType",
             "val": [
@@ -2556,20 +2470,18 @@
           "geoId/0228286498",
           "geoId/sch0200840"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 59.1891,
-                "longitude": -138.4487
-              }
+            "point": {
+              "latitude": 59.1891,
+              "longitude": -138.4487
             }
           }
         ],
         "dates": [
           "2020-01-20T01:48:19"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeType",
             "val": [
@@ -2616,20 +2528,18 @@
           "ipcc_50/60.25_-150.25_USA",
           "zip/99610"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 60.1062,
-                "longitude": -150.4541
-              }
+            "point": {
+              "latitude": 60.1062,
+              "longitude": -150.4541
             }
           }
         ],
         "dates": [
           "2020-01-21T19:27:49"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeType",
             "val": [
@@ -2675,20 +2585,18 @@
           "geoId/sch0200010",
           "ipcc_50/51.75_-177.75_USA"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 51.85167,
-                "longitude": -177.97017
-              }
+            "point": {
+              "latitude": 51.85167,
+              "longitude": -177.97017
             }
           }
         ],
         "dates": [
           "2020-01-23T18:28:57"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitude",
             "val": [
@@ -2740,20 +2648,18 @@
           "geoId/sch0628650",
           "ipcc_50/33.75_-117.75_USA"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 33.81133,
-                "longitude": -117.68967
-              }
+            "point": {
+              "latitude": 33.81133,
+              "longitude": -117.68967
             }
           }
         ],
         "dates": [
           "2020-01-01T10:38:35"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeError",
             "val": [
@@ -2805,20 +2711,18 @@
           "geoId/sch0636800",
           "ipcc_50/35.75_-117.75_USA"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 35.79283,
-                "longitude": -117.61633
-              }
+            "point": {
+              "latitude": 35.79283,
+              "longitude": -117.61633
             }
           }
         ],
         "dates": [
           "2020-01-03T05:48:05"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "name",
             "val": [
@@ -2870,20 +2774,18 @@
           "geoId/sch0636800",
           "ipcc_50/35.75_-117.75_USA"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 35.6765,
-                "longitude": -117.54783
-              }
+            "point": {
+              "latitude": 35.6765,
+              "longitude": -117.54783
             }
           }
         ],
         "dates": [
           "2020-01-08T16:11:18"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depthError",
             "val": [
@@ -2935,20 +2837,18 @@
           "geoId/sch0639840",
           "ipcc_50/35.75_-117.25_USA"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 35.64533,
-                "longitude": -117.48267
-              }
+            "point": {
+              "latitude": 35.64533,
+              "longitude": -117.48267
             }
           }
         ],
         "dates": [
           "2020-01-17T13:06:21"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depth",
             "val": [
@@ -3000,20 +2900,18 @@
           "geoId/sch0639840",
           "ipcc_50/35.75_-117.25_USA"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 35.61733,
-                "longitude": -117.432
-              }
+            "point": {
+              "latitude": 35.61733,
+              "longitude": -117.432
             }
           }
         ],
         "dates": [
           "2020-01-21T02:08:19"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "name",
             "val": [
@@ -3067,20 +2965,18 @@
           "ipcc_50/34.25_-118.25_USA",
           "zip/91344"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 34.3005,
-                "longitude": -118.4855
-              }
+            "point": {
+              "latitude": 34.3005,
+              "longitude": -118.4855
             }
           }
         ],
         "dates": [
           "2020-01-22T07:41:10"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeError",
             "val": [
@@ -3133,20 +3029,18 @@
           "ipcc_50/35.25_-116.75_USA",
           "zip/92311"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 35.0975,
-                "longitude": -116.96967
-              }
+            "point": {
+              "latitude": 35.0975,
+              "longitude": -116.96967
             }
           }
         ],
         "dates": [
           "2020-01-25T03:03:34"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeType",
             "val": [
@@ -3193,20 +3087,18 @@
           "ipcc_50/35.25_-116.75_USA",
           "zip/92311"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 35.09467,
-                "longitude": -116.96783
-              }
+            "point": {
+              "latitude": 35.09467,
+              "longitude": -116.96783
             }
           }
         ],
         "dates": [
           "2020-01-25T03:09:43"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitude",
             "val": [
@@ -3259,20 +3151,18 @@
           "ipcc_50/34.75_-116.75_USA",
           "zip/92311"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 34.9955,
-                "longitude": -116.94067
-              }
+            "point": {
+              "latitude": 34.9955,
+              "longitude": -116.94067
             }
           }
         ],
         "dates": [
           "2020-01-27T05:25:22"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitude",
             "val": [
@@ -3327,20 +3217,18 @@
           "ipcc_50/35.25_-119.25_USA",
           "zip/93308"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 35.43583,
-                "longitude": -119.00833
-              }
+            "point": {
+              "latitude": 35.43583,
+              "longitude": -119.00833
             }
           }
         ],
         "dates": [
           "2020-01-29T12:56:21"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depthError",
             "val": [
@@ -3393,20 +3281,18 @@
           "ipcc_50/19.25_-155.25_USA",
           "zip/96777"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 19.22633,
-                "longitude": -155.41233
-              }
+            "point": {
+              "latitude": 19.22633,
+              "longitude": -155.41233
             }
           }
         ],
         "dates": [
           "2020-01-06T21:19:02"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depth",
             "val": [
@@ -3459,20 +3345,18 @@
           "ipcc_50/19.25_-155.25_USA",
           "zip/96777"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 19.35217,
-                "longitude": -155.49467
-              }
+            "point": {
+              "latitude": 19.35217,
+              "longitude": -155.49467
             }
           }
         ],
         "dates": [
           "2020-01-07T12:04:42"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitude",
             "val": [
@@ -3525,20 +3409,18 @@
           "ipcc_50/19.25_-155.25_USA",
           "zip/96777"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 19.211,
-                "longitude": -155.41083
-              }
+            "point": {
+              "latitude": 19.211,
+              "longitude": -155.41083
             }
           }
         ],
         "dates": [
           "2020-01-09T00:26:58"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depth",
             "val": [
@@ -3591,20 +3473,18 @@
           "ipcc_50/19.25_-155.25_USA",
           "zip/96777"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 19.22983,
-                "longitude": -155.41467
-              }
+            "point": {
+              "latitude": 19.22983,
+              "longitude": -155.41467
             }
           }
         ],
         "dates": [
           "2020-01-10T04:19:34"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depth",
             "val": [
@@ -3657,20 +3537,18 @@
           "ipcc_50/19.25_-155.25_USA",
           "zip/96777"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 19.22733,
-                "longitude": -155.41233
-              }
+            "point": {
+              "latitude": 19.22733,
+              "longitude": -155.41233
             }
           }
         ],
         "dates": [
           "2020-01-11T16:14:16"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeError",
             "val": [
@@ -3723,20 +3601,18 @@
           "ipcc_50/19.25_-155.25_USA",
           "zip/96778"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 19.32667,
-                "longitude": -155.17583
-              }
+            "point": {
+              "latitude": 19.32667,
+              "longitude": -155.17583
             }
           }
         ],
         "dates": [
           "2020-01-14T06:55:53"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "name",
             "val": [
@@ -3789,20 +3665,18 @@
           "ipcc_50/19.25_-155.75_USA",
           "zip/96785"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 19.42733,
-                "longitude": -155.60317
-              }
+            "point": {
+              "latitude": 19.42733,
+              "longitude": -155.60317
             }
           }
         ],
         "dates": [
           "2020-01-21T11:22:14"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitude",
             "val": [
@@ -3855,20 +3729,18 @@
           "ipcc_50/19.25_-155.25_USA",
           "zip/96777"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 19.23317,
-                "longitude": -155.411
-              }
+            "point": {
+              "latitude": 19.23317,
+              "longitude": -155.411
             }
           }
         ],
         "dates": [
           "2020-01-25T19:13:46"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeType",
             "val": [
@@ -3921,20 +3793,18 @@
           "ipcc_50/19.25_-155.25_USA",
           "zip/96778"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 19.331,
-                "longitude": -155.12167
-              }
+            "point": {
+              "latitude": 19.331,
+              "longitude": -155.12167
             }
           }
         ],
         "dates": [
           "2020-01-30T11:51:57"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "name",
             "val": [
@@ -3987,20 +3857,18 @@
           "ipcc_50/37.25_-121.75_USA",
           "zip/95037"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 37.176,
-                "longitude": -121.56383
-              }
+            "point": {
+              "latitude": 37.176,
+              "longitude": -121.56383
             }
           }
         ],
         "dates": [
           "2020-01-02T07:16:31"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeType",
             "val": [
@@ -4048,20 +3916,18 @@
           "ipcc_50/36.25_-120.75_USA",
           "zip/93930"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 36.24867,
-                "longitude": -120.82067
-              }
+            "point": {
+              "latitude": 36.24867,
+              "longitude": -120.82067
             }
           }
         ],
         "dates": [
           "2020-01-03T16:40:15"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeType",
             "val": [
@@ -4114,20 +3980,18 @@
           "ipcc_50/36.75_-121.75_USA",
           "zip/95020"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 36.96167,
-                "longitude": -121.59083
-              }
+            "point": {
+              "latitude": 36.96167,
+              "longitude": -121.59083
             }
           }
         ],
         "dates": [
           "2020-01-06T09:37:46"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depth",
             "val": [
@@ -4180,20 +4044,18 @@
           "ipcc_50/36.75_-121.75_USA",
           "zip/95045"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 36.842,
-                "longitude": -121.5775
-              }
+            "point": {
+              "latitude": 36.842,
+              "longitude": -121.5775
             }
           }
         ],
         "dates": [
           "2020-01-07T10:28:23"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitude",
             "val": [
@@ -4246,20 +4108,18 @@
           "ipcc_50/36.75_-121.75_USA",
           "zip/95004"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 36.87617,
-                "longitude": -121.61
-              }
+            "point": {
+              "latitude": 36.87617,
+              "longitude": -121.61
             }
           }
         ],
         "dates": [
           "2020-01-13T10:58:20"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "name",
             "val": [
@@ -4312,20 +4172,18 @@
           "ipcc_50/40.25_-123.75_USA",
           "zip/95560"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 40.14117,
-                "longitude": -123.8435
-              }
+            "point": {
+              "latitude": 40.14117,
+              "longitude": -123.8435
             }
           }
         ],
         "dates": [
           "2020-01-17T13:47:46"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "name",
             "val": [
@@ -4378,20 +4236,18 @@
           "ipcc_50/39.25_-123.25_USA",
           "zip/95470"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 39.26767,
-                "longitude": -123.222
-              }
+            "point": {
+              "latitude": 39.26767,
+              "longitude": -123.222
             }
           }
         ],
         "dates": [
           "2020-01-29T12:30:50"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitude",
             "val": [
@@ -4438,20 +4294,18 @@
           "ipcc_50/36.25_-98.25_USA",
           "zip/73760"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 36.4115,
-                "longitude": -98.14467
-              }
+            "point": {
+              "latitude": 36.4115,
+              "longitude": -98.14467
             }
           }
         ],
         "dates": [
           "2020-01-01T07:04:14"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeType",
             "val": [
@@ -4504,20 +4358,18 @@
           "ipcc_50/36.25_-98.25_USA",
           "zip/73718"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 36.29183,
-                "longitude": -98.17233
-              }
+            "point": {
+              "latitude": 36.29183,
+              "longitude": -98.17233
             }
           }
         ],
         "dates": [
           "2020-01-11T05:40:17"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depthError",
             "val": [
@@ -4570,20 +4422,18 @@
           "ipcc_50/18.25_-66.75_PRI",
           "zip/00656"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 18.0146,
-                "longitude": -66.8278
-              }
+            "point": {
+              "latitude": 18.0146,
+              "longitude": -66.8278
             }
           }
         ],
         "dates": [
           "2020-01-07T09:41:31"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "name",
             "val": [
@@ -4636,20 +4486,18 @@
           "ipcc_50/18.25_-66.75_PRI",
           "zip/00656"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 18.0223,
-                "longitude": -66.776
-              }
+            "point": {
+              "latitude": 18.0223,
+              "longitude": -66.776
             }
           }
         ],
         "dates": [
           "2020-01-07T11:18:43"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeError",
             "val": [
@@ -4703,20 +4551,18 @@
           "ipcc_50/18.25_-66.75_PRI",
           "zip/00656"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 18.0291,
-                "longitude": -66.7975
-              }
+            "point": {
+              "latitude": 18.0291,
+              "longitude": -66.7975
             }
           }
         ],
         "dates": [
           "2020-01-07T12:21:04"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depthError",
             "val": [
@@ -4769,20 +4615,18 @@
           "ipcc_50/18.25_-66.75_PRI",
           "zip/00656"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 18.0103,
-                "longitude": -66.7708
-              }
+            "point": {
+              "latitude": 18.0103,
+              "longitude": -66.7708
             }
           }
         ],
         "dates": [
           "2020-01-07T15:55:11"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitude",
             "val": [
@@ -4834,20 +4678,18 @@
           "geoId/sch7200030",
           "ipcc_50/17.75_-66.75_PRI"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9973,
-                "longitude": -66.7315
-              }
+            "point": {
+              "latitude": 17.9973,
+              "longitude": -66.7315
             }
           }
         ],
         "dates": [
           "2020-01-07T13:22:07"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitude",
             "val": [
@@ -4900,20 +4742,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00698"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9645,
-                "longitude": -66.8256
-              }
+            "point": {
+              "latitude": 17.9645,
+              "longitude": -66.8256
             }
           }
         ],
         "dates": [
           "2020-01-07T16:27:07"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitude",
             "val": [
@@ -4966,20 +4806,18 @@
           "ipcc_50/18.25_-66.75_PRI",
           "zip/00656"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 18.0061,
-                "longitude": -66.7643
-              }
+            "point": {
+              "latitude": 18.0061,
+              "longitude": -66.7643
             }
           }
         ],
         "dates": [
           "2020-01-07T17:59:37"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "name",
             "val": [
@@ -5030,20 +4868,18 @@
           "geoId/sch7200030",
           "zip/00647"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9315,
-                "longitude": -66.927
-              }
+            "point": {
+              "latitude": 17.9315,
+              "longitude": -66.927
             }
           }
         ],
         "dates": [
           "2020-01-07T12:54:42"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeType",
             "val": [
@@ -5094,20 +4930,18 @@
           "geoId/sch7200030",
           "zip/00656"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.989,
-                "longitude": -66.7893
-              }
+            "point": {
+              "latitude": 17.989,
+              "longitude": -66.7893
             }
           }
         ],
         "dates": [
           "2020-01-07T22:16:04"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeError",
             "val": [
@@ -5160,20 +4994,18 @@
           "ipcc_50/18.25_-66.75_PRI",
           "zip/00698"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 18.0228,
-                "longitude": -66.8445
-              }
+            "point": {
+              "latitude": 18.0228,
+              "longitude": -66.8445
             }
           }
         ],
         "dates": [
           "2020-01-07T23:20:01"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depthError",
             "val": [
@@ -5226,20 +5058,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00698"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.972,
-                "longitude": -66.83
-              }
+            "point": {
+              "latitude": 17.972,
+              "longitude": -66.83
             }
           }
         ],
         "dates": [
           "2020-01-07T17:20:33"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "name",
             "val": [
@@ -5293,20 +5123,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00647"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.967,
-                "longitude": -66.94
-              }
+            "point": {
+              "latitude": 17.967,
+              "longitude": -66.94
             }
           }
         ],
         "dates": [
           "2020-01-07T17:52:21"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depthError",
             "val": [
@@ -5359,20 +5187,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00653"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9661,
-                "longitude": -66.9218
-              }
+            "point": {
+              "latitude": 17.9661,
+              "longitude": -66.9218
             }
           }
         ],
         "dates": [
           "2020-01-07T20:19:03"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeError",
             "val": [
@@ -5425,20 +5251,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00647"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9508,
-                "longitude": -66.9356
-              }
+            "point": {
+              "latitude": 17.9508,
+              "longitude": -66.9356
             }
           }
         ],
         "dates": [
           "2020-01-08T00:59:49"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depthError",
             "val": [
@@ -5491,20 +5315,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00698"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9856,
-                "longitude": -66.8245
-              }
+            "point": {
+              "latitude": 17.9856,
+              "longitude": -66.8245
             }
           }
         ],
         "dates": [
           "2020-01-08T03:52:48"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeType",
             "val": [
@@ -5557,20 +5379,18 @@
           "ipcc_50/18.25_-66.75_PRI",
           "zip/00656"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 18.0161,
-                "longitude": -66.7925
-              }
+            "point": {
+              "latitude": 18.0161,
+              "longitude": -66.7925
             }
           }
         ],
         "dates": [
           "2020-01-08T04:51:29"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeType",
             "val": [
@@ -5623,20 +5443,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00647"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9688,
-                "longitude": -66.9705
-              }
+            "point": {
+              "latitude": 17.9688,
+              "longitude": -66.9705
             }
           }
         ],
         "dates": [
           "2020-01-08T06:51:44"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depth",
             "val": [
@@ -5689,20 +5507,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00698"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.96,
-                "longitude": -66.835
-              }
+            "point": {
+              "latitude": 17.96,
+              "longitude": -66.835
             }
           }
         ],
         "dates": [
           "2020-01-08T11:36:15"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depth",
             "val": [
@@ -5752,20 +5568,18 @@
           "geoId/7298",
           "geoId/sch7200030"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9831,
-                "longitude": -66.7621
-              }
+            "point": {
+              "latitude": 17.9831,
+              "longitude": -66.7621
             }
           }
         ],
         "dates": [
           "2020-01-08T11:49:10"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "name",
             "val": [
@@ -5818,20 +5632,18 @@
           "ipcc_50/18.25_-66.75_PRI",
           "zip/00698"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 18.0151,
-                "longitude": -66.853
-              }
+            "point": {
+              "latitude": 18.0151,
+              "longitude": -66.853
             }
           }
         ],
         "dates": [
           "2020-01-08T20:36:28"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "name",
             "val": [
@@ -5884,20 +5696,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00698"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.97,
-                "longitude": -66.8091
-              }
+            "point": {
+              "latitude": 17.97,
+              "longitude": -66.8091
             }
           }
         ],
         "dates": [
           "2020-01-08T23:54:27"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitude",
             "val": [
@@ -5949,20 +5759,18 @@
           "geoId/sch7200030",
           "ipcc_50/17.75_-66.75_PRI"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9955,
-                "longitude": -66.7521
-              }
+            "point": {
+              "latitude": 17.9955,
+              "longitude": -66.7521
             }
           }
         ],
         "dates": [
           "2020-01-08T18:47:12"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "name",
             "val": [
@@ -6015,20 +5823,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00698"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9996,
-                "longitude": -66.8316
-              }
+            "point": {
+              "latitude": 17.9996,
+              "longitude": -66.8316
             }
           }
         ],
         "dates": [
           "2020-01-09T05:03:13"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeError",
             "val": [
@@ -6081,20 +5887,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00647"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9396,
-                "longitude": -66.9428
-              }
+            "point": {
+              "latitude": 17.9396,
+              "longitude": -66.9428
             }
           }
         ],
         "dates": [
           "2020-01-09T05:42:18"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitude",
             "val": [
@@ -6147,20 +5951,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00647"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9406,
-                "longitude": -66.9448
-              }
+            "point": {
+              "latitude": 17.9406,
+              "longitude": -66.9448
             }
           }
         ],
         "dates": [
           "2020-01-09T05:52:34"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depthError",
             "val": [
@@ -6213,20 +6015,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00653"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.982,
-                "longitude": -66.888
-              }
+            "point": {
+              "latitude": 17.982,
+              "longitude": -66.888
             }
           }
         ],
         "dates": [
           "2020-01-09T09:24:00"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeType",
             "val": [
@@ -6279,20 +6079,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00647"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9583,
-                "longitude": -66.9468
-              }
+            "point": {
+              "latitude": 17.9583,
+              "longitude": -66.9468
             }
           }
         ],
         "dates": [
           "2020-01-09T11:24:41"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeType",
             "val": [
@@ -6345,20 +6143,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00698"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.977,
-                "longitude": -66.805
-              }
+            "point": {
+              "latitude": 17.977,
+              "longitude": -66.805
             }
           }
         ],
         "dates": [
           "2020-01-09T18:06:24"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeError",
             "val": [
@@ -6411,20 +6207,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00698"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9758,
-                "longitude": -66.8393
-              }
+            "point": {
+              "latitude": 17.9758,
+              "longitude": -66.8393
             }
           }
         ],
         "dates": [
           "2020-01-09T17:20:58"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depthError",
             "val": [
@@ -6477,20 +6271,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00698"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9621,
-                "longitude": -66.8361
-              }
+            "point": {
+              "latitude": 17.9621,
+              "longitude": -66.8361
             }
           }
         ],
         "dates": [
           "2020-01-10T03:04:01"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeError",
             "val": [
@@ -6543,20 +6335,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00698"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.983,
-                "longitude": -66.8303
-              }
+            "point": {
+              "latitude": 17.983,
+              "longitude": -66.8303
             }
           }
         ],
         "dates": [
           "2020-01-10T08:14:21"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeType",
             "val": [
@@ -6610,20 +6400,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00647"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9635,
-                "longitude": -66.931
-              }
+            "point": {
+              "latitude": 17.9635,
+              "longitude": -66.931
             }
           }
         ],
         "dates": [
           "2020-01-10T10:10:01"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitude",
             "val": [
@@ -6676,20 +6464,18 @@
           "ipcc_50/18.25_-66.75_PRI",
           "zip/00698"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 18.0011,
-                "longitude": -66.844
-              }
+            "point": {
+              "latitude": 18.0011,
+              "longitude": -66.844
             }
           }
         ],
         "dates": [
           "2020-01-10T15:22:51"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeType",
             "val": [
@@ -6742,20 +6528,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00647"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9613,
-                "longitude": -66.9456
-              }
+            "point": {
+              "latitude": 17.9613,
+              "longitude": -66.9456
             }
           }
         ],
         "dates": [
           "2020-01-10T17:44:30"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeError",
             "val": [
@@ -6808,20 +6592,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00698"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9858,
-                "longitude": -66.8403
-              }
+            "point": {
+              "latitude": 17.9858,
+              "longitude": -66.8403
             }
           }
         ],
         "dates": [
           "2020-01-10T19:03:48"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeType",
             "val": [
@@ -6873,20 +6655,18 @@
           "geoId/sch7200030",
           "ipcc_50/18.25_-66.75_PRI"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 18.0051,
-                "longitude": -66.745
-              }
+            "point": {
+              "latitude": 18.0051,
+              "longitude": -66.745
             }
           }
         ],
         "dates": [
           "2020-01-10T14:13:15"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeType",
             "val": [
@@ -6940,20 +6720,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00653"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9775,
-                "longitude": -66.8876
-              }
+            "point": {
+              "latitude": 17.9775,
+              "longitude": -66.8876
             }
           }
         ],
         "dates": [
           "2020-01-11T01:51:08"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depth",
             "val": [
@@ -7004,20 +6782,18 @@
           "geoId/sch7200030",
           "zip/00656"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9923,
-                "longitude": -66.7946
-              }
+            "point": {
+              "latitude": 17.9923,
+              "longitude": -66.7946
             }
           }
         ],
         "dates": [
           "2020-01-11T02:28:21"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depthError",
             "val": [
@@ -7070,20 +6846,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00647"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9515,
-                "longitude": -66.9191
-              }
+            "point": {
+              "latitude": 17.9515,
+              "longitude": -66.9191
             }
           }
         ],
         "dates": [
           "2020-01-11T03:31:37"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitude",
             "val": [
@@ -7136,20 +6910,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00698"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9798,
-                "longitude": -66.8268
-              }
+            "point": {
+              "latitude": 17.9798,
+              "longitude": -66.8268
             }
           }
         ],
         "dates": [
           "2020-01-11T13:24:29"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeType",
             "val": [
@@ -7202,20 +6974,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00647"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9606,
-                "longitude": -66.9445
-              }
+            "point": {
+              "latitude": 17.9606,
+              "longitude": -66.9445
             }
           }
         ],
         "dates": [
           "2020-01-11T08:59:52"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depthError",
             "val": [
@@ -7268,20 +7038,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00698"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9996,
-                "longitude": -66.8318
-              }
+            "point": {
+              "latitude": 17.9996,
+              "longitude": -66.8318
             }
           }
         ],
         "dates": [
           "2020-01-11T13:48:15"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitude",
             "val": [
@@ -7334,20 +7102,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00698"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.97,
-                "longitude": -66.837
-              }
+            "point": {
+              "latitude": 17.97,
+              "longitude": -66.837
             }
           }
         ],
         "dates": [
           "2020-01-11T15:41:17"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depthError",
             "val": [
@@ -7400,20 +7166,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00698"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.964,
-                "longitude": -66.8395
-              }
+            "point": {
+              "latitude": 17.964,
+              "longitude": -66.8395
             }
           }
         ],
         "dates": [
           "2020-01-11T15:50:02"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "name",
             "val": [
@@ -7466,20 +7230,18 @@
           "ipcc_50/18.25_-66.75_PRI",
           "zip/00656"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 18.0186,
-                "longitude": -66.8005
-              }
+            "point": {
+              "latitude": 18.0186,
+              "longitude": -66.8005
             }
           }
         ],
         "dates": [
           "2020-01-11T18:32:55"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeError",
             "val": [
@@ -7532,20 +7294,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00698"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9691,
-                "longitude": -66.837
-              }
+            "point": {
+              "latitude": 17.9691,
+              "longitude": -66.837
             }
           }
         ],
         "dates": [
           "2020-01-11T13:11:42"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depth",
             "val": [
@@ -7597,20 +7357,18 @@
           "geoId/sch7200030",
           "ipcc_50/18.25_-66.75_PRI"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 18.0013,
-                "longitude": -66.7353
-              }
+            "point": {
+              "latitude": 18.0013,
+              "longitude": -66.7353
             }
           }
         ],
         "dates": [
           "2020-01-11T06:11:16"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeError",
             "val": [
@@ -7663,20 +7421,18 @@
           "ipcc_50/18.25_-66.75_PRI",
           "zip/00656"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 18.0361,
-                "longitude": -66.8036
-              }
+            "point": {
+              "latitude": 18.0361,
+              "longitude": -66.8036
             }
           }
         ],
         "dates": [
           "2020-01-11T10:06:16"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitude",
             "val": [
@@ -7729,20 +7485,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00653"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9573,
-                "longitude": -66.8821
-              }
+            "point": {
+              "latitude": 17.9573,
+              "longitude": -66.8821
             }
           }
         ],
         "dates": [
           "2020-01-12T05:35:19"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeType",
             "val": [
@@ -7795,20 +7549,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00653"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9556,
-                "longitude": -66.8865
-              }
+            "point": {
+              "latitude": 17.9556,
+              "longitude": -66.8865
             }
           }
         ],
         "dates": [
           "2020-01-12T07:59:56"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "name",
             "val": [
@@ -7861,20 +7613,18 @@
           "ipcc_50/17.75_-67.25_PRI",
           "zip/00667"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9965,
-                "longitude": -67.072
-              }
+            "point": {
+              "latitude": 17.9965,
+              "longitude": -67.072
             }
           }
         ],
         "dates": [
           "2020-01-12T23:33:43"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeType",
             "val": [
@@ -7927,20 +7677,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00698"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9843,
-                "longitude": -66.8396
-              }
+            "point": {
+              "latitude": 17.9843,
+              "longitude": -66.8396
             }
           }
         ],
         "dates": [
           "2020-01-12T06:37:03"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitude",
             "val": [
@@ -7993,20 +7741,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00653"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9641,
-                "longitude": -66.919
-              }
+            "point": {
+              "latitude": 17.9641,
+              "longitude": -66.919
             }
           }
         ],
         "dates": [
           "2020-01-12T10:32:29"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitude",
             "val": [
@@ -8057,20 +7803,18 @@
           "geoId/sch7200030",
           "zip/00698"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.973,
-                "longitude": -66.7905
-              }
+            "point": {
+              "latitude": 17.973,
+              "longitude": -66.7905
             }
           }
         ],
         "dates": [
           "2020-01-12T11:31:05"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeError",
             "val": [
@@ -8123,20 +7867,18 @@
           "ipcc_50/18.25_-66.75_PRI",
           "zip/00656"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 18.0026,
-                "longitude": -66.7531
-              }
+            "point": {
+              "latitude": 18.0026,
+              "longitude": -66.7531
             }
           }
         ],
         "dates": [
           "2020-01-12T13:41:10"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitude",
             "val": [
@@ -8189,20 +7931,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00698"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.97,
-                "longitude": -66.8268
-              }
+            "point": {
+              "latitude": 17.97,
+              "longitude": -66.8268
             }
           }
         ],
         "dates": [
           "2020-01-12T18:08:27"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depth",
             "val": [
@@ -8255,20 +7995,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00698"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9638,
-                "longitude": -66.8131
-              }
+            "point": {
+              "latitude": 17.9638,
+              "longitude": -66.8131
             }
           }
         ],
         "dates": [
           "2020-01-13T03:05:20"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitude",
             "val": [
@@ -8321,20 +8059,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00698"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9703,
-                "longitude": -66.8355
-              }
+            "point": {
+              "latitude": 17.9703,
+              "longitude": -66.8355
             }
           }
         ],
         "dates": [
           "2020-01-13T08:01:17"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depth",
             "val": [
@@ -8387,20 +8123,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00647"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9741,
-                "longitude": -66.9658
-              }
+            "point": {
+              "latitude": 17.9741,
+              "longitude": -66.9658
             }
           }
         ],
         "dates": [
           "2020-01-13T13:19:32"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeError",
             "val": [
@@ -8453,20 +8187,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00698"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9918,
-                "longitude": -66.8355
-              }
+            "point": {
+              "latitude": 17.9918,
+              "longitude": -66.8355
             }
           }
         ],
         "dates": [
           "2020-01-14T11:06:52"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "name",
             "val": [
@@ -8519,20 +8251,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00698"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9811,
-                "longitude": -66.7948
-              }
+            "point": {
+              "latitude": 17.9811,
+              "longitude": -66.7948
             }
           }
         ],
         "dates": [
           "2020-01-14T11:56:28"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeError",
             "val": [
@@ -8585,20 +8315,18 @@
           "ipcc_50/17.75_-67.25_PRI",
           "zip/00667"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.992,
-                "longitude": -67.0268
-              }
+            "point": {
+              "latitude": 17.992,
+              "longitude": -67.0268
             }
           }
         ],
         "dates": [
           "2020-01-14T18:33:59"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depth",
             "val": [
@@ -8651,20 +8379,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00698"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.975,
-                "longitude": -66.833
-              }
+            "point": {
+              "latitude": 17.975,
+              "longitude": -66.833
             }
           }
         ],
         "dates": [
           "2020-01-14T19:40:06"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeType",
             "val": [
@@ -8718,20 +8444,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00656"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9971,
-                "longitude": -66.815
-              }
+            "point": {
+              "latitude": 17.9971,
+              "longitude": -66.815
             }
           }
         ],
         "dates": [
           "2020-01-14T01:17:54"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeType",
             "val": [
@@ -8784,20 +8508,18 @@
           "ipcc_50/17.75_-67.25_PRI",
           "zip/00667"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9816,
-                "longitude": -67.0803
-              }
+            "point": {
+              "latitude": 17.9816,
+              "longitude": -67.0803
             }
           }
         ],
         "dates": [
           "2020-01-14T15:26:32"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitude",
             "val": [
@@ -8849,20 +8571,18 @@
           "geoId/sch7200030",
           "ipcc_50/18.25_-66.75_PRI"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 18.0136,
-                "longitude": -66.744
-              }
+            "point": {
+              "latitude": 18.0136,
+              "longitude": -66.744
             }
           }
         ],
         "dates": [
           "2020-01-15T06:34:14"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitude",
             "val": [
@@ -8914,20 +8634,18 @@
           "geoId/sch7200030",
           "ipcc_50/17.75_-66.75_PRI"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9995,
-                "longitude": -66.7393
-              }
+            "point": {
+              "latitude": 17.9995,
+              "longitude": -66.7393
             }
           }
         ],
         "dates": [
           "2020-01-15T08:14:48"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeType",
             "val": [
@@ -8980,20 +8698,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00647"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9581,
-                "longitude": -66.9446
-              }
+            "point": {
+              "latitude": 17.9581,
+              "longitude": -66.9446
             }
           }
         ],
         "dates": [
           "2020-01-15T20:00:40"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitude",
             "val": [
@@ -9046,20 +8762,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00647"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9525,
-                "longitude": -66.95
-              }
+            "point": {
+              "latitude": 17.9525,
+              "longitude": -66.95
             }
           }
         ],
         "dates": [
           "2020-01-15T20:21:05"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "name",
             "val": [
@@ -9113,20 +8827,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00656"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9935,
-                "longitude": -66.8241
-              }
+            "point": {
+              "latitude": 17.9935,
+              "longitude": -66.8241
             }
           }
         ],
         "dates": [
           "2020-01-16T00:24:48"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depth",
             "val": [
@@ -9179,20 +8891,18 @@
           "ipcc_50/18.25_-66.75_PRI",
           "zip/00624"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 18.046,
-                "longitude": -66.7305
-              }
+            "point": {
+              "latitude": 18.046,
+              "longitude": -66.7305
             }
           }
         ],
         "dates": [
           "2020-01-16T08:41:24"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "name",
             "val": [
@@ -9245,20 +8955,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00698"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.976,
-                "longitude": -66.831
-              }
+            "point": {
+              "latitude": 17.976,
+              "longitude": -66.831
             }
           }
         ],
         "dates": [
           "2020-01-16T16:52:51"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeError",
             "val": [
@@ -9311,20 +9019,18 @@
           "ipcc_50/18.25_-66.75_PRI",
           "zip/00656"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 18.0076,
-                "longitude": -66.7591
-              }
+            "point": {
+              "latitude": 18.0076,
+              "longitude": -66.7591
             }
           }
         ],
         "dates": [
           "2020-01-16T20:58:47"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depthError",
             "val": [
@@ -9377,20 +9083,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00647"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9401,
-                "longitude": -66.9426
-              }
+            "point": {
+              "latitude": 17.9401,
+              "longitude": -66.9426
             }
           }
         ],
         "dates": [
           "2020-01-16T21:15:19"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "name",
             "val": [
@@ -9443,20 +9147,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00647"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9483,
-                "longitude": -66.9425
-              }
+            "point": {
+              "latitude": 17.9483,
+              "longitude": -66.9425
             }
           }
         ],
         "dates": [
           "2020-01-16T06:40:42"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeError",
             "val": [
@@ -9509,20 +9211,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00698"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9813,
-                "longitude": -66.8345
-              }
+            "point": {
+              "latitude": 17.9813,
+              "longitude": -66.8345
             }
           }
         ],
         "dates": [
           "2020-01-16T23:18:28"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depthError",
             "val": [
@@ -9575,20 +9275,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00647"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9535,
-                "longitude": -66.9438
-              }
+            "point": {
+              "latitude": 17.9535,
+              "longitude": -66.9438
             }
           }
         ],
         "dates": [
           "2020-01-17T09:02:37"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depth",
             "val": [
@@ -9641,20 +9339,18 @@
           "ipcc_50/17.75_-67.25_PRI",
           "zip/00667"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.979,
-                "longitude": -67.0375
-              }
+            "point": {
+              "latitude": 17.979,
+              "longitude": -67.0375
             }
           }
         ],
         "dates": [
           "2020-01-17T12:52:17"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeType",
             "val": [
@@ -9707,20 +9403,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00656"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9991,
-                "longitude": -66.7556
-              }
+            "point": {
+              "latitude": 17.9991,
+              "longitude": -66.7556
             }
           }
         ],
         "dates": [
           "2020-01-17T19:48:12"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depth",
             "val": [
@@ -9771,20 +9465,18 @@
           "geoId/sch7200030",
           "zip/00667"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9561,
-                "longitude": -66.9816
-              }
+            "point": {
+              "latitude": 17.9561,
+              "longitude": -66.9816
             }
           }
         ],
         "dates": [
           "2020-01-17T03:19:27"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "name",
             "val": [
@@ -9836,20 +9528,18 @@
           "geoId/sch7200030",
           "ipcc_50/17.75_-66.75_PRI"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 18,
-                "longitude": -66.7378
-              }
+            "point": {
+              "latitude": 18,
+              "longitude": -66.7378
             }
           }
         ],
         "dates": [
           "2020-01-18T06:59:12"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "name",
             "val": [
@@ -9901,20 +9591,18 @@
           "geoId/sch7200030",
           "ipcc_50/17.75_-66.75_PRI"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9971,
-                "longitude": -66.7465
-              }
+            "point": {
+              "latitude": 17.9971,
+              "longitude": -66.7465
             }
           }
         ],
         "dates": [
           "2020-01-18T11:18:57"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depthError",
             "val": [
@@ -9967,20 +9655,18 @@
           "ipcc_50/18.25_-66.75_PRI",
           "zip/00656"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 18.0251,
-                "longitude": -66.7856
-              }
+            "point": {
+              "latitude": 18.0251,
+              "longitude": -66.7856
             }
           }
         ],
         "dates": [
           "2020-01-18T18:13:08"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitude",
             "val": [
@@ -10033,20 +9719,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00698"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.957,
-                "longitude": -66.8505
-              }
+            "point": {
+              "latitude": 17.957,
+              "longitude": -66.8505
             }
           }
         ],
         "dates": [
           "2020-01-18T10:22:09"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeType",
             "val": [
@@ -10098,20 +9782,18 @@
           "geoId/sch7200030",
           "ipcc_50/18.25_-66.75_PRI"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 18.0158,
-                "longitude": -66.7381
-              }
+            "point": {
+              "latitude": 18.0158,
+              "longitude": -66.7381
             }
           }
         ],
         "dates": [
           "2020-01-18T09:07:56"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depthError",
             "val": [
@@ -10164,20 +9846,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00647"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.959,
-                "longitude": -66.9363
-              }
+            "point": {
+              "latitude": 17.959,
+              "longitude": -66.9363
             }
           }
         ],
         "dates": [
           "2020-01-19T00:05:55"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depth",
             "val": [
@@ -10230,20 +9910,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00647"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9403,
-                "longitude": -66.9426
-              }
+            "point": {
+              "latitude": 17.9403,
+              "longitude": -66.9426
             }
           }
         ],
         "dates": [
           "2020-01-19T00:53:58"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depth",
             "val": [
@@ -10296,20 +9974,18 @@
           "ipcc_50/18.25_-66.75_PRI",
           "zip/00698"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 18.0013,
-                "longitude": -66.8435
-              }
+            "point": {
+              "latitude": 18.0013,
+              "longitude": -66.8435
             }
           }
         ],
         "dates": [
           "2020-01-19T08:26:32"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeType",
             "val": [
@@ -10362,20 +10038,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00667"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9885,
-                "longitude": -66.9818
-              }
+            "point": {
+              "latitude": 17.9885,
+              "longitude": -66.9818
             }
           }
         ],
         "dates": [
           "2020-01-19T10:54:01"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "name",
             "val": [
@@ -10426,20 +10100,18 @@
           "geoId/sch7200030",
           "zip/00698"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.955,
-                "longitude": -66.8245
-              }
+            "point": {
+              "latitude": 17.955,
+              "longitude": -66.8245
             }
           }
         ],
         "dates": [
           "2020-01-19T06:07:41"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depth",
             "val": [
@@ -10491,20 +10163,18 @@
           "geoId/sch7200030",
           "ipcc_50/18.25_-66.75_PRI"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 18.0118,
-                "longitude": -66.7441
-              }
+            "point": {
+              "latitude": 18.0118,
+              "longitude": -66.7441
             }
           }
         ],
         "dates": [
           "2020-01-19T21:04:53"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depthError",
             "val": [
@@ -10556,20 +10226,18 @@
           "geoId/sch7200030",
           "ipcc_50/18.25_-66.75_PRI"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 18.009,
-                "longitude": -66.7406
-              }
+            "point": {
+              "latitude": 18.009,
+              "longitude": -66.7406
             }
           }
         ],
         "dates": [
           "2020-01-20T01:26:06"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitude",
             "val": [
@@ -10622,20 +10290,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00698"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.981,
-                "longitude": -66.8128
-              }
+            "point": {
+              "latitude": 17.981,
+              "longitude": -66.8128
             }
           }
         ],
         "dates": [
           "2020-01-20T14:59:43"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depthError",
             "val": [
@@ -10687,20 +10353,18 @@
           "geoId/sch7200030",
           "ipcc_50/18.25_-66.75_PRI"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 18.0018,
-                "longitude": -66.7323
-              }
+            "point": {
+              "latitude": 18.0018,
+              "longitude": -66.7323
             }
           }
         ],
         "dates": [
           "2020-01-21T02:07:59"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depthError",
             "val": [
@@ -10753,20 +10417,18 @@
           "ipcc_50/18.25_-66.75_PRI",
           "zip/00624"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 18.0128,
-                "longitude": -66.728
-              }
+            "point": {
+              "latitude": 18.0128,
+              "longitude": -66.728
             }
           }
         ],
         "dates": [
           "2020-01-21T02:17:24"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitude",
             "val": [
@@ -10818,20 +10480,18 @@
           "geoId/sch7200030",
           "ipcc_50/18.25_-66.75_PRI"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 18.0016,
-                "longitude": -66.7346
-              }
+            "point": {
+              "latitude": 18.0016,
+              "longitude": -66.7346
             }
           }
         ],
         "dates": [
           "2020-01-21T05:28:08"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "name",
             "val": [
@@ -10885,20 +10545,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00647"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9673,
-                "longitude": -66.9366
-              }
+            "point": {
+              "latitude": 17.9673,
+              "longitude": -66.9366
             }
           }
         ],
         "dates": [
           "2020-01-22T09:37:09"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeError",
             "val": [
@@ -10951,20 +10609,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00647"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9406,
-                "longitude": -66.9346
-              }
+            "point": {
+              "latitude": 17.9406,
+              "longitude": -66.9346
             }
           }
         ],
         "dates": [
           "2020-01-23T06:48:23"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeType",
             "val": [
@@ -11017,20 +10673,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00698"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9583,
-                "longitude": -66.828
-              }
+            "point": {
+              "latitude": 17.9583,
+              "longitude": -66.828
             }
           }
         ],
         "dates": [
           "2020-01-23T02:24:06"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depthError",
             "val": [
@@ -11083,20 +10737,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00647"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9373,
-                "longitude": -66.949
-              }
+            "point": {
+              "latitude": 17.9373,
+              "longitude": -66.949
             }
           }
         ],
         "dates": [
           "2020-01-24T10:24:12"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeError",
             "val": [
@@ -11149,20 +10801,18 @@
           "ipcc_50/18.25_-66.75_PRI",
           "zip/00656"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 18.0388,
-                "longitude": -66.821
-              }
+            "point": {
+              "latitude": 18.0388,
+              "longitude": -66.821
             }
           }
         ],
         "dates": [
           "2020-01-24T02:31:49"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeError",
             "val": [
@@ -11215,20 +10865,18 @@
           "ipcc_50/18.25_-66.75_PRI",
           "zip/00698"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 18.0165,
-                "longitude": -66.8491
-              }
+            "point": {
+              "latitude": 18.0165,
+              "longitude": -66.8491
             }
           }
         ],
         "dates": [
           "2020-01-24T03:17:21"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "name",
             "val": [
@@ -11281,20 +10929,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00647"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9468,
-                "longitude": -66.9641
-              }
+            "point": {
+              "latitude": 17.9468,
+              "longitude": -66.9641
             }
           }
         ],
         "dates": [
           "2020-01-24T23:31:57"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeError",
             "val": [
@@ -11347,20 +10993,18 @@
           "ipcc_50/18.25_-66.75_PRI",
           "zip/00656"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 18.0105,
-                "longitude": -66.8188
-              }
+            "point": {
+              "latitude": 18.0105,
+              "longitude": -66.8188
             }
           }
         ],
         "dates": [
           "2020-01-25T20:20:38"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depth",
             "val": [
@@ -11413,20 +11057,18 @@
           "ipcc_50/18.25_-66.75_PRI",
           "zip/00656"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 18.0098,
-                "longitude": -66.8153
-              }
+            "point": {
+              "latitude": 18.0098,
+              "longitude": -66.8153
             }
           }
         ],
         "dates": [
           "2020-01-25T20:34:15"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeType",
             "val": [
@@ -11479,20 +11121,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00698"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9666,
-                "longitude": -66.8393
-              }
+            "point": {
+              "latitude": 17.9666,
+              "longitude": -66.8393
             }
           }
         ],
         "dates": [
           "2020-01-26T17:19:08"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "name",
             "val": [
@@ -11544,20 +11184,18 @@
           "geoId/sch7200030",
           "ipcc_50/17.75_-66.75_PRI"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9875,
-                "longitude": -66.9101
-              }
+            "point": {
+              "latitude": 17.9875,
+              "longitude": -66.9101
             }
           }
         ],
         "dates": [
           "2020-01-26T17:26:28"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitude",
             "val": [
@@ -11610,20 +11248,18 @@
           "ipcc_50/18.25_-66.75_PRI",
           "zip/00656"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 18.0035,
-                "longitude": -66.799
-              }
+            "point": {
+              "latitude": 18.0035,
+              "longitude": -66.799
             }
           }
         ],
         "dates": [
           "2020-01-26T21:06:20"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitude",
             "val": [
@@ -11676,20 +11312,18 @@
           "ipcc_50/18.25_-66.75_PRI",
           "zip/00656"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 18.0335,
-                "longitude": -66.8048
-              }
+            "point": {
+              "latitude": 18.0335,
+              "longitude": -66.8048
             }
           }
         ],
         "dates": [
           "2020-01-26T02:22:27"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeType",
             "val": [
@@ -11740,20 +11374,18 @@
           "geoId/sch7200030",
           "zip/00656"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9906,
-                "longitude": -66.7981
-              }
+            "point": {
+              "latitude": 17.9906,
+              "longitude": -66.7981
             }
           }
         ],
         "dates": [
           "2020-01-27T03:49:52"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "name",
             "val": [
@@ -11803,20 +11435,18 @@
           "geoId/7298",
           "geoId/sch7200030"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.979,
-                "longitude": -66.7558
-              }
+            "point": {
+              "latitude": 17.979,
+              "longitude": -66.7558
             }
           }
         ],
         "dates": [
           "2020-01-28T00:04:29"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "name",
             "val": [
@@ -11869,20 +11499,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00698"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9656,
-                "longitude": -66.8466
-              }
+            "point": {
+              "latitude": 17.9656,
+              "longitude": -66.8466
             }
           }
         ],
         "dates": [
           "2020-01-28T00:44:35"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitude",
             "val": [
@@ -11935,20 +11563,18 @@
           "ipcc_50/18.25_-66.75_PRI",
           "zip/00656"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 18.0025,
-                "longitude": -66.8063
-              }
+            "point": {
+              "latitude": 18.0025,
+              "longitude": -66.8063
             }
           }
         ],
         "dates": [
           "2020-01-28T14:10:49"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depth",
             "val": [
@@ -12001,20 +11627,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00698"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9805,
-                "longitude": -66.8586
-              }
+            "point": {
+              "latitude": 17.9805,
+              "longitude": -66.8586
             }
           }
         ],
         "dates": [
           "2020-01-28T23:45:54"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeType",
             "val": [
@@ -12067,20 +11691,18 @@
           "ipcc_50/18.25_-66.75_PRI",
           "zip/00656"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 18.0171,
-                "longitude": -66.794
-              }
+            "point": {
+              "latitude": 18.0171,
+              "longitude": -66.794
             }
           }
         ],
         "dates": [
           "2020-01-29T10:18:23"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depthError",
             "val": [
@@ -12133,20 +11755,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00647"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.957,
-                "longitude": -66.9201
-              }
+            "point": {
+              "latitude": 17.957,
+              "longitude": -66.9201
             }
           }
         ],
         "dates": [
           "2020-01-29T22:44:10"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeError",
             "val": [
@@ -12199,20 +11819,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00698"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9825,
-                "longitude": -66.8576
-              }
+            "point": {
+              "latitude": 17.9825,
+              "longitude": -66.8576
             }
           }
         ],
         "dates": [
           "2020-01-30T17:06:15"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depthError",
             "val": [
@@ -12265,20 +11883,18 @@
           "ipcc_50/18.25_-66.75_PRI",
           "zip/00656"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 18.0261,
-                "longitude": -66.819
-              }
+            "point": {
+              "latitude": 18.0261,
+              "longitude": -66.819
             }
           }
         ],
         "dates": [
           "2020-01-30T18:05:43"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitude",
             "val": [
@@ -12331,20 +11947,18 @@
           "ipcc_50/36.25_-84.25_USA",
           "zip/37766"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 36.4305,
-                "longitude": -84.02683
-              }
+            "point": {
+              "latitude": 36.4305,
+              "longitude": -84.02683
             }
           }
         ],
         "dates": [
           "2020-01-20T19:12:11"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeType",
             "val": [
@@ -12391,20 +12005,18 @@
           "ipcc_50/18.25_-66.75_PRI",
           "zip/00656"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 18.0362,
-                "longitude": -66.7941
-              }
+            "point": {
+              "latitude": 18.0362,
+              "longitude": -66.7941
             }
           }
         ],
         "dates": [
           "2020-01-18T01:29:58"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depthError",
             "val": [
@@ -12457,20 +12069,18 @@
           "ipcc_50/18.25_-66.75_PRI",
           "zip/00653"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 18.008,
-                "longitude": -66.8908
-              }
+            "point": {
+              "latitude": 18.008,
+              "longitude": -66.8908
             }
           }
         ],
         "dates": [
           "2020-01-11T20:18:54"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitude",
             "val": [
@@ -12523,20 +12133,18 @@
           "ipcc_50/38.25_-97.75_USA",
           "zip/67501"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 38.0246,
-                "longitude": -97.973
-              }
+            "point": {
+              "latitude": 38.0246,
+              "longitude": -97.973
             }
           }
         ],
         "dates": [
           "2020-01-19T19:08:42"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitude",
             "val": [
@@ -12588,20 +12196,18 @@
           "geoId/sch4815990",
           "ipcc_50/31.75_-104.25_USA"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 31.6477,
-                "longitude": -104.3179
-              }
+            "point": {
+              "latitude": 31.6477,
+              "longitude": -104.3179
             }
           }
         ],
         "dates": [
           "2020-01-20T16:59:01"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depthError",
             "val": [
@@ -12654,20 +12260,18 @@
           "ipcc_50/42.75_-111.75_USA",
           "zip/83217"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 42.7241,
-                "longitude": -111.7983
-              }
+            "point": {
+              "latitude": 42.7241,
+              "longitude": -111.7983
             }
           }
         ],
         "dates": [
           "2020-01-20T21:12:56"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitude",
             "val": [
@@ -12714,20 +12318,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00653"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9522,
-                "longitude": -66.8784
-              }
+            "point": {
+              "latitude": 17.9522,
+              "longitude": -66.8784
             }
           }
         ],
         "dates": [
           "2020-01-08T12:27:06"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitude",
             "val": [
@@ -12779,20 +12381,18 @@
           "geoId/sch0200010",
           "ipcc_50/51.75_-177.75_USA"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 51.7409,
-                "longitude": -177.9188
-              }
+            "point": {
+              "latitude": 51.7409,
+              "longitude": -177.9188
             }
           }
         ],
         "dates": [
           "2020-01-23T06:45:36"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depthError",
             "val": [
@@ -12844,20 +12444,18 @@
           "geoId/sch0200010",
           "ipcc_50/51.75_-177.75_USA"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 51.8547,
-                "longitude": -177.9364
-              }
+            "point": {
+              "latitude": 51.8547,
+              "longitude": -177.9364
             }
           }
         ],
         "dates": [
           "2020-01-23T06:49:42"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depthError",
             "val": [
@@ -12909,20 +12507,18 @@
           "geoId/sch0200010",
           "ipcc_50/51.75_-177.75_USA"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 51.7715,
-                "longitude": -177.8626
-              }
+            "point": {
+              "latitude": 51.7715,
+              "longitude": -177.8626
             }
           }
         ],
         "dates": [
           "2020-01-23T08:11:07"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depth",
             "val": [
@@ -12974,20 +12570,18 @@
           "geoId/sch0200010",
           "ipcc_50/51.75_-177.75_USA"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 51.8723,
-                "longitude": -177.9729
-              }
+            "point": {
+              "latitude": 51.8723,
+              "longitude": -177.9729
             }
           }
         ],
         "dates": [
           "2020-01-23T11:01:20"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeType",
             "val": [
@@ -13039,20 +12633,18 @@
           "geoId/sch0200010",
           "ipcc_50/51.75_-177.75_USA"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 51.7649,
-                "longitude": -177.8679
-              }
+            "point": {
+              "latitude": 51.7649,
+              "longitude": -177.8679
             }
           }
         ],
         "dates": [
           "2020-01-23T11:06:39"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depthError",
             "val": [
@@ -13104,20 +12696,18 @@
           "geoId/sch0200010",
           "ipcc_50/51.75_-177.75_USA"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 51.8683,
-                "longitude": -177.9879
-              }
+            "point": {
+              "latitude": 51.8683,
+              "longitude": -177.9879
             }
           }
         ],
         "dates": [
           "2020-01-23T11:35:41"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depth",
             "val": [
@@ -13169,20 +12759,18 @@
           "geoId/sch0200010",
           "ipcc_50/51.75_-177.75_USA"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 51.8461,
-                "longitude": -177.9849
-              }
+            "point": {
+              "latitude": 51.8461,
+              "longitude": -177.9849
             }
           }
         ],
         "dates": [
           "2020-01-23T06:32:24"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeType",
             "val": [
@@ -13228,20 +12816,18 @@
           "geoId/sch0200010",
           "ipcc_50/51.75_-177.75_USA"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 51.8861,
-                "longitude": -177.9414
-              }
+            "point": {
+              "latitude": 51.8861,
+              "longitude": -177.9414
             }
           }
         ],
         "dates": [
           "2020-01-23T06:48:47"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depthError",
             "val": [
@@ -13287,20 +12873,18 @@
           "geoId/sch0200010",
           "ipcc_50/51.75_-177.75_USA"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 51.8351,
-                "longitude": -177.9268
-              }
+            "point": {
+              "latitude": 51.8351,
+              "longitude": -177.9268
             }
           }
         ],
         "dates": [
           "2020-01-23T07:01:03"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitude",
             "val": [
@@ -13352,20 +12936,18 @@
           "geoId/sch4815990",
           "ipcc_50/31.75_-104.25_USA"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 31.653,
-                "longitude": -104.3131
-              }
+            "point": {
+              "latitude": 31.653,
+              "longitude": -104.3131
             }
           }
         ],
         "dates": [
           "2020-01-24T03:14:31"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "name",
             "val": [
@@ -13417,20 +12999,18 @@
           "geoId/sch0200010",
           "ipcc_50/51.75_-177.75_USA"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 51.8063,
-                "longitude": -177.9478
-              }
+            "point": {
+              "latitude": 51.8063,
+              "longitude": -177.9478
             }
           }
         ],
         "dates": [
           "2020-01-24T03:35:56"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "name",
             "val": [
@@ -13482,20 +13062,18 @@
           "geoId/sch0200010",
           "ipcc_50/51.75_-177.75_USA"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 51.896,
-                "longitude": -177.9802
-              }
+            "point": {
+              "latitude": 51.896,
+              "longitude": -177.9802
             }
           }
         ],
         "dates": [
           "2020-01-23T07:51:51"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depthError",
             "val": [
@@ -13547,20 +13125,18 @@
           "geoId/sch0200010",
           "ipcc_50/51.75_-178.25_USA"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 51.9044,
-                "longitude": -178.0043
-              }
+            "point": {
+              "latitude": 51.9044,
+              "longitude": -178.0043
             }
           }
         ],
         "dates": [
           "2020-01-23T20:02:52"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeType",
             "val": [
@@ -13606,20 +13182,18 @@
           "country/USA",
           "ipcc_50/51.75_-177.75_USA"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 51.8357,
-                "longitude": -177.7188
-              }
+            "point": {
+              "latitude": 51.8357,
+              "longitude": -177.7188
             }
           }
         ],
         "dates": [
           "2020-01-23T07:30:37"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "name",
             "val": [
@@ -13671,20 +13245,18 @@
           "geoId/sch4815990",
           "ipcc_50/31.75_-104.25_USA"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 31.6404,
-                "longitude": -104.3174
-              }
+            "point": {
+              "latitude": 31.6404,
+              "longitude": -104.3174
             }
           }
         ],
         "dates": [
           "2020-01-25T11:37:07"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depthError",
             "val": [
@@ -13736,20 +13308,18 @@
           "geoId/sch0200010",
           "ipcc_50/51.75_-177.75_USA"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 51.8359,
-                "longitude": -177.9666
-              }
+            "point": {
+              "latitude": 51.8359,
+              "longitude": -177.9666
             }
           }
         ],
         "dates": [
           "2020-01-24T07:24:12"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitude",
             "val": [
@@ -13795,20 +13365,18 @@
           "geoId/sch0200010",
           "ipcc_50/51.75_-177.75_USA"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 51.8229,
-                "longitude": -177.7508
-              }
+            "point": {
+              "latitude": 51.8229,
+              "longitude": -177.7508
             }
           }
         ],
         "dates": [
           "2020-01-23T13:48:21"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depthError",
             "val": [
@@ -13848,20 +13416,18 @@
           "country/USA",
           "ipcc_50/51.75_-177.75_USA"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 51.9185,
-                "longitude": -177.9599
-              }
+            "point": {
+              "latitude": 51.9185,
+              "longitude": -177.9599
             }
           }
         ],
         "dates": [
           "2020-01-23T06:06:13"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeType",
             "val": [
@@ -13907,20 +13473,18 @@
           "geoId/sch0200010",
           "ipcc_50/51.75_-177.75_USA"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 51.8657,
-                "longitude": -177.9756
-              }
+            "point": {
+              "latitude": 51.8657,
+              "longitude": -177.9756
             }
           }
         ],
         "dates": [
           "2020-01-23T18:28:57"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "name",
             "val": [
@@ -13966,20 +13530,18 @@
           "geoId/sch0200010",
           "ipcc_50/51.75_-177.75_USA"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 51.825,
-                "longitude": -177.7761
-              }
+            "point": {
+              "latitude": 51.825,
+              "longitude": -177.7761
             }
           }
         ],
         "dates": [
           "2020-01-24T02:35:09"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depthError",
             "val": [
@@ -14033,20 +13595,18 @@
           "ipcc_50/18.25_-66.75_PRI",
           "zip/00698"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 18.0306,
-                "longitude": -66.8446
-              }
+            "point": {
+              "latitude": 18.0306,
+              "longitude": -66.8446
             }
           }
         ],
         "dates": [
           "2020-01-11T08:07:21"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeType",
             "val": [
@@ -14098,20 +13658,18 @@
           "geoId/sch0200010",
           "ipcc_50/51.75_-177.75_USA"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 51.8235,
-                "longitude": -177.6971
-              }
+            "point": {
+              "latitude": 51.8235,
+              "longitude": -177.6971
             }
           }
         ],
         "dates": [
           "2020-01-24T13:00:49"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "name",
             "val": [
@@ -14164,20 +13722,18 @@
           "ipcc_50/38.25_-96.75_USA",
           "zip/66861"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 38.3889,
-                "longitude": -96.9189
-              }
+            "point": {
+              "latitude": 38.3889,
+              "longitude": -96.9189
             }
           }
         ],
         "dates": [
           "2020-01-29T23:19:35"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeError",
             "val": [
@@ -14230,20 +13786,18 @@
           "ipcc_50/18.25_-66.75_PRI",
           "zip/00656"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 18.0127,
-                "longitude": -66.7811
-              }
+            "point": {
+              "latitude": 18.0127,
+              "longitude": -66.7811
             }
           }
         ],
         "dates": [
           "2020-01-07T17:13:51"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depthError",
             "val": [
@@ -14295,20 +13849,18 @@
           "geoId/sch4834550",
           "ipcc_50/31.25_-103.25_USA"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 31.1216,
-                "longitude": -103.2815
-              }
+            "point": {
+              "latitude": 31.1216,
+              "longitude": -103.2815
             }
           }
         ],
         "dates": [
           "2020-01-30T15:58:50"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "name",
             "val": [
@@ -14361,20 +13913,18 @@
           "ipcc_50/31.75_-104.25_USA",
           "zip/79772"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 31.7083,
-                "longitude": -104.0187
-              }
+            "point": {
+              "latitude": 31.7083,
+              "longitude": -104.0187
             }
           }
         ],
         "dates": [
           "2020-01-31T03:25:51"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitude",
             "val": [
@@ -14427,20 +13977,18 @@
           "ipcc_50/31.75_-104.25_USA",
           "zip/79772"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 31.7132,
-                "longitude": -104.0271
-              }
+            "point": {
+              "latitude": 31.7132,
+              "longitude": -104.0271
             }
           }
         ],
         "dates": [
           "2020-01-31T03:27:37"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitude",
             "val": [
@@ -14494,20 +14042,18 @@
           "ipcc_50/46.75_-112.25_USA",
           "zip/59633"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 46.7898,
-                "longitude": -112.2885
-              }
+            "point": {
+              "latitude": 46.7898,
+              "longitude": -112.2885
             }
           }
         ],
         "dates": [
           "2020-01-31T03:47:05"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depth",
             "val": [
@@ -14560,20 +14106,18 @@
           "ipcc_50/65.75_-166.25_USA",
           "zip/99772"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 65.9661,
-                "longitude": -166.2082
-              }
+            "point": {
+              "latitude": 65.9661,
+              "longitude": -166.2082
             }
           }
         ],
         "dates": [
           "2020-01-31T05:03:17"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitude",
             "val": [
@@ -14626,20 +14170,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00647"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9906,
-                "longitude": -66.9199
-              }
+            "point": {
+              "latitude": 17.9906,
+              "longitude": -66.9199
             }
           }
         ],
         "dates": [
           "2020-01-12T10:31:28"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depth",
             "val": [
@@ -14691,20 +14233,18 @@
           "geoId/sch0200010",
           "ipcc_50/51.75_-177.75_USA"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 51.8769,
-                "longitude": -177.937
-              }
+            "point": {
+              "latitude": 51.8769,
+              "longitude": -177.937
             }
           }
         ],
         "dates": [
           "2020-01-31T08:35:13"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitude",
             "val": [
@@ -14756,20 +14296,18 @@
           "geoId/sch0200010",
           "ipcc_50/51.75_-177.75_USA"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 51.8244,
-                "longitude": -177.9483
-              }
+            "point": {
+              "latitude": 51.8244,
+              "longitude": -177.9483
             }
           }
         ],
         "dates": [
           "2020-01-31T13:32:40"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeError",
             "val": [
@@ -14821,20 +14359,18 @@
           "geoId/sch0200010",
           "ipcc_50/51.75_-177.75_USA"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 51.8844,
-                "longitude": -177.9181
-              }
+            "point": {
+              "latitude": 51.8844,
+              "longitude": -177.9181
             }
           }
         ],
         "dates": [
           "2020-01-23T13:47:32"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeType",
             "val": [
@@ -14880,20 +14416,18 @@
           "geoId/sch0200010",
           "ipcc_50/51.75_-177.75_USA"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 51.8542,
-                "longitude": -177.9649
-              }
+            "point": {
+              "latitude": 51.8542,
+              "longitude": -177.9649
             }
           }
         ],
         "dates": [
           "2020-01-23T11:02:33"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeError",
             "val": [
@@ -14946,20 +14480,18 @@
           "geoId/sch0200010",
           "ipcc_50/52.75_173.25_USA"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 52.8597,
-                "longitude": 173.1346
-              }
+            "point": {
+              "latitude": 52.8597,
+              "longitude": 173.1346
             }
           }
         ],
         "dates": [
           "2020-01-24T08:06:34"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitude",
             "val": [
@@ -15012,20 +14544,18 @@
           "ipcc_50/46.75_-112.75_USA",
           "zip/59639"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 46.8795,
-                "longitude": -112.6681
-              }
+            "point": {
+              "latitude": 46.8795,
+              "longitude": -112.6681
             }
           }
         ],
         "dates": [
           "2020-01-03T06:02:28"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeType",
             "val": [
@@ -15075,20 +14605,18 @@
           "geoId/0201301598",
           "geoId/sch0200007"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 54.8337,
-                "longitude": -162.3073
-              }
+            "point": {
+              "latitude": 54.8337,
+              "longitude": -162.3073
             }
           }
         ],
         "dates": [
           "2020-01-04T11:10:54"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depth",
             "val": [
@@ -15141,20 +14669,18 @@
           "ipcc_50/18.25_-66.75_PRI",
           "zip/00624"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 18.0348,
-                "longitude": -66.7146
-              }
+            "point": {
+              "latitude": 18.0348,
+              "longitude": -66.7146
             }
           }
         ],
         "dates": [
           "2020-01-07T12:10:44"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depth",
             "val": [
@@ -15205,20 +14731,18 @@
           "geoId/sch7200030",
           "zip/00728"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9727,
-                "longitude": -66.6678
-              }
+            "point": {
+              "latitude": 17.9727,
+              "longitude": -66.6678
             }
           }
         ],
         "dates": [
           "2020-01-07T13:00:22"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeError",
             "val": [
@@ -15270,20 +14794,18 @@
           "geoId/sch7200030",
           "ipcc_50/17.75_-66.75_PRI"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9862,
-                "longitude": -66.7537
-              }
+            "point": {
+              "latitude": 17.9862,
+              "longitude": -66.7537
             }
           }
         ],
         "dates": [
           "2020-01-07T16:50:54"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depth",
             "val": [
@@ -15336,20 +14858,18 @@
           "ipcc_50/18.25_-66.75_PRI",
           "zip/00656"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 18.0416,
-                "longitude": -66.7948
-              }
+            "point": {
+              "latitude": 18.0416,
+              "longitude": -66.7948
             }
           }
         ],
         "dates": [
           "2020-01-08T02:17:00"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "name",
             "val": [
@@ -15401,20 +14921,18 @@
           "geoId/sch0200007",
           "ipcc_50/55.75_-161.25_USA"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 55.7318,
-                "longitude": -161.3074
-              }
+            "point": {
+              "latitude": 55.7318,
+              "longitude": -161.3074
             }
           }
         ],
         "dates": [
           "2020-01-01T16:43:31"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitude",
             "val": [
@@ -15467,20 +14985,18 @@
           "ipcc_50/18.25_-66.75_PRI",
           "zip/00656"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 18.0421,
-                "longitude": -66.7925
-              }
+            "point": {
+              "latitude": 18.0421,
+              "longitude": -66.7925
             }
           }
         ],
         "dates": [
           "2020-01-11T04:20:57"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depth",
             "val": [
@@ -15533,20 +15049,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00656"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9971,
-                "longitude": -66.8261
-              }
+            "point": {
+              "latitude": 17.9971,
+              "longitude": -66.8261
             }
           }
         ],
         "dates": [
           "2020-01-11T13:16:23"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeType",
             "val": [
@@ -15599,20 +15113,18 @@
           "ipcc_50/18.25_-66.75_PRI",
           "zip/00698"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 18.0044,
-                "longitude": -66.8325
-              }
+            "point": {
+              "latitude": 18.0044,
+              "longitude": -66.8325
             }
           }
         ],
         "dates": [
           "2020-01-11T21:35:36"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeType",
             "val": [
@@ -15665,20 +15177,18 @@
           "ipcc_50/44.75_-73.75_USA",
           "zip/12923"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 44.993,
-                "longitude": -73.9659
-              }
+            "point": {
+              "latitude": 44.993,
+              "longitude": -73.9659
             }
           }
         ],
         "dates": [
           "2020-01-13T10:37:59"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitude",
             "val": [
@@ -15731,20 +15241,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00647"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9744,
-                "longitude": -66.9405
-              }
+            "point": {
+              "latitude": 17.9744,
+              "longitude": -66.9405
             }
           }
         ],
         "dates": [
           "2020-01-15T20:06:30"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "name",
             "val": [
@@ -15791,20 +15299,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00698"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9863,
-                "longitude": -66.8423
-              }
+            "point": {
+              "latitude": 17.9863,
+              "longitude": -66.8423
             }
           }
         ],
         "dates": [
           "2020-01-16T13:21:41"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeType",
             "val": [
@@ -15856,20 +15362,18 @@
           "geoId/sch0200010",
           "ipcc_50/51.75_179.75_USA"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 51.8915,
-                "longitude": 179.5745
-              }
+            "point": {
+              "latitude": 51.8915,
+              "longitude": 179.5745
             }
           }
         ],
         "dates": [
           "2020-01-25T10:20:28"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitude",
             "val": [
@@ -15921,20 +15425,18 @@
           "geoId/sch0200010",
           "ipcc_50/51.75_-177.75_USA"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 51.8351,
-                "longitude": -177.6842
-              }
+            "point": {
+              "latitude": 51.8351,
+              "longitude": -177.6842
             }
           }
         ],
         "dates": [
           "2020-01-30T04:16:33"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "name",
             "val": [
@@ -15987,20 +15489,18 @@
           "ipcc_50/18.25_-66.75_PRI",
           "zip/00698"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 18.0046,
-                "longitude": -66.8279
-              }
+            "point": {
+              "latitude": 18.0046,
+              "longitude": -66.8279
             }
           }
         ],
         "dates": [
           "2020-01-18T17:09:02"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depthError",
             "val": [
@@ -16046,20 +15546,18 @@
           "country/USA",
           "ipcc_50/51.75_-177.75_USA"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 51.8344,
-                "longitude": -177.7213
-              }
+            "point": {
+              "latitude": 51.8344,
+              "longitude": -177.7213
             }
           }
         ],
         "dates": [
           "2020-01-23T06:50:37"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depth",
             "val": [
@@ -16105,20 +15603,18 @@
           "geoId/sch0200010",
           "ipcc_50/51.75_-177.75_USA"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 51.8136,
-                "longitude": -177.7948
-              }
+            "point": {
+              "latitude": 51.8136,
+              "longitude": -177.7948
             }
           }
         ],
         "dates": [
           "2020-01-23T05:55:03"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depthError",
             "val": [
@@ -16164,20 +15660,18 @@
           "country/USA",
           "ipcc_50/51.75_-177.75_USA"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 51.8573,
-                "longitude": -177.866
-              }
+            "point": {
+              "latitude": 51.8573,
+              "longitude": -177.866
             }
           }
         ],
         "dates": [
           "2020-01-23T10:48:05"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeType",
             "val": [
@@ -16224,20 +15718,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00698"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9917,
-                "longitude": -66.8455
-              }
+            "point": {
+              "latitude": 17.9917,
+              "longitude": -66.8455
             }
           }
         ],
         "dates": [
           "2020-01-11T00:04:31"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depth",
             "val": [
@@ -16290,20 +15782,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00647"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.974,
-                "longitude": -66.9393
-              }
+            "point": {
+              "latitude": 17.974,
+              "longitude": -66.9393
             }
           }
         ],
         "dates": [
           "2020-01-11T09:38:11"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depthError",
             "val": [
@@ -16356,20 +15846,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00698"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9904,
-                "longitude": -66.8377
-              }
+            "point": {
+              "latitude": 17.9904,
+              "longitude": -66.8377
             }
           }
         ],
         "dates": [
           "2020-01-11T13:19:53"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depthError",
             "val": [
@@ -16422,20 +15910,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00698"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9817,
-                "longitude": -66.8158
-              }
+            "point": {
+              "latitude": 17.9817,
+              "longitude": -66.8158
             }
           }
         ],
         "dates": [
           "2020-01-11T17:57:23"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeError",
             "val": [
@@ -16488,20 +15974,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00698"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9893,
-                "longitude": -66.8411
-              }
+            "point": {
+              "latitude": 17.9893,
+              "longitude": -66.8411
             }
           }
         ],
         "dates": [
           "2020-01-12T02:21:23"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeType",
             "val": [
@@ -16554,20 +16038,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00698"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9916,
-                "longitude": -66.8419
-              }
+            "point": {
+              "latitude": 17.9916,
+              "longitude": -66.8419
             }
           }
         ],
         "dates": [
           "2020-01-12T07:37:09"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitude",
             "val": [
@@ -16620,20 +16102,18 @@
           "ipcc_50/18.25_-66.75_PRI",
           "zip/00698"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 18.0135,
-                "longitude": -66.8307
-              }
+            "point": {
+              "latitude": 18.0135,
+              "longitude": -66.8307
             }
           }
         ],
         "dates": [
           "2020-01-12T16:24:50"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depth",
             "val": [
@@ -16686,20 +16166,18 @@
           "ipcc_50/18.25_-66.75_PRI",
           "zip/00624"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 18.028,
-                "longitude": -66.7155
-              }
+            "point": {
+              "latitude": 18.028,
+              "longitude": -66.7155
             }
           }
         ],
         "dates": [
           "2020-01-12T23:33:32"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitude",
             "val": [
@@ -16752,20 +16230,18 @@
           "ipcc_50/18.25_-66.75_PRI",
           "zip/00656"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 18.0647,
-                "longitude": -66.772
-              }
+            "point": {
+              "latitude": 18.0647,
+              "longitude": -66.772
             }
           }
         ],
         "dates": [
           "2020-01-14T16:08:30"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "name",
             "val": [
@@ -16816,20 +16292,18 @@
           "geoId/sch7200030",
           "zip/00647"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9313,
-                "longitude": -66.9274
-              }
+            "point": {
+              "latitude": 17.9313,
+              "longitude": -66.9274
             }
           }
         ],
         "dates": [
           "2020-01-07T09:40:07"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depthError",
             "val": [
@@ -16882,20 +16356,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00698"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9845,
-                "longitude": -66.8099
-              }
+            "point": {
+              "latitude": 17.9845,
+              "longitude": -66.8099
             }
           }
         ],
         "dates": [
           "2020-01-07T10:08:11"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depthError",
             "val": [
@@ -16948,20 +16420,18 @@
           "ipcc_50/18.25_-66.75_PRI",
           "zip/00698"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 18.0308,
-                "longitude": -66.8217
-              }
+            "point": {
+              "latitude": 18.0308,
+              "longitude": -66.8217
             }
           }
         ],
         "dates": [
           "2020-01-07T10:32:02"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeType",
             "val": [
@@ -17012,20 +16482,18 @@
           "geoId/sch7200030",
           "zip/00647"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9466,
-                "longitude": -66.9153
-              }
+            "point": {
+              "latitude": 17.9466,
+              "longitude": -66.9153
             }
           }
         ],
         "dates": [
           "2020-01-07T11:04:47"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeError",
             "val": [
@@ -17077,20 +16545,18 @@
           "geoId/sch7200030",
           "ipcc_50/17.75_-66.75_PRI"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.993,
-                "longitude": -66.744
-              }
+            "point": {
+              "latitude": 17.993,
+              "longitude": -66.744
             }
           }
         ],
         "dates": [
           "2020-01-07T13:21:59"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeType",
             "val": [
@@ -17143,20 +16609,18 @@
           "ipcc_50/18.25_-66.75_PRI",
           "zip/00656"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 18.0386,
-                "longitude": -66.7756
-              }
+            "point": {
+              "latitude": 18.0386,
+              "longitude": -66.7756
             }
           }
         ],
         "dates": [
           "2020-01-07T14:17:02"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeError",
             "val": [
@@ -17209,20 +16673,18 @@
           "ipcc_50/18.25_-66.75_PRI",
           "zip/00656"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 18.0233,
-                "longitude": -66.7789
-              }
+            "point": {
+              "latitude": 18.0233,
+              "longitude": -66.7789
             }
           }
         ],
         "dates": [
           "2020-01-07T16:40:38"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depth",
             "val": [
@@ -17276,20 +16738,18 @@
           "ipcc_50/18.25_-66.75_PRI",
           "zip/00624"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 18.0569,
-                "longitude": -66.718
-              }
+            "point": {
+              "latitude": 18.0569,
+              "longitude": -66.718
             }
           }
         ],
         "dates": [
           "2020-01-07T18:03:07"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depthError",
             "val": [
@@ -17342,20 +16802,18 @@
           "ipcc_50/18.25_-66.75_PRI",
           "zip/00698"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 18.0119,
-                "longitude": -66.8336
-              }
+            "point": {
+              "latitude": 18.0119,
+              "longitude": -66.8336
             }
           }
         ],
         "dates": [
           "2020-01-07T23:21:02"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitude",
             "val": [
@@ -17408,20 +16866,18 @@
           "ipcc_50/18.25_-66.75_PRI",
           "zip/00656"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 18.0052,
-                "longitude": -66.7616
-              }
+            "point": {
+              "latitude": 18.0052,
+              "longitude": -66.7616
             }
           }
         ],
         "dates": [
           "2020-01-08T10:25:33"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeError",
             "val": [
@@ -17475,20 +16931,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00656"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.991,
-                "longitude": -66.8175
-              }
+            "point": {
+              "latitude": 17.991,
+              "longitude": -66.8175
             }
           }
         ],
         "dates": [
           "2020-01-08T13:05:30"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitudeType",
             "val": [
@@ -17541,20 +16995,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00653"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9716,
-                "longitude": -66.8719
-              }
+            "point": {
+              "latitude": 17.9716,
+              "longitude": -66.8719
             }
           }
         ],
         "dates": [
           "2020-01-08T14:53:26"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitude",
             "val": [
@@ -17607,20 +17059,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00698"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9844,
-                "longitude": -66.8103
-              }
+            "point": {
+              "latitude": 17.9844,
+              "longitude": -66.8103
             }
           }
         ],
         "dates": [
           "2020-01-09T05:09:08"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitude",
             "val": [
@@ -17673,20 +17123,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00698"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9642,
-                "longitude": -66.8284
-              }
+            "point": {
+              "latitude": 17.9642,
+              "longitude": -66.8284
             }
           }
         ],
         "dates": [
           "2020-01-09T05:20:42"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depth",
             "val": [
@@ -17736,20 +17184,18 @@
           "geoId/7298",
           "geoId/sch7200030"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9778,
-                "longitude": -66.7579
-              }
+            "point": {
+              "latitude": 17.9778,
+              "longitude": -66.7579
             }
           }
         ],
         "dates": [
           "2020-01-09T20:23:41"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitude",
             "val": [
@@ -17802,20 +17248,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00653"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.952,
-                "longitude": -66.8684
-              }
+            "point": {
+              "latitude": 17.952,
+              "longitude": -66.8684
             }
           }
         ],
         "dates": [
           "2020-01-10T01:25:50"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "name",
             "val": [
@@ -17868,20 +17312,18 @@
           "ipcc_50/18.25_-66.75_PRI",
           "zip/00698"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 18.0086,
-                "longitude": -66.8431
-              }
+            "point": {
+              "latitude": 18.0086,
+              "longitude": -66.8431
             }
           }
         ],
         "dates": [
           "2020-01-10T03:03:55"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depth",
             "val": [
@@ -17934,20 +17376,18 @@
           "ipcc_50/17.75_-66.75_PRI",
           "zip/00698"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 17.9781,
-                "longitude": -66.8238
-              }
+            "point": {
+              "latitude": 17.9781,
+              "longitude": -66.8238
             }
           }
         ],
         "dates": [
           "2020-01-10T13:09:35"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "depth",
             "val": [
@@ -18000,20 +17440,18 @@
           "ipcc_50/38.25_-112.75_USA",
           "zip/84731"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 38.29933,
-                "longitude": -112.86417
-              }
+            "point": {
+              "latitude": 38.29933,
+              "longitude": -112.86417
             }
           }
         ],
         "dates": [
           "2020-01-17T02:31:11"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "name",
             "val": [
@@ -18066,20 +17504,18 @@
           "ipcc_50/41.75_-112.25_USA",
           "zip/84316"
         ],
-        "geo_locations": [
+        "geoLocations": [
           {
-            "Geo": {
-              "Point": {
-                "latitude": 41.7945,
-                "longitude": -112.36067
-              }
+            "point": {
+              "latitude": 41.7945,
+              "longitude": -112.36067
             }
           }
         ],
         "dates": [
           "2020-01-24T14:41:28"
         ],
-        "salient_pvs": [
+        "salientPvs": [
           {
             "prop": "magnitude",
             "val": [

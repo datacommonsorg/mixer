@@ -84,7 +84,7 @@
         "provenanceSummary": {
           "dc/2xghn33": {
             "importName": "BLS_CPS",
-            "observationCount": 1197,
+            "observationCount": 1198,
             "timeSeriesCount": 2,
             "releaseFrequency": "P1M",
             "seriesSummary": [
@@ -94,8 +94,8 @@
                   "observationPeriod": "P1M"
                 },
                 "earliestDate": "1948-01",
-                "latestDate": "2022-10",
-                "observationCount": 898,
+                "latestDate": "2022-11",
+                "observationCount": 899,
                 "timeSeriesCount": 1,
                 "placeTypeSummary": {
                   "Country": {
@@ -142,7 +142,7 @@
           },
           "dc/lly3yc1": {
             "importName": "BLS_LAUS",
-            "observationCount": 2652646,
+            "observationCount": 2658943,
             "timeSeriesCount": 12769,
             "releaseFrequency": "P1M",
             "seriesSummary": [
@@ -197,7 +197,7 @@
                 },
                 "earliestDate": "1976-01",
                 "latestDate": "2022-10",
-                "observationCount": 2425574,
+                "observationCount": 2431871,
                 "timeSeriesCount": 6358,
                 "placeTypeSummary": {
                   "City": {
@@ -2902,7 +2902,7 @@
         "provenanceSummary": {
           "dc/e9k9ze": {
             "importName": "NYT_COVID19",
-            "observationCount": 2620285,
+            "observationCount": 2620969,
             "timeSeriesCount": 6554,
             "releaseFrequency": "P1D",
             "seriesSummary": [
@@ -2911,8 +2911,8 @@
                   "measurementMethod": "dcDerivedStat/NYT_COVID19_GitHub"
                 },
                 "earliestDate": "2020-01-22",
-                "latestDate": "2022-11-29",
-                "observationCount": 2533360,
+                "latestDate": "2022-12-10",
+                "observationCount": 2533987,
                 "timeSeriesCount": 3277,
                 "placeTypeSummary": {
                   "City": {
@@ -2993,8 +2993,8 @@
                   "observationPeriod": "P1M"
                 },
                 "earliestDate": "2020-01",
-                "latestDate": "2022-11",
-                "observationCount": 86925,
+                "latestDate": "2022-12",
+                "observationCount": 86982,
                 "timeSeriesCount": 3277,
                 "placeTypeSummary": {
                   "City": {

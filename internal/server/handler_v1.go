@@ -231,5 +231,5 @@ func (s *Server) DerivedObservationsSeries(
 func (s *Server) EventCollection(
 	ctx context.Context, in *pb.EventCollectionRequest,
 ) (*pb.EventCollectionResponse, error) {
-	return event.EventCollection(ctx, in, s.store)
+	return event.Collection(ctx, in, s.store)
 }

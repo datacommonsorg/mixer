@@ -12,8 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// API Implementation for /v1/bulk/observations/point
-
+// Package event contain code for event.
 package event
 
 import (
@@ -28,8 +27,8 @@ import (
 	"google.golang.org/protobuf/proto"
 )
 
-// EventCollection implements API for Mixer.EventCollection.
-func EventCollection(
+// Collection implements API for Mixer.EventCollection.
+func Collection(
 	ctx context.Context,
 	in *pb.EventCollectionRequest,
 	store *store.Store,

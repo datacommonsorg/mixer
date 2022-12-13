@@ -3,31 +3,31 @@
     {
       "statVar": "Count_Person_Female_ForeignBorn",
       "statVarName": "Population: Female, Foreign Born",
-      "score": 9.0414,
+      "score": 9.0422,
       "explanation": "AND query: [mp] [count] pt Person [gender] [Female] [nativity] [USC_ForeignBorn]"
     },
     {
       "statVar": "Count_Person_15To50Years_Female_ForeignBorn",
       "statVarName": "Population: 15 - 50 Years, Female, Foreign Born",
-      "score": 8.316,
+      "score": 8.3168,
       "explanation": "AND query: [mp] [count] pt Person age Years15To50 [gender] [Female] [nativity] [USC_ForeignBorn]"
     },
     {
       "statVar": "Count_Person_Female_ForeignBorn_PlaceOfBirthAfrica",
       "statVarName": "Population: Female, Foreign Born, Africa",
-      "score": 8.316,
+      "score": 8.3168,
       "explanation": "AND query: [mp] [count] pt Person [gender] [Female] [nativity] [USC_ForeignBorn] placeOfBirth africa"
     },
     {
       "statVar": "Count_Person_Female_ForeignBorn_PlaceOfBirthAsia",
       "statVarName": "Population: Female, Foreign Born, Asia",
-      "score": 8.316,
+      "score": 8.3168,
       "explanation": "AND query: [mp] [count] pt Person [gender] [Female] [nativity] [USC_ForeignBorn] placeOfBirth asia"
     },
     {
       "statVar": "Count_Person_Female_ForeignBorn_PlaceOfBirthCaribbean",
       "statVarName": "Population: Female, Foreign Born, Caribbean",
-      "score": 8.316,
+      "score": 8.3168,
       "explanation": "AND query: [mp] [count] pt Person [gender] [Female] [nativity] [USC_ForeignBorn] placeOfBirth Caribbean"
     }
   ]

@@ -23,7 +23,7 @@
       "id": "dc/g/Education",
       "specializedEntity": "Education",
       "displayName": "Education",
-      "descendentStatVarCount": 4845
+      "descendentStatVarCount": 4856
     },
     {
       "id": "dc/g/Energy",
@@ -67,5 +67,5 @@
       "descendentStatVarCount": 9
     }
   ],
-  "descendentStatVarCount": 113171
+  "descendentStatVarCount": 113182
 }

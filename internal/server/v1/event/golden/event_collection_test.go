@@ -62,7 +62,7 @@ func TestEventCollection(t *testing.T) {
 			}
 
 			if test.GenerateGolden {
-				test.UpdateGolden(resp, goldenPath, c.goldenFile)
+				test.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
 				continue
 			}
 			var expected pb.EventCollectionResponse
