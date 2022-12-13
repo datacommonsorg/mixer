@@ -19,6 +19,7 @@ import (
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/translator"
+	"github.com/datacommonsorg/mixer/internal/server/v1/event"
 	"github.com/datacommonsorg/mixer/internal/server/v1/info"
 	"github.com/datacommonsorg/mixer/internal/server/v1/observationdates"
 	"github.com/datacommonsorg/mixer/internal/server/v1/observations"
@@ -224,4 +225,11 @@ func (s *Server) DerivedObservationsSeries(
 	ctx context.Context, in *pb.DerivedObservationsSeriesRequest,
 ) (*pb.DerivedObservationsSeriesResponse, error) {
 	return observations.DerivedSeries(ctx, in, s.store)
+}
+
+// EventCollection implements API for mixer.EventCollection.
+func (s *Server) EventCollection(
+	ctx context.Context, in *pb.EventCollectionRequest,
+) (*pb.EventCollectionResponse, error) {
+	return event.EventCollection(ctx, in, s.store)
 }

@@ -35,6 +35,7 @@ import "stat_var.proto";
 import "translate.proto";
 import "recon.proto";
 
+import "v1/event.proto";
 import "v1/properties.proto";
 import "v1/property_values.proto";
 import "v1/variable.proto";
@@ -523,6 +524,19 @@ service Mixer {
       returns (datacommons.v1.VariableAncestorsResponse) {
     option (google.api.http) = {
       get : "/v1/variable/ancestors/{node=**}"
+    };
+  }
+
+  // Get event collection for {eventType, affectedPlaceDcid, date}.
+  // NOTE:
+  // - The affectedPlaceDcid is only for top-level places such as Earth,
+  // continents, and countries.
+  // - The date format should be: YYYY-MM.
+  rpc EventCollection(datacommons.v1.EventCollectionRequest)
+      returns (datacommons.v1.EventCollectionResponse) {
+    option (google.api.http) = {
+      get : "/v1/event/collection"
+      additional_bindings : {post : "/v1/event/collection" body : "*"}
     };
   }
 

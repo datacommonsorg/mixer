@@ -110,6 +110,7 @@ func ReadWithGroupRowList(
 			BuildRowList(prefix, acc.Body)...,
 		)
 	}
+
 	// Channels for each import group read.
 	chans := make(map[int]chan BtRow)
 	for i := 0; i < len(tables); i++ {

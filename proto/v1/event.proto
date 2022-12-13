@@ -1,0 +1,62 @@
+// Copyright 2022 Google LLC
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+syntax = "proto3";
+option go_package = "./proto";
+package datacommons.v1;
+
+message EventCollection {
+  message GeoLocation {
+    message Point {
+      optional double latitude = 1;
+      optional double longitude = 2;
+    }
+    message Polygon { optional string geo_json = 1; }
+    oneof geo {
+      Point point = 1;
+      Polygon polygon = 2;
+    }
+  }
+
+  message PropVal {
+    optional string prop = 1;
+    repeated string val = 2;
+  }
+
+  message Event {
+    // Data Commons places associated with the event.
+    repeated string places = 1;
+    // Geospatial location of the event.
+    repeated GeoLocation geo_locations = 2;
+    // NOTE: The format should be ISO 8601.
+    repeated string dates = 3;
+    repeated PropVal salient_pvs = 4;
+    optional string dcid = 5;
+    optional string provenance = 6;
+  }
+
+  repeated Event events = 1;
+}
+
+message EventCollectionRequest {
+  string event_type = 1;
+  // Only for top-level places such as Earth, continents, and countries.
+  string affected_place_dcid = 2;
+  // YYYY-MM.
+  string date = 3; 
+}
+
+message EventCollectionResponse {
+  EventCollection event_collection = 1;
+}
