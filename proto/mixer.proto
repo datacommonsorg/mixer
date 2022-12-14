@@ -535,8 +535,8 @@ service Mixer {
   rpc EventCollection(datacommons.v1.EventCollectionRequest)
       returns (datacommons.v1.EventCollectionResponse) {
     option (google.api.http) = {
-      get : "/v1/event/collection"
-      additional_bindings : {post : "/v1/event/collection" body : "*"}
+      get : "/v1/events"
+      additional_bindings : {post : "/v1/events" body : "*"}
     };
   }
 

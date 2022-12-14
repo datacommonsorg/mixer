@@ -34,6 +34,7 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+// A collection of events that share some common properties.
 type EventCollection struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -338,7 +339,9 @@ type EventCollection_Event struct {
 	// Geospatial location of the event.
 	GeoLocations []*EventCollection_GeoLocation `protobuf:"bytes,2,rep,name=geo_locations,json=geoLocations,proto3" json:"geo_locations,omitempty"`
 	// NOTE: The format should be ISO 8601.
-	Dates      []string                   `protobuf:"bytes,3,rep,name=dates,proto3" json:"dates,omitempty"`
+	Dates []string `protobuf:"bytes,3,rep,name=dates,proto3" json:"dates,omitempty"`
+	// These are the properties and values that well characterize the event.
+	// For example, for EarthquakeEvent, one of the salient property is the magnitude.
 	SalientPvs []*EventCollection_PropVal `protobuf:"bytes,4,rep,name=salient_pvs,json=salientPvs,proto3" json:"salient_pvs,omitempty"`
 	Dcid       *string                    `protobuf:"bytes,5,opt,name=dcid,proto3,oneof" json:"dcid,omitempty"`
 	Provenance *string                    `protobuf:"bytes,6,opt,name=provenance,proto3,oneof" json:"provenance,omitempty"`

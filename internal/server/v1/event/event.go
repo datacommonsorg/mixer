@@ -61,6 +61,7 @@ func Collection(
 	for _, btData := range btDataList {
 		for _, row := range btData {
 			resp.EventCollection = row.Data.(*pb.EventCollection)
+			break
 		}
 	}
 

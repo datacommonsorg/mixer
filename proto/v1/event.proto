@@ -16,6 +16,7 @@ syntax = "proto3";
 option go_package = "./proto";
 package datacommons.v1;
 
+// A collection of events that share some common properties.
 message EventCollection {
   message GeoLocation {
     message Point {
@@ -41,6 +42,8 @@ message EventCollection {
     repeated GeoLocation geo_locations = 2;
     // NOTE: The format should be ISO 8601.
     repeated string dates = 3;
+    // These are the properties and values that well characterize the event.
+    // For example, for EarthquakeEvent, one of the salient property is the magnitude.
     repeated PropVal salient_pvs = 4;
     optional string dcid = 5;
     optional string provenance = 6;
