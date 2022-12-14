@@ -426,6 +426,25 @@
     },
     "zip/94618": {
       "data": {
+        "Count_Person": {
+          "val": {
+            "2011": 16753,
+            "2012": 17074,
+            "2013": 17226,
+            "2014": 17007,
+            "2015": 16884,
+            "2016": 16620,
+            "2017": 16566,
+            "2018": 17041,
+            "2019": 17252,
+            "2020": 17110
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+            "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
         "Count_Person_25OrMoreYears": {
           "val": {
             "2011": 12831,
@@ -755,6 +774,33 @@
         "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
         "measurementMethod": "CensusPEPSurvey",
         "observationPeriod": "P1Y"
+      }
+    },
+    "zip/94610": {
+      "date": "2020",
+      "value": 31553,
+      "metadata": {
+        "importName": "CensusACS5YearSurvey",
+        "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+        "measurementMethod": "CensusACS5yrSurvey"
+      }
+    },
+    "zip/94611": {
+      "date": "2020",
+      "value": 39042,
+      "metadata": {
+        "importName": "CensusACS5YearSurvey",
+        "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+        "measurementMethod": "CensusACS5yrSurvey"
+      }
+    },
+    "zip/94618": {
+      "date": "2020",
+      "value": 17110,
+      "metadata": {
+        "importName": "CensusACS5YearSurvey",
+        "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+        "measurementMethod": "CensusACS5yrSurvey"
       }
     }
   },
