@@ -3,13 +3,13 @@
     {
       "statVar": "Count_Establishment_NAICSArtsEntertainmentRecreation",
       "statVarName": "Count of Establishment: Arts, Entertainment, And Recreation (NAICS/71)",
-      "score": 21.1374,
+      "score": 21.1375,
       "explanation": "OR query: [mp] [count] [pt] [USCEstablishment] [naics] [NAICS/71]"
     },
     {
       "statVar": "WagesAnnual_Establishment_NAICSArtsEntertainmentRecreation",
       "statVarName": "Wages Annual of Establishment: Arts, Entertainment, And Recreation (NAICS/71)",
-      "score": 21.1374,
+      "score": 21.1375,
       "explanation": "OR query: [mp] wagesAnnual [pt] [USCEstablishment] [naics] [NAICS/71]"
     },
     {
