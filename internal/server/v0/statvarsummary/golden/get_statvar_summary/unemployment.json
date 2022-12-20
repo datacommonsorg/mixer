@@ -18,8 +18,8 @@
               "name": "Chicago"
             }
           ],
-          "minValue": 0,
-          "maxValue": 100
+          "minValue": -13.197619,
+          "maxValue": 111.783127
         },
         "Country": {
           "placeCount": 33,
@@ -135,6 +135,165 @@
               },
               "minValue": 2.6,
               "maxValue": 13
+            }
+          ]
+        },
+        "dc/933f4w2": {
+          "importName": "BLS_LAUS_Imputed",
+          "observationCount": 649719,
+          "timeSeriesCount": 6342,
+          "releaseFrequency": "P1M",
+          "seriesSummary": [
+            {
+              "seriesKey": {
+                "measurementMethod": "BLSSeasonallyAdjusted",
+                "observationPeriod": "P1M"
+              },
+              "earliestDate": "2020-03",
+              "latestDate": "2022-10",
+              "observationCount": 4,
+              "timeSeriesCount": 1,
+              "placeTypeSummary": {
+                "State": {
+                  "placeCount": 1,
+                  "topPlaces": [
+                    {
+                      "dcid": "geoId/72",
+                      "name": "Puerto Rico"
+                    }
+                  ],
+                  "minValue": 7.190453,
+                  "maxValue": 22.675805
+                }
+              },
+              "minValue": 7.190453,
+              "maxValue": 22.675805
+            },
+            {
+              "seriesKey": {
+                "measurementMethod": "BLSSeasonallyUnadjusted",
+                "observationPeriod": "P1M"
+              },
+              "earliestDate": "1976-01",
+              "latestDate": "2022-10",
+              "observationCount": 600365,
+              "timeSeriesCount": 3179,
+              "placeTypeSummary": {
+                "City": {
+                  "placeCount": 3085,
+                  "topPlaces": [
+                    {
+                      "dcid": "geoId/0644000",
+                      "name": "Los Angeles"
+                    },
+                    {
+                      "dcid": "geoId/1714000",
+                      "name": "Chicago"
+                    },
+                    {
+                      "dcid": "geoId/4835000",
+                      "name": "Houston"
+                    }
+                  ],
+                  "minValue": -13.197619,
+                  "maxValue": 111.202351
+                },
+                "County": {
+                  "placeCount": 93,
+                  "topPlaces": [
+                    {
+                      "dcid": "geoId/22051",
+                      "name": "Jefferson Parish"
+                    },
+                    {
+                      "dcid": "geoId/22071",
+                      "name": "Orleans Parish"
+                    },
+                    {
+                      "dcid": "geoId/72127",
+                      "name": "San Juan"
+                    }
+                  ],
+                  "minValue": 2.878088,
+                  "maxValue": 36.790719
+                },
+                "State": {
+                  "placeCount": 1,
+                  "topPlaces": [
+                    {
+                      "dcid": "geoId/72",
+                      "name": "Puerto Rico"
+                    }
+                  ],
+                  "minValue": 6.760155,
+                  "maxValue": 22.017141
+                }
+              },
+              "minValue": -13.197619,
+              "maxValue": 111.202351
+            },
+            {
+              "seriesKey": {
+                "measurementMethod": "BLSSeasonallyUnadjusted",
+                "observationPeriod": "P1Y"
+              },
+              "earliestDate": "1976",
+              "latestDate": "2021",
+              "observationCount": 49350,
+              "timeSeriesCount": 3162,
+              "placeTypeSummary": {
+                "City": {
+                  "placeCount": 3068,
+                  "topPlaces": [
+                    {
+                      "dcid": "geoId/0644000",
+                      "name": "Los Angeles"
+                    },
+                    {
+                      "dcid": "geoId/1714000",
+                      "name": "Chicago"
+                    },
+                    {
+                      "dcid": "geoId/4835000",
+                      "name": "Houston"
+                    }
+                  ],
+                  "minValue": -0.798849,
+                  "maxValue": 111.783127
+                },
+                "County": {
+                  "placeCount": 93,
+                  "topPlaces": [
+                    {
+                      "dcid": "geoId/22051",
+                      "name": "Jefferson Parish"
+                    },
+                    {
+                      "dcid": "geoId/22071",
+                      "name": "Orleans Parish"
+                    },
+                    {
+                      "dcid": "geoId/72127",
+                      "name": "San Juan"
+                    }
+                  ],
+                  "minValue": 3.868194,
+                  "maxValue": 19.46849
+                },
+                "State": {
+                  "placeCount": 1,
+                  "topPlaces": [
+                    {
+                      "dcid": "geoId/72",
+                      "name": "Puerto Rico"
+                    }
+                  ],
+                  "minValue": 13.779251,
+                  "maxValue": 13.779251
+                }
+              },
+              "minValue": -0.798849,
+              "maxValue": 111.783127
             }
           ]
         },

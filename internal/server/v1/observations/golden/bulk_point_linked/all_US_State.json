@@ -3877,9 +3877,24 @@
               "facet": "2978659163"
             },
             {
+              "date": "2022-10",
+              "value": 1137712.951405,
+              "facet": "3878520001"
+            },
+            {
               "date": "2022-08",
               "value": 1112771,
               "facet": "1249140336"
+            },
+            {
+              "date": "2022-09",
+              "value": 1140604.282186,
+              "facet": "4026503442"
+            },
+            {
+              "date": "2020",
+              "value": 1073239.970603,
+              "facet": "706575990"
             }
           ]
         }
@@ -5437,9 +5452,24 @@
               "facet": "2978659163"
             },
             {
+              "date": "2022-10",
+              "value": 7.328837,
+              "facet": "3878520001"
+            },
+            {
               "date": "2022-08",
               "value": 5.8,
               "facet": "1249140336"
+            },
+            {
+              "date": "2022-09",
+              "value": 6.760155,
+              "facet": "4026503442"
+            },
+            {
+              "date": "2020",
+              "value": 13.779251,
+              "facet": "706575990"
             }
           ]
         }
@@ -6051,6 +6081,24 @@
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2601APR",
       "provenance_url": "https://data.census.gov/cedsci/table?q=S2601APR&tid=ACSST5Y2019.S2601APR",
       "measurement_method": "CensusACS5yrSurveySubjectTable"
+    },
+    "3878520001": {
+      "import_name": "BLS_LAUS_Imputed",
+      "provenance_url": "https://www.bls.gov/lau/",
+      "measurement_method": "BLSSeasonallyAdjusted",
+      "observation_period": "P1M"
+    },
+    "4026503442": {
+      "import_name": "BLS_LAUS_Imputed",
+      "provenance_url": "https://www.bls.gov/lau/",
+      "measurement_method": "BLSSeasonallyUnadjusted",
+      "observation_period": "P1M"
+    },
+    "706575990": {
+      "import_name": "BLS_LAUS_Imputed",
+      "provenance_url": "https://www.bls.gov/lau/",
+      "measurement_method": "BLSSeasonallyUnadjusted",
+      "observation_period": "P1Y"
     }
   }
 }

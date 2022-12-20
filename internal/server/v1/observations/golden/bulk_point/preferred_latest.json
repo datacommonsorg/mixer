@@ -231,8 +231,8 @@
           "entity": "country/USA",
           "points_by_facet": [
             {
-              "date": "2022-12-13",
-              "value": 99248757,
+              "date": "2022-12-17",
+              "value": 99618249,
               "facet": "2232540893"
             }
           ]
@@ -241,8 +241,8 @@
           "entity": "geoId/06",
           "points_by_facet": [
             {
-              "date": "2022-12-13",
-              "value": 11630402,
+              "date": "2022-12-17",
+              "value": 11688449,
               "facet": "2232540893"
             }
           ]
@@ -400,9 +400,21 @@
       "provenance_url": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
       "observation_period": "P1Y"
     },
+    "4026503442": {
+      "import_name": "BLS_LAUS_Imputed",
+      "provenance_url": "https://www.bls.gov/lau/",
+      "measurement_method": "BLSSeasonallyUnadjusted",
+      "observation_period": "P1M"
+    },
     "4277990144": {
       "import_name": "FBIGovCrime",
       "provenance_url": "http://www.fbi.gov/services/cjis/ucr",
+      "observation_period": "P1Y"
+    },
+    "706575990": {
+      "import_name": "BLS_LAUS_Imputed",
+      "provenance_url": "https://www.bls.gov/lau/",
+      "measurement_method": "BLSSeasonallyUnadjusted",
       "observation_period": "P1Y"
     },
     "738965619": {

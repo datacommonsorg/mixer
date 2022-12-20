@@ -521,7 +521,6 @@ type ChartStore struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Types that are assignable to Val:
-	//
 	//	*ChartStore_ObsTimeSeries
 	//	*ChartStore_ObsCollection
 	Val isChartStore_Val `protobuf_oneof:"val"`
@@ -1204,42 +1203,41 @@ func (x *GetStatAllRequest) GetStatVars() []string {
 // The response is transcoded by esp:
 // https://cloud.google.com/endpoints/docs/grpc/grpc-service-config Example
 // response after esp transcoding is like below.
-//
-//	{
-//	  placeData: {
-//	    "geoId/01": {
-//	      statVarData: {
-//	        "statvar1": {
-//	          "placeName": "City of Mountain View",
-//	          "sourceSeries": [
-//	            {
-//	              "val": {
-//	                "2008": 2116,
-//	                "2009": 2155,
-//	                "2010": 1633,
-//	                "2011": 1509,
-//	                "2012": 1581,
-//	                "2013": 1867,
-//	                "2014": 1770,
-//	                "2015": 2201,
-//	                "2016": 1913,
-//	                "2017": 2138
-//	              },
-//	              "observationPeriod": "P1Y",
-//	              "importName": "FBIGovCrime",
-//	              "provenanceDomain": "fbi.gov"
-//	            }
-//	          ]
-//	        },
-//	      }
-//	    },
-//	    "geoId/02": {
-//	      statVarData: {
-//	        "statvar3": {...},
-//	      }
-//	    }
-//	  }
-//	}
+// {
+//   placeData: {
+//     "geoId/01": {
+//       statVarData: {
+//         "statvar1": {
+//           "placeName": "City of Mountain View",
+//           "sourceSeries": [
+//             {
+//               "val": {
+//                 "2008": 2116,
+//                 "2009": 2155,
+//                 "2010": 1633,
+//                 "2011": 1509,
+//                 "2012": 1581,
+//                 "2013": 1867,
+//                 "2014": 1770,
+//                 "2015": 2201,
+//                 "2016": 1913,
+//                 "2017": 2138
+//               },
+//               "observationPeriod": "P1Y",
+//               "importName": "FBIGovCrime",
+//               "provenanceDomain": "fbi.gov"
+//             }
+//           ]
+//         },
+//       }
+//     },
+//     "geoId/02": {
+//       statVarData: {
+//         "statvar3": {...},
+//       }
+//     }
+//   }
+// }
 type GetStatAllResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

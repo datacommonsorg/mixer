@@ -27,6 +27,8 @@ const (
 	BtSVAndSVGExistence = "d/2/"
 	// BtObsTimeSeries is the key for obs time series cache.
 	BtObsTimeSeries = "d/3/"
+	// BtEventCollection is the key for event collection cache.
+	BtEventCollection = "d/4/"
 	// BtReconIDMapPrefix for ID mapping for ID-based recon. The key excludes DCID.
 	BtReconIDMapPrefix = "d/5/"
 	// BtBioPagePrefix for biology page cache.
