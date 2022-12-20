@@ -104,9 +104,9 @@ message StatVarSummary {
     // SeriesSummary for each time series in this provenance
     repeated SeriesSummary series_summary = 5;
     // Number of observations from this provenance, might exceed INT32_MAX.
-    optional double observation_count = 6;
+    double observation_count = 6;
     // Number of time series from this provenance, might exceed INT32_MAX.
-    optional double time_series_count = 7;
+    double time_series_count = 7;
 
     reserved 2, 3;
   }

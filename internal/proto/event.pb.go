@@ -98,7 +98,7 @@ type EventCollectionRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	EventType string `protobuf:"bytes,1,opt,name=event_type,json=eventType,proto3" json:"event_type,omitempty"`
-	// Only for top-level places such as Earth, continents, and countries.
+	// Only for top-level places: Earth, continents, and countries.
 	AffectedPlaceDcid string `protobuf:"bytes,2,opt,name=affected_place_dcid,json=affectedPlaceDcid,proto3" json:"affected_place_dcid,omitempty"`
 	// Format: YYYY-MM.
 	// This is usually the start date of the event, for example:
