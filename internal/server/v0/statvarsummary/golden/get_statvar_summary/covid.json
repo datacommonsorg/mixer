@@ -74,8 +74,6 @@
       "provenanceSummary": {
         "dc/e9k9ze": {
           "importName": "NYT_COVID19",
-          "observationCount": 2537671,
-          "timeSeriesCount": 3277,
           "releaseFrequency": "P1D",
           "seriesSummary": [
             {
@@ -84,8 +82,6 @@
               },
               "earliestDate": "2020-01-21",
               "latestDate": "2022-12-17",
-              "observationCount": 2537671,
-              "timeSeriesCount": 3277,
               "placeTypeSummary": {
                 "City": {
                   "placeCount": 3,
@@ -157,9 +153,13 @@
                 }
               },
               "minValue": 1,
-              "maxValue": 99618249
+              "maxValue": 99618249,
+              "observationCount": 2537671,
+              "timeSeriesCount": 3277
             }
-          ]
+          ],
+          "observationCount": 2537671,
+          "timeSeriesCount": 3277
         }
       }
     },
@@ -237,8 +237,6 @@
       "provenanceSummary": {
         "dc/e9k9ze": {
           "importName": "NYT_COVID19",
-          "observationCount": 2621368,
-          "timeSeriesCount": 6554,
           "releaseFrequency": "P1D",
           "seriesSummary": [
             {
@@ -247,8 +245,6 @@
               },
               "earliestDate": "2020-01-22",
               "latestDate": "2022-12-17",
-              "observationCount": 2534386,
-              "timeSeriesCount": 3277,
               "placeTypeSummary": {
                 "City": {
                   "placeCount": 3,
@@ -320,7 +316,9 @@
                 }
               },
               "minValue": -40527,
-              "maxValue": 1433977
+              "maxValue": 1433977,
+              "observationCount": 2534386,
+              "timeSeriesCount": 3277
             },
             {
               "seriesKey": {
@@ -329,8 +327,6 @@
               },
               "earliestDate": "2020-01",
               "latestDate": "2022-12",
-              "observationCount": 86982,
-              "timeSeriesCount": 3277,
               "placeTypeSummary": {
                 "City": {
                   "placeCount": 3,
@@ -402,9 +398,13 @@
                 }
               },
               "minValue": -3451,
-              "maxValue": 20300128
+              "maxValue": 20300128,
+              "observationCount": 86982,
+              "timeSeriesCount": 3277
             }
-          ]
+          ],
+          "observationCount": 2621368,
+          "timeSeriesCount": 6554
         }
       }
     }

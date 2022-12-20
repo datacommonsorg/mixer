@@ -40,25 +40,27 @@ message EntityStatVarExistence {
   reserved 1;
 }
 
+// Summary information about a StatVar
 message StatVarSummary {
   message Place {
     string dcid = 1;
     string name = 3;
+
+    reserved 2;
   }
   message PlaceTypeSummary {
-    // Number of places with stats for this stat var
+    // Number of places with stats for this StatVar
     int32 place_count = 4;
-    // List of example places that have stats for this stat var
+    // A short (<4) list of most-populated places of this type
     repeated Place top_places = 3;
     // Minimum observation value for places of this type
     optional double min_value = 5;
     // Maximum observation value for places of this type
     optional double max_value = 6;
 
-    reserved 1;
+    reserved 1, 2;
   }
 
-  // TODO: Consolidate with StatMetadata
   message SeriesSummary {
     message SeriesKey {
       // Measurement method of this time series type
@@ -71,6 +73,8 @@ message StatVarSummary {
       string unit = 4;
       // Whether this time series type is aggregated by Data Commons
       bool is_dc_aggregate = 5;
+      // Whether this time series type is imputed by Data Commons
+      bool is_dc_imputed = 6;
     }
     SeriesKey series_key = 1;
 
@@ -78,16 +82,16 @@ message StatVarSummary {
     string earliest_date = 2;
     // Latest observation date in this time series type
     string latest_date = 3;
-    // Number of observations of this time series type
-    double observation_count = 9;
-    // Number of series of this time series type
-    double time_series_count = 10;
     // Map of place type to PlaceTypeSummary for this time series type
     map<string, PlaceTypeSummary> place_type_summary = 6;
     // Minimum observation value of this time series type
     optional double min_value = 7;
     // Maximum observation value of this time series type
     optional double max_value = 8;
+    // Number of observations of this time series type, might exceed INT32_MAX.
+    optional double observation_count = 9;
+    // Number of series of this time series type, might exceed INT32_MAX.
+    optional double time_series_count = 10;
 
     reserved 4, 5;
   }
@@ -95,19 +99,20 @@ message StatVarSummary {
   message ProvenanceSummary {
     // Import name
     string import_name = 1;
-    // Number of observations from this provenance
-    double observation_count = 6;
-    // Number of time series from this provenance
-    double time_series_count = 7;
     // Release frequency of this provenance
     string release_frequency = 4;
     // SeriesSummary for each time series in this provenance
     repeated SeriesSummary series_summary = 5;
+    // Number of observations from this provenance, might exceed INT32_MAX.
+    optional double observation_count = 6;
+    // Number of time series from this provenance, might exceed INT32_MAX.
+    optional double time_series_count = 7;
 
     reserved 2, 3;
   }
 
-  // Key is type of place
+  // Key: type of place.  When places have multiple types, the dominant place
+  // type is selected.
   map<string, PlaceTypeSummary> place_type_summary = 1;
 
   // Key: provenance ID

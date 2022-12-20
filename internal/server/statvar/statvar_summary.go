@@ -65,7 +65,7 @@ func GetStatVarSummaryHelper(
 			// Pick place type summary with the most places.
 			for pt := range svs.PlaceTypeSummary {
 				summary, ok := res.PlaceTypeSummary[pt]
-				if ok && svs.PlaceTypeSummary[pt].PlaceCount < summary.PlaceCount {
+				if ok && svs.PlaceTypeSummary[pt].GetPlaceCount() < summary.GetPlaceCount() {
 					continue
 				}
 				res.PlaceTypeSummary[pt] = svs.PlaceTypeSummary[pt]
