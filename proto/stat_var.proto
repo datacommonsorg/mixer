@@ -89,9 +89,9 @@ message StatVarSummary {
     // Maximum observation value of this time series type
     optional double max_value = 8;
     // Number of observations of this time series type, might exceed INT32_MAX.
-    optional double observation_count = 9;
+    double observation_count = 9;
     // Number of series of this time series type, might exceed INT32_MAX.
-    optional double time_series_count = 10;
+    double time_series_count = 10;
 
     reserved 4, 5;
   }

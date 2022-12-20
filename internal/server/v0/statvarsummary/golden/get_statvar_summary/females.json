@@ -348,16 +348,14 @@
           "placeCount": 8,
           "topPlaces": [
             {
-              "dcid": "wikidataId/Q1180",
-              "name": ""
+              "dcid": "wikidataId/Q1180"
             },
             {
               "dcid": "wikidataId/Q2760659",
               "name": "Dadra"
             },
             {
-              "dcid": "wikidataId/Q3235",
-              "name": ""
+              "dcid": "wikidataId/Q3235"
             }
           ],
           "minValue": 296,
@@ -815,16 +813,14 @@
                   "placeCount": 8,
                   "topPlaces": [
                     {
-                      "dcid": "wikidataId/Q1180",
-                      "name": ""
+                      "dcid": "wikidataId/Q1180"
                     },
                     {
                       "dcid": "wikidataId/Q2760659",
                       "name": "Dadra"
                     },
                     {
-                      "dcid": "wikidataId/Q3235",
-                      "name": ""
+                      "dcid": "wikidataId/Q3235"
                     }
                   ],
                   "minValue": 296,
