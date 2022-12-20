@@ -20,8 +20,8 @@
                 "name": "Chicago"
               }
             ],
-            "minValue": 0,
-            "maxValue": 100
+            "minValue": -13.197619,
+            "maxValue": 111.783127
           },
           "Country": {
             "placeCount": 33,
@@ -84,8 +84,6 @@
         "provenanceSummary": {
           "dc/2xghn33": {
             "importName": "BLS_CPS",
-            "observationCount": 1198,
-            "timeSeriesCount": 2,
             "releaseFrequency": "P1M",
             "seriesSummary": [
               {
@@ -95,8 +93,6 @@
                 },
                 "earliestDate": "1948-01",
                 "latestDate": "2022-11",
-                "observationCount": 899,
-                "timeSeriesCount": 1,
                 "placeTypeSummary": {
                   "Country": {
                     "placeCount": 1,
@@ -111,7 +107,9 @@
                   }
                 },
                 "minValue": 2.5,
-                "maxValue": 14.7
+                "maxValue": 14.7,
+                "observationCount": 899,
+                "timeSeriesCount": 1
               },
               {
                 "seriesKey": {
@@ -120,8 +118,6 @@
                 },
                 "earliestDate": "1948-03",
                 "latestDate": "2022-09",
-                "observationCount": 299,
-                "timeSeriesCount": 1,
                 "placeTypeSummary": {
                   "Country": {
                     "placeCount": 1,
@@ -136,14 +132,178 @@
                   }
                 },
                 "minValue": 2.6,
-                "maxValue": 13
+                "maxValue": 13,
+                "observationCount": 299,
+                "timeSeriesCount": 1
               }
-            ]
+            ],
+            "observationCount": 1198,
+            "timeSeriesCount": 2
+          },
+          "dc/933f4w2": {
+            "importName": "BLS_LAUS_Imputed",
+            "releaseFrequency": "P1M",
+            "seriesSummary": [
+              {
+                "seriesKey": {
+                  "measurementMethod": "BLSSeasonallyAdjusted",
+                  "observationPeriod": "P1M",
+                  "isDcImputed": true
+                },
+                "earliestDate": "2020-03",
+                "latestDate": "2022-10",
+                "placeTypeSummary": {
+                  "State": {
+                    "placeCount": 1,
+                    "topPlaces": [
+                      {
+                        "dcid": "geoId/72",
+                        "name": "Puerto Rico"
+                      }
+                    ],
+                    "minValue": 7.190453,
+                    "maxValue": 22.675805
+                  }
+                },
+                "minValue": 7.190453,
+                "maxValue": 22.675805,
+                "observationCount": 4,
+                "timeSeriesCount": 1
+              },
+              {
+                "seriesKey": {
+                  "measurementMethod": "BLSSeasonallyUnadjusted",
+                  "observationPeriod": "P1M",
+                  "isDcImputed": true
+                },
+                "earliestDate": "1976-01",
+                "latestDate": "2022-10",
+                "placeTypeSummary": {
+                  "City": {
+                    "placeCount": 3085,
+                    "topPlaces": [
+                      {
+                        "dcid": "geoId/0644000",
+                        "name": "Los Angeles"
+                      },
+                      {
+                        "dcid": "geoId/1714000",
+                        "name": "Chicago"
+                      },
+                      {
+                        "dcid": "geoId/4835000",
+                        "name": "Houston"
+                      }
+                    ],
+                    "minValue": -13.197619,
+                    "maxValue": 111.202351
+                  },
+                  "County": {
+                    "placeCount": 93,
+                    "topPlaces": [
+                      {
+                        "dcid": "geoId/22051",
+                        "name": "Jefferson Parish"
+                      },
+                      {
+                        "dcid": "geoId/22071",
+                        "name": "Orleans Parish"
+                      },
+                      {
+                        "dcid": "geoId/72127",
+                        "name": "San Juan"
+                      }
+                    ],
+                    "minValue": 2.878088,
+                    "maxValue": 36.790719
+                  },
+                  "State": {
+                    "placeCount": 1,
+                    "topPlaces": [
+                      {
+                        "dcid": "geoId/72",
+                        "name": "Puerto Rico"
+                      }
+                    ],
+                    "minValue": 6.760155,
+                    "maxValue": 22.017141
+                  }
+                },
+                "minValue": -13.197619,
+                "maxValue": 111.202351,
+                "observationCount": 600365,
+                "timeSeriesCount": 3179
+              },
+              {
+                "seriesKey": {
+                  "measurementMethod": "BLSSeasonallyUnadjusted",
+                  "observationPeriod": "P1Y",
+                  "isDcImputed": true
+                },
+                "earliestDate": "1976",
+                "latestDate": "2021",
+                "placeTypeSummary": {
+                  "City": {
+                    "placeCount": 3068,
+                    "topPlaces": [
+                      {
+                        "dcid": "geoId/0644000",
+                        "name": "Los Angeles"
+                      },
+                      {
+                        "dcid": "geoId/1714000",
+                        "name": "Chicago"
+                      },
+                      {
+                        "dcid": "geoId/4835000",
+                        "name": "Houston"
+                      }
+                    ],
+                    "minValue": -0.798849,
+                    "maxValue": 111.783127
+                  },
+                  "County": {
+                    "placeCount": 93,
+                    "topPlaces": [
+                      {
+                        "dcid": "geoId/22051",
+                        "name": "Jefferson Parish"
+                      },
+                      {
+                        "dcid": "geoId/22071",
+                        "name": "Orleans Parish"
+                      },
+                      {
+                        "dcid": "geoId/72127",
+                        "name": "San Juan"
+                      }
+                    ],
+                    "minValue": 3.868194,
+                    "maxValue": 19.46849
+                  },
+                  "State": {
+                    "placeCount": 1,
+                    "topPlaces": [
+                      {
+                        "dcid": "geoId/72",
+                        "name": "Puerto Rico"
+                      }
+                    ],
+                    "minValue": 13.779251,
+                    "maxValue": 13.779251
+                  }
+                },
+                "minValue": -0.798849,
+                "maxValue": 111.783127,
+                "observationCount": 49350,
+                "timeSeriesCount": 3162
+              }
+            ],
+            "observationCount": 649719,
+            "timeSeriesCount": 6342
           },
           "dc/lly3yc1": {
             "importName": "BLS_LAUS",
-            "observationCount": 2658943,
-            "timeSeriesCount": 12769,
             "releaseFrequency": "P1M",
             "seriesSummary": [
               {
@@ -153,8 +313,6 @@
                 },
                 "earliestDate": "1976-01",
                 "latestDate": "2022-10",
-                "observationCount": 29782,
-                "timeSeriesCount": 53,
                 "placeTypeSummary": {
                   "City": {
                     "placeCount": 1,
@@ -188,7 +346,9 @@
                   }
                 },
                 "minValue": 1.8,
-                "maxValue": 28.5
+                "maxValue": 28.5,
+                "observationCount": 29782,
+                "timeSeriesCount": 53
               },
               {
                 "seriesKey": {
@@ -197,8 +357,6 @@
                 },
                 "earliestDate": "1976-01",
                 "latestDate": "2022-10",
-                "observationCount": 2431871,
-                "timeSeriesCount": 6358,
                 "placeTypeSummary": {
                   "City": {
                     "placeCount": 3086,
@@ -259,7 +417,9 @@
                   }
                 },
                 "minValue": 0,
-                "maxValue": 100
+                "maxValue": 100,
+                "observationCount": 2431871,
+                "timeSeriesCount": 6358
               },
               {
                 "seriesKey": {
@@ -268,8 +428,6 @@
                 },
                 "earliestDate": "1976",
                 "latestDate": "2021",
-                "observationCount": 197290,
-                "timeSeriesCount": 6358,
                 "placeTypeSummary": {
                   "City": {
                     "placeCount": 3086,
@@ -330,14 +488,16 @@
                   }
                 },
                 "minValue": 0,
-                "maxValue": 100
+                "maxValue": 100,
+                "observationCount": 197290,
+                "timeSeriesCount": 6358
               }
-            ]
+            ],
+            "observationCount": 2658943,
+            "timeSeriesCount": 12769
           },
           "dc/yd4sfb": {
             "importName": "EurostatData",
-            "observationCount": 11125,
-            "timeSeriesCount": 33,
             "releaseFrequency": "P1Y",
             "seriesSummary": [
               {
@@ -346,8 +506,6 @@
                 },
                 "earliestDate": "1983-01",
                 "latestDate": "2020-07",
-                "observationCount": 11125,
-                "timeSeriesCount": 33,
                 "placeTypeSummary": {
                   "Country": {
                     "placeCount": 33,
@@ -370,9 +528,13 @@
                   }
                 },
                 "minValue": 1.3,
-                "maxValue": 26.3
+                "maxValue": 26.3,
+                "observationCount": 11125,
+                "timeSeriesCount": 33
               }
-            ]
+            ],
+            "observationCount": 11125,
+            "timeSeriesCount": 33
           }
         }
       }
@@ -801,15 +963,11 @@
         "provenanceSummary": {
           "dc/2gyrxt": {
             "importName": "IndiaCensus_Primary",
-            "observationCount": 673,
-            "timeSeriesCount": 673,
             "seriesSummary": [
               {
                 "seriesKey": {},
                 "earliestDate": "2011",
                 "latestDate": "2011",
-                "observationCount": 673,
-                "timeSeriesCount": 673,
                 "placeTypeSummary": {
                   "AdministrativeArea2": {
                     "placeCount": 636,
@@ -873,14 +1031,16 @@
                   }
                 },
                 "minValue": 3590,
-                "maxValue": 587584719
+                "maxValue": 587584719,
+                "observationCount": 673,
+                "timeSeriesCount": 673
               }
-            ]
+            ],
+            "observationCount": 673,
+            "timeSeriesCount": 673
           },
           "dc/bsb9pd": {
             "importName": "USCensusPEP_Sex",
-            "observationCount": 165806,
-            "timeSeriesCount": 3197,
             "releaseFrequency": "P1Y",
             "seriesSummary": [
               {
@@ -890,8 +1050,6 @@
                 },
                 "earliestDate": "1970",
                 "latestDate": "2021",
-                "observationCount": 163032,
-                "timeSeriesCount": 3145,
                 "placeTypeSummary": {
                   "County": {
                     "placeCount": 3145,
@@ -914,7 +1072,9 @@
                   }
                 },
                 "minValue": 0,
-                "maxValue": 5119774
+                "maxValue": 5119774,
+                "observationCount": 163032,
+                "timeSeriesCount": 3145
               },
               {
                 "seriesKey": {
@@ -924,8 +1084,6 @@
                 },
                 "earliestDate": "1900",
                 "latestDate": "2021",
-                "observationCount": 2774,
-                "timeSeriesCount": 52,
                 "placeTypeSummary": {
                   "Country": {
                     "placeCount": 1,
@@ -959,14 +1117,16 @@
                   }
                 },
                 "minValue": 138616,
-                "maxValue": 167509003
+                "maxValue": 167509003,
+                "observationCount": 2774,
+                "timeSeriesCount": 52
               }
-            ]
+            ],
+            "observationCount": 165806,
+            "timeSeriesCount": 3197
           },
           "dc/bxgh0w": {
             "importName": "CensusACS5YearSurvey_SubjectTables_S2603",
-            "observationCount": 3,
-            "timeSeriesCount": 1,
             "seriesSummary": [
               {
                 "seriesKey": {
@@ -974,8 +1134,6 @@
                 },
                 "earliestDate": "2017",
                 "latestDate": "2019",
-                "observationCount": 3,
-                "timeSeriesCount": 1,
                 "placeTypeSummary": {
                   "Country": {
                     "placeCount": 1,
@@ -990,14 +1148,16 @@
                   }
                 },
                 "minValue": 163070238.756,
-                "maxValue": 164946479.86
+                "maxValue": 164946479.86,
+                "observationCount": 3,
+                "timeSeriesCount": 1
               }
-            ]
+            ],
+            "observationCount": 3,
+            "timeSeriesCount": 1
           },
           "dc/cl25rb": {
             "importName": "OECDRegionalDemography",
-            "observationCount": 56654,
-            "timeSeriesCount": 2463,
             "releaseFrequency": "P1Y",
             "seriesSummary": [
               {
@@ -1007,8 +1167,6 @@
                 },
                 "earliestDate": "1995",
                 "latestDate": "2019",
-                "observationCount": 56654,
-                "timeSeriesCount": 2463,
                 "placeTypeSummary": {
                   "AdministrativeArea": {
                     "placeCount": 48,
@@ -1230,14 +1388,16 @@
                   }
                 },
                 "minValue": 296,
-                "maxValue": 660361000
+                "maxValue": 660361000,
+                "observationCount": 56654,
+                "timeSeriesCount": 2463
               }
-            ]
+            ],
+            "observationCount": 56654,
+            "timeSeriesCount": 2463
           },
           "dc/cv2kpf2": {
             "importName": "CensusACS5YearSurvey_SubjectTables_S2601APR",
-            "observationCount": 10,
-            "timeSeriesCount": 1,
             "seriesSummary": [
               {
                 "seriesKey": {
@@ -1245,8 +1405,6 @@
                 },
                 "earliestDate": "2010",
                 "latestDate": "2019",
-                "observationCount": 10,
-                "timeSeriesCount": 1,
                 "placeTypeSummary": {
                   "State": {
                     "placeCount": 1,
@@ -1261,14 +1419,16 @@
                   }
                 },
                 "minValue": 1738866.228,
-                "maxValue": 1960169.762
+                "maxValue": 1960169.762,
+                "observationCount": 10,
+                "timeSeriesCount": 1
               }
-            ]
+            ],
+            "observationCount": 10,
+            "timeSeriesCount": 1
           },
           "dc/gg17432": {
             "importName": "CensusACS5YearSurvey",
-            "observationCount": 4062727,
-            "timeSeriesCount": 412961,
             "releaseFrequency": "P1Y",
             "seriesSummary": [
               {
@@ -1277,8 +1437,6 @@
                 },
                 "earliestDate": "2011",
                 "latestDate": "2020",
-                "observationCount": 4062727,
-                "timeSeriesCount": 412961,
                 "placeTypeSummary": {
                   "CensusBlockGroup": {
                     "placeCount": 220333,
@@ -1529,14 +1687,16 @@
                   }
                 },
                 "minValue": 0,
-                "maxValue": 19783141
+                "maxValue": 19783141,
+                "observationCount": 4062727,
+                "timeSeriesCount": 412961
               }
-            ]
+            ],
+            "observationCount": 4062727,
+            "timeSeriesCount": 412961
           },
           "dc/kyzlg31": {
             "importName": "CensusACS1YearSurvey",
-            "observationCount": 14758,
-            "timeSeriesCount": 1535,
             "seriesSummary": [
               {
                 "seriesKey": {
@@ -1544,8 +1704,6 @@
                 },
                 "earliestDate": "2010",
                 "latestDate": "2019",
-                "observationCount": 14758,
-                "timeSeriesCount": 1535,
                 "placeTypeSummary": {
                   "City": {
                     "placeCount": 640,
@@ -1617,14 +1775,16 @@
                   }
                 },
                 "minValue": 25935,
-                "maxValue": 166650550
+                "maxValue": 166650550,
+                "observationCount": 14758,
+                "timeSeriesCount": 1535
               }
-            ]
+            ],
+            "observationCount": 14758,
+            "timeSeriesCount": 1535
           },
           "dc/nnx11h2": {
             "importName": "CensusACS5YearSurvey_SubjectTables_S2602PR",
-            "observationCount": 3,
-            "timeSeriesCount": 1,
             "seriesSummary": [
               {
                 "seriesKey": {
@@ -1632,8 +1792,6 @@
                 },
                 "earliestDate": "2017",
                 "latestDate": "2019",
-                "observationCount": 3,
-                "timeSeriesCount": 1,
                 "placeTypeSummary": {
                   "State": {
                     "placeCount": 1,
@@ -1648,14 +1806,16 @@
                   }
                 },
                 "minValue": 1738866.228,
-                "maxValue": 1814267.649
+                "maxValue": 1814267.649,
+                "observationCount": 3,
+                "timeSeriesCount": 1
               }
-            ]
+            ],
+            "observationCount": 3,
+            "timeSeriesCount": 1
           },
           "dc/qmsyx4": {
             "importName": "CensusACS5YearSurvey_AggCountry",
-            "observationCount": 10,
-            "timeSeriesCount": 1,
             "seriesSummary": [
               {
                 "seriesKey": {
@@ -1664,8 +1824,6 @@
                 },
                 "earliestDate": "2011",
                 "latestDate": "2020",
-                "observationCount": 10,
-                "timeSeriesCount": 1,
                 "placeTypeSummary": {
                   "Country": {
                     "placeCount": 1,
@@ -1680,14 +1838,16 @@
                   }
                 },
                 "minValue": 157812589,
-                "maxValue": 167459830
+                "maxValue": 167459830,
+                "observationCount": 10,
+                "timeSeriesCount": 1
               }
-            ]
+            ],
+            "observationCount": 10,
+            "timeSeriesCount": 1
           },
           "dc/scp3y31": {
             "importName": "CensusACS5YearSurvey_SubjectTables_S2602",
-            "observationCount": 156,
-            "timeSeriesCount": 52,
             "seriesSummary": [
               {
                 "seriesKey": {
@@ -1695,8 +1855,6 @@
                 },
                 "earliestDate": "2017",
                 "latestDate": "2019",
-                "observationCount": 156,
-                "timeSeriesCount": 52,
                 "placeTypeSummary": {
                   "Country": {
                     "placeCount": 1,
@@ -1730,14 +1888,16 @@
                   }
                 },
                 "minValue": 284701.76,
-                "maxValue": 164946479.86
+                "maxValue": 164946479.86,
+                "observationCount": 156,
+                "timeSeriesCount": 52
               }
-            ]
+            ],
+            "observationCount": 156,
+            "timeSeriesCount": 52
           },
           "dc/yd4sfb": {
             "importName": "EurostatData",
-            "observationCount": 47169,
-            "timeSeriesCount": 2029,
             "releaseFrequency": "P1Y",
             "seriesSummary": [
               {
@@ -1746,8 +1906,6 @@
                 },
                 "earliestDate": "1960",
                 "latestDate": "2019",
-                "observationCount": 47169,
-                "timeSeriesCount": 2029,
                 "placeTypeSummary": {
                   "City": {
                     "placeCount": 140,
@@ -1846,14 +2004,16 @@
                   }
                 },
                 "minValue": 4313,
-                "maxValue": 78191815
+                "maxValue": 78191815,
+                "observationCount": 47169,
+                "timeSeriesCount": 2029
               }
-            ]
+            ],
+            "observationCount": 47169,
+            "timeSeriesCount": 2029
           },
           "dc/yy2t0v": {
             "importName": "CensusACS5YearSurvey_SubjectTables_S2601A",
-            "observationCount": 520,
-            "timeSeriesCount": 52,
             "seriesSummary": [
               {
                 "seriesKey": {
@@ -1861,8 +2021,6 @@
                 },
                 "earliestDate": "2010",
                 "latestDate": "2019",
-                "observationCount": 520,
-                "timeSeriesCount": 52,
                 "placeTypeSummary": {
                   "Country": {
                     "placeCount": 1,
@@ -1896,9 +2054,13 @@
                   }
                 },
                 "minValue": 267879.289,
-                "maxValue": 164946479.86
+                "maxValue": 164946479.86,
+                "observationCount": 520,
+                "timeSeriesCount": 52
               }
-            ]
+            ],
+            "observationCount": 520,
+            "timeSeriesCount": 52
           }
         }
       }
@@ -2150,8 +2312,6 @@
         "provenanceSummary": {
           "dc/gg17432": {
             "importName": "CensusACS5YearSurvey",
-            "observationCount": 1906227,
-            "timeSeriesCount": 192628,
             "releaseFrequency": "P1Y",
             "seriesSummary": [
               {
@@ -2160,8 +2320,6 @@
                 },
                 "earliestDate": "2011",
                 "latestDate": "2020",
-                "observationCount": 1906227,
-                "timeSeriesCount": 192628,
                 "placeTypeSummary": {
                   "CensusCoreBasedStatisticalArea": {
                     "placeCount": 933,
@@ -2393,14 +2551,16 @@
                   }
                 },
                 "minValue": 0,
-                "maxValue": 3063404
+                "maxValue": 3063404,
+                "observationCount": 1906227,
+                "timeSeriesCount": 192628
               }
-            ]
+            ],
+            "observationCount": 1906227,
+            "timeSeriesCount": 192628
           },
           "dc/qmsyx4": {
             "importName": "CensusACS5YearSurvey_AggCountry",
-            "observationCount": 10,
-            "timeSeriesCount": 1,
             "seriesSummary": [
               {
                 "seriesKey": {
@@ -2409,8 +2569,6 @@
                 },
                 "earliestDate": "2011",
                 "latestDate": "2020",
-                "observationCount": 10,
-                "timeSeriesCount": 1,
                 "placeTypeSummary": {
                   "Country": {
                     "placeCount": 1,
@@ -2425,14 +2583,16 @@
                   }
                 },
                 "minValue": 7608035,
-                "maxValue": 9650795
+                "maxValue": 9650795,
+                "observationCount": 10,
+                "timeSeriesCount": 1
               }
-            ]
+            ],
+            "observationCount": 10,
+            "timeSeriesCount": 1
           },
           "dc/vnd0tf2": {
             "importName": "USCensusPEP_By_Sex_Race",
-            "observationCount": 67063,
-            "timeSeriesCount": 3196,
             "releaseFrequency": "P1Y",
             "seriesSummary": [
               {
@@ -2443,8 +2603,6 @@
                 },
                 "earliestDate": "2000",
                 "latestDate": "2020",
-                "observationCount": 21,
-                "timeSeriesCount": 1,
                 "placeTypeSummary": {
                   "Country": {
                     "placeCount": 1,
@@ -2459,7 +2617,9 @@
                   }
                 },
                 "minValue": 5523282,
-                "maxValue": 10441573
+                "maxValue": 10441573,
+                "observationCount": 21,
+                "timeSeriesCount": 1
               },
               {
                 "seriesKey": {
@@ -2468,8 +2628,6 @@
                 },
                 "earliestDate": "2000",
                 "latestDate": "2020",
-                "observationCount": 67042,
-                "timeSeriesCount": 3195,
                 "placeTypeSummary": {
                   "County": {
                     "placeCount": 3144,
@@ -2511,9 +2669,13 @@
                   }
                 },
                 "minValue": 0,
-                "maxValue": 3265079
+                "maxValue": 3265079,
+                "observationCount": 67042,
+                "timeSeriesCount": 3195
               }
-            ]
+            ],
+            "observationCount": 67063,
+            "timeSeriesCount": 3196
           }
         }
       }
@@ -2632,15 +2794,11 @@
         "provenanceSummary": {
           "dc/jccrh82": {
             "importName": "WorldDevelopmentIndicators",
-            "observationCount": 11908,
-            "timeSeriesCount": 207,
             "seriesSummary": [
               {
                 "seriesKey": {},
                 "earliestDate": "1960",
                 "latestDate": "2020",
-                "observationCount": 11908,
-                "timeSeriesCount": 207,
                 "placeTypeSummary": {
                   "Country": {
                     "placeCount": 206,
@@ -2674,14 +2832,16 @@
                   }
                 },
                 "minValue": 0.837,
-                "maxValue": 8.864
+                "maxValue": 8.864,
+                "observationCount": 11908,
+                "timeSeriesCount": 207
               }
-            ]
+            ],
+            "observationCount": 11908,
+            "timeSeriesCount": 207
           },
           "dc/yd4sfb": {
             "importName": "EurostatData",
-            "observationCount": 10106,
-            "timeSeriesCount": 1981,
             "releaseFrequency": "P1Y",
             "seriesSummary": [
               {
@@ -2690,8 +2850,6 @@
                 },
                 "earliestDate": "2013",
                 "latestDate": "2018",
-                "observationCount": 10106,
-                "timeSeriesCount": 1981,
                 "placeTypeSummary": {
                   "City": {
                     "placeCount": 140,
@@ -2771,9 +2929,13 @@
                   }
                 },
                 "minValue": 0.78,
-                "maxValue": 4.9
+                "maxValue": 4.9,
+                "observationCount": 10106,
+                "timeSeriesCount": 1981
               }
-            ]
+            ],
+            "observationCount": 10106,
+            "timeSeriesCount": 1981
           }
         }
       }
@@ -2854,8 +3016,6 @@
         "provenanceSummary": {
           "dc/e9k9ze": {
             "importName": "NYT_COVID19",
-            "observationCount": 2621140,
-            "timeSeriesCount": 6554,
             "releaseFrequency": "P1D",
             "seriesSummary": [
               {
@@ -2863,9 +3023,7 @@
                   "measurementMethod": "dcDerivedStat/NYT_COVID19_GitHub"
                 },
                 "earliestDate": "2020-01-22",
-                "latestDate": "2022-12-13",
-                "observationCount": 2534158,
-                "timeSeriesCount": 3277,
+                "latestDate": "2022-12-17",
                 "placeTypeSummary": {
                   "City": {
                     "placeCount": 3,
@@ -2937,7 +3095,9 @@
                   }
                 },
                 "minValue": -40527,
-                "maxValue": 1433977
+                "maxValue": 1433977,
+                "observationCount": 2534386,
+                "timeSeriesCount": 3277
               },
               {
                 "seriesKey": {
@@ -2946,8 +3106,6 @@
                 },
                 "earliestDate": "2020-01",
                 "latestDate": "2022-12",
-                "observationCount": 86982,
-                "timeSeriesCount": 3277,
                 "placeTypeSummary": {
                   "City": {
                     "placeCount": 3,
@@ -3019,9 +3177,13 @@
                   }
                 },
                 "minValue": -3451,
-                "maxValue": 20300128
+                "maxValue": 20300128,
+                "observationCount": 86982,
+                "timeSeriesCount": 3277
               }
-            ]
+            ],
+            "observationCount": 2621368,
+            "timeSeriesCount": 6554
           }
         }
       }

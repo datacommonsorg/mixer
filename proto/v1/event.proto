@@ -1,0 +1,74 @@
+// Copyright 2022 Google LLC
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+syntax = "proto3";
+option go_package = "./proto";
+package datacommons.v1;
+
+// A collection of events that share some common properties.
+message EventCollection {
+  message GeoLocation {
+    message Point {
+      optional double latitude = 1;
+      optional double longitude = 2;
+    }
+    message Polygon { optional string geo_json = 1; }
+    oneof geo {
+      Point point = 1;
+      Polygon polygon = 2;
+    }
+  }
+
+  message ValList { repeated string vals = 2; }
+
+  message Event {
+    // Data Commons places associated with the event.
+    repeated string places = 1;
+    // Geospatial location of the event.
+    repeated GeoLocation geo_locations = 2;
+    // The format should be ISO 8601.
+    repeated string dates = 3;
+    // Key: salient property.
+    map<string, ValList> prop_vals = 4;
+    optional string dcid = 5;
+    optional string provenance_id = 6;
+  }
+
+  message ProvenanceInfo {
+    optional string import_name = 1;
+    optional string provenance_url = 2;
+    optional string domain = 3;
+  }
+
+  repeated Event events = 1;
+  // Key: provenance ID.
+  // Only provenance IDs present in |events| are included.
+  map<string, ProvenanceInfo> provenance_info = 2;
+}
+
+message EventCollectionRequest {
+  string event_type = 1;
+  // Only for top-level places: Earth, continents, and countries.
+  string affected_place_dcid = 2;
+  // Format: YYYY-MM.
+  // This is usually the start date of the event, for example:
+  // - startDate
+  // - discoveryDate
+  // - occurrenceTime
+  string date = 3;
+}
+
+message EventCollectionResponse { 
+    EventCollection event_collection = 1;
+}

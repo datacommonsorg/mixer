@@ -85,8 +85,6 @@
       "provenanceSummary": {
         "dc/fx0lj33": {
           "importName": "FBIGovCrime",
-          "observationCount": 96373,
-          "timeSeriesCount": 10185,
           "releaseFrequency": "P1Y",
           "seriesSummary": [
             {
@@ -95,8 +93,6 @@
               },
               "earliestDate": "2008",
               "latestDate": "2019",
-              "observationCount": 96373,
-              "timeSeriesCount": 10185,
               "placeTypeSummary": {
                 "CensusCountyDivision": {
                   "placeCount": 1327,
@@ -168,14 +164,16 @@
                 }
               },
               "minValue": 0,
-              "maxValue": 1265920
+              "maxValue": 1265920,
+              "observationCount": 96373,
+              "timeSeriesCount": 10185
             }
-          ]
+          ],
+          "observationCount": 96373,
+          "timeSeriesCount": 10185
         },
         "dc/q843y93": {
           "importName": "FBIGovCrime_AggCountry",
-          "observationCount": 12,
-          "timeSeriesCount": 1,
           "seriesSummary": [
             {
               "seriesKey": {
@@ -184,8 +182,6 @@
               },
               "earliestDate": "2008",
               "latestDate": "2019",
-              "observationCount": 12,
-              "timeSeriesCount": 1,
               "placeTypeSummary": {
                 "Country": {
                   "placeCount": 1,
@@ -200,9 +196,13 @@
                 }
               },
               "minValue": 8132863,
-              "maxValue": 11111207
+              "maxValue": 11111207,
+              "observationCount": 12,
+              "timeSeriesCount": 1
             }
-          ]
+          ],
+          "observationCount": 12,
+          "timeSeriesCount": 1
         }
       }
     }
