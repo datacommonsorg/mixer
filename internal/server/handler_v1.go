@@ -233,3 +233,10 @@ func (s *Server) EventCollection(
 ) (*pb.EventCollectionResponse, error) {
 	return event.Collection(ctx, in, s.store)
 }
+
+// EventCollectionDate implements API for mixer.EventCollectionDate.
+func (s *Server) EventCollectionDate(
+	ctx context.Context, in *pb.EventCollectionDateRequest,
+) (*pb.EventCollectionDateResponse, error) {
+	return event.CollectionDate(ctx, in, s.store)
+}

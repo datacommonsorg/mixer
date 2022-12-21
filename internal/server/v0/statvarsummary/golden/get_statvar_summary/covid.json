@@ -30,7 +30,7 @@
             }
           ],
           "minValue": 1,
-          "maxValue": 99618249
+          "maxValue": 99624169
         },
         "County": {
           "placeCount": 3217,
@@ -81,7 +81,7 @@
                 "measurementMethod": "NYT_COVID19_GitHub"
               },
               "earliestDate": "2020-01-21",
-              "latestDate": "2022-12-17",
+              "latestDate": "2022-12-18",
               "placeTypeSummary": {
                 "City": {
                   "placeCount": 3,
@@ -111,7 +111,7 @@
                     }
                   ],
                   "minValue": 1,
-                  "maxValue": 99618249
+                  "maxValue": 99624169
                 },
                 "County": {
                   "placeCount": 3217,
@@ -153,12 +153,12 @@
                 }
               },
               "minValue": 1,
-              "maxValue": 99618249,
-              "observationCount": 2537671,
+              "maxValue": 99624169,
+              "observationCount": 2537728,
               "timeSeriesCount": 3277
             }
           ],
-          "observationCount": 2537671,
+          "observationCount": 2537728,
           "timeSeriesCount": 3277
         }
       }
@@ -244,7 +244,7 @@
                 "measurementMethod": "dcDerivedStat/NYT_COVID19_GitHub"
               },
               "earliestDate": "2020-01-22",
-              "latestDate": "2022-12-17",
+              "latestDate": "2022-12-18",
               "placeTypeSummary": {
                 "City": {
                   "placeCount": 3,
@@ -317,7 +317,7 @@
               },
               "minValue": -40527,
               "maxValue": 1433977,
-              "observationCount": 2534386,
+              "observationCount": 2534443,
               "timeSeriesCount": 3277
             },
             {
@@ -403,7 +403,7 @@
               "timeSeriesCount": 3277
             }
           ],
-          "observationCount": 2621368,
+          "observationCount": 2621425,
           "timeSeriesCount": 6554
         }
       }

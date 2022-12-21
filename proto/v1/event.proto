@@ -59,7 +59,7 @@ message EventCollection {
 
 message EventCollectionRequest {
   string event_type = 1;
-  // Only for top-level places: Earth, continents, and countries.
+  // Only for top-level places: Earth, continent, country, state, adminArea1.
   string affected_place_dcid = 2;
   // Format: YYYY-MM.
   // This is usually the start date of the event, for example:
@@ -70,5 +70,21 @@ message EventCollectionRequest {
 }
 
 message EventCollectionResponse { 
-    EventCollection event_collection = 1;
+  EventCollection event_collection = 1;
+}
+
+message EventCollectionDate {
+  // Format: YYYY-MM, corresponding to the date in EventCollection cache key.
+  // Sorted from earliest to latest.
+  repeated string dates = 1;
+}
+
+message EventCollectionDateRequest {
+  string event_type = 1;
+  // Only for top-level places: Earth, continent, country, state, adminArea1.
+  string affected_place_dcid = 2;
+}
+
+message EventCollectionDateResponse {
+  EventCollectionDate event_collection_date = 1;
 }

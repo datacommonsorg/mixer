@@ -67,3 +67,44 @@ func Collection(
 
 	return resp, nil
 }
+
+// CollectionDate implements API for Mixer.EventCollectionDate.
+func CollectionDate(
+	ctx context.Context,
+	in *pb.EventCollectionDateRequest,
+	store *store.Store,
+) (*pb.EventCollectionDateResponse, error) {
+	if in.GetEventType() == "" {
+		return nil, status.Error(codes.InvalidArgument, "Missing required arguments")
+	}
+	if !util.CheckValidDCIDs([]string{in.GetAffectedPlaceDcid()}) {
+		return nil, status.Errorf(codes.InvalidArgument, "Invalid DCID")
+	}
+
+	btDataList, err := bigtable.Read(
+		ctx,
+		store.BtGroup,
+		bigtable.BtEventCollectionDate,
+		[][]string{{in.GetEventType()}, {in.GetAffectedPlaceDcid()}},
+		func(jsonRaw []byte) (interface{}, error) {
+			var d pb.EventCollectionDate
+			err := proto.Unmarshal(jsonRaw, &d)
+			return &d, err
+		},
+	)
+	if err != nil {
+		return nil, err
+	}
+
+	resp := &pb.EventCollectionDateResponse{}
+
+	// Go through (ordered) import groups one by one, stop when data is found.
+	for _, btData := range btDataList {
+		for _, row := range btData {
+			resp.EventCollectionDate = row.Data.(*pb.EventCollectionDate)
+			break
+		}
+	}
+
+	return resp, nil
+}

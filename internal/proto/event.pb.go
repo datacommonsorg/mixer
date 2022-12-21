@@ -98,7 +98,7 @@ type EventCollectionRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	EventType string `protobuf:"bytes,1,opt,name=event_type,json=eventType,proto3" json:"event_type,omitempty"`
-	// Only for top-level places: Earth, continents, and countries.
+	// Only for top-level places: Earth, continent, country, state, adminArea1.
 	AffectedPlaceDcid string `protobuf:"bytes,2,opt,name=affected_place_dcid,json=affectedPlaceDcid,proto3" json:"affected_place_dcid,omitempty"`
 	// Format: YYYY-MM.
 	// This is usually the start date of the event, for example:
@@ -208,6 +208,158 @@ func (x *EventCollectionResponse) GetEventCollection() *EventCollection {
 	return nil
 }
 
+type EventCollectionDate struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// Format: YYYY-MM, corresponding to the date in EventCollection cache key.
+	// Sorted from earliest to latest.
+	Dates []string `protobuf:"bytes,1,rep,name=dates,proto3" json:"dates,omitempty"`
+}
+
+func (x *EventCollectionDate) Reset() {
+	*x = EventCollectionDate{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_v1_event_proto_msgTypes[3]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *EventCollectionDate) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EventCollectionDate) ProtoMessage() {}
+
+func (x *EventCollectionDate) ProtoReflect() protoreflect.Message {
+	mi := &file_v1_event_proto_msgTypes[3]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EventCollectionDate.ProtoReflect.Descriptor instead.
+func (*EventCollectionDate) Descriptor() ([]byte, []int) {
+	return file_v1_event_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *EventCollectionDate) GetDates() []string {
+	if x != nil {
+		return x.Dates
+	}
+	return nil
+}
+
+type EventCollectionDateRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	EventType string `protobuf:"bytes,1,opt,name=event_type,json=eventType,proto3" json:"event_type,omitempty"`
+	// Only for top-level places: Earth, continent, country, state, adminArea1.
+	AffectedPlaceDcid string `protobuf:"bytes,2,opt,name=affected_place_dcid,json=affectedPlaceDcid,proto3" json:"affected_place_dcid,omitempty"`
+}
+
+func (x *EventCollectionDateRequest) Reset() {
+	*x = EventCollectionDateRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_v1_event_proto_msgTypes[4]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *EventCollectionDateRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EventCollectionDateRequest) ProtoMessage() {}
+
+func (x *EventCollectionDateRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_v1_event_proto_msgTypes[4]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EventCollectionDateRequest.ProtoReflect.Descriptor instead.
+func (*EventCollectionDateRequest) Descriptor() ([]byte, []int) {
+	return file_v1_event_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *EventCollectionDateRequest) GetEventType() string {
+	if x != nil {
+		return x.EventType
+	}
+	return ""
+}
+
+func (x *EventCollectionDateRequest) GetAffectedPlaceDcid() string {
+	if x != nil {
+		return x.AffectedPlaceDcid
+	}
+	return ""
+}
+
+type EventCollectionDateResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	EventCollectionDate *EventCollectionDate `protobuf:"bytes,1,opt,name=event_collection_date,json=eventCollectionDate,proto3" json:"event_collection_date,omitempty"`
+}
+
+func (x *EventCollectionDateResponse) Reset() {
+	*x = EventCollectionDateResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_v1_event_proto_msgTypes[5]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *EventCollectionDateResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EventCollectionDateResponse) ProtoMessage() {}
+
+func (x *EventCollectionDateResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_v1_event_proto_msgTypes[5]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EventCollectionDateResponse.ProtoReflect.Descriptor instead.
+func (*EventCollectionDateResponse) Descriptor() ([]byte, []int) {
+	return file_v1_event_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *EventCollectionDateResponse) GetEventCollectionDate() *EventCollectionDate {
+	if x != nil {
+		return x.EventCollectionDate
+	}
+	return nil
+}
+
 type EventCollection_GeoLocation struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -222,7 +374,7 @@ type EventCollection_GeoLocation struct {
 func (x *EventCollection_GeoLocation) Reset() {
 	*x = EventCollection_GeoLocation{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_v1_event_proto_msgTypes[3]
+		mi := &file_v1_event_proto_msgTypes[6]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -235,7 +387,7 @@ func (x *EventCollection_GeoLocation) String() string {
 func (*EventCollection_GeoLocation) ProtoMessage() {}
 
 func (x *EventCollection_GeoLocation) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_event_proto_msgTypes[3]
+	mi := &file_v1_event_proto_msgTypes[6]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -299,7 +451,7 @@ type EventCollection_ValList struct {
 func (x *EventCollection_ValList) Reset() {
 	*x = EventCollection_ValList{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_v1_event_proto_msgTypes[4]
+		mi := &file_v1_event_proto_msgTypes[7]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -312,7 +464,7 @@ func (x *EventCollection_ValList) String() string {
 func (*EventCollection_ValList) ProtoMessage() {}
 
 func (x *EventCollection_ValList) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_event_proto_msgTypes[4]
+	mi := &file_v1_event_proto_msgTypes[7]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -355,7 +507,7 @@ type EventCollection_Event struct {
 func (x *EventCollection_Event) Reset() {
 	*x = EventCollection_Event{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_v1_event_proto_msgTypes[5]
+		mi := &file_v1_event_proto_msgTypes[8]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -368,7 +520,7 @@ func (x *EventCollection_Event) String() string {
 func (*EventCollection_Event) ProtoMessage() {}
 
 func (x *EventCollection_Event) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_event_proto_msgTypes[5]
+	mi := &file_v1_event_proto_msgTypes[8]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -439,7 +591,7 @@ type EventCollection_ProvenanceInfo struct {
 func (x *EventCollection_ProvenanceInfo) Reset() {
 	*x = EventCollection_ProvenanceInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_v1_event_proto_msgTypes[6]
+		mi := &file_v1_event_proto_msgTypes[9]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -452,7 +604,7 @@ func (x *EventCollection_ProvenanceInfo) String() string {
 func (*EventCollection_ProvenanceInfo) ProtoMessage() {}
 
 func (x *EventCollection_ProvenanceInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_event_proto_msgTypes[6]
+	mi := &file_v1_event_proto_msgTypes[9]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -501,7 +653,7 @@ type EventCollection_GeoLocation_Point struct {
 func (x *EventCollection_GeoLocation_Point) Reset() {
 	*x = EventCollection_GeoLocation_Point{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_v1_event_proto_msgTypes[8]
+		mi := &file_v1_event_proto_msgTypes[11]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -514,7 +666,7 @@ func (x *EventCollection_GeoLocation_Point) String() string {
 func (*EventCollection_GeoLocation_Point) ProtoMessage() {}
 
 func (x *EventCollection_GeoLocation_Point) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_event_proto_msgTypes[8]
+	mi := &file_v1_event_proto_msgTypes[11]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -555,7 +707,7 @@ type EventCollection_GeoLocation_Polygon struct {
 func (x *EventCollection_GeoLocation_Polygon) Reset() {
 	*x = EventCollection_GeoLocation_Polygon{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_v1_event_proto_msgTypes[9]
+		mi := &file_v1_event_proto_msgTypes[12]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -568,7 +720,7 @@ func (x *EventCollection_GeoLocation_Polygon) String() string {
 func (*EventCollection_GeoLocation_Polygon) ProtoMessage() {}
 
 func (x *EventCollection_GeoLocation_Polygon) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_event_proto_msgTypes[9]
+	mi := &file_v1_event_proto_msgTypes[12]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -688,8 +840,25 @@ var file_v1_event_proto_rawDesc = []byte{
 	0x6f, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1f, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x63,
 	0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e, 0x76, 0x31, 0x2e, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x43,
 	0x6f, 0x6c, 0x6c, 0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x0f, 0x65, 0x76, 0x65, 0x6e, 0x74,
-	0x43, 0x6f, 0x6c, 0x6c, 0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x42, 0x09, 0x5a, 0x07, 0x2e, 0x2f,
-	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x43, 0x6f, 0x6c, 0x6c, 0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x22, 0x2b, 0x0a, 0x13, 0x45, 0x76,
+	0x65, 0x6e, 0x74, 0x43, 0x6f, 0x6c, 0x6c, 0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x44, 0x61, 0x74,
+	0x65, 0x12, 0x14, 0x0a, 0x05, 0x64, 0x61, 0x74, 0x65, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x09,
+	0x52, 0x05, 0x64, 0x61, 0x74, 0x65, 0x73, 0x22, 0x6b, 0x0a, 0x1a, 0x45, 0x76, 0x65, 0x6e, 0x74,
+	0x43, 0x6f, 0x6c, 0x6c, 0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x44, 0x61, 0x74, 0x65, 0x52, 0x65,
+	0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x1d, 0x0a, 0x0a, 0x65, 0x76, 0x65, 0x6e, 0x74, 0x5f, 0x74,
+	0x79, 0x70, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x65, 0x76, 0x65, 0x6e, 0x74,
+	0x54, 0x79, 0x70, 0x65, 0x12, 0x2e, 0x0a, 0x13, 0x61, 0x66, 0x66, 0x65, 0x63, 0x74, 0x65, 0x64,
+	0x5f, 0x70, 0x6c, 0x61, 0x63, 0x65, 0x5f, 0x64, 0x63, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28,
+	0x09, 0x52, 0x11, 0x61, 0x66, 0x66, 0x65, 0x63, 0x74, 0x65, 0x64, 0x50, 0x6c, 0x61, 0x63, 0x65,
+	0x44, 0x63, 0x69, 0x64, 0x22, 0x76, 0x0a, 0x1b, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x43, 0x6f, 0x6c,
+	0x6c, 0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x44, 0x61, 0x74, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f,
+	0x6e, 0x73, 0x65, 0x12, 0x57, 0x0a, 0x15, 0x65, 0x76, 0x65, 0x6e, 0x74, 0x5f, 0x63, 0x6f, 0x6c,
+	0x6c, 0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x5f, 0x64, 0x61, 0x74, 0x65, 0x18, 0x01, 0x20, 0x01,
+	0x28, 0x0b, 0x32, 0x23, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73,
+	0x2e, 0x76, 0x31, 0x2e, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x43, 0x6f, 0x6c, 0x6c, 0x65, 0x63, 0x74,
+	0x69, 0x6f, 0x6e, 0x44, 0x61, 0x74, 0x65, 0x52, 0x13, 0x65, 0x76, 0x65, 0x6e, 0x74, 0x43, 0x6f,
+	0x6c, 0x6c, 0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x44, 0x61, 0x74, 0x65, 0x42, 0x09, 0x5a, 0x07,
+	0x2e, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -704,35 +873,39 @@ func file_v1_event_proto_rawDescGZIP() []byte {
 	return file_v1_event_proto_rawDescData
 }
 
-var file_v1_event_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
+var file_v1_event_proto_msgTypes = make([]protoimpl.MessageInfo, 14)
 var file_v1_event_proto_goTypes = []interface{}{
 	(*EventCollection)(nil),                     // 0: datacommons.v1.EventCollection
 	(*EventCollectionRequest)(nil),              // 1: datacommons.v1.EventCollectionRequest
 	(*EventCollectionResponse)(nil),             // 2: datacommons.v1.EventCollectionResponse
-	(*EventCollection_GeoLocation)(nil),         // 3: datacommons.v1.EventCollection.GeoLocation
-	(*EventCollection_ValList)(nil),             // 4: datacommons.v1.EventCollection.ValList
-	(*EventCollection_Event)(nil),               // 5: datacommons.v1.EventCollection.Event
-	(*EventCollection_ProvenanceInfo)(nil),      // 6: datacommons.v1.EventCollection.ProvenanceInfo
-	nil,                                         // 7: datacommons.v1.EventCollection.ProvenanceInfoEntry
-	(*EventCollection_GeoLocation_Point)(nil),   // 8: datacommons.v1.EventCollection.GeoLocation.Point
-	(*EventCollection_GeoLocation_Polygon)(nil), // 9: datacommons.v1.EventCollection.GeoLocation.Polygon
-	nil, // 10: datacommons.v1.EventCollection.Event.PropValsEntry
+	(*EventCollectionDate)(nil),                 // 3: datacommons.v1.EventCollectionDate
+	(*EventCollectionDateRequest)(nil),          // 4: datacommons.v1.EventCollectionDateRequest
+	(*EventCollectionDateResponse)(nil),         // 5: datacommons.v1.EventCollectionDateResponse
+	(*EventCollection_GeoLocation)(nil),         // 6: datacommons.v1.EventCollection.GeoLocation
+	(*EventCollection_ValList)(nil),             // 7: datacommons.v1.EventCollection.ValList
+	(*EventCollection_Event)(nil),               // 8: datacommons.v1.EventCollection.Event
+	(*EventCollection_ProvenanceInfo)(nil),      // 9: datacommons.v1.EventCollection.ProvenanceInfo
+	nil,                                         // 10: datacommons.v1.EventCollection.ProvenanceInfoEntry
+	(*EventCollection_GeoLocation_Point)(nil),   // 11: datacommons.v1.EventCollection.GeoLocation.Point
+	(*EventCollection_GeoLocation_Polygon)(nil), // 12: datacommons.v1.EventCollection.GeoLocation.Polygon
+	nil, // 13: datacommons.v1.EventCollection.Event.PropValsEntry
 }
 var file_v1_event_proto_depIdxs = []int32{
-	5,  // 0: datacommons.v1.EventCollection.events:type_name -> datacommons.v1.EventCollection.Event
-	7,  // 1: datacommons.v1.EventCollection.provenance_info:type_name -> datacommons.v1.EventCollection.ProvenanceInfoEntry
+	8,  // 0: datacommons.v1.EventCollection.events:type_name -> datacommons.v1.EventCollection.Event
+	10, // 1: datacommons.v1.EventCollection.provenance_info:type_name -> datacommons.v1.EventCollection.ProvenanceInfoEntry
 	0,  // 2: datacommons.v1.EventCollectionResponse.event_collection:type_name -> datacommons.v1.EventCollection
-	8,  // 3: datacommons.v1.EventCollection.GeoLocation.point:type_name -> datacommons.v1.EventCollection.GeoLocation.Point
-	9,  // 4: datacommons.v1.EventCollection.GeoLocation.polygon:type_name -> datacommons.v1.EventCollection.GeoLocation.Polygon
-	3,  // 5: datacommons.v1.EventCollection.Event.geo_locations:type_name -> datacommons.v1.EventCollection.GeoLocation
-	10, // 6: datacommons.v1.EventCollection.Event.prop_vals:type_name -> datacommons.v1.EventCollection.Event.PropValsEntry
-	6,  // 7: datacommons.v1.EventCollection.ProvenanceInfoEntry.value:type_name -> datacommons.v1.EventCollection.ProvenanceInfo
-	4,  // 8: datacommons.v1.EventCollection.Event.PropValsEntry.value:type_name -> datacommons.v1.EventCollection.ValList
-	9,  // [9:9] is the sub-list for method output_type
-	9,  // [9:9] is the sub-list for method input_type
-	9,  // [9:9] is the sub-list for extension type_name
-	9,  // [9:9] is the sub-list for extension extendee
-	0,  // [0:9] is the sub-list for field type_name
+	3,  // 3: datacommons.v1.EventCollectionDateResponse.event_collection_date:type_name -> datacommons.v1.EventCollectionDate
+	11, // 4: datacommons.v1.EventCollection.GeoLocation.point:type_name -> datacommons.v1.EventCollection.GeoLocation.Point
+	12, // 5: datacommons.v1.EventCollection.GeoLocation.polygon:type_name -> datacommons.v1.EventCollection.GeoLocation.Polygon
+	6,  // 6: datacommons.v1.EventCollection.Event.geo_locations:type_name -> datacommons.v1.EventCollection.GeoLocation
+	13, // 7: datacommons.v1.EventCollection.Event.prop_vals:type_name -> datacommons.v1.EventCollection.Event.PropValsEntry
+	9,  // 8: datacommons.v1.EventCollection.ProvenanceInfoEntry.value:type_name -> datacommons.v1.EventCollection.ProvenanceInfo
+	7,  // 9: datacommons.v1.EventCollection.Event.PropValsEntry.value:type_name -> datacommons.v1.EventCollection.ValList
+	10, // [10:10] is the sub-list for method output_type
+	10, // [10:10] is the sub-list for method input_type
+	10, // [10:10] is the sub-list for extension type_name
+	10, // [10:10] is the sub-list for extension extendee
+	0,  // [0:10] is the sub-list for field type_name
 }
 
 func init() { file_v1_event_proto_init() }
@@ -778,7 +951,7 @@ func file_v1_event_proto_init() {
 			}
 		}
 		file_v1_event_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*EventCollection_GeoLocation); i {
+			switch v := v.(*EventCollectionDate); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -790,7 +963,7 @@ func file_v1_event_proto_init() {
 			}
 		}
 		file_v1_event_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*EventCollection_ValList); i {
+			switch v := v.(*EventCollectionDateRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -802,7 +975,7 @@ func file_v1_event_proto_init() {
 			}
 		}
 		file_v1_event_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*EventCollection_Event); i {
+			switch v := v.(*EventCollectionDateResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -814,7 +987,19 @@ func file_v1_event_proto_init() {
 			}
 		}
 		file_v1_event_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*EventCollection_ProvenanceInfo); i {
+			switch v := v.(*EventCollection_GeoLocation); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_v1_event_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*EventCollection_ValList); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -826,7 +1011,7 @@ func file_v1_event_proto_init() {
 			}
 		}
 		file_v1_event_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*EventCollection_GeoLocation_Point); i {
+			switch v := v.(*EventCollection_Event); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -838,6 +1023,30 @@ func file_v1_event_proto_init() {
 			}
 		}
 		file_v1_event_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*EventCollection_ProvenanceInfo); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_v1_event_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*EventCollection_GeoLocation_Point); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_v1_event_proto_msgTypes[12].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*EventCollection_GeoLocation_Polygon); i {
 			case 0:
 				return &v.state
@@ -850,21 +1059,21 @@ func file_v1_event_proto_init() {
 			}
 		}
 	}
-	file_v1_event_proto_msgTypes[3].OneofWrappers = []interface{}{
+	file_v1_event_proto_msgTypes[6].OneofWrappers = []interface{}{
 		(*EventCollection_GeoLocation_Point_)(nil),
 		(*EventCollection_GeoLocation_Polygon_)(nil),
 	}
-	file_v1_event_proto_msgTypes[5].OneofWrappers = []interface{}{}
-	file_v1_event_proto_msgTypes[6].OneofWrappers = []interface{}{}
 	file_v1_event_proto_msgTypes[8].OneofWrappers = []interface{}{}
 	file_v1_event_proto_msgTypes[9].OneofWrappers = []interface{}{}
+	file_v1_event_proto_msgTypes[11].OneofWrappers = []interface{}{}
+	file_v1_event_proto_msgTypes[12].OneofWrappers = []interface{}{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_v1_event_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   11,
+			NumMessages:   14,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

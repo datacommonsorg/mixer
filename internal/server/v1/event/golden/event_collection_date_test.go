@@ -26,34 +26,31 @@ import (
 	"google.golang.org/protobuf/testing/protocmp"
 )
 
-func TestEventCollection(t *testing.T) {
+func TestEventCollectionDate(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
 
 	_, filename, _, _ := runtime.Caller(0)
-	goldenPath := path.Join(path.Dir(filename), "event_collection")
+	goldenPath := path.Join(path.Dir(filename), "event_collection_date")
 
 	testSuite := func(mixer pb.MixerClient, latencyTest bool) {
 		for _, c := range []struct {
 			eventType         string
 			affectedPlaceDcid string
-			date              string
 			goldenFile        string
 		}{
 			{
 				"EarthquakeEvent",
 				"geoId/06",
-				"2020-01",
-				"EarthquakeEvent_CA_202001.json",
+				"EarthquakeEvent_CA.json",
 			},
 		} {
-			resp, err := mixer.EventCollection(ctx, &pb.EventCollectionRequest{
+			resp, err := mixer.EventCollectionDate(ctx, &pb.EventCollectionDateRequest{
 				EventType:         c.eventType,
 				AffectedPlaceDcid: c.affectedPlaceDcid,
-				Date:              c.date,
 			})
 			if err != nil {
-				t.Errorf("could not run EventCollection: %s", err)
+				t.Errorf("could not run EventCollectionDate: %s", err)
 				continue
 			}
 
@@ -65,7 +62,7 @@ func TestEventCollection(t *testing.T) {
 				test.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
 				continue
 			}
-			var expected pb.EventCollectionResponse
+			var expected pb.EventCollectionDateResponse
 			if err = test.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
 				t.Errorf("Can not Unmarshal golden file: %s", err)
 				continue
@@ -79,7 +76,7 @@ func TestEventCollection(t *testing.T) {
 		}
 	}
 	if err := test.TestDriver(
-		"EventCollection",
+		"EventCollectionDate",
 		&test.TestOption{UseMemdb: true},
 		testSuite,
 	); err != nil {
