@@ -122,10 +122,16 @@ type MixerClient interface {
 	VariableAncestors(ctx context.Context, in *VariableAncestorsRequest, opts ...grpc.CallOption) (*VariableAncestorsResponse, error)
 	// Get event collection for {eventType, affectedPlaceDcid, date}.
 	// NOTE:
-	// - The affectedPlaceDcid is only for top-level places such as Earth,
-	// continents, and countries.
+	// - The affectedPlaceDcid is only for top-level places:
+	//   Earth, continent, country, state, adminArea1.
 	// - The date format should be: YYYY-MM.
 	EventCollection(ctx context.Context, in *EventCollectionRequest, opts ...grpc.CallOption) (*EventCollectionResponse, error)
+	// Get all dates for event collection for {eventType, affectedPlaceDcid}.
+	// - The affectedPlaceDcid is only for top-level places:
+	//   Earth, continent, country, state, adminArea1.
+	// - The date format should be: YYYY-MM.
+	//   The dates in the response are sorted from earliest to latest.
+	EventCollectionDate(ctx context.Context, in *EventCollectionDateRequest, opts ...grpc.CallOption) (*EventCollectionDateResponse, error)
 	// Resolve a list of entities, given their descriptions.
 	ResolveEntities(ctx context.Context, in *ResolveEntitiesRequest, opts ...grpc.CallOption) (*ResolveEntitiesResponse, error)
 	// Resolve a list of places, given their latitude and longitude coordinates.
@@ -650,6 +656,15 @@ func (c *mixerClient) EventCollection(ctx context.Context, in *EventCollectionRe
 	return out, nil
 }
 
+func (c *mixerClient) EventCollectionDate(ctx context.Context, in *EventCollectionDateRequest, opts ...grpc.CallOption) (*EventCollectionDateResponse, error) {
+	out := new(EventCollectionDateResponse)
+	err := c.cc.Invoke(ctx, "/datacommons.Mixer/EventCollectionDate", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *mixerClient) ResolveEntities(ctx context.Context, in *ResolveEntitiesRequest, opts ...grpc.CallOption) (*ResolveEntitiesResponse, error) {
 	out := new(ResolveEntitiesResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/ResolveEntities", in, out, opts...)
@@ -799,10 +814,16 @@ type MixerServer interface {
 	VariableAncestors(context.Context, *VariableAncestorsRequest) (*VariableAncestorsResponse, error)
 	// Get event collection for {eventType, affectedPlaceDcid, date}.
 	// NOTE:
-	// - The affectedPlaceDcid is only for top-level places such as Earth,
-	// continents, and countries.
+	// - The affectedPlaceDcid is only for top-level places:
+	//   Earth, continent, country, state, adminArea1.
 	// - The date format should be: YYYY-MM.
 	EventCollection(context.Context, *EventCollectionRequest) (*EventCollectionResponse, error)
+	// Get all dates for event collection for {eventType, affectedPlaceDcid}.
+	// - The affectedPlaceDcid is only for top-level places:
+	//   Earth, continent, country, state, adminArea1.
+	// - The date format should be: YYYY-MM.
+	//   The dates in the response are sorted from earliest to latest.
+	EventCollectionDate(context.Context, *EventCollectionDateRequest) (*EventCollectionDateResponse, error)
 	// Resolve a list of entities, given their descriptions.
 	ResolveEntities(context.Context, *ResolveEntitiesRequest) (*ResolveEntitiesResponse, error)
 	// Resolve a list of places, given their latitude and longitude coordinates.
@@ -986,6 +1007,9 @@ func (UnimplementedMixerServer) VariableAncestors(context.Context, *VariableAnce
 }
 func (UnimplementedMixerServer) EventCollection(context.Context, *EventCollectionRequest) (*EventCollectionResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method EventCollection not implemented")
+}
+func (UnimplementedMixerServer) EventCollectionDate(context.Context, *EventCollectionDateRequest) (*EventCollectionDateResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method EventCollectionDate not implemented")
 }
 func (UnimplementedMixerServer) ResolveEntities(context.Context, *ResolveEntitiesRequest) (*ResolveEntitiesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ResolveEntities not implemented")
@@ -2022,6 +2046,24 @@ func _Mixer_EventCollection_Handler(srv interface{}, ctx context.Context, dec fu
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Mixer_EventCollectionDate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(EventCollectionDateRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MixerServer).EventCollectionDate(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/datacommons.Mixer/EventCollectionDate",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MixerServer).EventCollectionDate(ctx, req.(*EventCollectionDateRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _Mixer_ResolveEntities_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ResolveEntitiesRequest)
 	if err := dec(in); err != nil {
@@ -2342,6 +2384,10 @@ var Mixer_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "EventCollection",
 			Handler:    _Mixer_EventCollection_Handler,
+		},
+		{
+			MethodName: "EventCollectionDate",
+			Handler:    _Mixer_EventCollectionDate_Handler,
 		},
 		{
 			MethodName: "ResolveEntities",

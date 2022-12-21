@@ -310,7 +310,7 @@
                 "observationPeriod": "P1M"
               },
               "earliestDate": "1976-01",
-              "latestDate": "2022-10",
+              "latestDate": "2022-11",
               "placeTypeSummary": {
                 "City": {
                   "placeCount": 1,
@@ -345,7 +345,7 @@
               },
               "minValue": 1.8,
               "maxValue": 28.5,
-              "observationCount": 29782,
+              "observationCount": 29834,
               "timeSeriesCount": 53
             },
             {
@@ -354,7 +354,7 @@
                 "observationPeriod": "P1M"
               },
               "earliestDate": "1976-01",
-              "latestDate": "2022-10",
+              "latestDate": "2022-11",
               "placeTypeSummary": {
                 "City": {
                   "placeCount": 3086,
@@ -416,7 +416,7 @@
               },
               "minValue": 0,
               "maxValue": 100,
-              "observationCount": 2431871,
+              "observationCount": 2431928,
               "timeSeriesCount": 6358
             },
             {
@@ -491,7 +491,7 @@
               "timeSeriesCount": 6358
             }
           ],
-          "observationCount": 2658943,
+          "observationCount": 2659052,
           "timeSeriesCount": 12769
         },
         "dc/yd4sfb": {
