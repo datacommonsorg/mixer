@@ -16,11 +16,13 @@ package info
 
 import (
 	"context"
+	"sort"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/server/statvar"
 	"github.com/datacommonsorg/mixer/internal/store"
+	"golang.org/x/sync/errgroup"
 )
 
 // VariableGroupInfo implements API for Mixer.VariableGroupInfo.
@@ -53,39 +55,45 @@ func BulkVariableGroupInfo(
 	cache *resource.Cache,
 ) (*pb.BulkVariableGroupInfoResponse, error) {
 	// TODO (shifucun):
-	// The response here is directly from the raw SVG group, not consistent
-	// with the VariableGroupInfo() API.
 	// Ideally, both APIs need to filter out the child variable (group) that has
 	// no data, but this is indicated with a "has_data" field, to
 	// accomocate the "Show all statistical variables" in UI widget. The UI
 	// should call this API twice, w/o constrained_entities to achieve that.
 	nodes := in.GetNodes()
-	entities := in.GetConstrainedEntities()
-	resp := &pb.BulkVariableGroupInfoResponse{Data: []*pb.VariableGroupInfoResponse{}}
-	tmp, err := statvar.GetStatVarGroup(
-		ctx,
-		&pb.GetStatVarGroupRequest{Entities: entities},
-		store,
-		cache,
-	)
+	constraindEntities := in.GetConstrainedEntities()
+	dataChan := make(chan *pb.VariableGroupInfoResponse, len(nodes))
+	errs, errCtx := errgroup.WithContext(ctx)
+	for _, node := range nodes {
+		node := node
+		errs.Go(func() error {
+			data, err := VariableGroupInfo(
+				errCtx,
+				&pb.VariableGroupInfoRequest{
+					Node:                node,
+					ConstrainedEntities: constraindEntities,
+				},
+				store,
+				cache,
+			)
+			dataChan <- data
+			return err
+		})
+	}
+	err := errs.Wait()
 	if err != nil {
 		return nil, err
 	}
-	if len(nodes) > 0 {
-		for _, n := range nodes {
-			info := tmp.StatVarGroups[n]
-			resp.Data = append(resp.Data, &pb.VariableGroupInfoResponse{
-				Node: n,
-				Info: info,
-			})
-		}
-	} else {
-		for n, info := range tmp.StatVarGroups {
-			resp.Data = append(resp.Data, &pb.VariableGroupInfoResponse{
-				Node: n,
-				Info: info,
-			})
-		}
+	close(dataChan)
+	resp := &pb.BulkVariableGroupInfoResponse{
+		Data: []*pb.VariableGroupInfoResponse{},
 	}
+	for elem := range dataChan {
+		resp.Data = append(resp.Data, elem)
+	}
+
+	sort.Slice(resp.Data, func(i, j int) bool {
+		return resp.Data[i].Node < resp.Data[j].Node
+	})
+
 	return resp, nil
 }
