@@ -16,6 +16,7 @@ package info
 
 import (
 	"context"
+	"sort"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
@@ -89,6 +90,10 @@ func BulkVariableGroupInfo(
 	for elem := range dataChan {
 		resp.Data = append(resp.Data, elem)
 	}
+
+	sort.Slice(resp.Data, func(i, j int) bool {
+		return resp.Data[i].Node < resp.Data[j].Node
+	})
 
 	return resp, nil
 }
