@@ -77,7 +77,7 @@ func TestBulkVariableGroupInfo(t *testing.T) {
 	}
 
 	if err := test.TestDriver(
-		"BulkVariablGroupInfo", &test.TestOption{UseCache: true}, testSuite); err != nil {
+		"BulkVariableGroupInfo", &test.TestOption{UseCache: true}, testSuite); err != nil {
 		t.Errorf("TestDriver() = %s", err)
 	}
 }

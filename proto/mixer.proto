@@ -233,35 +233,6 @@ service Mixer {
     };
   }
 
-  // Given an entity, get the statvar group for stat vars that have data for it.
-  rpc GetStatVarGroup(GetStatVarGroupRequest) returns (StatVarGroups) {
-    option (google.api.http) = {
-      get : "/place/stat-var-group"
-      additional_bindings : {post : "/place/stat-var-group" body : "*"}
-      additional_bindings : {get : "/stat-var/group/all"}
-      additional_bindings : {post : "/stat-var/group/all" body : "*"}
-    };
-  }
-
-  // Get the stat var group node info. The children stat var and stat var group
-  // should have data for at least one of the given entities.
-  rpc GetStatVarGroupNode(GetStatVarGroupNodeRequest)
-      returns (StatVarGroupNode) {
-    option (google.api.http) = {
-      get : "/stat-var/group"
-      additional_bindings : {post : "/stat-var/group" body : "*"}
-    };
-  }
-
-  // Get the path from a stat var or a stat var group path to the root
-  // of stat var hierarchy
-  rpc GetStatVarPath(GetStatVarPathRequest) returns (GetStatVarPathResponse) {
-    option (google.api.http) = {
-      get : "/stat-var/path"
-      additional_bindings : {post : "/stat-var/path" body : "*"}
-    };
-  }
-
   // Search stat var and stat var groups.
   rpc SearchStatVar(SearchStatVarRequest) returns (SearchStatVarResponse) {
     option (google.api.http) = {

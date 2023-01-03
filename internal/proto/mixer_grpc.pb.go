@@ -77,14 +77,6 @@ type MixerClient interface {
 	// Given ancestor place, child place type and stat vars, return the dates and
 	// place count for each source
 	GetStatDateWithinPlace(ctx context.Context, in *GetStatDateWithinPlaceRequest, opts ...grpc.CallOption) (*GetStatDateWithinPlaceResponse, error)
-	// Given an entity, get the statvar group for stat vars that have data for it.
-	GetStatVarGroup(ctx context.Context, in *GetStatVarGroupRequest, opts ...grpc.CallOption) (*StatVarGroups, error)
-	// Get the stat var group node info. The children stat var and stat var group
-	// should have data for at least one of the given entities.
-	GetStatVarGroupNode(ctx context.Context, in *GetStatVarGroupNodeRequest, opts ...grpc.CallOption) (*StatVarGroupNode, error)
-	// Get the path from a stat var or a stat var group path to the root
-	// of stat var hierarchy
-	GetStatVarPath(ctx context.Context, in *GetStatVarPathRequest, opts ...grpc.CallOption) (*GetStatVarPathResponse, error)
 	// Search stat var and stat var groups.
 	SearchStatVar(ctx context.Context, in *SearchStatVarRequest, opts ...grpc.CallOption) (*SearchStatVarResponse, error)
 	// Given a list of stat vars, get their summaries.
@@ -122,15 +114,15 @@ type MixerClient interface {
 	VariableAncestors(ctx context.Context, in *VariableAncestorsRequest, opts ...grpc.CallOption) (*VariableAncestorsResponse, error)
 	// Get event collection for {eventType, affectedPlaceDcid, date}.
 	// NOTE:
-	// - The affectedPlaceDcid is only for top-level places:
-	//   Earth, continent, country, state, adminArea1.
-	// - The date format should be: YYYY-MM.
+	//   - The affectedPlaceDcid is only for top-level places:
+	//     Earth, continent, country, state, adminArea1.
+	//   - The date format should be: YYYY-MM.
 	EventCollection(ctx context.Context, in *EventCollectionRequest, opts ...grpc.CallOption) (*EventCollectionResponse, error)
 	// Get all dates for event collection for {eventType, affectedPlaceDcid}.
-	// - The affectedPlaceDcid is only for top-level places:
-	//   Earth, continent, country, state, adminArea1.
-	// - The date format should be: YYYY-MM.
-	//   The dates in the response are sorted from earliest to latest.
+	//   - The affectedPlaceDcid is only for top-level places:
+	//     Earth, continent, country, state, adminArea1.
+	//   - The date format should be: YYYY-MM.
+	//     The dates in the response are sorted from earliest to latest.
 	EventCollectionDate(ctx context.Context, in *EventCollectionDateRequest, opts ...grpc.CallOption) (*EventCollectionDateResponse, error)
 	// Resolve a list of entities, given their descriptions.
 	ResolveEntities(ctx context.Context, in *ResolveEntitiesRequest, opts ...grpc.CallOption) (*ResolveEntitiesResponse, error)
@@ -335,33 +327,6 @@ func (c *mixerClient) GetPlaceStatDateWithinPlace(ctx context.Context, in *GetPl
 func (c *mixerClient) GetStatDateWithinPlace(ctx context.Context, in *GetStatDateWithinPlaceRequest, opts ...grpc.CallOption) (*GetStatDateWithinPlaceResponse, error) {
 	out := new(GetStatDateWithinPlaceResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/GetStatDateWithinPlace", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *mixerClient) GetStatVarGroup(ctx context.Context, in *GetStatVarGroupRequest, opts ...grpc.CallOption) (*StatVarGroups, error) {
-	out := new(StatVarGroups)
-	err := c.cc.Invoke(ctx, "/datacommons.Mixer/GetStatVarGroup", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *mixerClient) GetStatVarGroupNode(ctx context.Context, in *GetStatVarGroupNodeRequest, opts ...grpc.CallOption) (*StatVarGroupNode, error) {
-	out := new(StatVarGroupNode)
-	err := c.cc.Invoke(ctx, "/datacommons.Mixer/GetStatVarGroupNode", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *mixerClient) GetStatVarPath(ctx context.Context, in *GetStatVarPathRequest, opts ...grpc.CallOption) (*GetStatVarPathResponse, error) {
-	out := new(GetStatVarPathResponse)
-	err := c.cc.Invoke(ctx, "/datacommons.Mixer/GetStatVarPath", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -769,14 +734,6 @@ type MixerServer interface {
 	// Given ancestor place, child place type and stat vars, return the dates and
 	// place count for each source
 	GetStatDateWithinPlace(context.Context, *GetStatDateWithinPlaceRequest) (*GetStatDateWithinPlaceResponse, error)
-	// Given an entity, get the statvar group for stat vars that have data for it.
-	GetStatVarGroup(context.Context, *GetStatVarGroupRequest) (*StatVarGroups, error)
-	// Get the stat var group node info. The children stat var and stat var group
-	// should have data for at least one of the given entities.
-	GetStatVarGroupNode(context.Context, *GetStatVarGroupNodeRequest) (*StatVarGroupNode, error)
-	// Get the path from a stat var or a stat var group path to the root
-	// of stat var hierarchy
-	GetStatVarPath(context.Context, *GetStatVarPathRequest) (*GetStatVarPathResponse, error)
 	// Search stat var and stat var groups.
 	SearchStatVar(context.Context, *SearchStatVarRequest) (*SearchStatVarResponse, error)
 	// Given a list of stat vars, get their summaries.
@@ -814,15 +771,15 @@ type MixerServer interface {
 	VariableAncestors(context.Context, *VariableAncestorsRequest) (*VariableAncestorsResponse, error)
 	// Get event collection for {eventType, affectedPlaceDcid, date}.
 	// NOTE:
-	// - The affectedPlaceDcid is only for top-level places:
-	//   Earth, continent, country, state, adminArea1.
-	// - The date format should be: YYYY-MM.
+	//   - The affectedPlaceDcid is only for top-level places:
+	//     Earth, continent, country, state, adminArea1.
+	//   - The date format should be: YYYY-MM.
 	EventCollection(context.Context, *EventCollectionRequest) (*EventCollectionResponse, error)
 	// Get all dates for event collection for {eventType, affectedPlaceDcid}.
-	// - The affectedPlaceDcid is only for top-level places:
-	//   Earth, continent, country, state, adminArea1.
-	// - The date format should be: YYYY-MM.
-	//   The dates in the response are sorted from earliest to latest.
+	//   - The affectedPlaceDcid is only for top-level places:
+	//     Earth, continent, country, state, adminArea1.
+	//   - The date format should be: YYYY-MM.
+	//     The dates in the response are sorted from earliest to latest.
 	EventCollectionDate(context.Context, *EventCollectionDateRequest) (*EventCollectionDateResponse, error)
 	// Resolve a list of entities, given their descriptions.
 	ResolveEntities(context.Context, *ResolveEntitiesRequest) (*ResolveEntitiesResponse, error)
@@ -902,15 +859,6 @@ func (UnimplementedMixerServer) GetPlaceStatDateWithinPlace(context.Context, *Ge
 }
 func (UnimplementedMixerServer) GetStatDateWithinPlace(context.Context, *GetStatDateWithinPlaceRequest) (*GetStatDateWithinPlaceResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetStatDateWithinPlace not implemented")
-}
-func (UnimplementedMixerServer) GetStatVarGroup(context.Context, *GetStatVarGroupRequest) (*StatVarGroups, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetStatVarGroup not implemented")
-}
-func (UnimplementedMixerServer) GetStatVarGroupNode(context.Context, *GetStatVarGroupNodeRequest) (*StatVarGroupNode, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetStatVarGroupNode not implemented")
-}
-func (UnimplementedMixerServer) GetStatVarPath(context.Context, *GetStatVarPathRequest) (*GetStatVarPathResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetStatVarPath not implemented")
 }
 func (UnimplementedMixerServer) SearchStatVar(context.Context, *SearchStatVarRequest) (*SearchStatVarResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SearchStatVar not implemented")
@@ -1412,60 +1360,6 @@ func _Mixer_GetStatDateWithinPlace_Handler(srv interface{}, ctx context.Context,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(MixerServer).GetStatDateWithinPlace(ctx, req.(*GetStatDateWithinPlaceRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Mixer_GetStatVarGroup_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetStatVarGroupRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(MixerServer).GetStatVarGroup(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/datacommons.Mixer/GetStatVarGroup",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).GetStatVarGroup(ctx, req.(*GetStatVarGroupRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Mixer_GetStatVarGroupNode_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetStatVarGroupNodeRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(MixerServer).GetStatVarGroupNode(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/datacommons.Mixer/GetStatVarGroupNode",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).GetStatVarGroupNode(ctx, req.(*GetStatVarGroupNodeRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Mixer_GetStatVarPath_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetStatVarPathRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(MixerServer).GetStatVarPath(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/datacommons.Mixer/GetStatVarPath",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).GetStatVarPath(ctx, req.(*GetStatVarPathRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -2244,18 +2138,6 @@ var Mixer_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetStatDateWithinPlace",
 			Handler:    _Mixer_GetStatDateWithinPlace_Handler,
-		},
-		{
-			MethodName: "GetStatVarGroup",
-			Handler:    _Mixer_GetStatVarGroup_Handler,
-		},
-		{
-			MethodName: "GetStatVarGroupNode",
-			Handler:    _Mixer_GetStatVarGroupNode_Handler,
-		},
-		{
-			MethodName: "GetStatVarPath",
-			Handler:    _Mixer_GetStatVarPath_Handler,
 		},
 		{
 			MethodName: "SearchStatVar",
