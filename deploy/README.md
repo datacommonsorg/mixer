@@ -49,8 +49,8 @@ helm upgrade --install mixer-dev deploy/helm_charts/mixer \
     --timeout 10m \
     -f deploy/helm_charts/envs/mixer_dev.yaml \
     --set mixer.githash=$(git rev-parse --short=7 HEAD) \
-    --set-file mixer.schemaConfigs."base.mcf"=deploy/mapping/base.mcf \
-    --set-file mixer.schemaConfigs."encode.mcf"=deploy/mapping/encode.mcf \
+    --set-file mixer.schemaConfigs."base\.mcf"=deploy/mapping/base.mcf \
+    --set-file mixer.schemaConfigs."encode\.mcf"=deploy/mapping/encode.mcf \
     --set-file kgStoreConfig.bigqueryVersion=deploy/storage/bigquery.version \
     --set-file kgStoreConfig.baseBigtableInfo=deploy/storage/base_bigtable_info.yaml
 ```

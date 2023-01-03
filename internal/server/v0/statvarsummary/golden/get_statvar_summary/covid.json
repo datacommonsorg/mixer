@@ -30,7 +30,7 @@
             }
           ],
           "minValue": 1,
-          "maxValue": 98409758
+          "maxValue": 99624169
         },
         "County": {
           "placeCount": 3217,
@@ -68,14 +68,12 @@
             }
           ],
           "minValue": 1,
-          "maxValue": 11497895
+          "maxValue": 11688449
         }
       },
       "provenanceSummary": {
         "dc/e9k9ze": {
           "importName": "NYT_COVID19",
-          "observationCount": 2536645,
-          "timeSeriesCount": 3277,
           "releaseFrequency": "P1D",
           "seriesSummary": [
             {
@@ -83,9 +81,7 @@
                 "measurementMethod": "NYT_COVID19_GitHub"
               },
               "earliestDate": "2020-01-21",
-              "latestDate": "2022-11-29",
-              "observationCount": 2536645,
-              "timeSeriesCount": 3277,
+              "latestDate": "2022-12-18",
               "placeTypeSummary": {
                 "City": {
                   "placeCount": 3,
@@ -115,7 +111,7 @@
                     }
                   ],
                   "minValue": 1,
-                  "maxValue": 98409758
+                  "maxValue": 99624169
                 },
                 "County": {
                   "placeCount": 3217,
@@ -153,13 +149,17 @@
                     }
                   ],
                   "minValue": 1,
-                  "maxValue": 11497895
+                  "maxValue": 11688449
                 }
               },
               "minValue": 1,
-              "maxValue": 98409758
+              "maxValue": 99624169,
+              "observationCount": 2537728,
+              "timeSeriesCount": 3277
             }
-          ]
+          ],
+          "observationCount": 2537728,
+          "timeSeriesCount": 3277
         }
       }
     },
@@ -237,8 +237,6 @@
       "provenanceSummary": {
         "dc/e9k9ze": {
           "importName": "NYT_COVID19",
-          "observationCount": 2620285,
-          "timeSeriesCount": 6554,
           "releaseFrequency": "P1D",
           "seriesSummary": [
             {
@@ -246,9 +244,7 @@
                 "measurementMethod": "dcDerivedStat/NYT_COVID19_GitHub"
               },
               "earliestDate": "2020-01-22",
-              "latestDate": "2022-11-29",
-              "observationCount": 2533360,
-              "timeSeriesCount": 3277,
+              "latestDate": "2022-12-18",
               "placeTypeSummary": {
                 "City": {
                   "placeCount": 3,
@@ -320,7 +316,9 @@
                 }
               },
               "minValue": -40527,
-              "maxValue": 1433977
+              "maxValue": 1433977,
+              "observationCount": 2534443,
+              "timeSeriesCount": 3277
             },
             {
               "seriesKey": {
@@ -328,9 +326,7 @@
                 "observationPeriod": "P1M"
               },
               "earliestDate": "2020-01",
-              "latestDate": "2022-11",
-              "observationCount": 86925,
-              "timeSeriesCount": 3277,
+              "latestDate": "2022-12",
               "placeTypeSummary": {
                 "City": {
                   "placeCount": 3,
@@ -402,9 +398,13 @@
                 }
               },
               "minValue": -3451,
-              "maxValue": 20300128
+              "maxValue": 20300128,
+              "observationCount": 86982,
+              "timeSeriesCount": 3277
             }
-          ]
+          ],
+          "observationCount": 2621425,
+          "timeSeriesCount": 6554
         }
       }
     }

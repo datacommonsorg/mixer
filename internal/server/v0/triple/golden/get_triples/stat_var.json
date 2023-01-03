@@ -557,34 +557,6 @@
       "provenanceId": "dc/d7tbsb1"
     },
     {
-      "subjectId": "Percent_AtleastTwiceADay_ConsumptionOfFruits_In_Count_Person",
-      "subjectName": "Percentage Atleast Twice a Day, Consumption Of Fruits Among Population",
-      "subjectTypes": [
-        "StatisticalVariable"
-      ],
-      "predicate": "measurementDenominator",
-      "objectId": "Count_Person",
-      "objectName": "Population",
-      "objectTypes": [
-        "StatisticalVariable"
-      ],
-      "provenanceId": "dc/d7tbsb1"
-    },
-    {
-      "subjectId": "Percent_AtleastTwiceADay_ConsumptionOfVegetables_In_Count_Person",
-      "subjectName": "Percentage Atleast Twice a Day, Consumption Of Vegetables Among Population",
-      "subjectTypes": [
-        "StatisticalVariable"
-      ],
-      "predicate": "measurementDenominator",
-      "objectId": "Count_Person",
-      "objectName": "Population",
-      "objectTypes": [
-        "StatisticalVariable"
-      ],
-      "provenanceId": "dc/d7tbsb1"
-    },
-    {
       "subjectId": "Percent_Cycling_NonWorkRelatedPhysicalActivity_In_Count_Person",
       "subjectName": "Percentage Cycling, Non Work Related Physical Activity Among Population",
       "subjectTypes": [
@@ -2181,34 +2153,6 @@
     {
       "subjectId": "Percent_AtLeastTwiceADay_ConsumptionOfVegetables_In_Count_Person_Female",
       "subjectName": "Percentage At Least Twice a Day, Consumption Of Vegetables Among Female Population",
-      "subjectTypes": [
-        "StatisticalVariable"
-      ],
-      "predicate": "measurementDenominator",
-      "objectId": "Count_Person_Female",
-      "objectName": "Population: Female",
-      "objectTypes": [
-        "StatisticalVariable"
-      ],
-      "provenanceId": "dc/d7tbsb1"
-    },
-    {
-      "subjectId": "Percent_AtleastTwiceADay_ConsumptionOfFruits_In_Count_Person_Female",
-      "subjectName": "Percentage Atleast Twice a Day, Consumption Of Fruits Among Female Population",
-      "subjectTypes": [
-        "StatisticalVariable"
-      ],
-      "predicate": "measurementDenominator",
-      "objectId": "Count_Person_Female",
-      "objectName": "Population: Female",
-      "objectTypes": [
-        "StatisticalVariable"
-      ],
-      "provenanceId": "dc/d7tbsb1"
-    },
-    {
-      "subjectId": "Percent_AtleastTwiceADay_ConsumptionOfVegetables_In_Count_Person_Female",
-      "subjectName": "Percentage Atleast Twice a Day, Consumption Of Vegetables Among Female Population",
       "subjectTypes": [
         "StatisticalVariable"
       ],

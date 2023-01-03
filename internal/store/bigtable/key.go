@@ -27,6 +27,8 @@ const (
 	BtSVAndSVGExistence = "d/2/"
 	// BtObsTimeSeries is the key for obs time series cache.
 	BtObsTimeSeries = "d/3/"
+	// BtEventCollection is the key for event collection cache.
+	BtEventCollection = "d/4/"
 	// BtReconIDMapPrefix for ID mapping for ID-based recon. The key excludes DCID.
 	BtReconIDMapPrefix = "d/5/"
 	// BtBioPagePrefix for biology page cache.
@@ -52,6 +54,8 @@ const (
 	BtPlacePageCategoricalPrefix = "d/f/"
 	// BtLandingPageCategories is the prefix for place page menu categories cache.
 	BtLandingPageCategories = "d/h/"
+	// BtEventCollectionDate is the key for event collection date cache.
+	BtEventCollectionDate = "d/j/"
 	// BtPagedPropTypeValIn for in-arc paged entities by type.
 	// Key: <dcid^predicate^type^page>
 	BtPagedPropTypeValIn = "d/l/"

@@ -35,6 +35,7 @@ import "stat_var.proto";
 import "translate.proto";
 import "recon.proto";
 
+import "v1/event.proto";
 import "v1/properties.proto";
 import "v1/property_values.proto";
 import "v1/variable.proto";
@@ -494,6 +495,32 @@ service Mixer {
       returns (datacommons.v1.VariableAncestorsResponse) {
     option (google.api.http) = {
       get : "/v1/variable/ancestors/{node=**}"
+    };
+  }
+
+  // Get event collection for {eventType, affectedPlaceDcid, date}.
+  // NOTE:
+  // - The affectedPlaceDcid is only for top-level places:
+  //   Earth, continent, country, state, adminArea1.
+  // - The date format should be: YYYY-MM.
+  rpc EventCollection(datacommons.v1.EventCollectionRequest)
+      returns (datacommons.v1.EventCollectionResponse) {
+    option (google.api.http) = {
+      get : "/v1/events"
+      additional_bindings : {post : "/v1/events" body : "*"}
+    };
+  }
+
+  // Get all dates for event collection for {eventType, affectedPlaceDcid}.
+  // - The affectedPlaceDcid is only for top-level places:
+  //   Earth, continent, country, state, adminArea1.
+  // - The date format should be: YYYY-MM.
+  //   The dates in the response are sorted from earliest to latest.
+  rpc EventCollectionDate(datacommons.v1.EventCollectionDateRequest)
+      returns (datacommons.v1.EventCollectionDateResponse) {
+    option (google.api.http) = {
+      get : "/v1/events/dates"
+      additional_bindings : {post : "/v1/events/dates" body : "*"}
     };
   }
 

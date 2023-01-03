@@ -350,8 +350,8 @@
           "entity": "country/USA",
           "points_by_facet": [
             {
-              "date": "2022-10",
-              "value": 6059000,
+              "date": "2022-11",
+              "value": 6011000,
               "facet": "3707913853"
             },
             {
@@ -365,8 +365,8 @@
           "entity": "geoId/06",
           "points_by_facet": [
             {
-              "date": "2022-10",
-              "value": 726345,
+              "date": "2022-11",
+              "value": 773799,
               "facet": "324358135"
             },
             {
@@ -375,8 +375,8 @@
               "facet": "2978659163"
             },
             {
-              "date": "2022-10",
-              "value": 776609,
+              "date": "2022-11",
+              "value": 794064,
               "facet": "1249140336"
             }
           ]
@@ -385,14 +385,24 @@
           "entity": "geoId/0649670",
           "points_by_facet": [
             {
-              "date": "2022-09",
-              "value": 845,
+              "date": "2022-10",
+              "value": 839,
               "facet": "324358135"
             },
             {
               "date": "2021",
               "value": 1497,
               "facet": "2978659163"
+            },
+            {
+              "date": "1989-12",
+              "value": 1144.084211,
+              "facet": "4026503442"
+            },
+            {
+              "date": "1989",
+              "value": 1173.901453,
+              "facet": "706575990"
             }
           ]
         }
@@ -411,8 +421,8 @@
           "entity": "country/USA",
           "points_by_facet": [
             {
-              "date": "2022-11-29",
-              "value": 98409758,
+              "date": "2022-12-18",
+              "value": 99624169,
               "facet": "2232540893"
             }
           ]
@@ -421,8 +431,8 @@
           "entity": "geoId/06",
           "points_by_facet": [
             {
-              "date": "2022-11-29",
-              "value": 11497895,
+              "date": "2022-12-18",
+              "value": 11688449,
               "facet": "2232540893"
             }
           ]
@@ -595,9 +605,21 @@
       "provenance_url": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
       "observation_period": "P1Y"
     },
+    "4026503442": {
+      "import_name": "BLS_LAUS_Imputed",
+      "provenance_url": "https://www.bls.gov/lau/",
+      "measurement_method": "BLSSeasonallyUnadjusted",
+      "observation_period": "P1M"
+    },
     "4277990144": {
       "import_name": "FBIGovCrime",
       "provenance_url": "http://www.fbi.gov/services/cjis/ucr",
+      "observation_period": "P1Y"
+    },
+    "706575990": {
+      "import_name": "BLS_LAUS_Imputed",
+      "provenance_url": "https://www.bls.gov/lau/",
+      "measurement_method": "BLSSeasonallyUnadjusted",
       "observation_period": "P1Y"
     },
     "738965619": {
