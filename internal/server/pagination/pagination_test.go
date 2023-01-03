@@ -22,7 +22,7 @@ import (
 	"google.golang.org/protobuf/testing/protocmp"
 )
 
-func TestDencode(t *testing.T) {
+func TestDecode(t *testing.T) {
 	for _, c := range []struct {
 		info  *pb.PaginationInfo
 		token string

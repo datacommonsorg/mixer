@@ -20,8 +20,8 @@
                 "name": "Chicago"
               }
             ],
-            "minValue": -13.197619,
-            "maxValue": 111.783127
+            "minValue": 0,
+            "maxValue": 100
           },
           "Country": {
             "placeCount": 33,
@@ -151,7 +151,7 @@
                   "isDcImputed": true
                 },
                 "earliestDate": "2020-03",
-                "latestDate": "2022-10",
+                "latestDate": "2022-11",
                 "placeTypeSummary": {
                   "State": {
                     "placeCount": 1,
@@ -161,13 +161,13 @@
                         "name": "Puerto Rico"
                       }
                     ],
-                    "minValue": 7.190453,
-                    "maxValue": 22.675805
+                    "minValue": 7.188088,
+                    "maxValue": 22.663813
                   }
                 },
-                "minValue": 7.190453,
-                "maxValue": 22.675805,
-                "observationCount": 4,
+                "minValue": 7.188088,
+                "maxValue": 22.663813,
+                "observationCount": 5,
                 "timeSeriesCount": 1
               },
               {
@@ -177,7 +177,7 @@
                   "isDcImputed": true
                 },
                 "earliestDate": "1976-01",
-                "latestDate": "2022-10",
+                "latestDate": "2022-11",
                 "placeTypeSummary": {
                   "City": {
                     "placeCount": 3085,
@@ -195,27 +195,27 @@
                         "name": "Houston"
                       }
                     ],
-                    "minValue": -13.197619,
-                    "maxValue": 111.202351
+                    "minValue": 0,
+                    "maxValue": 100
                   },
                   "County": {
-                    "placeCount": 93,
+                    "placeCount": 3217,
                     "topPlaces": [
                       {
-                        "dcid": "geoId/22051",
-                        "name": "Jefferson Parish"
+                        "dcid": "geoId/17031",
+                        "name": "Cook County"
                       },
                       {
-                        "dcid": "geoId/22071",
-                        "name": "Orleans Parish"
+                        "dcid": "geoId/48201",
+                        "name": "Harris County"
                       },
                       {
-                        "dcid": "geoId/72127",
-                        "name": "San Juan"
+                        "dcid": "geoId/04013",
+                        "name": "Maricopa County"
                       }
                     ],
-                    "minValue": 2.878088,
-                    "maxValue": 36.790719
+                    "minValue": 1.14212,
+                    "maxValue": 36.793976
                   },
                   "State": {
                     "placeCount": 1,
@@ -225,14 +225,14 @@
                         "name": "Puerto Rico"
                       }
                     ],
-                    "minValue": 6.760155,
-                    "maxValue": 22.017141
+                    "minValue": 6.758847,
+                    "maxValue": 22.012479
                   }
                 },
-                "minValue": -13.197619,
-                "maxValue": 111.202351,
-                "observationCount": 600365,
-                "timeSeriesCount": 3179
+                "minValue": 0,
+                "maxValue": 100,
+                "observationCount": 606666,
+                "timeSeriesCount": 6303
               },
               {
                 "seriesKey": {
@@ -259,8 +259,8 @@
                         "name": "Houston"
                       }
                     ],
-                    "minValue": -0.798849,
-                    "maxValue": 111.783127
+                    "minValue": 0,
+                    "maxValue": 100
                   },
                   "County": {
                     "placeCount": 93,
@@ -293,14 +293,14 @@
                     "maxValue": 13.779251
                   }
                 },
-                "minValue": -0.798849,
-                "maxValue": 111.783127,
+                "minValue": 0,
+                "maxValue": 100,
                 "observationCount": 49350,
                 "timeSeriesCount": 3162
               }
             ],
-            "observationCount": 649719,
-            "timeSeriesCount": 6342
+            "observationCount": 656021,
+            "timeSeriesCount": 9466
           },
           "dc/lly3yc1": {
             "importName": "BLS_LAUS",
@@ -418,7 +418,7 @@
                 },
                 "minValue": 0,
                 "maxValue": 100,
-                "observationCount": 2431928,
+                "observationCount": 2438225,
                 "timeSeriesCount": 6358
               },
               {
@@ -493,7 +493,7 @@
                 "timeSeriesCount": 6358
               }
             ],
-            "observationCount": 2659052,
+            "observationCount": 2665349,
             "timeSeriesCount": 12769
           },
           "dc/yd4sfb": {
@@ -3023,7 +3023,7 @@
                   "measurementMethod": "dcDerivedStat/NYT_COVID19_GitHub"
                 },
                 "earliestDate": "2020-01-22",
-                "latestDate": "2022-12-18",
+                "latestDate": "2023-01-01",
                 "placeTypeSummary": {
                   "City": {
                     "placeCount": 3,
@@ -3096,7 +3096,7 @@
                 },
                 "minValue": -40527,
                 "maxValue": 1433977,
-                "observationCount": 2534443,
+                "observationCount": 2535241,
                 "timeSeriesCount": 3277
               },
               {
@@ -3105,7 +3105,7 @@
                   "observationPeriod": "P1M"
                 },
                 "earliestDate": "2020-01",
-                "latestDate": "2022-12",
+                "latestDate": "2023-01",
                 "placeTypeSummary": {
                   "City": {
                     "placeCount": 3,
@@ -3178,11 +3178,11 @@
                 },
                 "minValue": -3451,
                 "maxValue": 20300128,
-                "observationCount": 86982,
+                "observationCount": 87039,
                 "timeSeriesCount": 3277
               }
             ],
-            "observationCount": 2621425,
+            "observationCount": 2622280,
             "timeSeriesCount": 6554
           }
         }

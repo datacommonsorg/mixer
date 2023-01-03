@@ -30,7 +30,7 @@
             }
           ],
           "minValue": 1,
-          "maxValue": 99624169
+          "maxValue": 100483164
         },
         "County": {
           "placeCount": 3217,
@@ -68,7 +68,7 @@
             }
           ],
           "minValue": 1,
-          "maxValue": 11688449
+          "maxValue": 11826523
         }
       },
       "provenanceSummary": {
@@ -81,7 +81,7 @@
                 "measurementMethod": "NYT_COVID19_GitHub"
               },
               "earliestDate": "2020-01-21",
-              "latestDate": "2022-12-18",
+              "latestDate": "2023-01-01",
               "placeTypeSummary": {
                 "City": {
                   "placeCount": 3,
@@ -111,7 +111,7 @@
                     }
                   ],
                   "minValue": 1,
-                  "maxValue": 99624169
+                  "maxValue": 100483164
                 },
                 "County": {
                   "placeCount": 3217,
@@ -149,16 +149,16 @@
                     }
                   ],
                   "minValue": 1,
-                  "maxValue": 11688449
+                  "maxValue": 11826523
                 }
               },
               "minValue": 1,
-              "maxValue": 99624169,
-              "observationCount": 2537728,
+              "maxValue": 100483164,
+              "observationCount": 2538526,
               "timeSeriesCount": 3277
             }
           ],
-          "observationCount": 2537728,
+          "observationCount": 2538526,
           "timeSeriesCount": 3277
         }
       }
@@ -244,7 +244,7 @@
                 "measurementMethod": "dcDerivedStat/NYT_COVID19_GitHub"
               },
               "earliestDate": "2020-01-22",
-              "latestDate": "2022-12-18",
+              "latestDate": "2023-01-01",
               "placeTypeSummary": {
                 "City": {
                   "placeCount": 3,
@@ -317,7 +317,7 @@
               },
               "minValue": -40527,
               "maxValue": 1433977,
-              "observationCount": 2534443,
+              "observationCount": 2535241,
               "timeSeriesCount": 3277
             },
             {
@@ -326,7 +326,7 @@
                 "observationPeriod": "P1M"
               },
               "earliestDate": "2020-01",
-              "latestDate": "2022-12",
+              "latestDate": "2023-01",
               "placeTypeSummary": {
                 "City": {
                   "placeCount": 3,
@@ -399,11 +399,11 @@
               },
               "minValue": -3451,
               "maxValue": 20300128,
-              "observationCount": 86982,
+              "observationCount": 87039,
               "timeSeriesCount": 3277
             }
           ],
-          "observationCount": 2621425,
+          "observationCount": 2622280,
           "timeSeriesCount": 6554
         }
       }

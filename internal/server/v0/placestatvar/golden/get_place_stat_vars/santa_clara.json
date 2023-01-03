@@ -571,6 +571,8 @@
         "Area_Farm_Producer_TwoOrMoreRaces",
         "Area_Farm_Producer_WhiteAlone",
         "Area_Farm_VegetablesHarvestedForSale",
+        "Area_FireEvent",
+        "Area_FloodEvent",
         "AtmosphericPressure_SurfaceLevel",
         "ConsecutiveDryDays",
         "CountOfClaims_NaturalHazardInsurance_BuildingStructureAndContents_FloodEvent",
