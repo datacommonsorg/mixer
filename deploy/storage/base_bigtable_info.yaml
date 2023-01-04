@@ -1,7 +1,7 @@
 project: datcom-store
 instance: prophet-cache
 tables:
-  - frequent_2023_01_02_19_57_33
+  - frequent_2023_01_03_18_43_58
   - ipcc_2022_12_13_10_30_23
   - biomedical_2023_01_02_03_45_50
   - infrequent_2022_12_29_13_46_36
