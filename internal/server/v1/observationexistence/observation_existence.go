@@ -14,7 +14,6 @@
 
 // Package observationexistence holds API implementation for observation
 // existence check.
-
 package observationexistence
 
 import (
