@@ -42,6 +42,7 @@ import "v1/variable.proto";
 import "v1/info.proto";
 import "v1/observations.proto";
 import "v1/observation_dates.proto";
+import "v1/observation_existence.proto";
 import "v1/page.proto";
 import "v1/triples.proto";
 
@@ -472,6 +473,18 @@ service Mixer {
       get : "/v1/bulk/observation-dates/linked"
       additional_bindings : {
         post : "/v1/bulk/observation-dates/linked"
+        body : "*"
+      }
+    };
+  }
+
+  rpc BulkObservationExistence(
+      datacommons.v1.BulkObservationExistenceRequest)
+      returns (datacommons.v1.BulkObservationExistenceResponse) {
+    option (google.api.http) = {
+      get : "/v1/bulk/observation-existence"
+      additional_bindings : {
+        post : "/v1/bulk/observation-existence"
         body : "*"
       }
     };
