@@ -20,10 +20,10 @@ package datacommons.v1;
 message EventCollection {
   message GeoLocation {
     message Point {
-      optional double latitude = 1;
-      optional double longitude = 2;
+      double latitude = 1;
+      double longitude = 2;
     }
-    message Polygon { optional string geo_json = 1; }
+    message Polygon { string geo_json = 1; }
     oneof geo {
       Point point = 1;
       Polygon polygon = 2;
@@ -41,14 +41,14 @@ message EventCollection {
     repeated string dates = 3;
     // Key: salient property.
     map<string, ValList> prop_vals = 4;
-    optional string dcid = 5;
-    optional string provenance_id = 6;
+    string dcid = 5;
+    string provenance_id = 6;
   }
 
   message ProvenanceInfo {
-    optional string import_name = 1;
-    optional string provenance_url = 2;
-    optional string domain = 3;
+    string import_name = 1;
+    string provenance_url = 2;
+    string domain = 3;
   }
 
   repeated Event events = 1;

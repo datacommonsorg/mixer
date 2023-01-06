@@ -41,7 +41,7 @@ func keepEvent(event *pb.EventCollection_Event, spec filterSpec) bool {
 		if prop == spec.prop {
 			valStr := strings.TrimPrefix(vals.Vals[0], spec.unit)
 			if v, err := strconv.ParseFloat(valStr, 64); err == nil {
-				return v > spec.limit
+				return v >= spec.limit
 			}
 			// Can not convert the value, keep.
 			return true
@@ -134,9 +134,8 @@ func Collection(
 					resp.EventCollection.Events,
 					event,
 				)
-			}
-			for provID, info := range data.ProvenanceInfo {
-				resp.EventCollection.ProvenanceInfo[provID] = info
+				proveID := event.ProvenanceId
+				resp.EventCollection.ProvenanceInfo[proveID] = data.ProvenanceInfo[proveID]
 			}
 		}
 		break
