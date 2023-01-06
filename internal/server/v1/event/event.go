@@ -48,6 +48,11 @@ type filterSpec struct {
 	upperLimit float64
 }
 
+// Check to see if an even meets the filter criteria.
+//
+// This requires a specific format of the "value" field. If an event does not
+// conform to the format, keep it for now until we can handle all the format
+// properly.
 func keepEvent(event *pb.EventCollection_Event, spec filterSpec) bool {
 	for prop, vals := range event.GetPropVals() {
 		if prop == spec.prop {
