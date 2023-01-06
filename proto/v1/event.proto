@@ -67,9 +67,10 @@ message EventCollectionRequest {
   // - discoveryDate
   // - occurrenceTime
   string date = 3;
+  double fire_event_area_limit = 4;
 }
 
-message EventCollectionResponse { 
+message EventCollectionResponse {
   EventCollection event_collection = 1;
 }
 

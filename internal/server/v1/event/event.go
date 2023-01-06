@@ -17,8 +17,11 @@ package event
 
 import (
 	"context"
+	"strconv"
+	"strings"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	"github.com/datacommonsorg/mixer/internal/server/v1/propertyvalues"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"github.com/datacommonsorg/mixer/internal/util"
@@ -26,6 +29,8 @@ import (
 	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/proto"
 )
+
+const defaultFireEventAreaLimit = 10.0 // SquareKilometer
 
 // Collection implements API for Mixer.EventCollection.
 func Collection(
@@ -39,12 +44,39 @@ func Collection(
 	if !util.CheckValidDCIDs([]string{in.GetAffectedPlaceDcid()}) {
 		return nil, status.Errorf(codes.InvalidArgument, "Invalid DCID")
 	}
+	fireEventAreaLimit := defaultFireEventAreaLimit
+	if in.GetFireEventAreaLimit() > 0 {
+		fireEventAreaLimit = in.GetFireEventAreaLimit()
+	}
+
+	// Merge all the affected places in the final result.
+	affectedPlaces := []string{}
+	if in.GetAffectedPlaceDcid() == "Earth" {
+		resp, err := propertyvalues.PropertyValues(
+			ctx,
+			&pb.PropertyValuesRequest{
+				NodeProperty: "Country/typeOf",
+				Direction:    util.DirectionIn,
+			},
+			store,
+		)
+		if err != nil {
+			return nil, err
+		}
+		for _, value := range resp.Values {
+			if value.Types[0] == "Country" {
+				affectedPlaces = append(affectedPlaces, value.Dcid)
+			}
+		}
+	} else {
+		affectedPlaces = append(affectedPlaces, in.GetAffectedPlaceDcid())
+	}
 
 	btDataList, err := bigtable.Read(
 		ctx,
 		store.BtGroup,
 		bigtable.BtEventCollection,
-		[][]string{{in.GetEventType()}, {in.GetAffectedPlaceDcid()}, {in.GetDate()}},
+		[][]string{{in.GetEventType()}, affectedPlaces, {in.GetDate()}},
 		func(jsonRaw []byte) (interface{}, error) {
 			var eventCollection pb.EventCollection
 			err := proto.Unmarshal(jsonRaw, &eventCollection)
@@ -55,12 +87,48 @@ func Collection(
 		return nil, err
 	}
 
-	resp := &pb.EventCollectionResponse{}
+	resp := &pb.EventCollectionResponse{
+		EventCollection: &pb.EventCollection{
+			Events:         []*pb.EventCollection_Event{},
+			ProvenanceInfo: map[string]*pb.EventCollection_ProvenanceInfo{},
+		},
+	}
 
 	// Go through (ordered) import groups one by one, stop when data is found.
 	for _, btData := range btDataList {
-		for _, row := range btData {
-			resp.EventCollection = row.Data.(*pb.EventCollection)
+		if len(btData) > 0 {
+			// Each row represents events from a sub-place. Merge them together.
+			for _, row := range btData {
+				data := row.Data.(*pb.EventCollection)
+				for _, event := range data.Events {
+					// TODO: abstract out for all event type.
+					if in.GetEventType() == "FireEvent" {
+						skip := false
+						for prop, vals := range event.GetPropVals() {
+							if prop == "area" {
+								areaStr := strings.TrimPrefix(vals.Vals[0], "SquareKilometer")
+								if area, err := strconv.ParseFloat(areaStr, 32); err == nil {
+									if area < fireEventAreaLimit {
+										skip = true
+										break
+									}
+								}
+							}
+						}
+						if skip {
+							continue
+						}
+					}
+					resp.EventCollection.Events = append(
+						resp.EventCollection.Events,
+						event,
+					)
+				}
+
+				for provId, info := range data.ProvenanceInfo {
+					resp.EventCollection.ProvenanceInfo[provId] = info
+				}
+			}
 			break
 		}
 	}

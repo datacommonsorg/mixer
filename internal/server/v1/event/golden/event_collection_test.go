@@ -35,22 +35,39 @@ func TestEventCollection(t *testing.T) {
 
 	testSuite := func(mixer pb.MixerClient, latencyTest bool) {
 		for _, c := range []struct {
-			eventType         string
-			affectedPlaceDcid string
-			date              string
-			goldenFile        string
+			eventType          string
+			affectedPlaceDcid  string
+			date               string
+			fireEventAreaLimit float64
+			goldenFile         string
 		}{
 			{
 				"EarthquakeEvent",
 				"geoId/06",
 				"2020-01",
+				0,
 				"EarthquakeEvent_CA_202001.json",
+			},
+			{
+				"EarthquakeEvent",
+				"Earth",
+				"2020-01",
+				0,
+				"EarthquakeEvent_Earth_202001.json",
+			},
+			{
+				"FireEvent",
+				"geoId/06",
+				"2022-10",
+				5,
+				"FireEvent_CA_202210.json",
 			},
 		} {
 			resp, err := mixer.EventCollection(ctx, &pb.EventCollectionRequest{
-				EventType:         c.eventType,
-				AffectedPlaceDcid: c.affectedPlaceDcid,
-				Date:              c.date,
+				EventType:          c.eventType,
+				AffectedPlaceDcid:  c.affectedPlaceDcid,
+				Date:               c.date,
+				FireEventAreaLimit: c.fireEventAreaLimit,
 			})
 			if err != nil {
 				t.Errorf("could not run EventCollection: %s", err)
@@ -80,7 +97,7 @@ func TestEventCollection(t *testing.T) {
 	}
 	if err := test.TestDriver(
 		"EventCollection",
-		&test.TestOption{UseMemdb: true},
+		&test.TestOption{},
 		testSuite,
 	); err != nil {
 		t.Errorf("TestDriver() = %s", err)
