@@ -84,10 +84,15 @@ func Collection(
 	// Merge all the affected places in the final result.
 	affectedPlaces := []string{}
 	if _, ok := noDataPlaces[in.GetAffectedPlaceDcid()]; ok {
+		nodeProp := "Country/typeOf"
+		// Fetch places within continents
+		if in.GetAffectedPlaceDcid() != "Earth" {
+			nodeProp = in.GetAffectedPlaceDcid() + "/containedInPlace"
+		}
 		resp, err := propertyvalues.PropertyValues(
 			ctx,
 			&pb.PropertyValuesRequest{
-				NodeProperty: "Country/typeOf",
+				NodeProperty: nodeProp,
 				Direction:    util.DirectionIn,
 			},
 			store,
