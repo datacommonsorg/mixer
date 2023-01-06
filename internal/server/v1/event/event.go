@@ -30,7 +30,26 @@ import (
 	"google.golang.org/protobuf/proto"
 )
 
-const defaultFireEventAreaLimit = 10.0 // SquareKilometer
+type filterSpec struct {
+	prop  string
+	unit  string
+	limit float64
+}
+
+func keepEvent(event *pb.EventCollection_Event, spec filterSpec) bool {
+	for prop, vals := range event.GetPropVals() {
+		if prop == spec.prop {
+			valStr := strings.TrimPrefix(vals.Vals[0], spec.unit)
+			if v, err := strconv.ParseFloat(valStr, 64); err == nil {
+				return v > spec.limit
+			}
+			// Can not convert the value, keep.
+			return true
+		}
+	}
+	// No prop found, keep event
+	return true
+}
 
 // Collection implements API for Mixer.EventCollection.
 func Collection(
@@ -44,10 +63,9 @@ func Collection(
 	if !util.CheckValidDCIDs([]string{in.GetAffectedPlaceDcid()}) {
 		return nil, status.Errorf(codes.InvalidArgument, "Invalid DCID")
 	}
-	fireEventAreaLimit := defaultFireEventAreaLimit
-	if in.GetFireEventAreaLimit() > 0 {
-		fireEventAreaLimit = in.GetFireEventAreaLimit()
-	}
+	filterProp := in.GetFilterProp()
+	filterLimit := in.GetFilterLimit()
+	filterUnit := in.GetFilterUnit()
 
 	// Merge all the affected places in the final result.
 	affectedPlaces := []string{}
@@ -96,43 +114,33 @@ func Collection(
 
 	// Go through (ordered) import groups one by one, stop when data is found.
 	for _, btData := range btDataList {
-		if len(btData) > 0 {
-			// Each row represents events from a sub-place. Merge them together.
-			for _, row := range btData {
-				data := row.Data.(*pb.EventCollection)
-				for _, event := range data.Events {
-					// TODO: abstract out for all event type.
-					if in.GetEventType() == "FireEvent" {
-						skip := false
-						for prop, vals := range event.GetPropVals() {
-							if prop == "area" {
-								areaStr := strings.TrimPrefix(vals.Vals[0], "SquareKilometer")
-								if area, err := strconv.ParseFloat(areaStr, 32); err == nil {
-									if area < fireEventAreaLimit {
-										skip = true
-										break
-									}
-								}
-							}
-						}
-						if skip {
-							continue
-						}
-					}
-					resp.EventCollection.Events = append(
-						resp.EventCollection.Events,
-						event,
-					)
-				}
-
-				for provId, info := range data.ProvenanceInfo {
-					resp.EventCollection.ProvenanceInfo[provId] = info
-				}
-			}
-			break
+		if len(btData) == 0 {
+			continue
 		}
+		// Each row represents events from a sub-place. Merge them together.
+		for _, row := range btData {
+			data := row.Data.(*pb.EventCollection)
+			for _, event := range data.Events {
+				if filterProp != "" {
+					if !keepEvent(event, filterSpec{
+						prop:  filterProp,
+						unit:  filterUnit,
+						limit: filterLimit,
+					}) {
+						continue
+					}
+				}
+				resp.EventCollection.Events = append(
+					resp.EventCollection.Events,
+					event,
+				)
+			}
+			for provId, info := range data.ProvenanceInfo {
+				resp.EventCollection.ProvenanceInfo[provId] = info
+			}
+		}
+		break
 	}
-
 	return resp, nil
 }
 

@@ -67,7 +67,11 @@ message EventCollectionRequest {
   // - discoveryDate
   // - occurrenceTime
   string date = 3;
-  double fire_event_area_limit = 4;
+  // The property used for filtering
+  string filter_prop = 4;
+  // Event is not returned if value below the limit
+  double filter_limit = 5;
+  string filter_unit = 6;
 }
 
 message EventCollectionResponse {
