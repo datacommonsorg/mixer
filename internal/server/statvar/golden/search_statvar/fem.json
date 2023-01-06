@@ -18303,6 +18303,10 @@
       "name": "Student With Gender = Female, Race = American Indian or Alaska Native, School Grade Level",
       "statVars": [
         {
+          "name": "Count of Student: Female, American Indian or Alaska Native, Adult Education",
+          "dcid": "Count_Student_Female_AmericanIndianOrAlaskaNative_AdultEducation"
+        },
+        {
           "name": "Count of Student: Female, American Indian or Alaska Native, HighSchool",
           "dcid": "Count_Student_Female_AmericanIndianOrAlaskaNative_HighSchool"
         },
@@ -18337,6 +18341,10 @@
         {
           "name": "Count of Student: Female, American Indian or Alaska Native, School Grade 12",
           "dcid": "Count_Student_Female_AmericanIndianOrAlaskaNative_SchoolGrade12"
+        },
+        {
+          "name": "Count of Student: Female, American Indian or Alaska Native, School Grade 13",
+          "dcid": "Count_Student_Female_AmericanIndianOrAlaskaNative_SchoolGrade13"
         },
         {
           "name": "Count of Student: Female, American Indian or Alaska Native, School Grade 2",
@@ -18381,6 +18389,10 @@
       "name": "Student With Gender = Female, Race = Asian, School Grade Level",
       "statVars": [
         {
+          "name": "Count of Student: Female, Asian, Adult Education",
+          "dcid": "Count_Student_Female_Asian_AdultEducation"
+        },
+        {
           "name": "Count of Student: Female, Asian, HighSchool",
           "dcid": "Count_Student_Female_Asian_HighSchool"
         },
@@ -18415,6 +18427,10 @@
         {
           "name": "Count of Student: Female, Asian, School Grade 12",
           "dcid": "Count_Student_Female_Asian_SchoolGrade12"
+        },
+        {
+          "name": "Count of Student: Female, Asian, School Grade 13",
+          "dcid": "Count_Student_Female_Asian_SchoolGrade13"
         },
         {
           "name": "Count of Student: Female, Asian, School Grade 2",
@@ -18459,6 +18475,10 @@
       "name": "Student With Gender = Female, Race = Black, School Grade Level",
       "statVars": [
         {
+          "name": "Count of Student: Female, Black, Adult Education",
+          "dcid": "Count_Student_Female_Black_AdultEducation"
+        },
+        {
           "name": "Count of Student: Female, Black, HighSchool",
           "dcid": "Count_Student_Female_Black_HighSchool"
         },
@@ -18493,6 +18513,10 @@
         {
           "name": "Count of Student: Female, Black, School Grade 12",
           "dcid": "Count_Student_Female_Black_SchoolGrade12"
+        },
+        {
+          "name": "Count of Student: Female, Black, School Grade 13",
+          "dcid": "Count_Student_Female_Black_SchoolGrade13"
         },
         {
           "name": "Count of Student: Female, Black, School Grade 2",
@@ -18537,6 +18561,10 @@
       "name": "Student With Gender = Female, Race = Hawaiian Native or Pacific Islander, School Grade Level",
       "statVars": [
         {
+          "name": "Count of Student: Female, Hawaiian Native or Pacific Islander, Adult Education",
+          "dcid": "Count_Student_Female_HawaiianNativeOrPacificIslander_AdultEducation"
+        },
+        {
           "name": "Count of Student: Female, Hawaiian Native or Pacific Islander, HighSchool",
           "dcid": "Count_Student_Female_HawaiianNativeOrPacificIslander_HighSchool"
         },
@@ -18571,6 +18599,10 @@
         {
           "name": "Count of Student: Female, Hawaiian Native or Pacific Islander, School Grade 12",
           "dcid": "Count_Student_Female_HawaiianNativeOrPacificIslander_SchoolGrade12"
+        },
+        {
+          "name": "Count of Student: Female, Hawaiian Native or Pacific Islander, School Grade 13",
+          "dcid": "Count_Student_Female_HawaiianNativeOrPacificIslander_SchoolGrade13"
         },
         {
           "name": "Count of Student: Female, Hawaiian Native or Pacific Islander, School Grade 2",
@@ -18615,6 +18647,10 @@
       "name": "Student With Gender = Female, Race = Hispanic or Latino, School Grade Level",
       "statVars": [
         {
+          "name": "Count of Student: Female, Hispanic or Latino, Adult Education",
+          "dcid": "Count_Student_Female_HispanicOrLatino_AdultEducation"
+        },
+        {
           "name": "Count of Student: Female, Hispanic or Latino, HighSchool",
           "dcid": "Count_Student_Female_HispanicOrLatino_HighSchool"
         },
@@ -18649,6 +18685,10 @@
         {
           "name": "Count of Student: Female, Hispanic or Latino, School Grade 12",
           "dcid": "Count_Student_Female_HispanicOrLatino_SchoolGrade12"
+        },
+        {
+          "name": "Count of Student: Female, Hispanic or Latino, School Grade 13",
+          "dcid": "Count_Student_Female_HispanicOrLatino_SchoolGrade13"
         },
         {
           "name": "Count of Student: Female, Hispanic or Latino, School Grade 2",
@@ -18693,6 +18733,10 @@
       "name": "Student With Gender = Female, Race = Two or More Races, School Grade Level",
       "statVars": [
         {
+          "name": "Count of Student: Female, Two or More Races, Adult Education",
+          "dcid": "Count_Student_Female_TwoOrMoreRaces_AdultEducation"
+        },
+        {
           "name": "Count of Student: Female, Two or More Races, HighSchool",
           "dcid": "Count_Student_Female_TwoOrMoreRaces_HighSchool"
         },
@@ -18727,6 +18771,10 @@
         {
           "name": "Count of Student: Female, Two or More Races, School Grade 12",
           "dcid": "Count_Student_Female_TwoOrMoreRaces_SchoolGrade12"
+        },
+        {
+          "name": "Count of Student: Female, Two or More Races, School Grade 13",
+          "dcid": "Count_Student_Female_TwoOrMoreRaces_SchoolGrade13"
         },
         {
           "name": "Count of Student: Female, Two or More Races, School Grade 2",
@@ -18771,6 +18819,10 @@
       "name": "Student With Gender = Female, Race = White, School Grade Level",
       "statVars": [
         {
+          "name": "Count of Student: Female, White, Adult Education",
+          "dcid": "Count_Student_Female_White_AdultEducation"
+        },
+        {
           "name": "Count of Student: Female, White, HighSchool",
           "dcid": "Count_Student_Female_White_HighSchool"
         },
@@ -18805,6 +18857,10 @@
         {
           "name": "Count of Student: Female, White, School Grade 12",
           "dcid": "Count_Student_Female_White_SchoolGrade12"
+        },
+        {
+          "name": "Count of Student: Female, White, School Grade 13",
+          "dcid": "Count_Student_Female_White_SchoolGrade13"
         },
         {
           "name": "Count of Student: Female, White, School Grade 2",

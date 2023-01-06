@@ -210,9 +210,9 @@
           "entity": "geoId/0649670",
           "points_by_facet": [
             {
-              "date": "2022-11",
-              "value": 940.733829,
-              "facet": "4026503442"
+              "date": "2021",
+              "value": 1497,
+              "facet": "2978659163"
             }
           ]
         }
@@ -231,8 +231,8 @@
           "entity": "country/USA",
           "points_by_facet": [
             {
-              "date": "2023-01-01",
-              "value": 100483164,
+              "date": "2023-01-03",
+              "value": 100570281,
               "facet": "2232540893"
             }
           ]
@@ -241,8 +241,8 @@
           "entity": "geoId/06",
           "points_by_facet": [
             {
-              "date": "2023-01-01",
-              "value": 11826523,
+              "date": "2023-01-03",
+              "value": 11833426,
               "facet": "2232540893"
             }
           ]
@@ -400,21 +400,9 @@
       "provenance_url": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
       "observation_period": "P1Y"
     },
-    "4026503442": {
-      "import_name": "BLS_LAUS_Imputed",
-      "provenance_url": "https://www.bls.gov/lau/",
-      "measurement_method": "BLSSeasonallyUnadjusted",
-      "observation_period": "P1M"
-    },
     "4277990144": {
       "import_name": "FBIGovCrime",
       "provenance_url": "http://www.fbi.gov/services/cjis/ucr",
-      "observation_period": "P1Y"
-    },
-    "706575990": {
-      "import_name": "BLS_LAUS_Imputed",
-      "provenance_url": "https://www.bls.gov/lau/",
-      "measurement_method": "BLSSeasonallyUnadjusted",
       "observation_period": "P1Y"
     },
     "738965619": {

@@ -802,6 +802,258 @@
         "CensusZipCodeTabulationArea"
       ],
       "provenanceId": "dc/89fk9x3"
+    },
+    {
+      "subjectId": "nces/630001600058",
+      "subjectName": "Ramey School",
+      "subjectTypes": [
+        "PublicSchool"
+      ],
+      "predicate": "containedInPlace",
+      "objectId": "zip/00603",
+      "objectName": "00603",
+      "objectTypes": [
+        "CensusZipCodeTabulationArea"
+      ],
+      "provenanceId": "dc/b77qvt2"
+    },
+    {
+      "subjectId": "nces/630002900058",
+      "subjectName": "Ramey School",
+      "subjectTypes": [
+        "PublicSchool"
+      ],
+      "predicate": "containedInPlace",
+      "objectId": "zip/00603",
+      "objectName": "00603",
+      "objectTypes": [
+        "CensusZipCodeTabulationArea"
+      ],
+      "provenanceId": "dc/b77qvt2"
+    },
+    {
+      "subjectId": "nces/720003000726",
+      "subjectName": "Carmen Gomez Tejera",
+      "subjectTypes": [
+        "PublicSchool"
+      ],
+      "predicate": "containedInPlace",
+      "objectId": "zip/00603",
+      "objectName": "00603",
+      "objectTypes": [
+        "CensusZipCodeTabulationArea"
+      ],
+      "provenanceId": "dc/b77qvt2"
+    },
+    {
+      "subjectId": "nces/720003000727",
+      "subjectName": "Eladio J. Vega",
+      "subjectTypes": [
+        "PublicSchool"
+      ],
+      "predicate": "containedInPlace",
+      "objectId": "zip/00603",
+      "objectName": "00603",
+      "objectTypes": [
+        "CensusZipCodeTabulationArea"
+      ],
+      "provenanceId": "dc/b77qvt2"
+    },
+    {
+      "subjectId": "nces/720003000729",
+      "subjectName": "Dr. Rafael Del Valle",
+      "subjectTypes": [
+        "PublicSchool"
+      ],
+      "predicate": "containedInPlace",
+      "objectId": "zip/00603",
+      "objectName": "00603",
+      "objectTypes": [
+        "CensusZipCodeTabulationArea"
+      ],
+      "provenanceId": "dc/b77qvt2"
+    },
+    {
+      "subjectId": "nces/720003000730",
+      "subjectName": "Jose De Diego",
+      "subjectTypes": [
+        "PublicSchool"
+      ],
+      "predicate": "containedInPlace",
+      "objectId": "zip/00603",
+      "objectName": "00603",
+      "objectTypes": [
+        "CensusZipCodeTabulationArea"
+      ],
+      "provenanceId": "dc/b77qvt2"
+    },
+    {
+      "subjectId": "nces/720003000733",
+      "subjectName": "Rafael Cordero",
+      "subjectTypes": [
+        "PublicSchool"
+      ],
+      "predicate": "containedInPlace",
+      "objectId": "zip/00603",
+      "objectName": "00603",
+      "objectTypes": [
+        "CensusZipCodeTabulationArea"
+      ],
+      "provenanceId": "dc/b77qvt2"
+    },
+    {
+      "subjectId": "nces/720003000735",
+      "subjectName": "Lucia Cubero",
+      "subjectTypes": [
+        "PublicSchool"
+      ],
+      "predicate": "containedInPlace",
+      "objectId": "zip/00603",
+      "objectName": "00603",
+      "objectTypes": [
+        "CensusZipCodeTabulationArea"
+      ],
+      "provenanceId": "dc/b77qvt2"
+    },
+    {
+      "subjectId": "nces/720003000736",
+      "subjectName": "Manuel Corchado",
+      "subjectTypes": [
+        "PublicSchool"
+      ],
+      "predicate": "containedInPlace",
+      "objectId": "zip/00603",
+      "objectName": "00603",
+      "objectTypes": [
+        "CensusZipCodeTabulationArea"
+      ],
+      "provenanceId": "dc/b77qvt2"
+    },
+    {
+      "subjectId": "nces/720003000737",
+      "subjectName": "Jose Acevedo Alvarez",
+      "subjectTypes": [
+        "PublicSchool"
+      ],
+      "predicate": "containedInPlace",
+      "objectId": "zip/00603",
+      "objectName": "00603",
+      "objectTypes": [
+        "CensusZipCodeTabulationArea"
+      ],
+      "provenanceId": "dc/b77qvt2"
+    },
+    {
+      "subjectId": "nces/720003000740",
+      "subjectName": "Barriada Caban",
+      "subjectTypes": [
+        "PublicSchool"
+      ],
+      "predicate": "containedInPlace",
+      "objectId": "zip/00603",
+      "objectName": "00603",
+      "objectTypes": [
+        "CensusZipCodeTabulationArea"
+      ],
+      "provenanceId": "dc/b77qvt2"
+    },
+    {
+      "subjectId": "nces/720003000741",
+      "subjectName": "Homero Rivera Sola",
+      "subjectTypes": [
+        "PublicSchool"
+      ],
+      "predicate": "containedInPlace",
+      "objectId": "zip/00603",
+      "objectName": "00603",
+      "objectTypes": [
+        "CensusZipCodeTabulationArea"
+      ],
+      "provenanceId": "dc/b77qvt2"
+    },
+    {
+      "subjectId": "nces/720003000743",
+      "subjectName": "Rafael Fabian",
+      "subjectTypes": [
+        "PublicSchool"
+      ],
+      "predicate": "containedInPlace",
+      "objectId": "zip/00603",
+      "objectName": "00603",
+      "objectTypes": [
+        "CensusZipCodeTabulationArea"
+      ],
+      "provenanceId": "dc/b77qvt2"
+    },
+    {
+      "subjectId": "nces/720003000747",
+      "subjectName": "Luis Munoz Rivera",
+      "subjectTypes": [
+        "PublicSchool"
+      ],
+      "predicate": "containedInPlace",
+      "objectId": "zip/00603",
+      "objectName": "00603",
+      "objectTypes": [
+        "CensusZipCodeTabulationArea"
+      ],
+      "provenanceId": "dc/b77qvt2"
+    },
+    {
+      "subjectId": "nces/720003000748",
+      "subjectName": "Antonio Badillo Hernandez",
+      "subjectTypes": [
+        "PublicSchool"
+      ],
+      "predicate": "containedInPlace",
+      "objectId": "zip/00603",
+      "objectName": "00603",
+      "objectTypes": [
+        "CensusZipCodeTabulationArea"
+      ],
+      "provenanceId": "dc/b77qvt2"
+    },
+    {
+      "subjectId": "nces/720003000749",
+      "subjectName": "Su Conchita Iguartua De Suarez (Su Adams)",
+      "subjectTypes": [
+        "PublicSchool"
+      ],
+      "predicate": "containedInPlace",
+      "objectId": "zip/00603",
+      "objectName": "00603",
+      "objectTypes": [
+        "CensusZipCodeTabulationArea"
+      ],
+      "provenanceId": "dc/b77qvt2"
+    },
+    {
+      "subjectId": "nces/720003001984",
+      "subjectName": "Benito Cerezo Marquez",
+      "subjectTypes": [
+        "PublicSchool"
+      ],
+      "predicate": "containedInPlace",
+      "objectId": "zip/00603",
+      "objectName": "00603",
+      "objectTypes": [
+        "CensusZipCodeTabulationArea"
+      ],
+      "provenanceId": "dc/b77qvt2"
+    },
+    {
+      "subjectId": "nces/720003001985",
+      "subjectName": "Ester Feliciano Mendoza",
+      "subjectTypes": [
+        "PublicSchool"
+      ],
+      "predicate": "containedInPlace",
+      "objectId": "zip/00603",
+      "objectName": "00603",
+      "objectTypes": [
+        "CensusZipCodeTabulationArea"
+      ],
+      "provenanceId": "dc/b77qvt2"
     }
   ]
 }
