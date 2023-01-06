@@ -48,12 +48,12 @@ func BulkObservationExistence(
 	// Initialize result with "false" (non-existence).
 	// The BT existence cache only returns entry when data exist.
 	result := &pb.BulkObservationExistenceResponse{
-		ByVariable: map[string]*pb.ExistenceByEntity{},
+		Variable: map[string]*pb.ExistenceByEntity{},
 	}
 	for _, v := range variables {
-		result.ByVariable[v] = &pb.ExistenceByEntity{ByEntity: map[string]bool{}}
+		result.Variable[v] = &pb.ExistenceByEntity{Entity: map[string]bool{}}
 		for _, e := range entities {
-			result.ByVariable[v].ByEntity[e] = false
+			result.Variable[v].Entity[e] = false
 		}
 	}
 
@@ -77,7 +77,7 @@ func BulkObservationExistence(
 		for _, row := range btData {
 			e := row.Parts[0]
 			v := row.Parts[1]
-			result.ByVariable[v].ByEntity[e] = true
+			result.Variable[v].Entity[e] = true
 		}
 	}
 	return result, nil

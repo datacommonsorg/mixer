@@ -1,21 +1,21 @@
 {
-  "by_variable": {
+  "variable": {
     "Count_Person": {
-      "by_entity": {
+      "entity": {
         "country/CAN": true,
         "geoId/06": true,
         "geoId/0647766": true
       }
     },
     "GenderIncomeInequality_Person_15OrMoreYears_WithIncome": {
-      "by_entity": {
+      "entity": {
         "country/CAN": false,
         "geoId/06": true,
         "geoId/0647766": true
       }
     },
     "dummy": {
-      "by_entity": {
+      "entity": {
         "country/CAN": false,
         "geoId/06": false,
         "geoId/0647766": false

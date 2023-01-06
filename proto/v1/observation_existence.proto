@@ -19,7 +19,7 @@ package datacommons.v1;
 message ExistenceByEntity {
   // Key is entity DCID, and value specifies whether observation exists for this
   // entity.
-  map<string, bool> by_entity = 1;
+  map<string, bool> entity = 1;
 }
 
 message BulkObservationExistenceRequest {
@@ -31,5 +31,5 @@ message BulkObservationExistenceRequest {
 
 message BulkObservationExistenceResponse {
   // Key is variable DCID
-  map<string, ExistenceByEntity> by_variable = 2;
+  map<string, ExistenceByEntity> variable = 2;
 }
