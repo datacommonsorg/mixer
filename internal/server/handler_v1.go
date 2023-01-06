@@ -22,6 +22,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/v1/event"
 	"github.com/datacommonsorg/mixer/internal/server/v1/info"
 	"github.com/datacommonsorg/mixer/internal/server/v1/observationdates"
+	"github.com/datacommonsorg/mixer/internal/server/v1/observationexistence"
 	"github.com/datacommonsorg/mixer/internal/server/v1/observations"
 	"github.com/datacommonsorg/mixer/internal/server/v1/page"
 	"github.com/datacommonsorg/mixer/internal/server/v1/properties"
@@ -197,6 +198,13 @@ func (s *Server) BulkObservationDatesLinked(
 	ctx context.Context, in *pb.BulkObservationDatesLinkedRequest,
 ) (*pb.BulkObservationDatesLinkedResponse, error) {
 	return observationdates.BulkObservationDatesLinked(ctx, in, s.store)
+}
+
+// BulkObservationExistence implements API for mixer.BulkObservationExistence.
+func (s *Server) BulkObservationExistence(
+	ctx context.Context, in *pb.BulkObservationExistenceRequest,
+) (*pb.BulkObservationExistenceResponse, error) {
+	return observationexistence.BulkObservationExistence(ctx, in, s.store)
 }
 
 // BioPage implements API for mixer.BioPage.

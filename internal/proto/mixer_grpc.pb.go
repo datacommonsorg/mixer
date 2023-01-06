@@ -109,6 +109,7 @@ type MixerClient interface {
 	BulkObservationsSeriesLinked(ctx context.Context, in *BulkObservationsSeriesLinkedRequest, opts ...grpc.CallOption) (*BulkObservationsSeriesResponse, error)
 	DerivedObservationsSeries(ctx context.Context, in *DerivedObservationsSeriesRequest, opts ...grpc.CallOption) (*DerivedObservationsSeriesResponse, error)
 	BulkObservationDatesLinked(ctx context.Context, in *BulkObservationDatesLinkedRequest, opts ...grpc.CallOption) (*BulkObservationDatesLinkedResponse, error)
+	BulkObservationExistence(ctx context.Context, in *BulkObservationExistenceRequest, opts ...grpc.CallOption) (*BulkObservationExistenceResponse, error)
 	BioPage(ctx context.Context, in *BioPageRequest, opts ...grpc.CallOption) (*GraphNodes, error)
 	PlacePage(ctx context.Context, in *PlacePageRequest, opts ...grpc.CallOption) (*PlacePageResponse, error)
 	VariableAncestors(ctx context.Context, in *VariableAncestorsRequest, opts ...grpc.CallOption) (*VariableAncestorsResponse, error)
@@ -585,6 +586,15 @@ func (c *mixerClient) BulkObservationDatesLinked(ctx context.Context, in *BulkOb
 	return out, nil
 }
 
+func (c *mixerClient) BulkObservationExistence(ctx context.Context, in *BulkObservationExistenceRequest, opts ...grpc.CallOption) (*BulkObservationExistenceResponse, error) {
+	out := new(BulkObservationExistenceResponse)
+	err := c.cc.Invoke(ctx, "/datacommons.Mixer/BulkObservationExistence", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *mixerClient) BioPage(ctx context.Context, in *BioPageRequest, opts ...grpc.CallOption) (*GraphNodes, error) {
 	out := new(GraphNodes)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/BioPage", in, out, opts...)
@@ -766,6 +776,7 @@ type MixerServer interface {
 	BulkObservationsSeriesLinked(context.Context, *BulkObservationsSeriesLinkedRequest) (*BulkObservationsSeriesResponse, error)
 	DerivedObservationsSeries(context.Context, *DerivedObservationsSeriesRequest) (*DerivedObservationsSeriesResponse, error)
 	BulkObservationDatesLinked(context.Context, *BulkObservationDatesLinkedRequest) (*BulkObservationDatesLinkedResponse, error)
+	BulkObservationExistence(context.Context, *BulkObservationExistenceRequest) (*BulkObservationExistenceResponse, error)
 	BioPage(context.Context, *BioPageRequest) (*GraphNodes, error)
 	PlacePage(context.Context, *PlacePageRequest) (*PlacePageResponse, error)
 	VariableAncestors(context.Context, *VariableAncestorsRequest) (*VariableAncestorsResponse, error)
@@ -943,6 +954,9 @@ func (UnimplementedMixerServer) DerivedObservationsSeries(context.Context, *Deri
 }
 func (UnimplementedMixerServer) BulkObservationDatesLinked(context.Context, *BulkObservationDatesLinkedRequest) (*BulkObservationDatesLinkedResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BulkObservationDatesLinked not implemented")
+}
+func (UnimplementedMixerServer) BulkObservationExistence(context.Context, *BulkObservationExistenceRequest) (*BulkObservationExistenceResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method BulkObservationExistence not implemented")
 }
 func (UnimplementedMixerServer) BioPage(context.Context, *BioPageRequest) (*GraphNodes, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BioPage not implemented")
@@ -1868,6 +1882,24 @@ func _Mixer_BulkObservationDatesLinked_Handler(srv interface{}, ctx context.Cont
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Mixer_BulkObservationExistence_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(BulkObservationExistenceRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MixerServer).BulkObservationExistence(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/datacommons.Mixer/BulkObservationExistence",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MixerServer).BulkObservationExistence(ctx, req.(*BulkObservationExistenceRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _Mixer_BioPage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(BioPageRequest)
 	if err := dec(in); err != nil {
@@ -2250,6 +2282,10 @@ var Mixer_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "BulkObservationDatesLinked",
 			Handler:    _Mixer_BulkObservationDatesLinked_Handler,
+		},
+		{
+			MethodName: "BulkObservationExistence",
+			Handler:    _Mixer_BulkObservationExistence_Handler,
 		},
 		{
 			MethodName: "BioPage",
