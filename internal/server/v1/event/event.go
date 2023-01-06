@@ -135,8 +135,8 @@ func Collection(
 					event,
 				)
 			}
-			for provId, info := range data.ProvenanceInfo {
-				resp.EventCollection.ProvenanceInfo[provId] = info
+			for provID, info := range data.ProvenanceInfo {
+				resp.EventCollection.ProvenanceInfo[provID] = info
 			}
 		}
 		break
