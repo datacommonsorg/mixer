@@ -69,9 +69,9 @@ message EventCollectionRequest {
   string date = 3;
   // The property used for filtering
   string filter_prop = 4;
-  // Event is not returned if value below the limit
-  double filter_limit = 5;
-  string filter_unit = 6;
+  string filter_unit = 5;
+  double filter_upper_limit = 6;
+  double filter_lower_limit = 7;
 }
 
 message EventCollectionResponse {

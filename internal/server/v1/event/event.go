@@ -30,21 +30,34 @@ import (
 	"google.golang.org/protobuf/proto"
 )
 
+var noDataPlaces = map[string]struct{}{
+	"Earth":        {},
+	"africa":       {},
+	"antarctica":   {},
+	"asia":         {},
+	"europe":       {},
+	"northamerica": {},
+	"oceania":      {},
+	"southamerica": {},
+}
+
 type filterSpec struct {
-	prop  string
-	unit  string
-	limit float64
+	prop       string
+	unit       string
+	lowerLimit float64
+	upperLimit float64
 }
 
 func keepEvent(event *pb.EventCollection_Event, spec filterSpec) bool {
 	for prop, vals := range event.GetPropVals() {
 		if prop == spec.prop {
 			valStr := strings.TrimPrefix(vals.Vals[0], spec.unit)
-			if v, err := strconv.ParseFloat(valStr, 64); err == nil {
-				return v >= spec.limit
+			v, err := strconv.ParseFloat(valStr, 64)
+			if err != nil {
+				// Can not convert the value, keep.
+				return true
 			}
-			// Can not convert the value, keep.
-			return true
+			return v >= spec.lowerLimit && v <= spec.upperLimit
 		}
 	}
 	// No prop found, keep event
@@ -64,12 +77,13 @@ func Collection(
 		return nil, status.Errorf(codes.InvalidArgument, "Invalid DCID")
 	}
 	filterProp := in.GetFilterProp()
-	filterLimit := in.GetFilterLimit()
+	filterLowerLimit := in.GetFilterLowerLimit()
+	filterUpperLimit := in.GetFilterUpperLimit()
 	filterUnit := in.GetFilterUnit()
 
 	// Merge all the affected places in the final result.
 	affectedPlaces := []string{}
-	if in.GetAffectedPlaceDcid() == "Earth" {
+	if _, ok := noDataPlaces[in.GetAffectedPlaceDcid()]; ok {
 		resp, err := propertyvalues.PropertyValues(
 			ctx,
 			&pb.PropertyValuesRequest{
@@ -123,9 +137,10 @@ func Collection(
 			for _, event := range data.Events {
 				if filterProp != "" {
 					if !keepEvent(event, filterSpec{
-						prop:  filterProp,
-						unit:  filterUnit,
-						limit: filterLimit,
+						prop:       filterProp,
+						unit:       filterUnit,
+						lowerLimit: filterLowerLimit,
+						upperLimit: filterUpperLimit,
 					}) {
 						continue
 					}
@@ -134,8 +149,8 @@ func Collection(
 					resp.EventCollection.Events,
 					event,
 				)
-				proveID := event.ProvenanceId
-				resp.EventCollection.ProvenanceInfo[proveID] = data.ProvenanceInfo[proveID]
+				provID := event.ProvenanceId
+				resp.EventCollection.ProvenanceInfo[provID] = data.ProvenanceInfo[provID]
 			}
 		}
 		break

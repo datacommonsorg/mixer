@@ -39,8 +39,9 @@ func TestEventCollection(t *testing.T) {
 			affectedPlaceDcid string
 			date              string
 			prop              string
-			limit             float64
 			unit              string
+			lowerLimit        float64
+			upperLimit        float64
 			goldenFile        string
 		}{
 			{
@@ -48,8 +49,9 @@ func TestEventCollection(t *testing.T) {
 				"geoId/06",
 				"2020-01",
 				"",
-				0,
 				"",
+				0,
+				0,
 				"EarthquakeEvent_CA_202001.json",
 			},
 			{
@@ -57,8 +59,9 @@ func TestEventCollection(t *testing.T) {
 				"Earth",
 				"2020-01",
 				"",
-				0,
 				"",
+				0,
+				0,
 				"EarthquakeEvent_Earth_202001.json",
 			},
 			{
@@ -66,8 +69,9 @@ func TestEventCollection(t *testing.T) {
 				"geoId/06",
 				"2022-10",
 				"area",
-				5,
 				"SquareKilometer",
+				5,
+				8,
 				"FireEvent_CA_202210.json",
 			},
 		} {
@@ -76,7 +80,8 @@ func TestEventCollection(t *testing.T) {
 				AffectedPlaceDcid: c.affectedPlaceDcid,
 				Date:              c.date,
 				FilterProp:        c.prop,
-				FilterLimit:       c.limit,
+				FilterLowerLimit:  c.lowerLimit,
+				FilterUpperLimit:  c.upperLimit,
 				FilterUnit:        c.unit,
 			})
 			if err != nil {
