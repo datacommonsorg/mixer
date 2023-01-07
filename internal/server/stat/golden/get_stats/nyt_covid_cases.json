@@ -1079,7 +1079,8 @@
       "2022-12-31": 100479104,
       "2023-01-01": 100483164,
       "2023-01-02": 100494057,
-      "2023-01-03": 100570281
+      "2023-01-03": 100570281,
+      "2023-01-04": 100777672
     },
     "placeName": "United States",
     "provenanceUrl": "https://www.nytimes.com/article/coronavirus-county-data-us.html"
@@ -2160,7 +2161,8 @@
       "2022-12-31": 11826466,
       "2023-01-01": 11826523,
       "2023-01-02": 11826523,
-      "2023-01-03": 11833426
+      "2023-01-03": 11833426,
+      "2023-01-04": 11835660
     },
     "placeName": "California",
     "provenanceUrl": "https://www.nytimes.com/article/coronavirus-county-data-us.html"

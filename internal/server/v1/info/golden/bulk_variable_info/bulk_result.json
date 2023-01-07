@@ -92,7 +92,7 @@
                   "observationPeriod": "P1M"
                 },
                 "earliestDate": "1948-01",
-                "latestDate": "2022-11",
+                "latestDate": "2022-12",
                 "placeTypeSummary": {
                   "Country": {
                     "placeCount": 1,
@@ -108,7 +108,7 @@
                 },
                 "minValue": 2.5,
                 "maxValue": 14.7,
-                "observationCount": 899,
+                "observationCount": 900,
                 "timeSeriesCount": 1
               },
               {
@@ -117,7 +117,7 @@
                   "observationPeriod": "P3M"
                 },
                 "earliestDate": "1948-03",
-                "latestDate": "2022-09",
+                "latestDate": "2022-12",
                 "placeTypeSummary": {
                   "Country": {
                     "placeCount": 1,
@@ -133,11 +133,11 @@
                 },
                 "minValue": 2.6,
                 "maxValue": 13,
-                "observationCount": 299,
+                "observationCount": 300,
                 "timeSeriesCount": 1
               }
             ],
-            "observationCount": 1198,
+            "observationCount": 1200,
             "timeSeriesCount": 2
           },
           "dc/lly3yc1": {
@@ -2625,8 +2625,8 @@
                 "name": "Earth"
               }
             ],
-            "minValue": 2.38712292764477,
-            "maxValue": 5.05647011634277
+            "minValue": 2.29902994764743,
+            "maxValue": 5.33228884884454
           }
         },
         "provenanceSummary": {
@@ -2861,7 +2861,7 @@
                   "measurementMethod": "dcDerivedStat/NYT_COVID19_GitHub"
                 },
                 "earliestDate": "2020-01-22",
-                "latestDate": "2023-01-03",
+                "latestDate": "2023-01-04",
                 "placeTypeSummary": {
                   "City": {
                     "placeCount": 3,
@@ -2934,7 +2934,7 @@
                 },
                 "minValue": -40527,
                 "maxValue": 1433977,
-                "observationCount": 2535355,
+                "observationCount": 2535412,
                 "timeSeriesCount": 3277
               },
               {
@@ -3020,7 +3020,7 @@
                 "timeSeriesCount": 3277
               }
             ],
-            "observationCount": 2622394,
+            "observationCount": 2622451,
             "timeSeriesCount": 6554
           }
         }
