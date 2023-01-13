@@ -44,6 +44,11 @@ func TestEventCollectionDate(t *testing.T) {
 				"geoId/06",
 				"EarthquakeEvent_CA.json",
 			},
+			{
+				"EarthquakeEvent",
+				"Earth",
+				"EarthquakeEvent_Earth.json",
+			},
 		} {
 			resp, err := mixer.EventCollectionDate(ctx, &pb.EventCollectionDateRequest{
 				EventType:         c.eventType,
