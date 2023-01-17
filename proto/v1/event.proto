@@ -34,6 +34,7 @@ message EventCollection {
 
   message Event {
     // Data Commons places associated with the event.
+    // NOTE: All S2Cell places (ID has "s2CellId/" prefix) are excluded.
     repeated string places = 1;
     // Geospatial location of the event.
     repeated GeoLocation geo_locations = 2;
