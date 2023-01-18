@@ -2,94 +2,38 @@
   "eventCollection": {
     "events": [
       {
-        "places": [
-          "s2CellId/0x80834d0000000000",
-          "s2CellId/0x8083530000000000",
-          "s2CellId/0x8083550000000000",
-          "s2CellId/0x8084ab0000000000",
-          "s2CellId/0x8084ad0000000000",
-          "s2CellId/0x8084af0000000000",
-          "s2CellId/0x8084b30000000000",
-          "s2CellId/0x80852b0000000000",
-          "s2CellId/0x809ad50000000000",
-          "s2CellId/0x809b2b0000000000",
-          "s2CellId/0x809b2d0000000000",
-          "s2CellId/0x809b2f0000000000",
-          "s2CellId/0x809b310000000000",
-          "s2CellId/0x809b350000000000",
-          "s2CellId/0x809b370000000000",
-          "s2CellId/0x809b470000000000",
-          "s2CellId/0x809b490000000000",
-          "s2CellId/0x809b4d0000000000",
-          "s2CellId/0x809b4f0000000000",
-          "s2CellId/0x809b510000000000",
-          "s2CellId/0x809b530000000000",
-          "s2CellId/0x809b550000000000",
-          "s2CellId/0x809ca90000000000",
-          "s2CellId/0x809cab0000000000",
-          "s2CellId/0x809cad0000000000"
-        ],
         "geoLocations": [
           {
             "point": {
-              "latitude": 39.17233,
-              "longitude": -121.67394
+              "latitude": 40.78254,
+              "longitude": -120.7644
             }
           }
         ],
         "dates": [
-          "2022-10-04"
+          "2022-10-05"
         ],
         "propVals": {
           "area": {
             "vals": [
-              "SquareKilometer6.164567"
+              "SquareKilometer5.981286"
             ]
           },
           "name": {
             "vals": [
-              "FireEvent that started on 2022-10-04 within Level 10 S2 cell 0x8084ab0000000000"
-            ]
-          }
-        },
-        "dcid": "fireEvent/2022-10-04_0x8084ab0000000000",
-        "provenanceId": "dc/zwd0c53"
-      },
-      {
-        "places": [
-          "s2CellId/0x80ebfd0000000000",
-          "s2CellId/0x80ebff0000000000"
-        ],
-        "geoLocations": [
-          {
-            "point": {
-              "latitude": 34.74321,
-              "longitude": -120.0203
-            }
-          }
-        ],
-        "dates": [
-          "2022-10-10"
-        ],
-        "propVals": {
-          "area": {
-            "vals": [
-              "SquareKilometer5.904613000000001"
+              "FireEvent that started on 2022-10-05 within Level 10 S2 cell 0x54cccf0000000000"
             ]
           },
-          "name": {
+          "observationPeriod": {
             "vals": [
-              "FireEvent that started on 2022-10-10 within Level 10 S2 cell 0x80ebfd0000000000"
+              "P2D"
             ]
           }
         },
-        "dcid": "fireEvent/2022-10-10_0x80ebfd0000000000",
-        "provenanceId": "dc/zwd0c53"
+        "dcid": "fireEvent/2022-10-05_0x54cccf0000000000",
+        "provenanceId": "dc/heq8pk3"
       },
       {
-        "places": [
-          "s2CellId/0x8090950000000000"
-        ],
         "geoLocations": [
           {
             "point": {
@@ -111,47 +55,116 @@
             "vals": [
               "FireEvent that started on 2022-10-17 within Level 10 S2 cell 0x8090950000000000"
             ]
+          },
+          "observationPeriod": {
+            "vals": [
+              "P1D"
+            ]
           }
         },
         "dcid": "fireEvent/2022-10-17_0x8090950000000000",
-        "provenanceId": "dc/zwd0c53"
+        "provenanceId": "dc/heq8pk3"
       },
       {
-        "places": [
-          "s2CellId/0x8092050000000000",
-          "s2CellId/0x8092070000000000",
-          "s2CellId/0x80920f0000000000"
-        ],
         "geoLocations": [
           {
             "point": {
-              "latitude": 36.70288,
-              "longitude": -121.49132
+              "latitude": 40.32975,
+              "longitude": -122.72976
             }
           }
         ],
         "dates": [
-          "2022-10-19"
+          "2022-10-24"
         ],
         "propVals": {
           "area": {
             "vals": [
-              "SquareKilometer5.511344"
+              "SquareKilometer5.945159"
             ]
           },
           "name": {
             "vals": [
-              "FireEvent that started on 2022-10-19 within Level 10 S2 cell 0x80920f0000000000"
+              "FireEvent that started on 2022-10-24 within Level 10 S2 cell 0x54d3230000000000"
+            ]
+          },
+          "observationPeriod": {
+            "vals": [
+              "P3D"
             ]
           }
         },
-        "dcid": "fireEvent/2022-10-19_0x80920f0000000000",
-        "provenanceId": "dc/zwd0c53"
+        "dcid": "fireEvent/2022-10-24_0x54d3230000000000",
+        "provenanceId": "dc/heq8pk3"
+      },
+      {
+        "geoLocations": [
+          {
+            "point": {
+              "latitude": 37.09133,
+              "longitude": -119.27856
+            }
+          }
+        ],
+        "dates": [
+          "2022-10-24"
+        ],
+        "propVals": {
+          "area": {
+            "vals": [
+              "SquareKilometer5.630388"
+            ]
+          },
+          "name": {
+            "vals": [
+              "FireEvent that started on 2022-10-24 within Level 10 S2 cell 0x8095b70000000000"
+            ]
+          },
+          "observationPeriod": {
+            "vals": [
+              "P13D"
+            ]
+          }
+        },
+        "dcid": "fireEvent/2022-10-24_0x8095b70000000000",
+        "provenanceId": "dc/heq8pk3"
+      },
+      {
+        "geoLocations": [
+          {
+            "point": {
+              "latitude": 40.00767,
+              "longitude": -122.58252
+            }
+          }
+        ],
+        "dates": [
+          "2022-10-28"
+        ],
+        "propVals": {
+          "area": {
+            "vals": [
+              "SquareKilometer5.913976"
+            ]
+          },
+          "name": {
+            "vals": [
+              "FireEvent that started on 2022-10-28 within Level 10 S2 cell 0x8082710000000000"
+            ]
+          },
+          "observationPeriod": {
+            "vals": [
+              "P3D"
+            ]
+          }
+        },
+        "dcid": "fireEvent/2022-10-28_0x8082710000000000",
+        "provenanceId": "dc/heq8pk3"
       }
     ],
     "provenanceInfo": {
-      "dc/zwd0c53": {
-        "importName": "NASA_VIIRSActiveFiresEvents_Sample",
+      "dc/heq8pk3": {
+        "importName": "NASA_VIIRSActiveFiresEvents",
         "provenanceUrl": "https://www.earthdata.nasa.gov/learn/find-data/near-real-time/firms/vnp14imgtdlnrt",
         "domain": "nasa.gov"
       }

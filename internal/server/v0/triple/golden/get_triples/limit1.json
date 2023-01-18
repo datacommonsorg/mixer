@@ -21,7 +21,7 @@
         "Provenance"
       ],
       "predicate": "importTime",
-      "objectValue": "1673015765",
+      "objectValue": "1674014510",
       "provenanceId": "dc/d7tbsb1"
     },
     {
@@ -147,6 +147,34 @@
       "subjectName": "Agriculture",
       "subjectTypes": [
         "StatVarGroup"
+      ],
+      "predicate": "provenance",
+      "objectId": "dc/d7tbsb1",
+      "objectName": "HumanReadableStatVars",
+      "objectTypes": [
+        "Provenance"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "dc/svpg/AmountOfFarmInventoryByType",
+      "subjectName": "Farm products",
+      "subjectTypes": [
+        "StatVarPeerGroup"
+      ],
+      "predicate": "provenance",
+      "objectId": "dc/d7tbsb1",
+      "objectName": "HumanReadableStatVars",
+      "objectTypes": [
+        "Provenance"
+      ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "dc/topic/AgriculturalProduction",
+      "subjectName": "Agricultural Production",
+      "subjectTypes": [
+        "Topic"
       ],
       "predicate": "provenance",
       "objectId": "dc/d7tbsb1",

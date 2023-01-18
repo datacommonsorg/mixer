@@ -6,6 +6,16 @@
       "subjectTypes": [
         "StatisticalVariable"
       ],
+      "predicate": "description",
+      "objectValue": "Total Number of People in a Population",
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Count_Person",
+      "subjectName": "Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "measuredProperty",
       "objectId": "count",
       "objectName": "count",
@@ -1690,6 +1700,16 @@
       "objectTypes": [
         "Property"
       ],
+      "provenanceId": "dc/d7tbsb1"
+    },
+    {
+      "subjectId": "Count_Person_Female",
+      "subjectName": "Population: Female",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "description",
+      "objectValue": "Number of Females",
       "provenanceId": "dc/d7tbsb1"
     },
     {

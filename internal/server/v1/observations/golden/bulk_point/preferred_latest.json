@@ -231,8 +231,8 @@
           "entity": "country/USA",
           "points_by_facet": [
             {
-              "date": "2023-01-04",
-              "value": 100777672,
+              "date": "2023-01-16",
+              "value": 101387310,
               "facet": "2232540893"
             }
           ]
@@ -241,8 +241,8 @@
           "entity": "geoId/06",
           "points_by_facet": [
             {
-              "date": "2023-01-04",
-              "value": 11835660,
+              "date": "2023-01-16",
+              "value": 11926732,
               "facet": "2232540893"
             }
           ]

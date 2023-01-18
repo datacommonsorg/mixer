@@ -753,7 +753,7 @@
               },
               {
                 "dcid": "geoId/sch7200030",
-                "name": "Puerto Rico Department of Education"
+                "name": "Puerto Rico Department Of Education"
               }
             ],
             "minValue": 0,
@@ -1479,7 +1479,7 @@
                       },
                       {
                         "dcid": "geoId/sch7200030",
-                        "name": "Puerto Rico Department of Education"
+                        "name": "Puerto Rico Department Of Education"
                       }
                     ],
                     "minValue": 0,
@@ -2102,7 +2102,7 @@
               },
               {
                 "dcid": "geoId/sch7200030",
-                "name": "Puerto Rico Department of Education"
+                "name": "Puerto Rico Department Of Education"
               }
             ],
             "minValue": 0,
@@ -2343,7 +2343,7 @@
                       },
                       {
                         "dcid": "geoId/sch7200030",
-                        "name": "Puerto Rico Department of Education"
+                        "name": "Puerto Rico Department Of Education"
                       }
                     ],
                     "minValue": 0,
@@ -2861,7 +2861,7 @@
                   "measurementMethod": "dcDerivedStat/NYT_COVID19_GitHub"
                 },
                 "earliestDate": "2020-01-22",
-                "latestDate": "2023-01-04",
+                "latestDate": "2023-01-16",
                 "placeTypeSummary": {
                   "City": {
                     "placeCount": 3,
@@ -2934,7 +2934,7 @@
                 },
                 "minValue": -40527,
                 "maxValue": 1433977,
-                "observationCount": 2535412,
+                "observationCount": 2536096,
                 "timeSeriesCount": 3277
               },
               {
@@ -3020,7 +3020,7 @@
                 "timeSeriesCount": 3277
               }
             ],
-            "observationCount": 2622451,
+            "observationCount": 2623135,
             "timeSeriesCount": 6554
           }
         }

@@ -382,18 +382,6 @@
     }
   },
   {
-    "title": "State unemployment insurance claims",
-    "statsVars": [
-      "Count_UnemploymentInsuranceClaim_StateUnemploymentInsurance"
-    ],
-    "relatedChart": {
-      "scale": true,
-      "statsVars": [
-        "Count_UnemploymentInsuranceClaim_StateUnemploymentInsurance"
-      ]
-    }
-  },
-  {
     "title": "Unemployment rate by gender",
     "statsVars": [
       "UnemploymentRate_Person_Female",

@@ -493,6 +493,8 @@
         "Count_EarthquakeEvent_M5To6",
         "Count_EarthquakeEvent_M6Onwards",
         "Count_EarthquakeEvent_M6To7",
+        "Count_FireEvent",
+        "Count_FloodEvent",
         "Count_Person",
         "Count_Person_0Years",
         "Count_Person_0Years_Female",
@@ -880,6 +882,7 @@
         "DifferenceRelativeToBaseDate2006_Min_Temperature_RCP85",
         "DifferenceRelativeToBaseDate2006_PrecipitationRate_RCP45",
         "DifferenceRelativeToBaseDate2006_PrecipitationRate_RCP85",
+        "ExchangeRate_Currency_Standardized",
         "FertilityRate_Person_Female",
         "GiniIndex_EconomicActivity",
         "GrowthRate_Amount_EconomicActivity_GrossDomesticProduction",
@@ -4444,7 +4447,8 @@
         "eia/INTL.8499-2-TBPD.A",
         "eia/INTL.8499-3-TBPD.A",
         "eia/INTL.8499-4-TBPD.A",
-        "minimumWage"
+        "minimumWage",
+        "usesCurrency"
       ]
     }
   }

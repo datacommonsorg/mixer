@@ -1149,6 +1149,10 @@
       "dcid": "Count_Person_EducationalAttainmentPrimarySchool"
     },
     {
+      "name": "Population: Producer",
+      "dcid": "Count_Person_Producer"
+    },
+    {
       "name": "Population: Professional School Degree",
       "dcid": "Count_Person_EducationalAttainmentProfessionalSchoolDegree"
     },
@@ -3995,10 +3999,6 @@
     {
       "name": "Population: 25 - 34 Years, College or University Student Housing",
       "dcid": "Count_Person_25To34Years_ResidesInCollegeOrUniversityStudentHousing"
-    },
-    {
-      "name": "Population: 25 - 34 Years, Different House Abroad",
-      "dcid": "Count_Person_25To34Years_DifferentHouseAbroad"
     }
   ],
   "matches": [
