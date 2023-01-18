@@ -17,6 +17,7 @@ package event
 
 import (
 	"context"
+	"sort"
 	"strconv"
 	"strings"
 
@@ -69,30 +70,14 @@ func keepEvent(event *pb.EventCollection_Event, spec filterSpec) bool {
 	return true
 }
 
-// Collection implements API for Mixer.EventCollection.
-func Collection(
-	ctx context.Context,
-	in *pb.EventCollectionRequest,
-	store *store.Store,
-) (*pb.EventCollectionResponse, error) {
-	if in.GetEventType() == "" || in.GetDate() == "" {
-		return nil, status.Error(codes.InvalidArgument, "Missing required arguments")
-	}
-	if !util.CheckValidDCIDs([]string{in.GetAffectedPlaceDcid()}) {
-		return nil, status.Errorf(codes.InvalidArgument, "Invalid DCID")
-	}
-	filterProp := in.GetFilterProp()
-	filterLowerLimit := in.GetFilterLowerLimit()
-	filterUpperLimit := in.GetFilterUpperLimit()
-	filterUnit := in.GetFilterUnit()
-
-	// Merge all the affected places in the final result.
+// Gets list of affected places given a place.
+func getAffectedPlaces(ctx context.Context, placeDcid string, store *store.Store) ([]string, error) {
 	affectedPlaces := []string{}
-	if _, ok := noDataPlaces[in.GetAffectedPlaceDcid()]; ok {
+	if _, ok := noDataPlaces[placeDcid]; ok {
 		nodeProp := "Country/typeOf"
 		// Fetch places within continents
-		if in.GetAffectedPlaceDcid() != "Earth" {
-			nodeProp = in.GetAffectedPlaceDcid() + "/containedInPlace"
+		if placeDcid != "Earth" {
+			nodeProp = placeDcid + "/containedInPlace"
 		}
 		resp, err := propertyvalues.PropertyValues(
 			ctx,
@@ -111,9 +96,33 @@ func Collection(
 			}
 		}
 	} else {
-		affectedPlaces = append(affectedPlaces, in.GetAffectedPlaceDcid())
+		affectedPlaces = append(affectedPlaces, placeDcid)
 	}
+	return affectedPlaces, nil
+}
 
+// Collection implements API for Mixer.EventCollection.
+func Collection(
+	ctx context.Context,
+	in *pb.EventCollectionRequest,
+	store *store.Store,
+) (*pb.EventCollectionResponse, error) {
+	if in.GetEventType() == "" || in.GetDate() == "" {
+		return nil, status.Error(codes.InvalidArgument, "Missing required arguments")
+	}
+	if !util.CheckValidDCIDs([]string{in.GetAffectedPlaceDcid()}) {
+		return nil, status.Errorf(codes.InvalidArgument, "Invalid DCID")
+	}
+	filterProp := in.GetFilterProp()
+	filterLowerLimit := in.GetFilterLowerLimit()
+	filterUpperLimit := in.GetFilterUpperLimit()
+	filterUnit := in.GetFilterUnit()
+
+	// Merge all the affected places in the final result.
+	affectedPlaces, err := getAffectedPlaces(ctx, in.GetAffectedPlaceDcid(), store)
+	if err != nil {
+		return nil, err
+	}
 	btDataList, err := bigtable.Read(
 		ctx,
 		store.BtGroup,
@@ -181,11 +190,17 @@ func CollectionDate(
 		return nil, status.Errorf(codes.InvalidArgument, "Invalid DCID")
 	}
 
+	// Merge all the affected places in the final result.
+	affectedPlaces, err := getAffectedPlaces(ctx, in.GetAffectedPlaceDcid(), store)
+	if err != nil {
+		return nil, err
+	}
+
 	btDataList, err := bigtable.Read(
 		ctx,
 		store.BtGroup,
 		bigtable.BtEventCollectionDate,
-		[][]string{{in.GetEventType()}, {in.GetAffectedPlaceDcid()}},
+		[][]string{{in.GetEventType()}, affectedPlaces},
 		func(jsonRaw []byte) (interface{}, error) {
 			var d pb.EventCollectionDate
 			err := proto.Unmarshal(jsonRaw, &d)
@@ -196,14 +211,32 @@ func CollectionDate(
 		return nil, err
 	}
 
-	resp := &pb.EventCollectionDateResponse{}
+	resp := &pb.EventCollectionDateResponse{
+		EventCollectionDate: &pb.EventCollectionDate{
+			Dates: []string{},
+		},
+	}
 
 	// Go through (ordered) import groups one by one, stop when data is found.
 	for _, btData := range btDataList {
-		for _, row := range btData {
-			resp.EventCollectionDate = row.Data.(*pb.EventCollectionDate)
-			break
+		if len(btData) == 0 {
+			continue
 		}
+		// Each row represents events from a sub-place. Merge them together.
+		dateSet := map[string]struct{}{}
+		dateStrings := []string{}
+		for _, row := range btData {
+			data := row.Data.(*pb.EventCollectionDate)
+			for _, date := range data.Dates {
+				if _, ok := dateSet[date]; !ok {
+					dateSet[date] = struct{}{}
+					dateStrings = append(dateStrings, date)
+				}
+			}
+		}
+		sort.Strings(dateStrings)
+		resp.EventCollectionDate.Dates = dateStrings
+		break
 	}
 
 	return resp, nil
