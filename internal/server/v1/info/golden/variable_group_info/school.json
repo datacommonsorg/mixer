@@ -185,13 +185,13 @@
         "id": "dc/g/Person_EducationalAttainment-BachelorsDegreeOrHigher",
         "specializedEntity": "Bachelors Degree or Higher",
         "displayName": "Person With Educational Attainment = Bachelors Degree or Higher",
-        "descendentStatVarCount": 100
+        "descendentStatVarCount": 97
       },
       {
         "id": "dc/g/Person_EducationalAttainment-DoctorateDegree",
         "specializedEntity": "Doctorate Degree",
         "displayName": "Person With Educational Attainment = Doctorate Degree",
-        "descendentStatVarCount": 6
+        "descendentStatVarCount": 3
       },
       {
         "id": "dc/g/Person_EducationalAttainment-GraduateOrProfessionalDegree",
@@ -326,7 +326,7 @@
         "displayName": "Person With Educational Attainment = Upper Secondary Education or Higher"
       }
     ],
-    "descendentStatVarCount": 487,
+    "descendentStatVarCount": 475,
     "parentStatVarGroups": [
       "dc/g/Education"
     ]

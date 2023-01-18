@@ -374,7 +374,7 @@
             },
             {
               "dcid": "geoId/sch7200030",
-              "name": "Puerto Rico Department of Education"
+              "name": "Puerto Rico Department Of Education"
             }
           ],
           "minValue": 0,
@@ -1100,7 +1100,7 @@
                     },
                     {
                       "dcid": "geoId/sch7200030",
-                      "name": "Puerto Rico Department of Education"
+                      "name": "Puerto Rico Department Of Education"
                     }
                   ],
                   "minValue": 0,
@@ -1720,7 +1720,7 @@
             },
             {
               "dcid": "geoId/sch7200030",
-              "name": "Puerto Rico Department of Education"
+              "name": "Puerto Rico Department Of Education"
             }
           ],
           "minValue": 0,
@@ -1961,7 +1961,7 @@
                     },
                     {
                       "dcid": "geoId/sch7200030",
-                      "name": "Puerto Rico Department of Education"
+                      "name": "Puerto Rico Department Of Education"
                     }
                   ],
                   "minValue": 0,
@@ -2157,7 +2157,7 @@
           "maxValue": 2.7
         },
         "Country": {
-          "placeCount": 206,
+          "placeCount": 210,
           "topPlaces": [
             {
               "dcid": "country/CHN",
@@ -2172,7 +2172,7 @@
               "name": "United States"
             }
           ],
-          "minValue": 0.837,
+          "minValue": 0.792,
           "maxValue": 8.864
         },
         "EurostatNUTS1": {
@@ -2240,8 +2240,8 @@
               "name": "Earth"
             }
           ],
-          "minValue": 2.38712292764477,
-          "maxValue": 5.05647011634277
+          "minValue": 2.29902994764743,
+          "maxValue": 5.33228884884454
         }
       },
       "provenanceSummary": {
@@ -2254,7 +2254,7 @@
               "latestDate": "2020",
               "placeTypeSummary": {
                 "Country": {
-                  "placeCount": 206,
+                  "placeCount": 210,
                   "topPlaces": [
                     {
                       "dcid": "country/CHN",
@@ -2269,7 +2269,7 @@
                       "name": "United States"
                     }
                   ],
-                  "minValue": 0.837,
+                  "minValue": 0.792,
                   "maxValue": 8.864
                 },
                 "Place": {
@@ -2280,18 +2280,18 @@
                       "name": "Earth"
                     }
                   ],
-                  "minValue": 2.38712292764477,
-                  "maxValue": 5.05647011634277
+                  "minValue": 2.29902994764743,
+                  "maxValue": 5.33228884884454
                 }
               },
-              "minValue": 0.837,
+              "minValue": 0.792,
               "maxValue": 8.864,
-              "observationCount": 11908,
-              "timeSeriesCount": 207
+              "observationCount": 12232,
+              "timeSeriesCount": 211
             }
           ],
-          "observationCount": 11908,
-          "timeSeriesCount": 207
+          "observationCount": 12232,
+          "timeSeriesCount": 211
         },
         "dc/yd4sfb": {
           "importName": "EurostatData",

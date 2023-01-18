@@ -1,5 +1,13 @@
 {
   "triples": {
+    "description": {
+      "nodes": [
+        {
+          "provenanceId": "dc/d7tbsb1",
+          "value": "Total Number of People in a Population"
+        }
+      ]
+    },
     "measuredProperty": {
       "nodes": [
         {

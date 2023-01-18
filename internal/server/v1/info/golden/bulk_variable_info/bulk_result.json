@@ -20,8 +20,8 @@
                 "name": "Chicago"
               }
             ],
-            "minValue": -13.197619,
-            "maxValue": 111.783127
+            "minValue": 0,
+            "maxValue": 100
           },
           "Country": {
             "placeCount": 33,
@@ -92,7 +92,7 @@
                   "observationPeriod": "P1M"
                 },
                 "earliestDate": "1948-01",
-                "latestDate": "2022-11",
+                "latestDate": "2022-12",
                 "placeTypeSummary": {
                   "Country": {
                     "placeCount": 1,
@@ -108,7 +108,7 @@
                 },
                 "minValue": 2.5,
                 "maxValue": 14.7,
-                "observationCount": 899,
+                "observationCount": 900,
                 "timeSeriesCount": 1
               },
               {
@@ -117,7 +117,7 @@
                   "observationPeriod": "P3M"
                 },
                 "earliestDate": "1948-03",
-                "latestDate": "2022-09",
+                "latestDate": "2022-12",
                 "placeTypeSummary": {
                   "Country": {
                     "placeCount": 1,
@@ -133,174 +133,12 @@
                 },
                 "minValue": 2.6,
                 "maxValue": 13,
-                "observationCount": 299,
+                "observationCount": 300,
                 "timeSeriesCount": 1
               }
             ],
-            "observationCount": 1198,
+            "observationCount": 1200,
             "timeSeriesCount": 2
-          },
-          "dc/933f4w2": {
-            "importName": "BLS_LAUS_Imputed",
-            "releaseFrequency": "P1M",
-            "seriesSummary": [
-              {
-                "seriesKey": {
-                  "measurementMethod": "BLSSeasonallyAdjusted",
-                  "observationPeriod": "P1M",
-                  "isDcImputed": true
-                },
-                "earliestDate": "2020-03",
-                "latestDate": "2022-10",
-                "placeTypeSummary": {
-                  "State": {
-                    "placeCount": 1,
-                    "topPlaces": [
-                      {
-                        "dcid": "geoId/72",
-                        "name": "Puerto Rico"
-                      }
-                    ],
-                    "minValue": 7.190453,
-                    "maxValue": 22.675805
-                  }
-                },
-                "minValue": 7.190453,
-                "maxValue": 22.675805,
-                "observationCount": 4,
-                "timeSeriesCount": 1
-              },
-              {
-                "seriesKey": {
-                  "measurementMethod": "BLSSeasonallyUnadjusted",
-                  "observationPeriod": "P1M",
-                  "isDcImputed": true
-                },
-                "earliestDate": "1976-01",
-                "latestDate": "2022-10",
-                "placeTypeSummary": {
-                  "City": {
-                    "placeCount": 3085,
-                    "topPlaces": [
-                      {
-                        "dcid": "geoId/0644000",
-                        "name": "Los Angeles"
-                      },
-                      {
-                        "dcid": "geoId/1714000",
-                        "name": "Chicago"
-                      },
-                      {
-                        "dcid": "geoId/4835000",
-                        "name": "Houston"
-                      }
-                    ],
-                    "minValue": -13.197619,
-                    "maxValue": 111.202351
-                  },
-                  "County": {
-                    "placeCount": 93,
-                    "topPlaces": [
-                      {
-                        "dcid": "geoId/22051",
-                        "name": "Jefferson Parish"
-                      },
-                      {
-                        "dcid": "geoId/22071",
-                        "name": "Orleans Parish"
-                      },
-                      {
-                        "dcid": "geoId/72127",
-                        "name": "San Juan"
-                      }
-                    ],
-                    "minValue": 2.878088,
-                    "maxValue": 36.790719
-                  },
-                  "State": {
-                    "placeCount": 1,
-                    "topPlaces": [
-                      {
-                        "dcid": "geoId/72",
-                        "name": "Puerto Rico"
-                      }
-                    ],
-                    "minValue": 6.760155,
-                    "maxValue": 22.017141
-                  }
-                },
-                "minValue": -13.197619,
-                "maxValue": 111.202351,
-                "observationCount": 600365,
-                "timeSeriesCount": 3179
-              },
-              {
-                "seriesKey": {
-                  "measurementMethod": "BLSSeasonallyUnadjusted",
-                  "observationPeriod": "P1Y",
-                  "isDcImputed": true
-                },
-                "earliestDate": "1976",
-                "latestDate": "2021",
-                "placeTypeSummary": {
-                  "City": {
-                    "placeCount": 3068,
-                    "topPlaces": [
-                      {
-                        "dcid": "geoId/0644000",
-                        "name": "Los Angeles"
-                      },
-                      {
-                        "dcid": "geoId/1714000",
-                        "name": "Chicago"
-                      },
-                      {
-                        "dcid": "geoId/4835000",
-                        "name": "Houston"
-                      }
-                    ],
-                    "minValue": -0.798849,
-                    "maxValue": 111.783127
-                  },
-                  "County": {
-                    "placeCount": 93,
-                    "topPlaces": [
-                      {
-                        "dcid": "geoId/22051",
-                        "name": "Jefferson Parish"
-                      },
-                      {
-                        "dcid": "geoId/22071",
-                        "name": "Orleans Parish"
-                      },
-                      {
-                        "dcid": "geoId/72127",
-                        "name": "San Juan"
-                      }
-                    ],
-                    "minValue": 3.868194,
-                    "maxValue": 19.46849
-                  },
-                  "State": {
-                    "placeCount": 1,
-                    "topPlaces": [
-                      {
-                        "dcid": "geoId/72",
-                        "name": "Puerto Rico"
-                      }
-                    ],
-                    "minValue": 13.779251,
-                    "maxValue": 13.779251
-                  }
-                },
-                "minValue": -0.798849,
-                "maxValue": 111.783127,
-                "observationCount": 49350,
-                "timeSeriesCount": 3162
-              }
-            ],
-            "observationCount": 649719,
-            "timeSeriesCount": 6342
           },
           "dc/lly3yc1": {
             "importName": "BLS_LAUS",
@@ -418,7 +256,7 @@
                 },
                 "minValue": 0,
                 "maxValue": 100,
-                "observationCount": 2431928,
+                "observationCount": 2438225,
                 "timeSeriesCount": 6358
               },
               {
@@ -493,7 +331,7 @@
                 "timeSeriesCount": 6358
               }
             ],
-            "observationCount": 2659052,
+            "observationCount": 2665349,
             "timeSeriesCount": 12769
           },
           "dc/yd4sfb": {
@@ -915,7 +753,7 @@
               },
               {
                 "dcid": "geoId/sch7200030",
-                "name": "Puerto Rico Department of Education"
+                "name": "Puerto Rico Department Of Education"
               }
             ],
             "minValue": 0,
@@ -1641,7 +1479,7 @@
                       },
                       {
                         "dcid": "geoId/sch7200030",
-                        "name": "Puerto Rico Department of Education"
+                        "name": "Puerto Rico Department Of Education"
                       }
                     ],
                     "minValue": 0,
@@ -2264,7 +2102,7 @@
               },
               {
                 "dcid": "geoId/sch7200030",
-                "name": "Puerto Rico Department of Education"
+                "name": "Puerto Rico Department Of Education"
               }
             ],
             "minValue": 0,
@@ -2505,7 +2343,7 @@
                       },
                       {
                         "dcid": "geoId/sch7200030",
-                        "name": "Puerto Rico Department of Education"
+                        "name": "Puerto Rico Department Of Education"
                       }
                     ],
                     "minValue": 0,
@@ -2704,7 +2542,7 @@
             "maxValue": 2.7
           },
           "Country": {
-            "placeCount": 206,
+            "placeCount": 210,
             "topPlaces": [
               {
                 "dcid": "country/CHN",
@@ -2719,7 +2557,7 @@
                 "name": "United States"
               }
             ],
-            "minValue": 0.837,
+            "minValue": 0.792,
             "maxValue": 8.864
           },
           "EurostatNUTS1": {
@@ -2787,8 +2625,8 @@
                 "name": "Earth"
               }
             ],
-            "minValue": 2.38712292764477,
-            "maxValue": 5.05647011634277
+            "minValue": 2.29902994764743,
+            "maxValue": 5.33228884884454
           }
         },
         "provenanceSummary": {
@@ -2801,7 +2639,7 @@
                 "latestDate": "2020",
                 "placeTypeSummary": {
                   "Country": {
-                    "placeCount": 206,
+                    "placeCount": 210,
                     "topPlaces": [
                       {
                         "dcid": "country/CHN",
@@ -2816,7 +2654,7 @@
                         "name": "United States"
                       }
                     ],
-                    "minValue": 0.837,
+                    "minValue": 0.792,
                     "maxValue": 8.864
                   },
                   "Place": {
@@ -2827,18 +2665,18 @@
                         "name": "Earth"
                       }
                     ],
-                    "minValue": 2.38712292764477,
-                    "maxValue": 5.05647011634277
+                    "minValue": 2.29902994764743,
+                    "maxValue": 5.33228884884454
                   }
                 },
-                "minValue": 0.837,
+                "minValue": 0.792,
                 "maxValue": 8.864,
-                "observationCount": 11908,
-                "timeSeriesCount": 207
+                "observationCount": 12232,
+                "timeSeriesCount": 211
               }
             ],
-            "observationCount": 11908,
-            "timeSeriesCount": 207
+            "observationCount": 12232,
+            "timeSeriesCount": 211
           },
           "dc/yd4sfb": {
             "importName": "EurostatData",
@@ -3023,7 +2861,7 @@
                   "measurementMethod": "dcDerivedStat/NYT_COVID19_GitHub"
                 },
                 "earliestDate": "2020-01-22",
-                "latestDate": "2022-12-18",
+                "latestDate": "2023-01-16",
                 "placeTypeSummary": {
                   "City": {
                     "placeCount": 3,
@@ -3096,7 +2934,7 @@
                 },
                 "minValue": -40527,
                 "maxValue": 1433977,
-                "observationCount": 2534443,
+                "observationCount": 2536096,
                 "timeSeriesCount": 3277
               },
               {
@@ -3105,7 +2943,7 @@
                   "observationPeriod": "P1M"
                 },
                 "earliestDate": "2020-01",
-                "latestDate": "2022-12",
+                "latestDate": "2023-01",
                 "placeTypeSummary": {
                   "City": {
                     "placeCount": 3,
@@ -3178,11 +3016,11 @@
                 },
                 "minValue": -3451,
                 "maxValue": 20300128,
-                "observationCount": 86982,
+                "observationCount": 87039,
                 "timeSeriesCount": 3277
               }
             ],
-            "observationCount": 2621425,
+            "observationCount": 2623135,
             "timeSeriesCount": 6554
           }
         }
