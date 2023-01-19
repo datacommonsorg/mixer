@@ -57,7 +57,7 @@ type filterSpec struct {
 func keepEvent(event *pb.EventCollection_Event, spec filterSpec) bool {
 	for prop, vals := range event.GetPropVals() {
 		if prop == spec.prop {
-			valStr := strings.TrimPrefix(vals.Vals[0], spec.unit)
+			valStr := strings.TrimSpace(strings.TrimPrefix(vals.Vals[0], spec.unit))
 			v, err := strconv.ParseFloat(valStr, 64)
 			if err != nil {
 				// Can not convert the value, keep.
