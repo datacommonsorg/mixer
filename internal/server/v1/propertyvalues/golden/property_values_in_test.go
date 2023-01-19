@@ -53,7 +53,7 @@ func TestPropertyValuesIn(t *testing.T) {
 				"containedInPlace",
 				"geoId/06",
 				500,
-				"H4sIAAAAAAAA/3zPQcoCIRjG8U8/GRwjkHflLWoVQbWaWkwroTqAOVKCKTjvEHP7mFYR5AF+D89f7AS/udR2i+VKSJsiGh9d10YdjHVi1rjYD/05G4tAJQHGiSRAOQXG/yUR2yJnjccRmCSqhmqSqn7barKqFseiVofgHi6iyePJ3lMKe99j9j+erItbQqenyzqYiPAHlH/KTVHO9XAN3l7QhynmC78AAAD//wEAAP//+w5Qx0ABAAA=",
+				"H4sIAAAAAAAA/4SR0UoEIRSGc3YQ19oQr3yLti66iKBitouJLoStBzD3UIIpOO7Gvn3oTNBWnC5V/s/vnJ93nL1C7Ddny0subAzZuACbPmhvLPDjDsKwHZ6SsVk2gsiWEUFkwxrZslk9t4LwFQppO5f3shVEzSUteTWvBFoI9a6+cY1S1L2HdwjZpP3avsXoV27IyaFe1yiR6/gBSXsTsjySDRvzDZtN6Ts0vdDJ7UyGUaZK/EbcoogTvX3xzqKEm38kKuE5O192/NcUeMGL9UUH3j/CDvz58sDh+yKvUAidJjj8fqyV8Ac0e/qjzJKhpU7Vf1mofmLRTwAAAP//AQAA//9K8fPGrgIAAA==",
 			},
 			{
 				"geoOverlaps.json",
@@ -74,7 +74,7 @@ func TestPropertyValuesIn(t *testing.T) {
 				"typeOf",
 				"Country",
 				0,
-				"H4sIAAAAAAAA/+LS42J3zi/NKymq5GIrqSxI9U+DCwgxSZgLsXAwSpgLMXEwCbFwMEuYAwAAAP//AQAA//+KaJIrMAAAAA==",
+				"H4sIAAAAAAAA/+Iy4WJ3zi/NKymq5GIrqSxI9U+DCwgxSZgLsXAwSpgLMXEwCbFwMIP5LBLmAAAAAP//AQAA//+WYab6NgAAAA==",
 			},
 			{
 				"nasa_source.json",
