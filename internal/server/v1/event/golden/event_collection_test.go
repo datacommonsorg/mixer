@@ -76,13 +76,13 @@ func TestEventCollection(t *testing.T) {
 			},
 			{
 				"WildlandFireEvent",
-				"Earth",
+				"geoId/06",
 				"2022-10",
 				"area",
 				"SquareKilometer",
-				5,
+				7,
 				8,
-				"WildlandFireEvent_Earth_202210.json",
+				"WildlandFireEvent_CA_202210.json",
 			},
 		} {
 			resp, err := mixer.EventCollection(ctx, &pb.EventCollectionRequest{
