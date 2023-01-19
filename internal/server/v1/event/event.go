@@ -74,24 +74,32 @@ func keepEvent(event *pb.EventCollection_Event, spec filterSpec) bool {
 func getAffectedPlaces(ctx context.Context, placeDcid string, store *store.Store) ([]string, error) {
 	affectedPlaces := []string{}
 	if _, ok := noDataPlaces[placeDcid]; ok {
-		nodeProp := "Country/typeOf"
-		// Fetch places within continents
-		if placeDcid != "Earth" {
-			nodeProp = placeDcid + "/containedInPlace"
+		var nodeProps []string
+		if placeDcid == "Earth" {
+			nodeProps = []string{"Country/typeOf", "OceanicBasin/typeOf"}
+		} else { // Continent.
+			// Fetch places within continents
+			nodeProps = []string{placeDcid + "/containedInPlace"}
 		}
-		resp, err := propertyvalues.PropertyValues(
-			ctx,
-			&pb.PropertyValuesRequest{
-				NodeProperty: nodeProp,
-				Direction:    util.DirectionIn,
-			},
-			store,
-		)
-		if err != nil {
-			return nil, err
+
+		var respValues []*pb.EntityInfo
+		for _, nodeProp := range nodeProps {
+			resp, err := propertyvalues.PropertyValues(
+				ctx,
+				&pb.PropertyValuesRequest{
+					NodeProperty: nodeProp,
+					Direction:    util.DirectionIn,
+				},
+				store,
+			)
+			if err != nil {
+				return nil, err
+			}
+			respValues = append(respValues, resp.GetValues()...)
 		}
-		for _, value := range resp.Values {
-			if value.Types[0] == "Country" {
+
+		for _, value := range respValues {
+			if value.Types[0] == "Country" || value.Types[0] == "OceanicBasin" {
 				affectedPlaces = append(affectedPlaces, value.Dcid)
 			}
 		}
