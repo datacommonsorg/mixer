@@ -39,6 +39,9 @@ func (h nodeHeap) Less(i, j int) bool {
 	//     {entity_info.dcid(), entity_info.value(), entity_info.provenance_id()},
 	//      "!"});
 	// }
+	if di.Dcid+"!"+di.Value == dj.Dcid+"!"+dj.Value {
+		return h[i].ig < h[j].ig
+	}
 	return di.Dcid+"!"+di.Value < dj.Dcid+"!"+dj.Value
 }
 func (h nodeHeap) Swap(i, j int) { h[i], h[j] = h[j], h[i] }
