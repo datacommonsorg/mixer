@@ -66,8 +66,8 @@ func keepEvent(event *pb.EventCollection_Event, spec filterSpec) bool {
 			return v >= spec.lowerLimit && v <= spec.upperLimit
 		}
 	}
-	// No prop found, keep event
-	return true
+	// No prop found, the event does not have this prop, so not included
+	return false
 }
 
 // Gets list of affected places given a place.
