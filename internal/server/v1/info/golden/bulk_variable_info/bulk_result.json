@@ -2861,7 +2861,7 @@
                   "measurementMethod": "dcDerivedStat/NYT_COVID19_GitHub"
                 },
                 "earliestDate": "2020-01-22",
-                "latestDate": "2023-01-16",
+                "latestDate": "2023-01-17",
                 "placeTypeSummary": {
                   "City": {
                     "placeCount": 3,
@@ -2934,7 +2934,7 @@
                 },
                 "minValue": -40527,
                 "maxValue": 1433977,
-                "observationCount": 2536096,
+                "observationCount": 2536153,
                 "timeSeriesCount": 3277
               },
               {
@@ -3020,7 +3020,7 @@
                 "timeSeriesCount": 3277
               }
             ],
-            "observationCount": 2623135,
+            "observationCount": 2623192,
             "timeSeriesCount": 6554
           }
         }

@@ -1,0 +1,493 @@
+{
+  "eventCollection": {
+    "events": [
+      {
+        "places": [
+          "country/GTM",
+          "oceanicBasin/EasternNorthPacific",
+          "wikidataId/Q842266",
+          "wikidataId/Q844502",
+          "wikidataId/Q883907"
+        ],
+        "dates": [
+          "2010-05-28T18:00:00"
+        ],
+        "propVals": {
+          "maxClassification": {
+            "vals": [
+              "TropicalStorm"
+            ]
+          },
+          "maxWindSpeed": {
+            "vals": [
+              "Knot40"
+            ]
+          },
+          "minPressure": {
+            "vals": [
+              "Millibar1001"
+            ]
+          },
+          "name": {
+            "vals": [
+              "Agatha"
+            ]
+          }
+        },
+        "dcid": "cyclone/ibtracs_2010149N13266",
+        "provenanceId": "dc/xwq0y5"
+      },
+      {
+        "places": [
+          "country/IND",
+          "oceanicBasin/BayOfBengal",
+          "wikidataId/Q1159"
+        ],
+        "dates": [
+          "2010-05-16T18:00:00"
+        ],
+        "propVals": {
+          "maxClassification": {
+            "vals": [
+              "TropicalStorm"
+            ]
+          },
+          "maxWindSpeed": {
+            "vals": [
+              "Knot55"
+            ]
+          },
+          "minPressure": {
+            "vals": [
+              "Millibar986"
+            ]
+          },
+          "name": {
+            "vals": [
+              "Laila"
+            ]
+          }
+        },
+        "dcid": "cyclone/ibtracs_2010137N10090",
+        "provenanceId": "dc/xwq0y5"
+      },
+      {
+        "places": [
+          "country/IND",
+          "country/OMN",
+          "country/PAK",
+          "oceanicBasin/ArabianSea",
+          "wikidataId/Q1437",
+          "wikidataId/Q1777286",
+          "wikidataId/Q2347462",
+          "wikidataId/Q2419234",
+          "wikidataId/Q37211",
+          "wikidataId/Q4501876",
+          "wikidataId/Q4501894"
+        ],
+        "dates": [
+          "2010-05-30T12:00:00"
+        ],
+        "propVals": {
+          "maxClassification": {
+            "vals": [
+              "TropicalStorm"
+            ]
+          },
+          "maxWindSpeed": {
+            "vals": [
+              "Knot85"
+            ]
+          },
+          "minPressure": {
+            "vals": [
+              "Millibar964"
+            ]
+          },
+          "name": {
+            "vals": [
+              "Phet"
+            ]
+          }
+        },
+        "dcid": "cyclone/ibtracs_2010151N14065",
+        "provenanceId": "dc/xwq0y5"
+      },
+      {
+        "places": [
+          "country/IND",
+          "country/OMN",
+          "country/PAK",
+          "oceanicBasin/ArabianSea",
+          "wikidataId/Q1437",
+          "wikidataId/Q1777286",
+          "wikidataId/Q2347462",
+          "wikidataId/Q2419234",
+          "wikidataId/Q37211",
+          "wikidataId/Q4501876",
+          "wikidataId/Q4501894"
+        ],
+        "dates": [
+          "2010-05-30T12:00:00"
+        ],
+        "propVals": {
+          "maxClassification": {
+            "vals": [
+              "TropicalStorm"
+            ]
+          },
+          "maxWindSpeed": {
+            "vals": [
+              "Knot85"
+            ]
+          },
+          "minPressure": {
+            "vals": [
+              "Millibar964"
+            ]
+          },
+          "name": {
+            "vals": [
+              "Phet"
+            ]
+          }
+        },
+        "dcid": "cyclone/ibtracs_2010151N14065",
+        "provenanceId": "dc/xwq0y5"
+      },
+      {
+        "places": [
+          "country/IND",
+          "country/OMN",
+          "country/PAK",
+          "oceanicBasin/ArabianSea",
+          "wikidataId/Q1437",
+          "wikidataId/Q1777286",
+          "wikidataId/Q2347462",
+          "wikidataId/Q2419234",
+          "wikidataId/Q37211",
+          "wikidataId/Q4501876",
+          "wikidataId/Q4501894"
+        ],
+        "dates": [
+          "2010-05-30T12:00:00"
+        ],
+        "propVals": {
+          "maxClassification": {
+            "vals": [
+              "TropicalStorm"
+            ]
+          },
+          "maxWindSpeed": {
+            "vals": [
+              "Knot85"
+            ]
+          },
+          "minPressure": {
+            "vals": [
+              "Millibar964"
+            ]
+          },
+          "name": {
+            "vals": [
+              "Phet"
+            ]
+          }
+        },
+        "dcid": "cyclone/ibtracs_2010151N14065",
+        "provenanceId": "dc/xwq0y5"
+      },
+      {
+        "places": [
+          "oceanicBasin/ArabianSea"
+        ],
+        "dates": [
+          "2010-05-15T12:00:00"
+        ],
+        "propVals": {
+          "maxClassification": {
+            "vals": [
+              "TropicalStorm"
+            ]
+          },
+          "maxWindSpeed": {
+            "vals": [
+              "Knot45"
+            ]
+          },
+          "minPressure": {
+            "vals": [
+              "Millibar989"
+            ]
+          },
+          "name": {
+            "vals": [
+              "Bandu"
+            ]
+          }
+        },
+        "dcid": "cyclone/ibtracs_2010136N09057",
+        "provenanceId": "dc/xwq0y5"
+      },
+      {
+        "places": [
+          "country/IND",
+          "country/OMN",
+          "country/PAK",
+          "oceanicBasin/ArabianSea",
+          "wikidataId/Q1437",
+          "wikidataId/Q1777286",
+          "wikidataId/Q2347462",
+          "wikidataId/Q2419234",
+          "wikidataId/Q37211",
+          "wikidataId/Q4501876",
+          "wikidataId/Q4501894"
+        ],
+        "dates": [
+          "2010-05-30T12:00:00"
+        ],
+        "propVals": {
+          "maxClassification": {
+            "vals": [
+              "TropicalStorm"
+            ]
+          },
+          "maxWindSpeed": {
+            "vals": [
+              "Knot85"
+            ]
+          },
+          "minPressure": {
+            "vals": [
+              "Millibar964"
+            ]
+          },
+          "name": {
+            "vals": [
+              "Phet"
+            ]
+          }
+        },
+        "dcid": "cyclone/ibtracs_2010151N14065",
+        "provenanceId": "dc/xwq0y5"
+      },
+      {
+        "places": [
+          "country/IND",
+          "oceanicBasin/BayOfBengal",
+          "wikidataId/Q1159"
+        ],
+        "dates": [
+          "2010-05-16T18:00:00"
+        ],
+        "propVals": {
+          "maxClassification": {
+            "vals": [
+              "TropicalStorm"
+            ]
+          },
+          "maxWindSpeed": {
+            "vals": [
+              "Knot55"
+            ]
+          },
+          "minPressure": {
+            "vals": [
+              "Millibar986"
+            ]
+          },
+          "name": {
+            "vals": [
+              "Laila"
+            ]
+          }
+        },
+        "dcid": "cyclone/ibtracs_2010137N10090",
+        "provenanceId": "dc/xwq0y5"
+      },
+      {
+        "places": [
+          "country/GTM",
+          "oceanicBasin/EasternNorthPacific",
+          "wikidataId/Q842266",
+          "wikidataId/Q844502",
+          "wikidataId/Q883907"
+        ],
+        "dates": [
+          "2010-05-28T18:00:00"
+        ],
+        "propVals": {
+          "maxClassification": {
+            "vals": [
+              "TropicalStorm"
+            ]
+          },
+          "maxWindSpeed": {
+            "vals": [
+              "Knot40"
+            ]
+          },
+          "minPressure": {
+            "vals": [
+              "Millibar1001"
+            ]
+          },
+          "name": {
+            "vals": [
+              "Agatha"
+            ]
+          }
+        },
+        "dcid": "cyclone/ibtracs_2010149N13266",
+        "provenanceId": "dc/xwq0y5"
+      },
+      {
+        "places": [
+          "oceanicBasin/ArabianSea"
+        ],
+        "dates": [
+          "2010-05-15T12:00:00"
+        ],
+        "propVals": {
+          "maxClassification": {
+            "vals": [
+              "TropicalStorm"
+            ]
+          },
+          "maxWindSpeed": {
+            "vals": [
+              "Knot45"
+            ]
+          },
+          "minPressure": {
+            "vals": [
+              "Millibar989"
+            ]
+          },
+          "name": {
+            "vals": [
+              "Bandu"
+            ]
+          }
+        },
+        "dcid": "cyclone/ibtracs_2010136N09057",
+        "provenanceId": "dc/xwq0y5"
+      },
+      {
+        "places": [
+          "country/IND",
+          "oceanicBasin/BayOfBengal",
+          "wikidataId/Q1159"
+        ],
+        "dates": [
+          "2010-05-16T18:00:00"
+        ],
+        "propVals": {
+          "maxClassification": {
+            "vals": [
+              "TropicalStorm"
+            ]
+          },
+          "maxWindSpeed": {
+            "vals": [
+              "Knot55"
+            ]
+          },
+          "minPressure": {
+            "vals": [
+              "Millibar986"
+            ]
+          },
+          "name": {
+            "vals": [
+              "Laila"
+            ]
+          }
+        },
+        "dcid": "cyclone/ibtracs_2010137N10090",
+        "provenanceId": "dc/xwq0y5"
+      },
+      {
+        "places": [
+          "country/IND",
+          "country/OMN",
+          "country/PAK",
+          "oceanicBasin/ArabianSea",
+          "wikidataId/Q1437",
+          "wikidataId/Q1777286",
+          "wikidataId/Q2347462",
+          "wikidataId/Q2419234",
+          "wikidataId/Q37211",
+          "wikidataId/Q4501876",
+          "wikidataId/Q4501894"
+        ],
+        "dates": [
+          "2010-05-30T12:00:00"
+        ],
+        "propVals": {
+          "maxClassification": {
+            "vals": [
+              "TropicalStorm"
+            ]
+          },
+          "maxWindSpeed": {
+            "vals": [
+              "Knot85"
+            ]
+          },
+          "minPressure": {
+            "vals": [
+              "Millibar964"
+            ]
+          },
+          "name": {
+            "vals": [
+              "Phet"
+            ]
+          }
+        },
+        "dcid": "cyclone/ibtracs_2010151N14065",
+        "provenanceId": "dc/xwq0y5"
+      },
+      {
+        "places": [
+          "oceanicBasin/SouthIndian"
+        ],
+        "dates": [
+          "2010-05-22T12:00:00"
+        ],
+        "propVals": {
+          "maxClassification": {
+            "vals": [
+              "SubtropicalStorm"
+            ]
+          },
+          "maxWindSpeed": {
+            "vals": [
+              "Knot60"
+            ]
+          },
+          "minPressure": {
+            "vals": [
+              "Millibar990"
+            ]
+          },
+          "name": {
+            "vals": [
+              "Joel"
+            ]
+          }
+        },
+        "dcid": "cyclone/ibtracs_2010143S20035",
+        "provenanceId": "dc/xwq0y5"
+      }
+    ],
+    "provenanceInfo": {
+      "dc/xwq0y5": {
+        "importName": "CycloneNOAA",
+        "provenanceUrl": "https://www.ncdc.noaa.gov/ibtracs/index.php?name=ib-v4-access",
+        "domain": "noaa.gov"
+      }
+    }
+  }
+}
