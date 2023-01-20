@@ -84,6 +84,16 @@ func TestEventCollection(t *testing.T) {
 				1000,
 				"WildlandFireEvent_CA_202210.json",
 			},
+			{
+				"CycloneEvent",
+				"Earth",
+				"2010-05",
+				"",
+				"",
+				0,
+				0,
+				"CycloneEvent_Earth_201005.json",
+			},
 		} {
 			resp, err := mixer.EventCollection(ctx, &pb.EventCollectionRequest{
 				EventType:         c.eventType,
