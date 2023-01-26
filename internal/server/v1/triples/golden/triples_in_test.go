@@ -52,7 +52,7 @@ func TestTriplesIn(t *testing.T) {
 			{
 				"BiologicalSpecimen2.json",
 				"BiologicalSpecimen",
-				"H4sIAAAAAAAA/+Jy4RJyyszPyU/PTE7MCS5ITc7MTc3jYiupLEj1T8MmJ8QgxMTBKMTCwSTAKMTEwSzExMECAAAA//8BAAD//1qIe+FGAAAA",
+				"H4sIAAAAAAAA/+Ly4BJyyszPyU/PTE7MCS5ITc7MTc3jYiupLEj1T8MmJ8QgxMTBKMTCwSTAKMTEwSzExMEixMTBCgAAAP//AQAA//8CuEaKSgAAAA==",
 			},
 			{
 				"Count_Person.json",
