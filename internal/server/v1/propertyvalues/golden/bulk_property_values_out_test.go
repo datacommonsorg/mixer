@@ -68,7 +68,7 @@ func TestBulkPropertyValuesOut(t *testing.T) {
 				"geoOverlaps",
 				[]string{"country/USA", "geoId/06053", "geoId/06"},
 				5,
-				"H4sIAAAAAAAA/+Ly5uJOT833TNE3MDMwNQZz/MtSi3ISC4q5pJ1T84pLi6MyC5zzU1JDEpNKcxJLMvPzHItSE4WYJFiFmDgYhZg4mISYOJiFmDhYAAAAAP//AQAA//9HlqSKTQAAAA==",
+				"H4sIAAAAAAAA/+Ly5+JOT833TNE3MDMwNQZz/MtSi3ISC4q5pJ1T84pLi6MyC5zzU1JDEpNKcxJLMvPzHItSE4WYJFiFmDgYhZg4mISYOJiFmDhYhJg4WAEAAAD//wEAAP//oD2mKFEAAAA=",
 			},
 		} {
 			req := &pb.BulkPropertyValuesRequest{
