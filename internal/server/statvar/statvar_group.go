@@ -16,11 +16,13 @@ package statvar
 
 import (
 	"context"
+	"time"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
+	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/proto"
@@ -117,6 +119,7 @@ func GetStatVarGroup(
 	store *store.Store,
 	cache *resource.Cache,
 ) (*pb.StatVarGroups, error) {
+	defer util.TimeTrack(time.Now(), "GetStatVarGroup")
 	entities := in.GetEntities()
 	var statVars []string
 	// Only read entity stat vars when the entity is provided.
@@ -134,7 +137,7 @@ func GetStatVarGroup(
 		statVars = svUnionResp.StatVars
 	}
 
-	var result *pb.StatVarGroups
+	result := &pb.StatVarGroups{StatVarGroups: map[string]*pb.StatVarGroupNode{}}
 	if cache == nil {
 		// Read stat var group cache from the frequent import group table. It has
 		// the latest and trustworthy stat var schemas and no need to merge with
@@ -155,18 +158,18 @@ func GetStatVarGroup(
 		if err != nil {
 			return nil, err
 		}
-		found := false
+		// Loop through import group by order. The stat var group is preferred from
+		// a higher ranked import group.
 		for _, btData := range btDataList {
 			for _, row := range btData {
-				svg, ok := row.Data.(*pb.StatVarGroups)
-				if ok && svg.StatVarGroups != nil {
-					result = svg
-					found = true
-					break
+				svgData, ok := row.Data.(*pb.StatVarGroups)
+				if ok && len(svgData.StatVarGroups) > 0 {
+					for k, v := range svgData.StatVarGroups {
+						if _, ok := result.StatVarGroups[k]; !ok {
+							result.StatVarGroups[k] = v
+						}
+					}
 				}
-			}
-			if found {
-				break
 			}
 		}
 	} else {
