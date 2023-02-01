@@ -49,19 +49,22 @@ type filterSpec struct {
 	upperLimit float64
 }
 
-// Check to see if an even meets the filter criteria.
+// Check to see if an event meets the filter criteria.
 //
 // This requires a specific format of the "value" field. If an event does not
-// conform to the format, keep it for now until we can handle all the format
-// properly.
+// conform to the format, do not keep the event.
 func keepEvent(event *pb.EventCollection_Event, spec filterSpec) bool {
+	if spec.prop == "" {
+		// No prop to filter by, keep event
+		return true
+	}
 	for prop, vals := range event.GetPropVals() {
 		if prop == spec.prop {
 			valStr := strings.TrimSpace(strings.TrimPrefix(vals.Vals[0], spec.unit))
 			v, err := strconv.ParseFloat(valStr, 64)
 			if err != nil {
-				// Can not convert the value, keep.
-				return true
+				// Can not convert the value, don't keep the event
+				return false
 			}
 			return v >= spec.lowerLimit && v <= spec.upperLimit
 		}
