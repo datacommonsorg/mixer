@@ -162,9 +162,9 @@ func GetStatVarGroup(
 		// a higher ranked import group.
 		for _, btData := range btDataList {
 			for _, row := range btData {
-				svg_data, ok := row.Data.(*pb.StatVarGroups)
-				if ok && len(svg_data.StatVarGroups) > 0 {
-					for k, v := range svg_data.StatVarGroups {
+				svgData, ok := row.Data.(*pb.StatVarGroups)
+				if ok && len(svgData.StatVarGroups) > 0 {
+					for k, v := range svgData.StatVarGroups {
 						if _, ok := result.StatVarGroups[k]; !ok {
 							result.StatVarGroups[k] = v
 						}
