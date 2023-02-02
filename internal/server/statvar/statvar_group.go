@@ -31,7 +31,8 @@ import (
 const (
 	// SvgRoot is the root stat var group of the hierarchy. It's a virtual entity
 	// that links to the top level category stat var groups.
-	SvgRoot = "dc/g/Root"
+	SvgRoot       = "dc/g/Root"
+	CustomSvgRoot = "dc/g/Custom_Root"
 )
 
 // Note this function modifies validSVG inside.
@@ -160,17 +161,34 @@ func GetStatVarGroup(
 		}
 		// Loop through import group by order. The stat var group is preferred from
 		// a higher ranked import group.
+		var customRootNode *pb.StatVarGroupNode
 		for _, btData := range btDataList {
 			for _, row := range btData {
 				svgData, ok := row.Data.(*pb.StatVarGroups)
 				if ok && len(svgData.StatVarGroups) > 0 {
 					for k, v := range svgData.StatVarGroups {
+						if k == CustomSvgRoot {
+							if customRootNode != nil {
+								continue
+							}
+							customRootNode = v
+						}
 						if _, ok := result.StatVarGroups[k]; !ok {
 							result.StatVarGroups[k] = v
 						}
 					}
 				}
 			}
+		}
+		if customRootNode != nil {
+			result.StatVarGroups[SvgRoot].ChildStatVarGroups = append(
+				result.StatVarGroups[SvgRoot].ChildStatVarGroups,
+				&pb.StatVarGroupNode_ChildSVG{
+					Id:                CustomSvgRoot,
+					SpecializedEntity: customRootNode.AbsoluteName,
+				},
+			)
+			result.StatVarGroups[SvgRoot].DescendentStatVarCount += customRootNode.DescendentStatVarCount
 		}
 	} else {
 		result = &pb.StatVarGroups{StatVarGroups: cache.RawSvg}
