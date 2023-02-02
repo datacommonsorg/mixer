@@ -181,14 +181,26 @@ func GetStatVarGroup(
 			}
 		}
 		if customRootNode != nil {
-			result.StatVarGroups[SvgRoot].ChildStatVarGroups = append(
-				result.StatVarGroups[SvgRoot].ChildStatVarGroups,
-				&pb.StatVarGroupNode_ChildSVG{
-					Id:                customSvgRoot,
-					SpecializedEntity: customRootNode.AbsoluteName,
-				},
-			)
-			result.StatVarGroups[SvgRoot].DescendentStatVarCount += customRootNode.DescendentStatVarCount
+			customRootExist := false
+			// If custom schema is built together with base schema, then it is
+			// already in the child stat var group of "dc/g/Root".
+			for _, x := range result.StatVarGroups[SvgRoot].ChildStatVarGroups {
+				if x.Id == customSvgRoot {
+					customRootExist = true
+					break
+				}
+			}
+			// Populate dc/g/Custom_Root as children of dc/g/Root
+			if !customRootExist {
+				result.StatVarGroups[SvgRoot].ChildStatVarGroups = append(
+					result.StatVarGroups[SvgRoot].ChildStatVarGroups,
+					&pb.StatVarGroupNode_ChildSVG{
+						Id:                customSvgRoot,
+						SpecializedEntity: customRootNode.AbsoluteName,
+					},
+				)
+				result.StatVarGroups[SvgRoot].DescendentStatVarCount += customRootNode.DescendentStatVarCount
+			}
 		}
 	} else {
 		result = &pb.StatVarGroups{StatVarGroups: cache.RawSvg}
