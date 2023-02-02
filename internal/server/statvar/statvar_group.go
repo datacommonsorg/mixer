@@ -31,7 +31,8 @@ import (
 const (
 	// SvgRoot is the root stat var group of the hierarchy. It's a virtual entity
 	// that links to the top level category stat var groups.
-	SvgRoot = "dc/g/Root"
+	SvgRoot       = "dc/g/Root"
+	customSvgRoot = "dc/g/Custom_Root"
 )
 
 // Note this function modifies validSVG inside.
@@ -160,16 +161,45 @@ func GetStatVarGroup(
 		}
 		// Loop through import group by order. The stat var group is preferred from
 		// a higher ranked import group.
+		var customRootNode *pb.StatVarGroupNode
 		for _, btData := range btDataList {
 			for _, row := range btData {
 				svgData, ok := row.Data.(*pb.StatVarGroups)
 				if ok && len(svgData.StatVarGroups) > 0 {
 					for k, v := range svgData.StatVarGroups {
+						if k == customSvgRoot {
+							if customRootNode != nil {
+								continue
+							}
+							customRootNode = v
+						}
 						if _, ok := result.StatVarGroups[k]; !ok {
 							result.StatVarGroups[k] = v
 						}
 					}
 				}
+			}
+		}
+		if customRootNode != nil {
+			customRootExist := false
+			// If custom schema is built together with base schema, then it is
+			// already in the child stat var group of "dc/g/Root".
+			for _, x := range result.StatVarGroups[SvgRoot].ChildStatVarGroups {
+				if x.Id == customSvgRoot {
+					customRootExist = true
+					break
+				}
+			}
+			// Populate dc/g/Custom_Root as children of dc/g/Root
+			if !customRootExist {
+				result.StatVarGroups[SvgRoot].ChildStatVarGroups = append(
+					result.StatVarGroups[SvgRoot].ChildStatVarGroups,
+					&pb.StatVarGroupNode_ChildSVG{
+						Id:                customSvgRoot,
+						SpecializedEntity: customRootNode.AbsoluteName,
+					},
+				)
+				result.StatVarGroups[SvgRoot].DescendentStatVarCount += customRootNode.DescendentStatVarCount
 			}
 		}
 	} else {
