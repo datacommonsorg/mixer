@@ -17,11 +17,19 @@
 # by local ESP container. These two containers share the same volume that holds
 # the mixer-grpc.json.
 
-FROM golang:1.15 AS base
+FROM golang:1.19 AS base
 
+WORKDIR /workspace
+
+# Install protoc
 RUN apt-get update && \
-    apt-get install -y protobuf-compiler && \
-    apt-get install -y git
+    apt-get upgrade -y && \
+    apt-get install -y unzip
+
+RUN curl -LO https://github.com/protocolbuffers/protobuf/releases/download/v3.19.4/protoc-3.19.4-linux-x86_64.zip
+RUN unzip protoc-3.19.4-linux-x86_64.zip
+RUN chmod +x /workspace/bin/protoc
+ENV PATH="${PATH}:/workspace/bin/"
 
 # Install protobuf go plugin
 ENV GO111MODULE=on

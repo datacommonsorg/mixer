@@ -235,6 +235,10 @@ which is compiled using [API Compiler](https://github.com/googleapis/api-compile
 
 ### Start mixer in minikube
 
+Mixer in Minikube (local Kubernetes) brings up mixer with REST endpoints through
+ESP. This requires docker and minikube to be installed in local environment. To
+start Mixer in Minikube, run:
+
 ```bash
 minikube start
 minikube addons enable gcp-auth
@@ -248,10 +252,17 @@ This exposes the local mixer service at `localhost:8081`.
 To verify the server serving request:
 
 ```bash
-curl http://localhost:8081/node/property-labels?dcids=Class
+curl http://localhost:8081/v1/bulk/observations/series?entities=geoId/06025&variables=Count_Person
 ```
 
-After code edit, the container images are automatically rebuilt and re-deployed to the local cluster.
+After code edit, the container images are automatically rebuilt and re-deployed
+to the local cluster.
+
+Starting Mixer and ESP locally allows development that relies on a custom mixer.
+For example, Data Commons website local development may need a mixer with custom
+Bigtables. To do this, update
+[deploy/local/custom_bigtable_info.yaml](../deploy/local/custom_bigtable_info.yaml)
+and the local mixer would be able to serve the custom Bigtable.
 
 ### Run Tests
 

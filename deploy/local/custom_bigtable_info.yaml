@@ -1,0 +1,5 @@
+project: <project_id>
+instance: <instance_id>
+tables:
+  - <table1>
+  - <table2>
