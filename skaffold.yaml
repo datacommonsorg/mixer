@@ -25,23 +25,23 @@ metadata:
   name: mixer
 build:
   artifacts:
-  - image: datacommons/mixer
-    context: .
-    docker:
-      dockerfile: build/Dockerfile
-      target: server
-  - image: datacommons/api-compiler
-    context: .
-    docker:
-      dockerfile: esp/Dockerfile
+    - image: datacommons/mixer
+      context: .
+      docker:
+        dockerfile: build/Dockerfile
+        target: server
+    - image: datacommons/api-compiler
+      context: .
+      docker:
+        dockerfile: esp/Dockerfile
 deploy:
   kubeContext: minikube
   kustomize:
     paths:
-    - deploy/overlays/local
+      - deploy/local
 portForward:
-- resourceType: service
-  resourceName: mixer-service-local
-  namespace: mixer
-  port: 80
-  localPort: 8081
+  - resourceType: service
+    resourceName: mixer-service
+    namespace: mixer
+    port: 80
+    localPort: 8081
