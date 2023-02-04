@@ -42,71 +42,111 @@ func s(str string) *string {
 // Outer key is Import Name, inner key is Rank Key, value is score.
 // When making changes to ranking, please also make sure to update golden files.
 var StatsRanking = map[string]map[RankKey]int{
-	"USCensusPEP_Annual_Population": {{MM: s("CensusPEPSurvey"), OP: s("P1Y")}: 0}, // Population
-
-	"CensusACS5YearSurvey": {{MM: s("CensusACS5yrSurvey")}: 1}, // Population
-
-	"CensusACS5YearSurvey_AggCountry": {{MM: s("CensusACS5yrSurvey")}: 1}, // Population
-
-	"CensusUSAMedianAgeIncome": {{MM: s("CensusACS5yrSurvey")}: 1}, // Population
-
-	"USDecennialCensus_RedistrictingRelease": {{MM: s("USDecennialCensus")}: 2}, // Population
-
-	"EurostatData": {
-		{MM: s("EurostatRegionalPopulationData")}: 3, // Population
-		{MM: s("")}: 2, // Unemployment Rate
+	// Population
+	"USCensusPEP_Annual_Population": {
+		{MM: s("CensusPEPSurvey"), OP: s("P1Y")}: 0,
 	},
 
-	"WorldDevelopmentIndicators": {{}: 4}, // Population
+	// Population
+	"CensusACS5YearSurvey": {
+		{MM: s("CensusACS5yrSurvey")}: 1,
+	},
 
-	// Prefer Indian Census population for Indian states, over something like OECD.
-	"IndiaCensus_Primary": {{}: 5}, // Population
+	// Population
+	"CensusACS5YearSurvey_AggCountry": {
+		{MM: s("CensusACS5yrSurvey")}: 1,
+	},
 
-	"WikipediaStatsData": {{MM: s("Wikipedia")}: 1001}, // Population
+	// Population
+	"CensusUSAMedianAgeIncome": {{MM: s("CensusACS5yrSurvey")}: 1},
 
-	"HumanCuratedStats": {{MM: s("HumanCuratedStats")}: 1002}, // Population
+	// Population
+	"USDecennialCensus_RedistrictingRelease": {{MM: s("USDecennialCensus")}: 2},
 
-	"WikidataPopulation": {{MM: s("WikidataPopulation")}: 1003}, // Population
+	"EurostatData": {
+		// Population
+		{MM: s("EurostatRegionalPopulationData")}: 3,
+		// Unemployment Rate
+		{MM: s("")}: 2,
+	},
 
-	"BLS_LAUS": {{MM: s("BLSSeasonallyUnadjusted")}: 0}, // Unemployment Rate
+	// Population
+	"WorldDevelopmentIndicators": {{}: 4},
 
-	"BLS_CPS": {{MM: s("BLSSeasonallyAdjusted")}: 1}, // Labor Force data ranked higher than WDI (above)}, or Eurostat
+	// Prefer Indian Census population for Indian states, over something like
+	// OECD.
+	// Population
+	"IndiaCensus_Primary": {{}: 5},
 
-	"NYT_COVID19": {{MM: s("NYT_COVID19_GitHub")}: 0}, // Covid
+	// Population
+	"WikipediaStatsData": {{MM: s("Wikipedia")}: 1001},
 
-	"CDC500": {{MM: s("AgeAdjustedPrevalence")}: 0}, // CDC500
+	// Population
+	"HumanCuratedStats": {{MM: s("HumanCuratedStats")}: 1002},
 
-	"UNEnergy": {{MM: s("")}: 0}, // Electricity
+	// Population
+	"WikidataPopulation": {{MM: s("WikidataPopulation")}: 1003},
 
-	"EIA_Electricity": {{}: 1}, // Electricity
+	// Unemployment Rate
+	"BLS_LAUS": {{MM: s("BLSSeasonallyUnadjusted")}: 0},
+
+	// Labor Force data ranked higher than WDI (above)}, or Eurostat
+	"BLS_CPS": {{MM: s("BLSSeasonallyAdjusted")}: 1},
+
+	// Covid
+	"NYT_COVID19": {{MM: s("NYT_COVID19_GitHub")}: 0},
+
+	// CDC500
+	"CDC500": {{MM: s("AgeAdjustedPrevalence")}: 0},
+
+	// Electricity
+	"UNEnergy": {{MM: s("")}: 0},
+
+	// Electricity
+	"EIA_Electricity": {{}: 1},
 
 	// Prefer observational weather over gridded over projections
-	"NOAA_EPA_Observed_Historical_Weather": {{}: 0}, // Observational
+	// Observational
+	"NOAA_EPA_Observed_Historical_Weather": {{}: 0},
 
-	"Copernicus_ECMWF_ERA5_Monthly": {{}: 1}, // Gridded reanalysis
+	// Gridded reanalysis
+	"Copernicus_ECMWF_ERA5_Monthly": {{}: 1},
 
-	"NASA_NEXDCP30": {{MM: s("NASA_Mean_CCSM4"), OP: s("P1M")}: 2}, // IPCC Projections
+	// IPCC Projections
+	"NASA_NEXDCP30": {{MM: s("NASA_Mean_CCSM4"), OP: s("P1M")}: 2},
 
-	"NASA_NEXDCP30_AggrDiffStats": {{OP: s("P1M")}: 3}, // IPCC Projections
+	// IPCC Projections
+	"NASA_NEXDCP30_AggrDiffStats": {{OP: s("P1M")}: 3},
 
-	// TODO: Remove this once disppears from backend (replaced by NASA_NEXDCP30_AggrDiffStats).
-	"NASA_NEXDCP30_StatVarSeriesAggr": {{OP: s("P1M")}: 4}, // IPCC Projections
+	// TODO: Remove this once disppears from backend (replaced by
+	// NASA_NEXDCP30_AggrDiffStats).
+	// IPCC Projections
+	"NASA_NEXDCP30_StatVarSeriesAggr": {{OP: s("P1M")}: 4},
 
-	"NASA_WetBulbComputation_Aggregation": { // Wet bulb year aggregation
+	// Wet bulb year aggregation
+	"NASA_WetBulbComputation_Aggregation": {
 		{MM: s("NASA_Mean_HadGEM2-AO")}: 0,
 		{}:                              1,
 	},
 
-	"NASA_WetBulbComputation": {{MM: s("NASA_Mean_HadGEM2-AO")}: 2}, // Wet bulb
+	// Wet bulb
+	"NASA_WetBulbComputation": {{MM: s("NASA_Mean_HadGEM2-AO")}: 2},
+
+	"NASA_NEXGDDP_CMIP6_Subnational_AggrDiffStats_LongRangeProjections": {
+		{MM: s("NASA_Mean_CMIP6_GFDL-ESM4")}: 0,
+		{MM: s("NASA_Mean_CMIP6_GFDL-CM4")}:  1,
+	},
 
 	// Prefer FBI Hate Crime Publications over Data Commons Aggregate
 	// Note: https://autopush.datacommons.org/tools/timeline#statsVar=Count_CriminalIncidents_IsHateCrime&place=country%2FUSA
 	// Expected data 2010-2020: 6628, 6222, 5796, 5928, 5479, 5850, 6121, 7175, 7120, 7314, 8263
 	// Note: https://autopush.datacommons.org/tools/timeline#place=geoId%2F06&statsVar=Count_CriminalIncidents_IsHateCrime
 	// Expected data 2004-2010: 1393, 1379, 1297, 1400, 1381, 1015, 1092
-	"FBIHateCrimePublications": {{}: 0}, // FBI Hate Crime Publications
+	// FBI Hate Crime Publications
+	"FBIHateCrimePublications": {{}: 0},
 
-	"FBIHateCrime": {{}: 1}, // FBI Hate Crime Aggregations
+	// FBI Hate Crime Aggregations
+	"FBIHateCrime": {{}: 1},
 
 	// Prefer USDollar over Risk Score for Expected Annual Loss in FEMA National Risk Index (NRI)
 	"USFEMA_NationalRiskIndex": {
