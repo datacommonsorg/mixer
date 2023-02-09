@@ -61,7 +61,7 @@ var (
 // It needs Application Default Credentials to run locally or need to
 // provide service account credential when running on GCP.
 const (
-	bigqueryBillingProject = "datcom-ci"
+	bigqueryBillingProject = "datcom-store"
 	tmcfCsvBucket          = "datcom-public"
 	tmcfCsvPrefix          = "food"
 	mixerProject           = "datcom-ci"
