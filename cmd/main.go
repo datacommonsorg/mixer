@@ -51,10 +51,9 @@ var (
 	useALTS      = flag.Bool("use_alts", false, "Whether to use ALTS server authentication")
 	mixerProject = flag.String("mixer_project", "", "The GCP project to run the mixer instance.")
 	// BigQuery (Sparql)
-	useBigquery            = flag.Bool("use_bigquery", true, "Use Bigquery to serve Sparql Query")
-	bigqueryBillingProject = flag.String("bigquery_billing_projet", "datcom-store", "GCP project to bill for Bigquery quries")
-	bqDataset              = flag.String("bq_dataset", "", "DataCommons BigQuery dataset.")
-	schemaPath             = flag.String("schema_path", "", "The directory that contains the schema mapping files")
+	useBigquery = flag.Bool("use_bigquery", true, "Use Bigquery to serve Sparql Query")
+	bqDataset   = flag.String("bq_dataset", "", "DataCommons BigQuery dataset.")
+	schemaPath  = flag.String("schema_path", "", "The directory that contains the schema mapping files")
 	// Base Bigtable Cache
 	useBaseBt          = flag.Bool("use_base_bt", true, "Use base bigtable cache")
 	baseBigtableInfo   = flag.String("base_bigtable_info", "", "Yaml formatted text containing information for base Bigtable")
@@ -145,7 +144,7 @@ func main() {
 	// BigQuery
 	var bqClient *bigquery.Client
 	if *useBigquery {
-		bqClient, err = bigquery.NewClient(ctx, *bigqueryBillingProject)
+		bqClient, err = bigquery.NewClient(ctx, *mixerProject)
 		if err != nil {
 			log.Fatalf("Failed to create Bigquery client: %v", err)
 		}
