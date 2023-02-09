@@ -5,6 +5,50 @@
       "dcid": "Count_CriminalActivities_MurderAndNonNegligentManslaughter_Female_AsFractionOf_Count_Person_Female"
     },
     {
+      "name": "Population: Bachelors Degree or Higher, Female, American Indian or Alaska Native Alone",
+      "dcid": "dc/4qtse8536dg63"
+    },
+    {
+      "name": "Population: Bachelors Degree or Higher, Female, Asian Alone",
+      "dcid": "dc/eg6rrdr1tkf76"
+    },
+    {
+      "name": "Population: Bachelors Degree or Higher, Female, Black or African American Alone",
+      "dcid": "dc/t7403chwvspm"
+    },
+    {
+      "name": "Population: Bachelors Degree or Higher, Female, Divorced in The Past 12 Months",
+      "dcid": "Count_Person_EducationalAttainmentBachelorsDegreeOrHigher_Female_DivorcedInThePast12Months"
+    },
+    {
+      "name": "Population: Bachelors Degree or Higher, Female, Hispanic or Latino",
+      "dcid": "dc/06f0jf8xvzw4f"
+    },
+    {
+      "name": "Population: Bachelors Degree or Higher, Female, Married in The Past 12 Months",
+      "dcid": "Count_Person_EducationalAttainmentBachelorsDegreeOrHigher_Female_MarriedInThePast12Months"
+    },
+    {
+      "name": "Population: Bachelors Degree or Higher, Female, Native Hawaiian or Other Pacific Islander Alone",
+      "dcid": "dc/v7yl3k9w3h7e8"
+    },
+    {
+      "name": "Population: Bachelors Degree or Higher, Female, Some Other Race Alone",
+      "dcid": "dc/skv4cd74gsnpf"
+    },
+    {
+      "name": "Population: Bachelors Degree or Higher, Female, Two or More Races",
+      "dcid": "dc/hyfn2tlyz48lb"
+    },
+    {
+      "name": "Population: Bachelors Degree or Higher, Female, White Alone",
+      "dcid": "dc/5hc4etrfyj9qg"
+    },
+    {
+      "name": "Population: Bachelors Degree or Higher, Female, White Alone Not Hispanic or Latino",
+      "dcid": "dc/wd5g31pcj0zr3"
+    },
+    {
       "name": "Population: Civilian, Female, Non Institutionalized",
       "dcid": "Count_Person_Civilian_Female_NonInstitutionalized"
     },
@@ -729,12 +773,156 @@
       "dcid": "dc/gdce2gd8jpb96"
     },
     {
+      "name": "Population: High School Graduate Ged or Alternative, Female, American Indian or Alaska Native Alone",
+      "dcid": "dc/nzby95gg431yg"
+    },
+    {
+      "name": "Population: High School Graduate Ged or Alternative, Female, Asian Alone",
+      "dcid": "dc/mkb700gmwjn2c"
+    },
+    {
+      "name": "Population: High School Graduate Ged or Alternative, Female, Black or African American Alone",
+      "dcid": "dc/zjjfp97521yv9"
+    },
+    {
+      "name": "Population: High School Graduate Ged or Alternative, Female, Hispanic or Latino",
+      "dcid": "dc/0r4qqmjxw3xe"
+    },
+    {
+      "name": "Population: High School Graduate Ged or Alternative, Female, Native Hawaiian or Other Pacific Islander Alone",
+      "dcid": "dc/5pkkpv87t13e6"
+    },
+    {
+      "name": "Population: High School Graduate Ged or Alternative, Female, Some Other Race Alone",
+      "dcid": "dc/79jbm5zv0f5s7"
+    },
+    {
+      "name": "Population: High School Graduate Ged or Alternative, Female, Two or More Races",
+      "dcid": "dc/dfjxbxwz1ss2"
+    },
+    {
+      "name": "Population: High School Graduate Ged or Alternative, Female, White Alone",
+      "dcid": "dc/04zn512rcrx23"
+    },
+    {
+      "name": "Population: High School Graduate Ged or Alternative, Female, White Alone Not Hispanic or Latino",
+      "dcid": "dc/z5rhq3c5qd5pd"
+    },
+    {
+      "name": "Population: High School Graduate Includes Equivalency, Female, American Indian or Alaska Native Alone",
+      "dcid": "dc/x1nc3mrc2dpq7"
+    },
+    {
+      "name": "Population: High School Graduate Includes Equivalency, Female, Asian Alone",
+      "dcid": "dc/7tctphw60mstd"
+    },
+    {
+      "name": "Population: High School Graduate Includes Equivalency, Female, Black or African American Alone",
+      "dcid": "dc/kp4mfrz2432hc"
+    },
+    {
+      "name": "Population: High School Graduate Includes Equivalency, Female, Hispanic or Latino",
+      "dcid": "dc/qpsfm7g91ksnb"
+    },
+    {
+      "name": "Population: High School Graduate Includes Equivalency, Female, Native Hawaiian or Other Pacific Islander Alone",
+      "dcid": "dc/w5e4bhwph82b9"
+    },
+    {
+      "name": "Population: High School Graduate Includes Equivalency, Female, Some Other Race Alone",
+      "dcid": "dc/vn3t2e2df18xb"
+    },
+    {
+      "name": "Population: High School Graduate Includes Equivalency, Female, Two or More Races",
+      "dcid": "dc/c8e1pl3hkw2t5"
+    },
+    {
+      "name": "Population: High School Graduate Includes Equivalency, Female, White Alone",
+      "dcid": "dc/5trrbtpffls3"
+    },
+    {
+      "name": "Population: High School Graduate Includes Equivalency, Female, White Alone Not Hispanic or Latino",
+      "dcid": "dc/20p4v7bwb4ggf"
+    },
+    {
+      "name": "Population: Less Than High School Diploma, Female, American Indian or Alaska Native Alone",
+      "dcid": "dc/tyc40c36ey286"
+    },
+    {
+      "name": "Population: Less Than High School Diploma, Female, Asian Alone",
+      "dcid": "dc/cm6c4ldwcvq7g"
+    },
+    {
+      "name": "Population: Less Than High School Diploma, Female, Black or African American Alone",
+      "dcid": "dc/nvxghp3p89bbb"
+    },
+    {
+      "name": "Population: Less Than High School Diploma, Female, Hispanic or Latino",
+      "dcid": "dc/4786yl5837tyf"
+    },
+    {
+      "name": "Population: Less Than High School Diploma, Female, Native Hawaiian or Other Pacific Islander Alone",
+      "dcid": "dc/rkk2qytzv30eb"
+    },
+    {
+      "name": "Population: Less Than High School Diploma, Female, Some Other Race Alone",
+      "dcid": "dc/tbe5rlxz0qx71"
+    },
+    {
+      "name": "Population: Less Than High School Diploma, Female, Two or More Races",
+      "dcid": "dc/zrtnqhw8mhdp1"
+    },
+    {
+      "name": "Population: Less Than High School Diploma, Female, White Alone",
+      "dcid": "dc/vgp4mf3hsv365"
+    },
+    {
+      "name": "Population: Less Than High School Diploma, Female, White Alone Not Hispanic or Latino",
+      "dcid": "dc/h024xx4dcw5x2"
+    },
+    {
       "name": "Population: Not in Labor Force, Female, Divorced in The Past 12 Months",
       "dcid": "Count_Person_NotInLaborForce_Female_DivorcedInThePast12Months"
     },
     {
       "name": "Population: Not in Labor Force, Female, Married in The Past 12 Months",
       "dcid": "Count_Person_NotInLaborForce_Female_MarriedInThePast12Months"
+    },
+    {
+      "name": "Population: Some College or Associates Degree, Female, American Indian or Alaska Native Alone",
+      "dcid": "dc/mqxdr821c7kw3"
+    },
+    {
+      "name": "Population: Some College or Associates Degree, Female, Asian Alone",
+      "dcid": "dc/whn99h1l0xgth"
+    },
+    {
+      "name": "Population: Some College or Associates Degree, Female, Black or African American Alone",
+      "dcid": "dc/56md3ndhrmvm7"
+    },
+    {
+      "name": "Population: Some College or Associates Degree, Female, Hispanic or Latino",
+      "dcid": "dc/3w039ndqy7qv1"
+    },
+    {
+      "name": "Population: Some College or Associates Degree, Female, Native Hawaiian or Other Pacific Islander Alone",
+      "dcid": "dc/kpcfmb6lp3zpd"
+    },
+    {
+      "name": "Population: Some College or Associates Degree, Female, Some Other Race Alone",
+      "dcid": "dc/epw58ne8mytn5"
+    },
+    {
+      "name": "Population: Some College or Associates Degree, Female, Two or More Races",
+      "dcid": "dc/q98jxycvs422f"
+    },
+    {
+      "name": "Population: Some College or Associates Degree, Female, White Alone",
+      "dcid": "dc/9sneyc8lpk8dc"
+    },
+    {
+      "name": "Population: Some College or Associates Degree, Female, White Alone Not Hispanic or Latino",
+      "dcid": "dc/bqy52h7y4nq34"
     }
   ],
   "statVarGroups": [
@@ -1905,148 +2093,6 @@
       ]
     },
     {
-      "dcid": "dc/g/Person_Age-Years14_Gender-Female_Race",
-      "name": "Person With Age = Years 14, Gender = Female, Race",
-      "statVars": [
-        {
-          "name": "Population: Years 14, Female, American Indian or Alaska Native Alone",
-          "dcid": "Count_Person_14Years_Female_AmericanIndianAndAlaskaNativeAlone"
-        },
-        {
-          "name": "Population: Years 14, Female, Asian Alone",
-          "dcid": "Count_Person_14Years_Female_AsianAlone"
-        },
-        {
-          "name": "Population: Years 14, Female, Asian or Pacific Islander",
-          "dcid": "Count_Person_14Years_Female_AsianOrPacificIslander"
-        },
-        {
-          "name": "Population: Years 14, Female, Black or African American Alone",
-          "dcid": "Count_Person_14Years_Female_BlackOrAfricanAmericanAlone"
-        },
-        {
-          "name": "Population: Years 14, Female, Hispanic or Latino",
-          "dcid": "Count_Person_14Years_Female_HispanicOrLatino"
-        },
-        {
-          "name": "Population: Years 14, Female, Hispanic or Latino \u0026 American Indian And Alaska Native Alone or In Combination With One or More Other Races",
-          "dcid": "Count_Person_14Years_Female_HispanicOrLatino_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRaces"
-        },
-        {
-          "name": "Population: Years 14, Female, Hispanic or Latino \u0026 American Indian or Alaska Native Alone",
-          "dcid": "Count_Person_14Years_Female_HispanicOrLatino_AmericanIndianAndAlaskaNativeAlone"
-        },
-        {
-          "name": "Population: Years 14, Female, Hispanic or Latino \u0026 Asian Alone",
-          "dcid": "Count_Person_14Years_Female_HispanicOrLatino_AsianAlone"
-        },
-        {
-          "name": "Population: Years 14, Female, Hispanic or Latino \u0026 Asian Alone or In Combination With One or More Other Races",
-          "dcid": "Count_Person_14Years_Female_HispanicOrLatino_AsianAloneOrInCombinationWithOneOrMoreOtherRaces"
-        },
-        {
-          "name": "Population: Years 14, Female, Hispanic or Latino \u0026 Asian or Pacific Islander",
-          "dcid": "Count_Person_14Years_Female_HispanicOrLatino_AsianOrPacificIslander"
-        },
-        {
-          "name": "Population: Years 14, Female, Hispanic or Latino \u0026 Black or African American Alone",
-          "dcid": "Count_Person_14Years_Female_HispanicOrLatino_BlackOrAfricanAmericanAlone"
-        },
-        {
-          "name": "Population: Years 14, Female, Hispanic or Latino \u0026 Black or African American Alone or In Combination With One or More Other Races",
-          "dcid": "Count_Person_14Years_Female_HispanicOrLatino_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces"
-        },
-        {
-          "name": "Population: Years 14, Female, Hispanic or Latino \u0026 Native Hawaiian And Other Pacific Islander Alone or In Combination With One or More Other Races",
-          "dcid": "Count_Person_14Years_Female_HispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAloneOrInCombinationWithOneOrMoreOtherRaces"
-        },
-        {
-          "name": "Population: Years 14, Female, Hispanic or Latino \u0026 Native Hawaiian or Other Pacific Islander Alone",
-          "dcid": "Count_Person_14Years_Female_HispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAlone"
-        },
-        {
-          "name": "Population: Years 14, Female, Hispanic or Latino \u0026 Two or More Races",
-          "dcid": "Count_Person_14Years_Female_HispanicOrLatino_TwoOrMoreRaces"
-        },
-        {
-          "name": "Population: Years 14, Female, Hispanic or Latino \u0026 White Alone",
-          "dcid": "Count_Person_14Years_Female_HispanicOrLatino_WhiteAlone"
-        },
-        {
-          "name": "Population: Years 14, Female, Hispanic or Latino \u0026 White Alone or In Combination With One or More Other Races",
-          "dcid": "Count_Person_14Years_Female_HispanicOrLatino_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
-        },
-        {
-          "name": "Population: Years 14, Female, Native Hawaiian or Other Pacific Islander Alone",
-          "dcid": "Count_Person_14Years_Female_NativeHawaiianAndOtherPacificIslanderAlone"
-        },
-        {
-          "name": "Population: Years 14, Female, Non White",
-          "dcid": "Count_Person_14Years_Female_NonWhite"
-        },
-        {
-          "name": "Population: Years 14, Female, Not Hispanic or Latino",
-          "dcid": "Count_Person_14Years_Female_NotHispanicOrLatino"
-        },
-        {
-          "name": "Population: Years 14, Female, Not Hispanic or Latino \u0026 American Indian And Alaska Native Alone or In Combination With One or More Other Races",
-          "dcid": "Count_Person_14Years_Female_NotHispanicOrLatino_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRaces"
-        },
-        {
-          "name": "Population: Years 14, Female, Not Hispanic or Latino \u0026 American Indian or Alaska Native Alone",
-          "dcid": "Count_Person_14Years_Female_NotHispanicOrLatino_AmericanIndianAndAlaskaNativeAlone"
-        },
-        {
-          "name": "Population: Years 14, Female, Not Hispanic or Latino \u0026 Asian Alone",
-          "dcid": "Count_Person_14Years_Female_NotHispanicOrLatino_AsianAlone"
-        },
-        {
-          "name": "Population: Years 14, Female, Not Hispanic or Latino \u0026 Asian Alone or In Combination With One or More Other Races",
-          "dcid": "Count_Person_14Years_Female_NotHispanicOrLatino_AsianAloneOrInCombinationWithOneOrMoreOtherRaces"
-        },
-        {
-          "name": "Population: Years 14, Female, Not Hispanic or Latino \u0026 Asian or Pacific Islander",
-          "dcid": "Count_Person_14Years_Female_NotHispanicOrLatino_AsianOrPacificIslander"
-        },
-        {
-          "name": "Population: Years 14, Female, Not Hispanic or Latino \u0026 Black or African American Alone",
-          "dcid": "Count_Person_14Years_Female_NotHispanicOrLatino_BlackOrAfricanAmericanAlone"
-        },
-        {
-          "name": "Population: Years 14, Female, Not Hispanic or Latino \u0026 Black or African American Alone or In Combination With One or More Other Races",
-          "dcid": "Count_Person_14Years_Female_NotHispanicOrLatino_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces"
-        },
-        {
-          "name": "Population: Years 14, Female, Not Hispanic or Latino \u0026 Native Hawaiian And Other Pacific Islander Alone or In Combination With One or More Other Races",
-          "dcid": "Count_Person_14Years_Female_NotHispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAloneOrInCombinationWithOneOrMoreOtherRaces"
-        },
-        {
-          "name": "Population: Years 14, Female, Not Hispanic or Latino \u0026 Native Hawaiian or Other Pacific Islander Alone",
-          "dcid": "Count_Person_14Years_Female_NotHispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAlone"
-        },
-        {
-          "name": "Population: Years 14, Female, Not Hispanic or Latino \u0026 Two or More Races",
-          "dcid": "Count_Person_14Years_Female_NotHispanicOrLatino_TwoOrMoreRaces"
-        },
-        {
-          "name": "Population: Years 14, Female, Not Hispanic or Latino \u0026 White Alone or In Combination With One or More Other Races",
-          "dcid": "Count_Person_14Years_Female_NotHispanicOrLatino_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
-        },
-        {
-          "name": "Population: Years 14, Female, Two or More Races",
-          "dcid": "Count_Person_14Years_Female_TwoOrMoreRaces"
-        },
-        {
-          "name": "Population: Years 14, Female, White Alone",
-          "dcid": "Count_Person_14Years_Female_WhiteAlone"
-        },
-        {
-          "name": "Population: Years 14, Female, White Alone Not Hispanic or Latino",
-          "dcid": "Count_Person_14Years_Female_WhiteAloneNotHispanicOrLatino"
-        }
-      ]
-    },
-    {
       "dcid": "dc/g/Person_Age-Years100Onwards_Gender-Female_Race",
       "name": "Person With Age = 100 Years or More, Gender = Female, Race",
       "statVars": [
@@ -2407,6 +2453,64 @@
       ]
     },
     {
+      "dcid": "dc/g/Person_Age-Years14_Gender-Female_Race",
+      "name": "Person With Age = Years 14, Gender = Female, Race",
+      "statVars": [
+        {
+          "name": "Population: Years 14, Female, American Indian or Alaska Native Alone",
+          "dcid": "Count_Person_14Years_Female_AmericanIndianAndAlaskaNativeAlone"
+        },
+        {
+          "name": "Population: Years 14, Female, Asian Alone",
+          "dcid": "Count_Person_14Years_Female_AsianAlone"
+        },
+        {
+          "name": "Population: Years 14, Female, Asian or Pacific Islander",
+          "dcid": "Count_Person_14Years_Female_AsianOrPacificIslander"
+        },
+        {
+          "name": "Population: Years 14, Female, Black or African American Alone",
+          "dcid": "Count_Person_14Years_Female_BlackOrAfricanAmericanAlone"
+        },
+        {
+          "name": "Population: Years 14, Female, Hispanic or Latino",
+          "dcid": "Count_Person_14Years_Female_HispanicOrLatino"
+        },
+        {
+          "name": "Population: Years 14, Female, Hispanic or Latino \u0026 American Indian And Alaska Native Alone or In Combination With One or More Other Races",
+          "dcid": "Count_Person_14Years_Female_HispanicOrLatino_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRaces"
+        },
+        {
+          "name": "Population: Years 14, Female, Hispanic or Latino \u0026 American Indian or Alaska Native Alone",
+          "dcid": "Count_Person_14Years_Female_HispanicOrLatino_AmericanIndianAndAlaskaNativeAlone"
+        },
+        {
+          "name": "Population: Years 14, Female, Hispanic or Latino \u0026 Asian Alone",
+          "dcid": "Count_Person_14Years_Female_HispanicOrLatino_AsianAlone"
+        },
+        {
+          "name": "Population: Years 14, Female, Hispanic or Latino \u0026 Asian Alone or In Combination With One or More Other Races",
+          "dcid": "Count_Person_14Years_Female_HispanicOrLatino_AsianAloneOrInCombinationWithOneOrMoreOtherRaces"
+        },
+        {
+          "name": "Population: Years 14, Female, Hispanic or Latino \u0026 Asian or Pacific Islander",
+          "dcid": "Count_Person_14Years_Female_HispanicOrLatino_AsianOrPacificIslander"
+        },
+        {
+          "name": "Population: Years 14, Female, Hispanic or Latino \u0026 Black or African American Alone",
+          "dcid": "Count_Person_14Years_Female_HispanicOrLatino_BlackOrAfricanAmericanAlone"
+        },
+        {
+          "name": "Population: Years 14, Female, Hispanic or Latino \u0026 Black or African American Alone or In Combination With One or More Other Races",
+          "dcid": "Count_Person_14Years_Female_HispanicOrLatino_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces"
+        },
+        {
+          "name": "Population: Years 14, Female, Hispanic or Latino \u0026 Native Hawaiian And Other Pacific Islander Alone or In Combination With One or More Other Races",
+          "dcid": "Count_Person_14Years_Female_HispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAloneOrInCombinationWithOneOrMoreOtherRaces"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/Person_Age-Years15To17_Gender-Female_Race",
       "name": "Person With Age = 15 - 17 Years, Gender = Female, Race",
       "statVars": [
@@ -2743,6 +2847,48 @@
       ]
     },
     {
+      "dcid": "dc/g/Person_Age-Years5To19_Gender-Female_Race",
+      "name": "Person With Age = 5 - 19 Years, Gender = Female, Race",
+      "statVars": [
+        {
+          "name": "Population: 5 - 19 Years, Female, American Indian or Alaska Native Alone",
+          "dcid": "dc/lhm5jqzqw9eh6"
+        },
+        {
+          "name": "Population: 5 - 19 Years, Female, Asian Alone",
+          "dcid": "dc/7ze0b65khtxm1"
+        },
+        {
+          "name": "Population: 5 - 19 Years, Female, Black or African American Alone",
+          "dcid": "dc/9tje7t59y5y02"
+        },
+        {
+          "name": "Population: 5 - 19 Years, Female, Hispanic or Latino",
+          "dcid": "dc/xzecyytxdwky7"
+        },
+        {
+          "name": "Population: 5 - 19 Years, Female, Native Hawaiian or Other Pacific Islander Alone",
+          "dcid": "dc/pl02dd7y395eg"
+        },
+        {
+          "name": "Population: 5 - 19 Years, Female, Some Other Race Alone",
+          "dcid": "dc/jltsyjw3tdes7"
+        },
+        {
+          "name": "Population: 5 - 19 Years, Female, Two or More Races",
+          "dcid": "dc/xrpwshke8kcs"
+        },
+        {
+          "name": "Population: 5 - 19 Years, Female, White Alone",
+          "dcid": "dc/9z8b964ld1xg7"
+        },
+        {
+          "name": "Population: 5 - 19 Years, Female, White Alone Not Hispanic or Latino",
+          "dcid": "dc/4wd0sckvzn9vc"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/Person_Age-Years75To84_Gender-Female_Race",
       "name": "Person With Age = 75 - 84 Years, Gender = Female, Race",
       "statVars": [
@@ -2781,216 +2927,6 @@
         {
           "name": "Population: 75 - 84 Years, Female, White Alone Not Hispanic or Latino",
           "dcid": "Count_Person_75To84Years_Female_WhiteAloneNotHispanicOrLatino"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_EducationalAttainment-BachelorsDegreeOrHigher_Gender-Female_Race",
-      "name": "Person With Educational Attainment = Bachelors Degree or Higher, Gender = Female, Race",
-      "statVars": [
-        {
-          "name": "Population: Bachelors Degree or Higher, Female, American Indian or Alaska Native Alone",
-          "dcid": "dc/4qtse8536dg63"
-        },
-        {
-          "name": "Population: Bachelors Degree or Higher, Female, Asian Alone",
-          "dcid": "dc/eg6rrdr1tkf76"
-        },
-        {
-          "name": "Population: Bachelors Degree or Higher, Female, Black or African American Alone",
-          "dcid": "dc/t7403chwvspm"
-        },
-        {
-          "name": "Population: Bachelors Degree or Higher, Female, Hispanic or Latino",
-          "dcid": "dc/06f0jf8xvzw4f"
-        },
-        {
-          "name": "Population: Bachelors Degree or Higher, Female, Native Hawaiian or Other Pacific Islander Alone",
-          "dcid": "dc/v7yl3k9w3h7e8"
-        },
-        {
-          "name": "Population: Bachelors Degree or Higher, Female, Some Other Race Alone",
-          "dcid": "dc/skv4cd74gsnpf"
-        },
-        {
-          "name": "Population: Bachelors Degree or Higher, Female, Two or More Races",
-          "dcid": "dc/hyfn2tlyz48lb"
-        },
-        {
-          "name": "Population: Bachelors Degree or Higher, Female, White Alone",
-          "dcid": "dc/5hc4etrfyj9qg"
-        },
-        {
-          "name": "Population: Bachelors Degree or Higher, Female, White Alone Not Hispanic or Latino",
-          "dcid": "dc/wd5g31pcj0zr3"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_EducationalAttainment-HighSchoolGraduateGedOrAlternative_Gender-Female_Race",
-      "name": "Person With Educational Attainment = High School Graduate Ged or Alternative, Gender = Female, Race",
-      "statVars": [
-        {
-          "name": "Population: High School Graduate Ged or Alternative, Female, American Indian or Alaska Native Alone",
-          "dcid": "dc/nzby95gg431yg"
-        },
-        {
-          "name": "Population: High School Graduate Ged or Alternative, Female, Asian Alone",
-          "dcid": "dc/mkb700gmwjn2c"
-        },
-        {
-          "name": "Population: High School Graduate Ged or Alternative, Female, Black or African American Alone",
-          "dcid": "dc/zjjfp97521yv9"
-        },
-        {
-          "name": "Population: High School Graduate Ged or Alternative, Female, Hispanic or Latino",
-          "dcid": "dc/0r4qqmjxw3xe"
-        },
-        {
-          "name": "Population: High School Graduate Ged or Alternative, Female, Native Hawaiian or Other Pacific Islander Alone",
-          "dcid": "dc/5pkkpv87t13e6"
-        },
-        {
-          "name": "Population: High School Graduate Ged or Alternative, Female, Some Other Race Alone",
-          "dcid": "dc/79jbm5zv0f5s7"
-        },
-        {
-          "name": "Population: High School Graduate Ged or Alternative, Female, Two or More Races",
-          "dcid": "dc/dfjxbxwz1ss2"
-        },
-        {
-          "name": "Population: High School Graduate Ged or Alternative, Female, White Alone",
-          "dcid": "dc/04zn512rcrx23"
-        },
-        {
-          "name": "Population: High School Graduate Ged or Alternative, Female, White Alone Not Hispanic or Latino",
-          "dcid": "dc/z5rhq3c5qd5pd"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_EducationalAttainment-HighSchoolGraduateIncludesEquivalency_Gender-Female_Race",
-      "name": "Person With Educational Attainment = High School Graduate Includes Equivalency, Gender = Female, Race",
-      "statVars": [
-        {
-          "name": "Population: High School Graduate Includes Equivalency, Female, American Indian or Alaska Native Alone",
-          "dcid": "dc/x1nc3mrc2dpq7"
-        },
-        {
-          "name": "Population: High School Graduate Includes Equivalency, Female, Asian Alone",
-          "dcid": "dc/7tctphw60mstd"
-        },
-        {
-          "name": "Population: High School Graduate Includes Equivalency, Female, Black or African American Alone",
-          "dcid": "dc/kp4mfrz2432hc"
-        },
-        {
-          "name": "Population: High School Graduate Includes Equivalency, Female, Hispanic or Latino",
-          "dcid": "dc/qpsfm7g91ksnb"
-        },
-        {
-          "name": "Population: High School Graduate Includes Equivalency, Female, Native Hawaiian or Other Pacific Islander Alone",
-          "dcid": "dc/w5e4bhwph82b9"
-        },
-        {
-          "name": "Population: High School Graduate Includes Equivalency, Female, Some Other Race Alone",
-          "dcid": "dc/vn3t2e2df18xb"
-        },
-        {
-          "name": "Population: High School Graduate Includes Equivalency, Female, Two or More Races",
-          "dcid": "dc/c8e1pl3hkw2t5"
-        },
-        {
-          "name": "Population: High School Graduate Includes Equivalency, Female, White Alone",
-          "dcid": "dc/5trrbtpffls3"
-        },
-        {
-          "name": "Population: High School Graduate Includes Equivalency, Female, White Alone Not Hispanic or Latino",
-          "dcid": "dc/20p4v7bwb4ggf"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_EducationalAttainment-LessThanHighSchoolDiploma_Gender-Female_Race",
-      "name": "Person With Educational Attainment = Less Than High School Diploma, Gender = Female, Race",
-      "statVars": [
-        {
-          "name": "Population: Less Than High School Diploma, Female, American Indian or Alaska Native Alone",
-          "dcid": "dc/tyc40c36ey286"
-        },
-        {
-          "name": "Population: Less Than High School Diploma, Female, Asian Alone",
-          "dcid": "dc/cm6c4ldwcvq7g"
-        },
-        {
-          "name": "Population: Less Than High School Diploma, Female, Black or African American Alone",
-          "dcid": "dc/nvxghp3p89bbb"
-        },
-        {
-          "name": "Population: Less Than High School Diploma, Female, Hispanic or Latino",
-          "dcid": "dc/4786yl5837tyf"
-        },
-        {
-          "name": "Population: Less Than High School Diploma, Female, Native Hawaiian or Other Pacific Islander Alone",
-          "dcid": "dc/rkk2qytzv30eb"
-        },
-        {
-          "name": "Population: Less Than High School Diploma, Female, Some Other Race Alone",
-          "dcid": "dc/tbe5rlxz0qx71"
-        },
-        {
-          "name": "Population: Less Than High School Diploma, Female, Two or More Races",
-          "dcid": "dc/zrtnqhw8mhdp1"
-        },
-        {
-          "name": "Population: Less Than High School Diploma, Female, White Alone",
-          "dcid": "dc/vgp4mf3hsv365"
-        },
-        {
-          "name": "Population: Less Than High School Diploma, Female, White Alone Not Hispanic or Latino",
-          "dcid": "dc/h024xx4dcw5x2"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_EducationalAttainment-SomeCollegeOrAssociatesDegree_Gender-Female_Race",
-      "name": "Person With Educational Attainment = Some College or Associates Degree, Gender = Female, Race",
-      "statVars": [
-        {
-          "name": "Population: Some College or Associates Degree, Female, American Indian or Alaska Native Alone",
-          "dcid": "dc/mqxdr821c7kw3"
-        },
-        {
-          "name": "Population: Some College or Associates Degree, Female, Asian Alone",
-          "dcid": "dc/whn99h1l0xgth"
-        },
-        {
-          "name": "Population: Some College or Associates Degree, Female, Black or African American Alone",
-          "dcid": "dc/56md3ndhrmvm7"
-        },
-        {
-          "name": "Population: Some College or Associates Degree, Female, Hispanic or Latino",
-          "dcid": "dc/3w039ndqy7qv1"
-        },
-        {
-          "name": "Population: Some College or Associates Degree, Female, Native Hawaiian or Other Pacific Islander Alone",
-          "dcid": "dc/kpcfmb6lp3zpd"
-        },
-        {
-          "name": "Population: Some College or Associates Degree, Female, Some Other Race Alone",
-          "dcid": "dc/epw58ne8mytn5"
-        },
-        {
-          "name": "Population: Some College or Associates Degree, Female, Two or More Races",
-          "dcid": "dc/q98jxycvs422f"
-        },
-        {
-          "name": "Population: Some College or Associates Degree, Female, White Alone",
-          "dcid": "dc/9sneyc8lpk8dc"
-        },
-        {
-          "name": "Population: Some College or Associates Degree, Female, White Alone Not Hispanic or Latino",
-          "dcid": "dc/bqy52h7y4nq34"
         }
       ]
     },
@@ -3665,36 +3601,6 @@
         {
           "name": "Population: 45 - 54 Years, Female, With Public Health Insurance",
           "dcid": "dc/4t34d32mwr7e9"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years5To19_Gender-Female_Race",
-      "name": "Person With Age = 5 - 19 Years, Gender = Female, Race",
-      "statVars": [
-        {
-          "name": "Population: 5 - 19 Years, Female, American Indian or Alaska Native Alone",
-          "dcid": "dc/lhm5jqzqw9eh6"
-        },
-        {
-          "name": "Population: 5 - 19 Years, Female, Asian Alone",
-          "dcid": "dc/7ze0b65khtxm1"
-        },
-        {
-          "name": "Population: 5 - 19 Years, Female, Native Hawaiian or Other Pacific Islander Alone",
-          "dcid": "dc/pl02dd7y395eg"
-        },
-        {
-          "name": "Population: 5 - 19 Years, Female, Some Other Race Alone",
-          "dcid": "dc/jltsyjw3tdes7"
-        },
-        {
-          "name": "Population: 5 - 19 Years, Female, Two or More Races",
-          "dcid": "dc/xrpwshke8kcs"
-        },
-        {
-          "name": "Population: 5 - 19 Years, Female, White Alone",
-          "dcid": "dc/9z8b964ld1xg7"
         }
       ]
     },
@@ -6809,6 +6715,16 @@
       ]
     },
     {
+      "dcid": "dc/g/Person_ChildrenStatus-WithOwnChildrenUnder18_Gender-Female",
+      "name": "Person With Children Status = With Own Children Under 18, Gender = Female",
+      "statVars": [
+        {
+          "name": "Population: With Own Children Under 18, Female",
+          "dcid": "Count_Person_WithOwnChildrenUnder18_Female"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/Person_EducationalAttainment-AssociatesDegree_Gender-Female",
       "name": "Person With Educational Attainment = Associates Degree, Gender = Female",
       "statVars": [
@@ -9489,36 +9405,6 @@
       ]
     },
     {
-      "dcid": "dc/g/Person_Age-Years5To19_Gender-Female_Race-BlackOrAfricanAmericanAlone",
-      "name": "Person With Age = 5 - 19 Years, Gender = Female, Race = Black or African American Alone",
-      "statVars": [
-        {
-          "name": "Population: 5 - 19 Years, Female, Black or African American Alone",
-          "dcid": "dc/9tje7t59y5y02"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years5To19_Gender-Female_Race-HispanicOrLatino",
-      "name": "Person With Age = 5 - 19 Years, Gender = Female, Race = Hispanic or Latino",
-      "statVars": [
-        {
-          "name": "Population: 5 - 19 Years, Female, Hispanic or Latino",
-          "dcid": "dc/xzecyytxdwky7"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years5To19_Gender-Female_Race-WhiteAloneNotHispanicOrLatino",
-      "name": "Person With Age = 5 - 19 Years, Gender = Female, Race = White Alone Not Hispanic or Latino",
-      "statVars": [
-        {
-          "name": "Population: 5 - 19 Years, Female, White Alone Not Hispanic or Latino",
-          "dcid": "dc/4wd0sckvzn9vc"
-        }
-      ]
-    },
-    {
       "dcid": "dc/g/Person_Age-YearsUpto5_Gender-Female_PovertyStatus-AbovePovertyLevelInThePast12Months",
       "name": "Person With Age = 5 Years or Less, Gender = Female, Poverty Status = Above Poverty Level in The Past 12 Months",
       "statVars": [
@@ -10319,66 +10205,6 @@
       ]
     },
     {
-      "dcid": "dc/g/Person_Age-Years15_Gender-Female_PovertyStatus-AbovePovertyLevelInThePast12Months",
-      "name": "Person With Age = Years 15, Gender = Female, Poverty Status = Above Poverty Level in The Past 12 Months",
-      "statVars": [
-        {
-          "name": "Population: Years 15, Female, Above Poverty Level in The Past 12 Months",
-          "dcid": "Count_Person_15Years_Female_AbovePovertyLevelInThePast12Months"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years15_Gender-Female_Race",
-      "name": "Person With Age = Years 15, Gender = Female, Race",
-      "statVars": [
-        {
-          "name": "Population: Years 15, Female, Asian or Pacific Islander",
-          "dcid": "Count_Person_15Years_Female_AsianOrPacificIslander"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years15_Gender-Female_Race-AmericanIndianOrAlaskaNativeAlone",
-      "name": "Person With Age = Years 15, Gender = Female, Race = American Indian or Alaska Native Alone",
-      "statVars": [
-        {
-          "name": "Population: Years 15, Female, American Indian or Alaska Native Alone",
-          "dcid": "Count_Person_15Years_Female_AmericanIndianAndAlaskaNativeAlone"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years15_Gender-Female_Race-AsianAlone",
-      "name": "Person With Age = Years 15, Gender = Female, Race = Asian Alone",
-      "statVars": [
-        {
-          "name": "Population: Years 15, Female, Asian Alone",
-          "dcid": "Count_Person_15Years_Female_AsianAlone"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_EducationalAttainment-BachelorsDegreeOrHigher_Gender-Female_MaritalStatus-DivorcedInThePast12Months",
-      "name": "Person With Educational Attainment = Bachelors Degree or Higher, Gender = Female, Marital Status = Divorced in The Past 12 Months",
-      "statVars": [
-        {
-          "name": "Population: Bachelors Degree or Higher, Female, Divorced in The Past 12 Months",
-          "dcid": "Count_Person_EducationalAttainmentBachelorsDegreeOrHigher_Female_DivorcedInThePast12Months"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_EducationalAttainment-BachelorsDegreeOrHigher_Gender-Female_MaritalStatus-MarriedInThePast12Months",
-      "name": "Person With Educational Attainment = Bachelors Degree or Higher, Gender = Female, Marital Status = Married in The Past 12 Months",
-      "statVars": [
-        {
-          "name": "Population: Bachelors Degree or Higher, Female, Married in The Past 12 Months",
-          "dcid": "Count_Person_EducationalAttainmentBachelorsDegreeOrHigher_Female_MarriedInThePast12Months"
-        }
-      ]
-    },
-    {
       "dcid": "dc/g/HateCrimeIncidents_TargetedGender-Female",
       "name": "Hate Crime Incidents With Targeted Gender = Female"
     },
@@ -10729,10 +10555,6 @@
     {
       "dcid": "dc/g/Person_BachelorsDegreeMajor_Gender-Female",
       "name": "Person With Bachelors Degree Major, Gender = Female"
-    },
-    {
-      "dcid": "dc/g/Person_ChildrenStatus-WithOwnChildrenUnder18_Gender-Female",
-      "name": "Person With Children Status = With Own Children Under 18, Gender = Female"
     },
     {
       "dcid": "dc/g/Person_ChildrenStatus_Gender-Female",
@@ -11777,6 +11599,62 @@
     {
       "dcid": "dc/g/MedicalConditionIncident_Age-Years0To4_Gender-Female_MedicalStatus",
       "name": "Medical Condition Incident With Age = 0 - 4 Years, Gender = Female, Medical Status"
+    },
+    {
+      "dcid": "dc/g/MedicalConditionIncident_Age-Years15To34_ClimaticSeason-SummerSeason_Gender-Female",
+      "name": "Medical Condition Incident With Age = 15 - 34 Years, Climatic Season = Summer Season, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/MedicalConditionIncident_Age-Years15To34_ClimaticSeason_Gender-Female",
+      "name": "Medical Condition Incident With Age = 15 - 34 Years, Climatic Season, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/MedicalConditionIncident_Age-Years15To34_Gender-Female_MedicalCondition",
+      "name": "Medical Condition Incident With Age = 15 - 34 Years, Gender = Female, Medical Condition"
+    },
+    {
+      "dcid": "dc/g/MedicalConditionIncident_Age-Years15To34_Gender-Female_MedicalCondition-HeatStress",
+      "name": "Medical Condition Incident With Age = 15 - 34 Years, Gender = Female, Medical Condition = Heat Stress"
+    },
+    {
+      "dcid": "dc/g/MedicalConditionIncident_Age-Years15To34_Gender-Female_MedicalStatus",
+      "name": "Medical Condition Incident With Age = 15 - 34 Years, Gender = Female, Medical Status"
+    },
+    {
+      "dcid": "dc/g/MedicalConditionIncident_Age-Years35To64_ClimaticSeason-SummerSeason_Gender-Female",
+      "name": "Medical Condition Incident With Age = 35 - 64 Years, Climatic Season = Summer Season, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/MedicalConditionIncident_Age-Years35To64_ClimaticSeason_Gender-Female",
+      "name": "Medical Condition Incident With Age = 35 - 64 Years, Climatic Season, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/MedicalConditionIncident_Age-Years35To64_Gender-Female_MedicalCondition",
+      "name": "Medical Condition Incident With Age = 35 - 64 Years, Gender = Female, Medical Condition"
+    },
+    {
+      "dcid": "dc/g/MedicalConditionIncident_Age-Years35To64_Gender-Female_MedicalCondition-HeatStress",
+      "name": "Medical Condition Incident With Age = 35 - 64 Years, Gender = Female, Medical Condition = Heat Stress"
+    },
+    {
+      "dcid": "dc/g/MedicalConditionIncident_Age-Years35To64_Gender-Female_MedicalStatus",
+      "name": "Medical Condition Incident With Age = 35 - 64 Years, Gender = Female, Medical Status"
+    },
+    {
+      "dcid": "dc/g/MedicalConditionIncident_Age-Years5To14_ClimaticSeason-SummerSeason_Gender-Female",
+      "name": "Medical Condition Incident With Age = 5 - 14 Years, Climatic Season = Summer Season, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/MedicalConditionIncident_Age-Years5To14_ClimaticSeason_Gender-Female",
+      "name": "Medical Condition Incident With Age = 5 - 14 Years, Climatic Season, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/MedicalConditionIncident_Age-Years5To14_Gender-Female_MedicalCondition",
+      "name": "Medical Condition Incident With Age = 5 - 14 Years, Gender = Female, Medical Condition"
+    },
+    {
+      "dcid": "dc/g/MedicalConditionIncident_Age-Years5To14_Gender-Female_MedicalCondition-HeatStress",
+      "name": "Medical Condition Incident With Age = 5 - 14 Years, Gender = Female, Medical Condition = Heat Stress"
     }
   ],
   "matches": [

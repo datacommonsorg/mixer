@@ -137,7 +137,7 @@
                 "Country"
               ],
               "dcid": "country/ATA",
-              "provenanceId": "dc/sm3m2w3"
+              "provenanceId": "dc/7he3522"
             },
             {
               "name": "British Antarctic Territory",
@@ -170,7 +170,7 @@
                 "Country"
               ],
               "dcid": "country/ATN",
-              "provenanceId": "dc/sm3m2w3"
+              "provenanceId": "dc/7he3522"
             },
             {
               "name": "Australia",
@@ -1606,7 +1606,7 @@
                 "Country"
               ],
               "dcid": "country/PRI",
-              "provenanceId": "dc/sm3m2w3"
+              "provenanceId": "dc/7he3522"
             },
             {
               "name": "North Korea",
@@ -1754,7 +1754,7 @@
                 "Country"
               ],
               "dcid": "country/SJM",
-              "provenanceId": "dc/sm3m2w3"
+              "provenanceId": "dc/7he3522"
             },
             {
               "name": "Solomon Islands",
@@ -10265,5 +10265,5 @@
       "node": "dummy"
     }
   ],
-  "nextToken": "H4sIAAAAAAAA/2zMMcvCQAyA4a/X60cIDiWC9Peog5tCwcVBzhIl0EvKNR3892JntxdeePCEtBcb7SVDGvuJB8ms+O/vic/PX4/+KEBFEUJbUYCaAkQK0OANNwdb1O8XLrMp7jKneSmcWf3Ialk0uRXc9p5cZv+i11QkPUam0AFFqNoVXrte+UgRmg4+AAAA//8BAAD//56VtUenAAAA"
+  "nextToken": "H4sIAAAAAAAA/2zMMcvCQAyA4a/X60cIDhJB+nvUwU2h4OIgZ4kS6CXlmg7+e2lnl3d54cEz0kFssLf0aehG7iWz4r9/Rr68fj36owAVRQjbigLUFCBSgAbvuDnarP64cplMcZ85TXPhzOonVsuiya3grvPkMvmC3lKR9ByYFixCtTa0QBHqlY8UoWnhCwAA//8BAAD//xmXGLKnAAAA"
 }

@@ -7,19 +7,43 @@
       "node": "geoId/06053",
       "values": [
         {
-          "name": "95004",
+          "name": "93210",
           "types": [
             "CensusZipCodeTabulationArea"
           ],
-          "dcid": "zip/95004",
+          "dcid": "zip/93210",
           "provenanceId": "dc/5n63hr1"
         },
         {
-          "name": "95076",
+          "name": "93426",
           "types": [
             "CensusZipCodeTabulationArea"
           ],
-          "dcid": "zip/95076",
+          "dcid": "zip/93426",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "93451",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/93451",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "93461",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/93461",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "93930",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/93930",
           "provenanceId": "dc/5n63hr1"
         }
       ]
@@ -27,5 +51,6 @@
     {
       "node": "geoId/06"
     }
-  ]
+  ],
+  "nextToken": "H4sIAAAAAAAA/+IK5OJOT833TNE3MDMwNQZz/MtSi3ISC4q5pJ1T84pLi6MyC5zzU1JDEpNKcxJLMvPzHItSE4WYJFiFmDgYhZg4mISYOJiFWDhYwCKsAAAAAP//AQAA//8P5ydSUwAAAA=="
 }
