@@ -10370,15 +10370,6 @@
           "provenanceId": "dc/5n63hr1"
         },
         {
-          "name": "Delhi",
-          "types": [
-            "AdministrativeArea1",
-            "City"
-          ],
-          "dcid": "wikidataId/Q1353",
-          "provenanceId": "dc/5n63hr1"
-        },
-        {
           "name": "Le Tampon",
           "types": [
             "AdministrativeArea4",
@@ -11789,6 +11780,15 @@
           "provenanceId": "dc/5j06ly1"
         },
         {
+          "name": "Funafuti",
+          "types": [
+            "AdministrativeArea1",
+            "City"
+          ],
+          "dcid": "wikidataId/Q34126",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
           "name": "Chandigarh",
           "types": [
             "AdministrativeArea1",
@@ -11801,5 +11801,5 @@
       ]
     }
   ],
-  "nextToken": "H4sIAAAAAAAA/5TPwU7EIBCA4XSWuoR4Gi/zGq6uMd7q3vVivNcALc1aLLKYfYx9Y+Ooie0FPBEm+b8B1Sixc/GozuLxzTxaddHoVze69xja6JJpgmkvEWhAISsaECQgyBUKKXhW01BCbBBoYmKaERMTUwlxhUCaCT0jNBO6hLhGIMuEnRGWCVtCbDOv2C6I9b0P/tD1mexmkfENV3SqsJbV1/Fb1VJ8T2s6Vepu0Z0/GNf1Lz703uvMzs1y55P/GP/7vWe337edyWS3ar3zhzGGP+XPAIESl2lWJi7TJwAAAP//AQAA//906pE2nwIAAA=="
+  "nextToken": "H4sIAAAAAAAA/5TPwU7EIBCA4XQWXEI8jZd5DHXVeDPr3vVivNcALelaLLKYPkbf2Eg8aEkaemSS/xtGPkh2sGGUZ2H80M9GXuzVu+3tZ/B1sFHvva6vEKhDEBWCAASxQSYYdcgEp64EuEagIQOGBAwlwA6BVAaoBKgS4AaBTAaYBJgS4HbxB7sZsH103p2adlWUXrihqfqXcMF+Rlxwmip5P4vOn7Rt2jfnW+fU4rrL+boX99Wvu+rVHo91oxejO7k9uFMf/J/ud4BAMeti6uI3AAAA//8BAAD//3zNgNWIAgAA"
 }
