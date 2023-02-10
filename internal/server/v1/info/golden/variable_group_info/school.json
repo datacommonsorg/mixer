@@ -108,7 +108,8 @@
           "Population Count of Person With Educational Attainment is Pre Kindergarten And Kindergarten"
         ],
         "displayName": "Population: Pre Kindergarten And Kindergarten",
-        "definition": "mp=count,pt=Person,educationalAttainment=PreKindergartenAndKindergarten"
+        "definition": "mp=count,pt=Person,educationalAttainment=PreKindergartenAndKindergarten",
+        "hasData": true
       },
       {
         "id": "Count_Person_EducationalAttainmentPrimarySchool",
@@ -334,7 +335,7 @@
         "displayName": "Person With Educational Attainment = Upper Secondary Education or Higher"
       }
     ],
-    "descendentStatVarCount": 475,
+    "descendentStatVarCount": 476,
     "parentStatVarGroups": [
       "dc/g/Education"
     ]
