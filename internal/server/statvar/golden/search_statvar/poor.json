@@ -1,4 +1,34 @@
 {
+  "statVars": [
+    {
+      "name": "Count of Household: Without Food Stamps in The Past 12 Months, Below Poverty Level in The Past 12 Months",
+      "dcid": "Count_Household_WithoutFoodStampsInThePast12Months_BelowPovertyLevelInThePast12Months"
+    },
+    {
+      "name": "Population: 12 - 17 Years, Below Poverty Level in The Past 12 Months",
+      "dcid": "Count_Person_12To17Years_BelowPovertyLevelInThePast12Months"
+    },
+    {
+      "name": "Population: 18 - 59 Years, Below Poverty Level in The Past 12 Months",
+      "dcid": "Count_Person_18To59Years_BelowPovertyLevelInThePast12Months"
+    },
+    {
+      "name": "Population: 6 Years or Less, Below Poverty Level in The Past 12 Months",
+      "dcid": "Count_Person_Upto6Years_BelowPovertyLevelInThePast12Months"
+    },
+    {
+      "name": "Population: 60 - 74 Years, Below Poverty Level in The Past 12 Months",
+      "dcid": "Count_Person_60To74Years_BelowPovertyLevelInThePast12Months"
+    },
+    {
+      "name": "Population: 75 - 84 Years, Below Poverty Level in The Past 12 Months",
+      "dcid": "Count_Person_75To84Years_BelowPovertyLevelInThePast12Months"
+    },
+    {
+      "name": "Population: 85 Years or More, Below Poverty Level in The Past 12 Months",
+      "dcid": "Count_Person_85OrMoreYears_BelowPovertyLevelInThePast12Months"
+    }
+  ],
   "statVarGroups": [
     {
       "dcid": "dc/g/Household_BenefitsStatus-WithFoodStampsInThePast12Months_PlaceOfBirth",
@@ -1369,54 +1399,24 @@
       ]
     },
     {
-      "dcid": "dc/g/Person_Age_PovertyStatus-BelowPovertyLevelInThePast12Months",
-      "name": "Person With Age, Poverty Status = Below Poverty Level in The Past 12 Months",
+      "dcid": "dc/g/Household_HouseholdType-FamilyHousehold_PovertyStatus-BelowPovertyLevelInThePast12Months",
+      "name": "Household With Household Type = Family Household, Poverty Status = Below Poverty Level in The Past 12 Months",
       "statVars": [
         {
-          "name": "Population: 12 - 17 Years, Below Poverty Level in The Past 12 Months",
-          "dcid": "Count_Person_12To17Years_BelowPovertyLevelInThePast12Months"
+          "name": "Count of Household: Family Household, Below Poverty Level in The Past 12 Months",
+          "dcid": "Count_Household_FamilyHousehold_BelowPovertyLevelInThePast12Months"
         },
         {
-          "name": "Population: 18 - 59 Years, Below Poverty Level in The Past 12 Months",
-          "dcid": "Count_Person_18To59Years_BelowPovertyLevelInThePast12Months"
+          "name": "Count of Household: Family Household, 65 Years or More, Below Poverty Level in The Past 12 Months",
+          "dcid": "Count_Household_HouseholderAge65OrMoreYears_FamilyHousehold_BelowPovertyLevelInThePast12Months"
         },
         {
-          "name": "Population: 6 Years or Less, Below Poverty Level in The Past 12 Months",
-          "dcid": "Count_Person_Upto6Years_BelowPovertyLevelInThePast12Months"
+          "name": "Count of Household: Family Household, Full Time Year Round Worker, Below Poverty Level in The Past 12 Months",
+          "dcid": "Count_Household_FullTimeYearRoundWorker_FamilyHousehold_BelowPovertyLevelInThePast12Months"
         },
         {
-          "name": "Population: 60 - 74 Years, Below Poverty Level in The Past 12 Months",
-          "dcid": "Count_Person_60To74Years_BelowPovertyLevelInThePast12Months"
-        },
-        {
-          "name": "Population: 75 - 84 Years, Below Poverty Level in The Past 12 Months",
-          "dcid": "Count_Person_75To84Years_BelowPovertyLevelInThePast12Months"
-        },
-        {
-          "name": "Population: 85 Years or More, Below Poverty Level in The Past 12 Months",
-          "dcid": "Count_Person_85OrMoreYears_BelowPovertyLevelInThePast12Months"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_LanguageSpokenAtHome_PovertyStatus-BelowPovertyLevelInThePast12Months",
-      "name": "Person With Language Spoken At Home, Poverty Status = Below Poverty Level in The Past 12 Months",
-      "statVars": [
-        {
-          "name": "Population: 5 Years or More, Language Other Than English, Below Poverty Level in The Past 12 Months",
-          "dcid": "Count_Person_5OrMoreYears_LanguageOtherThanEnglishSpokenAtHome_BelowPovertyLevelInThePast12Months"
-        },
-        {
-          "name": "Population: 5 Years or More, Only English, Below Poverty Level in The Past 12 Months",
-          "dcid": "Count_Person_5OrMoreYears_OnlyEnglishSpokenAtHome_BelowPovertyLevelInThePast12Months"
-        },
-        {
-          "name": "Population: 5 Years or More, Spanish or Spanish Creole, Below Poverty Level in The Past 12 Months",
-          "dcid": "Count_Person_5OrMoreYears_SpanishOrSpanishCreoleSpokenAtHome_BelowPovertyLevelInThePast12Months"
-        },
-        {
-          "name": "Population: 5 Years or More, Spanish, Below Poverty Level in The Past 12 Months",
-          "dcid": "Count_Person_5OrMoreYears_SpanishSpokenAtHome_BelowPovertyLevelInThePast12Months"
+          "name": "Percent of Household: Public School, Family Household, With ACSEDChild, Below Poverty Level in The Past 12 Months",
+          "dcid": "dc/l81bkq93ypbs3"
         }
       ]
     },
@@ -1685,6 +1685,28 @@
       ]
     },
     {
+      "dcid": "dc/g/Person_Age-Years5Onwards_LanguageSpokenAtHome_PovertyStatus-BelowPovertyLevelInThePast12Months",
+      "name": "Person With Age = 5 Years or More, Language Spoken At Home, Poverty Status = Below Poverty Level in The Past 12 Months",
+      "statVars": [
+        {
+          "name": "Population: 5 Years or More, Language Other Than English, Below Poverty Level in The Past 12 Months",
+          "dcid": "Count_Person_5OrMoreYears_LanguageOtherThanEnglishSpokenAtHome_BelowPovertyLevelInThePast12Months"
+        },
+        {
+          "name": "Population: 5 Years or More, Only English, Below Poverty Level in The Past 12 Months",
+          "dcid": "Count_Person_5OrMoreYears_OnlyEnglishSpokenAtHome_BelowPovertyLevelInThePast12Months"
+        },
+        {
+          "name": "Population: 5 Years or More, Spanish or Spanish Creole, Below Poverty Level in The Past 12 Months",
+          "dcid": "Count_Person_5OrMoreYears_SpanishOrSpanishCreoleSpokenAtHome_BelowPovertyLevelInThePast12Months"
+        },
+        {
+          "name": "Population: 5 Years or More, Spanish, Below Poverty Level in The Past 12 Months",
+          "dcid": "Count_Person_5OrMoreYears_SpanishSpokenAtHome_BelowPovertyLevelInThePast12Months"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/Person_Gender-Female_GlobalActivityLimitationindicator_SocialSupportLevel-ReceivingPoorSocialSupport",
       "name": "Person With Gender = Female, Global Activity Limitationindicator, Social Support Level = Receiving Poor Social Support",
       "statVars": [
@@ -1787,24 +1809,6 @@
         {
           "name": "Count of Household: With Food Stamps in The Past 12 Months, Family Household, Two or More Workers in The Past 12 Months",
           "dcid": "Count_Household_WithFoodStampsInThePast12Months_FamilyHousehold_TwoOrMoreWorkersInThePast12Months"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Household_HouseholdType-FamilyHousehold_PovertyStatus-BelowPovertyLevelInThePast12Months",
-      "name": "Household With Household Type = Family Household, Poverty Status = Below Poverty Level in The Past 12 Months",
-      "statVars": [
-        {
-          "name": "Count of Household: Family Household, Below Poverty Level in The Past 12 Months",
-          "dcid": "Count_Household_FamilyHousehold_BelowPovertyLevelInThePast12Months"
-        },
-        {
-          "name": "Count of Household: Family Household, 65 Years or More, Below Poverty Level in The Past 12 Months",
-          "dcid": "Count_Household_HouseholderAge65OrMoreYears_FamilyHousehold_BelowPovertyLevelInThePast12Months"
-        },
-        {
-          "name": "Count of Household: Family Household, Full Time Year Round Worker, Below Poverty Level in The Past 12 Months",
-          "dcid": "Count_Household_FullTimeYearRoundWorker_FamilyHousehold_BelowPovertyLevelInThePast12Months"
         }
       ]
     },
@@ -2021,20 +2025,6 @@
       ]
     },
     {
-      "dcid": "dc/g/Person_PovertyStatus-BelowPovertyLevelInThePast12Months",
-      "name": "Person With Poverty Status = Below Poverty Level in The Past 12 Months",
-      "statVars": [
-        {
-          "name": "Population: Below Poverty Level in The Past 12 Months",
-          "dcid": "Count_Person_BelowPovertyLevelInThePast12Months"
-        },
-        {
-          "name": "Population: Below Poverty Level in The Past 12 Months (Per Capita)",
-          "dcid": "Count_Person_BelowPovertyLevelInThePast12Months_AsFractionOf_Count_Person"
-        }
-      ]
-    },
-    {
       "dcid": "dc/g/Household_BenefitsStatus-WithFoodStampsInThePast12Months_DisabilityStatus",
       "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Disability Status",
       "statVars": [
@@ -2077,30 +2067,16 @@
       ]
     },
     {
-      "dcid": "dc/g/Person_Gender-Female_PovertyStatus-BelowPovertyLevelInThePast12Months",
-      "name": "Person With Gender = Female, Poverty Status = Below Poverty Level in The Past 12 Months",
+      "dcid": "dc/g/Person_Gender_PovertyStatus-BelowPovertyLevelInThePast12Months",
+      "name": "Person With Gender, Poverty Status = Below Poverty Level in The Past 12 Months",
       "statVars": [
         {
           "name": "Percentage: Female, Below Poverty Level in The Past 12 Months",
           "dcid": "dc/k0zg5lw8686z8"
         },
         {
-          "name": "Population: Female, Below Poverty Level in The Past 12 Months",
-          "dcid": "Count_Person_Female_BelowPovertyLevelInThePast12Months"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Male_PovertyStatus-BelowPovertyLevelInThePast12Months",
-      "name": "Person With Gender = Male, Poverty Status = Below Poverty Level in The Past 12 Months",
-      "statVars": [
-        {
           "name": "Percentage: Male, Below Poverty Level in The Past 12 Months",
           "dcid": "dc/frgn798mhwtw"
-        },
-        {
-          "name": "Population: Male, Below Poverty Level in The Past 12 Months",
-          "dcid": "Count_Person_Male_BelowPovertyLevelInThePast12Months"
         }
       ]
     },
@@ -2357,40 +2333,30 @@
       ]
     },
     {
-      "dcid": "dc/g/Person_Gender-Female_MaritalStatus_PovertyStatus-BelowPovertyLevelInThePast12Months",
-      "name": "Person With Gender = Female, Marital Status, Poverty Status = Below Poverty Level in The Past 12 Months",
+      "dcid": "dc/g/Person_Gender_MaritalStatus-DivorcedInThePast12Months_PovertyStatus-BelowPovertyLevelInThePast12Months",
+      "name": "Person With Gender, Marital Status = Divorced in The Past 12 Months, Poverty Status = Below Poverty Level in The Past 12 Months",
       "statVars": [
         {
           "name": "Population: Female, Divorced in The Past 12 Months, Below Poverty Level in The Past 12 Months",
           "dcid": "Count_Person_Female_DivorcedInThePast12Months_BelowPovertyLevelInThePast12Months"
         },
         {
-          "name": "Population: Female, Married in The Past 12 Months, Below Poverty Level in The Past 12 Months",
-          "dcid": "Count_Person_Female_MarriedInThePast12Months_BelowPovertyLevelInThePast12Months"
+          "name": "Population: Male, Divorced in The Past 12 Months, Below Poverty Level in The Past 12 Months",
+          "dcid": "Count_Person_Male_DivorcedInThePast12Months_BelowPovertyLevelInThePast12Months"
         }
       ]
     },
     {
-      "dcid": "dc/g/Person_Gender-Male_MaritalStatus_PovertyStatus-BelowPovertyLevelInThePast12Months",
-      "name": "Person With Gender = Male, Marital Status, Poverty Status = Below Poverty Level in The Past 12 Months",
+      "dcid": "dc/g/Person_Gender_MaritalStatus-MarriedInThePast12Months_PovertyStatus-BelowPovertyLevelInThePast12Months",
+      "name": "Person With Gender, Marital Status = Married in The Past 12 Months, Poverty Status = Below Poverty Level in The Past 12 Months",
       "statVars": [
         {
-          "name": "Population: Male, Divorced in The Past 12 Months, Below Poverty Level in The Past 12 Months",
-          "dcid": "Count_Person_Male_DivorcedInThePast12Months_BelowPovertyLevelInThePast12Months"
+          "name": "Population: Female, Married in The Past 12 Months, Below Poverty Level in The Past 12 Months",
+          "dcid": "Count_Person_Female_MarriedInThePast12Months_BelowPovertyLevelInThePast12Months"
         },
         {
           "name": "Population: Male, Married in The Past 12 Months, Below Poverty Level in The Past 12 Months",
           "dcid": "Count_Person_Male_MarriedInThePast12Months_BelowPovertyLevelInThePast12Months"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Household_PovertyStatus-BelowPovertyLevelInThePast12Months",
-      "name": "Household With Poverty Status = Below Poverty Level in The Past 12 Months",
-      "statVars": [
-        {
-          "name": "Percent of Household: Public School, Family Household, With ACSEDChild, Below Poverty Level in The Past 12 Months",
-          "dcid": "dc/l81bkq93ypbs3"
         }
       ]
     },
@@ -2491,16 +2457,6 @@
         {
           "name": "Count of Household: With Food Stamps in The Past 12 Months, Without Children Under 18",
           "dcid": "Count_Household_WithFoodStampsInThePast12Months_WithoutChildrenUnder18"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Household_BenefitsStatus_PovertyStatus-BelowPovertyLevelInThePast12Months",
-      "name": "Household With Benefits Status, Poverty Status = Below Poverty Level in The Past 12 Months",
-      "statVars": [
-        {
-          "name": "Count of Household: Without Food Stamps in The Past 12 Months, Below Poverty Level in The Past 12 Months",
-          "dcid": "Count_Household_WithoutFoodStampsInThePast12Months_BelowPovertyLevelInThePast12Months"
         }
       ]
     },
@@ -2711,96 +2667,6 @@
         {
           "name": "Percentage Receiving Poor Social Support Among Urban Population",
           "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Urban"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-AmericanIndianOrAlaskaNativeAlone",
-      "name": "Person With Poverty Status = Below Poverty Level in The Past 12 Months, Race = American Indian or Alaska Native Alone",
-      "statVars": [
-        {
-          "name": "Population: Below Poverty Level in The Past 12 Months, American Indian or Alaska Native Alone",
-          "dcid": "Count_Person_BelowPovertyLevelInThePast12Months_AmericanIndianOrAlaskaNativeAlone"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-AsianAlone",
-      "name": "Person With Poverty Status = Below Poverty Level in The Past 12 Months, Race = Asian Alone",
-      "statVars": [
-        {
-          "name": "Population: Below Poverty Level in The Past 12 Months, Asian Alone",
-          "dcid": "Count_Person_BelowPovertyLevelInThePast12Months_AsianAlone"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-BlackOrAfricanAmericanAlone",
-      "name": "Person With Poverty Status = Below Poverty Level in The Past 12 Months, Race = Black or African American Alone",
-      "statVars": [
-        {
-          "name": "Population: Below Poverty Level in The Past 12 Months, Black or African American Alone",
-          "dcid": "Count_Person_BelowPovertyLevelInThePast12Months_BlackOrAfricanAmericanAlone"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-HispanicOrLatino",
-      "name": "Person With Poverty Status = Below Poverty Level in The Past 12 Months, Race = Hispanic or Latino",
-      "statVars": [
-        {
-          "name": "Population: Below Poverty Level in The Past 12 Months, Hispanic or Latino",
-          "dcid": "Count_Person_BelowPovertyLevelInThePast12Months_HispanicOrLatino"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-NativeHawaiianOrOtherPacificIslanderAlone",
-      "name": "Person With Poverty Status = Below Poverty Level in The Past 12 Months, Race = Native Hawaiian or Other Pacific Islander Alone",
-      "statVars": [
-        {
-          "name": "Population: Below Poverty Level in The Past 12 Months, Native Hawaiian or Other Pacific Islander Alone",
-          "dcid": "Count_Person_BelowPovertyLevelInThePast12Months_NativeHawaiianOrOtherPacificIslanderAlone"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-SomeOtherRaceAlone",
-      "name": "Person With Poverty Status = Below Poverty Level in The Past 12 Months, Race = Some Other Race Alone",
-      "statVars": [
-        {
-          "name": "Population: Below Poverty Level in The Past 12 Months, Some Other Race Alone",
-          "dcid": "Count_Person_BelowPovertyLevelInThePast12Months_SomeOtherRaceAlone"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-TwoOrMoreRaces",
-      "name": "Person With Poverty Status = Below Poverty Level in The Past 12 Months, Race = Two or More Races",
-      "statVars": [
-        {
-          "name": "Population: Below Poverty Level in The Past 12 Months, Two or More Races",
-          "dcid": "Count_Person_BelowPovertyLevelInThePast12Months_TwoOrMoreRaces"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-WhiteAlone",
-      "name": "Person With Poverty Status = Below Poverty Level in The Past 12 Months, Race = White Alone",
-      "statVars": [
-        {
-          "name": "Population: Below Poverty Level in The Past 12 Months, White Alone",
-          "dcid": "Count_Person_BelowPovertyLevelInThePast12Months_WhiteAlone"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-WhiteAloneNotHispanicOrLatino",
-      "name": "Person With Poverty Status = Below Poverty Level in The Past 12 Months, Race = White Alone Not Hispanic or Latino",
-      "statVars": [
-        {
-          "name": "Population: Below Poverty Level in The Past 12 Months, White Alone Not Hispanic or Latino",
-          "dcid": "Count_Person_BelowPovertyLevelInThePast12Months_WhiteAloneNotHispanicOrLatino"
         }
       ]
     },
@@ -3085,184 +2951,12 @@
       ]
     },
     {
-      "dcid": "dc/g/Person_Gender-Female_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-AmericanIndianOrAlaskaNativeAlone",
-      "name": "Person With Gender = Female, Poverty Status = Below Poverty Level in The Past 12 Months, Race = American Indian or Alaska Native Alone",
-      "statVars": [
-        {
-          "name": "Population: Female, Below Poverty Level in The Past 12 Months, American Indian or Alaska Native Alone",
-          "dcid": "Count_Person_Female_BelowPovertyLevelInThePast12Months_AmericanIndianOrAlaskaNativeAlone"
-        }
-      ]
+      "dcid": "dc/g/Household_PovertyStatus-BelowPovertyLevelInThePast12Months",
+      "name": "Household With Poverty Status = Below Poverty Level in The Past 12 Months"
     },
     {
-      "dcid": "dc/g/Person_Gender-Female_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-AsianAlone",
-      "name": "Person With Gender = Female, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Asian Alone",
-      "statVars": [
-        {
-          "name": "Population: Female, Below Poverty Level in The Past 12 Months, Asian Alone",
-          "dcid": "Count_Person_Female_BelowPovertyLevelInThePast12Months_AsianAlone"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-BlackOrAfricanAmericanAlone",
-      "name": "Person With Gender = Female, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Black or African American Alone",
-      "statVars": [
-        {
-          "name": "Population: Female, Below Poverty Level in The Past 12 Months, Black or African American Alone",
-          "dcid": "Count_Person_Female_BelowPovertyLevelInThePast12Months_BlackOrAfricanAmericanAlone"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-HispanicOrLatino",
-      "name": "Person With Gender = Female, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Hispanic or Latino",
-      "statVars": [
-        {
-          "name": "Population: Female, Below Poverty Level in The Past 12 Months, Hispanic or Latino",
-          "dcid": "Count_Person_Female_BelowPovertyLevelInThePast12Months_HispanicOrLatino"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-NativeHawaiianOrOtherPacificIslanderAlone",
-      "name": "Person With Gender = Female, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Native Hawaiian or Other Pacific Islander Alone",
-      "statVars": [
-        {
-          "name": "Population: Female, Below Poverty Level in The Past 12 Months, Native Hawaiian or Other Pacific Islander Alone",
-          "dcid": "Count_Person_Female_BelowPovertyLevelInThePast12Months_NativeHawaiianOrOtherPacificIslanderAlone"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-SomeOtherRaceAlone",
-      "name": "Person With Gender = Female, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Some Other Race Alone",
-      "statVars": [
-        {
-          "name": "Population: Female, Below Poverty Level in The Past 12 Months, Some Other Race Alone",
-          "dcid": "Count_Person_Female_BelowPovertyLevelInThePast12Months_SomeOtherRaceAlone"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-TwoOrMoreRaces",
-      "name": "Person With Gender = Female, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Two or More Races",
-      "statVars": [
-        {
-          "name": "Population: Female, Below Poverty Level in The Past 12 Months, Two or More Races",
-          "dcid": "Count_Person_Female_BelowPovertyLevelInThePast12Months_TwoOrMoreRaces"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-WhiteAlone",
-      "name": "Person With Gender = Female, Poverty Status = Below Poverty Level in The Past 12 Months, Race = White Alone",
-      "statVars": [
-        {
-          "name": "Population: Female, Below Poverty Level in The Past 12 Months, White Alone",
-          "dcid": "Count_Person_Female_BelowPovertyLevelInThePast12Months_WhiteAlone"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-WhiteAloneNotHispanicOrLatino",
-      "name": "Person With Gender = Female, Poverty Status = Below Poverty Level in The Past 12 Months, Race = White Alone Not Hispanic or Latino",
-      "statVars": [
-        {
-          "name": "Population: Female, Below Poverty Level in The Past 12 Months, White Alone Not Hispanic or Latino",
-          "dcid": "Count_Person_Female_BelowPovertyLevelInThePast12Months_WhiteAloneNotHispanicOrLatino"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Male_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-AmericanIndianOrAlaskaNativeAlone",
-      "name": "Person With Gender = Male, Poverty Status = Below Poverty Level in The Past 12 Months, Race = American Indian or Alaska Native Alone",
-      "statVars": [
-        {
-          "name": "Population: Male, Below Poverty Level in The Past 12 Months, American Indian or Alaska Native Alone",
-          "dcid": "Count_Person_Male_BelowPovertyLevelInThePast12Months_AmericanIndianOrAlaskaNativeAlone"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Male_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-AsianAlone",
-      "name": "Person With Gender = Male, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Asian Alone",
-      "statVars": [
-        {
-          "name": "Population: Male, Below Poverty Level in The Past 12 Months, Asian Alone",
-          "dcid": "Count_Person_Male_BelowPovertyLevelInThePast12Months_AsianAlone"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Male_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-BlackOrAfricanAmericanAlone",
-      "name": "Person With Gender = Male, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Black or African American Alone",
-      "statVars": [
-        {
-          "name": "Population: Male, Below Poverty Level in The Past 12 Months, Black or African American Alone",
-          "dcid": "Count_Person_Male_BelowPovertyLevelInThePast12Months_BlackOrAfricanAmericanAlone"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Male_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-HispanicOrLatino",
-      "name": "Person With Gender = Male, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Hispanic or Latino",
-      "statVars": [
-        {
-          "name": "Population: Male, Below Poverty Level in The Past 12 Months, Hispanic or Latino",
-          "dcid": "Count_Person_Male_BelowPovertyLevelInThePast12Months_HispanicOrLatino"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Male_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-NativeHawaiianOrOtherPacificIslanderAlone",
-      "name": "Person With Gender = Male, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Native Hawaiian or Other Pacific Islander Alone",
-      "statVars": [
-        {
-          "name": "Population: Male, Below Poverty Level in The Past 12 Months, Native Hawaiian or Other Pacific Islander Alone",
-          "dcid": "Count_Person_Male_BelowPovertyLevelInThePast12Months_NativeHawaiianOrOtherPacificIslanderAlone"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Male_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-SomeOtherRaceAlone",
-      "name": "Person With Gender = Male, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Some Other Race Alone",
-      "statVars": [
-        {
-          "name": "Population: Male, Below Poverty Level in The Past 12 Months, Some Other Race Alone",
-          "dcid": "Count_Person_Male_BelowPovertyLevelInThePast12Months_SomeOtherRaceAlone"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Male_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-TwoOrMoreRaces",
-      "name": "Person With Gender = Male, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Two or More Races",
-      "statVars": [
-        {
-          "name": "Population: Male, Below Poverty Level in The Past 12 Months, Two or More Races",
-          "dcid": "Count_Person_Male_BelowPovertyLevelInThePast12Months_TwoOrMoreRaces"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Male_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-WhiteAlone",
-      "name": "Person With Gender = Male, Poverty Status = Below Poverty Level in The Past 12 Months, Race = White Alone",
-      "statVars": [
-        {
-          "name": "Population: Male, Below Poverty Level in The Past 12 Months, White Alone",
-          "dcid": "Count_Person_Male_BelowPovertyLevelInThePast12Months_WhiteAlone"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Male_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-WhiteAloneNotHispanicOrLatino",
-      "name": "Person With Gender = Male, Poverty Status = Below Poverty Level in The Past 12 Months, Race = White Alone Not Hispanic or Latino",
-      "statVars": [
-        {
-          "name": "Population: Male, Below Poverty Level in The Past 12 Months, White Alone Not Hispanic or Latino",
-          "dcid": "Count_Person_Male_BelowPovertyLevelInThePast12Months_WhiteAloneNotHispanicOrLatino"
-        }
-      ]
+      "dcid": "dc/g/Person_PovertyStatus-BelowPovertyLevelInThePast12Months",
+      "name": "Person With Poverty Status = Below Poverty Level in The Past 12 Months"
     },
     {
       "dcid": "dc/g/Household_BenefitsStatus-WithFoodStampsInThePast12Months_ChildSchoolEnrollment",
@@ -3317,14 +3011,6 @@
       "name": "Household With Household Size = Person 2, Poverty Status = Below Poverty Level in The Past 12 Months"
     },
     {
-      "dcid": "dc/g/Household_HouseholdSize_PovertyStatus-BelowPovertyLevelInThePast12Months",
-      "name": "Household With Household Size, Poverty Status = Below Poverty Level in The Past 12 Months"
-    },
-    {
-      "dcid": "dc/g/Household_HouseholdType_PovertyStatus-BelowPovertyLevelInThePast12Months",
-      "name": "Household With Household Type, Poverty Status = Below Poverty Level in The Past 12 Months"
-    },
-    {
       "dcid": "dc/g/Household_HouseholdWorkerSize-Worker3Onwards_PovertyStatus-BelowPovertyLevelInThePast12Months",
       "name": "Household With Household Worker Size = 3 Worker or More, Poverty Status = Below Poverty Level in The Past 12 Months"
     },
@@ -3341,16 +3027,8 @@
       "name": "Household With Household Worker Size = Worker 2, Poverty Status = Below Poverty Level in The Past 12 Months"
     },
     {
-      "dcid": "dc/g/Household_HouseholdWorkerSize_PovertyStatus-BelowPovertyLevelInThePast12Months",
-      "name": "Household With Household Worker Size, Poverty Status = Below Poverty Level in The Past 12 Months"
-    },
-    {
       "dcid": "dc/g/Household_HouseholderAge-Years65Onwards_PovertyStatus-BelowPovertyLevelInThePast12Months",
       "name": "Household With Householder Age = 65 Years or More, Poverty Status = Below Poverty Level in The Past 12 Months"
-    },
-    {
-      "dcid": "dc/g/Household_HouseholderAge_PovertyStatus-BelowPovertyLevelInThePast12Months",
-      "name": "Household With Householder Age, Poverty Status = Below Poverty Level in The Past 12 Months"
     },
     {
       "dcid": "dc/g/Household_HouseholderEducationalAttainment-BachelorsDegreeOrHigher_PovertyStatus-BelowPovertyLevelInThePast12Months",
@@ -3369,10 +3047,6 @@
       "name": "Household With Householder Educational Attainment = Some College or Associates Degree, Poverty Status = Below Poverty Level in The Past 12 Months"
     },
     {
-      "dcid": "dc/g/Household_HouseholderEducationalAttainment_PovertyStatus-BelowPovertyLevelInThePast12Months",
-      "name": "Household With Householder Educational Attainment, Poverty Status = Below Poverty Level in The Past 12 Months"
-    },
-    {
       "dcid": "dc/g/Household_HouseholderOwnChildrenUnder18Years-Child1To2_PovertyStatus-BelowPovertyLevelInThePast12Months",
       "name": "Household With Householder Own Children Under 18 Years = 1 - 2 Child, Poverty Status = Below Poverty Level in The Past 12 Months"
     },
@@ -3387,10 +3061,6 @@
     {
       "dcid": "dc/g/Household_HouseholderOwnChildrenUnder18Years-Child0_PovertyStatus-BelowPovertyLevelInThePast12Months",
       "name": "Household With Householder Own Children Under 18 Years = Child 0, Poverty Status = Below Poverty Level in The Past 12 Months"
-    },
-    {
-      "dcid": "dc/g/Household_HouseholderOwnChildrenUnder18Years_PovertyStatus-BelowPovertyLevelInThePast12Months",
-      "name": "Household With Householder Own Children Under 18 Years, Poverty Status = Below Poverty Level in The Past 12 Months"
     },
     {
       "dcid": "dc/g/Household_HouseholderRace-AmericanIndianOrAlaskaNativeAlone_PovertyStatus-BelowPovertyLevelInThePast12Months",
@@ -3429,10 +3099,6 @@
       "name": "Household With Householder Race = White Alone, Poverty Status = Below Poverty Level in The Past 12 Months"
     },
     {
-      "dcid": "dc/g/Household_HouseholderRace_PovertyStatus-BelowPovertyLevelInThePast12Months",
-      "name": "Household With Householder Race, Poverty Status = Below Poverty Level in The Past 12 Months"
-    },
-    {
       "dcid": "dc/g/Household_HouseholderRelatedChildrenUnder18Years-Child1To2_PovertyStatus-BelowPovertyLevelInThePast12Months",
       "name": "Household With Householder Related Children Under 18 Years = 1 - 2 Child, Poverty Status = Below Poverty Level in The Past 12 Months"
     },
@@ -3449,16 +3115,8 @@
       "name": "Household With Householder Related Children Under 18 Years = Child 0, Poverty Status = Below Poverty Level in The Past 12 Months"
     },
     {
-      "dcid": "dc/g/Household_HouseholderRelatedChildrenUnder18Years_PovertyStatus-BelowPovertyLevelInThePast12Months",
-      "name": "Household With Householder Related Children Under 18 Years, Poverty Status = Below Poverty Level in The Past 12 Months"
-    },
-    {
       "dcid": "dc/g/Household_HouseholderWorkStatus-FullTimeYearRoundWorker_PovertyStatus-BelowPovertyLevelInThePast12Months",
       "name": "Household With Householder Work Status = Full Time Year Round Worker, Poverty Status = Below Poverty Level in The Past 12 Months"
-    },
-    {
-      "dcid": "dc/g/Household_HouseholderWorkStatus_PovertyStatus-BelowPovertyLevelInThePast12Months",
-      "name": "Household With Householder Work Status, Poverty Status = Below Poverty Level in The Past 12 Months"
     },
     {
       "dcid": "dc/g/Household_OccupancyTenure-OwnerOccupied_PovertyStatus-BelowPovertyLevelInThePast12Months",
@@ -3467,10 +3125,6 @@
     {
       "dcid": "dc/g/Household_OccupancyTenure-RenterOccupied_PovertyStatus-BelowPovertyLevelInThePast12Months",
       "name": "Household With Occupancy Tenure = Renter Occupied, Poverty Status = Below Poverty Level in The Past 12 Months"
-    },
-    {
-      "dcid": "dc/g/Household_OccupancyTenure_PovertyStatus-BelowPovertyLevelInThePast12Months",
-      "name": "Household With Occupancy Tenure, Poverty Status = Below Poverty Level in The Past 12 Months"
     },
     {
       "dcid": "dc/g/Person_Age-Years12To14_PovertyStatus-BelowPovertyLevelInThePast12Months",
@@ -3537,10 +3191,6 @@
       "name": "Person With Educational Attainment, Social Support Level = Receiving Poor Social Support"
     },
     {
-      "dcid": "dc/g/Person_Gender_PovertyStatus-BelowPovertyLevelInThePast12Months",
-      "name": "Person With Gender, Poverty Status = Below Poverty Level in The Past 12 Months"
-    },
-    {
       "dcid": "dc/g/Person_Gender_SocialSupportLevel-ReceivingPoorSocialSupport",
       "name": "Person With Gender, Social Support Level = Receiving Poor Social Support"
     },
@@ -3557,10 +3207,6 @@
       "name": "Person With Marital Status = Married in The Past 12 Months, Poverty Status = Below Poverty Level in The Past 12 Months"
     },
     {
-      "dcid": "dc/g/Person_MaritalStatus_PovertyStatus-BelowPovertyLevelInThePast12Months",
-      "name": "Person With Marital Status, Poverty Status = Below Poverty Level in The Past 12 Months"
-    },
-    {
       "dcid": "dc/g/Person_Nativity-CitizenOutsideEU28_SocialSupportLevel-ReceivingPoorSocialSupport",
       "name": "Person With Nativity = Citizen Outside EU 28, Social Support Level = Receiving Poor Social Support"
     },
@@ -3573,16 +3219,8 @@
       "name": "Person With Nativity, Social Support Level = Receiving Poor Social Support"
     },
     {
-      "dcid": "dc/g/Person_PlaceOfResidenceClassification_PovertyStatus-BelowPovertyLevelInThePast12Months",
-      "name": "Person With Place of Residence Classification, Poverty Status = Below Poverty Level in The Past 12 Months"
-    },
-    {
       "dcid": "dc/g/Person_PlaceOfResidenceClassification_SocialSupportLevel-ReceivingPoorSocialSupport",
       "name": "Person With Place of Residence Classification, Social Support Level = Receiving Poor Social Support"
-    },
-    {
-      "dcid": "dc/g/Person_PovertyStatus-BelowPovertyLevelInThePast12Months_Race",
-      "name": "Person With Poverty Status = Below Poverty Level in The Past 12 Months, Race"
     },
     {
       "dcid": "dc/g/Household_BenefitsStatus-WithFoodStampsInThePast12Months_ChildSchoolEnrollment-PublicSchool_MemberStatus",
@@ -4061,10 +3699,6 @@
       "name": "Person With Age = 5 Years or Less, Poverty Status = Below Poverty Level in The Past 12 Months, Race = White Alone Not Hispanic or Latino"
     },
     {
-      "dcid": "dc/g/Person_Age-Years5Onwards_LanguageSpokenAtHome_PovertyStatus-BelowPovertyLevelInThePast12Months",
-      "name": "Person With Age = 5 Years or More, Language Spoken At Home, Poverty Status = Below Poverty Level in The Past 12 Months"
-    },
-    {
       "dcid": "dc/g/Person_Age-Years55To64_Gender_PovertyStatus-BelowPovertyLevelInThePast12Months",
       "name": "Person With Age = 55 - 64 Years, Gender, Poverty Status = Below Poverty Level in The Past 12 Months"
     },
@@ -4329,50 +3963,6 @@
       "name": "Person With Age = Years 5, Poverty Status = Below Poverty Level in The Past 12 Months, Race = White Alone Not Hispanic or Latino"
     },
     {
-      "dcid": "dc/g/Person_Age_Gender-Female_PovertyStatus-BelowPovertyLevelInThePast12Months",
-      "name": "Person With Age, Gender = Female, Poverty Status = Below Poverty Level in The Past 12 Months"
-    },
-    {
-      "dcid": "dc/g/Person_Age_Gender-Male_PovertyStatus-BelowPovertyLevelInThePast12Months",
-      "name": "Person With Age, Gender = Male, Poverty Status = Below Poverty Level in The Past 12 Months"
-    },
-    {
-      "dcid": "dc/g/Person_Age_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-AmericanIndianOrAlaskaNativeAlone",
-      "name": "Person With Age, Poverty Status = Below Poverty Level in The Past 12 Months, Race = American Indian or Alaska Native Alone"
-    },
-    {
-      "dcid": "dc/g/Person_Age_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-AsianAlone",
-      "name": "Person With Age, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Asian Alone"
-    },
-    {
-      "dcid": "dc/g/Person_Age_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-BlackOrAfricanAmericanAlone",
-      "name": "Person With Age, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Black or African American Alone"
-    },
-    {
-      "dcid": "dc/g/Person_Age_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-HispanicOrLatino",
-      "name": "Person With Age, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Hispanic or Latino"
-    },
-    {
-      "dcid": "dc/g/Person_Age_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-NativeHawaiianOrOtherPacificIslanderAlone",
-      "name": "Person With Age, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Native Hawaiian or Other Pacific Islander Alone"
-    },
-    {
-      "dcid": "dc/g/Person_Age_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-SomeOtherRaceAlone",
-      "name": "Person With Age, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Some Other Race Alone"
-    },
-    {
-      "dcid": "dc/g/Person_Age_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-TwoOrMoreRaces",
-      "name": "Person With Age, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Two or More Races"
-    },
-    {
-      "dcid": "dc/g/Person_Age_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-WhiteAlone",
-      "name": "Person With Age, Poverty Status = Below Poverty Level in The Past 12 Months, Race = White Alone"
-    },
-    {
-      "dcid": "dc/g/Person_Age_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-WhiteAloneNotHispanicOrLatino",
-      "name": "Person With Age, Poverty Status = Below Poverty Level in The Past 12 Months, Race = White Alone Not Hispanic or Latino"
-    },
-    {
       "dcid": "dc/g/Person_CitizenshipStatus-CitizenOutsideEU28_Nativity_SocialSupportLevel-ReceivingPoorSocialSupport",
       "name": "Person With Citizenship Status = Citizen Outside EU 28, Nativity, Social Support Level = Receiving Poor Social Support"
     },
@@ -4405,14 +3995,6 @@
       "name": "Person With Educational Attainment, Gender = Male, Social Support Level = Receiving Poor Social Support"
     },
     {
-      "dcid": "dc/g/Person_Gender-Female_PovertyStatus-BelowPovertyLevelInThePast12Months_Race",
-      "name": "Person With Gender = Female, Poverty Status = Below Poverty Level in The Past 12 Months, Race"
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Male_PovertyStatus-BelowPovertyLevelInThePast12Months_Race",
-      "name": "Person With Gender = Male, Poverty Status = Below Poverty Level in The Past 12 Months, Race"
-    },
-    {
       "dcid": "dc/g/Person_Gender_GlobalActivityLimitationindicator-LimitedActivityLimitation_SocialSupportLevel-ReceivingPoorSocialSupport",
       "name": "Person With Gender, Global Activity Limitationindicator = Limited Activity Limitation, Social Support Level = Receiving Poor Social Support"
     },
@@ -4427,14 +4009,6 @@
     {
       "dcid": "dc/g/Person_Gender_GlobalActivityLimitationindicator-SevereActivityLimitation_SocialSupportLevel-ReceivingPoorSocialSupport",
       "name": "Person With Gender, Global Activity Limitationindicator = Severe Activity Limitation, Social Support Level = Receiving Poor Social Support"
-    },
-    {
-      "dcid": "dc/g/Person_Gender_MaritalStatus-DivorcedInThePast12Months_PovertyStatus-BelowPovertyLevelInThePast12Months",
-      "name": "Person With Gender, Marital Status = Divorced in The Past 12 Months, Poverty Status = Below Poverty Level in The Past 12 Months"
-    },
-    {
-      "dcid": "dc/g/Person_Gender_MaritalStatus-MarriedInThePast12Months_PovertyStatus-BelowPovertyLevelInThePast12Months",
-      "name": "Person With Gender, Marital Status = Married in The Past 12 Months, Poverty Status = Below Poverty Level in The Past 12 Months"
     },
     {
       "dcid": "dc/g/Person_Gender_Nativity-CitizenOutsideEU28_SocialSupportLevel-ReceivingPoorSocialSupport",
@@ -4471,42 +4045,6 @@
     {
       "dcid": "dc/g/Person_Gender_PlaceOfResidenceClassification-Urban_SocialSupportLevel-ReceivingPoorSocialSupport",
       "name": "Person With Gender, Place of Residence Classification = Urban, Social Support Level = Receiving Poor Social Support"
-    },
-    {
-      "dcid": "dc/g/Person_Gender_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-AmericanIndianOrAlaskaNativeAlone",
-      "name": "Person With Gender, Poverty Status = Below Poverty Level in The Past 12 Months, Race = American Indian or Alaska Native Alone"
-    },
-    {
-      "dcid": "dc/g/Person_Gender_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-AsianAlone",
-      "name": "Person With Gender, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Asian Alone"
-    },
-    {
-      "dcid": "dc/g/Person_Gender_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-BlackOrAfricanAmericanAlone",
-      "name": "Person With Gender, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Black or African American Alone"
-    },
-    {
-      "dcid": "dc/g/Person_Gender_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-HispanicOrLatino",
-      "name": "Person With Gender, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Hispanic or Latino"
-    },
-    {
-      "dcid": "dc/g/Person_Gender_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-NativeHawaiianOrOtherPacificIslanderAlone",
-      "name": "Person With Gender, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Native Hawaiian or Other Pacific Islander Alone"
-    },
-    {
-      "dcid": "dc/g/Person_Gender_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-SomeOtherRaceAlone",
-      "name": "Person With Gender, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Some Other Race Alone"
-    },
-    {
-      "dcid": "dc/g/Person_Gender_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-TwoOrMoreRaces",
-      "name": "Person With Gender, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Two or More Races"
-    },
-    {
-      "dcid": "dc/g/Person_Gender_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-WhiteAlone",
-      "name": "Person With Gender, Poverty Status = Below Poverty Level in The Past 12 Months, Race = White Alone"
-    },
-    {
-      "dcid": "dc/g/Person_Gender_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-WhiteAloneNotHispanicOrLatino",
-      "name": "Person With Gender, Poverty Status = Below Poverty Level in The Past 12 Months, Race = White Alone Not Hispanic or Latino"
     },
     {
       "dcid": "dc/g/Person_Age-Years12To14_Gender_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-AmericanIndianOrAlaskaNativeAlone",
@@ -4975,78 +4513,6 @@
     {
       "dcid": "dc/g/Person_Age-Years5_Gender_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-WhiteAloneNotHispanicOrLatino",
       "name": "Person With Age = Years 5, Gender, Poverty Status = Below Poverty Level in The Past 12 Months, Race = White Alone Not Hispanic or Latino"
-    },
-    {
-      "dcid": "dc/g/Person_Age_Gender-Female_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-AmericanIndianOrAlaskaNativeAlone",
-      "name": "Person With Age, Gender = Female, Poverty Status = Below Poverty Level in The Past 12 Months, Race = American Indian or Alaska Native Alone"
-    },
-    {
-      "dcid": "dc/g/Person_Age_Gender-Female_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-AsianAlone",
-      "name": "Person With Age, Gender = Female, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Asian Alone"
-    },
-    {
-      "dcid": "dc/g/Person_Age_Gender-Female_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-BlackOrAfricanAmericanAlone",
-      "name": "Person With Age, Gender = Female, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Black or African American Alone"
-    },
-    {
-      "dcid": "dc/g/Person_Age_Gender-Female_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-HispanicOrLatino",
-      "name": "Person With Age, Gender = Female, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Hispanic or Latino"
-    },
-    {
-      "dcid": "dc/g/Person_Age_Gender-Female_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-NativeHawaiianOrOtherPacificIslanderAlone",
-      "name": "Person With Age, Gender = Female, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Native Hawaiian or Other Pacific Islander Alone"
-    },
-    {
-      "dcid": "dc/g/Person_Age_Gender-Female_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-SomeOtherRaceAlone",
-      "name": "Person With Age, Gender = Female, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Some Other Race Alone"
-    },
-    {
-      "dcid": "dc/g/Person_Age_Gender-Female_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-TwoOrMoreRaces",
-      "name": "Person With Age, Gender = Female, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Two or More Races"
-    },
-    {
-      "dcid": "dc/g/Person_Age_Gender-Female_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-WhiteAlone",
-      "name": "Person With Age, Gender = Female, Poverty Status = Below Poverty Level in The Past 12 Months, Race = White Alone"
-    },
-    {
-      "dcid": "dc/g/Person_Age_Gender-Female_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-WhiteAloneNotHispanicOrLatino",
-      "name": "Person With Age, Gender = Female, Poverty Status = Below Poverty Level in The Past 12 Months, Race = White Alone Not Hispanic or Latino"
-    },
-    {
-      "dcid": "dc/g/Person_Age_Gender-Male_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-AmericanIndianOrAlaskaNativeAlone",
-      "name": "Person With Age, Gender = Male, Poverty Status = Below Poverty Level in The Past 12 Months, Race = American Indian or Alaska Native Alone"
-    },
-    {
-      "dcid": "dc/g/Person_Age_Gender-Male_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-AsianAlone",
-      "name": "Person With Age, Gender = Male, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Asian Alone"
-    },
-    {
-      "dcid": "dc/g/Person_Age_Gender-Male_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-BlackOrAfricanAmericanAlone",
-      "name": "Person With Age, Gender = Male, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Black or African American Alone"
-    },
-    {
-      "dcid": "dc/g/Person_Age_Gender-Male_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-HispanicOrLatino",
-      "name": "Person With Age, Gender = Male, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Hispanic or Latino"
-    },
-    {
-      "dcid": "dc/g/Person_Age_Gender-Male_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-NativeHawaiianOrOtherPacificIslanderAlone",
-      "name": "Person With Age, Gender = Male, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Native Hawaiian or Other Pacific Islander Alone"
-    },
-    {
-      "dcid": "dc/g/Person_Age_Gender-Male_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-SomeOtherRaceAlone",
-      "name": "Person With Age, Gender = Male, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Some Other Race Alone"
-    },
-    {
-      "dcid": "dc/g/Person_Age_Gender-Male_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-TwoOrMoreRaces",
-      "name": "Person With Age, Gender = Male, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Two or More Races"
-    },
-    {
-      "dcid": "dc/g/Person_Age_Gender-Male_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-WhiteAlone",
-      "name": "Person With Age, Gender = Male, Poverty Status = Below Poverty Level in The Past 12 Months, Race = White Alone"
-    },
-    {
-      "dcid": "dc/g/Person_Age_Gender-Male_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-WhiteAloneNotHispanicOrLatino",
-      "name": "Person With Age, Gender = Male, Poverty Status = Below Poverty Level in The Past 12 Months, Race = White Alone Not Hispanic or Latino"
     },
     {
       "dcid": "dc/g/Person_CitizenshipStatus-CitizenOutsideEU28_Gender_Nativity-CitizenOutsideEU28_SocialSupportLevel-ReceivingPoorSocialSupport",

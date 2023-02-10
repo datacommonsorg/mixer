@@ -1,10 +1,34 @@
 {
   "matchInfo": [
     {
-      "statVar": "Count_Person_Female",
-      "statVarName": "Population: Female",
-      "score": 1,
-      "explanation": "Full match on: mp count pt Person gender Female"
+      "statVar": "Count_Person_0To4Years_Female",
+      "statVarName": "Population: 0 - 4 Years, Female",
+      "score": 2.6811,
+      "explanation": "AND query: [mp] [count] [pt] [Person] age Years0To4 [gender] [Female]"
+    },
+    {
+      "statVar": "Count_Person_0Years_Female",
+      "statVarName": "Population: Years 0, Female",
+      "score": 2.6811,
+      "explanation": "AND query: [mp] [count] [pt] [Person] age Years0 [gender] [Female]"
+    },
+    {
+      "statVar": "Count_Person_100Years_Female",
+      "statVarName": "Population: Years 100, Female",
+      "score": 2.6811,
+      "explanation": "AND query: [mp] [count] [pt] [Person] age Years100 [gender] [Female]"
+    },
+    {
+      "statVar": "Count_Person_10To14Years_Female",
+      "statVarName": "Population: 10 - 14 Years, Female",
+      "score": 2.6811,
+      "explanation": "AND query: [mp] [count] [pt] [Person] age Years10To14 [gender] [Female]"
+    },
+    {
+      "statVar": "Count_Person_10Years_Female",
+      "statVarName": "Population: Years 10, Female",
+      "score": 2.6811,
+      "explanation": "AND query: [mp] [count] [pt] [Person] age Years10 [gender] [Female]"
     }
   ]
 }

@@ -1,8 +1,12 @@
 {
   "statVars": [
     {
-      "name": "Median Age: Asian Alone",
-      "dcid": "Median_Age_Person_AsianAlone"
+      "name": "Population: 3 Years or More, Asian Alone",
+      "dcid": "Count_Person_3OrMoreYears_AsianAlone"
+    },
+    {
+      "name": "Population: 5 Years or More, Asian Alone",
+      "dcid": "Count_Person_5OrMoreYears_AsianAlone"
     },
     {
       "name": "Average LMP Gestational Age in weeks where mothers Race is Asian Indian",
@@ -39,14 +43,6 @@
     {
       "name": "Average mother's age in years where mothers Race is Other Asian",
       "dcid": "Mean_MothersAge_BirthEvent_LiveBirth_MotherOtherAsian"
-    },
-    {
-      "name": "Median Age: Female, Asian Alone",
-      "dcid": "Median_Age_Person_Female_AsianAlone"
-    },
-    {
-      "name": "Median Age: Male, Asian Alone",
-      "dcid": "Median_Age_Person_Male_AsianAlone"
     }
   ],
   "statVarGroups": [
@@ -447,20 +443,6 @@
         {
           "name": "Population: Speak English Well, 65 Years or More, Asian And Pacific Island Languages",
           "dcid": "Count_Person_SpeakEnglishWell_65OrMoreYears_AsianAndPacificIslandLanguagesSpokenAtHome"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age_Race-AsianAlone",
-      "name": "Person With Age, Race = Asian Alone",
-      "statVars": [
-        {
-          "name": "Population: 3 Years or More, Asian Alone",
-          "dcid": "Count_Person_3OrMoreYears_AsianAlone"
-        },
-        {
-          "name": "Population: 5 Years or More, Asian Alone",
-          "dcid": "Count_Person_5OrMoreYears_AsianAlone"
         }
       ]
     },
@@ -12771,6 +12753,16 @@
         {
           "name": "Population: Years 56, Hispanic or Latino \u0026 Asian or Pacific Islander",
           "dcid": "Count_Person_56Years_HispanicOrLatino_AsianOrPacificIslander"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years56_Race-NotHispanicOrLatinoAsianAlone",
+      "name": "Person With Age = Years 56, Race = Not Hispanic or Latino \u0026 Asian Alone",
+      "statVars": [
+        {
+          "name": "Population: Years 56, Not Hispanic or Latino \u0026 Asian Alone",
+          "dcid": "Count_Person_56Years_NotHispanicOrLatino_AsianAlone"
         }
       ]
     }

@@ -147,7 +147,7 @@
         "id": "dc/g/Person_Gender",
         "specializedEntity": "Gender",
         "displayName": "Person by Gender",
-        "descendentStatVarCount": 18769
+        "descendentStatVarCount": 4
       },
       {
         "id": "dc/g/Person_HealthInsurance",
@@ -249,13 +249,13 @@
         "id": "dc/g/Person_PovertyStatus",
         "specializedEntity": "Poverty Status",
         "displayName": "Person by Poverty Status",
-        "descendentStatVarCount": 918
+        "descendentStatVarCount": 2
       },
       {
         "id": "dc/g/Person_Race",
         "specializedEntity": "Race",
         "displayName": "Person by Race",
-        "descendentStatVarCount": 17104
+        "descendentStatVarCount": 6
       },
       {
         "id": "dc/g/Person_Religion",

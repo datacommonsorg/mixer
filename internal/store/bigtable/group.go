@@ -28,11 +28,11 @@ import (
 var groupRank = map[string]int{
 	"dcbranch":   0, // Used for the latest proto branch cache
 	"branch":     0, // Used for legacy branch cache
+	"place":      0,
 	"frequent":   1,
 	"ipcc":       2,
 	"biomedical": 3,
 	"disaster":   4,
-	"place":   		100,
 	"borgcron":   10000, // Used for legacy base cache
 	"infrequent": 10000,
 }

@@ -85,8 +85,84 @@
       "dcid": "FemaNaturalHazardRiskIndex_NaturalHazardImpact_WinterWeatherEvent"
     },
     {
+      "name": "Life Expectancy: 1 Years or Less, Female",
+      "dcid": "LifeExpectancy_Person_Upto1Years_Female"
+    },
+    {
+      "name": "Population: 14 Years or Less, Female",
+      "dcid": "Count_Person_Upto14Years_Female"
+    },
+    {
+      "name": "Population: 3 Years or More, Female",
+      "dcid": "Count_Person_3OrMoreYears_Female"
+    },
+    {
+      "name": "Population: 65 - 66 Years, Female",
+      "dcid": "Count_Person_65To66Years_Female"
+    },
+    {
+      "name": "Population: 67 - 69 Years, Female",
+      "dcid": "Count_Person_67To69Years_Female"
+    },
+    {
+      "name": "Population: 80 Years or More, Female",
+      "dcid": "Count_Person_80OrMoreYears_Female"
+    },
+    {
+      "name": "Population: 85 - 89 Years, Female",
+      "dcid": "Count_Person_85To89Years_Female"
+    },
+    {
+      "name": "Population: 90 Years or More, Female",
+      "dcid": "Count_Person_90OrMoreYears_Female"
+    },
+    {
+      "name": "Population: Female, Enrolled in School",
+      "dcid": "Count_Person_3OrMoreYears_Female_EnrolledInSchool"
+    },
+    {
+      "name": "Population: Female, Limited Activity Limitation",
+      "dcid": "Count_Person_Female_LimitedActivityLimitation"
+    },
+    {
+      "name": "Population: Female, Moderate Activity Limitation",
+      "dcid": "Count_Person_Female_ModerateActivityLimitation"
+    },
+    {
+      "name": "Population: Female, No Activity Limitation",
+      "dcid": "Count_Person_Female_NoActivityLimitation"
+    },
+    {
+      "name": "Population: Female, Severe Activity Limitation",
+      "dcid": "Count_Person_Female_SevereActivityLimitation"
+    },
+    {
+      "name": "Population: With Disability, Female",
+      "dcid": "Count_Person_WithDisability_Female"
+    },
+    {
+      "name": "Prevalence: Female, Diabetes",
+      "dcid": "dc/nh3s4skee5483"
+    },
+    {
+      "name": "Prevalence: Female, Physical Inactivity",
+      "dcid": "dc/tcqb49dvg7k53"
+    },
+    {
+      "name": "Unemployment Rate: 25 - 74 Years, Female",
+      "dcid": "UnemploymentRate_Person_25To74Years_Female"
+    },
+    {
+      "name": "Unemployment Rate: 25 Years or Less, Female",
+      "dcid": "UnemploymentRate_Person_Upto25Years_Female"
+    },
+    {
       "name": "Count of Criminal Activities: Murder And Non Negligent Manslaughter, Female (As Fraction of Count Person Female)",
       "dcid": "Count_CriminalActivities_MurderAndNonNegligentManslaughter_Female_AsFractionOf_Count_Person_Female"
+    },
+    {
+      "name": "Prevalence: 50 - 74 Years, Female, Mammography",
+      "dcid": "Percent_Person_50To74Years_Female_ReceivedMammography"
     },
     {
       "name": "Number of pregnant women registered for Antenatal Care within first trimester",
@@ -18119,692 +18195,6 @@
       ]
     },
     {
-      "dcid": "dc/g/Student_Gender-Female_Race-AmericanIndianOrAlaskaNative_SchoolGradeLevel",
-      "name": "Student With Gender = Female, Race = American Indian or Alaska Native, School Grade Level",
-      "statVars": [
-        {
-          "name": "Count of Student: Female, American Indian or Alaska Native, 1 - 8 School Grade",
-          "dcid": "dc/zd52dlm5q36m6"
-        },
-        {
-          "name": "Count of Student: Female, American Indian or Alaska Native, 9 - 12 School Grade",
-          "dcid": "dc/drm4vgz1pw417"
-        },
-        {
-          "name": "Count of Student: Female, American Indian or Alaska Native, Adult Education",
-          "dcid": "Count_Student_Female_AmericanIndianOrAlaskaNative_AdultEducation"
-        },
-        {
-          "name": "Count of Student: Female, American Indian or Alaska Native, HighSchool",
-          "dcid": "Count_Student_Female_AmericanIndianOrAlaskaNative_HighSchool"
-        },
-        {
-          "name": "Count of Student: Female, American Indian or Alaska Native, Kindergarten",
-          "dcid": "Count_Student_Female_AmericanIndianOrAlaskaNative_Kindergarten"
-        },
-        {
-          "name": "Count of Student: Female, American Indian or Alaska Native, MiddleSchool",
-          "dcid": "Count_Student_Female_AmericanIndianOrAlaskaNative_MiddleSchool"
-        },
-        {
-          "name": "Count of Student: Female, American Indian or Alaska Native, Pre Kindergarten",
-          "dcid": "Count_Student_Female_AmericanIndianOrAlaskaNative_PreKindergarten"
-        },
-        {
-          "name": "Count of Student: Female, American Indian or Alaska Native, Pre Kindergarten And Kindergarten",
-          "dcid": "dc/fkky4npg5e76b"
-        },
-        {
-          "name": "Count of Student: Female, American Indian or Alaska Native, PrimarySchool",
-          "dcid": "Count_Student_Female_AmericanIndianOrAlaskaNative_PrimarySchool"
-        },
-        {
-          "name": "Count of Student: Female, American Indian or Alaska Native, School Grade 1",
-          "dcid": "Count_Student_Female_AmericanIndianOrAlaskaNative_SchoolGrade1"
-        },
-        {
-          "name": "Count of Student: Female, American Indian or Alaska Native, School Grade 10",
-          "dcid": "Count_Student_Female_AmericanIndianOrAlaskaNative_SchoolGrade10"
-        },
-        {
-          "name": "Count of Student: Female, American Indian or Alaska Native, School Grade 11",
-          "dcid": "Count_Student_Female_AmericanIndianOrAlaskaNative_SchoolGrade11"
-        },
-        {
-          "name": "Count of Student: Female, American Indian or Alaska Native, School Grade 12",
-          "dcid": "Count_Student_Female_AmericanIndianOrAlaskaNative_SchoolGrade12"
-        },
-        {
-          "name": "Count of Student: Female, American Indian or Alaska Native, School Grade 13",
-          "dcid": "Count_Student_Female_AmericanIndianOrAlaskaNative_SchoolGrade13"
-        },
-        {
-          "name": "Count of Student: Female, American Indian or Alaska Native, School Grade 2",
-          "dcid": "Count_Student_Female_AmericanIndianOrAlaskaNative_SchoolGrade2"
-        },
-        {
-          "name": "Count of Student: Female, American Indian or Alaska Native, School Grade 3",
-          "dcid": "Count_Student_Female_AmericanIndianOrAlaskaNative_SchoolGrade3"
-        },
-        {
-          "name": "Count of Student: Female, American Indian or Alaska Native, School Grade 4",
-          "dcid": "Count_Student_Female_AmericanIndianOrAlaskaNative_SchoolGrade4"
-        },
-        {
-          "name": "Count of Student: Female, American Indian or Alaska Native, School Grade 5",
-          "dcid": "Count_Student_Female_AmericanIndianOrAlaskaNative_SchoolGrade5"
-        },
-        {
-          "name": "Count of Student: Female, American Indian or Alaska Native, School Grade 6",
-          "dcid": "Count_Student_Female_AmericanIndianOrAlaskaNative_SchoolGrade6"
-        },
-        {
-          "name": "Count of Student: Female, American Indian or Alaska Native, School Grade 7",
-          "dcid": "Count_Student_Female_AmericanIndianOrAlaskaNative_SchoolGrade7"
-        },
-        {
-          "name": "Count of Student: Female, American Indian or Alaska Native, School Grade 8",
-          "dcid": "Count_Student_Female_AmericanIndianOrAlaskaNative_SchoolGrade8"
-        },
-        {
-          "name": "Count of Student: Female, American Indian or Alaska Native, School Grade 9",
-          "dcid": "Count_Student_Female_AmericanIndianOrAlaskaNative_SchoolGrade9"
-        },
-        {
-          "name": "Count of Student: Female, American Indian or Alaska Native, Ungraded Classes",
-          "dcid": "Count_Student_Female_AmericanIndianOrAlaskaNative_UngradedClasses"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_Race-Asian_SchoolGradeLevel",
-      "name": "Student With Gender = Female, Race = Asian, School Grade Level",
-      "statVars": [
-        {
-          "name": "Count of Student: Female, Asian, 1 - 8 School Grade",
-          "dcid": "dc/2g1db7f9bnb93"
-        },
-        {
-          "name": "Count of Student: Female, Asian, 9 - 12 School Grade",
-          "dcid": "dc/tzt4qv023e321"
-        },
-        {
-          "name": "Count of Student: Female, Asian, Adult Education",
-          "dcid": "Count_Student_Female_Asian_AdultEducation"
-        },
-        {
-          "name": "Count of Student: Female, Asian, HighSchool",
-          "dcid": "Count_Student_Female_Asian_HighSchool"
-        },
-        {
-          "name": "Count of Student: Female, Asian, Kindergarten",
-          "dcid": "Count_Student_Female_Asian_Kindergarten"
-        },
-        {
-          "name": "Count of Student: Female, Asian, MiddleSchool",
-          "dcid": "Count_Student_Female_Asian_MiddleSchool"
-        },
-        {
-          "name": "Count of Student: Female, Asian, Pre Kindergarten",
-          "dcid": "Count_Student_Female_Asian_PreKindergarten"
-        },
-        {
-          "name": "Count of Student: Female, Asian, Pre Kindergarten And Kindergarten",
-          "dcid": "dc/94qkvzc4j0p7b"
-        },
-        {
-          "name": "Count of Student: Female, Asian, PrimarySchool",
-          "dcid": "Count_Student_Female_Asian_PrimarySchool"
-        },
-        {
-          "name": "Count of Student: Female, Asian, School Grade 1",
-          "dcid": "Count_Student_Female_Asian_SchoolGrade1"
-        },
-        {
-          "name": "Count of Student: Female, Asian, School Grade 10",
-          "dcid": "Count_Student_Female_Asian_SchoolGrade10"
-        },
-        {
-          "name": "Count of Student: Female, Asian, School Grade 11",
-          "dcid": "Count_Student_Female_Asian_SchoolGrade11"
-        },
-        {
-          "name": "Count of Student: Female, Asian, School Grade 12",
-          "dcid": "Count_Student_Female_Asian_SchoolGrade12"
-        },
-        {
-          "name": "Count of Student: Female, Asian, School Grade 13",
-          "dcid": "Count_Student_Female_Asian_SchoolGrade13"
-        },
-        {
-          "name": "Count of Student: Female, Asian, School Grade 2",
-          "dcid": "Count_Student_Female_Asian_SchoolGrade2"
-        },
-        {
-          "name": "Count of Student: Female, Asian, School Grade 3",
-          "dcid": "Count_Student_Female_Asian_SchoolGrade3"
-        },
-        {
-          "name": "Count of Student: Female, Asian, School Grade 4",
-          "dcid": "Count_Student_Female_Asian_SchoolGrade4"
-        },
-        {
-          "name": "Count of Student: Female, Asian, School Grade 5",
-          "dcid": "Count_Student_Female_Asian_SchoolGrade5"
-        },
-        {
-          "name": "Count of Student: Female, Asian, School Grade 6",
-          "dcid": "Count_Student_Female_Asian_SchoolGrade6"
-        },
-        {
-          "name": "Count of Student: Female, Asian, School Grade 7",
-          "dcid": "Count_Student_Female_Asian_SchoolGrade7"
-        },
-        {
-          "name": "Count of Student: Female, Asian, School Grade 8",
-          "dcid": "Count_Student_Female_Asian_SchoolGrade8"
-        },
-        {
-          "name": "Count of Student: Female, Asian, School Grade 9",
-          "dcid": "Count_Student_Female_Asian_SchoolGrade9"
-        },
-        {
-          "name": "Count of Student: Female, Asian, Ungraded Classes",
-          "dcid": "Count_Student_Female_Asian_UngradedClasses"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_Race-Black_SchoolGradeLevel",
-      "name": "Student With Gender = Female, Race = Black, School Grade Level",
-      "statVars": [
-        {
-          "name": "Count of Student: Female, Black, 1 - 8 School Grade",
-          "dcid": "dc/pmrh66t5y7j64"
-        },
-        {
-          "name": "Count of Student: Female, Black, 9 - 12 School Grade",
-          "dcid": "dc/d26mn4g3s1jwf"
-        },
-        {
-          "name": "Count of Student: Female, Black, Adult Education",
-          "dcid": "Count_Student_Female_Black_AdultEducation"
-        },
-        {
-          "name": "Count of Student: Female, Black, HighSchool",
-          "dcid": "Count_Student_Female_Black_HighSchool"
-        },
-        {
-          "name": "Count of Student: Female, Black, Kindergarten",
-          "dcid": "Count_Student_Female_Black_Kindergarten"
-        },
-        {
-          "name": "Count of Student: Female, Black, MiddleSchool",
-          "dcid": "Count_Student_Female_Black_MiddleSchool"
-        },
-        {
-          "name": "Count of Student: Female, Black, Pre Kindergarten",
-          "dcid": "Count_Student_Female_Black_PreKindergarten"
-        },
-        {
-          "name": "Count of Student: Female, Black, Pre Kindergarten And Kindergarten",
-          "dcid": "dc/mexze51feqxsd"
-        },
-        {
-          "name": "Count of Student: Female, Black, PrimarySchool",
-          "dcid": "Count_Student_Female_Black_PrimarySchool"
-        },
-        {
-          "name": "Count of Student: Female, Black, School Grade 1",
-          "dcid": "Count_Student_Female_Black_SchoolGrade1"
-        },
-        {
-          "name": "Count of Student: Female, Black, School Grade 10",
-          "dcid": "Count_Student_Female_Black_SchoolGrade10"
-        },
-        {
-          "name": "Count of Student: Female, Black, School Grade 11",
-          "dcid": "Count_Student_Female_Black_SchoolGrade11"
-        },
-        {
-          "name": "Count of Student: Female, Black, School Grade 12",
-          "dcid": "Count_Student_Female_Black_SchoolGrade12"
-        },
-        {
-          "name": "Count of Student: Female, Black, School Grade 13",
-          "dcid": "Count_Student_Female_Black_SchoolGrade13"
-        },
-        {
-          "name": "Count of Student: Female, Black, School Grade 2",
-          "dcid": "Count_Student_Female_Black_SchoolGrade2"
-        },
-        {
-          "name": "Count of Student: Female, Black, School Grade 3",
-          "dcid": "Count_Student_Female_Black_SchoolGrade3"
-        },
-        {
-          "name": "Count of Student: Female, Black, School Grade 4",
-          "dcid": "Count_Student_Female_Black_SchoolGrade4"
-        },
-        {
-          "name": "Count of Student: Female, Black, School Grade 5",
-          "dcid": "Count_Student_Female_Black_SchoolGrade5"
-        },
-        {
-          "name": "Count of Student: Female, Black, School Grade 6",
-          "dcid": "Count_Student_Female_Black_SchoolGrade6"
-        },
-        {
-          "name": "Count of Student: Female, Black, School Grade 7",
-          "dcid": "Count_Student_Female_Black_SchoolGrade7"
-        },
-        {
-          "name": "Count of Student: Female, Black, School Grade 8",
-          "dcid": "Count_Student_Female_Black_SchoolGrade8"
-        },
-        {
-          "name": "Count of Student: Female, Black, School Grade 9",
-          "dcid": "Count_Student_Female_Black_SchoolGrade9"
-        },
-        {
-          "name": "Count of Student: Female, Black, Ungraded Classes",
-          "dcid": "Count_Student_Female_Black_UngradedClasses"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_Race-HawaiianNativeOrPacificIslander_SchoolGradeLevel",
-      "name": "Student With Gender = Female, Race = Hawaiian Native or Pacific Islander, School Grade Level",
-      "statVars": [
-        {
-          "name": "Count of Student: Female, Hawaiian Native or Pacific Islander, 1 - 8 School Grade",
-          "dcid": "dc/wp9gbw427esv6"
-        },
-        {
-          "name": "Count of Student: Female, Hawaiian Native or Pacific Islander, 9 - 12 School Grade",
-          "dcid": "dc/f4xpm3r0cnf3g"
-        },
-        {
-          "name": "Count of Student: Female, Hawaiian Native or Pacific Islander, Adult Education",
-          "dcid": "Count_Student_Female_HawaiianNativeOrPacificIslander_AdultEducation"
-        },
-        {
-          "name": "Count of Student: Female, Hawaiian Native or Pacific Islander, HighSchool",
-          "dcid": "Count_Student_Female_HawaiianNativeOrPacificIslander_HighSchool"
-        },
-        {
-          "name": "Count of Student: Female, Hawaiian Native or Pacific Islander, Kindergarten",
-          "dcid": "Count_Student_Female_HawaiianNativeOrPacificIslander_Kindergarten"
-        },
-        {
-          "name": "Count of Student: Female, Hawaiian Native or Pacific Islander, MiddleSchool",
-          "dcid": "Count_Student_Female_HawaiianNativeOrPacificIslander_MiddleSchool"
-        },
-        {
-          "name": "Count of Student: Female, Hawaiian Native or Pacific Islander, Pre Kindergarten",
-          "dcid": "Count_Student_Female_HawaiianNativeOrPacificIslander_PreKindergarten"
-        },
-        {
-          "name": "Count of Student: Female, Hawaiian Native or Pacific Islander, Pre Kindergarten And Kindergarten",
-          "dcid": "dc/chj2syy7psf0g"
-        },
-        {
-          "name": "Count of Student: Female, Hawaiian Native or Pacific Islander, PrimarySchool",
-          "dcid": "Count_Student_Female_HawaiianNativeOrPacificIslander_PrimarySchool"
-        },
-        {
-          "name": "Count of Student: Female, Hawaiian Native or Pacific Islander, School Grade 1",
-          "dcid": "Count_Student_Female_HawaiianNativeOrPacificIslander_SchoolGrade1"
-        },
-        {
-          "name": "Count of Student: Female, Hawaiian Native or Pacific Islander, School Grade 10",
-          "dcid": "Count_Student_Female_HawaiianNativeOrPacificIslander_SchoolGrade10"
-        },
-        {
-          "name": "Count of Student: Female, Hawaiian Native or Pacific Islander, School Grade 11",
-          "dcid": "Count_Student_Female_HawaiianNativeOrPacificIslander_SchoolGrade11"
-        },
-        {
-          "name": "Count of Student: Female, Hawaiian Native or Pacific Islander, School Grade 12",
-          "dcid": "Count_Student_Female_HawaiianNativeOrPacificIslander_SchoolGrade12"
-        },
-        {
-          "name": "Count of Student: Female, Hawaiian Native or Pacific Islander, School Grade 13",
-          "dcid": "Count_Student_Female_HawaiianNativeOrPacificIslander_SchoolGrade13"
-        },
-        {
-          "name": "Count of Student: Female, Hawaiian Native or Pacific Islander, School Grade 2",
-          "dcid": "Count_Student_Female_HawaiianNativeOrPacificIslander_SchoolGrade2"
-        },
-        {
-          "name": "Count of Student: Female, Hawaiian Native or Pacific Islander, School Grade 3",
-          "dcid": "Count_Student_Female_HawaiianNativeOrPacificIslander_SchoolGrade3"
-        },
-        {
-          "name": "Count of Student: Female, Hawaiian Native or Pacific Islander, School Grade 4",
-          "dcid": "Count_Student_Female_HawaiianNativeOrPacificIslander_SchoolGrade4"
-        },
-        {
-          "name": "Count of Student: Female, Hawaiian Native or Pacific Islander, School Grade 5",
-          "dcid": "Count_Student_Female_HawaiianNativeOrPacificIslander_SchoolGrade5"
-        },
-        {
-          "name": "Count of Student: Female, Hawaiian Native or Pacific Islander, School Grade 6",
-          "dcid": "Count_Student_Female_HawaiianNativeOrPacificIslander_SchoolGrade6"
-        },
-        {
-          "name": "Count of Student: Female, Hawaiian Native or Pacific Islander, School Grade 7",
-          "dcid": "Count_Student_Female_HawaiianNativeOrPacificIslander_SchoolGrade7"
-        },
-        {
-          "name": "Count of Student: Female, Hawaiian Native or Pacific Islander, School Grade 8",
-          "dcid": "Count_Student_Female_HawaiianNativeOrPacificIslander_SchoolGrade8"
-        },
-        {
-          "name": "Count of Student: Female, Hawaiian Native or Pacific Islander, School Grade 9",
-          "dcid": "Count_Student_Female_HawaiianNativeOrPacificIslander_SchoolGrade9"
-        },
-        {
-          "name": "Count of Student: Female, Hawaiian Native or Pacific Islander, Ungraded Classes",
-          "dcid": "Count_Student_Female_HawaiianNativeOrPacificIslander_UngradedClasses"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_Race-HispanicOrLatino_SchoolGradeLevel",
-      "name": "Student With Gender = Female, Race = Hispanic or Latino, School Grade Level",
-      "statVars": [
-        {
-          "name": "Count of Student: Female, Hispanic or Latino, 1 - 8 School Grade",
-          "dcid": "dc/znm936tfsxwk6"
-        },
-        {
-          "name": "Count of Student: Female, Hispanic or Latino, 9 - 12 School Grade",
-          "dcid": "dc/e8xn32xqf6fxh"
-        },
-        {
-          "name": "Count of Student: Female, Hispanic or Latino, Adult Education",
-          "dcid": "Count_Student_Female_HispanicOrLatino_AdultEducation"
-        },
-        {
-          "name": "Count of Student: Female, Hispanic or Latino, HighSchool",
-          "dcid": "Count_Student_Female_HispanicOrLatino_HighSchool"
-        },
-        {
-          "name": "Count of Student: Female, Hispanic or Latino, Kindergarten",
-          "dcid": "Count_Student_Female_HispanicOrLatino_Kindergarten"
-        },
-        {
-          "name": "Count of Student: Female, Hispanic or Latino, MiddleSchool",
-          "dcid": "Count_Student_Female_HispanicOrLatino_MiddleSchool"
-        },
-        {
-          "name": "Count of Student: Female, Hispanic or Latino, Pre Kindergarten",
-          "dcid": "Count_Student_Female_HispanicOrLatino_PreKindergarten"
-        },
-        {
-          "name": "Count of Student: Female, Hispanic or Latino, Pre Kindergarten And Kindergarten",
-          "dcid": "dc/l7cy04dh2x9y4"
-        },
-        {
-          "name": "Count of Student: Female, Hispanic or Latino, PrimarySchool",
-          "dcid": "Count_Student_Female_HispanicOrLatino_PrimarySchool"
-        },
-        {
-          "name": "Count of Student: Female, Hispanic or Latino, School Grade 1",
-          "dcid": "Count_Student_Female_HispanicOrLatino_SchoolGrade1"
-        },
-        {
-          "name": "Count of Student: Female, Hispanic or Latino, School Grade 10",
-          "dcid": "Count_Student_Female_HispanicOrLatino_SchoolGrade10"
-        },
-        {
-          "name": "Count of Student: Female, Hispanic or Latino, School Grade 11",
-          "dcid": "Count_Student_Female_HispanicOrLatino_SchoolGrade11"
-        },
-        {
-          "name": "Count of Student: Female, Hispanic or Latino, School Grade 12",
-          "dcid": "Count_Student_Female_HispanicOrLatino_SchoolGrade12"
-        },
-        {
-          "name": "Count of Student: Female, Hispanic or Latino, School Grade 13",
-          "dcid": "Count_Student_Female_HispanicOrLatino_SchoolGrade13"
-        },
-        {
-          "name": "Count of Student: Female, Hispanic or Latino, School Grade 2",
-          "dcid": "Count_Student_Female_HispanicOrLatino_SchoolGrade2"
-        },
-        {
-          "name": "Count of Student: Female, Hispanic or Latino, School Grade 3",
-          "dcid": "Count_Student_Female_HispanicOrLatino_SchoolGrade3"
-        },
-        {
-          "name": "Count of Student: Female, Hispanic or Latino, School Grade 4",
-          "dcid": "Count_Student_Female_HispanicOrLatino_SchoolGrade4"
-        },
-        {
-          "name": "Count of Student: Female, Hispanic or Latino, School Grade 5",
-          "dcid": "Count_Student_Female_HispanicOrLatino_SchoolGrade5"
-        },
-        {
-          "name": "Count of Student: Female, Hispanic or Latino, School Grade 6",
-          "dcid": "Count_Student_Female_HispanicOrLatino_SchoolGrade6"
-        },
-        {
-          "name": "Count of Student: Female, Hispanic or Latino, School Grade 7",
-          "dcid": "Count_Student_Female_HispanicOrLatino_SchoolGrade7"
-        },
-        {
-          "name": "Count of Student: Female, Hispanic or Latino, School Grade 8",
-          "dcid": "Count_Student_Female_HispanicOrLatino_SchoolGrade8"
-        },
-        {
-          "name": "Count of Student: Female, Hispanic or Latino, School Grade 9",
-          "dcid": "Count_Student_Female_HispanicOrLatino_SchoolGrade9"
-        },
-        {
-          "name": "Count of Student: Female, Hispanic or Latino, Ungraded Classes",
-          "dcid": "Count_Student_Female_HispanicOrLatino_UngradedClasses"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_Race-TwoOrMoreRaces_SchoolGradeLevel",
-      "name": "Student With Gender = Female, Race = Two or More Races, School Grade Level",
-      "statVars": [
-        {
-          "name": "Count of Student: Female, Two or More Races, 1 - 8 School Grade",
-          "dcid": "dc/76tjmel71kjs8"
-        },
-        {
-          "name": "Count of Student: Female, Two or More Races, 9 - 12 School Grade",
-          "dcid": "dc/tnk203c53kp03"
-        },
-        {
-          "name": "Count of Student: Female, Two or More Races, Adult Education",
-          "dcid": "Count_Student_Female_TwoOrMoreRaces_AdultEducation"
-        },
-        {
-          "name": "Count of Student: Female, Two or More Races, HighSchool",
-          "dcid": "Count_Student_Female_TwoOrMoreRaces_HighSchool"
-        },
-        {
-          "name": "Count of Student: Female, Two or More Races, Kindergarten",
-          "dcid": "Count_Student_Female_TwoOrMoreRaces_Kindergarten"
-        },
-        {
-          "name": "Count of Student: Female, Two or More Races, MiddleSchool",
-          "dcid": "Count_Student_Female_TwoOrMoreRaces_MiddleSchool"
-        },
-        {
-          "name": "Count of Student: Female, Two or More Races, Pre Kindergarten",
-          "dcid": "Count_Student_Female_TwoOrMoreRaces_PreKindergarten"
-        },
-        {
-          "name": "Count of Student: Female, Two or More Races, Pre Kindergarten And Kindergarten",
-          "dcid": "dc/q9qxh0her2pnc"
-        },
-        {
-          "name": "Count of Student: Female, Two or More Races, PrimarySchool",
-          "dcid": "Count_Student_Female_TwoOrMoreRaces_PrimarySchool"
-        },
-        {
-          "name": "Count of Student: Female, Two or More Races, School Grade 1",
-          "dcid": "Count_Student_Female_TwoOrMoreRaces_SchoolGrade1"
-        },
-        {
-          "name": "Count of Student: Female, Two or More Races, School Grade 10",
-          "dcid": "Count_Student_Female_TwoOrMoreRaces_SchoolGrade10"
-        },
-        {
-          "name": "Count of Student: Female, Two or More Races, School Grade 11",
-          "dcid": "Count_Student_Female_TwoOrMoreRaces_SchoolGrade11"
-        },
-        {
-          "name": "Count of Student: Female, Two or More Races, School Grade 12",
-          "dcid": "Count_Student_Female_TwoOrMoreRaces_SchoolGrade12"
-        },
-        {
-          "name": "Count of Student: Female, Two or More Races, School Grade 13",
-          "dcid": "Count_Student_Female_TwoOrMoreRaces_SchoolGrade13"
-        },
-        {
-          "name": "Count of Student: Female, Two or More Races, School Grade 2",
-          "dcid": "Count_Student_Female_TwoOrMoreRaces_SchoolGrade2"
-        },
-        {
-          "name": "Count of Student: Female, Two or More Races, School Grade 3",
-          "dcid": "Count_Student_Female_TwoOrMoreRaces_SchoolGrade3"
-        },
-        {
-          "name": "Count of Student: Female, Two or More Races, School Grade 4",
-          "dcid": "Count_Student_Female_TwoOrMoreRaces_SchoolGrade4"
-        },
-        {
-          "name": "Count of Student: Female, Two or More Races, School Grade 5",
-          "dcid": "Count_Student_Female_TwoOrMoreRaces_SchoolGrade5"
-        },
-        {
-          "name": "Count of Student: Female, Two or More Races, School Grade 6",
-          "dcid": "Count_Student_Female_TwoOrMoreRaces_SchoolGrade6"
-        },
-        {
-          "name": "Count of Student: Female, Two or More Races, School Grade 7",
-          "dcid": "Count_Student_Female_TwoOrMoreRaces_SchoolGrade7"
-        },
-        {
-          "name": "Count of Student: Female, Two or More Races, School Grade 8",
-          "dcid": "Count_Student_Female_TwoOrMoreRaces_SchoolGrade8"
-        },
-        {
-          "name": "Count of Student: Female, Two or More Races, School Grade 9",
-          "dcid": "Count_Student_Female_TwoOrMoreRaces_SchoolGrade9"
-        },
-        {
-          "name": "Count of Student: Female, Two or More Races, Ungraded Classes",
-          "dcid": "Count_Student_Female_TwoOrMoreRaces_UngradedClasses"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_Race-White_SchoolGradeLevel",
-      "name": "Student With Gender = Female, Race = White, School Grade Level",
-      "statVars": [
-        {
-          "name": "Count of Student: Female, White, 1 - 8 School Grade",
-          "dcid": "dc/myqff182xfgpg"
-        },
-        {
-          "name": "Count of Student: Female, White, 9 - 12 School Grade",
-          "dcid": "dc/8zkycegbv1nz1"
-        },
-        {
-          "name": "Count of Student: Female, White, Adult Education",
-          "dcid": "Count_Student_Female_White_AdultEducation"
-        },
-        {
-          "name": "Count of Student: Female, White, HighSchool",
-          "dcid": "Count_Student_Female_White_HighSchool"
-        },
-        {
-          "name": "Count of Student: Female, White, Kindergarten",
-          "dcid": "Count_Student_Female_White_Kindergarten"
-        },
-        {
-          "name": "Count of Student: Female, White, MiddleSchool",
-          "dcid": "Count_Student_Female_White_MiddleSchool"
-        },
-        {
-          "name": "Count of Student: Female, White, Pre Kindergarten",
-          "dcid": "Count_Student_Female_White_PreKindergarten"
-        },
-        {
-          "name": "Count of Student: Female, White, Pre Kindergarten And Kindergarten",
-          "dcid": "dc/sy56qp8y3csf2"
-        },
-        {
-          "name": "Count of Student: Female, White, PrimarySchool",
-          "dcid": "Count_Student_Female_White_PrimarySchool"
-        },
-        {
-          "name": "Count of Student: Female, White, School Grade 1",
-          "dcid": "Count_Student_Female_White_SchoolGrade1"
-        },
-        {
-          "name": "Count of Student: Female, White, School Grade 10",
-          "dcid": "Count_Student_Female_White_SchoolGrade10"
-        },
-        {
-          "name": "Count of Student: Female, White, School Grade 11",
-          "dcid": "Count_Student_Female_White_SchoolGrade11"
-        },
-        {
-          "name": "Count of Student: Female, White, School Grade 12",
-          "dcid": "Count_Student_Female_White_SchoolGrade12"
-        },
-        {
-          "name": "Count of Student: Female, White, School Grade 13",
-          "dcid": "Count_Student_Female_White_SchoolGrade13"
-        },
-        {
-          "name": "Count of Student: Female, White, School Grade 2",
-          "dcid": "Count_Student_Female_White_SchoolGrade2"
-        },
-        {
-          "name": "Count of Student: Female, White, School Grade 3",
-          "dcid": "Count_Student_Female_White_SchoolGrade3"
-        },
-        {
-          "name": "Count of Student: Female, White, School Grade 4",
-          "dcid": "Count_Student_Female_White_SchoolGrade4"
-        },
-        {
-          "name": "Count of Student: Female, White, School Grade 5",
-          "dcid": "Count_Student_Female_White_SchoolGrade5"
-        },
-        {
-          "name": "Count of Student: Female, White, School Grade 6",
-          "dcid": "Count_Student_Female_White_SchoolGrade6"
-        },
-        {
-          "name": "Count of Student: Female, White, School Grade 7",
-          "dcid": "Count_Student_Female_White_SchoolGrade7"
-        },
-        {
-          "name": "Count of Student: Female, White, School Grade 8",
-          "dcid": "Count_Student_Female_White_SchoolGrade8"
-        },
-        {
-          "name": "Count of Student: Female, White, School Grade 9",
-          "dcid": "Count_Student_Female_White_SchoolGrade9"
-        },
-        {
-          "name": "Count of Student: Female, White, Ungraded Classes",
-          "dcid": "Count_Student_Female_White_UngradedClasses"
-        }
-      ]
-    },
-    {
       "dcid": "dc/g/MortalityEvent_Age_Gender-Female",
       "name": "Mortality Event With Age, Gender = Female",
       "statVars": [
@@ -18981,134 +18371,6 @@
         {
           "name": "Population: 1 - 4 Years, Female, White Alone Not Hispanic or Latino",
           "dcid": "Count_Person_1To4Years_Female_WhiteAloneNotHispanicOrLatino"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_EducationalAttainment_Gender-Female",
-      "name": "Person With Educational Attainment, Gender = Female",
-      "statVars": [
-        {
-          "name": "Percentage: Bachelor Degree or Higher, Female",
-          "dcid": "dc/648tvf392fz0c"
-        },
-        {
-          "name": "Population: 10th Grade, Female",
-          "dcid": "Count_Person_25OrMoreYears_EducationalAttainment10ThGrade_Female"
-        },
-        {
-          "name": "Population: 11th Grade, Female",
-          "dcid": "Count_Person_25OrMoreYears_EducationalAttainment11ThGrade_Female"
-        },
-        {
-          "name": "Population: 12th Grade No Diploma, Female",
-          "dcid": "Count_Person_25OrMoreYears_EducationalAttainment12ThGradeNoDiploma_Female"
-        },
-        {
-          "name": "Population: 5th And 6th Grade, Female",
-          "dcid": "Count_Person_25OrMoreYears_EducationalAttainment5ThAnd6ThGrade_Female"
-        },
-        {
-          "name": "Population: 7th And 8th Grade, Female",
-          "dcid": "Count_Person_25OrMoreYears_EducationalAttainment7ThAnd8ThGrade_Female"
-        },
-        {
-          "name": "Population: 9th Grade, Female",
-          "dcid": "Count_Person_25OrMoreYears_EducationalAttainment9ThGrade_Female"
-        },
-        {
-          "name": "Population: Masters Degree, Female",
-          "dcid": "Count_Person_25OrMoreYears_EducationalAttainmentMastersDegree_Female"
-        },
-        {
-          "name": "Population: No Schooling Completed, Female",
-          "dcid": "Count_Person_25OrMoreYears_EducationalAttainmentNoSchoolingCompleted_Female"
-        },
-        {
-          "name": "Population: Nursery To 4th Grade, Female",
-          "dcid": "Count_Person_25OrMoreYears_EducationalAttainmentNurseryTo4ThGrade_Female"
-        },
-        {
-          "name": "Population: Professional School Degree, Female",
-          "dcid": "Count_Person_25OrMoreYears_EducationalAttainmentProfessionalSchoolDegree_Female"
-        },
-        {
-          "name": "Population: Some College 1 or More Years No Degree, Female",
-          "dcid": "Count_Person_25OrMoreYears_EducationalAttainmentSomeCollege1OrMoreYearsNoDegree_Female"
-        },
-        {
-          "name": "Population: Some College Less Than 1 Year, Female",
-          "dcid": "Count_Person_25OrMoreYears_EducationalAttainmentSomeCollegeLessThan1Year_Female"
-        },
-        {
-          "name": "Population: Masters Degree or Higher, Female (As Fraction of Count Person 25 or More Years Female)",
-          "dcid": "Count_Person_25OrMoreYears_Female_MastersDegreeOrHigher_AsFractionOf_Count_Person_25OrMoreYears_Female"
-        },
-        {
-          "name": "Population: 25 - 64 Years, Less Than Primary Education \u0026 Primary Education \u0026 Lower Secondary Education, Female (As Fraction of Count Person 25 To 64 Years Female)",
-          "dcid": "Count_Person_25To64Years_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_Female_AsAFractionOfCount_Person_25To64Years_Female"
-        },
-        {
-          "name": "Population: 25 - 64 Years, Upper Secondary Education \u0026 Post Secondary Non Tertiary Education, Female (As Fraction of Count Person 25 To 64 Years Female)",
-          "dcid": "Count_Person_25To64Years_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female_AsAFractionOfCount_Person_25To64Years_Female"
-        },
-        {
-          "name": "Population: 25 - 64 Years, Upper Secondary Education or Higher, Female (As Fraction of Count Person 25 To 64 Years Female)",
-          "dcid": "Count_Person_25To64Years_UpperSecondaryEducationOrHigher_Female_AsAFractionOfCount_Person_25To64Years_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age_Gender-Female",
-      "name": "Person With Age, Gender = Female",
-      "statVars": [
-        {
-          "name": "Life Expectancy: 1 Years or Less, Female",
-          "dcid": "LifeExpectancy_Person_Upto1Years_Female"
-        },
-        {
-          "name": "Population: 14 Years or Less, Female",
-          "dcid": "Count_Person_Upto14Years_Female"
-        },
-        {
-          "name": "Population: 3 Years or More, Female",
-          "dcid": "Count_Person_3OrMoreYears_Female"
-        },
-        {
-          "name": "Population: 65 - 66 Years, Female",
-          "dcid": "Count_Person_65To66Years_Female"
-        },
-        {
-          "name": "Population: 67 - 69 Years, Female",
-          "dcid": "Count_Person_67To69Years_Female"
-        },
-        {
-          "name": "Population: 80 Years or More, Female",
-          "dcid": "Count_Person_80OrMoreYears_Female"
-        },
-        {
-          "name": "Population: 85 - 89 Years, Female",
-          "dcid": "Count_Person_85To89Years_Female"
-        },
-        {
-          "name": "Population: 90 Years or More, Female",
-          "dcid": "Count_Person_90OrMoreYears_Female"
-        },
-        {
-          "name": "Unemployment Rate: 25 - 74 Years, Female",
-          "dcid": "UnemploymentRate_Person_25To74Years_Female"
-        },
-        {
-          "name": "Unemployment Rate: 25 Years or Less, Female",
-          "dcid": "UnemploymentRate_Person_Upto25Years_Female"
-        },
-        {
-          "name": "Prevalence: 50 - 74 Years, Female, Mammography",
-          "dcid": "Percent_Person_50To74Years_Female_ReceivedMammography"
-        },
-        {
-          "name": "Population (Measured Based on Custody): 0 - 17 Years, Female, Incarcerated",
-          "dcid": "dc/c17kzp0zrfkq9"
         }
       ]
     },
@@ -19803,48 +19065,6 @@
       ]
     },
     {
-      "dcid": "dc/g/Person_Earnings_Gender-Female",
-      "name": "Person With Earnings, Gender = Female",
-      "statVars": [
-        {
-          "name": "Population: 16 Years or More, 10,000 - 14,999 Inflation Adjusted USD_Current Year, Female, With Earnings, Full Time Year Round Worker",
-          "dcid": "Count_Person_10000To14999InflationAdjustedUSDCurrentYear_Female_WithEarnings_FullTimeYearRoundWorker"
-        },
-        {
-          "name": "Population: 16 Years or More, 100,000 Inflation Adjusted USD_Current Year or More, Female, With Earnings, Full Time Year Round Worker",
-          "dcid": "Count_Person_100000OrMoreInflationAdjustedUSDCurrentYear_Female_WithEarnings_FullTimeYearRoundWorker"
-        },
-        {
-          "name": "Population: 16 Years or More, 15,000 - 24,999 Inflation Adjusted USD_Current Year, Female, With Earnings, Full Time Year Round Worker",
-          "dcid": "Count_Person_15000To24999InflationAdjustedUSDCurrentYear_Female_WithEarnings_FullTimeYearRoundWorker"
-        },
-        {
-          "name": "Population: 16 Years or More, 25,000 - 34,999 Inflation Adjusted USD_Current Year, Female, With Earnings, Full Time Year Round Worker",
-          "dcid": "Count_Person_25000To34999InflationAdjustedUSDCurrentYear_Female_WithEarnings_FullTimeYearRoundWorker"
-        },
-        {
-          "name": "Population: 16 Years or More, 35,000 - 49,999 Inflation Adjusted USD_Current Year, Female, With Earnings, Full Time Year Round Worker",
-          "dcid": "Count_Person_35000To49999InflationAdjustedUSDCurrentYear_Female_WithEarnings_FullTimeYearRoundWorker"
-        },
-        {
-          "name": "Population: 16 Years or More, 50,000 - 64,999 Inflation Adjusted USD_Current Year, Female, With Earnings, Full Time Year Round Worker",
-          "dcid": "Count_Person_50000To64999InflationAdjustedUSDCurrentYear_Female_WithEarnings_FullTimeYearRoundWorker"
-        },
-        {
-          "name": "Population: 16 Years or More, 65,000 - 74,999 Inflation Adjusted USD_Current Year, Female, With Earnings, Full Time Year Round Worker",
-          "dcid": "Count_Person_65000To74999InflationAdjustedUSDCurrentYear_Female_WithEarnings_FullTimeYearRoundWorker"
-        },
-        {
-          "name": "Population: 16 Years or More, 75,000 - 99,999 Inflation Adjusted USD_Current Year, Female, With Earnings, Full Time Year Round Worker",
-          "dcid": "Count_Person_75000To99999InflationAdjustedUSDCurrentYear_Female_WithEarnings_FullTimeYearRoundWorker"
-        },
-        {
-          "name": "Population: 16 Years or More, 9,999 Inflation Adjusted USD_Current Year or Less, Female, With Earnings, Full Time Year Round Worker",
-          "dcid": "Count_Person_9999OrLessInflationAdjustedUSDCurrentYear_Female_WithEarnings_FullTimeYearRoundWorker"
-        }
-      ]
-    },
-    {
       "dcid": "dc/g/Person_Age-Years15To17_Gender-Female_Race",
       "name": "Person With Age = 15 - 17 Years, Gender = Female, Race",
       "statVars": [
@@ -19925,6 +19145,48 @@
         {
           "name": "Population: 15 Years or More, Female, White Alone Not Hispanic or Latino",
           "dcid": "Count_Person_15OrMoreYears_Female_WhiteAloneNotHispanicOrLatino"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16Onwards_Earnings_Gender-Female",
+      "name": "Person With Age = 16 Years or More, Earnings, Gender = Female",
+      "statVars": [
+        {
+          "name": "Population: 16 Years or More, 10,000 - 14,999 Inflation Adjusted USD_Current Year, Female, With Earnings, Full Time Year Round Worker",
+          "dcid": "Count_Person_10000To14999InflationAdjustedUSDCurrentYear_Female_WithEarnings_FullTimeYearRoundWorker"
+        },
+        {
+          "name": "Population: 16 Years or More, 100,000 Inflation Adjusted USD_Current Year or More, Female, With Earnings, Full Time Year Round Worker",
+          "dcid": "Count_Person_100000OrMoreInflationAdjustedUSDCurrentYear_Female_WithEarnings_FullTimeYearRoundWorker"
+        },
+        {
+          "name": "Population: 16 Years or More, 15,000 - 24,999 Inflation Adjusted USD_Current Year, Female, With Earnings, Full Time Year Round Worker",
+          "dcid": "Count_Person_15000To24999InflationAdjustedUSDCurrentYear_Female_WithEarnings_FullTimeYearRoundWorker"
+        },
+        {
+          "name": "Population: 16 Years or More, 25,000 - 34,999 Inflation Adjusted USD_Current Year, Female, With Earnings, Full Time Year Round Worker",
+          "dcid": "Count_Person_25000To34999InflationAdjustedUSDCurrentYear_Female_WithEarnings_FullTimeYearRoundWorker"
+        },
+        {
+          "name": "Population: 16 Years or More, 35,000 - 49,999 Inflation Adjusted USD_Current Year, Female, With Earnings, Full Time Year Round Worker",
+          "dcid": "Count_Person_35000To49999InflationAdjustedUSDCurrentYear_Female_WithEarnings_FullTimeYearRoundWorker"
+        },
+        {
+          "name": "Population: 16 Years or More, 50,000 - 64,999 Inflation Adjusted USD_Current Year, Female, With Earnings, Full Time Year Round Worker",
+          "dcid": "Count_Person_50000To64999InflationAdjustedUSDCurrentYear_Female_WithEarnings_FullTimeYearRoundWorker"
+        },
+        {
+          "name": "Population: 16 Years or More, 65,000 - 74,999 Inflation Adjusted USD_Current Year, Female, With Earnings, Full Time Year Round Worker",
+          "dcid": "Count_Person_65000To74999InflationAdjustedUSDCurrentYear_Female_WithEarnings_FullTimeYearRoundWorker"
+        },
+        {
+          "name": "Population: 16 Years or More, 75,000 - 99,999 Inflation Adjusted USD_Current Year, Female, With Earnings, Full Time Year Round Worker",
+          "dcid": "Count_Person_75000To99999InflationAdjustedUSDCurrentYear_Female_WithEarnings_FullTimeYearRoundWorker"
+        },
+        {
+          "name": "Population: 16 Years or More, 9,999 Inflation Adjusted USD_Current Year or Less, Female, With Earnings, Full Time Year Round Worker",
+          "dcid": "Count_Person_9999OrLessInflationAdjustedUSDCurrentYear_Female_WithEarnings_FullTimeYearRoundWorker"
         }
       ]
     },
@@ -20261,216 +19523,6 @@
         {
           "name": "Population: 75 - 84 Years, Female, White Alone Not Hispanic or Latino",
           "dcid": "Count_Person_75To84Years_Female_WhiteAloneNotHispanicOrLatino"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_EducationalAttainment-BachelorsDegreeOrHigher_Gender-Female_Race",
-      "name": "Person With Educational Attainment = Bachelors Degree or Higher, Gender = Female, Race",
-      "statVars": [
-        {
-          "name": "Population: Bachelors Degree or Higher, Female, American Indian or Alaska Native Alone",
-          "dcid": "dc/4qtse8536dg63"
-        },
-        {
-          "name": "Population: Bachelors Degree or Higher, Female, Asian Alone",
-          "dcid": "dc/eg6rrdr1tkf76"
-        },
-        {
-          "name": "Population: Bachelors Degree or Higher, Female, Black or African American Alone",
-          "dcid": "dc/t7403chwvspm"
-        },
-        {
-          "name": "Population: Bachelors Degree or Higher, Female, Hispanic or Latino",
-          "dcid": "dc/06f0jf8xvzw4f"
-        },
-        {
-          "name": "Population: Bachelors Degree or Higher, Female, Native Hawaiian or Other Pacific Islander Alone",
-          "dcid": "dc/v7yl3k9w3h7e8"
-        },
-        {
-          "name": "Population: Bachelors Degree or Higher, Female, Some Other Race Alone",
-          "dcid": "dc/skv4cd74gsnpf"
-        },
-        {
-          "name": "Population: Bachelors Degree or Higher, Female, Two or More Races",
-          "dcid": "dc/hyfn2tlyz48lb"
-        },
-        {
-          "name": "Population: Bachelors Degree or Higher, Female, White Alone",
-          "dcid": "dc/5hc4etrfyj9qg"
-        },
-        {
-          "name": "Population: Bachelors Degree or Higher, Female, White Alone Not Hispanic or Latino",
-          "dcid": "dc/wd5g31pcj0zr3"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_EducationalAttainment-HighSchoolGraduateGedOrAlternative_Gender-Female_Race",
-      "name": "Person With Educational Attainment = High School Graduate Ged or Alternative, Gender = Female, Race",
-      "statVars": [
-        {
-          "name": "Population: High School Graduate Ged or Alternative, Female, American Indian or Alaska Native Alone",
-          "dcid": "dc/nzby95gg431yg"
-        },
-        {
-          "name": "Population: High School Graduate Ged or Alternative, Female, Asian Alone",
-          "dcid": "dc/mkb700gmwjn2c"
-        },
-        {
-          "name": "Population: High School Graduate Ged or Alternative, Female, Black or African American Alone",
-          "dcid": "dc/zjjfp97521yv9"
-        },
-        {
-          "name": "Population: High School Graduate Ged or Alternative, Female, Hispanic or Latino",
-          "dcid": "dc/0r4qqmjxw3xe"
-        },
-        {
-          "name": "Population: High School Graduate Ged or Alternative, Female, Native Hawaiian or Other Pacific Islander Alone",
-          "dcid": "dc/5pkkpv87t13e6"
-        },
-        {
-          "name": "Population: High School Graduate Ged or Alternative, Female, Some Other Race Alone",
-          "dcid": "dc/79jbm5zv0f5s7"
-        },
-        {
-          "name": "Population: High School Graduate Ged or Alternative, Female, Two or More Races",
-          "dcid": "dc/dfjxbxwz1ss2"
-        },
-        {
-          "name": "Population: High School Graduate Ged or Alternative, Female, White Alone",
-          "dcid": "dc/04zn512rcrx23"
-        },
-        {
-          "name": "Population: High School Graduate Ged or Alternative, Female, White Alone Not Hispanic or Latino",
-          "dcid": "dc/z5rhq3c5qd5pd"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_EducationalAttainment-HighSchoolGraduateIncludesEquivalency_Gender-Female_Race",
-      "name": "Person With Educational Attainment = High School Graduate Includes Equivalency, Gender = Female, Race",
-      "statVars": [
-        {
-          "name": "Population: High School Graduate Includes Equivalency, Female, American Indian or Alaska Native Alone",
-          "dcid": "dc/x1nc3mrc2dpq7"
-        },
-        {
-          "name": "Population: High School Graduate Includes Equivalency, Female, Asian Alone",
-          "dcid": "dc/7tctphw60mstd"
-        },
-        {
-          "name": "Population: High School Graduate Includes Equivalency, Female, Black or African American Alone",
-          "dcid": "dc/kp4mfrz2432hc"
-        },
-        {
-          "name": "Population: High School Graduate Includes Equivalency, Female, Hispanic or Latino",
-          "dcid": "dc/qpsfm7g91ksnb"
-        },
-        {
-          "name": "Population: High School Graduate Includes Equivalency, Female, Native Hawaiian or Other Pacific Islander Alone",
-          "dcid": "dc/w5e4bhwph82b9"
-        },
-        {
-          "name": "Population: High School Graduate Includes Equivalency, Female, Some Other Race Alone",
-          "dcid": "dc/vn3t2e2df18xb"
-        },
-        {
-          "name": "Population: High School Graduate Includes Equivalency, Female, Two or More Races",
-          "dcid": "dc/c8e1pl3hkw2t5"
-        },
-        {
-          "name": "Population: High School Graduate Includes Equivalency, Female, White Alone",
-          "dcid": "dc/5trrbtpffls3"
-        },
-        {
-          "name": "Population: High School Graduate Includes Equivalency, Female, White Alone Not Hispanic or Latino",
-          "dcid": "dc/20p4v7bwb4ggf"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_EducationalAttainment-LessThanHighSchoolDiploma_Gender-Female_Race",
-      "name": "Person With Educational Attainment = Less Than High School Diploma, Gender = Female, Race",
-      "statVars": [
-        {
-          "name": "Population: Less Than High School Diploma, Female, American Indian or Alaska Native Alone",
-          "dcid": "dc/tyc40c36ey286"
-        },
-        {
-          "name": "Population: Less Than High School Diploma, Female, Asian Alone",
-          "dcid": "dc/cm6c4ldwcvq7g"
-        },
-        {
-          "name": "Population: Less Than High School Diploma, Female, Black or African American Alone",
-          "dcid": "dc/nvxghp3p89bbb"
-        },
-        {
-          "name": "Population: Less Than High School Diploma, Female, Hispanic or Latino",
-          "dcid": "dc/4786yl5837tyf"
-        },
-        {
-          "name": "Population: Less Than High School Diploma, Female, Native Hawaiian or Other Pacific Islander Alone",
-          "dcid": "dc/rkk2qytzv30eb"
-        },
-        {
-          "name": "Population: Less Than High School Diploma, Female, Some Other Race Alone",
-          "dcid": "dc/tbe5rlxz0qx71"
-        },
-        {
-          "name": "Population: Less Than High School Diploma, Female, Two or More Races",
-          "dcid": "dc/zrtnqhw8mhdp1"
-        },
-        {
-          "name": "Population: Less Than High School Diploma, Female, White Alone",
-          "dcid": "dc/vgp4mf3hsv365"
-        },
-        {
-          "name": "Population: Less Than High School Diploma, Female, White Alone Not Hispanic or Latino",
-          "dcid": "dc/h024xx4dcw5x2"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_EducationalAttainment-SomeCollegeOrAssociatesDegree_Gender-Female_Race",
-      "name": "Person With Educational Attainment = Some College or Associates Degree, Gender = Female, Race",
-      "statVars": [
-        {
-          "name": "Population: Some College or Associates Degree, Female, American Indian or Alaska Native Alone",
-          "dcid": "dc/mqxdr821c7kw3"
-        },
-        {
-          "name": "Population: Some College or Associates Degree, Female, Asian Alone",
-          "dcid": "dc/whn99h1l0xgth"
-        },
-        {
-          "name": "Population: Some College or Associates Degree, Female, Black or African American Alone",
-          "dcid": "dc/56md3ndhrmvm7"
-        },
-        {
-          "name": "Population: Some College or Associates Degree, Female, Hispanic or Latino",
-          "dcid": "dc/3w039ndqy7qv1"
-        },
-        {
-          "name": "Population: Some College or Associates Degree, Female, Native Hawaiian or Other Pacific Islander Alone",
-          "dcid": "dc/kpcfmb6lp3zpd"
-        },
-        {
-          "name": "Population: Some College or Associates Degree, Female, Some Other Race Alone",
-          "dcid": "dc/epw58ne8mytn5"
-        },
-        {
-          "name": "Population: Some College or Associates Degree, Female, Two or More Races",
-          "dcid": "dc/q98jxycvs422f"
-        },
-        {
-          "name": "Population: Some College or Associates Degree, Female, White Alone",
-          "dcid": "dc/9sneyc8lpk8dc"
-        },
-        {
-          "name": "Population: Some College or Associates Degree, Female, White Alone Not Hispanic or Latino",
-          "dcid": "dc/bqy52h7y4nq34"
         }
       ]
     },
@@ -21987,44 +21039,6 @@
       ]
     },
     {
-      "dcid": "dc/g/Person_Gender-Female",
-      "name": "Person With Gender = Female",
-      "statVars": [
-        {
-          "name": "Life expectancy at birth, female (years)",
-          "dcid": "LifeExpectancy_Person_Female"
-        },
-        {
-          "name": "Population: Female",
-          "dcid": "Count_Person_Female"
-        },
-        {
-          "name": "Unemployment Rate: Female",
-          "dcid": "UnemploymentRate_Person_Female"
-        },
-        {
-          "name": "Mean Wages Daily: Female",
-          "dcid": "Mean_WagesDaily_Worker_Female"
-        },
-        {
-          "name": "Mean Wages Monthly: Female",
-          "dcid": "Mean_WagesMonthly_Worker_Female"
-        },
-        {
-          "name": "Median Age: Female",
-          "dcid": "Median_Age_Person_Female"
-        },
-        {
-          "name": "Median Income: Female",
-          "dcid": "Median_Income_Person_15OrMoreYears_Female_WithIncome"
-        },
-        {
-          "name": "Population: With Disability, Female",
-          "dcid": "Count_Person_WithDisability_Female"
-        }
-      ]
-    },
-    {
       "dcid": "dc/g/HateCrimeIncidents_TargetedGender-Female_VictimType",
       "name": "Hate Crime Incidents With Targeted Gender = Female, Victim Type",
       "statVars": [
@@ -22443,138 +21457,104 @@
       ]
     },
     {
-      "dcid": "dc/g/Person_Gender-Female_Race",
-      "name": "Person With Gender = Female, Race",
+      "dcid": "dc/g/Person_EnrollmentLevel_Gender-Female_TypeOfSchool-PrivateSchool",
+      "name": "Person With Gender = Female, Enrollment Level, Type of School = Private School",
       "statVars": [
         {
-          "name": "Population: Female, Asian Alone or In Combination With One or More Other Races",
-          "dcid": "Count_Person_Female_AsianAloneOrInCombinationWithOneOrMoreOtherRaces"
+          "name": "Population: Female, Enrolled in College Undergraduate Years, Private School",
+          "dcid": "dc/f0l20sfp6tg34"
         },
         {
-          "name": "Population: Female, Hispanic or Latino \u0026 American Indian or Alaska Native Alone",
-          "dcid": "Count_Person_Female_HispanicOrLatino_AmericanIndianOrAlaskaNativeAlone"
+          "name": "Population: Female, Enrolled in Grade 1 To Grade 4, Private School",
+          "dcid": "dc/3d1k0tygkzrc9"
         },
         {
-          "name": "Population: Female, Hispanic or Latino \u0026 Native Hawaiian or Other Pacific Islander Alone",
-          "dcid": "Count_Person_Female_HispanicOrLatino_NativeHawaiianOrOtherPacificIslanderAlone"
+          "name": "Population: Female, Enrolled in Grade 5 To Grade 8, Private School",
+          "dcid": "dc/vg4dvk67ynl7"
         },
         {
-          "name": "Population: Female, Native Hawaiian And Other Pacific Islander Alone or In Combination With One or More Other Races",
-          "dcid": "Count_Person_Female_NativeHawaiianAndOtherPacificIslanderAloneOrInCombinationWithOneOrMoreOtherRaces"
+          "name": "Population: Female, Enrolled in Grade 9 To Grade 12, Private School",
+          "dcid": "dc/lq7sly0t34sc4"
         },
         {
-          "name": "Population: Female, Not Hispanic or Latino \u0026 American Indian or Alaska Native Alone",
-          "dcid": "Count_Person_Female_NotHispanicOrLatino_AmericanIndianOrAlaskaNativeAlone"
+          "name": "Population: Female, Enrolled in Graduate or Professional School, Private School",
+          "dcid": "dc/c8tyqc3f69xs5"
         },
         {
-          "name": "Population: Female, Not Hispanic or Latino \u0026 Native Hawaiian or Other Pacific Islander Alone",
-          "dcid": "Count_Person_Female_NotHispanicOrLatino_NativeHawaiianOrOtherPacificIslanderAlone"
+          "name": "Population: Female, Enrolled in Kindergarten, Private School",
+          "dcid": "dc/kzyx3ll4kpfk1"
         },
         {
-          "name": "Population: Female, Not Hispanic or Latino \u0026 White Alone",
-          "dcid": "Count_Person_Female_NotHispanicOrLatino_WhiteAlone"
+          "name": "Population: Female, Enrolled in Nursery School Preschool, Private School",
+          "dcid": "dc/c9y5pyd6tt8p1"
         }
       ]
     },
     {
-      "dcid": "dc/g/Person_EducationalAttainment-LessThanPrimaryEducationPrimaryEducationLowerSecondaryEducation_Gender-Female_HealthBehavior",
-      "name": "Person With Educational Attainment = Less Than Primary Education \u0026 Primary Education \u0026 Lower Secondary Education, Gender = Female, Health Behavior",
+      "dcid": "dc/g/Person_EnrollmentLevel_Gender-Female_TypeOfSchool-PublicSchool",
+      "name": "Person With Gender = Female, Enrollment Level, Type of School = Public School",
       "statVars": [
         {
-          "name": "Percentage Hazardous Alcohol Consumption Among Less Than Primary Education Or Primary Education Or Lower Secondary Education, Female Population",
-          "dcid": "Percent_HazardousAlcoholConsumption_In_Count_Person_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_Female"
+          "name": "Population: Female, Enrolled in College Undergraduate Years, Public School",
+          "dcid": "dc/fgssbtlcqy5bf"
         },
         {
-          "name": "Percentage Non Smoker Among Less Than Primary Education Or Primary Education Or Lower Secondary Education, Female Population",
-          "dcid": "Percent_NonSmoker_TobaccoProducts_In_Count_Person_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_Female"
+          "name": "Population: Female, Enrolled in Grade 1 To Grade 4, Public School",
+          "dcid": "dc/f6yygkvshe2sc"
         },
         {
-          "name": "Population: Percentage Normal Weight Among Less Than Primary Education Or Primary Education Or Lower Secondary Education, Female",
-          "dcid": "Percent_Normalweight_In_Count_Person_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_Female"
+          "name": "Population: Female, Enrolled in Grade 5 To Grade 8, Public School",
+          "dcid": "dc/938xr48xyz1v3"
         },
         {
-          "name": "Population: Percentage Obesity Among Less Than Primary Education Or Primary Education Or Lower Secondary Education, Female",
-          "dcid": "Percent_Obesity_In_Count_Person_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_Female"
+          "name": "Population: Female, Enrolled in Grade 9 To Grade 12, Public School",
+          "dcid": "dc/b37t6pmrzqkmh"
         },
         {
-          "name": "Population: Percentage Overweight Among Less Than Primary Education Or Primary Education Or Lower Secondary Education, Female",
-          "dcid": "Percent_Overweight_In_Count_Person_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_Female"
+          "name": "Population: Female, Enrolled in Graduate or Professional School, Public School",
+          "dcid": "dc/b50mk8kek4fz3"
         },
         {
-          "name": "Population: Percentage Pre Obese Among Less Than Primary Education Or Primary Education Or Lower Secondary Education, Female",
-          "dcid": "Percent_PreObese_In_Count_Person_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_Female"
+          "name": "Population: Female, Enrolled in Kindergarten, Public School",
+          "dcid": "dc/wvxlkgg1rw7k7"
         },
         {
-          "name": "Population: Percentage Underweight Among Less Than Primary Education Or Primary Education Or Lower Secondary Education, Female",
-          "dcid": "Percent_Underweight_In_Count_Person_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_Female"
+          "name": "Population: Female, Enrolled in Nursery School Preschool, Public School",
+          "dcid": "dc/lr4ve69p16sch"
         }
       ]
     },
     {
-      "dcid": "dc/g/Person_EducationalAttainment-TertiaryEducation_Gender-Female_HealthBehavior",
-      "name": "Person With Educational Attainment = Tertiary Education, Gender = Female, Health Behavior",
+      "dcid": "dc/g/Person_Gender-Female_Institutionalization-Incarcerated_Race",
+      "name": "Person With Gender = Female, Institutionalization = Incarcerated, Race",
       "statVars": [
         {
-          "name": "Percentage Hazardous Alcohol Consumption Among Tertiary Education, Female Population",
-          "dcid": "Percent_HazardousAlcoholConsumption_In_Count_Person_TertiaryEducation_Female"
+          "name": "Population (Measured Based on Jurisdiction): Female, Incarcerated, American Indian or Alaska Native Alone",
+          "dcid": "dc/2487zfwx2423d"
         },
         {
-          "name": "Percentage Non Smoker Among Tertiary Education, Female Population",
-          "dcid": "Percent_NonSmoker_TobaccoProducts_In_Count_Person_TertiaryEducation_Female"
+          "name": "Population (Measured Based on Jurisdiction): Female, Incarcerated, Asian Alone",
+          "dcid": "dc/xefh58ckxwk7b"
         },
         {
-          "name": "Population: Percentage Normal Weight Among Tertiary Education, Female",
-          "dcid": "Percent_Normalweight_In_Count_Person_TertiaryEducation_Female"
+          "name": "Population (Measured Based on Jurisdiction): Female, Incarcerated, Black or African American Alone",
+          "dcid": "dc/n11nnhnf54h78"
         },
         {
-          "name": "Population: Percentage Obesity Among Tertiary Education, Female",
-          "dcid": "Percent_Obesity_In_Count_Person_TertiaryEducation_Female"
+          "name": "Population (Measured Based on Jurisdiction): Female, Incarcerated, Hispanic or Latino",
+          "dcid": "dc/4jqzmk4jtzwnb"
         },
         {
-          "name": "Population: Percentage Overweight Among Tertiary Education, Female",
-          "dcid": "Percent_Overweight_In_Count_Person_TertiaryEducation_Female"
+          "name": "Population (Measured Based on Jurisdiction): Female, Incarcerated, Native Hawaiian or Other Pacific Islander Alone",
+          "dcid": "dc/6xg0t3qjdtqn5"
         },
         {
-          "name": "Population: Percentage Pre Obese Among Tertiary Education, Female",
-          "dcid": "Percent_PreObese_In_Count_Person_TertiaryEducation_Female"
+          "name": "Population (Measured Based on Jurisdiction): Female, Incarcerated, Two or More Races",
+          "dcid": "dc/4x1jbp34f4085"
         },
         {
-          "name": "Population: Percentage Underweight Among Tertiary Education, Female",
-          "dcid": "Percent_Underweight_In_Count_Person_TertiaryEducation_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_EducationalAttainment-UpperSecondaryEducationPostSecondaryNonTertiaryEducation_Gender-Female_HealthBehavior",
-      "name": "Person With Educational Attainment = Upper Secondary Education \u0026 Post Secondary Non Tertiary Education, Gender = Female, Health Behavior",
-      "statVars": [
-        {
-          "name": "Percentage Hazardous Alcohol Consumption Among Upper Secondary Education Or Post Secondary Non Tertiary Education, Female Population",
-          "dcid": "Percent_HazardousAlcoholConsumption_In_Count_Person_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female"
-        },
-        {
-          "name": "Percentage Non Smoker Among Upper Secondary Education Or Post Secondary Non Tertiary Education, Female Population",
-          "dcid": "Percent_NonSmoker_TobaccoProducts_In_Count_Person_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female"
-        },
-        {
-          "name": "Population: Percentage Normal Weight Among Upper Secondary Education Or Post Secondary Non Tertiary Education, Female",
-          "dcid": "Percent_Normalweight_In_Count_Person_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female"
-        },
-        {
-          "name": "Population: Percentage Obesity Among Upper Secondary Education Or Post Secondary Non Tertiary Education, Female",
-          "dcid": "Percent_Obesity_In_Count_Person_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female"
-        },
-        {
-          "name": "Population: Percentage Overweight Among Upper Secondary Education Or Post Secondary Non Tertiary Education, Female",
-          "dcid": "Percent_Overweight_In_Count_Person_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female"
-        },
-        {
-          "name": "Population: Percentage Pre Obese Among Upper Secondary Education Or Post Secondary Non Tertiary Education, Female",
-          "dcid": "Percent_PreObese_In_Count_Person_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female"
-        },
-        {
-          "name": "Population: Percentage Underweight Among Upper Secondary Education Or Post Secondary Non Tertiary Education, Female",
-          "dcid": "Percent_Underweight_In_Count_Person_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female"
+          "name": "Population (Measured Based on Jurisdiction): Female, Incarcerated, White Alone",
+          "dcid": "dc/7g8v95ycwgwgg"
         }
       ]
     },
@@ -23611,32 +22591,6 @@
       ]
     },
     {
-      "dcid": "dc/g/Student_Gender-Female",
-      "name": "Student With Gender = Female",
-      "statVars": [
-        {
-          "name": "Count of Student: Female",
-          "dcid": "Count_Student_Female"
-        },
-        {
-          "name": "Mean Cohort Scale Achievement of Student: Female",
-          "dcid": "dc/1kp45lprzkreb"
-        },
-        {
-          "name": "Mean Grade Cohort Scale Achievement of Student: Female",
-          "dcid": "dc/dnymkydllff48"
-        },
-        {
-          "name": "Std Deviation Cohort Scale Achievement of Student: Female",
-          "dcid": "dc/8ytsd2m5v8dq7"
-        },
-        {
-          "name": "Std Deviation Grade Cohort Scale Achievement of Student: Female",
-          "dcid": "dc/68b6s2hvrpkv4"
-        }
-      ]
-    },
-    {
       "dcid": "dc/g/Person_ActivityDuration-Minute1To149_Gender-Female_HealthBehavior",
       "name": "Person With Activity Duration = 1 - 149 Minute, Gender = Female, Health Behavior",
       "statVars": [
@@ -24105,6 +23059,32 @@
       ]
     },
     {
+      "dcid": "dc/g/Person_Age-Years25Onwards_EducationalAttainment_Gender-Female",
+      "name": "Person With Age = 25 Years or More, Educational Attainment, Gender = Female",
+      "statVars": [
+        {
+          "name": "Median Earnings: 25 Years or More, Bachelors Degree, Female, With Earnings",
+          "dcid": "Median_Earnings_Person_EducationalAttainmentBachelorsDegree_Female_WithEarnings"
+        },
+        {
+          "name": "Median Earnings: 25 Years or More, Graduate or Professional Degree, Female, With Earnings",
+          "dcid": "Median_Earnings_Person_EducationalAttainmentGraduateOrProfessionalDegree_Female_WithEarnings"
+        },
+        {
+          "name": "Median Earnings: 25 Years or More, High School Graduate Includes Equivalency, Female, With Earnings",
+          "dcid": "Median_Earnings_Person_EducationalAttainmentHighSchoolGraduateIncludesEquivalency_Female_WithEarnings"
+        },
+        {
+          "name": "Median Earnings: 25 Years or More, Less Than High School Graduate, Female, With Earnings",
+          "dcid": "Median_Earnings_Person_EducationalAttainmentLessThanHighSchoolGraduate_Female_WithEarnings"
+        },
+        {
+          "name": "Median Earnings: 25 Years or More, Some College or Associates Degree, Female, With Earnings",
+          "dcid": "Median_Earnings_Person_EducationalAttainmentSomeCollegeOrAssociatesDegree_Female_WithEarnings"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/Person_Age-Years35To44_Gender-Female_MaritalStatus",
       "name": "Person With Age = 35 - 44 Years, Gender = Female, Marital Status",
       "statVars": [
@@ -24387,110 +23367,6 @@
         {
           "name": "Percentage Daily, 0 Portions, Consumption Of Fruits Or Consumption Of Vegetables Among Female, Income Of 80 To 100 Percentile Population",
           "dcid": "Percent_Daily_0Portion_ConsumptionOfFruitsOrConsumptionOfVegetables_In_Count_Person_Female_IncomeOf80To100Percentile"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_EducationalAttainment-LessThanPrimaryEducationPrimaryEducationLowerSecondaryEducation_ExerciseType_Gender-Female",
-      "name": "Person With Educational Attainment = Less Than Primary Education \u0026 Primary Education \u0026 Lower Secondary Education, Exercise Type, Gender = Female",
-      "statVars": [
-        {
-          "name": "Percentage Aerobic Or Muscle Strengthening, Health Enhancing Physical Activity Among Less Than Primary Education Or Primary Education Or Lower Secondary Education, Female Population",
-          "dcid": "Percent_AerobicOrMuscleStrengthening_HealthEnhancingPhysicalActivity_In_Count_Person_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_Female"
-        },
-        {
-          "name": "Percentage Aerobic Sports, Non Work Related Physical Activity Among Less Than Primary Education Or Primary Education Or Lower Secondary Education, Female Population",
-          "dcid": "Percent_AerobicSports_NonWorkRelatedPhysicalActivity_In_Count_Person_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_Female"
-        },
-        {
-          "name": "Percentage Aerobic, Health Enhancing Physical Activity Among Less Than Primary Education Or Primary Education Or Lower Secondary Education, Female Population",
-          "dcid": "Percent_Aerobic_HealthEnhancingPhysicalActivity_In_Count_Person_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_Female"
-        },
-        {
-          "name": "Percentage Cycling, Non Work Related Physical Activity Among Less Than Primary Education Or Primary Education Or Lower Secondary Education, Female Population",
-          "dcid": "Percent_Cycling_NonWorkRelatedPhysicalActivity_In_Count_Person_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_Female"
-        },
-        {
-          "name": "Percentage Walking, Non Work Related Physical Activity Among Less Than Primary Education Or Primary Education Or Lower Secondary Education, Female Population",
-          "dcid": "Percent_Walking_NonWorkRelatedPhysicalActivity_In_Count_Person_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_EducationalAttainment-TertiaryEducationStageOneTertiaryEducationStageTwo_Gender-Female_HealthBehavior",
-      "name": "Person With Educational Attainment = Tertiary Education Stage One \u0026 Tertiary Education Stage Two, Gender = Female, Health Behavior",
-      "statVars": [
-        {
-          "name": "Percentage Tertiary Education Stage One Or Tertiary Education Stage Two, Physical Activity Among Female Population",
-          "dcid": "Percent_TertiaryEducationStageOneOrTertiaryEducationStageTwo_PhysicalActivity_In_Count_Person_Female"
-        },
-        {
-          "name": "Population: Percentage Normal Weight Among Tertiary Education Stage One Or Tertiary Education Stage Two, Female",
-          "dcid": "Percent_Normalweight_In_Count_Person_TertiaryEducationStageOneOrTertiaryEducationStageTwo_Female"
-        },
-        {
-          "name": "Population: Percentage Obesity Among Tertiary Education Stage One Or Tertiary Education Stage Two, Female",
-          "dcid": "Percent_Obesity_In_Count_Person_TertiaryEducationStageOneOrTertiaryEducationStageTwo_Female"
-        },
-        {
-          "name": "Population: Percentage Overweight Among Tertiary Education Stage One Or Tertiary Education Stage Two, Female",
-          "dcid": "Percent_Overweight_In_Count_Person_TertiaryEducationStageOneOrTertiaryEducationStageTwo_Female"
-        },
-        {
-          "name": "Population: Percentage Underweight Among Tertiary Education Stage One Or Tertiary Education Stage Two, Female",
-          "dcid": "Percent_Underweight_In_Count_Person_TertiaryEducationStageOneOrTertiaryEducationStageTwo_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_EducationalAttainment-TertiaryEducation_ExerciseType_Gender-Female",
-      "name": "Person With Educational Attainment = Tertiary Education, Exercise Type, Gender = Female",
-      "statVars": [
-        {
-          "name": "Percentage Aerobic Or Muscle Strengthening, Health Enhancing Physical Activity Among Tertiary Education, Female Population",
-          "dcid": "Percent_AerobicOrMuscleStrengthening_HealthEnhancingPhysicalActivity_In_Count_Person_TertiaryEducation_Female"
-        },
-        {
-          "name": "Percentage Aerobic Sports, Non Work Related Physical Activity Among Tertiary Education, Female Population",
-          "dcid": "Percent_AerobicSports_NonWorkRelatedPhysicalActivity_In_Count_Person_TertiaryEducation_Female"
-        },
-        {
-          "name": "Percentage Aerobic, Health Enhancing Physical Activity Among Tertiary Education, Female Population",
-          "dcid": "Percent_Aerobic_HealthEnhancingPhysicalActivity_In_Count_Person_TertiaryEducation_Female"
-        },
-        {
-          "name": "Percentage Cycling, Non Work Related Physical Activity Among Tertiary Education, Female Population",
-          "dcid": "Percent_Cycling_NonWorkRelatedPhysicalActivity_In_Count_Person_TertiaryEducation_Female"
-        },
-        {
-          "name": "Percentage Walking, Non Work Related Physical Activity Among Tertiary Education, Female Population",
-          "dcid": "Percent_Walking_NonWorkRelatedPhysicalActivity_In_Count_Person_TertiaryEducation_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_EducationalAttainment-UpperSecondaryEducationPostSecondaryNonTertiaryEducation_ExerciseType_Gender-Female",
-      "name": "Person With Educational Attainment = Upper Secondary Education \u0026 Post Secondary Non Tertiary Education, Exercise Type, Gender = Female",
-      "statVars": [
-        {
-          "name": "Percentage Aerobic Or Muscle Strengthening, Health Enhancing Physical Activity Among Upper Secondary Education Or Post Secondary Non Tertiary Education, Female Population",
-          "dcid": "Percent_AerobicOrMuscleStrengthening_HealthEnhancingPhysicalActivity_In_Count_Person_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female"
-        },
-        {
-          "name": "Percentage Aerobic Sports, Non Work Related Physical Activity Among Upper Secondary Education Or Post Secondary Non Tertiary Education, Female Population",
-          "dcid": "Percent_AerobicSports_NonWorkRelatedPhysicalActivity_In_Count_Person_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female"
-        },
-        {
-          "name": "Percentage Aerobic, Health Enhancing Physical Activity Among Upper Secondary Education Or Post Secondary Non Tertiary Education, Female Population",
-          "dcid": "Percent_Aerobic_HealthEnhancingPhysicalActivity_In_Count_Person_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female"
-        },
-        {
-          "name": "Percentage Cycling, Non Work Related Physical Activity Among Upper Secondary Education Or Post Secondary Non Tertiary Education, Female Population",
-          "dcid": "Percent_Cycling_NonWorkRelatedPhysicalActivity_In_Count_Person_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female"
-        },
-        {
-          "name": "Percentage Walking, Non Work Related Physical Activity Among Upper Secondary Education Or Post Secondary Non Tertiary Education, Female Population",
-          "dcid": "Percent_Walking_NonWorkRelatedPhysicalActivity_In_Count_Person_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female"
         }
       ]
     },
@@ -25505,6 +24381,28 @@
       ]
     },
     {
+      "dcid": "dc/g/Student_Gender-Female",
+      "name": "Student With Gender = Female",
+      "statVars": [
+        {
+          "name": "Mean Cohort Scale Achievement of Student: Female",
+          "dcid": "dc/1kp45lprzkreb"
+        },
+        {
+          "name": "Mean Grade Cohort Scale Achievement of Student: Female",
+          "dcid": "dc/dnymkydllff48"
+        },
+        {
+          "name": "Std Deviation Cohort Scale Achievement of Student: Female",
+          "dcid": "dc/8ytsd2m5v8dq7"
+        },
+        {
+          "name": "Std Deviation Grade Cohort Scale Achievement of Student: Female",
+          "dcid": "dc/68b6s2hvrpkv4"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_TargetedGender-Female",
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Targeted Gender = Female",
       "statVars": [
@@ -25523,50 +24421,6 @@
         {
           "name": "Count of Hate Crime Incidents (Victim): Bias Against Gender, Female Victim",
           "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_EducationalAttainment-HighSchoolGraduateIncludesEquivalency_Gender-Female",
-      "name": "Person With Educational Attainment = High School Graduate Includes Equivalency, Gender = Female",
-      "statVars": [
-        {
-          "name": "Population: High School Graduate Includes Equivalency, Female",
-          "dcid": "Count_Person_25OrMoreYears_EducationalAttainmentHighSchoolGraduateIncludesEquivalency_Female"
-        },
-        {
-          "name": "Median Income: High School Graduate Includes Equivalency, Female",
-          "dcid": "dc/syxm9nnsl3wcc"
-        },
-        {
-          "name": "Median Earnings: 25 Years or More, High School Graduate Includes Equivalency, Female, With Earnings",
-          "dcid": "Median_Earnings_Person_EducationalAttainmentHighSchoolGraduateIncludesEquivalency_Female_WithEarnings"
-        },
-        {
-          "name": "Population: 15 - 50 Years, Birth in The Past 12 Months, High School Graduate Includes Equivalency, Female, Unmarried",
-          "dcid": "Count_Person_15To50Years_BirthInThePast12Months_EducationalAttainmentHighSchoolGraduateIncludesEquivalency_Female_Unmarried"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_PhysicalActivityEffortLevel",
-      "name": "Person With Gender = Female, Physical Activity Effort Level",
-      "statVars": [
-        {
-          "name": "Population: Female, Limited Activity Limitation",
-          "dcid": "Count_Person_Female_LimitedActivityLimitation"
-        },
-        {
-          "name": "Population: Female, Moderate Activity Limitation",
-          "dcid": "Count_Person_Female_ModerateActivityLimitation"
-        },
-        {
-          "name": "Population: Female, No Activity Limitation",
-          "dcid": "Count_Person_Female_NoActivityLimitation"
-        },
-        {
-          "name": "Population: Female, Severe Activity Limitation",
-          "dcid": "Count_Person_Female_SevereActivityLimitation"
         }
       ]
     },
@@ -25611,50 +24465,6 @@
         {
           "name": "Mean Wages Monthly: Female, Urban",
           "dcid": "Mean_WagesMonthly_Worker_Urban_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_Race-NativeHawaiianOrOtherPacificIslanderAlone",
-      "name": "Person With Gender = Female, Race = Native Hawaiian or Other Pacific Islander Alone",
-      "statVars": [
-        {
-          "name": "Population: Female, Native Hawaiian or Other Pacific Islander Alone",
-          "dcid": "Count_Person_Female_NativeHawaiianAndOtherPacificIslanderAlone"
-        },
-        {
-          "name": "Population: Female, Native Hawaiian or Other Pacific Islander Alone",
-          "dcid": "Count_Person_Female_NativeHawaiianOrOtherPacificIslanderAlone"
-        },
-        {
-          "name": "Median Age: Female, Native Hawaiian or Other Pacific Islander Alone",
-          "dcid": "Median_Age_Person_Female_NativeHawaiianOrOtherPacificIslanderAlone"
-        },
-        {
-          "name": "Population (Measured Based on Jurisdiction): Female, Incarcerated, Native Hawaiian or Other Pacific Islander Alone",
-          "dcid": "dc/6xg0t3qjdtqn5"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_ResidentStatus",
-      "name": "Person With Gender = Female, Resident Status",
-      "statVars": [
-        {
-          "name": "Population: 1 Years or More, Female, Different House Abroad",
-          "dcid": "Count_Person_1OrMoreYears_Female_DifferentHouseAbroad"
-        },
-        {
-          "name": "Population: 1 Years or More, Female, Different House in Different County Different State",
-          "dcid": "Count_Person_1OrMoreYears_Female_DifferentHouseInDifferentCountyDifferentState"
-        },
-        {
-          "name": "Population: 1 Years or More, Female, Different House in Different County Same State",
-          "dcid": "Count_Person_1OrMoreYears_Female_DifferentHouseInDifferentCountySameState"
-        },
-        {
-          "name": "Population: 1 Years or More, Female, Different House in Same County",
-          "dcid": "Count_Person_1OrMoreYears_Female_DifferentHouseInSameCounty"
         }
       ]
     },
@@ -26011,6 +24821,28 @@
       ]
     },
     {
+      "dcid": "dc/g/Person_Age-Years1Onwards_Gender-Female_ResidentStatus",
+      "name": "Person With Age = 1 Years or More, Gender = Female, Resident Status",
+      "statVars": [
+        {
+          "name": "Population: 1 Years or More, Female, Different House Abroad",
+          "dcid": "Count_Person_1OrMoreYears_Female_DifferentHouseAbroad"
+        },
+        {
+          "name": "Population: 1 Years or More, Female, Different House in Different County Different State",
+          "dcid": "Count_Person_1OrMoreYears_Female_DifferentHouseInDifferentCountyDifferentState"
+        },
+        {
+          "name": "Population: 1 Years or More, Female, Different House in Different County Same State",
+          "dcid": "Count_Person_1OrMoreYears_Female_DifferentHouseInDifferentCountySameState"
+        },
+        {
+          "name": "Population: 1 Years or More, Female, Different House in Same County",
+          "dcid": "Count_Person_1OrMoreYears_Female_DifferentHouseInSameCounty"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/Person_Age-Years21To65_Gender-Female_PreventiveHealth-CervicalCancerScreening",
       "name": "Person With Age = 21 - 65 Years, Gender = Female, Preventive Health = Cervical Cancer Screening",
       "statVars": [
@@ -26029,6 +24861,28 @@
         {
           "name": "Upper Confidence Interval Limit, Prevalence of 21 - 65 Years, Female, Received Cervical Cancer Screening",
           "dcid": "UpperConfidenceIntervalLimit_Percent_Person_21To65Years_Female_ReceivedCervicalCancerScreening"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years25To64_EducationalAttainment_Gender-Female",
+      "name": "Person With Age = 25 - 64 Years, Educational Attainment, Gender = Female",
+      "statVars": [
+        {
+          "name": "Population: 25 - 64 Years, Less Than Primary Education \u0026 Primary Education \u0026 Lower Secondary Education, Female (As Fraction of Count Person 25 To 64 Years Female)",
+          "dcid": "Count_Person_25To64Years_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_Female_AsAFractionOfCount_Person_25To64Years_Female"
+        },
+        {
+          "name": "Population: 25 - 64 Years, Tertiary Education, Female (As Fraction of Count Person 25 To 64 Years Female)",
+          "dcid": "Count_Person_25To64Years_TertiaryEducation_Female_AsAFractionOfCount_Person_25To64Years_Female"
+        },
+        {
+          "name": "Population: 25 - 64 Years, Upper Secondary Education \u0026 Post Secondary Non Tertiary Education, Female (As Fraction of Count Person 25 To 64 Years Female)",
+          "dcid": "Count_Person_25To64Years_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female_AsAFractionOfCount_Person_25To64Years_Female"
+        },
+        {
+          "name": "Population: 25 - 64 Years, Upper Secondary Education or Higher, Female (As Fraction of Count Person 25 To 64 Years Female)",
+          "dcid": "Count_Person_25To64Years_UpperSecondaryEducationOrHigher_Female_AsAFractionOfCount_Person_25To64Years_Female"
         }
       ]
     },
@@ -26253,68 +25107,90 @@
       ]
     },
     {
-      "dcid": "dc/g/Person_EducationalAttainment-LessThanPrimaryEducationPrimaryEducationLowerSecondaryEducation_Gender-Female_PhysicalActivityEffortLevel",
-      "name": "Person With Educational Attainment = Less Than Primary Education \u0026 Primary Education \u0026 Lower Secondary Education, Gender = Female, Physical Activity Effort Level",
+      "dcid": "dc/g/Person_EducationalAttainment_Gender-Female_HealthBehavior-Normalweight",
+      "name": "Person With Educational Attainment, Gender = Female, Health Behavior = Normalweight",
       "statVars": [
         {
-          "name": "Percentage Work Related Physical Activity, Heavy Activity Among Less Than Primary Education Or Primary Education Or Lower Secondary Education, Female Population",
-          "dcid": "Percent_WorkRelatedPhysicalActivity_HeavyActivity_In_Count_Person_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_Female"
+          "name": "Population: Percentage Normal Weight Among Less Than Primary Education Or Primary Education Or Lower Secondary Education, Female",
+          "dcid": "Percent_Normalweight_In_Count_Person_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_Female"
         },
         {
-          "name": "Percentage Work Related Physical Activity, Moderate Activity Among Less Than Primary Education Or Primary Education Or Lower Secondary Education, Female Population",
-          "dcid": "Percent_WorkRelatedPhysicalActivity_ModerateActivity_In_Count_Person_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_Female"
+          "name": "Population: Percentage Normal Weight Among Tertiary Education Stage One Or Tertiary Education Stage Two, Female",
+          "dcid": "Percent_Normalweight_In_Count_Person_TertiaryEducationStageOneOrTertiaryEducationStageTwo_Female"
         },
         {
-          "name": "Percentage Work Related Physical Activity, Moderate Activity Or Heavy Activity Among Less Than Primary Education Or Primary Education Or Lower Secondary Education, Female Population",
-          "dcid": "Percent_WorkRelatedPhysicalActivity_ModerateActivityOrHeavyActivity_In_Count_Person_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_Female"
+          "name": "Population: Percentage Normal Weight Among Tertiary Education, Female",
+          "dcid": "Percent_Normalweight_In_Count_Person_TertiaryEducation_Female"
         },
         {
-          "name": "Percentage Work Related Physical Activity, No Activity Or Light Activity Among Less Than Primary Education Or Primary Education Or Lower Secondary Education, Female Population",
-          "dcid": "Percent_WorkRelatedPhysicalActivity_NoActivityOrLightActivity_In_Count_Person_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_Female"
+          "name": "Population: Percentage Normal Weight Among Upper Secondary Education Or Post Secondary Non Tertiary Education, Female",
+          "dcid": "Percent_Normalweight_In_Count_Person_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female"
         }
       ]
     },
     {
-      "dcid": "dc/g/Person_EducationalAttainment-TertiaryEducation_Gender-Female_PhysicalActivityEffortLevel",
-      "name": "Person With Educational Attainment = Tertiary Education, Gender = Female, Physical Activity Effort Level",
+      "dcid": "dc/g/Person_EducationalAttainment_Gender-Female_HealthBehavior-Obesity",
+      "name": "Person With Educational Attainment, Gender = Female, Health Behavior = Obesity",
       "statVars": [
         {
-          "name": "Percentage Work Related Physical Activity, Heavy Activity Among Tertiary Education, Female Population",
-          "dcid": "Percent_WorkRelatedPhysicalActivity_HeavyActivity_In_Count_Person_TertiaryEducation_Female"
+          "name": "Population: Percentage Obesity Among Less Than Primary Education Or Primary Education Or Lower Secondary Education, Female",
+          "dcid": "Percent_Obesity_In_Count_Person_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_Female"
         },
         {
-          "name": "Percentage Work Related Physical Activity, Moderate Activity Among Tertiary Education, Female Population",
-          "dcid": "Percent_WorkRelatedPhysicalActivity_ModerateActivity_In_Count_Person_TertiaryEducation_Female"
+          "name": "Population: Percentage Obesity Among Tertiary Education Stage One Or Tertiary Education Stage Two, Female",
+          "dcid": "Percent_Obesity_In_Count_Person_TertiaryEducationStageOneOrTertiaryEducationStageTwo_Female"
         },
         {
-          "name": "Percentage Work Related Physical Activity, Moderate Activity Or Heavy Activity Among Tertiary Education, Female Population",
-          "dcid": "Percent_WorkRelatedPhysicalActivity_ModerateActivityOrHeavyActivity_In_Count_Person_TertiaryEducation_Female"
+          "name": "Population: Percentage Obesity Among Tertiary Education, Female",
+          "dcid": "Percent_Obesity_In_Count_Person_TertiaryEducation_Female"
         },
         {
-          "name": "Percentage Work Related Physical Activity, No Activity Or Light Activity Among Tertiary Education, Female Population",
-          "dcid": "Percent_WorkRelatedPhysicalActivity_NoActivityOrLightActivity_In_Count_Person_TertiaryEducation_Female"
+          "name": "Population: Percentage Obesity Among Upper Secondary Education Or Post Secondary Non Tertiary Education, Female",
+          "dcid": "Percent_Obesity_In_Count_Person_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female"
         }
       ]
     },
     {
-      "dcid": "dc/g/Person_EducationalAttainment-UpperSecondaryEducationPostSecondaryNonTertiaryEducation_Gender-Female_PhysicalActivityEffortLevel",
-      "name": "Person With Educational Attainment = Upper Secondary Education \u0026 Post Secondary Non Tertiary Education, Gender = Female, Physical Activity Effort Level",
+      "dcid": "dc/g/Person_EducationalAttainment_Gender-Female_HealthBehavior-Overweight",
+      "name": "Person With Educational Attainment, Gender = Female, Health Behavior = Overweight",
       "statVars": [
         {
-          "name": "Percentage Work Related Physical Activity, Heavy Activity Among Upper Secondary Education Or Post Secondary Non Tertiary Education, Female Population",
-          "dcid": "Percent_WorkRelatedPhysicalActivity_HeavyActivity_In_Count_Person_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female"
+          "name": "Population: Percentage Overweight Among Less Than Primary Education Or Primary Education Or Lower Secondary Education, Female",
+          "dcid": "Percent_Overweight_In_Count_Person_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_Female"
         },
         {
-          "name": "Percentage Work Related Physical Activity, Moderate Activity Among Upper Secondary Education Or Post Secondary Non Tertiary Education, Female Population",
-          "dcid": "Percent_WorkRelatedPhysicalActivity_ModerateActivity_In_Count_Person_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female"
+          "name": "Population: Percentage Overweight Among Tertiary Education Stage One Or Tertiary Education Stage Two, Female",
+          "dcid": "Percent_Overweight_In_Count_Person_TertiaryEducationStageOneOrTertiaryEducationStageTwo_Female"
         },
         {
-          "name": "Percentage Work Related Physical Activity, Moderate Activity Or Heavy Activity Among Upper Secondary Education Or Post Secondary Non Tertiary Education, Female Population",
-          "dcid": "Percent_WorkRelatedPhysicalActivity_ModerateActivityOrHeavyActivity_In_Count_Person_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female"
+          "name": "Population: Percentage Overweight Among Tertiary Education, Female",
+          "dcid": "Percent_Overweight_In_Count_Person_TertiaryEducation_Female"
         },
         {
-          "name": "Percentage Work Related Physical Activity, No Activity Or Light Activity Among Upper Secondary Education Or Post Secondary Non Tertiary Education, Female Population",
-          "dcid": "Percent_WorkRelatedPhysicalActivity_NoActivityOrLightActivity_In_Count_Person_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female"
+          "name": "Population: Percentage Overweight Among Upper Secondary Education Or Post Secondary Non Tertiary Education, Female",
+          "dcid": "Percent_Overweight_In_Count_Person_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_EducationalAttainment_Gender-Female_HealthBehavior-Underweight",
+      "name": "Person With Educational Attainment, Gender = Female, Health Behavior = Underweight",
+      "statVars": [
+        {
+          "name": "Population: Percentage Underweight Among Less Than Primary Education Or Primary Education Or Lower Secondary Education, Female",
+          "dcid": "Percent_Underweight_In_Count_Person_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_Female"
+        },
+        {
+          "name": "Population: Percentage Underweight Among Tertiary Education Stage One Or Tertiary Education Stage Two, Female",
+          "dcid": "Percent_Underweight_In_Count_Person_TertiaryEducationStageOneOrTertiaryEducationStageTwo_Female"
+        },
+        {
+          "name": "Population: Percentage Underweight Among Tertiary Education, Female",
+          "dcid": "Percent_Underweight_In_Count_Person_TertiaryEducation_Female"
+        },
+        {
+          "name": "Population: Percentage Underweight Among Upper Secondary Education Or Post Secondary Non Tertiary Education, Female",
+          "dcid": "Percent_Underweight_In_Count_Person_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female"
         }
       ]
     },
@@ -26689,72 +25565,6 @@
         {
           "name": "Percentage Work Related Physical Activity, No Activity Or Light Activity Among Female, Income Of 80 To 100 Percentile Population",
           "dcid": "Percent_WorkRelatedPhysicalActivity_NoActivityOrLightActivity_In_Count_Person_Female_IncomeOf80To100Percentile"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Student_EnrollmentLevel-MiddleSchool_Gender-Female_SocialCategory",
-      "name": "Student With Gender = Female, Enrollment Level = MiddleSchool, Social Category",
-      "statVars": [
-        {
-          "name": "Dropout Rate of Student: Female, MiddleSchool, General Category",
-          "dcid": "DropoutRate_Student_Female_MiddleSchool_GeneralCategory"
-        },
-        {
-          "name": "Dropout Rate of Student: Female, MiddleSchool, Other Backward Class",
-          "dcid": "DropoutRate_Student_Female_MiddleSchool_OtherBackwardClass"
-        },
-        {
-          "name": "Dropout Rate of Student: Female, MiddleSchool, Scheduled Caste",
-          "dcid": "DropoutRate_Student_Female_MiddleSchool_ScheduledCaste"
-        },
-        {
-          "name": "Dropout Rate of Student: Female, MiddleSchool, Scheduled Tribe",
-          "dcid": "DropoutRate_Student_Female_MiddleSchool_ScheduledTribe"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Student_EnrollmentLevel-PrimarySchool_Gender-Female_SocialCategory",
-      "name": "Student With Gender = Female, Enrollment Level = PrimarySchool, Social Category",
-      "statVars": [
-        {
-          "name": "Dropout Rate of Student: Female, PrimarySchool, General Category",
-          "dcid": "DropoutRate_Student_Female_PrimarySchool_GeneralCategory"
-        },
-        {
-          "name": "Dropout Rate of Student: Female, PrimarySchool, Other Backward Class",
-          "dcid": "DropoutRate_Student_Female_PrimarySchool_OtherBackwardClass"
-        },
-        {
-          "name": "Dropout Rate of Student: Female, PrimarySchool, Scheduled Caste",
-          "dcid": "DropoutRate_Student_Female_PrimarySchool_ScheduledCaste"
-        },
-        {
-          "name": "Dropout Rate of Student: Female, PrimarySchool, Scheduled Tribe",
-          "dcid": "DropoutRate_Student_Female_PrimarySchool_ScheduledTribe"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Student_EnrollmentLevel-SecondarySchool_Gender-Female_SocialCategory",
-      "name": "Student With Gender = Female, Enrollment Level = SecondarySchool, Social Category",
-      "statVars": [
-        {
-          "name": "Dropout Rate of Student: Female, SecondarySchool, General Category",
-          "dcid": "DropoutRate_Student_Female_SecondarySchool_GeneralCategory"
-        },
-        {
-          "name": "Dropout Rate of Student: Female, SecondarySchool, Other Backward Class",
-          "dcid": "DropoutRate_Student_Female_SecondarySchool_OtherBackwardClass"
-        },
-        {
-          "name": "Dropout Rate of Student: Female, SecondarySchool, Scheduled Caste",
-          "dcid": "DropoutRate_Student_Female_SecondarySchool_ScheduledCaste"
-        },
-        {
-          "name": "Dropout Rate of Student: Female, SecondarySchool, Scheduled Tribe",
-          "dcid": "DropoutRate_Student_Female_SecondarySchool_ScheduledTribe"
         }
       ]
     },
@@ -27707,96 +26517,6 @@
       ]
     },
     {
-      "dcid": "dc/g/Person_EducationalAttainment-BachelorsDegree_Gender-Female",
-      "name": "Person With Educational Attainment = Bachelors Degree, Gender = Female",
-      "statVars": [
-        {
-          "name": "Population: Bachelors Degree, Female",
-          "dcid": "Count_Person_25OrMoreYears_EducationalAttainmentBachelorsDegree_Female"
-        },
-        {
-          "name": "Median Income: Bachelors Degree, Female",
-          "dcid": "dc/ys49z0lqtj9g3"
-        },
-        {
-          "name": "Median Earnings: 25 Years or More, Bachelors Degree, Female, With Earnings",
-          "dcid": "Median_Earnings_Person_EducationalAttainmentBachelorsDegree_Female_WithEarnings"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_EducationalAttainment-GraduateOrProfessionalDegree_Gender-Female",
-      "name": "Person With Educational Attainment = Graduate or Professional Degree, Gender = Female",
-      "statVars": [
-        {
-          "name": "Median Income: Graduate or Professional Degree, Female",
-          "dcid": "dc/zqjml3mcrpsgd"
-        },
-        {
-          "name": "Median Earnings: 25 Years or More, Graduate or Professional Degree, Female, With Earnings",
-          "dcid": "Median_Earnings_Person_EducationalAttainmentGraduateOrProfessionalDegree_Female_WithEarnings"
-        },
-        {
-          "name": "Population: 15 - 50 Years, Birth in The Past 12 Months, Graduate or Professional Degree, Female, Unmarried",
-          "dcid": "Count_Person_15To50Years_BirthInThePast12Months_EducationalAttainmentGraduateOrProfessionalDegree_Female_Unmarried"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_EducationalAttainment-LessThanHighSchoolGraduate_Gender-Female",
-      "name": "Person With Educational Attainment = Less Than High School Graduate, Gender = Female",
-      "statVars": [
-        {
-          "name": "Median Income: Less Than High School Graduate, Female",
-          "dcid": "dc/8qkkf1vx7cmh"
-        },
-        {
-          "name": "Median Earnings: 25 Years or More, Less Than High School Graduate, Female, With Earnings",
-          "dcid": "Median_Earnings_Person_EducationalAttainmentLessThanHighSchoolGraduate_Female_WithEarnings"
-        },
-        {
-          "name": "Population: 15 - 50 Years, Birth in The Past 12 Months, Less Than High School Graduate, Female, Unmarried",
-          "dcid": "Count_Person_15To50Years_BirthInThePast12Months_EducationalAttainmentLessThanHighSchoolGraduate_Female_Unmarried"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_EducationalAttainment-SomeCollegeOrAssociatesDegree_Gender-Female",
-      "name": "Person With Educational Attainment = Some College or Associates Degree, Gender = Female",
-      "statVars": [
-        {
-          "name": "Median Income: Some College or Associates Degree, Female",
-          "dcid": "dc/hep54bd4vbysh"
-        },
-        {
-          "name": "Median Earnings: 25 Years or More, Some College or Associates Degree, Female, With Earnings",
-          "dcid": "Median_Earnings_Person_EducationalAttainmentSomeCollegeOrAssociatesDegree_Female_WithEarnings"
-        },
-        {
-          "name": "Population: 15 - 50 Years, Birth in The Past 12 Months, Some College or Associates Degree, Female, Unmarried",
-          "dcid": "Count_Person_15To50Years_BirthInThePast12Months_EducationalAttainmentSomeCollegeOrAssociatesDegree_Female_Unmarried"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_EducationalAttainment-TertiaryEducation_Gender-Female",
-      "name": "Person With Educational Attainment = Tertiary Education, Gender = Female",
-      "statVars": [
-        {
-          "name": "Population: Tertiary Education, Female",
-          "dcid": "Count_Person_TertiaryEducation_Female"
-        },
-        {
-          "name": "Population: Tertiary Education, Female (As Fraction of Count Person 25 or More Years Female)",
-          "dcid": "Count_Person_25OrMoreYears_Female_TertiaryEducation_AsFractionOf_Count_Person_25OrMoreYears_Female"
-        },
-        {
-          "name": "Population: 25 - 64 Years, Tertiary Education, Female (As Fraction of Count Person 25 To 64 Years Female)",
-          "dcid": "Count_Person_25To64Years_TertiaryEducation_Female_AsAFractionOfCount_Person_25To64Years_Female"
-        }
-      ]
-    },
-    {
       "dcid": "dc/g/Person_Gender-Female_HealthBehavior-Obesity",
       "name": "Person With Gender = Female, Health Behavior = Obesity",
       "statVars": [
@@ -27869,24 +26589,6 @@
       ]
     },
     {
-      "dcid": "dc/g/Person_Gender-Female_MedicalCondition",
-      "name": "Person With Gender = Female, Medical Condition",
-      "statVars": [
-        {
-          "name": "Prevalence: Female, Diabetes",
-          "dcid": "dc/nh3s4skee5483"
-        },
-        {
-          "name": "Population: 4 Years or Less, Female, Severe Wasting (As Fraction of Count Person Upto 4 Years Female)",
-          "dcid": "Count_Person_Upto4Years_Female_SevereWasting_AsFractionOf_Count_Person_Upto4Years_Female"
-        },
-        {
-          "name": "Population: 4 Years or Less, Female, Wasting (As Fraction of Count Person Upto 4 Years Female)",
-          "dcid": "Count_Person_Upto4Years_Female_Wasting_AsFractionOf_Count_Person_Upto4Years_Female"
-        }
-      ]
-    },
-    {
       "dcid": "dc/g/Person_Gender-Female_Nativity-ForeignBorn",
       "name": "Person With Gender = Female, Nativity = Foreign Born",
       "statVars": [
@@ -27919,114 +26621,6 @@
         {
           "name": "Population: 15 - 50 Years, Birth in The Past 12 Months, Female, Unmarried, Native",
           "dcid": "Count_Person_15To50Years_BirthInThePast12Months_Female_Unmarried_Native"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_Race-AmericanIndianOrAlaskaNativeAlone",
-      "name": "Person With Gender = Female, Race = American Indian or Alaska Native Alone",
-      "statVars": [
-        {
-          "name": "Population: Female, American Indian or Alaska Native Alone",
-          "dcid": "Count_Person_Female_AmericanIndianOrAlaskaNativeAlone"
-        },
-        {
-          "name": "Median Age: Female, American Indian or Alaska Native Alone",
-          "dcid": "Median_Age_Person_Female_AmericanIndianOrAlaskaNativeAlone"
-        },
-        {
-          "name": "Population (Measured Based on Jurisdiction): Female, Incarcerated, American Indian or Alaska Native Alone",
-          "dcid": "dc/2487zfwx2423d"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_Race-AsianAlone",
-      "name": "Person With Gender = Female, Race = Asian Alone",
-      "statVars": [
-        {
-          "name": "Population: Female, Asian Alone",
-          "dcid": "Count_Person_Female_AsianAlone"
-        },
-        {
-          "name": "Median Age: Female, Asian Alone",
-          "dcid": "Median_Age_Person_Female_AsianAlone"
-        },
-        {
-          "name": "Population (Measured Based on Jurisdiction): Female, Incarcerated, Asian Alone",
-          "dcid": "dc/xefh58ckxwk7b"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_Race-BlackOrAfricanAmericanAlone",
-      "name": "Person With Gender = Female, Race = Black or African American Alone",
-      "statVars": [
-        {
-          "name": "Population: Female, Black or African American Alone",
-          "dcid": "Count_Person_Female_BlackOrAfricanAmericanAlone"
-        },
-        {
-          "name": "Median Age: Female, Black or African American Alone",
-          "dcid": "Median_Age_Person_Female_BlackOrAfricanAmericanAlone"
-        },
-        {
-          "name": "Population (Measured Based on Jurisdiction): Female, Incarcerated, Black or African American Alone",
-          "dcid": "dc/n11nnhnf54h78"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_Race-HispanicOrLatino",
-      "name": "Person With Gender = Female, Race = Hispanic or Latino",
-      "statVars": [
-        {
-          "name": "Population: Female, Hispanic or Latino",
-          "dcid": "Count_Person_Female_HispanicOrLatino"
-        },
-        {
-          "name": "Median Age: Female, Hispanic or Latino",
-          "dcid": "Median_Age_Person_Female_HispanicOrLatino"
-        },
-        {
-          "name": "Population (Measured Based on Jurisdiction): Female, Incarcerated, Hispanic or Latino",
-          "dcid": "dc/4jqzmk4jtzwnb"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_Race-TwoOrMoreRaces",
-      "name": "Person With Gender = Female, Race = Two or More Races",
-      "statVars": [
-        {
-          "name": "Population: Female, Two or More Races",
-          "dcid": "Count_Person_Female_TwoOrMoreRaces"
-        },
-        {
-          "name": "Median Age: Female, Two or More Races",
-          "dcid": "Median_Age_Person_Female_TwoOrMoreRaces"
-        },
-        {
-          "name": "Population (Measured Based on Jurisdiction): Female, Incarcerated, Two or More Races",
-          "dcid": "dc/4x1jbp34f4085"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_Race-WhiteAlone",
-      "name": "Person With Gender = Female, Race = White Alone",
-      "statVars": [
-        {
-          "name": "Population: Female, White Alone",
-          "dcid": "Count_Person_Female_WhiteAlone"
-        },
-        {
-          "name": "Median Age: Female, White Alone",
-          "dcid": "Median_Age_Person_Female_WhiteAlone"
-        },
-        {
-          "name": "Population (Measured Based on Jurisdiction): Female, Incarcerated, White Alone",
-          "dcid": "dc/7g8v95ycwgwgg"
         }
       ]
     },
@@ -29795,56 +28389,326 @@
       ]
     },
     {
-      "dcid": "dc/g/Person_EducationalAttainment-LessThanPrimaryEducationPrimaryEducationLowerSecondaryEducation_Gender-Female_SocialSupportLevel",
-      "name": "Person With Educational Attainment = Less Than Primary Education \u0026 Primary Education \u0026 Lower Secondary Education, Gender = Female, Social Support Level",
+      "dcid": "dc/g/Person_EducationalAttainment_ExerciseType-AerobicMuscleStrengthening_Gender-Female",
+      "name": "Person With Educational Attainment, Exercise Type = Aerobic \u0026 Muscle Strengthening, Gender = Female",
+      "statVars": [
+        {
+          "name": "Percentage Aerobic Or Muscle Strengthening, Health Enhancing Physical Activity Among Less Than Primary Education Or Primary Education Or Lower Secondary Education, Female Population",
+          "dcid": "Percent_AerobicOrMuscleStrengthening_HealthEnhancingPhysicalActivity_In_Count_Person_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_Female"
+        },
+        {
+          "name": "Percentage Aerobic Or Muscle Strengthening, Health Enhancing Physical Activity Among Tertiary Education, Female Population",
+          "dcid": "Percent_AerobicOrMuscleStrengthening_HealthEnhancingPhysicalActivity_In_Count_Person_TertiaryEducation_Female"
+        },
+        {
+          "name": "Percentage Aerobic Or Muscle Strengthening, Health Enhancing Physical Activity Among Upper Secondary Education Or Post Secondary Non Tertiary Education, Female Population",
+          "dcid": "Percent_AerobicOrMuscleStrengthening_HealthEnhancingPhysicalActivity_In_Count_Person_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_EducationalAttainment_ExerciseType-AerobicSports_Gender-Female",
+      "name": "Person With Educational Attainment, Exercise Type = Aerobic Sports, Gender = Female",
+      "statVars": [
+        {
+          "name": "Percentage Aerobic Sports, Non Work Related Physical Activity Among Less Than Primary Education Or Primary Education Or Lower Secondary Education, Female Population",
+          "dcid": "Percent_AerobicSports_NonWorkRelatedPhysicalActivity_In_Count_Person_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_Female"
+        },
+        {
+          "name": "Percentage Aerobic Sports, Non Work Related Physical Activity Among Tertiary Education, Female Population",
+          "dcid": "Percent_AerobicSports_NonWorkRelatedPhysicalActivity_In_Count_Person_TertiaryEducation_Female"
+        },
+        {
+          "name": "Percentage Aerobic Sports, Non Work Related Physical Activity Among Upper Secondary Education Or Post Secondary Non Tertiary Education, Female Population",
+          "dcid": "Percent_AerobicSports_NonWorkRelatedPhysicalActivity_In_Count_Person_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_EducationalAttainment_ExerciseType-Aerobic_Gender-Female",
+      "name": "Person With Educational Attainment, Exercise Type = Aerobic, Gender = Female",
+      "statVars": [
+        {
+          "name": "Percentage Aerobic, Health Enhancing Physical Activity Among Less Than Primary Education Or Primary Education Or Lower Secondary Education, Female Population",
+          "dcid": "Percent_Aerobic_HealthEnhancingPhysicalActivity_In_Count_Person_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_Female"
+        },
+        {
+          "name": "Percentage Aerobic, Health Enhancing Physical Activity Among Tertiary Education, Female Population",
+          "dcid": "Percent_Aerobic_HealthEnhancingPhysicalActivity_In_Count_Person_TertiaryEducation_Female"
+        },
+        {
+          "name": "Percentage Aerobic, Health Enhancing Physical Activity Among Upper Secondary Education Or Post Secondary Non Tertiary Education, Female Population",
+          "dcid": "Percent_Aerobic_HealthEnhancingPhysicalActivity_In_Count_Person_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_EducationalAttainment_ExerciseType-Cycling_Gender-Female",
+      "name": "Person With Educational Attainment, Exercise Type = Cycling, Gender = Female",
+      "statVars": [
+        {
+          "name": "Percentage Cycling, Non Work Related Physical Activity Among Less Than Primary Education Or Primary Education Or Lower Secondary Education, Female Population",
+          "dcid": "Percent_Cycling_NonWorkRelatedPhysicalActivity_In_Count_Person_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_Female"
+        },
+        {
+          "name": "Percentage Cycling, Non Work Related Physical Activity Among Tertiary Education, Female Population",
+          "dcid": "Percent_Cycling_NonWorkRelatedPhysicalActivity_In_Count_Person_TertiaryEducation_Female"
+        },
+        {
+          "name": "Percentage Cycling, Non Work Related Physical Activity Among Upper Secondary Education Or Post Secondary Non Tertiary Education, Female Population",
+          "dcid": "Percent_Cycling_NonWorkRelatedPhysicalActivity_In_Count_Person_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_EducationalAttainment_ExerciseType-Walking_Gender-Female",
+      "name": "Person With Educational Attainment, Exercise Type = Walking, Gender = Female",
+      "statVars": [
+        {
+          "name": "Percentage Walking, Non Work Related Physical Activity Among Less Than Primary Education Or Primary Education Or Lower Secondary Education, Female Population",
+          "dcid": "Percent_Walking_NonWorkRelatedPhysicalActivity_In_Count_Person_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_Female"
+        },
+        {
+          "name": "Percentage Walking, Non Work Related Physical Activity Among Tertiary Education, Female Population",
+          "dcid": "Percent_Walking_NonWorkRelatedPhysicalActivity_In_Count_Person_TertiaryEducation_Female"
+        },
+        {
+          "name": "Percentage Walking, Non Work Related Physical Activity Among Upper Secondary Education Or Post Secondary Non Tertiary Education, Female Population",
+          "dcid": "Percent_Walking_NonWorkRelatedPhysicalActivity_In_Count_Person_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_EducationalAttainment_Gender-Female_HealthBehavior-HazardousAlcoholConsumption",
+      "name": "Person With Educational Attainment, Gender = Female, Health Behavior = Hazardous Alcohol Consumption",
+      "statVars": [
+        {
+          "name": "Percentage Hazardous Alcohol Consumption Among Less Than Primary Education Or Primary Education Or Lower Secondary Education, Female Population",
+          "dcid": "Percent_HazardousAlcoholConsumption_In_Count_Person_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_Female"
+        },
+        {
+          "name": "Percentage Hazardous Alcohol Consumption Among Tertiary Education, Female Population",
+          "dcid": "Percent_HazardousAlcoholConsumption_In_Count_Person_TertiaryEducation_Female"
+        },
+        {
+          "name": "Percentage Hazardous Alcohol Consumption Among Upper Secondary Education Or Post Secondary Non Tertiary Education, Female Population",
+          "dcid": "Percent_HazardousAlcoholConsumption_In_Count_Person_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_EducationalAttainment_Gender-Female_HealthBehavior-NonSmoker",
+      "name": "Person With Educational Attainment, Gender = Female, Health Behavior = Non Smoker",
+      "statVars": [
+        {
+          "name": "Percentage Non Smoker Among Less Than Primary Education Or Primary Education Or Lower Secondary Education, Female Population",
+          "dcid": "Percent_NonSmoker_TobaccoProducts_In_Count_Person_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_Female"
+        },
+        {
+          "name": "Percentage Non Smoker Among Tertiary Education, Female Population",
+          "dcid": "Percent_NonSmoker_TobaccoProducts_In_Count_Person_TertiaryEducation_Female"
+        },
+        {
+          "name": "Percentage Non Smoker Among Upper Secondary Education Or Post Secondary Non Tertiary Education, Female Population",
+          "dcid": "Percent_NonSmoker_TobaccoProducts_In_Count_Person_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_EducationalAttainment_Gender-Female_HealthBehavior-PreObese",
+      "name": "Person With Educational Attainment, Gender = Female, Health Behavior = Pre Obese",
+      "statVars": [
+        {
+          "name": "Population: Percentage Pre Obese Among Less Than Primary Education Or Primary Education Or Lower Secondary Education, Female",
+          "dcid": "Percent_PreObese_In_Count_Person_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_Female"
+        },
+        {
+          "name": "Population: Percentage Pre Obese Among Tertiary Education, Female",
+          "dcid": "Percent_PreObese_In_Count_Person_TertiaryEducation_Female"
+        },
+        {
+          "name": "Population: Percentage Pre Obese Among Upper Secondary Education Or Post Secondary Non Tertiary Education, Female",
+          "dcid": "Percent_PreObese_In_Count_Person_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_EducationalAttainment_Gender-Female_PhysicalActivityEffortLevel-HeavyActivityLevel",
+      "name": "Person With Educational Attainment, Gender = Female, Physical Activity Effort Level = Heavy Activity Level",
+      "statVars": [
+        {
+          "name": "Percentage Work Related Physical Activity, Heavy Activity Among Less Than Primary Education Or Primary Education Or Lower Secondary Education, Female Population",
+          "dcid": "Percent_WorkRelatedPhysicalActivity_HeavyActivity_In_Count_Person_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_Female"
+        },
+        {
+          "name": "Percentage Work Related Physical Activity, Heavy Activity Among Tertiary Education, Female Population",
+          "dcid": "Percent_WorkRelatedPhysicalActivity_HeavyActivity_In_Count_Person_TertiaryEducation_Female"
+        },
+        {
+          "name": "Percentage Work Related Physical Activity, Heavy Activity Among Upper Secondary Education Or Post Secondary Non Tertiary Education, Female Population",
+          "dcid": "Percent_WorkRelatedPhysicalActivity_HeavyActivity_In_Count_Person_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_EducationalAttainment_Gender-Female_PhysicalActivityEffortLevel-ModerateActivityLevel",
+      "name": "Person With Educational Attainment, Gender = Female, Physical Activity Effort Level = Moderate Activity Level",
+      "statVars": [
+        {
+          "name": "Percentage Work Related Physical Activity, Moderate Activity Among Less Than Primary Education Or Primary Education Or Lower Secondary Education, Female Population",
+          "dcid": "Percent_WorkRelatedPhysicalActivity_ModerateActivity_In_Count_Person_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_Female"
+        },
+        {
+          "name": "Percentage Work Related Physical Activity, Moderate Activity Among Tertiary Education, Female Population",
+          "dcid": "Percent_WorkRelatedPhysicalActivity_ModerateActivity_In_Count_Person_TertiaryEducation_Female"
+        },
+        {
+          "name": "Percentage Work Related Physical Activity, Moderate Activity Among Upper Secondary Education Or Post Secondary Non Tertiary Education, Female Population",
+          "dcid": "Percent_WorkRelatedPhysicalActivity_ModerateActivity_In_Count_Person_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_EducationalAttainment_Gender-Female_PhysicalActivityEffortLevel-ModerateActivityLevelHeavyActivityLevel",
+      "name": "Person With Educational Attainment, Gender = Female, Physical Activity Effort Level = Moderate Activity Level \u0026 Heavy Activity Level",
+      "statVars": [
+        {
+          "name": "Percentage Work Related Physical Activity, Moderate Activity Or Heavy Activity Among Less Than Primary Education Or Primary Education Or Lower Secondary Education, Female Population",
+          "dcid": "Percent_WorkRelatedPhysicalActivity_ModerateActivityOrHeavyActivity_In_Count_Person_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_Female"
+        },
+        {
+          "name": "Percentage Work Related Physical Activity, Moderate Activity Or Heavy Activity Among Tertiary Education, Female Population",
+          "dcid": "Percent_WorkRelatedPhysicalActivity_ModerateActivityOrHeavyActivity_In_Count_Person_TertiaryEducation_Female"
+        },
+        {
+          "name": "Percentage Work Related Physical Activity, Moderate Activity Or Heavy Activity Among Upper Secondary Education Or Post Secondary Non Tertiary Education, Female Population",
+          "dcid": "Percent_WorkRelatedPhysicalActivity_ModerateActivityOrHeavyActivity_In_Count_Person_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_EducationalAttainment_Gender-Female_PhysicalActivityEffortLevel-NoActivityOrLightActivityLevel",
+      "name": "Person With Educational Attainment, Gender = Female, Physical Activity Effort Level = No Activity or Light Activity Level",
+      "statVars": [
+        {
+          "name": "Percentage Work Related Physical Activity, No Activity Or Light Activity Among Less Than Primary Education Or Primary Education Or Lower Secondary Education, Female Population",
+          "dcid": "Percent_WorkRelatedPhysicalActivity_NoActivityOrLightActivity_In_Count_Person_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_Female"
+        },
+        {
+          "name": "Percentage Work Related Physical Activity, No Activity Or Light Activity Among Tertiary Education, Female Population",
+          "dcid": "Percent_WorkRelatedPhysicalActivity_NoActivityOrLightActivity_In_Count_Person_TertiaryEducation_Female"
+        },
+        {
+          "name": "Percentage Work Related Physical Activity, No Activity Or Light Activity Among Upper Secondary Education Or Post Secondary Non Tertiary Education, Female Population",
+          "dcid": "Percent_WorkRelatedPhysicalActivity_NoActivityOrLightActivity_In_Count_Person_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_EducationalAttainment_Gender-Female_SocialSupportBeneficiaryType-NonRelatives",
+      "name": "Person With Educational Attainment, Gender = Female, Social Support Beneficiary Type = Non Relatives",
+      "statVars": [
+        {
+          "name": "Percentage At Least Once A Week, Non Relatives, Providing Informal Care Or Assistance Among Less Than Primary Education Or Primary Education Or Lower Secondary Education, Female Population",
+          "dcid": "Percent_AtLeastOnceAWeek_NonRelatives_ProvidingInformalCareOrAssistance_In_Count_Person_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_Female"
+        },
+        {
+          "name": "Percentage At Least Once A Week, Non Relatives, Providing Informal Care Or Assistance Among Tertiary Education, Female Population",
+          "dcid": "Percent_AtLeastOnceAWeek_NonRelatives_ProvidingInformalCareOrAssistance_In_Count_Person_TertiaryEducation_Female"
+        },
+        {
+          "name": "Percentage At Least Once A Week, Non Relatives, Providing Informal Care Or Assistance Among Upper Secondary Education Or Post Secondary Non Tertiary Education, Female Population",
+          "dcid": "Percent_AtLeastOnceAWeek_NonRelatives_ProvidingInformalCareOrAssistance_In_Count_Person_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_EducationalAttainment_Gender-Female_SocialSupportBeneficiaryType-Relatives",
+      "name": "Person With Educational Attainment, Gender = Female, Social Support Beneficiary Type = Relatives",
+      "statVars": [
+        {
+          "name": "Percentage At Least Once A Week, Relatives, Providing Informal Care Or Assistance Among Less Than Primary Education Or Primary Education Or Lower Secondary Education, Female Population",
+          "dcid": "Percent_AtLeastOnceAWeek_Relatives_ProvidingInformalCareOrAssistance_In_Count_Person_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_Female"
+        },
+        {
+          "name": "Percentage At Least Once A Week, Relatives, Providing Informal Care Or Assistance Among Tertiary Education, Female Population",
+          "dcid": "Percent_AtLeastOnceAWeek_Relatives_ProvidingInformalCareOrAssistance_In_Count_Person_TertiaryEducation_Female"
+        },
+        {
+          "name": "Percentage At Least Once A Week, Relatives, Providing Informal Care Or Assistance Among Upper Secondary Education Or Post Secondary Non Tertiary Education, Female Population",
+          "dcid": "Percent_AtLeastOnceAWeek_Relatives_ProvidingInformalCareOrAssistance_In_Count_Person_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_EducationalAttainment_Gender-Female_SocialSupportLevel-ReceivingIntermediateSocialSupport",
+      "name": "Person With Educational Attainment, Gender = Female, Social Support Level = Receiving Intermediate Social Support",
       "statVars": [
         {
           "name": "Percentage Receiving Intermediate Social Support Among Less Than Primary Education Or Primary Education Or Lower Secondary Education, Female Population",
           "dcid": "Percent_ReceivingIntermediateSocialSupport_In_Count_Person_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_Female"
         },
         {
-          "name": "Percentage Receiving Poor Social Support Among Less Than Primary Education Or Primary Education Or Lower Secondary Education, Female Population",
-          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_Female"
+          "name": "Percentage Receiving Intermediate Social Support Among Tertiary Education, Female Population",
+          "dcid": "Percent_ReceivingIntermediateSocialSupport_In_Count_Person_TertiaryEducation_Female"
         },
         {
-          "name": "Percentage Receiving Strong Social Support Among Less Than Primary Education Or Primary Education Or Lower Secondary Education, Female Population",
-          "dcid": "Percent_ReceivingStrongSocialSupport_In_Count_Person_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_Female"
+          "name": "Percentage Receiving Intermediate Social Support Among Upper Secondary Education Or Post Secondary Non Tertiary Education, Female Population",
+          "dcid": "Percent_ReceivingIntermediateSocialSupport_In_Count_Person_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female"
         }
       ]
     },
     {
-      "dcid": "dc/g/Person_EducationalAttainment-TertiaryEducation_Gender-Female_SocialSupportLevel",
-      "name": "Person With Educational Attainment = Tertiary Education, Gender = Female, Social Support Level",
+      "dcid": "dc/g/Person_EducationalAttainment_Gender-Female_SocialSupportLevel-ReceivingPoorSocialSupport",
+      "name": "Person With Educational Attainment, Gender = Female, Social Support Level = Receiving Poor Social Support",
       "statVars": [
         {
-          "name": "Percentage Receiving Intermediate Social Support Among Tertiary Education, Female Population",
-          "dcid": "Percent_ReceivingIntermediateSocialSupport_In_Count_Person_TertiaryEducation_Female"
+          "name": "Percentage Receiving Poor Social Support Among Less Than Primary Education Or Primary Education Or Lower Secondary Education, Female Population",
+          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_Female"
         },
         {
           "name": "Percentage Receiving Poor Social Support Among Tertiary Education, Female Population",
           "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_TertiaryEducation_Female"
         },
         {
-          "name": "Percentage Receiving Strong Social Support Among Tertiary Education, Female Population",
-          "dcid": "Percent_ReceivingStrongSocialSupport_In_Count_Person_TertiaryEducation_Female"
+          "name": "Percentage Receiving Poor Social Support Among Upper Secondary Education Or Post Secondary Non Tertiary Education, Female Population",
+          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female"
         }
       ]
     },
     {
-      "dcid": "dc/g/Person_EducationalAttainment-UpperSecondaryEducationPostSecondaryNonTertiaryEducation_Gender-Female_SocialSupportLevel",
-      "name": "Person With Educational Attainment = Upper Secondary Education \u0026 Post Secondary Non Tertiary Education, Gender = Female, Social Support Level",
+      "dcid": "dc/g/Person_EducationalAttainment_Gender-Female_SocialSupportLevel-ReceivingStrongSocialSupport",
+      "name": "Person With Educational Attainment, Gender = Female, Social Support Level = Receiving Strong Social Support",
       "statVars": [
         {
-          "name": "Percentage Receiving Intermediate Social Support Among Upper Secondary Education Or Post Secondary Non Tertiary Education, Female Population",
-          "dcid": "Percent_ReceivingIntermediateSocialSupport_In_Count_Person_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female"
+          "name": "Percentage Receiving Strong Social Support Among Less Than Primary Education Or Primary Education Or Lower Secondary Education, Female Population",
+          "dcid": "Percent_ReceivingStrongSocialSupport_In_Count_Person_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_Female"
         },
         {
-          "name": "Percentage Receiving Poor Social Support Among Upper Secondary Education Or Post Secondary Non Tertiary Education, Female Population",
-          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female"
+          "name": "Percentage Receiving Strong Social Support Among Tertiary Education, Female Population",
+          "dcid": "Percent_ReceivingStrongSocialSupport_In_Count_Person_TertiaryEducation_Female"
         },
         {
           "name": "Percentage Receiving Strong Social Support Among Upper Secondary Education Or Post Secondary Non Tertiary Education, Female Population",
           "dcid": "Percent_ReceivingStrongSocialSupport_In_Count_Person_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_EducationalAttainment_Gender-Female_SocialSupportType-NotProvidingInformalCareOrAssistance",
+      "name": "Person With Educational Attainment, Gender = Female, Social Support Type = Not Providing Informal Care or Assistance",
+      "statVars": [
+        {
+          "name": "Percentage At Least Once A Week, Not Providing Informal Care Or Assistance Among Less Than Primary Education Or Primary Education Or Lower Secondary Education, Female Population",
+          "dcid": "Percent_AtLeastOnceAWeek_NotProvidingInformalCareOrAssistance_In_Count_Person_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_Female"
+        },
+        {
+          "name": "Percentage At Least Once A Week, Not Providing Informal Care Or Assistance Among Tertiary Education, Female Population",
+          "dcid": "Percent_AtLeastOnceAWeek_NotProvidingInformalCareOrAssistance_In_Count_Person_TertiaryEducation_Female"
+        },
+        {
+          "name": "Percentage At Least Once A Week, Not Providing Informal Care Or Assistance Among Upper Secondary Education Or Post Secondary Non Tertiary Education, Female Population",
+          "dcid": "Percent_AtLeastOnceAWeek_NotProvidingInformalCareOrAssistance_In_Count_Person_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female"
         }
       ]
     },
@@ -31645,6 +30509,20 @@
       ]
     },
     {
+      "dcid": "dc/g/Person_Gender-Female",
+      "name": "Person With Gender = Female",
+      "statVars": [
+        {
+          "name": "Percentage: Bachelor Degree or Higher, Female",
+          "dcid": "dc/648tvf392fz0c"
+        },
+        {
+          "name": "Percentage: Female, Below Poverty Level in The Past 12 Months",
+          "dcid": "dc/k0zg5lw8686z8"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/HateCrimeIncidents_TargetedGender-Female_VictimAge",
       "name": "Hate Crime Incidents With Targeted Gender = Female, Victim Age",
       "statVars": [
@@ -33073,34 +31951,6 @@
       ]
     },
     {
-      "dcid": "dc/g/Person_EducationalAttainment-BachelorsDegreeOrHigher_Gender-Female",
-      "name": "Person With Educational Attainment = Bachelors Degree or Higher, Gender = Female",
-      "statVars": [
-        {
-          "name": "Population: Bachelors Degree or Higher, Female",
-          "dcid": "Count_Person_25OrMoreYears_EducationalAttainmentBachelorsDegreeOrHigher_Female"
-        },
-        {
-          "name": "Population: Bachelors Degree or Higher, Female (As Fraction of Count Person 25 or More Years Female)",
-          "dcid": "Count_Person_25OrMoreYears_Female_BachelorsDegreeOrHigher_AsFractionOf_Count_Person_25OrMoreYears_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_EducationalAttainment-DoctorateDegree_Gender-Female",
-      "name": "Person With Educational Attainment = Doctorate Degree, Gender = Female",
-      "statVars": [
-        {
-          "name": "Population: Doctorate Degree, Female",
-          "dcid": "Count_Person_25OrMoreYears_EducationalAttainmentDoctorateDegree_Female"
-        },
-        {
-          "name": "Population: Doctorate Degree, Female (As Fraction of Count Person 25 or More Years Female)",
-          "dcid": "Count_Person_25OrMoreYears_Female_DoctorateDegree_AsFractionOf_Count_Person_25OrMoreYears_Female"
-        }
-      ]
-    },
-    {
       "dcid": "dc/g/Person_Gender-Female_HealthBehavior-Normalweight",
       "name": "Person With Gender = Female, Health Behavior = Normalweight",
       "statVars": [
@@ -33433,6 +32283,20 @@
         {
           "name": "Population: 16 Years or More, Civilian, Employed, in Labor Force, Female, Wholesale Trade (NAICS/42)",
           "dcid": "dc/v2q0shf60bejd"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_Institutionalization-Incarcerated",
+      "name": "Person With Gender = Female, Institutionalization = Incarcerated",
+      "statVars": [
+        {
+          "name": "Population (Measured Based on Jurisdiction): Female, Incarcerated",
+          "dcid": "dc/lnp5g90fwpct8"
+        },
+        {
+          "name": "Population (Measured Based on Custody): 0 - 17 Years, Female, Incarcerated",
+          "dcid": "dc/c17kzp0zrfkq9"
         }
       ]
     },
@@ -33871,48 +32735,6 @@
       ]
     },
     {
-      "dcid": "dc/g/Person_Gender-Female_PovertyStatus-BelowPovertyLevelInThePast12Months",
-      "name": "Person With Gender = Female, Poverty Status = Below Poverty Level in The Past 12 Months",
-      "statVars": [
-        {
-          "name": "Percentage: Female, Below Poverty Level in The Past 12 Months",
-          "dcid": "dc/k0zg5lw8686z8"
-        },
-        {
-          "name": "Population: Female, Below Poverty Level in The Past 12 Months",
-          "dcid": "Count_Person_Female_BelowPovertyLevelInThePast12Months"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_Race-SomeOtherRaceAlone",
-      "name": "Person With Gender = Female, Race = Some Other Race Alone",
-      "statVars": [
-        {
-          "name": "Population: Female, Some Other Race Alone",
-          "dcid": "Count_Person_Female_SomeOtherRaceAlone"
-        },
-        {
-          "name": "Median Age: Female, Some Other Race Alone",
-          "dcid": "Median_Age_Person_Female_SomeOtherRaceAlone"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_Race-WhiteAloneNotHispanicOrLatino",
-      "name": "Person With Gender = Female, Race = White Alone Not Hispanic or Latino",
-      "statVars": [
-        {
-          "name": "Population: Female, White Alone Not Hispanic or Latino",
-          "dcid": "Count_Person_Female_WhiteAloneNotHispanicOrLatino"
-        },
-        {
-          "name": "Median Age: Female, White Alone Not Hispanic or Latino",
-          "dcid": "Median_Age_Person_Female_WhiteAloneNotHispanicOrLatino"
-        }
-      ]
-    },
-    {
       "dcid": "dc/g/Person_Gender-Female_RecentWorkStatus-NotWorkedFullTime",
       "name": "Person With Gender = Female, Recent Work Status = Not Worked Full Time",
       "statVars": [
@@ -33937,20 +32759,6 @@
         {
           "name": "Median Income: Female, Worked Full Time",
           "dcid": "dc/kebe2wtgsej37"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_SpouseAbsentReason",
-      "name": "Person With Gender = Female, Spouse Absent Reason",
-      "statVars": [
-        {
-          "name": "Population: Female, Now Married, Other, Married Spouse Absent",
-          "dcid": "dc/edbzbwf3ychr4"
-        },
-        {
-          "name": "Population: Female, Now Married, Separated, Married Spouse Absent",
-          "dcid": "dc/wj5y1vh8thnrb"
         }
       ]
     },
@@ -34865,6 +33673,104 @@
       ]
     },
     {
+      "dcid": "dc/g/Person_Age-Years15To50_EducationalAttainment-GraduateOrProfessionalDegree_Gender-Female",
+      "name": "Person With Age = 15 - 50 Years, Educational Attainment = Graduate or Professional Degree, Gender = Female",
+      "statVars": [
+        {
+          "name": "Population: 15 - 50 Years, Graduate or Professional Degree, Female",
+          "dcid": "Count_Person_15To50Years_EducationalAttainmentGraduateOrProfessionalDegree_Female"
+        },
+        {
+          "name": "Population: 15 - 50 Years, Birth in The Past 12 Months, Graduate or Professional Degree, Female, Unmarried",
+          "dcid": "Count_Person_15To50Years_BirthInThePast12Months_EducationalAttainmentGraduateOrProfessionalDegree_Female_Unmarried"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years15To50_EducationalAttainment-HighSchoolGraduateIncludesEquivalency_Gender-Female",
+      "name": "Person With Age = 15 - 50 Years, Educational Attainment = High School Graduate Includes Equivalency, Gender = Female",
+      "statVars": [
+        {
+          "name": "Population: 15 - 50 Years, High School Graduate Includes Equivalency, Female",
+          "dcid": "Count_Person_15To50Years_EducationalAttainmentHighSchoolGraduateIncludesEquivalency_Female"
+        },
+        {
+          "name": "Population: 15 - 50 Years, Birth in The Past 12 Months, High School Graduate Includes Equivalency, Female, Unmarried",
+          "dcid": "Count_Person_15To50Years_BirthInThePast12Months_EducationalAttainmentHighSchoolGraduateIncludesEquivalency_Female_Unmarried"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years15To50_EducationalAttainment-LessThanHighSchoolGraduate_Gender-Female",
+      "name": "Person With Age = 15 - 50 Years, Educational Attainment = Less Than High School Graduate, Gender = Female",
+      "statVars": [
+        {
+          "name": "Population: 15 - 50 Years, Less Than High School Graduate, Female",
+          "dcid": "Count_Person_15To50Years_EducationalAttainmentLessThanHighSchoolGraduate_Female"
+        },
+        {
+          "name": "Population: 15 - 50 Years, Birth in The Past 12 Months, Less Than High School Graduate, Female, Unmarried",
+          "dcid": "Count_Person_15To50Years_BirthInThePast12Months_EducationalAttainmentLessThanHighSchoolGraduate_Female_Unmarried"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years15To50_EducationalAttainment-SomeCollegeOrAssociatesDegree_Gender-Female",
+      "name": "Person With Age = 15 - 50 Years, Educational Attainment = Some College or Associates Degree, Gender = Female",
+      "statVars": [
+        {
+          "name": "Population: 15 - 50 Years, Some College or Associates Degree, Female",
+          "dcid": "Count_Person_15To50Years_EducationalAttainmentSomeCollegeOrAssociatesDegree_Female"
+        },
+        {
+          "name": "Population: 15 - 50 Years, Birth in The Past 12 Months, Some College or Associates Degree, Female, Unmarried",
+          "dcid": "Count_Person_15To50Years_BirthInThePast12Months_EducationalAttainmentSomeCollegeOrAssociatesDegree_Female_Unmarried"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years15To50_Gender-Female_PovertyStatus-RatioToPovertyLine1.0To1.99",
+      "name": "Person With Age = 15 - 50 Years, Gender = Female, Poverty Status = 1 - 2.0 Ratio To Poverty Line",
+      "statVars": [
+        {
+          "name": "Population: 15 - 50 Years, Female, 1 - 2.0 Ratio To Poverty Line",
+          "dcid": "Count_Person_15To50Years_Female_1To1.99RatioToPovertyLine"
+        },
+        {
+          "name": "Population: 15 - 50 Years, Birth in The Past 12 Months, Female, Unmarried, 1 - 2.0 Ratio To Poverty Line",
+          "dcid": "Count_Person_15To50Years_BirthInThePast12Months_Female_Unmarried_1To1.99RatioToPovertyLine"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years15To50_Gender-Female_PovertyStatus-RatioToPovertyLineUpto1.0",
+      "name": "Person With Age = 15 - 50 Years, Gender = Female, Poverty Status = 1 Ratio To Poverty Line or Less",
+      "statVars": [
+        {
+          "name": "Population: 15 - 50 Years, Female, 1 Ratio To Poverty Line or Less",
+          "dcid": "Count_Person_15To50Years_Female_1.0OrLessRatioToPovertyLine"
+        },
+        {
+          "name": "Population: 15 - 50 Years, Birth in The Past 12 Months, Female, Unmarried, 1 Ratio To Poverty Line or Less",
+          "dcid": "Count_Person_15To50Years_BirthInThePast12Months_Female_Unmarried_1.0OrLessRatioToPovertyLine"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years15To50_Gender-Female_PovertyStatus-RatioToPovertyLine2.0Onwards",
+      "name": "Person With Age = 15 - 50 Years, Gender = Female, Poverty Status = 2 Ratio To Poverty Line or More",
+      "statVars": [
+        {
+          "name": "Population: 15 - 50 Years, Female, 2 Ratio To Poverty Line or More",
+          "dcid": "Count_Person_15To50Years_Female_2OrMoreRatioToPovertyLine"
+        },
+        {
+          "name": "Population: 15 - 50 Years, Birth in The Past 12 Months, Female, Unmarried, 2 Ratio To Poverty Line or More",
+          "dcid": "Count_Person_15To50Years_BirthInThePast12Months_Female_Unmarried_2OrMoreRatioToPovertyLine"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/Person_Age-Years15To50_Gender-Female_PovertyStatus-PovertyStatusDetermined",
       "name": "Person With Age = 15 - 50 Years, Gender = Female, Poverty Status = Poverty Status Determined",
       "statVars": [
@@ -34945,6 +33851,20 @@
         {
           "name": "Population: 15 - 50 Years, Birth in The Past 12 Months, Female, Unmarried, Native Hawaiian or Other Pacific Islander Alone",
           "dcid": "Count_Person_15To50Years_BirthInThePast12Months_Female_Unmarried_NativeHawaiianOrOtherPacificIslanderAlone"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years15To50_Gender-Female_Race-OneRace",
+      "name": "Person With Age = 15 - 50 Years, Gender = Female, Race = One Race",
+      "statVars": [
+        {
+          "name": "Population: 15 - 50 Years, Female, One Race",
+          "dcid": "Count_Person_15To50Years_Female_OneRace"
+        },
+        {
+          "name": "Population: 15 - 50 Years, Birth in The Past 12 Months, Female, Unmarried, One Race",
+          "dcid": "Count_Person_15To50Years_BirthInThePast12Months_Female_Unmarried_OneRace"
         }
       ]
     },
@@ -35033,6 +33953,20 @@
       ]
     },
     {
+      "dcid": "dc/g/Person_Age-Years16To64_Gender-Female_RecentWorkStatus",
+      "name": "Person With Age = 16 - 64 Years, Gender = Female, Recent Work Status",
+      "statVars": [
+        {
+          "name": "Population: 16 - 64 Years, Female, Did Not Work",
+          "dcid": "Count_Person_Female_DidNotWork"
+        },
+        {
+          "name": "Population: 16 - 64 Years, Female, Full Time Year Round Worker",
+          "dcid": "Count_Person_Female_FullTimeYearRoundWorker"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/Person_Age-Years16To64_Gender-Female_RecentWorkStatus-WorkedInThePast12Months",
       "name": "Person With Age = 16 - 64 Years, Gender = Female, Recent Work Status = Worked in The Past 12 Months",
       "statVars": [
@@ -35113,6 +34047,20 @@
         {
           "name": "Population: 18 Years or More, Bachelors Degree or Higher, Female, Married in The Past 12 Months",
           "dcid": "Count_Person_18OrMoreYears_EducationalAttainmentBachelorsDegreeOrHigher_Female_MarriedInThePast12Months"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years18Onwards_Gender-Female_VeteranStatus",
+      "name": "Person With Age = 18 Years or More, Gender = Female, Veteran Status",
+      "statVars": [
+        {
+          "name": "Median Income: 18 Years or More, Civilian, Female, With Income, Non Veteran",
+          "dcid": "dc/vg392qes18p6c"
+        },
+        {
+          "name": "Median Income: 18 Years or More, Civilian, Female, With Income, Veteran",
+          "dcid": "dc/xg4bepzr1wb93"
         }
       ]
     },
@@ -35337,6 +34285,20 @@
         {
           "name": "Population: 35 - 54 Years, Civilian, Female, Veteran",
           "dcid": "dc/xq512kjx1rffc"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-YearsUpto4_Gender-Female_MedicalCondition",
+      "name": "Person With Age = 4 Years or Less, Gender = Female, Medical Condition",
+      "statVars": [
+        {
+          "name": "Population: 4 Years or Less, Female, Severe Wasting (As Fraction of Count Person Upto 4 Years Female)",
+          "dcid": "Count_Person_Upto4Years_Female_SevereWasting_AsFractionOf_Count_Person_Upto4Years_Female"
+        },
+        {
+          "name": "Population: 4 Years or Less, Female, Wasting (As Fraction of Count Person Upto 4 Years Female)",
+          "dcid": "Count_Person_Upto4Years_Female_Wasting_AsFractionOf_Count_Person_Upto4Years_Female"
         }
       ]
     },
@@ -35705,20 +34667,6 @@
       ]
     },
     {
-      "dcid": "dc/g/Person_EducationalAttainment-LessThanPrimaryEducationPrimaryEducationLowerSecondaryEducation_Gender-Female_SocialSupportBeneficiaryType",
-      "name": "Person With Educational Attainment = Less Than Primary Education \u0026 Primary Education \u0026 Lower Secondary Education, Gender = Female, Social Support Beneficiary Type",
-      "statVars": [
-        {
-          "name": "Percentage At Least Once A Week, Non Relatives, Providing Informal Care Or Assistance Among Less Than Primary Education Or Primary Education Or Lower Secondary Education, Female Population",
-          "dcid": "Percent_AtLeastOnceAWeek_NonRelatives_ProvidingInformalCareOrAssistance_In_Count_Person_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_Female"
-        },
-        {
-          "name": "Percentage At Least Once A Week, Relatives, Providing Informal Care Or Assistance Among Less Than Primary Education Or Primary Education Or Lower Secondary Education, Female Population",
-          "dcid": "Percent_AtLeastOnceAWeek_Relatives_ProvidingInformalCareOrAssistance_In_Count_Person_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_Female"
-        }
-      ]
-    },
-    {
       "dcid": "dc/g/Person_EducationalAttainment-TertiaryEducation_Gender-Female_HealthBehavior-FormerSmoker",
       "name": "Person With Educational Attainment = Tertiary Education, Gender = Female, Health Behavior = Former Smoker",
       "statVars": [
@@ -35733,20 +34681,6 @@
       ]
     },
     {
-      "dcid": "dc/g/Person_EducationalAttainment-TertiaryEducation_Gender-Female_SocialSupportBeneficiaryType",
-      "name": "Person With Educational Attainment = Tertiary Education, Gender = Female, Social Support Beneficiary Type",
-      "statVars": [
-        {
-          "name": "Percentage At Least Once A Week, Non Relatives, Providing Informal Care Or Assistance Among Tertiary Education, Female Population",
-          "dcid": "Percent_AtLeastOnceAWeek_NonRelatives_ProvidingInformalCareOrAssistance_In_Count_Person_TertiaryEducation_Female"
-        },
-        {
-          "name": "Percentage At Least Once A Week, Relatives, Providing Informal Care Or Assistance Among Tertiary Education, Female Population",
-          "dcid": "Percent_AtLeastOnceAWeek_Relatives_ProvidingInformalCareOrAssistance_In_Count_Person_TertiaryEducation_Female"
-        }
-      ]
-    },
-    {
       "dcid": "dc/g/Person_EducationalAttainment-UpperSecondaryEducationPostSecondaryNonTertiaryEducation_Gender-Female_HealthBehavior-FormerSmoker",
       "name": "Person With Educational Attainment = Upper Secondary Education \u0026 Post Secondary Non Tertiary Education, Gender = Female, Health Behavior = Former Smoker",
       "statVars": [
@@ -35757,118 +34691,6 @@
         {
           "name": "Percentage Former Smoker, E Cigarettes Among Upper Secondary Education Or Post Secondary Non Tertiary Education, Female Population",
           "dcid": "Percent_FormerSmoker_Formerly_ECigarettes_In_Count_Person_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_EducationalAttainment-UpperSecondaryEducationPostSecondaryNonTertiaryEducation_Gender-Female_SocialSupportBeneficiaryType",
-      "name": "Person With Educational Attainment = Upper Secondary Education \u0026 Post Secondary Non Tertiary Education, Gender = Female, Social Support Beneficiary Type",
-      "statVars": [
-        {
-          "name": "Percentage At Least Once A Week, Non Relatives, Providing Informal Care Or Assistance Among Upper Secondary Education Or Post Secondary Non Tertiary Education, Female Population",
-          "dcid": "Percent_AtLeastOnceAWeek_NonRelatives_ProvidingInformalCareOrAssistance_In_Count_Person_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female"
-        },
-        {
-          "name": "Percentage At Least Once A Week, Relatives, Providing Informal Care Or Assistance Among Upper Secondary Education Or Post Secondary Non Tertiary Education, Female Population",
-          "dcid": "Percent_AtLeastOnceAWeek_Relatives_ProvidingInformalCareOrAssistance_In_Count_Person_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_EnrollmentLevel-EnrolledInCollegeUndergraduateYears_Gender-Female_TypeOfSchool",
-      "name": "Person With Gender = Female, Enrollment Level = Enrolled in College Undergraduate Years, Type of School",
-      "statVars": [
-        {
-          "name": "Population: Female, Enrolled in College Undergraduate Years, Private School",
-          "dcid": "dc/f0l20sfp6tg34"
-        },
-        {
-          "name": "Population: Female, Enrolled in College Undergraduate Years, Public School",
-          "dcid": "dc/fgssbtlcqy5bf"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_EnrollmentLevel-EnrolledInGrade1ToGrade4_Gender-Female_TypeOfSchool",
-      "name": "Person With Gender = Female, Enrollment Level = Enrolled in Grade 1 To Grade 4, Type of School",
-      "statVars": [
-        {
-          "name": "Population: Female, Enrolled in Grade 1 To Grade 4, Private School",
-          "dcid": "dc/3d1k0tygkzrc9"
-        },
-        {
-          "name": "Population: Female, Enrolled in Grade 1 To Grade 4, Public School",
-          "dcid": "dc/f6yygkvshe2sc"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_EnrollmentLevel-EnrolledInGrade5ToGrade8_Gender-Female_TypeOfSchool",
-      "name": "Person With Gender = Female, Enrollment Level = Enrolled in Grade 5 To Grade 8, Type of School",
-      "statVars": [
-        {
-          "name": "Population: Female, Enrolled in Grade 5 To Grade 8, Private School",
-          "dcid": "dc/vg4dvk67ynl7"
-        },
-        {
-          "name": "Population: Female, Enrolled in Grade 5 To Grade 8, Public School",
-          "dcid": "dc/938xr48xyz1v3"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_EnrollmentLevel-EnrolledInGrade9ToGrade12_Gender-Female_TypeOfSchool",
-      "name": "Person With Gender = Female, Enrollment Level = Enrolled in Grade 9 To Grade 12, Type of School",
-      "statVars": [
-        {
-          "name": "Population: Female, Enrolled in Grade 9 To Grade 12, Private School",
-          "dcid": "dc/lq7sly0t34sc4"
-        },
-        {
-          "name": "Population: Female, Enrolled in Grade 9 To Grade 12, Public School",
-          "dcid": "dc/b37t6pmrzqkmh"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_EnrollmentLevel-EnrolledInGraduateOrProfessionalSchool_Gender-Female_TypeOfSchool",
-      "name": "Person With Gender = Female, Enrollment Level = Enrolled in Graduate or Professional School, Type of School",
-      "statVars": [
-        {
-          "name": "Population: Female, Enrolled in Graduate or Professional School, Private School",
-          "dcid": "dc/c8tyqc3f69xs5"
-        },
-        {
-          "name": "Population: Female, Enrolled in Graduate or Professional School, Public School",
-          "dcid": "dc/b50mk8kek4fz3"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_EnrollmentLevel-EnrolledInKindergarten_Gender-Female_TypeOfSchool",
-      "name": "Person With Gender = Female, Enrollment Level = Enrolled in Kindergarten, Type of School",
-      "statVars": [
-        {
-          "name": "Population: Female, Enrolled in Kindergarten, Private School",
-          "dcid": "dc/kzyx3ll4kpfk1"
-        },
-        {
-          "name": "Population: Female, Enrolled in Kindergarten, Public School",
-          "dcid": "dc/wvxlkgg1rw7k7"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_EnrollmentLevel-EnrolledInNurserySchoolPreschool_Gender-Female_TypeOfSchool",
-      "name": "Person With Gender = Female, Enrollment Level = Enrolled in Nursery School Preschool, Type of School",
-      "statVars": [
-        {
-          "name": "Population: Female, Enrolled in Nursery School Preschool, Private School",
-          "dcid": "dc/c9y5pyd6tt8p1"
-        },
-        {
-          "name": "Population: Female, Enrolled in Nursery School Preschool, Public School",
-          "dcid": "dc/lr4ve69p16sch"
         }
       ]
     },
@@ -35953,6 +34775,20 @@
         {
           "name": "Population: Female, Married in The Past 12 Months, Poverty Status Determined",
           "dcid": "Count_Person_Female_MarriedInThePast12Months_PovertyStatusDetermined"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_MaritalStatus-NowMarried_SpouseAbsentReason",
+      "name": "Person With Gender = Female, Marital Status = Now Married, Spouse Absent Reason",
+      "statVars": [
+        {
+          "name": "Population: Female, Now Married, Other, Married Spouse Absent",
+          "dcid": "dc/edbzbwf3ychr4"
+        },
+        {
+          "name": "Population: Female, Now Married, Separated, Married Spouse Absent",
+          "dcid": "dc/wj5y1vh8thnrb"
         }
       ]
     },
@@ -36695,6 +35531,314 @@
         {
           "name": "Count of Medical Condition Incident: 15 - 29 Years, Female, Endocrine Metabolic Condition, Urban (Per Capita)",
           "dcid": "Count_MedicalConditionIncident_15To29Years_Female_ConditionEndocrineMetabolicCondition_Urban_AsAFractionOf_Count_Person"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/MedicalConditionIncident_Age-Years15To29_Gender-Female_MedicalCondition-EyeCondition_PlaceOfResidenceClassification",
+      "name": "Medical Condition Incident With Age = 15 - 29 Years, Gender = Female, Medical Condition = Eye Condition, Place of Residence Classification",
+      "statVars": [
+        {
+          "name": "Count of Medical Condition Incident: 15 - 29 Years, Female, Eye Condition, Rural (Per Capita)",
+          "dcid": "Count_MedicalConditionIncident_15To29Years_Female_ConditionEyeCondition_Rural_AsAFractionOf_Count_Person"
+        },
+        {
+          "name": "Count of Medical Condition Incident: 15 - 29 Years, Female, Eye Condition, Urban (Per Capita)",
+          "dcid": "Count_MedicalConditionIncident_15To29Years_Female_ConditionEyeCondition_Urban_AsAFractionOf_Count_Person"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/MedicalConditionIncident_Age-Years15To29_Gender-Female_MedicalCondition-GastroIntestinalCondition_PlaceOfResidenceClassification",
+      "name": "Medical Condition Incident With Age = 15 - 29 Years, Gender = Female, Medical Condition = Gastro Intestinal Condition, Place of Residence Classification",
+      "statVars": [
+        {
+          "name": "Count of Medical Condition Incident: 15 - 29 Years, Female, Gastro Intestinal Condition, Rural (Per Capita)",
+          "dcid": "Count_MedicalConditionIncident_15To29Years_Female_ConditionGastroIntestinalCondition_Rural_AsAFractionOf_Count_Person"
+        },
+        {
+          "name": "Count of Medical Condition Incident: 15 - 29 Years, Female, Gastro Intestinal Condition, Urban (Per Capita)",
+          "dcid": "Count_MedicalConditionIncident_15To29Years_Female_ConditionGastroIntestinalCondition_Urban_AsAFractionOf_Count_Person"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/MedicalConditionIncident_Age-Years15To29_Gender-Female_MedicalCondition-GenitoUrinaryCondition_PlaceOfResidenceClassification",
+      "name": "Medical Condition Incident With Age = 15 - 29 Years, Gender = Female, Medical Condition = Genito Urinary Condition, Place of Residence Classification",
+      "statVars": [
+        {
+          "name": "Count of Medical Condition Incident: 15 - 29 Years, Female, Genito Urinary Condition, Rural (Per Capita)",
+          "dcid": "Count_MedicalConditionIncident_15To29Years_Female_ConditionGenitoUrinaryCondition_Rural_AsAFractionOf_Count_Person"
+        },
+        {
+          "name": "Count of Medical Condition Incident: 15 - 29 Years, Female, Genito Urinary Condition, Urban (Per Capita)",
+          "dcid": "Count_MedicalConditionIncident_15To29Years_Female_ConditionGenitoUrinaryCondition_Urban_AsAFractionOf_Count_Person"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/MedicalConditionIncident_Age-Years15To29_Gender-Female_MedicalCondition-Infection_PlaceOfResidenceClassification",
+      "name": "Medical Condition Incident With Age = 15 - 29 Years, Gender = Female, Medical Condition = Infection, Place of Residence Classification",
+      "statVars": [
+        {
+          "name": "Count of Medical Condition Incident: 15 - 29 Years, Female, Infection, Rural (Per Capita)",
+          "dcid": "Count_MedicalConditionIncident_15To29Years_Female_ConditionInfection_Rural_AsAFractionOf_Count_Person"
+        },
+        {
+          "name": "Count of Medical Condition Incident: 15 - 29 Years, Female, Infection, Urban (Per Capita)",
+          "dcid": "Count_MedicalConditionIncident_15To29Years_Female_ConditionInfection_Urban_AsAFractionOf_Count_Person"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/MedicalConditionIncident_Age-Years15To29_Gender-Female_MedicalCondition-Injury_PlaceOfResidenceClassification",
+      "name": "Medical Condition Incident With Age = 15 - 29 Years, Gender = Female, Medical Condition = Injury, Place of Residence Classification",
+      "statVars": [
+        {
+          "name": "Count of Medical Condition Incident: 15 - 29 Years, Female, Injury, Rural (Per Capita)",
+          "dcid": "Count_MedicalConditionIncident_15To29Years_Female_ConditionInjury_Rural_AsAFractionOf_Count_Person"
+        },
+        {
+          "name": "Count of Medical Condition Incident: 15 - 29 Years, Female, Injury, Urban (Per Capita)",
+          "dcid": "Count_MedicalConditionIncident_15To29Years_Female_ConditionInjury_Urban_AsAFractionOf_Count_Person"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/MedicalConditionIncident_Age-Years15To29_Gender-Female_MedicalCondition-MusculoSkeletalCondition_PlaceOfResidenceClassification",
+      "name": "Medical Condition Incident With Age = 15 - 29 Years, Gender = Female, Medical Condition = Musculo Skeletal Condition, Place of Residence Classification",
+      "statVars": [
+        {
+          "name": "Count of Medical Condition Incident: 15 - 29 Years, Female, Musculo Skeletal Condition, Rural (Per Capita)",
+          "dcid": "Count_MedicalConditionIncident_15To29Years_Female_ConditionMusculoSkeletalCondition_Rural_AsAFractionOf_Count_Person"
+        },
+        {
+          "name": "Count of Medical Condition Incident: 15 - 29 Years, Female, Musculo Skeletal Condition, Urban (Per Capita)",
+          "dcid": "Count_MedicalConditionIncident_15To29Years_Female_ConditionMusculoSkeletalCondition_Urban_AsAFractionOf_Count_Person"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/MedicalConditionIncident_Age-Years15To29_Gender-Female_MedicalCondition-NSSHealthOtherCondition_PlaceOfResidenceClassification",
+      "name": "Medical Condition Incident With Age = 15 - 29 Years, Gender = Female, Medical Condition = NSSHealth Other Condition, Place of Residence Classification",
+      "statVars": [
+        {
+          "name": "Count of Medical Condition Incident: 15 - 29 Years, Female, NSSHealth Other Condition, Rural (Per Capita)",
+          "dcid": "Count_MedicalConditionIncident_15To29Years_Female_ConditionNSSHealthOtherCondition_Rural_AsAFractionOf_Count_Person"
+        },
+        {
+          "name": "Count of Medical Condition Incident: 15 - 29 Years, Female, NSSHealth Other Condition, Urban (Per Capita)",
+          "dcid": "Count_MedicalConditionIncident_15To29Years_Female_ConditionNSSHealthOtherCondition_Urban_AsAFractionOf_Count_Person"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/MedicalConditionIncident_Age-Years15To29_Gender-Female_MedicalCondition-ObstetricCondition_PlaceOfResidenceClassification",
+      "name": "Medical Condition Incident With Age = 15 - 29 Years, Gender = Female, Medical Condition = Obstetric Condition, Place of Residence Classification",
+      "statVars": [
+        {
+          "name": "Count of Medical Condition Incident: 15 - 29 Years, Female, Obstetric Condition, Rural (Per Capita)",
+          "dcid": "Count_MedicalConditionIncident_15To29Years_Female_ConditionObstetricCondition_Rural_AsAFractionOf_Count_Person"
+        },
+        {
+          "name": "Count of Medical Condition Incident: 15 - 29 Years, Female, Obstetric Condition, Urban (Per Capita)",
+          "dcid": "Count_MedicalConditionIncident_15To29Years_Female_ConditionObstetricCondition_Urban_AsAFractionOf_Count_Person"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/MedicalConditionIncident_Age-Years15To29_Gender-Female_MedicalCondition-PsychiatricNeurologicalCondition_PlaceOfResidenceClassification",
+      "name": "Medical Condition Incident With Age = 15 - 29 Years, Gender = Female, Medical Condition = Psychiatric Neurological Condition, Place of Residence Classification",
+      "statVars": [
+        {
+          "name": "Count of Medical Condition Incident: 15 - 29 Years, Female, Psychiatric Neurological Condition, Rural (Per Capita)",
+          "dcid": "Count_MedicalConditionIncident_15To29Years_Female_ConditionPsychiatricNeurologicalCondition_Rural_AsAFractionOf_Count_Person"
+        },
+        {
+          "name": "Count of Medical Condition Incident: 15 - 29 Years, Female, Psychiatric Neurological Condition, Urban (Per Capita)",
+          "dcid": "Count_MedicalConditionIncident_15To29Years_Female_ConditionPsychiatricNeurologicalCondition_Urban_AsAFractionOf_Count_Person"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/MedicalConditionIncident_Age-Years15To29_Gender-Female_MedicalCondition-RespiratoryDisease_PlaceOfResidenceClassification",
+      "name": "Medical Condition Incident With Age = 15 - 29 Years, Gender = Female, Medical Condition = Respiratory Disease, Place of Residence Classification",
+      "statVars": [
+        {
+          "name": "Count of Medical Condition Incident: 15 - 29 Years, Female, Respiratory Disease, Rural (Per Capita)",
+          "dcid": "Count_MedicalConditionIncident_15To29Years_Female_ConditionRespiratoryDisease_Rural_AsAFractionOf_Count_Person"
+        },
+        {
+          "name": "Count of Medical Condition Incident: 15 - 29 Years, Female, Respiratory Disease, Urban (Per Capita)",
+          "dcid": "Count_MedicalConditionIncident_15To29Years_Female_ConditionRespiratoryDisease_Urban_AsAFractionOf_Count_Person"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/MedicalConditionIncident_Age-Years15To29_Gender-Female_MedicalCondition-SkinDisease_PlaceOfResidenceClassification",
+      "name": "Medical Condition Incident With Age = 15 - 29 Years, Gender = Female, Medical Condition = Skin Disease, Place of Residence Classification",
+      "statVars": [
+        {
+          "name": "Count of Medical Condition Incident: 15 - 29 Years, Female, Skin Disease, Rural (Per Capita)",
+          "dcid": "Count_MedicalConditionIncident_15To29Years_Female_ConditionSkinDisease_Rural_AsAFractionOf_Count_Person"
+        },
+        {
+          "name": "Count of Medical Condition Incident: 15 - 29 Years, Female, Skin Disease, Urban (Per Capita)",
+          "dcid": "Count_MedicalConditionIncident_15To29Years_Female_ConditionSkinDisease_Urban_AsAFractionOf_Count_Person"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/MedicalConditionIncident_Age-Years30To44_Gender-Female_MedicalCondition-BloodDisease_PlaceOfResidenceClassification",
+      "name": "Medical Condition Incident With Age = 30 - 44 Years, Gender = Female, Medical Condition = Blood Disease, Place of Residence Classification",
+      "statVars": [
+        {
+          "name": "Count of Medical Condition Incident: 30 - 44 Years, Female, Blood Disease, Rural (Per Capita)",
+          "dcid": "Count_MedicalConditionIncident_30To44Years_Female_ConditionBloodDisease_Rural_AsAFractionOf_Count_Person"
+        },
+        {
+          "name": "Count of Medical Condition Incident: 30 - 44 Years, Female, Blood Disease, Urban (Per Capita)",
+          "dcid": "Count_MedicalConditionIncident_30To44Years_Female_ConditionBloodDisease_Urban_AsAFractionOf_Count_Person"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/MedicalConditionIncident_Age-Years30To44_Gender-Female_MedicalCondition-Cancer_PlaceOfResidenceClassification",
+      "name": "Medical Condition Incident With Age = 30 - 44 Years, Gender = Female, Medical Condition = Cancer, Place of Residence Classification",
+      "statVars": [
+        {
+          "name": "Count of Medical Condition Incident: 30 - 44 Years, Female, Cancer, Rural (Per Capita)",
+          "dcid": "Count_MedicalConditionIncident_30To44Years_Female_ConditionCancer_Rural_AsAFractionOf_Count_Person"
+        },
+        {
+          "name": "Count of Medical Condition Incident: 30 - 44 Years, Female, Cancer, Urban (Per Capita)",
+          "dcid": "Count_MedicalConditionIncident_30To44Years_Female_ConditionCancer_Urban_AsAFractionOf_Count_Person"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/MedicalConditionIncident_Age-Years30To44_Gender-Female_MedicalCondition-CardiovascularDisease_PlaceOfResidenceClassification",
+      "name": "Medical Condition Incident With Age = 30 - 44 Years, Gender = Female, Medical Condition = Cardiovascular Disease, Place of Residence Classification",
+      "statVars": [
+        {
+          "name": "Count of Medical Condition Incident: 30 - 44 Years, Female, Cardiovascular Disease, Rural (Per Capita)",
+          "dcid": "Count_MedicalConditionIncident_30To44Years_Female_ConditionCardiovascularDisease_Rural_AsAFractionOf_Count_Person"
+        },
+        {
+          "name": "Count of Medical Condition Incident: 30 - 44 Years, Female, Cardiovascular Disease, Urban (Per Capita)",
+          "dcid": "Count_MedicalConditionIncident_30To44Years_Female_ConditionCardiovascularDisease_Urban_AsAFractionOf_Count_Person"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/MedicalConditionIncident_Age-Years30To44_Gender-Female_MedicalCondition-EarCondition_PlaceOfResidenceClassification",
+      "name": "Medical Condition Incident With Age = 30 - 44 Years, Gender = Female, Medical Condition = Ear Condition, Place of Residence Classification",
+      "statVars": [
+        {
+          "name": "Count of Medical Condition Incident: 30 - 44 Years, Female, Ear Condition, Rural (Per Capita)",
+          "dcid": "Count_MedicalConditionIncident_30To44Years_Female_ConditionEarCondition_Rural_AsAFractionOf_Count_Person"
+        },
+        {
+          "name": "Count of Medical Condition Incident: 30 - 44 Years, Female, Ear Condition, Urban (Per Capita)",
+          "dcid": "Count_MedicalConditionIncident_30To44Years_Female_ConditionEarCondition_Urban_AsAFractionOf_Count_Person"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/MedicalConditionIncident_Age-Years30To44_Gender-Female_MedicalCondition-EndocrineMetabolicCondition_PlaceOfResidenceClassification",
+      "name": "Medical Condition Incident With Age = 30 - 44 Years, Gender = Female, Medical Condition = Endocrine Metabolic Condition, Place of Residence Classification",
+      "statVars": [
+        {
+          "name": "Count of Medical Condition Incident: 30 - 44 Years, Female, Endocrine Metabolic Condition, Rural (Per Capita)",
+          "dcid": "Count_MedicalConditionIncident_30To44Years_Female_ConditionEndocrineMetabolicCondition_Rural_AsAFractionOf_Count_Person"
+        },
+        {
+          "name": "Count of Medical Condition Incident: 30 - 44 Years, Female, Endocrine Metabolic Condition, Urban (Per Capita)",
+          "dcid": "Count_MedicalConditionIncident_30To44Years_Female_ConditionEndocrineMetabolicCondition_Urban_AsAFractionOf_Count_Person"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/MedicalConditionIncident_Age-Years30To44_Gender-Female_MedicalCondition-EyeCondition_PlaceOfResidenceClassification",
+      "name": "Medical Condition Incident With Age = 30 - 44 Years, Gender = Female, Medical Condition = Eye Condition, Place of Residence Classification",
+      "statVars": [
+        {
+          "name": "Count of Medical Condition Incident: 30 - 44 Years, Female, Eye Condition, Rural (Per Capita)",
+          "dcid": "Count_MedicalConditionIncident_30To44Years_Female_ConditionEyeCondition_Rural_AsAFractionOf_Count_Person"
+        },
+        {
+          "name": "Count of Medical Condition Incident: 30 - 44 Years, Female, Eye Condition, Urban (Per Capita)",
+          "dcid": "Count_MedicalConditionIncident_30To44Years_Female_ConditionEyeCondition_Urban_AsAFractionOf_Count_Person"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/MedicalConditionIncident_Age-Years30To44_Gender-Female_MedicalCondition-GastroIntestinalCondition_PlaceOfResidenceClassification",
+      "name": "Medical Condition Incident With Age = 30 - 44 Years, Gender = Female, Medical Condition = Gastro Intestinal Condition, Place of Residence Classification",
+      "statVars": [
+        {
+          "name": "Count of Medical Condition Incident: 30 - 44 Years, Female, Gastro Intestinal Condition, Rural (Per Capita)",
+          "dcid": "Count_MedicalConditionIncident_30To44Years_Female_ConditionGastroIntestinalCondition_Rural_AsAFractionOf_Count_Person"
+        },
+        {
+          "name": "Count of Medical Condition Incident: 30 - 44 Years, Female, Gastro Intestinal Condition, Urban (Per Capita)",
+          "dcid": "Count_MedicalConditionIncident_30To44Years_Female_ConditionGastroIntestinalCondition_Urban_AsAFractionOf_Count_Person"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/MedicalConditionIncident_Age-Years30To44_Gender-Female_MedicalCondition-GenitoUrinaryCondition_PlaceOfResidenceClassification",
+      "name": "Medical Condition Incident With Age = 30 - 44 Years, Gender = Female, Medical Condition = Genito Urinary Condition, Place of Residence Classification",
+      "statVars": [
+        {
+          "name": "Count of Medical Condition Incident: 30 - 44 Years, Female, Genito Urinary Condition, Rural (Per Capita)",
+          "dcid": "Count_MedicalConditionIncident_30To44Years_Female_ConditionGenitoUrinaryCondition_Rural_AsAFractionOf_Count_Person"
+        },
+        {
+          "name": "Count of Medical Condition Incident: 30 - 44 Years, Female, Genito Urinary Condition, Urban (Per Capita)",
+          "dcid": "Count_MedicalConditionIncident_30To44Years_Female_ConditionGenitoUrinaryCondition_Urban_AsAFractionOf_Count_Person"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/MedicalConditionIncident_Age-Years30To44_Gender-Female_MedicalCondition-Infection_PlaceOfResidenceClassification",
+      "name": "Medical Condition Incident With Age = 30 - 44 Years, Gender = Female, Medical Condition = Infection, Place of Residence Classification",
+      "statVars": [
+        {
+          "name": "Count of Medical Condition Incident: 30 - 44 Years, Female, Infection, Rural (Per Capita)",
+          "dcid": "Count_MedicalConditionIncident_30To44Years_Female_ConditionInfection_Rural_AsAFractionOf_Count_Person"
+        },
+        {
+          "name": "Count of Medical Condition Incident: 30 - 44 Years, Female, Infection, Urban (Per Capita)",
+          "dcid": "Count_MedicalConditionIncident_30To44Years_Female_ConditionInfection_Urban_AsAFractionOf_Count_Person"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/MedicalConditionIncident_Age-Years30To44_Gender-Female_MedicalCondition-Injury_PlaceOfResidenceClassification",
+      "name": "Medical Condition Incident With Age = 30 - 44 Years, Gender = Female, Medical Condition = Injury, Place of Residence Classification",
+      "statVars": [
+        {
+          "name": "Count of Medical Condition Incident: 30 - 44 Years, Female, Injury, Rural (Per Capita)",
+          "dcid": "Count_MedicalConditionIncident_30To44Years_Female_ConditionInjury_Rural_AsAFractionOf_Count_Person"
+        },
+        {
+          "name": "Count of Medical Condition Incident: 30 - 44 Years, Female, Injury, Urban (Per Capita)",
+          "dcid": "Count_MedicalConditionIncident_30To44Years_Female_ConditionInjury_Urban_AsAFractionOf_Count_Person"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/MedicalConditionIncident_Age-Years30To44_Gender-Female_MedicalCondition-MusculoSkeletalCondition_PlaceOfResidenceClassification",
+      "name": "Medical Condition Incident With Age = 30 - 44 Years, Gender = Female, Medical Condition = Musculo Skeletal Condition, Place of Residence Classification",
+      "statVars": [
+        {
+          "name": "Count of Medical Condition Incident: 30 - 44 Years, Female, Musculo Skeletal Condition, Rural (Per Capita)",
+          "dcid": "Count_MedicalConditionIncident_30To44Years_Female_ConditionMusculoSkeletalCondition_Rural_AsAFractionOf_Count_Person"
+        },
+        {
+          "name": "Count of Medical Condition Incident: 30 - 44 Years, Female, Musculo Skeletal Condition, Urban (Per Capita)",
+          "dcid": "Count_MedicalConditionIncident_30To44Years_Female_ConditionMusculoSkeletalCondition_Urban_AsAFractionOf_Count_Person"
         }
       ]
     }
