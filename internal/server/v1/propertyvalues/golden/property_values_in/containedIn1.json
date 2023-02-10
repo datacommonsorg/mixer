@@ -35227,27 +35227,9 @@
     {
       "name": "Agua Dulce Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060000106294",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Agua Dulce Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060000106294",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Meadowlark Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060000107534",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -35261,27 +35243,9 @@
     {
       "name": "High Desert",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060000109444",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "High Desert",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060000109444",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Assurance Learning Academy",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060000113121",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -35295,27 +35259,9 @@
     {
       "name": "Albert Einstein Academy Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060000113717",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Albert Einstein Academy Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060000113717",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Inspire Charter",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060000113764",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -35329,27 +35275,9 @@
     {
       "name": "Albert Einstein Acad For Ltrs Arts \u0026 Scis - Odyssey",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060000113785",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Albert Einstein Acad For Ltrs Arts \u0026 Scis - Odyssey",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060000113785",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Scale Leadership Academy",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060000113793",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -35363,27 +35291,9 @@
     {
       "name": "Academy Of Arts And Sciences: Los Angeles (9-12)",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060000113811",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Academy Of Arts And Sciences: Los Angeles (9-12)",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060000113811",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Valley Prep K-5",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060000113817",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -35397,27 +35307,9 @@
     {
       "name": "Valley Prep 6-8",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060000113827",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Valley Prep 6-8",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060000113827",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Albert Einstein Acad Ltrs Arts Scis - Aqua Dulce Part. Acad",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060000113828",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -35431,27 +35323,9 @@
     {
       "name": "Siatech Academy South",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060000113829",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Siatech Academy South",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060000113829",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Valley Prep 9-12",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060000113835",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -35465,27 +35339,9 @@
     {
       "name": "Valiant Academy Of Los Angeles",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060000113838",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Valiant Academy Of Los Angeles",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060000113838",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Academy Of Arts And Sciences: Los Angeles (K-8)",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060000113840",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -35499,27 +35355,9 @@
     {
       "name": "Method Schools High",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060000113853",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Method Schools High",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060000113853",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Ilead Hybrid",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060000113859",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -35533,27 +35371,9 @@
     {
       "name": "Method Schools K-8",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060000113867",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Method Schools K-8",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060000113867",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Albert Einstein Academy For Letters Arts And Sciences-Steam",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060000113903",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -35567,15 +35387,6 @@
     {
       "name": "Community Collaborative Charter",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060000113904",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Community Collaborative Charter",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060000113904",
@@ -35584,27 +35395,9 @@
     {
       "name": "Empower Generations",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060000114042",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Empower Generations",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060000114042",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Academy Of Arts And Sciences: Los Angeles",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060000114045",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -35613,15 +35406,6 @@
         "PublicSchool"
       ],
       "dcid": "nces/060000114045",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Pathways Academy Charter Adult Education",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060000114062",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -35651,27 +35435,9 @@
     {
       "name": "California School For The Blind",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060000210346",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "California School For The Blind",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060000210346",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "California School For The Deaf-Fremont",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060000310347",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -35685,27 +35451,9 @@
     {
       "name": "Manor Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060000608773",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Manor Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060000608773",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "White Hill Middle",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060000608774",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -35719,27 +35467,9 @@
     {
       "name": "Brookside Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060000608775",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Brookside Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060000608775",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Wade Thomas Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060000608776",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -35753,27 +35483,9 @@
     {
       "name": "Hidden Valley Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060000612911",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Hidden Valley Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060000612911",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "California School For The Deaf-Riverside",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060000710348",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -35787,15 +35499,6 @@
     {
       "name": "Sierra Madre High (Continuation)",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060000901478",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Sierra Madre High (Continuation)",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060000901478",
@@ -35804,27 +35507,9 @@
     {
       "name": "Cuyama Valley High",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060000908779",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Cuyama Valley High",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060000908779",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Cuyama Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060000908780",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -35862,27 +35547,9 @@
     {
       "name": "Render Continuation High",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001109064",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Render Continuation High",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060001109064",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Herlong High",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001109065",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -35896,27 +35563,9 @@
     {
       "name": "Fort Sage Middle",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001109066",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Fort Sage Middle",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060001109066",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Sierra Primary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001109068",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -35930,27 +35579,9 @@
     {
       "name": "Fort Sage Community Day",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001111292",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Fort Sage Community Day",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060001111292",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Mt. Lassen Charter",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001112763",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -35964,27 +35595,9 @@
     {
       "name": "Washington Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001206852",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Washington Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060001206852",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Grizzly Hill",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001209206",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -36006,27 +35619,9 @@
     {
       "name": "Oak Tree",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001213085",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Oak Tree",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060001213085",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Twin Ridges Special Education Preschool",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001213453",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -36040,27 +35635,9 @@
     {
       "name": "Antelope Creek Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001300805",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Antelope Creek Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060001300805",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Rocklin High",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001302405",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -36074,27 +35651,9 @@
     {
       "name": "Breen Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001303571",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Breen Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060001303571",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Victory High",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001306176",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -36108,27 +35667,9 @@
     {
       "name": "Rocklin Alternative Education Center",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001306197",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Rocklin Alternative Education Center",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060001306197",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Twin Oaks Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001308256",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -36142,27 +35683,9 @@
     {
       "name": "Granite Oaks Middle",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001308257",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Granite Oaks Middle",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060001308257",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Spring View Middle",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001308553",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -36176,27 +35699,9 @@
     {
       "name": "Rocklin Academy",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001308762",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Rocklin Academy",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060001308762",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Valley View Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001308763",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -36210,27 +35715,9 @@
     {
       "name": "Sierra Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001308764",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Sierra Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060001308764",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Parker Whitney Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001309069",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -36244,27 +35731,9 @@
     {
       "name": "Rocklin Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001309070",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Rocklin Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060001309070",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Cobblestone Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001310270",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -36278,27 +35747,9 @@
     {
       "name": "Rock Creek Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001310575",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Rock Creek Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060001310575",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Ruhkala Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001311009",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -36312,27 +35763,9 @@
     {
       "name": "Whitney High",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001311010",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Whitney High",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060001311010",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Rocklin Academy At Meyers Street",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001312012",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -36346,27 +35779,9 @@
     {
       "name": "Maria Montessori Charter Academy",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001312302",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Maria Montessori Charter Academy",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060001312302",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Western Sierra Collegiate Academy",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001312390",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -36380,27 +35795,9 @@
     {
       "name": "Sunset Ranch Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001312558",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Sunset Ranch Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060001312558",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Rocklin Independent Charter Academy",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001313722",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -36422,27 +35819,9 @@
     {
       "name": "Topaz Preparatory Academy",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001403904",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Topaz Preparatory Academy",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060001403904",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Sultana High",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001405093",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -36456,27 +35835,9 @@
     {
       "name": "Shadow Ridge",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001407287",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Shadow Ridge",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060001407287",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Mesquite Trails Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001407295",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -36490,27 +35851,9 @@
     {
       "name": "Hesperia Community Day",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001408296",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Hesperia Community Day",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060001408296",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Hesperia High",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001409072",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -36524,27 +35867,9 @@
     {
       "name": "Mojave High",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001409073",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Mojave High",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060001409073",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Joshua Circle Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001409074",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -36558,27 +35883,9 @@
     {
       "name": "Juniper Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001409075",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Juniper Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060001409075",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Eucalyptus Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001409076",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -36592,27 +35899,9 @@
     {
       "name": "Hesperia Junior High",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001409077",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Hesperia Junior High",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060001409077",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Mesa Grande Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001409078",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -36626,27 +35915,9 @@
     {
       "name": "Kingston Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001409079",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Kingston Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060001409079",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Maple Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001409080",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -36660,27 +35931,9 @@
     {
       "name": "Cottonwood Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001409081",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Cottonwood Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060001409081",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Lime Street Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001409082",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -36694,27 +35947,9 @@
     {
       "name": "Hollyvale Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001409476",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Hollyvale Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060001409476",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Carmel Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001409477",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -36728,27 +35963,9 @@
     {
       "name": "Ranchero Middle",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001409676",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Ranchero Middle",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060001409676",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Crosswalk: Higher Education Learning Pathways",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001410617",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -36762,27 +35979,9 @@
     {
       "name": "Summit Leadership Academy-High Desert",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001411118",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Summit Leadership Academy-High Desert",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060001411118",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Cypress School Of The Arts",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001411119",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -36796,27 +35995,9 @@
     {
       "name": "Pathways To College",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001411746",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Pathways To College",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060001411746",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Mirus Secondary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001411899",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -36830,27 +36011,9 @@
     {
       "name": "Canyon Ridge High",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001412100",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Canyon Ridge High",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060001412100",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Cedar Middle",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001412103",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -36864,27 +36027,9 @@
     {
       "name": "Mission Crest Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001412171",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Mission Crest Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060001412171",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Laverne Elementary Preparatory Academy",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001412333",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -36898,27 +36043,9 @@
     {
       "name": "Encore Jr./Sr. High Sch For The Perf And Visual Arts",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001412375",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Encore Jr./Sr. High Sch For The Perf And Visual Arts",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060001412375",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Krystal School Of Science Math \u0026 Technology",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001412415",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -36932,27 +36059,9 @@
     {
       "name": "Oak Hills High",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001412417",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Oak Hills High",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060001412417",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Mountain View High",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001503907",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -36966,27 +36075,9 @@
     {
       "name": "Lucerne Valley Community Day",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001506466",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Lucerne Valley Community Day",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060001506466",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Lucerne Valley Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001509083",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -37000,27 +36091,9 @@
     {
       "name": "Lucerne Valley Middle",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001509084",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Lucerne Valley Middle",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060001509084",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Lucerne Valley High",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001510305",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -37037,15 +36110,6 @@
         "PublicSchool"
       ],
       "dcid": "nces/060001511179",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Sky Mountain Charter",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001511860",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -37075,27 +36139,9 @@
     {
       "name": "Hillside High",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001609085",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Hillside High",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060001609085",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Upland High",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001609086",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -37109,27 +36155,9 @@
     {
       "name": "Baldy View Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001609087",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Baldy View Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060001609087",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Cabrillo Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001609088",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -37143,27 +36171,9 @@
     {
       "name": "Citrus Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001609089",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Citrus Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060001609089",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Foothill Knolls Academy Of Innovation",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001609090",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -37177,27 +36187,9 @@
     {
       "name": "Magnolia Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001609091",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Magnolia Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060001609091",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Pioneer Junior High",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001609092",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -37211,27 +36203,9 @@
     {
       "name": "Sierra Vista Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001609093",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Sierra Vista Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060001609093",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Sycamore Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001609094",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -37245,27 +36219,9 @@
     {
       "name": "Upland Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001609095",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Upland Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060001609095",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Upland Junior High",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001609096",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -37279,27 +36235,9 @@
     {
       "name": "Valencia Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001609097",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Valencia Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060001609097",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Pepper Tree Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001609678",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -37313,27 +36251,9 @@
     {
       "name": "Rio Vista School Of Applied Learning",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001701149",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Rio Vista School Of Applied Learning",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060001701149",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Sycamore Rocks Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001705167",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -37347,27 +36267,9 @@
     {
       "name": "Academy For Academic Excellence",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001707296",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Academy For Academic Excellence",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060001707296",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Granite Hills High",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001708297",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -37381,27 +36283,9 @@
     {
       "name": "High Desert Premier Academy",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001708588",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "High Desert Premier Academy",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060001708588",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Apple Valley High",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001709098",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -37415,27 +36299,9 @@
     {
       "name": "Willow Park High",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001709099",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Willow Park High",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060001709099",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Mariana Academy",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001709100",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -37449,27 +36315,9 @@
     {
       "name": "Rancho Verde Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001709101",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Rancho Verde Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060001709101",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Yucca Loma Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001709102",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -37483,27 +36331,9 @@
     {
       "name": "Desert Knolls Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001709103",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Desert Knolls Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060001709103",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Sandia Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001709272",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -37517,27 +36347,9 @@
     {
       "name": "Vanguard Preparatory",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001711122",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Vanguard Preparatory",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060001711122",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Sitting Bull Academy",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001711747",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -37551,27 +36363,9 @@
     {
       "name": "Phoenix Academy",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001712663",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Phoenix Academy",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060001712663",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Apple Valley Unified Preschool Special Education",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001713290",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -37585,27 +36379,9 @@
     {
       "name": "Mountain Valley Community Day",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001808418",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Mountain Valley Community Day",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060001808418",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Valley High",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001809106",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -37619,27 +36395,9 @@
     {
       "name": "Hayfork High",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001809107",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Hayfork High",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060001809107",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Hayfork Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001809108",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -37653,27 +36411,9 @@
     {
       "name": "Hyampom Arts Magnet Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001809109",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Hyampom Arts Magnet Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060001809109",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Dublin Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001906929",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -37687,27 +36427,9 @@
     {
       "name": "James Dougherty Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001908443",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "James Dougherty Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060001908443",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Dublin High",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001909273",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -37721,27 +36443,9 @@
     {
       "name": "Valley High (Continuation)",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001909274",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Valley High (Continuation)",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060001909274",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Frederiksen Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001909275",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -37755,27 +36459,9 @@
     {
       "name": "Murray Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001909276",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Murray Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060001909276",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Wells Middle",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001909278",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -37789,27 +36475,9 @@
     {
       "name": "Eleanor Murray Fallon",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001910735",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Eleanor Murray Fallon",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060001910735",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "John Green Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001912078",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -37823,15 +36491,6 @@
     {
       "name": "Harold William Kolb",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001912927",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Harold William Kolb",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060001912927",
@@ -37840,27 +36499,9 @@
     {
       "name": "Eleanor Murray Fallon",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001913169",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Eleanor Murray Fallon",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060001913169",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "J. M. Amador Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060001913862",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -37898,27 +36539,9 @@
     {
       "name": "Henry P. Mohr Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002006951",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Henry P. Mohr Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060002006951",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Thomas S. Hart Middle",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002008444",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -37932,27 +36555,9 @@
     {
       "name": "Phoebe Apperson Hearst Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002008445",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Phoebe Apperson Hearst Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060002008445",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Foothill High",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002009279",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -37966,27 +36571,9 @@
     {
       "name": "Village High",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002009280",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Village High",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060002009280",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Amador Valley High",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002009282",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -38000,27 +36587,9 @@
     {
       "name": "Donlon Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002009283",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Donlon Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060002009283",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Lydiksen Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002009284",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -38034,27 +36603,9 @@
     {
       "name": "Alisal Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002009285",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Alisal Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060002009285",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Fairlands Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002009286",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -38068,27 +36619,9 @@
     {
       "name": "Valley View Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002009287",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Valley View Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060002009287",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Walnut Grove Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002009288",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -38102,27 +36635,9 @@
     {
       "name": "Harvest Park Middle",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002009289",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Harvest Park Middle",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060002009289",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Vintage Hills Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002009290",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -38136,27 +36651,9 @@
     {
       "name": "Pleasanton Middle",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002009682",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Pleasanton Middle",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060002009682",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Harvest Park Preschool Center",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002013494",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -38170,27 +36667,9 @@
     {
       "name": "Sunol Glen Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002109291",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Sunol Glen Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060002109291",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Mendota Continuation High",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002200374",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -38204,27 +36683,9 @@
     {
       "name": "Mendota High",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002200395",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Mendota High",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060002200395",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Mendota Community Day",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002207970",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -38238,27 +36699,9 @@
     {
       "name": "Mccabe Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002209292",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Mccabe Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060002209292",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Mendota Junior High",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002209293",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -38272,27 +36715,9 @@
     {
       "name": "Washington Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002209294",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Washington Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060002209294",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Mendota Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002213773",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -38306,27 +36731,9 @@
     {
       "name": "Aurelia Pennekamp Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002503570",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Aurelia Pennekamp Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060002503570",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Grand View Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002503573",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -38340,27 +36747,9 @@
     {
       "name": "Meadows Avenue Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002503575",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Meadows Avenue Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060002503575",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Pacific Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002503576",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -38374,27 +36763,9 @@
     {
       "name": "Opal Robinson Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002505922",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Opal Robinson Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060002505922",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Mira Costa High",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002506328",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -38408,27 +36779,9 @@
     {
       "name": "Manhattan Beach Middle",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002507535",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Manhattan Beach Middle",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060002507535",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Manhattan Beach Preschool",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002513480",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -38442,27 +36795,9 @@
     {
       "name": "Frazier Mountain High",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002604544",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Frazier Mountain High",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060002604544",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "El Tejon Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002609485",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -38476,27 +36811,9 @@
     {
       "name": "Frazier Park Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002609486",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Frazier Park Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060002609486",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Pine Mountain Learning Center",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002610815",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -38510,27 +36827,9 @@
     {
       "name": "El Tejon Continuation High",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002611986",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "El Tejon Continuation High",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060002611986",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Tuscany Hills Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002702451",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -38544,27 +36843,9 @@
     {
       "name": "Donald Graham Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002702452",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Donald Graham Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060002702452",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "David A. Brown Middle",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002705011",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -38594,27 +36875,9 @@
     {
       "name": "William Collier Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002707605",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "William Collier Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060002707605",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Ortega High",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002709488",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -38628,27 +36891,9 @@
     {
       "name": "Elsinore High",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002709489",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Elsinore High",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060002709489",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Elsinore Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002709490",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -38662,27 +36907,9 @@
     {
       "name": "Machado Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002709491",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Machado Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060002709491",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Wildomar Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002709492",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -38696,27 +36923,9 @@
     {
       "name": "Elsinore Middle",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002709493",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Elsinore Middle",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060002709493",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Terra Cotta Middle",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002709496",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -38730,27 +36939,9 @@
     {
       "name": "Railroad Canyon Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002709497",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Railroad Canyon Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060002709497",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Withrow Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002709498",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -38764,27 +36955,9 @@
     {
       "name": "Temescal Canyon High",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002710280",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Temescal Canyon High",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060002710280",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Luiseno",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002710281",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -38798,27 +36971,9 @@
     {
       "name": "Rice Canyon Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002710352",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Rice Canyon Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060002710352",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Cottonwood Canyon Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002710587",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -38832,27 +36987,9 @@
     {
       "name": "Canyon Lake Middle",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002710588",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Canyon Lake Middle",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060002710588",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Lakeside High",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002711036",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -38866,27 +37003,9 @@
     {
       "name": "Ronald Reagan Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002711037",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Ronald Reagan Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060002711037",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Earl Warren Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002712001",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -38900,27 +37019,9 @@
     {
       "name": "Keith Mccarthy Academy",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002712094",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Keith Mccarthy Academy",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060002712094",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Sycamore Academy Of Science And Cultural Arts",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002712433",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -38934,15 +37035,6 @@
     {
       "name": "Lakeland Village",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002712772",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Lakeland Village",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060002712772",
@@ -38951,27 +37043,9 @@
     {
       "name": "Southern California Online Academy",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002712914",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Southern California Online Academy",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060002712914",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Preschool",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002713213",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -38993,27 +37067,9 @@
     {
       "name": "Vail Ranch Middle",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002803647",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Vail Ranch Middle",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060002803647",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Temecula Valley Charter",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002803648",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -39027,27 +37083,9 @@
     {
       "name": "Paloma Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002805012",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Paloma Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060002805012",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Pauba Valley Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002806276",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -39061,27 +37099,9 @@
     {
       "name": "Chaparral High",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002807222",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Chaparral High",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060002807222",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Vintage Hills Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002807223",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -39095,27 +37115,9 @@
     {
       "name": "Helen Hunt Jackson Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002808270",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Helen Hunt Jackson Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060002808270",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Abby Reinke Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002808271",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -39129,27 +37131,9 @@
     {
       "name": "James L. Day Middle",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002808272",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "James L. Day Middle",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060002808272",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Temecula Preparatory",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002808564",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -39163,27 +37147,9 @@
     {
       "name": "Temecula Valley High",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002809499",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Temecula Valley High",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060002809499",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Rancho Vista High",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002809500",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -39197,27 +37163,9 @@
     {
       "name": "Temecula Middle",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002809501",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Temecula Middle",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060002809501",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Vail Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002809502",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -39231,27 +37179,9 @@
     {
       "name": "Rancho Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002809503",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Rancho Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060002809503",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Margarita Middle",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002809505",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -39265,27 +37195,9 @@
     {
       "name": "Temecula Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002809506",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Temecula Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060002809506",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Nicolas Valley Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002809684",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -39299,27 +37211,9 @@
     {
       "name": "Red Hawk Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002810282",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Red Hawk Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060002810282",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Ysabel Barnett Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002810353",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -39333,27 +37227,9 @@
     {
       "name": "Susan H. Nelson",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002810589",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Susan H. Nelson",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060002810589",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Great Oak High",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002811038",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -39367,27 +37243,9 @@
     {
       "name": "Alamos Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002811039",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Alamos Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060002811039",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Bella Vista Middle",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002811040",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -39401,27 +37259,9 @@
     {
       "name": "Crowne Hill Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002811041",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Crowne Hill Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060002811041",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Susan La Vorgna Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002811042",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -39435,27 +37275,9 @@
     {
       "name": "Tony Tobin Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002811043",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Tony Tobin Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060002811043",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "French Valley Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002811170",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -39469,27 +37291,9 @@
     {
       "name": "Erle Stanley Gardner Middle",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002811187",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Erle Stanley Gardner Middle",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060002811187",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Temecula Luiseno Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002811838",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -39503,27 +37307,9 @@
     {
       "name": "Keegan Academy",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002812568",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Keegan Academy",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060002812568",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Temecula Valley Adult",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002812584",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -39537,27 +37323,9 @@
     {
       "name": "Context: Middle School Temecula",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002812778",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Context: Middle School Temecula",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060002812778",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Creekside High",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002902467",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -39571,27 +37339,9 @@
     {
       "name": "Thompson Middle",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002903649",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Thompson Middle",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060002903649",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Tovashal Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002906282",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -39605,27 +37355,9 @@
     {
       "name": "Cole Canyon Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002908565",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Cole Canyon Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060002908565",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Murrieta Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002909507",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -39639,27 +37371,9 @@
     {
       "name": "Avaxat Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002909508",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Avaxat Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060002909508",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Alta Murrieta Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002909509",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -39673,27 +37387,9 @@
     {
       "name": "E. Hale Curran Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002909510",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "E. Hale Curran Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060002909510",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Rail Ranch Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002909511",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -39707,27 +37403,9 @@
     {
       "name": "Murrieta Valley High",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002909685",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Murrieta Valley High",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060002909685",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Shivela Middle",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002909686",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -39741,27 +37419,9 @@
     {
       "name": "Daniel N. Buchanan Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002910354",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Daniel N. Buchanan Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060002910354",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Warm Springs Middle",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002910590",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -39775,27 +37435,9 @@
     {
       "name": "Antelope Hills Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002911044",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Antelope Hills Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060002911044",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Monte Vista Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002911239",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -39809,27 +37451,9 @@
     {
       "name": "Murrieta Canyon Academy",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002911241",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Murrieta Canyon Academy",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060002911241",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Vista Murrieta High",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002911249",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -39843,15 +37467,6 @@
     {
       "name": "Lisa J. Mails Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002911921",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Lisa J. Mails Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060002911921",
@@ -39860,27 +37475,9 @@
     {
       "name": "Dorothy Mcelhinney Middle",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002912243",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Dorothy Mcelhinney Middle",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060002912243",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Murrieta Mesa High",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060002912289",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -39902,27 +37499,9 @@
     {
       "name": "Pacific Valley (K-12)",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060003109475",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Pacific Valley (K-12)",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060003109475",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Big Sur Charter",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060003112240",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -39936,27 +37515,9 @@
     {
       "name": "Patricia Dreizler Continuation High",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060003202227",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Patricia Dreizler Continuation High",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060003202227",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Adams Middle",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060003204949",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -39970,27 +37531,9 @@
     {
       "name": "Alta Vista Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060003204950",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Alta Vista Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060003204950",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Beryl Heights Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060003204951",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -40004,27 +37547,9 @@
     {
       "name": "Birney Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060003204952",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Birney Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060003204952",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Parras (Nick G.) Middle",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060003204955",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -40038,27 +37563,9 @@
     {
       "name": "Jefferson Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060003204956",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Jefferson Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060003204956",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Lincoln Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060003204957",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -40072,27 +37579,9 @@
     {
       "name": "Madison Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060003204958",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Madison Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060003204958",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Tulita Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060003204960",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -40106,27 +37595,9 @@
     {
       "name": "Washington Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060003204961",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Washington Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060003204961",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Redondo Union High",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060003206330",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -40140,27 +37611,9 @@
     {
       "name": "Redondo Beach Learning Academy",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060003212165",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Redondo Beach Learning Academy",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060003212165",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Bryant Middle",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060003301255",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -40174,27 +37627,9 @@
     {
       "name": "Dos Palos Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060003301256",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Dos Palos Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060003301256",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Dos Palos High",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060003301258",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -40208,27 +37643,9 @@
     {
       "name": "Bernhard Marks Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060003304680",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Bernhard Marks Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060003304680",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Westside High",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060003307695",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -40242,27 +37659,9 @@
     {
       "name": "Dos Palos Adult",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060003312608",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Dos Palos Adult",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060003312608",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Westside Community Day Middle High",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060003312656",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -40284,27 +37683,9 @@
     {
       "name": "Dos Palos Carver Center",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060003313609",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Dos Palos Carver Center",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060003313609",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Mattie Washburn Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060003401797",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -40318,27 +37699,9 @@
     {
       "name": "Windsor High",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060003405470",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Windsor High",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060003405470",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Windsor Middle",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060003406982",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -40352,27 +37715,9 @@
     {
       "name": "Cali Calmecac Language Academy",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060003406983",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Cali Calmecac Language Academy",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060003406983",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Windsor Creek Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060003408407",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -40386,27 +37731,9 @@
     {
       "name": "Windsor Oaks Academy",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060003408652",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Windsor Oaks Academy",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060003408652",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Brooks Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060003409465",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -40420,27 +37747,9 @@
     {
       "name": "Village Charter",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060003411882",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Village Charter",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060003411882",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Insight School Of California - North Bay",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060003412211",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -40454,27 +37763,9 @@
     {
       "name": "Bridges Community Based School North County Consortium",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060003412585",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Bridges Community Based School North County Consortium",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060003412585",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Manzanita Montessori Charter",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060003413987",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -40496,27 +37787,9 @@
     {
       "name": "Farmersville Junior High",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060003501547",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Farmersville Junior High",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060003501547",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "J. E. Hester Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060003501548",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -40530,27 +37803,9 @@
     {
       "name": "George L. Snowden Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060003501549",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "George L. Snowden Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060003501549",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Farmersville High",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060003507903",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -40564,27 +37819,9 @@
     {
       "name": "Deep Creek Academy",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060003508425",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Deep Creek Academy",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060003508425",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Freedom Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060003511532",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -40598,27 +37835,9 @@
     {
       "name": "Leroy F. Greene Middle",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060003601091",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Leroy F. Greene Middle",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060003601091",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "American Lakes",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060003601095",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -40632,27 +37851,9 @@
     {
       "name": "Jefferson",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060003601108",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Jefferson",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060003601108",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Bannon Creek",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060003601114",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -40666,27 +37867,9 @@
     {
       "name": "Natomas High",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060003603755",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Natomas High",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060003603755",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Discovery High",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060003606335",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -40700,27 +37883,9 @@
     {
       "name": "Natomas Charter",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060003607250",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Natomas Charter",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060003607250",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Natomas Middle",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060003608582",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -40734,27 +37899,9 @@
     {
       "name": "Natomas Park Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060003608583",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Natomas Park Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060003608583",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Two Rivers Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060003610359",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -40768,27 +37915,9 @@
     {
       "name": "Inderkum High",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060003611084",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Inderkum High",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060003611084",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Witter Ranch Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060003611085",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -40802,27 +37931,9 @@
     {
       "name": "Westlake Charter",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060003611087",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Westlake Charter",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060003611087",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Heron",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060003611734",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -40836,27 +37947,9 @@
     {
       "name": "Natomas Pacific Pathways Prep",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060003611735",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Natomas Pacific Pathways Prep",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060003611735",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "H. Allen Hight Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060003612351",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -40870,27 +37963,9 @@
     {
       "name": "Natomas Pacific Pathways Prep Middle",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060003612523",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Natomas Pacific Pathways Prep Middle",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060003612523",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Westlake Charter Middle",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060003612980",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -40904,15 +37979,6 @@
     {
       "name": "Leroy Greene Academy",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060003613189",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Leroy Greene Academy",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060003613189",
@@ -40921,27 +37987,9 @@
     {
       "name": "Natomas Gateways Middle",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060003613761",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Natomas Gateways Middle",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060003613761",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Natomas Pacific Pathways Prep Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060003614043",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -40963,27 +38011,9 @@
     {
       "name": "Ferndale Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060003701550",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Ferndale Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060003701550",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Ferndale High",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060003701551",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -40997,27 +38027,9 @@
     {
       "name": "Mattole Triple Junction High",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060003801994",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Mattole Triple Junction High",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060003801994",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Mattole Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060003803640",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -41031,27 +38043,9 @@
     {
       "name": "Mattole Valley Charter (#159)",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060003807500",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Mattole Valley Charter (#159)",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060003807500",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Honeydew Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060003809400",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -41065,27 +38059,9 @@
     {
       "name": "El Capitan Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060003901212",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "El Capitan Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060003901212",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Schendel Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060003901213",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -41099,27 +38075,9 @@
     {
       "name": "Delhi High",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060003907540",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Delhi High",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060003907540",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Delhi Middle",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060003907541",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -41133,27 +38091,9 @@
     {
       "name": "Shattuck Educational Park",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060003908524",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Shattuck Educational Park",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060003908524",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Harmony Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060003910965",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -41167,27 +38107,9 @@
     {
       "name": "Shattuck Independent Study",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060003911971",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Shattuck Independent Study",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060003911971",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Riverdale Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060004005118",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -41201,27 +38123,9 @@
     {
       "name": "Fipps Primary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060004005119",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Fipps Primary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060004005119",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Riverdale High",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060004005120",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -41235,27 +38139,9 @@
     {
       "name": "Horizon High",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060004007830",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Horizon High",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060004007830",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Riverdale Community Day",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060004008478",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -41269,27 +38155,9 @@
     {
       "name": "Warner Junior/Senior High",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060004205341",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Warner Junior/Senior High",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060004205341",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "San Jose Valley Continuation High",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060004206527",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -41303,27 +38171,9 @@
     {
       "name": "Warner Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060004206844",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Warner Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060004206844",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "All Tribes Charter",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060004210387",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -41337,27 +38187,9 @@
     {
       "name": "All Tribes Elementary Charter",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060004212735",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "All Tribes Elementary Charter",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060004212735",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Warner I",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060004212740",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -41371,27 +38203,9 @@
     {
       "name": "California Pacific Charter - San Diego",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060004213918",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "California Pacific Charter - San Diego",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060004213918",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Brook Knoll Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060004306172",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -41405,27 +38219,9 @@
     {
       "name": "Scotts Valley Middle",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060004306173",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Scotts Valley Middle",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060004306173",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Vine Hill Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060004306174",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -41439,27 +38235,9 @@
     {
       "name": "Scotts Valley High",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060004308369",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Scotts Valley High",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060004308369",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Healdsburg Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060004402139",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -41473,27 +38251,9 @@
     {
       "name": "Healdsburg High",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060004402140",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Healdsburg High",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060004402140",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Healdsburg Junior High",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060004402141",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -41507,27 +38267,9 @@
     {
       "name": "Marce Becerra Academy",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060004406727",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Marce Becerra Academy",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060004406727",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Healdsburg Charter",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060004412872",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -41541,27 +38283,9 @@
     {
       "name": "North Valley High (Continuation)",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060004507089",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "North Valley High (Continuation)",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060004507089",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Orland High",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060004507090",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -41575,27 +38299,9 @@
     {
       "name": "Fairview Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060004507091",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Fairview Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060004507091",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Mill Street Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060004507092",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -41609,27 +38315,9 @@
     {
       "name": "Price Intermediate",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060004507093",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Price Intermediate",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060004507093",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Orland Community Day",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060004508484",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -41651,27 +38339,9 @@
     {
       "name": "Gonzales High",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060004607183",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Gonzales High",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060004607183",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Fairview Middle",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060004607184",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -41685,27 +38355,9 @@
     {
       "name": "La Gloria Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060004607185",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "La Gloria Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060004607185",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Somavia High",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060004611204",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -41719,27 +38371,9 @@
     {
       "name": "Excel High",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060004707366",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Excel High",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060004707366",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Merrill F. West High",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060004707371",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -41753,27 +38387,9 @@
     {
       "name": "Duncan-Russell Continuation",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060004707379",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Duncan-Russell Continuation",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060004707379",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Tracy High",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060004707380",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -41787,27 +38403,9 @@
     {
       "name": "Central Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060004707383",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Central Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060004707383",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Monte Vista Middle",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060004707384",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -41821,27 +38419,9 @@
     {
       "name": "Mckinley Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060004707387",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Mckinley Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060004707387",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "North Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060004707390",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -41855,27 +38435,9 @@
     {
       "name": "South/West Park Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060004707393",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "South/West Park Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060004707393",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Louis J. Villalovoz Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060004707396",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -41889,27 +38451,9 @@
     {
       "name": "Melville S. Jacobson Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060004707397",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Melville S. Jacobson Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060004707397",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Gladys Poet-Christian Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060004707398",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -41923,27 +38467,9 @@
     {
       "name": "Earle E. Williams Middle",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060004707399",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Earle E. Williams Middle",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060004707399",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Louis A. Bohn Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060004707400",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -41957,27 +38483,9 @@
     {
       "name": "Wanda Hirsch Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060004707401",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Wanda Hirsch Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060004707401",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Duncan-Russell Community Day",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060004708341",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -41991,27 +38499,9 @@
     {
       "name": "Discovery Charter",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060004710393",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Discovery Charter",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060004710393",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Art Freiler",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060004710394",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -42025,27 +38515,9 @@
     {
       "name": "Primary Charter",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060004711425",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Primary Charter",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060004711425",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Millennium Charter",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060004711426",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -42059,27 +38531,9 @@
     {
       "name": "George Kelly Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060004711784",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "George Kelly Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060004711784",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "George And Evelyn Stein Continuation",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060004712105",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -42093,27 +38547,9 @@
     {
       "name": "John C. Kimball High",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060004712372",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "John C. Kimball High",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060004712372",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "California Pacific Charter School North Central Ca",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060004712453",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -42135,27 +38571,9 @@
     {
       "name": "Freedom Community Day",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060004807403",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Freedom Community Day",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060004807403",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Paso Robles High",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060004807404",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -42169,27 +38587,9 @@
     {
       "name": "Liberty High (Continuation)",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060004807405",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Liberty High (Continuation)",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060004807405",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Georgia Brown Dual Immersion Magnet Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060004807406",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -42203,27 +38603,9 @@
     {
       "name": "Arts Academy At Bauer Speck Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060004807407",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Arts Academy At Bauer Speck Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060004807407",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Winifred Pifer Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060004807408",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -42237,27 +38619,9 @@
     {
       "name": "George H. Flamson Middle",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060004807409",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "George H. Flamson Middle",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060004807409",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Virginia Peterson Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060004807410",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -42271,27 +38635,9 @@
     {
       "name": "Pat Butler Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060004807411",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Pat Butler Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060004807411",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Daniel Lewis Middle",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060004807412",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -42305,15 +38651,6 @@
     {
       "name": "Paso Robles Independent Study Center",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060004810395",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Paso Robles Independent Study Center",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060004810395",
@@ -42322,27 +38659,9 @@
     {
       "name": "Kermit King Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060004810396",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Kermit King Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060004810396",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Independence High",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060004812391",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -42364,27 +38683,9 @@
     {
       "name": "Leffingwell High (Continuation)",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060004907413",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Leffingwell High (Continuation)",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060004907413",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Coast Union High",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060004907414",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -42398,15 +38699,6 @@
     {
       "name": "Cambria Grammar",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060004907415",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Cambria Grammar",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060004907415",
@@ -42415,27 +38707,9 @@
     {
       "name": "Santa Lucia Middle",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060004907416",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Santa Lucia Middle",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060004907416",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Cambria Community Day",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060004908623",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -42465,27 +38739,9 @@
     {
       "name": "Mckinley Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060005102012",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Mckinley Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060005102012",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Sycamore Middle",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060005102013",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -42499,27 +38755,9 @@
     {
       "name": "Wilson Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060005102014",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Wilson Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060005102014",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Esperanza High (Continuation)",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060005102015",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -42533,27 +38771,9 @@
     {
       "name": "Gridley High",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060005102016",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Gridley High",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060005102016",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Gridley Unified Community Day (7-12)",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060005107951",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -42567,27 +38787,9 @@
     {
       "name": "Gridley Unified Community Day (1-6)",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060005107952",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Gridley Unified Community Day (1-6)",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060005107952",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Alice Birney Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060005201475",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -42601,27 +38803,9 @@
     {
       "name": "Catherine L. Zane Middle",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060005201476",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Catherine L. Zane Middle",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060005201476",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Eureka Senior High",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060005201477",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -42635,27 +38819,9 @@
     {
       "name": "Grant Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060005201479",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Grant Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060005201479",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Lafayette Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060005201481",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -42669,27 +38835,9 @@
     {
       "name": "Washington Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060005201484",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Washington Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060005201484",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Zoe Barnum High",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060005201487",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -42719,15 +38867,6 @@
     {
       "name": "Winship Middle",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060005213158",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Winship Middle",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060005213158",
@@ -42752,27 +38891,9 @@
     {
       "name": "Johanna Boss High",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060005707737",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Johanna Boss High",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060005707737",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "N.A. Chaderjian High",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060005707739",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -42786,27 +38907,9 @@
     {
       "name": "Emilie J. Ross Middle",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060006002208",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Emilie J. Ross Middle",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060006002208",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Hughson Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060006002209",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -42820,27 +38923,9 @@
     {
       "name": "Hughson High",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060006002212",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Hughson High",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060006002212",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Dickens (Billy Joe) High (Continuation)",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060006004164",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -42854,27 +38939,9 @@
     {
       "name": "Fox Road Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060006011342",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Fox Road Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060006011342",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Hughson Community Day",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060006012090",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -42888,27 +38955,9 @@
     {
       "name": "Valley Community Day",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060006012334",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Valley Community Day",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060006012334",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Riverbank High",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060006104232",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -42922,27 +38971,9 @@
     {
       "name": "California Avenue Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060006105114",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "California Avenue Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060006105114",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Cardozo Middle",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060006105115",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -42964,27 +38995,9 @@
     {
       "name": "Adelante High",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060006111814",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Adelante High",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060006111814",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Riverbank Language Academy",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060006111925",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -42998,27 +39011,9 @@
     {
       "name": "Mesa Verde Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060006112206",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Mesa Verde Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060006112206",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Oakdale High",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060006204231",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -43032,27 +39027,9 @@
     {
       "name": "Cloverland Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060006204233",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Cloverland Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060006204233",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Fair Oaks Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060006204234",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -43066,27 +39043,9 @@
     {
       "name": "Magnolia Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060006204235",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Magnolia Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060006204235",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Oakdale Junior High",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060006204236",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -43100,27 +39059,9 @@
     {
       "name": "Oakdale Charter",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060006206752",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Oakdale Charter",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060006206752",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Valley Oak Junior And Senior High",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060006206757",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -43134,27 +39075,9 @@
     {
       "name": "East Stanislaus High",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060006210697",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "East Stanislaus High",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060006210697",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Sierra View Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060006211500",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -43168,27 +39091,9 @@
     {
       "name": "Waterford Junior",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060006306868",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Waterford Junior",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060006306868",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Waterford High",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060006308657",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -43202,27 +39107,9 @@
     {
       "name": "Connecting Waters Charter",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060006310698",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Connecting Waters Charter",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060006310698",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Sentinel High",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060006312193",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -43236,27 +39123,9 @@
     {
       "name": "Richard M. Moon Primary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060006312220",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Richard M. Moon Primary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060006312220",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Lucille Whitehead Intermediate",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060006312224",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -43270,27 +39139,9 @@
     {
       "name": "Waterford Community Day",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060006313009",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Waterford Community Day",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060006313009",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Citrus South Tule Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060006400885",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -43304,27 +39155,9 @@
     {
       "name": "Bartlett Middle",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060006404869",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Bartlett Middle",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060006404869",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Belleview Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060006404870",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -43338,27 +39171,9 @@
     {
       "name": "John J. Doyle Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060006404871",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "John J. Doyle Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060006404871",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Olive Street Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060006404872",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -43372,27 +39187,9 @@
     {
       "name": "Pioneer Middle",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060006404873",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Pioneer Middle",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060006404873",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Roche Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060006404874",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -43406,15 +39203,6 @@
     {
       "name": "Vandalia Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060006404875",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Vandalia Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060006404875",
@@ -43423,297 +39211,9 @@
     {
       "name": "West Putnam Elementary",
       "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060006404876",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "West Putnam Elementary",
-      "types": [
         "PublicSchool"
       ],
       "dcid": "nces/060006404876",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Westfield Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060006404877",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Citrus High",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060006404878",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Monache High",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060006404879",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Porterville High",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060006404880",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Monte Vista Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060006407467",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Vine Street Community Day",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060006407905",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Granite Hills High",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060006408426",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Los Robles Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060006409424",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Prospect Education Center",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060006410704",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Santa Fe Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060006411533",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Strathmore High",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060006411535",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Sequoia Middle",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060006411825",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Butterfield Charter",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060006412042",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Harmony Magnet Academy",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060006412356",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Grand View Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060006501237",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Jefferson Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060006501238",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Lincoln Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060006501239",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Washington Intermediate",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060006501240",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Wilson Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060006501241",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Dinuba High",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060006501242",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Sierra Vista High (Continuation)",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060006501243",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Roosevelt Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060006509359",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Ronald Reagan Academy",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060006511370",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "John F. Kennedy Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060006511536",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Mary B. Perry High",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060006607920",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Caruthers Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060006700730",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Caruthers High",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060006700731",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Marc High",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060006700732",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Webster Elementary",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060006807312",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Independence Continuation High",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060006808144",
-      "provenanceId": "dc/b77qvt2"
-    },
-    {
-      "name": "Liberty High",
-      "types": [
-        "PublicSchool",
-        "School"
-      ],
-      "dcid": "nces/060006810542",
       "provenanceId": "dc/b77qvt2"
     },
     {
@@ -50850,5 +46350,5 @@
       "provenanceId": "dc/5j06ly1"
     }
   ],
-  "nextToken": "H4sIAAAAAAAA/5TSzUpDMRAFYBNjSMcfLlndt7C6cCli2kXFRaD6ADEdNDAmkJtW+vZS25XKXPoA5+MkZ8CBeceyWF1P76CLJbeQMq4W2VOICOcO87AeXmqIzZ5YaYSVRlppTq0yqhNWmbNOwAOLKJfa9lda79L9xOpdvp+AZ4V+TviJuYW6XcaPUmiWhlYT2+mRFcGXL6yeQuaMOWtc+po2oeG+EsPMWObCr98oxVFlrMyP8toS/f3tI5jlrUOiZ9wg3UwZ5p5l9L+vkUYdBhfwxOav2Jn3x6MPlv4GAAD//wEAAP//6d1IhsQCAAA="
+  "nextToken": "H4sIAAAAAAAA/4zRzUrFMBCGYY21xPhDyap3YXXhyoUaFQoigeoFxHTQwJhAmlZ699J2dw6dnmUW78NHRjwK/g2hbq+rO1HY4JNxHtraazQWxLkC3/XdRzQ2ySPJ+LFknEnGT2TGs2J6nYp7ksiUS+NOm09teTbX72RdviD8gk8mjo39CQGfXZeiI9Y8kJ7Q4Q+iRuPXBUUKlzq6wSRY5qwiTyRyofsvdHbD2BoyG5/J4f4PH4w0twoQ32AAvKlWkVcSuSJPsxw7n5x/AAAA//8BAAD//65DfJxuAgAA"
 }
