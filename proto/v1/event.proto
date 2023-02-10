@@ -20,6 +20,7 @@ package datacommons.v1;
 message EventCollection {
   message GeoLocation {
     message Point {
+      // optional is needed here to prevent 0 values from getting dropped.
       optional double latitude = 1;
       optional double longitude = 2;
     }
