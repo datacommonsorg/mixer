@@ -103,6 +103,14 @@
         "hasData": true
       },
       {
+        "id": "dc/4j5t00e5s5el3",
+        "searchNames": [
+          "Population Count of Person With Educational Attainment is Pre Kindergarten And Kindergarten"
+        ],
+        "displayName": "Population: Pre Kindergarten And Kindergarten",
+        "definition": "mp=count,pt=Person,educationalAttainment=PreKindergartenAndKindergarten"
+      },
+      {
         "id": "Count_Person_EducationalAttainmentPrimarySchool",
         "searchNames": [
           "Population Count of Person With Educational Attainment is Primary School"

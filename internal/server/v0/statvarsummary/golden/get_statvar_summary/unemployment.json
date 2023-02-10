@@ -90,7 +90,7 @@
                 "observationPeriod": "P1M"
               },
               "earliestDate": "1948-01",
-              "latestDate": "2022-12",
+              "latestDate": "2023-01",
               "placeTypeSummary": {
                 "Country": {
                   "placeCount": 1,
@@ -106,7 +106,7 @@
               },
               "minValue": 2.5,
               "maxValue": 14.7,
-              "observationCount": 900,
+              "observationCount": 901,
               "timeSeriesCount": 1
             },
             {
@@ -135,7 +135,7 @@
               "timeSeriesCount": 1
             }
           ],
-          "observationCount": 1200,
+          "observationCount": 1201,
           "timeSeriesCount": 2
         },
         "dc/lly3yc1": {
@@ -148,7 +148,7 @@
                 "observationPeriod": "P1M"
               },
               "earliestDate": "1976-01",
-              "latestDate": "2022-11",
+              "latestDate": "2022-12",
               "placeTypeSummary": {
                 "City": {
                   "placeCount": 1,
@@ -183,7 +183,7 @@
               },
               "minValue": 1.8,
               "maxValue": 28.5,
-              "observationCount": 29834,
+              "observationCount": 29886,
               "timeSeriesCount": 53
             },
             {
@@ -192,7 +192,7 @@
                 "observationPeriod": "P1M"
               },
               "earliestDate": "1976-01",
-              "latestDate": "2022-11",
+              "latestDate": "2022-12",
               "placeTypeSummary": {
                 "City": {
                   "placeCount": 3086,
@@ -254,7 +254,7 @@
               },
               "minValue": 0,
               "maxValue": 100,
-              "observationCount": 2438225,
+              "observationCount": 2444579,
               "timeSeriesCount": 6358
             },
             {
@@ -329,7 +329,7 @@
               "timeSeriesCount": 6358
             }
           ],
-          "observationCount": 2665349,
+          "observationCount": 2671755,
           "timeSeriesCount": 12769
         },
         "dc/yd4sfb": {

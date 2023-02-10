@@ -18031,6 +18031,692 @@
       ]
     },
     {
+      "dcid": "dc/g/Student_Gender-Female_Race-AmericanIndianOrAlaskaNative_SchoolGradeLevel",
+      "name": "Student With Gender = Female, Race = American Indian or Alaska Native, School Grade Level",
+      "statVars": [
+        {
+          "name": "Count of Student: Female, American Indian or Alaska Native, 1 - 8 School Grade",
+          "dcid": "dc/zd52dlm5q36m6"
+        },
+        {
+          "name": "Count of Student: Female, American Indian or Alaska Native, 9 - 12 School Grade",
+          "dcid": "dc/drm4vgz1pw417"
+        },
+        {
+          "name": "Count of Student: Female, American Indian or Alaska Native, Adult Education",
+          "dcid": "Count_Student_Female_AmericanIndianOrAlaskaNative_AdultEducation"
+        },
+        {
+          "name": "Count of Student: Female, American Indian or Alaska Native, HighSchool",
+          "dcid": "Count_Student_Female_AmericanIndianOrAlaskaNative_HighSchool"
+        },
+        {
+          "name": "Count of Student: Female, American Indian or Alaska Native, Kindergarten",
+          "dcid": "Count_Student_Female_AmericanIndianOrAlaskaNative_Kindergarten"
+        },
+        {
+          "name": "Count of Student: Female, American Indian or Alaska Native, MiddleSchool",
+          "dcid": "Count_Student_Female_AmericanIndianOrAlaskaNative_MiddleSchool"
+        },
+        {
+          "name": "Count of Student: Female, American Indian or Alaska Native, Pre Kindergarten",
+          "dcid": "Count_Student_Female_AmericanIndianOrAlaskaNative_PreKindergarten"
+        },
+        {
+          "name": "Count of Student: Female, American Indian or Alaska Native, Pre Kindergarten And Kindergarten",
+          "dcid": "dc/fkky4npg5e76b"
+        },
+        {
+          "name": "Count of Student: Female, American Indian or Alaska Native, PrimarySchool",
+          "dcid": "Count_Student_Female_AmericanIndianOrAlaskaNative_PrimarySchool"
+        },
+        {
+          "name": "Count of Student: Female, American Indian or Alaska Native, School Grade 1",
+          "dcid": "Count_Student_Female_AmericanIndianOrAlaskaNative_SchoolGrade1"
+        },
+        {
+          "name": "Count of Student: Female, American Indian or Alaska Native, School Grade 10",
+          "dcid": "Count_Student_Female_AmericanIndianOrAlaskaNative_SchoolGrade10"
+        },
+        {
+          "name": "Count of Student: Female, American Indian or Alaska Native, School Grade 11",
+          "dcid": "Count_Student_Female_AmericanIndianOrAlaskaNative_SchoolGrade11"
+        },
+        {
+          "name": "Count of Student: Female, American Indian or Alaska Native, School Grade 12",
+          "dcid": "Count_Student_Female_AmericanIndianOrAlaskaNative_SchoolGrade12"
+        },
+        {
+          "name": "Count of Student: Female, American Indian or Alaska Native, School Grade 13",
+          "dcid": "Count_Student_Female_AmericanIndianOrAlaskaNative_SchoolGrade13"
+        },
+        {
+          "name": "Count of Student: Female, American Indian or Alaska Native, School Grade 2",
+          "dcid": "Count_Student_Female_AmericanIndianOrAlaskaNative_SchoolGrade2"
+        },
+        {
+          "name": "Count of Student: Female, American Indian or Alaska Native, School Grade 3",
+          "dcid": "Count_Student_Female_AmericanIndianOrAlaskaNative_SchoolGrade3"
+        },
+        {
+          "name": "Count of Student: Female, American Indian or Alaska Native, School Grade 4",
+          "dcid": "Count_Student_Female_AmericanIndianOrAlaskaNative_SchoolGrade4"
+        },
+        {
+          "name": "Count of Student: Female, American Indian or Alaska Native, School Grade 5",
+          "dcid": "Count_Student_Female_AmericanIndianOrAlaskaNative_SchoolGrade5"
+        },
+        {
+          "name": "Count of Student: Female, American Indian or Alaska Native, School Grade 6",
+          "dcid": "Count_Student_Female_AmericanIndianOrAlaskaNative_SchoolGrade6"
+        },
+        {
+          "name": "Count of Student: Female, American Indian or Alaska Native, School Grade 7",
+          "dcid": "Count_Student_Female_AmericanIndianOrAlaskaNative_SchoolGrade7"
+        },
+        {
+          "name": "Count of Student: Female, American Indian or Alaska Native, School Grade 8",
+          "dcid": "Count_Student_Female_AmericanIndianOrAlaskaNative_SchoolGrade8"
+        },
+        {
+          "name": "Count of Student: Female, American Indian or Alaska Native, School Grade 9",
+          "dcid": "Count_Student_Female_AmericanIndianOrAlaskaNative_SchoolGrade9"
+        },
+        {
+          "name": "Count of Student: Female, American Indian or Alaska Native, Ungraded Classes",
+          "dcid": "Count_Student_Female_AmericanIndianOrAlaskaNative_UngradedClasses"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Student_Gender-Female_Race-Asian_SchoolGradeLevel",
+      "name": "Student With Gender = Female, Race = Asian, School Grade Level",
+      "statVars": [
+        {
+          "name": "Count of Student: Female, Asian, 1 - 8 School Grade",
+          "dcid": "dc/2g1db7f9bnb93"
+        },
+        {
+          "name": "Count of Student: Female, Asian, 9 - 12 School Grade",
+          "dcid": "dc/tzt4qv023e321"
+        },
+        {
+          "name": "Count of Student: Female, Asian, Adult Education",
+          "dcid": "Count_Student_Female_Asian_AdultEducation"
+        },
+        {
+          "name": "Count of Student: Female, Asian, HighSchool",
+          "dcid": "Count_Student_Female_Asian_HighSchool"
+        },
+        {
+          "name": "Count of Student: Female, Asian, Kindergarten",
+          "dcid": "Count_Student_Female_Asian_Kindergarten"
+        },
+        {
+          "name": "Count of Student: Female, Asian, MiddleSchool",
+          "dcid": "Count_Student_Female_Asian_MiddleSchool"
+        },
+        {
+          "name": "Count of Student: Female, Asian, Pre Kindergarten",
+          "dcid": "Count_Student_Female_Asian_PreKindergarten"
+        },
+        {
+          "name": "Count of Student: Female, Asian, Pre Kindergarten And Kindergarten",
+          "dcid": "dc/94qkvzc4j0p7b"
+        },
+        {
+          "name": "Count of Student: Female, Asian, PrimarySchool",
+          "dcid": "Count_Student_Female_Asian_PrimarySchool"
+        },
+        {
+          "name": "Count of Student: Female, Asian, School Grade 1",
+          "dcid": "Count_Student_Female_Asian_SchoolGrade1"
+        },
+        {
+          "name": "Count of Student: Female, Asian, School Grade 10",
+          "dcid": "Count_Student_Female_Asian_SchoolGrade10"
+        },
+        {
+          "name": "Count of Student: Female, Asian, School Grade 11",
+          "dcid": "Count_Student_Female_Asian_SchoolGrade11"
+        },
+        {
+          "name": "Count of Student: Female, Asian, School Grade 12",
+          "dcid": "Count_Student_Female_Asian_SchoolGrade12"
+        },
+        {
+          "name": "Count of Student: Female, Asian, School Grade 13",
+          "dcid": "Count_Student_Female_Asian_SchoolGrade13"
+        },
+        {
+          "name": "Count of Student: Female, Asian, School Grade 2",
+          "dcid": "Count_Student_Female_Asian_SchoolGrade2"
+        },
+        {
+          "name": "Count of Student: Female, Asian, School Grade 3",
+          "dcid": "Count_Student_Female_Asian_SchoolGrade3"
+        },
+        {
+          "name": "Count of Student: Female, Asian, School Grade 4",
+          "dcid": "Count_Student_Female_Asian_SchoolGrade4"
+        },
+        {
+          "name": "Count of Student: Female, Asian, School Grade 5",
+          "dcid": "Count_Student_Female_Asian_SchoolGrade5"
+        },
+        {
+          "name": "Count of Student: Female, Asian, School Grade 6",
+          "dcid": "Count_Student_Female_Asian_SchoolGrade6"
+        },
+        {
+          "name": "Count of Student: Female, Asian, School Grade 7",
+          "dcid": "Count_Student_Female_Asian_SchoolGrade7"
+        },
+        {
+          "name": "Count of Student: Female, Asian, School Grade 8",
+          "dcid": "Count_Student_Female_Asian_SchoolGrade8"
+        },
+        {
+          "name": "Count of Student: Female, Asian, School Grade 9",
+          "dcid": "Count_Student_Female_Asian_SchoolGrade9"
+        },
+        {
+          "name": "Count of Student: Female, Asian, Ungraded Classes",
+          "dcid": "Count_Student_Female_Asian_UngradedClasses"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Student_Gender-Female_Race-Black_SchoolGradeLevel",
+      "name": "Student With Gender = Female, Race = Black, School Grade Level",
+      "statVars": [
+        {
+          "name": "Count of Student: Female, Black, 1 - 8 School Grade",
+          "dcid": "dc/pmrh66t5y7j64"
+        },
+        {
+          "name": "Count of Student: Female, Black, 9 - 12 School Grade",
+          "dcid": "dc/d26mn4g3s1jwf"
+        },
+        {
+          "name": "Count of Student: Female, Black, Adult Education",
+          "dcid": "Count_Student_Female_Black_AdultEducation"
+        },
+        {
+          "name": "Count of Student: Female, Black, HighSchool",
+          "dcid": "Count_Student_Female_Black_HighSchool"
+        },
+        {
+          "name": "Count of Student: Female, Black, Kindergarten",
+          "dcid": "Count_Student_Female_Black_Kindergarten"
+        },
+        {
+          "name": "Count of Student: Female, Black, MiddleSchool",
+          "dcid": "Count_Student_Female_Black_MiddleSchool"
+        },
+        {
+          "name": "Count of Student: Female, Black, Pre Kindergarten",
+          "dcid": "Count_Student_Female_Black_PreKindergarten"
+        },
+        {
+          "name": "Count of Student: Female, Black, Pre Kindergarten And Kindergarten",
+          "dcid": "dc/mexze51feqxsd"
+        },
+        {
+          "name": "Count of Student: Female, Black, PrimarySchool",
+          "dcid": "Count_Student_Female_Black_PrimarySchool"
+        },
+        {
+          "name": "Count of Student: Female, Black, School Grade 1",
+          "dcid": "Count_Student_Female_Black_SchoolGrade1"
+        },
+        {
+          "name": "Count of Student: Female, Black, School Grade 10",
+          "dcid": "Count_Student_Female_Black_SchoolGrade10"
+        },
+        {
+          "name": "Count of Student: Female, Black, School Grade 11",
+          "dcid": "Count_Student_Female_Black_SchoolGrade11"
+        },
+        {
+          "name": "Count of Student: Female, Black, School Grade 12",
+          "dcid": "Count_Student_Female_Black_SchoolGrade12"
+        },
+        {
+          "name": "Count of Student: Female, Black, School Grade 13",
+          "dcid": "Count_Student_Female_Black_SchoolGrade13"
+        },
+        {
+          "name": "Count of Student: Female, Black, School Grade 2",
+          "dcid": "Count_Student_Female_Black_SchoolGrade2"
+        },
+        {
+          "name": "Count of Student: Female, Black, School Grade 3",
+          "dcid": "Count_Student_Female_Black_SchoolGrade3"
+        },
+        {
+          "name": "Count of Student: Female, Black, School Grade 4",
+          "dcid": "Count_Student_Female_Black_SchoolGrade4"
+        },
+        {
+          "name": "Count of Student: Female, Black, School Grade 5",
+          "dcid": "Count_Student_Female_Black_SchoolGrade5"
+        },
+        {
+          "name": "Count of Student: Female, Black, School Grade 6",
+          "dcid": "Count_Student_Female_Black_SchoolGrade6"
+        },
+        {
+          "name": "Count of Student: Female, Black, School Grade 7",
+          "dcid": "Count_Student_Female_Black_SchoolGrade7"
+        },
+        {
+          "name": "Count of Student: Female, Black, School Grade 8",
+          "dcid": "Count_Student_Female_Black_SchoolGrade8"
+        },
+        {
+          "name": "Count of Student: Female, Black, School Grade 9",
+          "dcid": "Count_Student_Female_Black_SchoolGrade9"
+        },
+        {
+          "name": "Count of Student: Female, Black, Ungraded Classes",
+          "dcid": "Count_Student_Female_Black_UngradedClasses"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Student_Gender-Female_Race-HawaiianNativeOrPacificIslander_SchoolGradeLevel",
+      "name": "Student With Gender = Female, Race = Hawaiian Native or Pacific Islander, School Grade Level",
+      "statVars": [
+        {
+          "name": "Count of Student: Female, Hawaiian Native or Pacific Islander, 1 - 8 School Grade",
+          "dcid": "dc/wp9gbw427esv6"
+        },
+        {
+          "name": "Count of Student: Female, Hawaiian Native or Pacific Islander, 9 - 12 School Grade",
+          "dcid": "dc/f4xpm3r0cnf3g"
+        },
+        {
+          "name": "Count of Student: Female, Hawaiian Native or Pacific Islander, Adult Education",
+          "dcid": "Count_Student_Female_HawaiianNativeOrPacificIslander_AdultEducation"
+        },
+        {
+          "name": "Count of Student: Female, Hawaiian Native or Pacific Islander, HighSchool",
+          "dcid": "Count_Student_Female_HawaiianNativeOrPacificIslander_HighSchool"
+        },
+        {
+          "name": "Count of Student: Female, Hawaiian Native or Pacific Islander, Kindergarten",
+          "dcid": "Count_Student_Female_HawaiianNativeOrPacificIslander_Kindergarten"
+        },
+        {
+          "name": "Count of Student: Female, Hawaiian Native or Pacific Islander, MiddleSchool",
+          "dcid": "Count_Student_Female_HawaiianNativeOrPacificIslander_MiddleSchool"
+        },
+        {
+          "name": "Count of Student: Female, Hawaiian Native or Pacific Islander, Pre Kindergarten",
+          "dcid": "Count_Student_Female_HawaiianNativeOrPacificIslander_PreKindergarten"
+        },
+        {
+          "name": "Count of Student: Female, Hawaiian Native or Pacific Islander, Pre Kindergarten And Kindergarten",
+          "dcid": "dc/chj2syy7psf0g"
+        },
+        {
+          "name": "Count of Student: Female, Hawaiian Native or Pacific Islander, PrimarySchool",
+          "dcid": "Count_Student_Female_HawaiianNativeOrPacificIslander_PrimarySchool"
+        },
+        {
+          "name": "Count of Student: Female, Hawaiian Native or Pacific Islander, School Grade 1",
+          "dcid": "Count_Student_Female_HawaiianNativeOrPacificIslander_SchoolGrade1"
+        },
+        {
+          "name": "Count of Student: Female, Hawaiian Native or Pacific Islander, School Grade 10",
+          "dcid": "Count_Student_Female_HawaiianNativeOrPacificIslander_SchoolGrade10"
+        },
+        {
+          "name": "Count of Student: Female, Hawaiian Native or Pacific Islander, School Grade 11",
+          "dcid": "Count_Student_Female_HawaiianNativeOrPacificIslander_SchoolGrade11"
+        },
+        {
+          "name": "Count of Student: Female, Hawaiian Native or Pacific Islander, School Grade 12",
+          "dcid": "Count_Student_Female_HawaiianNativeOrPacificIslander_SchoolGrade12"
+        },
+        {
+          "name": "Count of Student: Female, Hawaiian Native or Pacific Islander, School Grade 13",
+          "dcid": "Count_Student_Female_HawaiianNativeOrPacificIslander_SchoolGrade13"
+        },
+        {
+          "name": "Count of Student: Female, Hawaiian Native or Pacific Islander, School Grade 2",
+          "dcid": "Count_Student_Female_HawaiianNativeOrPacificIslander_SchoolGrade2"
+        },
+        {
+          "name": "Count of Student: Female, Hawaiian Native or Pacific Islander, School Grade 3",
+          "dcid": "Count_Student_Female_HawaiianNativeOrPacificIslander_SchoolGrade3"
+        },
+        {
+          "name": "Count of Student: Female, Hawaiian Native or Pacific Islander, School Grade 4",
+          "dcid": "Count_Student_Female_HawaiianNativeOrPacificIslander_SchoolGrade4"
+        },
+        {
+          "name": "Count of Student: Female, Hawaiian Native or Pacific Islander, School Grade 5",
+          "dcid": "Count_Student_Female_HawaiianNativeOrPacificIslander_SchoolGrade5"
+        },
+        {
+          "name": "Count of Student: Female, Hawaiian Native or Pacific Islander, School Grade 6",
+          "dcid": "Count_Student_Female_HawaiianNativeOrPacificIslander_SchoolGrade6"
+        },
+        {
+          "name": "Count of Student: Female, Hawaiian Native or Pacific Islander, School Grade 7",
+          "dcid": "Count_Student_Female_HawaiianNativeOrPacificIslander_SchoolGrade7"
+        },
+        {
+          "name": "Count of Student: Female, Hawaiian Native or Pacific Islander, School Grade 8",
+          "dcid": "Count_Student_Female_HawaiianNativeOrPacificIslander_SchoolGrade8"
+        },
+        {
+          "name": "Count of Student: Female, Hawaiian Native or Pacific Islander, School Grade 9",
+          "dcid": "Count_Student_Female_HawaiianNativeOrPacificIslander_SchoolGrade9"
+        },
+        {
+          "name": "Count of Student: Female, Hawaiian Native or Pacific Islander, Ungraded Classes",
+          "dcid": "Count_Student_Female_HawaiianNativeOrPacificIslander_UngradedClasses"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Student_Gender-Female_Race-HispanicOrLatino_SchoolGradeLevel",
+      "name": "Student With Gender = Female, Race = Hispanic or Latino, School Grade Level",
+      "statVars": [
+        {
+          "name": "Count of Student: Female, Hispanic or Latino, 1 - 8 School Grade",
+          "dcid": "dc/znm936tfsxwk6"
+        },
+        {
+          "name": "Count of Student: Female, Hispanic or Latino, 9 - 12 School Grade",
+          "dcid": "dc/e8xn32xqf6fxh"
+        },
+        {
+          "name": "Count of Student: Female, Hispanic or Latino, Adult Education",
+          "dcid": "Count_Student_Female_HispanicOrLatino_AdultEducation"
+        },
+        {
+          "name": "Count of Student: Female, Hispanic or Latino, HighSchool",
+          "dcid": "Count_Student_Female_HispanicOrLatino_HighSchool"
+        },
+        {
+          "name": "Count of Student: Female, Hispanic or Latino, Kindergarten",
+          "dcid": "Count_Student_Female_HispanicOrLatino_Kindergarten"
+        },
+        {
+          "name": "Count of Student: Female, Hispanic or Latino, MiddleSchool",
+          "dcid": "Count_Student_Female_HispanicOrLatino_MiddleSchool"
+        },
+        {
+          "name": "Count of Student: Female, Hispanic or Latino, Pre Kindergarten",
+          "dcid": "Count_Student_Female_HispanicOrLatino_PreKindergarten"
+        },
+        {
+          "name": "Count of Student: Female, Hispanic or Latino, Pre Kindergarten And Kindergarten",
+          "dcid": "dc/l7cy04dh2x9y4"
+        },
+        {
+          "name": "Count of Student: Female, Hispanic or Latino, PrimarySchool",
+          "dcid": "Count_Student_Female_HispanicOrLatino_PrimarySchool"
+        },
+        {
+          "name": "Count of Student: Female, Hispanic or Latino, School Grade 1",
+          "dcid": "Count_Student_Female_HispanicOrLatino_SchoolGrade1"
+        },
+        {
+          "name": "Count of Student: Female, Hispanic or Latino, School Grade 10",
+          "dcid": "Count_Student_Female_HispanicOrLatino_SchoolGrade10"
+        },
+        {
+          "name": "Count of Student: Female, Hispanic or Latino, School Grade 11",
+          "dcid": "Count_Student_Female_HispanicOrLatino_SchoolGrade11"
+        },
+        {
+          "name": "Count of Student: Female, Hispanic or Latino, School Grade 12",
+          "dcid": "Count_Student_Female_HispanicOrLatino_SchoolGrade12"
+        },
+        {
+          "name": "Count of Student: Female, Hispanic or Latino, School Grade 13",
+          "dcid": "Count_Student_Female_HispanicOrLatino_SchoolGrade13"
+        },
+        {
+          "name": "Count of Student: Female, Hispanic or Latino, School Grade 2",
+          "dcid": "Count_Student_Female_HispanicOrLatino_SchoolGrade2"
+        },
+        {
+          "name": "Count of Student: Female, Hispanic or Latino, School Grade 3",
+          "dcid": "Count_Student_Female_HispanicOrLatino_SchoolGrade3"
+        },
+        {
+          "name": "Count of Student: Female, Hispanic or Latino, School Grade 4",
+          "dcid": "Count_Student_Female_HispanicOrLatino_SchoolGrade4"
+        },
+        {
+          "name": "Count of Student: Female, Hispanic or Latino, School Grade 5",
+          "dcid": "Count_Student_Female_HispanicOrLatino_SchoolGrade5"
+        },
+        {
+          "name": "Count of Student: Female, Hispanic or Latino, School Grade 6",
+          "dcid": "Count_Student_Female_HispanicOrLatino_SchoolGrade6"
+        },
+        {
+          "name": "Count of Student: Female, Hispanic or Latino, School Grade 7",
+          "dcid": "Count_Student_Female_HispanicOrLatino_SchoolGrade7"
+        },
+        {
+          "name": "Count of Student: Female, Hispanic or Latino, School Grade 8",
+          "dcid": "Count_Student_Female_HispanicOrLatino_SchoolGrade8"
+        },
+        {
+          "name": "Count of Student: Female, Hispanic or Latino, School Grade 9",
+          "dcid": "Count_Student_Female_HispanicOrLatino_SchoolGrade9"
+        },
+        {
+          "name": "Count of Student: Female, Hispanic or Latino, Ungraded Classes",
+          "dcid": "Count_Student_Female_HispanicOrLatino_UngradedClasses"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Student_Gender-Female_Race-TwoOrMoreRaces_SchoolGradeLevel",
+      "name": "Student With Gender = Female, Race = Two or More Races, School Grade Level",
+      "statVars": [
+        {
+          "name": "Count of Student: Female, Two or More Races, 1 - 8 School Grade",
+          "dcid": "dc/76tjmel71kjs8"
+        },
+        {
+          "name": "Count of Student: Female, Two or More Races, 9 - 12 School Grade",
+          "dcid": "dc/tnk203c53kp03"
+        },
+        {
+          "name": "Count of Student: Female, Two or More Races, Adult Education",
+          "dcid": "Count_Student_Female_TwoOrMoreRaces_AdultEducation"
+        },
+        {
+          "name": "Count of Student: Female, Two or More Races, HighSchool",
+          "dcid": "Count_Student_Female_TwoOrMoreRaces_HighSchool"
+        },
+        {
+          "name": "Count of Student: Female, Two or More Races, Kindergarten",
+          "dcid": "Count_Student_Female_TwoOrMoreRaces_Kindergarten"
+        },
+        {
+          "name": "Count of Student: Female, Two or More Races, MiddleSchool",
+          "dcid": "Count_Student_Female_TwoOrMoreRaces_MiddleSchool"
+        },
+        {
+          "name": "Count of Student: Female, Two or More Races, Pre Kindergarten",
+          "dcid": "Count_Student_Female_TwoOrMoreRaces_PreKindergarten"
+        },
+        {
+          "name": "Count of Student: Female, Two or More Races, Pre Kindergarten And Kindergarten",
+          "dcid": "dc/q9qxh0her2pnc"
+        },
+        {
+          "name": "Count of Student: Female, Two or More Races, PrimarySchool",
+          "dcid": "Count_Student_Female_TwoOrMoreRaces_PrimarySchool"
+        },
+        {
+          "name": "Count of Student: Female, Two or More Races, School Grade 1",
+          "dcid": "Count_Student_Female_TwoOrMoreRaces_SchoolGrade1"
+        },
+        {
+          "name": "Count of Student: Female, Two or More Races, School Grade 10",
+          "dcid": "Count_Student_Female_TwoOrMoreRaces_SchoolGrade10"
+        },
+        {
+          "name": "Count of Student: Female, Two or More Races, School Grade 11",
+          "dcid": "Count_Student_Female_TwoOrMoreRaces_SchoolGrade11"
+        },
+        {
+          "name": "Count of Student: Female, Two or More Races, School Grade 12",
+          "dcid": "Count_Student_Female_TwoOrMoreRaces_SchoolGrade12"
+        },
+        {
+          "name": "Count of Student: Female, Two or More Races, School Grade 13",
+          "dcid": "Count_Student_Female_TwoOrMoreRaces_SchoolGrade13"
+        },
+        {
+          "name": "Count of Student: Female, Two or More Races, School Grade 2",
+          "dcid": "Count_Student_Female_TwoOrMoreRaces_SchoolGrade2"
+        },
+        {
+          "name": "Count of Student: Female, Two or More Races, School Grade 3",
+          "dcid": "Count_Student_Female_TwoOrMoreRaces_SchoolGrade3"
+        },
+        {
+          "name": "Count of Student: Female, Two or More Races, School Grade 4",
+          "dcid": "Count_Student_Female_TwoOrMoreRaces_SchoolGrade4"
+        },
+        {
+          "name": "Count of Student: Female, Two or More Races, School Grade 5",
+          "dcid": "Count_Student_Female_TwoOrMoreRaces_SchoolGrade5"
+        },
+        {
+          "name": "Count of Student: Female, Two or More Races, School Grade 6",
+          "dcid": "Count_Student_Female_TwoOrMoreRaces_SchoolGrade6"
+        },
+        {
+          "name": "Count of Student: Female, Two or More Races, School Grade 7",
+          "dcid": "Count_Student_Female_TwoOrMoreRaces_SchoolGrade7"
+        },
+        {
+          "name": "Count of Student: Female, Two or More Races, School Grade 8",
+          "dcid": "Count_Student_Female_TwoOrMoreRaces_SchoolGrade8"
+        },
+        {
+          "name": "Count of Student: Female, Two or More Races, School Grade 9",
+          "dcid": "Count_Student_Female_TwoOrMoreRaces_SchoolGrade9"
+        },
+        {
+          "name": "Count of Student: Female, Two or More Races, Ungraded Classes",
+          "dcid": "Count_Student_Female_TwoOrMoreRaces_UngradedClasses"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Student_Gender-Female_Race-White_SchoolGradeLevel",
+      "name": "Student With Gender = Female, Race = White, School Grade Level",
+      "statVars": [
+        {
+          "name": "Count of Student: Female, White, 1 - 8 School Grade",
+          "dcid": "dc/myqff182xfgpg"
+        },
+        {
+          "name": "Count of Student: Female, White, 9 - 12 School Grade",
+          "dcid": "dc/8zkycegbv1nz1"
+        },
+        {
+          "name": "Count of Student: Female, White, Adult Education",
+          "dcid": "Count_Student_Female_White_AdultEducation"
+        },
+        {
+          "name": "Count of Student: Female, White, HighSchool",
+          "dcid": "Count_Student_Female_White_HighSchool"
+        },
+        {
+          "name": "Count of Student: Female, White, Kindergarten",
+          "dcid": "Count_Student_Female_White_Kindergarten"
+        },
+        {
+          "name": "Count of Student: Female, White, MiddleSchool",
+          "dcid": "Count_Student_Female_White_MiddleSchool"
+        },
+        {
+          "name": "Count of Student: Female, White, Pre Kindergarten",
+          "dcid": "Count_Student_Female_White_PreKindergarten"
+        },
+        {
+          "name": "Count of Student: Female, White, Pre Kindergarten And Kindergarten",
+          "dcid": "dc/sy56qp8y3csf2"
+        },
+        {
+          "name": "Count of Student: Female, White, PrimarySchool",
+          "dcid": "Count_Student_Female_White_PrimarySchool"
+        },
+        {
+          "name": "Count of Student: Female, White, School Grade 1",
+          "dcid": "Count_Student_Female_White_SchoolGrade1"
+        },
+        {
+          "name": "Count of Student: Female, White, School Grade 10",
+          "dcid": "Count_Student_Female_White_SchoolGrade10"
+        },
+        {
+          "name": "Count of Student: Female, White, School Grade 11",
+          "dcid": "Count_Student_Female_White_SchoolGrade11"
+        },
+        {
+          "name": "Count of Student: Female, White, School Grade 12",
+          "dcid": "Count_Student_Female_White_SchoolGrade12"
+        },
+        {
+          "name": "Count of Student: Female, White, School Grade 13",
+          "dcid": "Count_Student_Female_White_SchoolGrade13"
+        },
+        {
+          "name": "Count of Student: Female, White, School Grade 2",
+          "dcid": "Count_Student_Female_White_SchoolGrade2"
+        },
+        {
+          "name": "Count of Student: Female, White, School Grade 3",
+          "dcid": "Count_Student_Female_White_SchoolGrade3"
+        },
+        {
+          "name": "Count of Student: Female, White, School Grade 4",
+          "dcid": "Count_Student_Female_White_SchoolGrade4"
+        },
+        {
+          "name": "Count of Student: Female, White, School Grade 5",
+          "dcid": "Count_Student_Female_White_SchoolGrade5"
+        },
+        {
+          "name": "Count of Student: Female, White, School Grade 6",
+          "dcid": "Count_Student_Female_White_SchoolGrade6"
+        },
+        {
+          "name": "Count of Student: Female, White, School Grade 7",
+          "dcid": "Count_Student_Female_White_SchoolGrade7"
+        },
+        {
+          "name": "Count of Student: Female, White, School Grade 8",
+          "dcid": "Count_Student_Female_White_SchoolGrade8"
+        },
+        {
+          "name": "Count of Student: Female, White, School Grade 9",
+          "dcid": "Count_Student_Female_White_SchoolGrade9"
+        },
+        {
+          "name": "Count of Student: Female, White, Ungraded Classes",
+          "dcid": "Count_Student_Female_White_UngradedClasses"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/MortalityEvent_Age_Gender-Female",
       "name": "Mortality Event With Age, Gender = Female",
       "statVars": [
@@ -18207,608 +18893,6 @@
         {
           "name": "Population: 1 - 4 Years, Female, White Alone Not Hispanic or Latino",
           "dcid": "Count_Person_1To4Years_Female_WhiteAloneNotHispanicOrLatino"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_Race-AmericanIndianOrAlaskaNative_SchoolGradeLevel",
-      "name": "Student With Gender = Female, Race = American Indian or Alaska Native, School Grade Level",
-      "statVars": [
-        {
-          "name": "Count of Student: Female, American Indian or Alaska Native, Adult Education",
-          "dcid": "Count_Student_Female_AmericanIndianOrAlaskaNative_AdultEducation"
-        },
-        {
-          "name": "Count of Student: Female, American Indian or Alaska Native, HighSchool",
-          "dcid": "Count_Student_Female_AmericanIndianOrAlaskaNative_HighSchool"
-        },
-        {
-          "name": "Count of Student: Female, American Indian or Alaska Native, Kindergarten",
-          "dcid": "Count_Student_Female_AmericanIndianOrAlaskaNative_Kindergarten"
-        },
-        {
-          "name": "Count of Student: Female, American Indian or Alaska Native, MiddleSchool",
-          "dcid": "Count_Student_Female_AmericanIndianOrAlaskaNative_MiddleSchool"
-        },
-        {
-          "name": "Count of Student: Female, American Indian or Alaska Native, Pre Kindergarten",
-          "dcid": "Count_Student_Female_AmericanIndianOrAlaskaNative_PreKindergarten"
-        },
-        {
-          "name": "Count of Student: Female, American Indian or Alaska Native, PrimarySchool",
-          "dcid": "Count_Student_Female_AmericanIndianOrAlaskaNative_PrimarySchool"
-        },
-        {
-          "name": "Count of Student: Female, American Indian or Alaska Native, School Grade 1",
-          "dcid": "Count_Student_Female_AmericanIndianOrAlaskaNative_SchoolGrade1"
-        },
-        {
-          "name": "Count of Student: Female, American Indian or Alaska Native, School Grade 10",
-          "dcid": "Count_Student_Female_AmericanIndianOrAlaskaNative_SchoolGrade10"
-        },
-        {
-          "name": "Count of Student: Female, American Indian or Alaska Native, School Grade 11",
-          "dcid": "Count_Student_Female_AmericanIndianOrAlaskaNative_SchoolGrade11"
-        },
-        {
-          "name": "Count of Student: Female, American Indian or Alaska Native, School Grade 12",
-          "dcid": "Count_Student_Female_AmericanIndianOrAlaskaNative_SchoolGrade12"
-        },
-        {
-          "name": "Count of Student: Female, American Indian or Alaska Native, School Grade 13",
-          "dcid": "Count_Student_Female_AmericanIndianOrAlaskaNative_SchoolGrade13"
-        },
-        {
-          "name": "Count of Student: Female, American Indian or Alaska Native, School Grade 2",
-          "dcid": "Count_Student_Female_AmericanIndianOrAlaskaNative_SchoolGrade2"
-        },
-        {
-          "name": "Count of Student: Female, American Indian or Alaska Native, School Grade 3",
-          "dcid": "Count_Student_Female_AmericanIndianOrAlaskaNative_SchoolGrade3"
-        },
-        {
-          "name": "Count of Student: Female, American Indian or Alaska Native, School Grade 4",
-          "dcid": "Count_Student_Female_AmericanIndianOrAlaskaNative_SchoolGrade4"
-        },
-        {
-          "name": "Count of Student: Female, American Indian or Alaska Native, School Grade 5",
-          "dcid": "Count_Student_Female_AmericanIndianOrAlaskaNative_SchoolGrade5"
-        },
-        {
-          "name": "Count of Student: Female, American Indian or Alaska Native, School Grade 6",
-          "dcid": "Count_Student_Female_AmericanIndianOrAlaskaNative_SchoolGrade6"
-        },
-        {
-          "name": "Count of Student: Female, American Indian or Alaska Native, School Grade 7",
-          "dcid": "Count_Student_Female_AmericanIndianOrAlaskaNative_SchoolGrade7"
-        },
-        {
-          "name": "Count of Student: Female, American Indian or Alaska Native, School Grade 8",
-          "dcid": "Count_Student_Female_AmericanIndianOrAlaskaNative_SchoolGrade8"
-        },
-        {
-          "name": "Count of Student: Female, American Indian or Alaska Native, School Grade 9",
-          "dcid": "Count_Student_Female_AmericanIndianOrAlaskaNative_SchoolGrade9"
-        },
-        {
-          "name": "Count of Student: Female, American Indian or Alaska Native, Ungraded Classes",
-          "dcid": "Count_Student_Female_AmericanIndianOrAlaskaNative_UngradedClasses"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_Race-Asian_SchoolGradeLevel",
-      "name": "Student With Gender = Female, Race = Asian, School Grade Level",
-      "statVars": [
-        {
-          "name": "Count of Student: Female, Asian, Adult Education",
-          "dcid": "Count_Student_Female_Asian_AdultEducation"
-        },
-        {
-          "name": "Count of Student: Female, Asian, HighSchool",
-          "dcid": "Count_Student_Female_Asian_HighSchool"
-        },
-        {
-          "name": "Count of Student: Female, Asian, Kindergarten",
-          "dcid": "Count_Student_Female_Asian_Kindergarten"
-        },
-        {
-          "name": "Count of Student: Female, Asian, MiddleSchool",
-          "dcid": "Count_Student_Female_Asian_MiddleSchool"
-        },
-        {
-          "name": "Count of Student: Female, Asian, Pre Kindergarten",
-          "dcid": "Count_Student_Female_Asian_PreKindergarten"
-        },
-        {
-          "name": "Count of Student: Female, Asian, PrimarySchool",
-          "dcid": "Count_Student_Female_Asian_PrimarySchool"
-        },
-        {
-          "name": "Count of Student: Female, Asian, School Grade 1",
-          "dcid": "Count_Student_Female_Asian_SchoolGrade1"
-        },
-        {
-          "name": "Count of Student: Female, Asian, School Grade 10",
-          "dcid": "Count_Student_Female_Asian_SchoolGrade10"
-        },
-        {
-          "name": "Count of Student: Female, Asian, School Grade 11",
-          "dcid": "Count_Student_Female_Asian_SchoolGrade11"
-        },
-        {
-          "name": "Count of Student: Female, Asian, School Grade 12",
-          "dcid": "Count_Student_Female_Asian_SchoolGrade12"
-        },
-        {
-          "name": "Count of Student: Female, Asian, School Grade 13",
-          "dcid": "Count_Student_Female_Asian_SchoolGrade13"
-        },
-        {
-          "name": "Count of Student: Female, Asian, School Grade 2",
-          "dcid": "Count_Student_Female_Asian_SchoolGrade2"
-        },
-        {
-          "name": "Count of Student: Female, Asian, School Grade 3",
-          "dcid": "Count_Student_Female_Asian_SchoolGrade3"
-        },
-        {
-          "name": "Count of Student: Female, Asian, School Grade 4",
-          "dcid": "Count_Student_Female_Asian_SchoolGrade4"
-        },
-        {
-          "name": "Count of Student: Female, Asian, School Grade 5",
-          "dcid": "Count_Student_Female_Asian_SchoolGrade5"
-        },
-        {
-          "name": "Count of Student: Female, Asian, School Grade 6",
-          "dcid": "Count_Student_Female_Asian_SchoolGrade6"
-        },
-        {
-          "name": "Count of Student: Female, Asian, School Grade 7",
-          "dcid": "Count_Student_Female_Asian_SchoolGrade7"
-        },
-        {
-          "name": "Count of Student: Female, Asian, School Grade 8",
-          "dcid": "Count_Student_Female_Asian_SchoolGrade8"
-        },
-        {
-          "name": "Count of Student: Female, Asian, School Grade 9",
-          "dcid": "Count_Student_Female_Asian_SchoolGrade9"
-        },
-        {
-          "name": "Count of Student: Female, Asian, Ungraded Classes",
-          "dcid": "Count_Student_Female_Asian_UngradedClasses"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_Race-Black_SchoolGradeLevel",
-      "name": "Student With Gender = Female, Race = Black, School Grade Level",
-      "statVars": [
-        {
-          "name": "Count of Student: Female, Black, Adult Education",
-          "dcid": "Count_Student_Female_Black_AdultEducation"
-        },
-        {
-          "name": "Count of Student: Female, Black, HighSchool",
-          "dcid": "Count_Student_Female_Black_HighSchool"
-        },
-        {
-          "name": "Count of Student: Female, Black, Kindergarten",
-          "dcid": "Count_Student_Female_Black_Kindergarten"
-        },
-        {
-          "name": "Count of Student: Female, Black, MiddleSchool",
-          "dcid": "Count_Student_Female_Black_MiddleSchool"
-        },
-        {
-          "name": "Count of Student: Female, Black, Pre Kindergarten",
-          "dcid": "Count_Student_Female_Black_PreKindergarten"
-        },
-        {
-          "name": "Count of Student: Female, Black, PrimarySchool",
-          "dcid": "Count_Student_Female_Black_PrimarySchool"
-        },
-        {
-          "name": "Count of Student: Female, Black, School Grade 1",
-          "dcid": "Count_Student_Female_Black_SchoolGrade1"
-        },
-        {
-          "name": "Count of Student: Female, Black, School Grade 10",
-          "dcid": "Count_Student_Female_Black_SchoolGrade10"
-        },
-        {
-          "name": "Count of Student: Female, Black, School Grade 11",
-          "dcid": "Count_Student_Female_Black_SchoolGrade11"
-        },
-        {
-          "name": "Count of Student: Female, Black, School Grade 12",
-          "dcid": "Count_Student_Female_Black_SchoolGrade12"
-        },
-        {
-          "name": "Count of Student: Female, Black, School Grade 13",
-          "dcid": "Count_Student_Female_Black_SchoolGrade13"
-        },
-        {
-          "name": "Count of Student: Female, Black, School Grade 2",
-          "dcid": "Count_Student_Female_Black_SchoolGrade2"
-        },
-        {
-          "name": "Count of Student: Female, Black, School Grade 3",
-          "dcid": "Count_Student_Female_Black_SchoolGrade3"
-        },
-        {
-          "name": "Count of Student: Female, Black, School Grade 4",
-          "dcid": "Count_Student_Female_Black_SchoolGrade4"
-        },
-        {
-          "name": "Count of Student: Female, Black, School Grade 5",
-          "dcid": "Count_Student_Female_Black_SchoolGrade5"
-        },
-        {
-          "name": "Count of Student: Female, Black, School Grade 6",
-          "dcid": "Count_Student_Female_Black_SchoolGrade6"
-        },
-        {
-          "name": "Count of Student: Female, Black, School Grade 7",
-          "dcid": "Count_Student_Female_Black_SchoolGrade7"
-        },
-        {
-          "name": "Count of Student: Female, Black, School Grade 8",
-          "dcid": "Count_Student_Female_Black_SchoolGrade8"
-        },
-        {
-          "name": "Count of Student: Female, Black, School Grade 9",
-          "dcid": "Count_Student_Female_Black_SchoolGrade9"
-        },
-        {
-          "name": "Count of Student: Female, Black, Ungraded Classes",
-          "dcid": "Count_Student_Female_Black_UngradedClasses"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_Race-HawaiianNativeOrPacificIslander_SchoolGradeLevel",
-      "name": "Student With Gender = Female, Race = Hawaiian Native or Pacific Islander, School Grade Level",
-      "statVars": [
-        {
-          "name": "Count of Student: Female, Hawaiian Native or Pacific Islander, Adult Education",
-          "dcid": "Count_Student_Female_HawaiianNativeOrPacificIslander_AdultEducation"
-        },
-        {
-          "name": "Count of Student: Female, Hawaiian Native or Pacific Islander, HighSchool",
-          "dcid": "Count_Student_Female_HawaiianNativeOrPacificIslander_HighSchool"
-        },
-        {
-          "name": "Count of Student: Female, Hawaiian Native or Pacific Islander, Kindergarten",
-          "dcid": "Count_Student_Female_HawaiianNativeOrPacificIslander_Kindergarten"
-        },
-        {
-          "name": "Count of Student: Female, Hawaiian Native or Pacific Islander, MiddleSchool",
-          "dcid": "Count_Student_Female_HawaiianNativeOrPacificIslander_MiddleSchool"
-        },
-        {
-          "name": "Count of Student: Female, Hawaiian Native or Pacific Islander, Pre Kindergarten",
-          "dcid": "Count_Student_Female_HawaiianNativeOrPacificIslander_PreKindergarten"
-        },
-        {
-          "name": "Count of Student: Female, Hawaiian Native or Pacific Islander, PrimarySchool",
-          "dcid": "Count_Student_Female_HawaiianNativeOrPacificIslander_PrimarySchool"
-        },
-        {
-          "name": "Count of Student: Female, Hawaiian Native or Pacific Islander, School Grade 1",
-          "dcid": "Count_Student_Female_HawaiianNativeOrPacificIslander_SchoolGrade1"
-        },
-        {
-          "name": "Count of Student: Female, Hawaiian Native or Pacific Islander, School Grade 10",
-          "dcid": "Count_Student_Female_HawaiianNativeOrPacificIslander_SchoolGrade10"
-        },
-        {
-          "name": "Count of Student: Female, Hawaiian Native or Pacific Islander, School Grade 11",
-          "dcid": "Count_Student_Female_HawaiianNativeOrPacificIslander_SchoolGrade11"
-        },
-        {
-          "name": "Count of Student: Female, Hawaiian Native or Pacific Islander, School Grade 12",
-          "dcid": "Count_Student_Female_HawaiianNativeOrPacificIslander_SchoolGrade12"
-        },
-        {
-          "name": "Count of Student: Female, Hawaiian Native or Pacific Islander, School Grade 13",
-          "dcid": "Count_Student_Female_HawaiianNativeOrPacificIslander_SchoolGrade13"
-        },
-        {
-          "name": "Count of Student: Female, Hawaiian Native or Pacific Islander, School Grade 2",
-          "dcid": "Count_Student_Female_HawaiianNativeOrPacificIslander_SchoolGrade2"
-        },
-        {
-          "name": "Count of Student: Female, Hawaiian Native or Pacific Islander, School Grade 3",
-          "dcid": "Count_Student_Female_HawaiianNativeOrPacificIslander_SchoolGrade3"
-        },
-        {
-          "name": "Count of Student: Female, Hawaiian Native or Pacific Islander, School Grade 4",
-          "dcid": "Count_Student_Female_HawaiianNativeOrPacificIslander_SchoolGrade4"
-        },
-        {
-          "name": "Count of Student: Female, Hawaiian Native or Pacific Islander, School Grade 5",
-          "dcid": "Count_Student_Female_HawaiianNativeOrPacificIslander_SchoolGrade5"
-        },
-        {
-          "name": "Count of Student: Female, Hawaiian Native or Pacific Islander, School Grade 6",
-          "dcid": "Count_Student_Female_HawaiianNativeOrPacificIslander_SchoolGrade6"
-        },
-        {
-          "name": "Count of Student: Female, Hawaiian Native or Pacific Islander, School Grade 7",
-          "dcid": "Count_Student_Female_HawaiianNativeOrPacificIslander_SchoolGrade7"
-        },
-        {
-          "name": "Count of Student: Female, Hawaiian Native or Pacific Islander, School Grade 8",
-          "dcid": "Count_Student_Female_HawaiianNativeOrPacificIslander_SchoolGrade8"
-        },
-        {
-          "name": "Count of Student: Female, Hawaiian Native or Pacific Islander, School Grade 9",
-          "dcid": "Count_Student_Female_HawaiianNativeOrPacificIslander_SchoolGrade9"
-        },
-        {
-          "name": "Count of Student: Female, Hawaiian Native or Pacific Islander, Ungraded Classes",
-          "dcid": "Count_Student_Female_HawaiianNativeOrPacificIslander_UngradedClasses"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_Race-HispanicOrLatino_SchoolGradeLevel",
-      "name": "Student With Gender = Female, Race = Hispanic or Latino, School Grade Level",
-      "statVars": [
-        {
-          "name": "Count of Student: Female, Hispanic or Latino, Adult Education",
-          "dcid": "Count_Student_Female_HispanicOrLatino_AdultEducation"
-        },
-        {
-          "name": "Count of Student: Female, Hispanic or Latino, HighSchool",
-          "dcid": "Count_Student_Female_HispanicOrLatino_HighSchool"
-        },
-        {
-          "name": "Count of Student: Female, Hispanic or Latino, Kindergarten",
-          "dcid": "Count_Student_Female_HispanicOrLatino_Kindergarten"
-        },
-        {
-          "name": "Count of Student: Female, Hispanic or Latino, MiddleSchool",
-          "dcid": "Count_Student_Female_HispanicOrLatino_MiddleSchool"
-        },
-        {
-          "name": "Count of Student: Female, Hispanic or Latino, Pre Kindergarten",
-          "dcid": "Count_Student_Female_HispanicOrLatino_PreKindergarten"
-        },
-        {
-          "name": "Count of Student: Female, Hispanic or Latino, PrimarySchool",
-          "dcid": "Count_Student_Female_HispanicOrLatino_PrimarySchool"
-        },
-        {
-          "name": "Count of Student: Female, Hispanic or Latino, School Grade 1",
-          "dcid": "Count_Student_Female_HispanicOrLatino_SchoolGrade1"
-        },
-        {
-          "name": "Count of Student: Female, Hispanic or Latino, School Grade 10",
-          "dcid": "Count_Student_Female_HispanicOrLatino_SchoolGrade10"
-        },
-        {
-          "name": "Count of Student: Female, Hispanic or Latino, School Grade 11",
-          "dcid": "Count_Student_Female_HispanicOrLatino_SchoolGrade11"
-        },
-        {
-          "name": "Count of Student: Female, Hispanic or Latino, School Grade 12",
-          "dcid": "Count_Student_Female_HispanicOrLatino_SchoolGrade12"
-        },
-        {
-          "name": "Count of Student: Female, Hispanic or Latino, School Grade 13",
-          "dcid": "Count_Student_Female_HispanicOrLatino_SchoolGrade13"
-        },
-        {
-          "name": "Count of Student: Female, Hispanic or Latino, School Grade 2",
-          "dcid": "Count_Student_Female_HispanicOrLatino_SchoolGrade2"
-        },
-        {
-          "name": "Count of Student: Female, Hispanic or Latino, School Grade 3",
-          "dcid": "Count_Student_Female_HispanicOrLatino_SchoolGrade3"
-        },
-        {
-          "name": "Count of Student: Female, Hispanic or Latino, School Grade 4",
-          "dcid": "Count_Student_Female_HispanicOrLatino_SchoolGrade4"
-        },
-        {
-          "name": "Count of Student: Female, Hispanic or Latino, School Grade 5",
-          "dcid": "Count_Student_Female_HispanicOrLatino_SchoolGrade5"
-        },
-        {
-          "name": "Count of Student: Female, Hispanic or Latino, School Grade 6",
-          "dcid": "Count_Student_Female_HispanicOrLatino_SchoolGrade6"
-        },
-        {
-          "name": "Count of Student: Female, Hispanic or Latino, School Grade 7",
-          "dcid": "Count_Student_Female_HispanicOrLatino_SchoolGrade7"
-        },
-        {
-          "name": "Count of Student: Female, Hispanic or Latino, School Grade 8",
-          "dcid": "Count_Student_Female_HispanicOrLatino_SchoolGrade8"
-        },
-        {
-          "name": "Count of Student: Female, Hispanic or Latino, School Grade 9",
-          "dcid": "Count_Student_Female_HispanicOrLatino_SchoolGrade9"
-        },
-        {
-          "name": "Count of Student: Female, Hispanic or Latino, Ungraded Classes",
-          "dcid": "Count_Student_Female_HispanicOrLatino_UngradedClasses"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_Race-TwoOrMoreRaces_SchoolGradeLevel",
-      "name": "Student With Gender = Female, Race = Two or More Races, School Grade Level",
-      "statVars": [
-        {
-          "name": "Count of Student: Female, Two or More Races, Adult Education",
-          "dcid": "Count_Student_Female_TwoOrMoreRaces_AdultEducation"
-        },
-        {
-          "name": "Count of Student: Female, Two or More Races, HighSchool",
-          "dcid": "Count_Student_Female_TwoOrMoreRaces_HighSchool"
-        },
-        {
-          "name": "Count of Student: Female, Two or More Races, Kindergarten",
-          "dcid": "Count_Student_Female_TwoOrMoreRaces_Kindergarten"
-        },
-        {
-          "name": "Count of Student: Female, Two or More Races, MiddleSchool",
-          "dcid": "Count_Student_Female_TwoOrMoreRaces_MiddleSchool"
-        },
-        {
-          "name": "Count of Student: Female, Two or More Races, Pre Kindergarten",
-          "dcid": "Count_Student_Female_TwoOrMoreRaces_PreKindergarten"
-        },
-        {
-          "name": "Count of Student: Female, Two or More Races, PrimarySchool",
-          "dcid": "Count_Student_Female_TwoOrMoreRaces_PrimarySchool"
-        },
-        {
-          "name": "Count of Student: Female, Two or More Races, School Grade 1",
-          "dcid": "Count_Student_Female_TwoOrMoreRaces_SchoolGrade1"
-        },
-        {
-          "name": "Count of Student: Female, Two or More Races, School Grade 10",
-          "dcid": "Count_Student_Female_TwoOrMoreRaces_SchoolGrade10"
-        },
-        {
-          "name": "Count of Student: Female, Two or More Races, School Grade 11",
-          "dcid": "Count_Student_Female_TwoOrMoreRaces_SchoolGrade11"
-        },
-        {
-          "name": "Count of Student: Female, Two or More Races, School Grade 12",
-          "dcid": "Count_Student_Female_TwoOrMoreRaces_SchoolGrade12"
-        },
-        {
-          "name": "Count of Student: Female, Two or More Races, School Grade 13",
-          "dcid": "Count_Student_Female_TwoOrMoreRaces_SchoolGrade13"
-        },
-        {
-          "name": "Count of Student: Female, Two or More Races, School Grade 2",
-          "dcid": "Count_Student_Female_TwoOrMoreRaces_SchoolGrade2"
-        },
-        {
-          "name": "Count of Student: Female, Two or More Races, School Grade 3",
-          "dcid": "Count_Student_Female_TwoOrMoreRaces_SchoolGrade3"
-        },
-        {
-          "name": "Count of Student: Female, Two or More Races, School Grade 4",
-          "dcid": "Count_Student_Female_TwoOrMoreRaces_SchoolGrade4"
-        },
-        {
-          "name": "Count of Student: Female, Two or More Races, School Grade 5",
-          "dcid": "Count_Student_Female_TwoOrMoreRaces_SchoolGrade5"
-        },
-        {
-          "name": "Count of Student: Female, Two or More Races, School Grade 6",
-          "dcid": "Count_Student_Female_TwoOrMoreRaces_SchoolGrade6"
-        },
-        {
-          "name": "Count of Student: Female, Two or More Races, School Grade 7",
-          "dcid": "Count_Student_Female_TwoOrMoreRaces_SchoolGrade7"
-        },
-        {
-          "name": "Count of Student: Female, Two or More Races, School Grade 8",
-          "dcid": "Count_Student_Female_TwoOrMoreRaces_SchoolGrade8"
-        },
-        {
-          "name": "Count of Student: Female, Two or More Races, School Grade 9",
-          "dcid": "Count_Student_Female_TwoOrMoreRaces_SchoolGrade9"
-        },
-        {
-          "name": "Count of Student: Female, Two or More Races, Ungraded Classes",
-          "dcid": "Count_Student_Female_TwoOrMoreRaces_UngradedClasses"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_Race-White_SchoolGradeLevel",
-      "name": "Student With Gender = Female, Race = White, School Grade Level",
-      "statVars": [
-        {
-          "name": "Count of Student: Female, White, Adult Education",
-          "dcid": "Count_Student_Female_White_AdultEducation"
-        },
-        {
-          "name": "Count of Student: Female, White, HighSchool",
-          "dcid": "Count_Student_Female_White_HighSchool"
-        },
-        {
-          "name": "Count of Student: Female, White, Kindergarten",
-          "dcid": "Count_Student_Female_White_Kindergarten"
-        },
-        {
-          "name": "Count of Student: Female, White, MiddleSchool",
-          "dcid": "Count_Student_Female_White_MiddleSchool"
-        },
-        {
-          "name": "Count of Student: Female, White, Pre Kindergarten",
-          "dcid": "Count_Student_Female_White_PreKindergarten"
-        },
-        {
-          "name": "Count of Student: Female, White, PrimarySchool",
-          "dcid": "Count_Student_Female_White_PrimarySchool"
-        },
-        {
-          "name": "Count of Student: Female, White, School Grade 1",
-          "dcid": "Count_Student_Female_White_SchoolGrade1"
-        },
-        {
-          "name": "Count of Student: Female, White, School Grade 10",
-          "dcid": "Count_Student_Female_White_SchoolGrade10"
-        },
-        {
-          "name": "Count of Student: Female, White, School Grade 11",
-          "dcid": "Count_Student_Female_White_SchoolGrade11"
-        },
-        {
-          "name": "Count of Student: Female, White, School Grade 12",
-          "dcid": "Count_Student_Female_White_SchoolGrade12"
-        },
-        {
-          "name": "Count of Student: Female, White, School Grade 13",
-          "dcid": "Count_Student_Female_White_SchoolGrade13"
-        },
-        {
-          "name": "Count of Student: Female, White, School Grade 2",
-          "dcid": "Count_Student_Female_White_SchoolGrade2"
-        },
-        {
-          "name": "Count of Student: Female, White, School Grade 3",
-          "dcid": "Count_Student_Female_White_SchoolGrade3"
-        },
-        {
-          "name": "Count of Student: Female, White, School Grade 4",
-          "dcid": "Count_Student_Female_White_SchoolGrade4"
-        },
-        {
-          "name": "Count of Student: Female, White, School Grade 5",
-          "dcid": "Count_Student_Female_White_SchoolGrade5"
-        },
-        {
-          "name": "Count of Student: Female, White, School Grade 6",
-          "dcid": "Count_Student_Female_White_SchoolGrade6"
-        },
-        {
-          "name": "Count of Student: Female, White, School Grade 7",
-          "dcid": "Count_Student_Female_White_SchoolGrade7"
-        },
-        {
-          "name": "Count of Student: Female, White, School Grade 8",
-          "dcid": "Count_Student_Female_White_SchoolGrade8"
-        },
-        {
-          "name": "Count of Student: Female, White, School Grade 9",
-          "dcid": "Count_Student_Female_White_SchoolGrade9"
-        },
-        {
-          "name": "Count of Student: Female, White, Ungraded Classes",
-          "dcid": "Count_Student_Female_White_UngradedClasses"
         }
       ]
     },
@@ -20005,6 +20089,48 @@
         {
           "name": "Population: 45 - 64 Years, Some College No Degree, Female",
           "dcid": "Count_Person_45To64Years_EducationalAttainmentSomeCollegeNoDegree_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years5To19_Gender-Female_Race",
+      "name": "Person With Age = 5 - 19 Years, Gender = Female, Race",
+      "statVars": [
+        {
+          "name": "Population: 5 - 19 Years, Female, American Indian or Alaska Native Alone",
+          "dcid": "dc/lhm5jqzqw9eh6"
+        },
+        {
+          "name": "Population: 5 - 19 Years, Female, Asian Alone",
+          "dcid": "dc/7ze0b65khtxm1"
+        },
+        {
+          "name": "Population: 5 - 19 Years, Female, Black or African American Alone",
+          "dcid": "dc/9tje7t59y5y02"
+        },
+        {
+          "name": "Population: 5 - 19 Years, Female, Hispanic or Latino",
+          "dcid": "dc/xzecyytxdwky7"
+        },
+        {
+          "name": "Population: 5 - 19 Years, Female, Native Hawaiian or Other Pacific Islander Alone",
+          "dcid": "dc/pl02dd7y395eg"
+        },
+        {
+          "name": "Population: 5 - 19 Years, Female, Some Other Race Alone",
+          "dcid": "dc/jltsyjw3tdes7"
+        },
+        {
+          "name": "Population: 5 - 19 Years, Female, Two or More Races",
+          "dcid": "dc/xrpwshke8kcs"
+        },
+        {
+          "name": "Population: 5 - 19 Years, Female, White Alone",
+          "dcid": "dc/9z8b964ld1xg7"
+        },
+        {
+          "name": "Population: 5 - 19 Years, Female, White Alone Not Hispanic or Latino",
+          "dcid": "dc/4wd0sckvzn9vc"
         }
       ]
     },
@@ -23007,36 +23133,6 @@
       ]
     },
     {
-      "dcid": "dc/g/Person_Age-Years5To19_Gender-Female_Race",
-      "name": "Person With Age = 5 - 19 Years, Gender = Female, Race",
-      "statVars": [
-        {
-          "name": "Population: 5 - 19 Years, Female, American Indian or Alaska Native Alone",
-          "dcid": "dc/lhm5jqzqw9eh6"
-        },
-        {
-          "name": "Population: 5 - 19 Years, Female, Asian Alone",
-          "dcid": "dc/7ze0b65khtxm1"
-        },
-        {
-          "name": "Population: 5 - 19 Years, Female, Native Hawaiian or Other Pacific Islander Alone",
-          "dcid": "dc/pl02dd7y395eg"
-        },
-        {
-          "name": "Population: 5 - 19 Years, Female, Some Other Race Alone",
-          "dcid": "dc/jltsyjw3tdes7"
-        },
-        {
-          "name": "Population: 5 - 19 Years, Female, Two or More Races",
-          "dcid": "dc/xrpwshke8kcs"
-        },
-        {
-          "name": "Population: 5 - 19 Years, Female, White Alone",
-          "dcid": "dc/9z8b964ld1xg7"
-        }
-      ]
-    },
-    {
       "dcid": "dc/g/Person_Age-Years55To64_Gender-Female_HealthInsurance",
       "name": "Person With Age = 55 - 64 Years, Gender = Female, Health Insurance",
       "statVars": [
@@ -23995,32 +24091,6 @@
         {
           "name": "Population: 45 - 54 Years, Female, Widowed",
           "dcid": "Count_Person_45To54Years_Female_Widowed"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years5To19_Gender-Female_MaritalStatus",
-      "name": "Person With Age = 5 - 19 Years, Gender = Female, Marital Status",
-      "statVars": [
-        {
-          "name": "Population: 5 - 19 Years, Female, Divorced",
-          "dcid": "dc/cefdbly7yh50c"
-        },
-        {
-          "name": "Population: 5 - 19 Years, Female, Married And Not Separated",
-          "dcid": "dc/qsyfvdxbdwrcd"
-        },
-        {
-          "name": "Population: 5 - 19 Years, Female, Never Married",
-          "dcid": "dc/ej6jw9pchlk97"
-        },
-        {
-          "name": "Population: 5 - 19 Years, Female, Separated",
-          "dcid": "dc/06wq7ykeyt5jh"
-        },
-        {
-          "name": "Population: 5 - 19 Years, Female, Widowed",
-          "dcid": "dc/b3yx3n4dv10g9"
         }
       ]
     },
@@ -29505,78 +29575,6 @@
       ]
     },
     {
-      "dcid": "dc/g/Person_Age-Years5To19_BirthEventStatus-BirthInThePast12Months_Gender-Female",
-      "name": "Person With Age = 5 - 19 Years, Birth Event Status = Birth in The Past 12 Months, Gender = Female",
-      "statVars": [
-        {
-          "name": "Population: 5 - 19 Years, Birth in The Past 12 Months, Female",
-          "dcid": "dc/5b40frccn136"
-        },
-        {
-          "name": "Population: 5 - 19 Years, Birth in The Past 12 Months, Female (As Fraction of Count Person 15 To 19 Years Female)",
-          "dcid": "dc/pbbm819kyt7v9"
-        },
-        {
-          "name": "Population: 5 - 19 Years, Birth in The Past 12 Months, Female, Unmarried",
-          "dcid": "dc/tc7srg5k1xv27"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years5To19_Gender-Female_Race-BlackOrAfricanAmericanAlone",
-      "name": "Person With Age = 5 - 19 Years, Gender = Female, Race = Black or African American Alone",
-      "statVars": [
-        {
-          "name": "Population: 5 - 19 Years, Female, Black or African American Alone",
-          "dcid": "dc/9tje7t59y5y02"
-        },
-        {
-          "name": "Population: 5 - 19 Years, Birth in The Past 12 Months, Female, Black or African American Alone",
-          "dcid": "dc/b6rfg7nc1k59"
-        },
-        {
-          "name": "Population: 5 - 19 Years, Female, Ever Married, Black or African American Alone",
-          "dcid": "dc/90h7gtd4pkp6f"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years5To19_Gender-Female_Race-HispanicOrLatino",
-      "name": "Person With Age = 5 - 19 Years, Gender = Female, Race = Hispanic or Latino",
-      "statVars": [
-        {
-          "name": "Population: 5 - 19 Years, Female, Hispanic or Latino",
-          "dcid": "dc/xzecyytxdwky7"
-        },
-        {
-          "name": "Population: 5 - 19 Years, Birth in The Past 12 Months, Female, Hispanic or Latino",
-          "dcid": "dc/bd3mwh95fz1bd"
-        },
-        {
-          "name": "Population: 5 - 19 Years, Female, Ever Married, Hispanic or Latino",
-          "dcid": "dc/46bw4y3knm2dc"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years5To19_Gender-Female_Race-WhiteAloneNotHispanicOrLatino",
-      "name": "Person With Age = 5 - 19 Years, Gender = Female, Race = White Alone Not Hispanic or Latino",
-      "statVars": [
-        {
-          "name": "Population: 5 - 19 Years, Female, White Alone Not Hispanic or Latino",
-          "dcid": "dc/4wd0sckvzn9vc"
-        },
-        {
-          "name": "Population: 5 - 19 Years, Birth in The Past 12 Months, Female, White Alone Not Hispanic or Latino",
-          "dcid": "dc/m3lty26g9gnbc"
-        },
-        {
-          "name": "Population: 5 - 19 Years, Female, Ever Married, White Alone Not Hispanic or Latino",
-          "dcid": "dc/jn7qhhlxvceyg"
-        }
-      ]
-    },
-    {
       "dcid": "dc/g/Person_Age-Years5To19_Gender-Female_TypeOfSchool",
       "name": "Person With Age = 5 - 19 Years, Gender = Female, Type of School",
       "statVars": [
@@ -31769,24 +31767,6 @@
         {
           "name": "Percentage Never Or Occasionally, Consumption Of Vegetables Among Urban, Female Population",
           "dcid": "Percent_NeverOrOccasionally_ConsumptionOfVegetables_In_Count_Person_Urban_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years15To50_BirthEventStatus-BirthInThePast12Months_EducationalAttainment-BachelorsDegreeOrHigher_Gender-Female",
-      "name": "Person With Age = 15 - 50 Years, Birth Event Status = Birth in The Past 12 Months, Educational Attainment = Bachelors Degree or Higher, Gender = Female",
-      "statVars": [
-        {
-          "name": "Population: 15 - 50 Years, Birth in The Past 12 Months, Bachelors Degree or Higher, Female",
-          "dcid": "Count_Person_15To50Years_BirthInThePast12Months_EducationalAttainmentBachelorsDegreeOrHigher_Female"
-        },
-        {
-          "name": "Population: 15 - 50 Years, Birth in The Past 12 Months, Bachelors Degree or Higher, Female (As Fraction of Count Person 15 To 50 Years Educational Attainment Bachelors Degree or Higher Female)",
-          "dcid": "Count_Person_15To50Years_BirthInThePast12Months_EducationalAttainmentBachelorsDegreeOrHigher_Female_AsAFractionOf_Count_Person_15To50Years_EducationalAttainmentBachelorsDegreeOrHigher_Female"
-        },
-        {
-          "name": "Population: 15 - 50 Years, Birth in The Past 12 Months, Bachelors Degree or Higher, Female (As Fraction of Count Person 15 To 50 Years Educational Attainment Graduate or Professional Degree Female)",
-          "dcid": "dc/pz6y0f6897ded"
         }
       ]
     },
@@ -36639,6 +36619,90 @@
         {
           "name": "Population: 16 Years or More, Not in Labor Force, Female, Married in The Past 12 Months",
           "dcid": "Count_Person_16OrMoreYears_NotInLaborForce_Female_MarriedInThePast12Months"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_LaborForceStatus-InLaborForce_MaritalStatus-DivorcedInThePast12Months",
+      "name": "Person With Labor Force Status = in Labor Force, Gender = Female, Marital Status = Divorced in The Past 12 Months",
+      "statVars": [
+        {
+          "name": "Population: in Labor Force, Female, Divorced in The Past 12 Months",
+          "dcid": "Count_Person_InLaborForce_Female_DivorcedInThePast12Months"
+        },
+        {
+          "name": "Population: 16 Years or More, in Labor Force, Female, Divorced in The Past 12 Months",
+          "dcid": "Count_Person_16OrMoreYears_InLaborForce_Female_DivorcedInThePast12Months"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_LaborForceStatus-InLaborForce_MaritalStatus-MarriedInThePast12Months",
+      "name": "Person With Labor Force Status = in Labor Force, Gender = Female, Marital Status = Married in The Past 12 Months",
+      "statVars": [
+        {
+          "name": "Population: in Labor Force, Female, Married in The Past 12 Months",
+          "dcid": "Count_Person_InLaborForce_Female_MarriedInThePast12Months"
+        },
+        {
+          "name": "Population: 16 Years or More, in Labor Force, Female, Married in The Past 12 Months",
+          "dcid": "Count_Person_16OrMoreYears_InLaborForce_Female_MarriedInThePast12Months"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_OffenderEthnicity-HispanicOrLatino_OffenderType-OffenderEthnicityKnown_TargetedGender-Female",
+      "name": "Hate Crime Incidents With Bias Motivation = Gender, Offender Ethnicity = Hispanic or Latino, Offender Type = Offender Ethnicity Known, Targeted Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Hate Crime Incidents: Bias Against Gender, Hispanic or Latino Offender, Offender Ethnicity Known, Female Victim",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderEthnicityHispanicOrLatino_Female"
+        },
+        {
+          "name": "Count of Hate Crime Incidents (Offense): Bias Against Gender, Hispanic or Latino Offender, Offender Ethnicity Known, Female Victim",
+          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderEthnicityHispanicOrLatino_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_OffenderEthnicity-NotHispanicOrLatino_OffenderType-OffenderEthnicityKnown_TargetedGender-Female",
+      "name": "Hate Crime Incidents With Bias Motivation = Gender, Offender Ethnicity = Not Hispanic or Latino, Offender Type = Offender Ethnicity Known, Targeted Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Hate Crime Incidents: Bias Against Gender, Not Hispanic or Latino Offender, Offender Ethnicity Known, Female Victim",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderEthnicityNotHispanicOrLatino_Female"
+        },
+        {
+          "name": "Count of Hate Crime Incidents (Offense): Bias Against Gender, Not Hispanic or Latino Offender, Offender Ethnicity Known, Female Victim",
+          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderEthnicityNotHispanicOrLatino_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_OffenderRace-AmericanIndianOrAlaskaNativeAlone_OffenderType-OffenderRaceKnown_TargetedGender-Female",
+      "name": "Hate Crime Incidents With Bias Motivation = Gender, Offender Race = American Indian or Alaska Native Alone, Offender Type = Offender Race Known, Targeted Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Hate Crime Incidents: Bias Against Gender, American Indian or Alaska Native Alone Offender, Offender Race Known, Female Victim",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderRaceAmericanIndianOrAlaskaNativeAlone_Female"
+        },
+        {
+          "name": "Count of Hate Crime Incidents (Offense): Bias Against Gender, American Indian or Alaska Native Alone Offender, Offender Race Known, Female Victim",
+          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderRaceAmericanIndianOrAlaskaNativeAlone_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_OffenderRace-AsianAlone_OffenderType-OffenderRaceKnown_TargetedGender-Female",
+      "name": "Hate Crime Incidents With Bias Motivation = Gender, Offender Race = Asian Alone, Offender Type = Offender Race Known, Targeted Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Hate Crime Incidents: Bias Against Gender, Asian Alone Offender, Offender Race Known, Female Victim",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderRaceAsianAlone_Female"
+        },
+        {
+          "name": "Count of Hate Crime Incidents (Offense): Bias Against Gender, Asian Alone Offender, Offender Race Known, Female Victim",
+          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderRaceAsianAlone_Female"
         }
       ]
     }

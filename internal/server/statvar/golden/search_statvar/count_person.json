@@ -1441,6 +1441,10 @@
       "dcid": "Count_Person_WithOneTypeOfHealthInsurance"
     },
     {
+      "name": "Population: With Own Children Under 18",
+      "dcid": "Count_Person_WithOwnChildrenUnder18"
+    },
+    {
       "name": "Population: With Private Health Insurance",
       "dcid": "Count_Person_WithPrivateHealthInsurance"
     },
@@ -3995,10 +3999,6 @@
     {
       "name": "Population: 25 - 34 Years, Born in State of Residence",
       "dcid": "Count_Person_25To34Years_BornInStateOfResidence"
-    },
-    {
-      "name": "Population: 25 - 34 Years, College or University Student Housing",
-      "dcid": "Count_Person_25To34Years_ResidesInCollegeOrUniversityStudentHousing"
     }
   ],
   "matches": [

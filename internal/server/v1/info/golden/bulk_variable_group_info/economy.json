@@ -40,6 +40,11 @@
             "displayName": "Consumer Goods And Services"
           },
           {
+            "id": "dc/g/Currency",
+            "specializedEntity": "Currency",
+            "displayName": "Currency"
+          },
+          {
             "id": "dc/g/Debt",
             "specializedEntity": "Debt",
             "displayName": "Debt"
