@@ -94,6 +94,16 @@ func TestEventCollection(t *testing.T) {
 				0,
 				"CycloneEvent_Earth_201005.json",
 			},
+			{
+				"DroughtEvent",
+				"country/BFA",
+				"2022-04",
+				"area",
+				"SquareKilometer",
+				10,
+				100000,
+				"DroughtEvent_BFA_202204.json",
+			},
 		} {
 			resp, err := mixer.EventCollection(ctx, &pb.EventCollectionRequest{
 				EventType:         c.eventType,
