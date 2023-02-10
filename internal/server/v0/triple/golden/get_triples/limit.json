@@ -4,7 +4,8 @@
       "subjectId": "City",
       "subjectName": "City",
       "subjectTypes": [
-        "Class"
+        "Class",
+        "LocationClassificationEnum"
       ],
       "predicate": "name",
       "objectValue": "City",
@@ -14,7 +15,8 @@
       "subjectId": "City",
       "subjectName": "City",
       "subjectTypes": [
-        "Class"
+        "Class",
+        "LocationClassificationEnum"
       ],
       "predicate": "provenance",
       "objectId": "dc/5l5zxr1",
@@ -28,7 +30,8 @@
       "subjectId": "City",
       "subjectName": "City",
       "subjectTypes": [
-        "Class"
+        "Class",
+        "LocationClassificationEnum"
       ],
       "predicate": "subClassOf",
       "objectId": "AdministrativeArea",
@@ -42,11 +45,27 @@
       "subjectId": "City",
       "subjectName": "City",
       "subjectTypes": [
-        "Class"
+        "Class",
+        "LocationClassificationEnum"
       ],
       "predicate": "typeOf",
       "objectId": "Class",
       "objectName": "Class",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/5l5zxr1"
+    },
+    {
+      "subjectId": "City",
+      "subjectName": "City",
+      "subjectTypes": [
+        "Class",
+        "LocationClassificationEnum"
+      ],
+      "predicate": "typeOf",
+      "objectId": "LocationClassificationEnum",
+      "objectName": "LocationClassificationEnum",
       "objectTypes": [
         "Class"
       ],
@@ -62,7 +81,8 @@
       "objectId": "City",
       "objectName": "City",
       "objectTypes": [
-        "Class"
+        "Class",
+        "LocationClassificationEnum"
       ],
       "provenanceId": "dc/5l5zxr1"
     },
@@ -78,7 +98,8 @@
       "objectId": "City",
       "objectName": "City",
       "objectTypes": [
-        "Class"
+        "Class",
+        "LocationClassificationEnum"
       ],
       "provenanceId": "dc/5n63hr1"
     },
@@ -94,7 +115,8 @@
       "objectId": "City",
       "objectName": "City",
       "objectTypes": [
-        "Class"
+        "Class",
+        "LocationClassificationEnum"
       ],
       "provenanceId": "dc/5n63hr1"
     },
@@ -108,9 +130,10 @@
       "objectId": "City",
       "objectName": "City",
       "objectTypes": [
-        "Class"
+        "Class",
+        "LocationClassificationEnum"
       ],
-      "provenanceId": "dc/sm3m2w3"
+      "provenanceId": "dc/7he3522"
     },
     {
       "subjectId": "geoId/0100124",
@@ -122,7 +145,8 @@
       "objectId": "City",
       "objectName": "City",
       "objectTypes": [
-        "Class"
+        "Class",
+        "LocationClassificationEnum"
       ],
       "provenanceId": "dc/5n63hr1"
     },
@@ -136,7 +160,8 @@
       "objectId": "City",
       "objectName": "City",
       "objectTypes": [
-        "Class"
+        "Class",
+        "LocationClassificationEnum"
       ],
       "provenanceId": "dc/5n63hr1"
     },
@@ -150,7 +175,8 @@
       "objectId": "City",
       "objectName": "City",
       "objectTypes": [
-        "Class"
+        "Class",
+        "LocationClassificationEnum"
       ],
       "provenanceId": "dc/5n63hr1"
     },
@@ -164,7 +190,8 @@
       "objectId": "City",
       "objectName": "City",
       "objectTypes": [
-        "Class"
+        "Class",
+        "LocationClassificationEnum"
       ],
       "provenanceId": "dc/5j06ly1"
     },
@@ -180,7 +207,8 @@
       "objectId": "City",
       "objectName": "City",
       "objectTypes": [
-        "Class"
+        "Class",
+        "LocationClassificationEnum"
       ],
       "provenanceId": "dc/5n63hr1"
     },
@@ -196,7 +224,8 @@
       "objectId": "City",
       "objectName": "City",
       "objectTypes": [
-        "Class"
+        "Class",
+        "LocationClassificationEnum"
       ],
       "provenanceId": "dc/5n63hr1"
     },
@@ -212,7 +241,8 @@
       "objectId": "City",
       "objectName": "City",
       "objectTypes": [
-        "Class"
+        "Class",
+        "LocationClassificationEnum"
       ],
       "provenanceId": "dc/5n63hr1"
     },
@@ -228,7 +258,8 @@
       "objectId": "City",
       "objectName": "City",
       "objectTypes": [
-        "Class"
+        "Class",
+        "LocationClassificationEnum"
       ],
       "provenanceId": "dc/5n63hr1"
     },
@@ -243,7 +274,8 @@
       "objectId": "City",
       "objectName": "City",
       "objectTypes": [
-        "Class"
+        "Class",
+        "LocationClassificationEnum"
       ],
       "provenanceId": "dc/5n63hr1"
     },
@@ -258,7 +290,8 @@
       "objectId": "City",
       "objectName": "City",
       "objectTypes": [
-        "Class"
+        "Class",
+        "LocationClassificationEnum"
       ],
       "provenanceId": "dc/5n63hr1"
     },
@@ -273,9 +306,10 @@
       "objectId": "City",
       "objectName": "City",
       "objectTypes": [
-        "Class"
+        "Class",
+        "LocationClassificationEnum"
       ],
-      "provenanceId": "dc/sm3m2w3"
+      "provenanceId": "dc/7he3522"
     },
     {
       "subjectId": "geoId/0918780",
@@ -288,9 +322,10 @@
       "objectId": "City",
       "objectName": "City",
       "objectTypes": [
-        "Class"
+        "Class",
+        "LocationClassificationEnum"
       ],
-      "provenanceId": "dc/sm3m2w3"
+      "provenanceId": "dc/7he3522"
     },
     {
       "subjectId": "geoId/0927810",
@@ -303,9 +338,10 @@
       "objectId": "City",
       "objectName": "City",
       "objectTypes": [
-        "Class"
+        "Class",
+        "LocationClassificationEnum"
       ],
-      "provenanceId": "dc/sm3m2w3"
+      "provenanceId": "dc/7he3522"
     },
     {
       "subjectId": "geoId/0934460",
@@ -318,9 +354,10 @@
       "objectId": "City",
       "objectName": "City",
       "objectTypes": [
-        "Class"
+        "Class",
+        "LocationClassificationEnum"
       ],
-      "provenanceId": "dc/sm3m2w3"
+      "provenanceId": "dc/7he3522"
     },
     {
       "subjectId": "geoId/0939940",
@@ -333,9 +370,10 @@
       "objectId": "City",
       "objectName": "City",
       "objectTypes": [
-        "Class"
+        "Class",
+        "LocationClassificationEnum"
       ],
-      "provenanceId": "dc/sm3m2w3"
+      "provenanceId": "dc/7he3522"
     },
     {
       "subjectId": "geoId/3601923921",
@@ -348,7 +386,8 @@
       "objectId": "City",
       "objectName": "City",
       "objectTypes": [
-        "Class"
+        "Class",
+        "LocationClassificationEnum"
       ],
       "provenanceId": "dc/sm3m2w3"
     },
@@ -363,7 +402,8 @@
       "objectId": "City",
       "objectName": "City",
       "objectTypes": [
-        "Class"
+        "Class",
+        "LocationClassificationEnum"
       ],
       "provenanceId": "dc/sm3m2w3"
     },
@@ -378,7 +418,8 @@
       "objectId": "City",
       "objectName": "City",
       "objectTypes": [
-        "Class"
+        "Class",
+        "LocationClassificationEnum"
       ],
       "provenanceId": "dc/sm3m2w3"
     },
@@ -393,7 +434,8 @@
       "objectId": "City",
       "objectName": "City",
       "objectTypes": [
-        "Class"
+        "Class",
+        "LocationClassificationEnum"
       ],
       "provenanceId": "dc/sm3m2w3"
     },
@@ -410,7 +452,8 @@
       "objectId": "City",
       "objectName": "City",
       "objectTypes": [
-        "Class"
+        "Class",
+        "LocationClassificationEnum"
       ],
       "provenanceId": "dc/5n63hr1"
     },
@@ -428,7 +471,8 @@
       "objectId": "City",
       "objectName": "City",
       "objectTypes": [
-        "Class"
+        "Class",
+        "LocationClassificationEnum"
       ],
       "provenanceId": "dc/5n63hr1"
     },
@@ -444,7 +488,8 @@
       "objectId": "City",
       "objectName": "City",
       "objectTypes": [
-        "Class"
+        "Class",
+        "LocationClassificationEnum"
       ],
       "provenanceId": "dc/5n63hr1"
     },
@@ -460,7 +505,8 @@
       "objectId": "City",
       "objectName": "City",
       "objectTypes": [
-        "Class"
+        "Class",
+        "LocationClassificationEnum"
       ],
       "provenanceId": "dc/5n63hr1"
     },
@@ -476,7 +522,8 @@
       "objectId": "City",
       "objectName": "City",
       "objectTypes": [
-        "Class"
+        "Class",
+        "LocationClassificationEnum"
       ],
       "provenanceId": "dc/5n63hr1"
     },
@@ -492,7 +539,8 @@
       "objectId": "City",
       "objectName": "City",
       "objectTypes": [
-        "Class"
+        "Class",
+        "LocationClassificationEnum"
       ],
       "provenanceId": "dc/5n63hr1"
     },
@@ -508,7 +556,8 @@
       "objectId": "City",
       "objectName": "City",
       "objectTypes": [
-        "Class"
+        "Class",
+        "LocationClassificationEnum"
       ],
       "provenanceId": "dc/5n63hr1"
     },
@@ -525,7 +574,8 @@
       "objectId": "City",
       "objectName": "City",
       "objectTypes": [
-        "Class"
+        "Class",
+        "LocationClassificationEnum"
       ],
       "provenanceId": "dc/5n63hr1"
     },
@@ -540,7 +590,8 @@
       "objectId": "City",
       "objectName": "City",
       "objectTypes": [
-        "Class"
+        "Class",
+        "LocationClassificationEnum"
       ],
       "provenanceId": "dc/5j06ly1"
     },
@@ -556,7 +607,8 @@
       "objectId": "City",
       "objectName": "City",
       "objectTypes": [
-        "Class"
+        "Class",
+        "LocationClassificationEnum"
       ],
       "provenanceId": "dc/5j06ly1"
     },
@@ -571,7 +623,8 @@
       "objectId": "City",
       "objectName": "City",
       "objectTypes": [
-        "Class"
+        "Class",
+        "LocationClassificationEnum"
       ],
       "provenanceId": "dc/5j06ly1"
     },
@@ -586,7 +639,8 @@
       "objectId": "City",
       "objectName": "City",
       "objectTypes": [
-        "Class"
+        "Class",
+        "LocationClassificationEnum"
       ],
       "provenanceId": "dc/5n63hr1"
     },
@@ -601,7 +655,8 @@
       "objectId": "City",
       "objectName": "City",
       "objectTypes": [
-        "Class"
+        "Class",
+        "LocationClassificationEnum"
       ],
       "provenanceId": "dc/5n63hr1"
     },
@@ -616,7 +671,8 @@
       "objectId": "City",
       "objectName": "City",
       "objectTypes": [
-        "Class"
+        "Class",
+        "LocationClassificationEnum"
       ],
       "provenanceId": "dc/5n63hr1"
     },
@@ -631,7 +687,8 @@
       "objectId": "City",
       "objectName": "City",
       "objectTypes": [
-        "Class"
+        "Class",
+        "LocationClassificationEnum"
       ],
       "provenanceId": "dc/5j06ly1"
     },
@@ -646,7 +703,8 @@
       "objectId": "City",
       "objectName": "City",
       "objectTypes": [
-        "Class"
+        "Class",
+        "LocationClassificationEnum"
       ],
       "provenanceId": "dc/5j06ly1"
     },
@@ -661,7 +719,8 @@
       "objectId": "City",
       "objectName": "City",
       "objectTypes": [
-        "Class"
+        "Class",
+        "LocationClassificationEnum"
       ],
       "provenanceId": "dc/5j06ly1"
     },
@@ -676,7 +735,8 @@
       "objectId": "City",
       "objectName": "City",
       "objectTypes": [
-        "Class"
+        "Class",
+        "LocationClassificationEnum"
       ],
       "provenanceId": "dc/5n63hr1"
     }
@@ -835,7 +895,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/sm3m2w3"
+      "provenanceId": "dc/7he3522"
     },
     {
       "subjectId": "geoId/02275",
