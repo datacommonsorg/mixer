@@ -1,0 +1,128 @@
+{
+  "eventCollection": {
+    "events": [
+      {
+        "places": [
+          "Earth",
+          "africa",
+          "country/BFA",
+          "country/NER",
+          "grid_1/13_0",
+          "grid_1/13_1",
+          "grid_1/14_1"
+        ],
+        "geoLocations": [
+          {
+            "point": {
+              "latitude": 13,
+              "longitude": 0
+            }
+          }
+        ],
+        "dates": [
+          "2022-04"
+        ],
+        "propVals": {
+          "area": {
+            "vals": [
+              "SquareKilometer35957.66959842968"
+            ]
+          },
+          "endDate": {
+            "vals": [
+              "2022-04"
+            ]
+          },
+          "geoJsonCoordinatesDP1": {
+            "vals": [
+              "{\\\"type\\\": \\\"Polygon\\\", \\\"coordinates\\\": [[[0.5, 13.5], [0.5, 14.5], [1.5, 14.5], [1.5, 12.5], [-0.5, 12.5], [-0.5, 13.5], [0.5, 13.5]]]}"
+            ]
+          },
+          "name": {
+            "vals": [
+              "DroughtEvent at LatLong(13.00000:0.00000) on 2022-04"
+            ]
+          },
+          "observationPeriod": {
+            "vals": [
+              "P1D"
+            ]
+          },
+          "standardizedPrecipitationIndex": {
+            "vals": [
+              "-2.3297453"
+            ]
+          }
+        },
+        "dcid": "droughtEvent/2022-04_grid_1/13_0",
+        "provenanceId": "dc/8cj6de2"
+      },
+      {
+        "places": [
+          "Earth",
+          "africa",
+          "country/BFA",
+          "country/NER",
+          "grid_1/12_2",
+          "grid_1/13_2",
+          "grid_1/13_3",
+          "grid_1/14_2",
+          "grid_1/14_3",
+          "grid_1/14_4"
+        ],
+        "geoLocations": [
+          {
+            "point": {
+              "latitude": 12,
+              "longitude": 2
+            }
+          }
+        ],
+        "dates": [
+          "2022-04"
+        ],
+        "propVals": {
+          "area": {
+            "vals": [
+              "SquareKilometer71911.76059289702"
+            ]
+          },
+          "endDate": {
+            "vals": [
+              "2022-04"
+            ]
+          },
+          "geoJsonCoordinatesDP1": {
+            "vals": [
+              "{\\\"type\\\": \\\"Polygon\\\", \\\"coordinates\\\": [[[1.5, 11.5], [1.5, 14.5], [4.5, 14.5], [4.5, 13.5], [3.5, 13.5], [3.5, 12.5], [2.5, 12.5], [2.5, 11.5], [1.5, 11.5]]]}"
+            ]
+          },
+          "name": {
+            "vals": [
+              "DroughtEvent at LatLong(12.00000:2.00000) on 2022-04"
+            ]
+          },
+          "observationPeriod": {
+            "vals": [
+              "P1D"
+            ]
+          },
+          "standardizedPrecipitationIndex": {
+            "vals": [
+              "-2.524597"
+            ]
+          }
+        },
+        "dcid": "droughtEvent/2022-04_grid_1/13_3",
+        "provenanceId": "dc/8cj6de2"
+      }
+    ],
+    "provenanceInfo": {
+      "dc/8cj6de2": {
+        "importName": "NOAA_GPCC_StandardardizedPrecipitationIndex_Event",
+        "provenanceUrl": "https://www.drought.gov/data-maps-tools/global-precipitation-climatology-centre-gpcc-standardized-precipitation-index-spi",
+        "domain": "noaa.gov"
+      }
+    }
+  }
+}

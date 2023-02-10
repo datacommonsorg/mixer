@@ -20,8 +20,8 @@ package datacommons.v1;
 message EventCollection {
   message GeoLocation {
     message Point {
-      double latitude = 1;
-      double longitude = 2;
+      optional double latitude = 1;
+      optional double longitude = 2;
     }
     message Polygon { string geo_json = 1; }
     oneof geo {
