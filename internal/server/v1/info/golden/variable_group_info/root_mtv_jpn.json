@@ -36,7 +36,7 @@
         "id": "dc/g/Environment",
         "specializedEntity": "Environment",
         "displayName": "Environment",
-        "descendentStatVarCount": 57
+        "descendentStatVarCount": 187
       },
       {
         "id": "dc/g/Health",
