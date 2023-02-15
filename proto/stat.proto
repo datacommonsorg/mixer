@@ -38,6 +38,8 @@ message StatMetadata {
   string observation_period = 4;
   string scaling_factor = 5;
   string unit = 6;
+  bool is_dc_aggregate = 7;
+  bool is_dc_imputed = 8;
 }
 
 message PointStat {
@@ -67,6 +69,7 @@ message SourceSeries {
   string provenance_url = 10;
   // Only used for latest date obs collection.
   map<string, string> place_to_latest_date = 11;
+  bool is_dc_imputed = 13;
   reserved 2;
 }
 
