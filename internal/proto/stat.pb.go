@@ -60,6 +60,8 @@ type StatMetadata struct {
 	ObservationPeriod string `protobuf:"bytes,4,opt,name=observation_period,json=observationPeriod,proto3" json:"observation_period,omitempty"`
 	ScalingFactor     string `protobuf:"bytes,5,opt,name=scaling_factor,json=scalingFactor,proto3" json:"scaling_factor,omitempty"`
 	Unit              string `protobuf:"bytes,6,opt,name=unit,proto3" json:"unit,omitempty"`
+	IsDcAggregate     bool   `protobuf:"varint,7,opt,name=is_dc_aggregate,json=isDcAggregate,proto3" json:"is_dc_aggregate,omitempty"`
+	IsDcImputed       bool   `protobuf:"varint,8,opt,name=is_dc_impuated,json=isDcImputed,proto3" json:"is_dc_imputed,omitempty"`
 }
 
 func (x *StatMetadata) Reset() {
@@ -134,6 +136,20 @@ func (x *StatMetadata) GetUnit() string {
 		return x.Unit
 	}
 	return ""
+}
+
+func (x *StatMetadata) GetIsDcAggregate() bool {
+	if x != nil {
+		return x.IsDcAggregate
+	}
+	return false
+}
+
+func (x *StatMetadata) GetIsDcImputed() bool {
+	if x != nil {
+		return x.IsDcImputed
+	}
+	return false
 }
 
 type PointStat struct {
@@ -237,7 +253,8 @@ type SourceSeries struct {
 	IsDcAggregate     bool               `protobuf:"varint,9,opt,name=is_dc_aggregate,json=isDcAggregate,proto3" json:"is_dc_aggregate,omitempty"`
 	ProvenanceUrl     string             `protobuf:"bytes,10,opt,name=provenance_url,json=provenanceUrl,proto3" json:"provenance_url,omitempty"`
 	// Only used for latest date obs collection.
-	PlaceToLatestDate map[string]string `protobuf:"bytes,11,rep,name=place_to_latest_date,json=placeToLatestDate,proto3" json:"place_to_latest_date,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	PlaceToLatestDate map[string]string  `protobuf:"bytes,11,rep,name=place_to_latest_date,json=placeToLatestDate,proto3" json:"place_to_latest_date,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	IsDcImputed				bool							 `protobuf:"varint,13,opt,name=is_dc_imputed,json=isDcImputed,proto3" json:"is_dc_imputed,omitempty"`
 }
 
 func (x *SourceSeries) Reset() {
@@ -324,6 +341,13 @@ func (x *SourceSeries) GetUnit() string {
 func (x *SourceSeries) GetIsDcAggregate() bool {
 	if x != nil {
 		return x.IsDcAggregate
+	}
+	return false
+}
+
+func (x *SourceSeries) GetIsDcImputed() bool {
+	if x != nil {
+		return x.IsDcImputed
 	}
 	return false
 }
