@@ -61,7 +61,7 @@ type StatMetadata struct {
 	ScalingFactor     string `protobuf:"bytes,5,opt,name=scaling_factor,json=scalingFactor,proto3" json:"scaling_factor,omitempty"`
 	Unit              string `protobuf:"bytes,6,opt,name=unit,proto3" json:"unit,omitempty"`
 	IsDcAggregate     bool   `protobuf:"varint,7,opt,name=is_dc_aggregate,json=isDcAggregate,proto3" json:"is_dc_aggregate,omitempty"`
-	IsDcImputed       bool   `protobuf:"varint,8,opt,name=is_dc_impuated,json=isDcImputed,proto3" json:"is_dc_imputed,omitempty"`
+	IsDcImputed       bool   `protobuf:"varint,8,opt,name=is_dc_imputed,json=isDcImputed,proto3" json:"is_dc_imputed,omitempty"`
 }
 
 func (x *StatMetadata) Reset() {
