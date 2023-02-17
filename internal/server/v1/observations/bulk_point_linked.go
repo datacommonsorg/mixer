@@ -75,17 +75,15 @@ func BulkPointLinked(
 	result := &pb.BulkObservationsPointResponse{
 		Facets: map[string]*pb.StatMetadata{},
 	}
-	// gotResult is a state that covers all variables. As of 2022-05, the cache
-	// should have data for all variables and all ancenstor <--> child place type
-	// data except for certain child place types. So as long as there is data for
-	// one variable, we know the cache is computed for other variables as well.
-	gotResult := false
+
+	variablesMissingData := []string{}
+
 	for _, variable := range variables {
 		data, ok := cacheData[variable]
 		if !ok || data == nil {
+			variablesMissingData = append(variablesMissingData, variable)
 			continue
 		}
-		gotResult = true
 		entityResult := map[string]*pb.EntityObservations{}
 		cohorts := data.SourceCohorts
 		// Sort cohort first, so the preferred source is populated first.
@@ -147,21 +145,22 @@ func BulkPointLinked(
 	// Fetch linked places if need to read data from memdb or time series Bigtable
 	// cache.
 	var childPlaces []string
-	if !gotResult || variableInMemDb {
+	if len(variablesMissingData) > 0 || variableInMemDb {
 		// TODO(shifucun): use V1 API /v1/bulk/property/out/values/linked here
-		childPlacesMap, err := placein.GetPlacesIn(ctx, store, []string{linkedEntity}, entityType)
+		childPlacesMap, err := placein.GetPlacesIn(
+			ctx, store, []string{linkedEntity}, entityType)
 		if err != nil {
 			return nil, err
 		}
 		childPlaces = childPlacesMap[linkedEntity]
 	}
-	// No data found from ObsCollection cache, fetch stat series for each
+	// Missing data from ObsCollection cache, fetch stat series for each
 	// entity separately.
-	if !gotResult {
-		result, err = BulkPoint(
+	if len(variablesMissingData) > 0 {
+		moreResult, err := BulkPoint(
 			ctx,
 			&pb.BulkObservationsPointRequest{
-				Variables: variables,
+				Variables: variablesMissingData,
 				Entities:  childPlaces,
 				Date:      date,
 			},
@@ -169,6 +168,13 @@ func BulkPointLinked(
 		)
 		if err != nil {
 			return nil, err
+		}
+		result.ObservationsByVariable = append(
+			result.ObservationsByVariable,
+			moreResult.ObservationsByVariable...,
+		)
+		for facet := range moreResult.Facets {
+			result.Facets[facet] = moreResult.Facets[facet]
 		}
 	}
 	// Merge data from in-memory database.

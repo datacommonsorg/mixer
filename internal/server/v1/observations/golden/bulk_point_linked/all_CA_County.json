@@ -2809,6 +2809,185 @@
           ]
         }
       ]
+    },
+    {
+      "variable": "dummy",
+      "observations_by_entity": [
+        {
+          "entity": "geoId/06001"
+        },
+        {
+          "entity": "geoId/06003"
+        },
+        {
+          "entity": "geoId/06005"
+        },
+        {
+          "entity": "geoId/06007"
+        },
+        {
+          "entity": "geoId/06009"
+        },
+        {
+          "entity": "geoId/06011"
+        },
+        {
+          "entity": "geoId/06013"
+        },
+        {
+          "entity": "geoId/06015"
+        },
+        {
+          "entity": "geoId/06017"
+        },
+        {
+          "entity": "geoId/06019"
+        },
+        {
+          "entity": "geoId/06021"
+        },
+        {
+          "entity": "geoId/06023"
+        },
+        {
+          "entity": "geoId/06025"
+        },
+        {
+          "entity": "geoId/06027"
+        },
+        {
+          "entity": "geoId/06029"
+        },
+        {
+          "entity": "geoId/06031"
+        },
+        {
+          "entity": "geoId/06033"
+        },
+        {
+          "entity": "geoId/06035"
+        },
+        {
+          "entity": "geoId/06037"
+        },
+        {
+          "entity": "geoId/06039"
+        },
+        {
+          "entity": "geoId/06041"
+        },
+        {
+          "entity": "geoId/06043"
+        },
+        {
+          "entity": "geoId/06045"
+        },
+        {
+          "entity": "geoId/06047"
+        },
+        {
+          "entity": "geoId/06049"
+        },
+        {
+          "entity": "geoId/06051"
+        },
+        {
+          "entity": "geoId/06053"
+        },
+        {
+          "entity": "geoId/06055"
+        },
+        {
+          "entity": "geoId/06057"
+        },
+        {
+          "entity": "geoId/06059"
+        },
+        {
+          "entity": "geoId/06061"
+        },
+        {
+          "entity": "geoId/06063"
+        },
+        {
+          "entity": "geoId/06065"
+        },
+        {
+          "entity": "geoId/06067"
+        },
+        {
+          "entity": "geoId/06069"
+        },
+        {
+          "entity": "geoId/06071"
+        },
+        {
+          "entity": "geoId/06073"
+        },
+        {
+          "entity": "geoId/06075"
+        },
+        {
+          "entity": "geoId/06077"
+        },
+        {
+          "entity": "geoId/06079"
+        },
+        {
+          "entity": "geoId/06081"
+        },
+        {
+          "entity": "geoId/06083"
+        },
+        {
+          "entity": "geoId/06085"
+        },
+        {
+          "entity": "geoId/06087"
+        },
+        {
+          "entity": "geoId/06089"
+        },
+        {
+          "entity": "geoId/06091"
+        },
+        {
+          "entity": "geoId/06093"
+        },
+        {
+          "entity": "geoId/06095"
+        },
+        {
+          "entity": "geoId/06097"
+        },
+        {
+          "entity": "geoId/06099"
+        },
+        {
+          "entity": "geoId/06101"
+        },
+        {
+          "entity": "geoId/06103"
+        },
+        {
+          "entity": "geoId/06105"
+        },
+        {
+          "entity": "geoId/06107"
+        },
+        {
+          "entity": "geoId/06109"
+        },
+        {
+          "entity": "geoId/06111"
+        },
+        {
+          "entity": "geoId/06113"
+        },
+        {
+          "entity": "geoId/06115"
+        }
+      ]
     }
   ],
   "facets": {
