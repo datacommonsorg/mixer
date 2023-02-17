@@ -4018,6 +4018,70 @@
         "measurementDenominator": {
           "nodes": [
             {
+              "name": "Amount of Economic Activity: Expenditure Activity, Healthcare Expenditure (Per Capita)",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "Amount_EconomicActivity_ExpenditureActivity_HealthcareExpenditure_AsFractionOf_Count_Person",
+              "provenanceId": "dc/d7tbsb1"
+            },
+            {
+              "name": "Amount of Economic Activity (Nominal): Gross Domestic Production (Per Capita)",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "Amount_EconomicActivity_GrossDomesticProduction_Nominal_AsAFractionOf_Count_Person",
+              "provenanceId": "dc/d7tbsb1"
+            },
+            {
+              "name": "Count of Birth Event (Per Capita)",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "Count_BirthEvent_AsAFractionOfCount_Person",
+              "provenanceId": "dc/d7tbsb1"
+            },
+            {
+              "name": "Count of Birth Event: Live Birth (Per Capita)",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "Count_BirthEvent_LiveBirth_AsFractionOf_Count_Person",
+              "provenanceId": "dc/d7tbsb1"
+            },
+            {
+              "name": "Count of Criminal Activities: Murder And Non Negligent Manslaughter (Per Capita)",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "Count_CriminalActivities_MurderAndNonNegligentManslaughter_AsFractionOf_Count_Person",
+              "provenanceId": "dc/d7tbsb1"
+            },
+            {
+              "name": "Count of Mortality Event (Age Adjusted) (Per Capita)",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "Count_Death_AgeAdjusted_AsAFractionOf_Count_Person",
+              "provenanceId": "dc/d7tbsb1"
+            },
+            {
+              "name": "Count of Mortality Event (Per Capita)",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "Count_Death_AsAFractionOfCount_Person",
+              "provenanceId": "dc/d7tbsb1"
+            },
+            {
+              "name": "Count of Mortality Event: X60-X84 (Intentional Self-harm) (Per Capita)",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "Count_Death_IntentionalSelfHarm_AsFractionOf_Count_Person",
+              "provenanceId": "dc/d7tbsb1"
+            },
+            {
               "name": "Count of Medical Condition Incident: 0 - 4 Years (Per Capita)",
               "types": [
                 "StatisticalVariable"
@@ -7952,70 +8016,6 @@
               ],
               "dcid": "Count_MedicalConditionIncident_45To59Years_ConditionMusculoSkeletalCondition_Rural_AsAFractionOf_Count_Person",
               "provenanceId": "dc/d7tbsb1"
-            },
-            {
-              "name": "Count of Medical Condition Incident: 45 - 59 Years, Musculo Skeletal Condition, Urban (Per Capita)",
-              "types": [
-                "StatisticalVariable"
-              ],
-              "dcid": "Count_MedicalConditionIncident_45To59Years_ConditionMusculoSkeletalCondition_Urban_AsAFractionOf_Count_Person",
-              "provenanceId": "dc/d7tbsb1"
-            },
-            {
-              "name": "Count of Medical Condition Incident: 45 - 59 Years, NSSHealth Other Condition (Per Capita)",
-              "types": [
-                "StatisticalVariable"
-              ],
-              "dcid": "Count_MedicalConditionIncident_45To59Years_ConditionNSSHealthOtherCondition_AsAFractionOf_Count_Person",
-              "provenanceId": "dc/d7tbsb1"
-            },
-            {
-              "name": "Count of Medical Condition Incident: 45 - 59 Years, NSSHealth Other Condition, Rural (Per Capita)",
-              "types": [
-                "StatisticalVariable"
-              ],
-              "dcid": "Count_MedicalConditionIncident_45To59Years_ConditionNSSHealthOtherCondition_Rural_AsAFractionOf_Count_Person",
-              "provenanceId": "dc/d7tbsb1"
-            },
-            {
-              "name": "Count of Medical Condition Incident: 45 - 59 Years, NSSHealth Other Condition, Urban (Per Capita)",
-              "types": [
-                "StatisticalVariable"
-              ],
-              "dcid": "Count_MedicalConditionIncident_45To59Years_ConditionNSSHealthOtherCondition_Urban_AsAFractionOf_Count_Person",
-              "provenanceId": "dc/d7tbsb1"
-            },
-            {
-              "name": "Count of Medical Condition Incident: 45 - 59 Years, Obstetric Condition (Per Capita)",
-              "types": [
-                "StatisticalVariable"
-              ],
-              "dcid": "Count_MedicalConditionIncident_45To59Years_ConditionObstetricCondition_AsAFractionOf_Count_Person",
-              "provenanceId": "dc/d7tbsb1"
-            },
-            {
-              "name": "Count of Medical Condition Incident: 45 - 59 Years, Obstetric Condition, Rural (Per Capita)",
-              "types": [
-                "StatisticalVariable"
-              ],
-              "dcid": "Count_MedicalConditionIncident_45To59Years_ConditionObstetricCondition_Rural_AsAFractionOf_Count_Person",
-              "provenanceId": "dc/d7tbsb1"
-            },
-            {
-              "name": "Count of Medical Condition Incident: 45 - 59 Years, Obstetric Condition, Urban (Per Capita)",
-              "types": [
-                "StatisticalVariable"
-              ],
-              "dcid": "Count_MedicalConditionIncident_45To59Years_ConditionObstetricCondition_Urban_AsAFractionOf_Count_Person",
-              "provenanceId": "dc/d7tbsb1"
-            },
-            {
-              "name": "Count of Medical Condition Incident: 45 - 59 Years, Psychiatric Neurological Condition (Per Capita)",
-              "types": [
-                "StatisticalVariable"
-              ],
-              "dcid": "Count_MedicalConditionIncident_45To59Years_ConditionPsychiatricNeurologicalCondition_AsAFractionOf_Count_Person",
-              "provenanceId": "dc/d7tbsb1"
             }
           ]
         }
@@ -8025,5 +8025,5 @@
       "node": "dummy"
     }
   ],
-  "nextToken": "H4sIAAAAAAAA/2yNwcrCQAyE/6bbEsJ/KBHE51EP3hQKXmUtURa6SdmmB99e2rOnmY+B+ehCfEw22jsNcewnGVIWpdY/k1xfvzb+Y8CKA0IHDFgzYGDAhgb6P9mi/rhJmU1pnyXOS5Es6mdRy0mjW6Fd79HT7OvpPZYUn6Nw6KoDcovVlgFho3qjVdBis/YvAAAA//8BAAD//wGgnfGvAAAA"
+  "nextToken": "H4sIAAAAAAAA/2zMsQrCMBDGcXtN5TgcygnS51EHN4WCm0gspwSaXEmvg28vzezy54MPfnQhPgYd9RMGP/aTDCFKoq19J7m+/328YcCKHUILDFgzoGPAhh60O+mS7HmTPGuiQxQ/L1miJDtL0hiSN820781bmG1F7z4H/xqFoV3JqhQ6ZId12a606fAHAAD//wEAAP//fyZ0FakAAAA="
 }
