@@ -61,6 +61,23 @@ func BulkVariableGroupInfo(
 	// should call this API twice, w/o constrained_entities to achieve that.
 	nodes := in.GetNodes()
 	constraindEntities := in.GetConstrainedEntities()
+
+	if len(nodes) == 0 {
+		result := &pb.BulkVariableGroupInfoResponse{
+			Data: []*pb.VariableGroupInfoResponse{},
+		}
+		for svg := range cache.RawSvg {
+			result.Data = append(result.Data, &pb.VariableGroupInfoResponse{
+				Node: svg,
+				Info: cache.RawSvg[svg],
+			})
+		}
+		sort.SliceStable(result.Data, func(i, j int) bool {
+			return result.Data[i].Node < result.Data[j].Node
+		})
+		return result, nil
+	}
+
 	dataChan := make(chan *pb.VariableGroupInfoResponse, len(nodes))
 	errs, errCtx := errgroup.WithContext(ctx)
 	for _, node := range nodes {
