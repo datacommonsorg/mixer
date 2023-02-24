@@ -10,6 +10,14 @@
           ],
           "dcid": "geoId/06",
           "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "San Francisco Bay Area",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q213205",
+          "provenanceId": "dc/5n63hr1"
         }
       ]
     },
@@ -31,6 +39,14 @@
             "County"
           ],
           "dcid": "geoId/06085",
+          "provenanceId": "dc/5n63hr1"
+        },
+        {
+          "name": "San Francisco South Bay",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q3271856",
           "provenanceId": "dc/5n63hr1"
         },
         {

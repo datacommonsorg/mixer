@@ -30,7 +30,7 @@
             }
           ],
           "minValue": 1,
-          "maxValue": 102374102
+          "maxValue": 103017916
         },
         "County": {
           "placeCount": 3217,
@@ -68,7 +68,7 @@
             }
           ],
           "minValue": 1,
-          "maxValue": 12009359
+          "maxValue": 12063650
         }
       },
       "provenanceSummary": {
@@ -81,7 +81,7 @@
                 "measurementMethod": "NYT_COVID19_GitHub"
               },
               "earliestDate": "2020-01-21",
-              "latestDate": "2023-02-07",
+              "latestDate": "2023-02-22",
               "placeTypeSummary": {
                 "City": {
                   "placeCount": 3,
@@ -111,7 +111,7 @@
                     }
                   ],
                   "minValue": 1,
-                  "maxValue": 102374102
+                  "maxValue": 103017916
                 },
                 "County": {
                   "placeCount": 3217,
@@ -149,16 +149,16 @@
                     }
                   ],
                   "minValue": 1,
-                  "maxValue": 12009359
+                  "maxValue": 12063650
                 }
               },
               "minValue": 1,
-              "maxValue": 102374102,
-              "observationCount": 2540635,
+              "maxValue": 103017916,
+              "observationCount": 2541490,
               "timeSeriesCount": 3277
             }
           ],
-          "observationCount": 2540635,
+          "observationCount": 2541490,
           "timeSeriesCount": 3277
         }
       }
@@ -244,7 +244,7 @@
                 "measurementMethod": "dcDerivedStat/NYT_COVID19_GitHub"
               },
               "earliestDate": "2020-01-22",
-              "latestDate": "2023-02-07",
+              "latestDate": "2023-02-22",
               "placeTypeSummary": {
                 "City": {
                   "placeCount": 3,
@@ -317,7 +317,7 @@
               },
               "minValue": -40527,
               "maxValue": 1433977,
-              "observationCount": 2537350,
+              "observationCount": 2538205,
               "timeSeriesCount": 3277
             },
             {
@@ -403,7 +403,7 @@
               "timeSeriesCount": 3277
             }
           ],
-          "observationCount": 2624446,
+          "observationCount": 2625301,
           "timeSeriesCount": 6554
         }
       }

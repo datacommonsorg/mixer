@@ -36,7 +36,7 @@
         "id": "dc/g/Environment",
         "specializedEntity": "Environment",
         "displayName": "Environment",
-        "descendentStatVarCount": 187
+        "descendentStatVarCount": 242
       },
       {
         "id": "dc/g/Health",
@@ -67,6 +67,6 @@
         "specializedEntity": "Feeding America"
       }
     ],
-    "descendentStatVarCount": 11319
+    "descendentStatVarCount": 11320
   }
 }

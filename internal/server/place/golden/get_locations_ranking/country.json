@@ -5,12 +5,12 @@
         "info": [
           {
             "rank": 1,
-            "value": 1396530000,
+            "value": 1378665000,
             "placeDcid": "country/CHN"
           },
           {
             "rank": 2,
-            "value": 1254020000,
+            "value": 1324171000,
             "placeDcid": "country/IND"
           },
           {
@@ -20,12 +20,12 @@
           },
           {
             "rank": 4,
-            "value": 267871000,
+            "value": 261115000,
             "placeDcid": "country/IDN"
           },
           {
             "rank": 5,
-            "value": 208495000,
+            "value": 207653000,
             "placeDcid": "country/BRA"
           },
           {
@@ -35,83 +35,83 @@
           },
           {
             "rank": 7,
-            "value": 190886311,
+            "value": 185990000,
             "placeDcid": "country/NGA"
           },
           {
             "rank": 8,
-            "value": 164669751,
+            "value": 162952000,
             "placeDcid": "country/BGD"
           },
           {
             "rank": 9,
-            "value": 146675000,
+            "value": 144342000,
             "placeDcid": "country/RUS"
           },
           {
             "rank": 10,
+            "value": 127540000,
+            "placeDcid": "country/MEX"
+          },
+          {
+            "rank": 11,
             "value": 126443000,
             "placeDcid": "country/JPN"
           },
           {
-            "rank": 11,
-            "value": 125929000,
-            "placeDcid": "country/MEX"
-          },
-          {
             "rank": 12,
-            "value": 104957438,
-            "placeDcid": "country/ETH"
-          },
-          {
-            "rank": 13,
-            "value": 104918090,
+            "value": 103320000,
             "placeDcid": "country/PHL"
           },
           {
+            "rank": 13,
+            "value": 102403000,
+            "placeDcid": "country/ETH"
+          },
+          {
             "rank": 14,
-            "value": 94798827,
+            "value": 95689000,
             "placeDcid": "country/EGY"
           },
           {
             "rank": 15,
-            "value": 94660000,
+            "value": 92701000,
             "placeDcid": "country/VNM"
           },
           {
             "rank": 16,
-            "value": 86790567,
-            "placeDcid": "country/COD"
-          },
-          {
-            "rank": 17,
-            "value": 83183741,
-            "placeDcid": "country/IRN"
-          },
-          {
-            "rank": 18,
             "value": 83019200,
             "placeDcid": "country/DEU"
           },
           {
-            "rank": 19,
-            "value": 82003900,
+            "rank": 17,
+            "value": 80277000,
+            "placeDcid": "country/IRN"
+          },
+          {
+            "rank": 18,
+            "value": 79512000,
             "placeDcid": "country/TUR"
           },
           {
+            "rank": 19,
+            "value": 78736000,
+            "placeDcid": "country/COD"
+          },
+          {
             "rank": 20,
+            "value": 68864000,
+            "placeDcid": "country/THA"
+          },
+          {
+            "rank": 21,
             "value": 66992699,
             "placeDcid": "country/FRA"
           },
           {
-            "rank": 21,
+            "rank": 22,
             "value": 66647100,
             "placeDcid": "country/GBR"
-          },
-          {
-            "rank": 22,
-            "value": 66558935,
-            "placeDcid": "country/THA"
           },
           {
             "rank": 23,
@@ -125,32 +125,32 @@
           },
           {
             "rank": 25,
-            "value": 58775000,
+            "value": 55909000,
             "placeDcid": "country/ZAF"
           },
           {
             "rank": 26,
-            "value": 56313438,
+            "value": 55572000,
             "placeDcid": "country/TZA"
           },
           {
             "rank": 27,
-            "value": 53370609,
+            "value": 52885000,
             "placeDcid": "country/MMR"
           },
           {
             "rank": 28,
-            "value": 51811200,
+            "value": 51246000,
             "placeDcid": "country/KOR"
           },
           {
             "rank": 29,
-            "value": 50374500,
+            "value": 48653000,
             "placeDcid": "country/COL"
           },
           {
             "rank": 30,
-            "value": 47564296,
+            "value": 48462000,
             "placeDcid": "country/KEN"
           },
           {
@@ -160,43 +160,43 @@
           },
           {
             "rank": 32,
-            "value": 44938712,
+            "value": 43847000,
             "placeDcid": "country/ARG"
           },
           {
             "rank": 33,
-            "value": 44700000,
-            "placeDcid": "country/DZA"
-          },
-          {
-            "rank": 34,
             "value": 42729036,
             "placeDcid": "country/UGA"
           },
           {
-            "rank": 35,
+            "rank": 34,
             "value": 41983564,
             "placeDcid": "country/UKR"
           },
           {
+            "rank": 35,
+            "value": 40606000,
+            "placeDcid": "country/DZA"
+          },
+          {
             "rank": 36,
-            "value": 41592539,
+            "value": 39579000,
             "placeDcid": "country/SDN"
           },
           {
             "rank": 37,
-            "value": 38433600,
-            "placeDcid": "country/IRQ"
-          },
-          {
-            "rank": 38,
-            "value": 37972800,
+            "value": 37948000,
             "placeDcid": "country/POL"
           },
           {
-            "rank": 39,
+            "rank": 38,
             "value": 37589262,
             "placeDcid": "country/CAN"
+          },
+          {
+            "rank": 39,
+            "value": 37203000,
+            "placeDcid": "country/IRQ"
           },
           {
             "rank": 40,
@@ -205,8 +205,8 @@
           },
           {
             "rank": 41,
-            "value": 34588900,
-            "placeDcid": "country/UZB"
+            "value": 34656000,
+            "placeDcid": "country/AFG"
           },
           {
             "rank": 42,
@@ -220,143 +220,143 @@
           },
           {
             "rank": 44,
-            "value": 32225560,
-            "placeDcid": "country/AFG"
+            "value": 31848000,
+            "placeDcid": "country/UZB"
           },
           {
             "rank": 45,
-            "value": 31826000,
+            "value": 31774000,
             "placeDcid": "country/PER"
           },
           {
             "rank": 46,
-            "value": 31072940,
-            "placeDcid": "country/GHA"
+            "value": 31568000,
+            "placeDcid": "country/VEN"
           },
           {
             "rank": 47,
-            "value": 29784193,
-            "placeDcid": "country/AGO"
+            "value": 28983000,
+            "placeDcid": "country/NPL"
           },
           {
             "rank": 48,
-            "value": 29668834,
+            "value": 28829000,
             "placeDcid": "country/MOZ"
           },
           {
             "rank": 49,
-            "value": 28515829,
-            "placeDcid": "country/VEN"
+            "value": 28813000,
+            "placeDcid": "country/AGO"
           },
           {
             "rank": 50,
-            "value": 28498683,
-            "placeDcid": "country/YEM"
+            "value": 28207000,
+            "placeDcid": "country/GHA"
           },
           {
             "rank": 51,
-            "value": 28095714,
-            "placeDcid": "country/NPL"
+            "value": 27584000,
+            "placeDcid": "country/YEM"
           },
           {
             "rank": 52,
-            "value": 26545864,
-            "placeDcid": "country/CMR"
-          },
-          {
-            "rank": 53,
-            "value": 26378274,
-            "placeDcid": "country/CIV"
-          },
-          {
-            "rank": 54,
-            "value": 26262313,
-            "placeDcid": "country/MDG"
-          },
-          {
-            "rank": 55,
             "value": 25549604,
             "placeDcid": "country/PRK"
           },
           {
-            "rank": 56,
+            "rank": 53,
             "value": 25364300,
             "placeDcid": "country/AUS"
           },
           {
-            "rank": 57,
+            "rank": 54,
+            "value": 24895000,
+            "placeDcid": "country/MDG"
+          },
+          {
+            "rank": 55,
+            "value": 23696000,
+            "placeDcid": "country/CIV"
+          },
+          {
+            "rank": 56,
             "value": 23568378,
             "placeDcid": "country/TWN"
           },
           {
-            "rank": 58,
-            "value": 23196002,
-            "placeDcid": "country/NER"
+            "rank": 57,
+            "value": 23439000,
+            "placeDcid": "country/CMR"
           },
           {
-            "rank": 59,
-            "value": 21803000,
+            "rank": 58,
+            "value": 21203000,
             "placeDcid": "country/LKA"
           },
           {
+            "rank": 59,
+            "value": 20673000,
+            "placeDcid": "country/NER"
+          },
+          {
             "rank": 60,
-            "value": 21510181,
-            "placeDcid": "country/BFA"
-          },
-          {
-            "rank": 61,
-            "value": 20250833,
-            "placeDcid": "country/MLI"
-          },
-          {
-            "rank": 62,
-            "value": 19414500,
+            "value": 19705000,
             "placeDcid": "country/ROU"
           },
           {
+            "rank": 61,
+            "value": 18646000,
+            "placeDcid": "country/BFA"
+          },
+          {
+            "rank": 62,
+            "value": 18430000,
+            "placeDcid": "country/SYR"
+          },
+          {
             "rank": 63,
-            "value": 19129952,
+            "value": 18092000,
             "placeDcid": "country/MWI"
           },
           {
             "rank": 64,
-            "value": 19107200,
-            "placeDcid": "country/CHL"
+            "value": 17995000,
+            "placeDcid": "country/MLI"
           },
           {
             "rank": 65,
-            "value": 18711200,
-            "placeDcid": "country/KAZ"
+            "value": 17910000,
+            "placeDcid": "country/CHL"
           },
           {
             "rank": 66,
+            "value": 17797000,
+            "placeDcid": "country/KAZ"
+          },
+          {
+            "rank": 67,
             "value": 17737438,
             "placeDcid": "wikidataId/Q29999"
           },
           {
-            "rank": 67,
-            "value": 17684536,
-            "placeDcid": "country/ECU"
-          },
-          {
             "rank": 68,
-            "value": 17500657,
-            "placeDcid": "country/SYR"
-          },
-          {
-            "rank": 69,
-            "value": 17351708,
-            "placeDcid": "country/ZMB"
-          },
-          {
-            "rank": 70,
             "value": 17282200,
             "placeDcid": "country/NLD"
           },
           {
-            "rank": 71,
-            "value": 17263239,
+            "rank": 69,
+            "value": 16591000,
+            "placeDcid": "country/ZMB"
+          },
+          {
+            "rank": 70,
+            "value": 16582000,
             "placeDcid": "country/GTM"
+          },
+          {
+            "rank": 71,
+            "value": 16385000,
+            "placeDcid": "country/ECU"
           },
           {
             "rank": 72,
@@ -365,162 +365,162 @@
           },
           {
             "rank": 73,
+            "value": 16150000,
+            "placeDcid": "country/ZWE"
+          },
+          {
+            "rank": 74,
             "value": 15893219,
             "placeDcid": "country/SOM"
           },
           {
-            "rank": 74,
-            "value": 15854323,
-            "placeDcid": "country/SEN"
-          },
-          {
             "rank": 75,
-            "value": 15552211,
+            "value": 15762000,
             "placeDcid": "country/KHM"
           },
           {
             "rank": 76,
-            "value": 14215809,
-            "placeDcid": "country/ZWE"
+            "value": 15412000,
+            "placeDcid": "country/SEN"
           },
           {
             "rank": 77,
-            "value": 12778250,
-            "placeDcid": "country/SSD"
-          },
-          {
-            "rank": 78,
-            "value": 12414293,
+            "value": 12396000,
             "placeDcid": "country/GIN"
           },
           {
+            "rank": 78,
+            "value": 12231000,
+            "placeDcid": "country/SSD"
+          },
+          {
             "rank": 79,
-            "value": 12374397,
+            "value": 11918000,
             "placeDcid": "country/RWA"
           },
           {
             "rank": 80,
-            "value": 11865821,
-            "placeDcid": "country/BDI"
+            "value": 11476000,
+            "placeDcid": "country/CUB"
           },
           {
             "rank": 81,
-            "value": 11733059,
-            "placeDcid": "country/BEN"
-          },
-          {
-            "rank": 82,
-            "value": 11551400,
-            "placeDcid": "country/TUN"
-          },
-          {
-            "rank": 83,
             "value": 11455500,
             "placeDcid": "country/BEL"
           },
           {
-            "rank": 84,
+            "rank": 82,
             "value": 11439646,
             "placeDcid": "country/HTI"
           },
           {
-            "rank": 85,
-            "value": 11428245,
+            "rank": 83,
+            "value": 11403000,
+            "placeDcid": "country/TUN"
+          },
+          {
+            "rank": 84,
+            "value": 10888000,
             "placeDcid": "country/BOL"
           },
           {
+            "rank": 85,
+            "value": 10872000,
+            "placeDcid": "country/BEN"
+          },
+          {
             "rank": 86,
-            "value": 11193470,
-            "placeDcid": "country/CUB"
-          },
-          {
-            "rank": 87,
-            "value": 10878246,
-            "placeDcid": "country/DOM"
-          },
-          {
-            "rank": 88,
             "value": 10724600,
             "placeDcid": "country/GRC"
           },
           {
-            "rank": 89,
-            "value": 10658123,
-            "placeDcid": "country/JOR"
+            "rank": 87,
+            "value": 10649000,
+            "placeDcid": "country/DOM"
           },
           {
-            "rank": 90,
-            "value": 10649800,
+            "rank": 88,
+            "value": 10562000,
             "placeDcid": "country/CZE"
           },
           {
-            "rank": 91,
+            "rank": 89,
+            "value": 10524000,
+            "placeDcid": "country/BDI"
+          },
+          {
+            "rank": 90,
             "value": 10276600,
             "placeDcid": "country/PRT"
           },
           {
-            "rank": 92,
+            "rank": 91,
             "value": 10230200,
             "placeDcid": "country/SWE"
           },
           {
-            "rank": 93,
-            "value": 9981457,
-            "placeDcid": "country/AZE"
-          },
-          {
-            "rank": 94,
+            "rank": 92,
             "value": 9890400,
             "placeDcid": "country/ARE"
           },
           {
-            "rank": 95,
-            "value": 9772760,
+            "rank": 93,
+            "value": 9818000,
             "placeDcid": "country/HUN"
           },
           {
-            "rank": 96,
-            "value": 9587522,
-            "placeDcid": "country/HND"
+            "rank": 94,
+            "value": 9762000,
+            "placeDcid": "country/AZE"
           },
           {
-            "rank": 97,
-            "value": 9537645,
-            "placeDcid": "country/TJK"
-          },
-          {
-            "rank": 98,
-            "value": 9475174,
+            "rank": 95,
+            "value": 9507000,
             "placeDcid": "country/BLR"
           },
           {
-            "rank": 99,
+            "rank": 96,
+            "value": 9456000,
+            "placeDcid": "country/JOR"
+          },
+          {
+            "rank": 97,
+            "value": 9113000,
+            "placeDcid": "country/HND"
+          },
+          {
+            "rank": 98,
             "value": 8935000,
             "placeDcid": "country/PNG"
           },
           {
-            "rank": 100,
+            "rank": 99,
             "value": 8858780,
             "placeDcid": "country/AUT"
           },
           {
-            "rank": 101,
+            "rank": 100,
             "value": 8797900,
             "placeDcid": "country/ISR"
           },
           {
-            "rank": 102,
-            "value": 8608444,
-            "placeDcid": "country/TGO"
+            "rank": 101,
+            "value": 8735000,
+            "placeDcid": "country/TJK"
           },
           {
-            "rank": 103,
+            "rank": 102,
             "value": 8544530,
             "placeDcid": "country/CHE"
           },
           {
+            "rank": 103,
+            "value": 7606000,
+            "placeDcid": "country/TGO"
+          },
+          {
             "rank": 104,
-            "value": 8059155,
+            "value": 7396000,
             "placeDcid": "country/SLE"
           },
           {
@@ -535,53 +535,53 @@
           },
           {
             "rank": 107,
-            "value": 7123205,
-            "placeDcid": "country/LAO"
-          },
-          {
-            "rank": 108,
-            "value": 7101859,
+            "value": 7128000,
             "placeDcid": "country/BGR"
           },
           {
-            "rank": 109,
+            "rank": 108,
             "value": 6963764,
             "placeDcid": "country/SRB"
           },
           {
-            "rank": 110,
+            "rank": 109,
             "value": 6871287,
             "placeDcid": "country/LBY"
           },
           {
+            "rank": 110,
+            "value": 6758000,
+            "placeDcid": "country/LAO"
+          },
+          {
             "rank": 111,
-            "value": 6859408,
-            "placeDcid": "country/LBN"
-          },
-          {
-            "rank": 112,
-            "value": 6586600,
-            "placeDcid": "country/KGZ"
-          },
-          {
-            "rank": 113,
-            "value": 6486201,
-            "placeDcid": "country/NIC"
-          },
-          {
-            "rank": 114,
-            "value": 6420746,
+            "value": 6345000,
             "placeDcid": "country/SLV"
           },
           {
-            "rank": 115,
+            "rank": 112,
+            "value": 6150000,
+            "placeDcid": "country/NIC"
+          },
+          {
+            "rank": 113,
+            "value": 6083000,
+            "placeDcid": "country/KGZ"
+          },
+          {
+            "rank": 114,
             "value": 6081196,
             "placeDcid": "country/ERI"
           },
           {
-            "rank": 116,
+            "rank": 115,
             "value": 6031187,
             "placeDcid": "country/TKM"
+          },
+          {
+            "rank": 116,
+            "value": 6007000,
+            "placeDcid": "country/LBN"
           },
           {
             "rank": 117,
@@ -605,7 +605,7 @@
           },
           {
             "rank": 121,
-            "value": 5430798,
+            "value": 5429000,
             "placeDcid": "country/SVK"
           },
           {
@@ -625,33 +625,33 @@
           },
           {
             "rank": 125,
-            "value": 5073296,
-            "placeDcid": "country/LBR"
-          },
-          {
-            "rank": 126,
-            "value": 5058000,
-            "placeDcid": "country/CRI"
-          },
-          {
-            "rank": 127,
             "value": 4917000,
             "placeDcid": "country/NZL"
           },
           {
-            "rank": 128,
+            "rank": 126,
             "value": 4904240,
             "placeDcid": "country/IRL"
           },
           {
-            "rank": 129,
+            "rank": 127,
+            "value": 4857000,
+            "placeDcid": "country/CRI"
+          },
+          {
+            "rank": 128,
             "value": 4829473,
             "placeDcid": "country/OMN"
           },
           {
-            "rank": 130,
+            "rank": 129,
             "value": 4666368,
             "placeDcid": "country/CAF"
+          },
+          {
+            "rank": 130,
+            "value": 4614000,
+            "placeDcid": "country/LBR"
           },
           {
             "rank": 131,
@@ -660,78 +660,78 @@
           },
           {
             "rank": 132,
-            "value": 4403313,
+            "value": 4301000,
             "placeDcid": "country/MRT"
           },
           {
             "rank": 133,
-            "value": 4176869,
-            "placeDcid": "country/PAN"
-          },
-          {
-            "rank": 134,
-            "value": 4076250,
+            "value": 4171000,
             "placeDcid": "country/HRV"
           },
           {
-            "rank": 135,
-            "value": 3791622,
-            "placeDcid": "country/BIH"
+            "rank": 134,
+            "value": 4034000,
+            "placeDcid": "country/PAN"
           },
           {
-            "rank": 136,
-            "value": 3723464,
+            "rank": 135,
+            "value": 3719000,
             "placeDcid": "country/GEO"
           },
           {
-            "rank": 137,
-            "value": 3550852,
+            "rank": 136,
+            "value": 3552000,
             "placeDcid": "country/MDA"
           },
           {
+            "rank": 137,
+            "value": 3517000,
+            "placeDcid": "country/BIH"
+          },
+          {
             "rank": 138,
-            "value": 3518552,
+            "value": 3444000,
             "placeDcid": "country/URY"
           },
           {
             "rank": 139,
-            "value": 3353470,
-            "placeDcid": "country/MNG"
-          },
-          {
-            "rank": 140,
             "value": 3193694,
             "placeDcid": "country/PRI"
           },
           {
+            "rank": 140,
+            "value": 3027000,
+            "placeDcid": "country/MNG"
+          },
+          {
             "rank": 141,
-            "value": 2965269,
+            "value": 2925000,
             "placeDcid": "country/ARM"
           },
           {
             "rank": 142,
-            "value": 2862427,
-            "placeDcid": "country/ALB"
+            "value": 2881000,
+            "placeDcid": "country/JAM"
           },
           {
             "rank": 143,
-            "value": 2795484,
-            "placeDcid": "country/QAT"
+            "value": 2876000,
+            "placeDcid": "country/ALB"
           },
           {
             "rank": 144,
-            "value": 2794180,
+            "value": 2872000,
             "placeDcid": "country/LTU"
           },
           {
             "rank": 145,
-            "value": 2746745,
-            "placeDcid": "country/NAM"
+            "value": 2795484,
+            "placeDcid": "country/QAT"
           },
           {
             "rank": 146,
-            "value": 2726667,
-            "placeDcid": "country/JAM"
+            "value": 2746745,
+            "placeDcid": "country/NAM"
           },
           {
             "rank": 147,
@@ -740,8 +740,8 @@
           },
           {
             "rank": 148,
-            "value": 2173999,
-            "placeDcid": "country/GMB"
+            "value": 2204000,
+            "placeDcid": "country/LSO"
           },
           {
             "rank": 149,
@@ -750,18 +750,18 @@
           },
           {
             "rank": 150,
-            "value": 2108328,
-            "placeDcid": "country/LSO"
+            "value": 2077132,
+            "placeDcid": "country/MKD"
           },
           {
             "rank": 151,
-            "value": 2080910,
+            "value": 2065000,
             "placeDcid": "country/SVN"
           },
           {
             "rank": 152,
-            "value": 2077132,
-            "placeDcid": "country/MKD"
+            "value": 2039000,
+            "placeDcid": "country/GMB"
           },
           {
             "rank": 153,
@@ -775,7 +775,7 @@
           },
           {
             "rank": 155,
-            "value": 1861283,
+            "value": 1816000,
             "placeDcid": "country/GNB"
           },
           {
@@ -790,17 +790,17 @@
           },
           {
             "rank": 158,
-            "value": 1366725,
+            "value": 1365000,
             "placeDcid": "country/TTO"
           },
           {
             "rank": 159,
-            "value": 1324820,
+            "value": 1316000,
             "placeDcid": "country/EST"
           },
           {
             "rank": 160,
-            "value": 1296311,
+            "value": 1269000,
             "placeDcid": "country/TLS"
           },
           {
@@ -840,7 +840,7 @@
           },
           {
             "rank": 168,
-            "value": 754388,
+            "value": 798000,
             "placeDcid": "country/BTN"
           },
           {
@@ -860,7 +860,7 @@
           },
           {
             "rank": 172,
-            "value": 622182,
+            "value": 623000,
             "placeDcid": "country/MNE"
           },
           {
