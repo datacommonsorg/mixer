@@ -65,7 +65,7 @@ func TestEventCollection(t *testing.T) {
 				"EarthquakeEvent_Earth_202001.json",
 			},
 			{
-				"WildlandFireEvent",
+				"FireEvent",
 				"geoId/06",
 				"2022-10",
 				"area",
@@ -75,7 +75,7 @@ func TestEventCollection(t *testing.T) {
 				"FireEvent_CA_202210.json",
 			},
 			{
-				"FireEvent",
+				"WildlandFireEvent",
 				"geoId/06",
 				"2022-10",
 				"burnedArea",
