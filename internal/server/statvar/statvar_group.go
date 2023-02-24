@@ -16,6 +16,7 @@ package statvar
 
 import (
 	"context"
+	"sort"
 	"time"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
@@ -234,6 +235,11 @@ func GetStatVarGroupNode(
 ) (*pb.StatVarGroupNode, error) {
 	entities := in.GetEntities()
 	svg := in.GetStatVarGroup()
+	numEntitiesExistence := int(in.GetNumEntitiesExistence())
+	// We want at least 1 entity to have data.
+	if numEntitiesExistence == 0 {
+		numEntitiesExistence = 1
+	}
 
 	if svg == "" {
 		return nil, status.Errorf(
@@ -273,29 +279,31 @@ func GetStatVarGroupNode(
 		}
 		// Count for current node.
 		result.DescendentStatVarCount = 0
-		if existence, ok := statVarCount[svg]; ok && len(existence) > 0 {
+		if existence, ok := statVarCount[svg]; ok && len(existence) >= numEntitiesExistence {
+			counts := []int32{}
 			for _, count := range existence {
-				// Use the largest count among all entities.
-				if count > result.GetDescendentStatVarCount() {
-					result.DescendentStatVarCount = count
-				}
+				counts = append(counts, count)
 			}
+			sort.Slice(counts, func(i, j int) bool { return counts[i] > counts[j] })
+			// Use the numEntitiesExistence-th largest count
+			result.DescendentStatVarCount = counts[numEntitiesExistence-1]
 		}
 		// Filter child stat var groups
 		for _, item := range result.ChildStatVarGroups {
 			item.DescendentStatVarCount = 0
-			if existence, ok := statVarCount[item.Id]; ok && len(existence) > 0 {
+			if existence, ok := statVarCount[item.Id]; ok && len(existence) >= numEntitiesExistence {
+				counts := []int32{}
 				for _, count := range existence {
-					// Use the largest count among all entities
-					if count > item.DescendentStatVarCount {
-						item.DescendentStatVarCount = count
-					}
+					counts = append(counts, count)
 				}
+				sort.Slice(counts, func(i, j int) bool { return counts[i] > counts[j] })
+				// Use the numEntitiesExistence-th largest count
+				item.DescendentStatVarCount = counts[numEntitiesExistence-1]
 			}
 		}
 		// Filter child stat vars
 		for _, item := range result.ChildStatVars {
-			if existence, ok := statVarCount[item.Id]; !ok || len(existence) == 0 {
+			if existence, ok := statVarCount[item.Id]; !ok || len(existence) < numEntitiesExistence {
 				item.HasData = false
 			}
 		}

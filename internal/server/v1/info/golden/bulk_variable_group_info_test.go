@@ -35,19 +35,34 @@ func TestBulkVariableGroupInfo(t *testing.T) {
 
 	testSuite := func(mixer pb.MixerClient, latencyTest bool) {
 		for _, c := range []struct {
-			nodes               []string
-			constrainedEntities []string
-			goldenFile          string
+			nodes                []string
+			constrainedEntities  []string
+			numEntitiesExistence int32
+			goldenFile           string
 		}{
 			{
 				[]string{"dc/g/Economy", "invalid"},
 				[]string{"country/ASM"},
+				1,
 				"economy.json",
+			},
+			{
+				[]string{"dc/g/CriminalActivities"},
+				[]string{"country/USA", "country/MEX", "country/BRA", "country/DEU", "country/POL", "country/RUS", "country/ZAF", "country/ZWE", "country/CHN", "country/IND", "country/AUS"},
+				10,
+				"crime_10.json",
+			},
+			{
+				[]string{"dc/g/CriminalActivities"},
+				[]string{"country/USA", "country/MEX", "country/BRA", "country/DEU", "country/POL", "country/RUS", "country/ZAF", "country/ZWE", "country/CHN", "country/IND", "country/AUS"},
+				1,
+				"crime_1.json",
 			},
 		} {
 			resp, err := mixer.BulkVariableGroupInfo(ctx, &pb.BulkVariableGroupInfoRequest{
-				Nodes:               c.nodes,
-				ConstrainedEntities: c.constrainedEntities,
+				Nodes:                c.nodes,
+				ConstrainedEntities:  c.constrainedEntities,
+				NumEntitiesExistence: c.numEntitiesExistence,
 			})
 			if err != nil {
 				t.Errorf("VariableGroupInfo() = %s", err)
