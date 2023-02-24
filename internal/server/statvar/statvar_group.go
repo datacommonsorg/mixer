@@ -236,6 +236,10 @@ func GetStatVarGroupNode(
 	entities := in.GetEntities()
 	svg := in.GetStatVarGroup()
 	numEntitiesExistence := int(in.GetNumEntitiesExistence())
+	// We want at least 1 entity to have data.
+	if numEntitiesExistence == 0 {
+		numEntitiesExistence = 1
+	}
 
 	if svg == "" {
 		return nil, status.Errorf(
@@ -272,10 +276,6 @@ func GetStatVarGroupNode(
 		statVarCount, err := Count(ctx, store, allIDs, entities)
 		if err != nil {
 			return nil, err
-		}
-		// We want at least 1 entity to have data.
-		if numEntitiesExistence == 0 {
-			numEntitiesExistence = 1
 		}
 		// Count for current node.
 		result.DescendentStatVarCount = 0
