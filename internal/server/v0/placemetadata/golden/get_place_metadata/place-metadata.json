@@ -99,6 +99,11 @@
       },
       "parents": [
         {
+          "dcid": "wikidataId/Q213205",
+          "name": "San Francisco Bay Area",
+          "type": "AdministrativeArea"
+        },
+        {
           "dcid": "geoId/06",
           "name": "California",
           "type": "State"

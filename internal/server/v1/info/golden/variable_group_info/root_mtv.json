@@ -59,13 +59,13 @@
         "id": "dc/g/Uncategorized",
         "specializedEntity": "Uncategorized",
         "displayName": "Uncategorized",
-        "descendentStatVarCount": 263
+        "descendentStatVarCount": 264
       },
       {
         "id": "g/Feeding_America",
         "specializedEntity": "Feeding America"
       }
     ],
-    "descendentStatVarCount": 11319
+    "descendentStatVarCount": 11320
   }
 }

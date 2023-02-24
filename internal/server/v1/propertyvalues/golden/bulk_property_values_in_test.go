@@ -54,7 +54,7 @@ func TestBulkPropertyValuesIn(t *testing.T) {
 				"containedInPlace",
 				[]string{"country/USA", "geoId/06053", "geoId/06"},
 				0,
-				"H4sIAAAAAAAA/6TST0szMRAG8Lf71hLTVmpOPfkV2gp68mCb/qEiEliL4EVidqiBNIHsbGW/vdi9bpKCxxyeH09mhr7RvnKVRV9PdvmcjpSzKLWFYmuFkQroDQdbViV3HhayhCJHibpEraSZe5DsH8tIh2UkYxn5zzLSZV1yMerQdQoecnc4VKjt/t1ZCDpPKed6A27jdXF6fcyWsA9aq5Q12ArOG+hu+oev5bccjHmGI5hZ2JlTsge3LSbT+xak3wz+1UuFQeIhSnS5xrol2/vNji/pSzQ9Xhk4gEXp61x9OWeWukSvI20eox4V7hu8MNKGBR4VhsLro0Ro6gSRRRQZiOrTaJUwUkVOxg61aZ/wWch5V7KOIlfJ1TTL7v0AAAD//wEAAP//qiqgueoDAAA=",
+				"H4sIAAAAAAAA/6TST04CMRgFcBkBawEdZzUrrwCY6MqFUP6IUTPJSEzcmNp+GZqUNul0MBzA63kmA7MztDVx2UV/ee/Lw6+4w3SlrNn2l/kIx0wrS4UCvlCZpAzwJQFVViXRBsa0BJ5bakVpBaNyZIAmR0mEGkmEoiRCx0mEmkkTteIGnoXgHtHrdWWFKt60AqfzEHIu5qDnRvD96304gcJpTUNWd5ERUkPXg39Uy68ISPkIG5BDtzPCqAC94P3BzQGkUx/+xVBmncStl2gSYbcH/rZ3f9NTPPP+jqcS1qAsNducrbSWzhTPXif97UxEaY3wtLrzevheFKtAorFX6D4JziUEjECKTH+CySRV7h7++/YyIzbUumOcoFYcpV+73XrbZNWHFMzLNNLvCJNAnD2ztEIeXk3dKYD8bfn+w5wFZ1IPuB04zHkOTCse3O8PAAAA//8BAAD//wB95kIFBQAA",
 			},
 			{
 				"typeOf.json",

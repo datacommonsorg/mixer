@@ -24041,6 +24041,7 @@
         "SettlementAmount_NaturalHazardInsurance_FEMAModerateRiskFloodZone_BuildingStructureAndContents_FloodEvent",
         "SettlementAmount_NaturalHazardInsurance_FEMAModerateRiskFloodZone_BuildingStructure_FloodEvent",
         "ShipmentsOrReceipts_Establishment_NAICSMiningQuarryingOilGasExtraction_WithPayroll",
+        "SurfaceArea",
         "USStateQuarterlyIndustryGDP_NAICS_11",
         "USStateQuarterlyIndustryGDP_NAICS_21",
         "USStateQuarterlyIndustryGDP_NAICS_22",

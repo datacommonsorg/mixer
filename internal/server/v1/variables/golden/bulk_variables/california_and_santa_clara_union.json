@@ -27468,6 +27468,7 @@
         "StandardizedPrecipitationIndex_Atmosphere_6MonthPeriod",
         "StandardizedPrecipitationIndex_Atmosphere_72MonthPeriod",
         "StandardizedPrecipitationIndex_Atmosphere_9MonthPeriod",
+        "SurfaceArea",
         "Temperature",
         "Temperature_SSP245",
         "Temperature_SSP585",
