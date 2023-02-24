@@ -1,0 +1,39 @@
+{
+  "data": [
+    {
+      "node": "dc/g/CriminalActivities",
+      "info": {
+        "absoluteName": "Criminal Activities",
+        "childStatVars": [
+          {
+            "id": "Count_CriminalActivities_CombinedCrime",
+            "searchNames": [
+              "Count of Criminal Activities"
+            ],
+            "displayName": "Count of Criminal Activities",
+            "definition": "mp=count,pt=CriminalActivities",
+            "hasData": true
+          }
+        ],
+        "childStatVarGroups": [
+          {
+            "id": "dc/g/CriminalActivities_CrimeType",
+            "specializedEntity": "Crime Type",
+            "displayName": "Criminal Activities by Crime Type",
+            "descendentStatVarCount": 9
+          },
+          {
+            "id": "dc/g/CriminalActivities_Gender",
+            "specializedEntity": "Gender",
+            "displayName": "Criminal Activities by Gender",
+            "descendentStatVarCount": 2
+          }
+        ],
+        "descendentStatVarCount": 10,
+        "parentStatVarGroups": [
+          "dc/g/Crime"
+        ]
+      }
+    }
+  ]
+}
