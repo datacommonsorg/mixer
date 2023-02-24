@@ -196,6 +196,9 @@ message GetStatVarGroupNodeRequest {
   // should only contain the children stat var (group) if it has data for at
   // least one of the entities.
   repeated string entities = 2;
+  // Number of passed in entities that should have data for the stat var
+  // (group)s that are returned
+  int32 num_entities_existence = 4;
   reserved 3;
 }
 
