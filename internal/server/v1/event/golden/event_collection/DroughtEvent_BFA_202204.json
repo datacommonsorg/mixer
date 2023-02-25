@@ -6,69 +6,28 @@
           "Earth",
           "africa",
           "country/BFA",
-          "country/NER",
-          "grid_1/13_0",
-          "grid_1/13_1",
-          "grid_1/14_1"
-        ],
-        "geoLocations": [
-          {
-            "point": {
-              "latitude": 13,
-              "longitude": 0
-            }
-          }
-        ],
-        "dates": [
-          "2022-04"
-        ],
-        "propVals": {
-          "area": {
-            "vals": [
-              "SquareKilometer35957.66959842968"
-            ]
-          },
-          "endDate": {
-            "vals": [
-              "2022-04"
-            ]
-          },
-          "geoJsonCoordinatesDP1": {
-            "vals": [
-              "{\\\"type\\\": \\\"Polygon\\\", \\\"coordinates\\\": [[[0.5, 13.5], [0.5, 14.5], [1.5, 14.5], [1.5, 12.5], [-0.5, 12.5], [-0.5, 13.5], [0.5, 13.5]]]}"
-            ]
-          },
-          "name": {
-            "vals": [
-              "DroughtEvent at LatLong(13.00000:0.00000) on 2022-04"
-            ]
-          },
-          "observationPeriod": {
-            "vals": [
-              "P1D"
-            ]
-          },
-          "standardizedPrecipitationIndex": {
-            "vals": [
-              "-2.3297453"
-            ]
-          }
-        },
-        "dcid": "droughtEvent/2022-04_grid_1/13_0",
-        "provenanceId": "dc/8cj6de2"
-      },
-      {
-        "places": [
-          "Earth",
-          "africa",
-          "country/BFA",
+          "country/MLI",
           "country/NER",
           "grid_1/12_2",
+          "grid_1/13_0",
+          "grid_1/13_1",
           "grid_1/13_2",
           "grid_1/13_3",
+          "grid_1/14_1",
           "grid_1/14_2",
           "grid_1/14_3",
-          "grid_1/14_4"
+          "grid_1/14_4",
+          "grid_1/15_1",
+          "grid_1/15_2",
+          "grid_1/15_3",
+          "grid_1/15_4",
+          "grid_1/16_0",
+          "grid_1/16_1",
+          "grid_1/16_2",
+          "grid_1/16_3",
+          "grid_1/16_4",
+          "grid_1/17_0",
+          "grid_1/17_1"
         ],
         "geoLocations": [
           {
@@ -79,41 +38,41 @@
           }
         ],
         "dates": [
-          "2022-04"
+          "2022-05"
         ],
         "propVals": {
           "area": {
             "vals": [
-              "SquareKilometer71911.76059289702"
+              "SquareKilometer250168.38146"
             ]
           },
           "endDate": {
             "vals": [
-              "2022-04"
+              "2022-06"
             ]
           },
           "geoJsonCoordinatesDP1": {
             "vals": [
-              "{\\\"type\\\": \\\"Polygon\\\", \\\"coordinates\\\": [[[1.5, 11.5], [1.5, 14.5], [4.5, 14.5], [4.5, 13.5], [3.5, 13.5], [3.5, 12.5], [2.5, 12.5], [2.5, 11.5], [1.5, 11.5]]]}"
+              "{\"type\": \"Polygon\", \"coordinates\": [[[3.5, 13.5], [3.5, 12.5], [2.5, 12.5], [2.5, 11.5], [1.5, 11.5], [1.5, 12.5], [-0.5, 12.5], [-0.5, 13.5], [0.5, 13.5], [0.5, 15.5], [-0.5, 15.5], [-0.5, 17.5], [1.5, 17.5], [1.5, 16.5], [4.5, 16.5], [4.5, 13.5], [3.5, 13.5]]]}"
             ]
           },
           "name": {
             "vals": [
-              "DroughtEvent at LatLong(12.00000:2.00000) on 2022-04"
+              "DroughtEvent at LatLong(12.00000:2.00000) on 2022-05"
             ]
           },
           "observationPeriod": {
             "vals": [
-              "P1D"
+              "P32D"
             ]
           },
           "standardizedPrecipitationIndex": {
             "vals": [
-              "-2.524597"
+              "-3.09"
             ]
           }
         },
-        "dcid": "droughtEvent/2022-04_grid_1/13_3",
+        "dcid": "droughtEvent/2022-05_grid_1/12_2",
         "provenanceId": "dc/8cj6de2"
       }
     ],

@@ -717,7 +717,7 @@
       "objectTypes": [
         "CensusZipCodeTabulationArea"
       ],
-      "provenanceId": "dc/7he3522"
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "geoId/7209689",
@@ -731,7 +731,7 @@
       "objectTypes": [
         "CensusZipCodeTabulationArea"
       ],
-      "provenanceId": "dc/7he3522"
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "geoId/7268599",
@@ -745,7 +745,7 @@
       "objectTypes": [
         "CensusZipCodeTabulationArea"
       ],
-      "provenanceId": "dc/7he3522"
+      "provenanceId": "dc/sm3m2w3"
     },
     {
       "subjectId": "ipedsId/242626",
@@ -849,6 +849,7 @@
       "subjectId": "nces/720003000727",
       "subjectName": "Eladio J. Vega",
       "subjectTypes": [
+        "ElementarySchool",
         "PublicSchool"
       ],
       "predicate": "containedInPlace",
@@ -877,6 +878,7 @@
       "subjectId": "nces/720003000730",
       "subjectName": "Jose De Diego",
       "subjectTypes": [
+        "ElementarySchool",
         "PublicSchool"
       ],
       "predicate": "containedInPlace",
@@ -891,6 +893,7 @@
       "subjectId": "nces/720003000733",
       "subjectName": "Rafael Cordero",
       "subjectTypes": [
+        "ElementarySchool",
         "PublicSchool"
       ],
       "predicate": "containedInPlace",
@@ -905,6 +908,7 @@
       "subjectId": "nces/720003000735",
       "subjectName": "Lucia Cubero",
       "subjectTypes": [
+        "ElementarySchool",
         "PublicSchool"
       ],
       "predicate": "containedInPlace",
@@ -933,6 +937,7 @@
       "subjectId": "nces/720003000737",
       "subjectName": "Jose Acevedo Alvarez",
       "subjectTypes": [
+        "ElementarySchool",
         "PublicSchool"
       ],
       "predicate": "containedInPlace",
@@ -947,6 +952,7 @@
       "subjectId": "nces/720003000740",
       "subjectName": "Barriada Caban",
       "subjectTypes": [
+        "ElementarySchool",
         "PublicSchool"
       ],
       "predicate": "containedInPlace",
@@ -961,6 +967,7 @@
       "subjectId": "nces/720003000741",
       "subjectName": "Homero Rivera Sola",
       "subjectTypes": [
+        "ElementarySchool",
         "PublicSchool"
       ],
       "predicate": "containedInPlace",
@@ -975,6 +982,7 @@
       "subjectId": "nces/720003000743",
       "subjectName": "Rafael Fabian",
       "subjectTypes": [
+        "ElementarySchool",
         "PublicSchool"
       ],
       "predicate": "containedInPlace",
@@ -989,6 +997,7 @@
       "subjectId": "nces/720003000747",
       "subjectName": "Luis Munoz Rivera",
       "subjectTypes": [
+        "ElementarySchool",
         "PublicSchool"
       ],
       "predicate": "containedInPlace",
@@ -1003,6 +1012,7 @@
       "subjectId": "nces/720003000748",
       "subjectName": "Antonio Badillo Hernandez",
       "subjectTypes": [
+        "MiddleSchool",
         "PublicSchool"
       ],
       "predicate": "containedInPlace",
@@ -1017,6 +1027,7 @@
       "subjectId": "nces/720003000749",
       "subjectName": "Su Conchita Iguartua De Suarez (Su Adams)",
       "subjectTypes": [
+        "ElementarySchool",
         "PublicSchool"
       ],
       "predicate": "containedInPlace",
@@ -1031,6 +1042,7 @@
       "subjectId": "nces/720003001984",
       "subjectName": "Benito Cerezo Marquez",
       "subjectTypes": [
+        "HighSchool",
         "PublicSchool"
       ],
       "predicate": "containedInPlace",
@@ -1045,6 +1057,7 @@
       "subjectId": "nces/720003001985",
       "subjectName": "Ester Feliciano Mendoza",
       "subjectTypes": [
+        "MiddleSchool",
         "PublicSchool"
       ],
       "predicate": "containedInPlace",

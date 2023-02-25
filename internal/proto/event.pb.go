@@ -681,6 +681,7 @@ type EventCollection_GeoLocation_Point struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// optional is needed here to prevent 0 values from getting dropped.
 	Latitude  *float64 `protobuf:"fixed64,1,opt,name=latitude,proto3,oneof" json:"latitude,omitempty"`
 	Longitude *float64 `protobuf:"fixed64,2,opt,name=longitude,proto3,oneof" json:"longitude,omitempty"`
 }

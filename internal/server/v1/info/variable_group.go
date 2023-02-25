@@ -35,8 +35,9 @@ func VariableGroupInfo(
 	data, err := statvar.GetStatVarGroupNode(
 		ctx,
 		&pb.GetStatVarGroupNodeRequest{
-			StatVarGroup: in.GetNode(),
-			Entities:     in.GetConstrainedEntities(),
+			StatVarGroup:         in.GetNode(),
+			Entities:             in.GetConstrainedEntities(),
+			NumEntitiesExistence: in.GetNumEntitiesExistence(),
 		},
 		store,
 		cache,
@@ -61,6 +62,7 @@ func BulkVariableGroupInfo(
 	// should call this API twice, w/o constrained_entities to achieve that.
 	nodes := in.GetNodes()
 	constraindEntities := in.GetConstrainedEntities()
+	numEntitiesExistence := in.GetNumEntitiesExistence()
 
 	if len(nodes) == 0 {
 		result := &pb.BulkVariableGroupInfoResponse{
@@ -86,8 +88,9 @@ func BulkVariableGroupInfo(
 			data, err := VariableGroupInfo(
 				errCtx,
 				&pb.VariableGroupInfoRequest{
-					Node:                node,
-					ConstrainedEntities: constraindEntities,
+					Node:                 node,
+					ConstrainedEntities:  constraindEntities,
+					NumEntitiesExistence: numEntitiesExistence,
 				},
 				store,
 				cache,

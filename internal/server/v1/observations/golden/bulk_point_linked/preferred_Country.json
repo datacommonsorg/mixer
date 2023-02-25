@@ -2633,6 +2633,12 @@
       "provenance_url": "https://vdb.czso.cz/vdbvo2/faces/en/index.jsf",
       "measurement_method": "CzechStatisticalOffice"
     },
+    "473499523": {
+      "import_name": "Subnational_Demographics_Stats",
+      "provenance_url": "https://databank.worldbank.org/source/subnational-population",
+      "measurement_method": "WorldBankSubnationalPopulationEstimate",
+      "observation_period": "P1Y"
+    },
     "650668249": {
       "import_name": "UnitedKingdomONS",
       "provenance_url": "https://www.ons.gov.uk",
