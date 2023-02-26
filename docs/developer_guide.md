@@ -112,6 +112,26 @@ go run --tags sqlite_fts5 cmd/main.go \
     --use_branch_bt=false
 ```
 
+### Running ESP locally
+
+Mixer is a gRPC service but callers (website, API clients) are normally http clients. Therefore developing and testing mixer locally often requires both the mixer gRPC server and its corresponding json transcoding server. HTTP to gRPC translation can be done locally thorugh [envoy proxy](https://www.envoyproxy.io/docs/envoy/latest/intro/what_is_envoy). To install envoy, please follow the [official doc](https://www.envoyproxy.io/docs/envoy/latest/start/install).
+
+Before running envoy proxy, please make sure mixer service definition(mixer-grpc.pb) is available by running the follow from repo root.
+```sh
+protoc --proto_path=proto \
+  --include_source_info --include_imports \
+  --descriptor_set_out mixer-grpc.pb \
+  proto/*.proto proto/v1/*.proto
+```
+
+Assuming mixer gRPC server is at `localhost:12345`, run the following from repo root to spin up envoy proxy. This exposes the http mixer service at `localhost:8081`.
+
+```sh
+envoy --config-path esp/envoy-config.yaml
+```
+
+Mixer services in live clusters do not use envoy directly. To replicate the live k8s setup locally, please see [the guide below](#fully-replicating-mixer-k8s-setup-locally).
+
 ### Update Go package dependencies
 
 To view possible updates:
@@ -225,7 +245,7 @@ in interactive mode to run queries.
 go tool pprof -sample_index=alloc_space 127.0.0.1:6060/debug/pprof/heap?gc=1
 ```
 
-## Develop mixer locally with Docker and Kubernetes
+## Fully replicating mixer k8s setup locally
 
 Mixer and [ESP](https://cloud.google.com/endpoints/docs/grpc/running-esp-localdev)
 is deployed on a local Minikube cluster.

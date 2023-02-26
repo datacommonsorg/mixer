@@ -14,18 +14,6 @@
 #
 # This is an envoy config that can be used to translate http -> grpc
 # for developing mixer locally.
-#
-# 1. Envoy program is required. To install envoy, please follow:
-# https://www.envoyproxy.io/docs/envoy/latest/start/install
-#
-# 2. Mixer proto descriptor is also needed, please run from root directory:
-# protoc --proto_path=proto --include_source_info --include_imports --descriptor_set_out mixer-grpc.pb proto/*.proto proto/v1/*.proto
-#
-# 3. To run the envoy proxy, please run from root directory:
-# envoy --config-path esp/envoy-config.yaml
-#
-# This config expects Mixer gRPC server to be available on localhost:12345
-# and will serve http transcoding server on localhost:8081
 static_resources:
   listeners:
   - name: restlistener
