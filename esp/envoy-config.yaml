@@ -19,7 +19,7 @@ static_resources:
   - name: restlistener
     address:
       socket_address: { address: 0.0.0.0, port_value: 8081 }
-    # Reuqest buffer size limit
+    # Request buffer size limit
     per_connection_buffer_limit_bytes: 1073741824 # 1GB
     filter_chains:
     - filters:
