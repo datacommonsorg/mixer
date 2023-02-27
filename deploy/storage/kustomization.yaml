@@ -24,3 +24,6 @@ configMapGenerator:
     files:
       - bigquery.version
       - base_bigtable_info.yaml
+
+generatorOptions:
+ disableNameSuffixHash: true
