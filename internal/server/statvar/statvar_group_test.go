@@ -317,7 +317,7 @@ func TestMergeCustomSVG(t *testing.T) {
 				}
 			}
 		}
-		fixCustomRootDescendentStatVarCount(got.StatVarGroups, customSvgRoot)
+		adjustDescendentStatVarCount(got.StatVarGroups, customSvgRoot)
 
 		for k, svgWant := range c.want.GetStatVarGroups() {
 			svgGot, ok := got.StatVarGroups[k]

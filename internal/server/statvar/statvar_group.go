@@ -116,48 +116,47 @@ func filterSVG(in *pb.StatVarGroups, statVars []string) *pb.StatVarGroups {
 	return result
 }
 
-// fixCustomRootDescendentStatVarCount returns the DescendentStatVarCount for node curID.
+// adjustDescendentStatVarCount returns the DescendentStatVarCount for node curID.
 // Mutates DescendentStatVarCount for all nodes in id2Node starting at customSvgRoot.
-func fixCustomRootDescendentStatVarCount(id2Node map[string]*pb.StatVarGroupNode, curID string) int32 {
+func adjustDescendentStatVarCount(id2Node map[string]*pb.StatVarGroupNode, curID string) int32 {
 	curNode, ok := id2Node[curID]
 	if !ok {
 		return 0
 	}
-	var descendentStatVarCount int32
+	curNode.DescendentStatVarCount = int32(len(curNode.ChildStatVars))
 	for _, childSVG := range curNode.GetChildStatVarGroups() {
 		// Child SVG protos have its own DescendentStatVarCount that must be set.
-		childSVG.DescendentStatVarCount = fixCustomRootDescendentStatVarCount(id2Node, childSVG.GetId())
-		descendentStatVarCount += childSVG.DescendentStatVarCount
+		childSVG.DescendentStatVarCount = adjustDescendentStatVarCount(id2Node, childSVG.GetId())
+		curNode.DescendentStatVarCount += childSVG.DescendentStatVarCount
 	}
-	curNode.DescendentStatVarCount = descendentStatVarCount + int32(len(curNode.ChildStatVars))
 	return curNode.GetDescendentStatVarCount()
 }
 
-// mergeCustomSVGNode merges n2's svs and child svgs into n1.
+// mergeCustomSVGNode merges node2's svg and svs into node1.
 // Merge here refers to set operation.
-// Warning: n1's DescendentStatVarCount is unchanged.
+// Warning: node1's DescendentStatVarCount is unchanged.
 // Caller is responsible for calling fixCustomRootDescendentStatVarCount
 // at the end of all merges.
-func mergeCustomSVGNode(n1, n2 *pb.StatVarGroupNode) {
-	n1SVGs := map[string]bool{}
-	for _, childSVG := range n1.GetChildStatVarGroups() {
-		n1SVGs[childSVG.GetId()] = true
+func mergeCustomSVGNode(node1, node2 *pb.StatVarGroupNode) {
+	node1SVGs := map[string]bool{}
+	for _, childSVG := range node1.GetChildStatVarGroups() {
+		node1SVGs[childSVG.GetId()] = true
 	}
-	for _, childSVG := range n2.GetChildStatVarGroups() {
-		if _, ok := n1SVGs[childSVG.GetId()]; !ok {
-			n1.ChildStatVarGroups = append(n1.ChildStatVarGroups, childSVG)
-			n1SVGs[childSVG.GetId()] = true
+	for _, childSVG := range node2.GetChildStatVarGroups() {
+		if _, ok := node1SVGs[childSVG.GetId()]; !ok {
+			node1.ChildStatVarGroups = append(node1.ChildStatVarGroups, childSVG)
+			node1SVGs[childSVG.GetId()] = true
 		}
 	}
 
-	n1SVs := map[string]bool{}
-	for _, childSV := range n1.GetChildStatVars() {
-		n1SVs[childSV.GetId()] = true
+	node1SVs := map[string]bool{}
+	for _, childSV := range node1.GetChildStatVars() {
+		node1SVs[childSV.GetId()] = true
 	}
-	for _, childSV := range n2.GetChildStatVars() {
-		if _, ok := n1SVs[childSV.GetId()]; !ok {
-			n1.ChildStatVars = append(n1.ChildStatVars, childSV)
-			n1SVs[childSV.GetId()] = true
+	for _, childSV := range node2.GetChildStatVars() {
+		if _, ok := node1SVs[childSV.GetId()]; !ok {
+			node1.ChildStatVars = append(node1.ChildStatVars, childSV)
+			node1SVs[childSV.GetId()] = true
 		}
 	}
 }
@@ -231,7 +230,7 @@ func GetStatVarGroup(
 			}
 		}
 		// Recount all custom svg stat-vars because of the above merge.
-		fixCustomRootDescendentStatVarCount(result.StatVarGroups, customSvgRoot)
+		adjustDescendentStatVarCount(result.StatVarGroups, customSvgRoot)
 		if customRootNode != nil {
 			customRootExist := false
 			// If custom schema is built together with base schema, then it is
