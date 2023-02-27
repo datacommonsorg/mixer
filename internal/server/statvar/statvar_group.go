@@ -132,12 +132,12 @@ func adjustDescendentStatVarCount(id2Node map[string]*pb.StatVarGroupNode, curID
 	return curNode.GetDescendentStatVarCount()
 }
 
-// mergeCustomSVGNode merges node2's svg and svs into node1.
+// mergeSVGNodes merges node2's svg and svs into node1.
 // Merge here refers to set operation.
 // Warning: node1's DescendentStatVarCount is unchanged.
 // Caller is responsible for calling fixCustomRootDescendentStatVarCount
 // at the end of all merges.
-func mergeCustomSVGNode(node1, node2 *pb.StatVarGroupNode) {
+func mergeSVGNodes(node1, node2 *pb.StatVarGroupNode) {
 	node1SVGs := map[string]bool{}
 	for _, childSVG := range node1.GetChildStatVarGroups() {
 		node1SVGs[childSVG.GetId()] = true
@@ -223,7 +223,7 @@ func GetStatVarGroup(
 						} else if strings.HasPrefix(k, customSVGPrefix) {
 							// For custom SVGs, merge all SVGs regardless of the import group rank.
 							// Custom DC assumes overlapping stat var groups.
-							mergeCustomSVGNode(result.StatVarGroups[k], v)
+							mergeSVGNodes(result.StatVarGroups[k], v)
 						}
 					}
 				}

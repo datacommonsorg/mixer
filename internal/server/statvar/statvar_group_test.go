@@ -313,7 +313,7 @@ func TestMergeCustomSVG(t *testing.T) {
 				if _, ok := got.StatVarGroups[k]; !ok {
 					got.StatVarGroups[k] = v
 				} else {
-					mergeCustomSVGNode(got.StatVarGroups[k], v)
+					mergeSVGNodes(got.StatVarGroups[k], v)
 				}
 			}
 		}
