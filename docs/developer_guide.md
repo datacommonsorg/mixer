@@ -29,7 +29,7 @@ port forwarding.
   ```bash
   # Use the actual path of your Go installation
   export GOPATH=/Users/<USER>/go/
-  export PATH=$PATH:$GOPATH
+  export PATH=$PATH:$GOPATH/bin
   ```
 
 - Authenticate to GCP

@@ -19,6 +19,8 @@ static_resources:
   - name: restlistener
     address:
       socket_address: { address: 0.0.0.0, port_value: 8081 }
+    # Reuqest buffer size limit
+    per_connection_buffer_limit_bytes: 1073741824 # 1GB
     filter_chains:
     - filters:
       - name: envoy.filters.network.http_connection_manager
@@ -50,6 +52,8 @@ static_resources:
   clusters:
     - name: grpcserver
       connect_timeout: 60s
+      # Response buffer size limit
+      per_connection_buffer_limit_bytes:  1073741824 # 1GB
       type: logical_dns
       lb_policy: round_robin
       dns_lookup_family: V4_ONLY
