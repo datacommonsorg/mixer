@@ -43,6 +43,13 @@ func TestPropertyValuesOut(t *testing.T) {
 			token      string
 		}{
 			{
+				"specializationOf.json",
+				"specializationOf",
+				"dc/g/Person_MedicalCondition-Asthma",
+				0,
+				"",
+			},
+			{
 				"containedIn.json",
 				"containedInPlace",
 				"geoId/06",

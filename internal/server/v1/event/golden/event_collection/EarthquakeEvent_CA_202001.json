@@ -56,7 +56,7 @@
           }
         },
         "dcid": "earthquake/ci39019703",
-        "provenanceId": "dc/xz8ndk3"
+        "provenanceId": "dc/base/EarthquakeUSGS"
       },
       {
         "places": [
@@ -113,7 +113,7 @@
           }
         },
         "dcid": "earthquake/ci39021735",
-        "provenanceId": "dc/xz8ndk3"
+        "provenanceId": "dc/base/EarthquakeUSGS"
       },
       {
         "places": [
@@ -170,7 +170,7 @@
           }
         },
         "dcid": "earthquake/ci39028647",
-        "provenanceId": "dc/xz8ndk3"
+        "provenanceId": "dc/base/EarthquakeUSGS"
       },
       {
         "places": [
@@ -227,7 +227,7 @@
           }
         },
         "dcid": "earthquake/ci39273704",
-        "provenanceId": "dc/xz8ndk3"
+        "provenanceId": "dc/base/EarthquakeUSGS"
       },
       {
         "places": [
@@ -284,7 +284,7 @@
           }
         },
         "dcid": "earthquake/ci39276560",
-        "provenanceId": "dc/xz8ndk3"
+        "provenanceId": "dc/base/EarthquakeUSGS"
       },
       {
         "places": [
@@ -343,7 +343,7 @@
           }
         },
         "dcid": "earthquake/ci39277736",
-        "provenanceId": "dc/xz8ndk3"
+        "provenanceId": "dc/base/EarthquakeUSGS"
       },
       {
         "places": [
@@ -396,7 +396,7 @@
           }
         },
         "dcid": "earthquake/ci39281440",
-        "provenanceId": "dc/xz8ndk3"
+        "provenanceId": "dc/base/EarthquakeUSGS"
       },
       {
         "places": [
@@ -454,7 +454,7 @@
           }
         },
         "dcid": "earthquake/ci39281456",
-        "provenanceId": "dc/xz8ndk3"
+        "provenanceId": "dc/base/EarthquakeUSGS"
       },
       {
         "places": [
@@ -512,7 +512,7 @@
           }
         },
         "dcid": "earthquake/ci39283296",
-        "provenanceId": "dc/xz8ndk3"
+        "provenanceId": "dc/base/EarthquakeUSGS"
       },
       {
         "places": [
@@ -572,7 +572,7 @@
           }
         },
         "dcid": "earthquake/ci39285816",
-        "provenanceId": "dc/xz8ndk3"
+        "provenanceId": "dc/base/EarthquakeUSGS"
       },
       {
         "places": [
@@ -625,7 +625,7 @@
           }
         },
         "dcid": "earthquake/nc73322626",
-        "provenanceId": "dc/xz8ndk3"
+        "provenanceId": "dc/base/EarthquakeUSGS"
       },
       {
         "places": [
@@ -684,7 +684,7 @@
           }
         },
         "dcid": "earthquake/nc73323271",
-        "provenanceId": "dc/xz8ndk3"
+        "provenanceId": "dc/base/EarthquakeUSGS"
       },
       {
         "places": [
@@ -742,7 +742,7 @@
           }
         },
         "dcid": "earthquake/nc73324311",
-        "provenanceId": "dc/xz8ndk3"
+        "provenanceId": "dc/base/EarthquakeUSGS"
       },
       {
         "places": [
@@ -800,7 +800,7 @@
           }
         },
         "dcid": "earthquake/nc73324681",
-        "provenanceId": "dc/xz8ndk3"
+        "provenanceId": "dc/base/EarthquakeUSGS"
       },
       {
         "places": [
@@ -858,7 +858,7 @@
           }
         },
         "dcid": "earthquake/nc73326936",
-        "provenanceId": "dc/xz8ndk3"
+        "provenanceId": "dc/base/EarthquakeUSGS"
       },
       {
         "places": [
@@ -916,7 +916,7 @@
           }
         },
         "dcid": "earthquake/nc73328466",
-        "provenanceId": "dc/xz8ndk3"
+        "provenanceId": "dc/base/EarthquakeUSGS"
       },
       {
         "places": [
@@ -969,11 +969,11 @@
           }
         },
         "dcid": "earthquake/nc73333256",
-        "provenanceId": "dc/xz8ndk3"
+        "provenanceId": "dc/base/EarthquakeUSGS"
       }
     ],
     "provenanceInfo": {
-      "dc/xz8ndk3": {
+      "dc/base/EarthquakeUSGS": {
         "importName": "EarthquakeUSGS",
         "provenanceUrl": "https://earthquake.usgs.gov/",
         "domain": "usgs.gov"

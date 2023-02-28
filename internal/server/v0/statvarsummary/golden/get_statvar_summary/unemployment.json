@@ -80,7 +80,7 @@
         }
       },
       "provenanceSummary": {
-        "dc/2xghn33": {
+        "dc/base/BLS_CPS": {
           "importName": "BLS_CPS",
           "releaseFrequency": "P1M",
           "seriesSummary": [
@@ -138,7 +138,7 @@
           "observationCount": 1201,
           "timeSeriesCount": 2
         },
-        "dc/lly3yc1": {
+        "dc/base/BLS_LAUS": {
           "importName": "BLS_LAUS",
           "releaseFrequency": "P1M",
           "seriesSummary": [
