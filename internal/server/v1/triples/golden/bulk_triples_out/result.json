@@ -6,7 +6,7 @@
         "name": {
           "nodes": [
             {
-              "provenanceId": "dc/5l5zxr1",
+              "provenanceId": "dc/base/BaseSchema",
               "value": "Country"
             }
           ]
@@ -18,8 +18,8 @@
               "types": [
                 "Provenance"
               ],
-              "dcid": "dc/5l5zxr1",
-              "provenanceId": "dc/5l5zxr1"
+              "dcid": "dc/base/BaseSchema",
+              "provenanceId": "dc/base/BaseSchema"
             }
           ]
         },
@@ -31,7 +31,7 @@
                 "Class"
               ],
               "dcid": "AdministrativeArea",
-              "provenanceId": "dc/5l5zxr1"
+              "provenanceId": "dc/base/BaseSchema"
             }
           ]
         },
@@ -43,7 +43,7 @@
                 "Class"
               ],
               "dcid": "Class",
-              "provenanceId": "dc/5l5zxr1"
+              "provenanceId": "dc/base/BaseSchema"
             }
           ]
         }
@@ -55,7 +55,7 @@
         "description": {
           "nodes": [
             {
-              "provenanceId": "dc/5l5zxr1",
+              "provenanceId": "dc/base/BaseSchema",
               "value": "Biological Specimens facilitate the sharing of information about biological diversity by providing identifiers, labels, and definitions. The class definition is loosely based on the Darwin Core schema."
             }
           ]
@@ -63,7 +63,7 @@
         "name": {
           "nodes": [
             {
-              "provenanceId": "dc/5l5zxr1",
+              "provenanceId": "dc/base/BaseSchema",
               "value": "BiologicalSpecimen"
             }
           ]
@@ -75,8 +75,8 @@
               "types": [
                 "Provenance"
               ],
-              "dcid": "dc/5l5zxr1",
-              "provenanceId": "dc/5l5zxr1"
+              "dcid": "dc/base/BaseSchema",
+              "provenanceId": "dc/base/BaseSchema"
             }
           ]
         },
@@ -88,7 +88,7 @@
                 "Class"
               ],
               "dcid": "Thing",
-              "provenanceId": "dc/5l5zxr1"
+              "provenanceId": "dc/base/BaseSchema"
             }
           ]
         },
@@ -100,7 +100,7 @@
                 "Class"
               ],
               "dcid": "Class",
-              "provenanceId": "dc/5l5zxr1"
+              "provenanceId": "dc/base/BaseSchema"
             }
           ]
         }
@@ -112,7 +112,7 @@
         "description": {
           "nodes": [
             {
-              "provenanceId": "dc/d7tbsb1",
+              "provenanceId": "dc/base/HumanReadableStatVars",
               "value": "Total Number of People in a Population"
             }
           ]
@@ -125,7 +125,7 @@
                 "Property"
               ],
               "dcid": "count",
-              "provenanceId": "dc/d7tbsb1"
+              "provenanceId": "dc/base/HumanReadableStatVars"
             }
           ]
         },
@@ -137,14 +137,14 @@
                 "StatVarGroup"
               ],
               "dcid": "dc/g/Demographics",
-              "provenanceId": "dc/d7tbsb1"
+              "provenanceId": "dc/base/HumanReadableStatVars"
             }
           ]
         },
         "name": {
           "nodes": [
             {
-              "provenanceId": "dc/d7tbsb1",
+              "provenanceId": "dc/base/HumanReadableStatVars",
               "value": "Population"
             }
           ]
@@ -157,7 +157,7 @@
                 "Class"
               ],
               "dcid": "Person",
-              "provenanceId": "dc/d7tbsb1"
+              "provenanceId": "dc/base/HumanReadableStatVars"
             }
           ]
         },
@@ -168,8 +168,8 @@
               "types": [
                 "Provenance"
               ],
-              "dcid": "dc/d7tbsb1",
-              "provenanceId": "dc/d7tbsb1"
+              "dcid": "dc/base/HumanReadableStatVars",
+              "provenanceId": "dc/base/HumanReadableStatVars"
             }
           ]
         },
@@ -181,7 +181,7 @@
                 "Property"
               ],
               "dcid": "measuredValue",
-              "provenanceId": "dc/d7tbsb1"
+              "provenanceId": "dc/base/HumanReadableStatVars"
             }
           ]
         },
@@ -193,7 +193,7 @@
                 "Class"
               ],
               "dcid": "StatisticalVariable",
-              "provenanceId": "dc/d7tbsb1"
+              "provenanceId": "dc/base/HumanReadableStatVars"
             }
           ]
         }

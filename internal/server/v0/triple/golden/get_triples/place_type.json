@@ -8,7 +8,7 @@
       ],
       "predicate": "name",
       "objectValue": "Country",
-      "provenanceId": "dc/5l5zxr1"
+      "provenanceId": "dc/base/BaseSchema"
     },
     {
       "subjectId": "Country",
@@ -17,12 +17,12 @@
         "Class"
       ],
       "predicate": "provenance",
-      "objectId": "dc/5l5zxr1",
+      "objectId": "dc/base/BaseSchema",
       "objectName": "BaseSchema",
       "objectTypes": [
         "Provenance"
       ],
-      "provenanceId": "dc/5l5zxr1"
+      "provenanceId": "dc/base/BaseSchema"
     },
     {
       "subjectId": "Country",
@@ -36,7 +36,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5l5zxr1"
+      "provenanceId": "dc/base/BaseSchema"
     },
     {
       "subjectId": "Country",
@@ -50,7 +50,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5l5zxr1"
+      "provenanceId": "dc/base/BaseSchema"
     },
     {
       "subjectId": "addressCountry",
@@ -64,7 +64,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5l5zxr1"
+      "provenanceId": "dc/base/BaseSchema"
     },
     {
       "subjectId": "country/ABW",
@@ -3826,7 +3826,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5l5zxr1"
+      "provenanceId": "dc/base/BaseSchema"
     },
     {
       "subjectId": "nationality",
@@ -3840,7 +3840,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5l5zxr1"
+      "provenanceId": "dc/base/BaseSchema"
     },
     {
       "subjectId": "wikidataId/Q23681",
@@ -3936,7 +3936,7 @@
       ],
       "predicate": "name",
       "objectValue": "State",
-      "provenanceId": "dc/5l5zxr1"
+      "provenanceId": "dc/base/BaseSchema"
     },
     {
       "subjectId": "State",
@@ -3945,12 +3945,12 @@
         "Class"
       ],
       "predicate": "provenance",
-      "objectId": "dc/5l5zxr1",
+      "objectId": "dc/base/BaseSchema",
       "objectName": "BaseSchema",
       "objectTypes": [
         "Provenance"
       ],
-      "provenanceId": "dc/5l5zxr1"
+      "provenanceId": "dc/base/BaseSchema"
     },
     {
       "subjectId": "State",
@@ -3964,7 +3964,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5l5zxr1"
+      "provenanceId": "dc/base/BaseSchema"
     },
     {
       "subjectId": "State",
@@ -3978,7 +3978,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5l5zxr1"
+      "provenanceId": "dc/base/BaseSchema"
     },
     {
       "subjectId": "dc/w69kmen1t5l19",

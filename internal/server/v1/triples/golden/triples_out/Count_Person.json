@@ -3,7 +3,7 @@
     "description": {
       "nodes": [
         {
-          "provenanceId": "dc/d7tbsb1",
+          "provenanceId": "dc/base/HumanReadableStatVars",
           "value": "Total Number of People in a Population"
         }
       ]
@@ -16,7 +16,7 @@
             "Property"
           ],
           "dcid": "count",
-          "provenanceId": "dc/d7tbsb1"
+          "provenanceId": "dc/base/HumanReadableStatVars"
         }
       ]
     },
@@ -28,14 +28,14 @@
             "StatVarGroup"
           ],
           "dcid": "dc/g/Demographics",
-          "provenanceId": "dc/d7tbsb1"
+          "provenanceId": "dc/base/HumanReadableStatVars"
         }
       ]
     },
     "name": {
       "nodes": [
         {
-          "provenanceId": "dc/d7tbsb1",
+          "provenanceId": "dc/base/HumanReadableStatVars",
           "value": "Population"
         }
       ]
@@ -48,7 +48,7 @@
             "Class"
           ],
           "dcid": "Person",
-          "provenanceId": "dc/d7tbsb1"
+          "provenanceId": "dc/base/HumanReadableStatVars"
         }
       ]
     },
@@ -59,8 +59,8 @@
           "types": [
             "Provenance"
           ],
-          "dcid": "dc/d7tbsb1",
-          "provenanceId": "dc/d7tbsb1"
+          "dcid": "dc/base/HumanReadableStatVars",
+          "provenanceId": "dc/base/HumanReadableStatVars"
         }
       ]
     },
@@ -72,7 +72,7 @@
             "Property"
           ],
           "dcid": "measuredValue",
-          "provenanceId": "dc/d7tbsb1"
+          "provenanceId": "dc/base/HumanReadableStatVars"
         }
       ]
     },
@@ -84,7 +84,7 @@
             "Class"
           ],
           "dcid": "StatisticalVariable",
-          "provenanceId": "dc/d7tbsb1"
+          "provenanceId": "dc/base/HumanReadableStatVars"
         }
       ]
     }

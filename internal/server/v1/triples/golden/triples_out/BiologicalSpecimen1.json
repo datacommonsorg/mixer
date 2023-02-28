@@ -3,7 +3,7 @@
     "description": {
       "nodes": [
         {
-          "provenanceId": "dc/5l5zxr1",
+          "provenanceId": "dc/base/BaseSchema",
           "value": "Biological Specimens facilitate the sharing of information about biological diversity by providing identifiers, labels, and definitions. The class definition is loosely based on the Darwin Core schema."
         }
       ]
@@ -11,7 +11,7 @@
     "name": {
       "nodes": [
         {
-          "provenanceId": "dc/5l5zxr1",
+          "provenanceId": "dc/base/BaseSchema",
           "value": "BiologicalSpecimen"
         }
       ]
@@ -23,8 +23,8 @@
           "types": [
             "Provenance"
           ],
-          "dcid": "dc/5l5zxr1",
-          "provenanceId": "dc/5l5zxr1"
+          "dcid": "dc/base/BaseSchema",
+          "provenanceId": "dc/base/BaseSchema"
         }
       ]
     },
@@ -36,7 +36,7 @@
             "Class"
           ],
           "dcid": "Thing",
-          "provenanceId": "dc/5l5zxr1"
+          "provenanceId": "dc/base/BaseSchema"
         }
       ]
     },
@@ -48,7 +48,7 @@
             "Class"
           ],
           "dcid": "Class",
-          "provenanceId": "dc/5l5zxr1"
+          "provenanceId": "dc/base/BaseSchema"
         }
       ]
     }

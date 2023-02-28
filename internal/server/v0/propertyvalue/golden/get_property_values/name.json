@@ -3,7 +3,7 @@
     "Count_Person": {
       "out": [
         {
-          "provenanceId": "dc/d7tbsb1",
+          "provenanceId": "dc/base/HumanReadableStatVars",
           "value": "Population"
         }
       ]
@@ -11,7 +11,7 @@
     "State": {
       "out": [
         {
-          "provenanceId": "dc/5l5zxr1",
+          "provenanceId": "dc/base/BaseSchema",
           "value": "State"
         }
       ]

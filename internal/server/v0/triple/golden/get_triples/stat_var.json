@@ -8,7 +8,7 @@
       ],
       "predicate": "description",
       "objectValue": "Total Number of People in a Population",
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_Person",
@@ -22,7 +22,7 @@
       "objectTypes": [
         "Property"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_Person",
@@ -36,7 +36,7 @@
       "objectTypes": [
         "StatVarGroup"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_Person",
@@ -46,7 +46,7 @@
       ],
       "predicate": "name",
       "objectValue": "Population",
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_Person",
@@ -60,7 +60,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_Person",
@@ -69,12 +69,12 @@
         "StatisticalVariable"
       ],
       "predicate": "provenance",
-      "objectId": "dc/d7tbsb1",
+      "objectId": "dc/base/HumanReadableStatVars",
       "objectName": "HumanReadableStatVars",
       "objectTypes": [
         "Provenance"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_Person",
@@ -88,7 +88,7 @@
       "objectTypes": [
         "Property"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_Person",
@@ -102,7 +102,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Amount_EconomicActivity_ExpenditureActivity_HealthcareExpenditure_AsFractionOf_Count_Person",
@@ -116,7 +116,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Amount_EconomicActivity_GrossDomesticProduction_Nominal_AsAFractionOf_Count_Person",
@@ -130,7 +130,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_BirthEvent_AsAFractionOfCount_Person",
@@ -144,7 +144,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_BirthEvent_LiveBirth_AsFractionOf_Count_Person",
@@ -158,7 +158,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_CriminalActivities_MurderAndNonNegligentManslaughter_AsFractionOf_Count_Person",
@@ -172,7 +172,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_Death_AgeAdjusted_AsAFractionOf_Count_Person",
@@ -186,7 +186,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_Death_AsAFractionOfCount_Person",
@@ -200,7 +200,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_Death_IntentionalSelfHarm_AsFractionOf_Count_Person",
@@ -214,7 +214,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_AsAFractionOf_Count_Person",
@@ -228,7 +228,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_ConditionBloodDisease_AsAFractionOf_Count_Person",
@@ -242,7 +242,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_ConditionBloodDisease_Rural_AsAFractionOf_Count_Person",
@@ -256,7 +256,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_ConditionBloodDisease_Urban_AsAFractionOf_Count_Person",
@@ -270,7 +270,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_ConditionCancer_AsAFractionOf_Count_Person",
@@ -284,7 +284,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_ConditionCancer_Rural_AsAFractionOf_Count_Person",
@@ -298,7 +298,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_ConditionCancer_Urban_AsAFractionOf_Count_Person",
@@ -312,7 +312,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_ConditionCardiovascularDisease_AsAFractionOf_Count_Person",
@@ -326,7 +326,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_ConditionCardiovascularDisease_Rural_AsAFractionOf_Count_Person",
@@ -340,7 +340,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_ConditionCardiovascularDisease_Urban_AsAFractionOf_Count_Person",
@@ -354,7 +354,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_ConditionEarCondition_AsAFractionOf_Count_Person",
@@ -368,7 +368,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_ConditionEarCondition_Rural_AsAFractionOf_Count_Person",
@@ -382,7 +382,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_ConditionEarCondition_Urban_AsAFractionOf_Count_Person",
@@ -396,7 +396,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_ConditionEndocrineMetabolicCondition_AsAFractionOf_Count_Person",
@@ -410,7 +410,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_ConditionEndocrineMetabolicCondition_Rural_AsAFractionOf_Count_Person",
@@ -424,7 +424,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_ConditionEndocrineMetabolicCondition_Urban_AsAFractionOf_Count_Person",
@@ -438,7 +438,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_ConditionEyeCondition_AsAFractionOf_Count_Person",
@@ -452,7 +452,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_ConditionEyeCondition_Rural_AsAFractionOf_Count_Person",
@@ -466,7 +466,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_ConditionEyeCondition_Urban_AsAFractionOf_Count_Person",
@@ -480,7 +480,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_ConditionGastroIntestinalCondition_AsAFractionOf_Count_Person",
@@ -494,7 +494,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_ConditionGastroIntestinalCondition_Rural_AsAFractionOf_Count_Person",
@@ -508,7 +508,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_ConditionGastroIntestinalCondition_Urban_AsAFractionOf_Count_Person",
@@ -522,7 +522,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_ConditionGenitoUrinaryCondition_AsAFractionOf_Count_Person",
@@ -536,7 +536,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_ConditionGenitoUrinaryCondition_Rural_AsAFractionOf_Count_Person",
@@ -550,7 +550,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_ConditionGenitoUrinaryCondition_Urban_AsAFractionOf_Count_Person",
@@ -564,7 +564,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_ConditionInfection_AsAFractionOf_Count_Person",
@@ -578,7 +578,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_ConditionInfection_Rural_AsAFractionOf_Count_Person",
@@ -592,7 +592,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_ConditionInfection_Urban_AsAFractionOf_Count_Person",
@@ -606,7 +606,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_ConditionInjury_AsAFractionOf_Count_Person",
@@ -620,7 +620,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_ConditionInjury_Rural_AsAFractionOf_Count_Person",
@@ -634,7 +634,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_ConditionInjury_Urban_AsAFractionOf_Count_Person",
@@ -648,7 +648,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_ConditionMusculoSkeletalCondition_AsAFractionOf_Count_Person",
@@ -662,7 +662,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_ConditionMusculoSkeletalCondition_Rural_AsAFractionOf_Count_Person",
@@ -676,7 +676,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_ConditionMusculoSkeletalCondition_Urban_AsAFractionOf_Count_Person",
@@ -690,7 +690,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_ConditionNSSHealthOtherCondition_AsAFractionOf_Count_Person",
@@ -704,7 +704,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_ConditionNSSHealthOtherCondition_Rural_AsAFractionOf_Count_Person",
@@ -718,7 +718,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_ConditionNSSHealthOtherCondition_Urban_AsAFractionOf_Count_Person",
@@ -732,7 +732,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_ConditionObstetricCondition_AsAFractionOf_Count_Person",
@@ -746,7 +746,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_ConditionObstetricCondition_Rural_AsAFractionOf_Count_Person",
@@ -760,7 +760,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_ConditionObstetricCondition_Urban_AsAFractionOf_Count_Person",
@@ -774,7 +774,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_ConditionPsychiatricNeurologicalCondition_AsAFractionOf_Count_Person",
@@ -788,7 +788,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_ConditionPsychiatricNeurologicalCondition_Rural_AsAFractionOf_Count_Person",
@@ -802,7 +802,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_ConditionPsychiatricNeurologicalCondition_Urban_AsAFractionOf_Count_Person",
@@ -816,7 +816,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_ConditionRespiratoryDisease_AsAFractionOf_Count_Person",
@@ -830,7 +830,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_ConditionRespiratoryDisease_Rural_AsAFractionOf_Count_Person",
@@ -844,7 +844,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_ConditionRespiratoryDisease_Urban_AsAFractionOf_Count_Person",
@@ -858,7 +858,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_ConditionSkinDisease_AsAFractionOf_Count_Person",
@@ -872,7 +872,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_ConditionSkinDisease_Rural_AsAFractionOf_Count_Person",
@@ -886,7 +886,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_ConditionSkinDisease_Urban_AsAFractionOf_Count_Person",
@@ -900,7 +900,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Female_AsAFractionOf_Count_Person",
@@ -914,7 +914,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Female_ConditionBloodDisease_AsAFractionOf_Count_Person",
@@ -928,7 +928,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Female_ConditionBloodDisease_Rural_AsAFractionOf_Count_Person",
@@ -942,7 +942,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Female_ConditionBloodDisease_Urban_AsAFractionOf_Count_Person",
@@ -956,7 +956,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Female_ConditionCancer_AsAFractionOf_Count_Person",
@@ -970,7 +970,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Female_ConditionCancer_Rural_AsAFractionOf_Count_Person",
@@ -984,7 +984,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Female_ConditionCancer_Urban_AsAFractionOf_Count_Person",
@@ -998,7 +998,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Female_ConditionCardiovascularDisease_AsAFractionOf_Count_Person",
@@ -1012,7 +1012,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Female_ConditionCardiovascularDisease_Rural_AsAFractionOf_Count_Person",
@@ -1026,7 +1026,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Female_ConditionCardiovascularDisease_Urban_AsAFractionOf_Count_Person",
@@ -1040,7 +1040,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Female_ConditionEarCondition_AsAFractionOf_Count_Person",
@@ -1054,7 +1054,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Female_ConditionEarCondition_Rural_AsAFractionOf_Count_Person",
@@ -1068,7 +1068,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Female_ConditionEarCondition_Urban_AsAFractionOf_Count_Person",
@@ -1082,7 +1082,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Female_ConditionEndocrineMetabolicCondition_AsAFractionOf_Count_Person",
@@ -1096,7 +1096,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Female_ConditionEndocrineMetabolicCondition_Rural_AsAFractionOf_Count_Person",
@@ -1110,7 +1110,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Female_ConditionEndocrineMetabolicCondition_Urban_AsAFractionOf_Count_Person",
@@ -1124,7 +1124,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Female_ConditionEyeCondition_AsAFractionOf_Count_Person",
@@ -1138,7 +1138,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Female_ConditionEyeCondition_Rural_AsAFractionOf_Count_Person",
@@ -1152,7 +1152,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Female_ConditionEyeCondition_Urban_AsAFractionOf_Count_Person",
@@ -1166,7 +1166,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Female_ConditionGastroIntestinalCondition_AsAFractionOf_Count_Person",
@@ -1180,7 +1180,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Female_ConditionGastroIntestinalCondition_Rural_AsAFractionOf_Count_Person",
@@ -1194,7 +1194,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Female_ConditionGastroIntestinalCondition_Urban_AsAFractionOf_Count_Person",
@@ -1208,7 +1208,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Female_ConditionGenitoUrinaryCondition_AsAFractionOf_Count_Person",
@@ -1222,7 +1222,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Female_ConditionGenitoUrinaryCondition_Rural_AsAFractionOf_Count_Person",
@@ -1236,7 +1236,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Female_ConditionGenitoUrinaryCondition_Urban_AsAFractionOf_Count_Person",
@@ -1250,7 +1250,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Female_ConditionInfection_AsAFractionOf_Count_Person",
@@ -1264,7 +1264,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Female_ConditionInfection_Rural_AsAFractionOf_Count_Person",
@@ -1278,7 +1278,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Female_ConditionInfection_Urban_AsAFractionOf_Count_Person",
@@ -1292,7 +1292,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Female_ConditionInjury_AsAFractionOf_Count_Person",
@@ -1306,7 +1306,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Female_ConditionInjury_Rural_AsAFractionOf_Count_Person",
@@ -1320,7 +1320,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Female_ConditionInjury_Urban_AsAFractionOf_Count_Person",
@@ -1334,7 +1334,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Female_ConditionMusculoSkeletalCondition_AsAFractionOf_Count_Person",
@@ -1348,7 +1348,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Female_ConditionMusculoSkeletalCondition_Rural_AsAFractionOf_Count_Person",
@@ -1362,7 +1362,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Female_ConditionMusculoSkeletalCondition_Urban_AsAFractionOf_Count_Person",
@@ -1376,7 +1376,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Female_ConditionNSSHealthOtherCondition_AsAFractionOf_Count_Person",
@@ -1390,7 +1390,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Female_ConditionNSSHealthOtherCondition_Rural_AsAFractionOf_Count_Person",
@@ -1404,7 +1404,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Female_ConditionNSSHealthOtherCondition_Urban_AsAFractionOf_Count_Person",
@@ -1418,7 +1418,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Female_ConditionObstetricCondition_AsAFractionOf_Count_Person",
@@ -1432,7 +1432,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Female_ConditionObstetricCondition_Rural_AsAFractionOf_Count_Person",
@@ -1446,7 +1446,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Female_ConditionObstetricCondition_Urban_AsAFractionOf_Count_Person",
@@ -1460,7 +1460,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Female_ConditionPsychiatricNeurologicalCondition_AsAFractionOf_Count_Person",
@@ -1474,7 +1474,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Female_ConditionPsychiatricNeurologicalCondition_Rural_AsAFractionOf_Count_Person",
@@ -1488,7 +1488,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Female_ConditionPsychiatricNeurologicalCondition_Urban_AsAFractionOf_Count_Person",
@@ -1502,7 +1502,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Female_ConditionRespiratoryDisease_AsAFractionOf_Count_Person",
@@ -1516,7 +1516,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Female_ConditionRespiratoryDisease_Rural_AsAFractionOf_Count_Person",
@@ -1530,7 +1530,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Female_ConditionRespiratoryDisease_Urban_AsAFractionOf_Count_Person",
@@ -1544,7 +1544,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Female_ConditionSkinDisease_AsAFractionOf_Count_Person",
@@ -1558,7 +1558,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Female_ConditionSkinDisease_Rural_AsAFractionOf_Count_Person",
@@ -1572,7 +1572,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Female_ConditionSkinDisease_Urban_AsAFractionOf_Count_Person",
@@ -1586,7 +1586,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Female_Rural_AsAFractionOf_Count_Person",
@@ -1600,7 +1600,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Female_Urban_AsAFractionOf_Count_Person",
@@ -1614,7 +1614,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Male_AsAFractionOf_Count_Person",
@@ -1628,7 +1628,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Male_ConditionBloodDisease_AsAFractionOf_Count_Person",
@@ -1642,7 +1642,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Male_ConditionBloodDisease_Rural_AsAFractionOf_Count_Person",
@@ -1656,7 +1656,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Male_ConditionBloodDisease_Urban_AsAFractionOf_Count_Person",
@@ -1670,7 +1670,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Male_ConditionCancer_AsAFractionOf_Count_Person",
@@ -1684,7 +1684,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Male_ConditionCancer_Rural_AsAFractionOf_Count_Person",
@@ -1698,7 +1698,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Male_ConditionCancer_Urban_AsAFractionOf_Count_Person",
@@ -1712,7 +1712,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Male_ConditionCardiovascularDisease_AsAFractionOf_Count_Person",
@@ -1726,7 +1726,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Male_ConditionCardiovascularDisease_Rural_AsAFractionOf_Count_Person",
@@ -1740,7 +1740,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Male_ConditionCardiovascularDisease_Urban_AsAFractionOf_Count_Person",
@@ -1754,7 +1754,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Male_ConditionEarCondition_AsAFractionOf_Count_Person",
@@ -1768,7 +1768,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Male_ConditionEarCondition_Rural_AsAFractionOf_Count_Person",
@@ -1782,7 +1782,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Male_ConditionEarCondition_Urban_AsAFractionOf_Count_Person",
@@ -1796,7 +1796,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Male_ConditionEndocrineMetabolicCondition_AsAFractionOf_Count_Person",
@@ -1810,7 +1810,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Male_ConditionEndocrineMetabolicCondition_Rural_AsAFractionOf_Count_Person",
@@ -1824,7 +1824,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Male_ConditionEndocrineMetabolicCondition_Urban_AsAFractionOf_Count_Person",
@@ -1838,7 +1838,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Male_ConditionEyeCondition_AsAFractionOf_Count_Person",
@@ -1852,7 +1852,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Male_ConditionEyeCondition_Rural_AsAFractionOf_Count_Person",
@@ -1866,7 +1866,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Male_ConditionEyeCondition_Urban_AsAFractionOf_Count_Person",
@@ -1880,7 +1880,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Male_ConditionGastroIntestinalCondition_AsAFractionOf_Count_Person",
@@ -1894,7 +1894,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Male_ConditionGastroIntestinalCondition_Rural_AsAFractionOf_Count_Person",
@@ -1908,7 +1908,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Male_ConditionGastroIntestinalCondition_Urban_AsAFractionOf_Count_Person",
@@ -1922,7 +1922,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Male_ConditionGenitoUrinaryCondition_AsAFractionOf_Count_Person",
@@ -1936,7 +1936,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Male_ConditionGenitoUrinaryCondition_Rural_AsAFractionOf_Count_Person",
@@ -1950,7 +1950,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Male_ConditionGenitoUrinaryCondition_Urban_AsAFractionOf_Count_Person",
@@ -1964,7 +1964,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Male_ConditionInfection_AsAFractionOf_Count_Person",
@@ -1978,7 +1978,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Male_ConditionInfection_Rural_AsAFractionOf_Count_Person",
@@ -1992,7 +1992,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Male_ConditionInfection_Urban_AsAFractionOf_Count_Person",
@@ -2006,7 +2006,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Male_ConditionInjury_AsAFractionOf_Count_Person",
@@ -2020,7 +2020,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Male_ConditionInjury_Rural_AsAFractionOf_Count_Person",
@@ -2034,7 +2034,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Male_ConditionInjury_Urban_AsAFractionOf_Count_Person",
@@ -2048,7 +2048,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Male_ConditionMusculoSkeletalCondition_AsAFractionOf_Count_Person",
@@ -2062,7 +2062,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Male_ConditionMusculoSkeletalCondition_Rural_AsAFractionOf_Count_Person",
@@ -2076,7 +2076,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Male_ConditionMusculoSkeletalCondition_Urban_AsAFractionOf_Count_Person",
@@ -2090,7 +2090,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Male_ConditionNSSHealthOtherCondition_AsAFractionOf_Count_Person",
@@ -2104,7 +2104,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Male_ConditionNSSHealthOtherCondition_Rural_AsAFractionOf_Count_Person",
@@ -2118,7 +2118,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Male_ConditionNSSHealthOtherCondition_Urban_AsAFractionOf_Count_Person",
@@ -2132,7 +2132,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Male_ConditionObstetricCondition_AsAFractionOf_Count_Person",
@@ -2146,7 +2146,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Male_ConditionObstetricCondition_Rural_AsAFractionOf_Count_Person",
@@ -2160,7 +2160,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Male_ConditionObstetricCondition_Urban_AsAFractionOf_Count_Person",
@@ -2174,7 +2174,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Male_ConditionPsychiatricNeurologicalCondition_AsAFractionOf_Count_Person",
@@ -2188,7 +2188,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Male_ConditionPsychiatricNeurologicalCondition_Rural_AsAFractionOf_Count_Person",
@@ -2202,7 +2202,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Male_ConditionPsychiatricNeurologicalCondition_Urban_AsAFractionOf_Count_Person",
@@ -2216,7 +2216,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Male_ConditionRespiratoryDisease_AsAFractionOf_Count_Person",
@@ -2230,7 +2230,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Male_ConditionRespiratoryDisease_Rural_AsAFractionOf_Count_Person",
@@ -2244,7 +2244,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Male_ConditionRespiratoryDisease_Urban_AsAFractionOf_Count_Person",
@@ -2258,7 +2258,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Male_ConditionSkinDisease_AsAFractionOf_Count_Person",
@@ -2272,7 +2272,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Male_ConditionSkinDisease_Rural_AsAFractionOf_Count_Person",
@@ -2286,7 +2286,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Male_ConditionSkinDisease_Urban_AsAFractionOf_Count_Person",
@@ -2300,7 +2300,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Male_Rural_AsAFractionOf_Count_Person",
@@ -2314,7 +2314,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Male_Urban_AsAFractionOf_Count_Person",
@@ -2328,7 +2328,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Rural_AsAFractionOf_Count_Person",
@@ -2342,7 +2342,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_Urban_AsAFractionOf_Count_Person",
@@ -2356,7 +2356,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_AsAFractionOf_Count_Person",
@@ -2370,7 +2370,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_ConditionBloodDisease_AsAFractionOf_Count_Person",
@@ -2384,7 +2384,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_ConditionBloodDisease_Rural_AsAFractionOf_Count_Person",
@@ -2398,7 +2398,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_ConditionBloodDisease_Urban_AsAFractionOf_Count_Person",
@@ -2412,7 +2412,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_ConditionCancer_AsAFractionOf_Count_Person",
@@ -2426,7 +2426,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_ConditionCancer_Rural_AsAFractionOf_Count_Person",
@@ -2440,7 +2440,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_ConditionCancer_Urban_AsAFractionOf_Count_Person",
@@ -2454,7 +2454,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_ConditionCardiovascularDisease_AsAFractionOf_Count_Person",
@@ -2468,7 +2468,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_ConditionCardiovascularDisease_Rural_AsAFractionOf_Count_Person",
@@ -2482,7 +2482,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_ConditionCardiovascularDisease_Urban_AsAFractionOf_Count_Person",
@@ -2496,7 +2496,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_ConditionEarCondition_AsAFractionOf_Count_Person",
@@ -2510,7 +2510,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_ConditionEarCondition_Rural_AsAFractionOf_Count_Person",
@@ -2524,7 +2524,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_ConditionEarCondition_Urban_AsAFractionOf_Count_Person",
@@ -2538,7 +2538,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_ConditionEndocrineMetabolicCondition_AsAFractionOf_Count_Person",
@@ -2552,7 +2552,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_ConditionEndocrineMetabolicCondition_Rural_AsAFractionOf_Count_Person",
@@ -2566,7 +2566,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_ConditionEndocrineMetabolicCondition_Urban_AsAFractionOf_Count_Person",
@@ -2580,7 +2580,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_ConditionEyeCondition_AsAFractionOf_Count_Person",
@@ -2594,7 +2594,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_ConditionEyeCondition_Rural_AsAFractionOf_Count_Person",
@@ -2608,7 +2608,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_ConditionEyeCondition_Urban_AsAFractionOf_Count_Person",
@@ -2622,7 +2622,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_ConditionGastroIntestinalCondition_AsAFractionOf_Count_Person",
@@ -2636,7 +2636,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_ConditionGastroIntestinalCondition_Rural_AsAFractionOf_Count_Person",
@@ -2650,7 +2650,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_ConditionGastroIntestinalCondition_Urban_AsAFractionOf_Count_Person",
@@ -2664,7 +2664,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_ConditionGenitoUrinaryCondition_AsAFractionOf_Count_Person",
@@ -2678,7 +2678,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_ConditionGenitoUrinaryCondition_Rural_AsAFractionOf_Count_Person",
@@ -2692,7 +2692,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_ConditionGenitoUrinaryCondition_Urban_AsAFractionOf_Count_Person",
@@ -2706,7 +2706,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_ConditionInfection_AsAFractionOf_Count_Person",
@@ -2720,7 +2720,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_ConditionInfection_Rural_AsAFractionOf_Count_Person",
@@ -2734,7 +2734,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_ConditionInfection_Urban_AsAFractionOf_Count_Person",
@@ -2748,7 +2748,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_ConditionInjury_AsAFractionOf_Count_Person",
@@ -2762,7 +2762,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_ConditionInjury_Rural_AsAFractionOf_Count_Person",
@@ -2776,7 +2776,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_ConditionInjury_Urban_AsAFractionOf_Count_Person",
@@ -2790,7 +2790,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_ConditionMusculoSkeletalCondition_AsAFractionOf_Count_Person",
@@ -2804,7 +2804,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_ConditionMusculoSkeletalCondition_Rural_AsAFractionOf_Count_Person",
@@ -2818,7 +2818,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_ConditionMusculoSkeletalCondition_Urban_AsAFractionOf_Count_Person",
@@ -2832,7 +2832,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_ConditionNSSHealthOtherCondition_AsAFractionOf_Count_Person",
@@ -2846,7 +2846,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_ConditionNSSHealthOtherCondition_Rural_AsAFractionOf_Count_Person",
@@ -2860,7 +2860,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_ConditionNSSHealthOtherCondition_Urban_AsAFractionOf_Count_Person",
@@ -2874,7 +2874,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_ConditionObstetricCondition_AsAFractionOf_Count_Person",
@@ -2888,7 +2888,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_ConditionObstetricCondition_Rural_AsAFractionOf_Count_Person",
@@ -2902,7 +2902,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_ConditionObstetricCondition_Urban_AsAFractionOf_Count_Person",
@@ -2916,7 +2916,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_ConditionPsychiatricNeurologicalCondition_AsAFractionOf_Count_Person",
@@ -2930,7 +2930,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_ConditionPsychiatricNeurologicalCondition_Rural_AsAFractionOf_Count_Person",
@@ -2944,7 +2944,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_ConditionPsychiatricNeurologicalCondition_Urban_AsAFractionOf_Count_Person",
@@ -2958,7 +2958,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_ConditionRespiratoryDisease_AsAFractionOf_Count_Person",
@@ -2972,7 +2972,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_ConditionRespiratoryDisease_Rural_AsAFractionOf_Count_Person",
@@ -2986,7 +2986,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_ConditionRespiratoryDisease_Urban_AsAFractionOf_Count_Person",
@@ -3000,7 +3000,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_ConditionSkinDisease_AsAFractionOf_Count_Person",
@@ -3014,7 +3014,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_ConditionSkinDisease_Rural_AsAFractionOf_Count_Person",
@@ -3028,7 +3028,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_ConditionSkinDisease_Urban_AsAFractionOf_Count_Person",
@@ -3042,7 +3042,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Female_AsAFractionOf_Count_Person",
@@ -3056,7 +3056,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Female_ConditionBloodDisease_AsAFractionOf_Count_Person",
@@ -3070,7 +3070,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Female_ConditionBloodDisease_Rural_AsAFractionOf_Count_Person",
@@ -3084,7 +3084,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Female_ConditionBloodDisease_Urban_AsAFractionOf_Count_Person",
@@ -3098,7 +3098,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Female_ConditionCancer_AsAFractionOf_Count_Person",
@@ -3112,7 +3112,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Female_ConditionCancer_Rural_AsAFractionOf_Count_Person",
@@ -3126,7 +3126,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Female_ConditionCancer_Urban_AsAFractionOf_Count_Person",
@@ -3140,7 +3140,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Female_ConditionCardiovascularDisease_AsAFractionOf_Count_Person",
@@ -3154,7 +3154,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Female_ConditionCardiovascularDisease_Rural_AsAFractionOf_Count_Person",
@@ -3168,7 +3168,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Female_ConditionCardiovascularDisease_Urban_AsAFractionOf_Count_Person",
@@ -3182,7 +3182,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Female_ConditionEarCondition_AsAFractionOf_Count_Person",
@@ -3196,7 +3196,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Female_ConditionEarCondition_Rural_AsAFractionOf_Count_Person",
@@ -3210,7 +3210,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Female_ConditionEarCondition_Urban_AsAFractionOf_Count_Person",
@@ -3224,7 +3224,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Female_ConditionEndocrineMetabolicCondition_AsAFractionOf_Count_Person",
@@ -3238,7 +3238,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Female_ConditionEndocrineMetabolicCondition_Rural_AsAFractionOf_Count_Person",
@@ -3252,7 +3252,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Female_ConditionEndocrineMetabolicCondition_Urban_AsAFractionOf_Count_Person",
@@ -3266,7 +3266,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Female_ConditionEyeCondition_AsAFractionOf_Count_Person",
@@ -3280,7 +3280,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Female_ConditionEyeCondition_Rural_AsAFractionOf_Count_Person",
@@ -3294,7 +3294,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Female_ConditionEyeCondition_Urban_AsAFractionOf_Count_Person",
@@ -3308,7 +3308,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Female_ConditionGastroIntestinalCondition_AsAFractionOf_Count_Person",
@@ -3322,7 +3322,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Female_ConditionGastroIntestinalCondition_Rural_AsAFractionOf_Count_Person",
@@ -3336,7 +3336,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Female_ConditionGastroIntestinalCondition_Urban_AsAFractionOf_Count_Person",
@@ -3350,7 +3350,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Female_ConditionGenitoUrinaryCondition_AsAFractionOf_Count_Person",
@@ -3364,7 +3364,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Female_ConditionGenitoUrinaryCondition_Rural_AsAFractionOf_Count_Person",
@@ -3378,7 +3378,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Female_ConditionGenitoUrinaryCondition_Urban_AsAFractionOf_Count_Person",
@@ -3392,7 +3392,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Female_ConditionInfection_AsAFractionOf_Count_Person",
@@ -3406,7 +3406,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Female_ConditionInfection_Rural_AsAFractionOf_Count_Person",
@@ -3420,7 +3420,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Female_ConditionInfection_Urban_AsAFractionOf_Count_Person",
@@ -3434,7 +3434,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Female_ConditionInjury_AsAFractionOf_Count_Person",
@@ -3448,7 +3448,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Female_ConditionInjury_Rural_AsAFractionOf_Count_Person",
@@ -3462,7 +3462,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Female_ConditionInjury_Urban_AsAFractionOf_Count_Person",
@@ -3476,7 +3476,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Female_ConditionMusculoSkeletalCondition_AsAFractionOf_Count_Person",
@@ -3490,7 +3490,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Female_ConditionMusculoSkeletalCondition_Rural_AsAFractionOf_Count_Person",
@@ -3504,7 +3504,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Female_ConditionMusculoSkeletalCondition_Urban_AsAFractionOf_Count_Person",
@@ -3518,7 +3518,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Female_ConditionNSSHealthOtherCondition_AsAFractionOf_Count_Person",
@@ -3532,7 +3532,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Female_ConditionNSSHealthOtherCondition_Rural_AsAFractionOf_Count_Person",
@@ -3546,7 +3546,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Female_ConditionNSSHealthOtherCondition_Urban_AsAFractionOf_Count_Person",
@@ -3560,7 +3560,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Female_ConditionObstetricCondition_AsAFractionOf_Count_Person",
@@ -3574,7 +3574,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Female_ConditionObstetricCondition_Rural_AsAFractionOf_Count_Person",
@@ -3588,7 +3588,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Female_ConditionObstetricCondition_Urban_AsAFractionOf_Count_Person",
@@ -3602,7 +3602,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Female_ConditionPsychiatricNeurologicalCondition_AsAFractionOf_Count_Person",
@@ -3616,7 +3616,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Female_ConditionPsychiatricNeurologicalCondition_Rural_AsAFractionOf_Count_Person",
@@ -3630,7 +3630,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Female_ConditionPsychiatricNeurologicalCondition_Urban_AsAFractionOf_Count_Person",
@@ -3644,7 +3644,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Female_ConditionRespiratoryDisease_AsAFractionOf_Count_Person",
@@ -3658,7 +3658,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Female_ConditionRespiratoryDisease_Rural_AsAFractionOf_Count_Person",
@@ -3672,7 +3672,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Female_ConditionRespiratoryDisease_Urban_AsAFractionOf_Count_Person",
@@ -3686,7 +3686,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Female_ConditionSkinDisease_AsAFractionOf_Count_Person",
@@ -3700,7 +3700,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Female_ConditionSkinDisease_Rural_AsAFractionOf_Count_Person",
@@ -3714,7 +3714,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Female_ConditionSkinDisease_Urban_AsAFractionOf_Count_Person",
@@ -3728,7 +3728,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Female_Rural_AsAFractionOf_Count_Person",
@@ -3742,7 +3742,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Female_Urban_AsAFractionOf_Count_Person",
@@ -3756,7 +3756,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Male_AsAFractionOf_Count_Person",
@@ -3770,7 +3770,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Male_ConditionBloodDisease_AsAFractionOf_Count_Person",
@@ -3784,7 +3784,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Male_ConditionBloodDisease_Rural_AsAFractionOf_Count_Person",
@@ -3798,7 +3798,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Male_ConditionBloodDisease_Urban_AsAFractionOf_Count_Person",
@@ -3812,7 +3812,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Male_ConditionCancer_AsAFractionOf_Count_Person",
@@ -3826,7 +3826,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Male_ConditionCancer_Rural_AsAFractionOf_Count_Person",
@@ -3840,7 +3840,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Male_ConditionCancer_Urban_AsAFractionOf_Count_Person",
@@ -3854,7 +3854,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Male_ConditionCardiovascularDisease_AsAFractionOf_Count_Person",
@@ -3868,7 +3868,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Male_ConditionCardiovascularDisease_Rural_AsAFractionOf_Count_Person",
@@ -3882,7 +3882,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Male_ConditionCardiovascularDisease_Urban_AsAFractionOf_Count_Person",
@@ -3896,7 +3896,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Male_ConditionEarCondition_AsAFractionOf_Count_Person",
@@ -3910,7 +3910,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Male_ConditionEarCondition_Rural_AsAFractionOf_Count_Person",
@@ -3924,7 +3924,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Male_ConditionEarCondition_Urban_AsAFractionOf_Count_Person",
@@ -3938,7 +3938,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Male_ConditionEndocrineMetabolicCondition_AsAFractionOf_Count_Person",
@@ -3952,7 +3952,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Male_ConditionEndocrineMetabolicCondition_Rural_AsAFractionOf_Count_Person",
@@ -3966,7 +3966,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Male_ConditionEndocrineMetabolicCondition_Urban_AsAFractionOf_Count_Person",
@@ -3980,7 +3980,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Male_ConditionEyeCondition_AsAFractionOf_Count_Person",
@@ -3994,7 +3994,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Male_ConditionEyeCondition_Rural_AsAFractionOf_Count_Person",
@@ -4008,7 +4008,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Male_ConditionEyeCondition_Urban_AsAFractionOf_Count_Person",
@@ -4022,7 +4022,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Male_ConditionGastroIntestinalCondition_AsAFractionOf_Count_Person",
@@ -4036,7 +4036,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Male_ConditionGastroIntestinalCondition_Rural_AsAFractionOf_Count_Person",
@@ -4050,7 +4050,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Male_ConditionGastroIntestinalCondition_Urban_AsAFractionOf_Count_Person",
@@ -4064,7 +4064,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Male_ConditionGenitoUrinaryCondition_AsAFractionOf_Count_Person",
@@ -4078,7 +4078,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Male_ConditionGenitoUrinaryCondition_Rural_AsAFractionOf_Count_Person",
@@ -4092,7 +4092,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Male_ConditionGenitoUrinaryCondition_Urban_AsAFractionOf_Count_Person",
@@ -4106,7 +4106,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Male_ConditionInfection_AsAFractionOf_Count_Person",
@@ -4120,7 +4120,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Male_ConditionInfection_Rural_AsAFractionOf_Count_Person",
@@ -4134,7 +4134,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Male_ConditionInfection_Urban_AsAFractionOf_Count_Person",
@@ -4148,7 +4148,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Male_ConditionInjury_AsAFractionOf_Count_Person",
@@ -4162,7 +4162,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Male_ConditionInjury_Rural_AsAFractionOf_Count_Person",
@@ -4176,7 +4176,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Male_ConditionInjury_Urban_AsAFractionOf_Count_Person",
@@ -4190,7 +4190,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Male_ConditionMusculoSkeletalCondition_AsAFractionOf_Count_Person",
@@ -4204,7 +4204,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Male_ConditionMusculoSkeletalCondition_Rural_AsAFractionOf_Count_Person",
@@ -4218,7 +4218,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Male_ConditionMusculoSkeletalCondition_Urban_AsAFractionOf_Count_Person",
@@ -4232,7 +4232,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Male_ConditionNSSHealthOtherCondition_AsAFractionOf_Count_Person",
@@ -4246,7 +4246,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Male_ConditionNSSHealthOtherCondition_Rural_AsAFractionOf_Count_Person",
@@ -4260,7 +4260,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Male_ConditionNSSHealthOtherCondition_Urban_AsAFractionOf_Count_Person",
@@ -4274,7 +4274,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Male_ConditionObstetricCondition_AsAFractionOf_Count_Person",
@@ -4288,7 +4288,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Male_ConditionObstetricCondition_Rural_AsAFractionOf_Count_Person",
@@ -4302,7 +4302,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Male_ConditionObstetricCondition_Urban_AsAFractionOf_Count_Person",
@@ -4316,7 +4316,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Male_ConditionPsychiatricNeurologicalCondition_AsAFractionOf_Count_Person",
@@ -4330,7 +4330,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Male_ConditionPsychiatricNeurologicalCondition_Rural_AsAFractionOf_Count_Person",
@@ -4344,7 +4344,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Male_ConditionPsychiatricNeurologicalCondition_Urban_AsAFractionOf_Count_Person",
@@ -4358,7 +4358,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Male_ConditionRespiratoryDisease_AsAFractionOf_Count_Person",
@@ -4372,7 +4372,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Male_ConditionRespiratoryDisease_Rural_AsAFractionOf_Count_Person",
@@ -4386,7 +4386,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Male_ConditionRespiratoryDisease_Urban_AsAFractionOf_Count_Person",
@@ -4400,7 +4400,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Male_ConditionSkinDisease_AsAFractionOf_Count_Person",
@@ -4414,7 +4414,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Male_ConditionSkinDisease_Rural_AsAFractionOf_Count_Person",
@@ -4428,7 +4428,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Male_ConditionSkinDisease_Urban_AsAFractionOf_Count_Person",
@@ -4442,7 +4442,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Male_Rural_AsAFractionOf_Count_Person",
@@ -4456,7 +4456,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Male_Urban_AsAFractionOf_Count_Person",
@@ -4470,7 +4470,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Rural_AsAFractionOf_Count_Person",
@@ -4484,7 +4484,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_15To29Years_Urban_AsAFractionOf_Count_Person",
@@ -4498,7 +4498,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_AsAFractionOf_Count_Person",
@@ -4512,7 +4512,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_ConditionBloodDisease_AsAFractionOf_Count_Person",
@@ -4526,7 +4526,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_ConditionBloodDisease_Rural_AsAFractionOf_Count_Person",
@@ -4540,7 +4540,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_ConditionBloodDisease_Urban_AsAFractionOf_Count_Person",
@@ -4554,7 +4554,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_ConditionCancer_AsAFractionOf_Count_Person",
@@ -4568,7 +4568,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_ConditionCancer_Rural_AsAFractionOf_Count_Person",
@@ -4582,7 +4582,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_ConditionCancer_Urban_AsAFractionOf_Count_Person",
@@ -4596,7 +4596,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_ConditionCardiovascularDisease_AsAFractionOf_Count_Person",
@@ -4610,7 +4610,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_ConditionCardiovascularDisease_Rural_AsAFractionOf_Count_Person",
@@ -4624,7 +4624,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_ConditionCardiovascularDisease_Urban_AsAFractionOf_Count_Person",
@@ -4638,7 +4638,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_ConditionEarCondition_AsAFractionOf_Count_Person",
@@ -4652,7 +4652,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_ConditionEarCondition_Rural_AsAFractionOf_Count_Person",
@@ -4666,7 +4666,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_ConditionEarCondition_Urban_AsAFractionOf_Count_Person",
@@ -4680,7 +4680,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_ConditionEndocrineMetabolicCondition_AsAFractionOf_Count_Person",
@@ -4694,7 +4694,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_ConditionEndocrineMetabolicCondition_Rural_AsAFractionOf_Count_Person",
@@ -4708,7 +4708,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_ConditionEndocrineMetabolicCondition_Urban_AsAFractionOf_Count_Person",
@@ -4722,7 +4722,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_ConditionEyeCondition_AsAFractionOf_Count_Person",
@@ -4736,7 +4736,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_ConditionEyeCondition_Rural_AsAFractionOf_Count_Person",
@@ -4750,7 +4750,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_ConditionEyeCondition_Urban_AsAFractionOf_Count_Person",
@@ -4764,7 +4764,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_ConditionGastroIntestinalCondition_AsAFractionOf_Count_Person",
@@ -4778,7 +4778,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_ConditionGastroIntestinalCondition_Rural_AsAFractionOf_Count_Person",
@@ -4792,7 +4792,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_ConditionGastroIntestinalCondition_Urban_AsAFractionOf_Count_Person",
@@ -4806,7 +4806,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_ConditionGenitoUrinaryCondition_AsAFractionOf_Count_Person",
@@ -4820,7 +4820,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_ConditionGenitoUrinaryCondition_Rural_AsAFractionOf_Count_Person",
@@ -4834,7 +4834,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_ConditionGenitoUrinaryCondition_Urban_AsAFractionOf_Count_Person",
@@ -4848,7 +4848,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_ConditionInfection_AsAFractionOf_Count_Person",
@@ -4862,7 +4862,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_ConditionInfection_Rural_AsAFractionOf_Count_Person",
@@ -4876,7 +4876,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_ConditionInfection_Urban_AsAFractionOf_Count_Person",
@@ -4890,7 +4890,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_ConditionInjury_AsAFractionOf_Count_Person",
@@ -4904,7 +4904,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_ConditionInjury_Rural_AsAFractionOf_Count_Person",
@@ -4918,7 +4918,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_ConditionInjury_Urban_AsAFractionOf_Count_Person",
@@ -4932,7 +4932,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_ConditionMusculoSkeletalCondition_AsAFractionOf_Count_Person",
@@ -4946,7 +4946,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_ConditionMusculoSkeletalCondition_Rural_AsAFractionOf_Count_Person",
@@ -4960,7 +4960,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_ConditionMusculoSkeletalCondition_Urban_AsAFractionOf_Count_Person",
@@ -4974,7 +4974,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_ConditionNSSHealthOtherCondition_AsAFractionOf_Count_Person",
@@ -4988,7 +4988,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_ConditionNSSHealthOtherCondition_Rural_AsAFractionOf_Count_Person",
@@ -5002,7 +5002,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_ConditionNSSHealthOtherCondition_Urban_AsAFractionOf_Count_Person",
@@ -5016,7 +5016,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_ConditionObstetricCondition_AsAFractionOf_Count_Person",
@@ -5030,7 +5030,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_ConditionObstetricCondition_Rural_AsAFractionOf_Count_Person",
@@ -5044,7 +5044,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_ConditionObstetricCondition_Urban_AsAFractionOf_Count_Person",
@@ -5058,7 +5058,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_ConditionPsychiatricNeurologicalCondition_AsAFractionOf_Count_Person",
@@ -5072,7 +5072,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_ConditionPsychiatricNeurologicalCondition_Rural_AsAFractionOf_Count_Person",
@@ -5086,7 +5086,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_ConditionPsychiatricNeurologicalCondition_Urban_AsAFractionOf_Count_Person",
@@ -5100,7 +5100,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_ConditionRespiratoryDisease_AsAFractionOf_Count_Person",
@@ -5114,7 +5114,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_ConditionRespiratoryDisease_Rural_AsAFractionOf_Count_Person",
@@ -5128,7 +5128,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_ConditionRespiratoryDisease_Urban_AsAFractionOf_Count_Person",
@@ -5142,7 +5142,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_ConditionSkinDisease_AsAFractionOf_Count_Person",
@@ -5156,7 +5156,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_ConditionSkinDisease_Rural_AsAFractionOf_Count_Person",
@@ -5170,7 +5170,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_ConditionSkinDisease_Urban_AsAFractionOf_Count_Person",
@@ -5184,7 +5184,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Female_AsAFractionOf_Count_Person",
@@ -5198,7 +5198,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Female_ConditionBloodDisease_AsAFractionOf_Count_Person",
@@ -5212,7 +5212,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Female_ConditionBloodDisease_Rural_AsAFractionOf_Count_Person",
@@ -5226,7 +5226,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Female_ConditionBloodDisease_Urban_AsAFractionOf_Count_Person",
@@ -5240,7 +5240,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Female_ConditionCancer_AsAFractionOf_Count_Person",
@@ -5254,7 +5254,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Female_ConditionCancer_Rural_AsAFractionOf_Count_Person",
@@ -5268,7 +5268,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Female_ConditionCancer_Urban_AsAFractionOf_Count_Person",
@@ -5282,7 +5282,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Female_ConditionCardiovascularDisease_AsAFractionOf_Count_Person",
@@ -5296,7 +5296,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Female_ConditionCardiovascularDisease_Rural_AsAFractionOf_Count_Person",
@@ -5310,7 +5310,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Female_ConditionCardiovascularDisease_Urban_AsAFractionOf_Count_Person",
@@ -5324,7 +5324,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Female_ConditionEarCondition_AsAFractionOf_Count_Person",
@@ -5338,7 +5338,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Female_ConditionEarCondition_Rural_AsAFractionOf_Count_Person",
@@ -5352,7 +5352,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Female_ConditionEarCondition_Urban_AsAFractionOf_Count_Person",
@@ -5366,7 +5366,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Female_ConditionEndocrineMetabolicCondition_AsAFractionOf_Count_Person",
@@ -5380,7 +5380,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Female_ConditionEndocrineMetabolicCondition_Rural_AsAFractionOf_Count_Person",
@@ -5394,7 +5394,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Female_ConditionEndocrineMetabolicCondition_Urban_AsAFractionOf_Count_Person",
@@ -5408,7 +5408,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Female_ConditionEyeCondition_AsAFractionOf_Count_Person",
@@ -5422,7 +5422,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Female_ConditionEyeCondition_Rural_AsAFractionOf_Count_Person",
@@ -5436,7 +5436,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Female_ConditionEyeCondition_Urban_AsAFractionOf_Count_Person",
@@ -5450,7 +5450,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Female_ConditionGastroIntestinalCondition_AsAFractionOf_Count_Person",
@@ -5464,7 +5464,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Female_ConditionGastroIntestinalCondition_Rural_AsAFractionOf_Count_Person",
@@ -5478,7 +5478,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Female_ConditionGastroIntestinalCondition_Urban_AsAFractionOf_Count_Person",
@@ -5492,7 +5492,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Female_ConditionGenitoUrinaryCondition_AsAFractionOf_Count_Person",
@@ -5506,7 +5506,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Female_ConditionGenitoUrinaryCondition_Rural_AsAFractionOf_Count_Person",
@@ -5520,7 +5520,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Female_ConditionGenitoUrinaryCondition_Urban_AsAFractionOf_Count_Person",
@@ -5534,7 +5534,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Female_ConditionInfection_AsAFractionOf_Count_Person",
@@ -5548,7 +5548,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Female_ConditionInfection_Rural_AsAFractionOf_Count_Person",
@@ -5562,7 +5562,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Female_ConditionInfection_Urban_AsAFractionOf_Count_Person",
@@ -5576,7 +5576,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Female_ConditionInjury_AsAFractionOf_Count_Person",
@@ -5590,7 +5590,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Female_ConditionInjury_Rural_AsAFractionOf_Count_Person",
@@ -5604,7 +5604,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Female_ConditionInjury_Urban_AsAFractionOf_Count_Person",
@@ -5618,7 +5618,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Female_ConditionMusculoSkeletalCondition_AsAFractionOf_Count_Person",
@@ -5632,7 +5632,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Female_ConditionMusculoSkeletalCondition_Rural_AsAFractionOf_Count_Person",
@@ -5646,7 +5646,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Female_ConditionMusculoSkeletalCondition_Urban_AsAFractionOf_Count_Person",
@@ -5660,7 +5660,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Female_ConditionNSSHealthOtherCondition_AsAFractionOf_Count_Person",
@@ -5674,7 +5674,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Female_ConditionNSSHealthOtherCondition_Rural_AsAFractionOf_Count_Person",
@@ -5688,7 +5688,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Female_ConditionNSSHealthOtherCondition_Urban_AsAFractionOf_Count_Person",
@@ -5702,7 +5702,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Female_ConditionObstetricCondition_AsAFractionOf_Count_Person",
@@ -5716,7 +5716,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Female_ConditionObstetricCondition_Rural_AsAFractionOf_Count_Person",
@@ -5730,7 +5730,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Female_ConditionObstetricCondition_Urban_AsAFractionOf_Count_Person",
@@ -5744,7 +5744,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Female_ConditionPsychiatricNeurologicalCondition_AsAFractionOf_Count_Person",
@@ -5758,7 +5758,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Female_ConditionPsychiatricNeurologicalCondition_Rural_AsAFractionOf_Count_Person",
@@ -5772,7 +5772,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Female_ConditionPsychiatricNeurologicalCondition_Urban_AsAFractionOf_Count_Person",
@@ -5786,7 +5786,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Female_ConditionRespiratoryDisease_AsAFractionOf_Count_Person",
@@ -5800,7 +5800,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Female_ConditionRespiratoryDisease_Rural_AsAFractionOf_Count_Person",
@@ -5814,7 +5814,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Female_ConditionRespiratoryDisease_Urban_AsAFractionOf_Count_Person",
@@ -5828,7 +5828,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Female_ConditionSkinDisease_AsAFractionOf_Count_Person",
@@ -5842,7 +5842,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Female_ConditionSkinDisease_Rural_AsAFractionOf_Count_Person",
@@ -5856,7 +5856,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Female_ConditionSkinDisease_Urban_AsAFractionOf_Count_Person",
@@ -5870,7 +5870,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Female_Rural_AsAFractionOf_Count_Person",
@@ -5884,7 +5884,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Female_Urban_AsAFractionOf_Count_Person",
@@ -5898,7 +5898,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Male_AsAFractionOf_Count_Person",
@@ -5912,7 +5912,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Male_ConditionBloodDisease_AsAFractionOf_Count_Person",
@@ -5926,7 +5926,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Male_ConditionBloodDisease_Rural_AsAFractionOf_Count_Person",
@@ -5940,7 +5940,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Male_ConditionBloodDisease_Urban_AsAFractionOf_Count_Person",
@@ -5954,7 +5954,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Male_ConditionCancer_AsAFractionOf_Count_Person",
@@ -5968,7 +5968,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Male_ConditionCancer_Rural_AsAFractionOf_Count_Person",
@@ -5982,7 +5982,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Male_ConditionCancer_Urban_AsAFractionOf_Count_Person",
@@ -5996,7 +5996,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Male_ConditionCardiovascularDisease_AsAFractionOf_Count_Person",
@@ -6010,7 +6010,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Male_ConditionCardiovascularDisease_Rural_AsAFractionOf_Count_Person",
@@ -6024,7 +6024,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Male_ConditionCardiovascularDisease_Urban_AsAFractionOf_Count_Person",
@@ -6038,7 +6038,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Male_ConditionEarCondition_AsAFractionOf_Count_Person",
@@ -6052,7 +6052,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Male_ConditionEarCondition_Rural_AsAFractionOf_Count_Person",
@@ -6066,7 +6066,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Male_ConditionEarCondition_Urban_AsAFractionOf_Count_Person",
@@ -6080,7 +6080,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Male_ConditionEndocrineMetabolicCondition_AsAFractionOf_Count_Person",
@@ -6094,7 +6094,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Male_ConditionEndocrineMetabolicCondition_Rural_AsAFractionOf_Count_Person",
@@ -6108,7 +6108,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Male_ConditionEndocrineMetabolicCondition_Urban_AsAFractionOf_Count_Person",
@@ -6122,7 +6122,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Male_ConditionEyeCondition_AsAFractionOf_Count_Person",
@@ -6136,7 +6136,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Male_ConditionEyeCondition_Rural_AsAFractionOf_Count_Person",
@@ -6150,7 +6150,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Male_ConditionEyeCondition_Urban_AsAFractionOf_Count_Person",
@@ -6164,7 +6164,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Male_ConditionGastroIntestinalCondition_AsAFractionOf_Count_Person",
@@ -6178,7 +6178,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Male_ConditionGastroIntestinalCondition_Rural_AsAFractionOf_Count_Person",
@@ -6192,7 +6192,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Male_ConditionGastroIntestinalCondition_Urban_AsAFractionOf_Count_Person",
@@ -6206,7 +6206,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Male_ConditionGenitoUrinaryCondition_AsAFractionOf_Count_Person",
@@ -6220,7 +6220,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Male_ConditionGenitoUrinaryCondition_Rural_AsAFractionOf_Count_Person",
@@ -6234,7 +6234,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Male_ConditionGenitoUrinaryCondition_Urban_AsAFractionOf_Count_Person",
@@ -6248,7 +6248,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Male_ConditionInfection_AsAFractionOf_Count_Person",
@@ -6262,7 +6262,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Male_ConditionInfection_Rural_AsAFractionOf_Count_Person",
@@ -6276,7 +6276,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Male_ConditionInfection_Urban_AsAFractionOf_Count_Person",
@@ -6290,7 +6290,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Male_ConditionInjury_AsAFractionOf_Count_Person",
@@ -6304,7 +6304,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Male_ConditionInjury_Rural_AsAFractionOf_Count_Person",
@@ -6318,7 +6318,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Male_ConditionInjury_Urban_AsAFractionOf_Count_Person",
@@ -6332,7 +6332,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Male_ConditionMusculoSkeletalCondition_AsAFractionOf_Count_Person",
@@ -6346,7 +6346,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Male_ConditionMusculoSkeletalCondition_Rural_AsAFractionOf_Count_Person",
@@ -6360,7 +6360,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Male_ConditionMusculoSkeletalCondition_Urban_AsAFractionOf_Count_Person",
@@ -6374,7 +6374,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Male_ConditionNSSHealthOtherCondition_AsAFractionOf_Count_Person",
@@ -6388,7 +6388,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Male_ConditionNSSHealthOtherCondition_Rural_AsAFractionOf_Count_Person",
@@ -6402,7 +6402,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Male_ConditionNSSHealthOtherCondition_Urban_AsAFractionOf_Count_Person",
@@ -6416,7 +6416,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Male_ConditionObstetricCondition_AsAFractionOf_Count_Person",
@@ -6430,7 +6430,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Male_ConditionObstetricCondition_Rural_AsAFractionOf_Count_Person",
@@ -6444,7 +6444,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Male_ConditionObstetricCondition_Urban_AsAFractionOf_Count_Person",
@@ -6458,7 +6458,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Male_ConditionPsychiatricNeurologicalCondition_AsAFractionOf_Count_Person",
@@ -6472,7 +6472,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Male_ConditionPsychiatricNeurologicalCondition_Rural_AsAFractionOf_Count_Person",
@@ -6486,7 +6486,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Male_ConditionPsychiatricNeurologicalCondition_Urban_AsAFractionOf_Count_Person",
@@ -6500,7 +6500,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Male_ConditionRespiratoryDisease_AsAFractionOf_Count_Person",
@@ -6514,7 +6514,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Male_ConditionRespiratoryDisease_Rural_AsAFractionOf_Count_Person",
@@ -6528,7 +6528,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Male_ConditionRespiratoryDisease_Urban_AsAFractionOf_Count_Person",
@@ -6542,7 +6542,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Male_ConditionSkinDisease_AsAFractionOf_Count_Person",
@@ -6556,7 +6556,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Male_ConditionSkinDisease_Rural_AsAFractionOf_Count_Person",
@@ -6570,7 +6570,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Male_ConditionSkinDisease_Urban_AsAFractionOf_Count_Person",
@@ -6584,7 +6584,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Male_Rural_AsAFractionOf_Count_Person",
@@ -6598,7 +6598,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Male_Urban_AsAFractionOf_Count_Person",
@@ -6612,7 +6612,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Rural_AsAFractionOf_Count_Person",
@@ -6626,7 +6626,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_30To44Years_Urban_AsAFractionOf_Count_Person",
@@ -6640,7 +6640,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_45To59Years_AsAFractionOf_Count_Person",
@@ -6654,7 +6654,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_45To59Years_ConditionBloodDisease_AsAFractionOf_Count_Person",
@@ -6668,7 +6668,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_45To59Years_ConditionBloodDisease_Rural_AsAFractionOf_Count_Person",
@@ -6682,7 +6682,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_45To59Years_ConditionBloodDisease_Urban_AsAFractionOf_Count_Person",
@@ -6696,7 +6696,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_45To59Years_ConditionCancer_AsAFractionOf_Count_Person",
@@ -6710,7 +6710,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_45To59Years_ConditionCancer_Rural_AsAFractionOf_Count_Person",
@@ -6724,7 +6724,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_45To59Years_ConditionCancer_Urban_AsAFractionOf_Count_Person",
@@ -6738,7 +6738,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_45To59Years_ConditionCardiovascularDisease_AsAFractionOf_Count_Person",
@@ -6752,7 +6752,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_45To59Years_ConditionCardiovascularDisease_Rural_AsAFractionOf_Count_Person",
@@ -6766,7 +6766,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_45To59Years_ConditionCardiovascularDisease_Urban_AsAFractionOf_Count_Person",
@@ -6780,7 +6780,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_45To59Years_ConditionEarCondition_AsAFractionOf_Count_Person",
@@ -6794,7 +6794,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_45To59Years_ConditionEarCondition_Rural_AsAFractionOf_Count_Person",
@@ -6808,7 +6808,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_45To59Years_ConditionEarCondition_Urban_AsAFractionOf_Count_Person",
@@ -6822,7 +6822,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_45To59Years_ConditionEndocrineMetabolicCondition_AsAFractionOf_Count_Person",
@@ -6836,7 +6836,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_45To59Years_ConditionEndocrineMetabolicCondition_Rural_AsAFractionOf_Count_Person",
@@ -6850,7 +6850,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_45To59Years_ConditionEndocrineMetabolicCondition_Urban_AsAFractionOf_Count_Person",
@@ -6864,7 +6864,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_45To59Years_ConditionEyeCondition_AsAFractionOf_Count_Person",
@@ -6878,7 +6878,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_45To59Years_ConditionEyeCondition_Rural_AsAFractionOf_Count_Person",
@@ -6892,7 +6892,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_45To59Years_ConditionEyeCondition_Urban_AsAFractionOf_Count_Person",
@@ -6906,7 +6906,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_45To59Years_ConditionGastroIntestinalCondition_AsAFractionOf_Count_Person",
@@ -6920,7 +6920,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_45To59Years_ConditionGastroIntestinalCondition_Rural_AsAFractionOf_Count_Person",
@@ -6934,7 +6934,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_45To59Years_ConditionGastroIntestinalCondition_Urban_AsAFractionOf_Count_Person",
@@ -6948,7 +6948,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_45To59Years_ConditionGenitoUrinaryCondition_AsAFractionOf_Count_Person",
@@ -6962,7 +6962,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_45To59Years_ConditionGenitoUrinaryCondition_Rural_AsAFractionOf_Count_Person",
@@ -6976,7 +6976,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_45To59Years_ConditionGenitoUrinaryCondition_Urban_AsAFractionOf_Count_Person",
@@ -6990,7 +6990,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_45To59Years_ConditionInfection_AsAFractionOf_Count_Person",
@@ -7004,7 +7004,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_45To59Years_ConditionInfection_Rural_AsAFractionOf_Count_Person",
@@ -7018,7 +7018,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_45To59Years_ConditionInfection_Urban_AsAFractionOf_Count_Person",
@@ -7032,7 +7032,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_45To59Years_ConditionInjury_AsAFractionOf_Count_Person",
@@ -7046,7 +7046,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_45To59Years_ConditionInjury_Rural_AsAFractionOf_Count_Person",
@@ -7060,7 +7060,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_45To59Years_ConditionInjury_Urban_AsAFractionOf_Count_Person",
@@ -7074,7 +7074,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_45To59Years_ConditionMusculoSkeletalCondition_AsAFractionOf_Count_Person",
@@ -7088,7 +7088,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_MedicalConditionIncident_45To59Years_ConditionMusculoSkeletalCondition_Rural_AsAFractionOf_Count_Person",
@@ -7102,7 +7102,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     }
   ],
   "Count_Person_Female": [
@@ -7118,7 +7118,7 @@
       "objectTypes": [
         "Property"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_Person_Female",
@@ -7128,7 +7128,7 @@
       ],
       "predicate": "description",
       "objectValue": "Number of Females",
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_Person_Female",
@@ -7142,7 +7142,7 @@
       "objectTypes": [
         "GenderType"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_Person_Female",
@@ -7156,7 +7156,7 @@
       "objectTypes": [
         "Property"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_Person_Female",
@@ -7170,7 +7170,7 @@
       "objectTypes": [
         "StatVarGroup"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_Person_Female",
@@ -7180,7 +7180,7 @@
       ],
       "predicate": "name",
       "objectValue": "Population: Female",
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_Person_Female",
@@ -7194,7 +7194,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_Person_Female",
@@ -7203,12 +7203,12 @@
         "StatisticalVariable"
       ],
       "predicate": "provenance",
-      "objectId": "dc/d7tbsb1",
+      "objectId": "dc/base/HumanReadableStatVars",
       "objectName": "HumanReadableStatVars",
       "objectTypes": [
         "Provenance"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_Person_Female",
@@ -7222,7 +7222,7 @@
       "objectTypes": [
         "Property"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_Person_Female",
@@ -7236,7 +7236,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_CriminalActivities_MurderAndNonNegligentManslaughter_Female_AsFractionOf_Count_Person_Female",
@@ -7250,7 +7250,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_Death_Female_AgeAdjusted_AsAFractionOf_Count_Person_Female",
@@ -7264,7 +7264,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_Death_Female_AsAFractionOf_Count_Person_Female",
@@ -7278,7 +7278,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Count_Death_IntentionalSelfHarm_Female_AsFractionOf_Count_Person_Female",
@@ -7292,7 +7292,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_0Minutes_HealthEnhancingPhysicalActivity_In_Count_Person_Female",
@@ -7306,7 +7306,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_150OrMoreMinutes_HealthEnhancingPhysicalActivity_In_Count_Person_Female",
@@ -7320,7 +7320,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_150To299Minutes_HealthEnhancingPhysicalActivity_In_Count_Person_Female",
@@ -7334,7 +7334,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_1To149Minutes_HealthEnhancingPhysicalActivity_In_Count_Person_Female",
@@ -7348,7 +7348,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_300OrMoreMinutes_HealthEnhancingPhysicalActivity_In_Count_Person_Female",
@@ -7362,7 +7362,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_AerobicOrMuscleStrengthening_HealthEnhancingPhysicalActivity_In_Count_Person_Female",
@@ -7376,7 +7376,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_AerobicSports_NonWorkRelatedPhysicalActivity_In_Count_Person_Female",
@@ -7390,7 +7390,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_Aerobic_HealthEnhancingPhysicalActivity_In_Count_Person_Female",
@@ -7404,7 +7404,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_AtLeast30MinutesPerDay_WalkingOrCycling_PhysicalActivity_In_Count_Person_Female",
@@ -7418,7 +7418,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_AtLeastOnceADay_ConsumptionOfFruits_In_Count_Person_Female",
@@ -7432,7 +7432,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_AtLeastOnceADay_ConsumptionOfPureFruitOrConsumptionOfVegetableJuice_In_Count_Person_Female",
@@ -7446,7 +7446,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_AtLeastOnceADay_ConsumptionOfSugarSweetenedSoftDrinks_In_Count_Person_Female",
@@ -7460,7 +7460,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_AtLeastOnceADay_ConsumptionOfVegetables_In_Count_Person_Female",
@@ -7474,7 +7474,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_AtLeastOnceAWeek_BingeDrinking_In_Count_Person_Female",
@@ -7488,7 +7488,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_AtLeastOnceAWeek_ExposureToTobaccoSmoke_In_Count_Person_Female",
@@ -7502,7 +7502,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_AtLeastOnceAWeek_NonRelatives_ProvidingInformalCareOrAssistance_In_Count_Person_Female",
@@ -7516,7 +7516,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_AtLeastOnceAWeek_NotProvidingInformalCareOrAssistance_In_Count_Person_Female",
@@ -7530,7 +7530,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_AtLeastOnceAWeek_ProvidingInformalCareOrAssistance_In_Count_Person_Female",
@@ -7544,7 +7544,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_AtLeastOnceAWeek_Relatives_ProvidingInformalCareOrAssistance_In_Count_Person_Female",
@@ -7558,7 +7558,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_AtLeastOneHourPerDay_ExposureToTobaccoSmoke_In_Count_Person_Female",
@@ -7572,7 +7572,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_AtLeastTwiceADay_ConsumptionOfFruits_In_Count_Person_Female",
@@ -7586,7 +7586,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_AtLeastTwiceADay_ConsumptionOfVegetables_In_Count_Person_Female",
@@ -7600,7 +7600,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_Cycling_NonWorkRelatedPhysicalActivity_In_Count_Person_Female",
@@ -7614,7 +7614,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_Daily_0Portion_ConsumptionOfFruitsOrConsumptionOfVegetables_In_Count_Person_Female",
@@ -7628,7 +7628,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_Daily_20OrMoreCigarettesPerDay_TobaccoSmoking_Cigarettes_In_Count_Person_Female",
@@ -7642,7 +7642,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_Daily_5PortionOrMore_ConsumptionOfFruitsOrConsumptionOfVegetables_In_Count_Person_Female",
@@ -7656,7 +7656,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_Daily_AlcoholConsumption_In_Count_Person_Female",
@@ -7670,7 +7670,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_Daily_BingeDrinking_In_Count_Person_Female",
@@ -7684,7 +7684,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_Daily_From1To4Portion_ConsumptionOfFruitsOrConsumptionOfVegetables_In_Count_Person_Female",
@@ -7698,7 +7698,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_Daily_LessThan20CigarettesPerDay_TobaccoSmoking_Cigarettes_In_Count_Person_Female",
@@ -7712,7 +7712,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_Daily_TobaccoSmoking_10YearsOrOver_TobaccoProducts_In_Count_Person_Female",
@@ -7726,7 +7726,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_Daily_TobaccoSmoking_Cigarettes_In_Count_Person_Female",
@@ -7740,7 +7740,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_Daily_TobaccoSmoking_ECigarettes_In_Count_Person_Female",
@@ -7754,7 +7754,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_Daily_TobaccoSmoking_From1To5Years_TobaccoProducts_In_Count_Person_Female",
@@ -7768,7 +7768,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_Daily_TobaccoSmoking_From5To10Years_TobaccoProducts_In_Count_Person_Female",
@@ -7782,7 +7782,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_Daily_TobaccoSmoking_LessThan1Year_TobaccoProducts_In_Count_Person_Female",
@@ -7796,7 +7796,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_Daily_TobaccoSmoking_TobaccoProducts_In_Count_Person_Female",
@@ -7810,7 +7810,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_EveryMonth_AlcoholConsumption_In_Count_Person_Female",
@@ -7824,7 +7824,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_EveryMonth_BingeDrinking_In_Count_Person_Female",
@@ -7838,7 +7838,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_EveryWeek_AlcoholConsumption_In_Count_Person_Female",
@@ -7852,7 +7852,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_EveryWeek_BingeDrinking_In_Count_Person_Female",
@@ -7866,7 +7866,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_FormerSmoker_Daily_TobaccoProducts_In_Count_Person_Female",
@@ -7880,7 +7880,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_FormerSmoker_Formerly_ECigarettes_In_Count_Person_Female",
@@ -7894,7 +7894,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_From1To3TimesAWeek_ConsumptionOfFruits_In_Count_Person_Female",
@@ -7908,7 +7908,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_From1To3TimesAWeek_ConsumptionOfPureFruitOrConsumptionOfVegetableJuice_In_Count_Person_Female",
@@ -7922,7 +7922,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_From1To3TimesAWeek_ConsumptionOfSugarSweetenedSoftDrinks_In_Count_Person_Female",
@@ -7936,7 +7936,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_From1To3TimesAWeek_ConsumptionOfVegetables_In_Count_Person_Female",
@@ -7950,7 +7950,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_From4To6TimesAWeek_ConsumptionOfFruits_In_Count_Person_Female",
@@ -7964,7 +7964,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_From4To6TimesAWeek_ConsumptionOfPureFruitOrConsumptionOfVegetableJuice_In_Count_Person_Female",
@@ -7978,7 +7978,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_From4To6TimesAWeek_ConsumptionOfSugarSweetenedSoftDrinks_In_Count_Person_Female",
@@ -7992,7 +7992,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_From4To6TimesAWeek_ConsumptionOfVegetables_In_Count_Person_Female",
@@ -8006,7 +8006,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_HazardousAlcoholConsumption_In_Count_Person_Female",
@@ -8020,7 +8020,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_LessThanOnceAMonth_AlcoholConsumption_In_Count_Person_Female",
@@ -8034,7 +8034,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_LessThanOnceAMonth_BingeDrinking_In_Count_Person_Female",
@@ -8048,7 +8048,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_LessThanOnceAWeek_ConsumptionOfFruits_In_Count_Person_Female",
@@ -8062,7 +8062,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_LessThanOnceAWeek_ConsumptionOfVegetables_In_Count_Person_Female",
@@ -8076,7 +8076,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_LessThanOnceAWeek_ExposureToTobaccoSmoke_In_Count_Person_Female",
@@ -8090,7 +8090,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_LessThanOneHourPerDay_ExposureToTobaccoSmoke_In_Count_Person_Female",
@@ -8104,7 +8104,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_PhysicalActivity_In_Count_Person_Female",
@@ -8118,7 +8118,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_MuscleStrengthening_HealthEnhancingPhysicalActivity_In_Count_Person_Female",
@@ -8132,7 +8132,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_MuscleStrengthening_NonWorkRelatedPhysicalActivity_In_Count_Person_Female",
@@ -8146,7 +8146,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_NeverOrNotInTheLast12Months_AlcoholConsumption_In_Count_Person_Female",
@@ -8160,7 +8160,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_NeverOrNotInTheLast12Months_BingeDrinking_In_Count_Person_Female",
@@ -8174,7 +8174,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_NeverOrOccasional_BingeDrinking_In_Count_Person_Female",
@@ -8188,7 +8188,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_NeverOrOccasionally_ConsumptionOfFruits_In_Count_Person_Female",
@@ -8202,7 +8202,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_NeverOrOccasionally_ConsumptionOfPureFruitOrConsumptionOfVegetableJuice_In_Count_Person_Female",
@@ -8216,7 +8216,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_NeverOrOccasionally_ConsumptionOfSugarSweetenedSoftDrinks_In_Count_Person_Female",
@@ -8230,7 +8230,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_NeverOrOccasionally_ConsumptionOfVegetables_In_Count_Person_Female",
@@ -8244,7 +8244,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_Never_AlcoholConsumption_In_Count_Person_Female",
@@ -8258,7 +8258,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_Never_BingeDrinking_In_Count_Person_Female",
@@ -8272,7 +8272,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_Never_ConsumptionOfFruits_In_Count_Person_Female",
@@ -8286,7 +8286,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_Never_ConsumptionOfVegetables_In_Count_Person_Female",
@@ -8300,7 +8300,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_NonSmoker_TobaccoProducts_In_Count_Person_Female",
@@ -8314,7 +8314,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_Normalweight_In_Count_Person_Female",
@@ -8328,7 +8328,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_NotInTheLast12Months_AlcoholConsumption_In_Count_Person_Female",
@@ -8342,7 +8342,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_Obesity_In_Count_Person_Female",
@@ -8356,7 +8356,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_Occasional_TobaccoSmoking_ECigarettes_In_Count_Person_Female",
@@ -8370,7 +8370,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_Occasional_TobaccoSmoking_TobaccoProducts_In_Count_Person_Female",
@@ -8384,7 +8384,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_OnceADay_ConsumptionOfFruits_In_Count_Person_Female",
@@ -8398,7 +8398,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_OnceADay_ConsumptionOfVegetables_In_Count_Person_Female",
@@ -8412,7 +8412,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_Overweight_In_Count_Person_Female",
@@ -8426,7 +8426,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_PhysicalActivity_In_Count_Person_Female",
@@ -8440,7 +8440,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_PreObese_In_Count_Person_Female",
@@ -8454,7 +8454,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_RarelyOrNever_ExposureToTobaccoSmoke_In_Count_Person_Female",
@@ -8468,7 +8468,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_ReceivingIntermediateSocialSupport_In_Count_Person_Female",
@@ -8482,7 +8482,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Female",
@@ -8496,7 +8496,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_ReceivingStrongSocialSupport_In_Count_Person_Female",
@@ -8510,7 +8510,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_TertiaryEducationStageOneOrTertiaryEducationStageTwo_PhysicalActivity_In_Count_Person_Female",
@@ -8524,7 +8524,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_TobaccoSmoking_NeverUsed_ECigarettes_In_Count_Person_Female",
@@ -8538,7 +8538,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_TobaccoSmoking_TobaccoProducts_In_Count_Person_Female",
@@ -8552,7 +8552,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_Underweight_In_Count_Person_Female",
@@ -8566,7 +8566,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_PhysicalActivity_In_Count_Person_Female",
@@ -8580,7 +8580,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_Walking_NonWorkRelatedPhysicalActivity_In_Count_Person_Female",
@@ -8594,7 +8594,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_WorkRelatedPhysicalActivity_HeavyActivity_In_Count_Person_Female",
@@ -8608,7 +8608,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_WorkRelatedPhysicalActivity_ModerateActivityOrHeavyActivity_In_Count_Person_Female",
@@ -8622,7 +8622,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_WorkRelatedPhysicalActivity_ModerateActivity_In_Count_Person_Female",
@@ -8636,7 +8636,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Percent_WorkRelatedPhysicalActivity_NoActivityOrLightActivity_In_Count_Person_Female",
@@ -8650,7 +8650,7 @@
       "objectTypes": [
         "StatisticalVariable"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     }
   ]
 }

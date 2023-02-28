@@ -9,7 +9,7 @@
       ],
       "predicate": "name",
       "objectValue": "City",
-      "provenanceId": "dc/5l5zxr1"
+      "provenanceId": "dc/base/BaseSchema"
     },
     {
       "subjectId": "City",
@@ -19,12 +19,12 @@
         "LocationClassificationEnum"
       ],
       "predicate": "provenance",
-      "objectId": "dc/5l5zxr1",
+      "objectId": "dc/base/BaseSchema",
       "objectName": "BaseSchema",
       "objectTypes": [
         "Provenance"
       ],
-      "provenanceId": "dc/5l5zxr1"
+      "provenanceId": "dc/base/BaseSchema"
     },
     {
       "subjectId": "City",
@@ -39,7 +39,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5l5zxr1"
+      "provenanceId": "dc/base/BaseSchema"
     },
     {
       "subjectId": "City",
@@ -54,7 +54,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5l5zxr1"
+      "provenanceId": "dc/base/BaseSchema"
     },
     {
       "subjectId": "City",
@@ -69,7 +69,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5l5zxr1"
+      "provenanceId": "dc/base/BaseSchema"
     },
     {
       "subjectId": "administrativeCapital",
@@ -84,7 +84,7 @@
         "Class",
         "LocationClassificationEnum"
       ],
-      "provenanceId": "dc/5l5zxr1"
+      "provenanceId": "dc/base/BaseSchema"
     },
     {
       "subjectId": "country/HKG",
@@ -750,7 +750,7 @@
       ],
       "predicate": "name",
       "objectValue": "County",
-      "provenanceId": "dc/5l5zxr1"
+      "provenanceId": "dc/base/BaseSchema"
     },
     {
       "subjectId": "County",
@@ -759,12 +759,12 @@
         "Class"
       ],
       "predicate": "provenance",
-      "objectId": "dc/5l5zxr1",
+      "objectId": "dc/base/BaseSchema",
       "objectName": "BaseSchema",
       "objectTypes": [
         "Provenance"
       ],
-      "provenanceId": "dc/5l5zxr1"
+      "provenanceId": "dc/base/BaseSchema"
     },
     {
       "subjectId": "County",
@@ -778,7 +778,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5l5zxr1"
+      "provenanceId": "dc/base/BaseSchema"
     },
     {
       "subjectId": "County",
@@ -792,7 +792,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5l5zxr1"
+      "provenanceId": "dc/base/BaseSchema"
     },
     {
       "subjectId": "dc/phx9z7k0d8ne7",
@@ -1059,7 +1059,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5l5zxr1"
+      "provenanceId": "dc/base/BaseSchema"
     }
   ]
 }

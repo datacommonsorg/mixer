@@ -8,7 +8,7 @@
             "Property"
           ],
           "dcid": "addressCountry",
-          "provenanceId": "dc/5l5zxr1"
+          "provenanceId": "dc/base/BaseSchema"
         },
         {
           "name": "countryOfOrigin",
@@ -16,7 +16,7 @@
             "Property"
           ],
           "dcid": "countryOfOrigin",
-          "provenanceId": "dc/5l5zxr1"
+          "provenanceId": "dc/base/BaseSchema"
         },
         {
           "name": "nationality",
@@ -24,7 +24,7 @@
             "Property"
           ],
           "dcid": "nationality",
-          "provenanceId": "dc/5l5zxr1"
+          "provenanceId": "dc/base/BaseSchema"
         }
       ]
     },

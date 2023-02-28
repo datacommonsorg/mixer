@@ -3,7 +3,7 @@
     "name": {
       "nodes": [
         {
-          "provenanceId": "dc/5l5zxr1",
+          "provenanceId": "dc/base/BaseSchema",
           "value": "Country"
         }
       ]
@@ -15,8 +15,8 @@
           "types": [
             "Provenance"
           ],
-          "dcid": "dc/5l5zxr1",
-          "provenanceId": "dc/5l5zxr1"
+          "dcid": "dc/base/BaseSchema",
+          "provenanceId": "dc/base/BaseSchema"
         }
       ]
     },
@@ -28,7 +28,7 @@
             "Class"
           ],
           "dcid": "AdministrativeArea",
-          "provenanceId": "dc/5l5zxr1"
+          "provenanceId": "dc/base/BaseSchema"
         }
       ]
     },
@@ -40,7 +40,7 @@
             "Class"
           ],
           "dcid": "Class",
-          "provenanceId": "dc/5l5zxr1"
+          "provenanceId": "dc/base/BaseSchema"
         }
       ]
     }

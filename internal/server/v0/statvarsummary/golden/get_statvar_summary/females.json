@@ -2245,7 +2245,7 @@
         }
       },
       "provenanceSummary": {
-        "dc/jccrh82": {
+        "dc/base/WorldDevelopmentIndicators": {
           "importName": "WorldDevelopmentIndicators",
           "seriesSummary": [
             {
