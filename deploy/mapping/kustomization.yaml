@@ -20,6 +20,3 @@ configMapGenerator:
     files:
       - base.mcf
       - encode.mcf
-
-generatorOptions:
- disableNameSuffixHash: true
