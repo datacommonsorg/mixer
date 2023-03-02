@@ -1,11 +1,12 @@
 # Data Commons Mixer Developer Guide
 
-The developement uses [Kustomize](https://kubectl.docs.kubernetes.io/guides/introduction/kustomize/)
-to manage yaml templating and composition. Detailed deploy folder structure can be
-found [here](../deploy/README.md).
+The developement uses
+[Kustomize](https://kubectl.docs.kubernetes.io/guides/introduction/kustomize/)
+to manage yaml templating and composition. Detailed deploy folder structure can
+be found [here](../deploy/README.md).
 
-Local development uses [Skaffold](https://skaffold.dev) to manage the build, deploy and
-port forwarding.
+Local development uses [Skaffold](https://skaffold.dev) to manage the build,
+deploy and port forwarding.
 
 ## Prerequisite
 
@@ -19,7 +20,8 @@ port forwarding.
   - [`gcloud`](https://cloud.google.com/sdk/docs/install)
   - [`kubectl`](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
 
-- If you prefer to do it locally without Docker, then need to install the following:
+- If you prefer to do it locally without Docker, then need to install the
+  following:
 
   - [`Golang`](https://golang.org/doc/install)
   - [`protoc`](http://google.github.io/proto-lens/installing-protoc.html)
@@ -42,7 +44,8 @@ port forwarding.
 
 ## Develop mixer locally as a Go server (Recommended)
 
-**NOTE** This can only develop and test the gRPC server. Since the [ESP](https://cloud.google.com/endpoints/docs/grpc/running-esp-localdev) is not
+**NOTE** This can only develop and test the gRPC server. Since the
+[ESP](https://cloud.google.com/endpoints/docs/grpc/running-esp-localdev) is not
 brought up here, can not test the REST API.
 
 ### Generate Go proto files
@@ -114,9 +117,17 @@ go run --tags sqlite_fts5 cmd/main.go \
 
 ### Running ESP locally
 
-Mixer is a gRPC service but callers (website, API clients) are normally http clients. Therefore developing and testing mixer locally often requires both the mixer gRPC server and its corresponding json transcoding server. HTTP to gRPC translation can be done locally thorugh [envoy proxy](https://www.envoyproxy.io/docs/envoy/latest/intro/what_is_envoy). To install envoy, please follow the [official doc](https://www.envoyproxy.io/docs/envoy/latest/start/install).
+Mixer is a gRPC service but callers (website, API clients) are normally http
+clients. Therefore developing and testing mixer locally often requires both the
+mixer gRPC server and its corresponding json transcoding server. HTTP to gRPC
+translation can be done locally thorugh [envoy
+proxy](https://www.envoyproxy.io/docs/envoy/latest/intro/what_is_envoy). To
+install envoy, please follow the [official
+doc](https://www.envoyproxy.io/docs/envoy/latest/start/install).
 
-Before running envoy proxy, please make sure mixer service definition(mixer-grpc.pb) is available by running the follow from repo root.
+Before running envoy proxy, please make sure mixer service
+definition(mixer-grpc.pb) is available by running the follow from repo root.
+
 ```sh
 protoc --proto_path=proto \
   --include_source_info --include_imports \
@@ -124,13 +135,17 @@ protoc --proto_path=proto \
   proto/*.proto proto/v1/*.proto
 ```
 
-Assuming mixer gRPC server is at `localhost:12345`, run the following from repo root to spin up envoy proxy. This exposes the http mixer service at `localhost:8081`.
+Assuming mixer gRPC server is at `localhost:12345`, run the following from repo
+root to spin up envoy proxy. This exposes the http mixer service at
+`localhost:8081`.
 
 ```sh
 envoy --config-path esp/envoy-config.yaml
 ```
 
-Mixer services in live clusters do not use envoy directly. To replicate the live k8s setup locally, please see [the guide below](#fully-replicating-mixer-k8s-setup-locally).
+Mixer services in live clusters do not use envoy directly. To replicate the live
+k8s setup locally, please see [the guide
+below](#fully-replicating-mixer-k8s-setup-locally).
 
 ### Update Go package dependencies
 
