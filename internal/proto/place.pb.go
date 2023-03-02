@@ -1249,101 +1249,6 @@ func (x *PlaceMetadata) GetParents() []*PlaceMetadata_PlaceInfo {
 	return nil
 }
 
-type GetPlaceMetadataRequest struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Places []string `protobuf:"bytes,1,rep,name=places,proto3" json:"places,omitempty"`
-}
-
-func (x *GetPlaceMetadataRequest) Reset() {
-	*x = GetPlaceMetadataRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_place_proto_msgTypes[22]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *GetPlaceMetadataRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GetPlaceMetadataRequest) ProtoMessage() {}
-
-func (x *GetPlaceMetadataRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_place_proto_msgTypes[22]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GetPlaceMetadataRequest.ProtoReflect.Descriptor instead.
-func (*GetPlaceMetadataRequest) Descriptor() ([]byte, []int) {
-	return file_place_proto_rawDescGZIP(), []int{22}
-}
-
-func (x *GetPlaceMetadataRequest) GetPlaces() []string {
-	if x != nil {
-		return x.Places
-	}
-	return nil
-}
-
-type GetPlaceMetadataResponse struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	// Keyed by place dcid.
-	Data map[string]*PlaceMetadata `protobuf:"bytes,1,rep,name=data,proto3" json:"data,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
-}
-
-func (x *GetPlaceMetadataResponse) Reset() {
-	*x = GetPlaceMetadataResponse{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_place_proto_msgTypes[23]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *GetPlaceMetadataResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GetPlaceMetadataResponse) ProtoMessage() {}
-
-func (x *GetPlaceMetadataResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_place_proto_msgTypes[23]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GetPlaceMetadataResponse.ProtoReflect.Descriptor instead.
-func (*GetPlaceMetadataResponse) Descriptor() ([]byte, []int) {
-	return file_place_proto_rawDescGZIP(), []int{23}
-}
-
-func (x *GetPlaceMetadataResponse) GetData() map[string]*PlaceMetadata {
-	if x != nil {
-		return x.Data
-	}
-	return nil
-}
-
 type RelatedPlacesInfo_Ranking struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -1355,7 +1260,7 @@ type RelatedPlacesInfo_Ranking struct {
 func (x *RelatedPlacesInfo_Ranking) Reset() {
 	*x = RelatedPlacesInfo_Ranking{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_place_proto_msgTypes[24]
+		mi := &file_place_proto_msgTypes[22]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1368,7 +1273,7 @@ func (x *RelatedPlacesInfo_Ranking) String() string {
 func (*RelatedPlacesInfo_Ranking) ProtoMessage() {}
 
 func (x *RelatedPlacesInfo_Ranking) ProtoReflect() protoreflect.Message {
-	mi := &file_place_proto_msgTypes[24]
+	mi := &file_place_proto_msgTypes[22]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1404,7 +1309,7 @@ type RelatedPlacesInfo_Ranking_RankInfo struct {
 func (x *RelatedPlacesInfo_Ranking_RankInfo) Reset() {
 	*x = RelatedPlacesInfo_Ranking_RankInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_place_proto_msgTypes[25]
+		mi := &file_place_proto_msgTypes[23]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1417,7 +1322,7 @@ func (x *RelatedPlacesInfo_Ranking_RankInfo) String() string {
 func (*RelatedPlacesInfo_Ranking_RankInfo) ProtoMessage() {}
 
 func (x *RelatedPlacesInfo_Ranking_RankInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_place_proto_msgTypes[25]
+	mi := &file_place_proto_msgTypes[23]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1471,7 +1376,7 @@ type PlaceMetadataCache_PlaceInfo struct {
 func (x *PlaceMetadataCache_PlaceInfo) Reset() {
 	*x = PlaceMetadataCache_PlaceInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_place_proto_msgTypes[31]
+		mi := &file_place_proto_msgTypes[29]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1484,7 +1389,7 @@ func (x *PlaceMetadataCache_PlaceInfo) String() string {
 func (*PlaceMetadataCache_PlaceInfo) ProtoMessage() {}
 
 func (x *PlaceMetadataCache_PlaceInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_place_proto_msgTypes[31]
+	mi := &file_place_proto_msgTypes[29]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1542,7 +1447,7 @@ type PlaceMetadata_PlaceInfo struct {
 func (x *PlaceMetadata_PlaceInfo) Reset() {
 	*x = PlaceMetadata_PlaceInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_place_proto_msgTypes[32]
+		mi := &file_place_proto_msgTypes[30]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1555,7 +1460,7 @@ func (x *PlaceMetadata_PlaceInfo) String() string {
 func (*PlaceMetadata_PlaceInfo) ProtoMessage() {}
 
 func (x *PlaceMetadata_PlaceInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_place_proto_msgTypes[32]
+	mi := &file_place_proto_msgTypes[30]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1782,23 +1687,8 @@ var file_place_proto_rawDesc = []byte{
 	0x04, 0x64, 0x63, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x64, 0x63, 0x69,
 	0x64, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52,
 	0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x74, 0x79, 0x70, 0x65, 0x18, 0x03, 0x20,
-	0x01, 0x28, 0x09, 0x52, 0x04, 0x74, 0x79, 0x70, 0x65, 0x22, 0x31, 0x0a, 0x17, 0x47, 0x65, 0x74,
-	0x50, 0x6c, 0x61, 0x63, 0x65, 0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x52, 0x65, 0x71,
-	0x75, 0x65, 0x73, 0x74, 0x12, 0x16, 0x0a, 0x06, 0x70, 0x6c, 0x61, 0x63, 0x65, 0x73, 0x18, 0x01,
-	0x20, 0x03, 0x28, 0x09, 0x52, 0x06, 0x70, 0x6c, 0x61, 0x63, 0x65, 0x73, 0x22, 0xb4, 0x01, 0x0a,
-	0x18, 0x47, 0x65, 0x74, 0x50, 0x6c, 0x61, 0x63, 0x65, 0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74,
-	0x61, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x43, 0x0a, 0x04, 0x64, 0x61, 0x74,
-	0x61, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x2f, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f,
-	0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e, 0x47, 0x65, 0x74, 0x50, 0x6c, 0x61, 0x63, 0x65, 0x4d, 0x65,
-	0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x2e, 0x44,
-	0x61, 0x74, 0x61, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x52, 0x04, 0x64, 0x61, 0x74, 0x61, 0x1a, 0x53,
-	0x0a, 0x09, 0x44, 0x61, 0x74, 0x61, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x12, 0x10, 0x0a, 0x03, 0x6b,
-	0x65, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x6b, 0x65, 0x79, 0x12, 0x30, 0x0a,
-	0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x64,
-	0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e, 0x50, 0x6c, 0x61, 0x63, 0x65,
-	0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x3a,
-	0x02, 0x38, 0x01, 0x42, 0x09, 0x5a, 0x07, 0x2e, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x06,
-	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x01, 0x28, 0x09, 0x52, 0x04, 0x74, 0x79, 0x70, 0x65, 0x42, 0x09, 0x5a, 0x07, 0x2e, 0x2f, 0x70,
+	0x72, 0x6f, 0x74, 0x6f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -1813,7 +1703,7 @@ func file_place_proto_rawDescGZIP() []byte {
 	return file_place_proto_rawDescData
 }
 
-var file_place_proto_msgTypes = make([]protoimpl.MessageInfo, 34)
+var file_place_proto_msgTypes = make([]protoimpl.MessageInfo, 31)
 var file_place_proto_goTypes = []interface{}{
 	(*PlaceStatVars)(nil),                       // 0: datacommons.PlaceStatVars
 	(*DateList)(nil),                            // 1: datacommons.DateList
@@ -1837,44 +1727,39 @@ var file_place_proto_goTypes = []interface{}{
 	(*GetPlaceStatDateWithinPlaceResponse)(nil), // 19: datacommons.GetPlaceStatDateWithinPlaceResponse
 	(*PlaceMetadataCache)(nil),                  // 20: datacommons.PlaceMetadataCache
 	(*PlaceMetadata)(nil),                       // 21: datacommons.PlaceMetadata
-	(*GetPlaceMetadataRequest)(nil),             // 22: datacommons.GetPlaceMetadataRequest
-	(*GetPlaceMetadataResponse)(nil),            // 23: datacommons.GetPlaceMetadataResponse
-	(*RelatedPlacesInfo_Ranking)(nil),           // 24: datacommons.RelatedPlacesInfo.Ranking
-	(*RelatedPlacesInfo_Ranking_RankInfo)(nil),  // 25: datacommons.RelatedPlacesInfo.Ranking.RankInfo
-	nil,                                  // 26: datacommons.GetRelatedLocationsResponse.DataEntry
-	nil,                                  // 27: datacommons.GetLocationsRankingsResponse.DataEntry
-	nil,                                  // 28: datacommons.GetPlaceStatsVarResponse.PlacesEntry
-	nil,                                  // 29: datacommons.GetPlaceStatVarsResponse.PlacesEntry
-	nil,                                  // 30: datacommons.GetPlaceStatDateWithinPlaceResponse.DataEntry
-	(*PlaceMetadataCache_PlaceInfo)(nil), // 31: datacommons.PlaceMetadataCache.PlaceInfo
-	(*PlaceMetadata_PlaceInfo)(nil),      // 32: datacommons.PlaceMetadata.PlaceInfo
-	nil,                                  // 33: datacommons.GetPlaceMetadataResponse.DataEntry
+	(*RelatedPlacesInfo_Ranking)(nil),           // 22: datacommons.RelatedPlacesInfo.Ranking
+	(*RelatedPlacesInfo_Ranking_RankInfo)(nil),  // 23: datacommons.RelatedPlacesInfo.Ranking.RankInfo
+	nil,                                  // 24: datacommons.GetRelatedLocationsResponse.DataEntry
+	nil,                                  // 25: datacommons.GetLocationsRankingsResponse.DataEntry
+	nil,                                  // 26: datacommons.GetPlaceStatsVarResponse.PlacesEntry
+	nil,                                  // 27: datacommons.GetPlaceStatVarsResponse.PlacesEntry
+	nil,                                  // 28: datacommons.GetPlaceStatDateWithinPlaceResponse.DataEntry
+	(*PlaceMetadataCache_PlaceInfo)(nil), // 29: datacommons.PlaceMetadataCache.PlaceInfo
+	(*PlaceMetadata_PlaceInfo)(nil),      // 30: datacommons.PlaceMetadata.PlaceInfo
 }
 var file_place_proto_depIdxs = []int32{
-	24, // 0: datacommons.RelatedPlacesInfo.rank_all:type_name -> datacommons.RelatedPlacesInfo.Ranking
-	24, // 1: datacommons.RelatedPlacesInfo.rank_top_1000:type_name -> datacommons.RelatedPlacesInfo.Ranking
-	24, // 2: datacommons.RelatedPlacesInfo.rank_bottom_1000:type_name -> datacommons.RelatedPlacesInfo.Ranking
-	26, // 3: datacommons.GetRelatedLocationsResponse.data:type_name -> datacommons.GetRelatedLocationsResponse.DataEntry
-	27, // 4: datacommons.GetLocationsRankingsResponse.data:type_name -> datacommons.GetLocationsRankingsResponse.DataEntry
-	28, // 5: datacommons.GetPlaceStatsVarResponse.places:type_name -> datacommons.GetPlaceStatsVarResponse.PlacesEntry
-	29, // 6: datacommons.GetPlaceStatVarsResponse.places:type_name -> datacommons.GetPlaceStatVarsResponse.PlacesEntry
-	30, // 7: datacommons.GetPlaceStatDateWithinPlaceResponse.data:type_name -> datacommons.GetPlaceStatDateWithinPlaceResponse.DataEntry
-	31, // 8: datacommons.PlaceMetadataCache.places:type_name -> datacommons.PlaceMetadataCache.PlaceInfo
-	32, // 9: datacommons.PlaceMetadata.self:type_name -> datacommons.PlaceMetadata.PlaceInfo
-	32, // 10: datacommons.PlaceMetadata.parents:type_name -> datacommons.PlaceMetadata.PlaceInfo
-	33, // 11: datacommons.GetPlaceMetadataResponse.data:type_name -> datacommons.GetPlaceMetadataResponse.DataEntry
-	25, // 12: datacommons.RelatedPlacesInfo.Ranking.info:type_name -> datacommons.RelatedPlacesInfo.Ranking.RankInfo
-	3,  // 13: datacommons.GetRelatedLocationsResponse.DataEntry.value:type_name -> datacommons.RelatedPlacesInfo
-	3,  // 14: datacommons.GetLocationsRankingsResponse.DataEntry.value:type_name -> datacommons.RelatedPlacesInfo
-	10, // 15: datacommons.GetPlaceStatsVarResponse.PlacesEntry.value:type_name -> datacommons.StatsVars
-	13, // 16: datacommons.GetPlaceStatVarsResponse.PlacesEntry.value:type_name -> datacommons.StatVars
-	1,  // 17: datacommons.GetPlaceStatDateWithinPlaceResponse.DataEntry.value:type_name -> datacommons.DateList
-	21, // 18: datacommons.GetPlaceMetadataResponse.DataEntry.value:type_name -> datacommons.PlaceMetadata
-	19, // [19:19] is the sub-list for method output_type
-	19, // [19:19] is the sub-list for method input_type
-	19, // [19:19] is the sub-list for extension type_name
-	19, // [19:19] is the sub-list for extension extendee
-	0,  // [0:19] is the sub-list for field type_name
+	22, // 0: datacommons.RelatedPlacesInfo.rank_all:type_name -> datacommons.RelatedPlacesInfo.Ranking
+	22, // 1: datacommons.RelatedPlacesInfo.rank_top_1000:type_name -> datacommons.RelatedPlacesInfo.Ranking
+	22, // 2: datacommons.RelatedPlacesInfo.rank_bottom_1000:type_name -> datacommons.RelatedPlacesInfo.Ranking
+	24, // 3: datacommons.GetRelatedLocationsResponse.data:type_name -> datacommons.GetRelatedLocationsResponse.DataEntry
+	25, // 4: datacommons.GetLocationsRankingsResponse.data:type_name -> datacommons.GetLocationsRankingsResponse.DataEntry
+	26, // 5: datacommons.GetPlaceStatsVarResponse.places:type_name -> datacommons.GetPlaceStatsVarResponse.PlacesEntry
+	27, // 6: datacommons.GetPlaceStatVarsResponse.places:type_name -> datacommons.GetPlaceStatVarsResponse.PlacesEntry
+	28, // 7: datacommons.GetPlaceStatDateWithinPlaceResponse.data:type_name -> datacommons.GetPlaceStatDateWithinPlaceResponse.DataEntry
+	29, // 8: datacommons.PlaceMetadataCache.places:type_name -> datacommons.PlaceMetadataCache.PlaceInfo
+	30, // 9: datacommons.PlaceMetadata.self:type_name -> datacommons.PlaceMetadata.PlaceInfo
+	30, // 10: datacommons.PlaceMetadata.parents:type_name -> datacommons.PlaceMetadata.PlaceInfo
+	23, // 11: datacommons.RelatedPlacesInfo.Ranking.info:type_name -> datacommons.RelatedPlacesInfo.Ranking.RankInfo
+	3,  // 12: datacommons.GetRelatedLocationsResponse.DataEntry.value:type_name -> datacommons.RelatedPlacesInfo
+	3,  // 13: datacommons.GetLocationsRankingsResponse.DataEntry.value:type_name -> datacommons.RelatedPlacesInfo
+	10, // 14: datacommons.GetPlaceStatsVarResponse.PlacesEntry.value:type_name -> datacommons.StatsVars
+	13, // 15: datacommons.GetPlaceStatVarsResponse.PlacesEntry.value:type_name -> datacommons.StatVars
+	1,  // 16: datacommons.GetPlaceStatDateWithinPlaceResponse.DataEntry.value:type_name -> datacommons.DateList
+	17, // [17:17] is the sub-list for method output_type
+	17, // [17:17] is the sub-list for method input_type
+	17, // [17:17] is the sub-list for extension type_name
+	17, // [17:17] is the sub-list for extension extendee
+	0,  // [0:17] is the sub-list for field type_name
 }
 
 func init() { file_place_proto_init() }
@@ -2148,30 +2033,6 @@ func file_place_proto_init() {
 			}
 		}
 		file_place_proto_msgTypes[22].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetPlaceMetadataRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_place_proto_msgTypes[23].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetPlaceMetadataResponse); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_place_proto_msgTypes[24].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*RelatedPlacesInfo_Ranking); i {
 			case 0:
 				return &v.state
@@ -2183,7 +2044,7 @@ func file_place_proto_init() {
 				return nil
 			}
 		}
-		file_place_proto_msgTypes[25].Exporter = func(v interface{}, i int) interface{} {
+		file_place_proto_msgTypes[23].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*RelatedPlacesInfo_Ranking_RankInfo); i {
 			case 0:
 				return &v.state
@@ -2195,7 +2056,7 @@ func file_place_proto_init() {
 				return nil
 			}
 		}
-		file_place_proto_msgTypes[31].Exporter = func(v interface{}, i int) interface{} {
+		file_place_proto_msgTypes[29].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*PlaceMetadataCache_PlaceInfo); i {
 			case 0:
 				return &v.state
@@ -2207,7 +2068,7 @@ func file_place_proto_init() {
 				return nil
 			}
 		}
-		file_place_proto_msgTypes[32].Exporter = func(v interface{}, i int) interface{} {
+		file_place_proto_msgTypes[30].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*PlaceMetadata_PlaceInfo); i {
 			case 0:
 				return &v.state
@@ -2220,14 +2081,14 @@ func file_place_proto_init() {
 			}
 		}
 	}
-	file_place_proto_msgTypes[25].OneofWrappers = []interface{}{}
+	file_place_proto_msgTypes[23].OneofWrappers = []interface{}{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_place_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   34,
+			NumMessages:   31,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

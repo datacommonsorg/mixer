@@ -18901,10 +18901,6 @@
       "name": "Person With Educational Attainment, Gender = Female",
       "statVars": [
         {
-          "name": "Percentage: Bachelor Degree or Higher, Female",
-          "dcid": "dc/648tvf392fz0c"
-        },
-        {
           "name": "Population: 10th Grade, Female",
           "dcid": "Count_Person_25OrMoreYears_EducationalAttainment10ThGrade_Female"
         },
@@ -19669,6 +19665,52 @@
         {
           "name": "Std Deviation State Referenced Achievement of Student: Female, Third Grade, Mathematics",
           "dcid": "dc/sdfm4kc8cgh06"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female",
+      "name": "Person With Gender = Female",
+      "statVars": [
+        {
+          "name": "Life expectancy at birth, female (years)",
+          "dcid": "LifeExpectancy_Person_Female"
+        },
+        {
+          "name": "Population: Female",
+          "dcid": "Count_Person_Female"
+        },
+        {
+          "name": "Unemployment Rate: Female",
+          "dcid": "UnemploymentRate_Person_Female"
+        },
+        {
+          "name": "Mean Wages Daily: Female",
+          "dcid": "Mean_WagesDaily_Worker_Female"
+        },
+        {
+          "name": "Mean Wages Monthly: Female",
+          "dcid": "Mean_WagesMonthly_Worker_Female"
+        },
+        {
+          "name": "Median Age: Female",
+          "dcid": "Median_Age_Person_Female"
+        },
+        {
+          "name": "Median Income: Female",
+          "dcid": "Median_Income_Person_15OrMoreYears_Female_WithIncome"
+        },
+        {
+          "name": "Percentage: Bachelor Degree or Higher, Female",
+          "dcid": "dc/648tvf392fz0c"
+        },
+        {
+          "name": "Percentage: Female, Below Poverty Level in The Past 12 Months",
+          "dcid": "dc/k0zg5lw8686z8"
+        },
+        {
+          "name": "Population: With Disability, Female",
+          "dcid": "Count_Person_WithDisability_Female"
         }
       ]
     },
@@ -21895,44 +21937,6 @@
         {
           "name": "Population: Years 5, Female, Below Poverty Level in The Past 12 Months, White Alone Not Hispanic or Latino",
           "dcid": "dc/382kknm8yfeph"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female",
-      "name": "Person With Gender = Female",
-      "statVars": [
-        {
-          "name": "Life expectancy at birth, female (years)",
-          "dcid": "LifeExpectancy_Person_Female"
-        },
-        {
-          "name": "Population: Female",
-          "dcid": "Count_Person_Female"
-        },
-        {
-          "name": "Unemployment Rate: Female",
-          "dcid": "UnemploymentRate_Person_Female"
-        },
-        {
-          "name": "Mean Wages Daily: Female",
-          "dcid": "Mean_WagesDaily_Worker_Female"
-        },
-        {
-          "name": "Mean Wages Monthly: Female",
-          "dcid": "Mean_WagesMonthly_Worker_Female"
-        },
-        {
-          "name": "Median Age: Female",
-          "dcid": "Median_Age_Person_Female"
-        },
-        {
-          "name": "Median Income: Female",
-          "dcid": "Median_Income_Person_15OrMoreYears_Female_WithIncome"
-        },
-        {
-          "name": "Population: With Disability, Female",
-          "dcid": "Count_Person_WithDisability_Female"
         }
       ]
     },
@@ -34215,20 +34219,6 @@
       ]
     },
     {
-      "dcid": "dc/g/Person_Gender-Female_PovertyStatus-BelowPovertyLevelInThePast12Months",
-      "name": "Person With Gender = Female, Poverty Status = Below Poverty Level in The Past 12 Months",
-      "statVars": [
-        {
-          "name": "Percentage: Female, Below Poverty Level in The Past 12 Months",
-          "dcid": "dc/k0zg5lw8686z8"
-        },
-        {
-          "name": "Population: Female, Below Poverty Level in The Past 12 Months",
-          "dcid": "Count_Person_Female_BelowPovertyLevelInThePast12Months"
-        }
-      ]
-    },
-    {
       "dcid": "dc/g/Person_Gender-Female_Race-SomeOtherRaceAlone",
       "name": "Person With Gender = Female, Race = Some Other Race Alone",
       "statVars": [
@@ -36703,6 +36693,20 @@
         {
           "name": "Count of Hate Crime Incidents (Offense): Bias Against Gender, Asian Alone Offender, Offender Race Known, Female Victim",
           "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderRaceAsianAlone_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_OffenderRace-BlackOrAfricanAmericanAlone_OffenderType-OffenderRaceKnown_TargetedGender-Female",
+      "name": "Hate Crime Incidents With Bias Motivation = Gender, Offender Race = Black or African American Alone, Offender Type = Offender Race Known, Targeted Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Hate Crime Incidents: Bias Against Gender, Black or African American Alone Offender, Offender Race Known, Female Victim",
+          "dcid": "Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderRaceBlackOrAfricanAmericanAlone_Female"
+        },
+        {
+          "name": "Count of Hate Crime Incidents (Offense): Bias Against Gender, Black or African American Alone Offender, Offender Race Known, Female Victim",
+          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderRaceBlackOrAfricanAmericanAlone_Female"
         }
       ]
     }
