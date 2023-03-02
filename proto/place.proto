@@ -191,10 +191,3 @@ message PlaceMetadata {
   PlaceInfo self = 1;
   repeated PlaceInfo parents = 2;
 }
-
-message GetPlaceMetadataRequest { repeated string places = 1; }
-
-message GetPlaceMetadataResponse {
-  // Keyed by place dcid.
-  map<string, PlaceMetadata> data = 1;
-}

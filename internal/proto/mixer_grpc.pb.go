@@ -65,8 +65,6 @@ type MixerClient interface {
 	// TODO(shifucun): Deprecate GetPlaceStatsVar when all internal clients are
 	// migrated.
 	GetPlaceStatVars(ctx context.Context, in *GetPlaceStatVarsRequest, opts ...grpc.CallOption) (*GetPlaceStatVarsResponse, error)
-	// Give a list of place dcids, return metadata for each place.
-	GetPlaceMetadata(ctx context.Context, in *GetPlaceMetadataRequest, opts ...grpc.CallOption) (*GetPlaceMetadataResponse, error)
 	// Given a list of entity dcids, returns the union of available
 	// statistical variables for the entities.
 	GetEntityStatVarsUnionV1(ctx context.Context, in *GetEntityStatVarsUnionRequest, opts ...grpc.CallOption) (*GetEntityStatVarsUnionResponse, error)
@@ -115,15 +113,15 @@ type MixerClient interface {
 	VariableAncestors(ctx context.Context, in *VariableAncestorsRequest, opts ...grpc.CallOption) (*VariableAncestorsResponse, error)
 	// Get event collection for {eventType, affectedPlaceDcid, date}.
 	// NOTE:
-	// - The affectedPlaceDcid is only for top-level places:
-	//   Earth, continent, country, state, adminArea1.
-	// - The date format should be: YYYY-MM.
+	//   - The affectedPlaceDcid is only for top-level places:
+	//     Earth, continent, country, state, adminArea1.
+	//   - The date format should be: YYYY-MM.
 	EventCollection(ctx context.Context, in *EventCollectionRequest, opts ...grpc.CallOption) (*EventCollectionResponse, error)
 	// Get all dates for event collection for {eventType, affectedPlaceDcid}.
-	// - The affectedPlaceDcid is only for top-level places:
-	//   Earth, continent, country, state, adminArea1.
-	// - The date format should be: YYYY-MM.
-	//   The dates in the response are sorted from earliest to latest.
+	//   - The affectedPlaceDcid is only for top-level places:
+	//     Earth, continent, country, state, adminArea1.
+	//   - The date format should be: YYYY-MM.
+	//     The dates in the response are sorted from earliest to latest.
 	EventCollectionDate(ctx context.Context, in *EventCollectionDateRequest, opts ...grpc.CallOption) (*EventCollectionDateResponse, error)
 	// Resolve a list of entities, given their descriptions.
 	ResolveEntities(ctx context.Context, in *ResolveEntitiesRequest, opts ...grpc.CallOption) (*ResolveEntitiesResponse, error)
@@ -292,15 +290,6 @@ func (c *mixerClient) GetPlaceStatsVar(ctx context.Context, in *GetPlaceStatsVar
 func (c *mixerClient) GetPlaceStatVars(ctx context.Context, in *GetPlaceStatVarsRequest, opts ...grpc.CallOption) (*GetPlaceStatVarsResponse, error) {
 	out := new(GetPlaceStatVarsResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/GetPlaceStatVars", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *mixerClient) GetPlaceMetadata(ctx context.Context, in *GetPlaceMetadataRequest, opts ...grpc.CallOption) (*GetPlaceMetadataResponse, error) {
-	out := new(GetPlaceMetadataResponse)
-	err := c.cc.Invoke(ctx, "/datacommons.Mixer/GetPlaceMetadata", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -732,8 +721,6 @@ type MixerServer interface {
 	// TODO(shifucun): Deprecate GetPlaceStatsVar when all internal clients are
 	// migrated.
 	GetPlaceStatVars(context.Context, *GetPlaceStatVarsRequest) (*GetPlaceStatVarsResponse, error)
-	// Give a list of place dcids, return metadata for each place.
-	GetPlaceMetadata(context.Context, *GetPlaceMetadataRequest) (*GetPlaceMetadataResponse, error)
 	// Given a list of entity dcids, returns the union of available
 	// statistical variables for the entities.
 	GetEntityStatVarsUnionV1(context.Context, *GetEntityStatVarsUnionRequest) (*GetEntityStatVarsUnionResponse, error)
@@ -782,15 +769,15 @@ type MixerServer interface {
 	VariableAncestors(context.Context, *VariableAncestorsRequest) (*VariableAncestorsResponse, error)
 	// Get event collection for {eventType, affectedPlaceDcid, date}.
 	// NOTE:
-	// - The affectedPlaceDcid is only for top-level places:
-	//   Earth, continent, country, state, adminArea1.
-	// - The date format should be: YYYY-MM.
+	//   - The affectedPlaceDcid is only for top-level places:
+	//     Earth, continent, country, state, adminArea1.
+	//   - The date format should be: YYYY-MM.
 	EventCollection(context.Context, *EventCollectionRequest) (*EventCollectionResponse, error)
 	// Get all dates for event collection for {eventType, affectedPlaceDcid}.
-	// - The affectedPlaceDcid is only for top-level places:
-	//   Earth, continent, country, state, adminArea1.
-	// - The date format should be: YYYY-MM.
-	//   The dates in the response are sorted from earliest to latest.
+	//   - The affectedPlaceDcid is only for top-level places:
+	//     Earth, continent, country, state, adminArea1.
+	//   - The date format should be: YYYY-MM.
+	//     The dates in the response are sorted from earliest to latest.
 	EventCollectionDate(context.Context, *EventCollectionDateRequest) (*EventCollectionDateResponse, error)
 	// Resolve a list of entities, given their descriptions.
 	ResolveEntities(context.Context, *ResolveEntitiesRequest) (*ResolveEntitiesResponse, error)
@@ -858,9 +845,6 @@ func (UnimplementedMixerServer) GetPlaceStatsVar(context.Context, *GetPlaceStats
 }
 func (UnimplementedMixerServer) GetPlaceStatVars(context.Context, *GetPlaceStatVarsRequest) (*GetPlaceStatVarsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetPlaceStatVars not implemented")
-}
-func (UnimplementedMixerServer) GetPlaceMetadata(context.Context, *GetPlaceMetadataRequest) (*GetPlaceMetadataResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetPlaceMetadata not implemented")
 }
 func (UnimplementedMixerServer) GetEntityStatVarsUnionV1(context.Context, *GetEntityStatVarsUnionRequest) (*GetEntityStatVarsUnionResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetEntityStatVarsUnionV1 not implemented")
@@ -1302,24 +1286,6 @@ func _Mixer_GetPlaceStatVars_Handler(srv interface{}, ctx context.Context, dec f
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(MixerServer).GetPlaceStatVars(ctx, req.(*GetPlaceStatVarsRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Mixer_GetPlaceMetadata_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetPlaceMetadataRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(MixerServer).GetPlaceMetadata(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/datacommons.Mixer/GetPlaceMetadata",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).GetPlaceMetadata(ctx, req.(*GetPlaceMetadataRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -2154,10 +2120,6 @@ var Mixer_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetPlaceStatVars",
 			Handler:    _Mixer_GetPlaceStatVars_Handler,
-		},
-		{
-			MethodName: "GetPlaceMetadata",
-			Handler:    _Mixer_GetPlaceMetadata_Handler,
 		},
 		{
 			MethodName: "GetEntityStatVarsUnionV1",

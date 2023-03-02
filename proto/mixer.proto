@@ -194,15 +194,6 @@ service Mixer {
     };
   }
 
-  // Give a list of place dcids, return metadata for each place.
-  rpc GetPlaceMetadata(GetPlaceMetadataRequest)
-      returns (GetPlaceMetadataResponse) {
-    option (google.api.http) = {
-      get : "/place/metadata"
-      additional_bindings : {post : "/place/metadata" body : "*"}
-    };
-  }
-
   // Given a list of entity dcids, returns the union of available
   // statistical variables for the entities.
   rpc GetEntityStatVarsUnionV1(GetEntityStatVarsUnionRequest)
