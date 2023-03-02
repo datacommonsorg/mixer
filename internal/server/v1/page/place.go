@@ -25,8 +25,8 @@ import (
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/convert"
+	"github.com/datacommonsorg/mixer/internal/server/place"
 	"github.com/datacommonsorg/mixer/internal/server/stat"
-	"github.com/datacommonsorg/mixer/internal/server/v0/placemetadata"
 	"github.com/datacommonsorg/mixer/internal/server/v0/propertyvalue"
 	"github.com/datacommonsorg/mixer/internal/server/v1/observations"
 	"github.com/datacommonsorg/mixer/internal/store"
@@ -488,13 +488,12 @@ func getPlacePageChildPlaces(
 
 func getParentPlaces(ctx context.Context, store *store.Store, dcid string) (
 	[]string, error) {
-	placeMetadata, err := placemetadata.GetPlaceMetadata(
-		ctx, &pb.GetPlaceMetadataRequest{Places: []string{dcid}}, store)
+	placeToMetadata, err := place.GetPlaceMetadataHelper(ctx, []string{dcid}, store)
 	if err != nil {
 		return nil, err
 	}
 	result := []string{}
-	if data, ok := placeMetadata.Data[dcid]; ok {
+	if data, ok := placeToMetadata[dcid]; ok {
 		for _, parent := range data.Parents {
 			// Only want to include parents with type that is included in
 			// allWantedPlaceTypes except and not type CensusZipCodeTabulationArea
