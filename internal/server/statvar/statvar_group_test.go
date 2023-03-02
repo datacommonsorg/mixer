@@ -197,22 +197,26 @@ func TestMergeCustomSVG(t *testing.T) {
 						"dc/g/Custom_Root": {
 							ChildStatVars: []*pb.StatVarGroupNode_ChildSV{},
 							ChildStatVarGroups: []*pb.StatVarGroupNode_ChildSVG{
-								{Id: "dc/g/Custom_Environment", DescendentStatVarCount: 0},
-								{Id: "dc/g/Custom_Energy", DescendentStatVarCount: 2},
+								{Id: "dc/g/Custom_Environment", DescendentStatVarCount: 1},
+								{Id: "dc/g/Custom_Energy", DescendentStatVarCount: 3},
 							},
-							DescendentStatVarCount: 2,
+							DescendentStatVarCount: 3,
 						},
 						"dc/g/Custom_Environment": {
-							ChildStatVars:          []*pb.StatVarGroupNode_ChildSV{},
+							ChildStatVars: []*pb.StatVarGroupNode_ChildSV{
+								{Id: "Count_SV_Environment_And_Energy"},
+							},
 							ChildStatVarGroups:     []*pb.StatVarGroupNode_ChildSVG{},
-							DescendentStatVarCount: 0,
+							DescendentStatVarCount: 1,
 						},
 						"dc/g/Custom_Energy": {
-							ChildStatVars: []*pb.StatVarGroupNode_ChildSV{},
+							ChildStatVars: []*pb.StatVarGroupNode_ChildSV{
+								{Id: "Count_SV_Environment_And_Energy"},
+							},
 							ChildStatVarGroups: []*pb.StatVarGroupNode_ChildSVG{
 								{Id: "dc/g/Custom_DeepSolar", DescendentStatVarCount: 2},
 							},
-							DescendentStatVarCount: 2,
+							DescendentStatVarCount: 3,
 						},
 						"dc/g/Custom_DeepSolar": {
 							ChildStatVars: []*pb.StatVarGroupNode_ChildSV{
@@ -266,24 +270,28 @@ func TestMergeCustomSVG(t *testing.T) {
 					"dc/g/Custom_Root": {
 						ChildStatVars: []*pb.StatVarGroupNode_ChildSV{},
 						ChildStatVarGroups: []*pb.StatVarGroupNode_ChildSVG{
-							{Id: "dc/g/Custom_Environment", DescendentStatVarCount: 3},
-							{Id: "dc/g/Custom_Energy", DescendentStatVarCount: 2},
+							{Id: "dc/g/Custom_Environment", DescendentStatVarCount: 4},
+							{Id: "dc/g/Custom_Energy", DescendentStatVarCount: 3},
 						},
-						DescendentStatVarCount: 5,
+						DescendentStatVarCount: 6,
 					},
 					"dc/g/Custom_Environment": {
-						ChildStatVars: []*pb.StatVarGroupNode_ChildSV{},
+						ChildStatVars: []*pb.StatVarGroupNode_ChildSV{
+							{Id: "Count_SV_Environment_And_Energy"},
+						},
 						ChildStatVarGroups: []*pb.StatVarGroupNode_ChildSVG{
 							{Id: "dc/g/Custom_Atmosphere", DescendentStatVarCount: 3},
 						},
-						DescendentStatVarCount: 3,
+						DescendentStatVarCount: 4,
 					},
 					"dc/g/Custom_Energy": {
-						ChildStatVars: []*pb.StatVarGroupNode_ChildSV{},
+						ChildStatVars: []*pb.StatVarGroupNode_ChildSV{
+							{Id: "Count_SV_Environment_And_Energy"},
+						},
 						ChildStatVarGroups: []*pb.StatVarGroupNode_ChildSVG{
 							{Id: "dc/g/Custom_DeepSolar", DescendentStatVarCount: 2},
 						},
-						DescendentStatVarCount: 2,
+						DescendentStatVarCount: 3,
 					},
 					"dc/g/Custom_DeepSolar": {
 						ChildStatVars: []*pb.StatVarGroupNode_ChildSV{
@@ -317,7 +325,7 @@ func TestMergeCustomSVG(t *testing.T) {
 				}
 			}
 		}
-		adjustDescendentStatVarCount(got.StatVarGroups, customSvgRoot)
+		adjustDescendentSVCount(got.StatVarGroups, customSvgRoot)
 
 		for k, svgWant := range c.want.GetStatVarGroups() {
 			svgGot, ok := got.StatVarGroups[k]

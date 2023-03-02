@@ -17,7 +17,6 @@ package statvar
 import (
 	"context"
 	"sort"
-	"strings"
 	"time"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
@@ -116,20 +115,29 @@ func filterSVG(in *pb.StatVarGroups, statVars []string) *pb.StatVarGroups {
 	return result
 }
 
-// adjustDescendentStatVarCount returns the DescendentStatVarCount for node curID.
-// Mutates DescendentStatVarCount for all nodes in id2Node starting at customSvgRoot.
-func adjustDescendentStatVarCount(id2Node map[string]*pb.StatVarGroupNode, curID string) int32 {
+// adjustDescendentStatVarCount returns all the unique stat var under curID.
+// Recursively mutates DescendentStatVarCount for all nodes in id2Node.
+func adjustDescendentSVCount(
+	id2Node map[string]*pb.StatVarGroupNode, curID string,
+) map[string]struct{} {
 	curNode, ok := id2Node[curID]
 	if !ok {
-		return 0
+		return nil
 	}
-	curNode.DescendentStatVarCount = int32(len(curNode.ChildStatVars))
+	descendentSV := map[string]struct{}{}
+	for _, sv := range curNode.ChildStatVars {
+		descendentSV[sv.Id] = struct{}{}
+	}
 	for _, childSVG := range curNode.GetChildStatVarGroups() {
+		childDescendentSV := adjustDescendentSVCount(id2Node, childSVG.GetId())
 		// Child SVG protos have its own DescendentStatVarCount that must be set.
-		childSVG.DescendentStatVarCount = adjustDescendentStatVarCount(id2Node, childSVG.GetId())
-		curNode.DescendentStatVarCount += childSVG.DescendentStatVarCount
+		childSVG.DescendentStatVarCount = int32(len(childDescendentSV))
+		for sv := range childDescendentSV {
+			descendentSV[sv] = struct{}{}
+		}
 	}
-	return curNode.GetDescendentStatVarCount()
+	curNode.DescendentStatVarCount = int32(len(descendentSV))
+	return descendentSV
 }
 
 // mergeSVGNodes merges node2's svg and svs into node1.
@@ -220,17 +228,15 @@ func GetStatVarGroup(
 						}
 						if _, ok := result.StatVarGroups[k]; !ok {
 							result.StatVarGroups[k] = v
-						} else if strings.HasPrefix(k, customSVGPrefix) {
-							// For custom SVGs, merge all SVGs regardless of the import group rank.
-							// Custom DC assumes overlapping stat var groups.
+						} else {
+							// Merge all SVGs regardless of the import group rank as one SVG
+							// can exist in multiple import group.
 							mergeSVGNodes(result.StatVarGroups[k], v)
 						}
 					}
 				}
 			}
 		}
-		// Recount all custom svg stat-vars because of the above merge.
-		adjustDescendentStatVarCount(result.StatVarGroups, customSvgRoot)
 		if customRootNode != nil {
 			customRootExist := false
 			// If custom schema is built together with base schema, then it is
@@ -250,7 +256,6 @@ func GetStatVarGroup(
 						SpecializedEntity: customRootNode.AbsoluteName,
 					},
 				)
-				result.StatVarGroups[SvgRoot].DescendentStatVarCount += customRootNode.DescendentStatVarCount
 			}
 		}
 	} else {
@@ -270,6 +275,8 @@ func GetStatVarGroup(
 			},
 		)
 	}
+	// Recount all descendent stat vars after merging
+	adjustDescendentSVCount(result.StatVarGroups, SvgRoot)
 	if len(entities) > 0 {
 		result = filterSVG(result, statVars)
 	}
