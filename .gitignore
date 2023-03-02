@@ -50,6 +50,7 @@ gke/config.yaml
 gke/endpoints.yaml
 endpoints.yaml
 
+mixer-grpc.pb
 mixer-grpc.*.pb
 deploy/overlays/**/endpoints.yaml
 deploy/overlays/**/kustomize-build.yaml

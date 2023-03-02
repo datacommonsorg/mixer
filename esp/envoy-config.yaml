@@ -16,44 +16,48 @@
 # for developing mixer locally.
 static_resources:
   listeners:
-  - name: restlistener
-    address:
-      socket_address: { address: 0.0.0.0, port_value: 8081 }
-    # Request buffer size limit
-    per_connection_buffer_limit_bytes: 1073741824 # 1GB
-    filter_chains:
-    - filters:
-      - name: envoy.filters.network.http_connection_manager
-        typed_config:
-          "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
-          stat_prefix: grpc_json
-          codec_type: AUTO
-          route_config:
-            name: local_route
-            virtual_hosts:
-              - name: local_service
-                domains: ["*"]
-                routes:
-                  - match:
-                      prefix: "/"
-                    route:
-                      cluster: grpcserver
-          http_filters:
-          - name: envoy.filters.http.grpc_json_transcoder
-            typed_config:
-              "@type": type.googleapis.com/envoy.extensions.filters.http.grpc_json_transcoder.v3.GrpcJsonTranscoder
-              proto_descriptor: "mixer-grpc.pb"
-              services: ["datacommons.Mixer"]
-              match_incoming_request_route: true
-          - name: envoy.filters.http.router
-            typed_config:
-              "@type": type.googleapis.com/envoy.extensions.filters.http.router.v3.Router
+    - name: restlistener
+      address:
+        socket_address: { address: 0.0.0.0, port_value: 8081 }
+      # Request buffer size limit
+      per_connection_buffer_limit_bytes: 1073741824 # 1GB
+      filter_chains:
+        - filters:
+            - name: envoy.filters.network.http_connection_manager
+              typed_config:
+                "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
+                stat_prefix: grpc_json
+                codec_type: AUTO
+                route_config:
+                  name: local_route
+                  virtual_hosts:
+                    - name: local_service
+                      domains: ["*"]
+                      routes:
+                        - match:
+                            prefix: "/"
+                          route:
+                            cluster: grpcserver
+                http_filters:
+                  - name: envoy.filters.http.grpc_json_transcoder
+                    typed_config:
+                      "@type": type.googleapis.com/envoy.extensions.filters.http.grpc_json_transcoder.v3.GrpcJsonTranscoder
+                      proto_descriptor: "mixer-grpc.pb"
+                      services: ["datacommons.Mixer"]
+                      match_incoming_request_route: true
+                  - name: envoy.filters.http.router
+                    typed_config:
+                      "@type": type.googleapis.com/envoy.extensions.filters.http.router.v3.Router
+                access_log:
+                  - name: envoy.access_loggers.stdout
+                    typed_config:
+                      "@type": type.googleapis.com/envoy.extensions.access_loggers.stream.v3.StdoutAccessLog
 
   clusters:
     - name: grpcserver
       connect_timeout: 60s
       # Response buffer size limit
-      per_connection_buffer_limit_bytes:  1073741824 # 1GB
+      per_connection_buffer_limit_bytes: 1073741824 # 1GB
       type: logical_dns
       lb_policy: round_robin
       dns_lookup_family: V4_ONLY
