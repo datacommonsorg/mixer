@@ -237,8 +237,6 @@ func GetStatVarGroup(
 				}
 			}
 		}
-		// Recount all custom svg stat-vars because of the above merge.
-		// adjustDescendentStatVarCount(result.StatVarGroups, customSvgRoot)
 		if customRootNode != nil {
 			customRootExist := false
 			// If custom schema is built together with base schema, then it is
