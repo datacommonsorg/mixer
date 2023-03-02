@@ -229,8 +229,8 @@ func GetStatVarGroup(
 						if _, ok := result.StatVarGroups[k]; !ok {
 							result.StatVarGroups[k] = v
 						} else {
-							// For custom SVGs, merge all SVGs regardless of the import group rank.
-							// Custom DC assumes overlapping stat var groups.
+							// Merge all SVGs regardless of the import group rank as one SVG
+							// can exist in multiple import group.
 							mergeSVGNodes(result.StatVarGroups[k], v)
 						}
 					}
@@ -256,7 +256,6 @@ func GetStatVarGroup(
 						SpecializedEntity: customRootNode.AbsoluteName,
 					},
 				)
-				result.StatVarGroups[SvgRoot].DescendentStatVarCount += customRootNode.DescendentStatVarCount
 			}
 		}
 	} else {
