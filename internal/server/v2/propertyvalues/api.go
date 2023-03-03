@@ -13,7 +13,6 @@
 // limitations under the License.
 
 // package propertyvalues is for V2 property values API
-
 package propertyvalues
 
 import (
