@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// package propertyvalues is for V2 property values API
+// Package propertyvalues is for V2 property values API
 package propertyvalues
 
 import (
