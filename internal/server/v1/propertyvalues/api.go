@@ -133,7 +133,7 @@ func BulkPropertyValues(
 	for _, n := range nodes {
 		res.Data = append(
 			res.Data,
-			&pb.BulkPropertyValuesResponse_NodePropertyValues{
+			&pb.NodePropertyValues{
 				Node:   n,
 				Values: MergeTypedNodes(data[n][property]),
 			},

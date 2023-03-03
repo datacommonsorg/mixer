@@ -1,0 +1,22 @@
+{
+  "data": [
+    {
+      "node": "geoId/06",
+      "values": [
+        {
+          "provenanceId": "dc/5n63hr1",
+          "value": "California"
+        }
+      ]
+    },
+    {
+      "node": "bio/hs",
+      "values": [
+        {
+          "provenanceId": "dc/hgp9hn1",
+          "value": "HomoSapiens"
+        }
+      ]
+    }
+  ]
+}

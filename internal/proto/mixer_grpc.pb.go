@@ -22,6 +22,8 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type MixerClient interface {
+	// ======================  V2   V2   V2   V2  ======================
+	PropertyValuesV2(ctx context.Context, in *PropertyValuesV2Request, opts ...grpc.CallOption) (*PropertyValuesV2Response, error)
 	// Query DataCommons Graph with Sparql.
 	Query(ctx context.Context, in *QueryRequest, opts ...grpc.CallOption) (*QueryResponse, error)
 	// Fetch property labels adjacent of nodes
@@ -141,6 +143,15 @@ type mixerClient struct {
 
 func NewMixerClient(cc grpc.ClientConnInterface) MixerClient {
 	return &mixerClient{cc}
+}
+
+func (c *mixerClient) PropertyValuesV2(ctx context.Context, in *PropertyValuesV2Request, opts ...grpc.CallOption) (*PropertyValuesV2Response, error) {
+	out := new(PropertyValuesV2Response)
+	err := c.cc.Invoke(ctx, "/datacommons.Mixer/PropertyValuesV2", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
 }
 
 func (c *mixerClient) Query(ctx context.Context, in *QueryRequest, opts ...grpc.CallOption) (*QueryResponse, error) {
@@ -678,6 +689,8 @@ func (c *mixerClient) BulkFindEntities(ctx context.Context, in *BulkFindEntities
 // All implementations should embed UnimplementedMixerServer
 // for forward compatibility
 type MixerServer interface {
+	// ======================  V2   V2   V2   V2  ======================
+	PropertyValuesV2(context.Context, *PropertyValuesV2Request) (*PropertyValuesV2Response, error)
 	// Query DataCommons Graph with Sparql.
 	Query(context.Context, *QueryRequest) (*QueryResponse, error)
 	// Fetch property labels adjacent of nodes
@@ -795,6 +808,9 @@ type MixerServer interface {
 type UnimplementedMixerServer struct {
 }
 
+func (UnimplementedMixerServer) PropertyValuesV2(context.Context, *PropertyValuesV2Request) (*PropertyValuesV2Response, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PropertyValuesV2 not implemented")
+}
 func (UnimplementedMixerServer) Query(context.Context, *QueryRequest) (*QueryResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Query not implemented")
 }
@@ -982,6 +998,24 @@ type UnsafeMixerServer interface {
 
 func RegisterMixerServer(s grpc.ServiceRegistrar, srv MixerServer) {
 	s.RegisterService(&Mixer_ServiceDesc, srv)
+}
+
+func _Mixer_PropertyValuesV2_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(PropertyValuesV2Request)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MixerServer).PropertyValuesV2(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/datacommons.Mixer/PropertyValuesV2",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MixerServer).PropertyValuesV2(ctx, req.(*PropertyValuesV2Request))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 func _Mixer_Query_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -2053,6 +2087,10 @@ var Mixer_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "datacommons.Mixer",
 	HandlerType: (*MixerServer)(nil),
 	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "PropertyValuesV2",
+			Handler:    _Mixer_PropertyValuesV2_Handler,
+		},
 		{
 			MethodName: "Query",
 			Handler:    _Mixer_Query_Handler,

@@ -63,11 +63,7 @@ message BulkPropertyValuesRequest {
 }
 
 message BulkPropertyValuesResponse {
-  message NodePropertyValues {
-    string node = 1;
-    repeated datacommons.EntityInfo values = 2;
-  }
-  repeated NodePropertyValues data = 1;
+  repeated datacommons.NodePropertyValues data = 1;
   // The pagination token for getting the next set of entries.
   string next_token = 2;
 }

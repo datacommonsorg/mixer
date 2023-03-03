@@ -483,6 +483,61 @@ func (x *EntityPair) GetEntityTwo() *EntitySubGraph {
 	return nil
 }
 
+type NodePropertyValues struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Node   string        `protobuf:"bytes,1,opt,name=node,proto3" json:"node,omitempty"`
+	Values []*EntityInfo `protobuf:"bytes,2,rep,name=values,proto3" json:"values,omitempty"`
+}
+
+func (x *NodePropertyValues) Reset() {
+	*x = NodePropertyValues{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_entity_proto_msgTypes[7]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *NodePropertyValues) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*NodePropertyValues) ProtoMessage() {}
+
+func (x *NodePropertyValues) ProtoReflect() protoreflect.Message {
+	mi := &file_entity_proto_msgTypes[7]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use NodePropertyValues.ProtoReflect.Descriptor instead.
+func (*NodePropertyValues) Descriptor() ([]byte, []int) {
+	return file_entity_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *NodePropertyValues) GetNode() string {
+	if x != nil {
+		return x.Node
+	}
+	return ""
+}
+
+func (x *NodePropertyValues) GetValues() []*EntityInfo {
+	if x != nil {
+		return x.Values
+	}
+	return nil
+}
+
 var File_entity_proto protoreflect.FileDescriptor
 
 var file_entity_proto_rawDesc = []byte{
@@ -537,8 +592,13 @@ var file_entity_proto_rawDesc = []byte{
 	0x77, 0x6f, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1b, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x63,
 	0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e, 0x45, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x53, 0x75, 0x62,
 	0x47, 0x72, 0x61, 0x70, 0x68, 0x52, 0x09, 0x65, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x54, 0x77, 0x6f,
-	0x42, 0x09, 0x5a, 0x07, 0x2e, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x06, 0x70, 0x72, 0x6f,
-	0x74, 0x6f, 0x33,
+	0x22, 0x59, 0x0a, 0x12, 0x4e, 0x6f, 0x64, 0x65, 0x50, 0x72, 0x6f, 0x70, 0x65, 0x72, 0x74, 0x79,
+	0x56, 0x61, 0x6c, 0x75, 0x65, 0x73, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x6f, 0x64, 0x65, 0x18, 0x01,
+	0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x6f, 0x64, 0x65, 0x12, 0x2f, 0x0a, 0x06, 0x76, 0x61,
+	0x6c, 0x75, 0x65, 0x73, 0x18, 0x02, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x17, 0x2e, 0x64, 0x61, 0x74,
+	0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e, 0x45, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x49,
+	0x6e, 0x66, 0x6f, 0x52, 0x06, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x73, 0x42, 0x09, 0x5a, 0x07, 0x2e,
+	0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -553,7 +613,7 @@ func file_entity_proto_rawDescGZIP() []byte {
 	return file_entity_proto_rawDescData
 }
 
-var file_entity_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
+var file_entity_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
 var file_entity_proto_goTypes = []interface{}{
 	(*EntityInfo)(nil),           // 0: datacommons.EntityInfo
 	(*PagedNodes)(nil),           // 1: datacommons.PagedNodes
@@ -562,21 +622,23 @@ var file_entity_proto_goTypes = []interface{}{
 	(*EntityIds)(nil),            // 4: datacommons.EntityIds
 	(*EntitySubGraph)(nil),       // 5: datacommons.EntitySubGraph
 	(*EntityPair)(nil),           // 6: datacommons.EntityPair
-	(*McfGraph)(nil),             // 7: datacommons.McfGraph
+	(*NodePropertyValues)(nil),   // 7: datacommons.NodePropertyValues
+	(*McfGraph)(nil),             // 8: datacommons.McfGraph
 }
 var file_entity_proto_depIdxs = []int32{
 	0, // 0: datacommons.PagedNodes.nodes:type_name -> datacommons.EntityInfo
 	0, // 1: datacommons.EntityInfoCollection.entities:type_name -> datacommons.EntityInfo
 	3, // 2: datacommons.EntityIds.ids:type_name -> datacommons.IdWithProperty
-	7, // 3: datacommons.EntitySubGraph.sub_graph:type_name -> datacommons.McfGraph
+	8, // 3: datacommons.EntitySubGraph.sub_graph:type_name -> datacommons.McfGraph
 	4, // 4: datacommons.EntitySubGraph.entity_ids:type_name -> datacommons.EntityIds
 	5, // 5: datacommons.EntityPair.entity_one:type_name -> datacommons.EntitySubGraph
 	5, // 6: datacommons.EntityPair.entity_two:type_name -> datacommons.EntitySubGraph
-	7, // [7:7] is the sub-list for method output_type
-	7, // [7:7] is the sub-list for method input_type
-	7, // [7:7] is the sub-list for extension type_name
-	7, // [7:7] is the sub-list for extension extendee
-	0, // [0:7] is the sub-list for field type_name
+	0, // 7: datacommons.NodePropertyValues.values:type_name -> datacommons.EntityInfo
+	8, // [8:8] is the sub-list for method output_type
+	8, // [8:8] is the sub-list for method input_type
+	8, // [8:8] is the sub-list for extension type_name
+	8, // [8:8] is the sub-list for extension extendee
+	0, // [0:8] is the sub-list for field type_name
 }
 
 func init() { file_entity_proto_init() }
@@ -670,6 +732,18 @@ func file_entity_proto_init() {
 				return nil
 			}
 		}
+		file_entity_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*NodePropertyValues); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	file_entity_proto_msgTypes[5].OneofWrappers = []interface{}{
 		(*EntitySubGraph_SubGraph)(nil),
@@ -681,7 +755,7 @@ func file_entity_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_entity_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   7,
+			NumMessages:   8,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

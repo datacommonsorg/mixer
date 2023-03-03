@@ -143,7 +143,7 @@ func BulkLinkedPropertyValues(
 	result := &pb.BulkPropertyValuesResponse{}
 	for _, n := range nodes {
 		children := resp[n]
-		oneNodeResult := &pb.BulkPropertyValuesResponse_NodePropertyValues{
+		oneNodeResult := &pb.NodePropertyValues{
 			Node: n,
 		}
 		for _, dcid := range children {
