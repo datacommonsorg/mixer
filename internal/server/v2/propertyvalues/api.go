@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+// package propertyvalues is for V2 property values API
+
 package propertyvalues
 
 import (
@@ -24,8 +26,8 @@ import (
 	"github.com/datacommonsorg/mixer/internal/util"
 )
 
-// PropertyValuesV2 implements mixer.PropertyValuesV2 handler.
-func PropertyValuesV2(
+// API is the V2 property values API implementation entry point.
+func API(
 	ctx context.Context,
 	in *pb.PropertyValuesV2Request,
 	store *store.Store,
@@ -46,7 +48,7 @@ func PropertyValuesV2(
 		return nil, err
 	}
 	res := &pb.PropertyValuesV2Response{Data: []*pb.NodePropertyValues{}}
-	for node := range data {
+	for _, node := range nodes {
 		res.Data = append(
 			res.Data,
 			&pb.NodePropertyValues{

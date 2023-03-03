@@ -17,7 +17,7 @@ package server
 import (
 	"context"
 
-	"github.com/datacommonsorg/mixer/internal/server/v2/propertyvalues"
+	v2pv "github.com/datacommonsorg/mixer/internal/server/v2/propertyvalues"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 )
@@ -26,5 +26,5 @@ import (
 func (s *Server) PropertyValuesV2(
 	ctx context.Context, in *pb.PropertyValuesV2Request,
 ) (*pb.PropertyValuesV2Response, error) {
-	return propertyvalues.PropertyValuesV2(ctx, in, s.store)
+	return v2pv.API(ctx, in, s.store)
 }
