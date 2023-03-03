@@ -24,7 +24,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/util"
 )
 
-// PropertyValues implements mixer.PropertyValues handler.
+// PropertyValuesV2 implements mixer.PropertyValuesV2 handler.
 func PropertyValuesV2(
 	ctx context.Context,
 	in *pb.PropertyValuesV2Request,

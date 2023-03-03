@@ -22,7 +22,7 @@ import (
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 )
 
-// PropertyValuesV2 implements API for mixer.PropertyValues.
+// PropertyValuesV2 implements API for mixer.PropertyValuesV2.
 func (s *Server) PropertyValuesV2(
 	ctx context.Context, in *pb.PropertyValuesV2Request,
 ) (*pb.PropertyValuesV2Response, error) {
