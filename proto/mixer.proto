@@ -46,7 +46,27 @@ import "v1/observation_existence.proto";
 import "v1/page.proto";
 import "v1/triples.proto";
 
+import "v2/node_v2.proto";
+
+
 service Mixer {
+
+  // ======================  V2   V2   V2   V2  ======================
+
+  rpc PropertyValuesV2(datacommons.v2.PropertyValuesV2Request)
+      returns (datacommons.v2.PropertyValuesV2Response) {
+    option (google.api.http) = {
+      get : "/v2/property/values"
+      additional_bindings : {
+        post : "/v2/property/values"
+        body : "*"
+      }
+    };
+  }
+
+
+  // ======================  V1   V1   V1   V1  ======================
+
   // Query DataCommons Graph with Sparql.
   rpc Query(QueryRequest) returns (QueryResponse) {
     option (google.api.http) = {

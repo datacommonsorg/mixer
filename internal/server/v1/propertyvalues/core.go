@@ -32,6 +32,7 @@ import (
 
 // Fetch is the generic handler to fetch property values for multiple
 // properties and nodes.
+// Return map is keyed by node dicd, then property, then target node type.
 func Fetch(
 	ctx context.Context,
 	store *store.Store,

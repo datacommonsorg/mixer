@@ -71,3 +71,8 @@ message EntityPair {
   EntitySubGraph entity_one = 1;
   EntitySubGraph entity_two = 2;
 }
+
+message NodePropertyValues {
+  string node = 1;
+  repeated EntityInfo values = 2;
+}
