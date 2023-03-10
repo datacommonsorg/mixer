@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Package v2.
+// Package v2 is the version 2 of the Data Commons REST API.
 package v2
 
 import (
