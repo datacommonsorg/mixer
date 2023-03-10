@@ -15,15 +15,20 @@
 // Package v2
 package v2
 
-import "fmt"
+import (
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
+)
 
-// split a string by "->" and "<-"
-func split(s string) ([]string, error) {
+// splitArc splits query string by "->" and "<-" into arcs
+func splitArc(s string) ([]string, error) {
 	if len(s) < 2 {
-		return nil, fmt.Errorf("invalid query string: %s", s)
+		return nil, status.Errorf(
+			codes.InvalidArgument, "invalid query string: %s", s)
 	}
 	if s[0:2] != "->" && s[0:2] != "<-" {
-		return nil, fmt.Errorf("query string should start with arrow, %s", s)
+		return nil, status.Errorf(
+			codes.InvalidArgument, "query string should start with arrow, %s", s)
 	}
 	pos := []int{}
 	for i := 0; i < len(s)-2; i++ {

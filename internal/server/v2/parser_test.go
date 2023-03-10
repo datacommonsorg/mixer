@@ -58,7 +58,7 @@ func TestSplit(t *testing.T) {
 			},
 		},
 	} {
-		result, err := split(c.query)
+		result, err := splitArc(c.query)
 		if err != nil {
 			t.Errorf("split(%s) got error %v", c.query, err)
 			continue
