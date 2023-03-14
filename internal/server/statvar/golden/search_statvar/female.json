@@ -2503,10 +2503,6 @@
         {
           "name": "Population: Years 14, Female, Hispanic or Latino \u0026 Black or African American Alone or In Combination With One or More Other Races",
           "dcid": "Count_Person_14Years_Female_HispanicOrLatino_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces"
-        },
-        {
-          "name": "Population: Years 14, Female, Hispanic or Latino \u0026 Native Hawaiian And Other Pacific Islander Alone or In Combination With One or More Other Races",
-          "dcid": "Count_Person_14Years_Female_HispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAloneOrInCombinationWithOneOrMoreOtherRaces"
         }
       ]
     },
@@ -6845,6 +6841,26 @@
       ]
     },
     {
+      "dcid": "dc/g/Person_Gender-Female_HealthBehavior-TobaccoSmoking",
+      "name": "Person With Gender = Female, Health Behavior = Tobacco Smoking",
+      "statVars": [
+        {
+          "name": "Percentage Tobacco Smoking Among Female Population",
+          "dcid": "Percent_TobaccoSmoking_TobaccoProducts_In_Count_Person_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_HealthBehavior-TobaccoUse",
+      "name": "Person With Gender = Female, Health Behavior = Tobacco Use",
+      "statVars": [
+        {
+          "name": "Prevalence of Current Tobacco Use Among Females",
+          "dcid": "Percent_TobaccoUsing_In_Count_Person_Female"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/Person_Gender-Female_HealthInsurance-NoHealthInsurance",
       "name": "Person With Gender = Female, Health Insurance = No Health Insurance",
       "statVars": [
@@ -10205,12 +10221,88 @@
       ]
     },
     {
+      "dcid": "sdg/g/SDG_1.3.1",
+      "name": "1.3.1: Proportion of population covered by social protection floors/systems, by sex, distinguishing children, unemployed persons, older persons, persons with disabilities, pregnant women, newborns, work-injury victims and the poor and the vulnerable"
+    },
+    {
+      "dcid": "sdg/g/SDG_1.4",
+      "name": "1.4: By 2030, ensure that all men and women, in particular the poor and the vulnerable, have equal rights to economic resources, as well as access to basic services, ownership and control over land and other forms of property, inheritance, natural resources, appropriate new technology and financial services, including microfinance"
+    },
+    {
+      "dcid": "sdg/g/SDG_11.2",
+      "name": "11.2: By 2030, provide access to safe, affordable, accessible and sustainable transport systems for all, improving road safety, notably by expanding public transport, with special attention to the needs of those in vulnerable situations, women, children, persons with disabilities and older persons"
+    },
+    {
+      "dcid": "sdg/g/SDG_11.7",
+      "name": "11.7: By 2030, provide universal access to safe, inclusive and accessible, green and public spaces, in particular for women and children, older persons and persons with disabilities"
+    },
+    {
+      "dcid": "sdg/g/SDG_2.2.3",
+      "name": "2.2.3: Prevalence of anaemia in women aged 15 to 49 years, by pregnancy status (percentage)"
+    },
+    {
+      "dcid": "sdg/g/SDG_2.2",
+      "name": "2.2: By 2030, end all forms of malnutrition, including achieving, by 2025, the internationally agreed targets on stunting and wasting in children under 5 years of age, and address the nutritional needs of adolescent girls, pregnant and lactating women and older persons"
+    },
+    {
+      "dcid": "sdg/g/SDG_3.7.1",
+      "name": "3.7.1: Proportion of women of reproductive age (aged 15-49 years) who have their need for family planning satisfied with modern methods"
+    },
+    {
+      "dcid": "sdg/g/SDG_3.7.2",
+      "name": "3.7.2: Adolescent birth rate (aged 10-14 years; aged 15-19 years) per 1,000 women in that age group"
+    },
+    {
+      "dcid": "sdg/g/SDG_4.3",
+      "name": "4.3: By 2030, ensure equal access for all women and men to affordable and quality technical, vocational and tertiary education, including university"
+    },
+    {
+      "dcid": "sdg/g/SDG_4.6",
+      "name": "4.6: By 2030, ensure that all youth and a substantial proportion of adults, both men and women, achieve literacy and numeracy"
+    },
+    {
+      "dcid": "sdg/g/SDG_5.2.1",
+      "name": "5.2.1: Proportion of ever-partnered women and girls aged 15 years and older subjected to physical, sexual or psychological violence by a current or former intimate partner in the previous 12 months, by form of violence and by age"
+    },
+    {
+      "dcid": "sdg/g/SDG_5.2",
+      "name": "5.2: Eliminate all forms of violence against all women and girls in the public and private spheres, including trafficking and sexual and other types of exploitation"
+    },
+    {
+      "dcid": "sdg/g/SDG_5.5.1",
+      "name": "5.5.1: Proportion of seats held by women in (a) national parliaments and (b) local governments"
+    },
+    {
+      "dcid": "sdg/g/SDG_5.5.2",
+      "name": "5.5.2: Proportion of women in managerial positions"
+    },
+    {
+      "dcid": "sdg/g/SDG_5",
+      "name": "5: Achieve gender equality and empower all women and girls"
+    },
+    {
+      "dcid": "sdg/g/SDG_6.2",
+      "name": "6.2: By 2030, achieve access to adequate and equitable sanitation and hygiene for all and end open defecation, paying special attention to the needs of women and girls and those in vulnerable situations"
+    },
+    {
+      "dcid": "sdg/g/SDG_8.5",
+      "name": "8.5: By 2030, achieve full and productive employment and decent work for all women and men, including for young people and persons with disabilities, and equal pay for work of equal value"
+    },
+    {
+      "dcid": "sdg/g/SDG_8.8",
+      "name": "8.8: Protect labour rights and promote safe and secure working environments for all workers, including migrant workers, in particular women migrants, and those in precarious employment"
+    },
+    {
       "dcid": "dc/g/HateCrimeIncidents_TargetedGender-Female",
       "name": "Hate Crime Incidents With Targeted Gender = Female"
     },
     {
       "dcid": "dc/g/MedicalConditionIncident_Gender-Female",
       "name": "Medical Condition Incident With Gender = Female"
+    },
+    {
+      "dcid": "sdg/g/SP_DYN_ADKL",
+      "name": "Adolescent birth rate (per 1,000 women aged 15-19 and 10-14 years)"
     },
     {
       "dcid": "dc/g/HateCrimeIncidents_BiasMotivation_TargetedGender-Female",
@@ -10487,6 +10579,18 @@
     {
       "dcid": "dc/g/MedicalConditionIncident_Gender-Female_Serotype",
       "name": "Medical Condition Incident With Gender = Female, Serotype"
+    },
+    {
+      "dcid": "sdg/g/SG_GEN_PARLN",
+      "name": "Number of seats held by women in national parliaments (number)"
+    },
+    {
+      "dcid": "dc/g/Person_ActivityFrequency-Daily_Gender-Female",
+      "name": "Person With Activity Frequency = Daily, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Person_ActivityFrequency_Gender-Female",
+      "name": "Person With Activity Frequency, Gender = Female"
     },
     {
       "dcid": "dc/g/Person_Age-Years100Onwards_Gender-Female",
@@ -11173,6 +11277,14 @@
       "name": "Person With Gender = Female, Spouse Present = Married Spouse Absent"
     },
     {
+      "dcid": "dc/g/Person_Gender-Female_TobaccoUsageType",
+      "name": "Person With Gender = Female, Tobacco Usage Type"
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_TobaccoUsageType-Cigarettes",
+      "name": "Person With Gender = Female, Tobacco Usage Type = Cigarettes"
+    },
+    {
       "dcid": "dc/g/Person_Gender-Female_UsualHoursWorked",
       "name": "Person With Gender = Female, Usual Hours Worked"
     },
@@ -11243,6 +11355,30 @@
     {
       "dcid": "dc/g/Person_Gender-Female_MilitaryStatus",
       "name": "Person With Military Status, Gender = Female"
+    },
+    {
+      "dcid": "sdg/g/VC_VAW_MARR",
+      "name": "Proportion of ever-partnered women and girls subjected to physical and/or sexual violence by a current or former intimate partner in the previous 12 months, by age (%)"
+    },
+    {
+      "dcid": "sdg/g/SG_GEN_PARL",
+      "name": "Proportion of seats held by women in national parliaments (% of total number of seats)"
+    },
+    {
+      "dcid": "sdg/g/SH_STA_ANEM",
+      "name": "Proportion of women aged 15-49 years with anaemia (%)"
+    },
+    {
+      "dcid": "sdg/g/IC_GEN_MGTL",
+      "name": "Proportion of women in managerial positions (%)"
+    },
+    {
+      "dcid": "sdg/g/IC_GEN_MGTN",
+      "name": "Proportion of women in senior and middle management positions (%)"
+    },
+    {
+      "dcid": "sdg/g/SH_FPL_MTMM",
+      "name": "Proportion of women of reproductive age (aged 15-49 years) who have their need for family planning satisfied with modern methods (% of women aged 15-49 years)"
     },
     {
       "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_CrimeType-ForcibleRape_TargetedGender-Female",
@@ -11527,134 +11663,6 @@
     {
       "dcid": "dc/g/HateCrimeIncidents_OffenderEthnicity-NotHispanicOrLatino_OffenderType-OffenderEthnicityKnown_TargetedGender-Female",
       "name": "Hate Crime Incidents With Offender Ethnicity = Not Hispanic or Latino, Offender Type = Offender Ethnicity Known, Targeted Gender = Female"
-    },
-    {
-      "dcid": "dc/g/HateCrimeIncidents_OffenderEthnicity-NotHispanicOrLatino_OffenderType_TargetedGender-Female",
-      "name": "Hate Crime Incidents With Offender Ethnicity = Not Hispanic or Latino, Offender Type, Targeted Gender = Female"
-    },
-    {
-      "dcid": "dc/g/HateCrimeIncidents_OffenderEthnicity_OffenderType-OffenderEthnicityKnown_TargetedGender-Female",
-      "name": "Hate Crime Incidents With Offender Ethnicity, Offender Type = Offender Ethnicity Known, Targeted Gender = Female"
-    },
-    {
-      "dcid": "dc/g/HateCrimeIncidents_OffenderRace-AmericanIndianOrAlaskaNativeAlone_OffenderType-OffenderRaceKnown_TargetedGender-Female",
-      "name": "Hate Crime Incidents With Offender Race = American Indian or Alaska Native Alone, Offender Type = Offender Race Known, Targeted Gender = Female"
-    },
-    {
-      "dcid": "dc/g/HateCrimeIncidents_OffenderRace-AmericanIndianOrAlaskaNativeAlone_OffenderType_TargetedGender-Female",
-      "name": "Hate Crime Incidents With Offender Race = American Indian or Alaska Native Alone, Offender Type, Targeted Gender = Female"
-    },
-    {
-      "dcid": "dc/g/HateCrimeIncidents_OffenderRace-AsianAlone_OffenderType-OffenderRaceKnown_TargetedGender-Female",
-      "name": "Hate Crime Incidents With Offender Race = Asian Alone, Offender Type = Offender Race Known, Targeted Gender = Female"
-    },
-    {
-      "dcid": "dc/g/HateCrimeIncidents_OffenderRace-AsianAlone_OffenderType_TargetedGender-Female",
-      "name": "Hate Crime Incidents With Offender Race = Asian Alone, Offender Type, Targeted Gender = Female"
-    },
-    {
-      "dcid": "dc/g/HateCrimeIncidents_OffenderRace-BlackOrAfricanAmericanAlone_OffenderType-OffenderRaceKnown_TargetedGender-Female",
-      "name": "Hate Crime Incidents With Offender Race = Black or African American Alone, Offender Type = Offender Race Known, Targeted Gender = Female"
-    },
-    {
-      "dcid": "dc/g/HateCrimeIncidents_OffenderRace-BlackOrAfricanAmericanAlone_OffenderType_TargetedGender-Female",
-      "name": "Hate Crime Incidents With Offender Race = Black or African American Alone, Offender Type, Targeted Gender = Female"
-    },
-    {
-      "dcid": "dc/g/HateCrimeIncidents_OffenderRace-TwoOrMoreRaces_OffenderType-OffenderRaceKnown_TargetedGender-Female",
-      "name": "Hate Crime Incidents With Offender Race = Two or More Races, Offender Type = Offender Race Known, Targeted Gender = Female"
-    },
-    {
-      "dcid": "dc/g/HateCrimeIncidents_OffenderRace-TwoOrMoreRaces_OffenderType_TargetedGender-Female",
-      "name": "Hate Crime Incidents With Offender Race = Two or More Races, Offender Type, Targeted Gender = Female"
-    },
-    {
-      "dcid": "dc/g/HateCrimeIncidents_OffenderRace-WhiteAlone_OffenderType-OffenderRaceKnown_TargetedGender-Female",
-      "name": "Hate Crime Incidents With Offender Race = White Alone, Offender Type = Offender Race Known, Targeted Gender = Female"
-    },
-    {
-      "dcid": "dc/g/HateCrimeIncidents_OffenderRace-WhiteAlone_OffenderType_TargetedGender-Female",
-      "name": "Hate Crime Incidents With Offender Race = White Alone, Offender Type, Targeted Gender = Female"
-    },
-    {
-      "dcid": "dc/g/HateCrimeIncidents_OffenderRace_OffenderType-OffenderRaceKnown_TargetedGender-Female",
-      "name": "Hate Crime Incidents With Offender Race, Offender Type = Offender Race Known, Targeted Gender = Female"
-    },
-    {
-      "dcid": "dc/g/MedicalConditionIncident_Age-Years0To4_ClimaticSeason-SummerSeason_Gender-Female",
-      "name": "Medical Condition Incident With Age = 0 - 4 Years, Climatic Season = Summer Season, Gender = Female"
-    },
-    {
-      "dcid": "dc/g/MedicalConditionIncident_Age-Years0To4_ClimaticSeason_Gender-Female",
-      "name": "Medical Condition Incident With Age = 0 - 4 Years, Climatic Season, Gender = Female"
-    },
-    {
-      "dcid": "dc/g/MedicalConditionIncident_Age-Years0To4_Gender-Female_MedicalCondition",
-      "name": "Medical Condition Incident With Age = 0 - 4 Years, Gender = Female, Medical Condition"
-    },
-    {
-      "dcid": "dc/g/MedicalConditionIncident_Age-Years0To4_Gender-Female_MedicalCondition-HeatStress",
-      "name": "Medical Condition Incident With Age = 0 - 4 Years, Gender = Female, Medical Condition = Heat Stress"
-    },
-    {
-      "dcid": "dc/g/MedicalConditionIncident_Age-Years0To4_Gender-Female_MedicalStatus",
-      "name": "Medical Condition Incident With Age = 0 - 4 Years, Gender = Female, Medical Status"
-    },
-    {
-      "dcid": "dc/g/MedicalConditionIncident_Age-Years15To34_ClimaticSeason-SummerSeason_Gender-Female",
-      "name": "Medical Condition Incident With Age = 15 - 34 Years, Climatic Season = Summer Season, Gender = Female"
-    },
-    {
-      "dcid": "dc/g/MedicalConditionIncident_Age-Years15To34_ClimaticSeason_Gender-Female",
-      "name": "Medical Condition Incident With Age = 15 - 34 Years, Climatic Season, Gender = Female"
-    },
-    {
-      "dcid": "dc/g/MedicalConditionIncident_Age-Years15To34_Gender-Female_MedicalCondition",
-      "name": "Medical Condition Incident With Age = 15 - 34 Years, Gender = Female, Medical Condition"
-    },
-    {
-      "dcid": "dc/g/MedicalConditionIncident_Age-Years15To34_Gender-Female_MedicalCondition-HeatStress",
-      "name": "Medical Condition Incident With Age = 15 - 34 Years, Gender = Female, Medical Condition = Heat Stress"
-    },
-    {
-      "dcid": "dc/g/MedicalConditionIncident_Age-Years15To34_Gender-Female_MedicalStatus",
-      "name": "Medical Condition Incident With Age = 15 - 34 Years, Gender = Female, Medical Status"
-    },
-    {
-      "dcid": "dc/g/MedicalConditionIncident_Age-Years35To64_ClimaticSeason-SummerSeason_Gender-Female",
-      "name": "Medical Condition Incident With Age = 35 - 64 Years, Climatic Season = Summer Season, Gender = Female"
-    },
-    {
-      "dcid": "dc/g/MedicalConditionIncident_Age-Years35To64_ClimaticSeason_Gender-Female",
-      "name": "Medical Condition Incident With Age = 35 - 64 Years, Climatic Season, Gender = Female"
-    },
-    {
-      "dcid": "dc/g/MedicalConditionIncident_Age-Years35To64_Gender-Female_MedicalCondition",
-      "name": "Medical Condition Incident With Age = 35 - 64 Years, Gender = Female, Medical Condition"
-    },
-    {
-      "dcid": "dc/g/MedicalConditionIncident_Age-Years35To64_Gender-Female_MedicalCondition-HeatStress",
-      "name": "Medical Condition Incident With Age = 35 - 64 Years, Gender = Female, Medical Condition = Heat Stress"
-    },
-    {
-      "dcid": "dc/g/MedicalConditionIncident_Age-Years35To64_Gender-Female_MedicalStatus",
-      "name": "Medical Condition Incident With Age = 35 - 64 Years, Gender = Female, Medical Status"
-    },
-    {
-      "dcid": "dc/g/MedicalConditionIncident_Age-Years5To14_ClimaticSeason-SummerSeason_Gender-Female",
-      "name": "Medical Condition Incident With Age = 5 - 14 Years, Climatic Season = Summer Season, Gender = Female"
-    },
-    {
-      "dcid": "dc/g/MedicalConditionIncident_Age-Years5To14_ClimaticSeason_Gender-Female",
-      "name": "Medical Condition Incident With Age = 5 - 14 Years, Climatic Season, Gender = Female"
-    },
-    {
-      "dcid": "dc/g/MedicalConditionIncident_Age-Years5To14_Gender-Female_MedicalCondition",
-      "name": "Medical Condition Incident With Age = 5 - 14 Years, Gender = Female, Medical Condition"
-    },
-    {
-      "dcid": "dc/g/MedicalConditionIncident_Age-Years5To14_Gender-Female_MedicalCondition-HeatStress",
-      "name": "Medical Condition Incident With Age = 5 - 14 Years, Gender = Female, Medical Condition = Heat Stress"
     }
   ],
   "matches": [

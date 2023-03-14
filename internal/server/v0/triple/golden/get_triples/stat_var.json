@@ -7813,6 +7813,20 @@
       "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
+      "subjectId": "Percent_Daily_TobaccoUsing_In_Count_Person_Female",
+      "subjectName": "Prevalence of Daily Tobacco Use Among Females",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Population: Female",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
       "subjectId": "Percent_EveryMonth_AlcoholConsumption_In_Count_Person_Female",
       "subjectName": "Percentage Every Month, Alcohol Consumption Among Female Population",
       "subjectTypes": [
@@ -8527,6 +8541,20 @@
       "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
+      "subjectId": "Percent_TobaccoSmoking_Cigarettes_In_Count_Person_Female",
+      "subjectName": "Prevalence of Current Cigarette Smoking Among Females",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Population: Female",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
       "subjectId": "Percent_TobaccoSmoking_NeverUsed_ECigarettes_In_Count_Person_Female",
       "subjectName": "Percentage Tobacco Smoking, E Cigarettes Among Female Population",
       "subjectTypes": [
@@ -8543,6 +8571,20 @@
     {
       "subjectId": "Percent_TobaccoSmoking_TobaccoProducts_In_Count_Person_Female",
       "subjectName": "Percentage Tobacco Smoking Among Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Population: Female",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Percent_TobaccoUsing_In_Count_Person_Female",
+      "subjectName": "Prevalence of Current Tobacco Use Among Females",
       "subjectTypes": [
         "StatisticalVariable"
       ],

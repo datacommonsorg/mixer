@@ -101,7 +101,7 @@
         "Class",
         "LocationClassificationEnum"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
     },
     {
       "subjectId": "country/MAC",
@@ -118,7 +118,7 @@
         "Class",
         "LocationClassificationEnum"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
     },
     {
       "subjectId": "geoId/0100100",
@@ -133,7 +133,7 @@
         "Class",
         "LocationClassificationEnum"
       ],
-      "provenanceId": "dc/sm3m2w3"
+      "provenanceId": "dc/base/BaseGeos"
     },
     {
       "subjectId": "geoId/0100124",
@@ -148,7 +148,7 @@
         "Class",
         "LocationClassificationEnum"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
     },
     {
       "subjectId": "geoId/0100148",
@@ -163,7 +163,7 @@
         "Class",
         "LocationClassificationEnum"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
     },
     {
       "subjectId": "geoId/0100220",
@@ -178,7 +178,7 @@
         "Class",
         "LocationClassificationEnum"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
     },
     {
       "subjectId": "geoId/0100388",
@@ -193,7 +193,7 @@
         "Class",
         "LocationClassificationEnum"
       ],
-      "provenanceId": "dc/5j06ly1"
+      "provenanceId": "dc/base/WikidataGeos"
     },
     {
       "subjectId": "geoId/02020",
@@ -210,7 +210,7 @@
         "Class",
         "LocationClassificationEnum"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
     },
     {
       "subjectId": "geoId/02110",
@@ -227,7 +227,7 @@
         "Class",
         "LocationClassificationEnum"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
     },
     {
       "subjectId": "geoId/02220",
@@ -244,7 +244,7 @@
         "Class",
         "LocationClassificationEnum"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
     },
     {
       "subjectId": "geoId/02230",
@@ -261,7 +261,7 @@
         "Class",
         "LocationClassificationEnum"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
     },
     {
       "subjectId": "geoId/0667000",
@@ -277,7 +277,7 @@
         "Class",
         "LocationClassificationEnum"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
     },
     {
       "subjectId": "geoId/0900553470",
@@ -293,7 +293,7 @@
         "Class",
         "LocationClassificationEnum"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
     },
     {
       "subjectId": "geoId/0902690",
@@ -309,7 +309,7 @@
         "Class",
         "LocationClassificationEnum"
       ],
-      "provenanceId": "dc/sm3m2w3"
+      "provenanceId": "dc/base/BaseGeos"
     },
     {
       "subjectId": "geoId/0918780",
@@ -325,7 +325,7 @@
         "Class",
         "LocationClassificationEnum"
       ],
-      "provenanceId": "dc/sm3m2w3"
+      "provenanceId": "dc/base/BaseGeos"
     },
     {
       "subjectId": "geoId/0927810",
@@ -341,7 +341,7 @@
         "Class",
         "LocationClassificationEnum"
       ],
-      "provenanceId": "dc/sm3m2w3"
+      "provenanceId": "dc/base/BaseGeos"
     },
     {
       "subjectId": "geoId/0934460",
@@ -357,7 +357,7 @@
         "Class",
         "LocationClassificationEnum"
       ],
-      "provenanceId": "dc/sm3m2w3"
+      "provenanceId": "dc/base/BaseGeos"
     },
     {
       "subjectId": "geoId/0939940",
@@ -373,7 +373,7 @@
         "Class",
         "LocationClassificationEnum"
       ],
-      "provenanceId": "dc/sm3m2w3"
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
     },
     {
       "subjectId": "geoId/3601923921",
@@ -389,7 +389,7 @@
         "Class",
         "LocationClassificationEnum"
       ],
-      "provenanceId": "dc/sm3m2w3"
+      "provenanceId": "dc/base/BaseGeos"
     },
     {
       "subjectId": "geoId/3602951803",
@@ -405,7 +405,7 @@
         "Class",
         "LocationClassificationEnum"
       ],
-      "provenanceId": "dc/sm3m2w3"
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
     },
     {
       "subjectId": "geoId/3603313992",
@@ -421,7 +421,7 @@
         "Class",
         "LocationClassificationEnum"
       ],
-      "provenanceId": "dc/sm3m2w3"
+      "provenanceId": "dc/base/BaseGeos"
     },
     {
       "subjectId": "geoId/3603902913",
@@ -437,7 +437,25 @@
         "Class",
         "LocationClassificationEnum"
       ],
-      "provenanceId": "dc/sm3m2w3"
+      "provenanceId": "dc/base/BaseGeos"
+    },
+    {
+      "subjectId": "geoId/72127",
+      "subjectName": "San Juan",
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "AdministrativeArea2",
+        "City",
+        "County"
+      ],
+      "predicate": "typeOf",
+      "objectId": "City",
+      "objectName": "City",
+      "objectTypes": [
+        "Class",
+        "LocationClassificationEnum"
+      ],
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
     },
     {
       "subjectId": "nuts/AT13",
@@ -455,7 +473,7 @@
         "Class",
         "LocationClassificationEnum"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
     },
     {
       "subjectId": "nuts/CZ01",
@@ -474,7 +492,7 @@
         "Class",
         "LocationClassificationEnum"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
     },
     {
       "subjectId": "nuts/DE111",
@@ -491,7 +509,7 @@
         "Class",
         "LocationClassificationEnum"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
     },
     {
       "subjectId": "nuts/DE117",
@@ -508,7 +526,7 @@
         "Class",
         "LocationClassificationEnum"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
     },
     {
       "subjectId": "nuts/DE121",
@@ -525,7 +543,7 @@
         "Class",
         "LocationClassificationEnum"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
     },
     {
       "subjectId": "nuts/DE122",
@@ -542,7 +560,7 @@
         "Class",
         "LocationClassificationEnum"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
     },
     {
       "subjectId": "nuts/DE125",
@@ -559,25 +577,7 @@
         "Class",
         "LocationClassificationEnum"
       ],
-      "provenanceId": "dc/5n63hr1"
-    },
-    {
-      "subjectId": "nuts/DE3",
-      "subjectName": "Berlin",
-      "subjectTypes": [
-        "AdministrativeArea1",
-        "AdministrativeArea4",
-        "City",
-        "EurostatNUTS1"
-      ],
-      "predicate": "typeOf",
-      "objectId": "City",
-      "objectName": "City",
-      "objectTypes": [
-        "Class",
-        "LocationClassificationEnum"
-      ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
     },
     {
       "subjectId": "wikidataId/Q1000024",
@@ -593,7 +593,7 @@
         "Class",
         "LocationClassificationEnum"
       ],
-      "provenanceId": "dc/5j06ly1"
+      "provenanceId": "dc/base/WikidataGeos"
     },
     {
       "subjectId": "wikidataId/Q1000125",
@@ -610,7 +610,7 @@
         "Class",
         "LocationClassificationEnum"
       ],
-      "provenanceId": "dc/5j06ly1"
+      "provenanceId": "dc/base/WikidataGeos"
     },
     {
       "subjectId": "wikidataId/Q1000135",
@@ -626,7 +626,7 @@
         "Class",
         "LocationClassificationEnum"
       ],
-      "provenanceId": "dc/5j06ly1"
+      "provenanceId": "dc/base/WikidataGeos"
     },
     {
       "subjectId": "wikidataId/Q1000383",
@@ -642,7 +642,7 @@
         "Class",
         "LocationClassificationEnum"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
     },
     {
       "subjectId": "wikidataId/Q1000438",
@@ -658,7 +658,7 @@
         "Class",
         "LocationClassificationEnum"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
     },
     {
       "subjectId": "wikidataId/Q1002900",
@@ -674,7 +674,7 @@
         "Class",
         "LocationClassificationEnum"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
     },
     {
       "subjectId": "wikidataId/Q1027828",
@@ -690,7 +690,7 @@
         "Class",
         "LocationClassificationEnum"
       ],
-      "provenanceId": "dc/5j06ly1"
+      "provenanceId": "dc/base/WikidataGeos"
     },
     {
       "subjectId": "wikidataId/Q1044225",
@@ -706,7 +706,7 @@
         "Class",
         "LocationClassificationEnum"
       ],
-      "provenanceId": "dc/5j06ly1"
+      "provenanceId": "dc/base/WikidataGeos"
     },
     {
       "subjectId": "wikidataId/Q10600392",
@@ -722,7 +722,7 @@
         "Class",
         "LocationClassificationEnum"
       ],
-      "provenanceId": "dc/5j06ly1"
+      "provenanceId": "dc/base/WikidataGeos"
     },
     {
       "subjectId": "wikidataId/Q1100812",
@@ -738,7 +738,7 @@
         "Class",
         "LocationClassificationEnum"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
     }
   ],
   "County": [
@@ -806,7 +806,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/22t2hr3"
+      "provenanceId": "dc/base/EIA_860"
     },
     {
       "subjectId": "geoId/01001",
@@ -821,7 +821,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
     },
     {
       "subjectId": "geoId/01003",
@@ -836,7 +836,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
     },
     {
       "subjectId": "geoId/01005",
@@ -851,7 +851,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
     },
     {
       "subjectId": "geoId/01007",
@@ -866,7 +866,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
     },
     {
       "subjectId": "geoId/01009",
@@ -881,7 +881,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
     },
     {
       "subjectId": "geoId/02195",
@@ -895,7 +895,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/sm3m2w3"
+      "provenanceId": "dc/base/BaseGeos"
     },
     {
       "subjectId": "geoId/02275",
@@ -910,7 +910,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
     },
     {
       "subjectId": "geoId/02282",
@@ -925,7 +925,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
     },
     {
       "subjectId": "geoId/08014",
@@ -940,7 +940,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
     },
     {
       "subjectId": "geoId/11001",
@@ -955,7 +955,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
     },
     {
       "subjectId": "geoId/64002",
@@ -970,7 +970,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
     },
     {
       "subjectId": "geoId/64005",
@@ -985,7 +985,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
     },
     {
       "subjectId": "geoId/64040",
@@ -1000,7 +1000,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
     },
     {
       "subjectId": "geoId/64060",
@@ -1015,7 +1015,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
     },
     {
       "subjectId": "geoId/68190",
@@ -1030,7 +1030,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
     },
     {
       "subjectId": "geoId/70002",
@@ -1045,7 +1045,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/5n63hr1"
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
     },
     {
       "subjectId": "zipsWithAccessToHealthyFoods",

@@ -107,6 +107,2914 @@
     {
       "name": "Total number of pregnant women registered for Antenatal Care",
       "dcid": "Count_PregnantWomen_RegisteredForAntenatalCare"
+    },
+    {
+      "name": "Average income of large-scale food producers, PPP (constant 2011 international $): C, FEMALE",
+      "dcid": "sdg/SI_AGR_LSFP_C_FEMALE"
+    },
+    {
+      "name": "Average income of large-scale food producers, PPP (constant 2011 international $): E, FEMALE",
+      "dcid": "sdg/SI_AGR_LSFP_E_FEMALE"
+    },
+    {
+      "name": "Average income of large-scale food producers, PPP (constant 2011 international $): NA, FEMALE",
+      "dcid": "sdg/SI_AGR_LSFP_NA_FEMALE"
+    },
+    {
+      "name": "Average income of small-scale food producers, PPP (constant 2011 international $): C, FEMALE",
+      "dcid": "sdg/SI_AGR_SSFP_C_FEMALE"
+    },
+    {
+      "name": "Average income of small-scale food producers, PPP (constant 2011 international $): E, FEMALE",
+      "dcid": "sdg/SI_AGR_SSFP_E_FEMALE"
+    },
+    {
+      "name": "Average income of small-scale food producers, PPP (constant 2011 international $): NA, FEMALE",
+      "dcid": "sdg/SI_AGR_SSFP_NA_FEMALE"
+    },
+    {
+      "name": "Death rate due to road traffic injuries, by sex (per 100,000 population): , CA, FEMALE",
+      "dcid": "sdg/SH_STA_TRAF_CA_FEMALE"
+    },
+    {
+      "name": "Death rate due to road traffic injuries, by sex (per 100,000 population): , E, FEMALE",
+      "dcid": "sdg/SH_STA_TRAF_E_FEMALE"
+    },
+    {
+      "name": "Death rate due to road traffic injuries, by sex (per 100,000 population): , M, FEMALE",
+      "dcid": "sdg/SH_STA_TRAF_M_FEMALE"
+    },
+    {
+      "name": "Maternal mortality ratio: , , E, FEMALE",
+      "dcid": "sdg/SH_STA_MORT_E_FEMALE"
+    },
+    {
+      "name": "Mortality rate attributed to unintentional poisonings, by sex (deaths per 100,000 population): CA, FEMALE",
+      "dcid": "sdg/SH_STA_POISN_CA_FEMALE"
+    },
+    {
+      "name": "Mortality rate attributed to unintentional poisonings, by sex (deaths per 100,000 population): E, FEMALE",
+      "dcid": "sdg/SH_STA_POISN_E_FEMALE"
+    },
+    {
+      "name": "Mortality rate attributed to unintentional poisonings, by sex (deaths per 100,000 population): M, FEMALE",
+      "dcid": "sdg/SH_STA_POISN_M_FEMALE"
+    },
+    {
+      "name": "Number of deaths attributed to suicide, by sex (number): , CA, FEMALE",
+      "dcid": "sdg/SH_STA_SCIDEN_CA_FEMALE"
+    },
+    {
+      "name": "Number of deaths attributed to suicide, by sex (number): , E, FEMALE",
+      "dcid": "sdg/SH_STA_SCIDEN_E_FEMALE"
+    },
+    {
+      "name": "Number of deaths attributed to suicide, by sex (number): , M, FEMALE",
+      "dcid": "sdg/SH_STA_SCIDEN_M_FEMALE"
+    },
+    {
+      "name": "Number of victims of intentional homicide per 100,000 population, by sex (victims per 100,000 population): C, FEMALE",
+      "dcid": "sdg/VC_IHR_PSRC_C_FEMALE"
+    },
+    {
+      "name": "Number of victims of intentional homicide, by sex (number): C, FEMALE",
+      "dcid": "sdg/VC_IHR_PSRCN_C_FEMALE"
+    },
+    {
+      "name": "Participation rate in formal and non-formal education and training, by sex (%): C, FEMALE",
+      "dcid": "sdg/SE_ADT_EDUCTRN_C_FEMALE"
+    },
+    {
+      "name": "Participation rate in organized learning (one year before the official primary entry age), by sex (%): C, FEMALE",
+      "dcid": "sdg/SE_PRE_PARTN_C_FEMALE"
+    },
+    {
+      "name": "Participation rate in organized learning (one year before the official primary entry age), by sex (%): E, FEMALE",
+      "dcid": "sdg/SE_PRE_PARTN_E_FEMALE"
+    },
+    {
+      "name": "Police reporting rate for physical assault, by sex (%): C, FEMALE",
+      "dcid": "sdg/VC_PRR_PHYV_C_FEMALE"
+    },
+    {
+      "name": "Police reporting rate for robbery, by sex (%): C, FEMALE",
+      "dcid": "sdg/VC_PRR_ROBB_C_FEMALE"
+    },
+    {
+      "name": "Police reporting rate for sexual assault, by sex (%): C, FEMALE",
+      "dcid": "sdg/VC_PRR_SEXV_C_FEMALE"
+    },
+    {
+      "name": "Prevalence rate of bribery, by sex (%): C, FEMALE",
+      "dcid": "sdg/IU_COR_BRIB_C_FEMALE"
+    },
+    {
+      "name": "Productivity of large-scale food producers (agricultural output per labour day, PPP) (constant 2011 international $): C, FEMALE",
+      "dcid": "sdg/PD_AGR_LSFP_C_FEMALE"
+    },
+    {
+      "name": "Productivity of large-scale food producers (agricultural output per labour day, PPP) (constant 2011 international $): E, FEMALE",
+      "dcid": "sdg/PD_AGR_LSFP_E_FEMALE"
+    },
+    {
+      "name": "Productivity of large-scale food producers (agricultural output per labour day, PPP) (constant 2011 international $): NA, FEMALE",
+      "dcid": "sdg/PD_AGR_LSFP_NA_FEMALE"
+    },
+    {
+      "name": "Productivity of small-scale food producers (agricultural output per labour day, PPP) (constant 2011 international $): C, FEMALE",
+      "dcid": "sdg/PD_AGR_SSFP_C_FEMALE"
+    },
+    {
+      "name": "Productivity of small-scale food producers (agricultural output per labour day, PPP) (constant 2011 international $): E, FEMALE",
+      "dcid": "sdg/PD_AGR_SSFP_E_FEMALE"
+    },
+    {
+      "name": "Productivity of small-scale food producers (agricultural output per labour day, PPP) (constant 2011 international $): NA, FEMALE",
+      "dcid": "sdg/PD_AGR_SSFP_NA_FEMALE"
+    },
+    {
+      "name": "Proportion of individuals who own a mobile telephone, by sex (%): C, FEMALE",
+      "dcid": "sdg/IT_MOB_OWN_C_FEMALE"
+    },
+    {
+      "name": "Proportion of people with legally recognized documentation of their rights to land out of total adult population, by sex (%): E, FEMALE",
+      "dcid": "sdg/SP_LGL_LNDDOC_E_FEMALE"
+    },
+    {
+      "name": "Proportion of people with ownership or secure rights over agricultural land (out of total agricultural population), by sex (%): C, FEMALE",
+      "dcid": "sdg/SP_LGL_LNDAGSEC_C_FEMALE"
+    },
+    {
+      "name": "Proportion of people with ownership or secure rights over agricultural land (out of total agricultural population), by sex (%): E, FEMALE",
+      "dcid": "sdg/SP_LGL_LNDAGSEC_E_FEMALE"
+    },
+    {
+      "name": "Proportion of people with secure tenure rights to land out of total adult population, by sex (%): E, FEMALE",
+      "dcid": "sdg/SP_LGL_LNDSTR_E_FEMALE"
+    },
+    {
+      "name": "Proportion of population subjected to physical violence in the previous 12 months, by sex (%): C, FEMALE",
+      "dcid": "sdg/VC_VOV_PHYL_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population subjected to robbery in the previous 12 months, by sex (%): C, FEMALE",
+      "dcid": "sdg/VC_VOV_ROBB_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population subjected to sexual violence in the previous 12 months, by sex (%): C, FEMALE",
+      "dcid": "sdg/VC_VOV_SEXL_C_FEMALE"
+    },
+    {
+      "name": "Suicide mortality rate, by sex (deaths per 100,000 population): CA, FEMALE",
+      "dcid": "sdg/SH_STA_SCIDE_CA_FEMALE"
+    },
+    {
+      "name": "Suicide mortality rate, by sex (deaths per 100,000 population): E, FEMALE",
+      "dcid": "sdg/SH_STA_SCIDE_E_FEMALE"
+    },
+    {
+      "name": "Suicide mortality rate, by sex (deaths per 100,000 population): M, FEMALE",
+      "dcid": "sdg/SH_STA_SCIDE_M_FEMALE"
+    },
+    {
+      "name": "Unsentenced detainees as a proportion of overall prison population (%): C, FEMALE",
+      "dcid": "sdg/VC_PRS_UNSNT_C_FEMALE"
+    },
+    {
+      "name": "Age-standardized prevalence of current tobacco use among persons aged 15 years and older, by sex (%): 15gte, , E, FEMALE",
+      "dcid": "sdg/SH_PRV_SMOK_15gte_E_FEMALE"
+    },
+    {
+      "name": "Alcohol use disorders, 12-month prevalence (%): 15gte, NA, FEMALE",
+      "dcid": "sdg/SH_SUD_ALCOL_15gte_NA_FEMALE"
+    },
+    {
+      "name": "Detected victims of human trafficking for forced labour, servitude and slavery, by age and sex (number): 18gte, C, FEMALE",
+      "dcid": "sdg/VC_HTF_DETVFL_18gte_C_FEMALE"
+    },
+    {
+      "name": "Detected victims of human trafficking for forced labour, servitude and slavery, by age and sex (number): ALLAGE, C, FEMALE",
+      "dcid": "sdg/VC_HTF_DETVFL_ALLAGE_C_FEMALE"
+    },
+    {
+      "name": "Detected victims of human trafficking for forced labour, servitude and slavery, by age and sex (number): lt18Y, C, FEMALE",
+      "dcid": "sdg/VC_HTF_DETVFL_lt18Y_C_FEMALE"
+    },
+    {
+      "name": "Detected victims of human trafficking for other purposes, by age and sex (number): 18gte, C, FEMALE",
+      "dcid": "sdg/VC_HTF_DETVOP_18gte_C_FEMALE"
+    },
+    {
+      "name": "Detected victims of human trafficking for other purposes, by age and sex (number): ALLAGE, C, FEMALE",
+      "dcid": "sdg/VC_HTF_DETVOP_ALLAGE_C_FEMALE"
+    },
+    {
+      "name": "Detected victims of human trafficking for other purposes, by age and sex (number): lt18Y, C, FEMALE",
+      "dcid": "sdg/VC_HTF_DETVOP_lt18Y_C_FEMALE"
+    },
+    {
+      "name": "Detected victims of human trafficking for removal of organ, by age and sex (number): 18gte, C, FEMALE",
+      "dcid": "sdg/VC_HTF_DETVOG_18gte_C_FEMALE"
+    },
+    {
+      "name": "Detected victims of human trafficking for removal of organ, by age and sex (number): ALLAGE, C, FEMALE",
+      "dcid": "sdg/VC_HTF_DETVOG_ALLAGE_C_FEMALE"
+    },
+    {
+      "name": "Detected victims of human trafficking for removal of organ, by age and sex (number): lt18Y, C, FEMALE",
+      "dcid": "sdg/VC_HTF_DETVOG_lt18Y_C_FEMALE"
+    },
+    {
+      "name": "Detected victims of human trafficking for sexual exploitaton, by age and sex (number): 18gte, C, FEMALE",
+      "dcid": "sdg/VC_HTF_DETVSX_18gte_C_FEMALE"
+    },
+    {
+      "name": "Detected victims of human trafficking for sexual exploitaton, by age and sex (number): ALLAGE, C, FEMALE",
+      "dcid": "sdg/VC_HTF_DETVSX_ALLAGE_C_FEMALE"
+    },
+    {
+      "name": "Detected victims of human trafficking for sexual exploitaton, by age and sex (number): lt18Y, C, FEMALE",
+      "dcid": "sdg/VC_HTF_DETVSX_lt18Y_C_FEMALE"
+    },
+    {
+      "name": "Health worker distribution, by sex and type of occupation (%): C, FEMALE, NURSMID",
+      "dcid": "sdg/SH_MED_HWRKDIS_C_FEMALE_NURSMID"
+    },
+    {
+      "name": "Health worker distribution, by sex and type of occupation (%): C, FEMALE, PHYS",
+      "dcid": "sdg/SH_MED_HWRKDIS_C_FEMALE_PHYS"
+    },
+    {
+      "name": "Infant deaths (number): lt1Y, E, FEMALE",
+      "dcid": "sdg/SH_DYN_IMRTN_lt1Y_E_FEMALE"
+    },
+    {
+      "name": "Infant mortality rate (deaths per 1,000 live births): lt1Y, E, FEMALE",
+      "dcid": "sdg/SH_DYN_IMRT_lt1Y_E_FEMALE"
+    },
+    {
+      "name": "Mortality rate attributed to cardiovascular disease, cancer, diabetes or chronic respiratory disease (probability): 30-70, , CA, FEMALE",
+      "dcid": "sdg/SH_DTH_NCOM_30-70_CA_FEMALE"
+    },
+    {
+      "name": "Mortality rate attributed to cardiovascular disease, cancer, diabetes or chronic respiratory disease (probability): 30-70, , E, FEMALE",
+      "dcid": "sdg/SH_DTH_NCOM_30-70_E_FEMALE"
+    },
+    {
+      "name": "Mortality rate attributed to cardiovascular disease, cancer, diabetes or chronic respiratory disease (probability): 30-70, , M, FEMALE",
+      "dcid": "sdg/SH_DTH_NCOM_30-70_M_FEMALE"
+    },
+    {
+      "name": "Number of deaths attributed to non-communicable diseases, by type of disease and sex (number): CAN, CA, FEMALE",
+      "dcid": "sdg/SH_DTH_NCD_CAN_CA_FEMALE"
+    },
+    {
+      "name": "Number of deaths attributed to non-communicable diseases, by type of disease and sex (number): CAN, E, FEMALE",
+      "dcid": "sdg/SH_DTH_NCD_CAN_E_FEMALE"
+    },
+    {
+      "name": "Number of deaths attributed to non-communicable diseases, by type of disease and sex (number): CAN, M, FEMALE",
+      "dcid": "sdg/SH_DTH_NCD_CAN_M_FEMALE"
+    },
+    {
+      "name": "Number of deaths attributed to non-communicable diseases, by type of disease and sex (number): CAR, CA, FEMALE",
+      "dcid": "sdg/SH_DTH_NCD_CAR_CA_FEMALE"
+    },
+    {
+      "name": "Number of deaths attributed to non-communicable diseases, by type of disease and sex (number): CAR, E, FEMALE",
+      "dcid": "sdg/SH_DTH_NCD_CAR_E_FEMALE"
+    },
+    {
+      "name": "Number of deaths attributed to non-communicable diseases, by type of disease and sex (number): CAR, M, FEMALE",
+      "dcid": "sdg/SH_DTH_NCD_CAR_M_FEMALE"
+    },
+    {
+      "name": "Number of deaths attributed to non-communicable diseases, by type of disease and sex (number): DIA, CA, FEMALE",
+      "dcid": "sdg/SH_DTH_NCD_DIA_CA_FEMALE"
+    },
+    {
+      "name": "Number of deaths attributed to non-communicable diseases, by type of disease and sex (number): DIA, E, FEMALE",
+      "dcid": "sdg/SH_DTH_NCD_DIA_E_FEMALE"
+    },
+    {
+      "name": "Number of deaths attributed to non-communicable diseases, by type of disease and sex (number): DIA, M, FEMALE",
+      "dcid": "sdg/SH_DTH_NCD_DIA_M_FEMALE"
+    },
+    {
+      "name": "Number of deaths attributed to non-communicable diseases, by type of disease and sex (number): RES, CA, FEMALE",
+      "dcid": "sdg/SH_DTH_NCD_RES_CA_FEMALE"
+    },
+    {
+      "name": "Number of deaths attributed to non-communicable diseases, by type of disease and sex (number): RES, E, FEMALE",
+      "dcid": "sdg/SH_DTH_NCD_RES_E_FEMALE"
+    },
+    {
+      "name": "Number of deaths attributed to non-communicable diseases, by type of disease and sex (number): RES, M, FEMALE",
+      "dcid": "sdg/SH_DTH_NCD_RES_M_FEMALE"
+    },
+    {
+      "name": "Number of new HIV infections per 1,000 uninfected population, by sex and age (per 1,000 uninfected population): 15-24, E, FEMALE",
+      "dcid": "sdg/SH_HIV_INCD_15-24_E_FEMALE"
+    },
+    {
+      "name": "Number of new HIV infections per 1,000 uninfected population, by sex and age (per 1,000 uninfected population): 15-49, E, FEMALE",
+      "dcid": "sdg/SH_HIV_INCD_15-49_E_FEMALE"
+    },
+    {
+      "name": "Number of new HIV infections per 1,000 uninfected population, by sex and age (per 1,000 uninfected population): 50gte, E, FEMALE",
+      "dcid": "sdg/SH_HIV_INCD_50gte_E_FEMALE"
+    },
+    {
+      "name": "Number of new HIV infections per 1,000 uninfected population, by sex and age (per 1,000 uninfected population): ALLAGE, E, FEMALE",
+      "dcid": "sdg/SH_HIV_INCD_ALLAGE_E_FEMALE"
+    },
+    {
+      "name": "Proportion of children aged 36−59 months who are developmentally on track in at least three of the following domains: literacy-numeracy, physical development, social-emotional development, and learning (% of children aged 36-59 months): M36T47, CA, FEMALE",
+      "dcid": "sdg/SE_DEV_ONTRK_M36T47_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of children aged 36−59 months who are developmentally on track in at least three of the following domains: literacy-numeracy, physical development, social-emotional development, and learning (% of children aged 36-59 months): M36T59, C, FEMALE",
+      "dcid": "sdg/SE_DEV_ONTRK_M36T59_C_FEMALE"
+    },
+    {
+      "name": "Proportion of children aged 36−59 months who are developmentally on track in at least three of the following domains: literacy-numeracy, physical development, social-emotional development, and learning (% of children aged 36-59 months): M36T59, CA, FEMALE",
+      "dcid": "sdg/SE_DEV_ONTRK_M36T59_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of children engaged in economic activity and household chores, by sex and age (%): 10-17, CA, FEMALE",
+      "dcid": "sdg/SL_TLF_CHLDEC_10-17_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of children engaged in economic activity and household chores, by sex and age (%): 5-14, CA, FEMALE",
+      "dcid": "sdg/SL_TLF_CHLDEC_5-14_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of children engaged in economic activity and household chores, by sex and age (%): 5-17, C, FEMALE",
+      "dcid": "sdg/SL_TLF_CHLDEC_5-17_C_FEMALE"
+    },
+    {
+      "name": "Proportion of children engaged in economic activity and household chores, by sex and age (%): 5-17, CA, FEMALE",
+      "dcid": "sdg/SL_TLF_CHLDEC_5-17_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of children engaged in economic activity and household chores, by sex and age (%): 6-17, CA, FEMALE",
+      "dcid": "sdg/SL_TLF_CHLDEC_6-17_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of children engaged in economic activity and household chores, by sex and age (%): 7-17, CA, FEMALE",
+      "dcid": "sdg/SL_TLF_CHLDEC_7-17_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of children engaged in economic activity, by sex and age  (%): 10-17, CA, FEMALE",
+      "dcid": "sdg/SL_TLF_CHLDEA_10-17_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of children engaged in economic activity, by sex and age  (%): 5-14, CA, FEMALE",
+      "dcid": "sdg/SL_TLF_CHLDEA_5-14_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of children engaged in economic activity, by sex and age  (%): 5-17, C, FEMALE",
+      "dcid": "sdg/SL_TLF_CHLDEA_5-17_C_FEMALE"
+    },
+    {
+      "name": "Proportion of children engaged in economic activity, by sex and age  (%): 5-17, CA, FEMALE",
+      "dcid": "sdg/SL_TLF_CHLDEA_5-17_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of children engaged in economic activity, by sex and age  (%): 6-17, CA, FEMALE",
+      "dcid": "sdg/SL_TLF_CHLDEA_6-17_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of children engaged in economic activity, by sex and age  (%): 7-17, CA, FEMALE",
+      "dcid": "sdg/SL_TLF_CHLDEA_7-17_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of population aged 18-29 years who experienced sexual violence by age 18, by sex (% of population aged 18-29): 18-29, C, FEMALE",
+      "dcid": "sdg/VC_VAW_SXVLN_18-29_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population aged 18-29 years who experienced sexual violence by age 18, by sex (% of population aged 18-29): 18-29, CA, FEMALE",
+      "dcid": "sdg/VC_VAW_SXVLN_18-29_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of population aged 18-29 years who experienced sexual violence by age 18, by sex (% of population aged 18-29): 18-74, CA, FEMALE",
+      "dcid": "sdg/VC_VAW_SXVLN_18-74_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of population that feel safe walking alone around the area they live after dark (%): C, FEMALE",
+      "dcid": "sdg/VC_SNS_WALN_DRK_C_FEMALE"
+    },
+    {
+      "name": "Proportion of teachers with the minimum required qualifications, by education level and sex (%): LOWSEC, C, FEMALE",
+      "dcid": "sdg/SE_TRA_GRDL_LOWSEC_C_FEMALE"
+    },
+    {
+      "name": "Proportion of teachers with the minimum required qualifications, by education level and sex (%): LOWSEC, E, FEMALE",
+      "dcid": "sdg/SE_TRA_GRDL_LOWSEC_E_FEMALE"
+    },
+    {
+      "name": "Proportion of teachers with the minimum required qualifications, by education level and sex (%): PREPRI, C, FEMALE",
+      "dcid": "sdg/SE_TRA_GRDL_PREPRI_C_FEMALE"
+    },
+    {
+      "name": "Proportion of teachers with the minimum required qualifications, by education level and sex (%): PREPRI, E, FEMALE",
+      "dcid": "sdg/SE_TRA_GRDL_PREPRI_E_FEMALE"
+    },
+    {
+      "name": "Proportion of teachers with the minimum required qualifications, by education level and sex (%): PRIMAR, C, FEMALE",
+      "dcid": "sdg/SE_TRA_GRDL_PRIMAR_C_FEMALE"
+    },
+    {
+      "name": "Proportion of teachers with the minimum required qualifications, by education level and sex (%): PRIMAR, E, FEMALE",
+      "dcid": "sdg/SE_TRA_GRDL_PRIMAR_E_FEMALE"
+    },
+    {
+      "name": "Proportion of teachers with the minimum required qualifications, by education level and sex (%): SECOND, C, FEMALE",
+      "dcid": "sdg/SE_TRA_GRDL_SECOND_C_FEMALE"
+    },
+    {
+      "name": "Proportion of teachers with the minimum required qualifications, by education level and sex (%): SECOND, E, FEMALE",
+      "dcid": "sdg/SE_TRA_GRDL_SECOND_E_FEMALE"
+    },
+    {
+      "name": "Proportion of teachers with the minimum required qualifications, by education level and sex (%): UPPSEC, C, FEMALE",
+      "dcid": "sdg/SE_TRA_GRDL_UPPSEC_C_FEMALE"
+    },
+    {
+      "name": "Proportion of teachers with the minimum required qualifications, by education level and sex (%): UPPSEC, E, FEMALE",
+      "dcid": "sdg/SE_TRA_GRDL_UPPSEC_E_FEMALE"
+    },
+    {
+      "name": "Proportion of youth and adults with information and communications technology (ICT) skills, by sex and type of skill (%): , , C, FEMALE, ARSP",
+      "dcid": "sdg/SE_ADT_ACTS_C_FEMALE_ARSP"
+    },
+    {
+      "name": "Proportion of youth and adults with information and communications technology (ICT) skills, by sex and type of skill (%): , , C, FEMALE, CMFL",
+      "dcid": "sdg/SE_ADT_ACTS_C_FEMALE_CMFL"
+    },
+    {
+      "name": "Proportion of youth and adults with information and communications technology (ICT) skills, by sex and type of skill (%): , , C, FEMALE, COPA",
+      "dcid": "sdg/SE_ADT_ACTS_C_FEMALE_COPA"
+    },
+    {
+      "name": "Proportion of youth and adults with information and communications technology (ICT) skills, by sex and type of skill (%): , , C, FEMALE, EMAIL",
+      "dcid": "sdg/SE_ADT_ACTS_C_FEMALE_EMAIL"
+    },
+    {
+      "name": "Proportion of youth and adults with information and communications technology (ICT) skills, by sex and type of skill (%): , , C, FEMALE, EPRS",
+      "dcid": "sdg/SE_ADT_ACTS_C_FEMALE_EPRS"
+    },
+    {
+      "name": "Proportion of youth and adults with information and communications technology (ICT) skills, by sex and type of skill (%): , , C, FEMALE, INST",
+      "dcid": "sdg/SE_ADT_ACTS_C_FEMALE_INST"
+    },
+    {
+      "name": "Proportion of youth and adults with information and communications technology (ICT) skills, by sex and type of skill (%): , , C, FEMALE, PCPR",
+      "dcid": "sdg/SE_ADT_ACTS_C_FEMALE_PCPR"
+    },
+    {
+      "name": "Proportion of youth and adults with information and communications technology (ICT) skills, by sex and type of skill (%): , , C, FEMALE, SOFT",
+      "dcid": "sdg/SE_ADT_ACTS_C_FEMALE_SOFT"
+    },
+    {
+      "name": "Proportion of youth and adults with information and communications technology (ICT) skills, by sex and type of skill (%): , , C, FEMALE, TRAF",
+      "dcid": "sdg/SE_ADT_ACTS_C_FEMALE_TRAF"
+    },
+    {
+      "name": "Under-five deaths (number): lt5Y, E, FEMALE",
+      "dcid": "sdg/SH_DYN_MORTN_lt5Y_E_FEMALE"
+    },
+    {
+      "name": "Under-five mortality rate, by sex (deaths per 1,000 live births): lt5Y, E, FEMALE",
+      "dcid": "sdg/SH_DYN_MORT_lt5Y_E_FEMALE"
+    },
+    {
+      "name": "[ILO] Proportion of children/households receiving child/family cash benefit, by sex (%): E, A, FEMALE",
+      "dcid": "sdg/SI_COV_CHLD_E_A_FEMALE"
+    },
+    {
+      "name": "[ILO] Proportion of employed population covered in the event of work injury, by sex (%): E, A, FEMALE",
+      "dcid": "sdg/SI_COV_WKINJRY_E_A_FEMALE"
+    },
+    {
+      "name": "[ILO] Proportion of mothers with newborns receiving maternity cash benefit (%): E, A, FEMALE",
+      "dcid": "sdg/SI_COV_MATNL_E_A_FEMALE"
+    },
+    {
+      "name": "[ILO] Proportion of population above statutory pensionable age receiving a pension, by sex (%): E, A, FEMALE",
+      "dcid": "sdg/SI_COV_PENSN_E_A_FEMALE"
+    },
+    {
+      "name": "[ILO] Proportion of population covered by at least one social protection benefit, by sex (%): E, A, FEMALE",
+      "dcid": "sdg/SI_COV_BENFTS_E_A_FEMALE"
+    },
+    {
+      "name": "[ILO] Proportion of population with severe disabilities receiving disability cash benefit, by sex (%): E, A, FEMALE",
+      "dcid": "sdg/SI_COV_DISAB_E_A_FEMALE"
+    },
+    {
+      "name": "[ILO] Proportion of unemployed persons receiving unemployment cash benefit, by sex (%): E, A, FEMALE",
+      "dcid": "sdg/SI_COV_UEMP_E_A_FEMALE"
+    },
+    {
+      "name": "[ILO] Proportion of vulnerable population receiving social assistance cash benefit, by sex (%): E, A, FEMALE",
+      "dcid": "sdg/SI_COV_VULN_E_A_FEMALE"
+    },
+    {
+      "name": "Adjusted location parity index for completion rate, by sex, wealth quintile and education level: LOWSEC, C, Q1, FEMALE",
+      "dcid": "sdg/SE_ALP_CPLR_LOWSEC_C_Q1_FEMALE"
+    },
+    {
+      "name": "Adjusted location parity index for completion rate, by sex, wealth quintile and education level: LOWSEC, C, Q2, FEMALE",
+      "dcid": "sdg/SE_ALP_CPLR_LOWSEC_C_Q2_FEMALE"
+    },
+    {
+      "name": "Adjusted location parity index for completion rate, by sex, wealth quintile and education level: LOWSEC, C, Q3, FEMALE",
+      "dcid": "sdg/SE_ALP_CPLR_LOWSEC_C_Q3_FEMALE"
+    },
+    {
+      "name": "Adjusted location parity index for completion rate, by sex, wealth quintile and education level: LOWSEC, C, Q4, FEMALE",
+      "dcid": "sdg/SE_ALP_CPLR_LOWSEC_C_Q4_FEMALE"
+    },
+    {
+      "name": "Adjusted location parity index for completion rate, by sex, wealth quintile and education level: LOWSEC, C, Q5, FEMALE",
+      "dcid": "sdg/SE_ALP_CPLR_LOWSEC_C_Q5_FEMALE"
+    },
+    {
+      "name": "Adjusted location parity index for completion rate, by sex, wealth quintile and education level: PRIMAR, C, Q1, FEMALE",
+      "dcid": "sdg/SE_ALP_CPLR_PRIMAR_C_Q1_FEMALE"
+    },
+    {
+      "name": "Adjusted location parity index for completion rate, by sex, wealth quintile and education level: PRIMAR, C, Q2, FEMALE",
+      "dcid": "sdg/SE_ALP_CPLR_PRIMAR_C_Q2_FEMALE"
+    },
+    {
+      "name": "Adjusted location parity index for completion rate, by sex, wealth quintile and education level: PRIMAR, C, Q3, FEMALE",
+      "dcid": "sdg/SE_ALP_CPLR_PRIMAR_C_Q3_FEMALE"
+    },
+    {
+      "name": "Adjusted location parity index for completion rate, by sex, wealth quintile and education level: PRIMAR, C, Q4, FEMALE",
+      "dcid": "sdg/SE_ALP_CPLR_PRIMAR_C_Q4_FEMALE"
+    },
+    {
+      "name": "Adjusted location parity index for completion rate, by sex, wealth quintile and education level: PRIMAR, C, Q5, FEMALE",
+      "dcid": "sdg/SE_ALP_CPLR_PRIMAR_C_Q5_FEMALE"
+    },
+    {
+      "name": "Adjusted location parity index for completion rate, by sex, wealth quintile and education level: UPPSEC, C, Q1, FEMALE",
+      "dcid": "sdg/SE_ALP_CPLR_UPPSEC_C_Q1_FEMALE"
+    },
+    {
+      "name": "Adjusted location parity index for completion rate, by sex, wealth quintile and education level: UPPSEC, C, Q2, FEMALE",
+      "dcid": "sdg/SE_ALP_CPLR_UPPSEC_C_Q2_FEMALE"
+    },
+    {
+      "name": "Adjusted location parity index for completion rate, by sex, wealth quintile and education level: UPPSEC, C, Q3, FEMALE",
+      "dcid": "sdg/SE_ALP_CPLR_UPPSEC_C_Q3_FEMALE"
+    },
+    {
+      "name": "Adjusted location parity index for completion rate, by sex, wealth quintile and education level: UPPSEC, C, Q4, FEMALE",
+      "dcid": "sdg/SE_ALP_CPLR_UPPSEC_C_Q4_FEMALE"
+    },
+    {
+      "name": "Adjusted location parity index for completion rate, by sex, wealth quintile and education level: UPPSEC, C, Q5, FEMALE",
+      "dcid": "sdg/SE_ALP_CPLR_UPPSEC_C_Q5_FEMALE"
+    },
+    {
+      "name": "Alcohol consumption per capita (aged 15 years and older) within a calendar year (litres of pure alcohol): 15gte, G, A, FEMALE",
+      "dcid": "sdg/SH_ALC_CONSPT_15gte_G_A_FEMALE"
+    },
+    {
+      "name": "Average hourly earnings of employees by sex and occupation (local currency): , C, A, FEMALE, isco08-0",
+      "dcid": "sdg/SL_EMP_EARN_C_A_FEMALE_isco08-0"
+    },
+    {
+      "name": "Average hourly earnings of employees by sex and occupation (local currency): , C, A, FEMALE, isco08-1",
+      "dcid": "sdg/SL_EMP_EARN_C_A_FEMALE_isco08-1"
+    },
+    {
+      "name": "Average hourly earnings of employees by sex and occupation (local currency): , C, A, FEMALE, isco08-2",
+      "dcid": "sdg/SL_EMP_EARN_C_A_FEMALE_isco08-2"
+    },
+    {
+      "name": "Average hourly earnings of employees by sex and occupation (local currency): , C, A, FEMALE, isco08-3",
+      "dcid": "sdg/SL_EMP_EARN_C_A_FEMALE_isco08-3"
+    },
+    {
+      "name": "Average hourly earnings of employees by sex and occupation (local currency): , C, A, FEMALE, isco08-4",
+      "dcid": "sdg/SL_EMP_EARN_C_A_FEMALE_isco08-4"
+    },
+    {
+      "name": "Average hourly earnings of employees by sex and occupation (local currency): , C, A, FEMALE, isco08-5",
+      "dcid": "sdg/SL_EMP_EARN_C_A_FEMALE_isco08-5"
+    },
+    {
+      "name": "Average hourly earnings of employees by sex and occupation (local currency): , C, A, FEMALE, isco08-6",
+      "dcid": "sdg/SL_EMP_EARN_C_A_FEMALE_isco08-6"
+    },
+    {
+      "name": "Average hourly earnings of employees by sex and occupation (local currency): , C, A, FEMALE, isco08-7",
+      "dcid": "sdg/SL_EMP_EARN_C_A_FEMALE_isco08-7"
+    },
+    {
+      "name": "Average hourly earnings of employees by sex and occupation (local currency): , C, A, FEMALE, isco08-8",
+      "dcid": "sdg/SL_EMP_EARN_C_A_FEMALE_isco08-8"
+    },
+    {
+      "name": "Average hourly earnings of employees by sex and occupation (local currency): , C, A, FEMALE, isco08-9",
+      "dcid": "sdg/SL_EMP_EARN_C_A_FEMALE_isco08-9"
+    },
+    {
+      "name": "Average hourly earnings of employees by sex and occupation (local currency): , C, A, FEMALE, isco08-X",
+      "dcid": "sdg/SL_EMP_EARN_C_A_FEMALE_isco08-X"
+    },
+    {
+      "name": "Average hourly earnings of employees by sex and occupation (local currency): , C, A, FEMALE, isco88-0",
+      "dcid": "sdg/SL_EMP_EARN_C_A_FEMALE_isco88-0"
+    },
+    {
+      "name": "Average hourly earnings of employees by sex and occupation (local currency): , C, A, FEMALE, isco88-1",
+      "dcid": "sdg/SL_EMP_EARN_C_A_FEMALE_isco88-1"
+    },
+    {
+      "name": "Average hourly earnings of employees by sex and occupation (local currency): , C, A, FEMALE, isco88-2",
+      "dcid": "sdg/SL_EMP_EARN_C_A_FEMALE_isco88-2"
+    },
+    {
+      "name": "Average hourly earnings of employees by sex and occupation (local currency): , C, A, FEMALE, isco88-3",
+      "dcid": "sdg/SL_EMP_EARN_C_A_FEMALE_isco88-3"
+    },
+    {
+      "name": "Average hourly earnings of employees by sex and occupation (local currency): , C, A, FEMALE, isco88-4",
+      "dcid": "sdg/SL_EMP_EARN_C_A_FEMALE_isco88-4"
+    },
+    {
+      "name": "Average hourly earnings of employees by sex and occupation (local currency): , C, A, FEMALE, isco88-5",
+      "dcid": "sdg/SL_EMP_EARN_C_A_FEMALE_isco88-5"
+    },
+    {
+      "name": "Average hourly earnings of employees by sex and occupation (local currency): , C, A, FEMALE, isco88-6",
+      "dcid": "sdg/SL_EMP_EARN_C_A_FEMALE_isco88-6"
+    },
+    {
+      "name": "Average hourly earnings of employees by sex and occupation (local currency): , C, A, FEMALE, isco88-7",
+      "dcid": "sdg/SL_EMP_EARN_C_A_FEMALE_isco88-7"
+    },
+    {
+      "name": "Average hourly earnings of employees by sex and occupation (local currency): , C, A, FEMALE, isco88-8",
+      "dcid": "sdg/SL_EMP_EARN_C_A_FEMALE_isco88-8"
+    },
+    {
+      "name": "Average hourly earnings of employees by sex and occupation (local currency): , C, A, FEMALE, isco88-9",
+      "dcid": "sdg/SL_EMP_EARN_C_A_FEMALE_isco88-9"
+    },
+    {
+      "name": "Average hourly earnings of employees by sex and occupation (local currency): , C, A, FEMALE, isco88-X",
+      "dcid": "sdg/SL_EMP_EARN_C_A_FEMALE_isco88-X"
+    },
+    {
+      "name": "Average hourly earnings of employees by sex and occupation (local currency): , C, U, FEMALE, isco08-0",
+      "dcid": "sdg/SL_EMP_EARN_C_U_FEMALE_isco08-0"
+    },
+    {
+      "name": "Average hourly earnings of employees by sex and occupation (local currency): , C, U, FEMALE, isco08-1",
+      "dcid": "sdg/SL_EMP_EARN_C_U_FEMALE_isco08-1"
+    },
+    {
+      "name": "Average hourly earnings of employees by sex and occupation (local currency): , C, U, FEMALE, isco08-3",
+      "dcid": "sdg/SL_EMP_EARN_C_U_FEMALE_isco08-3"
+    },
+    {
+      "name": "Average hourly earnings of employees by sex and occupation (local currency): , C, U, FEMALE, isco08-4",
+      "dcid": "sdg/SL_EMP_EARN_C_U_FEMALE_isco08-4"
+    },
+    {
+      "name": "Average hourly earnings of employees by sex and occupation (local currency): , C, U, FEMALE, isco08-5",
+      "dcid": "sdg/SL_EMP_EARN_C_U_FEMALE_isco08-5"
+    },
+    {
+      "name": "Average hourly earnings of employees by sex and occupation (local currency): , C, U, FEMALE, isco08-6",
+      "dcid": "sdg/SL_EMP_EARN_C_U_FEMALE_isco08-6"
+    },
+    {
+      "name": "Average hourly earnings of employees by sex and occupation (local currency): , C, U, FEMALE, isco08-7",
+      "dcid": "sdg/SL_EMP_EARN_C_U_FEMALE_isco08-7"
+    },
+    {
+      "name": "Average hourly earnings of employees by sex and occupation (local currency): , C, U, FEMALE, isco08-8",
+      "dcid": "sdg/SL_EMP_EARN_C_U_FEMALE_isco08-8"
+    },
+    {
+      "name": "Average hourly earnings of employees by sex and occupation (local currency): , C, U, FEMALE, isco08-X",
+      "dcid": "sdg/SL_EMP_EARN_C_U_FEMALE_isco08-X"
+    },
+    {
+      "name": "Average hourly earnings of employees by sex and occupation (local currency): , C, U, FEMALE, isco88-0",
+      "dcid": "sdg/SL_EMP_EARN_C_U_FEMALE_isco88-0"
+    },
+    {
+      "name": "Average hourly earnings of employees by sex and occupation (local currency): , C, U, FEMALE, isco88-1",
+      "dcid": "sdg/SL_EMP_EARN_C_U_FEMALE_isco88-1"
+    },
+    {
+      "name": "Average hourly earnings of employees by sex and occupation (local currency): , C, U, FEMALE, isco88-4",
+      "dcid": "sdg/SL_EMP_EARN_C_U_FEMALE_isco88-4"
+    },
+    {
+      "name": "Average hourly earnings of employees by sex and occupation (local currency): , C, U, FEMALE, isco88-6",
+      "dcid": "sdg/SL_EMP_EARN_C_U_FEMALE_isco88-6"
+    },
+    {
+      "name": "Average hourly earnings of employees by sex and occupation (local currency): , C, U, FEMALE, isco88-7",
+      "dcid": "sdg/SL_EMP_EARN_C_U_FEMALE_isco88-7"
+    },
+    {
+      "name": "Average hourly earnings of employees by sex and occupation (local currency): , C, U, FEMALE, isco88-8",
+      "dcid": "sdg/SL_EMP_EARN_C_U_FEMALE_isco88-8"
+    },
+    {
+      "name": "Average hourly earnings of employees by sex and occupation (local currency): , C, U, FEMALE, isco88-X",
+      "dcid": "sdg/SL_EMP_EARN_C_U_FEMALE_isco88-X"
+    },
+    {
+      "name": "Employed population below international poverty line, by sex and age (%): 15-24, E, A, FEMALE",
+      "dcid": "sdg/SI_POV_EMP1_15-24_E_A_FEMALE"
+    },
+    {
+      "name": "Employed population below international poverty line, by sex and age (%): 15-24, M, A, FEMALE",
+      "dcid": "sdg/SI_POV_EMP1_15-24_M_A_FEMALE"
+    },
+    {
+      "name": "Employed population below international poverty line, by sex and age (%): 15gte, E, A, FEMALE",
+      "dcid": "sdg/SI_POV_EMP1_15gte_E_A_FEMALE"
+    },
+    {
+      "name": "Employed population below international poverty line, by sex and age (%): 15gte, M, A, FEMALE",
+      "dcid": "sdg/SI_POV_EMP1_15gte_M_A_FEMALE"
+    },
+    {
+      "name": "Employed population below international poverty line, by sex and age (%): 25gte, E, A, FEMALE",
+      "dcid": "sdg/SI_POV_EMP1_25gte_E_A_FEMALE"
+    },
+    {
+      "name": "Employed population below international poverty line, by sex and age (%): 25gte, M, A, FEMALE",
+      "dcid": "sdg/SI_POV_EMP1_25gte_M_A_FEMALE"
+    },
+    {
+      "name": "Fatal occupational injuries among employees, by sex and migrant status (per 100,000 employees): EUMIG, C, A, FEMALE",
+      "dcid": "sdg/SL_EMP_FTLINJUR_EUMIG_C_A_FEMALE"
+    },
+    {
+      "name": "Fatal occupational injuries among employees, by sex and migrant status (per 100,000 employees): MIGPER, C, A, FEMALE",
+      "dcid": "sdg/SL_EMP_FTLINJUR_MIGPER_C_A_FEMALE"
+    },
+    {
+      "name": "Fatal occupational injuries among employees, by sex and migrant status (per 100,000 employees): NONEUMIG, C, A, FEMALE",
+      "dcid": "sdg/SL_EMP_FTLINJUR_NONEUMIG_C_A_FEMALE"
+    },
+    {
+      "name": "Fatal occupational injuries among employees, by sex and migrant status (per 100,000 employees): NONMIG, C, A, FEMALE",
+      "dcid": "sdg/SL_EMP_FTLINJUR_NONMIG_C_A_FEMALE"
+    },
+    {
+      "name": "Migrant recruitment costs (number of months of earnings): MIGPER, C, FEMALE",
+      "dcid": "sdg/SL_EMP_RCOST_MO_MIGPER_C_FEMALE"
+    },
+    {
+      "name": "Non-fatal occupational injuries among employees, by sex and migrant status (per 100,000 employees): EUMIG, C, A, FEMALE",
+      "dcid": "sdg/SL_EMP_INJUR_EUMIG_C_A_FEMALE"
+    },
+    {
+      "name": "Non-fatal occupational injuries among employees, by sex and migrant status (per 100,000 employees): MIGPER, C, A, FEMALE",
+      "dcid": "sdg/SL_EMP_INJUR_MIGPER_C_A_FEMALE"
+    },
+    {
+      "name": "Non-fatal occupational injuries among employees, by sex and migrant status (per 100,000 employees): NONEUMIG, C, A, FEMALE",
+      "dcid": "sdg/SL_EMP_INJUR_NONEUMIG_C_A_FEMALE"
+    },
+    {
+      "name": "Non-fatal occupational injuries among employees, by sex and migrant status (per 100,000 employees): NONMIG, C, A, FEMALE",
+      "dcid": "sdg/SL_EMP_INJUR_NONMIG_C_A_FEMALE"
+    },
+    {
+      "name": "Number of moderately or severely food insecure people (thousands of people): 15gte, E, O, FEMALE",
+      "dcid": "sdg/AG_PRD_FIESMSN_15gte_E_O_FEMALE"
+    },
+    {
+      "name": "Number of moderately or severely food insecure people (thousands of people): 15gte, E, Q, FEMALE",
+      "dcid": "sdg/AG_PRD_FIESMSN_15gte_E_Q_FEMALE"
+    },
+    {
+      "name": "Number of moderately or severely food insecure people (thousands of people): 15gte, G, A, FEMALE",
+      "dcid": "sdg/AG_PRD_FIESMSN_15gte_G_A_FEMALE"
+    },
+    {
+      "name": "Number of severely food insecure people (thousands of people): 15gte, , E, O, FEMALE",
+      "dcid": "sdg/AG_PRD_FIESSN_15gte_E_O_FEMALE"
+    },
+    {
+      "name": "Number of severely food insecure people (thousands of people): 15gte, , E, Q, FEMALE",
+      "dcid": "sdg/AG_PRD_FIESSN_15gte_E_Q_FEMALE"
+    },
+    {
+      "name": "Number of severely food insecure people (thousands of people): 15gte, , G, A, FEMALE",
+      "dcid": "sdg/AG_PRD_FIESSN_15gte_G_A_FEMALE"
+    },
+    {
+      "name": "Number of speakers in parliament, by age and sex , Lower Chamber or Unicameral: 46gte, C, FEMALE",
+      "dcid": "sdg/SG_DMK_PARLSP_LC_46gte_C_FEMALE"
+    },
+    {
+      "name": "Number of speakers in parliament, by age and sex , Lower Chamber or Unicameral: lte45Y, C, FEMALE",
+      "dcid": "sdg/SG_DMK_PARLSP_LC_lte45Y_C_FEMALE"
+    },
+    {
+      "name": "Number of speakers in parliament, by age and sex, Upper Chamber: 46gte, C, FEMALE",
+      "dcid": "sdg/SG_DMK_PARLSP_UC_46gte_C_FEMALE"
+    },
+    {
+      "name": "Number of speakers in parliament, by age and sex, Upper Chamber: lte45Y, C, FEMALE",
+      "dcid": "sdg/SG_DMK_PARLSP_UC_lte45Y_C_FEMALE"
+    },
+    {
+      "name": "Prevalence of moderate or severe food insecurity (%): 15gte, , E, O, FEMALE",
+      "dcid": "sdg/AG_PRD_FIESMS_15gte_E_O_FEMALE"
+    },
+    {
+      "name": "Prevalence of moderate or severe food insecurity (%): 15gte, , E, Q, FEMALE",
+      "dcid": "sdg/AG_PRD_FIESMS_15gte_E_Q_FEMALE"
+    },
+    {
+      "name": "Prevalence of moderate or severe food insecurity (%): 15gte, , G, A, FEMALE",
+      "dcid": "sdg/AG_PRD_FIESMS_15gte_G_A_FEMALE"
+    },
+    {
+      "name": "Prevalence of severe food insecurity (%): 15gte, , E, O, FEMALE",
+      "dcid": "sdg/AG_PRD_FIESS_15gte_E_O_FEMALE"
+    },
+    {
+      "name": "Prevalence of severe food insecurity (%): 15gte, , E, Q, FEMALE",
+      "dcid": "sdg/AG_PRD_FIESS_15gte_E_Q_FEMALE"
+    },
+    {
+      "name": "Prevalence of severe food insecurity (%): 15gte, , G, A, FEMALE",
+      "dcid": "sdg/AG_PRD_FIESS_15gte_G_A_FEMALE"
+    },
+    {
+      "name": "Proportion of informal employment, by sector and sex (ILO harmonized estimates) (%): NONAGR, C, A, FEMALE",
+      "dcid": "sdg/SL_ISV_IFEM_NONAGR_C_A_FEMALE"
+    },
+    {
+      "name": "Proportion of informal employment, by sector and sex (ILO harmonized estimates) (%): TOTAL, C, A, FEMALE",
+      "dcid": "sdg/SL_ISV_IFEM_TOTAL_C_A_FEMALE"
+    },
+    {
+      "name": "Proportion of population achieving at least a fixed level of proficiency in functional skills, by sex, age and type of skill (%): 16-65, C, FEMALE, LITE",
+      "dcid": "sdg/SE_ADT_FUNS_16-65_C_FEMALE_LITE"
+    },
+    {
+      "name": "Proportion of population achieving at least a fixed level of proficiency in functional skills, by sex, age and type of skill (%): 16-65, C, FEMALE, NUME",
+      "dcid": "sdg/SE_ADT_FUNS_16-65_C_FEMALE_NUME"
+    },
+    {
+      "name": "Proportion of population below international poverty line (%): ALLAGE, ALLAREA, G, FEMALE",
+      "dcid": "sdg/SI_POV_DAY1_ALLAGE_ALLAREA_G_FEMALE"
+    },
+    {
+      "name": "Proportion of population living in multidimensional poverty (%): ALLAGE, ALLAREA, C, FEMALE",
+      "dcid": "sdg/SD_MDP_MUHC_ALLAGE_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of the population who have experienced a dispute in the past two years who accessed a formal or informal dispute resolution mechanism (%): _T, C, FEMALE",
+      "dcid": "sdg/SP_DISP_RESOL__T_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid care work, by sex, age and location (%): 10-14, ALLAREA, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDCW_10-14_ALLAREA_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid care work, by sex, age and location (%): 10gte, ALLAREA, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDCW_10gte_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid care work, by sex, age and location (%): 10gte, ALLAREA, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDCW_10gte_ALLAREA_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid care work, by sex, age and location (%): 10gte, RURAL, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDCW_10gte_RURAL_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid care work, by sex, age and location (%): 10gte, RURAL, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDCW_10gte_RURAL_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid care work, by sex, age and location (%): 10gte, URBAN, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDCW_10gte_URBAN_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid care work, by sex, age and location (%): 10gte, URBAN, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDCW_10gte_URBAN_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid care work, by sex, age and location (%): 12-14, ALLAREA, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDCW_12-14_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid care work, by sex, age and location (%): 12-14, RURAL, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDCW_12-14_RURAL_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid care work, by sex, age and location (%): 12-14, URBAN, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDCW_12-14_URBAN_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid care work, by sex, age and location (%): 12-24, ALLAREA, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDCW_12-24_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid care work, by sex, age and location (%): 12gte, ALLAREA, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDCW_12gte_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid care work, by sex, age and location (%): 12gte, ALLAREA, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDCW_12gte_ALLAREA_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid care work, by sex, age and location (%): 12gte, RURAL, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDCW_12gte_RURAL_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid care work, by sex, age and location (%): 12gte, RURAL, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDCW_12gte_RURAL_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid care work, by sex, age and location (%): 12gte, URBAN, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDCW_12gte_URBAN_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid care work, by sex, age and location (%): 12gte, URBAN, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDCW_12gte_URBAN_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid care work, by sex, age and location (%): 14gte, ALLAREA, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDCW_14gte_ALLAREA_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid care work, by sex, age and location (%): 15-24, ALLAREA, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDCW_15-24_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid care work, by sex, age and location (%): 15-24, ALLAREA, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDCW_15-24_ALLAREA_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid care work, by sex, age and location (%): 15-24, RURAL, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDCW_15-24_RURAL_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid care work, by sex, age and location (%): 15-24, URBAN, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDCW_15-24_URBAN_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid care work, by sex, age and location (%): 15-64, ALLAREA, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDCW_15-64_ALLAREA_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid care work, by sex, age and location (%): 15gte, ALLAREA, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDCW_15gte_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid care work, by sex, age and location (%): 15gte, ALLAREA, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDCW_15gte_ALLAREA_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid care work, by sex, age and location (%): 15gte, RURAL, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDCW_15gte_RURAL_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid care work, by sex, age and location (%): 15gte, RURAL, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDCW_15gte_RURAL_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid care work, by sex, age and location (%): 15gte, URBAN, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDCW_15gte_URBAN_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid care work, by sex, age and location (%): 15gte, URBAN, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDCW_15gte_URBAN_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid care work, by sex, age and location (%): 16gte, ALLAREA, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDCW_16gte_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid care work, by sex, age and location (%): 20-24, ALLAREA, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDCW_20-24_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid care work, by sex, age and location (%): 20-64, ALLAREA, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDCW_20-64_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid care work, by sex, age and location (%): 20-74, ALLAREA, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDCW_20-74_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid care work, by sex, age and location (%): 20-74, ALLAREA, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDCW_20-74_ALLAREA_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid care work, by sex, age and location (%): 20gte, ALLAREA, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDCW_20gte_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid care work, by sex, age and location (%): 25-34, ALLAREA, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDCW_25-34_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid care work, by sex, age and location (%): 25-34, ALLAREA, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDCW_25-34_ALLAREA_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid care work, by sex, age and location (%): 25-44, ALLAREA, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDCW_25-44_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid care work, by sex, age and location (%): 25-44, ALLAREA, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDCW_25-44_ALLAREA_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid care work, by sex, age and location (%): 25-44, RURAL, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDCW_25-44_RURAL_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid care work, by sex, age and location (%): 25-44, URBAN, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDCW_25-44_URBAN_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid care work, by sex, age and location (%): 35-44, ALLAREA, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDCW_35-44_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid care work, by sex, age and location (%): 35-44, ALLAREA, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDCW_35-44_ALLAREA_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid care work, by sex, age and location (%): 45-54, ALLAREA, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDCW_45-54_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid care work, by sex, age and location (%): 45-54, ALLAREA, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDCW_45-54_ALLAREA_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid care work, by sex, age and location (%): 45-54, RURAL, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDCW_45-54_RURAL_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid care work, by sex, age and location (%): 45-54, URBAN, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDCW_45-54_URBAN_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid care work, by sex, age and location (%): 45-64, ALLAREA, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDCW_45-64_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid care work, by sex, age and location (%): 45-64, ALLAREA, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDCW_45-64_ALLAREA_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid care work, by sex, age and location (%): 45-64, RURAL, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDCW_45-64_RURAL_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid care work, by sex, age and location (%): 45-64, URBAN, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDCW_45-64_URBAN_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid care work, by sex, age and location (%): 55-64, ALLAREA, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDCW_55-64_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid care work, by sex, age and location (%): 55-64, ALLAREA, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDCW_55-64_ALLAREA_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid care work, by sex, age and location (%): 55-64, RURAL, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDCW_55-64_RURAL_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid care work, by sex, age and location (%): 55-64, URBAN, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDCW_55-64_URBAN_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid care work, by sex, age and location (%): 5gte, ALLAREA, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDCW_5gte_ALLAREA_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid care work, by sex, age and location (%): 65-74, ALLAREA, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDCW_65-74_ALLAREA_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid care work, by sex, age and location (%): 65gte, ALLAREA, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDCW_65gte_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid care work, by sex, age and location (%): 65gte, ALLAREA, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDCW_65gte_ALLAREA_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid care work, by sex, age and location (%): 65gte, RURAL, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDCW_65gte_RURAL_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid care work, by sex, age and location (%): 65gte, RURAL, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDCW_65gte_RURAL_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid care work, by sex, age and location (%): 65gte, URBAN, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDCW_65gte_URBAN_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid care work, by sex, age and location (%): 65gte, URBAN, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDCW_65gte_URBAN_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid care work, by sex, age and location (%): 6gte, ALLAREA, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDCW_6gte_ALLAREA_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid care work, by sex, age and location (%): 75-84, ALLAREA, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDCW_75-84_ALLAREA_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid care work, by sex, age and location (%): 85gte, ALLAREA, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDCW_85gte_ALLAREA_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid care work, by sex, age and location (%): ALLAGE, ALLAREA, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDCW_ALLAGE_ALLAREA_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location (%): 10-14, ALLAREA, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPD_10-14_ALLAREA_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location (%): 10gte, ALLAREA, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPD_10gte_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location (%): 10gte, ALLAREA, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPD_10gte_ALLAREA_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location (%): 10gte, RURAL, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPD_10gte_RURAL_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location (%): 10gte, RURAL, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPD_10gte_RURAL_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location (%): 10gte, URBAN, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPD_10gte_URBAN_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location (%): 10gte, URBAN, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPD_10gte_URBAN_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location (%): 12-14, ALLAREA, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPD_12-14_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location (%): 12-14, RURAL, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPD_12-14_RURAL_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location (%): 12-14, URBAN, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPD_12-14_URBAN_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location (%): 12-24, ALLAREA, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPD_12-24_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location (%): 12gte, ALLAREA, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPD_12gte_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location (%): 12gte, ALLAREA, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPD_12gte_ALLAREA_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location (%): 12gte, RURAL, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPD_12gte_RURAL_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location (%): 12gte, RURAL, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPD_12gte_RURAL_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location (%): 12gte, URBAN, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPD_12gte_URBAN_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location (%): 12gte, URBAN, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPD_12gte_URBAN_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location (%): 14gte, ALLAREA, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPD_14gte_ALLAREA_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location (%): 15-24, ALLAREA, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPD_15-24_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location (%): 15-24, ALLAREA, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPD_15-24_ALLAREA_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location (%): 15-24, RURAL, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPD_15-24_RURAL_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location (%): 15-24, URBAN, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPD_15-24_URBAN_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location (%): 15-49, RURAL, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPD_15-49_RURAL_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location (%): 15-49, URBAN, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPD_15-49_URBAN_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location (%): 15-64, ALLAREA, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPD_15-64_ALLAREA_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location (%): 15gte, ALLAREA, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPD_15gte_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location (%): 15gte, ALLAREA, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPD_15gte_ALLAREA_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location (%): 15gte, RURAL, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPD_15gte_RURAL_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location (%): 15gte, RURAL, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPD_15gte_RURAL_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location (%): 15gte, URBAN, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPD_15gte_URBAN_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location (%): 15gte, URBAN, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPD_15gte_URBAN_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location (%): 16gte, ALLAREA, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPD_16gte_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location (%): 16gte, ALLAREA, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPD_16gte_ALLAREA_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location (%): 18gte, ALLAREA, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPD_18gte_ALLAREA_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location (%): 20-24, ALLAREA, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPD_20-24_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location (%): 20-64, ALLAREA, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPD_20-64_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location (%): 20-74, ALLAREA, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPD_20-74_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location (%): 20-74, ALLAREA, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPD_20-74_ALLAREA_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location (%): 20gte, ALLAREA, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPD_20gte_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location (%): 25-34, ALLAREA, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPD_25-34_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location (%): 25-34, ALLAREA, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPD_25-34_ALLAREA_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location (%): 25-44, ALLAREA, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPD_25-44_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location (%): 25-44, ALLAREA, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPD_25-44_ALLAREA_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location (%): 25-44, RURAL, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPD_25-44_RURAL_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location (%): 25-44, URBAN, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPD_25-44_URBAN_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location (%): 35-44, ALLAREA, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPD_35-44_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location (%): 35-44, ALLAREA, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPD_35-44_ALLAREA_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location (%): 45-54, ALLAREA, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPD_45-54_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location (%): 45-54, ALLAREA, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPD_45-54_ALLAREA_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location (%): 45-54, RURAL, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPD_45-54_RURAL_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location (%): 45-54, URBAN, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPD_45-54_URBAN_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location (%): 45-64, ALLAREA, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPD_45-64_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location (%): 45-64, ALLAREA, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPD_45-64_ALLAREA_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location (%): 45-64, RURAL, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPD_45-64_RURAL_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location (%): 45-64, URBAN, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPD_45-64_URBAN_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location (%): 55-64, ALLAREA, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPD_55-64_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location (%): 55-64, ALLAREA, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPD_55-64_ALLAREA_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location (%): 55-64, RURAL, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPD_55-64_RURAL_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location (%): 55-64, URBAN, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPD_55-64_URBAN_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location (%): 5gte, ALLAREA, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPD_5gte_ALLAREA_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location (%): 6-65, RURAL, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPD_6-65_RURAL_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location (%): 6-65, URBAN, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPD_6-65_URBAN_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location (%): 65-74, ALLAREA, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPD_65-74_ALLAREA_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location (%): 65gte, ALLAREA, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPD_65gte_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location (%): 65gte, ALLAREA, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPD_65gte_ALLAREA_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location (%): 65gte, RURAL, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPD_65gte_RURAL_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location (%): 65gte, RURAL, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPD_65gte_RURAL_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location (%): 65gte, URBAN, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPD_65gte_URBAN_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location (%): 65gte, URBAN, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPD_65gte_URBAN_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location (%): 6gte, ALLAREA, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPD_6gte_ALLAREA_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location (%): 75-84, ALLAREA, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPD_75-84_ALLAREA_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location (%): 85gte, ALLAREA, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPD_85gte_ALLAREA_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location (%): ALLAGE, ALLAREA, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPD_ALLAGE_ALLAREA_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores, by sex, age and location (%): 10-14, ALLAREA, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDDC_10-14_ALLAREA_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores, by sex, age and location (%): 10gte, ALLAREA, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDDC_10gte_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores, by sex, age and location (%): 10gte, ALLAREA, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDDC_10gte_ALLAREA_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores, by sex, age and location (%): 10gte, RURAL, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDDC_10gte_RURAL_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores, by sex, age and location (%): 10gte, RURAL, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDDC_10gte_RURAL_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores, by sex, age and location (%): 10gte, URBAN, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDDC_10gte_URBAN_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores, by sex, age and location (%): 10gte, URBAN, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDDC_10gte_URBAN_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores, by sex, age and location (%): 12-14, ALLAREA, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDDC_12-14_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores, by sex, age and location (%): 12-14, RURAL, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDDC_12-14_RURAL_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores, by sex, age and location (%): 12-14, URBAN, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDDC_12-14_URBAN_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores, by sex, age and location (%): 12-24, ALLAREA, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDDC_12-24_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores, by sex, age and location (%): 12gte, ALLAREA, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDDC_12gte_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores, by sex, age and location (%): 12gte, ALLAREA, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDDC_12gte_ALLAREA_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores, by sex, age and location (%): 12gte, RURAL, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDDC_12gte_RURAL_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores, by sex, age and location (%): 12gte, RURAL, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDDC_12gte_RURAL_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores, by sex, age and location (%): 12gte, URBAN, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDDC_12gte_URBAN_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores, by sex, age and location (%): 12gte, URBAN, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDDC_12gte_URBAN_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores, by sex, age and location (%): 14gte, ALLAREA, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDDC_14gte_ALLAREA_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores, by sex, age and location (%): 15-24, ALLAREA, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDDC_15-24_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores, by sex, age and location (%): 15-24, ALLAREA, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDDC_15-24_ALLAREA_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores, by sex, age and location (%): 15-24, RURAL, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDDC_15-24_RURAL_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores, by sex, age and location (%): 15-24, URBAN, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDDC_15-24_URBAN_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores, by sex, age and location (%): 15-64, ALLAREA, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDDC_15-64_ALLAREA_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores, by sex, age and location (%): 15gte, ALLAREA, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDDC_15gte_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores, by sex, age and location (%): 15gte, ALLAREA, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDDC_15gte_ALLAREA_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores, by sex, age and location (%): 15gte, RURAL, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDDC_15gte_RURAL_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores, by sex, age and location (%): 15gte, RURAL, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDDC_15gte_RURAL_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores, by sex, age and location (%): 15gte, URBAN, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDDC_15gte_URBAN_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores, by sex, age and location (%): 15gte, URBAN, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDDC_15gte_URBAN_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores, by sex, age and location (%): 16gte, ALLAREA, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDDC_16gte_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores, by sex, age and location (%): 20-24, ALLAREA, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDDC_20-24_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores, by sex, age and location (%): 20-64, ALLAREA, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDDC_20-64_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores, by sex, age and location (%): 20-74, ALLAREA, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDDC_20-74_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores, by sex, age and location (%): 20-74, ALLAREA, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDDC_20-74_ALLAREA_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores, by sex, age and location (%): 20gte, ALLAREA, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDDC_20gte_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores, by sex, age and location (%): 25-34, ALLAREA, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDDC_25-34_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores, by sex, age and location (%): 25-34, ALLAREA, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDDC_25-34_ALLAREA_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores, by sex, age and location (%): 25-44, ALLAREA, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDDC_25-44_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores, by sex, age and location (%): 25-44, ALLAREA, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDDC_25-44_ALLAREA_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores, by sex, age and location (%): 25-44, RURAL, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDDC_25-44_RURAL_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores, by sex, age and location (%): 25-44, URBAN, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDDC_25-44_URBAN_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores, by sex, age and location (%): 35-44, ALLAREA, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDDC_35-44_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores, by sex, age and location (%): 35-44, ALLAREA, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDDC_35-44_ALLAREA_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores, by sex, age and location (%): 45-54, ALLAREA, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDDC_45-54_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores, by sex, age and location (%): 45-54, ALLAREA, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDDC_45-54_ALLAREA_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores, by sex, age and location (%): 45-54, RURAL, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDDC_45-54_RURAL_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores, by sex, age and location (%): 45-54, URBAN, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDDC_45-54_URBAN_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores, by sex, age and location (%): 45-64, ALLAREA, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDDC_45-64_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores, by sex, age and location (%): 45-64, ALLAREA, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDDC_45-64_ALLAREA_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores, by sex, age and location (%): 45-64, RURAL, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDDC_45-64_RURAL_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores, by sex, age and location (%): 45-64, URBAN, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDDC_45-64_URBAN_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores, by sex, age and location (%): 55-64, ALLAREA, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDDC_55-64_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores, by sex, age and location (%): 55-64, ALLAREA, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDDC_55-64_ALLAREA_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores, by sex, age and location (%): 55-64, RURAL, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDDC_55-64_RURAL_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores, by sex, age and location (%): 55-64, URBAN, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDDC_55-64_URBAN_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores, by sex, age and location (%): 5gte, ALLAREA, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDDC_5gte_ALLAREA_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores, by sex, age and location (%): 65-74, ALLAREA, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDDC_65-74_ALLAREA_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores, by sex, age and location (%): 65gte, ALLAREA, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDDC_65gte_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores, by sex, age and location (%): 65gte, ALLAREA, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDDC_65gte_ALLAREA_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores, by sex, age and location (%): 65gte, RURAL, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDDC_65gte_RURAL_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores, by sex, age and location (%): 65gte, RURAL, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDDC_65gte_RURAL_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores, by sex, age and location (%): 65gte, URBAN, C, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDDC_65gte_URBAN_C_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores, by sex, age and location (%): 65gte, URBAN, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDDC_65gte_URBAN_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores, by sex, age and location (%): 6gte, ALLAREA, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDDC_6gte_ALLAREA_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores, by sex, age and location (%): 75-84, ALLAREA, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDDC_75-84_ALLAREA_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores, by sex, age and location (%): 85gte, ALLAREA, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDDC_85gte_ALLAREA_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores, by sex, age and location (%): ALLAGE, ALLAREA, CA, FEMALE",
+      "dcid": "sdg/SL_DOM_TSPDDC_ALLAGE_ALLAREA_CA_FEMALE"
+    },
+    {
+      "name": "Proportion of youth not in education, employment or training, by sex and age (%): 15-24, C, A, FEMALE",
+      "dcid": "sdg/SL_TLF_NEET_15-24_C_A_FEMALE"
+    },
+    {
+      "name": "Proportion of youth not in education, employment or training, by sex and age (%): 15-24, C, U, FEMALE",
+      "dcid": "sdg/SL_TLF_NEET_15-24_C_U_FEMALE"
+    },
+    {
+      "name": "Unemployment rate, by sex and age (%): 15-24, C, A, FEMALE",
+      "dcid": "sdg/SL_TLF_UEM_15-24_C_A_FEMALE"
+    },
+    {
+      "name": "Unemployment rate, by sex and age (%): 15-24, C, U, FEMALE",
+      "dcid": "sdg/SL_TLF_UEM_15-24_C_U_FEMALE"
+    },
+    {
+      "name": "Unemployment rate, by sex and age (%): 15gte, C, A, FEMALE",
+      "dcid": "sdg/SL_TLF_UEM_15gte_C_A_FEMALE"
+    },
+    {
+      "name": "Unemployment rate, by sex and age (%): 15gte, C, U, FEMALE",
+      "dcid": "sdg/SL_TLF_UEM_15gte_C_U_FEMALE"
+    },
+    {
+      "name": "Unemployment rate, by sex and age (%): 25gte, C, A, FEMALE",
+      "dcid": "sdg/SL_TLF_UEM_25gte_C_A_FEMALE"
+    },
+    {
+      "name": "Unemployment rate, by sex and age (%): 25gte, C, U, FEMALE",
+      "dcid": "sdg/SL_TLF_UEM_25gte_C_U_FEMALE"
+    },
+    {
+      "name": "Unemployment rate, by sex and disability (%): PD, C, A, FEMALE",
+      "dcid": "sdg/SL_TLF_UEMDIS_PD_C_A_FEMALE"
+    },
+    {
+      "name": "Unemployment rate, by sex and disability (%): PD, C, U, FEMALE",
+      "dcid": "sdg/SL_TLF_UEMDIS_PD_C_U_FEMALE"
+    },
+    {
+      "name": "Unemployment rate, by sex and disability (%): PWD, C, A, FEMALE",
+      "dcid": "sdg/SL_TLF_UEMDIS_PWD_C_A_FEMALE"
+    },
+    {
+      "name": "Unemployment rate, by sex and disability (%): PWD, C, U, FEMALE",
+      "dcid": "sdg/SL_TLF_UEMDIS_PWD_C_U_FEMALE"
+    },
+    {
+      "name": "Adjusted location parity index for completion rate, by sex, wealth quintile and education level: LOWSEC, C, _T, FEMALE",
+      "dcid": "sdg/SE_ALP_CPLR_LOWSEC_C__T_FEMALE"
+    },
+    {
+      "name": "Adjusted location parity index for completion rate, by sex, wealth quintile and education level: PRIMAR, C, _T, FEMALE",
+      "dcid": "sdg/SE_ALP_CPLR_PRIMAR_C__T_FEMALE"
+    },
+    {
+      "name": "Adjusted location parity index for completion rate, by sex, wealth quintile and education level: UPPSEC, C, _T, FEMALE",
+      "dcid": "sdg/SE_ALP_CPLR_UPPSEC_C__T_FEMALE"
+    },
+    {
+      "name": "Average hourly earnings of employees by sex and occupation (local currency): , C, A, FEMALE, _T",
+      "dcid": "sdg/SL_EMP_EARN_C_A_FEMALE__T"
+    },
+    {
+      "name": "Completion rate, by sex, location, wealth quintile and education level (%): LOWSEC, ALLAREA, C, Q1, FEMALE",
+      "dcid": "sdg/SE_TOT_CPLR_LOWSEC_ALLAREA_C_Q1_FEMALE"
+    },
+    {
+      "name": "Completion rate, by sex, location, wealth quintile and education level (%): LOWSEC, ALLAREA, C, Q2, FEMALE",
+      "dcid": "sdg/SE_TOT_CPLR_LOWSEC_ALLAREA_C_Q2_FEMALE"
+    },
+    {
+      "name": "Completion rate, by sex, location, wealth quintile and education level (%): LOWSEC, ALLAREA, C, Q3, FEMALE",
+      "dcid": "sdg/SE_TOT_CPLR_LOWSEC_ALLAREA_C_Q3_FEMALE"
+    },
+    {
+      "name": "Completion rate, by sex, location, wealth quintile and education level (%): LOWSEC, ALLAREA, C, Q4, FEMALE",
+      "dcid": "sdg/SE_TOT_CPLR_LOWSEC_ALLAREA_C_Q4_FEMALE"
+    },
+    {
+      "name": "Completion rate, by sex, location, wealth quintile and education level (%): LOWSEC, ALLAREA, C, Q5, FEMALE",
+      "dcid": "sdg/SE_TOT_CPLR_LOWSEC_ALLAREA_C_Q5_FEMALE"
+    },
+    {
+      "name": "Completion rate, by sex, location, wealth quintile and education level (%): LOWSEC, RURAL, C, Q1, FEMALE",
+      "dcid": "sdg/SE_TOT_CPLR_LOWSEC_RURAL_C_Q1_FEMALE"
+    },
+    {
+      "name": "Completion rate, by sex, location, wealth quintile and education level (%): LOWSEC, RURAL, C, Q2, FEMALE",
+      "dcid": "sdg/SE_TOT_CPLR_LOWSEC_RURAL_C_Q2_FEMALE"
+    },
+    {
+      "name": "Completion rate, by sex, location, wealth quintile and education level (%): LOWSEC, RURAL, C, Q3, FEMALE",
+      "dcid": "sdg/SE_TOT_CPLR_LOWSEC_RURAL_C_Q3_FEMALE"
+    },
+    {
+      "name": "Completion rate, by sex, location, wealth quintile and education level (%): LOWSEC, RURAL, C, Q4, FEMALE",
+      "dcid": "sdg/SE_TOT_CPLR_LOWSEC_RURAL_C_Q4_FEMALE"
+    },
+    {
+      "name": "Completion rate, by sex, location, wealth quintile and education level (%): LOWSEC, RURAL, C, Q5, FEMALE",
+      "dcid": "sdg/SE_TOT_CPLR_LOWSEC_RURAL_C_Q5_FEMALE"
+    },
+    {
+      "name": "Completion rate, by sex, location, wealth quintile and education level (%): LOWSEC, URBAN, C, Q1, FEMALE",
+      "dcid": "sdg/SE_TOT_CPLR_LOWSEC_URBAN_C_Q1_FEMALE"
+    },
+    {
+      "name": "Completion rate, by sex, location, wealth quintile and education level (%): LOWSEC, URBAN, C, Q2, FEMALE",
+      "dcid": "sdg/SE_TOT_CPLR_LOWSEC_URBAN_C_Q2_FEMALE"
+    },
+    {
+      "name": "Completion rate, by sex, location, wealth quintile and education level (%): LOWSEC, URBAN, C, Q3, FEMALE",
+      "dcid": "sdg/SE_TOT_CPLR_LOWSEC_URBAN_C_Q3_FEMALE"
+    },
+    {
+      "name": "Completion rate, by sex, location, wealth quintile and education level (%): LOWSEC, URBAN, C, Q4, FEMALE",
+      "dcid": "sdg/SE_TOT_CPLR_LOWSEC_URBAN_C_Q4_FEMALE"
+    },
+    {
+      "name": "Completion rate, by sex, location, wealth quintile and education level (%): LOWSEC, URBAN, C, Q5, FEMALE",
+      "dcid": "sdg/SE_TOT_CPLR_LOWSEC_URBAN_C_Q5_FEMALE"
+    },
+    {
+      "name": "Completion rate, by sex, location, wealth quintile and education level (%): PRIMAR, ALLAREA, C, Q1, FEMALE",
+      "dcid": "sdg/SE_TOT_CPLR_PRIMAR_ALLAREA_C_Q1_FEMALE"
+    },
+    {
+      "name": "Completion rate, by sex, location, wealth quintile and education level (%): PRIMAR, ALLAREA, C, Q2, FEMALE",
+      "dcid": "sdg/SE_TOT_CPLR_PRIMAR_ALLAREA_C_Q2_FEMALE"
+    },
+    {
+      "name": "Completion rate, by sex, location, wealth quintile and education level (%): PRIMAR, ALLAREA, C, Q3, FEMALE",
+      "dcid": "sdg/SE_TOT_CPLR_PRIMAR_ALLAREA_C_Q3_FEMALE"
+    },
+    {
+      "name": "Completion rate, by sex, location, wealth quintile and education level (%): PRIMAR, ALLAREA, C, Q4, FEMALE",
+      "dcid": "sdg/SE_TOT_CPLR_PRIMAR_ALLAREA_C_Q4_FEMALE"
+    },
+    {
+      "name": "Completion rate, by sex, location, wealth quintile and education level (%): PRIMAR, ALLAREA, C, Q5, FEMALE",
+      "dcid": "sdg/SE_TOT_CPLR_PRIMAR_ALLAREA_C_Q5_FEMALE"
+    },
+    {
+      "name": "Completion rate, by sex, location, wealth quintile and education level (%): PRIMAR, RURAL, C, Q1, FEMALE",
+      "dcid": "sdg/SE_TOT_CPLR_PRIMAR_RURAL_C_Q1_FEMALE"
+    },
+    {
+      "name": "Completion rate, by sex, location, wealth quintile and education level (%): PRIMAR, RURAL, C, Q2, FEMALE",
+      "dcid": "sdg/SE_TOT_CPLR_PRIMAR_RURAL_C_Q2_FEMALE"
+    },
+    {
+      "name": "Completion rate, by sex, location, wealth quintile and education level (%): PRIMAR, RURAL, C, Q3, FEMALE",
+      "dcid": "sdg/SE_TOT_CPLR_PRIMAR_RURAL_C_Q3_FEMALE"
+    },
+    {
+      "name": "Completion rate, by sex, location, wealth quintile and education level (%): PRIMAR, RURAL, C, Q4, FEMALE",
+      "dcid": "sdg/SE_TOT_CPLR_PRIMAR_RURAL_C_Q4_FEMALE"
+    },
+    {
+      "name": "Completion rate, by sex, location, wealth quintile and education level (%): PRIMAR, RURAL, C, Q5, FEMALE",
+      "dcid": "sdg/SE_TOT_CPLR_PRIMAR_RURAL_C_Q5_FEMALE"
+    },
+    {
+      "name": "Completion rate, by sex, location, wealth quintile and education level (%): PRIMAR, URBAN, C, Q1, FEMALE",
+      "dcid": "sdg/SE_TOT_CPLR_PRIMAR_URBAN_C_Q1_FEMALE"
+    },
+    {
+      "name": "Completion rate, by sex, location, wealth quintile and education level (%): PRIMAR, URBAN, C, Q2, FEMALE",
+      "dcid": "sdg/SE_TOT_CPLR_PRIMAR_URBAN_C_Q2_FEMALE"
+    },
+    {
+      "name": "Completion rate, by sex, location, wealth quintile and education level (%): PRIMAR, URBAN, C, Q3, FEMALE",
+      "dcid": "sdg/SE_TOT_CPLR_PRIMAR_URBAN_C_Q3_FEMALE"
+    },
+    {
+      "name": "Completion rate, by sex, location, wealth quintile and education level (%): PRIMAR, URBAN, C, Q4, FEMALE",
+      "dcid": "sdg/SE_TOT_CPLR_PRIMAR_URBAN_C_Q4_FEMALE"
+    },
+    {
+      "name": "Completion rate, by sex, location, wealth quintile and education level (%): PRIMAR, URBAN, C, Q5, FEMALE",
+      "dcid": "sdg/SE_TOT_CPLR_PRIMAR_URBAN_C_Q5_FEMALE"
+    },
+    {
+      "name": "Completion rate, by sex, location, wealth quintile and education level (%): UPPSEC, ALLAREA, C, Q1, FEMALE",
+      "dcid": "sdg/SE_TOT_CPLR_UPPSEC_ALLAREA_C_Q1_FEMALE"
+    },
+    {
+      "name": "Completion rate, by sex, location, wealth quintile and education level (%): UPPSEC, ALLAREA, C, Q2, FEMALE",
+      "dcid": "sdg/SE_TOT_CPLR_UPPSEC_ALLAREA_C_Q2_FEMALE"
+    },
+    {
+      "name": "Completion rate, by sex, location, wealth quintile and education level (%): UPPSEC, ALLAREA, C, Q3, FEMALE",
+      "dcid": "sdg/SE_TOT_CPLR_UPPSEC_ALLAREA_C_Q3_FEMALE"
+    },
+    {
+      "name": "Completion rate, by sex, location, wealth quintile and education level (%): UPPSEC, ALLAREA, C, Q4, FEMALE",
+      "dcid": "sdg/SE_TOT_CPLR_UPPSEC_ALLAREA_C_Q4_FEMALE"
+    },
+    {
+      "name": "Completion rate, by sex, location, wealth quintile and education level (%): UPPSEC, ALLAREA, C, Q5, FEMALE",
+      "dcid": "sdg/SE_TOT_CPLR_UPPSEC_ALLAREA_C_Q5_FEMALE"
+    },
+    {
+      "name": "Completion rate, by sex, location, wealth quintile and education level (%): UPPSEC, RURAL, C, Q1, FEMALE",
+      "dcid": "sdg/SE_TOT_CPLR_UPPSEC_RURAL_C_Q1_FEMALE"
+    },
+    {
+      "name": "Completion rate, by sex, location, wealth quintile and education level (%): UPPSEC, RURAL, C, Q2, FEMALE",
+      "dcid": "sdg/SE_TOT_CPLR_UPPSEC_RURAL_C_Q2_FEMALE"
+    },
+    {
+      "name": "Completion rate, by sex, location, wealth quintile and education level (%): UPPSEC, RURAL, C, Q3, FEMALE",
+      "dcid": "sdg/SE_TOT_CPLR_UPPSEC_RURAL_C_Q3_FEMALE"
+    },
+    {
+      "name": "Completion rate, by sex, location, wealth quintile and education level (%): UPPSEC, RURAL, C, Q4, FEMALE",
+      "dcid": "sdg/SE_TOT_CPLR_UPPSEC_RURAL_C_Q4_FEMALE"
+    },
+    {
+      "name": "Completion rate, by sex, location, wealth quintile and education level (%): UPPSEC, RURAL, C, Q5, FEMALE",
+      "dcid": "sdg/SE_TOT_CPLR_UPPSEC_RURAL_C_Q5_FEMALE"
+    },
+    {
+      "name": "Completion rate, by sex, location, wealth quintile and education level (%): UPPSEC, URBAN, C, Q1, FEMALE",
+      "dcid": "sdg/SE_TOT_CPLR_UPPSEC_URBAN_C_Q1_FEMALE"
+    },
+    {
+      "name": "Completion rate, by sex, location, wealth quintile and education level (%): UPPSEC, URBAN, C, Q2, FEMALE",
+      "dcid": "sdg/SE_TOT_CPLR_UPPSEC_URBAN_C_Q2_FEMALE"
+    },
+    {
+      "name": "Completion rate, by sex, location, wealth quintile and education level (%): UPPSEC, URBAN, C, Q3, FEMALE",
+      "dcid": "sdg/SE_TOT_CPLR_UPPSEC_URBAN_C_Q3_FEMALE"
+    },
+    {
+      "name": "Completion rate, by sex, location, wealth quintile and education level (%): UPPSEC, URBAN, C, Q4, FEMALE",
+      "dcid": "sdg/SE_TOT_CPLR_UPPSEC_URBAN_C_Q4_FEMALE"
+    },
+    {
+      "name": "Completion rate, by sex, location, wealth quintile and education level (%): UPPSEC, URBAN, C, Q5, FEMALE",
+      "dcid": "sdg/SE_TOT_CPLR_UPPSEC_URBAN_C_Q5_FEMALE"
+    },
+    {
+      "name": "Fatal occupational injuries among employees, by sex and migrant status (per 100,000 employees): _T, C, A, FEMALE",
+      "dcid": "sdg/SL_EMP_FTLINJUR__T_C_A_FEMALE"
+    },
+    {
+      "name": "Non-fatal occupational injuries among employees, by sex and migrant status (per 100,000 employees): _T, C, A, FEMALE",
+      "dcid": "sdg/SL_EMP_INJUR__T_C_A_FEMALE"
+    },
+    {
+      "name": "Number of chairs of permanent committees, by age sex and focus of the committee, Joint Committees: 46gte, C, FINANCE, FEMALE",
+      "dcid": "sdg/SG_DMK_PARLCC_JC_46gte_C_FINANCE_FEMALE"
+    },
+    {
+      "name": "Number of chairs of permanent committees, by age sex and focus of the committee, Lower Chamber or Unicameral: 46gte, C, DEFENCE, FEMALE",
+      "dcid": "sdg/SG_DMK_PARLCC_LC_46gte_C_DEFENCE_FEMALE"
+    },
+    {
+      "name": "Number of chairs of permanent committees, by age sex and focus of the committee, Lower Chamber or Unicameral: 46gte, C, FINANCE, FEMALE",
+      "dcid": "sdg/SG_DMK_PARLCC_LC_46gte_C_FINANCE_FEMALE"
+    },
+    {
+      "name": "Number of chairs of permanent committees, by age sex and focus of the committee, Lower Chamber or Unicameral: lte45Y, C, DEFENCE, FEMALE",
+      "dcid": "sdg/SG_DMK_PARLCC_LC_lte45Y_C_DEFENCE_FEMALE"
+    },
+    {
+      "name": "Number of chairs of permanent committees, by age sex and focus of the committee, Lower Chamber or Unicameral: lte45Y, C, FINANCE, FEMALE",
+      "dcid": "sdg/SG_DMK_PARLCC_LC_lte45Y_C_FINANCE_FEMALE"
+    },
+    {
+      "name": "Number of chairs of permanent committees, by age sex and focus of the committee, Upper Chamber: 46gte, C, DEFENCE, FEMALE",
+      "dcid": "sdg/SG_DMK_PARLCC_UC_46gte_C_DEFENCE_FEMALE"
+    },
+    {
+      "name": "Number of chairs of permanent committees, by age sex and focus of the committee, Upper Chamber: 46gte, C, FINANCE, FEMALE",
+      "dcid": "sdg/SG_DMK_PARLCC_UC_46gte_C_FINANCE_FEMALE"
+    },
+    {
+      "name": "Number of chairs of permanent committees, by age sex and focus of the committee, Upper Chamber: lte45Y, C, FINANCE, FEMALE",
+      "dcid": "sdg/SG_DMK_PARLCC_UC_lte45Y_C_FINANCE_FEMALE"
+    },
+    {
+      "name": "Number of speakers in parliament, by age and sex , Lower Chamber or Unicameral: _U, C, FEMALE",
+      "dcid": "sdg/SG_DMK_PARLSP_LC__U_C_FEMALE"
+    },
+    {
+      "name": "Number of speakers in parliament, by age and sex, Upper Chamber: _U, C, FEMALE",
+      "dcid": "sdg/SG_DMK_PARLSP_UC__U_C_FEMALE"
+    },
+    {
+      "name": "Proportion of children and young people achieving a minimum proficiency level in reading and mathematics (%): GRAD23, C, FEMALE, SKILL_MATH",
+      "dcid": "sdg/SE_TOT_PRFL_GRAD23_C_FEMALE_SKILL_MATH"
+    },
+    {
+      "name": "Proportion of children and young people achieving a minimum proficiency level in reading and mathematics (%): GRAD23, C, FEMALE, SKILL_READ",
+      "dcid": "sdg/SE_TOT_PRFL_GRAD23_C_FEMALE_SKILL_READ"
+    },
+    {
+      "name": "Proportion of children and young people achieving a minimum proficiency level in reading and mathematics (%): LOWSEC, C, FEMALE, SKILL_MATH",
+      "dcid": "sdg/SE_TOT_PRFL_LOWSEC_C_FEMALE_SKILL_MATH"
+    },
+    {
+      "name": "Proportion of children and young people achieving a minimum proficiency level in reading and mathematics (%): LOWSEC, C, FEMALE, SKILL_READ",
+      "dcid": "sdg/SE_TOT_PRFL_LOWSEC_C_FEMALE_SKILL_READ"
+    },
+    {
+      "name": "Proportion of children and young people achieving a minimum proficiency level in reading and mathematics (%): PRIMAR, C, FEMALE, SKILL_MATH",
+      "dcid": "sdg/SE_TOT_PRFL_PRIMAR_C_FEMALE_SKILL_MATH"
+    },
+    {
+      "name": "Proportion of children and young people achieving a minimum proficiency level in reading and mathematics (%): PRIMAR, C, FEMALE, SKILL_READ",
+      "dcid": "sdg/SE_TOT_PRFL_PRIMAR_C_FEMALE_SKILL_READ"
+    },
+    {
+      "name": "Proportion of informal employment, by sector and sex (ILO harmonized estimates) (%): ISIC4_A, C, A, FEMALE",
+      "dcid": "sdg/SL_ISV_IFEM_ISIC4_A_C_A_FEMALE"
+    },
+    {
+      "name": "Proportion of informal employment, by sector and sex (ILO harmonized estimates) (%): ISIC4_A, C, U, FEMALE",
+      "dcid": "sdg/SL_ISV_IFEM_ISIC4_A_C_U_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): PD, AGE, ALLAREA, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD_PD_AGE_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): PD, ALL, ALLAREA, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD_PD_ALL_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): PD, COLR, ALLAREA, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD_PD_COLR_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): PD, DIS, ALLAREA, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD_PD_DIS_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): PD, ETH, ALLAREA, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD_PD_ETH_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): PD, ETHI, ALLAREA, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD_PD_ETHI_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): PD, MARFAM, ALLAREA, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD_PD_MARFAM_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): PD, MIG, ALLAREA, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD_PD_MIG_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): PD, NATION, ALLAREA, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD_PD_NATION_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): PD, OTHER, ALLAREA, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD_PD_OTHER_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): PD, POLVIEW, ALLAREA, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD_PD_POLVIEW_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): PD, PREGY, ALLAREA, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD_PD_PREGY_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): PD, RELIGION, ALLAREA, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD_PD_RELIGION_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): PD, RES, ALLAREA, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD_PD_RES_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): PD, SEX, ALLAREA, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD_PD_SEX_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): PD, SEXO, ALLAREA, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD_PD_SEXO_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): PD, SOCIOECON, ALLAREA, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD_PD_SOCIOECON_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): PD, WEDLOCK, ALLAREA, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD_PD_WEDLOCK_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): PWD, AGE, ALLAREA, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD_PWD_AGE_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): PWD, ALL, ALLAREA, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD_PWD_ALL_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): PWD, COLR, ALLAREA, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD_PWD_COLR_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): PWD, DIS, ALLAREA, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD_PWD_DIS_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): PWD, ETH, ALLAREA, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD_PWD_ETH_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): PWD, ETHI, ALLAREA, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD_PWD_ETHI_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): PWD, MARFAM, ALLAREA, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD_PWD_MARFAM_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): PWD, MIG, ALLAREA, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD_PWD_MIG_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): PWD, NATION, ALLAREA, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD_PWD_NATION_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): PWD, OTHER, ALLAREA, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD_PWD_OTHER_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): PWD, POLVIEW, ALLAREA, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD_PWD_POLVIEW_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): PWD, PREGY, ALLAREA, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD_PWD_PREGY_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): PWD, RELIGION, ALLAREA, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD_PWD_RELIGION_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): PWD, RES, ALLAREA, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD_PWD_RES_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): PWD, SEX, ALLAREA, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD_PWD_SEX_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): PWD, SEXO, ALLAREA, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD_PWD_SEXO_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): PWD, SOCIOECON, ALLAREA, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD_PWD_SOCIOECON_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): PWD, WEDLOCK, ALLAREA, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD_PWD_WEDLOCK_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Unemployment rate, by sex and disability (%): _T, C, A, FEMALE",
+      "dcid": "sdg/SL_TLF_UEMDIS__T_C_A_FEMALE"
+    },
+    {
+      "name": "Unemployment rate, by sex and disability (%): _T, C, U, FEMALE",
+      "dcid": "sdg/SL_TLF_UEMDIS__T_C_U_FEMALE"
+    },
+    {
+      "name": "Adjusted wealth parity index for completion rate, by sex, location and education level: LOWSEC, ALLAREA, C, _T, FEMALE",
+      "dcid": "sdg/SE_AWP_CPRA_LOWSEC_ALLAREA_C__T_FEMALE"
+    },
+    {
+      "name": "Adjusted wealth parity index for completion rate, by sex, location and education level: LOWSEC, RURAL, C, _T, FEMALE",
+      "dcid": "sdg/SE_AWP_CPRA_LOWSEC_RURAL_C__T_FEMALE"
+    },
+    {
+      "name": "Adjusted wealth parity index for completion rate, by sex, location and education level: LOWSEC, URBAN, C, _T, FEMALE",
+      "dcid": "sdg/SE_AWP_CPRA_LOWSEC_URBAN_C__T_FEMALE"
+    },
+    {
+      "name": "Adjusted wealth parity index for completion rate, by sex, location and education level: PRIMAR, ALLAREA, C, _T, FEMALE",
+      "dcid": "sdg/SE_AWP_CPRA_PRIMAR_ALLAREA_C__T_FEMALE"
+    },
+    {
+      "name": "Adjusted wealth parity index for completion rate, by sex, location and education level: PRIMAR, RURAL, C, _T, FEMALE",
+      "dcid": "sdg/SE_AWP_CPRA_PRIMAR_RURAL_C__T_FEMALE"
+    },
+    {
+      "name": "Adjusted wealth parity index for completion rate, by sex, location and education level: PRIMAR, URBAN, C, _T, FEMALE",
+      "dcid": "sdg/SE_AWP_CPRA_PRIMAR_URBAN_C__T_FEMALE"
+    },
+    {
+      "name": "Adjusted wealth parity index for completion rate, by sex, location and education level: UPPSEC, ALLAREA, C, _T, FEMALE",
+      "dcid": "sdg/SE_AWP_CPRA_UPPSEC_ALLAREA_C__T_FEMALE"
+    },
+    {
+      "name": "Adjusted wealth parity index for completion rate, by sex, location and education level: UPPSEC, RURAL, C, _T, FEMALE",
+      "dcid": "sdg/SE_AWP_CPRA_UPPSEC_RURAL_C__T_FEMALE"
+    },
+    {
+      "name": "Adjusted wealth parity index for completion rate, by sex, location and education level: UPPSEC, URBAN, C, _T, FEMALE",
+      "dcid": "sdg/SE_AWP_CPRA_UPPSEC_URBAN_C__T_FEMALE"
+    },
+    {
+      "name": "Completion rate, by sex, location, wealth quintile and education level (%): LOWSEC, ALLAREA, C, _T, FEMALE",
+      "dcid": "sdg/SE_TOT_CPLR_LOWSEC_ALLAREA_C__T_FEMALE"
+    },
+    {
+      "name": "Completion rate, by sex, location, wealth quintile and education level (%): LOWSEC, ALLAREA, E, _T, FEMALE",
+      "dcid": "sdg/SE_TOT_CPLR_LOWSEC_ALLAREA_E__T_FEMALE"
+    },
+    {
+      "name": "Completion rate, by sex, location, wealth quintile and education level (%): LOWSEC, RURAL, C, _T, FEMALE",
+      "dcid": "sdg/SE_TOT_CPLR_LOWSEC_RURAL_C__T_FEMALE"
+    },
+    {
+      "name": "Completion rate, by sex, location, wealth quintile and education level (%): LOWSEC, URBAN, C, _T, FEMALE",
+      "dcid": "sdg/SE_TOT_CPLR_LOWSEC_URBAN_C__T_FEMALE"
+    },
+    {
+      "name": "Completion rate, by sex, location, wealth quintile and education level (%): PRIMAR, ALLAREA, C, _T, FEMALE",
+      "dcid": "sdg/SE_TOT_CPLR_PRIMAR_ALLAREA_C__T_FEMALE"
+    },
+    {
+      "name": "Completion rate, by sex, location, wealth quintile and education level (%): PRIMAR, ALLAREA, E, _T, FEMALE",
+      "dcid": "sdg/SE_TOT_CPLR_PRIMAR_ALLAREA_E__T_FEMALE"
+    },
+    {
+      "name": "Completion rate, by sex, location, wealth quintile and education level (%): PRIMAR, RURAL, C, _T, FEMALE",
+      "dcid": "sdg/SE_TOT_CPLR_PRIMAR_RURAL_C__T_FEMALE"
+    },
+    {
+      "name": "Completion rate, by sex, location, wealth quintile and education level (%): PRIMAR, URBAN, C, _T, FEMALE",
+      "dcid": "sdg/SE_TOT_CPLR_PRIMAR_URBAN_C__T_FEMALE"
+    },
+    {
+      "name": "Completion rate, by sex, location, wealth quintile and education level (%): UPPSEC, ALLAREA, C, _T, FEMALE",
+      "dcid": "sdg/SE_TOT_CPLR_UPPSEC_ALLAREA_C__T_FEMALE"
+    },
+    {
+      "name": "Completion rate, by sex, location, wealth quintile and education level (%): UPPSEC, ALLAREA, E, _T, FEMALE",
+      "dcid": "sdg/SE_TOT_CPLR_UPPSEC_ALLAREA_E__T_FEMALE"
+    },
+    {
+      "name": "Completion rate, by sex, location, wealth quintile and education level (%): UPPSEC, RURAL, C, _T, FEMALE",
+      "dcid": "sdg/SE_TOT_CPLR_UPPSEC_RURAL_C__T_FEMALE"
+    },
+    {
+      "name": "Completion rate, by sex, location, wealth quintile and education level (%): UPPSEC, URBAN, C, _T, FEMALE",
+      "dcid": "sdg/SE_TOT_CPLR_UPPSEC_URBAN_C__T_FEMALE"
+    },
+    {
+      "name": "Number of chairs of permanent committees, by age sex and focus of the committee, Joint Committees: 46gte, C, FOR_AFF, FEMALE",
+      "dcid": "sdg/SG_DMK_PARLCC_JC_46gte_C_FOR_AFF_FEMALE"
+    },
+    {
+      "name": "Number of chairs of permanent committees, by age sex and focus of the committee, Joint Committees: 46gte, C, GEN_EQU, FEMALE",
+      "dcid": "sdg/SG_DMK_PARLCC_JC_46gte_C_GEN_EQU_FEMALE"
+    },
+    {
+      "name": "Number of chairs of permanent committees, by age sex and focus of the committee, Joint Committees: 46gte, C, HUM_RIGH, FEMALE",
+      "dcid": "sdg/SG_DMK_PARLCC_JC_46gte_C_HUM_RIGH_FEMALE"
+    },
+    {
+      "name": "Number of chairs of permanent committees, by age sex and focus of the committee, Joint Committees: _U, C, FINANCE, FEMALE",
+      "dcid": "sdg/SG_DMK_PARLCC_JC__U_C_FINANCE_FEMALE"
+    },
+    {
+      "name": "Number of chairs of permanent committees, by age sex and focus of the committee, Joint Committees: lte45Y, C, GEN_EQU, FEMALE",
+      "dcid": "sdg/SG_DMK_PARLCC_JC_lte45Y_C_GEN_EQU_FEMALE"
+    },
+    {
+      "name": "Number of chairs of permanent committees, by age sex and focus of the committee, Lower Chamber or Unicameral: 46gte, C, FAFF_DEF, FEMALE",
+      "dcid": "sdg/SG_DMK_PARLCC_LC_46gte_C_FAFF_DEF_FEMALE"
+    },
+    {
+      "name": "Number of chairs of permanent committees, by age sex and focus of the committee, Lower Chamber or Unicameral: 46gte, C, FOR_AFF, FEMALE",
+      "dcid": "sdg/SG_DMK_PARLCC_LC_46gte_C_FOR_AFF_FEMALE"
+    },
+    {
+      "name": "Number of chairs of permanent committees, by age sex and focus of the committee, Lower Chamber or Unicameral: 46gte, C, GEN_EQU, FEMALE",
+      "dcid": "sdg/SG_DMK_PARLCC_LC_46gte_C_GEN_EQU_FEMALE"
+    },
+    {
+      "name": "Number of chairs of permanent committees, by age sex and focus of the committee, Lower Chamber or Unicameral: 46gte, C, HR_GEQU, FEMALE",
+      "dcid": "sdg/SG_DMK_PARLCC_LC_46gte_C_HR_GEQU_FEMALE"
+    },
+    {
+      "name": "Number of chairs of permanent committees, by age sex and focus of the committee, Lower Chamber or Unicameral: 46gte, C, HUM_RIGH, FEMALE",
+      "dcid": "sdg/SG_DMK_PARLCC_LC_46gte_C_HUM_RIGH_FEMALE"
+    },
+    {
+      "name": "Number of chairs of permanent committees, by age sex and focus of the committee, Lower Chamber or Unicameral: _U, C, DEFENCE, FEMALE",
+      "dcid": "sdg/SG_DMK_PARLCC_LC__U_C_DEFENCE_FEMALE"
+    },
+    {
+      "name": "Number of chairs of permanent committees, by age sex and focus of the committee, Lower Chamber or Unicameral: _U, C, FINANCE, FEMALE",
+      "dcid": "sdg/SG_DMK_PARLCC_LC__U_C_FINANCE_FEMALE"
+    },
+    {
+      "name": "Number of chairs of permanent committees, by age sex and focus of the committee, Lower Chamber or Unicameral: lte45Y, C, FAFF_DEF, FEMALE",
+      "dcid": "sdg/SG_DMK_PARLCC_LC_lte45Y_C_FAFF_DEF_FEMALE"
+    },
+    {
+      "name": "Number of chairs of permanent committees, by age sex and focus of the committee, Lower Chamber or Unicameral: lte45Y, C, FOR_AFF, FEMALE",
+      "dcid": "sdg/SG_DMK_PARLCC_LC_lte45Y_C_FOR_AFF_FEMALE"
+    },
+    {
+      "name": "Number of chairs of permanent committees, by age sex and focus of the committee, Lower Chamber or Unicameral: lte45Y, C, GEN_EQU, FEMALE",
+      "dcid": "sdg/SG_DMK_PARLCC_LC_lte45Y_C_GEN_EQU_FEMALE"
+    },
+    {
+      "name": "Number of chairs of permanent committees, by age sex and focus of the committee, Lower Chamber or Unicameral: lte45Y, C, HR_GEQU, FEMALE",
+      "dcid": "sdg/SG_DMK_PARLCC_LC_lte45Y_C_HR_GEQU_FEMALE"
+    },
+    {
+      "name": "Number of chairs of permanent committees, by age sex and focus of the committee, Lower Chamber or Unicameral: lte45Y, C, HUM_RIGH, FEMALE",
+      "dcid": "sdg/SG_DMK_PARLCC_LC_lte45Y_C_HUM_RIGH_FEMALE"
+    },
+    {
+      "name": "Number of chairs of permanent committees, by age sex and focus of the committee, Upper Chamber: 46gte, C, FOR_AFF, FEMALE",
+      "dcid": "sdg/SG_DMK_PARLCC_UC_46gte_C_FOR_AFF_FEMALE"
+    },
+    {
+      "name": "Number of chairs of permanent committees, by age sex and focus of the committee, Upper Chamber: 46gte, C, GEN_EQU, FEMALE",
+      "dcid": "sdg/SG_DMK_PARLCC_UC_46gte_C_GEN_EQU_FEMALE"
+    },
+    {
+      "name": "Number of chairs of permanent committees, by age sex and focus of the committee, Upper Chamber: 46gte, C, HUM_RIGH, FEMALE",
+      "dcid": "sdg/SG_DMK_PARLCC_UC_46gte_C_HUM_RIGH_FEMALE"
+    },
+    {
+      "name": "Number of chairs of permanent committees, by age sex and focus of the committee, Upper Chamber: _U, C, FINANCE, FEMALE",
+      "dcid": "sdg/SG_DMK_PARLCC_UC__U_C_FINANCE_FEMALE"
+    },
+    {
+      "name": "Number of chairs of permanent committees, by age sex and focus of the committee, Upper Chamber: lte45Y, C, FOR_AFF, FEMALE",
+      "dcid": "sdg/SG_DMK_PARLCC_UC_lte45Y_C_FOR_AFF_FEMALE"
+    },
+    {
+      "name": "Number of chairs of permanent committees, by age sex and focus of the committee, Upper Chamber: lte45Y, C, GEN_EQU, FEMALE",
+      "dcid": "sdg/SG_DMK_PARLCC_UC_lte45Y_C_GEN_EQU_FEMALE"
+    },
+    {
+      "name": "Number of chairs of permanent committees, by age sex and focus of the committee, Upper Chamber: lte45Y, C, HR_GEQU, FEMALE",
+      "dcid": "sdg/SG_DMK_PARLCC_UC_lte45Y_C_HR_GEQU_FEMALE"
+    },
+    {
+      "name": "Number of chairs of permanent committees, by age sex and focus of the committee, Upper Chamber: lte45Y, C, HUM_RIGH, FEMALE",
+      "dcid": "sdg/SG_DMK_PARLCC_UC_lte45Y_C_HUM_RIGH_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, AGE, ALLAREA, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_AGE_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, AGE, RURAL, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_AGE_RURAL_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, AGE, URBAN, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_AGE_URBAN_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, ALL, ALLAREA, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_ALL_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, ALL, RURAL, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_ALL_RURAL_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, ALL, URBAN, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_ALL_URBAN_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, CLOTH, ALLAREA, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_CLOTH_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, COLR, ALLAREA, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_COLR_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, COLR, RURAL, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_COLR_RURAL_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, COLR, URBAN, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_COLR_URBAN_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, DIS, ALLAREA, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_DIS_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, DIS, RURAL, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_DIS_RURAL_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, DIS, URBAN, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_DIS_URBAN_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, DISHEA, ALLAREA, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_DISHEA_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, EDU, ALLAREA, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_EDU_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, ETH, ALLAREA, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_ETH_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, ETH, RURAL, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_ETH_RURAL_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, ETH, URBAN, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_ETH_URBAN_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, ETHCOLLAN, ALLAREA, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_ETHCOLLAN_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, ETHCOLLANMIG, ALLAREA, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_ETHCOLLANMIG_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, ETHCOLLANNAL, ALLAREA, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_ETHCOLLANNAL_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, ETHI, ALLAREA, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_ETHI_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, ETHI, RURAL, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_ETHI_RURAL_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, ETHI, URBAN, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_ETHI_URBAN_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, ETHRACECOLLAN, ALLAREA, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_ETHRACECOLLAN_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, FAM, ALLAREA, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_FAM_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, GENID, ALLAREA, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_GENID_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, GEO, ALLAREA, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_GEO_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, HEALTH, ALLAREA, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_HEALTH_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, LANDIA, ALLAREA, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_LANDIA_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, MAR, ALLAREA, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_MAR_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, MARFAM, ALLAREA, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_MARFAM_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, MARFAM, RURAL, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_MARFAM_RURAL_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, MARFAM, URBAN, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_MARFAM_URBAN_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, MIG, ALLAREA, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_MIG_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, MIG, RURAL, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_MIG_RURAL_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, MIG, URBAN, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_MIG_URBAN_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, NATION, ALLAREA, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_NATION_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, NATION, RURAL, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_NATION_RURAL_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, NATION, URBAN, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_NATION_URBAN_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, NETW, ALLAREA, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_NETW_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, ORIGIN, ALLAREA, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_ORIGIN_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, OTHER, ALLAREA, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_OTHER_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, OTHER, RURAL, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_OTHER_RURAL_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, OTHER, URBAN, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_OTHER_URBAN_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, PHYSCOND, ALLAREA, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_PHYSCOND_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, POLVIEW, ALLAREA, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_POLVIEW_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, POLVIEW, RURAL, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_POLVIEW_RURAL_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, POLVIEW, URBAN, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_POLVIEW_URBAN_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, PREGY, ALLAREA, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_PREGY_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, PREGY, RURAL, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_PREGY_RURAL_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, PREGY, URBAN, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_PREGY_URBAN_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, RACE, ALLAREA, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_RACE_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, RACECOLR, ALLAREA, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_RACECOLR_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, RELIGION, ALLAREA, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_RELIGION_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, RELIGION, RURAL, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_RELIGION_RURAL_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, RELIGION, URBAN, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_RELIGION_URBAN_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, RES, ALLAREA, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_RES_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, RES, RURAL, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_RES_RURAL_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, RES, URBAN, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_RES_URBAN_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, SEX, ALLAREA, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_SEX_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, SEX, RURAL, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_SEX_RURAL_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, SEX, URBAN, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_SEX_URBAN_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, SEXGENID, ALLAREA, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_SEXGENID_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, SEXO, ALLAREA, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_SEXO_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, SEXO, RURAL, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_SEXO_RURAL_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, SEXO, URBAN, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_SEXO_URBAN_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, SEXOGENID, ALLAREA, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_SEXOGENID_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, SOCIOECON, ALLAREA, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_SOCIOECON_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, SOCIOECON, RURAL, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_SOCIOECON_RURAL_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, SOCIOECON, URBAN, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_SOCIOECON_URBAN_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, TRAD, ALLAREA, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_TRAD_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, WEDLOCK, ALLAREA, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_WEDLOCK_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, WEDLOCK, RURAL, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_WEDLOCK_RURAL_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, WEDLOCK, URBAN, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_WEDLOCK_URBAN_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, WORK, ALLAREA, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_WORK_ALLAREA_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, WORK, RURAL, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_WORK_RURAL_C_FEMALE"
+    },
+    {
+      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability (%): _T, WORK, URBAN, C, FEMALE",
+      "dcid": "sdg/VC_VOV_GDSD__T_WORK_URBAN_C_FEMALE"
+    },
+    {
+      "name": "Number of chairs of permanent committees, by age sex and focus of the committee, Joint Committees: _U, C, FOR_AFF, FEMALE",
+      "dcid": "sdg/SG_DMK_PARLCC_JC__U_C_FOR_AFF_FEMALE"
+    },
+    {
+      "name": "Number of chairs of permanent committees, by age sex and focus of the committee, Joint Committees: _U, C, GEN_EQU, FEMALE",
+      "dcid": "sdg/SG_DMK_PARLCC_JC__U_C_GEN_EQU_FEMALE"
+    },
+    {
+      "name": "Number of chairs of permanent committees, by age sex and focus of the committee, Joint Committees: _U, C, HR_GEQU, FEMALE",
+      "dcid": "sdg/SG_DMK_PARLCC_JC__U_C_HR_GEQU_FEMALE"
+    },
+    {
+      "name": "Number of chairs of permanent committees, by age sex and focus of the committee, Lower Chamber or Unicameral: _U, C, FAFF_DEF, FEMALE",
+      "dcid": "sdg/SG_DMK_PARLCC_LC__U_C_FAFF_DEF_FEMALE"
+    },
+    {
+      "name": "Number of chairs of permanent committees, by age sex and focus of the committee, Lower Chamber or Unicameral: _U, C, FOR_AFF, FEMALE",
+      "dcid": "sdg/SG_DMK_PARLCC_LC__U_C_FOR_AFF_FEMALE"
+    },
+    {
+      "name": "Number of chairs of permanent committees, by age sex and focus of the committee, Lower Chamber or Unicameral: _U, C, GEN_EQU, FEMALE",
+      "dcid": "sdg/SG_DMK_PARLCC_LC__U_C_GEN_EQU_FEMALE"
+    },
+    {
+      "name": "Number of chairs of permanent committees, by age sex and focus of the committee, Lower Chamber or Unicameral: _U, C, HUM_RIGH, FEMALE",
+      "dcid": "sdg/SG_DMK_PARLCC_LC__U_C_HUM_RIGH_FEMALE"
+    },
+    {
+      "name": "Number of chairs of permanent committees, by age sex and focus of the committee, Upper Chamber: 46gte, C, FAFF_DEF_FIN, FEMALE",
+      "dcid": "sdg/SG_DMK_PARLCC_UC_46gte_C_FAFF_DEF_FIN_FEMALE"
+    },
+    {
+      "name": "Number of chairs of permanent committees, by age sex and focus of the committee, Upper Chamber: 46gte, C, FAFF_DEF_HR, FEMALE",
+      "dcid": "sdg/SG_DMK_PARLCC_UC_46gte_C_FAFF_DEF_HR_FEMALE"
+    },
+    {
+      "name": "Number of chairs of permanent committees, by age sex and focus of the committee, Upper Chamber: _U, C, FOR_AFF, FEMALE",
+      "dcid": "sdg/SG_DMK_PARLCC_UC__U_C_FOR_AFF_FEMALE"
+    },
+    {
+      "name": "Number of chairs of permanent committees, by age sex and focus of the committee, Upper Chamber: _U, C, GEN_EQU, FEMALE",
+      "dcid": "sdg/SG_DMK_PARLCC_UC__U_C_GEN_EQU_FEMALE"
+    },
+    {
+      "name": "Proportions of positions in the judiciary compared to national distributions (ratio): ALLAGE, _T, C, TOTAL, FEMALE, JUDGES",
+      "dcid": "sdg/SG_DMK_JDC_ALLAGE__T_C_TOTAL_FEMALE_JUDGES"
+    },
+    {
+      "name": "Proportions of positions in the judiciary compared to national distributions (ratio): ALLAGE, _T, C, TOTAL, FEMALE, REGISTRARS",
+      "dcid": "sdg/SG_DMK_JDC_ALLAGE__T_C_TOTAL_FEMALE_REGISTRARS"
+    },
+    {
+      "name": "Proportions of positions in the public service compared to national distributions (ratio): ALLAGE, _T, C, TOTAL, FEMALE, ADMINPRO",
+      "dcid": "sdg/SG_DMK_PSRVC_ALLAGE__T_C_TOTAL_FEMALE_ADMINPRO"
+    },
+    {
+      "name": "Proportions of positions in the public service compared to national distributions (ratio): ALLAGE, _T, C, TOTAL, FEMALE, ASSOCPRO",
+      "dcid": "sdg/SG_DMK_PSRVC_ALLAGE__T_C_TOTAL_FEMALE_ASSOCPRO"
+    },
+    {
+      "name": "Proportions of positions in the public service compared to national distributions (ratio): ALLAGE, _T, C, TOTAL, FEMALE, GENERAL",
+      "dcid": "sdg/SG_DMK_PSRVC_ALLAGE__T_C_TOTAL_FEMALE_GENERAL"
+    },
+    {
+      "name": "Proportions of positions in the public service compared to national distributions (ratio): ALLAGE, _T, C, TOTAL, FEMALE, OTHERMAN",
+      "dcid": "sdg/SG_DMK_PSRVC_ALLAGE__T_C_TOTAL_FEMALE_OTHERMAN"
+    },
+    {
+      "name": "Proportions of positions in the public service compared to national distributions (ratio): ALLAGE, _T, C, TOTAL, FEMALE, SENIORMAN",
+      "dcid": "sdg/SG_DMK_PSRVC_ALLAGE__T_C_TOTAL_FEMALE_SENIORMAN"
+    },
+    {
+      "name": "Proportion of adults (15 years and older) with an account at a financial institution or mobile-money-service provider, by sex (% of adults aged 15 years and older): 15gte, _T, ALLAREA, G, _T, FEMALE",
+      "dcid": "sdg/FB_BNK_ACCSS_15gte__T_ALLAREA_G__T_FEMALE"
+    },
+    {
+      "name": "Proportion of population who say that overall they are satisfied with the quality of government services (%): ALLAGE, _T, ALLAREA, C, TOTAL, , FEMALE",
+      "dcid": "sdg/SP_PSR_OSATIS_GOV_ALLAGE__T_ALLAREA_C_TOTAL_FEMALE"
+    },
+    {
+      "name": "Proportion of population who say that overall they are satisfied with the quality of healthcare services (%): ALLAGE, _T, ALLAREA, C, TOTAL, , FEMALE",
+      "dcid": "sdg/SP_PSR_OSATIS_HLTH_ALLAGE__T_ALLAREA_C_TOTAL_FEMALE"
+    },
+    {
+      "name": "Proportion of population who say that overall they are satisfied with the quality of primary education services (%): ALLAGE, _T, ALLAREA, C, TOTAL, , FEMALE",
+      "dcid": "sdg/SP_PSR_OSATIS_PRM_ALLAGE__T_ALLAREA_C_TOTAL_FEMALE"
+    },
+    {
+      "name": "Proportion of population who say that overall they are satisfied with the quality of secondary education services (%): ALLAGE, _T, ALLAREA, C, TOTAL, , FEMALE",
+      "dcid": "sdg/SP_PSR_OSATIS_SEC_ALLAGE__T_ALLAREA_C_TOTAL_FEMALE"
+    },
+    {
+      "name": "Proportions of positions in the judiciary compared to national distributions, Constitutional Court (ratio): ALLAGE, _T, C, TOTAL, FEMALE, JUDGES",
+      "dcid": "sdg/SG_DMK_JDC_CNS_ALLAGE__T_C_TOTAL_FEMALE_JUDGES"
+    },
+    {
+      "name": "Proportions of positions in the judiciary compared to national distributions, Constitutional Court (ratio): ALLAGE, _T, C, TOTAL, FEMALE, REGISTRARS",
+      "dcid": "sdg/SG_DMK_JDC_CNS_ALLAGE__T_C_TOTAL_FEMALE_REGISTRARS"
+    },
+    {
+      "name": "Proportions of positions in the judiciary compared to national distributions, Higher Courts (ratio): ALLAGE, _T, C, TOTAL, FEMALE, JUDGES",
+      "dcid": "sdg/SG_DMK_JDC_HGR_ALLAGE__T_C_TOTAL_FEMALE_JUDGES"
+    },
+    {
+      "name": "Proportions of positions in the judiciary compared to national distributions, Higher Courts (ratio): ALLAGE, _T, C, TOTAL, FEMALE, REGISTRARS",
+      "dcid": "sdg/SG_DMK_JDC_HGR_ALLAGE__T_C_TOTAL_FEMALE_REGISTRARS"
+    },
+    {
+      "name": "Proportions of positions in the judiciary compared to national distributions, Lower Courts (ratio): ALLAGE, _T, C, TOTAL, FEMALE, JUDGES",
+      "dcid": "sdg/SG_DMK_JDC_LWR_ALLAGE__T_C_TOTAL_FEMALE_JUDGES"
+    },
+    {
+      "name": "Proportions of positions in the judiciary compared to national distributions, Lower Courts (ratio): ALLAGE, _T, C, TOTAL, FEMALE, REGISTRARS",
+      "dcid": "sdg/SG_DMK_JDC_LWR_ALLAGE__T_C_TOTAL_FEMALE_REGISTRARS"
+    },
+    {
+      "name": "Proportions of positions in the public service compared to national distributions (ratio): ALLAGE, _T, C, TOTAL, FEMALE, TOTAL_PSP",
+      "dcid": "sdg/SG_DMK_PSRVC_ALLAGE__T_C_TOTAL_FEMALE_TOTAL_PSP"
+    },
+    {
+      "name": "Proportion of population satisfied with their last experience of public services, government services (%): ALLAGE, _T, ALLAREA, C, TOTAL, , ACCESS, FEMALE",
+      "dcid": "sdg/SP_PSR_SATIS_GOV_ALLAGE__T_ALLAREA_C_TOTAL_ACCESS_FEMALE"
+    },
+    {
+      "name": "Proportion of population satisfied with their last experience of public services, government services (%): ALLAGE, _T, ALLAREA, C, TOTAL, , AFFORD, FEMALE",
+      "dcid": "sdg/SP_PSR_SATIS_GOV_ALLAGE__T_ALLAREA_C_TOTAL_AFFORD_FEMALE"
+    },
+    {
+      "name": "Proportion of population satisfied with their last experience of public services, government services (%): ALLAGE, _T, ALLAREA, C, TOTAL, , ATTITUDE, FEMALE",
+      "dcid": "sdg/SP_PSR_SATIS_GOV_ALLAGE__T_ALLAREA_C_TOTAL_ATTITUDE_FEMALE"
+    },
+    {
+      "name": "Proportion of population satisfied with their last experience of public services, government services (%): ALLAGE, _T, ALLAREA, C, TOTAL, , AVERAGE, FEMALE",
+      "dcid": "sdg/SP_PSR_SATIS_GOV_ALLAGE__T_ALLAREA_C_TOTAL_AVERAGE_FEMALE"
+    },
+    {
+      "name": "Proportion of population satisfied with their last experience of public services, government services (%): ALLAGE, _T, ALLAREA, C, TOTAL, , EQUALITY, FEMALE",
+      "dcid": "sdg/SP_PSR_SATIS_GOV_ALLAGE__T_ALLAREA_C_TOTAL_EQUALITY_FEMALE"
+    },
+    {
+      "name": "Proportion of population satisfied with their last experience of public services, government services (%): ALLAGE, _T, ALLAREA, C, TOTAL, , QUALITY, FEMALE",
+      "dcid": "sdg/SP_PSR_SATIS_GOV_ALLAGE__T_ALLAREA_C_TOTAL_QUALITY_FEMALE"
+    },
+    {
+      "name": "Proportion of population satisfied with their last experience of public services, healthcare services (%): ALLAGE, _T, ALLAREA, C, TOTAL, , ACCESS, FEMALE",
+      "dcid": "sdg/SP_PSR_SATIS_HLTH_ALLAGE__T_ALLAREA_C_TOTAL_ACCESS_FEMALE"
+    },
+    {
+      "name": "Proportion of population satisfied with their last experience of public services, healthcare services (%): ALLAGE, _T, ALLAREA, C, TOTAL, , AFFORD, FEMALE",
+      "dcid": "sdg/SP_PSR_SATIS_HLTH_ALLAGE__T_ALLAREA_C_TOTAL_AFFORD_FEMALE"
+    },
+    {
+      "name": "Proportion of population satisfied with their last experience of public services, healthcare services (%): ALLAGE, _T, ALLAREA, C, TOTAL, , ATTITUDE, FEMALE",
+      "dcid": "sdg/SP_PSR_SATIS_HLTH_ALLAGE__T_ALLAREA_C_TOTAL_ATTITUDE_FEMALE"
+    },
+    {
+      "name": "Proportion of population satisfied with their last experience of public services, healthcare services (%): ALLAGE, _T, ALLAREA, C, TOTAL, , AVERAGE, FEMALE",
+      "dcid": "sdg/SP_PSR_SATIS_HLTH_ALLAGE__T_ALLAREA_C_TOTAL_AVERAGE_FEMALE"
+    },
+    {
+      "name": "Proportion of population satisfied with their last experience of public services, healthcare services (%): ALLAGE, _T, ALLAREA, C, TOTAL, , EQUALITY, FEMALE",
+      "dcid": "sdg/SP_PSR_SATIS_HLTH_ALLAGE__T_ALLAREA_C_TOTAL_EQUALITY_FEMALE"
+    },
+    {
+      "name": "Proportion of population satisfied with their last experience of public services, healthcare services (%): ALLAGE, _T, ALLAREA, C, TOTAL, , QUALITY, FEMALE",
+      "dcid": "sdg/SP_PSR_SATIS_HLTH_ALLAGE__T_ALLAREA_C_TOTAL_QUALITY_FEMALE"
+    },
+    {
+      "name": "Proportion of population satisfied with their last experience of public services, primary education services (%): ALLAGE, _T, ALLAREA, C, TOTAL, , ACCESS, FEMALE",
+      "dcid": "sdg/SP_PSR_SATIS_PRM_ALLAGE__T_ALLAREA_C_TOTAL_ACCESS_FEMALE"
+    },
+    {
+      "name": "Proportion of population satisfied with their last experience of public services, primary education services (%): ALLAGE, _T, ALLAREA, C, TOTAL, , AFFORD, FEMALE",
+      "dcid": "sdg/SP_PSR_SATIS_PRM_ALLAGE__T_ALLAREA_C_TOTAL_AFFORD_FEMALE"
+    },
+    {
+      "name": "Proportion of population satisfied with their last experience of public services, primary education services (%): ALLAGE, _T, ALLAREA, C, TOTAL, , ATTITUDE, FEMALE",
+      "dcid": "sdg/SP_PSR_SATIS_PRM_ALLAGE__T_ALLAREA_C_TOTAL_ATTITUDE_FEMALE"
+    },
+    {
+      "name": "Proportion of population satisfied with their last experience of public services, primary education services (%): ALLAGE, _T, ALLAREA, C, TOTAL, , AVERAGE, FEMALE",
+      "dcid": "sdg/SP_PSR_SATIS_PRM_ALLAGE__T_ALLAREA_C_TOTAL_AVERAGE_FEMALE"
+    },
+    {
+      "name": "Proportion of population satisfied with their last experience of public services, primary education services (%): ALLAGE, _T, ALLAREA, C, TOTAL, , EQUALITY, FEMALE",
+      "dcid": "sdg/SP_PSR_SATIS_PRM_ALLAGE__T_ALLAREA_C_TOTAL_EQUALITY_FEMALE"
+    },
+    {
+      "name": "Proportion of population satisfied with their last experience of public services, primary education services (%): ALLAGE, _T, ALLAREA, C, TOTAL, , QUALITY, FEMALE",
+      "dcid": "sdg/SP_PSR_SATIS_PRM_ALLAGE__T_ALLAREA_C_TOTAL_QUALITY_FEMALE"
+    },
+    {
+      "name": "Proportion of population satisfied with their last experience of public services, secondary education services (%): ALLAGE, _T, ALLAREA, C, TOTAL, ACCESS, FEMALE",
+      "dcid": "sdg/SP_PSR_SATIS_SEC_ALLAGE__T_ALLAREA_C_TOTAL_ACCESS_FEMALE"
+    },
+    {
+      "name": "Proportion of population satisfied with their last experience of public services, secondary education services (%): ALLAGE, _T, ALLAREA, C, TOTAL, AFFORD, FEMALE",
+      "dcid": "sdg/SP_PSR_SATIS_SEC_ALLAGE__T_ALLAREA_C_TOTAL_AFFORD_FEMALE"
+    },
+    {
+      "name": "Proportion of population satisfied with their last experience of public services, secondary education services (%): ALLAGE, _T, ALLAREA, C, TOTAL, ATTITUDE, FEMALE",
+      "dcid": "sdg/SP_PSR_SATIS_SEC_ALLAGE__T_ALLAREA_C_TOTAL_ATTITUDE_FEMALE"
+    },
+    {
+      "name": "Proportion of population satisfied with their last experience of public services, secondary education services (%): ALLAGE, _T, ALLAREA, C, TOTAL, AVERAGE, FEMALE",
+      "dcid": "sdg/SP_PSR_SATIS_SEC_ALLAGE__T_ALLAREA_C_TOTAL_AVERAGE_FEMALE"
+    },
+    {
+      "name": "Proportion of population satisfied with their last experience of public services, secondary education services (%): ALLAGE, _T, ALLAREA, C, TOTAL, EQUALITY, FEMALE",
+      "dcid": "sdg/SP_PSR_SATIS_SEC_ALLAGE__T_ALLAREA_C_TOTAL_EQUALITY_FEMALE"
+    },
+    {
+      "name": "Proportion of population satisfied with their last experience of public services, secondary education services (%): ALLAGE, _T, ALLAREA, C, TOTAL, QUALITY, FEMALE",
+      "dcid": "sdg/SP_PSR_SATIS_SEC_ALLAGE__T_ALLAREA_C_TOTAL_QUALITY_FEMALE"
+    },
+    {
+      "name": "Proportion of population who believe decision-making is inclusive (%): ALLAGE, _T, _T, ALLAREA, C, TOTAL, , FEMALE",
+      "dcid": "sdg/IU_DMK_INCL_ALLAGE__T__T_ALLAREA_C_TOTAL_FEMALE"
+    },
+    {
+      "name": "Proportion of population who believe decision-making is inclusive and responsive (%): ALLAGE, _T, _T, ALLAREA, C, TOTAL, , FEMALE",
+      "dcid": "sdg/IU_DMK_ICRS_ALLAGE__T__T_ALLAREA_C_TOTAL_FEMALE"
+    },
+    {
+      "name": "Proportion of population who believe decision-making is responsive (%): ALLAGE, _T, _T, ALLAREA, C, TOTAL, , FEMALE",
+      "dcid": "sdg/IU_DMK_RESP_ALLAGE__T__T_ALLAREA_C_TOTAL_FEMALE"
     }
   ],
   "statVarGroups": [
@@ -22685,6 +25593,36 @@
       ]
     },
     {
+      "dcid": "sdg/g/SP_DYN_ADKL",
+      "name": "Adolescent birth rate (per 1,000 women aged 15-19 and 10-14 years)",
+      "statVars": [
+        {
+          "name": "Adolescent birth rate (per 1,000 women aged 15-19 and 10-14 years): 10-14, , C, FEMALE",
+          "dcid": "sdg/SP_DYN_ADKL_10-14_C_FEMALE"
+        },
+        {
+          "name": "Adolescent birth rate (per 1,000 women aged 15-19 and 10-14 years): 10-14, , CA, FEMALE",
+          "dcid": "sdg/SP_DYN_ADKL_10-14_CA_FEMALE"
+        },
+        {
+          "name": "Adolescent birth rate (per 1,000 women aged 15-19 and 10-14 years): 10-14, , E, FEMALE",
+          "dcid": "sdg/SP_DYN_ADKL_10-14_E_FEMALE"
+        },
+        {
+          "name": "Adolescent birth rate (per 1,000 women aged 15-19 and 10-14 years): 15-19, , C, FEMALE",
+          "dcid": "sdg/SP_DYN_ADKL_15-19_C_FEMALE"
+        },
+        {
+          "name": "Adolescent birth rate (per 1,000 women aged 15-19 and 10-14 years): 15-19, , CA, FEMALE",
+          "dcid": "sdg/SP_DYN_ADKL_15-19_CA_FEMALE"
+        },
+        {
+          "name": "Adolescent birth rate (per 1,000 women aged 15-19 and 10-14 years): 15-19, , E, FEMALE",
+          "dcid": "sdg/SP_DYN_ADKL_15-19_E_FEMALE"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/Person_ActivityFrequency-AtLeastOnceADay_Gender-Female_HealthBehavior-ConsumptionOfFruits",
       "name": "Person With Activity Frequency = At Least Once ADay, Gender = Female, Health Behavior = Consumption of Fruits",
       "statVars": [
@@ -28035,6 +30973,24 @@
       ]
     },
     {
+      "dcid": "sdg/g/SP_GNP_WNOWNS",
+      "name": "Share of women among owners or rights-bearers of agricultural land, by type of tenure (%)",
+      "statVars": [
+        {
+          "name": "Share of women among owners or rights-bearers of agricultural land, by type of tenure (%): C",
+          "dcid": "sdg/SP_GNP_WNOWNS_C"
+        },
+        {
+          "name": "Share of women among owners or rights-bearers of agricultural land, by type of tenure (%): E",
+          "dcid": "sdg/SP_GNP_WNOWNS_E"
+        },
+        {
+          "name": "Share of women among owners or rights-bearers of agricultural land, by type of tenure (%): NA",
+          "dcid": "sdg/SP_GNP_WNOWNS_NA"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_CrimeType-AggravatedAssault_TargetedGender-Female",
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Aggravated Assault, Targeted Gender = Female",
       "statVars": [
@@ -33147,6 +36103,20 @@
       ]
     },
     {
+      "dcid": "dc/g/Person_Gender-Female_HealthBehavior-TobaccoUse",
+      "name": "Person With Gender = Female, Health Behavior = Tobacco Use",
+      "statVars": [
+        {
+          "name": "Prevalence of Current Tobacco Use Among Females",
+          "dcid": "Percent_TobaccoUsing_In_Count_Person_Female"
+        },
+        {
+          "name": "Prevalence of Daily Tobacco Use Among Females",
+          "dcid": "Percent_Daily_TobaccoUsing_In_Count_Person_Female"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/Person_Gender-Female_HealthBehavior-Underweight",
       "name": "Person With Gender = Female, Health Behavior = Underweight",
       "statVars": [
@@ -33941,6 +36911,90 @@
         {
           "name": "Population: Female, Now Married, Separated, Married Spouse Absent",
           "dcid": "dc/wj5y1vh8thnrb"
+        }
+      ]
+    },
+    {
+      "dcid": "sdg/g/VC_VAW_MARR",
+      "name": "Proportion of ever-partnered women and girls subjected to physical and/or sexual violence by a current or former intimate partner in the previous 12 months, by age (%)",
+      "statVars": [
+        {
+          "name": "Proportion of ever-partnered women and girls subjected to physical and/or sexual violence by a current or former intimate partner in the previous 12 months, by age (%): 15-49, E, FEMALE",
+          "dcid": "sdg/VC_VAW_MARR_15-49_E_FEMALE"
+        },
+        {
+          "name": "Proportion of ever-partnered women and girls subjected to physical and/or sexual violence by a current or former intimate partner in the previous 12 months, by age (%): 15gte, E, FEMALE",
+          "dcid": "sdg/VC_VAW_MARR_15gte_E_FEMALE"
+        }
+      ]
+    },
+    {
+      "dcid": "sdg/g/SH_STA_FGMS",
+      "name": "Proportion of girls and women aged 15-49 years who have undergone female genital mutilation/cutting, by age (%)",
+      "statVars": [
+        {
+          "name": "Proportion of girls and women aged 15-49 years who have undergone female genital mutilation/cutting, by age (%): 15-49, C, FEMALE",
+          "dcid": "sdg/SH_STA_FGMS_15-49_C_FEMALE"
+        },
+        {
+          "name": "Proportion of girls and women aged 15-49 years who have undergone female genital mutilation/cutting, by age (%): 15-49, CA, FEMALE",
+          "dcid": "sdg/SH_STA_FGMS_15-49_CA_FEMALE"
+        }
+      ]
+    },
+    {
+      "dcid": "sdg/g/SH_STA_ANEM",
+      "name": "Proportion of women aged 15-49 years with anaemia (%)",
+      "statVars": [
+        {
+          "name": "Proportion of women aged 15-49 years with anaemia (%): 15-49, E, FEMALE",
+          "dcid": "sdg/SH_STA_ANEM_15-49_E_FEMALE"
+        },
+        {
+          "name": "Proportion of women aged 15-49 years with anaemia (%): 15-49, M, FEMALE",
+          "dcid": "sdg/SH_STA_ANEM_15-49_M_FEMALE"
+        }
+      ]
+    },
+    {
+      "dcid": "sdg/g/SP_DYN_MRBF15",
+      "name": "Proportion of women aged 20-24 years who were married or in a union before age 15 (%)",
+      "statVars": [
+        {
+          "name": "Proportion of women aged 20-24 years who were married or in a union before age 15 (%): 20-24, C, FEMALE",
+          "dcid": "sdg/SP_DYN_MRBF15_20-24_C_FEMALE"
+        },
+        {
+          "name": "Proportion of women aged 20-24 years who were married or in a union before age 15 (%): 20-24, CA, FEMALE",
+          "dcid": "sdg/SP_DYN_MRBF15_20-24_CA_FEMALE"
+        }
+      ]
+    },
+    {
+      "dcid": "sdg/g/SP_DYN_MRBF18",
+      "name": "Proportion of women aged 20-24 years who were married or in a union before age 18 (%)",
+      "statVars": [
+        {
+          "name": "Proportion of women aged 20-24 years who were married or in a union before age 18 (%): 20-24, C, FEMALE",
+          "dcid": "sdg/SP_DYN_MRBF18_20-24_C_FEMALE"
+        },
+        {
+          "name": "Proportion of women aged 20-24 years who were married or in a union before age 18 (%): 20-24, CA, FEMALE",
+          "dcid": "sdg/SP_DYN_MRBF18_20-24_CA_FEMALE"
+        }
+      ]
+    },
+    {
+      "dcid": "sdg/g/IC_GEN_MGTN",
+      "name": "Proportion of women in senior and middle management positions (%)",
+      "statVars": [
+        {
+          "name": "Proportion of women in senior and middle management positions (%): C, A, FEMALE",
+          "dcid": "sdg/IC_GEN_MGTN_C_A_FEMALE"
+        },
+        {
+          "name": "Proportion of women in senior and middle management positions (%): C, U, FEMALE",
+          "dcid": "sdg/IC_GEN_MGTN_C_U_FEMALE"
         }
       ]
     },
@@ -36297,6 +39351,34 @@
       ]
     },
     {
+      "dcid": "sdg/g/SH_STA_ANEM_NPRG",
+      "name": "Proportion of women aged 15-49 years with anaemia, non-pregnant (%)",
+      "statVars": [
+        {
+          "name": "Proportion of women aged 15-49 years with anaemia, non-pregnant (%): 15-49, E, FEMALE",
+          "dcid": "sdg/SH_STA_ANEM_NPRG_15-49_E_FEMALE"
+        },
+        {
+          "name": "Proportion of women aged 15-49 years with anaemia, non-pregnant (%): 15-49, M, FEMALE",
+          "dcid": "sdg/SH_STA_ANEM_NPRG_15-49_M_FEMALE"
+        }
+      ]
+    },
+    {
+      "dcid": "sdg/g/SH_STA_ANEM_PREG",
+      "name": "Proportion of women aged 15-49 years with anaemia, pregnant (%)",
+      "statVars": [
+        {
+          "name": "Proportion of women aged 15-49 years with anaemia, pregnant (%): 15-49, E, FEMALE",
+          "dcid": "sdg/SH_STA_ANEM_PREG_15-49_E_FEMALE"
+        },
+        {
+          "name": "Proportion of women aged 15-49 years with anaemia, pregnant (%): 15-49, M, FEMALE",
+          "dcid": "sdg/SH_STA_ANEM_PREG_15-49_M_FEMALE"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_OffenderEthnicity-HispanicOrLatino_OffenderType-OffenderEthnicityKnown_TargetedGender-Female",
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Offender Ethnicity = Hispanic or Latino, Offender Type = Offender Ethnicity Known, Targeted Gender = Female",
       "statVars": [
@@ -36545,160 +39627,6 @@
         {
           "name": "Count of Medical Condition Incident: 0 - 4 Years, Female, Musculo Skeletal Condition, Urban (Per Capita)",
           "dcid": "Count_MedicalConditionIncident_0To4Years_Female_ConditionMusculoSkeletalCondition_Urban_AsAFractionOf_Count_Person"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/MedicalConditionIncident_Age-Years0To4_Gender-Female_MedicalCondition-NSSHealthOtherCondition_PlaceOfResidenceClassification",
-      "name": "Medical Condition Incident With Age = 0 - 4 Years, Gender = Female, Medical Condition = NSSHealth Other Condition, Place of Residence Classification",
-      "statVars": [
-        {
-          "name": "Count of Medical Condition Incident: 0 - 4 Years, Female, NSSHealth Other Condition, Rural (Per Capita)",
-          "dcid": "Count_MedicalConditionIncident_0To4Years_Female_ConditionNSSHealthOtherCondition_Rural_AsAFractionOf_Count_Person"
-        },
-        {
-          "name": "Count of Medical Condition Incident: 0 - 4 Years, Female, NSSHealth Other Condition, Urban (Per Capita)",
-          "dcid": "Count_MedicalConditionIncident_0To4Years_Female_ConditionNSSHealthOtherCondition_Urban_AsAFractionOf_Count_Person"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/MedicalConditionIncident_Age-Years0To4_Gender-Female_MedicalCondition-ObstetricCondition_PlaceOfResidenceClassification",
-      "name": "Medical Condition Incident With Age = 0 - 4 Years, Gender = Female, Medical Condition = Obstetric Condition, Place of Residence Classification",
-      "statVars": [
-        {
-          "name": "Count of Medical Condition Incident: 0 - 4 Years, Female, Obstetric Condition, Rural (Per Capita)",
-          "dcid": "Count_MedicalConditionIncident_0To4Years_Female_ConditionObstetricCondition_Rural_AsAFractionOf_Count_Person"
-        },
-        {
-          "name": "Count of Medical Condition Incident: 0 - 4 Years, Female, Obstetric Condition, Urban (Per Capita)",
-          "dcid": "Count_MedicalConditionIncident_0To4Years_Female_ConditionObstetricCondition_Urban_AsAFractionOf_Count_Person"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/MedicalConditionIncident_Age-Years0To4_Gender-Female_MedicalCondition-PsychiatricNeurologicalCondition_PlaceOfResidenceClassification",
-      "name": "Medical Condition Incident With Age = 0 - 4 Years, Gender = Female, Medical Condition = Psychiatric Neurological Condition, Place of Residence Classification",
-      "statVars": [
-        {
-          "name": "Count of Medical Condition Incident: 0 - 4 Years, Female, Psychiatric Neurological Condition, Rural (Per Capita)",
-          "dcid": "Count_MedicalConditionIncident_0To4Years_Female_ConditionPsychiatricNeurologicalCondition_Rural_AsAFractionOf_Count_Person"
-        },
-        {
-          "name": "Count of Medical Condition Incident: 0 - 4 Years, Female, Psychiatric Neurological Condition, Urban (Per Capita)",
-          "dcid": "Count_MedicalConditionIncident_0To4Years_Female_ConditionPsychiatricNeurologicalCondition_Urban_AsAFractionOf_Count_Person"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/MedicalConditionIncident_Age-Years0To4_Gender-Female_MedicalCondition-RespiratoryDisease_PlaceOfResidenceClassification",
-      "name": "Medical Condition Incident With Age = 0 - 4 Years, Gender = Female, Medical Condition = Respiratory Disease, Place of Residence Classification",
-      "statVars": [
-        {
-          "name": "Count of Medical Condition Incident: 0 - 4 Years, Female, Respiratory Disease, Rural (Per Capita)",
-          "dcid": "Count_MedicalConditionIncident_0To4Years_Female_ConditionRespiratoryDisease_Rural_AsAFractionOf_Count_Person"
-        },
-        {
-          "name": "Count of Medical Condition Incident: 0 - 4 Years, Female, Respiratory Disease, Urban (Per Capita)",
-          "dcid": "Count_MedicalConditionIncident_0To4Years_Female_ConditionRespiratoryDisease_Urban_AsAFractionOf_Count_Person"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/MedicalConditionIncident_Age-Years0To4_Gender-Female_MedicalCondition-SkinDisease_PlaceOfResidenceClassification",
-      "name": "Medical Condition Incident With Age = 0 - 4 Years, Gender = Female, Medical Condition = Skin Disease, Place of Residence Classification",
-      "statVars": [
-        {
-          "name": "Count of Medical Condition Incident: 0 - 4 Years, Female, Skin Disease, Rural (Per Capita)",
-          "dcid": "Count_MedicalConditionIncident_0To4Years_Female_ConditionSkinDisease_Rural_AsAFractionOf_Count_Person"
-        },
-        {
-          "name": "Count of Medical Condition Incident: 0 - 4 Years, Female, Skin Disease, Urban (Per Capita)",
-          "dcid": "Count_MedicalConditionIncident_0To4Years_Female_ConditionSkinDisease_Urban_AsAFractionOf_Count_Person"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/MedicalConditionIncident_Age-Years15To29_Gender-Female_MedicalCondition-BloodDisease_PlaceOfResidenceClassification",
-      "name": "Medical Condition Incident With Age = 15 - 29 Years, Gender = Female, Medical Condition = Blood Disease, Place of Residence Classification",
-      "statVars": [
-        {
-          "name": "Count of Medical Condition Incident: 15 - 29 Years, Female, Blood Disease, Rural (Per Capita)",
-          "dcid": "Count_MedicalConditionIncident_15To29Years_Female_ConditionBloodDisease_Rural_AsAFractionOf_Count_Person"
-        },
-        {
-          "name": "Count of Medical Condition Incident: 15 - 29 Years, Female, Blood Disease, Urban (Per Capita)",
-          "dcid": "Count_MedicalConditionIncident_15To29Years_Female_ConditionBloodDisease_Urban_AsAFractionOf_Count_Person"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/MedicalConditionIncident_Age-Years15To29_Gender-Female_MedicalCondition-Cancer_PlaceOfResidenceClassification",
-      "name": "Medical Condition Incident With Age = 15 - 29 Years, Gender = Female, Medical Condition = Cancer, Place of Residence Classification",
-      "statVars": [
-        {
-          "name": "Count of Medical Condition Incident: 15 - 29 Years, Female, Cancer, Rural (Per Capita)",
-          "dcid": "Count_MedicalConditionIncident_15To29Years_Female_ConditionCancer_Rural_AsAFractionOf_Count_Person"
-        },
-        {
-          "name": "Count of Medical Condition Incident: 15 - 29 Years, Female, Cancer, Urban (Per Capita)",
-          "dcid": "Count_MedicalConditionIncident_15To29Years_Female_ConditionCancer_Urban_AsAFractionOf_Count_Person"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/MedicalConditionIncident_Age-Years15To29_Gender-Female_MedicalCondition-CardiovascularDisease_PlaceOfResidenceClassification",
-      "name": "Medical Condition Incident With Age = 15 - 29 Years, Gender = Female, Medical Condition = Cardiovascular Disease, Place of Residence Classification",
-      "statVars": [
-        {
-          "name": "Count of Medical Condition Incident: 15 - 29 Years, Female, Cardiovascular Disease, Rural (Per Capita)",
-          "dcid": "Count_MedicalConditionIncident_15To29Years_Female_ConditionCardiovascularDisease_Rural_AsAFractionOf_Count_Person"
-        },
-        {
-          "name": "Count of Medical Condition Incident: 15 - 29 Years, Female, Cardiovascular Disease, Urban (Per Capita)",
-          "dcid": "Count_MedicalConditionIncident_15To29Years_Female_ConditionCardiovascularDisease_Urban_AsAFractionOf_Count_Person"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/MedicalConditionIncident_Age-Years15To29_Gender-Female_MedicalCondition-EarCondition_PlaceOfResidenceClassification",
-      "name": "Medical Condition Incident With Age = 15 - 29 Years, Gender = Female, Medical Condition = Ear Condition, Place of Residence Classification",
-      "statVars": [
-        {
-          "name": "Count of Medical Condition Incident: 15 - 29 Years, Female, Ear Condition, Rural (Per Capita)",
-          "dcid": "Count_MedicalConditionIncident_15To29Years_Female_ConditionEarCondition_Rural_AsAFractionOf_Count_Person"
-        },
-        {
-          "name": "Count of Medical Condition Incident: 15 - 29 Years, Female, Ear Condition, Urban (Per Capita)",
-          "dcid": "Count_MedicalConditionIncident_15To29Years_Female_ConditionEarCondition_Urban_AsAFractionOf_Count_Person"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/MedicalConditionIncident_Age-Years15To29_Gender-Female_MedicalCondition-EndocrineMetabolicCondition_PlaceOfResidenceClassification",
-      "name": "Medical Condition Incident With Age = 15 - 29 Years, Gender = Female, Medical Condition = Endocrine Metabolic Condition, Place of Residence Classification",
-      "statVars": [
-        {
-          "name": "Count of Medical Condition Incident: 15 - 29 Years, Female, Endocrine Metabolic Condition, Rural (Per Capita)",
-          "dcid": "Count_MedicalConditionIncident_15To29Years_Female_ConditionEndocrineMetabolicCondition_Rural_AsAFractionOf_Count_Person"
-        },
-        {
-          "name": "Count of Medical Condition Incident: 15 - 29 Years, Female, Endocrine Metabolic Condition, Urban (Per Capita)",
-          "dcid": "Count_MedicalConditionIncident_15To29Years_Female_ConditionEndocrineMetabolicCondition_Urban_AsAFractionOf_Count_Person"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/MedicalConditionIncident_Age-Years15To29_Gender-Female_MedicalCondition-EyeCondition_PlaceOfResidenceClassification",
-      "name": "Medical Condition Incident With Age = 15 - 29 Years, Gender = Female, Medical Condition = Eye Condition, Place of Residence Classification",
-      "statVars": [
-        {
-          "name": "Count of Medical Condition Incident: 15 - 29 Years, Female, Eye Condition, Rural (Per Capita)",
-          "dcid": "Count_MedicalConditionIncident_15To29Years_Female_ConditionEyeCondition_Rural_AsAFractionOf_Count_Person"
-        },
-        {
-          "name": "Count of Medical Condition Incident: 15 - 29 Years, Female, Eye Condition, Urban (Per Capita)",
-          "dcid": "Count_MedicalConditionIncident_15To29Years_Female_ConditionEyeCondition_Urban_AsAFractionOf_Count_Person"
         }
       ]
     }

@@ -12,7 +12,7 @@
             "CensusZipCodeTabulationArea"
           ],
           "dcid": "zip/93210",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "93426",
@@ -20,7 +20,7 @@
             "CensusZipCodeTabulationArea"
           ],
           "dcid": "zip/93426",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "93451",
@@ -28,7 +28,7 @@
             "CensusZipCodeTabulationArea"
           ],
           "dcid": "zip/93451",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "93461",
@@ -36,7 +36,7 @@
             "CensusZipCodeTabulationArea"
           ],
           "dcid": "zip/93461",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "93930",
@@ -44,7 +44,7 @@
             "CensusZipCodeTabulationArea"
           ],
           "dcid": "zip/93930",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         }
       ]
     },
