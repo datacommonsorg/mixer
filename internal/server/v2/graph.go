@@ -16,9 +16,14 @@
 package v2
 
 type Arc struct {
-	out      bool
-	prop     string
+	// Whether it's out or in arc.
+	out bool
+	// The property of the arc. This is when property is specified without []
+	prop string
+	// The wildcard used for the property.
 	wildcard string
-	props    []string
-	filter   map[string]string
+	// The properties of the arc. This is when property is specified with []
+	props []string
+	// The filter of the arc.
+	filter map[string]string
 }
