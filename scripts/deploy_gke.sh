@@ -93,7 +93,7 @@ RELEASE=${ENV//_/-}
 IMAGE_ERR=$(gcloud container images describe gcr.io/datcom-ci/datacommons-mixer:"$TAG" > /dev/null ; echo $?)
 if [[ "$IMAGE_ERR" == "1" ]];  then ./scripts/push_binary.sh "$TAG"; fi
 
-PENDING=$(helm history $RELEASE | grep "pending")
+PENDING=$(helm history "$RELEASE" | grep pending)
 if [[ -n "$PENDING" ]]; then
   echo "Found pending helm release, deleting"
   echo "$PENDING"
