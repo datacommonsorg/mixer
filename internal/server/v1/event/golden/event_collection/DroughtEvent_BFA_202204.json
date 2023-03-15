@@ -73,11 +73,11 @@
           }
         },
         "dcid": "droughtEvent/2022-05_grid_1/12_2",
-        "provenanceId": "dc/8cj6de2"
+        "provenanceId": "dc/base/NOAA_GPCC_StandardardizedPrecipitationIndex_Event"
       }
     ],
     "provenanceInfo": {
-      "dc/8cj6de2": {
+      "dc/base/NOAA_GPCC_StandardardizedPrecipitationIndex_Event": {
         "importName": "NOAA_GPCC_StandardardizedPrecipitationIndex_Event",
         "provenanceUrl": "https://www.drought.gov/data-maps-tools/global-precipitation-climatology-centre-gpcc-standardized-precipitation-index-spi",
         "domain": "noaa.gov"

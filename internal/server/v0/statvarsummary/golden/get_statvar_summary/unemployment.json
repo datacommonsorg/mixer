@@ -75,8 +75,8 @@
               "name": "Florida"
             }
           ],
-          "minValue": 1.3,
-          "maxValue": 28.5
+          "minValue": 1.4,
+          "maxValue": 30.6
         }
       },
       "provenanceSummary": {
@@ -90,7 +90,7 @@
                 "observationPeriod": "P1M"
               },
               "earliestDate": "1948-01",
-              "latestDate": "2023-01",
+              "latestDate": "2023-02",
               "placeTypeSummary": {
                 "Country": {
                   "placeCount": 1,
@@ -106,7 +106,7 @@
               },
               "minValue": 2.5,
               "maxValue": 14.7,
-              "observationCount": 901,
+              "observationCount": 902,
               "timeSeriesCount": 1
             },
             {
@@ -135,7 +135,7 @@
               "timeSeriesCount": 1
             }
           ],
-          "observationCount": 1201,
+          "observationCount": 1202,
           "timeSeriesCount": 2
         },
         "dc/base/BLS_LAUS": {
@@ -148,7 +148,7 @@
                 "observationPeriod": "P1M"
               },
               "earliestDate": "1976-01",
-              "latestDate": "2022-12",
+              "latestDate": "2023-01",
               "placeTypeSummary": {
                 "City": {
                   "placeCount": 1,
@@ -158,8 +158,8 @@
                       "name": "New York"
                     }
                   ],
-                  "minValue": 3.7,
-                  "maxValue": 21
+                  "minValue": 3.8,
+                  "maxValue": 21.4
                 },
                 "State": {
                   "placeCount": 52,
@@ -177,13 +177,13 @@
                       "name": "Florida"
                     }
                   ],
-                  "minValue": 1.8,
-                  "maxValue": 28.5
+                  "minValue": 1.9,
+                  "maxValue": 30.6
                 }
               },
-              "minValue": 1.8,
-              "maxValue": 28.5,
-              "observationCount": 29886,
+              "minValue": 1.9,
+              "maxValue": 30.6,
+              "observationCount": 29943,
               "timeSeriesCount": 53
             },
             {
@@ -192,7 +192,7 @@
                 "observationPeriod": "P1M"
               },
               "earliestDate": "1976-01",
-              "latestDate": "2022-12",
+              "latestDate": "2023-01",
               "placeTypeSummary": {
                 "City": {
                   "placeCount": 3086,
@@ -248,13 +248,13 @@
                       "name": "Florida"
                     }
                   ],
-                  "minValue": 1.3,
-                  "maxValue": 27.5
+                  "minValue": 1.4,
+                  "maxValue": 30.3
                 }
               },
               "minValue": 0,
               "maxValue": 100,
-              "observationCount": 2444579,
+              "observationCount": 2444637,
               "timeSeriesCount": 6358
             },
             {
@@ -263,7 +263,7 @@
                 "observationPeriod": "P1Y"
               },
               "earliestDate": "1976",
-              "latestDate": "2021",
+              "latestDate": "2022",
               "placeTypeSummary": {
                 "City": {
                   "placeCount": 3086,
@@ -325,14 +325,14 @@
               },
               "minValue": 0,
               "maxValue": 100,
-              "observationCount": 197290,
+              "observationCount": 197347,
               "timeSeriesCount": 6358
             }
           ],
-          "observationCount": 2671755,
+          "observationCount": 2671927,
           "timeSeriesCount": 12769
         },
-        "dc/yd4sfb": {
+        "dc/base/EurostatData": {
           "importName": "EurostatData",
           "releaseFrequency": "P1Y",
           "seriesSummary": [

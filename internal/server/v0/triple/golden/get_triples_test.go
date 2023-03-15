@@ -84,7 +84,7 @@ func TestGetTriples(t *testing.T) {
 				[]int{5, 5},
 			},
 			{
-				[]string{"dc/d7tbsb1"},
+				[]string{"dc/base/HumanReadableStatVars"},
 				"limit1.json",
 				false,
 				1,

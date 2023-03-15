@@ -136,7 +136,7 @@
         "id": "dc/g/Person_Gender",
         "specializedEntity": "Gender",
         "displayName": "Person by Gender",
-        "descendentStatVarCount": 2432
+        "descendentStatVarCount": 2438
       },
       {
         "id": "dc/g/Person_HealthInsurance",
@@ -248,7 +248,7 @@
         "displayName": "Household by Transportation Type"
       }
     ],
-    "descendentStatVarCount": 3316,
+    "descendentStatVarCount": 3322,
     "parentStatVarGroups": [
       "dc/g/Root"
     ]

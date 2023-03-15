@@ -12,7 +12,7 @@
             "CensusZipCodeTabulationArea"
           ],
           "dcid": "zip/95004",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "95076",
@@ -20,7 +20,7 @@
             "CensusZipCodeTabulationArea"
           ],
           "dcid": "zip/95076",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         }
       ]
     },

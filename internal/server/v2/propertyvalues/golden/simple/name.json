@@ -4,7 +4,7 @@
       "node": "geoId/06",
       "values": [
         {
-          "provenanceId": "dc/5n63hr1",
+          "provenanceId": "dc/base/WikidataOtherIdGeos",
           "value": "California"
         }
       ]
@@ -13,7 +13,7 @@
       "node": "bio/hs",
       "values": [
         {
-          "provenanceId": "dc/hgp9hn1",
+          "provenanceId": "dc/base/Species",
           "value": "HomoSapiens"
         }
       ]
