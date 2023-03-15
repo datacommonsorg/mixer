@@ -8,6 +8,7 @@ mixer:
   tmcfCSVFolder: food
 
 ingress:
+  enabled: true
   name: mixer-ingress-private
   annotations:
     { ingress.gcp.kubernetes.io/pre-shared-cert: "mixer-certificate" }
