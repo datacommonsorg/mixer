@@ -68,3 +68,123 @@ func TestSplit(t *testing.T) {
 		}
 	}
 }
+
+func TestParseArc(t *testing.T) {
+	for _, c := range []struct {
+		s     string
+		arc   *Arc
+		valid bool
+	}{
+		{
+			"<-",
+			&Arc{
+				out: false,
+			},
+			true,
+		},
+		{
+			"<-*",
+			&Arc{
+				out:  false,
+				prop: "*",
+			},
+			true,
+		},
+		{
+			"->?",
+			&Arc{
+				out:  true,
+				prop: "?",
+			},
+			true,
+		},
+		{
+			"->#",
+			&Arc{
+				out:  true,
+				prop: "#",
+			},
+			true,
+		},
+		{
+			"->prop1",
+			&Arc{
+				out:  true,
+				prop: "prop1",
+			},
+			true,
+		},
+		{
+			"<-[dcid, displayName, definition]",
+			&Arc{
+				out:   false,
+				props: []string{"dcid", "displayName", "definition"},
+			},
+			true,
+		},
+		{
+			"<-[dcid]",
+			&Arc{
+				out:   false,
+				props: []string{"dcid"},
+			},
+			true,
+		},
+		{
+			"->containedInPlace+",
+			&Arc{
+				out:      true,
+				prop:     "containedInPlace",
+				wildcard: "+",
+			},
+			true,
+		},
+		{
+			"<-observationAbout{variableMeasured: Count_Person}",
+			&Arc{
+				out:  false,
+				prop: "observationAbout",
+				filter: map[string]string{
+					"variableMeasured": "Count_Person",
+				},
+			},
+			true,
+		},
+		{
+			"<-prop{p:v}",
+			&Arc{
+				out:  false,
+				prop: "prop",
+				filter: map[string]string{
+					"p": "v",
+				},
+			},
+			true,
+		},
+		{
+			"<-[dcid",
+			nil,
+			false,
+		},
+		{
+			"<-prop{dcid}",
+			nil,
+			false,
+		},
+	} {
+		result, err := parseArc(c.s)
+		if !c.valid {
+			if err == nil {
+				t.Errorf("parseArc(%s) expect error, but got nil", c.s)
+			}
+			continue
+		}
+		if err != nil {
+			t.Errorf("parseArc(%s) got error %v", c.s, err)
+			continue
+		}
+		if diff := cmp.Diff(result, c.arc, cmp.AllowUnexported(Arc{})); diff != "" {
+			t.Errorf("v(%s) got diff %v", c.s, diff)
+		}
+	}
+}
