@@ -67,64 +67,46 @@ func parseArc(s string) (*Arc, error) {
 	if len(s) == 0 {
 		return arc, nil
 	}
+	// [prop1, prop2]
 	if s[0] == '[' {
 		if s[len(s)-1] != ']' {
 			return nil, status.Errorf(
 				codes.InvalidArgument, "invalid filter string: %s", s)
 		}
 		s = s[1 : len(s)-1]
-		// [prop1, prop2]
-		props := []string{}
-		pos := -1
-		for i := 0; i < len(s)-1; i++ {
-			if s[i] == ',' {
-				props = append(props, strings.TrimSpace(s[pos+1:i]))
-				pos = i
-			}
-		}
-		props = append(props, strings.TrimSpace(s[pos+1:]))
-		arc.props = props
+		arc.props = strings.Split(strings.ReplaceAll(s, " ", ""), ",")
 		return arc, nil
 	}
 	for i := 0; i < len(s); i++ {
 		if s[i] == '+' {
+			// <-containedInPlace+
 			arc.prop = s[0:i]
 			arc.wildcard = "+"
 			s = s[i+1:]
 			break
-		} else if s[i] == '{' {
+		}
+		if s[i] == '{' {
+			// <-containedInPlace{p:v}
 			arc.prop = s[0:i]
 			s = s[i:]
 			break
 		}
 	}
+	// {prop1:val1, prop2:val2}
 	if len(s) > 0 && s[0] == '{' {
 		if s[len(s)-1] != '}' {
 			return nil, status.Errorf(
 				codes.InvalidArgument, "invalid filter string: %s", s)
 		}
-		// {prop1:val1, prop2:val2}
 		filter := map[string]string{}
-		parts := strings.Split(s[1:len(s)-1], ",")
+		parts := strings.Split(strings.ReplaceAll(s[1:len(s)-1], " ", ""), ",")
 		for _, p := range parts {
-			p = strings.TrimSpace(p)
-			kv := []int{}
-			for j := 0; j < len(p); j++ {
-				if p[j] == ':' {
-					kv = append(kv, j)
-				}
-			}
-			if len(kv) != 1 {
+			kv := strings.Split(p, ":")
+			if len(kv) != 2 {
 				return nil, status.Errorf(
 					codes.InvalidArgument, "invalid filter string: %s", p)
 			}
-			k := strings.TrimSpace(p[0:kv[0]])
-			v := strings.TrimSpace(p[kv[0]+1:])
-			if len(k) == 0 || len(v) == 0 {
-				return nil, status.Errorf(
-					codes.InvalidArgument, "invalid filter string: %s", p)
-			}
-			filter[k] = v
+			filter[kv[0]] = kv[1]
 		}
 		arc.filter = filter
 		return arc, nil

@@ -140,7 +140,19 @@ func TestParseArc(t *testing.T) {
 			true,
 		},
 		{
-			"<-observationAbout{variableMeasured: Count_Person}",
+			"->containedInPlace+{typeOf: City}",
+			&Arc{
+				out:      true,
+				prop:     "containedInPlace",
+				wildcard: "+",
+				filter: map[string]string{
+					"typeOf": "City",
+				},
+			},
+			true,
+		},
+		{
+			"<-observationAbout{variableMeasured:  Count_Person }",
 			&Arc{
 				out:  false,
 				prop: "observationAbout",
