@@ -20,11 +20,11 @@ type Arc struct {
 	// Whether it's out or in arc.
 	out bool
 	// The property of the arc. This is when property is specified without []
-	prop string
-	// The wildcard used for the property.
+	singleProp string
+	// The wildcard used for the single property.
 	wildcard string
 	// The properties of the arc. This is when property is specified with []
-	props []string
+	bracketProps []string
 	// The filter of the arc.
 	filter map[string]string
 }

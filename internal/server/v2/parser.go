@@ -74,20 +74,20 @@ func parseArc(s string) (*Arc, error) {
 				codes.InvalidArgument, "invalid filter string: %s", s)
 		}
 		s = s[1 : len(s)-1]
-		arc.props = strings.Split(strings.ReplaceAll(s, " ", ""), ",")
+		arc.bracketProps = strings.Split(strings.ReplaceAll(s, " ", ""), ",")
 		return arc, nil
 	}
 	for i := 0; i < len(s); i++ {
 		if s[i] == '+' {
 			// <-containedInPlace+
-			arc.prop = s[0:i]
+			arc.singleProp = s[0:i]
 			arc.wildcard = "+"
 			s = s[i+1:]
 			break
 		}
 		if s[i] == '{' {
 			// <-containedInPlace{p:v}
-			arc.prop = s[0:i]
+			arc.singleProp = s[0:i]
 			s = s[i:]
 			break
 		}
@@ -111,9 +111,9 @@ func parseArc(s string) (*Arc, error) {
 		arc.filter = filter
 		return arc, nil
 	}
-	// No '+' or '{' found, this is a pure property.
+	// No '+' or '{' found, this is a single property.
 	if len(s) > 0 {
-		arc.prop = s
+		arc.singleProp = s
 	}
 	return arc, nil
 }

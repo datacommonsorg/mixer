@@ -85,66 +85,66 @@ func TestParseArc(t *testing.T) {
 		{
 			"<-*",
 			&Arc{
-				out:  false,
-				prop: "*",
+				out:        false,
+				singleProp: "*",
 			},
 			true,
 		},
 		{
 			"->?",
 			&Arc{
-				out:  true,
-				prop: "?",
+				out:        true,
+				singleProp: "?",
 			},
 			true,
 		},
 		{
 			"->#",
 			&Arc{
-				out:  true,
-				prop: "#",
+				out:        true,
+				singleProp: "#",
 			},
 			true,
 		},
 		{
 			"->prop1",
 			&Arc{
-				out:  true,
-				prop: "prop1",
+				out:        true,
+				singleProp: "prop1",
 			},
 			true,
 		},
 		{
 			"<-[dcid, displayName, definition]",
 			&Arc{
-				out:   false,
-				props: []string{"dcid", "displayName", "definition"},
+				out:          false,
+				bracketProps: []string{"dcid", "displayName", "definition"},
 			},
 			true,
 		},
 		{
 			"<-[dcid]",
 			&Arc{
-				out:   false,
-				props: []string{"dcid"},
+				out:          false,
+				bracketProps: []string{"dcid"},
 			},
 			true,
 		},
 		{
 			"->containedInPlace+",
 			&Arc{
-				out:      true,
-				prop:     "containedInPlace",
-				wildcard: "+",
+				out:        true,
+				singleProp: "containedInPlace",
+				wildcard:   "+",
 			},
 			true,
 		},
 		{
 			"->containedInPlace+{typeOf: City}",
 			&Arc{
-				out:      true,
-				prop:     "containedInPlace",
-				wildcard: "+",
+				out:        true,
+				singleProp: "containedInPlace",
+				wildcard:   "+",
 				filter: map[string]string{
 					"typeOf": "City",
 				},
@@ -154,8 +154,8 @@ func TestParseArc(t *testing.T) {
 		{
 			"<-observationAbout{variableMeasured:  Count_Person }",
 			&Arc{
-				out:  false,
-				prop: "observationAbout",
+				out:        false,
+				singleProp: "observationAbout",
 				filter: map[string]string{
 					"variableMeasured": "Count_Person",
 				},
@@ -165,8 +165,8 @@ func TestParseArc(t *testing.T) {
 		{
 			"<-prop{p:v}",
 			&Arc{
-				out:  false,
-				prop: "prop",
+				out:        false,
+				singleProp: "prop",
 				filter: map[string]string{
 					"p": "v",
 				},
