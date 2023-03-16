@@ -102,7 +102,7 @@ func parseArc(s string) (*Arc, error) {
 		parts := strings.Split(strings.ReplaceAll(s[1:len(s)-1], " ", ""), ",")
 		for _, p := range parts {
 			kv := strings.Split(p, ":")
-			if len(kv) != 2 {
+			if len(kv) != 2 || kv[0] == "" || kv[1] == "" {
 				return nil, status.Errorf(
 					codes.InvalidArgument, "invalid filter string: %s", p)
 			}
