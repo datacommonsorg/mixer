@@ -16,6 +16,8 @@
 package v2
 
 import (
+	"strings"
+
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )
@@ -44,4 +46,74 @@ func splitArc(s string) ([]string, error) {
 		parts = append(parts, s[pos[len(pos)-1]:])
 	}
 	return parts, nil
+}
+
+func parseArc(s string) (*Arc, error) {
+	if len(s) < 2 {
+		return nil, status.Errorf(
+			codes.InvalidArgument, "invalid arc string: %s", s)
+	}
+	arc := &Arc{}
+	if s[0:2] == "->" {
+		arc.out = true
+	} else if s[0:2] == "<-" {
+		arc.out = false
+	} else {
+		return nil, status.Errorf(
+			codes.InvalidArgument, "arc string should start with arrow, %s", s)
+	}
+	s = s[2:]
+	// No property defined; This is to fetch all the properties.
+	if len(s) == 0 {
+		return arc, nil
+	}
+	// [prop1, prop2]
+	if s[0] == '[' {
+		if s[len(s)-1] != ']' {
+			return nil, status.Errorf(
+				codes.InvalidArgument, "invalid filter string: %s", s)
+		}
+		s = s[1 : len(s)-1]
+		arc.bracketProps = strings.Split(strings.ReplaceAll(s, " ", ""), ",")
+		return arc, nil
+	}
+	for i := 0; i < len(s); i++ {
+		if s[i] == '+' {
+			// <-containedInPlace+
+			arc.singleProp = s[0:i]
+			arc.wildcard = "+"
+			s = s[i+1:]
+			break
+		}
+		if s[i] == '{' {
+			// <-containedInPlace{p:v}
+			arc.singleProp = s[0:i]
+			s = s[i:]
+			break
+		}
+	}
+	// {prop1:val1, prop2:val2}
+	if len(s) > 0 && s[0] == '{' {
+		if s[len(s)-1] != '}' {
+			return nil, status.Errorf(
+				codes.InvalidArgument, "invalid filter string: %s", s)
+		}
+		filter := map[string]string{}
+		parts := strings.Split(strings.ReplaceAll(s[1:len(s)-1], " ", ""), ",")
+		for _, p := range parts {
+			kv := strings.Split(p, ":")
+			if len(kv) != 2 || kv[0] == "" || kv[1] == "" {
+				return nil, status.Errorf(
+					codes.InvalidArgument, "invalid filter string: %s", p)
+			}
+			filter[kv[0]] = kv[1]
+		}
+		arc.filter = filter
+		return arc, nil
+	}
+	// No '+' or '{' found, this is a single property.
+	if len(s) > 0 {
+		arc.singleProp = s
+	}
+	return arc, nil
 }

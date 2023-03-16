@@ -68,3 +68,135 @@ func TestSplit(t *testing.T) {
 		}
 	}
 }
+
+func TestParseArc(t *testing.T) {
+	for _, c := range []struct {
+		s     string
+		arc   *Arc
+		valid bool
+	}{
+		{
+			"<-",
+			&Arc{
+				out: false,
+			},
+			true,
+		},
+		{
+			"<-*",
+			&Arc{
+				out:        false,
+				singleProp: "*",
+			},
+			true,
+		},
+		{
+			"->?",
+			&Arc{
+				out:        true,
+				singleProp: "?",
+			},
+			true,
+		},
+		{
+			"->#",
+			&Arc{
+				out:        true,
+				singleProp: "#",
+			},
+			true,
+		},
+		{
+			"->prop1",
+			&Arc{
+				out:        true,
+				singleProp: "prop1",
+			},
+			true,
+		},
+		{
+			"<-[dcid, displayName, definition]",
+			&Arc{
+				out:          false,
+				bracketProps: []string{"dcid", "displayName", "definition"},
+			},
+			true,
+		},
+		{
+			"<-[dcid]",
+			&Arc{
+				out:          false,
+				bracketProps: []string{"dcid"},
+			},
+			true,
+		},
+		{
+			"->containedInPlace+",
+			&Arc{
+				out:        true,
+				singleProp: "containedInPlace",
+				wildcard:   "+",
+			},
+			true,
+		},
+		{
+			"->containedInPlace+{typeOf: City}",
+			&Arc{
+				out:        true,
+				singleProp: "containedInPlace",
+				wildcard:   "+",
+				filter: map[string]string{
+					"typeOf": "City",
+				},
+			},
+			true,
+		},
+		{
+			"<-observationAbout{variableMeasured:  Count_Person }",
+			&Arc{
+				out:        false,
+				singleProp: "observationAbout",
+				filter: map[string]string{
+					"variableMeasured": "Count_Person",
+				},
+			},
+			true,
+		},
+		{
+			"<-prop{p:v}",
+			&Arc{
+				out:        false,
+				singleProp: "prop",
+				filter: map[string]string{
+					"p": "v",
+				},
+			},
+			true,
+		},
+		{
+			"<-[dcid",
+			nil,
+			false,
+		},
+		{
+			"<-prop{dcid}",
+			nil,
+			false,
+		},
+	} {
+		result, err := parseArc(c.s)
+		if !c.valid {
+			if err == nil {
+				t.Errorf("parseArc(%s) expect error, but got nil", c.s)
+			}
+			continue
+		}
+		if err != nil {
+			t.Errorf("parseArc(%s) got error %v", c.s, err)
+			continue
+		}
+		if diff := cmp.Diff(result, c.arc, cmp.AllowUnexported(Arc{})); diff != "" {
+			t.Errorf("v(%s) got diff %v", c.s, diff)
+		}
+	}
+}
