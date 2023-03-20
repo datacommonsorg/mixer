@@ -19,11 +19,18 @@ package datacommons.v2;
 
 import "entity.proto";
 
-message PropertyValuesV2Request {
-  repeated string nodes = 1;
-  string property = 2;
+message Arc {
+  string property = 1;
+  repeated datacommons.EntityInfo nodes = 2;
 }
 
-message PropertyValuesV2Response {
-  repeated datacommons.NodePropertyValues data = 1;
+message QueryV2Request {
+  repeated string nodes = 1;
+  string graph = 2;
+  int32 limit  = 3;
+  string next_token = 4;
+}
+
+message QueryV2Response {
+  map<string, Arc> data = 1;
 }

@@ -18,13 +18,13 @@ package v2
 // Arc represents an arc in the graph.
 type Arc struct {
 	// Whether it's out or in arc.
-	out bool
+	Out bool
 	// The property of the arc. This is when property is specified without []
-	singleProp string
+	SingleProp string
 	// The wildcard used for the single property.
-	wildcard string
+	Wildcard string
 	// The properties of the arc. This is when property is specified with []
-	bracketProps []string
+	BracketProps []string
 	// The filter of the arc.
-	filter map[string]string
+	Filter map[string]string
 }

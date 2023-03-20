@@ -58,7 +58,7 @@ func TestSplit(t *testing.T) {
 			},
 		},
 	} {
-		result, err := splitArc(c.query)
+		result, err := SplitArc(c.query)
 		if err != nil {
 			t.Errorf("split(%s) got error %v", c.query, err)
 			continue
@@ -78,74 +78,74 @@ func TestParseArc(t *testing.T) {
 		{
 			"<-",
 			&Arc{
-				out: false,
+				Out: false,
 			},
 			true,
 		},
 		{
 			"<-*",
 			&Arc{
-				out:        false,
-				singleProp: "*",
+				Out:        false,
+				SingleProp: "*",
 			},
 			true,
 		},
 		{
 			"->?",
 			&Arc{
-				out:        true,
-				singleProp: "?",
+				Out:        true,
+				SingleProp: "?",
 			},
 			true,
 		},
 		{
 			"->#",
 			&Arc{
-				out:        true,
-				singleProp: "#",
+				Out:        true,
+				SingleProp: "#",
 			},
 			true,
 		},
 		{
 			"->prop1",
 			&Arc{
-				out:        true,
-				singleProp: "prop1",
+				Out:        true,
+				SingleProp: "prop1",
 			},
 			true,
 		},
 		{
 			"<-[dcid, displayName, definition]",
 			&Arc{
-				out:          false,
-				bracketProps: []string{"dcid", "displayName", "definition"},
+				Out:          false,
+				BracketProps: []string{"dcid", "displayName", "definition"},
 			},
 			true,
 		},
 		{
 			"<-[dcid]",
 			&Arc{
-				out:          false,
-				bracketProps: []string{"dcid"},
+				Out:          false,
+				BracketProps: []string{"dcid"},
 			},
 			true,
 		},
 		{
 			"->containedInPlace+",
 			&Arc{
-				out:        true,
-				singleProp: "containedInPlace",
-				wildcard:   "+",
+				Out:        true,
+				SingleProp: "containedInPlace",
+				Wildcard:   "+",
 			},
 			true,
 		},
 		{
 			"->containedInPlace+{typeOf: City}",
 			&Arc{
-				out:        true,
-				singleProp: "containedInPlace",
-				wildcard:   "+",
-				filter: map[string]string{
+				Out:        true,
+				SingleProp: "containedInPlace",
+				Wildcard:   "+",
+				Filter: map[string]string{
 					"typeOf": "City",
 				},
 			},
@@ -154,9 +154,9 @@ func TestParseArc(t *testing.T) {
 		{
 			"<-observationAbout{variableMeasured:  Count_Person }",
 			&Arc{
-				out:        false,
-				singleProp: "observationAbout",
-				filter: map[string]string{
+				Out:        false,
+				SingleProp: "observationAbout",
+				Filter: map[string]string{
 					"variableMeasured": "Count_Person",
 				},
 			},
@@ -165,9 +165,9 @@ func TestParseArc(t *testing.T) {
 		{
 			"<-prop{p:v}",
 			&Arc{
-				out:        false,
-				singleProp: "prop",
-				filter: map[string]string{
+				Out:        false,
+				SingleProp: "prop",
+				Filter: map[string]string{
 					"p": "v",
 				},
 			},
@@ -184,7 +184,7 @@ func TestParseArc(t *testing.T) {
 			false,
 		},
 	} {
-		result, err := parseArc(c.s)
+		result, err := ParseArc(c.s)
 		if !c.valid {
 			if err == nil {
 				t.Errorf("parseArc(%s) expect error, but got nil", c.s)

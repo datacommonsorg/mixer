@@ -36,22 +36,56 @@ func TestPropertyValuesV2(t *testing.T) {
 	testSuite := func(mixer pb.MixerClient, latencyTest bool) {
 		for _, c := range []struct {
 			goldenFile string
-			property   string
 			nodes      []string
+			graph      string
+			limit      int32
+			nextToken  string
 		}{
 			{
 				"name.json",
-				"name",
 				[]string{"geoId/06", "bio/hs"},
+				"->name",
+				0,
+				"",
+			},
+			{
+				"specializationOf.json",
+				[]string{"dc/g/Person_MedicalCondition-Asthma"},
+				"->specializationOf",
+				0,
+				"",
+			},
+			{
+				"containedIn.json",
+				[]string{"geoId/06"},
+				"->containedInPlace",
+				0,
+				"",
+			},
+			{
+				"geoOverlaps1.json",
+				[]string{"geoId/0649670"},
+				"->geoOverlaps",
+				5,
+				"",
+			},
+			{
+				"geoOverlaps2.json",
+				[]string{"geoId/0649670"},
+				"->geoOverlaps",
+				0,
+				"H4sIAAAAAAAA/+IK5OJNT833TNE3MDOxNDM34OJOT833L0stykksKOaSdk7NKy4tjsoscM5PSQ1JTCrNSSzJzM9zLEpNFGIQYuJgFGLiYBJi4mAWYuJgEWLhYJVgBQAAAP//AQAA//+kZzeJUwAAAA==",
 			},
 		} {
-			req := &pb.PropertyValuesV2Request{
-				Nodes:    c.nodes,
-				Property: c.property,
+			req := &pb.QueryV2Request{
+				Nodes:     c.nodes,
+				Graph:     c.graph,
+				Limit:     c.limit,
+				NextToken: c.nextToken,
 			}
-			resp, err := mixer.PropertyValuesV2(ctx, req)
+			resp, err := mixer.QueryV2(ctx, req)
 			if err != nil {
-				t.Errorf("could not run mixer.PropertyValuesV2: %s", err)
+				t.Errorf("could not run mixer.QueryV2: %s", err)
 				continue
 			}
 			if latencyTest {
@@ -61,7 +95,7 @@ func TestPropertyValuesV2(t *testing.T) {
 				test.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
 				continue
 			}
-			var expected pb.PropertyValuesV2Response
+			var expected pb.QueryV2Response
 			if err := test.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
 				t.Errorf("Can not Unmarshal golden file %s: %v", c.goldenFile, err)
 				continue
