@@ -22,8 +22,8 @@ import (
 	"google.golang.org/grpc/status"
 )
 
-// splitArc splits query string by "->" and "<-" into arcs
-func splitArc(s string) ([]string, error) {
+// SplitArc splits query string by "->" and "<-" into arcs
+func SplitArc(s string) ([]string, error) {
 	if len(s) < 2 {
 		return nil, status.Errorf(
 			codes.InvalidArgument, "invalid query string: %s", s)
@@ -48,16 +48,17 @@ func splitArc(s string) ([]string, error) {
 	return parts, nil
 }
 
-func parseArc(s string) (*Arc, error) {
+// ParseArc parses an arc string into Arc object
+func ParseArc(s string) (*Arc, error) {
 	if len(s) < 2 {
 		return nil, status.Errorf(
 			codes.InvalidArgument, "invalid arc string: %s", s)
 	}
 	arc := &Arc{}
 	if s[0:2] == "->" {
-		arc.out = true
+		arc.Out = true
 	} else if s[0:2] == "<-" {
-		arc.out = false
+		arc.Out = false
 	} else {
 		return nil, status.Errorf(
 			codes.InvalidArgument, "arc string should start with arrow, %s", s)
@@ -74,20 +75,20 @@ func parseArc(s string) (*Arc, error) {
 				codes.InvalidArgument, "invalid filter string: %s", s)
 		}
 		s = s[1 : len(s)-1]
-		arc.bracketProps = strings.Split(strings.ReplaceAll(s, " ", ""), ",")
+		arc.BracketProps = strings.Split(strings.ReplaceAll(s, " ", ""), ",")
 		return arc, nil
 	}
 	for i := 0; i < len(s); i++ {
 		if s[i] == '+' {
 			// <-containedInPlace+
-			arc.singleProp = s[0:i]
-			arc.wildcard = "+"
+			arc.SingleProp = s[0:i]
+			arc.Wildcard = "+"
 			s = s[i+1:]
 			break
 		}
 		if s[i] == '{' {
 			// <-containedInPlace{p:v}
-			arc.singleProp = s[0:i]
+			arc.SingleProp = s[0:i]
 			s = s[i:]
 			break
 		}
@@ -108,12 +109,12 @@ func parseArc(s string) (*Arc, error) {
 			}
 			filter[kv[0]] = kv[1]
 		}
-		arc.filter = filter
+		arc.Filter = filter
 		return arc, nil
 	}
 	// No '+' or '{' found, this is a single property.
 	if len(s) > 0 {
-		arc.singleProp = s
+		arc.SingleProp = s
 	}
 	return arc, nil
 }
