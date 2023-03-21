@@ -43,6 +43,10 @@ func (s *Server) QueryV2(
 	}
 	// TODO: abstract this out to a router module.
 	// Simple Property Values
+	// Examples:
+	//   ->name
+	//   <-containedInPlace
+	//   ->[name, address]
 	if len(arcs) == 1 {
 		arc := arcs[0]
 		direction := util.DirectionOut
@@ -50,6 +54,9 @@ func (s *Server) QueryV2(
 			direction = util.DirectionIn
 		}
 		if arc.SingleProp != "" && arc.Wildcard == "" {
+			// Examples:
+			//   ->name
+			//   <-containedInPlace
 			return v2pv.API(
 				ctx,
 				s.store,
@@ -60,6 +67,8 @@ func (s *Server) QueryV2(
 				in.NextToken,
 			)
 		} else if len(arc.BracketProps) > 0 {
+			// Examples:
+			//   ->[name, address]
 			return v2pv.API(
 				ctx,
 				s.store,

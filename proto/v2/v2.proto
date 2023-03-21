@@ -20,6 +20,8 @@ package datacommons.v2;
 import "entity.proto";
 
 message Arc {
+  // The property of one single arc. This is only a single property, rather than
+  // chained properties
   string property = 1;
   repeated datacommons.EntityInfo nodes = 2;
 }
@@ -27,14 +29,18 @@ message Arc {
 message QueryV2Request {
   // Nodes to query for.
   repeated string nodes = 1;
-  // The expression for the property or the chained property.
+  // The expression for the property or chained properties.
+  // The property includes arrow notation, name property(ies) and filter
+  // expression. For example:
+  // <-containedInPlace+{typeOf: City}->name
   string property = 2;
-  // Max number of entries to be returned.
+  // Max number of result nodes to be returned for each query node.
   int32 limit  = 3;
   // Pagination token
   string next_token = 4;
 }
 
 message QueryV2Response {
+  // Keyed by the query node dcid.
   map<string, Arc> data = 1;
 }
