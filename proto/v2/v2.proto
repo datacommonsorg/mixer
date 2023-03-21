@@ -25,9 +25,13 @@ message Arc {
 }
 
 message QueryV2Request {
+  // Nodes to query for.
   repeated string nodes = 1;
-  string graph = 2;
+  // The expression for the property or the chained property.
+  string property = 2;
+  // Max number of entries to be returned.
   int32 limit  = 3;
+  // Pagination token
   string next_token = 4;
 }
 

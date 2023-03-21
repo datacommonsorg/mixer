@@ -29,7 +29,7 @@ import (
 func (s *Server) QueryV2(
 	ctx context.Context, in *pb.QueryV2Request,
 ) (*pb.QueryV2Response, error) {
-	arcStrings, err := v2.SplitArc(in.Graph)
+	arcStrings, err := v2.SplitArc(in.GetProperty())
 	if err != nil {
 		return nil, err
 	}
@@ -41,6 +41,7 @@ func (s *Server) QueryV2(
 		}
 		arcs = append(arcs, arc)
 	}
+	// TODO: abstract this out to a router module.
 	// Simple Property Values
 	if len(arcs) == 1 {
 		arc := arcs[0]
@@ -52,21 +53,21 @@ func (s *Server) QueryV2(
 			return v2pv.API(
 				ctx,
 				s.store,
-				in.Nodes,
+				in.GetNodes(),
 				[]string{arc.SingleProp},
 				direction,
-				int(in.Limit),
+				int(in.GetLimit()),
 				in.NextToken,
 			)
 		} else if len(arc.BracketProps) > 0 {
 			return v2pv.API(
 				ctx,
 				s.store,
-				in.Nodes,
+				in.GetNodes(),
 				arc.BracketProps,
 				direction,
-				int(in.Limit),
-				in.NextToken,
+				int(in.GetLimit()),
+				in.GetNextToken(),
 			)
 		}
 	}

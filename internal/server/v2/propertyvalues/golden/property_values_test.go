@@ -37,7 +37,7 @@ func TestPropertyValuesV2(t *testing.T) {
 		for _, c := range []struct {
 			goldenFile string
 			nodes      []string
-			graph      string
+			property   string
 			limit      int32
 			nextToken  string
 		}{
@@ -79,7 +79,7 @@ func TestPropertyValuesV2(t *testing.T) {
 		} {
 			req := &pb.QueryV2Request{
 				Nodes:     c.nodes,
-				Graph:     c.graph,
+				Property:  c.property,
 				Limit:     c.limit,
 				NextToken: c.nextToken,
 			}
