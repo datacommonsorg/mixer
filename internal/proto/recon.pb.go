@@ -1298,21 +1298,68 @@ func (x *BulkFindEntitiesResponse_Entity) GetDcids() []string {
 	return nil
 }
 
+type RecognizePlacesResponse_Place struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Dcid string `protobuf:"bytes,1,opt,name=dcid,proto3" json:"dcid,omitempty"`
+}
+
+func (x *RecognizePlacesResponse_Place) Reset() {
+	*x = RecognizePlacesResponse_Place{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_recon_proto_msgTypes[24]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *RecognizePlacesResponse_Place) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RecognizePlacesResponse_Place) ProtoMessage() {}
+
+func (x *RecognizePlacesResponse_Place) ProtoReflect() protoreflect.Message {
+	mi := &file_recon_proto_msgTypes[24]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RecognizePlacesResponse_Place.ProtoReflect.Descriptor instead.
+func (*RecognizePlacesResponse_Place) Descriptor() ([]byte, []int) {
+	return file_recon_proto_rawDescGZIP(), []int{13, 0}
+}
+
+func (x *RecognizePlacesResponse_Place) GetDcid() string {
+	if x != nil {
+		return x.Dcid
+	}
+	return ""
+}
+
 type RecognizePlacesResponse_Item struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required.
+	// Required. Substring of input query.
 	Span string `protobuf:"bytes,1,opt,name=span,proto3" json:"span,omitempty"`
-	// Optional.
-	Places []string `protobuf:"bytes,2,rep,name=places,proto3" json:"places,omitempty"`
+	// Optional. Recognized places.
+	Places []*RecognizePlacesResponse_Place `protobuf:"bytes,2,rep,name=places,proto3" json:"places,omitempty"`
 }
 
 func (x *RecognizePlacesResponse_Item) Reset() {
 	*x = RecognizePlacesResponse_Item{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_recon_proto_msgTypes[24]
+		mi := &file_recon_proto_msgTypes[25]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1325,7 +1372,7 @@ func (x *RecognizePlacesResponse_Item) String() string {
 func (*RecognizePlacesResponse_Item) ProtoMessage() {}
 
 func (x *RecognizePlacesResponse_Item) ProtoReflect() protoreflect.Message {
-	mi := &file_recon_proto_msgTypes[24]
+	mi := &file_recon_proto_msgTypes[25]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1338,7 +1385,7 @@ func (x *RecognizePlacesResponse_Item) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RecognizePlacesResponse_Item.ProtoReflect.Descriptor instead.
 func (*RecognizePlacesResponse_Item) Descriptor() ([]byte, []int) {
-	return file_recon_proto_rawDescGZIP(), []int{13, 0}
+	return file_recon_proto_rawDescGZIP(), []int{13, 1}
 }
 
 func (x *RecognizePlacesResponse_Item) GetSpan() string {
@@ -1348,7 +1395,7 @@ func (x *RecognizePlacesResponse_Item) GetSpan() string {
 	return ""
 }
 
-func (x *RecognizePlacesResponse_Item) GetPlaces() []string {
+func (x *RecognizePlacesResponse_Item) GetPlaces() []*RecognizePlacesResponse_Place {
 	if x != nil {
 		return x.Places
 	}
@@ -1485,17 +1532,22 @@ var file_recon_proto_rawDesc = []byte{
 	0x52, 0x05, 0x64, 0x63, 0x69, 0x64, 0x73, 0x22, 0x2e, 0x0a, 0x16, 0x52, 0x65, 0x63, 0x6f, 0x67,
 	0x6e, 0x69, 0x7a, 0x65, 0x50, 0x6c, 0x61, 0x63, 0x65, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73,
 	0x74, 0x12, 0x14, 0x0a, 0x05, 0x71, 0x75, 0x65, 0x72, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09,
-	0x52, 0x05, 0x71, 0x75, 0x65, 0x72, 0x79, 0x22, 0x8e, 0x01, 0x0a, 0x17, 0x52, 0x65, 0x63, 0x6f,
+	0x52, 0x05, 0x71, 0x75, 0x65, 0x72, 0x79, 0x22, 0xd7, 0x01, 0x0a, 0x17, 0x52, 0x65, 0x63, 0x6f,
 	0x67, 0x6e, 0x69, 0x7a, 0x65, 0x50, 0x6c, 0x61, 0x63, 0x65, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f,
 	0x6e, 0x73, 0x65, 0x12, 0x3f, 0x0a, 0x05, 0x69, 0x74, 0x65, 0x6d, 0x73, 0x18, 0x01, 0x20, 0x03,
 	0x28, 0x0b, 0x32, 0x29, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73,
 	0x2e, 0x52, 0x65, 0x63, 0x6f, 0x67, 0x6e, 0x69, 0x7a, 0x65, 0x50, 0x6c, 0x61, 0x63, 0x65, 0x73,
 	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x2e, 0x49, 0x74, 0x65, 0x6d, 0x52, 0x05, 0x69,
-	0x74, 0x65, 0x6d, 0x73, 0x1a, 0x32, 0x0a, 0x04, 0x49, 0x74, 0x65, 0x6d, 0x12, 0x12, 0x0a, 0x04,
-	0x73, 0x70, 0x61, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x73, 0x70, 0x61, 0x6e,
-	0x12, 0x16, 0x0a, 0x06, 0x70, 0x6c, 0x61, 0x63, 0x65, 0x73, 0x18, 0x02, 0x20, 0x03, 0x28, 0x09,
-	0x52, 0x06, 0x70, 0x6c, 0x61, 0x63, 0x65, 0x73, 0x42, 0x09, 0x5a, 0x07, 0x2e, 0x2f, 0x70, 0x72,
-	0x6f, 0x74, 0x6f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x74, 0x65, 0x6d, 0x73, 0x1a, 0x1b, 0x0a, 0x05, 0x50, 0x6c, 0x61, 0x63, 0x65, 0x12, 0x12, 0x0a,
+	0x04, 0x64, 0x63, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x64, 0x63, 0x69,
+	0x64, 0x1a, 0x5e, 0x0a, 0x04, 0x49, 0x74, 0x65, 0x6d, 0x12, 0x12, 0x0a, 0x04, 0x73, 0x70, 0x61,
+	0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x73, 0x70, 0x61, 0x6e, 0x12, 0x42, 0x0a,
+	0x06, 0x70, 0x6c, 0x61, 0x63, 0x65, 0x73, 0x18, 0x02, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x2a, 0x2e,
+	0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e, 0x52, 0x65, 0x63, 0x6f,
+	0x67, 0x6e, 0x69, 0x7a, 0x65, 0x50, 0x6c, 0x61, 0x63, 0x65, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f,
+	0x6e, 0x73, 0x65, 0x2e, 0x50, 0x6c, 0x61, 0x63, 0x65, 0x52, 0x06, 0x70, 0x6c, 0x61, 0x63, 0x65,
+	0x73, 0x42, 0x09, 0x5a, 0x07, 0x2e, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x06, 0x70, 0x72,
+	0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -1510,7 +1562,7 @@ func file_recon_proto_rawDescGZIP() []byte {
 	return file_recon_proto_rawDescData
 }
 
-var file_recon_proto_msgTypes = make([]protoimpl.MessageInfo, 25)
+var file_recon_proto_msgTypes = make([]protoimpl.MessageInfo, 26)
 var file_recon_proto_goTypes = []interface{}{
 	(*ReconEntities)(nil),                              // 0: datacommons.ReconEntities
 	(*CoordinateRecon)(nil),                            // 1: datacommons.CoordinateRecon
@@ -1536,29 +1588,31 @@ var file_recon_proto_goTypes = []interface{}{
 	(*ResolveIdsResponse_Entity)(nil),                  // 21: datacommons.ResolveIdsResponse.Entity
 	(*BulkFindEntitiesRequest_Entity)(nil),             // 22: datacommons.BulkFindEntitiesRequest.Entity
 	(*BulkFindEntitiesResponse_Entity)(nil),            // 23: datacommons.BulkFindEntitiesResponse.Entity
-	(*RecognizePlacesResponse_Item)(nil),               // 24: datacommons.RecognizePlacesResponse.Item
-	(*EntitySubGraph)(nil),                             // 25: datacommons.EntitySubGraph
-	(*IdWithProperty)(nil),                             // 26: datacommons.IdWithProperty
+	(*RecognizePlacesResponse_Place)(nil),              // 24: datacommons.RecognizePlacesResponse.Place
+	(*RecognizePlacesResponse_Item)(nil),               // 25: datacommons.RecognizePlacesResponse.Item
+	(*EntitySubGraph)(nil),                             // 26: datacommons.EntitySubGraph
+	(*IdWithProperty)(nil),                             // 27: datacommons.IdWithProperty
 }
 var file_recon_proto_depIdxs = []int32{
 	14, // 0: datacommons.ReconEntities.entities:type_name -> datacommons.ReconEntities.Entity
 	16, // 1: datacommons.CoordinateRecon.places:type_name -> datacommons.CoordinateRecon.Place
-	25, // 2: datacommons.ResolveEntitiesRequest.entities:type_name -> datacommons.EntitySubGraph
+	26, // 2: datacommons.ResolveEntitiesRequest.entities:type_name -> datacommons.EntitySubGraph
 	18, // 3: datacommons.ResolveEntitiesResponse.resolved_entities:type_name -> datacommons.ResolveEntitiesResponse.ResolvedEntity
 	19, // 4: datacommons.ResolveCoordinatesRequest.coordinates:type_name -> datacommons.ResolveCoordinatesRequest.Coordinate
 	20, // 5: datacommons.ResolveCoordinatesResponse.place_coordinates:type_name -> datacommons.ResolveCoordinatesResponse.PlaceCoordinate
 	21, // 6: datacommons.ResolveIdsResponse.entities:type_name -> datacommons.ResolveIdsResponse.Entity
 	22, // 7: datacommons.BulkFindEntitiesRequest.entities:type_name -> datacommons.BulkFindEntitiesRequest.Entity
 	23, // 8: datacommons.BulkFindEntitiesResponse.entities:type_name -> datacommons.BulkFindEntitiesResponse.Entity
-	24, // 9: datacommons.RecognizePlacesResponse.items:type_name -> datacommons.RecognizePlacesResponse.Item
+	25, // 9: datacommons.RecognizePlacesResponse.items:type_name -> datacommons.RecognizePlacesResponse.Item
 	15, // 10: datacommons.ReconEntities.Entity.ids:type_name -> datacommons.ReconEntities.Entity.ID
-	26, // 11: datacommons.ResolveEntitiesResponse.ResolvedId.ids:type_name -> datacommons.IdWithProperty
+	27, // 11: datacommons.ResolveEntitiesResponse.ResolvedId.ids:type_name -> datacommons.IdWithProperty
 	17, // 12: datacommons.ResolveEntitiesResponse.ResolvedEntity.resolved_ids:type_name -> datacommons.ResolveEntitiesResponse.ResolvedId
-	13, // [13:13] is the sub-list for method output_type
-	13, // [13:13] is the sub-list for method input_type
-	13, // [13:13] is the sub-list for extension type_name
-	13, // [13:13] is the sub-list for extension extendee
-	0,  // [0:13] is the sub-list for field type_name
+	24, // 13: datacommons.RecognizePlacesResponse.Item.places:type_name -> datacommons.RecognizePlacesResponse.Place
+	14, // [14:14] is the sub-list for method output_type
+	14, // [14:14] is the sub-list for method input_type
+	14, // [14:14] is the sub-list for extension type_name
+	14, // [14:14] is the sub-list for extension extendee
+	0,  // [0:14] is the sub-list for field type_name
 }
 
 func init() { file_recon_proto_init() }
@@ -1857,6 +1911,18 @@ func file_recon_proto_init() {
 			}
 		}
 		file_recon_proto_msgTypes[24].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*RecognizePlacesResponse_Place); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_recon_proto_msgTypes[25].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*RecognizePlacesResponse_Item); i {
 			case 0:
 				return &v.state
@@ -1875,7 +1941,7 @@ func file_recon_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_recon_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   25,
+			NumMessages:   26,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
