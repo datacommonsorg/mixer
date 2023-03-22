@@ -297,3 +297,10 @@ func (s *Server) BulkFindEntities(
 ) (*pb.BulkFindEntitiesResponse, error) {
 	return recon.BulkFindEntities(ctx, in, s.store, s.mapsClient)
 }
+
+// RecognizePlaces implements API for Mixer.RecognizePlaces.
+func (s *Server) RecognizePlaces(
+	ctx context.Context, in *pb.RecognizePlacesRequest,
+) (*pb.RecognizePlacesResponse, error) {
+	return recon.RecognizePlaces(ctx, in, s.store)
+}

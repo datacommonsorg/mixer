@@ -128,3 +128,17 @@ message BulkFindEntitiesResponse {
   }
   repeated Entity entities = 1;
 }
+
+message RecognizePlacesRequest {
+  string query = 1;
+}
+
+message RecognizePlacesResponse {
+  message Item {
+    // Required.
+    string span = 1;
+    // Optional.
+    repeated string places = 2;
+  }
+  repeated Item items = 1;
+}
