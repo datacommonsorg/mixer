@@ -134,11 +134,14 @@ message RecognizePlacesRequest {
 }
 
 message RecognizePlacesResponse {
+  message Place {
+    string dcid = 1;
+  }
   message Item {
-    // Required.
+    // Required. Substring of input query.
     string span = 1;
-    // Optional.
-    repeated string places = 2;
+    // Optional. Recognized places.
+    repeated Place places = 2;
   }
   repeated Item items = 1;
 }
