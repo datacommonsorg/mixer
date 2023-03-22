@@ -17,6 +17,7 @@ package recon
 
 import (
 	"context"
+	"strings"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/store"
@@ -28,4 +29,50 @@ func RecognizePlaces(
 ) (*pb.RecognizePlacesResponse, error) {
 	// TODO(ws): Implement.
 	return nil, nil
+}
+
+func tokenize(query string) []string {
+	tokens := []string{}
+
+	// Split by space.
+	for _, partBySpace := range strings.Split(query, " ") {
+		if partBySpace == "" {
+			// This is due to successive spaces, or spaces as prefix or suffix.
+			continue
+		}
+
+		// Check prefix.
+		if string(partBySpace[0]) == "," {
+			tokens = append(tokens, ",")
+			partBySpace = partBySpace[1:]
+		}
+
+		// Check suffix.
+		hasCommaSuffix := false
+		if string(partBySpace[len(partBySpace)-1]) == "," {
+			hasCommaSuffix = true
+			partBySpace = partBySpace[:len(partBySpace)-1]
+		}
+
+		// Split by comma. Note |partBySpace| doesn't contain any space.
+		partsByComma := strings.Split(partBySpace, ",")
+		nPartsByComma := len(partsByComma)
+		for idx, partByComma := range partsByComma {
+			if partByComma == "" {
+				// This is comma as prefix or suffix.
+				tokens = append(tokens, ",")
+				continue
+			}
+			tokens = append(tokens, partByComma)
+
+			// Add the comma as a token when:
+			// 1. Not the last token.
+			// 2. The original |partBySpace| has comma as suffix.
+			if idx != nPartsByComma-1 || hasCommaSuffix {
+				tokens = append(tokens, ",")
+			}
+		}
+	}
+
+	return tokens
 }
