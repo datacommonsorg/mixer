@@ -58,11 +58,6 @@ func tokenize(query string) []string {
 		partsByComma := strings.Split(partBySpace, ",")
 		nPartsByComma := len(partsByComma)
 		for idx, partByComma := range partsByComma {
-			if partByComma == "" {
-				// This is comma as prefix or suffix.
-				tokens = append(tokens, ",")
-				continue
-			}
 			tokens = append(tokens, partByComma)
 
 			// Add the comma as a token when:
