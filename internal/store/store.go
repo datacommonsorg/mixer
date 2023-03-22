@@ -16,6 +16,7 @@ package store
 
 import (
 	"cloud.google.com/go/bigquery"
+	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"github.com/datacommonsorg/mixer/internal/store/files"
@@ -27,7 +28,7 @@ type Store struct {
 	BqClient      *bigquery.Client
 	MemDb         *memdb.MemDb
 	BtGroup       *bigtable.Group
-	RecogPlaceMap map[string][]*files.RecogPlace
+	RecogPlaceMap map[string]*pb.RecogPlaces
 }
 
 // NewStore creates a new store.
