@@ -1,22 +1,22 @@
 {
-  "data": [
-    {
-      "node": "geoId/06",
-      "values": [
+  "data": {
+    "bio/hs": {
+      "property": "name",
+      "nodes": [
         {
-          "provenanceId": "dc/5n63hr1",
-          "value": "California"
-        }
-      ]
-    },
-    {
-      "node": "bio/hs",
-      "values": [
-        {
-          "provenanceId": "dc/hgp9hn1",
+          "provenanceId": "dc/base/Species",
           "value": "HomoSapiens"
         }
       ]
+    },
+    "geoId/06": {
+      "property": "name",
+      "nodes": [
+        {
+          "provenanceId": "dc/base/WikidataOtherIdGeos",
+          "value": "California"
+        }
+      ]
     }
-  ]
+  }
 }

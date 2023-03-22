@@ -12,18 +12,19 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+// Package v2 is the version 2 of the Data Commons REST API.
+package v2
 
-syntax = "proto3";
-option go_package = "./proto";
-package datacommons.v2;
-
-import "entity.proto";
-
-message PropertyValuesV2Request {
-  repeated string nodes = 1;
-  string property = 2;
-}
-
-message PropertyValuesV2Response {
-  repeated datacommons.NodePropertyValues data = 1;
+// Arc represents an arc in the graph.
+type Arc struct {
+	// Whether it's out or in arc.
+	Out bool
+	// The property of the arc. This is when property is specified without []
+	SingleProp string
+	// The wildcard used for the single property.
+	Wildcard string
+	// The properties of the arc. This is when property is specified with []
+	BracketProps []string
+	// The filter of the arc.
+	Filter map[string]string
 }

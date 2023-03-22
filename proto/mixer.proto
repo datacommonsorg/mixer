@@ -46,19 +46,19 @@ import "v1/observation_existence.proto";
 import "v1/page.proto";
 import "v1/triples.proto";
 
-import "v2/node_v2.proto";
+import "v2/v2.proto";
 
 
 service Mixer {
 
   // ======================  V2   V2   V2   V2  ======================
 
-  rpc PropertyValuesV2(datacommons.v2.PropertyValuesV2Request)
-      returns (datacommons.v2.PropertyValuesV2Response) {
+  rpc QueryV2(datacommons.v2.QueryV2Request)
+      returns (datacommons.v2.QueryV2Response) {
     option (google.api.http) = {
-      get : "/v2/property/values"
+      get : "/v2/query"
       additional_bindings : {
-        post : "/v2/property/values"
+        post : "/v2/query"
         body : "*"
       }
     };

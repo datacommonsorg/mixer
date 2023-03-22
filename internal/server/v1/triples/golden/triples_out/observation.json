@@ -5,7 +5,7 @@
         {
           "name": "CensusACS5yrSurvey",
           "dcid": "CensusACS5yrSurvey",
-          "provenanceId": "dc/gg17432"
+          "provenanceId": "dc/base/CensusACS5YearSurvey"
         }
       ]
     },
@@ -14,14 +14,14 @@
         {
           "name": "Mountain View",
           "dcid": "geoId/0649670",
-          "provenanceId": "dc/gg17432"
+          "provenanceId": "dc/base/CensusACS5YearSurvey"
         }
       ]
     },
     "observationDate": {
       "nodes": [
         {
-          "provenanceId": "dc/gg17432",
+          "provenanceId": "dc/base/CensusACS5YearSurvey",
           "value": "2016"
         }
       ]
@@ -31,14 +31,14 @@
         {
           "name": "Year",
           "dcid": "Year",
-          "provenanceId": "dc/gg17432"
+          "provenanceId": "dc/base/CensusACS5YearSurvey"
         }
       ]
     },
     "value": {
       "nodes": [
         {
-          "provenanceId": "dc/gg17432",
+          "provenanceId": "dc/base/CensusACS5YearSurvey",
           "value": "35"
         }
       ]
@@ -48,7 +48,7 @@
         {
           "name": "Median Age",
           "dcid": "Median_Age_Person",
-          "provenanceId": "dc/gg17432"
+          "provenanceId": "dc/base/CensusACS5YearSurvey"
         }
       ]
     }

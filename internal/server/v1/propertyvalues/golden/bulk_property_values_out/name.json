@@ -4,11 +4,11 @@
       "node": "country/USA",
       "values": [
         {
-          "provenanceId": "dc/5n63hr1",
+          "provenanceId": "dc/base/WikidataOtherIdGeos",
           "value": "United States of America"
         },
         {
-          "provenanceId": "dc/5n63hr1",
+          "provenanceId": "dc/base/WikidataOtherIdGeos",
           "value": "United States"
         }
       ]
@@ -17,7 +17,7 @@
       "node": "geoId/06",
       "values": [
         {
-          "provenanceId": "dc/5n63hr1",
+          "provenanceId": "dc/base/WikidataOtherIdGeos",
           "value": "California"
         }
       ]

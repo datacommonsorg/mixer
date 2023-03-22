@@ -9,7 +9,7 @@
             "State"
           ],
           "dcid": "geoId/06",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "San Francisco Bay Area",
@@ -17,7 +17,7 @@
             "AdministrativeArea"
           ],
           "dcid": "wikidataId/Q213205",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         }
       ]
     },
@@ -30,7 +30,7 @@
             "State"
           ],
           "dcid": "geoId/06",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Santa Clara County",
@@ -39,7 +39,7 @@
             "County"
           ],
           "dcid": "geoId/06085",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "San Francisco South Bay",
@@ -47,7 +47,7 @@
             "AdministrativeArea"
           ],
           "dcid": "wikidataId/Q3271856",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "95035",
@@ -55,7 +55,7 @@
             "CensusZipCodeTabulationArea"
           ],
           "dcid": "zip/95035",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         }
       ]
     }

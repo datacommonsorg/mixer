@@ -4,6 +4,7 @@ mixer:
   serviceName: api.datacommons.org
 
 ingress:
+  enabled: true
   name: mixer-ingress-prod
   annotations:
     {

@@ -9,7 +9,7 @@
             "Neighborhood"
           ],
           "dcid": "geoId/0601458",
-          "provenanceId": "dc/sm3m2w3"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Burbank",
@@ -18,7 +18,7 @@
             "Neighborhood"
           ],
           "dcid": "geoId/0608968",
-          "provenanceId": "dc/sm3m2w3"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Cambrian Park",
@@ -26,7 +26,7 @@
             "City"
           ],
           "dcid": "geoId/0610088",
-          "provenanceId": "dc/sm3m2w3"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Campbell",
@@ -34,7 +34,7 @@
             "City"
           ],
           "dcid": "geoId/0610345",
-          "provenanceId": "dc/sm3m2w3"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Cupertino",
@@ -42,7 +42,7 @@
             "City"
           ],
           "dcid": "geoId/0617610",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "East Foothills",
@@ -51,7 +51,7 @@
             "Neighborhood"
           ],
           "dcid": "geoId/0620598",
-          "provenanceId": "dc/sm3m2w3"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Fruitdale",
@@ -59,7 +59,7 @@
             "City"
           ],
           "dcid": "geoId/0627080",
-          "provenanceId": "dc/sm3m2w3"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Gilroy",
@@ -67,7 +67,7 @@
             "City"
           ],
           "dcid": "geoId/0629504",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Lexington Hills",
@@ -75,7 +75,7 @@
             "City"
           ],
           "dcid": "geoId/0641282",
-          "provenanceId": "dc/sm3m2w3"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Los Altos",
@@ -83,7 +83,7 @@
             "City"
           ],
           "dcid": "geoId/0643280",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Los Altos Hills",
@@ -92,7 +92,7 @@
             "Town"
           ],
           "dcid": "geoId/0643294",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Los Gatos",
@@ -101,7 +101,7 @@
             "Town"
           ],
           "dcid": "geoId/0644112",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Loyola",
@@ -109,7 +109,7 @@
             "City"
           ],
           "dcid": "geoId/0644378",
-          "provenanceId": "dc/sm3m2w3"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Milpitas",
@@ -117,7 +117,7 @@
             "City"
           ],
           "dcid": "geoId/0647766",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Monte Sereno",
@@ -125,7 +125,7 @@
             "City"
           ],
           "dcid": "geoId/0648956",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Morgan Hill",
@@ -133,7 +133,7 @@
             "City"
           ],
           "dcid": "geoId/0649278",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Mountain View",
@@ -141,7 +141,7 @@
             "City"
           ],
           "dcid": "geoId/0649670",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Palo Alto",
@@ -149,7 +149,7 @@
             "City"
           ],
           "dcid": "geoId/0655282",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "San Jose",
@@ -157,7 +157,7 @@
             "City"
           ],
           "dcid": "geoId/0668000",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "San Martin",
@@ -165,7 +165,7 @@
             "City"
           ],
           "dcid": "geoId/0668238",
-          "provenanceId": "dc/sm3m2w3"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Santa Clara",
@@ -173,7 +173,7 @@
             "City"
           ],
           "dcid": "geoId/0669084",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Saratoga",
@@ -181,7 +181,7 @@
             "City"
           ],
           "dcid": "geoId/0670280",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Stanford",
@@ -189,7 +189,7 @@
             "City"
           ],
           "dcid": "geoId/0673906",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Sunnyvale",
@@ -197,7 +197,7 @@
             "City"
           ],
           "dcid": "geoId/0677000",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         }
       ]
     },

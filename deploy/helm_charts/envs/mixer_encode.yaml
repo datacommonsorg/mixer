@@ -7,6 +7,7 @@ mixer:
   bigqueryTableRef: google.com:datcom-store-dev.dc_v3_encode_clustered
 
 ingress:
+  enabled: true
   name: mixer-ingress-encode
 
 # Encode instance only services SPARQL

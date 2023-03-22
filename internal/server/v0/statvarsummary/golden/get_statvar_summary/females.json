@@ -3,12 +3,8 @@
     "Count_Person_Female": {
       "placeTypeSummary": {
         "AdministrativeArea": {
-          "placeCount": 48,
+          "placeCount": 46,
           "topPlaces": [
-            {
-              "dcid": "wikidataId/Q173121",
-              "name": "Santiago de Querétaro"
-            },
             {
               "dcid": "wikidataId/Q1973593",
               "name": "Waikato District"
@@ -16,10 +12,14 @@
             {
               "dcid": "wikidataId/Q550219",
               "name": "Capital Regional District"
+            },
+            {
+              "dcid": "wikidataId/Q4874224",
+              "name": "Bay of Plenty"
             }
           ],
           "minValue": 1565,
-          "maxValue": 3121230
+          "maxValue": 244600
         },
         "AdministrativeArea1": {
           "placeCount": 330,
@@ -41,7 +41,7 @@
           "maxValue": 50483000
         },
         "AdministrativeArea2": {
-          "placeCount": 763,
+          "placeCount": 768,
           "topPlaces": [
             {
               "dcid": "wikidataId/Q943099",
@@ -60,12 +60,8 @@
           "maxValue": 5195070
         },
         "AdministrativeArea3": {
-          "placeCount": 29,
+          "placeCount": 26,
           "topPlaces": [
-            {
-              "dcid": "wikidataId/Q1143712",
-              "name": "Kanagawa-ku"
-            },
             {
               "dcid": "wikidataId/Q50811",
               "name": "Regional Municipality of Peel"
@@ -73,10 +69,14 @@
             {
               "dcid": "wikidataId/Q18458",
               "name": "Regional Municipality of York"
+            },
+            {
+              "dcid": "wikidataId/Q16926",
+              "name": "Maule"
             }
           ],
           "minValue": 2329,
-          "maxValue": 4601000
+          "maxValue": 772602
         },
         "CensusBlockGroup": {
           "placeCount": 220333,
@@ -420,98 +420,48 @@
         }
       },
       "provenanceSummary": {
-        "dc/2gyrxt": {
-          "importName": "IndiaCensus_Primary",
+        "dc/base/CensusACS1YearSurvey": {
+          "importName": "CensusACS1YearSurvey",
           "seriesSummary": [
             {
-              "seriesKey": {},
-              "earliestDate": "2011",
-              "latestDate": "2011",
+              "seriesKey": {
+                "measurementMethod": "CensusACS1yrSurvey"
+              },
+              "earliestDate": "2010",
+              "latestDate": "2019",
               "placeTypeSummary": {
-                "AdministrativeArea2": {
-                  "placeCount": 636,
-                  "topPlaces": [
-                    {
-                      "dcid": "wikidataId/Q943099",
-                      "name": "Thane"
-                    },
-                    {
-                      "dcid": "wikidataId/Q338425",
-                      "name": "24 Paraganas North"
-                    },
-                    {
-                      "dcid": "wikidataId/Q806463",
-                      "name": "Bangalore Urban district"
-                    }
-                  ],
-                  "minValue": 3590,
-                  "maxValue": 5195070
-                },
                 "City": {
-                  "placeCount": 1,
+                  "placeCount": 640,
                   "topPlaces": [
                     {
-                      "dcid": "wikidataId/Q987",
-                      "name": "New Delhi"
+                      "dcid": "geoId/3651000",
+                      "name": "New York"
+                    },
+                    {
+                      "dcid": "geoId/0644000",
+                      "name": "Los Angeles"
+                    },
+                    {
+                      "dcid": "geoId/1714000",
+                      "name": "Chicago"
                     }
                   ],
-                  "minValue": 64062,
-                  "maxValue": 64062
+                  "minValue": 27244,
+                  "maxValue": 4510159
                 },
                 "Country": {
                   "placeCount": 1,
                   "topPlaces": [
                     {
-                      "dcid": "country/IND",
-                      "name": "India"
+                      "dcid": "country/USA",
+                      "name": "United States"
                     }
                   ],
-                  "minValue": 587584719,
-                  "maxValue": 587584719
+                  "minValue": 157260239,
+                  "maxValue": 166650550
                 },
-                "State": {
-                  "placeCount": 35,
-                  "topPlaces": [
-                    {
-                      "dcid": "wikidataId/Q1498",
-                      "name": "Uttar Pradesh"
-                    },
-                    {
-                      "dcid": "wikidataId/Q1191",
-                      "name": "Maharashtra"
-                    },
-                    {
-                      "dcid": "wikidataId/Q1165",
-                      "name": "Bihar"
-                    }
-                  ],
-                  "minValue": 31350,
-                  "maxValue": 95331831
-                }
-              },
-              "minValue": 3590,
-              "maxValue": 587584719,
-              "observationCount": 673,
-              "timeSeriesCount": 673
-            }
-          ],
-          "observationCount": 673,
-          "timeSeriesCount": 673
-        },
-        "dc/bsb9pd": {
-          "importName": "USCensusPEP_Sex",
-          "releaseFrequency": "P1Y",
-          "seriesSummary": [
-            {
-              "seriesKey": {
-                "measurementMethod": "CensusPEPSurvey",
-                "observationPeriod": "P1Y"
-              },
-              "earliestDate": "1970",
-              "latestDate": "2021",
-              "placeTypeSummary": {
                 "County": {
-                  "placeCount": 3145,
+                  "placeCount": 842,
                   "topPlaces": [
                     {
                       "dcid": "geoId/06037",
@@ -526,37 +476,11 @@
                       "name": "Harris County"
                     }
                   ],
-                  "minValue": 0,
-                  "maxValue": 5119774
-                }
-              },
-              "minValue": 0,
-              "maxValue": 5119774,
-              "observationCount": 163032,
-              "timeSeriesCount": 3145
-            },
-            {
-              "seriesKey": {
-                "measurementMethod": "CensusPEPSurvey_PartialAggregate",
-                "observationPeriod": "P1Y",
-                "isDcAggregate": true
-              },
-              "earliestDate": "1900",
-              "latestDate": "2021",
-              "placeTypeSummary": {
-                "Country": {
-                  "placeCount": 1,
-                  "topPlaces": [
-                    {
-                      "dcid": "country/USA",
-                      "name": "United States"
-                    }
-                  ],
-                  "minValue": 37227000,
-                  "maxValue": 167509003
+                  "minValue": 25935,
+                  "maxValue": 5160965
                 },
                 "State": {
-                  "placeCount": 51,
+                  "placeCount": 52,
                   "topPlaces": [
                     {
                       "dcid": "geoId/06",
@@ -571,322 +495,20 @@
                       "name": "Florida"
                     }
                   ],
-                  "minValue": 138616,
-                  "maxValue": 19829641
+                  "minValue": 277407,
+                  "maxValue": 19886602
                 }
               },
-              "minValue": 138616,
-              "maxValue": 167509003,
-              "observationCount": 2774,
-              "timeSeriesCount": 52
+              "minValue": 25935,
+              "maxValue": 166650550,
+              "observationCount": 14758,
+              "timeSeriesCount": 1535
             }
           ],
-          "observationCount": 165806,
-          "timeSeriesCount": 3197
+          "observationCount": 14758,
+          "timeSeriesCount": 1535
         },
-        "dc/bxgh0w": {
-          "importName": "CensusACS5YearSurvey_SubjectTables_S2603",
-          "seriesSummary": [
-            {
-              "seriesKey": {
-                "measurementMethod": "CensusACS5yrSurveySubjectTable"
-              },
-              "earliestDate": "2017",
-              "latestDate": "2019",
-              "placeTypeSummary": {
-                "Country": {
-                  "placeCount": 1,
-                  "topPlaces": [
-                    {
-                      "dcid": "country/USA",
-                      "name": "United States"
-                    }
-                  ],
-                  "minValue": 163070238.756,
-                  "maxValue": 164946479.86
-                }
-              },
-              "minValue": 163070238.756,
-              "maxValue": 164946479.86,
-              "observationCount": 3,
-              "timeSeriesCount": 1
-            }
-          ],
-          "observationCount": 3,
-          "timeSeriesCount": 1
-        },
-        "dc/cl25rb": {
-          "importName": "OECDRegionalDemography",
-          "releaseFrequency": "P1Y",
-          "seriesSummary": [
-            {
-              "seriesKey": {
-                "measurementMethod": "OECDRegionalStatistics",
-                "observationPeriod": "P1Y"
-              },
-              "earliestDate": "1995",
-              "latestDate": "2019",
-              "placeTypeSummary": {
-                "AdministrativeArea": {
-                  "placeCount": 48,
-                  "topPlaces": [
-                    {
-                      "dcid": "wikidataId/Q173121",
-                      "name": "Santiago de Querétaro"
-                    },
-                    {
-                      "dcid": "wikidataId/Q1973593",
-                      "name": "Waikato District"
-                    },
-                    {
-                      "dcid": "wikidataId/Q550219",
-                      "name": "Capital Regional District"
-                    }
-                  ],
-                  "minValue": 1565,
-                  "maxValue": 3121230
-                },
-                "AdministrativeArea1": {
-                  "placeCount": 330,
-                  "topPlaces": [
-                    {
-                      "dcid": "wikidataId/Q15175",
-                      "name": "Guangdong"
-                    },
-                    {
-                      "dcid": "wikidataId/Q43407",
-                      "name": "Shandong"
-                    },
-                    {
-                      "dcid": "wikidataId/Q43684",
-                      "name": "Henan"
-                    }
-                  ],
-                  "minValue": 3325,
-                  "maxValue": 50483000
-                },
-                "AdministrativeArea2": {
-                  "placeCount": 127,
-                  "topPlaces": [
-                    {
-                      "dcid": "wikidataId/Q173270",
-                      "name": "Veracruz"
-                    },
-                    {
-                      "dcid": "wikidataId/Q1474984",
-                      "name": "Montreal Region"
-                    },
-                    {
-                      "dcid": "wikidataId/Q1654749",
-                      "name": "Boyacá"
-                    }
-                  ],
-                  "minValue": 1668,
-                  "maxValue": 4275320
-                },
-                "AdministrativeArea3": {
-                  "placeCount": 29,
-                  "topPlaces": [
-                    {
-                      "dcid": "wikidataId/Q1143712",
-                      "name": "Kanagawa-ku"
-                    },
-                    {
-                      "dcid": "wikidataId/Q50811",
-                      "name": "Regional Municipality of Peel"
-                    },
-                    {
-                      "dcid": "wikidataId/Q18458",
-                      "name": "Regional Municipality of York"
-                    }
-                  ],
-                  "minValue": 2329,
-                  "maxValue": 4601000
-                },
-                "CensusCountyDivision": {
-                  "placeCount": 1,
-                  "topPlaces": [
-                    {
-                      "dcid": "geoId/7210708614",
-                      "name": "Botijas"
-                    }
-                  ],
-                  "minValue": 4934610,
-                  "maxValue": 5785680
-                },
-                "City": {
-                  "placeCount": 270,
-                  "topPlaces": [
-                    {
-                      "dcid": "wikidataId/Q8686",
-                      "name": "Shanghai"
-                    },
-                    {
-                      "dcid": "wikidataId/Q11736",
-                      "name": "Tianjin"
-                    },
-                    {
-                      "dcid": "wikidataId/Q7473516",
-                      "name": "Tokyo"
-                    }
-                  ],
-                  "minValue": 1065,
-                  "maxValue": 11710000
-                },
-                "Country": {
-                  "placeCount": 50,
-                  "topPlaces": [
-                    {
-                      "dcid": "country/CHN",
-                      "name": "China"
-                    },
-                    {
-                      "dcid": "country/IND",
-                      "name": "India"
-                    },
-                    {
-                      "dcid": "country/USA",
-                      "name": "United States"
-                    }
-                  ],
-                  "minValue": 133087,
-                  "maxValue": 660361000
-                },
-                "EurostatNUTS1": {
-                  "placeCount": 42,
-                  "topPlaces": [
-                    {
-                      "dcid": "nuts/DEA",
-                      "name": "Nordrhein-Westfalen"
-                    },
-                    {
-                      "dcid": "nuts/DE2",
-                      "name": "Bavaria"
-                    },
-                    {
-                      "dcid": "nuts/FR1",
-                      "name": "Ile-de-France"
-                    }
-                  ],
-                  "minValue": 131453,
-                  "maxValue": 9277680
-                },
-                "EurostatNUTS2": {
-                  "placeCount": 200,
-                  "topPlaces": [
-                    {
-                      "dcid": "nuts/TR10",
-                      "name": "Istanbul"
-                    },
-                    {
-                      "dcid": "nuts/ITC4",
-                      "name": "Lombardia"
-                    },
-                    {
-                      "dcid": "nuts/ES61",
-                      "name": "Andalucía"
-                    }
-                  ],
-                  "minValue": 12793,
-                  "maxValue": 7525490
-                },
-                "EurostatNUTS3": {
-                  "placeCount": 1274,
-                  "topPlaces": [
-                    {
-                      "dcid": "nuts/TR100",
-                      "name": "Istanbul"
-                    },
-                    {
-                      "dcid": "nuts/ES300",
-                      "name": "Madrid"
-                    },
-                    {
-                      "dcid": "nuts/ES511",
-                      "name": "Barcelona"
-                    }
-                  ],
-                  "minValue": 4313,
-                  "maxValue": 7525490
-                },
-                "Place": {
-                  "placeCount": 8,
-                  "topPlaces": [
-                    {
-                      "dcid": "wikidataId/Q1180"
-                    },
-                    {
-                      "dcid": "wikidataId/Q2760659",
-                      "name": "Dadra"
-                    },
-                    {
-                      "dcid": "wikidataId/Q3235"
-                    }
-                  ],
-                  "minValue": 296,
-                  "maxValue": 5883370
-                },
-                "State": {
-                  "placeCount": 84,
-                  "topPlaces": [
-                    {
-                      "dcid": "wikidataId/Q1498",
-                      "name": "Uttar Pradesh"
-                    },
-                    {
-                      "dcid": "wikidataId/Q1191",
-                      "name": "Maharashtra"
-                    },
-                    {
-                      "dcid": "wikidataId/Q1165",
-                      "name": "Bihar"
-                    }
-                  ],
-                  "minValue": 29519,
-                  "maxValue": 101563000
-                }
-              },
-              "minValue": 296,
-              "maxValue": 660361000,
-              "observationCount": 56654,
-              "timeSeriesCount": 2463
-            }
-          ],
-          "observationCount": 56654,
-          "timeSeriesCount": 2463
-        },
-        "dc/cv2kpf2": {
-          "importName": "CensusACS5YearSurvey_SubjectTables_S2601APR",
-          "seriesSummary": [
-            {
-              "seriesKey": {
-                "measurementMethod": "CensusACS5yrSurveySubjectTable"
-              },
-              "earliestDate": "2010",
-              "latestDate": "2019",
-              "placeTypeSummary": {
-                "State": {
-                  "placeCount": 1,
-                  "topPlaces": [
-                    {
-                      "dcid": "geoId/72",
-                      "name": "Puerto Rico"
-                    }
-                  ],
-                  "minValue": 1738866.228,
-                  "maxValue": 1960169.762
-                }
-              },
-              "minValue": 1738866.228,
-              "maxValue": 1960169.762,
-              "observationCount": 10,
-              "timeSeriesCount": 1
-            }
-          ],
-          "observationCount": 10,
-          "timeSeriesCount": 1
-        },
-        "dc/gg17432": {
+        "dc/base/CensusACS5YearSurvey": {
           "importName": "CensusACS5YearSurvey",
           "releaseFrequency": "P1Y",
           "seriesSummary": [
@@ -1154,126 +776,7 @@
           "observationCount": 4062727,
           "timeSeriesCount": 412961
         },
-        "dc/kyzlg31": {
-          "importName": "CensusACS1YearSurvey",
-          "seriesSummary": [
-            {
-              "seriesKey": {
-                "measurementMethod": "CensusACS1yrSurvey"
-              },
-              "earliestDate": "2010",
-              "latestDate": "2019",
-              "placeTypeSummary": {
-                "City": {
-                  "placeCount": 640,
-                  "topPlaces": [
-                    {
-                      "dcid": "geoId/3651000",
-                      "name": "New York"
-                    },
-                    {
-                      "dcid": "geoId/0644000",
-                      "name": "Los Angeles"
-                    },
-                    {
-                      "dcid": "geoId/1714000",
-                      "name": "Chicago"
-                    }
-                  ],
-                  "minValue": 27244,
-                  "maxValue": 4510159
-                },
-                "Country": {
-                  "placeCount": 1,
-                  "topPlaces": [
-                    {
-                      "dcid": "country/USA",
-                      "name": "United States"
-                    }
-                  ],
-                  "minValue": 157260239,
-                  "maxValue": 166650550
-                },
-                "County": {
-                  "placeCount": 842,
-                  "topPlaces": [
-                    {
-                      "dcid": "geoId/06037",
-                      "name": "Los Angeles County"
-                    },
-                    {
-                      "dcid": "geoId/17031",
-                      "name": "Cook County"
-                    },
-                    {
-                      "dcid": "geoId/48201",
-                      "name": "Harris County"
-                    }
-                  ],
-                  "minValue": 25935,
-                  "maxValue": 5160965
-                },
-                "State": {
-                  "placeCount": 52,
-                  "topPlaces": [
-                    {
-                      "dcid": "geoId/06",
-                      "name": "California"
-                    },
-                    {
-                      "dcid": "geoId/48",
-                      "name": "Texas"
-                    },
-                    {
-                      "dcid": "geoId/12",
-                      "name": "Florida"
-                    }
-                  ],
-                  "minValue": 277407,
-                  "maxValue": 19886602
-                }
-              },
-              "minValue": 25935,
-              "maxValue": 166650550,
-              "observationCount": 14758,
-              "timeSeriesCount": 1535
-            }
-          ],
-          "observationCount": 14758,
-          "timeSeriesCount": 1535
-        },
-        "dc/nnx11h2": {
-          "importName": "CensusACS5YearSurvey_SubjectTables_S2602PR",
-          "seriesSummary": [
-            {
-              "seriesKey": {
-                "measurementMethod": "CensusACS5yrSurveySubjectTable"
-              },
-              "earliestDate": "2017",
-              "latestDate": "2019",
-              "placeTypeSummary": {
-                "State": {
-                  "placeCount": 1,
-                  "topPlaces": [
-                    {
-                      "dcid": "geoId/72",
-                      "name": "Puerto Rico"
-                    }
-                  ],
-                  "minValue": 1738866.228,
-                  "maxValue": 1814267.649
-                }
-              },
-              "minValue": 1738866.228,
-              "maxValue": 1814267.649,
-              "observationCount": 3,
-              "timeSeriesCount": 1
-            }
-          ],
-          "observationCount": 3,
-          "timeSeriesCount": 1
-        },
-        "dc/qmsyx4": {
+        "dc/base/CensusACS5YearSurvey_AggCountry": {
           "importName": "CensusACS5YearSurvey_AggCountry",
           "seriesSummary": [
             {
@@ -1305,7 +808,88 @@
           "observationCount": 10,
           "timeSeriesCount": 1
         },
-        "dc/scp3y31": {
+        "dc/base/CensusACS5YearSurvey_SubjectTables_S2601A": {
+          "importName": "CensusACS5YearSurvey_SubjectTables_S2601A",
+          "seriesSummary": [
+            {
+              "seriesKey": {
+                "measurementMethod": "CensusACS5yrSurveySubjectTable"
+              },
+              "earliestDate": "2010",
+              "latestDate": "2019",
+              "placeTypeSummary": {
+                "Country": {
+                  "placeCount": 1,
+                  "topPlaces": [
+                    {
+                      "dcid": "country/USA",
+                      "name": "United States"
+                    }
+                  ],
+                  "minValue": 154718323.448,
+                  "maxValue": 164946479.86
+                },
+                "State": {
+                  "placeCount": 51,
+                  "topPlaces": [
+                    {
+                      "dcid": "geoId/06",
+                      "name": "California"
+                    },
+                    {
+                      "dcid": "geoId/48",
+                      "name": "Texas"
+                    },
+                    {
+                      "dcid": "geoId/12",
+                      "name": "Florida"
+                    }
+                  ],
+                  "minValue": 267879.289,
+                  "maxValue": 19759598.991
+                }
+              },
+              "minValue": 267879.289,
+              "maxValue": 164946479.86,
+              "observationCount": 520,
+              "timeSeriesCount": 52
+            }
+          ],
+          "observationCount": 520,
+          "timeSeriesCount": 52
+        },
+        "dc/base/CensusACS5YearSurvey_SubjectTables_S2601APR": {
+          "importName": "CensusACS5YearSurvey_SubjectTables_S2601APR",
+          "seriesSummary": [
+            {
+              "seriesKey": {
+                "measurementMethod": "CensusACS5yrSurveySubjectTable"
+              },
+              "earliestDate": "2010",
+              "latestDate": "2019",
+              "placeTypeSummary": {
+                "State": {
+                  "placeCount": 1,
+                  "topPlaces": [
+                    {
+                      "dcid": "geoId/72",
+                      "name": "Puerto Rico"
+                    }
+                  ],
+                  "minValue": 1738866.228,
+                  "maxValue": 1960169.762
+                }
+              },
+              "minValue": 1738866.228,
+              "maxValue": 1960169.762,
+              "observationCount": 10,
+              "timeSeriesCount": 1
+            }
+          ],
+          "observationCount": 10,
+          "timeSeriesCount": 1
+        },
+        "dc/base/CensusACS5YearSurvey_SubjectTables_S2602": {
           "importName": "CensusACS5YearSurvey_SubjectTables_S2602",
           "seriesSummary": [
             {
@@ -1355,7 +939,69 @@
           "observationCount": 156,
           "timeSeriesCount": 52
         },
-        "dc/yd4sfb": {
+        "dc/base/CensusACS5YearSurvey_SubjectTables_S2602PR": {
+          "importName": "CensusACS5YearSurvey_SubjectTables_S2602PR",
+          "seriesSummary": [
+            {
+              "seriesKey": {
+                "measurementMethod": "CensusACS5yrSurveySubjectTable"
+              },
+              "earliestDate": "2017",
+              "latestDate": "2019",
+              "placeTypeSummary": {
+                "State": {
+                  "placeCount": 1,
+                  "topPlaces": [
+                    {
+                      "dcid": "geoId/72",
+                      "name": "Puerto Rico"
+                    }
+                  ],
+                  "minValue": 1738866.228,
+                  "maxValue": 1814267.649
+                }
+              },
+              "minValue": 1738866.228,
+              "maxValue": 1814267.649,
+              "observationCount": 3,
+              "timeSeriesCount": 1
+            }
+          ],
+          "observationCount": 3,
+          "timeSeriesCount": 1
+        },
+        "dc/base/CensusACS5YearSurvey_SubjectTables_S2603": {
+          "importName": "CensusACS5YearSurvey_SubjectTables_S2603",
+          "seriesSummary": [
+            {
+              "seriesKey": {
+                "measurementMethod": "CensusACS5yrSurveySubjectTable"
+              },
+              "earliestDate": "2017",
+              "latestDate": "2019",
+              "placeTypeSummary": {
+                "Country": {
+                  "placeCount": 1,
+                  "topPlaces": [
+                    {
+                      "dcid": "country/USA",
+                      "name": "United States"
+                    }
+                  ],
+                  "minValue": 163070238.756,
+                  "maxValue": 164946479.86
+                }
+              },
+              "minValue": 163070238.756,
+              "maxValue": 164946479.86,
+              "observationCount": 3,
+              "timeSeriesCount": 1
+            }
+          ],
+          "observationCount": 3,
+          "timeSeriesCount": 1
+        },
+        "dc/base/EurostatData": {
           "importName": "EurostatData",
           "releaseFrequency": "P1Y",
           "seriesSummary": [
@@ -1471,15 +1117,369 @@
           "observationCount": 47169,
           "timeSeriesCount": 2029
         },
-        "dc/yy2t0v": {
-          "importName": "CensusACS5YearSurvey_SubjectTables_S2601A",
+        "dc/base/IndiaCensus_Primary": {
+          "importName": "IndiaCensus_Primary",
+          "seriesSummary": [
+            {
+              "seriesKey": {},
+              "earliestDate": "2011",
+              "latestDate": "2011",
+              "placeTypeSummary": {
+                "AdministrativeArea2": {
+                  "placeCount": 636,
+                  "topPlaces": [
+                    {
+                      "dcid": "wikidataId/Q943099",
+                      "name": "Thane"
+                    },
+                    {
+                      "dcid": "wikidataId/Q338425",
+                      "name": "24 Paraganas North"
+                    },
+                    {
+                      "dcid": "wikidataId/Q806463",
+                      "name": "Bangalore Urban district"
+                    }
+                  ],
+                  "minValue": 3590,
+                  "maxValue": 5195070
+                },
+                "City": {
+                  "placeCount": 1,
+                  "topPlaces": [
+                    {
+                      "dcid": "wikidataId/Q987",
+                      "name": "New Delhi"
+                    }
+                  ],
+                  "minValue": 64062,
+                  "maxValue": 64062
+                },
+                "Country": {
+                  "placeCount": 1,
+                  "topPlaces": [
+                    {
+                      "dcid": "country/IND",
+                      "name": "India"
+                    }
+                  ],
+                  "minValue": 587584719,
+                  "maxValue": 587584719
+                },
+                "State": {
+                  "placeCount": 35,
+                  "topPlaces": [
+                    {
+                      "dcid": "wikidataId/Q1498",
+                      "name": "Uttar Pradesh"
+                    },
+                    {
+                      "dcid": "wikidataId/Q1191",
+                      "name": "Maharashtra"
+                    },
+                    {
+                      "dcid": "wikidataId/Q1165",
+                      "name": "Bihar"
+                    }
+                  ],
+                  "minValue": 31350,
+                  "maxValue": 95331831
+                }
+              },
+              "minValue": 3590,
+              "maxValue": 587584719,
+              "observationCount": 673,
+              "timeSeriesCount": 673
+            }
+          ],
+          "observationCount": 673,
+          "timeSeriesCount": 673
+        },
+        "dc/base/OECDRegionalDemography": {
+          "importName": "OECDRegionalDemography",
+          "releaseFrequency": "P1Y",
           "seriesSummary": [
             {
               "seriesKey": {
-                "measurementMethod": "CensusACS5yrSurveySubjectTable"
+                "measurementMethod": "OECDRegionalStatistics",
+                "observationPeriod": "P1Y"
               },
-              "earliestDate": "2010",
+              "earliestDate": "1995",
               "latestDate": "2019",
+              "placeTypeSummary": {
+                "AdministrativeArea": {
+                  "placeCount": 46,
+                  "topPlaces": [
+                    {
+                      "dcid": "wikidataId/Q1973593",
+                      "name": "Waikato District"
+                    },
+                    {
+                      "dcid": "wikidataId/Q550219",
+                      "name": "Capital Regional District"
+                    },
+                    {
+                      "dcid": "wikidataId/Q4874224",
+                      "name": "Bay of Plenty"
+                    }
+                  ],
+                  "minValue": 1565,
+                  "maxValue": 244600
+                },
+                "AdministrativeArea1": {
+                  "placeCount": 330,
+                  "topPlaces": [
+                    {
+                      "dcid": "wikidataId/Q15175",
+                      "name": "Guangdong"
+                    },
+                    {
+                      "dcid": "wikidataId/Q43407",
+                      "name": "Shandong"
+                    },
+                    {
+                      "dcid": "wikidataId/Q43684",
+                      "name": "Henan"
+                    }
+                  ],
+                  "minValue": 3325,
+                  "maxValue": 50483000
+                },
+                "AdministrativeArea2": {
+                  "placeCount": 132,
+                  "topPlaces": [
+                    {
+                      "dcid": "wikidataId/Q1143712",
+                      "name": "Kanagawa-ku"
+                    },
+                    {
+                      "dcid": "wikidataId/Q173270",
+                      "name": "Veracruz"
+                    },
+                    {
+                      "dcid": "wikidataId/Q1474984",
+                      "name": "Montreal Region"
+                    }
+                  ],
+                  "minValue": 1668,
+                  "maxValue": 4601000
+                },
+                "AdministrativeArea3": {
+                  "placeCount": 26,
+                  "topPlaces": [
+                    {
+                      "dcid": "wikidataId/Q50811",
+                      "name": "Regional Municipality of Peel"
+                    },
+                    {
+                      "dcid": "wikidataId/Q18458",
+                      "name": "Regional Municipality of York"
+                    },
+                    {
+                      "dcid": "wikidataId/Q16926",
+                      "name": "Maule"
+                    }
+                  ],
+                  "minValue": 2329,
+                  "maxValue": 772602
+                },
+                "CensusCountyDivision": {
+                  "placeCount": 1,
+                  "topPlaces": [
+                    {
+                      "dcid": "geoId/7210708614",
+                      "name": "Botijas"
+                    }
+                  ],
+                  "minValue": 4934610,
+                  "maxValue": 5785680
+                },
+                "City": {
+                  "placeCount": 270,
+                  "topPlaces": [
+                    {
+                      "dcid": "wikidataId/Q8686",
+                      "name": "Shanghai"
+                    },
+                    {
+                      "dcid": "wikidataId/Q11736",
+                      "name": "Tianjin"
+                    },
+                    {
+                      "dcid": "wikidataId/Q7473516",
+                      "name": "Tokyo"
+                    }
+                  ],
+                  "minValue": 1065,
+                  "maxValue": 11710000
+                },
+                "Country": {
+                  "placeCount": 50,
+                  "topPlaces": [
+                    {
+                      "dcid": "country/CHN",
+                      "name": "China"
+                    },
+                    {
+                      "dcid": "country/IND",
+                      "name": "India"
+                    },
+                    {
+                      "dcid": "country/USA",
+                      "name": "United States"
+                    }
+                  ],
+                  "minValue": 133087,
+                  "maxValue": 660361000
+                },
+                "EurostatNUTS1": {
+                  "placeCount": 42,
+                  "topPlaces": [
+                    {
+                      "dcid": "nuts/DEA",
+                      "name": "Nordrhein-Westfalen"
+                    },
+                    {
+                      "dcid": "nuts/DE2",
+                      "name": "Bavaria"
+                    },
+                    {
+                      "dcid": "nuts/FR1",
+                      "name": "Ile-de-France"
+                    }
+                  ],
+                  "minValue": 131453,
+                  "maxValue": 9277680
+                },
+                "EurostatNUTS2": {
+                  "placeCount": 200,
+                  "topPlaces": [
+                    {
+                      "dcid": "nuts/TR10",
+                      "name": "Istanbul"
+                    },
+                    {
+                      "dcid": "nuts/ITC4",
+                      "name": "Lombardia"
+                    },
+                    {
+                      "dcid": "nuts/ES61",
+                      "name": "Andalucía"
+                    }
+                  ],
+                  "minValue": 12793,
+                  "maxValue": 7525490
+                },
+                "EurostatNUTS3": {
+                  "placeCount": 1274,
+                  "topPlaces": [
+                    {
+                      "dcid": "nuts/TR100",
+                      "name": "Istanbul"
+                    },
+                    {
+                      "dcid": "nuts/ES300",
+                      "name": "Madrid"
+                    },
+                    {
+                      "dcid": "nuts/ES511",
+                      "name": "Barcelona"
+                    }
+                  ],
+                  "minValue": 4313,
+                  "maxValue": 7525490
+                },
+                "Place": {
+                  "placeCount": 8,
+                  "topPlaces": [
+                    {
+                      "dcid": "wikidataId/Q1180"
+                    },
+                    {
+                      "dcid": "wikidataId/Q2760659",
+                      "name": "Dadra"
+                    },
+                    {
+                      "dcid": "wikidataId/Q3235"
+                    }
+                  ],
+                  "minValue": 296,
+                  "maxValue": 5883370
+                },
+                "State": {
+                  "placeCount": 84,
+                  "topPlaces": [
+                    {
+                      "dcid": "wikidataId/Q1498",
+                      "name": "Uttar Pradesh"
+                    },
+                    {
+                      "dcid": "wikidataId/Q1191",
+                      "name": "Maharashtra"
+                    },
+                    {
+                      "dcid": "wikidataId/Q1165",
+                      "name": "Bihar"
+                    }
+                  ],
+                  "minValue": 29519,
+                  "maxValue": 101563000
+                }
+              },
+              "minValue": 296,
+              "maxValue": 660361000,
+              "observationCount": 56654,
+              "timeSeriesCount": 2463
+            }
+          ],
+          "observationCount": 56654,
+          "timeSeriesCount": 2463
+        },
+        "dc/base/USCensusPEP_Sex": {
+          "importName": "USCensusPEP_Sex",
+          "releaseFrequency": "P1Y",
+          "seriesSummary": [
+            {
+              "seriesKey": {
+                "measurementMethod": "CensusPEPSurvey",
+                "observationPeriod": "P1Y"
+              },
+              "earliestDate": "1970",
+              "latestDate": "2021",
+              "placeTypeSummary": {
+                "County": {
+                  "placeCount": 3145,
+                  "topPlaces": [
+                    {
+                      "dcid": "geoId/06037",
+                      "name": "Los Angeles County"
+                    },
+                    {
+                      "dcid": "geoId/17031",
+                      "name": "Cook County"
+                    },
+                    {
+                      "dcid": "geoId/48201",
+                      "name": "Harris County"
+                    }
+                  ],
+                  "minValue": 0,
+                  "maxValue": 5119774
+                }
+              },
+              "minValue": 0,
+              "maxValue": 5119774,
+              "observationCount": 163032,
+              "timeSeriesCount": 3145
+            },
+            {
+              "seriesKey": {
+                "measurementMethod": "CensusPEPSurvey_PartialAggregate",
+                "observationPeriod": "P1Y",
+                "isDcAggregate": true
+              },
+              "earliestDate": "1900",
+              "latestDate": "2021",
               "placeTypeSummary": {
                 "Country": {
                   "placeCount": 1,
@@ -1489,8 +1489,8 @@
                       "name": "United States"
                     }
                   ],
-                  "minValue": 154718323.448,
-                  "maxValue": 164946479.86
+                  "minValue": 37227000,
+                  "maxValue": 167509003
                 },
                 "State": {
                   "placeCount": 51,
@@ -1508,18 +1508,18 @@
                       "name": "Florida"
                     }
                   ],
-                  "minValue": 267879.289,
-                  "maxValue": 19759598.991
+                  "minValue": 138616,
+                  "maxValue": 19829641
                 }
               },
-              "minValue": 267879.289,
-              "maxValue": 164946479.86,
-              "observationCount": 520,
+              "minValue": 138616,
+              "maxValue": 167509003,
+              "observationCount": 2774,
               "timeSeriesCount": 52
             }
           ],
-          "observationCount": 520,
-          "timeSeriesCount": 52
+          "observationCount": 165806,
+          "timeSeriesCount": 3197
         }
       }
     },
@@ -1766,7 +1766,7 @@
         }
       },
       "provenanceSummary": {
-        "dc/gg17432": {
+        "dc/base/CensusACS5YearSurvey": {
           "importName": "CensusACS5YearSurvey",
           "releaseFrequency": "P1Y",
           "seriesSummary": [
@@ -2015,7 +2015,7 @@
           "observationCount": 1906227,
           "timeSeriesCount": 192628
         },
-        "dc/qmsyx4": {
+        "dc/base/CensusACS5YearSurvey_AggCountry": {
           "importName": "CensusACS5YearSurvey_AggCountry",
           "seriesSummary": [
             {
@@ -2047,7 +2047,7 @@
           "observationCount": 10,
           "timeSeriesCount": 1
         },
-        "dc/vnd0tf2": {
+        "dc/base/USCensusPEP_By_Sex_Race": {
           "importName": "USCensusPEP_By_Sex_Race",
           "releaseFrequency": "P1Y",
           "seriesSummary": [
@@ -2245,55 +2245,7 @@
         }
       },
       "provenanceSummary": {
-        "dc/base/WorldDevelopmentIndicators": {
-          "importName": "WorldDevelopmentIndicators",
-          "seriesSummary": [
-            {
-              "seriesKey": {},
-              "earliestDate": "1960",
-              "latestDate": "2020",
-              "placeTypeSummary": {
-                "Country": {
-                  "placeCount": 210,
-                  "topPlaces": [
-                    {
-                      "dcid": "country/CHN",
-                      "name": "China"
-                    },
-                    {
-                      "dcid": "country/IND",
-                      "name": "India"
-                    },
-                    {
-                      "dcid": "country/USA",
-                      "name": "United States"
-                    }
-                  ],
-                  "minValue": 0.792,
-                  "maxValue": 8.864
-                },
-                "Place": {
-                  "placeCount": 1,
-                  "topPlaces": [
-                    {
-                      "dcid": "Earth",
-                      "name": "Earth"
-                    }
-                  ],
-                  "minValue": 2.29902994764743,
-                  "maxValue": 5.33228884884454
-                }
-              },
-              "minValue": 0.792,
-              "maxValue": 8.864,
-              "observationCount": 12232,
-              "timeSeriesCount": 211
-            }
-          ],
-          "observationCount": 12232,
-          "timeSeriesCount": 211
-        },
-        "dc/yd4sfb": {
+        "dc/base/EurostatData": {
           "importName": "EurostatData",
           "releaseFrequency": "P1Y",
           "seriesSummary": [
@@ -2389,6 +2341,54 @@
           ],
           "observationCount": 10106,
           "timeSeriesCount": 1981
+        },
+        "dc/base/WorldDevelopmentIndicators": {
+          "importName": "WorldDevelopmentIndicators",
+          "seriesSummary": [
+            {
+              "seriesKey": {},
+              "earliestDate": "1960",
+              "latestDate": "2020",
+              "placeTypeSummary": {
+                "Country": {
+                  "placeCount": 210,
+                  "topPlaces": [
+                    {
+                      "dcid": "country/CHN",
+                      "name": "China"
+                    },
+                    {
+                      "dcid": "country/IND",
+                      "name": "India"
+                    },
+                    {
+                      "dcid": "country/USA",
+                      "name": "United States"
+                    }
+                  ],
+                  "minValue": 0.792,
+                  "maxValue": 8.864
+                },
+                "Place": {
+                  "placeCount": 1,
+                  "topPlaces": [
+                    {
+                      "dcid": "Earth",
+                      "name": "Earth"
+                    }
+                  ],
+                  "minValue": 2.29902994764743,
+                  "maxValue": 5.33228884884454
+                }
+              },
+              "minValue": 0.792,
+              "maxValue": 8.864,
+              "observationCount": 12232,
+              "timeSeriesCount": 211
+            }
+          ],
+          "observationCount": 12232,
+          "timeSeriesCount": 211
         }
       }
     }

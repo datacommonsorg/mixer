@@ -60,7 +60,12 @@
         "id": "dc/g/Uncategorized",
         "specializedEntity": "Uncategorized",
         "displayName": "Uncategorized",
-        "descendentStatVarCount": 2377
+        "descendentStatVarCount": 2323
+      },
+      {
+        "id": "sdg/g/SDG",
+        "displayName": "Sustainable Development Goals",
+        "descendentStatVarCount": 823
       },
       {
         "id": "g/Feeding_America",

@@ -4,33 +4,33 @@
       "subjectId": "dc/o/23gt9k7fql176",
       "predicate": "measurementMethod",
       "objectId": "dcAggregate/CensusACS5yrSurvey",
-      "provenanceId": "dc/qmsyx4"
+      "provenanceId": "dc/base/CensusACS5YearSurvey_AggCountry"
     },
     {
       "subjectId": "dc/o/23gt9k7fql176",
       "predicate": "observationAbout",
       "objectId": "country/USA",
       "objectName": "United States of America",
-      "provenanceId": "dc/qmsyx4"
+      "provenanceId": "dc/base/CensusACS5YearSurvey_AggCountry"
     },
     {
       "subjectId": "dc/o/23gt9k7fql176",
       "predicate": "observationDate",
       "objectValue": "2017",
-      "provenanceId": "dc/qmsyx4"
+      "provenanceId": "dc/base/CensusACS5YearSurvey_AggCountry"
     },
     {
       "subjectId": "dc/o/23gt9k7fql176",
       "predicate": "value",
       "objectValue": "324473370",
-      "provenanceId": "dc/qmsyx4"
+      "provenanceId": "dc/base/CensusACS5YearSurvey_AggCountry"
     },
     {
       "subjectId": "dc/o/23gt9k7fql176",
       "predicate": "variableMeasured",
       "objectId": "Count_Person",
       "objectName": "Population",
-      "provenanceId": "dc/qmsyx4"
+      "provenanceId": "dc/base/CensusACS5YearSurvey_AggCountry"
     }
   ],
   "dc/o/88cs3xqnmpp55": [
@@ -39,33 +39,33 @@
       "predicate": "measurementMethod",
       "objectId": "CensusPEPSurvey",
       "objectName": "CensusPEPSurvey",
-      "provenanceId": "dc/ks7tgs3"
+      "provenanceId": "dc/base/CensusPEP"
     },
     {
       "subjectId": "dc/o/88cs3xqnmpp55",
       "predicate": "observationAbout",
       "objectId": "country/USA",
       "objectName": "United States of America",
-      "provenanceId": "dc/ks7tgs3"
+      "provenanceId": "dc/base/CensusPEP"
     },
     {
       "subjectId": "dc/o/88cs3xqnmpp55",
       "predicate": "observationDate",
       "objectValue": "1984",
-      "provenanceId": "dc/ks7tgs3"
+      "provenanceId": "dc/base/CensusPEP"
     },
     {
       "subjectId": "dc/o/88cs3xqnmpp55",
       "predicate": "value",
       "objectValue": "235824908",
-      "provenanceId": "dc/ks7tgs3"
+      "provenanceId": "dc/base/CensusPEP"
     },
     {
       "subjectId": "dc/o/88cs3xqnmpp55",
       "predicate": "variableMeasured",
       "objectId": "Count_Person",
       "objectName": "Population",
-      "provenanceId": "dc/ks7tgs3"
+      "provenanceId": "dc/base/CensusPEP"
     }
   ],
   "dc/o/kyv7dxe4s18eh": [
@@ -74,32 +74,32 @@
       "predicate": "observationAbout",
       "objectId": "country/USA",
       "objectName": "United States of America",
-      "provenanceId": "dc/jccrh82"
+      "provenanceId": "dc/base/WorldDevelopmentIndicators"
     },
     {
       "subjectId": "dc/o/kyv7dxe4s18eh",
       "predicate": "observationDate",
       "objectValue": "2007",
-      "provenanceId": "dc/jccrh82"
+      "provenanceId": "dc/base/WorldDevelopmentIndicators"
     },
     {
       "subjectId": "dc/o/kyv7dxe4s18eh",
       "predicate": "observationPeriod",
       "objectValue": "P1Y",
-      "provenanceId": "dc/jccrh82"
+      "provenanceId": "dc/base/WorldDevelopmentIndicators"
     },
     {
       "subjectId": "dc/o/kyv7dxe4s18eh",
       "predicate": "value",
       "objectValue": "301231207",
-      "provenanceId": "dc/jccrh82"
+      "provenanceId": "dc/base/WorldDevelopmentIndicators"
     },
     {
       "subjectId": "dc/o/kyv7dxe4s18eh",
       "predicate": "variableMeasured",
       "objectId": "Count_Person",
       "objectName": "Population",
-      "provenanceId": "dc/jccrh82"
+      "provenanceId": "dc/base/WorldDevelopmentIndicators"
     }
   ],
   "dc/o/w2z8nx9y43k97": [
@@ -108,39 +108,39 @@
       "predicate": "observationAbout",
       "objectId": "Earth",
       "objectName": "Earth",
-      "provenanceId": "dc/jccrh82"
+      "provenanceId": "dc/base/WorldDevelopmentIndicators"
     },
     {
       "subjectId": "dc/o/w2z8nx9y43k97",
       "predicate": "observationDate",
       "objectValue": "2006",
-      "provenanceId": "dc/jccrh82"
+      "provenanceId": "dc/base/WorldDevelopmentIndicators"
     },
     {
       "subjectId": "dc/o/w2z8nx9y43k97",
       "predicate": "observationPeriod",
       "objectValue": "P1Y",
-      "provenanceId": "dc/jccrh82"
+      "provenanceId": "dc/base/WorldDevelopmentIndicators"
     },
     {
       "subjectId": "dc/o/w2z8nx9y43k97",
       "predicate": "unit",
       "objectId": "Year",
       "objectName": "Year",
-      "provenanceId": "dc/jccrh82"
+      "provenanceId": "dc/base/WorldDevelopmentIndicators"
     },
     {
       "subjectId": "dc/o/w2z8nx9y43k97",
       "predicate": "value",
       "objectValue": "71.5062059465",
-      "provenanceId": "dc/jccrh82"
+      "provenanceId": "dc/base/WorldDevelopmentIndicators"
     },
     {
       "subjectId": "dc/o/w2z8nx9y43k97",
       "predicate": "variableMeasured",
       "objectId": "LifeExpectancy_Person_Female",
       "objectName": "Life expectancy at birth, female (years)",
-      "provenanceId": "dc/jccrh82"
+      "provenanceId": "dc/base/WorldDevelopmentIndicators"
     }
   ]
 }

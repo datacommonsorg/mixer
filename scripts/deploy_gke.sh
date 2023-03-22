@@ -98,6 +98,7 @@ helm upgrade --install "$RELEASE" deploy/helm_charts/mixer \
   --atomic \
   --debug \
   --timeout 10m \
+  --force  \
   -f "deploy/helm_charts/envs/$ENV.yaml" \
   --set mixer.image.tag="$TAG" \
   --set mixer.githash="$TAG" \

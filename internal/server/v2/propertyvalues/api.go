@@ -22,39 +22,38 @@ import (
 	v1pv "github.com/datacommonsorg/mixer/internal/server/v1/propertyvalues"
 
 	"github.com/datacommonsorg/mixer/internal/store"
-	"github.com/datacommonsorg/mixer/internal/util"
 )
 
 // API is the V2 property values API implementation entry point.
 func API(
 	ctx context.Context,
-	in *pb.PropertyValuesV2Request,
 	store *store.Store,
-) (*pb.PropertyValuesV2Response, error) {
-	nodes := in.GetNodes()
-	property := in.GetProperty()
-
+	nodes []string,
+	properties []string,
+	direction string,
+	limit int,
+	nextToken string,
+) (*pb.QueryV2Response, error) {
 	data, _, err := v1pv.Fetch(
 		ctx,
 		store,
 		nodes,
-		[]string{property},
-		0,
-		"",
-		util.DirectionOut,
+		properties,
+		limit,
+		nextToken,
+		direction,
 	)
 	if err != nil {
 		return nil, err
 	}
-	res := &pb.PropertyValuesV2Response{Data: []*pb.NodePropertyValues{}}
+	res := &pb.QueryV2Response{Data: map[string]*pb.Arc{}}
 	for _, node := range nodes {
-		res.Data = append(
-			res.Data,
-			&pb.NodePropertyValues{
-				Node:   node,
-				Values: v1pv.MergeTypedNodes(data[node][property]),
-			},
-		)
+		for _, property := range properties {
+			res.Data[node] = &pb.Arc{
+				Property: property,
+				Nodes:    v1pv.MergeTypedNodes(data[node][property]),
+			}
+		}
 	}
 	return res, nil
 }

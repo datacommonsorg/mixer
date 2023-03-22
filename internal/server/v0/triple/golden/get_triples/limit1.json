@@ -1,7 +1,7 @@
 {
-  "dc/d7tbsb1": [
+  "dc/base/HumanReadableStatVars": [
     {
-      "subjectId": "dc/d7tbsb1",
+      "subjectId": "dc/base/HumanReadableStatVars",
       "subjectName": "HumanReadableStatVars",
       "subjectTypes": [
         "Provenance"
@@ -12,20 +12,20 @@
       "objectTypes": [
         "Curator"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
-      "subjectId": "dc/d7tbsb1",
+      "subjectId": "dc/base/HumanReadableStatVars",
       "subjectName": "HumanReadableStatVars",
       "subjectTypes": [
         "Provenance"
       ],
       "predicate": "importTime",
-      "objectValue": "1675883318",
-      "provenanceId": "dc/d7tbsb1"
+      "objectValue": "1678762901",
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
-      "subjectId": "dc/d7tbsb1",
+      "subjectId": "dc/base/HumanReadableStatVars",
       "subjectName": "HumanReadableStatVars",
       "subjectTypes": [
         "Provenance"
@@ -36,34 +36,34 @@
       "objectTypes": [
         "Dataset"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
-      "subjectId": "dc/d7tbsb1",
+      "subjectId": "dc/base/HumanReadableStatVars",
       "subjectName": "HumanReadableStatVars",
       "subjectTypes": [
         "Provenance"
       ],
       "predicate": "name",
       "objectValue": "HumanReadableStatVars",
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
-      "subjectId": "dc/d7tbsb1",
+      "subjectId": "dc/base/HumanReadableStatVars",
       "subjectName": "HumanReadableStatVars",
       "subjectTypes": [
         "Provenance"
       ],
       "predicate": "provenance",
-      "objectId": "dc/d7tbsb1",
+      "objectId": "dc/base/HumanReadableStatVars",
       "objectName": "HumanReadableStatVars",
       "objectTypes": [
         "Provenance"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
-      "subjectId": "dc/d7tbsb1",
+      "subjectId": "dc/base/HumanReadableStatVars",
       "subjectName": "HumanReadableStatVars",
       "subjectTypes": [
         "Provenance"
@@ -74,10 +74,10 @@
       "objectTypes": [
         "Source"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
-      "subjectId": "dc/d7tbsb1",
+      "subjectId": "dc/base/HumanReadableStatVars",
       "subjectName": "HumanReadableStatVars",
       "subjectTypes": [
         "Provenance"
@@ -88,17 +88,17 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
-      "subjectId": "dc/d7tbsb1",
+      "subjectId": "dc/base/HumanReadableStatVars",
       "subjectName": "HumanReadableStatVars",
       "subjectTypes": [
         "Provenance"
       ],
       "predicate": "url",
       "objectValue": "https://datacommons.org",
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "Acre1000Onwards",
@@ -107,12 +107,12 @@
         "QuantityRange"
       ],
       "predicate": "provenance",
-      "objectId": "dc/d7tbsb1",
+      "objectId": "dc/base/HumanReadableStatVars",
       "objectName": "HumanReadableStatVars",
       "objectTypes": [
         "Provenance"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "AggregateMax_MedianAcrossModels_DifferenceRelativeToBaseDate1990_Max_Temperature",
@@ -121,12 +121,12 @@
         "StatisticalVariable"
       ],
       "predicate": "provenance",
-      "objectId": "dc/d7tbsb1",
+      "objectId": "dc/base/HumanReadableStatVars",
       "objectName": "HumanReadableStatVars",
       "objectTypes": [
         "Provenance"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "AvailableVehicles0",
@@ -135,12 +135,12 @@
         "Quantity"
       ],
       "predicate": "provenance",
-      "objectId": "dc/d7tbsb1",
+      "objectId": "dc/base/HumanReadableStatVars",
       "objectName": "HumanReadableStatVars",
       "objectTypes": [
         "Provenance"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "dc/g/Agriculture",
@@ -149,12 +149,12 @@
         "StatVarGroup"
       ],
       "predicate": "provenance",
-      "objectId": "dc/d7tbsb1",
+      "objectId": "dc/base/HumanReadableStatVars",
       "objectName": "HumanReadableStatVars",
       "objectTypes": [
         "Provenance"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "dc/svpg/AmountOfFarmInventoryByType",
@@ -163,12 +163,12 @@
         "StatVarPeerGroup"
       ],
       "predicate": "provenance",
-      "objectId": "dc/d7tbsb1",
+      "objectId": "dc/base/HumanReadableStatVars",
       "objectName": "HumanReadableStatVars",
       "objectTypes": [
         "Provenance"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
       "subjectId": "dc/topic/AgriculturalProduction",
@@ -177,12 +177,12 @@
         "Topic"
       ],
       "predicate": "provenance",
-      "objectId": "dc/d7tbsb1",
+      "objectId": "dc/base/HumanReadableStatVars",
       "objectName": "HumanReadableStatVars",
       "objectTypes": [
         "Provenance"
       ],
-      "provenanceId": "dc/d7tbsb1"
+      "provenanceId": "dc/base/HumanReadableStatVars"
     }
   ]
 }

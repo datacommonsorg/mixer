@@ -83,7 +83,7 @@
       }
     },
     "provenanceSummary": {
-      "dc/fx0lj33": {
+      "dc/base/FBIGovCrime": {
         "importName": "FBIGovCrime",
         "releaseFrequency": "P1Y",
         "seriesSummary": [
@@ -172,7 +172,7 @@
         "observationCount": 96373,
         "timeSeriesCount": 10185
       },
-      "dc/q843y93": {
+      "dc/base/FBIGovCrime_AggCountry": {
         "importName": "FBIGovCrime_AggCountry",
         "seriesSummary": [
           {

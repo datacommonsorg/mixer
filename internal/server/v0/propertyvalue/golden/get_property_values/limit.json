@@ -3,7 +3,7 @@
     "country/USA": {
       "out": [
         {
-          "provenanceId": "dc/5n63hr1",
+          "provenanceId": "dc/base/WikidataOtherIdGeos",
           "value": "United States of America"
         }
       ]

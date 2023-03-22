@@ -1,56 +1,49 @@
 {
-  "data": [
-    {
-      "node": "country/USA"
-    },
-    {
-      "node": "geoId/06053",
-      "values": [
+  "data": {
+    "geoId/0649670": {
+      "property": "geoOverlaps",
+      "nodes": [
         {
-          "name": "93210",
+          "name": "94024",
           "types": [
             "CensusZipCodeTabulationArea"
           ],
-          "dcid": "zip/93210",
+          "dcid": "zip/94024",
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
-          "name": "93426",
+          "name": "94040",
           "types": [
             "CensusZipCodeTabulationArea"
           ],
-          "dcid": "zip/93426",
+          "dcid": "zip/94040",
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
-          "name": "93451",
+          "name": "94043",
           "types": [
             "CensusZipCodeTabulationArea"
           ],
-          "dcid": "zip/93451",
+          "dcid": "zip/94043",
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
-          "name": "93461",
+          "name": "94085",
           "types": [
             "CensusZipCodeTabulationArea"
           ],
-          "dcid": "zip/93461",
+          "dcid": "zip/94085",
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
-          "name": "93930",
+          "name": "94086",
           "types": [
             "CensusZipCodeTabulationArea"
           ],
-          "dcid": "zip/93930",
+          "dcid": "zip/94086",
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         }
       ]
-    },
-    {
-      "node": "geoId/06"
     }
-  ],
-  "nextToken": "H4sIAAAAAAAA/+Ly5+JOT833TNE3MDMwNQZz/MtSi3ISC4q5pJ1T84pLi6MyC5zzU1JDEpNKcxJLMvPzHItSE4UYhJg4GIWYOJiEmDiYhZg4WIRYOFglWAEAAAD//wEAAP//Qf91ulEAAAA="
+  }
 }

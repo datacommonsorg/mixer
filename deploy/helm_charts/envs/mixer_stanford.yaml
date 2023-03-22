@@ -4,6 +4,7 @@ mixer:
   serviceName: stanford.api.datacommons.org
 
 ingress:
+  enabled: true
   name: mixer-ingress-standford
   annotations:
     {

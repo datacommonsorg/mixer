@@ -36,7 +36,7 @@
             "Country"
           ],
           "dcid": "country/ABW",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Afghanistan",
@@ -44,7 +44,7 @@
             "Country"
           ],
           "dcid": "country/AFG",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "French Afars and Issas",
@@ -52,7 +52,7 @@
             "Country"
           ],
           "dcid": "country/AFI",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Angola",
@@ -60,7 +60,7 @@
             "Country"
           ],
           "dcid": "country/AGO",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Anguilla",
@@ -69,7 +69,7 @@
             "Country"
           ],
           "dcid": "country/AIA",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Albania",
@@ -77,7 +77,7 @@
             "Country"
           ],
           "dcid": "country/ALB",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Andorra",
@@ -85,7 +85,7 @@
             "Country"
           ],
           "dcid": "country/AND",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Netherlands Antilles",
@@ -93,7 +93,7 @@
             "Country"
           ],
           "dcid": "country/ANT",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "United Arab Emirates",
@@ -101,7 +101,7 @@
             "Country"
           ],
           "dcid": "country/ARE",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Argentina",
@@ -109,7 +109,7 @@
             "Country"
           ],
           "dcid": "country/ARG",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Armenia",
@@ -117,7 +117,7 @@
             "Country"
           ],
           "dcid": "country/ARM",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "American Samoa",
@@ -126,7 +126,7 @@
             "Country"
           ],
           "dcid": "country/ASM",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Antarctica",
@@ -134,7 +134,7 @@
             "Country"
           ],
           "dcid": "country/ATA",
-          "provenanceId": "dc/sm3m2w3"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "British Antarctic Territory",
@@ -143,7 +143,7 @@
             "Country"
           ],
           "dcid": "country/ATB",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "French Southern Territories",
@@ -151,7 +151,7 @@
             "Country"
           ],
           "dcid": "country/ATF",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Antigua and Barbuda",
@@ -159,7 +159,7 @@
             "Country"
           ],
           "dcid": "country/ATG",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Dronning Maud Land",
@@ -167,7 +167,7 @@
             "Country"
           ],
           "dcid": "country/ATN",
-          "provenanceId": "dc/sm3m2w3"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Australia",
@@ -175,7 +175,7 @@
             "Country"
           ],
           "dcid": "country/AUS",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Austria",
@@ -183,7 +183,7 @@
             "Country"
           ],
           "dcid": "country/AUT",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Azerbaijan",
@@ -191,7 +191,7 @@
             "Country"
           ],
           "dcid": "country/AZE",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Burundi",
@@ -199,7 +199,7 @@
             "Country"
           ],
           "dcid": "country/BDI",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Belgium",
@@ -207,7 +207,7 @@
             "Country"
           ],
           "dcid": "country/BEL",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Benin",
@@ -215,7 +215,7 @@
             "Country"
           ],
           "dcid": "country/BEN",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Bonaire, Sint Eustatius and Saba",
@@ -223,7 +223,7 @@
             "Country"
           ],
           "dcid": "country/BES",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Burkina Faso",
@@ -231,7 +231,7 @@
             "Country"
           ],
           "dcid": "country/BFA",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Bangladesh",
@@ -239,7 +239,7 @@
             "Country"
           ],
           "dcid": "country/BGD",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Bulgaria",
@@ -247,7 +247,7 @@
             "Country"
           ],
           "dcid": "country/BGR",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Bahrain",
@@ -255,7 +255,7 @@
             "Country"
           ],
           "dcid": "country/BHR",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Bahamas",
@@ -263,7 +263,7 @@
             "Country"
           ],
           "dcid": "country/BHS",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Bosnia and Herzegovina",
@@ -271,7 +271,7 @@
             "Country"
           ],
           "dcid": "country/BIH",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Saint Barthélemy",
@@ -279,7 +279,7 @@
             "Country"
           ],
           "dcid": "country/BLM",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Belarus",
@@ -287,7 +287,7 @@
             "Country"
           ],
           "dcid": "country/BLR",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Belize",
@@ -295,7 +295,7 @@
             "Country"
           ],
           "dcid": "country/BLZ",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Bermuda",
@@ -304,7 +304,7 @@
             "Country"
           ],
           "dcid": "country/BMU",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Bolivia",
@@ -312,7 +312,7 @@
             "Country"
           ],
           "dcid": "country/BOL",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Brazil",
@@ -320,7 +320,7 @@
             "Country"
           ],
           "dcid": "country/BRA",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Barbados",
@@ -328,7 +328,7 @@
             "Country"
           ],
           "dcid": "country/BRB",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Brunei",
@@ -336,7 +336,7 @@
             "Country"
           ],
           "dcid": "country/BRN",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Bhutan",
@@ -344,7 +344,7 @@
             "Country"
           ],
           "dcid": "country/BTN",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Bouvet Island",
@@ -352,7 +352,7 @@
             "Country"
           ],
           "dcid": "country/BVT",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Botswana",
@@ -360,7 +360,7 @@
             "Country"
           ],
           "dcid": "country/BWA",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Byelorussian SSR",
@@ -368,7 +368,7 @@
             "Country"
           ],
           "dcid": "country/BYS",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Central African Republic",
@@ -376,7 +376,7 @@
             "Country"
           ],
           "dcid": "country/CAF",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Canada",
@@ -384,7 +384,7 @@
             "Country"
           ],
           "dcid": "country/CAN",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Cocos (Keeling) Islands",
@@ -393,7 +393,7 @@
             "Country"
           ],
           "dcid": "country/CCK",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Switzerland",
@@ -401,7 +401,7 @@
             "Country"
           ],
           "dcid": "country/CHE",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Chile",
@@ -409,7 +409,7 @@
             "Country"
           ],
           "dcid": "country/CHL",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "China",
@@ -417,7 +417,7 @@
             "Country"
           ],
           "dcid": "country/CHN",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Côte d'Ivoire",
@@ -425,7 +425,7 @@
             "Country"
           ],
           "dcid": "country/CIV",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Cameroon",
@@ -433,7 +433,7 @@
             "Country"
           ],
           "dcid": "country/CMR",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Congo [DRC]",
@@ -441,7 +441,7 @@
             "Country"
           ],
           "dcid": "country/COD",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Congo [Republic]",
@@ -449,7 +449,7 @@
             "Country"
           ],
           "dcid": "country/COG",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Cook Islands",
@@ -457,7 +457,7 @@
             "Country"
           ],
           "dcid": "country/COK",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Colombia",
@@ -465,7 +465,7 @@
             "Country"
           ],
           "dcid": "country/COL",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Comoros",
@@ -473,7 +473,7 @@
             "Country"
           ],
           "dcid": "country/COM",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Cape Verde",
@@ -481,7 +481,7 @@
             "Country"
           ],
           "dcid": "country/CPV",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Costa Rica",
@@ -489,7 +489,7 @@
             "Country"
           ],
           "dcid": "country/CRI",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Czechoslovakia",
@@ -497,7 +497,7 @@
             "Country"
           ],
           "dcid": "country/CSK",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Canton and Enderbury Islands",
@@ -505,7 +505,7 @@
             "Country"
           ],
           "dcid": "country/CTE",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Cuba",
@@ -513,7 +513,7 @@
             "Country"
           ],
           "dcid": "country/CUB",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Curaçao",
@@ -521,7 +521,7 @@
             "Country"
           ],
           "dcid": "country/CUW",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Christmas Island",
@@ -530,7 +530,7 @@
             "Country"
           ],
           "dcid": "country/CXR",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Cayman Islands",
@@ -539,7 +539,7 @@
             "Country"
           ],
           "dcid": "country/CYM",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Cyprus",
@@ -547,7 +547,7 @@
             "Country"
           ],
           "dcid": "country/CYP",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Czech Republic",
@@ -555,7 +555,7 @@
             "Country"
           ],
           "dcid": "country/CZE",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "German Democratic Republic",
@@ -563,7 +563,7 @@
             "Country"
           ],
           "dcid": "country/DDR",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Germany",
@@ -571,7 +571,7 @@
             "Country"
           ],
           "dcid": "country/DEU",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Dahomey",
@@ -579,7 +579,7 @@
             "Country"
           ],
           "dcid": "country/DHY",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Djibouti",
@@ -587,7 +587,7 @@
             "Country"
           ],
           "dcid": "country/DJI",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Dominica",
@@ -595,7 +595,7 @@
             "Country"
           ],
           "dcid": "country/DMA",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Denmark",
@@ -604,7 +604,7 @@
             "Country"
           ],
           "dcid": "country/DNK",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Dominican Republic",
@@ -612,7 +612,7 @@
             "Country"
           ],
           "dcid": "country/DOM",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Algeria",
@@ -620,7 +620,7 @@
             "Country"
           ],
           "dcid": "country/DZA",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Ecuador",
@@ -628,7 +628,7 @@
             "Country"
           ],
           "dcid": "country/ECU",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Egypt",
@@ -636,7 +636,7 @@
             "Country"
           ],
           "dcid": "country/EGY",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Eritrea",
@@ -644,7 +644,7 @@
             "Country"
           ],
           "dcid": "country/ERI",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Western Sahara",
@@ -652,7 +652,7 @@
             "Country"
           ],
           "dcid": "country/ESH",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Spain",
@@ -660,7 +660,7 @@
             "Country"
           ],
           "dcid": "country/ESP",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Estonia",
@@ -668,7 +668,7 @@
             "Country"
           ],
           "dcid": "country/EST",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Ethiopia",
@@ -676,7 +676,7 @@
             "Country"
           ],
           "dcid": "country/ETH",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Finland",
@@ -684,7 +684,7 @@
             "Country"
           ],
           "dcid": "country/FIN",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Fiji",
@@ -692,7 +692,7 @@
             "Country"
           ],
           "dcid": "country/FJI",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Falkland Islands",
@@ -701,7 +701,7 @@
             "Country"
           ],
           "dcid": "country/FLK",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "France",
@@ -709,7 +709,7 @@
             "Country"
           ],
           "dcid": "country/FRA",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Faroe Islands",
@@ -718,7 +718,7 @@
             "Country"
           ],
           "dcid": "country/FRO",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Federated States of Micronesia",
@@ -726,7 +726,7 @@
             "Country"
           ],
           "dcid": "country/FSM",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Metropolitan France",
@@ -734,7 +734,7 @@
             "Country"
           ],
           "dcid": "country/FXX",
-          "provenanceId": "dc/5j06ly1"
+          "provenanceId": "dc/base/WikidataGeos"
         },
         {
           "name": "Gabon",
@@ -742,7 +742,7 @@
             "Country"
           ],
           "dcid": "country/GAB",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "United Kingdom",
@@ -750,7 +750,7 @@
             "Country"
           ],
           "dcid": "country/GBR",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Gilbert and Ellice Islands",
@@ -758,7 +758,7 @@
             "Country"
           ],
           "dcid": "country/GEL",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Georgia",
@@ -766,7 +766,7 @@
             "Country"
           ],
           "dcid": "country/GEO",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Guernsey",
@@ -774,7 +774,7 @@
             "Country"
           ],
           "dcid": "country/GGY",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Ghana",
@@ -782,7 +782,7 @@
             "Country"
           ],
           "dcid": "country/GHA",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Gibraltar",
@@ -791,7 +791,7 @@
             "Country"
           ],
           "dcid": "country/GIB",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Guinea",
@@ -799,7 +799,7 @@
             "Country"
           ],
           "dcid": "country/GIN",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Guadeloupe",
@@ -809,7 +809,7 @@
             "Country"
           ],
           "dcid": "country/GLP",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Gambia",
@@ -817,7 +817,7 @@
             "Country"
           ],
           "dcid": "country/GMB",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Guinea-Bissau",
@@ -825,7 +825,7 @@
             "Country"
           ],
           "dcid": "country/GNB",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Equatorial Guinea",
@@ -833,7 +833,7 @@
             "Country"
           ],
           "dcid": "country/GNQ",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Greece",
@@ -841,7 +841,7 @@
             "Country"
           ],
           "dcid": "country/GRC",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Grenada",
@@ -849,7 +849,7 @@
             "Country"
           ],
           "dcid": "country/GRD",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Greenland",
@@ -858,7 +858,7 @@
             "Country"
           ],
           "dcid": "country/GRL",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Guatemala",
@@ -866,7 +866,7 @@
             "Country"
           ],
           "dcid": "country/GTM",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "French Guiana",
@@ -876,7 +876,7 @@
             "Country"
           ],
           "dcid": "country/GUF",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Guam",
@@ -885,7 +885,7 @@
             "Country"
           ],
           "dcid": "country/GUM",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Guyana",
@@ -893,7 +893,7 @@
             "Country"
           ],
           "dcid": "country/GUY",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Hong Kong",
@@ -903,7 +903,7 @@
             "Country"
           ],
           "dcid": "country/HKG",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Heard Island and McDonald Islands",
@@ -912,7 +912,7 @@
             "Country"
           ],
           "dcid": "country/HMD",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Honduras",
@@ -920,7 +920,7 @@
             "Country"
           ],
           "dcid": "country/HND",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Croatia",
@@ -928,7 +928,7 @@
             "Country"
           ],
           "dcid": "country/HRV",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Haiti",
@@ -936,7 +936,7 @@
             "Country"
           ],
           "dcid": "country/HTI",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Hungary",
@@ -944,7 +944,7 @@
             "Country"
           ],
           "dcid": "country/HUN",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Upper Volta",
@@ -952,7 +952,7 @@
             "Country"
           ],
           "dcid": "country/HVO",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Indonesia",
@@ -960,7 +960,7 @@
             "Country"
           ],
           "dcid": "country/IDN",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Isle of Man",
@@ -968,7 +968,7 @@
             "Country"
           ],
           "dcid": "country/IMN",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "India",
@@ -976,7 +976,7 @@
             "Country"
           ],
           "dcid": "country/IND",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "British Indian Ocean Territory",
@@ -985,7 +985,7 @@
             "Country"
           ],
           "dcid": "country/IOT",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Ireland",
@@ -993,7 +993,7 @@
             "Country"
           ],
           "dcid": "country/IRL",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Iran",
@@ -1001,7 +1001,7 @@
             "Country"
           ],
           "dcid": "country/IRN",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Iraq",
@@ -1009,7 +1009,7 @@
             "Country"
           ],
           "dcid": "country/IRQ",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Iceland",
@@ -1017,7 +1017,7 @@
             "Country"
           ],
           "dcid": "country/ISL",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Israel",
@@ -1025,7 +1025,7 @@
             "Country"
           ],
           "dcid": "country/ISR",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Italy",
@@ -1033,7 +1033,7 @@
             "Country"
           ],
           "dcid": "country/ITA",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Jamaica",
@@ -1041,7 +1041,7 @@
             "Country"
           ],
           "dcid": "country/JAM",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Jersey",
@@ -1049,7 +1049,7 @@
             "Country"
           ],
           "dcid": "country/JEY",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Jordan",
@@ -1057,7 +1057,7 @@
             "Country"
           ],
           "dcid": "country/JOR",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Japan",
@@ -1065,7 +1065,7 @@
             "Country"
           ],
           "dcid": "country/JPN",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Kazakhstan",
@@ -1073,7 +1073,7 @@
             "Country"
           ],
           "dcid": "country/KAZ",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Kenya",
@@ -1081,7 +1081,7 @@
             "Country"
           ],
           "dcid": "country/KEN",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Kyrgyzstan",
@@ -1089,7 +1089,7 @@
             "Country"
           ],
           "dcid": "country/KGZ",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Cambodia",
@@ -1097,7 +1097,7 @@
             "Country"
           ],
           "dcid": "country/KHM",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Kiribati",
@@ -1105,7 +1105,7 @@
             "Country"
           ],
           "dcid": "country/KIR",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Saint Kitts and Nevis",
@@ -1113,7 +1113,7 @@
             "Country"
           ],
           "dcid": "country/KNA",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "South Korea",
@@ -1121,7 +1121,7 @@
             "Country"
           ],
           "dcid": "country/KOR",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Kuwait",
@@ -1129,7 +1129,7 @@
             "Country"
           ],
           "dcid": "country/KWT",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Laos",
@@ -1137,7 +1137,7 @@
             "Country"
           ],
           "dcid": "country/LAO",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Lebanon",
@@ -1145,7 +1145,7 @@
             "Country"
           ],
           "dcid": "country/LBN",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Liberia",
@@ -1153,7 +1153,7 @@
             "Country"
           ],
           "dcid": "country/LBR",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Libya",
@@ -1161,7 +1161,7 @@
             "Country"
           ],
           "dcid": "country/LBY",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Saint Lucia",
@@ -1169,7 +1169,7 @@
             "Country"
           ],
           "dcid": "country/LCA",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Liechtenstein",
@@ -1177,7 +1177,7 @@
             "Country"
           ],
           "dcid": "country/LIE",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Sri Lanka",
@@ -1185,7 +1185,7 @@
             "Country"
           ],
           "dcid": "country/LKA",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Lesotho",
@@ -1193,7 +1193,7 @@
             "Country"
           ],
           "dcid": "country/LSO",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Lithuania",
@@ -1201,7 +1201,7 @@
             "Country"
           ],
           "dcid": "country/LTU",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Luxembourg",
@@ -1209,7 +1209,7 @@
             "Country"
           ],
           "dcid": "country/LUX",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Latvia",
@@ -1217,7 +1217,7 @@
             "Country"
           ],
           "dcid": "country/LVA",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Macau",
@@ -1227,7 +1227,7 @@
             "Country"
           ],
           "dcid": "country/MAC",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Saint Martin",
@@ -1235,7 +1235,7 @@
             "Country"
           ],
           "dcid": "country/MAF",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Morocco",
@@ -1243,7 +1243,7 @@
             "Country"
           ],
           "dcid": "country/MAR",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Monaco",
@@ -1251,7 +1251,7 @@
             "Country"
           ],
           "dcid": "country/MCO",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Moldova",
@@ -1259,7 +1259,7 @@
             "Country"
           ],
           "dcid": "country/MDA",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Madagascar",
@@ -1267,7 +1267,7 @@
             "Country"
           ],
           "dcid": "country/MDG",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Maldives",
@@ -1275,7 +1275,7 @@
             "Country"
           ],
           "dcid": "country/MDV",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Mexico",
@@ -1283,7 +1283,7 @@
             "Country"
           ],
           "dcid": "country/MEX",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Marshall Islands",
@@ -1291,7 +1291,7 @@
             "Country"
           ],
           "dcid": "country/MHL",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Macedonia [FYROM]",
@@ -1299,7 +1299,7 @@
             "Country"
           ],
           "dcid": "country/MKD",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Mali",
@@ -1307,7 +1307,7 @@
             "Country"
           ],
           "dcid": "country/MLI",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Malta",
@@ -1315,7 +1315,7 @@
             "Country"
           ],
           "dcid": "country/MLT",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Myanmar",
@@ -1323,7 +1323,7 @@
             "Country"
           ],
           "dcid": "country/MMR",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Montenegro",
@@ -1331,7 +1331,7 @@
             "Country"
           ],
           "dcid": "country/MNE",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Mongolia",
@@ -1339,7 +1339,7 @@
             "Country"
           ],
           "dcid": "country/MNG",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Northern Mariana Islands",
@@ -1348,7 +1348,7 @@
             "Country"
           ],
           "dcid": "country/MNP",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Mozambique",
@@ -1356,7 +1356,7 @@
             "Country"
           ],
           "dcid": "country/MOZ",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Mauritania",
@@ -1364,7 +1364,7 @@
             "Country"
           ],
           "dcid": "country/MRT",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Montserrat",
@@ -1373,7 +1373,7 @@
             "Country"
           ],
           "dcid": "country/MSR",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Martinique",
@@ -1383,7 +1383,7 @@
             "Country"
           ],
           "dcid": "country/MTQ",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Mauritius",
@@ -1391,7 +1391,7 @@
             "Country"
           ],
           "dcid": "country/MUS",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Malawi",
@@ -1399,7 +1399,7 @@
             "Country"
           ],
           "dcid": "country/MWI",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Malaysia",
@@ -1407,7 +1407,7 @@
             "Country"
           ],
           "dcid": "country/MYS",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Mayotte",
@@ -1417,7 +1417,7 @@
             "Country"
           ],
           "dcid": "country/MYT",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Namibia",
@@ -1425,7 +1425,7 @@
             "Country"
           ],
           "dcid": "country/NAM",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "New Caledonia",
@@ -1433,7 +1433,7 @@
             "Country"
           ],
           "dcid": "country/NCL",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Niger",
@@ -1441,7 +1441,7 @@
             "Country"
           ],
           "dcid": "country/NER",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Norfolk Island",
@@ -1450,7 +1450,7 @@
             "Country"
           ],
           "dcid": "country/NFK",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Nigeria",
@@ -1458,7 +1458,7 @@
             "Country"
           ],
           "dcid": "country/NGA",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "New Hebrides",
@@ -1466,7 +1466,7 @@
             "Country"
           ],
           "dcid": "country/NHB",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Nicaragua",
@@ -1474,7 +1474,7 @@
             "Country"
           ],
           "dcid": "country/NIC",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Niue",
@@ -1482,7 +1482,7 @@
             "Country"
           ],
           "dcid": "country/NIU",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Netherlands",
@@ -1490,7 +1490,7 @@
             "Country"
           ],
           "dcid": "country/NLD",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Norway",
@@ -1498,7 +1498,7 @@
             "Country"
           ],
           "dcid": "country/NOR",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Nepal",
@@ -1506,7 +1506,7 @@
             "Country"
           ],
           "dcid": "country/NPL",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Nauru",
@@ -1514,7 +1514,7 @@
             "Country"
           ],
           "dcid": "country/NRU",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "New Zealand",
@@ -1522,7 +1522,7 @@
             "Country"
           ],
           "dcid": "country/NZL",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Oman",
@@ -1530,7 +1530,7 @@
             "Country"
           ],
           "dcid": "country/OMN",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Pakistan",
@@ -1538,7 +1538,7 @@
             "Country"
           ],
           "dcid": "country/PAK",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Panama",
@@ -1546,7 +1546,7 @@
             "Country"
           ],
           "dcid": "country/PAN",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Pitcairn Islands",
@@ -1555,7 +1555,7 @@
             "Country"
           ],
           "dcid": "country/PCN",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Peru",
@@ -1563,7 +1563,7 @@
             "Country"
           ],
           "dcid": "country/PER",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Philippines",
@@ -1571,7 +1571,7 @@
             "Country"
           ],
           "dcid": "country/PHL",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Palau",
@@ -1579,7 +1579,7 @@
             "Country"
           ],
           "dcid": "country/PLW",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Papua New Guinea",
@@ -1587,7 +1587,7 @@
             "Country"
           ],
           "dcid": "country/PNG",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Poland",
@@ -1595,7 +1595,7 @@
             "Country"
           ],
           "dcid": "country/POL",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Puerto Rico",
@@ -1603,7 +1603,7 @@
             "Country"
           ],
           "dcid": "country/PRI",
-          "provenanceId": "dc/sm3m2w3"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "North Korea",
@@ -1611,7 +1611,7 @@
             "Country"
           ],
           "dcid": "country/PRK",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Portugal",
@@ -1619,7 +1619,7 @@
             "Country"
           ],
           "dcid": "country/PRT",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Paraguay",
@@ -1627,7 +1627,7 @@
             "Country"
           ],
           "dcid": "country/PRY",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Palestinian Territories",
@@ -1635,7 +1635,7 @@
             "Country"
           ],
           "dcid": "country/PSE",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "French Polynesia",
@@ -1643,7 +1643,7 @@
             "Country"
           ],
           "dcid": "country/PYF",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Qatar",
@@ -1651,7 +1651,7 @@
             "Country"
           ],
           "dcid": "country/QAT",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Réunion",
@@ -1661,7 +1661,7 @@
             "Country"
           ],
           "dcid": "country/REU",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Romania",
@@ -1669,7 +1669,7 @@
             "Country"
           ],
           "dcid": "country/ROU",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Russia",
@@ -1677,7 +1677,7 @@
             "Country"
           ],
           "dcid": "country/RUS",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Rwanda",
@@ -1685,7 +1685,7 @@
             "Country"
           ],
           "dcid": "country/RWA",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Saudi Arabia",
@@ -1693,7 +1693,7 @@
             "Country"
           ],
           "dcid": "country/SAU",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Serbia and Montenegro",
@@ -1701,7 +1701,7 @@
             "Country"
           ],
           "dcid": "country/SCG",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Sudan",
@@ -1709,7 +1709,7 @@
             "Country"
           ],
           "dcid": "country/SDN",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Senegal",
@@ -1717,7 +1717,7 @@
             "Country"
           ],
           "dcid": "country/SEN",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Singapore",
@@ -1725,7 +1725,7 @@
             "Country"
           ],
           "dcid": "country/SGP",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "South Georgia and the South Sandwich Islands",
@@ -1734,7 +1734,7 @@
             "Country"
           ],
           "dcid": "country/SGS",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Saint Helena",
@@ -1743,7 +1743,7 @@
             "Country"
           ],
           "dcid": "country/SHN",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Svalbard and Jan Mayen",
@@ -1751,7 +1751,7 @@
             "Country"
           ],
           "dcid": "country/SJM",
-          "provenanceId": "dc/sm3m2w3"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Solomon Islands",
@@ -1759,7 +1759,7 @@
             "Country"
           ],
           "dcid": "country/SLB",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Sierra Leone",
@@ -1767,7 +1767,7 @@
             "Country"
           ],
           "dcid": "country/SLE",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "El Salvador",
@@ -1775,7 +1775,7 @@
             "Country"
           ],
           "dcid": "country/SLV",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "San Marino",
@@ -1783,7 +1783,7 @@
             "Country"
           ],
           "dcid": "country/SMR",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Somalia",
@@ -1791,7 +1791,7 @@
             "Country"
           ],
           "dcid": "country/SOM",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Saint Pierre and Miquelon",
@@ -1799,7 +1799,7 @@
             "Country"
           ],
           "dcid": "country/SPM",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Serbia",
@@ -1807,7 +1807,7 @@
             "Country"
           ],
           "dcid": "country/SRB",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "South Sudan",
@@ -1815,7 +1815,7 @@
             "Country"
           ],
           "dcid": "country/SSD",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "São Tomé and Príncipe",
@@ -1823,7 +1823,7 @@
             "Country"
           ],
           "dcid": "country/STP",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Union of Soviet Socialist Republics",
@@ -1831,7 +1831,7 @@
             "Country"
           ],
           "dcid": "country/SUN",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Suriname",
@@ -1839,7 +1839,7 @@
             "Country"
           ],
           "dcid": "country/SUR",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Slovakia",
@@ -1847,7 +1847,7 @@
             "Country"
           ],
           "dcid": "country/SVK",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Slovenia",
@@ -1855,7 +1855,7 @@
             "Country"
           ],
           "dcid": "country/SVN",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Sweden",
@@ -1863,7 +1863,7 @@
             "Country"
           ],
           "dcid": "country/SWE",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Eswatini",
@@ -1871,7 +1871,7 @@
             "Country"
           ],
           "dcid": "country/SWZ",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Sint Maarten",
@@ -1879,7 +1879,7 @@
             "Country"
           ],
           "dcid": "country/SXM",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Seychelles",
@@ -1887,7 +1887,7 @@
             "Country"
           ],
           "dcid": "country/SYC",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Syria",
@@ -1895,7 +1895,7 @@
             "Country"
           ],
           "dcid": "country/SYR",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Turks and Caicos Islands",
@@ -1904,7 +1904,7 @@
             "Country"
           ],
           "dcid": "country/TCA",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Chad",
@@ -1912,7 +1912,7 @@
             "Country"
           ],
           "dcid": "country/TCD",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Togo",
@@ -1920,7 +1920,7 @@
             "Country"
           ],
           "dcid": "country/TGO",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Thailand",
@@ -1928,7 +1928,7 @@
             "Country"
           ],
           "dcid": "country/THA",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Tajikistan",
@@ -1936,7 +1936,7 @@
             "Country"
           ],
           "dcid": "country/TJK",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Tokelau",
@@ -1944,7 +1944,7 @@
             "Country"
           ],
           "dcid": "country/TKL",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Turkmenistan",
@@ -1952,7 +1952,7 @@
             "Country"
           ],
           "dcid": "country/TKM",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "East Timor",
@@ -1960,7 +1960,7 @@
             "Country"
           ],
           "dcid": "country/TLS",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Tonga",
@@ -1968,7 +1968,7 @@
             "Country"
           ],
           "dcid": "country/TON",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Trinidad and Tobago",
@@ -1976,7 +1976,7 @@
             "Country"
           ],
           "dcid": "country/TTO",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Tunisia",
@@ -1984,7 +1984,7 @@
             "Country"
           ],
           "dcid": "country/TUN",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Turkey",
@@ -1992,7 +1992,7 @@
             "Country"
           ],
           "dcid": "country/TUR",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Tuvalu",
@@ -2000,7 +2000,7 @@
             "Country"
           ],
           "dcid": "country/TUV",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Taiwan",
@@ -2008,7 +2008,7 @@
             "Country"
           ],
           "dcid": "country/TWN",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Tanzania",
@@ -2016,7 +2016,7 @@
             "Country"
           ],
           "dcid": "country/TZA",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Uganda",
@@ -2024,7 +2024,7 @@
             "Country"
           ],
           "dcid": "country/UGA",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Ukraine",
@@ -2032,7 +2032,7 @@
             "Country"
           ],
           "dcid": "country/UKR",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "U.S. Minor Outlying Islands",
@@ -2041,7 +2041,7 @@
             "Country"
           ],
           "dcid": "country/UMI",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Uruguay",
@@ -2049,7 +2049,7 @@
             "Country"
           ],
           "dcid": "country/URY",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "United States",
@@ -2057,7 +2057,7 @@
             "Country"
           ],
           "dcid": "country/USA",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Uzbekistan",
@@ -2065,7 +2065,7 @@
             "Country"
           ],
           "dcid": "country/UZB",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Vatican City",
@@ -2073,7 +2073,7 @@
             "Country"
           ],
           "dcid": "country/VAT",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Saint Vincent and the Grenadines",
@@ -2081,7 +2081,7 @@
             "Country"
           ],
           "dcid": "country/VCT",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Venezuela",
@@ -2089,7 +2089,7 @@
             "Country"
           ],
           "dcid": "country/VEN",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "British Virgin Islands",
@@ -2098,7 +2098,7 @@
             "Country"
           ],
           "dcid": "country/VGB",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "U.S. Virgin Islands",
@@ -2106,7 +2106,7 @@
             "Country"
           ],
           "dcid": "country/VIR",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Vietnam",
@@ -2114,7 +2114,7 @@
             "Country"
           ],
           "dcid": "country/VNM",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Vanuatu",
@@ -2122,7 +2122,7 @@
             "Country"
           ],
           "dcid": "country/VUT",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Wallis and Futuna",
@@ -2130,7 +2130,7 @@
             "Country"
           ],
           "dcid": "country/WLF",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Samoa",
@@ -2138,7 +2138,7 @@
             "Country"
           ],
           "dcid": "country/WSM",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Kosovo",
@@ -2146,7 +2146,7 @@
             "Country"
           ],
           "dcid": "country/XKS",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Yemen",
@@ -2154,7 +2154,7 @@
             "Country"
           ],
           "dcid": "country/YEM",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Yugoslavia",
@@ -2162,7 +2162,7 @@
             "Country"
           ],
           "dcid": "country/YUG",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "South Africa",
@@ -2170,7 +2170,7 @@
             "Country"
           ],
           "dcid": "country/ZAF",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Zambia",
@@ -2178,7 +2178,7 @@
             "Country"
           ],
           "dcid": "country/ZMB",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Zimbabwe",
@@ -2186,7 +2186,7 @@
             "Country"
           ],
           "dcid": "country/ZWE",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Turkish Republic of Northern Cyprus",
@@ -2194,7 +2194,7 @@
             "Country"
           ],
           "dcid": "wikidataId/Q23681",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Artsakh",
@@ -2202,7 +2202,7 @@
             "Country"
           ],
           "dcid": "wikidataId/Q244165",
-          "provenanceId": "dc/5j06ly1"
+          "provenanceId": "dc/base/WikidataGeos"
         },
         {
           "name": "Kingdom of the Netherlands",
@@ -2210,7 +2210,7 @@
             "Country"
           ],
           "dcid": "wikidataId/Q29999",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Republic of Abkhazia",
@@ -2218,7 +2218,7 @@
             "Country"
           ],
           "dcid": "wikidataId/Q31354462",
-          "provenanceId": "dc/5j06ly1"
+          "provenanceId": "dc/base/WikidataGeos"
         },
         {
           "name": "Sahrawi Arab Democratic Republic",
@@ -2226,7 +2226,7 @@
             "Country"
           ],
           "dcid": "wikidataId/Q40362",
-          "provenanceId": "dc/5n63hr1"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Kingdom of Denmark",
@@ -2234,7 +2234,7 @@
             "Country"
           ],
           "dcid": "wikidataId/Q756617",
-          "provenanceId": "dc/5j06ly1"
+          "provenanceId": "dc/base/WikidataGeos"
         }
       ]
     }
