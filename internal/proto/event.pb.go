@@ -399,7 +399,6 @@ type EventCollection_GeoLocation struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Types that are assignable to Geo:
-	//
 	//	*EventCollection_GeoLocation_Point_
 	//	*EventCollection_GeoLocation_Polygon_
 	Geo isEventCollection_GeoLocation_Geo `protobuf_oneof:"geo"`

@@ -180,7 +180,10 @@ func main() {
 	}
 
 	// Store
-	store := store.NewStore(bqClient, memDb, tables, branchTableName, metadata)
+	store, err := store.NewStore(bqClient, memDb, tables, branchTableName, metadata)
+	if err != nil {
+		log.Fatalf("Failed to create a new store: %s", err)
+	}
 	// Build the cache that includes stat var group info and stat var search
 	// Index.
 	// !!Important: do this after creating the memdb, since the cache will

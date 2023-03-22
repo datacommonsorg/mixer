@@ -24,8 +24,12 @@ import (
 
 func TestNoBigTable(t *testing.T) {
 	ctx := context.Background()
-	s := NewMixerServer(store.NewStore(nil, nil, nil, "", nil), nil, nil, nil)
-	_, err := s.PlacePage(ctx, &pb.PlacePageRequest{
+	store, err := store.NewStore(nil, nil, nil, "", nil)
+	if err != nil {
+		t.Fatalf("store.NewStore() = %v", err)
+	}
+	s := NewMixerServer(store, nil, nil, nil)
+	_, err = s.PlacePage(ctx, &pb.PlacePageRequest{
 		Node:     "geoId/06",
 		Category: "Overview",
 	})

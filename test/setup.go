@@ -132,7 +132,10 @@ func setupInternal(
 			log.Fatalf("Failed to load tmcf and csv from GCS: %v", err)
 		}
 	}
-	st := store.NewStore(bqClient, memDb, tables, "", metadata)
+	st, err := store.NewStore(bqClient, memDb, tables, "", metadata)
+	if err != nil {
+		log.Fatalf("Failed to create a new store: %s", err)
+	}
 	var cache *resource.Cache
 	if useCache {
 		cache, err = server.NewCache(ctx, st, searchOptions)
@@ -171,7 +174,10 @@ func SetupBqOnly() (pb.MixerClient, error) {
 	if err != nil {
 		return nil, err
 	}
-	st := store.NewStore(bqClient, nil, nil, "", nil)
+	st, err := store.NewStore(bqClient, nil, nil, "", nil)
+	if err != nil {
+		return nil, err
+	}
 	return newClient(st, nil, metadata, nil, nil)
 }
 
