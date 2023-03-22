@@ -114,15 +114,15 @@ type MixerClient interface {
 	VariableAncestors(ctx context.Context, in *VariableAncestorsRequest, opts ...grpc.CallOption) (*VariableAncestorsResponse, error)
 	// Get event collection for {eventType, affectedPlaceDcid, date}.
 	// NOTE:
-	//   - The affectedPlaceDcid is only for top-level places:
-	//     Earth, continent, country, state, adminArea1.
-	//   - The date format should be: YYYY-MM.
+	// - The affectedPlaceDcid is only for top-level places:
+	//   Earth, continent, country, state, adminArea1.
+	// - The date format should be: YYYY-MM.
 	EventCollection(ctx context.Context, in *EventCollectionRequest, opts ...grpc.CallOption) (*EventCollectionResponse, error)
 	// Get all dates for event collection for {eventType, affectedPlaceDcid}.
-	//   - The affectedPlaceDcid is only for top-level places:
-	//     Earth, continent, country, state, adminArea1.
-	//   - The date format should be: YYYY-MM.
-	//     The dates in the response are sorted from earliest to latest.
+	// - The affectedPlaceDcid is only for top-level places:
+	//   Earth, continent, country, state, adminArea1.
+	// - The date format should be: YYYY-MM.
+	//   The dates in the response are sorted from earliest to latest.
 	EventCollectionDate(ctx context.Context, in *EventCollectionDateRequest, opts ...grpc.CallOption) (*EventCollectionDateResponse, error)
 	// Resolve a list of entities, given their descriptions.
 	ResolveEntities(ctx context.Context, in *ResolveEntitiesRequest, opts ...grpc.CallOption) (*ResolveEntitiesResponse, error)
@@ -134,6 +134,8 @@ type MixerClient interface {
 	FindEntities(ctx context.Context, in *FindEntitiesRequest, opts ...grpc.CallOption) (*FindEntitiesResponse, error)
 	// Find entities from descriptions, with optional filters on types.
 	BulkFindEntities(ctx context.Context, in *BulkFindEntitiesRequest, opts ...grpc.CallOption) (*BulkFindEntitiesResponse, error)
+	// Recognize places from a NL query.
+	RecognizePlaces(ctx context.Context, in *RecognizePlacesRequest, opts ...grpc.CallOption) (*RecognizePlacesResponse, error)
 }
 
 type mixerClient struct {
@@ -684,6 +686,15 @@ func (c *mixerClient) BulkFindEntities(ctx context.Context, in *BulkFindEntities
 	return out, nil
 }
 
+func (c *mixerClient) RecognizePlaces(ctx context.Context, in *RecognizePlacesRequest, opts ...grpc.CallOption) (*RecognizePlacesResponse, error) {
+	out := new(RecognizePlacesResponse)
+	err := c.cc.Invoke(ctx, "/datacommons.Mixer/RecognizePlaces", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // MixerServer is the server API for Mixer service.
 // All implementations should embed UnimplementedMixerServer
 // for forward compatibility
@@ -780,15 +791,15 @@ type MixerServer interface {
 	VariableAncestors(context.Context, *VariableAncestorsRequest) (*VariableAncestorsResponse, error)
 	// Get event collection for {eventType, affectedPlaceDcid, date}.
 	// NOTE:
-	//   - The affectedPlaceDcid is only for top-level places:
-	//     Earth, continent, country, state, adminArea1.
-	//   - The date format should be: YYYY-MM.
+	// - The affectedPlaceDcid is only for top-level places:
+	//   Earth, continent, country, state, adminArea1.
+	// - The date format should be: YYYY-MM.
 	EventCollection(context.Context, *EventCollectionRequest) (*EventCollectionResponse, error)
 	// Get all dates for event collection for {eventType, affectedPlaceDcid}.
-	//   - The affectedPlaceDcid is only for top-level places:
-	//     Earth, continent, country, state, adminArea1.
-	//   - The date format should be: YYYY-MM.
-	//     The dates in the response are sorted from earliest to latest.
+	// - The affectedPlaceDcid is only for top-level places:
+	//   Earth, continent, country, state, adminArea1.
+	// - The date format should be: YYYY-MM.
+	//   The dates in the response are sorted from earliest to latest.
 	EventCollectionDate(context.Context, *EventCollectionDateRequest) (*EventCollectionDateResponse, error)
 	// Resolve a list of entities, given their descriptions.
 	ResolveEntities(context.Context, *ResolveEntitiesRequest) (*ResolveEntitiesResponse, error)
@@ -800,6 +811,8 @@ type MixerServer interface {
 	FindEntities(context.Context, *FindEntitiesRequest) (*FindEntitiesResponse, error)
 	// Find entities from descriptions, with optional filters on types.
 	BulkFindEntities(context.Context, *BulkFindEntitiesRequest) (*BulkFindEntitiesResponse, error)
+	// Recognize places from a NL query.
+	RecognizePlaces(context.Context, *RecognizePlacesRequest) (*RecognizePlacesResponse, error)
 }
 
 // UnimplementedMixerServer should be embedded to have forward compatible implementations.
@@ -985,6 +998,9 @@ func (UnimplementedMixerServer) FindEntities(context.Context, *FindEntitiesReque
 }
 func (UnimplementedMixerServer) BulkFindEntities(context.Context, *BulkFindEntitiesRequest) (*BulkFindEntitiesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BulkFindEntities not implemented")
+}
+func (UnimplementedMixerServer) RecognizePlaces(context.Context, *RecognizePlacesRequest) (*RecognizePlacesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RecognizePlaces not implemented")
 }
 
 // UnsafeMixerServer may be embedded to opt out of forward compatibility for this service.
@@ -2078,6 +2094,24 @@ func _Mixer_BulkFindEntities_Handler(srv interface{}, ctx context.Context, dec f
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Mixer_RecognizePlaces_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RecognizePlacesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MixerServer).RecognizePlaces(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/datacommons.Mixer/RecognizePlaces",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MixerServer).RecognizePlaces(ctx, req.(*RecognizePlacesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Mixer_ServiceDesc is the grpc.ServiceDesc for Mixer service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -2324,6 +2358,10 @@ var Mixer_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "BulkFindEntities",
 			Handler:    _Mixer_BulkFindEntities_Handler,
+		},
+		{
+			MethodName: "RecognizePlaces",
+			Handler:    _Mixer_RecognizePlaces_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

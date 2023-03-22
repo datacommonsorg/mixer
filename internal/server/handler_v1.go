@@ -18,6 +18,7 @@ import (
 	"context"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	"github.com/datacommonsorg/mixer/internal/server/recon"
 	"github.com/datacommonsorg/mixer/internal/server/translator"
 	"github.com/datacommonsorg/mixer/internal/server/v1/event"
 	"github.com/datacommonsorg/mixer/internal/server/v1/info"
@@ -247,4 +248,11 @@ func (s *Server) EventCollectionDate(
 	ctx context.Context, in *pb.EventCollectionDateRequest,
 ) (*pb.EventCollectionDateResponse, error) {
 	return event.CollectionDate(ctx, in, s.store)
+}
+
+// RecognizePlaces implements API for Mixer.RecognizePlaces.
+func (s *Server) RecognizePlaces(
+	ctx context.Context, in *pb.RecognizePlacesRequest,
+) (*pb.RecognizePlacesResponse, error) {
+	return recon.RecognizePlaces(ctx, in, s.store)
 }
