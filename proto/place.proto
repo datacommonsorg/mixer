@@ -49,8 +49,7 @@ message RelatedPlacesInfo {
     }
     repeated RankInfo info = 1;
   }
-  // The following 3 fields are set only when place is not empty.
-  repeated string related_places = 1;
+  // The following 2 fields are set only when place is not empty.
   int32 rank_from_top = 2;    // Starting from 1.
   int32 rank_from_bottom = 3; // Starting from 1.
 
@@ -59,7 +58,7 @@ message RelatedPlacesInfo {
   Ranking rank_top_1000 = 8;
   Ranking rank_bottom_1000 = 9;
 
-  reserved 4, 5, 6;
+  reserved 1, 4, 5, 6;
 }
 
 // Request to get places that are contained in parent places.
