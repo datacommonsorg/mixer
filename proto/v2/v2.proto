@@ -19,11 +19,13 @@ package datacommons.v2;
 
 import "entity.proto";
 
-message Arc {
-  // The property of one single arc. This is only a single property, rather than
-  // chained properties
-  string property = 1;
-  repeated datacommons.EntityInfo nodes = 2;
+message Nodes {
+  repeated datacommons.EntityInfo nodes = 1;
+}
+
+message Arcs {
+  map<string, Nodes> arcs = 2;
+  map<string, Arcs> neighbor = 3;
 }
 
 message QueryV2Request {
@@ -42,5 +44,5 @@ message QueryV2Request {
 
 message QueryV2Response {
   // Keyed by the query node dcid.
-  map<string, Arc> data = 1;
+  map<string, Arcs> data = 1;
 }

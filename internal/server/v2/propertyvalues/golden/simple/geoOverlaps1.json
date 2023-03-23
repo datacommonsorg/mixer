@@ -1,49 +1,52 @@
 {
   "data": {
     "geoId/0649670": {
-      "property": "geoOverlaps",
-      "nodes": [
-        {
-          "name": "94024",
-          "types": [
-            "CensusZipCodeTabulationArea"
-          ],
-          "dcid": "zip/94024",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
-        },
-        {
-          "name": "94040",
-          "types": [
-            "CensusZipCodeTabulationArea"
-          ],
-          "dcid": "zip/94040",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
-        },
-        {
-          "name": "94043",
-          "types": [
-            "CensusZipCodeTabulationArea"
-          ],
-          "dcid": "zip/94043",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
-        },
-        {
-          "name": "94085",
-          "types": [
-            "CensusZipCodeTabulationArea"
-          ],
-          "dcid": "zip/94085",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
-        },
-        {
-          "name": "94086",
-          "types": [
-            "CensusZipCodeTabulationArea"
-          ],
-          "dcid": "zip/94086",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+      "arcs": {
+        "geoOverlaps": {
+          "nodes": [
+            {
+              "name": "94024",
+              "types": [
+                "CensusZipCodeTabulationArea"
+              ],
+              "dcid": "zip/94024",
+              "provenanceId": "dc/base/WikidataOtherIdGeos"
+            },
+            {
+              "name": "94040",
+              "types": [
+                "CensusZipCodeTabulationArea"
+              ],
+              "dcid": "zip/94040",
+              "provenanceId": "dc/base/WikidataOtherIdGeos"
+            },
+            {
+              "name": "94043",
+              "types": [
+                "CensusZipCodeTabulationArea"
+              ],
+              "dcid": "zip/94043",
+              "provenanceId": "dc/base/WikidataOtherIdGeos"
+            },
+            {
+              "name": "94085",
+              "types": [
+                "CensusZipCodeTabulationArea"
+              ],
+              "dcid": "zip/94085",
+              "provenanceId": "dc/base/WikidataOtherIdGeos"
+            },
+            {
+              "name": "94086",
+              "types": [
+                "CensusZipCodeTabulationArea"
+              ],
+              "dcid": "zip/94086",
+              "provenanceId": "dc/base/WikidataOtherIdGeos"
+            }
+          ]
         }
-      ]
+      }
     }
   }
 }
