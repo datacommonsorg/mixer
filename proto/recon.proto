@@ -148,7 +148,10 @@ message RecognizePlacesResponse {
 
 // RecogPlace contains info of a place for RecognizePlaces method.
 message RecogPlace {
-  repeated string words = 1;
+  message Name {
+    repeated string parts = 1;
+  }
+  repeated Name names = 1;
   string dcid = 2;
   repeated string containing_places = 3;
   int64 population = 4;

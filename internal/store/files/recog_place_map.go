@@ -64,15 +64,18 @@ func RecogPlaceMap() (map[string]*pb.RecogPlaces, error) {
 		}
 
 		// Name.
+		// TODO(ws): Support multiple names, split by comma.
 		nameParts := strings.Split(record[2], " ")
 		if len(nameParts) == 0 {
 			return nil, status.Errorf(codes.FailedPrecondition,
 				"Empty name parts for CSV record: %v", record)
 		}
+		name := &pb.RecogPlace_Name{}
 		for _, namePart := range nameParts {
-			recogPlace.Words = append(recogPlace.Words,
+			name.Parts = append(name.Parts,
 				strings.ToLower(strings.TrimSpace(namePart)))
 		}
+		recogPlace.Names = append(recogPlace.Names, name)
 
 		// Population.
 		population, err := strconv.ParseInt(record[4], 10, 64)
@@ -82,7 +85,8 @@ func RecogPlaceMap() (map[string]*pb.RecogPlaces, error) {
 		}
 		recogPlace.Population = population
 
-		key := recogPlace.Words[0]
+		// TODO(ws): Support multiple names, split by comma, change key accordingly.
+		key := recogPlace.Names[0].Parts[0]
 		if _, ok := recogPlaceMap[key]; !ok {
 			recogPlaceMap[key] = &pb.RecogPlaces{}
 		}
