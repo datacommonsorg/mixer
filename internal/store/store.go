@@ -16,16 +16,19 @@ package store
 
 import (
 	"cloud.google.com/go/bigquery"
+	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
+	"github.com/datacommonsorg/mixer/internal/store/files"
 	"github.com/datacommonsorg/mixer/internal/store/memdb"
 )
 
 // Store holds the handlers to BigQuery and Bigtable
 type Store struct {
-	BqClient *bigquery.Client
-	MemDb    *memdb.MemDb
-	BtGroup  *bigtable.Group
+	BqClient      *bigquery.Client
+	MemDb         *memdb.MemDb
+	BtGroup       *bigtable.Group
+	RecogPlaceMap map[string]*pb.RecogPlaces
 }
 
 // NewStore creates a new store.
@@ -35,7 +38,7 @@ func NewStore(
 	tables []*bigtable.Table,
 	branchTableName string,
 	metadata *resource.Metadata,
-) *Store {
+) (*Store, error) {
 	// Table validation happens when creating the store
 	validTables := []*bigtable.Table{}
 	for _, t := range tables {
@@ -43,9 +46,14 @@ func NewStore(
 			validTables = append(validTables, t)
 		}
 	}
-	return &Store{
-		BqClient: bqClient,
-		MemDb:    memDb,
-		BtGroup:  bigtable.NewGroup(validTables, branchTableName, metadata),
+	recogPlaceMap, err := files.RecogPlaceMap()
+	if err != nil {
+		return nil, err
 	}
+	return &Store{
+		BqClient:      bqClient,
+		MemDb:         memDb,
+		BtGroup:       bigtable.NewGroup(validTables, branchTableName, metadata),
+		RecogPlaceMap: recogPlaceMap,
+	}, nil
 }

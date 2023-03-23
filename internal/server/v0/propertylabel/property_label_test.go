@@ -91,7 +91,7 @@ func TestMerge(t *testing.T) {
 			t.Errorf("SetupBigtable(...) = %v", err)
 		}
 
-		store := store.NewStore(
+		store, err := store.NewStore(
 			nil,
 			nil,
 			[]*bigtable.Table{
@@ -101,6 +101,9 @@ func TestMerge(t *testing.T) {
 			"borgcron_branch",
 			nil,
 		)
+		if err != nil {
+			t.Fatalf("store.NewStore() = %s", err)
+		}
 
 		got, err := GetPropertyLabels(ctx,
 			&pb.GetPropertyLabelsRequest{

@@ -145,3 +145,18 @@ message RecognizePlacesResponse {
   }
   repeated Item items = 1;
 }
+
+// RecogPlace contains info of a place for RecognizePlaces method.
+message RecogPlace {
+  message Name {
+    repeated string parts = 1;
+  }
+  repeated Name names = 1;
+  string dcid = 2;
+  repeated string containing_places = 3;
+  int64 population = 4;
+}
+
+message RecogPlaces {
+  repeated RecogPlace places = 1;
+}
