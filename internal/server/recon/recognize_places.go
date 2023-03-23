@@ -72,31 +72,6 @@ func tokenize(query string) []string {
 	return tokens
 }
 
-/*
-   if (len(tokens) == 0):
-      return None
-    next = tokens[0].lower()
-    if (next not in self.places):
-      return [0, None]
-    places = self.places[next]
-    numTokens = 1
-    candidates = []
-    for cand in places:
-      n = 0
-      notFound = False
-      for w in cand.words:
-        if ((len(tokens) <= n) or (w != tokens[n].lower())):
-          notFound = True
-          break
-        n = n + 1
-      if (numTokens < n):
-        numTokens = n
-      if (not notFound):
-        # Make a deep copy since we may mutate the candidates.
-        candidates.append(copy.deepcopy(cand))
-    return [numTokens, candidates]
-*/
-
 func findPlaceCandidates(
 	tokens []string,
 	recogPlaceMap map[string]*pb.RecogPlaces) (int, *pb.RecogPlaces) {
@@ -114,7 +89,6 @@ func findPlaceCandidates(
 	candidates := &pb.RecogPlaces{}
 	for _, place := range places.GetPlaces() {
 		matchedNameSize := 0
-
 		for _, name := range place.GetNames() {
 			nameParts := name.GetParts()
 			namePartsSize := len(nameParts)
@@ -137,10 +111,11 @@ func findPlaceCandidates(
 				break
 			}
 		}
-
-		if matchedNameSize == 0 {
+		if matchedNameSize == 0 { // This place is not matched.
 			continue
 		}
+
+		// Take the max size of tokens for all matched places.
 		if numTokens < matchedNameSize {
 			numTokens = matchedNameSize
 		}
