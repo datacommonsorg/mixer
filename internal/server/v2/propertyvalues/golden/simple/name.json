@@ -1,7 +1,7 @@
 {
   "data": {
     "bio/hs": {
-      "arcs": {
+      "nodes": {
         "name": {
           "nodes": [
             {
@@ -13,7 +13,7 @@
       }
     },
     "geoId/06": {
-      "arcs": {
+      "nodes": {
         "name": {
           "nodes": [
             {

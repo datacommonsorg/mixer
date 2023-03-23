@@ -24,8 +24,8 @@ message Nodes {
 }
 
 message Arcs {
-  map<string, Nodes> arcs = 2;
-  map<string, Arcs> neighbor = 3;
+  map<string, Nodes> nodes = 1;
+  map<string, Arcs> arcs = 2;
 }
 
 message QueryV2Request {

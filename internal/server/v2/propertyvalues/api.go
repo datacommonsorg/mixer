@@ -48,9 +48,9 @@ func API(
 	}
 	res := &pb.QueryV2Response{Data: map[string]*pb.Arcs{}}
 	for _, node := range nodes {
-		res.Data[node] = &pb.Arcs{Arcs: map[string]*pb.Nodes{}}
+		res.Data[node] = &pb.Arcs{Nodes: map[string]*pb.Nodes{}}
 		for _, property := range properties {
-			res.Data[node].Arcs[property] = &pb.Nodes{
+			res.Data[node].Nodes[property] = &pb.Nodes{
 				Nodes: v1pv.MergeTypedNodes(data[node][property]),
 			}
 		}
