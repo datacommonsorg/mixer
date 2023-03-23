@@ -71,3 +71,81 @@ func tokenize(query string) []string {
 
 	return tokens
 }
+
+/*
+   if (len(tokens) == 0):
+      return None
+    next = tokens[0].lower()
+    if (next not in self.places):
+      return [0, None]
+    places = self.places[next]
+    numTokens = 1
+    candidates = []
+    for cand in places:
+      n = 0
+      notFound = False
+      for w in cand.words:
+        if ((len(tokens) <= n) or (w != tokens[n].lower())):
+          notFound = True
+          break
+        n = n + 1
+      if (numTokens < n):
+        numTokens = n
+      if (not notFound):
+        # Make a deep copy since we may mutate the candidates.
+        candidates.append(copy.deepcopy(cand))
+    return [numTokens, candidates]
+*/
+
+func findPlaceCandidates(
+	tokens []string,
+	recogPlaceMap map[string]*pb.RecogPlaces) (int, *pb.RecogPlaces) {
+	if len(tokens) == 0 {
+		return 0, nil
+	}
+
+	key := strings.ToLower(tokens[0])
+	places, ok := recogPlaceMap[key]
+	if !ok {
+		return 0, nil
+	}
+
+	numTokens := 1
+	candidates := &pb.RecogPlaces{}
+	for _, place := range places.GetPlaces() {
+		matchedNameSize := 0
+
+		for _, name := range place.GetNames() {
+			nameParts := name.GetParts()
+			namePartsSize := len(nameParts)
+
+			// To find a match, tokens cannot be shorter than name parts.
+			if len(tokens) < namePartsSize {
+				continue
+			}
+
+			nameMatched := true
+			for i := 0; i < namePartsSize; i++ {
+				if nameParts[i] != strings.ToLower(tokens[i]) {
+					nameMatched = false
+					break
+				}
+			}
+
+			if nameMatched {
+				matchedNameSize = namePartsSize
+				break
+			}
+		}
+
+		if matchedNameSize == 0 {
+			continue
+		}
+		if numTokens < matchedNameSize {
+			numTokens = matchedNameSize
+		}
+		candidates.Places = append(candidates.Places, place)
+	}
+
+	return numTokens, candidates
+}

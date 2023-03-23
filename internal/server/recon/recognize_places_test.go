@@ -18,7 +18,9 @@ package recon
 import (
 	"testing"
 
+	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/google/go-cmp/cmp"
+	"google.golang.org/protobuf/testing/protocmp"
 )
 
 func TestTokenize(t *testing.T) {
@@ -38,6 +40,77 @@ func TestTokenize(t *testing.T) {
 		got := tokenize(c.query)
 		if diff := cmp.Diff(got, c.want); diff != "" {
 			t.Errorf("Tokenize query %s got diff: %s", c.query, diff)
+		}
+	}
+}
+
+func TestFindPlaceCandidates(t *testing.T) {
+	recogPlaceMap := map[string]*pb.RecogPlaces{
+		"los": {
+			Places: []*pb.RecogPlace{
+				{
+					Names: []*pb.RecogPlace_Name{
+						{Parts: []string{"los", "angeles"}},
+					},
+					Dcid: "geoId/Los_Angeles",
+				},
+				{
+					Names: []*pb.RecogPlace_Name{
+						{Parts: []string{"los", "altos"}},
+						{Parts: []string{"los", "altos", "city"}},
+					},
+					Dcid: "geoId/Los_Altos",
+				},
+				{
+					Names: []*pb.RecogPlace_Name{
+						{Parts: []string{"los", "altos", "hills"}},
+					},
+					Dcid: "geoId/Los_Altos_Hills",
+				},
+			},
+		},
+	}
+
+	cmpOpts := cmp.Options{
+		protocmp.Transform(),
+	}
+
+	for _, c := range []struct {
+		tokens         []string
+		wantNumTokens  int
+		wantCandidates *pb.RecogPlaces
+	}{
+		{
+			[]string{"Mountain", "View", "OMG"},
+			0,
+			nil,
+		},
+		{
+			[]string{"Los", "Altos", "is", "a", "city", ",", "wow", "!"},
+			2,
+			&pb.RecogPlaces{
+				Places: []*pb.RecogPlace{
+					{
+						Names: []*pb.RecogPlace_Name{
+							{Parts: []string{"los", "altos"}},
+							{Parts: []string{"los", "altos", "city"}},
+						},
+						Dcid: "geoId/Los_Altos",
+					},
+				},
+			},
+		},
+	} {
+		numTokens, candidates := findPlaceCandidates(c.tokens, recogPlaceMap)
+		if numTokens != c.wantNumTokens {
+			t.Errorf("findPlaceCandidates(%v) numTokens = %d, want %d",
+				c.tokens, numTokens, c.wantNumTokens)
+		}
+		if numTokens == 0 {
+			continue
+		}
+		if diff := cmp.Diff(candidates, c.wantCandidates, cmpOpts); diff != "" {
+			t.Errorf("findPlaceCandidates(%v) got diff: %s", c.tokens, diff)
 		}
 	}
 }
