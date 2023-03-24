@@ -147,3 +147,76 @@ func (p *placeRecognition) replaceTokensWithCandidates(tokens []string) *pb.Toke
 	}
 	return res
 }
+
+func getNumTokensForContainedIn(spans []*pb.TokenSpans_Span, startIdx int) int {
+	size := len(spans)
+
+	// Case: "place1, place2".
+	if size > startIdx+2 && len(spans[startIdx+2].GetPlaces()) > 0 {
+		nextSpanTokens := spans[startIdx+1].GetTokens()
+		if len(nextSpanTokens) == 1 && nextSpanTokens[0] == "," {
+			return 3
+		}
+	}
+
+	// Case: "place1 place2"
+	if size > startIdx+1 && len(spans[startIdx+1].GetPlaces()) > 0 {
+		return 2
+	}
+
+	// Case: no contained in.
+	return 0
+}
+
+func combineContainedInSingle(
+	spans []*pb.TokenSpans_Span, startIdx, numTokens int) *pb.TokenSpans_Span {
+	startToken := spans[startIdx]
+	endToken := spans[startIdx+numTokens-1]
+	for _, p1 := range startToken.GetPlaces() {
+		for _, containingPlace := range p1.GetContainingPlaces() {
+			for _, p2 := range endToken.GetPlaces() {
+				if containingPlace == p2.GetDcid() {
+					res := startToken
+					for i := 1; i < numTokens; i++ {
+						res.Tokens = append(res.Tokens, spans[startIdx+i].GetTokens()...)
+						res.Places = append(res.Places, spans[startIdx+i].GetPlaces()...)
+					}
+					return res
+				}
+			}
+		}
+	}
+	return nil
+}
+
+func combineContainedIn(tokenSpans *pb.TokenSpans) *pb.TokenSpans {
+	spans := tokenSpans.GetSpans()
+	i := 0
+	res := &pb.TokenSpans{}
+	for i < len(spans) {
+		tokenSpan := spans[i]
+		if len(tokenSpan.GetPlaces()) == 0 {
+			i++
+			res.Spans = append(res.Spans, tokenSpan)
+			continue
+		}
+
+		numTokens := getNumTokensForContainedIn(spans, i)
+		if numTokens == 0 {
+			i++
+			res.Spans = append(res.Spans, tokenSpan)
+			continue
+		}
+
+		collapsedTokenSpan := combineContainedInSingle(spans, i, numTokens)
+		if collapsedTokenSpan == nil {
+			i++
+			res.Spans = append(res.Spans, tokenSpan)
+		} else {
+			i += numTokens
+			res.Spans = append(res.Spans, collapsedTokenSpan)
+		}
+	}
+
+	return res
+}

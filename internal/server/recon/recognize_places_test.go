@@ -182,3 +182,136 @@ func TestReplaceTokensWithCandidates(t *testing.T) {
 		}
 	}
 }
+
+func TestCombineContainedIn(t *testing.T) {
+	cmpOpts := cmp.Options{
+		protocmp.Transform(),
+	}
+
+	for _, c := range []struct {
+		tokenSpans *pb.TokenSpans
+		want       *pb.TokenSpans
+	}{
+		// NumTokens = 2.
+		{
+			&pb.TokenSpans{
+				Spans: []*pb.TokenSpans_Span{
+					{Tokens: []string{"Really?"}},
+					{
+						Tokens: []string{"Mountain", "View"},
+						Places: []*pb.RecogPlace{
+							{
+								Dcid:             "geoId/Moutain_View",
+								ContainingPlaces: []string{"geoId/Santa_Clara", "geoId/CA"},
+							},
+						},
+					},
+					{
+						Tokens: []string{"Santa", "Clara", "County"},
+						Places: []*pb.RecogPlace{
+							{Dcid: "geoId/Santa_Clara"},
+						},
+					},
+					{Tokens: []string{"!?"}},
+				},
+			},
+			&pb.TokenSpans{
+				Spans: []*pb.TokenSpans_Span{
+					{Tokens: []string{"Really?"}},
+					{
+						Tokens: []string{"Mountain", "View", "Santa", "Clara", "County"},
+						Places: []*pb.RecogPlace{
+							{
+								Dcid:             "geoId/Moutain_View",
+								ContainingPlaces: []string{"geoId/Santa_Clara", "geoId/CA"},
+							},
+							{Dcid: "geoId/Santa_Clara"},
+						},
+					},
+					{Tokens: []string{"!?"}},
+				},
+			},
+		},
+		// NumTokens = 3.
+		{
+			&pb.TokenSpans{
+				Spans: []*pb.TokenSpans_Span{
+					{Tokens: []string{"Really?"}},
+					{
+						Tokens: []string{"Mountain", "View"},
+						Places: []*pb.RecogPlace{
+							{
+								Dcid:             "geoId/Moutain_View",
+								ContainingPlaces: []string{"geoId/Santa_Clara", "geoId/CA"},
+							},
+						},
+					},
+					{Tokens: []string{","}},
+					{
+						Tokens: []string{"Santa", "Clara", "County"},
+						Places: []*pb.RecogPlace{
+							{Dcid: "geoId/Santa_Clara"},
+							{Dcid: "wikidataId/Santa_Clara"},
+						},
+					},
+					{Tokens: []string{"!?"}},
+				},
+			},
+			&pb.TokenSpans{
+				Spans: []*pb.TokenSpans_Span{
+					{Tokens: []string{"Really?"}},
+					{
+						Tokens: []string{"Mountain", "View", ",", "Santa", "Clara", "County"},
+						Places: []*pb.RecogPlace{
+							{
+								Dcid:             "geoId/Moutain_View",
+								ContainingPlaces: []string{"geoId/Santa_Clara", "geoId/CA"},
+							},
+							{Dcid: "geoId/Santa_Clara"},
+							{Dcid: "wikidataId/Santa_Clara"},
+						},
+					},
+					{Tokens: []string{"!?"}},
+				},
+			},
+		},
+		// No combination.
+		{
+			&pb.TokenSpans{
+				Spans: []*pb.TokenSpans_Span{
+					{Tokens: []string{"Really?"}},
+					{
+						Tokens: []string{"Mountain", "View"},
+						Places: []*pb.RecogPlace{
+							{
+								Dcid:             "geoId/Moutain_View",
+								ContainingPlaces: []string{"geoId/Santa_Clara", "geoId/CA"},
+							},
+						},
+					},
+					{Tokens: []string{"!?"}},
+				},
+			},
+			&pb.TokenSpans{
+				Spans: []*pb.TokenSpans_Span{
+					{Tokens: []string{"Really?"}},
+					{
+						Tokens: []string{"Mountain", "View"},
+						Places: []*pb.RecogPlace{
+							{
+								Dcid:             "geoId/Moutain_View",
+								ContainingPlaces: []string{"geoId/Santa_Clara", "geoId/CA"},
+							},
+						},
+					},
+					{Tokens: []string{"!?"}},
+				},
+			},
+		},
+	} {
+		got := combineContainedIn(c.tokenSpans)
+		if diff := cmp.Diff(got, c.want, cmpOpts); diff != "" {
+			t.Errorf("combineContainedIn(%v) got diff: %s", c.tokenSpans, diff)
+		}
+	}
+}
