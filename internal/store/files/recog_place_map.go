@@ -63,19 +63,24 @@ func RecogPlaceMap() (map[string]*pb.RecogPlaces, error) {
 				"Empty DCID for CSV record: %v", record)
 		}
 
-		// Name.
-		// TODO(ws): Support multiple names, split by comma.
-		nameParts := strings.Split(record[2], " ")
-		if len(nameParts) == 0 {
+		// Names.
+		if strings.TrimSpace(record[2]) == "" {
 			return nil, status.Errorf(codes.FailedPrecondition,
-				"Empty name parts for CSV record: %v", record)
+				"Empty names for CSV record: %v", record)
 		}
-		name := &pb.RecogPlace_Name{}
-		for _, namePart := range nameParts {
-			name.Parts = append(name.Parts,
-				strings.ToLower(strings.TrimSpace(namePart)))
+		for _, name := range strings.Split(record[2], ",") {
+			nameParts := strings.Split(name, " ")
+			if len(nameParts) == 0 {
+				return nil, status.Errorf(codes.FailedPrecondition,
+					"Empty name parts in CSV record: %v", record)
+			}
+			nameMsg := &pb.RecogPlace_Name{}
+			for _, namePart := range nameParts {
+				nameMsg.Parts = append(nameMsg.Parts,
+					strings.ToLower(strings.TrimSpace(namePart)))
+			}
+			recogPlace.Names = append(recogPlace.Names, nameMsg)
 		}
-		recogPlace.Names = append(recogPlace.Names, name)
 
 		// Population.
 		population, err := strconv.ParseInt(record[4], 10, 64)
@@ -85,12 +90,13 @@ func RecogPlaceMap() (map[string]*pb.RecogPlaces, error) {
 		}
 		recogPlace.Population = population
 
-		// TODO(ws): Support multiple names, split by comma, change key accordingly.
-		key := recogPlace.Names[0].Parts[0]
-		if _, ok := recogPlaceMap[key]; !ok {
-			recogPlaceMap[key] = &pb.RecogPlaces{}
+		for _, name := range recogPlace.Names {
+			key := name.Parts[0]
+			if _, ok := recogPlaceMap[key]; !ok {
+				recogPlaceMap[key] = &pb.RecogPlaces{}
+			}
+			recogPlaceMap[key].Places = append(recogPlaceMap[key].Places, recogPlace)
 		}
-		recogPlaceMap[key].Places = append(recogPlaceMap[key].Places, recogPlace)
 	}
 
 	return recogPlaceMap, nil

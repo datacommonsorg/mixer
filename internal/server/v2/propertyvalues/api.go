@@ -46,12 +46,12 @@ func API(
 	if err != nil {
 		return nil, err
 	}
-	res := &pb.QueryV2Response{Data: map[string]*pb.Arc{}}
+	res := &pb.QueryV2Response{Data: map[string]*pb.LinkedGraph{}}
 	for _, node := range nodes {
+		res.Data[node] = &pb.LinkedGraph{Arcs: map[string]*pb.Nodes{}}
 		for _, property := range properties {
-			res.Data[node] = &pb.Arc{
-				Property: property,
-				Nodes:    v1pv.MergeTypedNodes(data[node][property]),
+			res.Data[node].Arcs[property] = &pb.Nodes{
+				Nodes: v1pv.MergeTypedNodes(data[node][property]),
 			}
 		}
 	}
