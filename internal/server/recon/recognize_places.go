@@ -252,6 +252,7 @@ func rankAndTrimCandidates(tokenSpans *pb.TokenSpans) *pb.TokenSpans {
 	return res
 }
 
+// Combine successive non-place tokens.
 func formatResponse(tokenSpans *pb.TokenSpans) *pb.RecognizePlacesResponse {
 	res := &pb.RecognizePlacesResponse{}
 	spanParts := []string{}
