@@ -24,7 +24,9 @@ message Nodes {
 }
 
 message LinkedGraph {
+  // Keyed by property, with values being a list of nodes
   map<string, Nodes> arcs = 1;
+  // Keyed by property, with values being another LinkedGraph
   map<string, LinkedGraph> neighbor = 2;
 }
 
