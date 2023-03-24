@@ -114,15 +114,15 @@ type MixerClient interface {
 	VariableAncestors(ctx context.Context, in *VariableAncestorsRequest, opts ...grpc.CallOption) (*VariableAncestorsResponse, error)
 	// Get event collection for {eventType, affectedPlaceDcid, date}.
 	// NOTE:
-	// - The affectedPlaceDcid is only for top-level places:
-	//   Earth, continent, country, state, adminArea1.
-	// - The date format should be: YYYY-MM.
+	//   - The affectedPlaceDcid is only for top-level places:
+	//     Earth, continent, country, state, adminArea1.
+	//   - The date format should be: YYYY-MM.
 	EventCollection(ctx context.Context, in *EventCollectionRequest, opts ...grpc.CallOption) (*EventCollectionResponse, error)
 	// Get all dates for event collection for {eventType, affectedPlaceDcid}.
-	// - The affectedPlaceDcid is only for top-level places:
-	//   Earth, continent, country, state, adminArea1.
-	// - The date format should be: YYYY-MM.
-	//   The dates in the response are sorted from earliest to latest.
+	//   - The affectedPlaceDcid is only for top-level places:
+	//     Earth, continent, country, state, adminArea1.
+	//   - The date format should be: YYYY-MM.
+	//     The dates in the response are sorted from earliest to latest.
 	EventCollectionDate(ctx context.Context, in *EventCollectionDateRequest, opts ...grpc.CallOption) (*EventCollectionDateResponse, error)
 	// Resolve a list of entities, given their descriptions.
 	ResolveEntities(ctx context.Context, in *ResolveEntitiesRequest, opts ...grpc.CallOption) (*ResolveEntitiesResponse, error)
@@ -791,15 +791,15 @@ type MixerServer interface {
 	VariableAncestors(context.Context, *VariableAncestorsRequest) (*VariableAncestorsResponse, error)
 	// Get event collection for {eventType, affectedPlaceDcid, date}.
 	// NOTE:
-	// - The affectedPlaceDcid is only for top-level places:
-	//   Earth, continent, country, state, adminArea1.
-	// - The date format should be: YYYY-MM.
+	//   - The affectedPlaceDcid is only for top-level places:
+	//     Earth, continent, country, state, adminArea1.
+	//   - The date format should be: YYYY-MM.
 	EventCollection(context.Context, *EventCollectionRequest) (*EventCollectionResponse, error)
 	// Get all dates for event collection for {eventType, affectedPlaceDcid}.
-	// - The affectedPlaceDcid is only for top-level places:
-	//   Earth, continent, country, state, adminArea1.
-	// - The date format should be: YYYY-MM.
-	//   The dates in the response are sorted from earliest to latest.
+	//   - The affectedPlaceDcid is only for top-level places:
+	//     Earth, continent, country, state, adminArea1.
+	//   - The date format should be: YYYY-MM.
+	//     The dates in the response are sorted from earliest to latest.
 	EventCollectionDate(context.Context, *EventCollectionDateRequest) (*EventCollectionDateResponse, error)
 	// Resolve a list of entities, given their descriptions.
 	ResolveEntities(context.Context, *ResolveEntitiesRequest) (*ResolveEntitiesResponse, error)

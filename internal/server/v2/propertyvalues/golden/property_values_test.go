@@ -49,6 +49,13 @@ func TestPropertyValuesV2(t *testing.T) {
 				"",
 			},
 			{
+				"california.json",
+				[]string{"geoId/06"},
+				"->[name, administrativeCapital, containedInPlace]",
+				0,
+				"",
+			},
+			{
 				"specializationOf.json",
 				[]string{"dc/g/Person_MedicalCondition-Asthma"},
 				"->specializationOf",
