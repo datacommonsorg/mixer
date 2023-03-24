@@ -23,28 +23,7 @@ import (
 	"google.golang.org/protobuf/testing/protocmp"
 )
 
-func TestTokenize(t *testing.T) {
-	for _, c := range []struct {
-		query string
-		want  []string
-	}{
-		{
-			"alpha,beta, gamma delta  ",
-			[]string{"alpha", ",", "beta", ",", "gamma", "delta"},
-		},
-		{
-			" alpha  ,beta,gamma,  delta eta",
-			[]string{"alpha", ",", "beta", ",", "gamma", ",", "delta", "eta"},
-		},
-	} {
-		got := tokenize(c.query)
-		if diff := cmp.Diff(got, c.want); diff != "" {
-			t.Errorf("Tokenize query %s got diff: %s", c.query, diff)
-		}
-	}
-}
-
-func TestFindPlaceCandidates(t *testing.T) {
+func newPlaceRecognition() *placeRecognition {
 	recogPlaceMap := map[string]*pb.RecogPlaces{
 		"los": {
 			Places: []*pb.RecogPlace{
@@ -70,7 +49,34 @@ func TestFindPlaceCandidates(t *testing.T) {
 			},
 		},
 	}
+	return &placeRecognition{
+		recogPlaceMap: recogPlaceMap,
+	}
+}
 
+func TestTokenize(t *testing.T) {
+	for _, c := range []struct {
+		query string
+		want  []string
+	}{
+		{
+			"alpha,beta, Gamma delta  ",
+			[]string{"alpha", ",", "beta", ",", "Gamma", "delta"},
+		},
+		{
+			" alpha  ,beta,Gamma,  delta eta",
+			[]string{"alpha", ",", "beta", ",", "Gamma", ",", "delta", "eta"},
+		},
+	} {
+		got := tokenize(c.query)
+		if diff := cmp.Diff(got, c.want); diff != "" {
+			t.Errorf("Tokenize query %s got diff: %s", c.query, diff)
+		}
+	}
+}
+
+func TestFindPlaceCandidates(t *testing.T) {
+	pr := newPlaceRecognition()
 	cmpOpts := cmp.Options{
 		protocmp.Transform(),
 	}
@@ -101,7 +107,7 @@ func TestFindPlaceCandidates(t *testing.T) {
 			},
 		},
 	} {
-		numTokens, candidates := findPlaceCandidates(c.tokens, recogPlaceMap)
+		numTokens, candidates := pr.findPlaceCandidates(c.tokens)
 		if numTokens != c.wantNumTokens {
 			t.Errorf("findPlaceCandidates(%v) numTokens = %d, want %d",
 				c.tokens, numTokens, c.wantNumTokens)
@@ -111,6 +117,68 @@ func TestFindPlaceCandidates(t *testing.T) {
 		}
 		if diff := cmp.Diff(candidates, c.wantCandidates, cmpOpts); diff != "" {
 			t.Errorf("findPlaceCandidates(%v) got diff: %s", c.tokens, diff)
+		}
+	}
+}
+
+func TestReplaceTokensWithCandidates(t *testing.T) {
+	pr := newPlaceRecognition()
+	cmpOpts := cmp.Options{
+		protocmp.Transform(),
+	}
+
+	for _, c := range []struct {
+		tokens []string
+		want   *pb.TokenSpans
+	}{
+		{
+			[]string{"Mountain", "View", "OMG"},
+			&pb.TokenSpans{
+				Spans: []*pb.TokenSpans_Span{
+					{Tokens: []string{"Mountain"}},
+					{Tokens: []string{"View"}},
+					{Tokens: []string{"OMG"}},
+				},
+			},
+		},
+		{
+			[]string{"Los", "Angeles", "is", "bigger", "than", "los", "Altos", "!?"},
+			&pb.TokenSpans{
+				Spans: []*pb.TokenSpans_Span{
+					{
+						Tokens: []string{"Los", "Angeles"},
+						Places: []*pb.RecogPlace{
+							{
+								Names: []*pb.RecogPlace_Name{
+									{Parts: []string{"los", "angeles"}},
+								},
+								Dcid: "geoId/Los_Angeles",
+							},
+						},
+					},
+					{Tokens: []string{"is"}},
+					{Tokens: []string{"bigger"}},
+					{Tokens: []string{"than"}},
+					{
+						Tokens: []string{"los", "Altos"},
+						Places: []*pb.RecogPlace{
+							{
+								Names: []*pb.RecogPlace_Name{
+									{Parts: []string{"los", "altos"}},
+									{Parts: []string{"los", "altos", "city"}},
+								},
+								Dcid: "geoId/Los_Altos",
+							},
+						},
+					},
+					{Tokens: []string{"!?"}},
+				},
+			},
+		},
+	} {
+		got := pr.replaceTokensWithCandidates(c.tokens)
+		if diff := cmp.Diff(got, c.want, cmpOpts); diff != "" {
+			t.Errorf("replaceTokensWithCandidates(%v) got diff: %s", c.tokens, diff)
 		}
 	}
 }

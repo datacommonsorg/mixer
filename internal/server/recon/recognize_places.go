@@ -72,15 +72,18 @@ func tokenize(query string) []string {
 	return tokens
 }
 
-func findPlaceCandidates(
-	tokens []string,
-	recogPlaceMap map[string]*pb.RecogPlaces) (int, *pb.RecogPlaces) {
+type placeRecognition struct {
+	recogPlaceMap map[string]*pb.RecogPlaces
+}
+
+func (p *placeRecognition) findPlaceCandidates(
+	tokens []string) (int, *pb.RecogPlaces) {
 	if len(tokens) == 0 {
 		return 0, nil
 	}
 
 	key := strings.ToLower(tokens[0])
-	places, ok := recogPlaceMap[key]
+	places, ok := p.recogPlaceMap[key]
 	if !ok {
 		return 0, nil
 	}
@@ -123,4 +126,24 @@ func findPlaceCandidates(
 	}
 
 	return numTokens, candidates
+}
+
+func (p *placeRecognition) replaceTokensWithCandidates(tokens []string) *pb.TokenSpans {
+	res := &pb.TokenSpans{}
+	for len(tokens) > 0 {
+		numTokens, candidates := p.findPlaceCandidates(tokens)
+		if numTokens > 0 {
+			res.Spans = append(res.Spans, &pb.TokenSpans_Span{
+				Tokens: tokens[0:numTokens],
+				Places: candidates.GetPlaces(),
+			})
+			tokens = tokens[numTokens:]
+		} else {
+			res.Spans = append(res.Spans, &pb.TokenSpans_Span{
+				Tokens: tokens[0:1],
+			})
+			tokens = tokens[1:]
+		}
+	}
+	return res
 }
