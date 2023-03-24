@@ -1,0 +1,24 @@
+{
+  "items": [
+    {
+      "span": "the birds in"
+    },
+    {
+      "span": "San Jose",
+      "places": [
+        {
+          "dcid": "geoId/0668000"
+        },
+        {
+          "dcid": "geoId/3568430"
+        },
+        {
+          "dcid": "geoId/0463260"
+        }
+      ]
+    },
+    {
+      "span": "are chirpy"
+    }
+  ]
+}

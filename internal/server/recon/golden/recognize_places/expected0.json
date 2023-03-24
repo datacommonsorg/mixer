@@ -1,0 +1,15 @@
+{
+  "items": [
+    {
+      "span": "median income in"
+    },
+    {
+      "span": "africa",
+      "places": [
+        {
+          "dcid": "africa"
+        }
+      ]
+    }
+  ]
+}

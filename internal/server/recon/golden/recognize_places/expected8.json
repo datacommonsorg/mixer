@@ -1,0 +1,29 @@
+{
+  "items": [
+    {
+      "span": "life expectancy in"
+    },
+    {
+      "span": "New York",
+      "places": [
+        {
+          "dcid": "geoId/36"
+        },
+        {
+          "dcid": "geoId/3651000"
+        }
+      ]
+    },
+    {
+      "span": "city and"
+    },
+    {
+      "span": "Alabama",
+      "places": [
+        {
+          "dcid": "geoId/01"
+        }
+      ]
+    }
+  ]
+}

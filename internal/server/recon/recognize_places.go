@@ -30,8 +30,10 @@ const maxPlaceCandidates = 3
 func RecognizePlaces(
 	ctx context.Context, in *pb.RecognizePlacesRequest, store *store.Store,
 ) (*pb.RecognizePlacesResponse, error) {
-	// TODO(ws): Implement.
-	return nil, nil
+	pr := &placeRecognition{
+		recogPlaceMap: store.RecogPlaceMap,
+	}
+	return pr.detectPlaces(in.GetQuery()), nil
 }
 
 func tokenize(query string) []string {
@@ -77,6 +79,12 @@ func tokenize(query string) []string {
 
 type placeRecognition struct {
 	recogPlaceMap map[string]*pb.RecogPlaces
+}
+
+func (p *placeRecognition) detectPlaces(query string) *pb.RecognizePlacesResponse {
+	tokenSpans := p.replaceTokensWithCandidates(tokenize(query))
+	candidates := rankAndTrimCandidates(combineContainedIn(tokenSpans))
+	return formatResponse(candidates)
 }
 
 func (p *placeRecognition) findPlaceCandidates(
@@ -241,5 +249,43 @@ func rankAndTrimCandidates(tokenSpans *pb.TokenSpans) *pb.TokenSpans {
 		}
 		res.Spans = append(res.Spans, span)
 	}
+	return res
+}
+
+func formatResponse(tokenSpans *pb.TokenSpans) *pb.RecognizePlacesResponse {
+	res := &pb.RecognizePlacesResponse{}
+	spanParts := []string{}
+	for _, tokenSpan := range tokenSpans.GetSpans() {
+		span := strings.Join(tokenSpan.GetTokens(), " ")
+		if len(tokenSpan.GetPlaces()) > 0 {
+			if len(spanParts) > 0 {
+				res.Items = append(res.Items, &pb.RecognizePlacesResponse_Item{
+					Span: strings.Join(spanParts, " "),
+				})
+				spanParts = []string{}
+			}
+
+			places := []*pb.RecognizePlacesResponse_Place{}
+			for _, p := range tokenSpan.GetPlaces() {
+				places = append(places, &pb.RecognizePlacesResponse_Place{
+					Dcid: p.GetDcid(),
+				})
+			}
+
+			res.Items = append(res.Items, &pb.RecognizePlacesResponse_Item{
+				Span:   span,
+				Places: places,
+			})
+		} else {
+			spanParts = append(spanParts, span)
+		}
+	}
+
+	if len(spanParts) > 0 {
+		res.Items = append(res.Items, &pb.RecognizePlacesResponse_Item{
+			Span: strings.Join(spanParts, " "),
+		})
+	}
+
 	return res
 }
