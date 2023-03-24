@@ -20,14 +20,22 @@ Every time when you want to send a Pull Request, do the following steps:
 ```shell
 git checkout master
 git pull dc master
-git checkout -b new_branch_name
+git checkout -b {new_local_branch_name}
 # Make some code change
 git add .
 git commit -m "commit message"
-git push -u origin new_branch_name
+git push -u origin {new_local_branch_name}
 ```
 
 Then in your forked repo, can send a Pull Request. Wait for approval of the Pull Request and merge the change.
+
+If you want to pull the latest remote code into your local branch that is under development, do:
+
+```shell
+git checkout {local_branch_name}
+git pull dc master
+git push -u origin {local_branch_name}
+```
 
 ## Develop and test locally
 
