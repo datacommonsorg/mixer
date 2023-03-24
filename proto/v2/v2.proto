@@ -23,9 +23,9 @@ message Nodes {
   repeated datacommons.EntityInfo nodes = 1;
 }
 
-message Arcs {
-  map<string, Nodes> nodes = 1;
-  map<string, Arcs> arcs = 2;
+message LinkedGraph {
+  map<string, Nodes> arcs = 1;
+  map<string, LinkedGraph> neighbor = 2;
 }
 
 message QueryV2Request {
@@ -44,5 +44,5 @@ message QueryV2Request {
 
 message QueryV2Response {
   // Keyed by the query node dcid.
-  map<string, Arcs> data = 1;
+  map<string, LinkedGraph> data = 1;
 }

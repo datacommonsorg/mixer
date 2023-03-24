@@ -1,7 +1,7 @@
 {
   "data": {
     "geoId/06": {
-      "nodes": {
+      "arcs": {
         "administrativeCapital": {
           "nodes": [
             {

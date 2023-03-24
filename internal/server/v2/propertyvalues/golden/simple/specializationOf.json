@@ -1,7 +1,7 @@
 {
   "data": {
     "dc/g/Person_MedicalCondition-Asthma": {
-      "nodes": {
+      "arcs": {
         "specializationOf": {
           "nodes": [
             {
