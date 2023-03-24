@@ -315,3 +315,73 @@ func TestCombineContainedIn(t *testing.T) {
 		}
 	}
 }
+
+func TestRankAndTrimCandidates(t *testing.T) {
+	cmpOpts := cmp.Options{
+		protocmp.Transform(),
+	}
+
+	for _, c := range []struct {
+		tokenSpans *pb.TokenSpans
+		want       *pb.TokenSpans
+	}{
+		{
+			&pb.TokenSpans{
+				Spans: []*pb.TokenSpans_Span{
+					{Tokens: []string{"OMG"}},
+					{
+						Tokens: []string{"Mountain", "View"},
+						Places: []*pb.RecogPlace{
+							{Dcid: "geoId/MTV2", Population: 102},
+							{Dcid: "geoId/MTV3", Population: 103},
+							{Dcid: "geoId/MTV1", Population: 101},
+							{Dcid: "geoId/MTV4", Population: 104},
+						},
+					},
+				},
+			},
+			&pb.TokenSpans{
+				Spans: []*pb.TokenSpans_Span{
+					{Tokens: []string{"OMG"}},
+					{
+						Tokens: []string{"Mountain", "View"},
+						Places: []*pb.RecogPlace{
+							{Dcid: "geoId/MTV4", Population: 104},
+							{Dcid: "geoId/MTV3", Population: 103},
+							{Dcid: "geoId/MTV2", Population: 102},
+						},
+					},
+				},
+			},
+		},
+		{
+			&pb.TokenSpans{
+				Spans: []*pb.TokenSpans_Span{
+					{
+						Tokens: []string{"Mountain", "View"},
+						Places: []*pb.RecogPlace{
+							{Dcid: "geoId/MTV1", Population: 101},
+							{Dcid: "geoId/MTV2", Population: 102},
+						},
+					},
+				},
+			},
+			&pb.TokenSpans{
+				Spans: []*pb.TokenSpans_Span{
+					{
+						Tokens: []string{"Mountain", "View"},
+						Places: []*pb.RecogPlace{
+							{Dcid: "geoId/MTV2", Population: 102},
+							{Dcid: "geoId/MTV1", Population: 101},
+						},
+					},
+				},
+			},
+		},
+	} {
+		got := rankAndTrimCandidates(c.tokenSpans)
+		if diff := cmp.Diff(got, c.want, cmpOpts); diff != "" {
+			t.Errorf("rankAndTrimCandidates(%v) got diff: %s", c.tokenSpans, diff)
+		}
+	}
+}

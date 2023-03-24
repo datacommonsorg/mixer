@@ -17,11 +17,14 @@ package recon
 
 import (
 	"context"
+	"sort"
 	"strings"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/store"
 )
+
+const maxPlaceCandidates = 3
 
 // RecognizePlaces implements API for ReconServer.RecognizePlaces.
 func RecognizePlaces(
@@ -218,5 +221,25 @@ func combineContainedIn(tokenSpans *pb.TokenSpans) *pb.TokenSpans {
 		}
 	}
 
+	return res
+}
+
+func rankAndTrimCandidates(tokenSpans *pb.TokenSpans) *pb.TokenSpans {
+	res := &pb.TokenSpans{}
+	for _, span := range tokenSpans.GetSpans() {
+		if len(span.GetPlaces()) == 0 {
+			res.Spans = append(res.Spans, span)
+			continue
+		}
+
+		// Rank by descending population.
+		sort.SliceStable(span.Places, func(i, j int) bool {
+			return span.Places[i].GetPopulation() > span.Places[j].GetPopulation()
+		})
+		if len(span.GetPlaces()) > maxPlaceCandidates {
+			span.Places = span.Places[:maxPlaceCandidates]
+		}
+		res.Spans = append(res.Spans, span)
+	}
 	return res
 }
