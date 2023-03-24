@@ -2,6 +2,18 @@
   "data": {
     "geoId/06": {
       "arcs": {
+        "administrativeCapital": {
+          "nodes": [
+            {
+              "name": "Sacramento",
+              "types": [
+                "City"
+              ],
+              "dcid": "geoId/0664000",
+              "provenanceId": "dc/base/WikidataOtherIdGeos"
+            }
+          ]
+        },
         "containedInPlace": {
           "nodes": [
             {
@@ -19,6 +31,14 @@
               ],
               "dcid": "usc/PacificDivision",
               "provenanceId": "dc/base/WikidataOtherIdGeos"
+            }
+          ]
+        },
+        "name": {
+          "nodes": [
+            {
+              "provenanceId": "dc/base/WikidataOtherIdGeos",
+              "value": "California"
             }
           ]
         }
