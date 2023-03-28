@@ -2085,10 +2085,6 @@
         {
           "name": "Population: Years 13, Female, White Alone",
           "dcid": "Count_Person_13Years_Female_WhiteAlone"
-        },
-        {
-          "name": "Population: Years 13, Female, White Alone Not Hispanic or Latino",
-          "dcid": "Count_Person_13Years_Female_WhiteAloneNotHispanicOrLatino"
         }
       ]
     },
@@ -2449,60 +2445,6 @@
         {
           "name": "Population: Masters Degree or Higher, Female (As Fraction of Count Person 25 or More Years Female)",
           "dcid": "Count_Person_25OrMoreYears_Female_MastersDegreeOrHigher_AsFractionOf_Count_Person_25OrMoreYears_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years14_Gender-Female_Race",
-      "name": "Person With Age = Years 14, Gender = Female, Race",
-      "statVars": [
-        {
-          "name": "Population: Years 14, Female, American Indian or Alaska Native Alone",
-          "dcid": "Count_Person_14Years_Female_AmericanIndianAndAlaskaNativeAlone"
-        },
-        {
-          "name": "Population: Years 14, Female, Asian Alone",
-          "dcid": "Count_Person_14Years_Female_AsianAlone"
-        },
-        {
-          "name": "Population: Years 14, Female, Asian or Pacific Islander",
-          "dcid": "Count_Person_14Years_Female_AsianOrPacificIslander"
-        },
-        {
-          "name": "Population: Years 14, Female, Black or African American Alone",
-          "dcid": "Count_Person_14Years_Female_BlackOrAfricanAmericanAlone"
-        },
-        {
-          "name": "Population: Years 14, Female, Hispanic or Latino",
-          "dcid": "Count_Person_14Years_Female_HispanicOrLatino"
-        },
-        {
-          "name": "Population: Years 14, Female, Hispanic or Latino \u0026 American Indian And Alaska Native Alone or In Combination With One or More Other Races",
-          "dcid": "Count_Person_14Years_Female_HispanicOrLatino_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRaces"
-        },
-        {
-          "name": "Population: Years 14, Female, Hispanic or Latino \u0026 American Indian or Alaska Native Alone",
-          "dcid": "Count_Person_14Years_Female_HispanicOrLatino_AmericanIndianAndAlaskaNativeAlone"
-        },
-        {
-          "name": "Population: Years 14, Female, Hispanic or Latino \u0026 Asian Alone",
-          "dcid": "Count_Person_14Years_Female_HispanicOrLatino_AsianAlone"
-        },
-        {
-          "name": "Population: Years 14, Female, Hispanic or Latino \u0026 Asian Alone or In Combination With One or More Other Races",
-          "dcid": "Count_Person_14Years_Female_HispanicOrLatino_AsianAloneOrInCombinationWithOneOrMoreOtherRaces"
-        },
-        {
-          "name": "Population: Years 14, Female, Hispanic or Latino \u0026 Asian or Pacific Islander",
-          "dcid": "Count_Person_14Years_Female_HispanicOrLatino_AsianOrPacificIslander"
-        },
-        {
-          "name": "Population: Years 14, Female, Hispanic or Latino \u0026 Black or African American Alone",
-          "dcid": "Count_Person_14Years_Female_HispanicOrLatino_BlackOrAfricanAmericanAlone"
-        },
-        {
-          "name": "Population: Years 14, Female, Hispanic or Latino \u0026 Black or African American Alone or In Combination With One or More Other Races",
-          "dcid": "Count_Person_14Years_Female_HispanicOrLatino_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces"
         }
       ]
     },
@@ -10277,10 +10219,6 @@
       "name": "5.5.2: Proportion of women in managerial positions"
     },
     {
-      "dcid": "sdg/g/SDG_5",
-      "name": "5: Achieve gender equality and empower all women and girls"
-    },
-    {
       "dcid": "sdg/g/SDG_6.2",
       "name": "6.2: By 2030, achieve access to adequate and equitable sanitation and hygiene for all and end open defecation, paying special attention to the needs of women and girls and those in vulnerable situations"
     },
@@ -11663,6 +11601,14 @@
     {
       "dcid": "dc/g/HateCrimeIncidents_OffenderEthnicity-NotHispanicOrLatino_OffenderType-OffenderEthnicityKnown_TargetedGender-Female",
       "name": "Hate Crime Incidents With Offender Ethnicity = Not Hispanic or Latino, Offender Type = Offender Ethnicity Known, Targeted Gender = Female"
+    },
+    {
+      "dcid": "dc/g/HateCrimeIncidents_OffenderEthnicity-NotHispanicOrLatino_OffenderType_TargetedGender-Female",
+      "name": "Hate Crime Incidents With Offender Ethnicity = Not Hispanic or Latino, Offender Type, Targeted Gender = Female"
+    },
+    {
+      "dcid": "dc/g/HateCrimeIncidents_OffenderEthnicity_OffenderType-OffenderEthnicityKnown_TargetedGender-Female",
+      "name": "Hate Crime Incidents With Offender Ethnicity, Offender Type = Offender Ethnicity Known, Targeted Gender = Female"
     }
   ],
   "matches": [

@@ -3,7 +3,7 @@
     "UnemploymentRate_Person": {
       "placeTypeSummary": {
         "City": {
-          "placeCount": 3086,
+          "placeCount": 3096,
           "topPlaces": [
             {
               "dcid": "geoId/3651000",
@@ -148,7 +148,7 @@
                 "observationPeriod": "P1M"
               },
               "earliestDate": "1976-01",
-              "latestDate": "2023-01",
+              "latestDate": "2023-02",
               "placeTypeSummary": {
                 "City": {
                   "placeCount": 1,
@@ -183,7 +183,7 @@
               },
               "minValue": 1.9,
               "maxValue": 30.6,
-              "observationCount": 29943,
+              "observationCount": 29996,
               "timeSeriesCount": 53
             },
             {
@@ -192,10 +192,10 @@
                 "observationPeriod": "P1M"
               },
               "earliestDate": "1976-01",
-              "latestDate": "2023-01",
+              "latestDate": "2023-02",
               "placeTypeSummary": {
                 "City": {
-                  "placeCount": 3086,
+                  "placeCount": 3096,
                   "topPlaces": [
                     {
                       "dcid": "geoId/3651000",
@@ -254,8 +254,8 @@
               },
               "minValue": 0,
               "maxValue": 100,
-              "observationCount": 2444637,
-              "timeSeriesCount": 6358
+              "observationCount": 2451001,
+              "timeSeriesCount": 6368
             },
             {
               "seriesKey": {
@@ -329,8 +329,8 @@
               "timeSeriesCount": 6358
             }
           ],
-          "observationCount": 2671927,
-          "timeSeriesCount": 12769
+          "observationCount": 2678344,
+          "timeSeriesCount": 12779
         },
         "dc/base/EurostatData": {
           "importName": "EurostatData",
