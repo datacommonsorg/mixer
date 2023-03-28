@@ -5,7 +5,7 @@
       "info": {
         "placeTypeSummary": {
           "City": {
-            "placeCount": 3086,
+            "placeCount": 3096,
             "topPlaces": [
               {
                 "dcid": "geoId/3651000",
@@ -150,7 +150,7 @@
                   "observationPeriod": "P1M"
                 },
                 "earliestDate": "1976-01",
-                "latestDate": "2023-01",
+                "latestDate": "2023-02",
                 "placeTypeSummary": {
                   "City": {
                     "placeCount": 1,
@@ -185,7 +185,7 @@
                 },
                 "minValue": 1.9,
                 "maxValue": 30.6,
-                "observationCount": 29943,
+                "observationCount": 29996,
                 "timeSeriesCount": 53
               },
               {
@@ -194,10 +194,10 @@
                   "observationPeriod": "P1M"
                 },
                 "earliestDate": "1976-01",
-                "latestDate": "2023-01",
+                "latestDate": "2023-02",
                 "placeTypeSummary": {
                   "City": {
-                    "placeCount": 3086,
+                    "placeCount": 3096,
                     "topPlaces": [
                       {
                         "dcid": "geoId/3651000",
@@ -256,8 +256,8 @@
                 },
                 "minValue": 0,
                 "maxValue": 100,
-                "observationCount": 2444637,
-                "timeSeriesCount": 6358
+                "observationCount": 2451001,
+                "timeSeriesCount": 6368
               },
               {
                 "seriesKey": {
@@ -331,8 +331,8 @@
                 "timeSeriesCount": 6358
               }
             ],
-            "observationCount": 2671927,
-            "timeSeriesCount": 12769
+            "observationCount": 2678344,
+            "timeSeriesCount": 12779
           },
           "dc/base/EurostatData": {
             "importName": "EurostatData",
@@ -2861,7 +2861,7 @@
                   "measurementMethod": "dcDerivedStat/NYT_COVID19_GitHub"
                 },
                 "earliestDate": "2020-01-22",
-                "latestDate": "2023-03-12",
+                "latestDate": "2023-03-23",
                 "placeTypeSummary": {
                   "City": {
                     "placeCount": 3,
@@ -2934,7 +2934,7 @@
                 },
                 "minValue": -40527,
                 "maxValue": 1433977,
-                "observationCount": 2539231,
+                "observationCount": 2539858,
                 "timeSeriesCount": 3277
               },
               {
@@ -3020,7 +3020,7 @@
                 "timeSeriesCount": 3277
               }
             ],
-            "observationCount": 2626384,
+            "observationCount": 2627011,
             "timeSeriesCount": 6554
           }
         }
