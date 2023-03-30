@@ -86,7 +86,9 @@ type LinkedGraph struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Arcs     map[string]*Nodes       `protobuf:"bytes,1,rep,name=arcs,proto3" json:"arcs,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	// Keyed by property, with values being a list of nodes
+	Arcs map[string]*Nodes `protobuf:"bytes,1,rep,name=arcs,proto3" json:"arcs,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	// Keyed by property, with values being another LinkedGraph
 	Neighbor map[string]*LinkedGraph `protobuf:"bytes,2,rep,name=neighbor,proto3" json:"neighbor,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 }
 

@@ -47,6 +47,7 @@ import "v1/page.proto";
 import "v1/triples.proto";
 
 import "v2/v2.proto";
+import "v2/observation.proto";
 
 service Mixer {
 
@@ -57,6 +58,14 @@ service Mixer {
     option (google.api.http) = {
       get : "/v2/query"
       additional_bindings : {post : "/v2/query" body : "*"}
+    };
+  }
+
+  rpc V2Observation(datacommons.v2.V2ObservationRequest)
+      returns (datacommons.v2.V2ObservationResponse) {
+    option (google.api.http) = {
+      get : "/v2/observation"
+      additional_bindings : {post : "/v2/observation" body : "*"}
     };
   }
 
