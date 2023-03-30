@@ -19,6 +19,7 @@ import (
 	"context"
 
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
+	v2observation "github.com/datacommonsorg/mixer/internal/server/v2/observation"
 	v2pv "github.com/datacommonsorg/mixer/internal/server/v2/propertyvalues"
 	"github.com/datacommonsorg/mixer/internal/util"
 
@@ -81,4 +82,11 @@ func (s *Server) QueryV2(
 		}
 	}
 	return nil, nil
+}
+
+// V2Observation implements API for mixer.V2Observation.
+func (s *Server) V2Observation(
+	ctx context.Context, in *pb.V2ObservationRequest,
+) (*pb.V2ObservationResponse, error) {
+	return v2observation.Series(ctx, s.store, in.GetEntities(), in.GetVariables())
 }
