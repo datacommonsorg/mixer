@@ -19,14 +19,16 @@ package datacommons.v2;
 
 import "stat.proto";
 
+// Holds all observations of a particular variable.
 message VariableObservation {
   // Keyed by entity DCID
-  map<string, EntityObservation> by_entity = 1;
+  map<string, EntityObservation> observations_by_entity = 1;
 }
 
+//
 message EntityObservation {
   // Facet are orderred by preference.
-  repeated FacetObservation by_facet = 1;
+  repeated FacetObservation ordered_facet_observations = 1;
 }
 
 message FacetObservation {
@@ -50,7 +52,8 @@ message V2ObservationRequest {
   // Date of the observation
   // - Not specified: all observations are returned
   // - "LATEST": latest obseration of each facet is returned
-  // - "<DATE>": observation corresponding to the speified date is returned.
+  // - "<DATE>": a speficied valid ISO 8601 date. Observation corresponding to
+  //   this date is returned.
   string date = 5;
   // When specified, only observation with this unit is returned.
   string unit = 6;
@@ -62,7 +65,7 @@ message V2ObservationRequest {
 
 message V2ObservationResponse {
   // Keyed by variable DCID
-  map<string, VariableObservation> by_variable = 1;
+  map<string, VariableObservation> observations_by_variable = 1;
   // Keyed by facet ID
   map<string, datacommons.StatMetadata> facets = 2;
 }
