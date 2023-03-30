@@ -43,12 +43,12 @@ message V2ObservationRequest {
   repeated string entities = 1;
   // An arrow notation expression of entities
   // Ex: country/USA<-containedInPlace{typeOf: State}
-  string entities_expr = 2;
+  string entities_expression = 2;
   // A list of statistical variable DCIDs
   repeated string variables = 3;
   // An arrow notation expression of variables
   // Ex: dc/g/Root<-memberOf
-  string variables_expr = 4;
+  string variables_expression = 4;
   // Date of the observation
   // - Not specified: all observations are returned
   // - "LATEST": latest obseration of each facet is returned
