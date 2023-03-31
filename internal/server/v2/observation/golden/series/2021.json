@@ -1,0 +1,129 @@
+{
+  "observations_by_variable": {
+    "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita": {
+      "observations_by_entity": {
+        "country/FRA": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "2171028778"
+            }
+          ]
+        },
+        "country/USA": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "2171028778"
+            }
+          ]
+        },
+        "dummy": {},
+        "geoId/06": {},
+        "geoId/0649670": {}
+      }
+    },
+    "Annual_Generation_Electricity": {
+      "observations_by_entity": {
+        "country/FRA": {},
+        "country/USA": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "1450533103"
+            },
+            {
+              "facet_id": "2392525955"
+            }
+          ]
+        },
+        "dummy": {},
+        "geoId/06": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "2392525955"
+            }
+          ]
+        },
+        "geoId/0649670": {}
+      }
+    },
+    "Count_CriminalActivities_CombinedCrime": {
+      "observations_by_entity": {
+        "country/FRA": {},
+        "country/USA": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "2343540064"
+            }
+          ]
+        },
+        "dummy": {},
+        "geoId/06": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "4277990144"
+            }
+          ]
+        },
+        "geoId/0649670": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "4277990144"
+            }
+          ]
+        }
+      }
+    },
+    "Count_Person_Unemployed": {
+      "observations_by_entity": {
+        "country/FRA": {},
+        "country/USA": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3707913853"
+            },
+            {
+              "facet_id": "1714978719"
+            }
+          ]
+        },
+        "dummy": {},
+        "geoId/06": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "324358135"
+            },
+            {
+              "facet_id": "2978659163"
+            },
+            {
+              "facet_id": "1249140336"
+            }
+          ]
+        },
+        "geoId/0649670": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "324358135"
+            },
+            {
+              "facet_id": "2978659163"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "facets": {
+    "2171028778": {
+      "import_name": "WorldDevelopmentIndicators",
+      "provenance_url": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+      "observation_period": "P1Y",
+      "unit": "InternationalDollar"
+    },
+    "2978659163": {
+      "import_name": "BLS_LAUS",
+      "provenance_url": "https://www.bls.gov/lau/",
+      "measurement_method": "BLSSeasonallyUnadjusted",
+      "observation_period": "P1Y"
+    }
+  }
+}

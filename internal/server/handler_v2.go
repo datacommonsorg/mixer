@@ -88,5 +88,15 @@ func (s *Server) V2Node(
 func (s *Server) V2Observation(
 	ctx context.Context, in *pbv2.ObservationRequest,
 ) (*pbv2.ObservationResponse, error) {
-	return v2observation.Series(ctx, s.store, in.GetEntities(), in.GetVariables())
+	// (TODO): The routing logic here is very rough. This needs more work.
+	if len(in.GetVariables()) > 0 && len(in.GetEntities()) > 0 {
+		return v2observation.FetchFromSeries(
+			ctx,
+			s.store,
+			in.GetEntities(),
+			in.GetVariables(),
+			in.GetDate(),
+		)
+	}
+	return &pbv2.ObservationResponse{}, nil
 }

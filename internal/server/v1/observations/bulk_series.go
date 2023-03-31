@@ -76,10 +76,10 @@ func BulkSeries(
 							Value: proto.Float64(value),
 						}
 						timeSeries.Series = append(timeSeries.Series, ps)
-						sort.SliceStable(timeSeries.Series, func(i, j int) bool {
-							return timeSeries.Series[i].Date < timeSeries.Series[j].Date
-						})
 					}
+					sort.SliceStable(timeSeries.Series, func(i, j int) bool {
+						return timeSeries.Series[i].Date < timeSeries.Series[j].Date
+					})
 					entityObservations.SeriesByFacet = append(
 						entityObservations.SeriesByFacet,
 						timeSeries,
@@ -103,10 +103,10 @@ func BulkSeries(
 							Value: proto.Float64(value),
 						}
 						timeSeries.Series = append(timeSeries.Series, ps)
-						sort.SliceStable(timeSeries.Series, func(i, j int) bool {
-							return timeSeries.Series[i].Date < timeSeries.Series[j].Date
-						})
 					}
+					sort.SliceStable(timeSeries.Series, func(i, j int) bool {
+						return timeSeries.Series[i].Date < timeSeries.Series[j].Date
+					})
 					entityObservations.SeriesByFacet = append(
 						entityObservations.SeriesByFacet,
 						timeSeries,

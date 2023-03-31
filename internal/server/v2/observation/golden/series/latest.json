@@ -1,0 +1,55 @@
+{
+  "observations_by_variable": {
+    "AirQualityIndex_AirPollutant": {
+      "observations_by_entity": {
+        "country/USA": {},
+        "geoId/06": {},
+        "geoId/17031": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3775409807"
+            }
+          ]
+        }
+      }
+    },
+    "Area_Farm": {
+      "observations_by_entity": {
+        "country/USA": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "2584936238"
+            }
+          ]
+        },
+        "geoId/06": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "2584936238"
+            }
+          ]
+        },
+        "geoId/17031": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "2584936238"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "facets": {
+    "2584936238": {
+      "import_name": "USDA_AgricultureCensus",
+      "provenance_url": "https://www.nass.usda.gov/AgCensus/",
+      "observation_period": "P5Y",
+      "unit": "Acre"
+    },
+    "3775409807": {
+      "import_name": "EPAAirQualityIndex",
+      "provenance_url": "https://aqs.epa.gov/aqsweb/airdata/download_files.html",
+      "observation_period": "P1D"
+    }
+  }
+}

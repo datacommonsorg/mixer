@@ -1,0 +1,269 @@
+{
+  "observations_by_variable": {
+    "Count_Person": {
+      "observations_by_entity": {
+        "country/FRA": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "858679853"
+            },
+            {
+              "facet_id": "3981252704"
+            },
+            {
+              "facet_id": "738965619"
+            },
+            {
+              "facet_id": "1151455814"
+            },
+            {
+              "facet_id": "1456184638"
+            },
+            {
+              "facet_id": "2458695583"
+            }
+          ]
+        },
+        "country/USA": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "2176550201"
+            },
+            {
+              "facet_id": "1273233945"
+            },
+            {
+              "facet_id": "1541763368"
+            },
+            {
+              "facet_id": "3981252704"
+            },
+            {
+              "facet_id": "2517965213"
+            },
+            {
+              "facet_id": "1151455814"
+            },
+            {
+              "facet_id": "1226172227"
+            },
+            {
+              "facet_id": "10983471"
+            },
+            {
+              "facet_id": "196790193"
+            },
+            {
+              "facet_id": "217147238"
+            },
+            {
+              "facet_id": "3114843463"
+            },
+            {
+              "facet_id": "2458695583"
+            }
+          ]
+        },
+        "dummy": {},
+        "geoId/06": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "2176550201"
+            },
+            {
+              "facet_id": "1145703171"
+            },
+            {
+              "facet_id": "1541763368"
+            },
+            {
+              "facet_id": "2517965213"
+            },
+            {
+              "facet_id": "1151455814"
+            },
+            {
+              "facet_id": "1226172227"
+            },
+            {
+              "facet_id": "10983471"
+            },
+            {
+              "facet_id": "196790193"
+            },
+            {
+              "facet_id": "3114843463"
+            },
+            {
+              "facet_id": "2458695583"
+            }
+          ]
+        },
+        "geoId/0649670": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "2176550201"
+            },
+            {
+              "facet_id": "1145703171"
+            },
+            {
+              "facet_id": "1541763368"
+            },
+            {
+              "facet_id": "1226172227"
+            },
+            {
+              "facet_id": "2517965213"
+            },
+            {
+              "facet_id": "3114843463"
+            },
+            {
+              "facet_id": "2458695583"
+            }
+          ]
+        }
+      }
+    },
+    "Count_Person_FoodInsecure": {
+      "observations_by_entity": {
+        "country/FRA": {},
+        "country/USA": {},
+        "dummy": {},
+        "geoId/06": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "180485622"
+            }
+          ]
+        },
+        "geoId/0649670": {}
+      }
+    },
+    "CumulativeCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase": {
+      "observations_by_entity": {
+        "country/FRA": {},
+        "country/USA": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "2232540893"
+            }
+          ]
+        },
+        "dummy": {},
+        "geoId/06": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "2232540893"
+            }
+          ]
+        },
+        "geoId/0649670": {}
+      }
+    },
+    "dummy": {
+      "observations_by_entity": {
+        "country/FRA": {},
+        "country/USA": {},
+        "dummy": {},
+        "geoId/06": {},
+        "geoId/0649670": {}
+      }
+    }
+  },
+  "facets": {
+    "10983471": {
+      "import_name": "CensusACS5YearSurvey_SubjectTables_S2601A",
+      "provenance_url": "https://data.census.gov/cedsci/table?q=S2601A&tid=ACSST5Y2019.S2601A",
+      "measurement_method": "CensusACS5yrSurveySubjectTable"
+    },
+    "1145703171": {
+      "import_name": "CensusACS5YearSurvey",
+      "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+      "measurement_method": "CensusACS5yrSurvey"
+    },
+    "1151455814": {
+      "import_name": "OECDRegionalDemography",
+      "provenance_url": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#",
+      "measurement_method": "OECDRegionalStatistics",
+      "observation_period": "P1Y"
+    },
+    "1226172227": {
+      "import_name": "CensusACS1YearSurvey",
+      "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+      "measurement_method": "CensusACS1yrSurvey"
+    },
+    "1273233945": {
+      "import_name": "CensusACS5YearSurvey_AggCountry",
+      "provenance_url": "https://www.census.gov/",
+      "measurement_method": "CensusACS5yrSurvey"
+    },
+    "1456184638": {
+      "import_name": "WikipediaStatsData",
+      "provenance_url": "https://www.wikipedia.org",
+      "measurement_method": "Wikipedia"
+    },
+    "1541763368": {
+      "import_name": "USDecennialCensus_RedistrictingRelease",
+      "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+      "measurement_method": "USDecennialCensus"
+    },
+    "180485622": {
+      "import_name": "Feeding America",
+      "provenance_url": "https://www.feedingamerica.org/",
+      "measurement_method": "FeedingAmerica_Estimate"
+    },
+    "196790193": {
+      "import_name": "CensusACS5YearSurvey_SubjectTables_S2602",
+      "provenance_url": "https://data.census.gov/cedsci/table?q=S2602&tid=ACSST5Y2019.S2602",
+      "measurement_method": "CensusACS5yrSurveySubjectTable"
+    },
+    "217147238": {
+      "import_name": "CensusACS5YearSurvey_SubjectTables_S2603",
+      "provenance_url": "https://data.census.gov/cedsci/table?q=S2603&tid=ACSST5Y2019.S2603",
+      "measurement_method": "CensusACS5yrSurveySubjectTable"
+    },
+    "2176550201": {
+      "import_name": "USCensusPEP_Annual_Population",
+      "provenance_url": "https://www2.census.gov/programs-surveys/popest/tables",
+      "measurement_method": "CensusPEPSurvey",
+      "observation_period": "P1Y"
+    },
+    "2232540893": {
+      "import_name": "NYT_COVID19",
+      "provenance_url": "https://www.nytimes.com/article/coronavirus-county-data-us.html",
+      "measurement_method": "NYT_COVID19_GitHub"
+    },
+    "2458695583": {
+      "import_name": "WikidataPopulation",
+      "provenance_url": "https://www.wikidata.org/wiki/Wikidata:Main_Page",
+      "measurement_method": "WikidataPopulation"
+    },
+    "2517965213": {
+      "import_name": "CensusPEP",
+      "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
+      "measurement_method": "CensusPEPSurvey"
+    },
+    "3114843463": {
+      "import_name": "HumanCuratedStats",
+      "provenance_url": "https://google.com",
+      "measurement_method": "HumanCuratedStats"
+    },
+    "3981252704": {
+      "import_name": "WorldDevelopmentIndicators",
+      "provenance_url": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+      "observation_period": "P1Y"
+    },
+    "738965619": {
+      "import_name": "FranceINSEE",
+      "provenance_url": "https://www.insee.fr/en/metadonnees/source/indicateur/p1667/description",
+      "measurement_method": "FranceINSEE"
+    },
+    "858679853": {
+      "import_name": "EurostatData",
+      "provenance_url": "https://ec.europa.eu/eurostat/data/database",
+      "measurement_method": "EurostatRegionalPopulationData"
+    }
+  }
+}
