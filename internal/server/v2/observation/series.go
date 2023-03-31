@@ -62,11 +62,7 @@ func FetchFromSeries(
 				for _, series := range series {
 					metadata := stat.GetMetadata(series)
 					facetID := util.GetMetadataHash(metadata)
-					facetObservation := &pbv2.FacetObservation{
-						FacetId: facetID,
-					}
-					// Create a short alias to work with
-					obsList := facetObservation.Observations
+					obsList := []*pb.PointStat{}
 					for date, value := range series.Val {
 						ps := &pb.PointStat{
 							Date:  date,
@@ -85,22 +81,21 @@ func FetchFromSeries(
 					}
 					if len(obsList) > 0 {
 						result.Facets[facetID] = metadata
+						entityObservation.OrderedFacetObservations = append(
+							entityObservation.OrderedFacetObservations,
+							&pbv2.FacetObservation{
+								FacetId:      facetID,
+								Observations: obsList,
+							},
+						)
 					}
-					entityObservation.OrderedFacetObservations = append(
-						entityObservation.OrderedFacetObservations,
-						facetObservation,
-					)
 				}
 			} else if store.MemDb.HasStatVar(variable) {
 				// Read series from in-memory database
 				series := store.MemDb.ReadSeries(variable, entity)
 				for _, series := range series {
 					facetID := util.GetMetadataHash(series.Metadata)
-					facetObservation := &pbv2.FacetObservation{
-						FacetId: facetID,
-					}
-					// Create a short alias to work with
-					obsList := facetObservation.Observations
+					obsList := []*pb.PointStat{}
 					for date, value := range series.Val {
 						ps := &pb.PointStat{
 							Date:  date,
@@ -119,11 +114,14 @@ func FetchFromSeries(
 					}
 					if len(obsList) > 0 {
 						result.Facets[facetID] = series.Metadata
+						entityObservation.OrderedFacetObservations = append(
+							entityObservation.OrderedFacetObservations,
+							&pbv2.FacetObservation{
+								FacetId:      facetID,
+								Observations: obsList,
+							},
+						)
 					}
-					entityObservation.OrderedFacetObservations = append(
-						entityObservation.OrderedFacetObservations,
-						facetObservation,
-					)
 				}
 			}
 			result.ObservationsByVariable[variable].ObservationsByEntity[entity] = entityObservation

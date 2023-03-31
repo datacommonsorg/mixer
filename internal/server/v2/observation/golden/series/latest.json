@@ -7,7 +7,13 @@
         "geoId/17031": {
           "ordered_facet_observations": [
             {
-              "facet_id": "3775409807"
+              "facet_id": "3775409807",
+              "observations": [
+                {
+                  "date": "2021-04-03",
+                  "value": 61
+                }
+              ]
             }
           ]
         }
@@ -18,21 +24,39 @@
         "country/USA": {
           "ordered_facet_observations": [
             {
-              "facet_id": "2584936238"
+              "facet_id": "2584936238",
+              "observations": [
+                {
+                  "date": "2017",
+                  "value": 900217576
+                }
+              ]
             }
           ]
         },
         "geoId/06": {
           "ordered_facet_observations": [
             {
-              "facet_id": "2584936238"
+              "facet_id": "2584936238",
+              "observations": [
+                {
+                  "date": "2017",
+                  "value": 24522801
+                }
+              ]
             }
           ]
         },
         "geoId/17031": {
           "ordered_facet_observations": [
             {
-              "facet_id": "2584936238"
+              "facet_id": "2584936238",
+              "observations": [
+                {
+                  "date": "2017",
+                  "value": 11903
+                }
+              ]
             }
           ]
         }

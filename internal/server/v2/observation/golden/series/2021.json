@@ -5,14 +5,26 @@
         "country/FRA": {
           "ordered_facet_observations": [
             {
-              "facet_id": "2171028778"
+              "facet_id": "2171028778",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 51660
+                }
+              ]
             }
           ]
         },
         "country/USA": {
           "ordered_facet_observations": [
             {
-              "facet_id": "2171028778"
+              "facet_id": "2171028778",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 70480
+                }
+              ]
             }
           ]
         },
@@ -24,88 +36,49 @@
     "Annual_Generation_Electricity": {
       "observations_by_entity": {
         "country/FRA": {},
-        "country/USA": {
-          "ordered_facet_observations": [
-            {
-              "facet_id": "1450533103"
-            },
-            {
-              "facet_id": "2392525955"
-            }
-          ]
-        },
+        "country/USA": {},
         "dummy": {},
-        "geoId/06": {
-          "ordered_facet_observations": [
-            {
-              "facet_id": "2392525955"
-            }
-          ]
-        },
+        "geoId/06": {},
         "geoId/0649670": {}
       }
     },
     "Count_CriminalActivities_CombinedCrime": {
       "observations_by_entity": {
         "country/FRA": {},
-        "country/USA": {
-          "ordered_facet_observations": [
-            {
-              "facet_id": "2343540064"
-            }
-          ]
-        },
+        "country/USA": {},
         "dummy": {},
-        "geoId/06": {
-          "ordered_facet_observations": [
-            {
-              "facet_id": "4277990144"
-            }
-          ]
-        },
-        "geoId/0649670": {
-          "ordered_facet_observations": [
-            {
-              "facet_id": "4277990144"
-            }
-          ]
-        }
+        "geoId/06": {},
+        "geoId/0649670": {}
       }
     },
     "Count_Person_Unemployed": {
       "observations_by_entity": {
         "country/FRA": {},
-        "country/USA": {
-          "ordered_facet_observations": [
-            {
-              "facet_id": "3707913853"
-            },
-            {
-              "facet_id": "1714978719"
-            }
-          ]
-        },
+        "country/USA": {},
         "dummy": {},
         "geoId/06": {
           "ordered_facet_observations": [
             {
-              "facet_id": "324358135"
-            },
-            {
-              "facet_id": "2978659163"
-            },
-            {
-              "facet_id": "1249140336"
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 1387063
+                }
+              ]
             }
           ]
         },
         "geoId/0649670": {
           "ordered_facet_observations": [
             {
-              "facet_id": "324358135"
-            },
-            {
-              "facet_id": "2978659163"
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 1497
+                }
+              ]
             }
           ]
         }
