@@ -21,6 +21,7 @@ import (
 	"sort"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"github.com/datacommonsorg/mixer/internal/server/ranking"
 	"github.com/datacommonsorg/mixer/internal/server/stat"
 	"github.com/datacommonsorg/mixer/internal/store"
@@ -31,9 +32,9 @@ import (
 // BulkPoint implements API for Mixer.BulkObservationsPoint.
 func BulkPoint(
 	ctx context.Context,
-	in *pb.BulkObservationsPointRequest,
+	in *pbv1.BulkObservationsPointRequest,
 	store *store.Store,
-) (*pb.BulkObservationsPointResponse, error) {
+) (*pbv1.BulkObservationsPointResponse, error) {
 	entities := in.GetEntities()
 	variables := in.GetVariables()
 	date := in.GetDate()
@@ -44,18 +45,18 @@ func BulkPoint(
 		return nil, err
 	}
 
-	result := &pb.BulkObservationsPointResponse{
+	result := &pbv1.BulkObservationsPointResponse{
 		Facets: map[string]*pb.StatMetadata{},
 	}
-	tmpResult := map[string]*pb.VariableObservations{}
+	tmpResult := map[string]*pbv1.VariableObservations{}
 	for _, entity := range entities {
 		for _, variable := range variables {
 			series := cacheData[entity][variable].SourceSeries
-			entityObservations := &pb.EntityObservations{
+			entityObservations := &pbv1.EntityObservations{
 				Entity: entity,
 			}
 			if _, ok := tmpResult[variable]; !ok {
-				tmpResult[variable] = &pb.VariableObservations{
+				tmpResult[variable] = &pbv1.VariableObservations{
 					Variable: variable,
 				}
 			}

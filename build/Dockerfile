@@ -56,10 +56,11 @@ COPY internal/ internal
 # Build protobuf
 RUN protoc \
     --proto_path=proto \
-    --go_out=internal \
-    --go-grpc_out=internal \
-    --go-grpc_opt=require_unimplemented_servers=false \
-    proto/*.proto proto/v1/*.proto
+    --go_out=paths=source_relative:internal/proto \
+    --go-grpc_out=paths=source_relative:internal/proto \
+    --go_grpc_out=require_unimplemented_servers=false \
+    --experimental_allow_proto3_optional \
+    proto/*.proto proto/**/*.proto
 
 
 # =========  server stage ==========

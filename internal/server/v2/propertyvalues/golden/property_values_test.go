@@ -20,7 +20,8 @@ import (
 	"runtime"
 	"testing"
 
-	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbs "github.com/datacommonsorg/mixer/internal/proto/service"
+	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/test"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/testing/protocmp"
@@ -33,7 +34,7 @@ func TestPropertyValuesV2(t *testing.T) {
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(path.Dir(filename), "simple")
 
-	testSuite := func(mixer pb.MixerClient, latencyTest bool) {
+	testSuite := func(mixer pbs.MixerClient, latencyTest bool) {
 		for _, c := range []struct {
 			goldenFile string
 			nodes      []string
@@ -84,13 +85,13 @@ func TestPropertyValuesV2(t *testing.T) {
 				"H4sIAAAAAAAA/+IK5OJNT833TNE3MDOxNDM34OJOT833L0stykksKOaSdk7NKy4tjsoscM5PSQ1JTCrNSSzJzM9zLEpNFGIQYuJgFGLiYBJi4mAWYuJgEWLhYJVgBQAAAP//AQAA//+kZzeJUwAAAA==",
 			},
 		} {
-			req := &pb.QueryV2Request{
+			req := &pbv2.NodeRequest{
 				Nodes:     c.nodes,
 				Property:  c.property,
 				Limit:     c.limit,
 				NextToken: c.nextToken,
 			}
-			resp, err := mixer.QueryV2(ctx, req)
+			resp, err := mixer.V2Node(ctx, req)
 			if err != nil {
 				t.Errorf("could not run mixer.QueryV2: %s", err)
 				continue
@@ -102,7 +103,7 @@ func TestPropertyValuesV2(t *testing.T) {
 				test.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
 				continue
 			}
-			var expected pb.QueryV2Response
+			var expected pbv2.NodeResponse
 			if err := test.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
 				t.Errorf("Can not Unmarshal golden file %s: %v", c.goldenFile, err)
 				continue

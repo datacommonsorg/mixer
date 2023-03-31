@@ -25,6 +25,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/util"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 )
 
 // GetPropertyValues implements API for Mixer.GetPropertyValues.
@@ -113,7 +114,7 @@ func GetPropertyValuesHelper(
 	}
 	resp, err := propertyvalues.BulkPropertyValues(
 		ctx,
-		&pb.BulkPropertyValuesRequest{
+		&pbv1.BulkPropertyValuesRequest{
 			Property:  prop,
 			Nodes:     nodes,
 			Direction: direction,

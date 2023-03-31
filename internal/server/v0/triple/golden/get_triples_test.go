@@ -23,6 +23,7 @@ import (
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbs "github.com/datacommonsorg/mixer/internal/proto/service"
 	"github.com/datacommonsorg/mixer/internal/server/model"
 	"github.com/datacommonsorg/mixer/test"
 	"github.com/google/go-cmp/cmp"
@@ -35,7 +36,7 @@ func TestGetTriples(t *testing.T) {
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(path.Dir(filename), "get_triples")
 
-	testSuite := func(mixer pb.MixerClient, latencyTest bool) {
+	testSuite := func(mixer pbs.MixerClient, latencyTest bool) {
 		for _, c := range []struct {
 			dcids        []string
 			goldenFile   string

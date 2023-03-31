@@ -19,6 +19,7 @@ import (
 	"strings"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"github.com/datacommonsorg/mixer/internal/server/node"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/server/v1/properties"
@@ -35,19 +36,19 @@ func getObsTriples(
 	store *store.Store,
 	metadata *resource.Metadata,
 	dcids []string,
-) ([]*pb.BulkTriplesResponse_NodeTriples, error) {
+) ([]*pbv1.BulkTriplesResponse_NodeTriples, error) {
 	resp, err := node.GetObsTriples(ctx, store, metadata, dcids)
 	if err != nil {
 		return nil, err
 	}
-	result := []*pb.BulkTriplesResponse_NodeTriples{}
+	result := []*pbv1.BulkTriplesResponse_NodeTriples{}
 	for dcid, tripleList := range resp {
-		item := &pb.BulkTriplesResponse_NodeTriples{
+		item := &pbv1.BulkTriplesResponse_NodeTriples{
 			Node:    dcid,
-			Triples: map[string]*pb.NodeInfoCollection{},
+			Triples: map[string]*pbv1.NodeInfoCollection{},
 		}
 		for _, t := range tripleList {
-			item.Triples[t.Predicate] = &pb.NodeInfoCollection{
+			item.Triples[t.Predicate] = &pbv1.NodeInfoCollection{
 				Nodes: []*pb.EntityInfo{
 					{
 						Name:         t.ObjectName,
@@ -67,10 +68,10 @@ func getObsTriples(
 // Triples implements mixer.Triples handler.
 func Triples(
 	ctx context.Context,
-	in *pb.TriplesRequest,
+	in *pbv1.TriplesRequest,
 	store *store.Store,
 	metadata *resource.Metadata,
-) (*pb.TriplesResponse, error) {
+) (*pbv1.TriplesResponse, error) {
 	node := in.GetNode()
 	direction := in.GetDirection()
 	token := in.GetNextToken()
@@ -88,15 +89,15 @@ func Triples(
 			return nil, err
 		}
 		if len(resp) == 0 {
-			return &pb.TriplesResponse{}, nil
+			return &pbv1.TriplesResponse{}, nil
 		}
-		return &pb.TriplesResponse{
+		return &pbv1.TriplesResponse{
 			Triples: resp[0].Triples,
 		}, nil
 	}
 
 	propsResp, err := properties.Properties(
-		ctx, &pb.PropertiesRequest{
+		ctx, &pbv1.PropertiesRequest{
 			Node:      node,
 			Direction: direction,
 		},
@@ -118,11 +119,11 @@ func Triples(
 	if err != nil {
 		return nil, err
 	}
-	res := &pb.TriplesResponse{
-		Triples: map[string]*pb.NodeInfoCollection{},
+	res := &pbv1.TriplesResponse{
+		Triples: map[string]*pbv1.NodeInfoCollection{},
 	}
 	for p := range data[node] {
-		res.Triples[p] = &pb.NodeInfoCollection{
+		res.Triples[p] = &pbv1.NodeInfoCollection{
 			Nodes: propertyvalues.MergeTypedNodes(data[node][p]),
 		}
 	}
@@ -139,10 +140,10 @@ func Triples(
 // BulkTriples implements mixer.BulkTriples handler.
 func BulkTriples(
 	ctx context.Context,
-	in *pb.BulkTriplesRequest,
+	in *pbv1.BulkTriplesRequest,
 	store *store.Store,
 	metadata *resource.Metadata,
-) (*pb.BulkTriplesResponse, error) {
+) (*pbv1.BulkTriplesResponse, error) {
 	dcids := in.GetNodes()
 	direction := in.GetDirection()
 	token := in.GetNextToken()
@@ -166,7 +167,7 @@ func BulkTriples(
 	}
 
 	bulkPropsResp, err := properties.BulkProperties(
-		ctx, &pb.BulkPropertiesRequest{
+		ctx, &pbv1.BulkPropertiesRequest{
 			Nodes:     regularDcids,
 			Direction: direction,
 		},
@@ -199,8 +200,8 @@ func BulkTriples(
 	if err != nil {
 		return nil, err
 	}
-	res := &pb.BulkTriplesResponse{
-		Data: []*pb.BulkTriplesResponse_NodeTriples{},
+	res := &pbv1.BulkTriplesResponse{
+		Data: []*pbv1.BulkTriplesResponse_NodeTriples{},
 	}
 	triplesByEntity := map[string]map[string][]*pb.EntityInfo{}
 	for _, n := range regularDcids {
@@ -217,12 +218,12 @@ func BulkTriples(
 		}
 	}
 	for _, n := range regularDcids {
-		entityTriples := &pb.BulkTriplesResponse_NodeTriples{
+		entityTriples := &pbv1.BulkTriplesResponse_NodeTriples{
 			Node:    n,
-			Triples: map[string]*pb.NodeInfoCollection{},
+			Triples: map[string]*pbv1.NodeInfoCollection{},
 		}
 		for p := range triplesByEntity[n] {
-			entityTriples.Triples[p] = &pb.NodeInfoCollection{
+			entityTriples.Triples[p] = &pbv1.NodeInfoCollection{
 				Nodes: triplesByEntity[n][p],
 			}
 		}

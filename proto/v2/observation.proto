@@ -14,8 +14,9 @@
 
 
 syntax = "proto3";
-option go_package = "./proto";
 package datacommons.v2;
+
+option go_package = "github.com/datacommonsorg/mixer/internal/proto/v2";
 
 import "stat.proto";
 
@@ -38,7 +39,7 @@ message FacetObservation {
 }
 
 // Generic observation request
-message V2ObservationRequest {
+message ObservationRequest {
   // A list of entity DCIDs
   repeated string entities = 1;
   // An arrow notation expression of entities
@@ -63,7 +64,7 @@ message V2ObservationRequest {
   string period = 8;
 }
 
-message V2ObservationResponse {
+message ObservationResponse {
   // Keyed by variable DCID
   map<string, VariableObservation> observations_by_variable = 1;
   // Keyed by facet ID

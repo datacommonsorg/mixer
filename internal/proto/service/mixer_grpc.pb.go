@@ -2,12 +2,15 @@
 // versions:
 // - protoc-gen-go-grpc v1.2.0
 // - protoc             v3.21.9
-// source: mixer.proto
+// source: service/mixer.proto
 
-package proto
+package service
 
 import (
 	context "context"
+	proto "github.com/datacommonsorg/mixer/internal/proto"
+	v1 "github.com/datacommonsorg/mixer/internal/proto/v1"
+	v2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
@@ -22,121 +25,121 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type MixerClient interface {
-	QueryV2(ctx context.Context, in *QueryV2Request, opts ...grpc.CallOption) (*QueryV2Response, error)
-	V2Observation(ctx context.Context, in *V2ObservationRequest, opts ...grpc.CallOption) (*V2ObservationResponse, error)
+	V2Node(ctx context.Context, in *v2.NodeRequest, opts ...grpc.CallOption) (*v2.NodeResponse, error)
+	V2Observation(ctx context.Context, in *v2.ObservationRequest, opts ...grpc.CallOption) (*v2.ObservationResponse, error)
 	// Query DataCommons Graph with Sparql.
-	Query(ctx context.Context, in *QueryRequest, opts ...grpc.CallOption) (*QueryResponse, error)
+	Query(ctx context.Context, in *proto.QueryRequest, opts ...grpc.CallOption) (*proto.QueryResponse, error)
 	// Fetch property labels adjacent of nodes
-	GetPropertyLabels(ctx context.Context, in *GetPropertyLabelsRequest, opts ...grpc.CallOption) (*PayloadResponse, error)
+	GetPropertyLabels(ctx context.Context, in *proto.GetPropertyLabelsRequest, opts ...grpc.CallOption) (*proto.PayloadResponse, error)
 	// Fetch nodes that linked to source nodes with a given property.
-	GetPropertyValues(ctx context.Context, in *GetPropertyValuesRequest, opts ...grpc.CallOption) (*PayloadResponse, error)
+	GetPropertyValues(ctx context.Context, in *proto.GetPropertyValuesRequest, opts ...grpc.CallOption) (*proto.PayloadResponse, error)
 	// Fetch triples that have the given nodes as subject or object.
-	GetTriples(ctx context.Context, in *GetTriplesRequest, opts ...grpc.CallOption) (*PayloadResponse, error)
+	GetTriples(ctx context.Context, in *proto.GetTriplesRequest, opts ...grpc.CallOption) (*proto.PayloadResponse, error)
 	// Get places contained in parent places.
-	GetPlacesIn(ctx context.Context, in *GetPlacesInRequest, opts ...grpc.CallOption) (*GetPlacesInResponse, error)
+	GetPlacesIn(ctx context.Context, in *proto.GetPlacesInRequest, opts ...grpc.CallOption) (*proto.GetPlacesInResponse, error)
 	// Get stats of places by StatisticalVariable. If multiple time series data
 	// are avaialable, the highest ranked one by measurement method and import
 	// will be returned.
-	GetStats(ctx context.Context, in *GetStatsRequest, opts ...grpc.CallOption) (*GetStatsResponse, error)
+	GetStats(ctx context.Context, in *proto.GetStatsRequest, opts ...grpc.CallOption) (*proto.GetStatsResponse, error)
 	// Get a single stat value given a place, a statistical variable and a date.
 	// If no date is given, the latest statistical variable will be returned.
-	GetStatValue(ctx context.Context, in *GetStatValueRequest, opts ...grpc.CallOption) (*GetStatValueResponse, error)
+	GetStatValue(ctx context.Context, in *proto.GetStatValueRequest, opts ...grpc.CallOption) (*proto.GetStatValueResponse, error)
 	// Get a series of stat value with dates, given the place and statistical
 	// variable.
-	GetStatSeries(ctx context.Context, in *GetStatSeriesRequest, opts ...grpc.CallOption) (*GetStatSeriesResponse, error)
+	GetStatSeries(ctx context.Context, in *proto.GetStatSeriesRequest, opts ...grpc.CallOption) (*proto.GetStatSeriesResponse, error)
 	// Get all stat series given a list of places and a list of statistical
 	// variables.
-	GetStatAll(ctx context.Context, in *GetStatAllRequest, opts ...grpc.CallOption) (*GetStatAllResponse, error)
+	GetStatAll(ctx context.Context, in *proto.GetStatAllRequest, opts ...grpc.CallOption) (*proto.GetStatAllResponse, error)
 	// Get rankings for given stat var DCIDs.
-	GetLocationsRankings(ctx context.Context, in *GetLocationsRankingsRequest, opts ...grpc.CallOption) (*GetLocationsRankingsResponse, error)
+	GetLocationsRankings(ctx context.Context, in *proto.GetLocationsRankingsRequest, opts ...grpc.CallOption) (*proto.GetLocationsRankingsResponse, error)
 	// Get related locations for given stat var DCIDs.
-	GetRelatedLocations(ctx context.Context, in *GetRelatedLocationsRequest, opts ...grpc.CallOption) (*GetRelatedLocationsResponse, error)
+	GetRelatedLocations(ctx context.Context, in *proto.GetRelatedLocationsRequest, opts ...grpc.CallOption) (*proto.GetRelatedLocationsResponse, error)
 	// Get bio page data given a dcid.
-	GetBioPageData(ctx context.Context, in *GetBioPageDataRequest, opts ...grpc.CallOption) (*GraphNodes, error)
+	GetBioPageData(ctx context.Context, in *proto.GetBioPageDataRequest, opts ...grpc.CallOption) (*proto.GraphNodes, error)
 	// Translate Sparql Query into translation results.
-	Translate(ctx context.Context, in *TranslateRequest, opts ...grpc.CallOption) (*TranslateResponse, error)
+	Translate(ctx context.Context, in *proto.TranslateRequest, opts ...grpc.CallOption) (*proto.TranslateResponse, error)
 	// Given a text search query, return all nodes matching the query.
-	Search(ctx context.Context, in *SearchRequest, opts ...grpc.CallOption) (*SearchResponse, error)
+	Search(ctx context.Context, in *proto.SearchRequest, opts ...grpc.CallOption) (*proto.SearchResponse, error)
 	// Retrieves the version metadata.
-	GetVersion(ctx context.Context, in *GetVersionRequest, opts ...grpc.CallOption) (*GetVersionResponse, error)
+	GetVersion(ctx context.Context, in *proto.GetVersionRequest, opts ...grpc.CallOption) (*proto.GetVersionResponse, error)
 	// Give a list of place dcids, return all the statistical variables for each
 	// place.
-	GetPlaceStatsVar(ctx context.Context, in *GetPlaceStatsVarRequest, opts ...grpc.CallOption) (*GetPlaceStatsVarResponse, error)
+	GetPlaceStatsVar(ctx context.Context, in *proto.GetPlaceStatsVarRequest, opts ...grpc.CallOption) (*proto.GetPlaceStatsVarResponse, error)
 	// Give a list of place dcids, return all the statistical variables for each
 	// place.
 	// TODO(shifucun): Deprecate GetPlaceStatsVar when all internal clients are
 	// migrated.
-	GetPlaceStatVars(ctx context.Context, in *GetPlaceStatVarsRequest, opts ...grpc.CallOption) (*GetPlaceStatVarsResponse, error)
+	GetPlaceStatVars(ctx context.Context, in *proto.GetPlaceStatVarsRequest, opts ...grpc.CallOption) (*proto.GetPlaceStatVarsResponse, error)
 	// Given a list of entity dcids, returns the union of available
 	// statistical variables for the entities.
-	GetEntityStatVarsUnionV1(ctx context.Context, in *GetEntityStatVarsUnionRequest, opts ...grpc.CallOption) (*GetEntityStatVarsUnionResponse, error)
+	GetEntityStatVarsUnionV1(ctx context.Context, in *proto.GetEntityStatVarsUnionRequest, opts ...grpc.CallOption) (*proto.GetEntityStatVarsUnionResponse, error)
 	// Given ancestor place, child place type and stat vars, return the dates that
 	// have data for each stat var across all child places.
 	// [!! Deprecated] in favor of GetStatDateWithinPlace
-	GetPlaceStatDateWithinPlace(ctx context.Context, in *GetPlaceStatDateWithinPlaceRequest, opts ...grpc.CallOption) (*GetPlaceStatDateWithinPlaceResponse, error)
+	GetPlaceStatDateWithinPlace(ctx context.Context, in *proto.GetPlaceStatDateWithinPlaceRequest, opts ...grpc.CallOption) (*proto.GetPlaceStatDateWithinPlaceResponse, error)
 	// Given ancestor place, child place type and stat vars, return the dates and
 	// place count for each source
-	GetStatDateWithinPlace(ctx context.Context, in *GetStatDateWithinPlaceRequest, opts ...grpc.CallOption) (*GetStatDateWithinPlaceResponse, error)
+	GetStatDateWithinPlace(ctx context.Context, in *proto.GetStatDateWithinPlaceRequest, opts ...grpc.CallOption) (*proto.GetStatDateWithinPlaceResponse, error)
 	// Search stat var and stat var groups.
-	SearchStatVar(ctx context.Context, in *SearchStatVarRequest, opts ...grpc.CallOption) (*SearchStatVarResponse, error)
+	SearchStatVar(ctx context.Context, in *proto.SearchStatVarRequest, opts ...grpc.CallOption) (*proto.SearchStatVarResponse, error)
 	// Given a list of stat vars, get their summaries.
-	GetStatVarSummary(ctx context.Context, in *GetStatVarSummaryRequest, opts ...grpc.CallOption) (*GetStatVarSummaryResponse, error)
+	GetStatVarSummary(ctx context.Context, in *proto.GetStatVarSummaryRequest, opts ...grpc.CallOption) (*proto.GetStatVarSummaryResponse, error)
 	// Find matched stat vars given constraint properties
-	GetStatVarMatch(ctx context.Context, in *GetStatVarMatchRequest, opts ...grpc.CallOption) (*GetStatVarMatchResponse, error)
+	GetStatVarMatch(ctx context.Context, in *proto.GetStatVarMatchRequest, opts ...grpc.CallOption) (*proto.GetStatVarMatchResponse, error)
 	// Query DataCommons Graph with Sparql.
-	QueryV1(ctx context.Context, in *QueryRequest, opts ...grpc.CallOption) (*QueryResponse, error)
-	Properties(ctx context.Context, in *PropertiesRequest, opts ...grpc.CallOption) (*PropertiesResponse, error)
-	BulkProperties(ctx context.Context, in *BulkPropertiesRequest, opts ...grpc.CallOption) (*BulkPropertiesResponse, error)
-	PropertyValues(ctx context.Context, in *PropertyValuesRequest, opts ...grpc.CallOption) (*PropertyValuesResponse, error)
-	LinkedPropertyValues(ctx context.Context, in *LinkedPropertyValuesRequest, opts ...grpc.CallOption) (*PropertyValuesResponse, error)
-	BulkPropertyValues(ctx context.Context, in *BulkPropertyValuesRequest, opts ...grpc.CallOption) (*BulkPropertyValuesResponse, error)
-	BulkLinkedPropertyValues(ctx context.Context, in *BulkLinkedPropertyValuesRequest, opts ...grpc.CallOption) (*BulkPropertyValuesResponse, error)
-	Triples(ctx context.Context, in *TriplesRequest, opts ...grpc.CallOption) (*TriplesResponse, error)
-	BulkTriples(ctx context.Context, in *BulkTriplesRequest, opts ...grpc.CallOption) (*BulkTriplesResponse, error)
-	Variables(ctx context.Context, in *VariablesRequest, opts ...grpc.CallOption) (*VariablesResponse, error)
-	BulkVariables(ctx context.Context, in *BulkVariablesRequest, opts ...grpc.CallOption) (*BulkVariablesResponse, error)
-	PlaceInfo(ctx context.Context, in *PlaceInfoRequest, opts ...grpc.CallOption) (*PlaceInfoResponse, error)
-	BulkPlaceInfo(ctx context.Context, in *BulkPlaceInfoRequest, opts ...grpc.CallOption) (*BulkPlaceInfoResponse, error)
-	VariableInfo(ctx context.Context, in *VariableInfoRequest, opts ...grpc.CallOption) (*VariableInfoResponse, error)
-	BulkVariableInfo(ctx context.Context, in *BulkVariableInfoRequest, opts ...grpc.CallOption) (*BulkVariableInfoResponse, error)
-	VariableGroupInfo(ctx context.Context, in *VariableGroupInfoRequest, opts ...grpc.CallOption) (*VariableGroupInfoResponse, error)
-	BulkVariableGroupInfo(ctx context.Context, in *BulkVariableGroupInfoRequest, opts ...grpc.CallOption) (*BulkVariableGroupInfoResponse, error)
-	ObservationsPoint(ctx context.Context, in *ObservationsPointRequest, opts ...grpc.CallOption) (*PointStat, error)
-	BulkObservationsPoint(ctx context.Context, in *BulkObservationsPointRequest, opts ...grpc.CallOption) (*BulkObservationsPointResponse, error)
-	BulkObservationsPointLinked(ctx context.Context, in *BulkObservationsPointLinkedRequest, opts ...grpc.CallOption) (*BulkObservationsPointResponse, error)
-	ObservationsSeries(ctx context.Context, in *ObservationsSeriesRequest, opts ...grpc.CallOption) (*ObservationsSeriesResponse, error)
-	BulkObservationsSeries(ctx context.Context, in *BulkObservationsSeriesRequest, opts ...grpc.CallOption) (*BulkObservationsSeriesResponse, error)
-	BulkObservationsSeriesLinked(ctx context.Context, in *BulkObservationsSeriesLinkedRequest, opts ...grpc.CallOption) (*BulkObservationsSeriesResponse, error)
-	DerivedObservationsSeries(ctx context.Context, in *DerivedObservationsSeriesRequest, opts ...grpc.CallOption) (*DerivedObservationsSeriesResponse, error)
-	BulkObservationDatesLinked(ctx context.Context, in *BulkObservationDatesLinkedRequest, opts ...grpc.CallOption) (*BulkObservationDatesLinkedResponse, error)
-	BulkObservationExistence(ctx context.Context, in *BulkObservationExistenceRequest, opts ...grpc.CallOption) (*BulkObservationExistenceResponse, error)
-	BioPage(ctx context.Context, in *BioPageRequest, opts ...grpc.CallOption) (*GraphNodes, error)
-	PlacePage(ctx context.Context, in *PlacePageRequest, opts ...grpc.CallOption) (*PlacePageResponse, error)
-	VariableAncestors(ctx context.Context, in *VariableAncestorsRequest, opts ...grpc.CallOption) (*VariableAncestorsResponse, error)
+	QueryV1(ctx context.Context, in *proto.QueryRequest, opts ...grpc.CallOption) (*proto.QueryResponse, error)
+	Properties(ctx context.Context, in *v1.PropertiesRequest, opts ...grpc.CallOption) (*v1.PropertiesResponse, error)
+	BulkProperties(ctx context.Context, in *v1.BulkPropertiesRequest, opts ...grpc.CallOption) (*v1.BulkPropertiesResponse, error)
+	PropertyValues(ctx context.Context, in *v1.PropertyValuesRequest, opts ...grpc.CallOption) (*v1.PropertyValuesResponse, error)
+	LinkedPropertyValues(ctx context.Context, in *v1.LinkedPropertyValuesRequest, opts ...grpc.CallOption) (*v1.PropertyValuesResponse, error)
+	BulkPropertyValues(ctx context.Context, in *v1.BulkPropertyValuesRequest, opts ...grpc.CallOption) (*v1.BulkPropertyValuesResponse, error)
+	BulkLinkedPropertyValues(ctx context.Context, in *v1.BulkLinkedPropertyValuesRequest, opts ...grpc.CallOption) (*v1.BulkPropertyValuesResponse, error)
+	Triples(ctx context.Context, in *v1.TriplesRequest, opts ...grpc.CallOption) (*v1.TriplesResponse, error)
+	BulkTriples(ctx context.Context, in *v1.BulkTriplesRequest, opts ...grpc.CallOption) (*v1.BulkTriplesResponse, error)
+	Variables(ctx context.Context, in *v1.VariablesRequest, opts ...grpc.CallOption) (*v1.VariablesResponse, error)
+	BulkVariables(ctx context.Context, in *v1.BulkVariablesRequest, opts ...grpc.CallOption) (*v1.BulkVariablesResponse, error)
+	PlaceInfo(ctx context.Context, in *v1.PlaceInfoRequest, opts ...grpc.CallOption) (*v1.PlaceInfoResponse, error)
+	BulkPlaceInfo(ctx context.Context, in *v1.BulkPlaceInfoRequest, opts ...grpc.CallOption) (*v1.BulkPlaceInfoResponse, error)
+	VariableInfo(ctx context.Context, in *v1.VariableInfoRequest, opts ...grpc.CallOption) (*v1.VariableInfoResponse, error)
+	BulkVariableInfo(ctx context.Context, in *v1.BulkVariableInfoRequest, opts ...grpc.CallOption) (*v1.BulkVariableInfoResponse, error)
+	VariableGroupInfo(ctx context.Context, in *v1.VariableGroupInfoRequest, opts ...grpc.CallOption) (*v1.VariableGroupInfoResponse, error)
+	BulkVariableGroupInfo(ctx context.Context, in *v1.BulkVariableGroupInfoRequest, opts ...grpc.CallOption) (*v1.BulkVariableGroupInfoResponse, error)
+	ObservationsPoint(ctx context.Context, in *v1.ObservationsPointRequest, opts ...grpc.CallOption) (*proto.PointStat, error)
+	BulkObservationsPoint(ctx context.Context, in *v1.BulkObservationsPointRequest, opts ...grpc.CallOption) (*v1.BulkObservationsPointResponse, error)
+	BulkObservationsPointLinked(ctx context.Context, in *v1.BulkObservationsPointLinkedRequest, opts ...grpc.CallOption) (*v1.BulkObservationsPointResponse, error)
+	ObservationsSeries(ctx context.Context, in *v1.ObservationsSeriesRequest, opts ...grpc.CallOption) (*v1.ObservationsSeriesResponse, error)
+	BulkObservationsSeries(ctx context.Context, in *v1.BulkObservationsSeriesRequest, opts ...grpc.CallOption) (*v1.BulkObservationsSeriesResponse, error)
+	BulkObservationsSeriesLinked(ctx context.Context, in *v1.BulkObservationsSeriesLinkedRequest, opts ...grpc.CallOption) (*v1.BulkObservationsSeriesResponse, error)
+	DerivedObservationsSeries(ctx context.Context, in *v1.DerivedObservationsSeriesRequest, opts ...grpc.CallOption) (*v1.DerivedObservationsSeriesResponse, error)
+	BulkObservationDatesLinked(ctx context.Context, in *v1.BulkObservationDatesLinkedRequest, opts ...grpc.CallOption) (*v1.BulkObservationDatesLinkedResponse, error)
+	BulkObservationExistence(ctx context.Context, in *v1.BulkObservationExistenceRequest, opts ...grpc.CallOption) (*v1.BulkObservationExistenceResponse, error)
+	BioPage(ctx context.Context, in *v1.BioPageRequest, opts ...grpc.CallOption) (*proto.GraphNodes, error)
+	PlacePage(ctx context.Context, in *v1.PlacePageRequest, opts ...grpc.CallOption) (*v1.PlacePageResponse, error)
+	VariableAncestors(ctx context.Context, in *v1.VariableAncestorsRequest, opts ...grpc.CallOption) (*v1.VariableAncestorsResponse, error)
 	// Get event collection for {eventType, affectedPlaceDcid, date}.
 	// NOTE:
 	//   - The affectedPlaceDcid is only for top-level places:
 	//     Earth, continent, country, state, adminArea1.
 	//   - The date format should be: YYYY-MM.
-	EventCollection(ctx context.Context, in *EventCollectionRequest, opts ...grpc.CallOption) (*EventCollectionResponse, error)
+	EventCollection(ctx context.Context, in *v1.EventCollectionRequest, opts ...grpc.CallOption) (*v1.EventCollectionResponse, error)
 	// Get all dates for event collection for {eventType, affectedPlaceDcid}.
 	//   - The affectedPlaceDcid is only for top-level places:
 	//     Earth, continent, country, state, adminArea1.
 	//   - The date format should be: YYYY-MM.
 	//     The dates in the response are sorted from earliest to latest.
-	EventCollectionDate(ctx context.Context, in *EventCollectionDateRequest, opts ...grpc.CallOption) (*EventCollectionDateResponse, error)
+	EventCollectionDate(ctx context.Context, in *v1.EventCollectionDateRequest, opts ...grpc.CallOption) (*v1.EventCollectionDateResponse, error)
 	// Resolve a list of entities, given their descriptions.
-	ResolveEntities(ctx context.Context, in *ResolveEntitiesRequest, opts ...grpc.CallOption) (*ResolveEntitiesResponse, error)
+	ResolveEntities(ctx context.Context, in *proto.ResolveEntitiesRequest, opts ...grpc.CallOption) (*proto.ResolveEntitiesResponse, error)
 	// Resolve a list of places, given their latitude and longitude coordinates.
-	ResolveCoordinates(ctx context.Context, in *ResolveCoordinatesRequest, opts ...grpc.CallOption) (*ResolveCoordinatesResponse, error)
+	ResolveCoordinates(ctx context.Context, in *proto.ResolveCoordinatesRequest, opts ...grpc.CallOption) (*proto.ResolveCoordinatesResponse, error)
 	// Resolve a list of IDs, given the input prop and output prop.
-	ResolveIds(ctx context.Context, in *ResolveIdsRequest, opts ...grpc.CallOption) (*ResolveIdsResponse, error)
+	ResolveIds(ctx context.Context, in *proto.ResolveIdsRequest, opts ...grpc.CallOption) (*proto.ResolveIdsResponse, error)
 	// Find entities from a description, with an optional filter on type.
-	FindEntities(ctx context.Context, in *FindEntitiesRequest, opts ...grpc.CallOption) (*FindEntitiesResponse, error)
+	FindEntities(ctx context.Context, in *proto.FindEntitiesRequest, opts ...grpc.CallOption) (*proto.FindEntitiesResponse, error)
 	// Find entities from descriptions, with optional filters on types.
-	BulkFindEntities(ctx context.Context, in *BulkFindEntitiesRequest, opts ...grpc.CallOption) (*BulkFindEntitiesResponse, error)
+	BulkFindEntities(ctx context.Context, in *proto.BulkFindEntitiesRequest, opts ...grpc.CallOption) (*proto.BulkFindEntitiesResponse, error)
 	// Recognize places from a NL query.
-	RecognizePlaces(ctx context.Context, in *RecognizePlacesRequest, opts ...grpc.CallOption) (*RecognizePlacesResponse, error)
+	RecognizePlaces(ctx context.Context, in *proto.RecognizePlacesRequest, opts ...grpc.CallOption) (*proto.RecognizePlacesResponse, error)
 }
 
 type mixerClient struct {
@@ -147,17 +150,17 @@ func NewMixerClient(cc grpc.ClientConnInterface) MixerClient {
 	return &mixerClient{cc}
 }
 
-func (c *mixerClient) QueryV2(ctx context.Context, in *QueryV2Request, opts ...grpc.CallOption) (*QueryV2Response, error) {
-	out := new(QueryV2Response)
-	err := c.cc.Invoke(ctx, "/datacommons.Mixer/QueryV2", in, out, opts...)
+func (c *mixerClient) V2Node(ctx context.Context, in *v2.NodeRequest, opts ...grpc.CallOption) (*v2.NodeResponse, error) {
+	out := new(v2.NodeResponse)
+	err := c.cc.Invoke(ctx, "/datacommons.Mixer/V2Node", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *mixerClient) V2Observation(ctx context.Context, in *V2ObservationRequest, opts ...grpc.CallOption) (*V2ObservationResponse, error) {
-	out := new(V2ObservationResponse)
+func (c *mixerClient) V2Observation(ctx context.Context, in *v2.ObservationRequest, opts ...grpc.CallOption) (*v2.ObservationResponse, error) {
+	out := new(v2.ObservationResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/V2Observation", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -165,8 +168,8 @@ func (c *mixerClient) V2Observation(ctx context.Context, in *V2ObservationReques
 	return out, nil
 }
 
-func (c *mixerClient) Query(ctx context.Context, in *QueryRequest, opts ...grpc.CallOption) (*QueryResponse, error) {
-	out := new(QueryResponse)
+func (c *mixerClient) Query(ctx context.Context, in *proto.QueryRequest, opts ...grpc.CallOption) (*proto.QueryResponse, error) {
+	out := new(proto.QueryResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/Query", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -174,8 +177,8 @@ func (c *mixerClient) Query(ctx context.Context, in *QueryRequest, opts ...grpc.
 	return out, nil
 }
 
-func (c *mixerClient) GetPropertyLabels(ctx context.Context, in *GetPropertyLabelsRequest, opts ...grpc.CallOption) (*PayloadResponse, error) {
-	out := new(PayloadResponse)
+func (c *mixerClient) GetPropertyLabels(ctx context.Context, in *proto.GetPropertyLabelsRequest, opts ...grpc.CallOption) (*proto.PayloadResponse, error) {
+	out := new(proto.PayloadResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/GetPropertyLabels", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -183,8 +186,8 @@ func (c *mixerClient) GetPropertyLabels(ctx context.Context, in *GetPropertyLabe
 	return out, nil
 }
 
-func (c *mixerClient) GetPropertyValues(ctx context.Context, in *GetPropertyValuesRequest, opts ...grpc.CallOption) (*PayloadResponse, error) {
-	out := new(PayloadResponse)
+func (c *mixerClient) GetPropertyValues(ctx context.Context, in *proto.GetPropertyValuesRequest, opts ...grpc.CallOption) (*proto.PayloadResponse, error) {
+	out := new(proto.PayloadResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/GetPropertyValues", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -192,8 +195,8 @@ func (c *mixerClient) GetPropertyValues(ctx context.Context, in *GetPropertyValu
 	return out, nil
 }
 
-func (c *mixerClient) GetTriples(ctx context.Context, in *GetTriplesRequest, opts ...grpc.CallOption) (*PayloadResponse, error) {
-	out := new(PayloadResponse)
+func (c *mixerClient) GetTriples(ctx context.Context, in *proto.GetTriplesRequest, opts ...grpc.CallOption) (*proto.PayloadResponse, error) {
+	out := new(proto.PayloadResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/GetTriples", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -201,8 +204,8 @@ func (c *mixerClient) GetTriples(ctx context.Context, in *GetTriplesRequest, opt
 	return out, nil
 }
 
-func (c *mixerClient) GetPlacesIn(ctx context.Context, in *GetPlacesInRequest, opts ...grpc.CallOption) (*GetPlacesInResponse, error) {
-	out := new(GetPlacesInResponse)
+func (c *mixerClient) GetPlacesIn(ctx context.Context, in *proto.GetPlacesInRequest, opts ...grpc.CallOption) (*proto.GetPlacesInResponse, error) {
+	out := new(proto.GetPlacesInResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/GetPlacesIn", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -210,8 +213,8 @@ func (c *mixerClient) GetPlacesIn(ctx context.Context, in *GetPlacesInRequest, o
 	return out, nil
 }
 
-func (c *mixerClient) GetStats(ctx context.Context, in *GetStatsRequest, opts ...grpc.CallOption) (*GetStatsResponse, error) {
-	out := new(GetStatsResponse)
+func (c *mixerClient) GetStats(ctx context.Context, in *proto.GetStatsRequest, opts ...grpc.CallOption) (*proto.GetStatsResponse, error) {
+	out := new(proto.GetStatsResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/GetStats", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -219,8 +222,8 @@ func (c *mixerClient) GetStats(ctx context.Context, in *GetStatsRequest, opts ..
 	return out, nil
 }
 
-func (c *mixerClient) GetStatValue(ctx context.Context, in *GetStatValueRequest, opts ...grpc.CallOption) (*GetStatValueResponse, error) {
-	out := new(GetStatValueResponse)
+func (c *mixerClient) GetStatValue(ctx context.Context, in *proto.GetStatValueRequest, opts ...grpc.CallOption) (*proto.GetStatValueResponse, error) {
+	out := new(proto.GetStatValueResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/GetStatValue", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -228,8 +231,8 @@ func (c *mixerClient) GetStatValue(ctx context.Context, in *GetStatValueRequest,
 	return out, nil
 }
 
-func (c *mixerClient) GetStatSeries(ctx context.Context, in *GetStatSeriesRequest, opts ...grpc.CallOption) (*GetStatSeriesResponse, error) {
-	out := new(GetStatSeriesResponse)
+func (c *mixerClient) GetStatSeries(ctx context.Context, in *proto.GetStatSeriesRequest, opts ...grpc.CallOption) (*proto.GetStatSeriesResponse, error) {
+	out := new(proto.GetStatSeriesResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/GetStatSeries", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -237,8 +240,8 @@ func (c *mixerClient) GetStatSeries(ctx context.Context, in *GetStatSeriesReques
 	return out, nil
 }
 
-func (c *mixerClient) GetStatAll(ctx context.Context, in *GetStatAllRequest, opts ...grpc.CallOption) (*GetStatAllResponse, error) {
-	out := new(GetStatAllResponse)
+func (c *mixerClient) GetStatAll(ctx context.Context, in *proto.GetStatAllRequest, opts ...grpc.CallOption) (*proto.GetStatAllResponse, error) {
+	out := new(proto.GetStatAllResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/GetStatAll", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -246,8 +249,8 @@ func (c *mixerClient) GetStatAll(ctx context.Context, in *GetStatAllRequest, opt
 	return out, nil
 }
 
-func (c *mixerClient) GetLocationsRankings(ctx context.Context, in *GetLocationsRankingsRequest, opts ...grpc.CallOption) (*GetLocationsRankingsResponse, error) {
-	out := new(GetLocationsRankingsResponse)
+func (c *mixerClient) GetLocationsRankings(ctx context.Context, in *proto.GetLocationsRankingsRequest, opts ...grpc.CallOption) (*proto.GetLocationsRankingsResponse, error) {
+	out := new(proto.GetLocationsRankingsResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/GetLocationsRankings", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -255,8 +258,8 @@ func (c *mixerClient) GetLocationsRankings(ctx context.Context, in *GetLocations
 	return out, nil
 }
 
-func (c *mixerClient) GetRelatedLocations(ctx context.Context, in *GetRelatedLocationsRequest, opts ...grpc.CallOption) (*GetRelatedLocationsResponse, error) {
-	out := new(GetRelatedLocationsResponse)
+func (c *mixerClient) GetRelatedLocations(ctx context.Context, in *proto.GetRelatedLocationsRequest, opts ...grpc.CallOption) (*proto.GetRelatedLocationsResponse, error) {
+	out := new(proto.GetRelatedLocationsResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/GetRelatedLocations", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -264,8 +267,8 @@ func (c *mixerClient) GetRelatedLocations(ctx context.Context, in *GetRelatedLoc
 	return out, nil
 }
 
-func (c *mixerClient) GetBioPageData(ctx context.Context, in *GetBioPageDataRequest, opts ...grpc.CallOption) (*GraphNodes, error) {
-	out := new(GraphNodes)
+func (c *mixerClient) GetBioPageData(ctx context.Context, in *proto.GetBioPageDataRequest, opts ...grpc.CallOption) (*proto.GraphNodes, error) {
+	out := new(proto.GraphNodes)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/GetBioPageData", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -273,8 +276,8 @@ func (c *mixerClient) GetBioPageData(ctx context.Context, in *GetBioPageDataRequ
 	return out, nil
 }
 
-func (c *mixerClient) Translate(ctx context.Context, in *TranslateRequest, opts ...grpc.CallOption) (*TranslateResponse, error) {
-	out := new(TranslateResponse)
+func (c *mixerClient) Translate(ctx context.Context, in *proto.TranslateRequest, opts ...grpc.CallOption) (*proto.TranslateResponse, error) {
+	out := new(proto.TranslateResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/Translate", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -282,8 +285,8 @@ func (c *mixerClient) Translate(ctx context.Context, in *TranslateRequest, opts 
 	return out, nil
 }
 
-func (c *mixerClient) Search(ctx context.Context, in *SearchRequest, opts ...grpc.CallOption) (*SearchResponse, error) {
-	out := new(SearchResponse)
+func (c *mixerClient) Search(ctx context.Context, in *proto.SearchRequest, opts ...grpc.CallOption) (*proto.SearchResponse, error) {
+	out := new(proto.SearchResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/Search", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -291,8 +294,8 @@ func (c *mixerClient) Search(ctx context.Context, in *SearchRequest, opts ...grp
 	return out, nil
 }
 
-func (c *mixerClient) GetVersion(ctx context.Context, in *GetVersionRequest, opts ...grpc.CallOption) (*GetVersionResponse, error) {
-	out := new(GetVersionResponse)
+func (c *mixerClient) GetVersion(ctx context.Context, in *proto.GetVersionRequest, opts ...grpc.CallOption) (*proto.GetVersionResponse, error) {
+	out := new(proto.GetVersionResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/GetVersion", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -300,8 +303,8 @@ func (c *mixerClient) GetVersion(ctx context.Context, in *GetVersionRequest, opt
 	return out, nil
 }
 
-func (c *mixerClient) GetPlaceStatsVar(ctx context.Context, in *GetPlaceStatsVarRequest, opts ...grpc.CallOption) (*GetPlaceStatsVarResponse, error) {
-	out := new(GetPlaceStatsVarResponse)
+func (c *mixerClient) GetPlaceStatsVar(ctx context.Context, in *proto.GetPlaceStatsVarRequest, opts ...grpc.CallOption) (*proto.GetPlaceStatsVarResponse, error) {
+	out := new(proto.GetPlaceStatsVarResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/GetPlaceStatsVar", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -309,8 +312,8 @@ func (c *mixerClient) GetPlaceStatsVar(ctx context.Context, in *GetPlaceStatsVar
 	return out, nil
 }
 
-func (c *mixerClient) GetPlaceStatVars(ctx context.Context, in *GetPlaceStatVarsRequest, opts ...grpc.CallOption) (*GetPlaceStatVarsResponse, error) {
-	out := new(GetPlaceStatVarsResponse)
+func (c *mixerClient) GetPlaceStatVars(ctx context.Context, in *proto.GetPlaceStatVarsRequest, opts ...grpc.CallOption) (*proto.GetPlaceStatVarsResponse, error) {
+	out := new(proto.GetPlaceStatVarsResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/GetPlaceStatVars", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -318,8 +321,8 @@ func (c *mixerClient) GetPlaceStatVars(ctx context.Context, in *GetPlaceStatVars
 	return out, nil
 }
 
-func (c *mixerClient) GetEntityStatVarsUnionV1(ctx context.Context, in *GetEntityStatVarsUnionRequest, opts ...grpc.CallOption) (*GetEntityStatVarsUnionResponse, error) {
-	out := new(GetEntityStatVarsUnionResponse)
+func (c *mixerClient) GetEntityStatVarsUnionV1(ctx context.Context, in *proto.GetEntityStatVarsUnionRequest, opts ...grpc.CallOption) (*proto.GetEntityStatVarsUnionResponse, error) {
+	out := new(proto.GetEntityStatVarsUnionResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/GetEntityStatVarsUnionV1", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -327,8 +330,8 @@ func (c *mixerClient) GetEntityStatVarsUnionV1(ctx context.Context, in *GetEntit
 	return out, nil
 }
 
-func (c *mixerClient) GetPlaceStatDateWithinPlace(ctx context.Context, in *GetPlaceStatDateWithinPlaceRequest, opts ...grpc.CallOption) (*GetPlaceStatDateWithinPlaceResponse, error) {
-	out := new(GetPlaceStatDateWithinPlaceResponse)
+func (c *mixerClient) GetPlaceStatDateWithinPlace(ctx context.Context, in *proto.GetPlaceStatDateWithinPlaceRequest, opts ...grpc.CallOption) (*proto.GetPlaceStatDateWithinPlaceResponse, error) {
+	out := new(proto.GetPlaceStatDateWithinPlaceResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/GetPlaceStatDateWithinPlace", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -336,8 +339,8 @@ func (c *mixerClient) GetPlaceStatDateWithinPlace(ctx context.Context, in *GetPl
 	return out, nil
 }
 
-func (c *mixerClient) GetStatDateWithinPlace(ctx context.Context, in *GetStatDateWithinPlaceRequest, opts ...grpc.CallOption) (*GetStatDateWithinPlaceResponse, error) {
-	out := new(GetStatDateWithinPlaceResponse)
+func (c *mixerClient) GetStatDateWithinPlace(ctx context.Context, in *proto.GetStatDateWithinPlaceRequest, opts ...grpc.CallOption) (*proto.GetStatDateWithinPlaceResponse, error) {
+	out := new(proto.GetStatDateWithinPlaceResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/GetStatDateWithinPlace", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -345,8 +348,8 @@ func (c *mixerClient) GetStatDateWithinPlace(ctx context.Context, in *GetStatDat
 	return out, nil
 }
 
-func (c *mixerClient) SearchStatVar(ctx context.Context, in *SearchStatVarRequest, opts ...grpc.CallOption) (*SearchStatVarResponse, error) {
-	out := new(SearchStatVarResponse)
+func (c *mixerClient) SearchStatVar(ctx context.Context, in *proto.SearchStatVarRequest, opts ...grpc.CallOption) (*proto.SearchStatVarResponse, error) {
+	out := new(proto.SearchStatVarResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/SearchStatVar", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -354,8 +357,8 @@ func (c *mixerClient) SearchStatVar(ctx context.Context, in *SearchStatVarReques
 	return out, nil
 }
 
-func (c *mixerClient) GetStatVarSummary(ctx context.Context, in *GetStatVarSummaryRequest, opts ...grpc.CallOption) (*GetStatVarSummaryResponse, error) {
-	out := new(GetStatVarSummaryResponse)
+func (c *mixerClient) GetStatVarSummary(ctx context.Context, in *proto.GetStatVarSummaryRequest, opts ...grpc.CallOption) (*proto.GetStatVarSummaryResponse, error) {
+	out := new(proto.GetStatVarSummaryResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/GetStatVarSummary", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -363,8 +366,8 @@ func (c *mixerClient) GetStatVarSummary(ctx context.Context, in *GetStatVarSumma
 	return out, nil
 }
 
-func (c *mixerClient) GetStatVarMatch(ctx context.Context, in *GetStatVarMatchRequest, opts ...grpc.CallOption) (*GetStatVarMatchResponse, error) {
-	out := new(GetStatVarMatchResponse)
+func (c *mixerClient) GetStatVarMatch(ctx context.Context, in *proto.GetStatVarMatchRequest, opts ...grpc.CallOption) (*proto.GetStatVarMatchResponse, error) {
+	out := new(proto.GetStatVarMatchResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/GetStatVarMatch", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -372,8 +375,8 @@ func (c *mixerClient) GetStatVarMatch(ctx context.Context, in *GetStatVarMatchRe
 	return out, nil
 }
 
-func (c *mixerClient) QueryV1(ctx context.Context, in *QueryRequest, opts ...grpc.CallOption) (*QueryResponse, error) {
-	out := new(QueryResponse)
+func (c *mixerClient) QueryV1(ctx context.Context, in *proto.QueryRequest, opts ...grpc.CallOption) (*proto.QueryResponse, error) {
+	out := new(proto.QueryResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/QueryV1", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -381,8 +384,8 @@ func (c *mixerClient) QueryV1(ctx context.Context, in *QueryRequest, opts ...grp
 	return out, nil
 }
 
-func (c *mixerClient) Properties(ctx context.Context, in *PropertiesRequest, opts ...grpc.CallOption) (*PropertiesResponse, error) {
-	out := new(PropertiesResponse)
+func (c *mixerClient) Properties(ctx context.Context, in *v1.PropertiesRequest, opts ...grpc.CallOption) (*v1.PropertiesResponse, error) {
+	out := new(v1.PropertiesResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/Properties", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -390,8 +393,8 @@ func (c *mixerClient) Properties(ctx context.Context, in *PropertiesRequest, opt
 	return out, nil
 }
 
-func (c *mixerClient) BulkProperties(ctx context.Context, in *BulkPropertiesRequest, opts ...grpc.CallOption) (*BulkPropertiesResponse, error) {
-	out := new(BulkPropertiesResponse)
+func (c *mixerClient) BulkProperties(ctx context.Context, in *v1.BulkPropertiesRequest, opts ...grpc.CallOption) (*v1.BulkPropertiesResponse, error) {
+	out := new(v1.BulkPropertiesResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/BulkProperties", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -399,8 +402,8 @@ func (c *mixerClient) BulkProperties(ctx context.Context, in *BulkPropertiesRequ
 	return out, nil
 }
 
-func (c *mixerClient) PropertyValues(ctx context.Context, in *PropertyValuesRequest, opts ...grpc.CallOption) (*PropertyValuesResponse, error) {
-	out := new(PropertyValuesResponse)
+func (c *mixerClient) PropertyValues(ctx context.Context, in *v1.PropertyValuesRequest, opts ...grpc.CallOption) (*v1.PropertyValuesResponse, error) {
+	out := new(v1.PropertyValuesResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/PropertyValues", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -408,8 +411,8 @@ func (c *mixerClient) PropertyValues(ctx context.Context, in *PropertyValuesRequ
 	return out, nil
 }
 
-func (c *mixerClient) LinkedPropertyValues(ctx context.Context, in *LinkedPropertyValuesRequest, opts ...grpc.CallOption) (*PropertyValuesResponse, error) {
-	out := new(PropertyValuesResponse)
+func (c *mixerClient) LinkedPropertyValues(ctx context.Context, in *v1.LinkedPropertyValuesRequest, opts ...grpc.CallOption) (*v1.PropertyValuesResponse, error) {
+	out := new(v1.PropertyValuesResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/LinkedPropertyValues", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -417,8 +420,8 @@ func (c *mixerClient) LinkedPropertyValues(ctx context.Context, in *LinkedProper
 	return out, nil
 }
 
-func (c *mixerClient) BulkPropertyValues(ctx context.Context, in *BulkPropertyValuesRequest, opts ...grpc.CallOption) (*BulkPropertyValuesResponse, error) {
-	out := new(BulkPropertyValuesResponse)
+func (c *mixerClient) BulkPropertyValues(ctx context.Context, in *v1.BulkPropertyValuesRequest, opts ...grpc.CallOption) (*v1.BulkPropertyValuesResponse, error) {
+	out := new(v1.BulkPropertyValuesResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/BulkPropertyValues", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -426,8 +429,8 @@ func (c *mixerClient) BulkPropertyValues(ctx context.Context, in *BulkPropertyVa
 	return out, nil
 }
 
-func (c *mixerClient) BulkLinkedPropertyValues(ctx context.Context, in *BulkLinkedPropertyValuesRequest, opts ...grpc.CallOption) (*BulkPropertyValuesResponse, error) {
-	out := new(BulkPropertyValuesResponse)
+func (c *mixerClient) BulkLinkedPropertyValues(ctx context.Context, in *v1.BulkLinkedPropertyValuesRequest, opts ...grpc.CallOption) (*v1.BulkPropertyValuesResponse, error) {
+	out := new(v1.BulkPropertyValuesResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/BulkLinkedPropertyValues", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -435,8 +438,8 @@ func (c *mixerClient) BulkLinkedPropertyValues(ctx context.Context, in *BulkLink
 	return out, nil
 }
 
-func (c *mixerClient) Triples(ctx context.Context, in *TriplesRequest, opts ...grpc.CallOption) (*TriplesResponse, error) {
-	out := new(TriplesResponse)
+func (c *mixerClient) Triples(ctx context.Context, in *v1.TriplesRequest, opts ...grpc.CallOption) (*v1.TriplesResponse, error) {
+	out := new(v1.TriplesResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/Triples", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -444,8 +447,8 @@ func (c *mixerClient) Triples(ctx context.Context, in *TriplesRequest, opts ...g
 	return out, nil
 }
 
-func (c *mixerClient) BulkTriples(ctx context.Context, in *BulkTriplesRequest, opts ...grpc.CallOption) (*BulkTriplesResponse, error) {
-	out := new(BulkTriplesResponse)
+func (c *mixerClient) BulkTriples(ctx context.Context, in *v1.BulkTriplesRequest, opts ...grpc.CallOption) (*v1.BulkTriplesResponse, error) {
+	out := new(v1.BulkTriplesResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/BulkTriples", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -453,8 +456,8 @@ func (c *mixerClient) BulkTriples(ctx context.Context, in *BulkTriplesRequest, o
 	return out, nil
 }
 
-func (c *mixerClient) Variables(ctx context.Context, in *VariablesRequest, opts ...grpc.CallOption) (*VariablesResponse, error) {
-	out := new(VariablesResponse)
+func (c *mixerClient) Variables(ctx context.Context, in *v1.VariablesRequest, opts ...grpc.CallOption) (*v1.VariablesResponse, error) {
+	out := new(v1.VariablesResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/Variables", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -462,8 +465,8 @@ func (c *mixerClient) Variables(ctx context.Context, in *VariablesRequest, opts 
 	return out, nil
 }
 
-func (c *mixerClient) BulkVariables(ctx context.Context, in *BulkVariablesRequest, opts ...grpc.CallOption) (*BulkVariablesResponse, error) {
-	out := new(BulkVariablesResponse)
+func (c *mixerClient) BulkVariables(ctx context.Context, in *v1.BulkVariablesRequest, opts ...grpc.CallOption) (*v1.BulkVariablesResponse, error) {
+	out := new(v1.BulkVariablesResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/BulkVariables", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -471,8 +474,8 @@ func (c *mixerClient) BulkVariables(ctx context.Context, in *BulkVariablesReques
 	return out, nil
 }
 
-func (c *mixerClient) PlaceInfo(ctx context.Context, in *PlaceInfoRequest, opts ...grpc.CallOption) (*PlaceInfoResponse, error) {
-	out := new(PlaceInfoResponse)
+func (c *mixerClient) PlaceInfo(ctx context.Context, in *v1.PlaceInfoRequest, opts ...grpc.CallOption) (*v1.PlaceInfoResponse, error) {
+	out := new(v1.PlaceInfoResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/PlaceInfo", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -480,8 +483,8 @@ func (c *mixerClient) PlaceInfo(ctx context.Context, in *PlaceInfoRequest, opts 
 	return out, nil
 }
 
-func (c *mixerClient) BulkPlaceInfo(ctx context.Context, in *BulkPlaceInfoRequest, opts ...grpc.CallOption) (*BulkPlaceInfoResponse, error) {
-	out := new(BulkPlaceInfoResponse)
+func (c *mixerClient) BulkPlaceInfo(ctx context.Context, in *v1.BulkPlaceInfoRequest, opts ...grpc.CallOption) (*v1.BulkPlaceInfoResponse, error) {
+	out := new(v1.BulkPlaceInfoResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/BulkPlaceInfo", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -489,8 +492,8 @@ func (c *mixerClient) BulkPlaceInfo(ctx context.Context, in *BulkPlaceInfoReques
 	return out, nil
 }
 
-func (c *mixerClient) VariableInfo(ctx context.Context, in *VariableInfoRequest, opts ...grpc.CallOption) (*VariableInfoResponse, error) {
-	out := new(VariableInfoResponse)
+func (c *mixerClient) VariableInfo(ctx context.Context, in *v1.VariableInfoRequest, opts ...grpc.CallOption) (*v1.VariableInfoResponse, error) {
+	out := new(v1.VariableInfoResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/VariableInfo", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -498,8 +501,8 @@ func (c *mixerClient) VariableInfo(ctx context.Context, in *VariableInfoRequest,
 	return out, nil
 }
 
-func (c *mixerClient) BulkVariableInfo(ctx context.Context, in *BulkVariableInfoRequest, opts ...grpc.CallOption) (*BulkVariableInfoResponse, error) {
-	out := new(BulkVariableInfoResponse)
+func (c *mixerClient) BulkVariableInfo(ctx context.Context, in *v1.BulkVariableInfoRequest, opts ...grpc.CallOption) (*v1.BulkVariableInfoResponse, error) {
+	out := new(v1.BulkVariableInfoResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/BulkVariableInfo", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -507,8 +510,8 @@ func (c *mixerClient) BulkVariableInfo(ctx context.Context, in *BulkVariableInfo
 	return out, nil
 }
 
-func (c *mixerClient) VariableGroupInfo(ctx context.Context, in *VariableGroupInfoRequest, opts ...grpc.CallOption) (*VariableGroupInfoResponse, error) {
-	out := new(VariableGroupInfoResponse)
+func (c *mixerClient) VariableGroupInfo(ctx context.Context, in *v1.VariableGroupInfoRequest, opts ...grpc.CallOption) (*v1.VariableGroupInfoResponse, error) {
+	out := new(v1.VariableGroupInfoResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/VariableGroupInfo", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -516,8 +519,8 @@ func (c *mixerClient) VariableGroupInfo(ctx context.Context, in *VariableGroupIn
 	return out, nil
 }
 
-func (c *mixerClient) BulkVariableGroupInfo(ctx context.Context, in *BulkVariableGroupInfoRequest, opts ...grpc.CallOption) (*BulkVariableGroupInfoResponse, error) {
-	out := new(BulkVariableGroupInfoResponse)
+func (c *mixerClient) BulkVariableGroupInfo(ctx context.Context, in *v1.BulkVariableGroupInfoRequest, opts ...grpc.CallOption) (*v1.BulkVariableGroupInfoResponse, error) {
+	out := new(v1.BulkVariableGroupInfoResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/BulkVariableGroupInfo", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -525,8 +528,8 @@ func (c *mixerClient) BulkVariableGroupInfo(ctx context.Context, in *BulkVariabl
 	return out, nil
 }
 
-func (c *mixerClient) ObservationsPoint(ctx context.Context, in *ObservationsPointRequest, opts ...grpc.CallOption) (*PointStat, error) {
-	out := new(PointStat)
+func (c *mixerClient) ObservationsPoint(ctx context.Context, in *v1.ObservationsPointRequest, opts ...grpc.CallOption) (*proto.PointStat, error) {
+	out := new(proto.PointStat)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/ObservationsPoint", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -534,8 +537,8 @@ func (c *mixerClient) ObservationsPoint(ctx context.Context, in *ObservationsPoi
 	return out, nil
 }
 
-func (c *mixerClient) BulkObservationsPoint(ctx context.Context, in *BulkObservationsPointRequest, opts ...grpc.CallOption) (*BulkObservationsPointResponse, error) {
-	out := new(BulkObservationsPointResponse)
+func (c *mixerClient) BulkObservationsPoint(ctx context.Context, in *v1.BulkObservationsPointRequest, opts ...grpc.CallOption) (*v1.BulkObservationsPointResponse, error) {
+	out := new(v1.BulkObservationsPointResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/BulkObservationsPoint", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -543,8 +546,8 @@ func (c *mixerClient) BulkObservationsPoint(ctx context.Context, in *BulkObserva
 	return out, nil
 }
 
-func (c *mixerClient) BulkObservationsPointLinked(ctx context.Context, in *BulkObservationsPointLinkedRequest, opts ...grpc.CallOption) (*BulkObservationsPointResponse, error) {
-	out := new(BulkObservationsPointResponse)
+func (c *mixerClient) BulkObservationsPointLinked(ctx context.Context, in *v1.BulkObservationsPointLinkedRequest, opts ...grpc.CallOption) (*v1.BulkObservationsPointResponse, error) {
+	out := new(v1.BulkObservationsPointResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/BulkObservationsPointLinked", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -552,8 +555,8 @@ func (c *mixerClient) BulkObservationsPointLinked(ctx context.Context, in *BulkO
 	return out, nil
 }
 
-func (c *mixerClient) ObservationsSeries(ctx context.Context, in *ObservationsSeriesRequest, opts ...grpc.CallOption) (*ObservationsSeriesResponse, error) {
-	out := new(ObservationsSeriesResponse)
+func (c *mixerClient) ObservationsSeries(ctx context.Context, in *v1.ObservationsSeriesRequest, opts ...grpc.CallOption) (*v1.ObservationsSeriesResponse, error) {
+	out := new(v1.ObservationsSeriesResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/ObservationsSeries", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -561,8 +564,8 @@ func (c *mixerClient) ObservationsSeries(ctx context.Context, in *ObservationsSe
 	return out, nil
 }
 
-func (c *mixerClient) BulkObservationsSeries(ctx context.Context, in *BulkObservationsSeriesRequest, opts ...grpc.CallOption) (*BulkObservationsSeriesResponse, error) {
-	out := new(BulkObservationsSeriesResponse)
+func (c *mixerClient) BulkObservationsSeries(ctx context.Context, in *v1.BulkObservationsSeriesRequest, opts ...grpc.CallOption) (*v1.BulkObservationsSeriesResponse, error) {
+	out := new(v1.BulkObservationsSeriesResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/BulkObservationsSeries", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -570,8 +573,8 @@ func (c *mixerClient) BulkObservationsSeries(ctx context.Context, in *BulkObserv
 	return out, nil
 }
 
-func (c *mixerClient) BulkObservationsSeriesLinked(ctx context.Context, in *BulkObservationsSeriesLinkedRequest, opts ...grpc.CallOption) (*BulkObservationsSeriesResponse, error) {
-	out := new(BulkObservationsSeriesResponse)
+func (c *mixerClient) BulkObservationsSeriesLinked(ctx context.Context, in *v1.BulkObservationsSeriesLinkedRequest, opts ...grpc.CallOption) (*v1.BulkObservationsSeriesResponse, error) {
+	out := new(v1.BulkObservationsSeriesResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/BulkObservationsSeriesLinked", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -579,8 +582,8 @@ func (c *mixerClient) BulkObservationsSeriesLinked(ctx context.Context, in *Bulk
 	return out, nil
 }
 
-func (c *mixerClient) DerivedObservationsSeries(ctx context.Context, in *DerivedObservationsSeriesRequest, opts ...grpc.CallOption) (*DerivedObservationsSeriesResponse, error) {
-	out := new(DerivedObservationsSeriesResponse)
+func (c *mixerClient) DerivedObservationsSeries(ctx context.Context, in *v1.DerivedObservationsSeriesRequest, opts ...grpc.CallOption) (*v1.DerivedObservationsSeriesResponse, error) {
+	out := new(v1.DerivedObservationsSeriesResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/DerivedObservationsSeries", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -588,8 +591,8 @@ func (c *mixerClient) DerivedObservationsSeries(ctx context.Context, in *Derived
 	return out, nil
 }
 
-func (c *mixerClient) BulkObservationDatesLinked(ctx context.Context, in *BulkObservationDatesLinkedRequest, opts ...grpc.CallOption) (*BulkObservationDatesLinkedResponse, error) {
-	out := new(BulkObservationDatesLinkedResponse)
+func (c *mixerClient) BulkObservationDatesLinked(ctx context.Context, in *v1.BulkObservationDatesLinkedRequest, opts ...grpc.CallOption) (*v1.BulkObservationDatesLinkedResponse, error) {
+	out := new(v1.BulkObservationDatesLinkedResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/BulkObservationDatesLinked", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -597,8 +600,8 @@ func (c *mixerClient) BulkObservationDatesLinked(ctx context.Context, in *BulkOb
 	return out, nil
 }
 
-func (c *mixerClient) BulkObservationExistence(ctx context.Context, in *BulkObservationExistenceRequest, opts ...grpc.CallOption) (*BulkObservationExistenceResponse, error) {
-	out := new(BulkObservationExistenceResponse)
+func (c *mixerClient) BulkObservationExistence(ctx context.Context, in *v1.BulkObservationExistenceRequest, opts ...grpc.CallOption) (*v1.BulkObservationExistenceResponse, error) {
+	out := new(v1.BulkObservationExistenceResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/BulkObservationExistence", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -606,8 +609,8 @@ func (c *mixerClient) BulkObservationExistence(ctx context.Context, in *BulkObse
 	return out, nil
 }
 
-func (c *mixerClient) BioPage(ctx context.Context, in *BioPageRequest, opts ...grpc.CallOption) (*GraphNodes, error) {
-	out := new(GraphNodes)
+func (c *mixerClient) BioPage(ctx context.Context, in *v1.BioPageRequest, opts ...grpc.CallOption) (*proto.GraphNodes, error) {
+	out := new(proto.GraphNodes)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/BioPage", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -615,8 +618,8 @@ func (c *mixerClient) BioPage(ctx context.Context, in *BioPageRequest, opts ...g
 	return out, nil
 }
 
-func (c *mixerClient) PlacePage(ctx context.Context, in *PlacePageRequest, opts ...grpc.CallOption) (*PlacePageResponse, error) {
-	out := new(PlacePageResponse)
+func (c *mixerClient) PlacePage(ctx context.Context, in *v1.PlacePageRequest, opts ...grpc.CallOption) (*v1.PlacePageResponse, error) {
+	out := new(v1.PlacePageResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/PlacePage", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -624,8 +627,8 @@ func (c *mixerClient) PlacePage(ctx context.Context, in *PlacePageRequest, opts 
 	return out, nil
 }
 
-func (c *mixerClient) VariableAncestors(ctx context.Context, in *VariableAncestorsRequest, opts ...grpc.CallOption) (*VariableAncestorsResponse, error) {
-	out := new(VariableAncestorsResponse)
+func (c *mixerClient) VariableAncestors(ctx context.Context, in *v1.VariableAncestorsRequest, opts ...grpc.CallOption) (*v1.VariableAncestorsResponse, error) {
+	out := new(v1.VariableAncestorsResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/VariableAncestors", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -633,8 +636,8 @@ func (c *mixerClient) VariableAncestors(ctx context.Context, in *VariableAncesto
 	return out, nil
 }
 
-func (c *mixerClient) EventCollection(ctx context.Context, in *EventCollectionRequest, opts ...grpc.CallOption) (*EventCollectionResponse, error) {
-	out := new(EventCollectionResponse)
+func (c *mixerClient) EventCollection(ctx context.Context, in *v1.EventCollectionRequest, opts ...grpc.CallOption) (*v1.EventCollectionResponse, error) {
+	out := new(v1.EventCollectionResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/EventCollection", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -642,8 +645,8 @@ func (c *mixerClient) EventCollection(ctx context.Context, in *EventCollectionRe
 	return out, nil
 }
 
-func (c *mixerClient) EventCollectionDate(ctx context.Context, in *EventCollectionDateRequest, opts ...grpc.CallOption) (*EventCollectionDateResponse, error) {
-	out := new(EventCollectionDateResponse)
+func (c *mixerClient) EventCollectionDate(ctx context.Context, in *v1.EventCollectionDateRequest, opts ...grpc.CallOption) (*v1.EventCollectionDateResponse, error) {
+	out := new(v1.EventCollectionDateResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/EventCollectionDate", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -651,8 +654,8 @@ func (c *mixerClient) EventCollectionDate(ctx context.Context, in *EventCollecti
 	return out, nil
 }
 
-func (c *mixerClient) ResolveEntities(ctx context.Context, in *ResolveEntitiesRequest, opts ...grpc.CallOption) (*ResolveEntitiesResponse, error) {
-	out := new(ResolveEntitiesResponse)
+func (c *mixerClient) ResolveEntities(ctx context.Context, in *proto.ResolveEntitiesRequest, opts ...grpc.CallOption) (*proto.ResolveEntitiesResponse, error) {
+	out := new(proto.ResolveEntitiesResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/ResolveEntities", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -660,8 +663,8 @@ func (c *mixerClient) ResolveEntities(ctx context.Context, in *ResolveEntitiesRe
 	return out, nil
 }
 
-func (c *mixerClient) ResolveCoordinates(ctx context.Context, in *ResolveCoordinatesRequest, opts ...grpc.CallOption) (*ResolveCoordinatesResponse, error) {
-	out := new(ResolveCoordinatesResponse)
+func (c *mixerClient) ResolveCoordinates(ctx context.Context, in *proto.ResolveCoordinatesRequest, opts ...grpc.CallOption) (*proto.ResolveCoordinatesResponse, error) {
+	out := new(proto.ResolveCoordinatesResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/ResolveCoordinates", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -669,8 +672,8 @@ func (c *mixerClient) ResolveCoordinates(ctx context.Context, in *ResolveCoordin
 	return out, nil
 }
 
-func (c *mixerClient) ResolveIds(ctx context.Context, in *ResolveIdsRequest, opts ...grpc.CallOption) (*ResolveIdsResponse, error) {
-	out := new(ResolveIdsResponse)
+func (c *mixerClient) ResolveIds(ctx context.Context, in *proto.ResolveIdsRequest, opts ...grpc.CallOption) (*proto.ResolveIdsResponse, error) {
+	out := new(proto.ResolveIdsResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/ResolveIds", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -678,8 +681,8 @@ func (c *mixerClient) ResolveIds(ctx context.Context, in *ResolveIdsRequest, opt
 	return out, nil
 }
 
-func (c *mixerClient) FindEntities(ctx context.Context, in *FindEntitiesRequest, opts ...grpc.CallOption) (*FindEntitiesResponse, error) {
-	out := new(FindEntitiesResponse)
+func (c *mixerClient) FindEntities(ctx context.Context, in *proto.FindEntitiesRequest, opts ...grpc.CallOption) (*proto.FindEntitiesResponse, error) {
+	out := new(proto.FindEntitiesResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/FindEntities", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -687,8 +690,8 @@ func (c *mixerClient) FindEntities(ctx context.Context, in *FindEntitiesRequest,
 	return out, nil
 }
 
-func (c *mixerClient) BulkFindEntities(ctx context.Context, in *BulkFindEntitiesRequest, opts ...grpc.CallOption) (*BulkFindEntitiesResponse, error) {
-	out := new(BulkFindEntitiesResponse)
+func (c *mixerClient) BulkFindEntities(ctx context.Context, in *proto.BulkFindEntitiesRequest, opts ...grpc.CallOption) (*proto.BulkFindEntitiesResponse, error) {
+	out := new(proto.BulkFindEntitiesResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/BulkFindEntities", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -696,8 +699,8 @@ func (c *mixerClient) BulkFindEntities(ctx context.Context, in *BulkFindEntities
 	return out, nil
 }
 
-func (c *mixerClient) RecognizePlaces(ctx context.Context, in *RecognizePlacesRequest, opts ...grpc.CallOption) (*RecognizePlacesResponse, error) {
-	out := new(RecognizePlacesResponse)
+func (c *mixerClient) RecognizePlaces(ctx context.Context, in *proto.RecognizePlacesRequest, opts ...grpc.CallOption) (*proto.RecognizePlacesResponse, error) {
+	out := new(proto.RecognizePlacesResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/RecognizePlaces", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -709,311 +712,311 @@ func (c *mixerClient) RecognizePlaces(ctx context.Context, in *RecognizePlacesRe
 // All implementations should embed UnimplementedMixerServer
 // for forward compatibility
 type MixerServer interface {
-	QueryV2(context.Context, *QueryV2Request) (*QueryV2Response, error)
-	V2Observation(context.Context, *V2ObservationRequest) (*V2ObservationResponse, error)
+	V2Node(context.Context, *v2.NodeRequest) (*v2.NodeResponse, error)
+	V2Observation(context.Context, *v2.ObservationRequest) (*v2.ObservationResponse, error)
 	// Query DataCommons Graph with Sparql.
-	Query(context.Context, *QueryRequest) (*QueryResponse, error)
+	Query(context.Context, *proto.QueryRequest) (*proto.QueryResponse, error)
 	// Fetch property labels adjacent of nodes
-	GetPropertyLabels(context.Context, *GetPropertyLabelsRequest) (*PayloadResponse, error)
+	GetPropertyLabels(context.Context, *proto.GetPropertyLabelsRequest) (*proto.PayloadResponse, error)
 	// Fetch nodes that linked to source nodes with a given property.
-	GetPropertyValues(context.Context, *GetPropertyValuesRequest) (*PayloadResponse, error)
+	GetPropertyValues(context.Context, *proto.GetPropertyValuesRequest) (*proto.PayloadResponse, error)
 	// Fetch triples that have the given nodes as subject or object.
-	GetTriples(context.Context, *GetTriplesRequest) (*PayloadResponse, error)
+	GetTriples(context.Context, *proto.GetTriplesRequest) (*proto.PayloadResponse, error)
 	// Get places contained in parent places.
-	GetPlacesIn(context.Context, *GetPlacesInRequest) (*GetPlacesInResponse, error)
+	GetPlacesIn(context.Context, *proto.GetPlacesInRequest) (*proto.GetPlacesInResponse, error)
 	// Get stats of places by StatisticalVariable. If multiple time series data
 	// are avaialable, the highest ranked one by measurement method and import
 	// will be returned.
-	GetStats(context.Context, *GetStatsRequest) (*GetStatsResponse, error)
+	GetStats(context.Context, *proto.GetStatsRequest) (*proto.GetStatsResponse, error)
 	// Get a single stat value given a place, a statistical variable and a date.
 	// If no date is given, the latest statistical variable will be returned.
-	GetStatValue(context.Context, *GetStatValueRequest) (*GetStatValueResponse, error)
+	GetStatValue(context.Context, *proto.GetStatValueRequest) (*proto.GetStatValueResponse, error)
 	// Get a series of stat value with dates, given the place and statistical
 	// variable.
-	GetStatSeries(context.Context, *GetStatSeriesRequest) (*GetStatSeriesResponse, error)
+	GetStatSeries(context.Context, *proto.GetStatSeriesRequest) (*proto.GetStatSeriesResponse, error)
 	// Get all stat series given a list of places and a list of statistical
 	// variables.
-	GetStatAll(context.Context, *GetStatAllRequest) (*GetStatAllResponse, error)
+	GetStatAll(context.Context, *proto.GetStatAllRequest) (*proto.GetStatAllResponse, error)
 	// Get rankings for given stat var DCIDs.
-	GetLocationsRankings(context.Context, *GetLocationsRankingsRequest) (*GetLocationsRankingsResponse, error)
+	GetLocationsRankings(context.Context, *proto.GetLocationsRankingsRequest) (*proto.GetLocationsRankingsResponse, error)
 	// Get related locations for given stat var DCIDs.
-	GetRelatedLocations(context.Context, *GetRelatedLocationsRequest) (*GetRelatedLocationsResponse, error)
+	GetRelatedLocations(context.Context, *proto.GetRelatedLocationsRequest) (*proto.GetRelatedLocationsResponse, error)
 	// Get bio page data given a dcid.
-	GetBioPageData(context.Context, *GetBioPageDataRequest) (*GraphNodes, error)
+	GetBioPageData(context.Context, *proto.GetBioPageDataRequest) (*proto.GraphNodes, error)
 	// Translate Sparql Query into translation results.
-	Translate(context.Context, *TranslateRequest) (*TranslateResponse, error)
+	Translate(context.Context, *proto.TranslateRequest) (*proto.TranslateResponse, error)
 	// Given a text search query, return all nodes matching the query.
-	Search(context.Context, *SearchRequest) (*SearchResponse, error)
+	Search(context.Context, *proto.SearchRequest) (*proto.SearchResponse, error)
 	// Retrieves the version metadata.
-	GetVersion(context.Context, *GetVersionRequest) (*GetVersionResponse, error)
+	GetVersion(context.Context, *proto.GetVersionRequest) (*proto.GetVersionResponse, error)
 	// Give a list of place dcids, return all the statistical variables for each
 	// place.
-	GetPlaceStatsVar(context.Context, *GetPlaceStatsVarRequest) (*GetPlaceStatsVarResponse, error)
+	GetPlaceStatsVar(context.Context, *proto.GetPlaceStatsVarRequest) (*proto.GetPlaceStatsVarResponse, error)
 	// Give a list of place dcids, return all the statistical variables for each
 	// place.
 	// TODO(shifucun): Deprecate GetPlaceStatsVar when all internal clients are
 	// migrated.
-	GetPlaceStatVars(context.Context, *GetPlaceStatVarsRequest) (*GetPlaceStatVarsResponse, error)
+	GetPlaceStatVars(context.Context, *proto.GetPlaceStatVarsRequest) (*proto.GetPlaceStatVarsResponse, error)
 	// Given a list of entity dcids, returns the union of available
 	// statistical variables for the entities.
-	GetEntityStatVarsUnionV1(context.Context, *GetEntityStatVarsUnionRequest) (*GetEntityStatVarsUnionResponse, error)
+	GetEntityStatVarsUnionV1(context.Context, *proto.GetEntityStatVarsUnionRequest) (*proto.GetEntityStatVarsUnionResponse, error)
 	// Given ancestor place, child place type and stat vars, return the dates that
 	// have data for each stat var across all child places.
 	// [!! Deprecated] in favor of GetStatDateWithinPlace
-	GetPlaceStatDateWithinPlace(context.Context, *GetPlaceStatDateWithinPlaceRequest) (*GetPlaceStatDateWithinPlaceResponse, error)
+	GetPlaceStatDateWithinPlace(context.Context, *proto.GetPlaceStatDateWithinPlaceRequest) (*proto.GetPlaceStatDateWithinPlaceResponse, error)
 	// Given ancestor place, child place type and stat vars, return the dates and
 	// place count for each source
-	GetStatDateWithinPlace(context.Context, *GetStatDateWithinPlaceRequest) (*GetStatDateWithinPlaceResponse, error)
+	GetStatDateWithinPlace(context.Context, *proto.GetStatDateWithinPlaceRequest) (*proto.GetStatDateWithinPlaceResponse, error)
 	// Search stat var and stat var groups.
-	SearchStatVar(context.Context, *SearchStatVarRequest) (*SearchStatVarResponse, error)
+	SearchStatVar(context.Context, *proto.SearchStatVarRequest) (*proto.SearchStatVarResponse, error)
 	// Given a list of stat vars, get their summaries.
-	GetStatVarSummary(context.Context, *GetStatVarSummaryRequest) (*GetStatVarSummaryResponse, error)
+	GetStatVarSummary(context.Context, *proto.GetStatVarSummaryRequest) (*proto.GetStatVarSummaryResponse, error)
 	// Find matched stat vars given constraint properties
-	GetStatVarMatch(context.Context, *GetStatVarMatchRequest) (*GetStatVarMatchResponse, error)
+	GetStatVarMatch(context.Context, *proto.GetStatVarMatchRequest) (*proto.GetStatVarMatchResponse, error)
 	// Query DataCommons Graph with Sparql.
-	QueryV1(context.Context, *QueryRequest) (*QueryResponse, error)
-	Properties(context.Context, *PropertiesRequest) (*PropertiesResponse, error)
-	BulkProperties(context.Context, *BulkPropertiesRequest) (*BulkPropertiesResponse, error)
-	PropertyValues(context.Context, *PropertyValuesRequest) (*PropertyValuesResponse, error)
-	LinkedPropertyValues(context.Context, *LinkedPropertyValuesRequest) (*PropertyValuesResponse, error)
-	BulkPropertyValues(context.Context, *BulkPropertyValuesRequest) (*BulkPropertyValuesResponse, error)
-	BulkLinkedPropertyValues(context.Context, *BulkLinkedPropertyValuesRequest) (*BulkPropertyValuesResponse, error)
-	Triples(context.Context, *TriplesRequest) (*TriplesResponse, error)
-	BulkTriples(context.Context, *BulkTriplesRequest) (*BulkTriplesResponse, error)
-	Variables(context.Context, *VariablesRequest) (*VariablesResponse, error)
-	BulkVariables(context.Context, *BulkVariablesRequest) (*BulkVariablesResponse, error)
-	PlaceInfo(context.Context, *PlaceInfoRequest) (*PlaceInfoResponse, error)
-	BulkPlaceInfo(context.Context, *BulkPlaceInfoRequest) (*BulkPlaceInfoResponse, error)
-	VariableInfo(context.Context, *VariableInfoRequest) (*VariableInfoResponse, error)
-	BulkVariableInfo(context.Context, *BulkVariableInfoRequest) (*BulkVariableInfoResponse, error)
-	VariableGroupInfo(context.Context, *VariableGroupInfoRequest) (*VariableGroupInfoResponse, error)
-	BulkVariableGroupInfo(context.Context, *BulkVariableGroupInfoRequest) (*BulkVariableGroupInfoResponse, error)
-	ObservationsPoint(context.Context, *ObservationsPointRequest) (*PointStat, error)
-	BulkObservationsPoint(context.Context, *BulkObservationsPointRequest) (*BulkObservationsPointResponse, error)
-	BulkObservationsPointLinked(context.Context, *BulkObservationsPointLinkedRequest) (*BulkObservationsPointResponse, error)
-	ObservationsSeries(context.Context, *ObservationsSeriesRequest) (*ObservationsSeriesResponse, error)
-	BulkObservationsSeries(context.Context, *BulkObservationsSeriesRequest) (*BulkObservationsSeriesResponse, error)
-	BulkObservationsSeriesLinked(context.Context, *BulkObservationsSeriesLinkedRequest) (*BulkObservationsSeriesResponse, error)
-	DerivedObservationsSeries(context.Context, *DerivedObservationsSeriesRequest) (*DerivedObservationsSeriesResponse, error)
-	BulkObservationDatesLinked(context.Context, *BulkObservationDatesLinkedRequest) (*BulkObservationDatesLinkedResponse, error)
-	BulkObservationExistence(context.Context, *BulkObservationExistenceRequest) (*BulkObservationExistenceResponse, error)
-	BioPage(context.Context, *BioPageRequest) (*GraphNodes, error)
-	PlacePage(context.Context, *PlacePageRequest) (*PlacePageResponse, error)
-	VariableAncestors(context.Context, *VariableAncestorsRequest) (*VariableAncestorsResponse, error)
+	QueryV1(context.Context, *proto.QueryRequest) (*proto.QueryResponse, error)
+	Properties(context.Context, *v1.PropertiesRequest) (*v1.PropertiesResponse, error)
+	BulkProperties(context.Context, *v1.BulkPropertiesRequest) (*v1.BulkPropertiesResponse, error)
+	PropertyValues(context.Context, *v1.PropertyValuesRequest) (*v1.PropertyValuesResponse, error)
+	LinkedPropertyValues(context.Context, *v1.LinkedPropertyValuesRequest) (*v1.PropertyValuesResponse, error)
+	BulkPropertyValues(context.Context, *v1.BulkPropertyValuesRequest) (*v1.BulkPropertyValuesResponse, error)
+	BulkLinkedPropertyValues(context.Context, *v1.BulkLinkedPropertyValuesRequest) (*v1.BulkPropertyValuesResponse, error)
+	Triples(context.Context, *v1.TriplesRequest) (*v1.TriplesResponse, error)
+	BulkTriples(context.Context, *v1.BulkTriplesRequest) (*v1.BulkTriplesResponse, error)
+	Variables(context.Context, *v1.VariablesRequest) (*v1.VariablesResponse, error)
+	BulkVariables(context.Context, *v1.BulkVariablesRequest) (*v1.BulkVariablesResponse, error)
+	PlaceInfo(context.Context, *v1.PlaceInfoRequest) (*v1.PlaceInfoResponse, error)
+	BulkPlaceInfo(context.Context, *v1.BulkPlaceInfoRequest) (*v1.BulkPlaceInfoResponse, error)
+	VariableInfo(context.Context, *v1.VariableInfoRequest) (*v1.VariableInfoResponse, error)
+	BulkVariableInfo(context.Context, *v1.BulkVariableInfoRequest) (*v1.BulkVariableInfoResponse, error)
+	VariableGroupInfo(context.Context, *v1.VariableGroupInfoRequest) (*v1.VariableGroupInfoResponse, error)
+	BulkVariableGroupInfo(context.Context, *v1.BulkVariableGroupInfoRequest) (*v1.BulkVariableGroupInfoResponse, error)
+	ObservationsPoint(context.Context, *v1.ObservationsPointRequest) (*proto.PointStat, error)
+	BulkObservationsPoint(context.Context, *v1.BulkObservationsPointRequest) (*v1.BulkObservationsPointResponse, error)
+	BulkObservationsPointLinked(context.Context, *v1.BulkObservationsPointLinkedRequest) (*v1.BulkObservationsPointResponse, error)
+	ObservationsSeries(context.Context, *v1.ObservationsSeriesRequest) (*v1.ObservationsSeriesResponse, error)
+	BulkObservationsSeries(context.Context, *v1.BulkObservationsSeriesRequest) (*v1.BulkObservationsSeriesResponse, error)
+	BulkObservationsSeriesLinked(context.Context, *v1.BulkObservationsSeriesLinkedRequest) (*v1.BulkObservationsSeriesResponse, error)
+	DerivedObservationsSeries(context.Context, *v1.DerivedObservationsSeriesRequest) (*v1.DerivedObservationsSeriesResponse, error)
+	BulkObservationDatesLinked(context.Context, *v1.BulkObservationDatesLinkedRequest) (*v1.BulkObservationDatesLinkedResponse, error)
+	BulkObservationExistence(context.Context, *v1.BulkObservationExistenceRequest) (*v1.BulkObservationExistenceResponse, error)
+	BioPage(context.Context, *v1.BioPageRequest) (*proto.GraphNodes, error)
+	PlacePage(context.Context, *v1.PlacePageRequest) (*v1.PlacePageResponse, error)
+	VariableAncestors(context.Context, *v1.VariableAncestorsRequest) (*v1.VariableAncestorsResponse, error)
 	// Get event collection for {eventType, affectedPlaceDcid, date}.
 	// NOTE:
 	//   - The affectedPlaceDcid is only for top-level places:
 	//     Earth, continent, country, state, adminArea1.
 	//   - The date format should be: YYYY-MM.
-	EventCollection(context.Context, *EventCollectionRequest) (*EventCollectionResponse, error)
+	EventCollection(context.Context, *v1.EventCollectionRequest) (*v1.EventCollectionResponse, error)
 	// Get all dates for event collection for {eventType, affectedPlaceDcid}.
 	//   - The affectedPlaceDcid is only for top-level places:
 	//     Earth, continent, country, state, adminArea1.
 	//   - The date format should be: YYYY-MM.
 	//     The dates in the response are sorted from earliest to latest.
-	EventCollectionDate(context.Context, *EventCollectionDateRequest) (*EventCollectionDateResponse, error)
+	EventCollectionDate(context.Context, *v1.EventCollectionDateRequest) (*v1.EventCollectionDateResponse, error)
 	// Resolve a list of entities, given their descriptions.
-	ResolveEntities(context.Context, *ResolveEntitiesRequest) (*ResolveEntitiesResponse, error)
+	ResolveEntities(context.Context, *proto.ResolveEntitiesRequest) (*proto.ResolveEntitiesResponse, error)
 	// Resolve a list of places, given their latitude and longitude coordinates.
-	ResolveCoordinates(context.Context, *ResolveCoordinatesRequest) (*ResolveCoordinatesResponse, error)
+	ResolveCoordinates(context.Context, *proto.ResolveCoordinatesRequest) (*proto.ResolveCoordinatesResponse, error)
 	// Resolve a list of IDs, given the input prop and output prop.
-	ResolveIds(context.Context, *ResolveIdsRequest) (*ResolveIdsResponse, error)
+	ResolveIds(context.Context, *proto.ResolveIdsRequest) (*proto.ResolveIdsResponse, error)
 	// Find entities from a description, with an optional filter on type.
-	FindEntities(context.Context, *FindEntitiesRequest) (*FindEntitiesResponse, error)
+	FindEntities(context.Context, *proto.FindEntitiesRequest) (*proto.FindEntitiesResponse, error)
 	// Find entities from descriptions, with optional filters on types.
-	BulkFindEntities(context.Context, *BulkFindEntitiesRequest) (*BulkFindEntitiesResponse, error)
+	BulkFindEntities(context.Context, *proto.BulkFindEntitiesRequest) (*proto.BulkFindEntitiesResponse, error)
 	// Recognize places from a NL query.
-	RecognizePlaces(context.Context, *RecognizePlacesRequest) (*RecognizePlacesResponse, error)
+	RecognizePlaces(context.Context, *proto.RecognizePlacesRequest) (*proto.RecognizePlacesResponse, error)
 }
 
 // UnimplementedMixerServer should be embedded to have forward compatible implementations.
 type UnimplementedMixerServer struct {
 }
 
-func (UnimplementedMixerServer) QueryV2(context.Context, *QueryV2Request) (*QueryV2Response, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method QueryV2 not implemented")
+func (UnimplementedMixerServer) V2Node(context.Context, *v2.NodeRequest) (*v2.NodeResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method V2Node not implemented")
 }
-func (UnimplementedMixerServer) V2Observation(context.Context, *V2ObservationRequest) (*V2ObservationResponse, error) {
+func (UnimplementedMixerServer) V2Observation(context.Context, *v2.ObservationRequest) (*v2.ObservationResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method V2Observation not implemented")
 }
-func (UnimplementedMixerServer) Query(context.Context, *QueryRequest) (*QueryResponse, error) {
+func (UnimplementedMixerServer) Query(context.Context, *proto.QueryRequest) (*proto.QueryResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Query not implemented")
 }
-func (UnimplementedMixerServer) GetPropertyLabels(context.Context, *GetPropertyLabelsRequest) (*PayloadResponse, error) {
+func (UnimplementedMixerServer) GetPropertyLabels(context.Context, *proto.GetPropertyLabelsRequest) (*proto.PayloadResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetPropertyLabels not implemented")
 }
-func (UnimplementedMixerServer) GetPropertyValues(context.Context, *GetPropertyValuesRequest) (*PayloadResponse, error) {
+func (UnimplementedMixerServer) GetPropertyValues(context.Context, *proto.GetPropertyValuesRequest) (*proto.PayloadResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetPropertyValues not implemented")
 }
-func (UnimplementedMixerServer) GetTriples(context.Context, *GetTriplesRequest) (*PayloadResponse, error) {
+func (UnimplementedMixerServer) GetTriples(context.Context, *proto.GetTriplesRequest) (*proto.PayloadResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetTriples not implemented")
 }
-func (UnimplementedMixerServer) GetPlacesIn(context.Context, *GetPlacesInRequest) (*GetPlacesInResponse, error) {
+func (UnimplementedMixerServer) GetPlacesIn(context.Context, *proto.GetPlacesInRequest) (*proto.GetPlacesInResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetPlacesIn not implemented")
 }
-func (UnimplementedMixerServer) GetStats(context.Context, *GetStatsRequest) (*GetStatsResponse, error) {
+func (UnimplementedMixerServer) GetStats(context.Context, *proto.GetStatsRequest) (*proto.GetStatsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetStats not implemented")
 }
-func (UnimplementedMixerServer) GetStatValue(context.Context, *GetStatValueRequest) (*GetStatValueResponse, error) {
+func (UnimplementedMixerServer) GetStatValue(context.Context, *proto.GetStatValueRequest) (*proto.GetStatValueResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetStatValue not implemented")
 }
-func (UnimplementedMixerServer) GetStatSeries(context.Context, *GetStatSeriesRequest) (*GetStatSeriesResponse, error) {
+func (UnimplementedMixerServer) GetStatSeries(context.Context, *proto.GetStatSeriesRequest) (*proto.GetStatSeriesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetStatSeries not implemented")
 }
-func (UnimplementedMixerServer) GetStatAll(context.Context, *GetStatAllRequest) (*GetStatAllResponse, error) {
+func (UnimplementedMixerServer) GetStatAll(context.Context, *proto.GetStatAllRequest) (*proto.GetStatAllResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetStatAll not implemented")
 }
-func (UnimplementedMixerServer) GetLocationsRankings(context.Context, *GetLocationsRankingsRequest) (*GetLocationsRankingsResponse, error) {
+func (UnimplementedMixerServer) GetLocationsRankings(context.Context, *proto.GetLocationsRankingsRequest) (*proto.GetLocationsRankingsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetLocationsRankings not implemented")
 }
-func (UnimplementedMixerServer) GetRelatedLocations(context.Context, *GetRelatedLocationsRequest) (*GetRelatedLocationsResponse, error) {
+func (UnimplementedMixerServer) GetRelatedLocations(context.Context, *proto.GetRelatedLocationsRequest) (*proto.GetRelatedLocationsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetRelatedLocations not implemented")
 }
-func (UnimplementedMixerServer) GetBioPageData(context.Context, *GetBioPageDataRequest) (*GraphNodes, error) {
+func (UnimplementedMixerServer) GetBioPageData(context.Context, *proto.GetBioPageDataRequest) (*proto.GraphNodes, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetBioPageData not implemented")
 }
-func (UnimplementedMixerServer) Translate(context.Context, *TranslateRequest) (*TranslateResponse, error) {
+func (UnimplementedMixerServer) Translate(context.Context, *proto.TranslateRequest) (*proto.TranslateResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Translate not implemented")
 }
-func (UnimplementedMixerServer) Search(context.Context, *SearchRequest) (*SearchResponse, error) {
+func (UnimplementedMixerServer) Search(context.Context, *proto.SearchRequest) (*proto.SearchResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Search not implemented")
 }
-func (UnimplementedMixerServer) GetVersion(context.Context, *GetVersionRequest) (*GetVersionResponse, error) {
+func (UnimplementedMixerServer) GetVersion(context.Context, *proto.GetVersionRequest) (*proto.GetVersionResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetVersion not implemented")
 }
-func (UnimplementedMixerServer) GetPlaceStatsVar(context.Context, *GetPlaceStatsVarRequest) (*GetPlaceStatsVarResponse, error) {
+func (UnimplementedMixerServer) GetPlaceStatsVar(context.Context, *proto.GetPlaceStatsVarRequest) (*proto.GetPlaceStatsVarResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetPlaceStatsVar not implemented")
 }
-func (UnimplementedMixerServer) GetPlaceStatVars(context.Context, *GetPlaceStatVarsRequest) (*GetPlaceStatVarsResponse, error) {
+func (UnimplementedMixerServer) GetPlaceStatVars(context.Context, *proto.GetPlaceStatVarsRequest) (*proto.GetPlaceStatVarsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetPlaceStatVars not implemented")
 }
-func (UnimplementedMixerServer) GetEntityStatVarsUnionV1(context.Context, *GetEntityStatVarsUnionRequest) (*GetEntityStatVarsUnionResponse, error) {
+func (UnimplementedMixerServer) GetEntityStatVarsUnionV1(context.Context, *proto.GetEntityStatVarsUnionRequest) (*proto.GetEntityStatVarsUnionResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetEntityStatVarsUnionV1 not implemented")
 }
-func (UnimplementedMixerServer) GetPlaceStatDateWithinPlace(context.Context, *GetPlaceStatDateWithinPlaceRequest) (*GetPlaceStatDateWithinPlaceResponse, error) {
+func (UnimplementedMixerServer) GetPlaceStatDateWithinPlace(context.Context, *proto.GetPlaceStatDateWithinPlaceRequest) (*proto.GetPlaceStatDateWithinPlaceResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetPlaceStatDateWithinPlace not implemented")
 }
-func (UnimplementedMixerServer) GetStatDateWithinPlace(context.Context, *GetStatDateWithinPlaceRequest) (*GetStatDateWithinPlaceResponse, error) {
+func (UnimplementedMixerServer) GetStatDateWithinPlace(context.Context, *proto.GetStatDateWithinPlaceRequest) (*proto.GetStatDateWithinPlaceResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetStatDateWithinPlace not implemented")
 }
-func (UnimplementedMixerServer) SearchStatVar(context.Context, *SearchStatVarRequest) (*SearchStatVarResponse, error) {
+func (UnimplementedMixerServer) SearchStatVar(context.Context, *proto.SearchStatVarRequest) (*proto.SearchStatVarResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SearchStatVar not implemented")
 }
-func (UnimplementedMixerServer) GetStatVarSummary(context.Context, *GetStatVarSummaryRequest) (*GetStatVarSummaryResponse, error) {
+func (UnimplementedMixerServer) GetStatVarSummary(context.Context, *proto.GetStatVarSummaryRequest) (*proto.GetStatVarSummaryResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetStatVarSummary not implemented")
 }
-func (UnimplementedMixerServer) GetStatVarMatch(context.Context, *GetStatVarMatchRequest) (*GetStatVarMatchResponse, error) {
+func (UnimplementedMixerServer) GetStatVarMatch(context.Context, *proto.GetStatVarMatchRequest) (*proto.GetStatVarMatchResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetStatVarMatch not implemented")
 }
-func (UnimplementedMixerServer) QueryV1(context.Context, *QueryRequest) (*QueryResponse, error) {
+func (UnimplementedMixerServer) QueryV1(context.Context, *proto.QueryRequest) (*proto.QueryResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method QueryV1 not implemented")
 }
-func (UnimplementedMixerServer) Properties(context.Context, *PropertiesRequest) (*PropertiesResponse, error) {
+func (UnimplementedMixerServer) Properties(context.Context, *v1.PropertiesRequest) (*v1.PropertiesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Properties not implemented")
 }
-func (UnimplementedMixerServer) BulkProperties(context.Context, *BulkPropertiesRequest) (*BulkPropertiesResponse, error) {
+func (UnimplementedMixerServer) BulkProperties(context.Context, *v1.BulkPropertiesRequest) (*v1.BulkPropertiesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BulkProperties not implemented")
 }
-func (UnimplementedMixerServer) PropertyValues(context.Context, *PropertyValuesRequest) (*PropertyValuesResponse, error) {
+func (UnimplementedMixerServer) PropertyValues(context.Context, *v1.PropertyValuesRequest) (*v1.PropertyValuesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PropertyValues not implemented")
 }
-func (UnimplementedMixerServer) LinkedPropertyValues(context.Context, *LinkedPropertyValuesRequest) (*PropertyValuesResponse, error) {
+func (UnimplementedMixerServer) LinkedPropertyValues(context.Context, *v1.LinkedPropertyValuesRequest) (*v1.PropertyValuesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method LinkedPropertyValues not implemented")
 }
-func (UnimplementedMixerServer) BulkPropertyValues(context.Context, *BulkPropertyValuesRequest) (*BulkPropertyValuesResponse, error) {
+func (UnimplementedMixerServer) BulkPropertyValues(context.Context, *v1.BulkPropertyValuesRequest) (*v1.BulkPropertyValuesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BulkPropertyValues not implemented")
 }
-func (UnimplementedMixerServer) BulkLinkedPropertyValues(context.Context, *BulkLinkedPropertyValuesRequest) (*BulkPropertyValuesResponse, error) {
+func (UnimplementedMixerServer) BulkLinkedPropertyValues(context.Context, *v1.BulkLinkedPropertyValuesRequest) (*v1.BulkPropertyValuesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BulkLinkedPropertyValues not implemented")
 }
-func (UnimplementedMixerServer) Triples(context.Context, *TriplesRequest) (*TriplesResponse, error) {
+func (UnimplementedMixerServer) Triples(context.Context, *v1.TriplesRequest) (*v1.TriplesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Triples not implemented")
 }
-func (UnimplementedMixerServer) BulkTriples(context.Context, *BulkTriplesRequest) (*BulkTriplesResponse, error) {
+func (UnimplementedMixerServer) BulkTriples(context.Context, *v1.BulkTriplesRequest) (*v1.BulkTriplesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BulkTriples not implemented")
 }
-func (UnimplementedMixerServer) Variables(context.Context, *VariablesRequest) (*VariablesResponse, error) {
+func (UnimplementedMixerServer) Variables(context.Context, *v1.VariablesRequest) (*v1.VariablesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Variables not implemented")
 }
-func (UnimplementedMixerServer) BulkVariables(context.Context, *BulkVariablesRequest) (*BulkVariablesResponse, error) {
+func (UnimplementedMixerServer) BulkVariables(context.Context, *v1.BulkVariablesRequest) (*v1.BulkVariablesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BulkVariables not implemented")
 }
-func (UnimplementedMixerServer) PlaceInfo(context.Context, *PlaceInfoRequest) (*PlaceInfoResponse, error) {
+func (UnimplementedMixerServer) PlaceInfo(context.Context, *v1.PlaceInfoRequest) (*v1.PlaceInfoResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PlaceInfo not implemented")
 }
-func (UnimplementedMixerServer) BulkPlaceInfo(context.Context, *BulkPlaceInfoRequest) (*BulkPlaceInfoResponse, error) {
+func (UnimplementedMixerServer) BulkPlaceInfo(context.Context, *v1.BulkPlaceInfoRequest) (*v1.BulkPlaceInfoResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BulkPlaceInfo not implemented")
 }
-func (UnimplementedMixerServer) VariableInfo(context.Context, *VariableInfoRequest) (*VariableInfoResponse, error) {
+func (UnimplementedMixerServer) VariableInfo(context.Context, *v1.VariableInfoRequest) (*v1.VariableInfoResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method VariableInfo not implemented")
 }
-func (UnimplementedMixerServer) BulkVariableInfo(context.Context, *BulkVariableInfoRequest) (*BulkVariableInfoResponse, error) {
+func (UnimplementedMixerServer) BulkVariableInfo(context.Context, *v1.BulkVariableInfoRequest) (*v1.BulkVariableInfoResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BulkVariableInfo not implemented")
 }
-func (UnimplementedMixerServer) VariableGroupInfo(context.Context, *VariableGroupInfoRequest) (*VariableGroupInfoResponse, error) {
+func (UnimplementedMixerServer) VariableGroupInfo(context.Context, *v1.VariableGroupInfoRequest) (*v1.VariableGroupInfoResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method VariableGroupInfo not implemented")
 }
-func (UnimplementedMixerServer) BulkVariableGroupInfo(context.Context, *BulkVariableGroupInfoRequest) (*BulkVariableGroupInfoResponse, error) {
+func (UnimplementedMixerServer) BulkVariableGroupInfo(context.Context, *v1.BulkVariableGroupInfoRequest) (*v1.BulkVariableGroupInfoResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BulkVariableGroupInfo not implemented")
 }
-func (UnimplementedMixerServer) ObservationsPoint(context.Context, *ObservationsPointRequest) (*PointStat, error) {
+func (UnimplementedMixerServer) ObservationsPoint(context.Context, *v1.ObservationsPointRequest) (*proto.PointStat, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ObservationsPoint not implemented")
 }
-func (UnimplementedMixerServer) BulkObservationsPoint(context.Context, *BulkObservationsPointRequest) (*BulkObservationsPointResponse, error) {
+func (UnimplementedMixerServer) BulkObservationsPoint(context.Context, *v1.BulkObservationsPointRequest) (*v1.BulkObservationsPointResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BulkObservationsPoint not implemented")
 }
-func (UnimplementedMixerServer) BulkObservationsPointLinked(context.Context, *BulkObservationsPointLinkedRequest) (*BulkObservationsPointResponse, error) {
+func (UnimplementedMixerServer) BulkObservationsPointLinked(context.Context, *v1.BulkObservationsPointLinkedRequest) (*v1.BulkObservationsPointResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BulkObservationsPointLinked not implemented")
 }
-func (UnimplementedMixerServer) ObservationsSeries(context.Context, *ObservationsSeriesRequest) (*ObservationsSeriesResponse, error) {
+func (UnimplementedMixerServer) ObservationsSeries(context.Context, *v1.ObservationsSeriesRequest) (*v1.ObservationsSeriesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ObservationsSeries not implemented")
 }
-func (UnimplementedMixerServer) BulkObservationsSeries(context.Context, *BulkObservationsSeriesRequest) (*BulkObservationsSeriesResponse, error) {
+func (UnimplementedMixerServer) BulkObservationsSeries(context.Context, *v1.BulkObservationsSeriesRequest) (*v1.BulkObservationsSeriesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BulkObservationsSeries not implemented")
 }
-func (UnimplementedMixerServer) BulkObservationsSeriesLinked(context.Context, *BulkObservationsSeriesLinkedRequest) (*BulkObservationsSeriesResponse, error) {
+func (UnimplementedMixerServer) BulkObservationsSeriesLinked(context.Context, *v1.BulkObservationsSeriesLinkedRequest) (*v1.BulkObservationsSeriesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BulkObservationsSeriesLinked not implemented")
 }
-func (UnimplementedMixerServer) DerivedObservationsSeries(context.Context, *DerivedObservationsSeriesRequest) (*DerivedObservationsSeriesResponse, error) {
+func (UnimplementedMixerServer) DerivedObservationsSeries(context.Context, *v1.DerivedObservationsSeriesRequest) (*v1.DerivedObservationsSeriesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DerivedObservationsSeries not implemented")
 }
-func (UnimplementedMixerServer) BulkObservationDatesLinked(context.Context, *BulkObservationDatesLinkedRequest) (*BulkObservationDatesLinkedResponse, error) {
+func (UnimplementedMixerServer) BulkObservationDatesLinked(context.Context, *v1.BulkObservationDatesLinkedRequest) (*v1.BulkObservationDatesLinkedResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BulkObservationDatesLinked not implemented")
 }
-func (UnimplementedMixerServer) BulkObservationExistence(context.Context, *BulkObservationExistenceRequest) (*BulkObservationExistenceResponse, error) {
+func (UnimplementedMixerServer) BulkObservationExistence(context.Context, *v1.BulkObservationExistenceRequest) (*v1.BulkObservationExistenceResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BulkObservationExistence not implemented")
 }
-func (UnimplementedMixerServer) BioPage(context.Context, *BioPageRequest) (*GraphNodes, error) {
+func (UnimplementedMixerServer) BioPage(context.Context, *v1.BioPageRequest) (*proto.GraphNodes, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BioPage not implemented")
 }
-func (UnimplementedMixerServer) PlacePage(context.Context, *PlacePageRequest) (*PlacePageResponse, error) {
+func (UnimplementedMixerServer) PlacePage(context.Context, *v1.PlacePageRequest) (*v1.PlacePageResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PlacePage not implemented")
 }
-func (UnimplementedMixerServer) VariableAncestors(context.Context, *VariableAncestorsRequest) (*VariableAncestorsResponse, error) {
+func (UnimplementedMixerServer) VariableAncestors(context.Context, *v1.VariableAncestorsRequest) (*v1.VariableAncestorsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method VariableAncestors not implemented")
 }
-func (UnimplementedMixerServer) EventCollection(context.Context, *EventCollectionRequest) (*EventCollectionResponse, error) {
+func (UnimplementedMixerServer) EventCollection(context.Context, *v1.EventCollectionRequest) (*v1.EventCollectionResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method EventCollection not implemented")
 }
-func (UnimplementedMixerServer) EventCollectionDate(context.Context, *EventCollectionDateRequest) (*EventCollectionDateResponse, error) {
+func (UnimplementedMixerServer) EventCollectionDate(context.Context, *v1.EventCollectionDateRequest) (*v1.EventCollectionDateResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method EventCollectionDate not implemented")
 }
-func (UnimplementedMixerServer) ResolveEntities(context.Context, *ResolveEntitiesRequest) (*ResolveEntitiesResponse, error) {
+func (UnimplementedMixerServer) ResolveEntities(context.Context, *proto.ResolveEntitiesRequest) (*proto.ResolveEntitiesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ResolveEntities not implemented")
 }
-func (UnimplementedMixerServer) ResolveCoordinates(context.Context, *ResolveCoordinatesRequest) (*ResolveCoordinatesResponse, error) {
+func (UnimplementedMixerServer) ResolveCoordinates(context.Context, *proto.ResolveCoordinatesRequest) (*proto.ResolveCoordinatesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ResolveCoordinates not implemented")
 }
-func (UnimplementedMixerServer) ResolveIds(context.Context, *ResolveIdsRequest) (*ResolveIdsResponse, error) {
+func (UnimplementedMixerServer) ResolveIds(context.Context, *proto.ResolveIdsRequest) (*proto.ResolveIdsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ResolveIds not implemented")
 }
-func (UnimplementedMixerServer) FindEntities(context.Context, *FindEntitiesRequest) (*FindEntitiesResponse, error) {
+func (UnimplementedMixerServer) FindEntities(context.Context, *proto.FindEntitiesRequest) (*proto.FindEntitiesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method FindEntities not implemented")
 }
-func (UnimplementedMixerServer) BulkFindEntities(context.Context, *BulkFindEntitiesRequest) (*BulkFindEntitiesResponse, error) {
+func (UnimplementedMixerServer) BulkFindEntities(context.Context, *proto.BulkFindEntitiesRequest) (*proto.BulkFindEntitiesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BulkFindEntities not implemented")
 }
-func (UnimplementedMixerServer) RecognizePlaces(context.Context, *RecognizePlacesRequest) (*RecognizePlacesResponse, error) {
+func (UnimplementedMixerServer) RecognizePlaces(context.Context, *proto.RecognizePlacesRequest) (*proto.RecognizePlacesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RecognizePlaces not implemented")
 }
 
@@ -1028,26 +1031,26 @@ func RegisterMixerServer(s grpc.ServiceRegistrar, srv MixerServer) {
 	s.RegisterService(&Mixer_ServiceDesc, srv)
 }
 
-func _Mixer_QueryV2_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(QueryV2Request)
+func _Mixer_V2Node_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(v2.NodeRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(MixerServer).QueryV2(ctx, in)
+		return srv.(MixerServer).V2Node(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/datacommons.Mixer/QueryV2",
+		FullMethod: "/datacommons.Mixer/V2Node",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).QueryV2(ctx, req.(*QueryV2Request))
+		return srv.(MixerServer).V2Node(ctx, req.(*v2.NodeRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Mixer_V2Observation_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(V2ObservationRequest)
+	in := new(v2.ObservationRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -1059,13 +1062,13 @@ func _Mixer_V2Observation_Handler(srv interface{}, ctx context.Context, dec func
 		FullMethod: "/datacommons.Mixer/V2Observation",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).V2Observation(ctx, req.(*V2ObservationRequest))
+		return srv.(MixerServer).V2Observation(ctx, req.(*v2.ObservationRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Mixer_Query_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(QueryRequest)
+	in := new(proto.QueryRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -1077,13 +1080,13 @@ func _Mixer_Query_Handler(srv interface{}, ctx context.Context, dec func(interfa
 		FullMethod: "/datacommons.Mixer/Query",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).Query(ctx, req.(*QueryRequest))
+		return srv.(MixerServer).Query(ctx, req.(*proto.QueryRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Mixer_GetPropertyLabels_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetPropertyLabelsRequest)
+	in := new(proto.GetPropertyLabelsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -1095,13 +1098,13 @@ func _Mixer_GetPropertyLabels_Handler(srv interface{}, ctx context.Context, dec 
 		FullMethod: "/datacommons.Mixer/GetPropertyLabels",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).GetPropertyLabels(ctx, req.(*GetPropertyLabelsRequest))
+		return srv.(MixerServer).GetPropertyLabels(ctx, req.(*proto.GetPropertyLabelsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Mixer_GetPropertyValues_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetPropertyValuesRequest)
+	in := new(proto.GetPropertyValuesRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -1113,13 +1116,13 @@ func _Mixer_GetPropertyValues_Handler(srv interface{}, ctx context.Context, dec 
 		FullMethod: "/datacommons.Mixer/GetPropertyValues",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).GetPropertyValues(ctx, req.(*GetPropertyValuesRequest))
+		return srv.(MixerServer).GetPropertyValues(ctx, req.(*proto.GetPropertyValuesRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Mixer_GetTriples_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetTriplesRequest)
+	in := new(proto.GetTriplesRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -1131,13 +1134,13 @@ func _Mixer_GetTriples_Handler(srv interface{}, ctx context.Context, dec func(in
 		FullMethod: "/datacommons.Mixer/GetTriples",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).GetTriples(ctx, req.(*GetTriplesRequest))
+		return srv.(MixerServer).GetTriples(ctx, req.(*proto.GetTriplesRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Mixer_GetPlacesIn_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetPlacesInRequest)
+	in := new(proto.GetPlacesInRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -1149,13 +1152,13 @@ func _Mixer_GetPlacesIn_Handler(srv interface{}, ctx context.Context, dec func(i
 		FullMethod: "/datacommons.Mixer/GetPlacesIn",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).GetPlacesIn(ctx, req.(*GetPlacesInRequest))
+		return srv.(MixerServer).GetPlacesIn(ctx, req.(*proto.GetPlacesInRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Mixer_GetStats_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetStatsRequest)
+	in := new(proto.GetStatsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -1167,13 +1170,13 @@ func _Mixer_GetStats_Handler(srv interface{}, ctx context.Context, dec func(inte
 		FullMethod: "/datacommons.Mixer/GetStats",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).GetStats(ctx, req.(*GetStatsRequest))
+		return srv.(MixerServer).GetStats(ctx, req.(*proto.GetStatsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Mixer_GetStatValue_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetStatValueRequest)
+	in := new(proto.GetStatValueRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -1185,13 +1188,13 @@ func _Mixer_GetStatValue_Handler(srv interface{}, ctx context.Context, dec func(
 		FullMethod: "/datacommons.Mixer/GetStatValue",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).GetStatValue(ctx, req.(*GetStatValueRequest))
+		return srv.(MixerServer).GetStatValue(ctx, req.(*proto.GetStatValueRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Mixer_GetStatSeries_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetStatSeriesRequest)
+	in := new(proto.GetStatSeriesRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -1203,13 +1206,13 @@ func _Mixer_GetStatSeries_Handler(srv interface{}, ctx context.Context, dec func
 		FullMethod: "/datacommons.Mixer/GetStatSeries",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).GetStatSeries(ctx, req.(*GetStatSeriesRequest))
+		return srv.(MixerServer).GetStatSeries(ctx, req.(*proto.GetStatSeriesRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Mixer_GetStatAll_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetStatAllRequest)
+	in := new(proto.GetStatAllRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -1221,13 +1224,13 @@ func _Mixer_GetStatAll_Handler(srv interface{}, ctx context.Context, dec func(in
 		FullMethod: "/datacommons.Mixer/GetStatAll",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).GetStatAll(ctx, req.(*GetStatAllRequest))
+		return srv.(MixerServer).GetStatAll(ctx, req.(*proto.GetStatAllRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Mixer_GetLocationsRankings_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetLocationsRankingsRequest)
+	in := new(proto.GetLocationsRankingsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -1239,13 +1242,13 @@ func _Mixer_GetLocationsRankings_Handler(srv interface{}, ctx context.Context, d
 		FullMethod: "/datacommons.Mixer/GetLocationsRankings",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).GetLocationsRankings(ctx, req.(*GetLocationsRankingsRequest))
+		return srv.(MixerServer).GetLocationsRankings(ctx, req.(*proto.GetLocationsRankingsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Mixer_GetRelatedLocations_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetRelatedLocationsRequest)
+	in := new(proto.GetRelatedLocationsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -1257,13 +1260,13 @@ func _Mixer_GetRelatedLocations_Handler(srv interface{}, ctx context.Context, de
 		FullMethod: "/datacommons.Mixer/GetRelatedLocations",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).GetRelatedLocations(ctx, req.(*GetRelatedLocationsRequest))
+		return srv.(MixerServer).GetRelatedLocations(ctx, req.(*proto.GetRelatedLocationsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Mixer_GetBioPageData_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetBioPageDataRequest)
+	in := new(proto.GetBioPageDataRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -1275,13 +1278,13 @@ func _Mixer_GetBioPageData_Handler(srv interface{}, ctx context.Context, dec fun
 		FullMethod: "/datacommons.Mixer/GetBioPageData",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).GetBioPageData(ctx, req.(*GetBioPageDataRequest))
+		return srv.(MixerServer).GetBioPageData(ctx, req.(*proto.GetBioPageDataRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Mixer_Translate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TranslateRequest)
+	in := new(proto.TranslateRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -1293,13 +1296,13 @@ func _Mixer_Translate_Handler(srv interface{}, ctx context.Context, dec func(int
 		FullMethod: "/datacommons.Mixer/Translate",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).Translate(ctx, req.(*TranslateRequest))
+		return srv.(MixerServer).Translate(ctx, req.(*proto.TranslateRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Mixer_Search_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(SearchRequest)
+	in := new(proto.SearchRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -1311,13 +1314,13 @@ func _Mixer_Search_Handler(srv interface{}, ctx context.Context, dec func(interf
 		FullMethod: "/datacommons.Mixer/Search",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).Search(ctx, req.(*SearchRequest))
+		return srv.(MixerServer).Search(ctx, req.(*proto.SearchRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Mixer_GetVersion_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetVersionRequest)
+	in := new(proto.GetVersionRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -1329,13 +1332,13 @@ func _Mixer_GetVersion_Handler(srv interface{}, ctx context.Context, dec func(in
 		FullMethod: "/datacommons.Mixer/GetVersion",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).GetVersion(ctx, req.(*GetVersionRequest))
+		return srv.(MixerServer).GetVersion(ctx, req.(*proto.GetVersionRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Mixer_GetPlaceStatsVar_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetPlaceStatsVarRequest)
+	in := new(proto.GetPlaceStatsVarRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -1347,13 +1350,13 @@ func _Mixer_GetPlaceStatsVar_Handler(srv interface{}, ctx context.Context, dec f
 		FullMethod: "/datacommons.Mixer/GetPlaceStatsVar",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).GetPlaceStatsVar(ctx, req.(*GetPlaceStatsVarRequest))
+		return srv.(MixerServer).GetPlaceStatsVar(ctx, req.(*proto.GetPlaceStatsVarRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Mixer_GetPlaceStatVars_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetPlaceStatVarsRequest)
+	in := new(proto.GetPlaceStatVarsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -1365,13 +1368,13 @@ func _Mixer_GetPlaceStatVars_Handler(srv interface{}, ctx context.Context, dec f
 		FullMethod: "/datacommons.Mixer/GetPlaceStatVars",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).GetPlaceStatVars(ctx, req.(*GetPlaceStatVarsRequest))
+		return srv.(MixerServer).GetPlaceStatVars(ctx, req.(*proto.GetPlaceStatVarsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Mixer_GetEntityStatVarsUnionV1_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetEntityStatVarsUnionRequest)
+	in := new(proto.GetEntityStatVarsUnionRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -1383,13 +1386,13 @@ func _Mixer_GetEntityStatVarsUnionV1_Handler(srv interface{}, ctx context.Contex
 		FullMethod: "/datacommons.Mixer/GetEntityStatVarsUnionV1",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).GetEntityStatVarsUnionV1(ctx, req.(*GetEntityStatVarsUnionRequest))
+		return srv.(MixerServer).GetEntityStatVarsUnionV1(ctx, req.(*proto.GetEntityStatVarsUnionRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Mixer_GetPlaceStatDateWithinPlace_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetPlaceStatDateWithinPlaceRequest)
+	in := new(proto.GetPlaceStatDateWithinPlaceRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -1401,13 +1404,13 @@ func _Mixer_GetPlaceStatDateWithinPlace_Handler(srv interface{}, ctx context.Con
 		FullMethod: "/datacommons.Mixer/GetPlaceStatDateWithinPlace",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).GetPlaceStatDateWithinPlace(ctx, req.(*GetPlaceStatDateWithinPlaceRequest))
+		return srv.(MixerServer).GetPlaceStatDateWithinPlace(ctx, req.(*proto.GetPlaceStatDateWithinPlaceRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Mixer_GetStatDateWithinPlace_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetStatDateWithinPlaceRequest)
+	in := new(proto.GetStatDateWithinPlaceRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -1419,13 +1422,13 @@ func _Mixer_GetStatDateWithinPlace_Handler(srv interface{}, ctx context.Context,
 		FullMethod: "/datacommons.Mixer/GetStatDateWithinPlace",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).GetStatDateWithinPlace(ctx, req.(*GetStatDateWithinPlaceRequest))
+		return srv.(MixerServer).GetStatDateWithinPlace(ctx, req.(*proto.GetStatDateWithinPlaceRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Mixer_SearchStatVar_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(SearchStatVarRequest)
+	in := new(proto.SearchStatVarRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -1437,13 +1440,13 @@ func _Mixer_SearchStatVar_Handler(srv interface{}, ctx context.Context, dec func
 		FullMethod: "/datacommons.Mixer/SearchStatVar",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).SearchStatVar(ctx, req.(*SearchStatVarRequest))
+		return srv.(MixerServer).SearchStatVar(ctx, req.(*proto.SearchStatVarRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Mixer_GetStatVarSummary_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetStatVarSummaryRequest)
+	in := new(proto.GetStatVarSummaryRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -1455,13 +1458,13 @@ func _Mixer_GetStatVarSummary_Handler(srv interface{}, ctx context.Context, dec 
 		FullMethod: "/datacommons.Mixer/GetStatVarSummary",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).GetStatVarSummary(ctx, req.(*GetStatVarSummaryRequest))
+		return srv.(MixerServer).GetStatVarSummary(ctx, req.(*proto.GetStatVarSummaryRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Mixer_GetStatVarMatch_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetStatVarMatchRequest)
+	in := new(proto.GetStatVarMatchRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -1473,13 +1476,13 @@ func _Mixer_GetStatVarMatch_Handler(srv interface{}, ctx context.Context, dec fu
 		FullMethod: "/datacommons.Mixer/GetStatVarMatch",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).GetStatVarMatch(ctx, req.(*GetStatVarMatchRequest))
+		return srv.(MixerServer).GetStatVarMatch(ctx, req.(*proto.GetStatVarMatchRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Mixer_QueryV1_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(QueryRequest)
+	in := new(proto.QueryRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -1491,13 +1494,13 @@ func _Mixer_QueryV1_Handler(srv interface{}, ctx context.Context, dec func(inter
 		FullMethod: "/datacommons.Mixer/QueryV1",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).QueryV1(ctx, req.(*QueryRequest))
+		return srv.(MixerServer).QueryV1(ctx, req.(*proto.QueryRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Mixer_Properties_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(PropertiesRequest)
+	in := new(v1.PropertiesRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -1509,13 +1512,13 @@ func _Mixer_Properties_Handler(srv interface{}, ctx context.Context, dec func(in
 		FullMethod: "/datacommons.Mixer/Properties",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).Properties(ctx, req.(*PropertiesRequest))
+		return srv.(MixerServer).Properties(ctx, req.(*v1.PropertiesRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Mixer_BulkProperties_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(BulkPropertiesRequest)
+	in := new(v1.BulkPropertiesRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -1527,13 +1530,13 @@ func _Mixer_BulkProperties_Handler(srv interface{}, ctx context.Context, dec fun
 		FullMethod: "/datacommons.Mixer/BulkProperties",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).BulkProperties(ctx, req.(*BulkPropertiesRequest))
+		return srv.(MixerServer).BulkProperties(ctx, req.(*v1.BulkPropertiesRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Mixer_PropertyValues_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(PropertyValuesRequest)
+	in := new(v1.PropertyValuesRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -1545,13 +1548,13 @@ func _Mixer_PropertyValues_Handler(srv interface{}, ctx context.Context, dec fun
 		FullMethod: "/datacommons.Mixer/PropertyValues",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).PropertyValues(ctx, req.(*PropertyValuesRequest))
+		return srv.(MixerServer).PropertyValues(ctx, req.(*v1.PropertyValuesRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Mixer_LinkedPropertyValues_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(LinkedPropertyValuesRequest)
+	in := new(v1.LinkedPropertyValuesRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -1563,13 +1566,13 @@ func _Mixer_LinkedPropertyValues_Handler(srv interface{}, ctx context.Context, d
 		FullMethod: "/datacommons.Mixer/LinkedPropertyValues",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).LinkedPropertyValues(ctx, req.(*LinkedPropertyValuesRequest))
+		return srv.(MixerServer).LinkedPropertyValues(ctx, req.(*v1.LinkedPropertyValuesRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Mixer_BulkPropertyValues_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(BulkPropertyValuesRequest)
+	in := new(v1.BulkPropertyValuesRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -1581,13 +1584,13 @@ func _Mixer_BulkPropertyValues_Handler(srv interface{}, ctx context.Context, dec
 		FullMethod: "/datacommons.Mixer/BulkPropertyValues",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).BulkPropertyValues(ctx, req.(*BulkPropertyValuesRequest))
+		return srv.(MixerServer).BulkPropertyValues(ctx, req.(*v1.BulkPropertyValuesRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Mixer_BulkLinkedPropertyValues_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(BulkLinkedPropertyValuesRequest)
+	in := new(v1.BulkLinkedPropertyValuesRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -1599,13 +1602,13 @@ func _Mixer_BulkLinkedPropertyValues_Handler(srv interface{}, ctx context.Contex
 		FullMethod: "/datacommons.Mixer/BulkLinkedPropertyValues",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).BulkLinkedPropertyValues(ctx, req.(*BulkLinkedPropertyValuesRequest))
+		return srv.(MixerServer).BulkLinkedPropertyValues(ctx, req.(*v1.BulkLinkedPropertyValuesRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Mixer_Triples_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TriplesRequest)
+	in := new(v1.TriplesRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -1617,13 +1620,13 @@ func _Mixer_Triples_Handler(srv interface{}, ctx context.Context, dec func(inter
 		FullMethod: "/datacommons.Mixer/Triples",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).Triples(ctx, req.(*TriplesRequest))
+		return srv.(MixerServer).Triples(ctx, req.(*v1.TriplesRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Mixer_BulkTriples_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(BulkTriplesRequest)
+	in := new(v1.BulkTriplesRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -1635,13 +1638,13 @@ func _Mixer_BulkTriples_Handler(srv interface{}, ctx context.Context, dec func(i
 		FullMethod: "/datacommons.Mixer/BulkTriples",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).BulkTriples(ctx, req.(*BulkTriplesRequest))
+		return srv.(MixerServer).BulkTriples(ctx, req.(*v1.BulkTriplesRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Mixer_Variables_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(VariablesRequest)
+	in := new(v1.VariablesRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -1653,13 +1656,13 @@ func _Mixer_Variables_Handler(srv interface{}, ctx context.Context, dec func(int
 		FullMethod: "/datacommons.Mixer/Variables",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).Variables(ctx, req.(*VariablesRequest))
+		return srv.(MixerServer).Variables(ctx, req.(*v1.VariablesRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Mixer_BulkVariables_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(BulkVariablesRequest)
+	in := new(v1.BulkVariablesRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -1671,13 +1674,13 @@ func _Mixer_BulkVariables_Handler(srv interface{}, ctx context.Context, dec func
 		FullMethod: "/datacommons.Mixer/BulkVariables",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).BulkVariables(ctx, req.(*BulkVariablesRequest))
+		return srv.(MixerServer).BulkVariables(ctx, req.(*v1.BulkVariablesRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Mixer_PlaceInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(PlaceInfoRequest)
+	in := new(v1.PlaceInfoRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -1689,13 +1692,13 @@ func _Mixer_PlaceInfo_Handler(srv interface{}, ctx context.Context, dec func(int
 		FullMethod: "/datacommons.Mixer/PlaceInfo",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).PlaceInfo(ctx, req.(*PlaceInfoRequest))
+		return srv.(MixerServer).PlaceInfo(ctx, req.(*v1.PlaceInfoRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Mixer_BulkPlaceInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(BulkPlaceInfoRequest)
+	in := new(v1.BulkPlaceInfoRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -1707,13 +1710,13 @@ func _Mixer_BulkPlaceInfo_Handler(srv interface{}, ctx context.Context, dec func
 		FullMethod: "/datacommons.Mixer/BulkPlaceInfo",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).BulkPlaceInfo(ctx, req.(*BulkPlaceInfoRequest))
+		return srv.(MixerServer).BulkPlaceInfo(ctx, req.(*v1.BulkPlaceInfoRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Mixer_VariableInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(VariableInfoRequest)
+	in := new(v1.VariableInfoRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -1725,13 +1728,13 @@ func _Mixer_VariableInfo_Handler(srv interface{}, ctx context.Context, dec func(
 		FullMethod: "/datacommons.Mixer/VariableInfo",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).VariableInfo(ctx, req.(*VariableInfoRequest))
+		return srv.(MixerServer).VariableInfo(ctx, req.(*v1.VariableInfoRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Mixer_BulkVariableInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(BulkVariableInfoRequest)
+	in := new(v1.BulkVariableInfoRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -1743,13 +1746,13 @@ func _Mixer_BulkVariableInfo_Handler(srv interface{}, ctx context.Context, dec f
 		FullMethod: "/datacommons.Mixer/BulkVariableInfo",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).BulkVariableInfo(ctx, req.(*BulkVariableInfoRequest))
+		return srv.(MixerServer).BulkVariableInfo(ctx, req.(*v1.BulkVariableInfoRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Mixer_VariableGroupInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(VariableGroupInfoRequest)
+	in := new(v1.VariableGroupInfoRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -1761,13 +1764,13 @@ func _Mixer_VariableGroupInfo_Handler(srv interface{}, ctx context.Context, dec 
 		FullMethod: "/datacommons.Mixer/VariableGroupInfo",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).VariableGroupInfo(ctx, req.(*VariableGroupInfoRequest))
+		return srv.(MixerServer).VariableGroupInfo(ctx, req.(*v1.VariableGroupInfoRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Mixer_BulkVariableGroupInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(BulkVariableGroupInfoRequest)
+	in := new(v1.BulkVariableGroupInfoRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -1779,13 +1782,13 @@ func _Mixer_BulkVariableGroupInfo_Handler(srv interface{}, ctx context.Context, 
 		FullMethod: "/datacommons.Mixer/BulkVariableGroupInfo",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).BulkVariableGroupInfo(ctx, req.(*BulkVariableGroupInfoRequest))
+		return srv.(MixerServer).BulkVariableGroupInfo(ctx, req.(*v1.BulkVariableGroupInfoRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Mixer_ObservationsPoint_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ObservationsPointRequest)
+	in := new(v1.ObservationsPointRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -1797,13 +1800,13 @@ func _Mixer_ObservationsPoint_Handler(srv interface{}, ctx context.Context, dec 
 		FullMethod: "/datacommons.Mixer/ObservationsPoint",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).ObservationsPoint(ctx, req.(*ObservationsPointRequest))
+		return srv.(MixerServer).ObservationsPoint(ctx, req.(*v1.ObservationsPointRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Mixer_BulkObservationsPoint_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(BulkObservationsPointRequest)
+	in := new(v1.BulkObservationsPointRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -1815,13 +1818,13 @@ func _Mixer_BulkObservationsPoint_Handler(srv interface{}, ctx context.Context, 
 		FullMethod: "/datacommons.Mixer/BulkObservationsPoint",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).BulkObservationsPoint(ctx, req.(*BulkObservationsPointRequest))
+		return srv.(MixerServer).BulkObservationsPoint(ctx, req.(*v1.BulkObservationsPointRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Mixer_BulkObservationsPointLinked_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(BulkObservationsPointLinkedRequest)
+	in := new(v1.BulkObservationsPointLinkedRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -1833,13 +1836,13 @@ func _Mixer_BulkObservationsPointLinked_Handler(srv interface{}, ctx context.Con
 		FullMethod: "/datacommons.Mixer/BulkObservationsPointLinked",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).BulkObservationsPointLinked(ctx, req.(*BulkObservationsPointLinkedRequest))
+		return srv.(MixerServer).BulkObservationsPointLinked(ctx, req.(*v1.BulkObservationsPointLinkedRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Mixer_ObservationsSeries_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ObservationsSeriesRequest)
+	in := new(v1.ObservationsSeriesRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -1851,13 +1854,13 @@ func _Mixer_ObservationsSeries_Handler(srv interface{}, ctx context.Context, dec
 		FullMethod: "/datacommons.Mixer/ObservationsSeries",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).ObservationsSeries(ctx, req.(*ObservationsSeriesRequest))
+		return srv.(MixerServer).ObservationsSeries(ctx, req.(*v1.ObservationsSeriesRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Mixer_BulkObservationsSeries_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(BulkObservationsSeriesRequest)
+	in := new(v1.BulkObservationsSeriesRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -1869,13 +1872,13 @@ func _Mixer_BulkObservationsSeries_Handler(srv interface{}, ctx context.Context,
 		FullMethod: "/datacommons.Mixer/BulkObservationsSeries",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).BulkObservationsSeries(ctx, req.(*BulkObservationsSeriesRequest))
+		return srv.(MixerServer).BulkObservationsSeries(ctx, req.(*v1.BulkObservationsSeriesRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Mixer_BulkObservationsSeriesLinked_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(BulkObservationsSeriesLinkedRequest)
+	in := new(v1.BulkObservationsSeriesLinkedRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -1887,13 +1890,13 @@ func _Mixer_BulkObservationsSeriesLinked_Handler(srv interface{}, ctx context.Co
 		FullMethod: "/datacommons.Mixer/BulkObservationsSeriesLinked",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).BulkObservationsSeriesLinked(ctx, req.(*BulkObservationsSeriesLinkedRequest))
+		return srv.(MixerServer).BulkObservationsSeriesLinked(ctx, req.(*v1.BulkObservationsSeriesLinkedRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Mixer_DerivedObservationsSeries_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DerivedObservationsSeriesRequest)
+	in := new(v1.DerivedObservationsSeriesRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -1905,13 +1908,13 @@ func _Mixer_DerivedObservationsSeries_Handler(srv interface{}, ctx context.Conte
 		FullMethod: "/datacommons.Mixer/DerivedObservationsSeries",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).DerivedObservationsSeries(ctx, req.(*DerivedObservationsSeriesRequest))
+		return srv.(MixerServer).DerivedObservationsSeries(ctx, req.(*v1.DerivedObservationsSeriesRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Mixer_BulkObservationDatesLinked_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(BulkObservationDatesLinkedRequest)
+	in := new(v1.BulkObservationDatesLinkedRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -1923,13 +1926,13 @@ func _Mixer_BulkObservationDatesLinked_Handler(srv interface{}, ctx context.Cont
 		FullMethod: "/datacommons.Mixer/BulkObservationDatesLinked",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).BulkObservationDatesLinked(ctx, req.(*BulkObservationDatesLinkedRequest))
+		return srv.(MixerServer).BulkObservationDatesLinked(ctx, req.(*v1.BulkObservationDatesLinkedRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Mixer_BulkObservationExistence_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(BulkObservationExistenceRequest)
+	in := new(v1.BulkObservationExistenceRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -1941,13 +1944,13 @@ func _Mixer_BulkObservationExistence_Handler(srv interface{}, ctx context.Contex
 		FullMethod: "/datacommons.Mixer/BulkObservationExistence",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).BulkObservationExistence(ctx, req.(*BulkObservationExistenceRequest))
+		return srv.(MixerServer).BulkObservationExistence(ctx, req.(*v1.BulkObservationExistenceRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Mixer_BioPage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(BioPageRequest)
+	in := new(v1.BioPageRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -1959,13 +1962,13 @@ func _Mixer_BioPage_Handler(srv interface{}, ctx context.Context, dec func(inter
 		FullMethod: "/datacommons.Mixer/BioPage",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).BioPage(ctx, req.(*BioPageRequest))
+		return srv.(MixerServer).BioPage(ctx, req.(*v1.BioPageRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Mixer_PlacePage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(PlacePageRequest)
+	in := new(v1.PlacePageRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -1977,13 +1980,13 @@ func _Mixer_PlacePage_Handler(srv interface{}, ctx context.Context, dec func(int
 		FullMethod: "/datacommons.Mixer/PlacePage",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).PlacePage(ctx, req.(*PlacePageRequest))
+		return srv.(MixerServer).PlacePage(ctx, req.(*v1.PlacePageRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Mixer_VariableAncestors_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(VariableAncestorsRequest)
+	in := new(v1.VariableAncestorsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -1995,13 +1998,13 @@ func _Mixer_VariableAncestors_Handler(srv interface{}, ctx context.Context, dec 
 		FullMethod: "/datacommons.Mixer/VariableAncestors",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).VariableAncestors(ctx, req.(*VariableAncestorsRequest))
+		return srv.(MixerServer).VariableAncestors(ctx, req.(*v1.VariableAncestorsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Mixer_EventCollection_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(EventCollectionRequest)
+	in := new(v1.EventCollectionRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -2013,13 +2016,13 @@ func _Mixer_EventCollection_Handler(srv interface{}, ctx context.Context, dec fu
 		FullMethod: "/datacommons.Mixer/EventCollection",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).EventCollection(ctx, req.(*EventCollectionRequest))
+		return srv.(MixerServer).EventCollection(ctx, req.(*v1.EventCollectionRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Mixer_EventCollectionDate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(EventCollectionDateRequest)
+	in := new(v1.EventCollectionDateRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -2031,13 +2034,13 @@ func _Mixer_EventCollectionDate_Handler(srv interface{}, ctx context.Context, de
 		FullMethod: "/datacommons.Mixer/EventCollectionDate",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).EventCollectionDate(ctx, req.(*EventCollectionDateRequest))
+		return srv.(MixerServer).EventCollectionDate(ctx, req.(*v1.EventCollectionDateRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Mixer_ResolveEntities_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ResolveEntitiesRequest)
+	in := new(proto.ResolveEntitiesRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -2049,13 +2052,13 @@ func _Mixer_ResolveEntities_Handler(srv interface{}, ctx context.Context, dec fu
 		FullMethod: "/datacommons.Mixer/ResolveEntities",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).ResolveEntities(ctx, req.(*ResolveEntitiesRequest))
+		return srv.(MixerServer).ResolveEntities(ctx, req.(*proto.ResolveEntitiesRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Mixer_ResolveCoordinates_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ResolveCoordinatesRequest)
+	in := new(proto.ResolveCoordinatesRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -2067,13 +2070,13 @@ func _Mixer_ResolveCoordinates_Handler(srv interface{}, ctx context.Context, dec
 		FullMethod: "/datacommons.Mixer/ResolveCoordinates",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).ResolveCoordinates(ctx, req.(*ResolveCoordinatesRequest))
+		return srv.(MixerServer).ResolveCoordinates(ctx, req.(*proto.ResolveCoordinatesRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Mixer_ResolveIds_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ResolveIdsRequest)
+	in := new(proto.ResolveIdsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -2085,13 +2088,13 @@ func _Mixer_ResolveIds_Handler(srv interface{}, ctx context.Context, dec func(in
 		FullMethod: "/datacommons.Mixer/ResolveIds",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).ResolveIds(ctx, req.(*ResolveIdsRequest))
+		return srv.(MixerServer).ResolveIds(ctx, req.(*proto.ResolveIdsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Mixer_FindEntities_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(FindEntitiesRequest)
+	in := new(proto.FindEntitiesRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -2103,13 +2106,13 @@ func _Mixer_FindEntities_Handler(srv interface{}, ctx context.Context, dec func(
 		FullMethod: "/datacommons.Mixer/FindEntities",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).FindEntities(ctx, req.(*FindEntitiesRequest))
+		return srv.(MixerServer).FindEntities(ctx, req.(*proto.FindEntitiesRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Mixer_BulkFindEntities_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(BulkFindEntitiesRequest)
+	in := new(proto.BulkFindEntitiesRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -2121,13 +2124,13 @@ func _Mixer_BulkFindEntities_Handler(srv interface{}, ctx context.Context, dec f
 		FullMethod: "/datacommons.Mixer/BulkFindEntities",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).BulkFindEntities(ctx, req.(*BulkFindEntitiesRequest))
+		return srv.(MixerServer).BulkFindEntities(ctx, req.(*proto.BulkFindEntitiesRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Mixer_RecognizePlaces_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RecognizePlacesRequest)
+	in := new(proto.RecognizePlacesRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -2139,7 +2142,7 @@ func _Mixer_RecognizePlaces_Handler(srv interface{}, ctx context.Context, dec fu
 		FullMethod: "/datacommons.Mixer/RecognizePlaces",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).RecognizePlaces(ctx, req.(*RecognizePlacesRequest))
+		return srv.(MixerServer).RecognizePlaces(ctx, req.(*proto.RecognizePlacesRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -2152,8 +2155,8 @@ var Mixer_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*MixerServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "QueryV2",
-			Handler:    _Mixer_QueryV2_Handler,
+			MethodName: "V2Node",
+			Handler:    _Mixer_V2Node_Handler,
 		},
 		{
 			MethodName: "V2Observation",
@@ -2401,5 +2404,5 @@ var Mixer_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "mixer.proto",
+	Metadata: "service/mixer.proto",
 }

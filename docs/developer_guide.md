@@ -64,10 +64,11 @@ Run the following command to generate Go proto files.
 # In repo root directory
 protoc \
   --proto_path=proto \
-  --go_out=internal \
-  --go-grpc_out=internal \
+  --go_out=paths=source_relative:internal/proto \
+  --go-grpc_out=paths=source_relative:internal/proto \
   --go-grpc_opt=require_unimplemented_servers=false \
-  proto/*.proto proto/v1/*.proto
+  --experimental_allow_proto3_optional \
+  proto/*.proto proto/**/*.proto
 ```
 
 ### Start Mixer as a gRPC server backed by Cloud BigTable (BigQuery)
@@ -130,9 +131,10 @@ definition(mixer-grpc.pb) is available by running the follow from repo root.
 
 ```sh
 protoc --proto_path=proto \
-  --include_source_info --include_imports \
+  --include_source_info \
+  --include_imports \
   --descriptor_set_out mixer-grpc.pb \
-  proto/*.proto proto/v1/*.proto
+  proto/*.proto proto/**/*.proto
 ```
 
 Assuming mixer gRPC server is at `localhost:12345`, run the following from repo

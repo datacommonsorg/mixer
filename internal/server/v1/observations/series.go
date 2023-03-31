@@ -20,6 +20,7 @@ import (
 	"strings"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"github.com/datacommonsorg/mixer/internal/server/ranking"
 	"github.com/datacommonsorg/mixer/internal/server/stat"
 	"github.com/datacommonsorg/mixer/internal/store"
@@ -31,9 +32,9 @@ import (
 // Series implements API for Mixer.ObservationsSeries.
 func Series(
 	ctx context.Context,
-	in *pb.ObservationsSeriesRequest,
+	in *pbv1.ObservationsSeriesRequest,
 	store *store.Store,
-) (*pb.ObservationsSeriesResponse, error) {
+) (*pbv1.ObservationsSeriesResponse, error) {
 	entityVariable := in.GetEntityVariable()
 	parts := strings.Split(entityVariable, "/")
 	if len(parts) < 2 {
@@ -50,7 +51,7 @@ func Series(
 		return nil, status.Errorf(codes.InvalidArgument,
 			"Missing required argument: variable")
 	}
-	resp := &pb.ObservationsSeriesResponse{}
+	resp := &pbv1.ObservationsSeriesResponse{}
 	btData, err := stat.ReadStatsPb(
 		ctx, store.BtGroup, []string{entity}, []string{variable})
 	if err != nil {

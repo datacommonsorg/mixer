@@ -18,9 +18,10 @@
 // 	protoc        v3.21.9
 // source: v1/observation_dates.proto
 
-package proto
+package v1
 
 import (
+	proto "github.com/datacommonsorg/mixer/internal/proto"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -286,8 +287,8 @@ type BulkObservationDatesLinkedResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	DatesByVariable []*VariableObservationDates `protobuf:"bytes,1,rep,name=dates_by_variable,json=datesByVariable,proto3" json:"dates_by_variable,omitempty"`
-	Facets          map[string]*StatMetadata    `protobuf:"bytes,2,rep,name=facets,proto3" json:"facets,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	DatesByVariable []*VariableObservationDates    `protobuf:"bytes,1,rep,name=dates_by_variable,json=datesByVariable,proto3" json:"dates_by_variable,omitempty"`
+	Facets          map[string]*proto.StatMetadata `protobuf:"bytes,2,rep,name=facets,proto3" json:"facets,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 }
 
 func (x *BulkObservationDatesLinkedResponse) Reset() {
@@ -329,7 +330,7 @@ func (x *BulkObservationDatesLinkedResponse) GetDatesByVariable() []*VariableObs
 	return nil
 }
 
-func (x *BulkObservationDatesLinkedResponse) GetFacets() map[string]*StatMetadata {
+func (x *BulkObservationDatesLinkedResponse) GetFacets() map[string]*proto.StatMetadata {
 	if x != nil {
 		return x.Facets
 	}
@@ -391,8 +392,10 @@ var file_v1_observation_dates_proto_rawDesc = []byte{
 	0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x19, 0x2e, 0x64, 0x61,
 	0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e, 0x53, 0x74, 0x61, 0x74, 0x4d, 0x65,
 	0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x3a, 0x02, 0x38,
-	0x01, 0x42, 0x09, 0x5a, 0x07, 0x2e, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x06, 0x70, 0x72,
-	0x6f, 0x74, 0x6f, 0x33,
+	0x01, 0x42, 0x33, 0x5a, 0x31, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f,
+	0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x6f, 0x72, 0x67, 0x2f, 0x6d,
+	0x69, 0x78, 0x65, 0x72, 0x2f, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x6e, 0x61, 0x6c, 0x2f, 0x70, 0x72,
+	0x6f, 0x74, 0x6f, 0x2f, 0x76, 0x31, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -414,8 +417,8 @@ var file_v1_observation_dates_proto_goTypes = []interface{}{
 	(*VariableObservationDates)(nil),           // 2: datacommons.v1.VariableObservationDates
 	(*BulkObservationDatesLinkedRequest)(nil),  // 3: datacommons.v1.BulkObservationDatesLinkedRequest
 	(*BulkObservationDatesLinkedResponse)(nil), // 4: datacommons.v1.BulkObservationDatesLinkedResponse
-	nil,                  // 5: datacommons.v1.BulkObservationDatesLinkedResponse.FacetsEntry
-	(*StatMetadata)(nil), // 6: datacommons.StatMetadata
+	nil,                        // 5: datacommons.v1.BulkObservationDatesLinkedResponse.FacetsEntry
+	(*proto.StatMetadata)(nil), // 6: datacommons.StatMetadata
 }
 var file_v1_observation_dates_proto_depIdxs = []int32{
 	0, // 0: datacommons.v1.ObservationDates.entity_count:type_name -> datacommons.v1.EntityCount
@@ -435,7 +438,6 @@ func file_v1_observation_dates_proto_init() {
 	if File_v1_observation_dates_proto != nil {
 		return
 	}
-	file_stat_proto_init()
 	if !protoimpl.UnsafeEnabled {
 		file_v1_observation_dates_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*EntityCount); i {

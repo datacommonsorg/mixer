@@ -20,7 +20,8 @@ import (
 	"runtime"
 	"testing"
 
-	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbs "github.com/datacommonsorg/mixer/internal/proto/service"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"github.com/datacommonsorg/mixer/test"
 	"github.com/google/go-cmp/cmp"
@@ -34,7 +35,7 @@ func TestBulkPropertyValuesOut(t *testing.T) {
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(path.Dir(filename), "bulk_property_values_out")
 
-	testSuite := func(mixer pb.MixerClient, latencyTest bool) {
+	testSuite := func(mixer pbs.MixerClient, latencyTest bool) {
 		for _, c := range []struct {
 			goldenFile string
 			property   string
@@ -71,7 +72,7 @@ func TestBulkPropertyValuesOut(t *testing.T) {
 				"H4sIAAAAAAAA/+Ly5+JOT833TNE3MDMwNQZz/MtSi3ISC4q5pJ1T84pLi6MyC5zzU1JDEpNKcxJLMvPzHItSE4UYhJg4GIWYOJiEmDiYhZg4WIRYOFglWAEAAAD//wEAAP//Qf91ulEAAAA=",
 			},
 		} {
-			req := &pb.BulkPropertyValuesRequest{
+			req := &pbv1.BulkPropertyValuesRequest{
 				Property:  c.property,
 				Nodes:     c.nodes,
 				Direction: util.DirectionOut,
@@ -90,7 +91,7 @@ func TestBulkPropertyValuesOut(t *testing.T) {
 				test.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
 				continue
 			}
-			var expected pb.BulkPropertyValuesResponse
+			var expected pbv1.BulkPropertyValuesResponse
 			if err := test.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
 				t.Errorf("Can not Unmarshal golden file %s: %v", c.goldenFile, err)
 				continue

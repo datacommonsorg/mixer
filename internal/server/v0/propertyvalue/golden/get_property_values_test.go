@@ -22,6 +22,7 @@ import (
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbs "github.com/datacommonsorg/mixer/internal/proto/service"
 	"github.com/datacommonsorg/mixer/test"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/encoding/protojson"
@@ -36,7 +37,7 @@ func TestGetPropertyValues(t *testing.T) {
 	goldenPath := path.Join(
 		path.Dir(filename), "get_property_values")
 
-	testSuite := func(mixer pb.MixerClient, latencyTest bool) {
+	testSuite := func(mixer pbs.MixerClient, latencyTest bool) {
 		for _, c := range []struct {
 			goldenFile string
 			dcids      []string

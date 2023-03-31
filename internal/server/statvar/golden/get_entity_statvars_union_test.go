@@ -19,6 +19,7 @@ import (
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbs "github.com/datacommonsorg/mixer/internal/proto/service"
 	"github.com/datacommonsorg/mixer/test"
 )
 
@@ -26,7 +27,7 @@ func TestGetEntityStatVarsUnionV1(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
 
-	testSuite := func(mixer pb.MixerClient, latencyTest bool) {
+	testSuite := func(mixer pbs.MixerClient, latencyTest bool) {
 		for _, c := range []struct {
 			dcids          []string
 			statVars       []string

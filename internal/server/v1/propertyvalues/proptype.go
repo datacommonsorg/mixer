@@ -17,7 +17,7 @@ package propertyvalues
 import (
 	"context"
 
-	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/protobuf/proto"
@@ -36,7 +36,7 @@ func getNodePropType(
 		bigtable.BtPropType,
 		[][]string{nodes, properites},
 		func(jsonRaw []byte) (interface{}, error) {
-			var propertyTypes pb.PropertyTypes
+			var propertyTypes pbv1.PropertyTypes
 			if err := proto.Unmarshal(jsonRaw, &propertyTypes); err != nil {
 				return nil, err
 			}
@@ -50,7 +50,7 @@ func getNodePropType(
 
 	for _, btData := range btDataList {
 		for _, row := range btData {
-			propTypes := row.Data.(*pb.PropertyTypes)
+			propTypes := row.Data.(*pbv1.PropertyTypes)
 			var types []string
 			if direction == util.DirectionOut {
 				types = propTypes.OutTypes

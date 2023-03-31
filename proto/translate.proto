@@ -23,8 +23,9 @@
 // ========================================
 
 syntax = "proto3";
-option go_package = "./proto";
 package datacommons;
+
+option go_package = "github.com/datacommonsorg/mixer/internal/proto";
 
 // Request to translate a graph query.
 message TranslateRequest {

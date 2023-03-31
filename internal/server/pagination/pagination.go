@@ -15,18 +15,18 @@
 package pagination
 
 import (
-	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/protobuf/proto"
 )
 
 // Decode decodes a compressed token string into PaginationInfo.
-func Decode(s string) (*pb.PaginationInfo, error) {
+func Decode(s string) (*pbv1.PaginationInfo, error) {
 	data, err := util.UnzipAndDecode(s)
 	if err != nil {
 		return nil, err
 	}
-	result := &pb.PaginationInfo{}
+	result := &pbv1.PaginationInfo{}
 	err = proto.Unmarshal(data, result)
 	if err != nil {
 		return nil, err
