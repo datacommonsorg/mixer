@@ -163,12 +163,16 @@ func TestParseArc(t *testing.T) {
 			true,
 		},
 		{
-			"<-prop{p:v}",
+			`<-prop{
+				p1:v1,
+				p2:v2
+			}`,
 			&Arc{
 				Out:        false,
 				SingleProp: "prop",
 				Filter: map[string]string{
-					"p": "v",
+					"p1": "v1",
+					"p2": "v2",
 				},
 			},
 			true,
