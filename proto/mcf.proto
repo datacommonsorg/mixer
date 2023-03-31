@@ -24,7 +24,6 @@
 syntax = "proto2";
 package datacommons;
 
-// Use relative go package so the generated file is in the current folder.
 option go_package = "github.com/datacommonsorg/mixer/internal/proto";
 
 import "debug.proto";

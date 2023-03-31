@@ -30,8 +30,13 @@ function update_version() {
 function update_proto() {
   echo ""
   echo "==== Updating go proto files ===="
-  protoc --proto_path=proto --go_out=internal --go-grpc_out=internal \
-         --go-grpc_opt=require_unimplemented_servers=false proto/*.proto proto/v1/*.proto
+  protoc \
+    --proto_path=proto \
+    --go_out=paths=source_relative:internal/proto \
+    --go-grpc_out=paths=source_relative:internal/proto \
+    --go-grpc_opt=require_unimplemented_servers=false \
+    --experimental_allow_proto3_optional \
+    proto/*.proto proto/**/*.proto
   if [ $? -ne 0 ]; then
     echo "ERROR: Failed to update proto"
     exit 1
