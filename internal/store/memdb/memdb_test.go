@@ -65,7 +65,7 @@ func TestAddRow(t *testing.T) {
 	for _, c := range []struct {
 		header []string
 		rows   [][]string
-		want   map[string]map[string][]*pb.Series
+		want   map[string]map[string][]*pb.SourceSeries
 	}{
 		{
 			[]string{
@@ -75,28 +75,24 @@ func TestAddRow(t *testing.T) {
 				"IncrementalCount_Vaccine_COVID_19_Administered",
 			},
 			[][]string{{"2020-03-22", "country/AFG", "100", "10"}},
-			map[string]map[string][]*pb.Series{
+			map[string]map[string][]*pb.SourceSeries{
 				"CumulativeCount_Vaccine_COVID_19_Administered": {
-					"country/AFG": []*pb.Series{
+					"country/AFG": []*pb.SourceSeries{
 						{
-							Val: map[string]float64{"2020-03-22": 100},
-							Metadata: &pb.StatMetadata{
-								MeasurementMethod: "OurWorldInData_COVID19",
-								ImportName:        "Private Import",
-								ProvenanceUrl:     "private.domain",
-							},
+							Val:               map[string]float64{"2020-03-22": 100},
+							MeasurementMethod: "OurWorldInData_COVID19",
+							ImportName:        "Private Import",
+							ProvenanceUrl:     "private.domain",
 						},
 					},
 				},
 				"IncrementalCount_Vaccine_COVID_19_Administered": {
-					"country/AFG": []*pb.Series{
+					"country/AFG": []*pb.SourceSeries{
 						{
-							Val: map[string]float64{"2020-03-22": 10},
-							Metadata: &pb.StatMetadata{
-								MeasurementMethod: "OurWorldInData_COVID19",
-								ImportName:        "Private Import",
-								ProvenanceUrl:     "private.domain",
-							},
+							Val:               map[string]float64{"2020-03-22": 10},
+							MeasurementMethod: "OurWorldInData_COVID19",
+							ImportName:        "Private Import",
+							ProvenanceUrl:     "private.domain",
 						},
 					},
 				},
@@ -115,61 +111,51 @@ func TestAddRow(t *testing.T) {
 				{"2020-03-23", "country/USA", "250", "25"},
 				{"2020-03-22", "country/ALB", "30", ""},
 			},
-			map[string]map[string][]*pb.Series{
+			map[string]map[string][]*pb.SourceSeries{
 				"CumulativeCount_Vaccine_COVID_19_Administered": {
-					"country/AFG": []*pb.Series{
+					"country/AFG": []*pb.SourceSeries{
 						{
-							Val: map[string]float64{"2020-03-22": 100},
-							Metadata: &pb.StatMetadata{
-								MeasurementMethod: "OurWorldInData_COVID19",
-								ImportName:        "Private Import",
-								ProvenanceUrl:     "private.domain",
-							},
+							Val:               map[string]float64{"2020-03-22": 100},
+							MeasurementMethod: "OurWorldInData_COVID19",
+							ImportName:        "Private Import",
+							ProvenanceUrl:     "private.domain",
 						},
 					},
-					"country/USA": []*pb.Series{
+					"country/USA": []*pb.SourceSeries{
 						{
-							Val: map[string]float64{"2020-03-22": 200, "2020-03-23": 250},
-							Metadata: &pb.StatMetadata{
-								MeasurementMethod: "OurWorldInData_COVID19",
-								ImportName:        "Private Import",
-								ProvenanceUrl:     "private.domain",
-							},
+							Val:               map[string]float64{"2020-03-22": 200, "2020-03-23": 250},
+							MeasurementMethod: "OurWorldInData_COVID19",
+							ImportName:        "Private Import",
+							ProvenanceUrl:     "private.domain",
 						},
 					},
-					"country/ALB": []*pb.Series{
+					"country/ALB": []*pb.SourceSeries{
 						{
-							Val: map[string]float64{"2020-03-22": 30},
-							Metadata: &pb.StatMetadata{
-								MeasurementMethod: "OurWorldInData_COVID19",
-								ImportName:        "Private Import",
-								ProvenanceUrl:     "private.domain",
-							},
+							Val:               map[string]float64{"2020-03-22": 30},
+							MeasurementMethod: "OurWorldInData_COVID19",
+							ImportName:        "Private Import",
+							ProvenanceUrl:     "private.domain",
 						},
 					},
 				},
 				"IncrementalCount_Vaccine_COVID_19_Administered": {
-					"country/AFG": []*pb.Series{
+					"country/AFG": []*pb.SourceSeries{
 						{
-							Val: map[string]float64{"2020-03-22": 10},
-							Metadata: &pb.StatMetadata{
-								MeasurementMethod: "OurWorldInData_COVID19",
-								ImportName:        "Private Import",
-								ProvenanceUrl:     "private.domain",
-							},
+							Val:               map[string]float64{"2020-03-22": 10},
+							MeasurementMethod: "OurWorldInData_COVID19",
+							ImportName:        "Private Import",
+							ProvenanceUrl:     "private.domain",
 						},
 					},
-					"country/USA": []*pb.Series{
+					"country/USA": []*pb.SourceSeries{
 						{
-							Val: map[string]float64{"2020-03-22": 20, "2020-03-23": 25},
-							Metadata: &pb.StatMetadata{
-								MeasurementMethod: "OurWorldInData_COVID19",
-								ImportName:        "Private Import",
-								ProvenanceUrl:     "private.domain",
-							},
+							Val:               map[string]float64{"2020-03-22": 20, "2020-03-23": 25},
+							MeasurementMethod: "OurWorldInData_COVID19",
+							ImportName:        "Private Import",
+							ProvenanceUrl:     "private.domain",
 						},
 					},
-					"country/ALB": []*pb.Series{},
+					"country/ALB": []*pb.SourceSeries{},
 				},
 			},
 		},

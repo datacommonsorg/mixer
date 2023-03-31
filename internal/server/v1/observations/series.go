@@ -24,6 +24,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/ranking"
 	"github.com/datacommonsorg/mixer/internal/server/stat"
 	"github.com/datacommonsorg/mixer/internal/store"
+	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/proto"
@@ -70,7 +71,7 @@ func Series(
 		return resp, err
 	}
 	sort.Sort(ranking.SeriesByRank(series))
-	resp.Facet = stat.GetMetadata(series[0])
+	resp.Facet = util.GetMetadata(series[0])
 	dates := []string{}
 	for date := range series[0].Val {
 		dates = append(dates, date)

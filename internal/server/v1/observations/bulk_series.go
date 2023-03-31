@@ -50,6 +50,10 @@ func BulkSeries(
 	for _, entity := range entities {
 		for _, variable := range variables {
 			series := btData[entity][variable].SourceSeries
+			if store.MemDb.HasStatVar(variable) {
+				// Read series from in-memory database
+				series = append(store.MemDb.ReadSeries(variable, entity), series...)
+			}
 			entityObservations := &pbv1.EntityObservations{
 				Entity: entity,
 			}
@@ -65,7 +69,7 @@ func BulkSeries(
 					series = series[0:1]
 				}
 				for _, series := range series {
-					metadata := stat.GetMetadata(series)
+					metadata := util.GetMetadata(series)
 					facet := util.GetMetadataHash(metadata)
 					timeSeries := &pbv1.TimeSeries{
 						Facet: facet,
@@ -76,42 +80,15 @@ func BulkSeries(
 							Value: proto.Float64(value),
 						}
 						timeSeries.Series = append(timeSeries.Series, ps)
-						sort.SliceStable(timeSeries.Series, func(i, j int) bool {
-							return timeSeries.Series[i].Date < timeSeries.Series[j].Date
-						})
 					}
+					sort.SliceStable(timeSeries.Series, func(i, j int) bool {
+						return timeSeries.Series[i].Date < timeSeries.Series[j].Date
+					})
 					entityObservations.SeriesByFacet = append(
 						entityObservations.SeriesByFacet,
 						timeSeries,
 					)
 					result.Facets[facet] = metadata
-				}
-			} else if store.MemDb.HasStatVar(variable) {
-				// Read series from in-memory database
-				series := store.MemDb.ReadSeries(variable, entity)
-				if !allFacets && len(series) > 0 {
-					series = series[0:1]
-				}
-				for _, series := range series {
-					facet := util.GetMetadataHash(series.Metadata)
-					timeSeries := &pbv1.TimeSeries{
-						Facet: facet,
-					}
-					for date, value := range series.Val {
-						ps := &pb.PointStat{
-							Date:  date,
-							Value: proto.Float64(value),
-						}
-						timeSeries.Series = append(timeSeries.Series, ps)
-						sort.SliceStable(timeSeries.Series, func(i, j int) bool {
-							return timeSeries.Series[i].Date < timeSeries.Series[j].Date
-						})
-					}
-					entityObservations.SeriesByFacet = append(
-						entityObservations.SeriesByFacet,
-						timeSeries,
-					)
-					result.Facets[facet] = series.Metadata
 				}
 			}
 			tmpResult[variable].ObservationsByEntity = append(

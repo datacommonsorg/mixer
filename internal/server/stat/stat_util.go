@@ -127,7 +127,7 @@ func GetBestSeries(
 func rawSeriesToSeries(raw *pb.SourceSeries) *pb.Series {
 	result := &pb.Series{}
 	result.Val = raw.Val
-	result.Metadata = GetMetadata(raw)
+	result.Metadata = util.GetMetadata(raw)
 	return result
 }
 
@@ -191,7 +191,7 @@ func GetValueFromBestSourcePb(
 	if date != "" {
 		for _, series := range sourceSeries {
 			if value, ok := series.Val[date]; ok {
-				meta := GetMetadata(series)
+				meta := util.GetMetadata(series)
 				return &pb.PointStat{
 					Date:  date,
 					Value: proto.Float64(value),
@@ -219,7 +219,7 @@ func GetValueFromBestSourcePb(
 					Date:  date,
 					Value: proto.Float64(value),
 				}
-				meta = GetMetadata(series)
+				meta = util.GetMetadata(series)
 			}
 		}
 	}
@@ -229,21 +229,9 @@ func GetValueFromBestSourcePb(
 	return ps, meta
 }
 
-// GetMetadata derives the stat metadata from a source series.
-func GetMetadata(s *pb.SourceSeries) *pb.StatMetadata {
-	return &pb.StatMetadata{
-		ImportName:        s.ImportName,
-		MeasurementMethod: s.MeasurementMethod,
-		ObservationPeriod: s.ObservationPeriod,
-		ScalingFactor:     s.ScalingFactor,
-		Unit:              s.Unit,
-		ProvenanceUrl:     s.ProvenanceUrl,
-	}
-}
-
 // getSourceSeriesKey computes the metahash for *pb.SourceSeries.
 func getSourceSeriesHash(series *pb.SourceSeries) string {
-	return util.GetMetadataHash(GetMetadata(series))
+	return util.GetMetadataHash(util.GetMetadata(series))
 }
 
 // CollectDistinctSourceSeries merges lists of SourceSeries.

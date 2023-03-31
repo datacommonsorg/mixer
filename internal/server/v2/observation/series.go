@@ -17,18 +17,86 @@ package observation
 
 import (
 	"context"
+	"sort"
 
+	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	"github.com/datacommonsorg/mixer/internal/server/ranking"
+	"github.com/datacommonsorg/mixer/internal/server/stat"
+	"github.com/datacommonsorg/mixer/internal/util"
+	"google.golang.org/protobuf/proto"
 
 	"github.com/datacommonsorg/mixer/internal/store"
 )
 
-// Series is the V2 observation series API implementation entry point.
-func Series(
+const (
+	LATEST = "LATEST"
+)
+
+// FetchFromSeries fetches data from observation series cache.
+func FetchFromSeries(
 	ctx context.Context,
 	store *store.Store,
 	entities []string,
 	variables []string,
+	queryDate string,
 ) (*pbv2.ObservationResponse, error) {
-	return nil, nil
+	result := &pbv2.ObservationResponse{
+		ObservationsByVariable: map[string]*pbv2.VariableObservation{},
+		Facets:                 map[string]*pb.StatMetadata{},
+	}
+	btData, err := stat.ReadStatsPb(ctx, store.BtGroup, entities, variables)
+	if err != nil {
+		return result, err
+	}
+	for _, variable := range variables {
+		result.ObservationsByVariable[variable] = &pbv2.VariableObservation{
+			ObservationsByEntity: map[string]*pbv2.EntityObservation{},
+		}
+		for _, entity := range entities {
+			entityObservation := &pbv2.EntityObservation{}
+			series := btData[entity][variable].SourceSeries
+			if store.MemDb.HasStatVar(variable) {
+				// Read series from in-memory database
+				series = append(series, store.MemDb.ReadSeries(variable, entity)...)
+			}
+			if len(series) > 0 {
+				// Read series from BT cache
+				sort.Sort(ranking.SeriesByRank(series))
+				for _, series := range series {
+					metadata := util.GetMetadata(series)
+					facetID := util.GetMetadataHash(metadata)
+					obsList := []*pb.PointStat{}
+					for date, value := range series.Val {
+						ps := &pb.PointStat{
+							Date:  date,
+							Value: proto.Float64(value),
+						}
+						if queryDate != "" && queryDate != LATEST && date != queryDate {
+							continue
+						}
+						obsList = append(obsList, ps)
+					}
+					sort.SliceStable(obsList, func(i, j int) bool {
+						return obsList[i].Date < obsList[j].Date
+					})
+					if queryDate == LATEST {
+						obsList = obsList[len(obsList)-1:]
+					}
+					if len(obsList) > 0 {
+						result.Facets[facetID] = metadata
+						entityObservation.OrderedFacetObservations = append(
+							entityObservation.OrderedFacetObservations,
+							&pbv2.FacetObservation{
+								FacetId:      facetID,
+								Observations: obsList,
+							},
+						)
+					}
+				}
+			}
+			result.ObservationsByVariable[variable].ObservationsByEntity[entity] = entityObservation
+		}
+	}
+	return result, nil
 }

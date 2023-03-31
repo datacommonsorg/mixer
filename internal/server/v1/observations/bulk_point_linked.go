@@ -90,7 +90,7 @@ func BulkPointLinked(
 		// Sort cohort first, so the preferred source is populated first.
 		sort.Sort(ranking.CohortByRank(cohorts))
 		for _, cohort := range cohorts {
-			facet := stat.GetMetadata(cohort)
+			facet := util.GetMetadata(cohort)
 			facetID := util.GetMetadataHash(facet)
 			result.Facets[facetID] = facet
 			for entity, val := range cohort.Val {

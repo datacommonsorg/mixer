@@ -434,6 +434,18 @@ func KeysToSlice(m map[string]bool) []string {
 	return s
 }
 
+// GetMetadata derives the stat metadata from a source series.
+func GetMetadata(s *pb.SourceSeries) *pb.StatMetadata {
+	return &pb.StatMetadata{
+		ImportName:        s.ImportName,
+		MeasurementMethod: s.MeasurementMethod,
+		ObservationPeriod: s.ObservationPeriod,
+		ScalingFactor:     s.ScalingFactor,
+		Unit:              s.Unit,
+		ProvenanceUrl:     s.ProvenanceUrl,
+	}
+}
+
 // GetMetadataHash retrieves a hash string for a given protobuf message.
 // Note this should be restrict to a request scope.
 func GetMetadataHash(m *pb.StatMetadata) string {

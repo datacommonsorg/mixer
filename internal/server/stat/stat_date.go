@@ -20,6 +20,7 @@ import (
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
+	"github.com/datacommonsorg/mixer/internal/util"
 
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
@@ -68,7 +69,7 @@ func GetStatDateWithinPlace(
 			for _, corhort := range data.SourceCohorts {
 				statDate := &pb.StatDate{
 					DatePlaceCount: corhort.Val,
-					Metadata:       GetMetadata(corhort),
+					Metadata:       util.GetMetadata(corhort),
 				}
 				result.Data[sv].StatDate = append(result.Data[sv].StatDate, statDate)
 			}
