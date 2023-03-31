@@ -65,7 +65,7 @@ func BulkPoint(
 				// When date is not given, tract the latest date from each series
 				latestDateAcrossSeries := ""
 				for idx, series := range series {
-					metadata := stat.GetMetadata(series)
+					metadata := util.GetMetadata(series)
 					facet := util.GetMetadataHash(metadata)
 					// Date is given
 					if date != "" {

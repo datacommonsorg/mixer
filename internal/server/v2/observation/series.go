@@ -54,13 +54,17 @@ func FetchFromSeries(
 			ObservationsByEntity: map[string]*pbv2.EntityObservation{},
 		}
 		for _, entity := range entities {
-			series := btData[entity][variable].SourceSeries
 			entityObservation := &pbv2.EntityObservation{}
+			series := btData[entity][variable].SourceSeries
+			if store.MemDb.HasStatVar(variable) {
+				// Read series from in-memory database
+				series = append(series, store.MemDb.ReadSeries(variable, entity)...)
+			}
 			if len(series) > 0 {
 				// Read series from BT cache
 				sort.Sort(ranking.SeriesByRank(series))
 				for _, series := range series {
-					metadata := stat.GetMetadata(series)
+					metadata := util.GetMetadata(series)
 					facetID := util.GetMetadataHash(metadata)
 					obsList := []*pb.PointStat{}
 					for date, value := range series.Val {
@@ -81,39 +85,6 @@ func FetchFromSeries(
 					}
 					if len(obsList) > 0 {
 						result.Facets[facetID] = metadata
-						entityObservation.OrderedFacetObservations = append(
-							entityObservation.OrderedFacetObservations,
-							&pbv2.FacetObservation{
-								FacetId:      facetID,
-								Observations: obsList,
-							},
-						)
-					}
-				}
-			} else if store.MemDb.HasStatVar(variable) {
-				// Read series from in-memory database
-				series := store.MemDb.ReadSeries(variable, entity)
-				for _, series := range series {
-					facetID := util.GetMetadataHash(series.Metadata)
-					obsList := []*pb.PointStat{}
-					for date, value := range series.Val {
-						ps := &pb.PointStat{
-							Date:  date,
-							Value: proto.Float64(value),
-						}
-						if queryDate != "" && queryDate != LATEST && date != queryDate {
-							continue
-						}
-						obsList = append(obsList, ps)
-					}
-					sort.SliceStable(obsList, func(i, j int) bool {
-						return obsList[i].Date < obsList[j].Date
-					})
-					if queryDate == LATEST {
-						obsList = obsList[len(obsList)-1:]
-					}
-					if len(obsList) > 0 {
-						result.Facets[facetID] = series.Metadata
 						entityObservation.OrderedFacetObservations = append(
 							entityObservation.OrderedFacetObservations,
 							&pbv2.FacetObservation{

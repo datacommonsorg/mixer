@@ -94,7 +94,7 @@ func BulkObservationDatesLinked(
 		// keyed by date
 		datesCount := map[string][]*pbv1.EntityCount{}
 		for _, cohort := range data.SourceCohorts {
-			facet := stat.GetMetadata(cohort)
+			facet := util.GetMetadata(cohort)
 			facetID := util.GetMetadataHash(facet)
 			for date := range cohort.Val {
 				if _, ok := datesCount[date]; !ok {

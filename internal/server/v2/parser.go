@@ -69,7 +69,7 @@ func ParseArc(s string) (*Arc, error) {
 		return arc, nil
 	}
 	// Remove space and new line.
-	replacer := strings.NewReplacer(" ", "", "\t", "", "\n", "")
+	replacer := strings.NewReplacer(" ", "", "\t", "", "\n", "", "\r", "")
 	// [prop1, prop2]
 	if s[0] == '[' {
 		if s[len(s)-1] != ']' {
