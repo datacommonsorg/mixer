@@ -19,6 +19,7 @@ import (
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	v1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/reflect/protoreflect"
 	"google.golang.org/protobuf/testing/protocmp"
@@ -103,7 +104,7 @@ func TestSample(t *testing.T) {
 		strategy *SamplingStrategy
 	}{
 		{
-			&pb.PlacePageResponse{
+			&v1.PlacePageResponse{
 				ChildPlacesType: "Country",
 				ChildPlaces: []string{
 					"geoId/12345",
@@ -147,7 +148,7 @@ func TestSample(t *testing.T) {
 					},
 				},
 			},
-			&pb.PlacePageResponse{
+			&v1.PlacePageResponse{
 				ChildPlacesType: "Country",
 				ChildPlaces: []string{
 					"geoId/12345",
@@ -229,15 +230,15 @@ func TestKeysToSlice(t *testing.T) {
 
 func TestEncode(t *testing.T) {
 	for _, c := range []struct {
-		info  *pb.PaginationInfo
+		info  *v1.PaginationInfo
 		token string
 	}{
 		{
 			// One entity scenario.
-			&pb.PaginationInfo{
-				CursorGroups: []*pb.CursorGroup{
+			&v1.PaginationInfo{
+				CursorGroups: []*v1.CursorGroup{
 					{
-						Cursors: []*pb.Cursor{
+						Cursors: []*v1.Cursor{
 							{
 								ImportGroup: 0,
 								Page:        0,
@@ -271,11 +272,11 @@ func TestEncode(t *testing.T) {
 		},
 		{
 			// Multiple entity scenario.
-			&pb.PaginationInfo{
-				CursorGroups: []*pb.CursorGroup{
+			&v1.PaginationInfo{
+				CursorGroups: []*v1.CursorGroup{
 					{
 						Keys: []string{"geoId/05"},
-						Cursors: []*pb.Cursor{
+						Cursors: []*v1.Cursor{
 							{
 								ImportGroup: 0,
 								Page:        0,
@@ -305,7 +306,7 @@ func TestEncode(t *testing.T) {
 					},
 					{
 						Keys: []string{"geoId/06"},
-						Cursors: []*pb.Cursor{
+						Cursors: []*v1.Cursor{
 							{
 								ImportGroup: 0,
 								Page:        5,

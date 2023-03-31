@@ -20,7 +20,8 @@ import (
 	"runtime"
 	"testing"
 
-	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbs "github.com/datacommonsorg/mixer/internal/proto/service"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"github.com/datacommonsorg/mixer/test"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/testing/protocmp"
@@ -33,7 +34,7 @@ func TestVariableInfo(t *testing.T) {
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(path.Dir(filename), "variable_info")
 
-	testSuite := func(mixer pb.MixerClient, latencyTest bool) {
+	testSuite := func(mixer pbs.MixerClient, latencyTest bool) {
 		for _, c := range []struct {
 			node       string
 			goldenFile string
@@ -50,7 +51,7 @@ func TestVariableInfo(t *testing.T) {
 				true,
 			},
 		} {
-			resp, err := mixer.VariableInfo(ctx, &pb.VariableInfoRequest{
+			resp, err := mixer.VariableInfo(ctx, &pbv1.VariableInfoRequest{
 				Node: c.node,
 			})
 			if c.wantErr {
@@ -73,7 +74,7 @@ func TestVariableInfo(t *testing.T) {
 				continue
 			}
 
-			var expected pb.VariableInfoResponse
+			var expected pbv1.VariableInfoResponse
 			if err = test.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
 				t.Errorf("Can not Unmarshal golden file")
 				continue

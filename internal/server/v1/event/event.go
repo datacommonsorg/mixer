@@ -22,6 +22,7 @@ import (
 	"strings"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"github.com/datacommonsorg/mixer/internal/server/v1/propertyvalues"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
@@ -53,7 +54,7 @@ type filterSpec struct {
 //
 // This requires a specific format of the "value" field. If an event does not
 // conform to the format, do not keep the event.
-func keepEvent(event *pb.EventCollection_Event, spec filterSpec) bool {
+func keepEvent(event *pbv1.EventCollection_Event, spec filterSpec) bool {
 	if spec.prop == "" {
 		// No prop to filter by, keep event
 		return true
@@ -89,7 +90,7 @@ func getAffectedPlaces(ctx context.Context, placeDcid string, store *store.Store
 		for _, nodeProp := range nodeProps {
 			resp, err := propertyvalues.PropertyValues(
 				ctx,
-				&pb.PropertyValuesRequest{
+				&pbv1.PropertyValuesRequest{
 					NodeProperty: nodeProp,
 					Direction:    util.DirectionIn,
 				},
@@ -115,9 +116,9 @@ func getAffectedPlaces(ctx context.Context, placeDcid string, store *store.Store
 // Collection implements API for Mixer.EventCollection.
 func Collection(
 	ctx context.Context,
-	in *pb.EventCollectionRequest,
+	in *pbv1.EventCollectionRequest,
 	store *store.Store,
-) (*pb.EventCollectionResponse, error) {
+) (*pbv1.EventCollectionResponse, error) {
 	if in.GetEventType() == "" || in.GetDate() == "" {
 		return nil, status.Error(codes.InvalidArgument, "Missing required arguments")
 	}
@@ -140,7 +141,7 @@ func Collection(
 		bigtable.BtEventCollection,
 		[][]string{{in.GetEventType()}, affectedPlaces, {in.GetDate()}},
 		func(jsonRaw []byte) (interface{}, error) {
-			var eventCollection pb.EventCollection
+			var eventCollection pbv1.EventCollection
 			err := proto.Unmarshal(jsonRaw, &eventCollection)
 			return &eventCollection, err
 		},
@@ -149,10 +150,10 @@ func Collection(
 		return nil, err
 	}
 
-	resp := &pb.EventCollectionResponse{
-		EventCollection: &pb.EventCollection{
-			Events:         []*pb.EventCollection_Event{},
-			ProvenanceInfo: map[string]*pb.EventCollection_ProvenanceInfo{},
+	resp := &pbv1.EventCollectionResponse{
+		EventCollection: &pbv1.EventCollection{
+			Events:         []*pbv1.EventCollection_Event{},
+			ProvenanceInfo: map[string]*pbv1.EventCollection_ProvenanceInfo{},
 		},
 	}
 
@@ -163,7 +164,7 @@ func Collection(
 		}
 		// Each row represents events from a sub-place. Merge them together.
 		for _, row := range btData {
-			data := row.Data.(*pb.EventCollection)
+			data := row.Data.(*pbv1.EventCollection)
 			for _, event := range data.Events {
 				if filterProp != "" {
 					if !keepEvent(event, filterSpec{
@@ -191,9 +192,9 @@ func Collection(
 // CollectionDate implements API for Mixer.EventCollectionDate.
 func CollectionDate(
 	ctx context.Context,
-	in *pb.EventCollectionDateRequest,
+	in *pbv1.EventCollectionDateRequest,
 	store *store.Store,
-) (*pb.EventCollectionDateResponse, error) {
+) (*pbv1.EventCollectionDateResponse, error) {
 	if in.GetEventType() == "" {
 		return nil, status.Error(codes.InvalidArgument, "Missing required arguments")
 	}
@@ -213,7 +214,7 @@ func CollectionDate(
 		bigtable.BtEventCollectionDate,
 		[][]string{{in.GetEventType()}, affectedPlaces},
 		func(jsonRaw []byte) (interface{}, error) {
-			var d pb.EventCollectionDate
+			var d pbv1.EventCollectionDate
 			err := proto.Unmarshal(jsonRaw, &d)
 			return &d, err
 		},
@@ -222,8 +223,8 @@ func CollectionDate(
 		return nil, err
 	}
 
-	resp := &pb.EventCollectionDateResponse{
-		EventCollectionDate: &pb.EventCollectionDate{
+	resp := &pbv1.EventCollectionDateResponse{
+		EventCollectionDate: &pbv1.EventCollectionDate{
 			Dates: []string{},
 		},
 	}
@@ -237,7 +238,7 @@ func CollectionDate(
 		dateSet := map[string]struct{}{}
 		dateStrings := []string{}
 		for _, row := range btData {
-			data := row.Data.(*pb.EventCollectionDate)
+			data := row.Data.(*pbv1.EventCollectionDate)
 			for _, date := range data.Dates {
 				if _, ok := dateSet[date]; !ok {
 					dateSet[date] = struct{}{}

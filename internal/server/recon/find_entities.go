@@ -21,6 +21,7 @@ import (
 	"sort"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"github.com/datacommonsorg/mixer/internal/server/v1/propertyvalues"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/util"
@@ -303,7 +304,7 @@ func getPlaceTypes(
 	error,
 ) {
 	resp, err := propertyvalues.BulkPropertyValues(ctx,
-		&pb.BulkPropertyValuesRequest{
+		&pbv1.BulkPropertyValuesRequest{
 			Property:  "typeOf",
 			Nodes:     util.StringSetToSlice(dcidSet),
 			Direction: util.DirectionOut,

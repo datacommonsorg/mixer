@@ -18,6 +18,7 @@ import (
 	"context"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"github.com/datacommonsorg/mixer/internal/server/biopage"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/util"
@@ -28,7 +29,7 @@ import (
 // BioPage implements API for Mixer.BioPage.
 func BioPage(
 	ctx context.Context,
-	in *pb.BioPageRequest,
+	in *pbv1.BioPageRequest,
 	store *store.Store,
 ) (*pb.GraphNodes, error) {
 	node := in.GetNode()

@@ -20,7 +20,8 @@ import (
 	"runtime"
 	"testing"
 
-	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbs "github.com/datacommonsorg/mixer/internal/proto/service"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"github.com/datacommonsorg/mixer/test"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/testing/protocmp"
@@ -33,7 +34,7 @@ func TestBulkTriplesIn(t *testing.T) {
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(path.Dir(filename), "bulk_triples_in")
 
-	testSuite := func(mixer pb.MixerClient, latencyTest bool) {
+	testSuite := func(mixer pbs.MixerClient, latencyTest bool) {
 		for _, c := range []struct {
 			goldenFile string
 			nodes      []string
@@ -50,7 +51,7 @@ func TestBulkTriplesIn(t *testing.T) {
 				"H4sIAAAAAAAA/2zNMcvCQAzG8bfX60sIDiWCH0gd3BQKLg5yliiBXlKu6eC3lxbcXJ7lgd8fT0h7scFe0qehG7mXzIr//h75/Pz10R8FqChCaCsKUFOASAEavOHmYLP6/cJlMsVd5jTNhTOrH1ktiya3gtvOk8vkC3pNRdJjYFqwCFX7hSPU68Y10nwAAAD//wEAAP//qyVVPKcAAAA=",
 			},
 		} {
-			req := &pb.BulkTriplesRequest{
+			req := &pbv1.BulkTriplesRequest{
 				Nodes:     c.nodes,
 				Direction: "in",
 				NextToken: c.token,
@@ -67,7 +68,7 @@ func TestBulkTriplesIn(t *testing.T) {
 				test.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
 				continue
 			}
-			var expected pb.BulkTriplesResponse
+			var expected pbv1.BulkTriplesResponse
 			if err := test.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
 				t.Errorf("Can not Unmarshal golden file %s: %v", c.goldenFile, err)
 				continue

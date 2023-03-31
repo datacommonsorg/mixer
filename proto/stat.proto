@@ -26,8 +26,9 @@
 // ========================================
 
 syntax = "proto3";
-option go_package = "./proto";
 package datacommons;
+
+option go_package = "github.com/datacommonsorg/mixer/internal/proto";
 
 // StatMetadata contains the source and measurement information for a
 // statistical observation.

@@ -18,7 +18,7 @@ package propertyvalues
 import (
 	"context"
 
-	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	v1pv "github.com/datacommonsorg/mixer/internal/server/v1/propertyvalues"
 
 	"github.com/datacommonsorg/mixer/internal/store"
@@ -33,7 +33,7 @@ func API(
 	direction string,
 	limit int,
 	nextToken string,
-) (*pb.QueryV2Response, error) {
+) (*pbv2.NodeResponse, error) {
 	data, _, err := v1pv.Fetch(
 		ctx,
 		store,
@@ -46,11 +46,11 @@ func API(
 	if err != nil {
 		return nil, err
 	}
-	res := &pb.QueryV2Response{Data: map[string]*pb.LinkedGraph{}}
+	res := &pbv2.NodeResponse{Data: map[string]*pbv2.LinkedGraph{}}
 	for _, node := range nodes {
-		res.Data[node] = &pb.LinkedGraph{Arcs: map[string]*pb.Nodes{}}
+		res.Data[node] = &pbv2.LinkedGraph{Arcs: map[string]*pbv2.Nodes{}}
 		for _, property := range properties {
-			res.Data[node].Arcs[property] = &pb.Nodes{
+			res.Data[node].Arcs[property] = &pbv2.Nodes{
 				Nodes: v1pv.MergeTypedNodes(data[node][property]),
 			}
 		}

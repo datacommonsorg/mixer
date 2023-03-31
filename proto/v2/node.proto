@@ -14,8 +14,9 @@
 
 
 syntax = "proto3";
-option go_package = "./proto";
 package datacommons.v2;
+
+option go_package = "github.com/datacommonsorg/mixer/internal/proto/v2";
 
 import "entity.proto";
 
@@ -30,7 +31,7 @@ message LinkedGraph {
   map<string, LinkedGraph> neighbor = 2;
 }
 
-message QueryV2Request {
+message NodeRequest {
   // Nodes to query for.
   repeated string nodes = 1;
   // The expression for the property or chained properties.
@@ -44,7 +45,7 @@ message QueryV2Request {
   string next_token = 4;
 }
 
-message QueryV2Response {
+message NodeResponse {
   // Keyed by the query node dcid.
   map<string, LinkedGraph> data = 1;
 }

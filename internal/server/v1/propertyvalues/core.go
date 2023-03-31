@@ -21,6 +21,7 @@ import (
 	"strconv"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"github.com/datacommonsorg/mixer/internal/server/pagination"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
@@ -43,7 +44,7 @@ func Fetch(
 	direction string,
 ) (
 	map[string]map[string]map[string][]*pb.EntityInfo,
-	*pb.PaginationInfo,
+	*pbv1.PaginationInfo,
 	error,
 ) {
 	var err error
@@ -52,7 +53,7 @@ func Fetch(
 		return nil, nil, err
 	}
 	// Empty cursor groups when no token is given.
-	var cursorGroups []*pb.CursorGroup
+	var cursorGroups []*pbv1.CursorGroup
 	if token == "" {
 		cursorGroups = buildDefaultCursorGroups(nodes, properties, propType, len(store.BtGroup.Tables()))
 	} else {
@@ -65,7 +66,7 @@ func Fetch(
 	if limit <= 0 || limit > defaultLimit {
 		limit = defaultLimit
 	}
-	cursorGroup := map[string]map[string]map[string][]*pb.Cursor{}
+	cursorGroup := map[string]map[string]map[string][]*pbv1.Cursor{}
 	for _, g := range cursorGroups {
 		keys := g.GetKeys()
 		// Key is  [node, property, type]
@@ -75,10 +76,10 @@ func Fetch(
 		}
 		n, p, t := keys[0], keys[1], keys[2]
 		if _, ok := cursorGroup[n]; !ok {
-			cursorGroup[n] = map[string]map[string][]*pb.Cursor{}
+			cursorGroup[n] = map[string]map[string][]*pbv1.Cursor{}
 		}
 		if _, ok := cursorGroup[n][p]; !ok {
-			cursorGroup[n][p] = map[string][]*pb.Cursor{}
+			cursorGroup[n][p] = map[string][]*pbv1.Cursor{}
 		}
 		cursorGroup[n][p][t] = g.GetCursors()
 	}

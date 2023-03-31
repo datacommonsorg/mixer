@@ -18,6 +18,7 @@ import (
 	"container/heap"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"google.golang.org/protobuf/proto"
 )
 
@@ -30,16 +31,16 @@ func buildDefaultCursorGroups(
 	properties []string,
 	propType map[string]map[string][]string,
 	size int,
-) []*pb.CursorGroup {
-	result := []*pb.CursorGroup{}
+) []*pbv1.CursorGroup {
+	result := []*pbv1.CursorGroup{}
 	for _, n := range nodes {
 		for _, p := range properties {
 			for _, t := range propType[n][p] {
-				cg := &pb.CursorGroup{
+				cg := &pbv1.CursorGroup{
 					Keys: []string{n, p, t},
 				}
 				for i := 0; i < size; i++ {
-					cg.Cursors = append(cg.Cursors, &pb.Cursor{ImportGroup: int32(i)})
+					cg.Cursors = append(cg.Cursors, &pbv1.Cursor{ImportGroup: int32(i)})
 				}
 				result = append(result, cg)
 			}

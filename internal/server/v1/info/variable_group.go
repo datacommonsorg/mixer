@@ -19,6 +19,7 @@ import (
 	"sort"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/server/statvar"
 	"github.com/datacommonsorg/mixer/internal/store"
@@ -28,10 +29,10 @@ import (
 // VariableGroupInfo implements API for Mixer.VariableGroupInfo.
 func VariableGroupInfo(
 	ctx context.Context,
-	in *pb.VariableGroupInfoRequest,
+	in *pbv1.VariableGroupInfoRequest,
 	store *store.Store,
 	cache *resource.Cache,
-) (*pb.VariableGroupInfoResponse, error) {
+) (*pbv1.VariableGroupInfoResponse, error) {
 	data, err := statvar.GetStatVarGroupNode(
 		ctx,
 		&pb.GetStatVarGroupNodeRequest{
@@ -45,16 +46,16 @@ func VariableGroupInfo(
 	if err != nil {
 		return nil, err
 	}
-	return &pb.VariableGroupInfoResponse{Node: in.GetNode(), Info: data}, nil
+	return &pbv1.VariableGroupInfoResponse{Node: in.GetNode(), Info: data}, nil
 }
 
 // BulkVariableGroupInfo implements API for Mixer.BulkVariableGroupInfo.
 func BulkVariableGroupInfo(
 	ctx context.Context,
-	in *pb.BulkVariableGroupInfoRequest,
+	in *pbv1.BulkVariableGroupInfoRequest,
 	store *store.Store,
 	cache *resource.Cache,
-) (*pb.BulkVariableGroupInfoResponse, error) {
+) (*pbv1.BulkVariableGroupInfoResponse, error) {
 	// TODO (shifucun):
 	// Ideally, both APIs need to filter out the child variable (group) that has
 	// no data, but this is indicated with a "has_data" field, to
@@ -65,11 +66,11 @@ func BulkVariableGroupInfo(
 	numEntitiesExistence := in.GetNumEntitiesExistence()
 
 	if len(nodes) == 0 {
-		result := &pb.BulkVariableGroupInfoResponse{
-			Data: []*pb.VariableGroupInfoResponse{},
+		result := &pbv1.BulkVariableGroupInfoResponse{
+			Data: []*pbv1.VariableGroupInfoResponse{},
 		}
 		for svg := range cache.RawSvg {
-			result.Data = append(result.Data, &pb.VariableGroupInfoResponse{
+			result.Data = append(result.Data, &pbv1.VariableGroupInfoResponse{
 				Node: svg,
 				Info: cache.RawSvg[svg],
 			})
@@ -80,14 +81,14 @@ func BulkVariableGroupInfo(
 		return result, nil
 	}
 
-	dataChan := make(chan *pb.VariableGroupInfoResponse, len(nodes))
+	dataChan := make(chan *pbv1.VariableGroupInfoResponse, len(nodes))
 	errs, errCtx := errgroup.WithContext(ctx)
 	for _, node := range nodes {
 		node := node
 		errs.Go(func() error {
 			data, err := VariableGroupInfo(
 				errCtx,
-				&pb.VariableGroupInfoRequest{
+				&pbv1.VariableGroupInfoRequest{
 					Node:                 node,
 					ConstrainedEntities:  constraindEntities,
 					NumEntitiesExistence: numEntitiesExistence,
@@ -104,8 +105,8 @@ func BulkVariableGroupInfo(
 		return nil, err
 	}
 	close(dataChan)
-	resp := &pb.BulkVariableGroupInfoResponse{
-		Data: []*pb.VariableGroupInfoResponse{},
+	resp := &pbv1.BulkVariableGroupInfoResponse{
+		Data: []*pbv1.VariableGroupInfoResponse{},
 	}
 	for elem := range dataChan {
 		resp.Data = append(resp.Data, elem)

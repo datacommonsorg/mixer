@@ -17,7 +17,7 @@ package info
 import (
 	"context"
 
-	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"github.com/datacommonsorg/mixer/internal/server/statvar"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/util"
@@ -28,9 +28,9 @@ import (
 // VariableInfo implements API for Mixer.VariableInfo.
 func VariableInfo(
 	ctx context.Context,
-	in *pb.VariableInfoRequest,
+	in *pbv1.VariableInfoRequest,
 	store *store.Store,
-) (*pb.VariableInfoResponse, error) {
+) (*pbv1.VariableInfoResponse, error) {
 	node := in.GetNode()
 	if !util.CheckValidDCIDs([]string{node}) {
 		return nil, status.Errorf(codes.InvalidArgument, "Invalid node")
@@ -39,7 +39,7 @@ func VariableInfo(
 	if err != nil {
 		return nil, err
 	}
-	resp := &pb.VariableInfoResponse{Node: node}
+	resp := &pbv1.VariableInfoResponse{Node: node}
 	if summary, ok := statVarToSummary[node]; ok {
 		resp.Info = summary
 	}
@@ -49,9 +49,9 @@ func VariableInfo(
 // BulkVariableInfo implements API for Mixer.BulkVariableInfo.
 func BulkVariableInfo(
 	ctx context.Context,
-	in *pb.BulkVariableInfoRequest,
+	in *pbv1.BulkVariableInfoRequest,
 	store *store.Store,
-) (*pb.BulkVariableInfoResponse, error) {
+) (*pbv1.BulkVariableInfoResponse, error) {
 	nodes := in.GetNodes()
 	if len(nodes) == 0 {
 		return nil, status.Error(codes.InvalidArgument, "Missing required arguments: nodes")
@@ -63,9 +63,9 @@ func BulkVariableInfo(
 	if err != nil {
 		return nil, err
 	}
-	resp := &pb.BulkVariableInfoResponse{}
+	resp := &pbv1.BulkVariableInfoResponse{}
 	for _, node := range nodes {
-		item := &pb.VariableInfoResponse{Node: node}
+		item := &pbv1.VariableInfoResponse{Node: node}
 		if summary, ok := statVarToSummary[node]; ok {
 			item.Info = summary
 		}

@@ -18,7 +18,7 @@ import (
 	"context"
 	"sort"
 
-	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"github.com/datacommonsorg/mixer/internal/server/statvar"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/codes"
@@ -30,9 +30,9 @@ import (
 // Variables implements API for Mixer.Variables.
 func Variables(
 	ctx context.Context,
-	in *pb.VariablesRequest,
+	in *pbv1.VariablesRequest,
 	store *store.Store,
-) (*pb.VariablesResponse, error) {
+) (*pbv1.VariablesResponse, error) {
 	entity := in.GetEntity()
 	if !util.CheckValidDCIDs([]string{entity}) {
 		return nil, status.Errorf(codes.InvalidArgument, "Invalid entity")
@@ -43,7 +43,7 @@ func Variables(
 		return nil, err
 	}
 
-	resp := &pb.VariablesResponse{Entity: entity}
+	resp := &pbv1.VariablesResponse{Entity: entity}
 	statVars, ok := entityToStatVars[entity]
 	if !ok {
 		return resp, nil
@@ -56,9 +56,9 @@ func Variables(
 // BulkVariables implements API for Mixer.BulkVariables.
 func BulkVariables(
 	ctx context.Context,
-	in *pb.BulkVariablesRequest,
+	in *pbv1.BulkVariablesRequest,
 	store *store.Store,
-) (*pb.BulkVariablesResponse, error) {
+) (*pbv1.BulkVariablesResponse, error) {
 	entities := in.GetEntities()
 	if len(entities) == 0 {
 		return nil, status.Error(codes.InvalidArgument, "Missing required arguments: entities")
@@ -72,8 +72,8 @@ func BulkVariables(
 		return nil, err
 	}
 
-	resp := &pb.BulkVariablesResponse{
-		Data: []*pb.VariablesResponse{},
+	resp := &pbv1.BulkVariablesResponse{
+		Data: []*pbv1.VariablesResponse{},
 	}
 
 	if in.GetUnion() {
@@ -83,7 +83,7 @@ func BulkVariables(
 				statVarSet[statVar] = struct{}{}
 			}
 		}
-		resp.Data = append(resp.Data, &pb.VariablesResponse{})
+		resp.Data = append(resp.Data, &pbv1.VariablesResponse{})
 		for statVar := range statVarSet {
 			resp.Data[0].Variables = append(resp.Data[0].Variables, statVar)
 		}
@@ -91,7 +91,7 @@ func BulkVariables(
 	} else {
 		sort.Strings(entities)
 		for _, entity := range entities {
-			item := &pb.VariablesResponse{
+			item := &pbv1.VariablesResponse{
 				Entity: entity,
 			}
 			if statVars, ok := entityToStatVars[entity]; ok {

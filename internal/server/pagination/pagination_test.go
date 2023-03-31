@@ -17,22 +17,22 @@ package pagination
 import (
 	"testing"
 
-	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/testing/protocmp"
 )
 
 func TestDecode(t *testing.T) {
 	for _, c := range []struct {
-		info  *pb.PaginationInfo
+		info  *pbv1.PaginationInfo
 		token string
 	}{
 		{
 			// One entity scenario.
-			&pb.PaginationInfo{
-				CursorGroups: []*pb.CursorGroup{
+			&pbv1.PaginationInfo{
+				CursorGroups: []*pbv1.CursorGroup{
 					{
-						Cursors: []*pb.Cursor{
+						Cursors: []*pbv1.Cursor{
 							{
 								ImportGroup: 0,
 								Page:        0,
@@ -66,11 +66,11 @@ func TestDecode(t *testing.T) {
 		},
 		{
 			// Multiple entity scenario.
-			&pb.PaginationInfo{
-				CursorGroups: []*pb.CursorGroup{
+			&pbv1.PaginationInfo{
+				CursorGroups: []*pbv1.CursorGroup{
 					{
 						Keys: []string{"geoId/05"},
-						Cursors: []*pb.Cursor{
+						Cursors: []*pbv1.Cursor{
 							{
 								ImportGroup: 0,
 								Page:        0,
@@ -100,7 +100,7 @@ func TestDecode(t *testing.T) {
 					},
 					{
 						Keys: []string{"geoId/06"},
-						Cursors: []*pb.Cursor{
+						Cursors: []*pbv1.Cursor{
 							{
 								ImportGroup: 0,
 								Page:        5,

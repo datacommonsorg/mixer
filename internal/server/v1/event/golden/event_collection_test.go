@@ -20,7 +20,8 @@ import (
 	"runtime"
 	"testing"
 
-	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbs "github.com/datacommonsorg/mixer/internal/proto/service"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"github.com/datacommonsorg/mixer/test"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/testing/protocmp"
@@ -33,7 +34,7 @@ func TestEventCollection(t *testing.T) {
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(path.Dir(filename), "event_collection")
 
-	testSuite := func(mixer pb.MixerClient, latencyTest bool) {
+	testSuite := func(mixer pbs.MixerClient, latencyTest bool) {
 		for _, c := range []struct {
 			eventType         string
 			affectedPlaceDcid string
@@ -95,7 +96,7 @@ func TestEventCollection(t *testing.T) {
 				"DroughtEvent_BFA_202204.json",
 			},
 		} {
-			resp, err := mixer.EventCollection(ctx, &pb.EventCollectionRequest{
+			resp, err := mixer.EventCollection(ctx, &pbv1.EventCollectionRequest{
 				EventType:         c.eventType,
 				AffectedPlaceDcid: c.affectedPlaceDcid,
 				Date:              c.date,
@@ -117,7 +118,7 @@ func TestEventCollection(t *testing.T) {
 				test.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
 				continue
 			}
-			var expected pb.EventCollectionResponse
+			var expected pbv1.EventCollectionResponse
 			if err = test.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
 				t.Errorf("Can not Unmarshal golden file: %s", err)
 				continue

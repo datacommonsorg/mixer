@@ -21,7 +21,8 @@ import (
 	"runtime"
 	"testing"
 
-	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbs "github.com/datacommonsorg/mixer/internal/proto/service"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"github.com/datacommonsorg/mixer/test"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/encoding/protojson"
@@ -35,7 +36,7 @@ func TestBulkProperties(t *testing.T) {
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(path.Dir(filename), "bulk_properties")
 
-	testSuite := func(mixer pb.MixerClient, latencyTest bool) {
+	testSuite := func(mixer pbs.MixerClient, latencyTest bool) {
 		for _, c := range []struct {
 			goldenFile string
 			nodes      []string
@@ -52,7 +53,7 @@ func TestBulkProperties(t *testing.T) {
 				"in",
 			},
 		} {
-			req := &pb.BulkPropertiesRequest{
+			req := &pbv1.BulkPropertiesRequest{
 				Nodes:     c.nodes,
 				Direction: c.direction,
 			}
@@ -71,7 +72,7 @@ func TestBulkProperties(t *testing.T) {
 				test.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
 				continue
 			}
-			var expected pb.BulkPropertiesResponse
+			var expected pbv1.BulkPropertiesResponse
 			file, _ := os.ReadFile(goldenFile)
 			if err := protojson.Unmarshal(file, &expected); err != nil {
 				t.Errorf("Can not Unmarshal golden file %s: %v", goldenFile, err)

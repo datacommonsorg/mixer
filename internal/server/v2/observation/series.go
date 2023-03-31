@@ -18,7 +18,7 @@ package observation
 import (
 	"context"
 
-	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 
 	"github.com/datacommonsorg/mixer/internal/store"
 )
@@ -29,6 +29,6 @@ func Series(
 	store *store.Store,
 	entities []string,
 	variables []string,
-) (*pb.V2ObservationResponse, error) {
+) (*pbv2.ObservationResponse, error) {
 	return nil, nil
 }

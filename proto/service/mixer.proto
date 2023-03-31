@@ -20,8 +20,9 @@
 // Mixer service definitions
 
 syntax = "proto3";
-option go_package = "./proto";
 package datacommons;
+
+option go_package = "github.com/datacommonsorg/mixer/internal/proto/service";
 
 import "google/api/annotations.proto";
 import "common.proto";
@@ -46,23 +47,23 @@ import "v1/observation_existence.proto";
 import "v1/page.proto";
 import "v1/triples.proto";
 
-import "v2/v2.proto";
+import "v2/node.proto";
 import "v2/observation.proto";
 
 service Mixer {
 
   // ======================  V2   V2   V2   V2  ======================
 
-  rpc QueryV2(datacommons.v2.QueryV2Request)
-      returns (datacommons.v2.QueryV2Response) {
+  rpc V2Node(datacommons.v2.NodeRequest)
+      returns (datacommons.v2.NodeResponse) {
     option (google.api.http) = {
-      get : "/v2/query"
-      additional_bindings : {post : "/v2/query" body : "*"}
+      get : "/v2/node"
+      additional_bindings : {post : "/v2/node" body : "*"}
     };
   }
 
-  rpc V2Observation(datacommons.v2.V2ObservationRequest)
-      returns (datacommons.v2.V2ObservationResponse) {
+  rpc V2Observation(datacommons.v2.ObservationRequest)
+      returns (datacommons.v2.ObservationResponse) {
     option (google.api.http) = {
       get : "/v2/observation"
       additional_bindings : {post : "/v2/observation" body : "*"}

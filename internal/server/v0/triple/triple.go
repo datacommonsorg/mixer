@@ -24,6 +24,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/v1/triples"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/codes"
@@ -99,7 +100,7 @@ func ReadTriples(
 	for _, direction := range []string{util.DirectionOut, util.DirectionIn} {
 		v1Resp, err := triples.BulkTriples(
 			ctx,
-			&pb.BulkTriplesRequest{
+			&pbv1.BulkTriplesRequest{
 				Nodes:     nodes,
 				Direction: direction,
 			},
@@ -120,7 +121,7 @@ func ReadTriples(
 	return result, nil
 }
 
-func convert(data map[string]*pb.NodeInfoCollection) map[string]*pb.EntityInfoCollection {
+func convert(data map[string]*pbv1.NodeInfoCollection) map[string]*pb.EntityInfoCollection {
 	result := map[string]*pb.EntityInfoCollection{}
 	for key, nodeCollection := range data {
 		entityCollection := &pb.EntityInfoCollection{
