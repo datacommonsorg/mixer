@@ -20,7 +20,8 @@ import (
 	"runtime"
 	"testing"
 
-	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbs "github.com/datacommonsorg/mixer/internal/proto/service"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"github.com/datacommonsorg/mixer/test"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/testing/protocmp"
@@ -33,7 +34,7 @@ func TestBulkVariables(t *testing.T) {
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(path.Dir(filename), "bulk_variables")
 
-	testSuite := func(mixer pb.MixerClient, latencyTest bool) {
+	testSuite := func(mixer pbs.MixerClient, latencyTest bool) {
 		for _, c := range []struct {
 			entities   []string
 			union      bool
@@ -59,7 +60,7 @@ func TestBulkVariables(t *testing.T) {
 				true,
 			},
 		} {
-			req := &pb.BulkVariablesRequest{
+			req := &pbv1.BulkVariablesRequest{
 				Entities: c.entities,
 				Union:    c.union,
 			}
@@ -84,7 +85,7 @@ func TestBulkVariables(t *testing.T) {
 				continue
 			}
 
-			var expected pb.BulkVariablesResponse
+			var expected pbv1.BulkVariablesResponse
 			if err = test.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
 				t.Errorf("Can not Unmarshal golden file")
 				continue

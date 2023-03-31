@@ -21,7 +21,9 @@ import (
 	"log"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbs "github.com/datacommonsorg/mixer/internal/proto/service"
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/credentials/insecure"
 )
 
 var (
@@ -35,14 +37,14 @@ func main() {
 
 	// Set up a connection to the server.
 	conn, err := grpc.Dial(*addr,
-		grpc.WithInsecure(),
+		grpc.WithTransportCredentials(insecure.NewCredentials()),
 		grpc.WithDefaultCallOptions(grpc.MaxCallRecvMsgSize(100000000 /* 100M */)),
 	)
 	if err != nil {
 		log.Fatalf("did not connect: %v", err)
 	}
 	defer conn.Close()
-	c := pb.NewMixerClient(conn)
+	c := pbs.NewMixerClient(conn)
 	ctx := context.Background()
 
 	{

@@ -20,7 +20,8 @@ import (
 	"runtime"
 	"testing"
 
-	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbs "github.com/datacommonsorg/mixer/internal/proto/service"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"github.com/datacommonsorg/mixer/test"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/testing/protocmp"
@@ -33,7 +34,7 @@ func TestBulkObservationsPoint(t *testing.T) {
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(path.Dir(filename), "bulk_point")
 
-	testSuite := func(mixer pb.MixerClient, latencyTest bool) {
+	testSuite := func(mixer pbs.MixerClient, latencyTest bool) {
 		for _, c := range []struct {
 			variables  []string
 			entities   []string
@@ -80,7 +81,7 @@ func TestBulkObservationsPoint(t *testing.T) {
 				} else {
 					goldenFile = "preferred_" + goldenFile
 				}
-				resp, err := mixer.BulkObservationsPoint(ctx, &pb.BulkObservationsPointRequest{
+				resp, err := mixer.BulkObservationsPoint(ctx, &pbv1.BulkObservationsPointRequest{
 					Variables: c.variables,
 					Entities:  c.entities,
 					Date:      c.date,
@@ -99,7 +100,7 @@ func TestBulkObservationsPoint(t *testing.T) {
 					test.UpdateGolden(resp, goldenPath, goldenFile)
 					continue
 				}
-				var expected pb.BulkObservationsPointResponse
+				var expected pbv1.BulkObservationsPointResponse
 				if err = test.ReadJSON(goldenPath, goldenFile, &expected); err != nil {
 					t.Errorf("Can not Unmarshal golden file: %s", err)
 					continue

@@ -19,7 +19,7 @@ package observations
 import (
 	"context"
 
-	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"github.com/datacommonsorg/mixer/internal/server/placein"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"google.golang.org/grpc/codes"
@@ -29,9 +29,9 @@ import (
 // BulkSeriesLinked implements API for Mixer.BulkObservationsSeriesLinked.
 func BulkSeriesLinked(
 	ctx context.Context,
-	in *pb.BulkObservationsSeriesLinkedRequest,
+	in *pbv1.BulkObservationsSeriesLinkedRequest,
 	store *store.Store,
-) (*pb.BulkObservationsSeriesResponse, error) {
+) (*pbv1.BulkObservationsSeriesResponse, error) {
 	entityType := in.GetEntityType()
 	linkedEntity := in.GetLinkedEntity()
 	linkedProperty := in.GetLinkedProperty()
@@ -60,7 +60,7 @@ func BulkSeriesLinked(
 		return nil, err
 	}
 	childPlaces := childPlacesMap[linkedEntity]
-	req := &pb.BulkObservationsSeriesRequest{
+	req := &pbv1.BulkObservationsSeriesRequest{
 		Entities:  childPlaces,
 		Variables: variables,
 		AllFacets: allFacets,

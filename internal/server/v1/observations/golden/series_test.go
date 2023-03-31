@@ -20,7 +20,8 @@ import (
 	"runtime"
 	"testing"
 
-	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbs "github.com/datacommonsorg/mixer/internal/proto/service"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"github.com/datacommonsorg/mixer/test"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/testing/protocmp"
@@ -33,7 +34,7 @@ func TestObservationsSeries(t *testing.T) {
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(path.Dir(filename), "series")
 
-	testSuite := func(mixer pb.MixerClient, latencyTest bool) {
+	testSuite := func(mixer pbs.MixerClient, latencyTest bool) {
 		for _, c := range []struct {
 			variable   string
 			entity     string
@@ -86,7 +87,7 @@ func TestObservationsSeries(t *testing.T) {
 			},
 		} {
 
-			resp, err := mixer.ObservationsSeries(ctx, &pb.ObservationsSeriesRequest{
+			resp, err := mixer.ObservationsSeries(ctx, &pbv1.ObservationsSeriesRequest{
 				EntityVariable: c.entity + "/" + c.variable,
 			})
 			if err != nil {
@@ -102,7 +103,7 @@ func TestObservationsSeries(t *testing.T) {
 				test.UpdateGolden(resp, goldenPath, c.goldenFile)
 				continue
 			}
-			var expected pb.ObservationsSeriesResponse
+			var expected pbv1.ObservationsSeriesResponse
 			if err = test.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
 				t.Errorf("Can not Unmarshal golden file: %s", err)
 				continue

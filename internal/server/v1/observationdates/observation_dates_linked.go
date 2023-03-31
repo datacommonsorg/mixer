@@ -21,6 +21,7 @@ import (
 	"sort"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"github.com/datacommonsorg/mixer/internal/server/stat"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
@@ -33,10 +34,10 @@ import (
 // BulkObservationDatesLinked implements API for Mixer.BulkObservationDatesLinked.
 func BulkObservationDatesLinked(
 	ctx context.Context,
-	in *pb.BulkObservationDatesLinkedRequest,
+	in *pbv1.BulkObservationDatesLinkedRequest,
 	store *store.Store,
 ) (
-	*pb.BulkObservationDatesLinkedResponse, error) {
+	*pbv1.BulkObservationDatesLinkedResponse, error) {
 	linkedEntity := in.GetLinkedEntity()
 	entityType := in.GetEntityType()
 	linkedProperty := in.GetLinkedProperty()
@@ -59,8 +60,8 @@ func BulkObservationDatesLinked(
 	}
 
 	// Initialize result.
-	result := &pb.BulkObservationDatesLinkedResponse{
-		DatesByVariable: []*pb.VariableObservationDates{},
+	result := &pbv1.BulkObservationDatesLinkedResponse{
+		DatesByVariable: []*pbv1.VariableObservationDates{},
 		Facets:          map[string]*pb.StatMetadata{},
 	}
 	cacheData, err := stat.ReadStatCollection(
@@ -84,31 +85,31 @@ func BulkObservationDatesLinked(
 				}
 			} else {
 				result.DatesByVariable = append(result.DatesByVariable,
-					&pb.VariableObservationDates{
+					&pbv1.VariableObservationDates{
 						Variable: sv,
 					})
 			}
 			continue
 		}
 		// keyed by date
-		datesCount := map[string][]*pb.EntityCount{}
+		datesCount := map[string][]*pbv1.EntityCount{}
 		for _, cohort := range data.SourceCohorts {
 			facet := stat.GetMetadata(cohort)
 			facetID := util.GetMetadataHash(facet)
 			for date := range cohort.Val {
 				if _, ok := datesCount[date]; !ok {
-					datesCount[date] = []*pb.EntityCount{}
+					datesCount[date] = []*pbv1.EntityCount{}
 				}
-				datesCount[date] = append(datesCount[date], &pb.EntityCount{
+				datesCount[date] = append(datesCount[date], &pbv1.EntityCount{
 					Count: cohort.Val[date],
 					Facet: facetID,
 				})
 			}
 			result.Facets[facetID] = facet
 		}
-		tmp := &pb.VariableObservationDates{
+		tmp := &pbv1.VariableObservationDates{
 			Variable:         sv,
-			ObservationDates: []*pb.ObservationDates{},
+			ObservationDates: []*pbv1.ObservationDates{},
 		}
 		allDates := []string{}
 		for date := range datesCount {
@@ -119,7 +120,7 @@ func BulkObservationDatesLinked(
 			sort.SliceStable(datesCount[date], func(i, j int) bool {
 				return datesCount[date][i].Count > datesCount[date][j].Count
 			})
-			tmp.ObservationDates = append(tmp.ObservationDates, &pb.ObservationDates{
+			tmp.ObservationDates = append(tmp.ObservationDates, &pbv1.ObservationDates{
 				Date:        date,
 				EntityCount: datesCount[date],
 			})

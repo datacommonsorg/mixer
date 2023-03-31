@@ -20,7 +20,8 @@ import (
 	"runtime"
 	"testing"
 
-	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbs "github.com/datacommonsorg/mixer/internal/proto/service"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"github.com/datacommonsorg/mixer/test"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/testing/protocmp"
@@ -34,7 +35,7 @@ func TestBulkObservationDatesLinked(t *testing.T) {
 	goldenPath := path.Join(
 		path.Dir(filename), "observation_dates_linked")
 
-	testSuite := func(mixer pb.MixerClient, latencyTest bool) {
+	testSuite := func(mixer pbs.MixerClient, latencyTest bool) {
 		for _, c := range []struct {
 			linkedEntity string
 			entityType   string
@@ -60,7 +61,7 @@ func TestBulkObservationDatesLinked(t *testing.T) {
 				"memdb.json",
 			},
 		} {
-			resp, err := mixer.BulkObservationDatesLinked(ctx, &pb.BulkObservationDatesLinkedRequest{
+			resp, err := mixer.BulkObservationDatesLinked(ctx, &pbv1.BulkObservationDatesLinkedRequest{
 				LinkedEntity:   c.linkedEntity,
 				EntityType:     c.entityType,
 				Variables:      c.variables,
@@ -79,7 +80,7 @@ func TestBulkObservationDatesLinked(t *testing.T) {
 				test.UpdateGolden(resp, goldenPath, c.goldenFile)
 				continue
 			}
-			var expected pb.BulkObservationDatesLinkedResponse
+			var expected pbv1.BulkObservationDatesLinkedResponse
 			if err := test.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
 				t.Errorf("Can not Unmarshal golden file")
 				continue

@@ -21,7 +21,7 @@ import (
 	"runtime"
 	"time"
 
-	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbs "github.com/datacommonsorg/mixer/internal/proto/service"
 )
 
 const numTestTimes = 4
@@ -30,7 +30,7 @@ const numTestTimes = 4
 func TestDriver(
 	apiName string,
 	opt *TestOption,
-	testSuite func(pb.MixerClient, bool),
+	testSuite func(pbs.MixerClient, bool),
 ) error {
 	if LatencyTest {
 		return latencyTest(apiName, opt, testSuite)
@@ -40,7 +40,7 @@ func TestDriver(
 
 func goldenTest(
 	opt *TestOption,
-	testSuite func(pb.MixerClient, bool),
+	testSuite func(pbs.MixerClient, bool),
 ) error {
 	mixer, err := Setup(opt)
 	if err != nil {
@@ -53,7 +53,7 @@ func goldenTest(
 func latencyTest(
 	apiName string,
 	opt *TestOption,
-	testSuite func(pb.MixerClient, bool),
+	testSuite func(pbs.MixerClient, bool),
 ) error {
 	durationStore := []float64{}
 	mixer, err := Setup(opt)

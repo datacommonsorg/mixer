@@ -29,6 +29,7 @@ import (
 	"cloud.google.com/go/storage"
 	"github.com/datacommonsorg/mixer/internal/parser/tmcf"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/api/iterator"
 	"google.golang.org/grpc/codes"
@@ -181,14 +182,14 @@ func (memDb *MemDb) ReadStatDate(statVar string) *pb.StatDateList {
 
 // ReadObservationDates reads observation date frequency for a given stat var.
 func (memDb *MemDb) ReadObservationDates(statVar string) (
-	*pb.VariableObservationDates,
+	*pbv1.VariableObservationDates,
 	map[string]*pb.StatMetadata,
 ) {
 	memDb.lock.RLock()
 	defer memDb.lock.RUnlock()
-	data := &pb.VariableObservationDates{
+	data := &pbv1.VariableObservationDates{
 		Variable:         statVar,
-		ObservationDates: []*pb.ObservationDates{},
+		ObservationDates: []*pbv1.ObservationDates{},
 	}
 	placeData, ok := memDb.statSeries[statVar]
 	if !ok {
@@ -215,12 +216,12 @@ func (memDb *MemDb) ReadObservationDates(statVar string) (
 	}
 	sort.Strings(allDates)
 	for _, date := range allDates {
-		obsDates := &pb.ObservationDates{
+		obsDates := &pbv1.ObservationDates{
 			Date:        date,
-			EntityCount: []*pb.EntityCount{},
+			EntityCount: []*pbv1.EntityCount{},
 		}
 		for metahash, count := range tmp[date] {
-			obsDates.EntityCount = append(obsDates.EntityCount, &pb.EntityCount{
+			obsDates.EntityCount = append(obsDates.EntityCount, &pbv1.EntityCount{
 				Count: count,
 				Facet: metahash,
 			})

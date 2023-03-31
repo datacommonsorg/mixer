@@ -18,9 +18,10 @@
 // 	protoc        v3.21.9
 // source: v1/property_values.proto
 
-package proto
+package v1
 
 import (
+	proto "github.com/datacommonsorg/mixer/internal/proto"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -173,7 +174,7 @@ type PropertyValuesResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Values []*EntityInfo `protobuf:"bytes,1,rep,name=values,proto3" json:"values,omitempty"`
+	Values []*proto.EntityInfo `protobuf:"bytes,1,rep,name=values,proto3" json:"values,omitempty"`
 	// The pagination token for getting the next set of entries.
 	NextToken string `protobuf:"bytes,2,opt,name=next_token,json=nextToken,proto3" json:"next_token,omitempty"`
 }
@@ -210,7 +211,7 @@ func (*PropertyValuesResponse) Descriptor() ([]byte, []int) {
 	return file_v1_property_values_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *PropertyValuesResponse) GetValues() []*EntityInfo {
+func (x *PropertyValuesResponse) GetValues() []*proto.EntityInfo {
 	if x != nil {
 		return x.Values
 	}
@@ -316,7 +317,7 @@ type BulkPropertyValuesResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Data []*NodePropertyValues `protobuf:"bytes,1,rep,name=data,proto3" json:"data,omitempty"`
+	Data []*proto.NodePropertyValues `protobuf:"bytes,1,rep,name=data,proto3" json:"data,omitempty"`
 	// The pagination token for getting the next set of entries.
 	NextToken string `protobuf:"bytes,2,opt,name=next_token,json=nextToken,proto3" json:"next_token,omitempty"`
 }
@@ -353,7 +354,7 @@ func (*BulkPropertyValuesResponse) Descriptor() ([]byte, []int) {
 	return file_v1_property_values_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *BulkPropertyValuesResponse) GetData() []*NodePropertyValues {
+func (x *BulkPropertyValuesResponse) GetData() []*proto.NodePropertyValues {
 	if x != nil {
 		return x.Data
 	}
@@ -547,8 +548,11 @@ var file_v1_property_values_proto_rawDesc = []byte{
 	0x05, 0x6e, 0x6f, 0x64, 0x65, 0x73, 0x18, 0x02, 0x20, 0x03, 0x28, 0x09, 0x52, 0x05, 0x6e, 0x6f,
 	0x64, 0x65, 0x73, 0x12, 0x26, 0x0a, 0x0f, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x5f, 0x6e, 0x6f, 0x64,
 	0x65, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0d, 0x76, 0x61,
-	0x6c, 0x75, 0x65, 0x4e, 0x6f, 0x64, 0x65, 0x54, 0x79, 0x70, 0x65, 0x42, 0x09, 0x5a, 0x07, 0x2e,
-	0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x6c, 0x75, 0x65, 0x4e, 0x6f, 0x64, 0x65, 0x54, 0x79, 0x70, 0x65, 0x42, 0x33, 0x5a, 0x31, 0x67,
+	0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f,
+	0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x6f, 0x72, 0x67, 0x2f, 0x6d, 0x69, 0x78, 0x65, 0x72, 0x2f, 0x69,
+	0x6e, 0x74, 0x65, 0x72, 0x6e, 0x61, 0x6c, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x76, 0x31,
+	0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -572,8 +576,8 @@ var file_v1_property_values_proto_goTypes = []interface{}{
 	(*BulkPropertyValuesResponse)(nil),      // 4: datacommons.v1.BulkPropertyValuesResponse
 	(*LinkedPropertyValuesRequest)(nil),     // 5: datacommons.v1.LinkedPropertyValuesRequest
 	(*BulkLinkedPropertyValuesRequest)(nil), // 6: datacommons.v1.BulkLinkedPropertyValuesRequest
-	(*EntityInfo)(nil),                      // 7: datacommons.EntityInfo
-	(*NodePropertyValues)(nil),              // 8: datacommons.NodePropertyValues
+	(*proto.EntityInfo)(nil),                // 7: datacommons.EntityInfo
+	(*proto.NodePropertyValues)(nil),        // 8: datacommons.NodePropertyValues
 }
 var file_v1_property_values_proto_depIdxs = []int32{
 	7, // 0: datacommons.v1.PropertyValuesResponse.values:type_name -> datacommons.EntityInfo
@@ -590,7 +594,6 @@ func file_v1_property_values_proto_init() {
 	if File_v1_property_values_proto != nil {
 		return
 	}
-	file_entity_proto_init()
 	if !protoimpl.UnsafeEnabled {
 		file_v1_property_values_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*PropertyTypes); i {

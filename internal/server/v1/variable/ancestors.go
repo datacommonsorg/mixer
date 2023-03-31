@@ -18,7 +18,7 @@ import (
 	"context"
 	"strings"
 
-	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/server/statvar"
 	"github.com/datacommonsorg/mixer/internal/store"
@@ -29,10 +29,10 @@ import (
 // Ancestors implements API for Mixer.VariableAncestors.
 func Ancestors(
 	ctx context.Context,
-	in *pb.VariableAncestorsRequest,
+	in *pbv1.VariableAncestorsRequest,
 	store *store.Store,
 	cache *resource.Cache,
-) (*pb.VariableAncestorsResponse, error) {
+) (*pbv1.VariableAncestorsResponse, error) {
 	node := in.GetNode()
 	if node == "" {
 		return nil, status.Errorf(
@@ -58,7 +58,7 @@ func Ancestors(
 			break
 		}
 	}
-	return &pb.VariableAncestorsResponse{
+	return &pbv1.VariableAncestorsResponse{
 		Ancestors: ancestors,
 	}, nil
 }

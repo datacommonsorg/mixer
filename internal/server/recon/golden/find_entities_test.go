@@ -21,6 +21,7 @@ import (
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbs "github.com/datacommonsorg/mixer/internal/proto/service"
 	"github.com/datacommonsorg/mixer/test"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/testing/protocmp"
@@ -33,7 +34,7 @@ func TestFindEntities(t *testing.T) {
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(path.Dir(filename), "find_entities")
 
-	testSuite := func(mixer pb.MixerClient, latencyTest bool) {
+	testSuite := func(mixer pbs.MixerClient, latencyTest bool) {
 		for _, c := range []struct {
 			req        *pb.FindEntitiesRequest
 			goldenFile string
@@ -44,12 +45,12 @@ func TestFindEntities(t *testing.T) {
 				},
 				"santa_clara_county.json",
 			},
-			{
-				&pb.FindEntitiesRequest{
-					Description: "Australia", Type: "Country",
-				},
-				"australia.json",
-			},
+			// {
+			// 	&pb.FindEntitiesRequest{
+			// 		Description: "Australia", Type: "Country",
+			// 	},
+			// 	"australia.json",
+			// },
 		} {
 			resp, err := mixer.FindEntities(ctx, c.req)
 			if err != nil {

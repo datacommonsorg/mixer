@@ -52,7 +52,7 @@ RUN protoc \
     --include_source_info \
     --include_imports \
     --descriptor_set_out mixer-grpc.pb \
-    proto/*.proto proto/v1/*.proto
+    proto/*.proto proto/**/*.proto
 
 
 FROM openjdk:8-slim

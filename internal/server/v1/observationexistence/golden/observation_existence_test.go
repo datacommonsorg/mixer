@@ -20,7 +20,8 @@ import (
 	"runtime"
 	"testing"
 
-	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbs "github.com/datacommonsorg/mixer/internal/proto/service"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"github.com/datacommonsorg/mixer/test"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/testing/protocmp"
@@ -34,7 +35,7 @@ func TestBulkObservationExistence(t *testing.T) {
 	goldenPath := path.Join(
 		path.Dir(filename), "observation_existence")
 
-	testSuite := func(mixer pb.MixerClient, latencyTest bool) {
+	testSuite := func(mixer pbs.MixerClient, latencyTest bool) {
 		for _, c := range []struct {
 			entities   []string
 			variables  []string
@@ -46,7 +47,7 @@ func TestBulkObservationExistence(t *testing.T) {
 				"existence.json",
 			},
 		} {
-			resp, err := mixer.BulkObservationExistence(ctx, &pb.BulkObservationExistenceRequest{
+			resp, err := mixer.BulkObservationExistence(ctx, &pbv1.BulkObservationExistenceRequest{
 				Entities:  c.entities,
 				Variables: c.variables,
 			})
@@ -63,7 +64,7 @@ func TestBulkObservationExistence(t *testing.T) {
 				test.UpdateGolden(resp, goldenPath, c.goldenFile)
 				continue
 			}
-			var expected pb.BulkObservationExistenceResponse
+			var expected pbv1.BulkObservationExistenceResponse
 			if err := test.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
 				t.Errorf("Can not Unmarshal golden file")
 				continue

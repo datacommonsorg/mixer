@@ -27,6 +27,7 @@ import (
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbs "github.com/datacommonsorg/mixer/internal/proto/service"
 	"github.com/google/go-cmp/cmp"
 )
 
@@ -74,7 +75,7 @@ func readChartConfig() ([]*Chart, error) {
 }
 
 func getMissingStatVarRanking(
-	client pb.MixerClient,
+	client pbs.MixerClient,
 	req *pb.GetLocationsRankingsRequest) ([]string, error) {
 	ctx := context.Background()
 	resp, err := client.GetLocationsRankings(ctx, req)

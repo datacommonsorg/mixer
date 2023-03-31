@@ -21,6 +21,8 @@ import (
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbs "github.com/datacommonsorg/mixer/internal/proto/service"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"github.com/datacommonsorg/mixer/test"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/testing/protocmp"
@@ -33,7 +35,7 @@ func TestObservationsPoint(t *testing.T) {
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(path.Dir(filename), "point")
 
-	testSuite := func(mixer pb.MixerClient, latencyTest bool) {
+	testSuite := func(mixer pbs.MixerClient, latencyTest bool) {
 		for _, c := range []struct {
 			variable   string
 			entity     string
@@ -90,7 +92,7 @@ func TestObservationsPoint(t *testing.T) {
 			},
 		} {
 
-			resp, err := mixer.ObservationsPoint(ctx, &pb.ObservationsPointRequest{
+			resp, err := mixer.ObservationsPoint(ctx, &pbv1.ObservationsPointRequest{
 				EntityVariable: c.entity + "/" + c.variable,
 				Date:           c.date,
 			})

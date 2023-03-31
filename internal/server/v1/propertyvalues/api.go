@@ -19,6 +19,7 @@ import (
 	"strings"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/util"
 
@@ -29,9 +30,9 @@ import (
 // PropertyValues implements mixer.PropertyValues handler.
 func PropertyValues(
 	ctx context.Context,
-	in *pb.PropertyValuesRequest,
+	in *pbv1.PropertyValuesRequest,
 	store *store.Store,
-) (*pb.PropertyValuesResponse, error) {
+) (*pbv1.PropertyValuesResponse, error) {
 	nodeProperty := in.GetNodeProperty()
 	limit := int(in.GetLimit())
 	token := in.GetNextToken()
@@ -76,7 +77,7 @@ func PropertyValues(
 			return nil, err
 		}
 	}
-	res := &pb.PropertyValuesResponse{
+	res := &pbv1.PropertyValuesResponse{
 		NextToken: nextToken,
 		Values:    MergeTypedNodes(data[node][property]),
 	}
@@ -86,9 +87,9 @@ func PropertyValues(
 // BulkPropertyValues implements mixer.BulkPropertyValues handler.
 func BulkPropertyValues(
 	ctx context.Context,
-	in *pb.BulkPropertyValuesRequest,
+	in *pbv1.BulkPropertyValuesRequest,
 	store *store.Store,
-) (*pb.BulkPropertyValuesResponse, error) {
+) (*pbv1.BulkPropertyValuesResponse, error) {
 	property := in.GetProperty()
 	nodes := in.GetNodes()
 	limit := int(in.GetLimit())
@@ -127,7 +128,7 @@ func BulkPropertyValues(
 			return nil, err
 		}
 	}
-	res := &pb.BulkPropertyValuesResponse{
+	res := &pbv1.BulkPropertyValuesResponse{
 		NextToken: nextToken,
 	}
 	for _, n := range nodes {

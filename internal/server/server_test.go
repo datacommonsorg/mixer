@@ -18,7 +18,7 @@ import (
 	"context"
 	"testing"
 
-	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"github.com/datacommonsorg/mixer/internal/store"
 )
 
@@ -29,7 +29,7 @@ func TestNoBigTable(t *testing.T) {
 		t.Fatalf("store.NewStore() = %v", err)
 	}
 	s := NewMixerServer(store, nil, nil, nil)
-	_, err = s.PlacePage(ctx, &pb.PlacePageRequest{
+	_, err = s.PlacePage(ctx, &pbv1.PlacePageRequest{
 		Node:     "geoId/06",
 		Category: "Overview",
 	})

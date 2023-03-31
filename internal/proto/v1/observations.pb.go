@@ -18,9 +18,10 @@
 // 	protoc        v3.21.9
 // source: v1/observations.proto
 
-package proto
+package v1
 
 import (
+	proto "github.com/datacommonsorg/mixer/internal/proto"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -39,8 +40,8 @@ type TimeSeries struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Series []*PointStat `protobuf:"bytes,1,rep,name=series,proto3" json:"series,omitempty"`
-	Facet  string       `protobuf:"bytes,2,opt,name=facet,proto3" json:"facet,omitempty"`
+	Series []*proto.PointStat `protobuf:"bytes,1,rep,name=series,proto3" json:"series,omitempty"`
+	Facet  string             `protobuf:"bytes,2,opt,name=facet,proto3" json:"facet,omitempty"`
 }
 
 func (x *TimeSeries) Reset() {
@@ -75,7 +76,7 @@ func (*TimeSeries) Descriptor() ([]byte, []int) {
 	return file_v1_observations_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *TimeSeries) GetSeries() []*PointStat {
+func (x *TimeSeries) GetSeries() []*proto.PointStat {
 	if x != nil {
 		return x.Series
 	}
@@ -94,9 +95,9 @@ type EntityObservations struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Entity        string        `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
-	PointsByFacet []*PointStat  `protobuf:"bytes,2,rep,name=points_by_facet,json=pointsByFacet,proto3" json:"points_by_facet,omitempty"`
-	SeriesByFacet []*TimeSeries `protobuf:"bytes,3,rep,name=series_by_facet,json=seriesByFacet,proto3" json:"series_by_facet,omitempty"`
+	Entity        string             `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
+	PointsByFacet []*proto.PointStat `protobuf:"bytes,2,rep,name=points_by_facet,json=pointsByFacet,proto3" json:"points_by_facet,omitempty"`
+	SeriesByFacet []*TimeSeries      `protobuf:"bytes,3,rep,name=series_by_facet,json=seriesByFacet,proto3" json:"series_by_facet,omitempty"`
 }
 
 func (x *EntityObservations) Reset() {
@@ -138,7 +139,7 @@ func (x *EntityObservations) GetEntity() string {
 	return ""
 }
 
-func (x *EntityObservations) GetPointsByFacet() []*PointStat {
+func (x *EntityObservations) GetPointsByFacet() []*proto.PointStat {
 	if x != nil {
 		return x.PointsByFacet
 	}
@@ -340,7 +341,7 @@ type BulkObservationsPointResponse struct {
 
 	ObservationsByVariable []*VariableObservations `protobuf:"bytes,1,rep,name=observations_by_variable,json=observationsByVariable,proto3" json:"observations_by_variable,omitempty"`
 	// Keyed by the hash of StatMetadata
-	Facets map[string]*StatMetadata `protobuf:"bytes,2,rep,name=facets,proto3" json:"facets,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	Facets map[string]*proto.StatMetadata `protobuf:"bytes,2,rep,name=facets,proto3" json:"facets,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 }
 
 func (x *BulkObservationsPointResponse) Reset() {
@@ -382,7 +383,7 @@ func (x *BulkObservationsPointResponse) GetObservationsByVariable() []*VariableO
 	return nil
 }
 
-func (x *BulkObservationsPointResponse) GetFacets() map[string]*StatMetadata {
+func (x *BulkObservationsPointResponse) GetFacets() map[string]*proto.StatMetadata {
 	if x != nil {
 		return x.Facets
 	}
@@ -535,8 +536,8 @@ type ObservationsSeriesResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Observations []*PointStat  `protobuf:"bytes,1,rep,name=observations,proto3" json:"observations,omitempty"`
-	Facet        *StatMetadata `protobuf:"bytes,2,opt,name=facet,proto3" json:"facet,omitempty"`
+	Observations []*proto.PointStat  `protobuf:"bytes,1,rep,name=observations,proto3" json:"observations,omitempty"`
+	Facet        *proto.StatMetadata `protobuf:"bytes,2,opt,name=facet,proto3" json:"facet,omitempty"`
 }
 
 func (x *ObservationsSeriesResponse) Reset() {
@@ -571,14 +572,14 @@ func (*ObservationsSeriesResponse) Descriptor() ([]byte, []int) {
 	return file_v1_observations_proto_rawDescGZIP(), []int{8}
 }
 
-func (x *ObservationsSeriesResponse) GetObservations() []*PointStat {
+func (x *ObservationsSeriesResponse) GetObservations() []*proto.PointStat {
 	if x != nil {
 		return x.Observations
 	}
 	return nil
 }
 
-func (x *ObservationsSeriesResponse) GetFacet() *StatMetadata {
+func (x *ObservationsSeriesResponse) GetFacet() *proto.StatMetadata {
 	if x != nil {
 		return x.Facet
 	}
@@ -653,8 +654,8 @@ type BulkObservationsSeriesResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ObservationsByVariable []*VariableObservations  `protobuf:"bytes,1,rep,name=observations_by_variable,json=observationsByVariable,proto3" json:"observations_by_variable,omitempty"`
-	Facets                 map[string]*StatMetadata `protobuf:"bytes,2,rep,name=facets,proto3" json:"facets,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	ObservationsByVariable []*VariableObservations        `protobuf:"bytes,1,rep,name=observations_by_variable,json=observationsByVariable,proto3" json:"observations_by_variable,omitempty"`
+	Facets                 map[string]*proto.StatMetadata `protobuf:"bytes,2,rep,name=facets,proto3" json:"facets,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 }
 
 func (x *BulkObservationsSeriesResponse) Reset() {
@@ -696,7 +697,7 @@ func (x *BulkObservationsSeriesResponse) GetObservationsByVariable() []*Variable
 	return nil
 }
 
-func (x *BulkObservationsSeriesResponse) GetFacets() map[string]*StatMetadata {
+func (x *BulkObservationsSeriesResponse) GetFacets() map[string]*proto.StatMetadata {
 	if x != nil {
 		return x.Facets
 	}
@@ -862,7 +863,7 @@ type DerivedObservationsSeriesResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Observations []*PointStat `protobuf:"bytes,1,rep,name=observations,proto3" json:"observations,omitempty"`
+	Observations []*proto.PointStat `protobuf:"bytes,1,rep,name=observations,proto3" json:"observations,omitempty"`
 }
 
 func (x *DerivedObservationsSeriesResponse) Reset() {
@@ -897,7 +898,7 @@ func (*DerivedObservationsSeriesResponse) Descriptor() ([]byte, []int) {
 	return file_v1_observations_proto_rawDescGZIP(), []int{13}
 }
 
-func (x *DerivedObservationsSeriesResponse) GetObservations() []*PointStat {
+func (x *DerivedObservationsSeriesResponse) GetObservations() []*proto.PointStat {
 	if x != nil {
 		return x.Observations
 	}
@@ -1047,8 +1048,11 @@ var file_v1_observations_proto_rawDesc = []byte{
 	0x73, 0x65, 0x72, 0x76, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b,
 	0x32, 0x16, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e, 0x50,
 	0x6f, 0x69, 0x6e, 0x74, 0x53, 0x74, 0x61, 0x74, 0x52, 0x0c, 0x6f, 0x62, 0x73, 0x65, 0x72, 0x76,
-	0x61, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x42, 0x09, 0x5a, 0x07, 0x2e, 0x2f, 0x70, 0x72, 0x6f, 0x74,
-	0x6f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x61, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x42, 0x33, 0x5a, 0x31, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62,
+	0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73,
+	0x6f, 0x72, 0x67, 0x2f, 0x6d, 0x69, 0x78, 0x65, 0x72, 0x2f, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x6e,
+	0x61, 0x6c, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x76, 0x31, 0x62, 0x06, 0x70, 0x72, 0x6f,
+	0x74, 0x6f, 0x33,
 }
 
 var (
@@ -1079,10 +1083,10 @@ var file_v1_observations_proto_goTypes = []interface{}{
 	(*BulkObservationsSeriesLinkedRequest)(nil), // 11: datacommons.v1.BulkObservationsSeriesLinkedRequest
 	(*DerivedObservationsSeriesRequest)(nil),    // 12: datacommons.v1.DerivedObservationsSeriesRequest
 	(*DerivedObservationsSeriesResponse)(nil),   // 13: datacommons.v1.DerivedObservationsSeriesResponse
-	nil,                  // 14: datacommons.v1.BulkObservationsPointResponse.FacetsEntry
-	nil,                  // 15: datacommons.v1.BulkObservationsSeriesResponse.FacetsEntry
-	(*PointStat)(nil),    // 16: datacommons.PointStat
-	(*StatMetadata)(nil), // 17: datacommons.StatMetadata
+	nil,                        // 14: datacommons.v1.BulkObservationsPointResponse.FacetsEntry
+	nil,                        // 15: datacommons.v1.BulkObservationsSeriesResponse.FacetsEntry
+	(*proto.PointStat)(nil),    // 16: datacommons.PointStat
+	(*proto.StatMetadata)(nil), // 17: datacommons.StatMetadata
 }
 var file_v1_observations_proto_depIdxs = []int32{
 	16, // 0: datacommons.v1.TimeSeries.series:type_name -> datacommons.PointStat
@@ -1110,7 +1114,6 @@ func file_v1_observations_proto_init() {
 	if File_v1_observations_proto != nil {
 		return
 	}
-	file_stat_proto_init()
 	if !protoimpl.UnsafeEnabled {
 		file_v1_observations_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*TimeSeries); i {
