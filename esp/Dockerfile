@@ -17,7 +17,7 @@
 # by local ESP container. These two containers share the same volume that holds
 # the mixer-grpc.json.
 
-FROM golang:1.19 AS base
+FROM golang:1.20 AS base
 
 WORKDIR /workspace
 
