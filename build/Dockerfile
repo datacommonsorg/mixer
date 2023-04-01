@@ -23,7 +23,7 @@
 
 # =========  protoc stage ==========
 
-FROM golang:1.20 AS go-protoc
+FROM golang:1.20.2 AS go-protoc
 WORKDIR /mixer
 # Install protoc
 RUN apt-get update && \
