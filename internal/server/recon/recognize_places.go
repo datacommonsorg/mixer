@@ -84,7 +84,7 @@ type placeRecognition struct {
 func (p *placeRecognition) detectPlaces(query string) *pb.RecognizePlacesResponse {
 	tokenSpans := p.replaceTokensWithCandidates(tokenize(query))
 	candidates := rankAndTrimCandidates(combineContainedIn(tokenSpans))
-	return formatResponse(candidates)
+	return formatResponse(query, candidates)
 }
 
 func (p *placeRecognition) findPlaceCandidates(
@@ -253,8 +253,9 @@ func rankAndTrimCandidates(tokenSpans *pb.TokenSpans) *pb.TokenSpans {
 }
 
 // Combine successive non-place tokens.
-func formatResponse(tokenSpans *pb.TokenSpans) *pb.RecognizePlacesResponse {
-	res := &pb.RecognizePlacesResponse{}
+func formatResponse(
+	query string, tokenSpans *pb.TokenSpans) *pb.RecognizePlacesResponse {
+	res := &pb.RecognizePlacesResponse{Query: query}
 	spanParts := []string{}
 	for _, tokenSpan := range tokenSpans.GetSpans() {
 		span := strings.Join(tokenSpan.GetTokens(), " ")

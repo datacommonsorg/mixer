@@ -136,7 +136,8 @@ message RecognizePlacesResponse {
     // Optional. Recognized places.
     repeated Place places = 2;
   }
-  repeated Item items = 1;
+  string query = 1;
+  repeated Item items = 2;
 }
 
 // RecogPlace contains info of a place for RecognizePlaces method.
