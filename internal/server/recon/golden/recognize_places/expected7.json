@@ -1,0 +1,27 @@
+{
+  "query": "life expectancy in Australia and Canada",
+  "items": [
+    {
+      "span": "life expectancy in"
+    },
+    {
+      "span": "Australia",
+      "places": [
+        {
+          "dcid": "country/AUS"
+        }
+      ]
+    },
+    {
+      "span": "and"
+    },
+    {
+      "span": "Canada",
+      "places": [
+        {
+          "dcid": "country/CAN"
+        }
+      ]
+    }
+  ]
+}

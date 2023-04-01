@@ -1,0 +1,47 @@
+{
+  "query": "California economy and Florida",
+  "items": [
+    {
+      "span": "California",
+      "places": [
+        {
+          "dcid": "geoId/06"
+        },
+        {
+          "dcid": "geoId/2412150"
+        },
+        {
+          "dcid": "geoId/4210768"
+        }
+      ]
+    },
+    {
+      "span": "economy",
+      "places": [
+        {
+          "dcid": "geoId/4222264"
+        },
+        {
+          "dcid": "geoId/1820152"
+        }
+      ]
+    },
+    {
+      "span": "and"
+    },
+    {
+      "span": "Florida",
+      "places": [
+        {
+          "dcid": "geoId/12"
+        },
+        {
+          "dcid": "geoId/72054"
+        },
+        {
+          "dcid": "geoId/3626319"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "query": "the birds in San Jose California are chirpy",
+  "items": [
+    {
+      "span": "the birds in"
+    },
+    {
+      "span": "San Jose California",
+      "places": [
+        {
+          "dcid": "geoId/06"
+        },
+        {
+          "dcid": "geoId/0668000"
+        },
+        {
+          "dcid": "geoId/2412150"
+        }
+      ]
+    },
+    {
+      "span": "are chirpy"
+    }
+  ]
+}

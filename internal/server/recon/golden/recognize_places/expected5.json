@@ -1,0 +1,22 @@
+{
+  "query": "crime in new york state",
+  "items": [
+    {
+      "span": "crime in"
+    },
+    {
+      "span": "new york",
+      "places": [
+        {
+          "dcid": "geoId/36"
+        },
+        {
+          "dcid": "geoId/3651000"
+        }
+      ]
+    },
+    {
+      "span": "state"
+    }
+  ]
+}
