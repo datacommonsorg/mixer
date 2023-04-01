@@ -58,7 +58,7 @@ RUN protoc \
     --proto_path=proto \
     --go_out=paths=source_relative:internal/proto \
     --go-grpc_out=paths=source_relative:internal/proto \
-    --go_grpc_opt=require_unimplemented_servers=false \
+    --go-grpc_opt=require_unimplemented_servers=false \
     --experimental_allow_proto3_optional \
     proto/*.proto proto/**/*.proto
 
