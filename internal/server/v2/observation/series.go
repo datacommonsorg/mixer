@@ -37,8 +37,8 @@ const (
 func FetchFromSeries(
 	ctx context.Context,
 	store *store.Store,
-	entities []string,
 	variables []string,
+	entities []string,
 	queryDate string,
 ) (*pbv2.ObservationResponse, error) {
 	result := &pbv2.ObservationResponse{

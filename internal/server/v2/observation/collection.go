@@ -12,24 +12,25 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Package v2 is the version 2 of the Data Commons REST API.
-package v2
+// Package observation is for V2 property values API
+package observation
 
-// Arc represents an arc in the graph.
-type Arc struct {
-	// Whether it's out or in arc.
-	Out bool
-	// The property of the arc. This is when property is specified without []
-	SingleProp string
-	// The wildcard used for the single property.
-	Wildcard string
-	// The properties of the arc. This is when property is specified with []
-	BracketProps []string
-	// The filter of the arc.
-	Filter map[string]string
-}
+import (
+	"context"
 
-type Graph struct {
-	Subject string
-	Arcs    []*Arc
+	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+
+	"github.com/datacommonsorg/mixer/internal/store"
+)
+
+// FetchFromCollection fetches data from observation collection cache.
+func FetchFromCollection(
+	ctx context.Context,
+	store *store.Store,
+	variables []string,
+	ancestor string,
+	childType string,
+	queryDate string,
+) (*pbv2.ObservationResponse, error) {
+	return nil, nil
 }

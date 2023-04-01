@@ -22,87 +22,85 @@ import (
 	"google.golang.org/grpc/status"
 )
 
-// SplitArc splits query string by "->" and "<-" into arcs
-func SplitArc(s string) ([]string, error) {
-	if len(s) < 2 {
-		return nil, status.Errorf(
-			codes.InvalidArgument, "invalid query string: %s", s)
+// splitWithDelim splits a graph expression by "->" and "<-"
+func splitWithDelim(expr string, delim string) []string {
+	res := []string{}
+	parts := strings.Split(expr, delim)
+	for i := 0; i < len(parts)-1; i++ {
+		res = append(res, parts[i])
+		res = append(res, delim)
 	}
-	if s[0:2] != "->" && s[0:2] != "<-" {
-		return nil, status.Errorf(
-			codes.InvalidArgument, "query string should start with arrow, %s", s)
-	}
-	pos := []int{}
-	for i := 0; i < len(s)-2; i++ {
-		if s[i:i+2] == "->" || s[i:i+2] == "<-" {
-			pos = append(pos, i)
-		}
-	}
-	parts := []string{}
-	for i := 0; i < len(pos)-1; i++ {
-		parts = append(parts, s[pos[i]:pos[i+1]])
-	}
-	if len(pos) > 0 {
-		parts = append(parts, s[pos[len(pos)-1]:])
-	}
-	return parts, nil
+	res = append(res, parts[len(parts)-1])
+	return res
 }
 
-// ParseArc parses an arc string into Arc object
-func ParseArc(s string) (*Arc, error) {
-	if len(s) < 2 {
-		return nil, status.Errorf(
-			codes.InvalidArgument, "invalid arc string: %s", s)
+func splitExpr(expr string) []string {
+	parts := splitWithDelim(expr, "->")
+	res := []string{}
+	for _, part := range parts {
+		subParts := splitWithDelim(part, "<-")
+		for _, sp := range subParts {
+			if sp != "" {
+				res = append(res, sp)
+			}
+		}
 	}
+	return res
+}
+
+// parseArc parses an Arc object
+func parseArc(arrow string, expr string) (*Arc, error) {
 	arc := &Arc{}
-	if s[0:2] == "->" {
+	if arrow == "->" {
 		arc.Out = true
-	} else if s[0:2] == "<-" {
+	} else if arrow == "<-" {
 		arc.Out = false
 	} else {
 		return nil, status.Errorf(
-			codes.InvalidArgument, "arc string should start with arrow, %s", s)
+			codes.InvalidArgument,
+			"arc string should start with arrow but got %s",
+			arrow,
+		)
 	}
-	s = s[2:]
 	// No property defined; This is to fetch all the properties.
-	if len(s) == 0 {
+	if len(expr) == 0 {
 		return arc, nil
 	}
 	// Remove space and new line.
 	replacer := strings.NewReplacer(" ", "", "\t", "", "\n", "", "\r", "")
 	// [prop1, prop2]
-	if s[0] == '[' {
-		if s[len(s)-1] != ']' {
+	if expr[0] == '[' {
+		if expr[len(expr)-1] != ']' {
 			return nil, status.Errorf(
-				codes.InvalidArgument, "invalid list string: %s", s)
+				codes.InvalidArgument, "invalid list string: %s", expr)
 		}
-		s = s[1 : len(s)-1]
-		arc.BracketProps = strings.Split(replacer.Replace(s), ",")
+		expr = expr[1 : len(expr)-1]
+		arc.BracketProps = strings.Split(replacer.Replace(expr), ",")
 		return arc, nil
 	}
-	for i := 0; i < len(s); i++ {
-		if s[i] == '+' {
+	for i := 0; i < len(expr); i++ {
+		if expr[i] == '+' {
 			// <-containedInPlace+
-			arc.SingleProp = s[0:i]
+			arc.SingleProp = expr[0:i]
 			arc.Wildcard = "+"
-			s = s[i+1:]
+			expr = expr[i+1:]
 			break
 		}
-		if s[i] == '{' {
+		if expr[i] == '{' {
 			// <-containedInPlace{p:v}
-			arc.SingleProp = s[0:i]
-			s = s[i:]
+			arc.SingleProp = expr[0:i]
+			expr = expr[i:]
 			break
 		}
 	}
 	// {prop1:val1, prop2:val2}
-	if len(s) > 0 && s[0] == '{' {
-		if s[len(s)-1] != '}' {
+	if len(expr) > 0 && expr[0] == '{' {
+		if expr[len(expr)-1] != '}' {
 			return nil, status.Errorf(
-				codes.InvalidArgument, "invalid filter string: %s", s)
+				codes.InvalidArgument, "invalid filter string: %s", expr)
 		}
 		filter := map[string]string{}
-		parts := strings.Split(replacer.Replace(s[1:len(s)-1]), ",")
+		parts := strings.Split(replacer.Replace(expr[1:len(expr)-1]), ",")
 		for _, p := range parts {
 			if p == "" {
 				continue
@@ -118,8 +116,50 @@ func ParseArc(s string) (*Arc, error) {
 		return arc, nil
 	}
 	// No '+' or '{' found, this is a single property.
-	if len(s) > 0 {
-		arc.SingleProp = s
+	if len(expr) > 0 {
+		arc.SingleProp = expr
 	}
 	return arc, nil
+}
+
+func ParseProperty(expr string) ([]*Arc, error) {
+	parts := splitExpr(expr)
+	if len(parts) == 1 {
+		// Handle "->" query, which is to get all properties
+		parts = append(parts, "")
+	}
+	if len(parts)%2 == 1 {
+		return nil, status.Errorf(
+			codes.InvalidArgument, "in valid expression string: %s", expr)
+	}
+	arcs := []*Arc{}
+	for i := 0; i < len(parts)/2; i++ {
+		arc, err := parseArc(parts[i*2], parts[i*2+1])
+		if err != nil {
+			return nil, err
+		}
+		arcs = append(arcs, arc)
+	}
+	return arcs, nil
+}
+
+func ParseGraph(expr string) (*Graph, error) {
+	parts := splitExpr(expr)
+	if len(parts) < 3 || len(parts)%2 == 0 {
+		return nil, status.Errorf(
+			codes.InvalidArgument, "in valid expression string: %s", expr)
+	}
+	g := &Graph{
+		Subject: parts[0],
+	}
+	arcs := []*Arc{}
+	for i := 0; i < len(parts)/2; i++ {
+		arc, err := parseArc(parts[i*2+1], parts[i*2+2])
+		if err != nil {
+			return nil, err
+		}
+		arcs = append(arcs, arc)
+	}
+	g.Arcs = arcs
+	return g, nil
 }
