@@ -1,0 +1,22 @@
+{
+  "query": "what about mountain view",
+  "items": [
+    {
+      "span": "what about"
+    },
+    {
+      "span": "mountain view",
+      "places": [
+        {
+          "dcid": "geoId/0649670"
+        },
+        {
+          "dcid": "geoId/3744770"
+        },
+        {
+          "dcid": "geoId/1553300"
+        }
+      ]
+    }
+  ]
+}
