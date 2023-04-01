@@ -84,7 +84,6 @@ func (x *VariableObservation) GetObservationsByEntity() map[string]*EntityObserv
 	return nil
 }
 
-//
 type EntityObservation struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -206,10 +205,10 @@ type ObservationRequest struct {
 	// Ex: dc/g/Root<-memberOf
 	VariablesExpression string `protobuf:"bytes,4,opt,name=variables_expression,json=variablesExpression,proto3" json:"variables_expression,omitempty"`
 	// Date of the observation
-	// - Not specified: all observations are returned
-	// - "LATEST": latest obseration of each facet is returned
-	// - "<DATE>": a speficied valid ISO 8601 date. Observation corresponding to
-	//   this date is returned.
+	//   - Not specified: all observations are returned
+	//   - "LATEST": latest obseration of each facet is returned
+	//   - "<DATE>": a speficied valid ISO 8601 date. Observation corresponding to
+	//     this date is returned.
 	Date string `protobuf:"bytes,5,opt,name=date,proto3" json:"date,omitempty"`
 	// When specified, only observation with this unit is returned.
 	Unit string `protobuf:"bytes,6,opt,name=unit,proto3" json:"unit,omitempty"`

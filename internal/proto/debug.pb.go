@@ -109,9 +109,7 @@ func (Log_Level) EnumDescriptor() ([]byte, []int) {
 	return file_debug_proto_rawDescGZIP(), []int{0, 0}
 }
 
-//
 // A log of import processing with details on any warnings, errors, etc.
-//
 type Log struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
