@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Package observation is for V2 property values API
+// Package observation is for V2 observation API
 package observation
 
 import (
