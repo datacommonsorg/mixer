@@ -122,6 +122,7 @@ func parseArc(arrow string, expr string) (*Arc, error) {
 	return arc, nil
 }
 
+// ParseProperty parses an expression string into a list of Arcs.
 func ParseProperty(expr string) ([]*Arc, error) {
 	parts := splitExpr(expr)
 	if len(parts) == 1 {
@@ -143,6 +144,7 @@ func ParseProperty(expr string) ([]*Arc, error) {
 	return arcs, nil
 }
 
+// ParseGraph parses an expression string into a Graph object
 func ParseGraph(expr string) (*Graph, error) {
 	parts := splitExpr(expr)
 	if len(parts) < 3 || len(parts)%2 == 0 {

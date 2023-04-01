@@ -29,6 +29,7 @@ type Arc struct {
 	Filter map[string]string
 }
 
+// Graph represents a local graph with subject and connected arcs.
 type Graph struct {
 	Subject string
 	Arcs    []*Arc
