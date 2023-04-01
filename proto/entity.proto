@@ -18,9 +18,10 @@
 //  number.
 
 syntax = "proto3";
-
-option go_package = "./proto";
 package datacommons;
+
+option go_package = "github.com/datacommonsorg/mixer/internal/proto";
+
 import "mcf.proto";
 
 // Basic info for a node (subject or object).

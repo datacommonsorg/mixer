@@ -20,7 +20,8 @@ import (
 	"runtime"
 	"testing"
 
-	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbs "github.com/datacommonsorg/mixer/internal/proto/service"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"github.com/datacommonsorg/mixer/test"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/testing/protocmp"
@@ -33,7 +34,7 @@ func TestVariableAncestors(t *testing.T) {
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(path.Dir(filename), "ancestors")
 
-	testSuite := func(mixer pb.MixerClient, latencyTest bool) {
+	testSuite := func(mixer pbs.MixerClient, latencyTest bool) {
 		for _, c := range []struct {
 			node       string
 			goldenFile string
@@ -55,7 +56,7 @@ func TestVariableAncestors(t *testing.T) {
 				"custom.json",
 			},
 		} {
-			resp, err := mixer.VariableAncestors(ctx, &pb.VariableAncestorsRequest{
+			resp, err := mixer.VariableAncestors(ctx, &pbv1.VariableAncestorsRequest{
 				Node: c.node,
 			})
 			if err != nil {
@@ -72,7 +73,7 @@ func TestVariableAncestors(t *testing.T) {
 				continue
 			}
 
-			var expected pb.VariableAncestorsResponse
+			var expected pbv1.VariableAncestorsResponse
 			if err = test.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
 				t.Errorf("Can not Unmarshal golden file")
 				continue

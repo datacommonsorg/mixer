@@ -17,7 +17,7 @@ package properties
 import (
 	"context"
 
-	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	nodewrapper "github.com/datacommonsorg/mixer/internal/server/node"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/codes"
@@ -29,9 +29,9 @@ import (
 // Properties implements API for Mixer.Properties.
 func Properties(
 	ctx context.Context,
-	in *pb.PropertiesRequest,
+	in *pbv1.PropertiesRequest,
 	store *store.Store,
-) (*pb.PropertiesResponse, error) {
+) (*pbv1.PropertiesResponse, error) {
 	node := in.GetNode()
 	direction := in.GetDirection()
 	if direction != util.DirectionIn && direction != util.DirectionOut {
@@ -41,7 +41,7 @@ func Properties(
 	if err != nil {
 		return nil, err
 	}
-	result := &pb.PropertiesResponse{
+	result := &pbv1.PropertiesResponse{
 		Node: node,
 	}
 	if direction == util.DirectionIn {
@@ -58,9 +58,9 @@ func Properties(
 // BulkProperties implements API for Mixer.BulkProperties.
 func BulkProperties(
 	ctx context.Context,
-	in *pb.BulkPropertiesRequest,
+	in *pbv1.BulkPropertiesRequest,
 	store *store.Store,
-) (*pb.BulkPropertiesResponse, error) {
+) (*pbv1.BulkPropertiesResponse, error) {
 	nodes := in.GetNodes()
 	direction := in.GetDirection()
 	if direction != util.DirectionIn && direction != util.DirectionOut {
@@ -70,24 +70,24 @@ func BulkProperties(
 	if err != nil {
 		return nil, err
 	}
-	result := &pb.BulkPropertiesResponse{
-		Data: []*pb.PropertiesResponse{},
+	result := &pbv1.BulkPropertiesResponse{
+		Data: []*pbv1.PropertiesResponse{},
 	}
 	for _, node := range nodes {
 		if _, ok := resp[node]; !ok {
-			result.Data = append(result.Data, &pb.PropertiesResponse{
+			result.Data = append(result.Data, &pbv1.PropertiesResponse{
 				Node:       node,
 				Properties: []string{},
 			})
 			continue
 		}
 		if direction == util.DirectionIn {
-			result.Data = append(result.Data, &pb.PropertiesResponse{
+			result.Data = append(result.Data, &pbv1.PropertiesResponse{
 				Node:       node,
 				Properties: resp[node].InLabels,
 			})
 		} else if direction == util.DirectionOut {
-			result.Data = append(result.Data, &pb.PropertiesResponse{
+			result.Data = append(result.Data, &pbv1.PropertiesResponse{
 				Node:       node,
 				Properties: resp[node].OutLabels,
 			})

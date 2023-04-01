@@ -20,6 +20,7 @@ import (
 	"context"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"google.golang.org/protobuf/proto"
 
 	"github.com/datacommonsorg/mixer/internal/store"
@@ -31,10 +32,10 @@ import (
 // BulkObservationExistence implements API for Mixer.BulkObservationExistence.
 func BulkObservationExistence(
 	ctx context.Context,
-	in *pb.BulkObservationExistenceRequest,
+	in *pbv1.BulkObservationExistenceRequest,
 	store *store.Store,
 ) (
-	*pb.BulkObservationExistenceResponse, error) {
+	*pbv1.BulkObservationExistenceResponse, error) {
 	variables := in.GetVariables()
 	entities := in.GetEntities()
 	if len(variables) == 0 {
@@ -47,11 +48,11 @@ func BulkObservationExistence(
 	}
 	// Initialize result with "false" (non-existence).
 	// The BT existence cache only returns entry when data exist.
-	result := &pb.BulkObservationExistenceResponse{
-		Variable: map[string]*pb.ExistenceByEntity{},
+	result := &pbv1.BulkObservationExistenceResponse{
+		Variable: map[string]*pbv1.ExistenceByEntity{},
 	}
 	for _, v := range variables {
-		result.Variable[v] = &pb.ExistenceByEntity{Entity: map[string]bool{}}
+		result.Variable[v] = &pbv1.ExistenceByEntity{Entity: map[string]bool{}}
 		for _, e := range entities {
 			result.Variable[v].Entity[e] = false
 		}

@@ -20,7 +20,8 @@ import (
 	"runtime"
 	"testing"
 
-	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbs "github.com/datacommonsorg/mixer/internal/proto/service"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"github.com/datacommonsorg/mixer/test"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/testing/protocmp"
@@ -33,7 +34,7 @@ func TestBulkVariableGroupInfo(t *testing.T) {
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(path.Dir(filename), "bulk_variable_group_info")
 
-	testSuite := func(mixer pb.MixerClient, latencyTest bool) {
+	testSuite := func(mixer pbs.MixerClient, latencyTest bool) {
 		for _, c := range []struct {
 			nodes                []string
 			constrainedEntities  []string
@@ -59,7 +60,7 @@ func TestBulkVariableGroupInfo(t *testing.T) {
 				"crime_1.json",
 			},
 		} {
-			resp, err := mixer.BulkVariableGroupInfo(ctx, &pb.BulkVariableGroupInfoRequest{
+			resp, err := mixer.BulkVariableGroupInfo(ctx, &pbv1.BulkVariableGroupInfoRequest{
 				Nodes:                c.nodes,
 				ConstrainedEntities:  c.constrainedEntities,
 				NumEntitiesExistence: c.numEntitiesExistence,
@@ -78,7 +79,7 @@ func TestBulkVariableGroupInfo(t *testing.T) {
 				continue
 			}
 
-			var expected pb.BulkVariableGroupInfoResponse
+			var expected pbv1.BulkVariableGroupInfoResponse
 			if err = test.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
 				t.Errorf("Can not Unmarshal golden file")
 				continue

@@ -26,7 +26,7 @@ import (
 	"strings"
 
 	"cloud.google.com/go/bigquery"
-	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbs "github.com/datacommonsorg/mixer/internal/proto/service"
 	"github.com/datacommonsorg/mixer/internal/server"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/store"
@@ -68,7 +68,7 @@ const (
 )
 
 // Setup creates local server and client.
-func Setup(option ...*TestOption) (pb.MixerClient, error) {
+func Setup(option ...*TestOption) (pbs.MixerClient, error) {
 	useCache, useMemdb, useCustomTable := false, false, false
 	var searchOptions server.SearchOptions
 	if len(option) == 1 {
@@ -92,7 +92,7 @@ func Setup(option ...*TestOption) (pb.MixerClient, error) {
 func setupInternal(
 	bigqueryVersionFile, baseBigtableInfoYaml, testBigtableInfoYaml, mcfPath string,
 	useCache, useMemdb, useCustomTable bool, searchOptions server.SearchOptions,
-) (pb.MixerClient, error) {
+) (pbs.MixerClient, error) {
 	ctx := context.Background()
 	_, filename, _, _ := runtime.Caller(0)
 	bqTableID, _ := os.ReadFile(path.Join(path.Dir(filename), bigqueryVersionFile))
@@ -155,7 +155,7 @@ func setupInternal(
 }
 
 // SetupBqOnly creates local server and client with access to BigQuery only.
-func SetupBqOnly() (pb.MixerClient, error) {
+func SetupBqOnly() (pbs.MixerClient, error) {
 	ctx := context.Background()
 	_, filename, _, _ := runtime.Caller(0)
 	bqTableID, _ := os.ReadFile(
@@ -187,10 +187,10 @@ func newClient(
 	metadata *resource.Metadata,
 	cache *resource.Cache,
 	mapsClient *maps.Client,
-) (pb.MixerClient, error) {
+) (pbs.MixerClient, error) {
 	mixerServer := server.NewMixerServer(mixerStore, metadata, cache, mapsClient)
 	srv := grpc.NewServer()
-	pb.RegisterMixerServer(srv, mixerServer)
+	pbs.RegisterMixerServer(srv, mixerServer)
 	reflection.Register(srv)
 	lis, err := net.Listen("tcp", "localhost:0")
 	if err != nil {
@@ -212,7 +212,7 @@ func newClient(
 	if err != nil {
 		return nil, err
 	}
-	mixerClient := pb.NewMixerClient(conn)
+	mixerClient := pbs.NewMixerClient(conn)
 	return mixerClient, nil
 }
 

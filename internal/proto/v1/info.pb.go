@@ -18,9 +18,10 @@
 // 	protoc        v3.21.9
 // source: v1/info.proto
 
-package proto
+package v1
 
 import (
+	proto "github.com/datacommonsorg/mixer/internal/proto"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -86,8 +87,8 @@ type PlaceInfoResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Node string         `protobuf:"bytes,1,opt,name=node,proto3" json:"node,omitempty"`
-	Info *PlaceMetadata `protobuf:"bytes,2,opt,name=info,proto3" json:"info,omitempty"`
+	Node string               `protobuf:"bytes,1,opt,name=node,proto3" json:"node,omitempty"`
+	Info *proto.PlaceMetadata `protobuf:"bytes,2,opt,name=info,proto3" json:"info,omitempty"`
 }
 
 func (x *PlaceInfoResponse) Reset() {
@@ -129,7 +130,7 @@ func (x *PlaceInfoResponse) GetNode() string {
 	return ""
 }
 
-func (x *PlaceInfoResponse) GetInfo() *PlaceMetadata {
+func (x *PlaceInfoResponse) GetInfo() *proto.PlaceMetadata {
 	if x != nil {
 		return x.Info
 	}
@@ -282,8 +283,8 @@ type VariableInfoResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Node string          `protobuf:"bytes,1,opt,name=node,proto3" json:"node,omitempty"`
-	Info *StatVarSummary `protobuf:"bytes,2,opt,name=info,proto3" json:"info,omitempty"`
+	Node string                `protobuf:"bytes,1,opt,name=node,proto3" json:"node,omitempty"`
+	Info *proto.StatVarSummary `protobuf:"bytes,2,opt,name=info,proto3" json:"info,omitempty"`
 }
 
 func (x *VariableInfoResponse) Reset() {
@@ -325,7 +326,7 @@ func (x *VariableInfoResponse) GetNode() string {
 	return ""
 }
 
-func (x *VariableInfoResponse) GetInfo() *StatVarSummary {
+func (x *VariableInfoResponse) GetInfo() *proto.StatVarSummary {
 	if x != nil {
 		return x.Info
 	}
@@ -500,8 +501,8 @@ type VariableGroupInfoResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Node string            `protobuf:"bytes,1,opt,name=node,proto3" json:"node,omitempty"`
-	Info *StatVarGroupNode `protobuf:"bytes,2,opt,name=info,proto3" json:"info,omitempty"`
+	Node string                  `protobuf:"bytes,1,opt,name=node,proto3" json:"node,omitempty"`
+	Info *proto.StatVarGroupNode `protobuf:"bytes,2,opt,name=info,proto3" json:"info,omitempty"`
 }
 
 func (x *VariableGroupInfoResponse) Reset() {
@@ -543,7 +544,7 @@ func (x *VariableGroupInfoResponse) GetNode() string {
 	return ""
 }
 
-func (x *VariableGroupInfoResponse) GetInfo() *StatVarGroupNode {
+func (x *VariableGroupInfoResponse) GetInfo() *proto.StatVarGroupNode {
 	if x != nil {
 		return x.Info
 	}
@@ -737,8 +738,11 @@ var file_v1_info_proto_rawDesc = []byte{
 	0x61, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x29, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f,
 	0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e, 0x76, 0x31, 0x2e, 0x56, 0x61, 0x72, 0x69, 0x61, 0x62, 0x6c,
 	0x65, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e,
-	0x73, 0x65, 0x52, 0x04, 0x64, 0x61, 0x74, 0x61, 0x42, 0x09, 0x5a, 0x07, 0x2e, 0x2f, 0x70, 0x72,
-	0x6f, 0x74, 0x6f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x73, 0x65, 0x52, 0x04, 0x64, 0x61, 0x74, 0x61, 0x42, 0x33, 0x5a, 0x31, 0x67, 0x69, 0x74, 0x68,
+	0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f,
+	0x6e, 0x73, 0x6f, 0x72, 0x67, 0x2f, 0x6d, 0x69, 0x78, 0x65, 0x72, 0x2f, 0x69, 0x6e, 0x74, 0x65,
+	0x72, 0x6e, 0x61, 0x6c, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x76, 0x31, 0x62, 0x06, 0x70,
+	0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -767,9 +771,9 @@ var file_v1_info_proto_goTypes = []interface{}{
 	(*VariableGroupInfoResponse)(nil),     // 9: datacommons.v1.VariableGroupInfoResponse
 	(*BulkVariableGroupInfoRequest)(nil),  // 10: datacommons.v1.BulkVariableGroupInfoRequest
 	(*BulkVariableGroupInfoResponse)(nil), // 11: datacommons.v1.BulkVariableGroupInfoResponse
-	(*PlaceMetadata)(nil),                 // 12: datacommons.PlaceMetadata
-	(*StatVarSummary)(nil),                // 13: datacommons.StatVarSummary
-	(*StatVarGroupNode)(nil),              // 14: datacommons.StatVarGroupNode
+	(*proto.PlaceMetadata)(nil),           // 12: datacommons.PlaceMetadata
+	(*proto.StatVarSummary)(nil),          // 13: datacommons.StatVarSummary
+	(*proto.StatVarGroupNode)(nil),        // 14: datacommons.StatVarGroupNode
 }
 var file_v1_info_proto_depIdxs = []int32{
 	12, // 0: datacommons.v1.PlaceInfoResponse.info:type_name -> datacommons.PlaceMetadata
@@ -790,8 +794,6 @@ func file_v1_info_proto_init() {
 	if File_v1_info_proto != nil {
 		return
 	}
-	file_place_proto_init()
-	file_stat_var_proto_init()
 	if !protoimpl.UnsafeEnabled {
 		file_v1_info_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*PlaceInfoRequest); i {

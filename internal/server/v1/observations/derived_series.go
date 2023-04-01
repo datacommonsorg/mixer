@@ -25,6 +25,7 @@ import (
 	"strings"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"github.com/datacommonsorg/mixer/internal/server/stat"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"google.golang.org/protobuf/proto"
@@ -33,10 +34,10 @@ import (
 // DerivedSeries implements API for Mixer.DerivedObservationsSeries.
 func DerivedSeries(
 	ctx context.Context,
-	in *pb.DerivedObservationsSeriesRequest,
+	in *pbv1.DerivedObservationsSeriesRequest,
 	store *store.Store,
-) (*pb.DerivedObservationsSeriesResponse, error) {
-	resp := &pb.DerivedObservationsSeriesResponse{}
+) (*pbv1.DerivedObservationsSeriesResponse, error) {
+	resp := &pbv1.DerivedObservationsSeriesResponse{}
 	entity := in.GetEntity()
 
 	// Parse the formula to extract all the variables, used for reading data from BT.

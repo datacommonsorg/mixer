@@ -21,6 +21,7 @@ import (
 	"sort"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"github.com/datacommonsorg/mixer/internal/server/placein"
 	"github.com/datacommonsorg/mixer/internal/server/ranking"
 	"github.com/datacommonsorg/mixer/internal/server/stat"
@@ -35,9 +36,9 @@ import (
 // BulkPointLinked implements API for Mixer.BulkObservationsPointLinked.
 func BulkPointLinked(
 	ctx context.Context,
-	in *pb.BulkObservationsPointLinkedRequest,
+	in *pbv1.BulkObservationsPointLinkedRequest,
 	store *store.Store,
-) (*pb.BulkObservationsPointResponse, error) {
+) (*pbv1.BulkObservationsPointResponse, error) {
 	entityType := in.GetEntityType()
 	linkedEntity := in.GetLinkedEntity()
 	linkedProperty := in.GetLinkedProperty()
@@ -72,7 +73,7 @@ func BulkPointLinked(
 	if err != nil {
 		return nil, err
 	}
-	result := &pb.BulkObservationsPointResponse{
+	result := &pbv1.BulkObservationsPointResponse{
 		Facets: map[string]*pb.StatMetadata{},
 	}
 
@@ -84,12 +85,12 @@ func BulkPointLinked(
 			variablesMissingData = append(variablesMissingData, variable)
 			continue
 		}
-		entityResult := map[string]*pb.EntityObservations{}
+		entityResult := map[string]*pbv1.EntityObservations{}
 		cohorts := data.SourceCohorts
 		// Sort cohort first, so the preferred source is populated first.
 		sort.Sort(ranking.CohortByRank(cohorts))
 		for _, cohort := range cohorts {
-			facet := stat.GetMetadata(cohort)
+			facet := util.GetMetadata(cohort)
 			facetID := util.GetMetadataHash(facet)
 			result.Facets[facetID] = facet
 			for entity, val := range cohort.Val {
@@ -100,7 +101,7 @@ func BulkPointLinked(
 					respDate = cohort.PlaceToLatestDate[entity]
 				}
 				if _, ok := entityResult[entity]; !ok {
-					entityResult[entity] = &pb.EntityObservations{
+					entityResult[entity] = &pbv1.EntityObservations{
 						Entity:        entity,
 						PointsByFacet: []*pb.PointStat{},
 					}
@@ -115,7 +116,7 @@ func BulkPointLinked(
 				)
 			}
 		}
-		variableObservations := &pb.VariableObservations{
+		variableObservations := &pbv1.VariableObservations{
 			Variable: variable,
 		}
 		allEntities := []string{}
@@ -159,7 +160,7 @@ func BulkPointLinked(
 	if len(variablesMissingData) > 0 {
 		moreResult, err := BulkPoint(
 			ctx,
-			&pb.BulkObservationsPointRequest{
+			&pbv1.BulkObservationsPointRequest{
 				Variables: variablesMissingData,
 				Entities:  childPlaces,
 				Date:      date,
@@ -183,7 +184,7 @@ func BulkPointLinked(
 			if !store.MemDb.HasStatVar(variable) {
 				continue
 			}
-			observationsByEntity := []*pb.EntityObservations{}
+			observationsByEntity := []*pbv1.EntityObservations{}
 			for _, entity := range childPlaces {
 				pointValue, facet := store.MemDb.ReadPointValue(variable, entity, date)
 				// Override public data from private import
@@ -193,7 +194,7 @@ func BulkPointLinked(
 					result.Facets[facetID] = facet
 					observationsByEntity = append(
 						observationsByEntity,
-						&pb.EntityObservations{
+						&pbv1.EntityObservations{
 							Entity:        entity,
 							PointsByFacet: []*pb.PointStat{pointValue},
 						},
@@ -202,7 +203,7 @@ func BulkPointLinked(
 			}
 			result.ObservationsByVariable = append(
 				result.ObservationsByVariable,
-				&pb.VariableObservations{
+				&pbv1.VariableObservations{
 					Variable:             variable,
 					ObservationsByEntity: observationsByEntity,
 				},

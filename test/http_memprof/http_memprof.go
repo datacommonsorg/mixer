@@ -19,16 +19,18 @@ import (
 	"context"
 	"flag"
 	"fmt"
-	pb "github.com/datacommonsorg/mixer/internal/proto"
-	"github.com/google/pprof/profile"
-	"google.golang.org/grpc"
-	"google.golang.org/grpc/credentials/insecure"
 	"log"
 	"os"
 	"os/exec"
 	"path/filepath"
 	"strconv"
 	"time"
+
+	pbs "github.com/datacommonsorg/mixer/internal/proto/service"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
+	"github.com/google/pprof/profile"
+	"google.golang.org/grpc"
+	"google.golang.org/grpc/credentials/insecure"
 )
 
 var (
@@ -214,7 +216,7 @@ func main() {
 	log.Println("Connected to gRPC succesfully")
 
 	defer conn.Close()
-	c := pb.NewMixerClient(conn)
+	c := pbs.NewMixerClient(conn)
 	ctx := context.Background()
 
 	// TODO: move the definition of requests to make to a config file
@@ -259,7 +261,7 @@ func main() {
 		} {
 			funcKey := fmt.Sprintf("BulkObservationsSeriesLinked_%d", count)
 			funcToProfile := func() (string, error) {
-				req := &pb.BulkObservationsSeriesLinkedRequest{
+				req := &pbv1.BulkObservationsSeriesLinkedRequest{
 					Variables:      r.variables,
 					EntityType:     r.entityType,
 					LinkedEntity:   r.linkedEntity,

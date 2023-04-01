@@ -18,9 +18,10 @@
 // 	protoc        v3.21.9
 // source: v1/page.proto
 
-package proto
+package v1
 
 import (
+	proto "github.com/datacommonsorg/mixer/internal/proto"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -217,7 +218,7 @@ type LandingPageCache struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Key is stat var dcid.
-	Data map[string]*ObsTimeSeries `protobuf:"bytes,1,rep,name=data,proto3" json:"data,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	Data map[string]*proto.ObsTimeSeries `protobuf:"bytes,1,rep,name=data,proto3" json:"data,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 }
 
 func (x *LandingPageCache) Reset() {
@@ -252,7 +253,7 @@ func (*LandingPageCache) Descriptor() ([]byte, []int) {
 	return file_v1_page_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *LandingPageCache) GetData() map[string]*ObsTimeSeries {
+func (x *LandingPageCache) GetData() map[string]*proto.ObsTimeSeries {
 	if x != nil {
 		return x.Data
 	}
@@ -390,15 +391,15 @@ type PlacePageResponse struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Keyed by place dcid.
-	StatVarSeries    map[string]*StatVarSeries `protobuf:"bytes,1,rep,name=stat_var_series,json=statVarSeries,proto3" json:"stat_var_series,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
-	AllChildPlaces   map[string]*Places        `protobuf:"bytes,2,rep,name=all_child_places,json=allChildPlaces,proto3" json:"all_child_places,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
-	LatestPopulation map[string]*PointStat     `protobuf:"bytes,8,rep,name=latest_population,json=latestPopulation,proto3" json:"latest_population,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
-	ValidCategories  map[string]*ObsCategories `protobuf:"bytes,9,rep,name=valid_categories,json=validCategories,proto3" json:"valid_categories,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
-	ChildPlacesType  string                    `protobuf:"bytes,3,opt,name=child_places_type,json=childPlacesType,proto3" json:"child_places_type,omitempty"`
-	ChildPlaces      []string                  `protobuf:"bytes,4,rep,name=child_places,json=childPlaces,proto3" json:"child_places,omitempty"`
-	ParentPlaces     []string                  `protobuf:"bytes,5,rep,name=parent_places,json=parentPlaces,proto3" json:"parent_places,omitempty"`
-	SimilarPlaces    []string                  `protobuf:"bytes,6,rep,name=similar_places,json=similarPlaces,proto3" json:"similar_places,omitempty"`
-	NearbyPlaces     []string                  `protobuf:"bytes,7,rep,name=nearby_places,json=nearbyPlaces,proto3" json:"nearby_places,omitempty"`
+	StatVarSeries    map[string]*proto.StatVarSeries `protobuf:"bytes,1,rep,name=stat_var_series,json=statVarSeries,proto3" json:"stat_var_series,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	AllChildPlaces   map[string]*Places              `protobuf:"bytes,2,rep,name=all_child_places,json=allChildPlaces,proto3" json:"all_child_places,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	LatestPopulation map[string]*proto.PointStat     `protobuf:"bytes,8,rep,name=latest_population,json=latestPopulation,proto3" json:"latest_population,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	ValidCategories  map[string]*ObsCategories       `protobuf:"bytes,9,rep,name=valid_categories,json=validCategories,proto3" json:"valid_categories,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	ChildPlacesType  string                          `protobuf:"bytes,3,opt,name=child_places_type,json=childPlacesType,proto3" json:"child_places_type,omitempty"`
+	ChildPlaces      []string                        `protobuf:"bytes,4,rep,name=child_places,json=childPlaces,proto3" json:"child_places,omitempty"`
+	ParentPlaces     []string                        `protobuf:"bytes,5,rep,name=parent_places,json=parentPlaces,proto3" json:"parent_places,omitempty"`
+	SimilarPlaces    []string                        `protobuf:"bytes,6,rep,name=similar_places,json=similarPlaces,proto3" json:"similar_places,omitempty"`
+	NearbyPlaces     []string                        `protobuf:"bytes,7,rep,name=nearby_places,json=nearbyPlaces,proto3" json:"nearby_places,omitempty"`
 }
 
 func (x *PlacePageResponse) Reset() {
@@ -433,7 +434,7 @@ func (*PlacePageResponse) Descriptor() ([]byte, []int) {
 	return file_v1_page_proto_rawDescGZIP(), []int{6}
 }
 
-func (x *PlacePageResponse) GetStatVarSeries() map[string]*StatVarSeries {
+func (x *PlacePageResponse) GetStatVarSeries() map[string]*proto.StatVarSeries {
 	if x != nil {
 		return x.StatVarSeries
 	}
@@ -447,7 +448,7 @@ func (x *PlacePageResponse) GetAllChildPlaces() map[string]*Places {
 	return nil
 }
 
-func (x *PlacePageResponse) GetLatestPopulation() map[string]*PointStat {
+func (x *PlacePageResponse) GetLatestPopulation() map[string]*proto.PointStat {
 	if x != nil {
 		return x.LatestPopulation
 	}
@@ -601,8 +602,11 @@ var file_v1_page_proto_rawDesc = []byte{
 	0x61, 0x6c, 0x75, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1d, 0x2e, 0x64, 0x61, 0x74,
 	0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e, 0x76, 0x31, 0x2e, 0x4f, 0x62, 0x73, 0x43,
 	0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x69, 0x65, 0x73, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65,
-	0x3a, 0x02, 0x38, 0x01, 0x42, 0x09, 0x5a, 0x07, 0x2e, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62,
-	0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x3a, 0x02, 0x38, 0x01, 0x42, 0x33, 0x5a, 0x31, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63,
+	0x6f, 0x6d, 0x2f, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x6f, 0x72,
+	0x67, 0x2f, 0x6d, 0x69, 0x78, 0x65, 0x72, 0x2f, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x6e, 0x61, 0x6c,
+	0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x76, 0x31, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f,
+	0x33,
 }
 
 var (
@@ -619,21 +623,21 @@ func file_v1_page_proto_rawDescGZIP() []byte {
 
 var file_v1_page_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
 var file_v1_page_proto_goTypes = []interface{}{
-	(*Place)(nil),             // 0: datacommons.v1.Place
-	(*Places)(nil),            // 1: datacommons.v1.Places
-	(*ObsCategories)(nil),     // 2: datacommons.v1.ObsCategories
-	(*LandingPageCache)(nil),  // 3: datacommons.v1.LandingPageCache
-	(*BioPageRequest)(nil),    // 4: datacommons.v1.BioPageRequest
-	(*PlacePageRequest)(nil),  // 5: datacommons.v1.PlacePageRequest
-	(*PlacePageResponse)(nil), // 6: datacommons.v1.PlacePageResponse
-	nil,                       // 7: datacommons.v1.LandingPageCache.DataEntry
-	nil,                       // 8: datacommons.v1.PlacePageResponse.StatVarSeriesEntry
-	nil,                       // 9: datacommons.v1.PlacePageResponse.AllChildPlacesEntry
-	nil,                       // 10: datacommons.v1.PlacePageResponse.LatestPopulationEntry
-	nil,                       // 11: datacommons.v1.PlacePageResponse.ValidCategoriesEntry
-	(*ObsTimeSeries)(nil),     // 12: datacommons.ObsTimeSeries
-	(*StatVarSeries)(nil),     // 13: datacommons.StatVarSeries
-	(*PointStat)(nil),         // 14: datacommons.PointStat
+	(*Place)(nil),               // 0: datacommons.v1.Place
+	(*Places)(nil),              // 1: datacommons.v1.Places
+	(*ObsCategories)(nil),       // 2: datacommons.v1.ObsCategories
+	(*LandingPageCache)(nil),    // 3: datacommons.v1.LandingPageCache
+	(*BioPageRequest)(nil),      // 4: datacommons.v1.BioPageRequest
+	(*PlacePageRequest)(nil),    // 5: datacommons.v1.PlacePageRequest
+	(*PlacePageResponse)(nil),   // 6: datacommons.v1.PlacePageResponse
+	nil,                         // 7: datacommons.v1.LandingPageCache.DataEntry
+	nil,                         // 8: datacommons.v1.PlacePageResponse.StatVarSeriesEntry
+	nil,                         // 9: datacommons.v1.PlacePageResponse.AllChildPlacesEntry
+	nil,                         // 10: datacommons.v1.PlacePageResponse.LatestPopulationEntry
+	nil,                         // 11: datacommons.v1.PlacePageResponse.ValidCategoriesEntry
+	(*proto.ObsTimeSeries)(nil), // 12: datacommons.ObsTimeSeries
+	(*proto.StatVarSeries)(nil), // 13: datacommons.StatVarSeries
+	(*proto.PointStat)(nil),     // 14: datacommons.PointStat
 }
 var file_v1_page_proto_depIdxs = []int32{
 	0,  // 0: datacommons.v1.Places.places:type_name -> datacommons.v1.Place
@@ -659,7 +663,6 @@ func file_v1_page_proto_init() {
 	if File_v1_page_proto != nil {
 		return
 	}
-	file_stat_proto_init()
 	if !protoimpl.UnsafeEnabled {
 		file_v1_page_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*Place); i {

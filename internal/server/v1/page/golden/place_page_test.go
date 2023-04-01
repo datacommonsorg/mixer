@@ -21,7 +21,8 @@ import (
 	"runtime"
 	"testing"
 
-	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbs "github.com/datacommonsorg/mixer/internal/proto/service"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"github.com/datacommonsorg/mixer/test"
 	"github.com/google/go-cmp/cmp"
@@ -58,7 +59,7 @@ func TestPlacePage(t *testing.T) {
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(path.Dir(filename), "place_page")
 
-	testSuite := func(mixer pb.MixerClient, latencyTest bool) {
+	testSuite := func(mixer pbs.MixerClient, latencyTest bool) {
 		for _, c := range []struct {
 			goldenFile string
 			node       string
@@ -95,7 +96,7 @@ func TestPlacePage(t *testing.T) {
 				categories = []string{"Overview"}
 			}
 			for _, category := range categories {
-				req := &pb.PlacePageRequest{
+				req := &pbv1.PlacePageRequest{
 					Node:        c.node,
 					NewStatVars: c.statVars,
 					Seed:        1,
@@ -111,13 +112,13 @@ func TestPlacePage(t *testing.T) {
 				}
 				resp = util.Sample(
 					resp,
-					buildStrategy(3)).(*pb.PlacePageResponse)
+					buildStrategy(3)).(*pbv1.PlacePageResponse)
 				goldenFile := fmt.Sprintf("%s.%s.json", c.goldenFile, category)
 				if test.GenerateGolden {
 					test.UpdateProtoGolden(resp, goldenPath, goldenFile)
 					continue
 				}
-				var expected pb.PlacePageResponse
+				var expected pbv1.PlacePageResponse
 				err = test.ReadJSON(goldenPath, goldenFile, &expected)
 				if err != nil {
 					t.Errorf("Can not read golden file %s: %v", goldenFile, err)

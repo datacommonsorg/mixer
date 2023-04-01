@@ -24,6 +24,7 @@ import (
 	"time"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"github.com/datacommonsorg/mixer/internal/server/convert"
 	"github.com/datacommonsorg/mixer/internal/server/place"
 	"github.com/datacommonsorg/mixer/internal/server/stat"
@@ -96,9 +97,9 @@ var equivalentPlaceTypes = map[string]string{
 // PlacePage implements API for Mixer.PlacePage.
 func PlacePage(
 	ctx context.Context,
-	in *pb.PlacePageRequest,
+	in *pbv1.PlacePageRequest,
 	store *store.Store,
-) (*pb.PlacePageResponse, error) {
+) (*pbv1.PlacePageResponse, error) {
 	node := in.GetNode()
 	if !util.CheckValidDCIDs([]string{node}) {
 		return nil, status.Errorf(codes.InvalidArgument, "Invalid entity")
@@ -196,7 +197,7 @@ func getLatestPop(ctx context.Context, store *store.Store, placeDcids []string) 
 	if len(placeDcids) == 0 {
 		return nil, nil
 	}
-	req := &pb.BulkObservationsSeriesRequest{
+	req := &pbv1.BulkObservationsSeriesRequest{
 		Entities:  placeDcids,
 		Variables: []string{"Count_Person"},
 	}
@@ -220,7 +221,7 @@ func getLatestPop(ctx context.Context, store *store.Store, placeDcids []string) 
 	return result, nil
 }
 
-func getDcids(places []*pb.Place) []string {
+func getDcids(places []*pbv1.Place) []string {
 	result := []string{}
 	for _, dcid := range places {
 		result = append(result, dcid.Dcid)
@@ -238,7 +239,7 @@ func fetchBtData(
 ) (
 	map[string]*pb.StatVarSeries,
 	map[string]*pb.PointStat,
-	map[string]*pb.ObsCategories,
+	map[string]*pbv1.ObsCategories,
 	error,
 ) {
 	// Fetch place page cache data in parallel.
@@ -250,7 +251,7 @@ func fetchBtData(
 		prefix,
 		action,
 		func(jsonRaw []byte) (interface{}, error) {
-			var placePageData pb.LandingPageCache
+			var placePageData pbv1.LandingPageCache
 			if err := proto.Unmarshal(jsonRaw, &placePageData); err != nil {
 				return nil, err
 			}
@@ -268,7 +269,7 @@ func fetchBtData(
 		bigtable.BtLandingPageCategories,
 		[][]string{places},
 		func(jsonRaw []byte) (interface{}, error) {
-			var categories pb.ObsCategories
+			var categories pbv1.ObsCategories
 			if err := proto.Unmarshal(jsonRaw, &categories); err != nil {
 				return nil, err
 			}
@@ -278,9 +279,9 @@ func fetchBtData(
 	if err != nil {
 		return nil, nil, nil, err
 	}
-	categoryData := map[string]*pb.ObsCategories{}
+	categoryData := map[string]*pbv1.ObsCategories{}
 	for _, place := range places {
-		categoryData[place] = &pb.ObsCategories{Category: []string{}}
+		categoryData[place] = &pbv1.ObsCategories{Category: []string{}}
 	}
 	for _, btData := range btCategoryData {
 		for _, row := range btData {
@@ -288,7 +289,7 @@ func fetchBtData(
 				continue
 			}
 			place := row.Parts[0]
-			categories := row.Data.(*pb.ObsCategories)
+			categories := row.Data.(*pbv1.ObsCategories)
 			categoryData[place].Category = util.MergeDedupe(
 				categories.Category, categoryData[place].Category)
 		}
@@ -297,14 +298,14 @@ func fetchBtData(
 	// Populate result from place page cache
 	pageData := map[string]*pb.StatVarSeries{}
 	popData := map[string]*pb.PointStat{}
-	mergedPlacePageData := map[string]*pb.LandingPageCache{}
+	mergedPlacePageData := map[string]*pbv1.LandingPageCache{}
 	for _, btData := range btDataList {
 		for _, row := range btData {
 			if row.Data == nil {
 				continue
 			}
 			place := row.Parts[0]
-			placePageData := row.Data.(*pb.LandingPageCache)
+			placePageData := row.Data.(*pbv1.LandingPageCache)
 			if _, ok := mergedPlacePageData[place]; !ok {
 				mergedPlacePageData[place] = placePageData
 			}
@@ -348,7 +349,7 @@ func fetchBtData(
 
 	// Fetch additional stats as requested.
 	if len(statVars) > 0 {
-		resp, err := observations.BulkSeries(ctx, &pb.BulkObservationsSeriesRequest{
+		resp, err := observations.BulkSeries(ctx, &pbv1.BulkObservationsSeriesRequest{
 			Entities:  places,
 			Variables: statVars,
 		}, store)
@@ -389,9 +390,9 @@ func fetchBtData(
 
 // Pick child places with the largest average population.
 // Returns a tuple of child place type, and list of child places.
-func filterChildPlaces(childPlaces map[string][]*pb.Place) (string, []*pb.Place) {
+func filterChildPlaces(childPlaces map[string][]*pbv1.Place) (string, []*pbv1.Place) {
 	var maxCount int
-	var resultPlaces []*pb.Place
+	var resultPlaces []*pbv1.Place
 	var resultType string
 
 	// Sort child types to get stable result.
@@ -420,7 +421,7 @@ func filterChildPlaces(childPlaces map[string][]*pb.Place) (string, []*pb.Place)
 func getPlacePageChildPlaces(
 	ctx context.Context, store *store.Store, placedDcid, placeType string,
 ) (
-	map[string][]*pb.Place, error,
+	map[string][]*pbv1.Place, error,
 ) {
 	children := []*pb.EntityInfo{}
 	// ContainedIn places
@@ -443,12 +444,12 @@ func getPlacePageChildPlaces(
 		wantedTypes = allWantedPlaceTypes
 	}
 	// Populate result
-	result := map[string][]*pb.Place{}
+	result := map[string][]*pbv1.Place{}
 	for _, child := range children {
 		childTypes := trimTypes(child.Types)
 		for _, childType := range childTypes {
 			if _, ok := wantedTypes[childType]; ok {
-				result[childType] = append(result[childType], &pb.Place{
+				result[childType] = append(result[childType], &pbv1.Place{
 					Dcid: child.Dcid,
 					Name: child.Name,
 				})
@@ -523,10 +524,10 @@ func getSimilarPlaces(
 	if err != nil {
 		return nil, err
 	}
-	places := []*pb.Place{}
+	places := []*pbv1.Place{}
 	for _, node := range resp[cohort] {
 		if node.Dcid != placeDcid {
-			places = append(places, &pb.Place{
+			places = append(places, &pbv1.Place{
 				Dcid: node.Dcid,
 				Name: node.Name,
 			})
@@ -545,7 +546,7 @@ func getSimilarPlaces(
 	rand.Shuffle(len(places), func(i, j int) {
 		places[i], places[j] = places[j], places[i]
 	})
-	result := []*pb.Place{}
+	result := []*pbv1.Place{}
 	for _, place := range places {
 		result = append(result, place)
 		if len(result) == maxSimilarPlace {
@@ -573,10 +574,10 @@ func getNearbyPlaces(ctx context.Context, store *store.Store, dcid string,
 	if err != nil {
 		return nil, err
 	}
-	result := []*pb.Place{}
+	result := []*pbv1.Place{}
 	for dcid, pop := range placePop {
 		if pop > minPopulation {
-			result = append(result, &pb.Place{
+			result = append(result, &pbv1.Place{
 				Dcid: dcid,
 				Pop:  pop,
 			})
@@ -605,7 +606,7 @@ func getPlacePageDataHelper(
 	seed int64,
 	store *store.Store,
 	category string,
-) (*pb.PlacePageResponse, error) {
+) (*pbv1.PlacePageResponse, error) {
 	placeType, err := getPlaceType(ctx, store, placeDcid)
 	if err != nil {
 		return nil, err
@@ -614,7 +615,7 @@ func getPlacePageDataHelper(
 	// Fetch child and parent places in go routines.
 	errs, errCtx := errgroup.WithContext(ctx)
 	relatedPlaceChan := make(chan *relatedPlace, 4)
-	allChildPlaceChan := make(chan map[string][]*pb.Place, 1)
+	allChildPlaceChan := make(chan map[string][]*pbv1.Place, 1)
 	var filteredChildPlaceType string
 	errs.Go(func() error {
 		childPlaces, err := getPlacePageChildPlaces(errCtx, store, placeDcid, placeType)
@@ -659,12 +660,12 @@ func getPlacePageDataHelper(
 	close(allChildPlaceChan)
 	close(relatedPlaceChan)
 
-	resp := pb.PlacePageResponse{}
+	resp := pbv1.PlacePageResponse{}
 
-	allChildPlaces := map[string]*pb.Places{}
+	allChildPlaces := map[string]*pbv1.Places{}
 	for tmp := range allChildPlaceChan {
 		for k, places := range tmp {
-			allChildPlaces[k] = &pb.Places{Places: places}
+			allChildPlaces[k] = &pbv1.Places{Places: places}
 		}
 	}
 	resp.AllChildPlaces = allChildPlaces

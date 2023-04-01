@@ -27,7 +27,7 @@ import (
 	"runtime"
 	"runtime/pprof"
 
-	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbs "github.com/datacommonsorg/mixer/internal/proto/service"
 	"github.com/datacommonsorg/mixer/internal/server"
 	"github.com/datacommonsorg/mixer/internal/server/healthcheck"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
@@ -208,7 +208,7 @@ func main() {
 
 	// Create server object
 	mixerServer := server.NewMixerServer(store, metadata, cache, mapsClient)
-	pb.RegisterMixerServer(srv, mixerServer)
+	pbs.RegisterMixerServer(srv, mixerServer)
 
 	// Subscribe to branch cache update
 	if *useBranchBt {

@@ -13,8 +13,9 @@
 // limitations under the License.
 
 syntax = "proto3";
-option go_package = "./proto";
 package datacommons.v1;
+
+option go_package = "github.com/datacommonsorg/mixer/internal/proto/v1";
 
 import "place.proto";
 import "stat_var.proto";

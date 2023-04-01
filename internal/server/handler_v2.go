@@ -19,16 +19,17 @@ import (
 	"context"
 
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
+	v2observation "github.com/datacommonsorg/mixer/internal/server/v2/observation"
 	v2pv "github.com/datacommonsorg/mixer/internal/server/v2/propertyvalues"
 	"github.com/datacommonsorg/mixer/internal/util"
 
-	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 )
 
-// QueryV2 implements API for mixer.QueryV2.
-func (s *Server) QueryV2(
-	ctx context.Context, in *pb.QueryV2Request,
-) (*pb.QueryV2Response, error) {
+// V2Node implements API for mixer.V2Node.
+func (s *Server) V2Node(
+	ctx context.Context, in *pbv2.NodeRequest,
+) (*pbv2.NodeResponse, error) {
 	arcStrings, err := v2.SplitArc(in.GetProperty())
 	if err != nil {
 		return nil, err
@@ -81,4 +82,21 @@ func (s *Server) QueryV2(
 		}
 	}
 	return nil, nil
+}
+
+// V2Observation implements API for mixer.V2Observation.
+func (s *Server) V2Observation(
+	ctx context.Context, in *pbv2.ObservationRequest,
+) (*pbv2.ObservationResponse, error) {
+	// (TODO): The routing logic here is very rough. This needs more work.
+	if len(in.GetVariables()) > 0 && len(in.GetEntities()) > 0 {
+		return v2observation.FetchFromSeries(
+			ctx,
+			s.store,
+			in.GetEntities(),
+			in.GetVariables(),
+			in.GetDate(),
+		)
+	}
+	return &pbv2.ObservationResponse{}, nil
 }

@@ -21,6 +21,7 @@ import (
 	"strconv"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 )
 
@@ -32,7 +33,7 @@ type state struct {
 	limit      int
 	// CursorGroup that tracks the state of current data.
 	// Key: node, property, type
-	cursorGroup map[string]map[string]map[string][]*pb.Cursor
+	cursorGroup map[string]map[string]map[string][]*pbv1.Cursor
 	// Raw nodes read from BigTable
 	// Key: node, property, type
 	rawNodes map[string]map[string]map[string][][]*pb.EntityInfo
@@ -44,7 +45,7 @@ type state struct {
 	totalPage map[string]map[string]map[string]map[int]int
 	// Record the import group for next item to read
 	// Key: node, property, type
-	next map[string]map[string]map[string]*pb.Cursor
+	next map[string]map[string]map[string]*pbv1.Cursor
 }
 
 type inState struct {
@@ -68,7 +69,7 @@ func (s *state) init(
 	nodes []string,
 	properties []string,
 	limit int,
-	cursorGroup map[string]map[string]map[string][]*pb.Cursor,
+	cursorGroup map[string]map[string]map[string][]*pbv1.Cursor,
 	arcOut bool,
 ) error {
 	// Constructor
@@ -79,12 +80,12 @@ func (s *state) init(
 	s.mergedNodes = map[string]map[string]map[string][]*pb.EntityInfo{}
 	s.limit = limit
 	s.totalPage = map[string]map[string]map[string]map[int]int{}
-	s.next = map[string]map[string]map[string]*pb.Cursor{}
+	s.next = map[string]map[string]map[string]*pbv1.Cursor{}
 	for _, n := range nodes {
-		s.next[n] = map[string]map[string]*pb.Cursor{}
+		s.next[n] = map[string]map[string]*pbv1.Cursor{}
 		s.mergedNodes[n] = map[string]map[string][]*pb.EntityInfo{}
 		for _, p := range properties {
-			s.next[n][p] = map[string]*pb.Cursor{}
+			s.next[n][p] = map[string]*pbv1.Cursor{}
 			s.mergedNodes[n][p] = map[string][]*pb.EntityInfo{}
 		}
 	}
@@ -175,7 +176,7 @@ func (s *inState) init(
 	nodes []string,
 	properties []string,
 	limit int,
-	cursorGroup map[string]map[string]map[string][]*pb.Cursor,
+	cursorGroup map[string]map[string]map[string][]*pbv1.Cursor,
 ) error {
 	err := s.state.init(ctx, btGroup, nodes, properties, limit, cursorGroup, false)
 	if err != nil {
@@ -216,7 +217,7 @@ func (s *outState) init(
 	nodes []string,
 	properties []string,
 	limit int,
-	cursorGroup map[string]map[string]map[string][]*pb.Cursor,
+	cursorGroup map[string]map[string]map[string][]*pbv1.Cursor,
 ) error {
 	err := s.state.init(ctx, btGroup, nodes, properties, limit, cursorGroup, true)
 	if err != nil {
@@ -241,15 +242,15 @@ func (s *outState) init(
 	return nil
 }
 
-func (s *state) getPagination() *pb.PaginationInfo {
-	cursorGroups := []*pb.CursorGroup{}
+func (s *state) getPagination() *pbv1.PaginationInfo {
+	cursorGroups := []*pbv1.CursorGroup{}
 	for n := range s.cursorGroup {
 		for p := range s.cursorGroup[n] {
 			for t := range s.cursorGroup[n][p] {
 				if s.cursorGroup[n][p][t] != nil {
 					cursorGroups = append(
 						cursorGroups,
-						&pb.CursorGroup{
+						&pbv1.CursorGroup{
 							Keys:    []string{n, p, t},
 							Cursors: s.cursorGroup[n][p][t],
 						},
@@ -269,5 +270,5 @@ func (s *state) getPagination() *pb.PaginationInfo {
 		}
 		return keysi[0] < keysj[0]
 	})
-	return &pb.PaginationInfo{CursorGroups: cursorGroups}
+	return &pbv1.PaginationInfo{CursorGroups: cursorGroups}
 }

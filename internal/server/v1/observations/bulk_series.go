@@ -21,6 +21,7 @@ import (
 	"sort"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"github.com/datacommonsorg/mixer/internal/server/ranking"
 	"github.com/datacommonsorg/mixer/internal/server/stat"
 	"github.com/datacommonsorg/mixer/internal/store"
@@ -31,13 +32,13 @@ import (
 // BulkSeries implements API for Mixer.BulkObservationsSeries.
 func BulkSeries(
 	ctx context.Context,
-	in *pb.BulkObservationsSeriesRequest,
+	in *pbv1.BulkObservationsSeriesRequest,
 	store *store.Store,
-) (*pb.BulkObservationsSeriesResponse, error) {
+) (*pbv1.BulkObservationsSeriesResponse, error) {
 	entities := in.GetEntities()
 	variables := in.GetVariables()
 	allFacets := in.GetAllFacets()
-	result := &pb.BulkObservationsSeriesResponse{
+	result := &pbv1.BulkObservationsSeriesResponse{
 		Facets: map[string]*pb.StatMetadata{},
 	}
 	btData, err := stat.ReadStatsPb(ctx, store.BtGroup, entities, variables)
@@ -45,15 +46,19 @@ func BulkSeries(
 		return result, err
 	}
 
-	tmpResult := map[string]*pb.VariableObservations{}
+	tmpResult := map[string]*pbv1.VariableObservations{}
 	for _, entity := range entities {
 		for _, variable := range variables {
 			series := btData[entity][variable].SourceSeries
-			entityObservations := &pb.EntityObservations{
+			if store.MemDb.HasStatVar(variable) {
+				// Read series from in-memory database
+				series = append(store.MemDb.ReadSeries(variable, entity), series...)
+			}
+			entityObservations := &pbv1.EntityObservations{
 				Entity: entity,
 			}
 			if _, ok := tmpResult[variable]; !ok {
-				tmpResult[variable] = &pb.VariableObservations{
+				tmpResult[variable] = &pbv1.VariableObservations{
 					Variable: variable,
 				}
 			}
@@ -64,9 +69,9 @@ func BulkSeries(
 					series = series[0:1]
 				}
 				for _, series := range series {
-					metadata := stat.GetMetadata(series)
+					metadata := util.GetMetadata(series)
 					facet := util.GetMetadataHash(metadata)
-					timeSeries := &pb.TimeSeries{
+					timeSeries := &pbv1.TimeSeries{
 						Facet: facet,
 					}
 					for date, value := range series.Val {
@@ -75,42 +80,15 @@ func BulkSeries(
 							Value: proto.Float64(value),
 						}
 						timeSeries.Series = append(timeSeries.Series, ps)
-						sort.SliceStable(timeSeries.Series, func(i, j int) bool {
-							return timeSeries.Series[i].Date < timeSeries.Series[j].Date
-						})
 					}
+					sort.SliceStable(timeSeries.Series, func(i, j int) bool {
+						return timeSeries.Series[i].Date < timeSeries.Series[j].Date
+					})
 					entityObservations.SeriesByFacet = append(
 						entityObservations.SeriesByFacet,
 						timeSeries,
 					)
 					result.Facets[facet] = metadata
-				}
-			} else if store.MemDb.HasStatVar(variable) {
-				// Read series from in-memory database
-				series := store.MemDb.ReadSeries(variable, entity)
-				if !allFacets && len(series) > 0 {
-					series = series[0:1]
-				}
-				for _, series := range series {
-					facet := util.GetMetadataHash(series.Metadata)
-					timeSeries := &pb.TimeSeries{
-						Facet: facet,
-					}
-					for date, value := range series.Val {
-						ps := &pb.PointStat{
-							Date:  date,
-							Value: proto.Float64(value),
-						}
-						timeSeries.Series = append(timeSeries.Series, ps)
-						sort.SliceStable(timeSeries.Series, func(i, j int) bool {
-							return timeSeries.Series[i].Date < timeSeries.Series[j].Date
-						})
-					}
-					entityObservations.SeriesByFacet = append(
-						entityObservations.SeriesByFacet,
-						timeSeries,
-					)
-					result.Facets[facet] = series.Metadata
 				}
 			}
 			tmpResult[variable].ObservationsByEntity = append(

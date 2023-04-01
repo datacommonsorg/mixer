@@ -1,0 +1,102 @@
+{
+  "observations_by_variable": {
+    "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita": {
+      "observations_by_entity": {
+        "country/FRA": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "2171028778",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 51660
+                }
+              ]
+            }
+          ]
+        },
+        "country/USA": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "2171028778",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 70480
+                }
+              ]
+            }
+          ]
+        },
+        "dummy": {},
+        "geoId/06": {},
+        "geoId/0649670": {}
+      }
+    },
+    "Annual_Generation_Electricity": {
+      "observations_by_entity": {
+        "country/FRA": {},
+        "country/USA": {},
+        "dummy": {},
+        "geoId/06": {},
+        "geoId/0649670": {}
+      }
+    },
+    "Count_CriminalActivities_CombinedCrime": {
+      "observations_by_entity": {
+        "country/FRA": {},
+        "country/USA": {},
+        "dummy": {},
+        "geoId/06": {},
+        "geoId/0649670": {}
+      }
+    },
+    "Count_Person_Unemployed": {
+      "observations_by_entity": {
+        "country/FRA": {},
+        "country/USA": {},
+        "dummy": {},
+        "geoId/06": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 1387063
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/0649670": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 1497
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  },
+  "facets": {
+    "2171028778": {
+      "import_name": "WorldDevelopmentIndicators",
+      "provenance_url": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+      "observation_period": "P1Y",
+      "unit": "InternationalDollar"
+    },
+    "2978659163": {
+      "import_name": "BLS_LAUS",
+      "provenance_url": "https://www.bls.gov/lau/",
+      "measurement_method": "BLSSeasonallyUnadjusted",
+      "observation_period": "P1Y"
+    }
+  }
+}

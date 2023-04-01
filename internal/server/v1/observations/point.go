@@ -19,16 +19,17 @@ import (
 	"strings"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"github.com/datacommonsorg/mixer/internal/server/stat"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )
 
-// Point implements API for Mixer.ObservationsPoint.
+// Point implements API for Mixer.ObservationsPoint.s
 func Point(
 	ctx context.Context,
-	in *pb.ObservationsPointRequest,
+	in *pbv1.ObservationsPointRequest,
 	store *store.Store,
 ) (*pb.PointStat, error) {
 	entityVariable := in.GetEntityVariable()

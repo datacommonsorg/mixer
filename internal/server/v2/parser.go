@@ -68,14 +68,16 @@ func ParseArc(s string) (*Arc, error) {
 	if len(s) == 0 {
 		return arc, nil
 	}
+	// Remove space and new line.
+	replacer := strings.NewReplacer(" ", "", "\t", "", "\n", "", "\r", "")
 	// [prop1, prop2]
 	if s[0] == '[' {
 		if s[len(s)-1] != ']' {
 			return nil, status.Errorf(
-				codes.InvalidArgument, "invalid filter string: %s", s)
+				codes.InvalidArgument, "invalid list string: %s", s)
 		}
 		s = s[1 : len(s)-1]
-		arc.BracketProps = strings.Split(strings.ReplaceAll(s, " ", ""), ",")
+		arc.BracketProps = strings.Split(replacer.Replace(s), ",")
 		return arc, nil
 	}
 	for i := 0; i < len(s); i++ {
@@ -100,8 +102,11 @@ func ParseArc(s string) (*Arc, error) {
 				codes.InvalidArgument, "invalid filter string: %s", s)
 		}
 		filter := map[string]string{}
-		parts := strings.Split(strings.ReplaceAll(s[1:len(s)-1], " ", ""), ",")
+		parts := strings.Split(replacer.Replace(s[1:len(s)-1]), ",")
 		for _, p := range parts {
+			if p == "" {
+				continue
+			}
 			kv := strings.Split(p, ":")
 			if len(kv) != 2 || kv[0] == "" || kv[1] == "" {
 				return nil, status.Errorf(

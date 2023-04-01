@@ -20,7 +20,8 @@ import (
 	"runtime"
 	"testing"
 
-	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbs "github.com/datacommonsorg/mixer/internal/proto/service"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"github.com/datacommonsorg/mixer/test"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/testing/protocmp"
@@ -33,7 +34,7 @@ func TestBulkPlaceInfo(t *testing.T) {
 	_, filename, _, _ := runtime.Caller(0)
 	goldenPath := path.Join(path.Dir(filename), "bulk_place_info")
 
-	testSuite := func(mixer pb.MixerClient, latencyTest bool) {
+	testSuite := func(mixer pbs.MixerClient, latencyTest bool) {
 		for _, c := range []struct {
 			goldenFile string
 			nodes      []string
@@ -49,7 +50,7 @@ func TestBulkPlaceInfo(t *testing.T) {
 				true,
 			},
 		} {
-			req := &pb.BulkPlaceInfoRequest{
+			req := &pbv1.BulkPlaceInfoRequest{
 				Nodes: c.nodes,
 			}
 			resp, err := mixer.BulkPlaceInfo(ctx, req)
@@ -72,7 +73,7 @@ func TestBulkPlaceInfo(t *testing.T) {
 				test.UpdateGolden(resp, goldenPath, c.goldenFile)
 				continue
 			}
-			var expected pb.BulkPlaceInfoResponse
+			var expected pbv1.BulkPlaceInfoResponse
 			if err = test.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
 				t.Errorf("Can not Unmarshal golden file")
 				continue

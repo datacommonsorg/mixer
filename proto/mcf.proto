@@ -22,10 +22,9 @@
 // Eventually we need to move the shared protos out to a separate repo.
 
 syntax = "proto2";
-
-// Use relative go package so the generated file is in the current folder.
-option go_package = "./proto";
 package datacommons;
+
+option go_package = "github.com/datacommonsorg/mixer/internal/proto";
 
 import "debug.proto";
 

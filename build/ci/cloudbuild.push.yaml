@@ -28,10 +28,11 @@ steps:
           --include_source_info \
           --include_imports \
           --descriptor_set_out mixer-grpc.$SHORT_SHA.pb \
-          --go_out=internal \
-          --go-grpc_out=internal \
+          --go_out=paths=source_relative:internal/proto \
+          --go-grpc_out=paths=source_relative:internal/proto \
           --go-grpc_opt=require_unimplemented_servers=false \
-          proto/*.proto proto/v1/*.proto
+          --experimental_allow_proto3_optional \
+          proto/*.proto proto/**/*.proto
 
   # Push mixer server image to container registry
   - id: push-image
@@ -72,7 +73,7 @@ steps:
         ./scripts/update_autopush_version.sh $SHORT_SHA
 
 substitutions:
-    _SKIP_AUTOPUSH_UPDATE: "false"
+  _SKIP_AUTOPUSH_UPDATE: "false"
 
 options:
   volumes:

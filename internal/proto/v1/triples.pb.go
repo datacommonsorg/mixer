@@ -18,9 +18,10 @@
 // 	protoc        v3.21.9
 // source: v1/triples.proto
 
-package proto
+package v1
 
 import (
+	proto "github.com/datacommonsorg/mixer/internal/proto"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -40,7 +41,7 @@ type NodeInfoCollection struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Nodes []*EntityInfo `protobuf:"bytes,1,rep,name=nodes,proto3" json:"nodes,omitempty"`
+	Nodes []*proto.EntityInfo `protobuf:"bytes,1,rep,name=nodes,proto3" json:"nodes,omitempty"`
 }
 
 func (x *NodeInfoCollection) Reset() {
@@ -75,7 +76,7 @@ func (*NodeInfoCollection) Descriptor() ([]byte, []int) {
 	return file_v1_triples_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *NodeInfoCollection) GetNodes() []*EntityInfo {
+func (x *NodeInfoCollection) GetNodes() []*proto.EntityInfo {
 	if x != nil {
 		return x.Nodes
 	}
@@ -445,8 +446,11 @@ var file_v1_triples_proto_rawDesc = []byte{
 	0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x22, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d,
 	0x6f, 0x6e, 0x73, 0x2e, 0x76, 0x31, 0x2e, 0x4e, 0x6f, 0x64, 0x65, 0x49, 0x6e, 0x66, 0x6f, 0x43,
 	0x6f, 0x6c, 0x6c, 0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65,
-	0x3a, 0x02, 0x38, 0x01, 0x42, 0x09, 0x5a, 0x07, 0x2e, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62,
-	0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x3a, 0x02, 0x38, 0x01, 0x42, 0x33, 0x5a, 0x31, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63,
+	0x6f, 0x6d, 0x2f, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x6f, 0x72,
+	0x67, 0x2f, 0x6d, 0x69, 0x78, 0x65, 0x72, 0x2f, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x6e, 0x61, 0x6c,
+	0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x76, 0x31, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f,
+	0x33,
 }
 
 var (
@@ -471,7 +475,7 @@ var file_v1_triples_proto_goTypes = []interface{}{
 	nil,                                     // 5: datacommons.v1.TriplesResponse.TriplesEntry
 	(*BulkTriplesResponse_NodeTriples)(nil), // 6: datacommons.v1.BulkTriplesResponse.NodeTriples
 	nil,                                     // 7: datacommons.v1.BulkTriplesResponse.NodeTriples.TriplesEntry
-	(*EntityInfo)(nil),                      // 8: datacommons.EntityInfo
+	(*proto.EntityInfo)(nil),                // 8: datacommons.EntityInfo
 }
 var file_v1_triples_proto_depIdxs = []int32{
 	8, // 0: datacommons.v1.NodeInfoCollection.nodes:type_name -> datacommons.EntityInfo
@@ -492,7 +496,6 @@ func file_v1_triples_proto_init() {
 	if File_v1_triples_proto != nil {
 		return
 	}
-	file_entity_proto_init()
 	if !protoimpl.UnsafeEnabled {
 		file_v1_triples_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*NodeInfoCollection); i {
