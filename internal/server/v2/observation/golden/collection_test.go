@@ -125,7 +125,7 @@ func TestFetchFromCollection(t *testing.T) {
 		}
 	}
 	if err := test.TestDriver(
-		"Series",
+		"Collection",
 		&test.TestOption{UseMemdb: true},
 		testSuite,
 	); err != nil {

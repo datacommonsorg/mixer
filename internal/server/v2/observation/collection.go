@@ -127,8 +127,8 @@ func FetchFromCollection(
 		for variable, variableData := range moreResult.ObservationsByVariable {
 			result.ObservationsByVariable[variable] = variableData
 		}
-		for facet := range moreResult.Facets {
-			result.Facets[facet] = moreResult.Facets[facet]
+		for facet, res := range moreResult.Facets {
+			result.Facets[facet] = res
 		}
 	}
 	return result, nil
