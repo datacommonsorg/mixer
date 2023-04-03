@@ -268,20 +268,20 @@ func TestParseProperty(t *testing.T) {
 			continue
 		}
 		if diff := cmp.Diff(result, c.arc); diff != "" {
-			t.Errorf("v(%s) got diff %v", c.expr, diff)
+			t.Errorf("ParseProperty(%s) got diff %v", c.expr, diff)
 		}
 	}
 }
 
-func TestParseGraph(t *testing.T) {
+func TestParseLinkedNodes(t *testing.T) {
 	for _, c := range []struct {
 		expr  string
-		g     *Graph
+		g     *LinkedNodes
 		valid bool
 	}{
 		{
 			"geoId/06->name",
-			&Graph{
+			&LinkedNodes{
 				Subject: "geoId/06",
 				Arcs: []*Arc{
 					{
@@ -293,15 +293,15 @@ func TestParseGraph(t *testing.T) {
 			true,
 		},
 	} {
-		result, err := ParseGraph(c.expr)
+		result, err := ParseLinkedNodes(c.expr)
 		if !c.valid {
 			if err == nil {
-				t.Errorf("ParseGraph(%s) expect error, but got nil", c.expr)
+				t.Errorf("ParseLinkedNodes(%s) expect error, but got nil", c.expr)
 			}
 			continue
 		}
 		if err != nil {
-			t.Errorf("ParseGraph(%s) got error %v", c.expr, err)
+			t.Errorf("ParseLinkedNodes(%s) got error %v", c.expr, err)
 			continue
 		}
 		if diff := cmp.Diff(result, c.g); diff != "" {

@@ -29,8 +29,8 @@ type Arc struct {
 	Filter map[string]string
 }
 
-// Graph represents a local graph with subject and connected arcs.
-type Graph struct {
+// LinkedNodes represents a local graph starting from a node with connected arcs.
+type LinkedNodes struct {
 	Subject string
 	Arcs    []*Arc
 }

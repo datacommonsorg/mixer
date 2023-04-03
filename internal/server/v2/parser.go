@@ -49,7 +49,7 @@ func splitExpr(expr string) []string {
 }
 
 // parseArc parses an Arc object
-func parseArc(arrow string, expr string) (*Arc, error) {
+func parseArc(arrow, expr string) (*Arc, error) {
 	arc := &Arc{}
 	if arrow == "->" {
 		arc.Out = true
@@ -131,7 +131,7 @@ func ParseProperty(expr string) ([]*Arc, error) {
 	}
 	if len(parts)%2 == 1 {
 		return nil, status.Errorf(
-			codes.InvalidArgument, "in valid expression string: %s", expr)
+			codes.InvalidArgument, "invalid expression string: %s", expr)
 	}
 	arcs := []*Arc{}
 	for i := 0; i < len(parts)/2; i++ {
@@ -144,24 +144,22 @@ func ParseProperty(expr string) ([]*Arc, error) {
 	return arcs, nil
 }
 
-// ParseGraph parses an expression string into a Graph object
-func ParseGraph(expr string) (*Graph, error) {
+// ParseLinkedNodes parses an expression string into linked nodes.
+func ParseLinkedNodes(expr string) (*LinkedNodes, error) {
 	parts := splitExpr(expr)
 	if len(parts) < 3 || len(parts)%2 == 0 {
 		return nil, status.Errorf(
-			codes.InvalidArgument, "in valid expression string: %s", expr)
+			codes.InvalidArgument, "invalid expression string: %s", expr)
 	}
-	g := &Graph{
+	g := &LinkedNodes{
 		Subject: parts[0],
 	}
-	arcs := []*Arc{}
 	for i := 0; i < len(parts)/2; i++ {
 		arc, err := parseArc(parts[i*2+1], parts[i*2+2])
 		if err != nil {
 			return nil, err
 		}
-		arcs = append(arcs, arc)
+		g.Arcs = append(g.Arcs, arc)
 	}
-	g.Arcs = arcs
 	return g, nil
 }

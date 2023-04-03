@@ -96,20 +96,20 @@ func (s *Server) V2Observation(
 		// Example of expression
 		// "geoId/06<-containedInPlace{typeOf: City}"
 		expr := in.GetEntitiesExpression()
-		g, err := v2.ParseGraph(expr)
+		g, err := v2.ParseLinkedNodes(expr)
 		if err != nil {
 			return nil, err
 		}
 		if len(g.Arcs) != 1 {
 			return nil, status.Errorf(
-				codes.InvalidArgument, "in valid expression string: %s", expr)
+				codes.InvalidArgument, "invalid expression string: %s", expr)
 		}
 		arc := g.Arcs[0]
 		if arc.SingleProp != "containedInPlace" ||
 			arc.Filter == nil ||
 			arc.Filter["typeOf"] == "" {
 			return nil, status.Errorf(
-				codes.InvalidArgument, "in valid expression string: %s", expr)
+				codes.InvalidArgument, "invalid expression string: %s", expr)
 		}
 		return v2observation.FetchFromCollection(
 			ctx,
