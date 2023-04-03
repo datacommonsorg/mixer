@@ -35,6 +35,9 @@ func splitWithDelim(expr string, delim string) []string {
 }
 
 func splitExpr(expr string) []string {
+	replacer := strings.NewReplacer(" ", "", "\t", "", "\n", "", "\r", "")
+	expr = replacer.Replace(expr)
+
 	parts := splitWithDelim(expr, "->")
 	res := []string{}
 	for _, part := range parts {
@@ -66,16 +69,20 @@ func parseArc(arrow, expr string) (*Arc, error) {
 	if len(expr) == 0 {
 		return arc, nil
 	}
+
 	// Remove space and new line.
 	replacer := strings.NewReplacer(" ", "", "\t", "", "\n", "", "\r", "")
+	rawExpr := expr
+	expr = replacer.Replace(expr)
+
 	// [prop1, prop2]
 	if expr[0] == '[' {
 		if expr[len(expr)-1] != ']' {
 			return nil, status.Errorf(
-				codes.InvalidArgument, "invalid list string: %s", expr)
+				codes.InvalidArgument, "invalid list string: %s", rawExpr)
 		}
 		expr = expr[1 : len(expr)-1]
-		arc.BracketProps = strings.Split(replacer.Replace(expr), ",")
+		arc.BracketProps = strings.Split(expr, ",")
 		return arc, nil
 	}
 	for i := 0; i < len(expr); i++ {
@@ -97,10 +104,10 @@ func parseArc(arrow, expr string) (*Arc, error) {
 	if len(expr) > 0 && expr[0] == '{' {
 		if expr[len(expr)-1] != '}' {
 			return nil, status.Errorf(
-				codes.InvalidArgument, "invalid filter string: %s", expr)
+				codes.InvalidArgument, "invalid filter string: %s", rawExpr)
 		}
 		filter := map[string]string{}
-		parts := strings.Split(replacer.Replace(expr[1:len(expr)-1]), ",")
+		parts := strings.Split(expr[1:len(expr)-1], ",")
 		for _, p := range parts {
 			if p == "" {
 				continue
@@ -108,7 +115,7 @@ func parseArc(arrow, expr string) (*Arc, error) {
 			kv := strings.Split(p, ":")
 			if len(kv) != 2 || kv[0] == "" || kv[1] == "" {
 				return nil, status.Errorf(
-					codes.InvalidArgument, "invalid filter string: %s", p)
+					codes.InvalidArgument, "invalid filter string: %s", rawExpr)
 			}
 			filter[kv[0]] = kv[1]
 		}
