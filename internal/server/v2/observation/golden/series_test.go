@@ -27,7 +27,7 @@ import (
 	"google.golang.org/protobuf/testing/protocmp"
 )
 
-func TestSeries(t *testing.T) {
+func TestFetchFromSeries(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
 
