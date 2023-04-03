@@ -68,6 +68,10 @@ func TestSplitExpr(t *testing.T) {
 				"#",
 			},
 		},
+		{
+			" geoId/06 <- containedInPlace { typeOf : City } ",
+			[]string{"geoId/06", "<-", "containedInPlace { typeOf : City }"},
+		},
 	} {
 		result := splitExpr(c.query)
 		if diff := cmp.Diff(result, c.parts); diff != "" {
@@ -158,6 +162,19 @@ func TestParseArc(t *testing.T) {
 		{
 			"->",
 			"containedInPlace+{typeOf: City}",
+			&Arc{
+				Out:        true,
+				SingleProp: "containedInPlace",
+				Wildcard:   "+",
+				Filter: map[string]string{
+					"typeOf": "City",
+				},
+			},
+			true,
+		},
+		{
+			"->",
+			"containedInPlace + { typeOf : City }",
 			&Arc{
 				Out:        true,
 				SingleProp: "containedInPlace",
