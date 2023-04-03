@@ -1,0 +1,13 @@
+{
+  "data": {
+    "geoId/06085": {
+      "properties": [
+        "affectedPlace",
+        "containedInPlace",
+        "geoOverlaps",
+        "location",
+        "member"
+      ]
+    }
+  }
+}
