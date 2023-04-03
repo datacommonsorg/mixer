@@ -72,27 +72,30 @@ func FetchFromSeries(
 							Date:  date,
 							Value: proto.Float64(value),
 						}
-						if queryDate != "" && queryDate != LATEST && date != queryDate {
+						if queryDate != "" && queryDate != LATEST && queryDate != date {
 							continue
 						}
 						obsList = append(obsList, ps)
 					}
+					if len(obsList) == 0 {
+						continue
+					}
+
 					sort.SliceStable(obsList, func(i, j int) bool {
 						return obsList[i].Date < obsList[j].Date
 					})
 					if queryDate == LATEST {
 						obsList = obsList[len(obsList)-1:]
 					}
-					if len(obsList) > 0 {
-						result.Facets[facetID] = metadata
-						entityObservation.OrderedFacetObservations = append(
-							entityObservation.OrderedFacetObservations,
-							&pbv2.FacetObservation{
-								FacetId:      facetID,
-								Observations: obsList,
-							},
-						)
-					}
+
+					result.Facets[facetID] = metadata
+					entityObservation.OrderedFacetObservations = append(
+						entityObservation.OrderedFacetObservations,
+						&pbv2.FacetObservation{
+							FacetId:      facetID,
+							Observations: obsList,
+						},
+					)
 				}
 			}
 			result.ObservationsByVariable[variable].ObservationsByEntity[entity] = entityObservation
