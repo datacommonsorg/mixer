@@ -1,0 +1,7531 @@
+{
+  "observations_by_variable": {
+    "Annual_Emissions_GreenhouseGas_NonBiogenic": {
+      "observations_by_entity": {
+        "epaGhgrpFacilityId/1000005": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 81665.82
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000033": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 0
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000046": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 79602.25
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000051": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 52954.656
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000058": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2012",
+                  "value": 6648.324
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000064": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 64354.478
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000065": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2014",
+                  "value": 9132.516
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000066": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 69794.236
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000067": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 4981.932
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000070": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 1359286.264
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000072": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 19492.476
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000074": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 9812.882
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000075": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 1389.396
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000080": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2014",
+                  "value": 6638.076
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000081": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2014",
+                  "value": 6722.424
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000082": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2014",
+                  "value": 7003.624
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000102": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 824180.696
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000122": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 3815.236
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000123": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 18529.38
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000128": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 19928.876
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000130": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 7061.024
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000133": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 1607859.352
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000147": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 29760.04
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000161": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 105927.408
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000175": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 98622.232
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000224": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 8767.968
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000279": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2014",
+                  "value": 14380.896
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000280": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2014",
+                  "value": 10964.36
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000283": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 18571.38
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000289": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 410882.904
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000300": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 16499.288
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000310": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 283951.54
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000314": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2012",
+                  "value": 0
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000321": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2014",
+                  "value": 11468.908
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000323": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 1045748.984
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000339": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2014",
+                  "value": 11367.75
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000341": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2012",
+                  "value": 143749.51
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000366": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2014",
+                  "value": 2377
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000367": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2014",
+                  "value": 1374.75
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000368": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 11650
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000369": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2014",
+                  "value": 1197.5
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000410": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 464930.128
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000422": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 4485.044
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000423": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 2451.94
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000431": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 250052.972
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000438": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 7984.42
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000439": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 46986.728
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000447": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 40052.452
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000453": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 45372.832
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000457": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 622235.144
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000458": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 9433.664
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000464": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 469490.16
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000469": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 13619.8
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000471": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 45020.884
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000485": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 130376.36
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000490": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 13136.6
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000501": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 354877.248
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000506": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 0
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000507": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 220913.58
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000515": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2014",
+                  "value": 8046.22
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000516": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2014",
+                  "value": 9637.364
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000517": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2014",
+                  "value": 16314.54
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000518": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2014",
+                  "value": 10834.26
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000519": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2014",
+                  "value": 14976.544
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000541": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 43372.84
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000545": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 31869.232
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000546": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 322670.952
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000548": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 11703.756
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000549": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2018",
+                  "value": 17806.084
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000560": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 9367.316
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000566": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 72182.084
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000572": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 9047.228
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000594": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 3957.336
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000596": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 114433.22
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000597": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 76963.412
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000617": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2010",
+                  "value": 30925.184
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000796": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 299092.096
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000806": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 1015027.444
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000891": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 28829.54
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000903": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 81453.344
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000904": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 99738.276
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1000907": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 57502.684
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1001003": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2013",
+                  "value": 0
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1001107": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 207039.532
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1001127": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 138320.984
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1001129": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 346979.964
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1001130": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 287397.684
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1001134": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 11409.908
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1001263": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 1362892.68
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1001320": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 261835.644
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1001339": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 414421.664
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1001366": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 1122870.004
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1001405": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 612070.38
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1001439": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2014",
+                  "value": 16.3
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1001440": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 1940542.608
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1001441": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2018",
+                  "value": 17.1
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1001442": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2010",
+                  "value": 48469.62
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1001444": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 531900.472
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1001445": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 0
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1001446": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2018",
+                  "value": 1.9
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1001447": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 255988.948
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1001448": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2017",
+                  "value": 96586.092
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1001449": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 100925.424
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1001450": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 171792.812
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1001451": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 1216417.044
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1001454": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 290451.924
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1001455": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 60449.97
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1001456": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 528108.56
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1001457": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 865349.682
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1001458": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2017",
+                  "value": 0
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1001459": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 35542.316
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1001625": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 2966.588
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1001629": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 735568.38
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1001667": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 6436.576
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1001691": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2014",
+                  "value": 1594.304
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1001698": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2012",
+                  "value": 2381.506
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1001700": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 10078.012
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1001718": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 141104.564
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1001719": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2018",
+                  "value": 6653.732
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1001735": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 74982.074
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1001804": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 3055156.748
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1001819": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 68996.5
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1001886": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 53498.748
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1001964": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 887959.764
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1001971": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 8892.668
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1001983": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 38873.336
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1001984": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 26307.152
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1001998": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 77262.96
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1002007": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 87241.848
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1002053": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 28148.896
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1002104": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 43583.5
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1002106": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 128675.75
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1002107": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 295457.5
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1002121": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 717297.2
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1002122": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 264073.012
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1002123": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 47119.8
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1002134": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 69264.25
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1002152": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 311944.476
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1002155": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2013",
+                  "value": 12850.204
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1002156": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 70655.684
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1002185": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 56275.188
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1002205": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 45531.58
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1002224": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 23790.75
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1002230": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 68451.092
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1002231": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 35542.192
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1002237": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 53472.048
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1002257": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 698524.9
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1002261": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 45527.592
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1002271": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 60847.172
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1002286": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 37672.764
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1002308": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 1907920.5
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1002315": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 27912.644
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1002316": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 142478.464
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1002317": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 40915.716
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1002320": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 418814
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1002338": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2013",
+                  "value": 1468066.088
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1002384": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 0
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1002394": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 49683.412
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1002431": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 771202.92
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1002435": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 819053.45
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1002461": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 1135681.716
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1002541": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 5753.028
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1002543": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 7614.072
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1002565": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 95675.452
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1002566": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 553979.752
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1002591": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 61100.968
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1002597": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 11089.108
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1002634": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 32868
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1002640": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 19975.284
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1002671": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2014",
+                  "value": 0
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1002689": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2012",
+                  "value": 13607.75
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1002692": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2013",
+                  "value": 41660.47
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1002726": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 54288.938
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1002728": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 6861.324
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1002734": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 15140.906
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1002759": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 5026.132
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1002820": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 8919.568
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1002821": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 9204.864
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1002867": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 33486.66
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1002869": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 28327.588
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1002874": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 56992.136
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1002886": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 19401.5
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1002896": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 49993.5
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1002897": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2012",
+                  "value": 3781.5
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1002898": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2014",
+                  "value": 11426.5
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1002978": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 107776.078
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1002981": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 376730.944
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1002984": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 331054.508
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1002985": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 256717.768
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1002992": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 159878.5
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1003016": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2018",
+                  "value": 3095.988
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1003056": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 26161.812
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1003175": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2018",
+                  "value": 0
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1003182": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2018",
+                  "value": 21386.21
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1003187": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 23961.06
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1003198": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 101690
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1003199": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 67757.384
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1003200": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 108970.39
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1003202": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 81110.25
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1003328": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 43687.25
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1003340": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 138578.054
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1003344": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 52677.352
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1003361": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 22021.75
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1003386": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2013",
+                  "value": 1067.88
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1003395": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 8736
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1003459": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 108.2
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1003490": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 339147.772
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1003599": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 57611.272
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1003610": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 4521943.416
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1003617": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 1719.744
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1003618": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2012",
+                  "value": 24563.7
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1003632": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2012",
+                  "value": 189899.384
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1003636": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 18935.234
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1003641": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2012",
+                  "value": 12154.2
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1003644": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2012",
+                  "value": 24296.1
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1003662": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2012",
+                  "value": 24314
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1003663": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2012",
+                  "value": 20196.396
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1003664": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2012",
+                  "value": 0
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1003665": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 29961.788
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1003679": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 389900.25
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1003680": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 86057.25
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1003689": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 17088.036
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1003690": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2012",
+                  "value": 0
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1003702": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 19924.924
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1003748": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 800781.6
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1003756": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 16767.788
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1003800": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 1220.75
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1003813": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 3115.25
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1003814": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 15373.25
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1003831": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 569.746
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1003918": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 67954.25
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1003978": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 60921.92
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1003980": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 391425.876
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1003998": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 417479.636
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1004001": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 417899.036
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1004004": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2017",
+                  "value": 0
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1004010": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 84666.25
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1004011": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 140306.5
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1004037": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 162975.97
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1004046": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 457272.228
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1004051": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2017",
+                  "value": 3429.536
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1004052": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 11886
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1004058": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 0
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1004068": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 38968.17
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1004069": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 53989.526
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1004123": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 59164.292
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1004186": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 1207299.304
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1004193": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 421087.212
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1004205": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 34544.72
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1004262": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 46326.276
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1004267": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 141812.496
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1004272": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 74996.362
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1004335": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 46441.25
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1004362": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2017",
+                  "value": 13507.432
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1004364": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 12897.75
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1004402": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 10837
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1004403": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 6059.25
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1004406": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 41725.25
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1004417": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 154659.35
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1004419": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2014",
+                  "value": 11009.25
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1004438": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 39919.8
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1004465": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 38351
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1004478": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 33316.524
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1004496": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 31784.78
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1004548": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 16143.5
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1004549": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 77644.096
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1004550": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 249917.542
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1004577": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 12438.904
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1004579": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 18251.732
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1004612": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 293213.326
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1004628": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 144072.118
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1004651": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 33900.626
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1004685": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 68581.1
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1004691": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 20905.25
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1004692": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 12247.25
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1004718": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 32130.88
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1004743": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 61541.692
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1004745": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 97292.5
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1004753": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 109037.04
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1004779": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 40606.208
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1004828": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2014",
+                  "value": 22517.75
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1004830": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2014",
+                  "value": 368560.07
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1004832": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 31759.48
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1004868": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 17824.5
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1004882": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 9377.45
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1004905": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 40172.65
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1004938": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2018",
+                  "value": 2020.894
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1004940": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 10948.824
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1004948": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 12318.284
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1004956": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 38917.204
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1004959": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 17542.25
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1004965": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 35994.982
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1004979": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2010",
+                  "value": 195406.064
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1004981": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2010",
+                  "value": 162093.24
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1005041": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2014",
+                  "value": 7616
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1005042": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 65862.5
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1005044": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 27964.896
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1005061": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 154932
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1005063": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 32424.842
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1005066": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2010",
+                  "value": 191002.58
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1005087": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 0
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1005088": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 0
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1005092": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 4274
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1005108": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 769310.252
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1005133": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2018",
+                  "value": 11457.156
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1005150": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 39198.652
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1005164": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 1523196.046
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1005195": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 7089.816
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1005209": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 1307009.35
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1005256": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 284127.1
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1005308": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 1344484.804
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1005321": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 21910.338
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1005355": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 512887.168
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1005368": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 15749.25
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1005413": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 21462.22
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1005446": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 29064.662
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1005501": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 225528.7
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1005517": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 49947.064
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1005565": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 76574.512
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1005588": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 35065.568
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1005635": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 46851.324
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1005644": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2018",
+                  "value": 20169.124
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1005648": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 31136.952
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1005654": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2014",
+                  "value": 2666.5
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1005657": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 43962.984
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1005658": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 31704.68
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1005659": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 63988.96
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1005662": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 1063584.116
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1005782": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 10762.75
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1005790": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 207797.52
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1005800": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 47646.024
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1005837": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 57.7
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1005843": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 9544.364
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1005859": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 124727.88
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1005864": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 89126.14
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1005865": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 1926.812
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1005872": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 50698.108
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1005910": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2018",
+                  "value": 17235.434
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1005938": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 232583.324
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1005955": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 18676.75
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1005975": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 3516.536
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1006048": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 114267.82
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1006079": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2014",
+                  "value": 4381.25
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1006086": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 18233.3
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1006089": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 98439
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1006097": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 1185641.516
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1006099": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 169349.474
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1006104": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 36125.064
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1006107": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 78164
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1006113": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 7433.572
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1006127": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2010",
+                  "value": 403.7
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1006139": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 13795.148
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1006149": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2014",
+                  "value": 8388.5
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1006175": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 25313.204
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1006179": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 137311
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1006197": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 28027.25
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1006215": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 4444.25
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1006216": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 17651.25
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1006218": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 33929.75
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1006221": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 22681
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1006265": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 52664.066
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1006293": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 24683
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1006322": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 37638.75
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1006395": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 1346104.534
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1006401": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2012",
+                  "value": 136.9
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1006405": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 219827.472
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1006427": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 17
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1006430": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 601812.2
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1006432": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 426549.944
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1006434": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 32723.69
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1006445": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 59553.376
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1006447": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 21060.12
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1006501": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 32200
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1006533": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 170.7
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1006557": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2014",
+                  "value": 12019.172
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1006568": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 0
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1006594": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 50662.758
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1006627": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 5948167.598
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1006628": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 67912.016
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1006629": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2014",
+                  "value": 6250.75
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1006642": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 795656.282
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1006680": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 3226.782
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1006732": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 79792.8
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1006734": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2017",
+                  "value": 107595.544
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1006745": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2012",
+                  "value": 5305.88
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1006750": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 33150.932
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1006761": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 153388.072
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1006792": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2014",
+                  "value": 5707.914
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1006812": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 6920.724
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1006836": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 36981.06
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1006842": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 1124097.888
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1006843": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 1792021.334
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1006844": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 170195.26
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1006845": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 1504685.688
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1006846": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 400996.14
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1006860": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 4665.532
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1006861": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 25476.404
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1006914": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 252039.4
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1006937": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 33914.072
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1006960": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2014",
+                  "value": 3643.5
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1007015": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 3328.25
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1007040": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 33057
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1007055": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 58736.704
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1007112": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 155039.75
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1007125": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 53750.45
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1007128": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 55126.75
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1007173": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 1157864.508
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1007197": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 120712.75
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1007198": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 83575.5
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1007204": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 0
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1007238": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2014",
+                  "value": 312830.872
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1007262": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 62469.364
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1007265": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2010",
+                  "value": 0
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1007312": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 389942.756
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1007313": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2013",
+                  "value": 19778.276
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1007315": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 160829.804
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1007316": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2014",
+                  "value": 10007.712
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1007318": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 270922.696
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1007329": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 2734517.148
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1007345": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 77959.5
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1007347": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 4.5
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1007363": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2010",
+                  "value": 72243.576
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1007390": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 2302964.872
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1007398": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2013",
+                  "value": 194606.968
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1007411": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 189361.766
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1007424": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 43268.7
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1007461": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 53719.548
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1007469": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 1137218.636
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1007536": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 33494.78
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1007539": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 36153.064
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1007556": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2013",
+                  "value": 3.3
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1007558": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 2974.25
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1007600": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2014",
+                  "value": 13295.714
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1007607": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 40225
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1007609": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2013",
+                  "value": 1.5
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1007651": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 29159.98
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1007654": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 3563.5
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1007668": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 148556.688
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1007682": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 105977.35
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1007693": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 56854.15
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1007699": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 183428.282
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1007710": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 66396.7
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1007736": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 10618.5
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1007738": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 22181.368
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1007749": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 5971.728
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1007794": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 30011.45
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1007805": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 52540.052
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1007816": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 285774.746
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1007817": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 89054
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1007823": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 58694.428
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1007836": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 6589.75
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1007837": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 89442.95
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1007839": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 49169.75
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1007841": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 25692.2
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1007904": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 116899.696
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1007927": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 1250995.688
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1007951": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 14249.5
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1007955": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 870823.222
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1007978": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 3345878.6
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1007993": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2014",
+                  "value": 10946
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1008030": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 90593.5
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1008057": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2014",
+                  "value": 11271.05
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1008102": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 5996.85
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1008163": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 1191599.314
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1008165": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 45001.744
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1008308": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 210647.92
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1008346": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 24370.3
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1008402": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 44352.912
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1008405": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 7019.85
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1008406": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 22425.012
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1008409": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 210887.902
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1008499": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 13570.822
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1008504": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 2598345.062
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1008956": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 1213.7
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1008961": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2014",
+                  "value": 37670.362
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1008997": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 3122.988
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1009051": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 14176.15
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1009052": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 93485.33
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1009053": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 27287.958
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1009239": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 18924.386
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1009240": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 431066.174
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1009241": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 17822.408
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1009300": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 45551.832
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1009555": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 6336.12
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1009578": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 28823.76
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1009582": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 40462.846
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1009626": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 8547.042
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1009787": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 24277.44
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1009921": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 15645.36
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1009928": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 15685.630185
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1009930": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 27347.25
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1009944": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 16212.688
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1009951": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 22341.626182
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1009983": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 5342.33024
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1010003": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 62156.716
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1010076": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 2845.44
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1010139": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 72548.797134
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1010172": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2014",
+                  "value": 0
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1010207": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 22130
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1010231": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2017",
+                  "value": 2995.92
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1010317": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2014",
+                  "value": 13351.230788
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1010345": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 34550.82
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1010346": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 35672.916
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1010349": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2013",
+                  "value": 1980.945
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1010417": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 232640.788
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1010540": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2017",
+                  "value": 7110.424
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1010570": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2013",
+                  "value": 45967.776
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1010581": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 26104.518
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1010590": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2018",
+                  "value": 82353.34
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1010696": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2018",
+                  "value": 16768.736
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1010707": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 234121.732
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1010738": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 38794.462
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1010767": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 457459.16
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1010774": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 13501.826
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1010893": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 9465.986
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1010932": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 611632.524
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1010962": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 306143.816
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1010977": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 36373.312
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1011035": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 0
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1011081": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 30010.238
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1011082": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 71147.636
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1011090": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 41767.192
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1011190": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 6991.224
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1011213": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 35082.368
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1011226": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 368656.058
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1011303": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 43557.988
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1011345": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 15328.112
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1011361": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 12670.152
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1011371": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 18704.25
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1011384": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 29370.94
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1011389": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 23612.812
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1011449": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 288112.75
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1011469": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 33600.424
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1011475": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 28323.744
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1011526": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 37400.972
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1011548": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2014",
+                  "value": 11.4
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1011577": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 37565.008
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1011669": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 17145.25
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1011673": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 38084.822
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1011676": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 15418
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1011716": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 3047.5
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1011718": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 39962.852
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1011798": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 13056.391482
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1011804": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 28930.042
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1011819": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 28428.488
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1011905": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 222.1902
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1012089": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 75887.064
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1012094": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 27668.896
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1012095": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 25342.704
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1012097": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 21899.48
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1012110": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 33947.772
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1012143": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 2429710.578
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1012146": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 229050.918
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1012147": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2018",
+                  "value": 3564.138
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1012257": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 26934.622
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1012289": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 29191.092
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1012305": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 735115.698
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1012311": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 31559.46
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1012348": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 219337.42
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1012351": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 40456.436
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1012355": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 2411.3
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1012357": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 64153.018
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1012360": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 1033236.146
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1012361": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 136443.85
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1012378": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 867757.466
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1012414": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 57076.088
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1012475": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 67556.596
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1012548": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 22822.764
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1012713": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 33764.372
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1012823": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 312254.91
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1012977": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 26454.1
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1012990": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 19423.076
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1013042": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 131013.508
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1013147": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 8.75
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1013348": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 29179.64
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1013360": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 226120.708
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1013489": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 26434.9
+                }
+              ]
+            }
+          ]
+        },
+        "epaGhgrpFacilityId/1013696": {
+          "ordered_facet_observations": [
+            {
+              "facet_id": "3902333627",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 64356.026
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  },
+  "facets": {
+    "3902333627": {
+      "import_name": "EPA_GHGRP",
+      "provenance_url": "https://www.epa.gov/ghgreporting",
+      "measurement_method": "EPA_GHGRP",
+      "observation_period": "P1Y",
+      "unit": "MetricTonCO2e"
+    }
+  }
+}

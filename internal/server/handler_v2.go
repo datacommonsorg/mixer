@@ -101,7 +101,7 @@ func (s *Server) V2Observation(
 	}
 	if len(in.GetVariables()) > 0 && in.GetEntitiesExpression() != "" {
 		// Example of expression
-		// "geoId/06<-containedInPlace{typeOf: City}"
+		// "geoId/06<-containedInPlace+{typeOf: City}"
 		expr := in.GetEntitiesExpression()
 		g, err := v2.ParseLinkedNodes(expr)
 		if err != nil {
@@ -113,6 +113,7 @@ func (s *Server) V2Observation(
 		}
 		arc := g.Arcs[0]
 		if arc.SingleProp != "containedInPlace" ||
+			arc.Wildcard != "+" ||
 			arc.Filter == nil ||
 			arc.Filter["typeOf"] == "" {
 			return nil, status.Errorf(
