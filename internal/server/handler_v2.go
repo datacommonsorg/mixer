@@ -22,6 +22,8 @@ import (
 	v2observation "github.com/datacommonsorg/mixer/internal/server/v2/observation"
 	v2pv "github.com/datacommonsorg/mixer/internal/server/v2/propertyvalues"
 	"github.com/datacommonsorg/mixer/internal/util"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 )
@@ -30,17 +32,9 @@ import (
 func (s *Server) V2Node(
 	ctx context.Context, in *pbv2.NodeRequest,
 ) (*pbv2.NodeResponse, error) {
-	arcStrings, err := v2.SplitArc(in.GetProperty())
+	arcs, err := v2.ParseProperty(in.GetProperty())
 	if err != nil {
 		return nil, err
-	}
-	arcs := []*v2.Arc{}
-	for _, s := range arcStrings {
-		arc, err := v2.ParseArc(s)
-		if err != nil {
-			return nil, err
-		}
-		arcs = append(arcs, arc)
 	}
 	// TODO: abstract this out to a router module.
 	// Simple Property Values
@@ -93,8 +87,36 @@ func (s *Server) V2Observation(
 		return v2observation.FetchFromSeries(
 			ctx,
 			s.store,
-			in.GetEntities(),
 			in.GetVariables(),
+			in.GetEntities(),
+			in.GetDate(),
+		)
+	}
+	if len(in.GetVariables()) > 0 && in.GetEntitiesExpression() != "" {
+		// Example of expression
+		// "geoId/06<-containedInPlace{typeOf: City}"
+		expr := in.GetEntitiesExpression()
+		g, err := v2.ParseLinkedNodes(expr)
+		if err != nil {
+			return nil, err
+		}
+		if len(g.Arcs) != 1 {
+			return nil, status.Errorf(
+				codes.InvalidArgument, "invalid expression string: %s", expr)
+		}
+		arc := g.Arcs[0]
+		if arc.SingleProp != "containedInPlace" ||
+			arc.Filter == nil ||
+			arc.Filter["typeOf"] == "" {
+			return nil, status.Errorf(
+				codes.InvalidArgument, "invalid expression string: %s", expr)
+		}
+		return v2observation.FetchFromCollection(
+			ctx,
+			s.store,
+			in.GetVariables(),
+			g.Subject,
+			arc.Filter["typeOf"],
 			in.GetDate(),
 		)
 	}

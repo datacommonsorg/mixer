@@ -28,3 +28,9 @@ type Arc struct {
 	// The filter of the arc.
 	Filter map[string]string
 }
+
+// LinkedNodes represents a local graph starting from a node with connected arcs.
+type LinkedNodes struct {
+	Subject string
+	Arcs    []*Arc
+}
