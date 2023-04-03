@@ -52,8 +52,8 @@ message BulkObservationsPointRequest {
 
 message BulkObservationsPointResponse {
   repeated VariableObservations observations_by_variable = 1;
-  // Keyed by the hash of StatMetadata
-  map<string, datacommons.StatMetadata> facets = 2;
+  // Keyed by the hash of Facet
+  map<string, datacommons.Facet> facets = 2;
 }
 
 message BulkObservationsPointLinkedRequest {
@@ -78,7 +78,7 @@ message ObservationsSeriesRequest {
 
 message ObservationsSeriesResponse {
   repeated datacommons.PointStat observations = 1;
-  datacommons.StatMetadata facet = 2;
+  datacommons.Facet facet = 2;
 }
 
 message BulkObservationsSeriesRequest {
@@ -89,7 +89,7 @@ message BulkObservationsSeriesRequest {
 
 message BulkObservationsSeriesResponse {
   repeated VariableObservations observations_by_variable = 1;
-  map<string, datacommons.StatMetadata> facets = 2;
+  map<string, datacommons.Facet> facets = 2;
 }
 
 message BulkObservationsSeriesLinkedRequest {

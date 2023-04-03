@@ -49,7 +49,7 @@ func FetchFromCollection(
 	}
 	result := &pbv2.ObservationResponse{
 		ObservationsByVariable: map[string]*pbv2.VariableObservation{},
-		Facets:                 map[string]*pb.StatMetadata{},
+		Facets:                 map[string]*pb.Facet{},
 	}
 	variablesMissingData := []string{}
 	for _, variable := range variables {
@@ -67,8 +67,8 @@ func FetchFromCollection(
 		// Sort cohort first, so the preferred source is populated first.
 		sort.Sort(ranking.CohortByRank(cohorts))
 		for _, cohort := range cohorts {
-			facet := util.GetMetadata(cohort)
-			facetID := util.GetMetadataHash(facet)
+			facet := util.GetFacet(cohort)
+			facetID := util.GetFacetID(facet)
 			result.Facets[facetID] = facet
 			for entity, val := range cohort.Val {
 				if _, ok := obsByEntity[entity]; !ok {

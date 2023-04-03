@@ -434,9 +434,9 @@ func KeysToSlice(m map[string]bool) []string {
 	return s
 }
 
-// GetMetadata derives the stat metadata from a source series.
-func GetMetadata(s *pb.SourceSeries) *pb.StatMetadata {
-	return &pb.StatMetadata{
+// GetFacet derives the facet from a source series.
+func GetFacet(s *pb.SourceSeries) *pb.Facet {
+	return &pb.Facet{
 		ImportName:        s.ImportName,
 		MeasurementMethod: s.MeasurementMethod,
 		ObservationPeriod: s.ObservationPeriod,
@@ -446,9 +446,9 @@ func GetMetadata(s *pb.SourceSeries) *pb.StatMetadata {
 	}
 }
 
-// GetMetadataHash retrieves a hash string for a given protobuf message.
+// GetFacetID retrieves a hash string for a given protobuf message.
 // Note this should be restrict to a request scope.
-func GetMetadataHash(m *pb.StatMetadata) string {
+func GetFacetID(m *pb.Facet) string {
 	h := fnv.New32a()
 	_, _ = h.Write([]byte(strings.Join([]string{
 		m.ImportName,

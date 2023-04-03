@@ -54,5 +54,5 @@ message BulkObservationDatesLinkedRequest {
 
 message BulkObservationDatesLinkedResponse {
   repeated VariableObservationDates dates_by_variable = 1;
-  map<string, datacommons.StatMetadata> facets = 2;
+  map<string, datacommons.Facet> facets = 2;
 }

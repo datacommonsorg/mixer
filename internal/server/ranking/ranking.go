@@ -244,8 +244,8 @@ func GetScorePb(ss *pb.SourceSeries) int {
 	return GetScoreRk(ss.ImportName, rk)
 }
 
-// GetMetadataScore is a GetScoreRk adapter for pb.StatMetadata
-func GetMetadataScore(m *pb.StatMetadata) int {
+// GetFacetScore is a GetScoreRk adapter for pb.Facet
+func GetFacetScore(m *pb.Facet) int {
 	rk := RankKey{
 		MM:   s(m.MeasurementMethod),
 		OP:   s(m.ObservationPeriod),

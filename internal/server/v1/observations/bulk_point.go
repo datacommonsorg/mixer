@@ -46,7 +46,7 @@ func BulkPoint(
 	}
 
 	result := &pbv1.BulkObservationsPointResponse{
-		Facets: map[string]*pb.StatMetadata{},
+		Facets: map[string]*pb.Facet{},
 	}
 	tmpResult := map[string]*pbv1.VariableObservations{}
 	for _, entity := range entities {
@@ -65,20 +65,20 @@ func BulkPoint(
 				// When date is not given, tract the latest date from each series
 				latestDateAcrossSeries := ""
 				for idx, series := range series {
-					metadata := util.GetMetadata(series)
-					facet := util.GetMetadataHash(metadata)
+					facet := util.GetFacet(series)
+					facetID := util.GetFacetID(facet)
 					// Date is given
 					if date != "" {
 						if value, ok := series.Val[date]; ok {
 							ps := &pb.PointStat{
 								Date:  date,
 								Value: proto.Float64(value),
-								Facet: facet,
+								Facet: facetID,
 							}
 							entityObservations.PointsByFacet = append(
 								entityObservations.PointsByFacet, ps)
 						}
-						result.Facets[facet] = metadata
+						result.Facets[facetID] = facet
 						if !allFacets {
 							break
 						}
@@ -99,7 +99,7 @@ func BulkPoint(
 								ps = &pb.PointStat{
 									Date:  date,
 									Value: proto.Float64(value),
-									Facet: facet,
+									Facet: facetID,
 								}
 							}
 						}
@@ -111,12 +111,12 @@ func BulkPoint(
 							entityObservations.PointsByFacet[0] = ps
 						}
 					}
-					result.Facets[facet] = metadata
+					result.Facets[facetID] = facet
 				}
 			} else if store.MemDb.HasStatVar(variable) {
 				pointValue, facet := store.MemDb.ReadPointValue(variable, entity, date)
 				if pointValue != nil {
-					facetID := util.GetMetadataHash(facet)
+					facetID := util.GetFacetID(facet)
 					pointValue.Facet = facetID
 					result.Facets[facetID] = facet
 					entityObservations.PointsByFacet = append(

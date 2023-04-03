@@ -39,7 +39,7 @@ func BulkSeries(
 	variables := in.GetVariables()
 	allFacets := in.GetAllFacets()
 	result := &pbv1.BulkObservationsSeriesResponse{
-		Facets: map[string]*pb.StatMetadata{},
+		Facets: map[string]*pb.Facet{},
 	}
 	btData, err := stat.ReadStatsPb(ctx, store.BtGroup, entities, variables)
 	if err != nil {
@@ -69,10 +69,10 @@ func BulkSeries(
 					series = series[0:1]
 				}
 				for _, series := range series {
-					metadata := util.GetMetadata(series)
-					facet := util.GetMetadataHash(metadata)
+					facet := util.GetFacet(series)
+					facetID := util.GetFacetID(facet)
 					timeSeries := &pbv1.TimeSeries{
-						Facet: facet,
+						Facet: facetID,
 					}
 					for date, value := range series.Val {
 						ps := &pb.PointStat{
@@ -88,7 +88,7 @@ func BulkSeries(
 						entityObservations.SeriesByFacet,
 						timeSeries,
 					)
-					result.Facets[facet] = metadata
+					result.Facets[facetID] = facet
 				}
 			}
 			tmpResult[variable].ObservationsByEntity = append(

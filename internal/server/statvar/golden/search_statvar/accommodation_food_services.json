@@ -203,6 +203,20 @@
       ]
     },
     {
+      "dcid": "dc/g/Establishment_Industry-NAICS/72",
+      "name": "Establishment With Industry = Accommodation And Food Services (NAICS/72)",
+      "statVars": [
+        {
+          "name": "Count of Establishment: Accommodation And Food Services (NAICS/72)",
+          "dcid": "Count_Establishment_NAICSAccommodationFoodServices_WithPayroll"
+        },
+        {
+          "name": "Count of Establishment: Accommodation And Food Services (NAICS/72)",
+          "dcid": "dc/w8gp902jnk426"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/JobPosting_Industry-NAICS/72",
       "name": "Job Posting With Industry = Accommodation And Food Services (NAICS/72)",
       "statVars": [
@@ -335,6 +349,56 @@
       ]
     },
     {
+      "dcid": "dc/g/Establishment_EstablishmentOwnership-FederalGovernmentOwned_Industry-NAICS/72",
+      "name": "Establishment With Establishment Ownership = Federal Government Owned, Industry = Accommodation And Food Services (NAICS/72)",
+      "statVars": [
+        {
+          "name": "Count of Establishment: Federal Government Owned, Accommodation And Food Services (NAICS/72)",
+          "dcid": "Count_Establishment_FederalGovernmentOwnedEstablishment_NAICSAccommodationFoodServices"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Establishment_EstablishmentOwnership-LocalGovernmentOwned_Industry-NAICS/72",
+      "name": "Establishment With Establishment Ownership = Local Government Owned, Industry = Accommodation And Food Services (NAICS/72)",
+      "statVars": [
+        {
+          "name": "Count of Establishment: Local Government Owned, Accommodation And Food Services (NAICS/72)",
+          "dcid": "Count_Establishment_LocalGovernmentOwnedEstablishment_NAICSAccommodationFoodServices"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Establishment_EstablishmentOwnership-PrivatelyOwned_Industry-NAICS/72",
+      "name": "Establishment With Establishment Ownership = Privately Owned, Industry = Accommodation And Food Services (NAICS/72)",
+      "statVars": [
+        {
+          "name": "Count of Establishment: Privately Owned, Accommodation And Food Services (NAICS/72)",
+          "dcid": "Count_Establishment_PrivatelyOwnedEstablishment_NAICSAccommodationFoodServices"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Establishment_EstablishmentOwnership-StateGovernmentOwned_Industry-NAICS/72",
+      "name": "Establishment With Establishment Ownership = State Government Owned, Industry = Accommodation And Food Services (NAICS/72)",
+      "statVars": [
+        {
+          "name": "Count of Establishment: State Government Owned, Accommodation And Food Services (NAICS/72)",
+          "dcid": "Count_Establishment_StateGovernmentOwnedEstablishment_NAICSAccommodationFoodServices"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Establishment_Industry-NAICS/72_PayrollStatus-WithPayroll",
+      "name": "Establishment With Industry = Accommodation And Food Services (NAICS/72), Payroll Status = With Payroll",
+      "statVars": [
+        {
+          "name": "Sales of Establishment: Accommodation And Food Services (NAICS/72), With Payroll",
+          "dcid": "Sales_Establishment_NAICSAccommodationFoodServices_WithPayroll"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/Person_Gender-Female_Industry-NAICS/72",
       "name": "Person With Gender = Female, Industry = Accommodation And Food Services (NAICS/72)",
       "statVars": [
@@ -371,6 +435,14 @@
     {
       "dcid": "dc/g/EconomicActivity_ActivitySource_Industry-NAICS/72",
       "name": "Economic Activity With Activity Source, Industry = Accommodation And Food Services (NAICS/72)"
+    },
+    {
+      "dcid": "dc/g/Establishment_EstablishmentOwnership_Industry-NAICS/72",
+      "name": "Establishment With Establishment Ownership, Industry = Accommodation And Food Services (NAICS/72)"
+    },
+    {
+      "dcid": "dc/g/Establishment_Industry-NAICS/72_PayrollStatus",
+      "name": "Establishment With Industry = Accommodation And Food Services (NAICS/72), Payroll Status"
     },
     {
       "dcid": "dc/g/Person_Age-Years16Onwards_Industry-NAICS/72",

@@ -101,7 +101,7 @@ func (memDb *MemDb) ReadSeries(statVar, place string) []*pb.SourceSeries {
 // If date is "", the latest observation is returned, otherwise, the observation
 // corresponding to the given date is returned.
 func (memDb *MemDb) ReadPointValue(statVar, place, date string) (
-	*pb.PointStat, *pb.StatMetadata,
+	*pb.PointStat, *pb.Facet,
 ) {
 	memDb.lock.RLock()
 	defer memDb.lock.RUnlock()
@@ -121,20 +121,20 @@ func (memDb *MemDb) ReadPointValue(statVar, place, date string) (
 				return &pb.PointStat{
 					Date:  date,
 					Value: proto.Float64(val),
-				}, util.GetMetadata(series)
+				}, util.GetFacet(series)
 			}
 		}
 	} else {
 		// Get the latest date from all series
 		latestDate := ""
 		var latestVal float64
-		var meta *pb.StatMetadata
+		var facet *pb.Facet
 		for _, series := range seriesList {
 			for date, val := range series.Val {
 				if date > latestDate {
 					latestDate = date
 					latestVal = val
-					meta = util.GetMetadata(series)
+					facet = util.GetFacet(series)
 				}
 			}
 		}
@@ -142,7 +142,7 @@ func (memDb *MemDb) ReadPointValue(statVar, place, date string) (
 			return &pb.PointStat{
 				Date:  latestDate,
 				Value: proto.Float64(latestVal),
-			}, meta
+			}, facet
 		}
 	}
 	return nil, nil
@@ -158,17 +158,17 @@ func (memDb *MemDb) ReadStatDate(statVar string) *pb.StatDateList {
 		return result
 	}
 	tmp := map[string]map[string]float64{}
-	metaMap := map[string]*pb.StatMetadata{}
+	metaMap := map[string]*pb.Facet{}
 	for _, seriesList := range placeData {
 		for _, series := range seriesList {
-			metadata := util.GetMetadata(series)
-			metahash := util.GetMetadataHash(metadata)
-			metaMap[metahash] = metadata
-			if _, ok := tmp[metahash]; !ok {
-				tmp[metahash] = map[string]float64{}
+			facet := util.GetFacet(series)
+			facetID := util.GetFacetID(facet)
+			metaMap[facetID] = facet
+			if _, ok := tmp[facetID]; !ok {
+				tmp[facetID] = map[string]float64{}
 			}
 			for date := range series.Val {
-				tmp[metahash][date]++
+				tmp[facetID][date]++
 			}
 		}
 	}
@@ -184,7 +184,7 @@ func (memDb *MemDb) ReadStatDate(statVar string) *pb.StatDateList {
 // ReadObservationDates reads observation date frequency for a given stat var.
 func (memDb *MemDb) ReadObservationDates(statVar string) (
 	*pbv1.VariableObservationDates,
-	map[string]*pb.StatMetadata,
+	map[string]*pb.Facet,
 ) {
 	memDb.lock.RLock()
 	defer memDb.lock.RUnlock()
@@ -196,19 +196,19 @@ func (memDb *MemDb) ReadObservationDates(statVar string) (
 	if !ok {
 		return data, nil
 	}
-	// keyed by date, metahash, value is the count of places
+	// keyed by date, facetID, value is the count of places
 	tmp := map[string]map[string]float64{}
-	metaMap := map[string]*pb.StatMetadata{}
+	metaMap := map[string]*pb.Facet{}
 	for _, seriesList := range placeData {
 		for _, series := range seriesList {
-			metadata := util.GetMetadata(series)
-			metahash := util.GetMetadataHash(metadata)
-			metaMap[metahash] = metadata
+			facet := util.GetFacet(series)
+			facetID := util.GetFacetID(facet)
+			metaMap[facetID] = facet
 			for date := range series.Val {
 				if _, ok := tmp[date]; !ok {
 					tmp[date] = map[string]float64{}
 				}
-				tmp[date][metahash]++
+				tmp[date][facetID]++
 			}
 		}
 	}
@@ -222,10 +222,10 @@ func (memDb *MemDb) ReadObservationDates(statVar string) (
 			Date:        date,
 			EntityCount: []*pbv1.EntityCount{},
 		}
-		for metahash, count := range tmp[date] {
+		for facetID, count := range tmp[date] {
 			obsDates.EntityCount = append(obsDates.EntityCount, &pbv1.EntityCount{
 				Count: count,
-				Facet: metahash,
+				Facet: facetID,
 			})
 		}
 		sort.SliceStable(obsDates.EntityCount, func(i, j int) bool {
