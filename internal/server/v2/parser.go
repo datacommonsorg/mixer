@@ -27,14 +27,17 @@ func splitWithDelim(expr string, delim string) []string {
 	res := []string{}
 	parts := strings.Split(expr, delim)
 	for i := 0; i < len(parts)-1; i++ {
-		res = append(res, strings.TrimSpace(parts[i]))
+		res = append(res, parts[i])
 		res = append(res, delim)
 	}
-	res = append(res, strings.TrimSpace(parts[len(parts)-1]))
+	res = append(res, parts[len(parts)-1])
 	return res
 }
 
 func splitExpr(expr string) []string {
+	replacer := strings.NewReplacer(" ", "", "\t", "", "\n", "", "\r", "")
+	expr = replacer.Replace(expr)
+
 	parts := splitWithDelim(expr, "->")
 	res := []string{}
 	for _, part := range parts {
