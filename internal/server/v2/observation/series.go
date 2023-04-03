@@ -60,40 +60,45 @@ func FetchFromSeries(
 				// Read series from in-memory database
 				series = append(series, store.MemDb.ReadSeries(variable, entity)...)
 			}
-			if len(series) > 0 {
-				// Read series from BT cache
-				sort.Sort(ranking.SeriesByRank(series))
-				for _, series := range series {
-					metadata := util.GetMetadata(series)
-					facetID := util.GetMetadataHash(metadata)
-					obsList := []*pb.PointStat{}
-					for date, value := range series.Val {
-						ps := &pb.PointStat{
-							Date:  date,
-							Value: proto.Float64(value),
-						}
-						if queryDate != "" && queryDate != LATEST && date != queryDate {
-							continue
-						}
-						obsList = append(obsList, ps)
+			if len(series) == 0 {
+				continue
+			}
+
+			// Read series from BT cache
+			sort.Sort(ranking.SeriesByRank(series))
+			for _, series := range series {
+				metadata := util.GetMetadata(series)
+				facetID := util.GetMetadataHash(metadata)
+				obsList := []*pb.PointStat{}
+				for date, value := range series.Val {
+					ps := &pb.PointStat{
+						Date:  date,
+						Value: proto.Float64(value),
 					}
-					sort.SliceStable(obsList, func(i, j int) bool {
-						return obsList[i].Date < obsList[j].Date
-					})
-					if queryDate == LATEST {
-						obsList = obsList[len(obsList)-1:]
+					if queryDate != "" && queryDate != LATEST && queryDate != date {
+						continue
 					}
-					if len(obsList) > 0 {
-						result.Facets[facetID] = metadata
-						entityObservation.OrderedFacetObservations = append(
-							entityObservation.OrderedFacetObservations,
-							&pbv2.FacetObservation{
-								FacetId:      facetID,
-								Observations: obsList,
-							},
-						)
-					}
+					obsList = append(obsList, ps)
 				}
+				if len(obsList) == 0 {
+					continue
+				}
+
+				sort.SliceStable(obsList, func(i, j int) bool {
+					return obsList[i].Date < obsList[j].Date
+				})
+				if queryDate == LATEST {
+					obsList = obsList[len(obsList)-1:]
+				}
+
+				result.Facets[facetID] = metadata
+				entityObservation.OrderedFacetObservations = append(
+					entityObservation.OrderedFacetObservations,
+					&pbv2.FacetObservation{
+						FacetId:      facetID,
+						Observations: obsList,
+					},
+				)
 			}
 			result.ObservationsByVariable[variable].ObservationsByEntity[entity] = entityObservation
 		}
