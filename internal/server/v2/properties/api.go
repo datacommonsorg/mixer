@@ -12,46 +12,41 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Package propertyvalues is for V2 property values API.
-package propertyvalues
+// Package properties is for V2 properties API.
+package properties
 
 import (
 	"context"
 
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
-	v1pv "github.com/datacommonsorg/mixer/internal/server/v1/propertyvalues"
+	nodewrapper "github.com/datacommonsorg/mixer/internal/server/node"
+	"github.com/datacommonsorg/mixer/internal/util"
 
 	"github.com/datacommonsorg/mixer/internal/store"
 )
 
-// API is the V2 property values API implementation entry point.
+// API is the V2 properties API implementation entry point.
 func API(
 	ctx context.Context,
 	store *store.Store,
 	nodes []string,
-	properties []string,
 	direction string,
-	limit int,
-	nextToken string,
 ) (*pbv2.NodeResponse, error) {
-	data, _, err := v1pv.Fetch(
-		ctx,
-		store,
-		nodes,
-		properties,
-		limit,
-		nextToken,
-		direction,
-	)
+	data, err := nodewrapper.GetPropertiesHelper(ctx, nodes, store)
 	if err != nil {
 		return nil, err
 	}
 	res := &pbv2.NodeResponse{Data: map[string]*pbv2.LinkedGraph{}}
-	for _, node := range nodes {
-		res.Data[node] = &pbv2.LinkedGraph{Arcs: map[string]*pbv2.Nodes{}}
-		for _, property := range properties {
-			res.Data[node].Arcs[property] = &pbv2.Nodes{
-				Nodes: v1pv.MergeTypedNodes(data[node][property]),
+	if direction == util.DirectionIn {
+		for node, d := range data {
+			res.Data[node] = &pbv2.LinkedGraph{
+				Properties: d.GetInLabels(),
+			}
+		}
+	} else if direction == util.DirectionOut {
+		for node, d := range data {
+			res.Data[node] = &pbv2.LinkedGraph{
+				Properties: d.GetOutLabels(),
 			}
 		}
 	}
