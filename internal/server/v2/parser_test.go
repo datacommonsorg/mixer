@@ -40,21 +40,21 @@ func TestSplitExpr(t *testing.T) {
 		},
 		{
 			"<-isMemberOf<-[dcid, displayName, definition]",
-			[]string{"<-", "isMemberOf", "<-", "[dcid, displayName, definition]"},
+			[]string{"<-", "isMemberOf", "<-", "[dcid,displayName,definition]"},
 		},
 		{
 			"->containedInPlace+->[name, typeOf]",
 			[]string{
-				"->", "containedInPlace+", "->", "[name, typeOf]",
+				"->", "containedInPlace+", "->", "[name,typeOf]",
 			},
 		},
 		{
 			"<-observationAbout{variableMeasured: Count_Person}->[value, date]",
 			[]string{
 				"<-",
-				"observationAbout{variableMeasured: Count_Person}",
+				"observationAbout{variableMeasured:Count_Person}",
 				"->",
-				"[value, date]",
+				"[value,date]",
 			},
 		},
 		{
@@ -67,6 +67,10 @@ func TestSplitExpr(t *testing.T) {
 				"->",
 				"#",
 			},
+		},
+		{
+			" geoId/06 <- containedInPlace { typeOf : City } ",
+			[]string{"geoId/06", "<-", "containedInPlace{typeOf:City}"},
 		},
 	} {
 		result := splitExpr(c.query)
@@ -158,6 +162,19 @@ func TestParseArc(t *testing.T) {
 		{
 			"->",
 			"containedInPlace+{typeOf: City}",
+			&Arc{
+				Out:        true,
+				SingleProp: "containedInPlace",
+				Wildcard:   "+",
+				Filter: map[string]string{
+					"typeOf": "City",
+				},
+			},
+			true,
+		},
+		{
+			"->",
+			"containedInPlace + { typeOf : City }",
 			&Arc{
 				Out:        true,
 				SingleProp: "containedInPlace",

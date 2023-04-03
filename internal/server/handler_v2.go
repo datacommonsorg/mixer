@@ -20,6 +20,7 @@ import (
 
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	v2observation "github.com/datacommonsorg/mixer/internal/server/v2/observation"
+	v2p "github.com/datacommonsorg/mixer/internal/server/v2/properties"
 	v2pv "github.com/datacommonsorg/mixer/internal/server/v2/propertyvalues"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/codes"
@@ -47,6 +48,12 @@ func (s *Server) V2Node(
 		direction := util.DirectionOut
 		if !arc.Out {
 			direction = util.DirectionIn
+		}
+		if arc.SingleProp == "" && len(arc.BracketProps) == 0 {
+			// Examples:
+			//   ->
+			//   <-
+			return v2p.API(ctx, s.store, in.GetNodes(), direction)
 		}
 		if arc.SingleProp != "" && arc.Wildcard == "" {
 			// Examples:
