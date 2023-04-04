@@ -49,37 +49,64 @@ func (s *Server) V2Node(
 		if !arc.Out {
 			direction = util.DirectionIn
 		}
-		if arc.SingleProp == "" && len(arc.BracketProps) == 0 {
-			// Examples:
-			//   ->
-			//   <-
-			return v2p.API(ctx, s.store, in.GetNodes(), direction)
-		}
-		if arc.SingleProp != "" && arc.Wildcard == "" {
-			// Examples:
-			//   ->name
-			//   <-containedInPlace
-			return v2pv.API(
-				ctx,
-				s.store,
-				in.GetNodes(),
-				[]string{arc.SingleProp},
-				direction,
-				int(in.GetLimit()),
-				in.NextToken,
-			)
-		} else if len(arc.BracketProps) > 0 {
-			// Examples:
-			//   ->[name, address]
-			return v2pv.API(
-				ctx,
-				s.store,
-				in.GetNodes(),
-				arc.BracketProps,
-				direction,
-				int(in.GetLimit()),
-				in.GetNextToken(),
-			)
+		if arc.SingleProp != "" {
+			if arc.Wildcard == "" {
+				// Examples:
+				//   ->name
+				//   <-containedInPlace
+				return v2pv.API(
+					ctx,
+					s.store,
+					in.GetNodes(),
+					[]string{arc.SingleProp},
+					direction,
+					int(in.GetLimit()),
+					in.NextToken,
+				)
+			} else if arc.Wildcard == "+" {
+				if arc.SingleProp == "containedInPlace" {
+					if arc.Out {
+						return nil, status.Errorf(codes.InvalidArgument,
+							"only in arc is supported for containedInPlace+")
+					} else { // arc.Out = false
+						placeType, ok := arc.Filter["typeOf"]
+						if ok {
+							// Examples:
+							//   <-containedInPlace+{typeOf:City}
+							return v2pv.LinkedPropertyValues(
+								ctx, s.store, in.GetNodes(), placeType)
+						} else { // No typeOf filter.
+							return nil, status.Errorf(codes.InvalidArgument,
+								"must provide typeOf filter for <-containedInPlace+")
+						}
+					}
+				} else {
+					return nil, status.Errorf(codes.InvalidArgument,
+						"only containedInPlace is supported for wildcard '+'")
+				}
+			} else { // arc.Wildcard != "" && arc.Wildcard != "+"
+				return nil, status.Errorf(codes.InvalidArgument,
+					"only '+' wildcard is supported")
+			}
+		} else { // arc.SingleProp == ""
+			if len(arc.BracketProps) == 0 {
+				// Examples:
+				//   ->
+				//   <-
+				return v2p.API(ctx, s.store, in.GetNodes(), direction)
+			} else { // len(arc.BracketProps) > 0
+				// Examples:
+				//   ->[name, address]
+				return v2pv.API(
+					ctx,
+					s.store,
+					in.GetNodes(),
+					arc.BracketProps,
+					direction,
+					int(in.GetLimit()),
+					in.GetNextToken(),
+				)
+			}
 		}
 	}
 	return nil, nil

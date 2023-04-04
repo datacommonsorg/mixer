@@ -1,0 +1,594 @@
+{
+  "data": {
+    "geoId/15": {
+      "arcs": {
+        "containedInPlace+": {
+          "nodes": [
+            {
+              "dcid": "geoId/15003"
+            },
+            {
+              "dcid": "geoId/1500400"
+            },
+            {
+              "dcid": "geoId/1500550"
+            },
+            {
+              "dcid": "geoId/1501085"
+            },
+            {
+              "dcid": "geoId/1502200"
+            },
+            {
+              "dcid": "geoId/1503850"
+            },
+            {
+              "dcid": "geoId/1505900"
+            },
+            {
+              "dcid": "geoId/1506290"
+            },
+            {
+              "dcid": "geoId/1506325"
+            },
+            {
+              "dcid": "geoId/1507000"
+            },
+            {
+              "dcid": "geoId/1507450"
+            },
+            {
+              "dcid": "geoId/1507470"
+            },
+            {
+              "dcid": "geoId/1507485"
+            },
+            {
+              "dcid": "geoId/1507542"
+            },
+            {
+              "dcid": "geoId/1507675"
+            },
+            {
+              "dcid": "geoId/1508950"
+            },
+            {
+              "dcid": "geoId/1509260"
+            },
+            {
+              "dcid": "geoId/1509700"
+            },
+            {
+              "dcid": "geoId/1510000"
+            },
+            {
+              "dcid": "geoId/1510750"
+            },
+            {
+              "dcid": "geoId/1510900"
+            },
+            {
+              "dcid": "geoId/1511350"
+            },
+            {
+              "dcid": "geoId/1511500"
+            },
+            {
+              "dcid": "geoId/1511650"
+            },
+            {
+              "dcid": "geoId/1511800"
+            },
+            {
+              "dcid": "geoId/1512400"
+            },
+            {
+              "dcid": "geoId/1512450"
+            },
+            {
+              "dcid": "geoId/1512500"
+            },
+            {
+              "dcid": "geoId/1512530"
+            },
+            {
+              "dcid": "geoId/1512600"
+            },
+            {
+              "dcid": "geoId/1513600"
+            },
+            {
+              "dcid": "geoId/1513900"
+            },
+            {
+              "dcid": "geoId/1514200"
+            },
+            {
+              "dcid": "geoId/1514650"
+            },
+            {
+              "dcid": "geoId/1515700"
+            },
+            {
+              "dcid": "geoId/1516000"
+            },
+            {
+              "dcid": "geoId/1516160"
+            },
+            {
+              "dcid": "geoId/1516450"
+            },
+            {
+              "dcid": "geoId/1517000"
+            },
+            {
+              "dcid": "geoId/1517450"
+            },
+            {
+              "dcid": "geoId/1519100"
+            },
+            {
+              "dcid": "geoId/1519550"
+            },
+            {
+              "dcid": "geoId/1520000"
+            },
+            {
+              "dcid": "geoId/1521200"
+            },
+            {
+              "dcid": "geoId/1521230"
+            },
+            {
+              "dcid": "geoId/1522250"
+            },
+            {
+              "dcid": "geoId/1522700"
+            },
+            {
+              "dcid": "geoId/1523000"
+            },
+            {
+              "dcid": "geoId/1523150"
+            },
+            {
+              "dcid": "geoId/1524850"
+            },
+            {
+              "dcid": "geoId/1524950"
+            },
+            {
+              "dcid": "geoId/1525400"
+            },
+            {
+              "dcid": "geoId/1526750"
+            },
+            {
+              "dcid": "geoId/1528250"
+            },
+            {
+              "dcid": "geoId/1528400"
+            },
+            {
+              "dcid": "geoId/1528850"
+            },
+            {
+              "dcid": "geoId/1529000"
+            },
+            {
+              "dcid": "geoId/1529725"
+            },
+            {
+              "dcid": "geoId/1530300"
+            },
+            {
+              "dcid": "geoId/1530650"
+            },
+            {
+              "dcid": "geoId/1531100"
+            },
+            {
+              "dcid": "geoId/1532700"
+            },
+            {
+              "dcid": "geoId/1532900"
+            },
+            {
+              "dcid": "geoId/1533950"
+            },
+            {
+              "dcid": "geoId/1535600"
+            },
+            {
+              "dcid": "geoId/1536050"
+            },
+            {
+              "dcid": "geoId/1536500"
+            },
+            {
+              "dcid": "geoId/1536650"
+            },
+            {
+              "dcid": "geoId/1539200"
+            },
+            {
+              "dcid": "geoId/1539400"
+            },
+            {
+              "dcid": "geoId/1539500"
+            },
+            {
+              "dcid": "geoId/1541000"
+            },
+            {
+              "dcid": "geoId/1541600"
+            },
+            {
+              "dcid": "geoId/1542350"
+            },
+            {
+              "dcid": "geoId/1542800"
+            },
+            {
+              "dcid": "geoId/1542950"
+            },
+            {
+              "dcid": "geoId/1543250"
+            },
+            {
+              "dcid": "geoId/1543700"
+            },
+            {
+              "dcid": "geoId/1544075"
+            },
+            {
+              "dcid": "geoId/1544150"
+            },
+            {
+              "dcid": "geoId/1544450"
+            },
+            {
+              "dcid": "geoId/1544562"
+            },
+            {
+              "dcid": "geoId/1545200"
+            },
+            {
+              "dcid": "geoId/1546400"
+            },
+            {
+              "dcid": "geoId/1547050"
+            },
+            {
+              "dcid": "geoId/1547300"
+            },
+            {
+              "dcid": "geoId/1547450"
+            },
+            {
+              "dcid": "geoId/1547560"
+            },
+            {
+              "dcid": "geoId/1547600"
+            },
+            {
+              "dcid": "geoId/1548050"
+            },
+            {
+              "dcid": "geoId/1548350"
+            },
+            {
+              "dcid": "geoId/1549425"
+            },
+            {
+              "dcid": "geoId/1550150"
+            },
+            {
+              "dcid": "geoId/1550750"
+            },
+            {
+              "dcid": "geoId/1551000"
+            },
+            {
+              "dcid": "geoId/1551050"
+            },
+            {
+              "dcid": "geoId/1552550"
+            },
+            {
+              "dcid": "geoId/1553300"
+            },
+            {
+              "dcid": "geoId/1553600"
+            },
+            {
+              "dcid": "geoId/1553900"
+            },
+            {
+              "dcid": "geoId/1553975"
+            },
+            {
+              "dcid": "geoId/1554100"
+            },
+            {
+              "dcid": "geoId/1556685"
+            },
+            {
+              "dcid": "geoId/1557350"
+            },
+            {
+              "dcid": "geoId/1557650"
+            },
+            {
+              "dcid": "geoId/1557800"
+            },
+            {
+              "dcid": "geoId/1558700"
+            },
+            {
+              "dcid": "geoId/1558775"
+            },
+            {
+              "dcid": "geoId/1559300"
+            },
+            {
+              "dcid": "geoId/1559750"
+            },
+            {
+              "dcid": "geoId/1559900"
+            },
+            {
+              "dcid": "geoId/1560200"
+            },
+            {
+              "dcid": "geoId/1560350"
+            },
+            {
+              "dcid": "geoId/1561550"
+            },
+            {
+              "dcid": "geoId/1561700"
+            },
+            {
+              "dcid": "geoId/1562600"
+            },
+            {
+              "dcid": "geoId/1563650"
+            },
+            {
+              "dcid": "geoId/1564550"
+            },
+            {
+              "dcid": "geoId/1564850"
+            },
+            {
+              "dcid": "geoId/1565075"
+            },
+            {
+              "dcid": "geoId/1565150"
+            },
+            {
+              "dcid": "geoId/1565750"
+            },
+            {
+              "dcid": "geoId/1565900"
+            },
+            {
+              "dcid": "geoId/1566500"
+            },
+            {
+              "dcid": "geoId/1566800"
+            },
+            {
+              "dcid": "geoId/1568815"
+            },
+            {
+              "dcid": "geoId/1569050"
+            },
+            {
+              "dcid": "geoId/1570700"
+            },
+            {
+              "dcid": "geoId/1571550"
+            },
+            {
+              "dcid": "geoId/1572255"
+            },
+            {
+              "dcid": "geoId/1572350"
+            },
+            {
+              "dcid": "geoId/1572650"
+            },
+            {
+              "dcid": "geoId/1574000"
+            },
+            {
+              "dcid": "geoId/1574450"
+            },
+            {
+              "dcid": "geoId/1575510"
+            },
+            {
+              "dcid": "geoId/1575800"
+            },
+            {
+              "dcid": "geoId/1575950"
+            },
+            {
+              "dcid": "geoId/1576250"
+            },
+            {
+              "dcid": "geoId/1576600"
+            },
+            {
+              "dcid": "geoId/1576925"
+            },
+            {
+              "dcid": "geoId/1577000"
+            },
+            {
+              "dcid": "geoId/1577225"
+            },
+            {
+              "dcid": "geoId/1577450"
+            },
+            {
+              "dcid": "geoId/1577750"
+            },
+            {
+              "dcid": "geoId/1578050"
+            },
+            {
+              "dcid": "geoId/1578200"
+            },
+            {
+              "dcid": "geoId/1578500"
+            },
+            {
+              "dcid": "geoId/1578800"
+            },
+            {
+              "dcid": "geoId/1578950"
+            },
+            {
+              "dcid": "geoId/1579250"
+            },
+            {
+              "dcid": "geoId/1579550"
+            },
+            {
+              "dcid": "geoId/1579700"
+            },
+            {
+              "dcid": "geoId/1579860"
+            },
+            {
+              "dcid": "geoId/1580000"
+            },
+            {
+              "dcid": "geoId/1580470"
+            },
+            {
+              "dcid": "geoId/1580600"
+            },
+            {
+              "dcid": "geoId/1580900"
+            },
+            {
+              "dcid": "wikidataId/Q12754881"
+            },
+            {
+              "dcid": "wikidataId/Q16586840"
+            },
+            {
+              "dcid": "wikidataId/Q1855219"
+            },
+            {
+              "dcid": "wikidataId/Q1887264"
+            },
+            {
+              "dcid": "wikidataId/Q2101741"
+            },
+            {
+              "dcid": "wikidataId/Q2102831"
+            },
+            {
+              "dcid": "wikidataId/Q2138861"
+            },
+            {
+              "dcid": "wikidataId/Q2294729"
+            },
+            {
+              "dcid": "wikidataId/Q2295739"
+            },
+            {
+              "dcid": "wikidataId/Q2315750"
+            },
+            {
+              "dcid": "wikidataId/Q2339434"
+            },
+            {
+              "dcid": "wikidataId/Q2370737"
+            },
+            {
+              "dcid": "wikidataId/Q2403215"
+            },
+            {
+              "dcid": "wikidataId/Q2430708"
+            },
+            {
+              "dcid": "wikidataId/Q2594148"
+            },
+            {
+              "dcid": "wikidataId/Q2621810"
+            },
+            {
+              "dcid": "wikidataId/Q2660935"
+            },
+            {
+              "dcid": "wikidataId/Q2726762"
+            },
+            {
+              "dcid": "wikidataId/Q2989567"
+            },
+            {
+              "dcid": "wikidataId/Q3110254"
+            },
+            {
+              "dcid": "wikidataId/Q384254"
+            },
+            {
+              "dcid": "wikidataId/Q4242955"
+            },
+            {
+              "dcid": "wikidataId/Q4243035"
+            },
+            {
+              "dcid": "wikidataId/Q4243320"
+            },
+            {
+              "dcid": "wikidataId/Q4243326"
+            },
+            {
+              "dcid": "wikidataId/Q4243331"
+            },
+            {
+              "dcid": "wikidataId/Q4243335"
+            },
+            {
+              "dcid": "wikidataId/Q4243344"
+            },
+            {
+              "dcid": "wikidataId/Q4243446"
+            },
+            {
+              "dcid": "wikidataId/Q4244057"
+            },
+            {
+              "dcid": "wikidataId/Q5808310"
+            },
+            {
+              "dcid": "wikidataId/Q5991374"
+            },
+            {
+              "dcid": "wikidataId/Q6155154"
+            },
+            {
+              "dcid": "wikidataId/Q6166025"
+            },
+            {
+              "dcid": "wikidataId/Q6393021"
+            },
+            {
+              "dcid": "wikidataId/Q924610"
+            },
+            {
+              "dcid": "wikidataId/Q972484"
+            }
+          ]
+        }
+      }
+    }
+  }
+}
