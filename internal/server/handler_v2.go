@@ -63,50 +63,48 @@ func (s *Server) V2Node(
 					int(in.GetLimit()),
 					in.NextToken,
 				)
-			} else if arc.Wildcard == "+" {
-				if arc.SingleProp == "containedInPlace" {
-					if arc.Out {
-						return nil, status.Errorf(codes.InvalidArgument,
-							"only in arc is supported for containedInPlace+")
-					} else { // arc.Out = false
-						placeType, ok := arc.Filter["typeOf"]
-						if ok {
-							// Examples:
-							//   <-containedInPlace+{typeOf:City}
-							return v2pv.LinkedPropertyValues(
-								ctx, s.store, in.GetNodes(), placeType)
-						} else { // No typeOf filter.
-							return nil, status.Errorf(codes.InvalidArgument,
-								"must provide typeOf filter for <-containedInPlace+")
-						}
-					}
-				} else {
-					return nil, status.Errorf(codes.InvalidArgument,
-						"only containedInPlace is supported for wildcard '+'")
-				}
-			} else { // arc.Wildcard != "" && arc.Wildcard != "+"
+			}
+
+			// Examples:
+			//   <-containedInPlace+{typeOf:City}
+			if arc.Wildcard != "" && arc.Wildcard != "+" {
 				return nil, status.Errorf(codes.InvalidArgument,
 					"only '+' wildcard is supported")
 			}
+			if arc.SingleProp != "containedInPlace" {
+				return nil, status.Errorf(codes.InvalidArgument,
+					"only containedInPlace is supported for wildcard '+'")
+			}
+			if arc.Out {
+				return nil, status.Errorf(codes.InvalidArgument,
+					"only in arc is supported for containedInPlace+")
+			}
+			placeType, ok := arc.Filter["typeOf"]
+			if !ok {
+				return nil, status.Errorf(codes.InvalidArgument,
+					"must provide typeOf filter for <-containedInPlace+")
+			}
+			return v2pv.LinkedPropertyValues(
+				ctx, s.store, in.GetNodes(), placeType)
 		} else { // arc.SingleProp == ""
 			if len(arc.BracketProps) == 0 {
 				// Examples:
 				//   ->
 				//   <-
 				return v2p.API(ctx, s.store, in.GetNodes(), direction)
-			} else { // len(arc.BracketProps) > 0
-				// Examples:
-				//   ->[name, address]
-				return v2pv.API(
-					ctx,
-					s.store,
-					in.GetNodes(),
-					arc.BracketProps,
-					direction,
-					int(in.GetLimit()),
-					in.GetNextToken(),
-				)
 			}
+
+			// Examples:
+			//   ->[name, address]
+			return v2pv.API(
+				ctx,
+				s.store,
+				in.GetNodes(),
+				arc.BracketProps,
+				direction,
+				int(in.GetLimit()),
+				in.GetNextToken(),
+			)
 		}
 	}
 	return nil, nil
