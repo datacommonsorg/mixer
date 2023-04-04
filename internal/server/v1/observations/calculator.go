@@ -37,7 +37,7 @@ type calcItem interface {
 // The info of a node in the AST tree.
 type nodeData struct {
 	statVar        string
-	statMetadata   *pb.StatMetadata
+	statMetadata   *pb.Facet
 	candidateItems []calcItem
 	chosenItem     calcItem
 }
@@ -104,7 +104,7 @@ func (c *calculator) statVars() []string {
 func (c *calculator) calculate(
 	dataMap interface{},
 	extractItemCandidates func(btData interface{}, statVar string,
-		statMetadata *pb.StatMetadata) ([]calcItem, error),
+		statMetadata *pb.Facet) ([]calcItem, error),
 	evalBinaryExpr func(x, y calcItem, op token.Token) (calcItem, error),
 	rankCalcItem func(items []calcItem) calcItem,
 ) (calcItem, error) {
@@ -124,7 +124,7 @@ func (c *calculator) fillItemCandidates(
 	extractItemCandidates func(
 		btData interface{},
 		statVar string,
-		statMetadata *pb.StatMetadata) ([]calcItem, error),
+		statMetadata *pb.Facet) ([]calcItem, error),
 ) error {
 	for _, nodeData := range c.nodeDataMap {
 		calcItems, err := extractItemCandidates(

@@ -54,10 +54,10 @@ func Point(
 	if err != nil {
 		return nil, err
 	}
-	stat, metadata := stat.GetValueFromBestSourcePb(btData[entity][variable], date)
+	stat, facet := stat.GetValueFromBestSourcePb(btData[entity][variable], date)
 	if stat == nil {
 		return &pb.PointStat{}, nil
 	}
-	stat.Metadata = metadata
+	stat.Metadata = facet
 	return stat, nil
 }

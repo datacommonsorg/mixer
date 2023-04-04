@@ -43,7 +43,7 @@ func FetchFromSeries(
 ) (*pbv2.ObservationResponse, error) {
 	result := &pbv2.ObservationResponse{
 		ObservationsByVariable: map[string]*pbv2.VariableObservation{},
-		Facets:                 map[string]*pb.StatMetadata{},
+		Facets:                 map[string]*pb.Facet{},
 	}
 	btData, err := stat.ReadStatsPb(ctx, store.BtGroup, entities, variables)
 	if err != nil {
@@ -64,8 +64,8 @@ func FetchFromSeries(
 				// Read series from BT cache
 				sort.Sort(ranking.SeriesByRank(series))
 				for _, series := range series {
-					metadata := util.GetMetadata(series)
-					facetID := util.GetMetadataHash(metadata)
+					facet := util.GetFacet(series)
+					facetID := util.GetFacetID(facet)
 					obsList := []*pb.PointStat{}
 					for date, value := range series.Val {
 						ps := &pb.PointStat{
@@ -88,7 +88,7 @@ func FetchFromSeries(
 						obsList = obsList[len(obsList)-1:]
 					}
 
-					result.Facets[facetID] = metadata
+					result.Facets[facetID] = facet
 					entityObservation.OrderedFacetObservations = append(
 						entityObservation.OrderedFacetObservations,
 						&pbv2.FacetObservation{

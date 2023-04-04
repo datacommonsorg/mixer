@@ -68,5 +68,5 @@ message ObservationResponse {
   // Keyed by variable DCID
   map<string, VariableObservation> observations_by_variable = 1;
   // Keyed by facet ID
-  map<string, datacommons.StatMetadata> facets = 2;
+  map<string, datacommons.Facet> facets = 2;
 }

@@ -74,7 +74,7 @@ func BulkPointLinked(
 		return nil, err
 	}
 	result := &pbv1.BulkObservationsPointResponse{
-		Facets: map[string]*pb.StatMetadata{},
+		Facets: map[string]*pb.Facet{},
 	}
 
 	variablesMissingData := []string{}
@@ -90,8 +90,8 @@ func BulkPointLinked(
 		// Sort cohort first, so the preferred source is populated first.
 		sort.Sort(ranking.CohortByRank(cohorts))
 		for _, cohort := range cohorts {
-			facet := util.GetMetadata(cohort)
-			facetID := util.GetMetadataHash(facet)
+			facet := util.GetFacet(cohort)
+			facetID := util.GetFacetID(facet)
 			result.Facets[facetID] = facet
 			for entity, val := range cohort.Val {
 				// When date is in the request, response date is the given date.
@@ -189,7 +189,7 @@ func BulkPointLinked(
 				pointValue, facet := store.MemDb.ReadPointValue(variable, entity, date)
 				// Override public data from private import
 				if pointValue != nil {
-					facetID := util.GetMetadataHash(facet)
+					facetID := util.GetFacetID(facet)
 					pointValue.Facet = facetID
 					result.Facets[facetID] = facet
 					observationsByEntity = append(
@@ -225,7 +225,7 @@ func BulkPointLinked(
 					// prefer the current cohort.
 					preferredPoint := entityObservation.PointsByFacet[0]
 					for _, point := range entityObservation.PointsByFacet {
-						if stat.IsInferiorFacetMetadata(result.Facets[point.Facet]) {
+						if stat.IsInferiorFacet(result.Facets[point.Facet]) {
 							break
 						}
 						if point.Date > preferredPoint.Date {

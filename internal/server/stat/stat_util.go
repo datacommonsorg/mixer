@@ -34,15 +34,15 @@ func IsInferiorFacetPb(ss *pb.SourceSeries) bool {
 	return ranking.GetScorePb(ss) > inferiorFacetThreshold
 }
 
-// IsInferiorFacetMetadata checks if a facet is from an inferior source.
-// This works for StatMetadata
-func IsInferiorFacetMetadata(m *pb.StatMetadata) bool {
-	return ranking.GetMetadataScore(m) > inferiorFacetThreshold
+// IsInferiorFacet checks if a facet is from an inferior source.
+// This works for Facet
+func IsInferiorFacet(m *pb.Facet) bool {
+	return ranking.GetFacetScore(m) > inferiorFacetThreshold
 }
 
-// IsInferiorFacet checks if a facet is from an inferior source.
+// IsInferiorSourceSeries checks if a facet is from an inferior source.
 // This works for the Go version of "SourceSeries"
-func IsInferiorFacet(ss *model.SourceSeries) bool {
+func IsInferiorSourceSeries(ss *model.SourceSeries) bool {
 	return ranking.GetScore(ss) > inferiorFacetThreshold
 }
 
@@ -77,7 +77,7 @@ func FilterAndRank(in *model.ObsTimeSeries, prop *model.StatObsProp) {
 	in.SourceSeries = series
 }
 
-// GetBestSeries gets the best series for a collection of series with different metadata.
+// GetBestSeries gets the best series for a collection of series with different facet.
 //
 //   - If "importName" is set, pick the series with the import name.
 //   - If "useLatest" is true, pick the series with latest date and set the
@@ -127,7 +127,7 @@ func GetBestSeries(
 func rawSeriesToSeries(raw *pb.SourceSeries) *pb.Series {
 	result := &pb.Series{}
 	result.Val = raw.Val
-	result.Metadata = util.GetMetadata(raw)
+	result.Metadata = util.GetFacet(raw)
 	return result
 }
 
@@ -155,7 +155,7 @@ func GetValueFromBestSource(in *model.ObsTimeSeries, date string) (float64, erro
 	latestDate := ""
 	var result float64
 	for idx, series := range sourceSeries {
-		if idx > 0 && IsInferiorFacet(series) {
+		if idx > 0 && IsInferiorSourceSeries(series) {
 			break
 		}
 		for date, value := range series.Val {
@@ -180,7 +180,7 @@ func GetValueFromBestSource(in *model.ObsTimeSeries, date string) (float64, erro
 // When date is not given, it get the latest value from all the source series.
 // If two sources has the same latest date, the highest ranked source is preferred.
 func GetValueFromBestSourcePb(
-	in *pb.ObsTimeSeries, date string) (*pb.PointStat, *pb.StatMetadata) {
+	in *pb.ObsTimeSeries, date string) (*pb.PointStat, *pb.Facet) {
 	if in == nil {
 		return nil, nil
 	}
@@ -191,7 +191,7 @@ func GetValueFromBestSourcePb(
 	if date != "" {
 		for _, series := range sourceSeries {
 			if value, ok := series.Val[date]; ok {
-				meta := util.GetMetadata(series)
+				meta := util.GetFacet(series)
 				return &pb.PointStat{
 					Date:  date,
 					Value: proto.Float64(value),
@@ -203,7 +203,7 @@ func GetValueFromBestSourcePb(
 	// Date is not given, get the latest value from all sources.
 	latestDate := ""
 	var ps *pb.PointStat
-	var meta *pb.StatMetadata
+	var facet *pb.Facet
 	// At this stage, sourceSeries has import series ranked by the ranking score.
 	// (accomplished by SeriesByRank function above)
 	for idx, series := range sourceSeries {
@@ -219,19 +219,19 @@ func GetValueFromBestSourcePb(
 					Date:  date,
 					Value: proto.Float64(value),
 				}
-				meta = util.GetMetadata(series)
+				facet = util.GetFacet(series)
 			}
 		}
 	}
 	if latestDate == "" {
 		return nil, nil
 	}
-	return ps, meta
+	return ps, facet
 }
 
-// getSourceSeriesKey computes the metahash for *pb.SourceSeries.
-func getSourceSeriesHash(series *pb.SourceSeries) string {
-	return util.GetMetadataHash(util.GetMetadata(series))
+// getSourceSeriesFacetID computes the facet ID for *pb.SourceSeries.
+func getSourceSeriesFacetID(series *pb.SourceSeries) string {
+	return util.GetFacetID(util.GetFacet(series))
 }
 
 // CollectDistinctSourceSeries merges lists of SourceSeries.
@@ -241,21 +241,21 @@ func getSourceSeriesHash(series *pb.SourceSeries) string {
 func CollectDistinctSourceSeries(seriesList ...[]*pb.SourceSeries) []*pb.SourceSeries {
 	result := []*pb.SourceSeries{}
 	resultMap := map[string]*pb.SourceSeries{}
-	metahashToDate := map[string]string{}
+	facetIDToDate := map[string]string{}
 	for _, series := range seriesList {
 		for _, s := range series {
-			metahash := getSourceSeriesHash(s)
-			if _, ok := resultMap[metahash]; ok {
-				if _, ok := metahashToDate[metahash]; !ok {
-					metahashToDate[metahash] = getLatestDate(resultMap[metahash].Val)
+			facetID := getSourceSeriesFacetID(s)
+			if _, ok := resultMap[facetID]; ok {
+				if _, ok := facetIDToDate[facetID]; !ok {
+					facetIDToDate[facetID] = getLatestDate(resultMap[facetID].Val)
 				}
 				latestDate := getLatestDate(s.Val)
-				if latestDate <= metahashToDate[metahash] {
+				if latestDate <= facetIDToDate[facetID] {
 					continue
 				}
-				metahashToDate[metahash] = latestDate
+				facetIDToDate[facetID] = latestDate
 			}
-			resultMap[metahash] = s
+			resultMap[facetID] = s
 		}
 		for _, s := range resultMap {
 			result = append(result, s)

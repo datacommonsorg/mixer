@@ -62,7 +62,7 @@ func BulkObservationDatesLinked(
 	// Initialize result.
 	result := &pbv1.BulkObservationDatesLinkedResponse{
 		DatesByVariable: []*pbv1.VariableObservationDates{},
-		Facets:          map[string]*pb.StatMetadata{},
+		Facets:          map[string]*pb.Facet{},
 	}
 	cacheData, err := stat.ReadStatCollection(
 		ctx, store.BtGroup, bigtable.BtObsCollectionDateFrequency,
@@ -94,8 +94,8 @@ func BulkObservationDatesLinked(
 		// keyed by date
 		datesCount := map[string][]*pbv1.EntityCount{}
 		for _, cohort := range data.SourceCohorts {
-			facet := util.GetMetadata(cohort)
-			facetID := util.GetMetadataHash(facet)
+			facet := util.GetFacet(cohort)
+			facetID := util.GetFacetID(facet)
 			for date := range cohort.Val {
 				if _, ok := datesCount[date]; !ok {
 					datesCount[date] = []*pbv1.EntityCount{}

@@ -25505,6 +25505,336 @@
       ]
     },
     {
+      "dcid": "dc/g/Establishment_Industry-NAICS/315239",
+      "name": "Establishment With Industry = Other Women's And Girls' Outerwear Mfg (NAICS/315239)",
+      "statVars": [
+        {
+          "name": "Count of Establishment: Other Women's And Girls' Outerwear Mfg (NAICS/315239)",
+          "dcid": "dc/65cetnnp7zdy6"
+        },
+        {
+          "name": "Count of Establishment: Other Women's And Girls' Outerwear Mfg (NAICS/315239)",
+          "dcid": "dc/nmncplhr93mxd"
+        },
+        {
+          "name": "Count of Establishment: Other Women's And Girls' Outerwear Mfg (NAICS/315239)",
+          "dcid": "dc/ths2sxts0989g"
+        },
+        {
+          "name": "Wages Annual of Establishment: Other Women's And Girls' Outerwear Mfg (NAICS/315239)",
+          "dcid": "dc/5n2xf0xr930e7"
+        },
+        {
+          "name": "Count of Establishment: Privately Owned, Other Women's And Girls' Outerwear Mfg (NAICS/315239)",
+          "dcid": "dc/1mzj1f5670hc"
+        },
+        {
+          "name": "Shipments or Receipts of Establishment: Other Women's And Girls' Outerwear Mfg (NAICS/315239), With Payroll",
+          "dcid": "dc/6qkv04wn94c53"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Establishment_Industry-NAICS/42433",
+      "name": "Establishment With Industry = Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
+      "statVars": [
+        {
+          "name": "Count of Establishment: Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
+          "dcid": "dc/01r1n7ysnjsed"
+        },
+        {
+          "name": "Count of Establishment: Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
+          "dcid": "dc/1s83bz59v9rq7"
+        },
+        {
+          "name": "Count of Establishment: Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
+          "dcid": "dc/xre2cx37zmkef"
+        },
+        {
+          "name": "Wages Annual of Establishment: Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
+          "dcid": "dc/c5kh0lky2lwff"
+        },
+        {
+          "name": "Count of Establishment: Privately Owned, Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
+          "dcid": "dc/kxtbk13pgnvn2"
+        },
+        {
+          "name": "Sales of Establishment: Women's And Children's Clothing Merch. Whls. (NAICS/42433), With Payroll",
+          "dcid": "dc/6bgpdj3k5mrm3"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Establishment_Industry-NAICS/315232",
+      "name": "Establishment With Industry = Women's And Girls' Blouse And Shirt Mfg (NAICS/315232)",
+      "statVars": [
+        {
+          "name": "Count of Establishment: Women's And Girls' Blouse And Shirt Mfg (NAICS/315232)",
+          "dcid": "dc/dwz0wj5cn1vm2"
+        },
+        {
+          "name": "Count of Establishment: Women's And Girls' Blouse And Shirt Mfg (NAICS/315232)",
+          "dcid": "dc/hd7zynr0g11sf"
+        },
+        {
+          "name": "Count of Establishment: Women's And Girls' Blouse And Shirt Mfg (NAICS/315232)",
+          "dcid": "dc/wdydnygy2vhh2"
+        },
+        {
+          "name": "Wages Annual of Establishment: Women's And Girls' Blouse And Shirt Mfg (NAICS/315232)",
+          "dcid": "dc/byw105g97113f"
+        },
+        {
+          "name": "Count of Establishment: Privately Owned, Women's And Girls' Blouse And Shirt Mfg (NAICS/315232)",
+          "dcid": "dc/v47j59zsfcw34"
+        },
+        {
+          "name": "Shipments or Receipts of Establishment: Women's And Girls' Blouse And Shirt Mfg (NAICS/315232), With Payroll",
+          "dcid": "dc/fks84eehqmew7"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Establishment_Industry-NAICS/315233",
+      "name": "Establishment With Industry = Women's And Girls' Dress Manufacturing (NAICS/315233)",
+      "statVars": [
+        {
+          "name": "Count of Establishment: Women's And Girls' Dress Manufacturing (NAICS/315233)",
+          "dcid": "dc/0t78emz66c4p6"
+        },
+        {
+          "name": "Count of Establishment: Women's And Girls' Dress Manufacturing (NAICS/315233)",
+          "dcid": "dc/1n885xhjz3e39"
+        },
+        {
+          "name": "Count of Establishment: Women's And Girls' Dress Manufacturing (NAICS/315233)",
+          "dcid": "dc/hjrs2ww3j659"
+        },
+        {
+          "name": "Wages Annual of Establishment: Women's And Girls' Dress Manufacturing (NAICS/315233)",
+          "dcid": "dc/dpk05r5c2z3wc"
+        },
+        {
+          "name": "Count of Establishment: Privately Owned, Women's And Girls' Dress Manufacturing (NAICS/315233)",
+          "dcid": "dc/k0l048qhs341g"
+        },
+        {
+          "name": "Shipments or Receipts of Establishment: Women's And Girls' Dress Manufacturing (NAICS/315233), With Payroll",
+          "dcid": "dc/6jy082t6fmvvh"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Establishment_Industry-NAICS/315231",
+      "name": "Establishment With Industry = Women's And Girls' Lingerie And Nightwear Mfg (NAICS/315231)",
+      "statVars": [
+        {
+          "name": "Count of Establishment: Women's And Girls' Lingerie And Nightwear Mfg (NAICS/315231)",
+          "dcid": "dc/72h0vycgkyxf5"
+        },
+        {
+          "name": "Count of Establishment: Women's And Girls' Lingerie And Nightwear Mfg (NAICS/315231)",
+          "dcid": "dc/vr3l7r4qetw7d"
+        },
+        {
+          "name": "Count of Establishment: Women's And Girls' Lingerie And Nightwear Mfg (NAICS/315231)",
+          "dcid": "dc/zsclgn1trelq"
+        },
+        {
+          "name": "Wages Annual of Establishment: Women's And Girls' Lingerie And Nightwear Mfg (NAICS/315231)",
+          "dcid": "dc/y52nntfc8gc3f"
+        },
+        {
+          "name": "Count of Establishment: Privately Owned, Women's And Girls' Lingerie And Nightwear Mfg (NAICS/315231)",
+          "dcid": "dc/nqjrr9wt8cx9d"
+        },
+        {
+          "name": "Shipments or Receipts of Establishment: Women's And Girls' Lingerie And Nightwear Mfg (NAICS/315231), With Payroll",
+          "dcid": "dc/pp7mk3zze5x33"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Establishment_Industry-NAICS/315234",
+      "name": "Establishment With Industry = Women's And Girls' Suit, Coat, And Skirt Mfg (NAICS/315234)",
+      "statVars": [
+        {
+          "name": "Count of Establishment: Women's And Girls' Suit, Coat, And Skirt Mfg (NAICS/315234)",
+          "dcid": "dc/dwjnvlzlk9021"
+        },
+        {
+          "name": "Count of Establishment: Women's And Girls' Suit, Coat, And Skirt Mfg (NAICS/315234)",
+          "dcid": "dc/ere1cb9j0g4rg"
+        },
+        {
+          "name": "Count of Establishment: Women's And Girls' Suit, Coat, And Skirt Mfg (NAICS/315234)",
+          "dcid": "dc/sf1c454nyqxdf"
+        },
+        {
+          "name": "Wages Annual of Establishment: Women's And Girls' Suit, Coat, And Skirt Mfg (NAICS/315234)",
+          "dcid": "dc/cdjv5jt6gk8k6"
+        },
+        {
+          "name": "Count of Establishment: Privately Owned, Women's And Girls' Suit, Coat, And Skirt Mfg (NAICS/315234)",
+          "dcid": "dc/zl2fwf5mmb0j9"
+        },
+        {
+          "name": "Shipments or Receipts of Establishment: Women's And Girls' Suit, Coat, And Skirt Mfg (NAICS/315234), With Payroll",
+          "dcid": "dc/6llg4c0hm0518"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Establishment_Industry-NAICS/44812",
+      "name": "Establishment With Industry = Women's Clothing Stores (NAICS/44812)",
+      "statVars": [
+        {
+          "name": "Count of Establishment: Women's Clothing Stores (NAICS/44812)",
+          "dcid": "dc/485v7jl4qlhxb"
+        },
+        {
+          "name": "Count of Establishment: Women's Clothing Stores (NAICS/44812)",
+          "dcid": "dc/5vgmmsgdmsvt3"
+        },
+        {
+          "name": "Count of Establishment: Women's Clothing Stores (NAICS/44812)",
+          "dcid": "dc/dbr7jyndp0151"
+        },
+        {
+          "name": "Wages Annual of Establishment: Women's Clothing Stores (NAICS/44812)",
+          "dcid": "dc/g5nryvhz7vl44"
+        },
+        {
+          "name": "Count of Establishment: Privately Owned, Women's Clothing Stores (NAICS/44812)",
+          "dcid": "dc/tnyv8edhmflg"
+        },
+        {
+          "name": "Sales of Establishment: Women's Clothing Stores (NAICS/44812), With Payroll",
+          "dcid": "dc/tb8gcxernde19"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Establishment_Industry-NAICS/316992",
+      "name": "Establishment With Industry = Women's Handbag And Purse Manufacturing (NAICS/316992)",
+      "statVars": [
+        {
+          "name": "Count of Establishment: Women's Handbag And Purse Manufacturing (NAICS/316992)",
+          "dcid": "dc/6vd8mtqfmnlbb"
+        },
+        {
+          "name": "Count of Establishment: Women's Handbag And Purse Manufacturing (NAICS/316992)",
+          "dcid": "dc/9mmxbem7c7xrh"
+        },
+        {
+          "name": "Count of Establishment: Women's Handbag And Purse Manufacturing (NAICS/316992)",
+          "dcid": "dc/f3qd32v7d0w9"
+        },
+        {
+          "name": "Wages Annual of Establishment: Women's Handbag And Purse Manufacturing (NAICS/316992)",
+          "dcid": "dc/3nsjpbp090gr9"
+        },
+        {
+          "name": "Count of Establishment: Privately Owned, Women's Handbag And Purse Manufacturing (NAICS/316992)",
+          "dcid": "dc/9dlkhye638d1d"
+        },
+        {
+          "name": "Shipments or Receipts of Establishment: Women's Handbag And Purse Manufacturing (NAICS/316992), With Payroll",
+          "dcid": "dc/v8p0zbh29kv98"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Establishment_Industry-NAICS/316214",
+      "name": "Establishment With Industry = Women's Nonathletic Footwear Manufacturing (NAICS/316214)",
+      "statVars": [
+        {
+          "name": "Count of Establishment: Women's Nonathletic Footwear Manufacturing (NAICS/316214)",
+          "dcid": "dc/g3q1g5ypdk2k"
+        },
+        {
+          "name": "Count of Establishment: Women's Nonathletic Footwear Manufacturing (NAICS/316214)",
+          "dcid": "dc/gvbwk7c7hb5mg"
+        },
+        {
+          "name": "Count of Establishment: Women's Nonathletic Footwear Manufacturing (NAICS/316214)",
+          "dcid": "dc/r47bzjgblx7z4"
+        },
+        {
+          "name": "Wages Annual of Establishment: Women's Nonathletic Footwear Manufacturing (NAICS/316214)",
+          "dcid": "dc/ye2wj5ggx5n34"
+        },
+        {
+          "name": "Count of Establishment: Privately Owned, Women's Nonathletic Footwear Manufacturing (NAICS/316214)",
+          "dcid": "dc/kd5z73cqycm6c"
+        },
+        {
+          "name": "Shipments or Receipts of Establishment: Women's Nonathletic Footwear Manufacturing (NAICS/316214), With Payroll",
+          "dcid": "dc/4xrh95yzw99w3"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Establishment_Industry-NAICS/315212",
+      "name": "Establishment With Industry = Women's, Girls', Infants' Apparel Contractors (NAICS/315212)",
+      "statVars": [
+        {
+          "name": "Count of Establishment: Women's, Girls', Infants' Apparel Contractors (NAICS/315212)",
+          "dcid": "dc/0bkbm4x0nvceb"
+        },
+        {
+          "name": "Count of Establishment: Women's, Girls', Infants' Apparel Contractors (NAICS/315212)",
+          "dcid": "dc/fg95lgey78gq1"
+        },
+        {
+          "name": "Count of Establishment: Women's, Girls', Infants' Apparel Contractors (NAICS/315212)",
+          "dcid": "dc/p5sgbrbdkefl2"
+        },
+        {
+          "name": "Wages Annual of Establishment: Women's, Girls', Infants' Apparel Contractors (NAICS/315212)",
+          "dcid": "dc/fgn46kw0vn108"
+        },
+        {
+          "name": "Count of Establishment: Privately Owned, Women's, Girls', Infants' Apparel Contractors (NAICS/315212)",
+          "dcid": "dc/4d2pt897sqb09"
+        },
+        {
+          "name": "Shipments or Receipts of Establishment: Women's, Girls', Infants' Apparel Contractors (NAICS/315212), With Payroll",
+          "dcid": "dc/mcjnbmc4tk28d"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Establishment_Industry-NAICS/31524",
+      "name": "Establishment With Industry = Women's, Girls', Infants' Cut-sew Apparel Mfg (NAICS/31524)",
+      "statVars": [
+        {
+          "name": "Count of Establishment: Women's, Girls', Infants' Cut-sew Apparel Mfg (NAICS/31524)",
+          "dcid": "dc/1164zg41pdp4f"
+        },
+        {
+          "name": "Count of Establishment: Women's, Girls', Infants' Cut-sew Apparel Mfg (NAICS/31524)",
+          "dcid": "dc/ks0pf8d9hj8wg"
+        },
+        {
+          "name": "Count of Establishment: Women's, Girls', Infants' Cut-sew Apparel Mfg (NAICS/31524)",
+          "dcid": "dc/yhdq1xdy3x0s9"
+        },
+        {
+          "name": "Wages Annual of Establishment: Women's, Girls', Infants' Cut-sew Apparel Mfg (NAICS/31524)",
+          "dcid": "dc/4pm87j02ql96c"
+        },
+        {
+          "name": "Count of Establishment: Privately Owned, Women's, Girls', Infants' Cut-sew Apparel Mfg (NAICS/31524)",
+          "dcid": "dc/e351bke5y8c75"
+        },
+        {
+          "name": "Shipments or Receipts of Establishment: Women's, Girls', Infants' Cut-sew Apparel Mfg (NAICS/31524), With Payroll",
+          "dcid": "dc/ne63ywxmvk1lg"
+        }
+      ]
+    },
+    {
       "dcid": "sdg/g/SP_DYN_ADKL",
       "name": "Adolescent birth rate (per 1,000 women aged 15-19 and 10-14 years)",
       "statVars": [
@@ -28333,6 +28663,28 @@
         {
           "name": "Percentage Muscle Strengthening, Non Work Related Physical Activity Among Female, Income Of 80 To 100 Percentile Population",
           "dcid": "Percent_MuscleStrengthening_NonWorkRelatedPhysicalActivity_In_Count_Person_Female_IncomeOf80To100Percentile"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Establishment_Industry-NAICS/31523",
+      "name": "Establishment With Industry = Women's And Girls' Cut And Sew Apparel Mfg (NAICS/31523)",
+      "statVars": [
+        {
+          "name": "Count of Establishment: Women's And Girls' Cut And Sew Apparel Mfg (NAICS/31523)",
+          "dcid": "dc/bcblr250e80p8"
+        },
+        {
+          "name": "Count of Establishment: Women's And Girls' Cut And Sew Apparel Mfg (NAICS/31523)",
+          "dcid": "dc/n1z9evkm4lje3"
+        },
+        {
+          "name": "Count of Establishment: Women's And Girls' Cut And Sew Apparel Mfg (NAICS/31523)",
+          "dcid": "dc/zqqr1106h7gwg"
+        },
+        {
+          "name": "Wages Annual of Establishment: Women's And Girls' Cut And Sew Apparel Mfg (NAICS/31523)",
+          "dcid": "dc/1gb40x8252jj7"
         }
       ]
     },
@@ -34963,6 +35315,48 @@
       ]
     },
     {
+      "dcid": "dc/g/Establishment_BusinessOperationType-ManufacturerSalesBranchesAndOffices_Industry-NAICS/42433",
+      "name": "Establishment With Business Operation Type = Manufacturer Sales Branches And Offices, Industry = Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
+      "statVars": [
+        {
+          "name": "Count of Establishment: Manufacturer Sales Branches And Offices, Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
+          "dcid": "dc/k3w2p68klhfcc"
+        },
+        {
+          "name": "Sales of Establishment: Manufacturer Sales Branches And Offices, Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
+          "dcid": "dc/79vrq3849kfeg"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Establishment_BusinessOperationType-MerchantWholesalersExcludingManufacturerSalesBranchesAndOffices_Industry-NAICS/42433",
+      "name": "Establishment With Business Operation Type = Merchant Wholesalers Excluding Manufacturer Sales Branches And Offices, Industry = Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
+      "statVars": [
+        {
+          "name": "Count of Establishment: Merchant Wholesalers Excluding Manufacturer Sales Branches And Offices, Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
+          "dcid": "dc/ww85jq324j3gc"
+        },
+        {
+          "name": "Sales of Establishment: Merchant Wholesalers Excluding Manufacturer Sales Branches And Offices, Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
+          "dcid": "dc/ggp40c14cfw7b"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Establishment_BusinessOperationType-MerchantWholesalers_Industry-NAICS/42433",
+      "name": "Establishment With Business Operation Type = Merchant Wholesalers, Industry = Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
+      "statVars": [
+        {
+          "name": "Count of Establishment: Merchant Wholesalers, Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
+          "dcid": "dc/jfts1vjy25k9g"
+        },
+        {
+          "name": "Sales of Establishment: Merchant Wholesalers, Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
+          "dcid": "dc/867ehyppl4rf1"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/HateCrimeIncidents_TargetedGender-Female_VictimAge",
       "name": "Hate Crime Incidents With Targeted Gender = Female, Victim Age",
       "statVars": [
@@ -39425,216 +39819,6 @@
         {
           "name": "Population: 6 Years or Less, Female, Rural, Islam",
           "dcid": "indianCensus/Count_Person_Religion_Muslim_YearsUpto6_Rural_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_PlaceOfResidenceClassification-Rural_Religion-Jainism",
-      "name": "Person With Gender = Female, Place of Residence Classification = Rural, Religion = Jainism",
-      "statVars": [
-        {
-          "name": "Population: Female, Rural, Jainism",
-          "dcid": "indianCensus/Count_Person_Religion_Jain_Rural_Female"
-        },
-        {
-          "name": "Population: 6 Years or Less, Female, Rural, Jainism",
-          "dcid": "indianCensus/Count_Person_Religion_Jain_YearsUpto6_Rural_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_PlaceOfResidenceClassification-Rural_Religion-ReligionNotStated",
-      "name": "Person With Gender = Female, Place of Residence Classification = Rural, Religion = Religion Not Stated",
-      "statVars": [
-        {
-          "name": "Population: Female, Rural, Religion Not Stated",
-          "dcid": "indianCensus/Count_Person_Religion_ReligionNotStated_Rural_Female"
-        },
-        {
-          "name": "Population: 6 Years or Less, Female, Rural, Religion Not Stated",
-          "dcid": "indianCensus/Count_Person_Religion_ReligionNotStated_YearsUpto6_Rural_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_PlaceOfResidenceClassification-Rural_Religion-Sikhism",
-      "name": "Person With Gender = Female, Place of Residence Classification = Rural, Religion = Sikhism",
-      "statVars": [
-        {
-          "name": "Population: Female, Rural, Sikhism",
-          "dcid": "indianCensus/Count_Person_Religion_Sikh_Rural_Female"
-        },
-        {
-          "name": "Population: 6 Years or Less, Female, Rural, Sikhism",
-          "dcid": "indianCensus/Count_Person_Religion_Sikh_YearsUpto6_Rural_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_PlaceOfResidenceClassification-Rural_SocialSupportBeneficiaryType",
-      "name": "Person With Gender = Female, Place of Residence Classification = Rural, Social Support Beneficiary Type",
-      "statVars": [
-        {
-          "name": "Percentage At Least Once A Week, Non Relatives, Providing Informal Care Or Assistance Among Rural, Female Population",
-          "dcid": "Percent_AtLeastOnceAWeek_NonRelatives_ProvidingInformalCareOrAssistance_In_Count_Person_Rural_Female"
-        },
-        {
-          "name": "Percentage At Least Once A Week, Relatives, Providing Informal Care Or Assistance Among Rural, Female Population",
-          "dcid": "Percent_AtLeastOnceAWeek_Relatives_ProvidingInformalCareOrAssistance_In_Count_Person_Rural_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_PlaceOfResidenceClassification-Rural_WorkerClassification-NonWorker",
-      "name": "Person With Gender = Female, Place of Residence Classification = Rural, Worker Classification = Non Worker",
-      "statVars": [
-        {
-          "name": "Population: Female, Rural, Non Worker",
-          "dcid": "Count_Person_NonWorker_Rural_Female"
-        },
-        {
-          "name": "Population: Female, Houseless, Rural, Non Worker",
-          "dcid": "Count_Person_Houseless_NonWorker_Rural_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_PlaceOfResidenceClassification-SemiUrban_SocialSupportBeneficiaryType",
-      "name": "Person With Gender = Female, Place of Residence Classification = Semi Urban, Social Support Beneficiary Type",
-      "statVars": [
-        {
-          "name": "Percentage At Least Once A Week, Non Relatives, Providing Informal Care Or Assistance Among Semi Urban, Female Population",
-          "dcid": "Percent_AtLeastOnceAWeek_NonRelatives_ProvidingInformalCareOrAssistance_In_Count_Person_SemiUrban_Female"
-        },
-        {
-          "name": "Percentage At Least Once A Week, Relatives, Providing Informal Care Or Assistance Among Semi Urban, Female Population",
-          "dcid": "Percent_AtLeastOnceAWeek_Relatives_ProvidingInformalCareOrAssistance_In_Count_Person_SemiUrban_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_PlaceOfResidenceClassification-Urban_Religion-Buddhism",
-      "name": "Person With Gender = Female, Place of Residence Classification = Urban, Religion = Buddhism",
-      "statVars": [
-        {
-          "name": "Population: Female, Urban, Buddhism",
-          "dcid": "indianCensus/Count_Person_Religion_Buddhist_Urban_Female"
-        },
-        {
-          "name": "Population: 6 Years or Less, Female, Urban, Buddhism",
-          "dcid": "indianCensus/Count_Person_Religion_Buddhist_YearsUpto6_Urban_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_PlaceOfResidenceClassification-Urban_Religion-Christianity",
-      "name": "Person With Gender = Female, Place of Residence Classification = Urban, Religion = Christianity",
-      "statVars": [
-        {
-          "name": "Population: Female, Urban, Christianity",
-          "dcid": "indianCensus/Count_Person_Religion_Christian_Urban_Female"
-        },
-        {
-          "name": "Population: 6 Years or Less, Female, Urban, Christianity",
-          "dcid": "indianCensus/Count_Person_Religion_Christian_YearsUpto6_Urban_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_PlaceOfResidenceClassification-Urban_Religion-Hinduism",
-      "name": "Person With Gender = Female, Place of Residence Classification = Urban, Religion = Hinduism",
-      "statVars": [
-        {
-          "name": "Population: Female, Urban, Hinduism",
-          "dcid": "indianCensus/Count_Person_Religion_Hindu_Urban_Female"
-        },
-        {
-          "name": "Population: 6 Years or Less, Female, Urban, Hinduism",
-          "dcid": "indianCensus/Count_Person_Religion_Hindu_YearsUpto6_Urban_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_PlaceOfResidenceClassification-Urban_Religion-IndiaCensusOtherReligionAndPersuasions",
-      "name": "Person With Gender = Female, Place of Residence Classification = Urban, Religion = India Census_Other Religion And Persuasions",
-      "statVars": [
-        {
-          "name": "Population: Female, Urban, India Census_Other Religion And Persuasions",
-          "dcid": "indianCensus/Count_Person_Religion_OtherReligionsAndPersuasions_Urban_Female"
-        },
-        {
-          "name": "Population: 6 Years or Less, Female, Urban, India Census_Other Religion And Persuasions",
-          "dcid": "indianCensus/Count_Person_Religion_OtherReligionsAndPersuasions_YearsUpto6_Urban_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_PlaceOfResidenceClassification-Urban_Religion-Islam",
-      "name": "Person With Gender = Female, Place of Residence Classification = Urban, Religion = Islam",
-      "statVars": [
-        {
-          "name": "Population: Female, Urban, Islam",
-          "dcid": "indianCensus/Count_Person_Religion_Muslim_Urban_Female"
-        },
-        {
-          "name": "Population: 6 Years or Less, Female, Urban, Islam",
-          "dcid": "indianCensus/Count_Person_Religion_Muslim_YearsUpto6_Urban_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_PlaceOfResidenceClassification-Urban_Religion-Jainism",
-      "name": "Person With Gender = Female, Place of Residence Classification = Urban, Religion = Jainism",
-      "statVars": [
-        {
-          "name": "Population: Female, Urban, Jainism",
-          "dcid": "indianCensus/Count_Person_Religion_Jain_Urban_Female"
-        },
-        {
-          "name": "Population: 6 Years or Less, Female, Urban, Jainism",
-          "dcid": "indianCensus/Count_Person_Religion_Jain_YearsUpto6_Urban_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_PlaceOfResidenceClassification-Urban_Religion-ReligionNotStated",
-      "name": "Person With Gender = Female, Place of Residence Classification = Urban, Religion = Religion Not Stated",
-      "statVars": [
-        {
-          "name": "Population: Female, Urban, Religion Not Stated",
-          "dcid": "indianCensus/Count_Person_Religion_ReligionNotStated_Urban_Female"
-        },
-        {
-          "name": "Population: 6 Years or Less, Female, Urban, Religion Not Stated",
-          "dcid": "indianCensus/Count_Person_Religion_ReligionNotStated_YearsUpto6_Urban_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_PlaceOfResidenceClassification-Urban_Religion-Sikhism",
-      "name": "Person With Gender = Female, Place of Residence Classification = Urban, Religion = Sikhism",
-      "statVars": [
-        {
-          "name": "Population: Female, Urban, Sikhism",
-          "dcid": "indianCensus/Count_Person_Religion_Sikh_Urban_Female"
-        },
-        {
-          "name": "Population: 6 Years or Less, Female, Urban, Sikhism",
-          "dcid": "indianCensus/Count_Person_Religion_Sikh_YearsUpto6_Urban_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_PlaceOfResidenceClassification-Urban_SocialSupportBeneficiaryType",
-      "name": "Person With Gender = Female, Place of Residence Classification = Urban, Social Support Beneficiary Type",
-      "statVars": [
-        {
-          "name": "Percentage At Least Once A Week, Non Relatives, Providing Informal Care Or Assistance Among Urban, Female Population",
-          "dcid": "Percent_AtLeastOnceAWeek_NonRelatives_ProvidingInformalCareOrAssistance_In_Count_Person_Urban_Female"
-        },
-        {
-          "name": "Percentage At Least Once A Week, Relatives, Providing Informal Care Or Assistance Among Urban, Female Population",
-          "dcid": "Percent_AtLeastOnceAWeek_Relatives_ProvidingInformalCareOrAssistance_In_Count_Person_Urban_Female"
         }
       ]
     }

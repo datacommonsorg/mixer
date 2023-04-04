@@ -79,7 +79,7 @@ func DerivedSeries(
 
 // This implements the calculatorItem interface.
 type calcSeries struct {
-	statMetadata *pb.StatMetadata
+	statMetadata *pb.Facet
 	// Sorted by date.
 	points []*pb.PointStat
 }
@@ -96,7 +96,7 @@ func (s *calcSeries) key() string {
 func extractSeriesCandidates(
 	btData interface{},
 	statVar string,
-	statMetadata *pb.StatMetadata,
+	statMetadata *pb.Facet,
 ) ([]calcItem, error) {
 	entityData := btData.(map[string]*pb.ObsTimeSeries)
 	res := []calcItem{}
@@ -177,7 +177,7 @@ func evalSeriesBinaryExpr(x, y calcItem, op token.Token) (calcItem, error) {
 //
 // The input `seriesCandidates` all have the same dates.
 func rankCalcSeries(seriesCandidates []calcItem) calcItem {
-	statMetadataKey := func(statMetadata *pb.StatMetadata) string {
+	statMetadataKey := func(statMetadata *pb.Facet) string {
 		return strings.Join([]string{
 			statMetadata.GetMeasurementMethod(),
 			statMetadata.GetObservationPeriod(),
@@ -201,7 +201,7 @@ func rankCalcSeries(seriesCandidates []calcItem) calcItem {
 
 func toCalcSeries(sourceSeries *pb.SourceSeries) *calcSeries {
 	series := &calcSeries{
-		statMetadata: &pb.StatMetadata{
+		statMetadata: &pb.Facet{
 			MeasurementMethod: sourceSeries.GetMeasurementMethod(),
 			ObservationPeriod: sourceSeries.GetObservationPeriod(),
 			Unit:              sourceSeries.GetUnit(),
