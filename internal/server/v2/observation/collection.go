@@ -40,12 +40,18 @@ func FetchFromCollection(
 	childType string,
 	queryDate string,
 ) (*pbv2.ObservationResponse, error) {
-	btData, err := stat.ReadStatCollection(
-		ctx, store.BtGroup, bigtable.BtObsCollection,
-		ancestor, childType, variables, queryDate,
-	)
-	if err != nil {
-		return nil, err
+	btData := map[string]*pb.ObsCollection{}
+	var err error
+	// Only query Collection BT table when date is set. Otherwise leave btData
+	// empty so later on this queries the Series BT table.
+	if queryDate != "" {
+		btData, err = stat.ReadStatCollection(
+			ctx, store.BtGroup, bigtable.BtObsCollection,
+			ancestor, childType, variables, queryDate,
+		)
+		if err != nil {
+			return nil, err
+		}
 	}
 	result := &pbv2.ObservationResponse{
 		ObservationsByVariable: map[string]*pbv2.VariableObservation{},
