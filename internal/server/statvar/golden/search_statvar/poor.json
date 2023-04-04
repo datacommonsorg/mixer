@@ -5159,6 +5159,10 @@
     {
       "dcid": "dc/g/Person_CitizenshipStatus-WithinEU28AndNotACitizen_Gender_Nativity-WithinEU28AndNotACitizen_SocialSupportLevel-ReceivingPoorSocialSupport",
       "name": "Person With Citizenship Status = Within EU 28 And Not ACitizen, Gender, Nativity = Within EU 28 And Not ACitizen, Social Support Level = Receiving Poor Social Support"
+    },
+    {
+      "dcid": "eia/g/COAL.769177",
+      "name": "(1518942) Poor Branch Surface #1 (1518942)"
     }
   ],
   "matches": [

@@ -71,7 +71,7 @@ func Series(
 		return resp, err
 	}
 	sort.Sort(ranking.SeriesByRank(series))
-	resp.Facet = util.GetMetadata(series[0])
+	resp.Facet = util.GetFacet(series[0])
 	dates := []string{}
 	for date := range series[0].Val {
 		dates = append(dates, date)

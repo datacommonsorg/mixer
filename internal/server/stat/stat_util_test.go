@@ -28,7 +28,7 @@ func TestGetValueFromBestSourcePb(t *testing.T) {
 		obs  *pb.ObsTimeSeries
 		date string
 		ps   *pb.PointStat
-		meta *pb.StatMetadata
+		meta *pb.Facet
 	}{
 		{
 			&pb.ObsTimeSeries{},
@@ -68,7 +68,7 @@ func TestGetValueFromBestSourcePb(t *testing.T) {
 				Date:  "2018",
 				Value: proto.Float64(205),
 			},
-			&pb.StatMetadata{
+			&pb.Facet{
 				ImportName:        "USCensusPEP_Annual_Population",
 				ProvenanceUrl:     "https://www.census.gov/programs-surveys/popest.html",
 				MeasurementMethod: "CensusPEPSurvey",
@@ -108,7 +108,7 @@ func TestGetValueFromBestSourcePb(t *testing.T) {
 				Date:  "2020",
 				Value: proto.Float64(400),
 			},
-			&pb.StatMetadata{
+			&pb.Facet{
 				ImportName:        "CensusACS5YearSurvey",
 				ProvenanceUrl:     "https://www.census.gov/",
 				MeasurementMethod: "CensusACS5yrSurvey",

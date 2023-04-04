@@ -1,4 +1,10 @@
 {
+  "statVars": [
+    {
+      "name": "Department of Veterans Affairs Consumption, Annual",
+      "dcid": "eia/TOTAL.TEVAB.A"
+    }
+  ],
   "statVarGroups": [
     {
       "dcid": "dc/g/Person_Age-Years18Onwards_ResidenceType_VeteranStatus-Veteran",
@@ -101,6 +107,24 @@
         {
           "name": "Wages Weekly of Person: State Government Owned, Administration of Veterans' Affairs (NAICS/92314)",
           "dcid": "dc/h104wrsjf6r25"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Establishment_EstablishmentOwnership_Industry-NAICS/92314",
+      "name": "Establishment With Establishment Ownership, Industry = Administration of Veterans' Affairs (NAICS/92314)",
+      "statVars": [
+        {
+          "name": "Count of Establishment: Federal Government Owned, Administration of Veterans' Affairs (NAICS/92314)",
+          "dcid": "dc/t80ypt0pxptr2"
+        },
+        {
+          "name": "Count of Establishment: Local Government Owned, Administration of Veterans' Affairs (NAICS/92314)",
+          "dcid": "dc/nrvs8h9c2w06h"
+        },
+        {
+          "name": "Count of Establishment: State Government Owned, Administration of Veterans' Affairs (NAICS/92314)",
+          "dcid": "dc/n6nwes3xywqj1"
         }
       ]
     },
@@ -255,6 +279,16 @@
         {
           "name": "Population: 75 Years or More, Civilian, Male, Veteran",
           "dcid": "dc/x90mvznfdcqwd"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Establishment_Industry-NAICS/92314",
+      "name": "Establishment With Industry = Administration of Veterans' Affairs (NAICS/92314)",
+      "statVars": [
+        {
+          "name": "Count of Establishment: Administration of Veterans' Affairs (NAICS/92314)",
+          "dcid": "dc/nre9cbcqqdrrc"
         }
       ]
     },
@@ -977,10 +1011,15 @@
     {
       "dcid": "dc/g/Person_Age-Years18Onwards_Gender_IncomeStatus-WithIncome_MilitaryStatus-Civilian_VeteranStatus-Veteran",
       "name": "Person With Age = 18 Years or More, Military Status = Civilian, Gender, Income Status = With Income, Veteran Status = Veteran"
+    },
+    {
+      "dcid": "eia/g/ELEC.4533",
+      "name": "(50065) Veterans Home of California (50065)"
     }
   ],
   "matches": [
     "veteran",
+    "veterans",
     "veterans'"
   ]
 }

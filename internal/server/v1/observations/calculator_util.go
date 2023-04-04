@@ -77,7 +77,7 @@ func parseNode(nodeName string) (*nodeData, error) {
 
 		leftBracketIndex := strings.Index(nodeName, "[")
 
-		res.statMetadata = &pb.StatMetadata{}
+		res.statMetadata = &pb.Facet{}
 		filterString := nodeName[leftBracketIndex+1 : len(nodeName)-1]
 		for _, filter := range strings.Split(filterString, ";") {
 			filterType := filter[0:2]
