@@ -1,12 +1,8 @@
 # Data Commons Mixer Developer Guide
 
 The developement uses
-[Kustomize](https://kubectl.docs.kubernetes.io/guides/introduction/kustomize/)
-to manage yaml templating and composition. Detailed deploy folder structure can
-be found [here](../deploy/README.md).
-
-Local development uses [Skaffold](https://skaffold.dev) to manage the build,
-deploy and port forwarding.
+[Helm](https://helm.sh/) to manage yaml templating and composition. Detailed
+deploy folder structure can be found [here](../deploy/README.md).
 
 ## Prerequisite
 
@@ -15,8 +11,6 @@ deploy and port forwarding.
 - Install the following tools to develop mixer locally (with Docker):
 
   - [`Docker`](https://www.docker.com/products/docker-desktop)
-  - [`Minikube`](https://minikube.sigs.k8s.io/docs/start/)
-  - [`Skaffold`](https://skaffold.dev/docs/install/)
   - [`gcloud`](https://cloud.google.com/sdk/docs/install)
   - [`kubectl`](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
 
@@ -42,11 +36,11 @@ deploy and port forwarding.
   gcloud auth application-default login
   ```
 
-## Develop mixer locally as a Go server (Recommended)
+## Develop mixer locally as a Go server
 
 **NOTE** This can only develop and test the gRPC server. Since the
 [ESP](https://cloud.google.com/endpoints/docs/grpc/running-esp-localdev) is not
-brought up here, can not test the REST API.
+brought up here, REST API can not be tested.
 
 ### Generate Go proto files
 
@@ -144,10 +138,6 @@ root to spin up envoy proxy. This exposes the http mixer service at
 ```sh
 envoy --config-path esp/envoy-config.yaml
 ```
-
-Mixer services in live clusters do not use envoy directly. To replicate the live
-k8s setup locally, please see [the guide
-below](#fully-replicating-mixer-k8s-setup-locally).
 
 ### Update Go package dependencies
 
@@ -260,57 +250,6 @@ in interactive mode to run queries.
 # See net/http/pprof for other URLs and profiles available https://pkg.go.dev/net/http/pprof
 # with no flags specifying output, pprof goes into interactive mode
 go tool pprof -sample_index=alloc_space 127.0.0.1:6060/debug/pprof/heap?gc=1
-```
-
-## Fully replicating mixer k8s setup locally
-
-Mixer and [ESP](https://cloud.google.com/endpoints/docs/grpc/running-esp-localdev)
-is deployed on a local Minikube cluster.
-To avoid using Endpoints API management and talking to GCP,
-local deployment uses Json API configuration,
-which is compiled using [API Compiler](https://github.com/googleapis/api-compiler).
-
-### Start mixer in minikube
-
-Mixer in Minikube (local Kubernetes) brings up mixer with REST endpoints through
-ESP. This requires docker and minikube to be installed in local environment. To
-start Mixer in Minikube, run:
-
-```bash
-minikube start
-minikube addons enable gcp-auth
-eval $(minikube docker-env)
-kubectl config use-context minikube
-skaffold dev --port-forward -n mixer
-```
-
-This exposes the local mixer service at `localhost:8081`.
-
-To verify the server serving request:
-
-```bash
-curl http://localhost:8081/v1/bulk/observations/series?entities=geoId/06025&variables=Count_Person
-```
-
-After code edit, the container images are automatically rebuilt and re-deployed
-to the local cluster.
-
-Starting Mixer and ESP locally allows development that relies on a custom mixer.
-For example, Data Commons website local development may need a mixer with custom
-Bigtables. To do this, update
-[deploy/local/custom_bigtable_info.yaml](../deploy/local/custom_bigtable_info.yaml)
-and the local mixer would be able to serve the custom Bigtable.
-
-### Run Tests
-
-```bash
-./scripts/run_test.sh -d
-```
-
-### Update e2e test golden files
-
-```bash
-./scripts/update_golden.sh -d
 ```
 
 ## Update prod golden files

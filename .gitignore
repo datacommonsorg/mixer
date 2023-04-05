@@ -52,9 +52,6 @@ endpoints.yaml
 
 mixer-grpc.pb
 mixer-grpc.*.pb
-deploy/overlays/**/endpoints.yaml
-deploy/overlays/**/kustomize-build.yaml
-deploy/overlays/**/kustomize-deployed.yaml
 
 deploy/git/mixer_hash.txt
 

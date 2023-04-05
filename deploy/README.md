@@ -1,7 +1,6 @@
 # Deployment Configuration
 
-Mixer is deployed to Kubernetes cluster either locally on
-[Minikube](https://minikube.sigs.k8s.io/docs/) or in
+Mixer is deployed to Kubernetes cluster in
 [Google Kubernetes Engine](https://cloud.google.com/kubernetes-engine).
 
 ## Folder structure
