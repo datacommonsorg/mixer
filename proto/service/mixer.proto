@@ -70,7 +70,7 @@ service Mixer {
     };
   }
 
-  // ======================  V1   V1   V1   V1  ======================
+  // ======================  V0   V0   V0   V0  ======================
 
   // Query DataCommons Graph with Sparql.
   rpc Query(QueryRequest) returns (QueryResponse) {
@@ -281,6 +281,7 @@ service Mixer {
   // ======================  V1   V1   V1   V1  ======================
 
   // Query DataCommons Graph with Sparql.
+  // V2 [DONE]
   rpc QueryV1(QueryRequest) returns (QueryResponse) {
     option (google.api.http) = {
       get : "/v1/query"
@@ -288,6 +289,7 @@ service Mixer {
     };
   }
 
+  // V2 [DONE]
   rpc Properties(datacommons.v1.PropertiesRequest)
       returns (datacommons.v1.PropertiesResponse) {
     option (google.api.http) = {
@@ -295,6 +297,7 @@ service Mixer {
     };
   }
 
+  // V2 [DONE]
   rpc BulkProperties(datacommons.v1.BulkPropertiesRequest)
       returns (datacommons.v1.BulkPropertiesResponse) {
     option (google.api.http) = {
@@ -306,6 +309,7 @@ service Mixer {
     };
   }
 
+  // V2 [DONE]
   rpc PropertyValues(datacommons.v1.PropertyValuesRequest)
       returns (datacommons.v1.PropertyValuesResponse) {
     option (google.api.http) = {
@@ -313,6 +317,7 @@ service Mixer {
     };
   }
 
+  // V2 [TODO]
   rpc LinkedPropertyValues(datacommons.v1.LinkedPropertyValuesRequest)
       returns (datacommons.v1.PropertyValuesResponse) {
     option (google.api.http) = {
@@ -320,6 +325,7 @@ service Mixer {
     };
   }
 
+  // V2 [DONE]
   rpc BulkPropertyValues(datacommons.v1.BulkPropertyValuesRequest)
       returns (datacommons.v1.BulkPropertyValuesResponse) {
     option (google.api.http) = {
@@ -331,6 +337,7 @@ service Mixer {
     };
   }
 
+  // V2 [TODO]
   rpc BulkLinkedPropertyValues(datacommons.v1.BulkLinkedPropertyValuesRequest)
       returns (datacommons.v1.BulkPropertyValuesResponse) {
     option (google.api.http) = {
@@ -342,6 +349,7 @@ service Mixer {
     };
   }
 
+  // V2 [TODO]
   rpc Triples(datacommons.v1.TriplesRequest)
       returns (datacommons.v1.TriplesResponse) {
     option (google.api.http) = {
@@ -349,6 +357,7 @@ service Mixer {
     };
   }
 
+  // V2 [TODO]
   rpc BulkTriples(datacommons.v1.BulkTriplesRequest)
       returns (datacommons.v1.BulkTriplesResponse) {
     option (google.api.http) = {
@@ -357,6 +366,7 @@ service Mixer {
     };
   }
 
+  // V2 [TODO]
   rpc Variables(datacommons.v1.VariablesRequest)
       returns (datacommons.v1.VariablesResponse) {
     option (google.api.http) = {
@@ -364,6 +374,7 @@ service Mixer {
     };
   }
 
+  // V2 [TODO]
   rpc BulkVariables(datacommons.v1.BulkVariablesRequest)
       returns (datacommons.v1.BulkVariablesResponse) {
     option (google.api.http) = {
@@ -372,6 +383,7 @@ service Mixer {
     };
   }
 
+  // V2 [TODO]
   rpc PlaceInfo(datacommons.v1.PlaceInfoRequest)
       returns (datacommons.v1.PlaceInfoResponse) {
     option (google.api.http) = {
@@ -379,6 +391,7 @@ service Mixer {
     };
   }
 
+  // V2 [TODO]
   rpc BulkPlaceInfo(datacommons.v1.BulkPlaceInfoRequest)
       returns (datacommons.v1.BulkPlaceInfoResponse) {
     option (google.api.http) = {
@@ -387,6 +400,7 @@ service Mixer {
     };
   }
 
+  // V2 [TODO]
   rpc VariableInfo(datacommons.v1.VariableInfoRequest)
       returns (datacommons.v1.VariableInfoResponse) {
     option (google.api.http) = {
@@ -394,6 +408,7 @@ service Mixer {
     };
   }
 
+  // V2 [TODO]
   rpc BulkVariableInfo(datacommons.v1.BulkVariableInfoRequest)
       returns (datacommons.v1.BulkVariableInfoResponse) {
     option (google.api.http) = {
@@ -402,6 +417,7 @@ service Mixer {
     };
   }
 
+  // V2 [TODO]
   rpc VariableGroupInfo(datacommons.v1.VariableGroupInfoRequest)
       returns (datacommons.v1.VariableGroupInfoResponse) {
     option (google.api.http) = {
@@ -409,6 +425,7 @@ service Mixer {
     };
   }
 
+  // V2 [TODO]
   rpc BulkVariableGroupInfo(datacommons.v1.BulkVariableGroupInfoRequest)
       returns (datacommons.v1.BulkVariableGroupInfoResponse) {
     option (google.api.http) = {
@@ -417,6 +434,7 @@ service Mixer {
     };
   }
 
+  // V2 [DONE]
   rpc ObservationsPoint(datacommons.v1.ObservationsPointRequest)
       returns (PointStat) {
     option (google.api.http) = {
@@ -424,6 +442,7 @@ service Mixer {
     };
   }
 
+  // V2 [DONE]
   rpc BulkObservationsPoint(datacommons.v1.BulkObservationsPointRequest)
       returns (datacommons.v1.BulkObservationsPointResponse) {
     option (google.api.http) = {
@@ -432,6 +451,7 @@ service Mixer {
     };
   }
 
+  // V2 [DONE]
   rpc BulkObservationsPointLinked(
       datacommons.v1.BulkObservationsPointLinkedRequest)
       returns (datacommons.v1.BulkObservationsPointResponse) {
@@ -444,6 +464,7 @@ service Mixer {
     };
   }
 
+  // V2 [DONE]
   rpc ObservationsSeries(datacommons.v1.ObservationsSeriesRequest)
       returns (datacommons.v1.ObservationsSeriesResponse) {
     option (google.api.http) = {
@@ -451,6 +472,7 @@ service Mixer {
     };
   }
 
+  // V2 [DONE]
   rpc BulkObservationsSeries(datacommons.v1.BulkObservationsSeriesRequest)
       returns (datacommons.v1.BulkObservationsSeriesResponse) {
     option (google.api.http) = {
@@ -459,6 +481,7 @@ service Mixer {
     };
   }
 
+  // V2 [DONE]
   rpc BulkObservationsSeriesLinked(
       datacommons.v1.BulkObservationsSeriesLinkedRequest)
       returns (datacommons.v1.BulkObservationsSeriesResponse) {
@@ -471,6 +494,7 @@ service Mixer {
     };
   }
 
+  // V2 [TODO]
   rpc DerivedObservationsSeries(datacommons.v1.DerivedObservationsSeriesRequest)
       returns (datacommons.v1.DerivedObservationsSeriesResponse) {
     option (google.api.http) = {
@@ -482,6 +506,7 @@ service Mixer {
     };
   }
 
+  // V2 [TODO]
   rpc BulkObservationDatesLinked(
       datacommons.v1.BulkObservationDatesLinkedRequest)
       returns (datacommons.v1.BulkObservationDatesLinkedResponse) {
@@ -494,6 +519,7 @@ service Mixer {
     };
   }
 
+  // V2 [TODO]
   rpc BulkObservationExistence(datacommons.v1.BulkObservationExistenceRequest)
       returns (datacommons.v1.BulkObservationExistenceResponse) {
     option (google.api.http) = {
@@ -502,12 +528,14 @@ service Mixer {
     };
   }
 
+  // V2 [TODO]
   rpc BioPage(datacommons.v1.BioPageRequest) returns (GraphNodes) {
     option (google.api.http) = {
       get : "/v1/internal/page/bio/{node=**}"
     };
   }
 
+  // V2 [TODO]
   rpc PlacePage(datacommons.v1.PlacePageRequest)
       returns (datacommons.v1.PlacePageResponse) {
     option (google.api.http) = {
@@ -516,6 +544,7 @@ service Mixer {
     };
   }
 
+  // V2 [TODO]
   rpc VariableAncestors(datacommons.v1.VariableAncestorsRequest)
       returns (datacommons.v1.VariableAncestorsResponse) {
     option (google.api.http) = {
@@ -523,6 +552,7 @@ service Mixer {
     };
   }
 
+  // V2 [TODO]
   // Get event collection for {eventType, affectedPlaceDcid, date}.
   // NOTE:
   // - The affectedPlaceDcid is only for top-level places:
@@ -536,6 +566,7 @@ service Mixer {
     };
   }
 
+  // V2 [TODO]
   // Get all dates for event collection for {eventType, affectedPlaceDcid}.
   // - The affectedPlaceDcid is only for top-level places:
   //   Earth, continent, country, state, adminArea1.
@@ -551,6 +582,7 @@ service Mixer {
 
   // ==================  RECON   RECON   RECON   RECON  ================
 
+  // V2 [TODO]
   // Resolve a list of entities, given their descriptions.
   rpc ResolveEntities(ResolveEntitiesRequest)
       returns (ResolveEntitiesResponse) {
@@ -560,6 +592,7 @@ service Mixer {
     };
   }
 
+  // V2 [TODO]
   // Resolve a list of places, given their latitude and longitude coordinates.
   rpc ResolveCoordinates(ResolveCoordinatesRequest)
       returns (ResolveCoordinatesResponse) {
@@ -569,6 +602,7 @@ service Mixer {
     };
   }
 
+  // V2 [TODO]
   // Resolve a list of IDs, given the input prop and output prop.
   rpc ResolveIds(ResolveIdsRequest) returns (ResolveIdsResponse) {
     option (google.api.http) = {
@@ -577,6 +611,7 @@ service Mixer {
     };
   }
 
+  // V2 [TODO]
   // Find entities from a description, with an optional filter on type.
   rpc FindEntities(FindEntitiesRequest) returns (FindEntitiesResponse) {
     option (google.api.http) = {
@@ -585,6 +620,7 @@ service Mixer {
     };
   }
 
+  // V2 [TODO]
   // Find entities from descriptions, with optional filters on types.
   rpc BulkFindEntities(BulkFindEntitiesRequest)
       returns (BulkFindEntitiesResponse) {
@@ -594,6 +630,7 @@ service Mixer {
     };
   }
 
+  // V2 [TODO]
   // Recognize places from a NL query.
   rpc RecognizePlaces(RecognizePlacesRequest)
       returns (RecognizePlacesResponse) {

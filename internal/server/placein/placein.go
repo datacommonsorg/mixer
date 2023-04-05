@@ -37,8 +37,8 @@ func GetPlacesIn(
 	if len(parentPlaces) == 0 || childPlaceType == "" {
 		return nil, status.Error(codes.InvalidArgument, "Missing required arguments")
 	}
-	if !util.CheckValidDCIDs(parentPlaces) {
-		return nil, status.Errorf(codes.InvalidArgument, "Invalid DCIDs")
+	if err := util.CheckValidDCIDs(parentPlaces); err != nil {
+		return nil, err
 	}
 
 	// Place relations are from base geo imports. Only trust the base cache.

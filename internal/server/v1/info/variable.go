@@ -32,8 +32,8 @@ func VariableInfo(
 	store *store.Store,
 ) (*pbv1.VariableInfoResponse, error) {
 	node := in.GetNode()
-	if !util.CheckValidDCIDs([]string{node}) {
-		return nil, status.Errorf(codes.InvalidArgument, "Invalid node")
+	if err := util.CheckValidDCIDs([]string{node}); err != nil {
+		return nil, err
 	}
 	statVarToSummary, err := statvar.GetStatVarSummaryHelper(ctx, []string{node}, store)
 	if err != nil {
@@ -56,8 +56,8 @@ func BulkVariableInfo(
 	if len(nodes) == 0 {
 		return nil, status.Error(codes.InvalidArgument, "Missing required arguments: nodes")
 	}
-	if !util.CheckValidDCIDs(nodes) {
-		return nil, status.Errorf(codes.InvalidArgument, "Invalid nodes")
+	if err := util.CheckValidDCIDs(nodes); err != nil {
+		return nil, err
 	}
 	statVarToSummary, err := statvar.GetStatVarSummaryHelper(ctx, nodes, store)
 	if err != nil {

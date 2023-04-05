@@ -34,10 +34,9 @@ func Variables(
 	store *store.Store,
 ) (*pbv1.VariablesResponse, error) {
 	entity := in.GetEntity()
-	if !util.CheckValidDCIDs([]string{entity}) {
-		return nil, status.Errorf(codes.InvalidArgument, "Invalid entity")
+	if err := util.CheckValidDCIDs([]string{entity}); err != nil {
+		return nil, err
 	}
-
 	entityToStatVars, err := statvar.GetEntityStatVarsHelper(ctx, []string{entity}, store)
 	if err != nil {
 		return nil, err
@@ -63,10 +62,9 @@ func BulkVariables(
 	if len(entities) == 0 {
 		return nil, status.Error(codes.InvalidArgument, "Missing required arguments: entities")
 	}
-	if !util.CheckValidDCIDs(entities) {
-		return nil, status.Errorf(codes.InvalidArgument, "Invalid entities")
+	if err := util.CheckValidDCIDs(entities); err != nil {
+		return nil, err
 	}
-
 	entityToStatVars, err := statvar.GetEntityStatVarsHelper(ctx, entities, store)
 	if err != nil {
 		return nil, err

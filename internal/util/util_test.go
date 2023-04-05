@@ -68,15 +68,15 @@ func TestSnakeToCamel(t *testing.T) {
 func TestCheckValidDCIDs(t *testing.T) {
 	for _, c := range []struct {
 		dcids []string
-		want  bool
+		valid bool
 	}{
 		{[]string{"abc", "geoId/12"}, true},
 		{[]string{"a bc"}, false},
 		{[]string{"abc "}, false},
 		{[]string{"abc,efd"}, false},
 	} {
-		if got := CheckValidDCIDs(c.dcids); got != c.want {
-			t.Errorf("CheckValidDCIDs(%v) = %v, want %v", c.dcids, got, c.want)
+		if err := CheckValidDCIDs(c.dcids); (err == nil) != c.valid {
+			t.Errorf("CheckValidDCIDs(%v) = %v, want %v", c.dcids, err, c.valid)
 		}
 	}
 }

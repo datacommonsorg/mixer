@@ -13,14 +13,12 @@
 # limitations under the License.
 
 # Build docker image used in Cloud Build for deployment.
-# This image contains "gcloud", "kubectl", "yq", "kustomize", "helm"
+# This image contains "gcloud", "kubectl", "yq" and "helm"
 
 FROM google/cloud-sdk:slim
 
 RUN \
     apt-get install kubectl && \
-    curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh"  | bash && \
-    mv kustomize /bin/ && \
     curl -L https://github.com/mikefarah/yq/releases/download/v4.27.3/yq_linux_386 -o /usr/bin/yq && \
     chmod +x /usr/bin/yq && \
     curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 && \

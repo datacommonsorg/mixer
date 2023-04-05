@@ -1,28 +1,12 @@
-# Data Commons Mixer Developer Guide
-
-The developement uses
-[Kustomize](https://kubectl.docs.kubernetes.io/guides/introduction/kustomize/)
-to manage yaml templating and composition. Detailed deploy folder structure can
-be found [here](../deploy/README.md).
-
-Local development uses [Skaffold](https://skaffold.dev) to manage the build,
-deploy and port forwarding.
+# Data Commons Local Mixer Developer Guide
 
 ## Prerequisite
 
 - Contact DataCommons team to get data access to Cloud Bigtable and BigQuery.
 
-- Install the following tools to develop mixer locally (with Docker):
+- Install the following tools
 
-  - [`Docker`](https://www.docker.com/products/docker-desktop)
-  - [`Minikube`](https://minikube.sigs.k8s.io/docs/start/)
-  - [`Skaffold`](https://skaffold.dev/docs/install/)
   - [`gcloud`](https://cloud.google.com/sdk/docs/install)
-  - [`kubectl`](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
-
-- If you prefer to do it locally without Docker, then need to install the
-  following:
-
   - [`Golang`](https://golang.org/doc/install)
   - [`protoc`](http://google.github.io/proto-lens/installing-protoc.html)
 
@@ -42,13 +26,7 @@ deploy and port forwarding.
   gcloud auth application-default login
   ```
 
-## Develop mixer locally as a Go server (Recommended)
-
-**NOTE** This can only develop and test the gRPC server. Since the
-[ESP](https://cloud.google.com/endpoints/docs/grpc/running-esp-localdev) is not
-brought up here, can not test the REST API.
-
-### Generate Go proto files
+## Generate Go proto files
 
 Install the following packages as a one-time action.
 
@@ -71,7 +49,7 @@ protoc \
   proto/*.proto proto/**/*.proto
 ```
 
-### Start Mixer as a gRPC server backed by Cloud BigTable (BigQuery)
+## Start Mixer as a gRPC server backed by Cloud BigTable (BigQuery)
 
 Run the following code to start mixer gRPC server (without branch cache)
 
@@ -88,7 +66,7 @@ go run --tags sqlite_fts5 cmd/main.go \
 go run examples/main.go
 ```
 
-### Start Mixer as a gRPC server backed by TMCF + CSV files
+## Start Mixer as a gRPC server backed by TMCF + CSV files
 
 Mixer can load and serve TMCF + CSV files. This is used for a private Data Commons
 instance. This requires to set the following flag
@@ -116,7 +94,7 @@ go run --tags sqlite_fts5 cmd/main.go \
     --use_branch_bt=false
 ```
 
-### Running ESP locally
+## Running ESP locally
 
 Mixer is a gRPC service but callers (website, API clients) are normally http
 clients. Therefore developing and testing mixer locally often requires both the
@@ -145,11 +123,7 @@ root to spin up envoy proxy. This exposes the http mixer service at
 envoy --config-path esp/envoy-config.yaml
 ```
 
-Mixer services in live clusters do not use envoy directly. To replicate the live
-k8s setup locally, please see [the guide
-below](#fully-replicating-mixer-k8s-setup-locally).
-
-### Update Go package dependencies
+## Update Go package dependencies
 
 To view possible updates:
 
@@ -164,19 +138,19 @@ go get -u ./...
 go mod tidy
 ```
 
-### Run Tests (Go)
+## Run Tests (Go)
 
 ```bash
 ./scripts/run_test.sh
 ```
 
-### Update e2e test golden files (Go)
+## Update e2e test golden files (Go)
 
 ```bash
 ./scripts/update_golden.sh
 ```
 
-### Run import group latency tests
+## Run import group latency tests
 
 In root directory, run:
 
@@ -184,7 +158,7 @@ In root directory, run:
 ./test/e2e/run_latency.sh
 ```
 
-### Profile a program
+## Profile a program
 
 Install [Graphgiz](https://graphviz.org/).
 
@@ -194,7 +168,7 @@ go tool pprof -png cpu.prof
 go tool pprof -png mem.prof
 ```
 
-### Profile Mixer Startup Memory
+## Profile Mixer Startup Memory
 
 Run the regular `go run cmd/main.go` command that you'd like to profile with the
 flag `--startup_memprof=<output_file_path>`. This will save the memory profile
@@ -217,7 +191,7 @@ go run --tags sqlite_fts5 cmd/main.go \
 go tool pprof -sample_index=alloc_space -png grpc.memprof
 ```
 
-### Profile API Requests against a Running Mixer Instance
+## Profile API Requests against a Running Mixer Instance
 
 Run the regular `go run cmd/main.go` command that you'd like to profile with the
 flag `--httpprof_port=<port, recommended 6060>`. This will run the mixer server
@@ -260,63 +234,4 @@ in interactive mode to run queries.
 # See net/http/pprof for other URLs and profiles available https://pkg.go.dev/net/http/pprof
 # with no flags specifying output, pprof goes into interactive mode
 go tool pprof -sample_index=alloc_space 127.0.0.1:6060/debug/pprof/heap?gc=1
-```
-
-## Fully replicating mixer k8s setup locally
-
-Mixer and [ESP](https://cloud.google.com/endpoints/docs/grpc/running-esp-localdev)
-is deployed on a local Minikube cluster.
-To avoid using Endpoints API management and talking to GCP,
-local deployment uses Json API configuration,
-which is compiled using [API Compiler](https://github.com/googleapis/api-compiler).
-
-### Start mixer in minikube
-
-Mixer in Minikube (local Kubernetes) brings up mixer with REST endpoints through
-ESP. This requires docker and minikube to be installed in local environment. To
-start Mixer in Minikube, run:
-
-```bash
-minikube start
-minikube addons enable gcp-auth
-eval $(minikube docker-env)
-kubectl config use-context minikube
-skaffold dev --port-forward -n mixer
-```
-
-This exposes the local mixer service at `localhost:8081`.
-
-To verify the server serving request:
-
-```bash
-curl http://localhost:8081/v1/bulk/observations/series?entities=geoId/06025&variables=Count_Person
-```
-
-After code edit, the container images are automatically rebuilt and re-deployed
-to the local cluster.
-
-Starting Mixer and ESP locally allows development that relies on a custom mixer.
-For example, Data Commons website local development may need a mixer with custom
-Bigtables. To do this, update
-[deploy/local/custom_bigtable_info.yaml](../deploy/local/custom_bigtable_info.yaml)
-and the local mixer would be able to serve the custom Bigtable.
-
-### Run Tests
-
-```bash
-./scripts/run_test.sh -d
-```
-
-### Update e2e test golden files
-
-```bash
-./scripts/update_golden.sh -d
-```
-
-## Update prod golden files
-
-Run the following commands to update prod golden files from staging golden files
-
-```bash
-./scripts/update_golden_prod.sh
 ```

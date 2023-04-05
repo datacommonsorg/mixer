@@ -35,8 +35,8 @@ func GetPropertyLabels(
 	if len(dcids) == 0 {
 		return nil, status.Errorf(codes.InvalidArgument, "Missing required arguments: dcids")
 	}
-	if !util.CheckValidDCIDs(dcids) {
-		return nil, status.Errorf(codes.InvalidArgument, "Invalid DCIDs")
+	if err := util.CheckValidDCIDs(dcids); err != nil {
+		return nil, err
 	}
 	data, err := node.GetPropertiesHelper(ctx, dcids, store)
 	if err != nil {
