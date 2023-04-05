@@ -227,6 +227,7 @@ func CamelToSnake(str string) string {
 func CheckValidDCIDs(dcids []string) bool {
 	for _, dcid := range dcids {
 		if dcid == "" || strings.Contains(dcid, " ") || strings.Contains(dcid, ",") {
+			log.Printf("CheckValidDCIDs failed with %s", dcid)
 			return false
 		}
 	}
