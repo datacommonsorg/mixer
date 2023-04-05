@@ -33,10 +33,9 @@ func GetStatVarSummary(
 	if len(statVars) == 0 {
 		return nil, status.Error(codes.InvalidArgument, "Missing required arguments: stat_vars")
 	}
-	if !util.CheckValidDCIDs(statVars) {
-		return nil, status.Errorf(codes.InvalidArgument, "Invalid stat_vars")
+	if err := util.CheckValidDCIDs(statVars); err != nil {
+		return nil, err
 	}
-
 	res, err := statvar.GetStatVarSummaryHelper(ctx, statVars, store)
 	if err != nil {
 		return nil, err

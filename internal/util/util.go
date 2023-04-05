@@ -224,14 +224,15 @@ func CamelToSnake(str string) string {
 }
 
 // CheckValidDCIDs checks if DCIDs are valid. More criteria will be added as being discovered.
-func CheckValidDCIDs(dcids []string) bool {
+func CheckValidDCIDs(dcids []string) error {
 	for _, dcid := range dcids {
 		if dcid == "" || strings.Contains(dcid, " ") || strings.Contains(dcid, ",") {
-			log.Printf("CheckValidDCIDs failed with %s", dcid)
-			return false
+			return status.Errorf(
+				codes.InvalidArgument,
+				"CheckValidDCIDs failed with invalid node: %s", dcid)
 		}
 	}
-	return true
+	return nil
 }
 
 // RandomString creates a random string with 16 runes.

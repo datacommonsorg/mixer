@@ -21,8 +21,6 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/biopage"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/util"
-	"google.golang.org/grpc/codes"
-	"google.golang.org/grpc/status"
 )
 
 // GetBioPageData implements API for Mixer.GetBioPageData.
@@ -30,8 +28,8 @@ func GetBioPageData(
 	ctx context.Context, in *pb.GetBioPageDataRequest, store *store.Store) (
 	*pb.GraphNodes, error) {
 	dcid := in.GetDcid()
-	if !util.CheckValidDCIDs([]string{dcid}) {
-		return nil, status.Errorf(codes.InvalidArgument, "Invalid dcid")
+	if err := util.CheckValidDCIDs([]string{dcid}); err != nil {
+		return nil, err
 	}
 	return biopage.GetBioPageDataHelper(ctx, dcid, store)
 }

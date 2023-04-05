@@ -50,9 +50,8 @@ func LinkedPropertyValues(
 		return nil, status.Errorf(
 			codes.InvalidArgument, "missing argument: value_node_type")
 	}
-	if !util.CheckValidDCIDs([]string{node}) {
-		return nil, status.Errorf(
-			codes.InvalidArgument, "invalid node %s", node)
+	if err := util.CheckValidDCIDs([]string{node}); err != nil {
+		return nil, err
 	}
 	resp, err := placein.GetPlacesIn(
 		ctx,
@@ -111,9 +110,8 @@ func BulkLinkedPropertyValues(
 		return nil, status.Errorf(
 			codes.InvalidArgument, "missing argument: value_node_type")
 	}
-	if !util.CheckValidDCIDs(nodes) {
-		return nil, status.Errorf(
-			codes.InvalidArgument, "invalid nodes %s", nodes)
+	if err := util.CheckValidDCIDs(nodes); err != nil {
+		return nil, err
 	}
 	resp, err := placein.GetPlacesIn(
 		ctx,

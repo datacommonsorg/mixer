@@ -54,9 +54,8 @@ func PropertyValues(
 		return nil, status.Errorf(
 			codes.InvalidArgument, "uri should be /v1/property/out/ or /v1/property/in/")
 	}
-	if !util.CheckValidDCIDs([]string{node}) {
-		return nil, status.Errorf(
-			codes.InvalidArgument, "invalid node %s", node)
+	if err := util.CheckValidDCIDs([]string{node}); err != nil {
+		return nil, err
 	}
 	data, pi, err := Fetch(
 		ctx,
@@ -105,9 +104,8 @@ func BulkPropertyValues(
 		return nil, status.Errorf(
 			codes.InvalidArgument, "uri should be /v1/bulk/property/out/** or /v1/bulk/property/in/**")
 	}
-	if !util.CheckValidDCIDs(nodes) {
-		return nil, status.Errorf(
-			codes.InvalidArgument, "invalid nodes: %s", nodes)
+	if err := util.CheckValidDCIDs(nodes); err != nil {
+		return nil, err
 	}
 	data, pi, err := Fetch(
 		ctx,

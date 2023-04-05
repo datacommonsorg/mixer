@@ -44,8 +44,8 @@ func GetTriples(
 	if len(dcids) == 0 {
 		return nil, status.Errorf(codes.InvalidArgument, "Missing argument: dcids")
 	}
-	if !util.CheckValidDCIDs(dcids) {
-		return nil, status.Errorf(codes.InvalidArgument, "Invalid DCIDs")
+	if err := util.CheckValidDCIDs(dcids); err != nil {
+		return nil, err
 	}
 
 	// Need to fetch additional information for observation node.

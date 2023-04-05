@@ -79,9 +79,8 @@ func Triples(
 		return nil, status.Errorf(
 			codes.InvalidArgument, "uri should be /v1/triples/out/ or /v1/triples/in/")
 	}
-	if !util.CheckValidDCIDs([]string{node}) {
-		return nil, status.Errorf(
-			codes.InvalidArgument, "invalid node %s", node)
+	if err := util.CheckValidDCIDs([]string{node}); err != nil {
+		return nil, err
 	}
 	if direction == util.DirectionOut && strings.HasPrefix(node, "dc/o/") {
 		resp, err := getObsTriples(ctx, store, metadata, []string{node})
@@ -151,11 +150,9 @@ func BulkTriples(
 		return nil, status.Errorf(
 			codes.InvalidArgument, "uri should be /v1/triples/out/ or /v1/triples/in/")
 	}
-	if !util.CheckValidDCIDs(dcids) {
-		return nil, status.Errorf(
-			codes.InvalidArgument, "invalid nodes %s", dcids)
+	if err := util.CheckValidDCIDs(dcids); err != nil {
+		return nil, err
 	}
-
 	// Need to fetch additional information for observation node.
 	var regularDcids, obsDcids []string
 	for _, dcid := range dcids {

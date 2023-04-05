@@ -47,8 +47,8 @@ func GetPropertyValues(
 	if len(dcids) == 0 {
 		return nil, status.Errorf(codes.InvalidArgument, "missing required arguments: dcids")
 	}
-	if !util.CheckValidDCIDs(dcids) {
-		return nil, status.Errorf(codes.InvalidArgument, "invalid DCIDs %s", dcids)
+	if err := util.CheckValidDCIDs(dcids); err != nil {
+		return nil, err
 	}
 
 	// Get in, out or both direction
