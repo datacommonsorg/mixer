@@ -101,8 +101,8 @@ func PlacePage(
 	store *store.Store,
 ) (*pbv1.PlacePageResponse, error) {
 	node := in.GetNode()
-	if !util.CheckValidDCIDs([]string{node}) {
-		return nil, status.Errorf(codes.InvalidArgument, "Invalid entity")
+	if err := util.CheckValidDCIDs([]string{node}); err != nil {
+		return nil, err
 	}
 	category := in.GetCategory()
 	if category == "" {

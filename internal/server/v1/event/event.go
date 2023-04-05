@@ -122,8 +122,8 @@ func Collection(
 	if in.GetEventType() == "" || in.GetDate() == "" {
 		return nil, status.Error(codes.InvalidArgument, "Missing required arguments")
 	}
-	if !util.CheckValidDCIDs([]string{in.GetAffectedPlaceDcid()}) {
-		return nil, status.Errorf(codes.InvalidArgument, "Invalid DCID")
+	if err := util.CheckValidDCIDs([]string{in.GetAffectedPlaceDcid()}); err != nil {
+		return nil, err
 	}
 	filterProp := in.GetFilterProp()
 	filterLowerLimit := in.GetFilterLowerLimit()
@@ -198,8 +198,8 @@ func CollectionDate(
 	if in.GetEventType() == "" {
 		return nil, status.Error(codes.InvalidArgument, "Missing required arguments")
 	}
-	if !util.CheckValidDCIDs([]string{in.GetAffectedPlaceDcid()}) {
-		return nil, status.Errorf(codes.InvalidArgument, "Invalid DCID")
+	if err := util.CheckValidDCIDs([]string{in.GetAffectedPlaceDcid()}); err != nil {
+		return nil, err
 	}
 
 	// Merge all the affected places in the final result.

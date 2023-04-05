@@ -54,8 +54,8 @@ func GetRelatedLocations(
 	if in.GetDcid() == "" || len(in.GetStatVarDcids()) == 0 {
 		return nil, status.Errorf(codes.InvalidArgument, "Missing required arguments")
 	}
-	if !util.CheckValidDCIDs([]string{in.GetDcid()}) {
-		return nil, status.Errorf(codes.InvalidArgument, "Invalid DCID")
+	if err := util.CheckValidDCIDs([]string{in.GetDcid()}); err != nil {
+		return nil, err
 	}
 
 	sameAncestor := (in.GetWithinPlace() != "")
