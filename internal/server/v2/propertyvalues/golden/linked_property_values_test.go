@@ -41,9 +41,14 @@ func TestLinkedPropertyValuesV2(t *testing.T) {
 			property   string
 		}{
 			{
-				"hawaii_cities.json",
-				[]string{"geoId/15"},
-				"<-containedInPlace+{typeOf:City}",
+				"USA_county.json",
+				[]string{"country/USA"},
+				"<-containedInPlace+{typeOf:County}",
+			},
+			{
+				"CA_county.json",
+				[]string{"geoId/06"},
+				"<-containedInPlace+{typeOf:County}",
 			},
 		} {
 			req := &pbv2.NodeRequest{

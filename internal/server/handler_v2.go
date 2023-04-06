@@ -65,27 +65,12 @@ func (s *Server) V2Node(
 				)
 			}
 
-			// Examples:
-			//   <-containedInPlace+{typeOf:City}
-			if arc.Wildcard != "" && arc.Wildcard != "+" {
-				return nil, status.Errorf(codes.InvalidArgument,
-					"only '+' wildcard is supported")
+			if arc.Wildcard == "+" && !arc.Out {
+				// Examples:
+				//   <-containedInPlace+{typeOf:City}
+				return v2pv.LinkedPropertyValues(
+					ctx, s.store, in.GetNodes(), arc.SingleProp, arc.Filter)
 			}
-			if arc.SingleProp != "containedInPlace" {
-				return nil, status.Errorf(codes.InvalidArgument,
-					"only containedInPlace is supported for wildcard '+'")
-			}
-			if arc.Out {
-				return nil, status.Errorf(codes.InvalidArgument,
-					"only in arc is supported for containedInPlace+")
-			}
-			placeType, ok := arc.Filter["typeOf"]
-			if !ok {
-				return nil, status.Errorf(codes.InvalidArgument,
-					"must provide typeOf filter for <-containedInPlace+")
-			}
-			return v2pv.LinkedPropertyValues(
-				ctx, s.store, in.GetNodes(), placeType)
 		} else { // arc.SingleProp == ""
 			if len(arc.BracketProps) == 0 {
 				// Examples:

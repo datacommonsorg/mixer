@@ -1,0 +1,186 @@
+{
+  "data": {
+    "geoId/06": {
+      "arcs": {
+        "containedInPlace+": {
+          "nodes": [
+            {
+              "dcid": "geoId/06001"
+            },
+            {
+              "dcid": "geoId/06003"
+            },
+            {
+              "dcid": "geoId/06005"
+            },
+            {
+              "dcid": "geoId/06007"
+            },
+            {
+              "dcid": "geoId/06009"
+            },
+            {
+              "dcid": "geoId/06011"
+            },
+            {
+              "dcid": "geoId/06013"
+            },
+            {
+              "dcid": "geoId/06015"
+            },
+            {
+              "dcid": "geoId/06017"
+            },
+            {
+              "dcid": "geoId/06019"
+            },
+            {
+              "dcid": "geoId/06021"
+            },
+            {
+              "dcid": "geoId/06023"
+            },
+            {
+              "dcid": "geoId/06025"
+            },
+            {
+              "dcid": "geoId/06027"
+            },
+            {
+              "dcid": "geoId/06029"
+            },
+            {
+              "dcid": "geoId/06031"
+            },
+            {
+              "dcid": "geoId/06033"
+            },
+            {
+              "dcid": "geoId/06035"
+            },
+            {
+              "dcid": "geoId/06037"
+            },
+            {
+              "dcid": "geoId/06039"
+            },
+            {
+              "dcid": "geoId/06041"
+            },
+            {
+              "dcid": "geoId/06043"
+            },
+            {
+              "dcid": "geoId/06045"
+            },
+            {
+              "dcid": "geoId/06047"
+            },
+            {
+              "dcid": "geoId/06049"
+            },
+            {
+              "dcid": "geoId/06051"
+            },
+            {
+              "dcid": "geoId/06053"
+            },
+            {
+              "dcid": "geoId/06055"
+            },
+            {
+              "dcid": "geoId/06057"
+            },
+            {
+              "dcid": "geoId/06059"
+            },
+            {
+              "dcid": "geoId/06061"
+            },
+            {
+              "dcid": "geoId/06063"
+            },
+            {
+              "dcid": "geoId/06065"
+            },
+            {
+              "dcid": "geoId/06067"
+            },
+            {
+              "dcid": "geoId/06069"
+            },
+            {
+              "dcid": "geoId/06071"
+            },
+            {
+              "dcid": "geoId/06073"
+            },
+            {
+              "dcid": "geoId/06075"
+            },
+            {
+              "dcid": "geoId/06077"
+            },
+            {
+              "dcid": "geoId/06079"
+            },
+            {
+              "dcid": "geoId/06081"
+            },
+            {
+              "dcid": "geoId/06083"
+            },
+            {
+              "dcid": "geoId/06085"
+            },
+            {
+              "dcid": "geoId/06087"
+            },
+            {
+              "dcid": "geoId/06089"
+            },
+            {
+              "dcid": "geoId/06091"
+            },
+            {
+              "dcid": "geoId/06093"
+            },
+            {
+              "dcid": "geoId/06095"
+            },
+            {
+              "dcid": "geoId/06097"
+            },
+            {
+              "dcid": "geoId/06099"
+            },
+            {
+              "dcid": "geoId/06101"
+            },
+            {
+              "dcid": "geoId/06103"
+            },
+            {
+              "dcid": "geoId/06105"
+            },
+            {
+              "dcid": "geoId/06107"
+            },
+            {
+              "dcid": "geoId/06109"
+            },
+            {
+              "dcid": "geoId/06111"
+            },
+            {
+              "dcid": "geoId/06113"
+            },
+            {
+              "dcid": "geoId/06115"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

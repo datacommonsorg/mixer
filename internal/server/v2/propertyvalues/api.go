@@ -22,6 +22,8 @@ import (
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/placein"
 	v1pv "github.com/datacommonsorg/mixer/internal/server/v1/propertyvalues"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 
 	"github.com/datacommonsorg/mixer/internal/store"
 )
@@ -64,8 +66,20 @@ func LinkedPropertyValues(
 	ctx context.Context,
 	store *store.Store,
 	nodes []string,
-	nodeType string,
+	linkedProperty string,
+	filter map[string]string,
 ) (*pbv2.NodeResponse, error) {
+	if linkedProperty != "containedInPlace" {
+		return nil, status.Errorf(codes.InvalidArgument,
+			"only containedInPlace is supported for wildcard '+'")
+	}
+
+	nodeType, ok := filter["typeOf"]
+	if !ok {
+		return nil, status.Errorf(codes.InvalidArgument,
+			"must provide typeOf filter for <-containedInPlace+")
+	}
+
 	data, err := placein.GetPlacesIn(
 		ctx,
 		store,
