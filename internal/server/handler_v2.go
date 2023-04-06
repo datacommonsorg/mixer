@@ -49,26 +49,36 @@ func (s *Server) V2Node(
 		if !arc.Out {
 			direction = util.DirectionIn
 		}
-		if arc.SingleProp == "" && len(arc.BracketProps) == 0 {
-			// Examples:
-			//   ->
-			//   <-
-			return v2p.API(ctx, s.store, in.GetNodes(), direction)
-		}
-		if arc.SingleProp != "" && arc.Wildcard == "" {
-			// Examples:
-			//   ->name
-			//   <-containedInPlace
-			return v2pv.API(
-				ctx,
-				s.store,
-				in.GetNodes(),
-				[]string{arc.SingleProp},
-				direction,
-				int(in.GetLimit()),
-				in.NextToken,
-			)
-		} else if len(arc.BracketProps) > 0 {
+		if arc.SingleProp != "" {
+			if arc.Wildcard == "" {
+				// Examples:
+				//   ->name
+				//   <-containedInPlace
+				return v2pv.API(
+					ctx,
+					s.store,
+					in.GetNodes(),
+					[]string{arc.SingleProp},
+					direction,
+					int(in.GetLimit()),
+					in.NextToken,
+				)
+			}
+
+			if arc.Wildcard == "+" && !arc.Out {
+				// Examples:
+				//   <-containedInPlace+{typeOf:City}
+				return v2pv.LinkedPropertyValues(
+					ctx, s.store, in.GetNodes(), arc.SingleProp, arc.Filter)
+			}
+		} else { // arc.SingleProp == ""
+			if len(arc.BracketProps) == 0 {
+				// Examples:
+				//   ->
+				//   <-
+				return v2p.API(ctx, s.store, in.GetNodes(), direction)
+			}
+
 			// Examples:
 			//   ->[name, address]
 			return v2pv.API(

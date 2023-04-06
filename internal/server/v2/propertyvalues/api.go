@@ -18,8 +18,12 @@ package propertyvalues
 import (
 	"context"
 
+	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	"github.com/datacommonsorg/mixer/internal/server/placein"
 	v1pv "github.com/datacommonsorg/mixer/internal/server/v1/propertyvalues"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 
 	"github.com/datacommonsorg/mixer/internal/store"
 )
@@ -55,5 +59,55 @@ func API(
 			}
 		}
 	}
+	return res, nil
+}
+
+// LinkedPropertyValues is the V2 linked property values API implementation entry point.
+func LinkedPropertyValues(
+	ctx context.Context,
+	store *store.Store,
+	nodes []string,
+	linkedProperty string,
+	filter map[string]string,
+) (*pbv2.NodeResponse, error) {
+	if linkedProperty != "containedInPlace" {
+		return nil, status.Errorf(codes.InvalidArgument,
+			"only containedInPlace is supported for wildcard '+'")
+	}
+
+	nodeType, ok := filter["typeOf"]
+	if !ok {
+		return nil, status.Errorf(codes.InvalidArgument,
+			"must provide typeOf filter for <-containedInPlace+")
+	}
+
+	data, err := placein.GetPlacesIn(
+		ctx,
+		store,
+		nodes,
+		nodeType,
+	)
+	if err != nil {
+		return nil, err
+	}
+
+	res := &pbv2.NodeResponse{Data: map[string]*pbv2.LinkedGraph{}}
+	for _, node := range nodes {
+		list := []*pb.EntityInfo{}
+
+		dcids, ok := data[node]
+		if ok && len(dcids) > 0 {
+			for _, dcid := range dcids {
+				list = append(list, &pb.EntityInfo{Dcid: dcid})
+			}
+		}
+
+		res.Data[node] = &pbv2.LinkedGraph{
+			Arcs: map[string]*pbv2.Nodes{
+				"containedInPlace+": {Nodes: list},
+			},
+		}
+	}
+
 	return res, nil
 }
