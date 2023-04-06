@@ -62,6 +62,7 @@ func API(
 	return res, nil
 }
 
+// LinkedPropertyValues is the V2 linked property values API implementation entry point.
 func LinkedPropertyValues(
 	ctx context.Context,
 	store *store.Store,
