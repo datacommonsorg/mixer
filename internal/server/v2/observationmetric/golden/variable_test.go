@@ -40,7 +40,7 @@ func TestVariableMetric(t *testing.T) {
 			goldenFile string
 		}{
 			{
-				[]string{"country/CHN", "wikidataId/Q1951", "fake_place"},
+				[]string{"wikidataId/Q506877", "wikidataId/Q1951", "fake_place"},
 				"result.json",
 			},
 		} {
