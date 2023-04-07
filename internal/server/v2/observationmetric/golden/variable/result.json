@@ -1,599 +1,599 @@
 {
-  "observations_by_variable": {
+  "by_variable": {
     "Area_FireEvent": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {},
         "wikidataId/Q506877": {}
       }
     },
     "Area_FloodEvent": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {},
         "wikidataId/Q506877": {}
       }
     },
     "Count_ColdTemperatureEvent": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {},
         "wikidataId/Q506877": {}
       }
     },
     "Count_Death_AgeAdjusted_AsAFractionOf_Count_Person": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Death_AsAFractionOfCount_Person": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Death_Female_AgeAdjusted_AsAFractionOf_Count_Person_Female": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Death_Female_AsAFractionOf_Count_Person_Female": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Death_LessThan1Year_AsAFractionOf_Count_BirthEvent": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Death_LessThan1Year_Female_AsAFractionOf_Count_BirthEvent_Female": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Death_LessThan1Year_Male_AsAFractionOf_Count_BirthEvent_Male": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Death_Male_AgeAdjusted_AsAFractionOf_Count_Person_Male": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Death_Male_AsAFractionOf_Count_Person_Male": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Death_Upto14Years_AsAFractionOf_Count_Person_Upto14Years": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Death_Upto14Years_Female_AsAFractionOf_Count_Person_Upto14Years_Female": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Death_Upto14Years_Male_AsAFractionOf_Count_Person_Upto14Years_Male": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_FireEvent": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {},
         "wikidataId/Q506877": {}
       }
     },
     "Count_FloodEvent": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {},
         "wikidataId/Q506877": {}
       }
     },
     "Count_HeatTemperatureEvent": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {},
         "wikidataId/Q506877": {}
       }
     },
     "Count_Person": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {},
         "wikidataId/Q506877": {}
       }
     },
     "Count_Person_10To14Years": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_10To14Years_Female": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_10To14Years_Male": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_15To19Years": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_15To19Years_Female": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_15To19Years_Male": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_15To64Years": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_15To64Years_Female": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_15To64Years_Male": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_20To24Years": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_20To24Years_Female": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_20To24Years_Male": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_25To29Years": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_25To29Years_Female": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_25To29Years_Male": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_25To34Years": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_25To34Years_Female": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_25To34Years_Male": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_30To34Years": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_30To34Years_Female": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_30To34Years_Male": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_35To39Years": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_35To39Years_Female": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_35To39Years_Male": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_35To44Years": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_35To44Years_Female": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_35To44Years_Male": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_40To44Years": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_40To44Years_Female": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_40To44Years_Male": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_45To49Years": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_45To49Years_Female": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_45To49Years_Male": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_45To54Years": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_45To54Years_Female": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_45To54Years_Male": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_50To54Years": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_50To54Years_Female": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_50To54Years_Male": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_55To59Years": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_55To59Years_Female": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_55To59Years_Male": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_55To64Years": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_55To64Years_Female": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_55To64Years_Male": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_5To9Years": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_5To9Years_Female": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_5To9Years_Male": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_60To64Years": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_60To64Years_Female": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_60To64Years_Male": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_65OrMoreYears": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_65OrMoreYears_Female": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_65OrMoreYears_Male": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_65To69Years": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_65To69Years_Female": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_65To69Years_Male": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_65To74Years": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_70To74Years": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_70To74Years_Female": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_70To74Years_Male": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_75OrMoreYears": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_75OrMoreYears_Female": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_75OrMoreYears_Male": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_75To79Years": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_75To79Years_Female": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_75To79Years_Male": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_80OrMoreYears": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_80OrMoreYears_Female": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_80OrMoreYears_Male": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_Female": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_Male": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_PerArea": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_Upto14Years": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_Upto14Years_Female": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_Upto14Years_Male": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_Upto4Years": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_Upto4Years_Female": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Person_Upto4Years_Male": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "LifeExpectancy_Person": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "LifeExpectancy_Person_Female": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "LifeExpectancy_Person_Male": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Max_Rainfall": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q506877": {}
       }
     },
     "Max_Snowfall": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q506877": {}
       }
     },
     "Max_Temperature": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q506877": {}
       }
     },
     "Mean_BarometricPressure": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q506877": {}
       }
     },
     "Mean_Rainfall": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q506877": {}
       }
     },
     "Mean_Snowfall": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q506877": {}
       }
     },
     "Mean_Temperature": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q506877": {}
       }
     },
     "Mean_Visibility": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q506877": {}
       }
     },
     "Min_Rainfall": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q506877": {}
       }
     },
     "Min_Snowfall": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q506877": {}
       }
     },
     "Min_Temperature": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q506877": {}
       }
     },
     "dc/5by90fh61z2s4": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "dc/6zsphg3yq6znf": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "dc/nf9577mjqs69g": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "dc/x73k9t2mzzcs2": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "dc/xh9d9e2le1r41": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "minimumWage": {
-      "observations_by_entity": {
+      "by_entity": {
         "wikidataId/Q1951": {}
       }
     }

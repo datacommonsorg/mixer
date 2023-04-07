@@ -23,13 +23,13 @@ import "stat.proto";
 // Holds all observations of a particular variable.
 message VariableObservation {
   // Keyed by entity DCID
-  map<string, EntityObservation> observations_by_entity = 1;
+  map<string, EntityObservation> by_entity = 1;
 }
 
 //
 message EntityObservation {
   // Facet are orderred by preference.
-  repeated FacetObservation ordered_facet_observations = 1;
+  repeated FacetObservation ordered_facets = 1;
 }
 
 message FacetObservation {
@@ -66,7 +66,7 @@ message ObservationRequest {
 
 message ObservationResponse {
   // Keyed by variable DCID
-  map<string, VariableObservation> observations_by_variable = 1;
+  map<string, VariableObservation> by_variable = 1;
   // Keyed by facet ID
   map<string, datacommons.Facet> facets = 2;
 }

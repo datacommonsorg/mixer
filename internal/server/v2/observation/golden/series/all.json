@@ -1,9 +1,9 @@
 {
-  "observations_by_variable": {
+  "by_variable": {
     "Count_Person": {
-      "observations_by_entity": {
+      "by_entity": {
         "country/FRA": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "858679853",
               "observations": [
@@ -901,7 +901,7 @@
           ]
         },
         "country/USA": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "2176550201",
               "observations": [
@@ -2622,7 +2622,7 @@
         },
         "dummy": {},
         "geoId/06": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "2176550201",
               "observations": [
@@ -4040,7 +4040,7 @@
           ]
         },
         "geoId/0649670": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "2176550201",
               "observations": [
@@ -4425,12 +4425,12 @@
       }
     },
     "Count_Person_FoodInsecure": {
-      "observations_by_entity": {
+      "by_entity": {
         "country/FRA": {},
         "country/USA": {},
         "dummy": {},
         "geoId/06": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "180485622",
               "observations": [
@@ -4450,10 +4450,10 @@
       }
     },
     "CumulativeCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase": {
-      "observations_by_entity": {
+      "by_entity": {
         "country/FRA": {},
         "country/USA": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "2232540893",
               "observations": [
@@ -9095,7 +9095,7 @@
         },
         "dummy": {},
         "geoId/06": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "2232540893",
               "observations": [
@@ -13723,7 +13723,7 @@
       }
     },
     "dummy": {
-      "observations_by_entity": {
+      "by_entity": {
         "country/FRA": {},
         "country/USA": {},
         "dummy": {},

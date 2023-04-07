@@ -27,7 +27,7 @@ import (
 	"google.golang.org/protobuf/testing/protocmp"
 )
 
-func TestVariableMetric(t *testing.T) {
+func TestVariable(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
 

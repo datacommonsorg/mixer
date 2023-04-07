@@ -1,9 +1,9 @@
 {
-  "observations_by_variable": {
+  "by_variable": {
     "Annual_Emissions_GreenhouseGas_NonBiogenic": {
-      "observations_by_entity": {
+      "by_entity": {
         "epaGhgrpFacilityId/1000005": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -16,7 +16,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000033": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -29,7 +29,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000046": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -42,7 +42,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000051": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -55,7 +55,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000058": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -68,7 +68,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000064": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -81,7 +81,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000065": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -94,7 +94,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000066": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -107,7 +107,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000067": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -120,7 +120,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000070": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -133,7 +133,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000072": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -146,7 +146,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000074": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -159,7 +159,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000075": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -172,7 +172,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000080": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -185,7 +185,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000081": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -198,7 +198,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000082": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -211,7 +211,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000102": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -224,7 +224,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000122": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -237,7 +237,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000123": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -250,7 +250,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000128": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -263,7 +263,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000130": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -276,7 +276,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000133": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -289,7 +289,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000147": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -302,7 +302,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000161": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -315,7 +315,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000175": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -328,7 +328,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000224": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -341,7 +341,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000279": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -354,7 +354,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000280": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -367,7 +367,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000283": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -380,7 +380,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000289": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -393,7 +393,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000300": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -406,7 +406,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000310": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -419,7 +419,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000314": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -432,7 +432,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000321": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -445,7 +445,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000323": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -458,7 +458,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000339": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -471,7 +471,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000341": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -484,7 +484,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000366": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -497,7 +497,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000367": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -510,7 +510,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000368": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -523,7 +523,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000369": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -536,7 +536,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000410": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -549,7 +549,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000422": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -562,7 +562,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000423": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -575,7 +575,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000431": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -588,7 +588,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000438": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -601,7 +601,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000439": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -614,7 +614,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000447": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -627,7 +627,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000453": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -640,7 +640,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000457": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -653,7 +653,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000458": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -666,7 +666,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000464": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -679,7 +679,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000469": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -692,7 +692,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000471": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -705,7 +705,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000485": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -718,7 +718,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000490": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -731,7 +731,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000501": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -744,7 +744,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000506": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -757,7 +757,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000507": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -770,7 +770,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000515": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -783,7 +783,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000516": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -796,7 +796,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000517": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -809,7 +809,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000518": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -822,7 +822,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000519": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -835,7 +835,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000541": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -848,7 +848,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000545": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -861,7 +861,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000546": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -874,7 +874,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000548": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -887,7 +887,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000549": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -900,7 +900,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000560": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -913,7 +913,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000566": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -926,7 +926,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000572": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -939,7 +939,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000594": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -952,7 +952,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000596": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -965,7 +965,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000597": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -978,7 +978,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000617": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -991,7 +991,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000796": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -1004,7 +1004,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000806": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -1017,7 +1017,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000891": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -1030,7 +1030,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000903": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -1043,7 +1043,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000904": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -1056,7 +1056,7 @@
           ]
         },
         "epaGhgrpFacilityId/1000907": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -1069,7 +1069,7 @@
           ]
         },
         "epaGhgrpFacilityId/1001003": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -1082,7 +1082,7 @@
           ]
         },
         "epaGhgrpFacilityId/1001107": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -1095,7 +1095,7 @@
           ]
         },
         "epaGhgrpFacilityId/1001127": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -1108,7 +1108,7 @@
           ]
         },
         "epaGhgrpFacilityId/1001129": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -1121,7 +1121,7 @@
           ]
         },
         "epaGhgrpFacilityId/1001130": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -1134,7 +1134,7 @@
           ]
         },
         "epaGhgrpFacilityId/1001134": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -1147,7 +1147,7 @@
           ]
         },
         "epaGhgrpFacilityId/1001263": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -1160,7 +1160,7 @@
           ]
         },
         "epaGhgrpFacilityId/1001320": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -1173,7 +1173,7 @@
           ]
         },
         "epaGhgrpFacilityId/1001339": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -1186,7 +1186,7 @@
           ]
         },
         "epaGhgrpFacilityId/1001366": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -1199,7 +1199,7 @@
           ]
         },
         "epaGhgrpFacilityId/1001405": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -1212,7 +1212,7 @@
           ]
         },
         "epaGhgrpFacilityId/1001439": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -1225,7 +1225,7 @@
           ]
         },
         "epaGhgrpFacilityId/1001440": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -1238,7 +1238,7 @@
           ]
         },
         "epaGhgrpFacilityId/1001441": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -1251,7 +1251,7 @@
           ]
         },
         "epaGhgrpFacilityId/1001442": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -1264,7 +1264,7 @@
           ]
         },
         "epaGhgrpFacilityId/1001444": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -1277,7 +1277,7 @@
           ]
         },
         "epaGhgrpFacilityId/1001445": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -1290,7 +1290,7 @@
           ]
         },
         "epaGhgrpFacilityId/1001446": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -1303,7 +1303,7 @@
           ]
         },
         "epaGhgrpFacilityId/1001447": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -1316,7 +1316,7 @@
           ]
         },
         "epaGhgrpFacilityId/1001448": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -1329,7 +1329,7 @@
           ]
         },
         "epaGhgrpFacilityId/1001449": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -1342,7 +1342,7 @@
           ]
         },
         "epaGhgrpFacilityId/1001450": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -1355,7 +1355,7 @@
           ]
         },
         "epaGhgrpFacilityId/1001451": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -1368,7 +1368,7 @@
           ]
         },
         "epaGhgrpFacilityId/1001454": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -1381,7 +1381,7 @@
           ]
         },
         "epaGhgrpFacilityId/1001455": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -1394,7 +1394,7 @@
           ]
         },
         "epaGhgrpFacilityId/1001456": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -1407,7 +1407,7 @@
           ]
         },
         "epaGhgrpFacilityId/1001457": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -1420,7 +1420,7 @@
           ]
         },
         "epaGhgrpFacilityId/1001458": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -1433,7 +1433,7 @@
           ]
         },
         "epaGhgrpFacilityId/1001459": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -1446,7 +1446,7 @@
           ]
         },
         "epaGhgrpFacilityId/1001625": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -1459,7 +1459,7 @@
           ]
         },
         "epaGhgrpFacilityId/1001629": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -1472,7 +1472,7 @@
           ]
         },
         "epaGhgrpFacilityId/1001667": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -1485,7 +1485,7 @@
           ]
         },
         "epaGhgrpFacilityId/1001691": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -1498,7 +1498,7 @@
           ]
         },
         "epaGhgrpFacilityId/1001698": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -1511,7 +1511,7 @@
           ]
         },
         "epaGhgrpFacilityId/1001700": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -1524,7 +1524,7 @@
           ]
         },
         "epaGhgrpFacilityId/1001718": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -1537,7 +1537,7 @@
           ]
         },
         "epaGhgrpFacilityId/1001719": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -1550,7 +1550,7 @@
           ]
         },
         "epaGhgrpFacilityId/1001735": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -1563,7 +1563,7 @@
           ]
         },
         "epaGhgrpFacilityId/1001804": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -1576,7 +1576,7 @@
           ]
         },
         "epaGhgrpFacilityId/1001819": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -1589,7 +1589,7 @@
           ]
         },
         "epaGhgrpFacilityId/1001886": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -1602,7 +1602,7 @@
           ]
         },
         "epaGhgrpFacilityId/1001964": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -1615,7 +1615,7 @@
           ]
         },
         "epaGhgrpFacilityId/1001971": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -1628,7 +1628,7 @@
           ]
         },
         "epaGhgrpFacilityId/1001983": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -1641,7 +1641,7 @@
           ]
         },
         "epaGhgrpFacilityId/1001984": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -1654,7 +1654,7 @@
           ]
         },
         "epaGhgrpFacilityId/1001998": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -1667,7 +1667,7 @@
           ]
         },
         "epaGhgrpFacilityId/1002007": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -1680,7 +1680,7 @@
           ]
         },
         "epaGhgrpFacilityId/1002053": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -1693,7 +1693,7 @@
           ]
         },
         "epaGhgrpFacilityId/1002104": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -1706,7 +1706,7 @@
           ]
         },
         "epaGhgrpFacilityId/1002106": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -1719,7 +1719,7 @@
           ]
         },
         "epaGhgrpFacilityId/1002107": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -1732,7 +1732,7 @@
           ]
         },
         "epaGhgrpFacilityId/1002121": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -1745,7 +1745,7 @@
           ]
         },
         "epaGhgrpFacilityId/1002122": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -1758,7 +1758,7 @@
           ]
         },
         "epaGhgrpFacilityId/1002123": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -1771,7 +1771,7 @@
           ]
         },
         "epaGhgrpFacilityId/1002134": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -1784,7 +1784,7 @@
           ]
         },
         "epaGhgrpFacilityId/1002152": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -1797,7 +1797,7 @@
           ]
         },
         "epaGhgrpFacilityId/1002155": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -1810,7 +1810,7 @@
           ]
         },
         "epaGhgrpFacilityId/1002156": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -1823,7 +1823,7 @@
           ]
         },
         "epaGhgrpFacilityId/1002185": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -1836,7 +1836,7 @@
           ]
         },
         "epaGhgrpFacilityId/1002205": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -1849,7 +1849,7 @@
           ]
         },
         "epaGhgrpFacilityId/1002224": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -1862,7 +1862,7 @@
           ]
         },
         "epaGhgrpFacilityId/1002230": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -1875,7 +1875,7 @@
           ]
         },
         "epaGhgrpFacilityId/1002231": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -1888,7 +1888,7 @@
           ]
         },
         "epaGhgrpFacilityId/1002237": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -1901,7 +1901,7 @@
           ]
         },
         "epaGhgrpFacilityId/1002257": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -1914,7 +1914,7 @@
           ]
         },
         "epaGhgrpFacilityId/1002261": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -1927,7 +1927,7 @@
           ]
         },
         "epaGhgrpFacilityId/1002271": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -1940,7 +1940,7 @@
           ]
         },
         "epaGhgrpFacilityId/1002286": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -1953,7 +1953,7 @@
           ]
         },
         "epaGhgrpFacilityId/1002308": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -1966,7 +1966,7 @@
           ]
         },
         "epaGhgrpFacilityId/1002315": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -1979,7 +1979,7 @@
           ]
         },
         "epaGhgrpFacilityId/1002316": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -1992,7 +1992,7 @@
           ]
         },
         "epaGhgrpFacilityId/1002317": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -2005,7 +2005,7 @@
           ]
         },
         "epaGhgrpFacilityId/1002320": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -2018,7 +2018,7 @@
           ]
         },
         "epaGhgrpFacilityId/1002338": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -2031,7 +2031,7 @@
           ]
         },
         "epaGhgrpFacilityId/1002384": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -2044,7 +2044,7 @@
           ]
         },
         "epaGhgrpFacilityId/1002394": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -2057,7 +2057,7 @@
           ]
         },
         "epaGhgrpFacilityId/1002431": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -2070,7 +2070,7 @@
           ]
         },
         "epaGhgrpFacilityId/1002435": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -2083,7 +2083,7 @@
           ]
         },
         "epaGhgrpFacilityId/1002461": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -2096,7 +2096,7 @@
           ]
         },
         "epaGhgrpFacilityId/1002541": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -2109,7 +2109,7 @@
           ]
         },
         "epaGhgrpFacilityId/1002543": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -2122,7 +2122,7 @@
           ]
         },
         "epaGhgrpFacilityId/1002565": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -2135,7 +2135,7 @@
           ]
         },
         "epaGhgrpFacilityId/1002566": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -2148,7 +2148,7 @@
           ]
         },
         "epaGhgrpFacilityId/1002591": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -2161,7 +2161,7 @@
           ]
         },
         "epaGhgrpFacilityId/1002597": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -2174,7 +2174,7 @@
           ]
         },
         "epaGhgrpFacilityId/1002634": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -2187,7 +2187,7 @@
           ]
         },
         "epaGhgrpFacilityId/1002640": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -2200,7 +2200,7 @@
           ]
         },
         "epaGhgrpFacilityId/1002671": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -2213,7 +2213,7 @@
           ]
         },
         "epaGhgrpFacilityId/1002689": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -2226,7 +2226,7 @@
           ]
         },
         "epaGhgrpFacilityId/1002692": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -2239,7 +2239,7 @@
           ]
         },
         "epaGhgrpFacilityId/1002726": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -2252,7 +2252,7 @@
           ]
         },
         "epaGhgrpFacilityId/1002728": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -2265,7 +2265,7 @@
           ]
         },
         "epaGhgrpFacilityId/1002734": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -2278,7 +2278,7 @@
           ]
         },
         "epaGhgrpFacilityId/1002759": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -2291,7 +2291,7 @@
           ]
         },
         "epaGhgrpFacilityId/1002820": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -2304,7 +2304,7 @@
           ]
         },
         "epaGhgrpFacilityId/1002821": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -2317,7 +2317,7 @@
           ]
         },
         "epaGhgrpFacilityId/1002867": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -2330,7 +2330,7 @@
           ]
         },
         "epaGhgrpFacilityId/1002869": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -2343,7 +2343,7 @@
           ]
         },
         "epaGhgrpFacilityId/1002874": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -2356,7 +2356,7 @@
           ]
         },
         "epaGhgrpFacilityId/1002886": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -2369,7 +2369,7 @@
           ]
         },
         "epaGhgrpFacilityId/1002896": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -2382,7 +2382,7 @@
           ]
         },
         "epaGhgrpFacilityId/1002897": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -2395,7 +2395,7 @@
           ]
         },
         "epaGhgrpFacilityId/1002898": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -2408,7 +2408,7 @@
           ]
         },
         "epaGhgrpFacilityId/1002978": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -2421,7 +2421,7 @@
           ]
         },
         "epaGhgrpFacilityId/1002981": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -2434,7 +2434,7 @@
           ]
         },
         "epaGhgrpFacilityId/1002984": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -2447,7 +2447,7 @@
           ]
         },
         "epaGhgrpFacilityId/1002985": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -2460,7 +2460,7 @@
           ]
         },
         "epaGhgrpFacilityId/1002992": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -2473,7 +2473,7 @@
           ]
         },
         "epaGhgrpFacilityId/1003016": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -2486,7 +2486,7 @@
           ]
         },
         "epaGhgrpFacilityId/1003056": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -2499,7 +2499,7 @@
           ]
         },
         "epaGhgrpFacilityId/1003175": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -2512,7 +2512,7 @@
           ]
         },
         "epaGhgrpFacilityId/1003182": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -2525,7 +2525,7 @@
           ]
         },
         "epaGhgrpFacilityId/1003187": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -2538,7 +2538,7 @@
           ]
         },
         "epaGhgrpFacilityId/1003198": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -2551,7 +2551,7 @@
           ]
         },
         "epaGhgrpFacilityId/1003199": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -2564,7 +2564,7 @@
           ]
         },
         "epaGhgrpFacilityId/1003200": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -2577,7 +2577,7 @@
           ]
         },
         "epaGhgrpFacilityId/1003202": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -2590,7 +2590,7 @@
           ]
         },
         "epaGhgrpFacilityId/1003328": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -2603,7 +2603,7 @@
           ]
         },
         "epaGhgrpFacilityId/1003340": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -2616,7 +2616,7 @@
           ]
         },
         "epaGhgrpFacilityId/1003344": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -2629,7 +2629,7 @@
           ]
         },
         "epaGhgrpFacilityId/1003361": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -2642,7 +2642,7 @@
           ]
         },
         "epaGhgrpFacilityId/1003386": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -2655,7 +2655,7 @@
           ]
         },
         "epaGhgrpFacilityId/1003395": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -2668,7 +2668,7 @@
           ]
         },
         "epaGhgrpFacilityId/1003459": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -2681,7 +2681,7 @@
           ]
         },
         "epaGhgrpFacilityId/1003490": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -2694,7 +2694,7 @@
           ]
         },
         "epaGhgrpFacilityId/1003599": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -2707,7 +2707,7 @@
           ]
         },
         "epaGhgrpFacilityId/1003610": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -2720,7 +2720,7 @@
           ]
         },
         "epaGhgrpFacilityId/1003617": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -2733,7 +2733,7 @@
           ]
         },
         "epaGhgrpFacilityId/1003618": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -2746,7 +2746,7 @@
           ]
         },
         "epaGhgrpFacilityId/1003632": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -2759,7 +2759,7 @@
           ]
         },
         "epaGhgrpFacilityId/1003636": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -2772,7 +2772,7 @@
           ]
         },
         "epaGhgrpFacilityId/1003641": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -2785,7 +2785,7 @@
           ]
         },
         "epaGhgrpFacilityId/1003644": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -2798,7 +2798,7 @@
           ]
         },
         "epaGhgrpFacilityId/1003662": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -2811,7 +2811,7 @@
           ]
         },
         "epaGhgrpFacilityId/1003663": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -2824,7 +2824,7 @@
           ]
         },
         "epaGhgrpFacilityId/1003664": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -2837,7 +2837,7 @@
           ]
         },
         "epaGhgrpFacilityId/1003665": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -2850,7 +2850,7 @@
           ]
         },
         "epaGhgrpFacilityId/1003679": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -2863,7 +2863,7 @@
           ]
         },
         "epaGhgrpFacilityId/1003680": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -2876,7 +2876,7 @@
           ]
         },
         "epaGhgrpFacilityId/1003689": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -2889,7 +2889,7 @@
           ]
         },
         "epaGhgrpFacilityId/1003690": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -2902,7 +2902,7 @@
           ]
         },
         "epaGhgrpFacilityId/1003702": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -2915,7 +2915,7 @@
           ]
         },
         "epaGhgrpFacilityId/1003748": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -2928,7 +2928,7 @@
           ]
         },
         "epaGhgrpFacilityId/1003756": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -2941,7 +2941,7 @@
           ]
         },
         "epaGhgrpFacilityId/1003800": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -2954,7 +2954,7 @@
           ]
         },
         "epaGhgrpFacilityId/1003813": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -2967,7 +2967,7 @@
           ]
         },
         "epaGhgrpFacilityId/1003814": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -2980,7 +2980,7 @@
           ]
         },
         "epaGhgrpFacilityId/1003831": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -2993,7 +2993,7 @@
           ]
         },
         "epaGhgrpFacilityId/1003918": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -3006,7 +3006,7 @@
           ]
         },
         "epaGhgrpFacilityId/1003978": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -3019,7 +3019,7 @@
           ]
         },
         "epaGhgrpFacilityId/1003980": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -3032,7 +3032,7 @@
           ]
         },
         "epaGhgrpFacilityId/1003998": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -3045,7 +3045,7 @@
           ]
         },
         "epaGhgrpFacilityId/1004001": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -3058,7 +3058,7 @@
           ]
         },
         "epaGhgrpFacilityId/1004004": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -3071,7 +3071,7 @@
           ]
         },
         "epaGhgrpFacilityId/1004010": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -3084,7 +3084,7 @@
           ]
         },
         "epaGhgrpFacilityId/1004011": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -3097,7 +3097,7 @@
           ]
         },
         "epaGhgrpFacilityId/1004037": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -3110,7 +3110,7 @@
           ]
         },
         "epaGhgrpFacilityId/1004046": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -3123,7 +3123,7 @@
           ]
         },
         "epaGhgrpFacilityId/1004051": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -3136,7 +3136,7 @@
           ]
         },
         "epaGhgrpFacilityId/1004052": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -3149,7 +3149,7 @@
           ]
         },
         "epaGhgrpFacilityId/1004058": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -3162,7 +3162,7 @@
           ]
         },
         "epaGhgrpFacilityId/1004068": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -3175,7 +3175,7 @@
           ]
         },
         "epaGhgrpFacilityId/1004069": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -3188,7 +3188,7 @@
           ]
         },
         "epaGhgrpFacilityId/1004123": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -3201,7 +3201,7 @@
           ]
         },
         "epaGhgrpFacilityId/1004186": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -3214,7 +3214,7 @@
           ]
         },
         "epaGhgrpFacilityId/1004193": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -3227,7 +3227,7 @@
           ]
         },
         "epaGhgrpFacilityId/1004205": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -3240,7 +3240,7 @@
           ]
         },
         "epaGhgrpFacilityId/1004262": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -3253,7 +3253,7 @@
           ]
         },
         "epaGhgrpFacilityId/1004267": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -3266,7 +3266,7 @@
           ]
         },
         "epaGhgrpFacilityId/1004272": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -3279,7 +3279,7 @@
           ]
         },
         "epaGhgrpFacilityId/1004335": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -3292,7 +3292,7 @@
           ]
         },
         "epaGhgrpFacilityId/1004362": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -3305,7 +3305,7 @@
           ]
         },
         "epaGhgrpFacilityId/1004364": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -3318,7 +3318,7 @@
           ]
         },
         "epaGhgrpFacilityId/1004402": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -3331,7 +3331,7 @@
           ]
         },
         "epaGhgrpFacilityId/1004403": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -3344,7 +3344,7 @@
           ]
         },
         "epaGhgrpFacilityId/1004406": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -3357,7 +3357,7 @@
           ]
         },
         "epaGhgrpFacilityId/1004417": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -3370,7 +3370,7 @@
           ]
         },
         "epaGhgrpFacilityId/1004419": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -3383,7 +3383,7 @@
           ]
         },
         "epaGhgrpFacilityId/1004438": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -3396,7 +3396,7 @@
           ]
         },
         "epaGhgrpFacilityId/1004465": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -3409,7 +3409,7 @@
           ]
         },
         "epaGhgrpFacilityId/1004478": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -3422,7 +3422,7 @@
           ]
         },
         "epaGhgrpFacilityId/1004496": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -3435,7 +3435,7 @@
           ]
         },
         "epaGhgrpFacilityId/1004548": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -3448,7 +3448,7 @@
           ]
         },
         "epaGhgrpFacilityId/1004549": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -3461,7 +3461,7 @@
           ]
         },
         "epaGhgrpFacilityId/1004550": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -3474,7 +3474,7 @@
           ]
         },
         "epaGhgrpFacilityId/1004577": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -3487,7 +3487,7 @@
           ]
         },
         "epaGhgrpFacilityId/1004579": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -3500,7 +3500,7 @@
           ]
         },
         "epaGhgrpFacilityId/1004612": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -3513,7 +3513,7 @@
           ]
         },
         "epaGhgrpFacilityId/1004628": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -3526,7 +3526,7 @@
           ]
         },
         "epaGhgrpFacilityId/1004651": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -3539,7 +3539,7 @@
           ]
         },
         "epaGhgrpFacilityId/1004685": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -3552,7 +3552,7 @@
           ]
         },
         "epaGhgrpFacilityId/1004691": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -3565,7 +3565,7 @@
           ]
         },
         "epaGhgrpFacilityId/1004692": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -3578,7 +3578,7 @@
           ]
         },
         "epaGhgrpFacilityId/1004718": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -3591,7 +3591,7 @@
           ]
         },
         "epaGhgrpFacilityId/1004743": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -3604,7 +3604,7 @@
           ]
         },
         "epaGhgrpFacilityId/1004745": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -3617,7 +3617,7 @@
           ]
         },
         "epaGhgrpFacilityId/1004753": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -3630,7 +3630,7 @@
           ]
         },
         "epaGhgrpFacilityId/1004779": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -3643,7 +3643,7 @@
           ]
         },
         "epaGhgrpFacilityId/1004828": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -3656,7 +3656,7 @@
           ]
         },
         "epaGhgrpFacilityId/1004830": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -3669,7 +3669,7 @@
           ]
         },
         "epaGhgrpFacilityId/1004832": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -3682,7 +3682,7 @@
           ]
         },
         "epaGhgrpFacilityId/1004868": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -3695,7 +3695,7 @@
           ]
         },
         "epaGhgrpFacilityId/1004882": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -3708,7 +3708,7 @@
           ]
         },
         "epaGhgrpFacilityId/1004905": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -3721,7 +3721,7 @@
           ]
         },
         "epaGhgrpFacilityId/1004938": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -3734,7 +3734,7 @@
           ]
         },
         "epaGhgrpFacilityId/1004940": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -3747,7 +3747,7 @@
           ]
         },
         "epaGhgrpFacilityId/1004948": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -3760,7 +3760,7 @@
           ]
         },
         "epaGhgrpFacilityId/1004956": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -3773,7 +3773,7 @@
           ]
         },
         "epaGhgrpFacilityId/1004959": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -3786,7 +3786,7 @@
           ]
         },
         "epaGhgrpFacilityId/1004965": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -3799,7 +3799,7 @@
           ]
         },
         "epaGhgrpFacilityId/1004979": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -3812,7 +3812,7 @@
           ]
         },
         "epaGhgrpFacilityId/1004981": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -3825,7 +3825,7 @@
           ]
         },
         "epaGhgrpFacilityId/1005041": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -3838,7 +3838,7 @@
           ]
         },
         "epaGhgrpFacilityId/1005042": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -3851,7 +3851,7 @@
           ]
         },
         "epaGhgrpFacilityId/1005044": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -3864,7 +3864,7 @@
           ]
         },
         "epaGhgrpFacilityId/1005061": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -3877,7 +3877,7 @@
           ]
         },
         "epaGhgrpFacilityId/1005063": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -3890,7 +3890,7 @@
           ]
         },
         "epaGhgrpFacilityId/1005066": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -3903,7 +3903,7 @@
           ]
         },
         "epaGhgrpFacilityId/1005087": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -3916,7 +3916,7 @@
           ]
         },
         "epaGhgrpFacilityId/1005088": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -3929,7 +3929,7 @@
           ]
         },
         "epaGhgrpFacilityId/1005092": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -3942,7 +3942,7 @@
           ]
         },
         "epaGhgrpFacilityId/1005108": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -3955,7 +3955,7 @@
           ]
         },
         "epaGhgrpFacilityId/1005133": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -3968,7 +3968,7 @@
           ]
         },
         "epaGhgrpFacilityId/1005150": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -3981,7 +3981,7 @@
           ]
         },
         "epaGhgrpFacilityId/1005164": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -3994,7 +3994,7 @@
           ]
         },
         "epaGhgrpFacilityId/1005195": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -4007,7 +4007,7 @@
           ]
         },
         "epaGhgrpFacilityId/1005209": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -4020,7 +4020,7 @@
           ]
         },
         "epaGhgrpFacilityId/1005256": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -4033,7 +4033,7 @@
           ]
         },
         "epaGhgrpFacilityId/1005308": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -4046,7 +4046,7 @@
           ]
         },
         "epaGhgrpFacilityId/1005321": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -4059,7 +4059,7 @@
           ]
         },
         "epaGhgrpFacilityId/1005355": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -4072,7 +4072,7 @@
           ]
         },
         "epaGhgrpFacilityId/1005368": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -4085,7 +4085,7 @@
           ]
         },
         "epaGhgrpFacilityId/1005413": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -4098,7 +4098,7 @@
           ]
         },
         "epaGhgrpFacilityId/1005446": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -4111,7 +4111,7 @@
           ]
         },
         "epaGhgrpFacilityId/1005501": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -4124,7 +4124,7 @@
           ]
         },
         "epaGhgrpFacilityId/1005517": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -4137,7 +4137,7 @@
           ]
         },
         "epaGhgrpFacilityId/1005565": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -4150,7 +4150,7 @@
           ]
         },
         "epaGhgrpFacilityId/1005588": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -4163,7 +4163,7 @@
           ]
         },
         "epaGhgrpFacilityId/1005635": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -4176,7 +4176,7 @@
           ]
         },
         "epaGhgrpFacilityId/1005644": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -4189,7 +4189,7 @@
           ]
         },
         "epaGhgrpFacilityId/1005648": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -4202,7 +4202,7 @@
           ]
         },
         "epaGhgrpFacilityId/1005654": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -4215,7 +4215,7 @@
           ]
         },
         "epaGhgrpFacilityId/1005657": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -4228,7 +4228,7 @@
           ]
         },
         "epaGhgrpFacilityId/1005658": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -4241,7 +4241,7 @@
           ]
         },
         "epaGhgrpFacilityId/1005659": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -4254,7 +4254,7 @@
           ]
         },
         "epaGhgrpFacilityId/1005662": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -4267,7 +4267,7 @@
           ]
         },
         "epaGhgrpFacilityId/1005782": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -4280,7 +4280,7 @@
           ]
         },
         "epaGhgrpFacilityId/1005790": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -4293,7 +4293,7 @@
           ]
         },
         "epaGhgrpFacilityId/1005800": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -4306,7 +4306,7 @@
           ]
         },
         "epaGhgrpFacilityId/1005837": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -4319,7 +4319,7 @@
           ]
         },
         "epaGhgrpFacilityId/1005843": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -4332,7 +4332,7 @@
           ]
         },
         "epaGhgrpFacilityId/1005859": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -4345,7 +4345,7 @@
           ]
         },
         "epaGhgrpFacilityId/1005864": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -4358,7 +4358,7 @@
           ]
         },
         "epaGhgrpFacilityId/1005865": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -4371,7 +4371,7 @@
           ]
         },
         "epaGhgrpFacilityId/1005872": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -4384,7 +4384,7 @@
           ]
         },
         "epaGhgrpFacilityId/1005910": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -4397,7 +4397,7 @@
           ]
         },
         "epaGhgrpFacilityId/1005938": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -4410,7 +4410,7 @@
           ]
         },
         "epaGhgrpFacilityId/1005955": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -4423,7 +4423,7 @@
           ]
         },
         "epaGhgrpFacilityId/1005975": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -4436,7 +4436,7 @@
           ]
         },
         "epaGhgrpFacilityId/1006048": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -4449,7 +4449,7 @@
           ]
         },
         "epaGhgrpFacilityId/1006079": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -4462,7 +4462,7 @@
           ]
         },
         "epaGhgrpFacilityId/1006086": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -4475,7 +4475,7 @@
           ]
         },
         "epaGhgrpFacilityId/1006089": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -4488,7 +4488,7 @@
           ]
         },
         "epaGhgrpFacilityId/1006097": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -4501,7 +4501,7 @@
           ]
         },
         "epaGhgrpFacilityId/1006099": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -4514,7 +4514,7 @@
           ]
         },
         "epaGhgrpFacilityId/1006104": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -4527,7 +4527,7 @@
           ]
         },
         "epaGhgrpFacilityId/1006107": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -4540,7 +4540,7 @@
           ]
         },
         "epaGhgrpFacilityId/1006113": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -4553,7 +4553,7 @@
           ]
         },
         "epaGhgrpFacilityId/1006127": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -4566,7 +4566,7 @@
           ]
         },
         "epaGhgrpFacilityId/1006139": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -4579,7 +4579,7 @@
           ]
         },
         "epaGhgrpFacilityId/1006149": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -4592,7 +4592,7 @@
           ]
         },
         "epaGhgrpFacilityId/1006175": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -4605,7 +4605,7 @@
           ]
         },
         "epaGhgrpFacilityId/1006179": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -4618,7 +4618,7 @@
           ]
         },
         "epaGhgrpFacilityId/1006197": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -4631,7 +4631,7 @@
           ]
         },
         "epaGhgrpFacilityId/1006215": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -4644,7 +4644,7 @@
           ]
         },
         "epaGhgrpFacilityId/1006216": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -4657,7 +4657,7 @@
           ]
         },
         "epaGhgrpFacilityId/1006218": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -4670,7 +4670,7 @@
           ]
         },
         "epaGhgrpFacilityId/1006221": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -4683,7 +4683,7 @@
           ]
         },
         "epaGhgrpFacilityId/1006265": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -4696,7 +4696,7 @@
           ]
         },
         "epaGhgrpFacilityId/1006293": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -4709,7 +4709,7 @@
           ]
         },
         "epaGhgrpFacilityId/1006322": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -4722,7 +4722,7 @@
           ]
         },
         "epaGhgrpFacilityId/1006395": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -4735,7 +4735,7 @@
           ]
         },
         "epaGhgrpFacilityId/1006401": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -4748,7 +4748,7 @@
           ]
         },
         "epaGhgrpFacilityId/1006405": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -4761,7 +4761,7 @@
           ]
         },
         "epaGhgrpFacilityId/1006427": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -4774,7 +4774,7 @@
           ]
         },
         "epaGhgrpFacilityId/1006430": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -4787,7 +4787,7 @@
           ]
         },
         "epaGhgrpFacilityId/1006432": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -4800,7 +4800,7 @@
           ]
         },
         "epaGhgrpFacilityId/1006434": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -4813,7 +4813,7 @@
           ]
         },
         "epaGhgrpFacilityId/1006445": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -4826,7 +4826,7 @@
           ]
         },
         "epaGhgrpFacilityId/1006447": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -4839,7 +4839,7 @@
           ]
         },
         "epaGhgrpFacilityId/1006501": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -4852,7 +4852,7 @@
           ]
         },
         "epaGhgrpFacilityId/1006533": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -4865,7 +4865,7 @@
           ]
         },
         "epaGhgrpFacilityId/1006557": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -4878,7 +4878,7 @@
           ]
         },
         "epaGhgrpFacilityId/1006568": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -4891,7 +4891,7 @@
           ]
         },
         "epaGhgrpFacilityId/1006594": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -4904,7 +4904,7 @@
           ]
         },
         "epaGhgrpFacilityId/1006627": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -4917,7 +4917,7 @@
           ]
         },
         "epaGhgrpFacilityId/1006628": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -4930,7 +4930,7 @@
           ]
         },
         "epaGhgrpFacilityId/1006629": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -4943,7 +4943,7 @@
           ]
         },
         "epaGhgrpFacilityId/1006642": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -4956,7 +4956,7 @@
           ]
         },
         "epaGhgrpFacilityId/1006680": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -4969,7 +4969,7 @@
           ]
         },
         "epaGhgrpFacilityId/1006732": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -4982,7 +4982,7 @@
           ]
         },
         "epaGhgrpFacilityId/1006734": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -4995,7 +4995,7 @@
           ]
         },
         "epaGhgrpFacilityId/1006745": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -5008,7 +5008,7 @@
           ]
         },
         "epaGhgrpFacilityId/1006750": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -5021,7 +5021,7 @@
           ]
         },
         "epaGhgrpFacilityId/1006761": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -5034,7 +5034,7 @@
           ]
         },
         "epaGhgrpFacilityId/1006792": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -5047,7 +5047,7 @@
           ]
         },
         "epaGhgrpFacilityId/1006812": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -5060,7 +5060,7 @@
           ]
         },
         "epaGhgrpFacilityId/1006836": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -5073,7 +5073,7 @@
           ]
         },
         "epaGhgrpFacilityId/1006842": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -5086,7 +5086,7 @@
           ]
         },
         "epaGhgrpFacilityId/1006843": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -5099,7 +5099,7 @@
           ]
         },
         "epaGhgrpFacilityId/1006844": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -5112,7 +5112,7 @@
           ]
         },
         "epaGhgrpFacilityId/1006845": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -5125,7 +5125,7 @@
           ]
         },
         "epaGhgrpFacilityId/1006846": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -5138,7 +5138,7 @@
           ]
         },
         "epaGhgrpFacilityId/1006860": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -5151,7 +5151,7 @@
           ]
         },
         "epaGhgrpFacilityId/1006861": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -5164,7 +5164,7 @@
           ]
         },
         "epaGhgrpFacilityId/1006914": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -5177,7 +5177,7 @@
           ]
         },
         "epaGhgrpFacilityId/1006937": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -5190,7 +5190,7 @@
           ]
         },
         "epaGhgrpFacilityId/1006960": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -5203,7 +5203,7 @@
           ]
         },
         "epaGhgrpFacilityId/1007015": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -5216,7 +5216,7 @@
           ]
         },
         "epaGhgrpFacilityId/1007040": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -5229,7 +5229,7 @@
           ]
         },
         "epaGhgrpFacilityId/1007055": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -5242,7 +5242,7 @@
           ]
         },
         "epaGhgrpFacilityId/1007112": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -5255,7 +5255,7 @@
           ]
         },
         "epaGhgrpFacilityId/1007125": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -5268,7 +5268,7 @@
           ]
         },
         "epaGhgrpFacilityId/1007128": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -5281,7 +5281,7 @@
           ]
         },
         "epaGhgrpFacilityId/1007173": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -5294,7 +5294,7 @@
           ]
         },
         "epaGhgrpFacilityId/1007197": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -5307,7 +5307,7 @@
           ]
         },
         "epaGhgrpFacilityId/1007198": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -5320,7 +5320,7 @@
           ]
         },
         "epaGhgrpFacilityId/1007204": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -5333,7 +5333,7 @@
           ]
         },
         "epaGhgrpFacilityId/1007238": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -5346,7 +5346,7 @@
           ]
         },
         "epaGhgrpFacilityId/1007262": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -5359,7 +5359,7 @@
           ]
         },
         "epaGhgrpFacilityId/1007265": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -5372,7 +5372,7 @@
           ]
         },
         "epaGhgrpFacilityId/1007312": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -5385,7 +5385,7 @@
           ]
         },
         "epaGhgrpFacilityId/1007313": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -5398,7 +5398,7 @@
           ]
         },
         "epaGhgrpFacilityId/1007315": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -5411,7 +5411,7 @@
           ]
         },
         "epaGhgrpFacilityId/1007316": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -5424,7 +5424,7 @@
           ]
         },
         "epaGhgrpFacilityId/1007318": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -5437,7 +5437,7 @@
           ]
         },
         "epaGhgrpFacilityId/1007329": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -5450,7 +5450,7 @@
           ]
         },
         "epaGhgrpFacilityId/1007345": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -5463,7 +5463,7 @@
           ]
         },
         "epaGhgrpFacilityId/1007347": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -5476,7 +5476,7 @@
           ]
         },
         "epaGhgrpFacilityId/1007363": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -5489,7 +5489,7 @@
           ]
         },
         "epaGhgrpFacilityId/1007390": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -5502,7 +5502,7 @@
           ]
         },
         "epaGhgrpFacilityId/1007398": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -5515,7 +5515,7 @@
           ]
         },
         "epaGhgrpFacilityId/1007411": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -5528,7 +5528,7 @@
           ]
         },
         "epaGhgrpFacilityId/1007424": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -5541,7 +5541,7 @@
           ]
         },
         "epaGhgrpFacilityId/1007461": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -5554,7 +5554,7 @@
           ]
         },
         "epaGhgrpFacilityId/1007469": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -5567,7 +5567,7 @@
           ]
         },
         "epaGhgrpFacilityId/1007536": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -5580,7 +5580,7 @@
           ]
         },
         "epaGhgrpFacilityId/1007539": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -5593,7 +5593,7 @@
           ]
         },
         "epaGhgrpFacilityId/1007556": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -5606,7 +5606,7 @@
           ]
         },
         "epaGhgrpFacilityId/1007558": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -5619,7 +5619,7 @@
           ]
         },
         "epaGhgrpFacilityId/1007600": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -5632,7 +5632,7 @@
           ]
         },
         "epaGhgrpFacilityId/1007607": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -5645,7 +5645,7 @@
           ]
         },
         "epaGhgrpFacilityId/1007609": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -5658,7 +5658,7 @@
           ]
         },
         "epaGhgrpFacilityId/1007651": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -5671,7 +5671,7 @@
           ]
         },
         "epaGhgrpFacilityId/1007654": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -5684,7 +5684,7 @@
           ]
         },
         "epaGhgrpFacilityId/1007668": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -5697,7 +5697,7 @@
           ]
         },
         "epaGhgrpFacilityId/1007682": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -5710,7 +5710,7 @@
           ]
         },
         "epaGhgrpFacilityId/1007693": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -5723,7 +5723,7 @@
           ]
         },
         "epaGhgrpFacilityId/1007699": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -5736,7 +5736,7 @@
           ]
         },
         "epaGhgrpFacilityId/1007710": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -5749,7 +5749,7 @@
           ]
         },
         "epaGhgrpFacilityId/1007736": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -5762,7 +5762,7 @@
           ]
         },
         "epaGhgrpFacilityId/1007738": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -5775,7 +5775,7 @@
           ]
         },
         "epaGhgrpFacilityId/1007749": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -5788,7 +5788,7 @@
           ]
         },
         "epaGhgrpFacilityId/1007794": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -5801,7 +5801,7 @@
           ]
         },
         "epaGhgrpFacilityId/1007805": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -5814,7 +5814,7 @@
           ]
         },
         "epaGhgrpFacilityId/1007816": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -5827,7 +5827,7 @@
           ]
         },
         "epaGhgrpFacilityId/1007817": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -5840,7 +5840,7 @@
           ]
         },
         "epaGhgrpFacilityId/1007823": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -5853,7 +5853,7 @@
           ]
         },
         "epaGhgrpFacilityId/1007836": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -5866,7 +5866,7 @@
           ]
         },
         "epaGhgrpFacilityId/1007837": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -5879,7 +5879,7 @@
           ]
         },
         "epaGhgrpFacilityId/1007839": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -5892,7 +5892,7 @@
           ]
         },
         "epaGhgrpFacilityId/1007841": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -5905,7 +5905,7 @@
           ]
         },
         "epaGhgrpFacilityId/1007904": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -5918,7 +5918,7 @@
           ]
         },
         "epaGhgrpFacilityId/1007927": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -5931,7 +5931,7 @@
           ]
         },
         "epaGhgrpFacilityId/1007951": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -5944,7 +5944,7 @@
           ]
         },
         "epaGhgrpFacilityId/1007955": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -5957,7 +5957,7 @@
           ]
         },
         "epaGhgrpFacilityId/1007978": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -5970,7 +5970,7 @@
           ]
         },
         "epaGhgrpFacilityId/1007993": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -5983,7 +5983,7 @@
           ]
         },
         "epaGhgrpFacilityId/1008030": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -5996,7 +5996,7 @@
           ]
         },
         "epaGhgrpFacilityId/1008057": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -6009,7 +6009,7 @@
           ]
         },
         "epaGhgrpFacilityId/1008102": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -6022,7 +6022,7 @@
           ]
         },
         "epaGhgrpFacilityId/1008163": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -6035,7 +6035,7 @@
           ]
         },
         "epaGhgrpFacilityId/1008165": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -6048,7 +6048,7 @@
           ]
         },
         "epaGhgrpFacilityId/1008308": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -6061,7 +6061,7 @@
           ]
         },
         "epaGhgrpFacilityId/1008346": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -6074,7 +6074,7 @@
           ]
         },
         "epaGhgrpFacilityId/1008402": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -6087,7 +6087,7 @@
           ]
         },
         "epaGhgrpFacilityId/1008405": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -6100,7 +6100,7 @@
           ]
         },
         "epaGhgrpFacilityId/1008406": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -6113,7 +6113,7 @@
           ]
         },
         "epaGhgrpFacilityId/1008409": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -6126,7 +6126,7 @@
           ]
         },
         "epaGhgrpFacilityId/1008499": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -6139,7 +6139,7 @@
           ]
         },
         "epaGhgrpFacilityId/1008504": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -6152,7 +6152,7 @@
           ]
         },
         "epaGhgrpFacilityId/1008956": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -6165,7 +6165,7 @@
           ]
         },
         "epaGhgrpFacilityId/1008961": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -6178,7 +6178,7 @@
           ]
         },
         "epaGhgrpFacilityId/1008997": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -6191,7 +6191,7 @@
           ]
         },
         "epaGhgrpFacilityId/1009051": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -6204,7 +6204,7 @@
           ]
         },
         "epaGhgrpFacilityId/1009052": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -6217,7 +6217,7 @@
           ]
         },
         "epaGhgrpFacilityId/1009053": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -6230,7 +6230,7 @@
           ]
         },
         "epaGhgrpFacilityId/1009239": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -6243,7 +6243,7 @@
           ]
         },
         "epaGhgrpFacilityId/1009240": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -6256,7 +6256,7 @@
           ]
         },
         "epaGhgrpFacilityId/1009241": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -6269,7 +6269,7 @@
           ]
         },
         "epaGhgrpFacilityId/1009300": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -6282,7 +6282,7 @@
           ]
         },
         "epaGhgrpFacilityId/1009555": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -6295,7 +6295,7 @@
           ]
         },
         "epaGhgrpFacilityId/1009578": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -6308,7 +6308,7 @@
           ]
         },
         "epaGhgrpFacilityId/1009582": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -6321,7 +6321,7 @@
           ]
         },
         "epaGhgrpFacilityId/1009626": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -6334,7 +6334,7 @@
           ]
         },
         "epaGhgrpFacilityId/1009787": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -6347,7 +6347,7 @@
           ]
         },
         "epaGhgrpFacilityId/1009921": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -6360,7 +6360,7 @@
           ]
         },
         "epaGhgrpFacilityId/1009928": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -6373,7 +6373,7 @@
           ]
         },
         "epaGhgrpFacilityId/1009930": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -6386,7 +6386,7 @@
           ]
         },
         "epaGhgrpFacilityId/1009944": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -6399,7 +6399,7 @@
           ]
         },
         "epaGhgrpFacilityId/1009951": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -6412,7 +6412,7 @@
           ]
         },
         "epaGhgrpFacilityId/1009983": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -6425,7 +6425,7 @@
           ]
         },
         "epaGhgrpFacilityId/1010003": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -6438,7 +6438,7 @@
           ]
         },
         "epaGhgrpFacilityId/1010076": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -6451,7 +6451,7 @@
           ]
         },
         "epaGhgrpFacilityId/1010139": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -6464,7 +6464,7 @@
           ]
         },
         "epaGhgrpFacilityId/1010172": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -6477,7 +6477,7 @@
           ]
         },
         "epaGhgrpFacilityId/1010207": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -6490,7 +6490,7 @@
           ]
         },
         "epaGhgrpFacilityId/1010231": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -6503,7 +6503,7 @@
           ]
         },
         "epaGhgrpFacilityId/1010317": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -6516,7 +6516,7 @@
           ]
         },
         "epaGhgrpFacilityId/1010345": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -6529,7 +6529,7 @@
           ]
         },
         "epaGhgrpFacilityId/1010346": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -6542,7 +6542,7 @@
           ]
         },
         "epaGhgrpFacilityId/1010349": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -6555,7 +6555,7 @@
           ]
         },
         "epaGhgrpFacilityId/1010417": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -6568,7 +6568,7 @@
           ]
         },
         "epaGhgrpFacilityId/1010540": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -6581,7 +6581,7 @@
           ]
         },
         "epaGhgrpFacilityId/1010570": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -6594,7 +6594,7 @@
           ]
         },
         "epaGhgrpFacilityId/1010581": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -6607,7 +6607,7 @@
           ]
         },
         "epaGhgrpFacilityId/1010590": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -6620,7 +6620,7 @@
           ]
         },
         "epaGhgrpFacilityId/1010696": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -6633,7 +6633,7 @@
           ]
         },
         "epaGhgrpFacilityId/1010707": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -6646,7 +6646,7 @@
           ]
         },
         "epaGhgrpFacilityId/1010738": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -6659,7 +6659,7 @@
           ]
         },
         "epaGhgrpFacilityId/1010767": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -6672,7 +6672,7 @@
           ]
         },
         "epaGhgrpFacilityId/1010774": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -6685,7 +6685,7 @@
           ]
         },
         "epaGhgrpFacilityId/1010893": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -6698,7 +6698,7 @@
           ]
         },
         "epaGhgrpFacilityId/1010932": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -6711,7 +6711,7 @@
           ]
         },
         "epaGhgrpFacilityId/1010962": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -6724,7 +6724,7 @@
           ]
         },
         "epaGhgrpFacilityId/1010977": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -6737,7 +6737,7 @@
           ]
         },
         "epaGhgrpFacilityId/1011035": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -6750,7 +6750,7 @@
           ]
         },
         "epaGhgrpFacilityId/1011081": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -6763,7 +6763,7 @@
           ]
         },
         "epaGhgrpFacilityId/1011082": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -6776,7 +6776,7 @@
           ]
         },
         "epaGhgrpFacilityId/1011090": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -6789,7 +6789,7 @@
           ]
         },
         "epaGhgrpFacilityId/1011190": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -6802,7 +6802,7 @@
           ]
         },
         "epaGhgrpFacilityId/1011213": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -6815,7 +6815,7 @@
           ]
         },
         "epaGhgrpFacilityId/1011226": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -6828,7 +6828,7 @@
           ]
         },
         "epaGhgrpFacilityId/1011303": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -6841,7 +6841,7 @@
           ]
         },
         "epaGhgrpFacilityId/1011345": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -6854,7 +6854,7 @@
           ]
         },
         "epaGhgrpFacilityId/1011361": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -6867,7 +6867,7 @@
           ]
         },
         "epaGhgrpFacilityId/1011371": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -6880,7 +6880,7 @@
           ]
         },
         "epaGhgrpFacilityId/1011384": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -6893,7 +6893,7 @@
           ]
         },
         "epaGhgrpFacilityId/1011389": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -6906,7 +6906,7 @@
           ]
         },
         "epaGhgrpFacilityId/1011449": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -6919,7 +6919,7 @@
           ]
         },
         "epaGhgrpFacilityId/1011469": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -6932,7 +6932,7 @@
           ]
         },
         "epaGhgrpFacilityId/1011475": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -6945,7 +6945,7 @@
           ]
         },
         "epaGhgrpFacilityId/1011526": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -6958,7 +6958,7 @@
           ]
         },
         "epaGhgrpFacilityId/1011548": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -6971,7 +6971,7 @@
           ]
         },
         "epaGhgrpFacilityId/1011577": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -6984,7 +6984,7 @@
           ]
         },
         "epaGhgrpFacilityId/1011669": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -6997,7 +6997,7 @@
           ]
         },
         "epaGhgrpFacilityId/1011673": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -7010,7 +7010,7 @@
           ]
         },
         "epaGhgrpFacilityId/1011676": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -7023,7 +7023,7 @@
           ]
         },
         "epaGhgrpFacilityId/1011716": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -7036,7 +7036,7 @@
           ]
         },
         "epaGhgrpFacilityId/1011718": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -7049,7 +7049,7 @@
           ]
         },
         "epaGhgrpFacilityId/1011798": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -7062,7 +7062,7 @@
           ]
         },
         "epaGhgrpFacilityId/1011804": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -7075,7 +7075,7 @@
           ]
         },
         "epaGhgrpFacilityId/1011819": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -7088,7 +7088,7 @@
           ]
         },
         "epaGhgrpFacilityId/1011905": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -7101,7 +7101,7 @@
           ]
         },
         "epaGhgrpFacilityId/1012089": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -7114,7 +7114,7 @@
           ]
         },
         "epaGhgrpFacilityId/1012094": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -7127,7 +7127,7 @@
           ]
         },
         "epaGhgrpFacilityId/1012095": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -7140,7 +7140,7 @@
           ]
         },
         "epaGhgrpFacilityId/1012097": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -7153,7 +7153,7 @@
           ]
         },
         "epaGhgrpFacilityId/1012110": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -7166,7 +7166,7 @@
           ]
         },
         "epaGhgrpFacilityId/1012143": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -7179,7 +7179,7 @@
           ]
         },
         "epaGhgrpFacilityId/1012146": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -7192,7 +7192,7 @@
           ]
         },
         "epaGhgrpFacilityId/1012147": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -7205,7 +7205,7 @@
           ]
         },
         "epaGhgrpFacilityId/1012257": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -7218,7 +7218,7 @@
           ]
         },
         "epaGhgrpFacilityId/1012289": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -7231,7 +7231,7 @@
           ]
         },
         "epaGhgrpFacilityId/1012305": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -7244,7 +7244,7 @@
           ]
         },
         "epaGhgrpFacilityId/1012311": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -7257,7 +7257,7 @@
           ]
         },
         "epaGhgrpFacilityId/1012348": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -7270,7 +7270,7 @@
           ]
         },
         "epaGhgrpFacilityId/1012351": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -7283,7 +7283,7 @@
           ]
         },
         "epaGhgrpFacilityId/1012355": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -7296,7 +7296,7 @@
           ]
         },
         "epaGhgrpFacilityId/1012357": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -7309,7 +7309,7 @@
           ]
         },
         "epaGhgrpFacilityId/1012360": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -7322,7 +7322,7 @@
           ]
         },
         "epaGhgrpFacilityId/1012361": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -7335,7 +7335,7 @@
           ]
         },
         "epaGhgrpFacilityId/1012378": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -7348,7 +7348,7 @@
           ]
         },
         "epaGhgrpFacilityId/1012414": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -7361,7 +7361,7 @@
           ]
         },
         "epaGhgrpFacilityId/1012475": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -7374,7 +7374,7 @@
           ]
         },
         "epaGhgrpFacilityId/1012548": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -7387,7 +7387,7 @@
           ]
         },
         "epaGhgrpFacilityId/1012713": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -7400,7 +7400,7 @@
           ]
         },
         "epaGhgrpFacilityId/1012823": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -7413,7 +7413,7 @@
           ]
         },
         "epaGhgrpFacilityId/1012977": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -7426,7 +7426,7 @@
           ]
         },
         "epaGhgrpFacilityId/1012990": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -7439,7 +7439,7 @@
           ]
         },
         "epaGhgrpFacilityId/1013042": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -7452,7 +7452,7 @@
           ]
         },
         "epaGhgrpFacilityId/1013147": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -7465,7 +7465,7 @@
           ]
         },
         "epaGhgrpFacilityId/1013348": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -7478,7 +7478,7 @@
           ]
         },
         "epaGhgrpFacilityId/1013360": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -7491,7 +7491,7 @@
           ]
         },
         "epaGhgrpFacilityId/1013489": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [
@@ -7504,7 +7504,7 @@
           ]
         },
         "epaGhgrpFacilityId/1013696": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3902333627",
               "observations": [

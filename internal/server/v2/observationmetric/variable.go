@@ -23,8 +23,8 @@ import (
 	"github.com/datacommonsorg/mixer/internal/store"
 )
 
-// VariableMetric implements logic to get ObservationMetric for variable.
-func VariableMetric(
+// Variable implements logic to get ObservationMetric for variable.
+func Variable(
 	ctx context.Context,
 	store *store.Store,
 	entities []string,
@@ -34,18 +34,18 @@ func VariableMetric(
 		return nil, err
 	}
 	resp := &pbv2.ObservationResponse{
-		ObservationsByVariable: map[string]*pbv2.VariableObservation{},
+		ByVariable: map[string]*pbv2.VariableObservation{},
 	}
 	for _, entity := range entities {
 		if statVars, ok := entityToStatVars[entity]; ok {
 			for _, variable := range statVars.StatVars {
-				obsByVar := resp.ObservationsByVariable // Short alias
+				obsByVar := resp.ByVariable // Short alias
 				if _, ok := obsByVar[variable]; !ok {
 					obsByVar[variable] = &pbv2.VariableObservation{
-						ObservationsByEntity: map[string]*pbv2.EntityObservation{},
+						ByEntity: map[string]*pbv2.EntityObservation{},
 					}
 				}
-				obsByVar[variable].ObservationsByEntity[entity] = &pbv2.EntityObservation{}
+				obsByVar[variable].ByEntity[entity] = &pbv2.EntityObservation{}
 			}
 		}
 	}

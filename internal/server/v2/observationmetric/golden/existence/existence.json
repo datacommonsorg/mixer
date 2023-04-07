@@ -1,0 +1,17 @@
+{
+  "by_variable": {
+    "Count_Person": {
+      "by_entity": {
+        "country/CAN": {},
+        "geoId/06": {},
+        "geoId/0647766": {}
+      }
+    },
+    "GenderIncomeInequality_Person_15OrMoreYears_WithIncome": {
+      "by_entity": {
+        "geoId/06": {},
+        "geoId/0647766": {}
+      }
+    }
+  }
+}

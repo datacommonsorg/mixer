@@ -148,7 +148,14 @@ func (s *Server) V2ObservationMetric(
 ) (*pbv2.ObservationResponse, error) {
 	if in.GetVariablesExpression() == "?" { // Get all variables for entities
 		// TODO: Support appending entities from EntitiesExpression
-		return observationmetric.VariableMetric(ctx, s.store, in.GetEntities())
+		return observationmetric.Variable(ctx, s.store, in.GetEntities())
+	}
+	if len(in.GetEntities()) > 0 &&
+		len(in.GetVariables()) > 0 &&
+		in.GetDate() == "" &&
+		in.GetEntitiesExpression() == "" &&
+		in.GetVariablesExpression() == "" {
+		return observationmetric.Existence(ctx, s.store, in.GetVariables(), in.GetEntities())
 	}
 	return &pbv2.ObservationResponse{}, nil
 }
