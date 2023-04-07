@@ -38,12 +38,10 @@ func TestVariableMetric(t *testing.T) {
 		for _, c := range []struct {
 			entities   []string
 			goldenFile string
-			wanterr    bool
 		}{
 			{
-				[]string{"geoId/05", "geoId/06085", "fake_place"},
-				"california_and_santa_clara.json",
-				false,
+				[]string{"country/CHN", "wikidataId/Q1951", "fake_place"},
+				"result.json",
 			},
 		} {
 			goldenFile := c.goldenFile
@@ -51,12 +49,6 @@ func TestVariableMetric(t *testing.T) {
 				Entities:            c.entities,
 				VariablesExpression: "?",
 			})
-			if c.wanterr {
-				if err == nil {
-					t.Errorf("Expect to get error for ObservationMetric(variable) but succeed")
-				}
-				continue
-			}
 			if err != nil {
 				t.Errorf("ObservationMetric(variable) = %s", err)
 				continue
