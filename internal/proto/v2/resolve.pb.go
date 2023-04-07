@@ -44,7 +44,7 @@ const (
 //   nodes = ["34.56#-23.12", "-22.11#44.55"]
 //   property = "<-geoCoordinate"
 //
-// 3. Description(name) to DCID:
+// 3. Description (name) to DCID:
 //   nodes = ["Mountain View", "New York"]
 //   property = "<-description" or "<-description{typeOf:City}"
 type ResolveRequest struct {
