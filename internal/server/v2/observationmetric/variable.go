@@ -23,6 +23,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/store"
 )
 
+// VariableMetric implements logic to get ObservationMetric for variable.
 func VariableMetric(
 	ctx context.Context,
 	store *store.Store,
