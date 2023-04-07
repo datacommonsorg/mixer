@@ -27,7 +27,6 @@ const _ = grpc.SupportPackageIsVersion7
 type MixerClient interface {
 	V2Node(ctx context.Context, in *v2.NodeRequest, opts ...grpc.CallOption) (*v2.NodeResponse, error)
 	V2Observation(ctx context.Context, in *v2.ObservationRequest, opts ...grpc.CallOption) (*v2.ObservationResponse, error)
-	V2ObservationMetric(ctx context.Context, in *v2.ObservationRequest, opts ...grpc.CallOption) (*v2.ObservationResponse, error)
 	// Query DataCommons Graph with Sparql.
 	Query(ctx context.Context, in *proto.QueryRequest, opts ...grpc.CallOption) (*proto.QueryResponse, error)
 	// Fetch property labels adjacent of nodes
@@ -200,15 +199,6 @@ func (c *mixerClient) V2Node(ctx context.Context, in *v2.NodeRequest, opts ...gr
 func (c *mixerClient) V2Observation(ctx context.Context, in *v2.ObservationRequest, opts ...grpc.CallOption) (*v2.ObservationResponse, error) {
 	out := new(v2.ObservationResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/V2Observation", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *mixerClient) V2ObservationMetric(ctx context.Context, in *v2.ObservationRequest, opts ...grpc.CallOption) (*v2.ObservationResponse, error) {
-	out := new(v2.ObservationResponse)
-	err := c.cc.Invoke(ctx, "/datacommons.Mixer/V2ObservationMetric", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -761,7 +751,6 @@ func (c *mixerClient) RecognizePlaces(ctx context.Context, in *proto.RecognizePl
 type MixerServer interface {
 	V2Node(context.Context, *v2.NodeRequest) (*v2.NodeResponse, error)
 	V2Observation(context.Context, *v2.ObservationRequest) (*v2.ObservationResponse, error)
-	V2ObservationMetric(context.Context, *v2.ObservationRequest) (*v2.ObservationResponse, error)
 	// Query DataCommons Graph with Sparql.
 	Query(context.Context, *proto.QueryRequest) (*proto.QueryResponse, error)
 	// Fetch property labels adjacent of nodes
@@ -923,9 +912,6 @@ func (UnimplementedMixerServer) V2Node(context.Context, *v2.NodeRequest) (*v2.No
 }
 func (UnimplementedMixerServer) V2Observation(context.Context, *v2.ObservationRequest) (*v2.ObservationResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method V2Observation not implemented")
-}
-func (UnimplementedMixerServer) V2ObservationMetric(context.Context, *v2.ObservationRequest) (*v2.ObservationResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method V2ObservationMetric not implemented")
 }
 func (UnimplementedMixerServer) Query(context.Context, *proto.QueryRequest) (*proto.QueryResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Query not implemented")
@@ -1151,24 +1137,6 @@ func _Mixer_V2Observation_Handler(srv interface{}, ctx context.Context, dec func
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(MixerServer).V2Observation(ctx, req.(*v2.ObservationRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Mixer_V2ObservationMetric_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(v2.ObservationRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(MixerServer).V2ObservationMetric(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/datacommons.Mixer/V2ObservationMetric",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).V2ObservationMetric(ctx, req.(*v2.ObservationRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -2267,10 +2235,6 @@ var Mixer_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "V2Observation",
 			Handler:    _Mixer_V2Observation_Handler,
-		},
-		{
-			MethodName: "V2ObservationMetric",
-			Handler:    _Mixer_V2ObservationMetric_Handler,
 		},
 		{
 			MethodName: "Query",

@@ -20,7 +20,6 @@ import (
 
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	v2observation "github.com/datacommonsorg/mixer/internal/server/v2/observation"
-	"github.com/datacommonsorg/mixer/internal/server/v2/observationmetric"
 	v2p "github.com/datacommonsorg/mixer/internal/server/v2/properties"
 	v2pv "github.com/datacommonsorg/mixer/internal/server/v2/propertyvalues"
 	"github.com/datacommonsorg/mixer/internal/util"
@@ -101,61 +100,76 @@ func (s *Server) V2Observation(
 	ctx context.Context, in *pbv2.ObservationRequest,
 ) (*pbv2.ObservationResponse, error) {
 	// (TODO): The routing logic here is very rough. This needs more work.
-	if len(in.GetVariables()) > 0 && len(in.GetEntities()) > 0 {
-		return v2observation.FetchFromSeries(
-			ctx,
-			s.store,
-			in.GetVariables(),
-			in.GetEntities(),
-			in.GetDate(),
-		)
+	var queryDate, queryValue, queryVariable, queryEntity bool
+	for _, item := range in.GetSelect() {
+		if item == "date" {
+			queryDate = true
+		} else if item == "value" {
+			queryValue = true
+		} else if item == "variables" {
+			queryVariable = true
+		} else if item == "entities" {
+			queryEntity = true
+		}
 	}
-	if len(in.GetVariables()) > 0 && in.GetEntitiesExpression() != "" {
-		// Example of expression
-		// "geoId/06<-containedInPlace+{typeOf: City}"
-		expr := in.GetEntitiesExpression()
-		g, err := v2.ParseLinkedNodes(expr)
-		if err != nil {
-			return nil, err
-		}
-		if len(g.Arcs) != 1 {
-			return nil, status.Errorf(
-				codes.InvalidArgument, "invalid expression string: %s", expr)
-		}
-		arc := g.Arcs[0]
-		if arc.SingleProp != "containedInPlace" ||
-			arc.Wildcard != "+" ||
-			arc.Filter == nil ||
-			arc.Filter["typeOf"] == "" {
-			return nil, status.Errorf(
-				codes.InvalidArgument, "invalid expression string: %s", expr)
-		}
-		return v2observation.FetchFromCollection(
-			ctx,
-			s.store,
-			in.GetVariables(),
-			g.Subject,
-			arc.Filter["typeOf"],
-			in.GetDate(),
-		)
+	if !queryVariable || !queryEntity {
+		return nil, status.Error(
+			codes.InvalidArgument, "Must select 'variables' and 'entities'")
 	}
-	return &pbv2.ObservationResponse{}, nil
-}
+	// Observation date and value query.
+	if queryDate && queryValue {
+		if len(in.GetVariables()) > 0 && len(in.GetEntities()) > 0 {
+			return v2observation.FetchFromSeries(
+				ctx,
+				s.store,
+				in.GetVariables(),
+				in.GetEntities(),
+				in.GetDate(),
+			)
+		}
+		if len(in.GetVariables()) > 0 && in.GetEntitiesExpression() != "" {
+			// Example of expression
+			// "geoId/06<-containedInPlace+{typeOf: City}"
+			expr := in.GetEntitiesExpression()
+			g, err := v2.ParseLinkedNodes(expr)
+			if err != nil {
+				return nil, err
+			}
+			if len(g.Arcs) != 1 {
+				return nil, status.Errorf(
+					codes.InvalidArgument, "invalid expression string: %s", expr)
+			}
+			arc := g.Arcs[0]
+			if arc.SingleProp != "containedInPlace" ||
+				arc.Wildcard != "+" ||
+				arc.Filter == nil ||
+				arc.Filter["typeOf"] == "" {
+				return nil, status.Errorf(
+					codes.InvalidArgument, "invalid expression string: %s", expr)
+			}
+			return v2observation.FetchFromCollection(
+				ctx,
+				s.store,
+				in.GetVariables(),
+				g.Subject,
+				arc.Filter["typeOf"],
+				in.GetDate(),
+			)
+		}
+	}
 
-// V2ObservationMetric implements API for mixer.V2ObservationMetric.
-func (s *Server) V2ObservationMetric(
-	ctx context.Context, in *pbv2.ObservationRequest,
-) (*pbv2.ObservationResponse, error) {
-	if in.GetVariablesExpression() == "?" { // Get all variables for entities
-		// TODO: Support appending entities from EntitiesExpression
-		return observationmetric.Variable(ctx, s.store, in.GetEntities())
-	}
-	if len(in.GetEntities()) > 0 &&
-		len(in.GetVariables()) > 0 &&
-		in.GetDate() == "" &&
-		in.GetEntitiesExpression() == "" &&
-		in.GetVariablesExpression() == "" {
-		return observationmetric.Existence(ctx, s.store, in.GetVariables(), in.GetEntities())
+	// Get existence of <variable, entity> pair.
+	if !queryDate && !queryValue {
+		if len(in.GetEntities()) > 0 {
+			if len(in.GetVariables()) > 0 {
+				// Have both entities and variables. Check existence cache.s
+				return v2observation.Existence(ctx, s.store, in.GetVariables(), in.GetEntities())
+			} else {
+				// TODO: Support appending entities from EntitiesExpression
+				// Only have entities, fetch variables for each entity.
+				return v2observation.Variable(ctx, s.store, in.GetEntities())
+			}
+		}
 	}
 	return &pbv2.ObservationResponse{}, nil
 }

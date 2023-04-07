@@ -47,7 +47,8 @@ func TestExistence(t *testing.T) {
 			},
 		} {
 			goldenFile := c.goldenFile
-			resp, err := mixer.V2ObservationMetric(ctx, &pbv2.ObservationRequest{
+			resp, err := mixer.V2Observation(ctx, &pbv2.ObservationRequest{
+				Select:    []string{"variables", "entities"},
 				Entities:  c.entities,
 				Variables: c.variables,
 			})

@@ -75,6 +75,7 @@ func TestFetchFromSeries(t *testing.T) {
 		} {
 			goldenFile := c.goldenFile
 			resp, err := mixer.V2Observation(ctx, &pbv2.ObservationRequest{
+				Select:    []string{"variables", "entities", "date", "value"},
 				Variables: c.variables,
 				Entities:  c.entities,
 				Date:      c.date,

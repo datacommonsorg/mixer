@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Package observationmetric is for V2 observation Metric API
-package observationmetric
+// Package observation is for V2 observation API
+package observation
 
 import (
 	"context"
@@ -23,7 +23,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/store"
 )
 
-// Variable implements logic to get ObservationMetric for variable.
+// Variable implements logic to get Observation for entity variabless.
 func Variable(
 	ctx context.Context,
 	store *store.Store,

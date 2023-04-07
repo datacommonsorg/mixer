@@ -38,6 +38,15 @@ message FacetObservation {
   repeated datacommons.PointStat observations = 2;
 }
 
+message FacetFilter {
+  // When specified, only observation with this unit is returned.
+  string unit = 1;
+  // When specified, only observation with this measurement method is returned.
+  string measurement_method = 2;
+  // When specified, only observation with this observation period is returned.
+  string period = 3;
+}
+
 // Generic observation request
 message ObservationRequest {
   // A list of entity DCIDs
@@ -56,12 +65,12 @@ message ObservationRequest {
   // - "<DATE>": a speficied valid ISO 8601 date. Observation corresponding to
   //   this date is returned.
   string date = 5;
-  // When specified, only observation with this unit is returned.
-  string unit = 6;
-  // When specified, only observation with this measurement method is returned.
-  string measurement_method = 7;
-  // When specified, only observation with this observation period is returned.
-  string period = 8;
+  // Value of the observation
+  string value = 6;
+  // [Optional] filter for the facet
+  FacetFilter filter = 7;
+  // Fields to query for, valide values are: "variables", "entities", "date", "value"
+  repeated string select = 8;
 }
 
 message ObservationResponse {

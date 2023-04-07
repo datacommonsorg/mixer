@@ -45,9 +45,9 @@ func TestVariable(t *testing.T) {
 			},
 		} {
 			goldenFile := c.goldenFile
-			resp, err := mixer.V2ObservationMetric(ctx, &pbv2.ObservationRequest{
-				Entities:            c.entities,
-				VariablesExpression: "?",
+			resp, err := mixer.V2Observation(ctx, &pbv2.ObservationRequest{
+				Select:   []string{"variables", "entities"},
+				Entities: c.entities,
 			})
 			if err != nil {
 				t.Errorf("ObservationMetric(variable) = %s", err)

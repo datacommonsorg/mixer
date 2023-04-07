@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Package observationmetric is for V2 observation Metric API
-package observationmetric
+// Package observation is for V2 observation API
+package observation
 
 import (
 	"context"
@@ -25,7 +25,7 @@ import (
 	"google.golang.org/protobuf/proto"
 )
 
-// Existence implements logic to get ObservationMetric for existence.
+// Existence implements logic to check existence for entity, variable pair.
 func Existence(
 	ctx context.Context,
 	store *store.Store,
