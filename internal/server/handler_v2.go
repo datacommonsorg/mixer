@@ -58,7 +58,12 @@ func (s *Server) V2Resolve(
 				//   <-description
 				//   <-description{typeOf:City}
 				typeOf := arc.Filter["typeOf"]
-				return v2r.ResolveDescription(ctx, s.store, in.GetNodes(), typeOf)
+				return v2r.ResolveDescription(
+					ctx,
+					s.store,
+					s.mapsClient,
+					in.GetNodes(),
+					typeOf)
 			}
 		}
 	}

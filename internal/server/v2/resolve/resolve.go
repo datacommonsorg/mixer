@@ -27,6 +27,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/store"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
+	"googlemaps.github.io/maps"
 )
 
 // ResolveID resolves ID to ID.
@@ -97,10 +98,31 @@ func ResolveCoordinate(
 func ResolveDescription(
 	ctx context.Context,
 	store *store.Store,
+	mapsClient *maps.Client,
 	nodes []string,
 	typeOf string,
 ) (*pbv2.ResolveResponse, error) {
-	return nil, nil
+	entities := []*pb.BulkFindEntitiesRequest_Entity{}
+	for _, node := range nodes {
+		entities = append(entities, &pb.BulkFindEntitiesRequest_Entity{
+			Description: node,
+			Type:        typeOf,
+		})
+	}
+	data, err := recon.BulkFindEntities(ctx, &pb.BulkFindEntitiesRequest{
+		Entities: entities,
+	}, store, mapsClient)
+	if err != nil {
+		return nil, err
+	}
+	resp := &pbv2.ResolveResponse{}
+	for _, e := range data.GetEntities() {
+		resp.Entities = append(resp.Entities, &pbv2.ResolveResponse_Entity{
+			Node:        e.GetDescription(),
+			ResolvedIds: e.GetDcids(),
+		})
+	}
+	return resp, nil
 }
 
 func parseCoordinate(coordinateExpr string) (float64, float64, error) {

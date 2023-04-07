@@ -1,0 +1,16 @@
+{
+  "entities": [
+    {
+      "node": "New York City",
+      "resolvedIds": [
+        "geoId/3651000"
+      ]
+    },
+    {
+      "node": "Santa Clara",
+      "resolvedIds": [
+        "geoId/0669084"
+      ]
+    }
+  ]
+}

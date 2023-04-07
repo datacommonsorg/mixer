@@ -1,0 +1,16 @@
+{
+  "entities": [
+    {
+      "node": "Q30",
+      "resolvedIds": [
+        "country/USA"
+      ]
+    },
+    {
+      "node": "Q110739",
+      "resolvedIds": [
+        "geoId/06085"
+      ]
+    }
+  ]
+}
