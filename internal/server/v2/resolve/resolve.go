@@ -30,8 +30,8 @@ import (
 	"googlemaps.github.io/maps"
 )
 
-// ResolveID resolves ID to ID.
-func ResolveID(
+// ID resolves ID to ID.
+func ID(
 	ctx context.Context,
 	store *store.Store,
 	nodes []string,
@@ -59,8 +59,8 @@ func ResolveID(
 	return resp, nil
 }
 
-// ResolveCoordinate resolves geoCoordinate to DCID.
-func ResolveCoordinate(
+// Coordinate resolves geoCoordinate to DCID.
+func Coordinate(
 	ctx context.Context,
 	store *store.Store,
 	nodes []string,
@@ -94,8 +94,8 @@ func ResolveCoordinate(
 	return resp, nil
 }
 
-// ResolveDescription resolves description to DCID.
-func ResolveDescription(
+// Description resolves description to DCID.
+func Description(
 	ctx context.Context,
 	store *store.Store,
 	mapsClient *maps.Client,

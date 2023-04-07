@@ -24,7 +24,7 @@ import (
 	v2observation "github.com/datacommonsorg/mixer/internal/server/v2/observation"
 	v2p "github.com/datacommonsorg/mixer/internal/server/v2/properties"
 	v2pv "github.com/datacommonsorg/mixer/internal/server/v2/propertyvalues"
-	v2r "github.com/datacommonsorg/mixer/internal/server/v2/resolve"
+	"github.com/datacommonsorg/mixer/internal/server/v2/resolve"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
@@ -49,7 +49,7 @@ func (s *Server) V2Resolve(
 				// Coordinate to ID:
 				// Example:
 				//   <-geoCoordinate
-				return v2r.ResolveCoordinate(ctx, s.store, in.GetNodes())
+				return resolve.Coordinate(ctx, s.store, in.GetNodes())
 			}
 
 			if arc.SingleProp == "description" {
@@ -58,7 +58,7 @@ func (s *Server) V2Resolve(
 				//   <-description
 				//   <-description{typeOf:City}
 				typeOf := arc.Filter["typeOf"]
-				return v2r.ResolveDescription(
+				return resolve.Description(
 					ctx,
 					s.store,
 					s.mapsClient,
@@ -79,7 +79,7 @@ func (s *Server) V2Resolve(
 			inArc.SingleProp != "" &&
 			outArc.Out &&
 			outArc.SingleProp != "" {
-			return v2r.ResolveID(
+			return resolve.ID(
 				ctx,
 				s.store,
 				in.GetNodes(),
