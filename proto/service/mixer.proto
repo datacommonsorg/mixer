@@ -70,6 +70,14 @@ service Mixer {
     };
   }
 
+  rpc V2ObservationMetric(datacommons.v2.ObservationRequest)
+      returns (datacommons.v2.ObservationResponse) {
+    option (google.api.http) = {
+      get : "/v2/observation-metric"
+      additional_bindings : {post : "/v2/observation-metric" body : "*"}
+    };
+  }
+
   // ======================  V0   V0   V0   V0  ======================
 
   // Query DataCommons Graph with Sparql.

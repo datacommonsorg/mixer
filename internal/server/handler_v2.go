@@ -20,6 +20,7 @@ import (
 
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	v2observation "github.com/datacommonsorg/mixer/internal/server/v2/observation"
+	"github.com/datacommonsorg/mixer/internal/server/v2/observationmetric"
 	v2p "github.com/datacommonsorg/mixer/internal/server/v2/properties"
 	v2pv "github.com/datacommonsorg/mixer/internal/server/v2/propertyvalues"
 	"github.com/datacommonsorg/mixer/internal/util"
@@ -137,6 +138,17 @@ func (s *Server) V2Observation(
 			arc.Filter["typeOf"],
 			in.GetDate(),
 		)
+	}
+	return &pbv2.ObservationResponse{}, nil
+}
+
+// V2ObservationMetric implements API for mixer.V2ObservationMetric.
+func (s *Server) V2ObservationMetric(
+	ctx context.Context, in *pbv2.ObservationRequest,
+) (*pbv2.ObservationResponse, error) {
+	if in.GetVariablesExpression() == "?" { // Get all variables for entities
+		// TODO: Support appending entities from EntitiesExpression
+		return observationmetric.VariableMetric(ctx, s.store, in.GetEntities())
 	}
 	return &pbv2.ObservationResponse{}, nil
 }
