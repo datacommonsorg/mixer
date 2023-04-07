@@ -22,12 +22,68 @@ import (
 	v2observation "github.com/datacommonsorg/mixer/internal/server/v2/observation"
 	v2p "github.com/datacommonsorg/mixer/internal/server/v2/properties"
 	v2pv "github.com/datacommonsorg/mixer/internal/server/v2/propertyvalues"
+	v2r "github.com/datacommonsorg/mixer/internal/server/v2/resolve"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 )
+
+// V2Resolve implements API for mixer.V2Resolve.
+func (s *Server) V2Resolve(
+	ctx context.Context, in *pbv2.ResolveRequest,
+) (*pbv2.ResolveResponse, error) {
+	arcs, err := v2.ParseProperty(in.GetProperty())
+	if err != nil {
+		return nil, err
+	}
+
+	if len(arcs) == 1 {
+		arc := arcs[0]
+
+		if !arc.Out {
+			if arc.SingleProp == "geoCoordinate" {
+				// Coordinate to ID:
+				// Example:
+				//   <-geoCoordinate
+				return v2r.ResolveCoordinate(ctx, s.store, in.GetNodes())
+			}
+
+			if arc.SingleProp == "description" {
+				// Description (name) to ID:
+				// Examples:
+				//   <-description
+				//   <-description{typeOf:City}
+				typeOf := arc.Filter["typeOf"]
+				return v2r.ResolveDescription(ctx, s.store, in.GetNodes(), typeOf)
+			}
+		}
+	}
+
+	if len(arcs) == 2 {
+		// ID to ID:
+		// Example:
+		//   <-wikidataId->nutsCode
+		inArc := arcs[0]
+		outArc := arcs[1]
+
+		if !inArc.Out &&
+			inArc.SingleProp != "" &&
+			outArc.Out &&
+			outArc.SingleProp != "" {
+			return v2r.ResolveID(
+				ctx,
+				s.store,
+				in.GetNodes(),
+				inArc.SingleProp,
+				outArc.SingleProp)
+		}
+	}
+
+	return nil, status.Errorf(codes.InvalidArgument,
+		"invalid property for resolving: %s", in.GetProperty())
+}
 
 // V2Node implements API for mixer.V2Node.
 func (s *Server) V2Node(
