@@ -47,7 +47,7 @@ func TestVariable(t *testing.T) {
 			goldenFile := c.goldenFile
 			resp, err := mixer.V2Observation(ctx, &pbv2.ObservationRequest{
 				Select: []string{"variable", "entity"},
-				Entity: &pbv2.DcidOrExression{Dcids: c.entities},
+				Entity: &pbv2.DcidOrExpression{Dcids: c.entities},
 			})
 			if err != nil {
 				t.Errorf("ObservationMetric(variable) = %s", err)

@@ -46,6 +46,7 @@ protoc \
   --go-grpc_out=paths=source_relative:internal/proto \
   --go-grpc_opt=require_unimplemented_servers=false \
   --experimental_allow_proto3_optional \
+  --descriptor_set_out mixer-grpc.pb \
   proto/*.proto proto/**/*.proto
 ```
 

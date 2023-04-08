@@ -21,7 +21,7 @@ option go_package = "github.com/datacommonsorg/mixer/internal/proto/v2";
 import "stat.proto";
 
 // Represent a list of entities passed in as plain list or graph expression.
-message DcidOrExression {
+message DcidOrExpression {
   repeated string dcids = 1;
   // An arrow notation expression
   // Ex: country/USA<-containedInPlace{typeOf: State}
@@ -58,9 +58,9 @@ message FacetFilter {
 // Generic observation request
 message ObservationRequest {
   // A list of entity DCIDs
-  DcidOrExression variable = 1;
+  DcidOrExpression variable = 1;
   // A list of statistical variable DCIDs
-  DcidOrExression entity = 2;
+  DcidOrExpression entity = 2;
   // Date of the observation
   // - Not specified: all observations are returned
   // - "LATEST": latest obseration of each facet is returned
