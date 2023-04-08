@@ -106,31 +106,31 @@ func (s *Server) V2Observation(
 			queryDate = true
 		} else if item == "value" {
 			queryValue = true
-		} else if item == "variables" {
+		} else if item == "variable" {
 			queryVariable = true
-		} else if item == "entities" {
+		} else if item == "entitie" {
 			queryEntity = true
 		}
 	}
 	if !queryVariable || !queryEntity {
 		return nil, status.Error(
-			codes.InvalidArgument, "Must select 'variables' and 'entities'")
+			codes.InvalidArgument, "Must select 'variable' and 'entitie'")
 	}
 	// Observation date and value query.
 	if queryDate && queryValue {
-		if len(in.GetVariables()) > 0 && len(in.GetEntities()) > 0 {
+		if len(in.GetVariable().GetDcids()) > 0 && len(in.GetEntity().GetDcids()) > 0 {
 			return v2observation.FetchFromSeries(
 				ctx,
 				s.store,
-				in.GetVariables(),
-				in.GetEntities(),
+				in.GetVariable().GetDcids(),
+				in.GetEntity().GetDcids(),
 				in.GetDate(),
 			)
 		}
-		if len(in.GetVariables()) > 0 && in.GetEntitiesExpression() != "" {
+		if len(in.GetVariable().GetDcids()) > 0 && in.GetEntity().GetExpression() != "" {
 			// Example of expression
 			// "geoId/06<-containedInPlace+{typeOf: City}"
-			expr := in.GetEntitiesExpression()
+			expr := in.GetEntity().GetExpression()
 			g, err := v2.ParseLinkedNodes(expr)
 			if err != nil {
 				return nil, err
@@ -150,7 +150,7 @@ func (s *Server) V2Observation(
 			return v2observation.FetchFromCollection(
 				ctx,
 				s.store,
-				in.GetVariables(),
+				in.GetVariable().GetDcids(),
 				g.Subject,
 				arc.Filter["typeOf"],
 				in.GetDate(),
@@ -160,14 +160,15 @@ func (s *Server) V2Observation(
 
 	// Get existence of <variable, entity> pair.
 	if !queryDate && !queryValue {
-		if len(in.GetEntities()) > 0 {
-			if len(in.GetVariables()) > 0 {
-				// Have both entities and variables. Check existence cache.s
-				return v2observation.Existence(ctx, s.store, in.GetVariables(), in.GetEntities())
+		if len(in.GetEntity().GetDcids()) > 0 {
+			if len(in.GetVariable().GetDcids()) > 0 {
+				// Have both entity.dcids and variable.dcids. Check existence cache.
+				return v2observation.Existence(
+					ctx, s.store, in.GetVariable().GetDcids(), in.GetEntity().GetDcids())
 			} else {
-				// TODO: Support appending entities from EntitiesExpression
-				// Only have entities, fetch variables for each entity.
-				return v2observation.Variable(ctx, s.store, in.GetEntities())
+				// TODO: Support appending entities from entity.expression
+				// Only have entity.dcids, fetch variables for each entity.
+				return v2observation.Variable(ctx, s.store, in.GetEntity().GetDcids())
 			}
 		}
 	}

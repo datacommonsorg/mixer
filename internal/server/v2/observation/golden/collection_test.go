@@ -36,10 +36,10 @@ func TestFetchFromCollection(t *testing.T) {
 
 	testSuite := func(mixer pbs.MixerClient, latencyTest bool) {
 		for _, c := range []struct {
-			variables          []string
-			entitiesExpression string
-			date               string
-			goldenFile         string
+			variables        []string
+			entityExpression string
+			date             string
+			goldenFile       string
 		}{
 			{
 				[]string{"dummy", "Count_Person", "Median_Age_Person"},
@@ -98,10 +98,10 @@ func TestFetchFromCollection(t *testing.T) {
 		} {
 			goldenFile := c.goldenFile
 			resp, err := mixer.V2Observation(ctx, &pbv2.ObservationRequest{
-				Select:             []string{"variables", "entities", "date", "value"},
-				Variables:          c.variables,
-				EntitiesExpression: c.entitiesExpression,
-				Date:               c.date,
+				Select:   []string{"variable", "entity", "date", "value"},
+				Variable: &pbv2.DcidOrExression{Dcids: c.variables},
+				Entity:   &pbv2.DcidOrExression{Expression: c.entityExpression},
+				Date:     c.date,
 			})
 			if err != nil {
 				t.Errorf("could not run V2Observation (collection): %s", err)

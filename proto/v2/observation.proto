@@ -20,6 +20,14 @@ option go_package = "github.com/datacommonsorg/mixer/internal/proto/v2";
 
 import "stat.proto";
 
+// Represent a list of entities passed in as plain list or graph expression.
+message DcidOrExression {
+  repeated string dcids = 1;
+  // An arrow notation expression
+  // Ex: country/USA<-containedInPlace{typeOf: State}
+  string expression = 2;
+}
+
 // Holds all observations of a particular variable.
 message VariableObservation {
   // Keyed by entity DCID
@@ -50,27 +58,21 @@ message FacetFilter {
 // Generic observation request
 message ObservationRequest {
   // A list of entity DCIDs
-  repeated string entities = 1;
-  // An arrow notation expression of entities
-  // Ex: country/USA<-containedInPlace{typeOf: State}
-  string entities_expression = 2;
+  DcidOrExression variable = 1;
   // A list of statistical variable DCIDs
-  repeated string variables = 3;
-  // An arrow notation expression of variables
-  // Ex: dc/g/Root<-memberOf
-  string variables_expression = 4;
+  DcidOrExression entity = 2;
   // Date of the observation
   // - Not specified: all observations are returned
   // - "LATEST": latest obseration of each facet is returned
   // - "<DATE>": a speficied valid ISO 8601 date. Observation corresponding to
   //   this date is returned.
-  string date = 5;
+  string date = 3;
   // Value of the observation
-  string value = 6;
+  string value = 4;
   // [Optional] filter for the facet
-  FacetFilter filter = 7;
-  // Fields to query for, valide values are: "variables", "entities", "date", "value"
-  repeated string select = 8;
+  FacetFilter filter = 5;
+  // Fields to return, valide values are: "variable", "entitie", "date", "value"
+  repeated string select = 6;
 }
 
 message ObservationResponse {
