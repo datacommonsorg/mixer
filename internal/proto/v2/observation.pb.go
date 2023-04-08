@@ -142,7 +142,6 @@ func (x *VariableObservation) GetByEntity() map[string]*EntityObservation {
 	return nil
 }
 
-//
 type EntityObservation struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -324,7 +323,6 @@ type ObservationRequest struct {
 	// A list of statistical variable DCIDs
 	Entity *DcidOrExression `protobuf:"bytes,2,opt,name=entity,proto3" json:"entity,omitempty"`
 	// Date of the observation
-<<<<<<< HEAD
 	//   - Not specified: all observations are returned
 	//   - "LATEST": latest obseration of each facet is returned
 	//   - "<DATE>": a speficied valid ISO 8601 date. Observation corresponding to
@@ -336,19 +334,6 @@ type ObservationRequest struct {
 	Filter *FacetFilter `protobuf:"bytes,5,opt,name=filter,proto3" json:"filter,omitempty"`
 	// Fields to return, valide values are: "variable", "entitie", "date", "value"
 	Select []string `protobuf:"bytes,6,rep,name=select,proto3" json:"select,omitempty"`
-=======
-	// - Not specified: all observations are returned
-	// - "LATEST": latest obseration of each facet is returned
-	// - "<DATE>": a speficied valid ISO 8601 date. Observation corresponding to
-	//   this date is returned.
-	Date string `protobuf:"bytes,5,opt,name=date,proto3" json:"date,omitempty"`
-	// When specified, only observation with this unit is returned.
-	Unit string `protobuf:"bytes,6,opt,name=unit,proto3" json:"unit,omitempty"`
-	// When specified, only observation with this measurement method is returned.
-	MeasurementMethod string `protobuf:"bytes,7,opt,name=measurement_method,json=measurementMethod,proto3" json:"measurement_method,omitempty"`
-	// When specified, only observation with this observation period is returned.
-	Period string `protobuf:"bytes,8,opt,name=period,proto3" json:"period,omitempty"`
->>>>>>> b5c3559c46c6c8c728eee9788e4a402d0e063fea
 }
 
 func (x *ObservationRequest) Reset() {
