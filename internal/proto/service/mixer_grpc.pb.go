@@ -26,6 +26,7 @@ const _ = grpc.SupportPackageIsVersion7
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type MixerClient interface {
 	V2Node(ctx context.Context, in *v2.NodeRequest, opts ...grpc.CallOption) (*v2.NodeResponse, error)
+	V2Event(ctx context.Context, in *v2.EventRequest, opts ...grpc.CallOption) (*v2.EventResponse, error)
 	V2Observation(ctx context.Context, in *v2.ObservationRequest, opts ...grpc.CallOption) (*v2.ObservationResponse, error)
 	// Query DataCommons Graph with Sparql.
 	Query(ctx context.Context, in *proto.QueryRequest, opts ...grpc.CallOption) (*proto.QueryResponse, error)
@@ -148,16 +149,16 @@ type MixerClient interface {
 	// V2 [TODO]
 	// Get event collection for {eventType, affectedPlaceDcid, date}.
 	// NOTE:
-	//   - The affectedPlaceDcid is only for top-level places:
-	//     Earth, continent, country, state, adminArea1.
-	//   - The date format should be: YYYY-MM.
+	// - The affectedPlaceDcid is only for top-level places:
+	//   Earth, continent, country, state, adminArea1.
+	// - The date format should be: YYYY-MM.
 	EventCollection(ctx context.Context, in *v1.EventCollectionRequest, opts ...grpc.CallOption) (*v1.EventCollectionResponse, error)
 	// V2 [TODO]
 	// Get all dates for event collection for {eventType, affectedPlaceDcid}.
-	//   - The affectedPlaceDcid is only for top-level places:
-	//     Earth, continent, country, state, adminArea1.
-	//   - The date format should be: YYYY-MM.
-	//     The dates in the response are sorted from earliest to latest.
+	// - The affectedPlaceDcid is only for top-level places:
+	//   Earth, continent, country, state, adminArea1.
+	// - The date format should be: YYYY-MM.
+	//   The dates in the response are sorted from earliest to latest.
 	EventCollectionDate(ctx context.Context, in *v1.EventCollectionDateRequest, opts ...grpc.CallOption) (*v1.EventCollectionDateResponse, error)
 	// V2 [TODO]
 	// Resolve a list of entities, given their descriptions.
@@ -190,6 +191,15 @@ func NewMixerClient(cc grpc.ClientConnInterface) MixerClient {
 func (c *mixerClient) V2Node(ctx context.Context, in *v2.NodeRequest, opts ...grpc.CallOption) (*v2.NodeResponse, error) {
 	out := new(v2.NodeResponse)
 	err := c.cc.Invoke(ctx, "/datacommons.Mixer/V2Node", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *mixerClient) V2Event(ctx context.Context, in *v2.EventRequest, opts ...grpc.CallOption) (*v2.EventResponse, error) {
+	out := new(v2.EventResponse)
+	err := c.cc.Invoke(ctx, "/datacommons.Mixer/V2Event", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -750,6 +760,7 @@ func (c *mixerClient) RecognizePlaces(ctx context.Context, in *proto.RecognizePl
 // for forward compatibility
 type MixerServer interface {
 	V2Node(context.Context, *v2.NodeRequest) (*v2.NodeResponse, error)
+	V2Event(context.Context, *v2.EventRequest) (*v2.EventResponse, error)
 	V2Observation(context.Context, *v2.ObservationRequest) (*v2.ObservationResponse, error)
 	// Query DataCommons Graph with Sparql.
 	Query(context.Context, *proto.QueryRequest) (*proto.QueryResponse, error)
@@ -872,16 +883,16 @@ type MixerServer interface {
 	// V2 [TODO]
 	// Get event collection for {eventType, affectedPlaceDcid, date}.
 	// NOTE:
-	//   - The affectedPlaceDcid is only for top-level places:
-	//     Earth, continent, country, state, adminArea1.
-	//   - The date format should be: YYYY-MM.
+	// - The affectedPlaceDcid is only for top-level places:
+	//   Earth, continent, country, state, adminArea1.
+	// - The date format should be: YYYY-MM.
 	EventCollection(context.Context, *v1.EventCollectionRequest) (*v1.EventCollectionResponse, error)
 	// V2 [TODO]
 	// Get all dates for event collection for {eventType, affectedPlaceDcid}.
-	//   - The affectedPlaceDcid is only for top-level places:
-	//     Earth, continent, country, state, adminArea1.
-	//   - The date format should be: YYYY-MM.
-	//     The dates in the response are sorted from earliest to latest.
+	// - The affectedPlaceDcid is only for top-level places:
+	//   Earth, continent, country, state, adminArea1.
+	// - The date format should be: YYYY-MM.
+	//   The dates in the response are sorted from earliest to latest.
 	EventCollectionDate(context.Context, *v1.EventCollectionDateRequest) (*v1.EventCollectionDateResponse, error)
 	// V2 [TODO]
 	// Resolve a list of entities, given their descriptions.
@@ -909,6 +920,9 @@ type UnimplementedMixerServer struct {
 
 func (UnimplementedMixerServer) V2Node(context.Context, *v2.NodeRequest) (*v2.NodeResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method V2Node not implemented")
+}
+func (UnimplementedMixerServer) V2Event(context.Context, *v2.EventRequest) (*v2.EventResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method V2Event not implemented")
 }
 func (UnimplementedMixerServer) V2Observation(context.Context, *v2.ObservationRequest) (*v2.ObservationResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method V2Observation not implemented")
@@ -1119,6 +1133,24 @@ func _Mixer_V2Node_Handler(srv interface{}, ctx context.Context, dec func(interf
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(MixerServer).V2Node(ctx, req.(*v2.NodeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Mixer_V2Event_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(v2.EventRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MixerServer).V2Event(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/datacommons.Mixer/V2Event",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MixerServer).V2Event(ctx, req.(*v2.EventRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -2231,6 +2263,10 @@ var Mixer_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "V2Node",
 			Handler:    _Mixer_V2Node_Handler,
+		},
+		{
+			MethodName: "V2Event",
+			Handler:    _Mixer_V2Event_Handler,
 		},
 		{
 			MethodName: "V2Observation",
