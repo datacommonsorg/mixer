@@ -42,16 +42,16 @@ func FetchFromSeries(
 	queryDate string,
 ) (*pbv2.ObservationResponse, error) {
 	result := &pbv2.ObservationResponse{
-		ObservationsByVariable: map[string]*pbv2.VariableObservation{},
-		Facets:                 map[string]*pb.Facet{},
+		ByVariable: map[string]*pbv2.VariableObservation{},
+		Facets:     map[string]*pb.Facet{},
 	}
 	btData, err := stat.ReadStatsPb(ctx, store.BtGroup, entities, variables)
 	if err != nil {
 		return result, err
 	}
 	for _, variable := range variables {
-		result.ObservationsByVariable[variable] = &pbv2.VariableObservation{
-			ObservationsByEntity: map[string]*pbv2.EntityObservation{},
+		result.ByVariable[variable] = &pbv2.VariableObservation{
+			ByEntity: map[string]*pbv2.EntityObservation{},
 		}
 		for _, entity := range entities {
 			entityObservation := &pbv2.EntityObservation{}
@@ -89,8 +89,8 @@ func FetchFromSeries(
 					}
 
 					result.Facets[facetID] = facet
-					entityObservation.OrderedFacetObservations = append(
-						entityObservation.OrderedFacetObservations,
+					entityObservation.OrderedFacets = append(
+						entityObservation.OrderedFacets,
 						&pbv2.FacetObservation{
 							FacetId:      facetID,
 							Observations: obsList,
@@ -98,7 +98,7 @@ func FetchFromSeries(
 					)
 				}
 			}
-			result.ObservationsByVariable[variable].ObservationsByEntity[entity] = entityObservation
+			result.ByVariable[variable].ByEntity[entity] = entityObservation
 		}
 	}
 	return result, nil

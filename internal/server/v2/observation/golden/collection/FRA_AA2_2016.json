@@ -1,9 +1,9 @@
 {
-  "observations_by_variable": {
+  "by_variable": {
     "Count_Person": {
-      "observations_by_entity": {
+      "by_entity": {
         "country/GLP": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "1456184638",
               "observations": [
@@ -17,7 +17,7 @@
         },
         "country/GUF": {},
         "country/MTQ": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "1456184638",
               "observations": [
@@ -30,7 +30,7 @@
           ]
         },
         "country/MYT": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -44,7 +44,7 @@
         },
         "country/REU": {},
         "nuts/FR101": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "1001395862",
               "observations": [
@@ -75,7 +75,7 @@
           ]
         },
         "nuts/FR102": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "1001395862",
               "observations": [
@@ -124,7 +124,7 @@
           ]
         },
         "nuts/FR103": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "1001395862",
               "observations": [
@@ -173,7 +173,7 @@
           ]
         },
         "nuts/FR104": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "1001395862",
               "observations": [
@@ -213,7 +213,7 @@
           ]
         },
         "nuts/FR105": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "1001395862",
               "observations": [
@@ -262,7 +262,7 @@
           ]
         },
         "nuts/FR106": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "1001395862",
               "observations": [
@@ -311,7 +311,7 @@
           ]
         },
         "nuts/FR107": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "1001395862",
               "observations": [
@@ -360,7 +360,7 @@
           ]
         },
         "nuts/FR108": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "1001395862",
               "observations": [
@@ -409,7 +409,7 @@
           ]
         },
         "nuts/FR211": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -431,7 +431,7 @@
           ]
         },
         "nuts/FR212": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -453,7 +453,7 @@
           ]
         },
         "nuts/FR213": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -475,7 +475,7 @@
           ]
         },
         "nuts/FR214": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -497,7 +497,7 @@
           ]
         },
         "nuts/FR221": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -510,7 +510,7 @@
           ]
         },
         "nuts/FR222": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -523,7 +523,7 @@
           ]
         },
         "nuts/FR223": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -536,7 +536,7 @@
           ]
         },
         "nuts/FR231": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -558,7 +558,7 @@
           ]
         },
         "nuts/FR232": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -580,7 +580,7 @@
           ]
         },
         "nuts/FR241": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -602,7 +602,7 @@
           ]
         },
         "nuts/FR242": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -624,7 +624,7 @@
           ]
         },
         "nuts/FR243": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -646,7 +646,7 @@
           ]
         },
         "nuts/FR244": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -668,7 +668,7 @@
           ]
         },
         "nuts/FR245": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -690,7 +690,7 @@
           ]
         },
         "nuts/FR246": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -712,7 +712,7 @@
           ]
         },
         "nuts/FR251": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -734,7 +734,7 @@
           ]
         },
         "nuts/FR252": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -756,7 +756,7 @@
           ]
         },
         "nuts/FR253": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -778,7 +778,7 @@
           ]
         },
         "nuts/FR261": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -800,7 +800,7 @@
           ]
         },
         "nuts/FR262": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -822,7 +822,7 @@
           ]
         },
         "nuts/FR263": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -844,7 +844,7 @@
           ]
         },
         "nuts/FR264": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -866,7 +866,7 @@
           ]
         },
         "nuts/FR301": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -879,7 +879,7 @@
           ]
         },
         "nuts/FR302": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -892,7 +892,7 @@
           ]
         },
         "nuts/FR411": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -905,7 +905,7 @@
           ]
         },
         "nuts/FR412": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -918,7 +918,7 @@
           ]
         },
         "nuts/FR431": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -931,7 +931,7 @@
           ]
         },
         "nuts/FR432": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -953,7 +953,7 @@
           ]
         },
         "nuts/FR433": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -975,7 +975,7 @@
           ]
         },
         "nuts/FR434": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -997,7 +997,7 @@
           ]
         },
         "nuts/FR511": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -1010,7 +1010,7 @@
           ]
         },
         "nuts/FR512": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -1032,7 +1032,7 @@
           ]
         },
         "nuts/FR513": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -1054,7 +1054,7 @@
           ]
         },
         "nuts/FR514": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -1076,7 +1076,7 @@
           ]
         },
         "nuts/FR515": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -1098,7 +1098,7 @@
           ]
         },
         "nuts/FR521": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -1120,7 +1120,7 @@
           ]
         },
         "nuts/FR522": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -1142,7 +1142,7 @@
           ]
         },
         "nuts/FR523": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -1164,7 +1164,7 @@
           ]
         },
         "nuts/FR524": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -1186,7 +1186,7 @@
           ]
         },
         "nuts/FR531": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -1208,7 +1208,7 @@
           ]
         },
         "nuts/FR532": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -1230,7 +1230,7 @@
           ]
         },
         "nuts/FR533": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -1252,7 +1252,7 @@
           ]
         },
         "nuts/FR534": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -1274,7 +1274,7 @@
           ]
         },
         "nuts/FR611": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -1296,7 +1296,7 @@
           ]
         },
         "nuts/FR612": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -1318,7 +1318,7 @@
           ]
         },
         "nuts/FR613": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -1340,7 +1340,7 @@
           ]
         },
         "nuts/FR615": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -1353,7 +1353,7 @@
           ]
         },
         "nuts/FR621": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -1375,7 +1375,7 @@
           ]
         },
         "nuts/FR622": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -1397,7 +1397,7 @@
           ]
         },
         "nuts/FR623": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -1419,7 +1419,7 @@
           ]
         },
         "nuts/FR624": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -1441,7 +1441,7 @@
           ]
         },
         "nuts/FR625": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -1463,7 +1463,7 @@
           ]
         },
         "nuts/FR626": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -1485,7 +1485,7 @@
           ]
         },
         "nuts/FR627": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -1498,7 +1498,7 @@
           ]
         },
         "nuts/FR628": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -1520,7 +1520,7 @@
           ]
         },
         "nuts/FR631": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -1542,7 +1542,7 @@
           ]
         },
         "nuts/FR632": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -1564,7 +1564,7 @@
           ]
         },
         "nuts/FR633": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -1586,7 +1586,7 @@
           ]
         },
         "nuts/FR711": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -1608,7 +1608,7 @@
           ]
         },
         "nuts/FR712": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -1630,7 +1630,7 @@
           ]
         },
         "nuts/FR713": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -1652,7 +1652,7 @@
           ]
         },
         "nuts/FR714": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -1674,7 +1674,7 @@
           ]
         },
         "nuts/FR715": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -1696,7 +1696,7 @@
           ]
         },
         "nuts/FR717": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -1709,7 +1709,7 @@
           ]
         },
         "nuts/FR718": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -1722,7 +1722,7 @@
           ]
         },
         "nuts/FR721": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -1744,7 +1744,7 @@
           ]
         },
         "nuts/FR722": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -1766,7 +1766,7 @@
           ]
         },
         "nuts/FR723": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -1788,7 +1788,7 @@
           ]
         },
         "nuts/FR724": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -1810,7 +1810,7 @@
           ]
         },
         "nuts/FR811": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -1823,7 +1823,7 @@
           ]
         },
         "nuts/FR812": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -1845,7 +1845,7 @@
           ]
         },
         "nuts/FR813": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -1858,7 +1858,7 @@
           ]
         },
         "nuts/FR814": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -1880,7 +1880,7 @@
           ]
         },
         "nuts/FR815": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -1893,7 +1893,7 @@
           ]
         },
         "nuts/FR821": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -1915,7 +1915,7 @@
           ]
         },
         "nuts/FR822": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -1937,7 +1937,7 @@
           ]
         },
         "nuts/FR823": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -1950,7 +1950,7 @@
           ]
         },
         "nuts/FR824": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -1972,7 +1972,7 @@
           ]
         },
         "nuts/FR825": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -1994,7 +1994,7 @@
           ]
         },
         "nuts/FR826": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -2016,7 +2016,7 @@
           ]
         },
         "nuts/FR831": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -2038,7 +2038,7 @@
           ]
         },
         "nuts/FR832": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "738965619",
               "observations": [
@@ -2060,7 +2060,7 @@
           ]
         },
         "nuts/FRI14": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "1001395862",
               "observations": [

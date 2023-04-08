@@ -54,16 +54,16 @@ func FetchFromCollection(
 		}
 	}
 	result := &pbv2.ObservationResponse{
-		ObservationsByVariable: map[string]*pbv2.VariableObservation{},
-		Facets:                 map[string]*pb.Facet{},
+		ByVariable: map[string]*pbv2.VariableObservation{},
+		Facets:     map[string]*pb.Facet{},
 	}
 	variablesMissingData := []string{}
 	for _, variable := range variables {
-		result.ObservationsByVariable[variable] = &pbv2.VariableObservation{
-			ObservationsByEntity: map[string]*pbv2.EntityObservation{},
+		result.ByVariable[variable] = &pbv2.VariableObservation{
+			ByEntity: map[string]*pbv2.EntityObservation{},
 		}
 		// Create a short alias
-		obsByEntity := result.ObservationsByVariable[variable].ObservationsByEntity
+		obsByEntity := result.ByVariable[variable].ByEntity
 		data, ok := btData[variable]
 		if !ok || data == nil {
 			variablesMissingData = append(variablesMissingData, variable)
@@ -86,8 +86,8 @@ func FetchFromCollection(
 				if respDate == LATEST {
 					respDate = cohort.PlaceToLatestDate[entity]
 				}
-				obsByEntity[entity].OrderedFacetObservations = append(
-					obsByEntity[entity].OrderedFacetObservations,
+				obsByEntity[entity].OrderedFacets = append(
+					obsByEntity[entity].OrderedFacets,
 					&pbv2.FacetObservation{
 						FacetId: facetID,
 						Observations: []*pb.PointStat{
@@ -130,8 +130,8 @@ func FetchFromCollection(
 		if err != nil {
 			return nil, err
 		}
-		for variable, variableData := range moreResult.ObservationsByVariable {
-			result.ObservationsByVariable[variable] = variableData
+		for variable, variableData := range moreResult.ByVariable {
+			result.ByVariable[variable] = variableData
 		}
 		for facet, res := range moreResult.Facets {
 			result.Facets[facet] = res

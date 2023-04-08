@@ -1,9 +1,9 @@
 {
-  "observations_by_variable": {
+  "by_variable": {
     "Count_Person": {
-      "observations_by_entity": {
+      "by_entity": {
         "geoId/06001": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "2176550201",
               "observations": [
@@ -70,7 +70,7 @@
           ]
         },
         "geoId/06003": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "2176550201",
               "observations": [
@@ -128,7 +128,7 @@
           ]
         },
         "geoId/06005": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "2176550201",
               "observations": [
@@ -186,7 +186,7 @@
           ]
         },
         "geoId/06007": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "2176550201",
               "observations": [
@@ -253,7 +253,7 @@
           ]
         },
         "geoId/06009": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "2176550201",
               "observations": [
@@ -311,7 +311,7 @@
           ]
         },
         "geoId/06011": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "2176550201",
               "observations": [
@@ -369,7 +369,7 @@
           ]
         },
         "geoId/06013": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "2176550201",
               "observations": [
@@ -436,7 +436,7 @@
           ]
         },
         "geoId/06015": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "2176550201",
               "observations": [
@@ -494,7 +494,7 @@
           ]
         },
         "geoId/06017": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "2176550201",
               "observations": [
@@ -561,7 +561,7 @@
           ]
         },
         "geoId/06019": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "2176550201",
               "observations": [
@@ -628,7 +628,7 @@
           ]
         },
         "geoId/06021": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "2176550201",
               "observations": [
@@ -686,7 +686,7 @@
           ]
         },
         "geoId/06023": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "2176550201",
               "observations": [
@@ -753,7 +753,7 @@
           ]
         },
         "geoId/06025": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "2176550201",
               "observations": [
@@ -820,7 +820,7 @@
           ]
         },
         "geoId/06027": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "2176550201",
               "observations": [
@@ -878,7 +878,7 @@
           ]
         },
         "geoId/06029": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "2176550201",
               "observations": [
@@ -945,7 +945,7 @@
           ]
         },
         "geoId/06031": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "2176550201",
               "observations": [
@@ -1012,7 +1012,7 @@
           ]
         },
         "geoId/06033": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "2176550201",
               "observations": [
@@ -1079,7 +1079,7 @@
           ]
         },
         "geoId/06035": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "2176550201",
               "observations": [
@@ -1137,7 +1137,7 @@
           ]
         },
         "geoId/06037": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "2176550201",
               "observations": [
@@ -1204,7 +1204,7 @@
           ]
         },
         "geoId/06039": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "2176550201",
               "observations": [
@@ -1271,7 +1271,7 @@
           ]
         },
         "geoId/06041": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "2176550201",
               "observations": [
@@ -1338,7 +1338,7 @@
           ]
         },
         "geoId/06043": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "2176550201",
               "observations": [
@@ -1396,7 +1396,7 @@
           ]
         },
         "geoId/06045": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "2176550201",
               "observations": [
@@ -1463,7 +1463,7 @@
           ]
         },
         "geoId/06047": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "2176550201",
               "observations": [
@@ -1530,7 +1530,7 @@
           ]
         },
         "geoId/06049": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "2176550201",
               "observations": [
@@ -1588,7 +1588,7 @@
           ]
         },
         "geoId/06051": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "2176550201",
               "observations": [
@@ -1646,7 +1646,7 @@
           ]
         },
         "geoId/06053": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "2176550201",
               "observations": [
@@ -1713,7 +1713,7 @@
           ]
         },
         "geoId/06055": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "2176550201",
               "observations": [
@@ -1780,7 +1780,7 @@
           ]
         },
         "geoId/06057": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "2176550201",
               "observations": [
@@ -1847,7 +1847,7 @@
           ]
         },
         "geoId/06059": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "2176550201",
               "observations": [
@@ -1914,7 +1914,7 @@
           ]
         },
         "geoId/06061": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "2176550201",
               "observations": [
@@ -1981,7 +1981,7 @@
           ]
         },
         "geoId/06063": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "2176550201",
               "observations": [
@@ -2039,7 +2039,7 @@
           ]
         },
         "geoId/06065": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "2176550201",
               "observations": [
@@ -2106,7 +2106,7 @@
           ]
         },
         "geoId/06067": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "2176550201",
               "observations": [
@@ -2173,7 +2173,7 @@
           ]
         },
         "geoId/06069": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "2176550201",
               "observations": [
@@ -2231,7 +2231,7 @@
           ]
         },
         "geoId/06071": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "2176550201",
               "observations": [
@@ -2298,7 +2298,7 @@
           ]
         },
         "geoId/06073": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "2176550201",
               "observations": [
@@ -2365,7 +2365,7 @@
           ]
         },
         "geoId/06075": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "2176550201",
               "observations": [
@@ -2414,7 +2414,7 @@
           ]
         },
         "geoId/06077": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "2176550201",
               "observations": [
@@ -2481,7 +2481,7 @@
           ]
         },
         "geoId/06079": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "2176550201",
               "observations": [
@@ -2548,7 +2548,7 @@
           ]
         },
         "geoId/06081": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "2176550201",
               "observations": [
@@ -2606,7 +2606,7 @@
           ]
         },
         "geoId/06083": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "2176550201",
               "observations": [
@@ -2673,7 +2673,7 @@
           ]
         },
         "geoId/06085": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "2176550201",
               "observations": [
@@ -2740,7 +2740,7 @@
           ]
         },
         "geoId/06087": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "2176550201",
               "observations": [
@@ -2807,7 +2807,7 @@
           ]
         },
         "geoId/06089": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "2176550201",
               "observations": [
@@ -2874,7 +2874,7 @@
           ]
         },
         "geoId/06091": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "2176550201",
               "observations": [
@@ -2932,7 +2932,7 @@
           ]
         },
         "geoId/06093": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "2176550201",
               "observations": [
@@ -2990,7 +2990,7 @@
           ]
         },
         "geoId/06095": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "2176550201",
               "observations": [
@@ -3057,7 +3057,7 @@
           ]
         },
         "geoId/06097": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "2176550201",
               "observations": [
@@ -3124,7 +3124,7 @@
           ]
         },
         "geoId/06099": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "2176550201",
               "observations": [
@@ -3191,7 +3191,7 @@
           ]
         },
         "geoId/06101": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "2176550201",
               "observations": [
@@ -3258,7 +3258,7 @@
           ]
         },
         "geoId/06103": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "2176550201",
               "observations": [
@@ -3325,7 +3325,7 @@
           ]
         },
         "geoId/06105": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "2176550201",
               "observations": [
@@ -3383,7 +3383,7 @@
           ]
         },
         "geoId/06107": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "2176550201",
               "observations": [
@@ -3450,7 +3450,7 @@
           ]
         },
         "geoId/06109": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "2176550201",
               "observations": [
@@ -3508,7 +3508,7 @@
           ]
         },
         "geoId/06111": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "2176550201",
               "observations": [
@@ -3575,7 +3575,7 @@
           ]
         },
         "geoId/06113": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "2176550201",
               "observations": [
@@ -3642,7 +3642,7 @@
           ]
         },
         "geoId/06115": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "2176550201",
               "observations": [
@@ -3711,9 +3711,9 @@
       }
     },
     "Median_Age_Person": {
-      "observations_by_entity": {
+      "by_entity": {
         "geoId/06001": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3795540742",
               "observations": [
@@ -3726,7 +3726,7 @@
           ]
         },
         "geoId/06003": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3795540742",
               "observations": [
@@ -3739,7 +3739,7 @@
           ]
         },
         "geoId/06005": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3795540742",
               "observations": [
@@ -3752,7 +3752,7 @@
           ]
         },
         "geoId/06007": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3795540742",
               "observations": [
@@ -3765,7 +3765,7 @@
           ]
         },
         "geoId/06009": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3795540742",
               "observations": [
@@ -3778,7 +3778,7 @@
           ]
         },
         "geoId/06011": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3795540742",
               "observations": [
@@ -3791,7 +3791,7 @@
           ]
         },
         "geoId/06013": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3795540742",
               "observations": [
@@ -3804,7 +3804,7 @@
           ]
         },
         "geoId/06015": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3795540742",
               "observations": [
@@ -3817,7 +3817,7 @@
           ]
         },
         "geoId/06017": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3795540742",
               "observations": [
@@ -3830,7 +3830,7 @@
           ]
         },
         "geoId/06019": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3795540742",
               "observations": [
@@ -3843,7 +3843,7 @@
           ]
         },
         "geoId/06021": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3795540742",
               "observations": [
@@ -3856,7 +3856,7 @@
           ]
         },
         "geoId/06023": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3795540742",
               "observations": [
@@ -3869,7 +3869,7 @@
           ]
         },
         "geoId/06025": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3795540742",
               "observations": [
@@ -3882,7 +3882,7 @@
           ]
         },
         "geoId/06027": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3795540742",
               "observations": [
@@ -3895,7 +3895,7 @@
           ]
         },
         "geoId/06029": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3795540742",
               "observations": [
@@ -3908,7 +3908,7 @@
           ]
         },
         "geoId/06031": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3795540742",
               "observations": [
@@ -3921,7 +3921,7 @@
           ]
         },
         "geoId/06033": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3795540742",
               "observations": [
@@ -3934,7 +3934,7 @@
           ]
         },
         "geoId/06035": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3795540742",
               "observations": [
@@ -3947,7 +3947,7 @@
           ]
         },
         "geoId/06037": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3795540742",
               "observations": [
@@ -3960,7 +3960,7 @@
           ]
         },
         "geoId/06039": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3795540742",
               "observations": [
@@ -3973,7 +3973,7 @@
           ]
         },
         "geoId/06041": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3795540742",
               "observations": [
@@ -3986,7 +3986,7 @@
           ]
         },
         "geoId/06043": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3795540742",
               "observations": [
@@ -3999,7 +3999,7 @@
           ]
         },
         "geoId/06045": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3795540742",
               "observations": [
@@ -4012,7 +4012,7 @@
           ]
         },
         "geoId/06047": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3795540742",
               "observations": [
@@ -4025,7 +4025,7 @@
           ]
         },
         "geoId/06049": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3795540742",
               "observations": [
@@ -4038,7 +4038,7 @@
           ]
         },
         "geoId/06051": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3795540742",
               "observations": [
@@ -4051,7 +4051,7 @@
           ]
         },
         "geoId/06053": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3795540742",
               "observations": [
@@ -4064,7 +4064,7 @@
           ]
         },
         "geoId/06055": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3795540742",
               "observations": [
@@ -4077,7 +4077,7 @@
           ]
         },
         "geoId/06057": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3795540742",
               "observations": [
@@ -4090,7 +4090,7 @@
           ]
         },
         "geoId/06059": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3795540742",
               "observations": [
@@ -4103,7 +4103,7 @@
           ]
         },
         "geoId/06061": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3795540742",
               "observations": [
@@ -4116,7 +4116,7 @@
           ]
         },
         "geoId/06063": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3795540742",
               "observations": [
@@ -4129,7 +4129,7 @@
           ]
         },
         "geoId/06065": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3795540742",
               "observations": [
@@ -4142,7 +4142,7 @@
           ]
         },
         "geoId/06067": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3795540742",
               "observations": [
@@ -4155,7 +4155,7 @@
           ]
         },
         "geoId/06069": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3795540742",
               "observations": [
@@ -4168,7 +4168,7 @@
           ]
         },
         "geoId/06071": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3795540742",
               "observations": [
@@ -4181,7 +4181,7 @@
           ]
         },
         "geoId/06073": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3795540742",
               "observations": [
@@ -4194,7 +4194,7 @@
           ]
         },
         "geoId/06075": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3795540742",
               "observations": [
@@ -4207,7 +4207,7 @@
           ]
         },
         "geoId/06077": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3795540742",
               "observations": [
@@ -4220,7 +4220,7 @@
           ]
         },
         "geoId/06079": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3795540742",
               "observations": [
@@ -4233,7 +4233,7 @@
           ]
         },
         "geoId/06081": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3795540742",
               "observations": [
@@ -4246,7 +4246,7 @@
           ]
         },
         "geoId/06083": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3795540742",
               "observations": [
@@ -4259,7 +4259,7 @@
           ]
         },
         "geoId/06085": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3795540742",
               "observations": [
@@ -4272,7 +4272,7 @@
           ]
         },
         "geoId/06087": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3795540742",
               "observations": [
@@ -4285,7 +4285,7 @@
           ]
         },
         "geoId/06089": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3795540742",
               "observations": [
@@ -4298,7 +4298,7 @@
           ]
         },
         "geoId/06091": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3795540742",
               "observations": [
@@ -4311,7 +4311,7 @@
           ]
         },
         "geoId/06093": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3795540742",
               "observations": [
@@ -4324,7 +4324,7 @@
           ]
         },
         "geoId/06095": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3795540742",
               "observations": [
@@ -4337,7 +4337,7 @@
           ]
         },
         "geoId/06097": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3795540742",
               "observations": [
@@ -4350,7 +4350,7 @@
           ]
         },
         "geoId/06099": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3795540742",
               "observations": [
@@ -4363,7 +4363,7 @@
           ]
         },
         "geoId/06101": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3795540742",
               "observations": [
@@ -4376,7 +4376,7 @@
           ]
         },
         "geoId/06103": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3795540742",
               "observations": [
@@ -4389,7 +4389,7 @@
           ]
         },
         "geoId/06105": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3795540742",
               "observations": [
@@ -4402,7 +4402,7 @@
           ]
         },
         "geoId/06107": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3795540742",
               "observations": [
@@ -4415,7 +4415,7 @@
           ]
         },
         "geoId/06109": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3795540742",
               "observations": [
@@ -4428,7 +4428,7 @@
           ]
         },
         "geoId/06111": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3795540742",
               "observations": [
@@ -4441,7 +4441,7 @@
           ]
         },
         "geoId/06113": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3795540742",
               "observations": [
@@ -4454,7 +4454,7 @@
           ]
         },
         "geoId/06115": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3795540742",
               "observations": [
@@ -4469,7 +4469,7 @@
       }
     },
     "dummy": {
-      "observations_by_entity": {
+      "by_entity": {
         "geoId/06001": {},
         "geoId/06003": {},
         "geoId/06005": {},
