@@ -108,13 +108,13 @@ func (s *Server) V2Observation(
 			queryValue = true
 		} else if item == "variable" {
 			queryVariable = true
-		} else if item == "entitie" {
+		} else if item == "entity" {
 			queryEntity = true
 		}
 	}
 	if !queryVariable || !queryEntity {
 		return nil, status.Error(
-			codes.InvalidArgument, "Must select 'variable' and 'entitie'")
+			codes.InvalidArgument, "Must select 'variable' and 'entity'")
 	}
 	// Observation date and value query.
 	if queryDate && queryValue {
