@@ -1,0 +1,30 @@
+{
+  "data": {
+    "dc/g/Farm_FarmInventoryStatus-InventorySold_FarmInventoryType": {
+      "neighbor": {
+        "dc/g/Farm_FarmInventoryStatus-InventorySold": {
+          "neighbor": {
+            "dc/g/Farm_FarmInventoryStatus": {
+              "neighbor": {
+                "dc/g/Farm": {
+                  "neighbor": {
+                    "dc/g/Agriculture": {}
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "dc/g/Person_BachelorsDegreeMajor-BusinessMajor": {
+      "neighbor": {
+        "dc/g/Person_BachelorsDegreeMajor": {
+          "neighbor": {
+            "dc/g/Education": {}
+          }
+        }
+      }
+    }
+  }
+}

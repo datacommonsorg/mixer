@@ -17,10 +17,13 @@ package propertyvalues
 
 import (
 	"context"
+	"strings"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/placein"
+	"github.com/datacommonsorg/mixer/internal/server/resource"
+	"github.com/datacommonsorg/mixer/internal/server/statvar"
 	v1pv "github.com/datacommonsorg/mixer/internal/server/v1/propertyvalues"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/codes"
@@ -74,48 +77,77 @@ func API(
 func LinkedPropertyValues(
 	ctx context.Context,
 	store *store.Store,
+	cache *resource.Cache,
 	nodes []string,
 	linkedProperty string,
+	direction string,
 	filter map[string]string,
 ) (*pbv2.NodeResponse, error) {
-	if linkedProperty != "containedInPlace" {
-		return nil, status.Errorf(codes.InvalidArgument,
-			"only containedInPlace is supported for wildcard '+'")
-	}
-
 	nodeType, ok := filter["typeOf"]
 	if !ok {
-		return nil, status.Errorf(codes.InvalidArgument,
-			"must provide typeOf filter for <-containedInPlace+")
+		return nil, status.Errorf(codes.InvalidArgument, "must provide typeOf filters")
 	}
 
-	data, err := placein.GetPlacesIn(
-		ctx,
-		store,
-		nodes,
-		nodeType,
-	)
-	if err != nil {
-		return nil, err
-	}
-
-	res := &pbv2.NodeResponse{Data: map[string]*pbv2.LinkedGraph{}}
-	for _, node := range nodes {
-		list := []*pb.EntityInfo{}
-
-		dcids, ok := data[node]
-		if ok && len(dcids) > 0 {
-			for _, dcid := range dcids {
-				list = append(list, &pb.EntityInfo{Dcid: dcid})
+	if linkedProperty == "containedInPlace" && direction == util.DirectionIn {
+		data, err := placein.GetPlacesIn(
+			ctx,
+			store,
+			nodes,
+			nodeType,
+		)
+		if err != nil {
+			return nil, err
+		}
+		res := &pbv2.NodeResponse{Data: map[string]*pbv2.LinkedGraph{}}
+		for _, node := range nodes {
+			list := []*pb.EntityInfo{}
+			dcids, ok := data[node]
+			if ok && len(dcids) > 0 {
+				for _, dcid := range dcids {
+					list = append(list, &pb.EntityInfo{Dcid: dcid})
+				}
+			}
+			res.Data[node] = &pbv2.LinkedGraph{
+				Arcs: map[string]*pbv2.Nodes{
+					"containedInPlace+": {Nodes: list},
+				},
 			}
 		}
-
-		res.Data[node] = &pbv2.LinkedGraph{
-			Arcs: map[string]*pbv2.Nodes{
-				"containedInPlace+": {Nodes: list},
-			},
+		return res, nil
+	} else if linkedProperty == "specializationOf" &&
+		direction == util.DirectionOut &&
+		nodeType == "StatVarGroup" {
+		res := &pbv2.NodeResponse{Data: map[string]*pbv2.LinkedGraph{}}
+		for _, node := range nodes {
+			res.Data[node] = &pbv2.LinkedGraph{
+				Neighbor: map[string]*pbv2.LinkedGraph{},
+			}
+			g := res.Data[node]
+			curr := node
+			for {
+				if parents, ok := cache.ParentSvg[curr]; ok {
+					curr = parents[0]
+					for _, parent := range parents {
+						// Prefer parent from custom import group
+						if strings.HasPrefix(parent, "dc/g/Custom_") {
+							curr = parent
+							break
+						}
+					}
+					if curr == statvar.SvgRoot {
+						break
+					}
+					g.Neighbor[curr] = &pbv2.LinkedGraph{
+						Neighbor: map[string]*pbv2.LinkedGraph{},
+					}
+					g = g.Neighbor[curr]
+				} else {
+					break
+				}
+			}
 		}
+		return res, nil
 	}
-
-	return res, nil
+	return nil, status.Errorf(codes.InvalidArgument,
+		"Invalid property %s for wildcard '+'", linkedProperty)
 }
