@@ -1,9 +1,9 @@
 {
-  "observations_by_variable": {
+  "by_variable": {
     "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita": {
-      "observations_by_entity": {
+      "by_entity": {
         "country/FRA": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "2171028778",
               "observations": [
@@ -16,7 +16,7 @@
           ]
         },
         "country/USA": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "2171028778",
               "observations": [
@@ -34,7 +34,7 @@
       }
     },
     "Annual_Generation_Electricity": {
-      "observations_by_entity": {
+      "by_entity": {
         "country/FRA": {},
         "country/USA": {},
         "dummy": {},
@@ -43,7 +43,7 @@
       }
     },
     "Count_CriminalActivities_CombinedCrime": {
-      "observations_by_entity": {
+      "by_entity": {
         "country/FRA": {},
         "country/USA": {},
         "dummy": {},
@@ -52,12 +52,12 @@
       }
     },
     "Count_Person_Unemployed": {
-      "observations_by_entity": {
+      "by_entity": {
         "country/FRA": {},
         "country/USA": {},
         "dummy": {},
         "geoId/06": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "2978659163",
               "observations": [
@@ -70,7 +70,7 @@
           ]
         },
         "geoId/0649670": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "2978659163",
               "observations": [

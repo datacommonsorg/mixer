@@ -75,9 +75,10 @@ func TestFetchFromSeries(t *testing.T) {
 		} {
 			goldenFile := c.goldenFile
 			resp, err := mixer.V2Observation(ctx, &pbv2.ObservationRequest{
-				Variables: c.variables,
-				Entities:  c.entities,
-				Date:      c.date,
+				Select:   []string{"variable", "entity", "date", "value"},
+				Variable: &pbv2.DcidOrExpression{Dcids: c.variables},
+				Entity:   &pbv2.DcidOrExpression{Dcids: c.entities},
+				Date:     c.date,
 			})
 			if err != nil {
 				t.Errorf("could not run V2Observation (series): %s", err)

@@ -1,11 +1,11 @@
 {
-  "observations_by_variable": {
+  "by_variable": {
     "AirQualityIndex_AirPollutant": {
-      "observations_by_entity": {
+      "by_entity": {
         "country/USA": {},
         "geoId/06": {},
         "geoId/17031": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "3775409807",
               "observations": [
@@ -20,9 +20,9 @@
       }
     },
     "Area_Farm": {
-      "observations_by_entity": {
+      "by_entity": {
         "country/USA": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "2584936238",
               "observations": [
@@ -35,7 +35,7 @@
           ]
         },
         "geoId/06": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "2584936238",
               "observations": [
@@ -48,7 +48,7 @@
           ]
         },
         "geoId/17031": {
-          "ordered_facet_observations": [
+          "ordered_facets": [
             {
               "facet_id": "2584936238",
               "observations": [

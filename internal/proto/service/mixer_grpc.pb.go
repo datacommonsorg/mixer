@@ -150,16 +150,16 @@ type MixerClient interface {
 	// V2 [TODO]
 	// Get event collection for {eventType, affectedPlaceDcid, date}.
 	// NOTE:
-	// - The affectedPlaceDcid is only for top-level places:
-	//   Earth, continent, country, state, adminArea1.
-	// - The date format should be: YYYY-MM.
+	//   - The affectedPlaceDcid is only for top-level places:
+	//     Earth, continent, country, state, adminArea1.
+	//   - The date format should be: YYYY-MM.
 	EventCollection(ctx context.Context, in *v1.EventCollectionRequest, opts ...grpc.CallOption) (*v1.EventCollectionResponse, error)
 	// V2 [TODO]
 	// Get all dates for event collection for {eventType, affectedPlaceDcid}.
-	// - The affectedPlaceDcid is only for top-level places:
-	//   Earth, continent, country, state, adminArea1.
-	// - The date format should be: YYYY-MM.
-	//   The dates in the response are sorted from earliest to latest.
+	//   - The affectedPlaceDcid is only for top-level places:
+	//     Earth, continent, country, state, adminArea1.
+	//   - The date format should be: YYYY-MM.
+	//     The dates in the response are sorted from earliest to latest.
 	EventCollectionDate(ctx context.Context, in *v1.EventCollectionDateRequest, opts ...grpc.CallOption) (*v1.EventCollectionDateResponse, error)
 	// V2 [TODO]
 	// Resolve a list of entities, given their descriptions.
@@ -894,16 +894,16 @@ type MixerServer interface {
 	// V2 [TODO]
 	// Get event collection for {eventType, affectedPlaceDcid, date}.
 	// NOTE:
-	// - The affectedPlaceDcid is only for top-level places:
-	//   Earth, continent, country, state, adminArea1.
-	// - The date format should be: YYYY-MM.
+	//   - The affectedPlaceDcid is only for top-level places:
+	//     Earth, continent, country, state, adminArea1.
+	//   - The date format should be: YYYY-MM.
 	EventCollection(context.Context, *v1.EventCollectionRequest) (*v1.EventCollectionResponse, error)
 	// V2 [TODO]
 	// Get all dates for event collection for {eventType, affectedPlaceDcid}.
-	// - The affectedPlaceDcid is only for top-level places:
-	//   Earth, continent, country, state, adminArea1.
-	// - The date format should be: YYYY-MM.
-	//   The dates in the response are sorted from earliest to latest.
+	//   - The affectedPlaceDcid is only for top-level places:
+	//     Earth, continent, country, state, adminArea1.
+	//   - The date format should be: YYYY-MM.
+	//     The dates in the response are sorted from earliest to latest.
 	EventCollectionDate(context.Context, *v1.EventCollectionDateRequest) (*v1.EventCollectionDateResponse, error)
 	// V2 [TODO]
 	// Resolve a list of entities, given their descriptions.
