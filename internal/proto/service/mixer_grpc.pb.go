@@ -25,6 +25,7 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type MixerClient interface {
+	V2Resolve(ctx context.Context, in *v2.ResolveRequest, opts ...grpc.CallOption) (*v2.ResolveResponse, error)
 	V2Node(ctx context.Context, in *v2.NodeRequest, opts ...grpc.CallOption) (*v2.NodeResponse, error)
 	V2Event(ctx context.Context, in *v2.EventRequest, opts ...grpc.CallOption) (*v2.EventResponse, error)
 	V2Observation(ctx context.Context, in *v2.ObservationRequest, opts ...grpc.CallOption) (*v2.ObservationResponse, error)
@@ -186,6 +187,15 @@ type mixerClient struct {
 
 func NewMixerClient(cc grpc.ClientConnInterface) MixerClient {
 	return &mixerClient{cc}
+}
+
+func (c *mixerClient) V2Resolve(ctx context.Context, in *v2.ResolveRequest, opts ...grpc.CallOption) (*v2.ResolveResponse, error) {
+	out := new(v2.ResolveResponse)
+	err := c.cc.Invoke(ctx, "/datacommons.Mixer/V2Resolve", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
 }
 
 func (c *mixerClient) V2Node(ctx context.Context, in *v2.NodeRequest, opts ...grpc.CallOption) (*v2.NodeResponse, error) {
@@ -759,6 +769,7 @@ func (c *mixerClient) RecognizePlaces(ctx context.Context, in *proto.RecognizePl
 // All implementations should embed UnimplementedMixerServer
 // for forward compatibility
 type MixerServer interface {
+	V2Resolve(context.Context, *v2.ResolveRequest) (*v2.ResolveResponse, error)
 	V2Node(context.Context, *v2.NodeRequest) (*v2.NodeResponse, error)
 	V2Event(context.Context, *v2.EventRequest) (*v2.EventResponse, error)
 	V2Observation(context.Context, *v2.ObservationRequest) (*v2.ObservationResponse, error)
@@ -918,6 +929,9 @@ type MixerServer interface {
 type UnimplementedMixerServer struct {
 }
 
+func (UnimplementedMixerServer) V2Resolve(context.Context, *v2.ResolveRequest) (*v2.ResolveResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method V2Resolve not implemented")
+}
 func (UnimplementedMixerServer) V2Node(context.Context, *v2.NodeRequest) (*v2.NodeResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method V2Node not implemented")
 }
@@ -1117,6 +1131,24 @@ type UnsafeMixerServer interface {
 
 func RegisterMixerServer(s grpc.ServiceRegistrar, srv MixerServer) {
 	s.RegisterService(&Mixer_ServiceDesc, srv)
+}
+
+func _Mixer_V2Resolve_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(v2.ResolveRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MixerServer).V2Resolve(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/datacommons.Mixer/V2Resolve",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MixerServer).V2Resolve(ctx, req.(*v2.ResolveRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 func _Mixer_V2Node_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -2260,6 +2292,10 @@ var Mixer_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "datacommons.Mixer",
 	HandlerType: (*MixerServer)(nil),
 	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "V2Resolve",
+			Handler:    _Mixer_V2Resolve_Handler,
+		},
 		{
 			MethodName: "V2Node",
 			Handler:    _Mixer_V2Node_Handler,

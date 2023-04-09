@@ -50,10 +50,19 @@ import "v1/triples.proto";
 import "v2/event.proto";
 import "v2/node.proto";
 import "v2/observation.proto";
+import "v2/resolve.proto";
 
 service Mixer {
 
   // ======================  V2   V2   V2   V2  ======================
+
+  rpc V2Resolve(datacommons.v2.ResolveRequest)
+      returns (datacommons.v2.ResolveResponse) {
+    option (google.api.http) = {
+      get : "/v2/resolve"
+      additional_bindings : {post : "/v2/resolve" body : "*"}
+    };
+  }
 
   rpc V2Node(datacommons.v2.NodeRequest) returns (datacommons.v2.NodeResponse) {
     option (google.api.http) = {

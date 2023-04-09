@@ -1,0 +1,16 @@
+{
+  "entities": [
+    {
+      "node": "San Mateo County",
+      "resolvedIds": [
+        "geoId/06081"
+      ]
+    },
+    {
+      "node": "Santa Clara County",
+      "resolvedIds": [
+        "geoId/06085"
+      ]
+    }
+  ]
+}
