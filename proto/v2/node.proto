@@ -50,4 +50,6 @@ message NodeRequest {
 message NodeResponse {
   // Keyed by the query node dcid.
   map<string, LinkedGraph> data = 1;
+  // The pagination token for getting the next set of entries.
+  string next_token = 2;
 }

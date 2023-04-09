@@ -325,7 +325,7 @@ service Mixer {
     };
   }
 
-  // V2 [TODO]
+  // V2 [DONE]
   rpc LinkedPropertyValues(datacommons.v1.LinkedPropertyValuesRequest)
       returns (datacommons.v1.PropertyValuesResponse) {
     option (google.api.http) = {
@@ -345,7 +345,7 @@ service Mixer {
     };
   }
 
-  // V2 [TODO]
+  // V2 [DONE]
   rpc BulkLinkedPropertyValues(datacommons.v1.BulkLinkedPropertyValuesRequest)
       returns (datacommons.v1.BulkPropertyValuesResponse) {
     option (google.api.http) = {
@@ -374,7 +374,7 @@ service Mixer {
     };
   }
 
-  // V2 [TODO]
+  // V2 [DONE]
   rpc Variables(datacommons.v1.VariablesRequest)
       returns (datacommons.v1.VariablesResponse) {
     option (google.api.http) = {
@@ -382,7 +382,7 @@ service Mixer {
     };
   }
 
-  // V2 [TODO]
+  // V2 [DONE]
   rpc BulkVariables(datacommons.v1.BulkVariablesRequest)
       returns (datacommons.v1.BulkVariablesResponse) {
     option (google.api.http) = {
@@ -514,7 +514,7 @@ service Mixer {
     };
   }
 
-  // V2 [TODO]
+  // V2 [DONE]
   rpc BulkObservationDatesLinked(
       datacommons.v1.BulkObservationDatesLinkedRequest)
       returns (datacommons.v1.BulkObservationDatesLinkedResponse) {
@@ -527,7 +527,7 @@ service Mixer {
     };
   }
 
-  // V2 [TODO]
+  // V2 [DONE]
   rpc BulkObservationExistence(datacommons.v1.BulkObservationExistenceRequest)
       returns (datacommons.v1.BulkObservationExistenceResponse) {
     option (google.api.http) = {
@@ -560,7 +560,7 @@ service Mixer {
     };
   }
 
-  // V2 [TODO]
+  // V2 [DONE]
   // Get event collection for {eventType, affectedPlaceDcid, date}.
   // NOTE:
   // - The affectedPlaceDcid is only for top-level places:
@@ -574,7 +574,7 @@ service Mixer {
     };
   }
 
-  // V2 [TODO]
+  // V2 [DONE]
   // Get all dates for event collection for {eventType, affectedPlaceDcid}.
   // - The affectedPlaceDcid is only for top-level places:
   //   Earth, continent, country, state, adminArea1.
@@ -590,7 +590,7 @@ service Mixer {
 
   // ==================  RECON   RECON   RECON   RECON  ================
 
-  // V2 [TODO]
+  // V2 [DONE]
   // Resolve a list of entities, given their descriptions.
   rpc ResolveEntities(ResolveEntitiesRequest)
       returns (ResolveEntitiesResponse) {
@@ -600,7 +600,7 @@ service Mixer {
     };
   }
 
-  // V2 [TODO]
+  // V2 [DONE]
   // Resolve a list of places, given their latitude and longitude coordinates.
   rpc ResolveCoordinates(ResolveCoordinatesRequest)
       returns (ResolveCoordinatesResponse) {
@@ -610,7 +610,7 @@ service Mixer {
     };
   }
 
-  // V2 [TODO]
+  // V2 [DONE]
   // Resolve a list of IDs, given the input prop and output prop.
   rpc ResolveIds(ResolveIdsRequest) returns (ResolveIdsResponse) {
     option (google.api.http) = {

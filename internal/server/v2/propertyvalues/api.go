@@ -22,6 +22,7 @@ import (
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/placein"
 	v1pv "github.com/datacommonsorg/mixer/internal/server/v1/propertyvalues"
+	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 
@@ -36,15 +37,15 @@ func API(
 	properties []string,
 	direction string,
 	limit int,
-	nextToken string,
+	reqToken string,
 ) (*pbv2.NodeResponse, error) {
-	data, _, err := v1pv.Fetch(
+	data, pi, err := v1pv.Fetch(
 		ctx,
 		store,
 		nodes,
 		properties,
 		limit,
-		nextToken,
+		reqToken,
 		direction,
 	)
 	if err != nil {
@@ -58,6 +59,13 @@ func API(
 				Nodes: v1pv.MergeTypedNodes(data[node][property]),
 			}
 		}
+	}
+	if pi != nil {
+		respToken, err := util.EncodeProto(pi)
+		if err != nil {
+			return nil, err
+		}
+		res.NextToken = respToken
 	}
 	return res, nil
 }
