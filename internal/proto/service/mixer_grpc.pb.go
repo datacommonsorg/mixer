@@ -97,19 +97,19 @@ type MixerClient interface {
 	BulkProperties(ctx context.Context, in *v1.BulkPropertiesRequest, opts ...grpc.CallOption) (*v1.BulkPropertiesResponse, error)
 	// V2 [DONE]
 	PropertyValues(ctx context.Context, in *v1.PropertyValuesRequest, opts ...grpc.CallOption) (*v1.PropertyValuesResponse, error)
-	// V2 [TODO]
+	// V2 [DONE]
 	LinkedPropertyValues(ctx context.Context, in *v1.LinkedPropertyValuesRequest, opts ...grpc.CallOption) (*v1.PropertyValuesResponse, error)
 	// V2 [DONE]
 	BulkPropertyValues(ctx context.Context, in *v1.BulkPropertyValuesRequest, opts ...grpc.CallOption) (*v1.BulkPropertyValuesResponse, error)
-	// V2 [TODO]
+	// V2 [DONE]
 	BulkLinkedPropertyValues(ctx context.Context, in *v1.BulkLinkedPropertyValuesRequest, opts ...grpc.CallOption) (*v1.BulkPropertyValuesResponse, error)
 	// V2 [TODO]
 	Triples(ctx context.Context, in *v1.TriplesRequest, opts ...grpc.CallOption) (*v1.TriplesResponse, error)
 	// V2 [TODO]
 	BulkTriples(ctx context.Context, in *v1.BulkTriplesRequest, opts ...grpc.CallOption) (*v1.BulkTriplesResponse, error)
-	// V2 [TODO]
+	// V2 [DONE]
 	Variables(ctx context.Context, in *v1.VariablesRequest, opts ...grpc.CallOption) (*v1.VariablesResponse, error)
-	// V2 [TODO]
+	// V2 [DONE]
 	BulkVariables(ctx context.Context, in *v1.BulkVariablesRequest, opts ...grpc.CallOption) (*v1.BulkVariablesResponse, error)
 	// V2 [TODO]
 	PlaceInfo(ctx context.Context, in *v1.PlaceInfoRequest, opts ...grpc.CallOption) (*v1.PlaceInfoResponse, error)
@@ -137,9 +137,9 @@ type MixerClient interface {
 	BulkObservationsSeriesLinked(ctx context.Context, in *v1.BulkObservationsSeriesLinkedRequest, opts ...grpc.CallOption) (*v1.BulkObservationsSeriesResponse, error)
 	// V2 [TODO]
 	DerivedObservationsSeries(ctx context.Context, in *v1.DerivedObservationsSeriesRequest, opts ...grpc.CallOption) (*v1.DerivedObservationsSeriesResponse, error)
-	// V2 [TODO]
+	// V2 [DONE]
 	BulkObservationDatesLinked(ctx context.Context, in *v1.BulkObservationDatesLinkedRequest, opts ...grpc.CallOption) (*v1.BulkObservationDatesLinkedResponse, error)
-	// V2 [TODO]
+	// V2 [DONE]
 	BulkObservationExistence(ctx context.Context, in *v1.BulkObservationExistenceRequest, opts ...grpc.CallOption) (*v1.BulkObservationExistenceResponse, error)
 	// V2 [TODO]
 	BioPage(ctx context.Context, in *v1.BioPageRequest, opts ...grpc.CallOption) (*proto.GraphNodes, error)
@@ -147,27 +147,27 @@ type MixerClient interface {
 	PlacePage(ctx context.Context, in *v1.PlacePageRequest, opts ...grpc.CallOption) (*v1.PlacePageResponse, error)
 	// V2 [TODO]
 	VariableAncestors(ctx context.Context, in *v1.VariableAncestorsRequest, opts ...grpc.CallOption) (*v1.VariableAncestorsResponse, error)
-	// V2 [TODO]
+	// V2 [DONE]
 	// Get event collection for {eventType, affectedPlaceDcid, date}.
 	// NOTE:
 	//   - The affectedPlaceDcid is only for top-level places:
 	//     Earth, continent, country, state, adminArea1.
 	//   - The date format should be: YYYY-MM.
 	EventCollection(ctx context.Context, in *v1.EventCollectionRequest, opts ...grpc.CallOption) (*v1.EventCollectionResponse, error)
-	// V2 [TODO]
+	// V2 [DONE]
 	// Get all dates for event collection for {eventType, affectedPlaceDcid}.
 	//   - The affectedPlaceDcid is only for top-level places:
 	//     Earth, continent, country, state, adminArea1.
 	//   - The date format should be: YYYY-MM.
 	//     The dates in the response are sorted from earliest to latest.
 	EventCollectionDate(ctx context.Context, in *v1.EventCollectionDateRequest, opts ...grpc.CallOption) (*v1.EventCollectionDateResponse, error)
-	// V2 [TODO]
+	// V2 [DONE]
 	// Resolve a list of entities, given their descriptions.
 	ResolveEntities(ctx context.Context, in *proto.ResolveEntitiesRequest, opts ...grpc.CallOption) (*proto.ResolveEntitiesResponse, error)
-	// V2 [TODO]
+	// V2 [DONE]
 	// Resolve a list of places, given their latitude and longitude coordinates.
 	ResolveCoordinates(ctx context.Context, in *proto.ResolveCoordinatesRequest, opts ...grpc.CallOption) (*proto.ResolveCoordinatesResponse, error)
-	// V2 [TODO]
+	// V2 [DONE]
 	// Resolve a list of IDs, given the input prop and output prop.
 	ResolveIds(ctx context.Context, in *proto.ResolveIdsRequest, opts ...grpc.CallOption) (*proto.ResolveIdsResponse, error)
 	// V2 [TODO]
@@ -841,19 +841,19 @@ type MixerServer interface {
 	BulkProperties(context.Context, *v1.BulkPropertiesRequest) (*v1.BulkPropertiesResponse, error)
 	// V2 [DONE]
 	PropertyValues(context.Context, *v1.PropertyValuesRequest) (*v1.PropertyValuesResponse, error)
-	// V2 [TODO]
+	// V2 [DONE]
 	LinkedPropertyValues(context.Context, *v1.LinkedPropertyValuesRequest) (*v1.PropertyValuesResponse, error)
 	// V2 [DONE]
 	BulkPropertyValues(context.Context, *v1.BulkPropertyValuesRequest) (*v1.BulkPropertyValuesResponse, error)
-	// V2 [TODO]
+	// V2 [DONE]
 	BulkLinkedPropertyValues(context.Context, *v1.BulkLinkedPropertyValuesRequest) (*v1.BulkPropertyValuesResponse, error)
 	// V2 [TODO]
 	Triples(context.Context, *v1.TriplesRequest) (*v1.TriplesResponse, error)
 	// V2 [TODO]
 	BulkTriples(context.Context, *v1.BulkTriplesRequest) (*v1.BulkTriplesResponse, error)
-	// V2 [TODO]
+	// V2 [DONE]
 	Variables(context.Context, *v1.VariablesRequest) (*v1.VariablesResponse, error)
-	// V2 [TODO]
+	// V2 [DONE]
 	BulkVariables(context.Context, *v1.BulkVariablesRequest) (*v1.BulkVariablesResponse, error)
 	// V2 [TODO]
 	PlaceInfo(context.Context, *v1.PlaceInfoRequest) (*v1.PlaceInfoResponse, error)
@@ -881,9 +881,9 @@ type MixerServer interface {
 	BulkObservationsSeriesLinked(context.Context, *v1.BulkObservationsSeriesLinkedRequest) (*v1.BulkObservationsSeriesResponse, error)
 	// V2 [TODO]
 	DerivedObservationsSeries(context.Context, *v1.DerivedObservationsSeriesRequest) (*v1.DerivedObservationsSeriesResponse, error)
-	// V2 [TODO]
+	// V2 [DONE]
 	BulkObservationDatesLinked(context.Context, *v1.BulkObservationDatesLinkedRequest) (*v1.BulkObservationDatesLinkedResponse, error)
-	// V2 [TODO]
+	// V2 [DONE]
 	BulkObservationExistence(context.Context, *v1.BulkObservationExistenceRequest) (*v1.BulkObservationExistenceResponse, error)
 	// V2 [TODO]
 	BioPage(context.Context, *v1.BioPageRequest) (*proto.GraphNodes, error)
@@ -891,27 +891,27 @@ type MixerServer interface {
 	PlacePage(context.Context, *v1.PlacePageRequest) (*v1.PlacePageResponse, error)
 	// V2 [TODO]
 	VariableAncestors(context.Context, *v1.VariableAncestorsRequest) (*v1.VariableAncestorsResponse, error)
-	// V2 [TODO]
+	// V2 [DONE]
 	// Get event collection for {eventType, affectedPlaceDcid, date}.
 	// NOTE:
 	//   - The affectedPlaceDcid is only for top-level places:
 	//     Earth, continent, country, state, adminArea1.
 	//   - The date format should be: YYYY-MM.
 	EventCollection(context.Context, *v1.EventCollectionRequest) (*v1.EventCollectionResponse, error)
-	// V2 [TODO]
+	// V2 [DONE]
 	// Get all dates for event collection for {eventType, affectedPlaceDcid}.
 	//   - The affectedPlaceDcid is only for top-level places:
 	//     Earth, continent, country, state, adminArea1.
 	//   - The date format should be: YYYY-MM.
 	//     The dates in the response are sorted from earliest to latest.
 	EventCollectionDate(context.Context, *v1.EventCollectionDateRequest) (*v1.EventCollectionDateResponse, error)
-	// V2 [TODO]
+	// V2 [DONE]
 	// Resolve a list of entities, given their descriptions.
 	ResolveEntities(context.Context, *proto.ResolveEntitiesRequest) (*proto.ResolveEntitiesResponse, error)
-	// V2 [TODO]
+	// V2 [DONE]
 	// Resolve a list of places, given their latitude and longitude coordinates.
 	ResolveCoordinates(context.Context, *proto.ResolveCoordinatesRequest) (*proto.ResolveCoordinatesResponse, error)
-	// V2 [TODO]
+	// V2 [DONE]
 	// Resolve a list of IDs, given the input prop and output prop.
 	ResolveIds(context.Context, *proto.ResolveIdsRequest) (*proto.ResolveIdsResponse, error)
 	// V2 [TODO]

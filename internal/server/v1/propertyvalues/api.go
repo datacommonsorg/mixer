@@ -92,7 +92,7 @@ func BulkPropertyValues(
 	property := in.GetProperty()
 	nodes := in.GetNodes()
 	limit := int(in.GetLimit())
-	token := in.GetNextToken()
+	reqToken := in.GetNextToken()
 	direction := in.GetDirection()
 
 	// Check arguments
@@ -113,21 +113,21 @@ func BulkPropertyValues(
 		nodes,
 		[]string{property},
 		limit,
-		token,
+		reqToken,
 		direction,
 	)
 	if err != nil {
 		return nil, err
 	}
-	nextToken := ""
+	respToken := ""
 	if pi != nil {
-		nextToken, err = util.EncodeProto(pi)
+		respToken, err = util.EncodeProto(pi)
 		if err != nil {
 			return nil, err
 		}
 	}
 	res := &pbv1.BulkPropertyValuesResponse{
-		NextToken: nextToken,
+		NextToken: respToken,
 	}
 	for _, n := range nodes {
 		res.Data = append(
