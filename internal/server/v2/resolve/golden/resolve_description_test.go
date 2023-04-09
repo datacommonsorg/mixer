@@ -42,12 +42,12 @@ func TestResolveDescription(t *testing.T) {
 		}{
 			{
 				[]string{"Santa Clara County", "San Mateo County"},
-				"<-description",
+				"<-description->dcid",
 				"county.json",
 			},
 			{
 				[]string{"Santa Clara", "New York City"},
-				"<-description{typeOf:City}",
+				"<-description{typeOf:City}->dcid",
 				"city.json",
 			},
 		} {

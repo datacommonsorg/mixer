@@ -41,55 +41,48 @@ func (s *Server) V2Resolve(
 		return nil, err
 	}
 
-	if len(arcs) == 1 {
-		arc := arcs[0]
-
-		if !arc.Out {
-			if arc.SingleProp == "geoCoordinate" {
-				// Coordinate to ID:
-				// Example:
-				//   <-geoCoordinate
-				return resolve.Coordinate(ctx, s.store, in.GetNodes())
-			}
-
-			if arc.SingleProp == "description" {
-				// Description (name) to ID:
-				// Examples:
-				//   <-description
-				//   <-description{typeOf:City}
-				typeOf := arc.Filter["typeOf"]
-				return resolve.Description(
-					ctx,
-					s.store,
-					s.mapsClient,
-					in.GetNodes(),
-					typeOf)
-			}
-		}
+	if len(arcs) != 2 {
+		return nil, status.Errorf(codes.InvalidArgument,
+			"invalid property for resolving: %s", in.GetProperty())
 	}
 
-	if len(arcs) == 2 {
-		// ID to ID:
+	inArc := arcs[0]
+	outArc := arcs[1]
+	if inArc.Out || !outArc.Out {
+		return nil, status.Errorf(codes.InvalidArgument,
+			"invalid property for resolving: %s", in.GetProperty())
+	}
+
+	if inArc.SingleProp == "geoCoordinate" && outArc.SingleProp == "dcid" {
+		// Coordinate to ID:
 		// Example:
-		//   <-wikidataId->nutsCode
-		inArc := arcs[0]
-		outArc := arcs[1]
-
-		if !inArc.Out &&
-			inArc.SingleProp != "" &&
-			outArc.Out &&
-			outArc.SingleProp != "" {
-			return resolve.ID(
-				ctx,
-				s.store,
-				in.GetNodes(),
-				inArc.SingleProp,
-				outArc.SingleProp)
-		}
+		//   <-geoCoordinate
+		return resolve.Coordinate(ctx, s.store, in.GetNodes())
 	}
 
-	return nil, status.Errorf(codes.InvalidArgument,
-		"invalid property for resolving: %s", in.GetProperty())
+	if inArc.SingleProp == "description" && outArc.SingleProp == "dcid" {
+		// Description (name) to ID:
+		// Examples:
+		//   <-description
+		//   <-description{typeOf:City}
+		typeOf := inArc.Filter["typeOf"] // Could be empty.
+		return resolve.Description(
+			ctx,
+			s.store,
+			s.mapsClient,
+			in.GetNodes(),
+			typeOf)
+	}
+
+	// ID to ID:
+	// Example:
+	//   <-wikidataId->nutsCode
+	return resolve.ID(
+		ctx,
+		s.store,
+		in.GetNodes(),
+		inArc.SingleProp,
+		outArc.SingleProp)
 }
 
 // V2Node implements API for mixer.V2Node.

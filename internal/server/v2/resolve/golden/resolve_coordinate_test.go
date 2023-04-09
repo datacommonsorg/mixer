@@ -43,7 +43,7 @@ func TestResolveCoordinate(t *testing.T) {
 		}{
 			{
 				[]string{"37.42#-122.08", "32.41#-102.11"},
-				"<-geoCoordinate",
+				"<-geoCoordinate->dcid",
 				"result.json",
 			},
 		} {
