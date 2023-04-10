@@ -142,6 +142,7 @@ func (x *VariableObservation) GetByEntity() map[string]*EntityObservation {
 	return nil
 }
 
+//
 type EntityObservation struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -318,15 +319,30 @@ type ObservationRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// A list of entity DCIDs
+	// A list of statistical variable DCIDs, or a formula expression.
+	//
+	// Supported operators for the formula expression: +, -, *, /, along with parentheses.
+	// The items of the formula have a form of "StatVar[OptionalFilters]".
+	//
+	// The following filters are supported:
+	// 1. mm: MeasurementMethod
+	// 2. op: ObservationPeriod
+	// 3. ut: Unit
+	// 4. sf: ScalingFactor
+	//
+	// For example:
+	// 1. Person_Count - Person_Count_Female
+	// 2. Person_Count_Female / Person_Count[mm=CensusACS5yrSurvey;op=P5Y]
+	// 3. Person_Count - Person_Count_Female - Person_Count_Male[op=P5Y]
+	// 4. (Person_Count_Male - Person_Count_Female) / Person_Count
 	Variable *DcidOrExpression `protobuf:"bytes,1,opt,name=variable,proto3" json:"variable,omitempty"`
-	// A list of statistical variable DCIDs
+	// A list of entity DCIDs, or an arrow expression that covers a list of entity DCIDs.
 	Entity *DcidOrExpression `protobuf:"bytes,2,opt,name=entity,proto3" json:"entity,omitempty"`
 	// Date of the observation
-	//   - Not specified: all observations are returned
-	//   - "LATEST": latest obseration of each facet is returned
-	//   - "<DATE>": a speficied valid ISO 8601 date. Observation corresponding to
-	//     this date is returned.
+	// - Not specified: all observations are returned
+	// - "LATEST": latest obseration of each facet is returned
+	// - "<DATE>": a speficied valid ISO 8601 date. Observation corresponding to
+	//   this date is returned.
 	Date string `protobuf:"bytes,3,opt,name=date,proto3" json:"date,omitempty"`
 	// Value of the observation
 	Value string `protobuf:"bytes,4,opt,name=value,proto3" json:"value,omitempty"`

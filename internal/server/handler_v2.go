@@ -245,21 +245,28 @@ func (s *Server) V2Observation(
 		return nil, status.Error(
 			codes.InvalidArgument, "Must select 'variable' and 'entity'")
 	}
+
+	variable := in.GetVariable()
+	entity := in.GetEntity()
+
 	// Observation date and value query.
 	if queryDate && queryValue {
-		if len(in.GetVariable().GetDcids()) > 0 && len(in.GetEntity().GetDcids()) > 0 {
+		// Series.
+		if len(variable.GetDcids()) > 0 && len(entity.GetDcids()) > 0 {
 			return v2observation.FetchFromSeries(
 				ctx,
 				s.store,
-				in.GetVariable().GetDcids(),
-				in.GetEntity().GetDcids(),
+				variable.GetDcids(),
+				entity.GetDcids(),
 				in.GetDate(),
 			)
 		}
-		if len(in.GetVariable().GetDcids()) > 0 && in.GetEntity().GetExpression() != "" {
+
+		// Collection.
+		if len(variable.GetDcids()) > 0 && entity.GetExpression() != "" {
 			// Example of expression
 			// "geoId/06<-containedInPlace+{typeOf: City}"
-			expr := in.GetEntity().GetExpression()
+			expr := entity.GetExpression()
 			g, err := v2.ParseLinkedNodes(expr)
 			if err != nil {
 				return nil, err
@@ -279,25 +286,35 @@ func (s *Server) V2Observation(
 			return v2observation.FetchFromCollection(
 				ctx,
 				s.store,
-				in.GetVariable().GetDcids(),
+				variable.GetDcids(),
 				g.Subject,
 				arc.Filter["typeOf"],
 				in.GetDate(),
+			)
+		}
+
+		// Derived series.
+		if variable.GetExpression() != "" && len(entity.GetDcids()) > 0 {
+			return v2observation.DerivedSeries(
+				ctx,
+				s.store,
+				variable.GetExpression(),
+				entity.GetDcids(),
 			)
 		}
 	}
 
 	// Get existence of <variable, entity> pair.
 	if !queryDate && !queryValue {
-		if len(in.GetEntity().GetDcids()) > 0 {
-			if len(in.GetVariable().GetDcids()) > 0 {
+		if len(entity.GetDcids()) > 0 {
+			if len(variable.GetDcids()) > 0 {
 				// Have both entity.dcids and variable.dcids. Check existence cache.
 				return v2observation.Existence(
-					ctx, s.store, in.GetVariable().GetDcids(), in.GetEntity().GetDcids())
+					ctx, s.store, variable.GetDcids(), entity.GetDcids())
 			} else {
 				// TODO: Support appending entities from entity.expression
 				// Only have entity.dcids, fetch variables for each entity.
-				return v2observation.Variable(ctx, s.store, in.GetEntity().GetDcids())
+				return v2observation.Variable(ctx, s.store, entity.GetDcids())
 			}
 		}
 	}
