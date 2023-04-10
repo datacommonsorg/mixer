@@ -26,6 +26,7 @@ message DcidOrExpression {
   // An arrow notation expression
   // Ex: country/USA<-containedInPlace{typeOf: State}
   string expression = 2;
+  string formula = 3;
 }
 
 // Holds all observations of a particular variable.

@@ -64,7 +64,7 @@ func TestDerivedSeries(t *testing.T) {
 			resp, err := mixer.V2Observation(ctx,
 				&pbv2.ObservationRequest{
 					Select:   []string{"variable", "entity", "date", "value"},
-					Variable: &pbv2.DcidOrExpression{Expression: c.variable},
+					Variable: &pbv2.DcidOrExpression{Formula: c.variable},
 					Entity:   &pbv2.DcidOrExpression{Dcids: []string{c.entity}},
 				})
 			if err != nil {

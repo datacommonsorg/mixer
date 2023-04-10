@@ -294,11 +294,11 @@ func (s *Server) V2Observation(
 		}
 
 		// Derived series.
-		if variable.GetExpression() != "" && len(entity.GetDcids()) > 0 {
+		if variable.GetFormula() != "" && len(entity.GetDcids()) > 0 {
 			return v2observation.DerivedSeries(
 				ctx,
 				s.store,
-				variable.GetExpression(),
+				variable.GetFormula(),
 				entity.GetDcids(),
 			)
 		}
