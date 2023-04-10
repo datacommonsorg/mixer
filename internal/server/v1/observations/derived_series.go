@@ -73,7 +73,6 @@ func DerivedSeries(
 			Value: proto.Float64(p.GetValue()),
 		})
 	}
-	resp.Facet = result.(*calcSeries).facet
 
 	return resp, nil
 }
