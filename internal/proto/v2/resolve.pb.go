@@ -42,11 +42,11 @@ const (
 //
 // 2. Coordinate (latitude#longitude) to DCID:
 //   nodes = ["34.56#-23.12", "-22.11#44.55"]
-//   property = "<-geoCoordinate"
+//   property = "<-geoCoordinate->dcid"
 //
 // 3. Description (name) to DCID:
 //   nodes = ["Mountain View", "New York"]
-//   property = "<-description" or "<-description{typeOf:City}"
+//   property = "<-description->dcid" or "<-description{typeOf:City}->dcid"
 type ResolveRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

@@ -77,20 +77,20 @@ func parseNode(nodeName string) (*nodeData, error) {
 
 		leftBracketIndex := strings.Index(nodeName, "[")
 
-		res.statMetadata = &pb.Facet{}
+		res.facet = &pb.Facet{}
 		filterString := nodeName[leftBracketIndex+1 : len(nodeName)-1]
 		for _, filter := range strings.Split(filterString, ";") {
 			filterType := filter[0:2]
 			filterVal := filter[3:]
 			switch filterType {
 			case "mm":
-				res.statMetadata.MeasurementMethod = filterVal
+				res.facet.MeasurementMethod = filterVal
 			case "op":
-				res.statMetadata.ObservationPeriod = filterVal
+				res.facet.ObservationPeriod = filterVal
 			case "ut":
-				res.statMetadata.Unit = filterVal
+				res.facet.Unit = filterVal
 			case "sf":
-				res.statMetadata.ScalingFactor = filterVal
+				res.facet.ScalingFactor = filterVal
 			default:
 				return nil, fmt.Errorf("unsupported filter type: %s", filterType)
 			}
