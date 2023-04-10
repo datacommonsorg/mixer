@@ -34,7 +34,7 @@ func TestParseNodeName(t *testing.T) {
 			"Person_Count_Female[ut=NumberUnit;mm=dcAggregate/Census;op=P1Y;sf=100]",
 			&nodeData{
 				statVar: "Person_Count_Female",
-				statMetadata: &pb.Facet{
+				facet: &pb.Facet{
 					MeasurementMethod: "dcAggregate/Census",
 					ObservationPeriod: "P1Y",
 					Unit:              "NumberUnit",

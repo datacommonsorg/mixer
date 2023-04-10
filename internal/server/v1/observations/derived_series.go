@@ -73,13 +73,14 @@ func DerivedSeries(
 			Value: proto.Float64(p.GetValue()),
 		})
 	}
+	resp.Facet = result.(*calcSeries).facet
 
 	return resp, nil
 }
 
 // This implements the calculatorItem interface.
 type calcSeries struct {
-	statMetadata *pb.Facet
+	facet *pb.Facet
 	// Sorted by date.
 	points []*pb.PointStat
 }
@@ -96,29 +97,29 @@ func (s *calcSeries) key() string {
 func extractSeriesCandidates(
 	btData interface{},
 	statVar string,
-	statMetadata *pb.Facet,
+	facet *pb.Facet,
 ) ([]calcItem, error) {
 	entityData := btData.(map[string]*pb.ObsTimeSeries)
 	res := []calcItem{}
 
 	if obsTimeSeries, ok := entityData[statVar]; ok {
 		for _, sourceSeries := range obsTimeSeries.GetSourceSeries() {
-			if m := statMetadata.GetMeasurementMethod(); m != "" {
+			if m := facet.GetMeasurementMethod(); m != "" {
 				if m != sourceSeries.GetMeasurementMethod() {
 					continue
 				}
 			}
-			if p := statMetadata.GetObservationPeriod(); p != "" {
+			if p := facet.GetObservationPeriod(); p != "" {
 				if p != sourceSeries.GetObservationPeriod() {
 					continue
 				}
 			}
-			if u := statMetadata.GetUnit(); u != "" {
+			if u := facet.GetUnit(); u != "" {
 				if u != sourceSeries.GetUnit() {
 					continue
 				}
 			}
-			if s := statMetadata.GetScalingFactor(); s != "" {
+			if s := facet.GetScalingFactor(); s != "" {
 				if s != sourceSeries.GetScalingFactor() {
 					continue
 				}
@@ -177,19 +178,19 @@ func evalSeriesBinaryExpr(x, y calcItem, op token.Token) (calcItem, error) {
 //
 // The input `seriesCandidates` all have the same dates.
 func rankCalcSeries(seriesCandidates []calcItem) calcItem {
-	statMetadataKey := func(statMetadata *pb.Facet) string {
+	facetKey := func(facet *pb.Facet) string {
 		return strings.Join([]string{
-			statMetadata.GetMeasurementMethod(),
-			statMetadata.GetObservationPeriod(),
-			statMetadata.GetUnit(),
-			statMetadata.GetScalingFactor()}, "-")
+			facet.GetMeasurementMethod(),
+			facet.GetObservationPeriod(),
+			facet.GetUnit(),
+			facet.GetScalingFactor()}, "-")
 	}
 
 	var res *calcSeries
 	var maxKey string
 	for _, series := range seriesCandidates {
 		s := series.(*calcSeries)
-		key := statMetadataKey(s.statMetadata)
+		key := facetKey(s.facet)
 		if maxKey == "" || maxKey < key {
 			maxKey = key
 			res = s
@@ -201,7 +202,7 @@ func rankCalcSeries(seriesCandidates []calcItem) calcItem {
 
 func toCalcSeries(sourceSeries *pb.SourceSeries) *calcSeries {
 	series := &calcSeries{
-		statMetadata: &pb.Facet{
+		facet: &pb.Facet{
 			MeasurementMethod: sourceSeries.GetMeasurementMethod(),
 			ObservationPeriod: sourceSeries.GetObservationPeriod(),
 			Unit:              sourceSeries.GetUnit(),
