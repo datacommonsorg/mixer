@@ -45,7 +45,21 @@ type DcidOrExpression struct {
 	// An arrow notation expression
 	// Ex: country/USA<-containedInPlace{typeOf: State}
 	Expression string `protobuf:"bytes,2,opt,name=expression,proto3" json:"expression,omitempty"`
-	Formula    string `protobuf:"bytes,3,opt,name=formula,proto3" json:"formula,omitempty"`
+	// Supported operators for the formula expression: +, -, *, /, along with parentheses.
+	// The items of the formula have a form of "StatVar[OptionalFilters]".
+	//
+	// The following filters are supported:
+	// 1. mm: MeasurementMethod
+	// 2. op: ObservationPeriod
+	// 3. ut: Unit
+	// 4. sf: ScalingFactor
+	//
+	// For example:
+	// 1. Person_Count - Person_Count_Female
+	// 2. Person_Count_Female / Person_Count[mm=CensusACS5yrSurvey;op=P5Y]
+	// 3. Person_Count - Person_Count_Female - Person_Count_Male[op=P5Y]
+	// 4. (Person_Count_Male - Person_Count_Female) / Person_Count
+	Formula string `protobuf:"bytes,3,opt,name=formula,proto3" json:"formula,omitempty"`
 }
 
 func (x *DcidOrExpression) Reset() {
@@ -328,21 +342,6 @@ type ObservationRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// A list of statistical variable DCIDs, or a formula expression.
-	//
-	// Supported operators for the formula expression: +, -, *, /, along with parentheses.
-	// The items of the formula have a form of "StatVar[OptionalFilters]".
-	//
-	// The following filters are supported:
-	// 1. mm: MeasurementMethod
-	// 2. op: ObservationPeriod
-	// 3. ut: Unit
-	// 4. sf: ScalingFactor
-	//
-	// For example:
-	// 1. Person_Count - Person_Count_Female
-	// 2. Person_Count_Female / Person_Count[mm=CensusACS5yrSurvey;op=P5Y]
-	// 3. Person_Count - Person_Count_Female - Person_Count_Male[op=P5Y]
-	// 4. (Person_Count_Male - Person_Count_Female) / Person_Count
 	Variable *DcidOrExpression `protobuf:"bytes,1,opt,name=variable,proto3" json:"variable,omitempty"`
 	// A list of entity DCIDs, or an arrow expression that covers a list of entity DCIDs.
 	Entity *DcidOrExpression `protobuf:"bytes,2,opt,name=entity,proto3" json:"entity,omitempty"`
