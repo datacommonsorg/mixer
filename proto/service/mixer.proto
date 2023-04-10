@@ -366,7 +366,7 @@ service Mixer {
     };
   }
 
-  // V2 [TODO]
+  // V2 [NA]
   rpc Triples(datacommons.v1.TriplesRequest)
       returns (datacommons.v1.TriplesResponse) {
     option (google.api.http) = {
@@ -374,7 +374,7 @@ service Mixer {
     };
   }
 
-  // V2 [TODO]
+  // V2 [NA]
   rpc BulkTriples(datacommons.v1.BulkTriplesRequest)
       returns (datacommons.v1.BulkTriplesResponse) {
     option (google.api.http) = {
@@ -545,14 +545,14 @@ service Mixer {
     };
   }
 
-  // V2 [TODO]
+  // V2 [NA]
   rpc BioPage(datacommons.v1.BioPageRequest) returns (GraphNodes) {
     option (google.api.http) = {
       get : "/v1/internal/page/bio/{node=**}"
     };
   }
 
-  // V2 [TODO]
+  // V2 [NA]
   rpc PlacePage(datacommons.v1.PlacePageRequest)
       returns (datacommons.v1.PlacePageResponse) {
     option (google.api.http) = {
@@ -561,7 +561,7 @@ service Mixer {
     };
   }
 
-  // V2 [TODO]
+  // V2 [DONE]
   rpc VariableAncestors(datacommons.v1.VariableAncestorsRequest)
       returns (datacommons.v1.VariableAncestorsResponse) {
     option (google.api.http) = {

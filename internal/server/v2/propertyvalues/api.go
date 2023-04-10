@@ -21,6 +21,7 @@ import (
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	"github.com/datacommonsorg/mixer/internal/server/node"
 	"github.com/datacommonsorg/mixer/internal/server/placein"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/server/statvar"
@@ -36,39 +37,80 @@ import (
 func API(
 	ctx context.Context,
 	store *store.Store,
+	metadata *resource.Metadata,
 	nodes []string,
 	properties []string,
 	direction string,
 	limit int,
 	reqToken string,
 ) (*pbv2.NodeResponse, error) {
-	data, pi, err := v1pv.Fetch(
-		ctx,
-		store,
-		nodes,
-		properties,
-		limit,
-		reqToken,
-		direction,
-	)
-	if err != nil {
-		return nil, err
-	}
-	res := &pbv2.NodeResponse{Data: map[string]*pbv2.LinkedGraph{}}
-	for _, node := range nodes {
-		res.Data[node] = &pbv2.LinkedGraph{Arcs: map[string]*pbv2.Nodes{}}
-		for _, property := range properties {
-			res.Data[node].Arcs[property] = &pbv2.Nodes{
-				Nodes: v1pv.MergeTypedNodes(data[node][property]),
-			}
+	obsNodes := []string{}
+	regularNodes := []string{}
+	for _, n := range nodes {
+		if strings.HasPrefix(n, "dc/o") {
+			obsNodes = append(obsNodes, n)
+		} else {
+			regularNodes = append(regularNodes, n)
 		}
 	}
-	if pi != nil {
-		respToken, err := util.EncodeProto(pi)
+	res := &pbv2.NodeResponse{Data: map[string]*pbv2.LinkedGraph{}}
+
+	if len(obsNodes) > 0 {
+		propertySet := map[string]struct{}{}
+		for _, p := range properties {
+			propertySet[p] = struct{}{}
+		}
+		tripleResp, err := node.GetObsTriples(ctx, store, metadata, obsNodes)
 		if err != nil {
 			return nil, err
 		}
-		res.NextToken = respToken
+		for dcid, tripleList := range tripleResp {
+			res.Data[dcid] = &pbv2.LinkedGraph{Arcs: map[string]*pbv2.Nodes{}}
+			for _, t := range tripleList {
+				if _, ok := propertySet[t.Predicate]; ok {
+					res.Data[dcid].Arcs[t.Predicate] = &pbv2.Nodes{
+						Nodes: []*pb.EntityInfo{
+							{
+								Name:         t.ObjectName,
+								Value:        t.ObjectValue,
+								Types:        t.ObjectTypes,
+								Dcid:         t.ObjectId,
+								ProvenanceId: t.ProvenanceId,
+							},
+						},
+					}
+				}
+			}
+		}
+	}
+	if len(regularNodes) > 0 {
+		data, pi, err := v1pv.Fetch(
+			ctx,
+			store,
+			regularNodes,
+			properties,
+			limit,
+			reqToken,
+			direction,
+		)
+		if err != nil {
+			return nil, err
+		}
+		for _, n := range regularNodes {
+			res.Data[n] = &pbv2.LinkedGraph{Arcs: map[string]*pbv2.Nodes{}}
+			for _, property := range properties {
+				res.Data[n].Arcs[property] = &pbv2.Nodes{
+					Nodes: v1pv.MergeTypedNodes(data[n][property]),
+				}
+			}
+		}
+		if pi != nil {
+			respToken, err := util.EncodeProto(pi)
+			if err != nil {
+				return nil, err
+			}
+			res.NextToken = respToken
+		}
 	}
 	return res, nil
 }
@@ -87,7 +129,6 @@ func LinkedPropertyValues(
 	if !ok {
 		return nil, status.Errorf(codes.InvalidArgument, "must provide typeOf filters")
 	}
-
 	if linkedProperty == "containedInPlace" && direction == util.DirectionIn {
 		data, err := placein.GetPlacesIn(
 			ctx,
