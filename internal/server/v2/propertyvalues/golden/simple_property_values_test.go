@@ -98,6 +98,13 @@ func TestSimplePropertyValues(t *testing.T) {
 				500,
 				"H4sIAAAAAAAA/5ySXUoDMRSFnTitMf4NeZpdWH3wyQd1rFhQGRhdQEwu7YVrApm00gW4Pdck2jfp3EAXcD6+czjqVsk5hJk7n1ypygafDHpwM9+SsaCOGvD9sn+Nxia9p4UstJBCC7mvhSx1KUdVoa5ZRNlgWm/Jjn+z9aF6YNPVlOADfDJx3dlFCDRo8cJy6v+ce+xTRKbVDctTjzhfZIzuWMLxMzpHkGFkLNrwCbEl44d78PuetBFXJg1rHMhRJeqvQk35Nu3yndCymKL+FqrJ6Pxh3hLS9tdsOmUg3WUDRE+wArqY7DjMafYmmwOPM8OcdWCDd9n//gAAAP//AQAA//+e6uq5iQMAAA==",
 			},
+			{
+				"obs.json",
+				[]string{"dc/o/vs51dzghn79eg"},
+				"->[observationAbout, variableMeasured, value, observationDate, observationPeriod, measurementMethod, unit]",
+				0,
+				"",
+			},
 		} {
 			req := &pbv2.NodeRequest{
 				Nodes:     c.nodes,

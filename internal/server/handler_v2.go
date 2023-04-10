@@ -107,6 +107,7 @@ func (s *Server) V2Node(
 				return v2pv.API(
 					ctx,
 					s.store,
+					s.metadata,
 					in.GetNodes(),
 					[]string{arc.SingleProp},
 					direction,
@@ -140,6 +141,7 @@ func (s *Server) V2Node(
 			return v2pv.API(
 				ctx,
 				s.store,
+				s.metadata,
 				in.GetNodes(),
 				arc.BracketProps,
 				direction,

@@ -17,6 +17,7 @@ package properties
 
 import (
 	"context"
+	"strings"
 
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	nodewrapper "github.com/datacommonsorg/mixer/internal/server/node"
@@ -45,8 +46,25 @@ func API(
 		}
 	} else if direction == util.DirectionOut {
 		for node, d := range data {
+			var properties []string
+			if strings.HasPrefix(node, "dc/o") {
+				properties = []string{
+					"observationAbout",
+					"variableMeasured",
+					"value",
+					"observationDate",
+					"observationPeriod",
+					"measurementMethod",
+					"unit",
+					"scalingFactor",
+					"samplePopulation",
+					"location",
+				}
+			} else {
+				properties = d.GetOutLabels()
+			}
 			res.Data[node] = &pbv2.LinkedGraph{
-				Properties: d.GetOutLabels(),
+				Properties: properties,
 			}
 		}
 	}
