@@ -27,12 +27,12 @@ import (
 	"google.golang.org/protobuf/testing/protocmp"
 )
 
-func TestLinkedPropertyValuesV2(t *testing.T) {
+func TestContainedInPlace(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
 
 	_, filename, _, _ := runtime.Caller(0)
-	goldenPath := path.Join(path.Dir(filename), "linked")
+	goldenPath := path.Join(path.Dir(filename), "containedin")
 
 	testSuite := func(mixer pbs.MixerClient, latencyTest bool) {
 		for _, c := range []struct {
@@ -57,7 +57,7 @@ func TestLinkedPropertyValuesV2(t *testing.T) {
 			}
 			resp, err := mixer.V2Node(ctx, req)
 			if err != nil {
-				t.Errorf("could not run mixer.QueryV2: %s", err)
+				t.Errorf("could not run mixer.V2Node: %s", err)
 				continue
 			}
 			if latencyTest {
@@ -79,7 +79,7 @@ func TestLinkedPropertyValuesV2(t *testing.T) {
 		}
 	}
 	if err := test.TestDriver(
-		"LinkedPropertyValuesV2", &test.TestOption{}, testSuite); err != nil {
+		"TestContainedInPlace", &test.TestOption{}, testSuite); err != nil {
 		t.Errorf("TestDriver() = %s", err)
 	}
 }

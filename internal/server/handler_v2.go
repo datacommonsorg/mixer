@@ -93,12 +93,6 @@ func (s *Server) V2Node(
 	if err != nil {
 		return nil, err
 	}
-	// TODO: abstract this out to a router module.
-	// Simple Property Values
-	// Examples:
-	//   ->name
-	//   <-containedInPlace
-	//   ->[name, address]
 	if len(arcs) == 1 {
 		arc := arcs[0]
 		direction := util.DirectionOut
@@ -120,12 +114,18 @@ func (s *Server) V2Node(
 					in.NextToken,
 				)
 			}
-
-			if arc.Wildcard == "+" && !arc.Out {
+			if arc.Wildcard == "+" {
 				// Examples:
 				//   <-containedInPlace+{typeOf:City}
 				return v2pv.LinkedPropertyValues(
-					ctx, s.store, in.GetNodes(), arc.SingleProp, arc.Filter)
+					ctx,
+					s.store,
+					s.cache,
+					in.GetNodes(),
+					arc.SingleProp,
+					direction,
+					arc.Filter,
+				)
 			}
 		} else { // arc.SingleProp == ""
 			if len(arc.BracketProps) == 0 {
