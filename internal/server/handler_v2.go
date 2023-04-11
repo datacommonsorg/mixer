@@ -16,21 +16,63 @@
 package server
 
 import (
+	"bytes"
 	"context"
+	"io"
+	"net/http"
 
+	"github.com/datacommonsorg/mixer/internal/merger"
+	"github.com/datacommonsorg/mixer/internal/server/resource"
 	v1e "github.com/datacommonsorg/mixer/internal/server/v1/event"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	v2e "github.com/datacommonsorg/mixer/internal/server/v2/event"
-	v2observation "github.com/datacommonsorg/mixer/internal/server/v2/observation"
 	v2p "github.com/datacommonsorg/mixer/internal/server/v2/properties"
 	v2pv "github.com/datacommonsorg/mixer/internal/server/v2/propertyvalues"
 	"github.com/datacommonsorg/mixer/internal/server/v2/resolve"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
+	"google.golang.org/protobuf/encoding/protojson"
+	"google.golang.org/protobuf/reflect/protoreflect"
 
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 )
+
+func fetchRemote(
+	metadata *resource.Metadata,
+	apiPath string,
+	in protoreflect.ProtoMessage,
+	out protoreflect.ProtoMessage,
+) error {
+	url := metadata.RemoteMixerUrl + apiPath
+	jsonValue, _ := protojson.Marshal(in)
+	request, _ := http.NewRequest("POST", url, bytes.NewBuffer(jsonValue))
+	request.Header.Set("Content-Type", "application/json")
+	request.Header.Set("X-API-Key", metadata.RemoteMixerApiKey)
+
+	client := &http.Client{}
+	response, err := client.Do(request)
+	if err != nil {
+		return err
+	}
+	defer response.Body.Close()
+
+	// Read response body
+	var responseBodyBytes []byte
+	if response.StatusCode == http.StatusOK {
+		responseBodyBytes, err = io.ReadAll(response.Body)
+		if err != nil {
+			return err
+		}
+	}
+
+	// Convert response body to string
+	err = protojson.Unmarshal(responseBodyBytes, out)
+	if err != nil {
+		return err
+	}
+	return nil
+}
 
 // V2Resolve implements API for mixer.V2Resolve.
 func (s *Server) V2Resolve(
@@ -230,95 +272,17 @@ func (s *Server) V2Event(
 func (s *Server) V2Observation(
 	ctx context.Context, in *pbv2.ObservationRequest,
 ) (*pbv2.ObservationResponse, error) {
-	// (TODO): The routing logic here is very rough. This needs more work.
-	var queryDate, queryValue, queryVariable, queryEntity bool
-	for _, item := range in.GetSelect() {
-		if item == "date" {
-			queryDate = true
-		} else if item == "value" {
-			queryValue = true
-		} else if item == "variable" {
-			queryVariable = true
-		} else if item == "entity" {
-			queryEntity = true
-		}
+	resp, err := V2ObservationBigtable(ctx, s.store, in)
+	if err != nil {
+		return nil, err
 	}
-	if !queryVariable || !queryEntity {
-		return nil, status.Error(
-			codes.InvalidArgument, "Must select 'variable' and 'entity'")
+	if s.metadata.RemoteMixerUrl != "" {
+		remoteResp := &pbv2.ObservationResponse{}
+		err := fetchRemote(s.metadata, "/v2/observation", in, remoteResp)
+		if err != nil {
+			return nil, err
+		}
+		return merger.MergeObservation(resp, remoteResp)
 	}
-
-	variable := in.GetVariable()
-	entity := in.GetEntity()
-
-	// Observation date and value query.
-	if queryDate && queryValue {
-		// Series.
-		if len(variable.GetDcids()) > 0 && len(entity.GetDcids()) > 0 {
-			return v2observation.FetchFromSeries(
-				ctx,
-				s.store,
-				variable.GetDcids(),
-				entity.GetDcids(),
-				in.GetDate(),
-			)
-		}
-
-		// Collection.
-		if len(variable.GetDcids()) > 0 && entity.GetExpression() != "" {
-			// Example of expression
-			// "geoId/06<-containedInPlace+{typeOf: City}"
-			expr := entity.GetExpression()
-			g, err := v2.ParseLinkedNodes(expr)
-			if err != nil {
-				return nil, err
-			}
-			if len(g.Arcs) != 1 {
-				return nil, status.Errorf(
-					codes.InvalidArgument, "invalid expression string: %s", expr)
-			}
-			arc := g.Arcs[0]
-			if arc.SingleProp != "containedInPlace" ||
-				arc.Wildcard != "+" ||
-				arc.Filter == nil ||
-				arc.Filter["typeOf"] == "" {
-				return nil, status.Errorf(
-					codes.InvalidArgument, "invalid expression string: %s", expr)
-			}
-			return v2observation.FetchFromCollection(
-				ctx,
-				s.store,
-				variable.GetDcids(),
-				g.Subject,
-				arc.Filter["typeOf"],
-				in.GetDate(),
-			)
-		}
-
-		// Derived series.
-		if variable.GetFormula() != "" && len(entity.GetDcids()) > 0 {
-			return v2observation.DerivedSeries(
-				ctx,
-				s.store,
-				variable.GetFormula(),
-				entity.GetDcids(),
-			)
-		}
-	}
-
-	// Get existence of <variable, entity> pair.
-	if !queryDate && !queryValue {
-		if len(entity.GetDcids()) > 0 {
-			if len(variable.GetDcids()) > 0 {
-				// Have both entity.dcids and variable.dcids. Check existence cache.
-				return v2observation.Existence(
-					ctx, s.store, variable.GetDcids(), entity.GetDcids())
-			} else {
-				// TODO: Support appending entities from entity.expression
-				// Only have entity.dcids, fetch variables for each entity.
-				return v2observation.Variable(ctx, s.store, entity.GetDcids())
-			}
-		}
-	}
-	return &pbv2.ObservationResponse{}, nil
+	return resp, nil
 }

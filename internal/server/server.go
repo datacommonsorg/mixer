@@ -35,6 +35,10 @@ import (
 	"googlemaps.github.io/maps"
 )
 
+const (
+	REMOTE_MIXER_API_KEY = "REMOTE_MIXER_API_KEY"
+)
+
 // Server holds resources for a mixer server
 type Server struct {
 	store      *store.Store
@@ -64,6 +68,7 @@ func NewMetadata(
 	mixerProject,
 	bigQueryDataset,
 	schemaPath string,
+	remoteMixerUrl string,
 ) (*resource.Metadata, error) {
 	_, filename, _, _ := runtime.Caller(0)
 	subTypeMap, err := solver.GetSubTypeMap(
@@ -92,12 +97,14 @@ func NewMetadata(
 	outArcInfo := map[string]map[string][]types.OutArcInfo{}
 	inArcInfo := map[string][]types.InArcInfo{}
 	return &resource.Metadata{
-			Mappings:        mappings,
-			OutArcInfo:      outArcInfo,
-			InArcInfo:       inArcInfo,
-			SubTypeMap:      subTypeMap,
-			MixerProject:    mixerProject,
-			BigQueryDataset: bigQueryDataset,
+			Mappings:          mappings,
+			OutArcInfo:        outArcInfo,
+			InArcInfo:         inArcInfo,
+			SubTypeMap:        subTypeMap,
+			MixerProject:      mixerProject,
+			BigQueryDataset:   bigQueryDataset,
+			RemoteMixerUrl:    remoteMixerUrl,
+			RemoteMixerApiKey: os.Getenv(REMOTE_MIXER_API_KEY),
 		},
 		nil
 }

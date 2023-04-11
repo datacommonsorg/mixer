@@ -103,9 +103,9 @@ type MixerClient interface {
 	BulkPropertyValues(ctx context.Context, in *v1.BulkPropertyValuesRequest, opts ...grpc.CallOption) (*v1.BulkPropertyValuesResponse, error)
 	// V2 [DONE]
 	BulkLinkedPropertyValues(ctx context.Context, in *v1.BulkLinkedPropertyValuesRequest, opts ...grpc.CallOption) (*v1.BulkPropertyValuesResponse, error)
-	// V2 [TODO]
+	// V2 [NA]
 	Triples(ctx context.Context, in *v1.TriplesRequest, opts ...grpc.CallOption) (*v1.TriplesResponse, error)
-	// V2 [TODO]
+	// V2 [NA]
 	BulkTriples(ctx context.Context, in *v1.BulkTriplesRequest, opts ...grpc.CallOption) (*v1.BulkTriplesResponse, error)
 	// V2 [DONE]
 	Variables(ctx context.Context, in *v1.VariablesRequest, opts ...grpc.CallOption) (*v1.VariablesResponse, error)
@@ -141,25 +141,25 @@ type MixerClient interface {
 	BulkObservationDatesLinked(ctx context.Context, in *v1.BulkObservationDatesLinkedRequest, opts ...grpc.CallOption) (*v1.BulkObservationDatesLinkedResponse, error)
 	// V2 [DONE]
 	BulkObservationExistence(ctx context.Context, in *v1.BulkObservationExistenceRequest, opts ...grpc.CallOption) (*v1.BulkObservationExistenceResponse, error)
-	// V2 [TODO]
+	// V2 [NA]
 	BioPage(ctx context.Context, in *v1.BioPageRequest, opts ...grpc.CallOption) (*proto.GraphNodes, error)
-	// V2 [TODO]
+	// V2 [NA]
 	PlacePage(ctx context.Context, in *v1.PlacePageRequest, opts ...grpc.CallOption) (*v1.PlacePageResponse, error)
-	// V2 [TODO]
+	// V2 [DONE]
 	VariableAncestors(ctx context.Context, in *v1.VariableAncestorsRequest, opts ...grpc.CallOption) (*v1.VariableAncestorsResponse, error)
 	// V2 [DONE]
 	// Get event collection for {eventType, affectedPlaceDcid, date}.
 	// NOTE:
-	// - The affectedPlaceDcid is only for top-level places:
-	//   Earth, continent, country, state, adminArea1.
-	// - The date format should be: YYYY-MM.
+	//   - The affectedPlaceDcid is only for top-level places:
+	//     Earth, continent, country, state, adminArea1.
+	//   - The date format should be: YYYY-MM.
 	EventCollection(ctx context.Context, in *v1.EventCollectionRequest, opts ...grpc.CallOption) (*v1.EventCollectionResponse, error)
 	// V2 [DONE]
 	// Get all dates for event collection for {eventType, affectedPlaceDcid}.
-	// - The affectedPlaceDcid is only for top-level places:
-	//   Earth, continent, country, state, adminArea1.
-	// - The date format should be: YYYY-MM.
-	//   The dates in the response are sorted from earliest to latest.
+	//   - The affectedPlaceDcid is only for top-level places:
+	//     Earth, continent, country, state, adminArea1.
+	//   - The date format should be: YYYY-MM.
+	//     The dates in the response are sorted from earliest to latest.
 	EventCollectionDate(ctx context.Context, in *v1.EventCollectionDateRequest, opts ...grpc.CallOption) (*v1.EventCollectionDateResponse, error)
 	// V2 [DONE]
 	// Resolve a list of entities, given their descriptions.
@@ -847,9 +847,9 @@ type MixerServer interface {
 	BulkPropertyValues(context.Context, *v1.BulkPropertyValuesRequest) (*v1.BulkPropertyValuesResponse, error)
 	// V2 [DONE]
 	BulkLinkedPropertyValues(context.Context, *v1.BulkLinkedPropertyValuesRequest) (*v1.BulkPropertyValuesResponse, error)
-	// V2 [TODO]
+	// V2 [NA]
 	Triples(context.Context, *v1.TriplesRequest) (*v1.TriplesResponse, error)
-	// V2 [TODO]
+	// V2 [NA]
 	BulkTriples(context.Context, *v1.BulkTriplesRequest) (*v1.BulkTriplesResponse, error)
 	// V2 [DONE]
 	Variables(context.Context, *v1.VariablesRequest) (*v1.VariablesResponse, error)
@@ -885,25 +885,25 @@ type MixerServer interface {
 	BulkObservationDatesLinked(context.Context, *v1.BulkObservationDatesLinkedRequest) (*v1.BulkObservationDatesLinkedResponse, error)
 	// V2 [DONE]
 	BulkObservationExistence(context.Context, *v1.BulkObservationExistenceRequest) (*v1.BulkObservationExistenceResponse, error)
-	// V2 [TODO]
+	// V2 [NA]
 	BioPage(context.Context, *v1.BioPageRequest) (*proto.GraphNodes, error)
-	// V2 [TODO]
+	// V2 [NA]
 	PlacePage(context.Context, *v1.PlacePageRequest) (*v1.PlacePageResponse, error)
-	// V2 [TODO]
+	// V2 [DONE]
 	VariableAncestors(context.Context, *v1.VariableAncestorsRequest) (*v1.VariableAncestorsResponse, error)
 	// V2 [DONE]
 	// Get event collection for {eventType, affectedPlaceDcid, date}.
 	// NOTE:
-	// - The affectedPlaceDcid is only for top-level places:
-	//   Earth, continent, country, state, adminArea1.
-	// - The date format should be: YYYY-MM.
+	//   - The affectedPlaceDcid is only for top-level places:
+	//     Earth, continent, country, state, adminArea1.
+	//   - The date format should be: YYYY-MM.
 	EventCollection(context.Context, *v1.EventCollectionRequest) (*v1.EventCollectionResponse, error)
 	// V2 [DONE]
 	// Get all dates for event collection for {eventType, affectedPlaceDcid}.
-	// - The affectedPlaceDcid is only for top-level places:
-	//   Earth, continent, country, state, adminArea1.
-	// - The date format should be: YYYY-MM.
-	//   The dates in the response are sorted from earliest to latest.
+	//   - The affectedPlaceDcid is only for top-level places:
+	//     Earth, continent, country, state, adminArea1.
+	//   - The date format should be: YYYY-MM.
+	//     The dates in the response are sorted from earliest to latest.
 	EventCollectionDate(context.Context, *v1.EventCollectionDateRequest) (*v1.EventCollectionDateResponse, error)
 	// V2 [DONE]
 	// Resolve a list of entities, given their descriptions.

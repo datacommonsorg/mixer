@@ -38,15 +38,18 @@ const (
 // Two modes are supported:
 //
 // EventCollection:
-//   node = 'country/USA'
-//   property = '<-location{typeOf:FireEvent, date:2020-10, area:3.1#6.2#Acre}'
+//
+//	node = 'country/USA'
+//	property = '<-location{typeOf:FireEvent, date:2020-10, area:3.1#6.2#Acre}'
+//
 // NOTE:
 //   - burnedArea:3.14#6.28#Acre means filterProp:lowerLimit#upperLimit#unit
 //   - The format of 'date' is YYYY-MM.
 //
 // EventCollectionDate:
-//   node = 'country/USA'
-//   property = ‘<-location{typeOf:FireEvent}->date’,
+//
+//	node = 'country/USA'
+//	property = ‘<-location{typeOf:FireEvent}->date’,
 type EventRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
