@@ -322,7 +322,7 @@ func PruneMapping(mappings []*types.Mapping) []*types.Mapping {
 func GetOutArcInfo(
 	mappings []*types.Mapping,
 	nodeType string,
-) (map[string][]types.OutArcInfo, error) {
+) (map[string][]*types.OutArcInfo, error) {
 	entities := map[types.Entity]struct{}{}
 	for _, m := range mappings {
 		if m.Pred == tmcf.TypeOf {
@@ -338,7 +338,7 @@ func GetOutArcInfo(
 		return nil, err
 	}
 
-	result := map[string][]types.OutArcInfo{}
+	result := map[string][]*types.OutArcInfo{}
 	for _, m := range mappings {
 		if _, ok := entities[m.Sub]; !ok {
 			continue
@@ -353,7 +353,7 @@ func GetOutArcInfo(
 		if mObj, ok := m.Obj.(types.Column); ok {
 			result[m.Sub.Table.Name] = append(
 				result[m.Sub.Table.Name],
-				types.OutArcInfo{
+				&types.OutArcInfo{
 					Pred:   mPred,
 					Column: mObj.Name,
 					IsNode: false,
@@ -365,7 +365,7 @@ func GetOutArcInfo(
 						if c, _ := col.(types.Column); ok {
 							result[m.Sub.Table.Name] = append(
 								result[m.Sub.Table.Name],
-								types.OutArcInfo{
+								&types.OutArcInfo{
 									Pred:   mPred,
 									Column: c.Name,
 									IsNode: true,
@@ -380,7 +380,8 @@ func GetOutArcInfo(
 }
 
 // GetInArcInfo gets the table and columns corresponding to the node properties.
-func GetInArcInfo(mappings []*types.Mapping, nodeType string) ([]types.InArcInfo, error) {
+func GetInArcInfo(
+	mappings []*types.Mapping, nodeType string) ([]*types.InArcInfo, error) {
 
 	// type InArcInfo struct {
 	// 	Table string
@@ -402,7 +403,7 @@ func GetInArcInfo(mappings []*types.Mapping, nodeType string) ([]types.InArcInfo
 		}
 	}
 
-	result := []types.InArcInfo{}
+	result := []*types.InArcInfo{}
 	for _, m := range mappings {
 		// Obj is entity.
 		mObj, ok := m.Obj.(types.Entity)
@@ -440,7 +441,7 @@ func GetInArcInfo(mappings []*types.Mapping, nodeType string) ([]types.InArcInfo
 				subCol = col.(types.Column).Name
 			}
 		}
-		inArcInfo := types.InArcInfo{
+		inArcInfo := &types.InArcInfo{
 			Table:  m.Sub.Table.Name,
 			Pred:   mPred,
 			SubCol: subCol,

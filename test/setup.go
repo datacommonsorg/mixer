@@ -117,7 +117,8 @@ func setupInternal(
 		log.Fatalf("failed to create Bigquery client: %v", err)
 	}
 
-	metadata, err := server.NewMetadata(mixerProject, strings.TrimSpace(string(bqTableID)), schemaPath)
+	metadata, err := server.NewMetadata(
+		mixerProject, strings.TrimSpace(string(bqTableID)), schemaPath, "")
 	if err != nil {
 		return nil, err
 	}
@@ -170,7 +171,9 @@ func SetupBqOnly() (pbs.MixerClient, error) {
 	metadata, err := server.NewMetadata(
 		"",
 		strings.TrimSpace(string(bqTableID)),
-		schemaPath)
+		schemaPath,
+		"",
+	)
 	if err != nil {
 		return nil, err
 	}

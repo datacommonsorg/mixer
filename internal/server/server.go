@@ -17,6 +17,7 @@ package server
 import (
 	"context"
 	"log"
+	"net/http"
 	"os"
 	"path"
 	"path/filepath"
@@ -35,12 +36,17 @@ import (
 	"googlemaps.github.io/maps"
 )
 
+const (
+	apiKeyEnv = "REMOTE_MIXER_API_KEY"
+)
+
 // Server holds resources for a mixer server
 type Server struct {
 	store      *store.Store
 	metadata   *resource.Metadata
 	cache      *resource.Cache
 	mapsClient *maps.Client
+	httpClient *http.Client
 }
 
 func (s *Server) updateBranchTable(ctx context.Context, branchTableName string) {
@@ -64,6 +70,7 @@ func NewMetadata(
 	mixerProject,
 	bigQueryDataset,
 	schemaPath string,
+	remoteMixerURL string,
 ) (*resource.Metadata, error) {
 	_, filename, _, _ := runtime.Caller(0)
 	subTypeMap, err := solver.GetSubTypeMap(
@@ -89,15 +96,17 @@ func NewMetadata(
 			mappings = append(mappings, mapping...)
 		}
 	}
-	outArcInfo := map[string]map[string][]types.OutArcInfo{}
-	inArcInfo := map[string][]types.InArcInfo{}
+	outArcInfo := map[string]map[string][]*types.OutArcInfo{}
+	inArcInfo := map[string][]*types.InArcInfo{}
 	return &resource.Metadata{
-			Mappings:        mappings,
-			OutArcInfo:      outArcInfo,
-			InArcInfo:       inArcInfo,
-			SubTypeMap:      subTypeMap,
-			MixerProject:    mixerProject,
-			BigQueryDataset: bigQueryDataset,
+			Mappings:          mappings,
+			OutArcInfo:        outArcInfo,
+			InArcInfo:         inArcInfo,
+			SubTypeMap:        subTypeMap,
+			MixerProject:      mixerProject,
+			BigQueryDataset:   bigQueryDataset,
+			RemoteMixerURL:    remoteMixerURL,
+			RemoteMixerAPIKey: os.Getenv(apiKeyEnv),
 		},
 		nil
 }
@@ -165,5 +174,6 @@ func NewMixerServer(
 		metadata:   metadata,
 		cache:      cache,
 		mapsClient: mapsClient,
+		httpClient: &http.Client{},
 	}
 }

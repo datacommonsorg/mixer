@@ -36,17 +36,17 @@ const (
 
 // Three modes are supported:
 //
-// 1. ID to ID:
-//   nodes = ["wikidataId/CA", "wikidataId/MA"]
-//   property = "<-wikidataId->nutsCode"
+//  1. ID to ID:
+//     nodes = ["wikidataId/CA", "wikidataId/MA"]
+//     property = "<-wikidataId->nutsCode"
 //
-// 2. Coordinate (latitude#longitude) to DCID:
-//   nodes = ["34.56#-23.12", "-22.11#44.55"]
-//   property = "<-geoCoordinate->dcid"
+//  2. Coordinate (latitude#longitude) to DCID:
+//     nodes = ["34.56#-23.12", "-22.11#44.55"]
+//     property = "<-geoCoordinate->dcid"
 //
-// 3. Description (name) to DCID:
-//   nodes = ["Mountain View", "New York"]
-//   property = "<-description->dcid" or "<-description{typeOf:City}->dcid"
+//  3. Description (name) to DCID:
+//     nodes = ["Mountain View", "New York"]
+//     property = "<-description->dcid" or "<-description{typeOf:City}->dcid"
 type ResolveRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
