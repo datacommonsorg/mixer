@@ -17,6 +17,7 @@ package server
 import (
 	"context"
 	"log"
+	"net/http"
 	"os"
 	"path"
 	"path/filepath"
@@ -45,6 +46,7 @@ type Server struct {
 	metadata   *resource.Metadata
 	cache      *resource.Cache
 	mapsClient *maps.Client
+	httpClient *http.Client
 }
 
 func (s *Server) updateBranchTable(ctx context.Context, branchTableName string) {
@@ -94,8 +96,8 @@ func NewMetadata(
 			mappings = append(mappings, mapping...)
 		}
 	}
-	outArcInfo := map[string]map[string][]types.OutArcInfo{}
-	inArcInfo := map[string][]types.InArcInfo{}
+	outArcInfo := map[string]map[string][]*types.OutArcInfo{}
+	inArcInfo := map[string][]*types.InArcInfo{}
 	return &resource.Metadata{
 			Mappings:          mappings,
 			OutArcInfo:        outArcInfo,
@@ -172,5 +174,6 @@ func NewMixerServer(
 		metadata:   metadata,
 		cache:      cache,
 		mapsClient: mapsClient,
+		httpClient: &http.Client{},
 	}
 }

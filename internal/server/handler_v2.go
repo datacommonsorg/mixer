@@ -18,6 +18,7 @@ package server
 import (
 	"bytes"
 	"context"
+	"fmt"
 	"io"
 	"net/http"
 
@@ -33,45 +34,45 @@ import (
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/encoding/protojson"
-	"google.golang.org/protobuf/reflect/protoreflect"
+	"google.golang.org/protobuf/proto"
 
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 )
 
 func fetchRemote(
 	metadata *resource.Metadata,
+	httpClient *http.Client,
 	apiPath string,
-	in protoreflect.ProtoMessage,
-	out protoreflect.ProtoMessage,
+	in proto.Message,
+	out proto.Message,
 ) error {
 	url := metadata.RemoteMixerUrl + apiPath
-	jsonValue, _ := protojson.Marshal(in)
-	request, _ := http.NewRequest("POST", url, bytes.NewBuffer(jsonValue))
+	jsonValue, err := protojson.Marshal(in)
+	if err != nil {
+		return err
+	}
+	request, err := http.NewRequest("POST", url, bytes.NewBuffer(jsonValue))
+	if err != nil {
+		return err
+	}
 	request.Header.Set("Content-Type", "application/json")
 	request.Header.Set("X-API-Key", metadata.RemoteMixerApiKey)
-
-	client := &http.Client{}
-	response, err := client.Do(request)
+	response, err := httpClient.Do(request)
 	if err != nil {
 		return err
 	}
 	defer response.Body.Close()
-
 	// Read response body
 	var responseBodyBytes []byte
-	if response.StatusCode == http.StatusOK {
-		responseBodyBytes, err = io.ReadAll(response.Body)
-		if err != nil {
-			return err
-		}
+	if response.StatusCode != http.StatusOK {
+		return fmt.Errorf("remote mixer response not ok: %s", response.Status)
 	}
-
-	// Convert response body to string
-	err = protojson.Unmarshal(responseBodyBytes, out)
+	responseBodyBytes, err = io.ReadAll(response.Body)
 	if err != nil {
 		return err
 	}
-	return nil
+	// Convert response body to string
+	return protojson.Unmarshal(responseBodyBytes, out)
 }
 
 // V2Resolve implements API for mixer.V2Resolve.
@@ -278,7 +279,7 @@ func (s *Server) V2Observation(
 	}
 	if s.metadata.RemoteMixerUrl != "" {
 		remoteResp := &pbv2.ObservationResponse{}
-		err := fetchRemote(s.metadata, "/v2/observation", in, remoteResp)
+		err := fetchRemote(s.metadata, s.httpClient, "/v2/observation", in, remoteResp)
 		if err != nil {
 			return nil, err
 		}

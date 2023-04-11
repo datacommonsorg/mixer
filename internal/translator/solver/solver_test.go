@@ -381,7 +381,7 @@ func TestRewriteQuery(t *testing.T) {
 
 func TestGetOutArcInfo(t *testing.T) {
 	mappings := testutil.ReadTestMapping(t, []string{"../testdata/test_mapping.mcf"})
-	wantOutArcInfo := map[string][]types.OutArcInfo{
+	wantOutArcInfo := map[string][]*types.OutArcInfo{
 		"`dc_v3.Place`": {
 			{Pred: "name", Column: "name"},
 			{Pred: "alternateName", Column: "alternate_name"},
