@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Package server
+// Package server is the main server
 package server
 
 import (

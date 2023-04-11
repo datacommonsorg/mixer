@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Package server
+// Package server is the main server
 package server
 
 import (
@@ -46,7 +46,7 @@ func fetchRemote(
 	in proto.Message,
 	out proto.Message,
 ) error {
-	url := metadata.RemoteMixerUrl + apiPath
+	url := metadata.RemoteMixerURL + apiPath
 	jsonValue, err := protojson.Marshal(in)
 	if err != nil {
 		return err
@@ -277,7 +277,7 @@ func (s *Server) V2Observation(
 	if err != nil {
 		return nil, err
 	}
-	if s.metadata.RemoteMixerUrl != "" {
+	if s.metadata.RemoteMixerURL != "" {
 		remoteResp := &pbv2.ObservationResponse{}
 		err := fetchRemote(s.metadata, s.httpClient, "/v2/observation", in, remoteResp)
 		if err != nil {

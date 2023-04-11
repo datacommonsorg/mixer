@@ -37,7 +37,7 @@ import (
 )
 
 const (
-	REMOTE_MIXER_API_KEY = "REMOTE_MIXER_API_KEY"
+	apiKeyEnv = "REMOTE_MIXER_API_KEY"
 )
 
 // Server holds resources for a mixer server
@@ -70,7 +70,7 @@ func NewMetadata(
 	mixerProject,
 	bigQueryDataset,
 	schemaPath string,
-	remoteMixerUrl string,
+	remoteMixerURL string,
 ) (*resource.Metadata, error) {
 	_, filename, _, _ := runtime.Caller(0)
 	subTypeMap, err := solver.GetSubTypeMap(
@@ -105,8 +105,8 @@ func NewMetadata(
 			SubTypeMap:        subTypeMap,
 			MixerProject:      mixerProject,
 			BigQueryDataset:   bigQueryDataset,
-			RemoteMixerUrl:    remoteMixerUrl,
-			RemoteMixerApiKey: os.Getenv(REMOTE_MIXER_API_KEY),
+			RemoteMixerURL:    remoteMixerURL,
+			RemoteMixerApiKey: os.Getenv(apiKeyEnv),
 		},
 		nil
 }

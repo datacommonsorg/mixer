@@ -56,7 +56,7 @@ type Metadata struct {
 	SubTypeMap        map[string]string
 	MixerProject      string
 	BigQueryDataset   string
-	RemoteMixerUrl    string
+	RemoteMixerURL    string
 	RemoteMixerApiKey string
 }
 

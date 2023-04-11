@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Package merger
+// Package merger provides function to merge V2 API ressponses
 package merger
 
 import (
@@ -40,8 +40,8 @@ func MergeObservation(
 			)
 		}
 	}
-	for facetId, facet := range o2.Facets {
-		o1.Facets[facetId] = facet
+	for facetID, facet := range o2.Facets {
+		o1.Facets[facetID] = facet
 	}
 	return o1, nil
 }

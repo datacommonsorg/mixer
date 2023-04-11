@@ -69,7 +69,7 @@ var (
 	tmcfCsvFolder  = flag.String("tmcf_csv_folder", "", "GCS folder for an import. An import must have a unique prefix within a bucket.")
 	memdbPath      = flag.String("memdb_path", "", "File path of memdb config")
 	// Remote mixer url. The API serves merged data from local and remote mixer
-	remoteMixerUrl = flag.String("remote_mixer_url", "", "Remote mixer url to fetch and merge data for API response.")
+	remoteMixerURL = flag.String("remote_mixer_url", "", "Remote mixer url to fetch and merge data for API response.")
 	// Profile startup memory instead of listening for requests
 	startupMemoryProfile = flag.String("startup_memprof", "", "File path to write the memory profile of mixer startup to")
 	// Serve live profiles of the process (CPU, memory, etc.) over HTTP on this port
@@ -176,7 +176,7 @@ func main() {
 		*mixerProject,
 		*bqDataset,
 		*schemaPath,
-		*remoteMixerUrl,
+		*remoteMixerURL,
 	)
 	if err != nil {
 		log.Fatalf("Failed to create metadata: %v", err)
