@@ -56,7 +56,7 @@ func fetchRemote(
 		return err
 	}
 	request.Header.Set("Content-Type", "application/json")
-	request.Header.Set("X-API-Key", metadata.RemoteMixerApiKey)
+	request.Header.Set("X-API-Key", metadata.RemoteMixerAPIKey)
 	response, err := httpClient.Do(request)
 	if err != nil {
 		return err

@@ -57,7 +57,7 @@ type Metadata struct {
 	MixerProject      string
 	BigQueryDataset   string
 	RemoteMixerURL    string
-	RemoteMixerApiKey string
+	RemoteMixerAPIKey string
 }
 
 // SearchIndex holds the index for searching stat var (group).

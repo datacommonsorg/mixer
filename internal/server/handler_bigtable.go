@@ -113,11 +113,10 @@ func V2ObservationBigtable(
 				// Have both entity.dcids and variable.dcids. Check existence cache.
 				return v2observation.Existence(
 					ctx, store, variable.GetDcids(), entity.GetDcids())
-			} else {
-				// TODO: Support appending entities from entity.expression
-				// Only have entity.dcids, fetch variables for each entity.
-				return v2observation.Variable(ctx, store, entity.GetDcids())
 			}
+			// TODO: Support appending entities from entity.expression
+			// Only have entity.dcids, fetch variables for each entity.
+			return v2observation.Variable(ctx, store, entity.GetDcids())
 		}
 	}
 	return &pbv2.ObservationResponse{}, nil

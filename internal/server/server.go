@@ -106,7 +106,7 @@ func NewMetadata(
 			MixerProject:      mixerProject,
 			BigQueryDataset:   bigQueryDataset,
 			RemoteMixerURL:    remoteMixerURL,
-			RemoteMixerApiKey: os.Getenv(apiKeyEnv),
+			RemoteMixerAPIKey: os.Getenv(apiKeyEnv),
 		},
 		nil
 }
