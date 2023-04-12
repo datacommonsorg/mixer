@@ -53,6 +53,76 @@
       "provenanceId": "dc/base/BaseSchema"
     },
     {
+      "subjectId": "Count_Variable_Country",
+      "subjectName": "Count of Statistical Variable: Country",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "geoLevel",
+      "objectId": "Country",
+      "objectName": "Country",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_Variable_Country_ClimateAndEnvironment",
+      "subjectName": "Count of Statistical Variable: Climate And Environment, Country",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "geoLevel",
+      "objectId": "Country",
+      "objectName": "Country",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_Variable_Country_Demographics",
+      "subjectName": "Count of Statistical Variable: Demographics, Country",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "geoLevel",
+      "objectId": "Country",
+      "objectName": "Country",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_Variable_Country_Economy",
+      "subjectName": "Count of Statistical Variable: Economy, Country",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "geoLevel",
+      "objectId": "Country",
+      "objectName": "Country",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_Variable_Country_HealthAndEducation",
+      "subjectName": "Count of Statistical Variable: Health And Education, Country",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "geoLevel",
+      "objectId": "Country",
+      "objectName": "Country",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
       "subjectId": "addressCountry",
       "subjectName": "addressCountry",
       "subjectTypes": [

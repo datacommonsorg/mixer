@@ -350,13 +350,13 @@
           "entity": "country/USA",
           "points_by_facet": [
             {
-              "date": "2023-02",
-              "value": 5936000,
+              "date": "2023-03",
+              "value": 5839000,
               "facet": "3707913853"
             },
             {
-              "date": "2022-12",
-              "value": 5925000,
+              "date": "2023-03",
+              "value": 5823000,
               "facet": "1714978719"
             }
           ]
@@ -385,8 +385,8 @@
           "entity": "geoId/0649670",
           "points_by_facet": [
             {
-              "date": "2023-01",
-              "value": 1179,
+              "date": "2023-02",
+              "value": 1266,
               "facet": "324358135"
             },
             {
