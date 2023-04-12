@@ -22551,38 +22551,6 @@
       "node": "geoId/06053",
       "values": [
         {
-          "name": "Moss Landing",
-          "types": [
-            "PowerPlant"
-          ],
-          "dcid": "dc/kg6g6mkqg9j2g",
-          "provenanceId": "dc/base/WIDAP_PowerPlants"
-        },
-        {
-          "name": "Sargent Canyon Cogen Facility",
-          "types": [
-            "PowerPlant"
-          ],
-          "dcid": "dc/lkt91ny6qz2l1",
-          "provenanceId": "dc/base/WIDAP_PowerPlants"
-        },
-        {
-          "name": "Salinas River Cogeneration Facility",
-          "types": [
-            "PowerPlant"
-          ],
-          "dcid": "dc/x4lxft4fmnby4",
-          "provenanceId": "dc/base/WIDAP_PowerPlants"
-        },
-        {
-          "name": "Gilroy Energy Center, LLC for King City",
-          "types": [
-            "PowerPlant"
-          ],
-          "dcid": "dc/yk2qzf8sq2j77",
-          "provenanceId": "dc/base/WIDAP_PowerPlants"
-        },
-        {
           "types": [
             "AirQualitySite"
           ],

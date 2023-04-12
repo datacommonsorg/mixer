@@ -1,5 +1,49 @@
 {
   "triples": {
+    "geoLevel": {
+      "nodes": [
+        {
+          "name": "Count of Statistical Variable: Country",
+          "types": [
+            "StatisticalVariable"
+          ],
+          "dcid": "Count_Variable_Country",
+          "provenanceId": "dc/base/HumanReadableStatVars"
+        },
+        {
+          "name": "Count of Statistical Variable: Climate And Environment, Country",
+          "types": [
+            "StatisticalVariable"
+          ],
+          "dcid": "Count_Variable_Country_ClimateAndEnvironment",
+          "provenanceId": "dc/base/HumanReadableStatVars"
+        },
+        {
+          "name": "Count of Statistical Variable: Demographics, Country",
+          "types": [
+            "StatisticalVariable"
+          ],
+          "dcid": "Count_Variable_Country_Demographics",
+          "provenanceId": "dc/base/HumanReadableStatVars"
+        },
+        {
+          "name": "Count of Statistical Variable: Economy, Country",
+          "types": [
+            "StatisticalVariable"
+          ],
+          "dcid": "Count_Variable_Country_Economy",
+          "provenanceId": "dc/base/HumanReadableStatVars"
+        },
+        {
+          "name": "Count of Statistical Variable: Health And Education, Country",
+          "types": [
+            "StatisticalVariable"
+          ],
+          "dcid": "Count_Variable_Country_HealthAndEducation",
+          "provenanceId": "dc/base/HumanReadableStatVars"
+        }
+      ]
+    },
     "rangeIncludes": {
       "nodes": [
         {
