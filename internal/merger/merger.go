@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Package merger provides function to merge V2 API ressponses
+// Package merger provides function to merge V2 API ressponses.
 package merger
 
 import (
@@ -21,7 +21,7 @@ import (
 
 // MergeObservation merges two V2 observation response.
 func MergeObservation(
-	o1, o2 *pbv2.ObservationResponse) (*pbv2.ObservationResponse, error) {
+	o1, o2 *pbv2.ObservationResponse) *pbv2.ObservationResponse {
 	for v, vData := range o2.ByVariable {
 		if _, ok := o1.ByVariable[v]; !ok {
 			o1.ByVariable[v] = &pbv2.VariableObservation{
@@ -34,14 +34,14 @@ func MergeObservation(
 					OrderedFacets: []*pbv2.FacetObservation{},
 				}
 			}
-			eData.OrderedFacets = append(
-				eData.OrderedFacets,
-				o1.ByVariable[v].ByEntity[e].OrderedFacets...,
+			o1.ByVariable[v].ByEntity[e].OrderedFacets = append(
+				o1.ByVariable[v].ByEntity[e].OrderedFacets,
+				eData.OrderedFacets...,
 			)
 		}
 	}
 	for facetID, facet := range o2.Facets {
 		o1.Facets[facetID] = facet
 	}
-	return o1, nil
+	return o1
 }
