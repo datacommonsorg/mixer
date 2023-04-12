@@ -283,7 +283,7 @@ func (s *Server) V2Observation(
 		if err != nil {
 			return nil, err
 		}
-		return merger.MergeObservation(resp, remoteResp)
+		return merger.MergeObservation(resp, remoteResp), nil
 	}
 	return resp, nil
 }
