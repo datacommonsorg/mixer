@@ -26,7 +26,7 @@ import (
 	"google.golang.org/grpc/status"
 )
 
-//go:embed "USGeosForPlaceRecognition.csv"
+//go:embed "WorldGeosForPlaceRecognition.csv"
 var recogPlaceMapCSVContent []byte // Embed CSV as []byte.
 
 // RecogPlaceMap returns a map for RecogPlaces, the key is the first token/word of each place.
