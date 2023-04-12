@@ -23,6 +23,9 @@
       "places": [
         {
           "dcid": "geoId/01"
+        },
+        {
+          "dcid": "wikidataId/Q3709658"
         }
       ]
     }

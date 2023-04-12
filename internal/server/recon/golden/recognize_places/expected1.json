@@ -13,13 +13,13 @@
       ]
     },
     {
-      "span": "of"
-    },
-    {
-      "span": "Asia",
+      "span": "of Asia",
       "places": [
         {
           "dcid": "asia"
+        },
+        {
+          "dcid": "wikidataId/Q988069"
         }
       ]
     }
