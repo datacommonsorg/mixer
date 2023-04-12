@@ -1777,15 +1777,15 @@
       "name": "Average proportion of deprivations for people multidimensionally poor (%)",
       "statVars": [
         {
-          "name": "Average proportion of deprivations for people multidimensionally poor (%): All age ranges or no breaks by age, All areas, Country data, Both sexes",
+          "name": "Average proportion of deprivations for people multidimensionally poor: All age ranges or no breaks by age, All areas, Country data, Both sexes",
           "dcid": "sdg/SD_MDP_ANDI_ALLAGE_ALLAREA_C_BOTHSEX"
         },
         {
-          "name": "Average proportion of deprivations for people multidimensionally poor (%): All age ranges or no breaks by age, Rural, Country data, Both sexes",
+          "name": "Average proportion of deprivations for people multidimensionally poor: All age ranges or no breaks by age, Rural, Country data, Both sexes",
           "dcid": "sdg/SD_MDP_ANDI_ALLAGE_RURAL_C_BOTHSEX"
         },
         {
-          "name": "Average proportion of deprivations for people multidimensionally poor (%): All age ranges or no breaks by age, Urban, Country data, Both sexes",
+          "name": "Average proportion of deprivations for people multidimensionally poor: All age ranges or no breaks by age, Urban, Country data, Both sexes",
           "dcid": "sdg/SD_MDP_ANDI_ALLAGE_URBAN_C_BOTHSEX"
         }
       ]
@@ -2827,7 +2827,7 @@
       "name": "[ILO] Proportion of poor population receiving social assistance cash benefit, by sex (%)",
       "statVars": [
         {
-          "name": "[ILO] Proportion of poor population receiving social assistance cash benefit, by sex (%): Estimated data, Normal value, Both sexes",
+          "name": "Proportion of poor population receiving social assistance cash benefit: Estimated data, Normal value, Both sexes",
           "dcid": "sdg/SI_COV_POOR_E_A_BOTHSEX"
         }
       ]
@@ -5168,6 +5168,7 @@
   "matches": [
     "below poverty",
     "poor",
+    "poor:",
     "poorest",
     "with food stamps"
   ]
