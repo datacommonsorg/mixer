@@ -19,6 +19,7 @@ import (
 	"context"
 	"sort"
 	"strings"
+	"sync"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/store"
@@ -33,7 +34,32 @@ func RecognizePlaces(
 	pr := &placeRecognition{
 		recogPlaceMap: store.RecogPlaceMap,
 	}
-	return pr.detectPlaces(in.GetQuery()), nil
+
+	type queryItems struct {
+		query string
+		items *pb.RecognizePlacesResponse_Items
+	}
+
+	var wg sync.WaitGroup
+	resChan := make(chan *queryItems, len(in.GetQueries()))
+	for _, query := range in.GetQueries() {
+		wg.Add(1)
+		go func(query string) {
+			defer wg.Done()
+			resChan <- &queryItems{query: query, items: pr.detectPlaces(query)}
+		}(query)
+	}
+	wg.Wait()
+	close(resChan)
+
+	resp := &pb.RecognizePlacesResponse{
+		QueryItems: map[string]*pb.RecognizePlacesResponse_Items{},
+	}
+	for res := range resChan {
+		resp.QueryItems[res.query] = res.items
+	}
+
+	return resp, nil
 }
 
 func tokenize(query string) []string {
@@ -81,7 +107,8 @@ type placeRecognition struct {
 	recogPlaceMap map[string]*pb.RecogPlaces
 }
 
-func (p *placeRecognition) detectPlaces(query string) *pb.RecognizePlacesResponse {
+func (p *placeRecognition) detectPlaces(
+	query string) *pb.RecognizePlacesResponse_Items {
 	tokenSpans := p.replaceTokensWithCandidates(tokenize(query))
 	candidates := rankAndTrimCandidates(combineContainedIn(tokenSpans))
 	return formatResponse(query, candidates)
@@ -254,8 +281,8 @@ func rankAndTrimCandidates(tokenSpans *pb.TokenSpans) *pb.TokenSpans {
 
 // Combine successive non-place tokens.
 func formatResponse(
-	query string, tokenSpans *pb.TokenSpans) *pb.RecognizePlacesResponse {
-	res := &pb.RecognizePlacesResponse{Query: query}
+	query string, tokenSpans *pb.TokenSpans) *pb.RecognizePlacesResponse_Items {
+	res := &pb.RecognizePlacesResponse_Items{}
 	spanParts := []string{}
 	for _, tokenSpan := range tokenSpans.GetSpans() {
 		span := strings.Join(tokenSpan.GetTokens(), " ")

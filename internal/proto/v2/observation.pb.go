@@ -164,6 +164,7 @@ func (x *VariableObservation) GetByEntity() map[string]*EntityObservation {
 	return nil
 }
 
+//
 type EntityObservation struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -345,10 +346,10 @@ type ObservationRequest struct {
 	// A list of entity DCIDs, or an arrow expression that covers a list of entity DCIDs.
 	Entity *DcidOrExpression `protobuf:"bytes,2,opt,name=entity,proto3" json:"entity,omitempty"`
 	// Date of the observation
-	//   - Not specified: all observations are returned
-	//   - "LATEST": latest obseration of each facet is returned
-	//   - "<DATE>": a speficied valid ISO 8601 date. Observation corresponding to
-	//     this date is returned.
+	// - Not specified: all observations are returned
+	// - "LATEST": latest obseration of each facet is returned
+	// - "<DATE>": a speficied valid ISO 8601 date. Observation corresponding to
+	//   this date is returned.
 	Date string `protobuf:"bytes,3,opt,name=date,proto3" json:"date,omitempty"`
 	// Value of the observation
 	Value string `protobuf:"bytes,4,opt,name=value,proto3" json:"value,omitempty"`
