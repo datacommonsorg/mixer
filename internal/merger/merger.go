@@ -18,6 +18,7 @@ package merger
 import (
 	"sort"
 
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 )
 
@@ -61,6 +62,67 @@ func MergeResolve(r1, r2 *pbv2.ResolveResponse) *pbv2.ResolveResponse {
 	sort.Slice(res.Entities, func(i, j int) bool {
 		return res.Entities[i].Node < res.Entities[j].Node
 	})
+
+	return res
+}
+
+// MergeEvent merges two V2 event responses.
+func MergeEvent(e1, e2 *pbv2.EventResponse) *pbv2.EventResponse {
+	idToEvent := map[string]*pbv1.EventCollection_Event{}
+	idToProvenance := map[string]*pbv1.EventCollection_ProvenanceInfo{}
+	dateSet := map[string]struct{}{}
+
+	collectEvent := func(e *pbv2.EventResponse) {
+		if ec := e.GetEventCollection(); ec != nil {
+			for k, v := range ec.GetProvenanceInfo() {
+				if _, ok := idToProvenance[k]; ok {
+					continue
+				}
+				idToProvenance[k] = v
+			}
+			for _, ev := range ec.GetEvents() {
+				if _, ok := idToEvent[ev.GetDcid()]; ok {
+					continue
+				}
+				idToEvent[ev.GetDcid()] = ev
+			}
+		}
+
+		if ed := e.GetEventCollectionDate(); ed != nil {
+			for _, date := range ed.GetDates() {
+				dateSet[date] = struct{}{}
+			}
+		}
+	}
+
+	collectEvent(e1)
+	collectEvent(e2)
+
+	res := &pbv2.EventResponse{}
+	if len(idToEvent) > 0 {
+		res.EventCollection = &pbv1.EventCollection{
+			ProvenanceInfo: idToProvenance,
+		}
+		for _, ev := range idToEvent {
+			res.EventCollection.Events = append(res.EventCollection.Events, ev)
+		}
+	}
+	if len(dateSet) > 0 {
+		res.EventCollectionDate = &pbv1.EventCollectionDate{}
+		for date := range dateSet {
+			res.EventCollectionDate.Dates = append(res.EventCollectionDate.Dates, date)
+		}
+	}
+
+	// Sort to make results deterministic.
+	if res.EventCollection != nil {
+		sort.Slice(res.EventCollection.Events, func(i, j int) bool {
+			return res.EventCollection.Events[i].Dcid < res.EventCollection.Events[j].Dcid
+		})
+	}
+	if res.EventCollectionDate != nil {
+		sort.Strings(res.EventCollectionDate.Dates)
+	}
 
 	return res
 }
