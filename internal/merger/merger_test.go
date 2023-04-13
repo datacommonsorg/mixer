@@ -19,6 +19,7 @@ import (
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/proto"
@@ -73,6 +74,91 @@ func TestMergeResolve(t *testing.T) {
 		got := MergeResolve(c.r1, c.r2)
 		if diff := cmp.Diff(got, c.want, cmpOpts); diff != "" {
 			t.Errorf("MergeResolve(%v, %v) got diff: %s", c.r1, c.r2, diff)
+		}
+	}
+}
+
+func TestMergeEvent(t *testing.T) {
+	cmpOpts := cmp.Options{
+		protocmp.Transform(),
+	}
+
+	for _, c := range []struct {
+		e1   *pbv2.EventResponse
+		e2   *pbv2.EventResponse
+		want *pbv2.EventResponse
+	}{
+		{
+			&pbv2.EventResponse{
+				EventCollection: &pbv1.EventCollection{
+					Events: []*pbv1.EventCollection_Event{
+						{
+							Dcid:         "event1",
+							Places:       []string{"place1", "place2"},
+							ProvenanceId: "prov1",
+						},
+					},
+					ProvenanceInfo: map[string]*pbv1.EventCollection_ProvenanceInfo{
+						"prov1": {ImportName: "import1"},
+					},
+				},
+			},
+			&pbv2.EventResponse{
+				EventCollection: &pbv1.EventCollection{
+					Events: []*pbv1.EventCollection_Event{
+						{
+							Dcid:         "event2",
+							Places:       []string{"place3", "place4"},
+							ProvenanceId: "prov2",
+						},
+					},
+					ProvenanceInfo: map[string]*pbv1.EventCollection_ProvenanceInfo{
+						"prov2": {ImportName: "import2"},
+					},
+				},
+			},
+			&pbv2.EventResponse{
+				EventCollection: &pbv1.EventCollection{
+					Events: []*pbv1.EventCollection_Event{
+						{
+							Dcid:         "event1",
+							Places:       []string{"place1", "place2"},
+							ProvenanceId: "prov1",
+						},
+						{
+							Dcid:         "event2",
+							Places:       []string{"place3", "place4"},
+							ProvenanceId: "prov2",
+						},
+					},
+					ProvenanceInfo: map[string]*pbv1.EventCollection_ProvenanceInfo{
+						"prov1": {ImportName: "import1"},
+						"prov2": {ImportName: "import2"},
+					},
+				},
+			},
+		},
+		{
+			&pbv2.EventResponse{
+				EventCollectionDate: &pbv1.EventCollectionDate{
+					Dates: []string{"2021", "2022", "2023"},
+				},
+			},
+			&pbv2.EventResponse{
+				EventCollectionDate: &pbv1.EventCollectionDate{
+					Dates: []string{"2022", "2023", "2024"},
+				},
+			},
+			&pbv2.EventResponse{
+				EventCollectionDate: &pbv1.EventCollectionDate{
+					Dates: []string{"2021", "2022", "2023", "2024"},
+				},
+			},
+		},
+	} {
+		got := MergeEvent(c.e1, c.e2)
+		if diff := cmp.Diff(got, c.want, cmpOpts); diff != "" {
+			t.Errorf("MergeEvent(%v, %v) got diff: %s", c.e1, c.e2, diff)
 		}
 	}
 }

@@ -24,14 +24,10 @@ import (
 
 	"github.com/datacommonsorg/mixer/internal/merger"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
-	v1e "github.com/datacommonsorg/mixer/internal/server/v1/event"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
-	v2e "github.com/datacommonsorg/mixer/internal/server/v2/event"
 	v2p "github.com/datacommonsorg/mixer/internal/server/v2/properties"
 	v2pv "github.com/datacommonsorg/mixer/internal/server/v2/propertyvalues"
 	"github.com/datacommonsorg/mixer/internal/util"
-	"google.golang.org/grpc/codes"
-	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/proto"
 
@@ -165,73 +161,19 @@ func (s *Server) V2Node(
 func (s *Server) V2Event(
 	ctx context.Context, in *pbv2.EventRequest,
 ) (*pbv2.EventResponse, error) {
-	arcs, err := v2.ParseProperty(in.GetProperty())
+	resp, err := V2EventCore(ctx, s.store, in)
 	if err != nil {
 		return nil, err
 	}
-
-	// EventCollection.
-	// Example:
-	//   <-location{typeOf:FireEvent, date:2020-10, area:3.1#6.2#Acre}'
-	if len(arcs) == 1 {
-		arc := arcs[0]
-		eventType, eventTypeOK := arc.Filter["typeOf"]
-		date, dateOK := arc.Filter["date"]
-
-		if !arc.Out &&
-			arc.SingleProp == "location" &&
-			(len(arc.Filter) == 2 || len(arc.Filter) == 3) &&
-			eventTypeOK &&
-			dateOK {
-			var eventFilterSpec *v1e.FilterSpec
-			hasEventFilter := len(arc.Filter) == 3
-			if hasEventFilter {
-				for k, v := range arc.Filter {
-					if k == "typeOf" || k == "date" {
-						continue
-					}
-					eventFilterSpec, err = v2e.ParseEventCollectionFilter(k, v)
-					if err != nil {
-						return nil, err
-					}
-				}
-			} else {
-				eventFilterSpec = nil
-			}
-
-			return v2e.EventCollection(
-				ctx,
-				s.store,
-				in.GetNode(),
-				eventType,
-				date,
-				eventFilterSpec)
+	if s.metadata.RemoteMixerURL != "" {
+		remoteResp := &pbv2.EventResponse{}
+		err := fetchRemote(s.metadata, s.httpClient, "/v2/event", in, remoteResp)
+		if err != nil {
+			return nil, err
 		}
-
-		return nil, status.Errorf(codes.InvalidArgument,
-			"invalid property: %s", in.GetProperty())
+		return merger.MergeEvent(resp, remoteResp), nil
 	}
-
-	// EventCollection.
-	// Example:
-	//   <-location{typeOf:FireEvent}->date
-	if len(arcs) == 2 {
-		arc1, arc2 := arcs[0], arcs[1]
-		eventType, eventTypeOK := arc1.Filter["typeOf"]
-
-		if !arc1.Out &&
-			arc1.SingleProp == "location" &&
-			eventTypeOK &&
-			arc2.Out &&
-			arc2.SingleProp == "date" {
-			return v2e.EventCollectionDate(ctx, s.store, in.GetNode(), eventType)
-		}
-
-		return nil, status.Errorf(codes.InvalidArgument,
-			"invalid property: %s", in.GetProperty())
-	}
-
-	return nil, nil
+	return resp, nil
 }
 
 // V2Observation implements API for mixer.V2Observation.
