@@ -126,18 +126,24 @@ message BulkFindEntitiesResponse {
   repeated Entity entities = 1;
 }
 
-message RecognizePlacesRequest { string query = 1; }
+message RecognizePlacesRequest { repeated string queries = 1; }
 
 message RecognizePlacesResponse {
   message Place { string dcid = 1; }
+
   message Item {
     // Required. Substring of input query.
     string span = 1;
     // Optional. Recognized places.
     repeated Place places = 2;
   }
-  string query = 1;
-  repeated Item items = 2;
+
+  message Result {
+    string query = 1;
+    repeated Item items = 2;
+  }
+
+  repeated Result results = 1;
 }
 
 // RecogPlace contains info of a place for RecognizePlaces method.

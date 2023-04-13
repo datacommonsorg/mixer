@@ -16,7 +16,6 @@ package golden
 
 import (
 	"context"
-	"fmt"
 	"path"
 	"runtime"
 	"testing"
@@ -35,26 +34,34 @@ func TestRecognizePlaces(t *testing.T) {
 	goldenPath := path.Join(path.Dir(filename), "recognize_places")
 
 	testSuite := func(mixer pbs.MixerClient, latencyTest bool) {
-		for idx, query := range []string{
-			"median income in africa",
-			"economy of Asia",
-			"tell me about chicago",
-			"tell me about palo alto",
-			"what about mountain view",
-			"crime in new york state",
-			"California economy and Florida",
-			"life expectancy in Australia and Canada",
-			"life expectancy in New York city and Alabama",
-			"the birds in San Jose are chirpy",
-			"the birds in San Jose, California are chirpy",
-			"the birds in San Jose California are chirpy",
-			"the birds in San Jose, Mountain View and Sunnyvale are chirpy",
+		for _, c := range []struct {
+			queries    []string
+			goldenFile string
+		}{
+			{
+				[]string{
+					"median income in africa",
+					"economy of Asia",
+					"tell me about chicago",
+					"tell me about palo alto",
+					"what about mountain view",
+					"crime in new york state",
+					"California economy and Florida",
+					"life expectancy in Australia and Canada",
+					"life expectancy in New York city and Alabama",
+					"the birds in San Jose are chirpy",
+					"the birds in San Jose, California are chirpy",
+					"the birds in San Jose California are chirpy",
+					"the birds in San Jose, Mountain View and Sunnyvale are chirpy",
+				},
+				"result.json",
+			},
 		} {
 			resp, err := mixer.RecognizePlaces(ctx, &pb.RecognizePlacesRequest{
-				Query: query,
+				Queries: c.queries,
 			})
 			if err != nil {
-				t.Errorf("RecognizePlaces(%s) = %s", query, err)
+				t.Errorf("RecognizePlaces() = %s", err)
 				continue
 			}
 
@@ -62,14 +69,13 @@ func TestRecognizePlaces(t *testing.T) {
 				continue
 			}
 
-			goldenFile := fmt.Sprintf("expected%d.json", idx)
 			if test.GenerateGolden {
-				test.UpdateProtoGolden(resp, goldenPath, goldenFile)
+				test.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
 				continue
 			}
 
 			var expected pb.RecognizePlacesResponse
-			if err = test.ReadJSON(goldenPath, goldenFile, &expected); err != nil {
+			if err = test.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
 				t.Errorf("Can not Unmarshal golden file")
 				continue
 			}
