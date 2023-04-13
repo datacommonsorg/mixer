@@ -2,24 +2,13 @@
   "query": "economy of Asia",
   "items": [
     {
-      "span": "economy",
-      "places": [
-        {
-          "dcid": "geoId/4222264"
-        },
-        {
-          "dcid": "geoId/1820152"
-        }
-      ]
+      "span": "economy of"
     },
     {
-      "span": "of Asia",
+      "span": "Asia",
       "places": [
         {
           "dcid": "asia"
-        },
-        {
-          "dcid": "wikidataId/Q988069"
         }
       ]
     }
