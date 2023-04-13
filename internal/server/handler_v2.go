@@ -29,7 +29,6 @@ import (
 	v2e "github.com/datacommonsorg/mixer/internal/server/v2/event"
 	v2p "github.com/datacommonsorg/mixer/internal/server/v2/properties"
 	v2pv "github.com/datacommonsorg/mixer/internal/server/v2/propertyvalues"
-	"github.com/datacommonsorg/mixer/internal/server/v2/resolve"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
@@ -79,53 +78,19 @@ func fetchRemote(
 func (s *Server) V2Resolve(
 	ctx context.Context, in *pbv2.ResolveRequest,
 ) (*pbv2.ResolveResponse, error) {
-	arcs, err := v2.ParseProperty(in.GetProperty())
+	resp, err := V2ResolveCore(ctx, s.store, s.mapsClient, in)
 	if err != nil {
 		return nil, err
 	}
-
-	if len(arcs) != 2 {
-		return nil, status.Errorf(codes.InvalidArgument,
-			"invalid property for resolving: %s", in.GetProperty())
+	if s.metadata.RemoteMixerURL != "" {
+		remoteResp := &pbv2.ResolveResponse{}
+		err := fetchRemote(s.metadata, s.httpClient, "/v2/resolve", in, remoteResp)
+		if err != nil {
+			return nil, err
+		}
+		return merger.MergeResolve(resp, remoteResp), nil
 	}
-
-	inArc := arcs[0]
-	outArc := arcs[1]
-	if inArc.Out || !outArc.Out {
-		return nil, status.Errorf(codes.InvalidArgument,
-			"invalid property for resolving: %s", in.GetProperty())
-	}
-
-	if inArc.SingleProp == "geoCoordinate" && outArc.SingleProp == "dcid" {
-		// Coordinate to ID:
-		// Example:
-		//   <-geoCoordinate
-		return resolve.Coordinate(ctx, s.store, in.GetNodes())
-	}
-
-	if inArc.SingleProp == "description" && outArc.SingleProp == "dcid" {
-		// Description (name) to ID:
-		// Examples:
-		//   <-description
-		//   <-description{typeOf:City}
-		typeOf := inArc.Filter["typeOf"] // Could be empty.
-		return resolve.Description(
-			ctx,
-			s.store,
-			s.mapsClient,
-			in.GetNodes(),
-			typeOf)
-	}
-
-	// ID to ID:
-	// Example:
-	//   <-wikidataId->nutsCode
-	return resolve.ID(
-		ctx,
-		s.store,
-		in.GetNodes(),
-		inArc.SingleProp,
-		outArc.SingleProp)
+	return resp, nil
 }
 
 // V2Node implements API for mixer.V2Node.
@@ -273,7 +238,7 @@ func (s *Server) V2Event(
 func (s *Server) V2Observation(
 	ctx context.Context, in *pbv2.ObservationRequest,
 ) (*pbv2.ObservationResponse, error) {
-	resp, err := V2ObservationBigtable(ctx, s.store, in)
+	resp, err := V2ObservationCore(ctx, s.store, in)
 	if err != nil {
 		return nil, err
 	}
