@@ -21,7 +21,7 @@ import (
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 )
 
-// MergeObservation merges two V2 resolve responses.
+// MergeResolve merges two V2 resolve responses.
 func MergeResolve(r1, r2 *pbv2.ResolveResponse) *pbv2.ResolveResponse {
 	// Maps are used to dedup.
 	nodeToResolvedIDSet := map[string]map[string]struct{}{}

@@ -84,7 +84,7 @@ func V2ResolveCore(
 		outArc.SingleProp)
 }
 
-// V2ObservationBigtable fetches observation from Cloud Bigtable.
+// V2ObservationCore fetches observation from Cloud Bigtable.
 func V2ObservationCore(
 	ctx context.Context, store *store.Store, in *pbv2.ObservationRequest,
 ) (*pbv2.ObservationResponse, error) {
