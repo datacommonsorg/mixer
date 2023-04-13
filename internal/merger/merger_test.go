@@ -25,6 +25,58 @@ import (
 	"google.golang.org/protobuf/testing/protocmp"
 )
 
+func TestMergeResolve(t *testing.T) {
+	cmpOpts := cmp.Options{
+		protocmp.Transform(),
+	}
+
+	for _, c := range []struct {
+		r1   *pbv2.ResolveResponse
+		r2   *pbv2.ResolveResponse
+		want *pbv2.ResolveResponse
+	}{
+		{
+			&pbv2.ResolveResponse{
+				Entities: []*pbv2.ResolveResponse_Entity{
+					{
+						Node:        "node1",
+						ResolvedIds: []string{"id1.1", "id1.3"},
+					},
+				},
+			},
+			&pbv2.ResolveResponse{
+				Entities: []*pbv2.ResolveResponse_Entity{
+					{
+						Node:        "node1",
+						ResolvedIds: []string{"id1.2"},
+					},
+					{
+						Node:        "node2",
+						ResolvedIds: []string{"id2.1"},
+					},
+				},
+			},
+			&pbv2.ResolveResponse{
+				Entities: []*pbv2.ResolveResponse_Entity{
+					{
+						Node:        "node1",
+						ResolvedIds: []string{"id1.1", "id1.2", "id1.3"},
+					},
+					{
+						Node:        "node2",
+						ResolvedIds: []string{"id2.1"},
+					},
+				},
+			},
+		},
+	} {
+		got := MergeResolve(c.r1, c.r2)
+		if diff := cmp.Diff(got, c.want, cmpOpts); diff != "" {
+			t.Errorf("MergeResolve(%v, %v) got diff: %s", c.r1, c.r2, diff)
+		}
+	}
+}
+
 func TestMergeObservation(t *testing.T) {
 	cmpOpts := cmp.Options{
 		protocmp.Transform(),
@@ -130,8 +182,7 @@ func TestMergeObservation(t *testing.T) {
 	} {
 		got := MergeObservation(c.o1, c.o2)
 		if diff := cmp.Diff(got, c.want, cmpOpts); diff != "" {
-			t.Errorf("%+v", got)
-			// t.Errorf("MergeObservation(%v, %v) got diff: %s", c.o1, c.o2, diff)
+			t.Errorf("MergeObservation(%v, %v) got diff: %s", c.o1, c.o2, diff)
 		}
 	}
 }

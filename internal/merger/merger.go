@@ -16,10 +16,56 @@
 package merger
 
 import (
+	"sort"
+
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 )
 
-// MergeObservation merges two V2 observation response.
+// MergeResolve merges two V2 resolve responses.
+func MergeResolve(r1, r2 *pbv2.ResolveResponse) *pbv2.ResolveResponse {
+	// Maps are used to dedup.
+	nodeToResolvedIDSet := map[string]map[string]struct{}{}
+
+	collectEntities := func(r *pbv2.ResolveResponse) {
+		for _, e := range r.GetEntities() {
+			node := e.GetNode()
+			if _, ok := nodeToResolvedIDSet[node]; !ok {
+				nodeToResolvedIDSet[node] = map[string]struct{}{}
+			}
+			for _, id := range e.GetResolvedIds() {
+				nodeToResolvedIDSet[node][id] = struct{}{}
+			}
+		}
+	}
+
+	collectEntities(r1)
+	collectEntities(r2)
+
+	res := &pbv2.ResolveResponse{}
+	for node, resolvedIDSet := range nodeToResolvedIDSet {
+		var resolvedIDs []string
+		for id := range resolvedIDSet {
+			resolvedIDs = append(resolvedIDs, id)
+		}
+
+		// Sort to make result deterministic.
+		sort.Strings(resolvedIDs)
+
+		res.Entities = append(res.Entities, &pbv2.ResolveResponse_Entity{
+			Node:        node,
+			ResolvedIds: resolvedIDs,
+		})
+	}
+
+	// Sort to make result deterministic.
+	sort.Slice(res.Entities, func(i, j int) bool {
+		return res.Entities[i].Node < res.Entities[j].Node
+	})
+
+	return res
+}
+
+// MergeObservation merges two V2 observation responses.
 func MergeObservation(
 	o1, o2 *pbv2.ObservationResponse) *pbv2.ObservationResponse {
 	for v, vData := range o2.ByVariable {

@@ -21,13 +21,71 @@ import (
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	v2observation "github.com/datacommonsorg/mixer/internal/server/v2/observation"
+	"github.com/datacommonsorg/mixer/internal/server/v2/resolve"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
+	"googlemaps.github.io/maps"
 )
 
-// V2ObservationBigtable fetches V2 observation from Cloud Bigtable.
-func V2ObservationBigtable(
+// V2ResolveCore gets resolve results from Cloud Bigtable and Maps API.
+func V2ResolveCore(
+	ctx context.Context,
+	store *store.Store,
+	mapsClient *maps.Client,
+	in *pbv2.ResolveRequest,
+) (*pbv2.ResolveResponse, error) {
+	arcs, err := v2.ParseProperty(in.GetProperty())
+	if err != nil {
+		return nil, err
+	}
+
+	if len(arcs) != 2 {
+		return nil, status.Errorf(codes.InvalidArgument,
+			"invalid property for resolving: %s", in.GetProperty())
+	}
+
+	inArc := arcs[0]
+	outArc := arcs[1]
+	if inArc.Out || !outArc.Out {
+		return nil, status.Errorf(codes.InvalidArgument,
+			"invalid property for resolving: %s", in.GetProperty())
+	}
+
+	if inArc.SingleProp == "geoCoordinate" && outArc.SingleProp == "dcid" {
+		// Coordinate to ID:
+		// Example:
+		//   <-geoCoordinate
+		return resolve.Coordinate(ctx, store, in.GetNodes())
+	}
+
+	if inArc.SingleProp == "description" && outArc.SingleProp == "dcid" {
+		// Description (name) to ID:
+		// Examples:
+		//   <-description
+		//   <-description{typeOf:City}
+		typeOf := inArc.Filter["typeOf"] // Could be empty.
+		return resolve.Description(
+			ctx,
+			store,
+			mapsClient,
+			in.GetNodes(),
+			typeOf)
+	}
+
+	// ID to ID:
+	// Example:
+	//   <-wikidataId->nutsCode
+	return resolve.ID(
+		ctx,
+		store,
+		in.GetNodes(),
+		inArc.SingleProp,
+		outArc.SingleProp)
+}
+
+// V2ObservationCore fetches observation from Cloud Bigtable.
+func V2ObservationCore(
 	ctx context.Context, store *store.Store, in *pbv2.ObservationRequest,
 ) (*pbv2.ObservationResponse, error) {
 	// (TODO): The routing logic here is very rough. This needs more work.
