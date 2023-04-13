@@ -1,121 +1,6 @@
 {
-  "results": [
-    {
-      "query": "median income in africa",
-      "items": [
-        {
-          "span": "median income in"
-        },
-        {
-          "span": "africa",
-          "places": [
-            {
-              "dcid": "africa"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "query": "economy of Asia",
-      "items": [
-        {
-          "span": "economy of"
-        },
-        {
-          "span": "Asia",
-          "places": [
-            {
-              "dcid": "asia"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "query": "tell me about chicago",
-      "items": [
-        {
-          "span": "tell me about"
-        },
-        {
-          "span": "chicago",
-          "places": [
-            {
-              "dcid": "geoId/1714000"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "query": "tell me about palo alto",
-      "items": [
-        {
-          "span": "tell me about"
-        },
-        {
-          "span": "palo alto",
-          "places": [
-            {
-              "dcid": "geoId/0655282"
-            },
-            {
-              "dcid": "geoId/1961230"
-            },
-            {
-              "dcid": "geoId/4257752"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "query": "what about mountain view",
-      "items": [
-        {
-          "span": "what about"
-        },
-        {
-          "span": "mountain view",
-          "places": [
-            {
-              "dcid": "geoId/0649670"
-            },
-            {
-              "dcid": "geoId/3744770"
-            },
-            {
-              "dcid": "geoId/1553300"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "query": "crime in new york state",
-      "items": [
-        {
-          "span": "crime in"
-        },
-        {
-          "span": "new york",
-          "places": [
-            {
-              "dcid": "geoId/36"
-            },
-            {
-              "dcid": "geoId/3651000"
-            }
-          ]
-        },
-        {
-          "span": "state"
-        }
-      ]
-    },
-    {
-      "query": "California economy and Florida",
+  "queryItems": {
+    "California economy and Florida": {
       "items": [
         {
           "span": "California",
@@ -150,8 +35,43 @@
         }
       ]
     },
-    {
-      "query": "life expectancy in Australia and Canada",
+    "crime in new york state": {
+      "items": [
+        {
+          "span": "crime in"
+        },
+        {
+          "span": "new york",
+          "places": [
+            {
+              "dcid": "geoId/36"
+            },
+            {
+              "dcid": "geoId/3651000"
+            }
+          ]
+        },
+        {
+          "span": "state"
+        }
+      ]
+    },
+    "economy of Asia": {
+      "items": [
+        {
+          "span": "economy of"
+        },
+        {
+          "span": "Asia",
+          "places": [
+            {
+              "dcid": "asia"
+            }
+          ]
+        }
+      ]
+    },
+    "life expectancy in Australia and Canada": {
       "items": [
         {
           "span": "life expectancy in"
@@ -177,8 +97,7 @@
         }
       ]
     },
-    {
-      "query": "life expectancy in New York city and Alabama",
+    "life expectancy in New York city and Alabama": {
       "items": [
         {
           "span": "life expectancy in"
@@ -210,58 +129,58 @@
         }
       ]
     },
-    {
-      "query": "the birds in San Jose are chirpy",
+    "median income in africa": {
       "items": [
         {
-          "span": "the birds in"
+          "span": "median income in"
         },
         {
-          "span": "San Jose",
+          "span": "africa",
           "places": [
             {
-              "dcid": "geoId/0668000"
-            },
-            {
-              "dcid": "wikidataId/Q55599"
-            },
-            {
-              "dcid": "geoId/3568430"
+              "dcid": "africa"
             }
           ]
-        },
-        {
-          "span": "are chirpy"
         }
       ]
     },
-    {
-      "query": "the birds in San Jose, California are chirpy",
+    "tell me about chicago": {
       "items": [
         {
-          "span": "the birds in"
+          "span": "tell me about"
         },
         {
-          "span": "San Jose , California",
+          "span": "chicago",
           "places": [
             {
-              "dcid": "geoId/06"
-            },
-            {
-              "dcid": "geoId/0668000"
-            },
-            {
-              "dcid": "wikidataId/Q55599"
+              "dcid": "geoId/1714000"
             }
           ]
-        },
-        {
-          "span": "are chirpy"
         }
       ]
     },
-    {
-      "query": "the birds in San Jose California are chirpy",
+    "tell me about palo alto": {
+      "items": [
+        {
+          "span": "tell me about"
+        },
+        {
+          "span": "palo alto",
+          "places": [
+            {
+              "dcid": "geoId/0655282"
+            },
+            {
+              "dcid": "geoId/1961230"
+            },
+            {
+              "dcid": "geoId/4257752"
+            }
+          ]
+        }
+      ]
+    },
+    "the birds in San Jose California are chirpy": {
       "items": [
         {
           "span": "the birds in"
@@ -285,8 +204,55 @@
         }
       ]
     },
-    {
-      "query": "the birds in San Jose, Mountain View and Sunnyvale are chirpy",
+    "the birds in San Jose are chirpy": {
+      "items": [
+        {
+          "span": "the birds in"
+        },
+        {
+          "span": "San Jose",
+          "places": [
+            {
+              "dcid": "geoId/0668000"
+            },
+            {
+              "dcid": "wikidataId/Q55599"
+            },
+            {
+              "dcid": "geoId/3568430"
+            }
+          ]
+        },
+        {
+          "span": "are chirpy"
+        }
+      ]
+    },
+    "the birds in San Jose, California are chirpy": {
+      "items": [
+        {
+          "span": "the birds in"
+        },
+        {
+          "span": "San Jose , California",
+          "places": [
+            {
+              "dcid": "geoId/06"
+            },
+            {
+              "dcid": "geoId/0668000"
+            },
+            {
+              "dcid": "wikidataId/Q55599"
+            }
+          ]
+        },
+        {
+          "span": "are chirpy"
+        }
+      ]
+    },
+    "the birds in San Jose, Mountain View and Sunnyvale are chirpy": {
       "items": [
         {
           "span": "the birds in"
@@ -340,6 +306,27 @@
           "span": "are chirpy"
         }
       ]
+    },
+    "what about mountain view": {
+      "items": [
+        {
+          "span": "what about"
+        },
+        {
+          "span": "mountain view",
+          "places": [
+            {
+              "dcid": "geoId/0649670"
+            },
+            {
+              "dcid": "geoId/3744770"
+            },
+            {
+              "dcid": "geoId/1553300"
+            }
+          ]
+        }
+      ]
     }
-  ]
+  }
 }

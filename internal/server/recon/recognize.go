@@ -35,29 +35,28 @@ func RecognizePlaces(
 		recogPlaceMap: store.RecogPlaceMap,
 	}
 
+	type queryItems struct {
+		query string
+		items *pb.RecognizePlacesResponse_Items
+	}
+
 	var wg sync.WaitGroup
-	resChan := make(chan *pb.RecognizePlacesResponse_Result, len(in.GetQueries()))
+	resChan := make(chan *queryItems, len(in.GetQueries()))
 	for _, query := range in.GetQueries() {
 		wg.Add(1)
 		go func(query string) {
 			defer wg.Done()
-			resChan <- pr.detectPlaces(query)
+			resChan <- &queryItems{query: query, items: pr.detectPlaces(query)}
 		}(query)
 	}
 	wg.Wait()
 	close(resChan)
 
-	resMap := map[string]*pb.RecognizePlacesResponse_Result{}
-	for res := range resChan {
-		resMap[res.GetQuery()] = res
+	resp := &pb.RecognizePlacesResponse{
+		QueryItems: map[string]*pb.RecognizePlacesResponse_Items{},
 	}
-
-	// Keep the order of input queries.
-	resp := &pb.RecognizePlacesResponse{}
-	for _, query := range in.GetQueries() {
-		if res, ok := resMap[query]; ok {
-			resp.Results = append(resp.Results, res)
-		}
+	for res := range resChan {
+		resp.QueryItems[res.query] = res.items
 	}
 
 	return resp, nil
@@ -109,7 +108,7 @@ type placeRecognition struct {
 }
 
 func (p *placeRecognition) detectPlaces(
-	query string) *pb.RecognizePlacesResponse_Result {
+	query string) *pb.RecognizePlacesResponse_Items {
 	tokenSpans := p.replaceTokensWithCandidates(tokenize(query))
 	candidates := rankAndTrimCandidates(combineContainedIn(tokenSpans))
 	return formatResponse(query, candidates)
@@ -282,8 +281,8 @@ func rankAndTrimCandidates(tokenSpans *pb.TokenSpans) *pb.TokenSpans {
 
 // Combine successive non-place tokens.
 func formatResponse(
-	query string, tokenSpans *pb.TokenSpans) *pb.RecognizePlacesResponse_Result {
-	res := &pb.RecognizePlacesResponse_Result{Query: query}
+	query string, tokenSpans *pb.TokenSpans) *pb.RecognizePlacesResponse_Items {
+	res := &pb.RecognizePlacesResponse_Items{}
 	spanParts := []string{}
 	for _, tokenSpan := range tokenSpans.GetSpans() {
 		span := strings.Join(tokenSpan.GetTokens(), " ")

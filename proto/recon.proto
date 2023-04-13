@@ -138,12 +138,11 @@ message RecognizePlacesResponse {
     repeated Place places = 2;
   }
 
-  message Result {
-    string query = 1;
-    repeated Item items = 2;
+  message Items {
+    repeated Item items = 1;
   }
 
-  repeated Result results = 1;
+  map<string, Items> query_items = 1;
 }
 
 // RecogPlace contains info of a place for RecognizePlaces method.
