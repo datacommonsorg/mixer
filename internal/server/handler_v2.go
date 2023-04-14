@@ -103,54 +103,51 @@ func (s *Server) V2Node(
 		if !arc.Out {
 			direction = util.DirectionIn
 		}
+
+		if arc.SingleProp != "" && arc.Wildcard == "+" {
+			// Examples:
+			//   <-containedInPlace+{typeOf:City}
+			return v2pv.LinkedPropertyValues(
+				ctx,
+				s.store,
+				s.cache,
+				in.GetNodes(),
+				arc.SingleProp,
+				direction,
+				arc.Filter,
+			)
+		}
+
+		if arc.SingleProp == "" && len(arc.BracketProps) == 0 {
+			// Examples:
+			//   ->
+			//   <-
+			return v2p.API(ctx, s.store, in.GetNodes(), direction)
+		}
+
+		var properties []string
 		if arc.SingleProp != "" {
 			if arc.Wildcard == "" {
 				// Examples:
 				//   ->name
 				//   <-containedInPlace
-				return v2pv.API(
-					ctx,
-					s.store,
-					s.metadata,
-					in.GetNodes(),
-					[]string{arc.SingleProp},
-					direction,
-					int(in.GetLimit()),
-					in.NextToken,
-				)
-			}
-			if arc.Wildcard == "+" {
-				// Examples:
-				//   <-containedInPlace+{typeOf:City}
-				return v2pv.LinkedPropertyValues(
-					ctx,
-					s.store,
-					s.cache,
-					in.GetNodes(),
-					arc.SingleProp,
-					direction,
-					arc.Filter,
-				)
+				properties = []string{arc.SingleProp}
 			}
 		} else { // arc.SingleProp == ""
-			if len(arc.BracketProps) == 0 {
-				// Examples:
-				//   ->
-				//   <-
-				return v2p.API(ctx, s.store, in.GetNodes(), direction)
-			}
-
 			// Examples:
 			//   ->[name, address]
+			properties = arc.BracketProps
+		}
+		if len(properties) > 0 {
 			return v2pv.API(
 				ctx,
 				s.store,
 				s.metadata,
 				in.GetNodes(),
-				arc.BracketProps,
+				properties,
 				direction,
 				int(in.GetLimit()),
-				in.GetNextToken(),
+				in.NextToken,
 			)
 		}
 	}
