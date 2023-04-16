@@ -66,6 +66,13 @@ func MergeResolve(r1, r2 *pbv2.ResolveResponse) *pbv2.ResolveResponse {
 	return res
 }
 
+// MergeNode merges two V2 node responses.
+// NOTE: The merge isn't for pagination, so NodeResponse::next_token should be empty.
+func MergeNode(n1, n2 *pbv2.NodeResponse) *pbv2.NodeResponse {
+	// TODO(ws): Implement real MergeNode().
+	return n1
+}
+
 // MergeEvent merges two V2 event responses.
 func MergeEvent(e1, e2 *pbv2.EventResponse) *pbv2.EventResponse {
 	idToEvent := map[string]*pbv1.EventCollection_Event{}

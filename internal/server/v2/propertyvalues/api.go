@@ -20,8 +20,10 @@ import (
 	"strings"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	v1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/node"
+	"github.com/datacommonsorg/mixer/internal/server/pagination"
 	"github.com/datacommonsorg/mixer/internal/server/placein"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/server/statvar"
@@ -83,6 +85,20 @@ func API(
 			}
 		}
 	}
+
+	var (
+		reqTokenMsg *v1.PaginationInfo
+		err         error
+	)
+	if reqToken == "" {
+		reqTokenMsg = &v1.PaginationInfo{ReadFromRemote: false}
+	} else {
+		reqTokenMsg, err = pagination.Decode(reqToken)
+		if err != nil {
+			return nil, err
+		}
+	}
+
 	if len(regularNodes) > 0 {
 		data, pi, err := v1pv.Fetch(
 			ctx,
@@ -105,6 +121,10 @@ func API(
 			}
 		}
 		if pi != nil {
+			// If reqToken indicates |read_from_remote|, then the response should also set it.
+			if reqTokenMsg.GetReadFromRemote() {
+				pi.ReadFromRemote = true
+			}
 			respToken, err := util.EncodeProto(pi)
 			if err != nil {
 				return nil, err
@@ -112,6 +132,18 @@ func API(
 			res.NextToken = respToken
 		}
 	}
+
+	// Maybe update the |read_from_remote| bit in response token.
+	if !reqTokenMsg.GetReadFromRemote() && res.GetNextToken() == "" {
+		// This means the last page of local Mixer result.
+		resTokenMsg := &v1.PaginationInfo{ReadFromRemote: true}
+		resToken, err := util.EncodeProto(resTokenMsg)
+		if err != nil {
+			return nil, err
+		}
+		res.NextToken = resToken
+	}
+
 	return res, nil
 }
 

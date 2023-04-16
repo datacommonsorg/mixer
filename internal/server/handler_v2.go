@@ -23,10 +23,8 @@ import (
 	"net/http"
 
 	"github.com/datacommonsorg/mixer/internal/merger"
+	"github.com/datacommonsorg/mixer/internal/server/pagination"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
-	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
-	v2p "github.com/datacommonsorg/mixer/internal/server/v2/properties"
-	v2pv "github.com/datacommonsorg/mixer/internal/server/v2/propertyvalues"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/proto"
@@ -89,66 +87,73 @@ func (s *Server) V2Resolve(
 	return resp, nil
 }
 
+/*
+
+} else {
+	parse next_token;
+	if readLocal {
+		call local PV;
+	} else {
+		call remote PV;
+	}
+}
+*/
+
 // V2Node implements API for mixer.V2Node.
 func (s *Server) V2Node(
 	ctx context.Context, in *pbv2.NodeRequest,
 ) (*pbv2.NodeResponse, error) {
-	arcs, err := v2.ParseProperty(in.GetProperty())
-	if err != nil {
-		return nil, err
-	}
-	if len(arcs) == 1 {
-		arc := arcs[0]
-		direction := util.DirectionOut
-		if !arc.Out {
-			direction = util.DirectionIn
+	if in.GetNextToken() == "" {
+		// When |next_token| in request is empty, there are two cases:
+		// 1. The call does not need pagination.
+		// 2. The call needs pagination, but this is the first call/page.
+		//
+		// To decide which case it is, we call local Mixer, and examine the
+		// |next_token| in the response.
+
+		resp, err := V2NodeCore(ctx, s.store, s.cache, s.metadata, in)
+		if err != nil {
+			return nil, err
 		}
 
-		if arc.SingleProp != "" && arc.Wildcard == "+" {
-			// Examples:
-			//   <-containedInPlace+{typeOf:City}
-			return v2pv.LinkedPropertyValues(
-				ctx,
-				s.store,
-				s.cache,
-				in.GetNodes(),
-				arc.SingleProp,
-				direction,
-				arc.Filter,
-			)
-		}
-
-		if arc.SingleProp == "" && len(arc.BracketProps) == 0 {
-			// Examples:
-			//   ->
-			//   <-
-			return v2p.API(ctx, s.store, in.GetNodes(), direction)
-		}
-
-		var properties []string
-		if arc.SingleProp != "" {
-			if arc.Wildcard == "" {
-				// Examples:
-				//   ->name
-				//   <-containedInPlace
-				properties = []string{arc.SingleProp}
+		// Call remote Mixer and merge only for non-paginated cases,
+		// which are signaled by empty resp.GetNextToken().
+		if resp.GetNextToken() == "" && s.metadata.RemoteMixerURL != "" {
+			remoteResp := &pbv2.NodeResponse{}
+			err := fetchRemote(s.metadata, s.httpClient, "/v2/node", in, remoteResp)
+			if err != nil {
+				return nil, err
 			}
-		} else { // arc.SingleProp == ""
-			// Examples:
-			//   ->[name, address]
-			properties = arc.BracketProps
+			return merger.MergeNode(resp, remoteResp), nil
 		}
-		if len(properties) > 0 {
-			return v2pv.API(
-				ctx,
-				s.store,
-				s.metadata,
-				in.GetNodes(),
-				properties,
-				direction,
-				int(in.GetLimit()),
-				in.NextToken,
-			)
+
+		return resp, nil
+	} else { // in.GetNextToken() != ""
+		paginationInfo, err := pagination.Decode(in.GetNextToken())
+		if err != nil {
+			return nil, err
+		}
+
+		if paginationInfo.GetReadFromRemote() {
+			if s.metadata.RemoteMixerURL != "" {
+				// From the perspective of remote Mixer, |read_from_remote| should be false.
+				// Therefore, we update the |next_token| in request message to reflect that.
+				paginationInfo.ReadFromRemote = false
+				updatedNextToken, err := util.EncodeProto(paginationInfo)
+				if err != nil {
+					return nil, err
+				}
+				in.NextToken = updatedNextToken
+
+				remoteResp := &pbv2.NodeResponse{}
+				if err := fetchRemote(
+					s.metadata, s.httpClient, "/v2/node", in, remoteResp); err != nil {
+					return nil, err
+				}
+				return remoteResp, nil
+			}
+		} else { // Read from local.
+			return V2NodeCore(ctx, s.store, s.cache, s.metadata, in)
 		}
 	}
 	return nil, nil

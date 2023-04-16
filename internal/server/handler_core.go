@@ -19,12 +19,16 @@ import (
 	"context"
 
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	"github.com/datacommonsorg/mixer/internal/server/resource"
 	v1e "github.com/datacommonsorg/mixer/internal/server/v1/event"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	v2e "github.com/datacommonsorg/mixer/internal/server/v2/event"
 	v2observation "github.com/datacommonsorg/mixer/internal/server/v2/observation"
+	v2p "github.com/datacommonsorg/mixer/internal/server/v2/properties"
+	v2pv "github.com/datacommonsorg/mixer/internal/server/v2/propertyvalues"
 	"github.com/datacommonsorg/mixer/internal/server/v2/resolve"
 	"github.com/datacommonsorg/mixer/internal/store"
+	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 	"googlemaps.github.io/maps"
@@ -84,6 +88,76 @@ func V2ResolveCore(
 		in.GetNodes(),
 		inArc.SingleProp,
 		outArc.SingleProp)
+}
+
+// V2NodeCore gets node results from Cloud Bigtable.
+func V2NodeCore(
+	ctx context.Context,
+	store *store.Store,
+	cache *resource.Cache,
+	metadata *resource.Metadata,
+	in *pbv2.NodeRequest,
+) (*pbv2.NodeResponse, error) {
+	arcs, err := v2.ParseProperty(in.GetProperty())
+	if err != nil {
+		return nil, err
+	}
+	if len(arcs) == 1 {
+		arc := arcs[0]
+		direction := util.DirectionOut
+		if !arc.Out {
+			direction = util.DirectionIn
+		}
+
+		if arc.SingleProp != "" && arc.Wildcard == "+" {
+			// Examples:
+			//   <-containedInPlace+{typeOf:City}
+			return v2pv.LinkedPropertyValues(
+				ctx,
+				store,
+				cache,
+				in.GetNodes(),
+				arc.SingleProp,
+				direction,
+				arc.Filter,
+			)
+		}
+
+		if arc.SingleProp == "" && len(arc.BracketProps) == 0 {
+			// Examples:
+			//   ->
+			//   <-
+			return v2p.API(ctx, store, in.GetNodes(), direction)
+		}
+
+		var properties []string
+		if arc.SingleProp != "" {
+			if arc.Wildcard == "" {
+				// Examples:
+				//   ->name
+				//   <-containedInPlace
+				properties = []string{arc.SingleProp}
+			}
+		} else { // arc.SingleProp == ""
+			// Examples:
+			//   ->[name, address]
+			properties = arc.BracketProps
+		}
+
+		if len(properties) > 0 {
+			return v2pv.API(
+				ctx,
+				store,
+				metadata,
+				in.GetNodes(),
+				properties,
+				direction,
+				int(in.GetLimit()),
+				in.NextToken,
+			)
+		}
+	}
+	return nil, nil
 }
 
 // V2EventCore gets event results from Cloud Bigtable.
