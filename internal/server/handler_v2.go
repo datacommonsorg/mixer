@@ -87,18 +87,6 @@ func (s *Server) V2Resolve(
 	return resp, nil
 }
 
-/*
-
-} else {
-	parse next_token;
-	if readLocal {
-		call local PV;
-	} else {
-		call remote PV;
-	}
-}
-*/
-
 // V2Node implements API for mixer.V2Node.
 func (s *Server) V2Node(
 	ctx context.Context, in *pbv2.NodeRequest,
