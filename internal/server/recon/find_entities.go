@@ -36,7 +36,7 @@ const (
 
 type entityInfo struct {
 	description string
-	typ         string
+	typeOf      string
 }
 
 // FindEntities implements API for Mixer.FindEntities.
@@ -91,14 +91,9 @@ func BulkFindEntities(
 		entityInfoSet[entityInfo{description, entity.GetType()}] = struct{}{}
 	}
 
-	// Get place IDs.
-	entityInfoToPlaceIDs, placeIDSet, err := resolvePlaceIDs(ctx, mapsClient, entityInfoSet)
-	if err != nil {
-		return nil, err
-	}
-
-	// Resolve place IDs to get DCIDs.
-	placeIDToDCIDs, dcidSet, err := resolveDCIDs(ctx, placeIDSet, store)
+	// Get DCIDs.
+	entityInfoToDCIDs, dcidSet, err := resolveDCIDs(
+		ctx, mapsClient, store, entityInfoSet)
 	if err != nil {
 		return nil, err
 	}
@@ -111,32 +106,25 @@ func BulkFindEntities(
 
 	// Assemble results.
 	resp := &pb.BulkFindEntitiesResponse{}
-	for entityInfo, placeIDs := range entityInfoToPlaceIDs {
+	for entityInfo, dcids := range entityInfoToDCIDs {
 		entity := &pb.BulkFindEntitiesResponse_Entity{
 			Description: entityInfo.description,
-			Type:        entityInfo.typ,
+			Type:        entityInfo.typeOf,
 		}
 
-		allDCIDs := []string{}
-		for _, placeID := range placeIDs {
-			if dcids, ok := placeIDToDCIDs[placeID]; ok {
-				allDCIDs = append(allDCIDs, dcids...)
-			}
-		}
-
-		if len(allDCIDs) != 0 {
-			if entityInfo.typ == "" {
+		if len(dcids) != 0 {
+			if entityInfo.typeOf == "" {
 				// No type filtering.
-				entity.Dcids = allDCIDs
+				entity.Dcids = dcids
 			} else {
 				// Type filtering.
 				filteredDCIDs := []string{}
-				for _, dcid := range allDCIDs {
+				for _, dcid := range dcids {
 					typeSet, ok := dcidToTypeSet[dcid]
 					if !ok {
 						continue
 					}
-					if _, ok := typeSet[entityInfo.typ]; ok {
+					if _, ok := typeSet[entityInfo.typeOf]; ok {
 						filteredDCIDs = append(filteredDCIDs, dcid)
 					}
 				}
@@ -158,7 +146,135 @@ func BulkFindEntities(
 	return resp, nil
 }
 
-func resolvePlaceIDs(
+func resolveDCIDs(
+	ctx context.Context,
+	mapsClient *maps.Client,
+	store *store.Store,
+	entityInfoSet map[entityInfo]struct{},
+) (
+	map[entityInfo][]string, /* entityInfo -> [DCID] */
+	map[string]struct{}, /* [DCID] for all entities */
+	error,
+) {
+	// First try to resolve DCIDs by RecognizePlaces.
+	entityInfoToDCIDSet, dcidSet, err := resolveWithRecognizePlaces(
+		ctx, store, entityInfoSet)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	// See if there are any entities that cannot be resolved by RecognizePlaces.
+	missingEntityInfoSet := map[entityInfo]struct{}{}
+	for entityInfo := range entityInfoSet {
+		if dcidSet, ok := entityInfoToDCIDSet[entityInfo]; !ok || len(dcidSet) == 0 {
+			missingEntityInfoSet[entityInfo] = struct{}{}
+		}
+	}
+	if len(missingEntityInfoSet) > 0 {
+		// For entities that cannot be resolved by RecognizePlaces, try Maps API.
+		missingEntityInfoToDCIDSet, missingDcidSet, err := resolveWithMapsAPI(
+			ctx, mapsClient, store, entityInfoSet)
+		if err != nil {
+			return nil, nil, err
+		}
+
+		// Add the newly resolved entities.
+		for e, dSet := range missingEntityInfoToDCIDSet {
+			entityInfoToDCIDSet[e] = dSet
+		}
+		for dcid := range missingDcidSet {
+			dcidSet[dcid] = struct{}{}
+		}
+	}
+
+	// Format the result, transform DCID set to DCID list.
+	res := map[entityInfo][]string{}
+	for e, dSet := range entityInfoToDCIDSet {
+		res[e] = []string{}
+		for dcid := range dSet {
+			res[e] = append(res[e], dcid)
+		}
+	}
+	return res, dcidSet, nil
+}
+
+func resolveWithRecognizePlaces(
+	ctx context.Context,
+	store *store.Store,
+	entityInfoSet map[entityInfo]struct{},
+) (
+	map[entityInfo]map[string]struct{}, /* entityInfo -> DCID set */
+	map[string]struct{}, /* [DCID] for all entities */
+	error,
+) {
+	req := &pb.RecognizePlacesRequest{Queries: []string{}}
+	for entityInfo := range entityInfoSet {
+		req.Queries = append(req.Queries, entityInfo.description)
+	}
+
+	resp, err := RecognizePlaces(ctx, req, store)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	entityInfoToDCIDSet := map[entityInfo]map[string]struct{}{}
+	dcidSet := map[string]struct{}{}
+
+	for query, items := range resp.GetQueryItems() {
+		e := entityInfo{description: query}
+		entityInfoToDCIDSet[e] = map[string]struct{}{}
+		for _, item := range items.GetItems() {
+			for _, place := range item.GetPlaces() {
+				entityInfoToDCIDSet[e][place.GetDcid()] = struct{}{}
+				dcidSet[place.GetDcid()] = struct{}{}
+			}
+		}
+	}
+
+	return entityInfoToDCIDSet, dcidSet, nil
+}
+
+func resolveWithMapsAPI(
+	ctx context.Context,
+	mapsClient *maps.Client,
+	store *store.Store,
+	entityInfoSet map[entityInfo]struct{},
+) (
+	map[entityInfo]map[string]struct{}, /* entityInfo -> DCID set */
+	map[string]struct{}, /* [DCID] for all entities */
+	error,
+) {
+	// Get place IDs.
+	entityInfoToPlaceIDs, placeIDSet, err := resolvePlaceIDsFromDescriptions(
+		ctx, mapsClient, entityInfoSet)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	// Resolve place IDs to get DCIDs.
+	placeIDToDCIDs, dcidSet, err := resolveDCIDsFromPlaceIDs(ctx, placeIDSet, store)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	res := map[entityInfo]map[string]struct{}{}
+	for entityInfo, placeIDs := range entityInfoToPlaceIDs {
+		if _, ok := res[entityInfo]; !ok {
+			res[entityInfo] = map[string]struct{}{}
+		}
+		for _, placeID := range placeIDs {
+			if dcids, ok := placeIDToDCIDs[placeID]; ok {
+				for _, dcid := range dcids {
+					res[entityInfo][dcid] = struct{}{}
+				}
+			}
+		}
+	}
+
+	return res, dcidSet, nil
+}
+
+func resolvePlaceIDsFromDescriptions(
 	ctx context.Context,
 	mapsClient *maps.Client,
 	entityInfoSet map[entityInfo]struct{},
@@ -238,7 +354,7 @@ func findPlaceIDsForEntity(
 ) ([]string, error) {
 	// When type is supplied, we append it to the description to increase the accuracy.
 	input := entityInfo.description
-	if t := entityInfo.typ; t != "" {
+	if t := entityInfo.typeOf; t != "" {
 		input += (" " + t)
 	}
 
@@ -259,7 +375,7 @@ func findPlaceIDsForEntity(
 	return placeIDs, nil
 }
 
-func resolveDCIDs(
+func resolveDCIDsFromPlaceIDs(
 	ctx context.Context,
 	placeIDSet map[string]struct{},
 	store *store.Store,

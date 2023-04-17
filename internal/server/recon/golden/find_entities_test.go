@@ -42,6 +42,7 @@ func TestFindEntities(t *testing.T) {
 			{
 				&pb.FindEntitiesRequest{
 					Description: "Santa Clara County",
+					Type:        "County",
 				},
 				"santa_clara_county.json",
 			},
