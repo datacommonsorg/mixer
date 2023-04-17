@@ -32,7 +32,10 @@ import (
 )
 
 // This should be synced with the list of blocklisted SVGs in the website repo
-var ignoredSvgIds = []string{"dc/g/Uncategorized"}
+var ignoredSvgIds = []string{
+	"dc/g/Uncategorized", 
+	"dc/g/SDG",
+}
 
 // GetRawSvg gets the raw svg mapping.
 func GetRawSvg(ctx context.Context, store *store.Store) (
