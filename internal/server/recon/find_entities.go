@@ -208,8 +208,10 @@ func resolveWithRecognizePlaces(
 	error,
 ) {
 	req := &pb.RecognizePlacesRequest{Queries: []string{}}
-	for entityInfo := range entityInfoSet {
-		req.Queries = append(req.Queries, entityInfo.description)
+	descriptionToType := map[string]string{}
+	for e := range entityInfoSet {
+		req.Queries = append(req.Queries, e.description)
+		descriptionToType[e.description] = e.typeOf
 	}
 
 	resp, err := RecognizePlaces(ctx, req, store)
@@ -221,7 +223,7 @@ func resolveWithRecognizePlaces(
 	dcidSet := map[string]struct{}{}
 
 	for query, items := range resp.GetQueryItems() {
-		e := entityInfo{description: query}
+		e := entityInfo{description: query, typeOf: descriptionToType[query]}
 		entityInfoToDCIDSet[e] = map[string]struct{}{}
 		for _, item := range items.GetItems() {
 			for _, place := range item.GetPlaces() {

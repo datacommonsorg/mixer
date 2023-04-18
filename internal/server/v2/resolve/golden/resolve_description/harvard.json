@@ -1,0 +1,371 @@
+{
+  "entities": [
+    {
+      "node": "Ahvenanmaa,Finland",
+      "resolvedIds": [
+        "geoId/2721104",
+        "country/FIN"
+      ]
+    },
+    {
+      "node": "Amur,Russia",
+      "resolvedIds": [
+        "country/RUS",
+        "geoId/3664254",
+        "geoId/3969344"
+      ]
+    },
+    {
+      "node": "Arkhangelsk,Russia",
+      "resolvedIds": [
+        "country/RUS",
+        "wikidataId/Q1851",
+        "geoId/3664254"
+      ]
+    },
+    {
+      "node": "Astrakhan,Russia",
+      "resolvedIds": [
+        "country/RUS",
+        "wikidataId/Q3927",
+        "geoId/3664254"
+      ]
+    },
+    {
+      "node": "Atacama,Chile",
+      "resolvedIds": [
+        "country/CHL"
+      ]
+    },
+    {
+      "node": "Athos,Greece",
+      "resolvedIds": [
+        "country/GRC",
+        "wikidataId/Q2610369",
+        "geoId/3630279"
+      ]
+    },
+    {
+      "node": "Bihar,India",
+      "resolvedIds": [
+        "country/IND",
+        "wikidataId/Q1165"
+      ]
+    },
+    {
+      "node": "Brussels,Belgium",
+      "resolvedIds": [
+        "country/BEL",
+        "wikidataId/Q239",
+        "geoId/5506150"
+      ]
+    },
+    {
+      "node": "Chugoku,Japan",
+      "resolvedIds": [
+        "country/JPN"
+      ]
+    },
+    {
+      "node": "Ciudad Autónoma de Ceuta,Spain",
+      "resolvedIds": [
+        "country/ESP",
+        "nuts/ES63"
+      ]
+    },
+    {
+      "node": "Ciudad Autónoma de Melilla,Spain",
+      "resolvedIds": [
+        "country/ESP",
+        "nuts/ES64"
+      ]
+    },
+    {
+      "node": "Corse,France",
+      "resolvedIds": [
+        "country/FRA",
+        "country/FXX"
+      ]
+    },
+    {
+      "node": "Dadra And Nagar Haveli,India",
+      "resolvedIds": [
+        "wikidataId/Q46107",
+        "country/IND"
+      ]
+    },
+    {
+      "node": "Damão and Diu,India",
+      "resolvedIds": [
+        "country/IND"
+      ]
+    },
+    {
+      "node": "Delhi,India",
+      "resolvedIds": [
+        "wikidataId/Q1025031",
+        "country/IND",
+        "wikidataId/Q1353"
+      ]
+    },
+    {
+      "node": "East of England,United Kingdom",
+      "resolvedIds": [
+        "country/GBR",
+        "wikidataId/Q21",
+        "geoId/0521730"
+      ]
+    },
+    {
+      "node": "Free State,South Africa",
+      "resolvedIds": [
+        "country/ZAF"
+      ]
+    },
+    {
+      "node": "Gauteng,South Africa",
+      "resolvedIds": [
+        "country/ZAF",
+        "wikidataId/Q133083"
+      ]
+    },
+    {
+      "node": "Guyane,France",
+      "resolvedIds": [
+        "country/FXX",
+        "country/FRA"
+      ]
+    },
+    {
+      "node": "Hauts-de-France,France",
+      "resolvedIds": [
+        "country/FRA",
+        "country/FXX"
+      ]
+    },
+    {
+      "node": "Hokkaido,Japan",
+      "resolvedIds": [
+        "country/JPN"
+      ]
+    },
+    {
+      "node": "Hokuriku,Japan",
+      "resolvedIds": [
+        "country/JPN"
+      ]
+    },
+    {
+      "node": "Illes Balears,Spain",
+      "resolvedIds": [
+        "country/ESP"
+      ]
+    },
+    {
+      "node": "Ireland,Ireland",
+      "resolvedIds": [
+        "country/IRL"
+      ]
+    },
+    {
+      "node": "Kamchatka,Russia",
+      "resolvedIds": [
+        "geoId/3969344",
+        "country/RUS",
+        "geoId/3664254"
+      ]
+    },
+    {
+      "node": "Kansai,Japan",
+      "resolvedIds": [
+        "country/JPN"
+      ]
+    },
+    {
+      "node": "Kemerovo,Russia",
+      "resolvedIds": [
+        "country/RUS",
+        "wikidataId/Q6066",
+        "geoId/3664254"
+      ]
+    },
+    {
+      "node": "KwaZulu-Natal,South Africa",
+      "resolvedIds": [
+        "country/ZAF",
+        "wikidataId/Q81725"
+      ]
+    },
+    {
+      "node": "Kyushu,Japan",
+      "resolvedIds": [
+        "country/JPN"
+      ]
+    },
+    {
+      "node": "Ladakh,India",
+      "resolvedIds": [
+        "country/IND",
+        "wikidataId/Q200667"
+      ]
+    },
+    {
+      "node": "Loreto,Peru",
+      "resolvedIds": [
+        "wikidataId/Q200938",
+        "wikidataId/Q1020758",
+        "country/PER"
+      ]
+    },
+    {
+      "node": "Małopolskie,Poland",
+      "resolvedIds": [
+        "geoId/2360020",
+        "geoId/3963954",
+        "country/POL"
+      ]
+    },
+    {
+      "node": "Midlands,United Kingdom",
+      "resolvedIds": [
+        "country/GBR"
+      ]
+    },
+    {
+      "node": "North East and Yorkshire,United Kingdom",
+      "resolvedIds": [
+        "wikidataId/Q429329",
+        "wikidataId/Q693367",
+        "geoId/2456450",
+        "country/GBR",
+        "wikidataId/Q163",
+        "geoId/5188176"
+      ]
+    },
+    {
+      "node": "North West,United Kingdom",
+      "resolvedIds": [
+        "country/GBR",
+        "wikidataId/Q165956",
+        "wikidataId/Q766125",
+        "wikidataId/Q693367"
+      ]
+    },
+    {
+      "node": "Northern-Kanto,Japan",
+      "resolvedIds": [
+        "country/JPN"
+      ]
+    },
+    {
+      "node": "Pays de la Loire,France",
+      "resolvedIds": [
+        "country/FRA",
+        "country/FXX"
+      ]
+    },
+    {
+      "node": "Pomorskie,Poland",
+      "resolvedIds": [
+        "country/POL",
+        "geoId/2360020",
+        "geoId/3963954"
+      ]
+    },
+    {
+      "node": "Republic of Crimea,Russia",
+      "resolvedIds": [
+        "country/RUS",
+        "wikidataId/Q15966495",
+        "geoId/2961238"
+      ]
+    },
+    {
+      "node": "Sakhalin,Russia",
+      "resolvedIds": [
+        "geoId/3664254",
+        "geoId/3969344",
+        "country/RUS"
+      ]
+    },
+    {
+      "node": "Shikoku,Japan",
+      "resolvedIds": [
+        "country/JPN"
+      ]
+    },
+    {
+      "node": "Sjælland,Denmark",
+      "resolvedIds": [
+        "country/DNK",
+        "geoId/4519105",
+        "geoId/3620214"
+      ]
+    },
+    {
+      "node": "Southern-Kanto,Japan",
+      "resolvedIds": [
+        "country/JPN"
+      ]
+    },
+    {
+      "node": "Tambov,Russia",
+      "resolvedIds": [
+        "country/RUS",
+        "wikidataId/Q3544",
+        "geoId/3664254"
+      ]
+    },
+    {
+      "node": "Tarapacá,Chile",
+      "resolvedIds": [
+        "country/CHL",
+        "wikidataId/Q1654901"
+      ]
+    },
+    {
+      "node": "Tohoku,Japan",
+      "resolvedIds": [
+        "country/JPN"
+      ]
+    },
+    {
+      "node": "Toukai,Japan",
+      "resolvedIds": [
+        "country/JPN"
+      ]
+    },
+    {
+      "node": "Ulyanovsk,Russia",
+      "resolvedIds": [
+        "wikidataId/Q5627",
+        "geoId/3664254",
+        "country/RUS"
+      ]
+    },
+    {
+      "node": "Vologda,Russia",
+      "resolvedIds": [
+        "wikidataId/Q1957",
+        "geoId/3664254",
+        "country/RUS"
+      ]
+    },
+    {
+      "node": "Łódzkie,Poland",
+      "resolvedIds": [
+        "country/POL",
+        "geoId/2360020",
+        "geoId/3963954"
+      ]
+    },
+    {
+      "node": "Śląskie,Poland",
+      "resolvedIds": [
+        "country/POL",
+        "geoId/2360020",
+        "geoId/3963954"
+      ]
+    }
+  ]
+}
