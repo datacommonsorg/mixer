@@ -1,61 +1,41 @@
 {
   "statVarSeries": {
-    "geoId/06001": {
+    "geoId/0606000": {
       "data": {
         "Count_Person": {
           "val": {
-            "1970": 1071446,
-            "1971": 1084500,
-            "1972": 1099600,
-            "1973": 1089300,
-            "1974": 1092200,
-            "1975": 1090900,
-            "1976": 1098100,
-            "1977": 1099900,
-            "1978": 1103700,
-            "1979": 1099300,
-            "1980": 1105379,
-            "1981": 1125950,
-            "1982": 1140269,
-            "1983": 1160694,
-            "1984": 1179132,
-            "1985": 1197401,
-            "1986": 1215506,
-            "1987": 1229319,
-            "1988": 1251100,
-            "1989": 1271443,
-            "1990": 1304347,
-            "1991": 1305802,
-            "1992": 1315144,
-            "1993": 1328589,
-            "1994": 1334736,
-            "1995": 1336359,
-            "1996": 1340267,
-            "1997": 1351804,
-            "1998": 1372202,
-            "1999": 1397050,
-            "2000": 1449840,
-            "2001": 1469484,
-            "2002": 1462106,
-            "2003": 1454163,
-            "2004": 1445721,
-            "2005": 1441545,
-            "2006": 1444484,
-            "2007": 1455715,
-            "2008": 1477208,
-            "2009": 1498539,
-            "2010": 1512997,
-            "2011": 1530893,
-            "2012": 1553729,
-            "2013": 1579508,
-            "2014": 1607638,
-            "2015": 1634326,
-            "2016": 1650765,
-            "2017": 1659824,
-            "2018": 1666596,
-            "2019": 1668412,
-            "2020": 1662323,
-            "2021": 1648556
+            "1990": 102847,
+            "1991": 103137,
+            "1992": 102952,
+            "1993": 104636,
+            "1994": 104816,
+            "1995": 105422,
+            "1996": 105407,
+            "1997": 106886,
+            "1998": 108070,
+            "1999": 108319,
+            "2000": 102936,
+            "2001": 103714,
+            "2002": 102990,
+            "2003": 101575,
+            "2004": 100819,
+            "2005": 100200,
+            "2006": 100579,
+            "2007": 100667,
+            "2008": 101380,
+            "2009": 103070,
+            "2010": 112938,
+            "2011": 114477,
+            "2012": 115819,
+            "2013": 117373,
+            "2014": 119348,
+            "2015": 121175,
+            "2016": 122175,
+            "2017": 123084,
+            "2018": 123541,
+            "2019": 123757,
+            "2020": 119463,
+            "2021": 117145
           },
           "metadata": {
             "importName": "USCensusPEP_Annual_Population",
@@ -66,42 +46,42 @@
         }
       }
     },
-    "geoId/0660620": {
+    "geoId/0668084": {
       "data": {
         "Count_Person": {
           "val": {
-            "1990": 85926,
-            "1991": 86510,
-            "1992": 88271,
-            "1993": 89619,
-            "1994": 90419,
-            "1995": 90452,
-            "1996": 90894,
-            "1997": 92200,
-            "1998": 93428,
-            "1999": 94100,
-            "2000": 99678,
-            "2001": 101550,
-            "2002": 101487,
-            "2003": 101177,
-            "2004": 100709,
-            "2005": 100838,
-            "2006": 100378,
-            "2007": 101077,
-            "2008": 102260,
-            "2009": 103668,
-            "2010": 103666,
-            "2011": 104734,
-            "2012": 105535,
-            "2013": 106740,
-            "2014": 107603,
-            "2015": 108867,
-            "2016": 109667,
-            "2017": 110057,
-            "2018": 110298,
-            "2019": 110150,
-            "2020": 116238,
-            "2021": 115639
+            "1990": 68202,
+            "1991": 68417,
+            "1992": 68652,
+            "1993": 69561,
+            "1994": 70172,
+            "1995": 70945,
+            "1996": 71470,
+            "1997": 72889,
+            "1998": 74207,
+            "1999": 75084,
+            "2000": 79821,
+            "2001": 80684,
+            "2002": 80057,
+            "2003": 79727,
+            "2004": 78804,
+            "2005": 77933,
+            "2006": 77455,
+            "2007": 77374,
+            "2008": 78120,
+            "2009": 78998,
+            "2010": 85108,
+            "2011": 86015,
+            "2012": 87101,
+            "2013": 88221,
+            "2014": 89441,
+            "2015": 90631,
+            "2016": 91149,
+            "2017": 91020,
+            "2018": 90832,
+            "2019": 90321,
+            "2020": 91338,
+            "2021": 88868
           },
           "metadata": {
             "importName": "USCensusPEP_Annual_Population",
@@ -168,26 +148,6 @@
         "observationPeriod": "P1Y"
       }
     },
-    "geoId/0203000": {
-      "date": "2021",
-      "value": 288121,
-      "metadata": {
-        "importName": "USCensusPEP_Annual_Population",
-        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
-        "measurementMethod": "CensusPEPSurvey",
-        "observationPeriod": "P1Y"
-      }
-    },
-    "geoId/0541000": {
-      "date": "2021",
-      "value": 201998,
-      "metadata": {
-        "importName": "USCensusPEP_Annual_Population",
-        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
-        "measurementMethod": "CensusPEPSurvey",
-        "observationPeriod": "P1Y"
-      }
-    },
     "geoId/06": {
       "date": "2021",
       "value": 39237836,
@@ -228,9 +188,9 @@
         "observationPeriod": "P1Y"
       }
     },
-    "geoId/0649670": {
+    "geoId/0653000": {
       "date": "2021",
-      "value": 81516,
+      "value": 433823,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
@@ -238,9 +198,9 @@
         "observationPeriod": "P1Y"
       }
     },
-    "geoId/0653000": {
+    "geoId/0655282": {
       "date": "2021",
-      "value": 433823,
+      "value": 66680,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
@@ -268,9 +228,9 @@
         "observationPeriod": "P1Y"
       }
     },
-    "geoId/0664000": {
+    "geoId/0668000": {
       "date": "2021",
-      "value": 525041,
+      "value": 983489,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
@@ -288,9 +248,29 @@
         "observationPeriod": "P1Y"
       }
     },
-    "geoId/4752006": {
+    "geoId/2148006": {
       "date": "2021",
-      "value": 678851,
+      "value": 628594,
+      "metadata": {
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
+      }
+    },
+    "geoId/2404000": {
+      "date": "2021",
+      "value": 576498,
+      "metadata": {
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
+      }
+    },
+    "geoId/4261000": {
+      "date": "2021",
+      "value": 300431,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
@@ -341,32 +321,6 @@
         "Overview"
       ]
     },
-    "geoId/0203000": {
-      "category": [
-        "Crime",
-        "Demographics",
-        "Economics",
-        "Education",
-        "Environment",
-        "Equity",
-        "Health",
-        "Housing",
-        "Overview"
-      ]
-    },
-    "geoId/0541000": {
-      "category": [
-        "Crime",
-        "Demographics",
-        "Economics",
-        "Education",
-        "Environment",
-        "Equity",
-        "Health",
-        "Housing",
-        "Overview"
-      ]
-    },
     "geoId/06": {
       "category": [
         "Crime",
@@ -419,7 +373,7 @@
         "Overview"
       ]
     },
-    "geoId/0649670": {
+    "geoId/0653000": {
       "category": [
         "Crime",
         "Demographics",
@@ -432,7 +386,7 @@
         "Overview"
       ]
     },
-    "geoId/0653000": {
+    "geoId/0655282": {
       "category": [
         "Crime",
         "Demographics",
@@ -471,7 +425,7 @@
         "Overview"
       ]
     },
-    "geoId/0664000": {
+    "geoId/0668000": {
       "category": [
         "Crime",
         "Demographics",
@@ -497,7 +451,33 @@
         "Overview"
       ]
     },
-    "geoId/4752006": {
+    "geoId/2148006": {
+      "category": [
+        "Crime",
+        "Demographics",
+        "Economics",
+        "Education",
+        "Environment",
+        "Equity",
+        "Health",
+        "Housing",
+        "Overview"
+      ]
+    },
+    "geoId/2404000": {
+      "category": [
+        "Crime",
+        "Demographics",
+        "Economics",
+        "Education",
+        "Environment",
+        "Equity",
+        "Health",
+        "Housing",
+        "Overview"
+      ]
+    },
+    "geoId/4261000": {
       "category": [
         "Crime",
         "Demographics",
@@ -558,11 +538,11 @@
     "northamerica"
   ],
   "similarPlaces": [
-    "geoId/0649670",
-    "geoId/0541000",
-    "geoId/0664000",
-    "geoId/0203000",
-    "geoId/4752006"
+    "geoId/0668000",
+    "geoId/2148006",
+    "geoId/0655282",
+    "geoId/4261000",
+    "geoId/2404000"
   ],
   "nearbyPlaces": [
     "geoId/0653000",

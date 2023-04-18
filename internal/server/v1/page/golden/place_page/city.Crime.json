@@ -1,21 +1,21 @@
 {
   "statVarSeries": {
-    "geoId/0600562": {
+    "geoId/0606000": {
       "data": {
         "Count_CriminalActivities_Arson": {
           "val": {
-            "2008": 9,
-            "2009": 12,
-            "2010": 10,
-            "2011": 15,
-            "2012": 18,
-            "2013": 17,
-            "2014": 17,
-            "2015": 18,
-            "2016": 29,
-            "2017": 25,
-            "2018": 18,
-            "2019": 29
+            "2008": 28,
+            "2009": 21,
+            "2010": 25,
+            "2011": 25,
+            "2012": 15,
+            "2013": 16,
+            "2014": 15,
+            "2015": 22,
+            "2016": 24,
+            "2017": 30,
+            "2018": 31,
+            "2019": 17
           },
           "metadata": {
             "importName": "FBIGovCrime",
@@ -25,18 +25,18 @@
         },
         "Count_CriminalActivities_CombinedCrime": {
           "val": {
-            "2008": 2094,
-            "2009": 2166,
-            "2010": 2147,
-            "2011": 2120,
-            "2012": 2070,
-            "2013": 2077,
-            "2014": 1885,
-            "2015": 1985,
-            "2016": 2200,
-            "2017": 2625,
-            "2018": 2325,
-            "2019": 2770
+            "2008": 7517,
+            "2009": 7103,
+            "2010": 6501,
+            "2011": 5571,
+            "2012": 6198,
+            "2013": 5955,
+            "2014": 5548,
+            "2015": 6458,
+            "2016": 6046,
+            "2017": 6716,
+            "2018": 5998,
+            "2019": 6891
           },
           "metadata": {
             "importName": "FBIGovCrime",
@@ -46,18 +46,18 @@
         },
         "Count_CriminalActivities_PropertyCrime": {
           "val": {
-            "2008": 1875,
-            "2009": 1955,
-            "2010": 1964,
-            "2011": 1898,
-            "2012": 1892,
-            "2013": 1902,
-            "2014": 1723,
-            "2015": 1819,
-            "2016": 2020,
-            "2017": 2347,
-            "2018": 2123,
-            "2019": 2579
+            "2008": 6837,
+            "2009": 6467,
+            "2010": 5943,
+            "2011": 5064,
+            "2012": 5696,
+            "2013": 5377,
+            "2014": 5102,
+            "2015": 5906,
+            "2016": 5420,
+            "2017": 6020,
+            "2018": 5381,
+            "2019": 6256
           },
           "metadata": {
             "importName": "FBIGovCrime",
@@ -67,18 +67,18 @@
         },
         "Count_CriminalActivities_ViolentCrime": {
           "val": {
-            "2008": 210,
-            "2009": 199,
-            "2010": 173,
-            "2011": 207,
-            "2012": 160,
-            "2013": 158,
-            "2014": 145,
-            "2015": 148,
-            "2016": 151,
-            "2017": 253,
-            "2018": 184,
-            "2019": 162
+            "2008": 652,
+            "2009": 615,
+            "2010": 533,
+            "2011": 482,
+            "2012": 487,
+            "2013": 562,
+            "2014": 431,
+            "2015": 530,
+            "2016": 602,
+            "2017": 666,
+            "2018": 586,
+            "2019": 618
           },
           "metadata": {
             "importName": "FBIGovCrime",
@@ -92,41 +92,10 @@
             "2005": 0,
             "2006": 0,
             "2007": 0,
-            "2008": 0,
+            "2009": 0,
             "2010": 0,
-            "2013": 0,
-            "2014": 0,
-            "2015": 0,
-            "2016": 0,
-            "2017": 1,
-            "2018": 0,
-            "2020": 0
-          },
-          "metadata": {
-            "importName": "FBIHateCrimePublications",
-            "provenanceUrl": "https://www.fbi.gov/services/cjis/ucr/hate-crime",
-            "observationPeriod": "P1Y"
-          }
-        },
-        "Count_CriminalIncidents_BiasMotivationEthnicity_IsHateCrime": {
-          "val": {
-            "2004": 1,
-            "2005": 0,
-            "2006": 0,
-            "2007": 0,
-            "2008": 0,
-            "2010": 0,
-            "2013": 0,
-            "2014": 0
-          },
-          "metadata": {
-            "importName": "FBIHateCrimePublications",
-            "provenanceUrl": "https://www.fbi.gov/services/cjis/ucr/hate-crime",
-            "observationPeriod": "P1Y"
-          }
-        },
-        "Count_CriminalIncidents_BiasMotivationGender_IsHateCrime": {
-          "val": {
+            "2011": 0,
+            "2012": 0,
             "2013": 0,
             "2014": 0,
             "2015": 0,
@@ -141,296 +110,18 @@
             "observationPeriod": "P1Y"
           }
         },
-        "Count_CriminalIncidents_BiasMotivationRace_IsHateCrime": {
-          "val": {
-            "2004": 1,
-            "2005": 3,
-            "2006": 0,
-            "2007": 1,
-            "2008": 0,
-            "2010": 1,
-            "2013": 0,
-            "2014": 3
-          },
-          "metadata": {
-            "importName": "FBIHateCrimePublications",
-            "provenanceUrl": "https://www.fbi.gov/services/cjis/ucr/hate-crime",
-            "observationPeriod": "P1Y"
-          }
-        },
-        "Count_CriminalIncidents_BiasMotivationReligion_IsHateCrime": {
+        "Count_CriminalIncidents_BiasMotivationEthnicity_IsHateCrime": {
           "val": {
             "2004": 2,
             "2005": 0,
-            "2006": 1,
-            "2007": 0,
-            "2008": 0,
-            "2010": 1,
-            "2013": 1,
-            "2014": 0,
-            "2015": 1,
-            "2016": 0,
-            "2017": 1,
-            "2018": 3,
-            "2020": 0
-          },
-          "metadata": {
-            "importName": "FBIHateCrimePublications",
-            "provenanceUrl": "https://www.fbi.gov/services/cjis/ucr/hate-crime",
-            "observationPeriod": "P1Y"
-          }
-        },
-        "Count_CriminalIncidents_BiasMotivationSexualOrientation_IsHateCrime": {
-          "val": {
-            "2004": 1,
-            "2005": 0,
             "2006": 0,
-            "2007": 0,
-            "2008": 1,
-            "2010": 0,
-            "2013": 0,
-            "2014": 1,
-            "2015": 0,
-            "2016": 0,
-            "2017": 2,
-            "2018": 1,
-            "2020": 0
-          },
-          "metadata": {
-            "importName": "FBIHateCrimePublications",
-            "provenanceUrl": "https://www.fbi.gov/services/cjis/ucr/hate-crime",
-            "observationPeriod": "P1Y"
-          }
-        },
-        "Count_CriminalIncidents_IsHateCrime": {
-          "val": {
-            "2007-03": 1,
-            "2007-06": 0,
-            "2007-09": 0,
-            "2007-12": 0,
-            "2008-03": 0,
-            "2008-06": 0,
-            "2008-09": 0,
-            "2008-12": 1,
-            "2009-03": 0,
-            "2009-06": 0,
-            "2009-09": 0,
-            "2009-12": 0,
-            "2010-03": 2,
-            "2010-06": 0,
-            "2010-09": 0,
-            "2010-12": 0,
-            "2011-03": 0,
-            "2011-06": 0,
-            "2011-09": 0,
-            "2011-12": 0,
-            "2012-03": 0,
-            "2012-06": 0,
-            "2012-09": 0,
-            "2012-12": 0,
-            "2013-03": 0,
-            "2013-06": 0,
-            "2013-09": 0,
-            "2013-12": 1,
-            "2014-03": 2,
-            "2014-06": 2,
-            "2014-09": 0,
-            "2014-12": 0,
-            "2015-03": 1,
-            "2015-06": 0,
-            "2015-09": 1,
-            "2015-12": 0,
-            "2016-03": 0,
-            "2016-06": 1,
-            "2016-09": 0,
-            "2016-12": 2,
-            "2017-03": 0,
-            "2017-06": 0,
-            "2017-09": 7,
-            "2017-12": 3,
-            "2018-03": 3,
-            "2018-06": 2,
-            "2018-09": 2,
-            "2018-12": 0,
-            "2020-03": 0,
-            "2020-06": 0,
-            "2020-09": 4,
-            "2020-12": 1
-          },
-          "metadata": {
-            "importName": "FBIHateCrimePublications",
-            "provenanceUrl": "https://www.fbi.gov/services/cjis/ucr/hate-crime",
-            "observationPeriod": "P3M"
-          }
-        },
-        "Count_Person": {
-          "val": {
-            "1990": 73888,
-            "1991": 74105,
-            "1992": 73541,
-            "1993": 75615,
-            "1994": 76151,
-            "1995": 76261,
-            "1996": 76753,
-            "1997": 74971,
-            "1998": 75275,
-            "1999": 75554,
-            "2000": 72483,
-            "2001": 72882,
-            "2002": 72262,
-            "2003": 71526,
-            "2004": 70699,
-            "2005": 69993,
-            "2006": 69830,
-            "2007": 69837,
-            "2008": 70672,
-            "2009": 71467,
-            "2010": 73901,
-            "2011": 74690,
-            "2012": 75750,
-            "2013": 76616,
-            "2014": 77646,
-            "2015": 78997,
-            "2016": 80023,
-            "2017": 80178,
-            "2018": 80196,
-            "2019": 79813,
-            "2020": 78333,
-            "2021": 76362
-          },
-          "metadata": {
-            "importName": "USCensusPEP_Annual_Population",
-            "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
-            "measurementMethod": "CensusPEPSurvey",
-            "observationPeriod": "P1Y"
-          }
-        }
-      }
-    },
-    "geoId/0668084": {
-      "data": {
-        "Count_CriminalActivities_Arson": {
-          "val": {
-            "2008": 13,
-            "2009": 12,
-            "2010": 15,
-            "2011": 14,
-            "2012": 14,
-            "2013": 10,
-            "2014": 14,
-            "2015": 11,
-            "2016": 23,
-            "2017": 20,
-            "2018": 27,
-            "2019": 16
-          },
-          "metadata": {
-            "importName": "FBIGovCrime",
-            "provenanceUrl": "http://www.fbi.gov/services/cjis/ucr",
-            "observationPeriod": "P1Y"
-          }
-        },
-        "Count_CriminalActivities_CombinedCrime": {
-          "val": {
-            "2008": 4420,
-            "2009": 3866,
-            "2010": 3499,
-            "2011": 3586,
-            "2012": 4036,
-            "2013": 4364,
-            "2014": 4140,
-            "2015": 3855,
-            "2016": 4040,
-            "2017": 4259,
-            "2018": 4084,
-            "2019": 4575
-          },
-          "metadata": {
-            "importName": "FBIGovCrime",
-            "provenanceUrl": "http://www.fbi.gov/services/cjis/ucr",
-            "observationPeriod": "P1Y"
-          }
-        },
-        "Count_CriminalActivities_PropertyCrime": {
-          "val": {
-            "2008": 3894,
-            "2009": 3445,
-            "2010": 3137,
-            "2011": 3205,
-            "2012": 3585,
-            "2013": 3960,
-            "2014": 3757,
-            "2015": 3432,
-            "2016": 3530,
-            "2017": 3715,
-            "2018": 3584,
-            "2019": 4105
-          },
-          "metadata": {
-            "importName": "FBIGovCrime",
-            "provenanceUrl": "http://www.fbi.gov/services/cjis/ucr",
-            "observationPeriod": "P1Y"
-          }
-        },
-        "Count_CriminalActivities_ViolentCrime": {
-          "val": {
-            "2008": 513,
-            "2009": 409,
-            "2010": 347,
-            "2011": 367,
-            "2012": 437,
-            "2013": 394,
-            "2014": 369,
-            "2015": 412,
-            "2016": 487,
-            "2017": 524,
-            "2018": 473,
-            "2019": 454
-          },
-          "metadata": {
-            "importName": "FBIGovCrime",
-            "provenanceUrl": "http://www.fbi.gov/services/cjis/ucr",
-            "observationPeriod": "P1Y"
-          }
-        },
-        "Count_CriminalIncidents_BiasMotivationDisabilityStatus_IsHateCrime": {
-          "val": {
-            "2004": 0,
-            "2005": 0,
-            "2006": 0,
-            "2007": 0,
-            "2008": 0,
-            "2009": 0,
+            "2007": 1,
+            "2009": 1,
             "2010": 0,
             "2011": 0,
-            "2012": 0,
-            "2013": 0,
-            "2014": 0,
-            "2015": 0,
-            "2016": 1,
-            "2017": 1,
-            "2018": 0,
-            "2020": 0
-          },
-          "metadata": {
-            "importName": "FBIHateCrimePublications",
-            "provenanceUrl": "https://www.fbi.gov/services/cjis/ucr/hate-crime",
-            "observationPeriod": "P1Y"
-          }
-        },
-        "Count_CriminalIncidents_BiasMotivationEthnicity_IsHateCrime": {
-          "val": {
-            "2004": 0,
-            "2005": 0,
-            "2006": 0,
-            "2007": 0,
-            "2008": 0,
-            "2009": 0,
-            "2010": 0,
-            "2011": 0,
-            "2012": 0,
+            "2012": 2,
             "2013": 1,
-            "2014": 0
+            "2014": 1
           },
           "metadata": {
             "importName": "FBIHateCrimePublications",
@@ -457,15 +148,14 @@
         "Count_CriminalIncidents_BiasMotivationRace_IsHateCrime": {
           "val": {
             "2004": 3,
-            "2005": 1,
-            "2006": 0,
-            "2007": 5,
-            "2008": 1,
+            "2005": 3,
+            "2006": 3,
+            "2007": 1,
             "2009": 0,
-            "2010": 6,
-            "2011": 1,
+            "2010": 0,
+            "2011": 0,
             "2012": 3,
-            "2013": 3,
+            "2013": 7,
             "2014": 0
           },
           "metadata": {
@@ -477,21 +167,240 @@
         "Count_CriminalIncidents_BiasMotivationReligion_IsHateCrime": {
           "val": {
             "2004": 0,
-            "2005": 0,
-            "2006": 0,
-            "2007": 1,
-            "2008": 1,
+            "2005": 1,
+            "2006": 4,
+            "2007": 0,
             "2009": 0,
-            "2010": 2,
-            "2011": 0,
-            "2012": 0,
-            "2013": 0,
+            "2010": 0,
+            "2011": 2,
+            "2012": 2,
+            "2013": 1,
+            "2014": 2,
+            "2015": 1,
+            "2016": 2,
+            "2017": 4,
+            "2018": 5,
+            "2020": 2
+          },
+          "metadata": {
+            "importName": "FBIHateCrimePublications",
+            "provenanceUrl": "https://www.fbi.gov/services/cjis/ucr/hate-crime",
+            "observationPeriod": "P1Y"
+          }
+        },
+        "Count_CriminalIncidents_BiasMotivationSexualOrientation_IsHateCrime": {
+          "val": {
+            "2004": 4,
+            "2005": 4,
+            "2006": 3,
+            "2007": 1,
+            "2009": 0,
+            "2010": 1,
+            "2011": 2,
+            "2012": 1,
+            "2013": 4,
             "2014": 0,
             "2015": 1,
-            "2016": 3,
-            "2017": 0,
+            "2016": 2,
+            "2017": 6,
+            "2018": 4,
+            "2020": 1
+          },
+          "metadata": {
+            "importName": "FBIHateCrimePublications",
+            "provenanceUrl": "https://www.fbi.gov/services/cjis/ucr/hate-crime",
+            "observationPeriod": "P1Y"
+          }
+        },
+        "Count_CriminalIncidents_IsHateCrime": {
+          "val": {
+            "2007-03": 2,
+            "2007-06": 1,
+            "2007-09": 0,
+            "2007-12": 0,
+            "2008-03": 0,
+            "2008-06": 0,
+            "2008-09": 0,
+            "2008-12": 0,
+            "2009-03": 0,
+            "2009-06": 0,
+            "2009-09": 0,
+            "2009-12": 1,
+            "2010-03": 1,
+            "2010-06": 0,
+            "2010-09": 0,
+            "2010-12": 0,
+            "2011-03": 2,
+            "2011-06": 1,
+            "2011-09": 1,
+            "2011-12": 0,
+            "2012-03": 1,
+            "2012-06": 1,
+            "2012-09": 5,
+            "2012-12": 1,
+            "2013-03": 6,
+            "2013-06": 2,
+            "2013-09": 4,
+            "2013-12": 1,
+            "2014-03": 2,
+            "2014-06": 0,
+            "2014-09": 1,
+            "2014-12": 0,
+            "2015-03": 0,
+            "2015-06": 1,
+            "2015-09": 0,
+            "2015-12": 3,
+            "2016-03": 5,
+            "2016-06": 3,
+            "2016-09": 2,
+            "2016-12": 3,
+            "2017-03": 7,
+            "2017-06": 6,
+            "2017-09": 4,
+            "2017-12": 6,
+            "2018-03": 5,
+            "2018-06": 3,
+            "2018-09": 5,
+            "2018-12": 4,
+            "2020-03": 1,
+            "2020-06": 0,
+            "2020-09": 3,
+            "2020-12": 3
+          },
+          "metadata": {
+            "importName": "FBIHateCrimePublications",
+            "provenanceUrl": "https://www.fbi.gov/services/cjis/ucr/hate-crime",
+            "observationPeriod": "P3M"
+          }
+        },
+        "Count_Person": {
+          "val": {
+            "1990": 102847,
+            "1991": 103137,
+            "1992": 102952,
+            "1993": 104636,
+            "1994": 104816,
+            "1995": 105422,
+            "1996": 105407,
+            "1997": 106886,
+            "1998": 108070,
+            "1999": 108319,
+            "2000": 102936,
+            "2001": 103714,
+            "2002": 102990,
+            "2003": 101575,
+            "2004": 100819,
+            "2005": 100200,
+            "2006": 100579,
+            "2007": 100667,
+            "2008": 101380,
+            "2009": 103070,
+            "2010": 112938,
+            "2011": 114477,
+            "2012": 115819,
+            "2013": 117373,
+            "2014": 119348,
+            "2015": 121175,
+            "2016": 122175,
+            "2017": 123084,
+            "2018": 123541,
+            "2019": 123757,
+            "2020": 119463,
+            "2021": 117145
+          },
+          "metadata": {
+            "importName": "USCensusPEP_Annual_Population",
+            "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+            "measurementMethod": "CensusPEPSurvey",
+            "observationPeriod": "P1Y"
+          }
+        }
+      }
+    },
+    "geoId/2148006": {
+      "data": {
+        "Count_CriminalIncidents_BiasMotivationDisabilityStatus_IsHateCrime": {
+          "val": {
+            "2004": 0,
+            "2006": 0,
+            "2007": 0,
+            "2008": 0,
+            "2013": 0,
+            "2014": 1,
+            "2015": 0,
+            "2016": 0,
+            "2017": 1,
             "2018": 1,
+            "2019": 0,
             "2020": 0
+          },
+          "metadata": {
+            "importName": "FBIHateCrimePublications",
+            "provenanceUrl": "https://www.fbi.gov/services/cjis/ucr/hate-crime",
+            "observationPeriod": "P1Y"
+          }
+        },
+        "Count_CriminalIncidents_BiasMotivationEthnicity_IsHateCrime": {
+          "val": {
+            "2004": 0,
+            "2006": 0,
+            "2007": 0,
+            "2008": 0,
+            "2013": 0,
+            "2014": 0
+          },
+          "metadata": {
+            "importName": "FBIHateCrimePublications",
+            "provenanceUrl": "https://www.fbi.gov/services/cjis/ucr/hate-crime",
+            "observationPeriod": "P1Y"
+          }
+        },
+        "Count_CriminalIncidents_BiasMotivationGender_IsHateCrime": {
+          "val": {
+            "2013": 0,
+            "2014": 0,
+            "2015": 0,
+            "2016": 0,
+            "2017": 0,
+            "2018": 0,
+            "2019": 0,
+            "2020": 0
+          },
+          "metadata": {
+            "importName": "FBIHateCrimePublications",
+            "provenanceUrl": "https://www.fbi.gov/services/cjis/ucr/hate-crime",
+            "observationPeriod": "P1Y"
+          }
+        },
+        "Count_CriminalIncidents_BiasMotivationRace_IsHateCrime": {
+          "val": {
+            "2004": 4,
+            "2006": 1,
+            "2007": 1,
+            "2008": 3,
+            "2013": 7,
+            "2014": 3
+          },
+          "metadata": {
+            "importName": "FBIHateCrimePublications",
+            "provenanceUrl": "https://www.fbi.gov/services/cjis/ucr/hate-crime",
+            "observationPeriod": "P1Y"
+          }
+        },
+        "Count_CriminalIncidents_BiasMotivationReligion_IsHateCrime": {
+          "val": {
+            "2004": 2,
+            "2006": 0,
+            "2007": 0,
+            "2008": 0,
+            "2013": 0,
+            "2014": 2,
+            "2015": 1,
+            "2016": 3,
+            "2017": 2,
+            "2018": 0,
+            "2019": 4,
+            "2020": 2
           },
           "metadata": {
             "importName": "FBIHateCrimePublications",
@@ -502,21 +411,17 @@
         "Count_CriminalIncidents_BiasMotivationSexualOrientation_IsHateCrime": {
           "val": {
             "2004": 0,
-            "2005": 0,
             "2006": 1,
-            "2007": 0,
-            "2008": 0,
-            "2009": 1,
-            "2010": 3,
-            "2011": 0,
-            "2012": 0,
-            "2013": 1,
-            "2014": 1,
-            "2015": 0,
-            "2016": 3,
-            "2017": 3,
-            "2018": 0,
-            "2020": 0
+            "2007": 1,
+            "2008": 2,
+            "2013": 4,
+            "2014": 2,
+            "2015": 3,
+            "2016": 1,
+            "2017": 0,
+            "2018": 2,
+            "2019": 2,
+            "2020": 3
           },
           "metadata": {
             "importName": "FBIHateCrimePublications",
@@ -526,58 +431,45 @@
         },
         "Count_CriminalIncidents_IsHateCrime": {
           "val": {
-            "2007-03": 0,
-            "2007-06": 0,
-            "2007-09": 2,
-            "2007-12": 4,
+            "2007-03": 1,
+            "2007-06": 1,
+            "2007-12": 0,
             "2008-03": 1,
             "2008-06": 0,
             "2008-09": 0,
-            "2008-12": 1,
-            "2009-03": 0,
-            "2009-06": 0,
-            "2009-09": 1,
-            "2009-12": 0,
-            "2010-03": 0,
-            "2010-06": 1,
-            "2010-09": 5,
-            "2010-12": 5,
-            "2011-03": 0,
-            "2011-06": 0,
-            "2011-09": 1,
-            "2011-12": 0,
-            "2012-03": 2,
-            "2012-06": 0,
-            "2012-09": 0,
-            "2012-12": 1,
+            "2008-12": 4,
             "2013-03": 2,
-            "2013-06": 1,
-            "2013-09": 2,
-            "2013-12": 0,
-            "2014-03": 0,
-            "2014-06": 2,
-            "2014-09": 0,
-            "2014-12": 0,
-            "2015-03": 1,
-            "2015-06": 0,
-            "2015-09": 1,
-            "2015-12": 1,
-            "2016-03": 4,
-            "2016-06": 5,
-            "2016-09": 5,
-            "2016-12": 8,
-            "2017-03": 3,
-            "2017-06": 5,
-            "2017-09": 1,
-            "2017-12": 1,
-            "2018-03": 1,
+            "2013-06": 4,
+            "2013-09": 3,
+            "2013-12": 2,
+            "2014-03": 3,
+            "2014-06": 0,
+            "2014-09": 2,
+            "2014-12": 4,
+            "2015-03": 4,
+            "2015-06": 1,
+            "2015-09": 4,
+            "2015-12": 4,
+            "2016-03": 2,
+            "2016-06": 1,
+            "2016-09": 3,
+            "2016-12": 5,
+            "2017-03": 5,
+            "2017-06": 0,
+            "2017-09": 7,
+            "2017-12": 2,
+            "2018-03": 5,
             "2018-06": 1,
-            "2018-09": 0,
-            "2018-12": 0,
-            "2020-03": 0,
-            "2020-06": 1,
-            "2020-09": 0,
-            "2020-12": 0
+            "2018-09": 1,
+            "2018-12": 6,
+            "2019-03": 2,
+            "2019-06": 3,
+            "2019-09": 2,
+            "2019-12": 4,
+            "2020-03": 3,
+            "2020-06": 12,
+            "2020-09": 9,
+            "2020-12": 8
           },
           "metadata": {
             "importName": "FBIHateCrimePublications",
@@ -587,38 +479,28 @@
         },
         "Count_Person": {
           "val": {
-            "1990": 68202,
-            "1991": 68417,
-            "1992": 68652,
-            "1993": 69561,
-            "1994": 70172,
-            "1995": 70945,
-            "1996": 71470,
-            "1997": 72889,
-            "1998": 74207,
-            "1999": 75084,
-            "2000": 79821,
-            "2001": 80684,
-            "2002": 80057,
-            "2003": 79727,
-            "2004": 78804,
-            "2005": 77933,
-            "2006": 77455,
-            "2007": 77374,
-            "2008": 78120,
-            "2009": 78998,
-            "2010": 85108,
-            "2011": 86015,
-            "2012": 87101,
-            "2013": 88221,
-            "2014": 89441,
-            "2015": 90631,
-            "2016": 91149,
-            "2017": 91020,
-            "2018": 90832,
-            "2019": 90321,
-            "2020": 91338,
-            "2021": 88868
+            "2000": 554338,
+            "2001": 555775,
+            "2002": 556939,
+            "2003": 559239,
+            "2004": 560954,
+            "2005": 562903,
+            "2006": 562900,
+            "2007": 565520,
+            "2008": 566118,
+            "2009": 570208,
+            "2010": 596518,
+            "2011": 600002,
+            "2012": 604389,
+            "2013": 610672,
+            "2014": 612890,
+            "2015": 615679,
+            "2016": 617838,
+            "2017": 620183,
+            "2018": 618997,
+            "2019": 618490,
+            "2020": 632037,
+            "2021": 628594
           },
           "metadata": {
             "importName": "USCensusPEP_Annual_Population",
@@ -685,16 +567,6 @@
         "observationPeriod": "P1Y"
       }
     },
-    "geoId/0203000": {
-      "date": "2021",
-      "value": 288121,
-      "metadata": {
-        "importName": "USCensusPEP_Annual_Population",
-        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
-        "measurementMethod": "CensusPEPSurvey",
-        "observationPeriod": "P1Y"
-      }
-    },
     "geoId/06": {
       "date": "2021",
       "value": 39237836,
@@ -735,9 +607,9 @@
         "observationPeriod": "P1Y"
       }
     },
-    "geoId/0644000": {
+    "geoId/0649670": {
       "date": "2021",
-      "value": 3849297,
+      "value": 81516,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
@@ -785,9 +657,9 @@
         "observationPeriod": "P1Y"
       }
     },
-    "geoId/1714000": {
+    "geoId/2148006": {
       "date": "2021",
-      "value": 2696555,
+      "value": 628594,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
@@ -795,9 +667,19 @@
         "observationPeriod": "P1Y"
       }
     },
-    "geoId/2743000": {
+    "geoId/2622000": {
       "date": "2021",
-      "value": 425336,
+      "value": 632464,
+      "metadata": {
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
+      }
+    },
+    "geoId/4967000": {
+      "date": "2021",
+      "value": 200478,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
@@ -858,19 +740,6 @@
         "Overview"
       ]
     },
-    "geoId/0203000": {
-      "category": [
-        "Crime",
-        "Demographics",
-        "Economics",
-        "Education",
-        "Environment",
-        "Equity",
-        "Health",
-        "Housing",
-        "Overview"
-      ]
-    },
     "geoId/06": {
       "category": [
         "Crime",
@@ -923,7 +792,7 @@
         "Overview"
       ]
     },
-    "geoId/0644000": {
+    "geoId/0649670": {
       "category": [
         "Crime",
         "Demographics",
@@ -988,7 +857,7 @@
         "Overview"
       ]
     },
-    "geoId/1714000": {
+    "geoId/2148006": {
       "category": [
         "Crime",
         "Demographics",
@@ -1001,7 +870,20 @@
         "Overview"
       ]
     },
-    "geoId/2743000": {
+    "geoId/2622000": {
+      "category": [
+        "Crime",
+        "Demographics",
+        "Economics",
+        "Education",
+        "Environment",
+        "Equity",
+        "Health",
+        "Housing",
+        "Overview"
+      ]
+    },
+    "geoId/4967000": {
       "category": [
         "Crime",
         "Demographics",
@@ -1075,11 +957,11 @@
     "northamerica"
   ],
   "similarPlaces": [
-    "geoId/0644000",
-    "geoId/0203000",
+    "geoId/2148006",
+    "geoId/4967000",
     "geoId/5553000",
-    "geoId/1714000",
-    "geoId/2743000"
+    "geoId/0649670",
+    "geoId/2622000"
   ],
   "nearbyPlaces": [
     "geoId/0653000",
