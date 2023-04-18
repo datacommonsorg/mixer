@@ -3,17 +3,13 @@
     {
       "node": "San Mateo County",
       "resolvedIds": [
-        "wikidataId/Q3471566",
-        "geoId/06081",
-        "geoId/0668252"
+        "geoId/06081"
       ]
     },
     {
       "node": "Santa Clara County",
       "resolvedIds": [
-        "geoId/06085",
-        "wikidataId/Q211590",
-        "geoId/0669084"
+        "geoId/06085"
       ]
     }
   ]

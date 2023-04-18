@@ -4,14 +4,15 @@
       "node": "Ahvenanmaa,Finland"
     },
     {
-      "node": "Amur,Russia"
+      "node": "Amur,Russia",
+      "resolvedIds": [
+        "wikidataId/Q6886"
+      ]
     },
     {
       "node": "Arkhangelsk,Russia",
       "resolvedIds": [
-        "country/RUS",
-        "wikidataId/Q1851",
-        "geoId/3664254"
+        "wikidataId/Q1851"
       ]
     },
     {
@@ -32,9 +33,7 @@
     {
       "node": "Brussels,Belgium",
       "resolvedIds": [
-        "country/BEL",
-        "wikidataId/Q239",
-        "geoId/5506150"
+        "wikidataId/Q239"
       ]
     },
     {
@@ -44,7 +43,10 @@
       "node": "Ciudad Autónoma de Ceuta,Spain"
     },
     {
-      "node": "Ciudad Autónoma de Melilla,Spain"
+      "node": "Ciudad Autónoma de Melilla,Spain",
+      "resolvedIds": [
+        "nuts/ES64"
+      ]
     },
     {
       "node": "Corse,France"
@@ -67,7 +69,6 @@
     {
       "node": "Gauteng,South Africa",
       "resolvedIds": [
-        "country/ZAF",
         "wikidataId/Q133083"
       ]
     },
@@ -104,7 +105,6 @@
     {
       "node": "KwaZulu-Natal,South Africa",
       "resolvedIds": [
-        "country/ZAF",
         "wikidataId/Q81725"
       ]
     },
@@ -114,17 +114,11 @@
     {
       "node": "Ladakh,India",
       "resolvedIds": [
-        "country/IND",
         "wikidataId/Q200667"
       ]
     },
     {
-      "node": "Loreto,Peru",
-      "resolvedIds": [
-        "country/PER",
-        "wikidataId/Q200938",
-        "wikidataId/Q1020758"
-      ]
+      "node": "Loreto,Peru"
     },
     {
       "node": "Małopolskie,Poland"
@@ -142,10 +136,7 @@
       "node": "Northern-Kanto,Japan"
     },
     {
-      "node": "Pays de la Loire,France",
-      "resolvedIds": [
-        "nuts/FR51"
-      ]
+      "node": "Pays de la Loire,France"
     },
     {
       "node": "Pomorskie,Poland"
@@ -153,9 +144,7 @@
     {
       "node": "Republic of Crimea,Russia",
       "resolvedIds": [
-        "country/RUS",
-        "wikidataId/Q15966495",
-        "geoId/2961238"
+        "wikidataId/Q15966495"
       ]
     },
     {
@@ -188,9 +177,7 @@
     {
       "node": "Ulyanovsk,Russia",
       "resolvedIds": [
-        "country/RUS",
-        "wikidataId/Q5627",
-        "geoId/3664254"
+        "wikidataId/Q5627"
       ]
     },
     {
@@ -206,10 +193,7 @@
       ]
     },
     {
-      "node": "Śląskie,Poland",
-      "resolvedIds": [
-        "wikidataId/Q651788"
-      ]
+      "node": "Śląskie,Poland"
     }
   ]
 }

@@ -208,6 +208,25 @@ func resolveWithRecognizePlaces(
 	map[string]struct{}, /* [DCID] for all entities */
 	error,
 ) {
+	// Check if the query fully matches any place names.
+	// NOTE: names also include "selfName containingPlaceName", e.g. "Brussels Belgium".
+	hasQueryNameMatch := func(dcid, query string) bool {
+		format := func(n string) string {
+			s := strings.ReplaceAll(strings.ToLower(n), " ", "")
+			return strings.ReplaceAll(s, ",", "")
+		}
+		names, ok := store.RecogPlaceStore.DcidToNames[dcid]
+		if !ok {
+			return false
+		}
+		for _, name := range names {
+			if format(query) == format(name) {
+				return true
+			}
+		}
+		return false
+	}
+
 	req := &pb.RecognizePlacesRequest{Queries: []string{}}
 	descriptionToType := map[string]string{}
 	for e := range entityInfoSet {
@@ -227,14 +246,12 @@ func resolveWithRecognizePlaces(
 		e := entityInfo{description: query, typeOf: descriptionToType[query]}
 		entityInfoToDCIDSet[e] = map[string]struct{}{}
 		for _, item := range items.GetItems() {
-			// Span must match the entire query.
-			if strings.ReplaceAll(item.GetSpan(), " ", "") != strings.ReplaceAll(query, " ", "") {
-				continue
-			}
-
 			for _, place := range item.GetPlaces() {
-				entityInfoToDCIDSet[e][place.GetDcid()] = struct{}{}
-				dcidSet[place.GetDcid()] = struct{}{}
+				dcid := place.GetDcid()
+				if hasQueryNameMatch(dcid, query) {
+					entityInfoToDCIDSet[e][dcid] = struct{}{}
+					dcidSet[dcid] = struct{}{}
+				}
 			}
 		}
 	}

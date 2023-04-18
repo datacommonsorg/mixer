@@ -18,6 +18,7 @@ package files
 import (
 	_ "embed"
 	"encoding/csv"
+	"fmt"
 	"strconv"
 	"strings"
 
@@ -29,8 +30,16 @@ import (
 //go:embed "WorldGeosForPlaceRecognition.csv"
 var recogPlaceMapCSVContent []byte // Embed CSV as []byte.
 
-// RecogPlaceMap returns a map for RecogPlaces, the key is the first token/word of each place.
-func RecogPlaceMap() (map[string]*pb.RecogPlaces, error) {
+// RecogPlaceStore contains data for recongizing places.
+type RecogPlaceStore struct {
+	// The key is the first token/word of each place.
+	RecogPlaceMap map[string]*pb.RecogPlaces
+	// Place DCID to all possible names.
+	DcidToNames map[string][]string
+}
+
+// LoadRecogPlaceMap loads a map for RecogPlaces, the key is the first token/word of each place.
+func LoadRecogPlaceStore() (*RecogPlaceStore, error) {
 	reader := csv.NewReader(strings.NewReader(string(recogPlaceMapCSVContent)))
 	records, err := reader.ReadAll()
 	if err != nil {
@@ -38,6 +47,9 @@ func RecogPlaceMap() (map[string]*pb.RecogPlaces, error) {
 	}
 
 	recogPlaceMap := map[string]*pb.RecogPlaces{}
+	dcidToNames := map[string][]string{}
+	expandedDcidToNames := map[string][]string{}
+	dcidToContainingPlaces := map[string][]string{}
 	isFirst := true
 	for _, record := range records {
 		// Skip header.
@@ -52,23 +64,28 @@ func RecogPlaceMap() (map[string]*pb.RecogPlaces, error) {
 				"Wrong RecogPlaces CSV record: %v", record)
 		}
 
-		recogPlace := &pb.RecogPlace{
-			ContainingPlaces: strings.Split(strings.ReplaceAll(record[3], " ", ""), ","),
-		}
-
 		// DCID.
-		recogPlace.Dcid = strings.TrimSpace(record[0])
-		if recogPlace.Dcid == "" {
+		dcid := strings.TrimSpace(record[0])
+		if dcid == "" {
 			return nil, status.Errorf(codes.FailedPrecondition,
 				"Empty DCID for CSV record: %v", record)
 		}
+		recogPlace := &pb.RecogPlace{Dcid: dcid}
+
+		// Containing places.
+		containingPlaces := strings.Split(strings.ReplaceAll(record[3], " ", ""), ",")
+		recogPlace.ContainingPlaces = containingPlaces
+		dcidToContainingPlaces[dcid] = containingPlaces
 
 		// Names.
 		if strings.TrimSpace(record[2]) == "" {
 			return nil, status.Errorf(codes.FailedPrecondition,
 				"Empty names for CSV record: %v", record)
 		}
-		for _, name := range strings.Split(record[2], ",") {
+		names := strings.Split(strings.TrimSpace(record[2]), ",")
+		dcidToNames[dcid] = names
+		expandedDcidToNames[dcid] = names
+		for _, name := range names {
 			nameParts := strings.Split(name, " ")
 			if len(nameParts) == 0 {
 				return nil, status.Errorf(codes.FailedPrecondition,
@@ -99,5 +116,28 @@ func RecogPlaceMap() (map[string]*pb.RecogPlaces, error) {
 		}
 	}
 
-	return recogPlaceMap, nil
+	// Add more names in the pattern of "selfName containingPlaceName", e.g., "Brussels Belgium".
+	for dcid, selfNames := range dcidToNames {
+		containingPlaces, ok := dcidToContainingPlaces[dcid]
+		if !ok {
+			continue
+		}
+		for _, containingPlace := range containingPlaces {
+			containingPlaceNames, ok := dcidToNames[containingPlace]
+			if !ok {
+				continue
+			}
+			for _, containcontainingPlaceName := range containingPlaceNames {
+				for _, selfName := range selfNames {
+					expandedDcidToNames[dcid] = append(expandedDcidToNames[dcid],
+						fmt.Sprintf("%s %s", selfName, containcontainingPlaceName))
+				}
+			}
+		}
+	}
+
+	return &RecogPlaceStore{
+		RecogPlaceMap: recogPlaceMap,
+		DcidToNames:   expandedDcidToNames,
+	}, nil
 }
