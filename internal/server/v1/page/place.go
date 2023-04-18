@@ -542,7 +542,7 @@ func getSimilarPlaces(
 		}
 		seed = int64(time.Now().YearDay() + int(h.Sum32()))
 	}
-	rand.Seed(seed)
+	rand.New(rand.NewSource(seed))
 	rand.Shuffle(len(places), func(i, j int) {
 		places[i], places[j] = places[j], places[i]
 	})
