@@ -60,7 +60,7 @@ metadata:
   name: {{ include "mixer.fullname" . }}-mixer-config
   namespace: {{ .Values.namespace.name }}
 data:
-  mixerProject: {{ required "Mixer GCP project is required." .Values.mixer.gcpProjectID }}
+  hostProject: {{ required "Mixer GCP project is required." .Values.mixer.hostProject }}
   serviceName:  {{ required "Mixer service name is required." .Values.mixer.serviceName }}
 
 ---

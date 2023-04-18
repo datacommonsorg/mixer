@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2023 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -64,7 +64,7 @@ const (
 	bigqueryBillingProject = "datcom-store"
 	tmcfCsvBucket          = "datcom-public"
 	tmcfCsvPrefix          = "food"
-	mixerProject           = "datcom-ci"
+	hostProject            = "datcom-ci"
 )
 
 // Setup creates local server and client.
@@ -118,7 +118,7 @@ func setupInternal(
 	}
 
 	metadata, err := server.NewMetadata(
-		mixerProject, strings.TrimSpace(string(bqTableID)), schemaPath, "")
+		hostProject, strings.TrimSpace(string(bqTableID)), schemaPath, "")
 	if err != nil {
 		return nil, err
 	}
@@ -147,7 +147,7 @@ func setupInternal(
 		cache = &resource.Cache{}
 	}
 
-	mapsClient, err := util.MapsClient(ctx, metadata.MixerProject)
+	mapsClient, err := util.MapsClient(ctx, metadata.HostProject)
 	if err != nil {
 		return nil, err
 	}

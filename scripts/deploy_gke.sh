@@ -75,7 +75,7 @@ if [[ $ENV == "mixer_autopush" ]]; then
     yq eval -i '.tables += [env(TABLE)]' deploy/storage/base_bigtable_info.yaml
   done
 fi
-export PROJECT_ID=$(yq eval '.mixer.gcpProjectID' deploy/helm_charts/envs/$ENV.yaml)
+export PROJECT_ID=$(yq eval '.mixer.hostProject' deploy/helm_charts/envs/$ENV.yaml)
 export REGION=$(yq eval '.region' deploy/helm_charts/envs/$ENV.yaml)
 export IP=$(yq eval '.ip' deploy/helm_charts/envs/$ENV.yaml)
 export DOMAIN=$(yq eval '.mixer.serviceName' deploy/helm_charts/envs/$ENV.yaml)

@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2023 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -41,19 +41,18 @@ import (
 	"cloud.google.com/go/profiler"
 	"google.golang.org/api/compute/v1"
 	"google.golang.org/grpc"
-	"google.golang.org/grpc/credentials/alts"
 	"google.golang.org/grpc/health/grpc_health_v1"
 )
 
 var (
 	// Server config
-	port         = flag.Int("port", 12345, "Port on which to run the server.")
-	useALTS      = flag.Bool("use_alts", false, "Whether to use ALTS server authentication")
-	mixerProject = flag.String("mixer_project", "", "The GCP project to run the mixer instance.")
+	port        = flag.Int("port", 12345, "Port on which to run the server.")
+	hostProject = flag.String("host_project", "", "The GCP project to run the mixer instance.")
 	// BigQuery (Sparql)
-	useBigquery = flag.Bool("use_bigquery", true, "Use Bigquery to serve Sparql Query")
-	bqDataset   = flag.String("bq_dataset", "", "DataCommons BigQuery dataset.")
-	schemaPath  = flag.String("schema_path", "", "The directory that contains the schema mapping files")
+	useBigquery      = flag.Bool("use_bigquery", true, "Use Bigquery to serve Sparql Query.")
+	bqDataset        = flag.String("bq_dataset", "", "DataCommons BigQuery dataset.")
+	schemaPath       = flag.String("schema_path", "", "The directory that contains the schema mapping files")
+	bqBillingProject = flag.String("bq_billing_project", "", "The bigquery client project. Query is billed to this project.")
 	// Base Bigtable Cache
 	useBaseBt          = flag.Bool("use_base_bt", true, "Use base bigtable cache")
 	baseBigtableInfo   = flag.String("base_bigtable_info", "", "Yaml formatted text containing information for base Bigtable")
@@ -61,7 +60,7 @@ var (
 	// Branch Bigtable Cache
 	useBranchBt = flag.Bool("use_branch_bt", true, "Use branch bigtable cache")
 	// Stat-var search cache
-	useSearch = flag.Bool("use_search", true, "Uses stat-var search. Will build search indexes.")
+	useSearch = flag.Bool("use_search", true, "Uses stat var search. Will build search indexes.")
 	// GCS to hold memdb data.
 	// Note GCS bucket and pubsub should be within the mixer project.
 	useTmcfCsvData = flag.Bool("use_tmcf_csv_data", false, "Use tmcf and csv data")
@@ -69,7 +68,7 @@ var (
 	tmcfCsvFolder  = flag.String("tmcf_csv_folder", "", "GCS folder for an import. An import must have a unique prefix within a bucket.")
 	memdbPath      = flag.String("memdb_path", "", "File path of memdb config")
 	// Remote mixer url. The API serves merged data from local and remote mixer
-	remoteMixerURL = flag.String("remote_mixer_url", "", "Remote mixer url to fetch and merge data for API response.")
+	remoteMixerDomain = flag.String("remote_mixer_domain", "", "Remote mixer domain to fetch and merge data for API response.")
 	// Profile startup memory instead of listening for requests
 	startupMemoryProfile = flag.String("startup_memprof", "", "File path to write the memory profile of mixer startup to")
 	// Serve live profiles of the process (CPU, memory, etc.) over HTTP on this port
@@ -102,17 +101,10 @@ func main() {
 		}
 	}
 
-	opts := []grpc.ServerOption{}
-	// Use ALTS server credential to bind to VM's private IPv6 interface.
-	if *useALTS {
-		altsTC := alts.NewServerCreds(alts.DefaultServerOptions())
-		opts = append(opts, grpc.Creds(altsTC))
-	}
-
 	// Create grpc server.
-	srv := grpc.NewServer(opts...)
+	srv := grpc.NewServer()
 
-	// Base Bigtable cache
+	// Bigtable cache
 	var tables []*bigtable.Table
 	if *useBaseBt {
 		baseTables, err := bigtable.CreateBigtables(
@@ -146,7 +138,10 @@ func main() {
 	// BigQuery
 	var bqClient *bigquery.Client
 	if *useBigquery {
-		bqClient, err = bigquery.NewClient(ctx, *mixerProject)
+		if *bqBillingProject == "" {
+			*bqBillingProject = *hostProject
+		}
+		bqClient, err = bigquery.NewClient(ctx, *bqBillingProject)
 		if err != nil {
 			log.Fatalf("Failed to create Bigquery client: %v", err)
 		}
@@ -173,10 +168,10 @@ func main() {
 
 	// Metadata.
 	metadata, err := server.NewMetadata(
-		*mixerProject,
+		*hostProject,
 		*bqDataset,
 		*schemaPath,
-		*remoteMixerURL,
+		*remoteMixerDomain,
 	)
 	if err != nil {
 		log.Fatalf("Failed to create metadata: %v", err)
@@ -204,7 +199,7 @@ func main() {
 	}
 
 	// Maps client
-	mapsClient, err := util.MapsClient(ctx, metadata.MixerProject)
+	mapsClient, err := util.MapsClient(ctx, metadata.HostProject)
 	if err != nil {
 		log.Fatalf("Failed to create Maps client: %v", err)
 	}

@@ -75,7 +75,7 @@ spec:
           args:
             - --base_bigtable_info=$(BASE_BIGTABLE_INFO)
             - --custom_bigtable_info=$(CUSTOM_BIGTABLE_INFO)
-            - --mixer_project=$(MIXER_PROJECT)
+            - --host_project=$(HOST_PROJECT)
             - --bq_dataset=$(BIGQUERY)
             - --schema_path=/datacommons/mapping
             - --memdb_path=/datacommons/memdb
@@ -94,11 +94,11 @@ spec:
             - name: memdb-config
               mountPath: /datacommons/memdb
           env:
-            - name: MIXER_PROJECT
+            - name: HOST_PROJECT
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "mixer.fullname" $ }}-mixer-config
-                  key: mixerProject
+                  key: hostProject
             - name: BIGQUERY
               {{- if eq $.Values.mixer.bigqueryOnly true }}
               value: {{ $.Values.mixer.bigqueryTableRef }}

@@ -30,7 +30,7 @@ namespace:
 
 # Mixer service config.
 mixer:
-  gcpProjectID:
+  hostProject:
   githash:
 
   useTMCFCSVData: false
