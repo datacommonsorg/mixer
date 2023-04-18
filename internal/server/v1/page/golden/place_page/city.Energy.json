@@ -46,42 +46,42 @@
         }
       }
     },
-    "geoId/0668084": {
+    "geoId/2836000": {
       "data": {
         "Count_Person": {
           "val": {
-            "1990": 68202,
-            "1991": 68417,
-            "1992": 68652,
-            "1993": 69561,
-            "1994": 70172,
-            "1995": 70945,
-            "1996": 71470,
-            "1997": 72889,
-            "1998": 74207,
-            "1999": 75084,
-            "2000": 79821,
-            "2001": 80684,
-            "2002": 80057,
-            "2003": 79727,
-            "2004": 78804,
-            "2005": 77933,
-            "2006": 77455,
-            "2007": 77374,
-            "2008": 78120,
-            "2009": 78998,
-            "2010": 85108,
-            "2011": 86015,
-            "2012": 87101,
-            "2013": 88221,
-            "2014": 89441,
-            "2015": 90631,
-            "2016": 91149,
-            "2017": 91020,
-            "2018": 90832,
-            "2019": 90321,
-            "2020": 91338,
-            "2021": 88868
+            "1990": 196575,
+            "1991": 196526,
+            "1992": 195371,
+            "1993": 194282,
+            "1994": 190655,
+            "1995": 188284,
+            "1996": 186656,
+            "1997": 184294,
+            "1998": 182919,
+            "1999": 180664,
+            "2000": 186375,
+            "2001": 184343,
+            "2002": 182710,
+            "2003": 181918,
+            "2004": 181834,
+            "2005": 180520,
+            "2006": 180821,
+            "2007": 178426,
+            "2008": 176409,
+            "2009": 176259,
+            "2010": 173703,
+            "2011": 175166,
+            "2012": 174853,
+            "2013": 172970,
+            "2014": 172065,
+            "2015": 170970,
+            "2016": 169074,
+            "2017": 166864,
+            "2018": 163784,
+            "2019": 160658,
+            "2020": 152846,
+            "2021": 149761
           },
           "metadata": {
             "importName": "USCensusPEP_Annual_Population",
@@ -198,16 +198,6 @@
         "observationPeriod": "P1Y"
       }
     },
-    "geoId/0655282": {
-      "date": "2021",
-      "value": 66680,
-      "metadata": {
-        "importName": "USCensusPEP_Annual_Population",
-        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
-        "measurementMethod": "CensusPEPSurvey",
-        "observationPeriod": "P1Y"
-      }
-    },
     "geoId/0656938": {
       "date": "2021",
       "value": 11107,
@@ -228,16 +218,6 @@
         "observationPeriod": "P1Y"
       }
     },
-    "geoId/0668000": {
-      "date": "2021",
-      "value": 983489,
-      "metadata": {
-        "importName": "USCensusPEP_Annual_Population",
-        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
-        "measurementMethod": "CensusPEPSurvey",
-        "observationPeriod": "P1Y"
-      }
-    },
     "geoId/0668084": {
       "date": "2021",
       "value": 88868,
@@ -248,9 +228,9 @@
         "observationPeriod": "P1Y"
       }
     },
-    "geoId/2148006": {
+    "geoId/0820000": {
       "date": "2021",
-      "value": 628594,
+      "value": 711463,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
@@ -258,9 +238,19 @@
         "observationPeriod": "P1Y"
       }
     },
-    "geoId/2404000": {
+    "geoId/2836000": {
       "date": "2021",
-      "value": 576498,
+      "value": 149761,
+      "metadata": {
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
+      }
+    },
+    "geoId/4055000": {
+      "date": "2021",
+      "value": 687725,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
@@ -271,6 +261,16 @@
     "geoId/4261000": {
       "date": "2021",
       "value": 300431,
+      "metadata": {
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
+      }
+    },
+    "geoId/4752006": {
+      "date": "2021",
+      "value": 678851,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
@@ -386,19 +386,6 @@
         "Overview"
       ]
     },
-    "geoId/0655282": {
-      "category": [
-        "Crime",
-        "Demographics",
-        "Economics",
-        "Education",
-        "Environment",
-        "Equity",
-        "Health",
-        "Housing",
-        "Overview"
-      ]
-    },
     "geoId/0656938": {
       "category": [
         "Crime",
@@ -425,19 +412,6 @@
         "Overview"
       ]
     },
-    "geoId/0668000": {
-      "category": [
-        "Crime",
-        "Demographics",
-        "Economics",
-        "Education",
-        "Environment",
-        "Equity",
-        "Health",
-        "Housing",
-        "Overview"
-      ]
-    },
     "geoId/0668084": {
       "category": [
         "Crime",
@@ -451,7 +425,7 @@
         "Overview"
       ]
     },
-    "geoId/2148006": {
+    "geoId/0820000": {
       "category": [
         "Crime",
         "Demographics",
@@ -464,7 +438,20 @@
         "Overview"
       ]
     },
-    "geoId/2404000": {
+    "geoId/2836000": {
+      "category": [
+        "Crime",
+        "Demographics",
+        "Economics",
+        "Education",
+        "Environment",
+        "Equity",
+        "Health",
+        "Housing",
+        "Overview"
+      ]
+    },
+    "geoId/4055000": {
       "category": [
         "Crime",
         "Demographics",
@@ -478,6 +465,19 @@
       ]
     },
     "geoId/4261000": {
+      "category": [
+        "Crime",
+        "Demographics",
+        "Economics",
+        "Education",
+        "Environment",
+        "Equity",
+        "Health",
+        "Housing",
+        "Overview"
+      ]
+    },
+    "geoId/4752006": {
       "category": [
         "Crime",
         "Demographics",
@@ -538,11 +538,11 @@
     "northamerica"
   ],
   "similarPlaces": [
-    "geoId/0668000",
-    "geoId/2148006",
-    "geoId/0655282",
+    "geoId/4752006",
     "geoId/4261000",
-    "geoId/2404000"
+    "geoId/0820000",
+    "geoId/2836000",
+    "geoId/4055000"
   ],
   "nearbyPlaces": [
     "geoId/0653000",

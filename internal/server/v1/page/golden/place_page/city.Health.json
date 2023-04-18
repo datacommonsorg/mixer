@@ -190,42 +190,42 @@
         }
       }
     },
-    "geoId/2622000": {
+    "geoId/2836000": {
       "data": {
         "Count_Person": {
           "val": {
-            "1990": 1027946,
-            "1991": 1028676,
-            "1992": 1021230,
-            "1993": 1016130,
-            "1994": 1008430,
-            "1995": 1003701,
-            "1996": 995233,
-            "1997": 975477,
-            "1998": 967360,
-            "1999": 965084,
-            "2000": 945471,
-            "2001": 933204,
-            "2002": 918927,
-            "2003": 907000,
-            "2004": 892644,
-            "2005": 877791,
-            "2006": 862850,
-            "2007": 848438,
-            "2008": 831626,
-            "2009": 821019,
-            "2010": 711198,
-            "2011": 705202,
-            "2012": 700289,
-            "2013": 691986,
-            "2014": 682746,
-            "2015": 679562,
-            "2016": 677379,
-            "2017": 675031,
-            "2018": 673658,
-            "2019": 670442,
-            "2020": 638176,
-            "2021": 632464
+            "1990": 196575,
+            "1991": 196526,
+            "1992": 195371,
+            "1993": 194282,
+            "1994": 190655,
+            "1995": 188284,
+            "1996": 186656,
+            "1997": 184294,
+            "1998": 182919,
+            "1999": 180664,
+            "2000": 186375,
+            "2001": 184343,
+            "2002": 182710,
+            "2003": 181918,
+            "2004": 181834,
+            "2005": 180520,
+            "2006": 180821,
+            "2007": 178426,
+            "2008": 176409,
+            "2009": 176259,
+            "2010": 173703,
+            "2011": 175166,
+            "2012": 174853,
+            "2013": 172970,
+            "2014": 172065,
+            "2015": 170970,
+            "2016": 169074,
+            "2017": 166864,
+            "2018": 163784,
+            "2019": 160658,
+            "2020": 152846,
+            "2021": 149761
           },
           "metadata": {
             "importName": "USCensusPEP_Annual_Population",
@@ -236,11 +236,11 @@
         },
         "Percent_Person_BingeDrinking": {
           "val": {
-            "2014": 13.5,
-            "2015": 15,
-            "2016": 14.9,
-            "2017": 13.5,
-            "2018": 14.8
+            "2014": 11.4,
+            "2015": 10.1,
+            "2016": 11,
+            "2017": 11.9,
+            "2018": 11.7
           },
           "metadata": {
             "importName": "CDC500",
@@ -251,11 +251,11 @@
         },
         "Percent_Person_Obesity": {
           "val": {
-            "2014": 45.2,
-            "2015": 45.1,
-            "2016": 47.4,
-            "2017": 44.9,
-            "2018": 44.1
+            "2014": 40.6,
+            "2015": 40.3,
+            "2016": 44.5,
+            "2017": 39.1,
+            "2018": 45.9
           },
           "metadata": {
             "importName": "CDC500",
@@ -266,11 +266,11 @@
         },
         "Percent_Person_PhysicalInactivity": {
           "val": {
-            "2014": 36.4,
-            "2015": 36.2,
-            "2016": 35.7,
-            "2017": 39.2,
-            "2018": 37.7
+            "2014": 33,
+            "2015": 38.6,
+            "2016": 33.3,
+            "2017": 35.8,
+            "2018": 35
           },
           "metadata": {
             "importName": "CDC500",
@@ -281,9 +281,9 @@
         },
         "Percent_Person_SleepLessThan7Hours": {
           "val": {
-            "2014": 50.8,
-            "2016": 50.1,
-            "2018": 51.4
+            "2014": 43.6,
+            "2016": 40.6,
+            "2018": 43.4
           },
           "metadata": {
             "importName": "CDC500",
@@ -294,11 +294,11 @@
         },
         "Percent_Person_Smoking": {
           "val": {
-            "2014": 29.8,
-            "2015": 31.4,
-            "2016": 28.6,
-            "2017": 29.3,
-            "2018": 29.3
+            "2014": 23.4,
+            "2015": 23,
+            "2016": 21.7,
+            "2017": 22.6,
+            "2018": 21.8
           },
           "metadata": {
             "importName": "CDC500",
@@ -309,11 +309,11 @@
         },
         "Percent_Person_WithArthritis": {
           "val": {
-            "2014": 33.9,
-            "2015": 31.4,
-            "2016": 33.3,
-            "2017": 31,
-            "2018": 33.2
+            "2014": 28.8,
+            "2015": 26.8,
+            "2016": 29.3,
+            "2017": 25.2,
+            "2018": 27.5
           },
           "metadata": {
             "importName": "CDC500",
@@ -324,9 +324,9 @@
         },
         "Percent_Person_WithHighBloodPressure": {
           "val": {
-            "2013": 46.3,
-            "2015": 46.3,
-            "2017": 46.7
+            "2013": 45.2,
+            "2015": 45.9,
+            "2017": 44
           },
           "metadata": {
             "importName": "CDC500",
@@ -337,9 +337,9 @@
         },
         "Percent_Person_WithHighCholesterol": {
           "val": {
-            "2013": 36.6,
-            "2015": 35.1,
-            "2017": 32.3
+            "2013": 36.3,
+            "2015": 31.9,
+            "2017": 32.9
           },
           "metadata": {
             "importName": "CDC500",
@@ -350,11 +350,11 @@
         },
         "Percent_Person_WithMentalHealthNotGood": {
           "val": {
-            "2014": 17.2,
-            "2015": 17.1,
-            "2016": 17.9,
-            "2017": 18.7,
-            "2018": 19
+            "2014": 14.5,
+            "2015": 15,
+            "2016": 14.8,
+            "2017": 15.8,
+            "2018": 16.2
           },
           "metadata": {
             "importName": "CDC500",
@@ -365,11 +365,11 @@
         },
         "Percent_Person_WithPhysicalHealthNotGood": {
           "val": {
-            "2014": 18.3,
-            "2015": 18.7,
-            "2016": 19.1,
-            "2017": 19.2,
-            "2018": 20.7
+            "2014": 14.8,
+            "2015": 16,
+            "2016": 15.1,
+            "2017": 16,
+            "2018": 15.8
           },
           "metadata": {
             "importName": "CDC500",
@@ -616,16 +616,6 @@
         "observationPeriod": "P1Y"
       }
     },
-    "geoId/0668000": {
-      "date": "2021",
-      "value": 983489,
-      "metadata": {
-        "importName": "USCensusPEP_Annual_Population",
-        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
-        "measurementMethod": "CensusPEPSurvey",
-        "observationPeriod": "P1Y"
-      }
-    },
     "geoId/0668084": {
       "date": "2021",
       "value": 88868,
@@ -636,9 +626,9 @@
         "observationPeriod": "P1Y"
       }
     },
-    "geoId/2622000": {
+    "geoId/0820000": {
       "date": "2021",
-      "value": 632464,
+      "value": 711463,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
@@ -646,9 +636,9 @@
         "observationPeriod": "P1Y"
       }
     },
-    "geoId/3502000": {
+    "geoId/2836000": {
       "date": "2021",
-      "value": 562599,
+      "value": 149761,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
@@ -656,9 +646,9 @@
         "observationPeriod": "P1Y"
       }
     },
-    "geoId/3651000": {
+    "geoId/4055000": {
       "date": "2021",
-      "value": 8467513,
+      "value": 687725,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
@@ -666,9 +656,19 @@
         "observationPeriod": "P1Y"
       }
     },
-    "geoId/5363000": {
+    "geoId/4261000": {
       "date": "2021",
-      "value": 733919,
+      "value": 300431,
+      "metadata": {
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
+        "observationPeriod": "P1Y"
+      }
+    },
+    "geoId/4752006": {
+      "date": "2021",
+      "value": 678851,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
@@ -810,19 +810,6 @@
         "Overview"
       ]
     },
-    "geoId/0668000": {
-      "category": [
-        "Crime",
-        "Demographics",
-        "Economics",
-        "Education",
-        "Environment",
-        "Equity",
-        "Health",
-        "Housing",
-        "Overview"
-      ]
-    },
     "geoId/0668084": {
       "category": [
         "Crime",
@@ -836,7 +823,7 @@
         "Overview"
       ]
     },
-    "geoId/2622000": {
+    "geoId/0820000": {
       "category": [
         "Crime",
         "Demographics",
@@ -849,7 +836,7 @@
         "Overview"
       ]
     },
-    "geoId/3502000": {
+    "geoId/2836000": {
       "category": [
         "Crime",
         "Demographics",
@@ -862,7 +849,7 @@
         "Overview"
       ]
     },
-    "geoId/3651000": {
+    "geoId/4055000": {
       "category": [
         "Crime",
         "Demographics",
@@ -875,7 +862,20 @@
         "Overview"
       ]
     },
-    "geoId/5363000": {
+    "geoId/4261000": {
+      "category": [
+        "Crime",
+        "Demographics",
+        "Economics",
+        "Education",
+        "Environment",
+        "Equity",
+        "Health",
+        "Housing",
+        "Overview"
+      ]
+    },
+    "geoId/4752006": {
       "category": [
         "Crime",
         "Demographics",
@@ -936,11 +936,11 @@
     "northamerica"
   ],
   "similarPlaces": [
-    "geoId/5363000",
-    "geoId/0668000",
-    "geoId/3651000",
-    "geoId/3502000",
-    "geoId/2622000"
+    "geoId/4752006",
+    "geoId/4261000",
+    "geoId/0820000",
+    "geoId/2836000",
+    "geoId/4055000"
   ],
   "nearbyPlaces": [
     "geoId/0653000",

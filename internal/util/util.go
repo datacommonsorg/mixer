@@ -237,14 +237,14 @@ func CheckValidDCIDs(dcids []string) error {
 
 // RandomString creates a random string with 16 runes.
 func RandomString() string {
-	rand.New(rand.NewSource(time.Now().UnixNano()))
+	r := rand.New(rand.NewSource(time.Now().UnixNano()))
 	chars := []rune("ABCDEFGHIJKLMNOPQRSTUVWXYZ" +
 		"abcdefghijklmnopqrstuvwxyz" +
 		"0123456789")
 	length := 16
 	var b strings.Builder
 	for i := 0; i < length; i++ {
-		b.WriteRune(chars[rand.Intn(len(chars))])
+		b.WriteRune(chars[r.Intn(len(chars))])
 	}
 	return b.String()
 }
