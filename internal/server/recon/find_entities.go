@@ -226,6 +226,11 @@ func resolveWithRecognizePlaces(
 		e := entityInfo{description: query, typeOf: descriptionToType[query]}
 		entityInfoToDCIDSet[e] = map[string]struct{}{}
 		for _, item := range items.GetItems() {
+			// Span must match the entire query.
+			if item.GetSpan() != query {
+				continue
+			}
+
 			for _, place := range item.GetPlaces() {
 				entityInfoToDCIDSet[e][place.GetDcid()] = struct{}{}
 				dcidSet[place.GetDcid()] = struct{}{}

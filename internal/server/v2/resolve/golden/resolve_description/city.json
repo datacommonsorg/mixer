@@ -9,9 +9,7 @@
     {
       "node": "Santa Clara",
       "resolvedIds": [
-        "wikidataId/Q211590",
-        "geoId/0669084",
-        "geoId/4967660"
+        "geoId/0669084"
       ]
     }
   ]
