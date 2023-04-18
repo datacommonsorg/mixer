@@ -9,7 +9,9 @@
     {
       "node": "Arkhangelsk,Russia",
       "resolvedIds": [
-        "wikidataId/Q1851"
+        "country/RUS",
+        "wikidataId/Q1851",
+        "geoId/3664254"
       ]
     },
     {
@@ -28,7 +30,12 @@
       "node": "Bihar,India"
     },
     {
-      "node": "Brussels,Belgium"
+      "node": "Brussels,Belgium",
+      "resolvedIds": [
+        "country/BEL",
+        "wikidataId/Q239",
+        "geoId/5506150"
+      ]
     },
     {
       "node": "Chugoku,Japan"
@@ -58,7 +65,11 @@
       "node": "Free State,South Africa"
     },
     {
-      "node": "Gauteng,South Africa"
+      "node": "Gauteng,South Africa",
+      "resolvedIds": [
+        "country/ZAF",
+        "wikidataId/Q133083"
+      ]
     },
     {
       "node": "Guyane,France"
@@ -85,19 +96,35 @@
       "node": "Kansai,Japan"
     },
     {
-      "node": "Kemerovo,Russia"
+      "node": "Kemerovo,Russia",
+      "resolvedIds": [
+        "wikidataId/Q6066"
+      ]
     },
     {
-      "node": "KwaZulu-Natal,South Africa"
+      "node": "KwaZulu-Natal,South Africa",
+      "resolvedIds": [
+        "country/ZAF",
+        "wikidataId/Q81725"
+      ]
     },
     {
       "node": "Kyushu,Japan"
     },
     {
-      "node": "Ladakh,India"
+      "node": "Ladakh,India",
+      "resolvedIds": [
+        "country/IND",
+        "wikidataId/Q200667"
+      ]
     },
     {
-      "node": "Loreto,Peru"
+      "node": "Loreto,Peru",
+      "resolvedIds": [
+        "country/PER",
+        "wikidataId/Q200938",
+        "wikidataId/Q1020758"
+      ]
     },
     {
       "node": "Małopolskie,Poland"
@@ -124,7 +151,12 @@
       "node": "Pomorskie,Poland"
     },
     {
-      "node": "Republic of Crimea,Russia"
+      "node": "Republic of Crimea,Russia",
+      "resolvedIds": [
+        "country/RUS",
+        "wikidataId/Q15966495",
+        "geoId/2961238"
+      ]
     },
     {
       "node": "Sakhalin,Russia"
@@ -139,7 +171,10 @@
       "node": "Southern-Kanto,Japan"
     },
     {
-      "node": "Tambov,Russia"
+      "node": "Tambov,Russia",
+      "resolvedIds": [
+        "wikidataId/Q3544"
+      ]
     },
     {
       "node": "Tarapacá,Chile"
@@ -153,11 +188,16 @@
     {
       "node": "Ulyanovsk,Russia",
       "resolvedIds": [
-        "wikidataId/Q5627"
+        "country/RUS",
+        "wikidataId/Q5627",
+        "geoId/3664254"
       ]
     },
     {
-      "node": "Vologda,Russia"
+      "node": "Vologda,Russia",
+      "resolvedIds": [
+        "wikidataId/Q1957"
+      ]
     },
     {
       "node": "Łódzkie,Poland",

@@ -3,9 +3,9 @@
     {
       "node": "San Mateo County",
       "resolvedIds": [
+        "wikidataId/Q3471566",
         "geoId/06081",
-        "geoId/0668252",
-        "wikidataId/Q3471566"
+        "geoId/0668252"
       ]
     },
     {

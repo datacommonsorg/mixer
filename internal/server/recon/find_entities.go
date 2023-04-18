@@ -19,6 +19,7 @@ import (
 	"context"
 	"fmt"
 	"sort"
+	"strings"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
@@ -227,7 +228,7 @@ func resolveWithRecognizePlaces(
 		entityInfoToDCIDSet[e] = map[string]struct{}{}
 		for _, item := range items.GetItems() {
 			// Span must match the entire query.
-			if item.GetSpan() != query {
+			if strings.ReplaceAll(item.GetSpan(), " ", "") != strings.ReplaceAll(query, " ", "") {
 				continue
 			}
 
