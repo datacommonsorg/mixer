@@ -77,7 +77,7 @@
           "dcid": "Count_CriminalIncidents_BiasMotivationDisabilityStatus_IsHateCrime_LocationOfCrimeDockOrWharfOrFreightOrModalTerminal"
         },
         {
-          "name": "Count of Hate Crime Incidents: Bias Against Disability Status, Elementary School \u0026 HighSchool",
+          "name": "Count of Hate Crime Incidents: Bias Against Disability Status, Elementary School \u0026 High School",
           "dcid": "Count_CriminalIncidents_BiasMotivationDisabilityStatus_IsHateCrime_LocationOfCrimeElementarySchoolOrHighSchool"
         },
         {
@@ -275,7 +275,7 @@
           "dcid": "Count_CriminalIncidents_BiasMotivationMultipleBias_IsHateCrime_LocationOfCrimeDockOrWharfOrFreightOrModalTerminal"
         },
         {
-          "name": "Count of Hate Crime Incidents: Bias Against Multiple Bias, Elementary School \u0026 HighSchool",
+          "name": "Count of Hate Crime Incidents: Bias Against Multiple Bias, Elementary School \u0026 High School",
           "dcid": "Count_CriminalIncidents_BiasMotivationMultipleBias_IsHateCrime_LocationOfCrimeElementarySchoolOrHighSchool"
         },
         {
@@ -473,7 +473,7 @@
           "dcid": "Count_CriminalIncidents_BiasMotivationRace_IsHateCrime_LocationOfCrimeDockOrWharfOrFreightOrModalTerminal"
         },
         {
-          "name": "Count of Hate Crime Incidents: Bias Against Race, Elementary School \u0026 HighSchool",
+          "name": "Count of Hate Crime Incidents: Bias Against Race, Elementary School \u0026 High School",
           "dcid": "Count_CriminalIncidents_BiasMotivationRace_IsHateCrime_LocationOfCrimeElementarySchoolOrHighSchool"
         },
         {
@@ -671,7 +671,7 @@
           "dcid": "Count_CriminalIncidents_BiasMotivationReligion_IsHateCrime_LocationOfCrimeDockOrWharfOrFreightOrModalTerminal"
         },
         {
-          "name": "Count of Hate Crime Incidents: Bias Against Religion, Elementary School \u0026 HighSchool",
+          "name": "Count of Hate Crime Incidents: Bias Against Religion, Elementary School \u0026 High School",
           "dcid": "Count_CriminalIncidents_BiasMotivationReligion_IsHateCrime_LocationOfCrimeElementarySchoolOrHighSchool"
         },
         {
@@ -869,7 +869,7 @@
           "dcid": "Count_CriminalIncidents_BiasMotivationSexualOrientation_IsHateCrime_LocationOfCrimeDockOrWharfOrFreightOrModalTerminal"
         },
         {
-          "name": "Count of Hate Crime Incidents: Bias Against Sexual Orientation, Elementary School \u0026 HighSchool",
+          "name": "Count of Hate Crime Incidents: Bias Against Sexual Orientation, Elementary School \u0026 High School",
           "dcid": "Count_CriminalIncidents_BiasMotivationSexualOrientation_IsHateCrime_LocationOfCrimeElementarySchoolOrHighSchool"
         },
         {
@@ -1067,7 +1067,7 @@
           "dcid": "Count_CriminalIncidents_BiasMotivationSingleBias_IsHateCrime_LocationOfCrimeDockOrWharfOrFreightOrModalTerminal"
         },
         {
-          "name": "Count of Hate Crime Incidents: Bias Against Single Bias, Elementary School \u0026 HighSchool",
+          "name": "Count of Hate Crime Incidents: Bias Against Single Bias, Elementary School \u0026 High School",
           "dcid": "Count_CriminalIncidents_BiasMotivationSingleBias_IsHateCrime_LocationOfCrimeElementarySchoolOrHighSchool"
         },
         {
@@ -1265,7 +1265,7 @@
           "dcid": "Count_CriminalIncidents_BiasMotivationEthnicity_IsHateCrime_LocationOfCrimeDockOrWharfOrFreightOrModalTerminal"
         },
         {
-          "name": "Count of Hate Crime Incidents: Bias Against Ethnicity, Elementary School \u0026 HighSchool",
+          "name": "Count of Hate Crime Incidents: Bias Against Ethnicity, Elementary School \u0026 High School",
           "dcid": "Count_CriminalIncidents_BiasMotivationEthnicity_IsHateCrime_LocationOfCrimeElementarySchoolOrHighSchool"
         },
         {
@@ -1459,7 +1459,7 @@
           "dcid": "Count_CriminalIncidents_BiasMotivationRaceOrEthnicity_IsHateCrime_LocationOfCrimeDockOrWharfOrFreightOrModalTerminal"
         },
         {
-          "name": "Count of Hate Crime Incidents: Bias Against Race or Ethnicity, Elementary School \u0026 HighSchool",
+          "name": "Count of Hate Crime Incidents: Bias Against Race or Ethnicity, Elementary School \u0026 High School",
           "dcid": "Count_CriminalIncidents_BiasMotivationRaceOrEthnicity_IsHateCrime_LocationOfCrimeElementarySchoolOrHighSchool"
         },
         {

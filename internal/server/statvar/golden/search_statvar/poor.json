@@ -1774,7 +1774,7 @@
     },
     {
       "dcid": "sdg/g/SD_MDP_ANDI",
-      "name": "Average proportion of deprivations for people multidimensionally poor (%)",
+      "name": "Average proportion of deprivations for people multidimensionally poor",
       "statVars": [
         {
           "name": "Average proportion of deprivations for people multidimensionally poor: All age ranges or no breaks by age, All areas, Country data, Both sexes",
@@ -2824,7 +2824,7 @@
     },
     {
       "dcid": "sdg/g/SI_COV_POOR",
-      "name": "[ILO] Proportion of poor population receiving social assistance cash benefit, by sex (%)",
+      "name": "Proportion of poor population receiving social assistance cash benefit",
       "statVars": [
         {
           "name": "Proportion of poor population receiving social assistance cash benefit: Estimated data, Normal value, Both sexes",
@@ -3646,15 +3646,15 @@
     },
     {
       "dcid": "sdg/g/SI_COV_LMKTPQ",
-      "name": "[World Bank] Poorest quintile covered by labour market programs (%) "
+      "name": "Poorest quintile covered by labour market programs"
     },
     {
       "dcid": "sdg/g/SI_COV_SOCASTPQ",
-      "name": "[World Bank] Poorest quintile covered by social assistance programs (%)"
+      "name": "Poorest quintile covered by social assistance programs"
     },
     {
       "dcid": "sdg/g/SI_COV_SOCINSPQ",
-      "name": "[World Bank] Poorest quintile covered by social insurance programs (%)"
+      "name": "Poorest quintile covered by social insurance programs"
     },
     {
       "dcid": "dc/g/Household_BenefitsStatus-WithFoodStampsInThePast12Months_ChildSchoolEnrollment-PublicSchool_MemberStatus",
