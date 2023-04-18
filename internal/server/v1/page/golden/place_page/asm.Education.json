@@ -1,5 +1,80 @@
 {
   "statVarSeries": {
+    "country/ASM": {
+      "data": {
+        "Count_Person": {
+          "val": {
+            "1960": 20085,
+            "1961": 20626,
+            "1962": 21272,
+            "1963": 21949,
+            "1964": 22656,
+            "1965": 23391,
+            "1966": 24122,
+            "1967": 24848,
+            "1968": 25608,
+            "1969": 26396,
+            "1970": 27075,
+            "1971": 27593,
+            "1972": 28063,
+            "1973": 28529,
+            "1974": 29012,
+            "1975": 29573,
+            "1976": 30198,
+            "1977": 30816,
+            "1978": 31428,
+            "1979": 32045,
+            "1980": 32886,
+            "1981": 34059,
+            "1982": 35367,
+            "1983": 36735,
+            "1984": 38168,
+            "1985": 39663,
+            "1986": 41221,
+            "1987": 42842,
+            "1988": 44532,
+            "1989": 46288,
+            "1990": 47818,
+            "1991": 48992,
+            "1992": 50078,
+            "1993": 51174,
+            "1994": 52288,
+            "1995": 53401,
+            "1996": 54500,
+            "1997": 55578,
+            "1998": 56603,
+            "1999": 57594,
+            "2000": 58230,
+            "2001": 58324,
+            "2002": 58177,
+            "2003": 57941,
+            "2004": 57626,
+            "2005": 57254,
+            "2006": 56837,
+            "2007": 56383,
+            "2008": 55891,
+            "2009": 55366,
+            "2010": 54849,
+            "2011": 54310,
+            "2012": 53691,
+            "2013": 52995,
+            "2014": 52217,
+            "2015": 51368,
+            "2016": 50448,
+            "2017": 49463,
+            "2018": 48424,
+            "2019": 47321,
+            "2020": 46189,
+            "2021": 45035
+          },
+          "metadata": {
+            "importName": "WorldDevelopmentIndicators",
+            "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+            "observationPeriod": "P1Y"
+          }
+        }
+      }
+    },
     "country/CHN": {
       "data": {
         "Count_Person": {
@@ -66,81 +141,6 @@
             "2019": 1407745000,
             "2020": 1411100000,
             "2021": 1412360000
-          },
-          "metadata": {
-            "importName": "WorldDevelopmentIndicators",
-            "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
-            "observationPeriod": "P1Y"
-          }
-        }
-      }
-    },
-    "country/NGA": {
-      "data": {
-        "Count_Person": {
-          "val": {
-            "1960": 44928342,
-            "1961": 45855507,
-            "1962": 46821845,
-            "1963": 47822569,
-            "1964": 48856332,
-            "1965": 49925799,
-            "1966": 51020296,
-            "1967": 52106681,
-            "1968": 53210119,
-            "1969": 54360750,
-            "1970": 55569264,
-            "1971": 56837614,
-            "1972": 58173834,
-            "1973": 59605446,
-            "1974": 61157931,
-            "1975": 62851312,
-            "1976": 64658315,
-            "1977": 66589655,
-            "1978": 68633344,
-            "1979": 70750307,
-            "1980": 72951439,
-            "1981": 75175387,
-            "1982": 77388067,
-            "1983": 79351586,
-            "1984": 81337553,
-            "1985": 83585251,
-            "1986": 85804185,
-            "1987": 88044187,
-            "1988": 90351467,
-            "1989": 92744064,
-            "1990": 95214257,
-            "1991": 97685360,
-            "1992": 100182045,
-            "1993": 102775465,
-            "1994": 105456121,
-            "1995": 108187610,
-            "1996": 110956183,
-            "1997": 113791181,
-            "1998": 116690527,
-            "1999": 119695565,
-            "2000": 122851984,
-            "2001": 126152678,
-            "2002": 129583026,
-            "2003": 133119801,
-            "2004": 136756848,
-            "2005": 140490722,
-            "2006": 144329764,
-            "2007": 148294028,
-            "2008": 152382506,
-            "2009": 156595758,
-            "2010": 160952853,
-            "2011": 165463745,
-            "2012": 170075932,
-            "2013": 174726123,
-            "2014": 179379016,
-            "2015": 183995785,
-            "2016": 188666931,
-            "2017": 193495907,
-            "2018": 198387623,
-            "2019": 203304492,
-            "2020": 208327405,
-            "2021": 213401323
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
@@ -463,6 +463,24 @@
         "observationPeriod": "P1Y"
       }
     },
+    "country/BRA": {
+      "date": "2021",
+      "value": 214326223,
+      "metadata": {
+        "importName": "WorldDevelopmentIndicators",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+        "observationPeriod": "P1Y"
+      }
+    },
+    "country/CAN": {
+      "date": "2021",
+      "value": 38246108,
+      "metadata": {
+        "importName": "WorldDevelopmentIndicators",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+        "observationPeriod": "P1Y"
+      }
+    },
     "country/CHN": {
       "date": "2021",
       "value": 1412360000,
@@ -472,9 +490,9 @@
         "observationPeriod": "P1Y"
       }
     },
-    "country/DEU": {
+    "country/MYS": {
       "date": "2021",
-      "value": 83196078,
+      "value": 33573874,
       "metadata": {
         "importName": "WorldDevelopmentIndicators",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
@@ -484,15 +502,6 @@
     "country/NGA": {
       "date": "2021",
       "value": 213401323,
-      "metadata": {
-        "importName": "WorldDevelopmentIndicators",
-        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
-        "observationPeriod": "P1Y"
-      }
-    },
-    "country/NZL": {
-      "date": "2021",
-      "value": 5122600,
       "metadata": {
         "importName": "WorldDevelopmentIndicators",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
@@ -521,6 +530,28 @@
         "Overview"
       ]
     },
+    "country/BRA": {
+      "category": [
+        "Demographics",
+        "Economics",
+        "Energy",
+        "Environment",
+        "Equity",
+        "Health",
+        "Overview"
+      ]
+    },
+    "country/CAN": {
+      "category": [
+        "Demographics",
+        "Economics",
+        "Energy",
+        "Environment",
+        "Equity",
+        "Health",
+        "Overview"
+      ]
+    },
     "country/CHN": {
       "category": [
         "Demographics",
@@ -532,7 +563,7 @@
         "Overview"
       ]
     },
-    "country/DEU": {
+    "country/MYS": {
       "category": [
         "Demographics",
         "Economics",
@@ -550,16 +581,6 @@
         "Energy",
         "Environment",
         "Equity",
-        "Health",
-        "Overview"
-      ]
-    },
-    "country/NZL": {
-      "category": [
-        "Demographics",
-        "Economics",
-        "Energy",
-        "Environment",
         "Health",
         "Overview"
       ]
@@ -587,10 +608,10 @@
     "northamerica"
   ],
   "similarPlaces": [
-    "country/NZL",
     "country/NGA",
-    "country/USA",
-    "country/DEU",
-    "country/CHN"
+    "country/CHN",
+    "country/BRA",
+    "country/MYS",
+    "country/CAN"
   ]
 }
