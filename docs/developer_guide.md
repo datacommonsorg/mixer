@@ -89,7 +89,10 @@ go run --tags sqlite_fts5 cmd/main.go \
     --host_project=datcom-mixer-dev-316822 \
     --tmcf_csv_bucket=datcom-mixer-dev-resources \
     --tmcf_csv_folder=test \
-    --use_tmcf_csv_data=true
+    --use_tmcf_csv_data=true \
+    --use_bigquery=false \
+    --use_base_bt=false \
+    --use_branch_bt=false
 ```
 
 ## Running ESP locally
