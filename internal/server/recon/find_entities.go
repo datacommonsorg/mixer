@@ -133,6 +133,9 @@ func BulkFindEntities(
 			}
 		}
 
+		// Sort to make results determistic.
+		sort.Strings(entity.Dcids)
+
 		resp.Entities = append(resp.Entities, entity)
 	}
 
