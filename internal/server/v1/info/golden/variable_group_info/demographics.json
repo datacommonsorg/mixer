@@ -99,7 +99,7 @@
         "id": "dc/g/Person_Age",
         "specializedEntity": "Age",
         "displayName": "Person by Age",
-        "descendentStatVarCount": 20633
+        "descendentStatVarCount": 20689
       },
       {
         "id": "dc/g/Household_BenefitsStatus",
@@ -147,7 +147,7 @@
         "id": "dc/g/Person_Gender",
         "specializedEntity": "Gender",
         "displayName": "Person by Gender",
-        "descendentStatVarCount": 18775
+        "descendentStatVarCount": 18787
       },
       {
         "id": "dc/g/Person_HealthInsurance",
@@ -201,7 +201,7 @@
         "id": "dc/g/Person_LiteracyStatus",
         "specializedEntity": "Literacy Status",
         "displayName": "Person by Literacy Status",
-        "descendentStatVarCount": 216
+        "descendentStatVarCount": 259
       },
       {
         "id": "dc/g/Person_MaritalStatus",
@@ -255,13 +255,13 @@
         "id": "dc/g/Person_Race",
         "specializedEntity": "Race",
         "displayName": "Person by Race",
-        "descendentStatVarCount": 17104
+        "descendentStatVarCount": 17135
       },
       {
         "id": "dc/g/Person_Religion",
         "specializedEntity": "Religion",
         "displayName": "Person by Religion",
-        "descendentStatVarCount": 1872
+        "descendentStatVarCount": 1876
       },
       {
         "id": "dc/g/Residence",
@@ -276,7 +276,7 @@
         "descendentStatVarCount": 104
       }
     ],
-    "descendentStatVarCount": 31999,
+    "descendentStatVarCount": 32065,
     "parentStatVarGroups": [
       "dc/g/Root"
     ]

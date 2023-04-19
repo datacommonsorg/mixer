@@ -1,4 +1,4 @@
-# Copyright 2019 Google LLC
+# Copyright 2023 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -26,8 +26,8 @@ steps:
           echo "bigquery.version should not have end of file newline"
           exit 1
         fi
-        wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s v1.49.0
-        ./bin/golangci-lint run --timeout=600s
+        wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s v1.52.2
+        ./bin/golangci-lint run --timeout=600s --skip-dirs='internal/proto'
 
   - id: build-proto
     name: gcr.io/datcom-ci/go-protoc

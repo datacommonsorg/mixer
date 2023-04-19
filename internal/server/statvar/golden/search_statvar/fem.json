@@ -281,6 +281,30 @@
       "dcid": "sdg/VC_PRS_UNSNT_C_FEMALE"
     },
     {
+      "name": "Adolescent birth rate: 10 to 14 years old, Country adjusted data, Female",
+      "dcid": "sdg/SP_DYN_ADKL_10-14_CA_FEMALE"
+    },
+    {
+      "name": "Adolescent birth rate: 10 to 14 years old, Country data, Female",
+      "dcid": "sdg/SP_DYN_ADKL_10-14_C_FEMALE"
+    },
+    {
+      "name": "Adolescent birth rate: 10 to 14 years old, Estimated data, Female",
+      "dcid": "sdg/SP_DYN_ADKL_10-14_E_FEMALE"
+    },
+    {
+      "name": "Adolescent birth rate: 15 to 19 years old, Country adjusted data, Female",
+      "dcid": "sdg/SP_DYN_ADKL_15-19_CA_FEMALE"
+    },
+    {
+      "name": "Adolescent birth rate: 15 to 19 years old, Country data, Female",
+      "dcid": "sdg/SP_DYN_ADKL_15-19_C_FEMALE"
+    },
+    {
+      "name": "Adolescent birth rate: 15 to 19 years old, Estimated data, Female",
+      "dcid": "sdg/SP_DYN_ADKL_15-19_E_FEMALE"
+    },
+    {
       "name": "Age-standardized prevalence of current tobacco use among persons aged 15 years and older: 15 years old and over, Estimated data, Female",
       "dcid": "sdg/SH_PRV_SMOK_15gte_E_FEMALE"
     },
@@ -577,39 +601,39 @@
       "dcid": "sdg/SI_COV_VULN_E_A_FEMALE"
     },
     {
-      "name": "Proportion of youth and adults with information and communications technology  skills: Country data, Female, Connecting and installing new devices",
+      "name": "Proportion of youth and adults with information and communications technology skills: Country data, Female, Connecting and installing new devices",
       "dcid": "sdg/SE_ADT_ACTS_C_FEMALE_INST"
     },
     {
-      "name": "Proportion of youth and adults with information and communications technology  skills: Country data, Female, Copying or moving a file or folder",
+      "name": "Proportion of youth and adults with information and communications technology skills: Country data, Female, Copying or moving a file or folder",
       "dcid": "sdg/SE_ADT_ACTS_C_FEMALE_CMFL"
     },
     {
-      "name": "Proportion of youth and adults with information and communications technology  skills: Country data, Female, Creating electronic presentations with presentation software",
+      "name": "Proportion of youth and adults with information and communications technology skills: Country data, Female, Creating electronic presentations with presentation software",
       "dcid": "sdg/SE_ADT_ACTS_C_FEMALE_EPRS"
     },
     {
-      "name": "Proportion of youth and adults with information and communications technology  skills: Country data, Female, Finding, downloading, installing and configuring software",
+      "name": "Proportion of youth and adults with information and communications technology skills: Country data, Female, Finding, downloading, installing and configuring software",
       "dcid": "sdg/SE_ADT_ACTS_C_FEMALE_SOFT"
     },
     {
-      "name": "Proportion of youth and adults with information and communications technology  skills: Country data, Female, Sending e-mails with attached files",
+      "name": "Proportion of youth and adults with information and communications technology skills: Country data, Female, Sending e-mails with attached files",
       "dcid": "sdg/SE_ADT_ACTS_C_FEMALE_EMAIL"
     },
     {
-      "name": "Proportion of youth and adults with information and communications technology  skills: Country data, Female, Transferring files between a computer and other devices",
+      "name": "Proportion of youth and adults with information and communications technology skills: Country data, Female, Transferring files between a computer and other devices",
       "dcid": "sdg/SE_ADT_ACTS_C_FEMALE_TRAF"
     },
     {
-      "name": "Proportion of youth and adults with information and communications technology  skills: Country data, Female, Using basic arithmetic formula in a spreadsheet",
+      "name": "Proportion of youth and adults with information and communications technology skills: Country data, Female, Using basic arithmetic formula in a spreadsheet",
       "dcid": "sdg/SE_ADT_ACTS_C_FEMALE_ARSP"
     },
     {
-      "name": "Proportion of youth and adults with information and communications technology  skills: Country data, Female, Using copy and paste tools to duplicate or move information within a document",
+      "name": "Proportion of youth and adults with information and communications technology skills: Country data, Female, Using copy and paste tools to duplicate or move information within a document",
       "dcid": "sdg/SE_ADT_ACTS_C_FEMALE_COPA"
     },
     {
-      "name": "Proportion of youth and adults with information and communications technology  skills: Country data, Female, Writing a computer program using a specialized programming language",
+      "name": "Proportion of youth and adults with information and communications technology skills: Country data, Female, Writing a computer program using a specialized programming language",
       "dcid": "sdg/SE_ADT_ACTS_C_FEMALE_PCPR"
     },
     {
@@ -681,7 +705,7 @@
       "dcid": "sdg/SE_ALP_CPLR_UPPSEC_C_Q5_FEMALE"
     },
     {
-      "name": "Alcohol consumption per capita  within a calendar year: 15 years old and over, Global, Normal value, Female",
+      "name": "Alcohol consumption per capita within a calendar year: 15 years old and over, Global, Normal value, Female",
       "dcid": "sdg/SH_ALC_CONSPT_15gte_G_A_FEMALE"
     },
     {
@@ -2861,7 +2885,7 @@
       "dcid": "sdg/SG_DMK_PSRVC_ALLAGE__T_C_TOTAL_FEMALE_SENIORMAN"
     },
     {
-      "name": "Proportion of adults  with an account at a financial institution or mobile-money-service provider: 15 years old and over, Total (national average) or no breakdown, All areas, Global, Total (national average) or no breakdown, Female",
+      "name": "Proportion of adults with an account at a financial institution or mobile-money-service provider: 15 years old and over, Total (national average) or no breakdown, All areas, Global, Total (national average) or no breakdown, Female",
       "dcid": "sdg/FB_BNK_ACCSS_15gte__T_ALLAREA_G__T_FEMALE"
     },
     {
@@ -21043,7 +21067,7 @@
           "dcid": "Count_Student_Female_AmericanIndianOrAlaskaNative_AdultEducation"
         },
         {
-          "name": "Count of Student: Female, American Indian or Alaska Native, HighSchool",
+          "name": "Count of Student: Female, American Indian or Alaska Native, High School",
           "dcid": "Count_Student_Female_AmericanIndianOrAlaskaNative_HighSchool"
         },
         {
@@ -21051,7 +21075,7 @@
           "dcid": "Count_Student_Female_AmericanIndianOrAlaskaNative_Kindergarten"
         },
         {
-          "name": "Count of Student: Female, American Indian or Alaska Native, MiddleSchool",
+          "name": "Count of Student: Female, American Indian or Alaska Native, Middle School",
           "dcid": "Count_Student_Female_AmericanIndianOrAlaskaNative_MiddleSchool"
         },
         {
@@ -21063,7 +21087,7 @@
           "dcid": "dc/fkky4npg5e76b"
         },
         {
-          "name": "Count of Student: Female, American Indian or Alaska Native, PrimarySchool",
+          "name": "Count of Student: Female, American Indian or Alaska Native, Primary School",
           "dcid": "Count_Student_Female_AmericanIndianOrAlaskaNative_PrimarySchool"
         },
         {
@@ -21141,7 +21165,7 @@
           "dcid": "Count_Student_Female_Asian_AdultEducation"
         },
         {
-          "name": "Count of Student: Female, Asian, HighSchool",
+          "name": "Count of Student: Female, Asian, High School",
           "dcid": "Count_Student_Female_Asian_HighSchool"
         },
         {
@@ -21149,7 +21173,7 @@
           "dcid": "Count_Student_Female_Asian_Kindergarten"
         },
         {
-          "name": "Count of Student: Female, Asian, MiddleSchool",
+          "name": "Count of Student: Female, Asian, Middle School",
           "dcid": "Count_Student_Female_Asian_MiddleSchool"
         },
         {
@@ -21161,7 +21185,7 @@
           "dcid": "dc/94qkvzc4j0p7b"
         },
         {
-          "name": "Count of Student: Female, Asian, PrimarySchool",
+          "name": "Count of Student: Female, Asian, Primary School",
           "dcid": "Count_Student_Female_Asian_PrimarySchool"
         },
         {
@@ -21239,7 +21263,7 @@
           "dcid": "Count_Student_Female_Black_AdultEducation"
         },
         {
-          "name": "Count of Student: Female, Black, HighSchool",
+          "name": "Count of Student: Female, Black, High School",
           "dcid": "Count_Student_Female_Black_HighSchool"
         },
         {
@@ -21247,7 +21271,7 @@
           "dcid": "Count_Student_Female_Black_Kindergarten"
         },
         {
-          "name": "Count of Student: Female, Black, MiddleSchool",
+          "name": "Count of Student: Female, Black, Middle School",
           "dcid": "Count_Student_Female_Black_MiddleSchool"
         },
         {
@@ -21259,7 +21283,7 @@
           "dcid": "dc/mexze51feqxsd"
         },
         {
-          "name": "Count of Student: Female, Black, PrimarySchool",
+          "name": "Count of Student: Female, Black, Primary School",
           "dcid": "Count_Student_Female_Black_PrimarySchool"
         },
         {
@@ -21337,7 +21361,7 @@
           "dcid": "Count_Student_Female_HawaiianNativeOrPacificIslander_AdultEducation"
         },
         {
-          "name": "Count of Student: Female, Hawaiian Native or Pacific Islander, HighSchool",
+          "name": "Count of Student: Female, Hawaiian Native or Pacific Islander, High School",
           "dcid": "Count_Student_Female_HawaiianNativeOrPacificIslander_HighSchool"
         },
         {
@@ -21345,7 +21369,7 @@
           "dcid": "Count_Student_Female_HawaiianNativeOrPacificIslander_Kindergarten"
         },
         {
-          "name": "Count of Student: Female, Hawaiian Native or Pacific Islander, MiddleSchool",
+          "name": "Count of Student: Female, Hawaiian Native or Pacific Islander, Middle School",
           "dcid": "Count_Student_Female_HawaiianNativeOrPacificIslander_MiddleSchool"
         },
         {
@@ -21357,7 +21381,7 @@
           "dcid": "dc/chj2syy7psf0g"
         },
         {
-          "name": "Count of Student: Female, Hawaiian Native or Pacific Islander, PrimarySchool",
+          "name": "Count of Student: Female, Hawaiian Native or Pacific Islander, Primary School",
           "dcid": "Count_Student_Female_HawaiianNativeOrPacificIslander_PrimarySchool"
         },
         {
@@ -21435,7 +21459,7 @@
           "dcid": "Count_Student_Female_HispanicOrLatino_AdultEducation"
         },
         {
-          "name": "Count of Student: Female, Hispanic or Latino, HighSchool",
+          "name": "Count of Student: Female, Hispanic or Latino, High School",
           "dcid": "Count_Student_Female_HispanicOrLatino_HighSchool"
         },
         {
@@ -21443,7 +21467,7 @@
           "dcid": "Count_Student_Female_HispanicOrLatino_Kindergarten"
         },
         {
-          "name": "Count of Student: Female, Hispanic or Latino, MiddleSchool",
+          "name": "Count of Student: Female, Hispanic or Latino, Middle School",
           "dcid": "Count_Student_Female_HispanicOrLatino_MiddleSchool"
         },
         {
@@ -21455,7 +21479,7 @@
           "dcid": "dc/l7cy04dh2x9y4"
         },
         {
-          "name": "Count of Student: Female, Hispanic or Latino, PrimarySchool",
+          "name": "Count of Student: Female, Hispanic or Latino, Primary School",
           "dcid": "Count_Student_Female_HispanicOrLatino_PrimarySchool"
         },
         {
@@ -21533,7 +21557,7 @@
           "dcid": "Count_Student_Female_TwoOrMoreRaces_AdultEducation"
         },
         {
-          "name": "Count of Student: Female, Two or More Races, HighSchool",
+          "name": "Count of Student: Female, Two or More Races, High School",
           "dcid": "Count_Student_Female_TwoOrMoreRaces_HighSchool"
         },
         {
@@ -21541,7 +21565,7 @@
           "dcid": "Count_Student_Female_TwoOrMoreRaces_Kindergarten"
         },
         {
-          "name": "Count of Student: Female, Two or More Races, MiddleSchool",
+          "name": "Count of Student: Female, Two or More Races, Middle School",
           "dcid": "Count_Student_Female_TwoOrMoreRaces_MiddleSchool"
         },
         {
@@ -21553,7 +21577,7 @@
           "dcid": "dc/q9qxh0her2pnc"
         },
         {
-          "name": "Count of Student: Female, Two or More Races, PrimarySchool",
+          "name": "Count of Student: Female, Two or More Races, Primary School",
           "dcid": "Count_Student_Female_TwoOrMoreRaces_PrimarySchool"
         },
         {
@@ -21631,7 +21655,7 @@
           "dcid": "Count_Student_Female_White_AdultEducation"
         },
         {
-          "name": "Count of Student: Female, White, HighSchool",
+          "name": "Count of Student: Female, White, High School",
           "dcid": "Count_Student_Female_White_HighSchool"
         },
         {
@@ -21639,7 +21663,7 @@
           "dcid": "Count_Student_Female_White_Kindergarten"
         },
         {
-          "name": "Count of Student: Female, White, MiddleSchool",
+          "name": "Count of Student: Female, White, Middle School",
           "dcid": "Count_Student_Female_White_MiddleSchool"
         },
         {
@@ -21651,7 +21675,7 @@
           "dcid": "dc/sy56qp8y3csf2"
         },
         {
-          "name": "Count of Student: Female, White, PrimarySchool",
+          "name": "Count of Student: Female, White, Primary School",
           "dcid": "Count_Student_Female_White_PrimarySchool"
         },
         {
@@ -21971,12 +21995,24 @@
           "dcid": "LifeExpectancy_Person_Upto1Years_Female"
         },
         {
+          "name": "Population: 0 - 14 Years, Female",
+          "dcid": "Count_Person_0To14Years_Female"
+        },
+        {
           "name": "Population: 14 Years or Less, Female",
           "dcid": "Count_Person_Upto14Years_Female"
         },
         {
+          "name": "Population: 15 - 59 Years, Female",
+          "dcid": "Count_Person_15To59Years_Female"
+        },
+        {
           "name": "Population: 3 Years or More, Female",
           "dcid": "Count_Person_3OrMoreYears_Female"
+        },
+        {
+          "name": "Population: 60 Years or More, Female",
+          "dcid": "Count_Person_60OrMoreYears_Female"
         },
         {
           "name": "Population: 65 - 66 Years, Female",
@@ -22723,7 +22759,7 @@
           "dcid": "dc/qnnbzwrjn50jh"
         },
         {
-          "name": "Count of Mortality Event (Measured Based on Jurisdiction): Accidents(UnintentionalInjuries), Female, Incarcerated",
+          "name": "Count of Mortality Event (Measured Based on Jurisdiction): Accidents(Unintentional Injuries), Female, Incarcerated",
           "dcid": "dc/6dqm6n76jg2gc"
         },
         {
@@ -22739,7 +22775,7 @@
           "dcid": "dc/mjqlm4q2efmvh"
         },
         {
-          "name": "Count of Mortality Event (Measured Based on Jurisdiction): IntentionalSelf-Harm(Suicide), Female, Incarcerated",
+          "name": "Count of Mortality Event (Measured Based on Jurisdiction): Intentional Self-Harm(Suicide), Female, Incarcerated",
           "dcid": "dc/shgj6xwg96pp3"
         },
         {
@@ -25589,36 +25625,6 @@
         {
           "name": "Population: 16 - 64 Years, Female, 35 Hour or More, 50 - 52 Week, Worked in The Past 12 Months",
           "dcid": "Count_Person_Female_WorkPerWeek35OrMoreHour_WorkPerYear50To52Week"
-        }
-      ]
-    },
-    {
-      "dcid": "sdg/g/SP_DYN_ADKL",
-      "name": "Adolescent birth rate (per 1,000 women aged 15-19 and 10-14 years)",
-      "statVars": [
-        {
-          "name": "Adolescent birth rate: 10 to 14 years old, Country adjusted data, Female",
-          "dcid": "sdg/SP_DYN_ADKL_10-14_CA_FEMALE"
-        },
-        {
-          "name": "Adolescent birth rate: 10 to 14 years old, Country data, Female",
-          "dcid": "sdg/SP_DYN_ADKL_10-14_C_FEMALE"
-        },
-        {
-          "name": "Adolescent birth rate: 10 to 14 years old, Estimated data, Female",
-          "dcid": "sdg/SP_DYN_ADKL_10-14_E_FEMALE"
-        },
-        {
-          "name": "Adolescent birth rate: 15 to 19 years old, Country adjusted data, Female",
-          "dcid": "sdg/SP_DYN_ADKL_15-19_CA_FEMALE"
-        },
-        {
-          "name": "Adolescent birth rate: 15 to 19 years old, Country data, Female",
-          "dcid": "sdg/SP_DYN_ADKL_15-19_C_FEMALE"
-        },
-        {
-          "name": "Adolescent birth rate: 15 to 19 years old, Estimated data, Female",
-          "dcid": "sdg/SP_DYN_ADKL_15-19_E_FEMALE"
         }
       ]
     },
@@ -29636,66 +29642,66 @@
     },
     {
       "dcid": "dc/g/Student_EnrollmentLevel-MiddleSchool_Gender-Female_SocialCategory",
-      "name": "Student With Gender = Female, Enrollment Level = MiddleSchool, Social Category",
+      "name": "Student With Gender = Female, Enrollment Level = Middle School, Social Category",
       "statVars": [
         {
-          "name": "Dropout Rate of Student: Female, MiddleSchool, General Category",
+          "name": "Dropout Rate of Student: Female, Middle School, General Category",
           "dcid": "DropoutRate_Student_Female_MiddleSchool_GeneralCategory"
         },
         {
-          "name": "Dropout Rate of Student: Female, MiddleSchool, Other Backward Class",
+          "name": "Dropout Rate of Student: Female, Middle School, Other Backward Class",
           "dcid": "DropoutRate_Student_Female_MiddleSchool_OtherBackwardClass"
         },
         {
-          "name": "Dropout Rate of Student: Female, MiddleSchool, Scheduled Caste",
+          "name": "Dropout Rate of Student: Female, Middle School, Scheduled Caste",
           "dcid": "DropoutRate_Student_Female_MiddleSchool_ScheduledCaste"
         },
         {
-          "name": "Dropout Rate of Student: Female, MiddleSchool, Scheduled Tribe",
+          "name": "Dropout Rate of Student: Female, Middle School, Scheduled Tribe",
           "dcid": "DropoutRate_Student_Female_MiddleSchool_ScheduledTribe"
         }
       ]
     },
     {
       "dcid": "dc/g/Student_EnrollmentLevel-PrimarySchool_Gender-Female_SocialCategory",
-      "name": "Student With Gender = Female, Enrollment Level = PrimarySchool, Social Category",
+      "name": "Student With Gender = Female, Enrollment Level = Primary School, Social Category",
       "statVars": [
         {
-          "name": "Dropout Rate of Student: Female, PrimarySchool, General Category",
+          "name": "Dropout Rate of Student: Female, Primary School, General Category",
           "dcid": "DropoutRate_Student_Female_PrimarySchool_GeneralCategory"
         },
         {
-          "name": "Dropout Rate of Student: Female, PrimarySchool, Other Backward Class",
+          "name": "Dropout Rate of Student: Female, Primary School, Other Backward Class",
           "dcid": "DropoutRate_Student_Female_PrimarySchool_OtherBackwardClass"
         },
         {
-          "name": "Dropout Rate of Student: Female, PrimarySchool, Scheduled Caste",
+          "name": "Dropout Rate of Student: Female, Primary School, Scheduled Caste",
           "dcid": "DropoutRate_Student_Female_PrimarySchool_ScheduledCaste"
         },
         {
-          "name": "Dropout Rate of Student: Female, PrimarySchool, Scheduled Tribe",
+          "name": "Dropout Rate of Student: Female, Primary School, Scheduled Tribe",
           "dcid": "DropoutRate_Student_Female_PrimarySchool_ScheduledTribe"
         }
       ]
     },
     {
       "dcid": "dc/g/Student_EnrollmentLevel-SecondarySchool_Gender-Female_SocialCategory",
-      "name": "Student With Gender = Female, Enrollment Level = SecondarySchool, Social Category",
+      "name": "Student With Gender = Female, Enrollment Level = Secondary School, Social Category",
       "statVars": [
         {
-          "name": "Dropout Rate of Student: Female, SecondarySchool, General Category",
+          "name": "Dropout Rate of Student: Female, Secondary School, General Category",
           "dcid": "DropoutRate_Student_Female_SecondarySchool_GeneralCategory"
         },
         {
-          "name": "Dropout Rate of Student: Female, SecondarySchool, Other Backward Class",
+          "name": "Dropout Rate of Student: Female, Secondary School, Other Backward Class",
           "dcid": "DropoutRate_Student_Female_SecondarySchool_OtherBackwardClass"
         },
         {
-          "name": "Dropout Rate of Student: Female, SecondarySchool, Scheduled Caste",
+          "name": "Dropout Rate of Student: Female, Secondary School, Scheduled Caste",
           "dcid": "DropoutRate_Student_Female_SecondarySchool_ScheduledCaste"
         },
         {
-          "name": "Dropout Rate of Student: Female, SecondarySchool, Scheduled Tribe",
+          "name": "Dropout Rate of Student: Female, Secondary School, Scheduled Tribe",
           "dcid": "DropoutRate_Student_Female_SecondarySchool_ScheduledTribe"
         }
       ]
@@ -30974,7 +30980,7 @@
     },
     {
       "dcid": "sdg/g/SP_GNP_WNOWNS",
-      "name": "Share of women among owners or rights-bearers of agricultural land, by type of tenure (%)",
+      "name": "Share of women among owners or rights-bearers of agricultural land",
       "statVars": [
         {
           "name": "Share of women among owners or rights-bearers of agricultural land: Country data",
@@ -36411,6 +36417,34 @@
       ]
     },
     {
+      "dcid": "dc/g/Person_Gender-Female_LiteracyStatus-Illiterate",
+      "name": "Person With Gender = Female, Literacy Status = Illiterate",
+      "statVars": [
+        {
+          "name": "Population: Female, Illiterate",
+          "dcid": "Count_Person_Illiterate_Female"
+        },
+        {
+          "name": "Population: 10 Years or More, Female, Illiterate",
+          "dcid": "Count_Person_10OrMoreYears_Female_Illiterate"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_LiteracyStatus-Literate",
+      "name": "Person With Gender = Female, Literacy Status = Literate",
+      "statVars": [
+        {
+          "name": "Population: Female, Literate",
+          "dcid": "Count_Person_Literate_Female"
+        },
+        {
+          "name": "Population: 10 Years or More, Female, Literate",
+          "dcid": "Count_Person_10OrMoreYears_Female_Literate"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/Person_Gender-Female_MaritalStatus-Divorced",
       "name": "Person With Gender = Female, Marital Status = Divorced",
       "statVars": [
@@ -36916,7 +36950,7 @@
     },
     {
       "dcid": "sdg/g/VC_VAW_MARR",
-      "name": "Proportion of ever-partnered women and girls subjected to physical and/or sexual violence by a current or former intimate partner in the previous 12 months, by age (%)",
+      "name": "Proportion of ever-partnered women and girls subjected to physical and/or sexual violence by a current or former intimate partner in the previous 12 months",
       "statVars": [
         {
           "name": "Proportion of ever-partnered women and girls subjected to physical and/or sexual violence by a current or former intimate partner in the previous 12 months: 15 to 49 years old, Estimated data, Female",
@@ -36930,7 +36964,7 @@
     },
     {
       "dcid": "sdg/g/SH_STA_FGMS",
-      "name": "Proportion of girls and women aged 15-49 years who have undergone female genital mutilation/cutting, by age (%)",
+      "name": "Proportion of girls and women aged 15-49 years who have undergone female genital mutilation/cutting",
       "statVars": [
         {
           "name": "Proportion of girls and women aged 15-49 years who have undergone female genital mutilation/cutting: 15 to 49 years old, Country adjusted data, Female",
@@ -36944,7 +36978,7 @@
     },
     {
       "dcid": "sdg/g/SH_STA_ANEM",
-      "name": "Proportion of women aged 15-49 years with anaemia (%)",
+      "name": "Proportion of women aged 15-49 years with anaemia",
       "statVars": [
         {
           "name": "Proportion of women aged 15-49 years with anaemia: 15 to 49 years old, Estimated data, Female",
@@ -36958,7 +36992,7 @@
     },
     {
       "dcid": "sdg/g/SP_DYN_MRBF15",
-      "name": "Proportion of women aged 20-24 years who were married or in a union before age 15 (%)",
+      "name": "Proportion of women aged 20-24 years who were married or in a union before age 15",
       "statVars": [
         {
           "name": "Proportion of women aged 20-24 years who were married or in a union before age 15: 20 to 24 years old, Country adjusted data, Female",
@@ -36972,7 +37006,7 @@
     },
     {
       "dcid": "sdg/g/SP_DYN_MRBF18",
-      "name": "Proportion of women aged 20-24 years who were married or in a union before age 18 (%)",
+      "name": "Proportion of women aged 20-24 years who were married or in a union before age 18",
       "statVars": [
         {
           "name": "Proportion of women aged 20-24 years who were married or in a union before age 18: 20 to 24 years old, Country adjusted data, Female",
@@ -36986,7 +37020,7 @@
     },
     {
       "dcid": "sdg/g/IC_GEN_MGTN",
-      "name": "Proportion of women in senior and middle management positions (%)",
+      "name": "Proportion of women in senior and middle management positions",
       "statVars": [
         {
           "name": "Proportion of women in senior and middle management positions: Country data, Low reliability, Female",
@@ -39352,7 +39386,7 @@
     },
     {
       "dcid": "sdg/g/SH_STA_ANEM_NPRG",
-      "name": "Proportion of women aged 15-49 years with anaemia, non-pregnant (%)",
+      "name": "Proportion of women aged 15-49 years with anaemia, non-pregnant",
       "statVars": [
         {
           "name": "Proportion of women aged 15-49 years with anaemia, non-pregnant: 15 to 49 years old, Estimated data, Female",
@@ -39366,7 +39400,7 @@
     },
     {
       "dcid": "sdg/g/SH_STA_ANEM_PREG",
-      "name": "Proportion of women aged 15-49 years with anaemia, pregnant (%)",
+      "name": "Proportion of women aged 15-49 years with anaemia, pregnant",
       "statVars": [
         {
           "name": "Proportion of women aged 15-49 years with anaemia, pregnant: 15 to 49 years old, Estimated data, Female",
@@ -39613,20 +39647,6 @@
         {
           "name": "Count of Hate Crime Incidents (Offense): Bias Against Gender, American Indian or Alaska Native Alone Offender, Offender Race Known, Female Victim",
           "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderRaceAmericanIndianOrAlaskaNativeAlone_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_OffenderRace-AsianAlone_OffenderType-OffenderRaceKnown_TargetedGender-Female",
-      "name": "Hate Crime Incidents With Bias Motivation = Gender, Offender Race = Asian Alone, Offender Type = Offender Race Known, Targeted Gender = Female",
-      "statVars": [
-        {
-          "name": "Count of Hate Crime Incidents: Bias Against Gender, Asian Alone Offender, Offender Race Known, Female Victim",
-          "dcid": "Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderRaceAsianAlone_Female"
-        },
-        {
-          "name": "Count of Hate Crime Incidents (Offense): Bias Against Gender, Asian Alone Offender, Offender Race Known, Female Victim",
-          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderRaceAsianAlone_Female"
         }
       ]
     }

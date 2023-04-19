@@ -116,7 +116,7 @@
         "searchNames": [
           "Population Count of Person With Educational Attainment is Primary School"
         ],
-        "displayName": "Population: PrimarySchool",
+        "displayName": "Population: Primary School",
         "definition": "mp=count,pt=Person,educationalAttainment=PrimarySchool",
         "hasData": true
       },
