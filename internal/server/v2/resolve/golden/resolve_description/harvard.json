@@ -4,12 +4,6 @@
       "node": "Ahvenanmaa,Finland"
     },
     {
-      "node": "Amur,Russia",
-      "resolvedIds": [
-        "wikidataId/Q6886"
-      ]
-    },
-    {
       "node": "Arkhangelsk,Russia",
       "resolvedIds": [
         "wikidataId/Q1851"
@@ -145,9 +139,6 @@
       "node": "Northern-Kanto,Japan"
     },
     {
-      "node": "Pays de la Loire,France"
-    },
-    {
       "node": "Pomorskie,Poland"
     },
     {
@@ -194,12 +185,6 @@
       "resolvedIds": [
         "wikidataId/Q1957"
       ]
-    },
-    {
-      "node": "Łódzkie,Poland"
-    },
-    {
-      "node": "Śląskie,Poland"
     }
   ]
 }
