@@ -1,15 +1,17 @@
 {
   "entities": [
     {
-      "node": "New York City",
+      "node": "Mountain View",
       "resolvedIds": [
-        "geoId/3651000"
+        "geoId/0649670",
+        "geoId/1553300",
+        "geoId/3744770"
       ]
     },
     {
-      "node": "Santa Clara",
+      "node": "New York City",
       "resolvedIds": [
-        "geoId/0669084"
+        "geoId/3651000"
       ]
     }
   ]

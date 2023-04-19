@@ -24,9 +24,9 @@ import (
 )
 
 func TestRecogPlaceMap(t *testing.T) {
-	recogPlaceMap, err := RecogPlaceMap()
+	recogPlaceStore, err := LoadRecogPlaceStore()
 	if err != nil {
-		t.Fatalf("RecogPlaceMap() = %s", err)
+		t.Fatalf("LoadRecogPlaceStore() = %s", err)
 	}
 
 	cmpOpts := cmp.Options{
@@ -69,7 +69,7 @@ func TestRecogPlaceMap(t *testing.T) {
 			},
 		},
 	} {
-		got, ok := recogPlaceMap[c.key]
+		got, ok := recogPlaceStore.RecogPlaceMap[c.key]
 		if !ok {
 			t.Errorf("Cannot find in RecogPlaceMap: %s", c.key)
 			continue
