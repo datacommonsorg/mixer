@@ -180,7 +180,7 @@ func resolveDCIDs(
 	if len(missingEntityInfoSet) > 0 {
 		// For entities that cannot be resolved by RecognizePlaces, try Maps API.
 		missingEntityInfoToDCIDSet, missingDcidSet, err := resolveWithMapsAPI(
-			ctx, mapsClient, store, entityInfoSet)
+			ctx, mapsClient, store, missingEntityInfoSet)
 		if err != nil {
 			return nil, nil, err
 		}

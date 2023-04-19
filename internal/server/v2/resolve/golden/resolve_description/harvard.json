@@ -28,7 +28,10 @@
       "node": "Athos,Greece"
     },
     {
-      "node": "Bihar,India"
+      "node": "Bihar,India",
+      "resolvedIds": [
+        "wikidataId/Q1165"
+      ]
     },
     {
       "node": "Brussels,Belgium",
@@ -58,7 +61,10 @@
       "node": "Damão and Diu,India"
     },
     {
-      "node": "Delhi,India"
+      "node": "Delhi,India",
+      "resolvedIds": [
+        "wikidataId/Q1353"
+      ]
     },
     {
       "node": "East of England,United Kingdom"
@@ -118,7 +124,10 @@
       ]
     },
     {
-      "node": "Loreto,Peru"
+      "node": "Loreto,Peru",
+      "resolvedIds": [
+        "wikidataId/Q200938"
+      ]
     },
     {
       "node": "Małopolskie,Poland"
@@ -187,10 +196,7 @@
       ]
     },
     {
-      "node": "Łódzkie,Poland",
-      "resolvedIds": [
-        "wikidataId/Q580"
-      ]
+      "node": "Łódzkie,Poland"
     },
     {
       "node": "Śląskie,Poland"
