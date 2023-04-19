@@ -38,7 +38,7 @@ type RecogPlaceStore struct {
 	DcidToNames map[string][]string
 }
 
-// LoadRecogPlaceMap loads a map for RecogPlaces, the key is the first token/word of each place.
+// LoadRecogPlaceStore loads RecogPlaceStore.
 func LoadRecogPlaceStore() (*RecogPlaceStore, error) {
 	reader := csv.NewReader(strings.NewReader(string(recogPlaceMapCSVContent)))
 	records, err := reader.ReadAll()

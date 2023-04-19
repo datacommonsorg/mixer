@@ -147,6 +147,12 @@ func BulkFindEntities(
 	return resp, nil
 }
 
+// TODO(ws):
+//
+// Set some debug info so we can tell how we matched (RecognizePlaces vs Maps API).
+//
+// Consider calling both, if both have results, prefer RecognizePlaces,
+// but use Maps API as signal to reorder the results.
 func resolveDCIDs(
 	ctx context.Context,
 	mapsClient *maps.Client,
