@@ -46,7 +46,7 @@ func TestResolveDescription(t *testing.T) {
 				"county.json",
 			},
 			{
-				[]string{"Santa Clara", "New York City"},
+				[]string{"Mountain View", "New York City"},
 				"<-description{typeOf:City}->dcid",
 				"city.json",
 			},
