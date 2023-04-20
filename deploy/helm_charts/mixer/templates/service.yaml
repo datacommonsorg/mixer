@@ -16,8 +16,8 @@
 # other containers in the cluster can refer to a set of deployments
 # using the host: <full-name>-<service-name>:<port> (ex: mixer-dev-svg:80)
 
-{{- range $index, $unused := .Values.serviceGroups }}
-{{- range $serviceName, $unused := . }}
+{{- $index := 0 }}
+{{- range $serviceName, $group := .Values.serviceGroups }}
 {{- if gt $index 0}}
 ---
 {{- end }}
@@ -42,7 +42,7 @@ spec:
   selector:
     service: {{ include "mixer.fullname" $ }}-{{ $serviceName }}
     {{- include "mixer.selectorLabels" $ | nindent 4 }}
-{{- end }}
+{{- $index = add $index 1 }}
 {{- end }}
 
 ---

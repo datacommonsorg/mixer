@@ -12,53 +12,14 @@ ingress:
     }
 
 serviceGroups:
-  - svg:
-      urlPaths:
-        - "/place/stat-var-group/*"
-        - "/stat-var/*"
-        - "/v1/info/variable-group/*"
-        - "/v1/variable/*"
-        - "/v1/bulk/info/variable-group"
-        - "/v1/bulk/info/variable"
-      replicas:
-        default: 10
-        min: 10
-        max: 20
-      resources:
-        memoryRequest: "8G"
-        memoryLimit: "8G"
-      useSearch: true
-  - recon:
-      urlPaths:
-        - "/v1/recon/*"
-      replicas:
-        default: 80
-        min: 80
-        max: 120
-      resources:
-        memoryRequest: "400M"
-        memoryLimit: "400M"
-  - observation:
-      urlPaths:
-        - "/v1/observations/*"
-        - "/v1/bulk/observations/*"
-      replicas:
-        default: 20
-        min: 20
-        max: 40
-      resources:
-        memoryRequest: "4G"
-        memoryLimit: "4G"
-  - default:
-      urlPaths:
-        - "/*"
-      replicas:
-        default: 40
-        min: 40
-        max: 80
-      resources:
-        memoryRequest: "3G"
-        memoryLimit: "3G"
+  svg:
+    replicas: 10
+  recon:
+    replicas: 80
+  observation:
+    replicas: 20
+  default:
+    replicas: 40
 
 # GCP level config
 ip: 35.244.133.155

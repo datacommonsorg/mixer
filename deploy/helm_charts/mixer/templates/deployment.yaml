@@ -19,8 +19,8 @@
 # Mixer defines 1 deployment per service group.
 # A deployment is what autoscalers scale.
 
-{{- range $index, $serviceGroup := .Values.serviceGroups }}
-{{- range $serviceName, $unused := . }}
+{{- $index := 0 }}
+{{- range $serviceName, $group := .Values.serviceGroups }}
 {{- if gt $index 0 }}
 ---
 {{- end  }}
@@ -33,16 +33,16 @@ metadata:
     service:  {{ include "mixer.fullname" $ }}-{{ $serviceName }}
     {{- include "mixer.labels" $ | nindent 4 }}
 spec:
-  replicas: {{ .replicas.default }}
+  replicas: {{ $group.replicas }}
   strategy:
     type: RollingUpdate
     rollingUpdate:
       # maximum number of Pods that can be created over the desired number of Pods
       # 25% of default pods (+1 in case default < 4)
-      maxSurge: {{ div .replicas.default 4 | add 1 }}
+      maxSurge: {{ div $group.replicas 4 | add 1 }}
       # Maximum number of pods that can be unavailable during the update process
       # 25% of default pods (+1 in case default < 4)
-      maxUnavailable: {{ div .replicas.default 4 | add 1 }}
+      maxUnavailable: {{ div $group.replicas 4 | add 1 }}
   selector:
     matchLabels:
       service:  {{ include "mixer.fullname" $ }}-{{ $serviceName }}
@@ -69,9 +69,9 @@ spec:
           imagePullPolicy: {{ $.Values.mixer.image.pullPolicy }}
           resources:
             limits:
-              memory: {{ .resources.memoryLimit }}
+              memory: {{ $group.resources.memoryLimit }}
             requests:
-              memory:  {{ .resources.memoryRequest }}
+              memory:  {{ $group.resources.memoryRequest }}
           args:
             - --base_bigtable_info=$(BASE_BIGTABLE_INFO)
             - --custom_bigtable_info=$(CUSTOM_BIGTABLE_INFO)
@@ -87,7 +87,7 @@ spec:
             - --tmcf_csv_bucket={{ $.Values.mixer.tmcfCSVBucket }}
             - --tmcf_csv_folder={{ $.Values.mixer.tmcfCSVFolder }}
             {{- end }}
-            - --use_search={{ default false .useSearch }}
+            - --use_search={{ default false $group.useSearch }}
           volumeMounts:
             - name: schema-mapping
               mountPath: /datacommons/mapping
@@ -173,5 +173,5 @@ spec:
             initialDelaySeconds: 5
           ports:
             - containerPort: 8081
-{{- end }}
+{{- $index = add $index 1 }}
 {{- end }}
