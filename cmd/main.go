@@ -178,6 +178,9 @@ func main() {
 	}
 
 	// Store
+	if len(tables) == 0 && *remoteMixerDomain == "" {
+		log.Fatal("No bigtables or remote mixer domain are provided")
+	}
 	store, err := store.NewStore(bqClient, memDb, tables, branchTableName, metadata)
 	if err != nil {
 		log.Fatalf("Failed to create a new store: %s", err)

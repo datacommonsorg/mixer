@@ -55,6 +55,8 @@ mixer-grpc.*.pb
 
 deploy/git/mixer_hash.txt
 
+scripts/tmp*.sh
+
 
 # Memory profiling output
 http_memprof_out
