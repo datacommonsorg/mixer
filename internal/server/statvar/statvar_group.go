@@ -16,7 +16,6 @@ package statvar
 
 import (
 	"context"
-	"log"
 	"sort"
 	"time"
 
@@ -200,27 +199,22 @@ func GetStatVarGroup(
 		// Read stat var group cache from the frequent import group table. It has
 		// the latest and trustworthy stat var schemas and no need to merge with
 		// other import groups.
-		log.Println("++++++++++++  Read BT table")
 		btDataList, err := bigtable.Read(
 			ctx,
 			store.BtGroup,
 			bigtable.BtStatVarGroup,
 			[][]string{{""}},
 			func(jsonRaw []byte) (interface{}, error) {
-				log.Println("++++++++++++  got jsonRaw")
 				var svgResp pb.StatVarGroups
 				if err := proto.Unmarshal(jsonRaw, &svgResp); err != nil {
-					log.Println(">>>> error")
 					return nil, err
 				}
 				return &svgResp, nil
 			},
 		)
 		if err != nil {
-			log.Println(">>>> error")
 			return nil, err
 		}
-		log.Println("++++++++++++  Finish table reading")
 		// Loop through import group by order. The stat var group is preferred from
 		// a higher ranked import group.
 		var customRootNode *pb.StatVarGroupNode
