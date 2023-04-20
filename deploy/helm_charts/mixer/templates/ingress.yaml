@@ -39,9 +39,8 @@ spec:
   rules:
     - http:
         paths:
-          {{- range .Values.serviceGroups }}
-          {{- range $serviceName, $unused := . }}
-          {{- range .urlPaths }}
+          {{- range $serviceName, $group := .Values.serviceGroups }}
+          {{- range $group.urlPaths }}
           - path: {{ . }}
             pathType: ImplementationSpecific
             backend:
@@ -49,7 +48,6 @@ spec:
                 name: {{ include "mixer.fullname" $ }}-{{ $serviceName }} 
                 port:
                   number: 80
-          {{- end }}
           {{- end }}
           {{- end }}
 {{- end }}

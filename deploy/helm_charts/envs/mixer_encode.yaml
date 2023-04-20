@@ -12,16 +12,20 @@ ingress:
 
 # Encode instance only services SPARQL
 serviceGroups:
-  - sparql:
-      urlPaths:
-        - "/v1/query"
-      replicas:
-        default: 12
-        min: 12
-        max: 24
-      resources:
-        memoryRequest: "2G"
-        memoryLimit: "2G"
+  svg: null
+  recon: null
+  observation: null
+  default: null
+  sparql:
+    urlPaths:
+      - "/v1/query"
+    replicas:
+      default: 12
+      min: 12
+      max: 24
+    resources:
+      memoryRequest: "2G"
+      memoryLimit: "2G"
 
 # GCP level config
 ip: 34.107.228.109

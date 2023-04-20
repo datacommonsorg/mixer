@@ -93,52 +93,40 @@ memdbJSON: ""
 # the entire serviceGroups below into the custom values yaml file,
 # and make changes to it.
 serviceGroups:
-  - svg:
-      urlPaths:
-        - "/place/stat-var-group/*"
-        - "/stat-var/*"
-        - "/v1/info/variable-group/*"
-        - "/v1/variable/*"
-        - "/v1/bulk/info/variable-group"
-        - "/v1/bulk/info/variable"
-      replicas:
-        default: 2
-        min: 2
-        max: 2
-      resources:
-        memoryRequest: "8G"
-        memoryLimit: "8G"
-      useSearch: true
+  svg:
+    urlPaths:
+      - "/place/stat-var-group/*"
+      - "/stat-var/*"
+      - "/v1/info/variable-group/*"
+      - "/v1/variable/*"
+      - "/v1/bulk/info/variable-group"
+      - "/v1/bulk/info/variable"
+    replicas: 1
+    resources:
+      memoryRequest: "8G"
+      memoryLimit: "8G"
+    useSearch: true
     # If the name of the recon service is changed here,
     # please also change the name in the deployment.yaml template.
-  - recon:
-      urlPaths:
-        - "/v1/recon/*"
-      replicas:
-        default: 4
-        min: 4
-        max: 4
-      resources:
-        memoryRequest: "400M"
-        memoryLimit: "400M"
-  - observation:
-      urlPaths:
-        - "/v1/observations/*"
-        - "/v1/bulk/observations/*"
-      replicas:
-        default: 4
-        min: 4
-        max: 4
-      resources:
-        memoryRequest: "4G"
-        memoryLimit: "4G"
-  - default:
-      urlPaths:
-        - "/*"
-      replicas:
-        default: 4
-        min: 4
-        max: 4
-      resources:
-        memoryRequest: "4G"
-        memoryLimit: "4G"
+  recon:
+    urlPaths:
+      - "/v1/recon/*"
+    replicas: 1
+    resources:
+      memoryRequest: "400M"
+      memoryLimit: "400M"
+  observation:
+    urlPaths:
+      - "/v1/observations/*"
+      - "/v1/bulk/observations/*"
+    replicas: 1
+    resources:
+      memoryRequest: "4G"
+      memoryLimit: "4G"
+  default:
+    urlPaths:
+      - "/*"
+    replicas: 1
+    resources:
+      memoryRequest: "4G"
+      memoryLimit: "4G"

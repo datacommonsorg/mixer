@@ -17,3 +17,13 @@ ip: 35.244.157.41
 region: us-central1
 api_title: DataCommons API (Dev)
 nodes: 2
+
+serviceGroups:
+  svg:
+    replicas: 2
+  recon:
+    replicas: 4
+  observation:
+    replicas: 4
+  default:
+    replicas: 4
