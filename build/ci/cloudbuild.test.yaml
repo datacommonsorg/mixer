@@ -52,7 +52,7 @@ steps:
       - -c
       - |
         set -e
-        go test -parallel=10 -timeout 1000s -tags "sqlite_fts5" -v ./...
+        go test -tags "sqlite_fts5" -v ./...
 
 options:
   volumes:
