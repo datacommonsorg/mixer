@@ -138,10 +138,12 @@ type SearchOptions struct {
 func NewCache(ctx context.Context, store *store.Store, searchOptions SearchOptions,
 ) (*resource.Cache, error) {
 	// TODO: [MERGE]: need to builc cache from multiple tables.
+	log.Println("++++++++++++  Start to create New Cache")
 	rawSvg, err := statvar.GetRawSvg(ctx, store)
 	if err != nil {
 		return nil, err
 	}
+	log.Println("++++++++++++  Build Parent SVG map")
 	parentSvgMap := statvar.BuildParentSvgMap(rawSvg)
 	result := &resource.Cache{
 		RawSvg:    rawSvg,

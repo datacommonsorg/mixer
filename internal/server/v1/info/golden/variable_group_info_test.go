@@ -16,6 +16,7 @@ package golden
 
 import (
 	"context"
+	"log"
 	"path"
 	"runtime"
 	"testing"
@@ -40,64 +41,65 @@ func TestVariableGroupInfo(t *testing.T) {
 			constrainedEntities []string
 			goldenFile          string
 		}{
-			// {
-			// 	"dc/g/Person_EducationalAttainment",
-			// 	[]string{"country/USA"},
-			// 	"school.json",
-			// },
-			// {
-			// 	"dc/g/Person_EnrollmentLevel-EnrolledInCollegeUndergraduateYears_Race",
-			// 	[]string{"country/USA"},
-			// 	"school_race.json",
-			// },
-			// {
-			// 	"dc/g/Demographics",
-			// 	[]string{"country/GBR"},
-			// 	"demographics_gbr.json",
-			// },
-			// // Run this first to test the server cache is not modified.
-			// {
-			// 	"dc/g/Root",
-			// 	[]string{"geoId/0649670"},
-			// 	"root_mtv.json",
-			// },
-			// // Run this first to test the server cache is not modified.
-			// {
-			// 	"dc/g/Root",
-			// 	[]string{"geoId/0649670", "country/JPN"},
-			// 	"root_mtv_jpn.json",
-			// },
-			// {
-			// 	"dc/g/Root",
-			// 	[]string{},
-			// 	"root.json",
-			// },
-			// {
-			// 	"dc/g/Demographics",
-			// 	[]string{},
-			// 	"demographics.json",
-			// },
-			// {
-			// 	"dc/g/Person_CitizenshipStatus-NotAUSCitizen_CorrectionalFacilityOperator-StateOperated&FederallyOperated&PrivatelyOperated",
-			// 	[]string{"geoId/0649670"},
-			// 	"citizenship.json",
-			// },
-			// {
-			// 	"g/Feeding_America",
-			// 	[]string{"geoId/06"},
-			// 	"private.json",
-			// },
-			// {
-			// 	"dc/g/Economy",
-			// 	[]string{"country/ASM"},
-			// 	"economy.json",
-			// },
-			// {
-			// 	"invalid,id",
-			// 	[]string{},
-			// 	"empty.json",
-			// },
+			{
+				"dc/g/Person_EducationalAttainment",
+				[]string{"country/USA"},
+				"school.json",
+			},
+			{
+				"dc/g/Person_EnrollmentLevel-EnrolledInCollegeUndergraduateYears_Race",
+				[]string{"country/USA"},
+				"school_race.json",
+			},
+			{
+				"dc/g/Demographics",
+				[]string{"country/GBR"},
+				"demographics_gbr.json",
+			},
+			// Run this first to test the server cache is not modified.
+			{
+				"dc/g/Root",
+				[]string{"geoId/0649670"},
+				"root_mtv.json",
+			},
+			// Run this first to test the server cache is not modified.
+			{
+				"dc/g/Root",
+				[]string{"geoId/0649670", "country/JPN"},
+				"root_mtv_jpn.json",
+			},
+			{
+				"dc/g/Root",
+				[]string{},
+				"root.json",
+			},
+			{
+				"dc/g/Demographics",
+				[]string{},
+				"demographics.json",
+			},
+			{
+				"dc/g/Person_CitizenshipStatus-NotAUSCitizen_CorrectionalFacilityOperator-StateOperated&FederallyOperated&PrivatelyOperated",
+				[]string{"geoId/0649670"},
+				"citizenship.json",
+			},
+			{
+				"g/Feeding_America",
+				[]string{"geoId/06"},
+				"private.json",
+			},
+			{
+				"dc/g/Economy",
+				[]string{"country/ASM"},
+				"economy.json",
+			},
+			{
+				"invalid,id",
+				[]string{},
+				"empty.json",
+			},
 		} {
+			log.Println("run svg info test")
 			resp, err := mixer.VariableGroupInfo(ctx, &pbv1.VariableGroupInfoRequest{
 				Node:                c.node,
 				ConstrainedEntities: c.constrainedEntities,

@@ -16,6 +16,7 @@ package golden
 
 import (
 	"context"
+	"log"
 	"path"
 	"runtime"
 	"testing"
@@ -41,25 +42,26 @@ func TestBulkVariableGroupInfo(t *testing.T) {
 			numEntitiesExistence int32
 			goldenFile           string
 		}{
-			// {
-			// 	[]string{"dc/g/Economy", "invalid"},
-			// 	[]string{"country/ASM"},
-			// 	1,
-			// 	"economy.json",
-			// },
-			// {
-			// 	[]string{"dc/g/CriminalActivities"},
-			// 	[]string{"country/USA", "country/MEX", "country/BRA", "country/DEU", "country/POL", "country/RUS", "country/ZAF", "country/ZWE", "country/CHN", "country/IND", "country/AUS"},
-			// 	10,
-			// 	"crime_10.json",
-			// },
-			// {
-			// 	[]string{"dc/g/CriminalActivities"},
-			// 	[]string{"country/USA", "country/MEX", "country/BRA", "country/DEU", "country/POL", "country/RUS", "country/ZAF", "country/ZWE", "country/CHN", "country/IND", "country/AUS"},
-			// 	1,
-			// 	"crime_1.json",
-			// },
+			{
+				[]string{"dc/g/Economy", "invalid"},
+				[]string{"country/ASM"},
+				1,
+				"economy.json",
+			},
+			{
+				[]string{"dc/g/CriminalActivities"},
+				[]string{"country/USA", "country/MEX", "country/BRA", "country/DEU", "country/POL", "country/RUS", "country/ZAF", "country/ZWE", "country/CHN", "country/IND", "country/AUS"},
+				10,
+				"crime_10.json",
+			},
+			{
+				[]string{"dc/g/CriminalActivities"},
+				[]string{"country/USA", "country/MEX", "country/BRA", "country/DEU", "country/POL", "country/RUS", "country/ZAF", "country/ZWE", "country/CHN", "country/IND", "country/AUS"},
+				1,
+				"crime_1.json",
+			},
 		} {
+			log.Println("run bulk svg info test")
 			resp, err := mixer.BulkVariableGroupInfo(ctx, &pbv1.BulkVariableGroupInfoRequest{
 				Nodes:                c.nodes,
 				ConstrainedEntities:  c.constrainedEntities,

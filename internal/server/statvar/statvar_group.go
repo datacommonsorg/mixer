@@ -16,6 +16,7 @@ package statvar
 
 import (
 	"context"
+	"log"
 	"sort"
 	"time"
 
@@ -176,6 +177,7 @@ func GetStatVarGroup(
 	store *store.Store,
 	cache *resource.Cache,
 ) (*pb.StatVarGroups, error) {
+	log.Println("++++++++++++  Start GetStatVarGroup")
 	defer util.TimeTrack(time.Now(), "GetStatVarGroup")
 	entities := in.GetEntities()
 	var statVars []string
@@ -199,6 +201,7 @@ func GetStatVarGroup(
 		// Read stat var group cache from the frequent import group table. It has
 		// the latest and trustworthy stat var schemas and no need to merge with
 		// other import groups.
+		log.Println("++++++++++++  Read BT table")
 		btDataList, err := bigtable.Read(
 			ctx,
 			store.BtGroup,
@@ -215,6 +218,7 @@ func GetStatVarGroup(
 		if err != nil {
 			return nil, err
 		}
+		log.Println("++++++++++++  Finish table reading")
 		// Loop through import group by order. The stat var group is preferred from
 		// a higher ranked import group.
 		var customRootNode *pb.StatVarGroupNode
