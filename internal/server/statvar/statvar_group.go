@@ -177,7 +177,6 @@ func GetStatVarGroup(
 	store *store.Store,
 	cache *resource.Cache,
 ) (*pb.StatVarGroups, error) {
-	log.Println("++++++++++++  Start GetStatVarGroup")
 	defer util.TimeTrack(time.Now(), "GetStatVarGroup")
 	entities := in.GetEntities()
 	var statVars []string
@@ -208,6 +207,7 @@ func GetStatVarGroup(
 			bigtable.BtStatVarGroup,
 			[][]string{{""}},
 			func(jsonRaw []byte) (interface{}, error) {
+				log.Println("++++++++++++  got jsonRaw")
 				var svgResp pb.StatVarGroups
 				if err := proto.Unmarshal(jsonRaw, &svgResp); err != nil {
 					return nil, err
