@@ -2061,30 +2061,6 @@
         {
           "name": "Population: Years 13, Female, Not Hispanic or Latino \u0026 Black or African American Alone or In Combination With One or More Other Races",
           "dcid": "Count_Person_13Years_Female_NotHispanicOrLatino_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces"
-        },
-        {
-          "name": "Population: Years 13, Female, Not Hispanic or Latino \u0026 Native Hawaiian And Other Pacific Islander Alone or In Combination With One or More Other Races",
-          "dcid": "Count_Person_13Years_Female_NotHispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAloneOrInCombinationWithOneOrMoreOtherRaces"
-        },
-        {
-          "name": "Population: Years 13, Female, Not Hispanic or Latino \u0026 Native Hawaiian or Other Pacific Islander Alone",
-          "dcid": "Count_Person_13Years_Female_NotHispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAlone"
-        },
-        {
-          "name": "Population: Years 13, Female, Not Hispanic or Latino \u0026 Two or More Races",
-          "dcid": "Count_Person_13Years_Female_NotHispanicOrLatino_TwoOrMoreRaces"
-        },
-        {
-          "name": "Population: Years 13, Female, Not Hispanic or Latino \u0026 White Alone or In Combination With One or More Other Races",
-          "dcid": "Count_Person_13Years_Female_NotHispanicOrLatino_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
-        },
-        {
-          "name": "Population: Years 13, Female, Two or More Races",
-          "dcid": "Count_Person_13Years_Female_TwoOrMoreRaces"
-        },
-        {
-          "name": "Population: Years 13, Female, White Alone",
-          "dcid": "Count_Person_13Years_Female_WhiteAlone"
         }
       ]
     },
@@ -10212,7 +10188,7 @@
     },
     {
       "dcid": "sdg/g/SDG_5.5.1",
-      "name": "5.5.1: Proportion of seats held by women in (a) national parliaments and (b) local governments"
+      "name": "5.5.1: Proportion of seats held by women in (a) national parliaments and (b) local governments"
     },
     {
       "dcid": "sdg/g/SDG_5.5.2",
@@ -10237,10 +10213,6 @@
     {
       "dcid": "dc/g/MedicalConditionIncident_Gender-Female",
       "name": "Medical Condition Incident With Gender = Female"
-    },
-    {
-      "dcid": "sdg/g/SP_DYN_ADKL",
-      "name": "Adolescent birth rate (per 1,000 women aged 15-19 and 10-14 years)"
     },
     {
       "dcid": "dc/g/HateCrimeIncidents_BiasMotivation_TargetedGender-Female",
@@ -10520,7 +10492,7 @@
     },
     {
       "dcid": "sdg/g/SG_GEN_PARLN",
-      "name": "Number of seats held by women in national parliaments (number)"
+      "name": "Number of seats held by women in national parliaments"
     },
     {
       "dcid": "dc/g/Person_ActivityFrequency-Daily_Gender-Female",
@@ -11296,27 +11268,27 @@
     },
     {
       "dcid": "sdg/g/VC_VAW_MARR",
-      "name": "Proportion of ever-partnered women and girls subjected to physical and/or sexual violence by a current or former intimate partner in the previous 12 months, by age (%)"
+      "name": "Proportion of ever-partnered women and girls subjected to physical and/or sexual violence by a current or former intimate partner in the previous 12 months"
     },
     {
       "dcid": "sdg/g/SG_GEN_PARL",
-      "name": "Proportion of seats held by women in national parliaments (% of total number of seats)"
+      "name": "Proportion of seats held by women in national parliaments"
     },
     {
       "dcid": "sdg/g/SH_STA_ANEM",
-      "name": "Proportion of women aged 15-49 years with anaemia (%)"
+      "name": "Proportion of women aged 15-49 years with anaemia"
     },
     {
       "dcid": "sdg/g/IC_GEN_MGTL",
-      "name": "Proportion of women in managerial positions (%)"
+      "name": "Proportion of women in managerial positions"
     },
     {
       "dcid": "sdg/g/IC_GEN_MGTN",
-      "name": "Proportion of women in senior and middle management positions (%)"
+      "name": "Proportion of women in senior and middle management positions"
     },
     {
       "dcid": "sdg/g/SH_FPL_MTMM",
-      "name": "Proportion of women of reproductive age (aged 15-49 years) who have their need for family planning satisfied with modern methods (% of women aged 15-49 years)"
+      "name": "Proportion of women of reproductive age who have their need for family planning satisfied with modern methods"
     },
     {
       "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_CrimeType-ForcibleRape_TargetedGender-Female",
@@ -11609,6 +11581,10 @@
     {
       "dcid": "dc/g/HateCrimeIncidents_OffenderEthnicity_OffenderType-OffenderEthnicityKnown_TargetedGender-Female",
       "name": "Hate Crime Incidents With Offender Ethnicity, Offender Type = Offender Ethnicity Known, Targeted Gender = Female"
+    },
+    {
+      "dcid": "dc/g/HateCrimeIncidents_OffenderRace-AmericanIndianOrAlaskaNativeAlone_OffenderType-OffenderRaceKnown_TargetedGender-Female",
+      "name": "Hate Crime Incidents With Offender Race = American Indian or Alaska Native Alone, Offender Type = Offender Race Known, Targeted Gender = Female"
     }
   ],
   "matches": [

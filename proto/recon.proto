@@ -129,7 +129,9 @@ message BulkFindEntitiesResponse {
 message RecognizePlacesRequest { repeated string queries = 1; }
 
 message RecognizePlacesResponse {
-  message Place { string dcid = 1; }
+  message Place {
+    string dcid = 1;
+  }
 
   message Item {
     // Required. Substring of input query.
