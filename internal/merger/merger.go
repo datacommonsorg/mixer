@@ -71,15 +71,66 @@ func MergeResolve(r1, r2 *pbv2.ResolveResponse) *pbv2.ResolveResponse {
 // MergeNode merges two V2 node responses.
 // NOTE: Make sure the order of the two arguments, it's important for merging |next_token|.
 func MergeNode(local, remote *pbv2.NodeResponse) (*pbv2.NodeResponse, error) {
-	res := &pbv2.NodeResponse{}
-
-	// Merge |data|.
-	res.Data = make(map[string]*pbv2.LinkedGraph)
-	for dcid, linkedGrarph := range local.GetData() {
-		res.Data[dcid] = linkedGrarph
+	type linkedGraphStore struct {
+		propToNodes        map[string]*pbv2.Nodes
+		propToLinkedGraphs map[string]*pbv2.LinkedGraph
+		propSet            map[string]struct{}
 	}
-	for dcid, linkedGrarph := range remote.GetData() {
-		res.Data[dcid] = linkedGrarph
+	dcidToLinkedGraph := map[string]*linkedGraphStore{}
+
+	collectNode := func(n *pbv2.NodeResponse) {
+		for dcid, linkedGrarph := range n.GetData() {
+			if _, ok := dcidToLinkedGraph[dcid]; !ok {
+				dcidToLinkedGraph[dcid] = &linkedGraphStore{}
+			}
+			if arcs := linkedGrarph.GetArcs(); len(arcs) > 0 {
+				if dcidToLinkedGraph[dcid].propToNodes == nil {
+					dcidToLinkedGraph[dcid].propToNodes = map[string]*pbv2.Nodes{}
+				}
+				for prop, nodes := range arcs {
+					dcidToLinkedGraph[dcid].propToNodes[prop] = nodes
+				}
+			}
+			if neighbor := linkedGrarph.GetNeighbor(); len(neighbor) > 0 {
+				if dcidToLinkedGraph[dcid].propToLinkedGraphs == nil {
+					dcidToLinkedGraph[dcid].propToLinkedGraphs = map[string]*pbv2.LinkedGraph{}
+				}
+				for prop, neighborLinkedGraph := range neighbor {
+					dcidToLinkedGraph[dcid].propToLinkedGraphs[prop] = neighborLinkedGraph
+				}
+			}
+			if props := linkedGrarph.GetProperties(); len(props) > 0 {
+				if dcidToLinkedGraph[dcid].propSet == nil {
+					dcidToLinkedGraph[dcid].propSet = map[string]struct{}{}
+				}
+				for _, prop := range props {
+					dcidToLinkedGraph[dcid].propSet[prop] = struct{}{}
+				}
+			}
+		}
+	}
+
+	collectNode(local)
+	collectNode(remote)
+
+	res := &pbv2.NodeResponse{Data: map[string]*pbv2.LinkedGraph{}}
+	for dcid, store := range dcidToLinkedGraph {
+		res.Data[dcid] = &pbv2.LinkedGraph{}
+		if propToNodes := store.propToNodes; len(propToNodes) > 0 {
+			res.Data[dcid].Arcs = map[string]*pbv2.Nodes{}
+			for prop, nodes := range propToNodes {
+				res.Data[dcid].Arcs[prop] = nodes
+			}
+		}
+		if propToLinkedGraphs := store.propToLinkedGraphs; len(propToLinkedGraphs) > 0 {
+			res.Data[dcid].Neighbor = map[string]*pbv2.LinkedGraph{}
+			for prop, neighborLinkedGraph := range propToLinkedGraphs {
+				res.Data[dcid].Neighbor[prop] = neighborLinkedGraph
+			}
+		}
+		for prop := range store.propSet {
+			res.Data[dcid].Properties = append(res.Data[dcid].Properties, prop)
+		}
 	}
 
 	// Merge |next_token|.
