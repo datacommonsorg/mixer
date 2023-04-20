@@ -1,6 +1,6 @@
 # Helm config
 mixer:
-  gcpProjectID: datcom-mixer-autopush
+  hostProject: datcom-mixer-autopush
   serviceName: autopush.api.datacommons.org
 
 ingress:

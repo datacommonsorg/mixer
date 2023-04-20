@@ -1,4 +1,4 @@
-// Copyright 2019 Google LLC
+// Copyright 2023 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -67,10 +67,10 @@ func (s *Server) updateBranchTable(ctx context.Context, branchTableName string) 
 
 // NewMetadata initialize the metadata for translator.
 func NewMetadata(
-	mixerProject,
+	hostProject,
 	bigQueryDataset,
 	schemaPath string,
-	remoteMixerURL string,
+	remoteMixerDomain string,
 ) (*resource.Metadata, error) {
 	_, filename, _, _ := runtime.Caller(0)
 	subTypeMap, err := solver.GetSubTypeMap(
@@ -103,9 +103,9 @@ func NewMetadata(
 			OutArcInfo:        outArcInfo,
 			InArcInfo:         inArcInfo,
 			SubTypeMap:        subTypeMap,
-			MixerProject:      mixerProject,
+			HostProject:       hostProject,
 			BigQueryDataset:   bigQueryDataset,
-			RemoteMixerURL:    remoteMixerURL,
+			RemoteMixerDomain: remoteMixerDomain,
 			RemoteMixerAPIKey: os.Getenv(apiKeyEnv),
 		},
 		nil
