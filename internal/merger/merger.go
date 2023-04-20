@@ -20,6 +20,8 @@ import (
 
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	"github.com/datacommonsorg/mixer/internal/server/pagination"
+	"github.com/datacommonsorg/mixer/internal/util"
 )
 
 // MergeResolve merges two V2 resolve responses.
@@ -67,10 +69,44 @@ func MergeResolve(r1, r2 *pbv2.ResolveResponse) *pbv2.ResolveResponse {
 }
 
 // MergeNode merges two V2 node responses.
-// NOTE: The merge isn't for pagination, so NodeResponse::next_token should be empty.
-func MergeNode(n1, n2 *pbv2.NodeResponse) *pbv2.NodeResponse {
-	// TODO(ws): Implement real MergeNode().
-	return n1
+// NOTE: Make sure the order of the two arguments, it's important for merging |next_token|.
+func MergeNode(local, remote *pbv2.NodeResponse) (*pbv2.NodeResponse, error) {
+	res := &pbv2.NodeResponse{}
+
+	// Merge |data|.
+	res.Data = make(map[string]*pbv2.LinkedGraph)
+	for dcid, linkedGrarph := range local.GetData() {
+		res.Data[dcid] = linkedGrarph
+	}
+	for dcid, linkedGrarph := range remote.GetData() {
+		res.Data[dcid] = linkedGrarph
+	}
+
+	// Merge |next_token|.
+	resPaginationInfo := &pbv1.PaginationInfo{}
+	if local.GetNextToken() != "" {
+		localPaginationInfo, err := pagination.Decode(local.GetNextToken())
+		if err != nil {
+			return nil, err
+		}
+		resPaginationInfo = localPaginationInfo
+	}
+	if remote.GetNextToken() != "" {
+		remotePaginationInfo, err := pagination.Decode(remote.GetNextToken())
+		if err != nil {
+			return nil, err
+		}
+		resPaginationInfo.RemotePaginationInfo = remotePaginationInfo
+	}
+	if local.GetNextToken() != "" || remote.GetNextToken() != "" {
+		resNextToken, err := util.EncodeProto(resPaginationInfo)
+		if err != nil {
+			return nil, err
+		}
+		res.NextToken = resNextToken
+	}
+
+	return res, nil
 }
 
 // MergeEvent merges two V2 event responses.

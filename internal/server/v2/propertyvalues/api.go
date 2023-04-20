@@ -20,7 +20,6 @@ import (
 	"strings"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
-	v1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/node"
 	"github.com/datacommonsorg/mixer/internal/server/placein"
@@ -114,20 +113,6 @@ func API(
 			}
 			res.NextToken = respToken
 		}
-	}
-
-	// When the current page is the last page, |next_token| in response is not set in the code
-	// above. In this case, we still add a non-nil empty PaginationInfo object in |next_token|,
-	// and set it in the response, so that when the callers send a request next time using the
-	// given |next_token|, the handler will try to read from remote Mixer (if a remote Mixer
-	// domain is provided) for the first page in remote Mixer.
-	if res.GetNextToken() == "" {
-		resTokenMsg := &v1.PaginationInfo{}
-		resToken, err := util.EncodeProto(resTokenMsg)
-		if err != nil {
-			return nil, err
-		}
-		res.NextToken = resToken
 	}
 
 	return res, nil
