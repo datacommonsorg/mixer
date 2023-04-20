@@ -9,6 +9,10 @@
       "dcid": "Count_Person_PerArea"
     },
     {
+      "name": "Population: 0 - 14 Years",
+      "dcid": "Count_Person_0To14Years"
+    },
+    {
       "name": "Population: 1 - 4 Years",
       "dcid": "Count_Person_1To4Years"
     },
@@ -19,6 +23,10 @@
     {
       "name": "Population: 10 - 14 Years",
       "dcid": "Count_Person_10To14Years"
+    },
+    {
+      "name": "Population: 10 Years or More",
+      "dcid": "Count_Person_10OrMoreYears"
     },
     {
       "name": "Population: 10,000 - 14,999 USD",
@@ -51,6 +59,10 @@
     {
       "name": "Population: 15 - 19 Years",
       "dcid": "Count_Person_15To19Years"
+    },
+    {
+      "name": "Population: 15 - 59 Years",
+      "dcid": "Count_Person_15To59Years"
     },
     {
       "name": "Population: 15 - 64 Years",
@@ -103,6 +115,10 @@
     {
       "name": "Population: 20 - 79 Years",
       "dcid": "Count_Person_20To79Years"
+    },
+    {
+      "name": "Population: 20 Years or More",
+      "dcid": "Count_Person_20OrMoreYears"
     },
     {
       "name": "Population: 21 - 64 Years",
@@ -251,6 +267,10 @@
     {
       "name": "Population: 60 - 64 Years",
       "dcid": "Count_Person_60To64Years"
+    },
+    {
+      "name": "Population: 60 Years or More",
+      "dcid": "Count_Person_60OrMoreYears"
     },
     {
       "name": "Population: 62 - 64 Years",
@@ -437,6 +457,10 @@
       "dcid": "Count_Person_5OrMoreYears_BengaliSpokenAtHome"
     },
     {
+      "name": "Population: Black",
+      "dcid": "Count_Person_Black"
+    },
+    {
       "name": "Population: Black or African American Alone",
       "dcid": "Count_Person_BlackOrAfricanAmericanAlone"
     },
@@ -451,6 +475,26 @@
     {
       "name": "Population: Born in State of Residence",
       "dcid": "Count_Person_BornInStateOfResidence"
+    },
+    {
+      "name": "Population: Brazil_Amarela",
+      "dcid": "Count_Person_BrazilAmarela"
+    },
+    {
+      "name": "Population: Brazil_Branca",
+      "dcid": "Count_Person_BrazilBranca"
+    },
+    {
+      "name": "Population: Brazil_Indigneous",
+      "dcid": "Count_Person_BrazilIndigneous"
+    },
+    {
+      "name": "Population: Brazil_Other Religion",
+      "dcid": "Count_Person_BrazilOtherReligion"
+    },
+    {
+      "name": "Population: Brazil_Pardo",
+      "dcid": "Count_Person_BrazilPardo"
     },
     {
       "name": "Population: Business Major",
@@ -601,6 +645,10 @@
       "dcid": "Count_Person_EnrolledInSchool"
     },
     {
+      "name": "Population: Evangelical",
+      "dcid": "Count_Person_Evangelical"
+    },
+    {
       "name": "Population: Female",
       "dcid": "Count_Person_Female"
     },
@@ -685,16 +733,16 @@
       "dcid": "Count_Person_5OrMoreYears_HebrewSpokenAtHome"
     },
     {
+      "name": "Population: High School",
+      "dcid": "Count_Person_DetailedHighSchool"
+    },
+    {
       "name": "Population: High School Graduate Includes Equivalency",
       "dcid": "Count_Person_EducationalAttainmentHighSchoolGraduateIncludesEquivalency"
     },
     {
       "name": "Population: High School Graduate or Higher",
       "dcid": "Count_Person_EducationalAttainmentHighSchoolGraduateOrHigher"
-    },
-    {
-      "name": "Population: HighSchool",
-      "dcid": "Count_Person_DetailedHighSchool"
     },
     {
       "name": "Population: Hindi",
@@ -813,6 +861,10 @@
       "dcid": "Count_Person_ResidesInInstitutionalizedGroupQuarters"
     },
     {
+      "name": "Population: Irreligion",
+      "dcid": "Count_Person_Irreligion"
+    },
+    {
       "name": "Population: Italian",
       "dcid": "Count_Person_5OrMoreYears_ItalianSpokenAtHome"
     },
@@ -897,7 +949,7 @@
       "dcid": "Count_Person_EducationalAttainmentMastersDegree"
     },
     {
-      "name": "Population: MiddleSchool",
+      "name": "Population: Middle School",
       "dcid": "Count_Person_DetailedMiddleSchool"
     },
     {
@@ -1141,11 +1193,11 @@
       "dcid": "Count_Person_PreObese"
     },
     {
-      "name": "Population: PrimarySchool",
+      "name": "Population: Primary School",
       "dcid": "Count_Person_DetailedPrimarySchool"
     },
     {
-      "name": "Population: PrimarySchool",
+      "name": "Population: Primary School",
       "dcid": "Count_Person_EducationalAttainmentPrimarySchool"
     },
     {
@@ -1179,6 +1231,10 @@
     {
       "name": "Population: Regular High School Diploma",
       "dcid": "Count_Person_EducationalAttainmentRegularHighSchoolDiploma"
+    },
+    {
+      "name": "Population: Roman Catholicism Apostolic",
+      "dcid": "Count_Person_RomanCatholicismApostolic"
     },
     {
       "name": "Population: Rural",
@@ -1347,6 +1403,10 @@
     {
       "name": "Population: Unemployed",
       "dcid": "Count_Person_Unemployed"
+    },
+    {
+      "name": "Population: Unknown Race",
+      "dcid": "Count_Person_UnknownRace"
     },
     {
       "name": "Population: Upper Secondary Education Or Post Secondary Non Tertiary Education",
@@ -1933,6 +1993,14 @@
       "dcid": "Count_Person_25OrMoreYears_TertiaryEducation_AsFractionOf_Count_Person_25OrMoreYears"
     },
     {
+      "name": "Population: 0 - 14 Years, Female",
+      "dcid": "Count_Person_0To14Years_Female"
+    },
+    {
+      "name": "Population: 0 - 14 Years, Male",
+      "dcid": "Count_Person_0To14Years_Male"
+    },
+    {
       "name": "Population: 0 - 4 Years, American Indian And Alaska Native Alone or In Combination With One or More Other Races",
       "dcid": "Count_Person_0To4Years_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRaces"
     },
@@ -2393,6 +2461,10 @@
       "dcid": "Count_Person_10To14Years_HispanicOrLatino_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
     },
     {
+      "name": "Population: 10 - 14 Years, Literate",
+      "dcid": "Count_Person_10To14Years_Literate"
+    },
+    {
       "name": "Population: 10 - 14 Years, Male",
       "dcid": "Count_Person_10To14Years_Male"
     },
@@ -2459,6 +2531,22 @@
     {
       "name": "Population: 10 - 14 Years, White Alone or In Combination With One or More Other Races",
       "dcid": "Count_Person_10To14Years_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Population: 10 Years or More, Female",
+      "dcid": "Count_Person_10OrMoreYears_Female"
+    },
+    {
+      "name": "Population: 10 Years or More, Illiterate",
+      "dcid": "Count_Person_10OrMoreYears_Illiterate"
+    },
+    {
+      "name": "Population: 10 Years or More, Literate",
+      "dcid": "Count_Person_10OrMoreYears_Literate"
+    },
+    {
+      "name": "Population: 10 Years or More, Male",
+      "dcid": "Count_Person_10OrMoreYears_Male"
     },
     {
       "name": "Population: 100 Years or More, Hispanic or Latino",
@@ -2721,6 +2809,10 @@
       "dcid": "Count_Person_15To19Years_HispanicOrLatino_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
     },
     {
+      "name": "Population: 15 - 19 Years, Literate",
+      "dcid": "Count_Person_15To19Years_Literate"
+    },
+    {
       "name": "Population: 15 - 19 Years, Male",
       "dcid": "Count_Person_15To19Years_Male"
     },
@@ -2789,8 +2881,20 @@
       "dcid": "Count_Person_15To19Years_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
     },
     {
+      "name": "Population: 15 - 24 Years, Illiterate",
+      "dcid": "Count_Person_15To24Years_Illiterate"
+    },
+    {
       "name": "Population: 15 - 50 Years, Female",
       "dcid": "Count_Person_15To50Years_Female"
+    },
+    {
+      "name": "Population: 15 - 59 Years, Female",
+      "dcid": "Count_Person_15To59Years_Female"
+    },
+    {
+      "name": "Population: 15 - 59 Years, Male",
+      "dcid": "Count_Person_15To59Years_Male"
     },
     {
       "name": "Population: 15 - 64 Years, Female",
@@ -2895,6 +2999,10 @@
     {
       "name": "Population: 15 Years or More, Hispanic or Latino",
       "dcid": "Count_Person_15OrMoreYears_HispanicOrLatino"
+    },
+    {
+      "name": "Population: 15 Years or More, Illiterate",
+      "dcid": "Count_Person_15OrMoreYears_Illiterate"
     },
     {
       "name": "Population: 15 Years or More, Institutionalized Group Quarters",
@@ -3789,6 +3897,10 @@
       "dcid": "Count_Person_20To34Years_Male"
     },
     {
+      "name": "Population: 20 Years or More, Literate",
+      "dcid": "Count_Person_20OrMoreYears_Literate"
+    },
+    {
       "name": "Population: 21 - 64 Years, 1.4 - 4 Ratio To Poverty Line",
       "dcid": "Count_Person_21To64Years_RatioToPovertyLine1.38To4"
     },
@@ -3887,118 +3999,6 @@
     {
       "name": "Population: 25 - 29 Years, Hispanic or Latino \u0026 Asian Alone",
       "dcid": "Count_Person_25To29Years_HispanicOrLatino_AsianAlone"
-    },
-    {
-      "name": "Population: 25 - 29 Years, Hispanic or Latino \u0026 Asian Alone or In Combination With One or More Other Races",
-      "dcid": "Count_Person_25To29Years_HispanicOrLatino_AsianAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Population: 25 - 29 Years, Hispanic or Latino \u0026 Black or African American Alone",
-      "dcid": "Count_Person_25To29Years_HispanicOrLatino_BlackOrAfricanAmericanAlone"
-    },
-    {
-      "name": "Population: 25 - 29 Years, Hispanic or Latino \u0026 Black or African American Alone or In Combination With One or More Other Races",
-      "dcid": "Count_Person_25To29Years_HispanicOrLatino_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Population: 25 - 29 Years, Hispanic or Latino \u0026 Native Hawaiian And Other Pacific Islander Alone or In Combination With One or More Other Races",
-      "dcid": "Count_Person_25To29Years_HispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Population: 25 - 29 Years, Hispanic or Latino \u0026 Native Hawaiian or Other Pacific Islander Alone",
-      "dcid": "Count_Person_25To29Years_HispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAlone"
-    },
-    {
-      "name": "Population: 25 - 29 Years, Hispanic or Latino \u0026 Two or More Races",
-      "dcid": "Count_Person_25To29Years_HispanicOrLatino_TwoOrMoreRaces"
-    },
-    {
-      "name": "Population: 25 - 29 Years, Hispanic or Latino \u0026 White Alone",
-      "dcid": "Count_Person_25To29Years_HispanicOrLatino_WhiteAlone"
-    },
-    {
-      "name": "Population: 25 - 29 Years, Hispanic or Latino \u0026 White Alone or In Combination With One or More Other Races",
-      "dcid": "Count_Person_25To29Years_HispanicOrLatino_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Population: 25 - 29 Years, Male",
-      "dcid": "Count_Person_25To29Years_Male"
-    },
-    {
-      "name": "Population: 25 - 29 Years, Native Hawaiian or Other Pacific Islander Alone",
-      "dcid": "Count_Person_25To29Years_NativeHawaiianAndOtherPacificIslanderAlone"
-    },
-    {
-      "name": "Population: 25 - 29 Years, Not Hispanic or Latino",
-      "dcid": "Count_Person_25To29Years_NotHispanicOrLatino"
-    },
-    {
-      "name": "Population: 25 - 29 Years, Not Hispanic or Latino \u0026 American Indian And Alaska Native Alone or In Combination With One or More Other Races",
-      "dcid": "Count_Person_25To29Years_NotHispanicOrLatino_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Population: 25 - 29 Years, Not Hispanic or Latino \u0026 American Indian or Alaska Native Alone",
-      "dcid": "Count_Person_25To29Years_NotHispanicOrLatino_AmericanIndianAndAlaskaNativeAlone"
-    },
-    {
-      "name": "Population: 25 - 29 Years, Not Hispanic or Latino \u0026 Asian Alone",
-      "dcid": "Count_Person_25To29Years_NotHispanicOrLatino_AsianAlone"
-    },
-    {
-      "name": "Population: 25 - 29 Years, Not Hispanic or Latino \u0026 Asian Alone or In Combination With One or More Other Races",
-      "dcid": "Count_Person_25To29Years_NotHispanicOrLatino_AsianAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Population: 25 - 29 Years, Not Hispanic or Latino \u0026 Black or African American Alone",
-      "dcid": "Count_Person_25To29Years_NotHispanicOrLatino_BlackOrAfricanAmericanAlone"
-    },
-    {
-      "name": "Population: 25 - 29 Years, Not Hispanic or Latino \u0026 Black or African American Alone or In Combination With One or More Other Races",
-      "dcid": "Count_Person_25To29Years_NotHispanicOrLatino_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Population: 25 - 29 Years, Not Hispanic or Latino \u0026 Native Hawaiian And Other Pacific Islander Alone or In Combination With One or More Other Races",
-      "dcid": "Count_Person_25To29Years_NotHispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Population: 25 - 29 Years, Not Hispanic or Latino \u0026 Native Hawaiian or Other Pacific Islander Alone",
-      "dcid": "Count_Person_25To29Years_NotHispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAlone"
-    },
-    {
-      "name": "Population: 25 - 29 Years, Not Hispanic or Latino \u0026 Two or More Races",
-      "dcid": "Count_Person_25To29Years_NotHispanicOrLatino_TwoOrMoreRaces"
-    },
-    {
-      "name": "Population: 25 - 29 Years, Not Hispanic or Latino \u0026 White Alone or In Combination With One or More Other Races",
-      "dcid": "Count_Person_25To29Years_NotHispanicOrLatino_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Population: 25 - 29 Years, Two or More Races",
-      "dcid": "Count_Person_25To29Years_TwoOrMoreRaces"
-    },
-    {
-      "name": "Population: 25 - 29 Years, White Alone",
-      "dcid": "Count_Person_25To29Years_WhiteAlone"
-    },
-    {
-      "name": "Population: 25 - 29 Years, White Alone Not Hispanic or Latino",
-      "dcid": "Count_Person_25To29Years_WhiteAloneNotHispanicOrLatino"
-    },
-    {
-      "name": "Population: 25 - 29 Years, White Alone or In Combination With One or More Other Races",
-      "dcid": "Count_Person_25To29Years_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Population: 25 - 34 Years, Adult Correctional Facilities",
-      "dcid": "Count_Person_25To34Years_ResidesInAdultCorrectionalFacilities"
-    },
-    {
-      "name": "Population: 25 - 34 Years, Born in Other State in The United States",
-      "dcid": "Count_Person_25To34Years_BornInOtherStateInTheUnitedStates"
-    },
-    {
-      "name": "Population: 25 - 34 Years, Born in State of Residence",
-      "dcid": "Count_Person_25To34Years_BornInStateOfResidence"
     }
   ],
   "matches": [

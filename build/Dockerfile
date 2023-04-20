@@ -82,8 +82,8 @@ ENTRYPOINT ["/go/bin/mixer"]
 FROM base as test
 WORKDIR /mixer
 # Golint
-RUN wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s v1.49.0
-RUN ./bin/golangci-lint run --timeout=600s
+RUN wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s v1.52.2
+RUN ./bin/golangci-lint run --timeout=600s --skip-dirs='internal/proto'
 # Test
 COPY test/ test
 COPY deploy/ deploy

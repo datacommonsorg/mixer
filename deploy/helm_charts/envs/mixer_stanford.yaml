@@ -1,6 +1,6 @@
 # Helm config
 mixer:
-  gcpProjectID: datcom-stanford
+  hostProject: datcom-stanford
   serviceName: stanford.api.datacommons.org
 
 ingress:

@@ -39,7 +39,7 @@ func fetchRemote(
 	in proto.Message,
 	out proto.Message,
 ) error {
-	url := metadata.RemoteMixerURL + apiPath
+	url := metadata.RemoteMixerDomain + apiPath
 	jsonValue, err := protojson.Marshal(in)
 	if err != nil {
 		return err
@@ -76,7 +76,7 @@ func (s *Server) V2Resolve(
 	if err != nil {
 		return nil, err
 	}
-	if s.metadata.RemoteMixerURL != "" {
+	if s.metadata.RemoteMixerDomain != "" {
 		remoteResp := &pbv2.ResolveResponse{}
 		err := fetchRemote(s.metadata, s.httpClient, "/v2/resolve", in, remoteResp)
 		if err != nil {
@@ -155,7 +155,7 @@ func (s *Server) V2Event(
 	if err != nil {
 		return nil, err
 	}
-	if s.metadata.RemoteMixerURL != "" {
+	if s.metadata.RemoteMixerDomain != "" {
 		remoteResp := &pbv2.EventResponse{}
 		err := fetchRemote(s.metadata, s.httpClient, "/v2/event", in, remoteResp)
 		if err != nil {
@@ -174,7 +174,7 @@ func (s *Server) V2Observation(
 	if err != nil {
 		return nil, err
 	}
-	if s.metadata.RemoteMixerURL != "" {
+	if s.metadata.RemoteMixerDomain != "" {
 		remoteResp := &pbv2.ObservationResponse{}
 		err := fetchRemote(s.metadata, s.httpClient, "/v2/observation", in, remoteResp)
 		if err != nil {

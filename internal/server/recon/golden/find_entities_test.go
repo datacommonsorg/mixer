@@ -45,12 +45,6 @@ func TestFindEntities(t *testing.T) {
 				},
 				"santa_clara_county.json",
 			},
-			// {
-			// 	&pb.FindEntitiesRequest{
-			// 		Description: "Australia", Type: "Country",
-			// 	},
-			// 	"australia.json",
-			// },
 		} {
 			resp, err := mixer.FindEntities(ctx, c.req)
 			if err != nil {

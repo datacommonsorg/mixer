@@ -32,7 +32,7 @@ func RecognizePlaces(
 	ctx context.Context, in *pb.RecognizePlacesRequest, store *store.Store,
 ) (*pb.RecognizePlacesResponse, error) {
 	pr := &placeRecognition{
-		recogPlaceMap: store.RecogPlaceMap,
+		recogPlaceMap: store.RecogPlaceStore.RecogPlaceMap,
 	}
 
 	type queryItems struct {

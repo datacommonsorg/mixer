@@ -1,6 +1,6 @@
 # Helm config
 mixer:
-  gcpProjectID: datcom-mixer-staging
+  hostProject: datcom-mixer-staging
   serviceName: staging.api.datacommons.org
 
 ingress:
