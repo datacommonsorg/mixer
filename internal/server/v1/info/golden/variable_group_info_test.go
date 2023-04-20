@@ -16,7 +16,6 @@ package golden
 
 import (
 	"context"
-	"log"
 	"path"
 	"runtime"
 	"testing"
@@ -99,7 +98,6 @@ func TestVariableGroupInfo(t *testing.T) {
 				"empty.json",
 			},
 		} {
-			log.Println("run svg info test")
 			resp, err := mixer.VariableGroupInfo(ctx, &pbv1.VariableGroupInfoRequest{
 				Node:                c.node,
 				ConstrainedEntities: c.constrainedEntities,

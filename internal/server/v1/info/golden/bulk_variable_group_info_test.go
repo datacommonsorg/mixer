@@ -16,7 +16,6 @@ package golden
 
 import (
 	"context"
-	"log"
 	"path"
 	"runtime"
 	"testing"
@@ -61,7 +60,6 @@ func TestBulkVariableGroupInfo(t *testing.T) {
 				"crime_1.json",
 			},
 		} {
-			log.Println("run bulk svg info test")
 			resp, err := mixer.BulkVariableGroupInfo(ctx, &pbv1.BulkVariableGroupInfoRequest{
 				Nodes:                c.nodes,
 				ConstrainedEntities:  c.constrainedEntities,
@@ -95,7 +93,10 @@ func TestBulkVariableGroupInfo(t *testing.T) {
 	}
 
 	if err := test.TestDriver(
-		"BulkVariableGroupInfo", &test.TestOption{UseCache: true}, testSuite); err != nil {
+		"BulkVariableGroupInfo",
+		&test.TestOption{UseCache: true},
+		testSuite,
+	); err != nil {
 		t.Errorf("TestDriver() = %s", err)
 	}
 }

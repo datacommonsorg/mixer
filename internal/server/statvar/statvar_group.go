@@ -210,12 +210,14 @@ func GetStatVarGroup(
 				log.Println("++++++++++++  got jsonRaw")
 				var svgResp pb.StatVarGroups
 				if err := proto.Unmarshal(jsonRaw, &svgResp); err != nil {
+					log.Println(">>>> error")
 					return nil, err
 				}
 				return &svgResp, nil
 			},
 		)
 		if err != nil {
+			log.Println(">>>> error")
 			return nil, err
 		}
 		log.Println("++++++++++++  Finish table reading")

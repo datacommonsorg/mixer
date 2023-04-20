@@ -54,18 +54,19 @@ func readRowFn(
 				raw := btRow[BtFamily][0].Value
 				jsonRaw, err := util.UnzipAndDecode(string(raw))
 				if err != nil {
-					log.Println(err)
+					log.Println(">>>> error")
 					return false
 				}
 				elem, err := action(jsonRaw)
 				if err != nil {
-					log.Println(err)
+					log.Println(">>>> error")
 					return false
 				}
 				parts := strings.Split(strings.TrimPrefix(btRow.Key(), prefix), "^")
 				btRowChan <- BtRow{parts, elem}
 				return true
 			}); err != nil {
+			log.Println(">>>> error")
 			return err
 		}
 		return nil

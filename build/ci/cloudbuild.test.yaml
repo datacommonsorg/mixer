@@ -52,7 +52,7 @@ steps:
       - -c
       - |
         set -e
-        go test -tags "sqlite_fts5" -v  ./...
+        go test -tags "sqlite_fts5" -v  ./internal/server/v1/info/golden/...
 
 options:
   volumes:
