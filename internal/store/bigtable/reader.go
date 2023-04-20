@@ -46,10 +46,8 @@ func readRowFn(
 	prefix string,
 ) func() error {
 	return func() error {
-		log.Println("++++++++++++  ReadRows")
 		if err := btTable.ReadRows(errCtx, rowSetPart,
 			func(btRow cbt.Row) bool {
-				log.Println("++++++++++++  process btRow")
 				if len(btRow[BtFamily]) == 0 {
 					return true
 				}
