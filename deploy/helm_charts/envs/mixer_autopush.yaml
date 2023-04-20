@@ -11,57 +11,18 @@ ingress:
       ingress.gcp.kubernetes.io/pre-shared-cert: "mixer-certificate,multi-domain-2022",
     }
 
-serviceGroups:
-  - svg:
-      urlPaths:
-        - "/place/stat-var-group/*"
-        - "/stat-var/*"
-        - "/v1/info/variable-group/*"
-        - "/v1/variable/*"
-        - "/v1/bulk/info/variable-group"
-        - "/v1/bulk/info/variable"
-      replicas:
-        default: 5
-        min: 5
-        max: 10
-      resources:
-        memoryRequest: "8G"
-        memoryLimit: "8G"
-      useSearch: true
-  - recon:
-      urlPaths:
-        - "/v1/recon/*"
-      replicas:
-        default: 20
-        min: 20
-        max: 30
-      resources:
-        memoryRequest: "400M"
-        memoryLimit: "400M"
-  - observation:
-      urlPaths:
-        - "/v1/observations/*"
-        - "/v1/bulk/observations/*"
-      replicas:
-        default: 20
-        min: 20
-        max: 20
-      resources:
-        memoryRequest: "4G"
-        memoryLimit: "4G"
-  - default:
-      urlPaths:
-        - "/*"
-      replicas:
-        default: 20
-        min: 20
-        max: 20
-      resources:
-        memoryRequest: "4G"
-        memoryLimit: "4G"
-
 # GCP level config.
 ip: 34.117.145.125
 region: us-central1
 api_title: DataCommons API (Autopush)
 nodes: 4
+
+serviceGroups:
+  svg:
+      replicas: 5
+  recon:
+      replicas: 20
+  observation:
+      replicas: 20
+  default:
+      replicas: 20
