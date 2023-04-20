@@ -21,8 +21,6 @@ import (
 	cbt "cloud.google.com/go/bigtable"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"golang.org/x/sync/errgroup"
-	"google.golang.org/grpc/codes"
-	"google.golang.org/grpc/status"
 )
 
 // BtRow contains the BT read key tokens and the cache data.
@@ -101,7 +99,8 @@ func ReadWithGroupRowList(
 ) ([][]BtRow, error) {
 	tables := btGroup.Tables()
 	if len(tables) == 0 {
-		return nil, status.Errorf(codes.NotFound, "Bigtable instance is not specified")
+		// Custom DC could have no bigtable but read all data from remote mixer
+		return nil, nil
 	}
 	rowListMap := map[int]cbt.RowList{}
 	for _, acc := range accs {
