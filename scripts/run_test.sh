@@ -33,5 +33,5 @@ if [[ $DOCKER == "true" ]]; then
     -v $HOME/.config/gcloud:/root/.config/gcloud \
     datacommons/mixer-test
 else
-  go test -tags "sqlite_fts5" ./...
+  go test -parallel=10 -tags "sqlite_fts5" ./...
 fi
