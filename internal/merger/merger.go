@@ -168,6 +168,12 @@ func MergeNode(local, remote *pbv2.NodeResponse) (*pbv2.NodeResponse, error) {
 
 // MergeEvent merges two V2 event responses.
 func MergeEvent(e1, e2 *pbv2.EventResponse) *pbv2.EventResponse {
+	if e1 == nil {
+		return e2
+	} else if e2 == nil {
+		return e1
+	}
+
 	idToEvent := map[string]*pbv1.EventCollection_Event{}
 	idToProvenance := map[string]*pbv1.EventCollection_ProvenanceInfo{}
 	dateSet := map[string]struct{}{}
@@ -228,8 +234,13 @@ func MergeEvent(e1, e2 *pbv2.EventResponse) *pbv2.EventResponse {
 }
 
 // MergeObservation merges two V2 observation responses.
-func MergeObservation(
-	o1, o2 *pbv2.ObservationResponse) *pbv2.ObservationResponse {
+func MergeObservation(o1, o2 *pbv2.ObservationResponse) *pbv2.ObservationResponse {
+	if o1 == nil {
+		return o2
+	} else if o2 == nil {
+		return o1
+	}
+
 	for v, vData := range o2.ByVariable {
 		if _, ok := o1.ByVariable[v]; !ok {
 			o1.ByVariable[v] = &pbv2.VariableObservation{
