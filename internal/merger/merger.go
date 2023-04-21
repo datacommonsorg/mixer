@@ -26,6 +26,12 @@ import (
 
 // MergeResolve merges two V2 resolve responses.
 func MergeResolve(r1, r2 *pbv2.ResolveResponse) *pbv2.ResolveResponse {
+	if r1 == nil {
+		return r2
+	} else if r2 == nil {
+		return r1
+	}
+
 	// Maps are used to dedup.
 	nodeToResolvedIDSet := map[string]map[string]struct{}{}
 
