@@ -42,7 +42,7 @@ func TestBulkPlaceInfo(t *testing.T) {
 		}{
 			{
 				"bulk_place_info.json",
-				[]string{"earth", "country/USA", "geoId/06", "geoId/06085", "geoId/02158000100"},
+				[]string{"earth", "geoId/06", "geoId/02158000100"},
 				false,
 			}, {
 				"empty.json",

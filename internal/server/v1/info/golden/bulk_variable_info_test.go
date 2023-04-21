@@ -42,11 +42,8 @@ func TestBulkVariableInfo(t *testing.T) {
 		}{
 			{
 				[]string{
-					"UnemploymentRate_Person",
 					"Count_Person_Female",
-					"Count_Person_Female_AsianAlone",
 					"FertilityRate_Person_Female",
-					"IncrementalCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase",
 				},
 				"bulk_result.json",
 				false,

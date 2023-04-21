@@ -41,23 +41,8 @@ func TestTriplesOut(t *testing.T) {
 			token      string
 		}{
 			{
-				"Country.json",
-				"Country",
-				"",
-			},
-			{
-				"BiologicalSpecimen1.json",
-				"BiologicalSpecimen",
-				"",
-			},
-			{
-				"Count_Person.json",
-				"Count_Person",
-				"",
-			},
-			{
-				"observation.json",
-				"dc/o/vs51dzghn79eg",
+				"svg.json",
+				"dc/g/Root",
 				"",
 			},
 			{

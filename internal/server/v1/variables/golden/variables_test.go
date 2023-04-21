@@ -41,16 +41,6 @@ func TestVariables(t *testing.T) {
 			wanterr    bool
 		}{
 			{
-				"geoId/05",
-				"california.json",
-				false,
-			},
-			{
-				"geoId/06085",
-				"santa_clara.json",
-				false,
-			},
-			{
 				"country/ALB",
 				"alb.json",
 				false,

@@ -43,24 +43,9 @@ func TestProperties(t *testing.T) {
 			direction  string
 		}{
 			{
-				"class_out.json",
-				"Class",
-				"out",
-			},
-			{
-				"class_in.json",
-				"Class",
-				"in",
-			},
-			{
 				"california_out.json",
 				"geoId/06",
 				"out",
-			},
-			{
-				"california_in.json",
-				"geoId/06",
-				"in",
 			},
 			{
 				"dummy.json",

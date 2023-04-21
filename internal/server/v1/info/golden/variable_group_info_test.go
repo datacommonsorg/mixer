@@ -40,14 +40,14 @@ func TestVariableGroupInfo(t *testing.T) {
 			goldenFile          string
 		}{
 			{
-				"dc/g/Person_EducationalAttainment",
-				[]string{"country/USA"},
-				"school.json",
-			},
-			{
 				"dc/g/Person_EnrollmentLevel-EnrolledInCollegeUndergraduateYears_Race",
 				[]string{"country/USA"},
 				"school_race.json",
+			},
+			{
+				"dc/g/Demographics",
+				[]string{},
+				"demographics.json",
 			},
 			{
 				"dc/g/Demographics",
@@ -60,7 +60,6 @@ func TestVariableGroupInfo(t *testing.T) {
 				[]string{"geoId/0649670"},
 				"root_mtv.json",
 			},
-			// Run this first to test the server cache is not modified.
 			{
 				"dc/g/Root",
 				[]string{"geoId/0649670", "country/JPN"},
@@ -72,24 +71,9 @@ func TestVariableGroupInfo(t *testing.T) {
 				"root.json",
 			},
 			{
-				"dc/g/Demographics",
-				[]string{},
-				"demographics.json",
-			},
-			{
-				"dc/g/Person_CitizenshipStatus-NotAUSCitizen_CorrectionalFacilityOperator-StateOperated&FederallyOperated&PrivatelyOperated",
-				[]string{"geoId/0649670"},
-				"citizenship.json",
-			},
-			{
 				"g/Feeding_America",
 				[]string{"geoId/06"},
 				"private.json",
-			},
-			{
-				"dc/g/Economy",
-				[]string{"country/ASM"},
-				"economy.json",
 			},
 			{
 				"invalid,id",

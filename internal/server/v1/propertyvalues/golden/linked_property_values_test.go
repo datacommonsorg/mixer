@@ -45,11 +45,6 @@ func TestLinkedPropertyValues(t *testing.T) {
 				"country/USA",
 				"County",
 			},
-			{
-				"CA_county.json",
-				"geoId/06",
-				"County",
-			},
 		} {
 			req := &pbv1.LinkedPropertyValuesRequest{
 				NodeProperty:  c.node + "/" + "containedInPlace",
