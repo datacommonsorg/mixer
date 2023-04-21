@@ -23,16 +23,16 @@ import (
 	"net/http"
 
 	"github.com/datacommonsorg/mixer/internal/merger"
+	"github.com/datacommonsorg/mixer/internal/server/pagination"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
-	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
-	v2p "github.com/datacommonsorg/mixer/internal/server/v2/properties"
-	v2pv "github.com/datacommonsorg/mixer/internal/server/v2/propertyvalues"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/proto"
 
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 )
+
+// TODO(ws): Do local and remote calls in parallel.
 
 func fetchRemote(
 	metadata *resource.Metadata,
@@ -93,65 +93,69 @@ func (s *Server) V2Resolve(
 func (s *Server) V2Node(
 	ctx context.Context, in *pbv2.NodeRequest,
 ) (*pbv2.NodeResponse, error) {
-	arcs, err := v2.ParseProperty(in.GetProperty())
+	if in.GetNextToken() == "" {
+		// When request |next_token| is empty, there are two cases:
+		// 1. The call does not need pagination, e.g. PropertyLabels.
+		// 2. The call needs pagination, but this is the first call/page.
+		// In both cases, we need to read from both local and remote, and merge.
+
+		localResp, err := V2NodeCore(ctx, s.store, s.cache, s.metadata, in)
+		if err != nil {
+			return nil, err
+		}
+
+		if s.metadata.RemoteMixerDomain != "" {
+			remoteResp := &pbv2.NodeResponse{}
+			err := fetchRemote(s.metadata, s.httpClient, "/v2/node", in, remoteResp)
+			if err != nil {
+				return nil, err
+			}
+			return merger.MergeNode(localResp, remoteResp)
+		}
+
+		return localResp, nil
+	}
+
+	// Below is under the condition in.GetNextToken() != "".
+	// In this case, the call needs pagination, and it's not the first call/page.
+
+	paginationInfo, err := pagination.Decode(in.GetNextToken())
 	if err != nil {
 		return nil, err
 	}
-	if len(arcs) == 1 {
-		arc := arcs[0]
-		direction := util.DirectionOut
-		if !arc.Out {
-			direction = util.DirectionIn
-		}
+	cursorGroups := paginationInfo.GetCursorGroups()
+	remotePaginationInfo := paginationInfo.GetRemotePaginationInfo()
 
-		if arc.SingleProp != "" && arc.Wildcard == "+" {
-			// Examples:
-			//   <-containedInPlace+{typeOf:City}
-			return v2pv.LinkedPropertyValues(
-				ctx,
-				s.store,
-				s.cache,
-				in.GetNodes(),
-				arc.SingleProp,
-				direction,
-				arc.Filter,
-			)
-		}
+	localResp := &pbv2.NodeResponse{}
+	remoteResp := &pbv2.NodeResponse{}
 
-		if arc.SingleProp == "" && len(arc.BracketProps) == 0 {
-			// Examples:
-			//   ->
-			//   <-
-			return v2p.API(ctx, s.store, in.GetNodes(), direction)
-		}
-
-		var properties []string
-		if arc.SingleProp != "" {
-			if arc.Wildcard == "" {
-				// Examples:
-				//   ->name
-				//   <-containedInPlace
-				properties = []string{arc.SingleProp}
-			}
-		} else { // arc.SingleProp == ""
-			// Examples:
-			//   ->[name, address]
-			properties = arc.BracketProps
-		}
-		if len(properties) > 0 {
-			return v2pv.API(
-				ctx,
-				s.store,
-				s.metadata,
-				in.GetNodes(),
-				properties,
-				direction,
-				int(in.GetLimit()),
-				in.NextToken,
-			)
+	if len(cursorGroups) > 0 {
+		// Non-empty |cursor_groups|, read from local, for non-first page.
+		localResp, err = V2NodeCore(ctx, s.store, s.cache, s.metadata, in)
+		if err != nil {
+			return nil, err
 		}
 	}
-	return nil, nil
+
+	if s.metadata.RemoteMixerDomain != "" && remotePaginationInfo != nil {
+		// Read from remote, for non-first page.
+
+		// Update |next_token| before sending the request to remote.
+		// Peel off one layer of |remote_pagination_info| hierarchy.
+		remoteReqNextToken, err := util.EncodeProto(remotePaginationInfo)
+		if err != nil {
+			return nil, err
+		}
+		in.NextToken = remoteReqNextToken
+
+		// Call remote.
+		if err := fetchRemote(
+			s.metadata, s.httpClient, "/v2/node", in, remoteResp); err != nil {
+			return nil, err
+		}
+	}
+
+	return merger.MergeNode(localResp, remoteResp)
 }
 
 // V2Event implements API for mixer.V2Event.

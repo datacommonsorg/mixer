@@ -15,6 +15,8 @@
 package pagination
 
 import (
+	"fmt"
+
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/protobuf/proto"
@@ -22,6 +24,10 @@ import (
 
 // Decode decodes a compressed token string into PaginationInfo.
 func Decode(s string) (*pbv1.PaginationInfo, error) {
+	if s == "" {
+		return nil, fmt.Errorf("empty pagination token string")
+	}
+
 	data, err := util.UnzipAndDecode(s)
 	if err != nil {
 		return nil, err

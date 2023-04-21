@@ -83,6 +83,7 @@ func API(
 			}
 		}
 	}
+
 	if len(regularNodes) > 0 {
 		data, pi, err := v1pv.Fetch(
 			ctx,
@@ -104,6 +105,7 @@ func API(
 				}
 			}
 		}
+
 		if pi != nil {
 			respToken, err := util.EncodeProto(pi)
 			if err != nil {
@@ -112,6 +114,7 @@ func API(
 			res.NextToken = respToken
 		}
 	}
+
 	return res, nil
 }
 

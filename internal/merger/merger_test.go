@@ -21,6 +21,7 @@ import (
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	"github.com/datacommonsorg/mixer/internal/util"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/proto"
 	"google.golang.org/protobuf/testing/protocmp"
@@ -74,6 +75,169 @@ func TestMergeResolve(t *testing.T) {
 		got := MergeResolve(c.r1, c.r2)
 		if diff := cmp.Diff(got, c.want, cmpOpts); diff != "" {
 			t.Errorf("MergeResolve(%v, %v) got diff: %s", c.r1, c.r2, diff)
+		}
+	}
+}
+
+func TestMergeNode(t *testing.T) {
+	cmpOpts := cmp.Options{
+		protocmp.Transform(),
+	}
+
+	for _, c := range []struct {
+		local                *pbv2.NodeResponse
+		remote               *pbv2.NodeResponse
+		want                 *pbv2.NodeResponse
+		localPaginationInfo  *pbv1.PaginationInfo
+		remotePaginationInfo *pbv1.PaginationInfo
+		wantPaginationInfo   *pbv1.PaginationInfo
+	}{
+		{
+			&pbv2.NodeResponse{
+				Data: map[string]*pbv2.LinkedGraph{
+					"dcid1": {
+						Arcs: map[string]*pbv2.Nodes{
+							"prop1": {
+								Nodes: []*pb.EntityInfo{
+									{Value: "val1"},
+								},
+							},
+						},
+					},
+				},
+			},
+			&pbv2.NodeResponse{
+				Data: map[string]*pbv2.LinkedGraph{
+					"dcid1": {
+						Arcs: map[string]*pbv2.Nodes{
+							"prop1.2": {
+								Nodes: []*pb.EntityInfo{
+									{Value: "val1.2"},
+								},
+							},
+						},
+					},
+					"dcid2": {
+						Arcs: map[string]*pbv2.Nodes{
+							"prop2": {
+								Nodes: []*pb.EntityInfo{
+									{Value: "val2"},
+								},
+							},
+						},
+					},
+				},
+			},
+			&pbv2.NodeResponse{
+				Data: map[string]*pbv2.LinkedGraph{
+					"dcid1": {
+						Arcs: map[string]*pbv2.Nodes{
+							"prop1": {
+								Nodes: []*pb.EntityInfo{
+									{Value: "val1"},
+								},
+							},
+							"prop1.2": {
+								Nodes: []*pb.EntityInfo{
+									{Value: "val1.2"},
+								},
+							},
+						},
+					},
+					"dcid2": {
+						Arcs: map[string]*pbv2.Nodes{
+							"prop2": {
+								Nodes: []*pb.EntityInfo{
+									{Value: "val2"},
+								},
+							},
+						},
+					},
+				},
+			},
+			&pbv1.PaginationInfo{
+				CursorGroups: []*pbv1.CursorGroup{
+					{
+						Keys: []string{"key1"},
+						Cursors: []*pbv1.Cursor{
+							{
+								ImportGroup: 1,
+								Page:        1,
+								Item:        5,
+							},
+						},
+					},
+				},
+			},
+			&pbv1.PaginationInfo{
+				CursorGroups: []*pbv1.CursorGroup{
+					{
+						Keys: []string{"key2"},
+						Cursors: []*pbv1.Cursor{
+							{
+								ImportGroup: 2,
+								Page:        2,
+								Item:        10,
+							},
+						},
+					},
+				},
+			},
+			&pbv1.PaginationInfo{
+				CursorGroups: []*pbv1.CursorGroup{
+					{
+						Keys: []string{"key1"},
+						Cursors: []*pbv1.Cursor{
+							{
+								ImportGroup: 1,
+								Page:        1,
+								Item:        5,
+							},
+						},
+					},
+				},
+				RemotePaginationInfo: &pbv1.PaginationInfo{
+					CursorGroups: []*pbv1.CursorGroup{
+						{
+							Keys: []string{"key2"},
+							Cursors: []*pbv1.Cursor{
+								{
+									ImportGroup: 2,
+									Page:        2,
+									Item:        10,
+								},
+							},
+						},
+					},
+				},
+			},
+		},
+	} {
+		var err error
+
+		c.local.NextToken, err = util.EncodeProto(c.localPaginationInfo)
+		if err != nil {
+			t.Errorf("EncodeProto(%v) = %s", c.localPaginationInfo, err)
+			continue
+		}
+		c.remote.NextToken, err = util.EncodeProto(c.remotePaginationInfo)
+		if err != nil {
+			t.Errorf("EncodeProto(%v) = %s", c.remotePaginationInfo, err)
+			continue
+		}
+		c.want.NextToken, err = util.EncodeProto(c.wantPaginationInfo)
+		if err != nil {
+			t.Errorf("EncodeProto(%v) = %s", c.wantPaginationInfo, err)
+			continue
+		}
+
+		got, err := MergeNode(c.local, c.remote)
+		if err != nil {
+			t.Errorf("MergeEvent(%v, %v) = %s", c.local, c.remote, err)
+			continue
+		}
+		if diff := cmp.Diff(got, c.want, cmpOpts); diff != "" {
+			t.Errorf("MergeEvent(%v, %v) got diff: %s", c.local, c.remote, diff)
 		}
 	}
 }

@@ -20,6 +20,8 @@ import (
 
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	"github.com/datacommonsorg/mixer/internal/server/pagination"
+	"github.com/datacommonsorg/mixer/internal/util"
 )
 
 // MergeResolve merges two V2 resolve responses.
@@ -64,6 +66,98 @@ func MergeResolve(r1, r2 *pbv2.ResolveResponse) *pbv2.ResolveResponse {
 	})
 
 	return res
+}
+
+// MergeNode merges two V2 node responses.
+// NOTE: Make sure the order of the two arguments, it's important for merging |next_token|.
+func MergeNode(local, remote *pbv2.NodeResponse) (*pbv2.NodeResponse, error) {
+	type linkedGraphStore struct {
+		propToNodes        map[string]*pbv2.Nodes
+		propToLinkedGraphs map[string]*pbv2.LinkedGraph
+		propSet            map[string]struct{}
+	}
+	dcidToLinkedGraph := map[string]*linkedGraphStore{}
+
+	collectNode := func(n *pbv2.NodeResponse) {
+		for dcid, linkedGrarph := range n.GetData() {
+			if _, ok := dcidToLinkedGraph[dcid]; !ok {
+				dcidToLinkedGraph[dcid] = &linkedGraphStore{}
+			}
+			if arcs := linkedGrarph.GetArcs(); len(arcs) > 0 {
+				if dcidToLinkedGraph[dcid].propToNodes == nil {
+					dcidToLinkedGraph[dcid].propToNodes = map[string]*pbv2.Nodes{}
+				}
+				for prop, nodes := range arcs {
+					dcidToLinkedGraph[dcid].propToNodes[prop] = nodes
+				}
+			}
+			if neighbor := linkedGrarph.GetNeighbor(); len(neighbor) > 0 {
+				if dcidToLinkedGraph[dcid].propToLinkedGraphs == nil {
+					dcidToLinkedGraph[dcid].propToLinkedGraphs = map[string]*pbv2.LinkedGraph{}
+				}
+				for prop, neighborLinkedGraph := range neighbor {
+					dcidToLinkedGraph[dcid].propToLinkedGraphs[prop] = neighborLinkedGraph
+				}
+			}
+			if props := linkedGrarph.GetProperties(); len(props) > 0 {
+				if dcidToLinkedGraph[dcid].propSet == nil {
+					dcidToLinkedGraph[dcid].propSet = map[string]struct{}{}
+				}
+				for _, prop := range props {
+					dcidToLinkedGraph[dcid].propSet[prop] = struct{}{}
+				}
+			}
+		}
+	}
+
+	collectNode(local)
+	collectNode(remote)
+
+	res := &pbv2.NodeResponse{Data: map[string]*pbv2.LinkedGraph{}}
+	for dcid, store := range dcidToLinkedGraph {
+		res.Data[dcid] = &pbv2.LinkedGraph{}
+		if propToNodes := store.propToNodes; len(propToNodes) > 0 {
+			res.Data[dcid].Arcs = map[string]*pbv2.Nodes{}
+			for prop, nodes := range propToNodes {
+				res.Data[dcid].Arcs[prop] = nodes
+			}
+		}
+		if propToLinkedGraphs := store.propToLinkedGraphs; len(propToLinkedGraphs) > 0 {
+			res.Data[dcid].Neighbor = map[string]*pbv2.LinkedGraph{}
+			for prop, neighborLinkedGraph := range propToLinkedGraphs {
+				res.Data[dcid].Neighbor[prop] = neighborLinkedGraph
+			}
+		}
+		for prop := range store.propSet {
+			res.Data[dcid].Properties = append(res.Data[dcid].Properties, prop)
+		}
+	}
+
+	// Merge |next_token|.
+	resPaginationInfo := &pbv1.PaginationInfo{}
+	if local.GetNextToken() != "" {
+		localPaginationInfo, err := pagination.Decode(local.GetNextToken())
+		if err != nil {
+			return nil, err
+		}
+		resPaginationInfo = localPaginationInfo
+	}
+	if remote.GetNextToken() != "" {
+		remotePaginationInfo, err := pagination.Decode(remote.GetNextToken())
+		if err != nil {
+			return nil, err
+		}
+		resPaginationInfo.RemotePaginationInfo = remotePaginationInfo
+	}
+	if local.GetNextToken() != "" || remote.GetNextToken() != "" {
+		resNextToken, err := util.EncodeProto(resPaginationInfo)
+		if err != nil {
+			return nil, err
+		}
+		res.NextToken = resNextToken
+	}
+
+	return res, nil
 }
 
 // MergeEvent merges two V2 event responses.

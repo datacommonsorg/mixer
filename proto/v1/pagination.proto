@@ -41,4 +41,5 @@ message CursorGroup {
 // entity. There are multiple cursor groups for bulk APIs.
 message PaginationInfo {
   repeated CursorGroup cursor_groups = 1;
+  PaginationInfo remote_pagination_info = 2;
 }
