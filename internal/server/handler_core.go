@@ -262,7 +262,7 @@ func V2ObservationCore(
 	if queryDate && queryValue {
 		// Series.
 		if len(variable.GetDcids()) > 0 && len(entity.GetDcids()) > 0 {
-			return v2observation.FetchFromSeries(
+			return v2observation.FetchDirect(
 				ctx,
 				store,
 				variable.GetDcids(),
@@ -292,7 +292,7 @@ func V2ObservationCore(
 				return nil, status.Errorf(
 					codes.InvalidArgument, "invalid expression string: %s", expr)
 			}
-			return v2observation.FetchFromCollection(
+			return v2observation.FetchContainedIn(
 				ctx,
 				store,
 				variable.GetDcids(),

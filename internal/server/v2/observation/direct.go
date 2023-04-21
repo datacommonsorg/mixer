@@ -33,8 +33,8 @@ const (
 	LATEST = "LATEST"
 )
 
-// FetchFromSeries fetches data from observation series cache.
-func FetchFromSeries(
+// FetchDirect fetches data from explicit entity list.
+func FetchDirect(
 	ctx context.Context,
 	store *store.Store,
 	variables []string,

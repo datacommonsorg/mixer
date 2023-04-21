@@ -32,7 +32,7 @@ func TestFetchFromCollection(t *testing.T) {
 	ctx := context.Background()
 
 	_, filename, _, _ := runtime.Caller(0)
-	goldenPath := path.Join(path.Dir(filename), "collection")
+	goldenPath := path.Join(path.Dir(filename), "contained_in")
 
 	testSuite := func(mixer pbs.MixerClient, latencyTest bool) {
 		for _, c := range []struct {
@@ -110,7 +110,7 @@ func TestFetchFromCollection(t *testing.T) {
 				Date:     c.date,
 			})
 			if err != nil {
-				t.Errorf("could not run V2Observation (collection): %s", err)
+				t.Errorf("could not run V2Observation (contained_in): %s", err)
 				continue
 			}
 			if latencyTest {
