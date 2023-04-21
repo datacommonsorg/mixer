@@ -42,13 +42,13 @@ func TestBulkVariables(t *testing.T) {
 			wanterr    bool
 		}{
 			{
-				[]string{"geoId/05", "geoId/06085", "fake_place"},
+				[]string{"geoId/06", "fake_place"},
 				false,
-				"california_and_santa_clara.json",
+				"california.json",
 				false,
 			},
 			{
-				[]string{"geoId/05", "geoId/06085"},
+				[]string{"geoId/06", "geoId/06085"},
 				true,
 				"california_and_santa_clara_union.json",
 				false,

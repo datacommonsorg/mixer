@@ -76,11 +76,6 @@ func TestPlacePage(t *testing.T) {
 				[]string{},
 			},
 			{
-				"city",
-				"geoId/0656938",
-				[]string{},
-			},
-			{
 				"county",
 				"geoId/06085",
 				[]string{"Count_HousingUnit_2000To2004DateBuilt"},

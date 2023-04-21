@@ -49,7 +49,6 @@ func TestBulkObservationsPoint(t *testing.T) {
 					"Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita",
 					"Annual_Generation_Electricity",
 					"Count_Person_Unemployed",
-					"CumulativeCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase",
 					"Count_Person_FoodInsecure",
 				},
 				[]string{

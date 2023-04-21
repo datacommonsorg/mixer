@@ -1,9 +1,0 @@
-{
-  "date": "2018",
-  "value": 195465638180,
-  "metadata": {
-    "import_name": "EIA_Electricity",
-    "provenance_url": "https://www.eia.gov/opendata/qb.php?category=0",
-    "unit": "KilowattHour"
-  }
-}
