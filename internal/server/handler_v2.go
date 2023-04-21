@@ -26,6 +26,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/pagination"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/util"
+	"golang.org/x/sync/errgroup"
 	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/proto"
 
@@ -74,19 +75,40 @@ func fetchRemote(
 func (s *Server) V2Resolve(
 	ctx context.Context, in *pbv2.ResolveRequest,
 ) (*pbv2.ResolveResponse, error) {
-	resp, err := V2ResolveCore(ctx, s.store, s.mapsClient, in)
-	if err != nil {
+	errGroup, errCtx := errgroup.WithContext(ctx)
+	respChan := make(chan *pbv2.ResolveResponse, 2)
+
+	errGroup.Go(func() error {
+		resp, err := V2ResolveCore(errCtx, s.store, s.mapsClient, in)
+		if err != nil {
+			return err
+		}
+		respChan <- resp
+		return nil
+	})
+
+	if s.metadata.RemoteMixerDomain != "" {
+		errGroup.Go(func() error {
+			remoteResp := &pbv2.ResolveResponse{}
+			err := fetchRemote(s.metadata, s.httpClient, "/v2/resolve", in, remoteResp)
+			if err != nil {
+				return err
+			}
+			respChan <- remoteResp
+			return nil
+		})
+	} else {
+		respChan <- nil
+	}
+
+	if err := errGroup.Wait(); err != nil {
 		return nil, err
 	}
-	if s.metadata.RemoteMixerDomain != "" {
-		remoteResp := &pbv2.ResolveResponse{}
-		err := fetchRemote(s.metadata, s.httpClient, "/v2/resolve", in, remoteResp)
-		if err != nil {
-			return nil, err
-		}
-		return merger.MergeResolve(resp, remoteResp), nil
-	}
-	return resp, nil
+	close(respChan)
+
+	resp1, resp2 := <-respChan, <-respChan
+
+	return merger.MergeResolve(resp1, resp2), nil
 }
 
 // V2Node implements API for mixer.V2Node.
