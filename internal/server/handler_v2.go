@@ -33,8 +33,6 @@ import (
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 )
 
-// TODO(ws): Do local and remote calls in parallel.
-
 func fetchRemote(
 	metadata *resource.Metadata,
 	httpClient *http.Client,
