@@ -31,8 +31,8 @@ import (
 	"github.com/datacommonsorg/mixer/internal/store"
 )
 
-// FetchFromCollection fetches data from observation collection cache.
-func FetchFromCollection(
+// FetchContainedIn fetches data for child places contained in ancestor place.
+func FetchContainedIn(
 	ctx context.Context,
 	store *store.Store,
 	variables []string,
@@ -125,7 +125,7 @@ func FetchFromCollection(
 		childPlaces = childPlacesMap[ancestor]
 	}
 	if len(variablesMissingData) > 0 {
-		moreResult, err := FetchFromSeries(
+		moreResult, err := FetchDirect(
 			ctx,
 			store,
 			variablesMissingData,

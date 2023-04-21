@@ -32,7 +32,7 @@ func TestFetchFromSeries(t *testing.T) {
 	ctx := context.Background()
 
 	_, filename, _, _ := runtime.Caller(0)
-	goldenPath := path.Join(path.Dir(filename), "series")
+	goldenPath := path.Join(path.Dir(filename), "direct")
 
 	testSuite := func(mixer pbs.MixerClient, latencyTest bool) {
 		for _, c := range []struct {
@@ -81,7 +81,7 @@ func TestFetchFromSeries(t *testing.T) {
 				Date:     c.date,
 			})
 			if err != nil {
-				t.Errorf("could not run V2Observation (series): %s", err)
+				t.Errorf("could not run V2Observation (direct): %s", err)
 				continue
 			}
 			if latencyTest {
