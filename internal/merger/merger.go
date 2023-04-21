@@ -77,6 +77,26 @@ func MergeResolve(r1, r2 *pbv2.ResolveResponse) *pbv2.ResolveResponse {
 // MergeNode merges two V2 node responses.
 // NOTE: Make sure the order of the two arguments, it's important for merging |next_token|.
 func MergeNode(local, remote *pbv2.NodeResponse) (*pbv2.NodeResponse, error) {
+	if remote == nil {
+		return local, nil
+	} else if local == nil {
+		if remote.GetNextToken() != "" {
+			remotePaginationInfo, err := pagination.Decode(remote.GetNextToken())
+			if err != nil {
+				return nil, err
+			}
+			updatedPaginationInfo := &pbv1.PaginationInfo{
+				RemotePaginationInfo: remotePaginationInfo,
+			}
+			updatedNextToken, err := util.EncodeProto(updatedPaginationInfo)
+			if err != nil {
+				return nil, err
+			}
+			remote.NextToken = updatedNextToken
+		}
+		return remote, nil
+	}
+
 	type linkedGraphStore struct {
 		propToNodes        map[string]*pbv2.Nodes
 		propToLinkedGraphs map[string]*pbv2.LinkedGraph
