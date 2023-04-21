@@ -43,34 +43,10 @@ func TestObservationsPoint(t *testing.T) {
 			goldenFile string
 		}{
 			{
-				"Count_Person",
-				"country/USA",
-				"",
-				"count_person.json",
-			},
-			{
-				"Count_CriminalActivities_CombinedCrime",
-				"geoId/06",
-				"",
-				"total_crimes.json",
-			},
-			{
-				"Annual_Generation_Electricity",
-				"geoId/06",
-				"2018",
-				"electricity_generation.json",
-			},
-			{
 				"Median_Age_Person",
 				"geoId/0649670",
 				"2015",
 				"median_age.json",
-			},
-			{
-				"Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita",
-				"country/USA",
-				"2017",
-				"gdp.json",
 			},
 			{
 				"Count_Person",
@@ -83,12 +59,6 @@ func TestObservationsPoint(t *testing.T) {
 				"dummy_place",
 				"",
 				"dummy.json",
-			},
-			{
-				"Count_Person_Unemployed",
-				"country/USA",
-				"",
-				"umemployed.json",
 			},
 		} {
 

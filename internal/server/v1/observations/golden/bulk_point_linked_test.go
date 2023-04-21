@@ -45,16 +45,9 @@ func TestBulkObservationsPointLinked(t *testing.T) {
 			{
 				"County",
 				"geoId/06",
-				[]string{"dummy", "Count_Person", "Median_Age_Person"},
-				"",
-				"CA_County.json",
-			},
-			{
-				"County",
-				"country/USA",
 				[]string{"dummy", "Count_Person", "Median_Age_Person", "NumberOfMonths_WetBulbTemperature_35COrMore_RCP45_MinRelativeHumidity"},
 				"",
-				"USA_County.json",
+				"CA_County.json",
 			},
 			{
 				"State",

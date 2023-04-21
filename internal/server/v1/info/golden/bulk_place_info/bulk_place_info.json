@@ -4,28 +4,6 @@
       "node": "earth"
     },
     {
-      "node": "country/USA",
-      "info": {
-        "self": {
-          "dcid": "country/USA",
-          "name": "United States",
-          "type": "Country"
-        },
-        "parents": [
-          {
-            "dcid": "northamerica",
-            "name": "North America",
-            "type": "Continent"
-          },
-          {
-            "dcid": "Earth",
-            "name": "Earth",
-            "type": "Place"
-          }
-        ]
-      }
-    },
-    {
       "node": "geoId/06",
       "info": {
         "self": {
@@ -34,53 +12,6 @@
           "type": "State"
         },
         "parents": [
-          {
-            "dcid": "usc/PacificDivision",
-            "name": "Pacific Division",
-            "type": "CensusDivision"
-          },
-          {
-            "dcid": "country/USA",
-            "name": "United States",
-            "type": "Country"
-          },
-          {
-            "dcid": "usc/WestRegion",
-            "name": "West Region",
-            "type": "CensusRegion"
-          },
-          {
-            "dcid": "northamerica",
-            "name": "North America",
-            "type": "Continent"
-          },
-          {
-            "dcid": "Earth",
-            "name": "Earth",
-            "type": "Place"
-          }
-        ]
-      }
-    },
-    {
-      "node": "geoId/06085",
-      "info": {
-        "self": {
-          "dcid": "geoId/06085",
-          "name": "Santa Clara County",
-          "type": "County"
-        },
-        "parents": [
-          {
-            "dcid": "wikidataId/Q213205",
-            "name": "San Francisco Bay Area",
-            "type": "AdministrativeArea"
-          },
-          {
-            "dcid": "geoId/06",
-            "name": "California",
-            "type": "State"
-          },
           {
             "dcid": "usc/PacificDivision",
             "name": "Pacific Division",

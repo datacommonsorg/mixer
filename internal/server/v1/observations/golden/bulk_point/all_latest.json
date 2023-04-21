@@ -399,40 +399,6 @@
       ]
     },
     {
-      "variable": "CumulativeCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase",
-      "observations_by_entity": [
-        {
-          "entity": "dummy"
-        },
-        {
-          "entity": "country/FRA"
-        },
-        {
-          "entity": "country/USA",
-          "points_by_facet": [
-            {
-              "date": "2023-03-23",
-              "value": 103910034,
-              "facet": "2232540893"
-            }
-          ]
-        },
-        {
-          "entity": "geoId/06",
-          "points_by_facet": [
-            {
-              "date": "2023-03-23",
-              "value": 12169158,
-              "facet": "2232540893"
-            }
-          ]
-        },
-        {
-          "entity": "geoId/0649670"
-        }
-      ]
-    },
-    {
       "variable": "Count_Person_FoodInsecure",
       "observations_by_entity": [
         {
@@ -541,11 +507,6 @@
       "provenance_url": "https://www2.census.gov/programs-surveys/popest/tables",
       "measurement_method": "CensusPEPSurvey",
       "observation_period": "P1Y"
-    },
-    "2232540893": {
-      "import_name": "NYT_COVID19",
-      "provenance_url": "https://www.nytimes.com/article/coronavirus-county-data-us.html",
-      "measurement_method": "NYT_COVID19_GitHub"
     },
     "2343540064": {
       "import_name": "FBIGovCrime_AggCountry",

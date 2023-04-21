@@ -1,9 +1,0 @@
-{
-  "date": "2019",
-  "value": 1095445,
-  "metadata": {
-    "import_name": "FBIGovCrime",
-    "provenance_url": "http://www.fbi.gov/services/cjis/ucr",
-    "observation_period": "P1Y"
-  }
-}

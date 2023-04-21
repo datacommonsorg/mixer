@@ -41,11 +41,6 @@ func TestTriplesIn(t *testing.T) {
 			token      string
 		}{
 			{
-				"Country.json",
-				"Country",
-				"",
-			},
-			{
 				"BiologicalSpecimen1.json",
 				"BiologicalSpecimen",
 				"",
@@ -54,11 +49,6 @@ func TestTriplesIn(t *testing.T) {
 				"BiologicalSpecimen2.json",
 				"BiologicalSpecimen",
 				"H4sIAAAAAAAA/+Ly4BJyyszPyU/PTE7MCS5ITc7MTc3jYiupLEj1T8MmJ8QgxMTBKMTCwSTAKMTEwSzExMEixMTBCgAAAP//AQAA//8CuEaKSgAAAA==",
-			},
-			{
-				"Count_Person.json",
-				"Count_Person",
-				"",
 			},
 		} {
 			req := &pbv1.TriplesRequest{

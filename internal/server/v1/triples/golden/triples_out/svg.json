@@ -1,0 +1,36 @@
+{
+  "triples": {
+    "name": {
+      "nodes": [
+        {
+          "provenanceId": "dc/base/HumanReadableStatVars",
+          "value": "Data Commons Variables"
+        }
+      ]
+    },
+    "provenance": {
+      "nodes": [
+        {
+          "name": "HumanReadableStatVars",
+          "types": [
+            "Provenance"
+          ],
+          "dcid": "dc/base/HumanReadableStatVars",
+          "provenanceId": "dc/base/HumanReadableStatVars"
+        }
+      ]
+    },
+    "typeOf": {
+      "nodes": [
+        {
+          "name": "StatVarGroup",
+          "types": [
+            "Class"
+          ],
+          "dcid": "StatVarGroup",
+          "provenanceId": "dc/base/HumanReadableStatVars"
+        }
+      ]
+    }
+  }
+}
