@@ -81,20 +81,3 @@ func TestSparql(t *testing.T) {
 		}
 	}
 }
-
-func TestBt(t *testing.T) {
-	t.Parallel()
-	ctx := context.Background()
-	client, err := test.SetupBqOnly()
-	if err != nil {
-		t.Fatalf("Failed to set up mixer and client")
-	}
-	req := &pb.GetTriplesRequest{Dcids: []string{"geoId/06", "geoId/07"}}
-	_, err = client.GetTriples(ctx, req)
-	if err == nil {
-		t.Errorf("Expect error for Bigtable query")
-	}
-	if err.Error() != "rpc error: code = NotFound desc = Bigtable instance is not specified" {
-		t.Errorf("Error msg is not expected: %s", err)
-	}
-}

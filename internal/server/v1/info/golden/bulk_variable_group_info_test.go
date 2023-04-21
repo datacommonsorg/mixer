@@ -28,7 +28,6 @@ import (
 )
 
 func TestBulkVariableGroupInfo(t *testing.T) {
-	t.Parallel()
 	ctx := context.Background()
 
 	_, filename, _, _ := runtime.Caller(0)
@@ -93,7 +92,10 @@ func TestBulkVariableGroupInfo(t *testing.T) {
 	}
 
 	if err := test.TestDriver(
-		"BulkVariableGroupInfo", &test.TestOption{UseCache: true}, testSuite); err != nil {
+		"BulkVariableGroupInfo",
+		&test.TestOption{UseCache: true},
+		testSuite,
+	); err != nil {
 		t.Errorf("TestDriver() = %s", err)
 	}
 }
