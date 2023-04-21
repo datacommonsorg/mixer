@@ -107,7 +107,6 @@ func (s *Server) V2Resolve(
 	close(respChan)
 
 	resp1, resp2 := <-respChan, <-respChan
-
 	return merger.MergeResolve(resp1, resp2), nil
 }
 
@@ -184,36 +183,76 @@ func (s *Server) V2Node(
 func (s *Server) V2Event(
 	ctx context.Context, in *pbv2.EventRequest,
 ) (*pbv2.EventResponse, error) {
-	resp, err := V2EventCore(ctx, s.store, in)
-	if err != nil {
+	errGroup, errCtx := errgroup.WithContext(ctx)
+	respChan := make(chan *pbv2.EventResponse, 2)
+
+	errGroup.Go(func() error {
+		resp, err := V2EventCore(errCtx, s.store, in)
+		if err != nil {
+			return err
+		}
+		respChan <- resp
+		return nil
+	})
+
+	if s.metadata.RemoteMixerDomain != "" {
+		errGroup.Go(func() error {
+			remoteResp := &pbv2.EventResponse{}
+			err := fetchRemote(s.metadata, s.httpClient, "/v2/event", in, remoteResp)
+			if err != nil {
+				return err
+			}
+			respChan <- remoteResp
+			return nil
+		})
+	} else {
+		respChan <- nil
+	}
+
+	if err := errGroup.Wait(); err != nil {
 		return nil, err
 	}
-	if s.metadata.RemoteMixerDomain != "" {
-		remoteResp := &pbv2.EventResponse{}
-		err := fetchRemote(s.metadata, s.httpClient, "/v2/event", in, remoteResp)
-		if err != nil {
-			return nil, err
-		}
-		return merger.MergeEvent(resp, remoteResp), nil
-	}
-	return resp, nil
+	close(respChan)
+
+	resp1, resp2 := <-respChan, <-respChan
+	return merger.MergeEvent(resp1, resp2), nil
 }
 
 // V2Observation implements API for mixer.V2Observation.
 func (s *Server) V2Observation(
 	ctx context.Context, in *pbv2.ObservationRequest,
 ) (*pbv2.ObservationResponse, error) {
-	resp, err := V2ObservationCore(ctx, s.store, in)
-	if err != nil {
+	errGroup, errCtx := errgroup.WithContext(ctx)
+	respChan := make(chan *pbv2.ObservationResponse, 2)
+
+	errGroup.Go(func() error {
+		resp, err := V2ObservationCore(errCtx, s.store, in)
+		if err != nil {
+			return err
+		}
+		respChan <- resp
+		return nil
+	})
+
+	if s.metadata.RemoteMixerDomain != "" {
+		errGroup.Go(func() error {
+			remoteResp := &pbv2.ObservationResponse{}
+			err := fetchRemote(s.metadata, s.httpClient, "/v2/observation", in, remoteResp)
+			if err != nil {
+				return err
+			}
+			respChan <- remoteResp
+			return nil
+		})
+	} else {
+		respChan <- nil
+	}
+
+	if err := errGroup.Wait(); err != nil {
 		return nil, err
 	}
-	if s.metadata.RemoteMixerDomain != "" {
-		remoteResp := &pbv2.ObservationResponse{}
-		err := fetchRemote(s.metadata, s.httpClient, "/v2/observation", in, remoteResp)
-		if err != nil {
-			return nil, err
-		}
-		return merger.MergeObservation(resp, remoteResp), nil
-	}
-	return resp, nil
+	close(respChan)
+
+	resp1, resp2 := <-respChan, <-respChan
+	return merger.MergeObservation(resp1, resp2), nil
 }
