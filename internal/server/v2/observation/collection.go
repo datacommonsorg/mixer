@@ -75,7 +75,6 @@ func FetchFromCollection(
 		for _, cohort := range cohorts {
 			facet := util.GetFacet(cohort)
 			facetID := util.GetFacetID(facet)
-			result.Facets[facetID] = facet
 			for entity, val := range cohort.Val {
 				if _, ok := obsByEntity[entity]; !ok {
 					obsByEntity[entity] = &pbv2.EntityObservation{}
@@ -85,6 +84,11 @@ func FetchFromCollection(
 				respDate := queryDate
 				if respDate == LATEST {
 					respDate = cohort.PlaceToLatestDate[entity]
+				}
+				// If there is higher quality facet, then do not pick from the inferior
+				// facet even it could have more recent data.
+				if len(obsByEntity[entity].OrderedFacets) > 0 && stat.IsInferiorFacetPb(cohort) {
+					continue
 				}
 				obsByEntity[entity].OrderedFacets = append(
 					obsByEntity[entity].OrderedFacets,
@@ -98,6 +102,7 @@ func FetchFromCollection(
 						},
 					},
 				)
+				result.Facets[facetID] = facet
 			}
 		}
 	}
@@ -131,6 +136,11 @@ func FetchFromCollection(
 			return nil, err
 		}
 		for variable, variableData := range moreResult.ByVariable {
+			for entity, entityData := range variableData.ByEntity {
+				if len(entityData.OrderedFacets) == 0 {
+					delete(variableData.ByEntity, entity)
+				}
+			}
 			result.ByVariable[variable] = variableData
 		}
 		for facet, res := range moreResult.Facets {

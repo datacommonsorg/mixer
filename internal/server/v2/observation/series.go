@@ -61,7 +61,7 @@ func FetchFromSeries(
 				series = append(series, store.MemDb.ReadSeries(variable, entity)...)
 			}
 			if len(series) > 0 {
-				// Read series from BT cache
+				// Sort series by rank
 				sort.Sort(ranking.SeriesByRank(series))
 				for _, series := range series {
 					facet := util.GetFacet(series)
@@ -80,14 +80,17 @@ func FetchFromSeries(
 					if len(obsList) == 0 {
 						continue
 					}
-
 					sort.SliceStable(obsList, func(i, j int) bool {
 						return obsList[i].Date < obsList[j].Date
 					})
 					if queryDate == LATEST {
 						obsList = obsList[len(obsList)-1:]
+						// If there is higher quality series, then do not pick from the inferior
+						// facet even it could have more recent data.
+						if len(entityObservation.OrderedFacets) > 0 && stat.IsInferiorFacetPb(series) {
+							break
+						}
 					}
-
 					result.Facets[facetID] = facet
 					entityObservation.OrderedFacets = append(
 						entityObservation.OrderedFacets,
