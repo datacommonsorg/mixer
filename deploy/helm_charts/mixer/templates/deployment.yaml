@@ -79,6 +79,9 @@ spec:
             - --bq_dataset=$(BIGQUERY)
             - --schema_path=/datacommons/mapping
             - --memdb_path=/datacommons/memdb
+            {{- if eq $.Values.customDC.enabled true }}
+            - --use_branch_bt=false
+            {{- end }}
             {{- if eq $.Values.mixer.bigqueryOnly true }}
             - --bigquery_only=true
             {{- end }}
