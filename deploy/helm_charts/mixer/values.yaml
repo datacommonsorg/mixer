@@ -28,6 +28,10 @@ namespace:
   create: false
   name: "mixer"
 
+# Everything custom DC related.
+customDC:
+  enabled: false
+
 # Mixer service config.
 mixer:
   hostProject:
