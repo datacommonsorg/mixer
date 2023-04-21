@@ -33,8 +33,6 @@ import (
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 )
 
-// TODO(ws): Do local and remote calls in parallel.
-
 func fetchRemote(
 	metadata *resource.Metadata,
 	httpClient *http.Client,
@@ -114,68 +112,95 @@ func (s *Server) V2Resolve(
 func (s *Server) V2Node(
 	ctx context.Context, in *pbv2.NodeRequest,
 ) (*pbv2.NodeResponse, error) {
+	errGroup, errCtx := errgroup.WithContext(ctx)
+	localRespChan := make(chan *pbv2.NodeResponse, 1)
+	remoteRespChan := make(chan *pbv2.NodeResponse, 1)
+
 	if in.GetNextToken() == "" {
 		// When request |next_token| is empty, there are two cases:
 		// 1. The call does not need pagination, e.g. PropertyLabels.
 		// 2. The call needs pagination, but this is the first call/page.
 		// In both cases, we need to read from both local and remote, and merge.
 
-		localResp, err := V2NodeCore(ctx, s.store, s.cache, s.metadata, in)
-		if err != nil {
-			return nil, err
-		}
+		errGroup.Go(func() error {
+			resp, err := V2NodeCore(errCtx, s.store, s.cache, s.metadata, in)
+			if err != nil {
+				return err
+			}
+			localRespChan <- resp
+			return nil
+		})
 
 		if s.metadata.RemoteMixerDomain != "" {
-			remoteResp := &pbv2.NodeResponse{}
-			err := fetchRemote(s.metadata, s.httpClient, "/v2/node", in, remoteResp)
-			if err != nil {
-				return nil, err
-			}
-			return merger.MergeNode(localResp, remoteResp)
+			errGroup.Go(func() error {
+				remoteResp := &pbv2.NodeResponse{}
+				err := fetchRemote(s.metadata, s.httpClient, "/v2/node", in, remoteResp)
+				if err != nil {
+					return err
+				}
+				remoteRespChan <- remoteResp
+				return nil
+			})
+		} else {
+			remoteRespChan <- nil
+		}
+	} else { // in.GetNextToken() != ""
+		// In this case, the call needs pagination, and it's not the first call/page.
+
+		paginationInfo, err := pagination.Decode(in.GetNextToken())
+		if err != nil {
+			return nil, err
+		}
+		cursorGroups := paginationInfo.GetCursorGroups()
+		remotePaginationInfo := paginationInfo.GetRemotePaginationInfo()
+
+		if len(cursorGroups) > 0 {
+			// Non-empty |cursor_groups|, read from local, for non-first page.
+			errGroup.Go(func() error {
+				resp, err := V2NodeCore(ctx, s.store, s.cache, s.metadata, in)
+				if err != nil {
+					return err
+				}
+				localRespChan <- resp
+				return nil
+			})
+		} else {
+			localRespChan <- nil
 		}
 
-		return localResp, nil
+		if s.metadata.RemoteMixerDomain != "" && remotePaginationInfo != nil {
+			// Read from remote, for non-first page.
+
+			errGroup.Go(func() error {
+				// Update |next_token| before sending the request to remote.
+				// Peel off one layer of |remote_pagination_info| hierarchy.
+				remoteReqNextToken, err := util.EncodeProto(remotePaginationInfo)
+				if err != nil {
+					return err
+				}
+				in.NextToken = remoteReqNextToken
+
+				// Call remote.
+				remoteResp := &pbv2.NodeResponse{}
+				if err := fetchRemote(
+					s.metadata, s.httpClient, "/v2/node", in, remoteResp); err != nil {
+					return err
+				}
+				remoteRespChan <- remoteResp
+				return nil
+			})
+		} else {
+			remoteRespChan <- nil
+		}
 	}
 
-	// Below is under the condition in.GetNextToken() != "".
-	// In this case, the call needs pagination, and it's not the first call/page.
-
-	paginationInfo, err := pagination.Decode(in.GetNextToken())
-	if err != nil {
+	if err := errGroup.Wait(); err != nil {
 		return nil, err
 	}
-	cursorGroups := paginationInfo.GetCursorGroups()
-	remotePaginationInfo := paginationInfo.GetRemotePaginationInfo()
+	close(localRespChan)
+	close(remoteRespChan)
 
-	localResp := &pbv2.NodeResponse{}
-	remoteResp := &pbv2.NodeResponse{}
-
-	if len(cursorGroups) > 0 {
-		// Non-empty |cursor_groups|, read from local, for non-first page.
-		localResp, err = V2NodeCore(ctx, s.store, s.cache, s.metadata, in)
-		if err != nil {
-			return nil, err
-		}
-	}
-
-	if s.metadata.RemoteMixerDomain != "" && remotePaginationInfo != nil {
-		// Read from remote, for non-first page.
-
-		// Update |next_token| before sending the request to remote.
-		// Peel off one layer of |remote_pagination_info| hierarchy.
-		remoteReqNextToken, err := util.EncodeProto(remotePaginationInfo)
-		if err != nil {
-			return nil, err
-		}
-		in.NextToken = remoteReqNextToken
-
-		// Call remote.
-		if err := fetchRemote(
-			s.metadata, s.httpClient, "/v2/node", in, remoteResp); err != nil {
-			return nil, err
-		}
-	}
-
+	localResp, remoteResp := <-localRespChan, <-remoteRespChan
 	return merger.MergeNode(localResp, remoteResp)
 }
 
