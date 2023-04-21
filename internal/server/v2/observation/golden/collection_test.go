@@ -84,6 +84,12 @@ func TestFetchFromCollection(t *testing.T) {
 				"CA_County_2015.json",
 			},
 			{
+				[]string{"Count_Person", "Median_Age_Person"},
+				"geoId/06<-containedInPlace+{typeOf:County}",
+				"",
+				"CA_County_all.json",
+			},
+			{
 				[]string{"Count_Person"},
 				"country/FRA<-containedInPlace+{typeOf:AdministrativeArea2}",
 				"2016",
