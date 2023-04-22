@@ -27,7 +27,7 @@ import (
 	"google.golang.org/protobuf/testing/protocmp"
 )
 
-func TestFetchFromSeries(t *testing.T) {
+func TestFetchDirect(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
 
@@ -45,32 +45,78 @@ func TestFetchFromSeries(t *testing.T) {
 				[]string{
 					"dummy",
 					"Count_Person",
-					"CumulativeCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase",
+					"Median_Age_Person",
+					"WithdrawalRate_Water_Aquaculture",
+					"Count_CriminalActivities_CombinedCrime",
+					"Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita",
+					"Annual_Generation_Electricity",
+					"Count_Person_Unemployed",
 					"Count_Person_FoodInsecure",
 				},
-				[]string{"dummy", "country/FRA", "country/USA", "geoId/06", "geoId/0649670"},
+				[]string{
+					"dummy",
+					"country/FRA",
+					"country/USA",
+					"geoId/06",
+					"geoId/0649670",
+				},
 				"",
 				"all.json",
 			},
 			{
 				[]string{
+					"Count_Person",
 					"Count_CriminalActivities_CombinedCrime",
 					"Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita",
 					"Annual_Generation_Electricity",
 					"Count_Person_Unemployed",
+					"Count_Person_FoodInsecure",
 				},
 				[]string{"dummy", "country/FRA", "country/USA", "geoId/06", "geoId/0649670"},
-				"2021",
-				"2021.json",
+				"2015",
+				"2015.json",
+			},
+			{
+				[]string{
+					"Count_Person",
+					"Count_CriminalActivities_CombinedCrime",
+					"Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita",
+					"Annual_Generation_Electricity",
+					"Count_Person_Unemployed",
+					"Count_Person_FoodInsecure",
+				},
+				[]string{"dummy", "country/FRA", "country/USA", "geoId/06", "geoId/0649670"},
+				"2010",
+				"2010.json",
 			},
 			{
 				[]string{
 					"Area_Farm",
+					"Count_Person",
+					"Count_CriminalActivities_CombinedCrime",
+					"Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita",
+					"Annual_Generation_Electricity",
+					"Count_Person_Unemployed",
 					"AirQualityIndex_AirPollutant",
+					"Count_Person_FoodInsecure",
 				},
-				[]string{"country/USA", "geoId/06", "geoId/17031"},
+				[]string{
+					"dummy",
+					"country/FRA",
+					"country/USA",
+					"geoId/06",
+					"geoId/0649670",
+				},
 				"LATEST",
 				"latest.json",
+			},
+			{
+				[]string{
+					"Count_Person",
+				},
+				[]string{"country/USA"},
+				"2018-01",
+				"empty.json",
 			},
 		} {
 			goldenFile := c.goldenFile
