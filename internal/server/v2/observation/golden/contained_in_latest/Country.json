@@ -1,0 +1,5481 @@
+{
+  "by_variable": {
+    "Count_Person": {
+      "by_entity": {
+        "country/ABW": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 106537
+                }
+              ]
+            }
+          ]
+        },
+        "country/AFG": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 40099462
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 34656000
+                }
+              ]
+            }
+          ]
+        },
+        "country/AGO": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 34503774
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 28813000
+                }
+              ]
+            }
+          ]
+        },
+        "country/AIA": {
+          "ordered_facets": [
+            {
+              "facet_id": "3114843463",
+              "observations": [
+                {
+                  "date": "2011",
+                  "value": 15094
+                }
+              ]
+            }
+          ]
+        },
+        "country/ALB": {
+          "ordered_facets": [
+            {
+              "facet_id": "858679853",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 2862427
+                }
+              ]
+            },
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 2811666
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 2876000
+                }
+              ]
+            }
+          ]
+        },
+        "country/AND": {
+          "ordered_facets": [
+            {
+              "facet_id": "858679853",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 76177
+                }
+              ]
+            },
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 79034
+                }
+              ]
+            }
+          ]
+        },
+        "country/ANT": {
+          "ordered_facets": [
+            {
+              "facet_id": "3114843463",
+              "observations": [
+                {
+                  "date": "2009",
+                  "value": 227049
+                }
+              ]
+            }
+          ]
+        },
+        "country/ARE": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 9365145
+                }
+              ]
+            }
+          ]
+        },
+        "country/ARG": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 45808747
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 43847000
+                }
+              ]
+            }
+          ]
+        },
+        "country/ARM": {
+          "ordered_facets": [
+            {
+              "facet_id": "858679853",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 2965269
+                }
+              ]
+            },
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 2790974
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 2925000
+                }
+              ]
+            }
+          ]
+        },
+        "country/ASM": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 45035
+                }
+              ]
+            }
+          ]
+        },
+        "country/ATF": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2012",
+                  "value": 196
+                }
+              ]
+            }
+          ]
+        },
+        "country/ATG": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 93219
+                }
+              ]
+            }
+          ]
+        },
+        "country/AUS": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 25688079
+                }
+              ]
+            },
+            {
+              "facet_id": "1151455814",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 25364300
+                }
+              ]
+            }
+          ]
+        },
+        "country/AUT": {
+          "ordered_facets": [
+            {
+              "facet_id": "858679853",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 8858775
+                }
+              ]
+            },
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 8955797
+                }
+              ]
+            },
+            {
+              "facet_id": "1151455814",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 8858780
+                }
+              ]
+            }
+          ]
+        },
+        "country/AZE": {
+          "ordered_facets": [
+            {
+              "facet_id": "858679853",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 9981457
+                }
+              ]
+            },
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 10137750
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 9762000
+                }
+              ]
+            }
+          ]
+        },
+        "country/BDI": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 12551213
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 10524000
+                }
+              ]
+            }
+          ]
+        },
+        "country/BEL": {
+          "ordered_facets": [
+            {
+              "facet_id": "858679853",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 11455519
+                }
+              ]
+            },
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 11592952
+                }
+              ]
+            },
+            {
+              "facet_id": "1151455814",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 11455500
+                }
+              ]
+            }
+          ]
+        },
+        "country/BEN": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 12996895
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 10872000
+                }
+              ]
+            }
+          ]
+        },
+        "country/BES": {
+          "ordered_facets": [
+            {
+              "facet_id": "1456184638",
+              "observations": [
+                {
+                  "date": "2020-01-01",
+                  "value": 25987
+                }
+              ]
+            }
+          ]
+        },
+        "country/BFA": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 22100683
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 18646000
+                }
+              ]
+            }
+          ]
+        },
+        "country/BGD": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 169356251
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 162952000
+                }
+              ]
+            }
+          ]
+        },
+        "country/BGR": {
+          "ordered_facets": [
+            {
+              "facet_id": "858679853",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 7000039
+                }
+              ]
+            },
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 6877743
+                }
+              ]
+            },
+            {
+              "facet_id": "1945925412",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 7101859
+                }
+              ]
+            },
+            {
+              "facet_id": "1151455814",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 7000040
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 7128000
+                }
+              ]
+            }
+          ]
+        },
+        "country/BHR": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 1463265
+                }
+              ]
+            }
+          ]
+        },
+        "country/BHS": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 407906
+                }
+              ]
+            }
+          ]
+        },
+        "country/BIH": {
+          "ordered_facets": [
+            {
+              "facet_id": "858679853",
+              "observations": [
+                {
+                  "date": "2012",
+                  "value": 3839265
+                }
+              ]
+            },
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 3270943
+                }
+              ]
+            },
+            {
+              "facet_id": "3162233851",
+              "observations": [
+                {
+                  "date": "2013",
+                  "value": 3791622
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 3517000
+                }
+              ]
+            }
+          ]
+        },
+        "country/BLM": {
+          "ordered_facets": [
+            {
+              "facet_id": "3114843463",
+              "observations": [
+                {
+                  "date": "2012",
+                  "value": 9131
+                }
+              ]
+            }
+          ]
+        },
+        "country/BLR": {
+          "ordered_facets": [
+            {
+              "facet_id": "858679853",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 9475174
+                }
+              ]
+            },
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 9340314
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 9507000
+                }
+              ]
+            }
+          ]
+        },
+        "country/BLZ": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 400031
+                }
+              ]
+            }
+          ]
+        },
+        "country/BMU": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 63867
+                }
+              ]
+            }
+          ]
+        },
+        "country/BOL": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 12079472
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 10888000
+                }
+              ]
+            }
+          ]
+        },
+        "country/BRA": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 214326223
+                }
+              ]
+            },
+            {
+              "facet_id": "1151455814",
+              "observations": [
+                {
+                  "date": "2018",
+                  "value": 208495000
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 207653000
+                }
+              ]
+            }
+          ]
+        },
+        "country/BRB": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 281200
+                }
+              ]
+            }
+          ]
+        },
+        "country/BRN": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 445373
+                }
+              ]
+            }
+          ]
+        },
+        "country/BTN": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 777486
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 798000
+                }
+              ]
+            }
+          ]
+        },
+        "country/BWA": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 2588423
+                }
+              ]
+            }
+          ]
+        },
+        "country/CAF": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 5457154
+                }
+              ]
+            }
+          ]
+        },
+        "country/CAN": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 38246108
+                }
+              ]
+            },
+            {
+              "facet_id": "1151455814",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 37589300
+                }
+              ]
+            },
+            {
+              "facet_id": "4194503167",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 37589262
+                }
+              ]
+            }
+          ]
+        },
+        "country/CCK": {
+          "ordered_facets": [
+            {
+              "facet_id": "3114843463",
+              "observations": [
+                {
+                  "date": "2009",
+                  "value": 596
+                }
+              ]
+            }
+          ]
+        },
+        "country/CHE": {
+          "ordered_facets": [
+            {
+              "facet_id": "858679853",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 8544527
+                }
+              ]
+            },
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 8703405
+                }
+              ]
+            },
+            {
+              "facet_id": "1151455814",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 8544530
+                }
+              ]
+            }
+          ]
+        },
+        "country/CHL": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 19493184
+                }
+              ]
+            },
+            {
+              "facet_id": "1151455814",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 19107200
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 17910000
+                }
+              ]
+            }
+          ]
+        },
+        "country/CHN": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 1412360000
+                }
+              ]
+            },
+            {
+              "facet_id": "1151455814",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 1396530000
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 1378665000
+                }
+              ]
+            }
+          ]
+        },
+        "country/CIV": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 27478249
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 23696000
+                }
+              ]
+            }
+          ]
+        },
+        "country/CMR": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 27198628
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 23439000
+                }
+              ]
+            }
+          ]
+        },
+        "country/COD": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 95894118
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 78736000
+                }
+              ]
+            }
+          ]
+        },
+        "country/COG": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 5835806
+                }
+              ]
+            }
+          ]
+        },
+        "country/COK": {
+          "ordered_facets": [
+            {
+              "facet_id": "1456184638",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 17459
+                }
+              ]
+            }
+          ]
+        },
+        "country/COL": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 51516562
+                }
+              ]
+            },
+            {
+              "facet_id": "1151455814",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 50374500
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 48653000
+                }
+              ]
+            }
+          ]
+        },
+        "country/COM": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 821625
+                }
+              ]
+            }
+          ]
+        },
+        "country/CPV": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 587925
+                }
+              ]
+            }
+          ]
+        },
+        "country/CRI": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 5153957
+                }
+              ]
+            },
+            {
+              "facet_id": "1151455814",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 5058000
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 4857000
+                }
+              ]
+            }
+          ]
+        },
+        "country/CUB": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 11256372
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 11476000
+                }
+              ]
+            }
+          ]
+        },
+        "country/CUW": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 152369
+                }
+              ]
+            }
+          ]
+        },
+        "country/CXR": {
+          "ordered_facets": [
+            {
+              "facet_id": "3114843463",
+              "observations": [
+                {
+                  "date": "2010",
+                  "value": 1402
+                }
+              ]
+            }
+          ]
+        },
+        "country/CYM": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 68136
+                }
+              ]
+            }
+          ]
+        },
+        "country/CYP": {
+          "ordered_facets": [
+            {
+              "facet_id": "858679853",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 875899
+                }
+              ]
+            },
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 1244188
+                }
+              ]
+            }
+          ]
+        },
+        "country/CZE": {
+          "ordered_facets": [
+            {
+              "facet_id": "858679853",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 10649800
+                }
+              ]
+            },
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 10505772
+                }
+              ]
+            },
+            {
+              "facet_id": "4274669025",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 10565284
+                }
+              ]
+            },
+            {
+              "facet_id": "1151455814",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 10649800
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 10562000
+                }
+              ]
+            }
+          ]
+        },
+        "country/DEU": {
+          "ordered_facets": [
+            {
+              "facet_id": "858679853",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 83019213
+                }
+              ]
+            },
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 83196078
+                }
+              ]
+            },
+            {
+              "facet_id": "681041463",
+              "observations": [
+                {
+                  "date": "2017",
+                  "value": 82792351
+                }
+              ]
+            },
+            {
+              "facet_id": "1151455814",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 83019200
+                }
+              ]
+            }
+          ]
+        },
+        "country/DJI": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 1105557
+                }
+              ]
+            }
+          ]
+        },
+        "country/DMA": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 72412
+                }
+              ]
+            }
+          ]
+        },
+        "country/DNK": {
+          "ordered_facets": [
+            {
+              "facet_id": "858679853",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 5806081
+                }
+              ]
+            },
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 5856733
+                }
+              ]
+            },
+            {
+              "facet_id": "1151455814",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 5806080
+                }
+              ]
+            },
+            {
+              "facet_id": "3169183847",
+              "observations": [
+                {
+                  "date": "2017",
+                  "value": 5749000
+                }
+              ]
+            }
+          ]
+        },
+        "country/DOM": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 11117873
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 10649000
+                }
+              ]
+            }
+          ]
+        },
+        "country/DZA": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 44177969
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 40606000
+                }
+              ]
+            }
+          ]
+        },
+        "country/ECU": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 17797737
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 16385000
+                }
+              ]
+            }
+          ]
+        },
+        "country/EGY": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 109262178
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 95689000
+                }
+              ]
+            }
+          ]
+        },
+        "country/ERI": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 3620312
+                }
+              ]
+            }
+          ]
+        },
+        "country/ESH": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 582000
+                }
+              ]
+            }
+          ]
+        },
+        "country/ESP": {
+          "ordered_facets": [
+            {
+              "facet_id": "858679853",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 46937060
+                }
+              ]
+            },
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 47415750
+                }
+              ]
+            },
+            {
+              "facet_id": "1151455814",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 46937100
+                }
+              ]
+            },
+            {
+              "facet_id": "88328847",
+              "observations": [
+                {
+                  "date": "2018",
+                  "value": 46722980
+                }
+              ]
+            }
+          ]
+        },
+        "country/EST": {
+          "ordered_facets": [
+            {
+              "facet_id": "858679853",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 1324820
+                }
+              ]
+            },
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 1330932
+                }
+              ]
+            },
+            {
+              "facet_id": "1151455814",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 1324820
+                }
+              ]
+            },
+            {
+              "facet_id": "2544608669",
+              "observations": [
+                {
+                  "date": "2017",
+                  "value": 1315635
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 1316000
+                }
+              ]
+            }
+          ]
+        },
+        "country/ETH": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 120283026
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 102403000
+                }
+              ]
+            }
+          ]
+        },
+        "country/FIN": {
+          "ordered_facets": [
+            {
+              "facet_id": "858679853",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 5517919
+                }
+              ]
+            },
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 5541017
+                }
+              ]
+            },
+            {
+              "facet_id": "1151455814",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 5517920
+                }
+              ]
+            },
+            {
+              "facet_id": "3205948815",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 5503297
+                }
+              ]
+            }
+          ]
+        },
+        "country/FJI": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 924610
+                }
+              ]
+            }
+          ]
+        },
+        "country/FLK": {
+          "ordered_facets": [
+            {
+              "facet_id": "3114843463",
+              "observations": [
+                {
+                  "date": "2012",
+                  "value": 2840
+                }
+              ]
+            }
+          ]
+        },
+        "country/FRA": {
+          "ordered_facets": [
+            {
+              "facet_id": "858679853",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 67012883
+                }
+              ]
+            },
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 67749632
+                }
+              ]
+            },
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 66992699
+                }
+              ]
+            },
+            {
+              "facet_id": "1151455814",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 67012900
+                }
+              ]
+            }
+          ]
+        },
+        "country/FRO": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 52889
+                }
+              ]
+            }
+          ]
+        },
+        "country/FSM": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 113131
+                }
+              ]
+            }
+          ]
+        },
+        "country/FXX": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 64812052
+                }
+              ]
+            }
+          ]
+        },
+        "country/GAB": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 2341179
+                }
+              ]
+            }
+          ]
+        },
+        "country/GBR": {
+          "ordered_facets": [
+            {
+              "facet_id": "858679853",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 66647112
+                }
+              ]
+            },
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 67326569
+                }
+              ]
+            },
+            {
+              "facet_id": "1151455814",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 66647100
+                }
+              ]
+            },
+            {
+              "facet_id": "650668249",
+              "observations": [
+                {
+                  "date": "2018",
+                  "value": 66435600
+                }
+              ]
+            }
+          ]
+        },
+        "country/GEO": {
+          "ordered_facets": [
+            {
+              "facet_id": "858679853",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 3723464
+                }
+              ]
+            },
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 3708610
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 3719000
+                }
+              ]
+            }
+          ]
+        },
+        "country/GGY": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 63026
+                }
+              ]
+            }
+          ]
+        },
+        "country/GHA": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 32833031
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 28207000
+                }
+              ]
+            }
+          ]
+        },
+        "country/GIB": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 32669
+                }
+              ]
+            }
+          ]
+        },
+        "country/GIN": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 13531906
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 12396000
+                }
+              ]
+            }
+          ]
+        },
+        "country/GLP": {
+          "ordered_facets": [
+            {
+              "facet_id": "1456184638",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 395700
+                }
+              ]
+            }
+          ]
+        },
+        "country/GMB": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 2639916
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 2039000
+                }
+              ]
+            }
+          ]
+        },
+        "country/GNB": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 2060721
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 1816000
+                }
+              ]
+            }
+          ]
+        },
+        "country/GNQ": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 1634466
+                }
+              ]
+            }
+          ]
+        },
+        "country/GRC": {
+          "ordered_facets": [
+            {
+              "facet_id": "858679853",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 10724599
+                }
+              ]
+            },
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 10641221
+                }
+              ]
+            },
+            {
+              "facet_id": "1151455814",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 10724600
+                }
+              ]
+            }
+          ]
+        },
+        "country/GRD": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 124610
+                }
+              ]
+            }
+          ]
+        },
+        "country/GRL": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 56653
+                }
+              ]
+            }
+          ]
+        },
+        "country/GTM": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 17109746
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 16582000
+                }
+              ]
+            }
+          ]
+        },
+        "country/GUF": {
+          "ordered_facets": [
+            {
+              "facet_id": "1456184638",
+              "observations": [
+                {
+                  "date": "2021-01",
+                  "value": 294071
+                }
+              ]
+            }
+          ]
+        },
+        "country/GUM": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 170534
+                }
+              ]
+            }
+          ]
+        },
+        "country/GUY": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 804567
+                }
+              ]
+            }
+          ]
+        },
+        "country/HKG": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 7413100
+                }
+              ]
+            },
+            {
+              "facet_id": "1794369807",
+              "observations": [
+                {
+                  "date": "2017",
+                  "value": 7391700
+                }
+              ]
+            }
+          ]
+        },
+        "country/HMD": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2011",
+                  "value": 0
+                }
+              ]
+            }
+          ]
+        },
+        "country/HND": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 10278345
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 9113000
+                }
+              ]
+            }
+          ]
+        },
+        "country/HRV": {
+          "ordered_facets": [
+            {
+              "facet_id": "858679853",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 4076246
+                }
+              ]
+            },
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 3899000
+                }
+              ]
+            },
+            {
+              "facet_id": "4272347922",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 4190669
+                }
+              ]
+            },
+            {
+              "facet_id": "1151455814",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 4076250
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 4171000
+                }
+              ]
+            }
+          ]
+        },
+        "country/HTI": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 11447569
+                }
+              ]
+            }
+          ]
+        },
+        "country/HUN": {
+          "ordered_facets": [
+            {
+              "facet_id": "858679853",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 9772756
+                }
+              ]
+            },
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 9709891
+                }
+              ]
+            },
+            {
+              "facet_id": "1151455814",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 9772760
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 9818000
+                }
+              ]
+            }
+          ]
+        },
+        "country/IDN": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 273753191
+                }
+              ]
+            },
+            {
+              "facet_id": "1151455814",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 267871000
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 261115000
+                }
+              ]
+            }
+          ]
+        },
+        "country/IMN": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 84263
+                }
+              ]
+            }
+          ]
+        },
+        "country/IND": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 1407563842
+                }
+              ]
+            },
+            {
+              "facet_id": "2123271870",
+              "observations": [
+                {
+                  "date": "2011",
+                  "value": 1210854977
+                }
+              ]
+            },
+            {
+              "facet_id": "1151455814",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 1254020000
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 1324171000
+                }
+              ]
+            }
+          ]
+        },
+        "country/IRL": {
+          "ordered_facets": [
+            {
+              "facet_id": "858679853",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 4904240
+                }
+              ]
+            },
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 5033165
+                }
+              ]
+            },
+            {
+              "facet_id": "1151455814",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 4904240
+                }
+              ]
+            }
+          ]
+        },
+        "country/IRN": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 87923432
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 80277000
+                }
+              ]
+            }
+          ]
+        },
+        "country/IRQ": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 43533592
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 37203000
+                }
+              ]
+            }
+          ]
+        },
+        "country/ISL": {
+          "ordered_facets": [
+            {
+              "facet_id": "858679853",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 356991
+                }
+              ]
+            },
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 372520
+                }
+              ]
+            },
+            {
+              "facet_id": "1151455814",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 356991
+                }
+              ]
+            }
+          ]
+        },
+        "country/ISR": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 9364000
+                }
+              ]
+            },
+            {
+              "facet_id": "1151455814",
+              "observations": [
+                {
+                  "date": "2018",
+                  "value": 8797900
+                }
+              ]
+            }
+          ]
+        },
+        "country/ITA": {
+          "ordered_facets": [
+            {
+              "facet_id": "858679853",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 60359546
+                }
+              ]
+            },
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 59109668
+                }
+              ]
+            },
+            {
+              "facet_id": "3893789967",
+              "observations": [
+                {
+                  "date": "2017",
+                  "value": 60589445
+                }
+              ]
+            },
+            {
+              "facet_id": "1151455814",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 60359500
+                }
+              ]
+            }
+          ]
+        },
+        "country/JAM": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 2827695
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 2881000
+                }
+              ]
+            }
+          ]
+        },
+        "country/JEY": {
+          "ordered_facets": [
+            {
+              "facet_id": "3114843463",
+              "observations": [
+                {
+                  "date": "2011",
+                  "value": 97857
+                }
+              ]
+            }
+          ]
+        },
+        "country/JOR": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 11148278
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 9456000
+                }
+              ]
+            }
+          ]
+        },
+        "country/JPN": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 125681593
+                }
+              ]
+            },
+            {
+              "facet_id": "1151455814",
+              "observations": [
+                {
+                  "date": "2018",
+                  "value": 126443000
+                }
+              ]
+            }
+          ]
+        },
+        "country/KAZ": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 19000988
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 17797000
+                }
+              ]
+            }
+          ]
+        },
+        "country/KEN": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 53005614
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 48462000
+                }
+              ]
+            }
+          ]
+        },
+        "country/KGZ": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 6691800
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 6083000
+                }
+              ]
+            }
+          ]
+        },
+        "country/KHM": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 16589023
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 15762000
+                }
+              ]
+            }
+          ]
+        },
+        "country/KIR": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 128874
+                }
+              ]
+            }
+          ]
+        },
+        "country/KNA": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 47606
+                }
+              ]
+            }
+          ]
+        },
+        "country/KOR": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 51744876
+                }
+              ]
+            },
+            {
+              "facet_id": "1151455814",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 51811200
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 51246000
+                }
+              ]
+            }
+          ]
+        },
+        "country/KWT": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 4250114
+                }
+              ]
+            }
+          ]
+        },
+        "country/LAO": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 7425057
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 6758000
+                }
+              ]
+            }
+          ]
+        },
+        "country/LBN": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 5592631
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 6007000
+                }
+              ]
+            }
+          ]
+        },
+        "country/LBR": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 5193416
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 4614000
+                }
+              ]
+            }
+          ]
+        },
+        "country/LBY": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 6735277
+                }
+              ]
+            }
+          ]
+        },
+        "country/LCA": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 179651
+                }
+              ]
+            }
+          ]
+        },
+        "country/LIE": {
+          "ordered_facets": [
+            {
+              "facet_id": "858679853",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 38378
+                }
+              ]
+            },
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 39039
+                }
+              ]
+            }
+          ]
+        },
+        "country/LKA": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 22156000
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 21203000
+                }
+              ]
+            }
+          ]
+        },
+        "country/LSO": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 2281454
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 2204000
+                }
+              ]
+            }
+          ]
+        },
+        "country/LTU": {
+          "ordered_facets": [
+            {
+              "facet_id": "858679853",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 2794184
+                }
+              ]
+            },
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 2800839
+                }
+              ]
+            },
+            {
+              "facet_id": "1151455814",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 2794180
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 2872000
+                }
+              ]
+            }
+          ]
+        },
+        "country/LUX": {
+          "ordered_facets": [
+            {
+              "facet_id": "858679853",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 613894
+                }
+              ]
+            },
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 640064
+                }
+              ]
+            },
+            {
+              "facet_id": "1042817753",
+              "observations": [
+                {
+                  "date": "2017-01",
+                  "value": 590667
+                }
+              ]
+            },
+            {
+              "facet_id": "1151455814",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 613894
+                }
+              ]
+            }
+          ]
+        },
+        "country/LVA": {
+          "ordered_facets": [
+            {
+              "facet_id": "858679853",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 1919968
+                }
+              ]
+            },
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 1884490
+                }
+              ]
+            },
+            {
+              "facet_id": "290530767",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 1919968
+                }
+              ]
+            },
+            {
+              "facet_id": "1151455814",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 1919970
+                }
+              ]
+            }
+          ]
+        },
+        "country/MAC": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 686607
+                }
+              ]
+            },
+            {
+              "facet_id": "1794369807",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 650834
+                }
+              ]
+            }
+          ]
+        },
+        "country/MAF": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 31948
+                }
+              ]
+            }
+          ]
+        },
+        "country/MAR": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 37076584
+                }
+              ]
+            }
+          ]
+        },
+        "country/MCO": {
+          "ordered_facets": [
+            {
+              "facet_id": "858679853",
+              "observations": [
+                {
+                  "date": "2005",
+                  "value": 33085
+                }
+              ]
+            },
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 36686
+                }
+              ]
+            }
+          ]
+        },
+        "country/MDA": {
+          "ordered_facets": [
+            {
+              "facet_id": "858679853",
+              "observations": [
+                {
+                  "date": "2017",
+                  "value": 3550852
+                }
+              ]
+            },
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 2615199
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 3552000
+                }
+              ]
+            }
+          ]
+        },
+        "country/MDG": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 28915653
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 24895000
+                }
+              ]
+            }
+          ]
+        },
+        "country/MDV": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 521457
+                }
+              ]
+            }
+          ]
+        },
+        "country/MEX": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 126705138
+                }
+              ]
+            },
+            {
+              "facet_id": "1151455814",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 125929000
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 127540000
+                }
+              ]
+            }
+          ]
+        },
+        "country/MHL": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 42050
+                }
+              ]
+            }
+          ]
+        },
+        "country/MKD": {
+          "ordered_facets": [
+            {
+              "facet_id": "858679853",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 2077132
+                }
+              ]
+            },
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 2065092
+                }
+              ]
+            }
+          ]
+        },
+        "country/MLI": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 21904983
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 17995000
+                }
+              ]
+            }
+          ]
+        },
+        "country/MLT": {
+          "ordered_facets": [
+            {
+              "facet_id": "858679853",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 493559
+                }
+              ]
+            },
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 518536
+                }
+              ]
+            },
+            {
+              "facet_id": "1151455814",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 493559
+                }
+              ]
+            }
+          ]
+        },
+        "country/MMR": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 53798084
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 52885000
+                }
+              ]
+            }
+          ]
+        },
+        "country/MNE": {
+          "ordered_facets": [
+            {
+              "facet_id": "858679853",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 622182
+                }
+              ]
+            },
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 619211
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 623000
+                }
+              ]
+            }
+          ]
+        },
+        "country/MNG": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 3347782
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 3027000
+                }
+              ]
+            }
+          ]
+        },
+        "country/MNP": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 49481
+                }
+              ]
+            }
+          ]
+        },
+        "country/MOZ": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 32077072
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 28829000
+                }
+              ]
+            }
+          ]
+        },
+        "country/MRT": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 4614974
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 4301000
+                }
+              ]
+            }
+          ]
+        },
+        "country/MSR": {
+          "ordered_facets": [
+            {
+              "facet_id": "3114843463",
+              "observations": [
+                {
+                  "date": "2020",
+                  "value": 4992
+                }
+              ]
+            }
+          ]
+        },
+        "country/MTQ": {
+          "ordered_facets": [
+            {
+              "facet_id": "1456184638",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 376480
+                }
+              ]
+            }
+          ]
+        },
+        "country/MUS": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 1266060
+                }
+              ]
+            }
+          ]
+        },
+        "country/MWI": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 19889742
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 18092000
+                }
+              ]
+            }
+          ]
+        },
+        "country/MYS": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 33573874
+                }
+              ]
+            }
+          ]
+        },
+        "country/MYT": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 270372
+                }
+              ]
+            }
+          ]
+        },
+        "country/NAM": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 2530151
+                }
+              ]
+            }
+          ]
+        },
+        "country/NCL": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 271030
+                }
+              ]
+            }
+          ]
+        },
+        "country/NER": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 25252722
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 20673000
+                }
+              ]
+            }
+          ]
+        },
+        "country/NFK": {
+          "ordered_facets": [
+            {
+              "facet_id": "3114843463",
+              "observations": [
+                {
+                  "date": "2011-07",
+                  "value": 2169
+                }
+              ]
+            }
+          ]
+        },
+        "country/NGA": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 213401323
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 185990000
+                }
+              ]
+            }
+          ]
+        },
+        "country/NIC": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 6850540
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 6150000
+                }
+              ]
+            }
+          ]
+        },
+        "country/NIU": {
+          "ordered_facets": [
+            {
+              "facet_id": "1456184638",
+              "observations": [
+                {
+                  "date": "2018",
+                  "value": 1620
+                }
+              ]
+            }
+          ]
+        },
+        "country/NLD": {
+          "ordered_facets": [
+            {
+              "facet_id": "858679853",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 17282163
+                }
+              ]
+            },
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 17533044
+                }
+              ]
+            },
+            {
+              "facet_id": "1151455814",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 17282200
+                }
+              ]
+            }
+          ]
+        },
+        "country/NOR": {
+          "ordered_facets": [
+            {
+              "facet_id": "858679853",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 5328212
+                }
+              ]
+            },
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 5408320
+                }
+              ]
+            },
+            {
+              "facet_id": "1151455814",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 5328210
+                }
+              ]
+            },
+            {
+              "facet_id": "3698737791",
+              "observations": [
+                {
+                  "date": "2014",
+                  "value": 5109056
+                }
+              ]
+            }
+          ]
+        },
+        "country/NPL": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 30034989
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 28983000
+                }
+              ]
+            }
+          ]
+        },
+        "country/NRU": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 12511
+                }
+              ]
+            }
+          ]
+        },
+        "country/NZL": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 5122600
+                }
+              ]
+            },
+            {
+              "facet_id": "1151455814",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 4917000
+                }
+              ]
+            }
+          ]
+        },
+        "country/OMN": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 4520471
+                }
+              ]
+            }
+          ]
+        },
+        "country/PAK": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 231402117
+                }
+              ]
+            }
+          ]
+        },
+        "country/PAN": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 4351267
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 4034000
+                }
+              ]
+            }
+          ]
+        },
+        "country/PCN": {
+          "ordered_facets": [
+            {
+              "facet_id": "3114843463",
+              "observations": [
+                {
+                  "date": "2011",
+                  "value": 67
+                }
+              ]
+            }
+          ]
+        },
+        "country/PER": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 33715471
+                }
+              ]
+            },
+            {
+              "facet_id": "1151455814",
+              "observations": [
+                {
+                  "date": "2017",
+                  "value": 31826000
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 31774000
+                }
+              ]
+            }
+          ]
+        },
+        "country/PHL": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 113880328
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 103320000
+                }
+              ]
+            }
+          ]
+        },
+        "country/PLW": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 18024
+                }
+              ]
+            }
+          ]
+        },
+        "country/PNG": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 9949437
+                }
+              ]
+            }
+          ]
+        },
+        "country/POL": {
+          "ordered_facets": [
+            {
+              "facet_id": "858679853",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 37972812
+                }
+              ]
+            },
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 37747124
+                }
+              ]
+            },
+            {
+              "facet_id": "1151455814",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 37972800
+                }
+              ]
+            },
+            {
+              "facet_id": "225305039",
+              "observations": [
+                {
+                  "date": "2017",
+                  "value": 38433558
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 37948000
+                }
+              ]
+            }
+          ]
+        },
+        "country/PRI": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 3263584
+                }
+              ]
+            },
+            {
+              "facet_id": "2517965213",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 3193694
+                }
+              ]
+            }
+          ]
+        },
+        "country/PRK": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 25971909
+                }
+              ]
+            }
+          ]
+        },
+        "country/PRT": {
+          "ordered_facets": [
+            {
+              "facet_id": "858679853",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 10276617
+                }
+              ]
+            },
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 10325147
+                }
+              ]
+            },
+            {
+              "facet_id": "1151455814",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 10276600
+                }
+              ]
+            }
+          ]
+        },
+        "country/PRY": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 6703799
+                }
+              ]
+            }
+          ]
+        },
+        "country/PSE": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 4922749
+                }
+              ]
+            }
+          ]
+        },
+        "country/PYF": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 304032
+                }
+              ]
+            }
+          ]
+        },
+        "country/QAT": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 2688235
+                }
+              ]
+            }
+          ]
+        },
+        "country/REU": {
+          "ordered_facets": [
+            {
+              "facet_id": "1456184638",
+              "observations": [
+                {
+                  "date": "2020-01",
+                  "value": 859959
+                }
+              ]
+            }
+          ]
+        },
+        "country/ROU": {
+          "ordered_facets": [
+            {
+              "facet_id": "858679853",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 19414458
+                }
+              ]
+            },
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 19119880
+                }
+              ]
+            },
+            {
+              "facet_id": "1151455814",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 19414500
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 19705000
+                }
+              ]
+            }
+          ]
+        },
+        "country/RUS": {
+          "ordered_facets": [
+            {
+              "facet_id": "858679853",
+              "observations": [
+                {
+                  "date": "2014",
+                  "value": 143666931
+                }
+              ]
+            },
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 143449286
+                }
+              ]
+            },
+            {
+              "facet_id": "1151455814",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 146675000
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 144342000
+                }
+              ]
+            }
+          ]
+        },
+        "country/RWA": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 13461888
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 11918000
+                }
+              ]
+            }
+          ]
+        },
+        "country/SAU": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 35950396
+                }
+              ]
+            }
+          ]
+        },
+        "country/SDN": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 45657202
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 39579000
+                }
+              ]
+            }
+          ]
+        },
+        "country/SEN": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 16876720
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 15412000
+                }
+              ]
+            }
+          ]
+        },
+        "country/SGP": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 5453566
+                }
+              ]
+            }
+          ]
+        },
+        "country/SGS": {
+          "ordered_facets": [
+            {
+              "facet_id": "3114843463",
+              "observations": [
+                {
+                  "date": "2006",
+                  "value": 30
+                }
+              ]
+            }
+          ]
+        },
+        "country/SHN": {
+          "ordered_facets": [
+            {
+              "facet_id": "3114843463",
+              "observations": [
+                {
+                  "date": "2008",
+                  "value": 5661
+                }
+              ]
+            }
+          ]
+        },
+        "country/SLB": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 707851
+                }
+              ]
+            }
+          ]
+        },
+        "country/SLE": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 8420641
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 7396000
+                }
+              ]
+            }
+          ]
+        },
+        "country/SLV": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 6314167
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 6345000
+                }
+              ]
+            }
+          ]
+        },
+        "country/SMR": {
+          "ordered_facets": [
+            {
+              "facet_id": "858679853",
+              "observations": [
+                {
+                  "date": "2018",
+                  "value": 34453
+                }
+              ]
+            },
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 33745
+                }
+              ]
+            }
+          ]
+        },
+        "country/SOM": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 17065581
+                }
+              ]
+            }
+          ]
+        },
+        "country/SPM": {
+          "ordered_facets": [
+            {
+              "facet_id": "3114843463",
+              "observations": [
+                {
+                  "date": "2011",
+                  "value": 5888
+                }
+              ]
+            }
+          ]
+        },
+        "country/SRB": {
+          "ordered_facets": [
+            {
+              "facet_id": "858679853",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 6963764
+                }
+              ]
+            },
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 6834326
+                }
+              ]
+            }
+          ]
+        },
+        "country/SSD": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 10748272
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 12231000
+                }
+              ]
+            }
+          ]
+        },
+        "country/STP": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 223107
+                }
+              ]
+            }
+          ]
+        },
+        "country/SUR": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 612985
+                }
+              ]
+            }
+          ]
+        },
+        "country/SVK": {
+          "ordered_facets": [
+            {
+              "facet_id": "858679853",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 5450421
+                }
+              ]
+            },
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 5447247
+                }
+              ]
+            },
+            {
+              "facet_id": "1151455814",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 5450420
+                }
+              ]
+            },
+            {
+              "facet_id": "1568684647",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 5430798
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 5429000
+                }
+              ]
+            }
+          ]
+        },
+        "country/SVN": {
+          "ordered_facets": [
+            {
+              "facet_id": "858679853",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 2080908
+                }
+              ]
+            },
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 2108079
+                }
+              ]
+            },
+            {
+              "facet_id": "1151455814",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 2080910
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 2065000
+                }
+              ]
+            }
+          ]
+        },
+        "country/SWE": {
+          "ordered_facets": [
+            {
+              "facet_id": "858679853",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 10230185
+                }
+              ]
+            },
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 10415811
+                }
+              ]
+            },
+            {
+              "facet_id": "1151455814",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 10230200
+                }
+              ]
+            }
+          ]
+        },
+        "country/SWZ": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 1192271
+                }
+              ]
+            }
+          ]
+        },
+        "country/SXM": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 42846
+                }
+              ]
+            }
+          ]
+        },
+        "country/SYC": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 99258
+                }
+              ]
+            }
+          ]
+        },
+        "country/SYR": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 21324367
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 18430000
+                }
+              ]
+            }
+          ]
+        },
+        "country/TCA": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 45114
+                }
+              ]
+            }
+          ]
+        },
+        "country/TCD": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 17179740
+                }
+              ]
+            }
+          ]
+        },
+        "country/TGO": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 8644829
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 7606000
+                }
+              ]
+            }
+          ]
+        },
+        "country/THA": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 71601103
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 68864000
+                }
+              ]
+            }
+          ]
+        },
+        "country/TJK": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 9750064
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 8735000
+                }
+              ]
+            }
+          ]
+        },
+        "country/TKL": {
+          "ordered_facets": [
+            {
+              "facet_id": "3114843463",
+              "observations": [
+                {
+                  "date": "2011-10",
+                  "value": 1411
+                }
+              ]
+            }
+          ]
+        },
+        "country/TKM": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 6341855
+                }
+              ]
+            }
+          ]
+        },
+        "country/TLS": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 1320942
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 1269000
+                }
+              ]
+            }
+          ]
+        },
+        "country/TON": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 106017
+                }
+              ]
+            }
+          ]
+        },
+        "country/TTO": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 1525663
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 1365000
+                }
+              ]
+            }
+          ]
+        },
+        "country/TUN": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 12262946
+                }
+              ]
+            },
+            {
+              "facet_id": "1151455814",
+              "observations": [
+                {
+                  "date": "2018",
+                  "value": 11551400
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 11403000
+                }
+              ]
+            }
+          ]
+        },
+        "country/TUR": {
+          "ordered_facets": [
+            {
+              "facet_id": "858679853",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 82003882
+                }
+              ]
+            },
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 84775404
+                }
+              ]
+            },
+            {
+              "facet_id": "1151455814",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 82003900
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 79512000
+                }
+              ]
+            }
+          ]
+        },
+        "country/TUV": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 11204
+                }
+              ]
+            }
+          ]
+        },
+        "country/TWN": {
+          "ordered_facets": [
+            {
+              "facet_id": "1456184638",
+              "observations": [
+                {
+                  "date": "2020",
+                  "value": 23568378
+                }
+              ]
+            }
+          ]
+        },
+        "country/TZA": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 63588334
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 55572000
+                }
+              ]
+            }
+          ]
+        },
+        "country/UGA": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 45853778
+                }
+              ]
+            }
+          ]
+        },
+        "country/UKR": {
+          "ordered_facets": [
+            {
+              "facet_id": "858679853",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 41983564
+                }
+              ]
+            },
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 43792855
+                }
+              ]
+            }
+          ]
+        },
+        "country/UMI": {
+          "ordered_facets": [
+            {
+              "facet_id": "1456184638",
+              "observations": [
+                {
+                  "date": "2009",
+                  "value": 300
+                }
+              ]
+            }
+          ]
+        },
+        "country/URY": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 3426260
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 3444000
+                }
+              ]
+            }
+          ]
+        },
+        "country/USA": {
+          "ordered_facets": [
+            {
+              "facet_id": "2176550201",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 331893745
+                }
+              ]
+            },
+            {
+              "facet_id": "1273233945",
+              "observations": [
+                {
+                  "date": "2020",
+                  "value": 329824950
+                }
+              ]
+            },
+            {
+              "facet_id": "1541763368",
+              "observations": [
+                {
+                  "date": "2020",
+                  "value": 331449281
+                }
+              ]
+            },
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 331893745
+                }
+              ]
+            },
+            {
+              "facet_id": "1226172227",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 328239523
+                }
+              ]
+            },
+            {
+              "facet_id": "10983471",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 324697795
+                }
+              ]
+            },
+            {
+              "facet_id": "196790193",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 324697795
+                }
+              ]
+            },
+            {
+              "facet_id": "217147238",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 324697795
+                }
+              ]
+            },
+            {
+              "facet_id": "2517965213",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 328239523
+                }
+              ]
+            },
+            {
+              "facet_id": "1151455814",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 328240000
+                }
+              ]
+            }
+          ]
+        },
+        "country/UZB": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 34915100
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 31848000
+                }
+              ]
+            }
+          ]
+        },
+        "country/VAT": {
+          "ordered_facets": [
+            {
+              "facet_id": "1456184638",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 825
+                }
+              ]
+            }
+          ]
+        },
+        "country/VCT": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 104332
+                }
+              ]
+            }
+          ]
+        },
+        "country/VEN": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 28199867
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 31568000
+                }
+              ]
+            }
+          ]
+        },
+        "country/VGB": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 31122
+                }
+              ]
+            }
+          ]
+        },
+        "country/VIR": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 105870
+                }
+              ]
+            }
+          ]
+        },
+        "country/VNM": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 97468029
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 92701000
+                }
+              ]
+            }
+          ]
+        },
+        "country/VUT": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 319137
+                }
+              ]
+            }
+          ]
+        },
+        "country/WLF": {
+          "ordered_facets": [
+            {
+              "facet_id": "3114843463",
+              "observations": [
+                {
+                  "date": "2009-07",
+                  "value": 15289
+                }
+              ]
+            }
+          ]
+        },
+        "country/WSM": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 218764
+                }
+              ]
+            }
+          ]
+        },
+        "country/XKS": {
+          "ordered_facets": [
+            {
+              "facet_id": "1456184638",
+              "observations": [
+                {
+                  "date": "2020",
+                  "value": 1873160
+                }
+              ]
+            }
+          ]
+        },
+        "country/YEM": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 32981641
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 27584000
+                }
+              ]
+            }
+          ]
+        },
+        "country/YUG": {
+          "ordered_facets": [
+            {
+              "facet_id": "1456184638",
+              "observations": [
+                {
+                  "date": "1991",
+                  "value": 23229846
+                }
+              ]
+            }
+          ]
+        },
+        "country/ZAF": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 59392255
+                }
+              ]
+            },
+            {
+              "facet_id": "1151455814",
+              "observations": [
+                {
+                  "date": "2019",
+                  "value": 58775000
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 55909000
+                }
+              ]
+            }
+          ]
+        },
+        "country/ZMB": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 19473125
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 16591000
+                }
+              ]
+            }
+          ]
+        },
+        "country/ZWE": {
+          "ordered_facets": [
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 15993524
+                }
+              ]
+            },
+            {
+              "facet_id": "473499523",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 16150000
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  },
+  "facets": {
+    "1042817753": {
+      "import_name": "LuxembourgSTATEC",
+      "provenance_url": "http://www.statistiques.public.lu/en/index.html",
+      "measurement_method": "LuxembourgSTATEC"
+    },
+    "10983471": {
+      "import_name": "CensusACS5YearSurvey_SubjectTables_S2601A",
+      "provenance_url": "https://data.census.gov/cedsci/table?q=S2601A&tid=ACSST5Y2019.S2601A",
+      "measurement_method": "CensusACS5yrSurveySubjectTable"
+    },
+    "1151455814": {
+      "import_name": "OECDRegionalDemography",
+      "provenance_url": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#",
+      "measurement_method": "OECDRegionalStatistics",
+      "observation_period": "P1Y"
+    },
+    "1226172227": {
+      "import_name": "CensusACS1YearSurvey",
+      "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+      "measurement_method": "CensusACS1yrSurvey"
+    },
+    "1273233945": {
+      "import_name": "CensusACS5YearSurvey_AggCountry",
+      "provenance_url": "https://www.census.gov/",
+      "measurement_method": "CensusACS5yrSurvey"
+    },
+    "1456184638": {
+      "import_name": "WikipediaStatsData",
+      "provenance_url": "https://www.wikipedia.org",
+      "measurement_method": "Wikipedia"
+    },
+    "1541763368": {
+      "import_name": "USDecennialCensus_RedistrictingRelease",
+      "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+      "measurement_method": "USDecennialCensus"
+    },
+    "1568684647": {
+      "import_name": "SlovakiaStatisticalOffice",
+      "provenance_url": "https://slovak.statistics.sk",
+      "measurement_method": "SlovakiaStatisticalOffice"
+    },
+    "1794369807": {
+      "import_name": "UNData",
+      "provenance_url": "http://data.un.org",
+      "measurement_method": "UNData"
+    },
+    "1945925412": {
+      "import_name": "BulgariaPopulation",
+      "provenance_url": "https://www.nsi.bg/en",
+      "measurement_method": "BulgariaNSI"
+    },
+    "196790193": {
+      "import_name": "CensusACS5YearSurvey_SubjectTables_S2602",
+      "provenance_url": "https://data.census.gov/cedsci/table?q=S2602&tid=ACSST5Y2019.S2602",
+      "measurement_method": "CensusACS5yrSurveySubjectTable"
+    },
+    "2123271870": {
+      "import_name": "IndiaCensus_Primary",
+      "provenance_url": "https://censusindia.gov.in/"
+    },
+    "217147238": {
+      "import_name": "CensusACS5YearSurvey_SubjectTables_S2603",
+      "provenance_url": "https://data.census.gov/cedsci/table?q=S2603&tid=ACSST5Y2019.S2603",
+      "measurement_method": "CensusACS5yrSurveySubjectTable"
+    },
+    "2176550201": {
+      "import_name": "USCensusPEP_Annual_Population",
+      "provenance_url": "https://www2.census.gov/programs-surveys/popest/tables",
+      "measurement_method": "CensusPEPSurvey",
+      "observation_period": "P1Y"
+    },
+    "225305039": {
+      "import_name": "StatisticsPoland",
+      "provenance_url": "http://stat.gov.pl/en/",
+      "measurement_method": "StatisticsPoland"
+    },
+    "2458695583": {
+      "import_name": "WikidataPopulation",
+      "provenance_url": "https://www.wikidata.org/wiki/Wikidata:Main_Page",
+      "measurement_method": "WikidataPopulation"
+    },
+    "2517965213": {
+      "import_name": "CensusPEP",
+      "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
+      "measurement_method": "CensusPEPSurvey"
+    },
+    "2544608669": {
+      "import_name": "EstoniaPopulation",
+      "provenance_url": "https://www.stat.ee/en",
+      "measurement_method": "StatisticsEstonia"
+    },
+    "290530767": {
+      "import_name": "LatviaCSB",
+      "provenance_url": "https://www.csb.gov.lv/en",
+      "measurement_method": "LatviaCSB"
+    },
+    "3114843463": {
+      "import_name": "HumanCuratedStats",
+      "provenance_url": "https://google.com",
+      "measurement_method": "HumanCuratedStats"
+    },
+    "3162233851": {
+      "import_name": "BosniaPopulation",
+      "provenance_url": "http://popis.gov.ba/",
+      "measurement_method": "BosniaCensus"
+    },
+    "3169183847": {
+      "import_name": "StatisticsDenmark",
+      "provenance_url": "http://www.dst.dk/en",
+      "measurement_method": "StatisticsDenmark"
+    },
+    "3205948815": {
+      "import_name": "StatisticsFinland",
+      "provenance_url": "https://www.stat.fi/index_en.html",
+      "measurement_method": "StatisticsFinland"
+    },
+    "3698737791": {
+      "import_name": "StatisticsNorway",
+      "provenance_url": "https://www.ssb.no/en",
+      "measurement_method": "StatisticsNorway"
+    },
+    "3893789967": {
+      "import_name": "ItalyNIS",
+      "provenance_url": "http://demo.istat.it/index_e.html",
+      "measurement_method": "ItalyNIS"
+    },
+    "3981252704": {
+      "import_name": "WorldDevelopmentIndicators",
+      "provenance_url": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+      "observation_period": "P1Y"
+    },
+    "4194503167": {
+      "import_name": "StatisticsCanada",
+      "provenance_url": "http://www.statcan.gc.ca/start-debut-eng.html",
+      "measurement_method": "StatisticsCanada"
+    },
+    "4272347922": {
+      "import_name": "CroatiaPopulation",
+      "provenance_url": "https://www.dzs.hr/default_e.htm",
+      "measurement_method": "CroatiaCBS"
+    },
+    "4274669025": {
+      "import_name": "CzechRepublicPopulation",
+      "provenance_url": "https://vdb.czso.cz/vdbvo2/faces/en/index.jsf",
+      "measurement_method": "CzechStatisticalOffice"
+    },
+    "473499523": {
+      "import_name": "Subnational_Demographics_Stats",
+      "provenance_url": "https://databank.worldbank.org/source/subnational-population",
+      "measurement_method": "WorldBankSubnationalPopulationEstimate",
+      "observation_period": "P1Y"
+    },
+    "650668249": {
+      "import_name": "UnitedKingdomONS",
+      "provenance_url": "https://www.ons.gov.uk",
+      "measurement_method": "UnitedKingdomONS"
+    },
+    "681041463": {
+      "import_name": "GermanyDestatis",
+      "provenance_url": "https://www.destatis.de/EN",
+      "measurement_method": "GermanyDestatis"
+    },
+    "738965619": {
+      "import_name": "FranceINSEE",
+      "provenance_url": "https://www.insee.fr/en/metadonnees/source/indicateur/p1667/description",
+      "measurement_method": "FranceINSEE"
+    },
+    "858679853": {
+      "import_name": "EurostatData",
+      "provenance_url": "https://ec.europa.eu/eurostat/data/database",
+      "measurement_method": "EurostatRegionalPopulationData"
+    },
+    "88328847": {
+      "import_name": "SpainNSI",
+      "provenance_url": "http://www.ine.es/en/welcome.shtml",
+      "measurement_method": "SpainNSI"
+    }
+  }
+}

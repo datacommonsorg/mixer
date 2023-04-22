@@ -1,0 +1,3010 @@
+{
+  "by_variable": {
+    "Count_Person": {
+      "by_entity": {
+        "wikidataId/Q1014741": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 7569
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q1014751": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 6280
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q1014790": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 16139
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q1014795": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 18980
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q1014805": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 1060
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q1116153": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 104567
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q1116542": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 47317
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q1116591": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 73608
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q132224": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 740543
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q134680": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 60430
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q139174": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 427209
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q14812": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 111409
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q163104": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 195262
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q175478": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 88460
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q180843": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 325683
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q18114": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 361308
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q201008": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 49969
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q205854": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 290228
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q212673": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 517641
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q262723": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 630253
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q284277": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 87991
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q28476540": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 219736
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q302457": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 67892
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q370557": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 276994
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q372942": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 305204
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q386243": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 24379
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q511613": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 408510
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q512664": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 13303
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q517570": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 429266
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q520913": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 83464
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q534383": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 227650
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q537277": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 564106
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q539378": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 616076
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q539756": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 8297
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q543784": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 111726
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q547847": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 128816
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q549111": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 153551
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q569447": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 4881
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q571456": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 180402
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q580284": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 143678
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q582305": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 49130
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q584641": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 100135
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q585380": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 103441
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q586597": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 270503
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q588823": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 186134
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q596603": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 819808
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q597652": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 298385
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q600345": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 146763
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q600838": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 70925
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q608267": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 750425
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q608483": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 13841
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q612145": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 223878
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q616226": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 60570
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q629410": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 96748
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q630159": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 307048
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q633970": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 45788
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q639304": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 54460
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q641167": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 71055
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q642854": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 340528
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q651187": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 5179
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q652833": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 396606
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q653514": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 202993
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q654357": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 238198
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q659331": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 278547
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q660165": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 31209
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q662088": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 86029
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q667555": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 58378
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q672744": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 169973
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q700367": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 111856
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q700385": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 87217
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q700396": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 147609
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q700401": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 27618
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q700420": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 378916
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q700427": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 181431
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q700433": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 279623
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q700464": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 38359
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q700472": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 110605
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q700484": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 207316
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q700495": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 248582
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q700507": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 36901
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q700509": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 81216
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q700534": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 166396
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q700536": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 43650
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q700549": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 213501
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q700557": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 134905
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q700581": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 7918
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q700609": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 73997
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q700637": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 39532
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q700647": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 120134
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q700664": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 226511
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q700697": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 937218
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q700712": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 160780
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q700723": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 173577
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q700737": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 373028
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q700744": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 35673
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q700748": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 165568
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q700755": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 179342
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q700768": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 129075
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q700778": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 293808
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q700794": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 382801
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q700795": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 71865
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q700826": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 158949
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q700845": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 77262
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q700869": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 273095
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q700882": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 159637
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q700884": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 99141
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q700900": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 64367
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q700901": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 209215
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q700914": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 190547
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q700916": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 103828
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q700965": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 69558
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q700994": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 128965
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q700998": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 109206
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q701005": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 21597
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q701009": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 130675
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q701022": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 100065
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q701038": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 181827
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q701047": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 72117
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q701061": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 44367
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q701072": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 712934
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q701097": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 66375
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q701110": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 47302
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q701131": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 102000
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q701143": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 106051
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q701177": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 54468
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q701190": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 156652
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q701222": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 183508
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q701227": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 105243
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q701238": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 90151
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q701242": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 47067
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q701253": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 560764
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q701309": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 77213
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q701349": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 152584
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q701370": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 214569
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q701385": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 79994
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q701386": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 131742
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q701396": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 44107
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q701410": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 157719
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q701422": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 112762
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q701439": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 265274
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q701465": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 39183
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q701467": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 368253
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q701477": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 235334
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q701510": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 1234659
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q701530": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 42845
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q701531": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 163326
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q701546": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 137223
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q701568": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 55571
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q701572": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 79165
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q701646": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 1062934
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q701652": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 26053
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q701660": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 121570
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q701708": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 79428
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q701711": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 42358
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q701744": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 171421
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q701749": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 178012
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q701760": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 180132
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q701773": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 176855
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q701776": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 47717
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q701790": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 109558
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q701804": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 675919
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q701806": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 112519
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q701861": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 114206
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q701873": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 420147
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q701903": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 165163
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q701933": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 213272
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q701961": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 36274
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q701995": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 39142
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q702013": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 72717
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q702045": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 64374
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q702051": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 64415
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q702066": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 283118
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q702122": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 59729
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q702130": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 84795
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q702145": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 175130
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q702161": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 323020
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q702168": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 226929
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q702180": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 101710
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q702196": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 593140
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q702199": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 37335
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q702214": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 134697
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q702227": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 37878
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q702245": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 111281
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q702279": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 126567
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q702330": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 37938
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q702350": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 40399
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q702367": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 184503
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q702426": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 306372
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q702441": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 422208
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q702444": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 130505
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q702457": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 115546
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q702466": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 469702
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q702471": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 82219
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q702496": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 135760
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q702522": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 71632
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q702534": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 130857
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q702552": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 108093
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q702577": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 141093
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q702629": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 69523
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q702642": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 1038764
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q702655": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 138206
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q702689": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 42067
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q702702": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 351836
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q702713": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 70032
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q702745": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 72784
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q702750": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 127980
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q702768": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 210732
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q702787": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 451317
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q702790": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 89921
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q702799": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 73455
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q702812": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 21939
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q702852": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 109667
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q702862": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 130189
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q702864": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 140103
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q702873": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 529968
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q767111": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 8167
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q773569": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 5739
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q844987": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 24086
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q845039": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 22329
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q895024": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 7282
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q93949": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 412446
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q940292": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 28610
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q996138": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 3310
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q996207": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 1864
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q996301": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 4114
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q996320": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 17407
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q996336": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 7324
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q996367": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 19899
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q996400": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 10299
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q996414": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 2477
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  },
+  "facets": {
+    "2458695583": {
+      "import_name": "WikidataPopulation",
+      "provenance_url": "https://www.wikidata.org/wiki/Wikidata:Main_Page",
+      "measurement_method": "WikidataPopulation"
+    },
+    "738965619": {
+      "import_name": "FranceINSEE",
+      "provenance_url": "https://www.insee.fr/en/metadonnees/source/indicateur/p1667/description",
+      "measurement_method": "FranceINSEE"
+    }
+  }
+}

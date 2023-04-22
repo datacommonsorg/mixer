@@ -1,0 +1,481 @@
+{
+  "by_variable": {
+    "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita": {
+      "by_entity": {
+        "country/FRA": {
+          "ordered_facets": [
+            {
+              "facet_id": "2171028778",
+              "observations": [
+                {
+                  "date": "2010",
+                  "value": 36730
+                }
+              ]
+            }
+          ]
+        },
+        "country/USA": {
+          "ordered_facets": [
+            {
+              "facet_id": "2171028778",
+              "observations": [
+                {
+                  "date": "2010",
+                  "value": 49050
+                }
+              ]
+            }
+          ]
+        },
+        "dummy": {},
+        "geoId/06": {},
+        "geoId/0649670": {}
+      }
+    },
+    "Annual_Generation_Electricity": {
+      "by_entity": {
+        "country/FRA": {},
+        "country/USA": {
+          "ordered_facets": [
+            {
+              "facet_id": "1450533103",
+              "observations": [
+                {
+                  "date": "2010",
+                  "value": 4378430000000
+                }
+              ]
+            },
+            {
+              "facet_id": "2392525955",
+              "observations": [
+                {
+                  "date": "2010",
+                  "value": 4125059898920
+                }
+              ]
+            }
+          ]
+        },
+        "dummy": {},
+        "geoId/06": {
+          "ordered_facets": [
+            {
+              "facet_id": "2392525955",
+              "observations": [
+                {
+                  "date": "2010",
+                  "value": 204125595540
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/0649670": {}
+      }
+    },
+    "Count_CriminalActivities_CombinedCrime": {
+      "by_entity": {
+        "country/FRA": {},
+        "country/USA": {
+          "ordered_facets": [
+            {
+              "facet_id": "2343540064",
+              "observations": [
+                {
+                  "date": "2010",
+                  "value": 10292375
+                }
+              ]
+            }
+          ]
+        },
+        "dummy": {},
+        "geoId/06": {
+          "ordered_facets": [
+            {
+              "facet_id": "4277990144",
+              "observations": [
+                {
+                  "date": "2010",
+                  "value": 1146072
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/0649670": {
+          "ordered_facets": [
+            {
+              "facet_id": "4277990144",
+              "observations": [
+                {
+                  "date": "2010",
+                  "value": 1633
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "Count_Person": {
+      "by_entity": {
+        "country/FRA": {
+          "ordered_facets": [
+            {
+              "facet_id": "858679853",
+              "observations": [
+                {
+                  "date": "2010",
+                  "value": 64658856
+                }
+              ]
+            },
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2010",
+                  "value": 65030575
+                }
+              ]
+            },
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2010",
+                  "value": 64612939
+                }
+              ]
+            },
+            {
+              "facet_id": "1151455814",
+              "observations": [
+                {
+                  "date": "2010",
+                  "value": 64658900
+                }
+              ]
+            },
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2010",
+                  "value": 65023142
+                }
+              ]
+            }
+          ]
+        },
+        "country/USA": {
+          "ordered_facets": [
+            {
+              "facet_id": "2176550201",
+              "observations": [
+                {
+                  "date": "2010",
+                  "value": 309327143
+                }
+              ]
+            },
+            {
+              "facet_id": "1541763368",
+              "observations": [
+                {
+                  "date": "2010",
+                  "value": 308745538
+                }
+              ]
+            },
+            {
+              "facet_id": "3981252704",
+              "observations": [
+                {
+                  "date": "2010",
+                  "value": 309327143
+                }
+              ]
+            },
+            {
+              "facet_id": "2517965213",
+              "observations": [
+                {
+                  "date": "2010",
+                  "value": 309326085
+                }
+              ]
+            },
+            {
+              "facet_id": "1151455814",
+              "observations": [
+                {
+                  "date": "2010",
+                  "value": 309322000
+                }
+              ]
+            },
+            {
+              "facet_id": "1226172227",
+              "observations": [
+                {
+                  "date": "2010",
+                  "value": 309349689
+                }
+              ]
+            },
+            {
+              "facet_id": "10983471",
+              "observations": [
+                {
+                  "date": "2010",
+                  "value": 303965272
+                }
+              ]
+            }
+          ]
+        },
+        "dummy": {},
+        "geoId/06": {
+          "ordered_facets": [
+            {
+              "facet_id": "2176550201",
+              "observations": [
+                {
+                  "date": "2010",
+                  "value": 37319550
+                }
+              ]
+            },
+            {
+              "facet_id": "1541763368",
+              "observations": [
+                {
+                  "date": "2010",
+                  "value": 37253956
+                }
+              ]
+            },
+            {
+              "facet_id": "2517965213",
+              "observations": [
+                {
+                  "date": "2010",
+                  "value": 37266600
+                }
+              ]
+            },
+            {
+              "facet_id": "1151455814",
+              "observations": [
+                {
+                  "date": "2010",
+                  "value": 37319500
+                }
+              ]
+            },
+            {
+              "facet_id": "1226172227",
+              "observations": [
+                {
+                  "date": "2010",
+                  "value": 37349363
+                }
+              ]
+            },
+            {
+              "facet_id": "10983471",
+              "observations": [
+                {
+                  "date": "2010",
+                  "value": 36637290
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/0649670": {
+          "ordered_facets": [
+            {
+              "facet_id": "2176550201",
+              "observations": [
+                {
+                  "date": "2010",
+                  "value": 73759
+                }
+              ]
+            },
+            {
+              "facet_id": "1541763368",
+              "observations": [
+                {
+                  "date": "2010",
+                  "value": 74066
+                }
+              ]
+            },
+            {
+              "facet_id": "1226172227",
+              "observations": [
+                {
+                  "date": "2010",
+                  "value": 74320
+                }
+              ]
+            },
+            {
+              "facet_id": "2517965213",
+              "observations": [
+                {
+                  "date": "2010",
+                  "value": 74227
+                }
+              ]
+            },
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2010",
+                  "value": 74066
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "Count_Person_FoodInsecure": {
+      "by_entity": {
+        "country/FRA": {},
+        "country/USA": {},
+        "dummy": {},
+        "geoId/06": {},
+        "geoId/0649670": {}
+      }
+    },
+    "Count_Person_Unemployed": {
+      "by_entity": {
+        "country/FRA": {},
+        "country/USA": {},
+        "dummy": {},
+        "geoId/06": {
+          "ordered_facets": [
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2010",
+                  "value": 2292082
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/0649670": {
+          "ordered_facets": [
+            {
+              "facet_id": "2978659163",
+              "observations": [
+                {
+                  "date": "2010",
+                  "value": 3648
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  },
+  "facets": {
+    "10983471": {
+      "import_name": "CensusACS5YearSurvey_SubjectTables_S2601A",
+      "provenance_url": "https://data.census.gov/cedsci/table?q=S2601A&tid=ACSST5Y2019.S2601A",
+      "measurement_method": "CensusACS5yrSurveySubjectTable"
+    },
+    "1151455814": {
+      "import_name": "OECDRegionalDemography",
+      "provenance_url": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#",
+      "measurement_method": "OECDRegionalStatistics",
+      "observation_period": "P1Y"
+    },
+    "1226172227": {
+      "import_name": "CensusACS1YearSurvey",
+      "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+      "measurement_method": "CensusACS1yrSurvey"
+    },
+    "1450533103": {
+      "import_name": "UNEnergy",
+      "provenance_url": "https://unstats.un.org/unsd/energystats/data/",
+      "observation_period": "P1Y",
+      "unit": "KilowattHour"
+    },
+    "1541763368": {
+      "import_name": "USDecennialCensus_RedistrictingRelease",
+      "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+      "measurement_method": "USDecennialCensus"
+    },
+    "2171028778": {
+      "import_name": "WorldDevelopmentIndicators",
+      "provenance_url": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+      "observation_period": "P1Y",
+      "unit": "InternationalDollar"
+    },
+    "2176550201": {
+      "import_name": "USCensusPEP_Annual_Population",
+      "provenance_url": "https://www2.census.gov/programs-surveys/popest/tables",
+      "measurement_method": "CensusPEPSurvey",
+      "observation_period": "P1Y"
+    },
+    "2343540064": {
+      "import_name": "FBIGovCrime_AggCountry",
+      "provenance_url": "http://www.fbi.gov/services/cjis/ucr",
+      "observation_period": "P1Y"
+    },
+    "2392525955": {
+      "import_name": "EIA_Electricity",
+      "provenance_url": "https://www.eia.gov/opendata/qb.php?category=0",
+      "unit": "KilowattHour"
+    },
+    "2458695583": {
+      "import_name": "WikidataPopulation",
+      "provenance_url": "https://www.wikidata.org/wiki/Wikidata:Main_Page",
+      "measurement_method": "WikidataPopulation"
+    },
+    "2517965213": {
+      "import_name": "CensusPEP",
+      "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
+      "measurement_method": "CensusPEPSurvey"
+    },
+    "2978659163": {
+      "import_name": "BLS_LAUS",
+      "provenance_url": "https://www.bls.gov/lau/",
+      "measurement_method": "BLSSeasonallyUnadjusted",
+      "observation_period": "P1Y"
+    },
+    "3981252704": {
+      "import_name": "WorldDevelopmentIndicators",
+      "provenance_url": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+      "observation_period": "P1Y"
+    },
+    "4277990144": {
+      "import_name": "FBIGovCrime",
+      "provenance_url": "http://www.fbi.gov/services/cjis/ucr",
+      "observation_period": "P1Y"
+    },
+    "738965619": {
+      "import_name": "FranceINSEE",
+      "provenance_url": "https://www.insee.fr/en/metadonnees/source/indicateur/p1667/description",
+      "measurement_method": "FranceINSEE"
+    },
+    "858679853": {
+      "import_name": "EurostatData",
+      "provenance_url": "https://ec.europa.eu/eurostat/data/database",
+      "measurement_method": "EurostatRegionalPopulationData"
+    }
+  }
+}
