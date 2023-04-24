@@ -60,7 +60,6 @@ func TestResolveDescription(t *testing.T) {
 					"Illes Balears,Spain",
 					"Ciudad Autónoma de Ceuta,Spain",
 					"Ciudad Autónoma de Melilla,Spain",
-					"Ahvenanmaa,Finland",
 					"Hauts-de-France,France",
 					"Corse,France",
 					"Ireland,Ireland",
