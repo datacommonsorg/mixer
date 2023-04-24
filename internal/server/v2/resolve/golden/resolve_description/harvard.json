@@ -1,9 +1,6 @@
 {
   "entities": [
     {
-      "node": "Ahvenanmaa,Finland"
-    },
-    {
       "node": "Arkhangelsk,Russia",
       "resolvedIds": [
         "wikidataId/Q1851"

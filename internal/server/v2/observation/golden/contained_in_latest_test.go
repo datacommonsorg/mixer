@@ -116,7 +116,7 @@ func TestFetchContainInLatest(t *testing.T) {
 		}
 	}
 	if err := test.TestDriver(
-		"Collection",
+		"FetchContainInLatest",
 		&test.TestOption{UseMemdb: true},
 		testSuite,
 	); err != nil {

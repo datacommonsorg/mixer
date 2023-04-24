@@ -149,7 +149,7 @@ func TestFetchDirect(t *testing.T) {
 		}
 	}
 	if err := test.TestDriver(
-		"Series",
+		"FetchDirect",
 		&test.TestOption{UseMemdb: true},
 		testSuite,
 	); err != nil {

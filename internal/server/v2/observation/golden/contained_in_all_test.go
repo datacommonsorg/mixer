@@ -101,7 +101,7 @@ func TestFetchContainInAll(t *testing.T) {
 		}
 	}
 	if err := test.TestDriver(
-		"Collection",
+		"FetchContainInAll",
 		&test.TestOption{UseMemdb: true},
 		testSuite,
 	); err != nil {

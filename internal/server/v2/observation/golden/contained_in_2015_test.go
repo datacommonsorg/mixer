@@ -83,7 +83,7 @@ func TestFetchContainIn(t *testing.T) {
 		}
 	}
 	if err := test.TestDriver(
-		"Collection",
+		"FetchContainIn",
 		&test.TestOption{UseMemdb: true},
 		testSuite,
 	); err != nil {
