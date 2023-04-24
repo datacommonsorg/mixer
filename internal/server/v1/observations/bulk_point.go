@@ -107,10 +107,12 @@ func BulkPoint(
 						if idx == 0 || allFacets {
 							entityObservations.PointsByFacet = append(
 								entityObservations.PointsByFacet, ps)
-							latestDateAcrossSeries = latestDate
-						} else if latestDate > latestDateAcrossSeries {
-							latestDateAcrossSeries = latestDate
-							entityObservations.PointsByFacet[0] = ps
+						}
+						if !allFacets {
+							if idx == 0 || latestDate > latestDateAcrossSeries {
+								latestDateAcrossSeries = latestDate
+								entityObservations.PointsByFacet[0] = ps
+							}
 						}
 					}
 					result.Facets[facetID] = facet
