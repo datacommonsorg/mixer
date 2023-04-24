@@ -76,7 +76,7 @@ func TestExistence(t *testing.T) {
 		}
 	}
 	if err := test.TestDriver(
-		"ObservationMetric(existence)",
+		"Observation(existence)",
 		&test.TestOption{UseMemdb: true},
 		testSuite,
 	); err != nil {

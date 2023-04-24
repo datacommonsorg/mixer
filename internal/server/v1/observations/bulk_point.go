@@ -83,12 +83,13 @@ func BulkPoint(
 							break
 						}
 					} else {
-						// This is to query from one facet and there is already data from
-						// higher ranked facet. If the current facet is from an inferior
-						// facet (like wikidata) then don't use it.
-						// Such inferior facet is only used when there is no better facet
-						// is prsent.
+						// Date is not given, fetch the latest date.
 						if !allFacets && idx > 0 && stat.IsInferiorFacetPb(series) {
+							// This is to query from one facet and there is already data from
+							// higher ranked facet. If the current facet is from an inferior
+							// facet (like wikidata) then don't use it.
+							// Such inferior facet is only used when there is no better facet
+							// is prsent.
 							break
 						}
 						var ps *pb.PointStat
@@ -106,6 +107,7 @@ func BulkPoint(
 						if idx == 0 || allFacets {
 							entityObservations.PointsByFacet = append(
 								entityObservations.PointsByFacet, ps)
+							latestDateAcrossSeries = latestDate
 						} else if latestDate > latestDateAcrossSeries {
 							latestDateAcrossSeries = latestDate
 							entityObservations.PointsByFacet[0] = ps
