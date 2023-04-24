@@ -89,7 +89,7 @@ func parseArc(arrow, expr string) (*Arc, error) {
 		if expr[i] == '+' {
 			// <-containedInPlace+
 			arc.SingleProp = expr[0:i]
-			arc.Wildcard = "+"
+			arc.Decorator = "+"
 			expr = expr[i+1:]
 			break
 		}
