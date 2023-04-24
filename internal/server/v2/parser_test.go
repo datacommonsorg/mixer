@@ -155,7 +155,7 @@ func TestParseArc(t *testing.T) {
 			&Arc{
 				Out:        true,
 				SingleProp: "containedInPlace",
-				Wildcard:   "+",
+				Decorator:  "+",
 			},
 			true,
 		},
@@ -165,7 +165,7 @@ func TestParseArc(t *testing.T) {
 			&Arc{
 				Out:        true,
 				SingleProp: "containedInPlace",
-				Wildcard:   "+",
+				Decorator:  "+",
 				Filter: map[string]string{
 					"typeOf": "City",
 				},
@@ -178,7 +178,7 @@ func TestParseArc(t *testing.T) {
 			&Arc{
 				Out:        true,
 				SingleProp: "containedInPlace",
-				Wildcard:   "+",
+				Decorator:  "+",
 				Filter: map[string]string{
 					"typeOf": "City",
 				},

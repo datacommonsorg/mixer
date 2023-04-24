@@ -109,7 +109,7 @@ func V2NodeCore(
 			direction = util.DirectionIn
 		}
 
-		if arc.SingleProp != "" && arc.Wildcard == "+" {
+		if arc.SingleProp != "" && arc.Decorator == "+" {
 			// Examples:
 			//   <-containedInPlace+{typeOf:City}
 			return v2pv.LinkedPropertyValues(
@@ -132,7 +132,7 @@ func V2NodeCore(
 
 		var properties []string
 		if arc.SingleProp != "" {
-			if arc.Wildcard == "" {
+			if arc.Decorator == "" {
 				// Examples:
 				//   ->name
 				//   <-containedInPlace
@@ -286,7 +286,7 @@ func V2ObservationCore(
 			}
 			arc := g.Arcs[0]
 			if arc.SingleProp != "containedInPlace" ||
-				arc.Wildcard != "+" ||
+				arc.Decorator != "+" ||
 				arc.Filter == nil ||
 				arc.Filter["typeOf"] == "" {
 				return nil, status.Errorf(
