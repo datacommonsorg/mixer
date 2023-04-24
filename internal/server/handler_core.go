@@ -19,7 +19,6 @@ import (
 	"context"
 
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
-	"github.com/datacommonsorg/mixer/internal/server/resource"
 	v1e "github.com/datacommonsorg/mixer/internal/server/v1/event"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	v2e "github.com/datacommonsorg/mixer/internal/server/v2/event"
@@ -27,19 +26,14 @@ import (
 	v2p "github.com/datacommonsorg/mixer/internal/server/v2/properties"
 	v2pv "github.com/datacommonsorg/mixer/internal/server/v2/propertyvalues"
 	"github.com/datacommonsorg/mixer/internal/server/v2/resolve"
-	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
-	"googlemaps.github.io/maps"
 )
 
 // V2ResolveCore gets resolve results from Cloud Bigtable and Maps API.
-func V2ResolveCore(
-	ctx context.Context,
-	store *store.Store,
-	mapsClient *maps.Client,
-	in *pbv2.ResolveRequest,
+func (s *Server) V2ResolveCore(
+	ctx context.Context, in *pbv2.ResolveRequest,
 ) (*pbv2.ResolveResponse, error) {
 	arcs, err := v2.ParseProperty(in.GetProperty())
 	if err != nil {
@@ -62,7 +56,7 @@ func V2ResolveCore(
 		// Coordinate to ID:
 		// Example:
 		//   <-geoCoordinate
-		return resolve.Coordinate(ctx, store, in.GetNodes())
+		return resolve.Coordinate(ctx, s.store, in.GetNodes())
 	}
 
 	if inArc.SingleProp == "description" && outArc.SingleProp == "dcid" {
@@ -73,8 +67,8 @@ func V2ResolveCore(
 		typeOf := inArc.Filter["typeOf"] // Could be empty.
 		return resolve.Description(
 			ctx,
-			store,
-			mapsClient,
+			s.store,
+			s.mapsClient,
 			in.GetNodes(),
 			typeOf)
 	}
@@ -84,19 +78,15 @@ func V2ResolveCore(
 	//   <-wikidataId->nutsCode
 	return resolve.ID(
 		ctx,
-		store,
+		s.store,
 		in.GetNodes(),
 		inArc.SingleProp,
 		outArc.SingleProp)
 }
 
 // V2NodeCore gets node results from Cloud Bigtable.
-func V2NodeCore(
-	ctx context.Context,
-	store *store.Store,
-	cache *resource.Cache,
-	metadata *resource.Metadata,
-	in *pbv2.NodeRequest,
+func (s *Server) V2NodeCore(
+	ctx context.Context, in *pbv2.NodeRequest,
 ) (*pbv2.NodeResponse, error) {
 	arcs, err := v2.ParseProperty(in.GetProperty())
 	if err != nil {
@@ -109,13 +99,13 @@ func V2NodeCore(
 			direction = util.DirectionIn
 		}
 
-		if arc.SingleProp != "" && arc.Decorator == "+" {
+		if arc.SingleProp != "" && arc.Wildcard == "+" {
 			// Examples:
 			//   <-containedInPlace+{typeOf:City}
 			return v2pv.LinkedPropertyValues(
 				ctx,
-				store,
-				cache,
+				s.store,
+				s.cache,
 				in.GetNodes(),
 				arc.SingleProp,
 				direction,
@@ -127,12 +117,12 @@ func V2NodeCore(
 			// Examples:
 			//   ->
 			//   <-
-			return v2p.API(ctx, store, in.GetNodes(), direction)
+			return v2p.API(ctx, s.store, in.GetNodes(), direction)
 		}
 
 		var properties []string
 		if arc.SingleProp != "" {
-			if arc.Decorator == "" {
+			if arc.Wildcard == "" {
 				// Examples:
 				//   ->name
 				//   <-containedInPlace
@@ -147,8 +137,8 @@ func V2NodeCore(
 		if len(properties) > 0 {
 			return v2pv.API(
 				ctx,
-				store,
-				metadata,
+				s.store,
+				s.metadata,
 				in.GetNodes(),
 				properties,
 				direction,
@@ -161,8 +151,8 @@ func V2NodeCore(
 }
 
 // V2EventCore gets event results from Cloud Bigtable.
-func V2EventCore(
-	ctx context.Context, store *store.Store, in *pbv2.EventRequest,
+func (s *Server) V2EventCore(
+	ctx context.Context, in *pbv2.EventRequest,
 ) (*pbv2.EventResponse, error) {
 	arcs, err := v2.ParseProperty(in.GetProperty())
 	if err != nil {
@@ -200,7 +190,7 @@ func V2EventCore(
 
 			return v2e.EventCollection(
 				ctx,
-				store,
+				s.store,
 				in.GetNode(),
 				eventType,
 				date,
@@ -223,7 +213,7 @@ func V2EventCore(
 			eventTypeOK &&
 			arc2.Out &&
 			arc2.SingleProp == "date" {
-			return v2e.EventCollectionDate(ctx, store, in.GetNode(), eventType)
+			return v2e.EventCollectionDate(ctx, s.store, in.GetNode(), eventType)
 		}
 
 		return nil, status.Errorf(codes.InvalidArgument,
@@ -234,8 +224,8 @@ func V2EventCore(
 }
 
 // V2ObservationCore fetches observation from Cloud Bigtable.
-func V2ObservationCore(
-	ctx context.Context, store *store.Store, in *pbv2.ObservationRequest,
+func (s *Server) V2ObservationCore(
+	ctx context.Context, in *pbv2.ObservationRequest,
 ) (*pbv2.ObservationResponse, error) {
 	// (TODO): The routing logic here is very rough. This needs more work.
 	var queryDate, queryValue, queryVariable, queryEntity bool
@@ -264,7 +254,7 @@ func V2ObservationCore(
 		if len(variable.GetDcids()) > 0 && len(entity.GetDcids()) > 0 {
 			return v2observation.FetchDirect(
 				ctx,
-				store,
+				s.store,
 				variable.GetDcids(),
 				entity.GetDcids(),
 				in.GetDate(),
@@ -286,7 +276,7 @@ func V2ObservationCore(
 			}
 			arc := g.Arcs[0]
 			if arc.SingleProp != "containedInPlace" ||
-				arc.Decorator != "+" ||
+				arc.Wildcard != "+" ||
 				arc.Filter == nil ||
 				arc.Filter["typeOf"] == "" {
 				return nil, status.Errorf(
@@ -294,7 +284,7 @@ func V2ObservationCore(
 			}
 			return v2observation.FetchContainedIn(
 				ctx,
-				store,
+				s.store,
 				variable.GetDcids(),
 				g.Subject,
 				arc.Filter["typeOf"],
@@ -306,7 +296,7 @@ func V2ObservationCore(
 		if variable.GetFormula() != "" && len(entity.GetDcids()) > 0 {
 			return v2observation.DerivedSeries(
 				ctx,
-				store,
+				s.store,
 				variable.GetFormula(),
 				entity.GetDcids(),
 			)
@@ -319,11 +309,11 @@ func V2ObservationCore(
 			if len(variable.GetDcids()) > 0 {
 				// Have both entity.dcids and variable.dcids. Check existence cache.
 				return v2observation.Existence(
-					ctx, store, variable.GetDcids(), entity.GetDcids())
+					ctx, s.store, variable.GetDcids(), entity.GetDcids())
 			}
 			// TODO: Support appending entities from entity.expression
 			// Only have entity.dcids, fetch variables for each entity.
-			return v2observation.Variable(ctx, store, entity.GetDcids())
+			return v2observation.Variable(ctx, s.store, entity.GetDcids())
 		}
 	}
 	return &pbv2.ObservationResponse{}, nil
