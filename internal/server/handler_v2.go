@@ -77,7 +77,7 @@ func (s *Server) V2Resolve(
 	respChan := make(chan *pbv2.ResolveResponse, 2)
 
 	errGroup.Go(func() error {
-		resp, err := V2ResolveCore(errCtx, s.store, s.mapsClient, in)
+		resp, err := s.V2ResolveCore(errCtx, in)
 		if err != nil {
 			return err
 		}
@@ -123,7 +123,7 @@ func (s *Server) V2Node(
 		// In both cases, we need to read from both local and remote, and merge.
 
 		errGroup.Go(func() error {
-			resp, err := V2NodeCore(errCtx, s.store, s.cache, s.metadata, in)
+			resp, err := s.V2NodeCore(errCtx, in)
 			if err != nil {
 				return err
 			}
@@ -157,7 +157,7 @@ func (s *Server) V2Node(
 		if len(cursorGroups) > 0 {
 			// Non-empty |cursor_groups|, read from local, for non-first page.
 			errGroup.Go(func() error {
-				resp, err := V2NodeCore(ctx, s.store, s.cache, s.metadata, in)
+				resp, err := s.V2NodeCore(ctx, in)
 				if err != nil {
 					return err
 				}
@@ -212,7 +212,7 @@ func (s *Server) V2Event(
 	respChan := make(chan *pbv2.EventResponse, 2)
 
 	errGroup.Go(func() error {
-		resp, err := V2EventCore(errCtx, s.store, in)
+		resp, err := s.V2EventCore(errCtx, in)
 		if err != nil {
 			return err
 		}
@@ -251,7 +251,7 @@ func (s *Server) V2Observation(
 	respChan := make(chan *pbv2.ObservationResponse, 2)
 
 	errGroup.Go(func() error {
-		resp, err := V2ObservationCore(errCtx, s.store, in)
+		resp, err := s.V2ObservationCore(errCtx, in)
 		if err != nil {
 			return err
 		}
