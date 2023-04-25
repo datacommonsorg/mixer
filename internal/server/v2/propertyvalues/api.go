@@ -26,6 +26,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/server/statvar"
 	v1pv "github.com/datacommonsorg/mixer/internal/server/v1/propertyvalues"
+	v2p "github.com/datacommonsorg/mixer/internal/server/v2/properties"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
@@ -53,6 +54,7 @@ func API(
 			regularNodes = append(regularNodes, n)
 		}
 	}
+
 	res := &pbv2.NodeResponse{Data: map[string]*pbv2.LinkedGraph{}}
 
 	if len(obsNodes) > 0 {
@@ -67,7 +69,8 @@ func API(
 		for dcid, tripleList := range tripleResp {
 			res.Data[dcid] = &pbv2.LinkedGraph{Arcs: map[string]*pbv2.Nodes{}}
 			for _, t := range tripleList {
-				if _, ok := propertySet[t.Predicate]; ok {
+				// NOTE: len(properties) == 0 means this is for triples, so no filtering here.
+				if _, ok := propertySet[t.Predicate]; ok || len(properties) == 0 {
 					res.Data[dcid].Arcs[t.Predicate] = &pbv2.Nodes{
 						Nodes: []*pb.EntityInfo{
 							{
@@ -85,6 +88,17 @@ func API(
 	}
 
 	if len(regularNodes) > 0 {
+		if len(properties) == 0 {
+			// For triples, get all properties of regular nodes.
+			propRes, err := v2p.API(ctx, store, regularNodes, direction)
+			if err != nil {
+				return nil, err
+			}
+			for _, data := range propRes.GetData() {
+				properties = util.MergeDedupe(properties, data.GetProperties())
+			}
+		}
+
 		data, pi, err := v1pv.Fetch(
 			ctx,
 			store,
@@ -100,8 +114,10 @@ func API(
 		for _, n := range regularNodes {
 			res.Data[n] = &pbv2.LinkedGraph{Arcs: map[string]*pbv2.Nodes{}}
 			for _, property := range properties {
-				res.Data[n].Arcs[property] = &pbv2.Nodes{
-					Nodes: v1pv.MergeTypedNodes(data[n][property]),
+				if nodes := data[n][property]; len(nodes) > 0 {
+					res.Data[n].Arcs[property] = &pbv2.Nodes{
+						Nodes: v1pv.MergeTypedNodes(data[n][property]),
+					}
 				}
 			}
 		}

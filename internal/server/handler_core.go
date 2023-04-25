@@ -120,6 +120,22 @@ func (s *Server) V2NodeCore(
 			return v2p.API(ctx, s.store, in.GetNodes(), direction)
 		}
 
+		if arc.SingleProp == "*" {
+			// Examples:
+			//   ->*
+			//   <-*
+			return v2pv.API(
+				ctx,
+				s.store,
+				s.metadata,
+				in.GetNodes(),
+				[]string{},
+				direction,
+				int(in.GetLimit()),
+				in.GetNextToken(),
+			)
+		}
+
 		var properties []string
 		if arc.SingleProp != "" {
 			if arc.Decorator == "" {
@@ -143,7 +159,7 @@ func (s *Server) V2NodeCore(
 				properties,
 				direction,
 				int(in.GetLimit()),
-				in.NextToken,
+				in.GetNextToken(),
 			)
 		}
 	}
