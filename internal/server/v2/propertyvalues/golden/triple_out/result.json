@@ -1,0 +1,256 @@
+{
+  "data": {
+    "BiologicalSpecimen": {
+      "arcs": {
+        "description": {
+          "nodes": [
+            {
+              "provenanceId": "dc/base/BaseSchema",
+              "value": "Biological Specimens facilitate the sharing of information about biological diversity by providing identifiers, labels, and definitions. The class definition is loosely based on the Darwin Core schema."
+            }
+          ]
+        },
+        "name": {
+          "nodes": [
+            {
+              "provenanceId": "dc/base/BaseSchema",
+              "value": "BiologicalSpecimen"
+            }
+          ]
+        },
+        "provenance": {
+          "nodes": [
+            {
+              "name": "BaseSchema",
+              "types": [
+                "Provenance"
+              ],
+              "dcid": "dc/base/BaseSchema",
+              "provenanceId": "dc/base/BaseSchema"
+            }
+          ]
+        },
+        "subClassOf": {
+          "nodes": [
+            {
+              "name": "Thing",
+              "types": [
+                "Class"
+              ],
+              "dcid": "Thing",
+              "provenanceId": "dc/base/BaseSchema"
+            }
+          ]
+        },
+        "typeOf": {
+          "nodes": [
+            {
+              "name": "Class",
+              "types": [
+                "Class"
+              ],
+              "dcid": "Class",
+              "provenanceId": "dc/base/BaseSchema"
+            }
+          ]
+        }
+      }
+    },
+    "Count_Person": {
+      "arcs": {
+        "description": {
+          "nodes": [
+            {
+              "provenanceId": "dc/base/HumanReadableStatVars",
+              "value": "Total Number of People in a Population"
+            }
+          ]
+        },
+        "measuredProperty": {
+          "nodes": [
+            {
+              "name": "count",
+              "types": [
+                "Property"
+              ],
+              "dcid": "count",
+              "provenanceId": "dc/base/HumanReadableStatVars"
+            }
+          ]
+        },
+        "memberOf": {
+          "nodes": [
+            {
+              "name": "Demographics",
+              "types": [
+                "StatVarGroup"
+              ],
+              "dcid": "dc/g/Demographics",
+              "provenanceId": "dc/base/HumanReadableStatVars"
+            }
+          ]
+        },
+        "name": {
+          "nodes": [
+            {
+              "provenanceId": "dc/base/HumanReadableStatVars",
+              "value": "Population"
+            }
+          ]
+        },
+        "populationType": {
+          "nodes": [
+            {
+              "name": "Person",
+              "types": [
+                "Class"
+              ],
+              "dcid": "Person",
+              "provenanceId": "dc/base/HumanReadableStatVars"
+            }
+          ]
+        },
+        "provenance": {
+          "nodes": [
+            {
+              "name": "HumanReadableStatVars",
+              "types": [
+                "Provenance"
+              ],
+              "dcid": "dc/base/HumanReadableStatVars",
+              "provenanceId": "dc/base/HumanReadableStatVars"
+            }
+          ]
+        },
+        "statType": {
+          "nodes": [
+            {
+              "name": "measuredValue",
+              "types": [
+                "Property"
+              ],
+              "dcid": "measuredValue",
+              "provenanceId": "dc/base/HumanReadableStatVars"
+            }
+          ]
+        },
+        "typeOf": {
+          "nodes": [
+            {
+              "name": "StatisticalVariable",
+              "types": [
+                "Class"
+              ],
+              "dcid": "StatisticalVariable",
+              "provenanceId": "dc/base/HumanReadableStatVars"
+            }
+          ]
+        }
+      }
+    },
+    "Country": {
+      "arcs": {
+        "name": {
+          "nodes": [
+            {
+              "provenanceId": "dc/base/BaseSchema",
+              "value": "Country"
+            }
+          ]
+        },
+        "provenance": {
+          "nodes": [
+            {
+              "name": "BaseSchema",
+              "types": [
+                "Provenance"
+              ],
+              "dcid": "dc/base/BaseSchema",
+              "provenanceId": "dc/base/BaseSchema"
+            }
+          ]
+        },
+        "subClassOf": {
+          "nodes": [
+            {
+              "name": "AdministrativeArea",
+              "types": [
+                "Class"
+              ],
+              "dcid": "AdministrativeArea",
+              "provenanceId": "dc/base/BaseSchema"
+            }
+          ]
+        },
+        "typeOf": {
+          "nodes": [
+            {
+              "name": "Class",
+              "types": [
+                "Class"
+              ],
+              "dcid": "Class",
+              "provenanceId": "dc/base/BaseSchema"
+            }
+          ]
+        }
+      }
+    },
+    "dc/o/vs51dzghn79eg": {
+      "arcs": {
+        "measurementMethod": {
+          "nodes": [
+            {
+              "name": "CensusACS5yrSurvey",
+              "dcid": "CensusACS5yrSurvey",
+              "provenanceId": "dc/base/CensusACS5YearSurvey"
+            }
+          ]
+        },
+        "observationAbout": {
+          "nodes": [
+            {
+              "name": "Mountain View",
+              "dcid": "geoId/0649670",
+              "provenanceId": "dc/base/CensusACS5YearSurvey"
+            }
+          ]
+        },
+        "observationDate": {
+          "nodes": [
+            {
+              "provenanceId": "dc/base/CensusACS5YearSurvey",
+              "value": "2016"
+            }
+          ]
+        },
+        "unit": {
+          "nodes": [
+            {
+              "name": "Year",
+              "dcid": "Year",
+              "provenanceId": "dc/base/CensusACS5YearSurvey"
+            }
+          ]
+        },
+        "value": {
+          "nodes": [
+            {
+              "provenanceId": "dc/base/CensusACS5YearSurvey",
+              "value": "35"
+            }
+          ]
+        },
+        "variableMeasured": {
+          "nodes": [
+            {
+              "name": "Median Age",
+              "dcid": "Median_Age_Person",
+              "provenanceId": "dc/base/CensusACS5YearSurvey"
+            }
+          ]
+        }
+      }
+    }
+  }
+}
