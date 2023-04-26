@@ -3,21 +3,20 @@ module github.com/datacommonsorg/mixer
 go 1.20
 
 require (
-	cloud.google.com/go/bigquery v1.50.0
+	cloud.google.com/go/bigquery v1.51.0
 	cloud.google.com/go/bigtable v1.18.1
 	cloud.google.com/go/profiler v0.3.1
 	cloud.google.com/go/pubsub v1.30.0
 	cloud.google.com/go/secretmanager v1.10.0
 	cloud.google.com/go/storage v1.30.1
 	github.com/go-test/deep v1.0.7
-	github.com/golang/geo v0.0.0-20230404232722-c4acd7a044dc
+	github.com/golang/geo v0.0.0-20230421003525-6adc56603217
 	github.com/google/go-cmp v0.5.9
-	github.com/google/pprof v0.0.0-20230406165453-00490a63f317
-	github.com/mattn/go-sqlite3 v1.14.16
+	github.com/google/pprof v0.0.0-20230426061923-93006964c1fc
 	golang.org/x/oauth2 v0.7.0
 	golang.org/x/sync v0.1.0
 	golang.org/x/text v0.9.0
-	google.golang.org/api v0.118.0
+	google.golang.org/api v0.120.0
 	google.golang.org/genproto v0.0.0-20230410155749-daa745c078e1
 	google.golang.org/grpc v1.54.0
 	google.golang.org/protobuf v1.30.0
@@ -39,19 +38,19 @@ require (
 	github.com/cncf/udpa/go v0.0.0-20220112060539-c52dc94e7fbe // indirect
 	github.com/cncf/xds/go v0.0.0-20230310173818-32f1caf87195 // indirect
 	github.com/envoyproxy/go-control-plane v0.11.0 // indirect
-	github.com/envoyproxy/protoc-gen-validate v0.10.1 // indirect
+	github.com/envoyproxy/protoc-gen-validate v1.0.0 // indirect
 	github.com/goccy/go-json v0.10.2 // indirect
 	github.com/golang/groupcache v0.0.0-20210331224755-41bb18bfe9da // indirect
 	github.com/golang/protobuf v1.5.3 // indirect
 	github.com/golang/snappy v0.0.4 // indirect
 	github.com/google/btree v1.1.2 // indirect
 	github.com/google/flatbuffers v23.3.3+incompatible // indirect
-	github.com/google/s2a-go v0.1.1 // indirect
+	github.com/google/s2a-go v0.1.2 // indirect
 	github.com/google/uuid v1.3.0 // indirect
 	github.com/googleapis/enterprise-certificate-proxy v0.2.3 // indirect
 	github.com/googleapis/gax-go/v2 v2.8.0 // indirect
 	github.com/klauspost/asmfmt v1.3.2 // indirect
-	github.com/klauspost/compress v1.16.4 // indirect
+	github.com/klauspost/compress v1.16.5 // indirect
 	github.com/klauspost/cpuid/v2 v2.2.4 // indirect
 	github.com/minio/asm2plan9s v0.0.0-20200509001527-cdd76441f9d8 // indirect
 	github.com/minio/c2goasm v0.0.0-20190812172519-36a3d3bbc4f3 // indirect

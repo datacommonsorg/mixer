@@ -285,16 +285,6 @@ service Mixer {
     };
   }
 
-  // Find matched stat vars given constraint properties
-  rpc GetStatVarMatch(GetStatVarMatchRequest)
-      returns (GetStatVarMatchResponse) {
-    option (google.api.http) = {
-      post : "/stat-var/match"
-      body : "*"
-      additional_bindings : {post : "/v1/variable/match" body : "*"}
-    };
-  }
-
   // ======================  V1   V1   V1   V1  ======================
 
   // Query DataCommons Graph with Sparql.
