@@ -13,6 +13,7 @@ ingress:
 # Encode instance only services SPARQL
 serviceGroups:
   svg: null
+  node: null
   recon: null
   observation: null
   default: null
