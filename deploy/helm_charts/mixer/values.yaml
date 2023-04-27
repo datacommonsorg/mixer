@@ -107,8 +107,8 @@ serviceGroups:
       - "/v1/bulk/info/variable"
     replicas: 1
     resources:
-      memoryRequest: "8G"
-      memoryLimit: "8G"
+      memoryRequest: "6G"
+      memoryLimit: "6G"
     useSearch: true
     # If the name of the recon service is changed here,
     # please also change the name in the deployment.yaml template.
@@ -121,16 +121,34 @@ serviceGroups:
       memoryLimit: "400M"
   observation:
     urlPaths:
+      - "/bulk/stats"
+      - "/stat/*"
       - "/v1/observations/*"
       - "/v1/bulk/observations/*"
+      - "/v2/observation"
+      - "/v2/resolve"
     replicas: 1
     resources:
-      memoryRequest: "4G"
-      memoryLimit: "4G"
+      memoryRequest: "2G"
+      memoryLimit: "2G"
+  node:
+    urlPaths:
+      - "/node/*"
+      - "/v1/triples/*"
+      - "/v1/properties/*"
+      - "/v1/property/values/*"
+      - "/v1/bulk/property/values/*"
+      - "/v1/bulk/triples/*"
+      - "/v1/bulk/properties/*"
+      - "/v2/node"
+    replicas: 1
+    resources:
+      memoryRequest: "2G"
+      memoryLimit: "2G"
   default:
     urlPaths:
       - "/*"
     replicas: 1
     resources:
-      memoryRequest: "4G"
-      memoryLimit: "4G"
+      memoryRequest: "2G"
+      memoryLimit: "2G"

@@ -24,5 +24,7 @@ serviceGroups:
       replicas: 20
   observation:
       replicas: 20
-  default:
+  node:
       replicas: 20
+  default:
+      replicas: 10
