@@ -220,7 +220,20 @@ func (s *Server) BioPage(
 func (s *Server) PlacePage(
 	ctx context.Context, in *pbv1.PlacePageRequest,
 ) (*pbv1.PlacePageResponse, error) {
-	return page.PlacePage(ctx, in, s.store)
+	localResp, err := page.PlacePage(ctx, in, s.store)
+	if err != nil {
+		return nil, err
+	}
+	if localResp == nil && s.metadata.RemoteMixerDomain != "" {
+		remoteResp := &pbv1.PlacePageResponse{}
+		err := fetchRemote(
+			s.metadata, s.httpClient, "/v1/internal/page/place", in, remoteResp)
+		if err != nil {
+			return nil, err
+		}
+		return remoteResp, nil
+	}
+	return localResp, nil
 }
 
 // VariableAncestors implements API for Mixer.VariableAncestors.

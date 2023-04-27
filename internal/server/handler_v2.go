@@ -16,58 +16,15 @@
 package server
 
 import (
-	"bytes"
 	"context"
-	"fmt"
-	"io"
-	"net/http"
 
 	"github.com/datacommonsorg/mixer/internal/merger"
 	"github.com/datacommonsorg/mixer/internal/server/pagination"
-	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"golang.org/x/sync/errgroup"
-	"google.golang.org/protobuf/encoding/protojson"
-	"google.golang.org/protobuf/proto"
 
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 )
-
-func fetchRemote(
-	metadata *resource.Metadata,
-	httpClient *http.Client,
-	apiPath string,
-	in proto.Message,
-	out proto.Message,
-) error {
-	url := metadata.RemoteMixerDomain + apiPath
-	jsonValue, err := protojson.Marshal(in)
-	if err != nil {
-		return err
-	}
-	request, err := http.NewRequest("POST", url, bytes.NewBuffer(jsonValue))
-	if err != nil {
-		return err
-	}
-	request.Header.Set("Content-Type", "application/json")
-	request.Header.Set("X-API-Key", metadata.RemoteMixerAPIKey)
-	response, err := httpClient.Do(request)
-	if err != nil {
-		return err
-	}
-	defer response.Body.Close()
-	// Read response body
-	var responseBodyBytes []byte
-	if response.StatusCode != http.StatusOK {
-		return fmt.Errorf("remote mixer response not ok: %s", response.Status)
-	}
-	responseBodyBytes, err = io.ReadAll(response.Body)
-	if err != nil {
-		return err
-	}
-	// Convert response body to string
-	return protojson.Unmarshal(responseBodyBytes, out)
-}
 
 // V2Resolve implements API for mixer.V2Resolve.
 func (s *Server) V2Resolve(

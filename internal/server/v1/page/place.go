@@ -696,5 +696,11 @@ func getPlacePageDataHelper(
 	resp.StatVarSeries = statData
 	resp.LatestPopulation = popData
 	resp.ValidCategories = categoryData
+
+	// If no stats, we think the place page is empty.
+	if len(resp.StatVarSeries) == 0 {
+		return nil, nil
+	}
+
 	return &resp, nil
 }
