@@ -142,10 +142,9 @@ func LinkedPropertyValues(
 	nodes []string,
 	linkedProperty string,
 	direction string,
-	filter map[string]string,
+	typeOfFilter string,
 ) (*pbv2.NodeResponse, error) {
-	nodeType, ok := filter["typeOf"]
-	if !ok {
+	if typeOfFilter == "" {
 		return nil, status.Errorf(codes.InvalidArgument, "must provide typeOf filters")
 	}
 	if linkedProperty == "containedInPlace" && direction == util.DirectionIn {
@@ -153,7 +152,7 @@ func LinkedPropertyValues(
 			ctx,
 			store,
 			nodes,
-			nodeType,
+			typeOfFilter,
 		)
 		if err != nil {
 			return nil, err
@@ -176,7 +175,7 @@ func LinkedPropertyValues(
 		return res, nil
 	} else if linkedProperty == "specializationOf" &&
 		direction == util.DirectionOut &&
-		nodeType == "StatVarGroup" {
+		typeOfFilter == "StatVarGroup" {
 		res := &pbv2.NodeResponse{Data: map[string]*pbv2.LinkedGraph{}}
 		for _, node := range nodes {
 			res.Data[node] = &pbv2.LinkedGraph{

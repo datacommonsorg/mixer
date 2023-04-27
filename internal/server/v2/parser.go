@@ -22,6 +22,11 @@ import (
 	"google.golang.org/grpc/status"
 )
 
+var (
+	spaceNewLineReplacer  = strings.NewReplacer(" ", "", "\t", "", "\n", "", "\r", "")
+	squareBracketReplacer = strings.NewReplacer("[", "", "]", "")
+)
+
 // splitWithDelim splits a graph expression by "->" and "<-"
 func splitWithDelim(expr string, delim string) []string {
 	res := []string{}
@@ -71,9 +76,8 @@ func parseArc(arrow, expr string) (*Arc, error) {
 	}
 
 	// Remove space and new line.
-	replacer := strings.NewReplacer(" ", "", "\t", "", "\n", "", "\r", "")
 	rawExpr := expr
-	expr = replacer.Replace(expr)
+	expr = spaceNewLineReplacer.Replace(expr)
 
 	// [prop1, prop2]
 	if expr[0] == '[' {
@@ -100,24 +104,35 @@ func parseArc(arrow, expr string) (*Arc, error) {
 			break
 		}
 	}
-	// {prop1:val1, prop2:val2}
+	// {prop1:[val1_1, val1_2], prop2:val2}
 	if len(expr) > 0 && expr[0] == '{' {
 		if expr[len(expr)-1] != '}' {
 			return nil, status.Errorf(
 				codes.InvalidArgument, "invalid filter string: %s", rawExpr)
 		}
-		filter := map[string]string{}
-		parts := strings.Split(expr[1:len(expr)-1], ",")
-		for _, p := range parts {
-			if p == "" {
+		filter := map[string]map[string]struct{}{}
+		expr = squareBracketReplacer.Replace(expr[1 : len(expr)-1])
+		parts := strings.Split(expr, ",")
+		lastKey := ""
+		for _, part := range parts {
+			if part == "" {
 				continue
 			}
-			kv := strings.Split(p, ":")
-			if len(kv) != 2 || kv[0] == "" || kv[1] == "" {
-				return nil, status.Errorf(
-					codes.InvalidArgument, "invalid filter string: %s", rawExpr)
+			if strings.Contains(part, ":") {
+				kv := strings.Split(part, ":")
+				if len(kv) != 2 || kv[0] == "" || kv[1] == "" {
+					return nil, status.Errorf(
+						codes.InvalidArgument, "invalid filter string: %s", rawExpr)
+				}
+				lastKey = kv[0]
+				filter[lastKey] = map[string]struct{}{kv[1]: {}}
+			} else { // No ":" means this is another val in square bracket.
+				if lastKey == "" {
+					return nil, status.Errorf(
+						codes.InvalidArgument, "invalid filter string: %s", rawExpr)
+				}
+				filter[lastKey][part] = struct{}{}
 			}
-			filter[kv[0]] = kv[1]
 		}
 		arc.Filter = filter
 		return arc, nil
