@@ -224,7 +224,8 @@ func (s *Server) PlacePage(
 	if err != nil {
 		return nil, err
 	}
-	if localResp == nil && s.metadata.RemoteMixerDomain != "" {
+	if len(localResp.GetStatVarSeries()) == 0 &&
+		s.metadata.RemoteMixerDomain != "" {
 		remoteResp := &pbv1.PlacePageResponse{}
 		err := fetchRemote(
 			s.metadata, s.httpClient, "/v1/internal/page/place", in, remoteResp)
