@@ -110,7 +110,7 @@ func parseArc(arrow, expr string) (*Arc, error) {
 			return nil, status.Errorf(
 				codes.InvalidArgument, "invalid filter string: %s", rawExpr)
 		}
-		filter := map[string]map[string]struct{}{}
+		filter := map[string][]string{}
 		expr = squareBracketReplacer.Replace(expr[1 : len(expr)-1])
 		parts := strings.Split(expr, ",")
 		lastKey := ""
@@ -125,13 +125,13 @@ func parseArc(arrow, expr string) (*Arc, error) {
 						codes.InvalidArgument, "invalid filter string: %s", rawExpr)
 				}
 				lastKey = kv[0]
-				filter[lastKey] = map[string]struct{}{kv[1]: {}}
+				filter[lastKey] = append(filter[lastKey], kv[1])
 			} else { // No ":" means this is another val in square bracket.
 				if lastKey == "" {
 					return nil, status.Errorf(
 						codes.InvalidArgument, "invalid filter string: %s", rawExpr)
 				}
-				filter[lastKey][part] = struct{}{}
+				filter[lastKey] = append(filter[lastKey], part)
 			}
 		}
 		arc.Filter = filter

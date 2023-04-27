@@ -100,16 +100,16 @@ func Description(
 	store *store.Store,
 	mapsClient *maps.Client,
 	nodes []string,
-	typeOfSet map[string]struct{},
+	typeOfs []string,
 ) (*pbv2.ResolveResponse, error) {
 	entities := []*pb.BulkFindEntitiesRequest_Entity{}
 	for _, node := range nodes {
-		if len(typeOfSet) == 0 {
+		if len(typeOfs) == 0 {
 			entities = append(entities, &pb.BulkFindEntitiesRequest_Entity{
 				Description: node,
 			})
 		} else {
-			for typeOf := range typeOfSet {
+			for _, typeOf := range typeOfs {
 				entities = append(entities, &pb.BulkFindEntitiesRequest_Entity{
 					Description: node,
 					Type:        typeOf,
