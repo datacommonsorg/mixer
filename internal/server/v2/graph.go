@@ -25,8 +25,8 @@ type Arc struct {
 	Decorator string
 	// The properties of the arc. This is when property is specified with []
 	BracketProps []string
-	// The filter of the arc.
-	Filter map[string]string
+	// The filter of the arc: filter key -> filter values.
+	Filter map[string][]string
 }
 
 // LinkedNodes represents a local graph starting from a node with connected arcs.

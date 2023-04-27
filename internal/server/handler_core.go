@@ -55,22 +55,22 @@ func (s *Server) V2ResolveCore(
 	if inArc.SingleProp == "geoCoordinate" && outArc.SingleProp == "dcid" {
 		// Coordinate to ID:
 		// Example:
-		//   <-geoCoordinate
+		//   <-geoCoordinate->dcid
 		return resolve.Coordinate(ctx, s.store, in.GetNodes())
 	}
 
 	if inArc.SingleProp == "description" && outArc.SingleProp == "dcid" {
 		// Description (name) to ID:
 		// Examples:
-		//   <-description
-		//   <-description{typeOf:City}
-		typeOf := inArc.Filter["typeOf"] // Could be empty.
+		//   <-description->dcid
+		//   <-description{typeOf:City}->dcid
+		//   <-description{typeOf:[City, County]}->dcid
 		return resolve.Description(
 			ctx,
 			s.store,
 			s.mapsClient,
 			in.GetNodes(),
-			typeOf)
+			inArc.Filter["typeOf"])
 	}
 
 	// ID to ID:
@@ -102,6 +102,11 @@ func (s *Server) V2NodeCore(
 		if arc.SingleProp != "" && arc.Decorator == "+" {
 			// Examples:
 			//   <-containedInPlace+{typeOf:City}
+			typeOfs, ok := arc.Filter["typeOf"]
+			if !ok || len(typeOfs) != 1 {
+				return nil, status.Errorf(codes.InvalidArgument,
+					"invalid filter for %s", in.GetProperty())
+			}
 			return v2pv.LinkedPropertyValues(
 				ctx,
 				s.store,
@@ -109,7 +114,7 @@ func (s *Server) V2NodeCore(
 				in.GetNodes(),
 				arc.SingleProp,
 				direction,
-				arc.Filter,
+				typeOfs[0],
 			)
 		}
 
@@ -180,14 +185,14 @@ func (s *Server) V2EventCore(
 	//   <-location{typeOf:FireEvent, date:2020-10, area:3.1#6.2#Acre}'
 	if len(arcs) == 1 {
 		arc := arcs[0]
-		eventType, eventTypeOK := arc.Filter["typeOf"]
-		date, dateOK := arc.Filter["date"]
+		eventTypes, eventTypesOK := arc.Filter["typeOf"]
+		dates, datesOK := arc.Filter["date"]
 
 		if !arc.Out &&
 			arc.SingleProp == "location" &&
 			(len(arc.Filter) == 2 || len(arc.Filter) == 3) &&
-			eventTypeOK &&
-			dateOK {
+			eventTypesOK && len(eventTypes) == 1 &&
+			datesOK && len(dates) == 1 {
 			var eventFilterSpec *v1e.FilterSpec
 			hasEventFilter := len(arc.Filter) == 3
 			if hasEventFilter {
@@ -195,7 +200,11 @@ func (s *Server) V2EventCore(
 					if k == "typeOf" || k == "date" {
 						continue
 					}
-					eventFilterSpec, err = v2e.ParseEventCollectionFilter(k, v)
+					if len(v) != 1 {
+						return nil, status.Errorf(codes.InvalidArgument,
+							"invalid event filter in property: %s", in.GetProperty())
+					}
+					eventFilterSpec, err = v2e.ParseEventCollectionFilter(k, v[0])
 					if err != nil {
 						return nil, err
 					}
@@ -208,8 +217,8 @@ func (s *Server) V2EventCore(
 				ctx,
 				s.store,
 				in.GetNode(),
-				eventType,
-				date,
+				eventTypes[0],
+				dates[0],
 				eventFilterSpec)
 		}
 
@@ -222,14 +231,18 @@ func (s *Server) V2EventCore(
 	//   <-location{typeOf:FireEvent}->date
 	if len(arcs) == 2 {
 		arc1, arc2 := arcs[0], arcs[1]
-		eventType, eventTypeOK := arc1.Filter["typeOf"]
+		eventTypes, eventTypesOK := arc1.Filter["typeOf"]
 
 		if !arc1.Out &&
 			arc1.SingleProp == "location" &&
-			eventTypeOK &&
+			eventTypesOK && len(eventTypes) == 1 &&
 			arc2.Out &&
 			arc2.SingleProp == "date" {
-			return v2e.EventCollectionDate(ctx, s.store, in.GetNode(), eventType)
+			return v2e.EventCollectionDate(
+				ctx,
+				s.store,
+				in.GetNode(),
+				eventTypes[0])
 		}
 
 		return nil, status.Errorf(codes.InvalidArgument,
@@ -291,10 +304,11 @@ func (s *Server) V2ObservationCore(
 					codes.InvalidArgument, "invalid expression string: %s", expr)
 			}
 			arc := g.Arcs[0]
+			typeOfs, typeOfsOK := arc.Filter["typeOf"]
 			if arc.SingleProp != "containedInPlace" ||
 				arc.Decorator != "+" ||
 				arc.Filter == nil ||
-				arc.Filter["typeOf"] == "" {
+				!typeOfsOK || len(typeOfs) != 1 {
 				return nil, status.Errorf(
 					codes.InvalidArgument, "invalid expression string: %s", expr)
 			}
@@ -303,7 +317,7 @@ func (s *Server) V2ObservationCore(
 				s.store,
 				variable.GetDcids(),
 				g.Subject,
-				arc.Filter["typeOf"],
+				typeOfs[0],
 				in.GetDate(),
 			)
 		}
