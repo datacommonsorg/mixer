@@ -696,5 +696,6 @@ func getPlacePageDataHelper(
 	resp.StatVarSeries = statData
 	resp.LatestPopulation = popData
 	resp.ValidCategories = categoryData
+
 	return &resp, nil
 }
