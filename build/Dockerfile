@@ -73,7 +73,7 @@ RUN GRPC_HEALTH_PROBE_VERSION=v0.4.7 && \
     chmod +x /bin/grpc_health_probe
 # Build binary
 COPY cmd/ cmd
-RUN go build -tags "sqlite_fts5" -o /go/bin/mixer cmd/main.go
+RUN go build -o /go/bin/mixer cmd/main.go
 ENTRYPOINT ["/go/bin/mixer"]
 
 

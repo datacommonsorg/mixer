@@ -151,13 +151,6 @@ func NewCache(ctx context.Context, store *store.Store, searchOptions SearchOptio
 		if searchOptions.BuildSvgSearchIndex {
 			result.SvgSearchIndex = statvar.BuildStatVarSearchIndex(rawSvg, parentSvgMap)
 		}
-		if searchOptions.BuildSqliteIndex {
-			sqliteDb, err := statvar.BuildSQLiteIndex(rawSvg)
-			if err != nil {
-				return nil, err
-			}
-			result.SQLiteDb = sqliteDb
-		}
 	}
 	return result, nil
 }
