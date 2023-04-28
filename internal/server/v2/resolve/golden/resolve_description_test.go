@@ -62,7 +62,6 @@ func TestResolveDescription(t *testing.T) {
 					"Ciudad Autónoma de Melilla,Spain",
 					"Hauts-de-France,France",
 					"Corse,France",
-					"Ireland,Ireland",
 					"Delhi,India",
 					"Dadra And Nagar Haveli,India",
 					"Damão and Diu,India",

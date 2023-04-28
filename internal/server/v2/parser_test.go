@@ -166,8 +166,34 @@ func TestParseArc(t *testing.T) {
 				Out:        true,
 				SingleProp: "containedInPlace",
 				Decorator:  "+",
-				Filter: map[string]string{
-					"typeOf": "City",
+				Filter: map[string][]string{
+					"typeOf": {"City"},
+				},
+			},
+			true,
+		},
+		{
+			"->",
+			"description{typeOf: [City, County], label: Haha}",
+			&Arc{
+				Out:        true,
+				SingleProp: "description",
+				Filter: map[string][]string{
+					"typeOf": {"City", "County"},
+					"label":  {"Haha"},
+				},
+			},
+			true,
+		},
+		{
+			"->",
+			"description{label: Haha, typeOf: [City, County]}",
+			&Arc{
+				Out:        true,
+				SingleProp: "description",
+				Filter: map[string][]string{
+					"typeOf": {"City", "County"},
+					"label":  {"Haha"},
 				},
 			},
 			true,
@@ -179,8 +205,8 @@ func TestParseArc(t *testing.T) {
 				Out:        true,
 				SingleProp: "containedInPlace",
 				Decorator:  "+",
-				Filter: map[string]string{
-					"typeOf": "City",
+				Filter: map[string][]string{
+					"typeOf": {"City"},
 				},
 			},
 			true,
@@ -191,8 +217,8 @@ func TestParseArc(t *testing.T) {
 			&Arc{
 				Out:        false,
 				SingleProp: "observationAbout",
-				Filter: map[string]string{
-					"variableMeasured": "Count_Person",
+				Filter: map[string][]string{
+					"variableMeasured": {"Count_Person"},
 				},
 			},
 			true,
@@ -206,9 +232,9 @@ func TestParseArc(t *testing.T) {
 			&Arc{
 				Out:        false,
 				SingleProp: "prop",
-				Filter: map[string]string{
-					"p1": "v1",
-					"p2": "v2",
+				Filter: map[string][]string{
+					"p1": {"v1"},
+					"p2": {"v2"},
 				},
 			},
 			true,
