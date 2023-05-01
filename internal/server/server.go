@@ -154,7 +154,7 @@ func NewCache(ctx context.Context, store *store.Store, searchOptions SearchOptio
 			// Read blocklisted svg from file.
 			file, _ := os.ReadFile("/datacommons/svg/blocklist_svg.json")
 			if err := json.Unmarshal(file, &blocklist_svg); err != nil {
-				blocklist_svg := []string{}
+				blocklist_svg = []string{}
 			}
 			result.SvgSearchIndex = statvar.BuildStatVarSearchIndex(rawSvg, parentSvgMap, blocklist_svg)
 		}
