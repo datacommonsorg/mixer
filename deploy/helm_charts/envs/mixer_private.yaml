@@ -125,3 +125,6 @@ ip: 35.244.175.66
 region: us-central1
 api_title: DataCommons API (Private)
 nodes: 3
+
+svg:
+  blocklistFile: ["dc/g/Uncategorized", "dc/g/SDG", "sdg/g/SDG"]

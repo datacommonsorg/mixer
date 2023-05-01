@@ -75,3 +75,12 @@ data:
   {{ $key }}: |
     {{ $val | nindent 4 }}
   {{ end  }}
+
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: blocklist-svg
+  namespace: {{ .Values.namespace.name }}
+data:
+  blocklist_svg.json: {{ toJson .Values.svg.blocklistFile | quote }}

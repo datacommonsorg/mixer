@@ -16,6 +16,7 @@ package server
 
 import (
 	"context"
+	"encoding/json"
 	"log"
 	"net/http"
 	"os"
@@ -149,7 +150,13 @@ func NewCache(ctx context.Context, store *store.Store, searchOptions SearchOptio
 	}
 	if searchOptions.UseSearch {
 		if searchOptions.BuildSvgSearchIndex {
-			result.SvgSearchIndex = statvar.BuildStatVarSearchIndex(rawSvg, parentSvgMap)
+			var blocklistSvg []string
+			// Read blocklisted svg from file.
+			file, _ := os.ReadFile("/datacommons/svg/blocklist_svg.json")
+			if err := json.Unmarshal(file, &blocklistSvg); err != nil {
+				blocklistSvg = []string{}
+			}
+			result.SvgSearchIndex = statvar.BuildStatVarSearchIndex(rawSvg, parentSvgMap, blocklistSvg)
 		}
 	}
 	return result, nil

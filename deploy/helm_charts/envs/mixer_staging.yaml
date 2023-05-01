@@ -28,3 +28,6 @@ ip: 34.107.161.252
 region: us-central1
 api_title: DataCommons API (Staging)
 nodes: 2
+
+svg:
+  blocklistFile: ["dc/g/Uncategorized", "dc/g/SDG"]
