@@ -5,177 +5,235 @@
         "containedInPlace+": {
           "nodes": [
             {
+              "name": "Alameda County",
               "dcid": "geoId/06001"
             },
             {
+              "name": "Alpine County",
               "dcid": "geoId/06003"
             },
             {
+              "name": "Amador County",
               "dcid": "geoId/06005"
             },
             {
+              "name": "Butte County",
               "dcid": "geoId/06007"
             },
             {
+              "name": "Calaveras County",
               "dcid": "geoId/06009"
             },
             {
+              "name": "Colusa County",
               "dcid": "geoId/06011"
             },
             {
+              "name": "Contra Costa County",
               "dcid": "geoId/06013"
             },
             {
+              "name": "Del Norte County",
               "dcid": "geoId/06015"
             },
             {
+              "name": "El Dorado County",
               "dcid": "geoId/06017"
             },
             {
+              "name": "Fresno County",
               "dcid": "geoId/06019"
             },
             {
+              "name": "Glenn County",
               "dcid": "geoId/06021"
             },
             {
+              "name": "Humboldt County",
               "dcid": "geoId/06023"
             },
             {
+              "name": "Imperial County",
               "dcid": "geoId/06025"
             },
             {
+              "name": "Inyo County",
               "dcid": "geoId/06027"
             },
             {
+              "name": "Kern County",
               "dcid": "geoId/06029"
             },
             {
+              "name": "Kings County",
               "dcid": "geoId/06031"
             },
             {
+              "name": "Lake County",
               "dcid": "geoId/06033"
             },
             {
+              "name": "Lassen County",
               "dcid": "geoId/06035"
             },
             {
+              "name": "Los Angeles County",
               "dcid": "geoId/06037"
             },
             {
+              "name": "Madera County",
               "dcid": "geoId/06039"
             },
             {
+              "name": "Marin County",
               "dcid": "geoId/06041"
             },
             {
+              "name": "Mariposa County",
               "dcid": "geoId/06043"
             },
             {
+              "name": "Mendocino County",
               "dcid": "geoId/06045"
             },
             {
+              "name": "Merced County",
               "dcid": "geoId/06047"
             },
             {
+              "name": "Modoc County",
               "dcid": "geoId/06049"
             },
             {
+              "name": "Mono County",
               "dcid": "geoId/06051"
             },
             {
+              "name": "Monterey County",
               "dcid": "geoId/06053"
             },
             {
+              "name": "Napa County",
               "dcid": "geoId/06055"
             },
             {
+              "name": "Nevada County",
               "dcid": "geoId/06057"
             },
             {
+              "name": "Orange County",
               "dcid": "geoId/06059"
             },
             {
+              "name": "Placer County",
               "dcid": "geoId/06061"
             },
             {
+              "name": "Plumas County",
               "dcid": "geoId/06063"
             },
             {
+              "name": "Riverside County",
               "dcid": "geoId/06065"
             },
             {
+              "name": "Sacramento County",
               "dcid": "geoId/06067"
             },
             {
+              "name": "San Benito County",
               "dcid": "geoId/06069"
             },
             {
+              "name": "San Bernardino County",
               "dcid": "geoId/06071"
             },
             {
+              "name": "San Diego County",
               "dcid": "geoId/06073"
             },
             {
+              "name": "San Francisco County",
               "dcid": "geoId/06075"
             },
             {
+              "name": "San Joaquin County",
               "dcid": "geoId/06077"
             },
             {
+              "name": "San Luis Obispo County",
               "dcid": "geoId/06079"
             },
             {
+              "name": "San Mateo County",
               "dcid": "geoId/06081"
             },
             {
+              "name": "Santa Barbara County",
               "dcid": "geoId/06083"
             },
             {
+              "name": "Santa Clara County",
               "dcid": "geoId/06085"
             },
             {
+              "name": "Santa Cruz County",
               "dcid": "geoId/06087"
             },
             {
+              "name": "Shasta County",
               "dcid": "geoId/06089"
             },
             {
+              "name": "Sierra County",
               "dcid": "geoId/06091"
             },
             {
+              "name": "Siskiyou County",
               "dcid": "geoId/06093"
             },
             {
+              "name": "Solano County",
               "dcid": "geoId/06095"
             },
             {
+              "name": "Sonoma County",
               "dcid": "geoId/06097"
             },
             {
+              "name": "Stanislaus County",
               "dcid": "geoId/06099"
             },
             {
+              "name": "Sutter County",
               "dcid": "geoId/06101"
             },
             {
+              "name": "Tehama County",
               "dcid": "geoId/06103"
             },
             {
+              "name": "Trinity County",
               "dcid": "geoId/06105"
             },
             {
+              "name": "Tulare County",
               "dcid": "geoId/06107"
             },
             {
+              "name": "Tuolumne County",
               "dcid": "geoId/06109"
             },
             {
+              "name": "Ventura County",
               "dcid": "geoId/06111"
             },
             {
+              "name": "Yolo County",
               "dcid": "geoId/06113"
             },
             {
+              "name": "Yuba County",
               "dcid": "geoId/06115"
             }
           ]
