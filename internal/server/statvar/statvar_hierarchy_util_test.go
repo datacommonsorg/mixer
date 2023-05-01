@@ -270,9 +270,10 @@ func TestBuildSearchIndex(t *testing.T) {
 	}
 
 	for _, c := range []struct {
-		inputSvg  map[string]*pb.StatVarGroupNode
-		parentSvg map[string][]string
-		want      *resource.SearchIndex
+		inputSvg   map[string]*pb.StatVarGroupNode
+		parentSvg  map[string][]string
+		ignoredSvg []string
+		want       *resource.SearchIndex
 	}{
 		{
 			map[string]*pb.StatVarGroupNode{
@@ -328,6 +329,135 @@ func TestBuildSearchIndex(t *testing.T) {
 				"sv_3":   {"g_3_1"},
 				"sv3":    {"g_3_1"},
 			},
+			[]string{},
+			&resource.SearchIndex{
+				RootTrieNode: &resource.TrieNode{
+					ChildrenNodes: map[rune]*resource.TrieNode{
+						'a': &tokenA,
+						'z': &tokenZ,
+						'b': &tokenB1,
+						'g': &tokenG,
+						's': &tokenS,
+					},
+					SvgIds:  nil,
+					SvIds:   nil,
+					Matches: nil,
+				},
+				Ranking: map[string]*resource.RankingInfo{
+					"g_1": {
+						ApproxNumPv: 2,
+						NumKnownPv:  2,
+						RankingName: "ab1 zDx",
+					},
+					"sv_1_1": {
+						ApproxNumPv: 3,
+						NumKnownPv:  3,
+						RankingName: "sv1",
+					},
+					"g_3_1": {
+						ApproxNumPv: 3,
+						NumKnownPv:  3,
+						RankingName: "zdx, bd",
+					},
+					"sv_3": {
+						ApproxNumPv: 2,
+						NumKnownPv:  2,
+						RankingName: "sv3",
+					},
+					"sv_1_2": {
+						ApproxNumPv: 3,
+						NumKnownPv:  3,
+						RankingName: "sv2",
+					},
+					"sv3": {
+						ApproxNumPv: 30,
+						NumKnownPv:  30,
+						RankingName: "sv4",
+					},
+				},
+			},
+		},
+		{
+			map[string]*pb.StatVarGroupNode{
+				"g_1": {
+					AbsoluteName: "ab1 zDx",
+					ChildStatVarGroups: []*pb.StatVarGroupNode_ChildSVG{
+						{Id: "g_3_1"},
+						{Id: "svg_ignored_1"},
+						{Id: "svg_ignored_2"},
+					},
+					ChildStatVars: []*pb.StatVarGroupNode_ChildSV{
+						{
+							Id:          "sv_1_1",
+							SearchNames: []string{"ab1 Ac3"},
+							DisplayName: "sv1",
+						},
+						{
+							Id:          "sv_1_2",
+							SearchNames: []string{"ac3, bd"},
+							DisplayName: "sv2",
+						},
+					},
+				},
+				"g_3_1": {
+					AbsoluteName: "zdx, bd",
+					ChildStatVars: []*pb.StatVarGroupNode_ChildSV{
+						{
+							Id:          "sv_3",
+							SearchNames: []string{"zdx"},
+							DisplayName: "sv3",
+						},
+						{
+							Id:          "sv3",
+							SearchNames: []string{"bd,"},
+							DisplayName: "sv4",
+						},
+					},
+				},
+				"svg_ignored_1": {
+					AbsoluteName: "test",
+					ChildStatVars: []*pb.StatVarGroupNode_ChildSV{
+						{
+							Id:          "sv_ignored_1",
+							SearchNames: []string{"zdx"},
+							DisplayName: "svIgnored1",
+						},
+					},
+				},
+				"svg_ignored_2": {
+					AbsoluteName: "test",
+					ChildStatVars: []*pb.StatVarGroupNode_ChildSV{
+						{
+							Id:          "sv_ignored_2",
+							SearchNames: []string{"zdx"},
+							DisplayName: "svIgnored2",
+						},
+					},
+				},
+				"group_orphan": {
+					AbsoluteName: "orphan group",
+					ChildStatVars: []*pb.StatVarGroupNode_ChildSV{
+						{
+							Id:          "sv_orphan",
+							SearchNames: []string{"zdx"},
+							DisplayName: "sv3",
+						},
+					},
+				},
+			},
+			map[string][]string{
+				"g_1":           {"dc/g/root"},
+				"sv_1_1":        {"g_1"},
+				"sv_1_2":        {"g_1"},
+				"g_3_1":         {"g_1"},
+				"sv_3":          {"g_3_1"},
+				"sv3":           {"g_3_1"},
+				"svg_ignored_1": {"g_1"},
+				"svg_ignored_2": {"g_1"},
+				"sv_ignored_1":  {"svg_ignored_1"},
+				"sv_ignored_2":  {"svg_ignored_2"},
+			},
+			[]string{"svg_ignored_1", "svg_ignored_2"},
 			&resource.SearchIndex{
 				RootTrieNode: &resource.TrieNode{
 					ChildrenNodes: map[rune]*resource.TrieNode{
@@ -376,7 +506,7 @@ func TestBuildSearchIndex(t *testing.T) {
 			},
 		},
 	} {
-		got := BuildStatVarSearchIndex(c.inputSvg, c.parentSvg)
+		got := BuildStatVarSearchIndex(c.inputSvg, c.parentSvg, c.ignoredSvg)
 		if diff := deep.Equal(got, c.want); diff != nil {
 			t.Errorf("GetStatVarSearchIndex got diff %v", diff)
 		}
