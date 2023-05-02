@@ -80,7 +80,7 @@ data:
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: blocklist-svg
+  name: blocklist-svg-mixer
   namespace: {{ .Values.namespace.name }}
 data:
-  blocklist_svg.json: {{ toJson .Values.svg.blocklistFile | quote }}
+  blocklist_svg_mixer.json: {{ toJson .Values.svg.blocklistFile | quote }}

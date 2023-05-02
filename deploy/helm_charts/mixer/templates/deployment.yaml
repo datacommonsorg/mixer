@@ -63,9 +63,9 @@ spec:
         - name: schema-mapping
           configMap:
             name: {{ include "mixer.fullname" $ }}-schema-mapping
-        - name: blocklist-svg
+        - name: blocklist-svg-mixer
           configMap:
-            name: blocklist-svg
+            name: blocklist-svg-mixer
       containers:
         - name: mixer
           image:  "{{ $.Values.mixer.image.repository }}:{{ $.Values.mixer.image.tag | default $.Chart.AppVersion }}"
@@ -99,7 +99,7 @@ spec:
               mountPath: /datacommons/mapping
             - name: memdb-config
               mountPath: /datacommons/memdb
-            - name: blocklist-svg
+            - name: blocklist-svg-mixer
               mountPath: /datacommons/svg
           env:
             - name: HOST_PROJECT
