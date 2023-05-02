@@ -171,7 +171,9 @@ service Mixer {
       returns (GetLocationsRankingsResponse) {
     option (google.api.http) = {
       get : "/node/ranking-locations"
+      additional_bindings : {get : "/v1/place/ranking"}
       additional_bindings : {post : "/node/ranking-locations" body : "*"}
+      additional_bindings : {post : "/v1/place/ranking" body : "*"}
     };
   }
 
@@ -180,7 +182,9 @@ service Mixer {
       returns (GetRelatedLocationsResponse) {
     option (google.api.http) = {
       get : "/node/related-locations"
+      additional_bindings : {get : "/v1/place/related"}
       additional_bindings : {post : "/node/related-locations" body : "*"}
+      additional_bindings : {post : "/v1/place/related" body : "*"}
     };
   }
 

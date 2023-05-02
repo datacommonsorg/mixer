@@ -125,14 +125,40 @@ func (s *Server) GetPlacesIn(ctx context.Context, in *pb.GetPlacesInRequest,
 func (s *Server) GetRelatedLocations(
 	ctx context.Context, in *pb.GetRelatedLocationsRequest,
 ) (*pb.GetRelatedLocationsResponse, error) {
-	return place.GetRelatedLocations(ctx, in, s.store)
+	localResp, err := place.GetRelatedLocations(ctx, in, s.store)
+	if err != nil {
+		return nil, err
+	}
+	if len(localResp.GetData()) == 0 &&
+		s.metadata.RemoteMixerDomain != "" {
+		remoteResp := &pb.GetRelatedLocationsResponse{}
+		if err := fetchRemote(
+			s.metadata, s.httpClient, "/v1/place/related", in, remoteResp); err != nil {
+			return nil, err
+		}
+		return remoteResp, nil
+	}
+	return localResp, nil
 }
 
 // GetLocationsRankings implements API for Mixer.GetLocationsRankings.
 func (s *Server) GetLocationsRankings(
 	ctx context.Context, in *pb.GetLocationsRankingsRequest,
 ) (*pb.GetLocationsRankingsResponse, error) {
-	return place.GetLocationsRankings(ctx, in, s.store)
+	localResp, err := place.GetLocationsRankings(ctx, in, s.store)
+	if err != nil {
+		return nil, err
+	}
+	if len(localResp.GetData()) == 0 &&
+		s.metadata.RemoteMixerDomain != "" {
+		remoteResp := &pb.GetLocationsRankingsResponse{}
+		if err := fetchRemote(
+			s.metadata, s.httpClient, "/v1/place/ranking", in, remoteResp); err != nil {
+			return nil, err
+		}
+		return remoteResp, nil
+	}
+	return localResp, nil
 }
 
 // GetPlaceStatDateWithinPlace implements API for Mixer.GetPlaceStatDateWithinPlace.
