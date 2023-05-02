@@ -122,7 +122,23 @@ func (s *Server) PlaceInfo(
 func (s *Server) BulkPlaceInfo(
 	ctx context.Context, in *pbv1.BulkPlaceInfoRequest,
 ) (*pbv1.BulkPlaceInfoResponse, error) {
-	return info.BulkPlaceInfo(ctx, in, s.store)
+	localResp, err := info.BulkPlaceInfo(ctx, in, s.store)
+	if err != nil {
+		return nil, err
+	}
+	if len(localResp.GetData()) == 0 && s.metadata.RemoteMixerDomain != "" {
+		remoteResp := &pbv1.BulkPlaceInfoResponse{}
+		if err := fetchRemote(
+			s.metadata,
+			s.httpClient,
+			"/v1/bulk/info/place",
+			in,
+			remoteResp); err != nil {
+			return nil, err
+		}
+		return remoteResp, nil
+	}
+	return localResp, nil
 }
 
 // VariableInfo implements API for mixer.VariableInfo.
@@ -136,7 +152,23 @@ func (s *Server) VariableInfo(
 func (s *Server) BulkVariableInfo(
 	ctx context.Context, in *pbv1.BulkVariableInfoRequest,
 ) (*pbv1.BulkVariableInfoResponse, error) {
-	return info.BulkVariableInfo(ctx, in, s.store)
+	localResp, err := info.BulkVariableInfo(ctx, in, s.store)
+	if err != nil {
+		return nil, err
+	}
+	if len(localResp.GetData()) == 0 && s.metadata.RemoteMixerDomain != "" {
+		remoteResp := &pbv1.BulkVariableInfoResponse{}
+		if err := fetchRemote(
+			s.metadata,
+			s.httpClient,
+			"/v1/bulk/info/variable",
+			in,
+			remoteResp); err != nil {
+			return nil, err
+		}
+		return remoteResp, nil
+	}
+	return localResp, nil
 }
 
 // VariableGroupInfo implements API for mixer.VariableGroupInfo.
@@ -150,7 +182,23 @@ func (s *Server) VariableGroupInfo(
 func (s *Server) BulkVariableGroupInfo(
 	ctx context.Context, in *pbv1.BulkVariableGroupInfoRequest,
 ) (*pbv1.BulkVariableGroupInfoResponse, error) {
-	return info.BulkVariableGroupInfo(ctx, in, s.store, s.cache)
+	localResp, err := info.BulkVariableGroupInfo(ctx, in, s.store, s.cache)
+	if err != nil {
+		return nil, err
+	}
+	if len(localResp.GetData()) == 0 && s.metadata.RemoteMixerDomain != "" {
+		remoteResp := &pbv1.BulkVariableGroupInfoResponse{}
+		if err := fetchRemote(
+			s.metadata,
+			s.httpClient,
+			"/v1/bulk/info/variable-group",
+			in,
+			remoteResp); err != nil {
+			return nil, err
+		}
+		return remoteResp, nil
+	}
+	return localResp, nil
 }
 
 // ObservationsPoint implements API for mixer.ObservationsPoint.
@@ -227,9 +275,12 @@ func (s *Server) PlacePage(
 	if len(localResp.GetStatVarSeries()) == 0 &&
 		s.metadata.RemoteMixerDomain != "" {
 		remoteResp := &pbv1.PlacePageResponse{}
-		err := fetchRemote(
-			s.metadata, s.httpClient, "/v1/internal/page/place", in, remoteResp)
-		if err != nil {
+		if err := fetchRemote(
+			s.metadata,
+			s.httpClient,
+			"/v1/internal/page/place",
+			in,
+			remoteResp); err != nil {
 			return nil, err
 		}
 		return remoteResp, nil
