@@ -152,6 +152,3 @@ serviceGroups:
     resources:
       memoryRequest: "2G"
       memoryLimit: "2G"
-
-svg:
-  blocklistFile: []
