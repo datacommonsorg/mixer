@@ -172,13 +172,6 @@ func (s *Server) GetStatVarSummary(
 	return statvarsummary.GetStatVarSummary(ctx, in, s.store)
 }
 
-// GetStatVarMatch implements API for Mixer.GetStatVarMatch.
-func (s *Server) GetStatVarMatch(
-	ctx context.Context, in *pb.GetStatVarMatchRequest,
-) (*pb.GetStatVarMatchResponse, error) {
-	return statvar.GetStatVarMatch(ctx, in, s.store, s.cache)
-}
-
 // SearchStatVar implements API for Mixer.SearchStatVar.
 func (s *Server) SearchStatVar(
 	ctx context.Context, in *pb.SearchStatVarRequest,

@@ -157,13 +157,37 @@ func LinkedPropertyValues(
 		if err != nil {
 			return nil, err
 		}
+		// Fetch descendent names
+		descendents := []string{}
+		for _, vals := range data {
+			descendents = append(descendents, vals...)
+		}
+		nameResp, _, err := v1pv.Fetch(
+			ctx,
+			store,
+			descendents,
+			[]string{"name"},
+			0,
+			"",
+			"out",
+		)
+		if err != nil {
+			return nil, err
+		}
+		// Assemble response
 		res := &pbv2.NodeResponse{Data: map[string]*pbv2.LinkedGraph{}}
 		for _, node := range nodes {
 			list := []*pb.EntityInfo{}
 			dcids, ok := data[node]
 			if ok && len(dcids) > 0 {
 				for _, dcid := range dcids {
-					list = append(list, &pb.EntityInfo{Dcid: dcid})
+					info := &pb.EntityInfo{Dcid: dcid}
+					if v, ok := nameResp[dcid]["name"]; ok {
+						if len(v[""]) > 0 {
+							info.Name = v[""][0].Value
+						}
+					}
+					list = append(list, info)
 				}
 			}
 			res.Data[node] = &pbv2.LinkedGraph{

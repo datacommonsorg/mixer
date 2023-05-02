@@ -56,7 +56,7 @@ Run the following code to start mixer gRPC server (without branch cache)
 
 ```bash
 # In repo root directory
-go run --tags sqlite_fts5 cmd/main.go \
+go run cmd/main.go \
     --host_project=datcom-mixer-dev-316822 \
     --bq_dataset=$(head -1 deploy/storage/bigquery.version) \
     --base_bigtable_info="$(cat deploy/storage/base_bigtable_info.yaml)" \
@@ -85,7 +85,7 @@ Run the following code to start mixer gRPC server with TMCF + CSV files stored i
 
 ```bash
 # In repo root directory
-go run --tags sqlite_fts5 cmd/main.go \
+go run cmd/main.go \
     --host_project=datcom-mixer-dev-316822 \
     --tmcf_csv_bucket=datcom-mixer-dev-resources \
     --tmcf_csv_folder=test \
@@ -178,7 +178,7 @@ to that path, and you can use `go tool pprof` to analyze it. For example;
 ```bash
 # Command from ### Start Mixer as a gRPC server backed by TMCF + CSV files
 # In repo root directory
-go run --tags sqlite_fts5 cmd/main.go \
+go run cmd/main.go \
     --host_project=datcom-mixer-dev-316822 \
     --bq_dataset=$(head -1 deploy/storage/bigquery.version) \
     --base_bigtable_info="$(cat deploy/storage/base_bigtable_info.yaml)" \

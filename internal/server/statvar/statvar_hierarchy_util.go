@@ -31,13 +31,6 @@ import (
 	"github.com/datacommonsorg/mixer/internal/util"
 )
 
-// This should be synced with the list of blocklisted SVGs in the website repo
-var ignoredSvgIds = []string{
-	"dc/g/Uncategorized", 
-	// TODO: Remove after partial hierarchy is ready.
-	"dc/g/SDG",
-}
-
 // GetRawSvg gets the raw svg mapping.
 func GetRawSvg(ctx context.Context, store *store.Store) (
 	map[string]*pb.StatVarGroupNode, error) {
@@ -128,7 +121,8 @@ func getSynonymMap() map[string][]string {
 // BuildStatVarSearchIndex builds the search index for the stat var hierarchy.
 func BuildStatVarSearchIndex(
 	rawSvg map[string]*pb.StatVarGroupNode,
-	parentSvg map[string][]string) *resource.SearchIndex {
+	parentSvg map[string][]string,
+	ignoredSvgIds []string) *resource.SearchIndex {
 	defer util.TimeTrack(time.Now(), "BuildStatVarSearchIndex")
 	// map of token to map of sv/svg id to ranking information.
 	searchIndex := &resource.SearchIndex{
@@ -138,6 +132,9 @@ func BuildStatVarSearchIndex(
 	ignoredSVG := map[string]string{}
 	// Exclude svg and sv under miscellaneous from the search index
 	for _, svgID := range ignoredSvgIds {
+		if svgID == "" {
+			continue
+		}
 		getIgnoredSVGHelper(ignoredSVG, rawSvg, svgID)
 	}
 	synonymMap := getSynonymMap()

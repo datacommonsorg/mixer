@@ -16,6 +16,7 @@ package server
 
 import (
 	"context"
+	"encoding/json"
 	"log"
 	"net/http"
 	"os"
@@ -149,14 +150,19 @@ func NewCache(ctx context.Context, store *store.Store, searchOptions SearchOptio
 	}
 	if searchOptions.UseSearch {
 		if searchOptions.BuildSvgSearchIndex {
-			result.SvgSearchIndex = statvar.BuildStatVarSearchIndex(rawSvg, parentSvgMap)
-		}
-		if searchOptions.BuildSqliteIndex {
-			sqliteDb, err := statvar.BuildSQLiteIndex(rawSvg)
+			var blocklistSvg []string
+			// Read blocklisted svg from file.
+			file, err := os.ReadFile("/datacommons/svg/blocklist_svg.json")
 			if err != nil {
-				return nil, err
+				log.Printf("Could not read blocklist svg file. Using empty blocklist svg list.")
+				blocklistSvg = []string{}
+			} else {
+				if err := json.Unmarshal(file, &blocklistSvg); err != nil {
+					log.Printf("Could not unmarshal blocklist svg file. Using empty blocklist svg list.")
+					blocklistSvg = []string{}
+				}
 			}
-			result.SQLiteDb = sqliteDb
+			result.SvgSearchIndex = statvar.BuildStatVarSearchIndex(rawSvg, parentSvgMap, blocklistSvg)
 		}
 	}
 	return result, nil

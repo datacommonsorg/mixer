@@ -253,28 +253,3 @@ message GetStatVarSummaryRequest {
 message GetStatVarSummaryResponse {
   map<string, StatVarSummary> stat_var_summary = 1;
 }
-
-message GetStatVarMatchRequest {
-  // The user query.
-  string query = 1;
-  // Limit of the response entries.
-  // By default only the first 10 entries are returned.
-  int32 limit = 2;
-  // If true include debug explanation.
-  bool debug = 3;
-}
-
-message GetStatVarMatchResponse {
-  message MatchInfo {
-    // Stat Var ID.
-    string stat_var = 1;
-    // Stat Var display name.
-    string stat_var_name = 2;
-    // Score for this match.
-    double score = 3;
-    // Debug explanation of the score.
-    string explanation = 4;
-  }
-  // Ordered match list. Entry with larger match_count ranks at the beginning.
-  repeated MatchInfo match_info = 1;
-}
