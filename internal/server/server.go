@@ -152,9 +152,15 @@ func NewCache(ctx context.Context, store *store.Store, searchOptions SearchOptio
 		if searchOptions.BuildSvgSearchIndex {
 			var blocklistSvg []string
 			// Read blocklisted svg from file.
-			file, _ := os.ReadFile("/datacommons/svg/blocklist_svg.json")
-			if err := json.Unmarshal(file, &blocklistSvg); err != nil {
+			file, err := os.ReadFile("/datacommons/svg/blocklist_svg.json")
+			if err != nil {
+				log.Printf("Could not read blocklist svg file. Using empty blocklist svg list.")
 				blocklistSvg = []string{}
+			} else {
+				if err := json.Unmarshal(file, &blocklistSvg); err != nil {
+					log.Printf("Could not unmarshal blocklist svg file. Using empty blocklist svg list.")
+					blocklistSvg = []string{}
+				}
 			}
 			result.SvgSearchIndex = statvar.BuildStatVarSearchIndex(rawSvg, parentSvgMap, blocklistSvg)
 		}
