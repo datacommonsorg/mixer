@@ -183,7 +183,9 @@ func LinkedPropertyValues(
 				for _, dcid := range dcids {
 					info := &pb.EntityInfo{Dcid: dcid}
 					if v, ok := nameResp[dcid]["name"]; ok {
-						info.Name = v[""][0].Value
+						if len(v[""]) > 0 {
+							info.Name = v[""][0].Value
+						}
 					}
 					list = append(list, info)
 				}
