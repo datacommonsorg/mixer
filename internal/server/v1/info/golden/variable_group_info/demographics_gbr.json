@@ -17,7 +17,7 @@
         "searchNames": [
           "Gender Income Inequality of Person"
         ],
-        "displayName": "Gender Income Inequality",
+        "displayName": "Income Inequality Between Men and Women of Working Age",
         "definition": "mp=genderIncomeInequality,pt=Person"
       },
       {
@@ -34,7 +34,7 @@
         "searchNames": [
           "Median Age of Person"
         ],
-        "displayName": "Median Age",
+        "displayName": "Median Age of Population",
         "definition": "st=medianValue,mp=age,pt=Person"
       },
       {
@@ -42,7 +42,7 @@
         "searchNames": [
           "Median Income of Person"
         ],
-        "displayName": "Median Income",
+        "displayName": "Median Income of a Population",
         "definition": "st=medianValue,mp=income,pt=Person"
       },
       {
@@ -52,15 +52,6 @@
         ],
         "displayName": "Percent of Internet Users",
         "definition": "md=PerCapita,mp=count,pt=Person,isInternetUser=True",
-        "hasData": true
-      },
-      {
-        "id": "Count_Person",
-        "searchNames": [
-          "Population Count of Person"
-        ],
-        "displayName": "Population",
-        "definition": "mp=count,pt=Person",
         "hasData": true
       },
       {
@@ -85,8 +76,17 @@
         "searchNames": [
           "Growth Rate Population Count of Person"
         ],
-        "displayName": "Population Growth Rate",
+        "displayName": "Rate of Population Growth",
         "definition": "st=growthRate,mp=count,pt=Person",
+        "hasData": true
+      },
+      {
+        "id": "Count_Person",
+        "searchNames": [
+          "Population Count of Person"
+        ],
+        "displayName": "Total Population",
+        "definition": "mp=count,pt=Person",
         "hasData": true
       }
     ],

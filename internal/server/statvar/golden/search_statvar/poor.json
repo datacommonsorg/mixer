@@ -75,43 +75,43 @@
       "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Householder Race",
       "statVars": [
         {
-          "name": "Count of Household: With Food Stamps in The Past 12 Months, American Indian or Alaska Native Alone",
+          "name": "American Indian or Alaska Native Monoracial Households With Food Stamps in the Past Year",
           "dcid": "Count_Household_WithFoodStampsInThePast12Months_AmericanIndianOrAlaskaNativeAlone"
         },
         {
-          "name": "Count of Household: With Food Stamps in The Past 12 Months, Asian Alone",
+          "name": "Asian Monoracial Households With Food Stamps in the Past Year",
           "dcid": "Count_Household_WithFoodStampsInThePast12Months_AsianAlone"
         },
         {
-          "name": "Count of Household: With Food Stamps in The Past 12 Months, Black or African American Alone",
+          "name": "Black or African American Monoracial Households With Food Stamps in the Past Year",
           "dcid": "Count_Household_WithFoodStampsInThePast12Months_BlackOrAfricanAmericanAlone"
-        },
-        {
-          "name": "Count of Household: With Food Stamps in The Past 12 Months, Hispanic or Latino",
-          "dcid": "Count_Household_WithFoodStampsInThePast12Months_HispanicOrLatino"
-        },
-        {
-          "name": "Count of Household: With Food Stamps in The Past 12 Months, Native Hawaiian or Other Pacific Islander Alone",
-          "dcid": "Count_Household_WithFoodStampsInThePast12Months_NativeHawaiianOrOtherPacificIslanderAlone"
         },
         {
           "name": "Count of Household: With Food Stamps in The Past 12 Months, One Race",
           "dcid": "Count_Household_WithFoodStampsInThePast12Months_OneRace"
         },
         {
-          "name": "Count of Household: With Food Stamps in The Past 12 Months, Some Other Race Alone",
+          "name": "Hispanic or Latino Households Receiving Food Stamps in the Past Year",
+          "dcid": "Count_Household_WithFoodStampsInThePast12Months_HispanicOrLatino"
+        },
+        {
+          "name": "Households Receiving Food Stamps Over the Last Year Who Identify as Native Hawaiian or Other Pacific Islander Alone",
+          "dcid": "Count_Household_WithFoodStampsInThePast12Months_NativeHawaiianOrOtherPacificIslanderAlone"
+        },
+        {
+          "name": "Households Receiving Food Stamps Over the Last Year Who Identify as Some Other Race Alone",
           "dcid": "Count_Household_WithFoodStampsInThePast12Months_SomeOtherRaceAlone"
         },
         {
-          "name": "Count of Household: With Food Stamps in The Past 12 Months, Two or More Races",
+          "name": "Households Receiving Food Stamps Over the Last Year Who Identify as Two or More Races",
           "dcid": "Count_Household_WithFoodStampsInThePast12Months_TwoOrMoreRaces"
         },
         {
-          "name": "Count of Household: With Food Stamps in The Past 12 Months, White Alone",
+          "name": "Households Receiving Food Stamps Over the Last Year Who Identify as White Alone",
           "dcid": "Count_Household_WithFoodStampsInThePast12Months_WhiteAlone"
         },
         {
-          "name": "Count of Household: With Food Stamps in The Past 12 Months, White Alone Not Hispanic or Latino",
+          "name": "Households Receiving Food Stamps Over the Last Year Who Identify as White Alone Not Hispanic or Latino",
           "dcid": "Count_Household_WithFoodStampsInThePast12Months_WhiteAloneNotHispanicOrLatino"
         }
       ]
@@ -1339,31 +1339,31 @@
       "name": "Person With Benefits Status = With Food Stamps in The Past 12 Months, Residence Type",
       "statVars": [
         {
-          "name": "Population: With Food Stamps in The Past 12 Months, Adult Correctional Facilities",
+          "name": "Population Who Received Food Stamps in the Past Year and Lived in Adult Correctional Facilities",
           "dcid": "Count_Person_WithFoodStampsInThePast12Months_ResidesInAdultCorrectionalFacilities"
         },
         {
-          "name": "Population: With Food Stamps in The Past 12 Months, College or University Student Housing",
+          "name": "Population Who Received Food Stamps in the Past Year and Lived in College or University Student Housing",
           "dcid": "Count_Person_WithFoodStampsInThePast12Months_ResidesInCollegeOrUniversityStudentHousing"
         },
         {
-          "name": "Population: With Food Stamps in The Past 12 Months, Group Quarters",
+          "name": "Population Who Received Food Stamps in the Past Year and Lived in Group Quarters",
           "dcid": "Count_Person_WithFoodStampsInThePast12Months_ResidesInGroupQuarters"
         },
         {
-          "name": "Population: With Food Stamps in The Past 12 Months, Institutionalized Group Quarters",
+          "name": "Population Who Received Food Stamps in the Past Year and Lived in Institutionalized Group Quarters",
           "dcid": "Count_Person_WithFoodStampsInThePast12Months_ResidesInInstitutionalizedGroupQuarters"
         },
         {
-          "name": "Population: With Food Stamps in The Past 12 Months, Juvenile Facilities",
+          "name": "Population Who Received Food Stamps in the Past Year and Lived in Juvenile Facilities",
           "dcid": "Count_Person_WithFoodStampsInThePast12Months_ResidesInJuvenileFacilities"
         },
         {
-          "name": "Population: With Food Stamps in The Past 12 Months, Noninstitutionalized Group Quarters",
+          "name": "Population Who Received Food Stamps in the Past Year and Lived in Noninstitutionalized Group Quarters",
           "dcid": "Count_Person_WithFoodStampsInThePast12Months_ResidesInNoninstitutionalizedGroupQuarters"
         },
         {
-          "name": "Population: With Food Stamps in The Past 12 Months, Nursing Facilities",
+          "name": "Population Who Received Food Stamps in the Past Year and Lived in Nursing Facilities",
           "dcid": "Count_Person_WithFoodStampsInThePast12Months_ResidesInNursingFacilities"
         }
       ]
@@ -1773,24 +1773,6 @@
       ]
     },
     {
-      "dcid": "sdg/g/SD_MDP_ANDI",
-      "name": "Average proportion of deprivations for people multidimensionally poor",
-      "statVars": [
-        {
-          "name": "Average proportion of deprivations for people multidimensionally poor: All age ranges or no breaks by age, All areas, Country data, Both sexes",
-          "dcid": "sdg/SD_MDP_ANDI_ALLAGE_ALLAREA_C_BOTHSEX"
-        },
-        {
-          "name": "Average proportion of deprivations for people multidimensionally poor: All age ranges or no breaks by age, Rural, Country data, Both sexes",
-          "dcid": "sdg/SD_MDP_ANDI_ALLAGE_RURAL_C_BOTHSEX"
-        },
-        {
-          "name": "Average proportion of deprivations for people multidimensionally poor: All age ranges or no breaks by age, Urban, Country data, Both sexes",
-          "dcid": "sdg/SD_MDP_ANDI_ALLAGE_URBAN_C_BOTHSEX"
-        }
-      ]
-    },
-    {
       "dcid": "dc/g/Household_BenefitsStatus-WithFoodStampsInThePast12Months_RecentWorkStatus",
       "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Recent Work Status",
       "statVars": [
@@ -1813,7 +1795,7 @@
       "name": "Household With Household Type = Family Household, Poverty Status = Below Poverty Level in The Past 12 Months",
       "statVars": [
         {
-          "name": "Count of Household: Family Household, Below Poverty Level in The Past 12 Months",
+          "name": "Family Households Below the Poverty Level in the Past Year",
           "dcid": "Count_Household_FamilyHousehold_BelowPovertyLevelInThePast12Months"
         },
         {
@@ -1831,7 +1813,7 @@
       "name": "Household With Household Type = Married Couple Family Household, Poverty Status = Below Poverty Level in The Past 12 Months",
       "statVars": [
         {
-          "name": "Count of Household: Married Couple Family Household, Below Poverty Level in The Past 12 Months",
+          "name": "Married Couple Family Households Below Poverty Level in the Past Year",
           "dcid": "Count_Household_MarriedCoupleFamilyHousehold_BelowPovertyLevelInThePast12Months"
         },
         {
@@ -1849,7 +1831,7 @@
       "name": "Household With Household Type = Single Mother Family Household, Poverty Status = Below Poverty Level in The Past 12 Months",
       "statVars": [
         {
-          "name": "Count of Household: Single Mother Family Household, Below Poverty Level in The Past 12 Months",
+          "name": "Single Mother Family Households Below Poverty Level in the Past Year",
           "dcid": "Count_Household_SingleMotherFamilyHousehold_BelowPovertyLevelInThePast12Months"
         },
         {
@@ -1885,15 +1867,15 @@
       "name": "Household With Benefits Status = With SSIAnd or Cash Assistance in The Past 12 Months, Household Type, Poverty Status = Below Poverty Level in The Past 12 Months",
       "statVars": [
         {
-          "name": "Count of Household: With SSIAnd or Cash Assistance in The Past 12 Months, Family Household, Below Poverty Level in The Past 12 Months",
+          "name": "Family Households Below Poverty Line Receiving Supplemental Security Income or Cash Assistance Over the Last Year",
           "dcid": "Count_Household_WithSSIAndOrCashAssistanceInThePast12Months_FamilyHousehold_BelowPovertyLevelInThePast12Months"
         },
         {
-          "name": "Count of Household: With SSIAnd or Cash Assistance in The Past 12 Months, Married Couple Family Household, Below Poverty Level in The Past 12 Months",
+          "name": "Married Family Households Below Poverty Line Receiving Supplemental Security Income or Cash Assistance Over the Last Year",
           "dcid": "Count_Household_WithSSIAndOrCashAssistanceInThePast12Months_MarriedCoupleFamilyHousehold_BelowPovertyLevelInThePast12Months"
         },
         {
-          "name": "Count of Household: With SSIAnd or Cash Assistance in The Past 12 Months, Single Mother Family Household, Below Poverty Level in The Past 12 Months",
+          "name": "Single Mother Family Households Below Poverty Line Receiving Social Security Income or Cash Assistance Over the Last Year",
           "dcid": "Count_Household_WithSSIAndOrCashAssistanceInThePast12Months_SingleMotherFamilyHousehold_BelowPovertyLevelInThePast12Months"
         }
       ]
@@ -1903,15 +1885,15 @@
       "name": "Household With Benefits Status = With Social Security Income in The Past 12 Months, Household Type, Poverty Status = Below Poverty Level in The Past 12 Months",
       "statVars": [
         {
-          "name": "Count of Household: With Social Security Income in The Past 12 Months, Family Household, Below Poverty Level in The Past 12 Months",
+          "name": "Family Households Below Poverty Line Receiving Social Security Income Over the Last Year",
           "dcid": "Count_Household_WithSocialSecurityIncomeInThePast12Months_FamilyHousehold_BelowPovertyLevelInThePast12Months"
         },
         {
-          "name": "Count of Household: With Social Security Income in The Past 12 Months, Married Couple Family Household, Below Poverty Level in The Past 12 Months",
+          "name": "Married Couples Below Poverty Status Receiving Social Security Income",
           "dcid": "Count_Household_WithSocialSecurityIncomeInThePast12Months_MarriedCoupleFamilyHousehold_BelowPovertyLevelInThePast12Months"
         },
         {
-          "name": "Count of Household: With Social Security Income in The Past 12 Months, Single Mother Family Household, Below Poverty Level in The Past 12 Months",
+          "name": "Single Mother Family Households Below Poverty Line Receiving Social Security Income",
           "dcid": "Count_Household_WithSocialSecurityIncomeInThePast12Months_SingleMotherFamilyHousehold_BelowPovertyLevelInThePast12Months"
         }
       ]
@@ -2025,15 +2007,29 @@
       ]
     },
     {
+      "dcid": "dc/g/SDGSDMDPANDI_sdglocation",
+      "name": "Average Proportion of Deprivations for People Multidimensionally Poor by Location",
+      "statVars": [
+        {
+          "name": "Average proportion of deprivations for people multidimensionally poor: Rural",
+          "dcid": "sdg/SD_MDP_ANDI_RURAL"
+        },
+        {
+          "name": "Average proportion of deprivations for people multidimensionally poor: Urban",
+          "dcid": "sdg/SD_MDP_ANDI_URBAN"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/Household_BenefitsStatus-WithFoodStampsInThePast12Months",
       "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months",
       "statVars": [
         {
-          "name": "Count of Household: With Food Stamps in The Past 12 Months",
+          "name": "Households Receiving Food Stamps in the Past Year",
           "dcid": "Count_Household_WithFoodStampsInThePast12Months"
         },
         {
-          "name": "Median Income of Household: With Food Stamps in The Past 12 Months",
+          "name": "Median Income for Households With Food Stamps in the Past Year",
           "dcid": "Median_Income_Household_WithFoodStampsInThePast12Months"
         }
       ]
@@ -2043,7 +2039,7 @@
       "name": "Person With Poverty Status = Below Poverty Level in The Past 12 Months",
       "statVars": [
         {
-          "name": "Population: Below Poverty Level in The Past 12 Months",
+          "name": "Population Below Poverty Level Status in Past Year",
           "dcid": "Count_Person_BelowPovertyLevelInThePast12Months"
         },
         {
@@ -2057,12 +2053,12 @@
       "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Disability Status",
       "statVars": [
         {
-          "name": "Count of Household: With Food Stamps in The Past 12 Months, No Disability",
-          "dcid": "Count_Household_WithFoodStampsInThePast12Months_NoDisability"
+          "name": "Disabled Households Receiving Food Stamps Over the Last Year",
+          "dcid": "Count_Household_WithFoodStampsInThePast12Months_WithDisability"
         },
         {
-          "name": "Count of Household: With Food Stamps in The Past 12 Months, With Disability",
-          "dcid": "Count_Household_WithFoodStampsInThePast12Months_WithDisability"
+          "name": "Non Disabled Households Receiving Food Stamps Over the Last Year",
+          "dcid": "Count_Household_WithFoodStampsInThePast12Months_NoDisability"
         }
       ]
     },
@@ -2085,11 +2081,11 @@
       "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Poverty Status",
       "statVars": [
         {
-          "name": "Count of Household: With Food Stamps in The Past 12 Months, Above Poverty Level in The Past 12 Months",
+          "name": "Households With Food Stamps in the Past Year and Above Poverty Level in the Past Year",
           "dcid": "Count_Household_WithFoodStampsInThePast12Months_AbovePovertyLevelInThePast12Months"
         },
         {
-          "name": "Count of Household: With Food Stamps in The Past 12 Months, Below Poverty Level in The Past 12 Months",
+          "name": "Households With Food Stamps in the Past Year and Below Poverty Level in the Past Year",
           "dcid": "Count_Household_WithFoodStampsInThePast12Months_BelowPovertyLevelInThePast12Months"
         }
       ]
@@ -2099,12 +2095,12 @@
       "name": "Person With Gender = Female, Poverty Status = Below Poverty Level in The Past 12 Months",
       "statVars": [
         {
-          "name": "Percentage: Female, Below Poverty Level in The Past 12 Months",
-          "dcid": "dc/k0zg5lw8686z8"
+          "name": "Female Population Below Poverty Level in the Last Year",
+          "dcid": "Count_Person_Female_BelowPovertyLevelInThePast12Months"
         },
         {
-          "name": "Population: Female, Below Poverty Level in The Past 12 Months",
-          "dcid": "Count_Person_Female_BelowPovertyLevelInThePast12Months"
+          "name": "Percentage: Female, Below Poverty Level in The Past 12 Months",
+          "dcid": "dc/k0zg5lw8686z8"
         }
       ]
     },
@@ -2113,12 +2109,12 @@
       "name": "Person With Gender = Male, Poverty Status = Below Poverty Level in The Past 12 Months",
       "statVars": [
         {
-          "name": "Percentage: Male, Below Poverty Level in The Past 12 Months",
-          "dcid": "dc/frgn798mhwtw"
+          "name": "Male Population Below Poverty Status in the Last Year",
+          "dcid": "Count_Person_Male_BelowPovertyLevelInThePast12Months"
         },
         {
-          "name": "Population: Male, Below Poverty Level in The Past 12 Months",
-          "dcid": "Count_Person_Male_BelowPovertyLevelInThePast12Months"
+          "name": "Percentage: Male, Below Poverty Level in The Past 12 Months",
+          "dcid": "dc/frgn798mhwtw"
         }
       ]
     },
@@ -2169,12 +2165,12 @@
       "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Household Type = Married Couple Family Household, Member Status",
       "statVars": [
         {
-          "name": "Count of Household: With Food Stamps in The Past 12 Months, Married Couple Family Household, With Children Under 18",
-          "dcid": "Count_Household_WithFoodStampsInThePast12Months_WithChildrenUnder18_MarriedCoupleFamilyHousehold"
+          "name": "Married Couple Households Without Children Which Received Food Stamps Over the Last Year",
+          "dcid": "Count_Household_WithFoodStampsInThePast12Months_WithoutChildrenUnder18_MarriedCoupleFamilyHousehold"
         },
         {
-          "name": "Count of Household: With Food Stamps in The Past 12 Months, Married Couple Family Household, Without Children Under 18",
-          "dcid": "Count_Household_WithFoodStampsInThePast12Months_WithoutChildrenUnder18_MarriedCoupleFamilyHousehold"
+          "name": "Married Family Households With Children Which Received Food Stamps Over the Last Year",
+          "dcid": "Count_Household_WithFoodStampsInThePast12Months_WithChildrenUnder18_MarriedCoupleFamilyHousehold"
         }
       ]
     },
@@ -2183,11 +2179,11 @@
       "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Household Type = Nonfamily Household, Member Status",
       "statVars": [
         {
-          "name": "Count of Household: With Food Stamps in The Past 12 Months, Nonfamily Household, With Children Under 18",
+          "name": "Nonfamily Households With Children Which Received Food Stamps Over the Last Year",
           "dcid": "Count_Household_WithFoodStampsInThePast12Months_WithChildrenUnder18_NonfamilyHousehold"
         },
         {
-          "name": "Count of Household: With Food Stamps in The Past 12 Months, Nonfamily Household, Without Children Under 18",
+          "name": "Nonfamily Households Without Children Which Received Food Stamps Over the Last Year",
           "dcid": "Count_Household_WithFoodStampsInThePast12Months_WithoutChildrenUnder18_NonfamilyHousehold"
         }
       ]
@@ -2197,11 +2193,11 @@
       "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Household Type = Other Family Household, Member Status",
       "statVars": [
         {
-          "name": "Count of Household: With Food Stamps in The Past 12 Months, Other Family Household, With Children Under 18",
+          "name": "Other Family Households With Children Which Received Food Stamps Over the Last Year",
           "dcid": "Count_Household_WithFoodStampsInThePast12Months_WithChildrenUnder18_OtherFamilyHousehold"
         },
         {
-          "name": "Count of Household: With Food Stamps in The Past 12 Months, Other Family Household, Without Children Under 18",
+          "name": "Other Family Households Without Children Which Received Food Stamps Over the Last Year",
           "dcid": "Count_Household_WithFoodStampsInThePast12Months_WithoutChildrenUnder18_OtherFamilyHousehold"
         }
       ]
@@ -2211,11 +2207,11 @@
       "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Household Type = Single Father Family Household, Member Status",
       "statVars": [
         {
-          "name": "Count of Household: With Food Stamps in The Past 12 Months, Single Father Family Household, With Children Under 18",
+          "name": "Single Father Family Households With Children Which Received Food Stamps Over the Last Year",
           "dcid": "Count_Household_WithFoodStampsInThePast12Months_WithChildrenUnder18_SingleFatherFamilyHousehold"
         },
         {
-          "name": "Count of Household: With Food Stamps in The Past 12 Months, Single Father Family Household, Without Children Under 18",
+          "name": "Single Father Family Households Without Children Which Received Food Stamps Over the Last Year",
           "dcid": "Count_Household_WithFoodStampsInThePast12Months_WithoutChildrenUnder18_SingleFatherFamilyHousehold"
         }
       ]
@@ -2225,11 +2221,11 @@
       "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Household Type = Single Mother Family Household, Member Status",
       "statVars": [
         {
-          "name": "Count of Household: With Food Stamps in The Past 12 Months, Single Mother Family Household, With Children Under 18",
+          "name": "Single Mother Family Households With Children Which Received Food Stamps Over the Last Year",
           "dcid": "Count_Household_WithFoodStampsInThePast12Months_WithChildrenUnder18_SingleMotherFamilyHousehold"
         },
         {
-          "name": "Count of Household: With Food Stamps in The Past 12 Months, Single Mother Family Household, Without Children Under 18",
+          "name": "Single Mother Family Households Without Children Which Received Food Stamps Over the Last Year",
           "dcid": "Count_Household_WithFoodStampsInThePast12Months_WithoutChildrenUnder18_SingleMotherFamilyHousehold"
         }
       ]
@@ -2379,11 +2375,11 @@
       "name": "Person With Gender = Female, Marital Status, Poverty Status = Below Poverty Level in The Past 12 Months",
       "statVars": [
         {
-          "name": "Population: Female, Divorced in The Past 12 Months, Below Poverty Level in The Past 12 Months",
+          "name": "Female Population Divorced in the Past Year and Below Poverty Level in the Past Year",
           "dcid": "Count_Person_Female_DivorcedInThePast12Months_BelowPovertyLevelInThePast12Months"
         },
         {
-          "name": "Population: Female, Married in The Past 12 Months, Below Poverty Level in The Past 12 Months",
+          "name": "Female Population Married in the Past Year and Below Poverty Level in the Past Year",
           "dcid": "Count_Person_Female_MarriedInThePast12Months_BelowPovertyLevelInThePast12Months"
         }
       ]
@@ -2393,12 +2389,22 @@
       "name": "Person With Gender = Male, Marital Status, Poverty Status = Below Poverty Level in The Past 12 Months",
       "statVars": [
         {
-          "name": "Population: Male, Divorced in The Past 12 Months, Below Poverty Level in The Past 12 Months",
+          "name": "Male Population Below Poverty Level Status Who Divorced Over the Last Year",
           "dcid": "Count_Person_Male_DivorcedInThePast12Months_BelowPovertyLevelInThePast12Months"
         },
         {
-          "name": "Population: Male, Married in The Past 12 Months, Below Poverty Level in The Past 12 Months",
+          "name": "Male Population Below Poverty Status in the Last Year Who Were Married in the Last Year",
           "dcid": "Count_Person_Male_MarriedInThePast12Months_BelowPovertyLevelInThePast12Months"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/SDG_1.3.1",
+      "name": "1.3.1: Proportion of population covered by social protection floors/systems, by sex, distinguishing children, unemployed persons, older persons, persons with disabilities, pregnant women, newborns, work-injury victims and the poor and the vulnerable",
+      "statVars": [
+        {
+          "name": "Proportion of poor population receiving social assistance cash benefit",
+          "dcid": "sdg/SI_COV_POOR"
         }
       ]
     },
@@ -2437,7 +2443,7 @@
       "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Household Type = Family Household",
       "statVars": [
         {
-          "name": "Count of Household: With Food Stamps in The Past 12 Months, Family Household",
+          "name": "Family Households Receiving Food Stamps in the Past Year",
           "dcid": "Count_Household_WithFoodStampsInThePast12Months_FamilyHousehold"
         }
       ]
@@ -2447,7 +2453,7 @@
       "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Household Type = Married Couple Family Household",
       "statVars": [
         {
-          "name": "Count of Household: With Food Stamps in The Past 12 Months, Married Couple Family Household",
+          "name": "Married Family Households Receiving Food Stamps in the Past Year",
           "dcid": "Count_Household_WithFoodStampsInThePast12Months_MarriedCoupleFamilyHousehold"
         }
       ]
@@ -2457,7 +2463,7 @@
       "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Household Type = Nonfamily Household",
       "statVars": [
         {
-          "name": "Count of Household: With Food Stamps in The Past 12 Months, Nonfamily Household",
+          "name": "Nonfamily Households Receiving Food Stamps Over the Last Year",
           "dcid": "Count_Household_WithFoodStampsInThePast12Months_NonfamilyHousehold"
         }
       ]
@@ -2467,7 +2473,7 @@
       "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Household Type = Other Family Household",
       "statVars": [
         {
-          "name": "Count of Household: With Food Stamps in The Past 12 Months, Other Family Household",
+          "name": "Other Family Households Receiving Food Stamps Over the Last Year",
           "dcid": "Count_Household_WithFoodStampsInThePast12Months_OtherFamilyHousehold"
         }
       ]
@@ -2477,7 +2483,7 @@
       "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Household Type = Single Father Family Household",
       "statVars": [
         {
-          "name": "Count of Household: With Food Stamps in The Past 12 Months, Single Father Family Household",
+          "name": "Single Father Family Households Receiving Food Stamps Over the Last Year",
           "dcid": "Count_Household_WithFoodStampsInThePast12Months_SingleFatherFamilyHousehold"
         }
       ]
@@ -2487,7 +2493,7 @@
       "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Household Type = Single Mother Family Household",
       "statVars": [
         {
-          "name": "Count of Household: With Food Stamps in The Past 12 Months, Single Mother Family Household",
+          "name": "Single Mother Family Households Receiving Food Stamps Over the Last Year",
           "dcid": "Count_Household_WithFoodStampsInThePast12Months_SingleMotherFamilyHousehold"
         }
       ]
@@ -2497,7 +2503,7 @@
       "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Member Status = With Children Under 18",
       "statVars": [
         {
-          "name": "Count of Household: With Food Stamps in The Past 12 Months, With Children Under 18",
+          "name": "Households With Children Which Received Food Stamps Over the Last Year",
           "dcid": "Count_Household_WithFoodStampsInThePast12Months_WithChildrenUnder18"
         }
       ]
@@ -2507,7 +2513,7 @@
       "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Member Status = Without Children Under 18",
       "statVars": [
         {
-          "name": "Count of Household: With Food Stamps in The Past 12 Months, Without Children Under 18",
+          "name": "Households Without Children Which Received Food Stamps Over the Last Year",
           "dcid": "Count_Household_WithFoodStampsInThePast12Months_WithoutChildrenUnder18"
         }
       ]
@@ -2517,7 +2523,7 @@
       "name": "Household With Benefits Status, Poverty Status = Below Poverty Level in The Past 12 Months",
       "statVars": [
         {
-          "name": "Count of Household: Without Food Stamps in The Past 12 Months, Below Poverty Level in The Past 12 Months",
+          "name": "Households Not Receiving Food Stamps in Last Year, Income Below Poverty Level",
           "dcid": "Count_Household_WithoutFoodStampsInThePast12Months_BelowPovertyLevelInThePast12Months"
         }
       ]
@@ -2737,7 +2743,7 @@
       "name": "Person With Poverty Status = Below Poverty Level in The Past 12 Months, Race = American Indian or Alaska Native Alone",
       "statVars": [
         {
-          "name": "Population: Below Poverty Level in The Past 12 Months, American Indian or Alaska Native Alone",
+          "name": "Population Below Poverty Level Status in Past Year and American Indian or Alaska Native Alone",
           "dcid": "Count_Person_BelowPovertyLevelInThePast12Months_AmericanIndianOrAlaskaNativeAlone"
         }
       ]
@@ -2747,7 +2753,7 @@
       "name": "Person With Poverty Status = Below Poverty Level in The Past 12 Months, Race = Asian Alone",
       "statVars": [
         {
-          "name": "Population: Below Poverty Level in The Past 12 Months, Asian Alone",
+          "name": "Population Below Poverty Level Status in Past Year and Asian Alone",
           "dcid": "Count_Person_BelowPovertyLevelInThePast12Months_AsianAlone"
         }
       ]
@@ -2757,7 +2763,7 @@
       "name": "Person With Poverty Status = Below Poverty Level in The Past 12 Months, Race = Black or African American Alone",
       "statVars": [
         {
-          "name": "Population: Below Poverty Level in The Past 12 Months, Black or African American Alone",
+          "name": "Population Below Poverty Level Status in Past Year and Black or African American Alone",
           "dcid": "Count_Person_BelowPovertyLevelInThePast12Months_BlackOrAfricanAmericanAlone"
         }
       ]
@@ -2767,7 +2773,7 @@
       "name": "Person With Poverty Status = Below Poverty Level in The Past 12 Months, Race = Hispanic or Latino",
       "statVars": [
         {
-          "name": "Population: Below Poverty Level in The Past 12 Months, Hispanic or Latino",
+          "name": "Population Below Poverty Level Status in Past Year and Hispanic or Latino",
           "dcid": "Count_Person_BelowPovertyLevelInThePast12Months_HispanicOrLatino"
         }
       ]
@@ -2777,7 +2783,7 @@
       "name": "Person With Poverty Status = Below Poverty Level in The Past 12 Months, Race = Native Hawaiian or Other Pacific Islander Alone",
       "statVars": [
         {
-          "name": "Population: Below Poverty Level in The Past 12 Months, Native Hawaiian or Other Pacific Islander Alone",
+          "name": "Population Below Poverty Level Status in Past Year and Native Hawaiian or Other Pacific Islander Alone",
           "dcid": "Count_Person_BelowPovertyLevelInThePast12Months_NativeHawaiianOrOtherPacificIslanderAlone"
         }
       ]
@@ -2787,7 +2793,7 @@
       "name": "Person With Poverty Status = Below Poverty Level in The Past 12 Months, Race = Some Other Race Alone",
       "statVars": [
         {
-          "name": "Population: Below Poverty Level in The Past 12 Months, Some Other Race Alone",
+          "name": "Population Below Poverty Level Status in Past Year and Some Other Race Alone",
           "dcid": "Count_Person_BelowPovertyLevelInThePast12Months_SomeOtherRaceAlone"
         }
       ]
@@ -2797,7 +2803,7 @@
       "name": "Person With Poverty Status = Below Poverty Level in The Past 12 Months, Race = Two or More Races",
       "statVars": [
         {
-          "name": "Population: Below Poverty Level in The Past 12 Months, Two or More Races",
+          "name": "Population Below Poverty Level Status in Past Year and Two or More Races",
           "dcid": "Count_Person_BelowPovertyLevelInThePast12Months_TwoOrMoreRaces"
         }
       ]
@@ -2807,7 +2813,7 @@
       "name": "Person With Poverty Status = Below Poverty Level in The Past 12 Months, Race = White Alone",
       "statVars": [
         {
-          "name": "Population: Below Poverty Level in The Past 12 Months, White Alone",
+          "name": "Population Below Poverty Level Status in Past Year and White Alone",
           "dcid": "Count_Person_BelowPovertyLevelInThePast12Months_WhiteAlone"
         }
       ]
@@ -2817,18 +2823,8 @@
       "name": "Person With Poverty Status = Below Poverty Level in The Past 12 Months, Race = White Alone Not Hispanic or Latino",
       "statVars": [
         {
-          "name": "Population: Below Poverty Level in The Past 12 Months, White Alone Not Hispanic or Latino",
+          "name": "Population Below Poverty Level Status in Past Year and White Alone Not Hispanic or Latino",
           "dcid": "Count_Person_BelowPovertyLevelInThePast12Months_WhiteAloneNotHispanicOrLatino"
-        }
-      ]
-    },
-    {
-      "dcid": "sdg/g/SI_COV_POOR",
-      "name": "Proportion of poor population receiving social assistance cash benefit",
-      "statVars": [
-        {
-          "name": "Proportion of poor population receiving social assistance cash benefit: Estimated data, Normal value, Both sexes",
-          "dcid": "sdg/SI_COV_POOR_E_A_BOTHSEX"
         }
       ]
     },
@@ -3117,7 +3113,7 @@
       "name": "Person With Gender = Female, Poverty Status = Below Poverty Level in The Past 12 Months, Race = American Indian or Alaska Native Alone",
       "statVars": [
         {
-          "name": "Population: Female, Below Poverty Level in The Past 12 Months, American Indian or Alaska Native Alone",
+          "name": "Female Population Below Poverty Level in the Past Year and American Indian or Alaska Native Alone",
           "dcid": "Count_Person_Female_BelowPovertyLevelInThePast12Months_AmericanIndianOrAlaskaNativeAlone"
         }
       ]
@@ -3127,7 +3123,7 @@
       "name": "Person With Gender = Female, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Asian Alone",
       "statVars": [
         {
-          "name": "Population: Female, Below Poverty Level in The Past 12 Months, Asian Alone",
+          "name": "Female Population Below Poverty Level in the Past Year and Asian Alone",
           "dcid": "Count_Person_Female_BelowPovertyLevelInThePast12Months_AsianAlone"
         }
       ]
@@ -3137,7 +3133,7 @@
       "name": "Person With Gender = Female, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Black or African American Alone",
       "statVars": [
         {
-          "name": "Population: Female, Below Poverty Level in The Past 12 Months, Black or African American Alone",
+          "name": "Female Population Below Poverty Level in the Last Year and African American Alone",
           "dcid": "Count_Person_Female_BelowPovertyLevelInThePast12Months_BlackOrAfricanAmericanAlone"
         }
       ]
@@ -3147,7 +3143,7 @@
       "name": "Person With Gender = Female, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Hispanic or Latino",
       "statVars": [
         {
-          "name": "Population: Female, Below Poverty Level in The Past 12 Months, Hispanic or Latino",
+          "name": "Female Population Below Poverty Level in the Last Year and Hispanic",
           "dcid": "Count_Person_Female_BelowPovertyLevelInThePast12Months_HispanicOrLatino"
         }
       ]
@@ -3157,7 +3153,7 @@
       "name": "Person With Gender = Female, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Native Hawaiian or Other Pacific Islander Alone",
       "statVars": [
         {
-          "name": "Population: Female, Below Poverty Level in The Past 12 Months, Native Hawaiian or Other Pacific Islander Alone",
+          "name": "Female Population Below Poverty Level in the Last Year and Native Hawaiian or Other Pacific Islander Alone",
           "dcid": "Count_Person_Female_BelowPovertyLevelInThePast12Months_NativeHawaiianOrOtherPacificIslanderAlone"
         }
       ]
@@ -3167,7 +3163,7 @@
       "name": "Person With Gender = Female, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Some Other Race Alone",
       "statVars": [
         {
-          "name": "Population: Female, Below Poverty Level in The Past 12 Months, Some Other Race Alone",
+          "name": "Female Population Below Poverty Level in the Past Year and Some Other Race Alone",
           "dcid": "Count_Person_Female_BelowPovertyLevelInThePast12Months_SomeOtherRaceAlone"
         }
       ]
@@ -3177,7 +3173,7 @@
       "name": "Person With Gender = Female, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Two or More Races",
       "statVars": [
         {
-          "name": "Population: Female, Below Poverty Level in The Past 12 Months, Two or More Races",
+          "name": "Female Population Below Poverty Level in the Past Year and Two or More Races",
           "dcid": "Count_Person_Female_BelowPovertyLevelInThePast12Months_TwoOrMoreRaces"
         }
       ]
@@ -3187,7 +3183,7 @@
       "name": "Person With Gender = Female, Poverty Status = Below Poverty Level in The Past 12 Months, Race = White Alone",
       "statVars": [
         {
-          "name": "Population: Female, Below Poverty Level in The Past 12 Months, White Alone",
+          "name": "Female Population Below Poverty Level in the Past Year and White Alone",
           "dcid": "Count_Person_Female_BelowPovertyLevelInThePast12Months_WhiteAlone"
         }
       ]
@@ -3197,7 +3193,7 @@
       "name": "Person With Gender = Female, Poverty Status = Below Poverty Level in The Past 12 Months, Race = White Alone Not Hispanic or Latino",
       "statVars": [
         {
-          "name": "Population: Female, Below Poverty Level in The Past 12 Months, White Alone Not Hispanic or Latino",
+          "name": "Female Population Below Poverty Level in the Past Year and White Alone Not Hispanic or Latino",
           "dcid": "Count_Person_Female_BelowPovertyLevelInThePast12Months_WhiteAloneNotHispanicOrLatino"
         }
       ]
@@ -3207,7 +3203,7 @@
       "name": "Person With Gender = Male, Poverty Status = Below Poverty Level in The Past 12 Months, Race = American Indian or Alaska Native Alone",
       "statVars": [
         {
-          "name": "Population: Male, Below Poverty Level in The Past 12 Months, American Indian or Alaska Native Alone",
+          "name": "Male Population Below Poverty Status in the Last Year and Are American Indian Alone",
           "dcid": "Count_Person_Male_BelowPovertyLevelInThePast12Months_AmericanIndianOrAlaskaNativeAlone"
         }
       ]
@@ -3217,7 +3213,7 @@
       "name": "Person With Gender = Male, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Asian Alone",
       "statVars": [
         {
-          "name": "Population: Male, Below Poverty Level in The Past 12 Months, Asian Alone",
+          "name": "Male Population Below Poverty Status in the Last Year and Are Asian Alone",
           "dcid": "Count_Person_Male_BelowPovertyLevelInThePast12Months_AsianAlone"
         }
       ]
@@ -3227,7 +3223,7 @@
       "name": "Person With Gender = Male, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Black or African American Alone",
       "statVars": [
         {
-          "name": "Population: Male, Below Poverty Level in The Past 12 Months, Black or African American Alone",
+          "name": "Male Population Below Poverty Status in the Last Year and Are African American Alone",
           "dcid": "Count_Person_Male_BelowPovertyLevelInThePast12Months_BlackOrAfricanAmericanAlone"
         }
       ]
@@ -3237,7 +3233,7 @@
       "name": "Person With Gender = Male, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Hispanic or Latino",
       "statVars": [
         {
-          "name": "Population: Male, Below Poverty Level in The Past 12 Months, Hispanic or Latino",
+          "name": "Male Population Below Poverty Status in the Last Year and Are Hispanic Alone",
           "dcid": "Count_Person_Male_BelowPovertyLevelInThePast12Months_HispanicOrLatino"
         }
       ]
@@ -3247,7 +3243,7 @@
       "name": "Person With Gender = Male, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Native Hawaiian or Other Pacific Islander Alone",
       "statVars": [
         {
-          "name": "Population: Male, Below Poverty Level in The Past 12 Months, Native Hawaiian or Other Pacific Islander Alone",
+          "name": "Male Population Below Poverty Status in the Last Year and Are Native Hawaiianor Other Pacific Islander Alone",
           "dcid": "Count_Person_Male_BelowPovertyLevelInThePast12Months_NativeHawaiianOrOtherPacificIslanderAlone"
         }
       ]
@@ -3257,7 +3253,7 @@
       "name": "Person With Gender = Male, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Some Other Race Alone",
       "statVars": [
         {
-          "name": "Population: Male, Below Poverty Level in The Past 12 Months, Some Other Race Alone",
+          "name": "Male Population Below Poverty Level Status Over the Last Year and Some Other Race Alone",
           "dcid": "Count_Person_Male_BelowPovertyLevelInThePast12Months_SomeOtherRaceAlone"
         }
       ]
@@ -3267,7 +3263,7 @@
       "name": "Person With Gender = Male, Poverty Status = Below Poverty Level in The Past 12 Months, Race = Two or More Races",
       "statVars": [
         {
-          "name": "Population: Male, Below Poverty Level in The Past 12 Months, Two or More Races",
+          "name": "Male Population Below Poverty Level Status Over the Last Year and Multiracial",
           "dcid": "Count_Person_Male_BelowPovertyLevelInThePast12Months_TwoOrMoreRaces"
         }
       ]
@@ -3277,7 +3273,7 @@
       "name": "Person With Gender = Male, Poverty Status = Below Poverty Level in The Past 12 Months, Race = White Alone",
       "statVars": [
         {
-          "name": "Population: Male, Below Poverty Level in The Past 12 Months, White Alone",
+          "name": "Male Population Below Poverty Level Status Over the Last Year and White Alone",
           "dcid": "Count_Person_Male_BelowPovertyLevelInThePast12Months_WhiteAlone"
         }
       ]
@@ -3287,41 +3283,47 @@
       "name": "Person With Gender = Male, Poverty Status = Below Poverty Level in The Past 12 Months, Race = White Alone Not Hispanic or Latino",
       "statVars": [
         {
-          "name": "Population: Male, Below Poverty Level in The Past 12 Months, White Alone Not Hispanic or Latino",
+          "name": "Male Population Below Poverty Level Status Over the Last Year and White Alone and Not Hispanic",
           "dcid": "Count_Person_Male_BelowPovertyLevelInThePast12Months_WhiteAloneNotHispanicOrLatino"
         }
       ]
     },
     {
-      "dcid": "sdg/g/SDG_1.3.1",
-      "name": "1.3.1: Proportion of population covered by social protection floors/systems, by sex, distinguishing children, unemployed persons, older persons, persons with disabilities, pregnant women, newborns, work-injury victims and the poor and the vulnerable"
+      "dcid": "dc/g/SDGSDMDPANDI",
+      "name": "Average Proportion of Deprivations for People Multidimensionally Poor",
+      "statVars": [
+        {
+          "name": "Average proportion of deprivations for people multidimensionally poor",
+          "dcid": "sdg/SD_MDP_ANDI"
+        }
+      ]
     },
     {
-      "dcid": "sdg/g/SDG_1.3",
+      "dcid": "dc/g/SDG_1.3",
       "name": "1.3: Implement nationally appropriate social protection systems and measures for all, including floors, and by 2030 achieve substantial coverage of the poor and the vulnerable"
     },
     {
-      "dcid": "sdg/g/SDG_1.4",
+      "dcid": "dc/g/SDG_1.4",
       "name": "1.4: By 2030, ensure that all men and women, in particular the poor and the vulnerable, have equal rights to economic resources, as well as access to basic services, ownership and control over land and other forms of property, inheritance, natural resources, appropriate new technology and financial services, including microfinance"
     },
     {
-      "dcid": "sdg/g/SDG_1.5",
+      "dcid": "dc/g/SDG_1.5",
       "name": "1.5: By 2030, build the resilience of the poor and those in vulnerable situations and reduce their exposure and vulnerability to climate-related extreme events and other economic, social and environmental shocks and disasters"
     },
     {
-      "dcid": "sdg/g/SDG_11.5",
+      "dcid": "dc/g/SDG_11.5",
       "name": "11.5: By 2030, significantly reduce the number of deaths and the number of people affected and substantially decrease the direct economic losses relative to global gross domestic product caused by disasters, including water-related disasters, with a focus on protecting the poor and people in vulnerable situations"
     },
     {
-      "dcid": "sdg/g/SDG_12.c",
+      "dcid": "dc/g/SDG_12.c",
       "name": "12.c: Rationalize inefficient fossil-fuel subsidies that encourage wasteful consumption by removing market distortions, in accordance with national circumstances, including by restructuring taxation and phasing out those harmful subsidies, where they exist, to reflect their environmental impacts, taking fully into account the specific needs and conditions of developing countries and minimizing the possible adverse impacts on their development in a manner that protects the poor and the affected communities"
     },
     {
-      "dcid": "sdg/g/SDG_17.4",
+      "dcid": "dc/g/SDG_17.4",
       "name": "17.4: Assist developing countries in attaining long-term debt sustainability through coordinated policies aimed at fostering debt financing, debt relief and debt restructuring, as appropriate, and address the external debt of highly indebted poor countries to reduce debt distress"
     },
     {
-      "dcid": "sdg/g/SDG_2.1",
+      "dcid": "dc/g/SDG_2.1",
       "name": "2.1: By 2030, end hunger and ensure access by all people, in particular the poor and people in vulnerable situations, including infants, to safe, nutritious and sufficient food all year round"
     },
     {
@@ -3643,18 +3645,6 @@
     {
       "dcid": "dc/g/Person_PovertyStatus-BelowPovertyLevelInThePast12Months_Race",
       "name": "Person With Poverty Status = Below Poverty Level in The Past 12 Months, Race"
-    },
-    {
-      "dcid": "sdg/g/SI_COV_LMKTPQ",
-      "name": "Poorest quintile covered by labour market programs"
-    },
-    {
-      "dcid": "sdg/g/SI_COV_SOCASTPQ",
-      "name": "Poorest quintile covered by social assistance programs"
-    },
-    {
-      "dcid": "sdg/g/SI_COV_SOCINSPQ",
-      "name": "Poorest quintile covered by social insurance programs"
     },
     {
       "dcid": "dc/g/Household_BenefitsStatus-WithFoodStampsInThePast12Months_ChildSchoolEnrollment-PublicSchool_MemberStatus",
@@ -5136,8 +5126,6 @@
   "matches": [
     "below poverty",
     "poor",
-    "poor:",
-    "poorest",
     "with food stamps"
   ]
 }

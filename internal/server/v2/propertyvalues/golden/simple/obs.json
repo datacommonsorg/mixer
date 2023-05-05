@@ -48,7 +48,7 @@
         "variableMeasured": {
           "nodes": [
             {
-              "name": "Median Age",
+              "name": "Median Age of Population",
               "dcid": "Median_Age_Person",
               "provenanceId": "dc/base/CensusACS5YearSurvey"
             }

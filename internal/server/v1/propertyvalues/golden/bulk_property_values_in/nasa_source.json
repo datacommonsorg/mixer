@@ -4,27 +4,35 @@
       "node": "dc/s/UsNationalAeronauticsAndSpaceAdministrationNasa",
       "values": [
         {
-          "name": "NEX-DCP30",
+          "name": "NEX - Downscaled Climate Projections for US from IPCC CMIP5",
           "types": [
             "Dataset"
           ],
-          "dcid": "dc/d/UsNationalAeronauticsAndSpaceAdministrationNasa_Nex-dcp30",
+          "dcid": "dc/d/UsNationalAeronauticsAndSpaceAdministrationNasa_Nex-DownscaledClimateProjectionsForUsFromIpccCmip5",
           "provenanceId": "dc/base/GeneratedGraphs"
         },
         {
-          "name": "NEX-GDDP",
+          "name": "NEX - Global Downscaled Climate Projections from IPCC CMIP5",
           "types": [
             "Dataset"
           ],
-          "dcid": "dc/d/UsNationalAeronauticsAndSpaceAdministrationNasa_Nex-gddp",
+          "dcid": "dc/d/UsNationalAeronauticsAndSpaceAdministrationNasa_Nex-GlobalDownscaledClimateProjectionsFromIpccCmip5",
           "provenanceId": "dc/base/GeneratedGraphs"
         },
         {
-          "name": "NEX-GDDP-CMIP6",
+          "name": "NEX - Global Downscaled Climate Projections from IPCC CMIP6",
           "types": [
             "Dataset"
           ],
-          "dcid": "dc/d/UsNationalAeronauticsAndSpaceAdministrationNasa_Nex-gddp-cmip6",
+          "dcid": "dc/d/UsNationalAeronauticsAndSpaceAdministrationNasa_Nex-GlobalDownscaledClimateProjectionsFromIpccCmip6",
+          "provenanceId": "dc/base/GeneratedGraphs"
+        },
+        {
+          "name": "PO.DAAC - Sea level Projections from IPCC CMIP6",
+          "types": [
+            "Dataset"
+          ],
+          "dcid": "dc/d/UsNationalAeronauticsAndSpaceAdministrationNasa_Podaac-SeaLevelProjectionsFromIpccCmip6",
           "provenanceId": "dc/base/GeneratedGraphs"
         },
         {

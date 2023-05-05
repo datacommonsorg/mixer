@@ -41,23 +41,23 @@
           "maxValue": 50483000
         },
         "AdministrativeArea2": {
-          "placeCount": 768,
+          "placeCount": 3860,
           "topPlaces": [
             {
-              "dcid": "wikidataId/Q943099",
-              "name": "Thane"
+              "dcid": "wikidataId/Q83114",
+              "name": "São Gonçalo"
             },
             {
-              "dcid": "wikidataId/Q338425",
-              "name": "24 Paraganas North"
+              "dcid": "wikidataId/Q188897",
+              "name": "Nova Iguaçu"
             },
             {
-              "dcid": "wikidataId/Q806463",
-              "name": "Bangalore Urban district"
+              "dcid": "wikidataId/Q271393",
+              "name": "Jaboatão dos Guararapes"
             }
           ],
-          "minValue": 1668,
-          "maxValue": 5195070
+          "minValue": 379,
+          "maxValue": 1098014
         },
         "AdministrativeArea3": {
           "placeCount": 26,
@@ -420,6 +420,113 @@
         }
       },
       "provenanceSummary": {
+        "dc/base/Brazil_Census": {
+          "importName": "Brazil_Census",
+          "seriesSummary": [
+            {
+              "seriesKey": {
+                "observationPeriod": "P1Y"
+              },
+              "earliestDate": "1940",
+              "latestDate": "2000",
+              "placeTypeSummary": {
+                "AdministrativeArea": {
+                  "placeCount": 5,
+                  "topPlaces": [
+                    {
+                      "dcid": "wikidataId/Q1088815",
+                      "name": "Southeast Region"
+                    },
+                    {
+                      "dcid": "wikidataId/Q1136194",
+                      "name": "Northeast Region"
+                    },
+                    {
+                      "dcid": "wikidataId/Q1060042",
+                      "name": "Southern Brazil"
+                    }
+                  ],
+                  "minValue": 524680,
+                  "maxValue": 36986320
+                },
+                "AdministrativeArea1": {
+                  "placeCount": 27,
+                  "topPlaces": [
+                    {
+                      "dcid": "wikidataId/Q175",
+                      "name": "São Paulo"
+                    },
+                    {
+                      "dcid": "wikidataId/Q39109",
+                      "name": "Minas Gerais"
+                    },
+                    {
+                      "dcid": "wikidataId/Q41428",
+                      "name": "Rio de Janeiro"
+                    }
+                  ],
+                  "minValue": 0,
+                  "maxValue": 18893040
+                },
+                "AdministrativeArea2": {
+                  "placeCount": 3860,
+                  "topPlaces": [
+                    {
+                      "dcid": "wikidataId/Q83114",
+                      "name": "São Gonçalo"
+                    },
+                    {
+                      "dcid": "wikidataId/Q188897",
+                      "name": "Nova Iguaçu"
+                    },
+                    {
+                      "dcid": "wikidataId/Q271393",
+                      "name": "Jaboatão dos Guararapes"
+                    }
+                  ],
+                  "minValue": 379,
+                  "maxValue": 1098014
+                },
+                "City": {
+                  "placeCount": 623,
+                  "topPlaces": [
+                    {
+                      "dcid": "wikidataId/Q174",
+                      "name": "São Paulo"
+                    },
+                    {
+                      "dcid": "wikidataId/Q8678",
+                      "name": "Rio de Janeiro"
+                    },
+                    {
+                      "dcid": "wikidataId/Q42800",
+                      "name": "Belo Horizonte"
+                    }
+                  ],
+                  "minValue": 359,
+                  "maxValue": 4992977
+                },
+                "Country": {
+                  "placeCount": 1,
+                  "topPlaces": [
+                    {
+                      "dcid": "country/BRA",
+                      "name": "Brazil"
+                    }
+                  ],
+                  "minValue": 20589957,
+                  "maxValue": 86223155
+                }
+              },
+              "minValue": 0,
+              "maxValue": 86223155,
+              "observationCount": 4577,
+              "timeSeriesCount": 4516
+            }
+          ],
+          "observationCount": 4577,
+          "timeSeriesCount": 4516
+        },
         "dc/base/CensusACS1YearSurvey": {
           "importName": "CensusACS1YearSurvey",
           "seriesSummary": [

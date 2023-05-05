@@ -10,7 +10,7 @@
             "searchNames": [
               "Count of Criminal Activities"
             ],
-            "displayName": "Count of Criminal Activities",
+            "displayName": "Criminal Activities",
             "definition": "mp=count,pt=CriminalActivities",
             "hasData": true
           }

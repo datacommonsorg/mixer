@@ -58,14 +58,6 @@
     },
     "Count_Person": {
       "arcs": {
-        "description": {
-          "nodes": [
-            {
-              "provenanceId": "dc/base/HumanReadableStatVars",
-              "value": "Total Number of People in a Population"
-            }
-          ]
-        },
         "measuredProperty": {
           "nodes": [
             {
@@ -94,7 +86,7 @@
           "nodes": [
             {
               "provenanceId": "dc/base/HumanReadableStatVars",
-              "value": "Population"
+              "value": "Total Population"
             }
           ]
         },
@@ -244,7 +236,7 @@
         "variableMeasured": {
           "nodes": [
             {
-              "name": "Median Age",
+              "name": "Median Age of Population",
               "dcid": "Median_Age_Person",
               "provenanceId": "dc/base/CensusACS5YearSurvey"
             }

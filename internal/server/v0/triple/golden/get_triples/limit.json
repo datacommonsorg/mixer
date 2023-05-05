@@ -72,6 +72,81 @@
       "provenanceId": "dc/base/BaseSchema"
     },
     {
+      "subjectId": "Count_Student_SchoolGrade12_City_Civics",
+      "subjectName": "Count of Student: School Grade 12, City, Civics",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "schoolLocationType",
+      "objectId": "City",
+      "objectName": "City",
+      "objectTypes": [
+        "Class",
+        "LocationClassificationEnum"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_Student_SchoolGrade12_City_Civics_PublicSchool",
+      "subjectName": "Count of Student: School Grade 12, City, Civics, Public School",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "schoolLocationType",
+      "objectId": "City",
+      "objectName": "City",
+      "objectTypes": [
+        "Class",
+        "LocationClassificationEnum"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_Student_SchoolGrade12_City_Economics",
+      "subjectName": "Count of Student: School Grade 12, City, Economics",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "schoolLocationType",
+      "objectId": "City",
+      "objectName": "City",
+      "objectTypes": [
+        "Class",
+        "LocationClassificationEnum"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_Student_SchoolGrade12_City_Economics_PrivateSchool",
+      "subjectName": "Count of Student: School Grade 12, City, Economics, Private School",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "schoolLocationType",
+      "objectId": "City",
+      "objectName": "City",
+      "objectTypes": [
+        "Class",
+        "LocationClassificationEnum"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_Student_SchoolGrade12_City_Economics_PublicSchool",
+      "subjectName": "Count of Student: School Grade 12, City, Economics, Public School",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "schoolLocationType",
+      "objectId": "City",
+      "objectName": "City",
+      "objectTypes": [
+        "Class",
+        "LocationClassificationEnum"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
       "subjectId": "administrativeCapital",
       "subjectName": "administrativeCapital",
       "subjectTypes": [

@@ -678,6 +678,15 @@
               ]
             },
             {
+              "facet_id": "3748004783",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 207750291
+                }
+              ]
+            },
+            {
               "facet_id": "1151455814",
               "observations": [
                 {
@@ -5420,6 +5429,11 @@
       "import_name": "StatisticsNorway",
       "provenance_url": "https://www.ssb.no/en",
       "measurement_method": "StatisticsNorway"
+    },
+    "3748004783": {
+      "import_name": "Brazil_Census",
+      "provenance_url": "https://www.ibge.gov.br/en/statistics/social/population.html",
+      "observation_period": "P1Y"
     },
     "3893789967": {
       "import_name": "ItalyNIS",
