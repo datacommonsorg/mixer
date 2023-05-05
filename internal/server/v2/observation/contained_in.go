@@ -17,6 +17,7 @@ package observation
 
 import (
 	"context"
+	"log"
 	"sort"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
@@ -31,6 +32,40 @@ import (
 	"github.com/datacommonsorg/mixer/internal/store"
 )
 
+func hasCollectionCache(ancestor string, childType string) bool {
+	childTypeDenyList := map[string]struct{}{
+		"Place":               {},
+		"CensusBlockGroup":    {},
+		"CensusTract":         {},
+		"AdministrativeArea":  {},
+		"AdministrativeArea4": {},
+		"AdministrativeArea5": {},
+		"S2CellLevel7":        {},
+		"S2CellLevel8":        {},
+		"S2CellLevel9":        {},
+		"S2CellLevel10":       {},
+		"S2CellLevel11":       {},
+		"S2CellLevel13":       {},
+	}
+
+	childTypeAllowListForEarth := map[string]struct{}{
+		"Continent":           {},
+		"Country":             {},
+		"AdministrativeArea1": {},
+		"State":               {},
+		"AdministrativeArea2": {},
+		"County":              {},
+	}
+
+	if ancestor == "Earth" {
+		_, ok := childTypeAllowListForEarth[childType]
+		return ok
+	}
+
+	_, ok := childTypeDenyList[childType]
+	return !ok
+}
+
 // FetchContainedIn fetches data for child places contained in ancestor place.
 func FetchContainedIn(
 	ctx context.Context,
@@ -40,82 +75,81 @@ func FetchContainedIn(
 	childType string,
 	queryDate string,
 ) (*pbv2.ObservationResponse, error) {
-	btData := map[string]*pb.ObsCollection{}
-	var err error
-	// Only query Collection BT table when date is set. Otherwise leave btData
-	// empty so later on this queries the Series BT table.
-	if queryDate != "" {
-		btData, err = stat.ReadStatCollection(
-			ctx, store.BtGroup, bigtable.BtObsCollection,
-			ancestor, childType, variables, queryDate,
-		)
-		if err != nil {
-			return nil, err
-		}
-	}
+	readCollectionCache := false
 	result := &pbv2.ObservationResponse{
 		ByVariable: map[string]*pbv2.VariableObservation{},
 		Facets:     map[string]*pb.Facet{},
 	}
-	variablesMissingData := []string{}
-	for _, variable := range variables {
-		result.ByVariable[variable] = &pbv2.VariableObservation{
-			ByEntity: map[string]*pbv2.EntityObservation{},
-		}
-		// Create a short alias
-		obsByEntity := result.ByVariable[variable].ByEntity
-		data, ok := btData[variable]
-		if !ok || data == nil {
-			variablesMissingData = append(variablesMissingData, variable)
-			continue
-		}
-		cohorts := data.SourceCohorts
-		// Sort cohort first, so the preferred source is populated first.
-		sort.Sort(ranking.CohortByRank(cohorts))
-		for _, cohort := range cohorts {
-			facet := util.GetFacet(cohort)
-			facetID := util.GetFacetID(facet)
-			for entity, val := range cohort.Val {
-				if _, ok := obsByEntity[entity]; !ok {
-					obsByEntity[entity] = &pbv2.EntityObservation{}
+	if queryDate != "" {
+		readCollectionCache = hasCollectionCache(ancestor, childType)
+		if readCollectionCache {
+			btData, err := stat.ReadStatCollection(
+				ctx, store.BtGroup, bigtable.BtObsCollection,
+				ancestor, childType, variables, queryDate,
+			)
+			if err != nil {
+				return nil, err
+			}
+			for _, variable := range variables {
+				result.ByVariable[variable] = &pbv2.VariableObservation{
+					ByEntity: map[string]*pbv2.EntityObservation{},
 				}
-				// When date is in the request, response date is the given date.
-				// Otherwise, response date is the latest date from the cache.
-				respDate := queryDate
-				if respDate == LATEST {
-					respDate = cohort.PlaceToLatestDate[entity]
-				}
-				// If there is higher quality facet, then do not pick from the inferior
-				// facet even it could have more recent data.
-				if len(obsByEntity[entity].OrderedFacets) > 0 && stat.IsInferiorFacetPb(cohort) {
+				// Create a short alias
+				obsByEntity := result.ByVariable[variable].ByEntity
+				data, ok := btData[variable]
+				if !ok || data == nil {
 					continue
 				}
-				obsByEntity[entity].OrderedFacets = append(
-					obsByEntity[entity].OrderedFacets,
-					&pbv2.FacetObservation{
-						FacetId: facetID,
-						Observations: []*pb.PointStat{
-							{
-								Date:  respDate,
-								Value: proto.Float64(val),
+				cohorts := data.SourceCohorts
+				// Sort cohort first, so the preferred source is populated first.
+				sort.Sort(ranking.CohortByRank(cohorts))
+				for _, cohort := range cohorts {
+					facet := util.GetFacet(cohort)
+					facetID := util.GetFacetID(facet)
+					for entity, val := range cohort.Val {
+						if _, ok := obsByEntity[entity]; !ok {
+							obsByEntity[entity] = &pbv2.EntityObservation{}
+						}
+						// When date is in the request, response date is the given date.
+						// Otherwise, response date is the latest date from the cache.
+						respDate := queryDate
+						if respDate == LATEST {
+							respDate = cohort.PlaceToLatestDate[entity]
+						}
+						// If there is higher quality facet, then do not pick from the inferior
+						// facet even it could have more recent data.
+						if len(obsByEntity[entity].OrderedFacets) > 0 && stat.IsInferiorFacetPb(cohort) {
+							continue
+						}
+						obsByEntity[entity].OrderedFacets = append(
+							obsByEntity[entity].OrderedFacets,
+							&pbv2.FacetObservation{
+								FacetId: facetID,
+								Observations: []*pb.PointStat{
+									{
+										Date:  respDate,
+										Value: proto.Float64(val),
+									},
+								},
 							},
-						},
-					},
-				)
-				result.Facets[facetID] = facet
+						)
+						result.Facets[facetID] = facet
+					}
+				}
 			}
 		}
 	}
+	variablesInMemDb := []string{}
 	// Check if need to read from memory database.
 	for _, variable := range variables {
 		if store.MemDb.HasStatVar(variable) {
-			variablesMissingData = append(variablesMissingData, variable)
+			variablesInMemDb = append(variablesInMemDb, variable)
 		}
 	}
 	// Fetch linked places if need to read data from memdb or time series Bigtable
 	// cache.
 	var childPlaces []string
-	if len(variablesMissingData) > 0 {
+	if !readCollectionCache || len(variablesInMemDb) > 0 {
 		// TODO(shifucun): use V2 API
 		childPlacesMap, err := placein.GetPlacesIn(
 			ctx, store, []string{ancestor}, childType)
@@ -124,7 +158,13 @@ func FetchContainedIn(
 		}
 		childPlaces = childPlacesMap[ancestor]
 	}
+	variablesMissingData := variablesInMemDb
+	if !readCollectionCache {
+		variablesMissingData = variables
+	}
+
 	if len(variablesMissingData) > 0 {
+		log.Println("Fetch series cache / memcache in contained in observation query")
 		moreResult, err := FetchDirect(
 			ctx,
 			store,
