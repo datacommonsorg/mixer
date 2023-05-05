@@ -82,6 +82,11 @@ func TestFetchContainInLatest(t *testing.T) {
 			},
 			{
 				[]string{"Count_Person"},
+				"nuts/FR412<-containedInPlace+{typeOf:AdministrativeArea4}",
+				"read_series_bt.json",
+			},
+			{
+				[]string{"Count_Person"},
 				"country/FRA<-containedInPlace+{typeOf:DummyType}",
 				"dummy_type.json",
 			},
