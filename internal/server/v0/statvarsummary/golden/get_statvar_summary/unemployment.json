@@ -148,7 +148,7 @@
                 "observationPeriod": "P1M"
               },
               "earliestDate": "1976-01",
-              "latestDate": "2023-02",
+              "latestDate": "2023-03",
               "placeTypeSummary": {
                 "City": {
                   "placeCount": 1,
@@ -183,7 +183,7 @@
               },
               "minValue": 1.9,
               "maxValue": 30.6,
-              "observationCount": 29996,
+              "observationCount": 30049,
               "timeSeriesCount": 53
             },
             {
@@ -192,7 +192,7 @@
                 "observationPeriod": "P1M"
               },
               "earliestDate": "1976-01",
-              "latestDate": "2023-02",
+              "latestDate": "2023-03",
               "placeTypeSummary": {
                 "City": {
                   "placeCount": 3096,
@@ -254,7 +254,7 @@
               },
               "minValue": 0,
               "maxValue": 100,
-              "observationCount": 2457308,
+              "observationCount": 2464170,
               "timeSeriesCount": 6368
             },
             {
@@ -266,7 +266,7 @@
               "latestDate": "2022",
               "placeTypeSummary": {
                 "City": {
-                  "placeCount": 3086,
+                  "placeCount": 3096,
                   "topPlaces": [
                     {
                       "dcid": "geoId/3651000",
@@ -325,12 +325,12 @@
               },
               "minValue": 0,
               "maxValue": 100,
-              "observationCount": 197347,
-              "timeSeriesCount": 6358
+              "observationCount": 203679,
+              "timeSeriesCount": 6368
             }
           ],
-          "observationCount": 2684651,
-          "timeSeriesCount": 12779
+          "observationCount": 2697898,
+          "timeSeriesCount": 12789
         },
         "dc/base/EurostatData": {
           "importName": "EurostatData",

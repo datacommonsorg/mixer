@@ -124,9 +124,6 @@
       "node": "North East and Yorkshire,United Kingdom"
     },
     {
-      "node": "North West,United Kingdom"
-    },
-    {
       "node": "Northern-Kanto,Japan"
     },
     {
@@ -155,9 +152,6 @@
       "resolvedIds": [
         "wikidataId/Q3544"
       ]
-    },
-    {
-      "node": "Tarapacá,Chile"
     },
     {
       "node": "Tohoku,Japan"

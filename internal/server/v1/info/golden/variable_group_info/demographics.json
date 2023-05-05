@@ -17,7 +17,7 @@
         "searchNames": [
           "Gender Income Inequality of Person"
         ],
-        "displayName": "Gender Income Inequality",
+        "displayName": "Income Inequality Between Men and Women of Working Age",
         "definition": "mp=genderIncomeInequality,pt=Person",
         "hasData": true
       },
@@ -35,7 +35,7 @@
         "searchNames": [
           "Median Age of Person"
         ],
-        "displayName": "Median Age",
+        "displayName": "Median Age of Population",
         "definition": "st=medianValue,mp=age,pt=Person",
         "hasData": true
       },
@@ -44,7 +44,7 @@
         "searchNames": [
           "Median Income of Person"
         ],
-        "displayName": "Median Income",
+        "displayName": "Median Income of a Population",
         "definition": "st=medianValue,mp=income,pt=Person",
         "hasData": true
       },
@@ -55,15 +55,6 @@
         ],
         "displayName": "Percent of Internet Users",
         "definition": "md=PerCapita,mp=count,pt=Person,isInternetUser=True",
-        "hasData": true
-      },
-      {
-        "id": "Count_Person",
-        "searchNames": [
-          "Population Count of Person"
-        ],
-        "displayName": "Population",
-        "definition": "mp=count,pt=Person",
         "hasData": true
       },
       {
@@ -89,8 +80,17 @@
         "searchNames": [
           "Growth Rate Population Count of Person"
         ],
-        "displayName": "Population Growth Rate",
+        "displayName": "Rate of Population Growth",
         "definition": "st=growthRate,mp=count,pt=Person",
+        "hasData": true
+      },
+      {
+        "id": "Count_Person",
+        "searchNames": [
+          "Population Count of Person"
+        ],
+        "displayName": "Total Population",
+        "definition": "mp=count,pt=Person",
         "hasData": true
       }
     ],
@@ -99,7 +99,7 @@
         "id": "dc/g/Person_Age",
         "specializedEntity": "Age",
         "displayName": "Person by Age",
-        "descendentStatVarCount": 20689
+        "descendentStatVarCount": 20695
       },
       {
         "id": "dc/g/Household_BenefitsStatus",
@@ -201,7 +201,7 @@
         "id": "dc/g/Person_LiteracyStatus",
         "specializedEntity": "Literacy Status",
         "displayName": "Person by Literacy Status",
-        "descendentStatVarCount": 259
+        "descendentStatVarCount": 263
       },
       {
         "id": "dc/g/Person_MaritalStatus",
@@ -276,7 +276,7 @@
         "descendentStatVarCount": 104
       }
     ],
-    "descendentStatVarCount": 32065,
+    "descendentStatVarCount": 32072,
     "parentStatVarGroups": [
       "dc/g/Root"
     ]

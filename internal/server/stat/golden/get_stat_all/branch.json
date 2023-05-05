@@ -4596,7 +4596,8 @@
                 "2022-11": 4,
                 "2022-12": 3.9,
                 "2023-01": 4.6,
-                "2023-02": 4.8
+                "2023-02": 4.8,
+                "2023-03": 4.8
               },
               "measurementMethod": "BLSSeasonallyUnadjusted",
               "observationPeriod": "P1M",
@@ -5227,7 +5228,8 @@
                 "2022-11": 4.1,
                 "2022-12": 4.1,
                 "2023-01": 4.2,
-                "2023-02": 4.3
+                "2023-02": 4.4,
+                "2023-03": 4.4
               },
               "measurementMethod": "BLSSeasonallyAdjusted",
               "observationPeriod": "P1M",

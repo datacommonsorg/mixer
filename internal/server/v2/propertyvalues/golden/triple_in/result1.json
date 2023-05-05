@@ -4026,7 +4026,7 @@
         "measurementDenominator": {
           "nodes": [
             {
-              "name": "Amount of Economic Activity: Expenditure Activity, Healthcare Expenditure (Per Capita)",
+              "name": "Healthcare Expenditure Per Person",
               "types": [
                 "StatisticalVariable"
               ],
@@ -4058,7 +4058,7 @@
               "provenanceId": "dc/base/HumanReadableStatVars"
             },
             {
-              "name": "Count of Criminal Activities: Murder And Non Negligent Manslaughter (Per Capita)",
+              "name": "Murder and Non Negligent Manslaughter Cases Per Capita",
               "types": [
                 "StatisticalVariable"
               ],
@@ -4074,7 +4074,7 @@
               "provenanceId": "dc/base/HumanReadableStatVars"
             },
             {
-              "name": "Count of Mortality Event (Per Capita)",
+              "name": "Deaths Per Capita",
               "types": [
                 "StatisticalVariable"
               ],

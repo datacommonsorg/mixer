@@ -1,4 +1,14 @@
 {
+  "statVars": [
+    {
+      "name": "Alcohol-Related Crimes (% Of All Crimes) (SA_0000001789)",
+      "dcid": "WHO/SA_0000001789"
+    },
+    {
+      "name": "Alcohol-Related Crimes (% Of All Crimes) (SA_0000001789_ARCHIVED)",
+      "dcid": "WHO/SA_0000001789_ARCHIVED"
+    }
+  ],
   "statVarGroups": [
     {
       "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-disabilityStatus_LocationOfCrime",
@@ -1973,39 +1983,39 @@
       "name": "Criminal Activities by Crime Type",
       "statVars": [
         {
-          "name": "Count of Criminal Activities: Aggravated Assault",
+          "name": "Aggravated Assault Cases",
           "dcid": "Count_CriminalActivities_AggravatedAssault"
         },
         {
-          "name": "Count of Criminal Activities: Arson",
+          "name": "Arson Crimes",
           "dcid": "Count_CriminalActivities_Arson"
         },
         {
-          "name": "Count of Criminal Activities: Burglary",
+          "name": "Burglaries",
           "dcid": "Count_CriminalActivities_Burglary"
         },
         {
-          "name": "Count of Criminal Activities: Forcible Rape",
+          "name": "Forcible Rapes",
           "dcid": "Count_CriminalActivities_ForcibleRape"
         },
         {
-          "name": "Count of Criminal Activities: Larceny Theft",
+          "name": "Larceny Theft Cases",
           "dcid": "Count_CriminalActivities_LarcenyTheft"
         },
         {
-          "name": "Count of Criminal Activities: Motor Vehicle Theft",
+          "name": "Motor Vehicle Thefts",
           "dcid": "Count_CriminalActivities_MotorVehicleTheft"
         },
         {
-          "name": "Count of Criminal Activities: Property",
+          "name": "Property Related Crimes",
           "dcid": "Count_CriminalActivities_PropertyCrime"
         },
         {
-          "name": "Count of Criminal Activities: Robbery",
+          "name": "Robberies",
           "dcid": "Count_CriminalActivities_Robbery"
         },
         {
-          "name": "Count of Criminal Activities: Violent",
+          "name": "Violent Crimes",
           "dcid": "Count_CriminalActivities_ViolentCrime"
         }
       ]
@@ -5731,7 +5741,7 @@
       "name": "Hate Crime Incidents With Bias Motivation = Disability Status",
       "statVars": [
         {
-          "name": "Count of Hate Crime Incidents: Bias Against Disability Status",
+          "name": "Hate Crimes Motivated by Disability Status",
           "dcid": "Count_CriminalIncidents_BiasMotivationDisabilityStatus_IsHateCrime"
         },
         {
@@ -5753,7 +5763,7 @@
       "name": "Hate Crime Incidents With Bias Motivation = Ethnicity",
       "statVars": [
         {
-          "name": "Count of Hate Crime Incidents: Bias Against Ethnicity",
+          "name": "Hate Crimes Motivated by Ethnicity",
           "dcid": "Count_CriminalIncidents_BiasMotivationEthnicity_IsHateCrime"
         },
         {
@@ -5775,7 +5785,7 @@
       "name": "Hate Crime Incidents With Bias Motivation = Gender",
       "statVars": [
         {
-          "name": "Count of Hate Crime Incidents: Bias Against Gender",
+          "name": "Hate Crimes Motivated by Gender",
           "dcid": "Count_CriminalIncidents_BiasMotivationGender_IsHateCrime"
         },
         {
@@ -5841,7 +5851,7 @@
       "name": "Hate Crime Incidents With Bias Motivation = Race",
       "statVars": [
         {
-          "name": "Count of Hate Crime Incidents: Bias Against Race",
+          "name": "Hate Crimes Motivated by Race",
           "dcid": "Count_CriminalIncidents_BiasMotivationRace_IsHateCrime"
         },
         {
@@ -5863,7 +5873,7 @@
       "name": "Hate Crime Incidents With Bias Motivation = Religion",
       "statVars": [
         {
-          "name": "Count of Hate Crime Incidents: Bias Against Religion",
+          "name": "Hate Crimes Motivated by Religion",
           "dcid": "Count_CriminalIncidents_BiasMotivationReligion_IsHateCrime"
         },
         {
@@ -5885,7 +5895,7 @@
       "name": "Hate Crime Incidents With Bias Motivation = Sexual Orientation",
       "statVars": [
         {
-          "name": "Count of Hate Crime Incidents: Bias Against Sexual Orientation",
+          "name": "Hate Crimes Motivated by Sexual Orientation",
           "dcid": "Count_CriminalIncidents_BiasMotivationSexualOrientation_IsHateCrime"
         },
         {
@@ -7909,7 +7919,7 @@
       "name": "Hate Crime Incidents",
       "statVars": [
         {
-          "name": "Count of Hate Crime Incidents",
+          "name": "Hate Crime Incidents",
           "dcid": "Count_CriminalIncidents_IsHateCrime"
         },
         {
@@ -21771,6 +21781,7 @@
   ],
   "matches": [
     "crime",
-    "crimes"
+    "crimes",
+    "crimes)"
   ]
 }

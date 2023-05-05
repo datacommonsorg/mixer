@@ -75,43 +75,43 @@
       "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Householder Race",
       "statVars": [
         {
-          "name": "Count of Household: With Food Stamps in The Past 12 Months, American Indian or Alaska Native Alone",
+          "name": "American Indian or Alaska Native Monoracial Households With Food Stamps in the Past Year",
           "dcid": "Count_Household_WithFoodStampsInThePast12Months_AmericanIndianOrAlaskaNativeAlone"
         },
         {
-          "name": "Count of Household: With Food Stamps in The Past 12 Months, Asian Alone",
+          "name": "Asian Monoracial Households With Food Stamps in the Past Year",
           "dcid": "Count_Household_WithFoodStampsInThePast12Months_AsianAlone"
         },
         {
-          "name": "Count of Household: With Food Stamps in The Past 12 Months, Black or African American Alone",
+          "name": "Black or African American Monoracial Households With Food Stamps in the Past Year",
           "dcid": "Count_Household_WithFoodStampsInThePast12Months_BlackOrAfricanAmericanAlone"
-        },
-        {
-          "name": "Count of Household: With Food Stamps in The Past 12 Months, Hispanic or Latino",
-          "dcid": "Count_Household_WithFoodStampsInThePast12Months_HispanicOrLatino"
-        },
-        {
-          "name": "Count of Household: With Food Stamps in The Past 12 Months, Native Hawaiian or Other Pacific Islander Alone",
-          "dcid": "Count_Household_WithFoodStampsInThePast12Months_NativeHawaiianOrOtherPacificIslanderAlone"
         },
         {
           "name": "Count of Household: With Food Stamps in The Past 12 Months, One Race",
           "dcid": "Count_Household_WithFoodStampsInThePast12Months_OneRace"
         },
         {
-          "name": "Count of Household: With Food Stamps in The Past 12 Months, Some Other Race Alone",
+          "name": "Hispanic or Latino Households Receiving Food Stamps in the Past Year",
+          "dcid": "Count_Household_WithFoodStampsInThePast12Months_HispanicOrLatino"
+        },
+        {
+          "name": "Households Receiving Food Stamps Over the Last Year Who Identify as Native Hawaiian or Other Pacific Islander Alone",
+          "dcid": "Count_Household_WithFoodStampsInThePast12Months_NativeHawaiianOrOtherPacificIslanderAlone"
+        },
+        {
+          "name": "Households Receiving Food Stamps Over the Last Year Who Identify as Some Other Race Alone",
           "dcid": "Count_Household_WithFoodStampsInThePast12Months_SomeOtherRaceAlone"
         },
         {
-          "name": "Count of Household: With Food Stamps in The Past 12 Months, Two or More Races",
+          "name": "Households Receiving Food Stamps Over the Last Year Who Identify as Two or More Races",
           "dcid": "Count_Household_WithFoodStampsInThePast12Months_TwoOrMoreRaces"
         },
         {
-          "name": "Count of Household: With Food Stamps in The Past 12 Months, White Alone",
+          "name": "Households Receiving Food Stamps Over the Last Year Who Identify as White Alone",
           "dcid": "Count_Household_WithFoodStampsInThePast12Months_WhiteAlone"
         },
         {
-          "name": "Count of Household: With Food Stamps in The Past 12 Months, White Alone Not Hispanic or Latino",
+          "name": "Households Receiving Food Stamps Over the Last Year Who Identify as White Alone Not Hispanic or Latino",
           "dcid": "Count_Household_WithFoodStampsInThePast12Months_WhiteAloneNotHispanicOrLatino"
         }
       ]
@@ -121,44 +121,44 @@
       "name": "Household With Benefits Status = Without Food Stamps in The Past 12 Months, Householder Race",
       "statVars": [
         {
-          "name": "Count of Household: Without Food Stamps in The Past 12 Months, American Indian or Alaska Native Alone",
-          "dcid": "Count_Household_WithoutFoodStampsInThePast12Months_AmericanIndianOrAlaskaNativeAlone"
-        },
-        {
-          "name": "Count of Household: Without Food Stamps in The Past 12 Months, Asian Alone",
-          "dcid": "Count_Household_WithoutFoodStampsInThePast12Months_AsianAlone"
-        },
-        {
-          "name": "Count of Household: Without Food Stamps in The Past 12 Months, Black or African American Alone",
+          "name": "African American Households Not Receiving Food Stamps in Last Year",
           "dcid": "Count_Household_WithoutFoodStampsInThePast12Months_BlackOrAfricanAmericanAlone"
-        },
-        {
-          "name": "Count of Household: Without Food Stamps in The Past 12 Months, Hispanic or Latino",
-          "dcid": "Count_Household_WithoutFoodStampsInThePast12Months_HispanicOrLatino"
-        },
-        {
-          "name": "Count of Household: Without Food Stamps in The Past 12 Months, Native Hawaiian or Other Pacific Islander Alone",
-          "dcid": "Count_Household_WithoutFoodStampsInThePast12Months_NativeHawaiianOrOtherPacificIslanderAlone"
         },
         {
           "name": "Count of Household: Without Food Stamps in The Past 12 Months, One Race",
           "dcid": "Count_Household_WithoutFoodStampsInThePast12Months_OneRace"
         },
         {
-          "name": "Count of Household: Without Food Stamps in The Past 12 Months, Some Other Race Alone",
-          "dcid": "Count_Household_WithoutFoodStampsInThePast12Months_SomeOtherRaceAlone"
+          "name": "Hispanic Households Not Receiving Food Stamps in Last Year",
+          "dcid": "Count_Household_WithoutFoodStampsInThePast12Months_HispanicOrLatino"
         },
         {
-          "name": "Count of Household: Without Food Stamps in The Past 12 Months, Two or More Races",
+          "name": "Households Not Receiving Food Stamps in Last Year, American Indian or Alaska Native",
+          "dcid": "Count_Household_WithoutFoodStampsInThePast12Months_AmericanIndianOrAlaskaNativeAlone"
+        },
+        {
+          "name": "Households Not Receiving Food Stamps in Last Year, Asian Alone",
+          "dcid": "Count_Household_WithoutFoodStampsInThePast12Months_AsianAlone"
+        },
+        {
+          "name": "Multi Racial Households Not Receiving Food Stamps in Last Year",
           "dcid": "Count_Household_WithoutFoodStampsInThePast12Months_TwoOrMoreRaces"
         },
         {
-          "name": "Count of Household: Without Food Stamps in The Past 12 Months, White Alone",
-          "dcid": "Count_Household_WithoutFoodStampsInThePast12Months_WhiteAlone"
+          "name": "Native Hawaiian or Other Pacific Islander Alone Households Not Receiving Food Stamps in Last Year",
+          "dcid": "Count_Household_WithoutFoodStampsInThePast12Months_NativeHawaiianOrOtherPacificIslanderAlone"
         },
         {
-          "name": "Count of Household: Without Food Stamps in The Past 12 Months, White Alone Not Hispanic or Latino",
+          "name": "Non Hispanic White Households Not Receiving Food Stamps in Last Year",
           "dcid": "Count_Household_WithoutFoodStampsInThePast12Months_WhiteAloneNotHispanicOrLatino"
+        },
+        {
+          "name": "Single Race Households Not Receiving Food Stamps in Last Year",
+          "dcid": "Count_Household_WithoutFoodStampsInThePast12Months_SomeOtherRaceAlone"
+        },
+        {
+          "name": "White Households Not Receiving Food Stamps in Last Year",
+          "dcid": "Count_Household_WithoutFoodStampsInThePast12Months_WhiteAlone"
         }
       ]
     },
@@ -167,31 +167,31 @@
       "name": "Person With Benefits Status = With Food Stamps in The Past 12 Months, Residence Type",
       "statVars": [
         {
-          "name": "Population: With Food Stamps in The Past 12 Months, Adult Correctional Facilities",
+          "name": "Population Who Received Food Stamps in the Past Year and Lived in Adult Correctional Facilities",
           "dcid": "Count_Person_WithFoodStampsInThePast12Months_ResidesInAdultCorrectionalFacilities"
         },
         {
-          "name": "Population: With Food Stamps in The Past 12 Months, College or University Student Housing",
+          "name": "Population Who Received Food Stamps in the Past Year and Lived in College or University Student Housing",
           "dcid": "Count_Person_WithFoodStampsInThePast12Months_ResidesInCollegeOrUniversityStudentHousing"
         },
         {
-          "name": "Population: With Food Stamps in The Past 12 Months, Group Quarters",
+          "name": "Population Who Received Food Stamps in the Past Year and Lived in Group Quarters",
           "dcid": "Count_Person_WithFoodStampsInThePast12Months_ResidesInGroupQuarters"
         },
         {
-          "name": "Population: With Food Stamps in The Past 12 Months, Institutionalized Group Quarters",
+          "name": "Population Who Received Food Stamps in the Past Year and Lived in Institutionalized Group Quarters",
           "dcid": "Count_Person_WithFoodStampsInThePast12Months_ResidesInInstitutionalizedGroupQuarters"
         },
         {
-          "name": "Population: With Food Stamps in The Past 12 Months, Juvenile Facilities",
+          "name": "Population Who Received Food Stamps in the Past Year and Lived in Juvenile Facilities",
           "dcid": "Count_Person_WithFoodStampsInThePast12Months_ResidesInJuvenileFacilities"
         },
         {
-          "name": "Population: With Food Stamps in The Past 12 Months, Noninstitutionalized Group Quarters",
+          "name": "Population Who Received Food Stamps in the Past Year and Lived in Noninstitutionalized Group Quarters",
           "dcid": "Count_Person_WithFoodStampsInThePast12Months_ResidesInNoninstitutionalizedGroupQuarters"
         },
         {
-          "name": "Population: With Food Stamps in The Past 12 Months, Nursing Facilities",
+          "name": "Population Who Received Food Stamps in the Past Year and Lived in Nursing Facilities",
           "dcid": "Count_Person_WithFoodStampsInThePast12Months_ResidesInNursingFacilities"
         }
       ]
@@ -219,15 +219,15 @@
       "name": "Household With Benefits Status = Without Food Stamps in The Past 12 Months, Recent Work Status",
       "statVars": [
         {
-          "name": "Count of Household: Without Food Stamps in The Past 12 Months, Family Household, No Workers in The Past 12 Months",
+          "name": "Non Working Family Households Not Receiving Food Stamps in Last Year",
           "dcid": "Count_Household_WithoutFoodStampsInThePast12Months_FamilyHousehold_NoWorkersInThePast12Months"
         },
         {
-          "name": "Count of Household: Without Food Stamps in The Past 12 Months, Family Household, One Worker in The Past 12 Months",
+          "name": "One Worker Family Households Not Receiving Food Stamps in Last Year",
           "dcid": "Count_Household_WithoutFoodStampsInThePast12Months_FamilyHousehold_OneWorkerInThePast12Months"
         },
         {
-          "name": "Count of Household: Without Food Stamps in The Past 12 Months, Family Household, Two or More Workers in The Past 12 Months",
+          "name": "Two or More Workers Family Households Not Receiving Food Stamps in Last Year",
           "dcid": "Count_Household_WithoutFoodStampsInThePast12Months_FamilyHousehold_TwoOrMoreWorkersInThePast12Months"
         }
       ]
@@ -237,11 +237,11 @@
       "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months",
       "statVars": [
         {
-          "name": "Count of Household: With Food Stamps in The Past 12 Months",
+          "name": "Households Receiving Food Stamps in the Past Year",
           "dcid": "Count_Household_WithFoodStampsInThePast12Months"
         },
         {
-          "name": "Median Income of Household: With Food Stamps in The Past 12 Months",
+          "name": "Median Income for Households With Food Stamps in the Past Year",
           "dcid": "Median_Income_Household_WithFoodStampsInThePast12Months"
         }
       ]
@@ -251,11 +251,11 @@
       "name": "Household With Benefits Status = Without Food Stamps in The Past 12 Months",
       "statVars": [
         {
-          "name": "Count of Household: Without Food Stamps in The Past 12 Months",
+          "name": "Households Not Receiving Food Stamps in Last Year",
           "dcid": "Count_Household_WithoutFoodStampsInThePast12Months"
         },
         {
-          "name": "Median Income of Household: Without Food Stamps in The Past 12 Months",
+          "name": "Median Income for Households Without Food Stamps in the Past Year",
           "dcid": "Median_Income_Household_WithoutFoodStampsInThePast12Months"
         }
       ]
@@ -265,12 +265,12 @@
       "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Disability Status",
       "statVars": [
         {
-          "name": "Count of Household: With Food Stamps in The Past 12 Months, No Disability",
-          "dcid": "Count_Household_WithFoodStampsInThePast12Months_NoDisability"
+          "name": "Disabled Households Receiving Food Stamps Over the Last Year",
+          "dcid": "Count_Household_WithFoodStampsInThePast12Months_WithDisability"
         },
         {
-          "name": "Count of Household: With Food Stamps in The Past 12 Months, With Disability",
-          "dcid": "Count_Household_WithFoodStampsInThePast12Months_WithDisability"
+          "name": "Non Disabled Households Receiving Food Stamps Over the Last Year",
+          "dcid": "Count_Household_WithFoodStampsInThePast12Months_NoDisability"
         }
       ]
     },
@@ -293,11 +293,11 @@
       "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Poverty Status",
       "statVars": [
         {
-          "name": "Count of Household: With Food Stamps in The Past 12 Months, Above Poverty Level in The Past 12 Months",
+          "name": "Households With Food Stamps in the Past Year and Above Poverty Level in the Past Year",
           "dcid": "Count_Household_WithFoodStampsInThePast12Months_AbovePovertyLevelInThePast12Months"
         },
         {
-          "name": "Count of Household: With Food Stamps in The Past 12 Months, Below Poverty Level in The Past 12 Months",
+          "name": "Households With Food Stamps in the Past Year and Below Poverty Level in the Past Year",
           "dcid": "Count_Household_WithFoodStampsInThePast12Months_BelowPovertyLevelInThePast12Months"
         }
       ]
@@ -307,12 +307,12 @@
       "name": "Household With Benefits Status = Without Food Stamps in The Past 12 Months, Disability Status",
       "statVars": [
         {
-          "name": "Count of Household: Without Food Stamps in The Past 12 Months, No Disability",
-          "dcid": "Count_Household_WithoutFoodStampsInThePast12Months_NoDisability"
+          "name": "Disabled Households With Children Not Receiving Food Stamps in Last Year",
+          "dcid": "Count_Household_WithoutFoodStampsInThePast12Months_WithDisability"
         },
         {
-          "name": "Count of Household: Without Food Stamps in The Past 12 Months, With Disability",
-          "dcid": "Count_Household_WithoutFoodStampsInThePast12Months_WithDisability"
+          "name": "Households Not Receiving Food Stamps in Last Year, No Disability",
+          "dcid": "Count_Household_WithoutFoodStampsInThePast12Months_NoDisability"
         }
       ]
     },
@@ -335,11 +335,11 @@
       "name": "Household With Benefits Status = Without Food Stamps in The Past 12 Months, Poverty Status",
       "statVars": [
         {
-          "name": "Count of Household: Without Food Stamps in The Past 12 Months, Above Poverty Level in The Past 12 Months",
+          "name": "Above Poverty Level Households Not Receiving Food Stamps in Last Year",
           "dcid": "Count_Household_WithoutFoodStampsInThePast12Months_AbovePovertyLevelInThePast12Months"
         },
         {
-          "name": "Count of Household: Without Food Stamps in The Past 12 Months, Below Poverty Level in The Past 12 Months",
+          "name": "Households Not Receiving Food Stamps in Last Year, Income Below Poverty Level",
           "dcid": "Count_Household_WithoutFoodStampsInThePast12Months_BelowPovertyLevelInThePast12Months"
         }
       ]
@@ -363,12 +363,12 @@
       "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Household Type = Married Couple Family Household, Member Status",
       "statVars": [
         {
-          "name": "Count of Household: With Food Stamps in The Past 12 Months, Married Couple Family Household, With Children Under 18",
-          "dcid": "Count_Household_WithFoodStampsInThePast12Months_WithChildrenUnder18_MarriedCoupleFamilyHousehold"
+          "name": "Married Couple Households Without Children Which Received Food Stamps Over the Last Year",
+          "dcid": "Count_Household_WithFoodStampsInThePast12Months_WithoutChildrenUnder18_MarriedCoupleFamilyHousehold"
         },
         {
-          "name": "Count of Household: With Food Stamps in The Past 12 Months, Married Couple Family Household, Without Children Under 18",
-          "dcid": "Count_Household_WithFoodStampsInThePast12Months_WithoutChildrenUnder18_MarriedCoupleFamilyHousehold"
+          "name": "Married Family Households With Children Which Received Food Stamps Over the Last Year",
+          "dcid": "Count_Household_WithFoodStampsInThePast12Months_WithChildrenUnder18_MarriedCoupleFamilyHousehold"
         }
       ]
     },
@@ -377,11 +377,11 @@
       "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Household Type = Nonfamily Household, Member Status",
       "statVars": [
         {
-          "name": "Count of Household: With Food Stamps in The Past 12 Months, Nonfamily Household, With Children Under 18",
+          "name": "Nonfamily Households With Children Which Received Food Stamps Over the Last Year",
           "dcid": "Count_Household_WithFoodStampsInThePast12Months_WithChildrenUnder18_NonfamilyHousehold"
         },
         {
-          "name": "Count of Household: With Food Stamps in The Past 12 Months, Nonfamily Household, Without Children Under 18",
+          "name": "Nonfamily Households Without Children Which Received Food Stamps Over the Last Year",
           "dcid": "Count_Household_WithFoodStampsInThePast12Months_WithoutChildrenUnder18_NonfamilyHousehold"
         }
       ]
@@ -391,11 +391,11 @@
       "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Household Type = Other Family Household, Member Status",
       "statVars": [
         {
-          "name": "Count of Household: With Food Stamps in The Past 12 Months, Other Family Household, With Children Under 18",
+          "name": "Other Family Households With Children Which Received Food Stamps Over the Last Year",
           "dcid": "Count_Household_WithFoodStampsInThePast12Months_WithChildrenUnder18_OtherFamilyHousehold"
         },
         {
-          "name": "Count of Household: With Food Stamps in The Past 12 Months, Other Family Household, Without Children Under 18",
+          "name": "Other Family Households Without Children Which Received Food Stamps Over the Last Year",
           "dcid": "Count_Household_WithFoodStampsInThePast12Months_WithoutChildrenUnder18_OtherFamilyHousehold"
         }
       ]
@@ -405,11 +405,11 @@
       "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Household Type = Single Father Family Household, Member Status",
       "statVars": [
         {
-          "name": "Count of Household: With Food Stamps in The Past 12 Months, Single Father Family Household, With Children Under 18",
+          "name": "Single Father Family Households With Children Which Received Food Stamps Over the Last Year",
           "dcid": "Count_Household_WithFoodStampsInThePast12Months_WithChildrenUnder18_SingleFatherFamilyHousehold"
         },
         {
-          "name": "Count of Household: With Food Stamps in The Past 12 Months, Single Father Family Household, Without Children Under 18",
+          "name": "Single Father Family Households Without Children Which Received Food Stamps Over the Last Year",
           "dcid": "Count_Household_WithFoodStampsInThePast12Months_WithoutChildrenUnder18_SingleFatherFamilyHousehold"
         }
       ]
@@ -419,11 +419,11 @@
       "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Household Type = Single Mother Family Household, Member Status",
       "statVars": [
         {
-          "name": "Count of Household: With Food Stamps in The Past 12 Months, Single Mother Family Household, With Children Under 18",
+          "name": "Single Mother Family Households With Children Which Received Food Stamps Over the Last Year",
           "dcid": "Count_Household_WithFoodStampsInThePast12Months_WithChildrenUnder18_SingleMotherFamilyHousehold"
         },
         {
-          "name": "Count of Household: With Food Stamps in The Past 12 Months, Single Mother Family Household, Without Children Under 18",
+          "name": "Single Mother Family Households Without Children Which Received Food Stamps Over the Last Year",
           "dcid": "Count_Household_WithFoodStampsInThePast12Months_WithoutChildrenUnder18_SingleMotherFamilyHousehold"
         }
       ]
@@ -433,11 +433,11 @@
       "name": "Household With Benefits Status = Without Food Stamps in The Past 12 Months, Household Type = Married Couple Family Household, Member Status",
       "statVars": [
         {
-          "name": "Count of Household: Without Food Stamps in The Past 12 Months, Married Couple Family Household, With Children Under 18",
+          "name": "Married Households With Children Not Receiving Food Stamps in Last Year",
           "dcid": "Count_Household_WithoutFoodStampsInThePast12Months_WithChildrenUnder18_MarriedCoupleFamilyHousehold"
         },
         {
-          "name": "Count of Household: Without Food Stamps in The Past 12 Months, Married Couple Family Household, Without Children Under 18",
+          "name": "Married Households Without Children Not Receiving Food Stamps in Last Year",
           "dcid": "Count_Household_WithoutFoodStampsInThePast12Months_WithoutChildrenUnder18_MarriedCoupleFamilyHousehold"
         }
       ]
@@ -447,11 +447,11 @@
       "name": "Household With Benefits Status = Without Food Stamps in The Past 12 Months, Household Type = Nonfamily Household, Member Status",
       "statVars": [
         {
-          "name": "Count of Household: Without Food Stamps in The Past 12 Months, Nonfamily Household, With Children Under 18",
+          "name": "Nonfamily Households With Children Not Receiving Food Stamps in Last Year",
           "dcid": "Count_Household_WithoutFoodStampsInThePast12Months_WithChildrenUnder18_NonfamilyHousehold"
         },
         {
-          "name": "Count of Household: Without Food Stamps in The Past 12 Months, Nonfamily Household, Without Children Under 18",
+          "name": "Nonfamily Households Without Children Not Receiving Food Stamps in Last Year",
           "dcid": "Count_Household_WithoutFoodStampsInThePast12Months_WithoutChildrenUnder18_NonfamilyHousehold"
         }
       ]
@@ -461,11 +461,11 @@
       "name": "Household With Benefits Status = Without Food Stamps in The Past 12 Months, Household Type = Other Family Household, Member Status",
       "statVars": [
         {
-          "name": "Count of Household: Without Food Stamps in The Past 12 Months, Other Family Household, With Children Under 18",
+          "name": "Other Family Households With Children Not Receiving Food Stamps in Last Year",
           "dcid": "Count_Household_WithoutFoodStampsInThePast12Months_WithChildrenUnder18_OtherFamilyHousehold"
         },
         {
-          "name": "Count of Household: Without Food Stamps in The Past 12 Months, Other Family Household, Without Children Under 18",
+          "name": "Other Family Households Without Children Not Receiving Food Stamps in Last Year",
           "dcid": "Count_Household_WithoutFoodStampsInThePast12Months_WithoutChildrenUnder18_OtherFamilyHousehold"
         }
       ]
@@ -475,11 +475,11 @@
       "name": "Household With Benefits Status = Without Food Stamps in The Past 12 Months, Household Type = Single Father Family Household, Member Status",
       "statVars": [
         {
-          "name": "Count of Household: Without Food Stamps in The Past 12 Months, Single Father Family Household, With Children Under 18",
+          "name": "Single Father Households With Children Not Receiving Food Stamps in Last Year",
           "dcid": "Count_Household_WithoutFoodStampsInThePast12Months_WithChildrenUnder18_SingleFatherFamilyHousehold"
         },
         {
-          "name": "Count of Household: Without Food Stamps in The Past 12 Months, Single Father Family Household, Without Children Under 18",
+          "name": "Single Father Households Without Children Not Receiving Food Stamps in Last Year",
           "dcid": "Count_Household_WithoutFoodStampsInThePast12Months_WithoutChildrenUnder18_SingleFatherFamilyHousehold"
         }
       ]
@@ -489,11 +489,11 @@
       "name": "Household With Benefits Status = Without Food Stamps in The Past 12 Months, Household Type = Single Mother Family Household, Member Status",
       "statVars": [
         {
-          "name": "Count of Household: Without Food Stamps in The Past 12 Months, Single Mother Family Household, With Children Under 18",
+          "name": "Single Mother Households With Children Not Receiving Food Stamps in Last Year",
           "dcid": "Count_Household_WithoutFoodStampsInThePast12Months_WithChildrenUnder18_SingleMotherFamilyHousehold"
         },
         {
-          "name": "Count of Household: Without Food Stamps in The Past 12 Months, Single Mother Family Household, Without Children Under 18",
+          "name": "Single Mother Households Without Children Not Receiving Food Stamps in Last Year",
           "dcid": "Count_Household_WithoutFoodStampsInThePast12Months_WithoutChildrenUnder18_SingleMotherFamilyHousehold"
         }
       ]
@@ -513,7 +513,7 @@
       "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Household Type = Family Household",
       "statVars": [
         {
-          "name": "Count of Household: With Food Stamps in The Past 12 Months, Family Household",
+          "name": "Family Households Receiving Food Stamps in the Past Year",
           "dcid": "Count_Household_WithFoodStampsInThePast12Months_FamilyHousehold"
         }
       ]
@@ -523,7 +523,7 @@
       "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Household Type = Married Couple Family Household",
       "statVars": [
         {
-          "name": "Count of Household: With Food Stamps in The Past 12 Months, Married Couple Family Household",
+          "name": "Married Family Households Receiving Food Stamps in the Past Year",
           "dcid": "Count_Household_WithFoodStampsInThePast12Months_MarriedCoupleFamilyHousehold"
         }
       ]
@@ -533,7 +533,7 @@
       "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Household Type = Nonfamily Household",
       "statVars": [
         {
-          "name": "Count of Household: With Food Stamps in The Past 12 Months, Nonfamily Household",
+          "name": "Nonfamily Households Receiving Food Stamps Over the Last Year",
           "dcid": "Count_Household_WithFoodStampsInThePast12Months_NonfamilyHousehold"
         }
       ]
@@ -543,7 +543,7 @@
       "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Household Type = Other Family Household",
       "statVars": [
         {
-          "name": "Count of Household: With Food Stamps in The Past 12 Months, Other Family Household",
+          "name": "Other Family Households Receiving Food Stamps Over the Last Year",
           "dcid": "Count_Household_WithFoodStampsInThePast12Months_OtherFamilyHousehold"
         }
       ]
@@ -553,7 +553,7 @@
       "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Household Type = Single Father Family Household",
       "statVars": [
         {
-          "name": "Count of Household: With Food Stamps in The Past 12 Months, Single Father Family Household",
+          "name": "Single Father Family Households Receiving Food Stamps Over the Last Year",
           "dcid": "Count_Household_WithFoodStampsInThePast12Months_SingleFatherFamilyHousehold"
         }
       ]
@@ -563,7 +563,7 @@
       "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Household Type = Single Mother Family Household",
       "statVars": [
         {
-          "name": "Count of Household: With Food Stamps in The Past 12 Months, Single Mother Family Household",
+          "name": "Single Mother Family Households Receiving Food Stamps Over the Last Year",
           "dcid": "Count_Household_WithFoodStampsInThePast12Months_SingleMotherFamilyHousehold"
         }
       ]
@@ -573,7 +573,7 @@
       "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Member Status = With Children Under 18",
       "statVars": [
         {
-          "name": "Count of Household: With Food Stamps in The Past 12 Months, With Children Under 18",
+          "name": "Households With Children Which Received Food Stamps Over the Last Year",
           "dcid": "Count_Household_WithFoodStampsInThePast12Months_WithChildrenUnder18"
         }
       ]
@@ -583,7 +583,7 @@
       "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Member Status = Without Children Under 18",
       "statVars": [
         {
-          "name": "Count of Household: With Food Stamps in The Past 12 Months, Without Children Under 18",
+          "name": "Households Without Children Which Received Food Stamps Over the Last Year",
           "dcid": "Count_Household_WithFoodStampsInThePast12Months_WithoutChildrenUnder18"
         }
       ]
@@ -593,7 +593,7 @@
       "name": "Household With Benefits Status = Without Food Stamps in The Past 12 Months, Household Type = Family Household",
       "statVars": [
         {
-          "name": "Count of Household: Without Food Stamps in The Past 12 Months, Family Household",
+          "name": "Family Households Not Receiving Food Stamps in Last Year",
           "dcid": "Count_Household_WithoutFoodStampsInThePast12Months_FamilyHousehold"
         }
       ]
@@ -603,7 +603,7 @@
       "name": "Household With Benefits Status = Without Food Stamps in The Past 12 Months, Household Type = Married Couple Family Household",
       "statVars": [
         {
-          "name": "Count of Household: Without Food Stamps in The Past 12 Months, Married Couple Family Household",
+          "name": "Married Couple Family Households Not Receiving Food Stamps in Last Year",
           "dcid": "Count_Household_WithoutFoodStampsInThePast12Months_MarriedCoupleFamilyHousehold"
         }
       ]
@@ -613,7 +613,7 @@
       "name": "Household With Benefits Status = Without Food Stamps in The Past 12 Months, Household Type = Nonfamily Household",
       "statVars": [
         {
-          "name": "Count of Household: Without Food Stamps in The Past 12 Months, Nonfamily Household",
+          "name": "Nonfamily Households Not Receiving Food Stamps in Last Year",
           "dcid": "Count_Household_WithoutFoodStampsInThePast12Months_NonfamilyHousehold"
         }
       ]
@@ -623,7 +623,7 @@
       "name": "Household With Benefits Status = Without Food Stamps in The Past 12 Months, Household Type = Other Family Household",
       "statVars": [
         {
-          "name": "Count of Household: Without Food Stamps in The Past 12 Months, Other Family Household",
+          "name": "Other Family Households Not Receiving Food Stamps in Last Year",
           "dcid": "Count_Household_WithoutFoodStampsInThePast12Months_OtherFamilyHousehold"
         }
       ]
@@ -633,7 +633,7 @@
       "name": "Household With Benefits Status = Without Food Stamps in The Past 12 Months, Household Type = Single Father Family Household",
       "statVars": [
         {
-          "name": "Count of Household: Without Food Stamps in The Past 12 Months, Single Father Family Household",
+          "name": "Single Father Family Households Not Receiving Food Stamps in Last Year",
           "dcid": "Count_Household_WithoutFoodStampsInThePast12Months_SingleFatherFamilyHousehold"
         }
       ]
@@ -643,7 +643,7 @@
       "name": "Household With Benefits Status = Without Food Stamps in The Past 12 Months, Household Type = Single Mother Family Household",
       "statVars": [
         {
-          "name": "Count of Household: Without Food Stamps in The Past 12 Months, Single Mother Family Household",
+          "name": "Single Mother Family Households Not Receiving Food Stamps in Last Year",
           "dcid": "Count_Household_WithoutFoodStampsInThePast12Months_SingleMotherFamilyHousehold"
         }
       ]
@@ -653,7 +653,7 @@
       "name": "Household With Benefits Status = Without Food Stamps in The Past 12 Months, Member Status = With Children Under 18",
       "statVars": [
         {
-          "name": "Count of Household: Without Food Stamps in The Past 12 Months, With Children Under 18",
+          "name": "Households With Children Not Receiving Food Stamps in Last Year",
           "dcid": "Count_Household_WithoutFoodStampsInThePast12Months_WithChildrenUnder18"
         }
       ]
@@ -663,7 +663,7 @@
       "name": "Household With Benefits Status = Without Food Stamps in The Past 12 Months, Member Status = Without Children Under 18",
       "statVars": [
         {
-          "name": "Count of Household: Without Food Stamps in The Past 12 Months, Without Children Under 18",
+          "name": "Households Without Children Not Receiving Food Stamps in Last Year",
           "dcid": "Count_Household_WithoutFoodStampsInThePast12Months_WithoutChildrenUnder18"
         }
       ]

@@ -29,7 +29,6 @@ import (
 )
 
 func TestSearchStatVar(t *testing.T) {
-	t.Parallel()
 	ctx := context.Background()
 
 	_, filename, _, _ := runtime.Caller(0)

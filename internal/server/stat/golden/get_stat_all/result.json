@@ -602,7 +602,7 @@
               },
               "measurementMethod": "HumanCuratedStats",
               "importName": "HumanCuratedStats",
-              "provenanceDomain": "google.com",
+              "provenanceDomain": "datacommons.org",
               "provenanceUrl": "https://google.com"
             },
             {
@@ -1098,7 +1098,7 @@
               },
               "measurementMethod": "HumanCuratedStats",
               "importName": "HumanCuratedStats",
-              "provenanceDomain": "google.com",
+              "provenanceDomain": "datacommons.org",
               "provenanceUrl": "https://google.com"
             },
             {
@@ -1311,7 +1311,7 @@
               },
               "measurementMethod": "HumanCuratedStats",
               "importName": "HumanCuratedStats",
-              "provenanceDomain": "google.com",
+              "provenanceDomain": "datacommons.org",
               "provenanceUrl": "https://google.com"
             },
             {

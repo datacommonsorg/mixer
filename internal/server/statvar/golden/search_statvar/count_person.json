@@ -1,7 +1,7 @@
 {
   "statVars": [
     {
-      "name": "Population",
+      "name": "Total Population",
       "dcid": "Count_Person"
     },
     {
@@ -9,8 +9,532 @@
       "dcid": "Count_Person_PerArea"
     },
     {
+      "name": "Black Monoracial Population",
+      "dcid": "Count_Person_BlackOrAfricanAmericanAlone"
+    },
+    {
+      "name": "Black Population, Monoracial/Multiracial",
+      "dcid": "Count_Person_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Direct Purchasers of Health Insurance",
+      "dcid": "Count_Person_WithDirectPurchaseHealthInsurance"
+    },
+    {
+      "name": "Divorced Population",
+      "dcid": "Count_Person_Divorced"
+    },
+    {
+      "name": "Elementary School Students",
+      "dcid": "Count_Person_DetailedPrimarySchool"
+    },
+    {
+      "name": "Female Population",
+      "dcid": "Count_Person_Female"
+    },
+    {
+      "name": "High School Students",
+      "dcid": "Count_Person_DetailedHighSchool"
+    },
+    {
+      "name": "Hispanic African American Population",
+      "dcid": "Count_Person_HispanicOrLatino_BlackOrAfricanAmericanAlone"
+    },
+    {
+      "name": "Hispanic American Indian Population",
+      "dcid": "Count_Person_HispanicOrLatino_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Hispanic American Indian Population",
+      "dcid": "Count_Person_HispanicOrLatino_AmericanIndianOrAlaskaNativeAlone"
+    },
+    {
+      "name": "Hispanic Asian Population",
+      "dcid": "Count_Person_HispanicOrLatino_AsianAlone"
+    },
+    {
+      "name": "Hispanic Asian Population",
+      "dcid": "Count_Person_HispanicOrLatino_AsianAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Hispanic Asian/Pacific Islander Population",
+      "dcid": "Count_Person_HispanicOrLatino_AsianOrPacificIslander"
+    },
+    {
+      "name": "Hispanic Black/African American Monoracial/Multiracial Population",
+      "dcid": "Count_Person_HispanicOrLatino_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Hispanic Multiracial Population",
+      "dcid": "Count_Person_HispanicOrLatino_TwoOrMoreRaces"
+    },
+    {
+      "name": "Hispanic Native Hawaiian/Other Pacific Islander Alone Population",
+      "dcid": "Count_Person_HispanicOrLatino_NativeHawaiianOrOtherPacificIslanderAlone"
+    },
+    {
+      "name": "Hispanic Native Hawaiian/Other Pacific Islander Monoracial/Multiracial Population",
+      "dcid": "Count_Person_HispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Hispanic Population",
+      "dcid": "Count_Person_HispanicOrLatino"
+    },
+    {
+      "name": "Male Population",
+      "dcid": "Count_Person_Male"
+    },
+    {
+      "name": "Married Population Who Are Not Separated",
+      "dcid": "Count_Person_MarriedAndNotSeparated"
+    },
+    {
+      "name": "Middle School Students",
+      "dcid": "Count_Person_DetailedMiddleSchool"
+    },
+    {
+      "name": "Monoracial Population",
+      "dcid": "Count_Person_OneRace"
+    },
+    {
+      "name": "Multiracial Population",
+      "dcid": "Count_Person_TwoOrMoreRaces"
+    },
+    {
+      "name": "Non Hispanic Multiracial Population",
+      "dcid": "Count_Person_NotHispanicOrLatino_TwoOrMoreRaces"
+    },
+    {
+      "name": "Non Hispanic Population",
+      "dcid": "Count_Person_NotHispanicOrLatino"
+    },
+    {
+      "name": "Non Hispanic Population Identifying as American Indian and Alaska Native, Monoracial/Multiracial",
+      "dcid": "Count_Person_NotHispanicOrLatino_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Non Hispanic Population Identifying as American Indian or Alaska Native Alone",
+      "dcid": "Count_Person_NotHispanicOrLatino_AmericanIndianOrAlaskaNativeAlone"
+    },
+    {
+      "name": "Non Hispanic Population Identifying as Asian",
+      "dcid": "Count_Person_NotHispanicOrLatino_AsianAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Non Hispanic Population Identifying as Asian Alone",
+      "dcid": "Count_Person_NotHispanicOrLatino_AsianAlone"
+    },
+    {
+      "name": "Non Hispanic Population Identifying as Asian or Pacific Islander",
+      "dcid": "Count_Person_NotHispanicOrLatino_AsianOrPacificIslander"
+    },
+    {
+      "name": "Non Hispanic Population Identifying as Black or African American",
+      "dcid": "Count_Person_NotHispanicOrLatino_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Non Hispanic Population Identifying as Black or African American Alone",
+      "dcid": "Count_Person_NotHispanicOrLatino_BlackOrAfricanAmericanAlone"
+    },
+    {
+      "name": "Non Hispanic Population Identifying as Native Hawaiian and Other Pacific Islander",
+      "dcid": "Count_Person_NotHispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Non Hispanic Population Identifying as Native Hawaiian or Other Pacific Islander Alone",
+      "dcid": "Count_Person_NotHispanicOrLatino_NativeHawaiianOrOtherPacificIslanderAlone"
+    },
+    {
+      "name": "Non Hispanic White Population, Monoracial/Multiracial",
+      "dcid": "Count_Person_NotHispanicOrLatino_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Non White Population",
+      "dcid": "Count_Person_NonWhite"
+    },
+    {
+      "name": "Only Direct Purchasers of Health Insurance",
+      "dcid": "Count_Person_WithDirectPurchaseHealthInsuranceOnly"
+    },
+    {
+      "name": "Population Above Poverty Level Status in Past Year",
+      "dcid": "Count_Person_AbovePovertyLevelInThePast12Months"
+    },
+    {
+      "name": "Population Aged 10 to 14 Years",
+      "dcid": "Count_Person_10To14Years"
+    },
+    {
+      "name": "Population Aged 15 Years or Older",
+      "dcid": "Count_Person_15OrMoreYears"
+    },
+    {
+      "name": "Population Aged 15 to 19 Years",
+      "dcid": "Count_Person_15To19Years"
+    },
+    {
+      "name": "Population Aged 16 Years or Older",
+      "dcid": "Count_Person_16OrMoreYears"
+    },
+    {
+      "name": "Population Aged 18 to 24 Years",
+      "dcid": "Count_Person_18To24Years"
+    },
+    {
+      "name": "Population Aged 20 to 24 Years",
+      "dcid": "Count_Person_20To24Years"
+    },
+    {
+      "name": "Population Aged 25 Years or Older",
+      "dcid": "Count_Person_25OrMoreYears"
+    },
+    {
+      "name": "Population Aged 25 to 29 Years",
+      "dcid": "Count_Person_25To29Years"
+    },
+    {
+      "name": "Population Aged 25 to 34",
+      "dcid": "Count_Person_30To34Years"
+    },
+    {
+      "name": "Population Aged 25 to 34 Years",
+      "dcid": "Count_Person_25To34Years"
+    },
+    {
+      "name": "Population Aged 3 and Up",
+      "dcid": "Count_Person_3OrMoreYears"
+    },
+    {
+      "name": "Population Aged 35 to 39",
+      "dcid": "Count_Person_35To39Years"
+    },
+    {
+      "name": "Population Aged 35 to 44",
+      "dcid": "Count_Person_35To44Years"
+    },
+    {
+      "name": "Population Aged 40 to 44",
+      "dcid": "Count_Person_40To44Years"
+    },
+    {
+      "name": "Population Aged 45 to 49",
+      "dcid": "Count_Person_45To49Years"
+    },
+    {
+      "name": "Population Aged 45 to 54",
+      "dcid": "Count_Person_45To54Years"
+    },
+    {
+      "name": "Population Aged 5 to 17",
+      "dcid": "Count_Person_5To17Years"
+    },
+    {
+      "name": "Population Aged 5 to 9",
+      "dcid": "Count_Person_5To9Years"
+    },
+    {
+      "name": "Population Aged 50 to 54",
+      "dcid": "Count_Person_50To54Years"
+    },
+    {
+      "name": "Population Aged 55 to 59",
+      "dcid": "Count_Person_55To59Years"
+    },
+    {
+      "name": "Population Aged 60 to 61",
+      "dcid": "Count_Person_60To61Years"
+    },
+    {
+      "name": "Population Aged 60 to 64",
+      "dcid": "Count_Person_60To64Years"
+    },
+    {
+      "name": "Population Aged 62 to 64",
+      "dcid": "Count_Person_62To64Years"
+    },
+    {
+      "name": "Population Aged 65 to 69",
+      "dcid": "Count_Person_65To69Years"
+    },
+    {
+      "name": "Population Aged 65 to 74",
+      "dcid": "Count_Person_65To74Years"
+    },
+    {
+      "name": "Population Aged 70 to 74",
+      "dcid": "Count_Person_70To74Years"
+    },
+    {
+      "name": "Population Aged 75 and Up",
+      "dcid": "Count_Person_75OrMoreYears"
+    },
+    {
+      "name": "Population Aged 75 to 79",
+      "dcid": "Count_Person_75To79Years"
+    },
+    {
+      "name": "Population Aged 80 and Up",
+      "dcid": "Count_Person_80OrMoreYears"
+    },
+    {
+      "name": "Population Aged Below 4",
+      "dcid": "Count_Person_Upto4Years"
+    },
+    {
+      "name": "Population American Indian and Alaska Native, Monoracial/Multiracial",
+      "dcid": "Count_Person_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Population American Indian or Alaska Native Alone",
+      "dcid": "Count_Person_AmericanIndianAndAlaskaNativeAlone"
+    },
+    {
+      "name": "Population American Indian or Alaska Native Alone",
+      "dcid": "Count_Person_AmericanIndianOrAlaskaNativeAlone"
+    },
+    {
+      "name": "Population Asian Alone",
+      "dcid": "Count_Person_AsianAlone"
+    },
+    {
+      "name": "Population Asian or Pacific Islander",
+      "dcid": "Count_Person_AsianOrPacificIslander"
+    },
+    {
+      "name": "Population Asian, Monoracial/Multiracial",
+      "dcid": "Count_Person_AsianAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Population Below Poverty Level Status in Past Year",
+      "dcid": "Count_Person_BelowPovertyLevelInThePast12Months"
+    },
+    {
+      "name": "Population Completed Between 9th to 12th Grade With No Diploma",
+      "dcid": "Count_Person_EducationalAttainment_9ThTo12ThGradeNoDiploma"
+    },
+    {
+      "name": "Population Completed Less Than 9th Grade",
+      "dcid": "Count_Person_EducationalAttainment_LessThan9ThGrade"
+    },
+    {
+      "name": "Population Currently Enrolled in School",
+      "dcid": "Count_Person_EnrolledInSchool"
+    },
+    {
+      "name": "Population Identifying as Some Other Race Alone",
+      "dcid": "Count_Person_SomeOtherRaceAlone"
+    },
+    {
+      "name": "Population Living in Rural Areas",
+      "dcid": "Count_Person_Rural"
+    },
+    {
+      "name": "Population Living in Urban Areas",
+      "dcid": "Count_Person_Urban"
+    },
+    {
+      "name": "Population Not Currently Enrolled in School",
+      "dcid": "Count_Person_NotEnrolledInSchool"
+    },
+    {
+      "name": "Population Who Are Married but Separated",
+      "dcid": "Count_Person_Separated"
+    },
+    {
+      "name": "Population Who Are Not US Citizens",
+      "dcid": "Count_Person_NotAUSCitizen"
+    },
+    {
+      "name": "Population Who Completed No Schooling",
+      "dcid": "Count_Person_EducationalAttainmentNoSchoolingCompleted"
+    },
+    {
+      "name": "Population Who Have Never Been Married",
+      "dcid": "Count_Person_NeverMarried"
+    },
+    {
+      "name": "Population Who Went to College but Did Not Receive Degree",
+      "dcid": "Count_Person_EducationalAttainment_SomeCollegeNoDegree"
+    },
+    {
+      "name": "Population With Ambulatory Difficulty",
+      "dcid": "Count_Person_AmbulatoryDifficulty"
+    },
+    {
+      "name": "Population With Cognitive Difficulty",
+      "dcid": "Count_Person_CognitiveDifficulty"
+    },
+    {
+      "name": "Population With Current Employment",
+      "dcid": "Count_Person_Employed"
+    },
+    {
+      "name": "Population With Disabilities",
+      "dcid": "Count_Person_WithDisability"
+    },
+    {
+      "name": "Population With Employer-Based Health Insurance",
+      "dcid": "Count_Person_WithEmployerBasedHealthInsurance"
+    },
+    {
+      "name": "Population With Health Insurance",
+      "dcid": "Count_Person_WithHealthInsurance"
+    },
+    {
+      "name": "Population With Hearing Difficulties",
+      "dcid": "Count_Person_HearingDifficulty"
+    },
+    {
+      "name": "Population With Independent Living Difficulty",
+      "dcid": "Count_Person_IndependentLivingDifficulty"
+    },
+    {
+      "name": "Population With Medicaid or Means-Tested Public Coverage",
+      "dcid": "Count_Person_WithMedicaidOrMeansTestedPublicCoverage"
+    },
+    {
+      "name": "Population With Medicare Coverage",
+      "dcid": "Count_Person_WithMedicareCoverage"
+    },
+    {
+      "name": "Population With Only Employer-Based Health Insurance",
+      "dcid": "Count_Person_WithEmployerBasedHealthInsuranceOnly"
+    },
+    {
+      "name": "Population With Only Medicaid or Means-Tested Public Coverage",
+      "dcid": "Count_Person_WithMedicaidOrMeansTestedPublicCoverageOnly"
+    },
+    {
+      "name": "Population With Only Medicare Coverage",
+      "dcid": "Count_Person_WithMedicareCoverageOnly"
+    },
+    {
+      "name": "Population With Only Private Health Insurance",
+      "dcid": "Count_Person_WithPrivateHealthInsuranceOnly"
+    },
+    {
+      "name": "Population With Only Public Health Insurance",
+      "dcid": "Count_Person_WithPublicHealthInsuranceOnly"
+    },
+    {
+      "name": "Population With Only TRICARE Military Health Coverage",
+      "dcid": "Count_Person_WithTricareMilitaryHealthCoverageOnly"
+    },
+    {
+      "name": "Population With Only VA Health Care",
+      "dcid": "Count_Person_WithVAHealthCareOnly"
+    },
+    {
+      "name": "Population With Poverty Status Determined",
+      "dcid": "Count_Person_PovertyStatusDetermined"
+    },
+    {
+      "name": "Population With Private Health Insurance",
+      "dcid": "Count_Person_WithPrivateHealthInsurance"
+    },
+    {
+      "name": "Population With Public Health Insurance",
+      "dcid": "Count_Person_WithPublicHealthInsurance"
+    },
+    {
+      "name": "Population With Self Care Difficulty",
+      "dcid": "Count_Person_SelfCareDifficulty"
+    },
+    {
+      "name": "Population With TRICARE Military Health Coverage",
+      "dcid": "Count_Person_WithTricareMilitaryHealthCoverage"
+    },
+    {
+      "name": "Population With VA Health Care",
+      "dcid": "Count_Person_WithVAHealthCare"
+    },
+    {
+      "name": "Population With Vision Difficulty",
+      "dcid": "Count_Person_VisionDifficulty"
+    },
+    {
+      "name": "Population With a Bachelor's Degree",
+      "dcid": "Count_Person_EducationalAttainmentBachelorsDegree"
+    },
+    {
+      "name": "Population With a Doctorate Degree",
+      "dcid": "Count_Person_EducationalAttainmentDoctorateDegree"
+    },
+    {
+      "name": "Population With a Master's Degree",
+      "dcid": "Count_Person_EducationalAttainmentMastersDegree"
+    },
+    {
+      "name": "Population With a Regular High School Diploma",
+      "dcid": "Count_Person_EducationalAttainmentRegularHighSchoolDiploma"
+    },
+    {
+      "name": "Population With an Income Between $10,000 and $14,999",
+      "dcid": "Count_Person_IncomeOf10000To14999USDollar"
+    },
+    {
+      "name": "Population With an Income Between $15,000 and $24,999",
+      "dcid": "Count_Person_IncomeOf15000To24999USDollar"
+    },
+    {
+      "name": "Population With an Income Between $25,000 and $34,999",
+      "dcid": "Count_Person_IncomeOf25000To34999USDollar"
+    },
+    {
+      "name": "Population With an Income Between $35,000 and $49,999",
+      "dcid": "Count_Person_IncomeOf35000To49999USDollar"
+    },
+    {
+      "name": "Population With an Income Between $50,000 and $64,999",
+      "dcid": "Count_Person_IncomeOf50000To64999USDollar"
+    },
+    {
+      "name": "Population With an Income Between $65,000 and $74,999",
+      "dcid": "Count_Person_IncomeOf65000To74999USDollar"
+    },
+    {
+      "name": "Population With an Income of $75,000 or More",
+      "dcid": "Count_Person_IncomeOf75000OrMoreUSDollar"
+    },
+    {
+      "name": "Population With an Income of Up to $9,999",
+      "dcid": "Count_Person_IncomeOfUpto9999USDollar"
+    },
+    {
+      "name": "Population Without Disability",
+      "dcid": "Count_Person_NoDisability"
+    },
+    {
+      "name": "Population Without Health Insurance",
+      "dcid": "Count_Person_NoHealthInsurance"
+    },
+    {
+      "name": "Population Without a High School Diploma",
+      "dcid": "Count_Person_EducationalAttainment_LessThanHighSchoolDiploma"
+    },
+    {
+      "name": "Population in the Labor Force",
+      "dcid": "Count_Person_InLaborForce"
+    },
+    {
+      "name": "Population of Native Hawaiian and Other Pacific Islander Alone",
+      "dcid": "Count_Person_NativeHawaiianAndOtherPacificIslanderAlone"
+    },
+    {
+      "name": "Population of Native Hawaiian and Other Pacific Islander, Monoracial/Multiracial",
+      "dcid": "Count_Person_NativeHawaiianAndOtherPacificIslanderAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Population of Native Hawaiian or Other Pacific Islander Alone",
+      "dcid": "Count_Person_NativeHawaiianOrOtherPacificIslanderAlone"
+    },
+    {
       "name": "Population: 0 - 14 Years",
       "dcid": "Count_Person_0To14Years"
+    },
+    {
+      "name": "Population: 0 - 4 Years",
+      "dcid": "Count_Person_0To4Years"
     },
     {
       "name": "Population: 1 - 4 Years",
@@ -21,16 +545,8 @@
       "dcid": "Count_Person_1OrMoreYears"
     },
     {
-      "name": "Population: 10 - 14 Years",
-      "dcid": "Count_Person_10To14Years"
-    },
-    {
       "name": "Population: 10 Years or More",
       "dcid": "Count_Person_10OrMoreYears"
-    },
-    {
-      "name": "Population: 10,000 - 14,999 USD",
-      "dcid": "Count_Person_IncomeOf10000To14999USDollar"
     },
     {
       "name": "Population: 100,000 USD or More",
@@ -57,8 +573,8 @@
       "dcid": "Count_Person_15To17Years"
     },
     {
-      "name": "Population: 15 - 19 Years",
-      "dcid": "Count_Person_15To19Years"
+      "name": "Population: 15 - 24 Years",
+      "dcid": "Count_Person_15To24Years"
     },
     {
       "name": "Population: 15 - 59 Years",
@@ -73,24 +589,8 @@
       "dcid": "Count_Person_15OrLessYears"
     },
     {
-      "name": "Population: 15 Years or More",
-      "dcid": "Count_Person_15OrMoreYears"
-    },
-    {
-      "name": "Population: 15,000 - 24,999 USD",
-      "dcid": "Count_Person_IncomeOf15000To24999USDollar"
-    },
-    {
       "name": "Population: 16 - 64 Years",
       "dcid": "Count_Person_16To64Years"
-    },
-    {
-      "name": "Population: 16 Years or More",
-      "dcid": "Count_Person_16OrMoreYears"
-    },
-    {
-      "name": "Population: 18 - 24 Years",
-      "dcid": "Count_Person_18To24Years"
     },
     {
       "name": "Population: 18 - 64 Years",
@@ -109,10 +609,6 @@
       "dcid": "Count_Person_EducationalAttainment1StGrade"
     },
     {
-      "name": "Population: 20 - 24 Years",
-      "dcid": "Count_Person_20To24Years"
-    },
-    {
       "name": "Population: 20 - 79 Years",
       "dcid": "Count_Person_20To79Years"
     },
@@ -125,20 +621,8 @@
       "dcid": "Count_Person_21To64Years"
     },
     {
-      "name": "Population: 25 - 29 Years",
-      "dcid": "Count_Person_25To29Years"
-    },
-    {
-      "name": "Population: 25 - 34 Years",
-      "dcid": "Count_Person_25To34Years"
-    },
-    {
-      "name": "Population: 25 Years or More",
-      "dcid": "Count_Person_25OrMoreYears"
-    },
-    {
-      "name": "Population: 25,000 - 34,999 USD",
-      "dcid": "Count_Person_IncomeOf25000To34999USDollar"
+      "name": "Population: 25 - 59 Years",
+      "dcid": "Count_Person_25To59Years"
     },
     {
       "name": "Population: 25,000 - 49,999 USD",
@@ -161,60 +645,16 @@
       "dcid": "Count_Person_MarginalWorker_WorkedUpto3Months"
     },
     {
-      "name": "Population: 3 Years or More",
-      "dcid": "Count_Person_3OrMoreYears"
-    },
-    {
-      "name": "Population: 30 - 34 Years",
-      "dcid": "Count_Person_30To34Years"
-    },
-    {
-      "name": "Population: 35 - 39 Years",
-      "dcid": "Count_Person_35To39Years"
-    },
-    {
-      "name": "Population: 35 - 44 Years",
-      "dcid": "Count_Person_35To44Years"
-    },
-    {
-      "name": "Population: 35,000 - 49,999 USD",
-      "dcid": "Count_Person_IncomeOf35000To49999USDollar"
-    },
-    {
       "name": "Population: 3rd Grade",
       "dcid": "Count_Person_EducationalAttainment3RdGrade"
-    },
-    {
-      "name": "Population: 4 Years or Less",
-      "dcid": "Count_Person_Upto4Years"
-    },
-    {
-      "name": "Population: 40 - 44 Years",
-      "dcid": "Count_Person_40To44Years"
     },
     {
       "name": "Population: 40 - 64 Years",
       "dcid": "Count_Person_40To64Years"
     },
     {
-      "name": "Population: 45 - 49 Years",
-      "dcid": "Count_Person_45To49Years"
-    },
-    {
-      "name": "Population: 45 - 54 Years",
-      "dcid": "Count_Person_45To54Years"
-    },
-    {
       "name": "Population: 4th Grade",
       "dcid": "Count_Person_EducationalAttainment4ThGrade"
-    },
-    {
-      "name": "Population: 5 - 17 Years",
-      "dcid": "Count_Person_5To17Years"
-    },
-    {
-      "name": "Population: 5 - 9 Years",
-      "dcid": "Count_Person_5To9Years"
     },
     {
       "name": "Population: 5 Years or Less",
@@ -225,24 +665,12 @@
       "dcid": "Count_Person_5OrMoreYears"
     },
     {
-      "name": "Population: 50 - 54 Years",
-      "dcid": "Count_Person_50To54Years"
-    },
-    {
       "name": "Population: 50 - 64 Years",
       "dcid": "Count_Person_50To64Years"
     },
     {
-      "name": "Population: 50,000 - 64,999 USD",
-      "dcid": "Count_Person_IncomeOf50000To64999USDollar"
-    },
-    {
       "name": "Population: 50,000 - 74,999 USD",
       "dcid": "Count_Person_Civilian_USDollar50000To74999_ResidesInHousehold"
-    },
-    {
-      "name": "Population: 55 - 59 Years",
-      "dcid": "Count_Person_55To59Years"
     },
     {
       "name": "Population: 55 - 64 Years",
@@ -261,40 +689,16 @@
       "dcid": "Count_Person_YearsUpto6"
     },
     {
-      "name": "Population: 60 - 61 Years",
-      "dcid": "Count_Person_60To61Years"
-    },
-    {
-      "name": "Population: 60 - 64 Years",
-      "dcid": "Count_Person_60To64Years"
-    },
-    {
       "name": "Population: 60 Years or More",
       "dcid": "Count_Person_60OrMoreYears"
-    },
-    {
-      "name": "Population: 62 - 64 Years",
-      "dcid": "Count_Person_62To64Years"
     },
     {
       "name": "Population: 64 Years or Less",
       "dcid": "Count_Person_Upto64Years"
     },
     {
-      "name": "Population: 65 - 69 Years",
-      "dcid": "Count_Person_65To69Years"
-    },
-    {
-      "name": "Population: 65 - 74 Years",
-      "dcid": "Count_Person_65To74Years"
-    },
-    {
       "name": "Population: 65 Years or More",
       "dcid": "Count_Person_65OrMoreYears"
-    },
-    {
-      "name": "Population: 65,000 - 74,999 USD",
-      "dcid": "Count_Person_IncomeOf65000To74999USDollar"
     },
     {
       "name": "Population: 6th Grade",
@@ -305,28 +709,12 @@
       "dcid": "Count_Person_7To14Years"
     },
     {
-      "name": "Population: 70 - 74 Years",
-      "dcid": "Count_Person_70To74Years"
-    },
-    {
-      "name": "Population: 75 - 79 Years",
-      "dcid": "Count_Person_75To79Years"
-    },
-    {
       "name": "Population: 75 - 84 Years",
       "dcid": "Count_Person_75To84Years"
     },
     {
-      "name": "Population: 75 Years or More",
-      "dcid": "Count_Person_75OrMoreYears"
-    },
-    {
       "name": "Population: 75,000 - 99,999 USD",
       "dcid": "Count_Person_Civilian_USDollar75000To99999_ResidesInHousehold"
-    },
-    {
-      "name": "Population: 75,000 USD or More",
-      "dcid": "Count_Person_IncomeOf75000OrMoreUSDollar"
     },
     {
       "name": "Population: 7th And 8th Grade",
@@ -341,10 +729,6 @@
       "dcid": "Count_Person_80To84Years"
     },
     {
-      "name": "Population: 80 Years or More",
-      "dcid": "Count_Person_80OrMoreYears"
-    },
-    {
       "name": "Population: 85 - 89 Years",
       "dcid": "Count_Person_85To89Years"
     },
@@ -357,24 +741,12 @@
       "dcid": "Count_Person_EducationalAttainment8ThGrade"
     },
     {
-      "name": "Population: 9,999 USD or Less",
-      "dcid": "Count_Person_IncomeOfUpto9999USDollar"
-    },
-    {
       "name": "Population: 90 Years or More",
       "dcid": "Count_Person_90OrMoreYears"
     },
     {
       "name": "Population: 9th Grade",
       "dcid": "Count_Person_EducationalAttainment9ThGrade"
-    },
-    {
-      "name": "Population: 9th To 12th Grade No Diploma",
-      "dcid": "Count_Person_EducationalAttainment_9ThTo12ThGradeNoDiploma"
-    },
-    {
-      "name": "Population: Above Poverty Level in The Past 12 Months",
-      "dcid": "Count_Person_AbovePovertyLevelInThePast12Months"
     },
     {
       "name": "Population: Adult Correctional Facilities",
@@ -387,22 +759,6 @@
     {
       "name": "Population: Agriculture, Forestry And Fishing",
       "dcid": "Count_Person_Employed_NACE/A"
-    },
-    {
-      "name": "Population: Ambulatory Difficulty",
-      "dcid": "Count_Person_AmbulatoryDifficulty"
-    },
-    {
-      "name": "Population: American Indian And Alaska Native Alone or In Combination With One or More Other Races",
-      "dcid": "Count_Person_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Population: American Indian or Alaska Native Alone",
-      "dcid": "Count_Person_AmericanIndianAndAlaskaNativeAlone"
-    },
-    {
-      "name": "Population: American Indian or Alaska Native Alone",
-      "dcid": "Count_Person_AmericanIndianOrAlaskaNativeAlone"
     },
     {
       "name": "Population: Amharic Somali or Other Afro Asiatic Languages",
@@ -425,32 +781,12 @@
       "dcid": "Count_Person_Employed_NACE/R-U"
     },
     {
-      "name": "Population: Asian Alone",
-      "dcid": "Count_Person_AsianAlone"
-    },
-    {
-      "name": "Population: Asian Alone or In Combination With One or More Other Races",
-      "dcid": "Count_Person_AsianAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Population: Asian or Pacific Islander",
-      "dcid": "Count_Person_AsianOrPacificIslander"
-    },
-    {
       "name": "Population: Associates Degree",
       "dcid": "Count_Person_EducationalAttainmentAssociatesDegree"
     },
     {
-      "name": "Population: Bachelors Degree",
-      "dcid": "Count_Person_EducationalAttainmentBachelorsDegree"
-    },
-    {
       "name": "Population: Bachelors Degree or Higher",
       "dcid": "Count_Person_EducationalAttainmentBachelorsDegreeOrHigher"
-    },
-    {
-      "name": "Population: Below Poverty Level in The Past 12 Months",
-      "dcid": "Count_Person_BelowPovertyLevelInThePast12Months"
     },
     {
       "name": "Population: Bengali",
@@ -459,14 +795,6 @@
     {
       "name": "Population: Black",
       "dcid": "Count_Person_Black"
-    },
-    {
-      "name": "Population: Black or African American Alone",
-      "dcid": "Count_Person_BlackOrAfricanAmericanAlone"
-    },
-    {
-      "name": "Population: Black or African American Alone or In Combination With One or More Other Races",
-      "dcid": "Count_Person_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces"
     },
     {
       "name": "Population: Born in Other State in The United States",
@@ -521,10 +849,6 @@
       "dcid": "Count_Person_Civilian"
     },
     {
-      "name": "Population: Cognitive Difficulty",
-      "dcid": "Count_Person_CognitiveDifficulty"
-    },
-    {
       "name": "Population: College or University Student Housing",
       "dcid": "Count_Person_ResidesInCollegeOrUniversityStudentHousing"
     },
@@ -533,24 +857,12 @@
       "dcid": "Count_Person_Employed_NACE/F"
     },
     {
-      "name": "Population: Divorced",
-      "dcid": "Count_Person_Divorced"
-    },
-    {
       "name": "Population: Divorced or Separated",
       "dcid": "Count_Person_DivorcedOrSeparated"
     },
     {
-      "name": "Population: Doctorate Degree",
-      "dcid": "Count_Person_EducationalAttainmentDoctorateDegree"
-    },
-    {
       "name": "Population: Education Major",
       "dcid": "Count_Person_BachelorOfEducationMajor"
-    },
-    {
-      "name": "Population: Employed",
-      "dcid": "Count_Person_Employed"
     },
     {
       "name": "Population: Enrolled in College Undergraduate Years",
@@ -641,16 +953,8 @@
       "dcid": "Count_Person_EnrolledInNurseryThroughGrade12_EnrolledInSchool"
     },
     {
-      "name": "Population: Enrolled in School",
-      "dcid": "Count_Person_EnrolledInSchool"
-    },
-    {
       "name": "Population: Evangelical",
       "dcid": "Count_Person_Evangelical"
-    },
-    {
-      "name": "Population: Female",
-      "dcid": "Count_Person_Female"
     },
     {
       "name": "Population: Financial And Insurance Activities",
@@ -725,16 +1029,8 @@
       "dcid": "Count_Person_5OrMoreYears_HaitianSpokenAtHome"
     },
     {
-      "name": "Population: Hearing Difficulty",
-      "dcid": "Count_Person_HearingDifficulty"
-    },
-    {
       "name": "Population: Hebrew",
       "dcid": "Count_Person_5OrMoreYears_HebrewSpokenAtHome"
-    },
-    {
-      "name": "Population: High School",
-      "dcid": "Count_Person_DetailedHighSchool"
     },
     {
       "name": "Population: High School Graduate Includes Equivalency",
@@ -747,58 +1043,6 @@
     {
       "name": "Population: Hindi",
       "dcid": "Count_Person_5OrMoreYears_HindiSpokenAtHome"
-    },
-    {
-      "name": "Population: Hispanic or Latino",
-      "dcid": "Count_Person_HispanicOrLatino"
-    },
-    {
-      "name": "Population: Hispanic or Latino \u0026 American Indian And Alaska Native Alone or In Combination With One or More Other Races",
-      "dcid": "Count_Person_HispanicOrLatino_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Population: Hispanic or Latino \u0026 American Indian or Alaska Native Alone",
-      "dcid": "Count_Person_HispanicOrLatino_AmericanIndianOrAlaskaNativeAlone"
-    },
-    {
-      "name": "Population: Hispanic or Latino \u0026 Asian Alone",
-      "dcid": "Count_Person_HispanicOrLatino_AsianAlone"
-    },
-    {
-      "name": "Population: Hispanic or Latino \u0026 Asian Alone or In Combination With One or More Other Races",
-      "dcid": "Count_Person_HispanicOrLatino_AsianAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Population: Hispanic or Latino \u0026 Asian or Pacific Islander",
-      "dcid": "Count_Person_HispanicOrLatino_AsianOrPacificIslander"
-    },
-    {
-      "name": "Population: Hispanic or Latino \u0026 Black or African American Alone",
-      "dcid": "Count_Person_HispanicOrLatino_BlackOrAfricanAmericanAlone"
-    },
-    {
-      "name": "Population: Hispanic or Latino \u0026 Black or African American Alone or In Combination With One or More Other Races",
-      "dcid": "Count_Person_HispanicOrLatino_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Population: Hispanic or Latino \u0026 Native Hawaiian And Other Pacific Islander Alone or In Combination With One or More Other Races",
-      "dcid": "Count_Person_HispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Population: Hispanic or Latino \u0026 Native Hawaiian or Other Pacific Islander Alone",
-      "dcid": "Count_Person_HispanicOrLatino_NativeHawaiianOrOtherPacificIslanderAlone"
-    },
-    {
-      "name": "Population: Hispanic or Latino \u0026 Two or More Races",
-      "dcid": "Count_Person_HispanicOrLatino_TwoOrMoreRaces"
-    },
-    {
-      "name": "Population: Hispanic or Latino \u0026 White Alone",
-      "dcid": "Count_Person_HispanicOrLatino_WhiteAlone"
-    },
-    {
-      "name": "Population: Hispanic or Latino \u0026 White Alone or In Combination With One or More Other Races",
-      "dcid": "Count_Person_HispanicOrLatino_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
     },
     {
       "name": "Population: Hmong",
@@ -843,10 +1087,6 @@
     {
       "name": "Population: Income Of 80 To 100 Percentile",
       "dcid": "Count_Person_IncomeOf80To100Percentile"
-    },
-    {
-      "name": "Population: Independent Living Difficulty",
-      "dcid": "Count_Person_IndependentLivingDifficulty"
     },
     {
       "name": "Population: Industry (except Construction)",
@@ -897,14 +1137,6 @@
       "dcid": "Count_Person_5OrMoreYears_LaotianSpokenAtHome"
     },
     {
-      "name": "Population: Less Than 9th Grade",
-      "dcid": "Count_Person_EducationalAttainment_LessThan9ThGrade"
-    },
-    {
-      "name": "Population: Less Than High School Diploma",
-      "dcid": "Count_Person_EducationalAttainment_LessThanHighSchoolDiploma"
-    },
-    {
       "name": "Population: Less Than High School Graduate",
       "dcid": "Count_Person_EducationalAttainmentLessThanHighSchoolGraduate"
     },
@@ -929,28 +1161,12 @@
       "dcid": "Count_Person_5OrMoreYears_MalayalamKannadaOrOtherDravidianLanguagesSpokenAtHome"
     },
     {
-      "name": "Population: Male",
-      "dcid": "Count_Person_Male"
-    },
-    {
       "name": "Population: Manufacturing",
       "dcid": "Count_Person_Employed_NACE/C"
     },
     {
       "name": "Population: Marginal Worker",
       "dcid": "Count_Person_MarginalWorker"
-    },
-    {
-      "name": "Population: Married And Not Separated",
-      "dcid": "Count_Person_MarriedAndNotSeparated"
-    },
-    {
-      "name": "Population: Masters Degree",
-      "dcid": "Count_Person_EducationalAttainmentMastersDegree"
-    },
-    {
-      "name": "Population: Middle School",
-      "dcid": "Count_Person_DetailedMiddleSchool"
     },
     {
       "name": "Population: Military Quarters or Military Ships",
@@ -973,18 +1189,6 @@
       "dcid": "Count_Person_NativeBornOutsideTheUnitedStates"
     },
     {
-      "name": "Population: Native Hawaiian And Other Pacific Islander Alone or In Combination With One or More Other Races",
-      "dcid": "Count_Person_NativeHawaiianAndOtherPacificIslanderAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Population: Native Hawaiian or Other Pacific Islander Alone",
-      "dcid": "Count_Person_NativeHawaiianAndOtherPacificIslanderAlone"
-    },
-    {
-      "name": "Population: Native Hawaiian or Other Pacific Islander Alone",
-      "dcid": "Count_Person_NativeHawaiianOrOtherPacificIslanderAlone"
-    },
-    {
       "name": "Population: Navajo",
       "dcid": "Count_Person_5OrMoreYears_NavajoSpokenAtHome"
     },
@@ -993,20 +1197,8 @@
       "dcid": "Count_Person_5OrMoreYears_NepaliMarathiOrOtherIndicLanguagesSpokenAtHome"
     },
     {
-      "name": "Population: Never Married",
-      "dcid": "Count_Person_NeverMarried"
-    },
-    {
       "name": "Population: No Activity Limitation",
       "dcid": "Count_Person_NoActivityLimitation"
-    },
-    {
-      "name": "Population: No Disability",
-      "dcid": "Count_Person_NoDisability"
-    },
-    {
-      "name": "Population: No Health Insurance",
-      "dcid": "Count_Person_NoHealthInsurance"
     },
     {
       "name": "Population: No Private Health Insurance",
@@ -1015,14 +1207,6 @@
     {
       "name": "Population: No Public Health Insurance",
       "dcid": "Count_Person_NoPublicHealthInsurance"
-    },
-    {
-      "name": "Population: No Schooling Completed",
-      "dcid": "Count_Person_EducationalAttainmentNoSchoolingCompleted"
-    },
-    {
-      "name": "Population: Non White",
-      "dcid": "Count_Person_NonWhite"
     },
     {
       "name": "Population: Non Worker",
@@ -1041,62 +1225,6 @@
       "dcid": "Count_Person_NotACitizen"
     },
     {
-      "name": "Population: Not A US Citizen",
-      "dcid": "Count_Person_NotAUSCitizen"
-    },
-    {
-      "name": "Population: Not Enrolled in School",
-      "dcid": "Count_Person_NotEnrolledInSchool"
-    },
-    {
-      "name": "Population: Not Hispanic or Latino",
-      "dcid": "Count_Person_NotHispanicOrLatino"
-    },
-    {
-      "name": "Population: Not Hispanic or Latino \u0026 American Indian And Alaska Native Alone or In Combination With One or More Other Races",
-      "dcid": "Count_Person_NotHispanicOrLatino_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Population: Not Hispanic or Latino \u0026 American Indian or Alaska Native Alone",
-      "dcid": "Count_Person_NotHispanicOrLatino_AmericanIndianOrAlaskaNativeAlone"
-    },
-    {
-      "name": "Population: Not Hispanic or Latino \u0026 Asian Alone",
-      "dcid": "Count_Person_NotHispanicOrLatino_AsianAlone"
-    },
-    {
-      "name": "Population: Not Hispanic or Latino \u0026 Asian Alone or In Combination With One or More Other Races",
-      "dcid": "Count_Person_NotHispanicOrLatino_AsianAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Population: Not Hispanic or Latino \u0026 Asian or Pacific Islander",
-      "dcid": "Count_Person_NotHispanicOrLatino_AsianOrPacificIslander"
-    },
-    {
-      "name": "Population: Not Hispanic or Latino \u0026 Black or African American Alone",
-      "dcid": "Count_Person_NotHispanicOrLatino_BlackOrAfricanAmericanAlone"
-    },
-    {
-      "name": "Population: Not Hispanic or Latino \u0026 Black or African American Alone or In Combination With One or More Other Races",
-      "dcid": "Count_Person_NotHispanicOrLatino_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Population: Not Hispanic or Latino \u0026 Native Hawaiian And Other Pacific Islander Alone or In Combination With One or More Other Races",
-      "dcid": "Count_Person_NotHispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Population: Not Hispanic or Latino \u0026 Native Hawaiian or Other Pacific Islander Alone",
-      "dcid": "Count_Person_NotHispanicOrLatino_NativeHawaiianOrOtherPacificIslanderAlone"
-    },
-    {
-      "name": "Population: Not Hispanic or Latino \u0026 Two or More Races",
-      "dcid": "Count_Person_NotHispanicOrLatino_TwoOrMoreRaces"
-    },
-    {
-      "name": "Population: Not Hispanic or Latino \u0026 White Alone or In Combination With One or More Other Races",
-      "dcid": "Count_Person_NotHispanicOrLatino_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
       "name": "Population: Nursery School",
       "dcid": "Count_Person_EducationalAttainmentNurserySchool"
     },
@@ -1111,10 +1239,6 @@
     {
       "name": "Population: Obesity",
       "dcid": "Count_Person_Obesity"
-    },
-    {
-      "name": "Population: One Race",
-      "dcid": "Count_Person_OneRace"
     },
     {
       "name": "Population: Only English",
@@ -1185,16 +1309,8 @@
       "dcid": "Count_Person_5OrMoreYears_PortugueseOrPortugueseCreoleSpokenAtHome"
     },
     {
-      "name": "Population: Poverty Status Determined",
-      "dcid": "Count_Person_PovertyStatusDetermined"
-    },
-    {
       "name": "Population: Pre Obese",
       "dcid": "Count_Person_PreObese"
-    },
-    {
-      "name": "Population: Primary School",
-      "dcid": "Count_Person_DetailedPrimarySchool"
     },
     {
       "name": "Population: Primary School",
@@ -1229,16 +1345,8 @@
       "dcid": "Count_Person_Employed_NACE/L"
     },
     {
-      "name": "Population: Regular High School Diploma",
-      "dcid": "Count_Person_EducationalAttainmentRegularHighSchoolDiploma"
-    },
-    {
       "name": "Population: Roman Catholicism Apostolic",
       "dcid": "Count_Person_RomanCatholicismApostolic"
-    },
-    {
-      "name": "Population: Rural",
-      "dcid": "Count_Person_Rural"
     },
     {
       "name": "Population: Russian",
@@ -1257,16 +1365,8 @@
       "dcid": "Count_Person_BachelorOfScienceAndEngineeringRelatedMajor"
     },
     {
-      "name": "Population: Self Care Difficulty",
-      "dcid": "Count_Person_SelfCareDifficulty"
-    },
-    {
       "name": "Population: Semi Urban",
       "dcid": "Count_Person_SemiUrban"
-    },
-    {
-      "name": "Population: Separated",
-      "dcid": "Count_Person_Separated"
     },
     {
       "name": "Population: Serbo Croatian",
@@ -1285,16 +1385,8 @@
       "dcid": "Count_Person_EducationalAttainmentSomeCollegeLessThan1Year"
     },
     {
-      "name": "Population: Some College No Degree",
-      "dcid": "Count_Person_EducationalAttainment_SomeCollegeNoDegree"
-    },
-    {
       "name": "Population: Some College or Associates Degree",
       "dcid": "Count_Person_EducationalAttainmentSomeCollegeOrAssociatesDegree"
-    },
-    {
-      "name": "Population: Some Other Race Alone",
-      "dcid": "Count_Person_SomeOtherRaceAlone"
     },
     {
       "name": "Population: Some Other Race Alone or In Combination With One or More Other Races",
@@ -1365,24 +1457,8 @@
       "dcid": "Count_Person_5OrMoreYears_ThaiLaoOrOtherTaiKadaiLanguagesSpokenAtHome"
     },
     {
-      "name": "Population: Two or More Races",
-      "dcid": "Count_Person_TwoOrMoreRaces"
-    },
-    {
-      "name": "Population: US Citizen Born Abroad of American Parents",
-      "dcid": "Count_Person_USCitizenBornAbroadOfAmericanParents"
-    },
-    {
       "name": "Population: US Citizen Born in Puerto Rico or USIsland Areas",
       "dcid": "Count_Person_USCitizenBornInPuertoRicoOrUSIslandAreas"
-    },
-    {
-      "name": "Population: US Citizen Born in The United States",
-      "dcid": "Count_Person_USCitizenBornInTheUnitedStates"
-    },
-    {
-      "name": "Population: US Citizen by Naturalization",
-      "dcid": "Count_Person_USCitizenByNaturalization"
     },
     {
       "name": "Population: US Resident",
@@ -1413,32 +1489,12 @@
       "dcid": "Count_Person_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation"
     },
     {
-      "name": "Population: Urban",
-      "dcid": "Count_Person_Urban"
-    },
-    {
       "name": "Population: Urdu",
       "dcid": "Count_Person_5OrMoreYears_UrduSpokenAtHome"
     },
     {
       "name": "Population: Vietnamese",
       "dcid": "Count_Person_5OrMoreYears_VietnameseSpokenAtHome"
-    },
-    {
-      "name": "Population: Vision Difficulty",
-      "dcid": "Count_Person_VisionDifficulty"
-    },
-    {
-      "name": "Population: White Alone",
-      "dcid": "Count_Person_WhiteAlone"
-    },
-    {
-      "name": "Population: White Alone Not Hispanic or Latino",
-      "dcid": "Count_Person_WhiteAloneNotHispanicOrLatino"
-    },
-    {
-      "name": "Population: White Alone or In Combination With One or More Other Races",
-      "dcid": "Count_Person_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
     },
     {
       "name": "Population: Wholesale And Retail Trade, Transport, Accommodation And Food Service",
@@ -1449,52 +1505,8 @@
       "dcid": "Count_Person_Employed_NACE/G-J"
     },
     {
-      "name": "Population: Widowed",
-      "dcid": "Count_Person_Widowed"
-    },
-    {
-      "name": "Population: With Direct Purchase Health Insurance",
-      "dcid": "Count_Person_WithDirectPurchaseHealthInsurance"
-    },
-    {
-      "name": "Population: With Direct Purchase Health Insurance Only",
-      "dcid": "Count_Person_WithDirectPurchaseHealthInsuranceOnly"
-    },
-    {
-      "name": "Population: With Disability",
-      "dcid": "Count_Person_WithDisability"
-    },
-    {
-      "name": "Population: With Employer Based Health Insurance",
-      "dcid": "Count_Person_WithEmployerBasedHealthInsurance"
-    },
-    {
-      "name": "Population: With Employer Based Health Insurance Only",
-      "dcid": "Count_Person_WithEmployerBasedHealthInsuranceOnly"
-    },
-    {
       "name": "Population: With Food Stamps in The Past 12 Months",
       "dcid": "Count_Person_WithFoodStampsInThePast12Months"
-    },
-    {
-      "name": "Population: With Health Insurance",
-      "dcid": "Count_Person_WithHealthInsurance"
-    },
-    {
-      "name": "Population: With Medicaid or Means Tested Public Coverage",
-      "dcid": "Count_Person_WithMedicaidOrMeansTestedPublicCoverage"
-    },
-    {
-      "name": "Population: With Medicaid or Means Tested Public Coverage Only",
-      "dcid": "Count_Person_WithMedicaidOrMeansTestedPublicCoverageOnly"
-    },
-    {
-      "name": "Population: With Medicare Coverage",
-      "dcid": "Count_Person_WithMedicareCoverage"
-    },
-    {
-      "name": "Population: With Medicare Coverage Only",
-      "dcid": "Count_Person_WithMedicareCoverageOnly"
     },
     {
       "name": "Population: With One Type of Health Insurance",
@@ -1505,40 +1517,8 @@
       "dcid": "Count_Person_WithOwnChildrenUnder18"
     },
     {
-      "name": "Population: With Private Health Insurance",
-      "dcid": "Count_Person_WithPrivateHealthInsurance"
-    },
-    {
-      "name": "Population: With Private Health Insurance Only",
-      "dcid": "Count_Person_WithPrivateHealthInsuranceOnly"
-    },
-    {
-      "name": "Population: With Public Health Insurance",
-      "dcid": "Count_Person_WithPublicHealthInsurance"
-    },
-    {
       "name": "Population: With Public Health Insurance Coverage",
       "dcid": "Count_Person_WithPublicCoverage"
-    },
-    {
-      "name": "Population: With Public Health Insurance Only",
-      "dcid": "Count_Person_WithPublicHealthInsuranceOnly"
-    },
-    {
-      "name": "Population: With Tricare Military Health Coverage",
-      "dcid": "Count_Person_WithTricareMilitaryHealthCoverage"
-    },
-    {
-      "name": "Population: With Tricare Military Health Coverage Only",
-      "dcid": "Count_Person_WithTricareMilitaryHealthCoverageOnly"
-    },
-    {
-      "name": "Population: With VAHealth Care",
-      "dcid": "Count_Person_WithVAHealthCare"
-    },
-    {
-      "name": "Population: With VAHealth Care Only",
-      "dcid": "Count_Person_WithVAHealthCareOnly"
     },
     {
       "name": "Population: Within EU28 And Not A Citizen",
@@ -1961,8 +1941,40 @@
       "dcid": "Count_Person_5OrMoreYears_YorubaTwiIgboOrOtherLanguagesOfWesternAfricaSpokenAtHome"
     },
     {
-      "name": "Population: in Labor Force",
-      "dcid": "Count_Person_InLaborForce"
+      "name": "US Citizens Born Abroad to American Parents",
+      "dcid": "Count_Person_USCitizenBornAbroadOfAmericanParents"
+    },
+    {
+      "name": "US Citizens Born in the United States",
+      "dcid": "Count_Person_USCitizenBornInTheUnitedStates"
+    },
+    {
+      "name": "US Citizens by Naturalization",
+      "dcid": "Count_Person_USCitizenByNaturalization"
+    },
+    {
+      "name": "White Hispanic Monoracial Population",
+      "dcid": "Count_Person_HispanicOrLatino_WhiteAlone"
+    },
+    {
+      "name": "White Hispanic Monoracial Population",
+      "dcid": "Count_Person_WhiteAloneNotHispanicOrLatino"
+    },
+    {
+      "name": "White Hispanic Population, Monoracial/Multiracial",
+      "dcid": "Count_Person_HispanicOrLatino_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "White Monoracial Population",
+      "dcid": "Count_Person_WhiteAlone"
+    },
+    {
+      "name": "White Population, Monoracial/Multiracial",
+      "dcid": "Count_Person_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Widowed Population",
+      "dcid": "Count_Person_Widowed"
     },
     {
       "name": "Percent of Internet Users",
@@ -1985,12 +1997,924 @@
       "dcid": "Count_Person_25OrMoreYears_DoctorateDegree_AsFractionOf_Count_Person_25OrMoreYears"
     },
     {
+      "name": "Population: Illiterate (Per Capita)",
+      "dcid": "Count_Person_Illiterate_AsAFractionOf_Count_Person"
+    },
+    {
       "name": "Population: Masters Degree or Higher (As Fraction of Count Person 25 or More Years)",
       "dcid": "Count_Person_25OrMoreYears_MastersDegreeOrHigher_AsFractionOf_Count_Person_25OrMoreYears"
     },
     {
       "name": "Population: Tertiary Education (As Fraction of Count Person 25 or More Years)",
       "dcid": "Count_Person_25OrMoreYears_TertiaryEducation_AsFractionOf_Count_Person_25OrMoreYears"
+    },
+    {
+      "name": "African American Farmers",
+      "dcid": "Count_Person_Producer_BlackOrAfricanAmericanAlone"
+    },
+    {
+      "name": "African American Monoracial Male Population",
+      "dcid": "Count_Person_Male_BlackOrAfricanAmericanAlone"
+    },
+    {
+      "name": "African American Monoracial/Multiracial Male Population",
+      "dcid": "Count_Person_Male_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "African American Population Above Poverty Level Status in Past Year",
+      "dcid": "Count_Person_AbovePovertyLevelInThePast12Months_BlackOrAfricanAmericanAlone"
+    },
+    {
+      "name": "American Indian and Alaska Native Female Population, Monoracial or Multiracial",
+      "dcid": "Count_Person_Female_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "American Indian and Alaska Native Male Population, Monoracial/Multiracial",
+      "dcid": "Count_Person_Male_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "American Indian and Native American Farmers",
+      "dcid": "Count_Person_Producer_AmericanIndianOrAlaskaNativeAlone"
+    },
+    {
+      "name": "American Indian or Alaska Native Monoracial Female Population",
+      "dcid": "Count_Person_Female_AmericanIndianOrAlaskaNativeAlone"
+    },
+    {
+      "name": "American Indian or Alaska Native Monoracial Male Population",
+      "dcid": "Count_Person_Male_AmericanIndianOrAlaskaNativeAlone"
+    },
+    {
+      "name": "American Indian/Alaska Native Population With Disabilities",
+      "dcid": "Count_Person_WithDisability_AmericanIndianOrAlaskaNativeAlone"
+    },
+    {
+      "name": "Asian Farmers",
+      "dcid": "Count_Person_Producer_AsianAlone"
+    },
+    {
+      "name": "Asian Male Population, Monoracial/Multiracial",
+      "dcid": "Count_Person_Male_AsianAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Asian Monoracial Female Population",
+      "dcid": "Count_Person_Female_AsianAlone"
+    },
+    {
+      "name": "Asian Monoracial Male Population",
+      "dcid": "Count_Person_Male_AsianAlone"
+    },
+    {
+      "name": "Asian Multiracial Female Population",
+      "dcid": "Count_Person_Female_AsianAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Asian Population Above Poverty Level Status in Past Year",
+      "dcid": "Count_Person_AbovePovertyLevelInThePast12Months_AsianAlone"
+    },
+    {
+      "name": "Asian Population With Disabilities",
+      "dcid": "Count_Person_WithDisability_AsianAlone"
+    },
+    {
+      "name": "Asian or Pacific Islander Female Population",
+      "dcid": "Count_Person_Female_AsianOrPacificIslander"
+    },
+    {
+      "name": "Asian or Pacific Islander Male Population",
+      "dcid": "Count_Person_Male_AsianOrPacificIslander"
+    },
+    {
+      "name": "Black Population Alone Institutionalized in Group Quarters",
+      "dcid": "Count_Person_BlackOrAfricanAmericanAlone_ResidesInInstitutionalizedGroupQuarters"
+    },
+    {
+      "name": "Black Population Alone in Adult Correctional Facilities",
+      "dcid": "Count_Person_BlackOrAfricanAmericanAlone_ResidesInAdultCorrectionalFacilities"
+    },
+    {
+      "name": "Black Population Alone in College or University Student Housing",
+      "dcid": "Count_Person_BlackOrAfricanAmericanAlone_ResidesInCollegeOrUniversityStudentHousing"
+    },
+    {
+      "name": "Black Population Alone in Group Quarters",
+      "dcid": "Count_Person_BlackOrAfricanAmericanAlone_ResidesInGroupQuarters"
+    },
+    {
+      "name": "Black Population Alone in Juvenile Facilities",
+      "dcid": "Count_Person_BlackOrAfricanAmericanAlone_ResidesInJuvenileFacilities"
+    },
+    {
+      "name": "Black Population Alone in Military Quarters or on Military Ships",
+      "dcid": "Count_Person_BlackOrAfricanAmericanAlone_ResidesInMilitaryQuartersOrMilitaryShips"
+    },
+    {
+      "name": "Black Population Alone in Non Institutionalized Group Quarters",
+      "dcid": "Count_Person_BlackOrAfricanAmericanAlone_ResidesInNoninstitutionalizedGroupQuarters"
+    },
+    {
+      "name": "Black Population Alone in Nursing Facilities",
+      "dcid": "Count_Person_BlackOrAfricanAmericanAlone_ResidesInNursingFacilities"
+    },
+    {
+      "name": "Black or African American Female Population, Monoracial or Multiracial",
+      "dcid": "Count_Person_Female_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Black or African American Monoracial Female Population",
+      "dcid": "Count_Person_Female_BlackOrAfricanAmericanAlone"
+    },
+    {
+      "name": "Black/African American Population With Disabilities",
+      "dcid": "Count_Person_WithDisability_BlackOrAfricanAmericanAlone"
+    },
+    {
+      "name": "Disabled Population Living in Nursing Facilities",
+      "dcid": "Count_Person_WithDisability_ResidesInNursingFacilities"
+    },
+    {
+      "name": "Disabled Population in Adult Correctional Facilities",
+      "dcid": "Count_Person_WithDisability_ResidesInAdultCorrectionalFacilities"
+    },
+    {
+      "name": "Disabled Population in College or University Student Housing",
+      "dcid": "Count_Person_WithDisability_ResidesInCollegeOrUniversityStudentHousing"
+    },
+    {
+      "name": "Disabled Population in Group Quarters",
+      "dcid": "Count_Person_WithDisability_ResidesInGroupQuarters"
+    },
+    {
+      "name": "Disabled Population in Institutionalized Group Quarters",
+      "dcid": "Count_Person_WithDisability_ResidesInInstitutionalizedGroupQuarters"
+    },
+    {
+      "name": "Disabled Population in Juvenile Facilities",
+      "dcid": "Count_Person_WithDisability_ResidesInJuvenileFacilities"
+    },
+    {
+      "name": "Disabled Population in Military Quarters or Ships",
+      "dcid": "Count_Person_WithDisability_ResidesInMilitaryQuartersOrMilitaryShips"
+    },
+    {
+      "name": "Disabled Population in Noninstitutionalized Group Quarters",
+      "dcid": "Count_Person_WithDisability_ResidesInNoninstitutionalizedGroupQuarters"
+    },
+    {
+      "name": "Disabled Population of Some Other Race",
+      "dcid": "Count_Person_WithDisability_SomeOtherRaceAlone"
+    },
+    {
+      "name": "Disabled Population of Two or More Races",
+      "dcid": "Count_Person_WithDisability_TwoOrMoreRaces"
+    },
+    {
+      "name": "Earning Female Population",
+      "dcid": "Count_Person_Female_WithEarnings"
+    },
+    {
+      "name": "Earning Male Population",
+      "dcid": "Count_Person_Male_WithEarnings"
+    },
+    {
+      "name": "Female Population Above Poverty Level in the Past Year",
+      "dcid": "Count_Person_Female_AbovePovertyLevelInThePast12Months"
+    },
+    {
+      "name": "Female Population Aged 25 to 34",
+      "dcid": "Count_Person_25To34Years_Female"
+    },
+    {
+      "name": "Female Population Below Poverty Level in the Last Year",
+      "dcid": "Count_Person_Female_BelowPovertyLevelInThePast12Months"
+    },
+    {
+      "name": "Female Population Identifying as Multiracial",
+      "dcid": "Count_Person_Female_TwoOrMoreRaces"
+    },
+    {
+      "name": "Female Population Identifying as Native Hawaiian/Other Pacific Islander Alone",
+      "dcid": "Count_Person_Female_NativeHawaiianAndOtherPacificIslanderAlone"
+    },
+    {
+      "name": "Female Population Identifying as Native Hawaiian/Other Pacific Islander Alone",
+      "dcid": "Count_Person_Female_NativeHawaiianOrOtherPacificIslanderAlone"
+    },
+    {
+      "name": "Female Population Identifying as Native Hawaiian/Other Pacific Islander, Monoracial/Multiracial",
+      "dcid": "Count_Person_Female_NativeHawaiianAndOtherPacificIslanderAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Female Population Identifying as Some Other Race Alone",
+      "dcid": "Count_Person_Female_SomeOtherRaceAlone"
+    },
+    {
+      "name": "Female Population Identifying as White Alone",
+      "dcid": "Count_Person_Female_WhiteAlone"
+    },
+    {
+      "name": "Female Population Institutionalized in Group Quarters",
+      "dcid": "Count_Person_Female_ResidesInInstitutionalizedGroupQuarters"
+    },
+    {
+      "name": "Female Population With Disabilities",
+      "dcid": "Count_Person_WithDisability_Female"
+    },
+    {
+      "name": "Female Population in Adult Correctional Facilities",
+      "dcid": "Count_Person_Female_ResidesInAdultCorrectionalFacilities"
+    },
+    {
+      "name": "Female Population in College/University Student Housing",
+      "dcid": "Count_Person_Female_ResidesInCollegeOrUniversityStudentHousing"
+    },
+    {
+      "name": "Female Population in Group Quarters",
+      "dcid": "Count_Person_Female_ResidesInGroupQuarters"
+    },
+    {
+      "name": "Female Population in Juvenile Facilities",
+      "dcid": "Count_Person_Female_ResidesInJuvenileFacilities"
+    },
+    {
+      "name": "Female Population in Military Quarters/on Military Ships",
+      "dcid": "Count_Person_Female_ResidesInMilitaryQuartersOrMilitaryShips"
+    },
+    {
+      "name": "Female Population in Non Institutionalized Group Quarters",
+      "dcid": "Count_Person_Female_ResidesInNoninstitutionalizedGroupQuarters"
+    },
+    {
+      "name": "Female Population in Nursing Facilities",
+      "dcid": "Count_Person_Female_ResidesInNursingFacilities"
+    },
+    {
+      "name": "Female White Population, Monoracial/Multiracial",
+      "dcid": "Count_Person_Female_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Foreign Born Female Population",
+      "dcid": "Count_Person_Female_ForeignBorn"
+    },
+    {
+      "name": "Hispanic Farmers",
+      "dcid": "Count_Person_Producer_HispanicOrLatino"
+    },
+    {
+      "name": "Hispanic Female Population",
+      "dcid": "Count_Person_Female_HispanicOrLatino"
+    },
+    {
+      "name": "Hispanic Female Population Identifying as American Indian/Alaska Native Alone",
+      "dcid": "Count_Person_Female_HispanicOrLatino_AmericanIndianOrAlaskaNativeAlone"
+    },
+    {
+      "name": "Hispanic Female Population Identifying as American Indian/Alaska Native, Monoracial/Multiracial",
+      "dcid": "Count_Person_Female_HispanicOrLatino_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Hispanic Female Population Identifying as Asian Alone",
+      "dcid": "Count_Person_Female_HispanicOrLatino_AsianAlone"
+    },
+    {
+      "name": "Hispanic Female Population Identifying as Asian, Monoracial/Multiracial",
+      "dcid": "Count_Person_Female_HispanicOrLatino_AsianAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Hispanic Female Population Identifying as Asian/Pacific Islander",
+      "dcid": "Count_Person_Female_HispanicOrLatino_AsianOrPacificIslander"
+    },
+    {
+      "name": "Hispanic Female Population Identifying as Black/African American Alone",
+      "dcid": "Count_Person_Female_HispanicOrLatino_BlackOrAfricanAmericanAlone"
+    },
+    {
+      "name": "Hispanic Female Population Identifying as Black/African American, Monoracial/Multiracial",
+      "dcid": "Count_Person_Female_HispanicOrLatino_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Hispanic Female Population Identifying as Native Hawaiian/Other Pacific Islander Alone",
+      "dcid": "Count_Person_Female_HispanicOrLatino_NativeHawaiianOrOtherPacificIslanderAlone"
+    },
+    {
+      "name": "Hispanic Female Population Identifying as Native Hawaiian/Other Pacific Islander, Monoracial/Multiracial",
+      "dcid": "Count_Person_Female_HispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Hispanic Female Population Identifying as White Alone",
+      "dcid": "Count_Person_Female_HispanicOrLatino_WhiteAlone"
+    },
+    {
+      "name": "Hispanic Female Population Identifying as White, Monoracial/Multiracial",
+      "dcid": "Count_Person_Female_HispanicOrLatino_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Hispanic Institutionalized Population in Group Quarters",
+      "dcid": "Count_Person_HispanicOrLatino_ResidesInInstitutionalizedGroupQuarters"
+    },
+    {
+      "name": "Hispanic Male Population",
+      "dcid": "Count_Person_Male_HispanicOrLatino"
+    },
+    {
+      "name": "Hispanic Multiracial Female Population",
+      "dcid": "Count_Person_Female_HispanicOrLatino_TwoOrMoreRaces"
+    },
+    {
+      "name": "Hispanic Population Above Poverty Level Status in Past Year",
+      "dcid": "Count_Person_AbovePovertyLevelInThePast12Months_HispanicOrLatino"
+    },
+    {
+      "name": "Hispanic Population in Adult Correctional Facilities",
+      "dcid": "Count_Person_HispanicOrLatino_ResidesInAdultCorrectionalFacilities"
+    },
+    {
+      "name": "Hispanic Population in College/University Student Housing",
+      "dcid": "Count_Person_HispanicOrLatino_ResidesInCollegeOrUniversityStudentHousing"
+    },
+    {
+      "name": "Hispanic Population in Group Quarters",
+      "dcid": "Count_Person_HispanicOrLatino_ResidesInGroupQuarters"
+    },
+    {
+      "name": "Hispanic Population in Juvenile Facilities",
+      "dcid": "Count_Person_HispanicOrLatino_ResidesInJuvenileFacilities"
+    },
+    {
+      "name": "Hispanic Population in Military Quarters/on Military Ships",
+      "dcid": "Count_Person_HispanicOrLatino_ResidesInMilitaryQuartersOrMilitaryShips"
+    },
+    {
+      "name": "Hispanic Population in Non Institutionalized Group Quarters",
+      "dcid": "Count_Person_HispanicOrLatino_ResidesInNoninstitutionalizedGroupQuarters"
+    },
+    {
+      "name": "Hispanic Population in Nursing Facilities",
+      "dcid": "Count_Person_HispanicOrLatino_ResidesInNursingFacilities"
+    },
+    {
+      "name": "Hispanic-African American Alone Male Population",
+      "dcid": "Count_Person_Male_HispanicOrLatino_BlackOrAfricanAmericanAlone"
+    },
+    {
+      "name": "Hispanic-African American Male Population",
+      "dcid": "Count_Person_Male_HispanicOrLatino_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Hispanic-American Indian Alone Male Population",
+      "dcid": "Count_Person_Male_HispanicOrLatino_AmericanIndianOrAlaskaNativeAlone"
+    },
+    {
+      "name": "Hispanic-American Indian Male Population",
+      "dcid": "Count_Person_Male_HispanicOrLatino_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Hispanic-Asian Alone Male Population",
+      "dcid": "Count_Person_Male_HispanicOrLatino_AsianAlone"
+    },
+    {
+      "name": "Hispanic-Asian Male Population",
+      "dcid": "Count_Person_Male_HispanicOrLatino_AsianAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Hispanic-Asian/Pacific Islander Male Population",
+      "dcid": "Count_Person_Male_HispanicOrLatino_AsianOrPacificIslander"
+    },
+    {
+      "name": "Hispanic-Native Hawaiian/Other Pacific Islander Alone Male Population",
+      "dcid": "Count_Person_Male_HispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Hispanic-Native Hawaiian/Other Pacific Islander Male Population",
+      "dcid": "Count_Person_Male_HispanicOrLatino_NativeHawaiianOrOtherPacificIslanderAlone"
+    },
+    {
+      "name": "Hispanic-White Alone Male Population",
+      "dcid": "Count_Person_Male_HispanicOrLatino_WhiteAlone"
+    },
+    {
+      "name": "Hispanic-White Male Population",
+      "dcid": "Count_Person_Male_HispanicOrLatino_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Hispanic/Latino Population With Disabilities",
+      "dcid": "Count_Person_WithDisability_HispanicOrLatino"
+    },
+    {
+      "name": "Male Population Above Poverty Level in the Past Year",
+      "dcid": "Count_Person_Male_AbovePovertyLevelInThePast12Months"
+    },
+    {
+      "name": "Male Population Aged 25 to 34",
+      "dcid": "Count_Person_25To34Years_Male"
+    },
+    {
+      "name": "Male Population Below Poverty Status in the Last Year",
+      "dcid": "Count_Person_Male_BelowPovertyLevelInThePast12Months"
+    },
+    {
+      "name": "Male Population From Some Other Race Alone",
+      "dcid": "Count_Person_Male_SomeOtherRaceAlone"
+    },
+    {
+      "name": "Male Population Institutionalized in Group Quarters",
+      "dcid": "Count_Person_Male_ResidesInInstitutionalizedGroupQuarters"
+    },
+    {
+      "name": "Male Population Who Are Native Hawaiian and Other Pacific Islander Alone",
+      "dcid": "Count_Person_Male_NativeHawaiianAndOtherPacificIslanderAlone"
+    },
+    {
+      "name": "Male Population Who Are Native Hawaiian or Other Pacific Islander",
+      "dcid": "Count_Person_Male_NativeHawaiianAndOtherPacificIslanderAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Male Population Who Are Native Hawaiian or Other Pacific Islander Alone",
+      "dcid": "Count_Person_Male_NativeHawaiianOrOtherPacificIslanderAlone"
+    },
+    {
+      "name": "Male Population With Disabilities",
+      "dcid": "Count_Person_WithDisability_Male"
+    },
+    {
+      "name": "Male Population in Adult Correctional Facilities",
+      "dcid": "Count_Person_Male_ResidesInAdultCorrectionalFacilities"
+    },
+    {
+      "name": "Male Population in College/University Student Housing",
+      "dcid": "Count_Person_Male_ResidesInCollegeOrUniversityStudentHousing"
+    },
+    {
+      "name": "Male Population in Group Quarters",
+      "dcid": "Count_Person_Male_ResidesInGroupQuarters"
+    },
+    {
+      "name": "Male Population in Juvenile Facilities",
+      "dcid": "Count_Person_Male_ResidesInJuvenileFacilities"
+    },
+    {
+      "name": "Male Population in Military Quarters/on Ships",
+      "dcid": "Count_Person_Male_ResidesInMilitaryQuartersOrMilitaryShips"
+    },
+    {
+      "name": "Male Population in Non Institutionalized Group Quarters",
+      "dcid": "Count_Person_Male_ResidesInNoninstitutionalizedGroupQuarters"
+    },
+    {
+      "name": "Male Population in Nursing Facilities",
+      "dcid": "Count_Person_Male_ResidesInNursingFacilities"
+    },
+    {
+      "name": "Monoracial Population Institutionalized in Group Quarters",
+      "dcid": "Count_Person_OneRace_ResidesInInstitutionalizedGroupQuarters"
+    },
+    {
+      "name": "Monoracial Population Residing in Non Institutionalized Group Quarters",
+      "dcid": "Count_Person_OneRace_ResidesInNoninstitutionalizedGroupQuarters"
+    },
+    {
+      "name": "Monoracial Population in Adult Correctional Facilities",
+      "dcid": "Count_Person_OneRace_ResidesInAdultCorrectionalFacilities"
+    },
+    {
+      "name": "Monoracial Population in College or University Student Housing",
+      "dcid": "Count_Person_OneRace_ResidesInCollegeOrUniversityStudentHousing"
+    },
+    {
+      "name": "Monoracial Population in Group Quarters",
+      "dcid": "Count_Person_OneRace_ResidesInGroupQuarters"
+    },
+    {
+      "name": "Monoracial Population in Juvenile Facilities",
+      "dcid": "Count_Person_OneRace_ResidesInJuvenileFacilities"
+    },
+    {
+      "name": "Monoracial Population in Military Quarters or on Military Ships",
+      "dcid": "Count_Person_OneRace_ResidesInMilitaryQuartersOrMilitaryShips"
+    },
+    {
+      "name": "Monoracial Population in Nursing Facilities",
+      "dcid": "Count_Person_OneRace_ResidesInNursingFacilities"
+    },
+    {
+      "name": "Multi Racial Population Above Poverty Level Status in Past Year",
+      "dcid": "Count_Person_AbovePovertyLevelInThePast12Months_TwoOrMoreRaces"
+    },
+    {
+      "name": "Multiracial Farmers",
+      "dcid": "Count_Person_Producer_TwoOrMoreRaces"
+    },
+    {
+      "name": "Multiracial Hispanic Male Population",
+      "dcid": "Count_Person_Male_HispanicOrLatino_TwoOrMoreRaces"
+    },
+    {
+      "name": "Multiracial Male Population",
+      "dcid": "Count_Person_Male_TwoOrMoreRaces"
+    },
+    {
+      "name": "Multiracial Population in Adult Correctional Facilities",
+      "dcid": "Count_Person_TwoOrMoreRaces_ResidesInAdultCorrectionalFacilities"
+    },
+    {
+      "name": "Multiracial Population in College or University Student Housing",
+      "dcid": "Count_Person_TwoOrMoreRaces_ResidesInCollegeOrUniversityStudentHousing"
+    },
+    {
+      "name": "Multiracial Population in Group Quarters",
+      "dcid": "Count_Person_TwoOrMoreRaces_ResidesInGroupQuarters"
+    },
+    {
+      "name": "Multiracial Population in Institutionalized Group Quarters",
+      "dcid": "Count_Person_TwoOrMoreRaces_ResidesInInstitutionalizedGroupQuarters"
+    },
+    {
+      "name": "Multiracial Population in Juvenile Facilities",
+      "dcid": "Count_Person_TwoOrMoreRaces_ResidesInJuvenileFacilities"
+    },
+    {
+      "name": "Multiracial Population in Military Quarters or on Military Ships",
+      "dcid": "Count_Person_TwoOrMoreRaces_ResidesInMilitaryQuartersOrMilitaryShips"
+    },
+    {
+      "name": "Multiracial Population in Non Institutionalized Group Quarters",
+      "dcid": "Count_Person_TwoOrMoreRaces_ResidesInNoninstitutionalizedGroupQuarters"
+    },
+    {
+      "name": "Multiracial Population in Nursing Facilities",
+      "dcid": "Count_Person_TwoOrMoreRaces_ResidesInNursingFacilities"
+    },
+    {
+      "name": "Native American Population Above Poverty Level Status in Past Year",
+      "dcid": "Count_Person_AbovePovertyLevelInThePast12Months_AmericanIndianOrAlaskaNativeAlone"
+    },
+    {
+      "name": "Native Hawaiian Farmers",
+      "dcid": "Count_Person_Producer_NativeHawaiianOrOtherPacificIslanderAlone"
+    },
+    {
+      "name": "Native Hawaiian/Other Pacific Islander Population With Disabilities",
+      "dcid": "Count_Person_WithDisability_NativeHawaiianOrOtherPacificIslanderAlone"
+    },
+    {
+      "name": "Non Hispanic African American Alone Male Population",
+      "dcid": "Count_Person_Male_NotHispanicOrLatino_BlackOrAfricanAmericanAlone"
+    },
+    {
+      "name": "Non Hispanic African American Male Population",
+      "dcid": "Count_Person_Male_NotHispanicOrLatino_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Non Hispanic American Indian/Alaska Native Alone Male Population",
+      "dcid": "Count_Person_Male_NotHispanicOrLatino_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Non Hispanic American Indian/Alaska Native Male Population",
+      "dcid": "Count_Person_Male_NotHispanicOrLatino_AmericanIndianOrAlaskaNativeAlone"
+    },
+    {
+      "name": "Non Hispanic Asian Alone Male Population",
+      "dcid": "Count_Person_Male_NotHispanicOrLatino_AsianAlone"
+    },
+    {
+      "name": "Non Hispanic Asian Male Population",
+      "dcid": "Count_Person_Male_NotHispanicOrLatino_AsianAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Non Hispanic Female Population",
+      "dcid": "Count_Person_Female_NotHispanicOrLatino"
+    },
+    {
+      "name": "Non Hispanic Female Population Identifying as American Indian/Alaska Native Alone",
+      "dcid": "Count_Person_Female_NotHispanicOrLatino_AmericanIndianOrAlaskaNativeAlone"
+    },
+    {
+      "name": "Non Hispanic Female Population Identifying as American Indian/Alaska Native, Monoracial/Multiracial",
+      "dcid": "Count_Person_Female_NotHispanicOrLatino_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Non Hispanic Female Population Identifying as Asian Alone",
+      "dcid": "Count_Person_Female_NotHispanicOrLatino_AsianAlone"
+    },
+    {
+      "name": "Non Hispanic Female Population Identifying as Asian, Monoracial/Multiracial",
+      "dcid": "Count_Person_Female_NotHispanicOrLatino_AsianAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Non Hispanic Female Population Identifying as Asian/Pacific Islander",
+      "dcid": "Count_Person_Female_NotHispanicOrLatino_AsianOrPacificIslander"
+    },
+    {
+      "name": "Non Hispanic Female Population Identifying as Black/African American Alone",
+      "dcid": "Count_Person_Female_NotHispanicOrLatino_BlackOrAfricanAmericanAlone"
+    },
+    {
+      "name": "Non Hispanic Female Population Identifying as Black/African American, Monoracial/Multiracial",
+      "dcid": "Count_Person_Female_NotHispanicOrLatino_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Non Hispanic Female Population Identifying as Multiracial",
+      "dcid": "Count_Person_Female_NotHispanicOrLatino_TwoOrMoreRaces"
+    },
+    {
+      "name": "Non Hispanic Female Population Identifying as Native Hawaiian/Other Pacific Islander Alone",
+      "dcid": "Count_Person_Female_NotHispanicOrLatino_NativeHawaiianOrOtherPacificIslanderAlone"
+    },
+    {
+      "name": "Non Hispanic Female Population Identifying as Native Hawaiian/Other Pacific Islander, Monoracial/Multiracial",
+      "dcid": "Count_Person_Female_NotHispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Non Hispanic Female Population Identifying as White, Monoracial/Multiracial",
+      "dcid": "Count_Person_Female_NotHispanicOrLatino_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Non Hispanic Male Population",
+      "dcid": "Count_Person_Male_NotHispanicOrLatino"
+    },
+    {
+      "name": "Non Hispanic Multiracial Male Population",
+      "dcid": "Count_Person_Male_NotHispanicOrLatino_TwoOrMoreRaces"
+    },
+    {
+      "name": "Non Hispanic Native Hawaiian/Other Pacific Islander Alone Male Population",
+      "dcid": "Count_Person_Male_NotHispanicOrLatino_NativeHawaiianOrOtherPacificIslanderAlone"
+    },
+    {
+      "name": "Non Hispanic Native Hawaiian/Other Pacific Islander Male Population",
+      "dcid": "Count_Person_Male_NotHispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Non Hispanic Population in Group Quarters",
+      "dcid": "Count_Person_NotHispanicOrLatino_ResidesInGroupQuarters"
+    },
+    {
+      "name": "Non Hispanic Population in Institutionalized Group Quarters",
+      "dcid": "Count_Person_NotHispanicOrLatino_ResidesInInstitutionalizedGroupQuarters"
+    },
+    {
+      "name": "Non Hispanic Population in Non Institutionalized Group Quarters",
+      "dcid": "Count_Person_NotHispanicOrLatino_ResidesInNoninstitutionalizedGroupQuarters"
+    },
+    {
+      "name": "Non Hispanic White Male Population",
+      "dcid": "Count_Person_Male_NotHispanicOrLatino_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Non Hispanic White Population Above Poverty Level Status in Past Year",
+      "dcid": "Count_Person_AbovePovertyLevelInThePast12Months_WhiteAloneNotHispanicOrLatino"
+    },
+    {
+      "name": "Non Hispanic or Latino White Population With Disabilities",
+      "dcid": "Count_Person_WithDisability_WhiteAloneNotHispanicOrLatino"
+    },
+    {
+      "name": "Non White Female Population",
+      "dcid": "Count_Person_Female_NonWhite"
+    },
+    {
+      "name": "Non White Male Population",
+      "dcid": "Count_Person_Male_NonWhite"
+    },
+    {
+      "name": "Number of Non Hispanic Asian/Pacific Islander Male Population",
+      "dcid": "Count_Person_Male_NotHispanicOrLatino_AsianOrPacificIslander"
+    },
+    {
+      "name": "Population Above Poverty Level Status in Last Year Who Are Native Hawaiian or Other Pacific Islander Alone",
+      "dcid": "Count_Person_AbovePovertyLevelInThePast12Months_NativeHawaiianOrOtherPacificIslanderAlone"
+    },
+    {
+      "name": "Population American Indian or Alaska Native Alone Institutionalized in Group Quarters",
+      "dcid": "Count_Person_AmericanIndianOrAlaskaNativeAlone_ResidesInInstitutionalizedGroupQuarters"
+    },
+    {
+      "name": "Population American Indian or Alaska Native Alone in Adult Correctional Facilities",
+      "dcid": "Count_Person_AmericanIndianOrAlaskaNativeAlone_ResidesInAdultCorrectionalFacilities"
+    },
+    {
+      "name": "Population American Indian or Alaska Native Alone in College or University Student Housing",
+      "dcid": "Count_Person_AmericanIndianOrAlaskaNativeAlone_ResidesInCollegeOrUniversityStudentHousing"
+    },
+    {
+      "name": "Population American Indian or Alaska Native Alone in Group Quarters",
+      "dcid": "Count_Person_AmericanIndianOrAlaskaNativeAlone_ResidesInGroupQuarters"
+    },
+    {
+      "name": "Population American Indian or Alaska Native Alone in Juvenile Facilities",
+      "dcid": "Count_Person_AmericanIndianOrAlaskaNativeAlone_ResidesInJuvenileFacilities"
+    },
+    {
+      "name": "Population American Indian or Alaska Native Alone in Military Quarters or Military Ships",
+      "dcid": "Count_Person_AmericanIndianOrAlaskaNativeAlone_ResidesInMilitaryQuartersOrMilitaryShips"
+    },
+    {
+      "name": "Population American Indian or Alaska Native Alone in Noninstitutionalized Group Quarters",
+      "dcid": "Count_Person_AmericanIndianOrAlaskaNativeAlone_ResidesInNoninstitutionalizedGroupQuarters"
+    },
+    {
+      "name": "Population American Indian or Alaska Native Alone in Nursing Facilities",
+      "dcid": "Count_Person_AmericanIndianOrAlaskaNativeAlone_ResidesInNursingFacilities"
+    },
+    {
+      "name": "Population Asian Alone Institutionalized in Group Quarters",
+      "dcid": "Count_Person_AsianAlone_ResidesInInstitutionalizedGroupQuarters"
+    },
+    {
+      "name": "Population Asian Alone in Adult Correctional Facilities",
+      "dcid": "Count_Person_AsianAlone_ResidesInAdultCorrectionalFacilities"
+    },
+    {
+      "name": "Population Asian Alone in College or University Student Housing",
+      "dcid": "Count_Person_AsianAlone_ResidesInCollegeOrUniversityStudentHousing"
+    },
+    {
+      "name": "Population Asian Alone in Group Quarters",
+      "dcid": "Count_Person_AsianAlone_ResidesInGroupQuarters"
+    },
+    {
+      "name": "Population Asian Alone in Juvenile Facilities",
+      "dcid": "Count_Person_AsianAlone_ResidesInJuvenileFacilities"
+    },
+    {
+      "name": "Population Asian Alone in Military Quarters or on Military Ships",
+      "dcid": "Count_Person_AsianAlone_ResidesInMilitaryQuartersOrMilitaryShips"
+    },
+    {
+      "name": "Population Asian Alone in Noninstitutionalized Group Quarters",
+      "dcid": "Count_Person_AsianAlone_ResidesInNoninstitutionalizedGroupQuarters"
+    },
+    {
+      "name": "Population Asian Alone in Nursing Facilities",
+      "dcid": "Count_Person_AsianAlone_ResidesInNursingFacilities"
+    },
+    {
+      "name": "Population Below Poverty Level Status in Past Year and American Indian or Alaska Native Alone",
+      "dcid": "Count_Person_BelowPovertyLevelInThePast12Months_AmericanIndianOrAlaskaNativeAlone"
+    },
+    {
+      "name": "Population Below Poverty Level Status in Past Year and Asian Alone",
+      "dcid": "Count_Person_BelowPovertyLevelInThePast12Months_AsianAlone"
+    },
+    {
+      "name": "Population Below Poverty Level Status in Past Year and Black or African American Alone",
+      "dcid": "Count_Person_BelowPovertyLevelInThePast12Months_BlackOrAfricanAmericanAlone"
+    },
+    {
+      "name": "Population Below Poverty Level Status in Past Year and Hispanic or Latino",
+      "dcid": "Count_Person_BelowPovertyLevelInThePast12Months_HispanicOrLatino"
+    },
+    {
+      "name": "Population Below Poverty Level Status in Past Year and Native Hawaiian or Other Pacific Islander Alone",
+      "dcid": "Count_Person_BelowPovertyLevelInThePast12Months_NativeHawaiianOrOtherPacificIslanderAlone"
+    },
+    {
+      "name": "Population Below Poverty Level Status in Past Year and Some Other Race Alone",
+      "dcid": "Count_Person_BelowPovertyLevelInThePast12Months_SomeOtherRaceAlone"
+    },
+    {
+      "name": "Population Below Poverty Level Status in Past Year and Two or More Races",
+      "dcid": "Count_Person_BelowPovertyLevelInThePast12Months_TwoOrMoreRaces"
+    },
+    {
+      "name": "Population Below Poverty Level Status in Past Year and White Alone",
+      "dcid": "Count_Person_BelowPovertyLevelInThePast12Months_WhiteAlone"
+    },
+    {
+      "name": "Population Below Poverty Level Status in Past Year and White Alone Not Hispanic or Latino",
+      "dcid": "Count_Person_BelowPovertyLevelInThePast12Months_WhiteAloneNotHispanicOrLatino"
+    },
+    {
+      "name": "Population Identifying as Some Other Race Alone in Adult Correctional Facilities",
+      "dcid": "Count_Person_SomeOtherRaceAlone_ResidesInAdultCorrectionalFacilities"
+    },
+    {
+      "name": "Population Identifying as Some Other Race Alone in College or University Student Housing",
+      "dcid": "Count_Person_SomeOtherRaceAlone_ResidesInCollegeOrUniversityStudentHousing"
+    },
+    {
+      "name": "Population Identifying as Some Other Race Alone in Group Quarters",
+      "dcid": "Count_Person_SomeOtherRaceAlone_ResidesInGroupQuarters"
+    },
+    {
+      "name": "Population Identifying as Some Other Race Alone in Institutionalized Group Quarters",
+      "dcid": "Count_Person_SomeOtherRaceAlone_ResidesInInstitutionalizedGroupQuarters"
+    },
+    {
+      "name": "Population Identifying as Some Other Race Alone in Juvenile Facilities",
+      "dcid": "Count_Person_SomeOtherRaceAlone_ResidesInJuvenileFacilities"
+    },
+    {
+      "name": "Population Identifying as Some Other Race Alone in Military Quarters or on Military Ships",
+      "dcid": "Count_Person_SomeOtherRaceAlone_ResidesInMilitaryQuartersOrMilitaryShips"
+    },
+    {
+      "name": "Population Identifying as Some Other Race Alone in Non Institutionalized Group Quarters",
+      "dcid": "Count_Person_SomeOtherRaceAlone_ResidesInNoninstitutionalizedGroupQuarters"
+    },
+    {
+      "name": "Population Identifying as Some Other Race Alone in Nursing Facilities",
+      "dcid": "Count_Person_SomeOtherRaceAlone_ResidesInNursingFacilities"
+    },
+    {
+      "name": "Population Some Other Race Alone and Above Poverty Level Status in Past Year",
+      "dcid": "Count_Person_AbovePovertyLevelInThePast12Months_SomeOtherRaceAlone"
+    },
+    {
+      "name": "Population Who Received Food Stamps in the Past Year and Lived in Adult Correctional Facilities",
+      "dcid": "Count_Person_WithFoodStampsInThePast12Months_ResidesInAdultCorrectionalFacilities"
+    },
+    {
+      "name": "Population Who Received Food Stamps in the Past Year and Lived in College or University Student Housing",
+      "dcid": "Count_Person_WithFoodStampsInThePast12Months_ResidesInCollegeOrUniversityStudentHousing"
+    },
+    {
+      "name": "Population Who Received Food Stamps in the Past Year and Lived in Group Quarters",
+      "dcid": "Count_Person_WithFoodStampsInThePast12Months_ResidesInGroupQuarters"
+    },
+    {
+      "name": "Population Who Received Food Stamps in the Past Year and Lived in Institutionalized Group Quarters",
+      "dcid": "Count_Person_WithFoodStampsInThePast12Months_ResidesInInstitutionalizedGroupQuarters"
+    },
+    {
+      "name": "Population Who Received Food Stamps in the Past Year and Lived in Juvenile Facilities",
+      "dcid": "Count_Person_WithFoodStampsInThePast12Months_ResidesInJuvenileFacilities"
+    },
+    {
+      "name": "Population Who Received Food Stamps in the Past Year and Lived in Noninstitutionalized Group Quarters",
+      "dcid": "Count_Person_WithFoodStampsInThePast12Months_ResidesInNoninstitutionalizedGroupQuarters"
+    },
+    {
+      "name": "Population Who Received Food Stamps in the Past Year and Lived in Nursing Facilities",
+      "dcid": "Count_Person_WithFoodStampsInThePast12Months_ResidesInNursingFacilities"
+    },
+    {
+      "name": "Population Without Disability Institutionalized in Group Quarters",
+      "dcid": "Count_Person_NoDisability_ResidesInInstitutionalizedGroupQuarters"
+    },
+    {
+      "name": "Population Without Disability in Adult Correctional Facilities",
+      "dcid": "Count_Person_NoDisability_ResidesInAdultCorrectionalFacilities"
+    },
+    {
+      "name": "Population Without Disability in College or University Student Housing",
+      "dcid": "Count_Person_NoDisability_ResidesInCollegeOrUniversityStudentHousing"
+    },
+    {
+      "name": "Population Without Disability in Group Quarters",
+      "dcid": "Count_Person_NoDisability_ResidesInGroupQuarters"
+    },
+    {
+      "name": "Population Without Disability in Non Institutionalized Group Quarters",
+      "dcid": "Count_Person_NoDisability_ResidesInNoninstitutionalizedGroupQuarters"
+    },
+    {
+      "name": "Population Without Disability in Nursing Facilities",
+      "dcid": "Count_Person_NoDisability_ResidesInNursingFacilities"
+    },
+    {
+      "name": "Population in Group Quarters With Determined Poverty Status",
+      "dcid": "Count_Person_PovertyStatusDetermined_ResidesInGroupQuarters"
+    },
+    {
+      "name": "Population in Non Institutionalized Group Quarters With Determined Poverty Status",
+      "dcid": "Count_Person_PovertyStatusDetermined_ResidesInNoninstitutionalizedGroupQuarters"
+    },
+    {
+      "name": "Population of Native Hawaiian or Other Pacific Islander Alone , Institutionalized in Group Quarters",
+      "dcid": "Count_Person_NativeHawaiianOrOtherPacificIslanderAlone_ResidesInInstitutionalizedGroupQuarters"
+    },
+    {
+      "name": "Population of Native Hawaiian or Other Pacific Islander Alone , Residing in Adult Correctional Facilities",
+      "dcid": "Count_Person_NativeHawaiianOrOtherPacificIslanderAlone_ResidesInAdultCorrectionalFacilities"
+    },
+    {
+      "name": "Population of Native Hawaiian or Other Pacific Islander Alone , Residing in College or University Student Housing",
+      "dcid": "Count_Person_NativeHawaiianOrOtherPacificIslanderAlone_ResidesInCollegeOrUniversityStudentHousing"
+    },
+    {
+      "name": "Population of Native Hawaiian or Other Pacific Islander Alone , Residing in Group Quarters",
+      "dcid": "Count_Person_NativeHawaiianOrOtherPacificIslanderAlone_ResidesInGroupQuarters"
+    },
+    {
+      "name": "Population of Native Hawaiian or Other Pacific Islander Alone , Residing in Juvenile Facilities",
+      "dcid": "Count_Person_NativeHawaiianOrOtherPacificIslanderAlone_ResidesInJuvenileFacilities"
+    },
+    {
+      "name": "Population of Native Hawaiian or Other Pacific Islander Alone , Residing in Non Institutionalized Group Quarters",
+      "dcid": "Count_Person_NativeHawaiianOrOtherPacificIslanderAlone_ResidesInNoninstitutionalizedGroupQuarters"
+    },
+    {
+      "name": "Population of Native Hawaiian or Other Pacific Islander Alone , Residing in Nursing Facilities",
+      "dcid": "Count_Person_NativeHawaiianOrOtherPacificIslanderAlone_ResidesInNursingFacilities"
+    },
+    {
+      "name": "Population of Native Hawaiian or Other Pacific Islander Alone, Residing in Military Quarters or on Military Ships",
+      "dcid": "Count_Person_NativeHawaiianOrOtherPacificIslanderAlone_ResidesInMilitaryQuartersOrMilitaryShips"
+    },
+    {
+      "name": "Population of Working Age With No Income",
+      "dcid": "Count_Person_15OrMoreYears_NoIncome"
     },
     {
       "name": "Population: 0 - 14 Years, Female",
@@ -3037,10 +3961,6 @@
       "dcid": "Count_Person_15OrMoreYears_NativeHawaiianOrOtherPacificIslanderAlone"
     },
     {
-      "name": "Population: 15 Years or More, No Income",
-      "dcid": "Count_Person_15OrMoreYears_NoIncome"
-    },
-    {
       "name": "Population: 15 Years or More, Noninstitutionalized Group Quarters",
       "dcid": "Count_Person_15OrMoreYears_ResidesInNoninstitutionalizedGroupQuarters"
     },
@@ -3079,926 +3999,6 @@
     {
       "name": "Population: 16 - 19 Years, Female",
       "dcid": "Count_Person_16To19Years_Female"
-    },
-    {
-      "name": "Population: 16 - 19 Years, Hispanic or Latino",
-      "dcid": "Count_Person_16To19Years_HispanicOrLatino"
-    },
-    {
-      "name": "Population: 16 - 19 Years, Male",
-      "dcid": "Count_Person_16To19Years_Male"
-    },
-    {
-      "name": "Population: 16 - 19 Years, White Alone Not Hispanic or Latino",
-      "dcid": "Count_Person_16To19Years_WhiteAloneNotHispanicOrLatino"
-    },
-    {
-      "name": "Population: 16 - 50 Years, Female",
-      "dcid": "Count_Person_16To50Years_Female"
-    },
-    {
-      "name": "Population: 16 - 64 Years, Did Not Work",
-      "dcid": "Count_Person_DidNotWork"
-    },
-    {
-      "name": "Population: 16 - 64 Years, Female",
-      "dcid": "Count_Person_16To64Years_Female"
-    },
-    {
-      "name": "Population: 16 - 64 Years, Full Time Year Round Worker",
-      "dcid": "Count_Person_FullTimeYearRoundWorker"
-    },
-    {
-      "name": "Population: 16 - 64 Years, Male",
-      "dcid": "Count_Person_16To64Years_Male"
-    },
-    {
-      "name": "Population: 16 - 64 Years, No Health Insurance",
-      "dcid": "Count_Person_16To64Years_NoHealthInsurance"
-    },
-    {
-      "name": "Population: 16 Years or More, Adult Correctional Facilities",
-      "dcid": "Count_Person_16OrMoreYears_ResidesInAdultCorrectionalFacilities"
-    },
-    {
-      "name": "Population: 16 Years or More, American Indian or Alaska Native Alone",
-      "dcid": "Count_Person_16OrMoreYears_AmericanIndianOrAlaskaNativeAlone"
-    },
-    {
-      "name": "Population: 16 Years or More, Asian Alone",
-      "dcid": "Count_Person_16OrMoreYears_AsianAlone"
-    },
-    {
-      "name": "Population: 16 Years or More, Black or African American Alone",
-      "dcid": "Count_Person_16OrMoreYears_BlackOrAfricanAmericanAlone"
-    },
-    {
-      "name": "Population: 16 Years or More, College or University Student Housing",
-      "dcid": "Count_Person_16OrMoreYears_ResidesInCollegeOrUniversityStudentHousing"
-    },
-    {
-      "name": "Population: 16 Years or More, Female",
-      "dcid": "Count_Person_16OrMoreYears_Female"
-    },
-    {
-      "name": "Population: 16 Years or More, Group Quarters",
-      "dcid": "Count_Person_16OrMoreYears_ResidesInGroupQuarters"
-    },
-    {
-      "name": "Population: 16 Years or More, Hispanic or Latino",
-      "dcid": "Count_Person_16OrMoreYears_HispanicOrLatino"
-    },
-    {
-      "name": "Population: 16 Years or More, Institutionalized Group Quarters",
-      "dcid": "Count_Person_16OrMoreYears_ResidesInInstitutionalizedGroupQuarters"
-    },
-    {
-      "name": "Population: 16 Years or More, Juvenile Facilities",
-      "dcid": "Count_Person_16OrMoreYears_ResidesInJuvenileFacilities"
-    },
-    {
-      "name": "Population: 16 Years or More, Male",
-      "dcid": "Count_Person_16OrMoreYears_Male"
-    },
-    {
-      "name": "Population: 16 Years or More, Military Quarters or Military Ships",
-      "dcid": "Count_Person_16OrMoreYears_ResidesInMilitaryQuartersOrMilitaryShips"
-    },
-    {
-      "name": "Population: 16 Years or More, Native Hawaiian or Other Pacific Islander Alone",
-      "dcid": "Count_Person_16OrMoreYears_NativeHawaiianOrOtherPacificIslanderAlone"
-    },
-    {
-      "name": "Population: 16 Years or More, No Health Insurance",
-      "dcid": "Count_Person_16OrMoreYears_NoHealthInsurance"
-    },
-    {
-      "name": "Population: 16 Years or More, Noninstitutionalized Group Quarters",
-      "dcid": "Count_Person_16OrMoreYears_ResidesInNoninstitutionalizedGroupQuarters"
-    },
-    {
-      "name": "Population: 16 Years or More, Not in Labor Force",
-      "dcid": "Count_Person_NotInLaborForce"
-    },
-    {
-      "name": "Population: 16 Years or More, Nursing Facilities",
-      "dcid": "Count_Person_16OrMoreYears_ResidesInNursingFacilities"
-    },
-    {
-      "name": "Population: 16 Years or More, Some Other Race Alone",
-      "dcid": "Count_Person_16OrMoreYears_SomeOtherRaceAlone"
-    },
-    {
-      "name": "Population: 16 Years or More, Two or More Races",
-      "dcid": "Count_Person_16OrMoreYears_TwoOrMoreRaces"
-    },
-    {
-      "name": "Population: 16 Years or More, White Alone",
-      "dcid": "Count_Person_16OrMoreYears_WhiteAlone"
-    },
-    {
-      "name": "Population: 16 Years or More, White Alone Not Hispanic or Latino",
-      "dcid": "Count_Person_16OrMoreYears_WhiteAloneNotHispanicOrLatino"
-    },
-    {
-      "name": "Population: 16 Years or More, With Earnings",
-      "dcid": "Count_Person_16OrMoreYears_WithEarnings"
-    },
-    {
-      "name": "Population: 18 - 19 Years, Female",
-      "dcid": "Count_Person_18To19Years_Female"
-    },
-    {
-      "name": "Population: 18 - 19 Years, Male",
-      "dcid": "Count_Person_18To19Years_Male"
-    },
-    {
-      "name": "Population: 18 - 24 Years, Adult Correctional Facilities",
-      "dcid": "Count_Person_18To24Years_ResidesInAdultCorrectionalFacilities"
-    },
-    {
-      "name": "Population: 18 - 24 Years, Born in Other State in The United States",
-      "dcid": "Count_Person_18To24Years_BornInOtherStateInTheUnitedStates"
-    },
-    {
-      "name": "Population: 18 - 24 Years, Born in State of Residence",
-      "dcid": "Count_Person_18To24Years_BornInStateOfResidence"
-    },
-    {
-      "name": "Population: 18 - 24 Years, College or University Student Housing",
-      "dcid": "Count_Person_18To24Years_ResidesInCollegeOrUniversityStudentHousing"
-    },
-    {
-      "name": "Population: 18 - 24 Years, Different House Abroad",
-      "dcid": "Count_Person_18To24Years_DifferentHouseAbroad"
-    },
-    {
-      "name": "Population: 18 - 24 Years, Different House in Different County Different State",
-      "dcid": "Count_Person_18To24Years_DifferentHouseInDifferentCountyDifferentState"
-    },
-    {
-      "name": "Population: 18 - 24 Years, Different House in Different County Same State",
-      "dcid": "Count_Person_18To24Years_DifferentHouseInDifferentCountySameState"
-    },
-    {
-      "name": "Population: 18 - 24 Years, Different House in Same County",
-      "dcid": "Count_Person_18To24Years_DifferentHouseInSameCounty"
-    },
-    {
-      "name": "Population: 18 - 24 Years, Female",
-      "dcid": "Count_Person_18To24Years_Female"
-    },
-    {
-      "name": "Population: 18 - 24 Years, Foreign Born",
-      "dcid": "Count_Person_18To24Years_ForeignBorn"
-    },
-    {
-      "name": "Population: 18 - 24 Years, Group Quarters",
-      "dcid": "Count_Person_18To24Years_ResidesInGroupQuarters"
-    },
-    {
-      "name": "Population: 18 - 24 Years, Institutionalized Group Quarters",
-      "dcid": "Count_Person_18To24Years_ResidesInInstitutionalizedGroupQuarters"
-    },
-    {
-      "name": "Population: 18 - 24 Years, Juvenile Facilities",
-      "dcid": "Count_Person_18To24Years_ResidesInJuvenileFacilities"
-    },
-    {
-      "name": "Population: 18 - 24 Years, Male",
-      "dcid": "Count_Person_18To24Years_Male"
-    },
-    {
-      "name": "Population: 18 - 24 Years, Military Quarters or Military Ships",
-      "dcid": "Count_Person_18To24Years_ResidesInMilitaryQuartersOrMilitaryShips"
-    },
-    {
-      "name": "Population: 18 - 24 Years, Native Born Outside The United States",
-      "dcid": "Count_Person_18To24Years_NativeBornOutsideTheUnitedStates"
-    },
-    {
-      "name": "Population: 18 - 24 Years, No Health Insurance",
-      "dcid": "Count_Person_18To24Years_NoHealthInsurance"
-    },
-    {
-      "name": "Population: 18 - 24 Years, Noninstitutionalized Group Quarters",
-      "dcid": "Count_Person_18To24Years_ResidesInNoninstitutionalizedGroupQuarters"
-    },
-    {
-      "name": "Population: 18 - 24 Years, Nursing Facilities",
-      "dcid": "Count_Person_18To24Years_ResidesInNursingFacilities"
-    },
-    {
-      "name": "Population: 18 - 24 Years, With Health Insurance",
-      "dcid": "Count_Person_18To24Years_WithHealthInsurance"
-    },
-    {
-      "name": "Population: 18 - 24 Years, With Private Health Insurance",
-      "dcid": "Count_Person_18To24Years_WithPrivateHealthInsurance"
-    },
-    {
-      "name": "Population: 18 - 24 Years, With Public Health Insurance",
-      "dcid": "Count_Person_18To24Years_WithPublicHealthInsurance"
-    },
-    {
-      "name": "Population: 18 - 34 Years, Ambulatory Difficulty",
-      "dcid": "Count_Person_18To34Years_AmbulatoryDifficulty"
-    },
-    {
-      "name": "Population: 18 - 34 Years, Cognitive Difficulty",
-      "dcid": "Count_Person_18To34Years_CognitiveDifficulty"
-    },
-    {
-      "name": "Population: 18 - 34 Years, Hearing Difficulty",
-      "dcid": "Count_Person_18To34Years_HearingDifficulty"
-    },
-    {
-      "name": "Population: 18 - 34 Years, Independent Living Difficulty",
-      "dcid": "Count_Person_18To34Years_IndependentLivingDifficulty"
-    },
-    {
-      "name": "Population: 18 - 34 Years, Self Care Difficulty",
-      "dcid": "Count_Person_18To34Years_SelfCareDifficulty"
-    },
-    {
-      "name": "Population: 18 - 34 Years, Vision Difficulty",
-      "dcid": "Count_Person_18To34Years_VisionDifficulty"
-    },
-    {
-      "name": "Population: 18 - 34 Years, With Disability",
-      "dcid": "Count_Person_18To34Years_WithDisability"
-    },
-    {
-      "name": "Population: 18 - 59 Years, Above Poverty Level in The Past 12 Months",
-      "dcid": "Count_Person_18To59Years_AbovePovertyLevelInThePast12Months"
-    },
-    {
-      "name": "Population: 18 - 59 Years, Below Poverty Level in The Past 12 Months",
-      "dcid": "Count_Person_18To59Years_BelowPovertyLevelInThePast12Months"
-    },
-    {
-      "name": "Population: 18 - 64 Years, 1.4 - 4 Ratio To Poverty Line",
-      "dcid": "Count_Person_18To64Years_RatioToPovertyLine1.38To4"
-    },
-    {
-      "name": "Population: 18 - 64 Years, 1.4 Ratio To Poverty Line or Less",
-      "dcid": "Count_Person_18To64Years_RatioToPovertyLineUpto1.38"
-    },
-    {
-      "name": "Population: 18 - 64 Years, 2 Ratio To Poverty Line or Less",
-      "dcid": "Count_Person_18To64Years_RatioToPovertyLineUpto2"
-    },
-    {
-      "name": "Population: 18 - 64 Years, 2.5 Ratio To Poverty Line or Less",
-      "dcid": "Count_Person_18To64Years_RatioToPovertyLineUpto2.5"
-    },
-    {
-      "name": "Population: 18 - 64 Years, 4 Ratio To Poverty Line or Less",
-      "dcid": "Count_Person_18To64Years_RatioToPovertyLineUpto4"
-    },
-    {
-      "name": "Population: 18 - 64 Years, Adult Correctional Facilities",
-      "dcid": "Count_Person_18To64Years_ResidesInAdultCorrectionalFacilities"
-    },
-    {
-      "name": "Population: 18 - 64 Years, Ambulatory Difficulty",
-      "dcid": "Count_Person_18To64Years_AmbulatoryDifficulty"
-    },
-    {
-      "name": "Population: 18 - 64 Years, Asian And Pacific Island Languages",
-      "dcid": "Count_Person_18To64Years_AsianAndPacificIslandLanguagesSpokenAtHome"
-    },
-    {
-      "name": "Population: 18 - 64 Years, Black or African American Alone",
-      "dcid": "Count_Person_18To64Years_BlackOrAfricanAmericanAlone"
-    },
-    {
-      "name": "Population: 18 - 64 Years, Cognitive Difficulty",
-      "dcid": "Count_Person_18To64Years_CognitiveDifficulty"
-    },
-    {
-      "name": "Population: 18 - 64 Years, College or University Student Housing",
-      "dcid": "Count_Person_18To64Years_ResidesInCollegeOrUniversityStudentHousing"
-    },
-    {
-      "name": "Population: 18 - 64 Years, Female",
-      "dcid": "Count_Person_18To64Years_Female"
-    },
-    {
-      "name": "Population: 18 - 64 Years, Group Quarters",
-      "dcid": "Count_Person_18To64Years_ResidesInGroupQuarters"
-    },
-    {
-      "name": "Population: 18 - 64 Years, Hearing Difficulty",
-      "dcid": "Count_Person_18To64Years_HearingDifficulty"
-    },
-    {
-      "name": "Population: 18 - 64 Years, Hispanic or Latino",
-      "dcid": "Count_Person_18To64Years_HispanicOrLatino"
-    },
-    {
-      "name": "Population: 18 - 64 Years, Independent Living Difficulty",
-      "dcid": "Count_Person_18To64Years_IndependentLivingDifficulty"
-    },
-    {
-      "name": "Population: 18 - 64 Years, Institutionalized Group Quarters",
-      "dcid": "Count_Person_18To64Years_ResidesInInstitutionalizedGroupQuarters"
-    },
-    {
-      "name": "Population: 18 - 64 Years, Juvenile Facilities",
-      "dcid": "Count_Person_18To64Years_ResidesInJuvenileFacilities"
-    },
-    {
-      "name": "Population: 18 - 64 Years, Language Other Than English",
-      "dcid": "Count_Person_18To64Years_LanguageOtherThanEnglishSpokenAtHome"
-    },
-    {
-      "name": "Population: 18 - 64 Years, Male",
-      "dcid": "Count_Person_18To64Years_Male"
-    },
-    {
-      "name": "Population: 18 - 64 Years, Military Quarters or Military Ships",
-      "dcid": "Count_Person_18To64Years_ResidesInMilitaryQuartersOrMilitaryShips"
-    },
-    {
-      "name": "Population: 18 - 64 Years, No Disability",
-      "dcid": "Count_Person_18To64Years_NoDisability"
-    },
-    {
-      "name": "Population: 18 - 64 Years, No Health Insurance",
-      "dcid": "Count_Person_18To64Years_NoHealthInsurance"
-    },
-    {
-      "name": "Population: 18 - 64 Years, Noninstitutionalized Group Quarters",
-      "dcid": "Count_Person_18To64Years_ResidesInNoninstitutionalizedGroupQuarters"
-    },
-    {
-      "name": "Population: 18 - 64 Years, Nursing Facilities",
-      "dcid": "Count_Person_18To64Years_ResidesInNursingFacilities"
-    },
-    {
-      "name": "Population: 18 - 64 Years, Only English",
-      "dcid": "Count_Person_18To64Years_OnlyEnglishSpokenAtHome"
-    },
-    {
-      "name": "Population: 18 - 64 Years, Other Indo European Languages",
-      "dcid": "Count_Person_18To64Years_OtherIndoEuropeanLanguagesSpokenAtHome"
-    },
-    {
-      "name": "Population: 18 - 64 Years, Other Languages",
-      "dcid": "Count_Person_18To64Years_OtherLanguagesSpokenAtHome"
-    },
-    {
-      "name": "Population: 18 - 64 Years, Poverty Status Determined",
-      "dcid": "Count_Person_18To64Years_PovertyStatusDetermined"
-    },
-    {
-      "name": "Population: 18 - 64 Years, Self Care Difficulty",
-      "dcid": "Count_Person_18To64Years_SelfCareDifficulty"
-    },
-    {
-      "name": "Population: 18 - 64 Years, Spanish",
-      "dcid": "Count_Person_18To64Years_SpanishSpokenAtHome"
-    },
-    {
-      "name": "Population: 18 - 64 Years, Spanish or Spanish Creole",
-      "dcid": "Count_Person_18To64Years_SpanishOrSpanishCreoleSpokenAtHome"
-    },
-    {
-      "name": "Population: 18 - 64 Years, Vision Difficulty",
-      "dcid": "Count_Person_18To64Years_VisionDifficulty"
-    },
-    {
-      "name": "Population: 18 - 64 Years, White Alone",
-      "dcid": "Count_Person_18To64Years_WhiteAlone"
-    },
-    {
-      "name": "Population: 18 - 64 Years, With Direct Purchase Health Insurance",
-      "dcid": "Count_Person_18To64Years_WithDirectPurchaseHealthInsurance"
-    },
-    {
-      "name": "Population: 18 - 64 Years, With Disability",
-      "dcid": "Count_Person_18To64Years_WithDisability"
-    },
-    {
-      "name": "Population: 18 - 64 Years, With Employer Based Health Insurance",
-      "dcid": "Count_Person_18To64Years_WithEmployerBasedHealthInsurance"
-    },
-    {
-      "name": "Population: 18 - 64 Years, With Health Insurance",
-      "dcid": "Count_Person_18To64Years_WithHealthInsurance"
-    },
-    {
-      "name": "Population: 18 - 64 Years, With Medicaid or Means Tested Public Coverage",
-      "dcid": "Count_Person_18To64Years_WithMedicaidOrMeansTestedPublicCoverage"
-    },
-    {
-      "name": "Population: 18 - 64 Years, With Medicare Coverage",
-      "dcid": "Count_Person_18To64Years_WithMedicareCoverage"
-    },
-    {
-      "name": "Population: 18 - 64 Years, With Tricare Military Health Coverage",
-      "dcid": "Count_Person_18To64Years_WithTricareMilitaryHealthCoverage"
-    },
-    {
-      "name": "Population: 18 - 64 Years, With VAHealth Care",
-      "dcid": "Count_Person_18To64Years_WithVAHealthCare"
-    },
-    {
-      "name": "Population: 18 Years or Less, 1.4 - 4 Ratio To Poverty Line",
-      "dcid": "Count_Person_Upto18Years_RatioToPovertyLine1.38To4"
-    },
-    {
-      "name": "Population: 18 Years or Less, 1.4 Ratio To Poverty Line or Less",
-      "dcid": "Count_Person_Upto18Years_RatioToPovertyLineUpto1.38"
-    },
-    {
-      "name": "Population: 18 Years or Less, 2 Ratio To Poverty Line or Less",
-      "dcid": "Count_Person_Upto18Years_RatioToPovertyLineUpto2"
-    },
-    {
-      "name": "Population: 18 Years or Less, 2.5 Ratio To Poverty Line or Less",
-      "dcid": "Count_Person_Upto18Years_RatioToPovertyLineUpto2.5"
-    },
-    {
-      "name": "Population: 18 Years or Less, 4 Ratio To Poverty Line or Less",
-      "dcid": "Count_Person_Upto18Years_RatioToPovertyLineUpto4"
-    },
-    {
-      "name": "Population: 18 Years or Less, Adult Correctional Facilities",
-      "dcid": "Count_Person_Upto18Years_ResidesInAdultCorrectionalFacilities"
-    },
-    {
-      "name": "Population: 18 Years or Less, Ambulatory Difficulty",
-      "dcid": "Count_Person_18OrLessYears_AmbulatoryDifficulty"
-    },
-    {
-      "name": "Population: 18 Years or Less, Cognitive Difficulty",
-      "dcid": "Count_Person_18OrLessYears_CognitiveDifficulty"
-    },
-    {
-      "name": "Population: 18 Years or Less, College or University Student Housing",
-      "dcid": "Count_Person_Upto18Years_ResidesInCollegeOrUniversityStudentHousing"
-    },
-    {
-      "name": "Population: 18 Years or Less, Female",
-      "dcid": "Count_Person_18OrLessYears_Female"
-    },
-    {
-      "name": "Population: 18 Years or Less, Group Quarters",
-      "dcid": "Count_Person_Upto18Years_ResidesInGroupQuarters"
-    },
-    {
-      "name": "Population: 18 Years or Less, Hearing Difficulty",
-      "dcid": "Count_Person_18OrLessYears_HearingDifficulty"
-    },
-    {
-      "name": "Population: 18 Years or Less, Institutionalized Group Quarters",
-      "dcid": "Count_Person_Upto18Years_ResidesInInstitutionalizedGroupQuarters"
-    },
-    {
-      "name": "Population: 18 Years or Less, Juvenile Facilities",
-      "dcid": "Count_Person_18OrLessYears_ResidesInJuvenileFacilities"
-    },
-    {
-      "name": "Population: 18 Years or Less, Male",
-      "dcid": "Count_Person_18OrLessYears_Male"
-    },
-    {
-      "name": "Population: 18 Years or Less, Military Quarters or Military Ships",
-      "dcid": "Count_Person_18OrLessYears_ResidesInMilitaryQuartersOrMilitaryShips"
-    },
-    {
-      "name": "Population: 18 Years or Less, No Disability",
-      "dcid": "Count_Person_Upto18Years_NoDisability"
-    },
-    {
-      "name": "Population: 18 Years or Less, No Health Insurance",
-      "dcid": "Count_Person_18OrLessYears_NoHealthInsurance"
-    },
-    {
-      "name": "Population: 18 Years or Less, No Health Insurance",
-      "dcid": "Count_Person_Upto18Years_NoHealthInsurance"
-    },
-    {
-      "name": "Population: 18 Years or Less, Noninstitutionalized Group Quarters",
-      "dcid": "Count_Person_Upto18Years_ResidesInNoninstitutionalizedGroupQuarters"
-    },
-    {
-      "name": "Population: 18 Years or Less, Nursing Facilities",
-      "dcid": "Count_Person_Upto18Years_ResidesInNursingFacilities"
-    },
-    {
-      "name": "Population: 18 Years or Less, Self Care Difficulty",
-      "dcid": "Count_Person_18OrLessYears_SelfCareDifficulty"
-    },
-    {
-      "name": "Population: 18 Years or Less, Vision Difficulty",
-      "dcid": "Count_Person_18OrLessYears_VisionDifficulty"
-    },
-    {
-      "name": "Population: 18 Years or Less, With Direct Purchase Health Insurance",
-      "dcid": "Count_Person_18OrLessYears_WithDirectPurchaseHealthInsurance"
-    },
-    {
-      "name": "Population: 18 Years or Less, With Disability",
-      "dcid": "Count_Person_Upto18Years_WithDisability"
-    },
-    {
-      "name": "Population: 18 Years or Less, With Employer Based Health Insurance",
-      "dcid": "Count_Person_18OrLessYears_WithEmployerBasedHealthInsurance"
-    },
-    {
-      "name": "Population: 18 Years or Less, With Health Insurance",
-      "dcid": "Count_Person_18OrLessYears_WithHealthInsurance"
-    },
-    {
-      "name": "Population: 18 Years or Less, With Health Insurance",
-      "dcid": "Count_Person_Upto18Years_WithHealthInsurance"
-    },
-    {
-      "name": "Population: 18 Years or Less, With Medicaid or Means Tested Public Coverage",
-      "dcid": "Count_Person_18OrLessYears_WithMedicaidOrMeansTestedPublicCoverage"
-    },
-    {
-      "name": "Population: 18 Years or Less, With Medicare Coverage",
-      "dcid": "Count_Person_18OrLessYears_WithMedicareCoverage"
-    },
-    {
-      "name": "Population: 18 Years or Less, With Tricare Military Health Coverage",
-      "dcid": "Count_Person_18OrLessYears_WithTricareMilitaryHealthCoverage"
-    },
-    {
-      "name": "Population: 18 Years or Less, With VAHealth Care",
-      "dcid": "Count_Person_18OrLessYears_WithVAHealthCare"
-    },
-    {
-      "name": "Population: 18 Years or More, Civilian",
-      "dcid": "Count_Person_18OrMoreYears_Civilian"
-    },
-    {
-      "name": "Population: 18 Years or More, Female",
-      "dcid": "Count_Person_18OrMoreYears_Female"
-    },
-    {
-      "name": "Population: 18 Years or More, Male",
-      "dcid": "Count_Person_18OrMoreYears_Male"
-    },
-    {
-      "name": "Population: 18 Years or More, No Health Insurance",
-      "dcid": "Count_Person_18OrMoreYears_NoHealthInsurance"
-    },
-    {
-      "name": "Population: 18 Years or More, Poverty Status Determined",
-      "dcid": "Count_Person_18OrMoreYears_PovertyStatusDetermined"
-    },
-    {
-      "name": "Population: 18 Years or More, With Health Insurance",
-      "dcid": "Count_Person_18OrMoreYears_WithHealthInsurance"
-    },
-    {
-      "name": "Population: 19 - 25 Years, No Health Insurance",
-      "dcid": "Count_Person_19To25Years_NoHealthInsurance"
-    },
-    {
-      "name": "Population: 19 - 25 Years, With Health Insurance",
-      "dcid": "Count_Person_19To25Years_WithHealthInsurance"
-    },
-    {
-      "name": "Population: 19 - 25 Years, With Private Health Insurance",
-      "dcid": "Count_Person_19To25Years_WithPrivateHealthInsurance"
-    },
-    {
-      "name": "Population: 19 - 25 Years, With Public Health Insurance",
-      "dcid": "Count_Person_19To25Years_WithPublicHealthInsurance"
-    },
-    {
-      "name": "Population: 19 - 64 Years, No Health Insurance",
-      "dcid": "Count_Person_19To64Years_NoHealthInsurance"
-    },
-    {
-      "name": "Population: 19 - 64 Years, With Direct Purchase Health Insurance",
-      "dcid": "Count_Person_19To64Years_WithDirectPurchaseHealthInsurance"
-    },
-    {
-      "name": "Population: 19 - 64 Years, With Employer Based Health Insurance",
-      "dcid": "Count_Person_19To64Years_WithEmployerBasedHealthInsurance"
-    },
-    {
-      "name": "Population: 19 - 64 Years, With Health Insurance",
-      "dcid": "Count_Person_19To64Years_WithHealthInsurance"
-    },
-    {
-      "name": "Population: 19 - 64 Years, With Medicaid or Means Tested Public Coverage",
-      "dcid": "Count_Person_19To64Years_WithMedicaidOrMeansTestedPublicCoverage"
-    },
-    {
-      "name": "Population: 19 - 64 Years, With Medicare Coverage",
-      "dcid": "Count_Person_19To64Years_WithMedicareCoverage"
-    },
-    {
-      "name": "Population: 19 - 64 Years, With Tricare Military Health Coverage",
-      "dcid": "Count_Person_19To64Years_WithTricareMilitaryHealthCoverage"
-    },
-    {
-      "name": "Population: 19 - 64 Years, With VAHealth Care",
-      "dcid": "Count_Person_19To64Years_WithVAHealthCare"
-    },
-    {
-      "name": "Population: 19 Years or Less, No Health Insurance",
-      "dcid": "Count_Person_19OrLessYears_NoHealthInsurance"
-    },
-    {
-      "name": "Population: 19 Years or Less, With Direct Purchase Health Insurance",
-      "dcid": "Count_Person_19OrLessYears_WithDirectPurchaseHealthInsurance"
-    },
-    {
-      "name": "Population: 19 Years or Less, With Employer Based Health Insurance",
-      "dcid": "Count_Person_19OrLessYears_WithEmployerBasedHealthInsurance"
-    },
-    {
-      "name": "Population: 19 Years or Less, With Health Insurance",
-      "dcid": "Count_Person_19OrLessYears_WithHealthInsurance"
-    },
-    {
-      "name": "Population: 19 Years or Less, With Medicaid or Means Tested Public Coverage",
-      "dcid": "Count_Person_19OrLessYears_WithMedicaidOrMeansTestedPublicCoverage"
-    },
-    {
-      "name": "Population: 19 Years or Less, With Medicare Coverage",
-      "dcid": "Count_Person_19OrLessYears_WithMedicareCoverage"
-    },
-    {
-      "name": "Population: 19 Years or Less, With Tricare Military Health Coverage",
-      "dcid": "Count_Person_19OrLessYears_WithTricareMilitaryHealthCoverage"
-    },
-    {
-      "name": "Population: 19 Years or Less, With VAHealth Care",
-      "dcid": "Count_Person_19OrLessYears_WithVAHealthCare"
-    },
-    {
-      "name": "Population: 20 - 21 Years, Female",
-      "dcid": "Count_Person_20To21Years_Female"
-    },
-    {
-      "name": "Population: 20 - 21 Years, Male",
-      "dcid": "Count_Person_20To21Years_Male"
-    },
-    {
-      "name": "Population: 20 - 24 Years, American Indian And Alaska Native Alone or In Combination With One or More Other Races",
-      "dcid": "Count_Person_20To24Years_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Population: 20 - 24 Years, American Indian or Alaska Native Alone",
-      "dcid": "Count_Person_20To24Years_AmericanIndianAndAlaskaNativeAlone"
-    },
-    {
-      "name": "Population: 20 - 24 Years, Asian Alone",
-      "dcid": "Count_Person_20To24Years_AsianAlone"
-    },
-    {
-      "name": "Population: 20 - 24 Years, Asian or Pacific Islander",
-      "dcid": "Count_Person_20To24Years_AsianOrPacificIslander"
-    },
-    {
-      "name": "Population: 20 - 24 Years, Black or African American Alone",
-      "dcid": "Count_Person_20To24Years_BlackOrAfricanAmericanAlone"
-    },
-    {
-      "name": "Population: 20 - 24 Years, Black or African American Alone or In Combination With One or More Other Races",
-      "dcid": "Count_Person_20To24Years_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Population: 20 - 24 Years, Female",
-      "dcid": "Count_Person_20To24Years_Female"
-    },
-    {
-      "name": "Population: 20 - 24 Years, Hispanic or Latino",
-      "dcid": "Count_Person_20To24Years_HispanicOrLatino"
-    },
-    {
-      "name": "Population: 20 - 24 Years, Hispanic or Latino \u0026 American Indian And Alaska Native Alone or In Combination With One or More Other Races",
-      "dcid": "Count_Person_20To24Years_HispanicOrLatino_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Population: 20 - 24 Years, Hispanic or Latino \u0026 American Indian or Alaska Native Alone",
-      "dcid": "Count_Person_20To24Years_HispanicOrLatino_AmericanIndianAndAlaskaNativeAlone"
-    },
-    {
-      "name": "Population: 20 - 24 Years, Hispanic or Latino \u0026 Asian Alone",
-      "dcid": "Count_Person_20To24Years_HispanicOrLatino_AsianAlone"
-    },
-    {
-      "name": "Population: 20 - 24 Years, Hispanic or Latino \u0026 Asian Alone or In Combination With One or More Other Races",
-      "dcid": "Count_Person_20To24Years_HispanicOrLatino_AsianAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Population: 20 - 24 Years, Hispanic or Latino \u0026 Black or African American Alone",
-      "dcid": "Count_Person_20To24Years_HispanicOrLatino_BlackOrAfricanAmericanAlone"
-    },
-    {
-      "name": "Population: 20 - 24 Years, Hispanic or Latino \u0026 Black or African American Alone or In Combination With One or More Other Races",
-      "dcid": "Count_Person_20To24Years_HispanicOrLatino_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Population: 20 - 24 Years, Hispanic or Latino \u0026 Native Hawaiian And Other Pacific Islander Alone or In Combination With One or More Other Races",
-      "dcid": "Count_Person_20To24Years_HispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Population: 20 - 24 Years, Hispanic or Latino \u0026 Native Hawaiian or Other Pacific Islander Alone",
-      "dcid": "Count_Person_20To24Years_HispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAlone"
-    },
-    {
-      "name": "Population: 20 - 24 Years, Hispanic or Latino \u0026 Two or More Races",
-      "dcid": "Count_Person_20To24Years_HispanicOrLatino_TwoOrMoreRaces"
-    },
-    {
-      "name": "Population: 20 - 24 Years, Hispanic or Latino \u0026 White Alone",
-      "dcid": "Count_Person_20To24Years_HispanicOrLatino_WhiteAlone"
-    },
-    {
-      "name": "Population: 20 - 24 Years, Hispanic or Latino \u0026 White Alone or In Combination With One or More Other Races",
-      "dcid": "Count_Person_20To24Years_HispanicOrLatino_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Population: 20 - 24 Years, Male",
-      "dcid": "Count_Person_20To24Years_Male"
-    },
-    {
-      "name": "Population: 20 - 24 Years, Native Hawaiian or Other Pacific Islander Alone",
-      "dcid": "Count_Person_20To24Years_NativeHawaiianAndOtherPacificIslanderAlone"
-    },
-    {
-      "name": "Population: 20 - 24 Years, Not Hispanic or Latino",
-      "dcid": "Count_Person_20To24Years_NotHispanicOrLatino"
-    },
-    {
-      "name": "Population: 20 - 24 Years, Not Hispanic or Latino \u0026 American Indian And Alaska Native Alone or In Combination With One or More Other Races",
-      "dcid": "Count_Person_20To24Years_NotHispanicOrLatino_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Population: 20 - 24 Years, Not Hispanic or Latino \u0026 American Indian or Alaska Native Alone",
-      "dcid": "Count_Person_20To24Years_NotHispanicOrLatino_AmericanIndianAndAlaskaNativeAlone"
-    },
-    {
-      "name": "Population: 20 - 24 Years, Not Hispanic or Latino \u0026 Asian Alone",
-      "dcid": "Count_Person_20To24Years_NotHispanicOrLatino_AsianAlone"
-    },
-    {
-      "name": "Population: 20 - 24 Years, Not Hispanic or Latino \u0026 Asian Alone or In Combination With One or More Other Races",
-      "dcid": "Count_Person_20To24Years_NotHispanicOrLatino_AsianAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Population: 20 - 24 Years, Not Hispanic or Latino \u0026 Black or African American Alone",
-      "dcid": "Count_Person_20To24Years_NotHispanicOrLatino_BlackOrAfricanAmericanAlone"
-    },
-    {
-      "name": "Population: 20 - 24 Years, Not Hispanic or Latino \u0026 Black or African American Alone or In Combination With One or More Other Races",
-      "dcid": "Count_Person_20To24Years_NotHispanicOrLatino_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Population: 20 - 24 Years, Not Hispanic or Latino \u0026 Native Hawaiian And Other Pacific Islander Alone or In Combination With One or More Other Races",
-      "dcid": "Count_Person_20To24Years_NotHispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Population: 20 - 24 Years, Not Hispanic or Latino \u0026 Native Hawaiian or Other Pacific Islander Alone",
-      "dcid": "Count_Person_20To24Years_NotHispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAlone"
-    },
-    {
-      "name": "Population: 20 - 24 Years, Not Hispanic or Latino \u0026 Two or More Races",
-      "dcid": "Count_Person_20To24Years_NotHispanicOrLatino_TwoOrMoreRaces"
-    },
-    {
-      "name": "Population: 20 - 24 Years, Not Hispanic or Latino \u0026 White Alone or In Combination With One or More Other Races",
-      "dcid": "Count_Person_20To24Years_NotHispanicOrLatino_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Population: 20 - 24 Years, Two or More Races",
-      "dcid": "Count_Person_20To24Years_TwoOrMoreRaces"
-    },
-    {
-      "name": "Population: 20 - 24 Years, White Alone",
-      "dcid": "Count_Person_20To24Years_WhiteAlone"
-    },
-    {
-      "name": "Population: 20 - 24 Years, White Alone Not Hispanic or Latino",
-      "dcid": "Count_Person_20To24Years_WhiteAloneNotHispanicOrLatino"
-    },
-    {
-      "name": "Population: 20 - 24 Years, White Alone or In Combination With One or More Other Races",
-      "dcid": "Count_Person_20To24Years_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Population: 20 - 34 Years, Female",
-      "dcid": "Count_Person_20To34Years_Female"
-    },
-    {
-      "name": "Population: 20 - 34 Years, Male",
-      "dcid": "Count_Person_20To34Years_Male"
-    },
-    {
-      "name": "Population: 20 Years or More, Literate",
-      "dcid": "Count_Person_20OrMoreYears_Literate"
-    },
-    {
-      "name": "Population: 21 - 64 Years, 1.4 - 4 Ratio To Poverty Line",
-      "dcid": "Count_Person_21To64Years_RatioToPovertyLine1.38To4"
-    },
-    {
-      "name": "Population: 21 - 64 Years, 1.4 Ratio To Poverty Line or Less",
-      "dcid": "Count_Person_21To64Years_RatioToPovertyLineUpto1.38"
-    },
-    {
-      "name": "Population: 21 - 64 Years, 2 Ratio To Poverty Line or Less",
-      "dcid": "Count_Person_21To64Years_RatioToPovertyLineUpto2"
-    },
-    {
-      "name": "Population: 21 - 64 Years, 2.5 Ratio To Poverty Line or Less",
-      "dcid": "Count_Person_21To64Years_RatioToPovertyLineUpto2.5"
-    },
-    {
-      "name": "Population: 21 - 64 Years, 4 Ratio To Poverty Line or Less",
-      "dcid": "Count_Person_21To64Years_RatioToPovertyLineUpto4"
-    },
-    {
-      "name": "Population: 21 - 64 Years, Black or African American Alone",
-      "dcid": "Count_Person_21To64Years_BlackOrAfricanAmericanAlone"
-    },
-    {
-      "name": "Population: 21 - 64 Years, Female",
-      "dcid": "Count_Person_21To64Years_Female"
-    },
-    {
-      "name": "Population: 21 - 64 Years, Hispanic or Latino",
-      "dcid": "Count_Person_21To64Years_HispanicOrLatino"
-    },
-    {
-      "name": "Population: 21 - 64 Years, Male",
-      "dcid": "Count_Person_21To64Years_Male"
-    },
-    {
-      "name": "Population: 21 - 64 Years, No Health Insurance",
-      "dcid": "Count_Person_21To64Years_NoHealthInsurance"
-    },
-    {
-      "name": "Population: 21 - 64 Years, White Alone",
-      "dcid": "Count_Person_21To64Years_WhiteAlone"
-    },
-    {
-      "name": "Population: 21 - 64 Years, With Health Insurance",
-      "dcid": "Count_Person_21To64Years_WithHealthInsurance"
-    },
-    {
-      "name": "Population: 22 - 24 Years, Female",
-      "dcid": "Count_Person_22To24Years_Female"
-    },
-    {
-      "name": "Population: 22 - 24 Years, Male",
-      "dcid": "Count_Person_22To24Years_Male"
-    },
-    {
-      "name": "Population: 25 - 29 Years, American Indian And Alaska Native Alone or In Combination With One or More Other Races",
-      "dcid": "Count_Person_25To29Years_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Population: 25 - 29 Years, American Indian or Alaska Native Alone",
-      "dcid": "Count_Person_25To29Years_AmericanIndianAndAlaskaNativeAlone"
-    },
-    {
-      "name": "Population: 25 - 29 Years, Asian Alone",
-      "dcid": "Count_Person_25To29Years_AsianAlone"
-    },
-    {
-      "name": "Population: 25 - 29 Years, Asian or Pacific Islander",
-      "dcid": "Count_Person_25To29Years_AsianOrPacificIslander"
-    },
-    {
-      "name": "Population: 25 - 29 Years, Black or African American Alone",
-      "dcid": "Count_Person_25To29Years_BlackOrAfricanAmericanAlone"
-    },
-    {
-      "name": "Population: 25 - 29 Years, Black or African American Alone or In Combination With One or More Other Races",
-      "dcid": "Count_Person_25To29Years_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Population: 25 - 29 Years, Female",
-      "dcid": "Count_Person_25To29Years_Female"
-    },
-    {
-      "name": "Population: 25 - 29 Years, Hispanic or Latino",
-      "dcid": "Count_Person_25To29Years_HispanicOrLatino"
-    },
-    {
-      "name": "Population: 25 - 29 Years, Hispanic or Latino \u0026 American Indian And Alaska Native Alone or In Combination With One or More Other Races",
-      "dcid": "Count_Person_25To29Years_HispanicOrLatino_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Population: 25 - 29 Years, Hispanic or Latino \u0026 American Indian or Alaska Native Alone",
-      "dcid": "Count_Person_25To29Years_HispanicOrLatino_AmericanIndianAndAlaskaNativeAlone"
-    },
-    {
-      "name": "Population: 25 - 29 Years, Hispanic or Latino \u0026 Asian Alone",
-      "dcid": "Count_Person_25To29Years_HispanicOrLatino_AsianAlone"
     }
   ],
   "matches": [
