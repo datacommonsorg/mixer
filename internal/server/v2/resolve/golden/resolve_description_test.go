@@ -89,7 +89,6 @@ func TestResolveDescription(t *testing.T) {
 					"Kamchatka,Russia",
 					"Sakhalin,Russia",
 					"North East and Yorkshire,United Kingdom",
-					"North West,United Kingdom",
 					"Midlands,United Kingdom",
 					"East of England,United Kingdom",
 					"Free State,South Africa",
