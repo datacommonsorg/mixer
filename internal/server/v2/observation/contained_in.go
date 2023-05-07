@@ -169,6 +169,11 @@ func FetchContainedIn(
 	}
 
 	if len(variablesMissingData) > 0 {
+		log.Printf(
+			"Read time series for %d variables and %d chihld places",
+			len(variablesMissingData),
+			len(childPlaces),
+		)
 		totalSeries := len(variablesMissingData) * len(childPlaces)
 		if totalSeries > maxSeries {
 			return nil, status.Errorf(
