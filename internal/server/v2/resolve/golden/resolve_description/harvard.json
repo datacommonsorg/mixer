@@ -49,7 +49,10 @@
       "node": "Dadra And Nagar Haveli,India"
     },
     {
-      "node": "Damão and Diu,India"
+      "node": "Damão and Diu,India",
+      "resolvedIds": [
+        "wikidataId/Q631849"
+      ]
     },
     {
       "node": "Delhi,India",
