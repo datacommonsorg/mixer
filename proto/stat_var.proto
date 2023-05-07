@@ -245,11 +245,3 @@ message SearchStatVarResponse {
   // tokens
   repeated string matches = 3;
 }
-
-message GetStatVarSummaryRequest {
-  // A list of stat var dcids
-  repeated string stat_vars = 1;
-}
-message GetStatVarSummaryResponse {
-  map<string, StatVarSummary> stat_var_summary = 1;
-}

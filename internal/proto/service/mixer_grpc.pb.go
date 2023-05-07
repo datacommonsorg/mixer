@@ -68,7 +68,6 @@ const (
 	Mixer_GetPlaceStatDateWithinPlace_FullMethodName  = "/datacommons.Mixer/GetPlaceStatDateWithinPlace"
 	Mixer_GetStatDateWithinPlace_FullMethodName       = "/datacommons.Mixer/GetStatDateWithinPlace"
 	Mixer_SearchStatVar_FullMethodName                = "/datacommons.Mixer/SearchStatVar"
-	Mixer_GetStatVarSummary_FullMethodName            = "/datacommons.Mixer/GetStatVarSummary"
 	Mixer_QueryV1_FullMethodName                      = "/datacommons.Mixer/QueryV1"
 	Mixer_Properties_FullMethodName                   = "/datacommons.Mixer/Properties"
 	Mixer_BulkProperties_FullMethodName               = "/datacommons.Mixer/BulkProperties"
@@ -171,8 +170,6 @@ type MixerClient interface {
 	GetStatDateWithinPlace(ctx context.Context, in *proto.GetStatDateWithinPlaceRequest, opts ...grpc.CallOption) (*proto.GetStatDateWithinPlaceResponse, error)
 	// Search stat var and stat var groups.
 	SearchStatVar(ctx context.Context, in *proto.SearchStatVarRequest, opts ...grpc.CallOption) (*proto.SearchStatVarResponse, error)
-	// Given a list of stat vars, get their summaries.
-	GetStatVarSummary(ctx context.Context, in *proto.GetStatVarSummaryRequest, opts ...grpc.CallOption) (*proto.GetStatVarSummaryResponse, error)
 	// Query DataCommons Graph with Sparql.
 	// V2 [DONE]
 	QueryV1(ctx context.Context, in *proto.QueryRequest, opts ...grpc.CallOption) (*proto.QueryResponse, error)
@@ -493,15 +490,6 @@ func (c *mixerClient) GetStatDateWithinPlace(ctx context.Context, in *proto.GetS
 func (c *mixerClient) SearchStatVar(ctx context.Context, in *proto.SearchStatVarRequest, opts ...grpc.CallOption) (*proto.SearchStatVarResponse, error) {
 	out := new(proto.SearchStatVarResponse)
 	err := c.cc.Invoke(ctx, Mixer_SearchStatVar_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *mixerClient) GetStatVarSummary(ctx context.Context, in *proto.GetStatVarSummaryRequest, opts ...grpc.CallOption) (*proto.GetStatVarSummaryResponse, error) {
-	out := new(proto.GetStatVarSummaryResponse)
-	err := c.cc.Invoke(ctx, Mixer_GetStatVarSummary_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -904,8 +892,6 @@ type MixerServer interface {
 	GetStatDateWithinPlace(context.Context, *proto.GetStatDateWithinPlaceRequest) (*proto.GetStatDateWithinPlaceResponse, error)
 	// Search stat var and stat var groups.
 	SearchStatVar(context.Context, *proto.SearchStatVarRequest) (*proto.SearchStatVarResponse, error)
-	// Given a list of stat vars, get their summaries.
-	GetStatVarSummary(context.Context, *proto.GetStatVarSummaryRequest) (*proto.GetStatVarSummaryResponse, error)
 	// Query DataCommons Graph with Sparql.
 	// V2 [DONE]
 	QueryV1(context.Context, *proto.QueryRequest) (*proto.QueryResponse, error)
@@ -1077,9 +1063,6 @@ func (UnimplementedMixerServer) GetStatDateWithinPlace(context.Context, *proto.G
 }
 func (UnimplementedMixerServer) SearchStatVar(context.Context, *proto.SearchStatVarRequest) (*proto.SearchStatVarResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SearchStatVar not implemented")
-}
-func (UnimplementedMixerServer) GetStatVarSummary(context.Context, *proto.GetStatVarSummaryRequest) (*proto.GetStatVarSummaryResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetStatVarSummary not implemented")
 }
 func (UnimplementedMixerServer) QueryV1(context.Context, *proto.QueryRequest) (*proto.QueryResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method QueryV1 not implemented")
@@ -1650,24 +1633,6 @@ func _Mixer_SearchStatVar_Handler(srv interface{}, ctx context.Context, dec func
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(MixerServer).SearchStatVar(ctx, req.(*proto.SearchStatVarRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Mixer_GetStatVarSummary_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(proto.GetStatVarSummaryRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(MixerServer).GetStatVarSummary(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: Mixer_GetStatVarSummary_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).GetStatVarSummary(ctx, req.(*proto.GetStatVarSummaryRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -2444,10 +2409,6 @@ var Mixer_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "SearchStatVar",
 			Handler:    _Mixer_SearchStatVar_Handler,
-		},
-		{
-			MethodName: "GetStatVarSummary",
-			Handler:    _Mixer_GetStatVarSummary_Handler,
 		},
 		{
 			MethodName: "QueryV1",

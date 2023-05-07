@@ -280,15 +280,6 @@ service Mixer {
     };
   }
 
-  // Given a list of stat vars, get their summaries.
-  rpc GetStatVarSummary(GetStatVarSummaryRequest)
-      returns (GetStatVarSummaryResponse) {
-    option (google.api.http) = {
-      get : "/stat-var/summary"
-      additional_bindings : {post : "/stat-var/summary" body : "*"}
-    };
-  }
-
   // ======================  V1   V1   V1   V1  ======================
 
   // Query DataCommons Graph with Sparql.

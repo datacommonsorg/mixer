@@ -27,10 +27,15 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/stat"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"github.com/datacommonsorg/mixer/internal/util"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/proto"
 
 	"github.com/datacommonsorg/mixer/internal/store"
 )
+
+// Num of concurrent series to read at a time. Set this to prevent OOM issue.
+const maxSeries = 5000
 
 func hasCollectionCache(ancestor string, childType string) bool {
 	childTypeDenyList := map[string]struct{}{
@@ -164,6 +169,14 @@ func FetchContainedIn(
 	}
 
 	if len(variablesMissingData) > 0 {
+		totalSeries := len(variablesMissingData) * len(childPlaces)
+		if totalSeries > maxSeries {
+			return nil, status.Errorf(
+				codes.Internal,
+				"Stop processing large number of concurrent observation series: %d",
+				totalSeries,
+			)
+		}
 		log.Println("Fetch series cache / memcache in contained in observation query")
 		moreResult, err := FetchDirect(
 			ctx,
