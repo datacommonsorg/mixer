@@ -34,7 +34,6 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/v0/propertylabel"
 	"github.com/datacommonsorg/mixer/internal/server/v0/propertyvalue"
 	"github.com/datacommonsorg/mixer/internal/server/v0/statpoint"
-	"github.com/datacommonsorg/mixer/internal/server/v0/statvarsummary"
 	"github.com/datacommonsorg/mixer/internal/server/v0/triple"
 	"google.golang.org/protobuf/encoding/protojson"
 )
@@ -189,13 +188,6 @@ func (s *Server) GetEntityStatVarsUnionV1(
 	ctx context.Context, in *pb.GetEntityStatVarsUnionRequest,
 ) (*pb.GetEntityStatVarsUnionResponse, error) {
 	return statvar.GetEntityStatVarsUnionV1(ctx, in, s.store)
-}
-
-// GetStatVarSummary implements API for Mixer.GetStatVarSummary.
-func (s *Server) GetStatVarSummary(
-	ctx context.Context, in *pb.GetStatVarSummaryRequest,
-) (*pb.GetStatVarSummaryResponse, error) {
-	return statvarsummary.GetStatVarSummary(ctx, in, s.store)
 }
 
 // SearchStatVar implements API for Mixer.SearchStatVar.

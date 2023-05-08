@@ -104,7 +104,6 @@ serviceGroups:
       - "/v1/info/variable-group/*"
       - "/v1/variable/*"
       - "/v1/bulk/info/variable-group"
-      - "/v1/bulk/info/variable"
     replicas: 1
     resources:
       memoryRequest: "6G"
@@ -115,6 +114,7 @@ serviceGroups:
   recon:
     urlPaths:
       - "/v1/recon/*"
+      - "/v2/resolve"
     replicas: 1
     resources:
       memoryRequest: "400M"
@@ -126,11 +126,10 @@ serviceGroups:
       - "/v1/observations/*"
       - "/v1/bulk/observations/*"
       - "/v2/observation"
-      - "/v2/resolve"
     replicas: 1
     resources:
-      memoryRequest: "2G"
-      memoryLimit: "2G"
+      memoryRequest: "4G"
+      memoryLimit: "4G"
   node:
     urlPaths:
       - "/node/*"
