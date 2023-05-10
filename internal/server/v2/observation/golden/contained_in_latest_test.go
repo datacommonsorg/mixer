@@ -66,6 +66,13 @@ func TestFetchContainInLatest(t *testing.T) {
 				"US_State.json",
 			},
 			{
+				[]string{
+					"Count_Person_Literate",
+				},
+				"country/IND<-containedInPlace+{typeOf:AdministrativeArea1}",
+				"IND_AA1.json",
+			},
+			{
 				[]string{"Count_Person"},
 				"Earth<-containedInPlace+{typeOf:Country}",
 				"Country.json",
