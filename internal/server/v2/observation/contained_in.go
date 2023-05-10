@@ -37,36 +37,35 @@ import (
 // Num of concurrent series to read at a time. Set this to prevent OOM issue.
 const maxSeries = 5000
 
+var childTypeDenyList = map[string]struct{}{
+	"Place":               {},
+	"CensusBlockGroup":    {},
+	"CensusTract":         {},
+	"AdministrativeArea":  {},
+	"AdministrativeArea4": {},
+	"AdministrativeArea5": {},
+	"S2CellLevel7":        {},
+	"S2CellLevel8":        {},
+	"S2CellLevel9":        {},
+	"S2CellLevel10":       {},
+	"S2CellLevel11":       {},
+	"S2CellLevel13":       {},
+}
+
+var childTypeAllowListForEarth = map[string]struct{}{
+	"Continent":           {},
+	"Country":             {},
+	"AdministrativeArea1": {},
+	"State":               {},
+	"AdministrativeArea2": {},
+	"County":              {},
+}
+
 func hasCollectionCache(ancestor string, childType string) bool {
-	childTypeDenyList := map[string]struct{}{
-		"Place":               {},
-		"CensusBlockGroup":    {},
-		"CensusTract":         {},
-		"AdministrativeArea":  {},
-		"AdministrativeArea4": {},
-		"AdministrativeArea5": {},
-		"S2CellLevel7":        {},
-		"S2CellLevel8":        {},
-		"S2CellLevel9":        {},
-		"S2CellLevel10":       {},
-		"S2CellLevel11":       {},
-		"S2CellLevel13":       {},
-	}
-
-	childTypeAllowListForEarth := map[string]struct{}{
-		"Continent":           {},
-		"Country":             {},
-		"AdministrativeArea1": {},
-		"State":               {},
-		"AdministrativeArea2": {},
-		"County":              {},
-	}
-
 	if ancestor == "Earth" {
 		_, ok := childTypeAllowListForEarth[childType]
 		return ok
 	}
-
 	_, ok := childTypeDenyList[childType]
 	return !ok
 }
@@ -88,12 +87,35 @@ func FetchContainedIn(
 	if queryDate != "" {
 		readCollectionCache = hasCollectionCache(ancestor, childType)
 		if readCollectionCache {
-			btData, err := stat.ReadStatCollection(
+			var btData map[string]*pb.ObsCollection
+			var err error
+			btData, err = stat.ReadStatCollection(
 				ctx, store.BtGroup, bigtable.BtObsCollection,
 				ancestor, childType, variables, queryDate,
 			)
 			if err != nil {
 				return nil, err
+			}
+			// When child places have multiple types, Bigtable only stores the data
+			// for one of the types. This is to use a fallback type when there is no
+			// data for the queried type.
+			// TODO: remove this logic once all types data are computed.
+			if childType == "AdministrativeArea1" {
+				refetch := true
+				for _, data := range btData {
+					if data != nil {
+						refetch = false
+					}
+				}
+				if refetch {
+					btData, err = stat.ReadStatCollection(
+						ctx, store.BtGroup, bigtable.BtObsCollection,
+						ancestor, "State", variables, queryDate,
+					)
+					if err != nil {
+						return nil, err
+					}
+				}
 			}
 			for _, variable := range variables {
 				result.ByVariable[variable] = &pbv2.VariableObservation{
