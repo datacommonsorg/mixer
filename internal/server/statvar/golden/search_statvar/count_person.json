@@ -545,6 +545,10 @@
       "dcid": "Count_Person_1OrMoreYears"
     },
     {
+      "name": "Population: 10 - 19 Years",
+      "dcid": "Count_Person_10To19Years"
+    },
+    {
       "name": "Population: 10 Years or More",
       "dcid": "Count_Person_10OrMoreYears"
     },
@@ -609,6 +613,10 @@
       "dcid": "Count_Person_EducationalAttainment1StGrade"
     },
     {
+      "name": "Population: 20 - 29 Years",
+      "dcid": "Count_Person_20To29Years"
+    },
+    {
       "name": "Population: 20 - 79 Years",
       "dcid": "Count_Person_20To79Years"
     },
@@ -645,8 +653,16 @@
       "dcid": "Count_Person_MarginalWorker_WorkedUpto3Months"
     },
     {
+      "name": "Population: 30 - 39 Years",
+      "dcid": "Count_Person_30To39Years"
+    },
+    {
       "name": "Population: 3rd Grade",
       "dcid": "Count_Person_EducationalAttainment3RdGrade"
+    },
+    {
+      "name": "Population: 40 - 49 Years",
+      "dcid": "Count_Person_40To49Years"
     },
     {
       "name": "Population: 40 - 64 Years",
@@ -663,6 +679,10 @@
     {
       "name": "Population: 5 Years or More",
       "dcid": "Count_Person_5OrMoreYears"
+    },
+    {
+      "name": "Population: 50 - 59 Years",
+      "dcid": "Count_Person_50To59Years"
     },
     {
       "name": "Population: 50 - 64 Years",
@@ -689,6 +709,10 @@
       "dcid": "Count_Person_YearsUpto6"
     },
     {
+      "name": "Population: 60 - 69 Years",
+      "dcid": "Count_Person_60To69Years"
+    },
+    {
       "name": "Population: 60 Years or More",
       "dcid": "Count_Person_60OrMoreYears"
     },
@@ -707,6 +731,10 @@
     {
       "name": "Population: 7 - 14 Years",
       "dcid": "Count_Person_7To14Years"
+    },
+    {
+      "name": "Population: 70 Years or More",
+      "dcid": "Count_Person_70OrMoreYears"
     },
     {
       "name": "Population: 75 - 84 Years",
@@ -739,6 +767,10 @@
     {
       "name": "Population: 8th Grade",
       "dcid": "Count_Person_EducationalAttainment8ThGrade"
+    },
+    {
+      "name": "Population: 9 Years or Less",
+      "dcid": "Count_Person_Upto9Years"
     },
     {
       "name": "Population: 90 Years or More",
@@ -2001,12 +2033,20 @@
       "dcid": "Count_Person_Illiterate_AsAFractionOf_Count_Person"
     },
     {
+      "name": "Population: Literate (Per Capita)",
+      "dcid": "Count_Person_Literate_AsAFractionOf_Count_Person"
+    },
+    {
       "name": "Population: Masters Degree or Higher (As Fraction of Count Person 25 or More Years)",
       "dcid": "Count_Person_25OrMoreYears_MastersDegreeOrHigher_AsFractionOf_Count_Person_25OrMoreYears"
     },
     {
       "name": "Population: Tertiary Education (As Fraction of Count Person 25 or More Years)",
       "dcid": "Count_Person_25OrMoreYears_TertiaryEducation_AsFractionOf_Count_Person_25OrMoreYears"
+    },
+    {
+      "name": "Population: Unemployed (Per Capita)",
+      "dcid": "Count_Person_Unemployed_AsAFractionOf_Count_Person"
     },
     {
       "name": "African American Farmers",
@@ -3333,6 +3373,10 @@
       "dcid": "Count_Person_10To14Years_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces"
     },
     {
+      "name": "Population: 10 - 14 Years, Divorced",
+      "dcid": "Count_Person_10To14Years_Divorced"
+    },
+    {
       "name": "Population: 10 - 14 Years, Female",
       "dcid": "Count_Person_10To14Years_Female"
     },
@@ -3397,6 +3441,10 @@
       "dcid": "Count_Person_10To14Years_NativeHawaiianAndOtherPacificIslanderAlone"
     },
     {
+      "name": "Population: 10 - 14 Years, Never Married",
+      "dcid": "Count_Person_10To14Years_NeverMarried"
+    },
+    {
       "name": "Population: 10 - 14 Years, Not Hispanic or Latino",
       "dcid": "Count_Person_10To14Years_NotHispanicOrLatino"
     },
@@ -3441,6 +3489,14 @@
       "dcid": "Count_Person_10To14Years_NotHispanicOrLatino_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
     },
     {
+      "name": "Population: 10 - 14 Years, Now Married",
+      "dcid": "Count_Person_10To14Years_NowMarried"
+    },
+    {
+      "name": "Population: 10 - 14 Years, Separated",
+      "dcid": "Count_Person_10To14Years_Separated"
+    },
+    {
       "name": "Population: 10 - 14 Years, Two or More Races",
       "dcid": "Count_Person_10To14Years_TwoOrMoreRaces"
     },
@@ -3457,6 +3513,14 @@
       "dcid": "Count_Person_10To14Years_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
     },
     {
+      "name": "Population: 10 - 14 Years, Widowed",
+      "dcid": "Count_Person_10To14Years_Widowed"
+    },
+    {
+      "name": "Population: 10 Years or More, Divorced",
+      "dcid": "Count_Person_10OrMoreYears_Divorced"
+    },
+    {
       "name": "Population: 10 Years or More, Female",
       "dcid": "Count_Person_10OrMoreYears_Female"
     },
@@ -3471,6 +3535,22 @@
     {
       "name": "Population: 10 Years or More, Male",
       "dcid": "Count_Person_10OrMoreYears_Male"
+    },
+    {
+      "name": "Population: 10 Years or More, Never Married",
+      "dcid": "Count_Person_10OrMoreYears_NeverMarried"
+    },
+    {
+      "name": "Population: 10 Years or More, Now Married",
+      "dcid": "Count_Person_10OrMoreYears_NowMarried"
+    },
+    {
+      "name": "Population: 10 Years or More, Separated",
+      "dcid": "Count_Person_10OrMoreYears_Separated"
+    },
+    {
+      "name": "Population: 10 Years or More, Widowed",
+      "dcid": "Count_Person_10OrMoreYears_Widowed"
     },
     {
       "name": "Population: 100 Years or More, Hispanic or Latino",
@@ -3681,6 +3761,10 @@
       "dcid": "Count_Person_15To19Years_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces"
     },
     {
+      "name": "Population: 15 - 19 Years, Divorced",
+      "dcid": "Count_Person_15To19Years_Divorced"
+    },
+    {
       "name": "Population: 15 - 19 Years, Female",
       "dcid": "Count_Person_15To19Years_Female"
     },
@@ -3745,6 +3829,10 @@
       "dcid": "Count_Person_15To19Years_NativeHawaiianAndOtherPacificIslanderAlone"
     },
     {
+      "name": "Population: 15 - 19 Years, Never Married",
+      "dcid": "Count_Person_15To19Years_NeverMarried"
+    },
+    {
       "name": "Population: 15 - 19 Years, Not Hispanic or Latino",
       "dcid": "Count_Person_15To19Years_NotHispanicOrLatino"
     },
@@ -3789,6 +3877,14 @@
       "dcid": "Count_Person_15To19Years_NotHispanicOrLatino_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
     },
     {
+      "name": "Population: 15 - 19 Years, Now Married",
+      "dcid": "Count_Person_15To19Years_NowMarried"
+    },
+    {
+      "name": "Population: 15 - 19 Years, Separated",
+      "dcid": "Count_Person_15To19Years_Separated"
+    },
+    {
       "name": "Population: 15 - 19 Years, Two or More Races",
       "dcid": "Count_Person_15To19Years_TwoOrMoreRaces"
     },
@@ -3805,8 +3901,20 @@
       "dcid": "Count_Person_15To19Years_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
     },
     {
+      "name": "Population: 15 - 19 Years, Widowed",
+      "dcid": "Count_Person_15To19Years_Widowed"
+    },
+    {
+      "name": "Population: 15 - 24 Years, Employed",
+      "dcid": "Count_Person_15To24Years_Employed"
+    },
+    {
       "name": "Population: 15 - 24 Years, Illiterate",
       "dcid": "Count_Person_15To24Years_Illiterate"
+    },
+    {
+      "name": "Population: 15 - 24 Years, Unemployed",
+      "dcid": "Count_Person_15To24Years_Unemployed"
     },
     {
       "name": "Population: 15 - 50 Years, Female",
@@ -3891,114 +3999,6 @@
     {
       "name": "Population: 15 Years or More, College or University Student Housing",
       "dcid": "Count_Person_15OrMoreYears_ResidesInCollegeOrUniversityStudentHousing"
-    },
-    {
-      "name": "Population: 15 Years or More, Different House Abroad",
-      "dcid": "Count_Person_15OrMoreYears_DifferentHouseAbroad"
-    },
-    {
-      "name": "Population: 15 Years or More, Different House in Different County Different State",
-      "dcid": "Count_Person_15OrMoreYears_DifferentHouseInDifferentCountyDifferentState"
-    },
-    {
-      "name": "Population: 15 Years or More, Different House in Different County Same State",
-      "dcid": "Count_Person_15OrMoreYears_DifferentHouseInDifferentCountySameState"
-    },
-    {
-      "name": "Population: 15 Years or More, Different House in Same County",
-      "dcid": "Count_Person_15OrMoreYears_DifferentHouseInSameCounty"
-    },
-    {
-      "name": "Population: 15 Years or More, Female",
-      "dcid": "Count_Person_15OrMoreYears_Female"
-    },
-    {
-      "name": "Population: 15 Years or More, Foreign Born",
-      "dcid": "Count_Person_15OrMoreYears_ForeignBorn"
-    },
-    {
-      "name": "Population: 15 Years or More, Group Quarters",
-      "dcid": "Count_Person_15OrMoreYears_ResidesInGroupQuarters"
-    },
-    {
-      "name": "Population: 15 Years or More, Hispanic or Latino",
-      "dcid": "Count_Person_15OrMoreYears_HispanicOrLatino"
-    },
-    {
-      "name": "Population: 15 Years or More, Illiterate",
-      "dcid": "Count_Person_15OrMoreYears_Illiterate"
-    },
-    {
-      "name": "Population: 15 Years or More, Institutionalized Group Quarters",
-      "dcid": "Count_Person_15OrMoreYears_ResidesInInstitutionalizedGroupQuarters"
-    },
-    {
-      "name": "Population: 15 Years or More, Juvenile Facilities",
-      "dcid": "Count_Person_15OrMoreYears_ResidesInJuvenileFacilities"
-    },
-    {
-      "name": "Population: 15 Years or More, Male",
-      "dcid": "Count_Person_15OrMoreYears_Male"
-    },
-    {
-      "name": "Population: 15 Years or More, Military Quarters or Military Ships",
-      "dcid": "Count_Person_15OrMoreYears_ResidesInMilitaryQuartersOrMilitaryShips"
-    },
-    {
-      "name": "Population: 15 Years or More, Native",
-      "dcid": "Count_Person_15OrMoreYears_Native"
-    },
-    {
-      "name": "Population: 15 Years or More, Native Born Outside The United States",
-      "dcid": "Count_Person_15OrMoreYears_NativeBornOutsideTheUnitedStates"
-    },
-    {
-      "name": "Population: 15 Years or More, Native Hawaiian or Other Pacific Islander Alone",
-      "dcid": "Count_Person_15OrMoreYears_NativeHawaiianAndOtherPacificIslanderAlone"
-    },
-    {
-      "name": "Population: 15 Years or More, Native Hawaiian or Other Pacific Islander Alone",
-      "dcid": "Count_Person_15OrMoreYears_NativeHawaiianOrOtherPacificIslanderAlone"
-    },
-    {
-      "name": "Population: 15 Years or More, Noninstitutionalized Group Quarters",
-      "dcid": "Count_Person_15OrMoreYears_ResidesInNoninstitutionalizedGroupQuarters"
-    },
-    {
-      "name": "Population: 15 Years or More, Nursing Facilities",
-      "dcid": "Count_Person_15OrMoreYears_ResidesInNursingFacilities"
-    },
-    {
-      "name": "Population: 15 Years or More, One Race",
-      "dcid": "Count_Person_15OrMoreYears_OneRace"
-    },
-    {
-      "name": "Population: 15 Years or More, Some Other Race Alone",
-      "dcid": "Count_Person_15OrMoreYears_SomeOtherRaceAlone"
-    },
-    {
-      "name": "Population: 15 Years or More, Two or More Races",
-      "dcid": "Count_Person_15OrMoreYears_TwoOrMoreRaces"
-    },
-    {
-      "name": "Population: 15 Years or More, White Alone",
-      "dcid": "Count_Person_15OrMoreYears_WhiteAlone"
-    },
-    {
-      "name": "Population: 15 Years or More, White Alone Not Hispanic or Latino",
-      "dcid": "Count_Person_15OrMoreYears_WhiteAloneNotHispanicOrLatino"
-    },
-    {
-      "name": "Population: 15 Years or More, With Income",
-      "dcid": "Count_Person_15OrMoreYears_WithIncome"
-    },
-    {
-      "name": "Population: 16 - 19 Years, Black or African American Alone",
-      "dcid": "Count_Person_16To19Years_BlackOrAfricanAmericanAlone"
-    },
-    {
-      "name": "Population: 16 - 19 Years, Female",
-      "dcid": "Count_Person_16To19Years_Female"
     }
   ],
   "matches": [

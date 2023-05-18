@@ -2,6 +2,1488 @@
   "by_variable": {
     "Count_Person": {
       "by_entity": {
+        "country/GLP": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 397990
+                }
+              ]
+            }
+          ]
+        },
+        "country/GUF": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 259865
+                }
+              ]
+            }
+          ]
+        },
+        "country/MTQ": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 380877
+                }
+              ]
+            }
+          ]
+        },
+        "country/MYT": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 232189
+                }
+              ]
+            }
+          ]
+        },
+        "country/REU": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 850727
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR101": {
+          "ordered_facets": [
+            {
+              "facet_id": "1001395862",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 2206488
+                }
+              ]
+            },
+            {
+              "facet_id": "858679853",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 2206488
+                }
+              ]
+            },
+            {
+              "facet_id": "1151455814",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 2206490
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR102": {
+          "ordered_facets": [
+            {
+              "facet_id": "1001395862",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 1390121
+                }
+              ]
+            },
+            {
+              "facet_id": "858679853",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 1390121
+                }
+              ]
+            },
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 1412250
+                }
+              ]
+            },
+            {
+              "facet_id": "1151455814",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 1390120
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR103": {
+          "ordered_facets": [
+            {
+              "facet_id": "1001395862",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 1427291
+                }
+              ]
+            },
+            {
+              "facet_id": "858679853",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 1427291
+                }
+              ]
+            },
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 1454532
+                }
+              ]
+            },
+            {
+              "facet_id": "1151455814",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 1427290
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR104": {
+          "ordered_facets": [
+            {
+              "facet_id": "1001395862",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 1276233
+                }
+              ]
+            },
+            {
+              "facet_id": "858679853",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 1276233
+                }
+              ]
+            },
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 1294240
+                }
+              ]
+            },
+            {
+              "facet_id": "1151455814",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 1276230
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR105": {
+          "ordered_facets": [
+            {
+              "facet_id": "1001395862",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 1601569
+                }
+              ]
+            },
+            {
+              "facet_id": "858679853",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 1601569
+                }
+              ]
+            },
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 1620776
+                }
+              ]
+            },
+            {
+              "facet_id": "1151455814",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 1601570
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR106": {
+          "ordered_facets": [
+            {
+              "facet_id": "1001395862",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 1592663
+                }
+              ]
+            },
+            {
+              "facet_id": "858679853",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 1592663
+                }
+              ]
+            },
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 1603095
+                }
+              ]
+            },
+            {
+              "facet_id": "1151455814",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 1592660
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR107": {
+          "ordered_facets": [
+            {
+              "facet_id": "1001395862",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 1372389
+                }
+              ]
+            },
+            {
+              "facet_id": "858679853",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 1372389
+                }
+              ]
+            },
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 1384068
+                }
+              ]
+            },
+            {
+              "facet_id": "1151455814",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 1372390
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR108": {
+          "ordered_facets": [
+            {
+              "facet_id": "1001395862",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 1215390
+                }
+              ]
+            },
+            {
+              "facet_id": "858679853",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 1215390
+                }
+              ]
+            },
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 1231356
+                }
+              ]
+            },
+            {
+              "facet_id": "1151455814",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 1215390
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR211": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 285612
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR212": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 316888
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR213": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 585622
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR214": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 184987
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR221": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 552529
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR222": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 841252
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR223": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 584143
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR231": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 619392
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR232": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 1283249
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR241": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 317101
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR242": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 445361
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR243": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 230546
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR244": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 619651
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR245": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 343392
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR246": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 691291
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR251": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 709986
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR252": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 517500
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR253": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 295936
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR261": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 546601
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR262": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 219019
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR263": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 573281
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR264": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 351302
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR301": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 2641081
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR302": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 1496824
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR411": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 748528
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR412": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 196681
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR431": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 551143
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR432": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 270474
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR433": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 245130
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR434": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 147799
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR511": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 1400585
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR512": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 833080
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR513": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 318079
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR514": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 583151
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR515": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 685673
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR521": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 618156
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR522": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 936478
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR523": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 1070462
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR524": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 767610
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR531": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 366289
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR532": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 658529
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR533": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 385395
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR534": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 445927
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR611": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 427579
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR612": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 1578386
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR613": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 416642
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR615": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 690788
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR621": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 157904
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR622": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 290199
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR623": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 1361286
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR624": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 198213
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR625": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 179573
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR626": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 236017
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR627": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 398190
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR628": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 261452
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR631": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 250077
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR632": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 124569
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR633": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 384226
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR711": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 649012
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR712": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 333781
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR713": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 519264
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR714": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 1278347
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR715": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 775977
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR717": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 441669
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR718": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 816748
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR721": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 351626
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR722": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 151920
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR723": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 234555
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR724": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 664386
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR811": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 376667
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR812": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 754170
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR813": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 1140030
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR814": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 80176
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR815": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 479421
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR821": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 166635
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR822": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 146060
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR823": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 1097556
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR824": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 2045149
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR825": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 1065985
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR826": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 569618
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR831": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 152730
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR832": {
+          "ordered_facets": [
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 174553
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FRI14": {
+          "ordered_facets": [
+            {
+              "facet_id": "1001395862",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 333417
+                }
+              ]
+            },
+            {
+              "facet_id": "858679853",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 333417
+                }
+              ]
+            },
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 343059
+                }
+              ]
+            },
+            {
+              "facet_id": "1151455814",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 333417
+                }
+              ]
+            }
+          ]
+        },
         "wikidataId/Q1014741": {
           "ordered_facets": [
             {
@@ -166,6 +1648,19 @@
                 {
                   "date": "2015",
                   "value": 195262
+                }
+              ]
+            }
+          ]
+        },
+        "wikidataId/Q167024": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 10443
                 }
               ]
             }
@@ -2996,6 +4491,16 @@
     }
   },
   "facets": {
+    "1001395862": {
+      "import_name": "EurostatData",
+      "provenance_url": "https://ec.europa.eu/eurostat/data/database"
+    },
+    "1151455814": {
+      "import_name": "OECDRegionalDemography",
+      "provenance_url": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#",
+      "measurement_method": "OECDRegionalStatistics",
+      "observation_period": "P1Y"
+    },
     "2458695583": {
       "import_name": "WikidataPopulation",
       "provenance_url": "https://www.wikidata.org/wiki/Wikidata:Main_Page",
@@ -3005,6 +4510,11 @@
       "import_name": "FranceINSEE",
       "provenance_url": "https://www.insee.fr/en/metadonnees/source/indicateur/p1667/description",
       "measurement_method": "FranceINSEE"
+    },
+    "858679853": {
+      "import_name": "EurostatData",
+      "provenance_url": "https://ec.europa.eu/eurostat/data/database",
+      "measurement_method": "EurostatRegionalPopulationData"
     }
   }
 }

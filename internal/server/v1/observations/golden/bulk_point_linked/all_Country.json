@@ -3898,6 +3898,11 @@
             },
             {
               "date": "2016",
+              "value": 193392517,
+              "facet": "563701067"
+            },
+            {
+              "date": "2016",
               "value": 185990000,
               "facet": "473499523"
             },
@@ -6083,6 +6088,10 @@
       "provenance_url": "https://databank.worldbank.org/source/subnational-population",
       "measurement_method": "WorldBankSubnationalPopulationEstimate",
       "observation_period": "P1Y"
+    },
+    "563701067": {
+      "import_name": "NigeriaStatistics",
+      "provenance_url": "https://nigeria.opendataforafrica.org"
     },
     "650668249": {
       "import_name": "UnitedKingdomONS",

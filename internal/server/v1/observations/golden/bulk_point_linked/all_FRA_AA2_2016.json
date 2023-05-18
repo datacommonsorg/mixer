@@ -14,9 +14,6 @@
           ]
         },
         {
-          "entity": "country/GUF"
-        },
-        {
           "entity": "country/MTQ",
           "points_by_facet": [
             {
@@ -37,15 +34,22 @@
           ]
         },
         {
-          "entity": "country/REU"
-        },
-        {
           "entity": "nuts/FR101",
           "points_by_facet": [
             {
               "date": "2016",
               "value": 2190327,
               "facet": "1001395862"
+            },
+            {
+              "date": "2016",
+              "value": 2190327,
+              "facet": "858679853"
+            },
+            {
+              "date": "2016",
+              "value": 2190330,
+              "facet": "1151455814"
             }
           ]
         },
@@ -56,6 +60,26 @@
               "date": "2016",
               "value": 1397665,
               "facet": "1001395862"
+            },
+            {
+              "date": "2016",
+              "value": 1397665,
+              "facet": "858679853"
+            },
+            {
+              "date": "2016",
+              "value": 1397665,
+              "facet": "738965619"
+            },
+            {
+              "date": "2016",
+              "value": 1397670,
+              "facet": "1151455814"
+            },
+            {
+              "date": "2016",
+              "value": 1397665,
+              "facet": "1456184638"
             }
           ]
         },
@@ -66,6 +90,26 @@
               "date": "2016",
               "value": 1431808,
               "facet": "1001395862"
+            },
+            {
+              "date": "2016",
+              "value": 1431808,
+              "facet": "858679853"
+            },
+            {
+              "date": "2016",
+              "value": 1431808,
+              "facet": "738965619"
+            },
+            {
+              "date": "2016",
+              "value": 1431810,
+              "facet": "1151455814"
+            },
+            {
+              "date": "2016",
+              "value": 1431808,
+              "facet": "1456184638"
             }
           ]
         },
@@ -76,6 +120,21 @@
               "date": "2016",
               "value": 1287330,
               "facet": "1001395862"
+            },
+            {
+              "date": "2016",
+              "value": 1287330,
+              "facet": "858679853"
+            },
+            {
+              "date": "2016",
+              "value": 1287330,
+              "facet": "738965619"
+            },
+            {
+              "date": "2016",
+              "value": 1287330,
+              "facet": "1151455814"
             }
           ]
         },
@@ -86,6 +145,26 @@
               "date": "2016",
               "value": 1603268,
               "facet": "1001395862"
+            },
+            {
+              "date": "2016",
+              "value": 1603268,
+              "facet": "858679853"
+            },
+            {
+              "date": "2016",
+              "value": 1603268,
+              "facet": "738965619"
+            },
+            {
+              "date": "2016",
+              "value": 1603270,
+              "facet": "1151455814"
+            },
+            {
+              "date": "2016",
+              "value": 1603268,
+              "facet": "1456184638"
             }
           ]
         },
@@ -96,6 +175,26 @@
               "date": "2016",
               "value": 1606660,
               "facet": "1001395862"
+            },
+            {
+              "date": "2016",
+              "value": 1606660,
+              "facet": "858679853"
+            },
+            {
+              "date": "2016",
+              "value": 1606660,
+              "facet": "738965619"
+            },
+            {
+              "date": "2016",
+              "value": 1606660,
+              "facet": "1151455814"
+            },
+            {
+              "date": "2016",
+              "value": 1606660,
+              "facet": "1456184638"
             }
           ]
         },
@@ -106,6 +205,26 @@
               "date": "2016",
               "value": 1378151,
               "facet": "1001395862"
+            },
+            {
+              "date": "2016",
+              "value": 1378151,
+              "facet": "858679853"
+            },
+            {
+              "date": "2016",
+              "value": 1378151,
+              "facet": "738965619"
+            },
+            {
+              "date": "2016",
+              "value": 1378150,
+              "facet": "1151455814"
+            },
+            {
+              "date": "2016",
+              "value": 1378151,
+              "facet": "1456184638"
             }
           ]
         },
@@ -116,6 +235,26 @@
               "date": "2016",
               "value": 1221923,
               "facet": "1001395862"
+            },
+            {
+              "date": "2016",
+              "value": 1221923,
+              "facet": "858679853"
+            },
+            {
+              "date": "2016",
+              "value": 1221923,
+              "facet": "738965619"
+            },
+            {
+              "date": "2016",
+              "value": 1221920,
+              "facet": "1151455814"
+            },
+            {
+              "date": "2016",
+              "value": 1221923,
+              "facet": "1456184638"
             }
           ]
         },
@@ -126,6 +265,11 @@
               "date": "2016",
               "value": 275371,
               "facet": "738965619"
+            },
+            {
+              "date": "2016",
+              "value": 275371,
+              "facet": "1456184638"
             }
           ]
         },
@@ -136,6 +280,11 @@
               "date": "2016",
               "value": 308910,
               "facet": "738965619"
+            },
+            {
+              "date": "2016",
+              "value": 308910,
+              "facet": "1456184638"
             }
           ]
         },
@@ -146,6 +295,11 @@
               "date": "2016",
               "value": 570883,
               "facet": "738965619"
+            },
+            {
+              "date": "2016",
+              "value": 570883,
+              "facet": "1456184638"
             }
           ]
         },
@@ -156,6 +310,11 @@
               "date": "2016",
               "value": 178084,
               "facet": "738965619"
+            },
+            {
+              "date": "2016",
+              "value": 178084,
+              "facet": "1456184638"
             }
           ]
         },
@@ -196,6 +355,11 @@
               "date": "2016",
               "value": 602825,
               "facet": "738965619"
+            },
+            {
+              "date": "2016",
+              "value": 602825,
+              "facet": "1456184638"
             }
           ]
         },
@@ -206,6 +370,11 @@
               "date": "2016",
               "value": 1255755,
               "facet": "738965619"
+            },
+            {
+              "date": "2016",
+              "value": 1255755,
+              "facet": "1456184638"
             }
           ]
         },
@@ -216,6 +385,11 @@
               "date": "2016",
               "value": 307110,
               "facet": "738965619"
+            },
+            {
+              "date": "2016",
+              "value": 307110,
+              "facet": "1456184638"
             }
           ]
         },
@@ -226,6 +400,11 @@
               "date": "2016",
               "value": 433929,
               "facet": "738965619"
+            },
+            {
+              "date": "2016",
+              "value": 433929,
+              "facet": "1456184638"
             }
           ]
         },
@@ -236,6 +415,11 @@
               "date": "2016",
               "value": 223505,
               "facet": "738965619"
+            },
+            {
+              "date": "2016",
+              "value": 223505,
+              "facet": "1456184638"
             }
           ]
         },
@@ -246,6 +430,11 @@
               "date": "2016",
               "value": 606223,
               "facet": "738965619"
+            },
+            {
+              "date": "2016",
+              "value": 606223,
+              "facet": "1456184638"
             }
           ]
         },
@@ -256,6 +445,11 @@
               "date": "2016",
               "value": 332769,
               "facet": "738965619"
+            },
+            {
+              "date": "2016",
+              "value": 332769,
+              "facet": "1456184638"
             }
           ]
         },
@@ -266,6 +460,11 @@
               "date": "2016",
               "value": 674330,
               "facet": "738965619"
+            },
+            {
+              "date": "2016",
+              "value": 674330,
+              "facet": "1456184638"
             }
           ]
         },
@@ -276,6 +475,11 @@
               "date": "2016",
               "value": 693679,
               "facet": "738965619"
+            },
+            {
+              "date": "2016",
+              "value": 693679,
+              "facet": "1456184638"
             }
           ]
         },
@@ -286,6 +490,11 @@
               "date": "2016",
               "value": 498362,
               "facet": "738965619"
+            },
+            {
+              "date": "2016",
+              "value": 498362,
+              "facet": "1456184638"
             }
           ]
         },
@@ -296,6 +505,11 @@
               "date": "2016",
               "value": 285308,
               "facet": "738965619"
+            },
+            {
+              "date": "2016",
+              "value": 285308,
+              "facet": "1456184638"
             }
           ]
         },
@@ -306,6 +520,11 @@
               "date": "2016",
               "value": 533213,
               "facet": "738965619"
+            },
+            {
+              "date": "2016",
+              "value": 533213,
+              "facet": "1456184638"
             }
           ]
         },
@@ -316,6 +535,11 @@
               "date": "2016",
               "value": 209161,
               "facet": "738965619"
+            },
+            {
+              "date": "2016",
+              "value": 209161,
+              "facet": "1456184638"
             }
           ]
         },
@@ -326,6 +550,11 @@
               "date": "2016",
               "value": 555023,
               "facet": "738965619"
+            },
+            {
+              "date": "2016",
+              "value": 555023,
+              "facet": "1456184638"
             }
           ]
         },
@@ -336,6 +565,11 @@
               "date": "2016",
               "value": 340544,
               "facet": "738965619"
+            },
+            {
+              "date": "2016",
+              "value": 340544,
+              "facet": "1456184638"
             }
           ]
         },
@@ -396,6 +630,11 @@
               "date": "2016",
               "value": 260517,
               "facet": "738965619"
+            },
+            {
+              "date": "2016",
+              "value": 260517,
+              "facet": "1456184638"
             }
           ]
         },
@@ -406,6 +645,11 @@
               "date": "2016",
               "value": 237242,
               "facet": "738965619"
+            },
+            {
+              "date": "2016",
+              "value": 237242,
+              "facet": "1456184638"
             }
           ]
         },
@@ -416,6 +660,11 @@
               "date": "2016",
               "value": 144089,
               "facet": "738965619"
+            },
+            {
+              "date": "2016",
+              "value": 144089,
+              "facet": "1456184638"
             }
           ]
         },
@@ -436,6 +685,11 @@
               "date": "2016",
               "value": 810934,
               "facet": "738965619"
+            },
+            {
+              "date": "2016",
+              "value": 810934,
+              "facet": "1456184638"
             }
           ]
         },
@@ -446,6 +700,11 @@
               "date": "2016",
               "value": 307688,
               "facet": "738965619"
+            },
+            {
+              "date": "2016",
+              "value": 307688,
+              "facet": "1456184638"
             }
           ]
         },
@@ -456,6 +715,11 @@
               "date": "2016",
               "value": 567561,
               "facet": "738965619"
+            },
+            {
+              "date": "2016",
+              "value": 567561,
+              "facet": "1456184638"
             }
           ]
         },
@@ -466,6 +730,11 @@
               "date": "2016",
               "value": 670597,
               "facet": "738965619"
+            },
+            {
+              "date": "2016",
+              "value": 670597,
+              "facet": "1456184638"
             }
           ]
         },
@@ -476,6 +745,11 @@
               "date": "2016",
               "value": 598953,
               "facet": "738965619"
+            },
+            {
+              "date": "2016",
+              "value": 598953,
+              "facet": "1456184638"
             }
           ]
         },
@@ -486,6 +760,11 @@
               "date": "2016",
               "value": 908249,
               "facet": "738965619"
+            },
+            {
+              "date": "2016",
+              "value": 908249,
+              "facet": "1456184638"
             }
           ]
         },
@@ -496,6 +775,11 @@
               "date": "2016",
               "value": 1051779,
               "facet": "738965619"
+            },
+            {
+              "date": "2016",
+              "value": 1051779,
+              "facet": "1456184638"
             }
           ]
         },
@@ -506,6 +790,11 @@
               "date": "2016",
               "value": 747548,
               "facet": "738965619"
+            },
+            {
+              "date": "2016",
+              "value": 747548,
+              "facet": "1456184638"
             }
           ]
         },
@@ -516,6 +805,11 @@
               "date": "2016",
               "value": 353288,
               "facet": "738965619"
+            },
+            {
+              "date": "2016",
+              "value": 353288,
+              "facet": "1456184638"
             }
           ]
         },
@@ -526,6 +820,11 @@
               "date": "2016",
               "value": 642191,
               "facet": "738965619"
+            },
+            {
+              "date": "2016",
+              "value": 642191,
+              "facet": "1456184638"
             }
           ]
         },
@@ -536,6 +835,11 @@
               "date": "2016",
               "value": 374743,
               "facet": "738965619"
+            },
+            {
+              "date": "2016",
+              "value": 374743,
+              "facet": "1456184638"
             }
           ]
         },
@@ -546,6 +850,11 @@
               "date": "2016",
               "value": 436069,
               "facet": "738965619"
+            },
+            {
+              "date": "2016",
+              "value": 436069,
+              "facet": "1456184638"
             }
           ]
         },
@@ -556,6 +865,11 @@
               "date": "2016",
               "value": 414789,
               "facet": "738965619"
+            },
+            {
+              "date": "2016",
+              "value": 414789,
+              "facet": "1456184638"
             }
           ]
         },
@@ -566,6 +880,11 @@
               "date": "2016",
               "value": 1566679,
               "facet": "738965619"
+            },
+            {
+              "date": "2016",
+              "value": 1566679,
+              "facet": "1456184638"
             }
           ]
         },
@@ -576,6 +895,11 @@
               "date": "2016",
               "value": 405010,
               "facet": "738965619"
+            },
+            {
+              "date": "2016",
+              "value": 405010,
+              "facet": "1456184638"
             }
           ]
         },
@@ -596,6 +920,11 @@
               "date": "2016",
               "value": 153067,
               "facet": "738965619"
+            },
+            {
+              "date": "2016",
+              "value": 153067,
+              "facet": "1456184638"
             }
           ]
         },
@@ -606,6 +935,11 @@
               "date": "2016",
               "value": 278697,
               "facet": "738965619"
+            },
+            {
+              "date": "2016",
+              "value": 278697,
+              "facet": "1456184638"
             }
           ]
         },
@@ -616,6 +950,11 @@
               "date": "2016",
               "value": 1348183,
               "facet": "738965619"
+            },
+            {
+              "date": "2016",
+              "value": 1348183,
+              "facet": "1456184638"
             }
           ]
         },
@@ -626,6 +965,11 @@
               "date": "2016",
               "value": 190664,
               "facet": "738965619"
+            },
+            {
+              "date": "2016",
+              "value": 190664,
+              "facet": "1456184638"
             }
           ]
         },
@@ -636,6 +980,11 @@
               "date": "2016",
               "value": 173347,
               "facet": "738965619"
+            },
+            {
+              "date": "2016",
+              "value": 173347,
+              "facet": "1456184638"
             }
           ]
         },
@@ -646,6 +995,11 @@
               "date": "2016",
               "value": 227829,
               "facet": "738965619"
+            },
+            {
+              "date": "2016",
+              "value": 227829,
+              "facet": "1456184638"
             }
           ]
         },
@@ -666,6 +1020,11 @@
               "date": "2016",
               "value": 256897,
               "facet": "738965619"
+            },
+            {
+              "date": "2016",
+              "value": 256897,
+              "facet": "1456184638"
             }
           ]
         },
@@ -676,6 +1035,11 @@
               "date": "2016",
               "value": 241535,
               "facet": "738965619"
+            },
+            {
+              "date": "2016",
+              "value": 241535,
+              "facet": "1456184638"
             }
           ]
         },
@@ -686,6 +1050,11 @@
               "date": "2016",
               "value": 119502,
               "facet": "738965619"
+            },
+            {
+              "date": "2016",
+              "value": 119502,
+              "facet": "1456184638"
             }
           ]
         },
@@ -696,6 +1065,11 @@
               "date": "2016",
               "value": 374978,
               "facet": "738965619"
+            },
+            {
+              "date": "2016",
+              "value": 374978,
+              "facet": "1456184638"
             }
           ]
         },
@@ -706,6 +1080,11 @@
               "date": "2016",
               "value": 638425,
               "facet": "738965619"
+            },
+            {
+              "date": "2016",
+              "value": 638425,
+              "facet": "1456184638"
             }
           ]
         },
@@ -716,6 +1095,11 @@
               "date": "2016",
               "value": 325157,
               "facet": "738965619"
+            },
+            {
+              "date": "2016",
+              "value": 325157,
+              "facet": "1456184638"
             }
           ]
         },
@@ -726,6 +1110,11 @@
               "date": "2016",
               "value": 508006,
               "facet": "738965619"
+            },
+            {
+              "date": "2016",
+              "value": 508006,
+              "facet": "1456184638"
             }
           ]
         },
@@ -736,6 +1125,11 @@
               "date": "2016",
               "value": 1252912,
               "facet": "738965619"
+            },
+            {
+              "date": "2016",
+              "value": 1252912,
+              "facet": "1456184638"
             }
           ]
         },
@@ -746,6 +1140,11 @@
               "date": "2016",
               "value": 761997,
               "facet": "738965619"
+            },
+            {
+              "date": "2016",
+              "value": 761997,
+              "facet": "1456184638"
             }
           ]
         },
@@ -776,6 +1175,11 @@
               "date": "2016",
               "value": 339384,
               "facet": "738965619"
+            },
+            {
+              "date": "2016",
+              "value": 339384,
+              "facet": "1456184638"
             }
           ]
         },
@@ -786,6 +1190,11 @@
               "date": "2016",
               "value": 145969,
               "facet": "738965619"
+            },
+            {
+              "date": "2016",
+              "value": 145969,
+              "facet": "1456184638"
             }
           ]
         },
@@ -796,6 +1205,11 @@
               "date": "2016",
               "value": 227339,
               "facet": "738965619"
+            },
+            {
+              "date": "2016",
+              "value": 227339,
+              "facet": "1456184638"
             }
           ]
         },
@@ -806,6 +1220,11 @@
               "date": "2016",
               "value": 650700,
               "facet": "738965619"
+            },
+            {
+              "date": "2016",
+              "value": 650700,
+              "facet": "1456184638"
             }
           ]
         },
@@ -826,6 +1245,11 @@
               "date": "2016",
               "value": 742006,
               "facet": "738965619"
+            },
+            {
+              "date": "2016",
+              "value": 742006,
+              "facet": "1456184638"
             }
           ]
         },
@@ -846,6 +1270,11 @@
               "date": "2016",
               "value": 76422,
               "facet": "738965619"
+            },
+            {
+              "date": "2016",
+              "value": 76422,
+              "facet": "1456184638"
             }
           ]
         },
@@ -866,6 +1295,11 @@
               "date": "2016",
               "value": 162565,
               "facet": "738965619"
+            },
+            {
+              "date": "2016",
+              "value": 161588,
+              "facet": "1456184638"
             }
           ]
         },
@@ -876,6 +1310,11 @@
               "date": "2016",
               "value": 141107,
               "facet": "738965619"
+            },
+            {
+              "date": "2016",
+              "value": 141107,
+              "facet": "1456184638"
             }
           ]
         },
@@ -896,6 +1335,11 @@
               "date": "2016",
               "value": 2019717,
               "facet": "738965619"
+            },
+            {
+              "date": "2016",
+              "value": 2019717,
+              "facet": "1456184638"
             }
           ]
         },
@@ -906,6 +1350,11 @@
               "date": "2016",
               "value": 1055821,
               "facet": "738965619"
+            },
+            {
+              "date": "2016",
+              "value": 1055821,
+              "facet": "1456184638"
             }
           ]
         },
@@ -916,6 +1365,11 @@
               "date": "2016",
               "value": 559014,
               "facet": "738965619"
+            },
+            {
+              "date": "2016",
+              "value": 559014,
+              "facet": "1456184638"
             }
           ]
         },
@@ -926,6 +1380,11 @@
               "date": "2016",
               "value": 154303,
               "facet": "738965619"
+            },
+            {
+              "date": "2016",
+              "value": 155361,
+              "facet": "2458695583"
             }
           ]
         },
@@ -936,6 +1395,11 @@
               "date": "2016",
               "value": 176152,
               "facet": "738965619"
+            },
+            {
+              "date": "2016",
+              "value": 174993,
+              "facet": "2458695583"
             }
           ]
         },
@@ -946,1061 +1410,28 @@
               "date": "2016",
               "value": 332833,
               "facet": "1001395862"
+            },
+            {
+              "date": "2016",
+              "value": 332833,
+              "facet": "858679853"
+            },
+            {
+              "date": "2016",
+              "value": 332833,
+              "facet": "738965619"
+            },
+            {
+              "date": "2016",
+              "value": 332833,
+              "facet": "1151455814"
+            },
+            {
+              "date": "2016",
+              "value": 332833,
+              "facet": "1456184638"
             }
           ]
-        },
-        {
-          "entity": "wikidataId/Q1014741"
-        },
-        {
-          "entity": "wikidataId/Q1014751"
-        },
-        {
-          "entity": "wikidataId/Q1014790"
-        },
-        {
-          "entity": "wikidataId/Q1014795"
-        },
-        {
-          "entity": "wikidataId/Q1014805"
-        },
-        {
-          "entity": "wikidataId/Q1115786"
-        },
-        {
-          "entity": "wikidataId/Q1116153"
-        },
-        {
-          "entity": "wikidataId/Q1116542"
-        },
-        {
-          "entity": "wikidataId/Q1116591"
-        },
-        {
-          "entity": "wikidataId/Q132224"
-        },
-        {
-          "entity": "wikidataId/Q134680"
-        },
-        {
-          "entity": "wikidataId/Q139174"
-        },
-        {
-          "entity": "wikidataId/Q14812"
-        },
-        {
-          "entity": "wikidataId/Q163104"
-        },
-        {
-          "entity": "wikidataId/Q165750"
-        },
-        {
-          "entity": "wikidataId/Q167024"
-        },
-        {
-          "entity": "wikidataId/Q175478"
-        },
-        {
-          "entity": "wikidataId/Q180843"
-        },
-        {
-          "entity": "wikidataId/Q18114"
-        },
-        {
-          "entity": "wikidataId/Q18914778"
-        },
-        {
-          "entity": "wikidataId/Q201008"
-        },
-        {
-          "entity": "wikidataId/Q205854"
-        },
-        {
-          "entity": "wikidataId/Q212673"
-        },
-        {
-          "entity": "wikidataId/Q258745"
-        },
-        {
-          "entity": "wikidataId/Q262723"
-        },
-        {
-          "entity": "wikidataId/Q263441"
-        },
-        {
-          "entity": "wikidataId/Q268470"
-        },
-        {
-          "entity": "wikidataId/Q27729487"
-        },
-        {
-          "entity": "wikidataId/Q27729489"
-        },
-        {
-          "entity": "wikidataId/Q27729491"
-        },
-        {
-          "entity": "wikidataId/Q27729492"
-        },
-        {
-          "entity": "wikidataId/Q282593"
-        },
-        {
-          "entity": "wikidataId/Q284277"
-        },
-        {
-          "entity": "wikidataId/Q28476540"
-        },
-        {
-          "entity": "wikidataId/Q2863671"
-        },
-        {
-          "entity": "wikidataId/Q2863801"
-        },
-        {
-          "entity": "wikidataId/Q2863958"
-        },
-        {
-          "entity": "wikidataId/Q302457"
-        },
-        {
-          "entity": "wikidataId/Q33662520"
-        },
-        {
-          "entity": "wikidataId/Q33664557"
-        },
-        {
-          "entity": "wikidataId/Q33713745"
-        },
-        {
-          "entity": "wikidataId/Q370557"
-        },
-        {
-          "entity": "wikidataId/Q372942"
-        },
-        {
-          "entity": "wikidataId/Q374101"
-        },
-        {
-          "entity": "wikidataId/Q376598"
-        },
-        {
-          "entity": "wikidataId/Q385728"
-        },
-        {
-          "entity": "wikidataId/Q386243"
-        },
-        {
-          "entity": "wikidataId/Q511613"
-        },
-        {
-          "entity": "wikidataId/Q512664"
-        },
-        {
-          "entity": "wikidataId/Q515493"
-        },
-        {
-          "entity": "wikidataId/Q517570"
-        },
-        {
-          "entity": "wikidataId/Q518212"
-        },
-        {
-          "entity": "wikidataId/Q520913"
-        },
-        {
-          "entity": "wikidataId/Q526829"
-        },
-        {
-          "entity": "wikidataId/Q534383"
-        },
-        {
-          "entity": "wikidataId/Q535140"
-        },
-        {
-          "entity": "wikidataId/Q537277"
-        },
-        {
-          "entity": "wikidataId/Q539378"
-        },
-        {
-          "entity": "wikidataId/Q539756"
-        },
-        {
-          "entity": "wikidataId/Q543784"
-        },
-        {
-          "entity": "wikidataId/Q545946"
-        },
-        {
-          "entity": "wikidataId/Q547847"
-        },
-        {
-          "entity": "wikidataId/Q549111"
-        },
-        {
-          "entity": "wikidataId/Q56043111"
-        },
-        {
-          "entity": "wikidataId/Q569447"
-        },
-        {
-          "entity": "wikidataId/Q571456"
-        },
-        {
-          "entity": "wikidataId/Q572094"
-        },
-        {
-          "entity": "wikidataId/Q580284"
-        },
-        {
-          "entity": "wikidataId/Q582305"
-        },
-        {
-          "entity": "wikidataId/Q584641"
-        },
-        {
-          "entity": "wikidataId/Q585013"
-        },
-        {
-          "entity": "wikidataId/Q585380"
-        },
-        {
-          "entity": "wikidataId/Q586597"
-        },
-        {
-          "entity": "wikidataId/Q588823"
-        },
-        {
-          "entity": "wikidataId/Q589467"
-        },
-        {
-          "entity": "wikidataId/Q596603"
-        },
-        {
-          "entity": "wikidataId/Q596974"
-        },
-        {
-          "entity": "wikidataId/Q597652"
-        },
-        {
-          "entity": "wikidataId/Q599886"
-        },
-        {
-          "entity": "wikidataId/Q600345"
-        },
-        {
-          "entity": "wikidataId/Q600838"
-        },
-        {
-          "entity": "wikidataId/Q608267"
-        },
-        {
-          "entity": "wikidataId/Q608483"
-        },
-        {
-          "entity": "wikidataId/Q612145"
-        },
-        {
-          "entity": "wikidataId/Q612189"
-        },
-        {
-          "entity": "wikidataId/Q616226"
-        },
-        {
-          "entity": "wikidataId/Q629410"
-        },
-        {
-          "entity": "wikidataId/Q630159"
-        },
-        {
-          "entity": "wikidataId/Q633970"
-        },
-        {
-          "entity": "wikidataId/Q639304"
-        },
-        {
-          "entity": "wikidataId/Q641167"
-        },
-        {
-          "entity": "wikidataId/Q642854"
-        },
-        {
-          "entity": "wikidataId/Q651187"
-        },
-        {
-          "entity": "wikidataId/Q652833"
-        },
-        {
-          "entity": "wikidataId/Q653514"
-        },
-        {
-          "entity": "wikidataId/Q654357"
-        },
-        {
-          "entity": "wikidataId/Q659331"
-        },
-        {
-          "entity": "wikidataId/Q660165"
-        },
-        {
-          "entity": "wikidataId/Q662088"
-        },
-        {
-          "entity": "wikidataId/Q665242"
-        },
-        {
-          "entity": "wikidataId/Q667555"
-        },
-        {
-          "entity": "wikidataId/Q669222"
-        },
-        {
-          "entity": "wikidataId/Q669556"
-        },
-        {
-          "entity": "wikidataId/Q669949"
-        },
-        {
-          "entity": "wikidataId/Q672744"
-        },
-        {
-          "entity": "wikidataId/Q681862"
-        },
-        {
-          "entity": "wikidataId/Q682085"
-        },
-        {
-          "entity": "wikidataId/Q692903"
-        },
-        {
-          "entity": "wikidataId/Q700351"
-        },
-        {
-          "entity": "wikidataId/Q700354"
-        },
-        {
-          "entity": "wikidataId/Q700364"
-        },
-        {
-          "entity": "wikidataId/Q700367"
-        },
-        {
-          "entity": "wikidataId/Q700375"
-        },
-        {
-          "entity": "wikidataId/Q700379"
-        },
-        {
-          "entity": "wikidataId/Q700385"
-        },
-        {
-          "entity": "wikidataId/Q700396"
-        },
-        {
-          "entity": "wikidataId/Q700401"
-        },
-        {
-          "entity": "wikidataId/Q700410"
-        },
-        {
-          "entity": "wikidataId/Q700420"
-        },
-        {
-          "entity": "wikidataId/Q700427"
-        },
-        {
-          "entity": "wikidataId/Q700433"
-        },
-        {
-          "entity": "wikidataId/Q700438"
-        },
-        {
-          "entity": "wikidataId/Q700451"
-        },
-        {
-          "entity": "wikidataId/Q700461"
-        },
-        {
-          "entity": "wikidataId/Q700464"
-        },
-        {
-          "entity": "wikidataId/Q700472"
-        },
-        {
-          "entity": "wikidataId/Q700484"
-        },
-        {
-          "entity": "wikidataId/Q700495"
-        },
-        {
-          "entity": "wikidataId/Q700507"
-        },
-        {
-          "entity": "wikidataId/Q700509"
-        },
-        {
-          "entity": "wikidataId/Q700521"
-        },
-        {
-          "entity": "wikidataId/Q700534"
-        },
-        {
-          "entity": "wikidataId/Q700536"
-        },
-        {
-          "entity": "wikidataId/Q700546"
-        },
-        {
-          "entity": "wikidataId/Q700549"
-        },
-        {
-          "entity": "wikidataId/Q700557"
-        },
-        {
-          "entity": "wikidataId/Q700574"
-        },
-        {
-          "entity": "wikidataId/Q700581"
-        },
-        {
-          "entity": "wikidataId/Q700586"
-        },
-        {
-          "entity": "wikidataId/Q700595"
-        },
-        {
-          "entity": "wikidataId/Q700609"
-        },
-        {
-          "entity": "wikidataId/Q700637"
-        },
-        {
-          "entity": "wikidataId/Q700647"
-        },
-        {
-          "entity": "wikidataId/Q700649"
-        },
-        {
-          "entity": "wikidataId/Q700660"
-        },
-        {
-          "entity": "wikidataId/Q700664"
-        },
-        {
-          "entity": "wikidataId/Q700678"
-        },
-        {
-          "entity": "wikidataId/Q700686"
-        },
-        {
-          "entity": "wikidataId/Q700697"
-        },
-        {
-          "entity": "wikidataId/Q700712"
-        },
-        {
-          "entity": "wikidataId/Q700721"
-        },
-        {
-          "entity": "wikidataId/Q700723"
-        },
-        {
-          "entity": "wikidataId/Q700737"
-        },
-        {
-          "entity": "wikidataId/Q700744"
-        },
-        {
-          "entity": "wikidataId/Q700748"
-        },
-        {
-          "entity": "wikidataId/Q700755"
-        },
-        {
-          "entity": "wikidataId/Q700768"
-        },
-        {
-          "entity": "wikidataId/Q700778"
-        },
-        {
-          "entity": "wikidataId/Q700794"
-        },
-        {
-          "entity": "wikidataId/Q700795"
-        },
-        {
-          "entity": "wikidataId/Q700809"
-        },
-        {
-          "entity": "wikidataId/Q700811"
-        },
-        {
-          "entity": "wikidataId/Q700823"
-        },
-        {
-          "entity": "wikidataId/Q700826"
-        },
-        {
-          "entity": "wikidataId/Q700832"
-        },
-        {
-          "entity": "wikidataId/Q700839"
-        },
-        {
-          "entity": "wikidataId/Q700845"
-        },
-        {
-          "entity": "wikidataId/Q700861"
-        },
-        {
-          "entity": "wikidataId/Q700869"
-        },
-        {
-          "entity": "wikidataId/Q700882"
-        },
-        {
-          "entity": "wikidataId/Q700884"
-        },
-        {
-          "entity": "wikidataId/Q700900"
-        },
-        {
-          "entity": "wikidataId/Q700901"
-        },
-        {
-          "entity": "wikidataId/Q700914"
-        },
-        {
-          "entity": "wikidataId/Q700916"
-        },
-        {
-          "entity": "wikidataId/Q700965"
-        },
-        {
-          "entity": "wikidataId/Q700981"
-        },
-        {
-          "entity": "wikidataId/Q700994"
-        },
-        {
-          "entity": "wikidataId/Q700998"
-        },
-        {
-          "entity": "wikidataId/Q701005"
-        },
-        {
-          "entity": "wikidataId/Q701009"
-        },
-        {
-          "entity": "wikidataId/Q701022"
-        },
-        {
-          "entity": "wikidataId/Q701034"
-        },
-        {
-          "entity": "wikidataId/Q701038"
-        },
-        {
-          "entity": "wikidataId/Q701044"
-        },
-        {
-          "entity": "wikidataId/Q701047"
-        },
-        {
-          "entity": "wikidataId/Q701061"
-        },
-        {
-          "entity": "wikidataId/Q701072"
-        },
-        {
-          "entity": "wikidataId/Q701082"
-        },
-        {
-          "entity": "wikidataId/Q701083"
-        },
-        {
-          "entity": "wikidataId/Q701097"
-        },
-        {
-          "entity": "wikidataId/Q701110"
-        },
-        {
-          "entity": "wikidataId/Q701131"
-        },
-        {
-          "entity": "wikidataId/Q701143"
-        },
-        {
-          "entity": "wikidataId/Q701144"
-        },
-        {
-          "entity": "wikidataId/Q701155"
-        },
-        {
-          "entity": "wikidataId/Q701164"
-        },
-        {
-          "entity": "wikidataId/Q701177"
-        },
-        {
-          "entity": "wikidataId/Q701190"
-        },
-        {
-          "entity": "wikidataId/Q701213"
-        },
-        {
-          "entity": "wikidataId/Q701222"
-        },
-        {
-          "entity": "wikidataId/Q701227"
-        },
-        {
-          "entity": "wikidataId/Q701238"
-        },
-        {
-          "entity": "wikidataId/Q701242"
-        },
-        {
-          "entity": "wikidataId/Q701253"
-        },
-        {
-          "entity": "wikidataId/Q701268"
-        },
-        {
-          "entity": "wikidataId/Q701309"
-        },
-        {
-          "entity": "wikidataId/Q701315"
-        },
-        {
-          "entity": "wikidataId/Q701325"
-        },
-        {
-          "entity": "wikidataId/Q701341"
-        },
-        {
-          "entity": "wikidataId/Q701349"
-        },
-        {
-          "entity": "wikidataId/Q701368"
-        },
-        {
-          "entity": "wikidataId/Q701370"
-        },
-        {
-          "entity": "wikidataId/Q701385"
-        },
-        {
-          "entity": "wikidataId/Q701386"
-        },
-        {
-          "entity": "wikidataId/Q701396"
-        },
-        {
-          "entity": "wikidataId/Q701410"
-        },
-        {
-          "entity": "wikidataId/Q701417"
-        },
-        {
-          "entity": "wikidataId/Q701422"
-        },
-        {
-          "entity": "wikidataId/Q701430"
-        },
-        {
-          "entity": "wikidataId/Q701434"
-        },
-        {
-          "entity": "wikidataId/Q701439"
-        },
-        {
-          "entity": "wikidataId/Q701446"
-        },
-        {
-          "entity": "wikidataId/Q701452"
-        },
-        {
-          "entity": "wikidataId/Q701465"
-        },
-        {
-          "entity": "wikidataId/Q701467"
-        },
-        {
-          "entity": "wikidataId/Q701477"
-        },
-        {
-          "entity": "wikidataId/Q701481"
-        },
-        {
-          "entity": "wikidataId/Q701510"
-        },
-        {
-          "entity": "wikidataId/Q701530"
-        },
-        {
-          "entity": "wikidataId/Q701531"
-        },
-        {
-          "entity": "wikidataId/Q701543"
-        },
-        {
-          "entity": "wikidataId/Q701546"
-        },
-        {
-          "entity": "wikidataId/Q701562"
-        },
-        {
-          "entity": "wikidataId/Q701568"
-        },
-        {
-          "entity": "wikidataId/Q701572"
-        },
-        {
-          "entity": "wikidataId/Q701604"
-        },
-        {
-          "entity": "wikidataId/Q701616"
-        },
-        {
-          "entity": "wikidataId/Q701638"
-        },
-        {
-          "entity": "wikidataId/Q701646"
-        },
-        {
-          "entity": "wikidataId/Q701652"
-        },
-        {
-          "entity": "wikidataId/Q701660"
-        },
-        {
-          "entity": "wikidataId/Q701687"
-        },
-        {
-          "entity": "wikidataId/Q701708"
-        },
-        {
-          "entity": "wikidataId/Q701711"
-        },
-        {
-          "entity": "wikidataId/Q701744"
-        },
-        {
-          "entity": "wikidataId/Q701749"
-        },
-        {
-          "entity": "wikidataId/Q701760"
-        },
-        {
-          "entity": "wikidataId/Q701773"
-        },
-        {
-          "entity": "wikidataId/Q701776"
-        },
-        {
-          "entity": "wikidataId/Q701790"
-        },
-        {
-          "entity": "wikidataId/Q701791"
-        },
-        {
-          "entity": "wikidataId/Q701804"
-        },
-        {
-          "entity": "wikidataId/Q701806"
-        },
-        {
-          "entity": "wikidataId/Q701822"
-        },
-        {
-          "entity": "wikidataId/Q701834"
-        },
-        {
-          "entity": "wikidataId/Q701851"
-        },
-        {
-          "entity": "wikidataId/Q701861"
-        },
-        {
-          "entity": "wikidataId/Q701873"
-        },
-        {
-          "entity": "wikidataId/Q701903"
-        },
-        {
-          "entity": "wikidataId/Q701933"
-        },
-        {
-          "entity": "wikidataId/Q701950"
-        },
-        {
-          "entity": "wikidataId/Q701961"
-        },
-        {
-          "entity": "wikidataId/Q701978"
-        },
-        {
-          "entity": "wikidataId/Q701995"
-        },
-        {
-          "entity": "wikidataId/Q702009"
-        },
-        {
-          "entity": "wikidataId/Q702013"
-        },
-        {
-          "entity": "wikidataId/Q702025"
-        },
-        {
-          "entity": "wikidataId/Q702045"
-        },
-        {
-          "entity": "wikidataId/Q702051"
-        },
-        {
-          "entity": "wikidataId/Q702066"
-        },
-        {
-          "entity": "wikidataId/Q702083"
-        },
-        {
-          "entity": "wikidataId/Q702093"
-        },
-        {
-          "entity": "wikidataId/Q702112"
-        },
-        {
-          "entity": "wikidataId/Q702122"
-        },
-        {
-          "entity": "wikidataId/Q702130"
-        },
-        {
-          "entity": "wikidataId/Q702145"
-        },
-        {
-          "entity": "wikidataId/Q702153"
-        },
-        {
-          "entity": "wikidataId/Q702161"
-        },
-        {
-          "entity": "wikidataId/Q702168"
-        },
-        {
-          "entity": "wikidataId/Q702180"
-        },
-        {
-          "entity": "wikidataId/Q702181"
-        },
-        {
-          "entity": "wikidataId/Q702196"
-        },
-        {
-          "entity": "wikidataId/Q702199"
-        },
-        {
-          "entity": "wikidataId/Q702214"
-        },
-        {
-          "entity": "wikidataId/Q702225"
-        },
-        {
-          "entity": "wikidataId/Q702227"
-        },
-        {
-          "entity": "wikidataId/Q702245"
-        },
-        {
-          "entity": "wikidataId/Q702279"
-        },
-        {
-          "entity": "wikidataId/Q702330"
-        },
-        {
-          "entity": "wikidataId/Q702334"
-        },
-        {
-          "entity": "wikidataId/Q702350"
-        },
-        {
-          "entity": "wikidataId/Q702364"
-        },
-        {
-          "entity": "wikidataId/Q702367"
-        },
-        {
-          "entity": "wikidataId/Q702381"
-        },
-        {
-          "entity": "wikidataId/Q702395"
-        },
-        {
-          "entity": "wikidataId/Q702409"
-        },
-        {
-          "entity": "wikidataId/Q702426"
-        },
-        {
-          "entity": "wikidataId/Q702429"
-        },
-        {
-          "entity": "wikidataId/Q702441"
-        },
-        {
-          "entity": "wikidataId/Q702444"
-        },
-        {
-          "entity": "wikidataId/Q702457"
-        },
-        {
-          "entity": "wikidataId/Q702466"
-        },
-        {
-          "entity": "wikidataId/Q702471"
-        },
-        {
-          "entity": "wikidataId/Q702491"
-        },
-        {
-          "entity": "wikidataId/Q702496"
-        },
-        {
-          "entity": "wikidataId/Q702514"
-        },
-        {
-          "entity": "wikidataId/Q702522"
-        },
-        {
-          "entity": "wikidataId/Q702534"
-        },
-        {
-          "entity": "wikidataId/Q702552"
-        },
-        {
-          "entity": "wikidataId/Q702577"
-        },
-        {
-          "entity": "wikidataId/Q702591"
-        },
-        {
-          "entity": "wikidataId/Q702629"
-        },
-        {
-          "entity": "wikidataId/Q702642"
-        },
-        {
-          "entity": "wikidataId/Q702655"
-        },
-        {
-          "entity": "wikidataId/Q702657"
-        },
-        {
-          "entity": "wikidataId/Q702671"
-        },
-        {
-          "entity": "wikidataId/Q702672"
-        },
-        {
-          "entity": "wikidataId/Q702689"
-        },
-        {
-          "entity": "wikidataId/Q702697"
-        },
-        {
-          "entity": "wikidataId/Q702702"
-        },
-        {
-          "entity": "wikidataId/Q702713"
-        },
-        {
-          "entity": "wikidataId/Q702723"
-        },
-        {
-          "entity": "wikidataId/Q702745"
-        },
-        {
-          "entity": "wikidataId/Q702750"
-        },
-        {
-          "entity": "wikidataId/Q702763"
-        },
-        {
-          "entity": "wikidataId/Q702768"
-        },
-        {
-          "entity": "wikidataId/Q702787"
-        },
-        {
-          "entity": "wikidataId/Q702790"
-        },
-        {
-          "entity": "wikidataId/Q702799"
-        },
-        {
-          "entity": "wikidataId/Q702812"
-        },
-        {
-          "entity": "wikidataId/Q702836"
-        },
-        {
-          "entity": "wikidataId/Q702852"
-        },
-        {
-          "entity": "wikidataId/Q702862"
-        },
-        {
-          "entity": "wikidataId/Q702864"
-        },
-        {
-          "entity": "wikidataId/Q702873"
-        },
-        {
-          "entity": "wikidataId/Q767111"
-        },
-        {
-          "entity": "wikidataId/Q773569"
-        },
-        {
-          "entity": "wikidataId/Q844987"
-        },
-        {
-          "entity": "wikidataId/Q845039"
-        },
-        {
-          "entity": "wikidataId/Q895024"
-        },
-        {
-          "entity": "wikidataId/Q93949"
-        },
-        {
-          "entity": "wikidataId/Q940292"
-        },
-        {
-          "entity": "wikidataId/Q996138"
-        },
-        {
-          "entity": "wikidataId/Q996207"
-        },
-        {
-          "entity": "wikidataId/Q996301"
-        },
-        {
-          "entity": "wikidataId/Q996320"
-        },
-        {
-          "entity": "wikidataId/Q996336"
-        },
-        {
-          "entity": "wikidataId/Q996367"
-        },
-        {
-          "entity": "wikidataId/Q996400"
-        },
-        {
-          "entity": "wikidataId/Q996414"
         }
       ]
     }
@@ -2009,6 +1440,12 @@
     "1001395862": {
       "import_name": "EurostatData",
       "provenance_url": "https://ec.europa.eu/eurostat/data/database"
+    },
+    "1151455814": {
+      "import_name": "OECDRegionalDemography",
+      "provenance_url": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#",
+      "measurement_method": "OECDRegionalStatistics",
+      "observation_period": "P1Y"
     },
     "1456184638": {
       "import_name": "WikipediaStatsData",
@@ -2020,15 +1457,15 @@
       "provenance_url": "https://www.wikidata.org/wiki/Wikidata:Main_Page",
       "measurement_method": "WikidataPopulation"
     },
-    "3114843463": {
-      "import_name": "HumanCuratedStats",
-      "provenance_url": "https://google.com",
-      "measurement_method": "HumanCuratedStats"
-    },
     "738965619": {
       "import_name": "FranceINSEE",
       "provenance_url": "https://www.insee.fr/en/metadonnees/source/indicateur/p1667/description",
       "measurement_method": "FranceINSEE"
+    },
+    "858679853": {
+      "import_name": "EurostatData",
+      "provenance_url": "https://ec.europa.eu/eurostat/data/database",
+      "measurement_method": "EurostatRegionalPopulationData"
     }
   }
 }

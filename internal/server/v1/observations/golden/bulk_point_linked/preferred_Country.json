@@ -2644,6 +2644,10 @@
       "measurement_method": "WorldBankSubnationalPopulationEstimate",
       "observation_period": "P1Y"
     },
+    "563701067": {
+      "import_name": "NigeriaStatistics",
+      "provenance_url": "https://nigeria.opendataforafrica.org"
+    },
     "650668249": {
       "import_name": "UnitedKingdomONS",
       "provenance_url": "https://www.ons.gov.uk",

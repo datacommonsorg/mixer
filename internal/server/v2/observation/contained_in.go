@@ -96,27 +96,6 @@ func FetchContainedIn(
 			if err != nil {
 				return nil, err
 			}
-			// When child places have multiple types, Bigtable only stores the data
-			// for one of the types. This is to use a fallback type when there is no
-			// data for the queried type.
-			// TODO: remove this logic once all types data are computed.
-			if childType == "AdministrativeArea1" {
-				refetch := true
-				for _, data := range btData {
-					if data != nil {
-						refetch = false
-					}
-				}
-				if refetch {
-					btData, err = stat.ReadStatCollection(
-						ctx, store.BtGroup, bigtable.BtObsCollection,
-						ancestor, "State", variables, queryDate,
-					)
-					if err != nil {
-						return nil, err
-					}
-				}
-			}
 			for _, variable := range variables {
 				result.ByVariable[variable] = &pbv2.VariableObservation{
 					ByEntity: map[string]*pbv2.EntityObservation{},
