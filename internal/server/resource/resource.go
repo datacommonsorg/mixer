@@ -15,7 +15,6 @@
 package resource
 
 import (
-	"database/sql"
 	"strings"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
@@ -45,7 +44,6 @@ type Cache struct {
 	// SvgInfo is a map of svg id to its information.
 	RawSvg         map[string]*pb.StatVarGroupNode
 	SvgSearchIndex *SearchIndex
-	SQLiteDb       *sql.DB
 }
 
 // Metadata represents the metadata used by the server.
