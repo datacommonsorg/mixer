@@ -99,7 +99,7 @@
         "id": "dc/g/Person_Age",
         "specializedEntity": "Age",
         "displayName": "Person by Age",
-        "descendentStatVarCount": 20695
+        "descendentStatVarCount": 20960
       },
       {
         "id": "dc/g/Household_BenefitsStatus",
@@ -147,7 +147,7 @@
         "id": "dc/g/Person_Gender",
         "specializedEntity": "Gender",
         "displayName": "Person by Gender",
-        "descendentStatVarCount": 18787
+        "descendentStatVarCount": 18955
       },
       {
         "id": "dc/g/Person_HealthInsurance",
@@ -201,13 +201,13 @@
         "id": "dc/g/Person_LiteracyStatus",
         "specializedEntity": "Literacy Status",
         "displayName": "Person by Literacy Status",
-        "descendentStatVarCount": 263
+        "descendentStatVarCount": 264
       },
       {
         "id": "dc/g/Person_MaritalStatus",
         "specializedEntity": "Marital Status",
         "displayName": "Person by Marital Status",
-        "descendentStatVarCount": 505
+        "descendentStatVarCount": 752
       },
       {
         "id": "dc/g/Person_MemberStatus",
@@ -243,7 +243,7 @@
         "id": "dc/g/Person_PlaceOfResidenceClassification",
         "specializedEntity": "Place of Residence Classification",
         "displayName": "Person by Place of Residence Classification",
-        "descendentStatVarCount": 2460
+        "descendentStatVarCount": 2463
       },
       {
         "id": "dc/g/Person_PovertyStatus",
@@ -267,7 +267,7 @@
         "id": "dc/g/Residence",
         "specializedEntity": "Residence",
         "displayName": "Residence",
-        "descendentStatVarCount": 3614
+        "descendentStatVarCount": 3617
       },
       {
         "id": "dc/g/Household_TransportationType",
@@ -276,7 +276,7 @@
         "descendentStatVarCount": 104
       }
     ],
-    "descendentStatVarCount": 32072,
+    "descendentStatVarCount": 32347,
     "parentStatVarGroups": [
       "dc/g/Root"
     ]

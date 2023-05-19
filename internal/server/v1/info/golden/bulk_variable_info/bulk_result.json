@@ -5,26 +5,26 @@
       "info": {
         "placeTypeSummary": {
           "AdministrativeArea": {
-            "placeCount": 46,
+            "placeCount": 51,
             "topPlaces": [
               {
-                "dcid": "wikidataId/Q1973593",
-                "name": "Waikato District"
+                "dcid": "wikidataId/Q1088815",
+                "name": "Southeast Region"
               },
               {
-                "dcid": "wikidataId/Q550219",
-                "name": "Capital Regional District"
+                "dcid": "wikidataId/Q1136194",
+                "name": "Northeast Region"
               },
               {
-                "dcid": "wikidataId/Q4874224",
-                "name": "Bay of Plenty"
+                "dcid": "wikidataId/Q1060042",
+                "name": "Southern Brazil"
               }
             ],
             "minValue": 1565,
-            "maxValue": 244600
+            "maxValue": 36986320
           },
           "AdministrativeArea1": {
-            "placeCount": 330,
+            "placeCount": 367,
             "topPlaces": [
               {
                 "dcid": "wikidataId/Q15175",
@@ -39,27 +39,27 @@
                 "name": "Henan"
               }
             ],
-            "minValue": 3325,
+            "minValue": 0,
             "maxValue": 50483000
           },
           "AdministrativeArea2": {
-            "placeCount": 3860,
+            "placeCount": 4628,
             "topPlaces": [
               {
-                "dcid": "wikidataId/Q83114",
-                "name": "São Gonçalo"
+                "dcid": "wikidataId/Q943099",
+                "name": "Thane"
               },
               {
-                "dcid": "wikidataId/Q188897",
-                "name": "Nova Iguaçu"
+                "dcid": "wikidataId/Q338425",
+                "name": "24 Paraganas North"
               },
               {
-                "dcid": "wikidataId/Q271393",
-                "name": "Jaboatão dos Guararapes"
+                "dcid": "wikidataId/Q806463",
+                "name": "Bangalore Urban district"
               }
             ],
             "minValue": 379,
-            "maxValue": 1098014
+            "maxValue": 5195070
           },
           "AdministrativeArea3": {
             "placeCount": 26,
@@ -176,7 +176,7 @@
             "maxValue": 67003
           },
           "City": {
-            "placeCount": 29988,
+            "placeCount": 30612,
             "topPlaces": [
               {
                 "dcid": "wikidataId/Q8686",
@@ -214,7 +214,7 @@
             "maxValue": 1949033
           },
           "Country": {
-            "placeCount": 66,
+            "placeCount": 67,
             "topPlaces": [
               {
                 "dcid": "country/CHN",
@@ -1303,6 +1303,65 @@
             ],
             "observationCount": 673,
             "timeSeriesCount": 673
+          },
+          "dc/base/NigeriaStatistics": {
+            "importName": "NigeriaStatistics",
+            "seriesSummary": [
+              {
+                "seriesKey": {},
+                "earliestDate": "1991",
+                "latestDate": "2006",
+                "placeTypeSummary": {
+                  "AdministrativeArea1": {
+                    "placeCount": 36,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q682571",
+                        "name": "Kano State"
+                      },
+                      {
+                        "dcid": "wikidataId/Q815913",
+                        "name": "Lagos"
+                      },
+                      {
+                        "dcid": "wikidataId/Q145793",
+                        "name": "Zamfara State"
+                      }
+                    ],
+                    "minValue": 684958,
+                    "maxValue": 4453336
+                  },
+                  "City": {
+                    "placeCount": 1,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q3787",
+                        "name": "Abuja"
+                      }
+                    ],
+                    "minValue": 166375,
+                    "maxValue": 673067
+                  },
+                  "Country": {
+                    "placeCount": 1,
+                    "topPlaces": [
+                      {
+                        "dcid": "country/NGA",
+                        "name": "Nigeria"
+                      }
+                    ],
+                    "minValue": 44462612,
+                    "maxValue": 69086302
+                  }
+                },
+                "minValue": 166375,
+                "maxValue": 69086302,
+                "observationCount": 70,
+                "timeSeriesCount": 38
+              }
+            ],
+            "observationCount": 70,
+            "timeSeriesCount": 38
           },
           "dc/base/OECDRegionalDemography": {
             "importName": "OECDRegionalDemography",

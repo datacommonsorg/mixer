@@ -193,6 +193,26 @@
             "observationPeriod": "P1Y"
           }
         },
+        "Count_Person_Female": {
+          "val": {
+            "1991": 44462612,
+            "2006": 69086302
+          },
+          "metadata": {
+            "importName": "NigeriaStatistics",
+            "provenanceUrl": "https://nigeria.opendataforafrica.org"
+          }
+        },
+        "Count_Person_Male": {
+          "val": {
+            "1991": 44529608,
+            "2006": 71345488
+          },
+          "metadata": {
+            "importName": "NigeriaStatistics",
+            "provenanceUrl": "https://nigeria.opendataforafrica.org"
+          }
+        },
         "GiniIndex_EconomicActivity": {
           "val": {
             "1985": 38.7,
