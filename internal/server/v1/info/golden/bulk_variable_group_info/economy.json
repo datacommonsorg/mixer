@@ -14,6 +14,14 @@
             "definition": "st=medianValue,mp=income,pt=Household"
           },
           {
+            "id": "Weekly_Median_Income_Household",
+            "searchNames": [
+              "Median Income of Household (Weekly)"
+            ],
+            "displayName": "Median Income of Household (Weekly)",
+            "definition": "mq=Weekly,st=medianValue,mp=income,pt=Household"
+          },
+          {
             "id": "Count_Product_MobileCellularSubscription_AsFractionOf_Count_Person",
             "searchNames": [
               "Count of Product With Product Type is Mobile Cellular Subscription (Per Capita)"

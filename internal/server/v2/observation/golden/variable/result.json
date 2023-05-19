@@ -117,6 +117,11 @@
         "wikidataId/Q1951": {}
       }
     },
+    "Count_Person_10To19Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
     "Count_Person_15To19Years": {
       "by_entity": {
         "wikidataId/Q1951": {}
@@ -162,6 +167,11 @@
         "wikidataId/Q1951": {}
       }
     },
+    "Count_Person_20To29Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
     "Count_Person_25To29Years": {
       "by_entity": {
         "wikidataId/Q1951": {}
@@ -182,16 +192,6 @@
         "wikidataId/Q1951": {}
       }
     },
-    "Count_Person_25To34Years_Female": {
-      "by_entity": {
-        "wikidataId/Q1951": {}
-      }
-    },
-    "Count_Person_25To34Years_Male": {
-      "by_entity": {
-        "wikidataId/Q1951": {}
-      }
-    },
     "Count_Person_30To34Years": {
       "by_entity": {
         "wikidataId/Q1951": {}
@@ -203,6 +203,11 @@
       }
     },
     "Count_Person_30To34Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_30To39Years": {
       "by_entity": {
         "wikidataId/Q1951": {}
       }
@@ -227,16 +232,6 @@
         "wikidataId/Q1951": {}
       }
     },
-    "Count_Person_35To44Years_Female": {
-      "by_entity": {
-        "wikidataId/Q1951": {}
-      }
-    },
-    "Count_Person_35To44Years_Male": {
-      "by_entity": {
-        "wikidataId/Q1951": {}
-      }
-    },
     "Count_Person_40To44Years": {
       "by_entity": {
         "wikidataId/Q1951": {}
@@ -248,6 +243,11 @@
       }
     },
     "Count_Person_40To44Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_40To49Years": {
       "by_entity": {
         "wikidataId/Q1951": {}
       }
@@ -272,16 +272,6 @@
         "wikidataId/Q1951": {}
       }
     },
-    "Count_Person_45To54Years_Female": {
-      "by_entity": {
-        "wikidataId/Q1951": {}
-      }
-    },
-    "Count_Person_45To54Years_Male": {
-      "by_entity": {
-        "wikidataId/Q1951": {}
-      }
-    },
     "Count_Person_50To54Years": {
       "by_entity": {
         "wikidataId/Q1951": {}
@@ -293,6 +283,11 @@
       }
     },
     "Count_Person_50To54Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_50To59Years": {
       "by_entity": {
         "wikidataId/Q1951": {}
       }
@@ -317,12 +312,7 @@
         "wikidataId/Q1951": {}
       }
     },
-    "Count_Person_55To64Years_Female": {
-      "by_entity": {
-        "wikidataId/Q1951": {}
-      }
-    },
-    "Count_Person_55To64Years_Male": {
+    "Count_Person_5To19Years": {
       "by_entity": {
         "wikidataId/Q1951": {}
       }
@@ -353,6 +343,11 @@
       }
     },
     "Count_Person_60To64Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_60To69Years": {
       "by_entity": {
         "wikidataId/Q1951": {}
       }
@@ -392,6 +387,11 @@
         "wikidataId/Q1951": {}
       }
     },
+    "Count_Person_70OrMoreYears": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
     "Count_Person_70To74Years": {
       "by_entity": {
         "wikidataId/Q1951": {}
@@ -408,16 +408,6 @@
       }
     },
     "Count_Person_75OrMoreYears": {
-      "by_entity": {
-        "wikidataId/Q1951": {}
-      }
-    },
-    "Count_Person_75OrMoreYears_Female": {
-      "by_entity": {
-        "wikidataId/Q1951": {}
-      }
-    },
-    "Count_Person_75OrMoreYears_Male": {
       "by_entity": {
         "wikidataId/Q1951": {}
       }
@@ -497,6 +487,11 @@
         "wikidataId/Q1951": {}
       }
     },
+    "Count_Person_Upto9Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
     "LifeExpectancy_Person": {
       "by_entity": {
         "wikidataId/Q1951": {}
@@ -565,31 +560,6 @@
     "Min_Temperature": {
       "by_entity": {
         "wikidataId/Q506877": {}
-      }
-    },
-    "dc/5by90fh61z2s4": {
-      "by_entity": {
-        "wikidataId/Q1951": {}
-      }
-    },
-    "dc/6zsphg3yq6znf": {
-      "by_entity": {
-        "wikidataId/Q1951": {}
-      }
-    },
-    "dc/nf9577mjqs69g": {
-      "by_entity": {
-        "wikidataId/Q1951": {}
-      }
-    },
-    "dc/x73k9t2mzzcs2": {
-      "by_entity": {
-        "wikidataId/Q1951": {}
-      }
-    },
-    "dc/xh9d9e2le1r41": {
-      "by_entity": {
-        "wikidataId/Q1951": {}
       }
     },
     "minimumWage": {

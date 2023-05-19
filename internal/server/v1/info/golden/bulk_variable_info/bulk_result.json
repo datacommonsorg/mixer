@@ -24,7 +24,7 @@
             "maxValue": 36986320
           },
           "AdministrativeArea1": {
-            "placeCount": 367,
+            "placeCount": 389,
             "topPlaces": [
               {
                 "dcid": "wikidataId/Q15175",
@@ -176,7 +176,7 @@
             "maxValue": 67003
           },
           "City": {
-            "placeCount": 30612,
+            "placeCount": 30613,
             "topPlaces": [
               {
                 "dcid": "wikidataId/Q8686",
@@ -214,7 +214,7 @@
             "maxValue": 1949033
           },
           "Country": {
-            "placeCount": 67,
+            "placeCount": 68,
             "topPlaces": [
               {
                 "dcid": "country/CHN",
@@ -422,6 +422,65 @@
           }
         },
         "provenanceSummary": {
+          "dc/base/Argentina_Census": {
+            "importName": "Argentina_Census",
+            "seriesSummary": [
+              {
+                "seriesKey": {},
+                "earliestDate": "1980",
+                "latestDate": "2010",
+                "placeTypeSummary": {
+                  "AdministrativeArea1": {
+                    "placeCount": 22,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q44759",
+                        "name": "Córdoba Province"
+                      },
+                      {
+                        "dcid": "wikidataId/Q44823",
+                        "name": "Santa Fe Province"
+                      },
+                      {
+                        "dcid": "wikidataId/Q44797",
+                        "name": "Mendoza"
+                      }
+                    ],
+                    "minValue": 10760,
+                    "maxValue": 1703788
+                  },
+                  "City": {
+                    "placeCount": 1,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q1486",
+                        "name": "Buenos Aires"
+                      }
+                    ],
+                    "minValue": 5483226,
+                    "maxValue": 8020503
+                  },
+                  "Country": {
+                    "placeCount": 1,
+                    "topPlaces": [
+                      {
+                        "dcid": "country/ARG",
+                        "name": "Argentina"
+                      }
+                    ],
+                    "minValue": 14191463,
+                    "maxValue": 20593330
+                  }
+                },
+                "minValue": 10760,
+                "maxValue": 20593330,
+                "observationCount": 96,
+                "timeSeriesCount": 24
+              }
+            ],
+            "observationCount": 96,
+            "timeSeriesCount": 24
+          },
           "dc/base/Brazil_Census": {
             "importName": "Brazil_Census",
             "seriesSummary": [

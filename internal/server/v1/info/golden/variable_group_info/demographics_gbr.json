@@ -95,7 +95,7 @@
         "id": "dc/g/Person_Age",
         "specializedEntity": "Age",
         "displayName": "Person by Age",
-        "descendentStatVarCount": 657
+        "descendentStatVarCount": 653
       },
       {
         "id": "dc/g/Household_BenefitsStatus",
@@ -136,7 +136,7 @@
         "id": "dc/g/Person_Gender",
         "specializedEntity": "Gender",
         "displayName": "Person by Gender",
-        "descendentStatVarCount": 2438
+        "descendentStatVarCount": 2426
       },
       {
         "id": "dc/g/Person_HealthInsurance",
@@ -248,7 +248,7 @@
         "displayName": "Household by Transportation Type"
       }
     ],
-    "descendentStatVarCount": 3322,
+    "descendentStatVarCount": 3318,
     "parentStatVarGroups": [
       "dc/g/Root"
     ]

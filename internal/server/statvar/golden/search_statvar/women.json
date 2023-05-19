@@ -34017,6 +34017,88 @@
       ]
     },
     {
+      "dcid": "dc/g/Person_Age_Gender-Female",
+      "name": "Person With Age, Gender = Female",
+      "statVars": [
+        {
+          "name": "Life Expectancy: 1 Years or Less, Female",
+          "dcid": "LifeExpectancy_Person_Upto1Years_Female"
+        },
+        {
+          "name": "Population: 0 - 14 Years, Female",
+          "dcid": "Count_Person_0To14Years_Female"
+        },
+        {
+          "name": "Population: 14 Years or Less, Female",
+          "dcid": "Count_Person_Upto14Years_Female"
+        },
+        {
+          "name": "Population: 15 - 59 Years, Female",
+          "dcid": "Count_Person_15To59Years_Female"
+        },
+        {
+          "name": "Population: 3 Years or More, Female",
+          "dcid": "Count_Person_3OrMoreYears_Female"
+        },
+        {
+          "name": "Population: 60 Years or More, Female",
+          "dcid": "Count_Person_60OrMoreYears_Female"
+        },
+        {
+          "name": "Population: 65 - 66 Years, Female",
+          "dcid": "Count_Person_65To66Years_Female"
+        },
+        {
+          "name": "Population: 67 - 69 Years, Female",
+          "dcid": "Count_Person_67To69Years_Female"
+        },
+        {
+          "name": "Population: 80 Years or More, Female",
+          "dcid": "Count_Person_80OrMoreYears_Female"
+        },
+        {
+          "name": "Population: 85 - 89 Years, Female",
+          "dcid": "Count_Person_85To89Years_Female"
+        },
+        {
+          "name": "Population: 90 - 94 Years, Female",
+          "dcid": "Count_Person_90To94Years_Female"
+        },
+        {
+          "name": "Population: 90 Years or More, Female",
+          "dcid": "Count_Person_90OrMoreYears_Female"
+        },
+        {
+          "name": "Population: 95 - 99 Years, Female",
+          "dcid": "Count_Person_95To99Years_Female"
+        },
+        {
+          "name": "Population: 95 Years or More, Female",
+          "dcid": "Count_Person_95OrMoreYears_Female"
+        },
+        {
+          "name": "Population: 99 Years or More, Female",
+          "dcid": "Count_Person_99OrMoreYears_Female"
+        },
+        {
+          "name": "Unemployment Rate: 25 - 74 Years, Female",
+          "dcid": "UnemploymentRate_Person_25To74Years_Female"
+        },
+        {
+          "name": "Unemployment Rate: 25 Years or Less, Female",
+          "dcid": "UnemploymentRate_Person_Upto25Years_Female"
+        },
+        {
+          "name": "Prevalence: 50 - 74 Years, Female, Mammography",
+          "dcid": "Percent_Person_50To74Years_Female_ReceivedMammography"
+        },
+        {
+          "name": "Population (Measured Based on Custody): 0 - 17 Years, Female, Incarcerated",
+          "dcid": "dc/c17kzp0zrfkq9"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/SDG_5.6.2",
       "name": "5.6.2: Number of countries with laws and regulations that guarantee full and equal access to women and men aged 15 years and older to sexual and reproductive health care, information and education",
       "statVars": [
@@ -34523,72 +34605,6 @@
         {
           "name": "Proportion of time spent on unpaid domestic chores: 85 years old and over, Female",
           "dcid": "sdg/SL_DOM_TSPDDC_85GEQ_FEMALE"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age_Gender-Female",
-      "name": "Person With Age, Gender = Female",
-      "statVars": [
-        {
-          "name": "Life Expectancy: 1 Years or Less, Female",
-          "dcid": "LifeExpectancy_Person_Upto1Years_Female"
-        },
-        {
-          "name": "Population: 0 - 14 Years, Female",
-          "dcid": "Count_Person_0To14Years_Female"
-        },
-        {
-          "name": "Population: 14 Years or Less, Female",
-          "dcid": "Count_Person_Upto14Years_Female"
-        },
-        {
-          "name": "Population: 15 - 59 Years, Female",
-          "dcid": "Count_Person_15To59Years_Female"
-        },
-        {
-          "name": "Population: 3 Years or More, Female",
-          "dcid": "Count_Person_3OrMoreYears_Female"
-        },
-        {
-          "name": "Population: 60 Years or More, Female",
-          "dcid": "Count_Person_60OrMoreYears_Female"
-        },
-        {
-          "name": "Population: 65 - 66 Years, Female",
-          "dcid": "Count_Person_65To66Years_Female"
-        },
-        {
-          "name": "Population: 67 - 69 Years, Female",
-          "dcid": "Count_Person_67To69Years_Female"
-        },
-        {
-          "name": "Population: 80 Years or More, Female",
-          "dcid": "Count_Person_80OrMoreYears_Female"
-        },
-        {
-          "name": "Population: 85 - 89 Years, Female",
-          "dcid": "Count_Person_85To89Years_Female"
-        },
-        {
-          "name": "Population: 90 Years or More, Female",
-          "dcid": "Count_Person_90OrMoreYears_Female"
-        },
-        {
-          "name": "Unemployment Rate: 25 - 74 Years, Female",
-          "dcid": "UnemploymentRate_Person_25To74Years_Female"
-        },
-        {
-          "name": "Unemployment Rate: 25 Years or Less, Female",
-          "dcid": "UnemploymentRate_Person_Upto25Years_Female"
-        },
-        {
-          "name": "Prevalence: 50 - 74 Years, Female, Mammography",
-          "dcid": "Percent_Person_50To74Years_Female_ReceivedMammography"
-        },
-        {
-          "name": "Population (Measured Based on Custody): 0 - 17 Years, Female, Incarcerated",
-          "dcid": "dc/c17kzp0zrfkq9"
         }
       ]
     },
@@ -35283,6 +35299,834 @@
         {
           "name": "Percentage: Female, Below Poverty Level in The Past 12 Months",
           "dcid": "dc/k0zg5lw8686z8"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years0To4_Gender-Female_MedicalCondition",
+      "name": "Person With Age = 0 - 4 Years, Gender = Female, Medical Condition",
+      "statVars": [
+        {
+          "name": "Population: 0 - 4 Years, Female, Arthritis",
+          "dcid": "Count_Person_0To4Years_Female_ConditionArthritis"
+        },
+        {
+          "name": "Population: 0 - 4 Years, Female, Asthma",
+          "dcid": "Count_Person_0To4Years_Female_ConditionAsthma"
+        },
+        {
+          "name": "Population: 0 - 4 Years, Female, Cancer",
+          "dcid": "Count_Person_0To4Years_Female_ConditionCancer"
+        },
+        {
+          "name": "Population: 0 - 4 Years, Female, Dementia",
+          "dcid": "Count_Person_0To4Years_Female_ConditionDementia"
+        },
+        {
+          "name": "Population: 0 - 4 Years, Female, Diabetes",
+          "dcid": "Count_Person_0To4Years_Female_ConditionDiabetes"
+        },
+        {
+          "name": "Population: 0 - 4 Years, Female, Diseases of Heart",
+          "dcid": "Count_Person_0To4Years_Female_ConditionDiseasesOfHeart"
+        },
+        {
+          "name": "Population: 0 - 4 Years, Female, Kidney Disease",
+          "dcid": "Count_Person_0To4Years_Female_ConditionKidneyDisease"
+        },
+        {
+          "name": "Population: 0 - 4 Years, Female, Lung Condition",
+          "dcid": "Count_Person_0To4Years_Female_ConditionLungCondition"
+        },
+        {
+          "name": "Population: 0 - 4 Years, Female, Mental Health Not Good",
+          "dcid": "Count_Person_0To4Years_Female_ConditionMentalHealthNotGood"
+        },
+        {
+          "name": "Population: 0 - 4 Years, Female, Stroke",
+          "dcid": "Count_Person_0To4Years_Female_ConditionStroke"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years10To14_Gender-Female_MedicalCondition",
+      "name": "Person With Age = 10 - 14 Years, Gender = Female, Medical Condition",
+      "statVars": [
+        {
+          "name": "Population: 10 - 14 Years, Female, Arthritis",
+          "dcid": "Count_Person_10To14Years_Female_ConditionArthritis"
+        },
+        {
+          "name": "Population: 10 - 14 Years, Female, Asthma",
+          "dcid": "Count_Person_10To14Years_Female_ConditionAsthma"
+        },
+        {
+          "name": "Population: 10 - 14 Years, Female, Cancer",
+          "dcid": "Count_Person_10To14Years_Female_ConditionCancer"
+        },
+        {
+          "name": "Population: 10 - 14 Years, Female, Dementia",
+          "dcid": "Count_Person_10To14Years_Female_ConditionDementia"
+        },
+        {
+          "name": "Population: 10 - 14 Years, Female, Diabetes",
+          "dcid": "Count_Person_10To14Years_Female_ConditionDiabetes"
+        },
+        {
+          "name": "Population: 10 - 14 Years, Female, Diseases of Heart",
+          "dcid": "Count_Person_10To14Years_Female_ConditionDiseasesOfHeart"
+        },
+        {
+          "name": "Population: 10 - 14 Years, Female, Kidney Disease",
+          "dcid": "Count_Person_10To14Years_Female_ConditionKidneyDisease"
+        },
+        {
+          "name": "Population: 10 - 14 Years, Female, Lung Condition",
+          "dcid": "Count_Person_10To14Years_Female_ConditionLungCondition"
+        },
+        {
+          "name": "Population: 10 - 14 Years, Female, Mental Health Not Good",
+          "dcid": "Count_Person_10To14Years_Female_ConditionMentalHealthNotGood"
+        },
+        {
+          "name": "Population: 10 - 14 Years, Female, Stroke",
+          "dcid": "Count_Person_10To14Years_Female_ConditionStroke"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years15To19_Gender-Female_MedicalCondition",
+      "name": "Person With Age = 15 - 19 Years, Gender = Female, Medical Condition",
+      "statVars": [
+        {
+          "name": "Population: 15 - 19 Years, Female, Arthritis",
+          "dcid": "Count_Person_15To19Years_Female_ConditionArthritis"
+        },
+        {
+          "name": "Population: 15 - 19 Years, Female, Asthma",
+          "dcid": "Count_Person_15To19Years_Female_ConditionAsthma"
+        },
+        {
+          "name": "Population: 15 - 19 Years, Female, Cancer",
+          "dcid": "Count_Person_15To19Years_Female_ConditionCancer"
+        },
+        {
+          "name": "Population: 15 - 19 Years, Female, Dementia",
+          "dcid": "Count_Person_15To19Years_Female_ConditionDementia"
+        },
+        {
+          "name": "Population: 15 - 19 Years, Female, Diabetes",
+          "dcid": "Count_Person_15To19Years_Female_ConditionDiabetes"
+        },
+        {
+          "name": "Population: 15 - 19 Years, Female, Diseases of Heart",
+          "dcid": "Count_Person_15To19Years_Female_ConditionDiseasesOfHeart"
+        },
+        {
+          "name": "Population: 15 - 19 Years, Female, Kidney Disease",
+          "dcid": "Count_Person_15To19Years_Female_ConditionKidneyDisease"
+        },
+        {
+          "name": "Population: 15 - 19 Years, Female, Lung Condition",
+          "dcid": "Count_Person_15To19Years_Female_ConditionLungCondition"
+        },
+        {
+          "name": "Population: 15 - 19 Years, Female, Mental Health Not Good",
+          "dcid": "Count_Person_15To19Years_Female_ConditionMentalHealthNotGood"
+        },
+        {
+          "name": "Population: 15 - 19 Years, Female, Stroke",
+          "dcid": "Count_Person_15To19Years_Female_ConditionStroke"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years20To24_Gender-Female_MedicalCondition",
+      "name": "Person With Age = 20 - 24 Years, Gender = Female, Medical Condition",
+      "statVars": [
+        {
+          "name": "Population: 20 - 24 Years, Female, Arthritis",
+          "dcid": "Count_Person_20To24Years_Female_ConditionArthritis"
+        },
+        {
+          "name": "Population: 20 - 24 Years, Female, Asthma",
+          "dcid": "Count_Person_20To24Years_Female_ConditionAsthma"
+        },
+        {
+          "name": "Population: 20 - 24 Years, Female, Cancer",
+          "dcid": "Count_Person_20To24Years_Female_ConditionCancer"
+        },
+        {
+          "name": "Population: 20 - 24 Years, Female, Dementia",
+          "dcid": "Count_Person_20To24Years_Female_ConditionDementia"
+        },
+        {
+          "name": "Population: 20 - 24 Years, Female, Diabetes",
+          "dcid": "Count_Person_20To24Years_Female_ConditionDiabetes"
+        },
+        {
+          "name": "Population: 20 - 24 Years, Female, Diseases of Heart",
+          "dcid": "Count_Person_20To24Years_Female_ConditionDiseasesOfHeart"
+        },
+        {
+          "name": "Population: 20 - 24 Years, Female, Kidney Disease",
+          "dcid": "Count_Person_20To24Years_Female_ConditionKidneyDisease"
+        },
+        {
+          "name": "Population: 20 - 24 Years, Female, Lung Condition",
+          "dcid": "Count_Person_20To24Years_Female_ConditionLungCondition"
+        },
+        {
+          "name": "Population: 20 - 24 Years, Female, Mental Health Not Good",
+          "dcid": "Count_Person_20To24Years_Female_ConditionMentalHealthNotGood"
+        },
+        {
+          "name": "Population: 20 - 24 Years, Female, Stroke",
+          "dcid": "Count_Person_20To24Years_Female_ConditionStroke"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years25To29_Gender-Female_MedicalCondition",
+      "name": "Person With Age = 25 - 29 Years, Gender = Female, Medical Condition",
+      "statVars": [
+        {
+          "name": "Population: 25 - 29 Years, Female, Arthritis",
+          "dcid": "Count_Person_25To29Years_Female_ConditionArthritis"
+        },
+        {
+          "name": "Population: 25 - 29 Years, Female, Asthma",
+          "dcid": "Count_Person_25To29Years_Female_ConditionAsthma"
+        },
+        {
+          "name": "Population: 25 - 29 Years, Female, Cancer",
+          "dcid": "Count_Person_25To29Years_Female_ConditionCancer"
+        },
+        {
+          "name": "Population: 25 - 29 Years, Female, Dementia",
+          "dcid": "Count_Person_25To29Years_Female_ConditionDementia"
+        },
+        {
+          "name": "Population: 25 - 29 Years, Female, Diabetes",
+          "dcid": "Count_Person_25To29Years_Female_ConditionDiabetes"
+        },
+        {
+          "name": "Population: 25 - 29 Years, Female, Diseases of Heart",
+          "dcid": "Count_Person_25To29Years_Female_ConditionDiseasesOfHeart"
+        },
+        {
+          "name": "Population: 25 - 29 Years, Female, Kidney Disease",
+          "dcid": "Count_Person_25To29Years_Female_ConditionKidneyDisease"
+        },
+        {
+          "name": "Population: 25 - 29 Years, Female, Lung Condition",
+          "dcid": "Count_Person_25To29Years_Female_ConditionLungCondition"
+        },
+        {
+          "name": "Population: 25 - 29 Years, Female, Mental Health Not Good",
+          "dcid": "Count_Person_25To29Years_Female_ConditionMentalHealthNotGood"
+        },
+        {
+          "name": "Population: 25 - 29 Years, Female, Stroke",
+          "dcid": "Count_Person_25To29Years_Female_ConditionStroke"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years30To34_Gender-Female_MedicalCondition",
+      "name": "Person With Age = 30 - 34 Years, Gender = Female, Medical Condition",
+      "statVars": [
+        {
+          "name": "Population: 30 - 34 Years, Female, Arthritis",
+          "dcid": "Count_Person_30To34Years_Female_ConditionArthritis"
+        },
+        {
+          "name": "Population: 30 - 34 Years, Female, Asthma",
+          "dcid": "Count_Person_30To34Years_Female_ConditionAsthma"
+        },
+        {
+          "name": "Population: 30 - 34 Years, Female, Cancer",
+          "dcid": "Count_Person_30To34Years_Female_ConditionCancer"
+        },
+        {
+          "name": "Population: 30 - 34 Years, Female, Dementia",
+          "dcid": "Count_Person_30To34Years_Female_ConditionDementia"
+        },
+        {
+          "name": "Population: 30 - 34 Years, Female, Diabetes",
+          "dcid": "Count_Person_30To34Years_Female_ConditionDiabetes"
+        },
+        {
+          "name": "Population: 30 - 34 Years, Female, Diseases of Heart",
+          "dcid": "Count_Person_30To34Years_Female_ConditionDiseasesOfHeart"
+        },
+        {
+          "name": "Population: 30 - 34 Years, Female, Kidney Disease",
+          "dcid": "Count_Person_30To34Years_Female_ConditionKidneyDisease"
+        },
+        {
+          "name": "Population: 30 - 34 Years, Female, Lung Condition",
+          "dcid": "Count_Person_30To34Years_Female_ConditionLungCondition"
+        },
+        {
+          "name": "Population: 30 - 34 Years, Female, Mental Health Not Good",
+          "dcid": "Count_Person_30To34Years_Female_ConditionMentalHealthNotGood"
+        },
+        {
+          "name": "Population: 30 - 34 Years, Female, Stroke",
+          "dcid": "Count_Person_30To34Years_Female_ConditionStroke"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years35To39_Gender-Female_MedicalCondition",
+      "name": "Person With Age = 35 - 39 Years, Gender = Female, Medical Condition",
+      "statVars": [
+        {
+          "name": "Population: 35 - 39 Years, Female, Arthritis",
+          "dcid": "Count_Person_35To39Years_Female_ConditionArthritis"
+        },
+        {
+          "name": "Population: 35 - 39 Years, Female, Asthma",
+          "dcid": "Count_Person_35To39Years_Female_ConditionAsthma"
+        },
+        {
+          "name": "Population: 35 - 39 Years, Female, Cancer",
+          "dcid": "Count_Person_35To39Years_Female_ConditionCancer"
+        },
+        {
+          "name": "Population: 35 - 39 Years, Female, Dementia",
+          "dcid": "Count_Person_35To39Years_Female_ConditionDementia"
+        },
+        {
+          "name": "Population: 35 - 39 Years, Female, Diabetes",
+          "dcid": "Count_Person_35To39Years_Female_ConditionDiabetes"
+        },
+        {
+          "name": "Population: 35 - 39 Years, Female, Diseases of Heart",
+          "dcid": "Count_Person_35To39Years_Female_ConditionDiseasesOfHeart"
+        },
+        {
+          "name": "Population: 35 - 39 Years, Female, Kidney Disease",
+          "dcid": "Count_Person_35To39Years_Female_ConditionKidneyDisease"
+        },
+        {
+          "name": "Population: 35 - 39 Years, Female, Lung Condition",
+          "dcid": "Count_Person_35To39Years_Female_ConditionLungCondition"
+        },
+        {
+          "name": "Population: 35 - 39 Years, Female, Mental Health Not Good",
+          "dcid": "Count_Person_35To39Years_Female_ConditionMentalHealthNotGood"
+        },
+        {
+          "name": "Population: 35 - 39 Years, Female, Stroke",
+          "dcid": "Count_Person_35To39Years_Female_ConditionStroke"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years40To44_Gender-Female_MedicalCondition",
+      "name": "Person With Age = 40 - 44 Years, Gender = Female, Medical Condition",
+      "statVars": [
+        {
+          "name": "Population: 40 - 44 Years, Female, Arthritis",
+          "dcid": "Count_Person_40To44Years_Female_ConditionArthritis"
+        },
+        {
+          "name": "Population: 40 - 44 Years, Female, Asthma",
+          "dcid": "Count_Person_40To44Years_Female_ConditionAsthma"
+        },
+        {
+          "name": "Population: 40 - 44 Years, Female, Cancer",
+          "dcid": "Count_Person_40To44Years_Female_ConditionCancer"
+        },
+        {
+          "name": "Population: 40 - 44 Years, Female, Dementia",
+          "dcid": "Count_Person_40To44Years_Female_ConditionDementia"
+        },
+        {
+          "name": "Population: 40 - 44 Years, Female, Diabetes",
+          "dcid": "Count_Person_40To44Years_Female_ConditionDiabetes"
+        },
+        {
+          "name": "Population: 40 - 44 Years, Female, Diseases of Heart",
+          "dcid": "Count_Person_40To44Years_Female_ConditionDiseasesOfHeart"
+        },
+        {
+          "name": "Population: 40 - 44 Years, Female, Kidney Disease",
+          "dcid": "Count_Person_40To44Years_Female_ConditionKidneyDisease"
+        },
+        {
+          "name": "Population: 40 - 44 Years, Female, Lung Condition",
+          "dcid": "Count_Person_40To44Years_Female_ConditionLungCondition"
+        },
+        {
+          "name": "Population: 40 - 44 Years, Female, Mental Health Not Good",
+          "dcid": "Count_Person_40To44Years_Female_ConditionMentalHealthNotGood"
+        },
+        {
+          "name": "Population: 40 - 44 Years, Female, Stroke",
+          "dcid": "Count_Person_40To44Years_Female_ConditionStroke"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years45To49_Gender-Female_MedicalCondition",
+      "name": "Person With Age = 45 - 49 Years, Gender = Female, Medical Condition",
+      "statVars": [
+        {
+          "name": "Population: 45 - 49 Years, Female, Arthritis",
+          "dcid": "Count_Person_45To49Years_Female_ConditionArthritis"
+        },
+        {
+          "name": "Population: 45 - 49 Years, Female, Asthma",
+          "dcid": "Count_Person_45To49Years_Female_ConditionAsthma"
+        },
+        {
+          "name": "Population: 45 - 49 Years, Female, Cancer",
+          "dcid": "Count_Person_45To49Years_Female_ConditionCancer"
+        },
+        {
+          "name": "Population: 45 - 49 Years, Female, Dementia",
+          "dcid": "Count_Person_45To49Years_Female_ConditionDementia"
+        },
+        {
+          "name": "Population: 45 - 49 Years, Female, Diabetes",
+          "dcid": "Count_Person_45To49Years_Female_ConditionDiabetes"
+        },
+        {
+          "name": "Population: 45 - 49 Years, Female, Diseases of Heart",
+          "dcid": "Count_Person_45To49Years_Female_ConditionDiseasesOfHeart"
+        },
+        {
+          "name": "Population: 45 - 49 Years, Female, Kidney Disease",
+          "dcid": "Count_Person_45To49Years_Female_ConditionKidneyDisease"
+        },
+        {
+          "name": "Population: 45 - 49 Years, Female, Lung Condition",
+          "dcid": "Count_Person_45To49Years_Female_ConditionLungCondition"
+        },
+        {
+          "name": "Population: 45 - 49 Years, Female, Mental Health Not Good",
+          "dcid": "Count_Person_45To49Years_Female_ConditionMentalHealthNotGood"
+        },
+        {
+          "name": "Population: 45 - 49 Years, Female, Stroke",
+          "dcid": "Count_Person_45To49Years_Female_ConditionStroke"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years5To9_Gender-Female_MedicalCondition",
+      "name": "Person With Age = 5 - 9 Years, Gender = Female, Medical Condition",
+      "statVars": [
+        {
+          "name": "Population: 5 - 9 Years, Female, Arthritis",
+          "dcid": "Count_Person_5To9Years_Female_ConditionArthritis"
+        },
+        {
+          "name": "Population: 5 - 9 Years, Female, Asthma",
+          "dcid": "Count_Person_5To9Years_Female_ConditionAsthma"
+        },
+        {
+          "name": "Population: 5 - 9 Years, Female, Cancer",
+          "dcid": "Count_Person_5To9Years_Female_ConditionCancer"
+        },
+        {
+          "name": "Population: 5 - 9 Years, Female, Dementia",
+          "dcid": "Count_Person_5To9Years_Female_ConditionDementia"
+        },
+        {
+          "name": "Population: 5 - 9 Years, Female, Diabetes",
+          "dcid": "Count_Person_5To9Years_Female_ConditionDiabetes"
+        },
+        {
+          "name": "Population: 5 - 9 Years, Female, Diseases of Heart",
+          "dcid": "Count_Person_5To9Years_Female_ConditionDiseasesOfHeart"
+        },
+        {
+          "name": "Population: 5 - 9 Years, Female, Kidney Disease",
+          "dcid": "Count_Person_5To9Years_Female_ConditionKidneyDisease"
+        },
+        {
+          "name": "Population: 5 - 9 Years, Female, Lung Condition",
+          "dcid": "Count_Person_5To9Years_Female_ConditionLungCondition"
+        },
+        {
+          "name": "Population: 5 - 9 Years, Female, Mental Health Not Good",
+          "dcid": "Count_Person_5To9Years_Female_ConditionMentalHealthNotGood"
+        },
+        {
+          "name": "Population: 5 - 9 Years, Female, Stroke",
+          "dcid": "Count_Person_5To9Years_Female_ConditionStroke"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years50To54_Gender-Female_MedicalCondition",
+      "name": "Person With Age = 50 - 54 Years, Gender = Female, Medical Condition",
+      "statVars": [
+        {
+          "name": "Population: 50 - 54 Years, Female, Arthritis",
+          "dcid": "Count_Person_50To54Years_Female_ConditionArthritis"
+        },
+        {
+          "name": "Population: 50 - 54 Years, Female, Asthma",
+          "dcid": "Count_Person_50To54Years_Female_ConditionAsthma"
+        },
+        {
+          "name": "Population: 50 - 54 Years, Female, Cancer",
+          "dcid": "Count_Person_50To54Years_Female_ConditionCancer"
+        },
+        {
+          "name": "Population: 50 - 54 Years, Female, Dementia",
+          "dcid": "Count_Person_50To54Years_Female_ConditionDementia"
+        },
+        {
+          "name": "Population: 50 - 54 Years, Female, Diabetes",
+          "dcid": "Count_Person_50To54Years_Female_ConditionDiabetes"
+        },
+        {
+          "name": "Population: 50 - 54 Years, Female, Diseases of Heart",
+          "dcid": "Count_Person_50To54Years_Female_ConditionDiseasesOfHeart"
+        },
+        {
+          "name": "Population: 50 - 54 Years, Female, Kidney Disease",
+          "dcid": "Count_Person_50To54Years_Female_ConditionKidneyDisease"
+        },
+        {
+          "name": "Population: 50 - 54 Years, Female, Lung Condition",
+          "dcid": "Count_Person_50To54Years_Female_ConditionLungCondition"
+        },
+        {
+          "name": "Population: 50 - 54 Years, Female, Mental Health Not Good",
+          "dcid": "Count_Person_50To54Years_Female_ConditionMentalHealthNotGood"
+        },
+        {
+          "name": "Population: 50 - 54 Years, Female, Stroke",
+          "dcid": "Count_Person_50To54Years_Female_ConditionStroke"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years55To59_Gender-Female_MedicalCondition",
+      "name": "Person With Age = 55 - 59 Years, Gender = Female, Medical Condition",
+      "statVars": [
+        {
+          "name": "Population: 55 - 59 Years, Female, Arthritis",
+          "dcid": "Count_Person_55To59Years_Female_ConditionArthritis"
+        },
+        {
+          "name": "Population: 55 - 59 Years, Female, Asthma",
+          "dcid": "Count_Person_55To59Years_Female_ConditionAsthma"
+        },
+        {
+          "name": "Population: 55 - 59 Years, Female, Cancer",
+          "dcid": "Count_Person_55To59Years_Female_ConditionCancer"
+        },
+        {
+          "name": "Population: 55 - 59 Years, Female, Dementia",
+          "dcid": "Count_Person_55To59Years_Female_ConditionDementia"
+        },
+        {
+          "name": "Population: 55 - 59 Years, Female, Diabetes",
+          "dcid": "Count_Person_55To59Years_Female_ConditionDiabetes"
+        },
+        {
+          "name": "Population: 55 - 59 Years, Female, Diseases of Heart",
+          "dcid": "Count_Person_55To59Years_Female_ConditionDiseasesOfHeart"
+        },
+        {
+          "name": "Population: 55 - 59 Years, Female, Kidney Disease",
+          "dcid": "Count_Person_55To59Years_Female_ConditionKidneyDisease"
+        },
+        {
+          "name": "Population: 55 - 59 Years, Female, Lung Condition",
+          "dcid": "Count_Person_55To59Years_Female_ConditionLungCondition"
+        },
+        {
+          "name": "Population: 55 - 59 Years, Female, Mental Health Not Good",
+          "dcid": "Count_Person_55To59Years_Female_ConditionMentalHealthNotGood"
+        },
+        {
+          "name": "Population: 55 - 59 Years, Female, Stroke",
+          "dcid": "Count_Person_55To59Years_Female_ConditionStroke"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years60To64_Gender-Female_MedicalCondition",
+      "name": "Person With Age = 60 - 64 Years, Gender = Female, Medical Condition",
+      "statVars": [
+        {
+          "name": "Population: 60 - 64 Years, Female, Arthritis",
+          "dcid": "Count_Person_60To64Years_Female_ConditionArthritis"
+        },
+        {
+          "name": "Population: 60 - 64 Years, Female, Asthma",
+          "dcid": "Count_Person_60To64Years_Female_ConditionAsthma"
+        },
+        {
+          "name": "Population: 60 - 64 Years, Female, Cancer",
+          "dcid": "Count_Person_60To64Years_Female_ConditionCancer"
+        },
+        {
+          "name": "Population: 60 - 64 Years, Female, Dementia",
+          "dcid": "Count_Person_60To64Years_Female_ConditionDementia"
+        },
+        {
+          "name": "Population: 60 - 64 Years, Female, Diabetes",
+          "dcid": "Count_Person_60To64Years_Female_ConditionDiabetes"
+        },
+        {
+          "name": "Population: 60 - 64 Years, Female, Diseases of Heart",
+          "dcid": "Count_Person_60To64Years_Female_ConditionDiseasesOfHeart"
+        },
+        {
+          "name": "Population: 60 - 64 Years, Female, Kidney Disease",
+          "dcid": "Count_Person_60To64Years_Female_ConditionKidneyDisease"
+        },
+        {
+          "name": "Population: 60 - 64 Years, Female, Lung Condition",
+          "dcid": "Count_Person_60To64Years_Female_ConditionLungCondition"
+        },
+        {
+          "name": "Population: 60 - 64 Years, Female, Mental Health Not Good",
+          "dcid": "Count_Person_60To64Years_Female_ConditionMentalHealthNotGood"
+        },
+        {
+          "name": "Population: 60 - 64 Years, Female, Stroke",
+          "dcid": "Count_Person_60To64Years_Female_ConditionStroke"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years65To69_Gender-Female_MedicalCondition",
+      "name": "Person With Age = 65 - 69 Years, Gender = Female, Medical Condition",
+      "statVars": [
+        {
+          "name": "Population: 65 - 69 Years, Female, Arthritis",
+          "dcid": "Count_Person_65To69Years_Female_ConditionArthritis"
+        },
+        {
+          "name": "Population: 65 - 69 Years, Female, Asthma",
+          "dcid": "Count_Person_65To69Years_Female_ConditionAsthma"
+        },
+        {
+          "name": "Population: 65 - 69 Years, Female, Cancer",
+          "dcid": "Count_Person_65To69Years_Female_ConditionCancer"
+        },
+        {
+          "name": "Population: 65 - 69 Years, Female, Dementia",
+          "dcid": "Count_Person_65To69Years_Female_ConditionDementia"
+        },
+        {
+          "name": "Population: 65 - 69 Years, Female, Diabetes",
+          "dcid": "Count_Person_65To69Years_Female_ConditionDiabetes"
+        },
+        {
+          "name": "Population: 65 - 69 Years, Female, Diseases of Heart",
+          "dcid": "Count_Person_65To69Years_Female_ConditionDiseasesOfHeart"
+        },
+        {
+          "name": "Population: 65 - 69 Years, Female, Kidney Disease",
+          "dcid": "Count_Person_65To69Years_Female_ConditionKidneyDisease"
+        },
+        {
+          "name": "Population: 65 - 69 Years, Female, Lung Condition",
+          "dcid": "Count_Person_65To69Years_Female_ConditionLungCondition"
+        },
+        {
+          "name": "Population: 65 - 69 Years, Female, Mental Health Not Good",
+          "dcid": "Count_Person_65To69Years_Female_ConditionMentalHealthNotGood"
+        },
+        {
+          "name": "Population: 65 - 69 Years, Female, Stroke",
+          "dcid": "Count_Person_65To69Years_Female_ConditionStroke"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years70To74_Gender-Female_MedicalCondition",
+      "name": "Person With Age = 70 - 74 Years, Gender = Female, Medical Condition",
+      "statVars": [
+        {
+          "name": "Population: 70 - 74 Years, Female, Arthritis",
+          "dcid": "Count_Person_70To74Years_Female_ConditionArthritis"
+        },
+        {
+          "name": "Population: 70 - 74 Years, Female, Asthma",
+          "dcid": "Count_Person_70To74Years_Female_ConditionAsthma"
+        },
+        {
+          "name": "Population: 70 - 74 Years, Female, Cancer",
+          "dcid": "Count_Person_70To74Years_Female_ConditionCancer"
+        },
+        {
+          "name": "Population: 70 - 74 Years, Female, Dementia",
+          "dcid": "Count_Person_70To74Years_Female_ConditionDementia"
+        },
+        {
+          "name": "Population: 70 - 74 Years, Female, Diabetes",
+          "dcid": "Count_Person_70To74Years_Female_ConditionDiabetes"
+        },
+        {
+          "name": "Population: 70 - 74 Years, Female, Diseases of Heart",
+          "dcid": "Count_Person_70To74Years_Female_ConditionDiseasesOfHeart"
+        },
+        {
+          "name": "Population: 70 - 74 Years, Female, Kidney Disease",
+          "dcid": "Count_Person_70To74Years_Female_ConditionKidneyDisease"
+        },
+        {
+          "name": "Population: 70 - 74 Years, Female, Lung Condition",
+          "dcid": "Count_Person_70To74Years_Female_ConditionLungCondition"
+        },
+        {
+          "name": "Population: 70 - 74 Years, Female, Mental Health Not Good",
+          "dcid": "Count_Person_70To74Years_Female_ConditionMentalHealthNotGood"
+        },
+        {
+          "name": "Population: 70 - 74 Years, Female, Stroke",
+          "dcid": "Count_Person_70To74Years_Female_ConditionStroke"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years75To79_Gender-Female_MedicalCondition",
+      "name": "Person With Age = 75 - 79 Years, Gender = Female, Medical Condition",
+      "statVars": [
+        {
+          "name": "Population: 75 - 79 Years, Female, Arthritis",
+          "dcid": "Count_Person_75To79Years_Female_ConditionArthritis"
+        },
+        {
+          "name": "Population: 75 - 79 Years, Female, Asthma",
+          "dcid": "Count_Person_75To79Years_Female_ConditionAsthma"
+        },
+        {
+          "name": "Population: 75 - 79 Years, Female, Cancer",
+          "dcid": "Count_Person_75To79Years_Female_ConditionCancer"
+        },
+        {
+          "name": "Population: 75 - 79 Years, Female, Dementia",
+          "dcid": "Count_Person_75To79Years_Female_ConditionDementia"
+        },
+        {
+          "name": "Population: 75 - 79 Years, Female, Diabetes",
+          "dcid": "Count_Person_75To79Years_Female_ConditionDiabetes"
+        },
+        {
+          "name": "Population: 75 - 79 Years, Female, Diseases of Heart",
+          "dcid": "Count_Person_75To79Years_Female_ConditionDiseasesOfHeart"
+        },
+        {
+          "name": "Population: 75 - 79 Years, Female, Kidney Disease",
+          "dcid": "Count_Person_75To79Years_Female_ConditionKidneyDisease"
+        },
+        {
+          "name": "Population: 75 - 79 Years, Female, Lung Condition",
+          "dcid": "Count_Person_75To79Years_Female_ConditionLungCondition"
+        },
+        {
+          "name": "Population: 75 - 79 Years, Female, Mental Health Not Good",
+          "dcid": "Count_Person_75To79Years_Female_ConditionMentalHealthNotGood"
+        },
+        {
+          "name": "Population: 75 - 79 Years, Female, Stroke",
+          "dcid": "Count_Person_75To79Years_Female_ConditionStroke"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years80To84_Gender-Female_MedicalCondition",
+      "name": "Person With Age = 80 - 84 Years, Gender = Female, Medical Condition",
+      "statVars": [
+        {
+          "name": "Population: 80 - 84 Years, Female, Arthritis",
+          "dcid": "Count_Person_80To84Years_Female_ConditionArthritis"
+        },
+        {
+          "name": "Population: 80 - 84 Years, Female, Asthma",
+          "dcid": "Count_Person_80To84Years_Female_ConditionAsthma"
+        },
+        {
+          "name": "Population: 80 - 84 Years, Female, Cancer",
+          "dcid": "Count_Person_80To84Years_Female_ConditionCancer"
+        },
+        {
+          "name": "Population: 80 - 84 Years, Female, Dementia",
+          "dcid": "Count_Person_80To84Years_Female_ConditionDementia"
+        },
+        {
+          "name": "Population: 80 - 84 Years, Female, Diabetes",
+          "dcid": "Count_Person_80To84Years_Female_ConditionDiabetes"
+        },
+        {
+          "name": "Population: 80 - 84 Years, Female, Diseases of Heart",
+          "dcid": "Count_Person_80To84Years_Female_ConditionDiseasesOfHeart"
+        },
+        {
+          "name": "Population: 80 - 84 Years, Female, Kidney Disease",
+          "dcid": "Count_Person_80To84Years_Female_ConditionKidneyDisease"
+        },
+        {
+          "name": "Population: 80 - 84 Years, Female, Lung Condition",
+          "dcid": "Count_Person_80To84Years_Female_ConditionLungCondition"
+        },
+        {
+          "name": "Population: 80 - 84 Years, Female, Mental Health Not Good",
+          "dcid": "Count_Person_80To84Years_Female_ConditionMentalHealthNotGood"
+        },
+        {
+          "name": "Population: 80 - 84 Years, Female, Stroke",
+          "dcid": "Count_Person_80To84Years_Female_ConditionStroke"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years85Onwards_Gender-Female_MedicalCondition",
+      "name": "Person With Age = 85 Years or More, Gender = Female, Medical Condition",
+      "statVars": [
+        {
+          "name": "Population: 85 Years or More, Female, Arthritis",
+          "dcid": "Count_Person_85OrMoreYears_Female_ConditionArthritis"
+        },
+        {
+          "name": "Population: 85 Years or More, Female, Asthma",
+          "dcid": "Count_Person_85OrMoreYears_Female_ConditionAsthma"
+        },
+        {
+          "name": "Population: 85 Years or More, Female, Cancer",
+          "dcid": "Count_Person_85OrMoreYears_Female_ConditionCancer"
+        },
+        {
+          "name": "Population: 85 Years or More, Female, Dementia",
+          "dcid": "Count_Person_85OrMoreYears_Female_ConditionDementia"
+        },
+        {
+          "name": "Population: 85 Years or More, Female, Diabetes",
+          "dcid": "Count_Person_85OrMoreYears_Female_ConditionDiabetes"
+        },
+        {
+          "name": "Population: 85 Years or More, Female, Diseases of Heart",
+          "dcid": "Count_Person_85OrMoreYears_Female_ConditionDiseasesOfHeart"
+        },
+        {
+          "name": "Population: 85 Years or More, Female, Kidney Disease",
+          "dcid": "Count_Person_85OrMoreYears_Female_ConditionKidneyDisease"
+        },
+        {
+          "name": "Population: 85 Years or More, Female, Lung Condition",
+          "dcid": "Count_Person_85OrMoreYears_Female_ConditionLungCondition"
+        },
+        {
+          "name": "Population: 85 Years or More, Female, Mental Health Not Good",
+          "dcid": "Count_Person_85OrMoreYears_Female_ConditionMentalHealthNotGood"
+        },
+        {
+          "name": "Population: 85 Years or More, Female, Stroke",
+          "dcid": "Count_Person_85OrMoreYears_Female_ConditionStroke"
         }
       ]
     },
@@ -56139,258 +56983,6 @@
         {
           "name": "Sales of Establishment: Manufacturer Sales Branches And Offices, Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
           "dcid": "dc/79vrq3849kfeg"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Establishment_BusinessOperationType-MerchantWholesalersExcludingManufacturerSalesBranchesAndOffices_Industry-NAICS/42433",
-      "name": "Establishment With Business Operation Type = Merchant Wholesalers Excluding Manufacturer Sales Branches And Offices, Industry = Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
-      "statVars": [
-        {
-          "name": "Count of Establishment: Merchant Wholesalers Excluding Manufacturer Sales Branches And Offices, Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
-          "dcid": "dc/ww85jq324j3gc"
-        },
-        {
-          "name": "Sales of Establishment: Merchant Wholesalers Excluding Manufacturer Sales Branches And Offices, Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
-          "dcid": "dc/ggp40c14cfw7b"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Establishment_BusinessOperationType-MerchantWholesalers_Industry-NAICS/42433",
-      "name": "Establishment With Business Operation Type = Merchant Wholesalers, Industry = Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
-      "statVars": [
-        {
-          "name": "Count of Establishment: Merchant Wholesalers, Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
-          "dcid": "dc/jfts1vjy25k9g"
-        },
-        {
-          "name": "Sales of Establishment: Merchant Wholesalers, Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
-          "dcid": "dc/867ehyppl4rf1"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/HateCrimeIncidents_TargetedGender-Female_VictimAge",
-      "name": "Hate Crime Incidents With Targeted Gender = Female, Victim Age",
-      "statVars": [
-        {
-          "name": "Count of Hate Crime Incidents (Victim): Bias Against Gender, Female Victim, Victim 17 Years or Less",
-          "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_Female_17OrLessYears"
-        },
-        {
-          "name": "Count of Hate Crime Incidents (Victim): Bias Against Gender, Female Victim, Victim 18 Years or More",
-          "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_Female_18OrMoreYears"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/SDGSHMEDHWRKDIS_gender-SDGSexEnumFEMALE_sdgtypeOfOccupation",
-      "name": "Health Worker Distribution With Gender = Female, Type of Occupation",
-      "statVars": [
-        {
-          "name": "Health worker distribution: Female, Medical doctors",
-          "dcid": "sdg/SH_MED_HWRKDIS_FEMALE_PHYS"
-        },
-        {
-          "name": "Health worker distribution: Female, Nursing and midwifery personnel",
-          "dcid": "sdg/SH_MED_HWRKDIS_FEMALE_NURSMID"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/IncarcerationsAndReleases_EventType_Gender-Female",
-      "name": "Incarcerations And Releases With Event Type, Gender = Female",
-      "statVars": [
-        {
-          "name": "Count of Incarcerations And Releases (Measured Based on Jurisdiction): Admitted To Prison, Female, Incarcerated, 2 Years or More, Sentenced",
-          "dcid": "dc/36d93ckypx3bb"
-        },
-        {
-          "name": "Count of Incarcerations And Releases (Measured Based on Jurisdiction): Released From Prison, Female, Incarcerated, 2 Years or More, Sentenced",
-          "dcid": "dc/4lq5grhwyrle2"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/MedicalConditionIncident_Gender-Female_MedicalStatus",
-      "name": "Medical Condition Incident With Gender = Female, Medical Status",
-      "statVars": [
-        {
-          "name": "Count of Imported, Female Measles incidents",
-          "dcid": "Count_MedicalConditionIncident_Female_ConditionMeasles_ImportedCase"
-        },
-        {
-          "name": "Count of Indigenous, Female Measles incidents",
-          "dcid": "Count_MedicalConditionIncident_Female_ConditionMeasles_IndigenousCase"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/MortalityEvent_Age-YearsUpto1_Gender-Female",
-      "name": "Mortality Event With Age = 1 Years or Less, Gender = Female",
-      "statVars": [
-        {
-          "name": "Count of Mortality Event: 1 Years or Less, Female",
-          "dcid": "Count_Death_Upto1Years_Female"
-        },
-        {
-          "name": "Count of Mortality Event: 1 Years or Less, Female (As Fraction of Count Birth Event Female)",
-          "dcid": "Count_Death_LessThan1Year_Female_AsAFractionOf_Count_BirthEvent_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/MortalityEvent_Age-YearsUpto14_Gender-Female",
-      "name": "Mortality Event With Age = 14 Years or Less, Gender = Female",
-      "statVars": [
-        {
-          "name": "Count of Mortality Event: 14 Years or Less, Female",
-          "dcid": "Count_Death_Upto14Years_Female"
-        },
-        {
-          "name": "Count of Mortality Event: 14 Years or Less, Female (As Fraction of Count Person Upto 14 Years Female)",
-          "dcid": "Count_Death_Upto14Years_Female_AsAFractionOf_Count_Person_Upto14Years_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/MortalityEvent_CauseOfDeath-AIDS_Gender-Female",
-      "name": "Mortality Event With Cause of Death = AIDS, Gender = Female",
-      "statVars": [
-        {
-          "name": "Count of Mortality Event: AIDS, Female (As Fraction of Count Medical Condition Incident Female Condition AIDS)",
-          "dcid": "Count_MortalityEvent_AIDS_Female_AsAFractionOf_Count_MedicalConditionIncident_Female_ConditionAIDS"
-        },
-        {
-          "name": "Count of Mortality Event (Measured Based on Jurisdiction): AIDS, Female, Incarcerated",
-          "dcid": "dc/qnnbzwrjn50jh"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/MortalityEvent_CauseOfDeath-FemaleNonVesGenitalUlcer_Gender",
-      "name": "Mortality Event With Cause of Death = Female Non Ves Genital Ulcer, Gender",
-      "statVars": [
-        {
-          "name": "Count of Mortality Event: Female Non Ves Genital Ulcer, Female (As Fraction of Count Medical Condition Incident Female Condition Female Non Ves Genital Ulcer)",
-          "dcid": "Count_MortalityEvent_FemaleNonVesGenitalUlcer_Female_AsAFractionOf_Count_MedicalConditionIncident_Female_ConditionFemaleNonVesGenitalUlcer"
-        },
-        {
-          "name": "Count of Mortality Event: Female Non Ves Genital Ulcer, Male (As Fraction of Count Medical Condition Incident Male Condition Female Non Ves Genital Ulcer)",
-          "dcid": "Count_MortalityEvent_FemaleNonVesGenitalUlcer_Male_AsAFractionOf_Count_MedicalConditionIncident_Male_ConditionFemaleNonVesGenitalUlcer"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/SDGSGDMKPARLCCJC_gender-SDGSexEnumFEMALE_sdgparliamentaryCommittees",
-      "name": "Number of Chairs of Permanent Committees With Gender = Female, Parliamentary Committees",
-      "statVars": [
-        {
-          "name": "Number of chairs of permanent committees: 46 years old and over, Human Rights, Female",
-          "dcid": "sdg/SG_DMK_PARLCC_JC_46GEQ_HUMRIGH_FEMALE"
-        },
-        {
-          "name": "Number of chairs of permanent committees: Unknown, Human Rights and Gender Equality, Female",
-          "dcid": "sdg/SG_DMK_PARLCC_JC_U_HRGEQU_FEMALE"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years15To64_Gender-Female",
-      "name": "Person With Age = 15 - 64 Years, Gender = Female",
-      "statVars": [
-        {
-          "name": "Population: 15 - 64 Years, Female",
-          "dcid": "Count_Person_15To64Years_Female"
-        },
-        {
-          "name": "Population: 15 - 64 Years, in Labor Force, Female (As Fraction of Count Person 15 To 64 Years Female)",
-          "dcid": "Count_Person_15To64Years_Female_InLaborForce_AsFractionOf_Count_Person_15To64Years_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years18To24_Gender-Female",
-      "name": "Person With Age = 18 - 24 Years, Gender = Female",
-      "statVars": [
-        {
-          "name": "Population: 18 - 24 Years, Female",
-          "dcid": "Count_Person_18To24Years_Female"
-        },
-        {
-          "name": "Population: 18 - 24 Years, Civilian, Female, Non Institutionalized",
-          "dcid": "dc/09z87msgrnz46"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years25To34_Gender-Female",
-      "name": "Person With Age = 25 - 34 Years, Gender = Female",
-      "statVars": [
-        {
-          "name": "Female Population Aged 25 to 34",
-          "dcid": "Count_Person_25To34Years_Female"
-        },
-        {
-          "name": "Population: 25 - 34 Years, Civilian, Female, Non Institutionalized",
-          "dcid": "dc/3ynz47ezvb9t3"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years35To44_Gender-Female",
-      "name": "Person With Age = 35 - 44 Years, Gender = Female",
-      "statVars": [
-        {
-          "name": "Population: 35 - 44 Years, Female",
-          "dcid": "Count_Person_35To44Years_Female"
-        },
-        {
-          "name": "Population: 35 - 44 Years, Civilian, Female, Non Institutionalized",
-          "dcid": "dc/clt08ev67qbg4"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years35To50_Gender-Female",
-      "name": "Person With Age = 35 - 50 Years, Gender = Female",
-      "statVars": [
-        {
-          "name": "Population: 35 - 50 Years, Female",
-          "dcid": "Count_Person_35To50Years_Female"
-        },
-        {
-          "name": "Population: 35 - 50 Years, Birth in The Past 12 Months, Female, Unmarried",
-          "dcid": "Count_Person_35To50Years_BirthInThePast12Months_Female_Unmarried"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-YearsUpto4_Gender-Female",
-      "name": "Person With Age = 4 Years or Less, Gender = Female",
-      "statVars": [
-        {
-          "name": "Population: 4 Years or Less, Female",
-          "dcid": "Count_Person_Upto4Years_Female"
-        },
-        {
-          "name": "Population: 4 Years or Less, Female, Overweight (As Fraction of Count Person Upto 4 Years Female)",
-          "dcid": "Count_Person_Upto4Years_Female_Overweight_AsFractionOf_Count_Person_Upto4Years_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years45To54_Gender-Female",
-      "name": "Person With Age = 45 - 54 Years, Gender = Female",
-      "statVars": [
-        {
-          "name": "Population: 45 - 54 Years, Female",
-          "dcid": "Count_Person_45To54Years_Female"
-        },
-        {
-          "name": "Population: 45 - 54 Years, Civilian, Female, Non Institutionalized",
-          "dcid": "dc/vqxc814k47fc5"
         }
       ]
     }

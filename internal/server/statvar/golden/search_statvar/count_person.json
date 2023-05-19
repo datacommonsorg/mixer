@@ -553,6 +553,10 @@
       "dcid": "Count_Person_10OrMoreYears"
     },
     {
+      "name": "Population: 100 Years or More",
+      "dcid": "Count_Person_100OrMoreYears"
+    },
+    {
       "name": "Population: 100,000 USD or More",
       "dcid": "Count_Person_Civilian_USDollar100000Onwards_ResidesInHousehold"
     },
@@ -673,6 +677,10 @@
       "dcid": "Count_Person_EducationalAttainment4ThGrade"
     },
     {
+      "name": "Population: 5 - 19 Years",
+      "dcid": "Count_Person_5To19Years"
+    },
+    {
       "name": "Population: 5 Years or Less",
       "dcid": "Count_Person_Upto5Years"
     },
@@ -703,6 +711,10 @@
     {
       "name": "Population: 5th Grade",
       "dcid": "Count_Person_EducationalAttainment5ThGrade"
+    },
+    {
+      "name": "Population: 6 - 9 Years",
+      "dcid": "Count_Person_6To9Years"
     },
     {
       "name": "Population: 6 Years or Less",
@@ -773,8 +785,24 @@
       "dcid": "Count_Person_Upto9Years"
     },
     {
+      "name": "Population: 90 - 94 Years",
+      "dcid": "Count_Person_90To94Years"
+    },
+    {
       "name": "Population: 90 Years or More",
       "dcid": "Count_Person_90OrMoreYears"
+    },
+    {
+      "name": "Population: 95 - 99 Years",
+      "dcid": "Count_Person_95To99Years"
+    },
+    {
+      "name": "Population: 95 Years or More",
+      "dcid": "Count_Person_95OrMoreYears"
+    },
+    {
+      "name": "Population: 99 Years or More",
+      "dcid": "Count_Person_99OrMoreYears"
     },
     {
       "name": "Population: 9th Grade",
@@ -805,6 +833,10 @@
       "dcid": "Count_Person_5OrMoreYears_ArmenianSpokenAtHome"
     },
     {
+      "name": "Population: Arthritis",
+      "dcid": "Count_Person_ConditionArthritis"
+    },
+    {
       "name": "Population: Arts Humanities And Other Major",
       "dcid": "Count_Person_BachelorOfArtsHumanitiesAndOtherMajor"
     },
@@ -815,6 +847,10 @@
     {
       "name": "Population: Associates Degree",
       "dcid": "Count_Person_EducationalAttainmentAssociatesDegree"
+    },
+    {
+      "name": "Population: Asthma",
+      "dcid": "Count_Person_ConditionAsthma"
     },
     {
       "name": "Population: Bachelors Degree or Higher",
@@ -861,6 +897,10 @@
       "dcid": "Count_Person_BachelorOfBusinessMajor"
     },
     {
+      "name": "Population: Cancer",
+      "dcid": "Count_Person_ConditionCancer"
+    },
+    {
       "name": "Population: Chinese",
       "dcid": "Count_Person_5OrMoreYears_ChineseSpokenAtHome"
     },
@@ -887,6 +927,18 @@
     {
       "name": "Population: Construction",
       "dcid": "Count_Person_Employed_NACE/F"
+    },
+    {
+      "name": "Population: Dementia",
+      "dcid": "Count_Person_ConditionDementia"
+    },
+    {
+      "name": "Population: Diabetes",
+      "dcid": "Count_Person_ConditionDiabetes"
+    },
+    {
+      "name": "Population: Diseases of Heart",
+      "dcid": "Count_Person_ConditionDiseasesOfHeart"
     },
     {
       "name": "Population: Divorced or Separated",
@@ -1153,6 +1205,10 @@
       "dcid": "Count_Person_5OrMoreYears_KhmerSpokenAtHome"
     },
     {
+      "name": "Population: Kidney Disease",
+      "dcid": "Count_Person_ConditionKidneyDisease"
+    },
+    {
       "name": "Population: Kindergarten",
       "dcid": "Count_Person_EducationalAttainmentKindergarten"
     },
@@ -1185,6 +1241,10 @@
       "dcid": "Count_Person_Literate"
     },
     {
+      "name": "Population: Lung Condition",
+      "dcid": "Count_Person_ConditionLungCondition"
+    },
+    {
       "name": "Population: Main Worker",
       "dcid": "Count_Person_MainWorker"
     },
@@ -1199,6 +1259,10 @@
     {
       "name": "Population: Marginal Worker",
       "dcid": "Count_Person_MarginalWorker"
+    },
+    {
+      "name": "Population: Mental Health Not Good",
+      "dcid": "Count_Person_ConditionMentalHealthNotGood"
     },
     {
       "name": "Population: Military Quarters or Military Ships",
@@ -1451,6 +1515,10 @@
     {
       "name": "Population: Speak English Well",
       "dcid": "Count_Person_SpeakEnglishWell"
+    },
+    {
+      "name": "Population: Stroke",
+      "dcid": "Count_Person_ConditionStroke"
     },
     {
       "name": "Population: Swahili or Other Languages of Central Eastern And Southern Africa",
@@ -2957,6 +3025,14 @@
       "dcid": "Count_Person_15OrMoreYears_NoIncome"
     },
     {
+      "name": "Population: 0 - 1 Years, Rural",
+      "dcid": "Count_Person_0To1Years_Rural"
+    },
+    {
+      "name": "Population: 0 - 1 Years, Urban",
+      "dcid": "Count_Person_0To1Years_Urban"
+    },
+    {
       "name": "Population: 0 - 14 Years, Female",
       "dcid": "Count_Person_0To14Years_Female"
     },
@@ -2973,6 +3049,10 @@
       "dcid": "Count_Person_0To4Years_AmericanIndianAndAlaskaNativeAlone"
     },
     {
+      "name": "Population: 0 - 4 Years, Arthritis",
+      "dcid": "Count_Person_0To4Years_ConditionArthritis"
+    },
+    {
       "name": "Population: 0 - 4 Years, Asian Alone",
       "dcid": "Count_Person_0To4Years_AsianAlone"
     },
@@ -2981,12 +3061,32 @@
       "dcid": "Count_Person_0To4Years_AsianOrPacificIslander"
     },
     {
+      "name": "Population: 0 - 4 Years, Asthma",
+      "dcid": "Count_Person_0To4Years_ConditionAsthma"
+    },
+    {
       "name": "Population: 0 - 4 Years, Black or African American Alone",
       "dcid": "Count_Person_0To4Years_BlackOrAfricanAmericanAlone"
     },
     {
       "name": "Population: 0 - 4 Years, Black or African American Alone or In Combination With One or More Other Races",
       "dcid": "Count_Person_0To4Years_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Population: 0 - 4 Years, Cancer",
+      "dcid": "Count_Person_0To4Years_ConditionCancer"
+    },
+    {
+      "name": "Population: 0 - 4 Years, Dementia",
+      "dcid": "Count_Person_0To4Years_ConditionDementia"
+    },
+    {
+      "name": "Population: 0 - 4 Years, Diabetes",
+      "dcid": "Count_Person_0To4Years_ConditionDiabetes"
+    },
+    {
+      "name": "Population: 0 - 4 Years, Diseases of Heart",
+      "dcid": "Count_Person_0To4Years_ConditionDiseasesOfHeart"
     },
     {
       "name": "Population: 0 - 4 Years, Female",
@@ -3041,8 +3141,20 @@
       "dcid": "Count_Person_0To4Years_HispanicOrLatino_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
     },
     {
+      "name": "Population: 0 - 4 Years, Kidney Disease",
+      "dcid": "Count_Person_0To4Years_ConditionKidneyDisease"
+    },
+    {
+      "name": "Population: 0 - 4 Years, Lung Condition",
+      "dcid": "Count_Person_0To4Years_ConditionLungCondition"
+    },
+    {
       "name": "Population: 0 - 4 Years, Male",
       "dcid": "Count_Person_0To4Years_Male"
+    },
+    {
+      "name": "Population: 0 - 4 Years, Mental Health Not Good",
+      "dcid": "Count_Person_0To4Years_ConditionMentalHealthNotGood"
     },
     {
       "name": "Population: 0 - 4 Years, Native Hawaiian or Other Pacific Islander Alone",
@@ -3093,8 +3205,20 @@
       "dcid": "Count_Person_0To4Years_NotHispanicOrLatino_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
     },
     {
+      "name": "Population: 0 - 4 Years, Rural",
+      "dcid": "Count_Person_0To4Years_Rural"
+    },
+    {
+      "name": "Population: 0 - 4 Years, Stroke",
+      "dcid": "Count_Person_0To4Years_ConditionStroke"
+    },
+    {
       "name": "Population: 0 - 4 Years, Two or More Races",
       "dcid": "Count_Person_0To4Years_TwoOrMoreRaces"
+    },
+    {
+      "name": "Population: 0 - 4 Years, Urban",
+      "dcid": "Count_Person_0To4Years_Urban"
     },
     {
       "name": "Population: 0 - 4 Years, White Alone",
@@ -3349,12 +3473,24 @@
       "dcid": "Count_Person_1OrMoreYears_WhiteAloneNotHispanicOrLatino"
     },
     {
+      "name": "Population: 10 - 12 Years, Rural",
+      "dcid": "Count_Person_10To12Years_Rural"
+    },
+    {
+      "name": "Population: 10 - 12 Years, Urban",
+      "dcid": "Count_Person_10To12Years_Urban"
+    },
+    {
       "name": "Population: 10 - 14 Years, American Indian And Alaska Native Alone or In Combination With One or More Other Races",
       "dcid": "Count_Person_10To14Years_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRaces"
     },
     {
       "name": "Population: 10 - 14 Years, American Indian or Alaska Native Alone",
       "dcid": "Count_Person_10To14Years_AmericanIndianAndAlaskaNativeAlone"
+    },
+    {
+      "name": "Population: 10 - 14 Years, Arthritis",
+      "dcid": "Count_Person_10To14Years_ConditionArthritis"
     },
     {
       "name": "Population: 10 - 14 Years, Asian Alone",
@@ -3365,12 +3501,32 @@
       "dcid": "Count_Person_10To14Years_AsianOrPacificIslander"
     },
     {
+      "name": "Population: 10 - 14 Years, Asthma",
+      "dcid": "Count_Person_10To14Years_ConditionAsthma"
+    },
+    {
       "name": "Population: 10 - 14 Years, Black or African American Alone",
       "dcid": "Count_Person_10To14Years_BlackOrAfricanAmericanAlone"
     },
     {
       "name": "Population: 10 - 14 Years, Black or African American Alone or In Combination With One or More Other Races",
       "dcid": "Count_Person_10To14Years_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Population: 10 - 14 Years, Cancer",
+      "dcid": "Count_Person_10To14Years_ConditionCancer"
+    },
+    {
+      "name": "Population: 10 - 14 Years, Dementia",
+      "dcid": "Count_Person_10To14Years_ConditionDementia"
+    },
+    {
+      "name": "Population: 10 - 14 Years, Diabetes",
+      "dcid": "Count_Person_10To14Years_ConditionDiabetes"
+    },
+    {
+      "name": "Population: 10 - 14 Years, Diseases of Heart",
+      "dcid": "Count_Person_10To14Years_ConditionDiseasesOfHeart"
     },
     {
       "name": "Population: 10 - 14 Years, Divorced",
@@ -3429,12 +3585,24 @@
       "dcid": "Count_Person_10To14Years_HispanicOrLatino_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
     },
     {
+      "name": "Population: 10 - 14 Years, Kidney Disease",
+      "dcid": "Count_Person_10To14Years_ConditionKidneyDisease"
+    },
+    {
       "name": "Population: 10 - 14 Years, Literate",
       "dcid": "Count_Person_10To14Years_Literate"
     },
     {
+      "name": "Population: 10 - 14 Years, Lung Condition",
+      "dcid": "Count_Person_10To14Years_ConditionLungCondition"
+    },
+    {
       "name": "Population: 10 - 14 Years, Male",
       "dcid": "Count_Person_10To14Years_Male"
+    },
+    {
+      "name": "Population: 10 - 14 Years, Mental Health Not Good",
+      "dcid": "Count_Person_10To14Years_ConditionMentalHealthNotGood"
     },
     {
       "name": "Population: 10 - 14 Years, Native Hawaiian or Other Pacific Islander Alone",
@@ -3493,12 +3661,24 @@
       "dcid": "Count_Person_10To14Years_NowMarried"
     },
     {
+      "name": "Population: 10 - 14 Years, Rural",
+      "dcid": "Count_Person_10To14Years_Rural"
+    },
+    {
       "name": "Population: 10 - 14 Years, Separated",
       "dcid": "Count_Person_10To14Years_Separated"
     },
     {
+      "name": "Population: 10 - 14 Years, Stroke",
+      "dcid": "Count_Person_10To14Years_ConditionStroke"
+    },
+    {
       "name": "Population: 10 - 14 Years, Two or More Races",
       "dcid": "Count_Person_10To14Years_TwoOrMoreRaces"
+    },
+    {
+      "name": "Population: 10 - 14 Years, Urban",
+      "dcid": "Count_Person_10To14Years_Urban"
     },
     {
       "name": "Population: 10 - 14 Years, White Alone",
@@ -3553,6 +3733,10 @@
       "dcid": "Count_Person_10OrMoreYears_Widowed"
     },
     {
+      "name": "Population: 100 Years or More, Female",
+      "dcid": "Count_Person_100OrMoreYears_Female"
+    },
+    {
       "name": "Population: 100 Years or More, Hispanic or Latino",
       "dcid": "Count_Person_100OrMoreYears_HispanicOrLatino"
     },
@@ -3603,6 +3787,10 @@
     {
       "name": "Population: 100 Years or More, Hispanic or Latino \u0026 White Alone or In Combination With One or More Other Races",
       "dcid": "Count_Person_100OrMoreYears_HispanicOrLatino_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Population: 100 Years or More, Male",
+      "dcid": "Count_Person_100OrMoreYears_Male"
     },
     {
       "name": "Population: 100 Years or More, Not Hispanic or Latino",
@@ -3737,12 +3925,24 @@
       "dcid": "Count_Person_15To17Years_ResidesInNursingFacilities"
     },
     {
+      "name": "Population: 15 - 17 Years, Rural",
+      "dcid": "Count_Person_15To17Years_Rural"
+    },
+    {
+      "name": "Population: 15 - 17 Years, Urban",
+      "dcid": "Count_Person_15To17Years_Urban"
+    },
+    {
       "name": "Population: 15 - 19 Years, American Indian And Alaska Native Alone or In Combination With One or More Other Races",
       "dcid": "Count_Person_15To19Years_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRaces"
     },
     {
       "name": "Population: 15 - 19 Years, American Indian or Alaska Native Alone",
       "dcid": "Count_Person_15To19Years_AmericanIndianAndAlaskaNativeAlone"
+    },
+    {
+      "name": "Population: 15 - 19 Years, Arthritis",
+      "dcid": "Count_Person_15To19Years_ConditionArthritis"
     },
     {
       "name": "Population: 15 - 19 Years, Asian Alone",
@@ -3753,12 +3953,32 @@
       "dcid": "Count_Person_15To19Years_AsianOrPacificIslander"
     },
     {
+      "name": "Population: 15 - 19 Years, Asthma",
+      "dcid": "Count_Person_15To19Years_ConditionAsthma"
+    },
+    {
       "name": "Population: 15 - 19 Years, Black or African American Alone",
       "dcid": "Count_Person_15To19Years_BlackOrAfricanAmericanAlone"
     },
     {
       "name": "Population: 15 - 19 Years, Black or African American Alone or In Combination With One or More Other Races",
       "dcid": "Count_Person_15To19Years_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Population: 15 - 19 Years, Cancer",
+      "dcid": "Count_Person_15To19Years_ConditionCancer"
+    },
+    {
+      "name": "Population: 15 - 19 Years, Dementia",
+      "dcid": "Count_Person_15To19Years_ConditionDementia"
+    },
+    {
+      "name": "Population: 15 - 19 Years, Diabetes",
+      "dcid": "Count_Person_15To19Years_ConditionDiabetes"
+    },
+    {
+      "name": "Population: 15 - 19 Years, Diseases of Heart",
+      "dcid": "Count_Person_15To19Years_ConditionDiseasesOfHeart"
     },
     {
       "name": "Population: 15 - 19 Years, Divorced",
@@ -3779,226 +3999,6 @@
     {
       "name": "Population: 15 - 19 Years, Hispanic or Latino \u0026 American Indian or Alaska Native Alone",
       "dcid": "Count_Person_15To19Years_HispanicOrLatino_AmericanIndianAndAlaskaNativeAlone"
-    },
-    {
-      "name": "Population: 15 - 19 Years, Hispanic or Latino \u0026 Asian Alone",
-      "dcid": "Count_Person_15To19Years_HispanicOrLatino_AsianAlone"
-    },
-    {
-      "name": "Population: 15 - 19 Years, Hispanic or Latino \u0026 Asian Alone or In Combination With One or More Other Races",
-      "dcid": "Count_Person_15To19Years_HispanicOrLatino_AsianAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Population: 15 - 19 Years, Hispanic or Latino \u0026 Black or African American Alone",
-      "dcid": "Count_Person_15To19Years_HispanicOrLatino_BlackOrAfricanAmericanAlone"
-    },
-    {
-      "name": "Population: 15 - 19 Years, Hispanic or Latino \u0026 Black or African American Alone or In Combination With One or More Other Races",
-      "dcid": "Count_Person_15To19Years_HispanicOrLatino_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Population: 15 - 19 Years, Hispanic or Latino \u0026 Native Hawaiian And Other Pacific Islander Alone or In Combination With One or More Other Races",
-      "dcid": "Count_Person_15To19Years_HispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Population: 15 - 19 Years, Hispanic or Latino \u0026 Native Hawaiian or Other Pacific Islander Alone",
-      "dcid": "Count_Person_15To19Years_HispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAlone"
-    },
-    {
-      "name": "Population: 15 - 19 Years, Hispanic or Latino \u0026 Two or More Races",
-      "dcid": "Count_Person_15To19Years_HispanicOrLatino_TwoOrMoreRaces"
-    },
-    {
-      "name": "Population: 15 - 19 Years, Hispanic or Latino \u0026 White Alone",
-      "dcid": "Count_Person_15To19Years_HispanicOrLatino_WhiteAlone"
-    },
-    {
-      "name": "Population: 15 - 19 Years, Hispanic or Latino \u0026 White Alone or In Combination With One or More Other Races",
-      "dcid": "Count_Person_15To19Years_HispanicOrLatino_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Population: 15 - 19 Years, Literate",
-      "dcid": "Count_Person_15To19Years_Literate"
-    },
-    {
-      "name": "Population: 15 - 19 Years, Male",
-      "dcid": "Count_Person_15To19Years_Male"
-    },
-    {
-      "name": "Population: 15 - 19 Years, Native Hawaiian or Other Pacific Islander Alone",
-      "dcid": "Count_Person_15To19Years_NativeHawaiianAndOtherPacificIslanderAlone"
-    },
-    {
-      "name": "Population: 15 - 19 Years, Never Married",
-      "dcid": "Count_Person_15To19Years_NeverMarried"
-    },
-    {
-      "name": "Population: 15 - 19 Years, Not Hispanic or Latino",
-      "dcid": "Count_Person_15To19Years_NotHispanicOrLatino"
-    },
-    {
-      "name": "Population: 15 - 19 Years, Not Hispanic or Latino \u0026 American Indian And Alaska Native Alone or In Combination With One or More Other Races",
-      "dcid": "Count_Person_15To19Years_NotHispanicOrLatino_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Population: 15 - 19 Years, Not Hispanic or Latino \u0026 American Indian or Alaska Native Alone",
-      "dcid": "Count_Person_15To19Years_NotHispanicOrLatino_AmericanIndianAndAlaskaNativeAlone"
-    },
-    {
-      "name": "Population: 15 - 19 Years, Not Hispanic or Latino \u0026 Asian Alone",
-      "dcid": "Count_Person_15To19Years_NotHispanicOrLatino_AsianAlone"
-    },
-    {
-      "name": "Population: 15 - 19 Years, Not Hispanic or Latino \u0026 Asian Alone or In Combination With One or More Other Races",
-      "dcid": "Count_Person_15To19Years_NotHispanicOrLatino_AsianAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Population: 15 - 19 Years, Not Hispanic or Latino \u0026 Black or African American Alone",
-      "dcid": "Count_Person_15To19Years_NotHispanicOrLatino_BlackOrAfricanAmericanAlone"
-    },
-    {
-      "name": "Population: 15 - 19 Years, Not Hispanic or Latino \u0026 Black or African American Alone or In Combination With One or More Other Races",
-      "dcid": "Count_Person_15To19Years_NotHispanicOrLatino_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Population: 15 - 19 Years, Not Hispanic or Latino \u0026 Native Hawaiian And Other Pacific Islander Alone or In Combination With One or More Other Races",
-      "dcid": "Count_Person_15To19Years_NotHispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Population: 15 - 19 Years, Not Hispanic or Latino \u0026 Native Hawaiian or Other Pacific Islander Alone",
-      "dcid": "Count_Person_15To19Years_NotHispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAlone"
-    },
-    {
-      "name": "Population: 15 - 19 Years, Not Hispanic or Latino \u0026 Two or More Races",
-      "dcid": "Count_Person_15To19Years_NotHispanicOrLatino_TwoOrMoreRaces"
-    },
-    {
-      "name": "Population: 15 - 19 Years, Not Hispanic or Latino \u0026 White Alone or In Combination With One or More Other Races",
-      "dcid": "Count_Person_15To19Years_NotHispanicOrLatino_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Population: 15 - 19 Years, Now Married",
-      "dcid": "Count_Person_15To19Years_NowMarried"
-    },
-    {
-      "name": "Population: 15 - 19 Years, Separated",
-      "dcid": "Count_Person_15To19Years_Separated"
-    },
-    {
-      "name": "Population: 15 - 19 Years, Two or More Races",
-      "dcid": "Count_Person_15To19Years_TwoOrMoreRaces"
-    },
-    {
-      "name": "Population: 15 - 19 Years, White Alone",
-      "dcid": "Count_Person_15To19Years_WhiteAlone"
-    },
-    {
-      "name": "Population: 15 - 19 Years, White Alone Not Hispanic or Latino",
-      "dcid": "Count_Person_15To19Years_WhiteAloneNotHispanicOrLatino"
-    },
-    {
-      "name": "Population: 15 - 19 Years, White Alone or In Combination With One or More Other Races",
-      "dcid": "Count_Person_15To19Years_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Population: 15 - 19 Years, Widowed",
-      "dcid": "Count_Person_15To19Years_Widowed"
-    },
-    {
-      "name": "Population: 15 - 24 Years, Employed",
-      "dcid": "Count_Person_15To24Years_Employed"
-    },
-    {
-      "name": "Population: 15 - 24 Years, Illiterate",
-      "dcid": "Count_Person_15To24Years_Illiterate"
-    },
-    {
-      "name": "Population: 15 - 24 Years, Unemployed",
-      "dcid": "Count_Person_15To24Years_Unemployed"
-    },
-    {
-      "name": "Population: 15 - 50 Years, Female",
-      "dcid": "Count_Person_15To50Years_Female"
-    },
-    {
-      "name": "Population: 15 - 59 Years, Female",
-      "dcid": "Count_Person_15To59Years_Female"
-    },
-    {
-      "name": "Population: 15 - 59 Years, Male",
-      "dcid": "Count_Person_15To59Years_Male"
-    },
-    {
-      "name": "Population: 15 - 64 Years, Female",
-      "dcid": "Count_Person_15To64Years_Female"
-    },
-    {
-      "name": "Population: 15 - 64 Years, Male",
-      "dcid": "Count_Person_15To64Years_Male"
-    },
-    {
-      "name": "Population: 15 Years or Less, Adult Correctional Facilities",
-      "dcid": "Count_Person_15OrLessYears_ResidesInAdultCorrectionalFacilities"
-    },
-    {
-      "name": "Population: 15 Years or Less, College or University Student Housing",
-      "dcid": "Count_Person_15OrLessYears_ResidesInCollegeOrUniversityStudentHousing"
-    },
-    {
-      "name": "Population: 15 Years or Less, Group Quarters",
-      "dcid": "Count_Person_15OrLessYears_ResidesInGroupQuarters"
-    },
-    {
-      "name": "Population: 15 Years or Less, Institutionalized Group Quarters",
-      "dcid": "Count_Person_15OrLessYears_ResidesInInstitutionalizedGroupQuarters"
-    },
-    {
-      "name": "Population: 15 Years or Less, Juvenile Facilities",
-      "dcid": "Count_Person_15OrLessYears_ResidesInJuvenileFacilities"
-    },
-    {
-      "name": "Population: 15 Years or Less, Military Quarters or Military Ships",
-      "dcid": "Count_Person_15OrLessYears_ResidesInMilitaryQuartersOrMilitaryShips"
-    },
-    {
-      "name": "Population: 15 Years or Less, Noninstitutionalized Group Quarters",
-      "dcid": "Count_Person_15OrLessYears_ResidesInNoninstitutionalizedGroupQuarters"
-    },
-    {
-      "name": "Population: 15 Years or Less, Nursing Facilities",
-      "dcid": "Count_Person_15OrLessYears_ResidesInNursingFacilities"
-    },
-    {
-      "name": "Population: 15 Years or More, Adult Correctional Facilities",
-      "dcid": "Count_Person_15OrMoreYears_ResidesInAdultCorrectionalFacilities"
-    },
-    {
-      "name": "Population: 15 Years or More, American Indian or Alaska Native Alone",
-      "dcid": "Count_Person_15OrMoreYears_AmericanIndianAndAlaskaNativeAlone"
-    },
-    {
-      "name": "Population: 15 Years or More, American Indian or Alaska Native Alone",
-      "dcid": "Count_Person_15OrMoreYears_AmericanIndianOrAlaskaNativeAlone"
-    },
-    {
-      "name": "Population: 15 Years or More, Asian Alone",
-      "dcid": "Count_Person_15OrMoreYears_AsianAlone"
-    },
-    {
-      "name": "Population: 15 Years or More, Black or African American Alone",
-      "dcid": "Count_Person_15OrMoreYears_BlackOrAfricanAmericanAlone"
-    },
-    {
-      "name": "Population: 15 Years or More, Born in Other State in The United States",
-      "dcid": "Count_Person_15OrMoreYears_BornInOtherStateInTheUnitedStates"
-    },
-    {
-      "name": "Population: 15 Years or More, Born in State of Residence",
-      "dcid": "Count_Person_15OrMoreYears_BornInStateOfResidence"
-    },
-    {
-      "name": "Population: 15 Years or More, College or University Student Housing",
-      "dcid": "Count_Person_15OrMoreYears_ResidesInCollegeOrUniversityStudentHousing"
     }
   ],
   "matches": [

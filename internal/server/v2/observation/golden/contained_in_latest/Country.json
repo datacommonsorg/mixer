@@ -163,6 +163,15 @@
               ]
             },
             {
+              "facet_id": "2052219360",
+              "observations": [
+                {
+                  "date": "2010",
+                  "value": 40117096
+                }
+              ]
+            },
+            {
               "facet_id": "473499523",
               "observations": [
                 {
@@ -5373,6 +5382,10 @@
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2602",
       "provenance_url": "https://data.census.gov/cedsci/table?q=S2602&tid=ACSST5Y2019.S2602",
       "measurement_method": "CensusACS5yrSurveySubjectTable"
+    },
+    "2052219360": {
+      "import_name": "Argentina_Census",
+      "provenance_url": "https://www.indec.gob.ar"
     },
     "2123271870": {
       "import_name": "IndiaCensus_Primary",
