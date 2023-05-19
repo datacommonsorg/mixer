@@ -143,11 +143,13 @@ func TestSearchStatVar(t *testing.T) {
 
 	if err := test.TestDriver(
 		"SearchStatVar",
-		&test.TestOption{UseCache: true, SearchOptions: server.SearchOptions{
-			UseSearch:           true,
-			BuildSvgSearchIndex: true,
-			BuildSqliteIndex:    false,
-		}},
+		&test.TestOption{
+			UseCache: true,
+			SearchOptions: server.SearchOptions{
+				UseSearch:           true,
+				BuildSvgSearchIndex: true,
+			},
+		},
 		testSuite,
 	); err != nil {
 		t.Errorf("TestDriver() = %s", err)

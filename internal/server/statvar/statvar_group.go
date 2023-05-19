@@ -33,6 +33,7 @@ const (
 	// SvgRoot is the root stat var group of the hierarchy. It's a virtual entity
 	// that links to the top level category stat var groups.
 	SvgRoot         = "dc/g/Root"
+	SvgShadowRoot   = "dc/g/ShadowRoot"
 	customSvgRoot   = "dc/g/Custom_Root"
 	customSVGPrefix = "dc/g/Custom_"
 )
@@ -175,6 +176,7 @@ func GetStatVarGroup(
 	in *pb.GetStatVarGroupRequest,
 	store *store.Store,
 	cache *resource.Cache,
+	pinnedSvg string,
 ) (*pb.StatVarGroups, error) {
 	defer util.TimeTrack(time.Now(), "GetStatVarGroup")
 	entities := in.GetEntities()
@@ -275,6 +277,35 @@ func GetStatVarGroup(
 			},
 		)
 	}
+	// If there is a re-grouping svg under the root, then do the regrouping
+	if pinnedSvg != "" {
+		newChildren := []*pb.StatVarGroupNode_ChildSVG{}
+		var pinnedSvgNode *pb.StatVarGroupNode_ChildSVG
+		for _, child := range result.StatVarGroups[SvgRoot].ChildStatVarGroups {
+			if child.Id == pinnedSvg {
+				child.SpecializedEntity = "Imported by " + child.SpecializedEntity
+				pinnedSvgNode = child
+			} else {
+				newChildren = append(newChildren, child)
+			}
+		}
+		if pinnedSvgNode != nil {
+			totalCount := result.StatVarGroups[SvgRoot].DescendentStatVarCount
+			result.StatVarGroups[SvgRoot].ChildStatVarGroups = []*pb.StatVarGroupNode_ChildSVG{
+				{
+					Id:                     SvgShadowRoot,
+					SpecializedEntity:      "Imported by Google",
+					DescendentStatVarCount: totalCount - pinnedSvgNode.DescendentStatVarCount,
+				},
+				pinnedSvgNode,
+			}
+			result.StatVarGroups[SvgShadowRoot] = &pb.StatVarGroupNode{
+				ChildStatVarGroups:     newChildren,
+				DescendentStatVarCount: totalCount - pinnedSvgNode.DescendentStatVarCount,
+			}
+		}
+	}
+
 	// Recount all descendent stat vars after merging
 	adjustDescendentSVCount(result.StatVarGroups, SvgRoot)
 	if len(entities) > 0 {

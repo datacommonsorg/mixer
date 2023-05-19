@@ -132,14 +132,17 @@ func (s *Server) SubscribeBranchCacheUpdate(ctx context.Context,
 type SearchOptions struct {
 	UseSearch           bool
 	BuildSvgSearchIndex bool
-	BuildSqliteIndex    bool
 }
 
 // NewCache initializes the cache for stat var hierarchy.
-func NewCache(ctx context.Context, store *store.Store, searchOptions SearchOptions,
+func NewCache(
+	ctx context.Context,
+	store *store.Store,
+	searchOptions SearchOptions,
+	pinnedSvg string,
 ) (*resource.Cache, error) {
 	// TODO: [MERGE]: need to builc cache from multiple tables.
-	rawSvg, err := statvar.GetRawSvg(ctx, store)
+	rawSvg, err := statvar.GetRawSvg(ctx, store, pinnedSvg)
 	if err != nil {
 		return nil, err
 	}

@@ -73,6 +73,7 @@ var (
 	startupMemoryProfile = flag.String("startup_memprof", "", "File path to write the memory profile of mixer startup to")
 	// Serve live profiles of the process (CPU, memory, etc.) over HTTP on this port
 	httpProfilePort = flag.Int("httpprof_port", 0, "Port to serve HTTP profiles from")
+	pinnedSvg       = flag.String("pinned_svg", "", "When exist, this will be a top level svg and other other top level svg will be grouped together")
 )
 
 const (
@@ -191,11 +192,14 @@ func main() {
 	// need to merge svg info from memdb.
 	var cache *resource.Cache
 	if *useSearch {
-		cache, err = server.NewCache(ctx, store, server.SearchOptions{
-			UseSearch:           true,
-			BuildSvgSearchIndex: true,
-			BuildSqliteIndex:    true,
-		})
+		cache, err = server.NewCache(
+			ctx, store,
+			server.SearchOptions{
+				UseSearch:           true,
+				BuildSvgSearchIndex: true,
+			},
+			*pinnedSvg,
+		)
 		if err != nil {
 			log.Fatalf("Failed to create cache: %v", err)
 		}
