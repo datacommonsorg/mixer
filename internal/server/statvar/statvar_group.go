@@ -33,7 +33,7 @@ const (
 	// SvgRoot is the root stat var group of the hierarchy. It's a virtual entity
 	// that links to the top level category stat var groups.
 	SvgRoot         = "dc/g/Root"
-	SvgShadowRoot   = "dc/g/ShadowRoot"
+	svgShadowRoot   = "dc/g/ShadowRoot"
 	customSvgRoot   = "dc/g/Custom_Root"
 	customSVGPrefix = "dc/g/Custom_"
 )
@@ -293,13 +293,13 @@ func GetStatVarGroup(
 			totalCount := result.StatVarGroups[SvgRoot].DescendentStatVarCount
 			result.StatVarGroups[SvgRoot].ChildStatVarGroups = []*pb.StatVarGroupNode_ChildSVG{
 				{
-					Id:                     SvgShadowRoot,
+					Id:                     svgShadowRoot,
 					SpecializedEntity:      "Imported by Google",
 					DescendentStatVarCount: totalCount - pinnedSvgNode.DescendentStatVarCount,
 				},
 				pinnedSvgNode,
 			}
-			result.StatVarGroups[SvgShadowRoot] = &pb.StatVarGroupNode{
+			result.StatVarGroups[svgShadowRoot] = &pb.StatVarGroupNode{
 				ChildStatVarGroups:     newChildren,
 				DescendentStatVarCount: totalCount - pinnedSvgNode.DescendentStatVarCount,
 			}
