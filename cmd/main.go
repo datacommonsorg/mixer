@@ -73,7 +73,7 @@ var (
 	startupMemoryProfile = flag.String("startup_memprof", "", "File path to write the memory profile of mixer startup to")
 	// Serve live profiles of the process (CPU, memory, etc.) over HTTP on this port
 	httpProfilePort = flag.Int("httpprof_port", 0, "Port to serve HTTP profiles from")
-	pinnedSvg       = flag.String("pinned_svg", "", "When exist, this will be a top level svg and other other top level svg will be grouped together")
+	pinnedSvg       = flag.String("pinned_svg", "", "When set, a new top level svg is created to hold all existing top level svgs except for this one")
 )
 
 const (
