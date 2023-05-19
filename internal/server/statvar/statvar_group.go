@@ -32,7 +32,12 @@ import (
 const (
 	// SvgRoot is the root stat var group of the hierarchy. It's a virtual entity
 	// that links to the top level category stat var groups.
-	SvgRoot         = "dc/g/Root"
+	SvgRoot = "dc/g/Root"
+	// This is not a real svg from cache but one that is created if "pinnedSvg" is
+	// set.
+	// This will be a top level svg under dc/g/Root that holds all the existing
+	// top level svg except or the "pinnedSvg".
+	// It's way of re-grouping the hierarchy for customization.
 	svgShadowRoot   = "dc/g/ShadowRoot"
 	customSvgRoot   = "dc/g/Custom_Root"
 	customSVGPrefix = "dc/g/Custom_"
@@ -277,7 +282,9 @@ func GetStatVarGroup(
 			},
 		)
 	}
-	// If there is a re-grouping svg under the root, then do the regrouping
+	// If pinnedSvg is set. Will put all other top level svg under the shadow
+	// root.
+	// Then dc/g/Root contains the pinnedSvg and the shadow root.
 	if pinnedSvg != "" {
 		newChildren := []*pb.StatVarGroupNode_ChildSVG{}
 		var pinnedSvgNode *pb.StatVarGroupNode_ChildSVG
