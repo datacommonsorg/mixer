@@ -139,7 +139,7 @@ func setupInternal(
 	}
 	var cache *resource.Cache
 	if useCache {
-		cache, err = server.NewCache(ctx, st, searchOptions)
+		cache, err = server.NewCache(ctx, st, searchOptions, "")
 		if err != nil {
 			return nil, err
 		}

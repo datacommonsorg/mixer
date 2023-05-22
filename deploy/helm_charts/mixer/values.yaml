@@ -48,6 +48,8 @@ mixer:
   bigqueryOnly: false
   # Example: google.com:datcom-store-dev.dc_v3_encode_clustered
   bigqueryTableRef:
+  # A special svg used to re-group the hierarchy
+  pinnedSvg: ""
 
   # URL root for the mixer service launched.
   # Example: dev.api.datacommons.org

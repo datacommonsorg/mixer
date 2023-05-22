@@ -32,7 +32,13 @@ import (
 const (
 	// SvgRoot is the root stat var group of the hierarchy. It's a virtual entity
 	// that links to the top level category stat var groups.
-	SvgRoot         = "dc/g/Root"
+	SvgRoot = "dc/g/Root"
+	// This is not a real svg from cache but one that is created if "pinnedSvg" is
+	// set.
+	// This will be a top level svg under dc/g/Root that holds all the existing
+	// top level svg except or the "pinnedSvg".
+	// It's way of re-grouping the hierarchy for customization.
+	svgShadowRoot   = "dc/g/ShadowRoot"
 	customSvgRoot   = "dc/g/Custom_Root"
 	customSVGPrefix = "dc/g/Custom_"
 )
@@ -175,6 +181,7 @@ func GetStatVarGroup(
 	in *pb.GetStatVarGroupRequest,
 	store *store.Store,
 	cache *resource.Cache,
+	pinnedSvg string,
 ) (*pb.StatVarGroups, error) {
 	defer util.TimeTrack(time.Now(), "GetStatVarGroup")
 	entities := in.GetEntities()
@@ -275,6 +282,37 @@ func GetStatVarGroup(
 			},
 		)
 	}
+	// If pinnedSvg is set. Will put all other top level svg under the shadow
+	// root.
+	// Then dc/g/Root contains the pinnedSvg and the shadow root.
+	if pinnedSvg != "" {
+		newChildren := []*pb.StatVarGroupNode_ChildSVG{}
+		var pinnedSvgNode *pb.StatVarGroupNode_ChildSVG
+		for _, child := range result.StatVarGroups[SvgRoot].ChildStatVarGroups {
+			if child.Id == pinnedSvg {
+				child.SpecializedEntity = "Imported by " + child.SpecializedEntity
+				pinnedSvgNode = child
+			} else {
+				newChildren = append(newChildren, child)
+			}
+		}
+		if pinnedSvgNode != nil {
+			totalCount := result.StatVarGroups[SvgRoot].DescendentStatVarCount
+			result.StatVarGroups[SvgRoot].ChildStatVarGroups = []*pb.StatVarGroupNode_ChildSVG{
+				{
+					Id:                     svgShadowRoot,
+					SpecializedEntity:      "Imported by Google",
+					DescendentStatVarCount: totalCount - pinnedSvgNode.DescendentStatVarCount,
+				},
+				pinnedSvgNode,
+			}
+			result.StatVarGroups[svgShadowRoot] = &pb.StatVarGroupNode{
+				ChildStatVarGroups:     newChildren,
+				DescendentStatVarCount: totalCount - pinnedSvgNode.DescendentStatVarCount,
+			}
+		}
+	}
+
 	// Recount all descendent stat vars after merging
 	adjustDescendentSVCount(result.StatVarGroups, SvgRoot)
 	if len(entities) > 0 {
