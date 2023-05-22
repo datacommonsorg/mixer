@@ -541,6 +541,22 @@
       "dcid": "sdg/SL_TLF_NEET_15-24_FEMALE"
     },
     {
+      "name": "REITER.Stat: Share of employed who are employers women %",
+      "dcid": "oecd/COMPASS_WEMPLYER"
+    },
+    {
+      "name": "REITER.Stat: Share of women inventors in the total number of inventors",
+      "dcid": "oecd/COMPASS_WINV"
+    },
+    {
+      "name": "REITER.Stat: Women with a doctorate, % of 25-65 years old women",
+      "dcid": "oecd/COMPASS_WATTAINPHD"
+    },
+    {
+      "name": "REITER.Stat: Women with tertiary education attained, % of 25-65 years old women",
+      "dcid": "oecd/COMPASS_WATTAINTER"
+    },
+    {
       "name": "Severe Wasting Prevalence In Children Aged \u003c 5 Years (%), Female",
       "dcid": "WHO/sevwast5_Female"
     },
@@ -1009,6 +1025,18 @@
       "dcid": "WHO/TOBACCO_0000000347_Female"
     },
     {
+      "name": "Government at a Glance - 2013 edition : Share of central government employment filled by women",
+      "dcid": "oecd/GOV_2013_EMPWS1311"
+    },
+    {
+      "name": "Government at a Glance - 2013 edition : Share of part-time positions in central government filled by women",
+      "dcid": "oecd/GOV_2013_EMPPTW"
+    },
+    {
+      "name": "Government at a Glance - 2013 edition : Women in general government",
+      "dcid": "oecd/GOV_2013_EMPWS13"
+    },
+    {
       "name": "Healthy Life Expectancy (Hale) At Age 60 (Years), Female",
       "dcid": "WHO/WHOSIS_000007_Female"
     },
@@ -1025,6 +1053,26 @@
       "dcid": "WHO/SA_0000001820_Female"
     },
     {
+      "name": "Historical population: Women, 15 to 64",
+      "dcid": "oecd/HISTPOP_W_15-64"
+    },
+    {
+      "name": "Historical population: Women, 20 to 64",
+      "dcid": "oecd/HISTPOP_W_20-64"
+    },
+    {
+      "name": "Historical population: Women, Old age dependency ratio (65 and over/20-64)",
+      "dcid": "oecd/HISTPOP_W_OAD20-64"
+    },
+    {
+      "name": "Historical population: Women, Total",
+      "dcid": "oecd/HISTPOP_W_TOTAL"
+    },
+    {
+      "name": "Historical population: Women, Total dependency ratio ((\u003c20 \u0026 65+) / 20-64)",
+      "dcid": "oecd/HISTPOP_W_TOTD20-64"
+    },
+    {
       "name": "Infant Mortality Rate (Probability Of Dying Between Birth And Age 1 Per 1000 Live Births), Female",
       "dcid": "WHO/MDG_0000000001_Female"
     },
@@ -1039,6 +1087,566 @@
     {
       "name": "Liver Cirrhosis, Age-Standardized Death Rates (15+), Per 100,000 Population (SA_0000001457), Female",
       "dcid": "WHO/SA_0000001457_Female"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Active population \u003e Aged 15 and over \u003e Females, Growth rate previous period",
+      "dcid": "oecd/MEI_LFACTTFE_GP"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Active population \u003e Aged 15 and over \u003e Females, Growth rate previous period, s.a.",
+      "dcid": "oecd/MEI_LFACTTFE_GPSA"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Active population \u003e Aged 15 and over \u003e Females, Level, rate or national currency",
+      "dcid": "oecd/MEI_LFACTTFE_ST"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Active population \u003e Aged 15 and over \u003e Females, Level, rate or national currency, s.a.",
+      "dcid": "oecd/MEI_LFACTTFE_STSA"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Active population \u003e Aged 15-24 \u003e Females, Level, rate or national currency",
+      "dcid": "oecd/MEI_LFAC24FE_ST"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Active population \u003e Aged 15-24 \u003e Females, Level, rate or national currency, s.a.",
+      "dcid": "oecd/MEI_LFAC24FE_STSA"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Active population \u003e Aged 15-64 \u003e Females, Level, rate or national currency",
+      "dcid": "oecd/MEI_LFAC64FE_ST"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Active population \u003e Aged 15-64 \u003e Females, Level, rate or national currency, s.a.",
+      "dcid": "oecd/MEI_LFAC64FE_STSA"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Active population \u003e Aged 15-74 \u003e Females, Level, rate or national currency",
+      "dcid": "oecd/MEI_LFAC74FE_ST"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Active population \u003e Aged 15-74 \u003e Females, Level, rate or national currency, s.a.",
+      "dcid": "oecd/MEI_LFAC74FE_STSA"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Active population \u003e Aged 25-54 \u003e Females, Level, rate or national currency",
+      "dcid": "oecd/MEI_LFAC25FE_ST"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Active population \u003e Aged 25-54 \u003e Females, Level, rate or national currency, s.a.",
+      "dcid": "oecd/MEI_LFAC25FE_STSA"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Active population \u003e Aged 55-64 \u003e Females, Level, rate or national currency",
+      "dcid": "oecd/MEI_LFAC55FE_ST"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Active population \u003e Aged 55-64 \u003e Females, Level, rate or national currency, s.a.",
+      "dcid": "oecd/MEI_LFAC55FE_STSA"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Employed population \u003e Aged 15 and over \u003e Females, Growth rate previous period",
+      "dcid": "oecd/MEI_LFEMTTFE_GP"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Employed population \u003e Aged 15 and over \u003e Females, Growth rate previous period, s.a.",
+      "dcid": "oecd/MEI_LFEMTTFE_GPSA"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Employed population \u003e Aged 15 and over \u003e Females, Level, rate or national currency",
+      "dcid": "oecd/MEI_LFEMTTFE_ST"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Employed population \u003e Aged 15 and over \u003e Females, Level, rate or national currency, s.a.",
+      "dcid": "oecd/MEI_LFEMTTFE_STSA"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Employed population \u003e Aged 15-24 \u003e Females, Growth rate previous period",
+      "dcid": "oecd/MEI_LFEM24FE_GP"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Employed population \u003e Aged 15-24 \u003e Females, Growth rate previous period, s.a.",
+      "dcid": "oecd/MEI_LFEM24FE_GPSA"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Employed population \u003e Aged 15-24 \u003e Females, Level, rate or national currency",
+      "dcid": "oecd/MEI_LFEM24FE_ST"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Employed population \u003e Aged 15-24 \u003e Females, Level, rate or national currency, s.a.",
+      "dcid": "oecd/MEI_LFEM24FE_STSA"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Employed population \u003e Aged 15-64 \u003e Females, Growth rate previous period",
+      "dcid": "oecd/MEI_LFEM64FE_GP"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Employed population \u003e Aged 15-64 \u003e Females, Growth rate previous period, s.a.",
+      "dcid": "oecd/MEI_LFEM64FE_GPSA"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Employed population \u003e Aged 15-64 \u003e Females, Level, rate or national currency",
+      "dcid": "oecd/MEI_LFEM64FE_ST"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Employed population \u003e Aged 15-64 \u003e Females, Level, rate or national currency, s.a.",
+      "dcid": "oecd/MEI_LFEM64FE_STSA"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Employed population \u003e Aged 15-74 \u003e Females, Growth rate previous period",
+      "dcid": "oecd/MEI_LFEM74FE_GP"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Employed population \u003e Aged 15-74 \u003e Females, Growth rate previous period, s.a.",
+      "dcid": "oecd/MEI_LFEM74FE_GPSA"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Employed population \u003e Aged 15-74 \u003e Females, Level, rate or national currency",
+      "dcid": "oecd/MEI_LFEM74FE_ST"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Employed population \u003e Aged 15-74 \u003e Females, Level, rate or national currency, s.a.",
+      "dcid": "oecd/MEI_LFEM74FE_STSA"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Employed population \u003e Aged 25-54 \u003e Females, Growth rate previous period",
+      "dcid": "oecd/MEI_LFEM25FE_GP"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Employed population \u003e Aged 25-54 \u003e Females, Growth rate previous period, s.a.",
+      "dcid": "oecd/MEI_LFEM25FE_GPSA"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Employed population \u003e Aged 25-54 \u003e Females, Level, rate or national currency",
+      "dcid": "oecd/MEI_LFEM25FE_ST"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Employed population \u003e Aged 25-54 \u003e Females, Level, rate or national currency, s.a.",
+      "dcid": "oecd/MEI_LFEM25FE_STSA"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Employed population \u003e Aged 55-64 \u003e Females, Growth rate previous period",
+      "dcid": "oecd/MEI_LFEM55FE_GP"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Employed population \u003e Aged 55-64 \u003e Females, Growth rate previous period, s.a.",
+      "dcid": "oecd/MEI_LFEM55FE_GPSA"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Employed population \u003e Aged 55-64 \u003e Females, Level, rate or national currency",
+      "dcid": "oecd/MEI_LFEM55FE_ST"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Employed population \u003e Aged 55-64 \u003e Females, Level, rate or national currency, s.a.",
+      "dcid": "oecd/MEI_LFEM55FE_STSA"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Harmonised unemployment - monthly levels \u003e Aged 15-24 \u003e Females, Level, rate or national currency",
+      "dcid": "oecd/MEI_LFHU24FE_ST"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Harmonised unemployment - monthly levels \u003e Aged 15-24 \u003e Females, Level, rate or national currency, s.a.",
+      "dcid": "oecd/MEI_LFHU24FE_STSA"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Harmonised unemployment - monthly levels \u003e Aged 25 and over \u003e Females, Level, rate or national currency",
+      "dcid": "oecd/MEI_LFHUADFE_ST"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Harmonised unemployment - monthly levels \u003e Aged 25 and over \u003e Females, Level, rate or national currency, s.a.",
+      "dcid": "oecd/MEI_LFHUADFE_STSA"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Harmonised unemployment - monthly levels \u003e Total \u003e Females, Level, rate or national currency",
+      "dcid": "oecd/MEI_LFHUTTFE_ST"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Harmonised unemployment - monthly levels \u003e Total \u003e Females, Level, rate or national currency, s.a.",
+      "dcid": "oecd/MEI_LFHUTTFE_STSA"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Inactive population \u003e Aged 15 and over \u003e Females, Level, rate or national currency",
+      "dcid": "oecd/MEI_LFINTTFE_ST"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Inactive population \u003e Aged 15 and over \u003e Females, Level, rate or national currency, s.a.",
+      "dcid": "oecd/MEI_LFINTTFE_STSA"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Inactive population \u003e Aged 15-24 \u003e Females, Level, rate or national currency",
+      "dcid": "oecd/MEI_LFIN24FE_ST"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Inactive population \u003e Aged 15-24 \u003e Females, Level, rate or national currency, s.a.",
+      "dcid": "oecd/MEI_LFIN24FE_STSA"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Inactive population \u003e Aged 15-64 \u003e Females, Level, rate or national currency",
+      "dcid": "oecd/MEI_LFIN64FE_ST"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Inactive population \u003e Aged 15-64 \u003e Females, Level, rate or national currency, s.a.",
+      "dcid": "oecd/MEI_LFIN64FE_STSA"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Inactive population \u003e Aged 15-74 \u003e Females, Level, rate or national currency",
+      "dcid": "oecd/MEI_LFIN74FE_ST"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Inactive population \u003e Aged 15-74 \u003e Females, Level, rate or national currency, s.a.",
+      "dcid": "oecd/MEI_LFIN74FE_STSA"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Inactive population \u003e Aged 25-54 \u003e Females, Level, rate or national currency",
+      "dcid": "oecd/MEI_LFIN25FE_ST"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Inactive population \u003e Aged 25-54 \u003e Females, Level, rate or national currency, s.a.",
+      "dcid": "oecd/MEI_LFIN25FE_STSA"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Inactive population \u003e Aged 55-64 \u003e Females, Level, rate or national currency",
+      "dcid": "oecd/MEI_LFIN55FE_ST"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Inactive population \u003e Aged 55-64 \u003e Females, Level, rate or national currency, s.a.",
+      "dcid": "oecd/MEI_LFIN55FE_STSA"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Population (LFS basis) \u003e All ages \u003e Females, Level, rate or national currency",
+      "dcid": "oecd/MEI_LFPOTTFE_ST"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Population (LFS basis) \u003e All ages \u003e Females, Level, rate or national currency, s.a.",
+      "dcid": "oecd/MEI_LFPOTTFE_STSA"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Unemployed population \u003e Aged 15 and over \u003e Females, Level, rate or national currency",
+      "dcid": "oecd/MEI_LFUNTTFE_ST"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Unemployed population \u003e Aged 15 and over \u003e Females, Level, rate or national currency, s.a.",
+      "dcid": "oecd/MEI_LFUNTTFE_STSA"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Unemployed population \u003e Aged 15-24 \u003e Females, Level, rate or national currency",
+      "dcid": "oecd/MEI_LFUN24FE_ST"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Unemployed population \u003e Aged 15-24 \u003e Females, Level, rate or national currency, s.a.",
+      "dcid": "oecd/MEI_LFUN24FE_STSA"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Unemployed population \u003e Aged 15-64 \u003e Females, Level, rate or national currency",
+      "dcid": "oecd/MEI_LFUN64FE_ST"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Unemployed population \u003e Aged 15-64 \u003e Females, Level, rate or national currency, s.a.",
+      "dcid": "oecd/MEI_LFUN64FE_STSA"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Unemployed population \u003e Aged 15-74 \u003e Females, Level, rate or national currency",
+      "dcid": "oecd/MEI_LFUN74FE_ST"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Unemployed population \u003e Aged 15-74 \u003e Females, Level, rate or national currency, s.a.",
+      "dcid": "oecd/MEI_LFUN74FE_STSA"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Unemployed population \u003e Aged 25-54 \u003e Females, Level, rate or national currency",
+      "dcid": "oecd/MEI_LFUN25FE_ST"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Unemployed population \u003e Aged 25-54 \u003e Females, Level, rate or national currency, s.a.",
+      "dcid": "oecd/MEI_LFUN25FE_STSA"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Unemployed population \u003e Aged 55-64 \u003e Females, Level, rate or national currency",
+      "dcid": "oecd/MEI_LFUN55FE_ST"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Unemployed population \u003e Aged 55-64 \u003e Females, Level, rate or national currency, s.a.",
+      "dcid": "oecd/MEI_LFUN55FE_STSA"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Working age population \u003e Aged 15 and over \u003e Females, Level, rate or national currency",
+      "dcid": "oecd/MEI_LFWATTFE_ST"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Working age population \u003e Aged 15 and over \u003e Females, Level, rate or national currency, s.a.",
+      "dcid": "oecd/MEI_LFWATTFE_STSA"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Working age population \u003e Aged 15-24 \u003e Females, Level, rate or national currency",
+      "dcid": "oecd/MEI_LFWA24FE_ST"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Working age population \u003e Aged 15-24 \u003e Females, Level, rate or national currency, s.a.",
+      "dcid": "oecd/MEI_LFWA24FE_STSA"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Working age population \u003e Aged 15-64 \u003e Females, Level, rate or national currency",
+      "dcid": "oecd/MEI_LFWA64FE_ST"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Working age population \u003e Aged 15-64 \u003e Females, Level, rate or national currency, s.a.",
+      "dcid": "oecd/MEI_LFWA64FE_STSA"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Working age population \u003e Aged 15-74 \u003e Females, Level, rate or national currency",
+      "dcid": "oecd/MEI_LFWA74FE_ST"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Working age population \u003e Aged 15-74 \u003e Females, Level, rate or national currency, s.a.",
+      "dcid": "oecd/MEI_LFWA74FE_STSA"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Working age population \u003e Aged 25-54 \u003e Females, Level, rate or national currency",
+      "dcid": "oecd/MEI_LFWA25FE_ST"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Working age population \u003e Aged 25-54 \u003e Females, Level, rate or national currency, s.a.",
+      "dcid": "oecd/MEI_LFWA25FE_STSA"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Working age population \u003e Aged 55-64 \u003e Females, Level, rate or national currency",
+      "dcid": "oecd/MEI_LFWA55FE_ST"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly levels \u003e Working age population \u003e Aged 55-64 \u003e Females, Level, rate or national currency, s.a.",
+      "dcid": "oecd/MEI_LFWA55FE_STSA"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly rates \u003e Activity rate \u003e Aged 15 and over \u003e Females, Level, rate or national currency",
+      "dcid": "oecd/MEI_LRACTTFE_ST"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly rates \u003e Activity rate \u003e Aged 15 and over \u003e Females, Level, rate or national currency, s.a.",
+      "dcid": "oecd/MEI_LRACTTFE_STSA"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly rates \u003e Activity rate \u003e Aged 15-24 \u003e Females, Level, rate or national currency",
+      "dcid": "oecd/MEI_LRAC24FE_ST"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly rates \u003e Activity rate \u003e Aged 15-24 \u003e Females, Level, rate or national currency, s.a.",
+      "dcid": "oecd/MEI_LRAC24FE_STSA"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly rates \u003e Activity rate \u003e Aged 15-64 \u003e Females, Level, rate or national currency",
+      "dcid": "oecd/MEI_LRAC64FE_ST"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly rates \u003e Activity rate \u003e Aged 15-64 \u003e Females, Level, rate or national currency, s.a.",
+      "dcid": "oecd/MEI_LRAC64FE_STSA"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly rates \u003e Activity rate \u003e Aged 15-74 \u003e Females, Level, rate or national currency",
+      "dcid": "oecd/MEI_LRAC74FE_ST"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly rates \u003e Activity rate \u003e Aged 15-74 \u003e Females, Level, rate or national currency, s.a.",
+      "dcid": "oecd/MEI_LRAC74FE_STSA"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly rates \u003e Activity rate \u003e Aged 25-54 \u003e Females, Level, rate or national currency",
+      "dcid": "oecd/MEI_LRAC25FE_ST"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly rates \u003e Activity rate \u003e Aged 25-54 \u003e Females, Level, rate or national currency, s.a.",
+      "dcid": "oecd/MEI_LRAC25FE_STSA"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly rates \u003e Activity rate \u003e Aged 55-64 \u003e Females, Level, rate or national currency",
+      "dcid": "oecd/MEI_LRAC55FE_ST"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly rates \u003e Activity rate \u003e Aged 55-64 \u003e Females, Level, rate or national currency, s.a.",
+      "dcid": "oecd/MEI_LRAC55FE_STSA"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly rates \u003e Employment rate \u003e Aged 15 and over \u003e Females, Level, rate or national currency",
+      "dcid": "oecd/MEI_LREMTTFE_ST"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly rates \u003e Employment rate \u003e Aged 15 and over \u003e Females, Level, rate or national currency, s.a.",
+      "dcid": "oecd/MEI_LREMTTFE_STSA"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly rates \u003e Employment rate \u003e Aged 15-24 \u003e Females, Level, rate or national currency",
+      "dcid": "oecd/MEI_LREM24FE_ST"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly rates \u003e Employment rate \u003e Aged 15-24 \u003e Females, Level, rate or national currency, s.a.",
+      "dcid": "oecd/MEI_LREM24FE_STSA"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly rates \u003e Employment rate \u003e Aged 15-64 \u003e Females, Level, rate or national currency",
+      "dcid": "oecd/MEI_LREM64FE_ST"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly rates \u003e Employment rate \u003e Aged 15-64 \u003e Females, Level, rate or national currency, s.a.",
+      "dcid": "oecd/MEI_LREM64FE_STSA"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly rates \u003e Employment rate \u003e Aged 15-74 \u003e Females, Level, rate or national currency",
+      "dcid": "oecd/MEI_LREM74FE_ST"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly rates \u003e Employment rate \u003e Aged 15-74 \u003e Females, Level, rate or national currency, s.a.",
+      "dcid": "oecd/MEI_LREM74FE_STSA"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly rates \u003e Employment rate \u003e Aged 25-54 \u003e Females, Level, rate or national currency",
+      "dcid": "oecd/MEI_LREM25FE_ST"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly rates \u003e Employment rate \u003e Aged 25-54 \u003e Females, Level, rate or national currency, s.a.",
+      "dcid": "oecd/MEI_LREM25FE_STSA"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly rates \u003e Employment rate \u003e Aged 55-64 \u003e Females, Level, rate or national currency",
+      "dcid": "oecd/MEI_LREM55FE_ST"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly rates \u003e Employment rate \u003e Aged 55-64 \u003e Females, Level, rate or national currency, s.a.",
+      "dcid": "oecd/MEI_LREM55FE_STSA"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly rates \u003e Employment to population rate \u003e All ages \u003e Females, Level, rate or national currency",
+      "dcid": "oecd/MEI_LREPTTFE_ST"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly rates \u003e Employment to population rate \u003e All ages \u003e Females, Level, rate or national currency, s.a.",
+      "dcid": "oecd/MEI_LREPTTFE_STSA"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly rates \u003e Harmonised unemployment - monthly rates \u003e Aged 15-24 \u003e Females, Level, rate or national currency",
+      "dcid": "oecd/MEI_LRHU24FE_ST"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly rates \u003e Harmonised unemployment - monthly rates \u003e Aged 15-24 \u003e Females, Level, rate or national currency, s.a.",
+      "dcid": "oecd/MEI_LRHU24FE_STSA"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly rates \u003e Harmonised unemployment - monthly rates \u003e Aged 25 and over \u003e Females, Level, rate or national currency",
+      "dcid": "oecd/MEI_LRHUADFE_ST"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly rates \u003e Harmonised unemployment - monthly rates \u003e Aged 25 and over \u003e Females, Level, rate or national currency, s.a.",
+      "dcid": "oecd/MEI_LRHUADFE_STSA"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly rates \u003e Harmonised unemployment - monthly rates \u003e Total \u003e Females, Level, rate or national currency",
+      "dcid": "oecd/MEI_LRHUTTFE_ST"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly rates \u003e Harmonised unemployment - monthly rates \u003e Total \u003e Females, Level, rate or national currency, s.a.",
+      "dcid": "oecd/MEI_LRHUTTFE_STSA"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly rates \u003e Inactivity rate \u003e Aged 15 and over \u003e Females, Level, rate or national currency",
+      "dcid": "oecd/MEI_LRINTTFE_ST"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly rates \u003e Inactivity rate \u003e Aged 15 and over \u003e Females, Level, rate or national currency, s.a.",
+      "dcid": "oecd/MEI_LRINTTFE_STSA"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly rates \u003e Inactivity rate \u003e Aged 15-24 \u003e Females, Level, rate or national currency",
+      "dcid": "oecd/MEI_LRIN24FE_ST"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly rates \u003e Inactivity rate \u003e Aged 15-24 \u003e Females, Level, rate or national currency, s.a.",
+      "dcid": "oecd/MEI_LRIN24FE_STSA"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly rates \u003e Inactivity rate \u003e Aged 15-64 \u003e Females, Level, rate or national currency",
+      "dcid": "oecd/MEI_LRIN64FE_ST"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly rates \u003e Inactivity rate \u003e Aged 15-64 \u003e Females, Level, rate or national currency, s.a.",
+      "dcid": "oecd/MEI_LRIN64FE_STSA"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly rates \u003e Inactivity rate \u003e Aged 15-74 \u003e Females, Level, rate or national currency",
+      "dcid": "oecd/MEI_LRIN74FE_ST"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly rates \u003e Inactivity rate \u003e Aged 15-74 \u003e Females, Level, rate or national currency, s.a.",
+      "dcid": "oecd/MEI_LRIN74FE_STSA"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly rates \u003e Inactivity rate \u003e Aged 25-54 \u003e Females, Level, rate or national currency",
+      "dcid": "oecd/MEI_LRIN25FE_ST"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly rates \u003e Inactivity rate \u003e Aged 25-54 \u003e Females, Level, rate or national currency, s.a.",
+      "dcid": "oecd/MEI_LRIN25FE_STSA"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly rates \u003e Inactivity rate \u003e Aged 55-64 \u003e Females, Level, rate or national currency",
+      "dcid": "oecd/MEI_LRIN55FE_ST"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly rates \u003e Inactivity rate \u003e Aged 55-64 \u003e Females, Level, rate or national currency, s.a.",
+      "dcid": "oecd/MEI_LRIN55FE_STSA"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly rates \u003e Unemployment rate \u003e Aged 15 and over \u003e Females, Level, rate or national currency",
+      "dcid": "oecd/MEI_LRUNTTFE_ST"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly rates \u003e Unemployment rate \u003e Aged 15 and over \u003e Females, Level, rate or national currency, s.a.",
+      "dcid": "oecd/MEI_LRUNTTFE_STSA"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly rates \u003e Unemployment rate \u003e Aged 15-24 \u003e Females, Level, rate or national currency",
+      "dcid": "oecd/MEI_LRUN24FE_ST"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly rates \u003e Unemployment rate \u003e Aged 15-24 \u003e Females, Level, rate or national currency, s.a.",
+      "dcid": "oecd/MEI_LRUN24FE_STSA"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly rates \u003e Unemployment rate \u003e Aged 15-64 \u003e Females, Level, rate or national currency",
+      "dcid": "oecd/MEI_LRUN64FE_ST"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly rates \u003e Unemployment rate \u003e Aged 15-64 \u003e Females, Level, rate or national currency, s.a.",
+      "dcid": "oecd/MEI_LRUN64FE_STSA"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly rates \u003e Unemployment rate \u003e Aged 15-74 \u003e Females, Level, rate or national currency",
+      "dcid": "oecd/MEI_LRUN74FE_ST"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly rates \u003e Unemployment rate \u003e Aged 15-74 \u003e Females, Level, rate or national currency, s.a.",
+      "dcid": "oecd/MEI_LRUN74FE_STSA"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly rates \u003e Unemployment rate \u003e Aged 25-54 \u003e Females, Level, rate or national currency",
+      "dcid": "oecd/MEI_LRUN25FE_ST"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly rates \u003e Unemployment rate \u003e Aged 25-54 \u003e Females, Level, rate or national currency, s.a.",
+      "dcid": "oecd/MEI_LRUN25FE_STSA"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly rates \u003e Unemployment rate \u003e Aged 55-64 \u003e Females, Level, rate or national currency",
+      "dcid": "oecd/MEI_LRUN55FE_ST"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly rates \u003e Unemployment rate \u003e Aged 55-64 \u003e Females, Level, rate or national currency, s.a.",
+      "dcid": "oecd/MEI_LRUN55FE_STSA"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly rates \u003e Unemployment to population rate \u003e All ages \u003e Females, Level, rate or national currency",
+      "dcid": "oecd/MEI_LRUPTTFE_ST"
+    },
+    {
+      "name": "Main Economic Indicators Publication: Labour Force Survey - quarterly rates \u003e Unemployment to population rate \u003e All ages \u003e Females, Level, rate or national currency, s.a.",
+      "dcid": "oecd/MEI_LRUPTTFE_STSA"
     },
     {
       "name": "Medical Doctors (%), Female",
@@ -1117,8 +1725,24 @@
       "dcid": "dc/10d542rs75l3g"
     },
     {
-      "name": "Population (Measured Based on Jurisdiction): Local, Locally Operated, Female",
-      "dcid": "dc/dd1ngpwxrfq8c"
+      "name": "Population projections: Women, 15 to 64",
+      "dcid": "oecd/POPPROJ_W_15-64"
+    },
+    {
+      "name": "Population projections: Women, 20 to 64",
+      "dcid": "oecd/POPPROJ_W_20-64"
+    },
+    {
+      "name": "Population projections: Women, Old age dependency ratio (65 and over/20-64)",
+      "dcid": "oecd/POPPROJ_W_OAD20-64"
+    },
+    {
+      "name": "Population projections: Women, Total",
+      "dcid": "oecd/POPPROJ_W_TOTAL"
+    },
+    {
+      "name": "Population projections: Women, Total dependency ratio ((\u003c20 \u0026 65+) / 20-64)",
+      "dcid": "oecd/POPPROJ_W_TOTD20-64"
     },
     {
       "name": "Prevalence Of Condom Use By Adults During Higher-Risk Sex (15-49) (%), Female",
@@ -1167,6 +1791,98 @@
     {
       "name": "Proportion Of Women Aged 20-24 Years Who Were Married Or In A Union By Age 18 (%)",
       "dcid": "WHO/SP_DYN_MRBF18"
+    },
+    {
+      "name": "R\u0026D indicators sub-platform: Percentage of women among Business Enterprise researchers (based on headcount)",
+      "dcid": "oecd/SBRD_BH_WRXRS"
+    },
+    {
+      "name": "R\u0026D indicators sub-platform: Percentage of women among Government researchers (based on headcount)",
+      "dcid": "oecd/SBRD_GH_WRXRS"
+    },
+    {
+      "name": "R\u0026D indicators sub-platform: Percentage of women among Higher Education researchers (based on headcount)",
+      "dcid": "oecd/SBRD_HH_WRXRS"
+    },
+    {
+      "name": "R\u0026D indicators sub-platform: Percentage of women among researchers (based on headcount)",
+      "dcid": "oecd/SBRD_TH_WRXRS"
+    },
+    {
+      "name": "R\u0026D indicators sub-platform: Women researchers in headcount",
+      "dcid": "oecd/SBRD_TH_WRS"
+    },
+    {
+      "name": "R\u0026D indicators sub-platform: Women researchers in the Business Enterprise sector (headcount)",
+      "dcid": "oecd/SBRD_BH_WRS"
+    },
+    {
+      "name": "R\u0026D indicators sub-platform: Women researchers in the Government sector (headcount)",
+      "dcid": "oecd/SBRD_GH_WRS"
+    },
+    {
+      "name": "R\u0026D indicators sub-platform: Women researchers in the Higher Education sector (headcount)",
+      "dcid": "oecd/SBRD_HH_WRS"
+    },
+    {
+      "name": "REITER.Stat: Employment rate of women, 25-64 years, with doctorate all fields",
+      "dcid": "oecd/COMPASS_WEMPPHD_XT"
+    },
+    {
+      "name": "REITER.Stat: Employment rate of women, 25-64 years, with tertiary education all fields",
+      "dcid": "oecd/COMPASS_WEMPTER_XT"
+    },
+    {
+      "name": "REITER.Stat: Employment rate, women, % women in working-age population",
+      "dcid": "oecd/COMPASS_WEMP_X1564F"
+    },
+    {
+      "name": "REITER.Stat: Employment, women, thousand",
+      "dcid": "oecd/COMPASS_EMPF_NB"
+    },
+    {
+      "name": "REITER.Stat: Employment, women, thousand",
+      "dcid": "oecd/COMPASS_WEMP_NB"
+    },
+    {
+      "name": "REITER.Stat: Graduates to doctorate level that are women, % total graduates in doctorate level",
+      "dcid": "oecd/COMPASS_WPHDGRAD_XT"
+    },
+    {
+      "name": "REITER.Stat: New entrants to tertiary education that are women, % total new entrants in tertiary education",
+      "dcid": "oecd/COMPASS_WTER_XT"
+    },
+    {
+      "name": "REITER.Stat: Share of women among 25-65 year-old adults with a doctorate",
+      "dcid": "oecd/COMPASS_WATTAIN_XPHD"
+    },
+    {
+      "name": "REITER.Stat: Share of women among 25-65 year-old adults with tertiary education",
+      "dcid": "oecd/COMPASS_WATTAIN_XTER"
+    },
+    {
+      "name": "REITER.Stat: Woman researchers (headcount)",
+      "dcid": "oecd/COMPASS_TH_WRS"
+    },
+    {
+      "name": "REITER.Stat: Women doctorate graduates (ISCED2011 level 8), % of total",
+      "dcid": "oecd/COMPASS_WPHDENR_XT"
+    },
+    {
+      "name": "REITER.Stat: Women employment rate of university graduates (ISCED2011 levels 5 to 8), %",
+      "dcid": "oecd/COMPASS_WUNIG_EMP"
+    },
+    {
+      "name": "REITER.Stat: Women researchers as a percentage of total researchers (headcount)",
+      "dcid": "oecd/COMPASS_TH_WRXRS"
+    },
+    {
+      "name": "REITER.Stat: Women researchers, % of total researchers",
+      "dcid": "oecd/COMPASS_WRSE_XRSE"
+    },
+    {
+      "name": "REITER.Stat: Women, glass ceiling index",
+      "dcid": "oecd/COMPASS_GLASCEIL_I"
     },
     {
       "name": "Road Traffic Crash Deaths, Age-Standardized Death Rates (15+), Per 100,000 Population (SA_0000001459), Female",
@@ -1221,6 +1937,10 @@
       "dcid": "WHO/MALARIA_30556_Rural"
     },
     {
+      "name": "Population (Measured Based on Jurisdiction): Local, Locally Operated, Female, Incarcerated",
+      "dcid": "dc/dd1ngpwxrfq8c"
+    },
+    {
       "name": "13-15-Years Old Any Alcoholic Beverage Consumed In Past 30 Days, (%) (SA_0000001786_ARCHIVED), Female",
       "dcid": "WHO/SA_0000001786_ARCHIVED_Female"
     },
@@ -1263,6 +1983,54 @@
     {
       "name": "15-Years Old, Any Alcoholic Beverage Consumed At Least Once A Week, (%) (SA_0000001784_ARCHIVED), Female",
       "dcid": "WHO/SA_0000001784_ARCHIVED_Female"
+    },
+    {
+      "name": "ALFS Summary tables: Employment females",
+      "dcid": "oecd/ALFS_SUMTAB_YGFE08L1_ST"
+    },
+    {
+      "name": "ALFS Summary tables: Employment females as % of employment",
+      "dcid": "oecd/ALFS_SUMTAB_YGFE08PE_ST"
+    },
+    {
+      "name": "ALFS Summary tables: Females self-employment % fem employment",
+      "dcid": "oecd/ALFS_SUMTAB_YGFE22P1_ST"
+    },
+    {
+      "name": "ALFS Summary tables: Females unemployment % of fem lab force",
+      "dcid": "oecd/ALFS_SUMTAB_YGFE06P2_ST"
+    },
+    {
+      "name": "ALFS Summary tables: Labour force females",
+      "dcid": "oecd/ALFS_SUMTAB_YGFE07L1_ST"
+    },
+    {
+      "name": "ALFS Summary tables: Unemployment females , (‘000)",
+      "dcid": "oecd/ALFS_SUMTAB_YGFE06L1_ST"
+    },
+    {
+      "name": "Access to education, participation and progression (Chapter C): Expected number of years in education for women (All levels combined, Full-time), from age 5 through age 39",
+      "dcid": "oecd/CHAPTER_C_EAG2014_C030"
+    },
+    {
+      "name": "Access to education, participation and progression (Chapter C): Expected number of years in education for women (All levels combined, Part-time), from age 5 through age 39",
+      "dcid": "oecd/CHAPTER_C_EAG2014_C032"
+    },
+    {
+      "name": "Access to education, participation and progression (Chapter C): Percentage of young women neither employed nor in education or training, 15-19 year-olds",
+      "dcid": "oecd/CHAPTER_C_EAG2014_C036"
+    },
+    {
+      "name": "Access to education, participation and progression (Chapter C): Percentage of young women neither employed nor in education or training, 20-24 year-olds",
+      "dcid": "oecd/CHAPTER_C_EAG2014_C037"
+    },
+    {
+      "name": "Access to education, participation and progression (Chapter C): Percentage of young women neither employed nor in education or training, 25-29 year-olds",
+      "dcid": "oecd/CHAPTER_C_EAG2014_C038"
+    },
+    {
+      "name": "Access to education, participation and progression (Chapter C): Young women neither employed nor in education or training, 15-29 year-olds",
+      "dcid": "oecd/CHAPTER_C_EAG2014_C024"
     },
     {
       "name": "Alcohol Dependence (15+ ), 12-Month Prevalence (%) With 95%Ci (SA_0000001461_ARCHIVED), Female",
@@ -1611,6 +2379,142 @@
     {
       "name": "Ex - Expectation Of Life At Age X, Female, Agelessthan1",
       "dcid": "WHO/LIFE_0000000035_Female_AGELT1"
+    },
+    {
+      "name": "Future of Business Survey: Share of businesses owned/managed mainly by women",
+      "dcid": "oecd/FOBS_FOBS_WOMEN_OWN"
+    },
+    {
+      "name": "Government at a Glance - 2013 edition : Share of central government employment filled by women by occupation groups, middle management",
+      "dcid": "oecd/GOV_2013_EMPW_MM"
+    },
+    {
+      "name": "Government at a Glance - 2013 edition : Share of central government employment filled by women by occupation groups, professionals",
+      "dcid": "oecd/GOV_2013_EMPW_P"
+    },
+    {
+      "name": "Government at a Glance - 2013 edition : Share of central government employment filled by women by occupation groups, secretarial positions",
+      "dcid": "oecd/GOV_2013_EMPW_SEC"
+    },
+    {
+      "name": "Government at a Glance - 2013 edition : Share of central government employment filled by women by occupation groups, top management",
+      "dcid": "oecd/GOV_2013_EMPW_TM"
+    },
+    {
+      "name": "Government at a Glance - 2013 edition : Share of court presidents that are women",
+      "dcid": "oecd/GOV_2013_EMPW_CP"
+    },
+    {
+      "name": "Government at a Glance - 2013 edition : Share of professional judges that are women",
+      "dcid": "oecd/GOV_2013_EMPW_PJ"
+    },
+    {
+      "name": "Government at a Glance - 2013 edition : Share of women ministers",
+      "dcid": "oecd/GOV_2013_EMPW_MIN"
+    },
+    {
+      "name": "Government at a Glance - 2013 edition : Share of women parliamentarians",
+      "dcid": "oecd/GOV_2013_EMPW_PARL"
+    },
+    {
+      "name": "Government at a Glance - 2013 edition : Share of women supreme court justices",
+      "dcid": "oecd/GOV_2013_EMPW_SCJ"
+    },
+    {
+      "name": "Historical population: Women, 0 to 4",
+      "dcid": "oecd/HISTPOP_W_0_4"
+    },
+    {
+      "name": "Historical population: Women, 10 to 14",
+      "dcid": "oecd/HISTPOP_W_10_14"
+    },
+    {
+      "name": "Historical population: Women, 15 to 19",
+      "dcid": "oecd/HISTPOP_W_15_19"
+    },
+    {
+      "name": "Historical population: Women, 20 to 24",
+      "dcid": "oecd/HISTPOP_W_20_24"
+    },
+    {
+      "name": "Historical population: Women, 25 to 29",
+      "dcid": "oecd/HISTPOP_W_25_29"
+    },
+    {
+      "name": "Historical population: Women, 30 to 34",
+      "dcid": "oecd/HISTPOP_W_30_34"
+    },
+    {
+      "name": "Historical population: Women, 35 to 39",
+      "dcid": "oecd/HISTPOP_W_35_39"
+    },
+    {
+      "name": "Historical population: Women, 40 to 44",
+      "dcid": "oecd/HISTPOP_W_40_44"
+    },
+    {
+      "name": "Historical population: Women, 45 to 49",
+      "dcid": "oecd/HISTPOP_W_45_49"
+    },
+    {
+      "name": "Historical population: Women, 5 to 9",
+      "dcid": "oecd/HISTPOP_W_05_9"
+    },
+    {
+      "name": "Historical population: Women, 50 and over",
+      "dcid": "oecd/HISTPOP_W_50_OVER"
+    },
+    {
+      "name": "Historical population: Women, 50 to 54",
+      "dcid": "oecd/HISTPOP_W_50_54"
+    },
+    {
+      "name": "Historical population: Women, 55 to 59",
+      "dcid": "oecd/HISTPOP_W_55_59"
+    },
+    {
+      "name": "Historical population: Women, 60 to 64",
+      "dcid": "oecd/HISTPOP_W_60_64"
+    },
+    {
+      "name": "Historical population: Women, 65 and over",
+      "dcid": "oecd/HISTPOP_W_65_OVER"
+    },
+    {
+      "name": "Historical population: Women, 65 to 69",
+      "dcid": "oecd/HISTPOP_W_65_69"
+    },
+    {
+      "name": "Historical population: Women, 70 to 74",
+      "dcid": "oecd/HISTPOP_W_70_74"
+    },
+    {
+      "name": "Historical population: Women, 75 to 79",
+      "dcid": "oecd/HISTPOP_W_75_79"
+    },
+    {
+      "name": "Historical population: Women, 80 to 84",
+      "dcid": "oecd/HISTPOP_W_80_84"
+    },
+    {
+      "name": "Historical population: Women, 85 and over",
+      "dcid": "oecd/HISTPOP_W_85_OVER"
+    },
+    {
+      "name": "Historical population: Women, Share of 15 to 24 - youth",
+      "dcid": "oecd/HISTPOP_W_15-24_SHARE"
+    },
+    {
+      "name": "Historical population: Women, Share of 15 to 64 - working age",
+      "dcid": "oecd/HISTPOP_W_15-64_SHARE"
+    },
+    {
+      "name": "Historical population: Women, Under 20",
+      "dcid": "oecd/HISTPOP_W_LESS_20"
+    },
+    {
+      "name": "Historical population: Women, Young age dependency ratio (\u003c20/20-64)",
+      "dcid": "oecd/HISTPOP_W_YD_L20"
     },
     {
       "name": "Household Air Pollution Attributable DALYs (Per 100 000 Population), Female, All Causes",
@@ -2205,6 +3109,102 @@
       "dcid": "WHO/SE_PRE_PARTN_Female"
     },
     {
+      "name": "Population projections: Women, 0 to 4",
+      "dcid": "oecd/POPPROJ_W_0_4"
+    },
+    {
+      "name": "Population projections: Women, 10 to 14",
+      "dcid": "oecd/POPPROJ_W_10_14"
+    },
+    {
+      "name": "Population projections: Women, 15 to 19",
+      "dcid": "oecd/POPPROJ_W_15_19"
+    },
+    {
+      "name": "Population projections: Women, 20 to 24",
+      "dcid": "oecd/POPPROJ_W_20_24"
+    },
+    {
+      "name": "Population projections: Women, 25 to 29",
+      "dcid": "oecd/POPPROJ_W_25_29"
+    },
+    {
+      "name": "Population projections: Women, 30 to 34",
+      "dcid": "oecd/POPPROJ_W_30_34"
+    },
+    {
+      "name": "Population projections: Women, 35 to 39",
+      "dcid": "oecd/POPPROJ_W_35_39"
+    },
+    {
+      "name": "Population projections: Women, 40 to 44",
+      "dcid": "oecd/POPPROJ_W_40_44"
+    },
+    {
+      "name": "Population projections: Women, 45 to 49",
+      "dcid": "oecd/POPPROJ_W_45_49"
+    },
+    {
+      "name": "Population projections: Women, 5 to 9",
+      "dcid": "oecd/POPPROJ_W_05_9"
+    },
+    {
+      "name": "Population projections: Women, 50 and over",
+      "dcid": "oecd/POPPROJ_W_50_OVER"
+    },
+    {
+      "name": "Population projections: Women, 50 to 54",
+      "dcid": "oecd/POPPROJ_W_50_54"
+    },
+    {
+      "name": "Population projections: Women, 55 to 59",
+      "dcid": "oecd/POPPROJ_W_55_59"
+    },
+    {
+      "name": "Population projections: Women, 60 to 64",
+      "dcid": "oecd/POPPROJ_W_60_64"
+    },
+    {
+      "name": "Population projections: Women, 65 and over",
+      "dcid": "oecd/POPPROJ_W_65_OVER"
+    },
+    {
+      "name": "Population projections: Women, 65 to 69",
+      "dcid": "oecd/POPPROJ_W_65_69"
+    },
+    {
+      "name": "Population projections: Women, 70 to 74",
+      "dcid": "oecd/POPPROJ_W_70_74"
+    },
+    {
+      "name": "Population projections: Women, 75 to 79",
+      "dcid": "oecd/POPPROJ_W_75_79"
+    },
+    {
+      "name": "Population projections: Women, 80 to 84",
+      "dcid": "oecd/POPPROJ_W_80_84"
+    },
+    {
+      "name": "Population projections: Women, 85 and over",
+      "dcid": "oecd/POPPROJ_W_85_OVER"
+    },
+    {
+      "name": "Population projections: Women, Share of 15 to 24 - youth",
+      "dcid": "oecd/POPPROJ_W_15-24_SHARE"
+    },
+    {
+      "name": "Population projections: Women, Share of 15 to 64 - working age",
+      "dcid": "oecd/POPPROJ_W_15-64_SHARE"
+    },
+    {
+      "name": "Population projections: Women, Under 20",
+      "dcid": "oecd/POPPROJ_W_LESS_20"
+    },
+    {
+      "name": "Population projections: Women, Young age dependency ratio (\u003c20/20-64)",
+      "dcid": "oecd/POPPROJ_W_YD_L20"
+    },
+    {
       "name": "Premature Deaths Due To Noncommunicable Diseases (Ncd) As A Proportion Of All Ncd Deaths, Female, Noncommunicable Diseases",
       "dcid": "WHO/NCD_UNDER70_Female_NoncommunicableDiseases"
     },
@@ -2305,6 +3305,158 @@
       "dcid": "WHO/SH_STA_FGMS_Urban"
     },
     {
+      "name": "REITER.Stat: Employment rate of women, 25-64 years, tertiary education, ICT",
+      "dcid": "oecd/COMPASS_WEMP_ICT_XT"
+    },
+    {
+      "name": "REITER.Stat: Employment rate of women, 25-64 years, tertiary education, Science, technology, engineering, and mathematics (STEM)",
+      "dcid": "oecd/COMPASS_WEMP_STEM_XT"
+    },
+    {
+      "name": "REITER.Stat: Employment rate of women, 25-64 years, tertiary education, engineering, manufacturing and construction",
+      "dcid": "oecd/COMPASS_WEMP_ENG_XT"
+    },
+    {
+      "name": "REITER.Stat: Employment rate of women, 25-64 years, tertiary education, natural sicences mathematics and statistics",
+      "dcid": "oecd/COMPASS_WEMP_NSE_XT"
+    },
+    {
+      "name": "REITER.Stat: Graduates to doctorate in engineering, manufacturing and construction that are women, % total graduates in engineering, manufacturing and construction that are women",
+      "dcid": "oecd/COMPASS_WPHDGRAD_ENG_XT"
+    },
+    {
+      "name": "REITER.Stat: Graduates to doctorate in information and communication technologies that are women, % total graduates in information and communication technologies",
+      "dcid": "oecd/COMPASS_WPHDGRAD_ICT_XT"
+    },
+    {
+      "name": "REITER.Stat: Graduates to doctorate in natural sciences, mathematics and statistics that are women, % total graduates  in natural sciences, mathematics and statistics",
+      "dcid": "oecd/COMPASS_WPHDGRAD_SCI_XT"
+    },
+    {
+      "name": "REITER.Stat: Graduates to tertiary education in engineering, manufacturing and construction that are women, % total graduates in engineering, manufacturing and construction that are women",
+      "dcid": "oecd/COMPASS_WTERGRAD_ENG_XT"
+    },
+    {
+      "name": "REITER.Stat: Graduates to tertiary education in information and communication technologies that are women, % total graduates in information and communication technologies",
+      "dcid": "oecd/COMPASS_WTERGRAD_ICT_XT"
+    },
+    {
+      "name": "REITER.Stat: Graduates to tertiary education in natural sciences, mathematics and statistics that are women, % total graduates  in natural sciences, mathematics and statistics",
+      "dcid": "oecd/COMPASS_WTERGRAD_SCI_XT"
+    },
+    {
+      "name": "REITER.Stat: Graduates to tertiary education that are women, % total graduates in tertiary education",
+      "dcid": "oecd/COMPASS_WTER_GRAD_XT"
+    },
+    {
+      "name": "REITER.Stat: New entrants to doctorate in engineering, manufacturing and construction that are women, % total new entrants in engineering, manufacturing and construction",
+      "dcid": "oecd/COMPASS_WPHDENTR_ENG_XT"
+    },
+    {
+      "name": "REITER.Stat: New entrants to doctorate in information and communication technologies that are women, % total new entrants in information and communication technologies",
+      "dcid": "oecd/COMPASS_WPHDENTR_ICT_XT"
+    },
+    {
+      "name": "REITER.Stat: New entrants to doctorate in natural sciences, mathematics and statistics that are women, % total new entrants in natural sciences, mathematics and statistics",
+      "dcid": "oecd/COMPASS_WPHDENTR_SCI_XT"
+    },
+    {
+      "name": "REITER.Stat: New entrants to tertiary education in engineering, manufacturing and construction that are women, % total new entrants in engineering, manufacturing and construction",
+      "dcid": "oecd/COMPASS_WTERENTR_ENG_XT"
+    },
+    {
+      "name": "REITER.Stat: New entrants to tertiary education in information and communication technologies that are women, % total new entrants in information and communication technologies",
+      "dcid": "oecd/COMPASS_WTERENTR_ICT_XT"
+    },
+    {
+      "name": "REITER.Stat: New entrants to tertiary education in natural sciences, mathematics and statistics that are women, % total new entrants in natural sciences, mathematics and statistics",
+      "dcid": "oecd/COMPASS_WTERENTR_SCI_XT"
+    },
+    {
+      "name": "REITER.Stat: Number of students enroled in master or equivalent level, women",
+      "dcid": "oecd/COMPASS_MASENR_WOMEN_NB"
+    },
+    {
+      "name": "REITER.Stat: Number of students enrolled in tertiary education, women",
+      "dcid": "oecd/COMPASS_TERENR_WOMEN_NB"
+    },
+    {
+      "name": "REITER.Stat: Women PHDs new entrants in natural sciences, mathematics and statistics, % total new entrants in doctorates in natural sciences, mathematics and statistics",
+      "dcid": "oecd/COMPASS_WPHDENR_NSE_XNSE"
+    },
+    {
+      "name": "REITER.Stat: Women PHDs new entrants in natural sciences, mathematics and statistics, number",
+      "dcid": "oecd/COMPASS_WPHDENR_NSE_NB"
+    },
+    {
+      "name": "REITER.Stat: Women enroled in doctoral or equivalent level, number",
+      "dcid": "oecd/COMPASS_PHDENR_WOMEN_NB"
+    },
+    {
+      "name": "REITER.Stat: Women enroled in master's level, as % of  all master's students enroled",
+      "dcid": "oecd/COMPASS_MASENR_WOMEN_XMAS"
+    },
+    {
+      "name": "REITER.Stat: Women graduates to doctorate in natural sciences, mathematics and statistics, % total graduates  in natural sciences, mathematics and statistics",
+      "dcid": "oecd/COMPASS_WPHDGRAD_NSE_XT"
+    },
+    {
+      "name": "REITER.Stat: Women graduates to tertiary education in natural sciences, mathematics and statistics, % total graduates  in natural sciences, mathematics and statistics",
+      "dcid": "oecd/COMPASS_WTERGRAD_NSE_XT"
+    },
+    {
+      "name": "REITER.Stat: Women new entrants to doctorate in engineering, manufacturing and construction, % total new entrants in engineering, manufacturing and construction",
+      "dcid": "oecd/COMPASS_WPHDENR_ENG_XENG"
+    },
+    {
+      "name": "REITER.Stat: Women new entrants to doctorate in information and communication technologies, % total new entrants in doctorate information and communication technologies",
+      "dcid": "oecd/COMPASS_WPHDENR_ICT_XICT"
+    },
+    {
+      "name": "REITER.Stat: Women new entrants to doctorate in information and communication technologies, number",
+      "dcid": "oecd/COMPASS_WPHDENR_ENG_NB"
+    },
+    {
+      "name": "REITER.Stat: Women new entrants to tertiary education in ICT, % total new entrants in ICT",
+      "dcid": "oecd/COMPASS_WTERENR_ICT_XICT"
+    },
+    {
+      "name": "REITER.Stat: Women new entrants to tertiary education in ICT, number",
+      "dcid": "oecd/COMPASS_WTERENR_ICT_NB"
+    },
+    {
+      "name": "REITER.Stat: Women new entrants to tertiary education in engineering manufacturing and construction, % total new entrants in engineering manufacturing and construction",
+      "dcid": "oecd/COMPASS_WTERENR_ENG_XENG"
+    },
+    {
+      "name": "REITER.Stat: Women new entrants to tertiary education in engineering manufacturing and construction, number",
+      "dcid": "oecd/COMPASS_WTERENR_ENG_NB"
+    },
+    {
+      "name": "REITER.Stat: Women new entrants to tertiary education in natural sciences, mathematics and statistics, % total new entrants in natural sciences, mathematics and statistics",
+      "dcid": "oecd/COMPASS_WTERENR_NSE_XNSE"
+    },
+    {
+      "name": "REITER.Stat: Women new entrants to tertiary education in natural sciences, mathematics and statistics, number",
+      "dcid": "oecd/COMPASS_WTERENR_NSE_NB"
+    },
+    {
+      "name": "REITER.Stat: Women with  tertiary education level in Engineering, manufacturing \u0026 construction, % of 25-65 years old women with a tertary level",
+      "dcid": "oecd/COMPASS_WTER_ENG_XT"
+    },
+    {
+      "name": "REITER.Stat: Women with  tertiary education level in ICT, % of 25-65 years old women with a tertary level",
+      "dcid": "oecd/COMPASS_WTER_ICT_XT"
+    },
+    {
+      "name": "REITER.Stat: Women with  tertiary education level in Natural science, mathematics and statistics, % of 25-65 years old women with a tertary level",
+      "dcid": "oecd/COMPASS_WTER_NSE_XT"
+    },
+    {
+      "name": "REITER.Stat: Women with a tertiary Science, technology, engineering, and mathematics (STEM),  % of 25-65 years old women with a tertary level",
+      "dcid": "oecd/COMPASS_WTER_STEM_XT"
+    },
+    {
       "name": "Raised Blood Pressure (Sbp\u003e=140 Or Dbp\u003e=90) (Age-Standardized Estimate), Female, Years18Plus",
       "dcid": "WHO/BP_04_Female_YEARS18PLUS"
     },
@@ -2315,6 +3467,18 @@
     {
       "name": "Road Traffic Crash Deaths, Age-Standardized Death Rates (15+), Per 100,000 Population (SA_0000001459_ARCHIVED), Female",
       "dcid": "WHO/SA_0000001459_ARCHIVED_Female"
+    },
+    {
+      "name": "The learning environment and organisation of schools (Chapter D): Share of women among teaching staff, all levels of education",
+      "dcid": "oecd/CHAPTER_D_EAG2014_D090"
+    },
+    {
+      "name": "The learning environment and organisation of schools (Chapter D): Share of women among teaching staff, primary education",
+      "dcid": "oecd/CHAPTER_D_EAG2014_D083"
+    },
+    {
+      "name": "The learning environment and organisation of schools (Chapter D): Share of women among teaching staff, tertiary education",
+      "dcid": "oecd/CHAPTER_D_EAG2014_D089"
     },
     {
       "name": "Total Ncd Deaths (In Thousands), Female",
@@ -2397,172 +3561,444 @@
       "dcid": "WHO/LIFE_0000000034_Female_AGELT1"
     },
     {
+      "name": "ALFS Summary tables ARCHIVE: Civilian employment females",
+      "dcid": "oecd/ALFS_SUMTAB_ARCHIVE_YGFE08L1_ST"
+    },
+    {
+      "name": "ALFS Summary tables ARCHIVE: Civilian employment females % of civilian employment",
+      "dcid": "oecd/ALFS_SUMTAB_ARCHIVE_YGFE08PE_ST"
+    },
+    {
+      "name": "ALFS Summary tables ARCHIVE: Civilian labour force  females % of pop 15-64",
+      "dcid": "oecd/ALFS_SUMTAB_ARCHIVE_YGFE07P2_ST"
+    },
+    {
+      "name": "ALFS Summary tables ARCHIVE: Civilian labour force females",
+      "dcid": "oecd/ALFS_SUMTAB_ARCHIVE_YGFE07L1_ST"
+    },
+    {
+      "name": "ALFS Summary tables ARCHIVE: Females self-employment % fem civilian employment",
+      "dcid": "oecd/ALFS_SUMTAB_ARCHIVE_YGFE22P1_ST"
+    },
+    {
+      "name": "ALFS Summary tables ARCHIVE: Females unemployment % of fem civilian lab force",
+      "dcid": "oecd/ALFS_SUMTAB_ARCHIVE_YGFE06P2_ST"
+    },
+    {
+      "name": "ALFS Summary tables ARCHIVE: Population females",
+      "dcid": "oecd/ALFS_SUMTAB_ARCHIVE_YGFE01L1_ST"
+    },
+    {
+      "name": "ALFS Summary tables ARCHIVE: Population females 15-64",
+      "dcid": "oecd/ALFS_SUMTAB_ARCHIVE_YGFE02L1_ST"
+    },
+    {
+      "name": "ALFS Summary tables ARCHIVE: Population females over 65",
+      "dcid": "oecd/ALFS_SUMTAB_ARCHIVE_YGFE21L1_ST"
+    },
+    {
+      "name": "ALFS Summary tables ARCHIVE: Population females under 15",
+      "dcid": "oecd/ALFS_SUMTAB_ARCHIVE_YGFE20L1_ST"
+    },
+    {
       "name": "Alcohol, Total Per Capita (15+) Consumption (In Litres Of Pure Alcohol) With 95%Ci (SA_0000001822_ARCHIVED), Female,2019-12",
       "dcid": "WHO/SA_0000001822_ARCHIVED_Female_2019-12"
     },
     {
-      "name": "Estimate Of Daily Tobacco Smoking Prevalence (%), Female",
-      "dcid": "WHO/M_Est_smk_daily_Female"
+      "name": "Better Life Index - Edition 2013: Air pollution, Value, Women",
+      "dcid": "oecd/BLI2013_EQ_AIRP_L_WMN"
     },
     {
-      "name": "Mean Bmi (Kg/M\u0026#Xb2;) (Crude Estimate), Female, Age20Plus",
-      "dcid": "WHO/NCD_BMI_MEANC_Female_AGE20PLUS"
+      "name": "Better Life Index - Edition 2013: Assault rate, Value, Women",
+      "dcid": "oecd/BLI2013_PS_SFRV_L_WMN"
     },
     {
-      "name": "Mean Bmi (Kg/Square Metre) (Age-Standardized Estimate), Female, Years18Plus",
-      "dcid": "WHO/NCD_BMI_MEAN_Female_YEARS18PLUS"
+      "name": "Better Life Index - Edition 2013: Consultation on rule-making, Value, Women",
+      "dcid": "oecd/BLI2013_CG_TRASG_L_WMN"
     },
     {
-      "name": "Mean Fasting Blood Glucose (Mmol/L) (Crude Estimate), Female, Age25Plus",
-      "dcid": "WHO/NCD_GLUC_02_Female_AGE25PLUS"
+      "name": "Better Life Index - Edition 2013: Dwellings without basic facilities, Value, Women",
+      "dcid": "oecd/BLI2013_HO_BASE_L_WMN"
     },
     {
-      "name": "Mean Non-Hdl Cholesterol, Age-Standardized, Female",
-      "dcid": "WHO/NCD_CHOL_MEANNONHDL_A_Female"
+      "name": "Better Life Index - Edition 2013: Educational attainment, Value, Women",
+      "dcid": "oecd/BLI2013_ES_EDUA_L_WMN"
     },
     {
-      "name": "Mean Total Cholesterol,  Crude, Female",
-      "dcid": "WHO/NCD_CHOL_MEANTOTALCHOL_C_Female"
+      "name": "Better Life Index - Edition 2013: Employees working very long hours, Value, Women",
+      "dcid": "oecd/BLI2013_WL_EWLH_L_WMN"
     },
     {
-      "name": "Number Of Non-Pregnant Women (Aged 15-49 Years) With Anaemia (Thousands), Female",
-      "dcid": "WHO/NUTRITION_ANAEMIA_NONPREGNANT_NUM_Female"
+      "name": "Better Life Index - Edition 2013: Employment rate, Value, Women",
+      "dcid": "oecd/BLI2013_JE_EMPL_L_WMN"
     },
     {
-      "name": "Number Of Pregnant Women (Aged 15-49 Years) With Anaemia (Thousands), Female",
-      "dcid": "WHO/NUTRITION_ANAEMIA_PREGNANT_NUM_Female"
+      "name": "Better Life Index - Edition 2013: Homicide rate, Value, Women",
+      "dcid": "oecd/BLI2013_PS_REPH_L_WMN"
     },
     {
-      "name": "Number Of Women Of Reproductive Age (Aged 15-49 Years) With Anaemia (Thousands), Female",
-      "dcid": "WHO/NUTRITION_ANAEMIA_REPRODUCTIVEAGE_NUM_Female"
+      "name": "Better Life Index - Edition 2013: Household net adjusted disposable income, Value, Women",
+      "dcid": "oecd/BLI2013_IW_HADI_L_WMN"
     },
     {
-      "name": "Persistence To Last Grade Of Primary (% Of Cohort), Female",
-      "dcid": "WHO/SE_PRM_PRSL_ZS_Female"
+      "name": "Better Life Index - Edition 2013: Household net financial wealth, Value, Women",
+      "dcid": "oecd/BLI2013_IW_HNFW_L_WMN"
     },
     {
-      "name": "Prevalence Of Anaemia In Pregnant Women (Aged 15-49) (%), Female",
-      "dcid": "WHO/NUTRITION_ANAEMIA_PREGNANT_PREV_Female"
+      "name": "Better Life Index - Edition 2013: Housing expenditure, Value, Women",
+      "dcid": "oecd/BLI2013_HO_HISH_L_WMN"
     },
     {
-      "name": "Prevalence Of Anaemia In Women Of Reproductive Age (Aged 15-49) (%), Female",
-      "dcid": "WHO/NUTRITION_ANAEMIA_REPRODUCTIVEAGE_PREV_Female"
+      "name": "Better Life Index - Edition 2013: Job security, Value, Women",
+      "dcid": "oecd/BLI2013_JE_JT_L_WMN"
     },
     {
-      "name": "Prevalence Of Current Cigarette Smoking Among Adolescents (%), Female",
-      "dcid": "WHO/Yth_curr_cig_smoking_Female"
+      "name": "Better Life Index - Edition 2013: Life expectancy, Value, Women",
+      "dcid": "oecd/BLI2013_HS_LEB_L_WMN"
     },
     {
-      "name": "Prevalence Of Current Cigarette Smoking Among Adults (%), Female",
-      "dcid": "WHO/Adult_curr_cig_smoking_Female"
+      "name": "Better Life Index - Edition 2013: Life satisfaction, Value, Women",
+      "dcid": "oecd/BLI2013_SW_LIFS_L_WMN"
     },
     {
-      "name": "Prevalence Of Current Tobacco Smoking Among Adolescents (%), Female",
-      "dcid": "WHO/Yth_curr_tob_smoking_Female"
+      "name": "Better Life Index - Edition 2013: Long-term unemployment rate, Value, Women",
+      "dcid": "oecd/BLI2013_JE_LTUR_L_WMN"
     },
     {
-      "name": "Prevalence Of Current Tobacco Smoking Among Adults (%), Female",
-      "dcid": "WHO/Adult_curr_tob_smoking_Female"
+      "name": "Better Life Index - Edition 2013: Personal earnings, Value, Women",
+      "dcid": "oecd/BLI2013_JE_PEARN_L_WMN"
     },
     {
-      "name": "Prevalence Of Current Tobacco Use Among Adolescents (%), Female",
-      "dcid": "WHO/Yth_curr_tob_use_Female"
+      "name": "Better Life Index - Edition 2013: Quality of support network, Value, Women",
+      "dcid": "oecd/BLI2013_SC_SNTWS_L_WMN"
     },
     {
-      "name": "Prevalence Of Current Tobacco Use Among Adults (%), Female",
-      "dcid": "WHO/Adult_curr_tob_use_Female"
+      "name": "Better Life Index - Edition 2013: Rooms per person, Value, Women",
+      "dcid": "oecd/BLI2013_HO_NUMR_L_WMN"
     },
     {
-      "name": "Prevalence Of Daily Cigarette Smoking Among Adolescents (%), Female",
-      "dcid": "WHO/Yth_daily_cig_smoking_Female"
+      "name": "Better Life Index - Edition 2013: Self-reported health, Value, Women",
+      "dcid": "oecd/BLI2013_HS_SFRH_L_WMN"
     },
     {
-      "name": "Prevalence Of Daily Cigarette Smoking Among Adults (%), Female",
-      "dcid": "WHO/Adult_daily_cig_smoking_Female"
+      "name": "Better Life Index - Edition 2013: Student skills, Value, Women",
+      "dcid": "oecd/BLI2013_ES_STCS_L_WMN"
     },
     {
-      "name": "Prevalence Of Daily Tobacco Smoking Among Adolescents (%), Female",
-      "dcid": "WHO/Yth_daily_tob_smoking_Female"
+      "name": "Better Life Index - Edition 2013: Time devoted to leisure and personal care, Value, Women",
+      "dcid": "oecd/BLI2013_WL_TNOW_L_WMN"
     },
     {
-      "name": "Prevalence Of Daily Tobacco Smoking Among Adults (%), Female",
-      "dcid": "WHO/Adult_daily_tob_smoking_Female"
+      "name": "Better Life Index - Edition 2013: Voter turnout, Value, Women",
+      "dcid": "oecd/BLI2013_CG_VOTO_L_WMN"
     },
     {
-      "name": "Prevalence Of Daily Tobacco Use Among Adolescents (%), Female",
-      "dcid": "WHO/Yth_daily_tob_use_Female"
+      "name": "Better Life Index - Edition 2013: Water quality, Value, Women",
+      "dcid": "oecd/BLI2013_EQ_WATER_L_WMN"
     },
     {
-      "name": "Prevalence Of Daily Tobacco Use Among Adults (%), Female",
-      "dcid": "WHO/Adult_daily_tob_use_Female"
+      "name": "Better Life Index - Edition 2013: Years in education, Value, Women",
+      "dcid": "oecd/BLI2013_ES_EDUEX_L_WMN"
     },
     {
-      "name": "Proportion Of Women Aged 15-49 Years Who Make Their Own Informed Decisions Regarding Sexual Relations, Contraceptive Use And Reproductive Health Care (%)",
-      "dcid": "WHO/SG_DMK_SRCR_FN_ZS"
+      "name": "Data for the breakdown visualisations of the Going Digital portal - part 15: Workers who experienced job stress associated with frequent computer use at work, Female",
+      "dcid": "oecd/GD_BREAKDOWNS_15_2-8-3_F"
     },
     {
-      "name": "Raised Fasting Blood Glucose (\u003e= 7.0 Mmol/L Or On Medication) (Crude Estimate), Female, Years18Plus",
-      "dcid": "WHO/NCD_GLUC_03_Female_YEARS18PLUS"
+      "name": "Employment by activities and status (ALFS): Accommodation and food service activities (I), Females",
+      "dcid": "oecd/ALFS_EMP_YA99I4L1_ST_FE"
     },
     {
-      "name": "Estimate Of Current Cigarette Smoking Prevalence (%) (Age-Standardized Rate), Female",
-      "dcid": "WHO/M_Est_cig_curr_std_Female"
+      "name": "Employment by activities and status (ALFS): Activities of extraterritorial organisations and bodies (U), Females",
+      "dcid": "oecd/ALFS_EMP_YA99U4L1_ST_FE"
     },
     {
-      "name": "Estimate Of Current Tobacco Smoking Prevalence (%) (Age-Standardized Rate), Female",
-      "dcid": "WHO/M_Est_smk_curr_std_Female"
+      "name": "Employment by activities and status (ALFS): Activities of households as employers undifferentiated goods- and services-producing activities of households for own use (T), Females",
+      "dcid": "oecd/ALFS_EMP_YA99T4L1_ST_FE"
     },
     {
-      "name": "Estimate Of Current Tobacco Use Prevalence (%) (Age-Standardized Rate), Female",
-      "dcid": "WHO/M_Est_tob_curr_std_Female"
+      "name": "Employment by activities and status (ALFS): Administrative and support service activities (N), Females",
+      "dcid": "oecd/ALFS_EMP_YA99N4L1_ST_FE"
     },
     {
-      "name": "Estimate Of Daily Cigarette Smoking Prevalence (%) (Age-Standardized Rate), Female",
-      "dcid": "WHO/M_Est_cig_daily_std_Female"
+      "name": "Employment by activities and status (ALFS): Agriculture, hunting, forestry (A), Employees, Females",
+      "dcid": "oecd/ALFS_EMP_YW99ATL1_ST_FE"
     },
     {
-      "name": "Estimate Of Daily Tobacco Smoking Prevalence (%) (Age-Standardized Rate), Female",
-      "dcid": "WHO/M_Est_smk_daily_std_Female"
+      "name": "Employment by activities and status (ALFS): Agriculture, hunting, forestry (A), Employment, Females",
+      "dcid": "oecd/ALFS_EMP_YA99ATL1_ST_FE"
     },
     {
-      "name": "Estimate Of Daily Tobacco Use Prevalence (%) (Age-Standardized Rate), Female",
-      "dcid": "WHO/M_Est_tob_daily_std_Female"
+      "name": "Employment by activities and status (ALFS): Agriculture,hunting and forestry (A), Females",
+      "dcid": "oecd/ALFS_EMP_YA99A4L1_ST_FE"
     },
     {
-      "name": "Number Of Deaths Attributed To Non-Communicable Diseases, By Type Of Disease And Sex, Female, Chronic Respiratory Diseases",
-      "dcid": "WHO/SDG_SH_DTH_RNCOM_Female_ChronicRespiratoryDiseases"
+      "name": "Employment by activities and status (ALFS): Arts, entertainment and recreation ( R), Females",
+      "dcid": "oecd/ALFS_EMP_YA99X4L1_ST_FE"
     },
     {
-      "name": "Number Of Deaths Attributed To Non-Communicable Diseases, By Type Of Disease And Sex, Female, Diabetes Mellitus",
-      "dcid": "WHO/SDG_SH_DTH_RNCOM_Female_DiabetesMellitus"
+      "name": "Employment by activities and status (ALFS): Community, social and personal services (9), Employees, Females",
+      "dcid": "oecd/ALFS_EMP_YW9909L1_ST_FE"
     },
     {
-      "name": "Number Of Deaths Attributed To Non-Communicable Diseases, By Type Of Disease And Sex, Female, Major Cardiovascular Diseases",
-      "dcid": "WHO/SDG_SH_DTH_RNCOM_Female_MajorCardiovascularDiseases"
+      "name": "Employment by activities and status (ALFS): Community, social and personal services (9), Employment, Females",
+      "dcid": "oecd/ALFS_EMP_YA9909L1_ST_FE"
     },
     {
-      "name": "Number Of Deaths Attributed To Non-Communicable Diseases, By Type Of Disease And Sex, Female, Malignant Neoplasms",
-      "dcid": "WHO/SDG_SH_DTH_RNCOM_Female_MalignantNeoplasms"
+      "name": "Employment by activities and status (ALFS): Construction (5), Employees, Females",
+      "dcid": "oecd/ALFS_EMP_YW9905L1_ST_FE"
     },
     {
-      "name": "Proportion Of Ever-Partnered Women And Girls Aged 15-49 Years Subjected To Physical And/Or Sexual Violence By A Current Or Former Intimate Partner In The Previous 12 Months (SDGIPV12M)",
-      "dcid": "WHO/SDGIPV12M"
+      "name": "Employment by activities and status (ALFS): Construction (5), Employment, Females",
+      "dcid": "oecd/ALFS_EMP_YA9905L1_ST_FE"
     },
     {
-      "name": "Proportion Of Ever-Partnered Women And Girls Aged 15-49 Years Subjected To Physical And/Or Sexual Violence By A Current Or Former Intimate Partner In Their Lifetime",
-      "dcid": "WHO/SDGIPVLT"
+      "name": "Employment by activities and status (ALFS): Construction (F), Employees, Females",
+      "dcid": "oecd/ALFS_EMP_YW99FTL1_ST_FE"
     },
     {
-      "name": "Total Density Per Million Females Aged From 50 To 69 Years Old: Mammography Units",
-      "dcid": "WHO/DEVICES23"
+      "name": "Employment by activities and status (ALFS): Construction (F), Employment, Females",
+      "dcid": "oecd/ALFS_EMP_YA99FTL1_ST_FE"
     },
     {
-      "name": "Women Accessing Antenatal Care (Anc) Services Who Were Tested For Syphilis (%)",
-      "dcid": "WHO/PerctestedANC"
+      "name": "Employment by activities and status (ALFS): Construction (F), Females",
+      "dcid": "oecd/ALFS_EMP_YA99F4L1_ST_FE"
     },
     {
-      "name": "Women Of Reproductive Age (15-49 Years) Who Are Married Or In-Union Who Have Their Need For Family Planning Satisfied With Modern Methods (%), Unpd",
-      "dcid": "WHO/FAMILYPLANNINGUNPDUHC"
+      "name": "Employment by activities and status (ALFS): Education (M), Employees, Females",
+      "dcid": "oecd/ALFS_EMP_YW99MTL1_ST_FE"
+    },
+    {
+      "name": "Employment by activities and status (ALFS): Education (M), Employment, Females",
+      "dcid": "oecd/ALFS_EMP_YA99MTL1_ST_FE"
+    },
+    {
+      "name": "Employment by activities and status (ALFS): Education (P), Females",
+      "dcid": "oecd/ALFS_EMP_YA99P4L1_ST_FE"
+    },
+    {
+      "name": "Employment by activities and status (ALFS): Electricity, gas, steam and air conditioning supply (D), Females",
+      "dcid": "oecd/ALFS_EMP_YA99D4L1_ST_FE"
+    },
+    {
+      "name": "Employment by activities and status (ALFS): Electricity, gas, water (4), Employees, Females",
+      "dcid": "oecd/ALFS_EMP_YW9904L1_ST_FE"
+    },
+    {
+      "name": "Employment by activities and status (ALFS): Electricity, gas, water (4), Employment, Females",
+      "dcid": "oecd/ALFS_EMP_YA9904L1_ST_FE"
+    },
+    {
+      "name": "Employment by activities and status (ALFS): Electricity, gas, water (E), Employees, Females",
+      "dcid": "oecd/ALFS_EMP_YW99ETL1_ST_FE"
+    },
+    {
+      "name": "Employment by activities and status (ALFS): Electricity, gas, water (E), Employment, Females",
+      "dcid": "oecd/ALFS_EMP_YA99ETL1_ST_FE"
+    },
+    {
+      "name": "Employment by activities and status (ALFS): Employees as % of employment, Females",
+      "dcid": "oecd/ALFS_EMP_YS99TTP2_ST_FE"
+    },
+    {
+      "name": "Employment by activities and status (ALFS): Employees in Agriculture (ISIC rev.2,1), Females",
+      "dcid": "oecd/ALFS_EMP_YW992AL1_ST_FE"
+    },
+    {
+      "name": "Employment by activities and status (ALFS): Employees in Agriculture (ISIC rev.3,A-B), Females",
+      "dcid": "oecd/ALFS_EMP_YW993AL1_ST_FE"
+    },
+    {
+      "name": "Employment by activities and status (ALFS): Employees in Agriculture (ISIC rev.3,A-B), rate, Females",
+      "dcid": "oecd/ALFS_EMP_YW993AP1_ST_FE"
+    },
+    {
+      "name": "Employment by activities and status (ALFS): Employees in Industry (ISIC rev.2, 2-5), Females",
+      "dcid": "oecd/ALFS_EMP_YW992IL1_ST_FE"
+    },
+    {
+      "name": "Employment by activities and status (ALFS): Employees in Industry (ISIC rev.3, C-F), Females",
+      "dcid": "oecd/ALFS_EMP_YW993IL1_ST_FE"
+    },
+    {
+      "name": "Employment by activities and status (ALFS): Employees in Industry (ISIC rev.3, C-F), rate, Females",
+      "dcid": "oecd/ALFS_EMP_YW993IP1_ST_FE"
+    },
+    {
+      "name": "Employment by activities and status (ALFS): Employees in Services (ISIC rev.2, 6-9), Females",
+      "dcid": "oecd/ALFS_EMP_YW992SL1_ST_FE"
+    },
+    {
+      "name": "Employment by activities and status (ALFS): Employees in Services (ISIC rev.3, G-Q), Females",
+      "dcid": "oecd/ALFS_EMP_YW993SL1_ST_FE"
+    },
+    {
+      "name": "Employment by activities and status (ALFS): Employees in Services (ISIC rev.3, G-Q), rate, Females",
+      "dcid": "oecd/ALFS_EMP_YW993SP1_ST_FE"
+    },
+    {
+      "name": "Employment by activities and status (ALFS): Employees in all activities (ISIC rev.2, 1-10), Females",
+      "dcid": "oecd/ALFS_EMP_YW992TL1_ST_FE"
+    },
+    {
+      "name": "Employment by activities and status (ALFS): Employees in all activities (ISIC rev.3, A-X), Females",
+      "dcid": "oecd/ALFS_EMP_YW993TL1_ST_FE"
+    },
+    {
+      "name": "Employment by activities and status (ALFS): Employees in all activities, Females",
+      "dcid": "oecd/ALFS_EMP_YS99TTL2_ST_FE"
+    },
+    {
+      "name": "Employment by activities and status (ALFS): Employers and persons working on own account all activities, Females",
+      "dcid": "oecd/ALFS_EMP_YS99TTL3_ST_FE"
+    },
+    {
+      "name": "Employment by activities and status (ALFS): Employment all status, all activities, Females",
+      "dcid": "oecd/ALFS_EMP_YS99TTL1_ST_FE"
+    },
+    {
+      "name": "Employment by activities and status (ALFS): Employment in Agriculture (ISIC rev.2,1), Females",
+      "dcid": "oecd/ALFS_EMP_YA992AL1_ST_FE"
+    },
+    {
+      "name": "Employment by activities and status (ALFS): Employment in Agriculture (ISIC rev.3,A-B), Females",
+      "dcid": "oecd/ALFS_EMP_YA993AL1_ST_FE"
+    },
+    {
+      "name": "Employment by activities and status (ALFS): Employment in Agriculture (ISIC rev.3,A-B), rate, Females",
+      "dcid": "oecd/ALFS_EMP_YA993AP1_ST_FE"
+    },
+    {
+      "name": "Employment by activities and status (ALFS): Employment in Agriculture,hunting and forestry (ISIC rev4, A), Females",
+      "dcid": "oecd/ALFS_EMP_YA994AL1_ST_FE"
+    },
+    {
+      "name": "Employment by activities and status (ALFS): Employment in Industry (ISIC rev.2, 2-5), Females",
+      "dcid": "oecd/ALFS_EMP_YA992IL1_ST_FE"
+    },
+    {
+      "name": "Employment by activities and status (ALFS): Employment in Industry (ISIC rev.3, C-F), Females",
+      "dcid": "oecd/ALFS_EMP_YA993IL1_ST_FE"
+    },
+    {
+      "name": "Employment by activities and status (ALFS): Employment in Industry (ISIC rev.3, C-F), rate, Females",
+      "dcid": "oecd/ALFS_EMP_YA993IP1_ST_FE"
+    },
+    {
+      "name": "Employment by activities and status (ALFS): Employment in Industry (ISIC rev4, B-F), Females",
+      "dcid": "oecd/ALFS_EMP_YA994IL1_ST_FE"
+    },
+    {
+      "name": "Employment by activities and status (ALFS): Employment in Services (ISIC rev.2, 6-9), Females",
+      "dcid": "oecd/ALFS_EMP_YA992SL1_ST_FE"
+    },
+    {
+      "name": "Employment by activities and status (ALFS): Employment in Services (ISIC rev.3, G-Q), Females",
+      "dcid": "oecd/ALFS_EMP_YA993SL1_ST_FE"
+    },
+    {
+      "name": "Employment by activities and status (ALFS): Employment in Services (ISIC rev.3, G-Q), rate, Females",
+      "dcid": "oecd/ALFS_EMP_YA993SP1_ST_FE"
+    },
+    {
+      "name": "Employment by activities and status (ALFS): Employment in Services (ISIC rev.4, G-U), Females",
+      "dcid": "oecd/ALFS_EMP_YA994SL1_ST_FE"
+    },
+    {
+      "name": "Employment by activities and status (ALFS): Employment in all activities (ISIC rev.2, 1-10), Females",
+      "dcid": "oecd/ALFS_EMP_YA992TL1_ST_FE"
+    },
+    {
+      "name": "Employment by activities and status (ALFS): Employment in all activities (ISIC rev.3, A-X), Females",
+      "dcid": "oecd/ALFS_EMP_YA993TL1_ST_FE"
+    },
+    {
+      "name": "Employment by activities and status (ALFS): Employment in all activities (ISIC rev.4, A-U), Females",
+      "dcid": "oecd/ALFS_EMP_YA994TL1_ST_FE"
+    },
+    {
+      "name": "Employment by activities and status (ALFS): Extra territorial organisations (Q), Employees, Females",
+      "dcid": "oecd/ALFS_EMP_YW99QTL1_ST_FE"
+    },
+    {
+      "name": "Employment by activities and status (ALFS): Extra territorial organisations (Q), Employment, Females",
+      "dcid": "oecd/ALFS_EMP_YA99QTL1_ST_FE"
+    },
+    {
+      "name": "Employment by activities and status (ALFS): Finance and intermediation (8), Employees, Females",
+      "dcid": "oecd/ALFS_EMP_YW9908L1_ST_FE"
+    },
+    {
+      "name": "Employment by activities and status (ALFS): Finance and intermediation (8), Employment, Females",
+      "dcid": "oecd/ALFS_EMP_YA9908L1_ST_FE"
+    },
+    {
+      "name": "Employment by activities and status (ALFS): Finance and intermediation (J), Employment, Females",
+      "dcid": "oecd/ALFS_EMP_YA99JTL1_ST_FE"
+    },
+    {
+      "name": "Employment by activities and status (ALFS): Finance intermediation (J), Employees, Females",
+      "dcid": "oecd/ALFS_EMP_YW99JTL1_ST_FE"
+    },
+    {
+      "name": "Employment by activities and status (ALFS): Financial and insurance activities (K), Females",
+      "dcid": "oecd/ALFS_EMP_YA99K4L1_ST_FE"
+    },
+    {
+      "name": "Employment by activities and status (ALFS): Fishing (B), Employees, Females",
+      "dcid": "oecd/ALFS_EMP_YW99BTL1_ST_FE"
+    },
+    {
+      "name": "Employment by activities and status (ALFS): Fishing (B), Employment, Females",
+      "dcid": "oecd/ALFS_EMP_YA99BTL1_ST_FE"
+    },
+    {
+      "name": "Employment by activities and status (ALFS): Health and social work (N), Employees, Females",
+      "dcid": "oecd/ALFS_EMP_YW99NTL1_ST_FE"
+    },
+    {
+      "name": "Employment by activities and status (ALFS): Health and social work (N), Employment, Females",
+      "dcid": "oecd/ALFS_EMP_YA99NTL1_ST_FE"
+    },
+    {
+      "name": "Employment by activities and status (ALFS): Hotels and restaurants (H), Employees, Females",
+      "dcid": "oecd/ALFS_EMP_YW99HTL1_ST_FE"
+    },
+    {
+      "name": "Employment by activities and status (ALFS): Hotels and restaurants (H), Employment, Females",
+      "dcid": "oecd/ALFS_EMP_YA99HTL1_ST_FE"
+    },
+    {
+      "name": "Employment by activities and status (ALFS): Human health and social work activities (Q), Females",
+      "dcid": "oecd/ALFS_EMP_YA99Q4L1_ST_FE"
+    },
+    {
+      "name": "Employment by activities and status (ALFS): Information and communication (J), Females",
+      "dcid": "oecd/ALFS_EMP_YA99J4L1_ST_FE"
+    },
+    {
+      "name": "Employment by activities and status (ALFS): Manufacturing (3), Employees, Females",
+      "dcid": "oecd/ALFS_EMP_YW9903L1_ST_FE"
+    },
+    {
+      "name": "Employment by activities and status (ALFS): Manufacturing (3), Employment, Females",
+      "dcid": "oecd/ALFS_EMP_YA9903L1_ST_FE"
+    },
+    {
+      "name": "Employment by activities and status (ALFS): Manufacturing (C ), Females",
+      "dcid": "oecd/ALFS_EMP_YA99C4L1_ST_FE"
+    },
+    {
+      "name": "Employment by activities and status (ALFS): Manufacturing (D), Employees, Females",
+      "dcid": "oecd/ALFS_EMP_YW99DTL1_ST_FE"
+    },
+    {
+      "name": "Employment by activities and status (ALFS): Manufacturing (D), Employment, Females",
+      "dcid": "oecd/ALFS_EMP_YA99DTL1_ST_FE"
+    },
+    {
+      "name": "Employment by activities and status (ALFS): Mining and quarrying (2), Employees, Females",
+      "dcid": "oecd/ALFS_EMP_YW9902L1_ST_FE"
     }
   ],
   "statVarGroups": [
@@ -34109,6 +35545,88 @@
       ]
     },
     {
+      "dcid": "dc/g/Person_Age_Gender-Female",
+      "name": "Person With Age, Gender = Female",
+      "statVars": [
+        {
+          "name": "Life Expectancy: 1 Years or Less, Female",
+          "dcid": "LifeExpectancy_Person_Upto1Years_Female"
+        },
+        {
+          "name": "Population: 0 - 14 Years, Female",
+          "dcid": "Count_Person_0To14Years_Female"
+        },
+        {
+          "name": "Population: 14 Years or Less, Female",
+          "dcid": "Count_Person_Upto14Years_Female"
+        },
+        {
+          "name": "Population: 15 - 59 Years, Female",
+          "dcid": "Count_Person_15To59Years_Female"
+        },
+        {
+          "name": "Population: 3 Years or More, Female",
+          "dcid": "Count_Person_3OrMoreYears_Female"
+        },
+        {
+          "name": "Population: 60 Years or More, Female",
+          "dcid": "Count_Person_60OrMoreYears_Female"
+        },
+        {
+          "name": "Population: 65 - 66 Years, Female",
+          "dcid": "Count_Person_65To66Years_Female"
+        },
+        {
+          "name": "Population: 67 - 69 Years, Female",
+          "dcid": "Count_Person_67To69Years_Female"
+        },
+        {
+          "name": "Population: 80 Years or More, Female",
+          "dcid": "Count_Person_80OrMoreYears_Female"
+        },
+        {
+          "name": "Population: 85 - 89 Years, Female",
+          "dcid": "Count_Person_85To89Years_Female"
+        },
+        {
+          "name": "Population: 90 - 94 Years, Female",
+          "dcid": "Count_Person_90To94Years_Female"
+        },
+        {
+          "name": "Population: 90 Years or More, Female",
+          "dcid": "Count_Person_90OrMoreYears_Female"
+        },
+        {
+          "name": "Population: 95 - 99 Years, Female",
+          "dcid": "Count_Person_95To99Years_Female"
+        },
+        {
+          "name": "Population: 95 Years or More, Female",
+          "dcid": "Count_Person_95OrMoreYears_Female"
+        },
+        {
+          "name": "Population: 99 Years or More, Female",
+          "dcid": "Count_Person_99OrMoreYears_Female"
+        },
+        {
+          "name": "Unemployment Rate: 25 - 74 Years, Female",
+          "dcid": "UnemploymentRate_Person_25To74Years_Female"
+        },
+        {
+          "name": "Unemployment Rate: 25 Years or Less, Female",
+          "dcid": "UnemploymentRate_Person_Upto25Years_Female"
+        },
+        {
+          "name": "Prevalence: 50 - 74 Years, Female, Mammography",
+          "dcid": "Percent_Person_50To74Years_Female_ReceivedMammography"
+        },
+        {
+          "name": "Population (Measured Based on Custody): 0 - 17 Years, Female, Incarcerated",
+          "dcid": "dc/c17kzp0zrfkq9"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/SDG_5.6.2",
       "name": "5.6.2: Number of countries with laws and regulations that guarantee full and equal access to women and men aged 15 years and older to sexual and reproductive health care, information and education",
       "statVars": [
@@ -34615,72 +36133,6 @@
         {
           "name": "Proportion of time spent on unpaid domestic chores: 85 years old and over, Female",
           "dcid": "sdg/SL_DOM_TSPDDC_85GEQ_FEMALE"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age_Gender-Female",
-      "name": "Person With Age, Gender = Female",
-      "statVars": [
-        {
-          "name": "Life Expectancy: 1 Years or Less, Female",
-          "dcid": "LifeExpectancy_Person_Upto1Years_Female"
-        },
-        {
-          "name": "Population: 0 - 14 Years, Female",
-          "dcid": "Count_Person_0To14Years_Female"
-        },
-        {
-          "name": "Population: 14 Years or Less, Female",
-          "dcid": "Count_Person_Upto14Years_Female"
-        },
-        {
-          "name": "Population: 15 - 59 Years, Female",
-          "dcid": "Count_Person_15To59Years_Female"
-        },
-        {
-          "name": "Population: 3 Years or More, Female",
-          "dcid": "Count_Person_3OrMoreYears_Female"
-        },
-        {
-          "name": "Population: 60 Years or More, Female",
-          "dcid": "Count_Person_60OrMoreYears_Female"
-        },
-        {
-          "name": "Population: 65 - 66 Years, Female",
-          "dcid": "Count_Person_65To66Years_Female"
-        },
-        {
-          "name": "Population: 67 - 69 Years, Female",
-          "dcid": "Count_Person_67To69Years_Female"
-        },
-        {
-          "name": "Population: 80 Years or More, Female",
-          "dcid": "Count_Person_80OrMoreYears_Female"
-        },
-        {
-          "name": "Population: 85 - 89 Years, Female",
-          "dcid": "Count_Person_85To89Years_Female"
-        },
-        {
-          "name": "Population: 90 Years or More, Female",
-          "dcid": "Count_Person_90OrMoreYears_Female"
-        },
-        {
-          "name": "Unemployment Rate: 25 - 74 Years, Female",
-          "dcid": "UnemploymentRate_Person_25To74Years_Female"
-        },
-        {
-          "name": "Unemployment Rate: 25 Years or Less, Female",
-          "dcid": "UnemploymentRate_Person_Upto25Years_Female"
-        },
-        {
-          "name": "Prevalence: 50 - 74 Years, Female, Mammography",
-          "dcid": "Percent_Person_50To74Years_Female_ReceivedMammography"
-        },
-        {
-          "name": "Population (Measured Based on Custody): 0 - 17 Years, Female, Incarcerated",
-          "dcid": "dc/c17kzp0zrfkq9"
         }
       ]
     },
@@ -35375,6 +36827,834 @@
         {
           "name": "Percentage: Female, Below Poverty Level in The Past 12 Months",
           "dcid": "dc/k0zg5lw8686z8"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years0To4_Gender-Female_MedicalCondition",
+      "name": "Person With Age = 0 - 4 Years, Gender = Female, Medical Condition",
+      "statVars": [
+        {
+          "name": "Population: 0 - 4 Years, Female, Arthritis",
+          "dcid": "Count_Person_0To4Years_Female_ConditionArthritis"
+        },
+        {
+          "name": "Population: 0 - 4 Years, Female, Asthma",
+          "dcid": "Count_Person_0To4Years_Female_ConditionAsthma"
+        },
+        {
+          "name": "Population: 0 - 4 Years, Female, Cancer",
+          "dcid": "Count_Person_0To4Years_Female_ConditionCancer"
+        },
+        {
+          "name": "Population: 0 - 4 Years, Female, Dementia",
+          "dcid": "Count_Person_0To4Years_Female_ConditionDementia"
+        },
+        {
+          "name": "Population: 0 - 4 Years, Female, Diabetes",
+          "dcid": "Count_Person_0To4Years_Female_ConditionDiabetes"
+        },
+        {
+          "name": "Population: 0 - 4 Years, Female, Diseases of Heart",
+          "dcid": "Count_Person_0To4Years_Female_ConditionDiseasesOfHeart"
+        },
+        {
+          "name": "Population: 0 - 4 Years, Female, Kidney Disease",
+          "dcid": "Count_Person_0To4Years_Female_ConditionKidneyDisease"
+        },
+        {
+          "name": "Population: 0 - 4 Years, Female, Lung Condition",
+          "dcid": "Count_Person_0To4Years_Female_ConditionLungCondition"
+        },
+        {
+          "name": "Population: 0 - 4 Years, Female, Mental Health Not Good",
+          "dcid": "Count_Person_0To4Years_Female_ConditionMentalHealthNotGood"
+        },
+        {
+          "name": "Population: 0 - 4 Years, Female, Stroke",
+          "dcid": "Count_Person_0To4Years_Female_ConditionStroke"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years10To14_Gender-Female_MedicalCondition",
+      "name": "Person With Age = 10 - 14 Years, Gender = Female, Medical Condition",
+      "statVars": [
+        {
+          "name": "Population: 10 - 14 Years, Female, Arthritis",
+          "dcid": "Count_Person_10To14Years_Female_ConditionArthritis"
+        },
+        {
+          "name": "Population: 10 - 14 Years, Female, Asthma",
+          "dcid": "Count_Person_10To14Years_Female_ConditionAsthma"
+        },
+        {
+          "name": "Population: 10 - 14 Years, Female, Cancer",
+          "dcid": "Count_Person_10To14Years_Female_ConditionCancer"
+        },
+        {
+          "name": "Population: 10 - 14 Years, Female, Dementia",
+          "dcid": "Count_Person_10To14Years_Female_ConditionDementia"
+        },
+        {
+          "name": "Population: 10 - 14 Years, Female, Diabetes",
+          "dcid": "Count_Person_10To14Years_Female_ConditionDiabetes"
+        },
+        {
+          "name": "Population: 10 - 14 Years, Female, Diseases of Heart",
+          "dcid": "Count_Person_10To14Years_Female_ConditionDiseasesOfHeart"
+        },
+        {
+          "name": "Population: 10 - 14 Years, Female, Kidney Disease",
+          "dcid": "Count_Person_10To14Years_Female_ConditionKidneyDisease"
+        },
+        {
+          "name": "Population: 10 - 14 Years, Female, Lung Condition",
+          "dcid": "Count_Person_10To14Years_Female_ConditionLungCondition"
+        },
+        {
+          "name": "Population: 10 - 14 Years, Female, Mental Health Not Good",
+          "dcid": "Count_Person_10To14Years_Female_ConditionMentalHealthNotGood"
+        },
+        {
+          "name": "Population: 10 - 14 Years, Female, Stroke",
+          "dcid": "Count_Person_10To14Years_Female_ConditionStroke"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years15To19_Gender-Female_MedicalCondition",
+      "name": "Person With Age = 15 - 19 Years, Gender = Female, Medical Condition",
+      "statVars": [
+        {
+          "name": "Population: 15 - 19 Years, Female, Arthritis",
+          "dcid": "Count_Person_15To19Years_Female_ConditionArthritis"
+        },
+        {
+          "name": "Population: 15 - 19 Years, Female, Asthma",
+          "dcid": "Count_Person_15To19Years_Female_ConditionAsthma"
+        },
+        {
+          "name": "Population: 15 - 19 Years, Female, Cancer",
+          "dcid": "Count_Person_15To19Years_Female_ConditionCancer"
+        },
+        {
+          "name": "Population: 15 - 19 Years, Female, Dementia",
+          "dcid": "Count_Person_15To19Years_Female_ConditionDementia"
+        },
+        {
+          "name": "Population: 15 - 19 Years, Female, Diabetes",
+          "dcid": "Count_Person_15To19Years_Female_ConditionDiabetes"
+        },
+        {
+          "name": "Population: 15 - 19 Years, Female, Diseases of Heart",
+          "dcid": "Count_Person_15To19Years_Female_ConditionDiseasesOfHeart"
+        },
+        {
+          "name": "Population: 15 - 19 Years, Female, Kidney Disease",
+          "dcid": "Count_Person_15To19Years_Female_ConditionKidneyDisease"
+        },
+        {
+          "name": "Population: 15 - 19 Years, Female, Lung Condition",
+          "dcid": "Count_Person_15To19Years_Female_ConditionLungCondition"
+        },
+        {
+          "name": "Population: 15 - 19 Years, Female, Mental Health Not Good",
+          "dcid": "Count_Person_15To19Years_Female_ConditionMentalHealthNotGood"
+        },
+        {
+          "name": "Population: 15 - 19 Years, Female, Stroke",
+          "dcid": "Count_Person_15To19Years_Female_ConditionStroke"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years20To24_Gender-Female_MedicalCondition",
+      "name": "Person With Age = 20 - 24 Years, Gender = Female, Medical Condition",
+      "statVars": [
+        {
+          "name": "Population: 20 - 24 Years, Female, Arthritis",
+          "dcid": "Count_Person_20To24Years_Female_ConditionArthritis"
+        },
+        {
+          "name": "Population: 20 - 24 Years, Female, Asthma",
+          "dcid": "Count_Person_20To24Years_Female_ConditionAsthma"
+        },
+        {
+          "name": "Population: 20 - 24 Years, Female, Cancer",
+          "dcid": "Count_Person_20To24Years_Female_ConditionCancer"
+        },
+        {
+          "name": "Population: 20 - 24 Years, Female, Dementia",
+          "dcid": "Count_Person_20To24Years_Female_ConditionDementia"
+        },
+        {
+          "name": "Population: 20 - 24 Years, Female, Diabetes",
+          "dcid": "Count_Person_20To24Years_Female_ConditionDiabetes"
+        },
+        {
+          "name": "Population: 20 - 24 Years, Female, Diseases of Heart",
+          "dcid": "Count_Person_20To24Years_Female_ConditionDiseasesOfHeart"
+        },
+        {
+          "name": "Population: 20 - 24 Years, Female, Kidney Disease",
+          "dcid": "Count_Person_20To24Years_Female_ConditionKidneyDisease"
+        },
+        {
+          "name": "Population: 20 - 24 Years, Female, Lung Condition",
+          "dcid": "Count_Person_20To24Years_Female_ConditionLungCondition"
+        },
+        {
+          "name": "Population: 20 - 24 Years, Female, Mental Health Not Good",
+          "dcid": "Count_Person_20To24Years_Female_ConditionMentalHealthNotGood"
+        },
+        {
+          "name": "Population: 20 - 24 Years, Female, Stroke",
+          "dcid": "Count_Person_20To24Years_Female_ConditionStroke"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years25To29_Gender-Female_MedicalCondition",
+      "name": "Person With Age = 25 - 29 Years, Gender = Female, Medical Condition",
+      "statVars": [
+        {
+          "name": "Population: 25 - 29 Years, Female, Arthritis",
+          "dcid": "Count_Person_25To29Years_Female_ConditionArthritis"
+        },
+        {
+          "name": "Population: 25 - 29 Years, Female, Asthma",
+          "dcid": "Count_Person_25To29Years_Female_ConditionAsthma"
+        },
+        {
+          "name": "Population: 25 - 29 Years, Female, Cancer",
+          "dcid": "Count_Person_25To29Years_Female_ConditionCancer"
+        },
+        {
+          "name": "Population: 25 - 29 Years, Female, Dementia",
+          "dcid": "Count_Person_25To29Years_Female_ConditionDementia"
+        },
+        {
+          "name": "Population: 25 - 29 Years, Female, Diabetes",
+          "dcid": "Count_Person_25To29Years_Female_ConditionDiabetes"
+        },
+        {
+          "name": "Population: 25 - 29 Years, Female, Diseases of Heart",
+          "dcid": "Count_Person_25To29Years_Female_ConditionDiseasesOfHeart"
+        },
+        {
+          "name": "Population: 25 - 29 Years, Female, Kidney Disease",
+          "dcid": "Count_Person_25To29Years_Female_ConditionKidneyDisease"
+        },
+        {
+          "name": "Population: 25 - 29 Years, Female, Lung Condition",
+          "dcid": "Count_Person_25To29Years_Female_ConditionLungCondition"
+        },
+        {
+          "name": "Population: 25 - 29 Years, Female, Mental Health Not Good",
+          "dcid": "Count_Person_25To29Years_Female_ConditionMentalHealthNotGood"
+        },
+        {
+          "name": "Population: 25 - 29 Years, Female, Stroke",
+          "dcid": "Count_Person_25To29Years_Female_ConditionStroke"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years30To34_Gender-Female_MedicalCondition",
+      "name": "Person With Age = 30 - 34 Years, Gender = Female, Medical Condition",
+      "statVars": [
+        {
+          "name": "Population: 30 - 34 Years, Female, Arthritis",
+          "dcid": "Count_Person_30To34Years_Female_ConditionArthritis"
+        },
+        {
+          "name": "Population: 30 - 34 Years, Female, Asthma",
+          "dcid": "Count_Person_30To34Years_Female_ConditionAsthma"
+        },
+        {
+          "name": "Population: 30 - 34 Years, Female, Cancer",
+          "dcid": "Count_Person_30To34Years_Female_ConditionCancer"
+        },
+        {
+          "name": "Population: 30 - 34 Years, Female, Dementia",
+          "dcid": "Count_Person_30To34Years_Female_ConditionDementia"
+        },
+        {
+          "name": "Population: 30 - 34 Years, Female, Diabetes",
+          "dcid": "Count_Person_30To34Years_Female_ConditionDiabetes"
+        },
+        {
+          "name": "Population: 30 - 34 Years, Female, Diseases of Heart",
+          "dcid": "Count_Person_30To34Years_Female_ConditionDiseasesOfHeart"
+        },
+        {
+          "name": "Population: 30 - 34 Years, Female, Kidney Disease",
+          "dcid": "Count_Person_30To34Years_Female_ConditionKidneyDisease"
+        },
+        {
+          "name": "Population: 30 - 34 Years, Female, Lung Condition",
+          "dcid": "Count_Person_30To34Years_Female_ConditionLungCondition"
+        },
+        {
+          "name": "Population: 30 - 34 Years, Female, Mental Health Not Good",
+          "dcid": "Count_Person_30To34Years_Female_ConditionMentalHealthNotGood"
+        },
+        {
+          "name": "Population: 30 - 34 Years, Female, Stroke",
+          "dcid": "Count_Person_30To34Years_Female_ConditionStroke"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years35To39_Gender-Female_MedicalCondition",
+      "name": "Person With Age = 35 - 39 Years, Gender = Female, Medical Condition",
+      "statVars": [
+        {
+          "name": "Population: 35 - 39 Years, Female, Arthritis",
+          "dcid": "Count_Person_35To39Years_Female_ConditionArthritis"
+        },
+        {
+          "name": "Population: 35 - 39 Years, Female, Asthma",
+          "dcid": "Count_Person_35To39Years_Female_ConditionAsthma"
+        },
+        {
+          "name": "Population: 35 - 39 Years, Female, Cancer",
+          "dcid": "Count_Person_35To39Years_Female_ConditionCancer"
+        },
+        {
+          "name": "Population: 35 - 39 Years, Female, Dementia",
+          "dcid": "Count_Person_35To39Years_Female_ConditionDementia"
+        },
+        {
+          "name": "Population: 35 - 39 Years, Female, Diabetes",
+          "dcid": "Count_Person_35To39Years_Female_ConditionDiabetes"
+        },
+        {
+          "name": "Population: 35 - 39 Years, Female, Diseases of Heart",
+          "dcid": "Count_Person_35To39Years_Female_ConditionDiseasesOfHeart"
+        },
+        {
+          "name": "Population: 35 - 39 Years, Female, Kidney Disease",
+          "dcid": "Count_Person_35To39Years_Female_ConditionKidneyDisease"
+        },
+        {
+          "name": "Population: 35 - 39 Years, Female, Lung Condition",
+          "dcid": "Count_Person_35To39Years_Female_ConditionLungCondition"
+        },
+        {
+          "name": "Population: 35 - 39 Years, Female, Mental Health Not Good",
+          "dcid": "Count_Person_35To39Years_Female_ConditionMentalHealthNotGood"
+        },
+        {
+          "name": "Population: 35 - 39 Years, Female, Stroke",
+          "dcid": "Count_Person_35To39Years_Female_ConditionStroke"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years40To44_Gender-Female_MedicalCondition",
+      "name": "Person With Age = 40 - 44 Years, Gender = Female, Medical Condition",
+      "statVars": [
+        {
+          "name": "Population: 40 - 44 Years, Female, Arthritis",
+          "dcid": "Count_Person_40To44Years_Female_ConditionArthritis"
+        },
+        {
+          "name": "Population: 40 - 44 Years, Female, Asthma",
+          "dcid": "Count_Person_40To44Years_Female_ConditionAsthma"
+        },
+        {
+          "name": "Population: 40 - 44 Years, Female, Cancer",
+          "dcid": "Count_Person_40To44Years_Female_ConditionCancer"
+        },
+        {
+          "name": "Population: 40 - 44 Years, Female, Dementia",
+          "dcid": "Count_Person_40To44Years_Female_ConditionDementia"
+        },
+        {
+          "name": "Population: 40 - 44 Years, Female, Diabetes",
+          "dcid": "Count_Person_40To44Years_Female_ConditionDiabetes"
+        },
+        {
+          "name": "Population: 40 - 44 Years, Female, Diseases of Heart",
+          "dcid": "Count_Person_40To44Years_Female_ConditionDiseasesOfHeart"
+        },
+        {
+          "name": "Population: 40 - 44 Years, Female, Kidney Disease",
+          "dcid": "Count_Person_40To44Years_Female_ConditionKidneyDisease"
+        },
+        {
+          "name": "Population: 40 - 44 Years, Female, Lung Condition",
+          "dcid": "Count_Person_40To44Years_Female_ConditionLungCondition"
+        },
+        {
+          "name": "Population: 40 - 44 Years, Female, Mental Health Not Good",
+          "dcid": "Count_Person_40To44Years_Female_ConditionMentalHealthNotGood"
+        },
+        {
+          "name": "Population: 40 - 44 Years, Female, Stroke",
+          "dcid": "Count_Person_40To44Years_Female_ConditionStroke"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years45To49_Gender-Female_MedicalCondition",
+      "name": "Person With Age = 45 - 49 Years, Gender = Female, Medical Condition",
+      "statVars": [
+        {
+          "name": "Population: 45 - 49 Years, Female, Arthritis",
+          "dcid": "Count_Person_45To49Years_Female_ConditionArthritis"
+        },
+        {
+          "name": "Population: 45 - 49 Years, Female, Asthma",
+          "dcid": "Count_Person_45To49Years_Female_ConditionAsthma"
+        },
+        {
+          "name": "Population: 45 - 49 Years, Female, Cancer",
+          "dcid": "Count_Person_45To49Years_Female_ConditionCancer"
+        },
+        {
+          "name": "Population: 45 - 49 Years, Female, Dementia",
+          "dcid": "Count_Person_45To49Years_Female_ConditionDementia"
+        },
+        {
+          "name": "Population: 45 - 49 Years, Female, Diabetes",
+          "dcid": "Count_Person_45To49Years_Female_ConditionDiabetes"
+        },
+        {
+          "name": "Population: 45 - 49 Years, Female, Diseases of Heart",
+          "dcid": "Count_Person_45To49Years_Female_ConditionDiseasesOfHeart"
+        },
+        {
+          "name": "Population: 45 - 49 Years, Female, Kidney Disease",
+          "dcid": "Count_Person_45To49Years_Female_ConditionKidneyDisease"
+        },
+        {
+          "name": "Population: 45 - 49 Years, Female, Lung Condition",
+          "dcid": "Count_Person_45To49Years_Female_ConditionLungCondition"
+        },
+        {
+          "name": "Population: 45 - 49 Years, Female, Mental Health Not Good",
+          "dcid": "Count_Person_45To49Years_Female_ConditionMentalHealthNotGood"
+        },
+        {
+          "name": "Population: 45 - 49 Years, Female, Stroke",
+          "dcid": "Count_Person_45To49Years_Female_ConditionStroke"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years5To9_Gender-Female_MedicalCondition",
+      "name": "Person With Age = 5 - 9 Years, Gender = Female, Medical Condition",
+      "statVars": [
+        {
+          "name": "Population: 5 - 9 Years, Female, Arthritis",
+          "dcid": "Count_Person_5To9Years_Female_ConditionArthritis"
+        },
+        {
+          "name": "Population: 5 - 9 Years, Female, Asthma",
+          "dcid": "Count_Person_5To9Years_Female_ConditionAsthma"
+        },
+        {
+          "name": "Population: 5 - 9 Years, Female, Cancer",
+          "dcid": "Count_Person_5To9Years_Female_ConditionCancer"
+        },
+        {
+          "name": "Population: 5 - 9 Years, Female, Dementia",
+          "dcid": "Count_Person_5To9Years_Female_ConditionDementia"
+        },
+        {
+          "name": "Population: 5 - 9 Years, Female, Diabetes",
+          "dcid": "Count_Person_5To9Years_Female_ConditionDiabetes"
+        },
+        {
+          "name": "Population: 5 - 9 Years, Female, Diseases of Heart",
+          "dcid": "Count_Person_5To9Years_Female_ConditionDiseasesOfHeart"
+        },
+        {
+          "name": "Population: 5 - 9 Years, Female, Kidney Disease",
+          "dcid": "Count_Person_5To9Years_Female_ConditionKidneyDisease"
+        },
+        {
+          "name": "Population: 5 - 9 Years, Female, Lung Condition",
+          "dcid": "Count_Person_5To9Years_Female_ConditionLungCondition"
+        },
+        {
+          "name": "Population: 5 - 9 Years, Female, Mental Health Not Good",
+          "dcid": "Count_Person_5To9Years_Female_ConditionMentalHealthNotGood"
+        },
+        {
+          "name": "Population: 5 - 9 Years, Female, Stroke",
+          "dcid": "Count_Person_5To9Years_Female_ConditionStroke"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years50To54_Gender-Female_MedicalCondition",
+      "name": "Person With Age = 50 - 54 Years, Gender = Female, Medical Condition",
+      "statVars": [
+        {
+          "name": "Population: 50 - 54 Years, Female, Arthritis",
+          "dcid": "Count_Person_50To54Years_Female_ConditionArthritis"
+        },
+        {
+          "name": "Population: 50 - 54 Years, Female, Asthma",
+          "dcid": "Count_Person_50To54Years_Female_ConditionAsthma"
+        },
+        {
+          "name": "Population: 50 - 54 Years, Female, Cancer",
+          "dcid": "Count_Person_50To54Years_Female_ConditionCancer"
+        },
+        {
+          "name": "Population: 50 - 54 Years, Female, Dementia",
+          "dcid": "Count_Person_50To54Years_Female_ConditionDementia"
+        },
+        {
+          "name": "Population: 50 - 54 Years, Female, Diabetes",
+          "dcid": "Count_Person_50To54Years_Female_ConditionDiabetes"
+        },
+        {
+          "name": "Population: 50 - 54 Years, Female, Diseases of Heart",
+          "dcid": "Count_Person_50To54Years_Female_ConditionDiseasesOfHeart"
+        },
+        {
+          "name": "Population: 50 - 54 Years, Female, Kidney Disease",
+          "dcid": "Count_Person_50To54Years_Female_ConditionKidneyDisease"
+        },
+        {
+          "name": "Population: 50 - 54 Years, Female, Lung Condition",
+          "dcid": "Count_Person_50To54Years_Female_ConditionLungCondition"
+        },
+        {
+          "name": "Population: 50 - 54 Years, Female, Mental Health Not Good",
+          "dcid": "Count_Person_50To54Years_Female_ConditionMentalHealthNotGood"
+        },
+        {
+          "name": "Population: 50 - 54 Years, Female, Stroke",
+          "dcid": "Count_Person_50To54Years_Female_ConditionStroke"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years55To59_Gender-Female_MedicalCondition",
+      "name": "Person With Age = 55 - 59 Years, Gender = Female, Medical Condition",
+      "statVars": [
+        {
+          "name": "Population: 55 - 59 Years, Female, Arthritis",
+          "dcid": "Count_Person_55To59Years_Female_ConditionArthritis"
+        },
+        {
+          "name": "Population: 55 - 59 Years, Female, Asthma",
+          "dcid": "Count_Person_55To59Years_Female_ConditionAsthma"
+        },
+        {
+          "name": "Population: 55 - 59 Years, Female, Cancer",
+          "dcid": "Count_Person_55To59Years_Female_ConditionCancer"
+        },
+        {
+          "name": "Population: 55 - 59 Years, Female, Dementia",
+          "dcid": "Count_Person_55To59Years_Female_ConditionDementia"
+        },
+        {
+          "name": "Population: 55 - 59 Years, Female, Diabetes",
+          "dcid": "Count_Person_55To59Years_Female_ConditionDiabetes"
+        },
+        {
+          "name": "Population: 55 - 59 Years, Female, Diseases of Heart",
+          "dcid": "Count_Person_55To59Years_Female_ConditionDiseasesOfHeart"
+        },
+        {
+          "name": "Population: 55 - 59 Years, Female, Kidney Disease",
+          "dcid": "Count_Person_55To59Years_Female_ConditionKidneyDisease"
+        },
+        {
+          "name": "Population: 55 - 59 Years, Female, Lung Condition",
+          "dcid": "Count_Person_55To59Years_Female_ConditionLungCondition"
+        },
+        {
+          "name": "Population: 55 - 59 Years, Female, Mental Health Not Good",
+          "dcid": "Count_Person_55To59Years_Female_ConditionMentalHealthNotGood"
+        },
+        {
+          "name": "Population: 55 - 59 Years, Female, Stroke",
+          "dcid": "Count_Person_55To59Years_Female_ConditionStroke"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years60To64_Gender-Female_MedicalCondition",
+      "name": "Person With Age = 60 - 64 Years, Gender = Female, Medical Condition",
+      "statVars": [
+        {
+          "name": "Population: 60 - 64 Years, Female, Arthritis",
+          "dcid": "Count_Person_60To64Years_Female_ConditionArthritis"
+        },
+        {
+          "name": "Population: 60 - 64 Years, Female, Asthma",
+          "dcid": "Count_Person_60To64Years_Female_ConditionAsthma"
+        },
+        {
+          "name": "Population: 60 - 64 Years, Female, Cancer",
+          "dcid": "Count_Person_60To64Years_Female_ConditionCancer"
+        },
+        {
+          "name": "Population: 60 - 64 Years, Female, Dementia",
+          "dcid": "Count_Person_60To64Years_Female_ConditionDementia"
+        },
+        {
+          "name": "Population: 60 - 64 Years, Female, Diabetes",
+          "dcid": "Count_Person_60To64Years_Female_ConditionDiabetes"
+        },
+        {
+          "name": "Population: 60 - 64 Years, Female, Diseases of Heart",
+          "dcid": "Count_Person_60To64Years_Female_ConditionDiseasesOfHeart"
+        },
+        {
+          "name": "Population: 60 - 64 Years, Female, Kidney Disease",
+          "dcid": "Count_Person_60To64Years_Female_ConditionKidneyDisease"
+        },
+        {
+          "name": "Population: 60 - 64 Years, Female, Lung Condition",
+          "dcid": "Count_Person_60To64Years_Female_ConditionLungCondition"
+        },
+        {
+          "name": "Population: 60 - 64 Years, Female, Mental Health Not Good",
+          "dcid": "Count_Person_60To64Years_Female_ConditionMentalHealthNotGood"
+        },
+        {
+          "name": "Population: 60 - 64 Years, Female, Stroke",
+          "dcid": "Count_Person_60To64Years_Female_ConditionStroke"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years65To69_Gender-Female_MedicalCondition",
+      "name": "Person With Age = 65 - 69 Years, Gender = Female, Medical Condition",
+      "statVars": [
+        {
+          "name": "Population: 65 - 69 Years, Female, Arthritis",
+          "dcid": "Count_Person_65To69Years_Female_ConditionArthritis"
+        },
+        {
+          "name": "Population: 65 - 69 Years, Female, Asthma",
+          "dcid": "Count_Person_65To69Years_Female_ConditionAsthma"
+        },
+        {
+          "name": "Population: 65 - 69 Years, Female, Cancer",
+          "dcid": "Count_Person_65To69Years_Female_ConditionCancer"
+        },
+        {
+          "name": "Population: 65 - 69 Years, Female, Dementia",
+          "dcid": "Count_Person_65To69Years_Female_ConditionDementia"
+        },
+        {
+          "name": "Population: 65 - 69 Years, Female, Diabetes",
+          "dcid": "Count_Person_65To69Years_Female_ConditionDiabetes"
+        },
+        {
+          "name": "Population: 65 - 69 Years, Female, Diseases of Heart",
+          "dcid": "Count_Person_65To69Years_Female_ConditionDiseasesOfHeart"
+        },
+        {
+          "name": "Population: 65 - 69 Years, Female, Kidney Disease",
+          "dcid": "Count_Person_65To69Years_Female_ConditionKidneyDisease"
+        },
+        {
+          "name": "Population: 65 - 69 Years, Female, Lung Condition",
+          "dcid": "Count_Person_65To69Years_Female_ConditionLungCondition"
+        },
+        {
+          "name": "Population: 65 - 69 Years, Female, Mental Health Not Good",
+          "dcid": "Count_Person_65To69Years_Female_ConditionMentalHealthNotGood"
+        },
+        {
+          "name": "Population: 65 - 69 Years, Female, Stroke",
+          "dcid": "Count_Person_65To69Years_Female_ConditionStroke"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years70To74_Gender-Female_MedicalCondition",
+      "name": "Person With Age = 70 - 74 Years, Gender = Female, Medical Condition",
+      "statVars": [
+        {
+          "name": "Population: 70 - 74 Years, Female, Arthritis",
+          "dcid": "Count_Person_70To74Years_Female_ConditionArthritis"
+        },
+        {
+          "name": "Population: 70 - 74 Years, Female, Asthma",
+          "dcid": "Count_Person_70To74Years_Female_ConditionAsthma"
+        },
+        {
+          "name": "Population: 70 - 74 Years, Female, Cancer",
+          "dcid": "Count_Person_70To74Years_Female_ConditionCancer"
+        },
+        {
+          "name": "Population: 70 - 74 Years, Female, Dementia",
+          "dcid": "Count_Person_70To74Years_Female_ConditionDementia"
+        },
+        {
+          "name": "Population: 70 - 74 Years, Female, Diabetes",
+          "dcid": "Count_Person_70To74Years_Female_ConditionDiabetes"
+        },
+        {
+          "name": "Population: 70 - 74 Years, Female, Diseases of Heart",
+          "dcid": "Count_Person_70To74Years_Female_ConditionDiseasesOfHeart"
+        },
+        {
+          "name": "Population: 70 - 74 Years, Female, Kidney Disease",
+          "dcid": "Count_Person_70To74Years_Female_ConditionKidneyDisease"
+        },
+        {
+          "name": "Population: 70 - 74 Years, Female, Lung Condition",
+          "dcid": "Count_Person_70To74Years_Female_ConditionLungCondition"
+        },
+        {
+          "name": "Population: 70 - 74 Years, Female, Mental Health Not Good",
+          "dcid": "Count_Person_70To74Years_Female_ConditionMentalHealthNotGood"
+        },
+        {
+          "name": "Population: 70 - 74 Years, Female, Stroke",
+          "dcid": "Count_Person_70To74Years_Female_ConditionStroke"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years75To79_Gender-Female_MedicalCondition",
+      "name": "Person With Age = 75 - 79 Years, Gender = Female, Medical Condition",
+      "statVars": [
+        {
+          "name": "Population: 75 - 79 Years, Female, Arthritis",
+          "dcid": "Count_Person_75To79Years_Female_ConditionArthritis"
+        },
+        {
+          "name": "Population: 75 - 79 Years, Female, Asthma",
+          "dcid": "Count_Person_75To79Years_Female_ConditionAsthma"
+        },
+        {
+          "name": "Population: 75 - 79 Years, Female, Cancer",
+          "dcid": "Count_Person_75To79Years_Female_ConditionCancer"
+        },
+        {
+          "name": "Population: 75 - 79 Years, Female, Dementia",
+          "dcid": "Count_Person_75To79Years_Female_ConditionDementia"
+        },
+        {
+          "name": "Population: 75 - 79 Years, Female, Diabetes",
+          "dcid": "Count_Person_75To79Years_Female_ConditionDiabetes"
+        },
+        {
+          "name": "Population: 75 - 79 Years, Female, Diseases of Heart",
+          "dcid": "Count_Person_75To79Years_Female_ConditionDiseasesOfHeart"
+        },
+        {
+          "name": "Population: 75 - 79 Years, Female, Kidney Disease",
+          "dcid": "Count_Person_75To79Years_Female_ConditionKidneyDisease"
+        },
+        {
+          "name": "Population: 75 - 79 Years, Female, Lung Condition",
+          "dcid": "Count_Person_75To79Years_Female_ConditionLungCondition"
+        },
+        {
+          "name": "Population: 75 - 79 Years, Female, Mental Health Not Good",
+          "dcid": "Count_Person_75To79Years_Female_ConditionMentalHealthNotGood"
+        },
+        {
+          "name": "Population: 75 - 79 Years, Female, Stroke",
+          "dcid": "Count_Person_75To79Years_Female_ConditionStroke"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years80To84_Gender-Female_MedicalCondition",
+      "name": "Person With Age = 80 - 84 Years, Gender = Female, Medical Condition",
+      "statVars": [
+        {
+          "name": "Population: 80 - 84 Years, Female, Arthritis",
+          "dcid": "Count_Person_80To84Years_Female_ConditionArthritis"
+        },
+        {
+          "name": "Population: 80 - 84 Years, Female, Asthma",
+          "dcid": "Count_Person_80To84Years_Female_ConditionAsthma"
+        },
+        {
+          "name": "Population: 80 - 84 Years, Female, Cancer",
+          "dcid": "Count_Person_80To84Years_Female_ConditionCancer"
+        },
+        {
+          "name": "Population: 80 - 84 Years, Female, Dementia",
+          "dcid": "Count_Person_80To84Years_Female_ConditionDementia"
+        },
+        {
+          "name": "Population: 80 - 84 Years, Female, Diabetes",
+          "dcid": "Count_Person_80To84Years_Female_ConditionDiabetes"
+        },
+        {
+          "name": "Population: 80 - 84 Years, Female, Diseases of Heart",
+          "dcid": "Count_Person_80To84Years_Female_ConditionDiseasesOfHeart"
+        },
+        {
+          "name": "Population: 80 - 84 Years, Female, Kidney Disease",
+          "dcid": "Count_Person_80To84Years_Female_ConditionKidneyDisease"
+        },
+        {
+          "name": "Population: 80 - 84 Years, Female, Lung Condition",
+          "dcid": "Count_Person_80To84Years_Female_ConditionLungCondition"
+        },
+        {
+          "name": "Population: 80 - 84 Years, Female, Mental Health Not Good",
+          "dcid": "Count_Person_80To84Years_Female_ConditionMentalHealthNotGood"
+        },
+        {
+          "name": "Population: 80 - 84 Years, Female, Stroke",
+          "dcid": "Count_Person_80To84Years_Female_ConditionStroke"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years85Onwards_Gender-Female_MedicalCondition",
+      "name": "Person With Age = 85 Years or More, Gender = Female, Medical Condition",
+      "statVars": [
+        {
+          "name": "Population: 85 Years or More, Female, Arthritis",
+          "dcid": "Count_Person_85OrMoreYears_Female_ConditionArthritis"
+        },
+        {
+          "name": "Population: 85 Years or More, Female, Asthma",
+          "dcid": "Count_Person_85OrMoreYears_Female_ConditionAsthma"
+        },
+        {
+          "name": "Population: 85 Years or More, Female, Cancer",
+          "dcid": "Count_Person_85OrMoreYears_Female_ConditionCancer"
+        },
+        {
+          "name": "Population: 85 Years or More, Female, Dementia",
+          "dcid": "Count_Person_85OrMoreYears_Female_ConditionDementia"
+        },
+        {
+          "name": "Population: 85 Years or More, Female, Diabetes",
+          "dcid": "Count_Person_85OrMoreYears_Female_ConditionDiabetes"
+        },
+        {
+          "name": "Population: 85 Years or More, Female, Diseases of Heart",
+          "dcid": "Count_Person_85OrMoreYears_Female_ConditionDiseasesOfHeart"
+        },
+        {
+          "name": "Population: 85 Years or More, Female, Kidney Disease",
+          "dcid": "Count_Person_85OrMoreYears_Female_ConditionKidneyDisease"
+        },
+        {
+          "name": "Population: 85 Years or More, Female, Lung Condition",
+          "dcid": "Count_Person_85OrMoreYears_Female_ConditionLungCondition"
+        },
+        {
+          "name": "Population: 85 Years or More, Female, Mental Health Not Good",
+          "dcid": "Count_Person_85OrMoreYears_Female_ConditionMentalHealthNotGood"
+        },
+        {
+          "name": "Population: 85 Years or More, Female, Stroke",
+          "dcid": "Count_Person_85OrMoreYears_Female_ConditionStroke"
         }
       ]
     },
@@ -49087,12 +51367,12 @@
           "dcid": "Percent_Person_21To65Years_Female_ReceivedCervicalCancerScreening"
         },
         {
-          "name": "Sample Size, Prevalence of 21 - 65 Years, Female, Received Cervical Cancer Screening",
-          "dcid": "SampleSize_Percent_Person_21To65Years_Female_ReceivedCervicalCancerScreening"
-        },
-        {
           "name": "Lower Confidence Interval Limit, Prevalence of 21 - 65 Years, Female, Received Cervical Cancer Screening",
           "dcid": "LowerConfidenceIntervalLimit_Percent_Person_21To65Years_Female_ReceivedCervicalCancerScreening"
+        },
+        {
+          "name": "Sample Size, Prevalence of 21 - 65 Years, Female, Received Cervical Cancer Screening",
+          "dcid": "SampleSize_Percent_Person_21To65Years_Female_ReceivedCervicalCancerScreening"
         },
         {
           "name": "Upper Confidence Interval Limit, Prevalence of 21 - 65 Years, Female, Received Cervical Cancer Screening",
@@ -49109,12 +51389,12 @@
           "dcid": "Percent_Person_65OrMoreYears_Female_ReceivedCorePreventiveServices"
         },
         {
-          "name": "Sample Size, Prevalence of 65 Years or More, Female, Core Preventive Services",
-          "dcid": "SampleSize_Percent_Person_65OrMoreYears_Female_ReceivedCorePreventiveServices"
-        },
-        {
           "name": "Lower Confidence Interval Limit, Prevalence of 65 Years or More, Female, Core Preventive Services",
           "dcid": "LowerConfidenceIntervalLimit_Percent_Person_65OrMoreYears_Female_ReceivedCorePreventiveServices"
+        },
+        {
+          "name": "Sample Size, Prevalence of 65 Years or More, Female, Core Preventive Services",
+          "dcid": "SampleSize_Percent_Person_65OrMoreYears_Female_ReceivedCorePreventiveServices"
         },
         {
           "name": "Upper Confidence Interval Limit, Prevalence of 65 Years or More, Female, Core Preventive Services",
@@ -55953,265 +58233,16 @@
           "dcid": "Count_Person_22Years_Female"
         }
       ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years23_Gender-Female",
-      "name": "Person With Age = Years 23, Gender = Female",
-      "statVars": [
-        {
-          "name": "Life Expectancy: Years 23, Female",
-          "dcid": "LifeExpectancy_Person_23Years_Female"
-        },
-        {
-          "name": "Population: Years 23, Female",
-          "dcid": "Count_Person_23Years_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years24_Gender-Female",
-      "name": "Person With Age = Years 24, Gender = Female",
-      "statVars": [
-        {
-          "name": "Life Expectancy: Years 24, Female",
-          "dcid": "LifeExpectancy_Person_24Years_Female"
-        },
-        {
-          "name": "Population: Years 24, Female",
-          "dcid": "Count_Person_24Years_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years25_Gender-Female",
-      "name": "Person With Age = Years 25, Gender = Female",
-      "statVars": [
-        {
-          "name": "Life Expectancy: Years 25, Female",
-          "dcid": "LifeExpectancy_Person_25Years_Female"
-        },
-        {
-          "name": "Population: Years 25, Female",
-          "dcid": "Count_Person_25Years_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years26_Gender-Female",
-      "name": "Person With Age = Years 26, Gender = Female",
-      "statVars": [
-        {
-          "name": "Life Expectancy: Years 26, Female",
-          "dcid": "LifeExpectancy_Person_26Years_Female"
-        },
-        {
-          "name": "Population: Years 26, Female",
-          "dcid": "Count_Person_26Years_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years27_Gender-Female",
-      "name": "Person With Age = Years 27, Gender = Female",
-      "statVars": [
-        {
-          "name": "Life Expectancy: Years 27, Female",
-          "dcid": "LifeExpectancy_Person_27Years_Female"
-        },
-        {
-          "name": "Population: Years 27, Female",
-          "dcid": "Count_Person_27Years_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years28_Gender-Female",
-      "name": "Person With Age = Years 28, Gender = Female",
-      "statVars": [
-        {
-          "name": "Life Expectancy: Years 28, Female",
-          "dcid": "LifeExpectancy_Person_28Years_Female"
-        },
-        {
-          "name": "Population: Years 28, Female",
-          "dcid": "Count_Person_28Years_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years29_Gender-Female",
-      "name": "Person With Age = Years 29, Gender = Female",
-      "statVars": [
-        {
-          "name": "Life Expectancy: Years 29, Female",
-          "dcid": "LifeExpectancy_Person_29Years_Female"
-        },
-        {
-          "name": "Population: Years 29, Female",
-          "dcid": "Count_Person_29Years_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years3_Gender-Female",
-      "name": "Person With Age = Years 3, Gender = Female",
-      "statVars": [
-        {
-          "name": "Life Expectancy: Years 3, Female",
-          "dcid": "LifeExpectancy_Person_3Years_Female"
-        },
-        {
-          "name": "Population: Years 3, Female",
-          "dcid": "Count_Person_3Years_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years30_Gender-Female",
-      "name": "Person With Age = Years 30, Gender = Female",
-      "statVars": [
-        {
-          "name": "Life Expectancy: Years 30, Female",
-          "dcid": "LifeExpectancy_Person_30Years_Female"
-        },
-        {
-          "name": "Population: Years 30, Female",
-          "dcid": "Count_Person_30Years_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years31_Gender-Female",
-      "name": "Person With Age = Years 31, Gender = Female",
-      "statVars": [
-        {
-          "name": "Life Expectancy: Years 31, Female",
-          "dcid": "LifeExpectancy_Person_31Years_Female"
-        },
-        {
-          "name": "Population: Years 31, Female",
-          "dcid": "Count_Person_31Years_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years32_Gender-Female",
-      "name": "Person With Age = Years 32, Gender = Female",
-      "statVars": [
-        {
-          "name": "Life Expectancy: Years 32, Female",
-          "dcid": "LifeExpectancy_Person_32Years_Female"
-        },
-        {
-          "name": "Population: Years 32, Female",
-          "dcid": "Count_Person_32Years_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years33_Gender-Female",
-      "name": "Person With Age = Years 33, Gender = Female",
-      "statVars": [
-        {
-          "name": "Life Expectancy: Years 33, Female",
-          "dcid": "LifeExpectancy_Person_33Years_Female"
-        },
-        {
-          "name": "Population: Years 33, Female",
-          "dcid": "Count_Person_33Years_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years34_Gender-Female",
-      "name": "Person With Age = Years 34, Gender = Female",
-      "statVars": [
-        {
-          "name": "Life Expectancy: Years 34, Female",
-          "dcid": "LifeExpectancy_Person_34Years_Female"
-        },
-        {
-          "name": "Population: Years 34, Female",
-          "dcid": "Count_Person_34Years_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years35_Gender-Female",
-      "name": "Person With Age = Years 35, Gender = Female",
-      "statVars": [
-        {
-          "name": "Life Expectancy: Years 35, Female",
-          "dcid": "LifeExpectancy_Person_35Years_Female"
-        },
-        {
-          "name": "Population: Years 35, Female",
-          "dcid": "Count_Person_35Years_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years36_Gender-Female",
-      "name": "Person With Age = Years 36, Gender = Female",
-      "statVars": [
-        {
-          "name": "Life Expectancy: Years 36, Female",
-          "dcid": "LifeExpectancy_Person_36Years_Female"
-        },
-        {
-          "name": "Population: Years 36, Female",
-          "dcid": "Count_Person_36Years_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years37_Gender-Female",
-      "name": "Person With Age = Years 37, Gender = Female",
-      "statVars": [
-        {
-          "name": "Life Expectancy: Years 37, Female",
-          "dcid": "LifeExpectancy_Person_37Years_Female"
-        },
-        {
-          "name": "Population: Years 37, Female",
-          "dcid": "Count_Person_37Years_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years38_Gender-Female",
-      "name": "Person With Age = Years 38, Gender = Female",
-      "statVars": [
-        {
-          "name": "Life Expectancy: Years 38, Female",
-          "dcid": "LifeExpectancy_Person_38Years_Female"
-        },
-        {
-          "name": "Population: Years 38, Female",
-          "dcid": "Count_Person_38Years_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years39_Gender-Female",
-      "name": "Person With Age = Years 39, Gender = Female",
-      "statVars": [
-        {
-          "name": "Life Expectancy: Years 39, Female",
-          "dcid": "LifeExpectancy_Person_39Years_Female"
-        },
-        {
-          "name": "Population: Years 39, Female",
-          "dcid": "Count_Person_39Years_Female"
-        }
-      ]
     }
   ],
   "matches": [
     "",
     "female",
     "female)",
+    "female-to-male",
     "females",
+    "femmes",
+    "woman",
     "women"
   ]
 }

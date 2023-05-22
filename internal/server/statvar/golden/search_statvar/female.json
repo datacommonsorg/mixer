@@ -513,10 +513,6 @@
           "dcid": "Count_Death_45To49Years_Female"
         },
         {
-          "name": "Count of Mortality Event: 5 - 19 Years, Female",
-          "dcid": "dc/rxg50w6jfgld4"
-        },
-        {
           "name": "Count of Mortality Event: 5 - 9 Years, Female",
           "dcid": "Count_Death_5To9Years_Female"
         },
@@ -547,10 +543,6 @@
         {
           "name": "Count of Mortality Event: 75 - 79 Years, Female",
           "dcid": "Count_Death_75To79Years_Female"
-        },
-        {
-          "name": "Count of Mortality Event: 75 Years or More, Female",
-          "dcid": "dc/sw43w4pbtgq4d"
         },
         {
           "name": "Count of Mortality Event: 80 Years or More, Female",
@@ -1073,20 +1065,6 @@
       ]
     },
     {
-      "dcid": "dc/g/MedicalConditionIncident_Gender-Female_Serogroup",
-      "name": "Medical Condition Incident With Gender = Female, Serogroup",
-      "statVars": [
-        {
-          "name": "Count of Serogroup B, Female Meningococcal disease incidents",
-          "dcid": "Count_MedicalConditionIncident_Female_ConditionMeningococcalMeningitis_SerogroupB"
-        },
-        {
-          "name": "Count of Serogroups ACWY, Female Meningococcal disease incidents",
-          "dcid": "Count_MedicalConditionIncident_Female_ConditionMeningococcalMeningitis_ACWYSerogroup"
-        }
-      ]
-    },
-    {
       "dcid": "dc/g/MortalityEvent_Age-YearsUpto14_Gender-Female",
       "name": "Mortality Event With Age = 14 Years or Less, Gender = Female",
       "statVars": [
@@ -1265,62 +1243,6 @@
         {
           "name": "Count of Probable, Female Cryptosporidiosis incidents",
           "dcid": "Count_MedicalConditionIncident_Female_ConditionCryptosporidiosis_ProbableCase"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/MedicalConditionIncident_Gender-Female_MedicalCondition-Listeriosis_MedicalStatus",
-      "name": "Medical Condition Incident With Gender = Female, Medical Condition = Listeriosis, Medical Status",
-      "statVars": [
-        {
-          "name": "Count of Confirmed, Female Listeriosis incidents",
-          "dcid": "Count_MedicalConditionIncident_Female_ConditionListeriosis_ConfirmedCase"
-        },
-        {
-          "name": "Count of Probable, Female Listeriosis incidents",
-          "dcid": "Count_MedicalConditionIncident_Female_ConditionListeriosis_ProbableCase"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/MedicalConditionIncident_Gender-Female_MedicalCondition-LymeDisease_MedicalStatus",
-      "name": "Medical Condition Incident With Gender = Female, Medical Condition = Lyme Disease, Medical Status",
-      "statVars": [
-        {
-          "name": "Count of Confirmed, Female Lyme disease incidents",
-          "dcid": "Count_MedicalConditionIncident_Female_ConditionLymeDisease_ConfirmedCase"
-        },
-        {
-          "name": "Count of Probable, Female Lyme disease incidents",
-          "dcid": "Count_MedicalConditionIncident_Female_ConditionLymeDisease_ProbableCase"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/MedicalConditionIncident_Gender-Female_MedicalCondition-SpottedFeverRickettsiosis_MedicalStatus",
-      "name": "Medical Condition Incident With Gender = Female, Medical Condition = Spotted Fever Rickettsiosis, Medical Status",
-      "statVars": [
-        {
-          "name": "Count of Confirmed, Female Spotted fever rickettsiosis incidents",
-          "dcid": "Count_MedicalConditionIncident_Female_ConditionSpottedFeverRickettsiosis_ConfirmedCase"
-        },
-        {
-          "name": "Count of Probable, Female Spotted fever rickettsiosis incidents",
-          "dcid": "Count_MedicalConditionIncident_Female_ConditionSpottedFeverRickettsiosis_ProbableCase"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/MedicalConditionIncident_Gender-Female_MedicalCondition-VibriosisExcludingCholera_MedicalStatus",
-      "name": "Medical Condition Incident With Gender = Female, Medical Condition = Vibriosis Excluding Cholera, Medical Status",
-      "statVars": [
-        {
-          "name": "Count of Confirmed, Female Vibriosis except cholera incidents",
-          "dcid": "Count_MedicalConditionIncident_Female_ConditionVibriosisExcludingCholera_ConfirmedCase"
-        },
-        {
-          "name": "Count of Probable, Female Vibriosis except cholera incidents",
-          "dcid": "Count_MedicalConditionIncident_Female_ConditionVibriosisExcludingCholera_ProbableCase"
         }
       ]
     },
@@ -1541,56 +1463,6 @@
         {
           "name": "Count of Mortality Event: 1 Years or Less, Female (As Fraction of Count Birth Event Female)",
           "dcid": "Count_Death_LessThan1Year_Female_AsAFractionOf_Count_BirthEvent_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/MortalityEvent_Age-Years25To34_Gender-Female",
-      "name": "Mortality Event With Age = 25 - 34 Years, Gender = Female",
-      "statVars": [
-        {
-          "name": "Count of Mortality Event: 25 - 34 Years, Female",
-          "dcid": "Count_Death_25To34Years_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/MortalityEvent_Age-Years35To44_Gender-Female",
-      "name": "Mortality Event With Age = 35 - 44 Years, Gender = Female",
-      "statVars": [
-        {
-          "name": "Count of Mortality Event: 35 - 44 Years, Female",
-          "dcid": "Count_Death_35To44Years_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/MortalityEvent_Age-Years45To54_Gender-Female",
-      "name": "Mortality Event With Age = 45 - 54 Years, Gender = Female",
-      "statVars": [
-        {
-          "name": "Count of Mortality Event: 45 - 54 Years, Female",
-          "dcid": "Count_Death_45To54Years_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/MortalityEvent_Age-Years55To64_Gender-Female",
-      "name": "Mortality Event With Age = 55 - 64 Years, Gender = Female",
-      "statVars": [
-        {
-          "name": "Count of Mortality Event: 55 - 64 Years, Female",
-          "dcid": "Count_Death_55To64Years_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/MortalityEvent_Age-Years65To74_Gender-Female",
-      "name": "Mortality Event With Age = 65 - 74 Years, Gender = Female",
-      "statVars": [
-        {
-          "name": "Count of Mortality Event: 65 - 74 Years, Female",
-          "dcid": "Count_Death_65To74Years_Female"
         }
       ]
     },
@@ -4645,12 +4517,42 @@
       ]
     },
     {
+      "dcid": "dc/g/MedicalConditionIncident_Gender-Female_MedicalCondition-Listeriosis_MedicalStatus",
+      "name": "Medical Condition Incident With Gender = Female, Medical Condition = Listeriosis, Medical Status",
+      "statVars": [
+        {
+          "name": "Count of Confirmed, Female Listeriosis incidents",
+          "dcid": "Count_MedicalConditionIncident_Female_ConditionListeriosis_ConfirmedCase"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/MedicalConditionIncident_Gender-Female_MedicalCondition-LymeDisease_MedicalStatus",
+      "name": "Medical Condition Incident With Gender = Female, Medical Condition = Lyme Disease, Medical Status",
+      "statVars": [
+        {
+          "name": "Count of Confirmed, Female Lyme disease incidents",
+          "dcid": "Count_MedicalConditionIncident_Female_ConditionLymeDisease_ConfirmedCase"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/MedicalConditionIncident_Gender-Female_MedicalCondition-MeningococcalMeningitis_Serogroup",
       "name": "Medical Condition Incident With Gender = Female, Medical Condition = Meningococcal Meningitis, Serogroup",
       "statVars": [
         {
           "name": "Count of Other serogroups, Female Meningococcal disease incidents",
           "dcid": "Count_MedicalConditionIncident_Female_ConditionMeningococcalMeningitis_OtherSerogroups"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/MedicalConditionIncident_Gender-Female_MedicalCondition-SpottedFeverRickettsiosis_MedicalStatus",
+      "name": "Medical Condition Incident With Gender = Female, Medical Condition = Spotted Fever Rickettsiosis, Medical Status",
+      "statVars": [
+        {
+          "name": "Count of Confirmed, Female Spotted fever rickettsiosis incidents",
+          "dcid": "Count_MedicalConditionIncident_Female_ConditionSpottedFeverRickettsiosis_ConfirmedCase"
         }
       ]
     },
@@ -4671,6 +4573,16 @@
         {
           "name": "Count of Invasive pneumococcal, , Probable, Female pneumococcal disease incidents",
           "dcid": "Count_MedicalConditionIncident_Female_ConditionStreptococcusPneumonia_ProbableCase"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/MedicalConditionIncident_Gender-Female_MedicalCondition-VibriosisExcludingCholera_MedicalStatus",
+      "name": "Medical Condition Incident With Gender = Female, Medical Condition = Vibriosis Excluding Cholera, Medical Status",
+      "statVars": [
+        {
+          "name": "Count of Confirmed, Female Vibriosis except cholera incidents",
+          "dcid": "Count_MedicalConditionIncident_Female_ConditionVibriosisExcludingCholera_ConfirmedCase"
         }
       ]
     },
@@ -5069,6 +4981,10 @@
     {
       "dcid": "dc/g/MedicalConditionIncident_Gender-Female_MedicalStatus-VisitedEmergencyDepartment",
       "name": "Medical Condition Incident With Gender = Female, Medical Status = Visited Emergency Department"
+    },
+    {
+      "dcid": "dc/g/MedicalConditionIncident_Gender-Female_Serogroup",
+      "name": "Medical Condition Incident With Gender = Female, Serogroup"
     },
     {
       "dcid": "dc/g/MedicalConditionIncident_Gender-Female_Serogroup-OtherSerogroups",
@@ -7161,12 +7077,34 @@
     {
       "dcid": "dc/g/Person_Age-Years16To64_Gender-Female_QuantityWorked-Week14To26",
       "name": "Person With Age = 16 - 64 Years, Gender = Female, Quantity Worked = 14 - 26 Week"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16To64_Gender-Female_QuantityWorked-Week27To39",
+      "name": "Person With Age = 16 - 64 Years, Gender = Female, Quantity Worked = 27 - 39 Week"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16To64_Gender-Female_QuantityWorked-Week40To47",
+      "name": "Person With Age = 16 - 64 Years, Gender = Female, Quantity Worked = 40 - 47 Week"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16To64_Gender-Female_QuantityWorked-Week40Onwards",
+      "name": "Person With Age = 16 - 64 Years, Gender = Female, Quantity Worked = 40 Week or More"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16To64_Gender-Female_QuantityWorked-Week48To49",
+      "name": "Person With Age = 16 - 64 Years, Gender = Female, Quantity Worked = 48 - 49 Week"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years16To64_Gender-Female_QuantityWorked-Week50To52",
+      "name": "Person With Age = 16 - 64 Years, Gender = Female, Quantity Worked = 50 - 52 Week"
     }
   ],
   "matches": [
     "female",
     "female)",
+    "female-to-male",
     "females",
+    "woman",
     "women"
   ]
 }

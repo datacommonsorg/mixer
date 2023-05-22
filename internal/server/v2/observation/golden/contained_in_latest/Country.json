@@ -163,6 +163,15 @@
               ]
             },
             {
+              "facet_id": "2052219360",
+              "observations": [
+                {
+                  "date": "2010",
+                  "value": 40117096
+                }
+              ]
+            },
+            {
               "facet_id": "473499523",
               "observations": [
                 {
@@ -1017,6 +1026,15 @@
                 {
                   "date": "2021",
                   "value": 51516562
+                }
+              ]
+            },
+            {
+              "facet_id": "4140854811",
+              "observations": [
+                {
+                  "date": "2020",
+                  "value": 50911747
                 }
               ]
             },
@@ -5374,6 +5392,10 @@
       "provenance_url": "https://data.census.gov/cedsci/table?q=S2602&tid=ACSST5Y2019.S2602",
       "measurement_method": "CensusACS5yrSurveySubjectTable"
     },
+    "2052219360": {
+      "import_name": "Argentina_Census",
+      "provenance_url": "https://www.indec.gob.ar"
+    },
     "2123271870": {
       "import_name": "IndiaCensus_Primary",
       "provenance_url": "https://censusindia.gov.in/"
@@ -5453,6 +5475,10 @@
       "import_name": "WorldDevelopmentIndicators",
       "provenance_url": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
       "observation_period": "P1Y"
+    },
+    "4140854811": {
+      "import_name": "Colombia_Census",
+      "provenance_url": "https://www.dane.gov.co/index.php/en/statistics-by-topic"
     },
     "4194503167": {
       "import_name": "StatisticsCanada",

@@ -62,6 +62,10 @@
         "descendentStatVarCount": 264
       },
       {
+        "id": "oecd/g/OECD",
+        "displayName": "Organisation for Economic Co-operation and Development"
+      },
+      {
         "id": "dc/g/SDG",
         "specializedEntity": "Sustainable Development Goals",
         "displayName": "Sustainable Development Goals"

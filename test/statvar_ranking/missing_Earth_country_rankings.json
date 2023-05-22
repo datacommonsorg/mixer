@@ -555,18 +555,6 @@
     "relatedChart": {}
   },
   {
-    "title": "Number of people employed",
-    "statsVars": [
-      "Count_Person_Employed"
-    ],
-    "relatedChart": {
-      "scale": true,
-      "statsVars": [
-        "Count_Person_Employed"
-      ]
-    }
-  },
-  {
     "title": "Palmer drought severity index",
     "statsVars": [
       "PalmerDroughtSeverityIndex_Atmosphere"
