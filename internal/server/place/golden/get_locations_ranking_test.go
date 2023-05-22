@@ -28,7 +28,7 @@ import (
 )
 
 func TestGetLocationsRankings(t *testing.T) {
-	//t.Parallel()
+	t.Parallel()
 	ctx := context.Background()
 
 	_, filename, _, _ := runtime.Caller(0)
