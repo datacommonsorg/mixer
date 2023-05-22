@@ -1247,62 +1247,6 @@
       ]
     },
     {
-      "dcid": "dc/g/MedicalConditionIncident_Gender-Female_MedicalCondition-Listeriosis_MedicalStatus",
-      "name": "Medical Condition Incident With Gender = Female, Medical Condition = Listeriosis, Medical Status",
-      "statVars": [
-        {
-          "name": "Count of Confirmed, Female Listeriosis incidents",
-          "dcid": "Count_MedicalConditionIncident_Female_ConditionListeriosis_ConfirmedCase"
-        },
-        {
-          "name": "Count of Probable, Female Listeriosis incidents",
-          "dcid": "Count_MedicalConditionIncident_Female_ConditionListeriosis_ProbableCase"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/MedicalConditionIncident_Gender-Female_MedicalCondition-LymeDisease_MedicalStatus",
-      "name": "Medical Condition Incident With Gender = Female, Medical Condition = Lyme Disease, Medical Status",
-      "statVars": [
-        {
-          "name": "Count of Confirmed, Female Lyme disease incidents",
-          "dcid": "Count_MedicalConditionIncident_Female_ConditionLymeDisease_ConfirmedCase"
-        },
-        {
-          "name": "Count of Probable, Female Lyme disease incidents",
-          "dcid": "Count_MedicalConditionIncident_Female_ConditionLymeDisease_ProbableCase"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/MedicalConditionIncident_Gender-Female_MedicalCondition-SpottedFeverRickettsiosis_MedicalStatus",
-      "name": "Medical Condition Incident With Gender = Female, Medical Condition = Spotted Fever Rickettsiosis, Medical Status",
-      "statVars": [
-        {
-          "name": "Count of Confirmed, Female Spotted fever rickettsiosis incidents",
-          "dcid": "Count_MedicalConditionIncident_Female_ConditionSpottedFeverRickettsiosis_ConfirmedCase"
-        },
-        {
-          "name": "Count of Probable, Female Spotted fever rickettsiosis incidents",
-          "dcid": "Count_MedicalConditionIncident_Female_ConditionSpottedFeverRickettsiosis_ProbableCase"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/MedicalConditionIncident_Gender-Female_MedicalCondition-VibriosisExcludingCholera_MedicalStatus",
-      "name": "Medical Condition Incident With Gender = Female, Medical Condition = Vibriosis Excluding Cholera, Medical Status",
-      "statVars": [
-        {
-          "name": "Count of Confirmed, Female Vibriosis except cholera incidents",
-          "dcid": "Count_MedicalConditionIncident_Female_ConditionVibriosisExcludingCholera_ConfirmedCase"
-        },
-        {
-          "name": "Count of Probable, Female Vibriosis except cholera incidents",
-          "dcid": "Count_MedicalConditionIncident_Female_ConditionVibriosisExcludingCholera_ProbableCase"
-        }
-      ]
-    },
-    {
       "dcid": "dc/g/SDG_3.7.1",
       "name": "3.7.1: Proportion of women of reproductive age (aged 15-49 years) who have their need for family planning satisfied with modern methods",
       "statVars": [
@@ -4573,12 +4517,42 @@
       ]
     },
     {
+      "dcid": "dc/g/MedicalConditionIncident_Gender-Female_MedicalCondition-Listeriosis_MedicalStatus",
+      "name": "Medical Condition Incident With Gender = Female, Medical Condition = Listeriosis, Medical Status",
+      "statVars": [
+        {
+          "name": "Count of Confirmed, Female Listeriosis incidents",
+          "dcid": "Count_MedicalConditionIncident_Female_ConditionListeriosis_ConfirmedCase"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/MedicalConditionIncident_Gender-Female_MedicalCondition-LymeDisease_MedicalStatus",
+      "name": "Medical Condition Incident With Gender = Female, Medical Condition = Lyme Disease, Medical Status",
+      "statVars": [
+        {
+          "name": "Count of Confirmed, Female Lyme disease incidents",
+          "dcid": "Count_MedicalConditionIncident_Female_ConditionLymeDisease_ConfirmedCase"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/MedicalConditionIncident_Gender-Female_MedicalCondition-MeningococcalMeningitis_Serogroup",
       "name": "Medical Condition Incident With Gender = Female, Medical Condition = Meningococcal Meningitis, Serogroup",
       "statVars": [
         {
           "name": "Count of Other serogroups, Female Meningococcal disease incidents",
           "dcid": "Count_MedicalConditionIncident_Female_ConditionMeningococcalMeningitis_OtherSerogroups"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/MedicalConditionIncident_Gender-Female_MedicalCondition-SpottedFeverRickettsiosis_MedicalStatus",
+      "name": "Medical Condition Incident With Gender = Female, Medical Condition = Spotted Fever Rickettsiosis, Medical Status",
+      "statVars": [
+        {
+          "name": "Count of Confirmed, Female Spotted fever rickettsiosis incidents",
+          "dcid": "Count_MedicalConditionIncident_Female_ConditionSpottedFeverRickettsiosis_ConfirmedCase"
         }
       ]
     },
@@ -4599,6 +4573,16 @@
         {
           "name": "Count of Invasive pneumococcal, , Probable, Female pneumococcal disease incidents",
           "dcid": "Count_MedicalConditionIncident_Female_ConditionStreptococcusPneumonia_ProbableCase"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/MedicalConditionIncident_Gender-Female_MedicalCondition-VibriosisExcludingCholera_MedicalStatus",
+      "name": "Medical Condition Incident With Gender = Female, Medical Condition = Vibriosis Excluding Cholera, Medical Status",
+      "statVars": [
+        {
+          "name": "Count of Confirmed, Female Vibriosis except cholera incidents",
+          "dcid": "Count_MedicalConditionIncident_Female_ConditionVibriosisExcludingCholera_ConfirmedCase"
         }
       ]
     },
@@ -7118,7 +7102,9 @@
   "matches": [
     "female",
     "female)",
+    "female-to-male",
     "females",
+    "woman",
     "women"
   ]
 }

@@ -1132,6 +1132,11 @@
               "facet": "3981252704"
             },
             {
+              "date": "2020",
+              "value": 50911747,
+              "facet": "4140854811"
+            },
+            {
               "date": "2019",
               "value": 50374500,
               "facet": "1151455814"
@@ -6076,6 +6081,10 @@
       "import_name": "WorldDevelopmentIndicators",
       "provenance_url": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
       "observation_period": "P1Y"
+    },
+    "4140854811": {
+      "import_name": "Colombia_Census",
+      "provenance_url": "https://www.dane.gov.co/index.php/en/statistics-by-topic"
     },
     "4194503167": {
       "import_name": "StatisticsCanada",

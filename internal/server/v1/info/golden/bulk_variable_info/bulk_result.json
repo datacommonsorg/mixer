@@ -1169,6 +1169,65 @@
             "observationCount": 3,
             "timeSeriesCount": 1
           },
+          "dc/base/Colombia_Census": {
+            "importName": "Colombia_Census",
+            "seriesSummary": [
+              {
+                "seriesKey": {},
+                "earliestDate": "1985",
+                "latestDate": "2020",
+                "placeTypeSummary": {
+                  "AdministrativeArea1": {
+                    "placeCount": 32,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q123304",
+                        "name": "Antioquia Department"
+                      },
+                      {
+                        "dcid": "wikidataId/Q13990",
+                        "name": "Valle del Cauca Department"
+                      },
+                      {
+                        "dcid": "wikidataId/Q232564",
+                        "name": "Cundinamarca Department"
+                      }
+                    ],
+                    "minValue": 7953,
+                    "maxValue": 3498200
+                  },
+                  "City": {
+                    "placeCount": 1,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q2841",
+                        "name": "Bogotá"
+                      }
+                    ],
+                    "minValue": 2226111,
+                    "maxValue": 4316132
+                  },
+                  "Country": {
+                    "placeCount": 1,
+                    "topPlaces": [
+                      {
+                        "dcid": "country/COL",
+                        "name": "Colombia"
+                      }
+                    ],
+                    "minValue": 15610217,
+                    "maxValue": 25772783
+                  }
+                },
+                "minValue": 7953,
+                "maxValue": 25772783,
+                "observationCount": 1224,
+                "timeSeriesCount": 34
+              }
+            ],
+            "observationCount": 1224,
+            "timeSeriesCount": 34
+          },
           "dc/base/EurostatData": {
             "importName": "EurostatData",
             "releaseFrequency": "P1Y",

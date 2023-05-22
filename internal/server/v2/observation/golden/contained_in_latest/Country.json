@@ -1030,6 +1030,15 @@
               ]
             },
             {
+              "facet_id": "4140854811",
+              "observations": [
+                {
+                  "date": "2020",
+                  "value": 50911747
+                }
+              ]
+            },
+            {
               "facet_id": "1151455814",
               "observations": [
                 {
@@ -5466,6 +5475,10 @@
       "import_name": "WorldDevelopmentIndicators",
       "provenance_url": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
       "observation_period": "P1Y"
+    },
+    "4140854811": {
+      "import_name": "Colombia_Census",
+      "provenance_url": "https://www.dane.gov.co/index.php/en/statistics-by-topic"
     },
     "4194503167": {
       "import_name": "StatisticsCanada",
