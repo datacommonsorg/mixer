@@ -63,7 +63,9 @@ go run cmd/main.go \
     --base_bigtable_info="$(cat deploy/storage/base_bigtable_info.yaml)" \
     --custom_bigtable_info="$(cat test/custom_bigtable_info.yaml)" \
     --schema_path=$PWD/deploy/mapping/ \
-    --use_branch_bt=false
+    --use_base_bigtable=true \
+    --use_branch_bigtable=false \
+    --remote_mixer_domain=https://api.datacommons.org
 
 go run examples/main.go
 ```
@@ -92,8 +94,8 @@ go run cmd/main.go \
     --tmcf_csv_folder=test \
     --use_tmcf_csv_data=true \
     --use_bigquery=false \
-    --use_base_bt=false \
-    --use_branch_bt=false
+    --use_base_bigtable=false \
+    --use_branch_bigtable=false
 ```
 
 ## Running ESP locally
@@ -184,7 +186,6 @@ go run cmd/main.go \
     --bq_dataset=$(head -1 deploy/storage/bigquery.version) \
     --base_bigtable_info="$(cat deploy/storage/base_bigtable_info.yaml)" \
     --schema_path=$PWD/deploy/mapping/ \
-    --use_branch_bt=true
     --startup_memprof=grpc.memprof     # <-- note the additional flag here
 
 # -sample_index=alloc_space reports on all memory allocations, including those
@@ -208,7 +209,6 @@ go run cmd/main.go \
     --bq_dataset=$(head -1 deploy/storage/bigquery.version) \
     --base_bigtable_info="$(cat deploy/storage/base_bigtable_info.yaml)" \
     --schema_path=$PWD/deploy/mapping/ \
-    --use_branch_bt=true
     --httpprof_port=6060     # <-- note the additional flag here
 ```
 

@@ -84,7 +84,8 @@ spec:
             - --schema_path=/datacommons/mapping
             - --memdb_path=/datacommons/memdb
             {{- if eq $.Values.customDC.enabled true }}
-            - --use_branch_bt=false
+            - --use_custom_bigtable=true
+            - --use_branch_bigtable=false
             {{- end }}
             {{- if eq $.Values.mixer.bigqueryOnly true }}
             - --bigquery_only=true
