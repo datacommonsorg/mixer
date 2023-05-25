@@ -22,6 +22,7 @@ import (
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbs "github.com/datacommonsorg/mixer/internal/proto/service"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 )
@@ -93,6 +94,30 @@ func main() {
 			log.Fatalf("could not GetStats: %s", err)
 		}
 		fmt.Printf("%s\n", r.GetPayload())
+	}
+
+	{
+		// Get variable info
+		req := &pbv1.BulkVariableInfoRequest{
+			Nodes: []string{"Mean_NetMeasure_Income_Farm"},
+		}
+		r, err := c.BulkVariableInfo(ctx, req)
+		if err != nil {
+			log.Fatalf("could not BulkVariableInfo: %s", err)
+		}
+		fmt.Printf("%v\n", r)
+	}
+
+	{
+		// Get variable ancestors
+		req := &pbv1.VariableAncestorsRequest{
+			Node: "WithdrawalRate_Water_Irrigation",
+		}
+		r, err := c.VariableAncestors(ctx, req)
+		if err != nil {
+			log.Fatalf("could not VariableAncestors: %s", err)
+		}
+		fmt.Printf("%v\n", r)
 	}
 
 }

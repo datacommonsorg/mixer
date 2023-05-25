@@ -43,10 +43,11 @@ import (
 
 // TestOption holds the options for integration test.
 type TestOption struct {
-	UseCache       bool
-	UseMemdb       bool
-	UseCustomTable bool
-	SearchOptions  server.SearchOptions
+	UseCache          bool
+	UseMemdb          bool
+	UseCustomTable    bool
+	SearchOptions     server.SearchOptions
+	RemoteMixerDomain string
 }
 
 var (
@@ -69,13 +70,14 @@ const (
 
 // Setup creates local server and client.
 func Setup(option ...*TestOption) (pbs.MixerClient, error) {
-	useCache, useMemdb, useCustomTable := false, false, false
+	useCache, useMemdb, useCustomTable, remoteMixerDomain := false, false, false, ""
 	var searchOptions server.SearchOptions
 	if len(option) == 1 {
 		useCache = option[0].UseCache
 		useMemdb = option[0].UseMemdb
 		useCustomTable = option[0].UseCustomTable
 		searchOptions = option[0].SearchOptions
+		remoteMixerDomain = option[0].RemoteMixerDomain
 	}
 	return setupInternal(
 		"../deploy/storage/bigquery.version",
@@ -86,12 +88,14 @@ func Setup(option ...*TestOption) (pbs.MixerClient, error) {
 		useMemdb,
 		useCustomTable,
 		searchOptions,
+		remoteMixerDomain,
 	)
 }
 
 func setupInternal(
 	bigqueryVersionFile, baseBigtableInfoYaml, testBigtableInfoYaml, mcfPath string,
 	useCache, useMemdb, useCustomTable bool, searchOptions server.SearchOptions,
+	remoteMixerDomain string,
 ) (pbs.MixerClient, error) {
 	ctx := context.Background()
 	_, filename, _, _ := runtime.Caller(0)
@@ -118,7 +122,7 @@ func setupInternal(
 	}
 
 	metadata, err := server.NewMetadata(
-		hostProject, strings.TrimSpace(string(bqTableID)), schemaPath, "")
+		hostProject, strings.TrimSpace(string(bqTableID)), schemaPath, remoteMixerDomain, false)
 	if err != nil {
 		return nil, err
 	}
@@ -139,7 +143,7 @@ func setupInternal(
 	}
 	var cache *resource.Cache
 	if useCache {
-		cache, err = server.NewCache(ctx, st, searchOptions, "")
+		cache, err = server.NewCache(ctx, st, searchOptions)
 		if err != nil {
 			return nil, err
 		}
@@ -173,6 +177,7 @@ func SetupBqOnly() (pbs.MixerClient, error) {
 		strings.TrimSpace(string(bqTableID)),
 		schemaPath,
 		"",
+		false,
 	)
 	if err != nil {
 		return nil, err

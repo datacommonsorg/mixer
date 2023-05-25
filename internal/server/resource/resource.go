@@ -56,6 +56,7 @@ type Metadata struct {
 	BigQueryDataset   string
 	RemoteMixerDomain string
 	RemoteMixerAPIKey string
+	FoldRemoteRootSvg bool
 }
 
 // SearchIndex holds the index for searching stat var (group).

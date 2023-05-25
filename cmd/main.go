@@ -74,8 +74,8 @@ var (
 	// Profile startup memory instead of listening for requests
 	startupMemoryProfile = flag.String("startup_memprof", "", "File path to write the memory profile of mixer startup to")
 	// Serve live profiles of the process (CPU, memory, etc.) over HTTP on this port
-	httpProfilePort = flag.Int("httpprof_port", 0, "Port to serve HTTP profiles from")
-	pinnedSvg       = flag.String("pinned_svg", "", "When set, a new top level svg is created to hold all existing top level svgs except for this one")
+	httpProfilePort   = flag.Int("httpprof_port", 0, "Port to serve HTTP profiles from")
+	foldRemoteRootSvg = flag.Bool("fold_remote_root_svg", false, "Whether to fold root SVG from remote mixer")
 )
 
 const (
@@ -178,6 +178,7 @@ func main() {
 		*bqDataset,
 		*schemaPath,
 		*remoteMixerDomain,
+		*foldRemoteRootSvg,
 	)
 	if err != nil {
 		log.Fatalf("Failed to create metadata: %v", err)
@@ -203,7 +204,6 @@ func main() {
 				UseSearch:           true,
 				BuildSvgSearchIndex: true,
 			},
-			*pinnedSvg,
 		)
 		if err != nil {
 			log.Fatalf("Failed to create cache: %v", err)
