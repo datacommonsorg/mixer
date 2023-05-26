@@ -83,7 +83,9 @@ spec:
             - --bq_dataset=$(BIGQUERY)
             - --schema_path=/datacommons/mapping
             - --memdb_path=/datacommons/memdb
+            - --remote_mixer_domain={{ $.Values.mixer.remoteMixerDomain }}
             {{- if eq $.Values.customDC.enabled true }}
+            - --use_base_bigtable=false
             - --use_custom_bigtable=true
             - --use_branch_bigtable=false
             {{- end }}
@@ -96,7 +98,7 @@ spec:
             - --tmcf_csv_folder={{ $.Values.mixer.tmcfCSVFolder }}
             {{- end }}
             - --use_search={{ default false $group.useSearch }}
-            {{- if eq $.Values.mixer.foldRemoteRootSvg true -}}
+            {{- if eq $.Values.mixer.foldRemoteRootSvg true }}
             - --fold_remote_root_svg=true
             {{- end }}
           volumeMounts:

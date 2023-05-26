@@ -17,6 +17,7 @@ package server
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 	"log"
 	"net/http"
 	"os"
@@ -26,6 +27,8 @@ import (
 	"strings"
 
 	pubsub "cloud.google.com/go/pubsub"
+	secretmanager "cloud.google.com/go/secretmanager/apiv1"
+	"cloud.google.com/go/secretmanager/apiv1/secretmanagerpb"
 	"github.com/datacommonsorg/mixer/internal/parser/mcf"
 	dcpubsub "github.com/datacommonsorg/mixer/internal/pubsub"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
@@ -37,9 +40,28 @@ import (
 	"googlemaps.github.io/maps"
 )
 
-const (
-	apiKeyEnv = "REMOTE_MIXER_API_KEY"
-)
+func readLatestSecret(projectID, secretID string) (string, error) {
+	// Create the context and the client.
+	ctx := context.Background()
+	client, err := secretmanager.NewClient(ctx)
+	if err != nil {
+		return "", fmt.Errorf("failed to create secret manager client: %v", err)
+	}
+
+	// Build the request to access the latest secret version.
+	req := &secretmanagerpb.AccessSecretVersionRequest{
+		Name: fmt.Sprintf("projects/%s/secrets/%s/versions/latest", projectID, secretID),
+	}
+
+	// Access the secret version.
+	result, err := client.AccessSecretVersion(ctx, req)
+	if err != nil {
+		return "", fmt.Errorf("failed to access latest secret version: %v", err)
+	}
+
+	// Return the secret payload as a string.
+	return string(result.Payload.Data), nil
+}
 
 // Server holds resources for a mixer server
 type Server struct {
@@ -100,6 +122,15 @@ func NewMetadata(
 	}
 	outArcInfo := map[string]map[string][]*types.OutArcInfo{}
 	inArcInfo := map[string][]*types.InArcInfo{}
+
+	var apiKey string
+	if remoteMixerDomain != "" {
+		apiKey, err = readLatestSecret(hostProject, "mixer-api-key")
+		if err != nil {
+			return nil, err
+		}
+	}
+
 	return &resource.Metadata{
 			Mappings:          mappings,
 			OutArcInfo:        outArcInfo,
@@ -108,7 +139,7 @@ func NewMetadata(
 			HostProject:       hostProject,
 			BigQueryDataset:   bigQueryDataset,
 			RemoteMixerDomain: remoteMixerDomain,
-			RemoteMixerAPIKey: os.Getenv(apiKeyEnv),
+			RemoteMixerAPIKey: apiKey,
 			FoldRemoteRootSvg: foldRemoteRootSvg,
 		},
 		nil
