@@ -84,9 +84,9 @@ spec:
             - --schema_path=/datacommons/mapping
             - --memdb_path=/datacommons/memdb
             - --remote_mixer_domain={{ $.Values.mixer.remoteMixerDomain }}
-            - --use_base_bigtable={{ $Values.mixer.useBaseBigtable }}
-            - --use_custom_bigtable={{ $Values.mixer.useCustomBigtable }}
-            - --use_branch_bigtable={{ $Values.mixer.useBranchBigtable }}
+            - --use_base_bigtable={{ $.Values.mixer.useBaseBigtable }}
+            - --use_custom_bigtable={{ $.Values.mixer.useCustomBigtable }}
+            - --use_branch_bigtable={{ $.Values.mixer.useBranchBigtable }}
             {{- if eq $.Values.mixer.bigqueryOnly true }}
             - --bigquery_only=true
             {{- end }}
