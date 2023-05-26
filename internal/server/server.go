@@ -70,8 +70,9 @@ func (s *Server) updateBranchTable(ctx context.Context, branchTableName string) 
 func NewMetadata(
 	hostProject,
 	bigQueryDataset,
-	schemaPath string,
+	schemaPath,
 	remoteMixerDomain string,
+	foldRemoteRootSvg bool,
 ) (*resource.Metadata, error) {
 	_, filename, _, _ := runtime.Caller(0)
 	subTypeMap, err := solver.GetSubTypeMap(
@@ -108,6 +109,7 @@ func NewMetadata(
 			BigQueryDataset:   bigQueryDataset,
 			RemoteMixerDomain: remoteMixerDomain,
 			RemoteMixerAPIKey: os.Getenv(apiKeyEnv),
+			FoldRemoteRootSvg: foldRemoteRootSvg,
 		},
 		nil
 }
@@ -139,10 +141,8 @@ func NewCache(
 	ctx context.Context,
 	store *store.Store,
 	searchOptions SearchOptions,
-	pinnedSvg string,
 ) (*resource.Cache, error) {
-	// TODO: [MERGE]: need to builc cache from multiple tables.
-	rawSvg, err := statvar.GetRawSvg(ctx, store, pinnedSvg)
+	rawSvg, err := statvar.GetRawSvg(ctx, store)
 	if err != nil {
 		return nil, err
 	}

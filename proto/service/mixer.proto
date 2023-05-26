@@ -551,6 +551,7 @@ service Mixer {
       returns (datacommons.v1.VariableAncestorsResponse) {
     option (google.api.http) = {
       get : "/v1/variable/ancestors/{node=**}"
+      additional_bindings : {post : "/v1/variable/ancestors" body : "*"}
     };
   }
 

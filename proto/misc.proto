@@ -83,4 +83,6 @@ message GetVersionResponse {
   string bigquery = 2;
   // Github commit hash
   string git_hash = 3;
+  // Remote mixer domain
+  string remote_mixer_domain = 4;
 }

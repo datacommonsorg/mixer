@@ -268,9 +268,10 @@ func (s *Server) GetVersion(
 	ctx context.Context, in *pb.GetVersionRequest,
 ) (*pb.GetVersionResponse, error) {
 	return &pb.GetVersionResponse{
-		Tables:   s.store.BtGroup.TableNames(),
-		Bigquery: s.metadata.BigQueryDataset,
-		GitHash:  os.Getenv("MIXER_HASH"),
+		Tables:            s.store.BtGroup.TableNames(),
+		Bigquery:          s.metadata.BigQueryDataset,
+		GitHash:           os.Getenv("MIXER_HASH"),
+		RemoteMixerDomain: s.metadata.RemoteMixerDomain,
 	}, nil
 }
 

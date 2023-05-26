@@ -32,10 +32,10 @@ import (
 )
 
 // GetRawSvg gets the raw svg mapping.
-func GetRawSvg(ctx context.Context, store *store.Store, pinnedSvg string) (
+func GetRawSvg(ctx context.Context, store *store.Store) (
 	map[string]*pb.StatVarGroupNode, error) {
 	svg, err := GetStatVarGroup(
-		ctx, &pb.GetStatVarGroupRequest{}, store, nil, pinnedSvg)
+		ctx, &pb.GetStatVarGroupRequest{}, store, nil)
 	if err != nil {
 		return nil, err
 	}

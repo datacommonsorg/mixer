@@ -54,11 +54,13 @@ var (
 	schemaPath       = flag.String("schema_path", "", "The directory that contains the schema mapping files")
 	bqBillingProject = flag.String("bq_billing_project", "", "The bigquery client project. Query is billed to this project.")
 	// Base Bigtable Cache
-	useBaseBt          = flag.Bool("use_base_bt", true, "Use base bigtable cache")
-	baseBigtableInfo   = flag.String("base_bigtable_info", "", "Yaml formatted text containing information for base Bigtable")
+	useBaseBigtable  = flag.Bool("use_base_bigtable", true, "Use base bigtable cache")
+	baseBigtableInfo = flag.String("base_bigtable_info", "", "Yaml formatted text containing information for base Bigtable")
+	// Custom Bigtable Cache
+	useCustomBigtable  = flag.Bool("use_custom_bigtable", false, "Use custom bigtable cache")
 	customBigtableInfo = flag.String("custom_bigtable_info", "", "Yaml formatted text containing information for custom Bigtable")
 	// Branch Bigtable Cache
-	useBranchBt = flag.Bool("use_branch_bt", true, "Use branch bigtable cache")
+	useBranchBigtable = flag.Bool("use_branch_bigtable", true, "Use branch bigtable cache")
 	// Stat-var search cache
 	useSearch = flag.Bool("use_search", true, "Uses stat var search. Will build search indexes.")
 	// GCS to hold memdb data.
@@ -72,8 +74,8 @@ var (
 	// Profile startup memory instead of listening for requests
 	startupMemoryProfile = flag.String("startup_memprof", "", "File path to write the memory profile of mixer startup to")
 	// Serve live profiles of the process (CPU, memory, etc.) over HTTP on this port
-	httpProfilePort = flag.Int("httpprof_port", 0, "Port to serve HTTP profiles from")
-	pinnedSvg       = flag.String("pinned_svg", "", "When set, a new top level svg is created to hold all existing top level svgs except for this one")
+	httpProfilePort   = flag.Int("httpprof_port", 0, "Port to serve HTTP profiles from")
+	foldRemoteRootSvg = flag.Bool("fold_remote_root_svg", false, "Whether to fold root SVG from remote mixer")
 )
 
 const (
@@ -107,19 +109,22 @@ func main() {
 
 	// Bigtable cache
 	var tables []*bigtable.Table
-	if *useBaseBt {
+	if *useBaseBigtable {
 		baseTables, err := bigtable.CreateBigtables(
 			ctx, *baseBigtableInfo, false /*isCustom=*/)
 		if err != nil {
 			log.Fatalf("Failed to create base Bigtables: %v", err)
 		}
+		tables = append(tables, baseTables...)
+	}
+	if *useCustomBigtable {
 		customTables, err := bigtable.CreateBigtables(
 			ctx, *customBigtableInfo, true /*isCustom=*/)
 		if err != nil {
 			log.Fatalf("Failed to create custom Bigtables: %v", err)
 		}
 		// Custom tables ranked highere than base tables.
-		tables = append(customTables, baseTables...)
+		tables = append(customTables, tables...)
 	}
 
 	// TMCF + CSV from GCS
@@ -150,7 +155,7 @@ func main() {
 
 	// Branch Bigtable cache
 	var branchTableName string
-	if *useBranchBt {
+	if *useBranchBigtable {
 		branchTableName, err = bigtable.ReadBranchTableName(ctx)
 		if err != nil {
 			log.Fatalf("Failed to read branch cache folder: %v", err)
@@ -173,6 +178,7 @@ func main() {
 		*bqDataset,
 		*schemaPath,
 		*remoteMixerDomain,
+		*foldRemoteRootSvg,
 	)
 	if err != nil {
 		log.Fatalf("Failed to create metadata: %v", err)
@@ -198,7 +204,6 @@ func main() {
 				UseSearch:           true,
 				BuildSvgSearchIndex: true,
 			},
-			*pinnedSvg,
 		)
 		if err != nil {
 			log.Fatalf("Failed to create cache: %v", err)
@@ -216,7 +221,7 @@ func main() {
 	pbs.RegisterMixerServer(srv, mixerServer)
 
 	// Subscribe to branch cache update
-	if *useBranchBt {
+	if *useBranchBigtable {
 		err := mixerServer.SubscribeBranchCacheUpdate(ctx)
 		if err != nil {
 			log.Fatalf("Failed to subscribe to branch cache update: %v", err)

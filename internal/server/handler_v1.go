@@ -16,10 +16,12 @@ package server
 
 import (
 	"context"
+	"sort"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"github.com/datacommonsorg/mixer/internal/server/recon"
+	"github.com/datacommonsorg/mixer/internal/server/statvar"
 	"github.com/datacommonsorg/mixer/internal/server/translator"
 	"github.com/datacommonsorg/mixer/internal/server/v1/event"
 	"github.com/datacommonsorg/mixer/internal/server/v1/info"
@@ -33,6 +35,8 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/v1/variable"
 	"github.com/datacommonsorg/mixer/internal/server/v1/variables"
 )
+
+const foldedSvgRoot = "dc/g/Folded_Root"
 
 // QueryV1 implements API for Mixer.Query.
 func (s *Server) QueryV1(
@@ -156,19 +160,43 @@ func (s *Server) BulkVariableInfo(
 	if err != nil {
 		return nil, err
 	}
-	if len(localResp.GetData()) == 0 && s.metadata.RemoteMixerDomain != "" {
-		remoteResp := &pbv1.BulkVariableInfoResponse{}
-		if err := fetchRemote(
-			s.metadata,
-			s.httpClient,
-			"/v1/bulk/info/variable",
-			in,
-			remoteResp); err != nil {
-			return nil, err
-		}
-		return remoteResp, nil
+	keyedInfo := map[string]*pbv1.VariableInfoResponse{}
+	for _, item := range localResp.Data {
+		keyedInfo[item.GetNode()] = item
 	}
-	return localResp, nil
+	if s.metadata.RemoteMixerDomain != "" {
+		in.Nodes = []string{}
+		for _, item := range localResp.Data {
+			if item.Info == nil {
+				in.Nodes = append(in.Nodes, item.Node)
+			}
+		}
+		if len(in.Nodes) > 0 {
+			remoteResp := &pbv1.BulkVariableInfoResponse{}
+			if err := fetchRemote(
+				s.metadata,
+				s.httpClient,
+				"/v1/bulk/info/variable",
+				in,
+				remoteResp,
+			); err != nil {
+				return nil, err
+			}
+			for _, item := range remoteResp.Data {
+				keyedInfo[item.GetNode()] = item
+			}
+		}
+	}
+	result := &pbv1.BulkVariableInfoResponse{
+		Data: []*pbv1.VariableInfoResponse{},
+	}
+	for _, item := range keyedInfo {
+		result.Data = append(result.Data, item)
+	}
+	sort.Slice(result.Data, func(i, j int) bool {
+		return result.Data[i].Node < result.Data[j].Node
+	})
+	return result, nil
 }
 
 // VariableGroupInfo implements API for mixer.VariableGroupInfo.
@@ -186,19 +214,73 @@ func (s *Server) BulkVariableGroupInfo(
 	if err != nil {
 		return nil, err
 	}
-	if len(localResp.GetData()) == 0 && s.metadata.RemoteMixerDomain != "" {
+	keyedInfo := map[string]*pbv1.VariableGroupInfoResponse{}
+	for _, item := range localResp.Data {
+		keyedInfo[item.GetNode()] = item
+	}
+	if s.metadata.RemoteMixerDomain != "" {
+		queryFoldedRoot := false
+		for i := range in.Nodes {
+			if in.Nodes[i] == foldedSvgRoot {
+				queryFoldedRoot = true
+				in.Nodes[i] = statvar.SvgRoot
+				break
+			}
+		}
 		remoteResp := &pbv1.BulkVariableGroupInfoResponse{}
 		if err := fetchRemote(
 			s.metadata,
 			s.httpClient,
 			"/v1/bulk/info/variable-group",
 			in,
-			remoteResp); err != nil {
+			remoteResp,
+		); err != nil {
 			return nil, err
 		}
-		return remoteResp, nil
+
+		for _, item := range remoteResp.Data {
+			n := item.GetNode()
+			if s.metadata.FoldRemoteRootSvg && n == statvar.SvgRoot {
+				if queryFoldedRoot {
+					n = foldedSvgRoot
+				} else {
+					// Modify item
+					item.Info.ChildStatVarGroups = []*pb.StatVarGroupNode_ChildSVG{
+						{
+							Id:                     foldedSvgRoot,
+							DescendentStatVarCount: item.Info.DescendentStatVarCount,
+							SpecializedEntity:      "Google",
+						},
+					}
+				}
+			}
+			if _, ok := keyedInfo[n]; ok {
+				keyedInfo[n].Info.ChildStatVarGroups = append(
+					keyedInfo[n].Info.ChildStatVarGroups,
+					item.Info.ChildStatVarGroups...,
+				)
+				if s.metadata.FoldRemoteRootSvg && n == statvar.SvgRoot {
+					for _, item := range keyedInfo[n].Info.ChildStatVarGroups {
+						item.SpecializedEntity = "Imported by " + item.SpecializedEntity
+					}
+				}
+				keyedInfo[n].Info.ChildStatVars = append(
+					keyedInfo[n].Info.ChildStatVars,
+					item.Info.ChildStatVars...,
+				)
+				keyedInfo[n].Info.DescendentStatVarCount += item.Info.DescendentStatVarCount
+			} else {
+				keyedInfo[n] = item
+			}
+		}
 	}
-	return localResp, nil
+	result := &pbv1.BulkVariableGroupInfoResponse{
+		Data: []*pbv1.VariableGroupInfoResponse{},
+	}
+	for _, item := range keyedInfo {
+		result.Data = append(result.Data, item)
+	}
+	return result, nil
 }
 
 // ObservationsPoint implements API for mixer.ObservationsPoint.
@@ -265,22 +347,21 @@ func (s *Server) BioPage(
 }
 
 // PlacePage implements API for mixer.PlacePage.
-func (s *Server) PlacePage(
-	ctx context.Context, in *pbv1.PlacePageRequest,
-) (*pbv1.PlacePageResponse, error) {
+func (s *Server) PlacePage(ctx context.Context, in *pbv1.PlacePageRequest) (
+	*pbv1.PlacePageResponse, error) {
 	localResp, err := page.PlacePage(ctx, in, s.store)
 	if err != nil {
 		return nil, err
 	}
-	if len(localResp.GetStatVarSeries()) == 0 &&
-		s.metadata.RemoteMixerDomain != "" {
+	if len(localResp.GetStatVarSeries()) == 0 && s.metadata.RemoteMixerDomain != "" {
 		remoteResp := &pbv1.PlacePageResponse{}
 		if err := fetchRemote(
 			s.metadata,
 			s.httpClient,
 			"/v1/internal/page/place",
 			in,
-			remoteResp); err != nil {
+			remoteResp,
+		); err != nil {
 			return nil, err
 		}
 		return remoteResp, nil
@@ -292,7 +373,27 @@ func (s *Server) PlacePage(
 func (s *Server) VariableAncestors(
 	ctx context.Context, in *pbv1.VariableAncestorsRequest,
 ) (*pbv1.VariableAncestorsResponse, error) {
-	return variable.Ancestors(ctx, in, s.store, s.cache)
+	localResp, err := variable.Ancestors(ctx, in, s.store, s.cache)
+	if err != nil {
+		return nil, err
+	}
+	if len(localResp.Ancestors) == 0 && s.metadata.RemoteMixerDomain != "" {
+		remoteResp := &pbv1.VariableAncestorsResponse{}
+		if err := fetchRemote(
+			s.metadata,
+			s.httpClient,
+			"/v1/variable/ancestors",
+			in,
+			remoteResp,
+		); err != nil {
+			return nil, err
+		}
+		if s.metadata.FoldRemoteRootSvg {
+			remoteResp.Ancestors = append(remoteResp.Ancestors, foldedSvgRoot)
+		}
+		return remoteResp, nil
+	}
+	return localResp, nil
 }
 
 // DerivedObservationsSeries implements API for mixer.ObservationsSeries.
