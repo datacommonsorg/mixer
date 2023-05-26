@@ -96,7 +96,9 @@ spec:
             - --tmcf_csv_folder={{ $.Values.mixer.tmcfCSVFolder }}
             {{- end }}
             - --use_search={{ default false $group.useSearch }}
-            - --pinned_svg={{ $.Values.mixer.pinnedSvg }}
+            {{- if eq $.Values.mixer.foldRemoteRootSvg true -}}
+            - --fold_remote_root_svg=true
+            {{- end }}
           volumeMounts:
             - name: schema-mapping
               mountPath: /datacommons/mapping

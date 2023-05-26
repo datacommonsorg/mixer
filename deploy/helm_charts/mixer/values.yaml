@@ -37,6 +37,7 @@ mixer:
   hostProject:
   githash:
 
+  foldRemoteRootSvg: false
   useTMCFCSVData: false
   # Name of the GCS bucket without scheme.
   # Example: datcom-public
