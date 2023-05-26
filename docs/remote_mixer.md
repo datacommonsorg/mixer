@@ -41,7 +41,7 @@ go run cmd/main.go     \
 --schema_path=$PWD/deploy/mapping/  \
 --use_branch_bigtable=false   \
 --use_base_bigtable=false  \
---remote_mixer_domain=https://autopush.api.datacommons.org \
+--remote_mixer_domain=http://127.0.0.1:9091 \
 --use_custom_bigtable=true \
 --fold_remote_root_svg=true
 ```
