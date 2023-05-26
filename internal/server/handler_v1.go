@@ -16,6 +16,7 @@ package server
 
 import (
 	"context"
+	"sort"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
@@ -192,6 +193,9 @@ func (s *Server) BulkVariableInfo(
 	for _, item := range keyedInfo {
 		result.Data = append(result.Data, item)
 	}
+	sort.Slice(result.Data, func(i, j int) bool {
+		return result.Data[i].Node < result.Data[j].Node
+	})
 	return result, nil
 }
 
