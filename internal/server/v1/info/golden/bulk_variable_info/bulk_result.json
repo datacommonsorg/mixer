@@ -1,6 +1,266 @@
 {
   "data": [
     {
+      "node": "FertilityRate_Person_Female",
+      "info": {
+        "placeTypeSummary": {
+          "City": {
+            "placeCount": 140,
+            "topPlaces": [
+              {
+                "dcid": "nuts/DE3",
+                "name": "Berlin"
+              },
+              {
+                "dcid": "nuts/FR101",
+                "name": "Paris"
+              },
+              {
+                "dcid": "nuts/AT13",
+                "name": "Vienna"
+              }
+            ],
+            "minValue": 1.07,
+            "maxValue": 2.7
+          },
+          "Country": {
+            "placeCount": 210,
+            "topPlaces": [
+              {
+                "dcid": "country/CHN",
+                "name": "China"
+              },
+              {
+                "dcid": "country/IND",
+                "name": "India"
+              },
+              {
+                "dcid": "country/USA",
+                "name": "United States"
+              }
+            ],
+            "minValue": 0.792,
+            "maxValue": 8.864
+          },
+          "EurostatNUTS1": {
+            "placeCount": 123,
+            "topPlaces": [
+              {
+                "dcid": "nuts/DEA",
+                "name": "Nordrhein-Westfalen"
+              },
+              {
+                "dcid": "nuts/ITC",
+                "name": "Nord-Ovest"
+              },
+              {
+                "dcid": "nuts/TR1",
+                "name": "Istanbul"
+              }
+            ],
+            "minValue": 0.95,
+            "maxValue": 3.59
+          },
+          "EurostatNUTS2": {
+            "placeCount": 328,
+            "topPlaces": [
+              {
+                "dcid": "nuts/TR10",
+                "name": "Istanbul"
+              },
+              {
+                "dcid": "nuts/FR10",
+                "name": "Ile-de-France"
+              },
+              {
+                "dcid": "nuts/ITC4",
+                "name": "Lombardia"
+              }
+            ],
+            "minValue": 0.95,
+            "maxValue": 4.9
+          },
+          "EurostatNUTS3": {
+            "placeCount": 1390,
+            "topPlaces": [
+              {
+                "dcid": "nuts/TR100",
+                "name": "Istanbul"
+              },
+              {
+                "dcid": "nuts/ES300",
+                "name": "Madrid"
+              },
+              {
+                "dcid": "nuts/ES511",
+                "name": "Barcelona"
+              }
+            ],
+            "minValue": 0.78,
+            "maxValue": 4.9
+          },
+          "Place": {
+            "placeCount": 1,
+            "topPlaces": [
+              {
+                "dcid": "Earth",
+                "name": "Earth"
+              }
+            ],
+            "minValue": 2.29902994764743,
+            "maxValue": 5.33228884884454
+          }
+        },
+        "provenanceSummary": {
+          "dc/base/EurostatData": {
+            "importName": "EurostatData",
+            "releaseFrequency": "P1Y",
+            "seriesSummary": [
+              {
+                "seriesKey": {
+                  "measurementMethod": "EurostatRegionalStatistics"
+                },
+                "earliestDate": "2013",
+                "latestDate": "2018",
+                "placeTypeSummary": {
+                  "City": {
+                    "placeCount": 140,
+                    "topPlaces": [
+                      {
+                        "dcid": "nuts/DE3",
+                        "name": "Berlin"
+                      },
+                      {
+                        "dcid": "nuts/FR101",
+                        "name": "Paris"
+                      },
+                      {
+                        "dcid": "nuts/AT13",
+                        "name": "Vienna"
+                      }
+                    ],
+                    "minValue": 1.07,
+                    "maxValue": 2.7
+                  },
+                  "EurostatNUTS1": {
+                    "placeCount": 123,
+                    "topPlaces": [
+                      {
+                        "dcid": "nuts/DEA",
+                        "name": "Nordrhein-Westfalen"
+                      },
+                      {
+                        "dcid": "nuts/ITC",
+                        "name": "Nord-Ovest"
+                      },
+                      {
+                        "dcid": "nuts/TR1",
+                        "name": "Istanbul"
+                      }
+                    ],
+                    "minValue": 0.95,
+                    "maxValue": 3.59
+                  },
+                  "EurostatNUTS2": {
+                    "placeCount": 328,
+                    "topPlaces": [
+                      {
+                        "dcid": "nuts/TR10",
+                        "name": "Istanbul"
+                      },
+                      {
+                        "dcid": "nuts/FR10",
+                        "name": "Ile-de-France"
+                      },
+                      {
+                        "dcid": "nuts/ITC4",
+                        "name": "Lombardia"
+                      }
+                    ],
+                    "minValue": 0.95,
+                    "maxValue": 4.9
+                  },
+                  "EurostatNUTS3": {
+                    "placeCount": 1390,
+                    "topPlaces": [
+                      {
+                        "dcid": "nuts/TR100",
+                        "name": "Istanbul"
+                      },
+                      {
+                        "dcid": "nuts/ES300",
+                        "name": "Madrid"
+                      },
+                      {
+                        "dcid": "nuts/ES511",
+                        "name": "Barcelona"
+                      }
+                    ],
+                    "minValue": 0.78,
+                    "maxValue": 4.9
+                  }
+                },
+                "minValue": 0.78,
+                "maxValue": 4.9,
+                "observationCount": 10106,
+                "timeSeriesCount": 1981
+              }
+            ],
+            "observationCount": 10106,
+            "timeSeriesCount": 1981
+          },
+          "dc/base/WorldDevelopmentIndicators": {
+            "importName": "WorldDevelopmentIndicators",
+            "seriesSummary": [
+              {
+                "seriesKey": {},
+                "earliestDate": "1960",
+                "latestDate": "2020",
+                "placeTypeSummary": {
+                  "Country": {
+                    "placeCount": 210,
+                    "topPlaces": [
+                      {
+                        "dcid": "country/CHN",
+                        "name": "China"
+                      },
+                      {
+                        "dcid": "country/IND",
+                        "name": "India"
+                      },
+                      {
+                        "dcid": "country/USA",
+                        "name": "United States"
+                      }
+                    ],
+                    "minValue": 0.792,
+                    "maxValue": 8.864
+                  },
+                  "Place": {
+                    "placeCount": 1,
+                    "topPlaces": [
+                      {
+                        "dcid": "Earth",
+                        "name": "Earth"
+                      }
+                    ],
+                    "minValue": 2.29902994764743,
+                    "maxValue": 5.33228884884454
+                  }
+                },
+                "minValue": 0.792,
+                "maxValue": 8.864,
+                "observationCount": 12232,
+                "timeSeriesCount": 211
+              }
+            ],
+            "observationCount": 12232,
+            "timeSeriesCount": 211
+          }
+        }
+      }
+    },
+    {
       "node": "Count_Person_Female",
       "info": {
         "placeTypeSummary": {
@@ -1806,266 +2066,6 @@
             ],
             "observationCount": 165806,
             "timeSeriesCount": 3197
-          }
-        }
-      }
-    },
-    {
-      "node": "FertilityRate_Person_Female",
-      "info": {
-        "placeTypeSummary": {
-          "City": {
-            "placeCount": 140,
-            "topPlaces": [
-              {
-                "dcid": "nuts/DE3",
-                "name": "Berlin"
-              },
-              {
-                "dcid": "nuts/FR101",
-                "name": "Paris"
-              },
-              {
-                "dcid": "nuts/AT13",
-                "name": "Vienna"
-              }
-            ],
-            "minValue": 1.07,
-            "maxValue": 2.7
-          },
-          "Country": {
-            "placeCount": 210,
-            "topPlaces": [
-              {
-                "dcid": "country/CHN",
-                "name": "China"
-              },
-              {
-                "dcid": "country/IND",
-                "name": "India"
-              },
-              {
-                "dcid": "country/USA",
-                "name": "United States"
-              }
-            ],
-            "minValue": 0.792,
-            "maxValue": 8.864
-          },
-          "EurostatNUTS1": {
-            "placeCount": 123,
-            "topPlaces": [
-              {
-                "dcid": "nuts/DEA",
-                "name": "Nordrhein-Westfalen"
-              },
-              {
-                "dcid": "nuts/ITC",
-                "name": "Nord-Ovest"
-              },
-              {
-                "dcid": "nuts/TR1",
-                "name": "Istanbul"
-              }
-            ],
-            "minValue": 0.95,
-            "maxValue": 3.59
-          },
-          "EurostatNUTS2": {
-            "placeCount": 328,
-            "topPlaces": [
-              {
-                "dcid": "nuts/TR10",
-                "name": "Istanbul"
-              },
-              {
-                "dcid": "nuts/FR10",
-                "name": "Ile-de-France"
-              },
-              {
-                "dcid": "nuts/ITC4",
-                "name": "Lombardia"
-              }
-            ],
-            "minValue": 0.95,
-            "maxValue": 4.9
-          },
-          "EurostatNUTS3": {
-            "placeCount": 1390,
-            "topPlaces": [
-              {
-                "dcid": "nuts/TR100",
-                "name": "Istanbul"
-              },
-              {
-                "dcid": "nuts/ES300",
-                "name": "Madrid"
-              },
-              {
-                "dcid": "nuts/ES511",
-                "name": "Barcelona"
-              }
-            ],
-            "minValue": 0.78,
-            "maxValue": 4.9
-          },
-          "Place": {
-            "placeCount": 1,
-            "topPlaces": [
-              {
-                "dcid": "Earth",
-                "name": "Earth"
-              }
-            ],
-            "minValue": 2.29902994764743,
-            "maxValue": 5.33228884884454
-          }
-        },
-        "provenanceSummary": {
-          "dc/base/EurostatData": {
-            "importName": "EurostatData",
-            "releaseFrequency": "P1Y",
-            "seriesSummary": [
-              {
-                "seriesKey": {
-                  "measurementMethod": "EurostatRegionalStatistics"
-                },
-                "earliestDate": "2013",
-                "latestDate": "2018",
-                "placeTypeSummary": {
-                  "City": {
-                    "placeCount": 140,
-                    "topPlaces": [
-                      {
-                        "dcid": "nuts/DE3",
-                        "name": "Berlin"
-                      },
-                      {
-                        "dcid": "nuts/FR101",
-                        "name": "Paris"
-                      },
-                      {
-                        "dcid": "nuts/AT13",
-                        "name": "Vienna"
-                      }
-                    ],
-                    "minValue": 1.07,
-                    "maxValue": 2.7
-                  },
-                  "EurostatNUTS1": {
-                    "placeCount": 123,
-                    "topPlaces": [
-                      {
-                        "dcid": "nuts/DEA",
-                        "name": "Nordrhein-Westfalen"
-                      },
-                      {
-                        "dcid": "nuts/ITC",
-                        "name": "Nord-Ovest"
-                      },
-                      {
-                        "dcid": "nuts/TR1",
-                        "name": "Istanbul"
-                      }
-                    ],
-                    "minValue": 0.95,
-                    "maxValue": 3.59
-                  },
-                  "EurostatNUTS2": {
-                    "placeCount": 328,
-                    "topPlaces": [
-                      {
-                        "dcid": "nuts/TR10",
-                        "name": "Istanbul"
-                      },
-                      {
-                        "dcid": "nuts/FR10",
-                        "name": "Ile-de-France"
-                      },
-                      {
-                        "dcid": "nuts/ITC4",
-                        "name": "Lombardia"
-                      }
-                    ],
-                    "minValue": 0.95,
-                    "maxValue": 4.9
-                  },
-                  "EurostatNUTS3": {
-                    "placeCount": 1390,
-                    "topPlaces": [
-                      {
-                        "dcid": "nuts/TR100",
-                        "name": "Istanbul"
-                      },
-                      {
-                        "dcid": "nuts/ES300",
-                        "name": "Madrid"
-                      },
-                      {
-                        "dcid": "nuts/ES511",
-                        "name": "Barcelona"
-                      }
-                    ],
-                    "minValue": 0.78,
-                    "maxValue": 4.9
-                  }
-                },
-                "minValue": 0.78,
-                "maxValue": 4.9,
-                "observationCount": 10106,
-                "timeSeriesCount": 1981
-              }
-            ],
-            "observationCount": 10106,
-            "timeSeriesCount": 1981
-          },
-          "dc/base/WorldDevelopmentIndicators": {
-            "importName": "WorldDevelopmentIndicators",
-            "seriesSummary": [
-              {
-                "seriesKey": {},
-                "earliestDate": "1960",
-                "latestDate": "2020",
-                "placeTypeSummary": {
-                  "Country": {
-                    "placeCount": 210,
-                    "topPlaces": [
-                      {
-                        "dcid": "country/CHN",
-                        "name": "China"
-                      },
-                      {
-                        "dcid": "country/IND",
-                        "name": "India"
-                      },
-                      {
-                        "dcid": "country/USA",
-                        "name": "United States"
-                      }
-                    ],
-                    "minValue": 0.792,
-                    "maxValue": 8.864
-                  },
-                  "Place": {
-                    "placeCount": 1,
-                    "topPlaces": [
-                      {
-                        "dcid": "Earth",
-                        "name": "Earth"
-                      }
-                    ],
-                    "minValue": 2.29902994764743,
-                    "maxValue": 5.33228884884454
-                  }
-                },
-                "minValue": 0.792,
-                "maxValue": 8.864,
-                "observationCount": 12232,
-                "timeSeriesCount": 211
-              }
-            ],
-            "observationCount": 12232,
-            "timeSeriesCount": 211
           }
         }
       }
