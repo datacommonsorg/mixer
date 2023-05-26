@@ -2,6 +2,7 @@
 mixer:
   hostProject: datcom-mixer-dev-316822
   serviceName: dev.api.datacommons.org
+  remoteMixerDomain: "https://api.datacommons.org"
 
 ingress:
   enabled: true
