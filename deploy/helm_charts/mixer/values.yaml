@@ -37,6 +37,9 @@ mixer:
   hostProject:
   githash:
 
+  useBaseBigtable: true
+  useBranchBigtable: true
+  useCustomBigtable: false
   foldRemoteRootSvg: false
   useTMCFCSVData: false
   # Name of the GCS bucket without scheme.
