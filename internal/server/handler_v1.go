@@ -305,8 +305,8 @@ func (s *Server) BulkVariableGroupInfo(
 	result := &pbv1.BulkVariableGroupInfoResponse{
 		Data: []*pbv1.VariableGroupInfoResponse{},
 	}
-	for _, item := range keyedInfo {
-		result.Data = append(result.Data, item)
+	for _, node := range in.GetNodes() {
+		result.Data = append(result.Data, keyedInfo[node])
 	}
 	return result, nil
 }
