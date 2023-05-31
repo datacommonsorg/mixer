@@ -40,7 +40,6 @@ func RemoveSvg(
 	if node, ok := svgNodeMap[svg]; ok {
 		for _, child := range node.ChildStatVarGroups {
 			RemoveSvg(svgNodeMap, parentSvgMap, child.Id)
-			delete(svgNodeMap, child.Id)
 		}
 	}
 	for _, parent := range parentSvgMap[svg] {

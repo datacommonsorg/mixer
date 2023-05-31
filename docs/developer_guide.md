@@ -64,6 +64,7 @@ go run cmd/main.go \
     --custom_bigtable_info="$(cat test/custom_bigtable_info.yaml)" \
     --schema_path=$PWD/deploy/mapping/ \
     --use_base_bigtable=true \
+    --use_custom_bigtable=true \
     --use_branch_bigtable=false
 
 go run examples/main.go
