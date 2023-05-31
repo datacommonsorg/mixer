@@ -305,9 +305,12 @@ func (s *Server) BulkVariableGroupInfo(
 	result := &pbv1.BulkVariableGroupInfoResponse{
 		Data: []*pbv1.VariableGroupInfoResponse{},
 	}
-	for _, node := range in.GetNodes() {
-		result.Data = append(result.Data, keyedInfo[node])
+	for _, node := range keyedInfo {
+		result.Data = append(result.Data, node)
 	}
+	sort.SliceStable(result.Data, func(i, j int) bool {
+		return result.Data[i].Node < result.Data[j].Node
+	})
 	return result, nil
 }
 
