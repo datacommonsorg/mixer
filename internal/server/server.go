@@ -173,29 +173,34 @@ func NewCache(
 	store *store.Store,
 	searchOptions SearchOptions,
 ) (*resource.Cache, error) {
+	var blocklistSvg []string
+	// Read blocklisted svg from file.
+	file, err := os.ReadFile("/tmp/datacommons/svg/blocklist_svg.json")
+	if err != nil {
+		log.Printf("Could not read blocklist svg file. Using empty blocklist svg list.")
+		blocklistSvg = []string{}
+	} else {
+		if err := json.Unmarshal(file, &blocklistSvg); err != nil {
+			log.Printf("Could not unmarshal blocklist svg file. Using empty blocklist svg list.")
+			blocklistSvg = []string{}
+		}
+	}
 	rawSvg, err := statvar.GetRawSvg(ctx, store)
 	if err != nil {
 		return nil, err
 	}
 	parentSvgMap := statvar.BuildParentSvgMap(rawSvg)
 	result := &resource.Cache{
-		RawSvg:    rawSvg,
-		ParentSvg: parentSvgMap,
+		RawSvg:       rawSvg,
+		ParentSvg:    parentSvgMap,
+		BlockListSvg: map[string]struct{}{},
+	}
+	for _, svg := range blocklistSvg {
+		statvar.RemoveSvg(rawSvg, parentSvgMap, svg)
+		result.BlockListSvg[svg] = struct{}{}
 	}
 	if searchOptions.UseSearch {
 		if searchOptions.BuildSvgSearchIndex {
-			var blocklistSvg []string
-			// Read blocklisted svg from file.
-			file, err := os.ReadFile("/datacommons/svg/blocklist_svg.json")
-			if err != nil {
-				log.Printf("Could not read blocklist svg file. Using empty blocklist svg list.")
-				blocklistSvg = []string{}
-			} else {
-				if err := json.Unmarshal(file, &blocklistSvg); err != nil {
-					log.Printf("Could not unmarshal blocklist svg file. Using empty blocklist svg list.")
-					blocklistSvg = []string{}
-				}
-			}
 			result.SvgSearchIndex = statvar.BuildStatVarSearchIndex(rawSvg, parentSvgMap, blocklistSvg)
 		}
 	}
