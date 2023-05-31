@@ -218,7 +218,6 @@ func (s *Server) BulkVariableGroupInfo(
 	for _, item := range localResp.Data {
 		keyedInfo[item.GetNode()] = item
 	}
-	respNodes := []string{}
 	if s.metadata.RemoteMixerDomain != "" {
 		queryFoldedRoot := false
 		for i := range in.Nodes {
@@ -301,15 +300,17 @@ func (s *Server) BulkVariableGroupInfo(
 				keyedInfo[n].Info.DescendentStatVarCount = 0
 			}
 			keyedInfo[n].Info.ChildStatVarGroups = childSvg
-			respNodes = append(respNodes, n)
 		}
 	}
 	result := &pbv1.BulkVariableGroupInfoResponse{
 		Data: []*pbv1.VariableGroupInfoResponse{},
 	}
-	for _, node := range respNodes {
-		result.Data = append(result.Data, keyedInfo[node])
+	for _, node := range keyedInfo {
+		result.Data = append(result.Data, node)
 	}
+	sort.SliceStable(result.Data, func(i, j int) bool {
+		return result.Data[i].Node < result.Data[j].Node
+	})
 	return result, nil
 }
 
