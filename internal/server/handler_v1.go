@@ -244,18 +244,26 @@ func (s *Server) BulkVariableGroupInfo(
 				if queryFoldedRoot {
 					n = foldedSvgRoot
 				} else {
-					// When query the folded root, make an intermediate node than fold
-					// all the top level svg in it.
+					// When query the root, make a folded node that folds all the
+					// top level svg in it.
+					//
+					// For example, dc/g/Root has two children svg: dc/g/Root_1,
+					// dc/g/Root_2. Here adds dc/g/Folded_Root as an intermediate node,
+					// then we have:
+					// dc/g/Root -> dc/g/Folded_root -> [dc/g/Root_1, dc/g/Root_2]
 					foldedSvg := &pb.StatVarGroupNode_ChildSVG{
 						Id:                     foldedSvgRoot,
 						DescendentStatVarCount: remoteItem.Info.DescendentStatVarCount,
 						SpecializedEntity:      "Google",
 					}
-					// Decrease the count from bloc list svg.
+					// Decrease the count from block list svg.
 					for _, child := range remoteItem.Info.ChildStatVarGroups {
 						if _, ok := s.cache.BlockListSvg[child.Id]; ok {
 							foldedSvg.DescendentStatVarCount -= child.DescendentStatVarCount
 						}
+					}
+					if foldedSvg.DescendentStatVarCount < 0 {
+						foldedSvg.DescendentStatVarCount = 0
 					}
 					remoteItem.Info.ChildStatVarGroups = []*pb.StatVarGroupNode_ChildSVG{foldedSvg}
 				}
@@ -287,6 +295,9 @@ func (s *Server) BulkVariableGroupInfo(
 				} else {
 					childSvg = append(childSvg, child)
 				}
+			}
+			if keyedInfo[n].Info.DescendentStatVarCount < 0 {
+				keyedInfo[n].Info.DescendentStatVarCount = 0
 			}
 			keyedInfo[n].Info.ChildStatVarGroups = childSvg
 		}

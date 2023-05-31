@@ -21,6 +21,8 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/go-test/deep"
 	"github.com/google/go-cmp/cmp"
+	"google.golang.org/protobuf/proto"
+	"google.golang.org/protobuf/testing/protocmp"
 )
 
 func TestGetParentMapping(t *testing.T) {
@@ -78,6 +80,126 @@ func TestGetParentMapping(t *testing.T) {
 		got := BuildParentSvgMap(c.input)
 		if diff := cmp.Diff(got, c.want); diff != "" {
 			t.Errorf("GetParentSvgMap got diff %v", diff)
+		}
+	}
+}
+
+func TestRemoveSvg(t *testing.T) {
+	raw := map[string]*pb.StatVarGroupNode{
+		"dc/g/Root": {
+			ChildStatVarGroups: []*pb.StatVarGroupNode_ChildSVG{
+				{Id: "svgX"},
+				{Id: "svgY"},
+				{Id: "svgW"},
+			},
+		},
+		"svgX": {
+			ChildStatVarGroups: []*pb.StatVarGroupNode_ChildSVG{
+				{Id: "svgY"},
+				{Id: "svgZ"},
+			},
+		},
+		"svgY": {
+			ChildStatVarGroups: []*pb.StatVarGroupNode_ChildSVG{
+				{Id: "svgZ"},
+			},
+			ChildStatVars: []*pb.StatVarGroupNode_ChildSV{
+				{
+					Id:          "sv1",
+					SearchNames: []string{"Name 1", "Name 1"},
+				},
+			},
+		},
+		"svgZ": {
+			ChildStatVars: []*pb.StatVarGroupNode_ChildSV{
+				{
+					Id:          "sv1",
+					SearchNames: []string{"Name 1"},
+				},
+				{
+					Id:          "sv2",
+					SearchNames: []string{"Name 2"},
+				},
+			},
+		},
+		"svgW": {
+			ChildStatVarGroups: []*pb.StatVarGroupNode_ChildSVG{
+				{Id: "svgW1"},
+				{Id: "svgW2"},
+			},
+		},
+	}
+	parent := BuildParentSvgMap(raw)
+	for _, c := range []struct {
+		svg  string
+		want map[string]*pb.StatVarGroupNode
+	}{
+		{
+			"svgW",
+			map[string]*pb.StatVarGroupNode{
+				"dc/g/Root": {
+					ChildStatVarGroups: []*pb.StatVarGroupNode_ChildSVG{
+						{Id: "svgX"},
+						{Id: "svgY"},
+					},
+				},
+				"svgX": {
+					ChildStatVarGroups: []*pb.StatVarGroupNode_ChildSVG{
+						{Id: "svgY"},
+						{Id: "svgZ"},
+					},
+				},
+				"svgY": {
+					ChildStatVarGroups: []*pb.StatVarGroupNode_ChildSVG{
+						{Id: "svgZ"},
+					},
+					ChildStatVars: []*pb.StatVarGroupNode_ChildSV{
+						{
+							Id:          "sv1",
+							SearchNames: []string{"Name 1", "Name 1"},
+						},
+					},
+				},
+				"svgZ": {
+					ChildStatVars: []*pb.StatVarGroupNode_ChildSV{
+						{
+							Id:          "sv1",
+							SearchNames: []string{"Name 1"},
+						},
+						{
+							Id:          "sv2",
+							SearchNames: []string{"Name 2"},
+						},
+					},
+				},
+			},
+		},
+		{
+			"svgY",
+			map[string]*pb.StatVarGroupNode{
+				"dc/g/Root": {
+					ChildStatVarGroups: []*pb.StatVarGroupNode_ChildSVG{
+						{Id: "svgX"},
+						{Id: "svgW"},
+					},
+				},
+				"svgX": {},
+				"svgW": {
+					ChildStatVarGroups: []*pb.StatVarGroupNode_ChildSVG{
+						{Id: "svgW1"},
+						{Id: "svgW2"},
+					},
+				},
+			},
+		},
+	} {
+		input := map[string]*pb.StatVarGroupNode{}
+		for svg, node := range raw {
+			input[svg] = proto.Clone(node).(*pb.StatVarGroupNode)
+		}
+		RemoveSvg(input, parent, c.svg)
+		if diff := cmp.Diff(input, c.want, protocmp.Transform()); diff != "" {
+			t.Errorf("RemoveSvg got diff %v", diff)
 		}
 	}
 }

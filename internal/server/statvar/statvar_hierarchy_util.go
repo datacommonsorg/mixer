@@ -54,6 +54,7 @@ func RemoveSvg(
 			node.ChildStatVarGroups = children
 		}
 	}
+	delete(svgNodeMap, svg)
 }
 
 // GetRawSvg gets the raw svg mapping.

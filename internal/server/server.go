@@ -40,6 +40,11 @@ import (
 	"googlemaps.github.io/maps"
 )
 
+const (
+	mixerApiSecret       = "mixer-api-key"
+	blockListSvgJsonPath = "/datacommons/svg/blocklist_svg.json"
+)
+
 func readLatestSecret(projectID, secretID string) (string, error) {
 	// Create the context and the client.
 	ctx := context.Background()
@@ -125,7 +130,7 @@ func NewMetadata(
 
 	var apiKey string
 	if remoteMixerDomain != "" {
-		apiKey, err = readLatestSecret(hostProject, "mixer-api-key")
+		apiKey, err = readLatestSecret(hostProject, mixerApiSecret)
 		if err != nil {
 			return nil, err
 		}
@@ -175,7 +180,7 @@ func NewCache(
 ) (*resource.Cache, error) {
 	var blocklistSvg []string
 	// Read blocklisted svg from file.
-	file, err := os.ReadFile("/tmp/datacommons/svg/blocklist_svg.json")
+	file, err := os.ReadFile(blockListSvgJsonPath)
 	if err != nil {
 		log.Printf("Could not read blocklist svg file. Using empty blocklist svg list.")
 		blocklistSvg = []string{}
