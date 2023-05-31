@@ -238,26 +238,40 @@ func (s *Server) BulkVariableGroupInfo(
 			return nil, err
 		}
 
-		for _, item := range remoteResp.Data {
-			n := item.GetNode()
+		for _, remoteItem := range remoteResp.Data {
+			n := remoteItem.GetNode()
 			if s.metadata.FoldRemoteRootSvg && n == statvar.SvgRoot {
 				if queryFoldedRoot {
 					n = foldedSvgRoot
 				} else {
-					// Modify item
-					item.Info.ChildStatVarGroups = []*pb.StatVarGroupNode_ChildSVG{
-						{
-							Id:                     foldedSvgRoot,
-							DescendentStatVarCount: item.Info.DescendentStatVarCount,
-							SpecializedEntity:      "Google",
-						},
+					// When query the root, make a folded node that folds all the
+					// top level svg in it.
+					//
+					// For example, dc/g/Root has two children svg: dc/g/Root_1,
+					// dc/g/Root_2. Here adds dc/g/Folded_Root as an intermediate node,
+					// then we have:
+					// dc/g/Root -> dc/g/Folded_root -> [dc/g/Root_1, dc/g/Root_2]
+					foldedSvg := &pb.StatVarGroupNode_ChildSVG{
+						Id:                     foldedSvgRoot,
+						DescendentStatVarCount: remoteItem.Info.DescendentStatVarCount,
+						SpecializedEntity:      "Google",
 					}
+					// Decrease the count from block list svg.
+					for _, child := range remoteItem.Info.ChildStatVarGroups {
+						if _, ok := s.cache.BlockListSvg[child.Id]; ok {
+							foldedSvg.DescendentStatVarCount -= child.DescendentStatVarCount
+						}
+					}
+					if foldedSvg.DescendentStatVarCount < 0 {
+						foldedSvg.DescendentStatVarCount = 0
+					}
+					remoteItem.Info.ChildStatVarGroups = []*pb.StatVarGroupNode_ChildSVG{foldedSvg}
 				}
 			}
 			if _, ok := keyedInfo[n]; ok {
 				keyedInfo[n].Info.ChildStatVarGroups = append(
 					keyedInfo[n].Info.ChildStatVarGroups,
-					item.Info.ChildStatVarGroups...,
+					remoteItem.Info.ChildStatVarGroups...,
 				)
 				if s.metadata.FoldRemoteRootSvg && n == statvar.SvgRoot {
 					for _, item := range keyedInfo[n].Info.ChildStatVarGroups {
@@ -266,19 +280,33 @@ func (s *Server) BulkVariableGroupInfo(
 				}
 				keyedInfo[n].Info.ChildStatVars = append(
 					keyedInfo[n].Info.ChildStatVars,
-					item.Info.ChildStatVars...,
+					remoteItem.Info.ChildStatVars...,
 				)
-				keyedInfo[n].Info.DescendentStatVarCount += item.Info.DescendentStatVarCount
+				keyedInfo[n].Info.DescendentStatVarCount += remoteItem.Info.DescendentStatVarCount
 			} else {
-				keyedInfo[n] = item
+				keyedInfo[n] = remoteItem
 			}
+			// Remove all the block list svg from child svg.
+			childSvg := []*pb.StatVarGroupNode_ChildSVG{}
+			for _, child := range keyedInfo[n].Info.ChildStatVarGroups {
+				_, ok := s.cache.BlockListSvg[child.Id]
+				if ok {
+					keyedInfo[n].Info.DescendentStatVarCount -= child.DescendentStatVarCount
+				} else {
+					childSvg = append(childSvg, child)
+				}
+			}
+			if keyedInfo[n].Info.DescendentStatVarCount < 0 {
+				keyedInfo[n].Info.DescendentStatVarCount = 0
+			}
+			keyedInfo[n].Info.ChildStatVarGroups = childSvg
 		}
 	}
 	result := &pbv1.BulkVariableGroupInfoResponse{
 		Data: []*pbv1.VariableGroupInfoResponse{},
 	}
-	for _, item := range keyedInfo {
-		result.Data = append(result.Data, item)
+	for _, node := range in.GetNodes() {
+		result.Data = append(result.Data, keyedInfo[node])
 	}
 	return result, nil
 }

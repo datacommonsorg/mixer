@@ -31,6 +31,32 @@ import (
 	"github.com/datacommonsorg/mixer/internal/util"
 )
 
+// RemoveSvg removes the blocked svg from the in-memory entries.
+func RemoveSvg(
+	svgNodeMap map[string]*pb.StatVarGroupNode,
+	parentSvgMap map[string][]string,
+	svg string,
+) {
+	if node, ok := svgNodeMap[svg]; ok {
+		for _, child := range node.ChildStatVarGroups {
+			RemoveSvg(svgNodeMap, parentSvgMap, child.Id)
+			delete(svgNodeMap, child.Id)
+		}
+	}
+	for _, parent := range parentSvgMap[svg] {
+		if node, ok := svgNodeMap[parent]; ok {
+			children := []*pb.StatVarGroupNode_ChildSVG{}
+			for _, child := range node.ChildStatVarGroups {
+				if child.Id != svg {
+					children = append(children, child)
+				}
+			}
+			node.ChildStatVarGroups = children
+		}
+	}
+	delete(svgNodeMap, svg)
+}
+
 // GetRawSvg gets the raw svg mapping.
 func GetRawSvg(ctx context.Context, store *store.Store) (
 	map[string]*pb.StatVarGroupNode, error) {
