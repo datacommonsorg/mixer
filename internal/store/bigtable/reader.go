@@ -79,7 +79,24 @@ func Read(
 	action func([]byte) (interface{}, error),
 ) ([][]BtRow, error) {
 	accs := []*Accessor{}
-	for i := 0; i < len(btGroup.Tables()); i++ {
+	for i := 0; i < len(btGroup.Tables(nil)); i++ {
+		accs = append(accs, &Accessor{i, body})
+	}
+	return ReadWithGroupRowList(ctx, btGroup, prefix, accs, action)
+}
+
+// FilterRead reads BigTable rows from multiple Bigtable in parallel.
+// This will filter the table based on given function.
+func ReadWithFilter(
+	ctx context.Context,
+	btGroup *Group,
+	prefix string,
+	body [][]string,
+	action func([]byte) (interface{}, error),
+	filter func(*Table) bool,
+) ([][]BtRow, error) {
+	accs := []*Accessor{}
+	for i := 0; i < len(btGroup.Tables(filter)); i++ {
 		accs = append(accs, &Accessor{i, body})
 	}
 	return ReadWithGroupRowList(ctx, btGroup, prefix, accs, action)
@@ -97,7 +114,7 @@ func ReadWithGroupRowList(
 	accs []*Accessor,
 	unmarshalFunc func([]byte) (interface{}, error),
 ) ([][]BtRow, error) {
-	tables := btGroup.Tables()
+	tables := btGroup.Tables(nil)
 	if len(tables) == 0 {
 		// Custom DC could have no bigtable but read all data from remote mixer
 		return nil, nil

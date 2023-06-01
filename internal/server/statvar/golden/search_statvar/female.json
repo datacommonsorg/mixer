@@ -1247,6 +1247,34 @@
       ]
     },
     {
+      "dcid": "dc/g/MedicalConditionIncident_Gender-Female_MedicalCondition-Listeriosis_MedicalStatus",
+      "name": "Medical Condition Incident With Gender = Female, Medical Condition = Listeriosis, Medical Status",
+      "statVars": [
+        {
+          "name": "Count of Confirmed, Female Listeriosis incidents",
+          "dcid": "Count_MedicalConditionIncident_Female_ConditionListeriosis_ConfirmedCase"
+        },
+        {
+          "name": "Count of Probable, Female Listeriosis incidents",
+          "dcid": "Count_MedicalConditionIncident_Female_ConditionListeriosis_ProbableCase"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/MedicalConditionIncident_Gender-Female_MedicalCondition-LymeDisease_MedicalStatus",
+      "name": "Medical Condition Incident With Gender = Female, Medical Condition = Lyme Disease, Medical Status",
+      "statVars": [
+        {
+          "name": "Count of Confirmed, Female Lyme disease incidents",
+          "dcid": "Count_MedicalConditionIncident_Female_ConditionLymeDisease_ConfirmedCase"
+        },
+        {
+          "name": "Count of Probable, Female Lyme disease incidents",
+          "dcid": "Count_MedicalConditionIncident_Female_ConditionLymeDisease_ProbableCase"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/SDG_3.7.1",
       "name": "3.7.1: Proportion of women of reproductive age (aged 15-49 years) who have their need for family planning satisfied with modern methods",
       "statVars": [
@@ -4513,26 +4541,6 @@
         {
           "name": "Count of Invasive pneumococcal, Age \u003c5 years, Female pneumococcal disease incidents",
           "dcid": "Count_MedicalConditionIncident_5_LessYears_Female_ConditionStreptococcusPneumonia"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/MedicalConditionIncident_Gender-Female_MedicalCondition-Listeriosis_MedicalStatus",
-      "name": "Medical Condition Incident With Gender = Female, Medical Condition = Listeriosis, Medical Status",
-      "statVars": [
-        {
-          "name": "Count of Confirmed, Female Listeriosis incidents",
-          "dcid": "Count_MedicalConditionIncident_Female_ConditionListeriosis_ConfirmedCase"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/MedicalConditionIncident_Gender-Female_MedicalCondition-LymeDisease_MedicalStatus",
-      "name": "Medical Condition Incident With Gender = Female, Medical Condition = Lyme Disease, Medical Status",
-      "statVars": [
-        {
-          "name": "Count of Confirmed, Female Lyme disease incidents",
-          "dcid": "Count_MedicalConditionIncident_Female_ConditionLymeDisease_ConfirmedCase"
         }
       ]
     },

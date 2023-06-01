@@ -1,26 +1,4 @@
 {
-  "statVars": [
-    {
-      "name": "Annual payroll ($1,000): Accommodation and food services (2012 NAICS code); All establishments (Tax status code); All establishments (Type of operation code)",
-      "dcid": "data.census.gov/table/EC1200A1/variable/PAYANN__naics2012--72%%taxstat--00%%typop--00"
-    },
-    {
-      "name": "First-quarter payroll ($1,000): Accommodation and food services (2012 NAICS code); All establishments (Tax status code); All establishments (Type of operation code)",
-      "dcid": "data.census.gov/table/EC1200A1/variable/PAYQTR1__naics2012--72%%taxstat--00%%typop--00"
-    },
-    {
-      "name": "Number of employees: Accommodation and food services (2012 NAICS code); All establishments (Tax status code); All establishments (Type of operation code)",
-      "dcid": "data.census.gov/table/EC1200A1/variable/EMP__naics2012--72%%taxstat--00%%typop--00"
-    },
-    {
-      "name": "Number of establishments: Accommodation and food services (2012 NAICS code); All establishments (Tax status code); All establishments (Type of operation code)",
-      "dcid": "data.census.gov/table/EC1200A1/variable/ESTAB__naics2012--72%%taxstat--00%%typop--00"
-    },
-    {
-      "name": "Sales, value of shipments, or revenue ($1,000): Accommodation and food services (2012 NAICS code); All establishments (Tax status code); All establishments (Type of operation code)",
-      "dcid": "data.census.gov/table/EC1200A1/variable/RCPTOT__naics2012--72%%taxstat--00%%typop--00"
-    }
-  ],
   "statVarGroups": [
     {
       "dcid": "dc/g/Person_Industry-NAICS/7172_PlaceOfBirth",

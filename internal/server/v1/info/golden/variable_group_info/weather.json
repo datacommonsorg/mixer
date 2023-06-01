@@ -1,0 +1,509 @@
+{
+  "node": "dc/g/Weather",
+  "info": {
+    "absoluteName": "Weather",
+    "childStatVars": [
+      {
+        "id": "ConsecutiveDryDays",
+        "searchNames": [
+          "Consecutive Dry Days of Place"
+        ],
+        "displayName": "Consecutive Dry Days",
+        "definition": "mp=consecutiveDryDays,pt=Place",
+        "hasData": true
+      },
+      {
+        "id": "HeavyPrecipitationIndex",
+        "searchNames": [
+          "Heavy Precipitation Index of Place"
+        ],
+        "displayName": "Heavy Precipitation Index",
+        "definition": "mp=heavyPrecipitationIndex,pt=Place",
+        "hasData": true
+      },
+      {
+        "id": "Kurtosis_DailyMaxTemperature",
+        "searchNames": [
+          "Kurtosis Daily Max Temperature of Place"
+        ],
+        "displayName": "Kurtosis Daily Max Temperature",
+        "definition": "mq=Daily,st=kurtosisValue,mp=maxTemperature,pt=Place",
+        "hasData": true
+      },
+      {
+        "id": "Kurtosis_DailyMinTemperature",
+        "searchNames": [
+          "Kurtosis Daily Min Temperature of Place"
+        ],
+        "displayName": "Kurtosis Daily Min Temperature",
+        "definition": "mq=Daily,st=kurtosisValue,mp=minTemperature,pt=Place",
+        "hasData": true
+      },
+      {
+        "id": "Kurtosis_DailyPrecipitation",
+        "searchNames": [
+          "Kurtosis Daily Precipitation of Place"
+        ],
+        "displayName": "Kurtosis Daily Precipitation",
+        "definition": "mq=Daily,st=kurtosisValue,mp=precipitation,pt=Place",
+        "hasData": true
+      },
+      {
+        "id": "Max_BarometricPressure",
+        "searchNames": [
+          "Max Barometric Pressure of Place"
+        ],
+        "displayName": "Max Barometric Pressure",
+        "definition": "st=maxValue,mp=barometricPressure,pt=Place",
+        "hasData": true
+      },
+      {
+        "id": "Max_CloudCover",
+        "searchNames": [
+          "Max Cloud Cover of Place"
+        ],
+        "displayName": "Max Cloud Cover",
+        "definition": "st=maxValue,mp=cloudCover,pt=Place",
+        "hasData": true
+      },
+      {
+        "id": "Max_PrecipitableWater_Atmosphere",
+        "searchNames": [
+          "Max Precipitable Water of Place"
+        ],
+        "displayName": "Max Precipitable Water",
+        "definition": "st=maxValue,mp=precipitableWater,pt=Place",
+        "hasData": true
+      },
+      {
+        "id": "Max_Rainfall",
+        "searchNames": [
+          "Max Rainfall of Place"
+        ],
+        "displayName": "Max Rainfall",
+        "definition": "st=maxValue,mp=rainfall,pt=Place",
+        "hasData": true
+      },
+      {
+        "id": "Max_Snowfall",
+        "searchNames": [
+          "Max Snowfall of Place"
+        ],
+        "displayName": "Max Snowfall",
+        "definition": "st=maxValue,mp=snowfall,pt=Place",
+        "hasData": true
+      },
+      {
+        "id": "DifferenceAcrossModels_Max_Temperature",
+        "searchNames": [
+          "Max Temperature of Place (Difference Across Models)"
+        ],
+        "displayName": "Max Temperature (Difference Across Models)",
+        "definition": "mq=DifferenceAcrossModels,st=maxValue,mp=temperature,pt=Place",
+        "hasData": true
+      },
+      {
+        "id": "InterannualRange_Monthly_MaxTemperature",
+        "searchNames": [
+          "Max Temperature of Place (Interannual Range of Monthly Aggregate)"
+        ],
+        "displayName": "Max Temperature (Interannual Range of Monthly Aggregate)",
+        "definition": "mq=InterannualRangeOfMonthlyAggregate,mp=maxTemperature,pt=Place",
+        "hasData": true
+      },
+      {
+        "id": "Max_Visibility",
+        "searchNames": [
+          "Max Visibility of Place"
+        ],
+        "displayName": "Max Visibility",
+        "definition": "st=maxValue,mp=visibility,pt=Place",
+        "hasData": true
+      },
+      {
+        "id": "Max_Temperature",
+        "searchNames": [
+          "Max Temperature of Place"
+        ],
+        "displayName": "Maximum Temperature",
+        "definition": "st=maxValue,mp=temperature,pt=Place",
+        "hasData": true
+      },
+      {
+        "id": "Mean_BarometricPressure",
+        "searchNames": [
+          "Mean Barometric Pressure of Place"
+        ],
+        "displayName": "Mean Barometric Pressure",
+        "definition": "st=meanValue,mp=barometricPressure,pt=Place",
+        "hasData": true
+      },
+      {
+        "id": "Mean_CloudCover",
+        "searchNames": [
+          "Mean Cloud Cover of Place"
+        ],
+        "displayName": "Mean Cloud Cover",
+        "definition": "st=meanValue,mp=cloudCover,pt=Place",
+        "hasData": true
+      },
+      {
+        "id": "Mean_PrecipitableWater_Atmosphere",
+        "searchNames": [
+          "Mean Precipitable Water of Place"
+        ],
+        "displayName": "Mean Precipitable Water",
+        "definition": "st=meanValue,mp=precipitableWater,pt=Place",
+        "hasData": true
+      },
+      {
+        "id": "Mean_Rainfall",
+        "searchNames": [
+          "Mean Rainfall of Place"
+        ],
+        "displayName": "Mean Rainfall",
+        "definition": "st=meanValue,mp=rainfall,pt=Place",
+        "hasData": true
+      },
+      {
+        "id": "Mean_Snowfall",
+        "searchNames": [
+          "Mean Snowfall of Place"
+        ],
+        "displayName": "Mean Snowfall",
+        "definition": "st=meanValue,mp=snowfall,pt=Place",
+        "hasData": true
+      },
+      {
+        "id": "Mean_Temperature",
+        "searchNames": [
+          "Mean Temperature of Place"
+        ],
+        "displayName": "Mean Temperature",
+        "definition": "st=meanValue,mp=temperature,pt=Place",
+        "hasData": true
+      },
+      {
+        "id": "Mean_VaporPressureDeficit",
+        "searchNames": [
+          "Mean Vapor Pressure Deficit of Place"
+        ],
+        "displayName": "Mean Vapor Pressure Deficit (VPD)",
+        "definition": "st=meanValue,mp=vaporPressureDeficit,pt=Place",
+        "hasData": true
+      },
+      {
+        "id": "Mean_Visibility",
+        "searchNames": [
+          "Mean Visibility of Place"
+        ],
+        "displayName": "Mean Visibility",
+        "definition": "st=meanValue,mp=visibility,pt=Place",
+        "hasData": true
+      },
+      {
+        "id": "Mean_WindSpeed",
+        "searchNames": [
+          "Mean Wind Speed of Place"
+        ],
+        "displayName": "Mean Wind Speed",
+        "definition": "st=meanValue,mp=windSpeed,pt=Place",
+        "hasData": true
+      },
+      {
+        "id": "DifferenceAcrossModels_Mean_WindSpeed",
+        "searchNames": [
+          "Mean Wind Speed of Place (Difference Across Models)"
+        ],
+        "displayName": "Mean Wind Speed (Difference Across Models)",
+        "definition": "mq=DifferenceAcrossModels,st=meanValue,mp=windSpeed,pt=Place",
+        "hasData": true
+      },
+      {
+        "id": "Mean_MaxTemperature",
+        "searchNames": [
+          "Mean Max Temperature of Place"
+        ],
+        "displayName": "Mean maximum temperature",
+        "definition": "st=meanValue,mp=maxTemperature,pt=Place",
+        "hasData": true
+      },
+      {
+        "id": "Min_BarometricPressure",
+        "searchNames": [
+          "Min Barometric Pressure of Place"
+        ],
+        "displayName": "Min Barometric Pressure",
+        "definition": "st=minValue,mp=barometricPressure,pt=Place",
+        "hasData": true
+      },
+      {
+        "id": "Min_CloudCover",
+        "searchNames": [
+          "Min Cloud Cover of Place"
+        ],
+        "displayName": "Min Cloud Cover",
+        "definition": "st=minValue,mp=cloudCover,pt=Place",
+        "hasData": true
+      },
+      {
+        "id": "Min_PrecipitableWater_Atmosphere",
+        "searchNames": [
+          "Min Precipitable Water of Place"
+        ],
+        "displayName": "Min Precipitable Water",
+        "definition": "st=minValue,mp=precipitableWater,pt=Place",
+        "hasData": true
+      },
+      {
+        "id": "Min_Rainfall",
+        "searchNames": [
+          "Min Rainfall of Place"
+        ],
+        "displayName": "Min Rainfall",
+        "definition": "st=minValue,mp=rainfall,pt=Place",
+        "hasData": true
+      },
+      {
+        "id": "Min_Snowfall",
+        "searchNames": [
+          "Min Snowfall of Place"
+        ],
+        "displayName": "Min Snowfall",
+        "definition": "st=minValue,mp=snowfall,pt=Place",
+        "hasData": true
+      },
+      {
+        "id": "Min_Temperature",
+        "searchNames": [
+          "Min Temperature of Place"
+        ],
+        "displayName": "Min Temperature",
+        "definition": "st=minValue,mp=temperature,pt=Place",
+        "hasData": true
+      },
+      {
+        "id": "DifferenceAcrossModels_Min_Temperature",
+        "searchNames": [
+          "Min Temperature of Place (Difference Across Models)"
+        ],
+        "displayName": "Min Temperature (Difference Across Models)",
+        "definition": "mq=DifferenceAcrossModels,st=minValue,mp=temperature,pt=Place",
+        "hasData": true
+      },
+      {
+        "id": "InterannualRange_Monthly_MinTemperature",
+        "searchNames": [
+          "Min Temperature of Place (Interannual Range of Monthly Aggregate)"
+        ],
+        "displayName": "Min Temperature (Interannual Range of Monthly Aggregate)",
+        "definition": "mq=InterannualRangeOfMonthlyAggregate,mp=minTemperature,pt=Place",
+        "hasData": true
+      },
+      {
+        "id": "Min_Visibility",
+        "searchNames": [
+          "Min Visibility of Place"
+        ],
+        "displayName": "Min Visibility",
+        "definition": "st=minValue,mp=visibility,pt=Place",
+        "hasData": true
+      },
+      {
+        "id": "InterannualRange_Monthly_Precipitation",
+        "searchNames": [
+          "Precipitation of Place (Interannual Range of Monthly Aggregate)"
+        ],
+        "displayName": "Precipitation (Interannual Range of Monthly Aggregate)",
+        "definition": "mq=InterannualRangeOfMonthlyAggregate,mp=precipitation,pt=Place",
+        "hasData": true
+      },
+      {
+        "id": "PrecipitationRate",
+        "searchNames": [
+          "Precipitation Rate of Place"
+        ],
+        "displayName": "Precipitation Rate",
+        "definition": "mp=precipitationRate,pt=Place",
+        "hasData": true
+      },
+      {
+        "id": "DifferenceAcrossModels_PrecipitationRate",
+        "searchNames": [
+          "Precipitation Rate of Place (Difference Across Models)"
+        ],
+        "displayName": "Precipitation Rate (Difference Across Models)",
+        "definition": "mq=DifferenceAcrossModels,mp=precipitationRate,pt=Place",
+        "hasData": true
+      },
+      {
+        "id": "Skewness_DailyMaxTemperature",
+        "searchNames": [
+          "Skewness Daily Max Temperature of Place"
+        ],
+        "displayName": "Skewness Daily Max Temperature",
+        "definition": "mq=Daily,st=skewnessValue,mp=maxTemperature,pt=Place",
+        "hasData": true
+      },
+      {
+        "id": "Skewness_DailyMinTemperature",
+        "searchNames": [
+          "Skewness Daily Min Temperature of Place"
+        ],
+        "displayName": "Skewness Daily Min Temperature",
+        "definition": "mq=Daily,st=skewnessValue,mp=minTemperature,pt=Place",
+        "hasData": true
+      },
+      {
+        "id": "Skewness_DailyPrecipitation",
+        "searchNames": [
+          "Skewness Daily Precipitation of Place"
+        ],
+        "displayName": "Skewness Daily Precipitation",
+        "definition": "mq=Daily,st=skewnessValue,mp=precipitation,pt=Place",
+        "hasData": true
+      },
+      {
+        "id": "StandardDeviation_DailyMaxTemperature",
+        "searchNames": [
+          "Std Deviation Daily Max Temperature of Place"
+        ],
+        "displayName": "Std Deviation Daily Max Temperature",
+        "definition": "mq=Daily,st=stdDeviationValue,mp=maxTemperature,pt=Place",
+        "hasData": true
+      },
+      {
+        "id": "StandardDeviation_DailyMinTemperature",
+        "searchNames": [
+          "Std Deviation Daily Min Temperature of Place"
+        ],
+        "displayName": "Std Deviation Daily Min Temperature",
+        "definition": "mq=Daily,st=stdDeviationValue,mp=minTemperature,pt=Place",
+        "hasData": true
+      },
+      {
+        "id": "StandardDeviation_DailyPrecipitation",
+        "searchNames": [
+          "Std Deviation Daily Precipitation of Place"
+        ],
+        "displayName": "Std Deviation Daily Precipitation",
+        "definition": "mq=Daily,st=stdDeviationValue,mp=precipitation,pt=Place",
+        "hasData": true
+      },
+      {
+        "id": "DifferenceAcrossModels_Temperature",
+        "searchNames": [
+          "Temperature of Place (Difference Across Models)"
+        ],
+        "displayName": "Temperature (Difference Across Models)",
+        "definition": "mq=DifferenceAcrossModels,mp=temperature,pt=Place",
+        "hasData": true
+      },
+      {
+        "id": "Temperature",
+        "searchNames": [
+          "Temperature of Place"
+        ],
+        "displayName": "Temperature in a Location",
+        "definition": "mp=temperature,pt=Place",
+        "hasData": true
+      }
+    ],
+    "childStatVarGroups": [
+      {
+        "id": "dc/g/Place_AreaType",
+        "specializedEntity": "Area Type",
+        "displayName": "Place by Area Type",
+        "descendentStatVarCount": 4
+      },
+      {
+        "id": "dc/g/Place_DeltaFromReferenceDate",
+        "specializedEntity": "Delta From Reference Date",
+        "displayName": "Place by Delta From Reference Date",
+        "descendentStatVarCount": 368
+      },
+      {
+        "id": "dc/g/Place_EmissionsScenario",
+        "specializedEntity": "Emissions Scenario (Projected)",
+        "displayName": "Place by Emissions Scenario",
+        "descendentStatVarCount": 606
+      },
+      {
+        "id": "dc/g/Place_ExtremesOverTime",
+        "specializedEntity": "Extremes Over Time",
+        "displayName": "Place by Extremes Over Time",
+        "descendentStatVarCount": 128
+      },
+      {
+        "id": "dc/g/HeatWaveEvent",
+        "specializedEntity": "Heat Wave Event",
+        "displayName": "Heat Wave Event",
+        "descendentStatVarCount": 6
+      },
+      {
+        "id": "dc/g/Place_Height",
+        "specializedEntity": "Height",
+        "displayName": "Place by Height",
+        "descendentStatVarCount": 11
+      },
+      {
+        "id": "dc/g/Place_HumidityParameter",
+        "specializedEntity": "Humidity Parameter",
+        "displayName": "Place by Humidity Parameter",
+        "descendentStatVarCount": 80
+      },
+      {
+        "id": "dc/g/Place_MaxTemperature",
+        "specializedEntity": "Max Temperature",
+        "displayName": "Place by Max Temperature",
+        "descendentStatVarCount": 27
+      },
+      {
+        "id": "dc/g/Place_MinTemperature",
+        "specializedEntity": "Min Temperature",
+        "displayName": "Place by Min Temperature",
+        "descendentStatVarCount": 27
+      },
+      {
+        "id": "dc/g/Place_MultiModelEnsemble",
+        "specializedEntity": "Multi Model Ensemble",
+        "displayName": "Place by Multi Model Ensemble",
+        "descendentStatVarCount": 279
+      },
+      {
+        "id": "dc/g/Place_RadiationDirection",
+        "specializedEntity": "Radiation Direction",
+        "displayName": "Place by Radiation Direction",
+        "descendentStatVarCount": 55
+      },
+      {
+        "id": "dc/g/Place_RadiationWavelength",
+        "specializedEntity": "Radiation Wavelength",
+        "displayName": "Place by Radiation Wavelength",
+        "descendentStatVarCount": 55
+      },
+      {
+        "id": "dc/g/Place_SocioeconomicScenario",
+        "specializedEntity": "Socioeconomic Scenario (Projected)",
+        "displayName": "Place by Socioeconomic Scenario",
+        "descendentStatVarCount": 448
+      },
+      {
+        "id": "dc/g/Place_WetBulbTemperature",
+        "specializedEntity": "Wet Bulb Temperature",
+        "displayName": "Place by Wet Bulb Temperature",
+        "descendentStatVarCount": 11
+      },
+      {
+        "id": "dc/g/Place_WindComponent",
+        "specializedEntity": "Wind Component",
+        "displayName": "Place by Wind Component",
+        "descendentStatVarCount": 8
+      }
+    ],
+    "descendentStatVarCount": 737,
+    "parentStatVarGroups": [
+      "dc/g/Environment"
+    ]
+  }
+}

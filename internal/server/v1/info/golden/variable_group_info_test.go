@@ -50,6 +50,11 @@ func TestVariableGroupInfo(t *testing.T) {
 				"demographics.json",
 			},
 			{
+				"dc/g/Weather",
+				[]string{},
+				"weather.json",
+			},
+			{
 				"dc/g/Demographics",
 				[]string{"country/GBR"},
 				"demographics_gbr.json",
