@@ -122,9 +122,10 @@ func (s *state) readBt(
 	if !arcOut {
 		prefix = bigtable.BtPagedPropTypeValIn
 	}
+	tables := btGroup.Tables(nil)
 	btDataList, err := bigtable.ReadWithGroupRowList(
 		ctx,
-		btGroup,
+		tables,
 		prefix,
 		accs,
 		unmarshalFunc,
