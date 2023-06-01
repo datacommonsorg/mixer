@@ -105,11 +105,14 @@ func SortTables(tables []*Table) {
 }
 
 // Tables is the accessor for all the Bigtable client stubs.
-func (g *Group) Tables() []*cbt.Table {
+func (g *Group) Tables(filter func(*Table) bool) []*cbt.Table {
 	g.lock.RLock()
 	defer g.lock.RUnlock()
 	result := []*cbt.Table{}
 	for _, t := range g.tables {
+		if filter != nil && !filter(t) {
+			continue
+		}
 		result = append(result, t.table)
 	}
 	return result

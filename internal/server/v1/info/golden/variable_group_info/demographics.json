@@ -99,7 +99,7 @@
         "id": "dc/g/Person_Age",
         "specializedEntity": "Age",
         "displayName": "Person by Age",
-        "descendentStatVarCount": 22198
+        "descendentStatVarCount": 22197
       },
       {
         "id": "dc/g/Household_BenefitsStatus",
@@ -276,7 +276,7 @@
         "descendentStatVarCount": 104
       }
     ],
-    "descendentStatVarCount": 33619,
+    "descendentStatVarCount": 33618,
     "parentStatVarGroups": [
       "dc/g/Root"
     ]

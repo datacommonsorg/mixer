@@ -55,7 +55,9 @@ func Fetch(
 	// Empty cursor groups when no token is given.
 	var cursorGroups []*pbv1.CursorGroup
 	if token == "" {
-		cursorGroups = buildDefaultCursorGroups(nodes, properties, propType, len(store.BtGroup.Tables()))
+		cursorGroups = buildDefaultCursorGroups(
+			nodes, properties, propType, len(store.BtGroup.Tables(nil)),
+		)
 	} else {
 		pi, err := pagination.Decode(token)
 		if err != nil {

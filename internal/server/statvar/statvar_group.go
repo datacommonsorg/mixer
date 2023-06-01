@@ -17,6 +17,7 @@ package statvar
 import (
 	"context"
 	"sort"
+	"strings"
 	"time"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
@@ -196,10 +197,8 @@ func GetStatVarGroup(
 
 	result := &pb.StatVarGroups{StatVarGroups: map[string]*pb.StatVarGroupNode{}}
 	if cache == nil {
-		// Read stat var group cache from the frequent import group table. It has
-		// the latest and trustworthy stat var schemas and no need to merge with
-		// other import groups.
-		btDataList, err := bigtable.Read(
+		// Read stat var group cache from the allowed import group table.
+		btDataList, err := bigtable.ReadWithFilter(
 			ctx,
 			store.BtGroup,
 			bigtable.BtStatVarGroup,
@@ -210,6 +209,14 @@ func GetStatVarGroup(
 					return nil, err
 				}
 				return &svgResp, nil
+			},
+			// Only use svg from "frequent", "experimental" and custom import groups.
+			// These two import groups have the latest and wanted sv/svgs. We don't
+			// want to include those in "infrequent" etc that may have stale sv/svg.
+			func(t *bigtable.Table) bool {
+				return (strings.HasPrefix(t.Name(), "frequent") ||
+					strings.HasPrefix(t.Name(), "experimental") ||
+					t.IsCustom())
 			},
 		)
 		if err != nil {

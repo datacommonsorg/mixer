@@ -43,6 +43,11 @@ func (t *Table) Name() string {
 	return t.name
 }
 
+// IsCustom access the isCustom bit of a table
+func (t *Table) IsCustom() bool {
+	return t.isCustom
+}
+
 // NewBtTable creates a new cbt.Table instance.
 func NewBtTable(ctx context.Context, projectID, instanceID, tableID string) (
 	*cbt.Table, error) {
