@@ -119,7 +119,7 @@ func TestVariableGroupInfo(t *testing.T) {
 
 	if err := test.TestDriver(
 		"VariableGroupInfo",
-		&test.TestOption{UseCache: true, UseMemdb: true},
+		&test.TestOption{UseCache: true},
 		testSuite,
 	); err != nil {
 		t.Errorf("TestDriver() = %s", err)

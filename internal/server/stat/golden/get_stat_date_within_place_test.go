@@ -54,12 +54,6 @@ func TestGetStatDateWithinPlace(t *testing.T) {
 				[]string{"Count_Person", "Count_Person_Female"},
 				"USA_State.json",
 			},
-			{
-				"country/USA",
-				"State",
-				[]string{"Count_Person_FoodInsecure", "Mean_MealCost_Person_FoodSecure"},
-				"memdb.json",
-			},
 		} {
 			resp, err := mixer.GetStatDateWithinPlace(ctx, &pb.GetStatDateWithinPlaceRequest{
 				AncestorPlace:  c.ancestorPlace,
@@ -94,7 +88,7 @@ func TestGetStatDateWithinPlace(t *testing.T) {
 
 	if err := test.TestDriver(
 		"GetStatDateWithinPlace",
-		&test.TestOption{UseMemdb: true},
+		&test.TestOption{},
 		testSuite,
 	); err != nil {
 		t.Errorf("TestDriver() = %s", err)

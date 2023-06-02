@@ -75,14 +75,5 @@ func GetStatDateWithinPlace(
 			}
 		}
 	}
-
-	for sv := range result.Data {
-		if result.Data[sv].StatDate == nil {
-			// Fetch from memdb.
-			if store.MemDb.HasStatVar(sv) {
-				result.Data[sv] = store.MemDb.ReadStatDate(sv)
-			}
-		}
-	}
 	return result, nil
 }

@@ -58,16 +58,6 @@ class BulkObservationsSeriesLinkedCaller(HttpUser):
             })
 
     @task
-    def bulk_observations_series_linked_4(self):
-        self.client.post('/v1/bulk/observations/series/linked',
-                         json={
-                             "entity_type": "State",
-                             "linked_entity": "country/USA",
-                             "linked_property": "containedInPlace",
-                             "variables": ["Count_Person_FoodInsecure"]
-                         })
-
-    @task
     def bulk_observations_series_linked_5(self):
         self.client.post('/v1/bulk/observations/series/linked',
                          json={

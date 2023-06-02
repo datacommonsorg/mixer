@@ -84,11 +84,6 @@ func GetEntityStatVarsHelper(
 				allStatVars = append(allStatVars, row.Data.([]string))
 			}
 		}
-		// Also merge from memdb
-		if !store.MemDb.IsEmpty() {
-			hasDataStatVars, _ := store.MemDb.GetStatVars([]string{entity})
-			allStatVars = append(allStatVars, hasDataStatVars)
-		}
 		resp[entity].StatVars = util.MergeDedupe(allStatVars...)
 	}
 	return resp, nil
@@ -147,22 +142,6 @@ func GetEntityStatVarsUnionV1(
 			}
 		}
 		result.StatVars = util.KeysToSlice(set)
-	}
-
-	// Also check from in-memory database
-	if !store.MemDb.IsEmpty() {
-		set := map[string]bool{}
-		hasDataStatVars, _ := store.MemDb.GetStatVars(entities)
-		for _, sv := range hasDataStatVars {
-			if len(filterStatVarSet) == 0 {
-				set[sv] = true
-			} else {
-				if _, ok := filterStatVarSet[sv]; ok {
-					set[sv] = true
-				}
-			}
-		}
-		result.StatVars = util.MergeDedupe(result.StatVars, util.KeysToSlice(set))
 	}
 	return result, nil
 }

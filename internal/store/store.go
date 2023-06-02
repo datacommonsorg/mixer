@@ -19,13 +19,11 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"github.com/datacommonsorg/mixer/internal/store/files"
-	"github.com/datacommonsorg/mixer/internal/store/memdb"
 )
 
 // Store holds the handlers to BigQuery and Bigtable
 type Store struct {
 	BqClient        *bigquery.Client
-	MemDb           *memdb.MemDb
 	BtGroup         *bigtable.Group
 	RecogPlaceStore *files.RecogPlaceStore
 }
@@ -33,7 +31,6 @@ type Store struct {
 // NewStore creates a new store.
 func NewStore(
 	bqClient *bigquery.Client,
-	memDb *memdb.MemDb,
 	tables []*bigtable.Table,
 	branchTableName string,
 	metadata *resource.Metadata,
@@ -51,7 +48,6 @@ func NewStore(
 	}
 	return &Store{
 		BqClient:        bqClient,
-		MemDb:           memDb,
 		BtGroup:         bigtable.NewGroup(validTables, branchTableName, metadata),
 		RecogPlaceStore: recogPlaceStore,
 	}, nil

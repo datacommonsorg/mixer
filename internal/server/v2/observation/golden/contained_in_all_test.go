@@ -51,11 +51,6 @@ func TestFetchContainInAll(t *testing.T) {
 				"CA_City.json",
 			},
 			{
-				[]string{"Count_Person_FoodInsecure"},
-				"country/USA<-containedInPlace+{typeOf:State}",
-				"US_State.json",
-			},
-			{
 				[]string{"Median_Age_Person"},
 				"Earth<-containedInPlace+{typeOf:Country}",
 				"Country.json",
@@ -102,7 +97,7 @@ func TestFetchContainInAll(t *testing.T) {
 	}
 	if err := test.TestDriver(
 		"FetchContainInAll",
-		&test.TestOption{UseMemdb: true},
+		&test.TestOption{},
 		testSuite,
 	); err != nil {
 		t.Errorf("TestDriver() = %s", err)

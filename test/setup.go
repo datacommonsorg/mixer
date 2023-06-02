@@ -31,7 +31,6 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
-	"github.com/datacommonsorg/mixer/internal/store/memdb"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
@@ -44,7 +43,6 @@ import (
 // TestOption holds the options for integration test.
 type TestOption struct {
 	UseCache          bool
-	UseMemdb          bool
 	UseCustomTable    bool
 	SearchOptions     server.SearchOptions
 	RemoteMixerDomain string
@@ -70,11 +68,10 @@ const (
 
 // Setup creates local server and client.
 func Setup(option ...*TestOption) (pbs.MixerClient, error) {
-	useCache, useMemdb, useCustomTable, remoteMixerDomain := false, false, false, ""
+	useCache, useCustomTable, remoteMixerDomain := false, false, ""
 	var searchOptions server.SearchOptions
 	if len(option) == 1 {
 		useCache = option[0].UseCache
-		useMemdb = option[0].UseMemdb
 		useCustomTable = option[0].UseCustomTable
 		searchOptions = option[0].SearchOptions
 		remoteMixerDomain = option[0].RemoteMixerDomain
@@ -85,7 +82,6 @@ func Setup(option ...*TestOption) (pbs.MixerClient, error) {
 		"./custom_bigtable_info.yaml",
 		"../deploy/mapping",
 		useCache,
-		useMemdb,
 		useCustomTable,
 		searchOptions,
 		remoteMixerDomain,
@@ -94,7 +90,7 @@ func Setup(option ...*TestOption) (pbs.MixerClient, error) {
 
 func setupInternal(
 	bigqueryVersionFile, baseBigtableInfoYaml, testBigtableInfoYaml, mcfPath string,
-	useCache, useMemdb, useCustomTable bool, searchOptions server.SearchOptions,
+	useCache, useCustomTable bool, searchOptions server.SearchOptions,
 	remoteMixerDomain string,
 ) (pbs.MixerClient, error) {
 	ctx := context.Background()
@@ -126,18 +122,7 @@ func setupInternal(
 	if err != nil {
 		return nil, err
 	}
-	memDb := memdb.NewMemDb()
-	if useMemdb {
-		err = memDb.LoadConfig(ctx, path.Join(path.Dir(filename), "memdb.json"))
-		if err != nil {
-			log.Fatalf("Failed to load config: %v", err)
-		}
-		err = memDb.LoadFromGcs(ctx, tmcfCsvBucket, tmcfCsvPrefix)
-		if err != nil {
-			log.Fatalf("Failed to load tmcf and csv from GCS: %v", err)
-		}
-	}
-	st, err := store.NewStore(bqClient, memDb, tables, "", metadata)
+	st, err := store.NewStore(bqClient, tables, "", metadata)
 	if err != nil {
 		log.Fatalf("Failed to create a new store: %s", err)
 	}
@@ -182,7 +167,7 @@ func SetupBqOnly() (pbs.MixerClient, error) {
 	if err != nil {
 		return nil, err
 	}
-	st, err := store.NewStore(bqClient, nil, nil, "", nil)
+	st, err := store.NewStore(bqClient, nil, "", nil)
 	if err != nil {
 		return nil, err
 	}

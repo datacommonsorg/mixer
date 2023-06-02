@@ -97,7 +97,6 @@ kgStoreConfig:
   baseBigtableInfo: ""
   customBigtableInfo: ""
 
-memdbJSON: ""
 
 # To overwrite any portion of serviceGroups, please copy and paste
 # the entire serviceGroups below into the custom values yaml file,

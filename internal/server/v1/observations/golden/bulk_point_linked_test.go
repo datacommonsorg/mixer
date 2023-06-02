@@ -57,7 +57,7 @@ func TestBulkObservationsPointLinked(t *testing.T) {
 			{
 				"State",
 				"country/USA",
-				[]string{"Count_Person", "Count_Person_Employed", "Annual_Generation_Electricity", "UnemploymentRate_Person", "Count_Person_FoodInsecure"},
+				[]string{"Count_Person", "Count_Person_Employed", "Annual_Generation_Electricity", "UnemploymentRate_Person"},
 				"",
 				"US_State.json",
 			},
@@ -145,7 +145,7 @@ func TestBulkObservationsPointLinked(t *testing.T) {
 	}
 	if err := test.TestDriver(
 		"BulkObservationsPointLinked",
-		&test.TestOption{UseMemdb: true},
+		&test.TestOption{},
 		testSuite,
 	); err != nil {
 		t.Errorf("TestDriver() = %s", err)

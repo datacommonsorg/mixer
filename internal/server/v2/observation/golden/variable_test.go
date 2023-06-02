@@ -74,7 +74,7 @@ func TestVariable(t *testing.T) {
 	}
 	if err := test.TestDriver(
 		"ObservationMetric(variable)",
-		&test.TestOption{UseMemdb: true},
+		&test.TestOption{},
 		testSuite,
 	); err != nil {
 		t.Errorf("TestDriver() = %s", err)

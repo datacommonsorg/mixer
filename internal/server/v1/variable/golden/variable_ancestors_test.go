@@ -47,10 +47,6 @@ func TestVariableAncestors(t *testing.T) {
 				"school.json",
 			},
 			{
-				"Count_Person_FoodInsecure",
-				"memdb.json",
-			},
-			{
 				"Max_Concentration_AirPollutant_CO",
 				"custom.json",
 			},
@@ -87,7 +83,7 @@ func TestVariableAncestors(t *testing.T) {
 
 	if err := test.TestDriver(
 		"VariableAncestors",
-		&test.TestOption{UseCache: true, UseMemdb: true, UseCustomTable: true},
+		&test.TestOption{UseCache: true, UseCustomTable: true},
 		testSuite,
 	); err != nil {
 		t.Errorf("TestDriver() = %s", err)

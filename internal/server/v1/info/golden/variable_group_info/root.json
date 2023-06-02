@@ -73,13 +73,8 @@
         "specializedEntity": "Sustainable Development Goals",
         "displayName": "Sustainable Development Goals",
         "descendentStatVarCount": 3634
-      },
-      {
-        "id": "g/Feeding_America",
-        "specializedEntity": "Feeding America",
-        "descendentStatVarCount": 9
       }
     ],
-    "descendentStatVarCount": 593595
+    "descendentStatVarCount": 593586
   }
 }

@@ -69,10 +69,6 @@
         "id": "dc/g/SDG",
         "specializedEntity": "Sustainable Development Goals",
         "displayName": "Sustainable Development Goals"
-      },
-      {
-        "id": "g/Feeding_America",
-        "specializedEntity": "Feeding America"
       }
     ],
     "descendentStatVarCount": 11320

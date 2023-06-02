@@ -54,12 +54,6 @@ func TestBulkObservationDatesLinked(t *testing.T) {
 				[]string{"Count_Person", "Count_Person_Female"},
 				"USA_State.json",
 			},
-			{
-				"country/USA",
-				"State",
-				[]string{"Count_Person_FoodInsecure", "Mean_MealCost_Person_FoodSecure"},
-				"memdb.json",
-			},
 		} {
 			resp, err := mixer.BulkObservationDatesLinked(ctx, &pbv1.BulkObservationDatesLinkedRequest{
 				LinkedEntity:   c.linkedEntity,
@@ -95,7 +89,7 @@ func TestBulkObservationDatesLinked(t *testing.T) {
 
 	if err := test.TestDriver(
 		"BulkObservationDatesLinked",
-		&test.TestOption{UseMemdb: true},
+		&test.TestOption{},
 		testSuite,
 	); err != nil {
 		t.Errorf("TestDriver() = %s", err)

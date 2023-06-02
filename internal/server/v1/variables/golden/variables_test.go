@@ -93,7 +93,7 @@ func TestVariables(t *testing.T) {
 	}
 
 	if err := test.TestDriver(
-		"Variables", &test.TestOption{UseMemdb: true}, testSuite); err != nil {
+		"Variables", &test.TestOption{}, testSuite); err != nil {
 		t.Errorf("TestDriver() = %s", err)
 	}
 }

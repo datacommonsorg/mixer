@@ -47,16 +47,6 @@ data:
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: {{ include "mixer.fullname" . }}-memdb-config
-  namespace: {{ .Values.namespace.name }}
-data:
-  memdb.json: {{ .Values.memdbJSON | quote }}
-
----
-
-kind: ConfigMap
-apiVersion: v1
-metadata:
   name: {{ include "mixer.fullname" . }}-mixer-config
   namespace: {{ .Values.namespace.name }}
 data:
