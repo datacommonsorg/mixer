@@ -1,8 +1,9 @@
 {
   "ancestors": [
-    "dc/g/Atmosphere_Pollutant-CarbonMonoxide",
-    "dc/g/Atmosphere_Pollutant",
-    "dc/g/Atmosphere",
-    "dc/g/Environment"
+    "dc/g/Custom_Atmosphere_Pollutant-CarbonMonoxide",
+    "dc/g/Custom_Atmosphere_Pollutant",
+    "dc/g/Custom_Atmosphere",
+    "dc/g/Custom_Environment",
+    "dc/g/Custom_Root"
   ]
 }

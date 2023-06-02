@@ -1,4 +1,4 @@
-project: datcom-feedingamerica
+project: datcom-ci
 instance: dc-graph
 tables:
-  - import_2023_06_02_13_48_30
+  - private_2022_11_09_09_27_48
