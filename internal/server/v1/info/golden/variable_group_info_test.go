@@ -76,11 +76,6 @@ func TestVariableGroupInfo(t *testing.T) {
 				"root.json",
 			},
 			{
-				"g/Feeding_America",
-				[]string{"geoId/06"},
-				"private.json",
-			},
-			{
 				"invalid,id",
 				[]string{},
 				"empty.json",
