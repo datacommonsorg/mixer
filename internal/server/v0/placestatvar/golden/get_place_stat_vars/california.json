@@ -496,6 +496,7 @@
         "Annual_SulfurContent_Fuel_ForElectricityGeneration_SubbituminousCoal_ElectricUtility",
         "Annual_SulfurContent_Fuel_ForElectricityGeneration_SubbituminousCoal_ElectricUtilityNonCogen",
         "Annual_SulfurContent_Fuel_ForElectricityGeneration_SubbituminousCoal_IndependentPowerProducers",
+        "Area_DroughtEvent",
         "Area_Farm",
         "Area_Farm_CornForGrain",
         "Area_Farm_CornForSilageOrGreenchop",

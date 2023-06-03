@@ -1,10 +1,4 @@
 {
-  "statVars": [
-    {
-      "name": "How's Life? Well-Being: Deprivation, Poor households without access to basic sanitary facilities, Current Well-being, Total population, Total population, Total population",
-      "dcid": "oecd/HSL_DEP_3_4_CWB_TOT_TOT_TOT"
-    }
-  ],
   "statVarGroups": [
     {
       "dcid": "dc/g/Household_BenefitsStatus-WithFoodStampsInThePast12Months_PlaceOfBirth",

@@ -8913,6 +8913,4006 @@
       "provenanceId": "dc/base/EPA_Superfund_Sites"
     },
     {
+      "name": "Rancho Dominguez Preparatory School",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_80910_RanchoDominguezPreparatorySchool",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Edison Middle School",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90001_EdisonMiddleSchool",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Aging And Community Services - Florence - Firestone Service Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90001_LosAngelesCountyWorkforceDevelopmentAgingAndCommunityServicesFlorenceFirestoneServiceCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Salvation Army Corps Community Center - South Central Los Angeles",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90001_SalvationArmyCorpsCommunityCenterSouthCentralLosAngeles",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Boys \u0026 Girls Club of Metro Los Angeles: Jordan Downs",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90002_BoysGirlsClubOfMetroLosAngelesJordanDowns",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Markham Middle School",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90002_MarkhamMiddleSchool",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "St Lawrence Of Brindisi",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90002_StLawrenceOfBrindisi",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Dymally High School",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90003_DymallyHighSchool",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Fremont Senior High School",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90003_FremontSeniorHighSchool",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Mother Of Sorrows Catholic Church",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90003_MotherOfSorrowsCatholicChurch",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Virgil Middle School",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90004_VirgilMiddleSchool",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Aids Project Los Angeles - Vance North Necessities Of Life Program",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90005_AidsProjectLosAngelesVanceNorthNecessitiesOfLifeProgram",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Hope-net - First Baptist Church",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90005_HopeNetFirstBaptistChurch",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Hope-net - First Unitarian",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90005_HopeNetFirstUnitarian",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "RFK/UCLA Community School",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90005_RFKUCLACommunitySchool",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Angelica Lutheran Church",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90006_AngelicaLutheranChurch",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Berendo Middle School",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90006_BerendoMiddleSchool",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Centro Santo Tomas",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90006_CentroSantoTomas",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Hope-net - St John's Episcopal",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90007_HopeNetStJohnSEpiscopal",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "St John's Episcopal Cathedral",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90007_StJohnSEpiscopalCathedral",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Audubon Middle School",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90008_AudubonMiddleSchool",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Hope-net - Immanuel Presbyterian Church",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90010_HopeNetImmanuelPresbyterianChurch",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Hope-net - St James Episcopal Church",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90010_HopeNetStJamesEpiscopalChurch",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Hope-net - Wilshire Boulevard Temple",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90010_HopeNetWilshireBoulevardTemple",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "All Peoples Christian Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90011_AllPeoplesChristianCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Dr. Julian Nava Learning Academy",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90011_DrJulianNavaLearningAcademy",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Los Angeles Academy Middle School",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90011_LosAngelesAcademyMiddleSchool",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Santee High School",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90011_SanteeHighSchool",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "St Philip's Episcopal Church",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90011_StPhilipSEpiscopalChurch",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Our Lady Queen Of Angels Catholic Church",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90012_OurLadyQueenOfAngelsCatholicChurch",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Pico Union Project",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90015_PicoUnionProject",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Salvation Army - Southern California Divisional Headquarters - Los Angeles Family Services Office - On Hold",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90015_SalvationArmySouthernCaliforniaDivisionalHeadquartersLosAngelesFamilyServicesOfficeOnHold",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "St. Francis Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90015_StFrancisCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Dorsey Senior High School",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90016_DorseySeniorHighSchool",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "West Angeles Community Development Corporation - Community Assistance Department",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90016_WestAngelesCommunityDevelopmentCorporationCommunityAssistanceDepartment",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "West Washington L A Foursquare Church",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90016_WestWashingtonLAFoursquareChurch",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Liechty Middle School",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90017_LiechtyMiddleSchool",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "City Of Los Angeles Housing And Community Investment Department - West Adams Familysource - 1736 Family Crisis Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90018_CityOfLosAngelesHousingAndCommunityInvestmentDepartmentWestAdamsFamilysourceFamilyCrisisCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Joy Community Outreach To End Homelessness",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90018_JoyCommunityOutreachToEndHomelessness",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Trinity Baptist Church",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90018_TrinityBaptistChurch",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Cochran Middle School",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90019_CochranMiddleSchool",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "World Harvest Food Bank",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90019_WorldHarvestFoodBank",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Hope-net - First Church Of The Nazarene",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90020_HopeNetFirstChurchOfTheNazarene",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Hope-net - Islamic Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90020_HopeNetIslamicCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Hope-net - Wilshire Presbyterian Church",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90020_HopeNetWilshirePresbyterianChurch",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Karsh Family Social Service Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90020_KarshFamilySocialServiceCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Bienestar Human Services",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90022_BienestarHumanServices",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Eastmont Community Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90022_EastmontCommunityCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Garfield Senior High School",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90022_GarfieldSeniorHighSchool",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Aging And Community Services - Centro Maravilla Service Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90022_LosAngelesCountyWorkforceDevelopmentAgingAndCommunityServicesCentroMaravillaServiceCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Hollenbeck Middle School",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90023_HollenbeckMiddleSchool",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "University High School Charter",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90025_UniversityHighSchoolCharter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Dream Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90026_DreamCenterThe",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "St Athanasius And St Paul",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90026_StAthanasiusAndStPaul",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Hope-Net - Metropolitan Community Church",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90027_HopeNetMetropolitanCommunityChurch",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Hope-net - Silverlake Community Church",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90027_HopeNetSilverlakeCommunityChurch",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Bernstein Senior High School",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90028_BernsteinSeniorHighSchool",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Hope-net - Blessed Sacrament",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90028_HopeNetBlessedSacrament",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Epiphany Episcopal Church - Lincoln Heights",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90031_EpiphanyEpiscopalChurchLincolnHeights",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Lincoln Senior High School",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90031_LincolnSeniorHighSchool",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Wilson Senior High School",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90032_WilsonSeniorHighSchool",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Latino Equality Alliance: Mi Centro: Pride Pantry",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90033_LatinoEqualityAllianceMiCentroPridePantry",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Palms Middle School",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90034_PalmsMiddleSchool",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Sova Food Pantry And Resource Center - West",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90035_SovaFoodPantryAndResourceCenterWest",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Boys \u0026 Girls Club of Metro Los Angeles: Challengers Club",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90037_BoysGirlsClubOfMetroLosAngelesChallengersClub",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Manual Arts High School",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90037_ManualArtsHighSchool",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Eagle Rock High School",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90041_EagleRockHighSchool",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Burbank Middle School",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90042_BurbankMiddleSchool",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Hathaway-sycamores - Family Resource Center Los Angeles",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90042_HathawaySycamoresFamilyResourceCenterLosAngeles",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Ilm Foundation",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90043_IlmFoundation",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "My Friends House Inc",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90043_MyFriendsHouseInc",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Aaron Community Cultural Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90044_AaronCommunityCulturalCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Harte Preparatory Middle School",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90044_HartePreparatoryMiddleSchool",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Muir Middle School",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90044_MuirMiddleSchool",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Fairfax Senior High School",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90046_FairfaxSeniorHighSchool",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "First New Christian Missionary Baptist Church - Food Bank Program",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90047_FirstNewChristianMissionaryBaptistChurchFoodBankProgram",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Saint Mark United Methodist Church",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90047_SaintMarkUnitedMethodistChurch",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Washington Preparatory Senior High School",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90047_WashingtonPreparatorySeniorHighSchool",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Los Angeles Regional Food Bank",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90058_LosAngelesRegionalFoodBank",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Aids Project Los Angeles - Vance North Necessities Of Life Program - S Mark Taper Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90059_AidsProjectLosAngelesVanceNorthNecessitiesOfLifeProgramSMarkTaperCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Boys \u0026 Girls Club of Metro Los Angeles: Watts Willowbrook",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90059_BoysGirlsClubOfMetroLosAngelesWattsWillowbrook",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Gompers Middle School",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90061_GompersMiddleSchool",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Barack Obama Preparation Academy",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90062_BarackObamaPreparationAcademy",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Belvedere Middle School",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90063_BelvedereMiddleSchool",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Aging And Community Services - East Los Angeles Community Service Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90063_LosAngelesCountyWorkforceDevelopmentAgingAndCommunityServicesEastLosAngelesCommunityServiceCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Salvation Army Corps Community Center - East Los Angeles Temple",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90063_SalvationArmyCorpsCommunityCenterEastLosAngelesTemple",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Sotomayor Arts/Sciences Magnet",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90065_SotomayorArtsSciencesMagnet",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Marina Del Rey Middle School",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90066_MarinaDelReyMiddleSchool",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "St Gerard Majella Church",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90066_StGerardMajellaChurch",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "South Gate Senior High School",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90080_SouthGateSeniorHighSchool",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "San Fernando Senior High School",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90140_SanFernandoSeniorHighSchool",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Bell Senior High School",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90201_BellSeniorHighSchool",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "City Of Cudahy Parks And Recreation Department - Clara Street Park",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90201_CityOfCudahyParksAndRecreationDepartmentClaraStreetPark",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Ellen Ochoa Learning Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90201_EllenOchoaLearningCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Tamarind Avenue 7th Day Adventist Church",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90220_TamarindAvenueThDayAdventistChurch",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "First United Methodist Church Of Compton",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90221_FirstUnitedMethodistChurchOfCompton",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Aging And Community Services - East Rancho Dominguez Service Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90221_LosAngelesCountyWorkforceDevelopmentAgingAndCommunityServicesEastRanchoDominguezServiceCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Salvation Army Corps Community Center - Compton",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90221_SalvationArmyCorpsCommunityCenterCompton",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "St Timothy Church",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90222_StTimothyChurch",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "St Augustine Volunteer Emergency Services",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90232_StAugustineVolunteerEmergencyServices",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Peary Middle School",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90247_PearyMiddleSchool",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Hollypark Umc Outreach Program",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90249_HollyparkUmcOutreachProgram",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Aging And Community Services - Asian Service Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90249_LosAngelesCountyWorkforceDevelopmentAgingAndCommunityServicesAsianServiceCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Gage Middle School",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90253_GageMiddleSchool",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Hope Chapel Hermosa Beach",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90254_HopeChapelHermosaBeach",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Marquez Senior High School",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90255_MarquezSeniorHighSchool",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Salvation Army Southeast Communities Corp - Huntington Park",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90255_SalvationArmySoutheastCommunitiesCorpHuntingtonPark",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "House Of Yahweh",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90260_HouseOfYahweh",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Maywood Center For Enriched Studies (maces) Magnet",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90270_MaywoodCenterForEnrichedStudiesMacesMagnet",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "St Lawrence Martyr Catholic Church",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90277_StLawrenceMartyrCatholicChurch",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "South East Senior High School",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90280_SouthEastSeniorHighSchool",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Catholic Charities Of Los Angeles - St Robert's Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90291_CatholicCharitiesOfLosAngelesStRobertSCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "St Joseph Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90291_StJosephCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Catholic Charities Of Los Angeles - St Margaret's Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90304_CatholicCharitiesOfLosAngelesStMargaretSCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Salvation Army Corps Community Center - Santa Monica",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90401_SalvationArmyCorpsCommunityCenterSantaMonica",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Msgr Wood Community Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90404_MsgrWoodCommunityCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Amigos Sin Barreras - Friends Without Barriers - Circle Of Life Food Pantry",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90502_AmigosSinBarrerasFriendsWithoutBarriersCircleOfLifeFoodPantry",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Heart Of Compassion Distribution",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90640_HeartOfCompassionDistribution",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Interfaith Food Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90670_InterfaithFoodCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Narbonne Senior High School",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90710_NarbonneSeniorHighSchool",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Salvation Army - Stillman Sawyer Family Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90710_SalvationArmyStillmanSawyerFamilyCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "St Margaret Mary's Christian Services",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90717_StMargaretMarySChristianServices",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Wayside United Methodist Church",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90717_WaysideUnitedMethodistChurch",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Grateful Hearts",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90720_GratefulHearts",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "City Of Paramount Department Of Parks And Recreation - Senior Services",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90723_CityOfParamountDepartmentOfParksAndRecreationSeniorServices",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Dana Middle School",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90731_DanaMiddleSchool",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Aging And Community Services - San Pedro Service Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90731_LosAngelesCountyWorkforceDevelopmentAgingAndCommunityServicesSanPedroServiceCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Salvation Army Corps Family Service Center - San Pedro",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90731_SalvationArmyCorpsFamilyServiceCenterSanPedro",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Toberman Neighborhood Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90731_TobermanNeighborhoodCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Banning Senior High School",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90744_BanningSeniorHighSchool",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "St Philomena Church",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90745_StPhilomenaChurch",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "White Middle School",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90745_WhiteMiddleSchool",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Curtiss Middle School",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90746_CurtissMiddleSchool",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Christian Outreach In Action",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90802_ChristianOutreachInAction",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Help Me Help You - Stevenson Elementary School",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90802_HelpMeHelpYouStevensonElementarySchool",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Aids Food Store",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90804_AidsFoodStoreThe",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Salvation Army Corps Community Center - Long Beach",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90807_SalvationArmyCorpsCommunityCenterLongBeach",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Help Me Help You - Philadelphian Sda Church",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90810_HelpMeHelpYouPhiladelphianSdaChurch",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Aids Project Los Angeles - Vance North Necessities Of Life Program - Long Beach",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90813_AidsProjectLosAngelesVanceNorthNecessitiesOfLifeProgramLongBeach",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "First Baptist Church Of Long Beach",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90813_FirstBaptistChurchOfLongBeach",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "St Gregory's Episcopal Church",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_90815_StGregorySEpiscopalChurch",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Altadena Seventh-day Adventist Church",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_91001_AltadenaSeventhDayAdventistChurch",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Verdugo Hills Senior High School",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_91042_VerdugoHillsSeniorHighSchool",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Friends In Deed",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_91104_FriendsInDeed",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Foothill Unity Center Inc - Monrovia",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_91106_FoothillUnityCenterIncMonrovia",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Foothill Unity Center Inc - Pasadena",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_91107_FoothillUnityCenterIncPasadena",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Catholic Charities Of Los Angeles - Glendale Community Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_91204_CatholicCharitiesOfLosAngelesGlendaleCommunityCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Salvation Army Corps Community Center - Glendale",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_91204_SalvationArmyCorpsCommunityCenterGlendale",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Catholic Charities Of Los Angeles - Guadalupe Community Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_91303_CatholicCharitiesOfLosAngelesGuadalupeCommunityCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Family Rescue Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_91303_FamilyRescueCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Columbus Middle School",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_91304_ColumbusMiddleSchool",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Sutter Middle School",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_91306_SutterMiddleSchool",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Chatsworth Charter High School",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_91311_ChatsworthCharterHighSchool",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Fish Of West Valley",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_91311_FishOfWestValley",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Rescue Mission Alliance - Valley Food Bank - Leaves Of Healing Tabernacle",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_91311_RescueMissionAllianceValleyFoodBankLeavesOfHealingTabernacle",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Salvation Army Service Extension Office - Newhall",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_91321_SalvationArmyServiceExtensionOfficeNewhall",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Santa Clarita Valley Food Pantry",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_91321_SantaClaritaValleyFoodPantry",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Khalsa Care Foundation",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_91331_KhalsaCareFoundation",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Maclay Middle School",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_91331_MaclayMiddleSchool",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Rescue Mission Alliance - Valley Food Bank - The House",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_91335_RescueMissionAllianceValleyFoodBankTheHouse",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Rescue Mission Alliance - Valley Food Bank - Calvary Baptist Of Pacoima (life Center)",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_91340_RescueMissionAllianceValleyFoodBankCalvaryBaptistOfPacoimaLifeCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "St Ferdinand Outreach Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_91340_StFerdinandOutreachCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Peace Lutheran Church",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_91342_PeaceLutheranChurch",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Sylmar Charter High School",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_91342_SylmarCharterHighSchool",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "North Valley Caring Services Inc",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_91343_NorthValleyCaringServicesInc",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Rescue Mission Alliance - Valley Food Bank - Valley Park Church",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_91343_RescueMissionAllianceValleyFoodBankValleyParkChurch",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Sepulveda Middle School",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_91343_SepulvedaMiddleSchool",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Kennedy High School",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_91344_KennedyHighSchool",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Porter Middle School",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_91344_PorterMiddleSchool",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Rescue Mission Alliance - Valley Food Bank - St Andrew And St Charles Church",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_91344_RescueMissionAllianceValleyFoodBankStAndrewAndStCharlesChurch",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Rescue Mission Alliance - Valley Food Bank - Valley Korean United Methodist Church",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_91344_RescueMissionAllianceValleyFoodBankValleyKoreanUnitedMethodistChurch",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Aging And Community Services - Santa Clarita Valley Service Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_91350_LosAngelesCountyWorkforceDevelopmentAgingAndCommunityServicesSantaClaritaValleyServiceCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Byrd Middle School",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_91352_ByrdMiddleSchool",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Community Outreach Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_91352_CommunityOutreachCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "West Valley Food Pantry",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_91367_WestValleyFoodPantry",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Panorama Senior High School",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_91402_PanoramaSeniorHighSchool",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Catholic Charities Of Los Angeles - Loaves And Fishes Ii",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_91405_CatholicCharitiesOfLosAngelesLoavesAndFishesIi",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Fulton College Preparatory School",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_91405_FultonCollegePreparatorySchool",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Rescue Mission Alliance - Valley Food Bank - Rock Of The Valley",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_91405_RescueMissionAllianceValleyFoodBankRockOfTheValley",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "St Elisabeth Catholic Church - Service Center Distribution Site",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_91405_StElisabethCatholicChurchServiceCenterDistributionSite",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Mulholland Middle School",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_91406_MulhollandMiddleSchool",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Sova Food Pantry And Resource Center - Valley",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_91406_SovaFoodPantryAndResourceCenterValley",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Rescue Mission Alliance - Valley Food Bank - New Hope Church",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_91411_RescueMissionAllianceValleyFoodBankNewHopeChurch",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Van Nuys Senior High School",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_91411_VanNuysSeniorHighSchool",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Valley Beth Shalom",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_91436_ValleyBethShalom",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "East Valley Senior High School",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_91601_EastValleySeniorHighSchool",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "St Charles Holy Family Service Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_91602_StCharlesHolyFamilyServiceCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "North Hollywood Interfaith Food Pantry",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_91604_NorthHollywoodInterfaithFoodPantry",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Aids Project Los Angeles - Vance North Necessities Of Life Program - North Hollywood",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_91605_AidsProjectLosAngelesVanceNorthNecessitiesOfLifeProgramNorthHollywood",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Romer Middle School",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_91606_RomerMiddleSchool",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "St Frances Of Rome Food Bank",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_91702_StFrancesOfRomeFoodBank",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Church Of The Redeemer",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_91706_ChurchOfTheRedeemer",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "City Of Baldwin Park Department Of Recreation And Community Services - Teri G Muse Family Service Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_91706_CityOfBaldwinParkDepartmentOfRecreationAndCommunityServicesTeriGMuseFamilyServiceCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Shepherd's Pantry",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_91706_ShepherdSPantry",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Shepherd's Pantry - Baldwin Park",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_91706_ShepherdSPantryBaldwinPark",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Action Food Pantry",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_91722_ActionFoodPantry",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Our Saviour Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_91731_OurSaviourCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Aging And Community Services - San Gabriel Valley Service Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_91733_LosAngelesCountyWorkforceDevelopmentAgingAndCommunityServicesSanGabrielValleyServiceCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Shepherd's Pantry - Glendora",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_91740_ShepherdSPantryGlendora",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "St Martin De Porres Outreach Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_91745_StMartinDePorresOutreachCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Sowing Seeds For Life",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_91750_SowingSeedsForLife",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Bethel Food Bank Outreach",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_91767_BethelFoodBankOutreach",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Charisma Life Church",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_91767_CharismaLifeChurch",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Kennedy Austin Foundation",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_91767_KennedyAustinFoundation",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "San Gabriel Mission Christian Service Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_91776_SanGabrielMissionChristianServiceCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Foothill Family Shelter",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_91786_FoothillFamilyShelter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Bethel Christian Assembly Church",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_91901_BethelChristianAssemblyChurch",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Imperial Valley Food Bank",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_92251_ImperialValleyFoodBank",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Our Lady Of The Valley Catholic Church",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_92543_OurLadyOfTheValleyCatholicChurch",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Idyllwild Help Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_92549_IdyllwildHelpCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Anaheim United Methodist Church",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_92806_AnaheimUnitedMethodistChurch",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Westpark Community Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93001_WestparkCommunityCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Grace Food Pantry",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93105_GraceFoodPantry",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Arvin Assembly Of God",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93203_ArvinAssemblyOfGod",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Saint Johns Valley Of Faith",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93203_SaintJohnsValleyOfFaith",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Reef-Sunset Unified School District",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93204_ReefSunsetUnifiedSchoolDistrict",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Buttonwillow Parks And Recreation District",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93206_ButtonwillowParksAndRecreationDistrict",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Salvation Army - Buttonwillow",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93206_SalvationArmyButtonwillow",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Corcoran Emergency Aid",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93212_CorcoranEmergencyAid",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Recreation Association Of Corcoran",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93212_RecreationAssociationOfCorcoran",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Delano Community Connection Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93215_DelanoCommunityConnectionCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Delano Life House",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93215_DelanoLifeHouse",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Delano Memorial Park",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93215_DelanoMemorialPark",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Proteus Incorporated",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93215_ProteusIncorporated",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Sequoia Christian Academy",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93215_SequoiaChristianAcademy",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Valley Faith Fellowship",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93215_ValleyFaithFellowship",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Mountain Communities Family Resource Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93225_MountainCommunitiesFamilyResourceCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Salvation Army - Frazier Park",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93225_SalvationArmyFrazierPark",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Hanford Salvation Army",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93230_HanfordSalvationArmy",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Kings County Human Services Agency",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93230_KingsCountyHumanServicesAgency",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Latin American Assembly Of God",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93230_LatinAmericanAssemblyOfGod",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Food Pantry Of Lake Isabella",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93240_FoodPantryOfLakeIsabella",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Lake Isabella Senior Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93240_LakeIsabellaSeniorCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Mount Mesa - Grace Chapel",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93240_MountMesaGraceChapel",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Rotary Club Of Kern River Valley",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93240_RotaryClubOfKernRiverValley",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Salvation Army- Lake Isabella",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93240_SalvationArmyLakeIsabella",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Iglesia Monte Sion",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93241_IglesiaMonteSion",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Lamont /weedpatch Family Resource Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93241_LamontWeedpatchFamilyResourceCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Self-help Federal Credit Union",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93241_SelfHelpFederalCreditUnion",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Lemoore Christian Aid",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93245_LemooreChristianAid",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Lost Hills Community Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93249_LostHillsCommunityCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Lost Hills Family Resource Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93249_LostHillsFamilyResourceCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Family Life Worship Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93250_FamilyLifeWorshipCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "La Mission De Jesus",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93250_LaMissionDeJesus",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Mcfarland Family Resource Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93250_McfarlandFamilyResourceCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Mcfarland Resource Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93250_McfarlandResourceCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Maricopa Service Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93252_MaricopaServiceCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Salvation Army - Shafter",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93263_SalvationArmyShafter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Shafter Christian Fellowship",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93263_ShafterChristianFellowship",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Shafter Youth Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93263_ShafterYouthCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Laborers Of The Harvest",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93268_LaborersOfTheHarvest",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "New Hope Temple",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93268_NewHopeTemple",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Taft Necessary Emergency Economic District Site",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93268_TaftNecessaryEmergencyEconomicDistrictSite",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Taft West Side Community Resource Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93268_TaftWestSideCommunityResourceCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "West Side Community Resource Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93268_WestSideCommunityResourceCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Annin Park",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93280_AnninPark",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Griffith Avenue Baptist Church",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93280_GriffithAvenueBaptistChurch",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Wasco Recreation And Parks District",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93280_WascoRecreationAndParksDistrict",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "God's Storehouse",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93283_GodSStorehouse",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Canyon Hills Of Kern River Valley",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93285_CanyonHillsOfKernRiverValley",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Catholic Charities",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93301_CatholicCharities",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "First Presbyterian Church",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93301_FirstPresbyterianChurch",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Olive Branch Payee Services",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93301_OliveBranchPayeeServices",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Brenda Jean's Sober Living",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93304_BrendaJeanSSoberLiving",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Chester Avenue Community Church",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93304_ChesterAvenueCommunityChurch",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Christ Cathedral Church",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93304_ChristCathedralChurch",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Goodness And Mercy Ministries",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93304_GoodnessAndMercyMinistries",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Monday Sober Living",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93304_MondaySoberLiving",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Southside Seventh-day Adventist Church",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93304_SouthsideSeventhDayAdventistChurch",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Anchor Of Hope In Christ Church",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93305_AnchorOfHopeInChristChurch",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "901 Sacramento St",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93305_CA",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Centro Cristiano Agape",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93305_CentroCristianoAgape",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Christ First Ministries Inc",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93305_ChristFirstMinistriesInc",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Nuevo Amanecer",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93305_NuevoAmanecer",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "San Clemente Mission Parish",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93305_SanClementeMissionParish",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Sovereign Grace Outreach",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93305_SovereignGraceOutreach",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Victory Outreach",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93305_VictoryOutreach",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Bakersfield Christian Church",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93306_BakersfieldChristianChurch",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Calvary Bakersfield",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93306_CalvaryBakersfield",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Dream Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93307_DreamCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Friendship House",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93307_FriendshipHouse",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Golden Valleys Truth Tabernacle",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93307_GoldenValleysTruthTabernacle",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Isaiah's Sober Living",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93307_IsaiahSSoberLiving",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Liberty Christian Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93307_LibertyChristianCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Mercy Memorial Learning Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93307_MercyMemorialLearningCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Saints Memorial Church Of God In Christ",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93307_SaintsMemorialChurchOfGodInChrist",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "South Gate Redemption Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93307_SouthGateRedemptionCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Calvary Full Gospel",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93308_CalvaryFullGospel",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Coronado Baptist Church",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93308_CoronadoBaptistChurch",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Family Faith Church",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93308_FamilyFaithChurch",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Hope Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93308_HopeCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "New Covenant Pcg",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93308_NewCovenantPcg",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Sunshine Church Pentecostal Of God",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93308_SunshineChurchPentecostalOfGod",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Word Alive Ministry",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93308_WordAliveMinistry",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Central Seventh Day Adventist",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93309_CentralSeventhDayAdventist",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "First Congregational Church",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93309_FirstCongregationalChurch",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Salvation Army - Bakersfield",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93309_SalvationArmyBakersfield",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "New Life Church",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93311_NewLifeChurch",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Iglesia De Dios Pentecostal",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93313_IglesiaDeDiosPentecostal",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "East Kern Family Resource Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93501_EastKernFamilyResourceCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "God's Enduring Touch Of Grace",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93501_GodSEnduringTouchOfGrace",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Mojave Veterans Hall",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93501_MojaveVeteransHall",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "New Life Assembly Of God - California City",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93505_NewLifeAssemblyOfGodCaliforniaCity",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Our Lady Of Lourdes Catholic Church",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93505_OurLadyOfLourdesCatholicChurch",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "United Church Of Christ",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93505_UnitedChurchOfChrist",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Inyo/Mono Advocates For Community Action",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93514_InyoMonoAdvocatesForCommunityAction",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Boron Community Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93516_BoronCommunityCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Twin Oaks",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93518_TwinOaks",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Inyo Mono Advocates For Community Action",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93522_InyoMonoAdvocatesForCommunityAction",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Antelope Valley Partners For Health",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93534_AntelopeValleyPartnersForHealth",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Beauty Of Holiness Church",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93534_BeautyOfHolinessChurch",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Grace Resources Inc",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93534_GraceResourcesInc",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Shekinah Worship Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93534_ShekinahWorshipCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Palmdale 7th Day Adventist Church Community Services",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93550_PalmdaleThDayAdventistChurchCommunityServices",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Saint Michaels Episcopal Church",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93555_SaintMichaelsEpiscopalChurch",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Salvation Army - Ridgecrest",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93555_SalvationArmyRidgecrest",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Hummel Hall",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93560_HummelHall",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Rehoboth Parish",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93560_RehobothParish",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "St. Mary Of The Desert",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93560_StMaryOfTheDesert",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Saint Malachy Catholic Church",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93561_SaintMalachyCatholicChurch",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Salvation Army - Tehachapi",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93561_SalvationArmyTehachapi",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Sharing And Caring Of Tehachapi",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93561_SharingAndCaringOfTehachapi",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Catholic Charities Diocese of Fresno (CCDOF)",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93701_CatholicCharitiesDioceseOfFresnoCCDOF",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Central California Food Bank",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_93725_CentralCaliforniaFoodBank",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Alameda Food Bank",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94501_AlamedaFoodBank",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "American Legion Hall",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94509_AmericanLegionHall",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Antioch High School",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94509_AntiochHighSchool",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Antioch Kinder Care",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94509_AntiochKinderCare",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Calfresh Office (ehsd)",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94509_CalfreshOfficeEhsd",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Golden Hills Mission Outreach",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94509_GoldenHillsMissionOutreach",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Holy Rosary",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94509_HolyRosary",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Jubilee Christian Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94509_JubileeChristianCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Marsh Elementary",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94509_MarshElementary",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Mission Elementary",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94509_MissionElementary",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Salvation Army-Antioch",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94509_SalvationArmyAntioch",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "St Ignatius Antioch",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94509_StIgnatiusAntioch",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "West River Town Apartments",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94509_WestRiverTownApartments",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "New Covenant Church",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94511_NewCovenantChurch",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Brentwood Community UMC",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94513_BrentwoodCommunityUMC",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Brentwood Senior Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94513_BrentwoodSeniorCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Immaculate Heart Of Mary",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94513_ImmaculateHeartOfMary",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "The Dwelling Place Church",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94513_TheDwellingPlaceChurch",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Castiloga Cares",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94515_CastilogaCares",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "La Clinica De La Raza",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94518_LaClinicaDeLaRaza",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Cambridge Elementary",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94520_CambridgeElementary",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Church Of The Nazarene",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94520_ChurchOfTheNazarene",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Monument Crisis Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94520_MonumentCrisisCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Mt. Diablo High School",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94520_MtDiabloHighSchool",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "WIC Concord",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94520_WICConcord",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Good Shepherd Lutheran Church",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94521_GoodShepherdLutheranChurch",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "St. Bonaventure’s Church",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94521_StBonaventureSChurch",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Pleasant Hill Seventh Day Adventist",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94523_PleasantHillSeventhDayAdventist",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Antioch Health Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94531_AntiochHealthCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Carmen Dragon Elementary",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94531_CarmenDragonElementary",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Salaam Food Pantry",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94538_SalaamFoodPantry",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Eden United Church Of Christ",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94541_EdenUnitedChurchOfChrist",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "New Life Christian Church",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94541_NewLifeChristianChurch",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "South Hayward Parrish",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94544_SouthHaywardParrish",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Hercules Senior Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94547_HerculesSeniorCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Asbury United Methodist Church",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94550_AsburyUnitedMethodistChurch",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Boys \u0026 Girls Club Martinez",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94553_BoysGirlsClubMartinez",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Las Juntas Elementary",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94553_LasJuntasElementary",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Martinez Health Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94553_MartinezHealthCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Teamsters Local 315 Hall",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94553_TeamstersLocalHall",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Tri-cities Community Development Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94560_TriCitiesCommunityDevelopmentCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "St. Anthony’s Church",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94561_StAnthonySChurch",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "The Commons",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94561_TheCommons",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Ambrose Teen Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94565_AmbroseTeenCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Buchanan Park",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94565_BuchananPark",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Church Of The Good Shepherd",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94565_ChurchOfTheGoodShepherd",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Diane Avenue Church Of Christ",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94565_DianeAvenueChurchOfChrist",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "El Pueblo Housing Development",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94565_ElPuebloHousingDevelopment",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "First African Methodist Episcopal Church",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94565_FirstAfricanMethodistEpiscopalChurch",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "First Baptist Church",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94565_FirstBaptistChurch",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "First Baptist Family Life Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94565_FirstBaptistFamilyLifeCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Pittsburg City Park",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94565_PittsburgCityPark",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Rio Vista Elementary",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94565_RioVistaElementary",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Solomon Temple",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94565_SolomonTemple",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "The Pentecostals",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94565_ThePentecostals",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "WIC Pittsburg",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94565_WICPittsburg",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Children's Emergency Food Bank",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94568_ChildrenSEmergencyFoodBank",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Bayo Vista Child Care Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94572_BayoVistaChildCareCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Rodeo Senior Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94572_RodeoSeniorCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "All Saints Episcopal Church",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94577_AllSaintsEpiscopalChurch",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Davis Street Family Resource Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94577_DavisStreetFamilyResourceCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Bethel Community Presbyterian Church",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94578_BethelCommunityPresbyterianChurch",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Centro De Servicios",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94587_CentroDeServicios",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "St. Paul’s Episcopal Church",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94596_StPaulSEpiscopalChurch",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Walnut Creek United Methodist Church",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94597_WalnutCreekUnitedMethodistChurch",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Agnes Memorial Church Of God In Christ",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94601_AgnesMemorialChurchOfGodInChrist",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "St. Elizabeth's Parrish",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94601_StElizabethSParrish",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Brookins African Methodist Episcopal Church",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94605_BrookinsAfricanMethodistEpiscopalChurch",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Mount Zion Missionary Baptist Church",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94607_MountZionMissionaryBaptistChurch",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Telegraph Community Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94609_TelegraphCommunityCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Alameda County Community Food Bank",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94621_AlamedaCountyCommunityFoodBank",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Berkeley Food Pantry",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94702_BerkeleyFoodPantry",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Multicultural Senior Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94801_MulticulturalSeniorCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Nevin Community Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94801_NevinCommunityCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "North Richmond Missionary Baptist",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94801_NorthRichmondMissionaryBaptist",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Moose Lodge #550",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94803_MooseLodge",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Booker T. Anderson",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94804_BookerTAnderson",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Independent Community Church",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94804_IndependentCommunityChurch",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Kennedy High School",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94804_KennedyHighSchool",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Living Hope Neighborhood Church",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94804_LivingHopeNeighborhoodChurch",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Richmond Annex Senior Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94804_RichmondAnnexSeniorCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Richmond Veteran’s Memorial Hall",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94804_RichmondVeteranSMemorialHall",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Southside Church Of Christ",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94804_SouthsideChurchOfChrist",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "West County Courthouse",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94805_WestCountyCourthouse",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Contra Costa College",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94806_ContraCostaCollege",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Davis Park",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94806_DavisPark",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Maple Hall",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94806_MapleHall",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Montara Bay Community Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94806_MontaraBayCommunityCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Sojourner Truth",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94806_SojournerTruth",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "WIC San Pablo",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94806_WICSanPablo",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "West County Health Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_94806_WestCountyHealthCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Resource Connection Food Bank",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95222_ResourceConnectionFoodBank",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Resource Connection",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95249_ResourceConnection",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Atwater Housing Authority",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95301_AtwaterHousingAuthority",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "New Hope Community Church",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95380_NewHopeCommunityChurch",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Clearlake Gleaners Food Bank",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95435_ClearlakeGleanersFoodBank",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Betty Chinn (food Resources)",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95501_BettyChinnBettySBlueAngelBettyChinnFoodResources",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Blue Lake Community Resource Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95501_BlueLakeCommunityResourceCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Calfresh",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95501_CalfreshSocialServicesDhhs",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Community Resource Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95501_CommunityResourceCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Eureka Choice Pantry",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95501_EurekaChoicePantry",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Eureka Rescue Mission",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95501_EurekaRescueMission",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Eureka Rescue Mission - men’s Program (meal)",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95501_EurekaRescueMissionMenSProgramMeal",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Eureka Rescue Mission- women \u0026 Children’s Program (meal)",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95501_EurekaRescueMissionWomenChildrenSProgramMeal",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Food For People",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95501_FoodForPeople",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Humboldt Senior Resource Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95501_HumboldtSeniorResourceCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Raven Project",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95501_RavenProjectRcaaFoodResources",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Salvation Army",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95501_SalvationArmy",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "St Vincent De Paul Free Dining Facility",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95501_StVincentDePaulFreeDiningFacility",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Family Resource Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95519_FamilyResourceCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Mckinleyville Family Resource Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95519_MckinleyvilleFamilyResourceCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Two Feathers Native American Services (food Resources)",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95519_TwoFeathersNativeAmericanServicesFoodResources",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Arcata Seniors",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95521_ArcataSeniors",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Trinity Baptist Church",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95521_TrinityBaptistChurch",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Blue Lake Community Resource Center Mobile Pantry",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95525_BlueLakeCommunityResourceCenterMobilePantry",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Bridgeville Community Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95526_BridgevilleCommunityCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Community Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95526_CommunityCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "First 5 Del Norte",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95531_FirstDelNorte",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Rural Human Services (RHS)",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95531_RuralHumanServicesRHS",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Society Of St. Vincent De Paul",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95531_SocietyOfStVincentDePaul",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "St. Paul's Episcopal Church",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95531_StPaulSEpiscopalChurch",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Social Services",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95531_YurokTribeSocialServices",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Yurok Food Distribution",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95532_YurokFoodDistributionYurokTribe",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Community Church",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95536_CommunityChurch",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Ferndale Community church",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95536_FerndaleCommunityChurch",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Our Savior’s Lutheran Church (Food Resources)",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95536_OurSaviorSLutheranChurchFoodResources",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Fortuna Adventist community Services (food Resources)",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95540_FortunaAdventistCommunityServicesFoodResources",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Fortuna Community Services",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95540_FortunaCommunityServices",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Fortuna- Fortuna Community Services (2331 Rohnerville Rd)",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95540_FortunaFortunaCommunityServicesRohnervilleRd",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "St. Joseph's Pantry Shelf",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95540_StJosephSPantryShelf",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Christian Science Reading Room",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95542_ChristianScienceReadingRoom",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Presbyterian Church",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95542_PresbyterianChurch",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Food Distribution Program",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95546_HoopaValleyTribeFoodDistributionProgram",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Weitchpec-Yurok Tribal Office",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95546_WeitchpecYurokTribalOffice",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Klamath Boys \u0026 Girls Club",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95548_KlamathBoysGirlsClub",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Community Church",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95551_CommunityChurch",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Loleta Community Church",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95551_LoletaCommunityChurch",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Elementary School",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95555_ElementarySchool",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Orick At Orick Elementary School",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95555_OrickAtOrickElementarySchool",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Orick Elementary School",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95555_OrickElementarySchool",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Orleans- Karuk Senior Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95556_OrleansKarukSeniorCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Redway Family Resource Center (344 Humboldt Ave)",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95560_RedwayFamilyResourceCenterHumboldtAve",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Redway Food Bank At The Mateel Community Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95560_RedwayFoodBankAtTheMateelCommunityCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Journey Church",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95562_JourneyChurch",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Rio Dell Vol. Fire Dept.",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95562_RioDellVolFireDept",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Rio Dell Assembly Of God",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95562_TheJourneyChurchRioDellAssemblyOfGod",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Food For People (Scotia Pantry)",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95565_FoodForPeopleScotiaPantry",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Lion's Club/town Hall",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95570_LionSClubTownHall",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Trinidad Library Park (downtown Trinidad)",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95570_TrinidadLibraryParkDowntownTrinidad",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Trinidad (lion's Club Pantry/town Hall)",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95570_TrinidadLionSClubPantryTownHall",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Community Resource Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95573_CommunityResourceCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Willow Creek Community Resource Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95573_WillowCreekCommunityResourceCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Greenwood Community Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95635_GreenwoodCommunityCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Amador/tuolumne Community Action Agency",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95642_AmadorTuolumneCommunityActionAgencyInc",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Interfaith Council of Amador County",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95642_InterfaithCouncilOfAmadorCounty",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Sierra Winds",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95642_SierraWinds",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "St Patrick's Hall",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95642_StPatrickSHall",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Community Church Of Pine Grove",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95665_CommunityChurchOfPineGrove",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Diamond Springs Lions Hall",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95667_DiamondSpringsLionsHall",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Placerville Senior Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95667_PlacervilleSeniorCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Cameron Park Community Services District",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95682_CameronParkCommunityServicesDistrict",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Pioneer Park Community Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95684_PioneerParkCommunityCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Seventh Day Adventist Church",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95685_SeventhDayAdventistChurch",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Pollock Pines Community Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95726_PollockPinesCommunityCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "El Dorado Hills Senior Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95762_ElDoradoHillsSeniorCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Bangor Community Church",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95914_BangorCommunityChurch",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Community Action Agency Of Butte County Inc Berry Creek Fire Station #61",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95916_CommunityActionAgencyOfButteCountyIncBerryCreekFireStation",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Community Action Agency Of Butte County Inc Biggs United Methodist Church",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95917_CommunityActionAgencyOfButteCountyIncBiggsUnitedMethodistChurch",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Catholic Ladies Relief Society",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95926_CatholicLadiesReliefSociety",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Chico Gleaners Inc.",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95926_ChicoGleanersInc",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Youth For Change6th Street Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95926_YouthForChangeThStreetCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Community Action Agency Of Butte County Inc Christian Life Center",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95927_CommunityActionAgencyOfButteCountyIncChristianLifeCenter",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Food Bank Of Contra Costa \u0026 Solanobutte College Chico Campus",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95928_FoodBankOfContraCostaSolanobutteCollegeChicoCampus",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "Buck's Market",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95930_BuckSMarket",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "And Trinity",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95932_CommunityActionPartnershipOfColusaGlennAndTrinity",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
+      "name": "And Trinity Counties",
+      "types": [
+        "FoodEstablishment"
+      ],
+      "dcid": "foodEstablishment/CA_95932_CommunityActionPartnershipOfColusaGlennAndTrinityCounties",
+      "provenanceId": "dc/base/California_FoodResources"
+    },
+    {
       "name": "Alameda County",
       "types": [
         "AdministrativeArea2",
@@ -65041,5 +69041,5 @@
       "provenanceId": "dc/base/WikidataGeos"
     }
   ],
-  "nextToken": "H4sIAAAAAAAA/5ySXUoDMRSFnTitMf4NeZpdWH3wyQd1rFhQGRhdQEwu7YVrApm00gW4Pdck2jfp3EAXcD6+czjqVsk5hJk7n1ypygafDHpwM9+SsaCOGvD9sn+Nxia9p4UstJBCC7mvhSx1KUdVoa5ZRNlgWm/Jjn+z9aF6YNPVlOADfDJx3dlFCDRo8cJy6v+ce+xTRKbVDctTjzhfZIzuWMLxMzpHkGFkLNrwCbEl44d78PuetBFXJg1rHMhRJeqvQk35Nu3yndCymKL+FqrJ6Pxh3hLS9tdsOmUg3WUDRE+wArqY7DjMafYmmwOPM8OcdWCDd9n//gAAAP//AQAA//+e6uq5iQMAAA=="
+  "nextToken": "H4sIAAAAAAAA/5zTTU7DMBAFYGLSYsxf8Cq3oLBgxQIIKVQCFClwANceNZYGW4rdoh6A63EmVLpDzVjiAPPpPXtG3Am+AD8zF5NrUWjvorIOzMw1qDSIowpcWIa3Xuko9yTjmWScScb3JeO5zPmoyMQNSeSVjesds+PNbHkopuR0USN8gIuqX7e68x4HU7ySTvnXebAh9pZo9Uh651PvTR2imqMN3UYehG5JSDzZRZeodk8Kxy/WGISEkUjR+E/oG1RED/qjTprerlQcjnHARwUrvzJR022a5RytJpms/GaiSsT5Zd6jxd3rt+2UQNqrChCfYQV4Ofnnw5wm9217CePEw5y1oL0zyUP4AQAA//8BAAD//7l9zyLSAwAA"
 }
