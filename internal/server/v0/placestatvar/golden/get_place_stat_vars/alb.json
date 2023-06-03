@@ -616,7 +616,6 @@
         "Annual_Reserves_Fuel_Peat_EnergyRecoverableReserves",
         "Annual_Reserves_Fuel_TarSands_CrudeOil",
         "Area_DroughtEvent",
-        "Area_FireEvent",
         "Area_FloodEvent",
         "Count_BirthEvent_LiveBirth_AsFractionOf_Count_Person",
         "Count_ColdTemperatureEvent",
