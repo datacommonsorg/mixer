@@ -264,6 +264,15 @@
               ]
             },
             {
+              "facet_id": "678784946",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 25422788
+                }
+              ]
+            },
+            {
               "facet_id": "1151455814",
               "observations": [
                 {
@@ -2232,6 +2241,15 @@
                 {
                   "date": "2021",
                   "value": 273753191
+                }
+              ]
+            },
+            {
+              "facet_id": "318580725",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 275773800
                 }
               ]
             },
@@ -5451,6 +5469,10 @@
       "provenance_url": "http://www.dst.dk/en",
       "measurement_method": "StatisticsDenmark"
     },
+    "318580725": {
+      "import_name": "Indonesia_Census",
+      "provenance_url": "https://www.bps.go.id/"
+    },
     "3205948815": {
       "import_name": "StatisticsFinland",
       "provenance_url": "https://www.stat.fi/index_en.html",
@@ -5509,6 +5531,10 @@
       "import_name": "UnitedKingdomONS",
       "provenance_url": "https://www.ons.gov.uk",
       "measurement_method": "UnitedKingdomONS"
+    },
+    "678784946": {
+      "import_name": "AustraliaStatistics",
+      "provenance_url": "https://www.abs.gov.au/statistics"
     },
     "681041463": {
       "import_name": "GermanyDestatis",

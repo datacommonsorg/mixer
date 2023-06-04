@@ -159,6 +159,226 @@
     {
       "name": "Asian Monoracial Female Population Above Poverty Level in the Past Year",
       "dcid": "Count_Person_Female_AbovePovertyLevelInThePast12Months_AsianAlone"
+    },
+    {
+      "name": "Earning Female Population Institutionalized in Group Quarters Population",
+      "dcid": "Count_Person_Female_WithEarnings_ResidesInInstitutionalizedGroupQuarters"
+    },
+    {
+      "name": "Earning Female Population in Adult Correctional Facilities Population",
+      "dcid": "Count_Person_Female_WithEarnings_ResidesInAdultCorrectionalFacilities"
+    },
+    {
+      "name": "Earning Female Population in College/University Student Housing Population",
+      "dcid": "Count_Person_Female_WithEarnings_ResidesInCollegeOrUniversityStudentHousing"
+    },
+    {
+      "name": "Earning Female Population in Group Quarters Population",
+      "dcid": "Count_Person_Female_WithEarnings_ResidesInGroupQuarters"
+    },
+    {
+      "name": "Earning Female Population in Juvenile Facilities Population",
+      "dcid": "Count_Person_Female_WithEarnings_ResidesInJuvenileFacilities"
+    },
+    {
+      "name": "Earning Female Population in Military Quarters/on Military Ships Population",
+      "dcid": "Count_Person_Female_WithEarnings_ResidesInMilitaryQuartersOrMilitaryShips"
+    },
+    {
+      "name": "Earning Female Population in Non Institutionalized Group Quarters Population",
+      "dcid": "Count_Person_Female_WithEarnings_ResidesInNoninstitutionalizedGroupQuarters"
+    },
+    {
+      "name": "Female Labor Force Population Divorced in the Last Year",
+      "dcid": "Count_Person_InLaborForce_Female_DivorcedInThePast12Months"
+    },
+    {
+      "name": "Female Labor Force Population Married in the Last Year",
+      "dcid": "Count_Person_InLaborForce_Female_MarriedInThePast12Months"
+    },
+    {
+      "name": "Female Population Above Poverty Level in the Past Year and American Indian or Alaska Native Alone",
+      "dcid": "Count_Person_Female_AbovePovertyLevelInThePast12Months_AmericanIndianOrAlaskaNativeAlone"
+    },
+    {
+      "name": "Female Population Below Poverty Level in the Last Year and African American Alone",
+      "dcid": "Count_Person_Female_BelowPovertyLevelInThePast12Months_BlackOrAfricanAmericanAlone"
+    },
+    {
+      "name": "Female Population Below Poverty Level in the Last Year and Hispanic",
+      "dcid": "Count_Person_Female_BelowPovertyLevelInThePast12Months_HispanicOrLatino"
+    },
+    {
+      "name": "Female Population Below Poverty Level in the Last Year and Native Hawaiian or Other Pacific Islander Alone",
+      "dcid": "Count_Person_Female_BelowPovertyLevelInThePast12Months_NativeHawaiianOrOtherPacificIslanderAlone"
+    },
+    {
+      "name": "Female Population Below Poverty Level in the Past Year and American Indian or Alaska Native Alone",
+      "dcid": "Count_Person_Female_BelowPovertyLevelInThePast12Months_AmericanIndianOrAlaskaNativeAlone"
+    },
+    {
+      "name": "Female Population Below Poverty Level in the Past Year and Asian Alone",
+      "dcid": "Count_Person_Female_BelowPovertyLevelInThePast12Months_AsianAlone"
+    },
+    {
+      "name": "Female Population Below Poverty Level in the Past Year and Some Other Race Alone",
+      "dcid": "Count_Person_Female_BelowPovertyLevelInThePast12Months_SomeOtherRaceAlone"
+    },
+    {
+      "name": "Female Population Below Poverty Level in the Past Year and Two or More Races",
+      "dcid": "Count_Person_Female_BelowPovertyLevelInThePast12Months_TwoOrMoreRaces"
+    },
+    {
+      "name": "Female Population Below Poverty Level in the Past Year and White Alone",
+      "dcid": "Count_Person_Female_BelowPovertyLevelInThePast12Months_WhiteAlone"
+    },
+    {
+      "name": "Female Population Below Poverty Level in the Past Year and White Alone Not Hispanic or Latino",
+      "dcid": "Count_Person_Female_BelowPovertyLevelInThePast12Months_WhiteAloneNotHispanicOrLatino"
+    },
+    {
+      "name": "Female Population Born in Africa",
+      "dcid": "Count_Person_Female_ForeignBorn_PlaceOfBirthAfrica"
+    },
+    {
+      "name": "Female Population Born in Asia",
+      "dcid": "Count_Person_Female_ForeignBorn_PlaceOfBirthAsia"
+    },
+    {
+      "name": "Female Population Born in Central American Countries Other Than Mexico",
+      "dcid": "Count_Person_Female_ForeignBorn_PlaceOfBirthCentralAmericaExceptMexico"
+    },
+    {
+      "name": "Female Population Born in Eastern Asia",
+      "dcid": "Count_Person_Female_ForeignBorn_PlaceOfBirthEasternAsia"
+    },
+    {
+      "name": "Female Population Born in Europe",
+      "dcid": "Count_Person_Female_ForeignBorn_PlaceOfBirthEurope"
+    },
+    {
+      "name": "Female Population Born in Latin America",
+      "dcid": "Count_Person_Female_ForeignBorn_PlaceOfBirthLatinAmerica"
+    },
+    {
+      "name": "Female Population Born in Mexico",
+      "dcid": "Count_Person_Female_ForeignBorn_PlaceOfBirthMexico"
+    },
+    {
+      "name": "Female Population Born in North America",
+      "dcid": "Count_Person_Female_ForeignBorn_PlaceOfBirthNorthamerica"
+    },
+    {
+      "name": "Female Population Born in North Western Europe",
+      "dcid": "Count_Person_Female_ForeignBorn_PlaceOfBirthNorthernWesternEurope"
+    },
+    {
+      "name": "Female Population Born in Oceania",
+      "dcid": "Count_Person_Female_ForeignBorn_PlaceOfBirthOceania"
+    },
+    {
+      "name": "Female Population Born in South America",
+      "dcid": "Count_Person_Female_ForeignBorn_PlaceOfBirthSouthamerica"
+    },
+    {
+      "name": "Female Population Born in South Central Asia",
+      "dcid": "Count_Person_Female_ForeignBorn_PlaceOfBirthSouthCentralAsia"
+    },
+    {
+      "name": "Female Population Born in South Eastern Asia",
+      "dcid": "Count_Person_Female_ForeignBorn_PlaceOfBirthSouthEasternAsia"
+    },
+    {
+      "name": "Female Population Born in Southern Eastern Europe",
+      "dcid": "Count_Person_Female_ForeignBorn_PlaceOfBirthSouthernEasternEurope"
+    },
+    {
+      "name": "Female Population Born in Western Asia",
+      "dcid": "Count_Person_Female_ForeignBorn_PlaceOfBirthWesternAsia"
+    },
+    {
+      "name": "Female Population Born in the Carribean",
+      "dcid": "Count_Person_Female_ForeignBorn_PlaceOfBirthCaribbean"
+    },
+    {
+      "name": "Female Population Divorced in the Past Year Residing in Households",
+      "dcid": "Count_Person_Female_DivorcedInThePast12Months_ResidesInHousehold"
+    },
+    {
+      "name": "Female Population Divorced in the Past Year With Poverty Status Determined",
+      "dcid": "Count_Person_Female_DivorcedInThePast12Months_PovertyStatusDetermined"
+    },
+    {
+      "name": "Female Population Divorced in the Past Year and Below Poverty Level in the Past Year",
+      "dcid": "Count_Person_Female_DivorcedInThePast12Months_BelowPovertyLevelInThePast12Months"
+    },
+    {
+      "name": "Female Population Married in the Past Year Residing in Households",
+      "dcid": "Count_Person_Female_MarriedInThePast12Months_ResidesInHousehold"
+    },
+    {
+      "name": "Female Population Married in the Past Year With Poverty Status Determined",
+      "dcid": "Count_Person_Female_MarriedInThePast12Months_PovertyStatusDetermined"
+    },
+    {
+      "name": "Female Population Married in the Past Year and Below Poverty Level in the Past Year",
+      "dcid": "Count_Person_Female_MarriedInThePast12Months_BelowPovertyLevelInThePast12Months"
+    },
+    {
+      "name": "Female Population Non Institutionalized",
+      "dcid": "Count_Person_Civilian_Female_NonInstitutionalized"
+    },
+    {
+      "name": "Female Population Not in Labor Force and Divorced in Last Year",
+      "dcid": "Count_Person_NotInLaborForce_Female_DivorcedInThePast12Months"
+    },
+    {
+      "name": "Female Population Not in Labor Force and Married in Last Year",
+      "dcid": "Count_Person_NotInLaborForce_Female_MarriedInThePast12Months"
+    },
+    {
+      "name": "Female Population With Bachelor's Degree or Higher Who Divorced in Past Year",
+      "dcid": "Count_Person_EducationalAttainmentBachelorsDegreeOrHigher_Female_DivorcedInThePast12Months"
+    },
+    {
+      "name": "Female Population With Bachelor's Degree or Higher Who Married in Past Year",
+      "dcid": "Count_Person_EducationalAttainmentBachelorsDegreeOrHigher_Female_MarriedInThePast12Months"
+    },
+    {
+      "name": "Female Population in Nursing Facilities",
+      "dcid": "Count_Person_Female_WithEarnings_ResidesInNursingFacilities"
+    },
+    {
+      "name": "Foreign Born Female Population Institutionalized in Group Quarters",
+      "dcid": "Count_Person_Female_ForeignBorn_ResidesInInstitutionalizedGroupQuarters"
+    },
+    {
+      "name": "Foreign Born Female Population Staying in Group Quarters",
+      "dcid": "Count_Person_Female_ForeignBorn_ResidesInGroupQuarters"
+    },
+    {
+      "name": "Foreign Born Female Population Staying in Military Quarters or on Military Sheeps",
+      "dcid": "Count_Person_Female_ForeignBorn_ResidesInMilitaryQuartersOrMilitaryShips"
+    },
+    {
+      "name": "Foreign Born Female Population in Adult Correctional Facilities",
+      "dcid": "Count_Person_Female_ForeignBorn_ResidesInAdultCorrectionalFacilities"
+    },
+    {
+      "name": "Foreign Born Female Population in College or University Student Housing",
+      "dcid": "Count_Person_Female_ForeignBorn_ResidesInCollegeOrUniversityStudentHousing"
+    },
+    {
+      "name": "Foreign Born Female Population in Juvenile Facilities",
+      "dcid": "Count_Person_Female_ForeignBorn_ResidesInJuvenileFacilities"
+    },
+    {
+      "name": "Foreign Born Female Population in Non Institutionalized Group Quarters",
+      "dcid": "Count_Person_Female_ForeignBorn_ResidesInNoninstitutionalizedGroupQuarters"
+    },
+    {
+      "name": "Foreign Born Female Population in Nursing Facilities",
+      "dcid": "Count_Person_Female_ForeignBorn_ResidesInNursingFacilities"
     }
   ],
   "statVarGroups": [
@@ -465,6 +685,14 @@
         {
           "name": "Count of post-diarrheal, Female Hemolytic uremic syndrome incidents",
           "dcid": "Count_MedicalConditionIncident_Female_ConditionPostDiarrheal_HemolyticUremicSyndrome"
+        },
+        {
+          "name": "Count of clinical, Female Candida auris incidents",
+          "dcid": "Count_MedicalConditionIncident_Female_ConditionCandidaAuris_ClinicalCase"
+        },
+        {
+          "name": "Count of pediatric mortality, Female Influenza incidents",
+          "dcid": "Count_MedicalConditionIncident_Female_ConditionInfluenza_PediatricMortality"
         }
       ]
     },
@@ -867,6 +1095,24 @@
       ]
     },
     {
+      "dcid": "dc/g/MedicalConditionIncident_Gender-Female_Serogroup",
+      "name": "Medical Condition Incident With Gender = Female, Serogroup",
+      "statVars": [
+        {
+          "name": "Count of Serogroup B, Female Meningococcal disease incidents",
+          "dcid": "Count_MedicalConditionIncident_Female_ConditionMeningococcalMeningitis_SerogroupB"
+        },
+        {
+          "name": "Count of Serogroups ACWY, Female Meningococcal disease incidents",
+          "dcid": "Count_MedicalConditionIncident_Female_ConditionMeningococcalMeningitis_ACWYSerogroup"
+        },
+        {
+          "name": "Count of Unknown serogroup, Female Meningococcal disease incidents",
+          "dcid": "Count_MedicalConditionIncident_Female_ConditionMeningococcalMeningitis_UnknownSerogroups"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/SDGSHHIVINCD_age_gender-SDGSexEnumFEMALE",
       "name": "Number of New HIV Infections Per 1,000 Uninfected Population With Age, Gender = Female",
       "statVars": [
@@ -963,20 +1209,6 @@
         {
           "name": "Proportion of women in senior and middle management positions: Female",
           "dcid": "sdg/IC_GEN_MGTN_FEMALE"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/LiveBirthPregnancyEvent_PostpartumFamilyPlanning-MaleOrFemaleSterilization",
-      "name": "Live Birth Pregnancy Event With Postpartum Family Planning = Male or Female Sterilization",
-      "statVars": [
-        {
-          "name": "Count of Live Birth Pregnancy Event: Male or Female Sterilization (As Fraction of Count Birth Event Live Birth)",
-          "dcid": "Percent_LiveBirthPregnancyEvent_MaleOrFemaleSterilization_AsAFractionOf_Count_BirthEvent_LiveBirth"
-        },
-        {
-          "name": "Sample Size Count of Live Birth Pregnancy Event: Male or Female Sterilization",
-          "dcid": "SampleSize_Count_LiveBirthPregnancyEvent_MaleOrFemaleSterilization"
         }
       ]
     },
@@ -1275,6 +1507,34 @@
       ]
     },
     {
+      "dcid": "dc/g/MedicalConditionIncident_Gender-Female_MedicalCondition-SpottedFeverRickettsiosis_MedicalStatus",
+      "name": "Medical Condition Incident With Gender = Female, Medical Condition = Spotted Fever Rickettsiosis, Medical Status",
+      "statVars": [
+        {
+          "name": "Count of Confirmed, Female Spotted fever rickettsiosis incidents",
+          "dcid": "Count_MedicalConditionIncident_Female_ConditionSpottedFeverRickettsiosis_ConfirmedCase"
+        },
+        {
+          "name": "Count of Probable, Female Spotted fever rickettsiosis incidents",
+          "dcid": "Count_MedicalConditionIncident_Female_ConditionSpottedFeverRickettsiosis_ProbableCase"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/MedicalConditionIncident_Gender-Female_MedicalCondition-VibriosisExcludingCholera_MedicalStatus",
+      "name": "Medical Condition Incident With Gender = Female, Medical Condition = Vibriosis Excluding Cholera, Medical Status",
+      "statVars": [
+        {
+          "name": "Count of Confirmed, Female Vibriosis except cholera incidents",
+          "dcid": "Count_MedicalConditionIncident_Female_ConditionVibriosisExcludingCholera_ConfirmedCase"
+        },
+        {
+          "name": "Count of Probable, Female Vibriosis except cholera incidents",
+          "dcid": "Count_MedicalConditionIncident_Female_ConditionVibriosisExcludingCholera_ProbableCase"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/SDG_3.7.1",
       "name": "3.7.1: Proportion of women of reproductive age (aged 15-49 years) who have their need for family planning satisfied with modern methods",
       "statVars": [
@@ -1321,6 +1581,16 @@
         {
           "name": "Detected victims of human trafficking for removal of organ: Female",
           "dcid": "sdg/VC_HTF_DETVOG_FEMALE"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/LiveBirthPregnancyEvent_PostpartumFamilyPlanning-MaleOrFemaleSterilization",
+      "name": "Live Birth Pregnancy Event With Postpartum Family Planning = Male or Female Sterilization",
+      "statVars": [
+        {
+          "name": "Count of Live Birth Pregnancy Event: Male or Female Sterilization (As Fraction of Count Birth Event Live Birth)",
+          "dcid": "Percent_LiveBirthPregnancyEvent_MaleOrFemaleSterilization_AsAFractionOf_Count_BirthEvent_LiveBirth"
         }
       ]
     },
@@ -4555,16 +4825,6 @@
       ]
     },
     {
-      "dcid": "dc/g/MedicalConditionIncident_Gender-Female_MedicalCondition-SpottedFeverRickettsiosis_MedicalStatus",
-      "name": "Medical Condition Incident With Gender = Female, Medical Condition = Spotted Fever Rickettsiosis, Medical Status",
-      "statVars": [
-        {
-          "name": "Count of Confirmed, Female Spotted fever rickettsiosis incidents",
-          "dcid": "Count_MedicalConditionIncident_Female_ConditionSpottedFeverRickettsiosis_ConfirmedCase"
-        }
-      ]
-    },
-    {
       "dcid": "dc/g/MedicalConditionIncident_Gender-Female_MedicalCondition-StreptococcusPneumonia_MedicalStatus-ConfirmedCase",
       "name": "Medical Condition Incident With Gender = Female, Medical Condition = Streptococcus Pneumonia, Medical Status = Confirmed Case",
       "statVars": [
@@ -4581,16 +4841,6 @@
         {
           "name": "Count of Invasive pneumococcal, , Probable, Female pneumococcal disease incidents",
           "dcid": "Count_MedicalConditionIncident_Female_ConditionStreptococcusPneumonia_ProbableCase"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/MedicalConditionIncident_Gender-Female_MedicalCondition-VibriosisExcludingCholera_MedicalStatus",
-      "name": "Medical Condition Incident With Gender = Female, Medical Condition = Vibriosis Excluding Cholera, Medical Status",
-      "statVars": [
-        {
-          "name": "Count of Confirmed, Female Vibriosis except cholera incidents",
-          "dcid": "Count_MedicalConditionIncident_Female_ConditionVibriosisExcludingCholera_ConfirmedCase"
         }
       ]
     },
@@ -4989,10 +5239,6 @@
     {
       "dcid": "dc/g/MedicalConditionIncident_Gender-Female_MedicalStatus-VisitedEmergencyDepartment",
       "name": "Medical Condition Incident With Gender = Female, Medical Status = Visited Emergency Department"
-    },
-    {
-      "dcid": "dc/g/MedicalConditionIncident_Gender-Female_Serogroup",
-      "name": "Medical Condition Incident With Gender = Female, Serogroup"
     },
     {
       "dcid": "dc/g/MedicalConditionIncident_Gender-Female_Serogroup-OtherSerogroups",
@@ -7110,9 +7356,7 @@
   "matches": [
     "female",
     "female)",
-    "female-to-male",
     "females",
-    "woman",
     "women"
   ]
 }

@@ -1,11 +1,5 @@
 {
   "by_variable": {
-    "Area_FireEvent": {
-      "by_entity": {
-        "wikidataId/Q1951": {},
-        "wikidataId/Q506877": {}
-      }
-    },
     "Area_FloodEvent": {
       "by_entity": {
         "wikidataId/Q1951": {},

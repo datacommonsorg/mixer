@@ -24,7 +24,7 @@
             "maxValue": 36986320
           },
           "AdministrativeArea1": {
-            "placeCount": 389,
+            "placeCount": 392,
             "topPlaces": [
               {
                 "dcid": "wikidataId/Q15175",
@@ -480,6 +480,65 @@
             ],
             "observationCount": 96,
             "timeSeriesCount": 24
+          },
+          "dc/base/AustraliaStatistics": {
+            "importName": "AustraliaStatistics",
+            "releaseFrequency": "P1M",
+            "seriesSummary": [
+              {
+                "seriesKey": {},
+                "earliestDate": "1901",
+                "latestDate": "2021",
+                "placeTypeSummary": {
+                  "AdministrativeArea1": {
+                    "placeCount": 7,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q3224",
+                        "name": "New South Wales"
+                      },
+                      {
+                        "dcid": "wikidataId/Q36687",
+                        "name": "Victoria"
+                      },
+                      {
+                        "dcid": "wikidataId/Q36074",
+                        "name": "Queensland"
+                      }
+                    ],
+                    "minValue": 71249,
+                    "maxValue": 4087995
+                  },
+                  "Country": {
+                    "placeCount": 1,
+                    "topPlaces": [
+                      {
+                        "dcid": "country/AUS",
+                        "name": "Australia"
+                      }
+                    ],
+                    "minValue": 1795981,
+                    "maxValue": 12877635
+                  },
+                  "Place": {
+                    "placeCount": 1,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q3235"
+                      }
+                    ],
+                    "minValue": 115075,
+                    "maxValue": 115075
+                  }
+                },
+                "minValue": 71249,
+                "maxValue": 12877635,
+                "observationCount": 431,
+                "timeSeriesCount": 9
+              }
+            ],
+            "observationCount": 431,
+            "timeSeriesCount": 9
           },
           "dc/base/Brazil_Census": {
             "importName": "Brazil_Census",
@@ -1421,6 +1480,66 @@
             ],
             "observationCount": 673,
             "timeSeriesCount": 673
+          },
+          "dc/base/Indonesia_Census": {
+            "importName": "Indonesia_Census",
+            "releaseFrequency": "P1Y",
+            "seriesSummary": [
+              {
+                "seriesKey": {},
+                "earliestDate": "2010",
+                "latestDate": "2022",
+                "placeTypeSummary": {
+                  "AdministrativeArea1": {
+                    "placeCount": 31,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q3724",
+                        "name": "West Java"
+                      },
+                      {
+                        "dcid": "wikidataId/Q3586",
+                        "name": "East Java"
+                      },
+                      {
+                        "dcid": "wikidataId/Q3557",
+                        "name": "Central Java"
+                      }
+                    ],
+                    "minValue": 331164,
+                    "maxValue": 24354012
+                  },
+                  "City": {
+                    "placeCount": 1,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q3630",
+                        "name": "Jakarta"
+                      }
+                    ],
+                    "minValue": 5227307,
+                    "maxValue": 5304082
+                  },
+                  "Country": {
+                    "placeCount": 1,
+                    "topPlaces": [
+                      {
+                        "dcid": "country/IDN",
+                        "name": "Indonesia"
+                      }
+                    ],
+                    "minValue": 131879200,
+                    "maxValue": 136384800
+                  }
+                },
+                "minValue": 331164,
+                "maxValue": 136384800,
+                "observationCount": 180,
+                "timeSeriesCount": 33
+              }
+            ],
+            "observationCount": 180,
+            "timeSeriesCount": 33
           },
           "dc/base/NigeriaStatistics": {
             "importName": "NigeriaStatistics",
