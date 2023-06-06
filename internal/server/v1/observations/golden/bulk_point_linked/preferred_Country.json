@@ -1017,9 +1017,9 @@
           "entity": "country/IDN",
           "points_by_facet": [
             {
-              "date": "2021",
-              "value": 273753191,
-              "facet": "3981252704"
+              "date": "2022",
+              "value": 275773800,
+              "facet": "318580725"
             }
           ]
         },
@@ -2602,6 +2602,10 @@
       "provenance_url": "http://www.dst.dk/en",
       "measurement_method": "StatisticsDenmark"
     },
+    "318580725": {
+      "import_name": "Indonesia_Census",
+      "provenance_url": "https://www.bps.go.id/"
+    },
     "3205948815": {
       "import_name": "StatisticsFinland",
       "provenance_url": "https://www.stat.fi/index_en.html",
@@ -2660,6 +2664,10 @@
       "import_name": "UnitedKingdomONS",
       "provenance_url": "https://www.ons.gov.uk",
       "measurement_method": "UnitedKingdomONS"
+    },
+    "678784946": {
+      "import_name": "AustraliaStatistics",
+      "provenance_url": "https://www.abs.gov.au/statistics"
     },
     "681041463": {
       "import_name": "GermanyDestatis",

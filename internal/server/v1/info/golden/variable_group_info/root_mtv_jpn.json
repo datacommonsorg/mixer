@@ -48,7 +48,7 @@
         "id": "dc/g/Housing",
         "specializedEntity": "Housing",
         "displayName": "Housing",
-        "descendentStatVarCount": 416
+        "descendentStatVarCount": 422
       },
       {
         "id": "dc/g/Crime",
@@ -63,16 +63,12 @@
         "descendentStatVarCount": 2338
       },
       {
-        "id": "oecd/g/OECD",
-        "displayName": "Organisation for Economic Co-operation and Development"
-      },
-      {
         "id": "dc/g/SDG",
         "specializedEntity": "Sustainable Development Goals",
         "displayName": "Sustainable Development Goals",
         "descendentStatVarCount": 807
       }
     ],
-    "descendentStatVarCount": 11320
+    "descendentStatVarCount": 11326
   }
 }
