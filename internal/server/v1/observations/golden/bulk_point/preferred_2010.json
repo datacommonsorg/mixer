@@ -122,26 +122,6 @@
           "entity": "geoId/0649670"
         }
       ]
-    },
-    {
-      "variable": "Count_Person_FoodInsecure",
-      "observations_by_entity": [
-        {
-          "entity": "dummy"
-        },
-        {
-          "entity": "country/FRA"
-        },
-        {
-          "entity": "country/USA"
-        },
-        {
-          "entity": "geoId/06"
-        },
-        {
-          "entity": "geoId/0649670"
-        }
-      ]
     }
   ],
   "facets": {

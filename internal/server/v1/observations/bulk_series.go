@@ -50,10 +50,6 @@ func BulkSeries(
 	for _, entity := range entities {
 		for _, variable := range variables {
 			series := btData[entity][variable].SourceSeries
-			if store.MemDb.HasStatVar(variable) {
-				// Read series from in-memory database
-				series = append(store.MemDb.ReadSeries(variable, entity), series...)
-			}
 			entityObservations := &pbv1.EntityObservations{
 				Entity: entity,
 			}

@@ -103,7 +103,7 @@ func TestGetPlaceStatVars(t *testing.T) {
 	}
 
 	if err := test.TestDriver(
-		"GetPlaceStatVars", &test.TestOption{UseMemdb: true}, testSuite); err != nil {
+		"GetPlaceStatVars", &test.TestOption{}, testSuite); err != nil {
 		t.Errorf("TestDriver() = %s", err)
 	}
 }

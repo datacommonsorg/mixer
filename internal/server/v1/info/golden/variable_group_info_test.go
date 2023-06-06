@@ -76,11 +76,6 @@ func TestVariableGroupInfo(t *testing.T) {
 				"root.json",
 			},
 			{
-				"g/Feeding_America",
-				[]string{"geoId/06"},
-				"private.json",
-			},
-			{
 				"invalid,id",
 				[]string{},
 				"empty.json",
@@ -119,7 +114,7 @@ func TestVariableGroupInfo(t *testing.T) {
 
 	if err := test.TestDriver(
 		"VariableGroupInfo",
-		&test.TestOption{UseCache: true, UseMemdb: true},
+		&test.TestOption{UseCache: true},
 		testSuite,
 	); err != nil {
 		t.Errorf("TestDriver() = %s", err)

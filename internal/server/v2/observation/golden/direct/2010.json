@@ -348,15 +348,6 @@
         }
       }
     },
-    "Count_Person_FoodInsecure": {
-      "by_entity": {
-        "country/FRA": {},
-        "country/USA": {},
-        "dummy": {},
-        "geoId/06": {},
-        "geoId/0649670": {}
-      }
-    },
     "Count_Person_Unemployed": {
       "by_entity": {
         "country/FRA": {},

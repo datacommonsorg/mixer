@@ -56,13 +56,6 @@ func TestGetEntityStatVarsUnionV1(t *testing.T) {
 				[]string{"IncrementalCount_Person", "FertilityRate_Person_Female"},
 				2,
 			},
-			{
-				[]string{"geoId/06", "geoId/06085"},
-				[]string{},
-				[]string{"Count_Person_FoodInsecure", "Mean_MealCost_Person_FoodSecure"},
-				[]string{},
-				2,
-			},
 		} {
 			req := &pb.GetEntityStatVarsUnionRequest{
 				Dcids:    c.dcids,
@@ -96,7 +89,7 @@ func TestGetEntityStatVarsUnionV1(t *testing.T) {
 	}
 
 	if err := test.TestDriver(
-		"GetEntityStatVarsUnionV1", &test.TestOption{UseMemdb: true}, testSuite); err != nil {
+		"GetEntityStatVarsUnionV1", &test.TestOption{}, testSuite); err != nil {
 		t.Errorf("TestDriver() = %s", err)
 	}
 }

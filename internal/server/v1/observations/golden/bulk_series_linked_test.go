@@ -54,12 +54,6 @@ func TestBulkObservationsSeriesLinked(t *testing.T) {
 				"CA_City.json",
 			},
 			{
-				"State",
-				"country/USA",
-				[]string{"Count_Person_FoodInsecure"},
-				"US_State.json",
-			},
-			{
 				"Country",
 				"Earth",
 				[]string{"Median_Age_Person"},
@@ -118,7 +112,7 @@ func TestBulkObservationsSeriesLinked(t *testing.T) {
 	}
 	if err := test.TestDriver(
 		"BulkObservationsSeriesLinked",
-		&test.TestOption{UseMemdb: true},
+		&test.TestOption{},
 		testSuite,
 	); err != nil {
 		t.Errorf("TestDriver() = %s", err)

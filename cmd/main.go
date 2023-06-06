@@ -23,7 +23,6 @@ import (
 	"net/http"
 	_ "net/http/pprof"
 	"os"
-	"path"
 	"runtime"
 	"runtime/pprof"
 
@@ -33,7 +32,6 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
-	"github.com/datacommonsorg/mixer/internal/store/memdb"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"golang.org/x/oauth2/google"
 
@@ -63,12 +61,6 @@ var (
 	useBranchBigtable = flag.Bool("use_branch_bigtable", true, "Use branch bigtable cache")
 	// Stat-var search cache
 	useSearch = flag.Bool("use_search", true, "Uses stat var search. Will build search indexes.")
-	// GCS to hold memdb data.
-	// Note GCS bucket and pubsub should be within the mixer project.
-	useTmcfCsvData = flag.Bool("use_tmcf_csv_data", false, "Use tmcf and csv data")
-	tmcfCsvBucket  = flag.String("tmcf_csv_bucket", "", "The GCS bucket that contains tmcf and csv files")
-	tmcfCsvFolder  = flag.String("tmcf_csv_folder", "", "GCS folder for an import. An import must have a unique prefix within a bucket.")
-	memdbPath      = flag.String("memdb_path", "", "File path of memdb config")
 	// Remote mixer url. The API serves merged data from local and remote mixer
 	remoteMixerDomain = flag.String("remote_mixer_domain", "", "Remote mixer domain to fetch and merge data for API response.")
 	// Profile startup memory instead of listening for requests
@@ -76,11 +68,6 @@ var (
 	// Serve live profiles of the process (CPU, memory, etc.) over HTTP on this port
 	httpProfilePort   = flag.Int("httpprof_port", 0, "Port to serve HTTP profiles from")
 	foldRemoteRootSvg = flag.Bool("fold_remote_root_svg", false, "Whether to fold root SVG from remote mixer")
-)
-
-const (
-	// Memdb config file name
-	memdbConfig = "memdb.json"
 )
 
 func main() {
@@ -125,20 +112,6 @@ func main() {
 		}
 		// Custom tables ranked highere than base tables.
 		tables = append(customTables, tables...)
-	}
-
-	// TMCF + CSV from GCS
-	memDb := memdb.NewMemDb()
-	if *useTmcfCsvData && *tmcfCsvBucket != "" {
-		// Read memdb config
-		err = memDb.LoadConfig(ctx, path.Join(*memdbPath, memdbConfig))
-		if err != nil {
-			log.Fatalf("Failed to load config: %v", err)
-		}
-		err = memDb.LoadFromGcs(ctx, *tmcfCsvBucket, *tmcfCsvFolder)
-		if err != nil {
-			log.Fatalf("Failed to load tmcf and csv from GCS: %v", err)
-		}
 	}
 
 	// BigQuery
@@ -188,14 +161,12 @@ func main() {
 	if len(tables) == 0 && *remoteMixerDomain == "" {
 		log.Fatal("No bigtables or remote mixer domain are provided")
 	}
-	store, err := store.NewStore(bqClient, memDb, tables, branchTableName, metadata)
+	store, err := store.NewStore(bqClient, tables, branchTableName, metadata)
 	if err != nil {
 		log.Fatalf("Failed to create a new store: %s", err)
 	}
 	// Build the cache that includes stat var group info and stat var search
 	// Index.
-	// !!Important: do this after creating the memdb, since the cache will
-	// need to merge svg info from memdb.
 	var cache *resource.Cache
 	if *useSearch {
 		cache, err = server.NewCache(

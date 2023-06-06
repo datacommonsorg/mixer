@@ -83,7 +83,7 @@ func TestEventCollectionDate(t *testing.T) {
 	}
 	if err := test.TestDriver(
 		"EventCollectionDate",
-		&test.TestOption{UseMemdb: true},
+		&test.TestOption{},
 		testSuite,
 	); err != nil {
 		t.Errorf("TestDriver() = %s", err)

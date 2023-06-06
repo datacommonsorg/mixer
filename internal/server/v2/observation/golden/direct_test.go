@@ -51,7 +51,6 @@ func TestFetchDirect(t *testing.T) {
 					"Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita",
 					"Annual_Generation_Electricity",
 					"Count_Person_Unemployed",
-					"Count_Person_FoodInsecure",
 				},
 				[]string{
 					"dummy",
@@ -70,7 +69,6 @@ func TestFetchDirect(t *testing.T) {
 					"Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita",
 					"Annual_Generation_Electricity",
 					"Count_Person_Unemployed",
-					"Count_Person_FoodInsecure",
 				},
 				[]string{"dummy", "country/FRA", "country/USA", "geoId/06", "geoId/0649670"},
 				"2015",
@@ -83,7 +81,6 @@ func TestFetchDirect(t *testing.T) {
 					"Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita",
 					"Annual_Generation_Electricity",
 					"Count_Person_Unemployed",
-					"Count_Person_FoodInsecure",
 				},
 				[]string{"dummy", "country/FRA", "country/USA", "geoId/06", "geoId/0649670"},
 				"2010",
@@ -98,7 +95,6 @@ func TestFetchDirect(t *testing.T) {
 					"Annual_Generation_Electricity",
 					"Count_Person_Unemployed",
 					"AirQualityIndex_AirPollutant",
-					"Count_Person_FoodInsecure",
 				},
 				[]string{
 					"dummy",
@@ -150,7 +146,7 @@ func TestFetchDirect(t *testing.T) {
 	}
 	if err := test.TestDriver(
 		"FetchDirect",
-		&test.TestOption{UseMemdb: true},
+		&test.TestOption{},
 		testSuite,
 	); err != nil {
 		t.Errorf("TestDriver() = %s", err)

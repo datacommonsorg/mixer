@@ -145,17 +145,9 @@ func FetchContainedIn(
 			}
 		}
 	}
-	variablesInMemDb := []string{}
-	// Check if need to read from memory database.
-	for _, variable := range variables {
-		if store.MemDb.HasStatVar(variable) {
-			variablesInMemDb = append(variablesInMemDb, variable)
-		}
-	}
-	// Fetch linked places if need to read data from memdb or time series Bigtable
-	// cache.
+	// Fetch linked places if need to read data from time series Bigtable cache.
 	var childPlaces []string
-	if !readCollectionCache || len(variablesInMemDb) > 0 {
+	if !readCollectionCache {
 		// TODO(shifucun): use V2 API
 		childPlacesMap, err := placein.GetPlacesIn(
 			ctx, store, []string{ancestor}, childType)
@@ -163,19 +155,12 @@ func FetchContainedIn(
 			return nil, err
 		}
 		childPlaces = childPlacesMap[ancestor]
-	}
-	variablesMissingData := variablesInMemDb
-	if !readCollectionCache {
-		variablesMissingData = variables
-	}
-
-	if len(variablesMissingData) > 0 {
 		log.Printf(
-			"Read time series for %d variables and %d chihld places",
-			len(variablesMissingData),
+			"Read time series for %d variables and %d child places",
+			len(variables),
 			len(childPlaces),
 		)
-		totalSeries := len(variablesMissingData) * len(childPlaces)
+		totalSeries := len(variables) * len(childPlaces)
 		if totalSeries > maxSeries {
 			return nil, status.Errorf(
 				codes.Internal,
@@ -187,7 +172,7 @@ func FetchContainedIn(
 		moreResult, err := FetchDirect(
 			ctx,
 			store,
-			variablesMissingData,
+			variables,
 			childPlaces,
 			queryDate,
 		)

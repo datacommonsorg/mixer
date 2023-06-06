@@ -56,10 +56,6 @@ func FetchDirect(
 		for _, entity := range entities {
 			entityObservation := &pbv2.EntityObservation{}
 			series := btData[entity][variable].SourceSeries
-			if store.MemDb.HasStatVar(variable) {
-				// Read series from in-memory database
-				series = append(series, store.MemDb.ReadSeries(variable, entity)...)
-			}
 			if len(series) > 0 {
 				// Sort series by rank
 				sort.Sort(ranking.SeriesByRank(series))

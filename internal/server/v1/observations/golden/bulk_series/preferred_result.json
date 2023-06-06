@@ -9623,41 +9623,6 @@
           ]
         }
       ]
-    },
-    {
-      "variable": "Count_Person_FoodInsecure",
-      "observations_by_entity": [
-        {
-          "entity": "dummy"
-        },
-        {
-          "entity": "country/FRA"
-        },
-        {
-          "entity": "country/USA"
-        },
-        {
-          "entity": "geoId/06",
-          "series_by_facet": [
-            {
-              "series": [
-                {
-                  "date": "2018",
-                  "value": 4291830
-                },
-                {
-                  "date": "2019",
-                  "value": 4011960
-                }
-              ],
-              "facet": "180485622"
-            }
-          ]
-        },
-        {
-          "entity": "geoId/0649670"
-        }
-      ]
     }
   ],
   "facets": {
@@ -9666,11 +9631,6 @@
       "provenance_url": "https://unstats.un.org/unsd/energystats/data/",
       "observation_period": "P1Y",
       "unit": "KilowattHour"
-    },
-    "180485622": {
-      "import_name": "Feeding America",
-      "provenance_url": "https://www.feedingamerica.org/",
-      "measurement_method": "FeedingAmerica_Estimate"
     },
     "2157651424": {
       "import_name": "USGSWaterUse",

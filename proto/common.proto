@@ -22,8 +22,6 @@ package datacommons;
 
 option go_package = "github.com/datacommonsorg/mixer/internal/proto";
 
-import "stat_var.proto";
-
 
 // The direction of node property (arc in the graph).
 enum PropertyDirection {
@@ -51,23 +49,6 @@ message GraphNode {
 // A single root ID might match multiple SubGraph configs.
 // All `nodes` have the same root ID.
 message GraphNodes { repeated GraphNode nodes = 1; }
-
-// Holds the import manifest information.
-message MemdbConfig {
-  // Name of the import
-  string import_name = 1;
-  // The url of the data, ususally the source url link
-  string provenance_url = 2;
-  // Data download link. For private import, this should be the GCS folder url.
-  // Example:
-  // https://pantheon.corp.google.com/storage/browser/datcom-public/food
-  string data_download_url = 3;
-  // The root SVG for the import. This will be set as a child stat var group
-  // of "dc/g/Root"
-  string root_svg = 4;
-  // Key is StatVarGroup ID.
-  map<string, StatVarGroupNode> stat_var_groups = 5;
-}
 
 // PayloadResponse represents API response with encoded payload string
 message PayloadResponse { string payload = 1; }

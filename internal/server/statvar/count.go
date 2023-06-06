@@ -73,16 +73,5 @@ func Count(
 			}
 		}
 	}
-	// Populate stat vars from private import
-	if st.MemDb.GetSvg() != nil {
-		for sv, placeData := range st.MemDb.GetPlaceSvExistence() {
-			result[sv] = map[string]int32{}
-			for _, entity := range entities {
-				if count, ok := placeData[entity]; ok {
-					result[sv][entity] = count
-				}
-			}
-		}
-	}
 	return result, nil
 }

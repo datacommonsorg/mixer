@@ -5192,31 +5192,6 @@
         }
       }
     },
-    "Count_Person_FoodInsecure": {
-      "by_entity": {
-        "country/FRA": {},
-        "country/USA": {},
-        "dummy": {},
-        "geoId/06": {
-          "ordered_facets": [
-            {
-              "facet_id": "180485622",
-              "observations": [
-                {
-                  "date": "2018",
-                  "value": 4291830
-                },
-                {
-                  "date": "2019",
-                  "value": 4011960
-                }
-              ]
-            }
-          ]
-        },
-        "geoId/0649670": {}
-      }
-    },
     "Count_Person_Unemployed": {
       "by_entity": {
         "country/FRA": {},
@@ -16993,11 +16968,6 @@
       "provenance_url": "https://www.bls.gov/cps/",
       "measurement_method": "BLSSeasonallyAdjusted",
       "observation_period": "P3M"
-    },
-    "180485622": {
-      "import_name": "Feeding America",
-      "provenance_url": "https://www.feedingamerica.org/",
-      "measurement_method": "FeedingAmerica_Estimate"
     },
     "196790193": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2602",

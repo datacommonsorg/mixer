@@ -117,15 +117,6 @@ func BulkPoint(
 					}
 					result.Facets[facetID] = facet
 				}
-			} else if store.MemDb.HasStatVar(variable) {
-				pointValue, facet := store.MemDb.ReadPointValue(variable, entity, date)
-				if pointValue != nil {
-					facetID := util.GetFacetID(facet)
-					pointValue.Facet = facetID
-					result.Facets[facetID] = facet
-					entityObservations.PointsByFacet = append(
-						entityObservations.PointsByFacet, pointValue)
-				}
 			}
 			tmpResult[variable].ObservationsByEntity = append(
 				tmpResult[variable].ObservationsByEntity,

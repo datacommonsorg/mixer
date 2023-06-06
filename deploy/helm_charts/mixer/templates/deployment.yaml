@@ -57,9 +57,6 @@ spec:
     spec:
       serviceAccountName: {{ $.Values.serviceAccount.name }}
       volumes:
-        - name: memdb-config
-          configMap:
-            name: {{ include "mixer.fullname" $ }}-memdb-config
         - name: schema-mapping
           configMap:
             name: {{ include "mixer.fullname" $ }}-schema-mapping
@@ -82,7 +79,6 @@ spec:
             - --host_project=$(HOST_PROJECT)
             - --bq_dataset=$(BIGQUERY)
             - --schema_path=/datacommons/mapping
-            - --memdb_path=/datacommons/memdb
             - --remote_mixer_domain={{ $.Values.mixer.remoteMixerDomain }}
             - --use_base_bigtable={{ $.Values.mixer.useBaseBigtable }}
             - --use_custom_bigtable={{ $.Values.mixer.useCustomBigtable }}
@@ -102,8 +98,6 @@ spec:
           volumeMounts:
             - name: schema-mapping
               mountPath: /datacommons/mapping
-            - name: memdb-config
-              mountPath: /datacommons/memdb
             - name: blocklist-svg
               mountPath: /datacommons/svg
           env:

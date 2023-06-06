@@ -74,21 +74,10 @@ func BulkObservationDatesLinked(
 	for _, sv := range variables {
 		data := cacheData[sv]
 		if data == nil || len(data.SourceCohorts) == 0 {
-			if store.MemDb.HasStatVar(sv) {
-				data, facets := store.MemDb.ReadObservationDates(sv)
-				result.DatesByVariable = append(
-					result.DatesByVariable,
-					data,
-				)
-				for facetID, facet := range facets {
-					result.Facets[facetID] = facet
-				}
-			} else {
-				result.DatesByVariable = append(result.DatesByVariable,
-					&pbv1.VariableObservationDates{
-						Variable: sv,
-					})
-			}
+			result.DatesByVariable = append(result.DatesByVariable,
+				&pbv1.VariableObservationDates{
+					Variable: sv,
+				})
 			continue
 		}
 		// keyed by date

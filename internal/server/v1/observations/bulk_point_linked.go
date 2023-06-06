@@ -135,18 +135,9 @@ func BulkPointLinked(
 			variableObservations,
 		)
 	}
-	// Check if need to read from memory database.
-	variableInMemDb := false
-	for _, variable := range variables {
-		if store.MemDb.HasStatVar(variable) {
-			variableInMemDb = true
-			break
-		}
-	}
-	// Fetch linked places if need to read data from memdb or time series Bigtable
-	// cache.
+	// Fetch linked places if need to read data from time series Bigtable cache.
 	var childPlaces []string
-	if len(variablesMissingData) > 0 || variableInMemDb {
+	if len(variablesMissingData) > 0 {
 		// TODO(shifucun): use V1 API /v1/bulk/property/out/values/linked here
 		childPlacesMap, err := placein.GetPlacesIn(
 			ctx, store, []string{linkedEntity}, entityType)
@@ -176,38 +167,6 @@ func BulkPointLinked(
 		)
 		for facet := range moreResult.Facets {
 			result.Facets[facet] = moreResult.Facets[facet]
-		}
-	}
-	// Merge data from in-memory database.
-	if variableInMemDb {
-		for _, variable := range variables {
-			if !store.MemDb.HasStatVar(variable) {
-				continue
-			}
-			observationsByEntity := []*pbv1.EntityObservations{}
-			for _, entity := range childPlaces {
-				pointValue, facet := store.MemDb.ReadPointValue(variable, entity, date)
-				// Override public data from private import
-				if pointValue != nil {
-					facetID := util.GetFacetID(facet)
-					pointValue.Facet = facetID
-					result.Facets[facetID] = facet
-					observationsByEntity = append(
-						observationsByEntity,
-						&pbv1.EntityObservations{
-							Entity:        entity,
-							PointsByFacet: []*pb.PointStat{pointValue},
-						},
-					)
-				}
-			}
-			result.ObservationsByVariable = append(
-				result.ObservationsByVariable,
-				&pbv1.VariableObservations{
-					Variable:             variable,
-					ObservationsByEntity: observationsByEntity,
-				},
-			)
 		}
 	}
 	// Get the preferred facet

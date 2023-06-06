@@ -239,11 +239,6 @@ func main() {
 				[]string{"Median_Age_Person_AmericanIndianOrAlaskaNativeAlone"},
 			},
 			{
-				"State",
-				"country/USA",
-				[]string{"Count_Person_FoodInsecure"},
-			},
-			{
 				"Country",
 				"Earth",
 				[]string{"Median_Age_Person"},
