@@ -4,14 +4,18 @@
       "node": "earth"
     },
     {
-      "node": "geoId/06",
+      "node": "geoId/02158000100",
       "info": {
         "self": {
-          "dcid": "geoId/06",
-          "name": "California",
-          "type": "State"
+          "dcid": "geoId/02158000100",
+          "type": "CensusTract"
         },
         "parents": [
+          {
+            "dcid": "geoId/02",
+            "name": "Alaska",
+            "type": "State"
+          },
           {
             "dcid": "usc/PacificDivision",
             "name": "Pacific Division",
@@ -41,18 +45,14 @@
       }
     },
     {
-      "node": "geoId/02158000100",
+      "node": "geoId/06",
       "info": {
         "self": {
-          "dcid": "geoId/02158000100",
-          "type": "CensusTract"
+          "dcid": "geoId/06",
+          "name": "California",
+          "type": "State"
         },
         "parents": [
-          {
-            "dcid": "geoId/02",
-            "name": "Alaska",
-            "type": "State"
-          },
           {
             "dcid": "usc/PacificDivision",
             "name": "Pacific Division",
