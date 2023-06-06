@@ -130,19 +130,43 @@ func (s *Server) BulkPlaceInfo(
 	if err != nil {
 		return nil, err
 	}
-	if len(localResp.GetData()) == 0 && s.metadata.RemoteMixerDomain != "" {
-		remoteResp := &pbv1.BulkPlaceInfoResponse{}
-		if err := fetchRemote(
-			s.metadata,
-			s.httpClient,
-			"/v1/bulk/info/place",
-			in,
-			remoteResp); err != nil {
-			return nil, err
-		}
-		return remoteResp, nil
+	keyedInfo := map[string]*pbv1.PlaceInfoResponse{}
+	for _, item := range localResp.Data {
+		keyedInfo[item.GetNode()] = item
 	}
-	return localResp, nil
+	if s.metadata.RemoteMixerDomain != "" {
+		in.Nodes = []string{}
+		for _, item := range localResp.Data {
+			if item.Info == nil {
+				in.Nodes = append(in.Nodes, item.Node)
+			}
+		}
+		if len(in.Nodes) > 0 {
+			remoteResp := &pbv1.BulkPlaceInfoResponse{}
+			if err := fetchRemote(
+				s.metadata,
+				s.httpClient,
+				"/v1/bulk/info/place",
+				in,
+				remoteResp,
+			); err != nil {
+				return nil, err
+			}
+			for _, item := range remoteResp.Data {
+				keyedInfo[item.GetNode()] = item
+			}
+		}
+	}
+	result := &pbv1.BulkPlaceInfoResponse{
+		Data: []*pbv1.PlaceInfoResponse{},
+	}
+	for _, item := range keyedInfo {
+		result.Data = append(result.Data, item)
+	}
+	sort.Slice(result.Data, func(i, j int) bool {
+		return result.Data[i].Node < result.Data[j].Node
+	})
+	return result, nil
 }
 
 // VariableInfo implements API for mixer.VariableInfo.
