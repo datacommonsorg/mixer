@@ -130,11 +130,14 @@ func (s *Server) BulkPlaceInfo(
 	if err != nil {
 		return nil, err
 	}
+	// Store result of request nodes in a map, keyed by node DCID.
 	keyedInfo := map[string]*pbv1.PlaceInfoResponse{}
 	for _, item := range localResp.Data {
 		keyedInfo[item.GetNode()] = item
 	}
 	if s.metadata.RemoteMixerDomain != "" {
+		// From local response, find nodes that has no place info, fetch the
+		// info again from remote mixer.
 		in.Nodes = []string{}
 		for _, item := range localResp.Data {
 			if item.Info == nil {
