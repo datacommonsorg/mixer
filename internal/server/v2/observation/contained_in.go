@@ -19,6 +19,7 @@ import (
 	"context"
 	"log"
 	"sort"
+	"strings"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
@@ -66,6 +67,14 @@ func hasCollectionCache(ancestor string, childType string) bool {
 		_, ok := childTypeAllowListForEarth[childType]
 		return ok
 	}
+
+	if strings.HasPrefix(ancestor, "geoId/") &&
+		(len(ancestor) == 8 /* US State DCID size */ ||
+			len(ancestor) == 13 /* US City DCID size */) &&
+		childType == "CensusTract" {
+		return true
+	}
+
 	_, ok := childTypeDenyList[childType]
 	return !ok
 }
