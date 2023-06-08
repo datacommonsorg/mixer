@@ -28,6 +28,8 @@ import (
 	"google.golang.org/grpc/status"
 )
 
+const svProp = "variable_measured"
+
 // Binding contains a query and mapping object which bind together.
 type Binding struct {
 	Query   *types.Query
@@ -812,8 +814,17 @@ func getSQL(
 
 	// Sort to get deterministic result.
 	sort.SliceStable(whereConstraints, func(i, j int) bool {
-		return strings.Compare(
-			whereConstraints[i].LHS.String(), whereConstraints[j].LHS.String()) < 0
+		l := whereConstraints[i].LHS
+		r := whereConstraints[j].LHS
+		// Put "variable_measured" constraints at the beginning to better use
+		// StatVarObservation's key.
+		if l.Name == svProp {
+			return true
+		}
+		if r.Name == svProp {
+			return false
+		}
+		return strings.Compare(l.String(), r.String()) < 0
 	})
 	for idx, c := range whereConstraints {
 		if idx == 0 {
@@ -904,7 +915,13 @@ func Translate(
 		queryOptions = &types.QueryOptions{}
 	}
 
-	sql, prov, err := getSQL(nodes, constraints, constNode, ProvInfo{queryProv, tableProv}, queryOptions)
+	sql, prov, err := getSQL(
+		nodes,
+		constraints,
+		constNode,
+		ProvInfo{queryProv, tableProv},
+		queryOptions,
+	)
 	if err != nil {
 		return nil, err
 	}
