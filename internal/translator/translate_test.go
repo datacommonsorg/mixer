@@ -1234,8 +1234,28 @@ func TestStatVarObs(t *testing.T) {
 				"FROM `dc_v3.Place` AS _dc_v3_Place_1\n" +
 				"JOIN `dc_v3.StatVarObservation` AS _dc_v3_StatVarObservation_0\n" +
 				"ON _dc_v3_Place_1.id = _dc_v3_StatVarObservation_0.observation_about\n" +
-				"WHERE _dc_v3_Place_1.type = \"Country\"\n" +
-				"AND _dc_v3_StatVarObservation_0.variable_measured = \"Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita\"\n",
+				"WHERE _dc_v3_StatVarObservation_0.variable_measured = \"Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita\"\n" +
+				"AND _dc_v3_Place_1.type = \"Country\"\n",
+		},
+		{
+			"browser-observation",
+			`
+			SELECT ?dcid ?mmethod ?obsPeriod ?obsDate
+				WHERE {
+					?svObservation typeOf StatVarObservation .
+					?svObservation variableMeasured Count_Person .
+					?svObservation observationAbout country/USA .
+					?svObservation dcid ?dcid .
+					?svObservation measurementMethod ?mmethod .
+					?svObservation observationPeriod ?obsPeriod .
+				}
+				`,
+			"SELECT _dc_v3_StatVarObservation_0.id AS dcid,\n" +
+				"_dc_v3_StatVarObservation_0.measurement_method AS mmethod,\n" +
+				"_dc_v3_StatVarObservation_0.observation_period AS obsPeriod,\n\n" +
+				"FROM `dc_v3.StatVarObservation` AS _dc_v3_StatVarObservation_0\n" +
+				"WHERE _dc_v3_StatVarObservation_0.variable_measured = \"Count_Person\"\n" +
+				"AND _dc_v3_StatVarObservation_0.observation_about = \"country/USA\"\n",
 		},
 	} {
 		nodes, queries, _, err := sparql.ParseQuery(c.queryStr)
