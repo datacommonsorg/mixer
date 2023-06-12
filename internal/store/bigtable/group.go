@@ -32,6 +32,7 @@ var groupRank = map[string]int{
 	"ipcc":       2,
 	"biomedical": 3,
 	"disaster":   4,
+	"country":    5,
 	"borgcron":   10000, // Used for legacy base cache
 	"infrequent": 10000,
 	"place":      11000,
