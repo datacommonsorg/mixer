@@ -35,6 +35,7 @@ func TestSortTables(t *testing.T) {
 				{name: "ipcc_2022_01_31_20_56_49", table: nil},
 				{name: "private_01_02", table: nil, isCustom: true},
 				{name: "disaster_2023_01_31_20_56_49", table: nil},
+				{name: "country_2023_06_13_06_35_51", table: nil},
 			},
 			expected: []*Table{
 				{name: "private_01_02", table: nil, isCustom: true},
@@ -42,6 +43,7 @@ func TestSortTables(t *testing.T) {
 				{name: "frequent_2022_02_01_14_20_47", table: nil},
 				{name: "ipcc_2022_01_31_20_56_49", table: nil},
 				{name: "disaster_2023_01_31_20_56_49", table: nil},
+				{name: "country_2023_06_13_06_35_51", table: nil},
 				{name: "random_2022", table: nil},
 				{name: "infrequent_2022_01_31_23_15_14", table: nil},
 			},
