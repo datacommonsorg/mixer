@@ -254,7 +254,6 @@ func CollectionDate(
 				}
 			}
 		}
-		// resp.EventCollectionDate.Dates = dateStrings
 	}
 
 	dateStrings := []string{}

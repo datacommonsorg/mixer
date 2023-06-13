@@ -5,120 +5,6 @@
         "places": [
           "country/USA",
           "geoId/06",
-          "geoId/06059",
-          "geoId/06059021924",
-          "geoId/0605990050",
-          "geoId/0645",
-          "geoId/sch0628650",
-          "ipcc_50/33.75_-117.75_USA"
-        ],
-        "geoLocations": [
-          {
-            "point": {
-              "latitude": 33.81133,
-              "longitude": -117.68967
-            }
-          }
-        ],
-        "dates": [
-          "2020-01-01T10:38:35"
-        ],
-        "propVals": {
-          "depth": {
-            "vals": [
-              "Kilometer9.79"
-            ]
-          },
-          "depthError": {
-            "vals": [
-              "Kilometer0.28"
-            ]
-          },
-          "magnitude": {
-            "vals": [
-              "3.16"
-            ]
-          },
-          "magnitudeError": {
-            "vals": [
-              "0.167"
-            ]
-          },
-          "magnitudeType": {
-            "vals": [
-              "MagnitudeMl"
-            ]
-          },
-          "name": {
-            "vals": [
-              "11km ENE of North Tustin, CA"
-            ]
-          }
-        },
-        "dcid": "earthquake/ci39019703",
-        "provenanceId": "dc/base/EarthquakeUSGS"
-      },
-      {
-        "places": [
-          "country/USA",
-          "geoId/06",
-          "geoId/06071",
-          "geoId/06071008901",
-          "geoId/0607192955",
-          "geoId/0608",
-          "geoId/sch0636800",
-          "ipcc_50/35.75_-117.75_USA"
-        ],
-        "geoLocations": [
-          {
-            "point": {
-              "latitude": 35.79283,
-              "longitude": -117.61633
-            }
-          }
-        ],
-        "dates": [
-          "2020-01-03T05:48:05"
-        ],
-        "propVals": {
-          "depth": {
-            "vals": [
-              "Kilometer5.37"
-            ]
-          },
-          "depthError": {
-            "vals": [
-              "Kilometer0.38"
-            ]
-          },
-          "magnitude": {
-            "vals": [
-              "3.14"
-            ]
-          },
-          "magnitudeError": {
-            "vals": [
-              "0.12"
-            ]
-          },
-          "magnitudeType": {
-            "vals": [
-              "MagnitudeMl"
-            ]
-          },
-          "name": {
-            "vals": [
-              "19km W of Searles Valley, CA"
-            ]
-          }
-        },
-        "dcid": "earthquake/ci39021735",
-        "provenanceId": "dc/base/EarthquakeUSGS"
-      },
-      {
-        "places": [
-          "country/USA",
-          "geoId/06",
           "geoId/06071",
           "geoId/06071008901",
           "geoId/0607192955",
@@ -227,175 +113,6 @@
           }
         },
         "dcid": "earthquake/ci39273704",
-        "provenanceId": "dc/base/EarthquakeUSGS"
-      },
-      {
-        "places": [
-          "country/USA",
-          "geoId/06",
-          "geoId/06071",
-          "geoId/06071008901",
-          "geoId/0607192955",
-          "geoId/0608",
-          "geoId/sch0639840",
-          "ipcc_50/35.75_-117.25_USA"
-        ],
-        "geoLocations": [
-          {
-            "point": {
-              "latitude": 35.61733,
-              "longitude": -117.432
-            }
-          }
-        ],
-        "dates": [
-          "2020-01-21T02:08:19"
-        ],
-        "propVals": {
-          "depth": {
-            "vals": [
-              "Kilometer10.17"
-            ]
-          },
-          "depthError": {
-            "vals": [
-              "Kilometer0.19"
-            ]
-          },
-          "magnitude": {
-            "vals": [
-              "3.07"
-            ]
-          },
-          "magnitudeError": {
-            "vals": [
-              "0.156"
-            ]
-          },
-          "magnitudeType": {
-            "vals": [
-              "MagnitudeMl"
-            ]
-          },
-          "name": {
-            "vals": [
-              "17km S of Searles Valley, CA"
-            ]
-          }
-        },
-        "dcid": "earthquake/ci39276560",
-        "provenanceId": "dc/base/EarthquakeUSGS"
-      },
-      {
-        "places": [
-          "country/USA",
-          "geoId/06",
-          "geoId/06037",
-          "geoId/0603792785",
-          "geoId/06037980022",
-          "geoId/0630",
-          "geoId/0644000",
-          "geoId/sch0622710",
-          "ipcc_50/34.25_-118.25_USA",
-          "zip/91344"
-        ],
-        "geoLocations": [
-          {
-            "point": {
-              "latitude": 34.3005,
-              "longitude": -118.4855
-            }
-          }
-        ],
-        "dates": [
-          "2020-01-22T07:41:10"
-        ],
-        "propVals": {
-          "depth": {
-            "vals": [
-              "Kilometer7.72"
-            ]
-          },
-          "depthError": {
-            "vals": [
-              "Kilometer0.39"
-            ]
-          },
-          "magnitude": {
-            "vals": [
-              "3.6"
-            ]
-          },
-          "magnitudeError": {
-            "vals": [
-              "0.149"
-            ]
-          },
-          "magnitudeType": {
-            "vals": [
-              "MagnitudeMl"
-            ]
-          },
-          "name": {
-            "vals": [
-              "4km NNE of Granada Hills, CA"
-            ]
-          }
-        },
-        "dcid": "earthquake/ci39277736",
-        "provenanceId": "dc/base/EarthquakeUSGS"
-      },
-      {
-        "places": [
-          "country/USA",
-          "geoId/06",
-          "geoId/06071",
-          "geoId/06071011600",
-          "geoId/0607190188",
-          "geoId/0608",
-          "geoId/sch0604020",
-          "ipcc_50/35.25_-116.75_USA",
-          "zip/92311"
-        ],
-        "geoLocations": [
-          {
-            "point": {
-              "latitude": 35.0975,
-              "longitude": -116.96967
-            }
-          }
-        ],
-        "dates": [
-          "2020-01-25T03:03:34"
-        ],
-        "propVals": {
-          "depth": {
-            "vals": [
-              "Kilometer3.07"
-            ]
-          },
-          "depthError": {
-            "vals": [
-              "Kilometer0.66"
-            ]
-          },
-          "magnitude": {
-            "vals": [
-              "4.62"
-            ]
-          },
-          "magnitudeType": {
-            "vals": [
-              "MagnitudeMw"
-            ]
-          },
-          "name": {
-            "vals": [
-              "23km NNE of Barstow, CA"
-            ]
-          }
-        },
-        "dcid": "earthquake/ci39281440",
         "provenanceId": "dc/base/EarthquakeUSGS"
       },
       {
@@ -518,66 +235,6 @@
         "places": [
           "country/USA",
           "geoId/06",
-          "geoId/06029",
-          "geoId/06029005103",
-          "geoId/0602990180",
-          "geoId/0623",
-          "geoId/0653448",
-          "geoId/sch0619540",
-          "geoId/sch0637890",
-          "ipcc_50/35.25_-119.25_USA",
-          "zip/93308"
-        ],
-        "geoLocations": [
-          {
-            "point": {
-              "latitude": 35.43583,
-              "longitude": -119.00833
-            }
-          }
-        ],
-        "dates": [
-          "2020-01-29T12:56:21"
-        ],
-        "propVals": {
-          "depth": {
-            "vals": [
-              "Kilometer17.99"
-            ]
-          },
-          "depthError": {
-            "vals": [
-              "Kilometer0.59"
-            ]
-          },
-          "magnitude": {
-            "vals": [
-              "3.19"
-            ]
-          },
-          "magnitudeError": {
-            "vals": [
-              "0.14"
-            ]
-          },
-          "magnitudeType": {
-            "vals": [
-              "MagnitudeMl"
-            ]
-          },
-          "name": {
-            "vals": [
-              "2km NNE of Oildale, CA"
-            ]
-          }
-        },
-        "dcid": "earthquake/ci39285816",
-        "provenanceId": "dc/base/EarthquakeUSGS"
-      },
-      {
-        "places": [
-          "country/USA",
-          "geoId/06",
           "geoId/06085",
           "geoId/06085513500",
           "geoId/0608590680",
@@ -684,6 +341,297 @@
           }
         },
         "dcid": "earthquake/nc73323271",
+        "provenanceId": "dc/base/EarthquakeUSGS"
+      },
+      {
+        "places": [
+          "country/USA",
+          "geoId/06",
+          "geoId/06069",
+          "geoId/06069000200",
+          "geoId/0606992840",
+          "geoId/0620",
+          "geoId/sch0691136",
+          "ipcc_50/36.75_-121.75_USA",
+          "zip/95004"
+        ],
+        "geoLocations": [
+          {
+            "point": {
+              "latitude": 36.87617,
+              "longitude": -121.61
+            }
+          }
+        ],
+        "dates": [
+          "2020-01-13T10:58:20"
+        ],
+        "propVals": {
+          "depth": {
+            "vals": [
+              "Kilometer6.72"
+            ]
+          },
+          "depthError": {
+            "vals": [
+              "Kilometer0.3"
+            ]
+          },
+          "magnitude": {
+            "vals": [
+              "3.21"
+            ]
+          },
+          "magnitudeError": {
+            "vals": [
+              "0.23"
+            ]
+          },
+          "magnitudeType": {
+            "vals": [
+              "MagnitudeMl"
+            ]
+          },
+          "name": {
+            "vals": [
+              "3km ESE of Aromas, CA"
+            ]
+          }
+        },
+        "dcid": "earthquake/nc73326936",
+        "provenanceId": "dc/base/EarthquakeUSGS"
+      },
+      {
+        "places": [
+          "country/USA",
+          "geoId/06",
+          "geoId/06059",
+          "geoId/06059021924",
+          "geoId/0605990050",
+          "geoId/0645",
+          "geoId/sch0628650",
+          "ipcc_50/33.75_-117.75_USA"
+        ],
+        "geoLocations": [
+          {
+            "point": {
+              "latitude": 33.81133,
+              "longitude": -117.68967
+            }
+          }
+        ],
+        "dates": [
+          "2020-01-01T10:38:35"
+        ],
+        "propVals": {
+          "depth": {
+            "vals": [
+              "Kilometer9.79"
+            ]
+          },
+          "depthError": {
+            "vals": [
+              "Kilometer0.28"
+            ]
+          },
+          "magnitude": {
+            "vals": [
+              "3.16"
+            ]
+          },
+          "magnitudeError": {
+            "vals": [
+              "0.167"
+            ]
+          },
+          "magnitudeType": {
+            "vals": [
+              "MagnitudeMl"
+            ]
+          },
+          "name": {
+            "vals": [
+              "11km ENE of North Tustin, CA"
+            ]
+          }
+        },
+        "dcid": "earthquake/ci39019703",
+        "provenanceId": "dc/base/EarthquakeUSGS"
+      },
+      {
+        "places": [
+          "country/USA",
+          "geoId/06",
+          "geoId/06071",
+          "geoId/06071008901",
+          "geoId/0607192955",
+          "geoId/0608",
+          "geoId/sch0639840",
+          "ipcc_50/35.75_-117.25_USA"
+        ],
+        "geoLocations": [
+          {
+            "point": {
+              "latitude": 35.61733,
+              "longitude": -117.432
+            }
+          }
+        ],
+        "dates": [
+          "2020-01-21T02:08:19"
+        ],
+        "propVals": {
+          "depth": {
+            "vals": [
+              "Kilometer10.17"
+            ]
+          },
+          "depthError": {
+            "vals": [
+              "Kilometer0.19"
+            ]
+          },
+          "magnitude": {
+            "vals": [
+              "3.07"
+            ]
+          },
+          "magnitudeError": {
+            "vals": [
+              "0.156"
+            ]
+          },
+          "magnitudeType": {
+            "vals": [
+              "MagnitudeMl"
+            ]
+          },
+          "name": {
+            "vals": [
+              "17km S of Searles Valley, CA"
+            ]
+          }
+        },
+        "dcid": "earthquake/ci39276560",
+        "provenanceId": "dc/base/EarthquakeUSGS"
+      },
+      {
+        "places": [
+          "country/USA",
+          "geoId/06",
+          "geoId/06037",
+          "geoId/0603792785",
+          "geoId/06037980022",
+          "geoId/0630",
+          "geoId/0644000",
+          "geoId/sch0622710",
+          "ipcc_50/34.25_-118.25_USA",
+          "zip/91344"
+        ],
+        "geoLocations": [
+          {
+            "point": {
+              "latitude": 34.3005,
+              "longitude": -118.4855
+            }
+          }
+        ],
+        "dates": [
+          "2020-01-22T07:41:10"
+        ],
+        "propVals": {
+          "depth": {
+            "vals": [
+              "Kilometer7.72"
+            ]
+          },
+          "depthError": {
+            "vals": [
+              "Kilometer0.39"
+            ]
+          },
+          "magnitude": {
+            "vals": [
+              "3.6"
+            ]
+          },
+          "magnitudeError": {
+            "vals": [
+              "0.149"
+            ]
+          },
+          "magnitudeType": {
+            "vals": [
+              "MagnitudeMl"
+            ]
+          },
+          "name": {
+            "vals": [
+              "4km NNE of Granada Hills, CA"
+            ]
+          }
+        },
+        "dcid": "earthquake/ci39277736",
+        "provenanceId": "dc/base/EarthquakeUSGS"
+      },
+      {
+        "places": [
+          "country/USA",
+          "geoId/06",
+          "geoId/06029",
+          "geoId/06029005103",
+          "geoId/0602990180",
+          "geoId/0623",
+          "geoId/0653448",
+          "geoId/sch0619540",
+          "geoId/sch0637890",
+          "ipcc_50/35.25_-119.25_USA",
+          "zip/93308"
+        ],
+        "geoLocations": [
+          {
+            "point": {
+              "latitude": 35.43583,
+              "longitude": -119.00833
+            }
+          }
+        ],
+        "dates": [
+          "2020-01-29T12:56:21"
+        ],
+        "propVals": {
+          "depth": {
+            "vals": [
+              "Kilometer17.99"
+            ]
+          },
+          "depthError": {
+            "vals": [
+              "Kilometer0.59"
+            ]
+          },
+          "magnitude": {
+            "vals": [
+              "3.19"
+            ]
+          },
+          "magnitudeError": {
+            "vals": [
+              "0.14"
+            ]
+          },
+          "magnitudeType": {
+            "vals": [
+              "MagnitudeMl"
+            ]
+          },
+          "name": {
+            "vals": [
+              "2km NNE of Oildale, CA"
+            ]
+          }
+        },
+        "dcid": "earthquake/ci39285816",
         "provenanceId": "dc/base/EarthquakeUSGS"
       },
       {
@@ -806,64 +754,6 @@
         "places": [
           "country/USA",
           "geoId/06",
-          "geoId/06069",
-          "geoId/06069000200",
-          "geoId/0606992840",
-          "geoId/0620",
-          "geoId/sch0691136",
-          "ipcc_50/36.75_-121.75_USA",
-          "zip/95004"
-        ],
-        "geoLocations": [
-          {
-            "point": {
-              "latitude": 36.87617,
-              "longitude": -121.61
-            }
-          }
-        ],
-        "dates": [
-          "2020-01-13T10:58:20"
-        ],
-        "propVals": {
-          "depth": {
-            "vals": [
-              "Kilometer6.72"
-            ]
-          },
-          "depthError": {
-            "vals": [
-              "Kilometer0.3"
-            ]
-          },
-          "magnitude": {
-            "vals": [
-              "3.21"
-            ]
-          },
-          "magnitudeError": {
-            "vals": [
-              "0.23"
-            ]
-          },
-          "magnitudeType": {
-            "vals": [
-              "MagnitudeMl"
-            ]
-          },
-          "name": {
-            "vals": [
-              "3km ESE of Aromas, CA"
-            ]
-          }
-        },
-        "dcid": "earthquake/nc73326936",
-        "provenanceId": "dc/base/EarthquakeUSGS"
-      },
-      {
-        "places": [
-          "country/USA",
-          "geoId/06",
           "geoId/0602",
           "geoId/06023",
           "geoId/06023011500",
@@ -916,6 +806,116 @@
           }
         },
         "dcid": "earthquake/nc73328466",
+        "provenanceId": "dc/base/EarthquakeUSGS"
+      },
+      {
+        "places": [
+          "country/USA",
+          "geoId/06",
+          "geoId/06071",
+          "geoId/06071008901",
+          "geoId/0607192955",
+          "geoId/0608",
+          "geoId/sch0636800",
+          "ipcc_50/35.75_-117.75_USA"
+        ],
+        "geoLocations": [
+          {
+            "point": {
+              "latitude": 35.79283,
+              "longitude": -117.61633
+            }
+          }
+        ],
+        "dates": [
+          "2020-01-03T05:48:05"
+        ],
+        "propVals": {
+          "depth": {
+            "vals": [
+              "Kilometer5.37"
+            ]
+          },
+          "depthError": {
+            "vals": [
+              "Kilometer0.38"
+            ]
+          },
+          "magnitude": {
+            "vals": [
+              "3.14"
+            ]
+          },
+          "magnitudeError": {
+            "vals": [
+              "0.12"
+            ]
+          },
+          "magnitudeType": {
+            "vals": [
+              "MagnitudeMl"
+            ]
+          },
+          "name": {
+            "vals": [
+              "19km W of Searles Valley, CA"
+            ]
+          }
+        },
+        "dcid": "earthquake/ci39021735",
+        "provenanceId": "dc/base/EarthquakeUSGS"
+      },
+      {
+        "places": [
+          "country/USA",
+          "geoId/06",
+          "geoId/06071",
+          "geoId/06071011600",
+          "geoId/0607190188",
+          "geoId/0608",
+          "geoId/sch0604020",
+          "ipcc_50/35.25_-116.75_USA",
+          "zip/92311"
+        ],
+        "geoLocations": [
+          {
+            "point": {
+              "latitude": 35.0975,
+              "longitude": -116.96967
+            }
+          }
+        ],
+        "dates": [
+          "2020-01-25T03:03:34"
+        ],
+        "propVals": {
+          "depth": {
+            "vals": [
+              "Kilometer3.07"
+            ]
+          },
+          "depthError": {
+            "vals": [
+              "Kilometer0.66"
+            ]
+          },
+          "magnitude": {
+            "vals": [
+              "4.62"
+            ]
+          },
+          "magnitudeType": {
+            "vals": [
+              "MagnitudeMw"
+            ]
+          },
+          "name": {
+            "vals": [
+              "23km NNE of Barstow, CA"
+            ]
+          }
+        },
+        "dcid": "earthquake/ci39281440",
         "provenanceId": "dc/base/EarthquakeUSGS"
       },
       {
