@@ -197,6 +197,10 @@ func Collection(
 	for _, event := range idToEvent {
 		resp.EventCollection.Events = append(resp.EventCollection.Events, event)
 	}
+	sort.Slice(resp.EventCollection.Events, func(i, j int) bool {
+		return resp.EventCollection.Events[i].GetDcid() < resp.EventCollection.Events[j].GetDcid()
+	})
+
 	for provID, prov := range idToProvenance {
 		resp.EventCollection.ProvenanceInfo[provID] = prov
 	}
