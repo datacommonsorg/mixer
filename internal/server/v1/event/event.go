@@ -151,14 +151,10 @@ func Collection(
 		return nil, err
 	}
 
-	resp := &pbv1.EventCollectionResponse{
-		EventCollection: &pbv1.EventCollection{
-			Events:         []*pbv1.EventCollection_Event{},
-			ProvenanceInfo: map[string]*pbv1.EventCollection_ProvenanceInfo{},
-		},
-	}
+	idToEvent := map[string]*pbv1.EventCollection_Event{}
+	idToProvenance := map[string]*pbv1.EventCollection_ProvenanceInfo{}
 
-	// Go through (ordered) import groups one by one, stop when data is found.
+	// Go through (ordered) import groups one by one, merge results across import groups.
 	for _, btData := range btDataList {
 		if len(btData) == 0 {
 			continue
@@ -177,16 +173,38 @@ func Collection(
 						continue
 					}
 				}
-				resp.EventCollection.Events = append(
-					resp.EventCollection.Events,
-					event,
-				)
-				provID := event.ProvenanceId
-				resp.EventCollection.ProvenanceInfo[provID] = data.ProvenanceInfo[provID]
+
+				eventID := event.GetDcid()
+				if _, ok := idToEvent[eventID]; !ok {
+					idToEvent[eventID] = event
+				}
+
+				provID := event.GetProvenanceId()
+				if _, ok := idToProvenance[provID]; !ok {
+					idToProvenance[provID] = data.ProvenanceInfo[provID]
+				}
 			}
 		}
-		break
 	}
+
+	resp := &pbv1.EventCollectionResponse{
+		EventCollection: &pbv1.EventCollection{
+			Events:         []*pbv1.EventCollection_Event{},
+			ProvenanceInfo: map[string]*pbv1.EventCollection_ProvenanceInfo{},
+		},
+	}
+
+	for _, event := range idToEvent {
+		resp.EventCollection.Events = append(resp.EventCollection.Events, event)
+	}
+	sort.Slice(resp.EventCollection.Events, func(i, j int) bool {
+		return resp.EventCollection.Events[i].GetDcid() < resp.EventCollection.Events[j].GetDcid()
+	})
+
+	for provID, prov := range idToProvenance {
+		resp.EventCollection.ProvenanceInfo[provID] = prov
+	}
+
 	return resp, nil
 }
 
@@ -224,33 +242,33 @@ func CollectionDate(
 		return nil, err
 	}
 
-	resp := &pbv1.EventCollectionDateResponse{
-		EventCollectionDate: &pbv1.EventCollectionDate{
-			Dates: []string{},
-		},
-	}
+	dateSet := map[string]struct{}{}
 
-	// Go through (ordered) import groups one by one, stop when data is found.
+	// Go through (ordered) import groups one by one, merge results across import groups.
 	for _, btData := range btDataList {
 		if len(btData) == 0 {
 			continue
 		}
 		// Each row represents events from a sub-place. Merge them together.
-		dateSet := map[string]struct{}{}
-		dateStrings := []string{}
 		for _, row := range btData {
 			data := row.Data.(*pbv1.EventCollectionDate)
 			for _, date := range data.Dates {
 				if _, ok := dateSet[date]; !ok {
 					dateSet[date] = struct{}{}
-					dateStrings = append(dateStrings, date)
 				}
 			}
 		}
-		sort.Strings(dateStrings)
-		resp.EventCollectionDate.Dates = dateStrings
-		break
 	}
 
-	return resp, nil
+	dateStrings := []string{}
+	for date := range dateSet {
+		dateStrings = append(dateStrings, date)
+	}
+	sort.Strings(dateStrings)
+
+	return &pbv1.EventCollectionDateResponse{
+		EventCollectionDate: &pbv1.EventCollectionDate{
+			Dates: dateStrings,
+		},
+	}, nil
 }
