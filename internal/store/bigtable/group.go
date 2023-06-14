@@ -29,9 +29,9 @@ var groupRank = map[string]int{
 	"dcbranch":   0, // Used for the latest proto branch cache
 	"branch":     0, // Used for legacy branch cache
 	"auto1d":     1,
-	"auto1w":     2,
-	"auto2w":     3,
-	"frequent":   4,
+	"frequent":   2,
+	"auto1w":     3,
+	"auto2w":     4,
 	"ipcc":       5,
 	"biomedical": 6,
 	"disaster":   7,
