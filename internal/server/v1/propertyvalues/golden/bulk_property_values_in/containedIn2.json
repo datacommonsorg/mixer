@@ -22436,6 +22436,382 @@
           "provenanceId": "dc/base/EIA860_Utilities"
         },
         {
+          "name": "Community Action Agency Of Butte County Inc Elk Creek Grange",
+          "types": [
+            "FoodEstablishment"
+          ],
+          "dcid": "foodEstablishment/CA_95939_CommunityActionAgencyOfButteCountyIncElkCreekGrange",
+          "provenanceId": "dc/base/California_FoodResources"
+        },
+        {
+          "name": "Community Action Agency Of Butte County Inc Feather Falls Grange",
+          "types": [
+            "FoodEstablishment"
+          ],
+          "dcid": "foodEstablishment/CA_95940_CommunityActionAgencyOfButteCountyIncFeatherFallsGrange",
+          "provenanceId": "dc/base/California_FoodResources"
+        },
+        {
+          "name": "Community Action Agency Of Butte County Inc Forbestown Market Community Center",
+          "types": [
+            "FoodEstablishment"
+          ],
+          "dcid": "foodEstablishment/CA_95941_CommunityActionAgencyOfButteCountyIncForbestownMarketCommunityCenter",
+          "provenanceId": "dc/base/California_FoodResources"
+        },
+        {
+          "name": "Community Action Agency Of Butte County Inc Mountain Joy Fellowship",
+          "types": [
+            "FoodEstablishment"
+          ],
+          "dcid": "foodEstablishment/CA_95942_CommunityActionAgencyOfButteCountyIncMountainJoyFellowship",
+          "provenanceId": "dc/base/California_FoodResources"
+        },
+        {
+          "name": "Christian Life Assembly Of God Church",
+          "types": [
+            "FoodEstablishment"
+          ],
+          "dcid": "foodEstablishment/CA_95948_ChristianLifeAssemblyOfGodChurch",
+          "provenanceId": "dc/base/California_FoodResources"
+        },
+        {
+          "name": "Community Action Agency Of Butte County Inc Gridley Guardian Building",
+          "types": [
+            "FoodEstablishment"
+          ],
+          "dcid": "foodEstablishment/CA_95948_CommunityActionAgencyOfButteCountyIncGridleyGuardianBuilding",
+          "provenanceId": "dc/base/California_FoodResources"
+        },
+        {
+          "name": "Grace Lutheran Churchfood Pantry",
+          "types": [
+            "FoodEstablishment"
+          ],
+          "dcid": "foodEstablishment/CA_95948_GraceLutheranChurchfoodPantry",
+          "provenanceId": "dc/base/California_FoodResources"
+        },
+        {
+          "name": "Gridley Emergency Relief Servicesgridley Christian Church",
+          "types": [
+            "FoodEstablishment"
+          ],
+          "dcid": "foodEstablishment/CA_95948_GridleyEmergencyReliefServicesgridleyChristianChurch",
+          "provenanceId": "dc/base/California_FoodResources"
+        },
+        {
+          "name": "Sacred Heart Parishsacred Heart Parish Food Closet",
+          "types": [
+            "FoodEstablishment"
+          ],
+          "dcid": "foodEstablishment/CA_95948_SacredHeartParishsacredHeartParishFoodCloset",
+          "provenanceId": "dc/base/California_FoodResources"
+        },
+        {
+          "name": "Community Action Agency Of Butte County Inc Evangelical Church",
+          "types": [
+            "FoodEstablishment"
+          ],
+          "dcid": "foodEstablishment/CA_95951_CommunityActionAgencyOfButteCountyIncEvangelicalChurch",
+          "provenanceId": "dc/base/California_FoodResources"
+        },
+        {
+          "name": "Community Action Agency Of Butte County Inc Magalia Community Church",
+          "types": [
+            "FoodEstablishment"
+          ],
+          "dcid": "foodEstablishment/CA_95954_CommunityActionAgencyOfButteCountyIncMagaliaCommunityChurch",
+          "provenanceId": "dc/base/California_FoodResources"
+        },
+        {
+          "name": "Community Action Agency Of Butte County Inc First Lutheran Church",
+          "types": [
+            "FoodEstablishment"
+          ],
+          "dcid": "foodEstablishment/CA_95963_CommunityActionAgencyOfButteCountyIncFirstLutheranChurch",
+          "provenanceId": "dc/base/California_FoodResources"
+        },
+        {
+          "name": "First Lutheran Church",
+          "types": [
+            "FoodEstablishment"
+          ],
+          "dcid": "foodEstablishment/CA_95963_FirstLutheranChurch",
+          "provenanceId": "dc/base/California_FoodResources"
+        },
+        {
+          "name": "Glenn County Office Of Educationorland Administration Building",
+          "types": [
+            "FoodEstablishment"
+          ],
+          "dcid": "foodEstablishment/CA_95963_GlennCountyOfficeOfEducationorlandAdministrationBuilding",
+          "provenanceId": "dc/base/California_FoodResources"
+        },
+        {
+          "name": "Community Action Agency Of Butte County",
+          "types": [
+            "FoodEstablishment"
+          ],
+          "dcid": "foodEstablishment/CA_95965_CommunityActionAgencyOfButteCounty",
+          "provenanceId": "dc/base/California_FoodResources"
+        },
+        {
+          "name": "Community Action Agency Of Butte County Inc Concow Grange",
+          "types": [
+            "FoodEstablishment"
+          ],
+          "dcid": "foodEstablishment/CA_95965_CommunityActionAgencyOfButteCountyIncConcowGrange",
+          "provenanceId": "dc/base/California_FoodResources"
+        },
+        {
+          "name": "Community Action Agency Of Butte County Inc New Life Church",
+          "types": [
+            "FoodEstablishment"
+          ],
+          "dcid": "foodEstablishment/CA_95965_CommunityActionAgencyOfButteCountyIncNewLifeChurch",
+          "provenanceId": "dc/base/California_FoodResources"
+        },
+        {
+          "name": "Student Services -- Butte Glenn Community College District",
+          "types": [
+            "FoodEstablishment"
+          ],
+          "dcid": "foodEstablishment/CA_95965_StudentServicesButteGlennCommunityCollegeDistrict",
+          "provenanceId": "dc/base/California_FoodResources"
+        },
+        {
+          "name": "Community Action Agency Of Butte County Inc Hope Center",
+          "types": [
+            "FoodEstablishment"
+          ],
+          "dcid": "foodEstablishment/CA_95966_CommunityActionAgencyOfButteCountyIncHopeCenter",
+          "provenanceId": "dc/base/California_FoodResources"
+        },
+        {
+          "name": "New Hope Missionary Baptist",
+          "types": [
+            "FoodEstablishment"
+          ],
+          "dcid": "foodEstablishment/CA_95966_NewHopeMissionaryBaptist",
+          "provenanceId": "dc/base/California_FoodResources"
+        },
+        {
+          "name": "New Life Christian Center Church",
+          "types": [
+            "FoodEstablishment"
+          ],
+          "dcid": "foodEstablishment/CA_95966_NewLifeChristianCenterChurch",
+          "provenanceId": "dc/base/California_FoodResources"
+        },
+        {
+          "name": "Oroville Rescue Mission Administrationoroville Rescue Mission",
+          "types": [
+            "FoodEstablishment"
+          ],
+          "dcid": "foodEstablishment/CA_95966_OrovilleRescueMissionAdministrationorovilleRescueMission",
+          "provenanceId": "dc/base/California_FoodResources"
+        },
+        {
+          "name": "Salvation Armysalvation Army Church Oroville",
+          "types": [
+            "FoodEstablishment"
+          ],
+          "dcid": "foodEstablishment/CA_95966_SalvationArmysalvationArmyChurchOroville",
+          "provenanceId": "dc/base/California_FoodResources"
+        },
+        {
+          "name": "The Father's House Church",
+          "types": [
+            "FoodEstablishment"
+          ],
+          "dcid": "foodEstablishment/CA_95966_TheFatherSHouseChurch",
+          "provenanceId": "dc/base/California_FoodResources"
+        },
+        {
+          "name": "The Hope Center",
+          "types": [
+            "FoodEstablishment"
+          ],
+          "dcid": "foodEstablishment/CA_95966_TheHopeCenter",
+          "provenanceId": "dc/base/California_FoodResources"
+        },
+        {
+          "name": "The Hope Centerparadise Hope Center",
+          "types": [
+            "FoodEstablishment"
+          ],
+          "dcid": "foodEstablishment/CA_95966_TheHopeCenterparadiseHopeCenter",
+          "provenanceId": "dc/base/California_FoodResources"
+        },
+        {
+          "name": "Community Action Agency Of Butte County Inc Palermo Family Bible Church",
+          "types": [
+            "FoodEstablishment"
+          ],
+          "dcid": "foodEstablishment/CA_95968_CommunityActionAgencyOfButteCountyIncPalermoFamilyBibleChurch",
+          "provenanceId": "dc/base/California_FoodResources"
+        },
+        {
+          "name": "Community Action Agency Of Butte County Inc First Baptist Church",
+          "types": [
+            "FoodEstablishment"
+          ],
+          "dcid": "foodEstablishment/CA_95969_CommunityActionAgencyOfButteCountyIncFirstBaptistChurch",
+          "provenanceId": "dc/base/California_FoodResources"
+        },
+        {
+          "name": "First Baptist Church Of Paradise",
+          "types": [
+            "FoodEstablishment"
+          ],
+          "dcid": "foodEstablishment/CA_95969_FirstBaptistChurchOfParadise",
+          "provenanceId": "dc/base/California_FoodResources"
+        },
+        {
+          "name": "First Christian Church Paradise",
+          "types": [
+            "FoodEstablishment"
+          ],
+          "dcid": "foodEstablishment/CA_95969_FirstChristianChurchParadise",
+          "provenanceId": "dc/base/California_FoodResources"
+        },
+        {
+          "name": "Chico Rescue Mission",
+          "types": [
+            "FoodEstablishment"
+          ],
+          "dcid": "foodEstablishment/CA_95973_ChicoRescueMission",
+          "provenanceId": "dc/base/California_FoodResources"
+        },
+        {
+          "name": "Community Action Agency Of Butte County Inc Cohasset Community Center",
+          "types": [
+            "FoodEstablishment"
+          ],
+          "dcid": "foodEstablishment/CA_95973_CommunityActionAgencyOfButteCountyIncCohassetCommunityCenter",
+          "provenanceId": "dc/base/California_FoodResources"
+        },
+        {
+          "name": "Community Action Agency Of Butte County Inc Stirling City Community Center",
+          "types": [
+            "FoodEstablishment"
+          ],
+          "dcid": "foodEstablishment/CA_95978_CommunityActionAgencyOfButteCountyIncStirlingCityCommunityCenter",
+          "provenanceId": "dc/base/California_FoodResources"
+        },
+        {
+          "name": "First Southern Baptist Church",
+          "types": [
+            "FoodEstablishment"
+          ],
+          "dcid": "foodEstablishment/CA_95988_FirstSouthernBaptistChurch",
+          "provenanceId": "dc/base/California_FoodResources"
+        },
+        {
+          "name": "Glenn County Office Of Education",
+          "types": [
+            "FoodEstablishment"
+          ],
+          "dcid": "foodEstablishment/CA_95988_GlennCountyOfficeOfEducation",
+          "provenanceId": "dc/base/California_FoodResources"
+        },
+        {
+          "name": "Willows Adventist Church",
+          "types": [
+            "FoodEstablishment"
+          ],
+          "dcid": "foodEstablishment/CA_95988_WillowsAdventistChurch",
+          "provenanceId": "dc/base/California_FoodResources"
+        },
+        {
+          "name": "Willows Seventh Day Adventist Church",
+          "types": [
+            "FoodEstablishment"
+          ],
+          "dcid": "foodEstablishment/CA_95988_WillowsSeventhDayAdventistChurch",
+          "provenanceId": "dc/base/California_FoodResources"
+        },
+        {
+          "name": "Living Hope - Resource Center",
+          "types": [
+            "FoodEstablishment"
+          ],
+          "dcid": "foodEstablishment/CA_96001_LivingHopeResourceCenter",
+          "provenanceId": "dc/base/California_FoodResources"
+        },
+        {
+          "name": "Fall River Community Food Pantry",
+          "types": [
+            "FoodEstablishment"
+          ],
+          "dcid": "foodEstablishment/CA_96028_FallRiverCommunityFoodPantry",
+          "provenanceId": "dc/base/California_FoodResources"
+        },
+        {
+          "name": "Fort Sage Family Resource Center",
+          "types": [
+            "FoodEstablishment"
+          ],
+          "dcid": "foodEstablishment/CA_96113_FortSageFamilyResourceCenter",
+          "provenanceId": "dc/base/California_FoodResources"
+        },
+        {
+          "name": "Crossroads Ministry",
+          "types": [
+            "FoodEstablishment"
+          ],
+          "dcid": "foodEstablishment/CA_96130_CrossroadsMinistry",
+          "provenanceId": "dc/base/California_FoodResources"
+        },
+        {
+          "name": "Lassen Family Services",
+          "types": [
+            "FoodEstablishment"
+          ],
+          "dcid": "foodEstablishment/CA_96130_LassenFamilyServices",
+          "provenanceId": "dc/base/California_FoodResources"
+        },
+        {
+          "name": "Lassen-Modoc Food Bank",
+          "types": [
+            "FoodEstablishment"
+          ],
+          "dcid": "foodEstablishment/CA_96130_LassenModocFoodBank",
+          "provenanceId": "dc/base/California_FoodResources"
+        },
+        {
+          "name": "Susanville Salvation Army",
+          "types": [
+            "FoodEstablishment"
+          ],
+          "dcid": "foodEstablishment/CA_96130_SusanvilleSalvationArmy",
+          "provenanceId": "dc/base/California_FoodResources"
+        },
+        {
+          "name": "Susanville Salvation Army",
+          "types": [
+            "FoodEstablishment"
+          ],
+          "dcid": "foodEstablishment/CA_96130_SusanvilleSalvationArmyThe",
+          "provenanceId": "dc/base/California_FoodResources"
+        },
+        {
+          "name": "Westwood Family Resource Center",
+          "types": [
+            "FoodEstablishment"
+          ],
+          "dcid": "foodEstablishment/CA_96137_WestwoodFamilyResourceCenter",
+          "provenanceId": "dc/base/California_FoodResources"
+        },
+        {
+          "name": "South Lake Tahoe Senior Center",
+          "types": [
+            "FoodEstablishment"
+          ],
+          "dcid": "foodEstablishment/CA_96150_SouthLakeTahoeSeniorCenter",
+          "provenanceId": "dc/base/California_FoodResources"
+        },
+        {
           "name": "Census Tract 3260, Contra Costa County, California",
           "types": [
             "CensusTract"
@@ -62562,5 +62938,5 @@
       ]
     }
   ],
-  "nextToken": "H4sIAAAAAAAA/4zSQU7rMBgE4Fc3fVhui4JXvUVbJFixoLhpCQLJUmCNjPMrtWRsyXGKchAuwfE4ASrZxg5LL/5PM9aQBzKVtjHetcuXYkNSaY0XykCZG66FBHKxB7t3qvx9va63UNF/FOERRRhRhMcU4YQmeJIikg1Zs5wz1kFXqyCzG2LmxSUDrR/hCHoddjYEV2Dzcrm67kGmDEzd1M9OSB8kbqJEwpRve27/n24XlOTR6zTT8A7GC9cW8mCt7pHO8CRNFt+I3EYpcq+qQxDpqtxFhdmTKksNA8ZACm4/wHEtTPhDd1Fhzp06Ch+OcfqP8eJrRLJ4G968aSUHmM8RYfE4f9tZvNN5l2Krau9U79S6ucx+AAAA//8BAAD//0GS7HaLAwAA"
+  "nextToken": "H4sIAAAAAAAA/5zSwU4yMRQF4J8yP1wKmLEr3gIw0b0ZDJJgUh0h0Y2pnRtoUtuk08HMg/gSPp5PYHC2plNcdvPl3NNDn+lQ2sp4V083+TVNpTVeKIPFynAtJNLzJdqlU8XP62W+wB37xwh0GAHCCHQZgYQR+M8I9BiBPiMALIFBSuimzR6teJY18OUsmt22seP8IkOt13hAPY937yns0K6K6ezqF3SYoSmr8tEJ6aPJdZBMMuXrCKt3tCaMPgW19EbjGxovXJ3LvbU6Qu7DIE0mX4TyIE1v1W4fjTanPwTF0Z0qCo0nmi0puX1Hx7Uw8R+0DYpj7tRB+PiYxz67k88O3YSv59WrVvJE9qND83Dcv+0+3MFZk3KhSu9U1PSbuY6+AQAA//8BAAD///PQ5oZbBAAA"
 }
