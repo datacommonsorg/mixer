@@ -67,6 +67,10 @@ func TestTokenize(t *testing.T) {
 			" alpha  ,beta,Gamma,  delta eta",
 			[]string{"alpha", ",", "beta", ",", "Gamma", ",", "delta", "eta"},
 		},
+		{
+			"alpha , beta,Gamma",
+			[]string{"alpha", ",", "beta", ",", "Gamma"},
+		},
 	} {
 		got := tokenize(c.query)
 		if diff := cmp.Diff(got, c.want); diff != "" {
