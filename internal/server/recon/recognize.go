@@ -76,6 +76,9 @@ func tokenize(query string) []string {
 		if string(partBySpace[0]) == "," {
 			tokens = append(tokens, ",")
 			partBySpace = partBySpace[1:]
+			if partBySpace == "" {
+				continue
+			}
 		}
 
 		// Check suffix.
