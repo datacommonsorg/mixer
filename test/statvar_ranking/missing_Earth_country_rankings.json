@@ -555,6 +555,18 @@
     "relatedChart": {}
   },
   {
+    "title": "Number of people employed",
+    "statsVars": [
+      "Count_Person_Employed"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "Count_Person_Employed"
+      ]
+    }
+  },
+  {
     "title": "Palmer drought severity index",
     "statsVars": [
       "PalmerDroughtSeverityIndex_Atmosphere"
@@ -735,6 +747,7 @@
       "indianCensus/Count_Person_Religion_Jain",
       "indianCensus/Count_Person_Religion_Muslim",
       "indianCensus/Count_Person_Religion_OtherReligionsAndPersuasions",
+      "indianCensus/Count_Person_Religion_ReligionNotStated",
       "indianCensus/Count_Person_Religion_Sikh"
     ],
     "relatedChart": {
@@ -746,6 +759,7 @@
         "indianCensus/Count_Person_Religion_Jain",
         "indianCensus/Count_Person_Religion_Muslim",
         "indianCensus/Count_Person_Religion_OtherReligionsAndPersuasions",
+        "indianCensus/Count_Person_Religion_ReligionNotStated",
         "indianCensus/Count_Person_Religion_Sikh"
       ]
     }

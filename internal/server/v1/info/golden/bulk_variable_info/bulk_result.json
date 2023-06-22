@@ -5,26 +5,26 @@
       "info": {
         "placeTypeSummary": {
           "AdministrativeArea": {
-            "placeCount": 51,
+            "placeCount": 46,
             "topPlaces": [
               {
-                "dcid": "wikidataId/Q1088815",
-                "name": "Southeast Region"
+                "dcid": "wikidataId/Q1973593",
+                "name": "Waikato District"
               },
               {
-                "dcid": "wikidataId/Q1136194",
-                "name": "Northeast Region"
+                "dcid": "wikidataId/Q550219",
+                "name": "Capital Regional District"
               },
               {
-                "dcid": "wikidataId/Q1060042",
-                "name": "Southern Brazil"
+                "dcid": "wikidataId/Q4874224",
+                "name": "Bay of Plenty"
               }
             ],
             "minValue": 1565,
-            "maxValue": 36986320
+            "maxValue": 244600
           },
           "AdministrativeArea1": {
-            "placeCount": 392,
+            "placeCount": 330,
             "topPlaces": [
               {
                 "dcid": "wikidataId/Q15175",
@@ -39,27 +39,27 @@
                 "name": "Henan"
               }
             ],
-            "minValue": 0,
+            "minValue": 3325,
             "maxValue": 50483000
           },
           "AdministrativeArea2": {
-            "placeCount": 4628,
+            "placeCount": 3860,
             "topPlaces": [
               {
-                "dcid": "wikidataId/Q943099",
-                "name": "Thane"
+                "dcid": "wikidataId/Q83114",
+                "name": "São Gonçalo"
               },
               {
-                "dcid": "wikidataId/Q338425",
-                "name": "24 Paraganas North"
+                "dcid": "wikidataId/Q188897",
+                "name": "Nova Iguaçu"
               },
               {
-                "dcid": "wikidataId/Q806463",
-                "name": "Bangalore Urban district"
+                "dcid": "wikidataId/Q271393",
+                "name": "Jaboatão dos Guararapes"
               }
             ],
             "minValue": 379,
-            "maxValue": 5195070
+            "maxValue": 1098014
           },
           "AdministrativeArea3": {
             "placeCount": 26,
@@ -176,7 +176,7 @@
             "maxValue": 67003
           },
           "City": {
-            "placeCount": 30613,
+            "placeCount": 29988,
             "topPlaces": [
               {
                 "dcid": "wikidataId/Q8686",
@@ -214,7 +214,7 @@
             "maxValue": 1949033
           },
           "Country": {
-            "placeCount": 68,
+            "placeCount": 66,
             "topPlaces": [
               {
                 "dcid": "country/CHN",
