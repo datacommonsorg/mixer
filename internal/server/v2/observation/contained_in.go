@@ -127,6 +127,8 @@ func FetchContainedIn(
 						if err != nil {
 							return nil, err
 						}
+						// To match domain or subdomain. For example, a provenance url of
+						// abc.xyz.com can match filter "xyz.com" and "abc.xyz.com".
 						if !strings.HasSuffix(url.Hostname(), filter.Domain) {
 							continue
 						}
