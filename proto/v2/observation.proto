@@ -62,19 +62,25 @@ message FacetObservation {
 }
 
 message FacetFilter {
-  // When specified, only observation with this unit is returned.
+  // When specified, only observations with this unit are returned.
   string unit = 1;
-  // When specified, only observation with this measurement method is returned.
+  // When specified, only observations with this measurement method are
+  // returned.
   string measurement_method = 2;
-  // When specified, only observation with this observation period is returned.
+  // When specified, only observations with this observation period are
+  // returned.
   string period = 3;
+  // When specified, only observations with provenance in this domain are
+  // returned.
+  string domain = 4;
 }
 
 // Generic observation request
 message ObservationRequest {
   // A list of statistical variable DCIDs, or a formula expression.
   DcidOrExpression variable = 1;
-  // A list of entity DCIDs, or an arrow expression that covers a list of entity DCIDs.
+  // A list of entity DCIDs, or an arrow expression that covers a list of entity
+  // DCIDs.
   DcidOrExpression entity = 2;
   // Date of the observation
   // - Not specified: all observations are returned
