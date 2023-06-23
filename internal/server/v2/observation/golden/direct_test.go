@@ -39,6 +39,7 @@ func TestFetchDirect(t *testing.T) {
 			variables  []string
 			entities   []string
 			date       string
+			filter     *pbv2.FacetFilter
 			goldenFile string
 		}{
 			{
@@ -60,6 +61,7 @@ func TestFetchDirect(t *testing.T) {
 					"geoId/0649670",
 				},
 				"",
+				&pbv2.FacetFilter{},
 				"all.json",
 			},
 			{
@@ -72,6 +74,7 @@ func TestFetchDirect(t *testing.T) {
 				},
 				[]string{"dummy", "country/FRA", "country/USA", "geoId/06", "geoId/0649670"},
 				"2015",
+				&pbv2.FacetFilter{},
 				"2015.json",
 			},
 			{
@@ -84,6 +87,7 @@ func TestFetchDirect(t *testing.T) {
 				},
 				[]string{"dummy", "country/FRA", "country/USA", "geoId/06", "geoId/0649670"},
 				"2010",
+				&pbv2.FacetFilter{},
 				"2010.json",
 			},
 			{
@@ -104,6 +108,7 @@ func TestFetchDirect(t *testing.T) {
 					"geoId/0649670",
 				},
 				"LATEST",
+				&pbv2.FacetFilter{},
 				"latest.json",
 			},
 			{
@@ -112,7 +117,19 @@ func TestFetchDirect(t *testing.T) {
 				},
 				[]string{"country/USA"},
 				"2018-01",
+				&pbv2.FacetFilter{},
 				"empty.json",
+			},
+			{
+				[]string{
+					"Count_Person",
+				},
+				[]string{"country/USA"},
+				"LATEST",
+				&pbv2.FacetFilter{
+					Domain: "oecd.org",
+				},
+				"filter.json",
 			},
 		} {
 			goldenFile := c.goldenFile
@@ -121,6 +138,7 @@ func TestFetchDirect(t *testing.T) {
 				Variable: &pbv2.DcidOrExpression{Dcids: c.variables},
 				Entity:   &pbv2.DcidOrExpression{Dcids: c.entities},
 				Date:     c.date,
+				Filter:   c.filter,
 			})
 			if err != nil {
 				t.Errorf("could not run V2Observation (direct): %s", err)

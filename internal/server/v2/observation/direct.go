@@ -17,7 +17,9 @@ package observation
 
 import (
 	"context"
+	"net/url"
 	"sort"
+	"strings"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
@@ -40,6 +42,7 @@ func FetchDirect(
 	variables []string,
 	entities []string,
 	queryDate string,
+	filter *pbv2.FacetFilter,
 ) (*pbv2.ObservationResponse, error) {
 	result := &pbv2.ObservationResponse{
 		ByVariable: map[string]*pbv2.VariableObservation{},
@@ -61,6 +64,17 @@ func FetchDirect(
 				sort.Sort(ranking.SeriesByRank(series))
 				for _, series := range series {
 					facet := util.GetFacet(series)
+					if filter != nil && filter.Domain != "" {
+						url, err := url.Parse(facet.ProvenanceUrl)
+						if err != nil {
+							return nil, err
+						}
+						// To match domain or subdomain. For example, a provenance url of
+						// abc.xyz.com can match filter "xyz.com" and "abc.xyz.com".
+						if !strings.HasSuffix(url.Hostname(), filter.Domain) {
+							continue
+						}
+					}
 					facetID := util.GetFacetID(facet)
 					obsList := []*pb.PointStat{}
 					for date, value := range series.Val {

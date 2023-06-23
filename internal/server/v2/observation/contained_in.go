@@ -18,6 +18,7 @@ package observation
 import (
 	"context"
 	"log"
+	"net/url"
 	"sort"
 	"strings"
 
@@ -87,6 +88,7 @@ func FetchContainedIn(
 	ancestor string,
 	childType string,
 	queryDate string,
+	filter *pbv2.FacetFilter,
 ) (*pbv2.ObservationResponse, error) {
 	readCollectionCache := false
 	result := &pbv2.ObservationResponse{
@@ -120,6 +122,17 @@ func FetchContainedIn(
 				sort.Sort(ranking.CohortByRank(cohorts))
 				for _, cohort := range cohorts {
 					facet := util.GetFacet(cohort)
+					if filter != nil && filter.Domain != "" {
+						url, err := url.Parse(facet.ProvenanceUrl)
+						if err != nil {
+							return nil, err
+						}
+						// To match domain or subdomain. For example, a provenance url of
+						// abc.xyz.com can match filter "xyz.com" and "abc.xyz.com".
+						if !strings.HasSuffix(url.Hostname(), filter.Domain) {
+							continue
+						}
+					}
 					facetID := util.GetFacetID(facet)
 					for entity, val := range cohort.Val {
 						if _, ok := obsByEntity[entity]; !ok {
@@ -184,6 +197,7 @@ func FetchContainedIn(
 			variables,
 			childPlaces,
 			queryDate,
+			filter,
 		)
 		if err != nil {
 			return nil, err

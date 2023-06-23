@@ -40,17 +40,28 @@ func TestFetchContainIn(t *testing.T) {
 		for _, c := range []struct {
 			variables        []string
 			entityExpression string
+			filter           *pbv2.FacetFilter
 			goldenFile       string
 		}{
 			{
 				[]string{"Count_Person", "Median_Age_Person"},
 				"geoId/06<-containedInPlace+{typeOf:County}",
+				&pbv2.FacetFilter{},
 				"CA_County.json",
 			},
 			{
 				[]string{"Count_Person"},
 				"country/FRA<-containedInPlace+{typeOf:AdministrativeArea2}",
+				&pbv2.FacetFilter{},
 				"FRA_AA2.json",
+			},
+			{
+				[]string{"Count_Person"},
+				"country/USA<-containedInPlace+{typeOf:State}",
+				&pbv2.FacetFilter{
+					Domain: "census.gov",
+				},
+				"filter.json",
 			},
 		} {
 			goldenFile := c.goldenFile
@@ -59,6 +70,7 @@ func TestFetchContainIn(t *testing.T) {
 				Variable: &pbv2.DcidOrExpression{Dcids: c.variables},
 				Entity:   &pbv2.DcidOrExpression{Expression: c.entityExpression},
 				Date:     date,
+				Filter:   c.filter,
 			})
 			if err != nil {
 				t.Errorf("could not run V2Observation (contained_in): %s", err)
