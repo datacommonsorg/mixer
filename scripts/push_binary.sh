@@ -30,5 +30,5 @@ fi
 gcloud builds submit \
     --project=datcom-ci \
     --config=build/ci/cloudbuild.push.yaml \
-    --substitutions SHORT_SHA="$TAG" \
+    --substitutions SHORT_SHA="$TAG",_SKIP_AUTOPUSH_UPDATE=true \
     .
