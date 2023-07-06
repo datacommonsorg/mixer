@@ -18,13 +18,15 @@
 # go-protoc: image with Golang, protoc and protoc-go pluggin
 # base: image with Go modules download and protobuf built
 # server: image for mixer server
-# test: image to run all the tests
-# golden-update: image to update golden files
+
+FROM envoyproxy/envoy:v1.26.0 AS envoy
 
 # =========  protoc stage ==========
 
 FROM golang:1.20.2 AS go-protoc
+
 WORKDIR /mixer
+
 # Install protoc
 RUN apt-get update && \
     apt-get upgrade -y && \
@@ -53,20 +55,19 @@ RUN go mod download -x
 # Copy files
 COPY proto/ proto
 COPY internal/ internal
+
 # Build protobuf
 RUN protoc \
+    --include_source_info \
+    --include_imports \
     --proto_path=proto \
     --go_out=paths=source_relative:internal/proto \
     --go-grpc_out=paths=source_relative:internal/proto \
     --go-grpc_opt=require_unimplemented_servers=false \
     --experimental_allow_proto3_optional \
+    --descriptor_set_out mixer-grpc.pb \
     proto/*.proto proto/**/*.proto
 
-
-# =========  server stage ==========
-
-FROM base as server
-WORKDIR /mixer
 # Adding the grpc_health_probe
 RUN GRPC_HEALTH_PROBE_VERSION=v0.4.7 && \
     wget -qO/bin/grpc_health_probe https://github.com/grpc-ecosystem/grpc-health-probe/releases/download/${GRPC_HEALTH_PROBE_VERSION}/grpc_health_probe-linux-amd64 && \
@@ -74,17 +75,20 @@ RUN GRPC_HEALTH_PROBE_VERSION=v0.4.7 && \
 # Build binary
 COPY cmd/ cmd
 RUN go build -o /go/bin/mixer cmd/main.go
+
+
+# =========  server stage ==========
+FROM base as server
 ENTRYPOINT ["/go/bin/mixer"]
 
 
-# =========  test stage ==========
+# =========  start mixer with envoy ==========
 
-FROM base as test
-WORKDIR /mixer
-# Golint
-RUN wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s v1.52.2
-RUN ./bin/golangci-lint run --timeout=600s --skip-dirs='internal/proto'
-# Test
-COPY test/ test
+FROM base as rest_server
+
+COPY esp/ esp
 COPY deploy/ deploy
-CMD ["go", "test", "./..."]
+COPY --from=envoy /usr/local/bin/envoy /usr/local/bin/envoy
+COPY build/compose.sh .
+EXPOSE 8081
+CMD ./compose.sh

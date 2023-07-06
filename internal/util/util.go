@@ -55,8 +55,10 @@ const (
 	DirectionIn = "in"
 	// String to represent out arc direction
 	DirectionOut = "out"
-	// Pattern of the Maps API key secret version.
-	mapsAPIKeySecretVersion = "projects/%s/secrets/maps-api-key/versions/latest"
+	// Maps API key ID
+	MapsAPIKeyID = "maps-api-key"
+	// Mixer API key
+	MixerAPIKeyID = "mixer-api-key"
 )
 
 // PlaceStatVar holds a place and a stat var dcid.
@@ -503,23 +505,46 @@ func StringListIntersection(list [][]string) []string {
 	return res
 }
 
+func ReadLatestSecret(
+	ctx context.Context, projectID, secretID string,
+) (string, error) {
+
+	// Environment variables can not have "-". Since these key ids are used in
+	// GCP secret manager already, change "-" to "-" here.
+	secret := os.Getenv(strings.Replace(secretID, "-", "_", -1))
+	if secret != "" {
+		return secret, nil
+	}
+
+	// Create the context and the client.
+	client, err := secretmanager.NewClient(ctx)
+	if err != nil {
+		return "", fmt.Errorf("failed to create secret manager client: %v", err)
+	}
+	defer client.Close()
+
+	// Build the request to access the latest secret version.
+	req := &secretmanagerpb.AccessSecretVersionRequest{
+		Name: fmt.Sprintf("projects/%s/secrets/%s/versions/latest", projectID, secretID),
+	}
+
+	// Access the secret version.
+	result, err := client.AccessSecretVersion(ctx, req)
+	if err != nil {
+		return "", fmt.Errorf("failed to access latest secret version: %v", err)
+	}
+
+	// Return the secret payload as a string.
+	return string(result.Payload.Data), nil
+}
+
 // MapsClient gets the client for Maps API.
 func MapsClient(ctx context.Context, projectID string) (*maps.Client, error) {
-	secretClient, err := secretmanager.NewClient(ctx)
+	apiKey, err := ReadLatestSecret(ctx, projectID, MapsAPIKeyID)
 	if err != nil {
 		return nil, err
 	}
-	defer secretClient.Close()
-
-	secret, err := secretClient.AccessSecretVersion(ctx,
-		&secretmanagerpb.AccessSecretVersionRequest{
-			Name: fmt.Sprintf(mapsAPIKeySecretVersion, projectID),
-		})
-	if err != nil {
-		return nil, err
-	}
-
-	return maps.NewClient(maps.WithAPIKey(string(secret.Payload.Data)))
+	return maps.NewClient(maps.WithAPIKey(apiKey))
 }
 
 // StringSetToSlice is a helper to convert a string set to a string slice.

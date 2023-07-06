@@ -13,22 +13,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+go run cmd/main.go \
+    --use_bigquery=false \
+    --use_base_bigtable=false \
+    --use_custom_bigtable=false \
+    --use_branch_bigtable=false \
+    --remote_mixer_domain=https://api.datacommons.org &
 
-# Push docker image and grpc descriptor from local build
+/usr/local/bin/envoy --config-path /mixer/esp/envoy-config.yaml &
 
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
-ROOT="$(dirname "$DIR")"
+# Wait for any process to exit
+wait -n
 
-cd "$ROOT"
-
-TAG=$(git rev-parse --short=7 HEAD)
-if [[ $1 != "" ]]; then
-  TAG=$1
-  git checkout "$TAG"
-fi
-
-gcloud builds submit \
-    --project=datcom-ci \
-    --config=build/ci/cloudbuild.push.yaml \
-    --substitutions SHORT_SHA="$TAG",_SKIP_AUTOPUSH_UPDATE=true \
-    .
+# Exit with status of process that exited first
+exit $?

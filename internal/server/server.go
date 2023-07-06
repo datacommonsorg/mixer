@@ -17,7 +17,6 @@ package server
 import (
 	"context"
 	"encoding/json"
-	"fmt"
 	"log"
 	"net/http"
 	"os"
@@ -27,8 +26,6 @@ import (
 	"strings"
 
 	pubsub "cloud.google.com/go/pubsub"
-	secretmanager "cloud.google.com/go/secretmanager/apiv1"
-	"cloud.google.com/go/secretmanager/apiv1/secretmanagerpb"
 	"github.com/datacommonsorg/mixer/internal/parser/mcf"
 	dcpubsub "github.com/datacommonsorg/mixer/internal/pubsub"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
@@ -37,36 +34,13 @@ import (
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"github.com/datacommonsorg/mixer/internal/translator/solver"
 	"github.com/datacommonsorg/mixer/internal/translator/types"
+	"github.com/datacommonsorg/mixer/internal/util"
 	"googlemaps.github.io/maps"
 )
 
 const (
-	mixerApiSecret       = "mixer-api-key"
 	blockListSvgJsonPath = "/datacommons/svg/blocklist_svg.json"
 )
-
-func readLatestSecret(projectID, secretID string) (string, error) {
-	// Create the context and the client.
-	ctx := context.Background()
-	client, err := secretmanager.NewClient(ctx)
-	if err != nil {
-		return "", fmt.Errorf("failed to create secret manager client: %v", err)
-	}
-
-	// Build the request to access the latest secret version.
-	req := &secretmanagerpb.AccessSecretVersionRequest{
-		Name: fmt.Sprintf("projects/%s/secrets/%s/versions/latest", projectID, secretID),
-	}
-
-	// Access the secret version.
-	result, err := client.AccessSecretVersion(ctx, req)
-	if err != nil {
-		return "", fmt.Errorf("failed to access latest secret version: %v", err)
-	}
-
-	// Return the secret payload as a string.
-	return string(result.Payload.Data), nil
-}
 
 // Server holds resources for a mixer server
 type Server struct {
@@ -95,6 +69,7 @@ func (s *Server) updateBranchTable(ctx context.Context, branchTableName string) 
 
 // NewMetadata initialize the metadata for translator.
 func NewMetadata(
+	ctx context.Context,
 	hostProject,
 	bigQueryDataset,
 	schemaPath,
@@ -107,22 +82,24 @@ func NewMetadata(
 	if err != nil {
 		return nil, err
 	}
-	files, err := os.ReadDir(schemaPath)
-	if err != nil {
-		return nil, err
-	}
 	mappings := []*types.Mapping{}
-	for _, f := range files {
-		if strings.HasSuffix(f.Name(), ".mcf") {
-			mappingStr, err := os.ReadFile(filepath.Join(schemaPath, f.Name()))
-			if err != nil {
-				return nil, err
+	if schemaPath != "" && bigQueryDataset != "" {
+		files, err := os.ReadDir(schemaPath)
+		if err != nil {
+			return nil, err
+		}
+		for _, f := range files {
+			if strings.HasSuffix(f.Name(), ".mcf") {
+				mappingStr, err := os.ReadFile(filepath.Join(schemaPath, f.Name()))
+				if err != nil {
+					return nil, err
+				}
+				mapping, err := mcf.ParseMapping(string(mappingStr), bigQueryDataset)
+				if err != nil {
+					return nil, err
+				}
+				mappings = append(mappings, mapping...)
 			}
-			mapping, err := mcf.ParseMapping(string(mappingStr), bigQueryDataset)
-			if err != nil {
-				return nil, err
-			}
-			mappings = append(mappings, mapping...)
 		}
 	}
 	outArcInfo := map[string]map[string][]*types.OutArcInfo{}
@@ -130,7 +107,7 @@ func NewMetadata(
 
 	var apiKey string
 	if remoteMixerDomain != "" {
-		apiKey, err = readLatestSecret(hostProject, mixerApiSecret)
+		apiKey, err = util.ReadLatestSecret(ctx, hostProject, util.MixerAPIKeyID)
 		if err != nil {
 			return nil, err
 		}

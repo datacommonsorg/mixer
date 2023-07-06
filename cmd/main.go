@@ -48,7 +48,7 @@ var (
 	hostProject = flag.String("host_project", "", "The GCP project to run the mixer instance.")
 	// BigQuery (Sparql)
 	useBigquery      = flag.Bool("use_bigquery", true, "Use Bigquery to serve Sparql Query.")
-	bqDataset        = flag.String("bq_dataset", "", "DataCommons BigQuery dataset.")
+	bigQueryDataset  = flag.String("bq_dataset", "", "DataCommons BigQuery dataset.")
 	schemaPath       = flag.String("schema_path", "", "The directory that contains the schema mapping files")
 	bqBillingProject = flag.String("bq_billing_project", "", "The bigquery client project. Query is billed to this project.")
 	// Base Bigtable Cache
@@ -147,8 +147,9 @@ func main() {
 
 	// Metadata.
 	metadata, err := server.NewMetadata(
+		ctx,
 		*hostProject,
-		*bqDataset,
+		*bigQueryDataset,
 		*schemaPath,
 		*remoteMixerDomain,
 		*foldRemoteRootSvg,
