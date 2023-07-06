@@ -509,6 +509,8 @@ func ReadLatestSecret(
 	ctx context.Context, projectID, secretID string,
 ) (string, error) {
 
+	// Environment variables can not have "-". Since these key ids are used in
+	// GCP secret manager already, change "-" to "-" here.
 	secret := os.Getenv(strings.Replace(secretID, "-", "_", -1))
 	if secret != "" {
 		return secret, nil
