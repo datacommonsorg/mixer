@@ -1,4 +1,4 @@
-# Copyright 2019 Google LLC
+# Copyright 2023 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -74,6 +74,7 @@ RUN GRPC_HEALTH_PROBE_VERSION=v0.4.7 && \
     chmod +x /bin/grpc_health_probe
 # Build binary
 COPY cmd/ cmd
+COPY esp/ esp
 RUN go build -o /go/bin/mixer cmd/main.go
 
 
@@ -83,10 +84,8 @@ ENTRYPOINT ["/go/bin/mixer"]
 
 
 # =========  start mixer with envoy ==========
-
 FROM base as rest_server
 
-COPY esp/ esp
 COPY deploy/ deploy
 COPY --from=envoy /usr/local/bin/envoy /usr/local/bin/envoy
 COPY build/compose.sh .

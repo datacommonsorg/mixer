@@ -13,7 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-go run cmd/main.go \
+/go/bin/mixer \
     --use_bigquery=false \
     --use_base_bigtable=false \
     --use_custom_bigtable=false \

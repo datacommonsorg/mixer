@@ -1,4 +1,4 @@
-# Copyright 2019 Google LLC
+# Copyright 2023 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -48,6 +48,13 @@ steps:
           .
         docker push gcr.io/datcom-ci/datacommons-mixer:$SHORT_SHA
         docker push gcr.io/datcom-ci/datacommons-mixer:latest
+
+        docker build -f build/Dockerfile --target base \
+          -t gcr.io/datcom-ci/datacommons-mixer-base:$SHORT_SHA \
+          -t gcr.io/datcom-ci/datacommons-mixer-base:latest \
+          .
+        docker push gcr.io/datcom-ci/datacommons-mixer-base:$SHORT_SHA
+        docker push gcr.io/datcom-ci/datacommons-mixer-base:latest
 
   # Push the grpc descriptor to gcs.
   - id: push-grpc-descriptor
