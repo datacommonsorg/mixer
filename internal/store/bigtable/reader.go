@@ -78,6 +78,9 @@ func Read(
 	body [][]string,
 	action func([]byte) (interface{}, error),
 ) ([][]BtRow, error) {
+	if btGroup == nil {
+		return nil, nil
+	}
 	accs := []*Accessor{}
 	tables := btGroup.Tables(nil)
 	for i := 0; i < len(tables); i++ {
@@ -96,6 +99,9 @@ func ReadWithFilter(
 	action func([]byte) (interface{}, error),
 	filter func(*Table) bool,
 ) ([][]BtRow, error) {
+	if btGroup == nil {
+		return nil, nil
+	}
 	tables := btGroup.Tables(filter)
 	accs := []*Accessor{}
 	for i := 0; i < len(tables); i++ {

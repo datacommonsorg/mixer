@@ -505,9 +505,7 @@ func StringListIntersection(list [][]string) []string {
 	return res
 }
 
-func ReadLatestSecret(
-	ctx context.Context, projectID, secretID string,
-) (string, error) {
+func ReadLatestSecret(ctx context.Context, projectID, secretID string) (string, error) {
 
 	// Environment variables can not have "-". Since these key ids are used in
 	// GCP secret manager already, change "-" to "-" here.

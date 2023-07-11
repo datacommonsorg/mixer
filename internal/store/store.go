@@ -15,6 +15,8 @@
 package store
 
 import (
+	"database/sql"
+
 	"cloud.google.com/go/bigquery"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
@@ -26,11 +28,13 @@ type Store struct {
 	BqClient        *bigquery.Client
 	BtGroup         *bigtable.Group
 	RecogPlaceStore *files.RecogPlaceStore
+	SQLiteClient    *sql.DB
 }
 
 // NewStore creates a new store.
 func NewStore(
 	bqClient *bigquery.Client,
+	sqlClient *sql.DB,
 	tables []*bigtable.Table,
 	branchTableName string,
 	metadata *resource.Metadata,
@@ -42,13 +46,18 @@ func NewStore(
 			validTables = append(validTables, t)
 		}
 	}
+	var btGroup *bigtable.Group
+	if len(validTables) > 0 {
+		btGroup = bigtable.NewGroup(validTables, branchTableName, metadata)
+	}
 	recogPlaceStore, err := files.LoadRecogPlaceStore()
 	if err != nil {
 		return nil, err
 	}
 	return &Store{
 		BqClient:        bqClient,
-		BtGroup:         bigtable.NewGroup(validTables, branchTableName, metadata),
+		SQLiteClient:    sqlClient,
+		BtGroup:         btGroup,
 		RecogPlaceStore: recogPlaceStore,
 	}, nil
 }

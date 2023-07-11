@@ -93,6 +93,7 @@ func TestMerge(t *testing.T) {
 
 		store, err := store.NewStore(
 			nil,
+			nil,
 			[]*bigtable.Table{
 				bigtable.NewTable("borgcron_base", baseTable, false /*isCustom=*/),
 				bigtable.NewTable("borgcron_branch", branchTable, false /*isCustom=*/),
