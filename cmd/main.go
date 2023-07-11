@@ -16,6 +16,7 @@ package main
 
 import (
 	"context"
+	"database/sql"
 	"flag"
 	"fmt"
 	"log"
@@ -34,12 +35,15 @@ import (
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"golang.org/x/oauth2/google"
+	"googlemaps.github.io/maps"
 
 	"cloud.google.com/go/bigquery"
 	"cloud.google.com/go/profiler"
 	"google.golang.org/api/compute/v1"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/health/grpc_health_v1"
+
+	_ "github.com/mattn/go-sqlite3" // import the sqlite3 driver
 )
 
 var (
@@ -59,8 +63,13 @@ var (
 	customBigtableInfo = flag.String("custom_bigtable_info", "", "Yaml formatted text containing information for custom Bigtable")
 	// Branch Bigtable Cache
 	useBranchBigtable = flag.Bool("use_branch_bigtable", true, "Use branch bigtable cache")
+	// SQLite database
+	useSQLite = flag.Bool("use_sqlite", false, "Use SQLite as database.")
+	sqliteDB  = flag.String("sqlite_db", "./sqlite/datacommons.db", "SQLite DB file path.")
 	// Stat-var search cache
 	useSearch = flag.Bool("use_search", true, "Uses stat var search. Will build search indexes.")
+	// Include maps client
+	useMapsApi = flag.Bool("use_maps_api", true, "Uses maps API for place recognition.")
 	// Remote mixer url. The API serves merged data from local and remote mixer
 	remoteMixerDomain = flag.String("remote_mixer_domain", "", "Remote mixer domain to fetch and merge data for API response.")
 	// Profile startup memory instead of listening for requests
@@ -114,6 +123,16 @@ func main() {
 		tables = append(customTables, tables...)
 	}
 
+	// SQLite DB
+	var sqlClient *sql.DB
+	if *useSQLite {
+		sqlClient, err = sql.Open("sqlite3", *sqliteDB)
+		if err != nil {
+			log.Fatalf("Failed to read sqlite3 database: %v", err)
+		}
+		defer sqlClient.Close()
+	}
+
 	// BigQuery
 	var bqClient *bigquery.Client
 	if *useBigquery {
@@ -162,7 +181,8 @@ func main() {
 	if len(tables) == 0 && *remoteMixerDomain == "" {
 		log.Fatal("No bigtables or remote mixer domain are provided")
 	}
-	store, err := store.NewStore(bqClient, tables, branchTableName, metadata)
+	store, err := store.NewStore(
+		bqClient, sqlClient, tables, branchTableName, metadata)
 	if err != nil {
 		log.Fatalf("Failed to create a new store: %s", err)
 	}
@@ -183,9 +203,12 @@ func main() {
 	}
 
 	// Maps client
-	mapsClient, err := util.MapsClient(ctx, metadata.HostProject)
-	if err != nil {
-		log.Fatalf("Failed to create Maps client: %v", err)
+	var mapsClient *maps.Client
+	if *useMapsApi {
+		mapsClient, err = util.MapsClient(ctx, metadata.HostProject)
+		if err != nil {
+			log.Fatalf("Failed to create Maps client: %v", err)
+		}
 	}
 
 	// Create server object

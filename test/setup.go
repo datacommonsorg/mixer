@@ -128,7 +128,7 @@ func setupInternal(
 	if err != nil {
 		return nil, err
 	}
-	st, err := store.NewStore(bqClient, tables, "", metadata)
+	st, err := store.NewStore(bqClient, nil, tables, "", metadata)
 	if err != nil {
 		log.Fatalf("Failed to create a new store: %s", err)
 	}
@@ -174,7 +174,7 @@ func SetupBqOnly() (pbs.MixerClient, error) {
 	if err != nil {
 		return nil, err
 	}
-	st, err := store.NewStore(bqClient, nil, "", nil)
+	st, err := store.NewStore(bqClient, nil, nil, "", nil)
 	if err != nil {
 		return nil, err
 	}

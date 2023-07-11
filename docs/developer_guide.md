@@ -70,32 +70,28 @@ go run cmd/main.go \
 go run examples/main.go
 ```
 
-## Start Mixer as a gRPC server backed by TMCF + CSV files
+## Start Mixer as a gRPC server backed by SQLite Database
 
-Mixer can load and serve TMCF + CSV files. This is used for a private Data Commons
-instance. This requires to set the following flag
+Mixer can load data stored in SQLite database. This requires to set the
+following flag:
 
-- `--use_tmcf_csv_data=true`
-- `--tmcf_csv_bucket=<bucket-name>`
-- `--tmcf_csv_folder=<folder-name>`
+- `--use_sqlite=true`
 
 Prerequists:
 
-- Create a GCS bucket <BUCKET_NAME>
-- Create a folder in the bucket <FOLDER_NAME> to host all the data files
+- Create a sqlite database `datacommons.db` in the root of repo.
 
-Run the following code to start mixer gRPC server with TMCF + CSV files stored in GCS
+Run the following code to start mixer
 
 ```bash
 # In repo root directory
 go run cmd/main.go \
-    --host_project=datcom-mixer-dev-316822 \
-    --tmcf_csv_bucket=datcom-mixer-dev-resources \
-    --tmcf_csv_folder=test \
-    --use_tmcf_csv_data=true \
+    --use_sqlite=true \
     --use_bigquery=false \
     --use_base_bigtable=false \
-    --use_branch_bigtable=false
+    --use_branch_bigtable=false \
+    --use_maps_api=false \
+    --remote_mixer_domain=https://api.datacommons.org
 ```
 
 ## Running ESP locally
@@ -202,8 +198,6 @@ with an HTTP handler at that port serving memory and CPU profiles of the running
 server.
 
 ```bash
-# Command from ### Start Mixer as a gRPC server backed by TMCF + CSV files
-# In repo root directory
 go run cmd/main.go \
     --host_project=datcom-mixer-dev-316822 \
     --bq_dataset=$(head -1 deploy/storage/bigquery.version) \
