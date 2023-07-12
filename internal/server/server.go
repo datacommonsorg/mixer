@@ -52,6 +52,9 @@ type Server struct {
 }
 
 func (s *Server) updateBranchTable(ctx context.Context, branchTableName string) {
+	if s.store.BtGroup == nil {
+		return
+	}
 	branchTable, err := bigtable.NewBtTable(
 		ctx,
 		bigtable.BranchBigtableProject,

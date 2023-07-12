@@ -233,11 +233,11 @@ func GetPlaceMetadataHelper(
 	for _, entity := range entities {
 		entInfo, ok := metaMap[entity]
 		if !ok {
-			entInfo = &pb.PlaceMetadataCache_PlaceInfo{Dcid: entity}
+			continue
 		}
 		processed := pb.PlaceMetadata{}
 		processed.Self = &pb.PlaceMetadata_PlaceInfo{
-			Dcid: entity,
+			Dcid: entInfo.Dcid,
 			Name: entInfo.Name,
 			Type: entInfo.Type,
 		}

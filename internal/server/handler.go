@@ -267,8 +267,12 @@ func (s *Server) Search(
 func (s *Server) GetVersion(
 	ctx context.Context, in *pb.GetVersionRequest,
 ) (*pb.GetVersionResponse, error) {
+	tableNames := []string{}
+	if s.store.BtGroup != nil {
+		tableNames = s.store.BtGroup.TableNames()
+	}
 	return &pb.GetVersionResponse{
-		Tables:            s.store.BtGroup.TableNames(),
+		Tables:            tableNames,
 		Bigquery:          s.metadata.BigQueryDataset,
 		GitHash:           os.Getenv("MIXER_HASH"),
 		RemoteMixerDomain: s.metadata.RemoteMixerDomain,

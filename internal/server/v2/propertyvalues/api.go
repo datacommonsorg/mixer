@@ -101,7 +101,7 @@ func API(
 
 		data, pi, err := v1pv.Fetch(
 			ctx,
-			store,
+			store.BtGroup,
 			regularNodes,
 			properties,
 			limit,
@@ -164,7 +164,7 @@ func LinkedPropertyValues(
 		}
 		nameResp, _, err := v1pv.Fetch(
 			ctx,
-			store,
+			store.BtGroup,
 			descendents,
 			[]string{"name"},
 			0,
