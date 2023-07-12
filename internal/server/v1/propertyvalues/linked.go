@@ -66,7 +66,7 @@ func LinkedPropertyValues(
 	// Fetch names
 	data, _, err := Fetch(
 		ctx,
-		store,
+		store.BtGroup,
 		valueDcids,
 		[]string{"name"},
 		0,
@@ -129,7 +129,7 @@ func BulkLinkedPropertyValues(
 	// Fetch names
 	data, _, err := Fetch(
 		ctx,
-		store,
+		store.BtGroup,
 		valueDcids,
 		[]string{"name"},
 		0,

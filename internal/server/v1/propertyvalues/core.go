@@ -23,7 +23,6 @@ import (
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"github.com/datacommonsorg/mixer/internal/server/pagination"
-	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"github.com/datacommonsorg/mixer/internal/util"
 
@@ -36,7 +35,7 @@ import (
 // Return map is keyed by node dicd, then property, then target node type.
 func Fetch(
 	ctx context.Context,
-	store *store.Store,
+	btGroup *bigtable.Group,
 	nodes []string,
 	properties []string,
 	limit int,
@@ -47,17 +46,22 @@ func Fetch(
 	*pbv1.PaginationInfo,
 	error,
 ) {
+	if btGroup == nil {
+		return nil, nil, nil
+	}
 	var err error
-	propType, err := getNodePropType(ctx, store.BtGroup, nodes, properties, direction)
+	propType, err := getNodePropType(ctx, btGroup, nodes, properties, direction)
 	if err != nil {
 		return nil, nil, err
 	}
 	// Empty cursor groups when no token is given.
 	var cursorGroups []*pbv1.CursorGroup
 	if token == "" {
-		cursorGroups = buildDefaultCursorGroups(
-			nodes, properties, propType, len(store.BtGroup.Tables(nil)),
-		)
+		if btGroup != nil {
+			cursorGroups = buildDefaultCursorGroups(
+				nodes, properties, propType, len(btGroup.Tables(nil)),
+			)
+		}
 	} else {
 		pi, err := pagination.Decode(token)
 		if err != nil {
@@ -87,11 +91,11 @@ func Fetch(
 	}
 	if direction == util.DirectionOut {
 		s := &outState{}
-		if err = s.init(ctx, store.BtGroup, nodes, properties, limit, cursorGroup); err != nil {
+		if err = s.init(ctx, btGroup, nodes, properties, limit, cursorGroup); err != nil {
 			return nil, nil, err
 		}
 		for {
-			hasNext, err := nextOut(ctx, s, store.BtGroup)
+			hasNext, err := nextOut(ctx, s, btGroup)
 			if err != nil {
 				return nil, nil, err
 			}
@@ -113,11 +117,11 @@ func Fetch(
 		return s.mergedNodes, nil, nil
 	} else {
 		s := &inState{}
-		if err = s.init(ctx, store.BtGroup, nodes, properties, limit, cursorGroup); err != nil {
+		if err = s.init(ctx, btGroup, nodes, properties, limit, cursorGroup); err != nil {
 			return nil, nil, err
 		}
 		for {
-			hasNext, err := nextIn(ctx, s, store.BtGroup)
+			hasNext, err := nextIn(ctx, s, btGroup)
 			if err != nil {
 				return nil, nil, err
 			}

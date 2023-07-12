@@ -74,6 +74,5 @@ func BulkPlaceInfo(
 		}
 		resp.Data = append(resp.Data, item)
 	}
-
 	return resp, nil
 }
