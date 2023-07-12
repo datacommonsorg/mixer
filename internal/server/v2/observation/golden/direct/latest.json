@@ -506,6 +506,27 @@
           ]
         }
       }
+    },
+    "test_var_1": {
+      "by_entity": {
+        "country/FRA": {},
+        "country/USA": {},
+        "dummy": {},
+        "geoId/06": {
+          "ordered_facets": [
+            {
+              "facet_id": "local",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 42
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/0649670": {}
+      }
     }
   },
   "facets": {
@@ -638,6 +659,10 @@
       "import_name": "EurostatData",
       "provenance_url": "https://ec.europa.eu/eurostat/data/database",
       "measurement_method": "EurostatRegionalPopulationData"
+    },
+    "local": {
+      "import_name": "local",
+      "provenance_url": "local"
     }
   }
 }

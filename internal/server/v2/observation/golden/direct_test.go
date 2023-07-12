@@ -52,6 +52,7 @@ func TestFetchDirect(t *testing.T) {
 					"Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita",
 					"Annual_Generation_Electricity",
 					"Count_Person_Unemployed",
+					"test_var_1",
 				},
 				[]string{
 					"dummy",
@@ -71,6 +72,7 @@ func TestFetchDirect(t *testing.T) {
 					"Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita",
 					"Annual_Generation_Electricity",
 					"Count_Person_Unemployed",
+					"test_var_1",
 				},
 				[]string{"dummy", "country/FRA", "country/USA", "geoId/06", "geoId/0649670"},
 				"2015",
@@ -84,6 +86,7 @@ func TestFetchDirect(t *testing.T) {
 					"Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita",
 					"Annual_Generation_Electricity",
 					"Count_Person_Unemployed",
+					"test_var_1",
 				},
 				[]string{"dummy", "country/FRA", "country/USA", "geoId/06", "geoId/0649670"},
 				"2010",
@@ -99,6 +102,7 @@ func TestFetchDirect(t *testing.T) {
 					"Annual_Generation_Electricity",
 					"Count_Person_Unemployed",
 					"AirQualityIndex_AirPollutant",
+					"test_var_1",
 				},
 				[]string{
 					"dummy",
@@ -164,7 +168,7 @@ func TestFetchDirect(t *testing.T) {
 	}
 	if err := test.TestDriver(
 		"FetchDirect",
-		&test.TestOption{},
+		&test.TestOption{UseSQLite: true},
 		testSuite,
 	); err != nil {
 		t.Errorf("TestDriver() = %s", err)

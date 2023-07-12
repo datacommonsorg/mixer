@@ -380,6 +380,15 @@
           ]
         }
       }
+    },
+    "test_var_1": {
+      "by_entity": {
+        "country/FRA": {},
+        "country/USA": {},
+        "dummy": {},
+        "geoId/06": {},
+        "geoId/0649670": {}
+      }
     }
   },
   "facets": {
