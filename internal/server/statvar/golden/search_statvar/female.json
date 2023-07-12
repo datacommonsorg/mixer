@@ -697,92 +697,6 @@
       ]
     },
     {
-      "dcid": "dc/g/MortalityEvent_Age_Gender-Female",
-      "name": "Mortality Event With Age, Gender = Female",
-      "statVars": [
-        {
-          "name": "Count of Mortality Event: 10 - 14 Years, Female",
-          "dcid": "Count_Death_10To14Years_Female"
-        },
-        {
-          "name": "Count of Mortality Event: 15 - 19 Years, Female",
-          "dcid": "Count_Death_15To19Years_Female"
-        },
-        {
-          "name": "Count of Mortality Event: 15 - 64 Years, Female",
-          "dcid": "Count_Death_15To64Years_Female"
-        },
-        {
-          "name": "Count of Mortality Event: 20 - 24 Years, Female",
-          "dcid": "Count_Death_20To24Years_Female"
-        },
-        {
-          "name": "Count of Mortality Event: 25 - 29 Years, Female",
-          "dcid": "Count_Death_25To29Years_Female"
-        },
-        {
-          "name": "Count of Mortality Event: 30 - 34 Years, Female",
-          "dcid": "Count_Death_30To34Years_Female"
-        },
-        {
-          "name": "Count of Mortality Event: 35 - 39 Years, Female",
-          "dcid": "Count_Death_35To39Years_Female"
-        },
-        {
-          "name": "Count of Mortality Event: 4 Years or Less, Female",
-          "dcid": "Count_Death_Upto4Years_Female"
-        },
-        {
-          "name": "Count of Mortality Event: 40 - 44 Years, Female",
-          "dcid": "Count_Death_40To44Years_Female"
-        },
-        {
-          "name": "Count of Mortality Event: 45 - 49 Years, Female",
-          "dcid": "Count_Death_45To49Years_Female"
-        },
-        {
-          "name": "Count of Mortality Event: 5 - 9 Years, Female",
-          "dcid": "Count_Death_5To9Years_Female"
-        },
-        {
-          "name": "Count of Mortality Event: 50 - 54 Years, Female",
-          "dcid": "Count_Death_50To54Years_Female"
-        },
-        {
-          "name": "Count of Mortality Event: 55 - 59 Years, Female",
-          "dcid": "Count_Death_55To59Years_Female"
-        },
-        {
-          "name": "Count of Mortality Event: 60 - 64 Years, Female",
-          "dcid": "Count_Death_60To64Years_Female"
-        },
-        {
-          "name": "Count of Mortality Event: 65 - 69 Years, Female",
-          "dcid": "Count_Death_65To69Years_Female"
-        },
-        {
-          "name": "Count of Mortality Event: 65 Years or More, Female",
-          "dcid": "Count_Death_65OrMoreYears_Female"
-        },
-        {
-          "name": "Count of Mortality Event: 70 - 74 Years, Female",
-          "dcid": "Count_Death_70To74Years_Female"
-        },
-        {
-          "name": "Count of Mortality Event: 75 - 79 Years, Female",
-          "dcid": "Count_Death_75To79Years_Female"
-        },
-        {
-          "name": "Count of Mortality Event: 80 Years or More, Female",
-          "dcid": "Count_Death_80OrMoreYears_Female"
-        },
-        {
-          "name": "Female Infant Mortality Rate",
-          "dcid": "Count_Death_0Years_Female_AsFractionOf_Count_BirthEvent_LiveBirth_Female"
-        }
-      ]
-    },
-    {
       "dcid": "dc/g/Person_EducationalAttainment_Gender-Female",
       "name": "Person With Educational Attainment, Gender = Female",
       "statVars": [
@@ -1015,6 +929,32 @@
       ]
     },
     {
+      "dcid": "dc/g/MortalityEvent_Age_Gender-Female",
+      "name": "Mortality Event With Age, Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Mortality Event: 15 - 64 Years, Female",
+          "dcid": "Count_Death_15To64Years_Female"
+        },
+        {
+          "name": "Count of Mortality Event: 4 Years or Less, Female",
+          "dcid": "Count_Death_Upto4Years_Female"
+        },
+        {
+          "name": "Count of Mortality Event: 65 Years or More, Female",
+          "dcid": "Count_Death_65OrMoreYears_Female"
+        },
+        {
+          "name": "Count of Mortality Event: 80 Years or More, Female",
+          "dcid": "Count_Death_80OrMoreYears_Female"
+        },
+        {
+          "name": "Female Infant Mortality Rate",
+          "dcid": "Count_Death_0Years_Female_AsFractionOf_Count_BirthEvent_LiveBirth_Female"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_TargetedGender-Female",
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Targeted Gender = Female",
       "statVars": [
@@ -1038,7 +978,7 @@
     },
     {
       "dcid": "dc/g/SDGSHDTHNCD_gender-SDGSexEnumFEMALE_sdgnameOfNonCommunicableDisease",
-      "name": "Number of Deaths Attributed To Non-communicable Diseases With Gender = Female, Name of Non-communicable Disease",
+      "name": "Number of Deaths Attributed To Non-communicable Diseases With Gender = Female, Name of Non Communicable Disease",
       "statVars": [
         {
           "name": "Number of deaths attributed to non-communicable diseases: Cancer, Female",
@@ -1761,6 +1701,156 @@
         {
           "name": "Count of Mortality Event: 1 Years or Less, Female (As Fraction of Count Birth Event Female)",
           "dcid": "Count_Death_LessThan1Year_Female_AsAFractionOf_Count_BirthEvent_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/MortalityEvent_Age-Years10To14_Gender-Female",
+      "name": "Mortality Event With Age = 10 - 14 Years, Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Mortality Event: 10 - 14 Years, Female",
+          "dcid": "Count_Death_10To14Years_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/MortalityEvent_Age-Years15To19_Gender-Female",
+      "name": "Mortality Event With Age = 15 - 19 Years, Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Mortality Event: 15 - 19 Years, Female",
+          "dcid": "Count_Death_15To19Years_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/MortalityEvent_Age-Years20To24_Gender-Female",
+      "name": "Mortality Event With Age = 20 - 24 Years, Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Mortality Event: 20 - 24 Years, Female",
+          "dcid": "Count_Death_20To24Years_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/MortalityEvent_Age-Years25To29_Gender-Female",
+      "name": "Mortality Event With Age = 25 - 29 Years, Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Mortality Event: 25 - 29 Years, Female",
+          "dcid": "Count_Death_25To29Years_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/MortalityEvent_Age-Years30To34_Gender-Female",
+      "name": "Mortality Event With Age = 30 - 34 Years, Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Mortality Event: 30 - 34 Years, Female",
+          "dcid": "Count_Death_30To34Years_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/MortalityEvent_Age-Years35To39_Gender-Female",
+      "name": "Mortality Event With Age = 35 - 39 Years, Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Mortality Event: 35 - 39 Years, Female",
+          "dcid": "Count_Death_35To39Years_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/MortalityEvent_Age-Years40To44_Gender-Female",
+      "name": "Mortality Event With Age = 40 - 44 Years, Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Mortality Event: 40 - 44 Years, Female",
+          "dcid": "Count_Death_40To44Years_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/MortalityEvent_Age-Years45To49_Gender-Female",
+      "name": "Mortality Event With Age = 45 - 49 Years, Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Mortality Event: 45 - 49 Years, Female",
+          "dcid": "Count_Death_45To49Years_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/MortalityEvent_Age-Years5To9_Gender-Female",
+      "name": "Mortality Event With Age = 5 - 9 Years, Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Mortality Event: 5 - 9 Years, Female",
+          "dcid": "Count_Death_5To9Years_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/MortalityEvent_Age-Years50To54_Gender-Female",
+      "name": "Mortality Event With Age = 50 - 54 Years, Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Mortality Event: 50 - 54 Years, Female",
+          "dcid": "Count_Death_50To54Years_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/MortalityEvent_Age-Years55To59_Gender-Female",
+      "name": "Mortality Event With Age = 55 - 59 Years, Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Mortality Event: 55 - 59 Years, Female",
+          "dcid": "Count_Death_55To59Years_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/MortalityEvent_Age-Years60To64_Gender-Female",
+      "name": "Mortality Event With Age = 60 - 64 Years, Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Mortality Event: 60 - 64 Years, Female",
+          "dcid": "Count_Death_60To64Years_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/MortalityEvent_Age-Years65To69_Gender-Female",
+      "name": "Mortality Event With Age = 65 - 69 Years, Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Mortality Event: 65 - 69 Years, Female",
+          "dcid": "Count_Death_65To69Years_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/MortalityEvent_Age-Years70To74_Gender-Female",
+      "name": "Mortality Event With Age = 70 - 74 Years, Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Mortality Event: 70 - 74 Years, Female",
+          "dcid": "Count_Death_70To74Years_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/MortalityEvent_Age-Years75To79_Gender-Female",
+      "name": "Mortality Event With Age = 75 - 79 Years, Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Mortality Event: 75 - 79 Years, Female",
+          "dcid": "Count_Death_75To79Years_Female"
         }
       ]
     },
@@ -7291,66 +7381,6 @@
     {
       "dcid": "dc/g/Person_Age-Years16To19_Gender-Female_MilitaryStatus-Civilian",
       "name": "Person With Age = 16 - 19 Years, Military Status = Civilian, Gender = Female"
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years16To19_Gender-Female_MilitaryStatus",
-      "name": "Person With Age = 16 - 19 Years, Military Status, Gender = Female"
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years16To50_BirthEventStatus-BirthInThePast12Months_Gender-Female",
-      "name": "Person With Age = 16 - 50 Years, Birth Event Status = Birth in The Past 12 Months, Gender = Female"
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years16To50_BirthEventStatus_Gender-Female",
-      "name": "Person With Age = 16 - 50 Years, Birth Event Status, Gender = Female"
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years16To50_Gender-Female_MaritalStatus",
-      "name": "Person With Age = 16 - 50 Years, Gender = Female, Marital Status"
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years16To50_Gender-Female_MaritalStatus-Unmarried",
-      "name": "Person With Age = 16 - 50 Years, Gender = Female, Marital Status = Unmarried"
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years16To50_Gender-Female_LaborForceStatus-InLaborForce",
-      "name": "Person With Age = 16 - 50 Years, Labor Force Status = in Labor Force, Gender = Female"
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years16To50_Gender-Female_LaborForceStatus",
-      "name": "Person With Age = 16 - 50 Years, Labor Force Status, Gender = Female"
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years16To64_Gender-Female_QuantityWorked",
-      "name": "Person With Age = 16 - 64 Years, Gender = Female, Quantity Worked"
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years16To64_Gender-Female_QuantityWorked-Week1To13",
-      "name": "Person With Age = 16 - 64 Years, Gender = Female, Quantity Worked = 1 - 13 Week"
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years16To64_Gender-Female_QuantityWorked-Week14To26",
-      "name": "Person With Age = 16 - 64 Years, Gender = Female, Quantity Worked = 14 - 26 Week"
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years16To64_Gender-Female_QuantityWorked-Week27To39",
-      "name": "Person With Age = 16 - 64 Years, Gender = Female, Quantity Worked = 27 - 39 Week"
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years16To64_Gender-Female_QuantityWorked-Week40To47",
-      "name": "Person With Age = 16 - 64 Years, Gender = Female, Quantity Worked = 40 - 47 Week"
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years16To64_Gender-Female_QuantityWorked-Week40Onwards",
-      "name": "Person With Age = 16 - 64 Years, Gender = Female, Quantity Worked = 40 Week or More"
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years16To64_Gender-Female_QuantityWorked-Week48To49",
-      "name": "Person With Age = 16 - 64 Years, Gender = Female, Quantity Worked = 48 - 49 Week"
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years16To64_Gender-Female_QuantityWorked-Week50To52",
-      "name": "Person With Age = 16 - 64 Years, Gender = Female, Quantity Worked = 50 - 52 Week"
     }
   ],
   "matches": [

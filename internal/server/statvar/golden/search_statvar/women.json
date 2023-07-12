@@ -27945,6 +27945,136 @@
       ]
     },
     {
+      "dcid": "dc/g/Person_Age_Gender-Female",
+      "name": "Person With Age, Gender = Female",
+      "statVars": [
+        {
+          "name": "Life Expectancy: 1 Years or Less, Female",
+          "dcid": "LifeExpectancy_Person_Upto1Years_Female"
+        },
+        {
+          "name": "Life Expectancy: Years 101, Female",
+          "dcid": "LifeExpectancy_Person_101Years_Female"
+        },
+        {
+          "name": "Life Expectancy: Years 102, Female",
+          "dcid": "LifeExpectancy_Person_102Years_Female"
+        },
+        {
+          "name": "Life Expectancy: Years 103, Female",
+          "dcid": "LifeExpectancy_Person_103Years_Female"
+        },
+        {
+          "name": "Life Expectancy: Years 104, Female",
+          "dcid": "LifeExpectancy_Person_104Years_Female"
+        },
+        {
+          "name": "Life Expectancy: Years 105, Female",
+          "dcid": "LifeExpectancy_Person_105Years_Female"
+        },
+        {
+          "name": "Life Expectancy: Years 106, Female",
+          "dcid": "LifeExpectancy_Person_106Years_Female"
+        },
+        {
+          "name": "Life Expectancy: Years 107, Female",
+          "dcid": "LifeExpectancy_Person_107Years_Female"
+        },
+        {
+          "name": "Life Expectancy: Years 108, Female",
+          "dcid": "LifeExpectancy_Person_108Years_Female"
+        },
+        {
+          "name": "Life Expectancy: Years 109, Female",
+          "dcid": "LifeExpectancy_Person_109Years_Female"
+        },
+        {
+          "name": "Population: 0 - 14 Years, Female",
+          "dcid": "Count_Person_0To14Years_Female"
+        },
+        {
+          "name": "Population: 100 - 104 Years, Female",
+          "dcid": "Count_Person_100To104Years_Female"
+        },
+        {
+          "name": "Population: 105 - 109 Years, Female",
+          "dcid": "Count_Person_105To109Years_Female"
+        },
+        {
+          "name": "Population: 14 Years or Less, Female",
+          "dcid": "Count_Person_Upto14Years_Female"
+        },
+        {
+          "name": "Population: 15 - 59 Years, Female",
+          "dcid": "Count_Person_15To59Years_Female"
+        },
+        {
+          "name": "Population: 3 Years or More, Female",
+          "dcid": "Count_Person_3OrMoreYears_Female"
+        },
+        {
+          "name": "Population: 60 Years or More, Female",
+          "dcid": "Count_Person_60OrMoreYears_Female"
+        },
+        {
+          "name": "Population: 65 - 66 Years, Female",
+          "dcid": "Count_Person_65To66Years_Female"
+        },
+        {
+          "name": "Population: 67 - 69 Years, Female",
+          "dcid": "Count_Person_67To69Years_Female"
+        },
+        {
+          "name": "Population: 80 Years or More, Female",
+          "dcid": "Count_Person_80OrMoreYears_Female"
+        },
+        {
+          "name": "Population: 85 - 89 Years, Female",
+          "dcid": "Count_Person_85To89Years_Female"
+        },
+        {
+          "name": "Population: 90 - 94 Years, Female",
+          "dcid": "Count_Person_90To94Years_Female"
+        },
+        {
+          "name": "Population: 90 Years or More, Female",
+          "dcid": "Count_Person_90OrMoreYears_Female"
+        },
+        {
+          "name": "Population: 95 - 99 Years, Female",
+          "dcid": "Count_Person_95To99Years_Female"
+        },
+        {
+          "name": "Population: 95 Years or More, Female",
+          "dcid": "Count_Person_95OrMoreYears_Female"
+        },
+        {
+          "name": "Population: 99 Years or More, Female",
+          "dcid": "Count_Person_99OrMoreYears_Female"
+        },
+        {
+          "name": "Unemployment Rate: 25 - 74 Years, Female",
+          "dcid": "UnemploymentRate_Person_25To74Years_Female"
+        },
+        {
+          "name": "Unemployment Rate: 25 Years or Less, Female",
+          "dcid": "UnemploymentRate_Person_Upto25Years_Female"
+        },
+        {
+          "name": "Population: 5 Years or More, Female (As Fraction of Count Person Female)",
+          "dcid": "Count_Person_5OrMoreYears_Female_AsAFractionOf_Count_Person_Female"
+        },
+        {
+          "name": "Prevalence: 50 - 74 Years, Female, Mammography",
+          "dcid": "Percent_Person_50To74Years_Female_ReceivedMammography"
+        },
+        {
+          "name": "Population (Measured Based on Custody): 0 - 17 Years, Female, Incarcerated",
+          "dcid": "dc/c17kzp0zrfkq9"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/Person_Age-Years85_Gender-Female_Race",
       "name": "Person With Age = Years 85, Gender = Female, Race",
       "statVars": [
@@ -30171,20 +30301,12 @@
           "dcid": "dc/6dqm6n76jg2gc"
         },
         {
-          "name": "Count of Mortality Event (Measured Based on Jurisdiction): Assault(Homicide), Female, Incarcerated",
-          "dcid": "dc/q2pgyz35p79l4"
-        },
-        {
           "name": "Count of Mortality Event (Measured Based on Jurisdiction): Death Due To Another Person, Female, Incarcerated",
           "dcid": "dc/59k03h1hvxp89"
         },
         {
           "name": "Count of Mortality Event (Measured Based on Jurisdiction): Illness or Natural Cause, Female, Incarcerated",
           "dcid": "dc/mjqlm4q2efmvh"
-        },
-        {
-          "name": "Count of Mortality Event (Measured Based on Jurisdiction): Intentional Self-Harm(Suicide), Female, Incarcerated",
-          "dcid": "dc/shgj6xwg96pp3"
         },
         {
           "name": "Count of Mortality Event (Measured Based on Jurisdiction): Judicial Execution, Female, Incarcerated",
@@ -31177,92 +31299,6 @@
       ]
     },
     {
-      "dcid": "dc/g/MortalityEvent_Age_Gender-Female",
-      "name": "Mortality Event With Age, Gender = Female",
-      "statVars": [
-        {
-          "name": "Count of Mortality Event: 10 - 14 Years, Female",
-          "dcid": "Count_Death_10To14Years_Female"
-        },
-        {
-          "name": "Count of Mortality Event: 15 - 19 Years, Female",
-          "dcid": "Count_Death_15To19Years_Female"
-        },
-        {
-          "name": "Count of Mortality Event: 15 - 64 Years, Female",
-          "dcid": "Count_Death_15To64Years_Female"
-        },
-        {
-          "name": "Count of Mortality Event: 20 - 24 Years, Female",
-          "dcid": "Count_Death_20To24Years_Female"
-        },
-        {
-          "name": "Count of Mortality Event: 25 - 29 Years, Female",
-          "dcid": "Count_Death_25To29Years_Female"
-        },
-        {
-          "name": "Count of Mortality Event: 30 - 34 Years, Female",
-          "dcid": "Count_Death_30To34Years_Female"
-        },
-        {
-          "name": "Count of Mortality Event: 35 - 39 Years, Female",
-          "dcid": "Count_Death_35To39Years_Female"
-        },
-        {
-          "name": "Count of Mortality Event: 4 Years or Less, Female",
-          "dcid": "Count_Death_Upto4Years_Female"
-        },
-        {
-          "name": "Count of Mortality Event: 40 - 44 Years, Female",
-          "dcid": "Count_Death_40To44Years_Female"
-        },
-        {
-          "name": "Count of Mortality Event: 45 - 49 Years, Female",
-          "dcid": "Count_Death_45To49Years_Female"
-        },
-        {
-          "name": "Count of Mortality Event: 5 - 9 Years, Female",
-          "dcid": "Count_Death_5To9Years_Female"
-        },
-        {
-          "name": "Count of Mortality Event: 50 - 54 Years, Female",
-          "dcid": "Count_Death_50To54Years_Female"
-        },
-        {
-          "name": "Count of Mortality Event: 55 - 59 Years, Female",
-          "dcid": "Count_Death_55To59Years_Female"
-        },
-        {
-          "name": "Count of Mortality Event: 60 - 64 Years, Female",
-          "dcid": "Count_Death_60To64Years_Female"
-        },
-        {
-          "name": "Count of Mortality Event: 65 - 69 Years, Female",
-          "dcid": "Count_Death_65To69Years_Female"
-        },
-        {
-          "name": "Count of Mortality Event: 65 Years or More, Female",
-          "dcid": "Count_Death_65OrMoreYears_Female"
-        },
-        {
-          "name": "Count of Mortality Event: 70 - 74 Years, Female",
-          "dcid": "Count_Death_70To74Years_Female"
-        },
-        {
-          "name": "Count of Mortality Event: 75 - 79 Years, Female",
-          "dcid": "Count_Death_75To79Years_Female"
-        },
-        {
-          "name": "Count of Mortality Event: 80 Years or More, Female",
-          "dcid": "Count_Death_80OrMoreYears_Female"
-        },
-        {
-          "name": "Female Infant Mortality Rate",
-          "dcid": "Count_Death_0Years_Female_AsFractionOf_Count_BirthEvent_LiveBirth_Female"
-        }
-      ]
-    },
-    {
       "dcid": "dc/g/Person_Age-Years1To4_Gender-Female_Race",
       "name": "Person With Age = 1 - 4 Years, Gender = Female, Race",
       "statVars": [
@@ -31349,88 +31385,6 @@
       ]
     },
     {
-      "dcid": "dc/g/Person_Age_Gender-Female",
-      "name": "Person With Age, Gender = Female",
-      "statVars": [
-        {
-          "name": "Life Expectancy: 1 Years or Less, Female",
-          "dcid": "LifeExpectancy_Person_Upto1Years_Female"
-        },
-        {
-          "name": "Population: 0 - 14 Years, Female",
-          "dcid": "Count_Person_0To14Years_Female"
-        },
-        {
-          "name": "Population: 14 Years or Less, Female",
-          "dcid": "Count_Person_Upto14Years_Female"
-        },
-        {
-          "name": "Population: 15 - 59 Years, Female",
-          "dcid": "Count_Person_15To59Years_Female"
-        },
-        {
-          "name": "Population: 3 Years or More, Female",
-          "dcid": "Count_Person_3OrMoreYears_Female"
-        },
-        {
-          "name": "Population: 60 Years or More, Female",
-          "dcid": "Count_Person_60OrMoreYears_Female"
-        },
-        {
-          "name": "Population: 65 - 66 Years, Female",
-          "dcid": "Count_Person_65To66Years_Female"
-        },
-        {
-          "name": "Population: 67 - 69 Years, Female",
-          "dcid": "Count_Person_67To69Years_Female"
-        },
-        {
-          "name": "Population: 80 Years or More, Female",
-          "dcid": "Count_Person_80OrMoreYears_Female"
-        },
-        {
-          "name": "Population: 85 - 89 Years, Female",
-          "dcid": "Count_Person_85To89Years_Female"
-        },
-        {
-          "name": "Population: 90 - 94 Years, Female",
-          "dcid": "Count_Person_90To94Years_Female"
-        },
-        {
-          "name": "Population: 90 Years or More, Female",
-          "dcid": "Count_Person_90OrMoreYears_Female"
-        },
-        {
-          "name": "Population: 95 - 99 Years, Female",
-          "dcid": "Count_Person_95To99Years_Female"
-        },
-        {
-          "name": "Population: 95 Years or More, Female",
-          "dcid": "Count_Person_95OrMoreYears_Female"
-        },
-        {
-          "name": "Population: 99 Years or More, Female",
-          "dcid": "Count_Person_99OrMoreYears_Female"
-        },
-        {
-          "name": "Unemployment Rate: 25 - 74 Years, Female",
-          "dcid": "UnemploymentRate_Person_25To74Years_Female"
-        },
-        {
-          "name": "Unemployment Rate: 25 Years or Less, Female",
-          "dcid": "UnemploymentRate_Person_Upto25Years_Female"
-        },
-        {
-          "name": "Prevalence: 50 - 74 Years, Female, Mammography",
-          "dcid": "Percent_Person_50To74Years_Female_ReceivedMammography"
-        },
-        {
-          "name": "Population (Measured Based on Custody): 0 - 17 Years, Female, Incarcerated",
-          "dcid": "dc/c17kzp0zrfkq9"
-        }
-      ]
-    },
-    {
       "dcid": "dc/g/SDG_5.6.2",
       "name": "5.6.2: Number of countries with laws and regulations that guarantee full and equal access to women and men aged 15 years and older to sexual and reproductive health care, information and education",
       "statVars": [
@@ -31505,6 +31459,84 @@
         {
           "name": "Extent to which countries have laws and regulations that guarantee full and equal access to women and men aged 15 years and older to sexual and reproductive health care, information and education: Section 4: HIV and HPV",
           "dcid": "sdg/SH_LGR_ACSRHES4"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years15To19_Gender-Female_MaritalStatus",
+      "name": "Person With Age = 15 - 19 Years, Gender = Female, Marital Status",
+      "statVars": [
+        {
+          "name": "Population: 15 - 19 Years, Female, Divorced",
+          "dcid": "Count_Person_15To19Years_Female_Divorced"
+        },
+        {
+          "name": "Population: 15 - 19 Years, Female, Living Together",
+          "dcid": "Count_Person_15To19Years_Female_LivingTogether"
+        },
+        {
+          "name": "Population: 15 - 19 Years, Female, Living Together \u0026 Divorced",
+          "dcid": "Count_Person_15To19Years_Female_LivingTogetherOrDivorced"
+        },
+        {
+          "name": "Population: 15 - 19 Years, Female, Living Together \u0026 Never Married",
+          "dcid": "Count_Person_15To19Years_Female_LivingTogetherOrNeverMarried"
+        },
+        {
+          "name": "Population: 15 - 19 Years, Female, Living Together \u0026 Separated",
+          "dcid": "Count_Person_15To19Years_Female_LivingTogetherOrSeparated"
+        },
+        {
+          "name": "Population: 15 - 19 Years, Female, Living Together \u0026 Widowed",
+          "dcid": "Count_Person_15To19Years_Female_LivingTogetherOrWidowed"
+        },
+        {
+          "name": "Population: 15 - 19 Years, Female, Married",
+          "dcid": "Count_Person_15To19Years_Female_Married"
+        },
+        {
+          "name": "Population: 15 - 19 Years, Female, Married \u0026 Living Together",
+          "dcid": "Count_Person_15To19Years_Female_MarriedOrLivingTogether"
+        },
+        {
+          "name": "Population: 15 - 19 Years, Female, Married And Not Separated",
+          "dcid": "Count_Person_15To19Years_Female_MarriedAndNotSeparated"
+        },
+        {
+          "name": "Population: 15 - 19 Years, Female, Never Married",
+          "dcid": "Count_Person_15To19Years_Female_NeverMarried"
+        },
+        {
+          "name": "Population: 15 - 19 Years, Female, Not Living Together \u0026 Divorced",
+          "dcid": "Count_Person_15To19Years_Female_NotLivingTogetherOrDivorced"
+        },
+        {
+          "name": "Population: 15 - 19 Years, Female, Not Living Together \u0026 Never Married",
+          "dcid": "Count_Person_15To19Years_Female_NotLivingTogetherOrNeverMarried"
+        },
+        {
+          "name": "Population: 15 - 19 Years, Female, Not Living Together \u0026 Separated",
+          "dcid": "Count_Person_15To19Years_Female_NotLivingTogetherOrSeparated"
+        },
+        {
+          "name": "Population: 15 - 19 Years, Female, Not Living Together \u0026 Widowed",
+          "dcid": "Count_Person_15To19Years_Female_NotLivingTogetherOrWidowed"
+        },
+        {
+          "name": "Population: 15 - 19 Years, Female, Now Married",
+          "dcid": "Count_Person_15To19Years_Female_NowMarried"
+        },
+        {
+          "name": "Population: 15 - 19 Years, Female, Separated",
+          "dcid": "Count_Person_15To19Years_Female_Separated"
+        },
+        {
+          "name": "Population: 15 - 19 Years, Female, Unmarried \u0026 Not Living Together",
+          "dcid": "Count_Person_15To19Years_Female_UnmarriedOrNotLivingTogether"
+        },
+        {
+          "name": "Population: 15 - 19 Years, Female, Widowed",
+          "dcid": "Count_Person_15To19Years_Female_Widowed"
         }
       ]
     },
@@ -31653,6 +31685,450 @@
         {
           "name": "Proportion of time spent on unpaid domestic chores and care work: 85 years old and over, Female",
           "dcid": "sdg/SL_DOM_TSPD_85GEQ_FEMALE"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years20To24_Gender-Female_MaritalStatus",
+      "name": "Person With Age = 20 - 24 Years, Gender = Female, Marital Status",
+      "statVars": [
+        {
+          "name": "Population: 20 - 24 Years, Female, Divorced",
+          "dcid": "Count_Person_20To24Years_Female_Divorced"
+        },
+        {
+          "name": "Population: 20 - 24 Years, Female, Living Together",
+          "dcid": "Count_Person_20To24Years_Female_LivingTogether"
+        },
+        {
+          "name": "Population: 20 - 24 Years, Female, Living Together \u0026 Divorced",
+          "dcid": "Count_Person_20To24Years_Female_LivingTogetherOrDivorced"
+        },
+        {
+          "name": "Population: 20 - 24 Years, Female, Living Together \u0026 Never Married",
+          "dcid": "Count_Person_20To24Years_Female_LivingTogetherOrNeverMarried"
+        },
+        {
+          "name": "Population: 20 - 24 Years, Female, Living Together \u0026 Separated",
+          "dcid": "Count_Person_20To24Years_Female_LivingTogetherOrSeparated"
+        },
+        {
+          "name": "Population: 20 - 24 Years, Female, Living Together \u0026 Widowed",
+          "dcid": "Count_Person_20To24Years_Female_LivingTogetherOrWidowed"
+        },
+        {
+          "name": "Population: 20 - 24 Years, Female, Married",
+          "dcid": "Count_Person_20To24Years_Female_Married"
+        },
+        {
+          "name": "Population: 20 - 24 Years, Female, Married \u0026 Living Together",
+          "dcid": "Count_Person_20To24Years_Female_MarriedOrLivingTogether"
+        },
+        {
+          "name": "Population: 20 - 24 Years, Female, Never Married",
+          "dcid": "Count_Person_20To24Years_Female_NeverMarried"
+        },
+        {
+          "name": "Population: 20 - 24 Years, Female, Not Living Together \u0026 Divorced",
+          "dcid": "Count_Person_20To24Years_Female_NotLivingTogetherOrDivorced"
+        },
+        {
+          "name": "Population: 20 - 24 Years, Female, Not Living Together \u0026 Never Married",
+          "dcid": "Count_Person_20To24Years_Female_NotLivingTogetherOrNeverMarried"
+        },
+        {
+          "name": "Population: 20 - 24 Years, Female, Not Living Together \u0026 Separated",
+          "dcid": "Count_Person_20To24Years_Female_NotLivingTogetherOrSeparated"
+        },
+        {
+          "name": "Population: 20 - 24 Years, Female, Not Living Together \u0026 Widowed",
+          "dcid": "Count_Person_20To24Years_Female_NotLivingTogetherOrWidowed"
+        },
+        {
+          "name": "Population: 20 - 24 Years, Female, Now Married",
+          "dcid": "Count_Person_20To24Years_Female_NowMarried"
+        },
+        {
+          "name": "Population: 20 - 24 Years, Female, Separated",
+          "dcid": "Count_Person_20To24Years_Female_Separated"
+        },
+        {
+          "name": "Population: 20 - 24 Years, Female, Unmarried \u0026 Not Living Together",
+          "dcid": "Count_Person_20To24Years_Female_UnmarriedOrNotLivingTogether"
+        },
+        {
+          "name": "Population: 20 - 24 Years, Female, Widowed",
+          "dcid": "Count_Person_20To24Years_Female_Widowed"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years65To69_Gender-Female_MaritalStatus",
+      "name": "Person With Age = 65 - 69 Years, Gender = Female, Marital Status",
+      "statVars": [
+        {
+          "name": "Population: 65 - 69 Years, Female, Divorced",
+          "dcid": "Count_Person_65To69Years_Female_Divorced"
+        },
+        {
+          "name": "Population: 65 - 69 Years, Female, Living Together",
+          "dcid": "Count_Person_65To69Years_Female_LivingTogether"
+        },
+        {
+          "name": "Population: 65 - 69 Years, Female, Living Together \u0026 Divorced",
+          "dcid": "Count_Person_65To69Years_Female_LivingTogetherOrDivorced"
+        },
+        {
+          "name": "Population: 65 - 69 Years, Female, Living Together \u0026 Never Married",
+          "dcid": "Count_Person_65To69Years_Female_LivingTogetherOrNeverMarried"
+        },
+        {
+          "name": "Population: 65 - 69 Years, Female, Living Together \u0026 Separated",
+          "dcid": "Count_Person_65To69Years_Female_LivingTogetherOrSeparated"
+        },
+        {
+          "name": "Population: 65 - 69 Years, Female, Living Together \u0026 Widowed",
+          "dcid": "Count_Person_65To69Years_Female_LivingTogetherOrWidowed"
+        },
+        {
+          "name": "Population: 65 - 69 Years, Female, Married",
+          "dcid": "Count_Person_65To69Years_Female_Married"
+        },
+        {
+          "name": "Population: 65 - 69 Years, Female, Married \u0026 Living Together",
+          "dcid": "Count_Person_65To69Years_Female_MarriedOrLivingTogether"
+        },
+        {
+          "name": "Population: 65 - 69 Years, Female, Never Married",
+          "dcid": "Count_Person_65To69Years_Female_NeverMarried"
+        },
+        {
+          "name": "Population: 65 - 69 Years, Female, Not Living Together \u0026 Divorced",
+          "dcid": "Count_Person_65To69Years_Female_NotLivingTogetherOrDivorced"
+        },
+        {
+          "name": "Population: 65 - 69 Years, Female, Not Living Together \u0026 Never Married",
+          "dcid": "Count_Person_65To69Years_Female_NotLivingTogetherOrNeverMarried"
+        },
+        {
+          "name": "Population: 65 - 69 Years, Female, Not Living Together \u0026 Separated",
+          "dcid": "Count_Person_65To69Years_Female_NotLivingTogetherOrSeparated"
+        },
+        {
+          "name": "Population: 65 - 69 Years, Female, Not Living Together \u0026 Widowed",
+          "dcid": "Count_Person_65To69Years_Female_NotLivingTogetherOrWidowed"
+        },
+        {
+          "name": "Population: 65 - 69 Years, Female, Now Married",
+          "dcid": "Count_Person_65To69Years_Female_NowMarried"
+        },
+        {
+          "name": "Population: 65 - 69 Years, Female, Separated",
+          "dcid": "Count_Person_65To69Years_Female_Separated"
+        },
+        {
+          "name": "Population: 65 - 69 Years, Female, Unmarried \u0026 Not Living Together",
+          "dcid": "Count_Person_65To69Years_Female_UnmarriedOrNotLivingTogether"
+        },
+        {
+          "name": "Population: 65 - 69 Years, Female, Widowed",
+          "dcid": "Count_Person_65To69Years_Female_Widowed"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years70To74_Gender-Female_MaritalStatus",
+      "name": "Person With Age = 70 - 74 Years, Gender = Female, Marital Status",
+      "statVars": [
+        {
+          "name": "Population: 70 - 74 Years, Female, Divorced",
+          "dcid": "Count_Person_70To74Years_Female_Divorced"
+        },
+        {
+          "name": "Population: 70 - 74 Years, Female, Living Together",
+          "dcid": "Count_Person_70To74Years_Female_LivingTogether"
+        },
+        {
+          "name": "Population: 70 - 74 Years, Female, Living Together \u0026 Divorced",
+          "dcid": "Count_Person_70To74Years_Female_LivingTogetherOrDivorced"
+        },
+        {
+          "name": "Population: 70 - 74 Years, Female, Living Together \u0026 Never Married",
+          "dcid": "Count_Person_70To74Years_Female_LivingTogetherOrNeverMarried"
+        },
+        {
+          "name": "Population: 70 - 74 Years, Female, Living Together \u0026 Separated",
+          "dcid": "Count_Person_70To74Years_Female_LivingTogetherOrSeparated"
+        },
+        {
+          "name": "Population: 70 - 74 Years, Female, Living Together \u0026 Widowed",
+          "dcid": "Count_Person_70To74Years_Female_LivingTogetherOrWidowed"
+        },
+        {
+          "name": "Population: 70 - 74 Years, Female, Married",
+          "dcid": "Count_Person_70To74Years_Female_Married"
+        },
+        {
+          "name": "Population: 70 - 74 Years, Female, Married \u0026 Living Together",
+          "dcid": "Count_Person_70To74Years_Female_MarriedOrLivingTogether"
+        },
+        {
+          "name": "Population: 70 - 74 Years, Female, Never Married",
+          "dcid": "Count_Person_70To74Years_Female_NeverMarried"
+        },
+        {
+          "name": "Population: 70 - 74 Years, Female, Not Living Together \u0026 Divorced",
+          "dcid": "Count_Person_70To74Years_Female_NotLivingTogetherOrDivorced"
+        },
+        {
+          "name": "Population: 70 - 74 Years, Female, Not Living Together \u0026 Never Married",
+          "dcid": "Count_Person_70To74Years_Female_NotLivingTogetherOrNeverMarried"
+        },
+        {
+          "name": "Population: 70 - 74 Years, Female, Not Living Together \u0026 Separated",
+          "dcid": "Count_Person_70To74Years_Female_NotLivingTogetherOrSeparated"
+        },
+        {
+          "name": "Population: 70 - 74 Years, Female, Not Living Together \u0026 Widowed",
+          "dcid": "Count_Person_70To74Years_Female_NotLivingTogetherOrWidowed"
+        },
+        {
+          "name": "Population: 70 - 74 Years, Female, Now Married",
+          "dcid": "Count_Person_70To74Years_Female_NowMarried"
+        },
+        {
+          "name": "Population: 70 - 74 Years, Female, Separated",
+          "dcid": "Count_Person_70To74Years_Female_Separated"
+        },
+        {
+          "name": "Population: 70 - 74 Years, Female, Unmarried \u0026 Not Living Together",
+          "dcid": "Count_Person_70To74Years_Female_UnmarriedOrNotLivingTogether"
+        },
+        {
+          "name": "Population: 70 - 74 Years, Female, Widowed",
+          "dcid": "Count_Person_70To74Years_Female_Widowed"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years75To79_Gender-Female_MaritalStatus",
+      "name": "Person With Age = 75 - 79 Years, Gender = Female, Marital Status",
+      "statVars": [
+        {
+          "name": "Population: 75 - 79 Years, Female, Divorced",
+          "dcid": "Count_Person_75To79Years_Female_Divorced"
+        },
+        {
+          "name": "Population: 75 - 79 Years, Female, Living Together",
+          "dcid": "Count_Person_75To79Years_Female_LivingTogether"
+        },
+        {
+          "name": "Population: 75 - 79 Years, Female, Living Together \u0026 Divorced",
+          "dcid": "Count_Person_75To79Years_Female_LivingTogetherOrDivorced"
+        },
+        {
+          "name": "Population: 75 - 79 Years, Female, Living Together \u0026 Never Married",
+          "dcid": "Count_Person_75To79Years_Female_LivingTogetherOrNeverMarried"
+        },
+        {
+          "name": "Population: 75 - 79 Years, Female, Living Together \u0026 Separated",
+          "dcid": "Count_Person_75To79Years_Female_LivingTogetherOrSeparated"
+        },
+        {
+          "name": "Population: 75 - 79 Years, Female, Living Together \u0026 Widowed",
+          "dcid": "Count_Person_75To79Years_Female_LivingTogetherOrWidowed"
+        },
+        {
+          "name": "Population: 75 - 79 Years, Female, Married",
+          "dcid": "Count_Person_75To79Years_Female_Married"
+        },
+        {
+          "name": "Population: 75 - 79 Years, Female, Married \u0026 Living Together",
+          "dcid": "Count_Person_75To79Years_Female_MarriedOrLivingTogether"
+        },
+        {
+          "name": "Population: 75 - 79 Years, Female, Never Married",
+          "dcid": "Count_Person_75To79Years_Female_NeverMarried"
+        },
+        {
+          "name": "Population: 75 - 79 Years, Female, Not Living Together \u0026 Divorced",
+          "dcid": "Count_Person_75To79Years_Female_NotLivingTogetherOrDivorced"
+        },
+        {
+          "name": "Population: 75 - 79 Years, Female, Not Living Together \u0026 Never Married",
+          "dcid": "Count_Person_75To79Years_Female_NotLivingTogetherOrNeverMarried"
+        },
+        {
+          "name": "Population: 75 - 79 Years, Female, Not Living Together \u0026 Separated",
+          "dcid": "Count_Person_75To79Years_Female_NotLivingTogetherOrSeparated"
+        },
+        {
+          "name": "Population: 75 - 79 Years, Female, Not Living Together \u0026 Widowed",
+          "dcid": "Count_Person_75To79Years_Female_NotLivingTogetherOrWidowed"
+        },
+        {
+          "name": "Population: 75 - 79 Years, Female, Now Married",
+          "dcid": "Count_Person_75To79Years_Female_NowMarried"
+        },
+        {
+          "name": "Population: 75 - 79 Years, Female, Separated",
+          "dcid": "Count_Person_75To79Years_Female_Separated"
+        },
+        {
+          "name": "Population: 75 - 79 Years, Female, Unmarried \u0026 Not Living Together",
+          "dcid": "Count_Person_75To79Years_Female_UnmarriedOrNotLivingTogether"
+        },
+        {
+          "name": "Population: 75 - 79 Years, Female, Widowed",
+          "dcid": "Count_Person_75To79Years_Female_Widowed"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years80To84_Gender-Female_MaritalStatus",
+      "name": "Person With Age = 80 - 84 Years, Gender = Female, Marital Status",
+      "statVars": [
+        {
+          "name": "Population: 80 - 84 Years, Female, Divorced",
+          "dcid": "Count_Person_80To84Years_Female_Divorced"
+        },
+        {
+          "name": "Population: 80 - 84 Years, Female, Living Together",
+          "dcid": "Count_Person_80To84Years_Female_LivingTogether"
+        },
+        {
+          "name": "Population: 80 - 84 Years, Female, Living Together \u0026 Divorced",
+          "dcid": "Count_Person_80To84Years_Female_LivingTogetherOrDivorced"
+        },
+        {
+          "name": "Population: 80 - 84 Years, Female, Living Together \u0026 Never Married",
+          "dcid": "Count_Person_80To84Years_Female_LivingTogetherOrNeverMarried"
+        },
+        {
+          "name": "Population: 80 - 84 Years, Female, Living Together \u0026 Separated",
+          "dcid": "Count_Person_80To84Years_Female_LivingTogetherOrSeparated"
+        },
+        {
+          "name": "Population: 80 - 84 Years, Female, Living Together \u0026 Widowed",
+          "dcid": "Count_Person_80To84Years_Female_LivingTogetherOrWidowed"
+        },
+        {
+          "name": "Population: 80 - 84 Years, Female, Married",
+          "dcid": "Count_Person_80To84Years_Female_Married"
+        },
+        {
+          "name": "Population: 80 - 84 Years, Female, Married \u0026 Living Together",
+          "dcid": "Count_Person_80To84Years_Female_MarriedOrLivingTogether"
+        },
+        {
+          "name": "Population: 80 - 84 Years, Female, Never Married",
+          "dcid": "Count_Person_80To84Years_Female_NeverMarried"
+        },
+        {
+          "name": "Population: 80 - 84 Years, Female, Not Living Together \u0026 Divorced",
+          "dcid": "Count_Person_80To84Years_Female_NotLivingTogetherOrDivorced"
+        },
+        {
+          "name": "Population: 80 - 84 Years, Female, Not Living Together \u0026 Never Married",
+          "dcid": "Count_Person_80To84Years_Female_NotLivingTogetherOrNeverMarried"
+        },
+        {
+          "name": "Population: 80 - 84 Years, Female, Not Living Together \u0026 Separated",
+          "dcid": "Count_Person_80To84Years_Female_NotLivingTogetherOrSeparated"
+        },
+        {
+          "name": "Population: 80 - 84 Years, Female, Not Living Together \u0026 Widowed",
+          "dcid": "Count_Person_80To84Years_Female_NotLivingTogetherOrWidowed"
+        },
+        {
+          "name": "Population: 80 - 84 Years, Female, Now Married",
+          "dcid": "Count_Person_80To84Years_Female_NowMarried"
+        },
+        {
+          "name": "Population: 80 - 84 Years, Female, Separated",
+          "dcid": "Count_Person_80To84Years_Female_Separated"
+        },
+        {
+          "name": "Population: 80 - 84 Years, Female, Unmarried \u0026 Not Living Together",
+          "dcid": "Count_Person_80To84Years_Female_UnmarriedOrNotLivingTogether"
+        },
+        {
+          "name": "Population: 80 - 84 Years, Female, Widowed",
+          "dcid": "Count_Person_80To84Years_Female_Widowed"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years85Onwards_Gender-Female_MaritalStatus",
+      "name": "Person With Age = 85 Years or More, Gender = Female, Marital Status",
+      "statVars": [
+        {
+          "name": "Population: 85 Years or More, Female, Divorced",
+          "dcid": "Count_Person_85OrMoreYears_Female_Divorced"
+        },
+        {
+          "name": "Population: 85 Years or More, Female, Living Together",
+          "dcid": "Count_Person_85OrMoreYears_Female_LivingTogether"
+        },
+        {
+          "name": "Population: 85 Years or More, Female, Living Together \u0026 Divorced",
+          "dcid": "Count_Person_85OrMoreYears_Female_LivingTogetherOrDivorced"
+        },
+        {
+          "name": "Population: 85 Years or More, Female, Living Together \u0026 Never Married",
+          "dcid": "Count_Person_85OrMoreYears_Female_LivingTogetherOrNeverMarried"
+        },
+        {
+          "name": "Population: 85 Years or More, Female, Living Together \u0026 Separated",
+          "dcid": "Count_Person_85OrMoreYears_Female_LivingTogetherOrSeparated"
+        },
+        {
+          "name": "Population: 85 Years or More, Female, Living Together \u0026 Widowed",
+          "dcid": "Count_Person_85OrMoreYears_Female_LivingTogetherOrWidowed"
+        },
+        {
+          "name": "Population: 85 Years or More, Female, Married",
+          "dcid": "Count_Person_85OrMoreYears_Female_Married"
+        },
+        {
+          "name": "Population: 85 Years or More, Female, Married \u0026 Living Together",
+          "dcid": "Count_Person_85OrMoreYears_Female_MarriedOrLivingTogether"
+        },
+        {
+          "name": "Population: 85 Years or More, Female, Never Married",
+          "dcid": "Count_Person_85OrMoreYears_Female_NeverMarried"
+        },
+        {
+          "name": "Population: 85 Years or More, Female, Not Living Together \u0026 Divorced",
+          "dcid": "Count_Person_85OrMoreYears_Female_NotLivingTogetherOrDivorced"
+        },
+        {
+          "name": "Population: 85 Years or More, Female, Not Living Together \u0026 Never Married",
+          "dcid": "Count_Person_85OrMoreYears_Female_NotLivingTogetherOrNeverMarried"
+        },
+        {
+          "name": "Population: 85 Years or More, Female, Not Living Together \u0026 Separated",
+          "dcid": "Count_Person_85OrMoreYears_Female_NotLivingTogetherOrSeparated"
+        },
+        {
+          "name": "Population: 85 Years or More, Female, Not Living Together \u0026 Widowed",
+          "dcid": "Count_Person_85OrMoreYears_Female_NotLivingTogetherOrWidowed"
+        },
+        {
+          "name": "Population: 85 Years or More, Female, Now Married",
+          "dcid": "Count_Person_85OrMoreYears_Female_NowMarried"
+        },
+        {
+          "name": "Population: 85 Years or More, Female, Separated",
+          "dcid": "Count_Person_85OrMoreYears_Female_Separated"
+        },
+        {
+          "name": "Population: 85 Years or More, Female, Unmarried \u0026 Not Living Together",
+          "dcid": "Count_Person_85OrMoreYears_Female_UnmarriedOrNotLivingTogether"
+        },
+        {
+          "name": "Population: 85 Years or More, Female, Widowed",
+          "dcid": "Count_Person_85OrMoreYears_Female_Widowed"
         }
       ]
     },
@@ -31941,6 +32417,534 @@
         {
           "name": "Proportion of time spent on unpaid domestic chores: 85 years old and over, Female",
           "dcid": "sdg/SL_DOM_TSPDDC_85GEQ_FEMALE"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years25To29_Gender-Female_MaritalStatus",
+      "name": "Person With Age = 25 - 29 Years, Gender = Female, Marital Status",
+      "statVars": [
+        {
+          "name": "Population: 25 - 29 Years, Female, Living Together",
+          "dcid": "Count_Person_25To29Years_Female_LivingTogether"
+        },
+        {
+          "name": "Population: 25 - 29 Years, Female, Living Together \u0026 Divorced",
+          "dcid": "Count_Person_25To29Years_Female_LivingTogetherOrDivorced"
+        },
+        {
+          "name": "Population: 25 - 29 Years, Female, Living Together \u0026 Never Married",
+          "dcid": "Count_Person_25To29Years_Female_LivingTogetherOrNeverMarried"
+        },
+        {
+          "name": "Population: 25 - 29 Years, Female, Living Together \u0026 Separated",
+          "dcid": "Count_Person_25To29Years_Female_LivingTogetherOrSeparated"
+        },
+        {
+          "name": "Population: 25 - 29 Years, Female, Living Together \u0026 Widowed",
+          "dcid": "Count_Person_25To29Years_Female_LivingTogetherOrWidowed"
+        },
+        {
+          "name": "Population: 25 - 29 Years, Female, Married",
+          "dcid": "Count_Person_25To29Years_Female_Married"
+        },
+        {
+          "name": "Population: 25 - 29 Years, Female, Married \u0026 Living Together",
+          "dcid": "Count_Person_25To29Years_Female_MarriedOrLivingTogether"
+        },
+        {
+          "name": "Population: 25 - 29 Years, Female, Not Living Together \u0026 Divorced",
+          "dcid": "Count_Person_25To29Years_Female_NotLivingTogetherOrDivorced"
+        },
+        {
+          "name": "Population: 25 - 29 Years, Female, Not Living Together \u0026 Never Married",
+          "dcid": "Count_Person_25To29Years_Female_NotLivingTogetherOrNeverMarried"
+        },
+        {
+          "name": "Population: 25 - 29 Years, Female, Not Living Together \u0026 Separated",
+          "dcid": "Count_Person_25To29Years_Female_NotLivingTogetherOrSeparated"
+        },
+        {
+          "name": "Population: 25 - 29 Years, Female, Not Living Together \u0026 Widowed",
+          "dcid": "Count_Person_25To29Years_Female_NotLivingTogetherOrWidowed"
+        },
+        {
+          "name": "Population: 25 - 29 Years, Female, Now Married",
+          "dcid": "Count_Person_25To29Years_Female_NowMarried"
+        },
+        {
+          "name": "Population: 25 - 29 Years, Female, Separated",
+          "dcid": "Count_Person_25To29Years_Female_Separated"
+        },
+        {
+          "name": "Population: 25 - 29 Years, Female, Unmarried \u0026 Not Living Together",
+          "dcid": "Count_Person_25To29Years_Female_UnmarriedOrNotLivingTogether"
+        },
+        {
+          "name": "Population: 25 - 29 Years, Employed, Female, Married And Not Separated",
+          "dcid": "Count_Person_25To29Years_Employed_Female_MarriedAndNotSeparated"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years30To34_Gender-Female_MaritalStatus",
+      "name": "Person With Age = 30 - 34 Years, Gender = Female, Marital Status",
+      "statVars": [
+        {
+          "name": "Population: 30 - 34 Years, Female, Living Together",
+          "dcid": "Count_Person_30To34Years_Female_LivingTogether"
+        },
+        {
+          "name": "Population: 30 - 34 Years, Female, Living Together \u0026 Divorced",
+          "dcid": "Count_Person_30To34Years_Female_LivingTogetherOrDivorced"
+        },
+        {
+          "name": "Population: 30 - 34 Years, Female, Living Together \u0026 Never Married",
+          "dcid": "Count_Person_30To34Years_Female_LivingTogetherOrNeverMarried"
+        },
+        {
+          "name": "Population: 30 - 34 Years, Female, Living Together \u0026 Separated",
+          "dcid": "Count_Person_30To34Years_Female_LivingTogetherOrSeparated"
+        },
+        {
+          "name": "Population: 30 - 34 Years, Female, Living Together \u0026 Widowed",
+          "dcid": "Count_Person_30To34Years_Female_LivingTogetherOrWidowed"
+        },
+        {
+          "name": "Population: 30 - 34 Years, Female, Married",
+          "dcid": "Count_Person_30To34Years_Female_Married"
+        },
+        {
+          "name": "Population: 30 - 34 Years, Female, Married \u0026 Living Together",
+          "dcid": "Count_Person_30To34Years_Female_MarriedOrLivingTogether"
+        },
+        {
+          "name": "Population: 30 - 34 Years, Female, Not Living Together \u0026 Divorced",
+          "dcid": "Count_Person_30To34Years_Female_NotLivingTogetherOrDivorced"
+        },
+        {
+          "name": "Population: 30 - 34 Years, Female, Not Living Together \u0026 Never Married",
+          "dcid": "Count_Person_30To34Years_Female_NotLivingTogetherOrNeverMarried"
+        },
+        {
+          "name": "Population: 30 - 34 Years, Female, Not Living Together \u0026 Separated",
+          "dcid": "Count_Person_30To34Years_Female_NotLivingTogetherOrSeparated"
+        },
+        {
+          "name": "Population: 30 - 34 Years, Female, Not Living Together \u0026 Widowed",
+          "dcid": "Count_Person_30To34Years_Female_NotLivingTogetherOrWidowed"
+        },
+        {
+          "name": "Population: 30 - 34 Years, Female, Now Married",
+          "dcid": "Count_Person_30To34Years_Female_NowMarried"
+        },
+        {
+          "name": "Population: 30 - 34 Years, Female, Separated",
+          "dcid": "Count_Person_30To34Years_Female_Separated"
+        },
+        {
+          "name": "Population: 30 - 34 Years, Female, Unmarried \u0026 Not Living Together",
+          "dcid": "Count_Person_30To34Years_Female_UnmarriedOrNotLivingTogether"
+        },
+        {
+          "name": "Population: 30 - 34 Years, Employed, Female, Married And Not Separated",
+          "dcid": "Count_Person_30To34Years_Employed_Female_MarriedAndNotSeparated"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years35To39_Gender-Female_MaritalStatus",
+      "name": "Person With Age = 35 - 39 Years, Gender = Female, Marital Status",
+      "statVars": [
+        {
+          "name": "Population: 35 - 39 Years, Female, Living Together",
+          "dcid": "Count_Person_35To39Years_Female_LivingTogether"
+        },
+        {
+          "name": "Population: 35 - 39 Years, Female, Living Together \u0026 Divorced",
+          "dcid": "Count_Person_35To39Years_Female_LivingTogetherOrDivorced"
+        },
+        {
+          "name": "Population: 35 - 39 Years, Female, Living Together \u0026 Never Married",
+          "dcid": "Count_Person_35To39Years_Female_LivingTogetherOrNeverMarried"
+        },
+        {
+          "name": "Population: 35 - 39 Years, Female, Living Together \u0026 Separated",
+          "dcid": "Count_Person_35To39Years_Female_LivingTogetherOrSeparated"
+        },
+        {
+          "name": "Population: 35 - 39 Years, Female, Living Together \u0026 Widowed",
+          "dcid": "Count_Person_35To39Years_Female_LivingTogetherOrWidowed"
+        },
+        {
+          "name": "Population: 35 - 39 Years, Female, Married",
+          "dcid": "Count_Person_35To39Years_Female_Married"
+        },
+        {
+          "name": "Population: 35 - 39 Years, Female, Married \u0026 Living Together",
+          "dcid": "Count_Person_35To39Years_Female_MarriedOrLivingTogether"
+        },
+        {
+          "name": "Population: 35 - 39 Years, Female, Not Living Together \u0026 Divorced",
+          "dcid": "Count_Person_35To39Years_Female_NotLivingTogetherOrDivorced"
+        },
+        {
+          "name": "Population: 35 - 39 Years, Female, Not Living Together \u0026 Never Married",
+          "dcid": "Count_Person_35To39Years_Female_NotLivingTogetherOrNeverMarried"
+        },
+        {
+          "name": "Population: 35 - 39 Years, Female, Not Living Together \u0026 Separated",
+          "dcid": "Count_Person_35To39Years_Female_NotLivingTogetherOrSeparated"
+        },
+        {
+          "name": "Population: 35 - 39 Years, Female, Not Living Together \u0026 Widowed",
+          "dcid": "Count_Person_35To39Years_Female_NotLivingTogetherOrWidowed"
+        },
+        {
+          "name": "Population: 35 - 39 Years, Female, Now Married",
+          "dcid": "Count_Person_35To39Years_Female_NowMarried"
+        },
+        {
+          "name": "Population: 35 - 39 Years, Female, Separated",
+          "dcid": "Count_Person_35To39Years_Female_Separated"
+        },
+        {
+          "name": "Population: 35 - 39 Years, Female, Unmarried \u0026 Not Living Together",
+          "dcid": "Count_Person_35To39Years_Female_UnmarriedOrNotLivingTogether"
+        },
+        {
+          "name": "Population: 35 - 39 Years, Employed, Female, Married And Not Separated",
+          "dcid": "Count_Person_35To39Years_Employed_Female_MarriedAndNotSeparated"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years40To44_Gender-Female_MaritalStatus",
+      "name": "Person With Age = 40 - 44 Years, Gender = Female, Marital Status",
+      "statVars": [
+        {
+          "name": "Population: 40 - 44 Years, Female, Living Together",
+          "dcid": "Count_Person_40To44Years_Female_LivingTogether"
+        },
+        {
+          "name": "Population: 40 - 44 Years, Female, Living Together \u0026 Divorced",
+          "dcid": "Count_Person_40To44Years_Female_LivingTogetherOrDivorced"
+        },
+        {
+          "name": "Population: 40 - 44 Years, Female, Living Together \u0026 Never Married",
+          "dcid": "Count_Person_40To44Years_Female_LivingTogetherOrNeverMarried"
+        },
+        {
+          "name": "Population: 40 - 44 Years, Female, Living Together \u0026 Separated",
+          "dcid": "Count_Person_40To44Years_Female_LivingTogetherOrSeparated"
+        },
+        {
+          "name": "Population: 40 - 44 Years, Female, Living Together \u0026 Widowed",
+          "dcid": "Count_Person_40To44Years_Female_LivingTogetherOrWidowed"
+        },
+        {
+          "name": "Population: 40 - 44 Years, Female, Married",
+          "dcid": "Count_Person_40To44Years_Female_Married"
+        },
+        {
+          "name": "Population: 40 - 44 Years, Female, Married \u0026 Living Together",
+          "dcid": "Count_Person_40To44Years_Female_MarriedOrLivingTogether"
+        },
+        {
+          "name": "Population: 40 - 44 Years, Female, Not Living Together \u0026 Divorced",
+          "dcid": "Count_Person_40To44Years_Female_NotLivingTogetherOrDivorced"
+        },
+        {
+          "name": "Population: 40 - 44 Years, Female, Not Living Together \u0026 Never Married",
+          "dcid": "Count_Person_40To44Years_Female_NotLivingTogetherOrNeverMarried"
+        },
+        {
+          "name": "Population: 40 - 44 Years, Female, Not Living Together \u0026 Separated",
+          "dcid": "Count_Person_40To44Years_Female_NotLivingTogetherOrSeparated"
+        },
+        {
+          "name": "Population: 40 - 44 Years, Female, Not Living Together \u0026 Widowed",
+          "dcid": "Count_Person_40To44Years_Female_NotLivingTogetherOrWidowed"
+        },
+        {
+          "name": "Population: 40 - 44 Years, Female, Now Married",
+          "dcid": "Count_Person_40To44Years_Female_NowMarried"
+        },
+        {
+          "name": "Population: 40 - 44 Years, Female, Separated",
+          "dcid": "Count_Person_40To44Years_Female_Separated"
+        },
+        {
+          "name": "Population: 40 - 44 Years, Female, Unmarried \u0026 Not Living Together",
+          "dcid": "Count_Person_40To44Years_Female_UnmarriedOrNotLivingTogether"
+        },
+        {
+          "name": "Population: 40 - 44 Years, Employed, Female, Married And Not Separated",
+          "dcid": "Count_Person_40To44Years_Employed_Female_MarriedAndNotSeparated"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years45To49_Gender-Female_MaritalStatus",
+      "name": "Person With Age = 45 - 49 Years, Gender = Female, Marital Status",
+      "statVars": [
+        {
+          "name": "Population: 45 - 49 Years, Female, Living Together",
+          "dcid": "Count_Person_45To49Years_Female_LivingTogether"
+        },
+        {
+          "name": "Population: 45 - 49 Years, Female, Living Together \u0026 Divorced",
+          "dcid": "Count_Person_45To49Years_Female_LivingTogetherOrDivorced"
+        },
+        {
+          "name": "Population: 45 - 49 Years, Female, Living Together \u0026 Never Married",
+          "dcid": "Count_Person_45To49Years_Female_LivingTogetherOrNeverMarried"
+        },
+        {
+          "name": "Population: 45 - 49 Years, Female, Living Together \u0026 Separated",
+          "dcid": "Count_Person_45To49Years_Female_LivingTogetherOrSeparated"
+        },
+        {
+          "name": "Population: 45 - 49 Years, Female, Living Together \u0026 Widowed",
+          "dcid": "Count_Person_45To49Years_Female_LivingTogetherOrWidowed"
+        },
+        {
+          "name": "Population: 45 - 49 Years, Female, Married",
+          "dcid": "Count_Person_45To49Years_Female_Married"
+        },
+        {
+          "name": "Population: 45 - 49 Years, Female, Married \u0026 Living Together",
+          "dcid": "Count_Person_45To49Years_Female_MarriedOrLivingTogether"
+        },
+        {
+          "name": "Population: 45 - 49 Years, Female, Not Living Together \u0026 Divorced",
+          "dcid": "Count_Person_45To49Years_Female_NotLivingTogetherOrDivorced"
+        },
+        {
+          "name": "Population: 45 - 49 Years, Female, Not Living Together \u0026 Never Married",
+          "dcid": "Count_Person_45To49Years_Female_NotLivingTogetherOrNeverMarried"
+        },
+        {
+          "name": "Population: 45 - 49 Years, Female, Not Living Together \u0026 Separated",
+          "dcid": "Count_Person_45To49Years_Female_NotLivingTogetherOrSeparated"
+        },
+        {
+          "name": "Population: 45 - 49 Years, Female, Not Living Together \u0026 Widowed",
+          "dcid": "Count_Person_45To49Years_Female_NotLivingTogetherOrWidowed"
+        },
+        {
+          "name": "Population: 45 - 49 Years, Female, Now Married",
+          "dcid": "Count_Person_45To49Years_Female_NowMarried"
+        },
+        {
+          "name": "Population: 45 - 49 Years, Female, Separated",
+          "dcid": "Count_Person_45To49Years_Female_Separated"
+        },
+        {
+          "name": "Population: 45 - 49 Years, Female, Unmarried \u0026 Not Living Together",
+          "dcid": "Count_Person_45To49Years_Female_UnmarriedOrNotLivingTogether"
+        },
+        {
+          "name": "Population: 45 - 49 Years, Employed, Female, Married And Not Separated",
+          "dcid": "Count_Person_45To49Years_Employed_Female_MarriedAndNotSeparated"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years50To54_Gender-Female_MaritalStatus",
+      "name": "Person With Age = 50 - 54 Years, Gender = Female, Marital Status",
+      "statVars": [
+        {
+          "name": "Population: 50 - 54 Years, Female, Living Together",
+          "dcid": "Count_Person_50To54Years_Female_LivingTogether"
+        },
+        {
+          "name": "Population: 50 - 54 Years, Female, Living Together \u0026 Divorced",
+          "dcid": "Count_Person_50To54Years_Female_LivingTogetherOrDivorced"
+        },
+        {
+          "name": "Population: 50 - 54 Years, Female, Living Together \u0026 Never Married",
+          "dcid": "Count_Person_50To54Years_Female_LivingTogetherOrNeverMarried"
+        },
+        {
+          "name": "Population: 50 - 54 Years, Female, Living Together \u0026 Separated",
+          "dcid": "Count_Person_50To54Years_Female_LivingTogetherOrSeparated"
+        },
+        {
+          "name": "Population: 50 - 54 Years, Female, Living Together \u0026 Widowed",
+          "dcid": "Count_Person_50To54Years_Female_LivingTogetherOrWidowed"
+        },
+        {
+          "name": "Population: 50 - 54 Years, Female, Married",
+          "dcid": "Count_Person_50To54Years_Female_Married"
+        },
+        {
+          "name": "Population: 50 - 54 Years, Female, Married \u0026 Living Together",
+          "dcid": "Count_Person_50To54Years_Female_MarriedOrLivingTogether"
+        },
+        {
+          "name": "Population: 50 - 54 Years, Female, Not Living Together \u0026 Divorced",
+          "dcid": "Count_Person_50To54Years_Female_NotLivingTogetherOrDivorced"
+        },
+        {
+          "name": "Population: 50 - 54 Years, Female, Not Living Together \u0026 Never Married",
+          "dcid": "Count_Person_50To54Years_Female_NotLivingTogetherOrNeverMarried"
+        },
+        {
+          "name": "Population: 50 - 54 Years, Female, Not Living Together \u0026 Separated",
+          "dcid": "Count_Person_50To54Years_Female_NotLivingTogetherOrSeparated"
+        },
+        {
+          "name": "Population: 50 - 54 Years, Female, Not Living Together \u0026 Widowed",
+          "dcid": "Count_Person_50To54Years_Female_NotLivingTogetherOrWidowed"
+        },
+        {
+          "name": "Population: 50 - 54 Years, Female, Now Married",
+          "dcid": "Count_Person_50To54Years_Female_NowMarried"
+        },
+        {
+          "name": "Population: 50 - 54 Years, Female, Separated",
+          "dcid": "Count_Person_50To54Years_Female_Separated"
+        },
+        {
+          "name": "Population: 50 - 54 Years, Female, Unmarried \u0026 Not Living Together",
+          "dcid": "Count_Person_50To54Years_Female_UnmarriedOrNotLivingTogether"
+        },
+        {
+          "name": "Population: 50 - 54 Years, Employed, Female, Married And Not Separated",
+          "dcid": "Count_Person_50To54Years_Employed_Female_MarriedAndNotSeparated"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years55To59_Gender-Female_MaritalStatus",
+      "name": "Person With Age = 55 - 59 Years, Gender = Female, Marital Status",
+      "statVars": [
+        {
+          "name": "Population: 55 - 59 Years, Female, Living Together",
+          "dcid": "Count_Person_55To59Years_Female_LivingTogether"
+        },
+        {
+          "name": "Population: 55 - 59 Years, Female, Living Together \u0026 Divorced",
+          "dcid": "Count_Person_55To59Years_Female_LivingTogetherOrDivorced"
+        },
+        {
+          "name": "Population: 55 - 59 Years, Female, Living Together \u0026 Never Married",
+          "dcid": "Count_Person_55To59Years_Female_LivingTogetherOrNeverMarried"
+        },
+        {
+          "name": "Population: 55 - 59 Years, Female, Living Together \u0026 Separated",
+          "dcid": "Count_Person_55To59Years_Female_LivingTogetherOrSeparated"
+        },
+        {
+          "name": "Population: 55 - 59 Years, Female, Living Together \u0026 Widowed",
+          "dcid": "Count_Person_55To59Years_Female_LivingTogetherOrWidowed"
+        },
+        {
+          "name": "Population: 55 - 59 Years, Female, Married",
+          "dcid": "Count_Person_55To59Years_Female_Married"
+        },
+        {
+          "name": "Population: 55 - 59 Years, Female, Married \u0026 Living Together",
+          "dcid": "Count_Person_55To59Years_Female_MarriedOrLivingTogether"
+        },
+        {
+          "name": "Population: 55 - 59 Years, Female, Not Living Together \u0026 Divorced",
+          "dcid": "Count_Person_55To59Years_Female_NotLivingTogetherOrDivorced"
+        },
+        {
+          "name": "Population: 55 - 59 Years, Female, Not Living Together \u0026 Never Married",
+          "dcid": "Count_Person_55To59Years_Female_NotLivingTogetherOrNeverMarried"
+        },
+        {
+          "name": "Population: 55 - 59 Years, Female, Not Living Together \u0026 Separated",
+          "dcid": "Count_Person_55To59Years_Female_NotLivingTogetherOrSeparated"
+        },
+        {
+          "name": "Population: 55 - 59 Years, Female, Not Living Together \u0026 Widowed",
+          "dcid": "Count_Person_55To59Years_Female_NotLivingTogetherOrWidowed"
+        },
+        {
+          "name": "Population: 55 - 59 Years, Female, Now Married",
+          "dcid": "Count_Person_55To59Years_Female_NowMarried"
+        },
+        {
+          "name": "Population: 55 - 59 Years, Female, Separated",
+          "dcid": "Count_Person_55To59Years_Female_Separated"
+        },
+        {
+          "name": "Population: 55 - 59 Years, Female, Unmarried \u0026 Not Living Together",
+          "dcid": "Count_Person_55To59Years_Female_UnmarriedOrNotLivingTogether"
+        },
+        {
+          "name": "Population: 55 - 59 Years, Employed, Female, Married And Not Separated",
+          "dcid": "Count_Person_55To59Years_Employed_Female_MarriedAndNotSeparated"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years60To64_Gender-Female_MaritalStatus",
+      "name": "Person With Age = 60 - 64 Years, Gender = Female, Marital Status",
+      "statVars": [
+        {
+          "name": "Population: 60 - 64 Years, Female, Living Together",
+          "dcid": "Count_Person_60To64Years_Female_LivingTogether"
+        },
+        {
+          "name": "Population: 60 - 64 Years, Female, Living Together \u0026 Divorced",
+          "dcid": "Count_Person_60To64Years_Female_LivingTogetherOrDivorced"
+        },
+        {
+          "name": "Population: 60 - 64 Years, Female, Living Together \u0026 Never Married",
+          "dcid": "Count_Person_60To64Years_Female_LivingTogetherOrNeverMarried"
+        },
+        {
+          "name": "Population: 60 - 64 Years, Female, Living Together \u0026 Separated",
+          "dcid": "Count_Person_60To64Years_Female_LivingTogetherOrSeparated"
+        },
+        {
+          "name": "Population: 60 - 64 Years, Female, Living Together \u0026 Widowed",
+          "dcid": "Count_Person_60To64Years_Female_LivingTogetherOrWidowed"
+        },
+        {
+          "name": "Population: 60 - 64 Years, Female, Married",
+          "dcid": "Count_Person_60To64Years_Female_Married"
+        },
+        {
+          "name": "Population: 60 - 64 Years, Female, Married \u0026 Living Together",
+          "dcid": "Count_Person_60To64Years_Female_MarriedOrLivingTogether"
+        },
+        {
+          "name": "Population: 60 - 64 Years, Female, Not Living Together \u0026 Divorced",
+          "dcid": "Count_Person_60To64Years_Female_NotLivingTogetherOrDivorced"
+        },
+        {
+          "name": "Population: 60 - 64 Years, Female, Not Living Together \u0026 Never Married",
+          "dcid": "Count_Person_60To64Years_Female_NotLivingTogetherOrNeverMarried"
+        },
+        {
+          "name": "Population: 60 - 64 Years, Female, Not Living Together \u0026 Separated",
+          "dcid": "Count_Person_60To64Years_Female_NotLivingTogetherOrSeparated"
+        },
+        {
+          "name": "Population: 60 - 64 Years, Female, Not Living Together \u0026 Widowed",
+          "dcid": "Count_Person_60To64Years_Female_NotLivingTogetherOrWidowed"
+        },
+        {
+          "name": "Population: 60 - 64 Years, Female, Now Married",
+          "dcid": "Count_Person_60To64Years_Female_NowMarried"
+        },
+        {
+          "name": "Population: 60 - 64 Years, Female, Separated",
+          "dcid": "Count_Person_60To64Years_Female_Separated"
+        },
+        {
+          "name": "Population: 60 - 64 Years, Female, Unmarried \u0026 Not Living Together",
+          "dcid": "Count_Person_60To64Years_Female_UnmarriedOrNotLivingTogether"
+        },
+        {
+          "name": "Population: 60 - 64 Years, Employed, Female, Married And Not Separated",
+          "dcid": "Count_Person_60To64Years_Employed_Female_MarriedAndNotSeparated"
         }
       ]
     },
@@ -37013,6 +38017,40 @@
       ]
     },
     {
+      "dcid": "dc/g/MortalityEvent_Age_Gender-Female",
+      "name": "Mortality Event With Age, Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Mortality Event: 15 - 64 Years, Female",
+          "dcid": "Count_Death_15To64Years_Female"
+        },
+        {
+          "name": "Count of Mortality Event: 4 Years or Less, Female",
+          "dcid": "Count_Death_Upto4Years_Female"
+        },
+        {
+          "name": "Count of Mortality Event: 65 Years or More, Female",
+          "dcid": "Count_Death_65OrMoreYears_Female"
+        },
+        {
+          "name": "Count of Mortality Event: 80 Years or More, Female",
+          "dcid": "Count_Death_80OrMoreYears_Female"
+        },
+        {
+          "name": "Female Infant Mortality Rate",
+          "dcid": "Count_Death_0Years_Female_AsFractionOf_Count_BirthEvent_LiveBirth_Female"
+        },
+        {
+          "name": "Count of Mortality Event: 0 - 4 Years, Diabetes, Female",
+          "dcid": "Count_MortalityEvent_0To4Years_Diabetes_Female"
+        },
+        {
+          "name": "Count of Mortality Event: 85 Years or More, Diabetes, Female",
+          "dcid": "Count_MortalityEvent_85OrMoreYears_Diabetes_Female"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/Person_Gender-Female_Race",
       "name": "Person With Gender = Female, Race",
       "statVars": [
@@ -41763,6 +42801,36 @@
       ]
     },
     {
+      "dcid": "dc/g/Person_Gender-Female_PlaceOfBirth",
+      "name": "Person With Gender = Female, Place of Birth",
+      "statVars": [
+        {
+          "name": "Number of women born outside the country and excluding USA, Guatemala, Japan, France and Spain.",
+          "dcid": "Count_Person_Female_ForeignBorn_PlaceOfBirthINEGIOtherCountries"
+        },
+        {
+          "name": "Number of women born outside the country in France",
+          "dcid": "Count_Person_Female_ForeignBorn_PlaceOfBirthFrance"
+        },
+        {
+          "name": "Number of women born outside the country in Guatemala",
+          "dcid": "Count_Person_Female_ForeignBorn_PlaceOfBirthGautemala"
+        },
+        {
+          "name": "Number of women born outside the country in Japan",
+          "dcid": "Count_Person_Female_ForeignBorn_PlaceOfBirthJapan"
+        },
+        {
+          "name": "Number of women born outside the country in Spain",
+          "dcid": "Count_Person_Female_ForeignBorn_PlaceOfBirthSpain"
+        },
+        {
+          "name": "Number of women born outside the country in the United States of America",
+          "dcid": "Count_Person_Female_ForeignBorn_PlaceOfBirthUSA"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/SDGSPPSRSATISGOV_gender-SDGSexEnumFEMALE_sdgserviceAttribute",
       "name": "Proportion of Population Satisfied With Their Last Experience of Public Services, Government Services With Gender = Female, Service Attribute",
       "statVars": [
@@ -42299,36 +43367,6 @@
         {
           "name": "Percentage Never Or Occasionally, Consumption Of Vegetables Among Female, Underweight Population",
           "dcid": "Percent_NeverOrOccasionally_ConsumptionOfVegetables_In_Count_Person_Female_Underweight"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years15To19_Gender-Female_MaritalStatus",
-      "name": "Person With Age = 15 - 19 Years, Gender = Female, Marital Status",
-      "statVars": [
-        {
-          "name": "Population: 15 - 19 Years, Female, Divorced",
-          "dcid": "Count_Person_15To19Years_Female_Divorced"
-        },
-        {
-          "name": "Population: 15 - 19 Years, Female, Married And Not Separated",
-          "dcid": "Count_Person_15To19Years_Female_MarriedAndNotSeparated"
-        },
-        {
-          "name": "Population: 15 - 19 Years, Female, Never Married",
-          "dcid": "Count_Person_15To19Years_Female_NeverMarried"
-        },
-        {
-          "name": "Population: 15 - 19 Years, Female, Now Married",
-          "dcid": "Count_Person_15To19Years_Female_NowMarried"
-        },
-        {
-          "name": "Population: 15 - 19 Years, Female, Separated",
-          "dcid": "Count_Person_15To19Years_Female_Separated"
-        },
-        {
-          "name": "Population: 15 - 19 Years, Female, Widowed",
-          "dcid": "Count_Person_15To19Years_Female_Widowed"
         }
       ]
     },
@@ -43501,32 +44539,6 @@
       ]
     },
     {
-      "dcid": "dc/g/Person_Age-Years20To24_Gender-Female_MaritalStatus",
-      "name": "Person With Age = 20 - 24 Years, Gender = Female, Marital Status",
-      "statVars": [
-        {
-          "name": "Population: 20 - 24 Years, Female, Divorced",
-          "dcid": "Count_Person_20To24Years_Female_Divorced"
-        },
-        {
-          "name": "Population: 20 - 24 Years, Female, Never Married",
-          "dcid": "Count_Person_20To24Years_Female_NeverMarried"
-        },
-        {
-          "name": "Population: 20 - 24 Years, Female, Now Married",
-          "dcid": "Count_Person_20To24Years_Female_NowMarried"
-        },
-        {
-          "name": "Population: 20 - 24 Years, Female, Separated",
-          "dcid": "Count_Person_20To24Years_Female_Separated"
-        },
-        {
-          "name": "Population: 20 - 24 Years, Female, Widowed",
-          "dcid": "Count_Person_20To24Years_Female_Widowed"
-        }
-      ]
-    },
-    {
       "dcid": "dc/g/Person_Age-Years20To34_Gender-Female_MaritalStatus",
       "name": "Person With Age = 20 - 34 Years, Gender = Female, Marital Status",
       "statVars": [
@@ -43549,32 +44561,6 @@
         {
           "name": "Population: 20 - 34 Years, Female, Widowed",
           "dcid": "Count_Person_20To34Years_Female_Widowed"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years25To29_Gender-Female_MaritalStatus",
-      "name": "Person With Age = 25 - 29 Years, Gender = Female, Marital Status",
-      "statVars": [
-        {
-          "name": "Population: 25 - 29 Years, Female, Divorced",
-          "dcid": "Count_Person_25To29Years_Female_Divorced"
-        },
-        {
-          "name": "Population: 25 - 29 Years, Female, Never Married",
-          "dcid": "Count_Person_25To29Years_Female_NeverMarried"
-        },
-        {
-          "name": "Population: 25 - 29 Years, Female, Now Married",
-          "dcid": "Count_Person_25To29Years_Female_NowMarried"
-        },
-        {
-          "name": "Population: 25 - 29 Years, Female, Separated",
-          "dcid": "Count_Person_25To29Years_Female_Separated"
-        },
-        {
-          "name": "Population: 25 - 29 Years, Female, Widowed",
-          "dcid": "Count_Person_25To29Years_Female_Widowed"
         }
       ]
     },
@@ -43605,58 +44591,6 @@
       ]
     },
     {
-      "dcid": "dc/g/Person_Age-Years30To34_Gender-Female_MaritalStatus",
-      "name": "Person With Age = 30 - 34 Years, Gender = Female, Marital Status",
-      "statVars": [
-        {
-          "name": "Population: 30 - 34 Years, Female, Divorced",
-          "dcid": "Count_Person_30To34Years_Female_Divorced"
-        },
-        {
-          "name": "Population: 30 - 34 Years, Female, Never Married",
-          "dcid": "Count_Person_30To34Years_Female_NeverMarried"
-        },
-        {
-          "name": "Population: 30 - 34 Years, Female, Now Married",
-          "dcid": "Count_Person_30To34Years_Female_NowMarried"
-        },
-        {
-          "name": "Population: 30 - 34 Years, Female, Separated",
-          "dcid": "Count_Person_30To34Years_Female_Separated"
-        },
-        {
-          "name": "Population: 30 - 34 Years, Female, Widowed",
-          "dcid": "Count_Person_30To34Years_Female_Widowed"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years35To39_Gender-Female_MaritalStatus",
-      "name": "Person With Age = 35 - 39 Years, Gender = Female, Marital Status",
-      "statVars": [
-        {
-          "name": "Population: 35 - 39 Years, Female, Divorced",
-          "dcid": "Count_Person_35To39Years_Female_Divorced"
-        },
-        {
-          "name": "Population: 35 - 39 Years, Female, Never Married",
-          "dcid": "Count_Person_35To39Years_Female_NeverMarried"
-        },
-        {
-          "name": "Population: 35 - 39 Years, Female, Now Married",
-          "dcid": "Count_Person_35To39Years_Female_NowMarried"
-        },
-        {
-          "name": "Population: 35 - 39 Years, Female, Separated",
-          "dcid": "Count_Person_35To39Years_Female_Separated"
-        },
-        {
-          "name": "Population: 35 - 39 Years, Female, Widowed",
-          "dcid": "Count_Person_35To39Years_Female_Widowed"
-        }
-      ]
-    },
-    {
       "dcid": "dc/g/Person_Age-Years35To44_Gender-Female_MaritalStatus",
       "name": "Person With Age = 35 - 44 Years, Gender = Female, Marital Status",
       "statVars": [
@@ -43679,32 +44613,6 @@
         {
           "name": "Population: 35 - 44 Years, Female, Widowed",
           "dcid": "Count_Person_35To44Years_Female_Widowed"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years40To44_Gender-Female_MaritalStatus",
-      "name": "Person With Age = 40 - 44 Years, Gender = Female, Marital Status",
-      "statVars": [
-        {
-          "name": "Population: 40 - 44 Years, Female, Divorced",
-          "dcid": "Count_Person_40To44Years_Female_Divorced"
-        },
-        {
-          "name": "Population: 40 - 44 Years, Female, Never Married",
-          "dcid": "Count_Person_40To44Years_Female_NeverMarried"
-        },
-        {
-          "name": "Population: 40 - 44 Years, Female, Now Married",
-          "dcid": "Count_Person_40To44Years_Female_NowMarried"
-        },
-        {
-          "name": "Population: 40 - 44 Years, Female, Separated",
-          "dcid": "Count_Person_40To44Years_Female_Separated"
-        },
-        {
-          "name": "Population: 40 - 44 Years, Female, Widowed",
-          "dcid": "Count_Person_40To44Years_Female_Widowed"
         }
       ]
     },
@@ -43735,32 +44643,6 @@
       ]
     },
     {
-      "dcid": "dc/g/Person_Age-Years45To49_Gender-Female_MaritalStatus",
-      "name": "Person With Age = 45 - 49 Years, Gender = Female, Marital Status",
-      "statVars": [
-        {
-          "name": "Population: 45 - 49 Years, Female, Divorced",
-          "dcid": "Count_Person_45To49Years_Female_Divorced"
-        },
-        {
-          "name": "Population: 45 - 49 Years, Female, Never Married",
-          "dcid": "Count_Person_45To49Years_Female_NeverMarried"
-        },
-        {
-          "name": "Population: 45 - 49 Years, Female, Now Married",
-          "dcid": "Count_Person_45To49Years_Female_NowMarried"
-        },
-        {
-          "name": "Population: 45 - 49 Years, Female, Separated",
-          "dcid": "Count_Person_45To49Years_Female_Separated"
-        },
-        {
-          "name": "Population: 45 - 49 Years, Female, Widowed",
-          "dcid": "Count_Person_45To49Years_Female_Widowed"
-        }
-      ]
-    },
-    {
       "dcid": "dc/g/Person_Age-Years45To54_Gender-Female_MaritalStatus",
       "name": "Person With Age = 45 - 54 Years, Gender = Female, Marital Status",
       "statVars": [
@@ -43783,58 +44665,6 @@
         {
           "name": "Population: 45 - 54 Years, Female, Widowed",
           "dcid": "Count_Person_45To54Years_Female_Widowed"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years50To54_Gender-Female_MaritalStatus",
-      "name": "Person With Age = 50 - 54 Years, Gender = Female, Marital Status",
-      "statVars": [
-        {
-          "name": "Population: 50 - 54 Years, Female, Divorced",
-          "dcid": "Count_Person_50To54Years_Female_Divorced"
-        },
-        {
-          "name": "Population: 50 - 54 Years, Female, Never Married",
-          "dcid": "Count_Person_50To54Years_Female_NeverMarried"
-        },
-        {
-          "name": "Population: 50 - 54 Years, Female, Now Married",
-          "dcid": "Count_Person_50To54Years_Female_NowMarried"
-        },
-        {
-          "name": "Population: 50 - 54 Years, Female, Separated",
-          "dcid": "Count_Person_50To54Years_Female_Separated"
-        },
-        {
-          "name": "Population: 50 - 54 Years, Female, Widowed",
-          "dcid": "Count_Person_50To54Years_Female_Widowed"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years55To59_Gender-Female_MaritalStatus",
-      "name": "Person With Age = 55 - 59 Years, Gender = Female, Marital Status",
-      "statVars": [
-        {
-          "name": "Population: 55 - 59 Years, Female, Divorced",
-          "dcid": "Count_Person_55To59Years_Female_Divorced"
-        },
-        {
-          "name": "Population: 55 - 59 Years, Female, Never Married",
-          "dcid": "Count_Person_55To59Years_Female_NeverMarried"
-        },
-        {
-          "name": "Population: 55 - 59 Years, Female, Now Married",
-          "dcid": "Count_Person_55To59Years_Female_NowMarried"
-        },
-        {
-          "name": "Population: 55 - 59 Years, Female, Separated",
-          "dcid": "Count_Person_55To59Years_Female_Separated"
-        },
-        {
-          "name": "Population: 55 - 59 Years, Female, Widowed",
-          "dcid": "Count_Person_55To59Years_Female_Widowed"
         }
       ]
     },
@@ -43865,58 +44695,6 @@
       ]
     },
     {
-      "dcid": "dc/g/Person_Age-Years60To64_Gender-Female_MaritalStatus",
-      "name": "Person With Age = 60 - 64 Years, Gender = Female, Marital Status",
-      "statVars": [
-        {
-          "name": "Population: 60 - 64 Years, Female, Divorced",
-          "dcid": "Count_Person_60To64Years_Female_Divorced"
-        },
-        {
-          "name": "Population: 60 - 64 Years, Female, Never Married",
-          "dcid": "Count_Person_60To64Years_Female_NeverMarried"
-        },
-        {
-          "name": "Population: 60 - 64 Years, Female, Now Married",
-          "dcid": "Count_Person_60To64Years_Female_NowMarried"
-        },
-        {
-          "name": "Population: 60 - 64 Years, Female, Separated",
-          "dcid": "Count_Person_60To64Years_Female_Separated"
-        },
-        {
-          "name": "Population: 60 - 64 Years, Female, Widowed",
-          "dcid": "Count_Person_60To64Years_Female_Widowed"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years65To69_Gender-Female_MaritalStatus",
-      "name": "Person With Age = 65 - 69 Years, Gender = Female, Marital Status",
-      "statVars": [
-        {
-          "name": "Population: 65 - 69 Years, Female, Divorced",
-          "dcid": "Count_Person_65To69Years_Female_Divorced"
-        },
-        {
-          "name": "Population: 65 - 69 Years, Female, Never Married",
-          "dcid": "Count_Person_65To69Years_Female_NeverMarried"
-        },
-        {
-          "name": "Population: 65 - 69 Years, Female, Now Married",
-          "dcid": "Count_Person_65To69Years_Female_NowMarried"
-        },
-        {
-          "name": "Population: 65 - 69 Years, Female, Separated",
-          "dcid": "Count_Person_65To69Years_Female_Separated"
-        },
-        {
-          "name": "Population: 65 - 69 Years, Female, Widowed",
-          "dcid": "Count_Person_65To69Years_Female_Widowed"
-        }
-      ]
-    },
-    {
       "dcid": "dc/g/Person_Age-Years65Onwards_BachelorsDegreeMajor_Gender-Female",
       "name": "Person With Age = 65 Years or More, Bachelors Degree Major, Gender = Female",
       "statVars": [
@@ -43939,136 +44717,6 @@
         {
           "name": "Population: 65 Years or More, Science And Engineering Related Major, Bachelors Degree or Higher, Female",
           "dcid": "Count_Person_65OrMoreYears_BachelorOfScienceAndEngineeringRelatedMajor_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years65Onwards_Gender-Female_MaritalStatus",
-      "name": "Person With Age = 65 Years or More, Gender = Female, Marital Status",
-      "statVars": [
-        {
-          "name": "Population: 65 Years or More, Female, Divorced",
-          "dcid": "Count_Person_65OrMoreYears_Female_Divorced"
-        },
-        {
-          "name": "Population: 65 Years or More, Female, Married And Not Separated",
-          "dcid": "Count_Person_65OrMoreYears_Female_MarriedAndNotSeparated"
-        },
-        {
-          "name": "Population: 65 Years or More, Female, Never Married",
-          "dcid": "Count_Person_65OrMoreYears_Female_NeverMarried"
-        },
-        {
-          "name": "Population: 65 Years or More, Female, Separated",
-          "dcid": "Count_Person_65OrMoreYears_Female_Separated"
-        },
-        {
-          "name": "Population: 65 Years or More, Female, Widowed",
-          "dcid": "Count_Person_65OrMoreYears_Female_Widowed"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years70To74_Gender-Female_MaritalStatus",
-      "name": "Person With Age = 70 - 74 Years, Gender = Female, Marital Status",
-      "statVars": [
-        {
-          "name": "Population: 70 - 74 Years, Female, Divorced",
-          "dcid": "Count_Person_70To74Years_Female_Divorced"
-        },
-        {
-          "name": "Population: 70 - 74 Years, Female, Never Married",
-          "dcid": "Count_Person_70To74Years_Female_NeverMarried"
-        },
-        {
-          "name": "Population: 70 - 74 Years, Female, Now Married",
-          "dcid": "Count_Person_70To74Years_Female_NowMarried"
-        },
-        {
-          "name": "Population: 70 - 74 Years, Female, Separated",
-          "dcid": "Count_Person_70To74Years_Female_Separated"
-        },
-        {
-          "name": "Population: 70 - 74 Years, Female, Widowed",
-          "dcid": "Count_Person_70To74Years_Female_Widowed"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years75To79_Gender-Female_MaritalStatus",
-      "name": "Person With Age = 75 - 79 Years, Gender = Female, Marital Status",
-      "statVars": [
-        {
-          "name": "Population: 75 - 79 Years, Female, Divorced",
-          "dcid": "Count_Person_75To79Years_Female_Divorced"
-        },
-        {
-          "name": "Population: 75 - 79 Years, Female, Never Married",
-          "dcid": "Count_Person_75To79Years_Female_NeverMarried"
-        },
-        {
-          "name": "Population: 75 - 79 Years, Female, Now Married",
-          "dcid": "Count_Person_75To79Years_Female_NowMarried"
-        },
-        {
-          "name": "Population: 75 - 79 Years, Female, Separated",
-          "dcid": "Count_Person_75To79Years_Female_Separated"
-        },
-        {
-          "name": "Population: 75 - 79 Years, Female, Widowed",
-          "dcid": "Count_Person_75To79Years_Female_Widowed"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years80To84_Gender-Female_MaritalStatus",
-      "name": "Person With Age = 80 - 84 Years, Gender = Female, Marital Status",
-      "statVars": [
-        {
-          "name": "Population: 80 - 84 Years, Female, Divorced",
-          "dcid": "Count_Person_80To84Years_Female_Divorced"
-        },
-        {
-          "name": "Population: 80 - 84 Years, Female, Never Married",
-          "dcid": "Count_Person_80To84Years_Female_NeverMarried"
-        },
-        {
-          "name": "Population: 80 - 84 Years, Female, Now Married",
-          "dcid": "Count_Person_80To84Years_Female_NowMarried"
-        },
-        {
-          "name": "Population: 80 - 84 Years, Female, Separated",
-          "dcid": "Count_Person_80To84Years_Female_Separated"
-        },
-        {
-          "name": "Population: 80 - 84 Years, Female, Widowed",
-          "dcid": "Count_Person_80To84Years_Female_Widowed"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years85Onwards_Gender-Female_MaritalStatus",
-      "name": "Person With Age = 85 Years or More, Gender = Female, Marital Status",
-      "statVars": [
-        {
-          "name": "Population: 85 Years or More, Female, Divorced",
-          "dcid": "Count_Person_85OrMoreYears_Female_Divorced"
-        },
-        {
-          "name": "Population: 85 Years or More, Female, Never Married",
-          "dcid": "Count_Person_85OrMoreYears_Female_NeverMarried"
-        },
-        {
-          "name": "Population: 85 Years or More, Female, Now Married",
-          "dcid": "Count_Person_85OrMoreYears_Female_NowMarried"
-        },
-        {
-          "name": "Population: 85 Years or More, Female, Separated",
-          "dcid": "Count_Person_85OrMoreYears_Female_Separated"
-        },
-        {
-          "name": "Population: 85 Years or More, Female, Widowed",
-          "dcid": "Count_Person_85OrMoreYears_Female_Widowed"
         }
       ]
     },
@@ -45521,6 +46169,28 @@
       ]
     },
     {
+      "dcid": "dc/g/MortalityEvent_Gender-Female",
+      "name": "Mortality Event With Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Mortality Event: Female",
+          "dcid": "Count_Death_Female"
+        },
+        {
+          "name": "Count of Mortality Event: Female (As Fraction of Count Person Female)",
+          "dcid": "Count_Death_Female_AsAFractionOf_Count_Person_Female"
+        },
+        {
+          "name": "Count of Mortality Event: Female (Per Capita)",
+          "dcid": "Count_MortalityEvent_Female_AsAFractionOf_Count_Person"
+        },
+        {
+          "name": "Count of Mortality Event (Age Adjusted): Female (As Fraction of Count Person Female)",
+          "dcid": "Count_Death_Female_AgeAdjusted_AsAFractionOf_Count_Person_Female"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/Student_Gender-Female",
       "name": "Student With Gender = Female",
       "statVars": [
@@ -45632,7 +46302,7 @@
     },
     {
       "dcid": "dc/g/SDGSHDTHNCD_gender-SDGSexEnumFEMALE_sdgnameOfNonCommunicableDisease",
-      "name": "Number of Deaths Attributed To Non-communicable Diseases With Gender = Female, Name of Non-communicable Disease",
+      "name": "Number of Deaths Attributed To Non-communicable Diseases With Gender = Female, Name of Non Communicable Disease",
       "statVars": [
         {
           "name": "Number of deaths attributed to non-communicable diseases: Cancer, Female",
@@ -48303,24 +48973,6 @@
       ]
     },
     {
-      "dcid": "dc/g/MortalityEvent_Gender-Female",
-      "name": "Mortality Event With Gender = Female",
-      "statVars": [
-        {
-          "name": "Count of Mortality Event: Female",
-          "dcid": "Count_Death_Female"
-        },
-        {
-          "name": "Count of Mortality Event: Female (As Fraction of Count Person Female)",
-          "dcid": "Count_Death_Female_AsAFractionOf_Count_Person_Female"
-        },
-        {
-          "name": "Count of Mortality Event (Age Adjusted): Female (As Fraction of Count Person Female)",
-          "dcid": "Count_Death_Female_AgeAdjusted_AsAFractionOf_Count_Person_Female"
-        }
-      ]
-    },
-    {
       "dcid": "dc/g/SDGSIPOVEMP1_age_gender-SDGSexEnumFEMALE",
       "name": "Employed Population Below International Poverty Line With Age, Gender = Female",
       "statVars": [
@@ -48389,6 +49041,294 @@
         {
           "name": "Count of invasive, Age \u003c5 years, Unknown Serotype, Female Haemophilus influenzae incidents",
           "dcid": "Count_MedicalConditionIncident_5_LessYears_Female_ConditionInvasiveDisease_HaemophilusInfluenzae_UnknownSerotype"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/MortalityEvent_Age-Years10To14_Gender-Female",
+      "name": "Mortality Event With Age = 10 - 14 Years, Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Mortality Event: 10 - 14 Years, Female",
+          "dcid": "Count_Death_10To14Years_Female"
+        },
+        {
+          "name": "Count of Mortality Event: 10 - 14 Years, Female (Per Capita)",
+          "dcid": "Count_MortalityEvent_10To14Years_Female_AsAFractionOf_Count_Person"
+        },
+        {
+          "name": "Count of Mortality Event: 10 - 14 Years, Diabetes, Female",
+          "dcid": "Count_MortalityEvent_10To14Years_Diabetes_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/MortalityEvent_Age-Years15To19_Gender-Female",
+      "name": "Mortality Event With Age = 15 - 19 Years, Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Mortality Event: 15 - 19 Years, Female",
+          "dcid": "Count_Death_15To19Years_Female"
+        },
+        {
+          "name": "Count of Mortality Event: 15 - 19 Years, Female (Per Capita)",
+          "dcid": "Count_MortalityEvent_15To19Years_Female_AsAFractionOf_Count_Person"
+        },
+        {
+          "name": "Count of Mortality Event: 15 - 19 Years, Diabetes, Female",
+          "dcid": "Count_MortalityEvent_15To19Years_Diabetes_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/MortalityEvent_Age-Years20To24_Gender-Female",
+      "name": "Mortality Event With Age = 20 - 24 Years, Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Mortality Event: 20 - 24 Years, Female",
+          "dcid": "Count_Death_20To24Years_Female"
+        },
+        {
+          "name": "Count of Mortality Event: 20 - 24 Years, Female (Per Capita)",
+          "dcid": "Count_MortalityEvent_20To24Years_Female_AsAFractionOf_Count_Person"
+        },
+        {
+          "name": "Count of Mortality Event: 20 - 24 Years, Diabetes, Female",
+          "dcid": "Count_MortalityEvent_20To24Years_Diabetes_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/MortalityEvent_Age-Years25To29_Gender-Female",
+      "name": "Mortality Event With Age = 25 - 29 Years, Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Mortality Event: 25 - 29 Years, Female",
+          "dcid": "Count_Death_25To29Years_Female"
+        },
+        {
+          "name": "Count of Mortality Event: 25 - 29 Years, Female (Per Capita)",
+          "dcid": "Count_MortalityEvent_25To29Years_Female_AsAFractionOf_Count_Person"
+        },
+        {
+          "name": "Count of Mortality Event: 25 - 29 Years, Diabetes, Female",
+          "dcid": "Count_MortalityEvent_25To29Years_Diabetes_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/MortalityEvent_Age-Years30To34_Gender-Female",
+      "name": "Mortality Event With Age = 30 - 34 Years, Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Mortality Event: 30 - 34 Years, Female",
+          "dcid": "Count_Death_30To34Years_Female"
+        },
+        {
+          "name": "Count of Mortality Event: 30 - 34 Years, Female (Per Capita)",
+          "dcid": "Count_MortalityEvent_30To34Years_Female_AsAFractionOf_Count_Person"
+        },
+        {
+          "name": "Count of Mortality Event: 30 - 34 Years, Diabetes, Female",
+          "dcid": "Count_MortalityEvent_30To34Years_Diabetes_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/MortalityEvent_Age-Years35To39_Gender-Female",
+      "name": "Mortality Event With Age = 35 - 39 Years, Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Mortality Event: 35 - 39 Years, Female",
+          "dcid": "Count_Death_35To39Years_Female"
+        },
+        {
+          "name": "Count of Mortality Event: 35 - 39 Years, Female (Per Capita)",
+          "dcid": "Count_MortalityEvent_35To39Years_Female_AsAFractionOf_Count_Person"
+        },
+        {
+          "name": "Count of Mortality Event: 35 - 39 Years, Diabetes, Female",
+          "dcid": "Count_MortalityEvent_35To39Years_Diabetes_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/MortalityEvent_Age-Years40To44_Gender-Female",
+      "name": "Mortality Event With Age = 40 - 44 Years, Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Mortality Event: 40 - 44 Years, Female",
+          "dcid": "Count_Death_40To44Years_Female"
+        },
+        {
+          "name": "Count of Mortality Event: 40 - 44 Years, Female (Per Capita)",
+          "dcid": "Count_MortalityEvent_40To44Years_Female_AsAFractionOf_Count_Person"
+        },
+        {
+          "name": "Count of Mortality Event: 40 - 44 Years, Diabetes, Female",
+          "dcid": "Count_MortalityEvent_40To44Years_Diabetes_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/MortalityEvent_Age-Years45To49_Gender-Female",
+      "name": "Mortality Event With Age = 45 - 49 Years, Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Mortality Event: 45 - 49 Years, Female",
+          "dcid": "Count_Death_45To49Years_Female"
+        },
+        {
+          "name": "Count of Mortality Event: 45 - 49 Years, Female (Per Capita)",
+          "dcid": "Count_MortalityEvent_45To49Years_Female_AsAFractionOf_Count_Person"
+        },
+        {
+          "name": "Count of Mortality Event: 45 - 49 Years, Diabetes, Female",
+          "dcid": "Count_MortalityEvent_45To49Years_Diabetes_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/MortalityEvent_Age-Years5To9_Gender-Female",
+      "name": "Mortality Event With Age = 5 - 9 Years, Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Mortality Event: 5 - 9 Years, Female",
+          "dcid": "Count_Death_5To9Years_Female"
+        },
+        {
+          "name": "Count of Mortality Event: 5 - 9 Years, Female (Per Capita)",
+          "dcid": "Count_MortalityEvent_5To9Years_Female_AsAFractionOf_Count_Person"
+        },
+        {
+          "name": "Count of Mortality Event: 5 - 9 Years, Diabetes, Female",
+          "dcid": "Count_MortalityEvent_5To9Years_Diabetes_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/MortalityEvent_Age-Years50To54_Gender-Female",
+      "name": "Mortality Event With Age = 50 - 54 Years, Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Mortality Event: 50 - 54 Years, Female",
+          "dcid": "Count_Death_50To54Years_Female"
+        },
+        {
+          "name": "Count of Mortality Event: 50 - 54 Years, Female (Per Capita)",
+          "dcid": "Count_MortalityEvent_50To54Years_Female_AsAFractionOf_Count_Person"
+        },
+        {
+          "name": "Count of Mortality Event: 50 - 54 Years, Diabetes, Female",
+          "dcid": "Count_MortalityEvent_50To54Years_Diabetes_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/MortalityEvent_Age-Years55To59_Gender-Female",
+      "name": "Mortality Event With Age = 55 - 59 Years, Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Mortality Event: 55 - 59 Years, Female",
+          "dcid": "Count_Death_55To59Years_Female"
+        },
+        {
+          "name": "Count of Mortality Event: 55 - 59 Years, Female (Per Capita)",
+          "dcid": "Count_MortalityEvent_55To59Years_Female_AsAFractionOf_Count_Person"
+        },
+        {
+          "name": "Count of Mortality Event: 55 - 59 Years, Diabetes, Female",
+          "dcid": "Count_MortalityEvent_55To59Years_Diabetes_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/MortalityEvent_Age-Years60To64_Gender-Female",
+      "name": "Mortality Event With Age = 60 - 64 Years, Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Mortality Event: 60 - 64 Years, Female",
+          "dcid": "Count_Death_60To64Years_Female"
+        },
+        {
+          "name": "Count of Mortality Event: 60 - 64 Years, Female (Per Capita)",
+          "dcid": "Count_MortalityEvent_60To64Years_Female_AsAFractionOf_Count_Person"
+        },
+        {
+          "name": "Count of Mortality Event: 60 - 64 Years, Diabetes, Female",
+          "dcid": "Count_MortalityEvent_60To64Years_Diabetes_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/MortalityEvent_Age-Years65To69_Gender-Female",
+      "name": "Mortality Event With Age = 65 - 69 Years, Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Mortality Event: 65 - 69 Years, Female",
+          "dcid": "Count_Death_65To69Years_Female"
+        },
+        {
+          "name": "Count of Mortality Event: 65 - 69 Years, Female (Per Capita)",
+          "dcid": "Count_MortalityEvent_65To69Years_Female_AsAFractionOf_Count_Person"
+        },
+        {
+          "name": "Count of Mortality Event: 65 - 69 Years, Diabetes, Female",
+          "dcid": "Count_MortalityEvent_65To69Years_Diabetes_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/MortalityEvent_Age-Years70To74_Gender-Female",
+      "name": "Mortality Event With Age = 70 - 74 Years, Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Mortality Event: 70 - 74 Years, Female",
+          "dcid": "Count_Death_70To74Years_Female"
+        },
+        {
+          "name": "Count of Mortality Event: 70 - 74 Years, Female (Per Capita)",
+          "dcid": "Count_MortalityEvent_70To74Years_Female_AsAFractionOf_Count_Person"
+        },
+        {
+          "name": "Count of Mortality Event: 70 - 74 Years, Diabetes, Female",
+          "dcid": "Count_MortalityEvent_70To74Years_Diabetes_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/MortalityEvent_Age-Years75To79_Gender-Female",
+      "name": "Mortality Event With Age = 75 - 79 Years, Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Mortality Event: 75 - 79 Years, Female",
+          "dcid": "Count_Death_75To79Years_Female"
+        },
+        {
+          "name": "Count of Mortality Event: 75 - 79 Years, Female (Per Capita)",
+          "dcid": "Count_MortalityEvent_75To79Years_Female_AsAFractionOf_Count_Person"
+        },
+        {
+          "name": "Count of Mortality Event: 75 - 79 Years, Diabetes, Female",
+          "dcid": "Count_MortalityEvent_75To79Years_Diabetes_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/MortalityEvent_Age-Years80To84_Gender-Female",
+      "name": "Mortality Event With Age = 80 - 84 Years, Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Mortality Event: 80 - 84 Years, Female",
+          "dcid": "Count_Death_80To84Years_Female"
+        },
+        {
+          "name": "Count of Mortality Event: 80 - 84 Years, Female (Per Capita)",
+          "dcid": "Count_MortalityEvent_80To84Years_Female_AsAFractionOf_Count_Person"
+        },
+        {
+          "name": "Count of Mortality Event: 80 - 84 Years, Diabetes, Female",
+          "dcid": "Count_MortalityEvent_80To84Years_Diabetes_Female"
         }
       ]
     },
@@ -49887,6 +50827,24 @@
       ]
     },
     {
+      "dcid": "dc/g/Person_Age-Years10To14_Gender-Female_Religion",
+      "name": "Person With Age = 10 - 14 Years, Gender = Female, Religion",
+      "statVars": [
+        {
+          "name": "Population: 10 - 14 Years, Female, Catholicism",
+          "dcid": "Count_Person_10To14Years_Female_Catholicism"
+        },
+        {
+          "name": "Population: 10 - 14 Years, Female, INEGI_Religion Other Than Catholicism",
+          "dcid": "Count_Person_10To14Years_Female_INEGIReligionOtherThanCatholicism"
+        },
+        {
+          "name": "Population: 10 - 14 Years, Female, Irreligion",
+          "dcid": "Count_Person_10To14Years_Female_Irreligion"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/Person_Age-Years10To14_Gender-Female_TypeOfSchool",
       "name": "Person With Age = 10 - 14 Years, Gender = Female, Type of School",
       "statVars": [
@@ -50013,6 +50971,42 @@
       ]
     },
     {
+      "dcid": "dc/g/Person_Age-Years15To19_Gender-Female_Religion",
+      "name": "Person With Age = 15 - 19 Years, Gender = Female, Religion",
+      "statVars": [
+        {
+          "name": "Population: 15 - 19 Years, Female, Catholicism",
+          "dcid": "Count_Person_15To19Years_Female_Catholicism"
+        },
+        {
+          "name": "Population: 15 - 19 Years, Female, INEGI_Religion Other Than Catholicism",
+          "dcid": "Count_Person_15To19Years_Female_INEGIReligionOtherThanCatholicism"
+        },
+        {
+          "name": "Population: 15 - 19 Years, Female, Irreligion",
+          "dcid": "Count_Person_15To19Years_Female_Irreligion"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years15To24_Gender-Female_MaritalStatus",
+      "name": "Person With Age = 15 - 24 Years, Gender = Female, Marital Status",
+      "statVars": [
+        {
+          "name": "Population: 15 - 24 Years, Employed, Female, Divorced",
+          "dcid": "Count_Person_15To24Years_Employed_Female_Divorced"
+        },
+        {
+          "name": "Population: 15 - 24 Years, Employed, Female, Married And Not Separated",
+          "dcid": "Count_Person_15To24Years_Employed_Female_MarriedAndNotSeparated"
+        },
+        {
+          "name": "Population: 15 - 24 Years, Employed, Female, Never Married",
+          "dcid": "Count_Person_15To24Years_Employed_Female_NeverMarried"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/Person_Age-Years15Onwards_EnrollmentLevel_Gender-Female",
       "name": "Person With Age = 15 Years or More, Enrollment Level, Gender = Female",
       "statVars": [
@@ -50063,6 +51057,24 @@
         {
           "name": "Population: 18 - 24 Years, Not Enrolled in College or Graduate School, Female",
           "dcid": "Count_Person_18To24Years_NotEnrolledInCollegeOrGraduateSchool_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years20To24_Gender-Female_Religion",
+      "name": "Person With Age = 20 - 24 Years, Gender = Female, Religion",
+      "statVars": [
+        {
+          "name": "Population: 20 - 24 Years, Female, Catholicism",
+          "dcid": "Count_Person_20To24Years_Female_Catholicism"
+        },
+        {
+          "name": "Population: 20 - 24 Years, Female, INEGI_Religion Other Than Catholicism",
+          "dcid": "Count_Person_20To24Years_Female_INEGIReligionOtherThanCatholicism"
+        },
+        {
+          "name": "Population: 20 - 24 Years, Female, Irreligion",
+          "dcid": "Count_Person_20To24Years_Female_Irreligion"
         }
       ]
     },
@@ -50121,6 +51133,24 @@
       ]
     },
     {
+      "dcid": "dc/g/Person_Age-Years25To29_Gender-Female_Religion",
+      "name": "Person With Age = 25 - 29 Years, Gender = Female, Religion",
+      "statVars": [
+        {
+          "name": "Population: 25 - 29 Years, Female, Catholicism",
+          "dcid": "Count_Person_25To29Years_Female_Catholicism"
+        },
+        {
+          "name": "Population: 25 - 29 Years, Female, INEGI_Religion Other Than Catholicism",
+          "dcid": "Count_Person_25To29Years_Female_INEGIReligionOtherThanCatholicism"
+        },
+        {
+          "name": "Population: 25 - 29 Years, Female, Irreligion",
+          "dcid": "Count_Person_25To29Years_Female_Irreligion"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/Person_Age-Years25To34_EnrollmentLevel_Gender-Female",
       "name": "Person With Age = 25 - 34 Years, Enrollment Level, Gender = Female",
       "statVars": [
@@ -50175,6 +51205,42 @@
       ]
     },
     {
+      "dcid": "dc/g/Person_Age-Years30To34_Gender-Female_Religion",
+      "name": "Person With Age = 30 - 34 Years, Gender = Female, Religion",
+      "statVars": [
+        {
+          "name": "Population: 30 - 34 Years, Female, Catholicism",
+          "dcid": "Count_Person_30To34Years_Female_Catholicism"
+        },
+        {
+          "name": "Population: 30 - 34 Years, Female, INEGI_Religion Other Than Catholicism",
+          "dcid": "Count_Person_30To34Years_Female_INEGIReligionOtherThanCatholicism"
+        },
+        {
+          "name": "Population: 30 - 34 Years, Female, Irreligion",
+          "dcid": "Count_Person_30To34Years_Female_Irreligion"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years35To39_Gender-Female_Religion",
+      "name": "Person With Age = 35 - 39 Years, Gender = Female, Religion",
+      "statVars": [
+        {
+          "name": "Population: 35 - 39 Years, Female, Catholicism",
+          "dcid": "Count_Person_35To39Years_Female_Catholicism"
+        },
+        {
+          "name": "Population: 35 - 39 Years, Female, INEGI_Religion Other Than Catholicism",
+          "dcid": "Count_Person_35To39Years_Female_INEGIReligionOtherThanCatholicism"
+        },
+        {
+          "name": "Population: 35 - 39 Years, Female, Irreligion",
+          "dcid": "Count_Person_35To39Years_Female_Irreligion"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/Person_Age-Years35Onwards_EnrollmentLevel_Gender-Female",
       "name": "Person With Age = 35 Years or More, Enrollment Level, Gender = Female",
       "statVars": [
@@ -50211,6 +51277,42 @@
       ]
     },
     {
+      "dcid": "dc/g/Person_Age-Years40To44_Gender-Female_Religion",
+      "name": "Person With Age = 40 - 44 Years, Gender = Female, Religion",
+      "statVars": [
+        {
+          "name": "Population: 40 - 44 Years, Female, Catholicism",
+          "dcid": "Count_Person_40To44Years_Female_Catholicism"
+        },
+        {
+          "name": "Population: 40 - 44 Years, Female, INEGI_Religion Other Than Catholicism",
+          "dcid": "Count_Person_40To44Years_Female_INEGIReligionOtherThanCatholicism"
+        },
+        {
+          "name": "Population: 40 - 44 Years, Female, Irreligion",
+          "dcid": "Count_Person_40To44Years_Female_Irreligion"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years45To49_Gender-Female_Religion",
+      "name": "Person With Age = 45 - 49 Years, Gender = Female, Religion",
+      "statVars": [
+        {
+          "name": "Population: 45 - 49 Years, Female, Catholicism",
+          "dcid": "Count_Person_45To49Years_Female_Catholicism"
+        },
+        {
+          "name": "Population: 45 - 49 Years, Female, INEGI_Religion Other Than Catholicism",
+          "dcid": "Count_Person_45To49Years_Female_INEGIReligionOtherThanCatholicism"
+        },
+        {
+          "name": "Population: 45 - 49 Years, Female, Irreligion",
+          "dcid": "Count_Person_45To49Years_Female_Irreligion"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/Person_Age-Years5To19_Gender-Female_TypeOfSchool",
       "name": "Person With Age = 5 - 19 Years, Gender = Female, Type of School",
       "statVars": [
@@ -50225,6 +51327,24 @@
         {
           "name": "Population: 5 - 19 Years, Female, Public School",
           "dcid": "dc/kjh94n3whkr6c"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years5To9_Gender-Female_Religion",
+      "name": "Person With Age = 5 - 9 Years, Gender = Female, Religion",
+      "statVars": [
+        {
+          "name": "Population: 5 - 9 Years, Female, Catholicism",
+          "dcid": "Count_Person_5To9Years_Female_Catholicism"
+        },
+        {
+          "name": "Population: 5 - 9 Years, Female, INEGI_Religion Other Than Catholicism",
+          "dcid": "Count_Person_5To9Years_Female_INEGIReligionOtherThanCatholicism"
+        },
+        {
+          "name": "Population: 5 - 9 Years, Female, Irreligion",
+          "dcid": "Count_Person_5To9Years_Female_Irreligion"
         }
       ]
     },
@@ -50247,6 +51367,78 @@
       ]
     },
     {
+      "dcid": "dc/g/Person_Age-Years50To54_Gender-Female_Religion",
+      "name": "Person With Age = 50 - 54 Years, Gender = Female, Religion",
+      "statVars": [
+        {
+          "name": "Population: 50 - 54 Years, Female, Catholicism",
+          "dcid": "Count_Person_50To54Years_Female_Catholicism"
+        },
+        {
+          "name": "Population: 50 - 54 Years, Female, INEGI_Religion Other Than Catholicism",
+          "dcid": "Count_Person_50To54Years_Female_INEGIReligionOtherThanCatholicism"
+        },
+        {
+          "name": "Population: 50 - 54 Years, Female, Irreligion",
+          "dcid": "Count_Person_50To54Years_Female_Irreligion"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years55To59_Gender-Female_Religion",
+      "name": "Person With Age = 55 - 59 Years, Gender = Female, Religion",
+      "statVars": [
+        {
+          "name": "Population: 55 - 59 Years, Female, Catholicism",
+          "dcid": "Count_Person_55To59Years_Female_Catholicism"
+        },
+        {
+          "name": "Population: 55 - 59 Years, Female, INEGI_Religion Other Than Catholicism",
+          "dcid": "Count_Person_55To59Years_Female_INEGIReligionOtherThanCatholicism"
+        },
+        {
+          "name": "Population: 55 - 59 Years, Female, Irreligion",
+          "dcid": "Count_Person_55To59Years_Female_Irreligion"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years60To64_Gender-Female_Religion",
+      "name": "Person With Age = 60 - 64 Years, Gender = Female, Religion",
+      "statVars": [
+        {
+          "name": "Population: 60 - 64 Years, Female, Catholicism",
+          "dcid": "Count_Person_60To64Years_Female_Catholicism"
+        },
+        {
+          "name": "Population: 60 - 64 Years, Female, INEGI_Religion Other Than Catholicism",
+          "dcid": "Count_Person_60To64Years_Female_INEGIReligionOtherThanCatholicism"
+        },
+        {
+          "name": "Population: 60 - 64 Years, Female, Irreligion",
+          "dcid": "Count_Person_60To64Years_Female_Irreligion"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years65To69_Gender-Female_Religion",
+      "name": "Person With Age = 65 - 69 Years, Gender = Female, Religion",
+      "statVars": [
+        {
+          "name": "Population: 65 - 69 Years, Female, Catholicism",
+          "dcid": "Count_Person_65To69Years_Female_Catholicism"
+        },
+        {
+          "name": "Population: 65 - 69 Years, Female, INEGI_Religion Other Than Catholicism",
+          "dcid": "Count_Person_65To69Years_Female_INEGIReligionOtherThanCatholicism"
+        },
+        {
+          "name": "Population: 65 - 69 Years, Female, Irreligion",
+          "dcid": "Count_Person_65To69Years_Female_Irreligion"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/Person_Age-Years65Onwards_Gender-Female_PreventiveHealth-CorePreventiveServices",
       "name": "Person With Age = 65 Years or More, Gender = Female, Preventive Health = Core Preventive Services",
       "statVars": [
@@ -50261,6 +51453,78 @@
         {
           "name": "Upper Confidence Interval Limit, Prevalence of 65 Years or More, Female, Core Preventive Services",
           "dcid": "UpperConfidenceIntervalLimit_Percent_Person_65OrMoreYears_Female_ReceivedCorePreventiveServices"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years70To74_Gender-Female_Religion",
+      "name": "Person With Age = 70 - 74 Years, Gender = Female, Religion",
+      "statVars": [
+        {
+          "name": "Population: 70 - 74 Years, Female, Catholicism",
+          "dcid": "Count_Person_70To74Years_Female_Catholicism"
+        },
+        {
+          "name": "Population: 70 - 74 Years, Female, INEGI_Religion Other Than Catholicism",
+          "dcid": "Count_Person_70To74Years_Female_INEGIReligionOtherThanCatholicism"
+        },
+        {
+          "name": "Population: 70 - 74 Years, Female, Irreligion",
+          "dcid": "Count_Person_70To74Years_Female_Irreligion"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years75To79_Gender-Female_Religion",
+      "name": "Person With Age = 75 - 79 Years, Gender = Female, Religion",
+      "statVars": [
+        {
+          "name": "Population: 75 - 79 Years, Female, Catholicism",
+          "dcid": "Count_Person_75To79Years_Female_Catholicism"
+        },
+        {
+          "name": "Population: 75 - 79 Years, Female, INEGI_Religion Other Than Catholicism",
+          "dcid": "Count_Person_75To79Years_Female_INEGIReligionOtherThanCatholicism"
+        },
+        {
+          "name": "Population: 75 - 79 Years, Female, Irreligion",
+          "dcid": "Count_Person_75To79Years_Female_Irreligion"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years80To84_Gender-Female_Religion",
+      "name": "Person With Age = 80 - 84 Years, Gender = Female, Religion",
+      "statVars": [
+        {
+          "name": "Population: 80 - 84 Years, Female, Catholicism",
+          "dcid": "Count_Person_80To84Years_Female_Catholicism"
+        },
+        {
+          "name": "Population: 80 - 84 Years, Female, INEGI_Religion Other Than Catholicism",
+          "dcid": "Count_Person_80To84Years_Female_INEGIReligionOtherThanCatholicism"
+        },
+        {
+          "name": "Population: 80 - 84 Years, Female, Irreligion",
+          "dcid": "Count_Person_80To84Years_Female_Irreligion"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years85Onwards_Gender-Female_Religion",
+      "name": "Person With Age = 85 Years or More, Gender = Female, Religion",
+      "statVars": [
+        {
+          "name": "Population: 85 Years or More, Female, Catholicism",
+          "dcid": "Count_Person_85OrMoreYears_Female_Catholicism"
+        },
+        {
+          "name": "Population: 85 Years or More, Female, INEGI_Religion Other Than Catholicism",
+          "dcid": "Count_Person_85OrMoreYears_Female_INEGIReligionOtherThanCatholicism"
+        },
+        {
+          "name": "Population: 85 Years or More, Female, Irreligion",
+          "dcid": "Count_Person_85OrMoreYears_Female_Irreligion"
         }
       ]
     },
@@ -52727,518 +53991,6 @@
         {
           "name": "Percentage Less Than Once A Month, Binge Drinking Among Urban, Female Population",
           "dcid": "Percent_LessThanOnceAMonth_BingeDrinking_In_Count_Person_Urban_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_ActivityFrequency-LessThanOnceAWeek_EducationalAttainment-LessThanPrimaryEducationPrimaryEducationLowerSecondaryEducation_Gender-Female_HealthBehavior",
-      "name": "Person With Activity Frequency = Less Than Once AWeek, Educational Attainment = Less Than Primary Education \u0026 Primary Education \u0026 Lower Secondary Education, Gender = Female, Health Behavior",
-      "statVars": [
-        {
-          "name": "Percentage Less Than Once A Week, Exposure To Tobacco Smoke Among Less Than Primary Education Or Primary Education Or Lower Secondary Education, Female Population",
-          "dcid": "Percent_LessThanOnceAWeek_ExposureToTobaccoSmoke_In_Count_Person_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_Female"
-        },
-        {
-          "name": "Percentage Less Than Once a Week, Consumption Of Fruits Among Less Than Primary Education Or Primary Education Or Lower Secondary Education, Female Population",
-          "dcid": "Percent_LessThanOnceAWeek_ConsumptionOfFruits_In_Count_Person_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_Female"
-        },
-        {
-          "name": "Percentage Less Than Once a Week, Consumption Of Vegetables Among Less Than Primary Education Or Primary Education Or Lower Secondary Education, Female Population",
-          "dcid": "Percent_LessThanOnceAWeek_ConsumptionOfVegetables_In_Count_Person_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_ActivityFrequency-LessThanOnceAWeek_EducationalAttainment-UpperSecondaryEducationPostSecondaryNonTertiaryEducation_Gender-Female_HealthBehavior",
-      "name": "Person With Activity Frequency = Less Than Once AWeek, Educational Attainment = Upper Secondary Education \u0026 Post Secondary Non Tertiary Education, Gender = Female, Health Behavior",
-      "statVars": [
-        {
-          "name": "Percentage Less Than Once A Week, Exposure To Tobacco Smoke Among Upper Secondary Education Or Post Secondary Non Tertiary Education, Female Population",
-          "dcid": "Percent_LessThanOnceAWeek_ExposureToTobaccoSmoke_In_Count_Person_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female"
-        },
-        {
-          "name": "Percentage Less Than Once a Week, Consumption Of Fruits Among Upper Secondary Education Or Post Secondary Non Tertiary Education, Female Population",
-          "dcid": "Percent_LessThanOnceAWeek_ConsumptionOfFruits_In_Count_Person_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female"
-        },
-        {
-          "name": "Percentage Less Than Once a Week, Consumption Of Vegetables Among Upper Secondary Education Or Post Secondary Non Tertiary Education, Female Population",
-          "dcid": "Percent_LessThanOnceAWeek_ConsumptionOfVegetables_In_Count_Person_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_ActivityFrequency-NeverNotInTheLast12Months_Gender-Female_HealthBehavior-AlcoholConsumption_PlaceOfResidenceClassification",
-      "name": "Person With Activity Frequency = Never \u0026 Not in The Last 12 Months, Gender = Female, Health Behavior = Alcohol Consumption, Place of Residence Classification",
-      "statVars": [
-        {
-          "name": "Percentage Never Or Not In The Last 12 Months, Alcohol Consumption Among Rural, Female Population",
-          "dcid": "Percent_NeverOrNotInTheLast12Months_AlcoholConsumption_In_Count_Person_Rural_Female"
-        },
-        {
-          "name": "Percentage Never Or Not In The Last 12 Months, Alcohol Consumption Among Semi Urban, Female Population",
-          "dcid": "Percent_NeverOrNotInTheLast12Months_AlcoholConsumption_In_Count_Person_SemiUrban_Female"
-        },
-        {
-          "name": "Percentage Never Or Not In The Last 12 Months, Alcohol Consumption Among Urban, Female Population",
-          "dcid": "Percent_NeverOrNotInTheLast12Months_AlcoholConsumption_In_Count_Person_Urban_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_ActivityFrequency-NeverNotInTheLast12Months_Gender-Female_HealthBehavior-BingeDrinking_PlaceOfResidenceClassification",
-      "name": "Person With Activity Frequency = Never \u0026 Not in The Last 12 Months, Gender = Female, Health Behavior = Binge Drinking, Place of Residence Classification",
-      "statVars": [
-        {
-          "name": "Percentage Never Or Not In The Last 12 Months, Binge Drinking Among Rural, Female Population",
-          "dcid": "Percent_NeverOrNotInTheLast12Months_BingeDrinking_In_Count_Person_Rural_Female"
-        },
-        {
-          "name": "Percentage Never Or Not In The Last 12 Months, Binge Drinking Among Semi Urban, Female Population",
-          "dcid": "Percent_NeverOrNotInTheLast12Months_BingeDrinking_In_Count_Person_SemiUrban_Female"
-        },
-        {
-          "name": "Percentage Never Or Not In The Last 12 Months, Binge Drinking Among Urban, Female Population",
-          "dcid": "Percent_NeverOrNotInTheLast12Months_BingeDrinking_In_Count_Person_Urban_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_ActivityFrequency-NeverOrOccasionally_Gender-Female_HealthBehavior-ConsumptionOfFruits_PlaceOfResidenceClassification",
-      "name": "Person With Activity Frequency = Never or Occasionally, Gender = Female, Health Behavior = Consumption of Fruits, Place of Residence Classification",
-      "statVars": [
-        {
-          "name": "Percentage Never Or Occasionally, Consumption Of Fruits Among Rural, Female Population",
-          "dcid": "Percent_NeverOrOccasionally_ConsumptionOfFruits_In_Count_Person_Rural_Female"
-        },
-        {
-          "name": "Percentage Never Or Occasionally, Consumption Of Fruits Among Semi Urban, Female Population",
-          "dcid": "Percent_NeverOrOccasionally_ConsumptionOfFruits_In_Count_Person_SemiUrban_Female"
-        },
-        {
-          "name": "Percentage Never Or Occasionally, Consumption Of Fruits Among Urban, Female Population",
-          "dcid": "Percent_NeverOrOccasionally_ConsumptionOfFruits_In_Count_Person_Urban_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_ActivityFrequency-NeverOrOccasionally_Gender-Female_HealthBehavior-ConsumptionOfVegetables_PlaceOfResidenceClassification",
-      "name": "Person With Activity Frequency = Never or Occasionally, Gender = Female, Health Behavior = Consumption of Vegetables, Place of Residence Classification",
-      "statVars": [
-        {
-          "name": "Percentage Never Or Occasionally, Consumption Of Vegetables Among Rural, Female Population",
-          "dcid": "Percent_NeverOrOccasionally_ConsumptionOfVegetables_In_Count_Person_Rural_Female"
-        },
-        {
-          "name": "Percentage Never Or Occasionally, Consumption Of Vegetables Among Semi Urban, Female Population",
-          "dcid": "Percent_NeverOrOccasionally_ConsumptionOfVegetables_In_Count_Person_SemiUrban_Female"
-        },
-        {
-          "name": "Percentage Never Or Occasionally, Consumption Of Vegetables Among Urban, Female Population",
-          "dcid": "Percent_NeverOrOccasionally_ConsumptionOfVegetables_In_Count_Person_Urban_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years16Onwards_Gender-Female_IncomeStatus-WithEarnings_RecentWorkStatus-FullTimeYearRoundWorker",
-      "name": "Person With Age = 16 Years or More, Gender = Female, Income Status = With Earnings, Recent Work Status = Full Time Year Round Worker",
-      "statVars": [
-        {
-          "name": "Population: 16 Years or More, Female, With Earnings, Full Time Year Round Worker",
-          "dcid": "Count_Person_Female_WithEarnings_FullTimeYearRoundWorker"
-        },
-        {
-          "name": "Mean Earnings: 16 Years or More, Female, With Earnings, Full Time Year Round Worker",
-          "dcid": "Mean_Earnings_Person_Female_FullTimeYearRoundWorker"
-        },
-        {
-          "name": "Median Earnings: 16 Years or More, Female, With Earnings, Full Time Year Round Worker",
-          "dcid": "Median_Earnings_Person_Female_FullTimeYearRoundWorker"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_ExerciseType-MuscleStrengthening_Gender-Female_HealthBehavior-HealthEnhancingPhysicalActivity_PlaceOfResidenceClassification",
-      "name": "Person With Exercise Type = Muscle Strengthening, Gender = Female, Health Behavior = Health Enhancing Physical Activity, Place of Residence Classification",
-      "statVars": [
-        {
-          "name": "Percentage Muscle Strengthening, Health Enhancing Physical Activity Among Rural, Female Population",
-          "dcid": "Percent_MuscleStrengthening_HealthEnhancingPhysicalActivity_In_Count_Person_Rural_Female"
-        },
-        {
-          "name": "Percentage Muscle Strengthening, Health Enhancing Physical Activity Among Semi Urban, Female Population",
-          "dcid": "Percent_MuscleStrengthening_HealthEnhancingPhysicalActivity_In_Count_Person_SemiUrban_Female"
-        },
-        {
-          "name": "Percentage Muscle Strengthening, Health Enhancing Physical Activity Among Urban, Female Population",
-          "dcid": "Percent_MuscleStrengthening_HealthEnhancingPhysicalActivity_In_Count_Person_Urban_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_ExerciseType-MuscleStrengthening_Gender-Female_HealthBehavior-NonWorkRelatedPhysicalActivity_PlaceOfResidenceClassification",
-      "name": "Person With Exercise Type = Muscle Strengthening, Gender = Female, Health Behavior = Non Work Related Physical Activity, Place of Residence Classification",
-      "statVars": [
-        {
-          "name": "Percentage Muscle Strengthening, Non Work Related Physical Activity Among Rural, Female Population",
-          "dcid": "Percent_MuscleStrengthening_NonWorkRelatedPhysicalActivity_In_Count_Person_Rural_Female"
-        },
-        {
-          "name": "Percentage Muscle Strengthening, Non Work Related Physical Activity Among Semi Urban, Female Population",
-          "dcid": "Percent_MuscleStrengthening_NonWorkRelatedPhysicalActivity_In_Count_Person_SemiUrban_Female"
-        },
-        {
-          "name": "Percentage Muscle Strengthening, Non Work Related Physical Activity Among Urban, Female Population",
-          "dcid": "Percent_MuscleStrengthening_NonWorkRelatedPhysicalActivity_In_Count_Person_Urban_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/SDG_5.3.1",
-      "name": "5.3.1: Proportion of women aged 20-24 years who were married or in a union before age 15 and before age 18",
-      "statVars": [
-        {
-          "name": "Proportion of women aged 20-24 years who were married or in a union before age 15: 20 to 24 years old, Female",
-          "dcid": "sdg/SP_DYN_MRBF15_20-24_FEMALE"
-        },
-        {
-          "name": "Proportion of women aged 20-24 years who were married or in a union before age 18: 20 to 24 years old, Female",
-          "dcid": "sdg/SP_DYN_MRBF18_20-24_FEMALE"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/SDG_5.5.2",
-      "name": "5.5.2: Proportion of women in managerial positions",
-      "statVars": [
-        {
-          "name": "Proportion of women in managerial positions: Female",
-          "dcid": "sdg/IC_GEN_MGTL_FEMALE"
-        },
-        {
-          "name": "Proportion of women in senior and middle management positions: Female",
-          "dcid": "sdg/IC_GEN_MGTN_FEMALE"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/BirthEvent_Gender-Female",
-      "name": "Birth Event With Gender = Female",
-      "statVars": [
-        {
-          "name": "Count of Birth Event: Female",
-          "dcid": "Count_BirthEvent_Female"
-        },
-        {
-          "name": "Count of Birth Event: Female, Live Birth",
-          "dcid": "Count_BirthEvent_LiveBirth_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Industry-NAICS/315239",
-      "name": "Person With Industry = Other Women's And Girls' Outerwear Mfg (NAICS/315239)",
-      "statVars": [
-        {
-          "name": "Population of Person: Other Women's And Girls' Outerwear Mfg (NAICS/315239)",
-          "dcid": "dc/pl6ymqll4n3cc"
-        },
-        {
-          "name": "Wages Total of Person: Other Women's And Girls' Outerwear Mfg (NAICS/315239)",
-          "dcid": "dc/vbrzm0zm6mtk6"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Industry-NAICS/42433",
-      "name": "Person With Industry = Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
-      "statVars": [
-        {
-          "name": "Population of Person: Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
-          "dcid": "dc/jr1e4mkzlfrqg"
-        },
-        {
-          "name": "Wages Total of Person: Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
-          "dcid": "dc/egt3q3g4v0dfh"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Industry-NAICS/315232",
-      "name": "Person With Industry = Women's And Girls' Blouse And Shirt Mfg (NAICS/315232)",
-      "statVars": [
-        {
-          "name": "Population of Person: Women's And Girls' Blouse And Shirt Mfg (NAICS/315232)",
-          "dcid": "dc/9hm76jjfb0pk5"
-        },
-        {
-          "name": "Wages Total of Person: Women's And Girls' Blouse And Shirt Mfg (NAICS/315232)",
-          "dcid": "dc/51gk7jlqjc8k8"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Industry-NAICS/31523",
-      "name": "Person With Industry = Women's And Girls' Cut And Sew Apparel Mfg (NAICS/31523)",
-      "statVars": [
-        {
-          "name": "Population of Person: Women's And Girls' Cut And Sew Apparel Mfg (NAICS/31523)",
-          "dcid": "dc/22db9v95fd0x7"
-        },
-        {
-          "name": "Wages Total of Person: Women's And Girls' Cut And Sew Apparel Mfg (NAICS/31523)",
-          "dcid": "dc/v0jqcxks4r7t6"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Industry-NAICS/315233",
-      "name": "Person With Industry = Women's And Girls' Dress Manufacturing (NAICS/315233)",
-      "statVars": [
-        {
-          "name": "Population of Person: Women's And Girls' Dress Manufacturing (NAICS/315233)",
-          "dcid": "dc/ejgyz9vtgkk3b"
-        },
-        {
-          "name": "Wages Total of Person: Women's And Girls' Dress Manufacturing (NAICS/315233)",
-          "dcid": "dc/jq9xshh3pd0k5"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Industry-NAICS/315231",
-      "name": "Person With Industry = Women's And Girls' Lingerie And Nightwear Mfg (NAICS/315231)",
-      "statVars": [
-        {
-          "name": "Population of Person: Women's And Girls' Lingerie And Nightwear Mfg (NAICS/315231)",
-          "dcid": "dc/1xqsrzt0ql39g"
-        },
-        {
-          "name": "Wages Total of Person: Women's And Girls' Lingerie And Nightwear Mfg (NAICS/315231)",
-          "dcid": "dc/53whf085z8gqd"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Industry-NAICS/315234",
-      "name": "Person With Industry = Women's And Girls' Suit, Coat, And Skirt Mfg (NAICS/315234)",
-      "statVars": [
-        {
-          "name": "Population of Person: Women's And Girls' Suit, Coat, And Skirt Mfg (NAICS/315234)",
-          "dcid": "dc/1wg8qt198s488"
-        },
-        {
-          "name": "Wages Total of Person: Women's And Girls' Suit, Coat, And Skirt Mfg (NAICS/315234)",
-          "dcid": "dc/khevqfe4zv419"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Industry-NAICS/44812",
-      "name": "Person With Industry = Women's Clothing Stores (NAICS/44812)",
-      "statVars": [
-        {
-          "name": "Population of Person: Women's Clothing Stores (NAICS/44812)",
-          "dcid": "dc/c8pldh07jqceh"
-        },
-        {
-          "name": "Wages Total of Person: Women's Clothing Stores (NAICS/44812)",
-          "dcid": "dc/7v4btw2yxx2cb"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Industry-NAICS/316992",
-      "name": "Person With Industry = Women's Handbag And Purse Manufacturing (NAICS/316992)",
-      "statVars": [
-        {
-          "name": "Population of Person: Women's Handbag And Purse Manufacturing (NAICS/316992)",
-          "dcid": "dc/cxfghfz9v32x"
-        },
-        {
-          "name": "Wages Total of Person: Women's Handbag And Purse Manufacturing (NAICS/316992)",
-          "dcid": "dc/lyfdyxj52q1l9"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Industry-NAICS/316214",
-      "name": "Person With Industry = Women's Nonathletic Footwear Manufacturing (NAICS/316214)",
-      "statVars": [
-        {
-          "name": "Population of Person: Women's Nonathletic Footwear Manufacturing (NAICS/316214)",
-          "dcid": "dc/wgdf3d4qlx0th"
-        },
-        {
-          "name": "Wages Total of Person: Women's Nonathletic Footwear Manufacturing (NAICS/316214)",
-          "dcid": "dc/h0f7fkhdd2542"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Industry-NAICS/315212",
-      "name": "Person With Industry = Women's, Girls', Infants' Apparel Contractors (NAICS/315212)",
-      "statVars": [
-        {
-          "name": "Population of Person: Women's, Girls', Infants' Apparel Contractors (NAICS/315212)",
-          "dcid": "dc/2f3nx20fbkjs2"
-        },
-        {
-          "name": "Wages Total of Person: Women's, Girls', Infants' Apparel Contractors (NAICS/315212)",
-          "dcid": "dc/qr9nezshb0gm5"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Industry-NAICS/31524",
-      "name": "Person With Industry = Women's, Girls', Infants' Cut-sew Apparel Mfg (NAICS/31524)",
-      "statVars": [
-        {
-          "name": "Population of Person: Women's, Girls', Infants' Cut-sew Apparel Mfg (NAICS/31524)",
-          "dcid": "dc/jegsqlvc25hk3"
-        },
-        {
-          "name": "Wages Total of Person: Women's, Girls', Infants' Cut-sew Apparel Mfg (NAICS/31524)",
-          "dcid": "dc/flfk1szeerbd7"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/SDGVCVAWMARR_age",
-      "name": "Proportion of Ever-partnered Women And Girls Subjected To Physical And/or Sexual Violence by A Current or Former Intimate Partner in The Previous 12 Months by Age",
-      "statVars": [
-        {
-          "name": "Proportion of ever-partnered women and girls subjected to physical and/or sexual violence by a current or former intimate partner in the previous 12 months: 15 to 49 years old, Female",
-          "dcid": "sdg/VC_VAW_MARR_15-49_FEMALE"
-        },
-        {
-          "name": "Proportion of ever-partnered women and girls subjected to physical and/or sexual violence by a current or former intimate partner in the previous 12 months: 15 years old and over, Female",
-          "dcid": "sdg/VC_VAW_MARR_15GEQ_FEMALE"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/SDGSPDYNADKL_age_gender-SDGSexEnumFEMALE",
-      "name": "Adolescent Birth Rate With Age, Gender = Female",
-      "statVars": [
-        {
-          "name": "Adolescent birth rate: 10 to 14 years old, Female",
-          "dcid": "sdg/SP_DYN_ADKL_10-14_FEMALE"
-        },
-        {
-          "name": "Adolescent birth rate: 15 to 19 years old, Female",
-          "dcid": "sdg/SP_DYN_ADKL_15-19_FEMALE"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/SDGVCHTFDETVFL_age_gender-SDGSexEnumFEMALE",
-      "name": "Detected Victims of Human Trafficking for Forced Labour, Servitude And Slavery With Age, Gender = Female",
-      "statVars": [
-        {
-          "name": "Detected victims of human trafficking for forced labour, servitude and slavery: 18 years old and over, Female",
-          "dcid": "sdg/VC_HTF_DETVFL_18GEQ_FEMALE"
-        },
-        {
-          "name": "Detected victims of human trafficking for forced labour, servitude and slavery: under 18 years old, Female",
-          "dcid": "sdg/VC_HTF_DETVFL_LT18Y_FEMALE"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/SDGVCHTFDETVOP_age_gender-SDGSexEnumFEMALE",
-      "name": "Detected Victims of Human Trafficking for Other Purposes With Age, Gender = Female",
-      "statVars": [
-        {
-          "name": "Detected victims of human trafficking for other purposes: 18 years old and over, Female",
-          "dcid": "sdg/VC_HTF_DETVOP_18GEQ_FEMALE"
-        },
-        {
-          "name": "Detected victims of human trafficking for other purposes: under 18 years old, Female",
-          "dcid": "sdg/VC_HTF_DETVOP_LT18Y_FEMALE"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/SDGVCHTFDETVOG_age_gender-SDGSexEnumFEMALE",
-      "name": "Detected Victims of Human Trafficking for Removal of Organ With Age, Gender = Female",
-      "statVars": [
-        {
-          "name": "Detected victims of human trafficking for removal of organ: 18 years old and over, Female",
-          "dcid": "sdg/VC_HTF_DETVOG_18GEQ_FEMALE"
-        },
-        {
-          "name": "Detected victims of human trafficking for removal of organ: under 18 years old, Female",
-          "dcid": "sdg/VC_HTF_DETVOG_LT18Y_FEMALE"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/SDGVCHTFDETVSX_age_gender-SDGSexEnumFEMALE",
-      "name": "Detected Victims of Human Trafficking for Sexual Exploitation With Age, Gender = Female",
-      "statVars": [
-        {
-          "name": "Detected victims of human trafficking for sexual exploitaton: 18 years old and over, Female",
-          "dcid": "sdg/VC_HTF_DETVSX_18GEQ_FEMALE"
-        },
-        {
-          "name": "Detected victims of human trafficking for sexual exploitaton: under 18 years old, Female",
-          "dcid": "sdg/VC_HTF_DETVSX_LT18Y_FEMALE"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Establishment_BusinessOperationType-ManufacturerSalesBranchesAndOffices_Industry-NAICS/42433",
-      "name": "Establishment With Business Operation Type = Manufacturer Sales Branches And Offices, Industry = Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
-      "statVars": [
-        {
-          "name": "Count of Establishment: Manufacturer Sales Branches And Offices, Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
-          "dcid": "dc/k3w2p68klhfcc"
-        },
-        {
-          "name": "Sales of Establishment: Manufacturer Sales Branches And Offices, Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
-          "dcid": "dc/79vrq3849kfeg"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Establishment_BusinessOperationType-MerchantWholesalersExcludingManufacturerSalesBranchesAndOffices_Industry-NAICS/42433",
-      "name": "Establishment With Business Operation Type = Merchant Wholesalers Excluding Manufacturer Sales Branches And Offices, Industry = Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
-      "statVars": [
-        {
-          "name": "Count of Establishment: Merchant Wholesalers Excluding Manufacturer Sales Branches And Offices, Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
-          "dcid": "dc/ww85jq324j3gc"
-        },
-        {
-          "name": "Sales of Establishment: Merchant Wholesalers Excluding Manufacturer Sales Branches And Offices, Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
-          "dcid": "dc/ggp40c14cfw7b"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Establishment_BusinessOperationType-MerchantWholesalers_Industry-NAICS/42433",
-      "name": "Establishment With Business Operation Type = Merchant Wholesalers, Industry = Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
-      "statVars": [
-        {
-          "name": "Count of Establishment: Merchant Wholesalers, Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
-          "dcid": "dc/jfts1vjy25k9g"
-        },
-        {
-          "name": "Sales of Establishment: Merchant Wholesalers, Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
-          "dcid": "dc/867ehyppl4rf1"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/HateCrimeIncidents_TargetedGender-Female_VictimAge",
-      "name": "Hate Crime Incidents With Targeted Gender = Female, Victim Age",
-      "statVars": [
-        {
-          "name": "Count of Hate Crime Incidents (Victim): Bias Against Gender, Female Victim, Victim 17 Years or Less",
-          "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_Female_17OrLessYears"
-        },
-        {
-          "name": "Count of Hate Crime Incidents (Victim): Bias Against Gender, Female Victim, Victim 18 Years or More",
-          "dcid": "Victim_Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_Female_18OrMoreYears"
         }
       ]
     }

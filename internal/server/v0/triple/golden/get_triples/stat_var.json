@@ -7275,6 +7275,118 @@
       "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
+      "subjectId": "Count_MortalityEvent_CerebrovascularDiseases_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Cerebrovascular Diseases, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_CoronaryHeartDisease_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Coronary Heart Disease, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_ExternalCausesOfDeath_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: External Causes of Death, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_InfectiousDiseases_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Infectious Diseases, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_MalignantNeoplasms_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Malignant Neoplasms, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_Pneumonia_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Pneumonia, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_Person_5OrMoreYears_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Population: 5 Years or More, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_Person_Male_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Population: Male (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
       "subjectId": "Percent_0Minutes_HealthEnhancingPhysicalActivity_In_Count_Person_Female",
       "subjectName": "Percentage 0 Minutes, Health Enhancing Physical Activity Among Female Population",
       "subjectTypes": [

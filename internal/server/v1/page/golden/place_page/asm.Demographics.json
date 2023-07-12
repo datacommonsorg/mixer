@@ -326,7 +326,8 @@
             "2017": 1.813,
             "2018": 1.554,
             "2019": 1.496,
-            "2020": 1.281
+            "2020": 1.281,
+            "2021": 1.164
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
@@ -826,7 +827,8 @@
             "2017": 5.523,
             "2018": 5.447,
             "2019": 5.379,
-            "2020": 5.309
+            "2020": 5.309,
+            "2021": 5.237
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
@@ -2403,7 +2405,8 @@
             "2017": 1.7655,
             "2018": 1.7295,
             "2019": 1.706,
-            "2020": 1.6375
+            "2020": 1.6415,
+            "2021": 1.664
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
@@ -2471,8 +2474,8 @@
             "2017": 0.63264399508256,
             "2018": 0.526435395564053,
             "2019": 0.455381285963537,
-            "2020": 0.961201051965365,
-            "2021": 0.118380497121458
+            "2020": 0.964347900193196,
+            "2021": 0.156747054750178
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
@@ -2579,7 +2582,7 @@
     },
     "country/NZL": {
       "date": "2021",
-      "value": 5122600,
+      "value": 5111400,
       "metadata": {
         "importName": "WorldDevelopmentIndicators",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",

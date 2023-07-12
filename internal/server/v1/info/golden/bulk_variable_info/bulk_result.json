@@ -5,23 +5,23 @@
       "info": {
         "placeTypeSummary": {
           "AdministrativeArea": {
-            "placeCount": 46,
+            "placeCount": 320,
             "topPlaces": [
               {
-                "dcid": "wikidataId/Q1973593",
-                "name": "Waikato District"
+                "dcid": "wikidataId/Q1088815",
+                "name": "Southeast Region"
               },
               {
-                "dcid": "wikidataId/Q550219",
-                "name": "Capital Regional District"
+                "dcid": "wikidataId/Q1136194",
+                "name": "Northeast Region"
               },
               {
-                "dcid": "wikidataId/Q4874224",
-                "name": "Bay of Plenty"
+                "dcid": "wikidataId/Q1060042",
+                "name": "Southern Brazil"
               }
             ],
-            "minValue": 1565,
-            "maxValue": 244600
+            "minValue": 15,
+            "maxValue": 36986320
           },
           "AdministrativeArea1": {
             "placeCount": 330,
@@ -43,22 +43,22 @@
             "maxValue": 50483000
           },
           "AdministrativeArea2": {
-            "placeCount": 3860,
+            "placeCount": 6260,
             "topPlaces": [
               {
-                "dcid": "wikidataId/Q83114",
-                "name": "São Gonçalo"
+                "dcid": "wikidataId/Q1143712",
+                "name": "Kanagawa-ku"
               },
               {
-                "dcid": "wikidataId/Q188897",
-                "name": "Nova Iguaçu"
+                "dcid": "wikidataId/Q2360428",
+                "name": "Tijuana Municipality"
               },
               {
-                "dcid": "wikidataId/Q271393",
-                "name": "Jaboatão dos Guararapes"
+                "dcid": "wikidataId/Q741771",
+                "name": "Iztapalapa"
               }
             ],
-            "minValue": 379,
+            "minValue": 53,
             "maxValue": 1098014
           },
           "AdministrativeArea3": {
@@ -79,6 +79,21 @@
             ],
             "minValue": 2329,
             "maxValue": 772602
+          },
+          "AdministrativeArea4": {
+            "placeCount": 2,
+            "topPlaces": [
+              {
+                "dcid": "wikidataId/Q2893240",
+                "name": "Beaumont"
+              },
+              {
+                "dcid": "wikidataId/Q5566340",
+                "name": "Gladstone Parish"
+              }
+            ],
+            "minValue": 200,
+            "maxValue": 1210
           },
           "CensusBlockGroup": {
             "placeCount": 220333,
@@ -347,21 +362,23 @@
             "maxValue": 72821
           },
           "Place": {
-            "placeCount": 8,
+            "placeCount": 71,
             "topPlaces": [
               {
-                "dcid": "wikidataId/Q1180"
+                "dcid": "wikidataId/Q302246",
+                "name": "Ruiru"
               },
               {
-                "dcid": "wikidataId/Q2760659",
-                "name": "Dadra"
+                "dcid": "wikidataId/Q1026079",
+                "name": "Kikuyu"
               },
               {
-                "dcid": "wikidataId/Q3235"
+                "dcid": "wikidataId/Q7193729",
+                "name": "Westlands"
               }
             ],
-            "minValue": 296,
-            "maxValue": 5883370
+            "minValue": 229,
+            "maxValue": 190144
           },
           "SchoolDistrict": {
             "placeCount": 13813,
@@ -419,6 +436,25 @@
             ],
             "minValue": 22,
             "maxValue": 19650581
+          },
+          "Village": {
+            "placeCount": 210,
+            "topPlaces": [
+              {
+                "dcid": "wikidataId/Q6933371",
+                "name": "Mukaa"
+              },
+              {
+                "dcid": "wikidataId/Q973994",
+                "name": "Yomitan"
+              },
+              {
+                "dcid": "wikidataId/Q1023784",
+                "name": "Tōkai"
+              }
+            ],
+            "minValue": 6,
+            "maxValue": 53068
           }
         },
         "provenanceSummary": {
@@ -646,6 +682,146 @@
             ],
             "observationCount": 4577,
             "timeSeriesCount": 4516
+          },
+          "dc/base/CanadaStatistics": {
+            "importName": "CanadaStatistics",
+            "releaseFrequency": "P1Y",
+            "seriesSummary": [
+              {
+                "seriesKey": {},
+                "earliestDate": "2021",
+                "latestDate": "2021",
+                "placeTypeSummary": {
+                  "AdministrativeArea": {
+                    "placeCount": 293,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q383434",
+                        "name": "Greater Sudbury"
+                      },
+                      {
+                        "dcid": "wikidataId/Q384944",
+                        "name": "County of Brant"
+                      },
+                      {
+                        "dcid": "wikidataId/Q1805330",
+                        "name": "Langley"
+                      }
+                    ],
+                    "minValue": 15,
+                    "maxValue": 71930
+                  },
+                  "AdministrativeArea1": {
+                    "placeCount": 13,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q1904",
+                        "name": "Ontario"
+                      },
+                      {
+                        "dcid": "wikidataId/Q176",
+                        "name": "Quebec"
+                      },
+                      {
+                        "dcid": "wikidataId/Q1974",
+                        "name": "British Columbia"
+                      }
+                    ],
+                    "minValue": 12185,
+                    "maxValue": 6156925
+                  },
+                  "AdministrativeArea4": {
+                    "placeCount": 2,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q2893240",
+                        "name": "Beaumont"
+                      },
+                      {
+                        "dcid": "wikidataId/Q5566340",
+                        "name": "Gladstone Parish"
+                      }
+                    ],
+                    "minValue": 200,
+                    "maxValue": 1210
+                  },
+                  "City": {
+                    "placeCount": 308,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q172",
+                        "name": "Toronto"
+                      },
+                      {
+                        "dcid": "wikidataId/Q340",
+                        "name": "Montreal"
+                      },
+                      {
+                        "dcid": "wikidataId/Q36312",
+                        "name": "Calgary"
+                      }
+                    ],
+                    "minValue": 35,
+                    "maxValue": 1256590
+                  },
+                  "Country": {
+                    "placeCount": 1,
+                    "topPlaces": [
+                      {
+                        "dcid": "country/CAN",
+                        "name": "Canada"
+                      }
+                    ],
+                    "minValue": 15839460,
+                    "maxValue": 15839460
+                  },
+                  "Place": {
+                    "placeCount": 14,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q643326",
+                        "name": "Port Coquitlam"
+                      },
+                      {
+                        "dcid": "wikidataId/Q629056",
+                        "name": "White Rock"
+                      },
+                      {
+                        "dcid": "wikidataId/Q1342280",
+                        "name": "Squamish"
+                      }
+                    ],
+                    "minValue": 275,
+                    "maxValue": 26505
+                  },
+                  "Village": {
+                    "placeCount": 9,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q2869265",
+                        "name": "Atholville, New Brunswick"
+                      },
+                      {
+                        "dcid": "wikidataId/Q3469820",
+                        "name": "Salisbury, New Brunswick"
+                      },
+                      {
+                        "dcid": "wikidataId/Q3377053",
+                        "name": "Petit-Rocher, New Brunswick"
+                      }
+                    ],
+                    "minValue": 35,
+                    "maxValue": 1450
+                  }
+                },
+                "minValue": 15,
+                "maxValue": 15839460,
+                "observationCount": 640,
+                "timeSeriesCount": 640
+              }
+            ],
+            "observationCount": 640,
+            "timeSeriesCount": 640
           },
           "dc/base/CensusACS1YearSurvey": {
             "importName": "CensusACS1YearSurvey",
@@ -1541,6 +1717,539 @@
             "observationCount": 180,
             "timeSeriesCount": 33
           },
+          "dc/base/Israel_Census": {
+            "importName": "Israel_Census",
+            "releaseFrequency": "P1Y",
+            "seriesSummary": [
+              {
+                "seriesKey": {},
+                "earliestDate": "2008",
+                "latestDate": "2008",
+                "placeTypeSummary": {
+                  "AdministrativeArea": {
+                    "placeCount": 10,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q5423629",
+                        "name": "Beersheba Subdistrict"
+                      },
+                      {
+                        "dcid": "wikidataId/Q5423103",
+                        "name": "Acre Subdistrict"
+                      },
+                      {
+                        "dcid": "wikidataId/Q46993019",
+                        "name": "Sub-district of Petah Tikvah"
+                      }
+                    ],
+                    "minValue": 19800,
+                    "maxValue": 306700
+                  },
+                  "AdministrativeArea1": {
+                    "placeCount": 7,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q188785",
+                        "name": "Central District"
+                      },
+                      {
+                        "dcid": "wikidataId/Q189942",
+                        "name": "Northern District"
+                      },
+                      {
+                        "dcid": "wikidataId/Q192811",
+                        "name": "Tel Aviv District"
+                      }
+                    ],
+                    "minValue": 138220,
+                    "maxValue": 894629
+                  },
+                  "City": {
+                    "placeCount": 1,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q152379",
+                        "name": "Hod HaSharon"
+                      }
+                    ],
+                    "minValue": 196400,
+                    "maxValue": 196400
+                  },
+                  "Country": {
+                    "placeCount": 1,
+                    "topPlaces": [
+                      {
+                        "dcid": "country/ISR",
+                        "name": "Israel"
+                      }
+                    ],
+                    "minValue": 3748269,
+                    "maxValue": 3748269
+                  }
+                },
+                "minValue": 19800,
+                "maxValue": 3748269,
+                "observationCount": 19,
+                "timeSeriesCount": 19
+              }
+            ],
+            "observationCount": 19,
+            "timeSeriesCount": 19
+          },
+          "dc/base/Japan_Census": {
+            "importName": "Japan_Census",
+            "releaseFrequency": "P1Y",
+            "seriesSummary": [
+              {
+                "seriesKey": {},
+                "earliestDate": "1920",
+                "latestDate": "2020",
+                "placeTypeSummary": {
+                  "AdministrativeArea": {
+                    "placeCount": 2,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q1203561",
+                        "name": "Iwafune"
+                      },
+                      {
+                        "dcid": "wikidataId/Q2068514",
+                        "name": "Miyagi"
+                      }
+                    ],
+                    "minValue": 3962,
+                    "maxValue": 9698
+                  },
+                  "AdministrativeArea1": {
+                    "placeCount": 46,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q127513",
+                        "name": "Kanagawa Prefecture"
+                      },
+                      {
+                        "dcid": "wikidataId/Q122723",
+                        "name": "Ōsaka Prefecture"
+                      },
+                      {
+                        "dcid": "wikidataId/Q80434",
+                        "name": "Aichi Prefecture"
+                      }
+                    ],
+                    "minValue": 191499,
+                    "maxValue": 4649069
+                  },
+                  "AdministrativeArea2": {
+                    "placeCount": 173,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q1143712",
+                        "name": "Kanagawa-ku"
+                      },
+                      {
+                        "dcid": "wikidataId/Q231645",
+                        "name": "Setagaya-ku"
+                      },
+                      {
+                        "dcid": "wikidataId/Q232655",
+                        "name": "Nerima-ku"
+                      }
+                    ],
+                    "minValue": 18258,
+                    "maxValue": 498072
+                  },
+                  "AdministrativeArea3": {
+                    "placeCount": 25,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q217234",
+                        "name": "Ōta-ku"
+                      },
+                      {
+                        "dcid": "wikidataId/Q1206659",
+                        "name": "Higashi-ku"
+                      },
+                      {
+                        "dcid": "wikidataId/Q1132081",
+                        "name": "Minami-ku"
+                      }
+                    ],
+                    "minValue": 13780,
+                    "maxValue": 375617
+                  },
+                  "City": {
+                    "placeCount": 1535,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q1490",
+                        "name": "Tokyo"
+                      },
+                      {
+                        "dcid": "wikidataId/Q38283",
+                        "name": "Yokohama"
+                      },
+                      {
+                        "dcid": "wikidataId/Q35765",
+                        "name": "Ōsaka"
+                      }
+                    ],
+                    "minValue": 93,
+                    "maxValue": 7149206
+                  },
+                  "Country": {
+                    "placeCount": 1,
+                    "topPlaces": [
+                      {
+                        "dcid": "country/JPN",
+                        "name": "Japan"
+                      }
+                    ],
+                    "minValue": 27918868,
+                    "maxValue": 65729615
+                  },
+                  "Village": {
+                    "placeCount": 183,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q973994",
+                        "name": "Yomitan"
+                      },
+                      {
+                        "dcid": "wikidataId/Q1023784",
+                        "name": "Tōkai"
+                      },
+                      {
+                        "dcid": "wikidataId/Q1205406",
+                        "name": "Nakagusuku"
+                      }
+                    ],
+                    "minValue": 6,
+                    "maxValue": 20964
+                  }
+                },
+                "minValue": 6,
+                "maxValue": 65729615,
+                "observationCount": 16143,
+                "timeSeriesCount": 1965
+              }
+            ],
+            "observationCount": 16143,
+            "timeSeriesCount": 1965
+          },
+          "dc/base/Kenya_Census": {
+            "importName": "Kenya_Census",
+            "seriesSummary": [
+              {
+                "seriesKey": {},
+                "earliestDate": "2019",
+                "latestDate": "2019",
+                "placeTypeSummary": {
+                  "AdministrativeArea": {
+                    "placeCount": 2,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q6791978",
+                        "name": "Matungulu"
+                      },
+                      {
+                        "dcid": "wikidataId/Q2198934",
+                        "name": "Moyale District"
+                      }
+                    ],
+                    "minValue": 52508,
+                    "maxValue": 80407
+                  },
+                  "AdministrativeArea1": {
+                    "placeCount": 47,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q3335223",
+                        "name": "Nairobi County"
+                      },
+                      {
+                        "dcid": "wikidataId/Q2575594",
+                        "name": "Kiambu County"
+                      },
+                      {
+                        "dcid": "wikidataId/Q1852202",
+                        "name": "Nakuru County"
+                      }
+                    ],
+                    "minValue": 67813,
+                    "maxValue": 2204376
+                  },
+                  "City": {
+                    "placeCount": 15,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q845717",
+                        "name": "Garissa"
+                      },
+                      {
+                        "dcid": "wikidataId/Q55616319",
+                        "name": "Kwanza, Kenya"
+                      },
+                      {
+                        "dcid": "wikidataId/Q1007647",
+                        "name": "Naivasha"
+                      }
+                    ],
+                    "minValue": 18051,
+                    "maxValue": 176132
+                  },
+                  "Country": {
+                    "placeCount": 1,
+                    "topPlaces": [
+                      {
+                        "dcid": "country/KEN",
+                        "name": "Kenya"
+                      }
+                    ],
+                    "minValue": 24014716,
+                    "maxValue": 24014716
+                  },
+                  "Place": {
+                    "placeCount": 27,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q302246",
+                        "name": "Ruiru"
+                      },
+                      {
+                        "dcid": "wikidataId/Q1026079",
+                        "name": "Kikuyu"
+                      },
+                      {
+                        "dcid": "wikidataId/Q7193729",
+                        "name": "Westlands"
+                      }
+                    ],
+                    "minValue": 30086,
+                    "maxValue": 190144
+                  },
+                  "Village": {
+                    "placeCount": 1,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q6933371",
+                        "name": "Mukaa"
+                      }
+                    ],
+                    "minValue": 53068,
+                    "maxValue": 53068
+                  }
+                },
+                "minValue": 18051,
+                "maxValue": 24014716,
+                "observationCount": 93,
+                "timeSeriesCount": 93
+              }
+            ],
+            "observationCount": 93,
+            "timeSeriesCount": 93
+          },
+          "dc/base/MexicoCensus": {
+            "importName": "MexicoCensus",
+            "seriesSummary": [
+              {
+                "seriesKey": {},
+                "earliestDate": "1990",
+                "latestDate": "2020",
+                "placeTypeSummary": {
+                  "AdministrativeArea1": {
+                    "placeCount": 31,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q82112",
+                        "name": "State of Mexico"
+                      },
+                      {
+                        "dcid": "wikidataId/Q13160",
+                        "name": "Jalisco"
+                      },
+                      {
+                        "dcid": "wikidataId/Q60130",
+                        "name": "Veracruz"
+                      }
+                    ],
+                    "minValue": 155931,
+                    "maxValue": 8741123
+                  },
+                  "City": {
+                    "placeCount": 1,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q1489",
+                        "name": "Mexico City"
+                      }
+                    ],
+                    "minValue": 4295833,
+                    "maxValue": 4805017
+                  },
+                  "Country": {
+                    "placeCount": 1,
+                    "topPlaces": [
+                      {
+                        "dcid": "country/MEX",
+                        "name": "Mexico"
+                      }
+                    ],
+                    "minValue": 41355676,
+                    "maxValue": 64540634
+                  }
+                },
+                "minValue": 155931,
+                "maxValue": 64540634,
+                "observationCount": 198,
+                "timeSeriesCount": 33
+              }
+            ],
+            "observationCount": 198,
+            "timeSeriesCount": 33
+          },
+          "dc/base/MexicoCensus_AA2": {
+            "importName": "MexicoCensus_AA2",
+            "seriesSummary": [
+              {
+                "seriesKey": {},
+                "earliestDate": "2021",
+                "latestDate": "2021",
+                "placeTypeSummary": {
+                  "AdministrativeArea": {
+                    "placeCount": 8,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q16628524",
+                        "name": "San Salvador el Verde municipality"
+                      },
+                      {
+                        "dcid": "wikidataId/Q1972455",
+                        "name": "Santa Ana"
+                      },
+                      {
+                        "dcid": "wikidataId/Q7414308",
+                        "name": "San Ignacio Río Muerto"
+                      }
+                    ],
+                    "minValue": 226,
+                    "maxValue": 17209
+                  },
+                  "AdministrativeArea1": {
+                    "placeCount": 30,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q82112",
+                        "name": "State of Mexico"
+                      },
+                      {
+                        "dcid": "wikidataId/Q13160",
+                        "name": "Jalisco"
+                      },
+                      {
+                        "dcid": "wikidataId/Q60130",
+                        "name": "Veracruz"
+                      }
+                    ],
+                    "minValue": 400184,
+                    "maxValue": 9003038
+                  },
+                  "AdministrativeArea2": {
+                    "placeCount": 2227,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q2360428",
+                        "name": "Tijuana Municipality"
+                      },
+                      {
+                        "dcid": "wikidataId/Q741771",
+                        "name": "Iztapalapa"
+                      },
+                      {
+                        "dcid": "wikidataId/Q15121208",
+                        "name": "Ecatepec de Morelos Municipality"
+                      }
+                    ],
+                    "minValue": 53,
+                    "maxValue": 930416
+                  },
+                  "City": {
+                    "placeCount": 46,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q204271",
+                        "name": "San Luis Potosí"
+                      },
+                      {
+                        "dcid": "wikidataId/Q9022",
+                        "name": "Guadalajara"
+                      },
+                      {
+                        "dcid": "wikidataId/Q189138",
+                        "name": "Hermosillo"
+                      }
+                    ],
+                    "minValue": 495,
+                    "maxValue": 775200
+                  },
+                  "Country": {
+                    "placeCount": 1,
+                    "topPlaces": [
+                      {
+                        "dcid": "country/MEX",
+                        "name": "Mexico"
+                      }
+                    ],
+                    "minValue": 65833180,
+                    "maxValue": 65833180
+                  },
+                  "Place": {
+                    "placeCount": 29,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q1962471",
+                        "name": "Cárdenas"
+                      },
+                      {
+                        "dcid": "wikidataId/Q1360265",
+                        "name": "Etchojoa"
+                      },
+                      {
+                        "dcid": "wikidataId/Q20149456",
+                        "name": "Jocotepec"
+                      }
+                    ],
+                    "minValue": 229,
+                    "maxValue": 33157
+                  },
+                  "Village": {
+                    "placeCount": 17,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q3844371",
+                        "name": "Bácum"
+                      },
+                      {
+                        "dcid": "wikidataId/Q20262764",
+                        "name": "Plutarco Elías Calles"
+                      },
+                      {
+                        "dcid": "wikidataId/Q2057767",
+                        "name": "Erongarícuaro"
+                      }
+                    ],
+                    "minValue": 311,
+                    "maxValue": 12493
+                  }
+                },
+                "minValue": 53,
+                "maxValue": 65833180,
+                "observationCount": 2358,
+                "timeSeriesCount": 2358
+              }
+            ],
+            "observationCount": 2358,
+            "timeSeriesCount": 2358
+          },
           "dc/base/NigeriaStatistics": {
             "importName": "NigeriaStatistics",
             "seriesSummary": [
@@ -1933,6 +2642,25 @@
       "node": "FertilityRate_Person_Female",
       "info": {
         "placeTypeSummary": {
+          "AdministrativeArea1": {
+            "placeCount": 47,
+            "topPlaces": [
+              {
+                "dcid": "wikidataId/Q3335223",
+                "name": "Nairobi County"
+              },
+              {
+                "dcid": "wikidataId/Q2575594",
+                "name": "Kiambu County"
+              },
+              {
+                "dcid": "wikidataId/Q1852202",
+                "name": "Nakuru County"
+              }
+            ],
+            "minValue": 2.5,
+            "maxValue": 8
+          },
           "City": {
             "placeCount": 140,
             "topPlaces": [
@@ -1953,7 +2681,7 @@
             "maxValue": 2.7
           },
           "Country": {
-            "placeCount": 210,
+            "placeCount": 211,
             "topPlaces": [
               {
                 "dcid": "country/CHN",
@@ -1968,7 +2696,7 @@
                 "name": "United States"
               }
             ],
-            "minValue": 0.792,
+            "minValue": 0.772,
             "maxValue": 8.864
           },
           "EurostatNUTS1": {
@@ -2036,8 +2764,8 @@
                 "name": "Earth"
               }
             ],
-            "minValue": 2.29902994764743,
-            "maxValue": 5.33228884884454
+            "minValue": 2.27319100090675,
+            "maxValue": 5.32342829673039
           }
         },
         "provenanceSummary": {
@@ -2138,16 +2866,64 @@
             "observationCount": 10106,
             "timeSeriesCount": 1981
           },
+          "dc/base/Kenya_Census": {
+            "importName": "Kenya_Census",
+            "seriesSummary": [
+              {
+                "seriesKey": {},
+                "earliestDate": "2019",
+                "latestDate": "2019",
+                "placeTypeSummary": {
+                  "AdministrativeArea1": {
+                    "placeCount": 47,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q3335223",
+                        "name": "Nairobi County"
+                      },
+                      {
+                        "dcid": "wikidataId/Q2575594",
+                        "name": "Kiambu County"
+                      },
+                      {
+                        "dcid": "wikidataId/Q1852202",
+                        "name": "Nakuru County"
+                      }
+                    ],
+                    "minValue": 2.5,
+                    "maxValue": 8
+                  },
+                  "Country": {
+                    "placeCount": 1,
+                    "topPlaces": [
+                      {
+                        "dcid": "country/KEN",
+                        "name": "Kenya"
+                      }
+                    ],
+                    "minValue": 3.4,
+                    "maxValue": 3.4
+                  }
+                },
+                "minValue": 2.5,
+                "maxValue": 8,
+                "observationCount": 48,
+                "timeSeriesCount": 48
+              }
+            ],
+            "observationCount": 48,
+            "timeSeriesCount": 48
+          },
           "dc/base/WorldDevelopmentIndicators": {
             "importName": "WorldDevelopmentIndicators",
             "seriesSummary": [
               {
                 "seriesKey": {},
                 "earliestDate": "1960",
-                "latestDate": "2020",
+                "latestDate": "2021",
                 "placeTypeSummary": {
                   "Country": {
-                    "placeCount": 210,
+                    "placeCount": 211,
                     "topPlaces": [
                       {
                         "dcid": "country/CHN",
@@ -2162,7 +2938,7 @@
                         "name": "United States"
                       }
                     ],
-                    "minValue": 0.792,
+                    "minValue": 0.772,
                     "maxValue": 8.864
                   },
                   "Place": {
@@ -2173,18 +2949,18 @@
                         "name": "Earth"
                       }
                     ],
-                    "minValue": 2.29902994764743,
-                    "maxValue": 5.33228884884454
+                    "minValue": 2.27319100090675,
+                    "maxValue": 5.32342829673039
                   }
                 },
-                "minValue": 0.792,
+                "minValue": 0.772,
                 "maxValue": 8.864,
-                "observationCount": 12232,
-                "timeSeriesCount": 211
+                "observationCount": 12841,
+                "timeSeriesCount": 212
               }
             ],
-            "observationCount": 12232,
-            "timeSeriesCount": 211
+            "observationCount": 12841,
+            "timeSeriesCount": 212
           }
         }
       }
