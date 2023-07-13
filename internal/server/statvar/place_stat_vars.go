@@ -16,6 +16,8 @@ package statvar
 
 import (
 	"context"
+	"fmt"
+	"strings"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/store"
@@ -39,7 +41,7 @@ func GetPlaceStatsVar(
 		return nil, err
 	}
 
-	resp, err := GetEntityStatVarsHelper(ctx, dcids, store)
+	resp, err := GetEntityStatVarsHelper(ctx, store, dcids)
 	if err != nil {
 		return nil, err
 	}
@@ -52,39 +54,75 @@ func GetPlaceStatsVar(
 
 // GetEntityStatVarsHelper is a wrapper to get stat vars for given entities.
 func GetEntityStatVarsHelper(
-	ctx context.Context, entities []string, store *store.Store) (
-	map[string]*pb.StatVars, error) {
-	btDataList, err := bigtable.Read(
-		ctx,
-		store.BtGroup,
-		bigtable.BtPlaceStatsVarPrefix,
-		[][]string{entities},
-		func(jsonRaw []byte) (interface{}, error) {
-			var data pb.PlaceStatVars
-			if err := proto.Unmarshal(jsonRaw, &data); err != nil {
-				return nil, err
-			}
-			return data.StatVarIds, nil
-		},
-	)
-	if err != nil {
-		return nil, err
-	}
+	ctx context.Context,
+	store *store.Store,
+	entities []string,
+) (map[string]*pb.StatVars, error) {
 	resp := map[string]*pb.StatVars{}
 	for _, entity := range entities {
 		resp[entity] = &pb.StatVars{StatVars: []string{}}
-		allStatVars := [][]string{}
-		// btDataList is a list of import group data
-		for _, btData := range btDataList {
-			// Each row in btData represent one entity data.
-			for _, row := range btData {
-				if row.Parts[0] != entity {
-					continue
+	}
+	// Fetch from Bigtable
+	if store.BtGroup != nil {
+		btDataList, err := bigtable.Read(
+			ctx,
+			store.BtGroup,
+			bigtable.BtPlaceStatsVarPrefix,
+			[][]string{entities},
+			func(jsonRaw []byte) (interface{}, error) {
+				var data pb.PlaceStatVars
+				if err := proto.Unmarshal(jsonRaw, &data); err != nil {
+					return nil, err
 				}
-				allStatVars = append(allStatVars, row.Data.([]string))
-			}
+				return data.StatVarIds, nil
+			},
+		)
+		if err != nil {
+			return nil, err
 		}
-		resp[entity].StatVars = util.MergeDedupe(allStatVars...)
+		for _, entity := range entities {
+			resp[entity] = &pb.StatVars{StatVars: []string{}}
+			allStatVars := [][]string{}
+			// btDataList is a list of import group data
+			for _, btData := range btDataList {
+				// Each row in btData represent one entity data.
+				for _, row := range btData {
+					if row.Parts[0] != entity {
+						continue
+					}
+					allStatVars = append(allStatVars, row.Data.([]string))
+				}
+			}
+			resp[entity].StatVars = util.MergeDedupe(allStatVars...)
+		}
+	}
+	// Fetch from SQLite
+	if store.SQLiteClient != nil {
+		entitiesStr := "'" + strings.Join(entities, "', '") + "'"
+		query := fmt.Sprintf(
+			"SELECT entity, GROUP_CONCAT(DISTINCT variable) AS variables "+
+				"FROM observations WHERE entity in (%s) "+
+				"GROUP BY entity;",
+			entitiesStr,
+		)
+		// Execute query
+		rows, err := store.SQLiteClient.Query(query)
+		if err != nil {
+			return nil, err
+		}
+		defer rows.Close()
+		if err != nil {
+			return nil, err
+		}
+		for rows.Next() {
+			var entity, variableStr string
+			err = rows.Scan(&entity, &variableStr)
+			if err != nil {
+				return nil, err
+			}
+			variables := strings.Split(variableStr, ",")
+			resp[entity].StatVars = util.MergeDedupe(resp[entity].StatVars, variables)
+		}
 	}
 	return resp, nil
 }
@@ -123,7 +161,7 @@ func GetEntityStatVarsUnionV1(
 			}
 		}
 	} else {
-		resp, err := GetEntityStatVarsHelper(ctx, entities, store)
+		resp, err := GetEntityStatVarsHelper(ctx, store, entities)
 		if err != nil {
 			return nil, err
 		}

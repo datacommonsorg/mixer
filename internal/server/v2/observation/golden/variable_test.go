@@ -40,7 +40,7 @@ func TestVariable(t *testing.T) {
 			goldenFile string
 		}{
 			{
-				[]string{"wikidataId/Q506877", "wikidataId/Q1951", "fake_place"},
+				[]string{"wikidataId/Q506877", "wikidataId/Q1951", "fake_place", "test_entity"},
 				"result.json",
 			},
 		} {
@@ -74,7 +74,7 @@ func TestVariable(t *testing.T) {
 	}
 	if err := test.TestDriver(
 		"ObservationMetric(variable)",
-		&test.TestOption{},
+		&test.TestOption{UseSQLite: true},
 		testSuite,
 	); err != nil {
 		t.Errorf("TestDriver() = %s", err)

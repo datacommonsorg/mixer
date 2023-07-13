@@ -23,13 +23,13 @@ import (
 	"github.com/datacommonsorg/mixer/internal/store"
 )
 
-// Variable implements logic to get Observation for entity variabless.
+// Variable implements logic to fetch entity variabless.
 func Variable(
 	ctx context.Context,
 	store *store.Store,
 	entities []string,
 ) (*pbv2.ObservationResponse, error) {
-	entityToStatVars, err := statvar.GetEntityStatVarsHelper(ctx, entities, store)
+	entityToStatVars, err := statvar.GetEntityStatVarsHelper(ctx, store, entities)
 	if err != nil {
 		return nil, err
 	}

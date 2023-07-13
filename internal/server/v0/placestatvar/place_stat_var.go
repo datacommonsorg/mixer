@@ -36,7 +36,7 @@ func GetPlaceStatVars(
 	if err := util.CheckValidDCIDs(dcids); err != nil {
 		return nil, err
 	}
-	entityToStatVars, err := statvar.GetEntityStatVarsHelper(ctx, dcids, store)
+	entityToStatVars, err := statvar.GetEntityStatVarsHelper(ctx, store, dcids)
 	if err != nil {
 		return nil, err
 	}
