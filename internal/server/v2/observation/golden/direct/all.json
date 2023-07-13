@@ -16912,6 +16912,63 @@
         "geoId/06": {},
         "geoId/0649670": {}
       }
+    },
+    "test_var_1": {
+      "by_entity": {
+        "country/FRA": {},
+        "country/USA": {},
+        "dummy": {},
+        "geoId/06": {
+          "ordered_facets": [
+            {
+              "facet_id": "local",
+              "observations": [
+                {
+                  "date": "2001",
+                  "value": 30
+                },
+                {
+                  "date": "2002",
+                  "value": 31
+                },
+                {
+                  "date": "2003",
+                  "value": 32
+                },
+                {
+                  "date": "2004",
+                  "value": 33
+                },
+                {
+                  "date": "2005",
+                  "value": 34
+                },
+                {
+                  "date": "2006",
+                  "value": 35
+                },
+                {
+                  "date": "2007",
+                  "value": 36
+                },
+                {
+                  "date": "2008",
+                  "value": 37
+                },
+                {
+                  "date": "2014",
+                  "value": 41
+                },
+                {
+                  "date": "2015",
+                  "value": 42
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/0649670": {}
+      }
     }
   },
   "facets": {
@@ -17089,6 +17146,10 @@
       "import_name": "EurostatData",
       "provenance_url": "https://ec.europa.eu/eurostat/data/database",
       "measurement_method": "EurostatRegionalPopulationData"
+    },
+    "local": {
+      "import_name": "local",
+      "provenance_url": "local"
     }
   }
 }

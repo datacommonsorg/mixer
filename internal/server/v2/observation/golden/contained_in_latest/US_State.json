@@ -3898,6 +3898,36 @@
           ]
         }
       }
+    },
+    "test_var_1": {
+      "by_entity": {
+        "geoId/05": {
+          "ordered_facets": [
+            {
+              "facet_id": "local",
+              "observations": [
+                {
+                  "date": "2008",
+                  "value": 87
+                }
+              ]
+            }
+          ]
+        },
+        "geoId/06": {
+          "ordered_facets": [
+            {
+              "facet_id": "local",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 42
+                }
+              ]
+            }
+          ]
+        }
+      }
     }
   },
   "facets": {
@@ -3923,6 +3953,10 @@
       "provenance_url": "https://www.bls.gov/lau/",
       "measurement_method": "BLSSeasonallyUnadjusted",
       "observation_period": "P1M"
+    },
+    "local": {
+      "import_name": "local",
+      "provenance_url": "local"
     }
   }
 }
