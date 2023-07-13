@@ -18,7 +18,6 @@ package observation
 import (
 	"context"
 	"fmt"
-	"log"
 	"strings"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
@@ -103,7 +102,6 @@ func Existence(
 			GROUP BY a.entity, a.variable;
 		`, entityClause, variableClause,
 		)
-		log.Println(query)
 		// Execute query
 		rows, err := store.SQLiteClient.Query(query)
 		if err != nil {

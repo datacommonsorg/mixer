@@ -41,8 +41,18 @@ func TestExistence(t *testing.T) {
 			goldenFile string
 		}{
 			{
-				[]string{"geoId/0647766", "geoId/06", "country/CAN", "test_entity"},
-				[]string{"Count_Person", "GenderIncomeInequality_Person_15OrMoreYears_WithIncome", "dummy", "test_var_1"},
+				[]string{
+					"geoId/0647766",
+					"geoId/06",
+					"country/CAN",
+					"test_entity",
+				},
+				[]string{
+					"Count_Person",
+					"GenderIncomeInequality_Person_15OrMoreYears_WithIncome",
+					"dummy",
+					"test_var_1",
+				},
 				"existence.json",
 			},
 		} {
