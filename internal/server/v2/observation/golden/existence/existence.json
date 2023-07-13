@@ -4,13 +4,20 @@
       "by_entity": {
         "country/CAN": {},
         "geoId/06": {},
-        "geoId/0647766": {}
+        "geoId/0647766": {},
+        "test_entity": {}
       }
     },
     "GenderIncomeInequality_Person_15OrMoreYears_WithIncome": {
       "by_entity": {
         "geoId/06": {},
         "geoId/0647766": {}
+      }
+    },
+    "test_var_1": {
+      "by_entity": {
+        "geoId/06": {},
+        "test_entity": {}
       }
     }
   }

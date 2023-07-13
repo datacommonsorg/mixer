@@ -41,8 +41,8 @@ func TestExistence(t *testing.T) {
 			goldenFile string
 		}{
 			{
-				[]string{"geoId/0647766", "geoId/06", "country/CAN"},
-				[]string{"Count_Person", "GenderIncomeInequality_Person_15OrMoreYears_WithIncome", "dummy"},
+				[]string{"geoId/0647766", "geoId/06", "country/CAN", "test_entity"},
+				[]string{"Count_Person", "GenderIncomeInequality_Person_15OrMoreYears_WithIncome", "dummy", "test_var_1"},
 				"existence.json",
 			},
 		} {
@@ -77,7 +77,7 @@ func TestExistence(t *testing.T) {
 	}
 	if err := test.TestDriver(
 		"Observation(existence)",
-		&test.TestOption{},
+		&test.TestOption{UseSQLite: true},
 		testSuite,
 	); err != nil {
 		t.Errorf("TestDriver() = %s", err)

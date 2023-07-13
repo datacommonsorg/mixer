@@ -32,7 +32,8 @@ import (
 // TODO(shifucun): Migrate clients to use GetPlaceStatVars and deprecate this.
 func GetPlaceStatsVar(
 	ctx context.Context, in *pb.GetPlaceStatsVarRequest, store *store.Store) (
-	*pb.GetPlaceStatsVarResponse, error) {
+	*pb.GetPlaceStatsVarResponse, error,
+) {
 	dcids := in.GetDcids()
 	if len(dcids) == 0 {
 		return nil, status.Error(codes.InvalidArgument, "Missing required arguments: dcids")
@@ -53,6 +54,7 @@ func GetPlaceStatsVar(
 }
 
 // GetEntityStatVarsHelper is a wrapper to get stat vars for given entities.
+// This function fetches data from both Bigtable and SQLite database.
 func GetEntityStatVarsHelper(
 	ctx context.Context,
 	store *store.Store,
