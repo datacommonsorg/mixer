@@ -21,3 +21,6 @@ geoId/06,test_var_2,2010,1000
 geoId/06,test_var_2,2020,2000
 geoId/05,test_var_2,2010,5000
 geoId/05,test_var_2,2020,6000
+test_entity,Count_Person,2022,100
+test_entity,test_var_1,2022,200
+wikidataId/Q506877,test_var_1,2023,50
