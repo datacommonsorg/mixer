@@ -1,5 +1,10 @@
 {
   "data": {
+    "NewCity": {
+      "properties": [
+        "rangeIncludes"
+      ]
+    },
     "geoId/06085": {
       "properties": [
         "affectedPlace",
@@ -8,6 +13,7 @@
         "location",
         "member"
       ]
-    }
+    },
+    "test_stat_var": {}
   }
 }

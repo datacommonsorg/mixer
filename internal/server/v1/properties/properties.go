@@ -37,21 +37,14 @@ func Properties(
 	if direction != util.DirectionIn && direction != util.DirectionOut {
 		return nil, status.Errorf(codes.InvalidArgument, "Invalid direction: should be 'in' or 'out'")
 	}
-	data, err := nodewrapper.GetPropertiesHelper(ctx, []string{node}, store)
+	data, err := nodewrapper.GetPropertiesHelper(ctx, []string{node}, store, direction)
 	if err != nil {
 		return nil, err
 	}
 	result := &pbv1.PropertiesResponse{
 		Node: node,
 	}
-	if direction == util.DirectionIn {
-		result.Properties = data[node].InLabels
-	} else if direction == util.DirectionOut {
-		result.Properties = data[node].OutLabels
-	}
-	if result.Properties == nil {
-		result.Properties = []string{}
-	}
+	result.Properties = data[node]
 	return result, nil
 }
 
@@ -66,7 +59,7 @@ func BulkProperties(
 	if direction != util.DirectionIn && direction != util.DirectionOut {
 		return nil, status.Errorf(codes.InvalidArgument, "Invalid direction: should be 'in' or 'out'")
 	}
-	resp, err := nodewrapper.GetPropertiesHelper(ctx, nodes, store)
+	resp, err := nodewrapper.GetPropertiesHelper(ctx, nodes, store, direction)
 	if err != nil {
 		return nil, err
 	}
@@ -81,17 +74,10 @@ func BulkProperties(
 			})
 			continue
 		}
-		if direction == util.DirectionIn {
-			result.Data = append(result.Data, &pbv1.PropertiesResponse{
-				Node:       node,
-				Properties: resp[node].InLabels,
-			})
-		} else if direction == util.DirectionOut {
-			result.Data = append(result.Data, &pbv1.PropertiesResponse{
-				Node:       node,
-				Properties: resp[node].OutLabels,
-			})
-		}
+		result.Data = append(result.Data, &pbv1.PropertiesResponse{
+			Node:       node,
+			Properties: resp[node],
+		})
 	}
 	return result, nil
 }

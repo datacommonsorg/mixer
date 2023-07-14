@@ -42,12 +42,12 @@ func TestPropertiesV2(t *testing.T) {
 		}{
 			{
 				"out.json",
-				[]string{"geoId/06", "bio/hs"},
+				[]string{"geoId/06", "bio/hs", "NewCity", "test_stat_var"},
 				"->",
 			},
 			{
 				"in.json",
-				[]string{"geoId/06085"},
+				[]string{"geoId/06085", "NewCity", "test_stat_var"},
 				"<-",
 			},
 		} {
@@ -79,7 +79,7 @@ func TestPropertiesV2(t *testing.T) {
 		}
 	}
 	if err := test.TestDriver(
-		"PropertiesV2", &test.TestOption{}, testSuite); err != nil {
+		"PropertiesV2", &test.TestOption{UseSQLite: true}, testSuite); err != nil {
 		t.Errorf("TestDriver() = %s", err)
 	}
 }
