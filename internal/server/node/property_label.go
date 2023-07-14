@@ -26,16 +26,16 @@ import (
 	"google.golang.org/protobuf/proto"
 )
 
-// GetPropertiesHelper is a wrapper to fetch entity properties from BT store.
+// GetPropertiesHelper is a wrapper to fetch node properties from BT store.
 func GetPropertiesHelper(
 	ctx context.Context,
-	entities []string,
+	nodes []string,
 	store *store.Store,
 	direction string,
 ) (map[string][]string, error) {
 	result := map[string][]string{}
-	for _, entity := range entities {
-		result[entity] = []string{}
+	for _, node := range nodes {
+		result[node] = []string{}
 	}
 	// Fetch data from Bigtable
 	if store.BtGroup != nil {
@@ -43,7 +43,7 @@ func GetPropertiesHelper(
 			ctx,
 			store.BtGroup,
 			bigtable.BtArcsPrefix,
-			[][]string{entities},
+			[][]string{nodes},
 			func(jsonRaw []byte) (interface{}, error) {
 				var propLabels pb.PropertyLabels
 				if err := proto.Unmarshal(jsonRaw, &propLabels); err != nil {
@@ -55,12 +55,12 @@ func GetPropertiesHelper(
 		if err != nil {
 			return nil, err
 		}
-		for _, entity := range entities {
+		for _, node := range nodes {
 			labels := [][]string{}
 			// Merge cache value from all import groups
 			for _, btData := range btDataList {
 				for _, row := range btData {
-					if row.Parts[0] == entity {
+					if row.Parts[0] == node {
 						if direction == util.DirectionIn {
 							if item := row.Data.(*pb.PropertyLabels).InLabels; item != nil {
 								labels = append(labels, item)
@@ -73,24 +73,24 @@ func GetPropertiesHelper(
 					}
 				}
 			}
-			result[entity] = util.MergeDedupe(labels...)
+			result[node] = util.MergeDedupe(labels...)
 		}
 	}
 	// Fetch data from SQLite
 	if store.SQLiteClient != nil {
-		entitiesStr := "'" + strings.Join(entities, "', '") + "'"
+		nodesStr := "'" + strings.Join(nodes, "', '") + "'"
 		var query string
 		if direction == util.DirectionOut {
 			query = fmt.Sprintf(
-				"SELECT subject_id AS entity, predicate FROM triples "+
+				"SELECT subject_id AS node, predicate FROM triples "+
 					"WHERE subject_id IN (%s);",
-				entitiesStr,
+				nodesStr,
 			)
 		} else {
 			query = fmt.Sprintf(
-				"SELECT object_id AS entity, predicate FROM triples "+
+				"SELECT object_id AS node, predicate FROM triples "+
 					"WHERE object_id IN (%s);",
-				entitiesStr,
+				nodesStr,
 			)
 		}
 		// Execute query
@@ -101,19 +101,19 @@ func GetPropertiesHelper(
 		defer rows.Close()
 
 		tmp := map[string][]string{}
-		for _, entity := range entities {
-			tmp[entity] = []string{}
+		for _, node := range nodes {
+			tmp[node] = []string{}
 		}
 		for rows.Next() {
-			var entity, pred string
-			err = rows.Scan(&entity, &pred)
+			var node, pred string
+			err = rows.Scan(&node, &pred)
 			if err != nil {
 				return nil, err
 			}
-			tmp[entity] = append(tmp[entity], pred)
+			tmp[node] = append(tmp[node], pred)
 		}
-		for _, entity := range entities {
-			result[entity] = util.MergeDedupe(result[entity], tmp[entity])
+		for _, node := range nodes {
+			result[node] = util.MergeDedupe(result[node], tmp[node])
 		}
 	}
 	return result, nil

@@ -85,22 +85,24 @@ func Existence(
 		// Query
 		query := fmt.Sprintf(
 			`
-			WITH entity_list(entity) AS (
-					VALUES %s
-			),
-			variable_list(variable) AS (
-					VALUES %s
-			),
-			all_pairs AS (
-					SELECT e.entity, v.variable
-					FROM entity_list e
-					CROSS JOIN variable_list v
-			)
-			SELECT a.entity, a.variable, COUNT(o.entity)
-			FROM all_pairs a
-			LEFT JOIN observations o ON a.entity = o.entity AND a.variable = o.variable
-			GROUP BY a.entity, a.variable;
-		`, entityClause, variableClause,
+				WITH entity_list(entity) AS (
+						VALUES %s
+				),
+				variable_list(variable) AS (
+						VALUES %s
+				),
+				all_pairs AS (
+						SELECT e.entity, v.variable
+						FROM entity_list e
+						CROSS JOIN variable_list v
+				)
+				SELECT a.entity, a.variable, COUNT(o.entity)
+				FROM all_pairs a
+				LEFT JOIN observations o ON a.entity = o.entity AND a.variable = o.variable
+				GROUP BY a.entity, a.variable;
+			`,
+			entityClause,
+			variableClause,
 		)
 		// Execute query
 		rows, err := store.SQLiteClient.Query(query)

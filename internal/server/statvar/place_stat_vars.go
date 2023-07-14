@@ -102,9 +102,11 @@ func GetEntityStatVarsHelper(
 	if store.SQLiteClient != nil {
 		entitiesStr := "'" + strings.Join(entities, "', '") + "'"
 		query := fmt.Sprintf(
-			"SELECT entity, GROUP_CONCAT(DISTINCT variable) AS variables "+
-				"FROM observations WHERE entity in (%s) "+
-				"GROUP BY entity;",
+			`
+				SELECT entity, GROUP_CONCAT(DISTINCT variable) AS variables
+				FROM observations WHERE entity in (%s)
+				GROUP BY entity;
+			`,
 			entitiesStr,
 		)
 		// Execute query

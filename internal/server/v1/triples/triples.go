@@ -108,7 +108,7 @@ func Triples(
 	properties := propsResp.GetProperties()
 	data, pi, err := propertyvalues.Fetch(
 		ctx,
-		store.BtGroup,
+		store,
 		[]string{node},
 		properties,
 		0,
@@ -187,7 +187,7 @@ func BulkTriples(
 	}
 	data, pi, err := propertyvalues.Fetch(
 		ctx,
-		store.BtGroup,
+		store,
 		regularDcids,
 		properties,
 		0,

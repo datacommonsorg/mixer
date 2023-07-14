@@ -23,14 +23,14 @@ FROM envoyproxy/envoy:v1.26.0 AS envoy
 
 # =========  protoc stage ==========
 
-FROM golang:1.20.2 AS go-protoc
+FROM golang:1.20.6 AS go-protoc
 
 WORKDIR /mixer
 
 # Install protoc
-RUN apt-get update && \
-    apt-get upgrade -y && \
-    apt-get install -y unzip
+RUN apt-get update
+RUN apt-get upgrade -y
+RUN apt-get install -y unzip
 
 RUN curl -LO https://github.com/protocolbuffers/protobuf/releases/download/v3.19.4/protoc-3.19.4-linux-x86_64.zip
 RUN unzip protoc-3.19.4-linux-x86_64.zip

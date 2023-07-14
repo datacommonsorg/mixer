@@ -1,5 +1,19 @@
 {
   "data": {
+    "NewCity": {
+      "arcs": {
+        "name": {
+          "nodes": [
+            {
+              "types": [
+                "Thing"
+              ],
+              "value": "NewCity"
+            }
+          ]
+        }
+      }
+    },
     "bio/hs": {
       "arcs": {
         "name": {
@@ -19,6 +33,20 @@
             {
               "provenanceId": "dc/base/WikidataOtherIdGeos",
               "value": "California"
+            }
+          ]
+        }
+      }
+    },
+    "test_stat_var": {
+      "arcs": {
+        "name": {
+          "nodes": [
+            {
+              "types": [
+                "Thing"
+              ],
+              "value": "14A. Non-financial accounts by sectors, SNA93: Total change in liabilities and net worth, Total economy, Current prices"
             }
           ]
         }

@@ -17,12 +17,16 @@ package propertyvalues
 import (
 	"container/heap"
 	"context"
+	"database/sql"
+	"fmt"
 	"sort"
 	"strconv"
+	"strings"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"github.com/datacommonsorg/mixer/internal/server/pagination"
+	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"github.com/datacommonsorg/mixer/internal/util"
 
@@ -32,8 +36,173 @@ import (
 
 // Fetch is the generic handler to fetch property values for multiple
 // properties and nodes.
-// Return map is keyed by node dicd, then property, then target node type.
+//
+// Returned map is keyed by: node dcid, property, and target node type.
 func Fetch(
+	ctx context.Context,
+	store *store.Store,
+	nodes []string,
+	properties []string,
+	limit int,
+	token string,
+	direction string,
+) (
+	map[string]map[string]map[string][]*pb.EntityInfo,
+	*pbv1.PaginationInfo,
+	error,
+) {
+	var resp map[string]map[string]map[string][]*pb.EntityInfo
+	var pg *pbv1.PaginationInfo
+	var err error
+	if store.BtGroup != nil {
+		resp, pg, err = fetchBT(ctx, store.BtGroup, nodes, properties, limit, token, direction)
+		if err != nil {
+			return nil, nil, err
+		}
+	}
+	// No pagination for sqlite query, so if there is a pagination token, meaning
+	// the data has already been queried and returned in previous query.
+	if store.SQLiteClient != nil && token == "" {
+		sqlResp, err := fetchSQLite(ctx, store.SQLiteClient, nodes, properties, direction)
+		if err != nil {
+			return nil, nil, err
+		}
+		for node := range sqlResp {
+			if _, ok := resp[node]; !ok {
+				resp[node] = sqlResp[node]
+				continue
+			}
+			for prop := range sqlResp[node] {
+				if _, ok := resp[node][prop]; !ok {
+					resp[node][prop] = sqlResp[node][prop]
+					continue
+				}
+				for typ := range sqlResp[node][prop] {
+					if _, ok := resp[node][prop][typ]; !ok {
+						resp[node][prop][typ] = sqlResp[node][prop][typ]
+						continue
+					}
+					resp[node][prop][typ] = append(resp[node][prop][typ], sqlResp[node][prop][typ]...)
+				}
+			}
+		}
+	}
+	return resp, pg, err
+}
+
+func fetchSQLite(
+	ctx context.Context,
+	sqliteClient *sql.DB,
+	nodes []string,
+	properties []string,
+	direction string,
+) (
+	map[string]map[string]map[string][]*pb.EntityInfo,
+	error,
+) {
+	if sqliteClient == nil {
+		return nil, nil
+	}
+	// Node clause
+	nodeValues := make([]string, len(nodes))
+	for i, node := range nodes {
+		nodeValues[i] = fmt.Sprintf("('%s')", node)
+	}
+	nodeClause := strings.Join(nodeValues, ", ")
+	// Property clause
+	propValues := make([]string, len(properties))
+	for i, prop := range properties {
+		propValues[i] = fmt.Sprintf("('%s')", prop)
+	}
+	propClause := strings.Join(propValues, ", ")
+	var matchColumn string
+	if direction == util.DirectionOut {
+		matchColumn = "subject_id"
+	} else {
+		matchColumn = "object_id"
+	}
+	query := fmt.Sprintf(
+		`
+			WITH node_list(node) AS (
+					VALUES %s
+			),
+			prop_list(prop) AS (
+					VALUES %s
+			),
+			all_pairs AS (
+					SELECT n.node, p.prop
+					FROM node_list n
+					CROSS JOIN prop_list p
+			)
+			SELECT subject_id, predicate, object_id, object_value
+			FROM all_pairs a
+			INNER JOIN triples t ON a.node = t.%s AND a.prop = t.predicate
+			GROUP BY a.node, a.prop;
+		`,
+		nodeClause,
+		propClause,
+		matchColumn,
+	)
+	// Execute query
+	rows, err := sqliteClient.Query(query)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+	resp := map[string]map[string]map[string][]*pb.EntityInfo{}
+	for _, node := range nodes {
+		resp[node] = map[string]map[string][]*pb.EntityInfo{}
+	}
+	for rows.Next() {
+		var subject_id, predicate, object_id, object_value string
+		err = rows.Scan(&subject_id, &predicate, &object_id, &object_value)
+		if err != nil {
+			return nil, err
+		}
+		var n string
+		if matchColumn == "subject_id" {
+			n = subject_id
+		} else {
+			n = object_id
+		}
+		if _, ok := resp[n][predicate]; !ok {
+			resp[n][predicate] = map[string][]*pb.EntityInfo{}
+		}
+		if matchColumn == "subject_id" {
+			// Always use "Thing" as type for SQLite node. Will need to improve this
+			// if necessary.
+			if _, ok := resp[n][predicate]["Thing"]; !ok {
+				resp[n][predicate]["Thing"] = []*pb.EntityInfo{}
+			}
+			resp[n][predicate]["Thing"] = append(
+				resp[n][predicate]["Thing"],
+				&pb.EntityInfo{
+					Dcid:  object_id,
+					Value: object_value,
+					Types: []string{"Thing"},
+				},
+			)
+		} else {
+			// object value uses "" as type
+			if _, ok := resp[n][predicate][""]; !ok {
+				resp[n][predicate][""] = []*pb.EntityInfo{}
+			}
+			resp[n][predicate][""] = append(
+				resp[n][predicate][""],
+				&pb.EntityInfo{
+					Dcid: subject_id,
+				},
+			)
+		}
+	}
+	return resp, nil
+}
+
+// fetchBT fetch property values from Bigtable Cache
+//
+// Returned map is keyed (in order) by: node dcid, property, target node type.
+func fetchBT(
 	ctx context.Context,
 	btGroup *bigtable.Group,
 	nodes []string,

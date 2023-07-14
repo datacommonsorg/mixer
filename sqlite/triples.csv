@@ -8,4 +8,4 @@ test_stat_var,population_type,Thing,
 test_stat_var,measured_prop,,test_stat_var
 test_stat_var,stat_type,,measuredValue
 test_stat_var,num_constraints,,0
-test_stat_var,num_constraints,,"14A. Non-financial accounts by sectors, SNA93: Total change in liabilities and net worth, Total economy, Current prices"
+test_stat_var,name,,"14A. Non-financial accounts by sectors, SNA93: Total change in liabilities and net worth, Total economy, Current prices"
