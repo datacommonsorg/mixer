@@ -180,7 +180,7 @@ func FetchDirectSQL(
 	query := fmt.Sprintf(
 		`
 			SELECT entity, variable, date, value FROM observations
-		  WHERE entity IN (%s)
+			WHERE entity IN (%s)
 			AND variable IN (%s)
 		`,
 		entitiesStr,
