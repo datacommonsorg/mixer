@@ -46,6 +46,9 @@ func TestRecogPlaceMap(t *testing.T) {
 							{
 								Parts: []string{"sunnyvale"},
 							},
+							{
+								Parts:[]string{"city", "of", "sunnyvale"},
+							},
 						},
 						Dcid: "geoId/0677000",
 						ContainingPlaces: []string{"Earth", "country/USA", "geoId/06",
@@ -64,6 +67,42 @@ func TestRecogPlaceMap(t *testing.T) {
 							"geoId/48113", "northamerica", "usc/SouthRegion",
 							"usc/WestSouthCentralDivision"},
 						Population: 8062,
+					},
+				},
+			},
+		},
+		{
+			"usa",
+			&pb.RecogPlaces{
+				Places: []*pb.RecogPlace{
+					{
+						Names: []*pb.RecogPlace_Name{
+							{
+								Parts: []string{"united", "states"},
+							},
+							{
+								Parts:[]string{"usa"},
+							},
+							{
+								Parts: []string{"us"},
+							},
+							{
+								Parts: []string{"u.s."},
+							},
+						},
+						Dcid: "country/USA",
+						ContainingPlaces: []string{"Earth", "northamerica"},
+						Population: 331893745,
+					},
+					{
+						Names: []*pb.RecogPlace_Name{
+							{
+								Parts: []string{"usa"},
+							},
+						},
+						Dcid: "wikidataId/Q114147",
+						ContainingPlaces: []string{"Earth", "asia", "country/JPN", "wikidataId/Q133924"},
+						Population: 55534,
 					},
 				},
 			},
