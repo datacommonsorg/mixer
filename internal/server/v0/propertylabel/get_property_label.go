@@ -38,9 +38,31 @@ func GetPropertyLabels(
 	if err := util.CheckValidDCIDs(dcids); err != nil {
 		return nil, err
 	}
-	data, err := node.GetPropertiesHelper(ctx, dcids, store)
+	outProps, err := node.GetPropertiesHelper(ctx, dcids, store, util.DirectionOut)
 	if err != nil {
 		return nil, err
 	}
-	return &pb.GetPropertyLabelsResponse{Data: data}, nil
+	inProps, err := node.GetPropertiesHelper(ctx, dcids, store, util.DirectionIn)
+	if err != nil {
+		return nil, err
+	}
+	result := &pb.GetPropertyLabelsResponse{Data: map[string]*pb.PropertyLabels{}}
+
+	init := func(entity string) {
+		if _, ok := result.Data[entity]; !ok {
+			result.Data[entity] = &pb.PropertyLabels{
+				InLabels:  []string{},
+				OutLabels: []string{},
+			}
+		}
+	}
+	for entity, props := range outProps {
+		init(entity)
+		result.Data[entity].OutLabels = props
+	}
+	for entity, props := range inProps {
+		init(entity)
+		result.Data[entity].InLabels = props
+	}
+	return result, nil
 }

@@ -1,11 +1,11 @@
 subject_id,predicate,object_id,object_value
-administrativeCapital,rangeIncludes,City,
-City,typeOf,Class,
-City,subClassOf,AdministrativeArea,
-City,typeOf,LocationClassificationEnum,
-City,name,City,
-oecd/SNA_TABLE14A_SNA93_NFR312_S1_C,population_type,Thing,
-oecd/SNA_TABLE14A_SNA93_NFR312_S1_C,measured_prop,,oecd/SNA_TABLE14A_SNA93_NFR312_S1_C
-oecd/SNA_TABLE14A_SNA93_NFR312_S1_C,stat_type,,measuredValue
-oecd/SNA_TABLE14A_SNA93_NFR312_S1_C,num_constraints,,0
-oecd/SNA_TABLE14A_SNA93_NFR312_S1_C,num_constraints,,"14A. Non-financial accounts by sectors, SNA93: Total change in liabilities and net worth, Total economy, Current prices"
+administrativeCapital,rangeIncludes,NewCity,
+NewCity,typeOf,Class,
+NewCity,subClassOf,AdministrativeArea,
+NewCity,typeOf,LocationClassificationEnum,
+NewCity,name,,NewCity
+test_stat_var,population_type,Thing,
+test_stat_var,measured_prop,,test_stat_var
+test_stat_var,stat_type,,measuredValue
+test_stat_var,num_constraints,,0
+test_stat_var,num_constraints,,"14A. Non-financial accounts by sectors, SNA93: Total change in liabilities and net worth, Total economy, Current prices"
