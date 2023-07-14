@@ -43,4 +43,4 @@ else
 fi
 
 export GENERATE_GOLDEN=true
-go test -v ./internal/server/v2/propertyvalues/... $ARG
+go test -v ./... $ARG
