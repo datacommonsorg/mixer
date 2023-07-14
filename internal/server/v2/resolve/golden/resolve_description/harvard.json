@@ -151,7 +151,10 @@
       ]
     },
     {
-      "node": "Tohoku,Japan"
+      "node": "Tohoku,Japan",
+      "resolvedIds": [
+        "wikidataId/Q1194394"
+      ]
     },
     {
       "node": "Toukai,Japan"
