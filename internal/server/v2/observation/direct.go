@@ -177,9 +177,15 @@ func FetchDirectSQL(
 	// Construct query
 	entitiesStr := "'" + strings.Join(entities, "', '") + "'"
 	variablesStr := "'" + strings.Join(variables, "', '") + "'"
-	query := "SELECT entity, variable, date, value FROM observations " +
-		fmt.Sprintf("WHERE entity IN (%s) ", entitiesStr) +
-		fmt.Sprintf("AND variable IN (%s) ", variablesStr)
+	query := fmt.Sprintf(
+		`
+			SELECT entity, variable, date, value FROM observations
+		  WHERE entity IN (%s)
+			AND variable IN (%s)
+		`,
+		entitiesStr,
+		variablesStr,
+	)
 	if queryDate != "" && queryDate != LATEST {
 		query += fmt.Sprintf("AND date = (%s) ", queryDate)
 	}

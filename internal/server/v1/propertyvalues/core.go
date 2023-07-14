@@ -123,22 +123,22 @@ func fetchSQLite(
 	}
 	query := fmt.Sprintf(
 		`
-				WITH node_list(node) AS (
-						VALUES %s
-				),
-				prop_list(prop) AS (
-						VALUES %s
-				),
-				all_pairs AS (
-						SELECT n.node, p.prop
-						FROM node_list n
-						CROSS JOIN prop_list p
-				)
-				SELECT subject_id, predicate, object_id, object_value
-				FROM all_pairs a
-				INNER JOIN triples t ON a.node = t.%s AND a.prop = t.predicate
-				GROUP BY a.node, a.prop;
-			`,
+			WITH node_list(node) AS (
+					VALUES %s
+			),
+			prop_list(prop) AS (
+					VALUES %s
+			),
+			all_pairs AS (
+					SELECT n.node, p.prop
+					FROM node_list n
+					CROSS JOIN prop_list p
+			)
+			SELECT subject_id, predicate, object_id, object_value
+			FROM all_pairs a
+			INNER JOIN triples t ON a.node = t.%s AND a.prop = t.predicate
+			GROUP BY a.node, a.prop;
+		`,
 		nodeClause,
 		propClause,
 		matchColumn,
