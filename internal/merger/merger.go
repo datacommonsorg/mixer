@@ -18,6 +18,7 @@ package merger
 import (
 	"sort"
 
+	"github.com/datacommonsorg/mixer/internal/proto"
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/pagination"
@@ -267,6 +268,9 @@ func MergeObservation(o1, o2 *pbv2.ObservationResponse) *pbv2.ObservationRespons
 				ByEntity: map[string]*pbv2.EntityObservation{},
 			}
 		}
+		if o1.ByVariable[v].ByEntity == nil {
+			o1.ByVariable[v].ByEntity = map[string]*pbv2.EntityObservation{}
+		}
 		for e, eData := range vData.ByEntity {
 			if _, ok := o1.ByVariable[v].ByEntity[e]; !ok {
 				o1.ByVariable[v].ByEntity[e] = &pbv2.EntityObservation{
@@ -278,6 +282,9 @@ func MergeObservation(o1, o2 *pbv2.ObservationResponse) *pbv2.ObservationRespons
 				eData.OrderedFacets...,
 			)
 		}
+	}
+	if o1.Facets == nil {
+		o1.Facets = map[string]*proto.Facet{}
 	}
 	for facetID, facet := range o2.Facets {
 		o1.Facets[facetID] = facet

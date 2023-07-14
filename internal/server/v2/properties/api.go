@@ -33,16 +33,14 @@ func API(
 	nodes []string,
 	direction string,
 ) (*pbv2.NodeResponse, error) {
-	data, err := nodewrapper.GetPropertiesHelper(ctx, nodes, store)
+	data, err := nodewrapper.GetPropertiesHelper(ctx, nodes, store, direction)
 	if err != nil {
 		return nil, err
 	}
 	res := &pbv2.NodeResponse{Data: map[string]*pbv2.LinkedGraph{}}
 	if direction == util.DirectionIn {
 		for node, d := range data {
-			res.Data[node] = &pbv2.LinkedGraph{
-				Properties: d.GetInLabels(),
-			}
+			res.Data[node] = &pbv2.LinkedGraph{Properties: d}
 		}
 	} else if direction == util.DirectionOut {
 		for node, d := range data {
@@ -61,7 +59,7 @@ func API(
 					"location",
 				}
 			} else {
-				properties = d.GetOutLabels()
+				properties = d
 			}
 			res.Data[node] = &pbv2.LinkedGraph{
 				Properties: properties,

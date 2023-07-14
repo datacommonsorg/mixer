@@ -113,9 +113,6 @@ func GetEntityStatVarsHelper(
 			return nil, err
 		}
 		defer rows.Close()
-		if err != nil {
-			return nil, err
-		}
 		for rows.Next() {
 			var entity, variableStr string
 			err = rows.Scan(&entity, &variableStr)
