@@ -59,7 +59,7 @@ func PropertyValues(
 	}
 	data, pi, err := Fetch(
 		ctx,
-		store.BtGroup,
+		store,
 		[]string{node},
 		[]string{property},
 		limit,
@@ -109,7 +109,7 @@ func BulkPropertyValues(
 	}
 	data, pi, err := Fetch(
 		ctx,
-		store.BtGroup,
+		store,
 		nodes,
 		[]string{property},
 		limit,

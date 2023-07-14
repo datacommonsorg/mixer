@@ -44,7 +44,7 @@ func TestSimplePropertyValues(t *testing.T) {
 		}{
 			{
 				"name.json",
-				[]string{"geoId/06", "bio/hs"},
+				[]string{"geoId/06", "bio/hs", "NewCity", "test_stat_var"},
 				"->name",
 				0,
 				"",
@@ -86,14 +86,14 @@ func TestSimplePropertyValues(t *testing.T) {
 			},
 			{
 				"containedIn1.json",
-				[]string{"geoId/06"},
+				[]string{"geoId/06", "test_stat_var"},
 				"<-containedInPlace",
 				502,
 				"",
 			},
 			{
 				"containedIn2.json",
-				[]string{"geoId/06"},
+				[]string{"geoId/06", "test_stat_var"},
 				"<-containedInPlace",
 				500,
 				"H4sIAAAAAAAA/6zTT07zMBAF8C/+Sjsx/4JXuQWFBRcIRVQqkiEUdkiuPWosDbaUuEU9ANfjTKh0x8KJJS7w8/PTPP7IYY1+bi6nN7zQ3gVlHZq5k6Q08uMKXbfpnlulg/gnGGSCARMM/gsGI8HgSDAYCwYTwQDECPIi44soOaps2A2wxnurzPlLVCtmhO/ogmp3tW68p8Ep36Ju+du9tV1obUILr1H/4s57M+uCWpHtmv1Lg2EZhfm9XTeJVTxFxZMHawxhotmTUvoPbCWphH/HD+FUtnarwvCYE8gLVn5mfBn/vdysyOokNiu/GK974v6wy2Bp2BwOHfSg9XWFRAvcIl1N/6jYs+T7Pyx33FPseY3aO5M83G8AAAD//wEAAP//BWcvpLIEAAA=",
@@ -103,6 +103,13 @@ func TestSimplePropertyValues(t *testing.T) {
 				[]string{"dc/o/vs51dzghn79eg"},
 				"->[observationAbout, variableMeasured, value, observationDate, observationPeriod, measurementMethod, unit]",
 				0,
+				"",
+			},
+			{
+				"locationEnum.json",
+				[]string{"LocationClassificationEnum"},
+				"<-typeOf",
+				500,
 				"",
 			},
 		} {
@@ -136,7 +143,9 @@ func TestSimplePropertyValues(t *testing.T) {
 		}
 	}
 	if err := test.TestDriver(
-		"TestSimplePropertyValues", &test.TestOption{}, testSuite); err != nil {
+		"TestSimplePropertyValues",
+		&test.TestOption{UseSQLite: true}, testSuite,
+	); err != nil {
 		t.Errorf("TestDriver() = %s", err)
 	}
 }

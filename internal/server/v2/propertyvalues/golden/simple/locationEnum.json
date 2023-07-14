@@ -1,0 +1,50 @@
+{
+  "data": {
+    "LocationClassificationEnum": {
+      "arcs": {
+        "typeOf": {
+          "nodes": [
+            {
+              "name": "City",
+              "types": [
+                "Class",
+                "LocationClassificationEnum"
+              ],
+              "dcid": "City",
+              "provenanceId": "dc/base/BaseSchema"
+            },
+            {
+              "dcid": "NewCity"
+            },
+            {
+              "name": "Rural",
+              "types": [
+                "HumanSettlementClassificationEnum",
+                "LocationClassificationEnum"
+              ],
+              "dcid": "Rural",
+              "provenanceId": "dc/base/BaseSchema"
+            },
+            {
+              "name": "Suburb",
+              "types": [
+                "LocationClassificationEnum"
+              ],
+              "dcid": "Suburb",
+              "provenanceId": "dc/base/BaseSchema"
+            },
+            {
+              "name": "Town",
+              "types": [
+                "Class",
+                "LocationClassificationEnum"
+              ],
+              "dcid": "Town",
+              "provenanceId": "dc/base/BaseSchema"
+            }
+          ]
+        }
+      }
+    }
+  }
+}
