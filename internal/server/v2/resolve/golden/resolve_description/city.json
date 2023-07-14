@@ -4,7 +4,6 @@
       "node": "Mountain View",
       "resolvedIds": [
         "geoId/0649670",
-        "geoId/1553300",
         "geoId/3744770"
       ]
     },
@@ -12,6 +11,12 @@
       "node": "New York City",
       "resolvedIds": [
         "geoId/3651000"
+      ]
+    }
+    {
+      "node": "Tohoku,Japan",
+      "resolvedIds": [
+        "wikidataId/Q1194394"
       ]
     }
   ]
