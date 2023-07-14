@@ -81,13 +81,13 @@ func TestRecogPlaceMap(t *testing.T) {
 								Parts: []string{"united", "states"},
 							},
 							{
-								Parts:[]string{"usa"},
-							},
-							{
 								Parts: []string{"us"},
 							},
 							{
 								Parts: []string{"u.s."},
+							},
+							{
+								Parts:[]string{"usa"},
 							},
 						},
 						Dcid: "country/USA",
