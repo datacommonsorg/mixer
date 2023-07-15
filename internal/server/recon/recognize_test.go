@@ -96,16 +96,15 @@ func TestFindPlaceCandidates(t *testing.T) {
 			nil,
 		},
 		{
-			[]string{"Los", "Altos", "is", "a", "city", ",", "wow", "!"},
-			2,
+			[]string{"Los", "Altos", "hills", "is", "a", "city", ",", "wow", "!"},
+			3,
 			&pb.RecogPlaces{
 				Places: []*pb.RecogPlace{
 					{
 						Names: []*pb.RecogPlace_Name{
-							{Parts: []string{"los", "altos"}},
-							{Parts: []string{"los", "altos", "city"}},
+							{Parts: []string{"los", "altos", "hills"}},
 						},
-						Dcid: "geoId/Los_Altos",
+						Dcid: "geoId/Los_Altos_Hills",
 					},
 				},
 			},
