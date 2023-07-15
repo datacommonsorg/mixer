@@ -97,6 +97,14 @@ func TestResolveDescription(t *testing.T) {
 				"<-description->dcid",
 				"harvard.json",
 			},
+			{
+				[]string{
+					"Redwood City,US",
+					"Redwood City,USA",
+				},
+				"<-description->dcid",
+				"country_code.json",
+			},
 		} {
 			resp, err := mixer.V2Resolve(ctx, &pbv2.ResolveRequest{
 				Nodes:    c.nodes,

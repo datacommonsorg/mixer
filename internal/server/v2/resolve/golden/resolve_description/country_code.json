@@ -1,0 +1,16 @@
+{
+  "entities": [
+    {
+      "node": "Redwood City,US",
+      "resolvedIds": [
+        "geoId/0660102"
+      ]
+    },
+    {
+      "node": "Redwood City,USA",
+      "resolvedIds": [
+        "geoId/0660102"
+      ]
+    }
+  ]
+}
