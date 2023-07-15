@@ -13,6 +13,12 @@
             },
             {
               "dcid": "geoId/4210768"
+            },
+            {
+              "dcid": "geoId/2910468"
+            },
+            {
+              "dcid": "geoId/2111872"
             }
           ]
         },
@@ -30,6 +36,27 @@
             },
             {
               "dcid": "wikidataId/Q842472"
+            },
+            {
+              "dcid": "wikidataId/Q4711417"
+            },
+            {
+              "dcid": "geoId/72054"
+            },
+            {
+              "dcid": "geoId/3626319"
+            },
+            {
+              "dcid": "wikidataId/Q5027600"
+            },
+            {
+              "dcid": "geoId/2524120"
+            },
+            {
+              "dcid": "geoId/3927538"
+            },
+            {
+              "dcid": "geoId/2924760"
             }
           ]
         }
@@ -193,6 +220,30 @@
             },
             {
               "dcid": "wikidataId/Q55599"
+            },
+            {
+              "dcid": "geoId/2412150"
+            },
+            {
+              "dcid": "geoId/4210768"
+            },
+            {
+              "dcid": "geoId/2910468"
+            },
+            {
+              "dcid": "geoId/3568430"
+            },
+            {
+              "dcid": "geoId/0463260"
+            },
+            {
+              "dcid": "geoId/1767613"
+            },
+            {
+              "dcid": "geoId/3568500"
+            },
+            {
+              "dcid": "geoId/2111872"
             }
           ]
         },
@@ -217,6 +268,15 @@
             },
             {
               "dcid": "geoId/3568430"
+            },
+            {
+              "dcid": "geoId/0463260"
+            },
+            {
+              "dcid": "geoId/1767613"
+            },
+            {
+              "dcid": "geoId/3568500"
             }
           ]
         },
@@ -241,6 +301,30 @@
             },
             {
               "dcid": "wikidataId/Q55599"
+            },
+            {
+              "dcid": "geoId/2412150"
+            },
+            {
+              "dcid": "geoId/4210768"
+            },
+            {
+              "dcid": "geoId/2910468"
+            },
+            {
+              "dcid": "geoId/3568430"
+            },
+            {
+              "dcid": "geoId/0463260"
+            },
+            {
+              "dcid": "geoId/1767613"
+            },
+            {
+              "dcid": "geoId/3568500"
+            },
+            {
+              "dcid": "geoId/2111872"
             }
           ]
         },
@@ -265,6 +349,15 @@
             },
             {
               "dcid": "geoId/3568430"
+            },
+            {
+              "dcid": "geoId/0463260"
+            },
+            {
+              "dcid": "geoId/1767613"
+            },
+            {
+              "dcid": "geoId/3568500"
             }
           ]
         },
@@ -282,6 +375,33 @@
             },
             {
               "dcid": "geoId/1553300"
+            },
+            {
+              "dcid": "geoId/0547540"
+            },
+            {
+              "dcid": "geoId/2950438"
+            },
+            {
+              "dcid": "geoId/0649651"
+            },
+            {
+              "dcid": "geoId/5655345"
+            },
+            {
+              "dcid": "geoId/4049650"
+            },
+            {
+              "dcid": "geoId/0852350"
+            },
+            {
+              "dcid": "wikidataId/Q950305"
+            },
+            {
+              "dcid": "geoId/3550515"
+            },
+            {
+              "dcid": "geoId/5655200"
             }
           ]
         },
@@ -320,6 +440,33 @@
             },
             {
               "dcid": "geoId/1553300"
+            },
+            {
+              "dcid": "geoId/0547540"
+            },
+            {
+              "dcid": "geoId/2950438"
+            },
+            {
+              "dcid": "geoId/0649651"
+            },
+            {
+              "dcid": "geoId/5655345"
+            },
+            {
+              "dcid": "geoId/4049650"
+            },
+            {
+              "dcid": "geoId/0852350"
+            },
+            {
+              "dcid": "wikidataId/Q950305"
+            },
+            {
+              "dcid": "geoId/3550515"
+            },
+            {
+              "dcid": "geoId/5655200"
             }
           ]
         }

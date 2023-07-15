@@ -352,6 +352,7 @@ func TestRankAndTrimCandidates(t *testing.T) {
 							{Dcid: "geoId/MTV4", Population: 104},
 							{Dcid: "geoId/MTV3", Population: 103},
 							{Dcid: "geoId/MTV2", Population: 102},
+							{Dcid: "geoId/MTV1", Population: 101},
 						},
 					},
 				},
