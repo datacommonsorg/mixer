@@ -25,7 +25,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/store"
 )
 
-const maxPlaceCandidates = 3
+const maxPlaceCandidates = 15
 
 // RecognizePlaces implements API for ReconServer.RecognizePlaces.
 func RecognizePlaces(
