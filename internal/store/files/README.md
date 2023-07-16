@@ -1,6 +1,6 @@
 ## BQ SQL query for WorldGeosForPlaceRecognitionAbbreviatedNames.csv
 
-```
+```sql
 SELECT
   id,
   RTRIM(CONCAT(IFNULL(CONCAT(country_alpha_2_code, ","), ""), IFNULL(CONCAT(country_alpha_3_code, ","), "")), ",") AS abbreviatedNames
