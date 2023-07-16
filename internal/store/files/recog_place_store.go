@@ -29,11 +29,15 @@ import (
 
 //go:embed "WorldGeosForPlaceRecognition.csv"
 var recogPlaceMapCSVContent []byte // Embed CSV as []byte.
+//go:embed "WorldGeosForPlaceRecognitionAbbreviatedNames.csv"
+var recogPlaceMapAbbreviatedNamesCSVContent []byte // Embed CSV as []byte.
 
 // RecogPlaceStore contains data for recongizing places.
 type RecogPlaceStore struct {
-	// The key is the first token/word of each place.
+	// The key is the first token/word (lower case) of each place.
 	RecogPlaceMap map[string]*pb.RecogPlaces
+	// The key is abbreviated name of each place.
+	AbbreviatedNameToPlaces map[string]*pb.RecogPlaces
 	// Place DCID to all possible names.
 	DcidToNames map[string][]string
 }
@@ -46,7 +50,13 @@ func LoadRecogPlaceStore() (*RecogPlaceStore, error) {
 		return nil, err
 	}
 
+	dcidToAbbreviatedNames, err := loadAbbreviatedNames()
+	if err != nil {
+		return nil, err
+	}
+
 	recogPlaceMap := map[string]*pb.RecogPlaces{}
+	abbreviatedNameToPlaces := map[string]*pb.RecogPlaces{}
 	dcidToNames := map[string][]string{}
 	expandedDcidToNames := map[string][]string{}
 	dcidToContainingPlaces := map[string][]string{}
@@ -61,7 +71,7 @@ func LoadRecogPlaceStore() (*RecogPlaceStore, error) {
 		// Columns: dcid, mainType, name, linkedContainedInPlace, population.
 		if len(record) != 5 {
 			return nil, status.Errorf(codes.FailedPrecondition,
-				"Wrong RecogPlaces CSV record: %v", record)
+				"Wrong WorldGeosForPlaceRecognition CSV record: %v", record)
 		}
 
 		// DCID.
@@ -114,6 +124,20 @@ func LoadRecogPlaceStore() (*RecogPlaceStore, error) {
 			}
 			recogPlaceMap[key].Places = append(recogPlaceMap[key].Places, recogPlace)
 		}
+
+		// Abbreviated names.
+		if abbreviatedNames, ok := dcidToAbbreviatedNames[dcid]; ok {
+			for _, aName := range abbreviatedNames {
+				if _, ok := abbreviatedNameToPlaces[aName]; !ok {
+					abbreviatedNameToPlaces[aName] = &pb.RecogPlaces{}
+				}
+				abbreviatedNameToPlaces[aName].Places = append(abbreviatedNameToPlaces[aName].Places,
+					recogPlace)
+
+				dcidToNames[dcid] = append(dcidToNames[dcid], aName)
+				expandedDcidToNames[dcid] = append(expandedDcidToNames[dcid], aName)
+			}
+		}
 	}
 
 	// Add more names in the pattern of "selfName containingPlaceName", e.g., "Brussels Belgium".
@@ -137,7 +161,47 @@ func LoadRecogPlaceStore() (*RecogPlaceStore, error) {
 	}
 
 	return &RecogPlaceStore{
-		RecogPlaceMap: recogPlaceMap,
-		DcidToNames:   expandedDcidToNames,
+		RecogPlaceMap:           recogPlaceMap,
+		AbbreviatedNameToPlaces: abbreviatedNameToPlaces,
+		DcidToNames:             expandedDcidToNames,
 	}, nil
+}
+
+func loadAbbreviatedNames() (map[string][]string, error) {
+	reader := csv.NewReader(strings.NewReader(string(recogPlaceMapAbbreviatedNamesCSVContent)))
+	records, err := reader.ReadAll()
+	if err != nil {
+		return nil, err
+	}
+
+	res := map[string][]string{}
+
+	isFirst := true
+	for _, record := range records {
+		// Skip header.
+		if isFirst {
+			isFirst = false
+			continue
+		}
+
+		// Columns: dcid, abbreviatedNames.
+		if len(record) != 2 {
+			return nil, status.Errorf(codes.FailedPrecondition,
+				"Wrong WorldGeosForPlaceRecognitionAbbreviatedNames CSV record: %v", record)
+		}
+
+		dcid := record[0]
+		abbreviatedNames := strings.Split(record[1], ",")
+		if len(abbreviatedNames) == 0 {
+			return nil, status.Errorf(codes.FailedPrecondition,
+				"No abbreviatedNames: %v", record[1])
+		}
+
+		if _, ok := res[dcid]; !ok {
+			res[dcid] = []string{}
+		}
+		res[dcid] = append(res[dcid], abbreviatedNames...)
+	}
+
+	return res, nil
 }

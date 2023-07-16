@@ -204,6 +204,38 @@
         }
       ]
     },
+    "the birds in ME and USA are chirpy": {
+      "items": [
+        {
+          "span": "the birds in"
+        },
+        {
+          "span": "ME",
+          "places": [
+            {
+              "dcid": "geoId/23"
+            },
+            {
+              "dcid": "country/MNE"
+            }
+          ]
+        },
+        {
+          "span": "and"
+        },
+        {
+          "span": "USA",
+          "places": [
+            {
+              "dcid": "country/USA"
+            }
+          ]
+        },
+        {
+          "span": "are chirpy"
+        }
+      ]
+    },
     "the birds in San Jose California are chirpy": {
       "items": [
         {
