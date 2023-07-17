@@ -188,6 +188,40 @@
         }
       }
     },
+    "NewCity": {
+      "arcs": {
+        "name": {
+          "nodes": [
+            {
+              "types": [
+                "Thing"
+              ],
+              "value": "NewCity"
+            }
+          ]
+        },
+        "subClassOf": {
+          "nodes": [
+            {
+              "types": [
+                "Thing"
+              ],
+              "dcid": "AdministrativeArea"
+            }
+          ]
+        },
+        "typeOf": {
+          "nodes": [
+            {
+              "types": [
+                "Thing"
+              ],
+              "dcid": "Class"
+            }
+          ]
+        }
+      }
+    },
     "dc/o/vs51dzghn79eg": {
       "arcs": {
         "measurementMethod": {
