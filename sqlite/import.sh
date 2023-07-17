@@ -16,7 +16,10 @@
 # Script to import csv files into sqlite database file.
 
 sqlite3 datacommons.db <<EOF
+DROP TABLE observations;
+DROP TABLE triples;
 .headers on
 .mode csv
 .import observations.csv observations
+.import triples.csv triples
 EOF

@@ -812,6 +812,7 @@
     },
     "Count_Person": {
       "by_entity": {
+        "test_entity": {},
         "wikidataId/Q1951": {},
         "wikidataId/Q506877": {}
       }
@@ -6169,6 +6170,12 @@
     "minimumWage": {
       "by_entity": {
         "wikidataId/Q1951": {}
+      }
+    },
+    "test_var_1": {
+      "by_entity": {
+        "test_entity": {},
+        "wikidataId/Q506877": {}
       }
     }
   }

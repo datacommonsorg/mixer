@@ -25,7 +25,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/store"
 )
 
-const maxPlaceCandidates = 3
+const maxPlaceCandidates = 15
 
 // RecognizePlaces implements API for ReconServer.RecognizePlaces.
 func RecognizePlaces(
@@ -130,7 +130,9 @@ func (p *placeRecognition) findPlaceCandidates(
 	}
 
 	numTokens := 1
-	candidates := &pb.RecogPlaces{}
+	// We track the places matched by the span width.  Because we want to
+	// always prefer to return the maximally matched span.
+	candidatesByNumTokens := make(map[int]*pb.RecogPlaces)
 	for _, place := range places.GetPlaces() {
 		matchedNameSize := 0
 		for _, name := range place.GetNames() {
@@ -163,9 +165,20 @@ func (p *placeRecognition) findPlaceCandidates(
 		if numTokens < matchedNameSize {
 			numTokens = matchedNameSize
 		}
-		candidates.Places = append(candidates.Places, place)
+		candidates, ok := candidatesByNumTokens[matchedNameSize]
+		if !ok {
+			candidatesByNumTokens[matchedNameSize] = &pb.RecogPlaces{
+				Places: []*pb.RecogPlace{place},
+			}
+		} else {
+			candidates.Places = append(candidates.Places, place)
+		}
 	}
-
+	// Return the maximally matched span.
+	candidates, ok := candidatesByNumTokens[numTokens]
+	if !ok {
+		return numTokens, &pb.RecogPlaces{}
+	}
 	return numTokens, candidates
 }
 

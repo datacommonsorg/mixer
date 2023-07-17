@@ -41,6 +41,13 @@ func TestFetchContainInAll(t *testing.T) {
 			goldenFile       string
 		}{
 			{
+				[]string{
+					"test_var_1",
+				},
+				"country/USA<-containedInPlace+{typeOf:State}",
+				"US_State.json",
+			},
+			{
 				[]string{"Count_Person", "Median_Age_Person"},
 				"geoId/06<-containedInPlace+{typeOf:County}",
 				"CA_County.json",
@@ -97,7 +104,7 @@ func TestFetchContainInAll(t *testing.T) {
 	}
 	if err := test.TestDriver(
 		"FetchContainInAll",
-		&test.TestOption{},
+		&test.TestOption{UseSQLite: true},
 		testSuite,
 	); err != nil {
 		t.Errorf("TestDriver() = %s", err)

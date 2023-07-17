@@ -60,6 +60,7 @@ func TestFetchContainInLatest(t *testing.T) {
 					"Count_Person_Employed",
 					"Annual_Generation_Electricity",
 					"UnemploymentRate_Person",
+					"test_var_1",
 				},
 				"country/USA<-containedInPlace+{typeOf:State}",
 				"US_State.json",
@@ -128,7 +129,7 @@ func TestFetchContainInLatest(t *testing.T) {
 	}
 	if err := test.TestDriver(
 		"FetchContainInLatest",
-		&test.TestOption{},
+		&test.TestOption{UseSQLite: true},
 		testSuite,
 	); err != nil {
 		t.Errorf("TestDriver() = %s", err)

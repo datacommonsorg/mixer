@@ -44,6 +44,14 @@ func TestFetchContainIn(t *testing.T) {
 			goldenFile       string
 		}{
 			{
+				[]string{
+					"test_var_1",
+				},
+				"country/USA<-containedInPlace+{typeOf:State}",
+				&pbv2.FacetFilter{},
+				"US_State.json",
+			},
+			{
 				[]string{"Count_Person", "Median_Age_Person"},
 				"geoId/06<-containedInPlace+{typeOf:County}",
 				&pbv2.FacetFilter{},
@@ -96,7 +104,7 @@ func TestFetchContainIn(t *testing.T) {
 	}
 	if err := test.TestDriver(
 		"FetchContainIn",
-		&test.TestOption{},
+		&test.TestOption{UseSQLite: true},
 		testSuite,
 	); err != nil {
 		t.Errorf("TestDriver() = %s", err)
