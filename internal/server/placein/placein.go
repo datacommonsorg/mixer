@@ -17,7 +17,6 @@ package placein
 import (
 	"context"
 	"fmt"
-	"strings"
 
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"google.golang.org/protobuf/proto"
@@ -84,7 +83,7 @@ func GetPlacesIn(
 		// might make it too complicated.
 		// In custom DC, it's reasonable to ask user to provide direct containment
 		// relation.
-		parentPlacesStr := "'" + strings.Join(parentPlaces, "', '") + "'"
+
 		query := fmt.Sprintf(
 			`
 				SELECT t1.subject_id, t2.object_id
@@ -92,15 +91,16 @@ func GetPlacesIn(
 				JOIN triples t2
 				ON t1.subject_id = t2.subject_id
 				WHERE t1.predicate = 'typeOf'
-				AND t1.object_id = '%s'
+				AND t1.object_id = ?
 				AND t2.predicate = 'containedInPlace'
 				AND t2.object_id IN (%s);
 			`,
-			childPlaceType,
-			parentPlacesStr,
+			util.SQLInParam(len(parentPlaces)),
 		)
+		args := []string{childPlaceType}
+		args = append(args, parentPlaces...)
 		// Execute query
-		rows, err := store.SQLiteClient.Query(query)
+		rows, err := store.SQLiteClient.Query(query, util.ConvertArgs(args)...)
 		if err != nil {
 			return nil, err
 		}

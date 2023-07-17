@@ -18,12 +18,12 @@ package observation
 import (
 	"context"
 	"fmt"
-	"strings"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
+	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/protobuf/proto"
 )
 
@@ -70,18 +70,6 @@ func Existence(
 		}
 	}
 	if store.SQLiteClient != nil {
-		// Entity clause
-		entityValues := make([]string, len(entities))
-		for i, entity := range entities {
-			entityValues[i] = fmt.Sprintf("('%s')", entity)
-		}
-		entityClause := strings.Join(entityValues, ", ")
-		// Variable clause
-		variableValues := make([]string, len(variables))
-		for i, variable := range variables {
-			variableValues[i] = fmt.Sprintf("('%s')", variable)
-		}
-		variableClause := strings.Join(variableValues, ", ")
 		// Query
 		query := fmt.Sprintf(
 			`
@@ -101,11 +89,14 @@ func Existence(
 				LEFT JOIN observations o ON a.entity = o.entity AND a.variable = o.variable
 				GROUP BY a.entity, a.variable;
 			`,
-			entityClause,
-			variableClause,
+			util.SQLValuesParam(len(entities)),
+			util.SQLValuesParam(len(variables)),
 		)
+		args := entities
+		args = append(args, variables...)
+
 		// Execute query
-		rows, err := store.SQLiteClient.Query(query)
+		rows, err := store.SQLiteClient.Query(query, util.ConvertArgs(args)...)
 		if err != nil {
 			return nil, err
 		}

@@ -21,7 +21,6 @@ import (
 	"fmt"
 	"sort"
 	"strconv"
-	"strings"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
@@ -103,18 +102,6 @@ func fetchSQLite(
 	if sqliteClient == nil {
 		return nil, nil
 	}
-	// Node clause
-	nodeValues := make([]string, len(nodes))
-	for i, node := range nodes {
-		nodeValues[i] = fmt.Sprintf("('%s')", node)
-	}
-	nodeClause := strings.Join(nodeValues, ", ")
-	// Property clause
-	propValues := make([]string, len(properties))
-	for i, prop := range properties {
-		propValues[i] = fmt.Sprintf("('%s')", prop)
-	}
-	propClause := strings.Join(propValues, ", ")
 	var matchColumn string
 	if direction == util.DirectionOut {
 		matchColumn = "subject_id"
@@ -139,12 +126,16 @@ func fetchSQLite(
 			INNER JOIN triples t ON a.node = t.%s AND a.prop = t.predicate
 			GROUP BY a.node, a.prop;
 		`,
-		nodeClause,
-		propClause,
+		util.SQLValuesParam(len(nodes)),
+		util.SQLValuesParam(len(properties)),
 		matchColumn,
 	)
+	args := []string{}
+	args = append(args, nodes...)
+	args = append(args, properties...)
+	args = append(args, matchColumn)
 	// Execute query
-	rows, err := sqliteClient.Query(query)
+	rows, err := sqliteClient.Query(query, util.ConvertArgs(args)...)
 	if err != nil {
 		return nil, err
 	}
