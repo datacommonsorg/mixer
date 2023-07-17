@@ -115,9 +115,11 @@ protoc --proto_path=proto \
   proto/*.proto proto/**/*.proto
 ```
 
-Assuming mixer gRPC server is at `localhost:12345`, run the following from repo
-root to spin up envoy proxy. This exposes the http mixer service at
-`localhost:8081`.
+Start mixer gRPC server (running at `localhost:12345`) by following `go run
+cmd/main.go` as instructed in the previous section.
+
+In a new shell, run the following from repo root to spin up envoy proxy. This
+exposes the http mixer service at `localhost:8081`.
 
 ```sh
 envoy --config-path esp/envoy-config.yaml
