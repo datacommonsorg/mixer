@@ -10315,6 +10315,17 @@
         }
       }
     },
+    "NewCity": {
+      "arcs": {
+        "rangeIncludes": {
+          "nodes": [
+            {
+              "dcid": "administrativeCapital"
+            }
+          ]
+        }
+      }
+    },
     "dummy": {}
   },
   "nextToken": "H4sIAAAAAAAA/2zOQevCMAwF8P+ybsvK/zAi+IHUu8JAvEkdUQprO9rs4LeXxauXHyHv8J69WTr4NKeXn9w8Ljz5wNG28l74/PyV0R8BVgQIBFgToCGDzbB9WgLsCBAJsLfF/h/TGuV+4VxStPvArqyZA0c5cUzBRycp290oTnyRreTqsnePmQmGigxW6veuVaM2aqt2KuqA/gMAAP//AQAA//9PIDaazwAAAA=="
