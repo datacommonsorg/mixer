@@ -69,6 +69,24 @@
         }
       ]
     },
+    "I went to Middle Point, USA": {
+      "items": [
+        {
+          "span": "I went to"
+        },
+        {
+          "span": "Middle Point , USA",
+          "places": [
+            {
+              "dcid": "country/USA"
+            },
+            {
+              "dcid": "geoId/3949728"
+            }
+          ]
+        }
+      ]
+    },
     "crime in new york state": {
       "items": [
         {

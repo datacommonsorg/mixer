@@ -116,7 +116,7 @@ type placeRecognition struct {
 func (p *placeRecognition) detectPlaces(
 	query string) *pb.RecognizePlacesResponse_Items {
 	tokenSpans := p.replaceTokensWithCandidates(tokenize(query))
-	candidates := rankAndTrimCandidates(combineContainedIn(tokenSpans))
+	candidates := p.rankAndTrimCandidates(combineContainedIn(tokenSpans))
 	return formatResponse(query, candidates)
 }
 
@@ -196,18 +196,10 @@ func (p *placeRecognition) replaceTokensWithCandidates(tokens []string) *pb.Toke
 	for len(tokens) > 0 {
 		numTokens, candidates := p.findPlaceCandidates(tokens)
 		if numTokens > 0 {
-			curTokens := tokens[0:numTokens]
-			curTokensStr := strings.ToLower(strings.Join(curTokens, " "))
-			if _, ok := p.recogPlaceStore.BogusPlaceNames[curTokensStr]; ok && !p.resolveBogusName {
-				res.Spans = append(res.Spans, &pb.TokenSpans_Span{
-					Tokens: curTokens,
-				})
-			} else {
-				res.Spans = append(res.Spans, &pb.TokenSpans_Span{
-					Tokens: tokens[0:numTokens],
-					Places: candidates.GetPlaces(),
-				})
-			}
+			res.Spans = append(res.Spans, &pb.TokenSpans_Span{
+				Tokens: tokens[0:numTokens],
+				Places: candidates.GetPlaces(),
+			})
 			tokens = tokens[numTokens:]
 		} else {
 			res.Spans = append(res.Spans, &pb.TokenSpans_Span{
@@ -292,10 +284,18 @@ func combineContainedIn(tokenSpans *pb.TokenSpans) *pb.TokenSpans {
 	return res
 }
 
-func rankAndTrimCandidates(tokenSpans *pb.TokenSpans) *pb.TokenSpans {
+func (p *placeRecognition) rankAndTrimCandidates(tokenSpans *pb.TokenSpans) *pb.TokenSpans {
 	res := &pb.TokenSpans{}
 	for _, span := range tokenSpans.GetSpans() {
 		if len(span.GetPlaces()) == 0 {
+			res.Spans = append(res.Spans, span)
+			continue
+		}
+
+		// Deal with bogus name (not followed by an ancestor place).
+		spanStr := strings.ToLower(strings.Join(span.Tokens, " "))
+		if _, ok := p.recogPlaceStore.BogusPlaceNames[spanStr]; ok && !p.resolveBogusName {
+			span.Places = nil
 			res.Spans = append(res.Spans, span)
 			continue
 		}
