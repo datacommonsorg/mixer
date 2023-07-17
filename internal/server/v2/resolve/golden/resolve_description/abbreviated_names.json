@@ -1,6 +1,12 @@
 {
   "entities": [
     {
+      "node": "CA US",
+      "resolvedIds": [
+        "geoId/06"
+      ]
+    },
+    {
       "node": "California, USA",
       "resolvedIds": [
         "geoId/06",
