@@ -53,7 +53,7 @@ func TestRecognizePlaces(t *testing.T) {
 					"the birds in San Jose, California are chirpy",
 					"the birds in San Jose California are chirpy",
 					"the birds in San Jose, Mountain View and Sunnyvale are chirpy",
-					"the birds in ME and USA are chirpy",
+					"the birds in ME and USA are chirpy, according to me",
 				},
 				"result.json",
 			},
