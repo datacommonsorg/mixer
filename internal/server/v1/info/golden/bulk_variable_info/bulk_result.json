@@ -5,7 +5,7 @@
       "info": {
         "placeTypeSummary": {
           "AdministrativeArea": {
-            "placeCount": 320,
+            "placeCount": 321,
             "topPlaces": [
               {
                 "dcid": "wikidataId/Q1088815",
@@ -43,23 +43,23 @@
             "maxValue": 50483000
           },
           "AdministrativeArea2": {
-            "placeCount": 6260,
+            "placeCount": 6311,
             "topPlaces": [
               {
                 "dcid": "wikidataId/Q1143712",
                 "name": "Kanagawa-ku"
               },
               {
-                "dcid": "wikidataId/Q2360428",
-                "name": "Tijuana Municipality"
+                "dcid": "wikidataId/Q2346838",
+                "name": "City of Johannesburg Metropolitan Municipality"
               },
               {
-                "dcid": "wikidataId/Q741771",
-                "name": "Iztapalapa"
+                "dcid": "wikidataId/Q1185115",
+                "name": "City of Cape Town"
               }
             ],
             "minValue": 53,
-            "maxValue": 1098014
+            "maxValue": 1958842
           },
           "AdministrativeArea3": {
             "placeCount": 26,
@@ -2549,6 +2549,74 @@
             "observationCount": 56654,
             "timeSeriesCount": 2463
           },
+          "dc/base/SouthAfrica_Census": {
+            "importName": "SouthAfrica_Census",
+            "releaseFrequency": "P1Y",
+            "seriesSummary": [
+              {
+                "seriesKey": {},
+                "earliestDate": "2001",
+                "latestDate": "2010",
+                "placeTypeSummary": {
+                  "AdministrativeArea": {
+                    "placeCount": 1,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q385802",
+                        "name": "Motheo"
+                      }
+                    ],
+                    "minValue": 381929,
+                    "maxValue": 437891
+                  },
+                  "AdministrativeArea1": {
+                    "placeCount": 9,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q81725",
+                        "name": "KwaZulu-Natal"
+                      },
+                      {
+                        "dcid": "wikidataId/Q127167",
+                        "name": "Western Cape"
+                      },
+                      {
+                        "dcid": "wikidataId/Q130840",
+                        "name": "Eastern Cape"
+                      }
+                    ],
+                    "minValue": 538659,
+                    "maxValue": 5597000
+                  },
+                  "AdministrativeArea2": {
+                    "placeCount": 51,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q2346838",
+                        "name": "City of Johannesburg Metropolitan Municipality"
+                      },
+                      {
+                        "dcid": "wikidataId/Q1185115",
+                        "name": "City of Cape Town"
+                      },
+                      {
+                        "dcid": "wikidataId/Q311544",
+                        "name": "eThekwini"
+                      }
+                    ],
+                    "minValue": 29465,
+                    "maxValue": 1958842
+                  }
+                },
+                "minValue": 29465,
+                "maxValue": 5597000,
+                "observationCount": 194,
+                "timeSeriesCount": 61
+              }
+            ],
+            "observationCount": 194,
+            "timeSeriesCount": 61
+          },
           "dc/base/USCensusPEP_Sex": {
             "importName": "USCensusPEP_Sex",
             "releaseFrequency": "P1Y",
@@ -2643,22 +2711,22 @@
       "info": {
         "placeTypeSummary": {
           "AdministrativeArea1": {
-            "placeCount": 47,
+            "placeCount": 56,
             "topPlaces": [
               {
-                "dcid": "wikidataId/Q3335223",
-                "name": "Nairobi County"
+                "dcid": "wikidataId/Q81725",
+                "name": "KwaZulu-Natal"
               },
               {
-                "dcid": "wikidataId/Q2575594",
-                "name": "Kiambu County"
+                "dcid": "wikidataId/Q127167",
+                "name": "Western Cape"
               },
               {
-                "dcid": "wikidataId/Q1852202",
-                "name": "Nakuru County"
+                "dcid": "wikidataId/Q130840",
+                "name": "Eastern Cape"
               }
             ],
-            "minValue": 2.5,
+            "minValue": 0.6,
             "maxValue": 8
           },
           "City": {
@@ -2913,6 +2981,46 @@
             ],
             "observationCount": 48,
             "timeSeriesCount": 48
+          },
+          "dc/base/SouthAfrica_Census": {
+            "importName": "SouthAfrica_Census",
+            "releaseFrequency": "P1Y",
+            "seriesSummary": [
+              {
+                "seriesKey": {
+                  "unit": "Percent"
+                },
+                "earliestDate": "1998",
+                "latestDate": "2011",
+                "placeTypeSummary": {
+                  "AdministrativeArea1": {
+                    "placeCount": 9,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q81725",
+                        "name": "KwaZulu-Natal"
+                      },
+                      {
+                        "dcid": "wikidataId/Q127167",
+                        "name": "Western Cape"
+                      },
+                      {
+                        "dcid": "wikidataId/Q130840",
+                        "name": "Eastern Cape"
+                      }
+                    ],
+                    "minValue": 0.6,
+                    "maxValue": 3.9
+                  }
+                },
+                "minValue": 0.6,
+                "maxValue": 3.9,
+                "observationCount": 36,
+                "timeSeriesCount": 9
+              }
+            ],
+            "observationCount": 36,
+            "timeSeriesCount": 9
           },
           "dc/base/WorldDevelopmentIndicators": {
             "importName": "WorldDevelopmentIndicators",

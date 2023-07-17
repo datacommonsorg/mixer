@@ -7093,6 +7093,20 @@
         "StatisticalVariable"
       ],
       "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "dc/topic/Population",
+      "subjectName": "Population",
+      "subjectTypes": [
+        "Topic"
+      ],
+      "predicate": "relevantVariable",
+      "objectId": "Count_Person",
+      "objectName": "Total Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
     }
   ],
   "Count_Person_Female": [
@@ -8779,6 +8793,20 @@
         "StatisticalVariable"
       ],
       "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "dc/svpg/Population_PopulationbyGender",
+      "subjectName": "Population by Gender",
+      "subjectTypes": [
+        "StatVarPeerGroup"
+      ],
+      "predicate": "member",
       "objectId": "Count_Person_Female",
       "objectName": "Female Population",
       "objectTypes": [

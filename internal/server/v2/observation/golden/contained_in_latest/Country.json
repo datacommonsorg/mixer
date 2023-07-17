@@ -5341,6 +5341,15 @@
               ]
             },
             {
+              "facet_id": "1897073702",
+              "observations": [
+                {
+                  "date": "2018",
+                  "value": 57725605.59
+                }
+              ]
+            },
+            {
               "facet_id": "1151455814",
               "observations": [
                 {
@@ -5457,6 +5466,10 @@
       "import_name": "UNData",
       "provenance_url": "http://data.un.org",
       "measurement_method": "UNData"
+    },
+    "1897073702": {
+      "import_name": "SouthAfrica_Census",
+      "provenance_url": "https://southafrica.opendataforafrica.org/"
     },
     "192455881": {
       "import_name": "Israel_Census",

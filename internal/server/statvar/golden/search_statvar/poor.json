@@ -1773,6 +1773,24 @@
       ]
     },
     {
+      "dcid": "dc/g/Person_MedicalCondition-PoorGeneralHealth",
+      "name": "Person With Medical Condition = Poor General Health",
+      "statVars": [
+        {
+          "name": "Percentage of Population With Poor General Health",
+          "dcid": "Percent_Person_18OrMoreYears_WithPoorGeneralHealth"
+        },
+        {
+          "name": "Lower Confidence Interval Limit, Prevalence of Physical Health Not Good",
+          "dcid": "LowerConfidenceIntervalLimit_Percent_Person_18OrMoreYears_WithPoorGeneralHealth"
+        },
+        {
+          "name": "Upper Confidence Interval Limit, Prevalence of Physical Health Not Good",
+          "dcid": "UpperConfidenceIntervalLimit_Percent_Person_18OrMoreYears_WithPoorGeneralHealth"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/Household_BenefitsStatus-WithFoodStampsInThePast12Months_RecentWorkStatus",
       "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Recent Work Status",
       "statVars": [

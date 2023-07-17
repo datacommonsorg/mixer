@@ -8026,6 +8026,18 @@
               "provenanceId": "dc/base/HumanReadableStatVars"
             }
           ]
+        },
+        "relevantVariable": {
+          "nodes": [
+            {
+              "name": "Population",
+              "types": [
+                "Topic"
+              ],
+              "dcid": "dc/topic/Population",
+              "provenanceId": "dc/base/HumanReadableStatVars"
+            }
+          ]
         }
       }
     },

@@ -5907,6 +5907,11 @@
               "facet": "3981252704"
             },
             {
+              "date": "2018",
+              "value": 57725605.59,
+              "facet": "1897073702"
+            },
+            {
               "date": "2019",
               "value": 58775000,
               "facet": "1151455814"
@@ -6031,6 +6036,10 @@
       "import_name": "UNData",
       "provenance_url": "http://data.un.org",
       "measurement_method": "UNData"
+    },
+    "1897073702": {
+      "import_name": "SouthAfrica_Census",
+      "provenance_url": "https://southafrica.opendataforafrica.org/"
     },
     "192455881": {
       "import_name": "Israel_Census",

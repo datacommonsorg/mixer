@@ -6146,6 +6146,11 @@
         "wikidataId/Q506877": {}
       }
     },
+    "Mean_Visibility": {
+      "by_entity": {
+        "wikidataId/Q506877": {}
+      }
+    },
     "Min_Rainfall": {
       "by_entity": {
         "wikidataId/Q506877": {}
