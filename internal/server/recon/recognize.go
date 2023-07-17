@@ -32,7 +32,8 @@ func RecognizePlaces(
 	ctx context.Context, in *pb.RecognizePlacesRequest, store *store.Store,
 ) (*pb.RecognizePlacesResponse, error) {
 	pr := &placeRecognition{
-		recogPlaceMap: store.RecogPlaceStore.RecogPlaceMap,
+		recogPlaceMap:           store.RecogPlaceStore.RecogPlaceMap,
+		abbreviatedNameToPlaces: store.RecogPlaceStore.AbbreviatedNameToPlaces,
 	}
 
 	type queryItems struct {
@@ -107,7 +108,11 @@ func tokenize(query string) []string {
 }
 
 type placeRecognition struct {
+	// The key is the first token/word (lower case) of each place.
 	recogPlaceMap map[string]*pb.RecogPlaces
+	// The key is abbreviated name of each place.
+	// NOTE: the key is case sensitive.
+	abbreviatedNameToPlaces map[string]*pb.RecogPlaces
 }
 
 func (p *placeRecognition) detectPlaces(
@@ -121,6 +126,12 @@ func (p *placeRecognition) findPlaceCandidates(
 	tokens []string) (int, *pb.RecogPlaces) {
 	if len(tokens) == 0 {
 		return 0, nil
+	}
+
+	// Check if the first token match any abbreviated name.
+	// Note: abbreviated names are case-sensitive.
+	if places, ok := p.abbreviatedNameToPlaces[tokens[0]]; ok {
+		return 1, places
 	}
 
 	key := strings.ToLower(tokens[0])

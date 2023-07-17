@@ -42,7 +42,7 @@ func TestTripleOut(t *testing.T) {
 		}{
 			{
 				"result.json",
-				[]string{"Country", "BiologicalSpecimen", "Count_Person", "dc/o/vs51dzghn79eg"},
+				[]string{"Country", "BiologicalSpecimen", "Count_Person", "dc/o/vs51dzghn79eg", "NewCity"},
 				"->*",
 			},
 		} {
@@ -74,7 +74,7 @@ func TestTripleOut(t *testing.T) {
 		}
 	}
 	if err := test.TestDriver(
-		"TestTripleOut", &test.TestOption{}, testSuite); err != nil {
+		"TestTripleOut", &test.TestOption{UseSQLite: true}, testSuite); err != nil {
 		t.Errorf("TestDriver() = %s", err)
 	}
 }
