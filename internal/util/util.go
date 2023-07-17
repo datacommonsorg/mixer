@@ -553,3 +553,21 @@ func StringSetToSlice(s map[string]struct{}) []string {
 	}
 	return res
 }
+
+// Convert args to be usable in SQL query function.
+func ConvertArgs(args []string) []interface{} {
+	newArgs := make([]interface{}, len(args))
+	for i, v := range args {
+		newArgs[i] = v
+	}
+	return newArgs
+}
+
+func SQLInParam(n int) string {
+	return strings.Join(strings.Split(strings.Repeat("?", n), ""), ", ")
+}
+
+func SQLValuesParam(n int) string {
+	str := strings.Repeat("(?),", n)
+	return str[:len(str)-1]
+}

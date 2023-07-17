@@ -10264,6 +10264,9 @@
               "provenanceId": "dc/base/WikidataOtherIdGeos"
             },
             {
+              "dcid": "water_country"
+            },
+            {
               "name": "Turkish Republic of Northern Cyprus",
               "types": [
                 "Country"
