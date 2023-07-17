@@ -299,17 +299,3 @@ func (s *Server) ResolveCoordinates(
 ) (*pb.ResolveCoordinatesResponse, error) {
 	return recon.ResolveCoordinates(ctx, in, s.store)
 }
-
-// FindEntities implements API for Mixer.FindEntities.
-func (s *Server) FindEntities(
-	ctx context.Context, in *pb.FindEntitiesRequest,
-) (*pb.FindEntitiesResponse, error) {
-	return recon.FindEntities(ctx, in, s.store, s.mapsClient)
-}
-
-// BulkFindEntities implements API for Mixer.BulkFindEntities.
-func (s *Server) BulkFindEntities(
-	ctx context.Context, in *pb.BulkFindEntitiesRequest,
-) (*pb.BulkFindEntitiesResponse, error) {
-	return recon.BulkFindEntities(ctx, in, s.store, s.mapsClient)
-}

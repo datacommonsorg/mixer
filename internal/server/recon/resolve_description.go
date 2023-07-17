@@ -40,40 +40,13 @@ type entityInfo struct {
 	typeOf      string
 }
 
-// FindEntities implements API for Mixer.FindEntities.
-func FindEntities(
+// ResolveDescription resolves descriptions to DCIDs.
+func ResolveDescription(
 	ctx context.Context,
-	in *pb.FindEntitiesRequest,
+	in *pb.ResolveDescriptionRequest,
 	store *store.Store,
 	mapsClient *maps.Client,
-) (*pb.FindEntitiesResponse, error) {
-	bulkResp, err := BulkFindEntities(ctx,
-		&pb.BulkFindEntitiesRequest{
-			Entities: []*pb.BulkFindEntitiesRequest_Entity{
-				{
-					Description: in.GetDescription(),
-					Type:        in.GetType(),
-				},
-			},
-		},
-		store,
-		mapsClient)
-	if err != nil {
-		return nil, err
-	}
-
-	return &pb.FindEntitiesResponse{
-		Dcids: bulkResp.GetEntities()[0].GetDcids(),
-	}, nil
-}
-
-// BulkFindEntities implements API for Mixer.BulkFindEntities.
-func BulkFindEntities(
-	ctx context.Context,
-	in *pb.BulkFindEntitiesRequest,
-	store *store.Store,
-	mapsClient *maps.Client,
-) (*pb.BulkFindEntitiesResponse, error) {
+) (*pb.ResolveDescriptionResponse, error) {
 	if l := len(in.GetEntities()); l == 0 {
 		return nil, fmt.Errorf("empty input")
 	} else if l > maxNumEntitiesPerRequest {
@@ -106,9 +79,9 @@ func BulkFindEntities(
 	}
 
 	// Assemble results.
-	resp := &pb.BulkFindEntitiesResponse{}
+	resp := &pb.ResolveDescriptionResponse{}
 	for entityInfo, dcids := range entityInfoToDCIDs {
-		entity := &pb.BulkFindEntitiesResponse_Entity{
+		entity := &pb.ResolveDescriptionResponse_Entity{
 			Description: entityInfo.description,
 			Type:        entityInfo.typeOf,
 		}

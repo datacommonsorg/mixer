@@ -615,25 +615,6 @@ service Mixer {
   }
 
   // V2 [TODO]
-  // Find entities from a description, with an optional filter on type.
-  rpc FindEntities(FindEntitiesRequest) returns (FindEntitiesResponse) {
-    option (google.api.http) = {
-      get : "/v1/find/entities"
-      additional_bindings : {post : "/v1/find/entities" body : "*"}
-    };
-  }
-
-  // V2 [TODO]
-  // Find entities from descriptions, with optional filters on types.
-  rpc BulkFindEntities(BulkFindEntitiesRequest)
-      returns (BulkFindEntitiesResponse) {
-    option (google.api.http) = {
-      post : "/v1/bulk/find/entities"
-      body : "*"
-    };
-  }
-
-  // V2 [TODO]
   // Recognize places from a NL query.
   rpc RecognizePlaces(RecognizePlacesRequest)
       returns (RecognizePlacesResponse) {

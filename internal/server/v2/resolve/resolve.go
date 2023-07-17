@@ -102,22 +102,22 @@ func Description(
 	nodes []string,
 	typeOfs []string,
 ) (*pbv2.ResolveResponse, error) {
-	entities := []*pb.BulkFindEntitiesRequest_Entity{}
+	entities := []*pb.ResolveDescriptionRequest_Entity{}
 	for _, node := range nodes {
 		if len(typeOfs) == 0 {
-			entities = append(entities, &pb.BulkFindEntitiesRequest_Entity{
+			entities = append(entities, &pb.ResolveDescriptionRequest_Entity{
 				Description: node,
 			})
 		} else {
 			for _, typeOf := range typeOfs {
-				entities = append(entities, &pb.BulkFindEntitiesRequest_Entity{
+				entities = append(entities, &pb.ResolveDescriptionRequest_Entity{
 					Description: node,
 					Type:        typeOf,
 				})
 			}
 		}
 	}
-	data, err := recon.BulkFindEntities(ctx, &pb.BulkFindEntitiesRequest{
+	data, err := recon.ResolveDescription(ctx, &pb.ResolveDescriptionRequest{
 		Entities: entities,
 	}, store, mapsClient)
 	if err != nil {
