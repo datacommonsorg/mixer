@@ -1,5 +1,7 @@
 ## BQ SQL query for WorldGeosForPlaceRecognitionAbbreviatedNames.csv
 
+TODO(ws|pradh): We could also expand to isoCode for AA1's which has codes like "US-CA" from which we parse out the last two chars, so TN (for Tamil Nadu state), SH (for shanghai). But we might prefer US states if we do that.
+
 ```sql
 SELECT
   id,

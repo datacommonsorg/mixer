@@ -111,6 +111,7 @@ type placeRecognition struct {
 	// The key is the first token/word (lower case) of each place.
 	recogPlaceMap map[string]*pb.RecogPlaces
 	// The key is abbreviated name of each place.
+	// NOTE: the key is case sensitive.
 	abbreviatedNameToPlaces map[string]*pb.RecogPlaces
 }
 

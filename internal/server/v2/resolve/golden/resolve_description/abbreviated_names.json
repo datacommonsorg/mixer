@@ -32,6 +32,12 @@
         "geoId/5655200",
         "geoId/5655345"
       ]
+    },
+    {
+      "node": "Sunnyvale CA",
+      "resolvedIds": [
+        "geoId/0677000"
+      ]
     }
   ]
 }

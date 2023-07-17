@@ -101,6 +101,7 @@ func TestResolveDescription(t *testing.T) {
 				[]string{
 					"California, USA",
 					"Mountain View, US",
+					"Sunnyvale CA",
 					"ME",
 				},
 				"<-description->dcid",
