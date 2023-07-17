@@ -16,6 +16,8 @@ package placein
 
 import (
 	"context"
+	"fmt"
+	"strings"
 
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"google.golang.org/protobuf/proto"
@@ -40,37 +42,71 @@ func GetPlacesIn(
 	if err := util.CheckValidDCIDs(parentPlaces); err != nil {
 		return nil, err
 	}
-
-	// Place relations are from base geo imports. Only trust the base cache.
-	btDataList, err := bigtable.Read(
-		ctx,
-		store.BtGroup,
-		bigtable.BtPlacesInPrefix,
-		[][]string{parentPlaces, {childPlaceType}},
-		func(jsonRaw []byte) (interface{}, error) {
-			var containedInPlaces pb.ContainedPlaces
-			err := proto.Unmarshal(jsonRaw, &containedInPlaces)
-			return containedInPlaces.Dcids, err
-		},
-	)
-	if err != nil {
-		return nil, err
-	}
 	result := map[string][]string{}
-	processed := map[string]struct{}{}
-	for _, parent := range parentPlaces {
-		if _, ok := processed[parent]; ok {
-			continue
+
+	if store.BtGroup != nil {
+		// Place relations are from base geo imports. Only trust the base cache.
+		btDataList, err := bigtable.Read(
+			ctx,
+			store.BtGroup,
+			bigtable.BtPlacesInPrefix,
+			[][]string{parentPlaces, {childPlaceType}},
+			func(jsonRaw []byte) (interface{}, error) {
+				var containedInPlaces pb.ContainedPlaces
+				err := proto.Unmarshal(jsonRaw, &containedInPlaces)
+				return containedInPlaces.Dcids, err
+			},
+		)
+		if err != nil {
+			return nil, err
 		}
-		// Go through (ordered) import groups one by one, stop when data is found.
-		for _, btData := range btDataList {
-			for _, row := range btData {
-				if row.Parts[0] == parent {
-					result[parent] = row.Data.([]string)
-					processed[parent] = struct{}{}
-					break
+		processed := map[string]struct{}{}
+		for _, parent := range parentPlaces {
+			if _, ok := processed[parent]; ok {
+				continue
+			}
+			// Go through (ordered) import groups one by one, stop when data is found.
+			for _, btData := range btDataList {
+				for _, row := range btData {
+					if row.Parts[0] == parent {
+						result[parent] = row.Data.([]string)
+						processed[parent] = struct{}{}
+						break
+					}
 				}
 			}
+		}
+	}
+
+	if store.SQLiteClient != nil {
+		parentPlacesStr := "'" + strings.Join(parentPlaces, "', '") + "'"
+		query := fmt.Sprintf(
+			`
+				SELECT t1.subject_id, t2.object_id
+				FROM triples t1
+				JOIN triples t2
+				ON t1.subject_id = t2.subject_id
+				WHERE t1.predicate = 'typeOf'
+				AND t1.object_id = '%s'
+				AND t2.predicate = 'containedInPlace'
+				AND t2.object_id IN (%s);
+			`,
+			childPlaceType,
+			parentPlacesStr,
+		)
+		// Execute query
+		rows, err := store.SQLiteClient.Query(query)
+		if err != nil {
+			return nil, err
+		}
+		defer rows.Close()
+		for rows.Next() {
+			var child, parent string
+			err = rows.Scan(&child, &parent)
+			if err != nil {
+				return nil, err
+			}
+			result[parent] = append(result[parent], child)
 		}
 	}
 	return result, nil

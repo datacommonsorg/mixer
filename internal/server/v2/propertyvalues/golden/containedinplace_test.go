@@ -50,6 +50,11 @@ func TestContainedInPlace(t *testing.T) {
 				[]string{"geoId/06"},
 				"<-containedInPlace+{typeOf:County}",
 			},
+			{
+				"country.json",
+				[]string{"Earth"},
+				"<-containedInPlace+{typeOf:Country}",
+			},
 		} {
 			req := &pbv2.NodeRequest{
 				Nodes:    c.nodes,
@@ -79,7 +84,10 @@ func TestContainedInPlace(t *testing.T) {
 		}
 	}
 	if err := test.TestDriver(
-		"TestContainedInPlace", &test.TestOption{}, testSuite); err != nil {
+		"TestContainedInPlace",
+		&test.TestOption{UseSQLite: true},
+		testSuite,
+	); err != nil {
 		t.Errorf("TestDriver() = %s", err)
 	}
 }
