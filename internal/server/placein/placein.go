@@ -79,6 +79,11 @@ func GetPlacesIn(
 	}
 
 	if store.SQLiteClient != nil {
+		// Only queries based on direct containedInPlace for now.
+		// This could extend to more hops and even link with BT cache data, but that
+		// might make it too complicated.
+		// In custom DC, it's reasonable to ask user to provide direct containment
+		// relation.
 		parentPlacesStr := "'" + strings.Join(parentPlaces, "', '") + "'"
 		query := fmt.Sprintf(
 			`
