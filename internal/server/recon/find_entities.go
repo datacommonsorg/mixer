@@ -233,7 +233,10 @@ func resolveWithRecognizePlaces(
 		return false
 	}
 
-	req := &pb.RecognizePlacesRequest{Queries: []string{}}
+	req := &pb.RecognizePlacesRequest{
+		Queries:          []string{},
+		ResolveBogusName: true,
+	}
 	descriptionToType := map[string]string{}
 	for e := range entityInfoSet {
 		req.Queries = append(req.Queries, e.description)

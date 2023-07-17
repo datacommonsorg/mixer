@@ -23,17 +23,18 @@ import (
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/store"
+	"github.com/datacommonsorg/mixer/internal/store/files"
 )
 
 const maxPlaceCandidates = 15
 
-// RecognizePlaces implements API for ReconServer.RecognizePlaces.
+// RecognizePlaces implements API for Mixer.RecognizePlaces.
 func RecognizePlaces(
 	ctx context.Context, in *pb.RecognizePlacesRequest, store *store.Store,
 ) (*pb.RecognizePlacesResponse, error) {
 	pr := &placeRecognition{
-		recogPlaceMap:           store.RecogPlaceStore.RecogPlaceMap,
-		abbreviatedNameToPlaces: store.RecogPlaceStore.AbbreviatedNameToPlaces,
+		recogPlaceStore:  store.RecogPlaceStore,
+		resolveBogusName: in.GetResolveBogusName(),
 	}
 
 	type queryItems struct {
@@ -108,11 +109,8 @@ func tokenize(query string) []string {
 }
 
 type placeRecognition struct {
-	// The key is the first token/word (lower case) of each place.
-	recogPlaceMap map[string]*pb.RecogPlaces
-	// The key is abbreviated name of each place.
-	// NOTE: the key is case sensitive.
-	abbreviatedNameToPlaces map[string]*pb.RecogPlaces
+	recogPlaceStore  *files.RecogPlaceStore
+	resolveBogusName bool
 }
 
 func (p *placeRecognition) detectPlaces(
@@ -130,12 +128,12 @@ func (p *placeRecognition) findPlaceCandidates(
 
 	// Check if the first token match any abbreviated name.
 	// Note: abbreviated names are case-sensitive.
-	if places, ok := p.abbreviatedNameToPlaces[tokens[0]]; ok {
+	if places, ok := p.recogPlaceStore.AbbreviatedNameToPlaces[tokens[0]]; ok {
 		return 1, places
 	}
 
 	key := strings.ToLower(tokens[0])
-	places, ok := p.recogPlaceMap[key]
+	places, ok := p.recogPlaceStore.RecogPlaceMap[key]
 	if !ok {
 		return 0, nil
 	}
@@ -198,10 +196,18 @@ func (p *placeRecognition) replaceTokensWithCandidates(tokens []string) *pb.Toke
 	for len(tokens) > 0 {
 		numTokens, candidates := p.findPlaceCandidates(tokens)
 		if numTokens > 0 {
-			res.Spans = append(res.Spans, &pb.TokenSpans_Span{
-				Tokens: tokens[0:numTokens],
-				Places: candidates.GetPlaces(),
-			})
+			curTokens := tokens[0:numTokens]
+			curTokensStr := strings.Join(curTokens, " ")
+			if _, ok := p.recogPlaceStore.BogusPlaceNames[curTokensStr]; ok && !p.resolveBogusName {
+				res.Spans = append(res.Spans, &pb.TokenSpans_Span{
+					Tokens: curTokens,
+				})
+			} else {
+				res.Spans = append(res.Spans, &pb.TokenSpans_Span{
+					Tokens: tokens[0:numTokens],
+					Places: candidates.GetPlaces(),
+				})
+			}
 			tokens = tokens[numTokens:]
 		} else {
 			res.Spans = append(res.Spans, &pb.TokenSpans_Span{

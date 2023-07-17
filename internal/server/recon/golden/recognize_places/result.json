@@ -62,6 +62,21 @@
         }
       ]
     },
+    "I have some cash in USA": {
+      "items": [
+        {
+          "span": "I have some cash in"
+        },
+        {
+          "span": "USA",
+          "places": [
+            {
+              "dcid": "country/USA"
+            }
+          ]
+        }
+      ]
+    },
     "crime in new york state": {
       "items": [
         {

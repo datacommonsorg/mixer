@@ -19,6 +19,7 @@ import (
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	"github.com/datacommonsorg/mixer/internal/store/files"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/testing/protocmp"
 )
@@ -50,7 +51,9 @@ func newPlaceRecognition() *placeRecognition {
 		},
 	}
 	return &placeRecognition{
-		recogPlaceMap: recogPlaceMap,
+		recogPlaceStore: &files.RecogPlaceStore{
+			RecogPlaceMap: recogPlaceMap,
+		},
 	}
 }
 

@@ -126,7 +126,12 @@ message BulkFindEntitiesResponse {
   repeated Entity entities = 1;
 }
 
-message RecognizePlacesRequest { repeated string queries = 1; }
+message RecognizePlacesRequest {
+  repeated string queries = 1;
+  // When set, bogus name should be resolved.
+  // This needs to be set for ResoveDescription, but not set for RecognizePlaces for sentences.
+  bool resolve_bogus_name = 2;
+}
 
 message RecognizePlacesResponse {
   message Place {
