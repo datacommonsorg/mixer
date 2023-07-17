@@ -197,7 +197,7 @@ func (p *placeRecognition) replaceTokensWithCandidates(tokens []string) *pb.Toke
 		numTokens, candidates := p.findPlaceCandidates(tokens)
 		if numTokens > 0 {
 			curTokens := tokens[0:numTokens]
-			curTokensStr := strings.Join(curTokens, " ")
+			curTokensStr := strings.ToLower(strings.Join(curTokens, " "))
 			if _, ok := p.recogPlaceStore.BogusPlaceNames[curTokensStr]; ok && !p.resolveBogusName {
 				res.Spans = append(res.Spans, &pb.TokenSpans_Span{
 					Tokens: curTokens,

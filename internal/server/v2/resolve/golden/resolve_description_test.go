@@ -112,7 +112,7 @@ func TestResolveDescription(t *testing.T) {
 				[]string{
 					"Cash",
 					"cash",
-					"Ages",
+					"Middle Point",
 				},
 				"<-description->dcid",
 				"bogus_names.json",

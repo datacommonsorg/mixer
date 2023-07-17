@@ -62,18 +62,10 @@
         }
       ]
     },
-    "I have some cash in USA": {
+    "I want to find the Middle Point of a line": {
       "items": [
         {
-          "span": "I have some cash in"
-        },
-        {
-          "span": "USA",
-          "places": [
-            {
-              "dcid": "country/USA"
-            }
-          ]
+          "span": "I want to find the Middle Point of a line"
         }
       ]
     },
