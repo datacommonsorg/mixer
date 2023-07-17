@@ -43,7 +43,7 @@ func TestTripleIn(t *testing.T) {
 		}{
 			{
 				"result1.json",
-				[]string{"Country", "BiologicalSpecimen", "Count_Person", "dummy"},
+				[]string{"Country", "BiologicalSpecimen", "Count_Person", "dummy", "NewCity"},
 				"<-*",
 				"",
 			},
@@ -83,7 +83,7 @@ func TestTripleIn(t *testing.T) {
 		}
 	}
 	if err := test.TestDriver(
-		"TestTripleIn", &test.TestOption{}, testSuite); err != nil {
+		"TestTripleIn", &test.TestOption{UseSQLite: true}, testSuite); err != nil {
 		t.Errorf("TestDriver() = %s", err)
 	}
 }

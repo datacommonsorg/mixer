@@ -34,8 +34,8 @@ import (
 	"github.com/datacommonsorg/mixer/internal/store"
 )
 
-// API is the V2 property values API implementation entry point.
-func API(
+// PropertyValues is the V2 property values API implementation entry point.
+func PropertyValues(
 	ctx context.Context,
 	store *store.Store,
 	metadata *resource.Metadata,

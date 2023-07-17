@@ -172,7 +172,7 @@ func (s *Server) V2NodeCore(
 			// Examples:
 			//   ->*
 			//   <-*
-			return v2pv.API(
+			return v2pv.PropertyValues(
 				ctx,
 				s.store,
 				s.metadata,
@@ -199,7 +199,7 @@ func (s *Server) V2NodeCore(
 		}
 
 		if len(properties) > 0 {
-			return v2pv.API(
+			return v2pv.PropertyValues(
 				ctx,
 				s.store,
 				s.metadata,
