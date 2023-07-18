@@ -1,4 +1,4 @@
-// Copyright 2019 Google LLC
+// Copyright 2023 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -170,9 +170,7 @@ service Mixer {
   rpc GetLocationsRankings(GetLocationsRankingsRequest)
       returns (GetLocationsRankingsResponse) {
     option (google.api.http) = {
-      get : "/node/ranking-locations"
-      additional_bindings : {get : "/v1/place/ranking"}
-      additional_bindings : {post : "/node/ranking-locations" body : "*"}
+      get : "/v1/place/ranking"
       additional_bindings : {post : "/v1/place/ranking" body : "*"}
     };
   }
@@ -181,9 +179,7 @@ service Mixer {
   rpc GetRelatedLocations(GetRelatedLocationsRequest)
       returns (GetRelatedLocationsResponse) {
     option (google.api.http) = {
-      get : "/node/related-locations"
-      additional_bindings : {get : "/v1/place/related"}
-      additional_bindings : {post : "/node/related-locations" body : "*"}
+      get : "/v1/place/related"
       additional_bindings : {post : "/v1/place/related" body : "*"}
     };
   }
