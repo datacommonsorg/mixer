@@ -23,17 +23,21 @@ import (
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/store"
+	"github.com/datacommonsorg/mixer/internal/store/files"
 )
 
 const maxPlaceCandidates = 15
 
-// RecognizePlaces implements API for ReconServer.RecognizePlaces.
+// RecognizePlaces implements API for Mixer.RecognizePlaces.
 func RecognizePlaces(
-	ctx context.Context, in *pb.RecognizePlacesRequest, store *store.Store,
+	ctx context.Context,
+	in *pb.RecognizePlacesRequest,
+	store *store.Store,
+	resolveBogusName bool,
 ) (*pb.RecognizePlacesResponse, error) {
 	pr := &placeRecognition{
-		recogPlaceMap:           store.RecogPlaceStore.RecogPlaceMap,
-		abbreviatedNameToPlaces: store.RecogPlaceStore.AbbreviatedNameToPlaces,
+		recogPlaceStore:  store.RecogPlaceStore,
+		resolveBogusName: resolveBogusName,
 	}
 
 	type queryItems struct {
@@ -108,17 +112,14 @@ func tokenize(query string) []string {
 }
 
 type placeRecognition struct {
-	// The key is the first token/word (lower case) of each place.
-	recogPlaceMap map[string]*pb.RecogPlaces
-	// The key is abbreviated name of each place.
-	// NOTE: the key is case sensitive.
-	abbreviatedNameToPlaces map[string]*pb.RecogPlaces
+	recogPlaceStore  *files.RecogPlaceStore
+	resolveBogusName bool
 }
 
 func (p *placeRecognition) detectPlaces(
 	query string) *pb.RecognizePlacesResponse_Items {
 	tokenSpans := p.replaceTokensWithCandidates(tokenize(query))
-	candidates := rankAndTrimCandidates(combineContainedIn(tokenSpans))
+	candidates := p.rankAndTrimCandidates(combineContainedIn(tokenSpans))
 	return formatResponse(query, candidates)
 }
 
@@ -130,12 +131,12 @@ func (p *placeRecognition) findPlaceCandidates(
 
 	// Check if the first token match any abbreviated name.
 	// Note: abbreviated names are case-sensitive.
-	if places, ok := p.abbreviatedNameToPlaces[tokens[0]]; ok {
+	if places, ok := p.recogPlaceStore.AbbreviatedNameToPlaces[tokens[0]]; ok {
 		return 1, places
 	}
 
 	key := strings.ToLower(tokens[0])
-	places, ok := p.recogPlaceMap[key]
+	places, ok := p.recogPlaceStore.RecogPlaceMap[key]
 	if !ok {
 		return 0, nil
 	}
@@ -286,10 +287,18 @@ func combineContainedIn(tokenSpans *pb.TokenSpans) *pb.TokenSpans {
 	return res
 }
 
-func rankAndTrimCandidates(tokenSpans *pb.TokenSpans) *pb.TokenSpans {
+func (p *placeRecognition) rankAndTrimCandidates(tokenSpans *pb.TokenSpans) *pb.TokenSpans {
 	res := &pb.TokenSpans{}
 	for _, span := range tokenSpans.GetSpans() {
 		if len(span.GetPlaces()) == 0 {
+			res.Spans = append(res.Spans, span)
+			continue
+		}
+
+		// Deal with bogus name (not followed by an ancestor place).
+		spanStr := strings.ToLower(strings.Join(span.Tokens, " "))
+		if _, ok := p.recogPlaceStore.BogusPlaceNames[spanStr]; ok && !p.resolveBogusName {
+			span.Places = nil
 			res.Spans = append(res.Spans, span)
 			continue
 		}

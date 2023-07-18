@@ -30,7 +30,9 @@ import (
 //go:embed "WorldGeosForPlaceRecognition.csv"
 var recogPlaceMapCSVContent []byte // Embed CSV as []byte.
 //go:embed "WorldGeosForPlaceRecognitionAbbreviatedNames.csv"
-var recogPlaceMapAbbreviatedNamesCSVContent []byte // Embed CSV as []byte.
+var recogPlaceAbbreviatedNamesCSVContent []byte // Embed CSV as []byte.
+//go:embed "BogusPlaceNames.csv"
+var recogPlaceBogusPlaceNamesCSVContent []byte // Embed CSV as []byte.
 
 // RecogPlaceStore contains data for recongizing places.
 type RecogPlaceStore struct {
@@ -38,6 +40,9 @@ type RecogPlaceStore struct {
 	RecogPlaceMap map[string]*pb.RecogPlaces
 	// The key is abbreviated name of each place.
 	AbbreviatedNameToPlaces map[string]*pb.RecogPlaces
+	// If |resolve_description| is not set in RecognizePlacesRequest, bogus place names will not be
+	// recognized unless they are followed by a containedInPlace.
+	BogusPlaceNames map[string]struct{}
 	// Place DCID to all possible names.
 	DcidToNames map[string][]string
 }
@@ -51,6 +56,11 @@ func LoadRecogPlaceStore() (*RecogPlaceStore, error) {
 	}
 
 	dcidToAbbreviatedNames, err := loadAbbreviatedNames()
+	if err != nil {
+		return nil, err
+	}
+
+	bogusPlaceNames, err := loadBogusPlaceNames()
 	if err != nil {
 		return nil, err
 	}
@@ -163,12 +173,13 @@ func LoadRecogPlaceStore() (*RecogPlaceStore, error) {
 	return &RecogPlaceStore{
 		RecogPlaceMap:           recogPlaceMap,
 		AbbreviatedNameToPlaces: abbreviatedNameToPlaces,
+		BogusPlaceNames:         bogusPlaceNames,
 		DcidToNames:             expandedDcidToNames,
 	}, nil
 }
 
 func loadAbbreviatedNames() (map[string][]string, error) {
-	reader := csv.NewReader(strings.NewReader(string(recogPlaceMapAbbreviatedNamesCSVContent)))
+	reader := csv.NewReader(strings.NewReader(string(recogPlaceAbbreviatedNamesCSVContent)))
 	records, err := reader.ReadAll()
 	if err != nil {
 		return nil, err
@@ -201,6 +212,26 @@ func loadAbbreviatedNames() (map[string][]string, error) {
 			res[dcid] = []string{}
 		}
 		res[dcid] = append(res[dcid], abbreviatedNames...)
+	}
+
+	return res, nil
+}
+
+func loadBogusPlaceNames() (map[string]struct{}, error) {
+	reader := csv.NewReader(strings.NewReader(string(recogPlaceBogusPlaceNamesCSVContent)))
+	records, err := reader.ReadAll()
+	if err != nil {
+		return nil, err
+	}
+
+	res := map[string]struct{}{}
+
+	for _, record := range records {
+		if len(record) != 1 {
+			return nil, status.Errorf(codes.FailedPrecondition,
+				"Wrong BogusPlaceNames CSV record: %v", record)
+		}
+		res[strings.ToLower(strings.TrimSpace(record[0]))] = struct{}{}
 	}
 
 	return res, nil

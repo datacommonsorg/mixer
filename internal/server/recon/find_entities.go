@@ -233,14 +233,16 @@ func resolveWithRecognizePlaces(
 		return false
 	}
 
-	req := &pb.RecognizePlacesRequest{Queries: []string{}}
+	req := &pb.RecognizePlacesRequest{
+		Queries: []string{},
+	}
 	descriptionToType := map[string]string{}
 	for e := range entityInfoSet {
 		req.Queries = append(req.Queries, e.description)
 		descriptionToType[e.description] = e.typeOf
 	}
 
-	resp, err := RecognizePlaces(ctx, req, store)
+	resp, err := RecognizePlaces(ctx, req, store, true)
 	if err != nil {
 		return nil, nil, err
 	}

@@ -126,7 +126,9 @@ message BulkFindEntitiesResponse {
   repeated Entity entities = 1;
 }
 
-message RecognizePlacesRequest { repeated string queries = 1; }
+message RecognizePlacesRequest {
+  repeated string queries = 1;
+}
 
 message RecognizePlacesResponse {
   message Place {

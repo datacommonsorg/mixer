@@ -19,6 +19,7 @@ import (
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	"github.com/datacommonsorg/mixer/internal/store/files"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/testing/protocmp"
 )
@@ -50,7 +51,9 @@ func newPlaceRecognition() *placeRecognition {
 		},
 	}
 	return &placeRecognition{
-		recogPlaceMap: recogPlaceMap,
+		recogPlaceStore: &files.RecogPlaceStore{
+			RecogPlaceMap: recogPlaceMap,
+		},
 	}
 }
 
@@ -320,6 +323,8 @@ func TestCombineContainedIn(t *testing.T) {
 }
 
 func TestRankAndTrimCandidates(t *testing.T) {
+	pr := newPlaceRecognition()
+
 	cmpOpts := cmp.Options{
 		protocmp.Transform(),
 	}
@@ -383,7 +388,7 @@ func TestRankAndTrimCandidates(t *testing.T) {
 			},
 		},
 	} {
-		got := rankAndTrimCandidates(c.tokenSpans)
+		got := pr.rankAndTrimCandidates(c.tokenSpans)
 		if diff := cmp.Diff(got, c.want, cmpOpts); diff != "" {
 			t.Errorf("rankAndTrimCandidates(%v) got diff: %s", c.tokenSpans, diff)
 		}
