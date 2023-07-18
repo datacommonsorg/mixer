@@ -30,11 +30,14 @@ const maxPlaceCandidates = 15
 
 // RecognizePlaces implements API for Mixer.RecognizePlaces.
 func RecognizePlaces(
-	ctx context.Context, in *pb.RecognizePlacesRequest, store *store.Store,
+	ctx context.Context,
+	in *pb.RecognizePlacesRequest,
+	store *store.Store,
+	resolveBogusName bool,
 ) (*pb.RecognizePlacesResponse, error) {
 	pr := &placeRecognition{
 		recogPlaceStore:  store.RecogPlaceStore,
-		resolveBogusName: in.GetResolveBogusName(),
+		resolveBogusName: resolveBogusName,
 	}
 
 	type queryItems struct {

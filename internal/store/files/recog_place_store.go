@@ -231,7 +231,7 @@ func loadBogusPlaceNames() (map[string]struct{}, error) {
 			return nil, status.Errorf(codes.FailedPrecondition,
 				"Wrong BogusPlaceNames CSV record: %v", record)
 		}
-		res[strings.ToLower(record[0])] = struct{}{}
+		res[strings.ToLower(strings.TrimSpace(record[0]))] = struct{}{}
 	}
 
 	return res, nil

@@ -479,5 +479,5 @@ func (s *Server) EventCollectionDate(
 func (s *Server) RecognizePlaces(
 	ctx context.Context, in *pb.RecognizePlacesRequest,
 ) (*pb.RecognizePlacesResponse, error) {
-	return recon.RecognizePlaces(ctx, in, s.store)
+	return recon.RecognizePlaces(ctx, in, s.store, false)
 }
