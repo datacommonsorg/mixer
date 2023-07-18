@@ -340,10 +340,10 @@ func TestRankAndTrimCandidates(t *testing.T) {
 					{
 						Tokens: []string{"Mountain", "View"},
 						Places: []*pb.RecogPlace{
-							{Dcid: "geoId/MTV2", Population: 102},
-							{Dcid: "geoId/MTV3", Population: 103},
-							{Dcid: "geoId/MTV1", Population: 101},
-							{Dcid: "geoId/MTV4", Population: 104},
+							{Dcid: "geoId/MTV2", Population: 2102},
+							{Dcid: "geoId/MTV3", Population: 9103},
+							{Dcid: "geoId/MTV1", Population: 1101},
+							{Dcid: "geoId/MTV4", Population: 9104},
 						},
 					},
 				},
@@ -354,10 +354,9 @@ func TestRankAndTrimCandidates(t *testing.T) {
 					{
 						Tokens: []string{"Mountain", "View"},
 						Places: []*pb.RecogPlace{
-							{Dcid: "geoId/MTV4", Population: 104},
-							{Dcid: "geoId/MTV3", Population: 103},
-							{Dcid: "geoId/MTV2", Population: 102},
-							{Dcid: "geoId/MTV1", Population: 101},
+							{Dcid: "geoId/MTV4", Population: 9104},
+							{Dcid: "geoId/MTV3", Population: 9103},
+							{Dcid: "geoId/MTV2", Population: 2102},
 						},
 					},
 				},
@@ -369,8 +368,8 @@ func TestRankAndTrimCandidates(t *testing.T) {
 					{
 						Tokens: []string{"Mountain", "View"},
 						Places: []*pb.RecogPlace{
-							{Dcid: "geoId/MTV1", Population: 101},
-							{Dcid: "geoId/MTV2", Population: 102},
+							{Dcid: "geoId/MTV1", Population: 9101},
+							{Dcid: "geoId/MTV2", Population: 9102},
 						},
 					},
 				},
@@ -380,15 +379,15 @@ func TestRankAndTrimCandidates(t *testing.T) {
 					{
 						Tokens: []string{"Mountain", "View"},
 						Places: []*pb.RecogPlace{
-							{Dcid: "geoId/MTV2", Population: 102},
-							{Dcid: "geoId/MTV1", Population: 101},
+							{Dcid: "geoId/MTV2", Population: 9102},
+							{Dcid: "geoId/MTV1", Population: 9101},
 						},
 					},
 				},
 			},
 		},
 	} {
-		got := pr.rankAndTrimCandidates(c.tokenSpans)
+		got := pr.rankAndTrimCandidates(c.tokenSpans, 2)
 		if diff := cmp.Diff(got, c.want, cmpOpts); diff != "" {
 			t.Errorf("rankAndTrimCandidates(%v) got diff: %s", c.tokenSpans, diff)
 		}
