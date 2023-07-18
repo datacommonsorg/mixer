@@ -26,7 +26,13 @@ import (
 	"github.com/datacommonsorg/mixer/internal/store/files"
 )
 
-const maxPlaceCandidates = 15
+const (
+	maxPlaceCandidates = 15
+	// When the number of places is larger than maxPlaceCandidates, firstly pick maxPlaceCandidates
+	// places, for the rest, only pick the places with
+	// population >= minPopulationOverMaxPlaceCandidates.
+	minPopulationOverMaxPlaceCandidates = 2000
+)
 
 // RecognizePlaces implements API for Mixer.RecognizePlaces.
 func RecognizePlaces(
@@ -119,7 +125,7 @@ type placeRecognition struct {
 func (p *placeRecognition) detectPlaces(
 	query string) *pb.RecognizePlacesResponse_Items {
 	tokenSpans := p.replaceTokensWithCandidates(tokenize(query))
-	candidates := p.rankAndTrimCandidates(combineContainedIn(tokenSpans))
+	candidates := p.rankAndTrimCandidates(combineContainedIn(tokenSpans), maxPlaceCandidates)
 	return formatResponse(query, candidates)
 }
 
@@ -287,7 +293,9 @@ func combineContainedIn(tokenSpans *pb.TokenSpans) *pb.TokenSpans {
 	return res
 }
 
-func (p *placeRecognition) rankAndTrimCandidates(tokenSpans *pb.TokenSpans) *pb.TokenSpans {
+func (p *placeRecognition) rankAndTrimCandidates(
+	tokenSpans *pb.TokenSpans,
+	maxPlaceCandidates int) *pb.TokenSpans {
 	res := &pb.TokenSpans{}
 	for _, span := range tokenSpans.GetSpans() {
 		if len(span.GetPlaces()) == 0 {
@@ -307,8 +315,22 @@ func (p *placeRecognition) rankAndTrimCandidates(tokenSpans *pb.TokenSpans) *pb.
 		sort.SliceStable(span.Places, func(i, j int) bool {
 			return span.Places[i].GetPopulation() > span.Places[j].GetPopulation()
 		})
+
 		if len(span.GetPlaces()) > maxPlaceCandidates {
-			span.Places = span.Places[:maxPlaceCandidates]
+			// Firstly, pick all place candidates with index < maxPlaceCandidates.
+			filteredPlaces := span.Places[:maxPlaceCandidates]
+
+			// For the rest, only pick the places with
+			// population >= minPopulationOverMaxPlaceCandidates.
+			for i := maxPlaceCandidates; i < len(span.Places); i++ {
+				thisPlace := span.Places[i]
+				if thisPlace.Population < minPopulationOverMaxPlaceCandidates {
+					break
+				}
+				filteredPlaces = append(filteredPlaces, thisPlace)
+			}
+
+			span.Places = filteredPlaces
 		}
 		res.Spans = append(res.Spans, span)
 	}
