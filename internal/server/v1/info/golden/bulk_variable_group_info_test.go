@@ -58,6 +58,12 @@ func TestBulkVariableGroupInfo(t *testing.T) {
 				1,
 				"crime_1.json",
 			},
+			{
+				[]string{"dc/g/SQLite", "dc/g/SQL"},
+				[]string{},
+				0,
+				"sqlite.json",
+			},
 		} {
 			resp, err := mixer.BulkVariableGroupInfo(ctx, &pbv1.BulkVariableGroupInfoRequest{
 				Nodes:                c.nodes,
@@ -93,7 +99,7 @@ func TestBulkVariableGroupInfo(t *testing.T) {
 
 	if err := test.TestDriver(
 		"BulkVariableGroupInfo",
-		&test.TestOption{UseCache: true},
+		&test.TestOption{UseCache: true, UseSQLite: true},
 		testSuite,
 	); err != nil {
 		t.Errorf("TestDriver() = %s", err)

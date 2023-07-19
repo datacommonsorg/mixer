@@ -1,4 +1,4 @@
-// Copyright 2021 Google LLC
+// Copyright 2023 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -58,9 +58,9 @@ func RemoveSvg(
 
 // GetRawSvg gets the raw svg mapping.
 func GetRawSvg(ctx context.Context, store *store.Store) (
-	map[string]*pb.StatVarGroupNode, error) {
-	svg, err := GetStatVarGroup(
-		ctx, &pb.GetStatVarGroupRequest{}, store, nil)
+	map[string]*pb.StatVarGroupNode, error,
+) {
+	svg, err := GetStatVarGroup(ctx, &pb.GetStatVarGroupRequest{}, store, nil)
 	if err != nil {
 		return nil, err
 	}
