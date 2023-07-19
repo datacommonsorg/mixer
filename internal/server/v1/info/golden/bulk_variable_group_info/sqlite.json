@@ -1,0 +1,43 @@
+{
+  "data": [
+    {
+      "node": "dc/g/SQL",
+      "info": {
+        "absoluteName": "SQL stat var group",
+        "childStatVarGroups": [
+          {
+            "id": "dc/g/SQLite",
+            "displayName": "SQLite stat var group",
+            "descendentStatVarCount": 2
+          }
+        ],
+        "descendentStatVarCount": 2,
+        "parentStatVarGroups": [
+          "dc/g/Root"
+        ]
+      }
+    },
+    {
+      "node": "dc/g/SQLite",
+      "info": {
+        "absoluteName": "SQLite stat var group",
+        "childStatVars": [
+          {
+            "id": "total_sql_query",
+            "displayName": "total number of sql query used",
+            "hasData": true
+          },
+          {
+            "id": "total_sql_join",
+            "displayName": "total number of sql joins",
+            "hasData": true
+          }
+        ],
+        "descendentStatVarCount": 2,
+        "parentStatVarGroups": [
+          "dc/g/SQL"
+        ]
+      }
+    }
+  ]
+}
