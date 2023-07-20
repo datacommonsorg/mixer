@@ -274,7 +274,6 @@ func TestCombineContainedIn(t *testing.T) {
 								ContainingPlaces: []string{"geoId/Santa_Clara", "geoId/CA"},
 							},
 							{Dcid: "geoId/Santa_Clara"},
-							{Dcid: "wikidataId/Santa_Clara"},
 						},
 					},
 					{Tokens: []string{"!?"}},
