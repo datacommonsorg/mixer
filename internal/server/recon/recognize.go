@@ -244,23 +244,33 @@ func combineContainedInSingle(
 	spans []*pb.TokenSpans_Span, startIdx, numSpans int) *pb.TokenSpans_Span {
 	startSpan := spans[startIdx]
 	endSpan := spans[startIdx+numSpans-1]
+
+	res := &pb.TokenSpans_Span{Tokens: startSpan.Tokens}
+	for i := 1; i < numSpans; i++ {
+		res.Tokens = append(res.Tokens, spans[startIdx+i].GetTokens()...)
+	}
+
+	// This map is used to collect all the places for the combined span, with dedup.
+	dcidToRecogPlaces := map[string]*pb.RecogPlace{}
+
 	for _, p1 := range startSpan.GetPlaces() {
 		for _, containingPlace := range p1.GetContainingPlaces() {
 			for _, p2 := range endSpan.GetPlaces() {
-				if containingPlace != p2.GetDcid() {
-					continue
+				if containingPlace == p2.GetDcid() {
+					dcidToRecogPlaces[p1.GetDcid()] = p1
+					dcidToRecogPlaces[p2.GetDcid()] = p2
 				}
-				res := &pb.TokenSpans_Span{
-					Tokens: startSpan.Tokens,
-					Places: []*pb.RecogPlace{p1, p2},
-				}
-				for i := 1; i < numSpans; i++ {
-					res.Tokens = append(res.Tokens, spans[startIdx+i].GetTokens()...)
-				}
-				return res
 			}
 		}
 	}
+
+	if len(dcidToRecogPlaces) > 0 {
+		for _, p := range dcidToRecogPlaces {
+			res.Places = append(res.Places, p)
+		}
+		return res
+	}
+
 	return nil
 }
 
