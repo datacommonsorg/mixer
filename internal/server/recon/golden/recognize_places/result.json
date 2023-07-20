@@ -93,18 +93,12 @@
           "span": "crime in"
         },
         {
-          "span": "new york",
+          "span": "new york state",
           "places": [
             {
               "dcid": "geoId/36"
-            },
-            {
-              "dcid": "geoId/3651000"
             }
           ]
-        },
-        {
-          "span": "state"
         }
       ]
     },
@@ -158,7 +152,7 @@
           "span": "New York",
           "places": [
             {
-              "dcid": "geoId/36"
+              "dcid": "geoId/3651000"
             },
             {
               "dcid": "geoId/3651000"

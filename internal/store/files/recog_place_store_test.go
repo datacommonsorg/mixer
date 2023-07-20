@@ -93,6 +93,9 @@ func TestLoadRecogPlaceStore(t *testing.T) {
 							{
 								Parts: []string{"united", "states"},
 							},
+              {
+                Parts: []string{"america"},
+              },
 						},
 						Dcid:             "country/USA",
 						ContainingPlaces: []string{"Earth", "northamerica"},

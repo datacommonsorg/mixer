@@ -31,6 +31,8 @@ import (
 var recogPlaceMapCSVContent []byte // Embed CSV as []byte.
 //go:embed "WorldGeosForPlaceRecognitionAbbreviatedNames.csv"
 var recogPlaceAbbreviatedNamesCSVContent []byte // Embed CSV as []byte.
+//go:embed "WorldGeosForPlaceRecognitionAlternateNames.csv"
+var recogPlaceAlternateNamesCSVContent []byte // Embed CSV as []byte.
 //go:embed "BogusPlaceNames.csv"
 var recogPlaceBogusPlaceNamesCSVContent []byte // Embed CSV as []byte.
 
@@ -55,7 +57,12 @@ func LoadRecogPlaceStore() (*RecogPlaceStore, error) {
 		return nil, err
 	}
 
-	dcidToAbbreviatedNames, err := loadAbbreviatedNames()
+	dcidToAbbreviatedNames, err := loadAuxNames(recogPlaceAbbreviatedNamesCSVContent, false)
+	if err != nil {
+		return nil, err
+	}
+
+	dcidToAlternateNames, err := loadAuxNames(recogPlaceAlternateNamesCSVContent, true)
 	if err != nil {
 		return nil, err
 	}
@@ -103,6 +110,13 @@ func LoadRecogPlaceStore() (*RecogPlaceStore, error) {
 				"Empty names for CSV record: %v", record)
 		}
 		names := strings.Split(strings.TrimSpace(record[2]), ",")
+
+		// Add alternate names if any.
+		altNames, ok := dcidToAlternateNames[dcid]
+		if ok {
+			names = append(names, altNames...)
+		}
+
 		dcidToNames[dcid] = names
 		expandedDcidToNames[dcid] = names
 		for _, name := range names {
@@ -178,8 +192,8 @@ func LoadRecogPlaceStore() (*RecogPlaceStore, error) {
 	}, nil
 }
 
-func loadAbbreviatedNames() (map[string][]string, error) {
-	reader := csv.NewReader(strings.NewReader(string(recogPlaceAbbreviatedNamesCSVContent)))
+func loadAuxNames(content []byte, toLower bool) (map[string][]string, error) {
+	reader := csv.NewReader(strings.NewReader(string(content)))
 	records, err := reader.ReadAll()
 	if err != nil {
 		return nil, err
@@ -202,16 +216,23 @@ func loadAbbreviatedNames() (map[string][]string, error) {
 		}
 
 		dcid := record[0]
-		abbreviatedNames := strings.Split(record[1], ",")
-		if len(abbreviatedNames) == 0 {
-			return nil, status.Errorf(codes.FailedPrecondition,
-				"No abbreviatedNames: %v", record[1])
+		names := strings.Split(record[1], ",")
+		if len(names) == 0 {
+			return nil, status.Errorf(codes.FailedPrecondition, "No names: %v", record[1])
 		}
 
 		if _, ok := res[dcid]; !ok {
 			res[dcid] = []string{}
 		}
-		res[dcid] = append(res[dcid], abbreviatedNames...)
+		var tmpStr string
+		for _, name := range names {
+			if toLower {
+				tmpStr = strings.ToLower(strings.TrimSpace(name))
+			} else {
+				tmpStr = strings.TrimSpace(name)
+			}
+			res[dcid] = append(res[dcid], tmpStr)
+		}
 	}
 
 	return res, nil
