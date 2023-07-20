@@ -258,7 +258,6 @@ func combineContainedInSingle(
 			for _, p2 := range endSpan.GetPlaces() {
 				if containingPlace == p2.GetDcid() {
 					dcidToRecogPlaces[p1.GetDcid()] = p1
-					dcidToRecogPlaces[p2.GetDcid()] = p2
 				}
 			}
 		}

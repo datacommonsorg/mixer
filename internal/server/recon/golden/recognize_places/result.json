@@ -78,9 +78,6 @@
           "span": "Half Moon Bay California",
           "places": [
             {
-              "dcid": "geoId/06"
-            },
-            {
               "dcid": "geoId/0631708"
             }
           ]
@@ -91,9 +88,6 @@
         {
           "span": "California , Washington County",
           "places": [
-            {
-              "dcid": "geoId/42125"
-            },
             {
               "dcid": "geoId/4210768"
             }
@@ -109,9 +103,6 @@
         {
           "span": "Middle Point , USA",
           "places": [
-            {
-              "dcid": "country/USA"
-            },
             {
               "dcid": "geoId/3949728"
             }
@@ -296,9 +287,6 @@
           "span": "San Jose California",
           "places": [
             {
-              "dcid": "geoId/06"
-            },
-            {
               "dcid": "geoId/0668000"
             }
           ]
@@ -349,9 +337,6 @@
         {
           "span": "San Jose , California",
           "places": [
-            {
-              "dcid": "geoId/06"
-            },
             {
               "dcid": "geoId/0668000"
             }
