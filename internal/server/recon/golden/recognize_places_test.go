@@ -56,6 +56,7 @@ func TestRecognizePlaces(t *testing.T) {
 					"the birds in ME and USA are chirpy, according to me",
 					"I want to find the Middle Point of a line",
 					"I went to Middle Point, USA",
+					"I went to Half Moon Bay California and California, Washington County",
 				},
 				"result.json",
 			},

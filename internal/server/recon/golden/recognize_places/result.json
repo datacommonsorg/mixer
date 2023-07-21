@@ -69,6 +69,32 @@
         }
       ]
     },
+    "I went to Half Moon Bay California and California, Washington County": {
+      "items": [
+        {
+          "span": "I went to"
+        },
+        {
+          "span": "Half Moon Bay California",
+          "places": [
+            {
+              "dcid": "geoId/0631708"
+            }
+          ]
+        },
+        {
+          "span": "and"
+        },
+        {
+          "span": "California , Washington County",
+          "places": [
+            {
+              "dcid": "geoId/4210768"
+            }
+          ]
+        }
+      ]
+    },
     "I went to Middle Point, USA": {
       "items": [
         {
@@ -77,9 +103,6 @@
         {
           "span": "Middle Point , USA",
           "places": [
-            {
-              "dcid": "country/USA"
-            },
             {
               "dcid": "geoId/3949728"
             }
@@ -264,37 +287,7 @@
           "span": "San Jose California",
           "places": [
             {
-              "dcid": "geoId/06"
-            },
-            {
               "dcid": "geoId/0668000"
-            },
-            {
-              "dcid": "wikidataId/Q55599"
-            },
-            {
-              "dcid": "geoId/2412150"
-            },
-            {
-              "dcid": "geoId/4210768"
-            },
-            {
-              "dcid": "geoId/2910468"
-            },
-            {
-              "dcid": "geoId/3568430"
-            },
-            {
-              "dcid": "geoId/0463260"
-            },
-            {
-              "dcid": "geoId/1767613"
-            },
-            {
-              "dcid": "geoId/3568500"
-            },
-            {
-              "dcid": "geoId/2111872"
             }
           ]
         },
@@ -345,37 +338,7 @@
           "span": "San Jose , California",
           "places": [
             {
-              "dcid": "geoId/06"
-            },
-            {
               "dcid": "geoId/0668000"
-            },
-            {
-              "dcid": "wikidataId/Q55599"
-            },
-            {
-              "dcid": "geoId/2412150"
-            },
-            {
-              "dcid": "geoId/4210768"
-            },
-            {
-              "dcid": "geoId/2910468"
-            },
-            {
-              "dcid": "geoId/3568430"
-            },
-            {
-              "dcid": "geoId/0463260"
-            },
-            {
-              "dcid": "geoId/1767613"
-            },
-            {
-              "dcid": "geoId/3568500"
-            },
-            {
-              "dcid": "geoId/2111872"
             }
           ]
         },

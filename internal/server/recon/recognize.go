@@ -220,7 +220,7 @@ func (p *placeRecognition) replaceTokensWithCandidates(tokens []string) *pb.Toke
 	return res
 }
 
-func getNumTokensForContainedIn(spans []*pb.TokenSpans_Span, startIdx int) int {
+func getNumSpansForContainedIn(spans []*pb.TokenSpans_Span, startIdx int) int {
 	size := len(spans)
 
 	// Case: "place1, place2".
@@ -241,23 +241,35 @@ func getNumTokensForContainedIn(spans []*pb.TokenSpans_Span, startIdx int) int {
 }
 
 func combineContainedInSingle(
-	spans []*pb.TokenSpans_Span, startIdx, numTokens int) *pb.TokenSpans_Span {
-	startToken := spans[startIdx]
-	endToken := spans[startIdx+numTokens-1]
-	for _, p1 := range startToken.GetPlaces() {
+	spans []*pb.TokenSpans_Span, startIdx, numSpans int) *pb.TokenSpans_Span {
+	startSpan := spans[startIdx]
+	endSpan := spans[startIdx+numSpans-1]
+
+	res := &pb.TokenSpans_Span{Tokens: startSpan.Tokens}
+	for i := 1; i < numSpans; i++ {
+		res.Tokens = append(res.Tokens, spans[startIdx+i].GetTokens()...)
+	}
+
+	// This map is used to collect all the places for the combined span, with dedup.
+	dcidToRecogPlaces := map[string]*pb.RecogPlace{}
+
+	for _, p1 := range startSpan.GetPlaces() {
 		for _, containingPlace := range p1.GetContainingPlaces() {
-			for _, p2 := range endToken.GetPlaces() {
+			for _, p2 := range endSpan.GetPlaces() {
 				if containingPlace == p2.GetDcid() {
-					res := startToken
-					for i := 1; i < numTokens; i++ {
-						res.Tokens = append(res.Tokens, spans[startIdx+i].GetTokens()...)
-						res.Places = append(res.Places, spans[startIdx+i].GetPlaces()...)
-					}
-					return res
+					dcidToRecogPlaces[p1.GetDcid()] = p1
 				}
 			}
 		}
 	}
+
+	if len(dcidToRecogPlaces) > 0 {
+		for _, p := range dcidToRecogPlaces {
+			res.Places = append(res.Places, p)
+		}
+		return res
+	}
+
 	return nil
 }
 
@@ -273,19 +285,19 @@ func combineContainedIn(tokenSpans *pb.TokenSpans) *pb.TokenSpans {
 			continue
 		}
 
-		numTokens := getNumTokensForContainedIn(spans, i)
-		if numTokens == 0 {
+		numSpans := getNumSpansForContainedIn(spans, i)
+		if numSpans == 0 {
 			i++
 			res.Spans = append(res.Spans, tokenSpan)
 			continue
 		}
 
-		collapsedTokenSpan := combineContainedInSingle(spans, i, numTokens)
+		collapsedTokenSpan := combineContainedInSingle(spans, i, numSpans)
 		if collapsedTokenSpan == nil {
 			i++
 			res.Spans = append(res.Spans, tokenSpan)
 		} else {
-			i += numTokens
+			i += numSpans
 			res.Spans = append(res.Spans, collapsedTokenSpan)
 		}
 	}
