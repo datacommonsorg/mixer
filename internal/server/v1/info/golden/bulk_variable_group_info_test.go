@@ -1,4 +1,4 @@
-// Copyright 2022 Google LLC
+// Copyright 2023 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -59,8 +59,8 @@ func TestBulkVariableGroupInfo(t *testing.T) {
 				"crime_1.json",
 			},
 			{
-				[]string{"dc/g/SQLite", "dc/g/SQL"},
-				[]string{},
+				[]string{"dc/g/Root", "dc/g/SQLite", "dc/g/SQL"},
+				[]string{"geoId/06"},
 				0,
 				"sqlite.json",
 			},

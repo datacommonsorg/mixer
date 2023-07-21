@@ -170,6 +170,22 @@ func mergeSVGNodes(node1, node2 *pb.StatVarGroupNode) {
 	}
 }
 
+// getAllDescendentSV get all the descendent stat var for an svg.
+func getAllDescendentSV(svgMap map[string]*pb.StatVarGroupNode, svgDcid string) []string {
+	res := []string{}
+	if _, ok := svgMap[svgDcid]; !ok {
+		return res
+	}
+	node := svgMap[svgDcid]
+	for _, childSVG := range node.ChildStatVarGroups {
+		res = append(res, getAllDescendentSV(svgMap, childSVG.Id)...)
+	}
+	for _, sv := range node.ChildStatVars {
+		res = append(res, sv.Id)
+	}
+	return util.MergeDedupe(res)
+}
+
 // GetStatVarGroup implements API for Mixer.GetStatVarGroup.
 func GetStatVarGroup(
 	ctx context.Context,
@@ -299,7 +315,8 @@ func GetStatVarGroup(
 				result.StatVarGroups[parent].ChildStatVarGroups = append(
 					result.StatVarGroups[parent].ChildStatVarGroups,
 					&pb.StatVarGroupNode_ChildSVG{
-						Id: self,
+						Id:                self,
+						SpecializedEntity: name,
 					},
 				)
 			}
@@ -335,6 +352,7 @@ func GetStatVarGroup(
 					result.StatVarGroups[svg].ChildStatVars,
 					&pb.StatVarGroupNode_ChildSV{Id: sv, DisplayName: name},
 				)
+				result.StatVarGroups[svg].DescendentStatVarCount += 1
 			}
 		}
 	} else {
@@ -394,9 +412,8 @@ func GetStatVarGroupNode(
 		for _, item := range result.ChildStatVars {
 			allIDs = append(allIDs, item.Id)
 		}
-		allIDs = append(allIDs, result.ParentStatVarGroups...)
 		// Check if stat data exists for given entities
-		statVarCount, err := Count(ctx, store, allIDs, entities)
+		statVarCount, err := Count(ctx, store, cache, allIDs, entities)
 		if err != nil {
 			return nil, err
 		}

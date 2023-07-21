@@ -45,7 +45,7 @@ func (s *Server) V2Resolve(
 	if s.metadata.RemoteMixerDomain != "" {
 		errGroup.Go(func() error {
 			remoteResp := &pbv2.ResolveResponse{}
-			err := fetchRemote(s.metadata, s.httpClient, "/v2/resolve", in, remoteResp)
+			err := util.FetchRemote(s.metadata, s.httpClient, "/v2/resolve", in, remoteResp)
 			if err != nil {
 				return err
 			}
@@ -66,9 +66,9 @@ func (s *Server) V2Resolve(
 }
 
 // V2Node implements API for mixer.V2Node.
-func (s *Server) V2Node(
-	ctx context.Context, in *pbv2.NodeRequest,
-) (*pbv2.NodeResponse, error) {
+func (s *Server) V2Node(ctx context.Context, in *pbv2.NodeRequest) (
+	*pbv2.NodeResponse, error,
+) {
 	errGroup, errCtx := errgroup.WithContext(ctx)
 	localRespChan := make(chan *pbv2.NodeResponse, 1)
 	remoteRespChan := make(chan *pbv2.NodeResponse, 1)
@@ -91,7 +91,7 @@ func (s *Server) V2Node(
 		if s.metadata.RemoteMixerDomain != "" {
 			errGroup.Go(func() error {
 				remoteResp := &pbv2.NodeResponse{}
-				err := fetchRemote(s.metadata, s.httpClient, "/v2/node", in, remoteResp)
+				err := util.FetchRemote(s.metadata, s.httpClient, "/v2/node", in, remoteResp)
 				if err != nil {
 					return err
 				}
@@ -139,7 +139,7 @@ func (s *Server) V2Node(
 
 				// Call remote.
 				remoteResp := &pbv2.NodeResponse{}
-				if err := fetchRemote(
+				if err := util.FetchRemote(
 					s.metadata, s.httpClient, "/v2/node", in, remoteResp); err != nil {
 					return err
 				}
@@ -180,7 +180,7 @@ func (s *Server) V2Event(
 	if s.metadata.RemoteMixerDomain != "" {
 		errGroup.Go(func() error {
 			remoteResp := &pbv2.EventResponse{}
-			err := fetchRemote(s.metadata, s.httpClient, "/v2/event", in, remoteResp)
+			err := util.FetchRemote(s.metadata, s.httpClient, "/v2/event", in, remoteResp)
 			if err != nil {
 				return err
 			}
@@ -219,7 +219,7 @@ func (s *Server) V2Observation(
 	if s.metadata.RemoteMixerDomain != "" {
 		errGroup.Go(func() error {
 			remoteResp := &pbv2.ObservationResponse{}
-			err := fetchRemote(s.metadata, s.httpClient, "/v2/observation", in, remoteResp)
+			err := util.FetchRemote(s.metadata, s.httpClient, "/v2/observation", in, remoteResp)
 			if err != nil {
 				return err
 			}

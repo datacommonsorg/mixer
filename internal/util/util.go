@@ -1,4 +1,4 @@
-// Copyright 2019 Google LLC
+// Copyright 2023 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -26,6 +26,7 @@ import (
 	"log"
 	"math"
 	"math/rand"
+	"net/http"
 	"os"
 	"regexp"
 	"runtime"
@@ -36,10 +37,12 @@ import (
 	secretmanager "cloud.google.com/go/secretmanager/apiv1"
 	"cloud.google.com/go/secretmanager/apiv1/secretmanagerpb"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"golang.org/x/text/cases"
 	"golang.org/x/text/language"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
+	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/proto"
 	"google.golang.org/protobuf/reflect/protoreflect"
 	"googlemaps.github.io/maps"
@@ -570,4 +573,40 @@ func SQLInParam(n int) string {
 func SQLValuesParam(n int) string {
 	str := strings.Repeat("(?),", n)
 	return str[:len(str)-1]
+}
+
+func FetchRemote(
+	metadata *resource.Metadata,
+	httpClient *http.Client,
+	apiPath string,
+	in proto.Message,
+	out proto.Message,
+) error {
+	url := metadata.RemoteMixerDomain + apiPath
+	jsonValue, err := protojson.Marshal(in)
+	if err != nil {
+		return err
+	}
+	request, err := http.NewRequest("POST", url, bytes.NewBuffer(jsonValue))
+	if err != nil {
+		return err
+	}
+	request.Header.Set("Content-Type", "application/json")
+	request.Header.Set("X-API-Key", metadata.RemoteMixerAPIKey)
+	response, err := httpClient.Do(request)
+	if err != nil {
+		return err
+	}
+	defer response.Body.Close()
+	// Read response body
+	var responseBodyBytes []byte
+	if response.StatusCode != http.StatusOK {
+		return fmt.Errorf("remote mixer response not ok: %s", response.Status)
+	}
+	responseBodyBytes, err = io.ReadAll(response.Body)
+	if err != nil {
+		return err
+	}
+	// Convert response body to string
+	return protojson.Unmarshal(responseBodyBytes, out)
 }

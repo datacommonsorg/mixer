@@ -17,7 +17,9 @@ package observation
 
 import (
 	"context"
+	"fmt"
 	"log"
+	"net/http"
 	"net/url"
 	"sort"
 	"strings"
@@ -27,6 +29,7 @@ import (
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/placein"
 	"github.com/datacommonsorg/mixer/internal/server/ranking"
+	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/server/stat"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"github.com/datacommonsorg/mixer/internal/util"
@@ -102,14 +105,38 @@ func trimDirectResp(resp *pbv2.ObservationResponse) *pbv2.ObservationResponse {
 
 // fetch child places
 func fetchChildPlaces(
-	ctx context.Context, store *store.Store, ancestor, childType string,
+	ctx context.Context,
+	store *store.Store,
+	metadata *resource.Metadata,
+	httpClient *http.Client,
+	remoteMixer, ancestor, childType string,
 ) ([]string, error) {
-	// TODO(shifucun): use V2 API
-	childPlacesMap, err := placein.GetPlacesIn(ctx, store, []string{ancestor}, childType)
+	childPlacesMap, err := placein.GetPlacesIn(
+		ctx, store, []string{ancestor}, childType)
 	if err != nil {
 		return nil, err
 	}
 	childPlaces := childPlacesMap[ancestor]
+	// V2 API should always ensure data merging.
+	// Here needs to fetch both local PlacesIn and remote PlacesIn data
+	if remoteMixer != "" {
+		remoteReq := &pbv2.NodeRequest{
+			Nodes:    []string{ancestor},
+			Property: fmt.Sprintf("<-containedInPlace+{typeOf:%s}", childType),
+		}
+		remoteResp := &pbv2.NodeResponse{}
+		err := util.FetchRemote(metadata, httpClient, "/v2/node", remoteReq, remoteResp)
+		if err != nil {
+			return nil, err
+		}
+		if g, ok := remoteResp.Data[ancestor]; ok {
+			for _, arc := range g.Arcs {
+				for _, node := range arc.Nodes {
+					childPlaces = append(childPlaces, node.Dcid)
+				}
+			}
+		}
+	}
 	return childPlaces, nil
 }
 
@@ -117,6 +144,9 @@ func fetchChildPlaces(
 func FetchContainedIn(
 	ctx context.Context,
 	store *store.Store,
+	metadata *resource.Metadata,
+	httpClient *http.Client,
+	remoteMixer string,
 	variables []string,
 	ancestor string,
 	childType string,
@@ -206,7 +236,8 @@ func FetchContainedIn(
 			}
 		}
 		if !readCollectionCache {
-			childPlaces, err = fetchChildPlaces(ctx, store, ancestor, childType)
+			childPlaces, err = fetchChildPlaces(
+				ctx, store, metadata, httpClient, remoteMixer, ancestor, childType)
 			if err != nil {
 				return nil, err
 			}
@@ -218,7 +249,7 @@ func FetchContainedIn(
 					totalSeries,
 				)
 			}
-			log.Println("Fetch series cache / memcache in contained in observation query")
+			log.Println("Fetch series cache in contained-in observation query")
 			directResp, err := FetchDirectBT(
 				ctx,
 				store.BtGroup,
@@ -237,7 +268,8 @@ func FetchContainedIn(
 	// Fetch Data from SQLite database.
 	if store.SQLiteClient != nil {
 		if len(childPlaces) == 0 {
-			childPlaces, err = fetchChildPlaces(ctx, store, ancestor, childType)
+			childPlaces, err = fetchChildPlaces(
+				ctx, store, metadata, httpClient, remoteMixer, ancestor, childType)
 			if err != nil {
 				return nil, err
 			}

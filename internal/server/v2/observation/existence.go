@@ -12,19 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Package observation is for V2 observation API
 package observation
 
 import (
 	"context"
-	"fmt"
 
-	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	"github.com/datacommonsorg/mixer/internal/server/resource"
+	"github.com/datacommonsorg/mixer/internal/server/statvar"
 	"github.com/datacommonsorg/mixer/internal/store"
-	"github.com/datacommonsorg/mixer/internal/store/bigtable"
-	"github.com/datacommonsorg/mixer/internal/util"
-	"google.golang.org/protobuf/proto"
 )
 
 // Existence implements logic to check existence for entity, variable pair.
@@ -32,95 +28,27 @@ import (
 func Existence(
 	ctx context.Context,
 	store *store.Store,
+	cache *resource.Cache,
 	variables []string,
 	entities []string,
 ) (*pbv2.ObservationResponse, error) {
 	result := &pbv2.ObservationResponse{
 		ByVariable: map[string]*pbv2.VariableObservation{},
 	}
-	if store.BqClient != nil {
-		btDataList, err := bigtable.Read(
-			ctx,
-			store.BtGroup,
-			bigtable.BtSVAndSVGExistence,
-			[][]string{entities, variables},
-			func(jsonRaw []byte) (interface{}, error) {
-				var statVarExistence pb.EntityStatVarExistence
-				if err := proto.Unmarshal(jsonRaw, &statVarExistence); err != nil {
-					return nil, err
-				}
-				return &statVarExistence, nil
-			},
-		)
-		if err != nil {
-			return nil, err
-		}
-		for _, btData := range btDataList {
-			for _, row := range btData {
-				e := row.Parts[0]
-				v := row.Parts[1]
-				obsByVar := result.ByVariable // Short alias
-				if _, ok := obsByVar[v]; !ok {
-					obsByVar[v] = &pbv2.VariableObservation{
-						ByEntity: map[string]*pbv2.EntityObservation{},
-					}
-				}
-				obsByVar[v].ByEntity[e] = &pbv2.EntityObservation{}
-			}
-		}
+	countMap, err := statvar.Count(ctx, store, cache, variables, entities)
+	if err != nil {
+		return nil, err
 	}
-	if store.SQLiteClient != nil {
-		// Query
-		query := fmt.Sprintf(
-			`
-				WITH entity_list(entity) AS (
-						VALUES %s
-				),
-				variable_list(variable) AS (
-						VALUES %s
-				),
-				all_pairs AS (
-						SELECT e.entity, v.variable
-						FROM entity_list e
-						CROSS JOIN variable_list v
-				)
-				SELECT a.entity, a.variable, COUNT(o.entity)
-				FROM all_pairs a
-				LEFT JOIN observations o ON a.entity = o.entity AND a.variable = o.variable
-				GROUP BY a.entity, a.variable;
-			`,
-			util.SQLValuesParam(len(entities)),
-			util.SQLValuesParam(len(variables)),
-		)
-		args := entities
-		args = append(args, variables...)
-
-		// Execute query
-		rows, err := store.SQLiteClient.Query(query, util.ConvertArgs(args)...)
-		if err != nil {
-			return nil, err
+	obsByVar := result.ByVariable // Short alias
+	for v := range countMap {
+		if _, ok := obsByVar[v]; !ok {
+			obsByVar[v] = &pbv2.VariableObservation{
+				ByEntity: map[string]*pbv2.EntityObservation{},
+			}
 		}
-		defer rows.Close()
-		if err != nil {
-			return nil, err
-		}
-		for rows.Next() {
-			var e, v string
-			var count int
-			err = rows.Scan(&e, &v, &count)
-			if err != nil {
-				return nil, err
-			}
-			if count == 0 {
-				continue
-			}
-			obsByVar := result.ByVariable // Short alias
-			if _, ok := obsByVar[v]; !ok {
-				obsByVar[v] = &pbv2.VariableObservation{
-					ByEntity: map[string]*pbv2.EntityObservation{},
-				}
-			}
+		for e := range countMap[v] {
 			obsByVar[v].ByEntity[e] = &pbv2.EntityObservation{}
+
 		}
 	}
 	return result, nil

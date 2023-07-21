@@ -112,6 +112,13 @@ func TestSimplePropertyValues(t *testing.T) {
 				500,
 				"",
 			},
+			{
+				"test_var_2.json",
+				[]string{"test_var_2"},
+				"->*",
+				0,
+				"",
+			},
 		} {
 			req := &pbv2.NodeRequest{
 				Nodes:     c.nodes,
