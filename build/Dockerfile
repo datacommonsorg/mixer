@@ -23,7 +23,7 @@ FROM envoyproxy/envoy:v1.26.0 AS envoy
 
 # =========  protoc stage ==========
 
-FROM golang:1.20.6 AS go-protoc
+FROM golang:1.20.4 AS go-protoc
 
 WORKDIR /mixer
 
