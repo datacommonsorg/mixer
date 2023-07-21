@@ -48,7 +48,7 @@ func TestRecognizePlaces(t *testing.T) {
 					"crime in new york state",
 					"California economy and Florida",
 					"life expectancy in Australia and Canada",
-					"in New York city",
+					"life expectancy in New York city and Alabama",
 					"the birds in San Jose are chirpy",
 					"the birds in San Jose, California are chirpy",
 					"the birds in San Jose California are chirpy",

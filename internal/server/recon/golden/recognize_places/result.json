@@ -140,21 +140,6 @@
         }
       ]
     },
-    "in New York city": {
-      "items": [
-        {
-          "span": "in"
-        },
-        {
-          "span": "New York city",
-          "places": [
-            {
-              "dcid": "geoId/3651000"
-            }
-          ]
-        }
-      ]
-    },
     "life expectancy in Australia and Canada": {
       "items": [
         {
@@ -176,6 +161,35 @@
           "places": [
             {
               "dcid": "country/CAN"
+            }
+          ]
+        }
+      ]
+    },
+    "life expectancy in New York city and Alabama": {
+      "items": [
+        {
+          "span": "life expectancy in"
+        },
+        {
+          "span": "New York city",
+          "places": [
+            {
+              "dcid": "geoId/3651000"
+            }
+          ]
+        },
+        {
+          "span": "and"
+        },
+        {
+          "span": "Alabama",
+          "places": [
+            {
+              "dcid": "geoId/01"
+            },
+            {
+              "dcid": "wikidataId/Q3709658"
             }
           ]
         }
