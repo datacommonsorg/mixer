@@ -52,6 +52,7 @@ func TestExistence(t *testing.T) {
 					"GenderIncomeInequality_Person_15OrMoreYears_WithIncome",
 					"dummy",
 					"test_var_1",
+					"dc/g/SQL",
 				},
 				"existence.json",
 			},
@@ -87,7 +88,7 @@ func TestExistence(t *testing.T) {
 	}
 	if err := test.TestDriver(
 		"Observation(existence)",
-		&test.TestOption{UseSQLite: true},
+		&test.TestOption{UseCache: true, UseSQLite: true},
 		testSuite,
 	); err != nil {
 		t.Errorf("TestDriver() = %s", err)

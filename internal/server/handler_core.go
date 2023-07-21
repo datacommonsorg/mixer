@@ -16,14 +16,9 @@
 package server
 
 import (
-	"bytes"
 	"context"
-	"fmt"
-	"io"
-	"net/http"
 
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
-	"github.com/datacommonsorg/mixer/internal/server/resource"
 	v1e "github.com/datacommonsorg/mixer/internal/server/v1/event"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	v2e "github.com/datacommonsorg/mixer/internal/server/v2/event"
@@ -34,45 +29,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
-	"google.golang.org/protobuf/encoding/protojson"
-	"google.golang.org/protobuf/proto"
 )
-
-func fetchRemote(
-	metadata *resource.Metadata,
-	httpClient *http.Client,
-	apiPath string,
-	in proto.Message,
-	out proto.Message,
-) error {
-	url := metadata.RemoteMixerDomain + apiPath
-	jsonValue, err := protojson.Marshal(in)
-	if err != nil {
-		return err
-	}
-	request, err := http.NewRequest("POST", url, bytes.NewBuffer(jsonValue))
-	if err != nil {
-		return err
-	}
-	request.Header.Set("Content-Type", "application/json")
-	request.Header.Set("X-API-Key", metadata.RemoteMixerAPIKey)
-	response, err := httpClient.Do(request)
-	if err != nil {
-		return err
-	}
-	defer response.Body.Close()
-	// Read response body
-	var responseBodyBytes []byte
-	if response.StatusCode != http.StatusOK {
-		return fmt.Errorf("remote mixer response not ok: %s", response.Status)
-	}
-	responseBodyBytes, err = io.ReadAll(response.Body)
-	if err != nil {
-		return err
-	}
-	// Convert response body to string
-	return protojson.Unmarshal(responseBodyBytes, out)
-}
 
 // V2ResolveCore gets resolve results from Cloud Bigtable and Maps API.
 func (s *Server) V2ResolveCore(
@@ -359,6 +316,9 @@ func (s *Server) V2ObservationCore(
 			return v2observation.FetchContainedIn(
 				ctx,
 				s.store,
+				s.metadata,
+				s.httpClient,
+				s.metadata.RemoteMixerDomain,
 				variable.GetDcids(),
 				g.Subject,
 				typeOfs[0],
@@ -384,7 +344,7 @@ func (s *Server) V2ObservationCore(
 			if len(variable.GetDcids()) > 0 {
 				// Have both entity.dcids and variable.dcids. Check existence cache.
 				return v2observation.Existence(
-					ctx, s.store, variable.GetDcids(), entity.GetDcids())
+					ctx, s.store, s.cache, variable.GetDcids(), entity.GetDcids())
 			}
 			// TODO: Support appending entities from entity.expression
 			// Only have entity.dcids, fetch variables for each entity.

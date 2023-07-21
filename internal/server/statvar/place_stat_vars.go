@@ -1,4 +1,4 @@
-// Copyright 2019 Google LLC
+// Copyright 2023 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -20,6 +20,7 @@ import (
 	"strings"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"github.com/datacommonsorg/mixer/internal/util"
@@ -31,7 +32,10 @@ import (
 // GetPlaceStatsVar implements API for Mixer.GetPlaceStatsVar.
 // TODO(shifucun): Migrate clients to use GetPlaceStatVars and deprecate this.
 func GetPlaceStatsVar(
-	ctx context.Context, in *pb.GetPlaceStatsVarRequest, store *store.Store) (
+	ctx context.Context,
+	in *pb.GetPlaceStatsVarRequest,
+	store *store.Store,
+) (
 	*pb.GetPlaceStatsVarResponse, error,
 ) {
 	dcids := in.GetDcids()
@@ -129,7 +133,10 @@ func GetEntityStatVarsHelper(
 
 // GetEntityStatVarsUnionV1 implements API for Mixer.GetEntityStatVarsUnionV1.
 func GetEntityStatVarsUnionV1(
-	ctx context.Context, in *pb.GetEntityStatVarsUnionRequest, store *store.Store,
+	ctx context.Context,
+	in *pb.GetEntityStatVarsUnionRequest,
+	store *store.Store,
+	cache *resource.Cache,
 ) (*pb.GetEntityStatVarsUnionResponse, error) {
 	// Check entities
 	entities := in.GetDcids()
@@ -151,7 +158,7 @@ func GetEntityStatVarsUnionV1(
 	// entities. This is faster than getting all the stat vars for each entity and
 	// then filtering.
 	if len(filterStatVars) > 0 && len(entities) > 0 {
-		statVarCount, err := Count(ctx, store, filterStatVars, entities)
+		statVarCount, err := Count(ctx, store, cache, filterStatVars, entities)
 		if err != nil {
 			return nil, err
 		}

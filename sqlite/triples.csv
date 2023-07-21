@@ -19,13 +19,13 @@ dc/g/SQL,specializationOf,dc/g/Root,
 dc/g/SQLite,typeOf,StatVarGroup,
 dc/g/SQLite,name,,"SQLite stat var group"
 dc/g/SQLite,specializationOf,dc/g/SQL,
-total_sql_query,typeOf,StatisticalVariable,
-total_sql_query,measuredProperty,total_sql_query,
-total_sql_query,statType,measuredValue,
-total_sql_query,description,,"total number of sql query used"
-total_sql_query,memberOf,dc/g/SQLite,
-total_sql_join,typeOf,StatisticalVariable,
-total_sql_join,measuredProperty,total_sql_join,
-total_sql_join,statType,measuredValue,
-total_sql_join,description,,"total number of sql joins"
-total_sql_join,memberOf,dc/g/SQLite,
+test_var_1,typeOf,StatisticalVariable,
+test_var_1,measuredProperty,test_var_1,
+test_var_1,statType,measuredValue,
+test_var_1,description,,"total number of sql query used"
+test_var_1,memberOf,dc/g/SQLite,
+test_var_2,typeOf,StatisticalVariable,
+test_var_2,measuredProperty,test_var_2,
+test_var_2,statType,measuredValue,
+test_var_2,description,,"total number of sql joins"
+test_var_2,memberOf,dc/g/SQLite,

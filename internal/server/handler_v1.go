@@ -1,4 +1,4 @@
-// Copyright 2022 Google LLC
+// Copyright 2023 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -34,6 +34,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/v1/triples"
 	"github.com/datacommonsorg/mixer/internal/server/v1/variable"
 	"github.com/datacommonsorg/mixer/internal/server/v1/variables"
+	"github.com/datacommonsorg/mixer/internal/util"
 )
 
 const foldedSvgRoot = "dc/g/Folded_Root"
@@ -146,7 +147,7 @@ func (s *Server) BulkPlaceInfo(
 		}
 		if len(in.Nodes) > 0 {
 			remoteResp := &pbv1.BulkPlaceInfoResponse{}
-			if err := fetchRemote(
+			if err := util.FetchRemote(
 				s.metadata,
 				s.httpClient,
 				"/v1/bulk/info/place",
@@ -200,7 +201,7 @@ func (s *Server) BulkVariableInfo(
 		}
 		if len(in.Nodes) > 0 {
 			remoteResp := &pbv1.BulkVariableInfoResponse{}
-			if err := fetchRemote(
+			if err := util.FetchRemote(
 				s.metadata,
 				s.httpClient,
 				"/v1/bulk/info/variable",
@@ -255,7 +256,7 @@ func (s *Server) BulkVariableGroupInfo(
 			}
 		}
 		remoteResp := &pbv1.BulkVariableGroupInfoResponse{}
-		if err := fetchRemote(
+		if err := util.FetchRemote(
 			s.metadata,
 			s.httpClient,
 			"/v1/bulk/info/variable-group",
@@ -413,7 +414,7 @@ func (s *Server) PlacePage(ctx context.Context, in *pbv1.PlacePageRequest) (
 	}
 	if len(localResp.GetStatVarSeries()) == 0 && s.metadata.RemoteMixerDomain != "" {
 		remoteResp := &pbv1.PlacePageResponse{}
-		if err := fetchRemote(
+		if err := util.FetchRemote(
 			s.metadata,
 			s.httpClient,
 			"/v1/internal/page/place",
@@ -437,7 +438,7 @@ func (s *Server) VariableAncestors(
 	}
 	if len(localResp.Ancestors) == 0 && s.metadata.RemoteMixerDomain != "" {
 		remoteResp := &pbv1.VariableAncestorsResponse{}
-		if err := fetchRemote(
+		if err := util.FetchRemote(
 			s.metadata,
 			s.httpClient,
 			"/v1/variable/ancestors",

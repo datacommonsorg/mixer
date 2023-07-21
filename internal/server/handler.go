@@ -1,4 +1,4 @@
-// Copyright 2021 Google LLC
+// Copyright 2023 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -35,6 +35,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/v0/propertyvalue"
 	"github.com/datacommonsorg/mixer/internal/server/v0/statpoint"
 	"github.com/datacommonsorg/mixer/internal/server/v0/triple"
+	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/protobuf/encoding/protojson"
 )
 
@@ -131,7 +132,7 @@ func (s *Server) GetRelatedLocations(
 	if len(localResp.GetData()) == 0 &&
 		s.metadata.RemoteMixerDomain != "" {
 		remoteResp := &pb.GetRelatedLocationsResponse{}
-		if err := fetchRemote(
+		if err := util.FetchRemote(
 			s.metadata, s.httpClient, "/v1/place/related", in, remoteResp); err != nil {
 			return nil, err
 		}
@@ -151,7 +152,7 @@ func (s *Server) GetLocationsRankings(
 	if len(localResp.GetData()) == 0 &&
 		s.metadata.RemoteMixerDomain != "" {
 		remoteResp := &pb.GetLocationsRankingsResponse{}
-		if err := fetchRemote(
+		if err := util.FetchRemote(
 			s.metadata, s.httpClient, "/v1/place/ranking", in, remoteResp); err != nil {
 			return nil, err
 		}
@@ -187,7 +188,7 @@ func (s *Server) GetPlaceStatVars(
 func (s *Server) GetEntityStatVarsUnionV1(
 	ctx context.Context, in *pb.GetEntityStatVarsUnionRequest,
 ) (*pb.GetEntityStatVarsUnionResponse, error) {
-	return statvar.GetEntityStatVarsUnionV1(ctx, in, s.store)
+	return statvar.GetEntityStatVarsUnionV1(ctx, in, s.store, s.cache)
 }
 
 // SearchStatVar implements API for Mixer.SearchStatVar.
