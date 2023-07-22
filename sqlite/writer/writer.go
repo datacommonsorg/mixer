@@ -204,9 +204,14 @@ func (w *Writer) writeOutput(observations []*observation,
 	}
 	defer fObservations.Close()
 	wObservations := csv.NewWriter(fObservations)
-	wObservations.Write(w.observationsHeader)
+	if err := wObservations.Write(w.observationsHeader); err != nil {
+		return err
+	}
 	for _, o := range observations {
-		wObservations.Write([]string{o.entity, o.variable, o.date, o.value})
+		if err := wObservations.Write(
+			[]string{o.entity, o.variable, o.date, o.value}); err != nil {
+			return err
+		}
 	}
 	wObservations.Flush()
 
@@ -217,9 +222,14 @@ func (w *Writer) writeOutput(observations []*observation,
 	}
 	defer fTriples.Close()
 	wTriples := csv.NewWriter(fTriples)
-	wTriples.Write(w.triplesHeader)
+	if err := wTriples.Write(w.triplesHeader); err != nil {
+		return err
+	}
 	for _, t := range triples {
-		wTriples.Write([]string{t.subjectID, t.predicate, t.objectID, t.objectValue})
+		if err := wTriples.Write(
+			[]string{t.subjectID, t.predicate, t.objectID, t.objectValue}); err != nil {
+			return err
+		}
 	}
 	wTriples.Flush()
 
