@@ -178,8 +178,8 @@ func main() {
 	}
 
 	// Store
-	if len(tables) == 0 && *remoteMixerDomain == "" {
-		log.Fatal("No bigtables or remote mixer domain are provided")
+	if len(tables) == 0 && *remoteMixerDomain == "" && sqlClient == nil {
+		log.Fatal("No bigtables or remote mixer domain or sql database are provided")
 	}
 	store, err := store.NewStore(
 		bqClient, sqlClient, tables, branchTableName, metadata)

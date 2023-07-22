@@ -1,0 +1,58 @@
+{
+  "data": {
+    "test_var_2": {
+      "arcs": {
+        "description": {
+          "nodes": [
+            {
+              "types": [
+                "Thing"
+              ],
+              "value": "total number of sql joins"
+            }
+          ]
+        },
+        "measuredProperty": {
+          "nodes": [
+            {
+              "types": [
+                "Thing"
+              ],
+              "dcid": "test_var_2"
+            }
+          ]
+        },
+        "memberOf": {
+          "nodes": [
+            {
+              "types": [
+                "Thing"
+              ],
+              "dcid": "dc/g/SQLite"
+            }
+          ]
+        },
+        "statType": {
+          "nodes": [
+            {
+              "types": [
+                "Thing"
+              ],
+              "dcid": "measuredValue"
+            }
+          ]
+        },
+        "typeOf": {
+          "nodes": [
+            {
+              "types": [
+                "Thing"
+              ],
+              "dcid": "StatisticalVariable"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

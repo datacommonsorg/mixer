@@ -1,4 +1,4 @@
-// Copyright 2022 Google LLC
+// Copyright 2023 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -76,14 +76,12 @@ func GetPlacesIn(
 			}
 		}
 	}
-
 	if store.SQLiteClient != nil {
 		// Only queries based on direct containedInPlace for now.
 		// This could extend to more hops and even link with BT cache data, but that
 		// might make it too complicated.
 		// In custom DC, it's reasonable to ask user to provide direct containment
 		// relation.
-
 		query := fmt.Sprintf(
 			`
 				SELECT t1.subject_id, t2.object_id

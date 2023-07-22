@@ -1,4 +1,4 @@
-// Copyright 2022 Google LLC
+// Copyright 2023 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -50,7 +50,11 @@ func Fetch(
 	*pbv1.PaginationInfo,
 	error,
 ) {
-	var resp map[string]map[string]map[string][]*pb.EntityInfo
+	resp := map[string]map[string]map[string][]*pb.EntityInfo{}
+	if len(nodes) == 0 || len(properties) == 0 {
+		return resp, nil, nil
+	}
+
 	var pg *pbv1.PaginationInfo
 	var err error
 	if store.BtGroup != nil {
@@ -133,7 +137,6 @@ func fetchSQLite(
 	args := []string{}
 	args = append(args, nodes...)
 	args = append(args, properties...)
-	args = append(args, matchColumn)
 	// Execute query
 	rows, err := sqliteClient.Query(query, util.ConvertArgs(args)...)
 	if err != nil {
