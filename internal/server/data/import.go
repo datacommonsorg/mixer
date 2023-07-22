@@ -16,16 +16,25 @@ package data
 
 import (
 	"context"
+	"net/http"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	"github.com/datacommonsorg/mixer/internal/server/resource"
+	"github.com/datacommonsorg/mixer/sqlite/writer"
 )
 
 // Import implements API for Mixer.Import.
 func Import(
 	ctx context.Context,
 	in *pb.ImportRequest,
+	metadata *resource.Metadata,
+	httpClient *http.Client,
 ) (*pb.ImportResponse, error) {
-	return &pb.ImportResponse{
-		Success: true,
-	}, nil
+	if err := writer.Write(in.GetInputDir(),
+		in.GetOutputDir(),
+		metadata,
+		httpClient); err != nil {
+		return nil, err
+	}
+	return &pb.ImportResponse{Success: true}, nil
 }

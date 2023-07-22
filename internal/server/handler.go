@@ -320,5 +320,5 @@ func (s *Server) BulkFindEntities(
 func (s *Server) Import(
 	ctx context.Context, in *pb.ImportRequest,
 ) (*pb.ImportResponse, error) {
-	return data.Import(ctx, in)
+	return data.Import(ctx, in, s.metadata, s.httpClient)
 }

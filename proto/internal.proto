@@ -37,11 +37,13 @@ message GetBioPageDataRequest {
 // Request to Import raw data files into database.
 // Currently only support import into SQLite database.
 message ImportRequest {
-  // String representaion of schema mappings used to translate.
-  string file_path = 1;
+  // Directory that contains all CSV files for the import.
+  string input_dir = 1;
+  // Directory to which SQLite CSV files are written.
+  string output_dir = 2;
 }
 
-// Response of a import request.
+// Response of import request.
 message ImportResponse {
   // Whether the import is successful.
   bool success = 1;
