@@ -3,7 +3,6 @@ package writer
 import (
 	"encoding/csv"
 	"fmt"
-	"io/ioutil"
 	"net/http"
 	"os"
 	"path/filepath"
@@ -91,7 +90,7 @@ func (w *Writer) Write() error {
 }
 
 func listCSVFiles(dir string) ([]string, error) {
-	files, err := ioutil.ReadDir(dir)
+	files, err := os.ReadDir(dir)
 	if err != nil {
 		return nil, err
 	}
