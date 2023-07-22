@@ -3,7 +3,9 @@ package main
 import (
 	"flag"
 	"log"
+	"net/http"
 
+	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/sqlite/writer"
 )
 
@@ -17,8 +19,13 @@ var (
 )
 
 func main() {
-	w := writer.New(*inputDir, *outputDir)
-	if err := w.Write(); err != nil {
+	if err := writer.Write(*inputDir,
+		*outputDir,
+		&resource.Metadata{
+			RemoteMixerDomain: "https://api.datacommons.org",
+			RemoteMixerAPIKey: "AIzaSyCTI4Xz-UW_G2Q2RfknhcfdAnTHq5X5XuI",
+		},
+		&http.Client{}); err != nil {
 		log.Fatalf("writer.Write() = %v", err)
 	}
 }
