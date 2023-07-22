@@ -33,3 +33,16 @@ message GetBioPageDataRequest {
   // The dcid of the entity
   string dcid = 1;
 }
+
+// Request to Import raw data files into database.
+// Currently only support import into SQLite database.
+message ImportRequest {
+  // String representaion of schema mappings used to translate.
+  string file_path = 1;
+}
+
+// Response of a import request.
+message ImportResponse {
+  // Whether the import is successful.
+  bool success = 1;
+}
