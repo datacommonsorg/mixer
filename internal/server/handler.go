@@ -316,6 +316,7 @@ func (s *Server) BulkFindEntities(
 	return recon.BulkFindEntities(ctx, in, s.store, s.mapsClient)
 }
 
+// Import implements API for Mixer.Import
 func (s *Server) Import(
 	ctx context.Context, in *pb.ImportRequest,
 ) (*pb.ImportResponse, error) {
