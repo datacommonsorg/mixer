@@ -75,6 +75,7 @@ RUN GRPC_HEALTH_PROBE_VERSION=v0.4.7 && \
 # Build binary
 COPY cmd/ cmd
 COPY esp/ esp
+COPY sqlite/ sqlite
 RUN go build -o /go/bin/mixer cmd/main.go
 
 
