@@ -22,6 +22,7 @@ import (
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/convert"
+	"github.com/datacommonsorg/mixer/internal/server/data"
 	"github.com/datacommonsorg/mixer/internal/server/place"
 	"github.com/datacommonsorg/mixer/internal/server/placein"
 	"github.com/datacommonsorg/mixer/internal/server/recon"
@@ -313,4 +314,11 @@ func (s *Server) BulkFindEntities(
 	ctx context.Context, in *pb.BulkFindEntitiesRequest,
 ) (*pb.BulkFindEntitiesResponse, error) {
 	return recon.BulkFindEntities(ctx, in, s.store, s.mapsClient)
+}
+
+// Import implements API for Mixer.Import
+func (s *Server) Import(
+	ctx context.Context, in *pb.ImportRequest,
+) (*pb.ImportResponse, error) {
+	return data.Import(ctx, in)
 }
