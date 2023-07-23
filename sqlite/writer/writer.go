@@ -31,11 +31,18 @@ import (
 	"google.golang.org/grpc/status"
 )
 
+var triplesInitData = []*triple{
+	{subjectID: "dc/g/New", predicate: "typeOf", objectID: "StatVarGroup"},
+	{subjectID: "dc/g/New", predicate: "name", objectValue: "New Variables"},
+	{subjectID: "dc/g/New", predicate: "specializationOf", objectID: "dc/g/Root"},
+}
+
 type observation struct {
-	entity   string
-	variable string
-	date     string
-	value    string
+	entity     string
+	variable   string
+	date       string
+	value      string
+	provenance string
 }
 
 type triple struct {
@@ -57,10 +64,12 @@ func Write(resourceMetadata *resource.Metadata) error {
 	}
 
 	observationList := []*observation{}
+	tripleList := triplesInitData
 	variableSet := map[string]struct{}{}
 	for _, csvFile := range csvFiles {
+		provID := fmt.Sprintf("dc/custom/%s", strings.TrimRight(csvFile, ".csv"))
 		observations, variables, err := processCSVFile(
-			resourceMetadata, fileDir, csvFile)
+			resourceMetadata, fileDir, csvFile, provID)
 		if err != nil {
 			return err
 		}
@@ -68,31 +77,26 @@ func Write(resourceMetadata *resource.Metadata) error {
 		for _, v := range variables {
 			variableSet[v] = struct{}{}
 		}
+		tripleList = append(tripleList,
+			&triple{
+				subjectID: provID,
+				predicate: "dcid",
+				objectID:  provID,
+			},
+			&triple{
+				subjectID: provID,
+				predicate: "typeOf",
+				objectID:  "Provenance",
+			},
+			&triple{
+				subjectID:   provID,
+				predicate:   "url",
+				objectValue: filepath.Join(fileDir, csvFile),
+			},
+		)
 	}
-
-	tripleList := []*triple{}
-	tripleList = append(
-		tripleList,
-		&triple{
-			subjectID: "dc/g/New",
-			predicate: "typeOf",
-			objectID:  "StatVarGroup",
-		},
-		&triple{
-			subjectID:   "dc/g/New",
-			predicate:   "name",
-			objectValue: "New Variables",
-		},
-		&triple{
-			subjectID: "dc/g/New",
-			predicate: "specializationOf",
-			objectID:  "dc/g/Root",
-		},
-	)
-
 	for variable := range variableSet {
-		tripleList = append(
-			tripleList,
+		tripleList = append(tripleList,
 			&triple{
 				subjectID: variable,
 				predicate: "typeOf",
@@ -130,7 +134,12 @@ func listCSVFiles(dir string) ([]string, error) {
 	return res, nil
 }
 
-func processCSVFile(medatata *resource.Metadata, fileDir string, csvFile string) (
+func processCSVFile(
+	medatata *resource.Metadata,
+	fileDir string,
+	csvFile string,
+	provID string,
+) (
 	[]*observation,
 	[]string, // A list of variables.
 	error,
@@ -182,10 +191,11 @@ func processCSVFile(medatata *resource.Metadata, fileDir string, csvFile string)
 
 		for j := 2; j < numColumns; j++ {
 			observations = append(observations, &observation{
-				entity:   resolvedPlace,
-				variable: header[j],
-				date:     record[1],
-				value:    record[j],
+				entity:     resolvedPlace,
+				variable:   header[j],
+				date:       record[1],
+				value:      record[j],
+				provenance: provID,
 			})
 		}
 	}
@@ -293,8 +303,8 @@ func writeOutput(
 
 	// Observations.
 	for _, o := range observations {
-		sqlStmt := `INSERT INTO observations(entity,variable,date,value) VALUES (?, ?, ?, ?)`
-		_, err = db.Exec(sqlStmt, o.entity, o.variable, o.date, o.value)
+		sqlStmt := `INSERT INTO observations(entity,variable,date,value,provenance) VALUES (?, ?, ?, ?, ?)`
+		_, err = db.Exec(sqlStmt, o.entity, o.variable, o.date, o.value, o.provenance)
 		if err != nil {
 			return err
 		}
