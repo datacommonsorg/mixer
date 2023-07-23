@@ -9,7 +9,7 @@ import (
 )
 
 var (
-	sqlite_dir = flag.String("input_dir", "", "SQLite directory.")
+	sqlite_dir = flag.String("sqlite_dir", "/Users/wsws/Software/mixer/sqlite/writer/test_data", "SQLite directory.")
 )
 
 func main() {
