@@ -238,11 +238,10 @@ func resolvePlaces(
 func prepareDatabase(fileDir string) error {
 	dbPath := path.Join(fileDir, "datacommons.db")
 	_, err := os.Stat(dbPath)
-	if err != nil {
-		if os.IsNotExist(err) {
-			os.Create(dbPath)
-		} else {
-			return nil
+	if os.IsNotExist(err) {
+		_, err := os.Create(dbPath)
+		if err != nil {
+			return err
 		}
 	}
 	db, err := sql.Open("sqlite3", dbPath)
