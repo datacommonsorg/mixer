@@ -1,3 +1,17 @@
+// Copyright 2023 Google LLC
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
 package writer
 
 import (
@@ -5,6 +19,8 @@ import (
 	"fmt"
 	"net/http"
 	"os"
+	"os/exec"
+	"path"
 	"path/filepath"
 	"strings"
 
@@ -13,6 +29,11 @@ import (
 	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
+)
+
+var (
+	observationsHeader = []string{"entity", "variable", "date", "value"}
+	triplesHeader      = []string{"subject_id", "predicate", "object_id", "object_value"}
 )
 
 type observation struct {
@@ -29,45 +50,29 @@ type triple struct {
 	objectValue string
 }
 
-// Writer is an object for SQLite writer.
-type Writer struct {
-	inputDir           string
-	outputDir          string
-	resourceMetadata   *resource.Metadata
-	httpClient         *http.Client
-	observationsHeader []string
-	triplesHeader      []string
+type context struct {
+	fileDir          string
+	resourceMetadata *resource.Metadata
 }
 
-// New creates a new Writer instance.
-func New(inputDir, outputDir string) *Writer {
-	return &Writer{
-		inputDir:  inputDir,
-		outputDir: outputDir,
-		resourceMetadata: &resource.Metadata{
-			RemoteMixerDomain: "https://api.datacommons.org",
-			RemoteMixerAPIKey: "AIzaSyCTI4Xz-UW_G2Q2RfknhcfdAnTHq5X5XuI",
-		},
-		httpClient:         &http.Client{},
-		observationsHeader: []string{"entity", "variable", "date", "value"},
-		triplesHeader:      []string{"subject_id", "predicate", "object_id", "object_value"},
-	}
-}
-
-// Write performs the writing.
-func (w *Writer) Write() error {
-	csvFiles, err := listCSVFiles(w.inputDir)
+// Write writes raw CSV files to SQLite CSV files.
+func WriteCSV(resourceMetadata *resource.Metadata) error {
+	fileDir := resourceMetadata.SQLitePath
+	csvFiles, err := listCSVFiles(fileDir)
 	if err != nil {
 		return err
 	}
 	if len(csvFiles) == 0 {
-		return status.Errorf(codes.FailedPrecondition, "No CSV files found in %s", w.inputDir)
+		return status.Errorf(codes.FailedPrecondition, "No CSV files found in %s", fileDir)
 	}
 
 	observationList := []*observation{}
 	variableSet := map[string]struct{}{}
 	for _, csvFile := range csvFiles {
-		observations, variables, err := w.processCSVFile(csvFile)
+		observations, variables, err := processCSVFile(&context{
+			fileDir:          fileDir,
+			resourceMetadata: resourceMetadata,
+		}, csvFile)
 		if err != nil {
 			return err
 		}
@@ -78,15 +83,69 @@ func (w *Writer) Write() error {
 	}
 
 	tripleList := []*triple{}
-	for variable := range variableSet {
-		tripleList = append(tripleList, &triple{
-			subjectID: variable,
+	tripleList = append(
+		tripleList,
+		&triple{
+			subjectID: "dc/g/New",
 			predicate: "typeOf",
-			objectID:  "StatisticalVariable",
-		})
+			objectID:  "StatVarGroup",
+		},
+		&triple{
+			subjectID:   "dc/g/New",
+			predicate:   "name",
+			objectValue: "New Variables",
+		},
+		&triple{
+			subjectID: "dc/g/New",
+			predicate: "specializationOf",
+			objectID:  "dc/g/Root",
+		},
+	)
+
+	for variable := range variableSet {
+		tripleList = append(
+			tripleList,
+			&triple{
+				subjectID: variable,
+				predicate: "typeOf",
+				objectID:  "StatisticalVariable",
+			},
+			&triple{
+				subjectID: variable,
+				predicate: "memberOf",
+				objectID:  "dc/g/New",
+			},
+			&triple{
+				subjectID:   variable,
+				predicate:   "description",
+				objectValue: variable,
+			},
+		)
 	}
 
-	return w.writeOutput(observationList, tripleList)
+	return writeOutput(observationList, tripleList, path.Join(fileDir, "internal"))
+}
+
+func WriteSQLite(fileDir string) error {
+	script := fmt.Sprintf(`
+sqlite3 %s <<EOF
+DROP TABLE IF EXISTS observations;
+DROP TABLE IF EXISTS triples;
+.headers on
+.mode csv
+.import %s observations
+.import %s triples
+EOF`,
+		path.Join(fileDir, "datacommons.db"),
+		path.Join(fileDir, "internal", "observations.csv"),
+		path.Join(fileDir, "internal", "triples.csv"),
+	)
+	cmd := exec.Command(
+		"bash",
+		"-c",
+		script,
+	)
+	return cmd.Run()
 }
 
 func listCSVFiles(dir string) ([]string, error) {
@@ -105,11 +164,11 @@ func listCSVFiles(dir string) ([]string, error) {
 	return res, nil
 }
 
-func (w *Writer) processCSVFile(csvFile string) ([]*observation,
+func processCSVFile(ctx *context, csvFile string) ([]*observation,
 	[]string, // A list of variables.
 	error) {
 	// Read the CSV file.
-	f, err := os.Open(filepath.Join(w.inputDir, csvFile))
+	f, err := os.Open(filepath.Join(ctx.fileDir, csvFile))
 	if err != nil {
 		return nil, nil, err
 	}
@@ -137,7 +196,7 @@ func (w *Writer) processCSVFile(csvFile string) ([]*observation,
 	for i := 1; i < numRecords; i++ {
 		places = append(places, records[i][0])
 	}
-	resolvedPlaceMap, err := w.resolvePlaces(places, header[0])
+	resolvedPlaceMap, err := resolvePlaces(ctx, places, header[0])
 	if err != nil {
 		return nil, nil, err
 	}
@@ -166,7 +225,9 @@ func (w *Writer) processCSVFile(csvFile string) ([]*observation,
 	return observations, header[2:], nil
 }
 
-func (w *Writer) resolvePlaces(places []string, placeHeader string) (map[string]string, error) {
+func resolvePlaces(ctx *context,
+	places []string,
+	placeHeader string) (map[string]string, error) {
 	placeToDCID := map[string]string{}
 
 	if placeHeader == "lat#lng" {
@@ -175,7 +236,8 @@ func (w *Writer) resolvePlaces(places []string, placeHeader string) (map[string]
 		// TODO(ws): name recon.
 	} else {
 		resp := &pbv2.ResolveResponse{}
-		if err := util.FetchRemote(w.resourceMetadata, w.httpClient, "/v2/resolve",
+		httpClient := &http.Client{}
+		if err := util.FetchRemote(ctx.resourceMetadata, httpClient, "/v2/resolve",
 			&pbv2.ResolveRequest{
 				Nodes:    places,
 				Property: fmt.Sprintf("<-%s->dcid", placeHeader),
@@ -194,16 +256,22 @@ func (w *Writer) resolvePlaces(places []string, placeHeader string) (map[string]
 	return placeToDCID, nil
 }
 
-func (w *Writer) writeOutput(observations []*observation,
-	triples []*triple) error {
+func writeOutput(
+	observations []*observation,
+	triples []*triple,
+	outputDir string,
+) error {
+	if err := os.MkdirAll(outputDir, 0755); err != nil {
+		return err
+	}
 	// Observations.
-	fObservations, err := os.Create(filepath.Join(w.outputDir, "observations.csv"))
+	fObservations, err := os.Create(filepath.Join(outputDir, "observations.csv"))
 	if err != nil {
 		return err
 	}
 	defer fObservations.Close()
 	wObservations := csv.NewWriter(fObservations)
-	if err := wObservations.Write(w.observationsHeader); err != nil {
+	if err := wObservations.Write(observationsHeader); err != nil {
 		return err
 	}
 	for _, o := range observations {
@@ -215,13 +283,13 @@ func (w *Writer) writeOutput(observations []*observation,
 	wObservations.Flush()
 
 	// Triples.
-	fTriples, err := os.Create(filepath.Join(w.outputDir, "triples.csv"))
+	fTriples, err := os.Create(filepath.Join(outputDir, "triples.csv"))
 	if err != nil {
 		return err
 	}
 	defer fTriples.Close()
 	wTriples := csv.NewWriter(fTriples)
-	if err := wTriples.Write(w.triplesHeader); err != nil {
+	if err := wTriples.Write(triplesHeader); err != nil {
 		return err
 	}
 	for _, t := range triples {

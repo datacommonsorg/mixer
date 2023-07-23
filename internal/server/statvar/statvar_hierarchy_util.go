@@ -148,7 +148,8 @@ func getSynonymMap() map[string][]string {
 func BuildStatVarSearchIndex(
 	rawSvg map[string]*pb.StatVarGroupNode,
 	parentSvg map[string][]string,
-	ignoredSvgIds []string) *resource.SearchIndex {
+	ignoredSvgIds []string,
+) *resource.SearchIndex {
 	defer util.TimeTrack(time.Now(), "BuildStatVarSearchIndex")
 	// map of token to map of sv/svg id to ranking information.
 	searchIndex := &resource.SearchIndex{

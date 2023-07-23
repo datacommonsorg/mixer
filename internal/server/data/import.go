@@ -16,16 +16,52 @@ package data
 
 import (
 	"context"
+	"database/sql"
+	"path"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	"github.com/datacommonsorg/mixer/internal/server/cache"
+	"github.com/datacommonsorg/mixer/internal/server/resource"
+	"github.com/datacommonsorg/mixer/internal/store"
+	"github.com/datacommonsorg/mixer/sqlite/writer"
 )
 
 // Import implements API for Mixer.Import.
 func Import(
 	ctx context.Context,
 	in *pb.ImportRequest,
-) (*pb.ImportResponse, error) {
-	return &pb.ImportResponse{
-		Success: true,
-	}, nil
+	st *store.Store,
+	metadata *resource.Metadata,
+	openSql bool,
+) (*resource.Cache, error) {
+	var err error
+	if err = writer.WriteCSV(
+		metadata,
+	); err != nil {
+		return nil, err
+	}
+	if err := writer.WriteSQLite(metadata.SQLitePath); err != nil {
+		return nil, err
+	}
+	var c *resource.Cache
+	if openSql {
+		sqlClient, err := sql.Open(
+			"sqlite3", path.Join(metadata.SQLitePath, "datacommons.db"))
+		if err != nil {
+			return nil, err
+		}
+		st.SQLiteClient = sqlClient
+		c, err = cache.NewCache(
+			ctx,
+			st,
+			cache.SearchOptions{
+				UseSearch:           true,
+				BuildSvgSearchIndex: true,
+			},
+		)
+		if err != nil {
+			return nil, err
+		}
+	}
+	return c, nil
 }

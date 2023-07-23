@@ -31,6 +31,7 @@ import (
 	"cloud.google.com/go/bigquery"
 	pbs "github.com/datacommonsorg/mixer/internal/proto/service"
 	"github.com/datacommonsorg/mixer/internal/server"
+	"github.com/datacommonsorg/mixer/internal/server/cache"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
@@ -48,7 +49,7 @@ type TestOption struct {
 	UseCache          bool
 	UseCustomTable    bool
 	UseSQLite         bool
-	SearchOptions     server.SearchOptions
+	SearchOptions     cache.SearchOptions
 	RemoteMixerDomain string
 }
 
@@ -73,7 +74,7 @@ const (
 // Setup creates local server and client.
 func Setup(option ...*TestOption) (pbs.MixerClient, error) {
 	useCache, useCustomTable, useSQLite, remoteMixerDomain := false, false, false, ""
-	var searchOptions server.SearchOptions
+	var searchOptions cache.SearchOptions
 	if len(option) == 1 {
 		useCache = option[0].UseCache
 		useCustomTable = option[0].UseCustomTable
@@ -96,7 +97,7 @@ func Setup(option ...*TestOption) (pbs.MixerClient, error) {
 
 func setupInternal(
 	bigqueryVersionFile, baseBigtableInfoYaml, testBigtableInfoYaml, mcfPath string,
-	useCache, useCustomTable, useSQLite bool, searchOptions server.SearchOptions,
+	useCache, useCustomTable, useSQLite bool, searchOptions cache.SearchOptions,
 	remoteMixerDomain string,
 ) (pbs.MixerClient, error) {
 	ctx := context.Background()
@@ -138,6 +139,7 @@ func setupInternal(
 		schemaPath,
 		remoteMixerDomain,
 		false,
+		"",
 	)
 	if err != nil {
 		return nil, err
@@ -146,14 +148,14 @@ func setupInternal(
 	if err != nil {
 		log.Fatalf("Failed to create a new store: %s", err)
 	}
-	var cache *resource.Cache
+	var c *resource.Cache
 	if useCache {
-		cache, err = server.NewCache(ctx, st, searchOptions)
+		c, err = cache.NewCache(ctx, st, searchOptions)
 		if err != nil {
 			return nil, err
 		}
 	} else {
-		cache = &resource.Cache{}
+		c = &resource.Cache{}
 	}
 
 	mapsClient, err := util.MapsClient(ctx, metadata.HostProject)
@@ -161,7 +163,7 @@ func setupInternal(
 		return nil, err
 	}
 
-	return newClient(st, tables, metadata, cache, mapsClient)
+	return newClient(st, tables, metadata, c, mapsClient)
 }
 
 // SetupBqOnly creates local server and client with access to BigQuery only.
@@ -184,6 +186,7 @@ func SetupBqOnly() (pbs.MixerClient, error) {
 		schemaPath,
 		"",
 		false,
+		"",
 	)
 	if err != nil {
 		return nil, err

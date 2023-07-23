@@ -605,6 +605,7 @@ service Mixer {
   rpc Import(ImportRequest) returns (ImportResponse) {
     option (google.api.http) = {
       post: "/import"
+      body: "*"
     };
   }
 }

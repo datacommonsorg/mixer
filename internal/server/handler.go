@@ -320,5 +320,10 @@ func (s *Server) BulkFindEntities(
 func (s *Server) Import(
 	ctx context.Context, in *pb.ImportRequest,
 ) (*pb.ImportResponse, error) {
-	return data.Import(ctx, in)
+	cache, err := data.Import(ctx, in, s.store, s.metadata, true)
+	if err != nil {
+		return nil, err
+	}
+	s.cache = cache
+	return &pb.ImportResponse{Success: true}, nil
 }
