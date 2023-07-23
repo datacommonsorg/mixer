@@ -61,7 +61,6 @@ func Write(resourceMetadata *resource.Metadata) error {
 	if len(csvFiles) == 0 {
 		return status.Errorf(codes.FailedPrecondition, "No CSV files found in %s", fileDir)
 	}
-
 	observationList := []*observation{}
 	tripleList := triplesInitData
 	variableSet := map[string]struct{}{}

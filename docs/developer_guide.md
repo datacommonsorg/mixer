@@ -67,7 +67,7 @@ go run cmd/main.go \
     --use_custom_bigtable=true \
     --use_branch_bigtable=false
 
-go run examples/main.go
+go run examples/api/main.go
 ```
 
 ## Start Mixer as a gRPC server backed by SQLite Database
