@@ -17,7 +17,7 @@ package data
 import (
 	"context"
 	"database/sql"
-	"path"
+	"path/filepath"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/cache"
@@ -46,7 +46,7 @@ func Import(
 			st.SQLiteClient.Close()
 		}
 		sqlClient, err := sql.Open(
-			"sqlite3", path.Join(metadata.SQLitePath, "datacommons.db"))
+			"sqlite3", filepath.Join(metadata.SQLitePath, "datacommons.db"))
 		if err != nil {
 			return nil, err
 		}

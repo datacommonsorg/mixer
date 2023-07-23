@@ -24,7 +24,7 @@ import (
 	"net/http"
 	_ "net/http/pprof"
 	"os"
-	"path"
+	"path/filepath"
 	"runtime"
 	"runtime/pprof"
 
@@ -175,13 +175,13 @@ func main() {
 	// SQLite DB
 	var sqlClient *sql.DB
 	if *useSQLite {
-		_, err := os.Stat(path.Join(*sqlitePath, "datacommons.db"))
+		_, err := os.Stat(filepath.Join(*sqlitePath, "datacommons.db"))
 		if os.IsNotExist(err) {
 			if _, err := data.Import(ctx, &pb.ImportRequest{}, nil, metadata, false); err != nil {
 				log.Fatalf("Can not write csv file to sqlite: %v", err)
 			}
 		}
-		sqlClient, err = sql.Open("sqlite3", path.Join(*sqlitePath, "datacommons.db"))
+		sqlClient, err = sql.Open("sqlite3", filepath.Join(*sqlitePath, "datacommons.db"))
 		if err != nil {
 			log.Fatalf("Can not open sqlite3 database from: %s", *sqlitePath)
 		}

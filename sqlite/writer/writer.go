@@ -20,7 +20,6 @@ import (
 	"fmt"
 	"net/http"
 	"os"
-	"path"
 	"path/filepath"
 	"strings"
 
@@ -236,7 +235,7 @@ func resolvePlaces(
 }
 
 func prepareDatabase(fileDir string) error {
-	dbPath := path.Join(fileDir, "datacommons.db")
+	dbPath := filepath.Join(fileDir, "datacommons.db")
 	_, err := os.Stat(dbPath)
 	if os.IsNotExist(err) {
 		_, err := os.Create(dbPath)
@@ -298,7 +297,7 @@ func writeOutput(
 	if err != nil {
 		return err
 	}
-	db, err := sql.Open("sqlite3", path.Join(fileDir, "datacommons.db"))
+	db, err := sql.Open("sqlite3", filepath.Join(fileDir, "datacommons.db"))
 	if err != nil {
 		return err
 	}
