@@ -9,11 +9,11 @@ import (
 )
 
 var (
-	sqlite_dir = flag.String("sqlite_dir", "/Users/wsws/Software/mixer/sqlite/writer/test_data", "SQLite directory.")
+	sqlite_dir = flag.String("sqlite_dir", "", "SQLite directory.")
 )
 
 func main() {
-	if err := writer.WriteCSV(
+	if err := writer.Write(
 		&resource.Metadata{
 			SQLitePath:        *sqlite_dir,
 			RemoteMixerDomain: "https://api.datacommons.org",

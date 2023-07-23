@@ -17,7 +17,7 @@ package data
 import (
 	"context"
 	"database/sql"
-	"path"
+	"path/filepath"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/cache"
@@ -35,18 +35,18 @@ func Import(
 	openSql bool,
 ) (*resource.Cache, error) {
 	var err error
-	if err = writer.WriteCSV(
+	if err = writer.Write(
 		metadata,
 	); err != nil {
 		return nil, err
 	}
-	if err := writer.WriteSQLite(metadata.SQLitePath); err != nil {
-		return nil, err
-	}
 	var c *resource.Cache
 	if openSql {
+		if st.SQLiteClient != nil {
+			st.SQLiteClient.Close()
+		}
 		sqlClient, err := sql.Open(
-			"sqlite3", path.Join(metadata.SQLitePath, "datacommons.db"))
+			"sqlite3", filepath.Join(metadata.SQLitePath, "datacommons.db"))
 		if err != nil {
 			return nil, err
 		}
