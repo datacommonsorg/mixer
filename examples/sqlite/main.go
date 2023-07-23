@@ -4,8 +4,10 @@ import (
 	"flag"
 	"log"
 
+	_ "github.com/mattn/go-sqlite3" // SQLite driver
+
 	"github.com/datacommonsorg/mixer/internal/server/resource"
-	"github.com/datacommonsorg/mixer/sqlite/writer"
+	"github.com/datacommonsorg/mixer/internal/sqlite/writer"
 )
 
 var (
@@ -13,6 +15,7 @@ var (
 )
 
 func main() {
+	flag.Parse()
 	if err := writer.Write(
 		&resource.Metadata{
 			SQLitePath:        *sqlite_dir,
