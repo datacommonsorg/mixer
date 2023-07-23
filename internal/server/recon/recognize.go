@@ -170,9 +170,10 @@ func (p *placeRecognition) findPlaceCandidates(
 				}
 			}
 
-			if nameMatched {
+			if nameMatched && matchedNameSize < namePartsSize {
+				// Try to match the longest possible name.
+				// For example, "New York City" should match 3 tokens instead of 2 tokens.
 				matchedNameSize = namePartsSize
-				break
 			}
 		}
 		if matchedNameSize == 0 { // This place is not matched.
