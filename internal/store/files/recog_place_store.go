@@ -141,8 +141,11 @@ func LoadRecogPlaceStore() (*RecogPlaceStore, error) {
 		}
 		recogPlace.Population = population
 
+		keySet := map[string]struct{}{} // Unique keys for recogPlaceMap.
 		for _, name := range recogPlace.Names {
-			key := name.Parts[0]
+			keySet[name.Parts[0]] = struct{}{}
+		}
+		for key := range keySet {
 			if _, ok := recogPlaceMap[key]; !ok {
 				recogPlaceMap[key] = &pb.RecogPlaces{}
 			}
