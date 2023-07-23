@@ -32,15 +32,21 @@ import (
 )
 
 var (
-	observationsHeader = []string{"entity", "variable", "date", "value"}
+	observationsHeader = []string{"entity", "variable", "date", "value", "provenance"}
 	triplesHeader      = []string{"subject_id", "predicate", "object_id", "object_value"}
+	triplesInitData    = []*triple{
+		{subjectID: "dc/g/New", predicate: "typeOf", objectID: "StatVarGroup"},
+		{subjectID: "dc/g/New", predicate: "name", objectValue: "New Variables"},
+		{subjectID: "dc/g/New", predicate: "specializationOf", objectID: "dc/g/Root"},
+	}
 )
 
 type observation struct {
-	entity   string
-	variable string
-	date     string
-	value    string
+	entity     string
+	variable   string
+	date       string
+	value      string
+	provenance string
 }
 
 type triple struct {
@@ -67,12 +73,14 @@ func WriteCSV(resourceMetadata *resource.Metadata) error {
 	}
 
 	observationList := []*observation{}
+	tripleList := triplesInitData
 	variableSet := map[string]struct{}{}
 	for _, csvFile := range csvFiles {
+		provID := fmt.Sprintf("dc/custom/%s", strings.TrimRight(csvFile, ".csv"))
 		observations, variables, err := processCSVFile(&context{
 			fileDir:          fileDir,
 			resourceMetadata: resourceMetadata,
-		}, csvFile)
+		}, csvFile, provID)
 		if err != nil {
 			return err
 		}
@@ -80,31 +88,27 @@ func WriteCSV(resourceMetadata *resource.Metadata) error {
 		for _, v := range variables {
 			variableSet[v] = struct{}{}
 		}
+		tripleList = append(tripleList,
+			&triple{
+				subjectID: provID,
+				predicate: "dcid",
+				objectID:  provID,
+			},
+			&triple{
+				subjectID: provID,
+				predicate: "typeOf",
+				objectID:  "Provenance",
+			},
+			&triple{
+				subjectID:   provID,
+				predicate:   "url",
+				objectValue: filepath.Join(fileDir, csvFile),
+			},
+		)
 	}
 
-	tripleList := []*triple{}
-	tripleList = append(
-		tripleList,
-		&triple{
-			subjectID: "dc/g/New",
-			predicate: "typeOf",
-			objectID:  "StatVarGroup",
-		},
-		&triple{
-			subjectID:   "dc/g/New",
-			predicate:   "name",
-			objectValue: "New Variables",
-		},
-		&triple{
-			subjectID: "dc/g/New",
-			predicate: "specializationOf",
-			objectID:  "dc/g/Root",
-		},
-	)
-
 	for variable := range variableSet {
-		tripleList = append(
-			tripleList,
+		tripleList = append(tripleList,
 			&triple{
 				subjectID: variable,
 				predicate: "typeOf",
@@ -164,7 +168,7 @@ func listCSVFiles(dir string) ([]string, error) {
 	return res, nil
 }
 
-func processCSVFile(ctx *context, csvFile string) ([]*observation,
+func processCSVFile(ctx *context, csvFile, provID string) ([]*observation,
 	[]string, // A list of variables.
 	error) {
 	// Read the CSV file.
@@ -214,10 +218,11 @@ func processCSVFile(ctx *context, csvFile string) ([]*observation,
 
 		for j := 2; j < numColumns; j++ {
 			observations = append(observations, &observation{
-				entity:   resolvedPlace,
-				variable: header[j],
-				date:     record[1],
-				value:    record[j],
+				entity:     resolvedPlace,
+				variable:   header[j],
+				date:       record[1],
+				value:      record[j],
+				provenance: provID,
 			})
 		}
 	}
@@ -276,7 +281,7 @@ func writeOutput(
 	}
 	for _, o := range observations {
 		if err := wObservations.Write(
-			[]string{o.entity, o.variable, o.date, o.value}); err != nil {
+			[]string{o.entity, o.variable, o.date, o.value, o.provenance}); err != nil {
 			return err
 		}
 	}
