@@ -1,3 +1,17 @@
+// Copyright 2023 Google LLC
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
 package writer
 
 import (
@@ -5,6 +19,8 @@ import (
 	"fmt"
 	"net/http"
 	"os"
+	"os/exec"
+	"path"
 	"path/filepath"
 	"strings"
 
@@ -35,30 +51,27 @@ type triple struct {
 }
 
 type context struct {
-	inputDir         string
+	fileDir          string
 	resourceMetadata *resource.Metadata
-	httpClient       *http.Client
 }
 
 // Write writes raw CSV files to SQLite CSV files.
-func Write(inputDir, outputDir string,
-	resourceMetadata *resource.Metadata,
-	httpClient *http.Client) error {
-	csvFiles, err := listCSVFiles(inputDir)
+func WriteCSV(resourceMetadata *resource.Metadata) error {
+	fileDir := resourceMetadata.SQLitePath
+	csvFiles, err := listCSVFiles(fileDir)
 	if err != nil {
 		return err
 	}
 	if len(csvFiles) == 0 {
-		return status.Errorf(codes.FailedPrecondition, "No CSV files found in %s", inputDir)
+		return status.Errorf(codes.FailedPrecondition, "No CSV files found in %s", fileDir)
 	}
 
 	observationList := []*observation{}
 	variableSet := map[string]struct{}{}
 	for _, csvFile := range csvFiles {
 		observations, variables, err := processCSVFile(&context{
-			inputDir:         inputDir,
+			fileDir:          fileDir,
 			resourceMetadata: resourceMetadata,
-			httpClient:       httpClient,
 		}, csvFile)
 		if err != nil {
 			return err
@@ -70,15 +83,69 @@ func Write(inputDir, outputDir string,
 	}
 
 	tripleList := []*triple{}
-	for variable := range variableSet {
-		tripleList = append(tripleList, &triple{
-			subjectID: variable,
+	tripleList = append(
+		tripleList,
+		&triple{
+			subjectID: "dc/g/New",
 			predicate: "typeOf",
-			objectID:  "StatisticalVariable",
-		})
+			objectID:  "StatVarGroup",
+		},
+		&triple{
+			subjectID:   "dc/g/New",
+			predicate:   "name",
+			objectValue: "New Variables",
+		},
+		&triple{
+			subjectID: "dc/g/New",
+			predicate: "specializationOf",
+			objectID:  "dc/g/Root",
+		},
+	)
+
+	for variable := range variableSet {
+		tripleList = append(
+			tripleList,
+			&triple{
+				subjectID: variable,
+				predicate: "typeOf",
+				objectID:  "StatisticalVariable",
+			},
+			&triple{
+				subjectID: variable,
+				predicate: "memberOf",
+				objectID:  "dc/g/New",
+			},
+			&triple{
+				subjectID:   variable,
+				predicate:   "description",
+				objectValue: variable,
+			},
+		)
 	}
 
-	return writeOutput(observationList, tripleList, outputDir)
+	return writeOutput(observationList, tripleList, path.Join(fileDir, "internal"))
+}
+
+func WriteSQLite(fileDir string) error {
+	script := fmt.Sprintf(`
+sqlite3 %s <<EOF
+DROP TABLE IF EXISTS observations;
+DROP TABLE IF EXISTS triples;
+.headers on
+.mode csv
+.import %s observations
+.import %s triples
+EOF`,
+		path.Join(fileDir, "datacommons.db"),
+		path.Join(fileDir, "internal", "observations.csv"),
+		path.Join(fileDir, "internal", "triples.csv"),
+	)
+	cmd := exec.Command(
+		"bash",
+		"-c",
+		script,
+	)
+	return cmd.Run()
 }
 
 func listCSVFiles(dir string) ([]string, error) {
@@ -101,7 +168,7 @@ func processCSVFile(ctx *context, csvFile string) ([]*observation,
 	[]string, // A list of variables.
 	error) {
 	// Read the CSV file.
-	f, err := os.Open(filepath.Join(ctx.inputDir, csvFile))
+	f, err := os.Open(filepath.Join(ctx.fileDir, csvFile))
 	if err != nil {
 		return nil, nil, err
 	}
@@ -169,7 +236,8 @@ func resolvePlaces(ctx *context,
 		// TODO(ws): name recon.
 	} else {
 		resp := &pbv2.ResolveResponse{}
-		if err := util.FetchRemote(ctx.resourceMetadata, ctx.httpClient, "/v2/resolve",
+		httpClient := &http.Client{}
+		if err := util.FetchRemote(ctx.resourceMetadata, httpClient, "/v2/resolve",
 			&pbv2.ResolveRequest{
 				Nodes:    places,
 				Property: fmt.Sprintf("<-%s->dcid", placeHeader),
@@ -188,8 +256,14 @@ func resolvePlaces(ctx *context,
 	return placeToDCID, nil
 }
 
-func writeOutput(observations []*observation,
-	triples []*triple, outputDir string) error {
+func writeOutput(
+	observations []*observation,
+	triples []*triple,
+	outputDir string,
+) error {
+	if err := os.MkdirAll(outputDir, 0755); err != nil {
+		return err
+	}
 	// Observations.
 	fObservations, err := os.Create(filepath.Join(outputDir, "observations.csv"))
 	if err != nil {
