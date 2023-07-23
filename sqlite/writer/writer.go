@@ -15,11 +15,11 @@
 package writer
 
 import (
+	"database/sql"
 	"encoding/csv"
 	"fmt"
 	"net/http"
 	"os"
-	"os/exec"
 	"path"
 	"path/filepath"
 	"strings"
@@ -29,11 +29,6 @@ import (
 	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
-)
-
-var (
-	observationsHeader = []string{"entity", "variable", "date", "value"}
-	triplesHeader      = []string{"subject_id", "predicate", "object_id", "object_value"}
 )
 
 type observation struct {
@@ -50,13 +45,8 @@ type triple struct {
 	objectValue string
 }
 
-type context struct {
-	fileDir          string
-	resourceMetadata *resource.Metadata
-}
-
 // Write writes raw CSV files to SQLite CSV files.
-func WriteCSV(resourceMetadata *resource.Metadata) error {
+func Write(resourceMetadata *resource.Metadata) error {
 	fileDir := resourceMetadata.SQLitePath
 	csvFiles, err := listCSVFiles(fileDir)
 	if err != nil {
@@ -69,10 +59,8 @@ func WriteCSV(resourceMetadata *resource.Metadata) error {
 	observationList := []*observation{}
 	variableSet := map[string]struct{}{}
 	for _, csvFile := range csvFiles {
-		observations, variables, err := processCSVFile(&context{
-			fileDir:          fileDir,
-			resourceMetadata: resourceMetadata,
-		}, csvFile)
+		observations, variables, err := processCSVFile(
+			resourceMetadata, fileDir, csvFile)
 		if err != nil {
 			return err
 		}
@@ -123,29 +111,7 @@ func WriteCSV(resourceMetadata *resource.Metadata) error {
 		)
 	}
 
-	return writeOutput(observationList, tripleList, path.Join(fileDir, "internal"))
-}
-
-func WriteSQLite(fileDir string) error {
-	script := fmt.Sprintf(`
-sqlite3 %s <<EOF
-DROP TABLE IF EXISTS observations;
-DROP TABLE IF EXISTS triples;
-.headers on
-.mode csv
-.import %s observations
-.import %s triples
-EOF`,
-		path.Join(fileDir, "datacommons.db"),
-		path.Join(fileDir, "internal", "observations.csv"),
-		path.Join(fileDir, "internal", "triples.csv"),
-	)
-	cmd := exec.Command(
-		"bash",
-		"-c",
-		script,
-	)
-	return cmd.Run()
+	return writeOutput(observationList, tripleList, fileDir)
 }
 
 func listCSVFiles(dir string) ([]string, error) {
@@ -164,11 +130,13 @@ func listCSVFiles(dir string) ([]string, error) {
 	return res, nil
 }
 
-func processCSVFile(ctx *context, csvFile string) ([]*observation,
+func processCSVFile(medatata *resource.Metadata, fileDir string, csvFile string) (
+	[]*observation,
 	[]string, // A list of variables.
-	error) {
+	error,
+) {
 	// Read the CSV file.
-	f, err := os.Open(filepath.Join(ctx.fileDir, csvFile))
+	f, err := os.Open(filepath.Join(fileDir, csvFile))
 	if err != nil {
 		return nil, nil, err
 	}
@@ -196,7 +164,7 @@ func processCSVFile(ctx *context, csvFile string) ([]*observation,
 	for i := 1; i < numRecords; i++ {
 		places = append(places, records[i][0])
 	}
-	resolvedPlaceMap, err := resolvePlaces(ctx, places, header[0])
+	resolvedPlaceMap, err := resolvePlaces(medatata, places, header[0])
 	if err != nil {
 		return nil, nil, err
 	}
@@ -225,11 +193,12 @@ func processCSVFile(ctx *context, csvFile string) ([]*observation,
 	return observations, header[2:], nil
 }
 
-func resolvePlaces(ctx *context,
+func resolvePlaces(
+	metadata *resource.Metadata,
 	places []string,
-	placeHeader string) (map[string]string, error) {
+	placeHeader string,
+) (map[string]string, error) {
 	placeToDCID := map[string]string{}
-
 	if placeHeader == "lat#lng" {
 		// TODO(ws): lat#lng recon.
 	} else if placeHeader == "name" {
@@ -237,7 +206,7 @@ func resolvePlaces(ctx *context,
 	} else {
 		resp := &pbv2.ResolveResponse{}
 		httpClient := &http.Client{}
-		if err := util.FetchRemote(ctx.resourceMetadata, httpClient, "/v2/resolve",
+		if err := util.FetchRemote(metadata, httpClient, "/v2/resolve",
 			&pbv2.ResolveRequest{
 				Nodes:    places,
 				Property: fmt.Sprintf("<-%s->dcid", placeHeader),
@@ -256,49 +225,88 @@ func resolvePlaces(ctx *context,
 	return placeToDCID, nil
 }
 
+func prepareDatabase(fileDir string) error {
+	dbPath := path.Join(fileDir, "datacommons.db")
+	_, err := os.Stat(dbPath)
+	if os.IsNotExist(err) {
+		os.Create(dbPath)
+	}
+	db, err := sql.Open("sqlite3", dbPath)
+	if err != nil {
+		return err
+	}
+	defer db.Close()
+
+	_, err = db.Exec(
+		`
+			DROP TABLE IF EXISTS observations;
+			DROP TABLE IF EXISTS triples;
+		`,
+	)
+	if err != nil {
+		return err
+	}
+
+	tripleStatement := `
+	CREATE TABLE triples (
+		subject_id TEXT,
+		predicate TEXT,
+		object_id TEXT,
+		object_value TEXT
+	);
+	`
+	_, err = db.Exec(tripleStatement)
+	if err != nil {
+		return err
+	}
+
+	observationStatement := `
+	CREATE TABLE observations (
+		entity TEXT,
+		variable TEXT,
+		date TEXT,
+		value TEXT,
+		provenance TEXT
+	);
+	`
+	_, err = db.Exec(observationStatement)
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
 func writeOutput(
 	observations []*observation,
 	triples []*triple,
-	outputDir string,
+	fileDir string,
 ) error {
-	if err := os.MkdirAll(outputDir, 0755); err != nil {
-		return err
-	}
-	// Observations.
-	fObservations, err := os.Create(filepath.Join(outputDir, "observations.csv"))
+	err := prepareDatabase(fileDir)
 	if err != nil {
 		return err
 	}
-	defer fObservations.Close()
-	wObservations := csv.NewWriter(fObservations)
-	if err := wObservations.Write(observationsHeader); err != nil {
+	db, err := sql.Open("sqlite3", path.Join(fileDir, "datacommons.db"))
+	if err != nil {
 		return err
 	}
+	defer db.Close()
+
+	// Observations.
 	for _, o := range observations {
-		if err := wObservations.Write(
-			[]string{o.entity, o.variable, o.date, o.value}); err != nil {
+		sqlStmt := `INSERT INTO observations(entity,variable,date,value) VALUES (?, ?, ?, ?)`
+		_, err = db.Exec(sqlStmt, o.entity, o.variable, o.date, o.value)
+		if err != nil {
 			return err
 		}
 	}
-	wObservations.Flush()
 
 	// Triples.
-	fTriples, err := os.Create(filepath.Join(outputDir, "triples.csv"))
-	if err != nil {
-		return err
-	}
-	defer fTriples.Close()
-	wTriples := csv.NewWriter(fTriples)
-	if err := wTriples.Write(triplesHeader); err != nil {
-		return err
-	}
 	for _, t := range triples {
-		if err := wTriples.Write(
-			[]string{t.subjectID, t.predicate, t.objectID, t.objectValue}); err != nil {
+		sqlStmt := `INSERT INTO triples(subject_id,predicate,object_id,object_value) VALUES (?, ?, ?, ?)`
+		_, err = db.Exec(sqlStmt, t.subjectID, t.predicate, t.objectID, t.objectValue)
+		if err != nil {
 			return err
 		}
 	}
-	wTriples.Flush()
-
 	return nil
 }

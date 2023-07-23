@@ -13,7 +13,7 @@ var (
 )
 
 func main() {
-	if err := writer.WriteCSV(
+	if err := writer.Write(
 		&resource.Metadata{
 			SQLitePath:        *sqlite_dir,
 			RemoteMixerDomain: "https://api.datacommons.org",

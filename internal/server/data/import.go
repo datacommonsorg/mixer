@@ -35,16 +35,16 @@ func Import(
 	openSql bool,
 ) (*resource.Cache, error) {
 	var err error
-	if err = writer.WriteCSV(
+	if err = writer.Write(
 		metadata,
 	); err != nil {
 		return nil, err
 	}
-	if err := writer.WriteSQLite(metadata.SQLitePath); err != nil {
-		return nil, err
-	}
 	var c *resource.Cache
 	if openSql {
+		if st.SQLiteClient != nil {
+			st.SQLiteClient.Close()
+		}
 		sqlClient, err := sql.Open(
 			"sqlite3", path.Join(metadata.SQLitePath, "datacommons.db"))
 		if err != nil {
