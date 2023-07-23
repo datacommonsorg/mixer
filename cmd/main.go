@@ -24,11 +24,15 @@ import (
 	"net/http"
 	_ "net/http/pprof"
 	"os"
+	"path"
 	"runtime"
 	"runtime/pprof"
 
+	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbs "github.com/datacommonsorg/mixer/internal/proto/service"
 	"github.com/datacommonsorg/mixer/internal/server"
+	"github.com/datacommonsorg/mixer/internal/server/cache"
+	"github.com/datacommonsorg/mixer/internal/server/data"
 	"github.com/datacommonsorg/mixer/internal/server/healthcheck"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/store"
@@ -64,8 +68,8 @@ var (
 	// Branch Bigtable Cache
 	useBranchBigtable = flag.Bool("use_branch_bigtable", true, "Use branch bigtable cache")
 	// SQLite database
-	useSQLite = flag.Bool("use_sqlite", false, "Use SQLite as database.")
-	sqliteDB  = flag.String("sqlite_db", "./sqlite/datacommons.db", "SQLite DB file path.")
+	useSQLite  = flag.Bool("use_sqlite", false, "Use SQLite as database.")
+	sqlitePath = flag.String("sqlite_path", "", "SQLite DB file path.")
 	// Stat-var search cache
 	useSearch = flag.Bool("use_search", true, "Uses stat var search. Will build search indexes.")
 	// Include maps client
@@ -123,16 +127,6 @@ func main() {
 		tables = append(customTables, tables...)
 	}
 
-	// SQLite DB
-	var sqlClient *sql.DB
-	if *useSQLite {
-		sqlClient, err = sql.Open("sqlite3", *sqliteDB)
-		if err != nil {
-			log.Fatalf("Failed to read sqlite3 database: %v", err)
-		}
-		defer sqlClient.Close()
-	}
-
 	// BigQuery
 	var bqClient *bigquery.Client
 	if *useBigquery {
@@ -172,9 +166,26 @@ func main() {
 		*schemaPath,
 		*remoteMixerDomain,
 		*foldRemoteRootSvg,
+		*sqlitePath,
 	)
 	if err != nil {
 		log.Fatalf("Failed to create metadata: %v", err)
+	}
+
+	// SQLite DB
+	var sqlClient *sql.DB
+	if *useSQLite {
+		_, err := os.Stat(path.Join(*sqlitePath, "datacommons.db"))
+		if os.IsNotExist(err) {
+			if _, err := data.Import(ctx, &pb.ImportRequest{}, nil, metadata, false); err != nil {
+				log.Fatalf("Can not write csv file to sqlite: %v", err)
+			}
+		}
+		sqlClient, err = sql.Open("sqlite3", path.Join(*sqlitePath, "datacommons.db"))
+		if err != nil {
+			log.Fatalf("Can not open sqlite3 database from: %s", *sqlitePath)
+		}
+		defer sqlClient.Close()
 	}
 
 	// Store
@@ -188,11 +199,11 @@ func main() {
 	}
 	// Build the cache that includes stat var group info and stat var search
 	// Index.
-	var cache *resource.Cache
+	var c *resource.Cache
 	if *useSearch {
-		cache, err = server.NewCache(
+		c, err = cache.NewCache(
 			ctx, store,
-			server.SearchOptions{
+			cache.SearchOptions{
 				UseSearch:           true,
 				BuildSvgSearchIndex: true,
 			},
@@ -212,7 +223,7 @@ func main() {
 	}
 
 	// Create server object
-	mixerServer := server.NewMixerServer(store, metadata, cache, mapsClient)
+	mixerServer := server.NewMixerServer(store, metadata, c, mapsClient)
 	pbs.RegisterMixerServer(srv, mixerServer)
 
 	// Subscribe to branch cache update

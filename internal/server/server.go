@@ -16,7 +16,6 @@ package server
 
 import (
 	"context"
-	"encoding/json"
 	"log"
 	"net/http"
 	"os"
@@ -29,17 +28,12 @@ import (
 	"github.com/datacommonsorg/mixer/internal/parser/mcf"
 	dcpubsub "github.com/datacommonsorg/mixer/internal/pubsub"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
-	"github.com/datacommonsorg/mixer/internal/server/statvar"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"github.com/datacommonsorg/mixer/internal/translator/solver"
 	"github.com/datacommonsorg/mixer/internal/translator/types"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"googlemaps.github.io/maps"
-)
-
-const (
-	blockListSvgJsonPath = "/datacommons/svg/blocklist_svg.json"
 )
 
 // Server holds resources for a mixer server
@@ -78,6 +72,7 @@ func NewMetadata(
 	schemaPath,
 	remoteMixerDomain string,
 	foldRemoteRootSvg bool,
+	sqlitePath string,
 ) (*resource.Metadata, error) {
 	_, filename, _, _ := runtime.Caller(0)
 	subTypeMap, err := solver.GetSubTypeMap(
@@ -126,6 +121,7 @@ func NewMetadata(
 			RemoteMixerDomain: remoteMixerDomain,
 			RemoteMixerAPIKey: apiKey,
 			FoldRemoteRootSvg: foldRemoteRootSvg,
+			SQLitePath:        sqlitePath,
 		},
 		nil
 }
@@ -145,51 +141,6 @@ func (s *Server) SubscribeBranchCacheUpdate(ctx context.Context,
 			return nil
 		},
 	)
-}
-
-type SearchOptions struct {
-	UseSearch           bool
-	BuildSvgSearchIndex bool
-}
-
-// NewCache initializes the cache for stat var hierarchy.
-func NewCache(
-	ctx context.Context,
-	store *store.Store,
-	searchOptions SearchOptions,
-) (*resource.Cache, error) {
-	var blocklistSvg []string
-	// Read blocklisted svg from file.
-	file, err := os.ReadFile(blockListSvgJsonPath)
-	if err != nil {
-		log.Printf("Could not read blocklist svg file. Using empty blocklist svg list.")
-		blocklistSvg = []string{}
-	} else {
-		if err := json.Unmarshal(file, &blocklistSvg); err != nil {
-			log.Printf("Could not unmarshal blocklist svg file. Using empty blocklist svg list.")
-			blocklistSvg = []string{}
-		}
-	}
-	rawSvg, err := statvar.GetRawSvg(ctx, store)
-	if err != nil {
-		return nil, err
-	}
-	parentSvgMap := statvar.BuildParentSvgMap(rawSvg)
-	result := &resource.Cache{
-		RawSvg:       rawSvg,
-		ParentSvg:    parentSvgMap,
-		BlockListSvg: map[string]struct{}{},
-	}
-	for _, svg := range blocklistSvg {
-		statvar.RemoveSvg(rawSvg, parentSvgMap, svg)
-		result.BlockListSvg[svg] = struct{}{}
-	}
-	if searchOptions.UseSearch {
-		if searchOptions.BuildSvgSearchIndex {
-			result.SvgSearchIndex = statvar.BuildStatVarSearchIndex(rawSvg, parentSvgMap, blocklistSvg)
-		}
-	}
-	return result, nil
 }
 
 // NewMixerServer creates a new mixer server instance.

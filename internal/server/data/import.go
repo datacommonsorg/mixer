@@ -16,10 +16,13 @@ package data
 
 import (
 	"context"
-	"net/http"
+	"database/sql"
+	"path"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	"github.com/datacommonsorg/mixer/internal/server/cache"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
+	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/sqlite/writer"
 )
 
@@ -27,14 +30,38 @@ import (
 func Import(
 	ctx context.Context,
 	in *pb.ImportRequest,
+	st *store.Store,
 	metadata *resource.Metadata,
-	httpClient *http.Client,
-) (*pb.ImportResponse, error) {
-	if err := writer.Write(in.GetInputDir(),
-		in.GetOutputDir(),
+	openSql bool,
+) (*resource.Cache, error) {
+	var err error
+	if err = writer.WriteCSV(
 		metadata,
-		httpClient); err != nil {
+	); err != nil {
 		return nil, err
 	}
-	return &pb.ImportResponse{Success: true}, nil
+	if err := writer.WriteSQLite(metadata.SQLitePath); err != nil {
+		return nil, err
+	}
+	var c *resource.Cache
+	if openSql {
+		sqlClient, err := sql.Open(
+			"sqlite3", path.Join(metadata.SQLitePath, "datacommons.db"))
+		if err != nil {
+			return nil, err
+		}
+		st.SQLiteClient = sqlClient
+		c, err = cache.NewCache(
+			ctx,
+			st,
+			cache.SearchOptions{
+				UseSearch:           true,
+				BuildSvgSearchIndex: true,
+			},
+		)
+		if err != nil {
+			return nil, err
+		}
+	}
+	return c, nil
 }
