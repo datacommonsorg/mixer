@@ -23,6 +23,7 @@ import (
 	"net"
 	"os"
 	"path"
+	"path/filepath"
 	"runtime"
 	"strings"
 
@@ -126,7 +127,7 @@ func setupInternal(
 	// SQLite
 	var sqlClient *sql.DB
 	if useSQLite {
-		sqlClient, err = sql.Open("sqlite3", path.Join(path.Dir(filename), "../sqlite/datacommons.db"))
+		sqlClient, err = sql.Open("sqlite3", filepath.Join(path.Dir(filename), "../internal/sqlite/datacommons.db"))
 		if err != nil {
 			log.Fatalf("Failed to read sqlite3 database: %v", err)
 		}

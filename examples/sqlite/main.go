@@ -4,16 +4,19 @@ import (
 	"flag"
 	"log"
 
+	_ "github.com/mattn/go-sqlite3" // SQLite driver
+
 	"github.com/datacommonsorg/mixer/internal/server/resource"
-	"github.com/datacommonsorg/mixer/sqlite/writer"
+	"github.com/datacommonsorg/mixer/internal/sqlite/writer"
 )
 
 var (
-	sqlite_dir = flag.String("sqlite_dir", "/Users/wsws/Software/mixer/sqlite/writer/test_data", "SQLite directory.")
+	sqlite_dir = flag.String("sqlite_dir", "", "SQLite directory.")
 )
 
 func main() {
-	if err := writer.WriteCSV(
+	flag.Parse()
+	if err := writer.Write(
 		&resource.Metadata{
 			SQLitePath:        *sqlite_dir,
 			RemoteMixerDomain: "https://api.datacommons.org",
