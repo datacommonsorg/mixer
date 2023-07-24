@@ -32,8 +32,6 @@ const (
 	geoJSONPredicate string  = "geoJsonCoordinates"
 )
 
-// TODO(Spaceenter): Also add place types to the results.
-
 // ResolveCoordinates implements API for ReconServer.ResolveCoordinates.
 func ResolveCoordinates(
 	ctx context.Context, in *pb.ResolveCoordinatesRequest, store *store.Store) (
@@ -128,6 +126,11 @@ func ResolveCoordinates(
 							placeCoordinates.PlaceDcids,
 							place.GetDcid(),
 						)
+						placeCoordinates.Places = append(placeCoordinates.Places,
+							&pb.ResolveCoordinatesResponse_Place{
+								Dcid:         place.GetDcid(),
+								DominantType: place.GetDominantType(),
+							})
 					} else { // Not fully cover the tile.
 						s2Polygon, ok := s2PolygonMap[place.GetDcid()]
 						if !ok {
@@ -142,6 +145,11 @@ func ResolveCoordinates(
 								placeCoordinates.PlaceDcids,
 								place.GetDcid(),
 							)
+							placeCoordinates.Places = append(placeCoordinates.Places,
+								&pb.ResolveCoordinatesResponse_Place{
+									Dcid:         place.GetDcid(),
+									DominantType: place.GetDominantType(),
+								})
 						}
 					}
 				}
