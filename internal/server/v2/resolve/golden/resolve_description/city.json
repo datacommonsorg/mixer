@@ -2,6 +2,20 @@
   "entities": [
     {
       "node": "Mountain View",
+      "resolvedIds": [
+        "geoId/0649670",
+        "geoId/3744770",
+        "geoId/1553300",
+        "geoId/0547540",
+        "geoId/2950438",
+        "geoId/0649651",
+        "geoId/5655345",
+        "geoId/4049650",
+        "geoId/0852350",
+        "wikidataId/Q950305",
+        "geoId/3550515",
+        "geoId/5655200"
+      ],
       "candidates": [
         {
           "dcid": "geoId/0649670"
@@ -43,6 +57,9 @@
     },
     {
       "node": "New York City",
+      "resolvedIds": [
+        "geoId/3651000"
+      ],
       "candidates": [
         {
           "dcid": "geoId/3651000"

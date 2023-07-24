@@ -2,6 +2,9 @@
   "entities": [
     {
       "node": "Cash",
+      "resolvedIds": [
+        "geoId/0511920"
+      ],
       "candidates": [
         {
           "dcid": "geoId/0511920"
@@ -10,6 +13,9 @@
     },
     {
       "node": "Middle Point",
+      "resolvedIds": [
+        "geoId/3949728"
+      ],
       "candidates": [
         {
           "dcid": "geoId/3949728"
@@ -18,6 +24,9 @@
     },
     {
       "node": "Middle Point, USA",
+      "resolvedIds": [
+        "geoId/3949728"
+      ],
       "candidates": [
         {
           "dcid": "geoId/3949728"
@@ -26,6 +35,9 @@
     },
     {
       "node": "cash",
+      "resolvedIds": [
+        "geoId/0511920"
+      ],
       "candidates": [
         {
           "dcid": "geoId/0511920"

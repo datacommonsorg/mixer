@@ -2,6 +2,9 @@
   "entities": [
     {
       "node": "Arkhangelsk,Russia",
+      "resolvedIds": [
+        "wikidataId/Q1851"
+      ],
       "candidates": [
         {
           "dcid": "wikidataId/Q1851"
@@ -10,6 +13,9 @@
     },
     {
       "node": "Astrakhan,Russia",
+      "resolvedIds": [
+        "wikidataId/Q3927"
+      ],
       "candidates": [
         {
           "dcid": "wikidataId/Q3927"
@@ -24,6 +30,9 @@
     },
     {
       "node": "Bihar,India",
+      "resolvedIds": [
+        "wikidataId/Q1165"
+      ],
       "candidates": [
         {
           "dcid": "wikidataId/Q1165"
@@ -32,6 +41,9 @@
     },
     {
       "node": "Brussels,Belgium",
+      "resolvedIds": [
+        "wikidataId/Q239"
+      ],
       "candidates": [
         {
           "dcid": "wikidataId/Q239"
@@ -46,6 +58,9 @@
     },
     {
       "node": "Ciudad Autónoma de Melilla,Spain",
+      "resolvedIds": [
+        "nuts/ES64"
+      ],
       "candidates": [
         {
           "dcid": "nuts/ES64"
@@ -60,6 +75,9 @@
     },
     {
       "node": "Delhi,India",
+      "resolvedIds": [
+        "wikidataId/Q1353"
+      ],
       "candidates": [
         {
           "dcid": "wikidataId/Q1353"
@@ -74,6 +92,9 @@
     },
     {
       "node": "Gauteng,South Africa",
+      "resolvedIds": [
+        "wikidataId/Q133083"
+      ],
       "candidates": [
         {
           "dcid": "wikidataId/Q133083"
@@ -100,6 +121,9 @@
     },
     {
       "node": "Kemerovo,Russia",
+      "resolvedIds": [
+        "wikidataId/Q6066"
+      ],
       "candidates": [
         {
           "dcid": "wikidataId/Q6066"
@@ -108,6 +132,9 @@
     },
     {
       "node": "KwaZulu-Natal,South Africa",
+      "resolvedIds": [
+        "wikidataId/Q81725"
+      ],
       "candidates": [
         {
           "dcid": "wikidataId/Q81725"
@@ -119,6 +146,9 @@
     },
     {
       "node": "Ladakh,India",
+      "resolvedIds": [
+        "wikidataId/Q200667"
+      ],
       "candidates": [
         {
           "dcid": "wikidataId/Q200667"
@@ -127,6 +157,9 @@
     },
     {
       "node": "Loreto,Peru",
+      "resolvedIds": [
+        "wikidataId/Q200938"
+      ],
       "candidates": [
         {
           "dcid": "wikidataId/Q200938"
@@ -150,6 +183,9 @@
     },
     {
       "node": "Republic of Crimea,Russia",
+      "resolvedIds": [
+        "wikidataId/Q15966495"
+      ],
       "candidates": [
         {
           "dcid": "wikidataId/Q15966495"
@@ -170,6 +206,9 @@
     },
     {
       "node": "Tambov,Russia",
+      "resolvedIds": [
+        "wikidataId/Q3544"
+      ],
       "candidates": [
         {
           "dcid": "wikidataId/Q3544"
@@ -184,6 +223,9 @@
     },
     {
       "node": "Ulyanovsk,Russia",
+      "resolvedIds": [
+        "wikidataId/Q5627"
+      ],
       "candidates": [
         {
           "dcid": "wikidataId/Q5627"
@@ -192,6 +234,9 @@
     },
     {
       "node": "Vologda,Russia",
+      "resolvedIds": [
+        "wikidataId/Q1957"
+      ],
       "candidates": [
         {
           "dcid": "wikidataId/Q1957"
