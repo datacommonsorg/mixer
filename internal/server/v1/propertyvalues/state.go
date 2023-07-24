@@ -129,7 +129,7 @@ func (s *state) readBt(
 	// tables := btGroup.Tables
 	tables := btGroup.Tables(func(t *bigtable.Table) bool {
 		for _, prop := range s.properties {
-			if prop == "memberOf" || prop == "relevantVariable" {
+			if prop == "member" || prop == "relevantVariable" {
 				return (strings.HasPrefix(t.Name(), "country"))
 			}
 		}
