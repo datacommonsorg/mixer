@@ -2,14 +2,18 @@
   "entities": [
     {
       "node": "San Mateo County",
-      "resolvedIds": [
-        "geoId/06081"
+      "candidates": [
+        {
+          "dcid": "geoId/06081"
+        }
       ]
     },
     {
       "node": "Santa Clara County",
-      "resolvedIds": [
-        "geoId/06085"
+      "candidates": [
+        {
+          "dcid": "geoId/06085"
+        }
       ]
     }
   ]
