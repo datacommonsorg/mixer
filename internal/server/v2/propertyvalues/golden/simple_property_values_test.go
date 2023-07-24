@@ -106,6 +106,13 @@ func TestSimplePropertyValues(t *testing.T) {
 				"",
 			},
 			{
+				"topic.json",
+				[]string{"dc/topic/Health"},
+				"->[relevantVariable]",
+				0,
+				"",
+			},
+			{
 				"locationEnum.json",
 				[]string{"LocationClassificationEnum"},
 				"<-typeOf",

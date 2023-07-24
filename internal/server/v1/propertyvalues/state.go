@@ -19,6 +19,7 @@ import (
 	"context"
 	"sort"
 	"strconv"
+	"strings"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
@@ -122,7 +123,18 @@ func (s *state) readBt(
 	if !arcOut {
 		prefix = bigtable.BtPagedPropTypeValIn
 	}
-	tables := btGroup.Tables(nil)
+	// TODO: Change this when there is a standalone schema import group.
+	// This is a temp hack to only use latest schema for topic nodes.
+	//
+	// tables := btGroup.Tables
+	tables := btGroup.Tables(func(t *bigtable.Table) bool {
+		for _, prop := range s.properties {
+			if prop == "memberOf" || prop == "relevantVariable" {
+				return (strings.HasPrefix(t.Name(), "country"))
+			}
+		}
+		return true
+	})
 	btDataList, err := bigtable.ReadWithGroupRowList(
 		ctx,
 		tables,
