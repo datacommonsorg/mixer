@@ -1,0 +1,108 @@
+{
+  "data": {
+    "dc/topic/Health": {
+      "arcs": {
+        "relevantVariable": {
+          "nodes": [
+            {
+              "name": "Number of Deaths",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "Count_Death",
+              "provenanceId": "dc/base/HumanReadableStatVars"
+            },
+            {
+              "name": "Count of Mortality Event: American Indian And Alaska Native Alone",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "Count_Death_AmericanIndianAndAlaskaNativeAlone",
+              "provenanceId": "dc/base/HumanReadableStatVars"
+            },
+            {
+              "name": "Count of Mortality Event: O00-O99 (Pregnancy, Childbirth And The Puerperium)",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "Count_Death_PregnancyChildbirthThePuerperium",
+              "provenanceId": "dc/base/HumanReadableStatVars"
+            },
+            {
+              "name": "Count of Acquired Immune Deficiency Syndrome incidents",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "Count_MedicalConditionIncident_ConditionAIDS",
+              "provenanceId": "dc/base/HumanReadableStatVars"
+            },
+            {
+              "name": "Population Without Health Insurance",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "Count_Person_NoHealthInsurance",
+              "provenanceId": "dc/base/HumanReadableStatVars"
+            },
+            {
+              "name": "Cumulative Count of COVID-19 Cases",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "CumulativeCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase",
+              "provenanceId": "dc/base/HumanReadableStatVars"
+            },
+            {
+              "name": "Cumulative Count of COVID-19 Deaths",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "CumulativeCount_MedicalConditionIncident_COVID_19_PatientDeceased",
+              "provenanceId": "dc/base/HumanReadableStatVars"
+            },
+            {
+              "name": "Total COVID-19 Vaccines Administered",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "CumulativeCount_Vaccine_COVID_19_Administered",
+              "provenanceId": "dc/base/HumanReadableStatVars"
+            },
+            {
+              "name": "Life Expectancy",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "LifeExpectancy_Person",
+              "provenanceId": "dc/base/HumanReadableStatVars"
+            },
+            {
+              "name": "Percentage of Population Who Binge Drink",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "Percent_Person_BingeDrinking",
+              "provenanceId": "dc/base/HumanReadableStatVars"
+            },
+            {
+              "name": "Prevalence: Cholesterol Screening",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "Percent_Person_ReceivedCholesterolScreening",
+              "provenanceId": "dc/base/HumanReadableStatVars"
+            },
+            {
+              "name": "Percent of Population That Have Asthma",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "Percent_Person_WithAsthma",
+              "provenanceId": "dc/base/HumanReadableStatVars"
+            }
+          ]
+        }
+      }
+    }
+  }
+}
