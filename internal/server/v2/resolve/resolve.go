@@ -50,10 +50,16 @@ func ID(
 	}
 	resp := &pbv2.ResolveResponse{}
 	for _, e := range data.GetEntities() {
+		candidates := []*pbv2.ResolveResponse_Entity_Candidate{}
+		for _, dcid := range e.GetOutIds() {
+			candidates = append(candidates, &pbv2.ResolveResponse_Entity_Candidate{
+				Dcid: dcid,
+			})
+		}
 		resp.Entities = append(resp.Entities,
 			&pbv2.ResolveResponse_Entity{
-				Node:        e.GetInId(),
-				ResolvedIds: e.GetOutIds(),
+				Node:       e.GetInId(),
+				Candidates: candidates,
 			})
 	}
 	return resp, nil
@@ -85,10 +91,17 @@ func Coordinate(
 	}
 	resp := &pbv2.ResolveResponse{}
 	for _, e := range data.GetPlaceCoordinates() {
+		candidates := []*pbv2.ResolveResponse_Entity_Candidate{}
+		for _, place := range e.GetPlaces() {
+			candidates = append(candidates, &pbv2.ResolveResponse_Entity_Candidate{
+				Dcid:         place.GetDcid(),
+				DominantType: place.GetDominantType(),
+			})
+		}
 		resp.Entities = append(resp.Entities,
 			&pbv2.ResolveResponse_Entity{
-				Node:        fmt.Sprintf("%f#%f", e.GetLatitude(), e.GetLongitude()),
-				ResolvedIds: e.GetPlaceDcids(),
+				Node:       fmt.Sprintf("%f#%f", e.GetLatitude(), e.GetLongitude()),
+				Candidates: candidates,
 			})
 	}
 	return resp, nil
@@ -125,9 +138,15 @@ func Description(
 	}
 	resp := &pbv2.ResolveResponse{}
 	for _, e := range data.GetEntities() {
+		candidates := []*pbv2.ResolveResponse_Entity_Candidate{}
+		for _, dcid := range e.GetDcids() {
+			candidates = append(candidates, &pbv2.ResolveResponse_Entity_Candidate{
+				Dcid: dcid,
+			})
+		}
 		resp.Entities = append(resp.Entities, &pbv2.ResolveResponse_Entity{
-			Node:        e.GetDescription(),
-			ResolvedIds: e.GetDcids(),
+			Node:       e.GetDescription(),
+			Candidates: candidates,
 		})
 	}
 	return resp, nil

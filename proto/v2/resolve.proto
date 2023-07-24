@@ -38,8 +38,12 @@ message ResolveRequest{
 
 message ResolveResponse{
     message Entity {
+        message Candidate {
+            string dcid = 1;
+            string dominant_type = 2;
+        }
         string node = 1;
-        repeated string resolved_ids = 2;
+        repeated Candidate candidates = 2;
     }
     repeated Entity entities = 1;
 }
