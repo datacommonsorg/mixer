@@ -46,6 +46,7 @@ message CoordinateRecon {
     string dcid = 1;
     // If the rectangle is fully contained in the place.
     bool full = 2;
+    string dominant_type = 3;
   }
   repeated Place places = 1;
 }
@@ -77,10 +78,17 @@ message ResolveCoordinatesRequest {
 }
 
 message ResolveCoordinatesResponse {
+  message Place {
+    string dcid = 1;
+    string dominant_type = 2;
+  }
   message PlaceCoordinate {
     double latitude = 1;
     double longitude = 2;
+    // TODO(ws): Remove this field once confirmed no one is using it.
+    // https://github.com/search?q=repo%3Adatacommonsorg%2Fdata+%2Fresolve%2Fcoordinate&type=code
     repeated string place_dcids = 3;
+    repeated Place places = 4;
   }
   repeated PlaceCoordinate place_coordinates = 1;
 }

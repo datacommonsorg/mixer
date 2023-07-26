@@ -226,7 +226,7 @@ func resolvePlaces(
 				continue
 			}
 			// TODO(ws): Handle the case with multiple ResolvedIds.
-			placeToDCID[entity.GetNode()] = entity.GetResolvedIds()[0]
+			placeToDCID[entity.GetNode()] = entity.GetCandidates()[0].GetDcid()
 		}
 	}
 

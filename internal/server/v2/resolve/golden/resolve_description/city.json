@@ -15,12 +15,55 @@
         "wikidataId/Q950305",
         "geoId/3550515",
         "geoId/5655200"
+      ],
+      "candidates": [
+        {
+          "dcid": "geoId/0649670"
+        },
+        {
+          "dcid": "geoId/3744770"
+        },
+        {
+          "dcid": "geoId/1553300"
+        },
+        {
+          "dcid": "geoId/0547540"
+        },
+        {
+          "dcid": "geoId/2950438"
+        },
+        {
+          "dcid": "geoId/0649651"
+        },
+        {
+          "dcid": "geoId/5655345"
+        },
+        {
+          "dcid": "geoId/4049650"
+        },
+        {
+          "dcid": "geoId/0852350"
+        },
+        {
+          "dcid": "wikidataId/Q950305"
+        },
+        {
+          "dcid": "geoId/3550515"
+        },
+        {
+          "dcid": "geoId/5655200"
+        }
       ]
     },
     {
       "node": "New York City",
       "resolvedIds": [
         "geoId/3651000"
+      ],
+      "candidates": [
+        {
+          "dcid": "geoId/3651000"
+        }
       ]
     }
   ]
