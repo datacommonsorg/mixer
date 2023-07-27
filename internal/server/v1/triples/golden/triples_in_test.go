@@ -48,7 +48,7 @@ func TestTriplesIn(t *testing.T) {
 			{
 				"BiologicalSpecimen2.json",
 				"BiologicalSpecimen",
-				"H4sIAAAAAAAA/+KK4BJyyszPyU/PTE7MCS5ITc7MTc3jYiupLEj1T8MmJ8QgxMTBKMTEwSTExMEsxMTBIsTCwSoAEmETYuJgF2Li4BBi4uAEAAAA//8BAAD//3lnVxdaAAAA",
+				"H4sIAAAAAAAA/+KK4BJyyszPyU/PTE7MCS5ITc7MTc3jYiupLEj1T8MmJ8QgxMTBKMTEwSTExMEsxMTBIsTEwSrEwsEmABJlF2Li4BBi4uAEAAAA//8BAAD//2MgYKBaAAAA",
 			},
 		} {
 			req := &pbv1.TriplesRequest{
