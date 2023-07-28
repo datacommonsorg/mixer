@@ -228,7 +228,7 @@ func resolvePlaces(
 		if _, ok := placeToDCID[entity.GetNode()]; ok {
 			continue
 		}
-		// TODO(ws): Handle the case with multiple ResolvedIds.
+		// TODO(ws): Handle the case with multiple candidates.
 		placeToDCID[entity.GetNode()] = entity.GetCandidates()[0].GetDcid()
 	}
 
