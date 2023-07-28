@@ -206,28 +206,30 @@ func resolvePlaces(
 	places []string,
 	placeHeader string,
 ) (map[string]string, error) {
-	placeToDCID := map[string]string{}
+	var property string
 	if placeHeader == "lat#lng" {
 		// TODO(ws): lat#lng recon.
 	} else if placeHeader == "name" {
-		// TODO(ws): name recon.
+		property = "<-description->dcid"
 	} else {
-		resp := &pbv2.ResolveResponse{}
-		httpClient := &http.Client{}
-		if err := util.FetchRemote(metadata, httpClient, "/v2/resolve",
-			&pbv2.ResolveRequest{
-				Nodes:    places,
-				Property: fmt.Sprintf("<-%s->dcid", placeHeader),
-			}, resp); err != nil {
-			return nil, err
+		property = fmt.Sprintf("<-%s->dcid", placeHeader)
+	}
+
+	placeToDCID := map[string]string{}
+	resp := &pbv2.ResolveResponse{}
+	if err := util.FetchRemote(metadata, &http.Client{}, "/v2/resolve",
+		&pbv2.ResolveRequest{
+			Nodes:    places,
+			Property: property,
+		}, resp); err != nil {
+		return nil, err
+	}
+	for _, entity := range resp.GetEntities() {
+		if _, ok := placeToDCID[entity.GetNode()]; ok {
+			continue
 		}
-		for _, entity := range resp.GetEntities() {
-			if _, ok := placeToDCID[entity.GetNode()]; ok {
-				continue
-			}
-			// TODO(ws): Handle the case with multiple ResolvedIds.
-			placeToDCID[entity.GetNode()] = entity.GetCandidates()[0].GetDcid()
-		}
+		// TODO(ws): Handle the case with multiple candidates.
+		placeToDCID[entity.GetNode()] = entity.GetCandidates()[0].GetDcid()
 	}
 
 	return placeToDCID, nil
