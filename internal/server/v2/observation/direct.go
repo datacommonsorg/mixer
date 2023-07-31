@@ -182,6 +182,7 @@ func FetchDirectSQL(
 			SELECT entity, variable, date, value FROM observations
 			WHERE entity IN (%s)
 			AND variable IN (%s)
+			AND value != ''
 		`,
 		entitiesStr,
 		variablesStr,
