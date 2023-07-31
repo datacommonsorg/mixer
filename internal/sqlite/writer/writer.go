@@ -229,7 +229,9 @@ func resolvePlaces(
 			continue
 		}
 		// TODO(ws): Handle the case with multiple candidates.
-		placeToDCID[entity.GetNode()] = entity.GetCandidates()[0].GetDcid()
+		if len(entity.GetCandidates()) > 0 {
+			placeToDCID[entity.GetNode()] = entity.GetCandidates()[0].GetDcid()
+		}
 	}
 
 	return placeToDCID, nil
