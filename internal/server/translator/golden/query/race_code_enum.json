@@ -83,6 +83,13 @@
     {
       "cells": [
         {
+          "value": "BlackAfrican"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
           "value": "BlackOrAfricanAmericanAlone"
         }
       ]
@@ -188,6 +195,13 @@
     {
       "cells": [
         {
+          "value": "Indian"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
           "value": "Japanese"
         }
       ]
@@ -280,6 +294,13 @@
       "cells": [
         {
           "value": "SomeOtherRaceAloneOrInCombinationWithOneOrMoreOtherRaces"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "SouthAfrica_Coloured"
         }
       ]
     },
