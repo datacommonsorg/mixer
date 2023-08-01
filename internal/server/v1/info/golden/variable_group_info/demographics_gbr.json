@@ -133,6 +133,11 @@
         "displayName": "Person by Earnings"
       },
       {
+        "id": "dc/g/Person_Ethnicity",
+        "specializedEntity": "Ethnicity",
+        "displayName": "Person by Ethnicity"
+      },
+      {
         "id": "dc/g/Person_Gender",
         "specializedEntity": "Gender",
         "displayName": "Person by Gender",

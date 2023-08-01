@@ -1,5 +1,50 @@
 {
   "by_variable": {
+    "Amount_FarmInventory_BarleyForGrain": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Amount_FarmInventory_DurumWheatForGrain": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Amount_FarmInventory_Flaxseed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Amount_FarmInventory_Grain": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Amount_FarmInventory_OatsForGrain": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Amount_FarmInventory_Rapeseed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Amount_FarmInventory_Rye": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Amount_FarmInventory_WheatExcludingDurum": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Amount_FarmInventory_WheatForGrain": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
     "Area_FloodEvent": {
       "by_entity": {
         "wikidataId/Q1951": {},
@@ -12,12 +57,682 @@
         "wikidataId/Q506877": {}
       }
     },
+    "Count_Death": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_0To1Day": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_0To1Day_AsAFractionOf_Count_BirthEvent_LiveBirth": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_0To1Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_0To1Years_AsAFractionOf_Count_BirthEvent_LiveBirth": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_0To27Day": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_0To27Day_AsAFractionOf_Count_BirthEvent_LiveBirth": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_10To14Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_10To14Years_AsAFractionOf_Count_Person_10To14Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_10To14Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_10To14Years_Female_AsAFractionOf_Count_Person_10To14Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_10To14Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_10To14Years_Male_AsAFractionOf_Count_Person_10To14Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_15To19Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_15To19Years_AsAFractionOf_Count_Person_15To19Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_15To19Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_15To19Years_Female_AsAFractionOf_Count_Person_15To19Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_15To19Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_15To19Years_Male_AsAFractionOf_Count_Person_15To19Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_1To11Month": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_1To11Month_AsAFractionOf_Count_BirthEvent_LiveBirth": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_1To2Month": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_1To2Month_AsAFractionOf_Count_BirthEvent_LiveBirth": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_1To4Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_1To4Years_AsAFractionOf_Count_Person_1To4Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_1To4Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_1To4Years_Female_AsAFractionOf_Count_Person_1To4Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_1To4Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_1To4Years_Male_AsAFractionOf_Count_Person_1To4Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_1To6Day": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_1To6Day_AsAFractionOf_Count_BirthEvent_LiveBirth": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_20To24Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_20To24Years_AsAFractionOf_Count_Person_20To24Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_20To24Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_20To24Years_Female_AsAFractionOf_Count_Person_20To24Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_20To24Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_20To24Years_Male_AsAFractionOf_Count_Person_20To24Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_25To29Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_25To29Years_AsAFractionOf_Count_Person_25To29Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_25To29Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_25To29Years_Female_AsAFractionOf_Count_Person_25To29Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_25To29Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_25To29Years_Male_AsAFractionOf_Count_Person_25To29Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_30To34Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_30To34Years_AsAFractionOf_Count_Person_30To34Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_30To34Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_30To34Years_Female_AsAFractionOf_Count_Person_30To34Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_30To34Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_30To34Years_Male_AsAFractionOf_Count_Person_30To34Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_35To39Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_35To39Years_AsAFractionOf_Count_Person_35To39Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_35To39Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_35To39Years_Female_AsAFractionOf_Count_Person_35To39Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_35To39Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_35To39Years_Male_AsAFractionOf_Count_Person_35To39Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_3To5Month": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_3To5Month_AsAFractionOf_Count_BirthEvent_LiveBirth": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_40To44Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_40To44Years_AsAFractionOf_Count_Person_40To44Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_40To44Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_40To44Years_Female_AsAFractionOf_Count_Person_40To44Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_40To44Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_40To44Years_Male_AsAFractionOf_Count_Person_40To44Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_45To49Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_45To49Years_AsAFractionOf_Count_Person_45To49Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_45To49Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_45To49Years_Female_AsAFractionOf_Count_Person_45To49Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_45To49Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_45To49Years_Male_AsAFractionOf_Count_Person_45To49Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_50To54Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_50To54Years_AsAFractionOf_Count_Person_50To54Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_50To54Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_50To54Years_Female_AsAFractionOf_Count_Person_50To54Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_50To54Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_50To54Years_Male_AsAFractionOf_Count_Person_50To54Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_55To59Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_55To59Years_AsAFractionOf_Count_Person_55To59Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_55To59Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_55To59Years_Female_AsAFractionOf_Count_Person_55To59Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_55To59Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_55To59Years_Male_AsAFractionOf_Count_Person_55To59Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_5To9Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_5To9Years_AsAFractionOf_Count_Person_5To9Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_5To9Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_5To9Years_Female_AsAFractionOf_Count_Person_5To9Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_5To9Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_5To9Years_Male_AsAFractionOf_Count_Person_5To9Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_60To64Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_60To64Years_AsAFractionOf_Count_Person_60To64Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_60To64Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_60To64Years_Female_AsAFractionOf_Count_Person_60To64Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_60To64Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_60To64Years_Male_AsAFractionOf_Count_Person_60To64Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_65To69Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_65To69Years_AsAFractionOf_Count_Person_65To69Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_65To69Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_65To69Years_Female_AsAFractionOf_Count_Person_65To69Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_65To69Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_65To69Years_Male_AsAFractionOf_Count_Person_65To69Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_6To11Month": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_6To11Month_AsAFractionOf_Count_BirthEvent_LiveBirth": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_70To74Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_70To74Years_AsAFractionOf_Count_Person_70To74Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_70To74Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_70To74Years_Female_AsAFractionOf_Count_Person_70To74Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_70To74Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_70To74Years_Male_AsAFractionOf_Count_Person_70To74Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_75To79Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_75To79Years_AsAFractionOf_Count_Person_75To79Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_75To79Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_75To79Years_Female_AsAFractionOf_Count_Person_75To79Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_75To79Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_75To79Years_Male_AsAFractionOf_Count_Person_75To79Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_7To27Day": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_7To27Day_AsAFractionOf_Count_BirthEvent_LiveBirth": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_80To84Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_80To84Years_AsAFractionOf_Count_Person_80To84Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_80To84Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_80To84Years_Female_AsAFractionOf_Count_Person_80To84Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_80To84Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_80To84Years_Male_AsAFractionOf_Count_Person_80To84Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_85To99Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_85To99Years_AsAFractionOf_Count_Person_85To99Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_85To99Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_85To99Years_Female_AsAFractionOf_Count_Person_85To99Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_85To99Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_85To99Years_Male_AsAFractionOf_Count_Person_85To99Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_90OrMoreYears": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_90OrMoreYears_AsAFractionOf_Count_Person_90OrMoreYears": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_90OrMoreYears_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_90OrMoreYears_Female_AsAFractionOf_Count_Person_90OrMoreYears_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_90OrMoreYears_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_90OrMoreYears_Male_AsAFractionOf_Count_Person_90OrMoreYears_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
     "Count_Death_AgeAdjusted_AsAFractionOf_Count_Person": {
       "by_entity": {
         "wikidataId/Q1951": {}
       }
     },
     "Count_Death_AsAFractionOfCount_Person": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_Female": {
       "by_entity": {
         "wikidataId/Q1951": {}
       }
@@ -43,6 +758,11 @@
       }
     },
     "Count_Death_LessThan1Year_Male_AsAFractionOf_Count_BirthEvent_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_Male": {
       "by_entity": {
         "wikidataId/Q1951": {}
       }
@@ -127,7 +847,187 @@
         "wikidataId/Q1951": {}
       }
     },
+    "Count_Person_15To19Years_Female_LivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_15To19Years_Female_LivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_15To19Years_Female_LivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_15To19Years_Female_LivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_15To19Years_Female_LivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_15To19Years_Female_Married": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_15To19Years_Female_MarriedOrLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_15To19Years_Female_NotLivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_15To19Years_Female_NotLivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_15To19Years_Female_NotLivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_15To19Years_Female_NotLivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_15To19Years_Female_UnmarriedOrNotLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_15To19Years_LivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_15To19Years_LivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_15To19Years_LivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_15To19Years_LivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_15To19Years_LivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
     "Count_Person_15To19Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_15To19Years_Male_LivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_15To19Years_Male_LivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_15To19Years_Male_LivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_15To19Years_Male_LivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_15To19Years_Male_LivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_15To19Years_Male_Married": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_15To19Years_Male_MarriedOrLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_15To19Years_Male_NotLivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_15To19Years_Male_NotLivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_15To19Years_Male_NotLivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_15To19Years_Male_NotLivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_15To19Years_Male_UnmarriedOrNotLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_15To19Years_Married": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_15To19Years_MarriedOrLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_15To19Years_NotLivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_15To19Years_NotLivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_15To19Years_NotLivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_15To19Years_NotLivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_15To19Years_UnmarriedOrNotLivingTogether": {
       "by_entity": {
         "wikidataId/Q1951": {}
       }
@@ -147,6 +1047,11 @@
         "wikidataId/Q1951": {}
       }
     },
+    "Count_Person_15Years_Unemployed_AsAFractionOf_Count_Person_15Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
     "Count_Person_20To24Years": {
       "by_entity": {
         "wikidataId/Q1951": {}
@@ -157,7 +1062,187 @@
         "wikidataId/Q1951": {}
       }
     },
+    "Count_Person_20To24Years_Female_LivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_20To24Years_Female_LivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_20To24Years_Female_LivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_20To24Years_Female_LivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_20To24Years_Female_LivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_20To24Years_Female_Married": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_20To24Years_Female_MarriedOrLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_20To24Years_Female_NotLivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_20To24Years_Female_NotLivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_20To24Years_Female_NotLivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_20To24Years_Female_NotLivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_20To24Years_Female_UnmarriedOrNotLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_20To24Years_LivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_20To24Years_LivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_20To24Years_LivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_20To24Years_LivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_20To24Years_LivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
     "Count_Person_20To24Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_20To24Years_Male_LivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_20To24Years_Male_LivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_20To24Years_Male_LivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_20To24Years_Male_LivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_20To24Years_Male_LivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_20To24Years_Male_Married": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_20To24Years_Male_MarriedOrLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_20To24Years_Male_NotLivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_20To24Years_Male_NotLivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_20To24Years_Male_NotLivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_20To24Years_Male_NotLivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_20To24Years_Male_UnmarriedOrNotLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_20To24Years_Married": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_20To24Years_MarriedOrLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_20To24Years_NotLivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_20To24Years_NotLivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_20To24Years_NotLivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_20To24Years_NotLivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_20To24Years_UnmarriedOrNotLivingTogether": {
       "by_entity": {
         "wikidataId/Q1951": {}
       }
@@ -177,7 +1262,187 @@
         "wikidataId/Q1951": {}
       }
     },
+    "Count_Person_25To29Years_Female_LivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_25To29Years_Female_LivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_25To29Years_Female_LivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_25To29Years_Female_LivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_25To29Years_Female_LivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_25To29Years_Female_Married": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_25To29Years_Female_MarriedOrLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_25To29Years_Female_NotLivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_25To29Years_Female_NotLivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_25To29Years_Female_NotLivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_25To29Years_Female_NotLivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_25To29Years_Female_UnmarriedOrNotLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_25To29Years_LivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_25To29Years_LivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_25To29Years_LivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_25To29Years_LivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_25To29Years_LivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
     "Count_Person_25To29Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_25To29Years_Male_LivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_25To29Years_Male_LivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_25To29Years_Male_LivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_25To29Years_Male_LivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_25To29Years_Male_LivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_25To29Years_Male_Married": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_25To29Years_Male_MarriedOrLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_25To29Years_Male_NotLivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_25To29Years_Male_NotLivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_25To29Years_Male_NotLivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_25To29Years_Male_NotLivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_25To29Years_Male_UnmarriedOrNotLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_25To29Years_Married": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_25To29Years_MarriedOrLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_25To29Years_NotLivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_25To29Years_NotLivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_25To29Years_NotLivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_25To29Years_NotLivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_25To29Years_UnmarriedOrNotLivingTogether": {
       "by_entity": {
         "wikidataId/Q1951": {}
       }
@@ -197,7 +1462,187 @@
         "wikidataId/Q1951": {}
       }
     },
+    "Count_Person_30To34Years_Female_LivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_30To34Years_Female_LivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_30To34Years_Female_LivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_30To34Years_Female_LivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_30To34Years_Female_LivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_30To34Years_Female_Married": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_30To34Years_Female_MarriedOrLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_30To34Years_Female_NotLivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_30To34Years_Female_NotLivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_30To34Years_Female_NotLivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_30To34Years_Female_NotLivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_30To34Years_Female_UnmarriedOrNotLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_30To34Years_LivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_30To34Years_LivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_30To34Years_LivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_30To34Years_LivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_30To34Years_LivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
     "Count_Person_30To34Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_30To34Years_Male_LivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_30To34Years_Male_LivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_30To34Years_Male_LivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_30To34Years_Male_LivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_30To34Years_Male_LivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_30To34Years_Male_Married": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_30To34Years_Male_MarriedOrLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_30To34Years_Male_NotLivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_30To34Years_Male_NotLivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_30To34Years_Male_NotLivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_30To34Years_Male_NotLivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_30To34Years_Male_UnmarriedOrNotLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_30To34Years_Married": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_30To34Years_MarriedOrLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_30To34Years_NotLivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_30To34Years_NotLivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_30To34Years_NotLivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_30To34Years_NotLivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_30To34Years_UnmarriedOrNotLivingTogether": {
       "by_entity": {
         "wikidataId/Q1951": {}
       }
@@ -217,7 +1662,187 @@
         "wikidataId/Q1951": {}
       }
     },
+    "Count_Person_35To39Years_Female_LivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_35To39Years_Female_LivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_35To39Years_Female_LivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_35To39Years_Female_LivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_35To39Years_Female_LivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_35To39Years_Female_Married": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_35To39Years_Female_MarriedOrLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_35To39Years_Female_NotLivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_35To39Years_Female_NotLivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_35To39Years_Female_NotLivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_35To39Years_Female_NotLivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_35To39Years_Female_UnmarriedOrNotLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_35To39Years_LivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_35To39Years_LivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_35To39Years_LivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_35To39Years_LivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_35To39Years_LivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
     "Count_Person_35To39Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_35To39Years_Male_LivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_35To39Years_Male_LivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_35To39Years_Male_LivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_35To39Years_Male_LivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_35To39Years_Male_LivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_35To39Years_Male_Married": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_35To39Years_Male_MarriedOrLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_35To39Years_Male_NotLivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_35To39Years_Male_NotLivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_35To39Years_Male_NotLivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_35To39Years_Male_NotLivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_35To39Years_Male_UnmarriedOrNotLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_35To39Years_Married": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_35To39Years_MarriedOrLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_35To39Years_NotLivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_35To39Years_NotLivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_35To39Years_NotLivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_35To39Years_NotLivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_35To39Years_UnmarriedOrNotLivingTogether": {
       "by_entity": {
         "wikidataId/Q1951": {}
       }
@@ -237,7 +1862,187 @@
         "wikidataId/Q1951": {}
       }
     },
+    "Count_Person_40To44Years_Female_LivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_40To44Years_Female_LivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_40To44Years_Female_LivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_40To44Years_Female_LivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_40To44Years_Female_LivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_40To44Years_Female_Married": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_40To44Years_Female_MarriedOrLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_40To44Years_Female_NotLivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_40To44Years_Female_NotLivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_40To44Years_Female_NotLivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_40To44Years_Female_NotLivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_40To44Years_Female_UnmarriedOrNotLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_40To44Years_LivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_40To44Years_LivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_40To44Years_LivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_40To44Years_LivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_40To44Years_LivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
     "Count_Person_40To44Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_40To44Years_Male_LivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_40To44Years_Male_LivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_40To44Years_Male_LivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_40To44Years_Male_LivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_40To44Years_Male_LivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_40To44Years_Male_Married": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_40To44Years_Male_MarriedOrLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_40To44Years_Male_NotLivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_40To44Years_Male_NotLivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_40To44Years_Male_NotLivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_40To44Years_Male_NotLivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_40To44Years_Male_UnmarriedOrNotLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_40To44Years_Married": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_40To44Years_MarriedOrLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_40To44Years_NotLivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_40To44Years_NotLivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_40To44Years_NotLivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_40To44Years_NotLivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_40To44Years_UnmarriedOrNotLivingTogether": {
       "by_entity": {
         "wikidataId/Q1951": {}
       }
@@ -257,7 +2062,187 @@
         "wikidataId/Q1951": {}
       }
     },
+    "Count_Person_45To49Years_Female_LivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_45To49Years_Female_LivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_45To49Years_Female_LivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_45To49Years_Female_LivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_45To49Years_Female_LivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_45To49Years_Female_Married": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_45To49Years_Female_MarriedOrLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_45To49Years_Female_NotLivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_45To49Years_Female_NotLivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_45To49Years_Female_NotLivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_45To49Years_Female_NotLivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_45To49Years_Female_UnmarriedOrNotLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_45To49Years_LivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_45To49Years_LivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_45To49Years_LivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_45To49Years_LivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_45To49Years_LivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
     "Count_Person_45To49Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_45To49Years_Male_LivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_45To49Years_Male_LivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_45To49Years_Male_LivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_45To49Years_Male_LivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_45To49Years_Male_LivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_45To49Years_Male_Married": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_45To49Years_Male_MarriedOrLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_45To49Years_Male_NotLivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_45To49Years_Male_NotLivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_45To49Years_Male_NotLivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_45To49Years_Male_NotLivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_45To49Years_Male_UnmarriedOrNotLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_45To49Years_Married": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_45To49Years_MarriedOrLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_45To49Years_NotLivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_45To49Years_NotLivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_45To49Years_NotLivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_45To49Years_NotLivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_45To49Years_UnmarriedOrNotLivingTogether": {
       "by_entity": {
         "wikidataId/Q1951": {}
       }
@@ -277,7 +2262,187 @@
         "wikidataId/Q1951": {}
       }
     },
+    "Count_Person_50To54Years_Female_LivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_50To54Years_Female_LivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_50To54Years_Female_LivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_50To54Years_Female_LivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_50To54Years_Female_LivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_50To54Years_Female_Married": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_50To54Years_Female_MarriedOrLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_50To54Years_Female_NotLivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_50To54Years_Female_NotLivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_50To54Years_Female_NotLivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_50To54Years_Female_NotLivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_50To54Years_Female_UnmarriedOrNotLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_50To54Years_LivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_50To54Years_LivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_50To54Years_LivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_50To54Years_LivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_50To54Years_LivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
     "Count_Person_50To54Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_50To54Years_Male_LivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_50To54Years_Male_LivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_50To54Years_Male_LivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_50To54Years_Male_LivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_50To54Years_Male_LivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_50To54Years_Male_Married": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_50To54Years_Male_MarriedOrLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_50To54Years_Male_NotLivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_50To54Years_Male_NotLivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_50To54Years_Male_NotLivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_50To54Years_Male_NotLivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_50To54Years_Male_UnmarriedOrNotLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_50To54Years_Married": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_50To54Years_MarriedOrLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_50To54Years_NotLivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_50To54Years_NotLivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_50To54Years_NotLivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_50To54Years_NotLivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_50To54Years_UnmarriedOrNotLivingTogether": {
       "by_entity": {
         "wikidataId/Q1951": {}
       }
@@ -297,7 +2462,187 @@
         "wikidataId/Q1951": {}
       }
     },
+    "Count_Person_55To59Years_Female_LivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_55To59Years_Female_LivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_55To59Years_Female_LivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_55To59Years_Female_LivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_55To59Years_Female_LivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_55To59Years_Female_Married": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_55To59Years_Female_MarriedOrLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_55To59Years_Female_NotLivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_55To59Years_Female_NotLivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_55To59Years_Female_NotLivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_55To59Years_Female_NotLivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_55To59Years_Female_UnmarriedOrNotLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_55To59Years_LivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_55To59Years_LivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_55To59Years_LivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_55To59Years_LivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_55To59Years_LivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
     "Count_Person_55To59Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_55To59Years_Male_LivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_55To59Years_Male_LivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_55To59Years_Male_LivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_55To59Years_Male_LivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_55To59Years_Male_LivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_55To59Years_Male_Married": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_55To59Years_Male_MarriedOrLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_55To59Years_Male_NotLivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_55To59Years_Male_NotLivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_55To59Years_Male_NotLivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_55To59Years_Male_NotLivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_55To59Years_Male_UnmarriedOrNotLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_55To59Years_Married": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_55To59Years_MarriedOrLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_55To59Years_NotLivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_55To59Years_NotLivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_55To59Years_NotLivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_55To59Years_NotLivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_55To59Years_UnmarriedOrNotLivingTogether": {
       "by_entity": {
         "wikidataId/Q1951": {}
       }
@@ -337,7 +2682,187 @@
         "wikidataId/Q1951": {}
       }
     },
+    "Count_Person_60To64Years_Female_LivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_60To64Years_Female_LivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_60To64Years_Female_LivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_60To64Years_Female_LivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_60To64Years_Female_LivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_60To64Years_Female_Married": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_60To64Years_Female_MarriedOrLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_60To64Years_Female_NotLivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_60To64Years_Female_NotLivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_60To64Years_Female_NotLivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_60To64Years_Female_NotLivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_60To64Years_Female_UnmarriedOrNotLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_60To64Years_LivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_60To64Years_LivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_60To64Years_LivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_60To64Years_LivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_60To64Years_LivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
     "Count_Person_60To64Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_60To64Years_Male_LivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_60To64Years_Male_LivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_60To64Years_Male_LivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_60To64Years_Male_LivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_60To64Years_Male_LivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_60To64Years_Male_Married": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_60To64Years_Male_MarriedOrLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_60To64Years_Male_NotLivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_60To64Years_Male_NotLivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_60To64Years_Male_NotLivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_60To64Years_Male_NotLivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_60To64Years_Male_UnmarriedOrNotLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_60To64Years_Married": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_60To64Years_MarriedOrLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_60To64Years_NotLivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_60To64Years_NotLivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_60To64Years_NotLivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_60To64Years_NotLivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_60To64Years_UnmarriedOrNotLivingTogether": {
       "by_entity": {
         "wikidataId/Q1951": {}
       }
@@ -372,7 +2897,187 @@
         "wikidataId/Q1951": {}
       }
     },
+    "Count_Person_65To69Years_Female_LivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_65To69Years_Female_LivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_65To69Years_Female_LivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_65To69Years_Female_LivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_65To69Years_Female_LivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_65To69Years_Female_Married": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_65To69Years_Female_MarriedOrLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_65To69Years_Female_NotLivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_65To69Years_Female_NotLivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_65To69Years_Female_NotLivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_65To69Years_Female_NotLivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_65To69Years_Female_UnmarriedOrNotLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_65To69Years_LivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_65To69Years_LivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_65To69Years_LivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_65To69Years_LivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_65To69Years_LivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
     "Count_Person_65To69Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_65To69Years_Male_LivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_65To69Years_Male_LivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_65To69Years_Male_LivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_65To69Years_Male_LivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_65To69Years_Male_LivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_65To69Years_Male_Married": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_65To69Years_Male_MarriedOrLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_65To69Years_Male_NotLivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_65To69Years_Male_NotLivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_65To69Years_Male_NotLivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_65To69Years_Male_NotLivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_65To69Years_Male_UnmarriedOrNotLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_65To69Years_Married": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_65To69Years_MarriedOrLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_65To69Years_NotLivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_65To69Years_NotLivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_65To69Years_NotLivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_65To69Years_NotLivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_65To69Years_UnmarriedOrNotLivingTogether": {
       "by_entity": {
         "wikidataId/Q1951": {}
       }
@@ -397,7 +3102,187 @@
         "wikidataId/Q1951": {}
       }
     },
+    "Count_Person_70To74Years_Female_LivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_70To74Years_Female_LivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_70To74Years_Female_LivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_70To74Years_Female_LivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_70To74Years_Female_LivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_70To74Years_Female_Married": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_70To74Years_Female_MarriedOrLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_70To74Years_Female_NotLivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_70To74Years_Female_NotLivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_70To74Years_Female_NotLivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_70To74Years_Female_NotLivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_70To74Years_Female_UnmarriedOrNotLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_70To74Years_LivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_70To74Years_LivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_70To74Years_LivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_70To74Years_LivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_70To74Years_LivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
     "Count_Person_70To74Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_70To74Years_Male_LivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_70To74Years_Male_LivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_70To74Years_Male_LivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_70To74Years_Male_LivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_70To74Years_Male_LivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_70To74Years_Male_Married": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_70To74Years_Male_MarriedOrLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_70To74Years_Male_NotLivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_70To74Years_Male_NotLivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_70To74Years_Male_NotLivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_70To74Years_Male_NotLivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_70To74Years_Male_UnmarriedOrNotLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_70To74Years_Married": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_70To74Years_MarriedOrLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_70To74Years_NotLivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_70To74Years_NotLivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_70To74Years_NotLivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_70To74Years_NotLivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_70To74Years_UnmarriedOrNotLivingTogether": {
       "by_entity": {
         "wikidataId/Q1951": {}
       }
@@ -417,7 +3302,187 @@
         "wikidataId/Q1951": {}
       }
     },
+    "Count_Person_75To79Years_Female_LivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_75To79Years_Female_LivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_75To79Years_Female_LivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_75To79Years_Female_LivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_75To79Years_Female_LivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_75To79Years_Female_Married": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_75To79Years_Female_MarriedOrLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_75To79Years_Female_NotLivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_75To79Years_Female_NotLivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_75To79Years_Female_NotLivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_75To79Years_Female_NotLivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_75To79Years_Female_UnmarriedOrNotLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_75To79Years_LivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_75To79Years_LivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_75To79Years_LivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_75To79Years_LivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_75To79Years_LivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
     "Count_Person_75To79Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_75To79Years_Male_LivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_75To79Years_Male_LivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_75To79Years_Male_LivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_75To79Years_Male_LivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_75To79Years_Male_LivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_75To79Years_Male_Married": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_75To79Years_Male_MarriedOrLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_75To79Years_Male_NotLivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_75To79Years_Male_NotLivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_75To79Years_Male_NotLivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_75To79Years_Male_NotLivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_75To79Years_Male_UnmarriedOrNotLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_75To79Years_Married": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_75To79Years_MarriedOrLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_75To79Years_NotLivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_75To79Years_NotLivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_75To79Years_NotLivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_75To79Years_NotLivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_75To79Years_UnmarriedOrNotLivingTogether": {
       "by_entity": {
         "wikidataId/Q1951": {}
       }
@@ -437,7 +3502,482 @@
         "wikidataId/Q1951": {}
       }
     },
+    "Count_Person_80To84Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_80To84Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_80To84Years_Female_LivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_80To84Years_Female_LivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_80To84Years_Female_LivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_80To84Years_Female_LivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_80To84Years_Female_LivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_80To84Years_Female_Married": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_80To84Years_Female_MarriedOrLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_80To84Years_Female_NotLivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_80To84Years_Female_NotLivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_80To84Years_Female_NotLivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_80To84Years_Female_NotLivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_80To84Years_Female_UnmarriedOrNotLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_80To84Years_LivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_80To84Years_LivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_80To84Years_LivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_80To84Years_LivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_80To84Years_LivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_80To84Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_80To84Years_Male_LivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_80To84Years_Male_LivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_80To84Years_Male_LivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_80To84Years_Male_LivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_80To84Years_Male_LivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_80To84Years_Male_Married": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_80To84Years_Male_MarriedOrLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_80To84Years_Male_NotLivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_80To84Years_Male_NotLivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_80To84Years_Male_NotLivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_80To84Years_Male_NotLivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_80To84Years_Male_UnmarriedOrNotLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_80To84Years_Married": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_80To84Years_MarriedOrLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_80To84Years_NotLivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_80To84Years_NotLivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_80To84Years_NotLivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_80To84Years_NotLivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_80To84Years_UnmarriedOrNotLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_85OrMoreYears": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_85OrMoreYears_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_85OrMoreYears_Female_LivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_85OrMoreYears_Female_LivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_85OrMoreYears_Female_LivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_85OrMoreYears_Female_LivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_85OrMoreYears_Female_LivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_85OrMoreYears_Female_Married": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_85OrMoreYears_Female_MarriedOrLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_85OrMoreYears_Female_NotLivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_85OrMoreYears_Female_NotLivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_85OrMoreYears_Female_NotLivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_85OrMoreYears_Female_NotLivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_85OrMoreYears_Female_UnmarriedOrNotLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_85OrMoreYears_LivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_85OrMoreYears_LivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_85OrMoreYears_LivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_85OrMoreYears_LivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_85OrMoreYears_LivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_85OrMoreYears_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_85OrMoreYears_Male_LivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_85OrMoreYears_Male_LivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_85OrMoreYears_Male_LivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_85OrMoreYears_Male_LivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_85OrMoreYears_Male_LivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_85OrMoreYears_Male_Married": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_85OrMoreYears_Male_MarriedOrLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_85OrMoreYears_Male_NotLivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_85OrMoreYears_Male_NotLivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_85OrMoreYears_Male_NotLivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_85OrMoreYears_Male_NotLivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_85OrMoreYears_Male_UnmarriedOrNotLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_85OrMoreYears_Married": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_85OrMoreYears_MarriedOrLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_85OrMoreYears_NotLivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_85OrMoreYears_NotLivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_85OrMoreYears_NotLivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_85OrMoreYears_NotLivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_85OrMoreYears_UnmarriedOrNotLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
     "Count_Person_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_Female_LivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_Female_LivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_Female_LivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_Female_LivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_Female_LivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_Female_Married": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_Female_MarriedOrLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_Female_NotLivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_Female_NotLivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_Female_NotLivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_Female_NotLivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_Female_UnmarriedOrNotLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_LivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_LivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_LivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_LivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_LivingTogetherOrWidowed": {
       "by_entity": {
         "wikidataId/Q1951": {}
       }
@@ -447,7 +3987,102 @@
         "wikidataId/Q1951": {}
       }
     },
+    "Count_Person_Male_LivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_Male_LivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_Male_LivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_Male_LivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_Male_LivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_Male_Married": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_Male_MarriedOrLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_Male_NotLivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_Male_NotLivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_Male_NotLivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_Male_NotLivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_Male_UnmarriedOrNotLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_Married": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_MarriedOrLivingTogether": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_NotLivingTogetherOrDivorced": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_NotLivingTogetherOrNeverMarried": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_NotLivingTogetherOrSeparated": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_NotLivingTogetherOrWidowed": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
     "Count_Person_PerArea": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_UnmarriedOrNotLivingTogether": {
       "by_entity": {
         "wikidataId/Q1951": {}
       }
@@ -487,7 +4122,1982 @@
         "wikidataId/Q1951": {}
       }
     },
+    "Count_Student_Female_Kindergarten_PublicSchool": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Student_Female_PreKindergarten_PublicSchool": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Student_Female_PublicSchool": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Student_Female_SchoolGrade10_PublicSchool": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Student_Female_SchoolGrade11_PublicSchool": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Student_Female_SchoolGrade12_PublicSchool": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Student_Female_SchoolGrade13_PublicSchool": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Student_Female_SchoolGrade1_PublicSchool": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Student_Female_SchoolGrade2_PublicSchool": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Student_Female_SchoolGrade3_PublicSchool": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Student_Female_SchoolGrade4_PublicSchool": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Student_Female_SchoolGrade5_PublicSchool": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Student_Female_SchoolGrade6_PublicSchool": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Student_Female_SchoolGrade7_PublicSchool": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Student_Female_SchoolGrade8_PublicSchool": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Student_Female_SchoolGrade9_PublicSchool": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Student_GenderUnknownOrNotStated_Kindergarten_PublicSchool": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Student_GenderUnknownOrNotStated_PublicSchool": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Student_GenderUnknownOrNotStated_SchoolGrade10_PublicSchool": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Student_GenderUnknownOrNotStated_SchoolGrade11_PublicSchool": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Student_GenderUnknownOrNotStated_SchoolGrade12_PublicSchool": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Student_GenderUnknownOrNotStated_SchoolGrade1_PublicSchool": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Student_GenderUnknownOrNotStated_SchoolGrade2_PublicSchool": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Student_GenderUnknownOrNotStated_SchoolGrade3_PublicSchool": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Student_GenderUnknownOrNotStated_SchoolGrade4_PublicSchool": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Student_GenderUnknownOrNotStated_SchoolGrade5_PublicSchool": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Student_GenderUnknownOrNotStated_SchoolGrade6_PublicSchool": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Student_GenderUnknownOrNotStated_SchoolGrade7_PublicSchool": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Student_GenderUnknownOrNotStated_SchoolGrade8_PublicSchool": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Student_GenderUnknownOrNotStated_SchoolGrade9_PublicSchool": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Student_Kindergarten_PublicSchool": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Student_Male_Kindergarten_PublicSchool": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Student_Male_PreKindergarten_PublicSchool": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Student_Male_PublicSchool": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Student_Male_SchoolGrade10_PublicSchool": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Student_Male_SchoolGrade11_PublicSchool": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Student_Male_SchoolGrade12_PublicSchool": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Student_Male_SchoolGrade13_PublicSchool": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Student_Male_SchoolGrade1_PublicSchool": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Student_Male_SchoolGrade2_PublicSchool": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Student_Male_SchoolGrade3_PublicSchool": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Student_Male_SchoolGrade4_PublicSchool": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Student_Male_SchoolGrade5_PublicSchool": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Student_Male_SchoolGrade6_PublicSchool": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Student_Male_SchoolGrade7_PublicSchool": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Student_Male_SchoolGrade8_PublicSchool": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Student_Male_SchoolGrade9_PublicSchool": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Student_PreKindergarten_PublicSchool": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Student_PublicSchool": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Student_SchoolGrade10_PublicSchool": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Student_SchoolGrade11_PublicSchool": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Student_SchoolGrade12_PublicSchool": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Student_SchoolGrade13_PublicSchool": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Student_SchoolGrade1_PublicSchool": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Student_SchoolGrade2_PublicSchool": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Student_SchoolGrade3_PublicSchool": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Student_SchoolGrade4_PublicSchool": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Student_SchoolGrade5_PublicSchool": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Student_SchoolGrade6_PublicSchool": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Student_SchoolGrade7_PublicSchool": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Student_SchoolGrade8_PublicSchool": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Student_SchoolGrade9_PublicSchool": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
     "LifeExpectancy_Person": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_0Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_0Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_0Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_100Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_100Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_100Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_101Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_101Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_101Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_102Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_102Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_102Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_103Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_103Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_103Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_104Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_104Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_104Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_105Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_105Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_105Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_106Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_106Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_106Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_107Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_107Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_107Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_108Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_108Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_108Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_109Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_109Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_109Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_10Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_10Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_10Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_110OrMoreYears": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_110OrMoreYears_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_110OrMoreYears_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_11Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_11Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_11Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_12Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_12Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_12Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_13Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_13Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_13Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_14Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_14Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_14Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_15Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_15Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_15Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_16Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_16Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_16Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_17Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_17Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_17Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_18Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_18Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_18Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_19Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_19Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_19Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_1Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_1Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_1Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_20Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_20Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_20Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_21Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_21Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_21Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_22Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_22Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_22Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_23Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_23Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_23Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_24Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_24Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_24Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_25Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_25Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_25Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_26Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_26Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_26Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_27Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_27Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_27Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_28Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_28Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_28Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_29Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_29Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_29Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_2Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_2Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_2Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_30Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_30Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_30Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_31Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_31Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_31Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_32Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_32Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_32Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_33Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_33Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_33Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_34Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_34Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_34Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_35Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_35Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_35Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_36Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_36Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_36Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_37Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_37Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_37Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_38Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_38Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_38Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_39Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_39Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_39Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_3Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_3Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_3Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_40Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_40Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_40Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_41Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_41Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_41Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_42Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_42Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_42Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_43Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_43Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_43Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_44Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_44Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_44Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_45Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_45Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_45Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_46Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_46Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_46Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_47Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_47Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_47Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_48Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_48Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_48Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_49Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_49Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_49Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_4Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_4Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_4Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_50Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_50Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_50Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_51Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_51Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_51Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_52Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_52Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_52Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_53Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_53Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_53Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_54Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_54Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_54Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_55Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_55Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_55Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_56Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_56Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_56Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_57Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_57Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_57Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_58Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_58Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_58Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_59Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_59Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_59Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_5Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_5Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_5Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_60Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_60Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_60Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_61Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_61Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_61Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_62Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_62Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_62Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_63Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_63Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_63Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_64Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_64Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_64Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_65Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_65Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_65Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_66Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_66Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_66Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_67Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_67Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_67Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_68Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_68Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_68Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_69Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_69Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_69Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_6Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_6Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_6Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_70Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_70Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_70Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_71Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_71Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_71Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_72Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_72Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_72Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_73Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_73Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_73Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_74Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_74Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_74Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_75Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_75Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_75Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_76Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_76Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_76Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_77Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_77Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_77Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_78Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_78Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_78Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_79Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_79Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_79Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_7Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_7Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_7Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_80Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_80Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_80Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_81Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_81Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_81Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_82Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_82Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_82Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_83Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_83Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_83Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_84Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_84Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_84Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_85Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_85Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_85Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_86Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_86Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_86Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_87Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_87Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_87Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_88Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_88Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_88Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_89Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_89Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_89Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_8Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_8Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_8Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_90Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_90Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_90Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_91Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_91Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_91Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_92Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_92Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_92Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_93Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_93Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_93Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_94Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_94Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_94Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_95Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_95Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_95Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_96Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_96Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_96Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_97Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_97Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_97Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_98Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_98Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_98Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_99Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_99Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_99Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_9Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_9Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "LifeExpectancy_Person_9Years_Male": {
       "by_entity": {
         "wikidataId/Q1951": {}
       }

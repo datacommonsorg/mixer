@@ -1180,7 +1180,7 @@
     },
     "country/NZL": {
       "date": "2021",
-      "value": 5122600,
+      "value": 5111400,
       "metadata": {
         "importName": "WorldDevelopmentIndicators",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
