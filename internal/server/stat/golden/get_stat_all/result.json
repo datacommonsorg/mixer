@@ -33,11 +33,11 @@
                 "2014": 56670,
                 "2015": 58180,
                 "2016": 58870,
-                "2017": 61190,
-                "2018": 64090,
-                "2019": 66120,
-                "2020": 64210,
-                "2021": 70480
+                "2017": 61160,
+                "2018": 64060,
+                "2019": 66290,
+                "2020": 64770,
+                "2021": 71130
               },
               "observationPeriod": "P1Y",
               "importName": "WorldDevelopmentIndicators",
@@ -368,13 +368,42 @@
                 "2017": 325122128,
                 "2018": 326838199,
                 "2019": 328329953,
-                "2020": 331501080,
-                "2021": 331893745
+                "2020": 331511512,
+                "2021": 332031554
               },
               "observationPeriod": "P1Y",
               "importName": "WorldDevelopmentIndicators",
               "provenanceDomain": "worldbank.org",
               "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
+            },
+            {
+              "val": {
+                "1999": 279040168,
+                "2000": 281421906,
+                "2001": 284968955,
+                "2002": 287625193,
+                "2003": 290107933,
+                "2004": 292805298,
+                "2005": 295516599,
+                "2006": 298379912,
+                "2007": 301231207,
+                "2008": 304093966,
+                "2009": 306771529,
+                "2010": 308745538,
+                "2011": 311591917,
+                "2012": 313914040,
+                "2013": 316128839,
+                "2014": 318857056,
+                "2015": 321418820,
+                "2016": 323127513,
+                "2017": 325719178,
+                "2018": 327167434,
+                "2019": 328239523,
+                "2020": 329484123
+              },
+              "importName": "CDC_Mortality_UnderlyingCause_State",
+              "provenanceDomain": "cdc.gov",
+              "provenanceUrl": "https://wonder.cdc.gov/ucd-icd10.html"
             },
             {
               "val": {
@@ -882,6 +911,35 @@
               "importName": "USDecennialCensus_RedistrictingRelease",
               "provenanceDomain": "census.gov",
               "provenanceUrl": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html"
+            },
+            {
+              "val": {
+                "1999": 33499204,
+                "2000": 33871648,
+                "2001": 34479458,
+                "2002": 34871843,
+                "2003": 35253159,
+                "2004": 35574576,
+                "2005": 35827943,
+                "2006": 36021202,
+                "2007": 36250311,
+                "2008": 36604337,
+                "2009": 36961229,
+                "2010": 37253956,
+                "2011": 37691912,
+                "2012": 38041430,
+                "2013": 38332521,
+                "2014": 38802500,
+                "2015": 39144818,
+                "2016": 39250017,
+                "2017": 39536653,
+                "2018": 39557045,
+                "2019": 39512223,
+                "2020": 39368078
+              },
+              "importName": "CDC_Mortality_UnderlyingCause_State",
+              "provenanceDomain": "cdc.gov",
+              "provenanceUrl": "https://wonder.cdc.gov/ucd-icd10.html"
             },
             {
               "val": {

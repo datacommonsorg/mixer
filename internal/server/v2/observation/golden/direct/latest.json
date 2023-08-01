@@ -18,7 +18,7 @@
               "observations": [
                 {
                   "date": "2021",
-                  "value": 51660
+                  "value": 52880
                 }
               ]
             }
@@ -31,7 +31,7 @@
               "observations": [
                 {
                   "date": "2021",
-                  "value": 70480
+                  "value": 71130
                 }
               ]
             }
@@ -238,7 +238,16 @@
               "observations": [
                 {
                   "date": "2021",
-                  "value": 331893745
+                  "value": 332031554
+                }
+              ]
+            },
+            {
+              "facet_id": "1152061738",
+              "observations": [
+                {
+                  "date": "2020",
+                  "value": 329484123
                 }
               ]
             },
@@ -325,6 +334,15 @@
                 {
                   "date": "2020",
                   "value": 39538223
+                }
+              ]
+            },
+            {
+              "facet_id": "1152061738",
+              "observations": [
+                {
+                  "date": "2020",
+                  "value": 39368078
                 }
               ]
             },
@@ -435,8 +453,8 @@
               "facet_id": "3707913853",
               "observations": [
                 {
-                  "date": "2023-05",
-                  "value": 6097000
+                  "date": "2023-06",
+                  "value": 5957000
                 }
               ]
             },
@@ -444,8 +462,8 @@
               "facet_id": "1714978719",
               "observations": [
                 {
-                  "date": "2023-03",
-                  "value": 5823000
+                  "date": "2023-06",
+                  "value": 5904000
                 }
               ]
             }
@@ -458,8 +476,8 @@
               "facet_id": "324358135",
               "observations": [
                 {
-                  "date": "2023-04",
-                  "value": 826093
+                  "date": "2023-06",
+                  "value": 943503
                 }
               ]
             },
@@ -476,8 +494,8 @@
               "facet_id": "1249140336",
               "observations": [
                 {
-                  "date": "2023-04",
-                  "value": 867640
+                  "date": "2023-06",
+                  "value": 889122
                 }
               ]
             }
@@ -489,8 +507,8 @@
               "facet_id": "324358135",
               "observations": [
                 {
-                  "date": "2023-04",
-                  "value": 1185
+                  "date": "2023-05",
+                  "value": 1361
                 }
               ]
             },
@@ -545,6 +563,10 @@
       "provenance_url": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#",
       "measurement_method": "OECDRegionalStatistics",
       "observation_period": "P1Y"
+    },
+    "1152061738": {
+      "import_name": "CDC_Mortality_UnderlyingCause_State",
+      "provenance_url": "https://wonder.cdc.gov/ucd-icd10.html"
     },
     "1226172227": {
       "import_name": "CensusACS1YearSurvey",

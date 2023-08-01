@@ -167,6 +167,36 @@
         },
         {
           "date_place_count": {
+            "1999": 51,
+            "2000": 51,
+            "2001": 51,
+            "2002": 51,
+            "2003": 51,
+            "2004": 51,
+            "2005": 51,
+            "2006": 51,
+            "2007": 51,
+            "2008": 51,
+            "2009": 51,
+            "2010": 51,
+            "2011": 51,
+            "2012": 51,
+            "2013": 51,
+            "2014": 51,
+            "2015": 51,
+            "2016": 51,
+            "2017": 51,
+            "2018": 51,
+            "2019": 51,
+            "2020": 51
+          },
+          "metadata": {
+            "import_name": "CDC_Mortality_UnderlyingCause_State",
+            "provenance_url": "https://wonder.cdc.gov/ucd-icd10.html"
+          }
+        },
+        {
+          "date_place_count": {
             "1900": 48,
             "1901": 48,
             "1902": 48,
@@ -613,6 +643,36 @@
             "provenance_url": "https://www2.census.gov/programs-surveys/popest/tables",
             "measurement_method": "CensusPEPSurvey_PartialAggregate",
             "observation_period": "P1Y"
+          }
+        },
+        {
+          "date_place_count": {
+            "1999": 51,
+            "2000": 51,
+            "2001": 51,
+            "2002": 51,
+            "2003": 51,
+            "2004": 51,
+            "2005": 51,
+            "2006": 51,
+            "2007": 51,
+            "2008": 51,
+            "2009": 51,
+            "2010": 51,
+            "2011": 51,
+            "2012": 51,
+            "2013": 51,
+            "2014": 51,
+            "2015": 51,
+            "2016": 51,
+            "2017": 51,
+            "2018": 51,
+            "2019": 51,
+            "2020": 51
+          },
+          "metadata": {
+            "import_name": "CDC_Mortality_UnderlyingCause_State",
+            "provenance_url": "https://wonder.cdc.gov/ucd-icd10.html"
           }
         },
         {

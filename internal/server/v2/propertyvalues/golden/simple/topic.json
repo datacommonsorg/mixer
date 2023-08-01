@@ -99,6 +99,54 @@
               ],
               "dcid": "Percent_Person_WithAsthma",
               "provenanceId": "dc/base/HumanReadableStatVars"
+            },
+            {
+              "name": "Global Health",
+              "types": [
+                "Topic"
+              ],
+              "dcid": "dc/topic/GlobalHealth",
+              "provenanceId": "dc/base/HumanReadableStatVars"
+            },
+            {
+              "name": "Health Conditions",
+              "types": [
+                "Topic"
+              ],
+              "dcid": "dc/topic/HealthConditions",
+              "provenanceId": "dc/base/HumanReadableStatVars"
+            },
+            {
+              "name": "Health Equity",
+              "types": [
+                "Topic"
+              ],
+              "dcid": "dc/topic/HealthEquity",
+              "provenanceId": "dc/base/HumanReadableStatVars"
+            },
+            {
+              "name": "Health Insurance",
+              "types": [
+                "Topic"
+              ],
+              "dcid": "dc/topic/HealthInsurance",
+              "provenanceId": "dc/base/HumanReadableStatVars"
+            },
+            {
+              "name": "Mortality",
+              "types": [
+                "Topic"
+              ],
+              "dcid": "dc/topic/Mortality",
+              "provenanceId": "dc/base/HumanReadableStatVars"
+            },
+            {
+              "name": "Preventive Health And Behavior",
+              "types": [
+                "Topic"
+              ],
+              "dcid": "dc/topic/PreventativeHealthAndBehavior",
+              "provenanceId": "dc/base/HumanReadableStatVars"
             }
           ]
         }

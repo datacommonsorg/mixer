@@ -7093,6 +7093,34 @@
         "StatisticalVariable"
       ],
       "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "dc/topic/Demographics",
+      "subjectName": "Demographics",
+      "subjectTypes": [
+        "Topic"
+      ],
+      "predicate": "relevantVariable",
+      "objectId": "Count_Person",
+      "objectName": "Total Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "dc/topic/Population",
+      "subjectName": "Population",
+      "subjectTypes": [
+        "Topic"
+      ],
+      "predicate": "relevantVariable",
+      "objectId": "Count_Person",
+      "objectName": "Total Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
     }
   ],
   "Count_Person_Female": [
@@ -7263,6 +7291,1868 @@
     {
       "subjectId": "Count_Death_IntentionalSelfHarm_Female_AsFractionOf_Count_Person_Female",
       "subjectName": "Count of Mortality Event: X60-X84 (Intentional Self-harm), Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_AIDS_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: AIDS, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_AccidentalDischargeOfFirearms_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Accidental Discharge of Firearms, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_AccidentalDrowningAndSubmersion_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Accidental Drowning And Submersion, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_AccidentalExposureToSmokeFireAndFlames_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Accidental Exposure To Smoke_Fire And Flames, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_AccidentalPoisoningAndExposureToNoxiousSubstances_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Accidental Poisoning And Exposure To Noxious Substances, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_Accidents(UnintentionalInjuries)_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Accidents(Unintentional Injuries), Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_AcuteAndRapidlyProgressiveNephriticAndNephroticSyndrome_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Acute And Rapidly Progressive Nephritic And Nephrotic Syndrome, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_AcuteAndSubacuteEndocarditis_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Acute And Subacute Endocarditis, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_AcuteBronchitisAndBronchiolitis_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Acute Bronchitis And Bronchiolitis, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_AcuteMyocardialInfarction_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Acute Myocardial Infarction, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_AcuteRheumaticFeverAndChronicRheumaticHeartDiseases_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Acute Rheumatic Fever And Chronic Rheumatic Heart Diseases, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_AlcoholicLiverDisease_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Alcoholic Liver Disease, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_AllOtherAndUnspecifiedMalignantNeoplasms_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: All Other And Unspecified Malignant Neoplasms, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_AllOtherDiseases(Residual)_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: All Other Diseases(Residual), Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_AllOtherFormsOfChronicIschemicHeartDisease_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: All Other Forms of Chronic Ischemic Heart Disease, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_AllOtherFormsOfHeartDisease_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: All Other Forms of Heart Disease, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_AlzheimersDisease_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Alzheimers Disease, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_AorticAneurysmAndDissection_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Aortic Aneurysm And Dissection, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_Assault(Homicide)ByDischargeOfFirearms_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Assault(Homicide)By Discharge of Firearms, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_Assault(Homicide)ByOtherAndUnspecifiedMeansAndTheirSequelae_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Assault(Homicide)By Other And Unspecified Means And Their Sequelae, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_Assault(Homicide)_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Assault(Homicide), Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_Asthma_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Asthma, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_Atherosclerosis_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Atherosclerosis, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_AtheroscleroticCardiovascularDiseaseSoDescribed_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Atherosclerotic Cardiovascular Disease_So Described, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_BronchitisChronicAndUnspecified_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Bronchitis_Chronic And Unspecified, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_COVID19_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: COVID-19, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_CerebrovascularDiseases_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Cerebrovascular Diseases, Cerebrovascular Diseases, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_CertainOtherIntestinalInfections_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Certain Other Intestinal Infections, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_CholelithiasisAndOtherDisordersOfGallbladder_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Cholelithiasis And Other Disorders of Gallbladder, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_ChronicGlomerulonephritisNephritisAndNephritisNotSpecifiedAsAcuteOrChronicAndRenalSclerosisUnspecified_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Chronic Glomerulonephritis_Nephritis And Nephritis Not Specified as Acute or Chronic_And Renal Sclerosis Unspecified, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_ChronicLiverDiseaseAndCirrhosis_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Chronic Liver Disease And Cirrhosis, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_ChronicLowerRespiratoryDiseases_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Chronic Lower Respiratory Diseases, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_ComplicationsOfMedicalAndSurgicalCare_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Complications of Medical And Surgical Care, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_CoronaryHeartDisease_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Coronary Heart Disease, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_DiabetesMellitus_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Diabetes Mellitus, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_DischargeOfFirearmsUndeterminedIntent_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Discharge of Firearms_Undetermined Intent, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_DiseasesOfAppendix_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Diseases of Appendix, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_DiseasesOfHeart_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Diseases of Heart, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_DiseasesOfPericardiumAndAcuteMyocarditis_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Diseases of Pericardium And Acute Myocarditis, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_Emphysema_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Emphysema, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_EnterocolitisDueToClostridiumDifficile_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Enterocolitis Due To Clostridium Difficile, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_Essential(Primary)HypertensionAndHypertensiveRenalDisease_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Essential(Primary)Hypertension And Hypertensive Renal Disease, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_EventsOfUndeterminedIntent_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Events of Undetermined Intent, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_ExternalCausesOfDeath_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: External Causes of Death, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_Falls_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Falls, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_HeartFailure_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Heart Failure, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_Hernia_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Hernia, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_HodgkinsDisease_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Hodgkins Disease, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_HypertensiveHeartAndRenalDisease_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Hypertensive Heart And Renal Disease, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_HypertensiveHeartDisease_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Hypertensive Heart Disease, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_ICD10/A00-B99_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: A00-B99 (Certain Infectious And Parasitic Diseases), Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_ICD10/C00-D48_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: C00-D48 (Neoplasms), Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_ICD10/D50-D89_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: D50-D89 (Diseases of The Blood And Blood-forming Organs And Certain Disorders Involving The Immune Mechanism), Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_ICD10/I00-I99_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: I00-I99 (Diseases of The Circulatory System), Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_ICD10/P00-P96_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: P00-P96 (Certain Conditions Originating in The Perinatal Period), Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_ICD10/Q00-Q99_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Q00-Q99 (Congenital Malformations, Deformations And Chromosomal Abnormalities), Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_ICD10/R00-R99_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: R00-R99 (Symptoms, Signs And Abnormal Clinical And Laboratory Findings, Not Elsewhere Classified), Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_InSituNeoplasmsBenignNeoplasmsAndNeoplasmsOfUncertainOrUnknownBehavior_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: in Situ Neoplasms_Benign Neoplasms And Neoplasms of Uncertain or Unknown Behavior, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_InfectionsOfKidney_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Infections of Kidney, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_InfectiousDiseases_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Infectious Diseases, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_InflammatoryDiseasesOfFemalePelvicOrgans_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Inflammatory Diseases of Female Pelvic Organs, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_InfluenzaAndPneumonia_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Influenza And Pneumonia, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_Influenza_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Influenza, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_IntentionalSelf-Harm(Suicide)ByDischargeOfFirearms_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Intentional Self-Harm(Suicide)By Discharge of Firearms, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_IntentionalSelf-Harm(Suicide)ByOtherAndUnspecifiedMeansAndTheirSequelae_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Intentional Self-Harm(Suicide)By Other And Unspecified Means And Their Sequelae, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_IschemicHeartDiseases_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Ischemic Heart Diseases, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_LegalIntervention_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Legal Intervention, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_Leukemia_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Leukemia, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_MalignantMelanomaOfSkin_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Malignant Melanoma of Skin, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_MalignantNeoplasmOfBladder_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Malignant Neoplasm of Bladder, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_MalignantNeoplasmOfBreast_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Malignant Neoplasm of Breast, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_MalignantNeoplasmOfCervixUteri_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Malignant Neoplasm of Cervix Uteri, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_MalignantNeoplasmOfEsophagus_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Malignant Neoplasm of Esophagus, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_MalignantNeoplasmOfLarynx_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Malignant Neoplasm of Larynx, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_MalignantNeoplasmOfOvary_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Malignant Neoplasm of Ovary, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_MalignantNeoplasmOfPancreas_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Malignant Neoplasm of Pancreas, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_MalignantNeoplasmOfStomach_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Malignant Neoplasm of Stomach, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_MalignantNeoplasmsOfColonRectumAndAnus_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Malignant Neoplasms of Colon_Rectum And Anus, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_MalignantNeoplasmsOfCorpusUteriAndUterusPartUnspecified_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Malignant Neoplasms of Corpus Uteri And Uterus_Part Unspecified, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_MalignantNeoplasmsOfKidneyAndRenalPelvis_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Malignant Neoplasms of Kidney And Renal Pelvis, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_MalignantNeoplasmsOfLipOralCavityAndPharynx_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Malignant Neoplasms of Lip_Oral Cavity And Pharynx, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_MalignantNeoplasmsOfLiverAndIntrahepaticBileDucts_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Malignant Neoplasms of Liver And Intrahepatic Bile Ducts, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_MalignantNeoplasmsOfLymphoidHematopoieticAndRelatedTissue_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Malignant Neoplasms of Lymphoid_Hematopoietic And Related Tissue, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_MalignantNeoplasmsOfMeningesBrainAndOtherPartsOfCentralNervousSystem_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: MalignantNeoplasmsOfMeninges,BrainAndOtherPartsOfCentralNervousSystem, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_MalignantNeoplasmsOfTracheaBronchusAndLung_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: MalignantNeoplasmsOfTrachea,BronchusAndLung, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_MalignantNeoplasms_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Malignant Neoplasms, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_Malnutrition_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Malnutrition, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_Meningitis_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Meningitis, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_MeningococcalInfection_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Meningococcal Infection, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_MotorVehicleAccidents_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Motor Vehicle Accidents, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_MultipleMyelomaAndImmunoproliferativeNeoplasms_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Multiple Myeloma And Immunoproliferative Neoplasms, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_NephritisNephroticSyndromeAndNephrosis_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Nephritis_Nephrotic Syndrome And Nephrosis, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_Non-HodgkinsLymphoma_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Non-Hodgkins Lymphoma, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_NontransportAccidents_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Nontransport Accidents, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_NutritionalDeficiencies_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Nutritional Deficiencies, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_OtherAcuteIschemicHeartDiseases_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Other Acute Ischemic Heart Diseases, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_OtherAcuteLowerRespiratoryInfections_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Other Acute Lower Respiratory Infections, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_OtherAndUnspecifiedEventsOfUndeterminedIntentAndTheirSequelae_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Other And Unspecified Events of Undetermined Intent And Their Sequelae, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_OtherAndUnspecifiedMalignantNeoplasmsOfLymphoidHematopoieticAndRelatedTissue_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Other And Unspecified Malignant Neoplasms of Lymphoid_Hematopoietic And Related Tissue, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_OtherAndUnspecifiedNontransportAccidentsAndTheirSequelae_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Other And Unspecified Nontransport Accidents And Their Sequelae, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_OtherChronicLiverDiseaseAndCirrhosis_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Other Chronic Liver Disease And Cirrhosis, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_OtherChronicLowerRespiratoryDiseases_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Other Chronic Lower Respiratory Diseases, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_OtherComplicationsOfPregnancyChildbirthAndThePuerperium_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Other Complications of Pregnancy_Childbirth And The Puerperium, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_OtherDiseasesOfArteriesArteriolesAndCapillaries_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Other Diseases of Arteries_Arterioles And Capillaries, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_OtherDiseasesOfCirculatorySystem_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Other Diseases of Circulatory System, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_OtherDiseasesOfRespiratorySystem_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Other Diseases of Respiratory System, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_OtherDisordersOfCirculatorySystem_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Other Disorders of Circulatory System, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_OtherDisordersOfKidney_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Other Disorders of Kidney, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_OtherFormsOfChronicIschemicHeartDisease_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Other Forms of Chronic Ischemic Heart Disease, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_OtherHeartDiseases_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Other Heart Diseases, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_OtherLandTransportAccidents_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Other Land Transport Accidents, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_OtherNutritionalDeficiencies_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Other Nutritional Deficiencies, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_OtherTuberculosis_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Other Tuberculosis, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_ParkinsonsDisease_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Parkinsons Disease, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_PepticUlcer_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Peptic Ulcer, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_PneumoconiosesAndChemicalEffects_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Pneumoconioses And Chemical Effects, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_Pneumonia_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Pneumonia, Pneumonia, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_PneumonitisDueToSolidsAndLiquids_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Pneumonitis Due To Solids And Liquids, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_PregnancyChildbirthAndThePuerperium_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Pregnancy_Childbirth And The Puerperium, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_PregnancyWithAbortiveOutcome_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Pregnancy With Abortive Outcome, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_RenalFailure_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Renal Failure, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_RespiratoryTuberculosis_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Respiratory Tuberculosis, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_SalmonellaInfections_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Salmonella Infections, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_Septicemia_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Septicemia, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_Suicide_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Suicide, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_Syphilis_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Syphilis, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_TransportAccidents_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Transport Accidents, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_Tuberculosis_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Tuberculosis, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_UnspecifiedAcuteLowerRespiratoryInfection_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Unspecified Acute Lower Respiratory Infection, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_ViralHepatitis_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Viral Hepatitis, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_MortalityEvent_WaterAirAndSpaceAndOtherAndUnspecifiedTransportAccidentsAndTheirSequelae_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Count of Mortality Event: Water_Air And Space_And Other And Unspecified Transport Accidents And Their Sequelae, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_Person_5OrMoreYears_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Population: 5 Years or More, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_Person_Male_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Population: Male (As Fraction of Count Person Female)",
       "subjectTypes": [
         "StatisticalVariable"
       ],
@@ -8667,6 +10557,20 @@
         "StatisticalVariable"
       ],
       "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "dc/svpg/Population_PopulationbyGender",
+      "subjectName": "Population by Gender",
+      "subjectTypes": [
+        "StatVarPeerGroup"
+      ],
+      "predicate": "member",
       "objectId": "Count_Person_Female",
       "objectName": "Female Population",
       "objectTypes": [

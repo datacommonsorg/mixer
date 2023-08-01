@@ -442,7 +442,38 @@
           "entity": "country/MDV"
         },
         {
-          "entity": "country/MEX"
+          "entity": "country/MEX",
+          "series_by_facet": [
+            {
+              "series": [
+                {
+                  "date": "1995",
+                  "value": 21
+                },
+                {
+                  "date": "2000",
+                  "value": 22
+                },
+                {
+                  "date": "2005",
+                  "value": 24
+                },
+                {
+                  "date": "2010",
+                  "value": 26
+                },
+                {
+                  "date": "2015",
+                  "value": 27
+                },
+                {
+                  "date": "2020",
+                  "value": 29
+                }
+              ],
+              "facet": "3614729857"
+            }
+          ]
         },
         {
           "entity": "country/MHL"
@@ -905,6 +936,10 @@
       "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
       "measurement_method": "CensusACS5yrSurvey",
       "unit": "Year"
+    },
+    "3614729857": {
+      "import_name": "MexicoCensus",
+      "provenance_url": "https://www.inegi.org.mx/temas/"
     },
     "3690003977": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2602",
