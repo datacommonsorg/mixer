@@ -24,6 +24,7 @@ import (
 	"runtime"
 	"strings"
 
+	cbt "cloud.google.com/go/bigtable"
 	pubsub "cloud.google.com/go/pubsub"
 	"github.com/datacommonsorg/mixer/internal/parser/mcf"
 	dcpubsub "github.com/datacommonsorg/mixer/internal/pubsub"
@@ -45,23 +46,22 @@ type Server struct {
 	httpClient *http.Client
 }
 
-func (s *Server) updateBranchTable(ctx context.Context, branchTableName string) {
+func (s *Server) updateBranchTable(ctx context.Context, branchTableName string) error {
 	if s.store.BtGroup == nil {
-		return
+		return nil
 	}
-	branchTable, err := bigtable.NewBtTable(
-		ctx,
-		bigtable.BranchBigtableProject,
-		bigtable.BranchBigtableInstance,
+	btClient, err := cbt.NewClient(ctx, bigtable.BranchBigtableProject, bigtable.BranchBigtableInstance)
+	if err != nil {
+		return err
+	}
+	branchTable := bigtable.NewBtTable(
+		btClient,
 		branchTableName,
 	)
-	if err != nil {
-		log.Printf("Failed to udpate branch cache Bigtable client: %v", err)
-		return
-	}
 	s.store.BtGroup.UpdateBranchTable(
 		bigtable.NewTable(branchTableName, branchTable, false /*isCustom=*/))
 	log.Printf("Updated branch table to use %s", branchTableName)
+	return nil
 }
 
 // NewMetadata initialize the metadata for translator.
