@@ -21,6 +21,7 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
+	"strconv"
 	"strings"
 
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
@@ -208,7 +209,12 @@ func resolvePlaces(
 ) (map[string]string, error) {
 	var property string
 	if placeHeader == "lat#lng" {
-		// TODO(ws): lat#lng recon.
+		for _, place := range places {
+			if err := validateLatLng(place); err != nil {
+				return nil, err
+			}
+		}
+		property = "<-geoCoordinate->dcid"
 	} else if placeHeader == "name" {
 		property = "<-description->dcid"
 	} else {
@@ -225,6 +231,7 @@ func resolvePlaces(
 		return nil, err
 	}
 	for _, entity := range resp.GetEntities() {
+		fmt.Printf("aaa: %v\n", entity)
 		if _, ok := placeToDCID[entity.GetNode()]; ok {
 			continue
 		}
@@ -235,6 +242,36 @@ func resolvePlaces(
 	}
 
 	return placeToDCID, nil
+}
+
+func validateLatLng(latLng string) error {
+	parts := strings.Split(latLng, "#")
+	if len(parts) != 2 {
+		return status.Errorf(codes.InvalidArgument,
+			"Wrong coordinate argument %s, should be latitude#longitude.", latLng)
+	}
+
+	latStr, lngStr := parts[0], parts[1]
+
+	lat, err := strconv.ParseFloat(latStr, 64)
+	if err != nil {
+		return err
+	}
+	if lat > 90 || lat < -90 {
+		return status.Errorf(codes.InvalidArgument,
+			"Wrong latitude for %s", latLng)
+	}
+
+	lng, err := strconv.ParseFloat(lngStr, 64)
+	if err != nil {
+		return err
+	}
+	if lng > 180 || lng < -180 {
+		return status.Errorf(codes.InvalidArgument,
+			"Wrong longitude for %s", latLng)
+	}
+
+	return nil
 }
 
 func prepareDatabase(fileDir string) error {
