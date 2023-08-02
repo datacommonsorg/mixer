@@ -127,8 +127,7 @@ func NewMetadata(
 }
 
 // SubscribeBranchCacheUpdate subscribe for branch cache update.
-func (s *Server) SubscribeBranchCacheUpdate(ctx context.Context,
-) error {
+func (s *Server) SubscribeBranchCacheUpdate(ctx context.Context) error {
 	return dcpubsub.Subscribe(
 		ctx,
 		bigtable.BranchBigtableProject,
@@ -137,8 +136,7 @@ func (s *Server) SubscribeBranchCacheUpdate(ctx context.Context,
 		func(ctx context.Context, msg *pubsub.Message) error {
 			branchTableName := string(msg.Data)
 			log.Printf("branch cache subscriber message received with table name: %s\n", branchTableName)
-			s.updateBranchTable(ctx, branchTableName)
-			return nil
+			return s.updateBranchTable(ctx, branchTableName)
 		},
 	)
 }
