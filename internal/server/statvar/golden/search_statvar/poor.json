@@ -1773,6 +1773,24 @@
       ]
     },
     {
+      "dcid": "dc/g/Person_MedicalCondition-PoorGeneralHealth",
+      "name": "Person With Medical Condition = Poor General Health",
+      "statVars": [
+        {
+          "name": "Percentage of Population With Poor General Health",
+          "dcid": "Percent_Person_18OrMoreYears_WithPoorGeneralHealth"
+        },
+        {
+          "name": "Lower Confidence Interval Limit, Prevalence of Physical Health Not Good",
+          "dcid": "LowerConfidenceIntervalLimit_Percent_Person_18OrMoreYears_WithPoorGeneralHealth"
+        },
+        {
+          "name": "Upper Confidence Interval Limit, Prevalence of Physical Health Not Good",
+          "dcid": "UpperConfidenceIntervalLimit_Percent_Person_18OrMoreYears_WithPoorGeneralHealth"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/Household_BenefitsStatus-WithFoodStampsInThePast12Months_RecentWorkStatus",
       "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Recent Work Status",
       "statVars": [
@@ -2007,16 +2025,16 @@
       ]
     },
     {
-      "dcid": "dc/g/SDGSDMDPANDI_sdglocation",
-      "name": "Average Proportion of Deprivations for People Multidimensionally Poor by Location",
+      "dcid": "dc/g/SDGSDMDPANDI_sdgurbanisation",
+      "name": "Average Proportion of Deprivations for People Multidimensionally Poor by Urbanisation",
       "statVars": [
         {
-          "name": "Average proportion of deprivations for people multidimensionally poor: Rural",
-          "dcid": "sdg/SD_MDP_ANDI_RURAL"
+          "name": "Average proportion of deprivations for people multidimensionally poor [Location = Rural]",
+          "dcid": "sdg/SD_MDP_ANDI.URBANISATION--R"
         },
         {
-          "name": "Average proportion of deprivations for people multidimensionally poor: Urban",
-          "dcid": "sdg/SD_MDP_ANDI_URBAN"
+          "name": "Average proportion of deprivations for people multidimensionally poor [Location = Urban]",
+          "dcid": "sdg/SD_MDP_ANDI.URBANISATION--U"
         }
       ]
     },
@@ -2045,6 +2063,20 @@
         {
           "name": "Population: Below Poverty Level in The Past 12 Months (Per Capita)",
           "dcid": "Count_Person_BelowPovertyLevelInThePast12Months_AsFractionOf_Count_Person"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/SDGSICOVPOOR_gender",
+      "name": "Proportion of Poor Population Receiving Social Assistance Cash Benefit by Gender",
+      "statVars": [
+        {
+          "name": "Proportion of poor population receiving social assistance cash benefit [Sex = Female]",
+          "dcid": "sdg/SI_COV_POOR.SEX--F"
+        },
+        {
+          "name": "Proportion of poor population receiving social assistance cash benefit [Sex = Male]",
+          "dcid": "sdg/SI_COV_POOR.SEX--M"
         }
       ]
     },
@@ -2395,16 +2427,6 @@
         {
           "name": "Male Population Below Poverty Status in the Last Year Who Were Married in the Last Year",
           "dcid": "Count_Person_Male_MarriedInThePast12Months_BelowPovertyLevelInThePast12Months"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/SDG_1.3.1",
-      "name": "1.3.1: Proportion of population covered by social protection floors/systems, by sex, distinguishing children, unemployed persons, older persons, persons with disabilities, pregnant women, newborns, work-injury victims and the poor and the vulnerable",
-      "statVars": [
-        {
-          "name": "Proportion of poor population receiving social assistance cash benefit",
-          "dcid": "sdg/SI_COV_POOR"
         }
       ]
     },
@@ -3297,6 +3319,20 @@
           "dcid": "sdg/SD_MDP_ANDI"
         }
       ]
+    },
+    {
+      "dcid": "dc/g/SDGSICOVPOOR",
+      "name": "Proportion of Poor Population Receiving Social Assistance Cash Benefit",
+      "statVars": [
+        {
+          "name": "Proportion of poor population receiving social assistance cash benefit",
+          "dcid": "sdg/SI_COV_POOR"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/SDG_1.3.1",
+      "name": "1.3.1: Proportion of population covered by social protection floors/systems, by sex, distinguishing children, unemployed persons, older persons, persons with disabilities, pregnant women, newborns, work-injury victims and the poor and the vulnerable"
     },
     {
       "dcid": "dc/g/SDG_1.3",

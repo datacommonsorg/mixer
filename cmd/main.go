@@ -47,6 +47,7 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/health/grpc_health_v1"
 
+	cbt "cloud.google.com/go/bigtable"
 	_ "github.com/mattn/go-sqlite3" // import the sqlite3 driver
 )
 
@@ -146,10 +147,17 @@ func main() {
 		if err != nil {
 			log.Fatalf("Failed to read branch cache folder: %v", err)
 		}
-		branchTable, err := bigtable.NewBtTable(
+		btClient, err := cbt.NewClient(
 			ctx,
 			bigtable.BranchBigtableProject,
 			bigtable.BranchBigtableInstance,
+		)
+		if err != nil {
+			log.Fatalf("Failed to create branch bigtable client: %v", err)
+
+		}
+		branchTable := bigtable.NewBtTable(
+			btClient,
 			branchTableName,
 		)
 		if err != nil {

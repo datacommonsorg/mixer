@@ -235,8 +235,10 @@ func resolvePlaces(
 		if _, ok := placeToDCID[entity.GetNode()]; ok {
 			continue
 		}
-		// TODO(ws): Handle the case with multiple candidates, especially for lat#lng.
-		placeToDCID[entity.GetNode()] = entity.GetCandidates()[0].GetDcid()
+		// TODO(ws): Handle the case with multiple candidates.
+		if len(entity.GetCandidates()) > 0 {
+			placeToDCID[entity.GetNode()] = entity.GetCandidates()[0].GetDcid()
+		}
 	}
 
 	return placeToDCID, nil

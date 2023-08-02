@@ -61,4 +61,4 @@ scripts/tmp*.sh
 http_memprof_out
 
 # custom dc data
-data/
+/data

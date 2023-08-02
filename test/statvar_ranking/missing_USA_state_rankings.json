@@ -144,28 +144,6 @@
     "relatedChart": {}
   },
   {
-    "title": "Health behaviors",
-    "statsVars": [
-      "Percent_Person_SleepLessThan7Hours",
-      "Percent_Person_Obesity",
-      "Percent_Person_BingeDrinking",
-      "Percent_Person_PhysicalInactivity",
-      "Percent_Person_Smoking"
-    ],
-    "relatedChart": {}
-  },
-  {
-    "title": "Health outcomes",
-    "statsVars": [
-      "Percent_Person_WithHighCholesterol",
-      "Percent_Person_WithHighBloodPressure",
-      "Percent_Person_WithArthritis",
-      "Percent_Person_WithMentalHealthNotGood",
-      "Percent_Person_WithPhysicalHealthNotGood"
-    ],
-    "relatedChart": {}
-  },
-  {
     "title": "Infant mortality rate by gender",
     "statsVars": [
       "Count_Death_0Years_Male_AsFractionOf_Count_BirthEvent_LiveBirth_Male",
@@ -260,8 +238,6 @@
   {
     "title": "Mortality events",
     "statsVars": [
-      "Count_Death_DiseasesOfTheCirculatorySystem",
-      "Count_Death_Neoplasms",
       "Count_Death_DiseasesOfTheRespiratorySystem",
       "Count_Death_ExternalCauses",
       "Count_Death_DiseasesOfTheNervousSystem"
@@ -269,8 +245,6 @@
     "relatedChart": {
       "scale": true,
       "statsVars": [
-        "Count_Death_DiseasesOfTheCirculatorySystem",
-        "Count_Death_Neoplasms",
         "Count_Death_DiseasesOfTheRespiratorySystem",
         "Count_Death_ExternalCauses",
         "Count_Death_DiseasesOfTheNervousSystem"

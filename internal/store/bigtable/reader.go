@@ -62,7 +62,8 @@ func readRowFn(
 				parts := strings.Split(strings.TrimPrefix(btRow.Key(), prefix), "^")
 				btRowChan <- BtRow{parts, elem}
 				return true
-			}); err != nil {
+			},
+		); err != nil {
 			return err
 		}
 		return nil

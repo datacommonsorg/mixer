@@ -658,7 +658,7 @@
             },
             {
               "date": "2021",
-              "value": 9340314,
+              "value": 9302585,
               "facet": "3981252704"
             },
             {
@@ -703,7 +703,7 @@
           "points_by_facet": [
             {
               "date": "2021",
-              "value": 63867,
+              "value": 63764,
               "facet": "3981252704"
             },
             {
@@ -888,8 +888,13 @@
           "points_by_facet": [
             {
               "date": "2021",
-              "value": 38246108,
+              "value": 38226498,
               "facet": "3981252704"
+            },
+            {
+              "date": "2021",
+              "value": 36991981,
+              "facet": "1216205004"
             },
             {
               "date": "2019",
@@ -1908,7 +1913,7 @@
             },
             {
               "date": "2021",
-              "value": 67326569,
+              "value": 67026300,
               "facet": "3981252704"
             },
             {
@@ -2348,7 +2353,7 @@
             },
             {
               "date": "2021",
-              "value": 3899000,
+              "value": 3879000,
               "facet": "3981252704"
             },
             {
@@ -2638,8 +2643,13 @@
           "points_by_facet": [
             {
               "date": "2021",
-              "value": 9364000,
+              "value": 9364700,
               "facet": "3981252704"
+            },
+            {
+              "date": "2021",
+              "value": 9453000,
+              "facet": "192455881"
             },
             {
               "date": "2018",
@@ -2767,6 +2777,11 @@
               "facet": "3981252704"
             },
             {
+              "date": "2020",
+              "value": 126146099,
+              "facet": "2708675871"
+            },
+            {
               "date": "2018",
               "value": 126443000,
               "facet": "1151455814"
@@ -2815,6 +2830,11 @@
               "date": "2021",
               "value": 53005614,
               "facet": "3981252704"
+            },
+            {
+              "date": "2019",
+              "value": 47564296,
+              "facet": "2018634167"
             },
             {
               "date": "2016",
@@ -3442,6 +3462,16 @@
               "facet": "3981252704"
             },
             {
+              "date": "2021",
+              "value": 128972439,
+              "facet": "3251078590"
+            },
+            {
+              "date": "2020",
+              "value": 126014024,
+              "facet": "3614729857"
+            },
+            {
               "date": "2019",
               "value": 125929000,
               "facet": "1151455814"
@@ -3748,7 +3778,7 @@
           "points_by_facet": [
             {
               "date": "2021",
-              "value": 1266060,
+              "value": 1266334,
               "facet": "3981252704"
             },
             {
@@ -3853,7 +3883,7 @@
           "points_by_facet": [
             {
               "date": "2021",
-              "value": 271030,
+              "value": 274660,
               "facet": "3981252704"
             },
             {
@@ -4093,7 +4123,7 @@
           "points_by_facet": [
             {
               "date": "2021",
-              "value": 5122600,
+              "value": 5111400,
               "facet": "3981252704"
             },
             {
@@ -4333,7 +4363,7 @@
           "points_by_facet": [
             {
               "date": "2021",
-              "value": 3263584,
+              "value": 3262693,
               "facet": "3981252704"
             },
             {
@@ -5563,8 +5593,13 @@
             },
             {
               "date": "2021",
-              "value": 331893745,
+              "value": 332031554,
               "facet": "3981252704"
+            },
+            {
+              "date": "2020",
+              "value": 329484123,
+              "facet": "1152061738"
             },
             {
               "date": "2019",
@@ -5877,6 +5912,11 @@
               "facet": "3981252704"
             },
             {
+              "date": "2018",
+              "value": 57725605.59,
+              "facet": "1897073702"
+            },
+            {
               "date": "2019",
               "value": 58775000,
               "facet": "1151455814"
@@ -5968,6 +6008,14 @@
       "measurement_method": "OECDRegionalStatistics",
       "observation_period": "P1Y"
     },
+    "1152061738": {
+      "import_name": "CDC_Mortality_UnderlyingCause_State",
+      "provenance_url": "https://wonder.cdc.gov/ucd-icd10.html"
+    },
+    "1216205004": {
+      "import_name": "CanadaStatistics",
+      "provenance_url": "https://www150.statcan.gc.ca/n1/en/type/data?MM=1"
+    },
     "1226172227": {
       "import_name": "CensusACS1YearSurvey",
       "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
@@ -5998,6 +6046,14 @@
       "provenance_url": "http://data.un.org",
       "measurement_method": "UNData"
     },
+    "1897073702": {
+      "import_name": "SouthAfrica_Census",
+      "provenance_url": "https://southafrica.opendataforafrica.org/"
+    },
+    "192455881": {
+      "import_name": "Israel_Census",
+      "provenance_url": "https://www.cbs.gov.il/"
+    },
     "1945925412": {
       "import_name": "BulgariaPopulation",
       "provenance_url": "https://www.nsi.bg/en",
@@ -6007,6 +6063,10 @@
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2602",
       "provenance_url": "https://data.census.gov/cedsci/table?q=S2602&tid=ACSST5Y2019.S2602",
       "measurement_method": "CensusACS5yrSurveySubjectTable"
+    },
+    "2018634167": {
+      "import_name": "Kenya_Census",
+      "provenance_url": "https://kenya.opendataforafrica.org/"
     },
     "2052219360": {
       "import_name": "Argentina_Census",
@@ -6047,6 +6107,10 @@
       "provenance_url": "https://www.stat.ee/en",
       "measurement_method": "StatisticsEstonia"
     },
+    "2708675871": {
+      "import_name": "Japan_Census",
+      "provenance_url": "https://www.e-stat.go.jp/"
+    },
     "290530767": {
       "import_name": "LatviaCSB",
       "provenance_url": "https://www.csb.gov.lv/en",
@@ -6075,6 +6139,14 @@
       "import_name": "StatisticsFinland",
       "provenance_url": "https://www.stat.fi/index_en.html",
       "measurement_method": "StatisticsFinland"
+    },
+    "3251078590": {
+      "import_name": "MexicoCensus_AA2",
+      "provenance_url": "https://data.humdata.org/dataset/cod-ps-mex"
+    },
+    "3614729857": {
+      "import_name": "MexicoCensus",
+      "provenance_url": "https://www.inegi.org.mx/temas/"
     },
     "3698737791": {
       "import_name": "StatisticsNorway",
