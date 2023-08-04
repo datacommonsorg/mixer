@@ -131,9 +131,20 @@ func TestFetchDirect(t *testing.T) {
 				[]string{"country/USA"},
 				"LATEST",
 				&pbv2.FacetFilter{
-					Domain: []string{"oecd.org"},
+					Domains: []string{"oecd.org"},
 				},
 				"filter.json",
+			},
+			{
+				[]string{
+					"Count_Person",
+				},
+				[]string{"country/USA"},
+				"LATEST",
+				&pbv2.FacetFilter{
+					Domains: []string{"oecd.org", "cdc.gov"},
+				},
+				"multi_filter.json",
 			},
 		} {
 			goldenFile := c.goldenFile
