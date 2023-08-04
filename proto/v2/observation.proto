@@ -70,9 +70,9 @@ message FacetFilter {
   // When specified, only observations with this observation period are
   // returned.
   string period = 3;
-  // When specified, only observations with provenance in this domain are
+  // When specified, only observations with provenance in these domain are
   // returned.
-  string domain = 4;
+  repeated string domains = 4;
 }
 
 // Generic observation request

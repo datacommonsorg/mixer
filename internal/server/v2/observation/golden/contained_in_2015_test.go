@@ -67,9 +67,17 @@ func TestFetchContainIn(t *testing.T) {
 				[]string{"Count_Person"},
 				"country/USA<-containedInPlace+{typeOf:State}",
 				&pbv2.FacetFilter{
-					Domain: "census.gov",
+					Domains: []string{"census.gov"},
 				},
 				"filter.json",
+			},
+			{
+				[]string{"Count_Person"},
+				"country/USA<-containedInPlace+{typeOf:State}",
+				&pbv2.FacetFilter{
+					Domains: []string{"census.gov", "cdc.gov"},
+				},
+				"multi_filter.json",
 			},
 		} {
 			goldenFile := c.goldenFile
