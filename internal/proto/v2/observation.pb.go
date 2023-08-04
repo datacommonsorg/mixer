@@ -283,7 +283,7 @@ type FacetFilter struct {
 	Period string `protobuf:"bytes,3,opt,name=period,proto3" json:"period,omitempty"`
 	// When specified, only observations with provenance in this domain are
 	// returned.
-	Domain string `protobuf:"bytes,4,opt,name=domain,proto3" json:"domain,omitempty"`
+	Domain []string `protobuf:"bytes,4,opt,name=domain,proto3" json:"domain,omitempty"`
 }
 
 func (x *FacetFilter) Reset() {
@@ -339,11 +339,11 @@ func (x *FacetFilter) GetPeriod() string {
 	return ""
 }
 
-func (x *FacetFilter) GetDomain() string {
+func (x *FacetFilter) GetDomain() []string {
 	if x != nil {
 		return x.Domain
 	}
-	return ""
+	return nil
 }
 
 // Generic observation request

@@ -190,14 +190,23 @@ func FetchContainedIn(
 					sort.Sort(ranking.CohortByRank(cohorts))
 					for _, cohort := range cohorts {
 						facet := util.GetFacet(cohort)
-						if filter != nil && filter.Domain != "" {
+						if filter != nil && filter.Domain != nil {
 							url, err := url.Parse(facet.ProvenanceUrl)
 							if err != nil {
 								return nil, err
 							}
-							// To match domain or subdomain. For example, a provenance url of
-							// abc.xyz.com can match filter "xyz.com" and "abc.xyz.com".
-							if !strings.HasSuffix(url.Hostname(), filter.Domain) {
+							matchedDomain := false
+							for _, domain := range filter.Domain {
+								// To match domain or subdomain. For example, a provenance url of
+								// abc.xyz.com can match filter "xyz.com" and "abc.xyz.com".
+								if strings.HasSuffix(url.Hostname(), domain) {
+									matchedDomain = true
+									break
+								}
+							}
+							if !matchedDomain {
+								// Skip processing series with provenances that don't match
+								// domain filter
 								continue
 							}
 						}

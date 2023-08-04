@@ -67,7 +67,7 @@ func TestFetchContainIn(t *testing.T) {
 				[]string{"Count_Person"},
 				"country/USA<-containedInPlace+{typeOf:State}",
 				&pbv2.FacetFilter{
-					Domain: "census.gov",
+					Domain: []string{"census.gov"},
 				},
 				"filter.json",
 			},

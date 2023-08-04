@@ -131,7 +131,7 @@ func TestFetchDirect(t *testing.T) {
 				[]string{"country/USA"},
 				"LATEST",
 				&pbv2.FacetFilter{
-					Domain: "oecd.org",
+					Domain: []string{"oecd.org"},
 				},
 				"filter.json",
 			},
