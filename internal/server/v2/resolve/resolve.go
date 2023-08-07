@@ -18,6 +18,7 @@ package resolve
 import (
 	"context"
 	"fmt"
+	"sort"
 	"strconv"
 	"strings"
 
@@ -29,6 +30,22 @@ import (
 	"google.golang.org/grpc/status"
 	"googlemaps.github.io/maps"
 )
+
+var resolvedPlaceTypePriorityList = []string{
+	"AdministrativeArea5",
+	"AdministrativeArea4",
+	"AdministrativeArea3",
+	"AdministrativeArea2",
+	"AdministrativeArea1",
+	"EurostatNUTS3",
+	"EurostatNUTS2",
+	"EurostatNUTS1",
+	"Town",
+	"City",
+	"County",
+	"State",
+	"Country",
+}
 
 // ID resolves ID to ID.
 func ID(
@@ -92,18 +109,11 @@ func Coordinate(
 	}
 	resp := &pbv2.ResolveResponse{}
 	for _, e := range data.GetPlaceCoordinates() {
-		candidates := []*pbv2.ResolveResponse_Entity_Candidate{}
-		for _, place := range e.GetPlaces() {
-			candidates = append(candidates, &pbv2.ResolveResponse_Entity_Candidate{
-				Dcid:         place.GetDcid(),
-				DominantType: place.GetDominantType(),
-			})
-		}
 		resp.Entities = append(resp.Entities,
 			&pbv2.ResolveResponse_Entity{
 				Node:        fmt.Sprintf("%f#%f", e.GetLatitude(), e.GetLongitude()),
 				ResolvedIds: e.GetPlaceDcids(),
-				Candidates:  candidates,
+				Candidates:  getSortedResolvedPlaceCandidates(e.GetPlaces()),
 			})
 	}
 	return resp, nil
@@ -175,4 +185,45 @@ func parseCoordinate(coordinateExpr string) (float64, float64, error) {
 	}
 
 	return lat, lng, nil
+}
+
+// Sort resolved place candidates by a priority list of place types.
+// If a candidate's type is not in the priority list, then sort by DCID alphabetically.
+func getSortedResolvedPlaceCandidates(
+	places []*pb.ResolveCoordinatesResponse_Place) []*pbv2.ResolveResponse_Entity_Candidate {
+	typeToCandidate := map[string]*pbv2.ResolveResponse_Entity_Candidate{}
+	for _, place := range places {
+		// Two candidates do not likely to have the same type. In the rare case they do, we can
+		// randomly pick one.
+		typeToCandidate[place.GetDominantType()] = &pbv2.ResolveResponse_Entity_Candidate{
+			Dcid:         place.GetDcid(),
+			DominantType: place.GetDominantType(),
+		}
+	}
+
+	// Add candidates whose type is in the priority list.
+	candidates := []*pbv2.ResolveResponse_Entity_Candidate{}
+	selectedPriorityTypeSet := map[string]struct{}{}
+	for _, priorityType := range resolvedPlaceTypePriorityList {
+		if candidate, ok := typeToCandidate[priorityType]; ok {
+			candidates = append(candidates, candidate)
+			selectedPriorityTypeSet[priorityType] = struct{}{}
+		}
+	}
+
+	// Sort leftover candidates.
+	leftoverCandidates := []*pbv2.ResolveResponse_Entity_Candidate{}
+	for t, candidate := range typeToCandidate {
+		if _, ok := selectedPriorityTypeSet[t]; !ok {
+			leftoverCandidates = append(leftoverCandidates, candidate)
+		}
+	}
+	sort.Slice(leftoverCandidates, func(i, j int) bool {
+		return leftoverCandidates[i].GetDcid() < leftoverCandidates[j].GetDcid()
+	})
+
+	// Assemeble final result.
+	candidates = append(candidates, leftoverCandidates...)
+
+	return candidates
 }
