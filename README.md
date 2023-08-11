@@ -44,3 +44,7 @@ Follow the [Developer Guide](docs/developer_guide.md).
 ## Setup a new GKE cluster
 
 Follow GKE [Setup Guide](gke/README.md).
+
+## Use Recon APIs
+
+Follow the [Recon Guide](docs/recon_guide.md).
