@@ -28241,136 +28241,6 @@
       ]
     },
     {
-      "dcid": "dc/g/Person_Age_Gender-Female",
-      "name": "Person With Age, Gender = Female",
-      "statVars": [
-        {
-          "name": "Life Expectancy: 1 Years or Less, Female",
-          "dcid": "LifeExpectancy_Person_Upto1Years_Female"
-        },
-        {
-          "name": "Life Expectancy: Years 101, Female",
-          "dcid": "LifeExpectancy_Person_101Years_Female"
-        },
-        {
-          "name": "Life Expectancy: Years 102, Female",
-          "dcid": "LifeExpectancy_Person_102Years_Female"
-        },
-        {
-          "name": "Life Expectancy: Years 103, Female",
-          "dcid": "LifeExpectancy_Person_103Years_Female"
-        },
-        {
-          "name": "Life Expectancy: Years 104, Female",
-          "dcid": "LifeExpectancy_Person_104Years_Female"
-        },
-        {
-          "name": "Life Expectancy: Years 105, Female",
-          "dcid": "LifeExpectancy_Person_105Years_Female"
-        },
-        {
-          "name": "Life Expectancy: Years 106, Female",
-          "dcid": "LifeExpectancy_Person_106Years_Female"
-        },
-        {
-          "name": "Life Expectancy: Years 107, Female",
-          "dcid": "LifeExpectancy_Person_107Years_Female"
-        },
-        {
-          "name": "Life Expectancy: Years 108, Female",
-          "dcid": "LifeExpectancy_Person_108Years_Female"
-        },
-        {
-          "name": "Life Expectancy: Years 109, Female",
-          "dcid": "LifeExpectancy_Person_109Years_Female"
-        },
-        {
-          "name": "Population: 0 - 14 Years, Female",
-          "dcid": "Count_Person_0To14Years_Female"
-        },
-        {
-          "name": "Population: 100 - 104 Years, Female",
-          "dcid": "Count_Person_100To104Years_Female"
-        },
-        {
-          "name": "Population: 105 - 109 Years, Female",
-          "dcid": "Count_Person_105To109Years_Female"
-        },
-        {
-          "name": "Population: 14 Years or Less, Female",
-          "dcid": "Count_Person_Upto14Years_Female"
-        },
-        {
-          "name": "Population: 15 - 59 Years, Female",
-          "dcid": "Count_Person_15To59Years_Female"
-        },
-        {
-          "name": "Population: 3 Years or More, Female",
-          "dcid": "Count_Person_3OrMoreYears_Female"
-        },
-        {
-          "name": "Population: 60 Years or More, Female",
-          "dcid": "Count_Person_60OrMoreYears_Female"
-        },
-        {
-          "name": "Population: 65 - 66 Years, Female",
-          "dcid": "Count_Person_65To66Years_Female"
-        },
-        {
-          "name": "Population: 67 - 69 Years, Female",
-          "dcid": "Count_Person_67To69Years_Female"
-        },
-        {
-          "name": "Population: 85 - 89 Years, Female",
-          "dcid": "Count_Person_85To89Years_Female"
-        },
-        {
-          "name": "Population: 90 - 94 Years, Female",
-          "dcid": "Count_Person_90To94Years_Female"
-        },
-        {
-          "name": "Population: 90 Years or More, Female",
-          "dcid": "Count_Person_90OrMoreYears_Female"
-        },
-        {
-          "name": "Population: 95 - 99 Years, Female",
-          "dcid": "Count_Person_95To99Years_Female"
-        },
-        {
-          "name": "Population: 95 Years or More, Female",
-          "dcid": "Count_Person_95OrMoreYears_Female"
-        },
-        {
-          "name": "Population: 99 Years or More, Female",
-          "dcid": "Count_Person_99OrMoreYears_Female"
-        },
-        {
-          "name": "Unemployment Rate: 15 - 65 Years, Female",
-          "dcid": "UnemploymentRate_Person_15To65Years_Female"
-        },
-        {
-          "name": "Unemployment Rate: 25 - 74 Years, Female",
-          "dcid": "UnemploymentRate_Person_25To74Years_Female"
-        },
-        {
-          "name": "Unemployment Rate: 25 Years or Less, Female",
-          "dcid": "UnemploymentRate_Person_Upto25Years_Female"
-        },
-        {
-          "name": "Population: 5 Years or More, Female (As Fraction of Count Person Female)",
-          "dcid": "Count_Person_5OrMoreYears_Female_AsAFractionOf_Count_Person_Female"
-        },
-        {
-          "name": "Prevalence: 50 - 74 Years, Female, Mammography",
-          "dcid": "Percent_Person_50To74Years_Female_ReceivedMammography"
-        },
-        {
-          "name": "Population (Measured Based on Custody): 0 - 17 Years, Female, Incarcerated",
-          "dcid": "dc/c17kzp0zrfkq9"
-        }
-      ]
-    },
-    {
       "dcid": "dc/g/Person_Age-Years85_Gender-Female_Race",
       "name": "Person With Age = Years 85, Gender = Female, Race",
       "statVars": [
@@ -30257,6 +30127,128 @@
         {
           "name": "Population: Years 99, Female, White Alone or In Combination With One or More Other Races",
           "dcid": "Count_Person_99Years_Female_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age_Gender-Female",
+      "name": "Person With Age, Gender = Female",
+      "statVars": [
+        {
+          "name": "Life Expectancy: 1 Years or Less, Female",
+          "dcid": "LifeExpectancy_Person_Upto1Years_Female"
+        },
+        {
+          "name": "Life Expectancy: Years 101, Female",
+          "dcid": "LifeExpectancy_Person_101Years_Female"
+        },
+        {
+          "name": "Life Expectancy: Years 102, Female",
+          "dcid": "LifeExpectancy_Person_102Years_Female"
+        },
+        {
+          "name": "Life Expectancy: Years 103, Female",
+          "dcid": "LifeExpectancy_Person_103Years_Female"
+        },
+        {
+          "name": "Life Expectancy: Years 104, Female",
+          "dcid": "LifeExpectancy_Person_104Years_Female"
+        },
+        {
+          "name": "Life Expectancy: Years 105, Female",
+          "dcid": "LifeExpectancy_Person_105Years_Female"
+        },
+        {
+          "name": "Life Expectancy: Years 106, Female",
+          "dcid": "LifeExpectancy_Person_106Years_Female"
+        },
+        {
+          "name": "Life Expectancy: Years 107, Female",
+          "dcid": "LifeExpectancy_Person_107Years_Female"
+        },
+        {
+          "name": "Life Expectancy: Years 108, Female",
+          "dcid": "LifeExpectancy_Person_108Years_Female"
+        },
+        {
+          "name": "Life Expectancy: Years 109, Female",
+          "dcid": "LifeExpectancy_Person_109Years_Female"
+        },
+        {
+          "name": "Population: 0 - 14 Years, Female",
+          "dcid": "Count_Person_0To14Years_Female"
+        },
+        {
+          "name": "Population: 100 - 104 Years, Female",
+          "dcid": "Count_Person_100To104Years_Female"
+        },
+        {
+          "name": "Population: 105 - 109 Years, Female",
+          "dcid": "Count_Person_105To109Years_Female"
+        },
+        {
+          "name": "Population: 14 Years or Less, Female",
+          "dcid": "Count_Person_Upto14Years_Female"
+        },
+        {
+          "name": "Population: 15 - 59 Years, Female",
+          "dcid": "Count_Person_15To59Years_Female"
+        },
+        {
+          "name": "Population: 3 Years or More, Female",
+          "dcid": "Count_Person_3OrMoreYears_Female"
+        },
+        {
+          "name": "Population: 60 Years or More, Female",
+          "dcid": "Count_Person_60OrMoreYears_Female"
+        },
+        {
+          "name": "Population: 65 - 66 Years, Female",
+          "dcid": "Count_Person_65To66Years_Female"
+        },
+        {
+          "name": "Population: 67 - 69 Years, Female",
+          "dcid": "Count_Person_67To69Years_Female"
+        },
+        {
+          "name": "Population: 90 - 94 Years, Female",
+          "dcid": "Count_Person_90To94Years_Female"
+        },
+        {
+          "name": "Population: 95 - 99 Years, Female",
+          "dcid": "Count_Person_95To99Years_Female"
+        },
+        {
+          "name": "Population: 95 Years or More, Female",
+          "dcid": "Count_Person_95OrMoreYears_Female"
+        },
+        {
+          "name": "Population: 99 Years or More, Female",
+          "dcid": "Count_Person_99OrMoreYears_Female"
+        },
+        {
+          "name": "Unemployment Rate: 15 - 65 Years, Female",
+          "dcid": "UnemploymentRate_Person_15To65Years_Female"
+        },
+        {
+          "name": "Unemployment Rate: 25 - 74 Years, Female",
+          "dcid": "UnemploymentRate_Person_25To74Years_Female"
+        },
+        {
+          "name": "Unemployment Rate: 25 Years or Less, Female",
+          "dcid": "UnemploymentRate_Person_Upto25Years_Female"
+        },
+        {
+          "name": "Population: 5 Years or More, Female (As Fraction of Count Person Female)",
+          "dcid": "Count_Person_5OrMoreYears_Female_AsAFractionOf_Count_Person_Female"
+        },
+        {
+          "name": "Prevalence: 50 - 74 Years, Female, Mammography",
+          "dcid": "Percent_Person_50To74Years_Female_ReceivedMammography"
+        },
+        {
+          "name": "Population (Measured Based on Custody): 0 - 17 Years, Female, Incarcerated",
+          "dcid": "dc/c17kzp0zrfkq9"
         }
       ]
     },
@@ -34705,48 +34697,6 @@
       ]
     },
     {
-      "dcid": "dc/g/Person_Age-Years5To19_Gender-Female_Race",
-      "name": "Person With Age = 5 - 19 Years, Gender = Female, Race",
-      "statVars": [
-        {
-          "name": "Population: 5 - 19 Years, Female, American Indian or Alaska Native Alone",
-          "dcid": "dc/lhm5jqzqw9eh6"
-        },
-        {
-          "name": "Population: 5 - 19 Years, Female, Asian Alone",
-          "dcid": "dc/7ze0b65khtxm1"
-        },
-        {
-          "name": "Population: 5 - 19 Years, Female, Black or African American Alone",
-          "dcid": "dc/9tje7t59y5y02"
-        },
-        {
-          "name": "Population: 5 - 19 Years, Female, Hispanic or Latino",
-          "dcid": "dc/xzecyytxdwky7"
-        },
-        {
-          "name": "Population: 5 - 19 Years, Female, Native Hawaiian or Other Pacific Islander Alone",
-          "dcid": "dc/pl02dd7y395eg"
-        },
-        {
-          "name": "Population: 5 - 19 Years, Female, Some Other Race Alone",
-          "dcid": "dc/jltsyjw3tdes7"
-        },
-        {
-          "name": "Population: 5 - 19 Years, Female, Two or More Races",
-          "dcid": "dc/xrpwshke8kcs"
-        },
-        {
-          "name": "Population: 5 - 19 Years, Female, White Alone",
-          "dcid": "dc/9z8b964ld1xg7"
-        },
-        {
-          "name": "Population: 5 - 19 Years, Female, White Alone Not Hispanic or Latino",
-          "dcid": "dc/4wd0sckvzn9vc"
-        }
-      ]
-    },
-    {
       "dcid": "dc/g/Person_Age-Years75To84_Gender-Female_Race",
       "name": "Person With Age = 75 - 84 Years, Gender = Female, Race",
       "statVars": [
@@ -36545,6 +36495,44 @@
         {
           "name": "Count of Hate Crime Incidents: Bias Against Gender, Female Victim, Society",
           "dcid": "Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_Female_VictimTypeSociety"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/MortalityEvent_Age_Gender-Female",
+      "name": "Mortality Event With Age, Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Mortality Event: 15 - 64 Years, Female",
+          "dcid": "Count_Death_15To64Years_Female"
+        },
+        {
+          "name": "Count of Mortality Event: 4 Years or Less, Female",
+          "dcid": "Count_Death_Upto4Years_Female"
+        },
+        {
+          "name": "Count of Mortality Event: 65 Years or More, Female",
+          "dcid": "Count_Death_65OrMoreYears_Female"
+        },
+        {
+          "name": "Count of Mortality Event: 80 Years or More, Female",
+          "dcid": "Count_Death_80OrMoreYears_Female"
+        },
+        {
+          "name": "Female Infant Mortality Rate",
+          "dcid": "Count_Death_0Years_Female_AsFractionOf_Count_BirthEvent_LiveBirth_Female"
+        },
+        {
+          "name": "Count of Mortality Event: 0 - 4 Years, Diabetes, Female",
+          "dcid": "Count_MortalityEvent_0To4Years_Diabetes_Female"
+        },
+        {
+          "name": "Count of Mortality Event: 85 Years or More, Diabetes, Female",
+          "dcid": "Count_MortalityEvent_85OrMoreYears_Diabetes_Female"
+        },
+        {
+          "name": "Count of Mortality Event: 5 Years or Less, Female, Resident (As Fraction of Count Birth Event 5 or Less Years Female Live Birth Resident)",
+          "dcid": "Count_MortalityEvent_5OrLessYears_Female_Resident_AsAFractionOf_Count_BirthEvent_5OrLessYears_Female_LiveBirth_Resident"
         }
       ]
     },
@@ -38483,40 +38471,6 @@
         {
           "name": "Percentile 90 Assessment Score of Student: Female, School Grade 8, Writing, Public School",
           "dcid": "Percentile90_AssessmentScore_Student_Female_SchoolGrade8_Writing_PublicSchool"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/MortalityEvent_Age_Gender-Female",
-      "name": "Mortality Event With Age, Gender = Female",
-      "statVars": [
-        {
-          "name": "Count of Mortality Event: 15 - 64 Years, Female",
-          "dcid": "Count_Death_15To64Years_Female"
-        },
-        {
-          "name": "Count of Mortality Event: 4 Years or Less, Female",
-          "dcid": "Count_Death_Upto4Years_Female"
-        },
-        {
-          "name": "Count of Mortality Event: 65 Years or More, Female",
-          "dcid": "Count_Death_65OrMoreYears_Female"
-        },
-        {
-          "name": "Count of Mortality Event: 80 Years or More, Female",
-          "dcid": "Count_Death_80OrMoreYears_Female"
-        },
-        {
-          "name": "Female Infant Mortality Rate",
-          "dcid": "Count_Death_0Years_Female_AsFractionOf_Count_BirthEvent_LiveBirth_Female"
-        },
-        {
-          "name": "Count of Mortality Event: 0 - 4 Years, Diabetes, Female",
-          "dcid": "Count_MortalityEvent_0To4Years_Diabetes_Female"
-        },
-        {
-          "name": "Count of Mortality Event: 85 Years or More, Diabetes, Female",
-          "dcid": "Count_MortalityEvent_85OrMoreYears_Diabetes_Female"
         }
       ]
     },
@@ -44411,6 +44365,32 @@
       ]
     },
     {
+      "dcid": "dc/g/MortalityEvent_Gender-Female",
+      "name": "Mortality Event With Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Mortality Event: Female",
+          "dcid": "Count_Death_Female"
+        },
+        {
+          "name": "Count of Mortality Event: Female (As Fraction of Count Person Female)",
+          "dcid": "Count_Death_Female_AsAFractionOf_Count_Person_Female"
+        },
+        {
+          "name": "Count of Mortality Event: Female (Per Capita)",
+          "dcid": "Count_MortalityEvent_Female_AsAFractionOf_Count_Person"
+        },
+        {
+          "name": "Count of Mortality Event (Age Adjusted): Female (As Fraction of Count Person Female)",
+          "dcid": "Count_Death_Female_AgeAdjusted_AsAFractionOf_Count_Person_Female"
+        },
+        {
+          "name": "Count of Mortality Event: Infant, Female, Resident (As Fraction of Count Birth Event Female Live Birth Resident)",
+          "dcid": "Count_MortalityEvent_Infant_Female_Resident_AsAFractionOf_Count_BirthEvent_Female_LiveBirth_Resident"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/SDGSGDMKPARLCCUC_gender-SDGSexEnumF_sdgparliamentaryCommittees",
       "name": "Number of Chairs of Permanent Committees With Gender = Female, Parliamentary Committees",
       "statVars": [
@@ -46583,28 +46563,6 @@
       ]
     },
     {
-      "dcid": "dc/g/MortalityEvent_Gender-Female",
-      "name": "Mortality Event With Gender = Female",
-      "statVars": [
-        {
-          "name": "Count of Mortality Event: Female",
-          "dcid": "Count_Death_Female"
-        },
-        {
-          "name": "Count of Mortality Event: Female (As Fraction of Count Person Female)",
-          "dcid": "Count_Death_Female_AsAFractionOf_Count_Person_Female"
-        },
-        {
-          "name": "Count of Mortality Event: Female (Per Capita)",
-          "dcid": "Count_MortalityEvent_Female_AsAFractionOf_Count_Person"
-        },
-        {
-          "name": "Count of Mortality Event (Age Adjusted): Female (As Fraction of Count Person Female)",
-          "dcid": "Count_Death_Female_AgeAdjusted_AsAFractionOf_Count_Person_Female"
-        }
-      ]
-    },
-    {
       "dcid": "dc/g/Student_Gender-Female",
       "name": "Student With Gender = Female",
       "statVars": [
@@ -46667,6 +46625,28 @@
         {
           "name": "Count of Mortality Event (Measured Based on Jurisdiction): AIDS, Female, Incarcerated",
           "dcid": "dc/qnnbzwrjn50jh"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/MortalityEvent_Ethnicity_Gender-Female",
+      "name": "Mortality Event With Ethnicity, Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Mortality Event: Chinese, Female",
+          "dcid": "Count_MortalityEvent_Chinese_Female"
+        },
+        {
+          "name": "Count of Mortality Event: Indian, Female",
+          "dcid": "Count_MortalityEvent_Indian_Female"
+        },
+        {
+          "name": "Count of Mortality Event: Malay, Female",
+          "dcid": "Count_MortalityEvent_Malay_Female"
+        },
+        {
+          "name": "Count of Mortality Event: SGP_Other Ethnicity, Female",
+          "dcid": "Count_MortalityEvent_SGPOtherEthnicity_Female"
         }
       ]
     },
@@ -49381,20 +49361,20 @@
       "name": "Person With Gender = Female, Occupation = Engineers, Race = Asian, Tenure Status",
       "statVars": [
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Engineers, Asian, Not on Tenure Track",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCEngineersOccupation_Asian_NotOnTenureTrack"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Engineers, Asian, Not on Tenure Track",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCEngineersOccupation_Asian_NotOnTenureTrack"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Engineers, Asian, Tenure Not Applicable",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCEngineersOccupation_Asian_TenureNotApplicable"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Engineers, Asian, Tenure Not Applicable",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCEngineersOccupation_Asian_TenureNotApplicable"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Engineers, Asian, Tenured",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCEngineersOccupation_Asian_Tenured"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Engineers, Asian, Tenured",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCEngineersOccupation_Asian_Tenured"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Engineers, Asian, on Tenure Track",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCEngineersOccupation_Asian_OnTenureTrack"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Engineers, Asian, on Tenure Track",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCEngineersOccupation_Asian_OnTenureTrack"
         }
       ]
     },
@@ -49403,20 +49383,20 @@
       "name": "Person With Gender = Female, Occupation = Engineers, Race = White Alone, Tenure Status",
       "statVars": [
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Engineers, White Alone, Not on Tenure Track",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCEngineersOccupation_WhiteAlone_NotOnTenureTrack"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Engineers, White Alone, Not on Tenure Track",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCEngineersOccupation_WhiteAlone_NotOnTenureTrack"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Engineers, White Alone, Tenure Not Applicable",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCEngineersOccupation_WhiteAlone_TenureNotApplicable"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Engineers, White Alone, Tenure Not Applicable",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCEngineersOccupation_WhiteAlone_TenureNotApplicable"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Engineers, White Alone, Tenured",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCEngineersOccupation_WhiteAlone_Tenured"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Engineers, White Alone, Tenured",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCEngineersOccupation_WhiteAlone_Tenured"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Engineers, White Alone, on Tenure Track",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCEngineersOccupation_WhiteAlone_OnTenureTrack"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Engineers, White Alone, on Tenure Track",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCEngineersOccupation_WhiteAlone_OnTenureTrack"
         }
       ]
     },
@@ -49425,20 +49405,20 @@
       "name": "Person With Gender = Female, Occupation = Life Scientists, Race = Asian, Tenure Status",
       "statVars": [
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Life Scientists, Asian, Not on Tenure Track",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCLifeScientistsOccupation_Asian_NotOnTenureTrack"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Life Scientists, Asian, Not on Tenure Track",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCLifeScientistsOccupation_Asian_NotOnTenureTrack"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Life Scientists, Asian, Tenure Not Applicable",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCLifeScientistsOccupation_Asian_TenureNotApplicable"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Life Scientists, Asian, Tenure Not Applicable",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCLifeScientistsOccupation_Asian_TenureNotApplicable"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Life Scientists, Asian, Tenured",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCLifeScientistsOccupation_Asian_Tenured"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Life Scientists, Asian, Tenured",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCLifeScientistsOccupation_Asian_Tenured"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Life Scientists, Asian, on Tenure Track",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCLifeScientistsOccupation_Asian_OnTenureTrack"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Life Scientists, Asian, on Tenure Track",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCLifeScientistsOccupation_Asian_OnTenureTrack"
         }
       ]
     },
@@ -49447,20 +49427,20 @@
       "name": "Person With Gender = Female, Occupation = Life Scientists, Race = Black, Tenure Status",
       "statVars": [
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Life Scientists, Black, Not on Tenure Track",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCLifeScientistsOccupation_Black_NotOnTenureTrack"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Life Scientists, Black, Not on Tenure Track",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCLifeScientistsOccupation_Black_NotOnTenureTrack"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Life Scientists, Black, Tenure Not Applicable",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCLifeScientistsOccupation_Black_TenureNotApplicable"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Life Scientists, Black, Tenure Not Applicable",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCLifeScientistsOccupation_Black_TenureNotApplicable"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Life Scientists, Black, Tenured",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCLifeScientistsOccupation_Black_Tenured"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Life Scientists, Black, Tenured",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCLifeScientistsOccupation_Black_Tenured"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Life Scientists, Black, on Tenure Track",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCLifeScientistsOccupation_Black_OnTenureTrack"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Life Scientists, Black, on Tenure Track",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCLifeScientistsOccupation_Black_OnTenureTrack"
         }
       ]
     },
@@ -49469,20 +49449,20 @@
       "name": "Person With Gender = Female, Occupation = Life Scientists, Race = Two or More Races, Tenure Status",
       "statVars": [
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Life Scientists, Two or More Races, Not on Tenure Track",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCLifeScientistsOccupation_TwoOrMoreRaces_NotOnTenureTrack"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Life Scientists, Two or More Races, Not on Tenure Track",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCLifeScientistsOccupation_TwoOrMoreRaces_NotOnTenureTrack"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Life Scientists, Two or More Races, Tenure Not Applicable",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCLifeScientistsOccupation_TwoOrMoreRaces_TenureNotApplicable"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Life Scientists, Two or More Races, Tenure Not Applicable",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCLifeScientistsOccupation_TwoOrMoreRaces_TenureNotApplicable"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Life Scientists, Two or More Races, Tenured",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCLifeScientistsOccupation_TwoOrMoreRaces_Tenured"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Life Scientists, Two or More Races, Tenured",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCLifeScientistsOccupation_TwoOrMoreRaces_Tenured"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Life Scientists, Two or More Races, on Tenure Track",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCLifeScientistsOccupation_TwoOrMoreRaces_OnTenureTrack"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Life Scientists, Two or More Races, on Tenure Track",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCLifeScientistsOccupation_TwoOrMoreRaces_OnTenureTrack"
         }
       ]
     },
@@ -49491,20 +49471,20 @@
       "name": "Person With Gender = Female, Occupation = Life Scientists, Race = White Alone, Tenure Status",
       "statVars": [
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Life Scientists, White Alone, Not on Tenure Track",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCLifeScientistsOccupation_WhiteAlone_NotOnTenureTrack"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Life Scientists, White Alone, Not on Tenure Track",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCLifeScientistsOccupation_WhiteAlone_NotOnTenureTrack"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Life Scientists, White Alone, Tenure Not Applicable",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCLifeScientistsOccupation_WhiteAlone_TenureNotApplicable"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Life Scientists, White Alone, Tenure Not Applicable",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCLifeScientistsOccupation_WhiteAlone_TenureNotApplicable"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Life Scientists, White Alone, Tenured",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCLifeScientistsOccupation_WhiteAlone_Tenured"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Life Scientists, White Alone, Tenured",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCLifeScientistsOccupation_WhiteAlone_Tenured"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Life Scientists, White Alone, on Tenure Track",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCLifeScientistsOccupation_WhiteAlone_OnTenureTrack"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Life Scientists, White Alone, on Tenure Track",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCLifeScientistsOccupation_WhiteAlone_OnTenureTrack"
         }
       ]
     },
@@ -49513,20 +49493,20 @@
       "name": "Person With Gender = Female, Occupation = Life, Physical, And Social Science Occupations, Race = Asian, Tenure Status",
       "statVars": [
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Life, Physical, And Social Science Occupations, Asian, Not on Tenure Track",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCLifePhysicalSocialScienceOccupation_Asian_NotOnTenureTrack"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Life, Physical, And Social Science Occupations, Asian, Not on Tenure Track",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCLifePhysicalSocialScienceOccupation_Asian_NotOnTenureTrack"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Life, Physical, And Social Science Occupations, Asian, Tenure Not Applicable",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCLifePhysicalSocialScienceOccupation_Asian_TenureNotApplicable"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Life, Physical, And Social Science Occupations, Asian, Tenure Not Applicable",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCLifePhysicalSocialScienceOccupation_Asian_TenureNotApplicable"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Life, Physical, And Social Science Occupations, Asian, Tenured",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCLifePhysicalSocialScienceOccupation_Asian_Tenured"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Life, Physical, And Social Science Occupations, Asian, Tenured",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCLifePhysicalSocialScienceOccupation_Asian_Tenured"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Life, Physical, And Social Science Occupations, Asian, on Tenure Track",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCLifePhysicalSocialScienceOccupation_Asian_OnTenureTrack"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Life, Physical, And Social Science Occupations, Asian, on Tenure Track",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCLifePhysicalSocialScienceOccupation_Asian_OnTenureTrack"
         }
       ]
     },
@@ -49535,20 +49515,20 @@
       "name": "Person With Gender = Female, Occupation = Life, Physical, And Social Science Occupations, Race = Black, Tenure Status",
       "statVars": [
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Life, Physical, And Social Science Occupations, Black, Not on Tenure Track",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCLifePhysicalSocialScienceOccupation_Black_NotOnTenureTrack"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Life, Physical, And Social Science Occupations, Black, Not on Tenure Track",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCLifePhysicalSocialScienceOccupation_Black_NotOnTenureTrack"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Life, Physical, And Social Science Occupations, Black, Tenure Not Applicable",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCLifePhysicalSocialScienceOccupation_Black_TenureNotApplicable"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Life, Physical, And Social Science Occupations, Black, Tenure Not Applicable",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCLifePhysicalSocialScienceOccupation_Black_TenureNotApplicable"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Life, Physical, And Social Science Occupations, Black, Tenured",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCLifePhysicalSocialScienceOccupation_Black_Tenured"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Life, Physical, And Social Science Occupations, Black, Tenured",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCLifePhysicalSocialScienceOccupation_Black_Tenured"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Life, Physical, And Social Science Occupations, Black, on Tenure Track",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCLifePhysicalSocialScienceOccupation_Black_OnTenureTrack"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Life, Physical, And Social Science Occupations, Black, on Tenure Track",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCLifePhysicalSocialScienceOccupation_Black_OnTenureTrack"
         }
       ]
     },
@@ -49557,20 +49537,20 @@
       "name": "Person With Gender = Female, Occupation = Life, Physical, And Social Science Occupations, Race = Two or More Races, Tenure Status",
       "statVars": [
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Life, Physical, And Social Science Occupations, Two or More Races, Not on Tenure Track",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCLifePhysicalSocialScienceOccupation_TwoOrMoreRaces_NotOnTenureTrack"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Life, Physical, And Social Science Occupations, Two or More Races, Not on Tenure Track",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCLifePhysicalSocialScienceOccupation_TwoOrMoreRaces_NotOnTenureTrack"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Life, Physical, And Social Science Occupations, Two or More Races, Tenure Not Applicable",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCLifePhysicalSocialScienceOccupation_TwoOrMoreRaces_TenureNotApplicable"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Life, Physical, And Social Science Occupations, Two or More Races, Tenure Not Applicable",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCLifePhysicalSocialScienceOccupation_TwoOrMoreRaces_TenureNotApplicable"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Life, Physical, And Social Science Occupations, Two or More Races, Tenured",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCLifePhysicalSocialScienceOccupation_TwoOrMoreRaces_Tenured"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Life, Physical, And Social Science Occupations, Two or More Races, Tenured",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCLifePhysicalSocialScienceOccupation_TwoOrMoreRaces_Tenured"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Life, Physical, And Social Science Occupations, Two or More Races, on Tenure Track",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCLifePhysicalSocialScienceOccupation_TwoOrMoreRaces_OnTenureTrack"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Life, Physical, And Social Science Occupations, Two or More Races, on Tenure Track",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCLifePhysicalSocialScienceOccupation_TwoOrMoreRaces_OnTenureTrack"
         }
       ]
     },
@@ -49579,20 +49559,20 @@
       "name": "Person With Gender = Female, Occupation = Life, Physical, And Social Science Occupations, Race = White Alone, Tenure Status",
       "statVars": [
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Life, Physical, And Social Science Occupations, White Alone, Not on Tenure Track",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCLifePhysicalSocialScienceOccupation_WhiteAlone_NotOnTenureTrack"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Life, Physical, And Social Science Occupations, White Alone, Not on Tenure Track",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCLifePhysicalSocialScienceOccupation_WhiteAlone_NotOnTenureTrack"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Life, Physical, And Social Science Occupations, White Alone, Tenure Not Applicable",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCLifePhysicalSocialScienceOccupation_WhiteAlone_TenureNotApplicable"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Life, Physical, And Social Science Occupations, White Alone, Tenure Not Applicable",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCLifePhysicalSocialScienceOccupation_WhiteAlone_TenureNotApplicable"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Life, Physical, And Social Science Occupations, White Alone, Tenured",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCLifePhysicalSocialScienceOccupation_WhiteAlone_Tenured"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Life, Physical, And Social Science Occupations, White Alone, Tenured",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCLifePhysicalSocialScienceOccupation_WhiteAlone_Tenured"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Life, Physical, And Social Science Occupations, White Alone, on Tenure Track",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCLifePhysicalSocialScienceOccupation_WhiteAlone_OnTenureTrack"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Life, Physical, And Social Science Occupations, White Alone, on Tenure Track",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCLifePhysicalSocialScienceOccupation_WhiteAlone_OnTenureTrack"
         }
       ]
     },
@@ -49601,20 +49581,20 @@
       "name": "Person With Gender = Female, Occupation = Mathematical Science Occupations, Race = Asian, Tenure Status",
       "statVars": [
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Mathematical Science Occupations, Asian, Not on Tenure Track",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCMathematicalScienceOccupation_Asian_NotOnTenureTrack"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Mathematical Science Occupations, Asian, Not on Tenure Track",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCMathematicalScienceOccupation_Asian_NotOnTenureTrack"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Mathematical Science Occupations, Asian, Tenure Not Applicable",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCMathematicalScienceOccupation_Asian_TenureNotApplicable"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Mathematical Science Occupations, Asian, Tenure Not Applicable",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCMathematicalScienceOccupation_Asian_TenureNotApplicable"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Mathematical Science Occupations, Asian, Tenured",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCMathematicalScienceOccupation_Asian_Tenured"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Mathematical Science Occupations, Asian, Tenured",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCMathematicalScienceOccupation_Asian_Tenured"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Mathematical Science Occupations, Asian, on Tenure Track",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCMathematicalScienceOccupation_Asian_OnTenureTrack"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Mathematical Science Occupations, Asian, on Tenure Track",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCMathematicalScienceOccupation_Asian_OnTenureTrack"
         }
       ]
     },
@@ -49623,20 +49603,20 @@
       "name": "Person With Gender = Female, Occupation = Mathematical Science Occupations, Race = White Alone, Tenure Status",
       "statVars": [
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Mathematical Science Occupations, White Alone, Not on Tenure Track",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCMathematicalScienceOccupation_WhiteAlone_NotOnTenureTrack"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Mathematical Science Occupations, White Alone, Not on Tenure Track",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCMathematicalScienceOccupation_WhiteAlone_NotOnTenureTrack"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Mathematical Science Occupations, White Alone, Tenure Not Applicable",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCMathematicalScienceOccupation_WhiteAlone_TenureNotApplicable"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Mathematical Science Occupations, White Alone, Tenure Not Applicable",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCMathematicalScienceOccupation_WhiteAlone_TenureNotApplicable"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Mathematical Science Occupations, White Alone, Tenured",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCMathematicalScienceOccupation_WhiteAlone_Tenured"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Mathematical Science Occupations, White Alone, Tenured",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCMathematicalScienceOccupation_WhiteAlone_Tenured"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Mathematical Science Occupations, White Alone, on Tenure Track",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCMathematicalScienceOccupation_WhiteAlone_OnTenureTrack"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Mathematical Science Occupations, White Alone, on Tenure Track",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCMathematicalScienceOccupation_WhiteAlone_OnTenureTrack"
         }
       ]
     },
@@ -49645,20 +49625,20 @@
       "name": "Person With Gender = Female, Occupation = Non Science And Engineering, Race = Asian, Tenure Status",
       "statVars": [
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Non Science And Engineering, Asian, Not on Tenure Track",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_NonScienceAndEngineeringOccupation_Asian_NotOnTenureTrack"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Non Science And Engineering, Asian, Not on Tenure Track",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_NonScienceAndEngineeringOccupation_Asian_NotOnTenureTrack"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Non Science And Engineering, Asian, Tenure Not Applicable",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_NonScienceAndEngineeringOccupation_Asian_TenureNotApplicable"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Non Science And Engineering, Asian, Tenure Not Applicable",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_NonScienceAndEngineeringOccupation_Asian_TenureNotApplicable"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Non Science And Engineering, Asian, Tenured",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_NonScienceAndEngineeringOccupation_Asian_Tenured"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Non Science And Engineering, Asian, Tenured",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_NonScienceAndEngineeringOccupation_Asian_Tenured"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Non Science And Engineering, Asian, on Tenure Track",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_NonScienceAndEngineeringOccupation_Asian_OnTenureTrack"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Non Science And Engineering, Asian, on Tenure Track",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_NonScienceAndEngineeringOccupation_Asian_OnTenureTrack"
         }
       ]
     },
@@ -49667,20 +49647,20 @@
       "name": "Person With Gender = Female, Occupation = Non Science And Engineering, Race = Black, Tenure Status",
       "statVars": [
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Non Science And Engineering, Black, Not on Tenure Track",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_NonScienceAndEngineeringOccupation_Black_NotOnTenureTrack"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Non Science And Engineering, Black, Not on Tenure Track",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_NonScienceAndEngineeringOccupation_Black_NotOnTenureTrack"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Non Science And Engineering, Black, Tenure Not Applicable",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_NonScienceAndEngineeringOccupation_Black_TenureNotApplicable"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Non Science And Engineering, Black, Tenure Not Applicable",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_NonScienceAndEngineeringOccupation_Black_TenureNotApplicable"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Non Science And Engineering, Black, Tenured",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_NonScienceAndEngineeringOccupation_Black_Tenured"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Non Science And Engineering, Black, Tenured",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_NonScienceAndEngineeringOccupation_Black_Tenured"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Non Science And Engineering, Black, on Tenure Track",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_NonScienceAndEngineeringOccupation_Black_OnTenureTrack"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Non Science And Engineering, Black, on Tenure Track",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_NonScienceAndEngineeringOccupation_Black_OnTenureTrack"
         }
       ]
     },
@@ -49689,20 +49669,20 @@
       "name": "Person With Gender = Female, Occupation = Non Science And Engineering, Race = White Alone, Tenure Status",
       "statVars": [
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Non Science And Engineering, White Alone, Not on Tenure Track",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_NonScienceAndEngineeringOccupation_WhiteAlone_NotOnTenureTrack"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Non Science And Engineering, White Alone, Not on Tenure Track",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_NonScienceAndEngineeringOccupation_WhiteAlone_NotOnTenureTrack"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Non Science And Engineering, White Alone, Tenure Not Applicable",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_NonScienceAndEngineeringOccupation_WhiteAlone_TenureNotApplicable"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Non Science And Engineering, White Alone, Tenure Not Applicable",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_NonScienceAndEngineeringOccupation_WhiteAlone_TenureNotApplicable"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Non Science And Engineering, White Alone, Tenured",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_NonScienceAndEngineeringOccupation_WhiteAlone_Tenured"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Non Science And Engineering, White Alone, Tenured",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_NonScienceAndEngineeringOccupation_WhiteAlone_Tenured"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Non Science And Engineering, White Alone, on Tenure Track",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_NonScienceAndEngineeringOccupation_WhiteAlone_OnTenureTrack"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Non Science And Engineering, White Alone, on Tenure Track",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_NonScienceAndEngineeringOccupation_WhiteAlone_OnTenureTrack"
         }
       ]
     },
@@ -49711,20 +49691,20 @@
       "name": "Person With Gender = Female, Occupation = Physical Scientists, Race = Asian, Tenure Status",
       "statVars": [
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Physical Scientists, Asian, Not on Tenure Track",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCPhysicalScientistsOccupation_Asian_NotOnTenureTrack"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Physical Scientists, Asian, Not on Tenure Track",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCPhysicalScientistsOccupation_Asian_NotOnTenureTrack"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Physical Scientists, Asian, Tenure Not Applicable",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCPhysicalScientistsOccupation_Asian_TenureNotApplicable"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Physical Scientists, Asian, Tenure Not Applicable",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCPhysicalScientistsOccupation_Asian_TenureNotApplicable"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Physical Scientists, Asian, Tenured",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCPhysicalScientistsOccupation_Asian_Tenured"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Physical Scientists, Asian, Tenured",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCPhysicalScientistsOccupation_Asian_Tenured"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Physical Scientists, Asian, on Tenure Track",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCPhysicalScientistsOccupation_Asian_OnTenureTrack"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Physical Scientists, Asian, on Tenure Track",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCPhysicalScientistsOccupation_Asian_OnTenureTrack"
         }
       ]
     },
@@ -49733,20 +49713,20 @@
       "name": "Person With Gender = Female, Occupation = Physical Scientists, Race = White Alone, Tenure Status",
       "statVars": [
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Physical Scientists, White Alone, Not on Tenure Track",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCPhysicalScientistsOccupation_WhiteAlone_NotOnTenureTrack"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Physical Scientists, White Alone, Not on Tenure Track",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCPhysicalScientistsOccupation_WhiteAlone_NotOnTenureTrack"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Physical Scientists, White Alone, Tenure Not Applicable",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCPhysicalScientistsOccupation_WhiteAlone_TenureNotApplicable"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Physical Scientists, White Alone, Tenure Not Applicable",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCPhysicalScientistsOccupation_WhiteAlone_TenureNotApplicable"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Physical Scientists, White Alone, Tenured",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCPhysicalScientistsOccupation_WhiteAlone_Tenured"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Physical Scientists, White Alone, Tenured",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCPhysicalScientistsOccupation_WhiteAlone_Tenured"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Physical Scientists, White Alone, on Tenure Track",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCPhysicalScientistsOccupation_WhiteAlone_OnTenureTrack"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Physical Scientists, White Alone, on Tenure Track",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCPhysicalScientistsOccupation_WhiteAlone_OnTenureTrack"
         }
       ]
     },
@@ -49755,20 +49735,20 @@
       "name": "Person With Gender = Female, Occupation = Psychologists, Race = Black, Tenure Status",
       "statVars": [
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Psychologists, Black, Not on Tenure Track",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCPsychologistsOccupation_Black_NotOnTenureTrack"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Psychologists, Black, Not on Tenure Track",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCPsychologistsOccupation_Black_NotOnTenureTrack"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Psychologists, Black, Tenure Not Applicable",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCPsychologistsOccupation_Black_TenureNotApplicable"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Psychologists, Black, Tenure Not Applicable",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCPsychologistsOccupation_Black_TenureNotApplicable"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Psychologists, Black, Tenured",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCPsychologistsOccupation_Black_Tenured"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Psychologists, Black, Tenured",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCPsychologistsOccupation_Black_Tenured"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Psychologists, Black, on Tenure Track",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCPsychologistsOccupation_Black_OnTenureTrack"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Psychologists, Black, on Tenure Track",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCPsychologistsOccupation_Black_OnTenureTrack"
         }
       ]
     },
@@ -49777,20 +49757,20 @@
       "name": "Person With Gender = Female, Occupation = Psychologists, Race = White Alone, Tenure Status",
       "statVars": [
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Psychologists, White Alone, Not on Tenure Track",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCPsychologistsOccupation_WhiteAlone_NotOnTenureTrack"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Psychologists, White Alone, Not on Tenure Track",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCPsychologistsOccupation_WhiteAlone_NotOnTenureTrack"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Psychologists, White Alone, Tenure Not Applicable",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCPsychologistsOccupation_WhiteAlone_TenureNotApplicable"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Psychologists, White Alone, Tenure Not Applicable",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCPsychologistsOccupation_WhiteAlone_TenureNotApplicable"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Psychologists, White Alone, Tenured",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCPsychologistsOccupation_WhiteAlone_Tenured"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Psychologists, White Alone, Tenured",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCPsychologistsOccupation_WhiteAlone_Tenured"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Psychologists, White Alone, on Tenure Track",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCPsychologistsOccupation_WhiteAlone_OnTenureTrack"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Psychologists, White Alone, on Tenure Track",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCPsychologistsOccupation_WhiteAlone_OnTenureTrack"
         }
       ]
     },
@@ -49799,20 +49779,20 @@
       "name": "Person With Gender = Female, Occupation = Science And Engineering Related, Race = Asian, Tenure Status",
       "statVars": [
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Science And Engineering Related, Asian, Not on Tenure Track",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_ScienceAndEngineeringRelatedOccupation_Asian_NotOnTenureTrack"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Science And Engineering Related, Asian, Not on Tenure Track",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_ScienceAndEngineeringRelatedOccupation_Asian_NotOnTenureTrack"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Science And Engineering Related, Asian, Tenure Not Applicable",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_ScienceAndEngineeringRelatedOccupation_Asian_TenureNotApplicable"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Science And Engineering Related, Asian, Tenure Not Applicable",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_ScienceAndEngineeringRelatedOccupation_Asian_TenureNotApplicable"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Science And Engineering Related, Asian, Tenured",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_ScienceAndEngineeringRelatedOccupation_Asian_Tenured"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Science And Engineering Related, Asian, Tenured",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_ScienceAndEngineeringRelatedOccupation_Asian_Tenured"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Science And Engineering Related, Asian, on Tenure Track",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_ScienceAndEngineeringRelatedOccupation_Asian_OnTenureTrack"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Science And Engineering Related, Asian, on Tenure Track",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_ScienceAndEngineeringRelatedOccupation_Asian_OnTenureTrack"
         }
       ]
     },
@@ -49821,20 +49801,20 @@
       "name": "Person With Gender = Female, Occupation = Science And Engineering Related, Race = Black, Tenure Status",
       "statVars": [
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Science And Engineering Related, Black, Not on Tenure Track",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_ScienceAndEngineeringRelatedOccupation_Black_NotOnTenureTrack"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Science And Engineering Related, Black, Not on Tenure Track",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_ScienceAndEngineeringRelatedOccupation_Black_NotOnTenureTrack"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Science And Engineering Related, Black, Tenure Not Applicable",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_ScienceAndEngineeringRelatedOccupation_Black_TenureNotApplicable"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Science And Engineering Related, Black, Tenure Not Applicable",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_ScienceAndEngineeringRelatedOccupation_Black_TenureNotApplicable"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Science And Engineering Related, Black, Tenured",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_ScienceAndEngineeringRelatedOccupation_Black_Tenured"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Science And Engineering Related, Black, Tenured",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_ScienceAndEngineeringRelatedOccupation_Black_Tenured"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Science And Engineering Related, Black, on Tenure Track",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_ScienceAndEngineeringRelatedOccupation_Black_OnTenureTrack"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Science And Engineering Related, Black, on Tenure Track",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_ScienceAndEngineeringRelatedOccupation_Black_OnTenureTrack"
         }
       ]
     },
@@ -49843,20 +49823,20 @@
       "name": "Person With Gender = Female, Occupation = Science And Engineering Related, Race = White Alone, Tenure Status",
       "statVars": [
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Science And Engineering Related, White Alone, Not on Tenure Track",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_ScienceAndEngineeringRelatedOccupation_WhiteAlone_NotOnTenureTrack"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Science And Engineering Related, White Alone, Not on Tenure Track",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_ScienceAndEngineeringRelatedOccupation_WhiteAlone_NotOnTenureTrack"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Science And Engineering Related, White Alone, Tenure Not Applicable",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_ScienceAndEngineeringRelatedOccupation_WhiteAlone_TenureNotApplicable"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Science And Engineering Related, White Alone, Tenure Not Applicable",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_ScienceAndEngineeringRelatedOccupation_WhiteAlone_TenureNotApplicable"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Science And Engineering Related, White Alone, Tenured",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_ScienceAndEngineeringRelatedOccupation_WhiteAlone_Tenured"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Science And Engineering Related, White Alone, Tenured",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_ScienceAndEngineeringRelatedOccupation_WhiteAlone_Tenured"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Science And Engineering Related, White Alone, on Tenure Track",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_ScienceAndEngineeringRelatedOccupation_WhiteAlone_OnTenureTrack"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Science And Engineering Related, White Alone, on Tenure Track",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_ScienceAndEngineeringRelatedOccupation_WhiteAlone_OnTenureTrack"
         }
       ]
     },
@@ -49865,20 +49845,20 @@
       "name": "Person With Gender = Female, Occupation = Science And Engineering, Race = Asian, Tenure Status",
       "statVars": [
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Science And Engineering, Asian, Not on Tenure Track",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_ScienceAndEngineeringOccupation_Asian_NotOnTenureTrack"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Science And Engineering, Asian, Not on Tenure Track",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_ScienceAndEngineeringOccupation_Asian_NotOnTenureTrack"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Science And Engineering, Asian, Tenure Not Applicable",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_ScienceAndEngineeringOccupation_Asian_TenureNotApplicable"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Science And Engineering, Asian, Tenure Not Applicable",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_ScienceAndEngineeringOccupation_Asian_TenureNotApplicable"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Science And Engineering, Asian, Tenured",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_ScienceAndEngineeringOccupation_Asian_Tenured"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Science And Engineering, Asian, Tenured",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_ScienceAndEngineeringOccupation_Asian_Tenured"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Science And Engineering, Asian, on Tenure Track",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_ScienceAndEngineeringOccupation_Asian_OnTenureTrack"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Science And Engineering, Asian, on Tenure Track",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_ScienceAndEngineeringOccupation_Asian_OnTenureTrack"
         }
       ]
     },
@@ -49887,20 +49867,20 @@
       "name": "Person With Gender = Female, Occupation = Science And Engineering, Race = Black, Tenure Status",
       "statVars": [
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Science And Engineering, Black, Not on Tenure Track",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_ScienceAndEngineeringOccupation_Black_NotOnTenureTrack"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Science And Engineering, Black, Not on Tenure Track",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_ScienceAndEngineeringOccupation_Black_NotOnTenureTrack"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Science And Engineering, Black, Tenure Not Applicable",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_ScienceAndEngineeringOccupation_Black_TenureNotApplicable"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Science And Engineering, Black, Tenure Not Applicable",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_ScienceAndEngineeringOccupation_Black_TenureNotApplicable"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Science And Engineering, Black, Tenured",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_ScienceAndEngineeringOccupation_Black_Tenured"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Science And Engineering, Black, Tenured",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_ScienceAndEngineeringOccupation_Black_Tenured"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Science And Engineering, Black, on Tenure Track",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_ScienceAndEngineeringOccupation_Black_OnTenureTrack"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Science And Engineering, Black, on Tenure Track",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_ScienceAndEngineeringOccupation_Black_OnTenureTrack"
         }
       ]
     },
@@ -49909,20 +49889,20 @@
       "name": "Person With Gender = Female, Occupation = Science And Engineering, Race = Two or More Races, Tenure Status",
       "statVars": [
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Science And Engineering, Two or More Races, Not on Tenure Track",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_ScienceAndEngineeringOccupation_TwoOrMoreRaces_NotOnTenureTrack"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Science And Engineering, Two or More Races, Not on Tenure Track",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_ScienceAndEngineeringOccupation_TwoOrMoreRaces_NotOnTenureTrack"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Science And Engineering, Two or More Races, Tenure Not Applicable",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_ScienceAndEngineeringOccupation_TwoOrMoreRaces_TenureNotApplicable"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Science And Engineering, Two or More Races, Tenure Not Applicable",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_ScienceAndEngineeringOccupation_TwoOrMoreRaces_TenureNotApplicable"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Science And Engineering, Two or More Races, Tenured",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_ScienceAndEngineeringOccupation_TwoOrMoreRaces_Tenured"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Science And Engineering, Two or More Races, Tenured",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_ScienceAndEngineeringOccupation_TwoOrMoreRaces_Tenured"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Science And Engineering, Two or More Races, on Tenure Track",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_ScienceAndEngineeringOccupation_TwoOrMoreRaces_OnTenureTrack"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Science And Engineering, Two or More Races, on Tenure Track",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_ScienceAndEngineeringOccupation_TwoOrMoreRaces_OnTenureTrack"
         }
       ]
     },
@@ -49931,20 +49911,20 @@
       "name": "Person With Gender = Female, Occupation = Science And Engineering, Race = White Alone, Tenure Status",
       "statVars": [
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Science And Engineering, White Alone, Not on Tenure Track",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_ScienceAndEngineeringOccupation_WhiteAlone_NotOnTenureTrack"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Science And Engineering, White Alone, Not on Tenure Track",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_ScienceAndEngineeringOccupation_WhiteAlone_NotOnTenureTrack"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Science And Engineering, White Alone, Tenure Not Applicable",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_ScienceAndEngineeringOccupation_WhiteAlone_TenureNotApplicable"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Science And Engineering, White Alone, Tenure Not Applicable",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_ScienceAndEngineeringOccupation_WhiteAlone_TenureNotApplicable"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Science And Engineering, White Alone, Tenured",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_ScienceAndEngineeringOccupation_WhiteAlone_Tenured"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Science And Engineering, White Alone, Tenured",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_ScienceAndEngineeringOccupation_WhiteAlone_Tenured"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Science And Engineering, White Alone, on Tenure Track",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_ScienceAndEngineeringOccupation_WhiteAlone_OnTenureTrack"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Science And Engineering, White Alone, on Tenure Track",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_ScienceAndEngineeringOccupation_WhiteAlone_OnTenureTrack"
         }
       ]
     },
@@ -49953,20 +49933,20 @@
       "name": "Person With Gender = Female, Occupation = Social Scientists And Related Workers, Race = Asian, Tenure Status",
       "statVars": [
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Social Scientists And Related Workers, Asian, Not on Tenure Track",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCSocialScientistsRelatedWorkersOccupation_Asian_NotOnTenureTrack"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Social Scientists And Related Workers, Asian, Not on Tenure Track",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCSocialScientistsRelatedWorkersOccupation_Asian_NotOnTenureTrack"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Social Scientists And Related Workers, Asian, Tenure Not Applicable",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCSocialScientistsRelatedWorkersOccupation_Asian_TenureNotApplicable"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Social Scientists And Related Workers, Asian, Tenure Not Applicable",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCSocialScientistsRelatedWorkersOccupation_Asian_TenureNotApplicable"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Social Scientists And Related Workers, Asian, Tenured",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCSocialScientistsRelatedWorkersOccupation_Asian_Tenured"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Social Scientists And Related Workers, Asian, Tenured",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCSocialScientistsRelatedWorkersOccupation_Asian_Tenured"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Social Scientists And Related Workers, Asian, on Tenure Track",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCSocialScientistsRelatedWorkersOccupation_Asian_OnTenureTrack"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Social Scientists And Related Workers, Asian, on Tenure Track",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCSocialScientistsRelatedWorkersOccupation_Asian_OnTenureTrack"
         }
       ]
     },
@@ -49975,20 +49955,20 @@
       "name": "Person With Gender = Female, Occupation = Social Scientists And Related Workers, Race = Black, Tenure Status",
       "statVars": [
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Social Scientists And Related Workers, Black, Not on Tenure Track",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCSocialScientistsRelatedWorkersOccupation_Black_NotOnTenureTrack"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Social Scientists And Related Workers, Black, Not on Tenure Track",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCSocialScientistsRelatedWorkersOccupation_Black_NotOnTenureTrack"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Social Scientists And Related Workers, Black, Tenure Not Applicable",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCSocialScientistsRelatedWorkersOccupation_Black_TenureNotApplicable"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Social Scientists And Related Workers, Black, Tenure Not Applicable",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCSocialScientistsRelatedWorkersOccupation_Black_TenureNotApplicable"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Social Scientists And Related Workers, Black, Tenured",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCSocialScientistsRelatedWorkersOccupation_Black_Tenured"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Social Scientists And Related Workers, Black, Tenured",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCSocialScientistsRelatedWorkersOccupation_Black_Tenured"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Social Scientists And Related Workers, Black, on Tenure Track",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCSocialScientistsRelatedWorkersOccupation_Black_OnTenureTrack"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Social Scientists And Related Workers, Black, on Tenure Track",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCSocialScientistsRelatedWorkersOccupation_Black_OnTenureTrack"
         }
       ]
     },
@@ -49997,20 +49977,20 @@
       "name": "Person With Gender = Female, Occupation = Social Scientists And Related Workers, Race = Two or More Races, Tenure Status",
       "statVars": [
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Social Scientists And Related Workers, Two or More Races, Not on Tenure Track",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCSocialScientistsRelatedWorkersOccupation_TwoOrMoreRaces_NotOnTenureTrack"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Social Scientists And Related Workers, Two or More Races, Not on Tenure Track",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCSocialScientistsRelatedWorkersOccupation_TwoOrMoreRaces_NotOnTenureTrack"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Social Scientists And Related Workers, Two or More Races, Tenure Not Applicable",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCSocialScientistsRelatedWorkersOccupation_TwoOrMoreRaces_TenureNotApplicable"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Social Scientists And Related Workers, Two or More Races, Tenure Not Applicable",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCSocialScientistsRelatedWorkersOccupation_TwoOrMoreRaces_TenureNotApplicable"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Social Scientists And Related Workers, Two or More Races, Tenured",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCSocialScientistsRelatedWorkersOccupation_TwoOrMoreRaces_Tenured"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Social Scientists And Related Workers, Two or More Races, Tenured",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCSocialScientistsRelatedWorkersOccupation_TwoOrMoreRaces_Tenured"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Social Scientists And Related Workers, Two or More Races, on Tenure Track",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCSocialScientistsRelatedWorkersOccupation_TwoOrMoreRaces_OnTenureTrack"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Social Scientists And Related Workers, Two or More Races, on Tenure Track",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCSocialScientistsRelatedWorkersOccupation_TwoOrMoreRaces_OnTenureTrack"
         }
       ]
     },
@@ -50019,20 +49999,20 @@
       "name": "Person With Gender = Female, Occupation = Social Scientists And Related Workers, Race = White Alone, Tenure Status",
       "statVars": [
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Social Scientists And Related Workers, White Alone, Not on Tenure Track",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCSocialScientistsRelatedWorkersOccupation_WhiteAlone_NotOnTenureTrack"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Social Scientists And Related Workers, White Alone, Not on Tenure Track",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCSocialScientistsRelatedWorkersOccupation_WhiteAlone_NotOnTenureTrack"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Social Scientists And Related Workers, White Alone, Tenure Not Applicable",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCSocialScientistsRelatedWorkersOccupation_WhiteAlone_TenureNotApplicable"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Social Scientists And Related Workers, White Alone, Tenure Not Applicable",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCSocialScientistsRelatedWorkersOccupation_WhiteAlone_TenureNotApplicable"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Social Scientists And Related Workers, White Alone, Tenured",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCSocialScientistsRelatedWorkersOccupation_WhiteAlone_Tenured"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Social Scientists And Related Workers, White Alone, Tenured",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCSocialScientistsRelatedWorkersOccupation_WhiteAlone_Tenured"
         },
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Female, Social Scientists And Related Workers, White Alone, on Tenure Track",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_Female_SOCSocialScientistsRelatedWorkersOccupation_WhiteAlone_OnTenureTrack"
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, University And College Teacher, Female, Social Scientists And Related Workers, White Alone, on Tenure Track",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_UniversityAndCollegeTeacher_Female_SOCSocialScientistsRelatedWorkersOccupation_WhiteAlone_OnTenureTrack"
         }
       ]
     },
@@ -50595,6 +50575,24 @@
       ]
     },
     {
+      "dcid": "dc/g/Person_Age-Years65_Gender-Female",
+      "name": "Person With Age = Years 65, Gender = Female",
+      "statVars": [
+        {
+          "name": "Life Expectancy: Years 65, Female",
+          "dcid": "LifeExpectancy_Person_65Years_Female"
+        },
+        {
+          "name": "Population: Years 65, Female",
+          "dcid": "Count_Person_65Years_Female"
+        },
+        {
+          "name": "Life Expectancy: Years 65, Female, Resident",
+          "dcid": "LifeExpectancy_Person_65Years_Female_Resident"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/Person_EducationalAttainment-BachelorsDegree_Gender-Female",
       "name": "Person With Educational Attainment = Bachelors Degree, Gender = Female",
       "statVars": [
@@ -50797,12 +50795,12 @@
       "name": "Person With Gender = Female, Occupation = Computer And Mathematical Occupations",
       "statVars": [
         {
-          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Hispanic or Latino, Female, Computer And Mathematical Occupations",
-          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_HispanicOrLatino_Female_SOCComputerMathematicalOccupation"
-        },
-        {
           "name": "Population: 16 Years or More, Civilian, Employed, in Labor Force, Female, Computer And Mathematical Occupations",
           "dcid": "dc/303cktswccjp7"
+        },
+        {
+          "name": "Population: Science And Engineering Related Major, Doctorate Degree, Hispanic or Latino, University And College Teacher, Female, Computer And Mathematical Occupations",
+          "dcid": "Count_Person_ScienceAndEngineeringRelatedMajor_EducationalAttainmentDoctorateDegree_HispanicOrLatino_UniversityAndCollegeTeacher_Female_SOCComputerMathematicalOccupation"
         },
         {
           "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Computer And Mathematical Occupations, With Earnings, Full Time Year Round Worker",
@@ -52517,24 +52515,6 @@
         {
           "name": "Population: 45 - 49 Years, Female, Irreligion",
           "dcid": "Count_Person_45To49Years_Female_Irreligion"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years5To19_Gender-Female_TypeOfSchool",
-      "name": "Person With Age = 5 - 19 Years, Gender = Female, Type of School",
-      "statVars": [
-        {
-          "name": "Population: 5 - 19 Years, Female, Not Enrolled in School",
-          "dcid": "dc/txexrd64sgbh4"
-        },
-        {
-          "name": "Population: 5 - 19 Years, Female, Private School",
-          "dcid": "dc/yvrj3qkl3kde7"
-        },
-        {
-          "name": "Population: 5 - 19 Years, Female, Public School",
-          "dcid": "dc/kjh94n3whkr6c"
         }
       ]
     },

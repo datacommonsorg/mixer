@@ -113,6 +113,12 @@
         "displayName": "Person by Children Status"
       },
       {
+        "id": "dc/g/Person_CitizenshipStatus",
+        "specializedEntity": "Citizenship Status",
+        "displayName": "Person by Citizenship Status",
+        "descendentStatVarCount": 396
+      },
+      {
         "id": "dc/g/Commute",
         "specializedEntity": "Commute",
         "displayName": "Commute"
@@ -246,6 +252,11 @@
         "specializedEntity": "Residence",
         "displayName": "Residence",
         "descendentStatVarCount": 549
+      },
+      {
+        "id": "dc/g/Person_ResidentStatus",
+        "specializedEntity": "Resident Status",
+        "displayName": "Person by Resident Status"
       },
       {
         "id": "dc/g/Household_TransportationType",

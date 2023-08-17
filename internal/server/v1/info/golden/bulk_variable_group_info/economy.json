@@ -64,6 +64,11 @@
             "descendentStatVarCount": 5
           },
           {
+            "id": "dc/g/Person_EconomicSector",
+            "specializedEntity": "Economic Sector",
+            "displayName": "Person by Economic Sector"
+          },
+          {
             "id": "dc/g/Household_HouseholdType",
             "specializedEntity": "Household Type",
             "displayName": "Household by Household Type"
@@ -79,6 +84,11 @@
             "displayName": "Person by Income"
           },
           {
+            "id": "dc/g/Person_IncomeSource",
+            "specializedEntity": "Income Source",
+            "displayName": "Person by Income Source"
+          },
+          {
             "id": "dc/g/Household_IncomeStatus",
             "specializedEntity": "Income Status",
             "displayName": "Household by Income Status"
@@ -87,6 +97,16 @@
             "id": "dc/g/Person_IncomeStatus",
             "specializedEntity": "Income Status",
             "displayName": "Person by Income Status"
+          },
+          {
+            "id": "dc/g/Person_IncomeType",
+            "specializedEntity": "Income Type",
+            "displayName": "Person by Income Type"
+          },
+          {
+            "id": "dc/g/Person_LaborForceStatus",
+            "specializedEntity": "Labor Force Status",
+            "displayName": "Person by Labor Force Status"
           },
           {
             "id": "dc/g/NetworkSubscriber",

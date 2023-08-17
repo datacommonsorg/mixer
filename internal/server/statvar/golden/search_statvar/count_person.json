@@ -593,6 +593,10 @@
       "dcid": "Count_Person_Upto14Years"
     },
     {
+      "name": "Population: 14 Years or More",
+      "dcid": "Count_Person_Years14Onwards"
+    },
+    {
       "name": "Population: 15 - 17 Years",
       "dcid": "Count_Person_15To17Years"
     },
@@ -993,6 +997,10 @@
       "dcid": "Count_Person_BachelorOfEducationMajor"
     },
     {
+      "name": "Population: Employed",
+      "dcid": "Count_Person_Years14Onwards_Employed"
+    },
+    {
       "name": "Population: Enrolled in College Undergraduate Years",
       "dcid": "Count_Person_DetailedEnrolledInCollegeUndergraduateYears"
     },
@@ -1083,6 +1091,10 @@
     {
       "name": "Population: Evangelical",
       "dcid": "Count_Person_Evangelical"
+    },
+    {
+      "name": "Population: Ever Married \u0026 New Zealand_Civil Union",
+      "dcid": "Count_Person_EverMarriedOrNewZealandCivilUnion"
     },
     {
       "name": "Population: Financial And Insurance Activities",
@@ -1393,6 +1405,10 @@
       "dcid": "Count_Person_NonJudaism"
     },
     {
+      "name": "Population: Non Resident",
+      "dcid": "Count_Person_NonResident"
+    },
+    {
       "name": "Population: Non Worker",
       "dcid": "Count_Person_NonWorker"
     },
@@ -1423,6 +1439,10 @@
     {
       "name": "Population: Not Living Together \u0026 Widowed",
       "dcid": "Count_Person_NotLivingTogetherOrWidowed"
+    },
+    {
+      "name": "Population: Not in Labor Force",
+      "dcid": "Count_Person_Years14Onwards_NotInLaborForce"
     },
     {
       "name": "Population: Nursery School",
@@ -1489,6 +1509,10 @@
       "dcid": "Count_Person_Overweight"
     },
     {
+      "name": "Population: Permanent Resident",
+      "dcid": "Count_Person_PermanentResident"
+    },
+    {
       "name": "Population: Persian",
       "dcid": "Count_Person_5OrMoreYears_PersianSpokenAtHome"
     },
@@ -1543,6 +1567,10 @@
     {
       "name": "Population: Real Estate Activities",
       "dcid": "Count_Person_Employed_NACE/L"
+    },
+    {
+      "name": "Population: Resident",
+      "dcid": "Count_Person_Resident"
     },
     {
       "name": "Population: Roman Catholicism Apostolic",
@@ -1683,6 +1711,10 @@
     {
       "name": "Population: Unemployed",
       "dcid": "Count_Person_Unemployed"
+    },
+    {
+      "name": "Population: Unemployed",
+      "dcid": "Count_Person_Years14Onwards_Unemployed"
     },
     {
       "name": "Population: Unknown Race",
@@ -2149,6 +2181,10 @@
       "dcid": "Count_Person_5OrMoreYears_YorubaTwiIgboOrOtherLanguagesOfWesternAfricaSpokenAtHome"
     },
     {
+      "name": "Population: in Labor Force",
+      "dcid": "Count_Person_Years14Onwards_InLaborForce"
+    },
+    {
       "name": "US Citizens Born Abroad to American Parents",
       "dcid": "Count_Person_USCitizenBornAbroadOfAmericanParents"
     },
@@ -2229,8 +2265,16 @@
       "dcid": "Count_Person_25OrMoreYears_TertiaryEducation_AsFractionOf_Count_Person_25OrMoreYears"
     },
     {
+      "name": "Population: Unemployed (As Fraction of Count Person 14 Years or More)",
+      "dcid": "Count_Person_Years14Onwards_Unemployed_AsAFractionOf_Count_Person_Years14Onwards"
+    },
+    {
       "name": "Population: Unemployed (Per Capita)",
       "dcid": "Count_Person_Unemployed_AsAFractionOf_Count_Person"
+    },
+    {
+      "name": "Population: in Labor Force (As Fraction of Count Person 14 Years or More)",
+      "dcid": "Count_Person_Years14Onwards_InLaborForce_AsAFractionOf_Count_Person_Years14Onwards"
     },
     {
       "name": "African American Farmers",
@@ -2929,6 +2973,70 @@
       "dcid": "Count_Person_ForeignBorn_PlaceOfBirthUSA"
     },
     {
+      "name": "People employed in Other service Sectors",
+      "dcid": "Count_Person_Years14Onwards_IBGEOtherServicesSector_Employed"
+    },
+    {
+      "name": "People employed in Private sector with a formal contract",
+      "dcid": "Count_Person_Years14Onwards_PrivateSectorFormalContract_Employed"
+    },
+    {
+      "name": "People employed in the Accommodation and food",
+      "dcid": "Count_Person_Years14Onwards_AccommodationFoodSector_Employed"
+    },
+    {
+      "name": "People employed in the Agriculture, livestock, forest production, fishing and aquaculture",
+      "dcid": "Count_Person_Years14Onwards_AgricultureForestFishingSector_Employed"
+    },
+    {
+      "name": "People employed in the Construction sector",
+      "dcid": "Count_Person_Years14Onwards_ConstructionSector_Employed"
+    },
+    {
+      "name": "People employed in the Domestic Services Sector",
+      "dcid": "Count_Person_Years14Onwards_DomesticServicesSector_Employed"
+    },
+    {
+      "name": "People employed in the General Industry",
+      "dcid": "Count_Person_Years14Onwards_GeneralIndustry_Employed"
+    },
+    {
+      "name": "People employed in the Information, communication and financial, real estate, professional and administrative activities group",
+      "dcid": "Count_Person_Years14Onwards_CommunicationFinanceSector_Employed"
+    },
+    {
+      "name": "People employed in the Public administration, defense, social security, education, human health and social services",
+      "dcid": "Count_Person_Years14Onwards_AdminSocialServiceEducation_Employed"
+    },
+    {
+      "name": "People employed in the Trade, repair of motor vehicles and motorcycles",
+      "dcid": "Count_Person_Years14Onwards_VehicleTradeRepair_Employed"
+    },
+    {
+      "name": "People employed in the private sector without a formal contract",
+      "dcid": "Count_Person_Years14Onwards_PrivateSectorNoFormalContract_Employed"
+    },
+    {
+      "name": "Person employed as a domestic worker",
+      "dcid": "Count_Person_Years14Onwards_DomesticWorker_Employed"
+    },
+    {
+      "name": "Person employed as an Employer",
+      "dcid": "Count_Person_Years14Onwards_Employer_Employed"
+    },
+    {
+      "name": "Person employed as an auxiliary family worker",
+      "dcid": "Count_Person_Years14Onwards_AuxiliaryFamilyWorker_Employed"
+    },
+    {
+      "name": "Person employed in the public sector (including statutory and military servants)",
+      "dcid": "Count_Person_Years14Onwards_PublicSector_Employed"
+    },
+    {
+      "name": "Person employed who are Self-employed",
+      "dcid": "Count_Person_Years14Onwards_SelfEmployed_Employed"
+    },
+    {
       "name": "Population Above Poverty Level Status in Last Year Who Are Native Hawaiian or Other Pacific Islander Alone",
       "dcid": "Count_Person_AbovePovertyLevelInThePast12Months_NativeHawaiianOrOtherPacificIslanderAlone"
     },
@@ -3221,6 +3329,10 @@
       "dcid": "Count_Person_0To4Years_ConditionCancer"
     },
     {
+      "name": "Population: 0 - 4 Years, Citizen",
+      "dcid": "Count_Person_0To4Years_Citizen"
+    },
+    {
       "name": "Population: 0 - 4 Years, Dementia",
       "dcid": "Count_Person_0To4Years_ConditionDementia"
     },
@@ -3347,6 +3459,10 @@
     {
       "name": "Population: 0 - 4 Years, Not Hispanic or Latino \u0026 White Alone or In Combination With One or More Other Races",
       "dcid": "Count_Person_0To4Years_NotHispanicOrLatino_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Population: 0 - 4 Years, Resident",
+      "dcid": "Count_Person_0To4Years_Resident"
     },
     {
       "name": "Population: 0 - 4 Years, Rural",
@@ -3665,6 +3781,10 @@
       "dcid": "Count_Person_10To14Years_Catholicism"
     },
     {
+      "name": "Population: 10 - 14 Years, Citizen",
+      "dcid": "Count_Person_10To14Years_Citizen"
+    },
+    {
       "name": "Population: 10 - 14 Years, Dementia",
       "dcid": "Count_Person_10To14Years_ConditionDementia"
     },
@@ -3817,6 +3937,10 @@
       "dcid": "Count_Person_10To14Years_NowMarried"
     },
     {
+      "name": "Population: 10 - 14 Years, Resident",
+      "dcid": "Count_Person_10To14Years_Resident"
+    },
+    {
       "name": "Population: 10 - 14 Years, Rural",
       "dcid": "Count_Person_10To14Years_Rural"
     },
@@ -3875,130 +3999,6 @@
     {
       "name": "Population: 10 Years or More, Never Married",
       "dcid": "Count_Person_10OrMoreYears_NeverMarried"
-    },
-    {
-      "name": "Population: 10 Years or More, Now Married",
-      "dcid": "Count_Person_10OrMoreYears_NowMarried"
-    },
-    {
-      "name": "Population: 10 Years or More, Separated",
-      "dcid": "Count_Person_10OrMoreYears_Separated"
-    },
-    {
-      "name": "Population: 10 Years or More, Widowed",
-      "dcid": "Count_Person_10OrMoreYears_Widowed"
-    },
-    {
-      "name": "Population: 100 - 104 Years, Female",
-      "dcid": "Count_Person_100To104Years_Female"
-    },
-    {
-      "name": "Population: 100 - 104 Years, Male",
-      "dcid": "Count_Person_100To104Years_Male"
-    },
-    {
-      "name": "Population: 100 Years or More, Female",
-      "dcid": "Count_Person_100OrMoreYears_Female"
-    },
-    {
-      "name": "Population: 100 Years or More, Hispanic or Latino",
-      "dcid": "Count_Person_100OrMoreYears_HispanicOrLatino"
-    },
-    {
-      "name": "Population: 100 Years or More, Hispanic or Latino \u0026 American Indian And Alaska Native Alone or In Combination With One or More Other Races",
-      "dcid": "Count_Person_100OrMoreYears_HispanicOrLatino_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Population: 100 Years or More, Hispanic or Latino \u0026 American Indian or Alaska Native Alone",
-      "dcid": "Count_Person_100OrMoreYears_HispanicOrLatino_AmericanIndianAndAlaskaNativeAlone"
-    },
-    {
-      "name": "Population: 100 Years or More, Hispanic or Latino \u0026 Asian Alone",
-      "dcid": "Count_Person_100OrMoreYears_HispanicOrLatino_AsianAlone"
-    },
-    {
-      "name": "Population: 100 Years or More, Hispanic or Latino \u0026 Asian Alone or In Combination With One or More Other Races",
-      "dcid": "Count_Person_100OrMoreYears_HispanicOrLatino_AsianAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Population: 100 Years or More, Hispanic or Latino \u0026 Asian or Pacific Islander",
-      "dcid": "Count_Person_100OrMoreYears_HispanicOrLatino_AsianOrPacificIslander"
-    },
-    {
-      "name": "Population: 100 Years or More, Hispanic or Latino \u0026 Black or African American Alone",
-      "dcid": "Count_Person_100OrMoreYears_HispanicOrLatino_BlackOrAfricanAmericanAlone"
-    },
-    {
-      "name": "Population: 100 Years or More, Hispanic or Latino \u0026 Black or African American Alone or In Combination With One or More Other Races",
-      "dcid": "Count_Person_100OrMoreYears_HispanicOrLatino_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Population: 100 Years or More, Hispanic or Latino \u0026 Native Hawaiian And Other Pacific Islander Alone or In Combination With One or More Other Races",
-      "dcid": "Count_Person_100OrMoreYears_HispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Population: 100 Years or More, Hispanic or Latino \u0026 Native Hawaiian or Other Pacific Islander Alone",
-      "dcid": "Count_Person_100OrMoreYears_HispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAlone"
-    },
-    {
-      "name": "Population: 100 Years or More, Hispanic or Latino \u0026 Two or More Races",
-      "dcid": "Count_Person_100OrMoreYears_HispanicOrLatino_TwoOrMoreRaces"
-    },
-    {
-      "name": "Population: 100 Years or More, Hispanic or Latino \u0026 White Alone",
-      "dcid": "Count_Person_100OrMoreYears_HispanicOrLatino_WhiteAlone"
-    },
-    {
-      "name": "Population: 100 Years or More, Hispanic or Latino \u0026 White Alone or In Combination With One or More Other Races",
-      "dcid": "Count_Person_100OrMoreYears_HispanicOrLatino_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Population: 100 Years or More, Male",
-      "dcid": "Count_Person_100OrMoreYears_Male"
-    },
-    {
-      "name": "Population: 100 Years or More, Not Hispanic or Latino",
-      "dcid": "Count_Person_100OrMoreYears_NotHispanicOrLatino"
-    },
-    {
-      "name": "Population: 100 Years or More, Not Hispanic or Latino \u0026 American Indian And Alaska Native Alone or In Combination With One or More Other Races",
-      "dcid": "Count_Person_100OrMoreYears_NotHispanicOrLatino_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Population: 100 Years or More, Not Hispanic or Latino \u0026 American Indian or Alaska Native Alone",
-      "dcid": "Count_Person_100OrMoreYears_NotHispanicOrLatino_AmericanIndianAndAlaskaNativeAlone"
-    },
-    {
-      "name": "Population: 100 Years or More, Not Hispanic or Latino \u0026 Asian Alone",
-      "dcid": "Count_Person_100OrMoreYears_NotHispanicOrLatino_AsianAlone"
-    },
-    {
-      "name": "Population: 100 Years or More, Not Hispanic or Latino \u0026 Asian Alone or In Combination With One or More Other Races",
-      "dcid": "Count_Person_100OrMoreYears_NotHispanicOrLatino_AsianAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Population: 100 Years or More, Not Hispanic or Latino \u0026 Asian or Pacific Islander",
-      "dcid": "Count_Person_100OrMoreYears_NotHispanicOrLatino_AsianOrPacificIslander"
-    },
-    {
-      "name": "Population: 100 Years or More, Not Hispanic or Latino \u0026 Black or African American Alone",
-      "dcid": "Count_Person_100OrMoreYears_NotHispanicOrLatino_BlackOrAfricanAmericanAlone"
-    },
-    {
-      "name": "Population: 100 Years or More, Not Hispanic or Latino \u0026 Black or African American Alone or In Combination With One or More Other Races",
-      "dcid": "Count_Person_100OrMoreYears_NotHispanicOrLatino_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Population: 100 Years or More, Not Hispanic or Latino \u0026 Native Hawaiian And Other Pacific Islander Alone or In Combination With One or More Other Races",
-      "dcid": "Count_Person_100OrMoreYears_NotHispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Population: 100 Years or More, Not Hispanic or Latino \u0026 Native Hawaiian or Other Pacific Islander Alone",
-      "dcid": "Count_Person_100OrMoreYears_NotHispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAlone"
-    },
-    {
-      "name": "Population: 100 Years or More, Not Hispanic or Latino \u0026 Two or More Races",
-      "dcid": "Count_Person_100OrMoreYears_NotHispanicOrLatino_TwoOrMoreRaces"
     }
   ],
   "matches": [

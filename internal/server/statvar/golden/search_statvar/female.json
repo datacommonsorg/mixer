@@ -4075,16 +4075,6 @@
       ]
     },
     {
-      "dcid": "dc/g/Person_Age-Years5To19_Gender-Female",
-      "name": "Person With Age = 5 - 19 Years, Gender = Female",
-      "statVars": [
-        {
-          "name": "Population: 5 - 19 Years, Female",
-          "dcid": "dc/xh9d9e2le1r41"
-        }
-      ]
-    },
-    {
       "dcid": "dc/g/Person_Age-Years5To9_Gender-Female",
       "name": "Person With Age = 5 - 9 Years, Gender = Female",
       "statVars": [
@@ -4191,16 +4181,6 @@
         {
           "name": "Population: 65 - 69 Years, Female",
           "dcid": "Count_Person_65To69Years_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years65To74_Gender-Female",
-      "name": "Person With Age = 65 - 74 Years, Gender = Female",
-      "statVars": [
-        {
-          "name": "Population: 65 - 74 Years, Female",
-          "dcid": "dc/nf9577mjqs69g"
         }
       ]
     },
@@ -7503,6 +7483,10 @@
       "name": "Person With Age = 6 Years or Less, Gender = Female"
     },
     {
+      "dcid": "dc/g/Person_Age-Years65To74_Gender-Female",
+      "name": "Person With Age = 65 - 74 Years, Gender = Female"
+    },
+    {
       "dcid": "dc/g/Person_Age-Years75To84_Gender-Female",
       "name": "Person With Age = 75 - 84 Years, Gender = Female"
     },
@@ -7629,6 +7613,14 @@
     {
       "dcid": "dc/g/Person_Ethnicity_Gender-Female",
       "name": "Person With Ethnicity, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Person_FacultyType-UniversityAndCollegeTeacher_Gender-Female",
+      "name": "Person With Faculty Type = University And College Teacher, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Person_FacultyType_Gender-Female",
+      "name": "Person With Faculty Type, Gender = Female"
     },
     {
       "dcid": "dc/g/Person_DetailedWorkerClassification_Gender-Female",
@@ -8729,10 +8721,6 @@
     {
       "dcid": "dc/g/HateCrimeIncidents_BiasMotivation_CrimeType-ForcibleRape_TargetedGender-Female",
       "name": "Hate Crime Incidents With Bias Motivation, Crime Type = Forcible Rape, Targeted Gender = Female"
-    },
-    {
-      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation_CrimeType-HumanTraffickingCommercialSexActs_TargetedGender-Female",
-      "name": "Hate Crime Incidents With Bias Motivation, Crime Type = Human Trafficking_Commercial Sex Acts, Targeted Gender = Female"
     }
   ],
   "matches": [
