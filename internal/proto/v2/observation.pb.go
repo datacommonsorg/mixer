@@ -367,7 +367,7 @@ type ObservationRequest struct {
 	Value string `protobuf:"bytes,4,opt,name=value,proto3" json:"value,omitempty"`
 	// [Optional] filter for the facet
 	Filter *FacetFilter `protobuf:"bytes,5,opt,name=filter,proto3" json:"filter,omitempty"`
-	// Fields to return, valide values are: "variable", "entitie", "date", "value"
+	// Fields to return, valid values are: "variable", "entity", "date", "value", "facet"
 	Select []string `protobuf:"bytes,6,rep,name=select,proto3" json:"select,omitempty"`
 }
 

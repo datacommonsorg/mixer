@@ -92,7 +92,7 @@ message ObservationRequest {
   string value = 4;
   // [Optional] filter for the facet
   FacetFilter filter = 5;
-  // Fields to return, valide values are: "variable", "entitie", "date", "value"
+  // Fields to return, valid values are: "variable", "entity", "date", "value", "facet"
   repeated string select = 6;
 }
 

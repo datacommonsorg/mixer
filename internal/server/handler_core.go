@@ -257,7 +257,7 @@ func (s *Server) V2ObservationCore(
 	ctx context.Context, in *pbv2.ObservationRequest,
 ) (*pbv2.ObservationResponse, error) {
 	// (TODO): The routing logic here is very rough. This needs more work.
-	var queryDate, queryValue, queryVariable, queryEntity bool
+	var queryDate, queryValue, queryVariable, queryEntity, queryFacet bool
 	for _, item := range in.GetSelect() {
 		if item == "date" {
 			queryDate = true
@@ -267,6 +267,8 @@ func (s *Server) V2ObservationCore(
 			queryVariable = true
 		} else if item == "entity" {
 			queryEntity = true
+		} else if item == "facet" {
+			queryFacet = true
 		}
 	}
 	if !queryVariable || !queryEntity {
@@ -296,22 +298,9 @@ func (s *Server) V2ObservationCore(
 			// Example of expression
 			// "geoId/06<-containedInPlace+{typeOf: City}"
 			expr := entity.GetExpression()
-			g, err := v2.ParseLinkedNodes(expr)
+			containedInPlace, err := v2.GetContainedInPlace(expr)
 			if err != nil {
 				return nil, err
-			}
-			if len(g.Arcs) != 1 {
-				return nil, status.Errorf(
-					codes.InvalidArgument, "invalid expression string: %s", expr)
-			}
-			arc := g.Arcs[0]
-			typeOfs, typeOfsOK := arc.Filter["typeOf"]
-			if arc.SingleProp != "containedInPlace" ||
-				arc.Decorator != "+" ||
-				arc.Filter == nil ||
-				!typeOfsOK || len(typeOfs) != 1 {
-				return nil, status.Errorf(
-					codes.InvalidArgument, "invalid expression string: %s", expr)
 			}
 			return v2observation.FetchContainedIn(
 				ctx,
@@ -320,8 +309,8 @@ func (s *Server) V2ObservationCore(
 				s.httpClient,
 				s.metadata.RemoteMixerDomain,
 				variable.GetDcids(),
-				g.Subject,
-				typeOfs[0],
+				containedInPlace.Ancestor,
+				containedInPlace.ChildPlaceType,
 				in.GetDate(),
 				in.GetFilter(),
 			)
@@ -334,6 +323,40 @@ func (s *Server) V2ObservationCore(
 				s.store,
 				variable.GetFormula(),
 				entity.GetDcids(),
+			)
+		}
+	}
+
+	// Get facet information for <variable, entity> pair.
+	if !queryDate && !queryValue && queryFacet {
+		// Series
+		if len(variable.GetDcids()) > 0 && len(entity.GetDcids()) > 0 {
+			return v2observation.SeriesFacet(
+				ctx,
+				s.store,
+				s.cache,
+				variable.GetDcids(),
+				entity.GetDcids(),
+			)
+		}
+		// Collection
+		if len(variable.GetDcids()) > 0 && entity.GetExpression() != "" {
+			expr := entity.GetExpression()
+			containedInPlace, err := v2.GetContainedInPlace(expr)
+			if err != nil {
+				return nil, err
+			}
+			return v2observation.ContainedInFacet(
+				ctx,
+				s.store,
+				s.cache,
+				s.metadata,
+				s.httpClient,
+				s.metadata.RemoteMixerDomain,
+				variable.GetDcids(),
+				containedInPlace.Ancestor,
+				containedInPlace.ChildPlaceType,
+				in.GetDate(),
 			)
 		}
 	}

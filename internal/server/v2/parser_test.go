@@ -352,3 +352,35 @@ func TestParseLinkedNodes(t *testing.T) {
 		}
 	}
 }
+
+func TestGetContainedInPlace(t *testing.T) {
+	for _, c := range []struct {
+		expr             string
+		containedInPlace *ContainedInPlace
+		valid            bool
+	}{
+		{
+			"geoId/06<-containedInPlace+{typeOf:County}",
+			&ContainedInPlace{
+				Ancestor:       "geoId/06",
+				ChildPlaceType: "County",
+			},
+			true,
+		},
+	} {
+		result, err := GetContainedInPlace(c.expr)
+		if !c.valid {
+			if err == nil {
+				t.Errorf("GetContainedInPlace(%s) expect error, but got nil", c.expr)
+			}
+			continue
+		}
+		if err != nil {
+			t.Errorf("GetContainedInPlace(%s) got error %v", c.expr, err)
+			continue
+		}
+		if diff := cmp.Diff(result, c.containedInPlace); diff != "" {
+			t.Errorf("v(%s) got diff %v", c.expr, diff)
+		}
+	}
+}
