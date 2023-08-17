@@ -55,9 +55,7 @@ func GetFacetObsResponse(variables []string, facetBtDataList [][]bigtable.BtRow,
 			if _, ok := svToFacetList[sv]; !ok {
 				svToFacetList[sv] = []*pb.Facet{}
 			}
-			for _, facets := range row.Data.(*pb.Facets).GetFacets() {
-				svToFacetList[sv] = append(svToFacetList[sv], facets)
-			}
+			svToFacetList[sv] = append(svToFacetList[sv], row.Data.(*pb.Facets).GetFacets()...)
 		}
 	}
 	// Go through each list of facets, sort and remove duplicates, and add to
