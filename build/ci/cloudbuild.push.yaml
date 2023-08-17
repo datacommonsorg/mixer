@@ -49,13 +49,6 @@ steps:
         docker push gcr.io/datcom-ci/datacommons-mixer:$SHORT_SHA
         docker push gcr.io/datcom-ci/datacommons-mixer:latest
 
-        docker build -f build/Dockerfile --target base \
-          -t gcr.io/datcom-ci/datacommons-mixer-base:$SHORT_SHA \
-          -t gcr.io/datcom-ci/datacommons-mixer-base:latest \
-          .
-        docker push gcr.io/datcom-ci/datacommons-mixer-base:$SHORT_SHA
-        docker push gcr.io/datcom-ci/datacommons-mixer-base:latest
-
   # Push the grpc descriptor to gcs.
   - id: push-grpc-descriptor
     name: gcr.io/cloud-builders/gsutil

@@ -19,11 +19,8 @@
 # base: image with Go modules download and protobuf built
 # server: image for mixer server
 
-FROM envoyproxy/envoy:v1.26.0 AS envoy
 
-# =========  protoc stage ==========
-
-FROM golang:1.20.4 AS go-protoc
+FROM golang:1.20.7 AS go-protoc
 
 WORKDIR /mixer
 
@@ -43,10 +40,9 @@ RUN go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.30.0
 RUN go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.3.0
 
 
-# =========  base stage ==========
 # Use pre-built go-protoc image from last step.
 
-FROM gcr.io/datcom-ci/go-protoc:latest AS base
+FROM gcr.io/datcom-ci/go-protoc:latest AS server
 WORKDIR /mixer
 # Docker cache: Download modules
 COPY go.mod go.sum /mixer/
@@ -76,18 +72,4 @@ RUN GRPC_HEALTH_PROBE_VERSION=v0.4.7 && \
 COPY cmd/ cmd
 COPY esp/ esp
 RUN go build -o /go/bin/mixer cmd/main.go
-
-
-# =========  server stage ==========
-FROM base as server
 ENTRYPOINT ["/go/bin/mixer"]
-
-
-# =========  start mixer with envoy ==========
-FROM base as rest_server
-
-COPY deploy/ deploy
-COPY --from=envoy /usr/local/bin/envoy /usr/local/bin/envoy
-COPY build/compose.sh .
-EXPOSE 8081
-CMD ./compose.sh
