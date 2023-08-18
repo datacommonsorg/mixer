@@ -20,7 +20,6 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-	"net/url"
 	"sort"
 	"strings"
 
@@ -151,7 +150,7 @@ func FetchContainedIn(
 	ancestor string,
 	childType string,
 	queryDate string,
-	filter *pbv2.FacetFilter,
+	filters []*pbv2.FacetFilter,
 ) (*pbv2.ObservationResponse, error) {
 	// Need to use child places to for direct fetch.
 	var result *pbv2.ObservationResponse
@@ -175,6 +174,15 @@ func FetchContainedIn(
 				if err != nil {
 					return nil, err
 				}
+				variableFacetFilters := map[string][]*pbv2.FacetFilter{}
+				for _, facetFilter := range filters {
+					for _, variable := range facetFilter.Variables {
+						if _, ok := variableFacetFilters[variable]; !ok {
+							variableFacetFilters[variable] = []*pbv2.FacetFilter{}
+						}
+						variableFacetFilters[variable] = append(variableFacetFilters[variable], facetFilter)
+					}
+				}
 				for _, variable := range variables {
 					result.ByVariable[variable] = &pbv2.VariableObservation{
 						ByEntity: map[string]*pbv2.EntityObservation{},
@@ -190,23 +198,10 @@ func FetchContainedIn(
 					sort.Sort(ranking.CohortByRank(cohorts))
 					for _, cohort := range cohorts {
 						facet := util.GetFacet(cohort)
-						if filter != nil && filter.Domains != nil {
-							url, err := url.Parse(facet.ProvenanceUrl)
-							if err != nil {
-								return nil, err
-							}
-							matchedDomain := false
-							for _, domain := range filter.Domains {
-								// To match domain or subdomain. For example, a provenance url of
-								// abc.xyz.com can match filter "xyz.com" and "abc.xyz.com".
-								if strings.HasSuffix(url.Hostname(), domain) {
-									matchedDomain = true
-									break
-								}
-							}
-							if !matchedDomain {
-								// Skip processing series with provenances that don't match
-								// domain filter
+						// If there are facet filters, check that the cohort matches at
+						// least one filter. Otherwise, skip.
+						if facetFilters, ok := variableFacetFilters[variable]; ok {
+							if !shouldKeepSourceSeries(facetFilters, facet) {
 								continue
 							}
 						}
@@ -265,7 +260,7 @@ func FetchContainedIn(
 				variables,
 				childPlaces,
 				queryDate,
-				filter,
+				filters,
 			)
 			if err != nil {
 				return nil, err
@@ -289,7 +284,7 @@ func FetchContainedIn(
 			variables,
 			childPlaces,
 			queryDate,
-			filter,
+			filters,
 		)
 		if err != nil {
 			return nil, err

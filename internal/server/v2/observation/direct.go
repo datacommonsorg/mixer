@@ -38,6 +38,31 @@ const (
 	LATEST = "LATEST"
 )
 
+func shouldKeepSourceSeries(filters []*pbv2.FacetFilter, facet *pb.Facet) bool {
+	keepSeries := false
+	facetID := util.GetFacetID(facet)
+	for _, facetFilter := range filters {
+		matchesFilter := true
+		if facetFilter.FacetId != "" && facetFilter.FacetId != facetID {
+			matchesFilter = false
+		}
+		if facetFilter.Domain != "" {
+			url, err := url.Parse(facet.ProvenanceUrl)
+			if err != nil {
+				matchesFilter = false
+			}
+			if !strings.HasSuffix(url.Hostname(), facetFilter.Domain) {
+				matchesFilter = false
+			}
+		}
+		if matchesFilter {
+			keepSeries = true
+			break
+		}
+	}
+	return keepSeries
+}
+
 // FetchDirect fetches data from both Bigtable cache and SQLite database.
 func FetchDirect(
 	ctx context.Context,
@@ -45,13 +70,13 @@ func FetchDirect(
 	variables []string,
 	entities []string,
 	queryDate string,
-	filter *pbv2.FacetFilter,
+	filters []*pbv2.FacetFilter,
 ) (*pbv2.ObservationResponse, error) {
-	o1, err := FetchDirectBT(ctx, store.BtGroup, variables, entities, queryDate, filter)
+	o1, err := FetchDirectBT(ctx, store.BtGroup, variables, entities, queryDate, filters)
 	if err != nil {
 		return nil, err
 	}
-	o2, err := FetchDirectSQL(ctx, store.SQLiteClient, variables, entities, queryDate, filter)
+	o2, err := FetchDirectSQL(ctx, store.SQLiteClient, variables, entities, queryDate, filters)
 	if err != nil {
 		return nil, err
 	}
@@ -65,7 +90,7 @@ func FetchDirectBT(
 	variables []string,
 	entities []string,
 	queryDate string,
-	filter *pbv2.FacetFilter,
+	filters []*pbv2.FacetFilter,
 ) (*pbv2.ObservationResponse, error) {
 	result := &pbv2.ObservationResponse{
 		ByVariable: map[string]*pbv2.VariableObservation{},
@@ -87,6 +112,15 @@ func FetchDirectBT(
 	if err != nil {
 		return result, err
 	}
+	variableFacetFilters := map[string][]*pbv2.FacetFilter{}
+	for _, facetFilter := range filters {
+		for _, variable := range facetFilter.Variables {
+			if _, ok := variableFacetFilters[variable]; !ok {
+				variableFacetFilters[variable] = []*pbv2.FacetFilter{}
+			}
+			variableFacetFilters[variable] = append(variableFacetFilters[variable], facetFilter)
+		}
+	}
 	for _, variable := range variables {
 		for _, entity := range entities {
 			entityObservation := &pbv2.EntityObservation{}
@@ -96,23 +130,10 @@ func FetchDirectBT(
 				sort.Sort(ranking.SeriesByRank(series))
 				for _, series := range series {
 					facet := util.GetFacet(series)
-					if filter != nil && filter.Domains != nil {
-						url, err := url.Parse(facet.ProvenanceUrl)
-						if err != nil {
-							return nil, err
-						}
-						matchedDomain := false
-						for _, domain := range filter.Domains {
-							// To match domain or subdomain. For example, a provenance url of
-							// abc.xyz.com can match filter "xyz.com" and "abc.xyz.com".
-							if strings.HasSuffix(url.Hostname(), domain) {
-								matchedDomain = true
-								break
-							}
-						}
-						if !matchedDomain {
-							// Skip processing series with provenances that don't match
-							// domain filter
+					// If there are facet filters, check that the series matches at
+					// least one filter. Otherwise, skip.
+					if facetFilters, ok := variableFacetFilters[variable]; ok {
+						if !shouldKeepSourceSeries(facetFilters, facet) {
 							continue
 						}
 					}
@@ -165,7 +186,7 @@ func FetchDirectSQL(
 	variables []string,
 	entities []string,
 	queryDate string,
-	filter *pbv2.FacetFilter,
+	filters []*pbv2.FacetFilter,
 ) (*pbv2.ObservationResponse, error) {
 	result := &pbv2.ObservationResponse{
 		ByVariable: map[string]*pbv2.VariableObservation{},
