@@ -267,15 +267,6 @@ service Mixer {
     };
   }
 
-  // Search stat var and stat var groups.
-  rpc SearchStatVar(SearchStatVarRequest) returns (SearchStatVarResponse) {
-    option (google.api.http) = {
-      get : "/stat-var/search"
-      additional_bindings : {post : "/stat-var/search" body : "*"}
-      additional_bindings : {post : "/v1/variable/search" body : "*"}
-    };
-  }
-
   // ======================  V1   V1   V1   V1  ======================
 
   // Query DataCommons Graph with Sparql.
@@ -519,6 +510,14 @@ service Mixer {
     option (google.api.http) = {
       get : "/v1/variable/ancestors/{node=**}"
       additional_bindings : {post : "/v1/variable/ancestors" body : "*"}
+    };
+  }
+
+  // Search stat var and stat var groups.
+  rpc SearchStatVar(SearchStatVarRequest) returns (SearchStatVarResponse) {
+    option (google.api.http) = {
+      get : "/v1/variable/search"
+      additional_bindings : {post : "/v1/variable/search" body : "*"}
     };
   }
 
