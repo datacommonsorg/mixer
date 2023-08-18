@@ -79,6 +79,16 @@ func TestFetchContainIn(t *testing.T) {
 				},
 				"multi_filter.json",
 			},
+			{
+				[]string{"Count_Person", "Median_Age_Person"},
+				"country/USA<-containedInPlace+{typeOf:State}",
+				&pbv2.FacetFilter{
+					FacetId: map[string]string{
+						"Count_Person": "2176550201",
+					},
+				},
+				"US_State_Facet_Id.json",
+			},
 		} {
 			goldenFile := c.goldenFile
 			resp, err := mixer.V2Observation(ctx, &pbv2.ObservationRequest{

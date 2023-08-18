@@ -73,6 +73,10 @@ message FacetFilter {
   // When specified, only observations with provenance in these domain are
   // returned.
   repeated string domains = 4;
+  // key is variable dcid and value is facet id to filter for. For all variables
+  // with a facet id to filter for, only observations with that facet id are
+  // returned.
+  map<string, string> facet_id = 5;
 }
 
 // Generic observation request

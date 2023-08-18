@@ -146,6 +146,19 @@ func TestFetchDirect(t *testing.T) {
 				},
 				"multi_filter.json",
 			},
+			{
+				[]string{
+					"Count_Person", "Median_Age_Person",
+				},
+				[]string{"country/USA"},
+				"LATEST",
+				&pbv2.FacetFilter{
+					FacetId: map[string]string{
+						"Count_Person": "1151455814",
+					},
+				},
+				"facet_id_filter.json",
+			},
 		} {
 			goldenFile := c.goldenFile
 			resp, err := mixer.V2Observation(ctx, &pbv2.ObservationRequest{
