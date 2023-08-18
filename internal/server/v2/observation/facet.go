@@ -45,6 +45,8 @@ func GetFacetObsResponse(variables []string, facetBtDataList [][]bigtable.BtRow,
 		result.ByVariable[variable] = &pbv2.VariableObservation{
 			ByEntity: map[string]*pbv2.EntityObservation{},
 		}
+		// Use empty string entity to hold list of all facets available for the
+		// variable.
 		result.ByVariable[variable].ByEntity[""] = &pbv2.EntityObservation{}
 	}
 	// Get the list of facets for each sv
@@ -63,13 +65,13 @@ func GetFacetObsResponse(variables []string, facetBtDataList [][]bigtable.BtRow,
 	for sv, facetList := range svToFacetList {
 		entityObservation := &pbv2.EntityObservation{}
 		sort.Sort(ranking.FacetByRank(facetList))
-		seenFacets := map[string]string{}
+		seenFacets := map[string]struct{}{}
 		for _, facet := range facetList {
 			facetID := util.GetFacetID(facet)
 			if _, ok := seenFacets[facetID]; ok {
 				continue
 			}
-			seenFacets[facetID] = ""
+			seenFacets[facetID] = struct{}{}
 			entityObservation.OrderedFacets = append(entityObservation.OrderedFacets, &pbv2.FacetObservation{FacetId: facetID})
 			result.Facets[facetID] = facet
 		}
@@ -137,6 +139,12 @@ func ContainedInFacet(
 				)
 			}
 			log.Println("Fetch series cache in contained-in observation query")
+			// When date doesn't matter, use SeriesFacet to get the facets for the
+			// child places
+			if queryDate == "" || queryDate == LATEST {
+				return SeriesFacet(ctx, store, cache, variables, childPlaces)
+			}
+			// Otherwise, get all source series and process them to get the facets
 			btData, err := stat.ReadStatsPb(ctx, store.BtGroup, childPlaces, variables)
 			if err != nil {
 				return nil, err
@@ -145,7 +153,7 @@ func ContainedInFacet(
 				result.ByVariable[variable] = &pbv2.VariableObservation{
 					ByEntity: map[string]*pbv2.EntityObservation{},
 				}
-				seenFacets := map[string]string{}
+				seenFacets := map[string]struct{}{}
 				facetList := []*pb.Facet{}
 				for _, entity := range childPlaces {
 					series := btData[entity][variable].SourceSeries
@@ -155,14 +163,9 @@ func ContainedInFacet(
 						if _, ok := seenFacets[facetID]; ok {
 							continue
 						}
-						if queryDate == "" || queryDate == LATEST {
-							seenFacets[facetID] = ""
-							facetList = append(facetList, facet)
-							continue
-						}
 						for date := range series.Val {
 							if queryDate == date {
-								seenFacets[facetID] = ""
+								seenFacets[facetID] = struct{}{}
 								facetList = append(facetList, facet)
 								break
 							}
@@ -176,6 +179,8 @@ func ContainedInFacet(
 					entityObservation.OrderedFacets = append(entityObservation.OrderedFacets, &pbv2.FacetObservation{FacetId: facetID})
 					result.Facets[facetID] = facet
 				}
+				// Use empty string entity to hold list of all facets available for the
+				// variable.
 				result.ByVariable[variable].ByEntity[""] = entityObservation
 			}
 		}

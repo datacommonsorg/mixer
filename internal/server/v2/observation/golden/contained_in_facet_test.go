@@ -80,8 +80,8 @@ func TestContainedInFacet(t *testing.T) {
 			{
 				[]string{"Count_Person", "Median_Age_Person"},
 				"nuts/FR412<-containedInPlace+{typeOf:AdministrativeArea4}",
-				"",
-				"read_series_bt.json",
+				"2015",
+				"Meuse_AA4_2015.json",
 			},
 		} {
 			goldenFile := c.goldenFile

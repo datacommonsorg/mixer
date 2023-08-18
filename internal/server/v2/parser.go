@@ -192,7 +192,7 @@ func ParseLinkedNodes(expr string) (*LinkedNodes, error) {
 }
 
 // Gets the contained in place from an expression.
-func GetContainedInPlace(expr string) (*ContainedInPlace, error) {
+func ParseContainedInPlace(expr string) (*ContainedInPlace, error) {
 	g, err := ParseLinkedNodes(expr)
 	if err != nil {
 		return nil, err

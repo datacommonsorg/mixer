@@ -298,7 +298,7 @@ func (s *Server) V2ObservationCore(
 			// Example of expression
 			// "geoId/06<-containedInPlace+{typeOf: City}"
 			expr := entity.GetExpression()
-			containedInPlace, err := v2.GetContainedInPlace(expr)
+			containedInPlace, err := v2.ParseContainedInPlace(expr)
 			if err != nil {
 				return nil, err
 			}
@@ -342,7 +342,7 @@ func (s *Server) V2ObservationCore(
 		// Collection
 		if len(variable.GetDcids()) > 0 && entity.GetExpression() != "" {
 			expr := entity.GetExpression()
-			containedInPlace, err := v2.GetContainedInPlace(expr)
+			containedInPlace, err := v2.ParseContainedInPlace(expr)
 			if err != nil {
 				return nil, err
 			}

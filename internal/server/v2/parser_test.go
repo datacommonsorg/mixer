@@ -368,7 +368,7 @@ func TestGetContainedInPlace(t *testing.T) {
 			true,
 		},
 	} {
-		result, err := GetContainedInPlace(c.expr)
+		result, err := ParseContainedInPlace(c.expr)
 		if !c.valid {
 			if err == nil {
 				t.Errorf("GetContainedInPlace(%s) expect error, but got nil", c.expr)
