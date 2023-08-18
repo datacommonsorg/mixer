@@ -1905,7 +1905,8 @@
         "Percent_Person_BingeDrinking": {
           "val": {
             "2018": 17.4,
-            "2020": 16
+            "2020": 16,
+            "2021": 15.8
           },
           "metadata": {
             "importName": "CDC500",
@@ -1917,7 +1918,8 @@
         "Percent_Person_Obesity": {
           "val": {
             "2018": 21.6,
-            "2020": 23
+            "2020": 23,
+            "2021": 25.3
           },
           "metadata": {
             "importName": "CDC500",
@@ -1929,7 +1931,8 @@
         "Percent_Person_PhysicalInactivity": {
           "val": {
             "2018": 18.7,
-            "2020": 20.5
+            "2020": 20.5,
+            "2021": 17
           },
           "metadata": {
             "importName": "CDC500",
@@ -1953,7 +1956,8 @@
         "Percent_Person_Smoking": {
           "val": {
             "2018": 10.9,
-            "2020": 10.5
+            "2020": 10.5,
+            "2021": 9.7
           },
           "metadata": {
             "importName": "CDC500",
@@ -1965,7 +1969,8 @@
         "Percent_Person_WithArthritis": {
           "val": {
             "2018": 18.8,
-            "2020": 18.7
+            "2020": 18.7,
+            "2021": 17.7
           },
           "metadata": {
             "importName": "CDC500",
@@ -1977,7 +1982,8 @@
         "Percent_Person_WithHighBloodPressure": {
           "val": {
             "2017": 26.8,
-            "2019": 25.2
+            "2019": 25.2,
+            "2021": 25.5
           },
           "metadata": {
             "importName": "CDC500",
@@ -1989,7 +1995,8 @@
         "Percent_Person_WithHighCholesterol": {
           "val": {
             "2017": 30.6,
-            "2019": 29.6
+            "2019": 29.6,
+            "2021": 31.6
           },
           "metadata": {
             "importName": "CDC500",
@@ -2001,7 +2008,8 @@
         "Percent_Person_WithMentalHealthNotGood": {
           "val": {
             "2018": 11.7,
-            "2020": 12.8
+            "2020": 12.8,
+            "2021": 14
           },
           "metadata": {
             "importName": "CDC500",
@@ -2013,7 +2021,8 @@
         "Percent_Person_WithPhysicalHealthNotGood": {
           "val": {
             "2018": 11.5,
-            "2020": 8.9
+            "2020": 8.9,
+            "2021": 9.5
           },
           "metadata": {
             "importName": "CDC500",

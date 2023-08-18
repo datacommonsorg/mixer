@@ -7,49 +7,49 @@
         "id": "dc/g/Agriculture",
         "specializedEntity": "Agriculture",
         "displayName": "Agriculture",
-        "descendentStatVarCount": 172
+        "descendentStatVarCount": 213
       },
       {
         "id": "dc/g/Demographics",
         "specializedEntity": "Demographics",
         "displayName": "Demographics",
-        "descendentStatVarCount": 35475
+        "descendentStatVarCount": 37794
       },
       {
         "id": "dc/g/Economy",
         "specializedEntity": "Economy",
         "displayName": "Economy",
-        "descendentStatVarCount": 67488
+        "descendentStatVarCount": 69343
       },
       {
         "id": "dc/g/Education",
         "specializedEntity": "Education",
         "displayName": "Education",
-        "descendentStatVarCount": 42422
+        "descendentStatVarCount": 43127
       },
       {
         "id": "dc/g/Energy",
         "specializedEntity": "Energy",
         "displayName": "Energy",
-        "descendentStatVarCount": 9754
+        "descendentStatVarCount": 9769
       },
       {
         "id": "dc/g/Environment",
         "specializedEntity": "Environment",
         "displayName": "Environment",
-        "descendentStatVarCount": 2992
+        "descendentStatVarCount": 3577
       },
       {
         "id": "dc/g/Health",
         "specializedEntity": "Health",
         "displayName": "Health",
-        "descendentStatVarCount": 24433
+        "descendentStatVarCount": 25494
       },
       {
         "id": "dc/g/Housing",
         "specializedEntity": "Housing",
         "displayName": "Housing",
-        "descendentStatVarCount": 534
+        "descendentStatVarCount": 536
       },
       {
         "id": "dc/g/Crime",
@@ -67,9 +67,9 @@
         "id": "dc/g/SDG",
         "specializedEntity": "Sustainable Development Goals",
         "displayName": "Sustainable Development Goals",
-        "descendentStatVarCount": 3786
+        "descendentStatVarCount": 3805
       }
     ],
-    "descendentStatVarCount": 161704
+    "descendentStatVarCount": 166011
   }
 }

@@ -54,8 +54,12 @@ const (
 	BtPlacePageCategoricalPrefix = "d/f/"
 	// BtLandingPageCategories is the prefix for place page menu categories cache.
 	BtLandingPageCategories = "d/h/"
+	// BtObsCollectionFacet is the prefix for obs collection facet cache.
+	BtObsCollectionFacet = "d/i/"
 	// BtEventCollectionDate is the key for event collection date cache.
 	BtEventCollectionDate = "d/j/"
+	// BtEventCollectionDate is the key for obs time series facet cache.
+	BtObsTimeSeriesFacet = "d/k/"
 	// BtPagedPropTypeValIn for in-arc paged entities by type.
 	// Key: <dcid^predicate^type^page>
 	BtPagedPropTypeValIn = "d/l/"

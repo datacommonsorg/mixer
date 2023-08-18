@@ -43,6 +43,10 @@ message Facet {
   bool is_dc_imputed = 8;
 }
 
+message Facets {
+  repeated Facet facets = 1;
+}
+
 message PointStat {
   // date in IOS-8601 format
   string date = 1;
