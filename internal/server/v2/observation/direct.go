@@ -113,14 +113,12 @@ func FetchDirectBT(
 		return result, err
 	}
 	variableFacetFilters := map[string][]*pbv2.FacetFilter{}
-	if filters != nil {
-		for _, facetFilter := range filters {
-			for _, variable := range facetFilter.Variables {
-				if _, ok := variableFacetFilters[variable]; !ok {
-					variableFacetFilters[variable] = []*pbv2.FacetFilter{}
-				}
-				variableFacetFilters[variable] = append(variableFacetFilters[variable], facetFilter)
+	for _, facetFilter := range filters {
+		for _, variable := range facetFilter.Variables {
+			if _, ok := variableFacetFilters[variable]; !ok {
+				variableFacetFilters[variable] = []*pbv2.FacetFilter{}
 			}
+			variableFacetFilters[variable] = append(variableFacetFilters[variable], facetFilter)
 		}
 	}
 	for _, variable := range variables {
