@@ -20,7 +20,6 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-	"net/url"
 	"sort"
 	"strings"
 
@@ -201,34 +200,14 @@ func FetchContainedIn(
 					sort.Sort(ranking.CohortByRank(cohorts))
 					for _, cohort := range cohorts {
 						facet := util.GetFacet(cohort)
-						facetID := util.GetFacetID(facet)
 						// If there are facet filters, check that the cohort matches at
 						// least one filter. Otherwise, skip.
 						if facetFilters, ok := variableFacetFilters[variable]; ok {
-							keepCohort := false
-							for _, facetFilter := range facetFilters {
-								matchesFilter := true
-								if facetFilter.FacetId != "" && facetFilter.FacetId != facetID {
-									matchesFilter = false
-								}
-								if facetFilter.Domain != "" {
-									url, err := url.Parse(facet.ProvenanceUrl)
-									if err != nil {
-										matchesFilter = false
-									}
-									if !strings.HasSuffix(url.Hostname(), facetFilter.Domain) {
-										matchesFilter = false
-									}
-								}
-								if matchesFilter {
-									keepCohort = true
-									break
-								}
-							}
-							if !keepCohort {
+							if !shouldKeepSourceSeries(facetFilters, facet) {
 								continue
 							}
 						}
+						facetID := util.GetFacetID(facet)
 						for entity, val := range cohort.Val {
 							if _, ok := obsByEntity[entity]; !ok {
 								obsByEntity[entity] = &pbv2.EntityObservation{}

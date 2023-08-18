@@ -64,11 +64,11 @@ message FacetObservation {
 message FacetFilter {
   // List of variables that this facet filter applies to
   repeated string variables = 1;
-  // When specified, only observations with provenance in these domain are
+  // When specified, only observations with provenance in this domain is
   // returned.
-  string domain = 4;
+  string domain = 2;
   // When specified, only observations with this facet id are returned
-  string facet_id = 5;
+  string facet_id = 3;
 }
 
 // Generic observation request

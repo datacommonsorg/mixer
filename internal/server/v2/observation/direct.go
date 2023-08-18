@@ -38,6 +38,31 @@ const (
 	LATEST = "LATEST"
 )
 
+func shouldKeepSourceSeries(filters []*pbv2.FacetFilter, facet *pb.Facet) bool {
+	keepSeries := false
+	facetID := util.GetFacetID(facet)
+	for _, facetFilter := range filters {
+		matchesFilter := true
+		if facetFilter.FacetId != "" && facetFilter.FacetId != facetID {
+			matchesFilter = false
+		}
+		if facetFilter.Domain != "" {
+			url, err := url.Parse(facet.ProvenanceUrl)
+			if err != nil {
+				matchesFilter = false
+			}
+			if !strings.HasSuffix(url.Hostname(), facetFilter.Domain) {
+				matchesFilter = false
+			}
+		}
+		if matchesFilter {
+			keepSeries = true
+			break
+		}
+	}
+	return keepSeries
+}
+
 // FetchDirect fetches data from both Bigtable cache and SQLite database.
 func FetchDirect(
 	ctx context.Context,
@@ -107,34 +132,14 @@ func FetchDirectBT(
 				sort.Sort(ranking.SeriesByRank(series))
 				for _, series := range series {
 					facet := util.GetFacet(series)
-					facetID := util.GetFacetID(facet)
 					// If there are facet filters, check that the series matches at
 					// least one filter. Otherwise, skip.
-					if _, ok := variableFacetFilters[variable]; ok {
-						keepSeries := false
-						for _, facetFilter := range variableFacetFilters[variable] {
-							matchesFilter := true
-							if facetFilter.FacetId != "" && facetFilter.FacetId != facetID {
-								matchesFilter = false
-							}
-							if facetFilter.Domain != "" {
-								url, err := url.Parse(facet.ProvenanceUrl)
-								if err != nil {
-									matchesFilter = false
-								}
-								if !strings.HasSuffix(url.Hostname(), facetFilter.Domain) {
-									matchesFilter = false
-								}
-							}
-							if matchesFilter {
-								keepSeries = true
-								break
-							}
-						}
-						if !keepSeries {
+					if facetFilters, ok := variableFacetFilters[variable]; ok {
+						if !shouldKeepSourceSeries(facetFilters, facet) {
 							continue
 						}
 					}
+					facetID := util.GetFacetID(facet)
 					obsList := []*pb.PointStat{}
 					for date, value := range series.Val {
 						ps := &pb.PointStat{
