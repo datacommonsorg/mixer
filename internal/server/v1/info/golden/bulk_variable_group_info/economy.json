@@ -137,9 +137,413 @@
             "id": "dc/g/TreasuryNote",
             "specializedEntity": "Treasury Note",
             "displayName": "Treasury Note"
+          },
+          {
+            "id": "dc/g/WorldBank/Access",
+            "specializedEntity": "World Bank/Access",
+            "displayName": "Access"
+          },
+          {
+            "id": "dc/g/WorldBank/Assets",
+            "specializedEntity": "World Bank/Assets",
+            "displayName": "Assets"
+          },
+          {
+            "id": "dc/g/WorldBank/Depth",
+            "specializedEntity": "World Bank/Depth",
+            "displayName": "Depth"
+          },
+          {
+            "id": "dc/g/WorldBank/Economic_Policy___Debt",
+            "specializedEntity": "World Bank/Economic, Policy, , , Debt",
+            "displayName": "Economic Policy \u0026 Debt"
+          },
+          {
+            "id": "dc/g/WorldBank/Economic_Policy___Debt__Balance_of_payments__Capital___financial_account",
+            "specializedEntity": "World Bank/Economic, Policy, , , Debt, , Balance, Of, Payments, , Capital, , , Financial, Account",
+            "displayName": "Economic Policy \u0026 Debt: Balance of payments: Capital \u0026 financial account"
+          },
+          {
+            "id": "dc/g/WorldBank/Economic_Policy___Debt__Balance_of_payments__Current_account__Balances",
+            "specializedEntity": "World Bank/Economic, Policy, , , Debt, , Balance, Of, Payments, , Current, Account, , Balances",
+            "displayName": "Economic Policy \u0026 Debt: Balance of payments: Current account: Balances"
+          },
+          {
+            "id": "dc/g/WorldBank/Economic_Policy___Debt__Balance_of_payments__Current_account__Goods__services___income",
+            "specializedEntity": "World Bank/Economic, Policy, , , Debt, , Balance, Of, Payments, , Current, Account, , Goods, , Services, , , Income",
+            "displayName": "Economic Policy \u0026 Debt: Balance of payments: Current account: Goods, services \u0026 income"
+          },
+          {
+            "id": "dc/g/WorldBank/Economic_Policy___Debt__Balance_of_payments__Current_account__Transfers",
+            "specializedEntity": "World Bank/Economic, Policy, , , Debt, , Balance, Of, Payments, , Current, Account, , Transfers",
+            "displayName": "Economic Policy \u0026 Debt: Balance of payments: Current account: Transfers"
+          },
+          {
+            "id": "dc/g/WorldBank/Economic_Policy___Debt__Balance_of_payments__Reserves___other_items",
+            "specializedEntity": "World Bank/Economic, Policy, , , Debt, , Balance, Of, Payments, , Reserves, , , Other, Items",
+            "displayName": "Economic Policy \u0026 Debt: Balance of payments: Reserves \u0026 other items"
+          },
+          {
+            "id": "dc/g/WorldBank/Economic_Policy___Debt__External_debt__Debt_outstanding",
+            "specializedEntity": "World Bank/Economic, Policy, , , Debt, , External, Debt, , Debt, Outstanding",
+            "displayName": "Economic Policy \u0026 Debt: External debt: Debt outstanding"
+          },
+          {
+            "id": "dc/g/WorldBank/Economic_Policy___Debt__External_debt__Debt_ratios___other_items",
+            "specializedEntity": "World Bank/Economic, Policy, , , Debt, , External, Debt, , Debt, Ratios, , , Other, Items",
+            "displayName": "Economic Policy \u0026 Debt: External debt: Debt ratios \u0026 other items"
+          },
+          {
+            "id": "dc/g/WorldBank/Economic_Policy___Debt__External_debt__Debt_service",
+            "specializedEntity": "World Bank/Economic, Policy, , , Debt, , External, Debt, , Debt, Service",
+            "displayName": "Economic Policy \u0026 Debt: External debt: Debt service"
+          },
+          {
+            "id": "dc/g/WorldBank/Economic_Policy___Debt__External_debt__Net_flows",
+            "specializedEntity": "World Bank/Economic, Policy, , , Debt, , External, Debt, , Net, Flows",
+            "displayName": "Economic Policy \u0026 Debt: External debt: Net flows"
+          },
+          {
+            "id": "dc/g/WorldBank/Economic_Policy___Debt__National_accounts__Adjusted_savings___income",
+            "specializedEntity": "World Bank/Economic, Policy, , , Debt, , National, Accounts, , Adjusted, Savings, , , Income",
+            "displayName": "Economic Policy \u0026 Debt: National accounts: Adjusted savings \u0026 income",
+            "descendentStatVarCount": 8
+          },
+          {
+            "id": "dc/g/WorldBank/Economic_Policy___Debt__National_accounts__Atlas_GNI___GNI_per_capita",
+            "specializedEntity": "World Bank/Economic, Policy, , , Debt, , National, Accounts, , Atlas, GNI, , , GNI, Per, Capita",
+            "displayName": "Economic Policy \u0026 Debt: National accounts: Atlas GNI \u0026 GNI per capita"
+          },
+          {
+            "id": "dc/g/WorldBank/Economic_Policy___Debt__National_accounts__Growth_rates",
+            "specializedEntity": "World Bank/Economic, Policy, , , Debt, , National, Accounts, , Growth, Rates",
+            "displayName": "Economic Policy \u0026 Debt: National accounts: Growth rates",
+            "descendentStatVarCount": 7
+          },
+          {
+            "id": "dc/g/WorldBank/Economic_Policy___Debt__National_accounts__Local_currency_at_constant_prices__Aggregate_indicators",
+            "specializedEntity": "World Bank/Economic, Policy, , , Debt, , National, Accounts, , Local, Currency, At, Constant, Prices, , Aggregate, Indicators",
+            "displayName": "Economic Policy \u0026 Debt: National accounts: Local currency at constant prices: Aggregate indicators",
+            "descendentStatVarCount": 2
+          },
+          {
+            "id": "dc/g/WorldBank/Economic_Policy___Debt__National_accounts__Local_currency_at_constant_prices__Expenditure_on_GDP",
+            "specializedEntity": "World Bank/Economic, Policy, , , Debt, , National, Accounts, , Local, Currency, At, Constant, Prices, , Expenditure, On, GDP",
+            "displayName": "Economic Policy \u0026 Debt: National accounts: Local currency at constant prices: Expenditure on GDP",
+            "descendentStatVarCount": 5
+          },
+          {
+            "id": "dc/g/WorldBank/Economic_Policy___Debt__National_accounts__Local_currency_at_constant_prices__Other_items",
+            "specializedEntity": "World Bank/Economic, Policy, , , Debt, , National, Accounts, , Local, Currency, At, Constant, Prices, , Other, Items",
+            "displayName": "Economic Policy \u0026 Debt: National accounts: Local currency at constant prices: Other items",
+            "descendentStatVarCount": 3
+          },
+          {
+            "id": "dc/g/WorldBank/Economic_Policy___Debt__National_accounts__Local_currency_at_constant_prices__Value_added",
+            "specializedEntity": "World Bank/Economic, Policy, , , Debt, , National, Accounts, , Local, Currency, At, Constant, Prices, , Value, Added",
+            "displayName": "Economic Policy \u0026 Debt: National accounts: Local currency at constant prices: Value added",
+            "descendentStatVarCount": 1
+          },
+          {
+            "id": "dc/g/WorldBank/Economic_Policy___Debt__National_accounts__Local_currency_at_current_prices__Aggregate_indicators",
+            "specializedEntity": "World Bank/Economic, Policy, , , Debt, , National, Accounts, , Local, Currency, At, Current, Prices, , Aggregate, Indicators",
+            "displayName": "Economic Policy \u0026 Debt: National accounts: Local currency at current prices: Aggregate indicators",
+            "descendentStatVarCount": 5
+          },
+          {
+            "id": "dc/g/WorldBank/Economic_Policy___Debt__National_accounts__Local_currency_at_current_prices__Expenditure_on_GDP",
+            "specializedEntity": "World Bank/Economic, Policy, , , Debt, , National, Accounts, , Local, Currency, At, Current, Prices, , Expenditure, On, GDP",
+            "displayName": "Economic Policy \u0026 Debt: National accounts: Local currency at current prices: Expenditure on GDP",
+            "descendentStatVarCount": 7
+          },
+          {
+            "id": "dc/g/WorldBank/Economic_Policy___Debt__National_accounts__Local_currency_at_current_prices__Value_added",
+            "specializedEntity": "World Bank/Economic, Policy, , , Debt, , National, Accounts, , Local, Currency, At, Current, Prices, , Value, Added",
+            "displayName": "Economic Policy \u0026 Debt: National accounts: Local currency at current prices: Value added",
+            "descendentStatVarCount": 1
+          },
+          {
+            "id": "dc/g/WorldBank/Economic_Policy___Debt__National_accounts__Shares_of_GDP___other",
+            "specializedEntity": "World Bank/Economic, Policy, , , Debt, , National, Accounts, , Shares, Of, GDP, , , Other",
+            "displayName": "Economic Policy \u0026 Debt: National accounts: Shares of GDP \u0026 other",
+            "descendentStatVarCount": 7
+          },
+          {
+            "id": "dc/g/WorldBank/Economic_Policy___Debt__National_accounts__US__at_constant_2010_prices__Aggregate_indicators",
+            "specializedEntity": "World Bank/Economic, Policy, , , Debt, , National, Accounts, , US, , At, Constant, 2010, Prices, , Aggregate, Indicators",
+            "displayName": "Economic Policy \u0026 Debt: National accounts: US$ at constant 2010 prices: Aggregate indicators",
+            "descendentStatVarCount": 2
+          },
+          {
+            "id": "dc/g/WorldBank/Economic_Policy___Debt__National_accounts__US__at_constant_2015_prices__Aggregate_indicators",
+            "specializedEntity": "World Bank/Economic, Policy, , , Debt, , National, Accounts, , US, , At, Constant, 2015, Prices, , Aggregate, Indicators",
+            "displayName": "Economic Policy \u0026 Debt: National accounts: US$ at constant 2015 prices: Aggregate indicators"
+          },
+          {
+            "id": "dc/g/WorldBank/Economic_Policy___Debt__National_accounts__US__at_constant_2015_prices__Expenditure_on_GDP",
+            "specializedEntity": "World Bank/Economic, Policy, , , Debt, , National, Accounts, , US, , At, Constant, 2015, Prices, , Expenditure, On, GDP",
+            "displayName": "Economic Policy \u0026 Debt: National accounts: US$ at constant 2015 prices: Expenditure on GDP",
+            "descendentStatVarCount": 4
+          },
+          {
+            "id": "dc/g/WorldBank/Economic_Policy___Debt__National_accounts__US__at_constant_2015_prices__Value_added",
+            "specializedEntity": "World Bank/Economic, Policy, , , Debt, , National, Accounts, , US, , At, Constant, 2015, Prices, , Value, Added",
+            "displayName": "Economic Policy \u0026 Debt: National accounts: US$ at constant 2015 prices: Value added",
+            "descendentStatVarCount": 1
+          },
+          {
+            "id": "dc/g/WorldBank/Economic_Policy___Debt__National_accounts__US__at_current_prices__Aggregate_indicators",
+            "specializedEntity": "World Bank/Economic, Policy, , , Debt, , National, Accounts, , US, , At, Current, Prices, , Aggregate, Indicators",
+            "displayName": "Economic Policy \u0026 Debt: National accounts: US$ at current prices: Aggregate indicators",
+            "descendentStatVarCount": 3
+          },
+          {
+            "id": "dc/g/WorldBank/Economic_Policy___Debt__National_accounts__US__at_current_prices__Expenditure_on_GDP",
+            "specializedEntity": "World Bank/Economic, Policy, , , Debt, , National, Accounts, , US, , At, Current, Prices, , Expenditure, On, GDP",
+            "displayName": "Economic Policy \u0026 Debt: National accounts: US$ at current prices: Expenditure on GDP",
+            "descendentStatVarCount": 5
+          },
+          {
+            "id": "dc/g/WorldBank/Economic_Policy___Debt__National_accounts__US__at_current_prices__Value_added",
+            "specializedEntity": "World Bank/Economic, Policy, , , Debt, , National, Accounts, , US, , At, Current, Prices, , Value, Added",
+            "displayName": "Economic Policy \u0026 Debt: National accounts: US$ at current prices: Value added",
+            "descendentStatVarCount": 1
+          },
+          {
+            "id": "dc/g/WorldBank/Economic_Policy___Debt__Official_development_assistance",
+            "specializedEntity": "World Bank/Economic, Policy, , , Debt, , Official, Development, Assistance",
+            "displayName": "Economic Policy \u0026 Debt: Official development assistance"
+          },
+          {
+            "id": "dc/g/WorldBank/Economic_Policy___Debt__Purchasing_power_parity",
+            "specializedEntity": "World Bank/Economic, Policy, , , Debt, , Purchasing, Power, Parity",
+            "displayName": "Economic Policy \u0026 Debt: Purchasing power parity",
+            "descendentStatVarCount": 2
+          },
+          {
+            "id": "dc/g/WorldBank/Efficiency",
+            "specializedEntity": "World Bank/Efficiency",
+            "displayName": "Efficiency"
+          },
+          {
+            "id": "dc/g/WorldBank/Employment",
+            "specializedEntity": "World Bank/Employment",
+            "displayName": "Employment"
+          },
+          {
+            "id": "dc/g/WorldBank/Enforcing_contracts",
+            "specializedEntity": "World Bank/Enforcing, Contracts",
+            "displayName": "Enforcing contracts"
+          },
+          {
+            "id": "dc/g/WorldBank/Environment__Agricultural_production",
+            "specializedEntity": "World Bank/Environment, , Agricultural, Production",
+            "displayName": "Environment: Agricultural production",
+            "descendentStatVarCount": 5
+          },
+          {
+            "id": "dc/g/WorldBank/Environment__Food_Security",
+            "specializedEntity": "World Bank/Environment, , Food, Security",
+            "displayName": "Environment: Food Security",
+            "descendentStatVarCount": 1
+          },
+          {
+            "id": "dc/g/WorldBank/Environment__Natural_capital_endowment_and_management",
+            "specializedEntity": "World Bank/Environment, , Natural, Capital, Endowment, And, Management",
+            "displayName": "Environment: Natural capital endowment and management",
+            "descendentStatVarCount": 1
+          },
+          {
+            "id": "dc/g/WorldBank/Environment__Natural_resources_contribution_to_GDP",
+            "specializedEntity": "World Bank/Environment, , Natural, Resources, Contribution, To, GDP",
+            "displayName": "Environment: Natural resources contribution to GDP",
+            "descendentStatVarCount": 6
+          },
+          {
+            "id": "dc/g/WorldBank/Expenditures",
+            "specializedEntity": "World Bank/Expenditures",
+            "displayName": "Expenditures",
+            "descendentStatVarCount": 2
+          },
+          {
+            "id": "dc/g/WorldBank/Financial_Sector__Access",
+            "specializedEntity": "World Bank/Financial, Sector, , Access",
+            "displayName": "Financial Sector: Access"
+          },
+          {
+            "id": "dc/g/WorldBank/Financial_Sector__Assets",
+            "specializedEntity": "World Bank/Financial, Sector, , Assets",
+            "displayName": "Financial Sector: Assets"
+          },
+          {
+            "id": "dc/g/WorldBank/Financial_Sector__Capital_markets",
+            "specializedEntity": "World Bank/Financial, Sector, , Capital, Markets",
+            "displayName": "Financial Sector: Capital markets"
+          },
+          {
+            "id": "dc/g/WorldBank/Financial_Sector__Exchange_rates___prices",
+            "specializedEntity": "World Bank/Financial, Sector, , Exchange, Rates, , , Prices",
+            "displayName": "Financial Sector: Exchange rates \u0026 prices",
+            "descendentStatVarCount": 6
+          },
+          {
+            "id": "dc/g/WorldBank/Financial_Sector__Interest_rates",
+            "specializedEntity": "World Bank/Financial, Sector, , Interest, Rates",
+            "displayName": "Financial Sector: Interest rates"
+          },
+          {
+            "id": "dc/g/WorldBank/Financial_Sector__Monetary_holdings__liabilities_",
+            "specializedEntity": "World Bank/Financial, Sector, , Monetary, Holdings, , Liabilities, ",
+            "displayName": "Financial Sector: Monetary holdings (liabilities)"
+          },
+          {
+            "id": "dc/g/WorldBank/Governance__Economic_Environment",
+            "specializedEntity": "World Bank/Governance, , Economic, Environment",
+            "displayName": "Governance: Economic Environment",
+            "descendentStatVarCount": 2
+          },
+          {
+            "id": "dc/g/WorldBank/Governance__Government_Effectiveness",
+            "specializedEntity": "World Bank/Governance, , Government, Effectiveness",
+            "displayName": "Governance: Government Effectiveness",
+            "descendentStatVarCount": 1
+          },
+          {
+            "id": "dc/g/WorldBank/Governance__Innovation",
+            "specializedEntity": "World Bank/Governance, , Innovation",
+            "displayName": "Governance: Innovation",
+            "descendentStatVarCount": 1
+          },
+          {
+            "id": "dc/g/WorldBank/Governance__Stability___Rule_of_Law",
+            "specializedEntity": "World Bank/Governance, , Stability, , , Rule, Of, Law",
+            "displayName": "Governance: Stability \u0026 Rule of Law",
+            "descendentStatVarCount": 1
+          },
+          {
+            "id": "dc/g/WorldBank/Infrastructure__Communications",
+            "specializedEntity": "World Bank/Infrastructure, , Communications",
+            "displayName": "Infrastructure: Communications",
+            "descendentStatVarCount": 7
+          },
+          {
+            "id": "dc/g/WorldBank/Infrastructure__Technology",
+            "specializedEntity": "World Bank/Infrastructure, , Technology",
+            "displayName": "Infrastructure: Technology"
+          },
+          {
+            "id": "dc/g/WorldBank/Infrastructure__Transportation",
+            "specializedEntity": "World Bank/Infrastructure, , Transportation",
+            "displayName": "Infrastructure: Transportation",
+            "descendentStatVarCount": 4
+          },
+          {
+            "id": "dc/g/WorldBank/Other",
+            "specializedEntity": "World Bank/Other",
+            "displayName": "Other"
+          },
+          {
+            "id": "dc/g/WorldBank/Paying_taxes",
+            "specializedEntity": "World Bank/Paying, Taxes",
+            "displayName": "Paying taxes"
+          },
+          {
+            "id": "dc/g/WorldBank/Private_Sector___Trade__Business_environment",
+            "specializedEntity": "World Bank/Private, Sector, , , Trade, , Business, Environment",
+            "displayName": "Private Sector \u0026 Trade: Business environment"
+          },
+          {
+            "id": "dc/g/WorldBank/Private_Sector___Trade__Exports",
+            "specializedEntity": "World Bank/Private, Sector, , , Trade, , Exports",
+            "displayName": "Private Sector \u0026 Trade: Exports",
+            "descendentStatVarCount": 13
+          },
+          {
+            "id": "dc/g/WorldBank/Private_Sector___Trade__Private_infrastructure_investment",
+            "specializedEntity": "World Bank/Private, Sector, , , Trade, , Private, Infrastructure, Investment",
+            "displayName": "Private Sector \u0026 Trade: Private infrastructure investment"
+          },
+          {
+            "id": "dc/g/WorldBank/Private_Sector___Trade__Trade_facilitation",
+            "specializedEntity": "World Bank/Private, Sector, , , Trade, , Trade, Facilitation",
+            "displayName": "Private Sector \u0026 Trade: Trade facilitation"
+          },
+          {
+            "id": "dc/g/WorldBank/Private_Sector___Trade__Trade_indexes",
+            "specializedEntity": "World Bank/Private, Sector, , , Trade, , Trade, Indexes",
+            "displayName": "Private Sector \u0026 Trade: Trade indexes",
+            "descendentStatVarCount": 3
+          },
+          {
+            "id": "dc/g/WorldBank/Private_Sector___Trade__Trade_price_indices",
+            "specializedEntity": "World Bank/Private, Sector, , , Trade, , Trade, Price, Indices",
+            "displayName": "Private Sector \u0026 Trade: Trade price indices",
+            "descendentStatVarCount": 1
+          },
+          {
+            "id": "dc/g/WorldBank/Public_Sector__Defense___arms_trade",
+            "specializedEntity": "World Bank/Public, Sector, , Defense, , , Arms, Trade",
+            "displayName": "Public Sector: Defense \u0026 arms trade"
+          },
+          {
+            "id": "dc/g/WorldBank/Public_Sector__Government_finance",
+            "specializedEntity": "World Bank/Public, Sector, , Government, Finance",
+            "displayName": "Public Sector: Government finance"
+          },
+          {
+            "id": "dc/g/WorldBank/Public_Sector__Government_finance__Deficit___financing",
+            "specializedEntity": "World Bank/Public, Sector, , Government, Finance, , Deficit, , , Financing",
+            "displayName": "Public Sector: Government finance: Deficit \u0026 financing"
+          },
+          {
+            "id": "dc/g/WorldBank/Public_Sector__Government_finance__Expense",
+            "specializedEntity": "World Bank/Public, Sector, , Government, Finance, , Expense",
+            "displayName": "Public Sector: Government finance: Expense"
+          },
+          {
+            "id": "dc/g/WorldBank/Public_Sector__Government_finance__Revenue",
+            "specializedEntity": "World Bank/Public, Sector, , Government, Finance, , Revenue",
+            "displayName": "Public Sector: Government finance: Revenue"
+          },
+          {
+            "id": "dc/g/WorldBank/Public_Sector__Policy___institutions",
+            "specializedEntity": "World Bank/Public, Sector, , Policy, , , Institutions",
+            "displayName": "Public Sector: Policy \u0026 institutions",
+            "descendentStatVarCount": 15
+          },
+          {
+            "id": "dc/g/WorldBank/Quality_of_Financial_Services",
+            "specializedEntity": "World Bank/Quality, Of, Financial, Services",
+            "displayName": "Quality of Financial Services"
+          },
+          {
+            "id": "dc/g/WorldBank/Renewable_Energy",
+            "specializedEntity": "World Bank/Renewable, Energy",
+            "displayName": "Renewable Energy",
+            "descendentStatVarCount": 6
+          },
+          {
+            "id": "dc/g/WorldBank/Resolving_insolvency",
+            "specializedEntity": "World Bank/Resolving, Insolvency",
+            "displayName": "Resolving insolvency"
+          },
+          {
+            "id": "dc/g/WorldBank/Social__Poverty___Inequality",
+            "specializedEntity": "World Bank/Social, , Poverty, , , Inequality",
+            "displayName": "Social: Poverty \u0026 Inequality"
+          },
+          {
+            "id": "dc/g/WorldBank/Stability",
+            "specializedEntity": "World Bank/Stability",
+            "displayName": "Stability"
+          },
+          {
+            "id": "dc/g/WorldBank/Statistical_Capacity_Indicator__SCI_",
+            "specializedEntity": "World Bank/Statistical, Capacity, Indicator, , SCI, ",
+            "displayName": "Statistical Capacity Indicator (SCI)"
           }
         ],
-        "descendentStatVarCount": 6,
+        "descendentStatVarCount": 145,
         "parentStatVarGroups": [
           "dc/g/Root"
         ]

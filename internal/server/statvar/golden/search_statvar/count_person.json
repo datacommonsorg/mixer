@@ -657,6 +657,10 @@
       "dcid": "Count_Person_21To64Years"
     },
     {
+      "name": "Population: 25 - 44 Years",
+      "dcid": "Count_Person_25To44Years"
+    },
+    {
       "name": "Population: 25 - 59 Years",
       "dcid": "Count_Person_25To59Years"
     },
@@ -695,6 +699,10 @@
     {
       "name": "Population: 40 - 64 Years",
       "dcid": "Count_Person_40To64Years"
+    },
+    {
+      "name": "Population: 45 - 64 Years",
+      "dcid": "Count_Person_45To64Years"
     },
     {
       "name": "Population: 4th Grade",
@@ -955,6 +963,10 @@
     {
       "name": "Population: Chinese Incl Mandarin Cantonese",
       "dcid": "Count_Person_5OrMoreYears_ChineseInclMandarinCantoneseSpokenAtHome"
+    },
+    {
+      "name": "Population: Church of Ireland Including Protestant",
+      "dcid": "Count_Person_ChurchOfIrelandIncludingProtestant"
     },
     {
       "name": "Population: Citizen",
@@ -1249,6 +1261,10 @@
       "dcid": "Count_Person_Intersex"
     },
     {
+      "name": "Population: Ireland_Other Stated Religion",
+      "dcid": "Count_Person_IrelandOtherStatedReligion"
+    },
+    {
       "name": "Population: Irreligion",
       "dcid": "Count_Person_Irreligion"
     },
@@ -1537,6 +1553,10 @@
       "dcid": "Count_Person_PreObese"
     },
     {
+      "name": "Population: Presbyterian",
+      "dcid": "Count_Person_Presbyterian"
+    },
+    {
       "name": "Population: Primary School",
       "dcid": "Count_Person_EducationalAttainmentPrimarySchool"
     },
@@ -1571,6 +1591,10 @@
     {
       "name": "Population: Resident",
       "dcid": "Count_Person_Resident"
+    },
+    {
+      "name": "Population: Roman Catholicism",
+      "dcid": "Count_Person_RomanCatholicism"
     },
     {
       "name": "Population: Roman Catholicism Apostolic",
@@ -1735,6 +1759,10 @@
     {
       "name": "Population: Vietnamese",
       "dcid": "Count_Person_5OrMoreYears_VietnameseSpokenAtHome"
+    },
+    {
+      "name": "Population: Wesleyan Methodist",
+      "dcid": "Count_Person_WesleyanMethodist"
     },
     {
       "name": "Population: Wholesale And Retail Trade, Transport, Accommodation And Food Service",
@@ -3971,34 +3999,6 @@
     {
       "name": "Population: 10 - 14 Years, White Alone or In Combination With One or More Other Races",
       "dcid": "Count_Person_10To14Years_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Population: 10 - 14 Years, Widowed",
-      "dcid": "Count_Person_10To14Years_Widowed"
-    },
-    {
-      "name": "Population: 10 Years or More, Divorced",
-      "dcid": "Count_Person_10OrMoreYears_Divorced"
-    },
-    {
-      "name": "Population: 10 Years or More, Female",
-      "dcid": "Count_Person_10OrMoreYears_Female"
-    },
-    {
-      "name": "Population: 10 Years or More, Illiterate",
-      "dcid": "Count_Person_10OrMoreYears_Illiterate"
-    },
-    {
-      "name": "Population: 10 Years or More, Literate",
-      "dcid": "Count_Person_10OrMoreYears_Literate"
-    },
-    {
-      "name": "Population: 10 Years or More, Male",
-      "dcid": "Count_Person_10OrMoreYears_Male"
-    },
-    {
-      "name": "Population: 10 Years or More, Never Married",
-      "dcid": "Count_Person_10OrMoreYears_NeverMarried"
     }
   ],
   "matches": [

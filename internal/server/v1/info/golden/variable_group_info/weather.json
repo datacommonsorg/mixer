@@ -13,10 +13,10 @@
         "id": "dc/g/ProjectedWeather",
         "specializedEntity": "Projected",
         "displayName": "Projected",
-        "descendentStatVarCount": 1088
+        "descendentStatVarCount": 1552
       }
     ],
-    "descendentStatVarCount": 1140,
+    "descendentStatVarCount": 1604,
     "parentStatVarGroups": [
       "dc/g/Environment"
     ]

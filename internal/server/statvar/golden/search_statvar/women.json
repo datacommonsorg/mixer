@@ -613,6 +613,10 @@
       "dcid": "WHO/SA_0000001412_Female"
     },
     {
+      "name": "Adolescent fertility rate (births per 1,000 women ages 15-19)",
+      "dcid": "worldBank/SP_ADO_TFRT"
+    },
+    {
       "name": "Adults Aged \u0026#8805; 20 Years Who Are Obese (%), Female",
       "dcid": "WHO/WHOSIS_000010_Female"
     },
@@ -913,6 +917,14 @@
       "dcid": "WHO/SDGAIRBODA_Female_TracheaBronchusLungCancers"
     },
     {
+      "name": "Borrowed any money, female (% age 15+)",
+      "dcid": "worldBank/borrow_any_1"
+    },
+    {
+      "name": "Borrowed from a store by buying on credit, female (% age 15+)",
+      "dcid": "worldBank/fin21b_2014_1"
+    },
+    {
       "name": "Cancer, Age-Standardized Death Rates (15+), Per 100,000 Population, Female",
       "dcid": "WHO/SA_0000001807_Female"
     },
@@ -981,6 +993,10 @@
       "dcid": "WHO/SA_0000001820_Female"
     },
     {
+      "name": "Illiterate population, 25-64 years, % female",
+      "dcid": "worldBank/UIS_ILLPOPF_AG25T64"
+    },
+    {
       "name": "Infant Mortality Rate (Probability Of Dying Between Birth And Age 1 Per 1000 Live Births), Female",
       "dcid": "WHO/MDG_0000000001_Female"
     },
@@ -1003,6 +1019,10 @@
     {
       "name": "Net Primary School Enrolment Ratio (%), Female",
       "dcid": "WHO/WHS9_87_Female"
+    },
+    {
+      "name": "New entrants to Grade 1 of primary education, percentage female (%)",
+      "dcid": "worldBank/UIS_FNP_1"
     },
     {
       "name": "Number Of Dentists, Female",
@@ -1061,6 +1081,54 @@
       "dcid": "WHO/HWF_0026_Female"
     },
     {
+      "name": "Out-of-school adolescents of lower secondary school age, percentage female (%)",
+      "dcid": "worldBank/UIS_FOFSTP_2"
+    },
+    {
+      "name": "Out-of-school children of primary school age, percentage female (%)",
+      "dcid": "worldBank/UIS_FOFSTP_1"
+    },
+    {
+      "name": "Out-of-school youth of upper secondary school age, percentage female (%)",
+      "dcid": "worldBank/UIS_FOFSTP_3"
+    },
+    {
+      "name": "Percentage of graduates from tertiary ISCED 8 programmes who are female (%)",
+      "dcid": "worldBank/UIS_FGP_8"
+    },
+    {
+      "name": "Percentage of students in early childhood education who are female (%)",
+      "dcid": "worldBank/UIS_FEP_0"
+    },
+    {
+      "name": "Percentage of students in lower secondary education who are female (%)",
+      "dcid": "worldBank/UIS_FEP_2"
+    },
+    {
+      "name": "Percentage of students in post-secondary non-tertiary education who are female (%)",
+      "dcid": "worldBank/UIS_FEP_4"
+    },
+    {
+      "name": "Percentage of students in tertiary ISCED 8 programmes who are female (%)",
+      "dcid": "worldBank/UIS_FEP_8"
+    },
+    {
+      "name": "Percentage of students in upper secondary education who are female (%)",
+      "dcid": "worldBank/UIS_FEP_3"
+    },
+    {
+      "name": "Percentage of teachers in lower secondary education who are female (%)",
+      "dcid": "worldBank/UIS_FTP_2"
+    },
+    {
+      "name": "Percentage of teachers in post-secondary non-tertiary education who are female (%)",
+      "dcid": "worldBank/UIS_FTP_4"
+    },
+    {
+      "name": "Percentage of teachers in upper secondary education who are female (%)",
+      "dcid": "worldBank/UIS_FTP_3"
+    },
+    {
       "name": "Point Prevalence (%), Alcohol Use Disorders, 15+ Years, Female",
       "dcid": "WHO/RSUD_1_Female"
     },
@@ -1097,6 +1165,10 @@
       "dcid": "WHO/TOBACCO_0000000192_Female"
     },
     {
+      "name": "Prevalence of anemia among pregnant women (%)",
+      "dcid": "worldBank/SH_PRG_ANEM"
+    },
+    {
       "name": "Prevention Programmes For Specific Populations For Alcohol, Pregnant Women",
       "dcid": "WHO/RSUD_590_PregnantWomen"
     },
@@ -1123,6 +1195,10 @@
     {
       "name": "Road Traffic Crash Deaths, Age-Standardized Death Rates (15+), Per 100,000 Population (SA_0000001459), Female",
       "dcid": "WHO/SA_0000001459_Female"
+    },
+    {
+      "name": "Saved any money, female (% age 15+)",
+      "dcid": "worldBank/save_any_1"
     },
     {
       "name": "Total number of pregnant women registered for Antenatal Care",
@@ -1157,6 +1233,10 @@
       "dcid": "WHO/MDG_0000000007_Female"
     },
     {
+      "name": "Unmet need for contraception (% of married women ages 15-49)",
+      "dcid": "worldBank/SP_UWT_TFRT"
+    },
+    {
       "name": "Use Of Mosquito Nets - Percentage Of All Women Age 15-49 Who Slept Under An Ever Treated Net Last Night, Rural",
       "dcid": "WHO/MALARIA_30557_Rural"
     },
@@ -1167,6 +1247,10 @@
     {
       "name": "Use Of Mosquito Nets - Percentage Of All Women Age 15-49 Who Slept Under Any Net Last Night, Rural",
       "dcid": "WHO/MALARIA_30556_Rural"
+    },
+    {
+      "name": "Youth illiterate population, 15-24 years, % female",
+      "dcid": "worldBank/UIS_LPP_AG15T24"
     },
     {
       "name": "Population (Measured Based on Jurisdiction): Local, Locally Operated, Female, Incarcerated",
@@ -1215,6 +1299,26 @@
     {
       "name": "15-Years Old, Any Alcoholic Beverage Consumed At Least Once A Week, (%) (SA_0000001784_ARCHIVED), Female",
       "dcid": "WHO/SA_0000001784_ARCHIVED_Female"
+    },
+    {
+      "name": "Account, female (% age 15+)",
+      "dcid": "worldBank/account_t_d_1"
+    },
+    {
+      "name": "Adjusted net enrolment rate, lower secondary, female (%)",
+      "dcid": "worldBank/UIS_NERA_2_F"
+    },
+    {
+      "name": "Adjusted net enrolment rate, primary, female (%)",
+      "dcid": "worldBank/SE_PRM_TENR_FE"
+    },
+    {
+      "name": "Adjusted net enrolment rate, upper secondary, female (%)",
+      "dcid": "worldBank/UIS_NERA_3_F"
+    },
+    {
+      "name": "Adjusted net intake rate to Grade 1 of primary education, female (%)",
+      "dcid": "worldBank/UIS_NIRA_1_F"
     },
     {
       "name": "Alcohol Dependence (15+ ), 12-Month Prevalence (%) With 95%Ci (SA_0000001461_ARCHIVED), Female",
@@ -1489,6 +1593,182 @@
       "dcid": "WHO/AIR_45_Female_TracheaBronchusLungCancers"
     },
     {
+      "name": "Antiretroviral therapy coverage for PMTCT (% of pregnant women living with HIV)",
+      "dcid": "worldBank/SH_HIV_PMTC_ZS"
+    },
+    {
+      "name": "Barro-Lee: Average years of total schooling, age 15+, female",
+      "dcid": "worldBank/BAR_SCHL_15UP_FE"
+    },
+    {
+      "name": "Barro-Lee: Average years of total schooling, age 15-19, female",
+      "dcid": "worldBank/BAR_SCHL_1519_FE"
+    },
+    {
+      "name": "Barro-Lee: Average years of total schooling, age 20-24, female",
+      "dcid": "worldBank/BAR_SCHL_2024_FE"
+    },
+    {
+      "name": "Barro-Lee: Average years of total schooling, age 25+, female",
+      "dcid": "worldBank/BAR_SCHL_25UP_FE"
+    },
+    {
+      "name": "Barro-Lee: Average years of total schooling, age 25-29, female",
+      "dcid": "worldBank/BAR_SCHL_2529_FE"
+    },
+    {
+      "name": "Barro-Lee: Average years of total schooling, age 30-34, female",
+      "dcid": "worldBank/BAR_SCHL_3034_FE"
+    },
+    {
+      "name": "Barro-Lee: Average years of total schooling, age 35-39, female",
+      "dcid": "worldBank/BAR_SCHL_3539_FE"
+    },
+    {
+      "name": "Barro-Lee: Average years of total schooling, age 40-44, female",
+      "dcid": "worldBank/BAR_SCHL_4044_FE"
+    },
+    {
+      "name": "Barro-Lee: Average years of total schooling, age 45-49, female",
+      "dcid": "worldBank/BAR_SCHL_4549_FE"
+    },
+    {
+      "name": "Barro-Lee: Average years of total schooling, age 50-54, female",
+      "dcid": "worldBank/BAR_SCHL_5054_FE"
+    },
+    {
+      "name": "Barro-Lee: Average years of total schooling, age 55-59, female",
+      "dcid": "worldBank/BAR_SCHL_5559_FE"
+    },
+    {
+      "name": "Barro-Lee: Average years of total schooling, age 60-64, female",
+      "dcid": "worldBank/BAR_SCHL_6064_FE"
+    },
+    {
+      "name": "Barro-Lee: Average years of total schooling, age 65-69, female",
+      "dcid": "worldBank/BAR_SCHL_6569_FE"
+    },
+    {
+      "name": "Barro-Lee: Average years of total schooling, age 70-74, female",
+      "dcid": "worldBank/BAR_SCHL_7074_FE"
+    },
+    {
+      "name": "Barro-Lee: Average years of total schooling, age 75+, female",
+      "dcid": "worldBank/BAR_SCHL_75UP_FE"
+    },
+    {
+      "name": "Barro-Lee: Population in thousands, age 15+, female",
+      "dcid": "worldBank/BAR_POP_15UP_FE"
+    },
+    {
+      "name": "Barro-Lee: Population in thousands, age 15-19, female",
+      "dcid": "worldBank/BAR_POP_1519_FE"
+    },
+    {
+      "name": "Barro-Lee: Population in thousands, age 20-24, female",
+      "dcid": "worldBank/BAR_POP_2024_FE"
+    },
+    {
+      "name": "Barro-Lee: Population in thousands, age 25+, female",
+      "dcid": "worldBank/BAR_POP_25UP_FE"
+    },
+    {
+      "name": "Barro-Lee: Population in thousands, age 25-29, female",
+      "dcid": "worldBank/BAR_POP_2529_FE"
+    },
+    {
+      "name": "Barro-Lee: Population in thousands, age 30-34, female",
+      "dcid": "worldBank/BAR_POP_3034_FE"
+    },
+    {
+      "name": "Barro-Lee: Population in thousands, age 35-39, female",
+      "dcid": "worldBank/BAR_POP_3539_FE"
+    },
+    {
+      "name": "Barro-Lee: Population in thousands, age 40-44, female",
+      "dcid": "worldBank/BAR_POP_4044_FE"
+    },
+    {
+      "name": "Barro-Lee: Population in thousands, age 45-49, female",
+      "dcid": "worldBank/BAR_POP_4549_FE"
+    },
+    {
+      "name": "Barro-Lee: Population in thousands, age 50-54, female",
+      "dcid": "worldBank/BAR_POP_5054_FE"
+    },
+    {
+      "name": "Barro-Lee: Population in thousands, age 55-59, female",
+      "dcid": "worldBank/BAR_POP_5559_FE"
+    },
+    {
+      "name": "Barro-Lee: Population in thousands, age 60-64, female",
+      "dcid": "worldBank/BAR_POP_6064_FE"
+    },
+    {
+      "name": "Barro-Lee: Population in thousands, age 65-69, female",
+      "dcid": "worldBank/BAR_POP_6569_FE"
+    },
+    {
+      "name": "Barro-Lee: Population in thousands, age 70-74, female",
+      "dcid": "worldBank/BAR_POP_7074_FE"
+    },
+    {
+      "name": "Barro-Lee: Population in thousands, age 75+, female",
+      "dcid": "worldBank/BAR_POP_75UP_FE"
+    },
+    {
+      "name": "Borrowed for health or medical purposes, female (% age 15+)",
+      "dcid": "worldBank/fin20_t_d_1"
+    },
+    {
+      "name": "Borrowed from family or friends, female (% age 15+)",
+      "dcid": "worldBank/fin22b_t_d_1"
+    },
+    {
+      "name": "Contraceptive prevalence, any methods (% of women ages 15-49)",
+      "dcid": "worldBank/SP_DYN_CONU_ZS"
+    },
+    {
+      "name": "Contraceptive prevalence, modern methods (% of women ages 15-49)",
+      "dcid": "worldBank/SP_DYN_CONM_ZS"
+    },
+    {
+      "name": "Demand for family planning satisfied by any methods (% of married women with demand for family planning)",
+      "dcid": "worldBank/SH_FPL_SATI_ZS"
+    },
+    {
+      "name": "Demand for family planning satisfied by modern methods (% of married women with demand for family planning)",
+      "dcid": "worldBank/SH_FPL_SATM_ZS"
+    },
+    {
+      "name": "Early school leavers from primary education, female (number)",
+      "dcid": "worldBank/UIS_ESL_1_F"
+    },
+    {
+      "name": "Elderly illiterate population, 65+ years, female (number)",
+      "dcid": "worldBank/UIS_LP_AG65_F"
+    },
+    {
+      "name": "Enrolment in early childhood education, female (number)",
+      "dcid": "worldBank/UIS_E_0_F"
+    },
+    {
+      "name": "Enrolment in lower secondary education, female (number)",
+      "dcid": "worldBank/UIS_E_2_F"
+    },
+    {
+      "name": "Enrolment in post-secondary non-tertiary education, female (number)",
+      "dcid": "worldBank/UIS_E_4_F"
+    },
+    {
+      "name": "Enrolment in tertiary education, ISCED 8 programmes, female (number)",
+      "dcid": "worldBank/UIS_E_8_F"
+    },
+    {
+      "name": "Enrolment in upper secondary education, female (number)",
+      "dcid": "worldBank/UIS_E_3_F"
+    },
+    {
       "name": "Ex - Expectation Of Life At Age X, Female, Age10To14",
       "dcid": "WHO/LIFE_0000000035_Female_AGE10TO14"
     },
@@ -1563,6 +1843,78 @@
     {
       "name": "Ex - Expectation Of Life At Age X, Female, Agelessthan1",
       "dcid": "WHO/LIFE_0000000035_Female_AGELT1"
+    },
+    {
+      "name": "Expected Years of School, Female",
+      "dcid": "worldBank/HD_HCI_EYRS_FE"
+    },
+    {
+      "name": "Female headed households (% of households with a female head)",
+      "dcid": "worldBank/SP_HOU_FEMA_ZS"
+    },
+    {
+      "name": "Female share of graduates in Business, Administration and Law programmes, tertiary (%)",
+      "dcid": "worldBank/UIS_FGP_5T8_F400"
+    },
+    {
+      "name": "Female share of graduates in Information and Communication Technologies programmes, tertiary (%)",
+      "dcid": "worldBank/UIS_FGP_5T8_F600"
+    },
+    {
+      "name": "Female share of graduates in other fields than Science, Technology, Engineering and Mathematics programmes, tertiary (%)",
+      "dcid": "worldBank/UIS_FGP_5T8_FNON500600700"
+    },
+    {
+      "name": "Financial institution account, female (% age 15+)",
+      "dcid": "worldBank/fin1_t_d_1"
+    },
+    {
+      "name": "Firms with female participation in ownership (% of firms)",
+      "dcid": "worldBank/IC_FRM_FEMO_ZS"
+    },
+    {
+      "name": "Firms with female top manager (% of firms)",
+      "dcid": "worldBank/IC_FRM_FEMM_ZS"
+    },
+    {
+      "name": "Graduates from ISCED 8 programmes in tertiary education, female (number)",
+      "dcid": "worldBank/UIS_G_8_F"
+    },
+    {
+      "name": "Gross enrolment ratio, post-secondary non-tertiary, female (%)",
+      "dcid": "worldBank/UIS_GER_4_F"
+    },
+    {
+      "name": "Gross enrolment ratio, pre-primary, female (%)",
+      "dcid": "worldBank/SE_PRE_ENRR_FE"
+    },
+    {
+      "name": "Gross enrolment ratio, primary and lower secondary, female (%)",
+      "dcid": "worldBank/UIS_GER_12_F"
+    },
+    {
+      "name": "Gross enrolment ratio, primary and secondary, female (%)",
+      "dcid": "worldBank/UIS_GER_123_F"
+    },
+    {
+      "name": "Gross enrolment ratio, primary, female (%)",
+      "dcid": "worldBank/SE_PRM_ENRR_FE"
+    },
+    {
+      "name": "Gross enrolment ratio, secondary, female (%)",
+      "dcid": "worldBank/SE_SEC_ENRR_FE"
+    },
+    {
+      "name": "Gross enrolment ratio, tertiary, female (%)",
+      "dcid": "worldBank/SE_TER_ENRR_FE"
+    },
+    {
+      "name": "Gross graduation ratio from lower secondary education, female (%)",
+      "dcid": "worldBank/UIS_GGR_2_F"
+    },
+    {
+      "name": "Harmonized Test Scores, Female",
+      "dcid": "worldBank/HD_HCI_HLOS_FE"
     },
     {
       "name": "Household Air Pollution Attributable DALYs (Per 100 000 Population), Female, All Causes",
@@ -1729,8 +2081,28 @@
       "dcid": "WHO/AIR_11_Female_TracheaBronchusLungCancers"
     },
     {
+      "name": "Human capital index (HCI), female (scale 0-1)",
+      "dcid": "worldBank/HD_HCI_OVRL_FE"
+    },
+    {
+      "name": "Illiterate population, 25-64 years, female (number)",
+      "dcid": "worldBank/UIS_ILLPOP_AG25T64_F"
+    },
+    {
+      "name": "Inbound mobility rate, female (%)",
+      "dcid": "worldBank/UIS_MSEP_56_F"
+    },
+    {
       "name": "Insufficiently Active (Crude Estimate), Female",
       "dcid": "WHO/NCD_PAC_ADO_Female"
+    },
+    {
+      "name": "Learning-Adjusted Years of School, Female",
+      "dcid": "worldBank/HD_HCI_LAYS_FE"
+    },
+    {
+      "name": "Literacy rate, population 25-64 years, female (%)",
+      "dcid": "worldBank/UIS_LR_AG25T64_F"
     },
     {
       "name": "Liver Cirrhosis, Age-Standardized Death Rates (15+), Per 100,000 Population (SA_0000001457_ARCHIVED), Female",
@@ -1813,6 +2185,14 @@
       "dcid": "WHO/LIFE_0000000031_Female_AGELT1"
     },
     {
+      "name": "Made a utility payment, female (% age 15+)",
+      "dcid": "worldBank/fin30_t_d_1"
+    },
+    {
+      "name": "Made or received a digital payment, female (% age 15+)",
+      "dcid": "worldBank/g20_t_d_1"
+    },
+    {
       "name": "Mean Fasting Blood Glucose (Mmol/L) (Age-Standardized Estimate), Female",
       "dcid": "WHO/NCD_GLUC_01_Female"
     },
@@ -1823,6 +2203,22 @@
     {
       "name": "Mean Systolic Blood Pressure (Crude Estimate), Female, Age25Plus",
       "dcid": "WHO/BP_05_Female_AGE25PLUS"
+    },
+    {
+      "name": "Mean age at first marriage, female",
+      "dcid": "worldBank/SP_DYN_SMAM_FE"
+    },
+    {
+      "name": "Mobile money account, female (% age 15+)",
+      "dcid": "worldBank/mobileaccount_t_d_1"
+    },
+    {
+      "name": "Mortality rate, adult, female (per 1,000 female adults)",
+      "dcid": "worldBank/SP_DYN_AMRT_FE"
+    },
+    {
+      "name": "Mortality rate, under-5, female (per 1,000 live births)",
+      "dcid": "worldBank/SH_DYN_MORT_FE"
     },
     {
       "name": "Ndx - Number Of People Dying Between Ages X And X+N, Female, Age10To14",
@@ -1899,6 +2295,22 @@
     {
       "name": "Ndx - Number Of People Dying Between Ages X And X+N, Female, Agelessthan1",
       "dcid": "WHO/LIFE_0000000032_Female_AGELT1"
+    },
+    {
+      "name": "Net enrolment rate, lower secondary, female (%)",
+      "dcid": "worldBank/UIS_NER_2_F"
+    },
+    {
+      "name": "Net enrolment rate, primary, female (%)",
+      "dcid": "worldBank/SE_PRM_NENR_FE"
+    },
+    {
+      "name": "Net enrolment rate, secondary, female (%)",
+      "dcid": "worldBank/SE_SEC_NENR_FE"
+    },
+    {
+      "name": "Net enrolment rate, upper secondary, female (%)",
+      "dcid": "worldBank/UIS_NER_3_F"
     },
     {
       "name": "Nlx - Person-Years Lived Between Ages X And X+N, Female, Age10To14",
@@ -2153,8 +2565,228 @@
       "dcid": "WHO/WSH_10_WAT_Female"
     },
     {
+      "name": "Number of infant deaths, female",
+      "dcid": "worldBank/SH_DTH_IMRT_FE"
+    },
+    {
+      "name": "Number of under-five deaths, female",
+      "dcid": "worldBank/SH_DTH_MORT_FE"
+    },
+    {
+      "name": "Out-of-school adolescents of lower secondary school age, female (number)",
+      "dcid": "worldBank/UIS_OFST_2_F"
+    },
+    {
+      "name": "Out-of-school children of primary school age in pre-primary education, female (number)",
+      "dcid": "worldBank/UIS_OFSPPT_1_F"
+    },
+    {
+      "name": "Out-of-school children of primary school age, female (number)",
+      "dcid": "worldBank/SE_PRM_UNER_FE"
+    },
+    {
+      "name": "Over-age enrolment ratio in primary education, female (%)",
+      "dcid": "worldBank/UIS_OAPP_1_F"
+    },
+    {
+      "name": "Owns a credit card, female (% age 15+)",
+      "dcid": "worldBank/fin7_t_d_1"
+    },
+    {
+      "name": "Owns a debit card, female (% age 15+)",
+      "dcid": "worldBank/fin2_t_d_1"
+    },
+    {
       "name": "Participation Rate In Organized Learning (One Year Before The Official Primary Entry Age) (%), Female",
       "dcid": "WHO/SE_PRE_PARTN_Female"
+    },
+    {
+      "name": "Percentage of all inbound internationally mobile students in tertiary education in the host country who are female, (%)",
+      "dcid": "worldBank/UIS_FEP_56_FOREIGN"
+    },
+    {
+      "name": "Percentage of female students enrolled in primary education who are over-age, female (%)",
+      "dcid": "worldBank/UIS_OAEP_1_F"
+    },
+    {
+      "name": "Percentage of female students enrolled in primary education who are under-age, female (%)",
+      "dcid": "worldBank/UIS_UAEP_1_F"
+    },
+    {
+      "name": "Percentage of female students in tertiary education enrolled in ISCED 8",
+      "dcid": "worldBank/UIS_TEP_8_F"
+    },
+    {
+      "name": "Percentage of female teachers in lower secondary education who are trained, female (%)",
+      "dcid": "worldBank/UIS_TRTP_2_F"
+    },
+    {
+      "name": "Percentage of female teachers in pre-primary education who are trained, female (%)",
+      "dcid": "worldBank/UIS_TRTP_0_F"
+    },
+    {
+      "name": "Percentage of graduates from Science and Technology programmes in tertiary education who are female (%)",
+      "dcid": "worldBank/UIS_FGP_56_F400500"
+    },
+    {
+      "name": "Percentage of graduates from non-science and non-technology fields in tertiary education who are female (%)",
+      "dcid": "worldBank/UIS_FGP_56_FNON400500"
+    },
+    {
+      "name": "Percentage of graduates from tertiary ISCED 5 programmes who are female (%)",
+      "dcid": "worldBank/UIS_FGP_5_B"
+    },
+    {
+      "name": "Percentage of new entrants to Grade 1 of primary education with early childhood educational experience, female (%)",
+      "dcid": "worldBank/UIS_ECDP_1_F"
+    },
+    {
+      "name": "Percentage of students enrolled in Agriculture programmes in tertiary education who are female (%)",
+      "dcid": "worldBank/UIS_FEP_56_F600"
+    },
+    {
+      "name": "Percentage of students enrolled in Education programmes in tertiary education who are female (%)",
+      "dcid": "worldBank/UIS_FEP_56_F140"
+    },
+    {
+      "name": "Percentage of students enrolled in Engineering, Manufacturing and Construction programmes in tertiary education who are female (%)",
+      "dcid": "worldBank/UIS_FEP_56_F500"
+    },
+    {
+      "name": "Percentage of students enrolled in Health and Welfare programmes in tertiary education who are female (%)",
+      "dcid": "worldBank/UIS_FEP_56_F700"
+    },
+    {
+      "name": "Percentage of students enrolled in Humanities and Arts programmes in tertiary education who are female (%)",
+      "dcid": "worldBank/UIS_FEP_56_F200"
+    },
+    {
+      "name": "Percentage of students enrolled in Science programmes in tertiary education who are female (%)",
+      "dcid": "worldBank/UIS_FEP_56_F400"
+    },
+    {
+      "name": "Percentage of students enrolled in Services programmes in tertiary education who are female (%)",
+      "dcid": "worldBank/UIS_FEP_56_F800"
+    },
+    {
+      "name": "Percentage of students enrolled in Social Sciences, Business and Law programmes in tertiary education who are female (%)",
+      "dcid": "worldBank/UIS_FEP_56_F300"
+    },
+    {
+      "name": "Percentage of students enrolled in programmes in unspecified fields in tertiary education who are female (%)",
+      "dcid": "worldBank/UIS_FEP_56_FUK"
+    },
+    {
+      "name": "Percentage of students in lower secondary general education who are female (%)",
+      "dcid": "worldBank/UIS_FEP_2_GPV"
+    },
+    {
+      "name": "Percentage of students in lower secondary vocational education who are female (%)",
+      "dcid": "worldBank/UIS_FEP_2_V"
+    },
+    {
+      "name": "Percentage of students in post-secondary non-tertiary general education who are female (%)",
+      "dcid": "worldBank/UIS_FEP_4_GPV"
+    },
+    {
+      "name": "Percentage of students in post-secondary non-tertiary vocational education who are female (%)",
+      "dcid": "worldBank/UIS_FEP_4_V"
+    },
+    {
+      "name": "Percentage of students in tertiary ISCED 5 programmes who are female (%)",
+      "dcid": "worldBank/UIS_FEP_5_B"
+    },
+    {
+      "name": "Percentage of students in upper secondary general education who are female (%)",
+      "dcid": "worldBank/UIS_FEP_3_GPV"
+    },
+    {
+      "name": "Percentage of students in upper secondary vocational education who are female (%)",
+      "dcid": "worldBank/UIS_FEP_3_V"
+    },
+    {
+      "name": "Population ages 00-04, female",
+      "dcid": "worldBank/SP_POP_0004_FE"
+    },
+    {
+      "name": "Population ages 05-09, female",
+      "dcid": "worldBank/SP_POP_0509_FE"
+    },
+    {
+      "name": "Population ages 10-14, female",
+      "dcid": "worldBank/SP_POP_1014_FE"
+    },
+    {
+      "name": "Population ages 15-19, female",
+      "dcid": "worldBank/SP_POP_1519_FE"
+    },
+    {
+      "name": "Population ages 20-24, female",
+      "dcid": "worldBank/SP_POP_2024_FE"
+    },
+    {
+      "name": "Population ages 25-29, female",
+      "dcid": "worldBank/SP_POP_2529_FE"
+    },
+    {
+      "name": "Population ages 30-34, female",
+      "dcid": "worldBank/SP_POP_3034_FE"
+    },
+    {
+      "name": "Population ages 35-39, female",
+      "dcid": "worldBank/SP_POP_3539_FE"
+    },
+    {
+      "name": "Population ages 40-44, female",
+      "dcid": "worldBank/SP_POP_4044_FE"
+    },
+    {
+      "name": "Population ages 45-49, female",
+      "dcid": "worldBank/SP_POP_4549_FE"
+    },
+    {
+      "name": "Population ages 50-54, female",
+      "dcid": "worldBank/SP_POP_5054_FE"
+    },
+    {
+      "name": "Population ages 55-59, female",
+      "dcid": "worldBank/SP_POP_5559_FE"
+    },
+    {
+      "name": "Population ages 60-64, female",
+      "dcid": "worldBank/SP_POP_6064_FE"
+    },
+    {
+      "name": "Population ages 65-69, female",
+      "dcid": "worldBank/SP_POP_6569_FE"
+    },
+    {
+      "name": "Population ages 70-74, female",
+      "dcid": "worldBank/SP_POP_7074_FE"
+    },
+    {
+      "name": "Population ages 75-79, female",
+      "dcid": "worldBank/SP_POP_7579_FE"
+    },
+    {
+      "name": "Population ages 80 and above, female",
+      "dcid": "worldBank/SP_POP_80UP_FE"
+    },
+    {
+      "name": "Population of compulsory school age, female (number)",
+      "dcid": "worldBank/UIS_SAP_CE_F"
+    },
+    {
+      "name": "Population of the official age for post-secondary non-tertiary education, female (number)",
+      "dcid": "worldBank/UIS_SAP_4_F"
+    },
+    {
+      "name": "Pregnant women receiving prenatal care (%)",
+      "dcid": "worldBank/SH_STA_ANVC_ZS"
+    },
+    {
+      "name": "Pregnant women receiving prenatal care of at least four visits (% of pregnant women)",
+      "dcid": "worldBank/SH_STA_ANV4_ZS"
     },
     {
       "name": "Premature Deaths Due To Noncommunicable Diseases (Ncd) As A Proportion Of All Ncd Deaths, Female, Noncommunicable Diseases",
@@ -2203,6 +2835,74 @@
     {
       "name": "Prevalence Of Underweight Among Adults, Bmi \u003c 18 (Age-Standardized Estimate) (%), Female",
       "dcid": "WHO/NCD_BMI_18A_Female"
+    },
+    {
+      "name": "Prevalence of anemia among non-pregnant women (% of women ages 15-49)",
+      "dcid": "worldBank/SH_ANM_NPRG_ZS"
+    },
+    {
+      "name": "Prevalence of anemia among women of reproductive age (% of women ages 15-49)",
+      "dcid": "worldBank/SH_ANM_ALLW_ZS"
+    },
+    {
+      "name": "Prevalence of current tobacco use, females (% of female adults)",
+      "dcid": "worldBank/SH_PRV_SMOK_FE"
+    },
+    {
+      "name": "Prevalence of syphilis (% of women attending antenatal care)",
+      "dcid": "worldBank/SH_PRG_SYPH_ZS"
+    },
+    {
+      "name": "Probability of Survival to Age 5, Female",
+      "dcid": "worldBank/HD_HCI_MORT_FE"
+    },
+    {
+      "name": "Projection: Mean years of schooling. Age 0-19. Female",
+      "dcid": "worldBank/PRJ_MYS_0T19_FE"
+    },
+    {
+      "name": "Projection: Mean years of schooling. Age 15+. Female",
+      "dcid": "worldBank/PRJ_MYS_15UP_FE"
+    },
+    {
+      "name": "Projection: Mean years of schooling. Age 15-19. Female",
+      "dcid": "worldBank/PRJ_MYS_1519_FE"
+    },
+    {
+      "name": "Projection: Mean years of schooling. Age 20-24. Female",
+      "dcid": "worldBank/PRJ_MYS_2024_FE"
+    },
+    {
+      "name": "Projection: Mean years of schooling. Age 20-39. Female",
+      "dcid": "worldBank/PRJ_MYS_2039_FE"
+    },
+    {
+      "name": "Projection: Mean years of schooling. Age 20-64. Female",
+      "dcid": "worldBank/PRJ_MYS_2064_FE"
+    },
+    {
+      "name": "Projection: Mean years of schooling. Age 25+. Female",
+      "dcid": "worldBank/PRJ_MYS_25UP_FE"
+    },
+    {
+      "name": "Projection: Mean years of schooling. Age 25-29. Female",
+      "dcid": "worldBank/PRJ_MYS_2529_FE"
+    },
+    {
+      "name": "Projection: Mean years of schooling. Age 40-64. Female",
+      "dcid": "worldBank/PRJ_MYS_4064_FE"
+    },
+    {
+      "name": "Projection: Mean years of schooling. Age 60+. Female",
+      "dcid": "worldBank/PRJ_MYS_60UP_FE"
+    },
+    {
+      "name": "Projection: Mean years of schooling. Age 65+. Female",
+      "dcid": "worldBank/PRJ_MYS_65UP_FE"
+    },
+    {
+      "name": "Projection: Mean years of schooling. Age 80+. Female",
+      "dcid": "worldBank/PRJ_MYS_80UP_FE"
     },
     {
       "name": "Proportion Of Children At The End Of Lower Secondary Achieving At Least A Minimum Proficiency Level In Mathematics (%), Female",
@@ -2257,6 +2957,14 @@
       "dcid": "WHO/SH_STA_FGMS_Urban"
     },
     {
+      "name": "Proportion of time spent on unpaid domestic and care work, female (% of 24 hour day)",
+      "dcid": "worldBank/SG_TIM_UWRK_FE"
+    },
+    {
+      "name": "Proportion of women in ministerial level positions (%)",
+      "dcid": "worldBank/SG_GEN_MNST_ZS"
+    },
+    {
       "name": "Raised Blood Pressure (Sbp\u003e=140 Or Dbp\u003e=90) (Age-Standardized Estimate), Female, Years18Plus",
       "dcid": "WHO/BP_04_Female_YEARS18PLUS"
     },
@@ -2265,12 +2973,144 @@
       "dcid": "WHO/BP_03_Female_YEARS18PLUS"
     },
     {
+      "name": "Rate of out-of-school adolescents of lower secondary school age, female (%)",
+      "dcid": "worldBank/UIS_ROFST_2_F"
+    },
+    {
+      "name": "Rate of out-of-school children of primary school age in pre-primary education, female (%)",
+      "dcid": "worldBank/UIS_ROFSPPT_1_F"
+    },
+    {
+      "name": "Rate of out-of-school children of primary school age, female (%)",
+      "dcid": "worldBank/UIS_ROFST_1_F"
+    },
+    {
+      "name": "Received a public sector pension, female (% age 15+)",
+      "dcid": "worldBank/fin38_t_d_1"
+    },
+    {
+      "name": "Received domestic remittances, female (% age 15+)",
+      "dcid": "worldBank/fin28_t_d_1"
+    },
+    {
+      "name": "Received government payments, female (% age 15+)",
+      "dcid": "worldBank/fing2p_t_d_1"
+    },
+    {
+      "name": "Received government transfer, female (% age 15+)",
+      "dcid": "worldBank/fin37_t_d_1"
+    },
+    {
+      "name": "Received payments for the sale of agricultural products, livestock, or crops, female (% age 15+)",
+      "dcid": "worldBank/fin42_t_d_1"
+    },
+    {
+      "name": "Repeaters in primary education, all grades, female (number)",
+      "dcid": "worldBank/UIS_R_1_F"
+    },
+    {
+      "name": "Repetition rate in primary education (all grades), female (%)",
+      "dcid": "worldBank/UIS_REPR_1_F"
+    },
+    {
       "name": "Road Traffic Crash Deaths, Age-Standardized Death Rates (15+), Per 100,000 Population (SA_0000001459_ARCHIVED), Female",
       "dcid": "WHO/SA_0000001459_ARCHIVED_Female"
     },
     {
+      "name": "Saved at a financial institution, female (% age 15+)",
+      "dcid": "worldBank/fin17a_t_d_1"
+    },
+    {
+      "name": "Saved for old age, female (% age 15+)",
+      "dcid": "worldBank/fin16_t_d_1"
+    },
+    {
+      "name": "Saved using a savings club or a person outside the family, female (% age 15+)",
+      "dcid": "worldBank/fin17b_t_d_1"
+    },
+    {
+      "name": "School life expectancy, post-secondary non-tertiary, female (years)",
+      "dcid": "worldBank/UIS_SLE_4_F"
+    },
+    {
+      "name": "School life expectancy, pre-primary, female (years)",
+      "dcid": "worldBank/UIS_SLE_0_F"
+    },
+    {
+      "name": "School life expectancy, primary and lower secondary (excluding repetition), female (years)",
+      "dcid": "worldBank/UIS_SLEN_12_F"
+    },
+    {
+      "name": "School life expectancy, primary and lower secondary, female (years)",
+      "dcid": "worldBank/UIS_SLE_12_F"
+    },
+    {
+      "name": "School life expectancy, primary and secondary, female (years)",
+      "dcid": "worldBank/UIS_SLE_123_F"
+    },
+    {
+      "name": "School life expectancy, primary to tertiary, female (years)",
+      "dcid": "worldBank/SE_SCH_LIFE_FE"
+    },
+    {
+      "name": "School life expectancy, primary, female (years)",
+      "dcid": "worldBank/UIS_SLE_1_F"
+    },
+    {
+      "name": "School life expectancy, secondary, female (years)",
+      "dcid": "worldBank/UIS_SLE_23_F"
+    },
+    {
+      "name": "School life expectancy, tertiary, female (years)",
+      "dcid": "worldBank/UIS_SLE_56_F"
+    },
+    {
+      "name": "Sent domestic remittances, female (% age 15+)",
+      "dcid": "worldBank/fin26_t_d_1"
+    },
+    {
+      "name": "Sex ratio at birth (male births per female births)",
+      "dcid": "worldBank/SP_POP_BRTH_MF"
+    },
+    {
+      "name": "Survival Rate from Age 15-60, Female",
+      "dcid": "worldBank/HD_HCI_AMRT_FE"
+    },
+    {
+      "name": "Teachers in lower secondary education, female (number)",
+      "dcid": "worldBank/UIS_T_2_F"
+    },
+    {
+      "name": "Teachers in post-secondary non-tertiary education, female (number)",
+      "dcid": "worldBank/UIS_T_4_F"
+    },
+    {
+      "name": "Teachers in upper secondary education, female (number)",
+      "dcid": "worldBank/UIS_T_3_F"
+    },
+    {
+      "name": "Teenage mothers (% of women ages 15-19 who have had children or are currently pregnant)",
+      "dcid": "worldBank/SP_MTR_1519_ZS"
+    },
+    {
+      "name": "Time required to start a business, female (days)",
+      "dcid": "worldBank/IC_REG_DURS_FE"
+    },
+    {
       "name": "Total Ncd Deaths (In Thousands), Female",
       "dcid": "WHO/NCD_DTH_TOT_Female"
+    },
+    {
+      "name": "Total inbound internationally mobile students, female (number)",
+      "dcid": "worldBank/UIS_MS_56_F"
+    },
+    {
+      "name": "Total net enrolment rate, lower secondary, female (%)",
+      "dcid": "worldBank/UIS_NERT_2_F"
+    },
+    {
+      "name": "Total net enrolment rate, primary, female (%)",
+      "dcid": "worldBank/UIS_NERT_1_F"
     },
     {
       "name": "Tx - Person-Years Lived Above Age X, Female, Age10To14",
@@ -2349,12 +3189,568 @@
       "dcid": "WHO/LIFE_0000000034_Female_AGELT1"
     },
     {
+      "name": "Under-age enrolment ratio in primary education, female (%)",
+      "dcid": "worldBank/UIS_UAPP_1_F"
+    },
+    {
+      "name": "Under-age enrolment ratio in secondary education, female (%)",
+      "dcid": "worldBank/UIS_UAPP_23_F"
+    },
+    {
+      "name": "Used a mobile phone or the internet to buy something online, female (% age 15+)",
+      "dcid": "worldBank/fin14b_t_d_1"
+    },
+    {
+      "name": "Used a mobile phone or the internet to pay bills, female (% age 15+)",
+      "dcid": "worldBank/fin14a_t_d_1"
+    },
+    {
+      "name": "Youth illiterate population, 15-24 years, female (number)",
+      "dcid": "worldBank/UIS_LP_AG15T24_F"
+    },
+    {
+      "name": "Account ownership at a financial institution or with a mobile-money-service provider, female (% of population ages 15+)",
+      "dcid": "worldBank/FX_OWN_TOTL_FE_ZS"
+    },
+    {
+      "name": "Adult literacy rate, population 15+ years, female (%)",
+      "dcid": "worldBank/SE_ADT_LITR_FE_ZS"
+    },
+    {
+      "name": "Age population, age 00, female, interpolated",
+      "dcid": "worldBank/SP_POP_AG00_FE_IN"
+    },
+    {
+      "name": "Age population, age 01, female, interpolated",
+      "dcid": "worldBank/SP_POP_AG01_FE_IN"
+    },
+    {
+      "name": "Age population, age 02, female, interpolated",
+      "dcid": "worldBank/SP_POP_AG02_FE_IN"
+    },
+    {
+      "name": "Age population, age 03, female, interpolated",
+      "dcid": "worldBank/SP_POP_AG03_FE_IN"
+    },
+    {
+      "name": "Age population, age 04, female, interpolated",
+      "dcid": "worldBank/SP_POP_AG04_FE_IN"
+    },
+    {
+      "name": "Age population, age 05, female, interpolated",
+      "dcid": "worldBank/SP_POP_AG05_FE_IN"
+    },
+    {
       "name": "Alcohol, Total Per Capita (15+) Consumption (In Litres Of Pure Alcohol) With 95%Ci (SA_0000001822_ARCHIVED), Female,2019-12",
       "dcid": "WHO/SA_0000001822_ARCHIVED_Female_2019-12"
     },
     {
+      "name": "Barro-Lee: Average years of primary schooling, age 15+, female",
+      "dcid": "worldBank/BAR_PRM_SCHL_15UP_FE"
+    },
+    {
+      "name": "Barro-Lee: Average years of primary schooling, age 15-19, female",
+      "dcid": "worldBank/BAR_PRM_SCHL_1519_FE"
+    },
+    {
+      "name": "Barro-Lee: Average years of primary schooling, age 20-24, female",
+      "dcid": "worldBank/BAR_PRM_SCHL_2024_FE"
+    },
+    {
+      "name": "Barro-Lee: Average years of primary schooling, age 25+, female",
+      "dcid": "worldBank/BAR_PRM_SCHL_25UP_FE"
+    },
+    {
+      "name": "Barro-Lee: Average years of primary schooling, age 25-29, female",
+      "dcid": "worldBank/BAR_PRM_SCHL_2529_FE"
+    },
+    {
+      "name": "Barro-Lee: Average years of primary schooling, age 30-34, female",
+      "dcid": "worldBank/BAR_PRM_SCHL_3034_FE"
+    },
+    {
+      "name": "Barro-Lee: Average years of primary schooling, age 35-39, female",
+      "dcid": "worldBank/BAR_PRM_SCHL_3539_FE"
+    },
+    {
+      "name": "Barro-Lee: Average years of primary schooling, age 40-44, female",
+      "dcid": "worldBank/BAR_PRM_SCHL_4044_FE"
+    },
+    {
+      "name": "Barro-Lee: Average years of primary schooling, age 45-49, female",
+      "dcid": "worldBank/BAR_PRM_SCHL_4549_FE"
+    },
+    {
+      "name": "Barro-Lee: Average years of primary schooling, age 50-54, female",
+      "dcid": "worldBank/BAR_PRM_SCHL_5054_FE"
+    },
+    {
+      "name": "Barro-Lee: Average years of primary schooling, age 55-59, female",
+      "dcid": "worldBank/BAR_PRM_SCHL_5559_FE"
+    },
+    {
+      "name": "Barro-Lee: Average years of primary schooling, age 60-64, female",
+      "dcid": "worldBank/BAR_PRM_SCHL_6064_FE"
+    },
+    {
+      "name": "Barro-Lee: Average years of primary schooling, age 65-69, female",
+      "dcid": "worldBank/BAR_PRM_SCHL_6569_FE"
+    },
+    {
+      "name": "Barro-Lee: Average years of primary schooling, age 70-74, female",
+      "dcid": "worldBank/BAR_PRM_SCHL_7074_FE"
+    },
+    {
+      "name": "Barro-Lee: Average years of primary schooling, age 75+, female",
+      "dcid": "worldBank/BAR_PRM_SCHL_75UP_FE"
+    },
+    {
+      "name": "Barro-Lee: Average years of secondary schooling, age 15+, female",
+      "dcid": "worldBank/BAR_SEC_SCHL_15UP_FE"
+    },
+    {
+      "name": "Barro-Lee: Average years of secondary schooling, age 15-19, female",
+      "dcid": "worldBank/BAR_SEC_SCHL_1519_FE"
+    },
+    {
+      "name": "Barro-Lee: Average years of secondary schooling, age 20-24, female",
+      "dcid": "worldBank/BAR_SEC_SCHL_2024_FE"
+    },
+    {
+      "name": "Barro-Lee: Average years of secondary schooling, age 25+, female",
+      "dcid": "worldBank/BAR_SEC_SCHL_25UP_FE"
+    },
+    {
+      "name": "Barro-Lee: Average years of secondary schooling, age 25-29, female",
+      "dcid": "worldBank/BAR_SEC_SCHL_2529_FE"
+    },
+    {
+      "name": "Barro-Lee: Average years of secondary schooling, age 30-34, female",
+      "dcid": "worldBank/BAR_SEC_SCHL_3034_FE"
+    },
+    {
+      "name": "Barro-Lee: Average years of secondary schooling, age 35-39, female",
+      "dcid": "worldBank/BAR_SEC_SCHL_3539_FE"
+    },
+    {
+      "name": "Barro-Lee: Average years of secondary schooling, age 40-44, female",
+      "dcid": "worldBank/BAR_SEC_SCHL_4044_FE"
+    },
+    {
+      "name": "Barro-Lee: Average years of secondary schooling, age 45-49, female",
+      "dcid": "worldBank/BAR_SEC_SCHL_4549_FE"
+    },
+    {
+      "name": "Barro-Lee: Average years of secondary schooling, age 50-54, female",
+      "dcid": "worldBank/BAR_SEC_SCHL_5054_FE"
+    },
+    {
+      "name": "Barro-Lee: Average years of secondary schooling, age 55-59, female",
+      "dcid": "worldBank/BAR_SEC_SCHL_5559_FE"
+    },
+    {
+      "name": "Barro-Lee: Average years of secondary schooling, age 60-64, female",
+      "dcid": "worldBank/BAR_SEC_SCHL_6064_FE"
+    },
+    {
+      "name": "Barro-Lee: Average years of secondary schooling, age 65-69, female",
+      "dcid": "worldBank/BAR_SEC_SCHL_6569_FE"
+    },
+    {
+      "name": "Barro-Lee: Average years of secondary schooling, age 70-74, female",
+      "dcid": "worldBank/BAR_SEC_SCHL_7074_FE"
+    },
+    {
+      "name": "Barro-Lee: Average years of secondary schooling, age 75+, female",
+      "dcid": "worldBank/BAR_SEC_SCHL_75UP_FE"
+    },
+    {
+      "name": "Barro-Lee: Average years of tertiary schooling, age 15+, female",
+      "dcid": "worldBank/BAR_TER_SCHL_15UP_FE"
+    },
+    {
+      "name": "Barro-Lee: Average years of tertiary schooling, age 15-19, female",
+      "dcid": "worldBank/BAR_TER_SCHL_1519_FE"
+    },
+    {
+      "name": "Barro-Lee: Average years of tertiary schooling, age 20-24, female",
+      "dcid": "worldBank/BAR_TER_SCHL_2024_FE"
+    },
+    {
+      "name": "Barro-Lee: Average years of tertiary schooling, age 25+, female",
+      "dcid": "worldBank/BAR_TER_SCHL_25UP_FE"
+    },
+    {
+      "name": "Barro-Lee: Average years of tertiary schooling, age 25-29, female",
+      "dcid": "worldBank/BAR_TER_SCHL_2529_FE"
+    },
+    {
+      "name": "Barro-Lee: Average years of tertiary schooling, age 30-34, female",
+      "dcid": "worldBank/BAR_TER_SCHL_3034_FE"
+    },
+    {
+      "name": "Barro-Lee: Average years of tertiary schooling, age 35-39, female",
+      "dcid": "worldBank/BAR_TER_SCHL_3539_FE"
+    },
+    {
+      "name": "Barro-Lee: Average years of tertiary schooling, age 40-44, female",
+      "dcid": "worldBank/BAR_TER_SCHL_4044_FE"
+    },
+    {
+      "name": "Barro-Lee: Average years of tertiary schooling, age 45-49, female",
+      "dcid": "worldBank/BAR_TER_SCHL_4549_FE"
+    },
+    {
+      "name": "Barro-Lee: Average years of tertiary schooling, age 50-54, female",
+      "dcid": "worldBank/BAR_TER_SCHL_5054_FE"
+    },
+    {
+      "name": "Barro-Lee: Average years of tertiary schooling, age 55-59, female",
+      "dcid": "worldBank/BAR_TER_SCHL_5559_FE"
+    },
+    {
+      "name": "Barro-Lee: Average years of tertiary schooling, age 60-64, female",
+      "dcid": "worldBank/BAR_TER_SCHL_6064_FE"
+    },
+    {
+      "name": "Barro-Lee: Average years of tertiary schooling, age 65-69, female",
+      "dcid": "worldBank/BAR_TER_SCHL_6569_FE"
+    },
+    {
+      "name": "Barro-Lee: Average years of tertiary schooling, age 70-74, female",
+      "dcid": "worldBank/BAR_TER_SCHL_7074_FE"
+    },
+    {
+      "name": "Barro-Lee: Average years of tertiary schooling, age 75+, female",
+      "dcid": "worldBank/BAR_TER_SCHL_75UP_FE"
+    },
+    {
+      "name": "Barro-Lee: Percentage of female population age 15+ with no education",
+      "dcid": "worldBank/BAR_NOED_15UP_FE_ZS"
+    },
+    {
+      "name": "Barro-Lee: Percentage of female population age 15-19 with no education",
+      "dcid": "worldBank/BAR_NOED_1519_FE_ZS"
+    },
+    {
+      "name": "Barro-Lee: Percentage of female population age 20-24 with no education",
+      "dcid": "worldBank/BAR_NOED_2024_FE_ZS"
+    },
+    {
+      "name": "Barro-Lee: Percentage of female population age 25+ with no education",
+      "dcid": "worldBank/BAR_NOED_25UP_FE_ZS"
+    },
+    {
+      "name": "Barro-Lee: Percentage of female population age 25-29 with no education",
+      "dcid": "worldBank/BAR_NOED_2529_FE_ZS"
+    },
+    {
+      "name": "Barro-Lee: Percentage of female population age 30-34 with no education",
+      "dcid": "worldBank/BAR_NOED_3034_FE_ZS"
+    },
+    {
+      "name": "Barro-Lee: Percentage of female population age 35-39 with no education",
+      "dcid": "worldBank/BAR_NOED_3539_FE_ZS"
+    },
+    {
+      "name": "Barro-Lee: Percentage of female population age 40-44 with no education",
+      "dcid": "worldBank/BAR_NOED_4044_FE_ZS"
+    },
+    {
+      "name": "Barro-Lee: Percentage of female population age 45-49 with no education",
+      "dcid": "worldBank/BAR_NOED_4549_FE_ZS"
+    },
+    {
+      "name": "Barro-Lee: Percentage of female population age 50-54 with no education",
+      "dcid": "worldBank/BAR_NOED_5054_FE_ZS"
+    },
+    {
+      "name": "Barro-Lee: Percentage of female population age 55-59 with no education",
+      "dcid": "worldBank/BAR_NOED_5559_FE_ZS"
+    },
+    {
+      "name": "Barro-Lee: Percentage of female population age 60-64 with no education",
+      "dcid": "worldBank/BAR_NOED_6064_FE_ZS"
+    },
+    {
+      "name": "Barro-Lee: Percentage of female population age 65-69 with no education",
+      "dcid": "worldBank/BAR_NOED_6569_FE_ZS"
+    },
+    {
+      "name": "Barro-Lee: Percentage of female population age 70-74 with no education",
+      "dcid": "worldBank/BAR_NOED_7074_FE_ZS"
+    },
+    {
+      "name": "Barro-Lee: Percentage of female population age 75+ with no education",
+      "dcid": "worldBank/BAR_NOED_75UP_FE_ZS"
+    },
+    {
+      "name": "Borrowed from a formal financial institution, female (% age 15+)",
+      "dcid": "worldBank/fin22a_c_t_d_1"
+    },
+    {
+      "name": "Borrowed to start, operate, or expand a farm or business, female (% age 15+)",
+      "dcid": "worldBank/fin21_t_d_2017_1"
+    },
+    {
+      "name": "Cause of death, by communicable diseases and maternal, prenatal and nutrition conditions, female (% of female population)",
+      "dcid": "worldBank/SH_DTH_COMM_FE_ZS"
+    },
+    {
+      "name": "Cause of death, by injury, female (% of female population)",
+      "dcid": "worldBank/SH_DTH_INJR_FE_ZS"
+    },
+    {
+      "name": "Cause of death, by non-communicable diseases, female (% of female population)",
+      "dcid": "worldBank/SH_DTH_NCOM_FE_ZS"
+    },
+    {
+      "name": "Children in employment, female (% of female children ages 7-14)",
+      "dcid": "worldBank/SL_TLF_0714_FE_ZS"
+    },
+    {
+      "name": "Completeness of birth registration, female (%)",
+      "dcid": "worldBank/SP_REG_BRTH_FE_ZS"
+    },
+    {
+      "name": "Condom use at last high-risk sex, adult female (% ages 15-49)",
+      "dcid": "worldBank/SH_CON_AIDS_FE_ZS"
+    },
+    {
+      "name": "Cumulative drop-out rate to the last grade of lower secondary general education, female (%)",
+      "dcid": "worldBank/UIS_DR_2_GPV_F"
+    },
+    {
+      "name": "Drop-out rate from Grade 1 of primary education, female (%)",
+      "dcid": "worldBank/UIS_DR_1_G1_F"
+    },
+    {
+      "name": "Drop-out rate from Grade 2 of primary education, female (%)",
+      "dcid": "worldBank/UIS_DR_1_G2_F"
+    },
+    {
+      "name": "Drop-out rate from Grade 3 of primary education, female (%)",
+      "dcid": "worldBank/UIS_DR_1_G3_F"
+    },
+    {
+      "name": "Drop-out rate from Grade 4 of primary education, female (%)",
+      "dcid": "worldBank/UIS_DR_1_G4_F"
+    },
+    {
+      "name": "Drop-out rate from Grade 5 of primary education, female (%)",
+      "dcid": "worldBank/UIS_DR_1_G5_F"
+    },
+    {
+      "name": "Educational attainment, at least completed primary, population 25+ years, female (%) (cumulative)",
+      "dcid": "worldBank/SE_PRM_CUAT_FE_ZS"
+    },
+    {
+      "name": "Effective transition rate from primary to lower secondary general education, female (%)",
+      "dcid": "worldBank/SE_SEC_PROG_FE_ZS"
+    },
+    {
+      "name": "Employers, female (% of female employment) (modeled ILO estimate)",
+      "dcid": "worldBank/SL_EMP_MPYR_FE_ZS"
+    },
+    {
+      "name": "Employment in agriculture, female (% of female employment) (modeled ILO estimate)",
+      "dcid": "worldBank/SL_AGR_EMPL_FE_ZS"
+    },
+    {
+      "name": "Employment in industry, female (% of female employment) (modeled ILO estimate)",
+      "dcid": "worldBank/SL_IND_EMPL_FE_ZS"
+    },
+    {
+      "name": "Employment in services, female (% of female employment) (modeled ILO estimate)",
+      "dcid": "worldBank/SL_SRV_EMPL_FE_ZS"
+    },
+    {
+      "name": "Enrolment in Grade 1 of primary education, female (number)",
+      "dcid": "worldBank/UIS_E_1_G1_F"
+    },
+    {
+      "name": "Enrolment in Grade 2 of primary education, female (number)",
+      "dcid": "worldBank/UIS_E_1_G2_F"
+    },
+    {
+      "name": "Enrolment in Grade 3 of primary education, female (number)",
+      "dcid": "worldBank/UIS_E_1_G3_F"
+    },
+    {
+      "name": "Enrolment in Grade 4 of primary education, female (number)",
+      "dcid": "worldBank/UIS_E_1_G4_F"
+    },
+    {
+      "name": "Enrolment in Grade 5 of primary education, female (number)",
+      "dcid": "worldBank/UIS_E_1_G5_F"
+    },
+    {
+      "name": "Enrolment in Grade 6 of primary education, female (number)",
+      "dcid": "worldBank/UIS_E_1_G6_F"
+    },
+    {
+      "name": "Enrolment in Grade 7 of primary education, female (number)",
+      "dcid": "worldBank/UIS_E_1_G7_F"
+    },
+    {
+      "name": "Enrolment in early childhood education, private institutions, female (number)",
+      "dcid": "worldBank/UIS_E_0_PR_F"
+    },
+    {
+      "name": "Enrolment in lower secondary education, private institutions, female (number)",
+      "dcid": "worldBank/UIS_E_2_PR_F"
+    },
+    {
+      "name": "Enrolment in lower secondary general, female (number)",
+      "dcid": "worldBank/UIS_E_2_GPV_F"
+    },
+    {
+      "name": "Enrolment in lower secondary vocational, female (number)",
+      "dcid": "worldBank/UIS_E_2_V_F"
+    },
+    {
+      "name": "Enrolment in pre-primary education, private institutions, female (number)",
+      "dcid": "worldBank/UIS_E_02_PR_F"
+    },
+    {
+      "name": "Enrolment in pre-primary education, public institutions, female (number)",
+      "dcid": "worldBank/UIS_E_02_PU_F"
+    },
+    {
+      "name": "Enrolment in primary education, private institutions, female (number)",
+      "dcid": "worldBank/UIS_E_1_PR_F"
+    },
+    {
+      "name": "Enrolment in secondary education, private institutions, female (number)",
+      "dcid": "worldBank/UIS_E_23_PR_F"
+    },
+    {
+      "name": "Enrolment in tertiary education per 100,000 inhabitants, female",
+      "dcid": "worldBank/UIS_TE_100000_56_F"
+    },
+    {
+      "name": "Enrolment in tertiary education, ISCED 5 programmes, female (number)",
+      "dcid": "worldBank/UIS_E_5_B_F"
+    },
+    {
+      "name": "Enrolment in upper secondary education, private institutions, female (number)",
+      "dcid": "worldBank/UIS_E_3_PR_F"
+    },
+    {
+      "name": "Enrolment in upper secondary general, female (number)",
+      "dcid": "worldBank/UIS_E_3_GPV_F"
+    },
+    {
+      "name": "Enrolment in upper secondary vocational, female (number)",
+      "dcid": "worldBank/UIS_E_3_V_F"
+    },
+    {
       "name": "Estimate Of Daily Tobacco Smoking Prevalence (%), Female",
       "dcid": "WHO/M_Est_smk_daily_Female"
+    },
+    {
+      "name": "Female migrants (% of international migrant stock)",
+      "dcid": "worldBank/SG_POP_MIGR_FE_ZS"
+    },
+    {
+      "name": "Female share of employment in senior and middle management (%)",
+      "dcid": "worldBank/SL_EMP_SMGT_FE_ZS"
+    },
+    {
+      "name": "Female to male wage ratio in the private sector (using mean)",
+      "dcid": "worldBank/BI_WAG_PRVS_FM_SM"
+    },
+    {
+      "name": "Female to male wage ratio in the private sector (using median)",
+      "dcid": "worldBank/BI_WAG_PRVS_FM_MD"
+    },
+    {
+      "name": "Female to male wage ratio in the public sector (using mean)",
+      "dcid": "worldBank/BI_WAG_PUBS_FM_SM"
+    },
+    {
+      "name": "Female to male wage ratio in the public sector (using median)",
+      "dcid": "worldBank/BI_WAG_PUBS_FM_MD"
+    },
+    {
+      "name": "Graduates from ISCED 5 programmes in tertiary education, female (number)",
+      "dcid": "worldBank/UIS_G_5_B_F"
+    },
+    {
+      "name": "Gross graduation ratio from first degree programmes (ISCED 6 and 7) in tertiary education, female (%)",
+      "dcid": "worldBank/SE_TER_CMPL_FE_ZS"
+    },
+    {
+      "name": "Gross graduation ratio from primary education, female (%)",
+      "dcid": "worldBank/SE_PRM_CMPL_FE_ZS"
+    },
+    {
+      "name": "Gross intake ratio to Grade 1 of lower secondary general education, female (%)",
+      "dcid": "worldBank/UIS_AIR_2_GPV_F"
+    },
+    {
+      "name": "Has an inactive account, female (% age 15+)",
+      "dcid": "worldBank/fin9N_10N_t_d_1"
+    },
+    {
+      "name": "Human capital index (HCI), female, lower bound (scale 0-1)",
+      "dcid": "worldBank/HD_HCI_OVRL_LB_FE"
+    },
+    {
+      "name": "Human capital index (HCI), female, upper bound (scale 0-1)",
+      "dcid": "worldBank/HD_HCI_OVRL_UB_FE"
+    },
+    {
+      "name": "Incidence of HIV, ages 15-49, female (per 1,000 uninfected female population ages 15-49)",
+      "dcid": "worldBank/SH_HIV_INCD_FE_P3"
+    },
+    {
+      "name": "Informal employment, female (% of total non-agricultural employment)",
+      "dcid": "worldBank/SL_ISV_IFRM_FE_ZS"
+    },
+    {
+      "name": "Intentional homicides, female (per 100,000 female)",
+      "dcid": "worldBank/VC_IHR_PSRC_FE_P5"
+    },
+    {
+      "name": "Labor force participation rate, female (% of female population ages 15+) (modeled ILO estimate)",
+      "dcid": "worldBank/SL_TLF_CACT_FE_ZS"
+    },
+    {
+      "name": "Labor force participation rate, female (% of female population ages 15-64) (modeled ILO estimate)",
+      "dcid": "worldBank/SL_TLF_ACTI_FE_ZS"
+    },
+    {
+      "name": "Labor force with advanced education, female (% of female working-age population with advanced education)",
+      "dcid": "worldBank/SL_TLF_ADVN_FE_ZS"
+    },
+    {
+      "name": "Labor force with basic education, female (% of female working-age population with basic education)",
+      "dcid": "worldBank/SL_TLF_BASC_FE_ZS"
+    },
+    {
+      "name": "Labor force with intermediate education, female (% of female working-age population with intermediate education)",
+      "dcid": "worldBank/SL_TLF_INTM_FE_ZS"
+    },
+    {
+      "name": "Labor force, female",
+      "dcid": "worldBank/SL_TLF_TOTL_FE_IN"
+    },
+    {
+      "name": "Labor force, female (% of total labor force)",
+      "dcid": "worldBank/SL_TLF_TOTL_FE_ZS"
+    },
+    {
+      "name": "Life expectancy at age 60, female",
+      "dcid": "worldBank/SP_DYN_LE60_FE_IN"
+    },
+    {
+      "name": "Life expectancy at birth, female (years)",
+      "dcid": "worldBank/SP_DYN_LE00_FE_IN"
+    },
+    {
+      "name": "Made a digital payment, female (% age 15+)",
+      "dcid": "worldBank/g20_made_t_d_1"
     },
     {
       "name": "Mean Bmi (Kg/M\u0026#Xb2;) (Crude Estimate), Female, Age20Plus",
@@ -2377,6 +3773,38 @@
       "dcid": "WHO/NCD_CHOL_MEANTOTALCHOL_C_Female"
     },
     {
+      "name": "Mortality caused by road traffic injury, female (per 100,000 female population)",
+      "dcid": "worldBank/SH_STA_TRAF_FE_P5"
+    },
+    {
+      "name": "Mortality from CVD, cancer, diabetes or CRD between exact ages 30 and 70, female (%)",
+      "dcid": "worldBank/SH_DYN_NCOM_FE_ZS"
+    },
+    {
+      "name": "Mortality rate attributed to household and ambient air pollution, age-standardized, female (per 100,000 female population)",
+      "dcid": "worldBank/SH_STA_AIRP_FE_P5"
+    },
+    {
+      "name": "Mortality rate attributed to unintentional poisoning, female (per 100,000 female population)",
+      "dcid": "worldBank/SH_STA_POIS_P5_FE"
+    },
+    {
+      "name": "Mortality rate, infant, female (per 1,000 live births)",
+      "dcid": "worldBank/SP_DYN_IMRT_FE_IN"
+    },
+    {
+      "name": "Net intake rate to Grade 1 of primary education, female (%)",
+      "dcid": "worldBank/SE_PRM_NINT_FE_ZS"
+    },
+    {
+      "name": "New entrants to Grade 1 of primary education with early childhood education experience, female (number)",
+      "dcid": "worldBank/UIS_NE_1_ECD_F"
+    },
+    {
+      "name": "New entrants to Grade 1 of primary education, female (number)",
+      "dcid": "worldBank/UIS_NE_1_G1_F"
+    },
+    {
       "name": "Number Of Non-Pregnant Women (Aged 15-49 Years) With Anaemia (Thousands), Female",
       "dcid": "WHO/NUTRITION_ANAEMIA_NONPREGNANT_NUM_Female"
     },
@@ -2389,8 +3817,156 @@
       "dcid": "WHO/NUTRITION_ANAEMIA_REPRODUCTIVEAGE_NUM_Female"
     },
     {
+      "name": "Out-of-school youth of upper secondary school age, female (number)",
+      "dcid": "worldBank/UIS_OFST_3_F_CP"
+    },
+    {
+      "name": "Owns a debit or credit card, female (% age 15+)",
+      "dcid": "worldBank/fin2_7_t_d_1"
+    },
+    {
+      "name": "Part time employment, female (% of total female employment)",
+      "dcid": "worldBank/SL_TLF_PART_FE_ZS"
+    },
+    {
+      "name": "Percentage of female students in lower secondary education enrolled in general programmes, female (%)",
+      "dcid": "worldBank/UIS_GTVP_2_GPV_F"
+    },
+    {
+      "name": "Percentage of female students in lower secondary education enrolled in vocational programmes, female (%)",
+      "dcid": "worldBank/UIS_GTVP_2_V_F"
+    },
+    {
+      "name": "Percentage of female students in post-secondary non-tertiary education enrolled in general programmes, female (%)",
+      "dcid": "worldBank/UIS_GTVP_4_GPV_F"
+    },
+    {
+      "name": "Percentage of female students in post-secondary non-tertiary education enrolled in vocational programmes, female (%)",
+      "dcid": "worldBank/UIS_GTVP_4_V_F"
+    },
+    {
+      "name": "Percentage of female students in secondary education enrolled in general programmes, female (%)",
+      "dcid": "worldBank/UIS_GTVP_23_GPV_F"
+    },
+    {
+      "name": "Percentage of female students in tertiary education enrolled in Agriculture programmes, female (%)",
+      "dcid": "worldBank/UIS_FOSEP_56_F600_F"
+    },
+    {
+      "name": "Percentage of female students in tertiary education enrolled in Education programmes, female (%)",
+      "dcid": "worldBank/UIS_FOSEP_56_F140_F"
+    },
+    {
+      "name": "Percentage of female students in tertiary education enrolled in Engineering, Manufacturing and Construction programmes, female (%)",
+      "dcid": "worldBank/UIS_FOSEP_56_F500_F"
+    },
+    {
+      "name": "Percentage of female students in tertiary education enrolled in Health and Welfare programmes, female (%)",
+      "dcid": "worldBank/UIS_FOSEP_56_F700_F"
+    },
+    {
+      "name": "Percentage of female students in tertiary education enrolled in Humanities and Arts programmes, female (%)",
+      "dcid": "worldBank/UIS_FOSEP_56_F200_F"
+    },
+    {
+      "name": "Percentage of female students in tertiary education enrolled in ISCED 5",
+      "dcid": "worldBank/UIS_TEP_5_B_F"
+    },
+    {
+      "name": "Percentage of female students in tertiary education enrolled in Science programmes, female (%)",
+      "dcid": "worldBank/UIS_FOSEP_56_F400_F"
+    },
+    {
+      "name": "Percentage of female students in tertiary education enrolled in Services programmes, female (%)",
+      "dcid": "worldBank/UIS_FOSEP_56_F800_F"
+    },
+    {
+      "name": "Percentage of female students in tertiary education enrolled in Social Sciences, Business and Law programmes, female (%)",
+      "dcid": "worldBank/UIS_FOSEP_56_F300_F"
+    },
+    {
+      "name": "Percentage of female students in upper secondary education enrolled in general programmes, female (%)",
+      "dcid": "worldBank/UIS_GTVP_3_GPV_F"
+    },
+    {
+      "name": "Percentage of female students in upper secondary education enrolled in vocational programmes, female (%)",
+      "dcid": "worldBank/UIS_GTVP_3_V_F"
+    },
+    {
+      "name": "Percentage of repeaters in Grade 1 of primary education, female (%)",
+      "dcid": "worldBank/UIS_REPP_1_G1_F"
+    },
+    {
+      "name": "Percentage of repeaters in Grade 2 of primary education, female (%)",
+      "dcid": "worldBank/UIS_REPP_1_G2_F"
+    },
+    {
+      "name": "Percentage of repeaters in Grade 3 of primary education, female (%)",
+      "dcid": "worldBank/UIS_REPP_1_G3_F"
+    },
+    {
+      "name": "Percentage of repeaters in Grade 4 of primary education, female (%)",
+      "dcid": "worldBank/UIS_REPP_1_G4_F"
+    },
+    {
+      "name": "Percentage of repeaters in Grade 5 of primary education, female (%)",
+      "dcid": "worldBank/UIS_REPP_1_G5_F"
+    },
+    {
+      "name": "Percentage of repeaters in Grade 6 of primary education, female (%)",
+      "dcid": "worldBank/UIS_REPP_1_G6_F"
+    },
+    {
+      "name": "Percentage of repeaters in lower secondary general education, all grades, female (%)",
+      "dcid": "worldBank/UIS_REPP_2_GPV_F"
+    },
+    {
+      "name": "Percentage of students in primary education who are female (%)",
+      "dcid": "worldBank/SE_PRM_ENRL_FE_ZS"
+    },
+    {
+      "name": "Percentage of students in secondary education who are female (%)",
+      "dcid": "worldBank/SE_SEC_ENRL_FE_ZS"
+    },
+    {
+      "name": "Percentage of teachers in primary education who are female (%)",
+      "dcid": "worldBank/SE_PRM_TCHR_FE_ZS"
+    },
+    {
+      "name": "Percentage of teachers in secondary education who are female (%)",
+      "dcid": "worldBank/SE_SEC_TCHR_FE_ZS"
+    },
+    {
+      "name": "Percentage of teachers in tertiary education who are female (%)",
+      "dcid": "worldBank/SE_TER_TCHR_FE_ZS"
+    },
+    {
       "name": "Persistence To Last Grade Of Primary (% Of Cohort), Female",
       "dcid": "WHO/SE_PRM_PRSL_ZS_Female"
+    },
+    {
+      "name": "Population ages 0-14, female",
+      "dcid": "worldBank/SP_POP_0014_FE_IN"
+    },
+    {
+      "name": "Population ages 15-64, female",
+      "dcid": "worldBank/SP_POP_1564_FE_IN"
+    },
+    {
+      "name": "Population ages 65 and above, female",
+      "dcid": "worldBank/SP_POP_65UP_FE_IN"
+    },
+    {
+      "name": "Population of the official entrance age to primary education, female (number)",
+      "dcid": "worldBank/UIS_SAP_1_G1_F"
+    },
+    {
+      "name": "Population, female",
+      "dcid": "worldBank/SP_POP_TOTL_FE_IN"
+    },
+    {
+      "name": "Population, female (% of total)",
+      "dcid": "worldBank/SP_POP_TOTL_FE_ZS"
     },
     {
       "name": "Prevalence Of Anaemia In Pregnant Women (Aged 15-49) (%), Female",
@@ -2423,94 +3999,6 @@
     {
       "name": "Prevalence Of Current Tobacco Use Among Adults (%), Female",
       "dcid": "WHO/Adult_curr_tob_use_Female"
-    },
-    {
-      "name": "Prevalence Of Daily Cigarette Smoking Among Adolescents (%), Female",
-      "dcid": "WHO/Yth_daily_cig_smoking_Female"
-    },
-    {
-      "name": "Prevalence Of Daily Cigarette Smoking Among Adults (%), Female",
-      "dcid": "WHO/Adult_daily_cig_smoking_Female"
-    },
-    {
-      "name": "Prevalence Of Daily Tobacco Smoking Among Adolescents (%), Female",
-      "dcid": "WHO/Yth_daily_tob_smoking_Female"
-    },
-    {
-      "name": "Prevalence Of Daily Tobacco Smoking Among Adults (%), Female",
-      "dcid": "WHO/Adult_daily_tob_smoking_Female"
-    },
-    {
-      "name": "Prevalence Of Daily Tobacco Use Among Adolescents (%), Female",
-      "dcid": "WHO/Yth_daily_tob_use_Female"
-    },
-    {
-      "name": "Prevalence Of Daily Tobacco Use Among Adults (%), Female",
-      "dcid": "WHO/Adult_daily_tob_use_Female"
-    },
-    {
-      "name": "Proportion Of Women Aged 15-49 Years Who Make Their Own Informed Decisions Regarding Sexual Relations, Contraceptive Use And Reproductive Health Care (%)",
-      "dcid": "WHO/SG_DMK_SRCR_FN_ZS"
-    },
-    {
-      "name": "Raised Fasting Blood Glucose (\u003e= 7.0 Mmol/L Or On Medication) (Crude Estimate), Female, Years18Plus",
-      "dcid": "WHO/NCD_GLUC_03_Female_YEARS18PLUS"
-    },
-    {
-      "name": "Estimate Of Current Cigarette Smoking Prevalence (%) (Age-Standardized Rate), Female",
-      "dcid": "WHO/M_Est_cig_curr_std_Female"
-    },
-    {
-      "name": "Estimate Of Current Tobacco Smoking Prevalence (%) (Age-Standardized Rate), Female",
-      "dcid": "WHO/M_Est_smk_curr_std_Female"
-    },
-    {
-      "name": "Estimate Of Current Tobacco Use Prevalence (%) (Age-Standardized Rate), Female",
-      "dcid": "WHO/M_Est_tob_curr_std_Female"
-    },
-    {
-      "name": "Estimate Of Daily Cigarette Smoking Prevalence (%) (Age-Standardized Rate), Female",
-      "dcid": "WHO/M_Est_cig_daily_std_Female"
-    },
-    {
-      "name": "Estimate Of Daily Tobacco Smoking Prevalence (%) (Age-Standardized Rate), Female",
-      "dcid": "WHO/M_Est_smk_daily_std_Female"
-    },
-    {
-      "name": "Estimate Of Daily Tobacco Use Prevalence (%) (Age-Standardized Rate), Female",
-      "dcid": "WHO/M_Est_tob_daily_std_Female"
-    },
-    {
-      "name": "Number Of Deaths Attributed To Non-Communicable Diseases, By Type Of Disease And Sex, Female, Chronic Respiratory Diseases",
-      "dcid": "WHO/SDG_SH_DTH_RNCOM_Female_ChronicRespiratoryDiseases"
-    },
-    {
-      "name": "Number Of Deaths Attributed To Non-Communicable Diseases, By Type Of Disease And Sex, Female, Diabetes Mellitus",
-      "dcid": "WHO/SDG_SH_DTH_RNCOM_Female_DiabetesMellitus"
-    },
-    {
-      "name": "Number Of Deaths Attributed To Non-Communicable Diseases, By Type Of Disease And Sex, Female, Major Cardiovascular Diseases",
-      "dcid": "WHO/SDG_SH_DTH_RNCOM_Female_MajorCardiovascularDiseases"
-    },
-    {
-      "name": "Number Of Deaths Attributed To Non-Communicable Diseases, By Type Of Disease And Sex, Female, Malignant Neoplasms",
-      "dcid": "WHO/SDG_SH_DTH_RNCOM_Female_MalignantNeoplasms"
-    },
-    {
-      "name": "Proportion Of Ever-Partnered Women And Girls Aged 15-49 Years Subjected To Physical And/Or Sexual Violence By A Current Or Former Intimate Partner In The Previous 12 Months (SDGIPV12M)",
-      "dcid": "WHO/SDGIPV12M"
-    },
-    {
-      "name": "Proportion Of Ever-Partnered Women And Girls Aged 15-49 Years Subjected To Physical And/Or Sexual Violence By A Current Or Former Intimate Partner In Their Lifetime",
-      "dcid": "WHO/SDGIPVLT"
-    },
-    {
-      "name": "Women Accessing Antenatal Care (Anc) Services Who Were Tested For Syphilis (%)",
-      "dcid": "WHO/PerctestedANC"
-    },
-    {
-      "name": "Women Of Reproductive Age (15-49 Years) Who Are Married Or In-Union Who Have Their Need For Family Planning Satisfied With Modern Methods (%), Unpd",
-      "dcid": "WHO/FAMILYPLANNINGUNPDUHC"
     }
   ],
   "statVarGroups": [
@@ -28241,6 +29729,132 @@
       ]
     },
     {
+      "dcid": "dc/g/Person_Age_Gender-Female",
+      "name": "Person With Age, Gender = Female",
+      "statVars": [
+        {
+          "name": "Life Expectancy: 1 Years or Less, Female",
+          "dcid": "LifeExpectancy_Person_Upto1Years_Female"
+        },
+        {
+          "name": "Life Expectancy: Years 101, Female",
+          "dcid": "LifeExpectancy_Person_101Years_Female"
+        },
+        {
+          "name": "Life Expectancy: Years 102, Female",
+          "dcid": "LifeExpectancy_Person_102Years_Female"
+        },
+        {
+          "name": "Life Expectancy: Years 103, Female",
+          "dcid": "LifeExpectancy_Person_103Years_Female"
+        },
+        {
+          "name": "Life Expectancy: Years 104, Female",
+          "dcid": "LifeExpectancy_Person_104Years_Female"
+        },
+        {
+          "name": "Life Expectancy: Years 105, Female",
+          "dcid": "LifeExpectancy_Person_105Years_Female"
+        },
+        {
+          "name": "Life Expectancy: Years 106, Female",
+          "dcid": "LifeExpectancy_Person_106Years_Female"
+        },
+        {
+          "name": "Life Expectancy: Years 107, Female",
+          "dcid": "LifeExpectancy_Person_107Years_Female"
+        },
+        {
+          "name": "Life Expectancy: Years 108, Female",
+          "dcid": "LifeExpectancy_Person_108Years_Female"
+        },
+        {
+          "name": "Life Expectancy: Years 109, Female",
+          "dcid": "LifeExpectancy_Person_109Years_Female"
+        },
+        {
+          "name": "Population: 0 - 14 Years, Female",
+          "dcid": "Count_Person_0To14Years_Female"
+        },
+        {
+          "name": "Population: 100 - 104 Years, Female",
+          "dcid": "Count_Person_100To104Years_Female"
+        },
+        {
+          "name": "Population: 105 - 109 Years, Female",
+          "dcid": "Count_Person_105To109Years_Female"
+        },
+        {
+          "name": "Population: 14 Years or Less, Female",
+          "dcid": "Count_Person_Upto14Years_Female"
+        },
+        {
+          "name": "Population: 15 - 59 Years, Female",
+          "dcid": "Count_Person_15To59Years_Female"
+        },
+        {
+          "name": "Population: 25 - 44 Years, Female",
+          "dcid": "Count_Person_25To44Years_Female"
+        },
+        {
+          "name": "Population: 3 Years or More, Female",
+          "dcid": "Count_Person_3OrMoreYears_Female"
+        },
+        {
+          "name": "Population: 60 Years or More, Female",
+          "dcid": "Count_Person_60OrMoreYears_Female"
+        },
+        {
+          "name": "Population: 65 - 66 Years, Female",
+          "dcid": "Count_Person_65To66Years_Female"
+        },
+        {
+          "name": "Population: 67 - 69 Years, Female",
+          "dcid": "Count_Person_67To69Years_Female"
+        },
+        {
+          "name": "Population: 90 - 94 Years, Female",
+          "dcid": "Count_Person_90To94Years_Female"
+        },
+        {
+          "name": "Population: 95 - 99 Years, Female",
+          "dcid": "Count_Person_95To99Years_Female"
+        },
+        {
+          "name": "Population: 95 Years or More, Female",
+          "dcid": "Count_Person_95OrMoreYears_Female"
+        },
+        {
+          "name": "Population: 99 Years or More, Female",
+          "dcid": "Count_Person_99OrMoreYears_Female"
+        },
+        {
+          "name": "Unemployment Rate: 15 - 65 Years, Female",
+          "dcid": "UnemploymentRate_Person_15To65Years_Female"
+        },
+        {
+          "name": "Unemployment Rate: 25 - 74 Years, Female",
+          "dcid": "UnemploymentRate_Person_25To74Years_Female"
+        },
+        {
+          "name": "Unemployment Rate: 25 Years or Less, Female",
+          "dcid": "UnemploymentRate_Person_Upto25Years_Female"
+        },
+        {
+          "name": "Population: 5 Years or More, Female (As Fraction of Count Person Female)",
+          "dcid": "Count_Person_5OrMoreYears_Female_AsAFractionOf_Count_Person_Female"
+        },
+        {
+          "name": "Prevalence: 50 - 74 Years, Female, Mammography",
+          "dcid": "Percent_Person_50To74Years_Female_ReceivedMammography"
+        },
+        {
+          "name": "Population (Measured Based on Custody): 0 - 17 Years, Female, Incarcerated",
+          "dcid": "dc/c17kzp0zrfkq9"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/Person_Age-Years85_Gender-Female_Race",
       "name": "Person With Age = Years 85, Gender = Female, Race",
       "statVars": [
@@ -30127,128 +31741,6 @@
         {
           "name": "Population: Years 99, Female, White Alone or In Combination With One or More Other Races",
           "dcid": "Count_Person_99Years_Female_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age_Gender-Female",
-      "name": "Person With Age, Gender = Female",
-      "statVars": [
-        {
-          "name": "Life Expectancy: 1 Years or Less, Female",
-          "dcid": "LifeExpectancy_Person_Upto1Years_Female"
-        },
-        {
-          "name": "Life Expectancy: Years 101, Female",
-          "dcid": "LifeExpectancy_Person_101Years_Female"
-        },
-        {
-          "name": "Life Expectancy: Years 102, Female",
-          "dcid": "LifeExpectancy_Person_102Years_Female"
-        },
-        {
-          "name": "Life Expectancy: Years 103, Female",
-          "dcid": "LifeExpectancy_Person_103Years_Female"
-        },
-        {
-          "name": "Life Expectancy: Years 104, Female",
-          "dcid": "LifeExpectancy_Person_104Years_Female"
-        },
-        {
-          "name": "Life Expectancy: Years 105, Female",
-          "dcid": "LifeExpectancy_Person_105Years_Female"
-        },
-        {
-          "name": "Life Expectancy: Years 106, Female",
-          "dcid": "LifeExpectancy_Person_106Years_Female"
-        },
-        {
-          "name": "Life Expectancy: Years 107, Female",
-          "dcid": "LifeExpectancy_Person_107Years_Female"
-        },
-        {
-          "name": "Life Expectancy: Years 108, Female",
-          "dcid": "LifeExpectancy_Person_108Years_Female"
-        },
-        {
-          "name": "Life Expectancy: Years 109, Female",
-          "dcid": "LifeExpectancy_Person_109Years_Female"
-        },
-        {
-          "name": "Population: 0 - 14 Years, Female",
-          "dcid": "Count_Person_0To14Years_Female"
-        },
-        {
-          "name": "Population: 100 - 104 Years, Female",
-          "dcid": "Count_Person_100To104Years_Female"
-        },
-        {
-          "name": "Population: 105 - 109 Years, Female",
-          "dcid": "Count_Person_105To109Years_Female"
-        },
-        {
-          "name": "Population: 14 Years or Less, Female",
-          "dcid": "Count_Person_Upto14Years_Female"
-        },
-        {
-          "name": "Population: 15 - 59 Years, Female",
-          "dcid": "Count_Person_15To59Years_Female"
-        },
-        {
-          "name": "Population: 3 Years or More, Female",
-          "dcid": "Count_Person_3OrMoreYears_Female"
-        },
-        {
-          "name": "Population: 60 Years or More, Female",
-          "dcid": "Count_Person_60OrMoreYears_Female"
-        },
-        {
-          "name": "Population: 65 - 66 Years, Female",
-          "dcid": "Count_Person_65To66Years_Female"
-        },
-        {
-          "name": "Population: 67 - 69 Years, Female",
-          "dcid": "Count_Person_67To69Years_Female"
-        },
-        {
-          "name": "Population: 90 - 94 Years, Female",
-          "dcid": "Count_Person_90To94Years_Female"
-        },
-        {
-          "name": "Population: 95 - 99 Years, Female",
-          "dcid": "Count_Person_95To99Years_Female"
-        },
-        {
-          "name": "Population: 95 Years or More, Female",
-          "dcid": "Count_Person_95OrMoreYears_Female"
-        },
-        {
-          "name": "Population: 99 Years or More, Female",
-          "dcid": "Count_Person_99OrMoreYears_Female"
-        },
-        {
-          "name": "Unemployment Rate: 15 - 65 Years, Female",
-          "dcid": "UnemploymentRate_Person_15To65Years_Female"
-        },
-        {
-          "name": "Unemployment Rate: 25 - 74 Years, Female",
-          "dcid": "UnemploymentRate_Person_25To74Years_Female"
-        },
-        {
-          "name": "Unemployment Rate: 25 Years or Less, Female",
-          "dcid": "UnemploymentRate_Person_Upto25Years_Female"
-        },
-        {
-          "name": "Population: 5 Years or More, Female (As Fraction of Count Person Female)",
-          "dcid": "Count_Person_5OrMoreYears_Female_AsAFractionOf_Count_Person_Female"
-        },
-        {
-          "name": "Prevalence: 50 - 74 Years, Female, Mammography",
-          "dcid": "Percent_Person_50To74Years_Female_ReceivedMammography"
-        },
-        {
-          "name": "Population (Measured Based on Custody): 0 - 17 Years, Female, Incarcerated",
-          "dcid": "dc/c17kzp0zrfkq9"
         }
       ]
     },
@@ -46695,28 +48187,6 @@
       ]
     },
     {
-      "dcid": "dc/g/Person_Age-Years15Onwards_Gender-Female",
-      "name": "Person With Age = 15 Years or More, Gender = Female",
-      "statVars": [
-        {
-          "name": "Population: 15 Years or More, Female",
-          "dcid": "Count_Person_15OrMoreYears_Female"
-        },
-        {
-          "name": "Population: 15 Years or More, Female, Literate (As Fraction of Count Person 15 or More Years Female)",
-          "dcid": "Count_Person_15OrMoreYears_Female_Literate_AsAFractionOf_Count_Person_15OrMoreYears_Female"
-        },
-        {
-          "name": "Population: 15 Years or More, Female, Smoking (As Fraction of Count Person 15 or More Years Female)",
-          "dcid": "Count_Person_15OrMoreYears_Female_Smoking_AsFractionOf_Count_Person_15OrMoreYears_Female"
-        },
-        {
-          "name": "Population: 15 Years or More, in Labor Force, Female (As Fraction of Count Person in Labor Force)",
-          "dcid": "Count_Person_15OrMoreYears_InLaborForce_Female_AsFractionOf_Count_Person_InLaborForce"
-        }
-      ]
-    },
-    {
       "dcid": "dc/g/Person_EducationalAttainment-HighSchoolGraduateIncludesEquivalency_Gender-Female",
       "name": "Person With Educational Attainment = High School Graduate Includes Equivalency, Gender = Female",
       "statVars": [
@@ -50571,6 +52041,24 @@
         {
           "name": "Number of speakers in parliament [Age = under 46 years old | Sex = Female]",
           "dcid": "sdg/SG_DMK_PARLSP_UC.AGE--Y0T45__SEX--F"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years15Onwards_Gender-Female",
+      "name": "Person With Age = 15 Years or More, Gender = Female",
+      "statVars": [
+        {
+          "name": "Population: 15 Years or More, Female",
+          "dcid": "Count_Person_15OrMoreYears_Female"
+        },
+        {
+          "name": "Population: 15 Years or More, Female, Literate (As Fraction of Count Person 15 or More Years Female)",
+          "dcid": "Count_Person_15OrMoreYears_Female_Literate_AsAFractionOf_Count_Person_15OrMoreYears_Female"
+        },
+        {
+          "name": "Population: 15 Years or More, Female, Smoking (As Fraction of Count Person 15 or More Years Female)",
+          "dcid": "Count_Person_15OrMoreYears_Female_Smoking_AsFractionOf_Count_Person_15OrMoreYears_Female"
         }
       ]
     },
@@ -54503,6 +55991,7 @@
     "female",
     "women",
     "women's",
+    "women)",
     "women’s"
   ]
 }

@@ -2877,7 +2877,7 @@
             "topPlaces": [
               {
                 "dcid": "Earth",
-                "name": "Earth"
+                "name": "World"
               }
             ],
             "minValue": 2.27319100090675,
@@ -3102,7 +3102,7 @@
                     "topPlaces": [
                       {
                         "dcid": "Earth",
-                        "name": "Earth"
+                        "name": "World"
                       }
                     ],
                     "minValue": 2.27319100090675,

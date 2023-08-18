@@ -6,7 +6,8 @@
       {
         "id": "dc/g/Agriculture",
         "specializedEntity": "Agriculture",
-        "displayName": "Agriculture"
+        "displayName": "Agriculture",
+        "descendentStatVarCount": 16
       },
       {
         "id": "dc/g/Demographics",
@@ -36,13 +37,13 @@
         "id": "dc/g/Environment",
         "specializedEntity": "Environment",
         "displayName": "Environment",
-        "descendentStatVarCount": 217
+        "descendentStatVarCount": 618
       },
       {
         "id": "dc/g/Health",
         "specializedEntity": "Health",
         "displayName": "Health",
-        "descendentStatVarCount": 2418
+        "descendentStatVarCount": 2479
       },
       {
         "id": "dc/g/Housing",
