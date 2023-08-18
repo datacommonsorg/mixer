@@ -67,7 +67,6 @@ const (
 	Mixer_GetEntityStatVarsUnionV1_FullMethodName     = "/datacommons.Mixer/GetEntityStatVarsUnionV1"
 	Mixer_GetPlaceStatDateWithinPlace_FullMethodName  = "/datacommons.Mixer/GetPlaceStatDateWithinPlace"
 	Mixer_GetStatDateWithinPlace_FullMethodName       = "/datacommons.Mixer/GetStatDateWithinPlace"
-	Mixer_SearchStatVar_FullMethodName                = "/datacommons.Mixer/SearchStatVar"
 	Mixer_QueryV1_FullMethodName                      = "/datacommons.Mixer/QueryV1"
 	Mixer_Properties_FullMethodName                   = "/datacommons.Mixer/Properties"
 	Mixer_BulkProperties_FullMethodName               = "/datacommons.Mixer/BulkProperties"
@@ -97,6 +96,7 @@ const (
 	Mixer_BioPage_FullMethodName                      = "/datacommons.Mixer/BioPage"
 	Mixer_PlacePage_FullMethodName                    = "/datacommons.Mixer/PlacePage"
 	Mixer_VariableAncestors_FullMethodName            = "/datacommons.Mixer/VariableAncestors"
+	Mixer_SearchStatVar_FullMethodName                = "/datacommons.Mixer/SearchStatVar"
 	Mixer_EventCollection_FullMethodName              = "/datacommons.Mixer/EventCollection"
 	Mixer_EventCollectionDate_FullMethodName          = "/datacommons.Mixer/EventCollectionDate"
 	Mixer_ResolveEntities_FullMethodName              = "/datacommons.Mixer/ResolveEntities"
@@ -169,8 +169,6 @@ type MixerClient interface {
 	// Given ancestor place, child place type and stat vars, return the dates and
 	// place count for each source
 	GetStatDateWithinPlace(ctx context.Context, in *proto.GetStatDateWithinPlaceRequest, opts ...grpc.CallOption) (*proto.GetStatDateWithinPlaceResponse, error)
-	// Search stat var and stat var groups.
-	SearchStatVar(ctx context.Context, in *proto.SearchStatVarRequest, opts ...grpc.CallOption) (*proto.SearchStatVarResponse, error)
 	// Query DataCommons Graph with Sparql.
 	QueryV1(ctx context.Context, in *proto.QueryRequest, opts ...grpc.CallOption) (*proto.QueryResponse, error)
 	Properties(ctx context.Context, in *v1.PropertiesRequest, opts ...grpc.CallOption) (*v1.PropertiesResponse, error)
@@ -201,6 +199,8 @@ type MixerClient interface {
 	BioPage(ctx context.Context, in *v1.BioPageRequest, opts ...grpc.CallOption) (*proto.GraphNodes, error)
 	PlacePage(ctx context.Context, in *v1.PlacePageRequest, opts ...grpc.CallOption) (*v1.PlacePageResponse, error)
 	VariableAncestors(ctx context.Context, in *v1.VariableAncestorsRequest, opts ...grpc.CallOption) (*v1.VariableAncestorsResponse, error)
+	// Search stat var and stat var groups.
+	SearchStatVar(ctx context.Context, in *proto.SearchStatVarRequest, opts ...grpc.CallOption) (*proto.SearchStatVarResponse, error)
 	// Get event collection for {eventType, affectedPlaceDcid, date}.
 	// NOTE:
 	//   - The affectedPlaceDcid is only for top-level places:
@@ -446,15 +446,6 @@ func (c *mixerClient) GetPlaceStatDateWithinPlace(ctx context.Context, in *proto
 func (c *mixerClient) GetStatDateWithinPlace(ctx context.Context, in *proto.GetStatDateWithinPlaceRequest, opts ...grpc.CallOption) (*proto.GetStatDateWithinPlaceResponse, error) {
 	out := new(proto.GetStatDateWithinPlaceResponse)
 	err := c.cc.Invoke(ctx, Mixer_GetStatDateWithinPlace_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *mixerClient) SearchStatVar(ctx context.Context, in *proto.SearchStatVarRequest, opts ...grpc.CallOption) (*proto.SearchStatVarResponse, error) {
-	out := new(proto.SearchStatVarResponse)
-	err := c.cc.Invoke(ctx, Mixer_SearchStatVar_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -722,6 +713,15 @@ func (c *mixerClient) VariableAncestors(ctx context.Context, in *v1.VariableAnce
 	return out, nil
 }
 
+func (c *mixerClient) SearchStatVar(ctx context.Context, in *proto.SearchStatVarRequest, opts ...grpc.CallOption) (*proto.SearchStatVarResponse, error) {
+	out := new(proto.SearchStatVarResponse)
+	err := c.cc.Invoke(ctx, Mixer_SearchStatVar_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *mixerClient) EventCollection(ctx context.Context, in *v1.EventCollectionRequest, opts ...grpc.CallOption) (*v1.EventCollectionResponse, error) {
 	out := new(v1.EventCollectionResponse)
 	err := c.cc.Invoke(ctx, Mixer_EventCollection_FullMethodName, in, out, opts...)
@@ -864,8 +864,6 @@ type MixerServer interface {
 	// Given ancestor place, child place type and stat vars, return the dates and
 	// place count for each source
 	GetStatDateWithinPlace(context.Context, *proto.GetStatDateWithinPlaceRequest) (*proto.GetStatDateWithinPlaceResponse, error)
-	// Search stat var and stat var groups.
-	SearchStatVar(context.Context, *proto.SearchStatVarRequest) (*proto.SearchStatVarResponse, error)
 	// Query DataCommons Graph with Sparql.
 	QueryV1(context.Context, *proto.QueryRequest) (*proto.QueryResponse, error)
 	Properties(context.Context, *v1.PropertiesRequest) (*v1.PropertiesResponse, error)
@@ -896,6 +894,8 @@ type MixerServer interface {
 	BioPage(context.Context, *v1.BioPageRequest) (*proto.GraphNodes, error)
 	PlacePage(context.Context, *v1.PlacePageRequest) (*v1.PlacePageResponse, error)
 	VariableAncestors(context.Context, *v1.VariableAncestorsRequest) (*v1.VariableAncestorsResponse, error)
+	// Search stat var and stat var groups.
+	SearchStatVar(context.Context, *proto.SearchStatVarRequest) (*proto.SearchStatVarResponse, error)
 	// Get event collection for {eventType, affectedPlaceDcid, date}.
 	// NOTE:
 	//   - The affectedPlaceDcid is only for top-level places:
@@ -999,9 +999,6 @@ func (UnimplementedMixerServer) GetPlaceStatDateWithinPlace(context.Context, *pr
 func (UnimplementedMixerServer) GetStatDateWithinPlace(context.Context, *proto.GetStatDateWithinPlaceRequest) (*proto.GetStatDateWithinPlaceResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetStatDateWithinPlace not implemented")
 }
-func (UnimplementedMixerServer) SearchStatVar(context.Context, *proto.SearchStatVarRequest) (*proto.SearchStatVarResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method SearchStatVar not implemented")
-}
 func (UnimplementedMixerServer) QueryV1(context.Context, *proto.QueryRequest) (*proto.QueryResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method QueryV1 not implemented")
 }
@@ -1088,6 +1085,9 @@ func (UnimplementedMixerServer) PlacePage(context.Context, *v1.PlacePageRequest)
 }
 func (UnimplementedMixerServer) VariableAncestors(context.Context, *v1.VariableAncestorsRequest) (*v1.VariableAncestorsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method VariableAncestors not implemented")
+}
+func (UnimplementedMixerServer) SearchStatVar(context.Context, *proto.SearchStatVarRequest) (*proto.SearchStatVarResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SearchStatVar not implemented")
 }
 func (UnimplementedMixerServer) EventCollection(context.Context, *v1.EventCollectionRequest) (*v1.EventCollectionResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method EventCollection not implemented")
@@ -1556,24 +1556,6 @@ func _Mixer_GetStatDateWithinPlace_Handler(srv interface{}, ctx context.Context,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(MixerServer).GetStatDateWithinPlace(ctx, req.(*proto.GetStatDateWithinPlaceRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Mixer_SearchStatVar_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(proto.SearchStatVarRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(MixerServer).SearchStatVar(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: Mixer_SearchStatVar_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).SearchStatVar(ctx, req.(*proto.SearchStatVarRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -2100,6 +2082,24 @@ func _Mixer_VariableAncestors_Handler(srv interface{}, ctx context.Context, dec 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Mixer_SearchStatVar_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(proto.SearchStatVarRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MixerServer).SearchStatVar(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Mixer_SearchStatVar_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MixerServer).SearchStatVar(ctx, req.(*proto.SearchStatVarRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _Mixer_EventCollection_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(v1.EventCollectionRequest)
 	if err := dec(in); err != nil {
@@ -2366,10 +2366,6 @@ var Mixer_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _Mixer_GetStatDateWithinPlace_Handler,
 		},
 		{
-			MethodName: "SearchStatVar",
-			Handler:    _Mixer_SearchStatVar_Handler,
-		},
-		{
 			MethodName: "QueryV1",
 			Handler:    _Mixer_QueryV1_Handler,
 		},
@@ -2484,6 +2480,10 @@ var Mixer_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "VariableAncestors",
 			Handler:    _Mixer_VariableAncestors_Handler,
+		},
+		{
+			MethodName: "SearchStatVar",
+			Handler:    _Mixer_SearchStatVar_Handler,
 		},
 		{
 			MethodName: "EventCollection",

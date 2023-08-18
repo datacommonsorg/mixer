@@ -482,3 +482,29 @@ func (s *Server) RecognizePlaces(
 ) (*pb.RecognizePlacesResponse, error) {
 	return recon.RecognizePlaces(ctx, in, s.store, false)
 }
+
+// SearchStatVar implements API for Mixer.SearchStatVar.
+func (s *Server) SearchStatVar(
+	ctx context.Context, in *pb.SearchStatVarRequest,
+) (*pb.SearchStatVarResponse, error) {
+	localResp, err := statvar.SearchStatVar(ctx, in, s.store, s.cache)
+	if err != nil {
+		return nil, err
+	}
+	if len(localResp.StatVarGroups) == 0 && len(localResp.StatVars) == 0 && len(localResp.Matches) == 0 {
+		if s.metadata.RemoteMixerDomain != "" {
+			remoteResp := &pb.SearchStatVarResponse{}
+			if err := util.FetchRemote(
+				s.metadata,
+				s.httpClient,
+				"/v1/variable/search",
+				in,
+				remoteResp,
+			); err != nil {
+				return nil, err
+			}
+			return remoteResp, nil
+		}
+	}
+	return localResp, nil
+}

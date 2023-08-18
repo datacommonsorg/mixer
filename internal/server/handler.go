@@ -192,13 +192,6 @@ func (s *Server) GetEntityStatVarsUnionV1(
 	return statvar.GetEntityStatVarsUnionV1(ctx, in, s.store, s.cache)
 }
 
-// SearchStatVar implements API for Mixer.SearchStatVar.
-func (s *Server) SearchStatVar(
-	ctx context.Context, in *pb.SearchStatVarRequest,
-) (*pb.SearchStatVarResponse, error) {
-	return statvar.SearchStatVar(ctx, in, s.store, s.cache)
-}
-
 // GetPropertyLabels implements API for Mixer.GetPropertyLabels.
 func (s *Server) GetPropertyLabels(
 	ctx context.Context, in *pb.GetPropertyLabelsRequest,
