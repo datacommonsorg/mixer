@@ -62,21 +62,13 @@ message FacetObservation {
 }
 
 message FacetFilter {
-  // When specified, only observations with this unit are returned.
-  string unit = 1;
-  // When specified, only observations with this measurement method are
-  // returned.
-  string measurement_method = 2;
-  // When specified, only observations with this observation period are
-  // returned.
-  string period = 3;
+  // List of variables that this facet filter applies to
+  repeated string variables = 1;
   // When specified, only observations with provenance in these domain are
   // returned.
-  repeated string domains = 4;
-  // key is variable dcid and value is facet id to filter for. For all variables
-  // with a facet id to filter for, only observations with that facet id are
-  // returned.
-  map<string, string> facet_id = 5;
+  string domain = 4;
+  // When specified, only observations with this facet id are returned
+  string facet_id = 5;
 }
 
 // Generic observation request
@@ -94,8 +86,10 @@ message ObservationRequest {
   string date = 3;
   // Value of the observation
   string value = 4;
-  // [Optional] filter for the facet
-  FacetFilter filter = 5;
+  // [Optional] list of facet filters. For variabels that have at least one
+  // filter, only keep observations that match at least one filter. For other
+  // variables, keep all observations.
+  repeated FacetFilter filters = 5;
   // Fields to return, valid values are: "variable", "entity", "date", "value", "facet"
   repeated string select = 6;
 }

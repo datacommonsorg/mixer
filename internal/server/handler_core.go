@@ -289,7 +289,7 @@ func (s *Server) V2ObservationCore(
 				variable.GetDcids(),
 				entity.GetDcids(),
 				in.GetDate(),
-				in.GetFilter(),
+				in.GetFilters(),
 			)
 		}
 
@@ -312,7 +312,7 @@ func (s *Server) V2ObservationCore(
 				containedInPlace.Ancestor,
 				containedInPlace.ChildPlaceType,
 				in.GetDate(),
-				in.GetFilter(),
+				in.GetFilters(),
 			)
 		}
 

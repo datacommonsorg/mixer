@@ -45,13 +45,13 @@ func FetchDirect(
 	variables []string,
 	entities []string,
 	queryDate string,
-	filter *pbv2.FacetFilter,
+	filters []*pbv2.FacetFilter,
 ) (*pbv2.ObservationResponse, error) {
-	o1, err := FetchDirectBT(ctx, store.BtGroup, variables, entities, queryDate, filter)
+	o1, err := FetchDirectBT(ctx, store.BtGroup, variables, entities, queryDate, filters)
 	if err != nil {
 		return nil, err
 	}
-	o2, err := FetchDirectSQL(ctx, store.SQLiteClient, variables, entities, queryDate, filter)
+	o2, err := FetchDirectSQL(ctx, store.SQLiteClient, variables, entities, queryDate, filters)
 	if err != nil {
 		return nil, err
 	}
@@ -65,7 +65,7 @@ func FetchDirectBT(
 	variables []string,
 	entities []string,
 	queryDate string,
-	filter *pbv2.FacetFilter,
+	filters []*pbv2.FacetFilter,
 ) (*pbv2.ObservationResponse, error) {
 	result := &pbv2.ObservationResponse{
 		ByVariable: map[string]*pbv2.VariableObservation{},
@@ -87,6 +87,17 @@ func FetchDirectBT(
 	if err != nil {
 		return result, err
 	}
+	variableFacetFilters := map[string][]*pbv2.FacetFilter{}
+	if filters != nil {
+		for _, facetFilter := range filters {
+			for _, variable := range facetFilter.Variables {
+				if _, ok := variableFacetFilters[variable]; !ok {
+					variableFacetFilters[variable] = []*pbv2.FacetFilter{}
+				}
+				variableFacetFilters[variable] = append(variableFacetFilters[variable], facetFilter)
+			}
+		}
+	}
 	for _, variable := range variables {
 		for _, entity := range entities {
 			entityObservation := &pbv2.EntityObservation{}
@@ -97,31 +108,31 @@ func FetchDirectBT(
 				for _, series := range series {
 					facet := util.GetFacet(series)
 					facetID := util.GetFacetID(facet)
-					// If there are facet filters, check that the series matches the
-					// filter
-					if filter != nil {
-						if filter.FacetId != nil && filter.FacetId[variable] != "" && filter.FacetId[variable] != facetID {
-							continue
-						}
-						if filter.Domains != nil {
-							url, err := url.Parse(facet.ProvenanceUrl)
-							if err != nil {
-								return nil, err
+					// If there are facet filters, check that the series matches at
+					// least one filter. Otherwise, skip.
+					if _, ok := variableFacetFilters[variable]; ok {
+						keepSeries := false
+						for _, facetFilter := range variableFacetFilters[variable] {
+							matchesFilter := true
+							if facetFilter.FacetId != "" && facetFilter.FacetId != facetID {
+								matchesFilter = false
 							}
-							matchedDomain := false
-							for _, domain := range filter.Domains {
-								// To match domain or subdomain. For example, a provenance url of
-								// abc.xyz.com can match filter "xyz.com" and "abc.xyz.com".
-								if strings.HasSuffix(url.Hostname(), domain) {
-									matchedDomain = true
-									break
+							if facetFilter.Domain != "" {
+								url, err := url.Parse(facet.ProvenanceUrl)
+								if err != nil {
+									matchesFilter = false
+								}
+								if !strings.HasSuffix(url.Hostname(), facetFilter.Domain) {
+									matchesFilter = false
 								}
 							}
-							if !matchedDomain {
-								// Skip processing series with provenances that don't match
-								// domain filter
-								continue
+							if matchesFilter {
+								keepSeries = true
+								break
 							}
+						}
+						if !keepSeries {
+							continue
 						}
 					}
 					obsList := []*pb.PointStat{}
@@ -172,7 +183,7 @@ func FetchDirectSQL(
 	variables []string,
 	entities []string,
 	queryDate string,
-	filter *pbv2.FacetFilter,
+	filters []*pbv2.FacetFilter,
 ) (*pbv2.ObservationResponse, error) {
 	result := &pbv2.ObservationResponse{
 		ByVariable: map[string]*pbv2.VariableObservation{},

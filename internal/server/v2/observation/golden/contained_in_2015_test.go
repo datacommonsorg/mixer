@@ -40,7 +40,7 @@ func TestFetchContainIn(t *testing.T) {
 		for _, c := range []struct {
 			variables        []string
 			entityExpression string
-			filter           *pbv2.FacetFilter
+			filter           []*pbv2.FacetFilter
 			goldenFile       string
 		}{
 			{
@@ -48,43 +48,54 @@ func TestFetchContainIn(t *testing.T) {
 					"test_var_1",
 				},
 				"country/USA<-containedInPlace+{typeOf:State}",
-				&pbv2.FacetFilter{},
+				[]*pbv2.FacetFilter{},
 				"US_State.json",
 			},
 			{
 				[]string{"Count_Person", "Median_Age_Person"},
 				"geoId/06<-containedInPlace+{typeOf:County}",
-				&pbv2.FacetFilter{},
+				[]*pbv2.FacetFilter{},
 				"CA_County.json",
 			},
 			{
 				[]string{"Count_Person"},
 				"country/FRA<-containedInPlace+{typeOf:AdministrativeArea2}",
-				&pbv2.FacetFilter{},
+				[]*pbv2.FacetFilter{},
 				"FRA_AA2.json",
 			},
 			{
 				[]string{"Count_Person"},
 				"country/USA<-containedInPlace+{typeOf:State}",
-				&pbv2.FacetFilter{
-					Domains: []string{"census.gov"},
+				[]*pbv2.FacetFilter{
+					{
+						Variables: []string{"Count_Person"},
+						Domain:    "census.gov",
+					},
 				},
 				"filter.json",
 			},
 			{
 				[]string{"Count_Person"},
 				"country/USA<-containedInPlace+{typeOf:State}",
-				&pbv2.FacetFilter{
-					Domains: []string{"census.gov", "cdc.gov"},
+				[]*pbv2.FacetFilter{
+					{
+						Variables: []string{"Count_Person"},
+						Domain:    "census.gov",
+					},
+					{
+						Variables: []string{"Count_Person"},
+						Domain:    "cdc.gov",
+					},
 				},
 				"multi_filter.json",
 			},
 			{
 				[]string{"Count_Person", "Median_Age_Person"},
 				"country/USA<-containedInPlace+{typeOf:State}",
-				&pbv2.FacetFilter{
-					FacetId: map[string]string{
-						"Count_Person": "2176550201",
+				[]*pbv2.FacetFilter{
+					{
+						Variables: []string{"Count_Person"},
+						FacetId:   "2176550201",
 					},
 				},
 				"US_State_Facet_Id.json",
@@ -96,7 +107,7 @@ func TestFetchContainIn(t *testing.T) {
 				Variable: &pbv2.DcidOrExpression{Dcids: c.variables},
 				Entity:   &pbv2.DcidOrExpression{Expression: c.entityExpression},
 				Date:     date,
-				Filter:   c.filter,
+				Filters:  c.filter,
 			})
 			if err != nil {
 				t.Errorf("could not run V2Observation (contained_in): %s", err)

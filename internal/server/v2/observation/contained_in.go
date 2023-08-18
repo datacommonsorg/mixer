@@ -151,7 +151,7 @@ func FetchContainedIn(
 	ancestor string,
 	childType string,
 	queryDate string,
-	filter *pbv2.FacetFilter,
+	filters []*pbv2.FacetFilter,
 ) (*pbv2.ObservationResponse, error) {
 	// Need to use child places to for direct fetch.
 	var result *pbv2.ObservationResponse
@@ -175,6 +175,17 @@ func FetchContainedIn(
 				if err != nil {
 					return nil, err
 				}
+				variableFacetFilters := map[string][]*pbv2.FacetFilter{}
+				if filters != nil {
+					for _, facetFilter := range filters {
+						for _, variable := range facetFilter.Variables {
+							if _, ok := variableFacetFilters[variable]; !ok {
+								variableFacetFilters[variable] = []*pbv2.FacetFilter{}
+							}
+							variableFacetFilters[variable] = append(variableFacetFilters[variable], facetFilter)
+						}
+					}
+				}
 				for _, variable := range variables {
 					result.ByVariable[variable] = &pbv2.VariableObservation{
 						ByEntity: map[string]*pbv2.EntityObservation{},
@@ -191,31 +202,31 @@ func FetchContainedIn(
 					for _, cohort := range cohorts {
 						facet := util.GetFacet(cohort)
 						facetID := util.GetFacetID(facet)
-						// If there are facet filters, check that the cohort matches the
-						// filter
-						if filter != nil {
-							if filter.FacetId != nil && filter.FacetId[variable] != "" && filter.FacetId[variable] != facetID {
-								continue
-							}
-							if filter.Domains != nil {
-								url, err := url.Parse(facet.ProvenanceUrl)
-								if err != nil {
-									return nil, err
+						// If there are facet filters, check that the cohort matches at
+						// least one filter. Otherwise, skip.
+						if facetFilters, ok := variableFacetFilters[variable]; ok {
+							keepCohort := false
+							for _, facetFilter := range facetFilters {
+								matchesFilter := true
+								if facetFilter.FacetId != "" && facetFilter.FacetId != facetID {
+									matchesFilter = false
 								}
-								matchedDomain := false
-								for _, domain := range filter.Domains {
-									// To match domain or subdomain. For example, a provenance url of
-									// abc.xyz.com can match filter "xyz.com" and "abc.xyz.com".
-									if strings.HasSuffix(url.Hostname(), domain) {
-										matchedDomain = true
-										break
+								if facetFilter.Domain != "" {
+									url, err := url.Parse(facet.ProvenanceUrl)
+									if err != nil {
+										matchesFilter = false
+									}
+									if !strings.HasSuffix(url.Hostname(), facetFilter.Domain) {
+										matchesFilter = false
 									}
 								}
-								if !matchedDomain {
-									// Skip processing series with provenances that don't match
-									// domain filter
-									continue
+								if matchesFilter {
+									keepCohort = true
+									break
 								}
+							}
+							if !keepCohort {
+								continue
 							}
 						}
 						for entity, val := range cohort.Val {
@@ -272,7 +283,7 @@ func FetchContainedIn(
 				variables,
 				childPlaces,
 				queryDate,
-				filter,
+				filters,
 			)
 			if err != nil {
 				return nil, err
@@ -296,7 +307,7 @@ func FetchContainedIn(
 			variables,
 			childPlaces,
 			queryDate,
-			filter,
+			filters,
 		)
 		if err != nil {
 			return nil, err
