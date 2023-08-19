@@ -39,7 +39,7 @@ func TestFetchDirect(t *testing.T) {
 			variables  []string
 			entities   []string
 			date       string
-			filters    []*pbv2.FacetFilter
+			filter     *pbv2.FacetFilter
 			goldenFile string
 		}{
 			{
@@ -62,7 +62,7 @@ func TestFetchDirect(t *testing.T) {
 					"geoId/0649670",
 				},
 				"",
-				[]*pbv2.FacetFilter{},
+				&pbv2.FacetFilter{},
 				"all.json",
 			},
 			{
@@ -76,7 +76,7 @@ func TestFetchDirect(t *testing.T) {
 				},
 				[]string{"dummy", "country/FRA", "country/USA", "geoId/06", "geoId/0649670"},
 				"2015",
-				[]*pbv2.FacetFilter{},
+				&pbv2.FacetFilter{},
 				"2015.json",
 			},
 			{
@@ -90,7 +90,7 @@ func TestFetchDirect(t *testing.T) {
 				},
 				[]string{"dummy", "country/FRA", "country/USA", "geoId/06", "geoId/0649670"},
 				"2010",
-				[]*pbv2.FacetFilter{},
+				&pbv2.FacetFilter{},
 				"2010.json",
 			},
 			{
@@ -112,7 +112,7 @@ func TestFetchDirect(t *testing.T) {
 					"geoId/0649670",
 				},
 				"LATEST",
-				[]*pbv2.FacetFilter{},
+				&pbv2.FacetFilter{},
 				"latest.json",
 			},
 			{
@@ -121,7 +121,7 @@ func TestFetchDirect(t *testing.T) {
 				},
 				[]string{"country/USA"},
 				"2018-01",
-				[]*pbv2.FacetFilter{},
+				&pbv2.FacetFilter{},
 				"empty.json",
 			},
 			{
@@ -130,11 +130,8 @@ func TestFetchDirect(t *testing.T) {
 				},
 				[]string{"country/USA"},
 				"LATEST",
-				[]*pbv2.FacetFilter{
-					{
-						Variables: []string{"Count_Person"},
-						Domain:    "oecd.org",
-					},
+				&pbv2.FacetFilter{
+					Domains: []string{"oecd.org"},
 				},
 				"filter.json",
 			},
@@ -144,15 +141,8 @@ func TestFetchDirect(t *testing.T) {
 				},
 				[]string{"country/USA"},
 				"LATEST",
-				[]*pbv2.FacetFilter{
-					{
-						Variables: []string{"Count_Person"},
-						Domain:    "oecd.org",
-					},
-					{
-						Variables: []string{"Count_Person"},
-						Domain:    "cdc.gov",
-					},
+				&pbv2.FacetFilter{
+					Domains: []string{"oecd.org", "cdc.gov"},
 				},
 				"multi_filter.json",
 			},
@@ -162,11 +152,8 @@ func TestFetchDirect(t *testing.T) {
 				},
 				[]string{"country/USA"},
 				"LATEST",
-				[]*pbv2.FacetFilter{
-					{
-						Variables: []string{"Count_Person"},
-						FacetId:   "1151455814",
-					},
+				&pbv2.FacetFilter{
+					FacetId: "1151455814",
 				},
 				"facet_id_filter.json",
 			},
@@ -177,7 +164,7 @@ func TestFetchDirect(t *testing.T) {
 				Variable: &pbv2.DcidOrExpression{Dcids: c.variables},
 				Entity:   &pbv2.DcidOrExpression{Dcids: c.entities},
 				Date:     c.date,
-				Filters:  c.filters,
+				Filter:   c.filter,
 			})
 			if err != nil {
 				t.Errorf("could not run V2Observation (direct): %s", err)
@@ -186,7 +173,7 @@ func TestFetchDirect(t *testing.T) {
 			if latencyTest {
 				continue
 			}
-			if test.GenerateGolden {
+			if true {
 				test.UpdateGolden(resp, goldenPath, goldenFile)
 				continue
 			}

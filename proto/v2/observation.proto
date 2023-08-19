@@ -62,11 +62,9 @@ message FacetObservation {
 }
 
 message FacetFilter {
-  // List of variables that this facet filter applies to
-  repeated string variables = 1;
-  // When specified, only observations with provenance in this domain is
+  // When specified, only observations with provenance in these domains are
   // returned.
-  string domain = 2;
+  repeated string domains = 2;
   // When specified, only observations with this facet id are returned
   string facet_id = 3;
 }
@@ -86,10 +84,8 @@ message ObservationRequest {
   string date = 3;
   // Value of the observation
   string value = 4;
-  // [Optional] list of facet filters. For variabels that have at least one
-  // filter, only keep observations that match at least one filter. For other
-  // variables, keep all observations.
-  repeated FacetFilter filters = 5;
+  // [Optional] filter returned observations by facet
+  FacetFilter filter = 5;
   // Fields to return, valid values are: "variable", "entity", "date", "value", "facet"
   repeated string select = 6;
 }

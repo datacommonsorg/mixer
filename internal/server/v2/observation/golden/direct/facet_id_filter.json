@@ -19,46 +19,7 @@
     },
     "Median_Age_Person": {
       "by_entity": {
-        "country/USA": {
-          "ordered_facets": [
-            {
-              "facet_id": "3357919774",
-              "observations": [
-                {
-                  "date": "2019",
-                  "value": 38.1
-                }
-              ]
-            },
-            {
-              "facet_id": "2763329611",
-              "observations": [
-                {
-                  "date": "2019",
-                  "value": 38.1
-                }
-              ]
-            },
-            {
-              "facet_id": "3690003977",
-              "observations": [
-                {
-                  "date": "2019",
-                  "value": 38.1
-                }
-              ]
-            },
-            {
-              "facet_id": "4219092424",
-              "observations": [
-                {
-                  "date": "2019",
-                  "value": 38.1
-                }
-              ]
-            }
-          ]
-        }
+        "country/USA": {}
       }
     }
   },
@@ -68,30 +29,6 @@
       "provenance_url": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#",
       "measurement_method": "OECDRegionalStatistics",
       "observation_period": "P1Y"
-    },
-    "2763329611": {
-      "import_name": "CensusACS5YearSurvey_SubjectTables_S2601A",
-      "provenance_url": "https://data.census.gov/cedsci/table?q=S2601A&tid=ACSST5Y2019.S2601A",
-      "measurement_method": "CensusACS5yrSurveySubjectTable",
-      "unit": "Years"
-    },
-    "3357919774": {
-      "import_name": "CensusUSAMedianAgeIncome",
-      "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
-      "measurement_method": "CensusACS5yrSurvey",
-      "unit": "Year"
-    },
-    "3690003977": {
-      "import_name": "CensusACS5YearSurvey_SubjectTables_S2602",
-      "provenance_url": "https://data.census.gov/cedsci/table?q=S2602&tid=ACSST5Y2019.S2602",
-      "measurement_method": "CensusACS5yrSurveySubjectTable",
-      "unit": "Years"
-    },
-    "4219092424": {
-      "import_name": "CensusACS5YearSurvey_SubjectTables_S2603",
-      "provenance_url": "https://data.census.gov/cedsci/table?q=S2603&tid=ACSST5Y2019.S2603",
-      "measurement_method": "CensusACS5yrSurveySubjectTable",
-      "unit": "Years"
     }
   }
 }
