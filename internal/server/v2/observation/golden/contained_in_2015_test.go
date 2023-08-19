@@ -48,19 +48,19 @@ func TestFetchContainIn(t *testing.T) {
 					"test_var_1",
 				},
 				"country/USA<-containedInPlace+{typeOf:State}",
-				&pbv2.FacetFilter{},
+				nil,
 				"US_State.json",
 			},
 			{
 				[]string{"Count_Person", "Median_Age_Person"},
 				"geoId/06<-containedInPlace+{typeOf:County}",
-				&pbv2.FacetFilter{},
+				nil,
 				"CA_County.json",
 			},
 			{
 				[]string{"Count_Person"},
 				"country/FRA<-containedInPlace+{typeOf:AdministrativeArea2}",
-				&pbv2.FacetFilter{},
+				nil,
 				"FRA_AA2.json",
 			},
 			{
@@ -78,8 +78,14 @@ func TestFetchContainIn(t *testing.T) {
 			{
 				[]string{"Count_Person", "Median_Age_Person"},
 				"country/USA<-containedInPlace+{typeOf:State}",
-				&pbv2.FacetFilter{FacetId: "2176550201"},
+				&pbv2.FacetFilter{FacetIds: []string{"2176550201"}},
 				"US_State_Facet_Id.json",
+			},
+			{
+				[]string{"Count_Person", "Median_Age_Person"},
+				"country/USA<-containedInPlace+{typeOf:State}",
+				&pbv2.FacetFilter{FacetIds: []string{"2176550201", "10983471"}},
+				"US_State_Multi_Facet_Id.json",
 			},
 		} {
 			goldenFile := c.goldenFile

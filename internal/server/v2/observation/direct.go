@@ -40,8 +40,16 @@ const (
 
 func shouldKeepSourceSeries(filter *pbv2.FacetFilter, facet *pb.Facet) bool {
 	facetID := util.GetFacetID(facet)
-	if filter.FacetId != "" && filter.FacetId != facetID {
-		return false
+	if filter.FacetIds != nil {
+		matchedFacetId := false
+		for _, facetId := range filter.FacetIds {
+			if facetID == facetId {
+				matchedFacetId = true
+			}
+		}
+		if !matchedFacetId {
+			return false
+		}
 	}
 	if filter.Domains != nil {
 		url, err := url.Parse(facet.ProvenanceUrl)

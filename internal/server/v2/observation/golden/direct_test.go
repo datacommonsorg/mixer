@@ -62,7 +62,7 @@ func TestFetchDirect(t *testing.T) {
 					"geoId/0649670",
 				},
 				"",
-				&pbv2.FacetFilter{},
+				nil,
 				"all.json",
 			},
 			{
@@ -76,7 +76,7 @@ func TestFetchDirect(t *testing.T) {
 				},
 				[]string{"dummy", "country/FRA", "country/USA", "geoId/06", "geoId/0649670"},
 				"2015",
-				&pbv2.FacetFilter{},
+				nil,
 				"2015.json",
 			},
 			{
@@ -90,7 +90,7 @@ func TestFetchDirect(t *testing.T) {
 				},
 				[]string{"dummy", "country/FRA", "country/USA", "geoId/06", "geoId/0649670"},
 				"2010",
-				&pbv2.FacetFilter{},
+				nil,
 				"2010.json",
 			},
 			{
@@ -112,7 +112,7 @@ func TestFetchDirect(t *testing.T) {
 					"geoId/0649670",
 				},
 				"LATEST",
-				&pbv2.FacetFilter{},
+				nil,
 				"latest.json",
 			},
 			{
@@ -121,7 +121,7 @@ func TestFetchDirect(t *testing.T) {
 				},
 				[]string{"country/USA"},
 				"2018-01",
-				&pbv2.FacetFilter{},
+				nil,
 				"empty.json",
 			},
 			{
@@ -153,9 +153,20 @@ func TestFetchDirect(t *testing.T) {
 				[]string{"country/USA"},
 				"LATEST",
 				&pbv2.FacetFilter{
-					FacetId: "1151455814",
+					FacetIds: []string{"1151455814"},
 				},
 				"facet_id_filter.json",
+			},
+			{
+				[]string{
+					"Count_Person", "Median_Age_Person",
+				},
+				[]string{"country/USA"},
+				"LATEST",
+				&pbv2.FacetFilter{
+					FacetIds: []string{"1151455814", "1152061738"},
+				},
+				"multi_facet_id_filter.json",
 			},
 		} {
 			goldenFile := c.goldenFile

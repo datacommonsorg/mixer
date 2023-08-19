@@ -65,8 +65,8 @@ message FacetFilter {
   // When specified, only observations with provenance in these domains are
   // returned.
   repeated string domains = 2;
-  // When specified, only observations with this facet id are returned
-  string facet_id = 3;
+  // When specified, only observations with any of these facet ids are returned
+  repeated string facet_ids = 3;
 }
 
 // Generic observation request
