@@ -5,6 +5,15 @@
         "country/USA": {
           "ordered_facets": [
             {
+              "facet_id": "1152061738",
+              "observations": [
+                {
+                  "date": "2020",
+                  "value": 329484123
+                }
+              ]
+            },
+            {
               "facet_id": "1151455814",
               "observations": [
                 {
@@ -29,6 +38,10 @@
       "provenance_url": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#",
       "measurement_method": "OECDRegionalStatistics",
       "observation_period": "P1Y"
+    },
+    "1152061738": {
+      "import_name": "CDC_Mortality_UnderlyingCause_State",
+      "provenance_url": "https://wonder.cdc.gov/ucd-icd10.html"
     }
   }
 }

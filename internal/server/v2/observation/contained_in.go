@@ -150,7 +150,7 @@ func FetchContainedIn(
 	ancestor string,
 	childType string,
 	queryDate string,
-	filters []*pbv2.FacetFilter,
+	filter *pbv2.FacetFilter,
 ) (*pbv2.ObservationResponse, error) {
 	// Need to use child places to for direct fetch.
 	var result *pbv2.ObservationResponse
@@ -174,15 +174,6 @@ func FetchContainedIn(
 				if err != nil {
 					return nil, err
 				}
-				variableFacetFilters := map[string][]*pbv2.FacetFilter{}
-				for _, facetFilter := range filters {
-					for _, variable := range facetFilter.Variables {
-						if _, ok := variableFacetFilters[variable]; !ok {
-							variableFacetFilters[variable] = []*pbv2.FacetFilter{}
-						}
-						variableFacetFilters[variable] = append(variableFacetFilters[variable], facetFilter)
-					}
-				}
 				for _, variable := range variables {
 					result.ByVariable[variable] = &pbv2.VariableObservation{
 						ByEntity: map[string]*pbv2.EntityObservation{},
@@ -198,12 +189,10 @@ func FetchContainedIn(
 					sort.Sort(ranking.CohortByRank(cohorts))
 					for _, cohort := range cohorts {
 						facet := util.GetFacet(cohort)
-						// If there are facet filters, check that the cohort matches at
-						// least one filter. Otherwise, skip.
-						if facetFilters, ok := variableFacetFilters[variable]; ok {
-							if !shouldKeepSourceSeries(facetFilters, facet) {
-								continue
-							}
+						// If there is a facet filter, check that the cohort matches the
+						// filter. Otherwise, skip.
+						if filter != nil && !shouldKeepSourceSeries(filter, facet) {
+							continue
 						}
 						facetID := util.GetFacetID(facet)
 						for entity, val := range cohort.Val {
@@ -260,7 +249,7 @@ func FetchContainedIn(
 				variables,
 				childPlaces,
 				queryDate,
-				filters,
+				filter,
 			)
 			if err != nil {
 				return nil, err
@@ -284,7 +273,7 @@ func FetchContainedIn(
 			variables,
 			childPlaces,
 			queryDate,
-			filters,
+			filter,
 		)
 		if err != nil {
 			return nil, err
