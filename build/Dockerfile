@@ -20,19 +20,13 @@
 # server: image for mixer server
 
 
-FROM golang:1.20.7 AS go-protoc
+FROM golang:1.20.7-alpine3.17 AS go-protoc
 
 WORKDIR /mixer
 
 # Install protoc
-RUN apt-get update
-RUN apt-get upgrade -y
-RUN apt-get install -y unzip
-
-RUN curl -LO https://github.com/protocolbuffers/protobuf/releases/download/v3.19.4/protoc-3.19.4-linux-x86_64.zip
-RUN unzip protoc-3.19.4-linux-x86_64.zip
-RUN chmod +x /mixer/bin/protoc
-ENV PATH="${PATH}:/mixer/bin/"
+RUN apk update
+RUN apk add bash protobuf-dev
 
 # Install protobuf go plugin
 ENV GO111MODULE=on
@@ -41,7 +35,6 @@ RUN go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.3.0
 
 
 # Use pre-built go-protoc image from last step.
-
 FROM gcr.io/datcom-ci/go-protoc:latest AS server
 WORKDIR /mixer
 # Docker cache: Download modules
