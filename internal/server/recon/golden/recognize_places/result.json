@@ -23,7 +23,18 @@
           ]
         },
         {
-          "span": "economy and"
+          "span": "economy",
+          "places": [
+            {
+              "dcid": "geoId/4222264"
+            },
+            {
+              "dcid": "geoId/1820152"
+            }
+          ]
+        },
+        {
+          "span": "and"
         },
         {
           "span": "Florida",
@@ -65,7 +76,18 @@
     "I want to find the Middle Point of a line": {
       "items": [
         {
-          "span": "I want to find the Middle Point of a line"
+          "span": "I want to find the Middle Point"
+        },
+        {
+          "span": "of",
+          "places": [
+            {
+              "dcid": "wikidataId/Q988069"
+            }
+          ]
+        },
+        {
+          "span": "a line"
         }
       ]
     },
@@ -116,25 +138,39 @@
           "span": "crime in"
         },
         {
-          "span": "new york state",
+          "span": "new york",
           "places": [
             {
               "dcid": "geoId/36"
+            },
+            {
+              "dcid": "geoId/3651000"
             }
           ]
+        },
+        {
+          "span": "state"
         }
       ]
     },
     "economy of Asia": {
       "items": [
         {
-          "span": "economy of"
-        },
-        {
-          "span": "Asia",
+          "span": "economy",
           "places": [
             {
-              "dcid": "asia"
+              "dcid": "geoId/4222264"
+            },
+            {
+              "dcid": "geoId/1820152"
+            }
+          ]
+        },
+        {
+          "span": "of Asia",
+          "places": [
+            {
+              "dcid": "wikidataId/Q988069"
             }
           ]
         }
@@ -311,10 +347,10 @@
               "dcid": "geoId/3568430"
             },
             {
-              "dcid": "geoId/0463260"
+              "dcid": "geoId/1767613"
             },
             {
-              "dcid": "geoId/1767613"
+              "dcid": "geoId/0463260"
             },
             {
               "dcid": "geoId/3568500"
@@ -362,10 +398,10 @@
               "dcid": "geoId/3568430"
             },
             {
-              "dcid": "geoId/0463260"
+              "dcid": "geoId/1767613"
             },
             {
-              "dcid": "geoId/1767613"
+              "dcid": "geoId/0463260"
             },
             {
               "dcid": "geoId/3568500"
@@ -407,6 +443,9 @@
             },
             {
               "dcid": "wikidataId/Q950305"
+            },
+            {
+              "dcid": "geoId/3550512"
             },
             {
               "dcid": "geoId/3550515"
@@ -472,6 +511,9 @@
             },
             {
               "dcid": "wikidataId/Q950305"
+            },
+            {
+              "dcid": "geoId/3550512"
             },
             {
               "dcid": "geoId/3550515"
