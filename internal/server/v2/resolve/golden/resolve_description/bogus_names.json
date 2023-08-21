@@ -3,13 +3,9 @@
     {
       "node": "Cash",
       "resolvedIds": [
-        "geoId/4512205",
         "geoId/0511920"
       ],
       "candidates": [
-        {
-          "dcid": "geoId/4512205"
-        },
         {
           "dcid": "geoId/0511920"
         }
@@ -40,13 +36,9 @@
     {
       "node": "cash",
       "resolvedIds": [
-        "geoId/4512205",
         "geoId/0511920"
       ],
       "candidates": [
-        {
-          "dcid": "geoId/4512205"
-        },
         {
           "dcid": "geoId/0511920"
         }
