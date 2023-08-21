@@ -199,6 +199,111 @@ func (x *Facets) GetFacets() []*Facet {
 	return nil
 }
 
+// PlaceFacet contains the source and measurement information for a set of
+// statistical observations about a place.
+type PlaceFacet struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Facet *Facet `protobuf:"bytes,1,opt,name=facet,proto3" json:"facet,omitempty"`
+	// Number of observations for given place + Facet.
+	ObsCount int32 `protobuf:"varint,2,opt,name=obs_count,json=obsCount,proto3" json:"obs_count,omitempty"`
+}
+
+func (x *PlaceFacet) Reset() {
+	*x = PlaceFacet{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_stat_proto_msgTypes[2]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *PlaceFacet) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PlaceFacet) ProtoMessage() {}
+
+func (x *PlaceFacet) ProtoReflect() protoreflect.Message {
+	mi := &file_stat_proto_msgTypes[2]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PlaceFacet.ProtoReflect.Descriptor instead.
+func (*PlaceFacet) Descriptor() ([]byte, []int) {
+	return file_stat_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *PlaceFacet) GetFacet() *Facet {
+	if x != nil {
+		return x.Facet
+	}
+	return nil
+}
+
+func (x *PlaceFacet) GetObsCount() int32 {
+	if x != nil {
+		return x.ObsCount
+	}
+	return 0
+}
+
+type PlaceFacets struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	PlaceFacets []*PlaceFacet `protobuf:"bytes,1,rep,name=place_facets,json=placeFacets,proto3" json:"place_facets,omitempty"`
+}
+
+func (x *PlaceFacets) Reset() {
+	*x = PlaceFacets{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_stat_proto_msgTypes[3]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *PlaceFacets) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PlaceFacets) ProtoMessage() {}
+
+func (x *PlaceFacets) ProtoReflect() protoreflect.Message {
+	mi := &file_stat_proto_msgTypes[3]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PlaceFacets.ProtoReflect.Descriptor instead.
+func (*PlaceFacets) Descriptor() ([]byte, []int) {
+	return file_stat_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *PlaceFacets) GetPlaceFacets() []*PlaceFacet {
+	if x != nil {
+		return x.PlaceFacets
+	}
+	return nil
+}
+
 type PointStat struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -221,7 +326,7 @@ type PointStat struct {
 func (x *PointStat) Reset() {
 	*x = PointStat{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_stat_proto_msgTypes[2]
+		mi := &file_stat_proto_msgTypes[4]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -234,7 +339,7 @@ func (x *PointStat) String() string {
 func (*PointStat) ProtoMessage() {}
 
 func (x *PointStat) ProtoReflect() protoreflect.Message {
-	mi := &file_stat_proto_msgTypes[2]
+	mi := &file_stat_proto_msgTypes[4]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -247,7 +352,7 @@ func (x *PointStat) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PointStat.ProtoReflect.Descriptor instead.
 func (*PointStat) Descriptor() ([]byte, []int) {
-	return file_stat_proto_rawDescGZIP(), []int{2}
+	return file_stat_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *PointStat) GetDate() string {
@@ -307,7 +412,7 @@ type SourceSeries struct {
 func (x *SourceSeries) Reset() {
 	*x = SourceSeries{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_stat_proto_msgTypes[3]
+		mi := &file_stat_proto_msgTypes[5]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -320,7 +425,7 @@ func (x *SourceSeries) String() string {
 func (*SourceSeries) ProtoMessage() {}
 
 func (x *SourceSeries) ProtoReflect() protoreflect.Message {
-	mi := &file_stat_proto_msgTypes[3]
+	mi := &file_stat_proto_msgTypes[5]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -333,7 +438,7 @@ func (x *SourceSeries) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SourceSeries.ProtoReflect.Descriptor instead.
 func (*SourceSeries) Descriptor() ([]byte, []int) {
-	return file_stat_proto_rawDescGZIP(), []int{3}
+	return file_stat_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *SourceSeries) GetVal() map[string]float64 {
@@ -428,7 +533,7 @@ type Series struct {
 func (x *Series) Reset() {
 	*x = Series{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_stat_proto_msgTypes[4]
+		mi := &file_stat_proto_msgTypes[6]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -441,7 +546,7 @@ func (x *Series) String() string {
 func (*Series) ProtoMessage() {}
 
 func (x *Series) ProtoReflect() protoreflect.Message {
-	mi := &file_stat_proto_msgTypes[4]
+	mi := &file_stat_proto_msgTypes[6]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -454,7 +559,7 @@ func (x *Series) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Series.ProtoReflect.Descriptor instead.
 func (*Series) Descriptor() ([]byte, []int) {
-	return file_stat_proto_rawDescGZIP(), []int{4}
+	return file_stat_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *Series) GetVal() map[string]float64 {
@@ -485,7 +590,7 @@ type ObsTimeSeries struct {
 func (x *ObsTimeSeries) Reset() {
 	*x = ObsTimeSeries{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_stat_proto_msgTypes[5]
+		mi := &file_stat_proto_msgTypes[7]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -498,7 +603,7 @@ func (x *ObsTimeSeries) String() string {
 func (*ObsTimeSeries) ProtoMessage() {}
 
 func (x *ObsTimeSeries) ProtoReflect() protoreflect.Message {
-	mi := &file_stat_proto_msgTypes[5]
+	mi := &file_stat_proto_msgTypes[7]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -511,7 +616,7 @@ func (x *ObsTimeSeries) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ObsTimeSeries.ProtoReflect.Descriptor instead.
 func (*ObsTimeSeries) Descriptor() ([]byte, []int) {
-	return file_stat_proto_rawDescGZIP(), []int{5}
+	return file_stat_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *ObsTimeSeries) GetPlaceName() string {
@@ -549,7 +654,7 @@ type ObsCollection struct {
 func (x *ObsCollection) Reset() {
 	*x = ObsCollection{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_stat_proto_msgTypes[6]
+		mi := &file_stat_proto_msgTypes[8]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -562,7 +667,7 @@ func (x *ObsCollection) String() string {
 func (*ObsCollection) ProtoMessage() {}
 
 func (x *ObsCollection) ProtoReflect() protoreflect.Message {
-	mi := &file_stat_proto_msgTypes[6]
+	mi := &file_stat_proto_msgTypes[8]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -575,7 +680,7 @@ func (x *ObsCollection) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ObsCollection.ProtoReflect.Descriptor instead.
 func (*ObsCollection) Descriptor() ([]byte, []int) {
-	return file_stat_proto_rawDescGZIP(), []int{6}
+	return file_stat_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *ObsCollection) GetSourceCohorts() []*SourceSeries {
@@ -601,7 +706,7 @@ type ChartStore struct {
 func (x *ChartStore) Reset() {
 	*x = ChartStore{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_stat_proto_msgTypes[7]
+		mi := &file_stat_proto_msgTypes[9]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -614,7 +719,7 @@ func (x *ChartStore) String() string {
 func (*ChartStore) ProtoMessage() {}
 
 func (x *ChartStore) ProtoReflect() protoreflect.Message {
-	mi := &file_stat_proto_msgTypes[7]
+	mi := &file_stat_proto_msgTypes[9]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -627,7 +732,7 @@ func (x *ChartStore) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ChartStore.ProtoReflect.Descriptor instead.
 func (*ChartStore) Descriptor() ([]byte, []int) {
-	return file_stat_proto_rawDescGZIP(), []int{7}
+	return file_stat_proto_rawDescGZIP(), []int{9}
 }
 
 func (m *ChartStore) GetVal() isChartStore_Val {
@@ -681,7 +786,7 @@ type PlaceStat struct {
 func (x *PlaceStat) Reset() {
 	*x = PlaceStat{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_stat_proto_msgTypes[8]
+		mi := &file_stat_proto_msgTypes[10]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -694,7 +799,7 @@ func (x *PlaceStat) String() string {
 func (*PlaceStat) ProtoMessage() {}
 
 func (x *PlaceStat) ProtoReflect() protoreflect.Message {
-	mi := &file_stat_proto_msgTypes[8]
+	mi := &file_stat_proto_msgTypes[10]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -707,7 +812,7 @@ func (x *PlaceStat) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PlaceStat.ProtoReflect.Descriptor instead.
 func (*PlaceStat) Descriptor() ([]byte, []int) {
-	return file_stat_proto_rawDescGZIP(), []int{8}
+	return file_stat_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *PlaceStat) GetStatVarData() map[string]*ObsTimeSeries {
@@ -732,7 +837,7 @@ type StatVarSeries struct {
 func (x *StatVarSeries) Reset() {
 	*x = StatVarSeries{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_stat_proto_msgTypes[9]
+		mi := &file_stat_proto_msgTypes[11]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -745,7 +850,7 @@ func (x *StatVarSeries) String() string {
 func (*StatVarSeries) ProtoMessage() {}
 
 func (x *StatVarSeries) ProtoReflect() protoreflect.Message {
-	mi := &file_stat_proto_msgTypes[9]
+	mi := &file_stat_proto_msgTypes[11]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -758,7 +863,7 @@ func (x *StatVarSeries) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StatVarSeries.ProtoReflect.Descriptor instead.
 func (*StatVarSeries) Descriptor() ([]byte, []int) {
-	return file_stat_proto_rawDescGZIP(), []int{9}
+	return file_stat_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *StatVarSeries) GetData() map[string]*Series {
@@ -794,7 +899,7 @@ type GetStatsRequest struct {
 func (x *GetStatsRequest) Reset() {
 	*x = GetStatsRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_stat_proto_msgTypes[10]
+		mi := &file_stat_proto_msgTypes[12]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -807,7 +912,7 @@ func (x *GetStatsRequest) String() string {
 func (*GetStatsRequest) ProtoMessage() {}
 
 func (x *GetStatsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_stat_proto_msgTypes[10]
+	mi := &file_stat_proto_msgTypes[12]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -820,7 +925,7 @@ func (x *GetStatsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetStatsRequest.ProtoReflect.Descriptor instead.
 func (*GetStatsRequest) Descriptor() ([]byte, []int) {
-	return file_stat_proto_rawDescGZIP(), []int{10}
+	return file_stat_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *GetStatsRequest) GetPlace() []string {
@@ -878,7 +983,7 @@ type GetStatsResponse struct {
 func (x *GetStatsResponse) Reset() {
 	*x = GetStatsResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_stat_proto_msgTypes[11]
+		mi := &file_stat_proto_msgTypes[13]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -891,7 +996,7 @@ func (x *GetStatsResponse) String() string {
 func (*GetStatsResponse) ProtoMessage() {}
 
 func (x *GetStatsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_stat_proto_msgTypes[11]
+	mi := &file_stat_proto_msgTypes[13]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -904,7 +1009,7 @@ func (x *GetStatsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetStatsResponse.ProtoReflect.Descriptor instead.
 func (*GetStatsResponse) Descriptor() ([]byte, []int) {
-	return file_stat_proto_rawDescGZIP(), []int{11}
+	return file_stat_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *GetStatsResponse) GetPayload() string {
@@ -939,7 +1044,7 @@ type GetStatValueRequest struct {
 func (x *GetStatValueRequest) Reset() {
 	*x = GetStatValueRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_stat_proto_msgTypes[12]
+		mi := &file_stat_proto_msgTypes[14]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -952,7 +1057,7 @@ func (x *GetStatValueRequest) String() string {
 func (*GetStatValueRequest) ProtoMessage() {}
 
 func (x *GetStatValueRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_stat_proto_msgTypes[12]
+	mi := &file_stat_proto_msgTypes[14]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -965,7 +1070,7 @@ func (x *GetStatValueRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetStatValueRequest.ProtoReflect.Descriptor instead.
 func (*GetStatValueRequest) Descriptor() ([]byte, []int) {
-	return file_stat_proto_rawDescGZIP(), []int{12}
+	return file_stat_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *GetStatValueRequest) GetPlace() string {
@@ -1028,7 +1133,7 @@ type GetStatValueResponse struct {
 func (x *GetStatValueResponse) Reset() {
 	*x = GetStatValueResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_stat_proto_msgTypes[13]
+		mi := &file_stat_proto_msgTypes[15]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1041,7 +1146,7 @@ func (x *GetStatValueResponse) String() string {
 func (*GetStatValueResponse) ProtoMessage() {}
 
 func (x *GetStatValueResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_stat_proto_msgTypes[13]
+	mi := &file_stat_proto_msgTypes[15]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1054,7 +1159,7 @@ func (x *GetStatValueResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetStatValueResponse.ProtoReflect.Descriptor instead.
 func (*GetStatValueResponse) Descriptor() ([]byte, []int) {
-	return file_stat_proto_rawDescGZIP(), []int{13}
+	return file_stat_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *GetStatValueResponse) GetValue() float64 {
@@ -1087,7 +1192,7 @@ type GetStatSeriesRequest struct {
 func (x *GetStatSeriesRequest) Reset() {
 	*x = GetStatSeriesRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_stat_proto_msgTypes[14]
+		mi := &file_stat_proto_msgTypes[16]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1100,7 +1205,7 @@ func (x *GetStatSeriesRequest) String() string {
 func (*GetStatSeriesRequest) ProtoMessage() {}
 
 func (x *GetStatSeriesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_stat_proto_msgTypes[14]
+	mi := &file_stat_proto_msgTypes[16]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1113,7 +1218,7 @@ func (x *GetStatSeriesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetStatSeriesRequest.ProtoReflect.Descriptor instead.
 func (*GetStatSeriesRequest) Descriptor() ([]byte, []int) {
-	return file_stat_proto_rawDescGZIP(), []int{14}
+	return file_stat_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *GetStatSeriesRequest) GetPlace() string {
@@ -1171,7 +1276,7 @@ type GetStatSeriesResponse struct {
 func (x *GetStatSeriesResponse) Reset() {
 	*x = GetStatSeriesResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_stat_proto_msgTypes[15]
+		mi := &file_stat_proto_msgTypes[17]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1184,7 +1289,7 @@ func (x *GetStatSeriesResponse) String() string {
 func (*GetStatSeriesResponse) ProtoMessage() {}
 
 func (x *GetStatSeriesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_stat_proto_msgTypes[15]
+	mi := &file_stat_proto_msgTypes[17]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1197,7 +1302,7 @@ func (x *GetStatSeriesResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetStatSeriesResponse.ProtoReflect.Descriptor instead.
 func (*GetStatSeriesResponse) Descriptor() ([]byte, []int) {
-	return file_stat_proto_rawDescGZIP(), []int{15}
+	return file_stat_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *GetStatSeriesResponse) GetSeries() map[string]float64 {
@@ -1222,7 +1327,7 @@ type GetStatAllRequest struct {
 func (x *GetStatAllRequest) Reset() {
 	*x = GetStatAllRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_stat_proto_msgTypes[16]
+		mi := &file_stat_proto_msgTypes[18]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1235,7 +1340,7 @@ func (x *GetStatAllRequest) String() string {
 func (*GetStatAllRequest) ProtoMessage() {}
 
 func (x *GetStatAllRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_stat_proto_msgTypes[16]
+	mi := &file_stat_proto_msgTypes[18]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1248,7 +1353,7 @@ func (x *GetStatAllRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetStatAllRequest.ProtoReflect.Descriptor instead.
 func (*GetStatAllRequest) Descriptor() ([]byte, []int) {
-	return file_stat_proto_rawDescGZIP(), []int{16}
+	return file_stat_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *GetStatAllRequest) GetPlaces() []string {
@@ -1322,7 +1427,7 @@ type GetStatAllResponse struct {
 func (x *GetStatAllResponse) Reset() {
 	*x = GetStatAllResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_stat_proto_msgTypes[17]
+		mi := &file_stat_proto_msgTypes[19]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1335,7 +1440,7 @@ func (x *GetStatAllResponse) String() string {
 func (*GetStatAllResponse) ProtoMessage() {}
 
 func (x *GetStatAllResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_stat_proto_msgTypes[17]
+	mi := &file_stat_proto_msgTypes[19]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1348,7 +1453,7 @@ func (x *GetStatAllResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetStatAllResponse.ProtoReflect.Descriptor instead.
 func (*GetStatAllResponse) Descriptor() ([]byte, []int) {
-	return file_stat_proto_rawDescGZIP(), []int{17}
+	return file_stat_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *GetStatAllResponse) GetPlaceData() map[string]*PlaceStat {
@@ -1371,7 +1476,7 @@ type StatDate struct {
 func (x *StatDate) Reset() {
 	*x = StatDate{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_stat_proto_msgTypes[18]
+		mi := &file_stat_proto_msgTypes[20]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1384,7 +1489,7 @@ func (x *StatDate) String() string {
 func (*StatDate) ProtoMessage() {}
 
 func (x *StatDate) ProtoReflect() protoreflect.Message {
-	mi := &file_stat_proto_msgTypes[18]
+	mi := &file_stat_proto_msgTypes[20]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1397,7 +1502,7 @@ func (x *StatDate) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StatDate.ProtoReflect.Descriptor instead.
 func (*StatDate) Descriptor() ([]byte, []int) {
-	return file_stat_proto_rawDescGZIP(), []int{18}
+	return file_stat_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *StatDate) GetDatePlaceCount() map[string]float64 {
@@ -1425,7 +1530,7 @@ type StatDateList struct {
 func (x *StatDateList) Reset() {
 	*x = StatDateList{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_stat_proto_msgTypes[19]
+		mi := &file_stat_proto_msgTypes[21]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1438,7 +1543,7 @@ func (x *StatDateList) String() string {
 func (*StatDateList) ProtoMessage() {}
 
 func (x *StatDateList) ProtoReflect() protoreflect.Message {
-	mi := &file_stat_proto_msgTypes[19]
+	mi := &file_stat_proto_msgTypes[21]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1451,7 +1556,7 @@ func (x *StatDateList) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StatDateList.ProtoReflect.Descriptor instead.
 func (*StatDateList) Descriptor() ([]byte, []int) {
-	return file_stat_proto_rawDescGZIP(), []int{19}
+	return file_stat_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *StatDateList) GetStatDate() []*StatDate {
@@ -1474,7 +1579,7 @@ type GetStatDateWithinPlaceRequest struct {
 func (x *GetStatDateWithinPlaceRequest) Reset() {
 	*x = GetStatDateWithinPlaceRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_stat_proto_msgTypes[20]
+		mi := &file_stat_proto_msgTypes[22]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1487,7 +1592,7 @@ func (x *GetStatDateWithinPlaceRequest) String() string {
 func (*GetStatDateWithinPlaceRequest) ProtoMessage() {}
 
 func (x *GetStatDateWithinPlaceRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_stat_proto_msgTypes[20]
+	mi := &file_stat_proto_msgTypes[22]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1500,7 +1605,7 @@ func (x *GetStatDateWithinPlaceRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetStatDateWithinPlaceRequest.ProtoReflect.Descriptor instead.
 func (*GetStatDateWithinPlaceRequest) Descriptor() ([]byte, []int) {
-	return file_stat_proto_rawDescGZIP(), []int{20}
+	return file_stat_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *GetStatDateWithinPlaceRequest) GetAncestorPlace() string {
@@ -1536,7 +1641,7 @@ type GetStatDateWithinPlaceResponse struct {
 func (x *GetStatDateWithinPlaceResponse) Reset() {
 	*x = GetStatDateWithinPlaceResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_stat_proto_msgTypes[21]
+		mi := &file_stat_proto_msgTypes[23]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1549,7 +1654,7 @@ func (x *GetStatDateWithinPlaceResponse) String() string {
 func (*GetStatDateWithinPlaceResponse) ProtoMessage() {}
 
 func (x *GetStatDateWithinPlaceResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_stat_proto_msgTypes[21]
+	mi := &file_stat_proto_msgTypes[23]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1562,7 +1667,7 @@ func (x *GetStatDateWithinPlaceResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetStatDateWithinPlaceResponse.ProtoReflect.Descriptor instead.
 func (*GetStatDateWithinPlaceResponse) Descriptor() ([]byte, []int) {
-	return file_stat_proto_rawDescGZIP(), []int{21}
+	return file_stat_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *GetStatDateWithinPlaceResponse) GetData() map[string]*StatDateList {
@@ -1599,7 +1704,17 @@ var file_stat_proto_rawDesc = []byte{
 	0x22, 0x34, 0x0a, 0x06, 0x46, 0x61, 0x63, 0x65, 0x74, 0x73, 0x12, 0x2a, 0x0a, 0x06, 0x66, 0x61,
 	0x63, 0x65, 0x74, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x12, 0x2e, 0x64, 0x61, 0x74,
 	0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e, 0x46, 0x61, 0x63, 0x65, 0x74, 0x52, 0x06,
-	0x66, 0x61, 0x63, 0x65, 0x74, 0x73, 0x22, 0xa7, 0x01, 0x0a, 0x09, 0x50, 0x6f, 0x69, 0x6e, 0x74,
+	0x66, 0x61, 0x63, 0x65, 0x74, 0x73, 0x22, 0x53, 0x0a, 0x0a, 0x50, 0x6c, 0x61, 0x63, 0x65, 0x46,
+	0x61, 0x63, 0x65, 0x74, 0x12, 0x28, 0x0a, 0x05, 0x66, 0x61, 0x63, 0x65, 0x74, 0x18, 0x01, 0x20,
+	0x01, 0x28, 0x0b, 0x32, 0x12, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e,
+	0x73, 0x2e, 0x46, 0x61, 0x63, 0x65, 0x74, 0x52, 0x05, 0x66, 0x61, 0x63, 0x65, 0x74, 0x12, 0x1b,
+	0x0a, 0x09, 0x6f, 0x62, 0x73, 0x5f, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x18, 0x02, 0x20, 0x01, 0x28,
+	0x05, 0x52, 0x08, 0x6f, 0x62, 0x73, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x22, 0x49, 0x0a, 0x0b, 0x50,
+	0x6c, 0x61, 0x63, 0x65, 0x46, 0x61, 0x63, 0x65, 0x74, 0x73, 0x12, 0x3a, 0x0a, 0x0c, 0x70, 0x6c,
+	0x61, 0x63, 0x65, 0x5f, 0x66, 0x61, 0x63, 0x65, 0x74, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b,
+	0x32, 0x17, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e, 0x50,
+	0x6c, 0x61, 0x63, 0x65, 0x46, 0x61, 0x63, 0x65, 0x74, 0x52, 0x0b, 0x70, 0x6c, 0x61, 0x63, 0x65,
+	0x46, 0x61, 0x63, 0x65, 0x74, 0x73, 0x22, 0xa7, 0x01, 0x0a, 0x09, 0x50, 0x6f, 0x69, 0x6e, 0x74,
 	0x53, 0x74, 0x61, 0x74, 0x12, 0x12, 0x0a, 0x04, 0x64, 0x61, 0x74, 0x65, 0x18, 0x01, 0x20, 0x01,
 	0x28, 0x09, 0x52, 0x04, 0x64, 0x61, 0x74, 0x65, 0x12, 0x19, 0x0a, 0x05, 0x76, 0x61, 0x6c, 0x75,
 	0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x01, 0x48, 0x00, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65,
@@ -1841,68 +1956,72 @@ func file_stat_proto_rawDescGZIP() []byte {
 	return file_stat_proto_rawDescData
 }
 
-var file_stat_proto_msgTypes = make([]protoimpl.MessageInfo, 31)
+var file_stat_proto_msgTypes = make([]protoimpl.MessageInfo, 33)
 var file_stat_proto_goTypes = []interface{}{
 	(*Facet)(nil),                          // 0: datacommons.Facet
 	(*Facets)(nil),                         // 1: datacommons.Facets
-	(*PointStat)(nil),                      // 2: datacommons.PointStat
-	(*SourceSeries)(nil),                   // 3: datacommons.SourceSeries
-	(*Series)(nil),                         // 4: datacommons.Series
-	(*ObsTimeSeries)(nil),                  // 5: datacommons.ObsTimeSeries
-	(*ObsCollection)(nil),                  // 6: datacommons.ObsCollection
-	(*ChartStore)(nil),                     // 7: datacommons.ChartStore
-	(*PlaceStat)(nil),                      // 8: datacommons.PlaceStat
-	(*StatVarSeries)(nil),                  // 9: datacommons.StatVarSeries
-	(*GetStatsRequest)(nil),                // 10: datacommons.GetStatsRequest
-	(*GetStatsResponse)(nil),               // 11: datacommons.GetStatsResponse
-	(*GetStatValueRequest)(nil),            // 12: datacommons.GetStatValueRequest
-	(*GetStatValueResponse)(nil),           // 13: datacommons.GetStatValueResponse
-	(*GetStatSeriesRequest)(nil),           // 14: datacommons.GetStatSeriesRequest
-	(*GetStatSeriesResponse)(nil),          // 15: datacommons.GetStatSeriesResponse
-	(*GetStatAllRequest)(nil),              // 16: datacommons.GetStatAllRequest
-	(*GetStatAllResponse)(nil),             // 17: datacommons.GetStatAllResponse
-	(*StatDate)(nil),                       // 18: datacommons.StatDate
-	(*StatDateList)(nil),                   // 19: datacommons.StatDateList
-	(*GetStatDateWithinPlaceRequest)(nil),  // 20: datacommons.GetStatDateWithinPlaceRequest
-	(*GetStatDateWithinPlaceResponse)(nil), // 21: datacommons.GetStatDateWithinPlaceResponse
-	nil,                                    // 22: datacommons.SourceSeries.ValEntry
-	nil,                                    // 23: datacommons.SourceSeries.PlaceToLatestDateEntry
-	nil,                                    // 24: datacommons.Series.ValEntry
-	nil,                                    // 25: datacommons.PlaceStat.StatVarDataEntry
-	nil,                                    // 26: datacommons.StatVarSeries.DataEntry
-	nil,                                    // 27: datacommons.GetStatSeriesResponse.SeriesEntry
-	nil,                                    // 28: datacommons.GetStatAllResponse.PlaceDataEntry
-	nil,                                    // 29: datacommons.StatDate.DatePlaceCountEntry
-	nil,                                    // 30: datacommons.GetStatDateWithinPlaceResponse.DataEntry
+	(*PlaceFacet)(nil),                     // 2: datacommons.PlaceFacet
+	(*PlaceFacets)(nil),                    // 3: datacommons.PlaceFacets
+	(*PointStat)(nil),                      // 4: datacommons.PointStat
+	(*SourceSeries)(nil),                   // 5: datacommons.SourceSeries
+	(*Series)(nil),                         // 6: datacommons.Series
+	(*ObsTimeSeries)(nil),                  // 7: datacommons.ObsTimeSeries
+	(*ObsCollection)(nil),                  // 8: datacommons.ObsCollection
+	(*ChartStore)(nil),                     // 9: datacommons.ChartStore
+	(*PlaceStat)(nil),                      // 10: datacommons.PlaceStat
+	(*StatVarSeries)(nil),                  // 11: datacommons.StatVarSeries
+	(*GetStatsRequest)(nil),                // 12: datacommons.GetStatsRequest
+	(*GetStatsResponse)(nil),               // 13: datacommons.GetStatsResponse
+	(*GetStatValueRequest)(nil),            // 14: datacommons.GetStatValueRequest
+	(*GetStatValueResponse)(nil),           // 15: datacommons.GetStatValueResponse
+	(*GetStatSeriesRequest)(nil),           // 16: datacommons.GetStatSeriesRequest
+	(*GetStatSeriesResponse)(nil),          // 17: datacommons.GetStatSeriesResponse
+	(*GetStatAllRequest)(nil),              // 18: datacommons.GetStatAllRequest
+	(*GetStatAllResponse)(nil),             // 19: datacommons.GetStatAllResponse
+	(*StatDate)(nil),                       // 20: datacommons.StatDate
+	(*StatDateList)(nil),                   // 21: datacommons.StatDateList
+	(*GetStatDateWithinPlaceRequest)(nil),  // 22: datacommons.GetStatDateWithinPlaceRequest
+	(*GetStatDateWithinPlaceResponse)(nil), // 23: datacommons.GetStatDateWithinPlaceResponse
+	nil,                                    // 24: datacommons.SourceSeries.ValEntry
+	nil,                                    // 25: datacommons.SourceSeries.PlaceToLatestDateEntry
+	nil,                                    // 26: datacommons.Series.ValEntry
+	nil,                                    // 27: datacommons.PlaceStat.StatVarDataEntry
+	nil,                                    // 28: datacommons.StatVarSeries.DataEntry
+	nil,                                    // 29: datacommons.GetStatSeriesResponse.SeriesEntry
+	nil,                                    // 30: datacommons.GetStatAllResponse.PlaceDataEntry
+	nil,                                    // 31: datacommons.StatDate.DatePlaceCountEntry
+	nil,                                    // 32: datacommons.GetStatDateWithinPlaceResponse.DataEntry
 }
 var file_stat_proto_depIdxs = []int32{
 	0,  // 0: datacommons.Facets.facets:type_name -> datacommons.Facet
-	0,  // 1: datacommons.PointStat.metadata:type_name -> datacommons.Facet
-	22, // 2: datacommons.SourceSeries.val:type_name -> datacommons.SourceSeries.ValEntry
-	23, // 3: datacommons.SourceSeries.place_to_latest_date:type_name -> datacommons.SourceSeries.PlaceToLatestDateEntry
-	24, // 4: datacommons.Series.val:type_name -> datacommons.Series.ValEntry
-	0,  // 5: datacommons.Series.metadata:type_name -> datacommons.Facet
-	3,  // 6: datacommons.ObsTimeSeries.source_series:type_name -> datacommons.SourceSeries
-	3,  // 7: datacommons.ObsCollection.source_cohorts:type_name -> datacommons.SourceSeries
-	5,  // 8: datacommons.ChartStore.obs_time_series:type_name -> datacommons.ObsTimeSeries
-	6,  // 9: datacommons.ChartStore.obs_collection:type_name -> datacommons.ObsCollection
-	25, // 10: datacommons.PlaceStat.stat_var_data:type_name -> datacommons.PlaceStat.StatVarDataEntry
-	26, // 11: datacommons.StatVarSeries.data:type_name -> datacommons.StatVarSeries.DataEntry
-	27, // 12: datacommons.GetStatSeriesResponse.series:type_name -> datacommons.GetStatSeriesResponse.SeriesEntry
-	28, // 13: datacommons.GetStatAllResponse.place_data:type_name -> datacommons.GetStatAllResponse.PlaceDataEntry
-	29, // 14: datacommons.StatDate.date_place_count:type_name -> datacommons.StatDate.DatePlaceCountEntry
-	0,  // 15: datacommons.StatDate.metadata:type_name -> datacommons.Facet
-	18, // 16: datacommons.StatDateList.stat_date:type_name -> datacommons.StatDate
-	30, // 17: datacommons.GetStatDateWithinPlaceResponse.data:type_name -> datacommons.GetStatDateWithinPlaceResponse.DataEntry
-	5,  // 18: datacommons.PlaceStat.StatVarDataEntry.value:type_name -> datacommons.ObsTimeSeries
-	4,  // 19: datacommons.StatVarSeries.DataEntry.value:type_name -> datacommons.Series
-	8,  // 20: datacommons.GetStatAllResponse.PlaceDataEntry.value:type_name -> datacommons.PlaceStat
-	19, // 21: datacommons.GetStatDateWithinPlaceResponse.DataEntry.value:type_name -> datacommons.StatDateList
-	22, // [22:22] is the sub-list for method output_type
-	22, // [22:22] is the sub-list for method input_type
-	22, // [22:22] is the sub-list for extension type_name
-	22, // [22:22] is the sub-list for extension extendee
-	0,  // [0:22] is the sub-list for field type_name
+	0,  // 1: datacommons.PlaceFacet.facet:type_name -> datacommons.Facet
+	2,  // 2: datacommons.PlaceFacets.place_facets:type_name -> datacommons.PlaceFacet
+	0,  // 3: datacommons.PointStat.metadata:type_name -> datacommons.Facet
+	24, // 4: datacommons.SourceSeries.val:type_name -> datacommons.SourceSeries.ValEntry
+	25, // 5: datacommons.SourceSeries.place_to_latest_date:type_name -> datacommons.SourceSeries.PlaceToLatestDateEntry
+	26, // 6: datacommons.Series.val:type_name -> datacommons.Series.ValEntry
+	0,  // 7: datacommons.Series.metadata:type_name -> datacommons.Facet
+	5,  // 8: datacommons.ObsTimeSeries.source_series:type_name -> datacommons.SourceSeries
+	5,  // 9: datacommons.ObsCollection.source_cohorts:type_name -> datacommons.SourceSeries
+	7,  // 10: datacommons.ChartStore.obs_time_series:type_name -> datacommons.ObsTimeSeries
+	8,  // 11: datacommons.ChartStore.obs_collection:type_name -> datacommons.ObsCollection
+	27, // 12: datacommons.PlaceStat.stat_var_data:type_name -> datacommons.PlaceStat.StatVarDataEntry
+	28, // 13: datacommons.StatVarSeries.data:type_name -> datacommons.StatVarSeries.DataEntry
+	29, // 14: datacommons.GetStatSeriesResponse.series:type_name -> datacommons.GetStatSeriesResponse.SeriesEntry
+	30, // 15: datacommons.GetStatAllResponse.place_data:type_name -> datacommons.GetStatAllResponse.PlaceDataEntry
+	31, // 16: datacommons.StatDate.date_place_count:type_name -> datacommons.StatDate.DatePlaceCountEntry
+	0,  // 17: datacommons.StatDate.metadata:type_name -> datacommons.Facet
+	20, // 18: datacommons.StatDateList.stat_date:type_name -> datacommons.StatDate
+	32, // 19: datacommons.GetStatDateWithinPlaceResponse.data:type_name -> datacommons.GetStatDateWithinPlaceResponse.DataEntry
+	7,  // 20: datacommons.PlaceStat.StatVarDataEntry.value:type_name -> datacommons.ObsTimeSeries
+	6,  // 21: datacommons.StatVarSeries.DataEntry.value:type_name -> datacommons.Series
+	10, // 22: datacommons.GetStatAllResponse.PlaceDataEntry.value:type_name -> datacommons.PlaceStat
+	21, // 23: datacommons.GetStatDateWithinPlaceResponse.DataEntry.value:type_name -> datacommons.StatDateList
+	24, // [24:24] is the sub-list for method output_type
+	24, // [24:24] is the sub-list for method input_type
+	24, // [24:24] is the sub-list for extension type_name
+	24, // [24:24] is the sub-list for extension extendee
+	0,  // [0:24] is the sub-list for field type_name
 }
 
 func init() { file_stat_proto_init() }
@@ -1936,7 +2055,7 @@ func file_stat_proto_init() {
 			}
 		}
 		file_stat_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PointStat); i {
+			switch v := v.(*PlaceFacet); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1948,7 +2067,7 @@ func file_stat_proto_init() {
 			}
 		}
 		file_stat_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SourceSeries); i {
+			switch v := v.(*PlaceFacets); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1960,7 +2079,7 @@ func file_stat_proto_init() {
 			}
 		}
 		file_stat_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Series); i {
+			switch v := v.(*PointStat); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1972,7 +2091,7 @@ func file_stat_proto_init() {
 			}
 		}
 		file_stat_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ObsTimeSeries); i {
+			switch v := v.(*SourceSeries); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1984,7 +2103,7 @@ func file_stat_proto_init() {
 			}
 		}
 		file_stat_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ObsCollection); i {
+			switch v := v.(*Series); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1996,7 +2115,7 @@ func file_stat_proto_init() {
 			}
 		}
 		file_stat_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ChartStore); i {
+			switch v := v.(*ObsTimeSeries); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2008,7 +2127,7 @@ func file_stat_proto_init() {
 			}
 		}
 		file_stat_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PlaceStat); i {
+			switch v := v.(*ObsCollection); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2020,7 +2139,7 @@ func file_stat_proto_init() {
 			}
 		}
 		file_stat_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*StatVarSeries); i {
+			switch v := v.(*ChartStore); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2032,7 +2151,7 @@ func file_stat_proto_init() {
 			}
 		}
 		file_stat_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetStatsRequest); i {
+			switch v := v.(*PlaceStat); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2044,7 +2163,7 @@ func file_stat_proto_init() {
 			}
 		}
 		file_stat_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetStatsResponse); i {
+			switch v := v.(*StatVarSeries); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2056,7 +2175,7 @@ func file_stat_proto_init() {
 			}
 		}
 		file_stat_proto_msgTypes[12].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetStatValueRequest); i {
+			switch v := v.(*GetStatsRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2068,7 +2187,7 @@ func file_stat_proto_init() {
 			}
 		}
 		file_stat_proto_msgTypes[13].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetStatValueResponse); i {
+			switch v := v.(*GetStatsResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2080,7 +2199,7 @@ func file_stat_proto_init() {
 			}
 		}
 		file_stat_proto_msgTypes[14].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetStatSeriesRequest); i {
+			switch v := v.(*GetStatValueRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2092,7 +2211,7 @@ func file_stat_proto_init() {
 			}
 		}
 		file_stat_proto_msgTypes[15].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetStatSeriesResponse); i {
+			switch v := v.(*GetStatValueResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2104,7 +2223,7 @@ func file_stat_proto_init() {
 			}
 		}
 		file_stat_proto_msgTypes[16].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetStatAllRequest); i {
+			switch v := v.(*GetStatSeriesRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2116,7 +2235,7 @@ func file_stat_proto_init() {
 			}
 		}
 		file_stat_proto_msgTypes[17].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetStatAllResponse); i {
+			switch v := v.(*GetStatSeriesResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2128,7 +2247,7 @@ func file_stat_proto_init() {
 			}
 		}
 		file_stat_proto_msgTypes[18].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*StatDate); i {
+			switch v := v.(*GetStatAllRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2140,7 +2259,7 @@ func file_stat_proto_init() {
 			}
 		}
 		file_stat_proto_msgTypes[19].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*StatDateList); i {
+			switch v := v.(*GetStatAllResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2152,7 +2271,7 @@ func file_stat_proto_init() {
 			}
 		}
 		file_stat_proto_msgTypes[20].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetStatDateWithinPlaceRequest); i {
+			switch v := v.(*StatDate); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2164,6 +2283,30 @@ func file_stat_proto_init() {
 			}
 		}
 		file_stat_proto_msgTypes[21].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*StatDateList); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_stat_proto_msgTypes[22].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetStatDateWithinPlaceRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_stat_proto_msgTypes[23].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*GetStatDateWithinPlaceResponse); i {
 			case 0:
 				return &v.state
@@ -2176,19 +2319,19 @@ func file_stat_proto_init() {
 			}
 		}
 	}
-	file_stat_proto_msgTypes[2].OneofWrappers = []interface{}{}
-	file_stat_proto_msgTypes[7].OneofWrappers = []interface{}{
+	file_stat_proto_msgTypes[4].OneofWrappers = []interface{}{}
+	file_stat_proto_msgTypes[9].OneofWrappers = []interface{}{
 		(*ChartStore_ObsTimeSeries)(nil),
 		(*ChartStore_ObsCollection)(nil),
 	}
-	file_stat_proto_msgTypes[13].OneofWrappers = []interface{}{}
+	file_stat_proto_msgTypes[15].OneofWrappers = []interface{}{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_stat_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   31,
+			NumMessages:   33,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
