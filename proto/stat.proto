@@ -51,7 +51,7 @@ message Facets {
 // statistical observations about a place.
 message PlaceFacet {
   Facet facet = 1;
-  // Number of observations for given place + Facet.
+  // Number of observations for given place + variable + Facet.
   int32 obs_count = 2;
 }
 

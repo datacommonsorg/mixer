@@ -207,7 +207,7 @@ type PlaceFacet struct {
 	unknownFields protoimpl.UnknownFields
 
 	Facet *Facet `protobuf:"bytes,1,opt,name=facet,proto3" json:"facet,omitempty"`
-	// Number of observations for given place + Facet.
+	// Number of observations for given place + variable + Facet.
 	ObsCount int32 `protobuf:"varint,2,opt,name=obs_count,json=obsCount,proto3" json:"obs_count,omitempty"`
 }
 
