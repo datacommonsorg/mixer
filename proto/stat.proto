@@ -47,6 +47,18 @@ message Facets {
   repeated Facet facets = 1;
 }
 
+// PlaceFacet contains the source and measurement information for a set of
+// statistical observations about a place.
+message PlaceFacet {
+  Facet facet = 1;
+  // Number of observations for given place + variable + Facet.
+  int32 obs_count = 2;
+}
+
+message PlaceFacets {
+  repeated PlaceFacet place_facets = 1;
+}
+
 message PointStat {
   // date in IOS-8601 format
   string date = 1;
