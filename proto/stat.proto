@@ -47,16 +47,18 @@ message Facets {
   repeated Facet facets = 1;
 }
 
-// PlaceFacet contains the source and measurement information for a set of
-// statistical observations about a place.
-message PlaceFacet {
-  Facet facet = 1;
+// PlaceVariableFacet contains the source and measurement information for a set
+// of statistical observations about a place and variable.
+message PlaceVariableFacet {
+  optional Facet facet = 1;
   // Number of observations for given place + variable + Facet.
-  int32 obs_count = 2;
+  optional int32 obs_count = 2;
+  // Latest observation date.
+  optional string latest_date = 3;
 }
 
-message PlaceFacets {
-  repeated PlaceFacet place_facets = 1;
+message PlaceVariableFacets {
+  repeated PlaceVariableFacet place_variable_facets = 1;
 }
 
 message PointStat {
