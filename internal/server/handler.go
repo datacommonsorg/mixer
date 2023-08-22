@@ -1,4 +1,4 @@
-// Copyright 2021 Google LLC
+// Copyright 2023 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -22,6 +22,7 @@ import (
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/convert"
+	"github.com/datacommonsorg/mixer/internal/server/data"
 	"github.com/datacommonsorg/mixer/internal/server/place"
 	"github.com/datacommonsorg/mixer/internal/server/placein"
 	"github.com/datacommonsorg/mixer/internal/server/recon"
@@ -35,6 +36,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/v0/propertyvalue"
 	"github.com/datacommonsorg/mixer/internal/server/v0/statpoint"
 	"github.com/datacommonsorg/mixer/internal/server/v0/triple"
+	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/protobuf/encoding/protojson"
 )
 
@@ -131,7 +133,7 @@ func (s *Server) GetRelatedLocations(
 	if len(localResp.GetData()) == 0 &&
 		s.metadata.RemoteMixerDomain != "" {
 		remoteResp := &pb.GetRelatedLocationsResponse{}
-		if err := fetchRemote(
+		if err := util.FetchRemote(
 			s.metadata, s.httpClient, "/v1/place/related", in, remoteResp); err != nil {
 			return nil, err
 		}
@@ -151,7 +153,7 @@ func (s *Server) GetLocationsRankings(
 	if len(localResp.GetData()) == 0 &&
 		s.metadata.RemoteMixerDomain != "" {
 		remoteResp := &pb.GetLocationsRankingsResponse{}
-		if err := fetchRemote(
+		if err := util.FetchRemote(
 			s.metadata, s.httpClient, "/v1/place/ranking", in, remoteResp); err != nil {
 			return nil, err
 		}
@@ -187,14 +189,7 @@ func (s *Server) GetPlaceStatVars(
 func (s *Server) GetEntityStatVarsUnionV1(
 	ctx context.Context, in *pb.GetEntityStatVarsUnionRequest,
 ) (*pb.GetEntityStatVarsUnionResponse, error) {
-	return statvar.GetEntityStatVarsUnionV1(ctx, in, s.store)
-}
-
-// SearchStatVar implements API for Mixer.SearchStatVar.
-func (s *Server) SearchStatVar(
-	ctx context.Context, in *pb.SearchStatVarRequest,
-) (*pb.SearchStatVarResponse, error) {
-	return statvar.SearchStatVar(ctx, in, s.store, s.cache)
+	return statvar.GetEntityStatVarsUnionV1(ctx, in, s.store, s.cache)
 }
 
 // GetPropertyLabels implements API for Mixer.GetPropertyLabels.
@@ -267,8 +262,12 @@ func (s *Server) Search(
 func (s *Server) GetVersion(
 	ctx context.Context, in *pb.GetVersionRequest,
 ) (*pb.GetVersionResponse, error) {
+	tableNames := []string{}
+	if s.store.BtGroup != nil {
+		tableNames = s.store.BtGroup.TableNames()
+	}
 	return &pb.GetVersionResponse{
-		Tables:            s.store.BtGroup.TableNames(),
+		Tables:            tableNames,
 		Bigquery:          s.metadata.BigQueryDataset,
 		GitHash:           os.Getenv("MIXER_HASH"),
 		RemoteMixerDomain: s.metadata.RemoteMixerDomain,
@@ -308,4 +307,16 @@ func (s *Server) BulkFindEntities(
 	ctx context.Context, in *pb.BulkFindEntitiesRequest,
 ) (*pb.BulkFindEntitiesResponse, error) {
 	return recon.BulkFindEntities(ctx, in, s.store, s.mapsClient)
+}
+
+// Import implements API for Mixer.Import
+func (s *Server) Import(
+	ctx context.Context, in *pb.ImportRequest,
+) (*pb.ImportResponse, error) {
+	cache, err := data.Import(ctx, in, s.store, s.metadata, true)
+	if err != nil {
+		return nil, err
+	}
+	s.cache = cache
+	return &pb.ImportResponse{Success: true}, nil
 }

@@ -23,16 +23,27 @@ import (
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/store"
+	"github.com/datacommonsorg/mixer/internal/store/files"
 )
 
-const maxPlaceCandidates = 3
+const (
+	maxPlaceCandidates = 15
+	// When the number of places is larger than maxPlaceCandidates, firstly pick maxPlaceCandidates
+	// places, for the rest, only pick the places with
+	// population >= minPopulationOverMaxPlaceCandidates.
+	minPopulationOverMaxPlaceCandidates = 2000
+)
 
-// RecognizePlaces implements API for ReconServer.RecognizePlaces.
+// RecognizePlaces implements API for Mixer.RecognizePlaces.
 func RecognizePlaces(
-	ctx context.Context, in *pb.RecognizePlacesRequest, store *store.Store,
+	ctx context.Context,
+	in *pb.RecognizePlacesRequest,
+	store *store.Store,
+	resolveBogusName bool,
 ) (*pb.RecognizePlacesResponse, error) {
 	pr := &placeRecognition{
-		recogPlaceMap: store.RecogPlaceStore.RecogPlaceMap,
+		recogPlaceStore:  store.RecogPlaceStore,
+		resolveBogusName: resolveBogusName,
 	}
 
 	type queryItems struct {
@@ -76,6 +87,9 @@ func tokenize(query string) []string {
 		if string(partBySpace[0]) == "," {
 			tokens = append(tokens, ",")
 			partBySpace = partBySpace[1:]
+			if partBySpace == "" {
+				continue
+			}
 		}
 
 		// Check suffix.
@@ -104,13 +118,14 @@ func tokenize(query string) []string {
 }
 
 type placeRecognition struct {
-	recogPlaceMap map[string]*pb.RecogPlaces
+	recogPlaceStore  *files.RecogPlaceStore
+	resolveBogusName bool
 }
 
 func (p *placeRecognition) detectPlaces(
 	query string) *pb.RecognizePlacesResponse_Items {
 	tokenSpans := p.replaceTokensWithCandidates(tokenize(query))
-	candidates := rankAndTrimCandidates(combineContainedIn(tokenSpans))
+	candidates := p.rankAndTrimCandidates(combineContainedIn(tokenSpans), maxPlaceCandidates)
 	return formatResponse(query, candidates)
 }
 
@@ -120,14 +135,22 @@ func (p *placeRecognition) findPlaceCandidates(
 		return 0, nil
 	}
 
+	// Check if the first token match any abbreviated name.
+	// Note: abbreviated names are case-sensitive.
+	if places, ok := p.recogPlaceStore.AbbreviatedNameToPlaces[tokens[0]]; ok {
+		return 1, places
+	}
+
 	key := strings.ToLower(tokens[0])
-	places, ok := p.recogPlaceMap[key]
+	places, ok := p.recogPlaceStore.RecogPlaceMap[key]
 	if !ok {
 		return 0, nil
 	}
 
 	numTokens := 1
-	candidates := &pb.RecogPlaces{}
+	// We track the places matched by the span width.  Because we want to
+	// always prefer to return the maximally matched span.
+	candidatesByNumTokens := make(map[int]*pb.RecogPlaces)
 	for _, place := range places.GetPlaces() {
 		matchedNameSize := 0
 		for _, name := range place.GetNames() {
@@ -147,9 +170,10 @@ func (p *placeRecognition) findPlaceCandidates(
 				}
 			}
 
-			if nameMatched {
+			if nameMatched && matchedNameSize < namePartsSize {
+				// Try to match the longest possible name.
+				// For example, "New York City" should match 3 tokens instead of 2 tokens.
 				matchedNameSize = namePartsSize
-				break
 			}
 		}
 		if matchedNameSize == 0 { // This place is not matched.
@@ -160,9 +184,20 @@ func (p *placeRecognition) findPlaceCandidates(
 		if numTokens < matchedNameSize {
 			numTokens = matchedNameSize
 		}
-		candidates.Places = append(candidates.Places, place)
+		candidates, ok := candidatesByNumTokens[matchedNameSize]
+		if !ok {
+			candidatesByNumTokens[matchedNameSize] = &pb.RecogPlaces{
+				Places: []*pb.RecogPlace{place},
+			}
+		} else {
+			candidates.Places = append(candidates.Places, place)
+		}
 	}
-
+	// Return the maximally matched span.
+	candidates, ok := candidatesByNumTokens[numTokens]
+	if !ok {
+		return numTokens, &pb.RecogPlaces{}
+	}
 	return numTokens, candidates
 }
 
@@ -186,7 +221,7 @@ func (p *placeRecognition) replaceTokensWithCandidates(tokens []string) *pb.Toke
 	return res
 }
 
-func getNumTokensForContainedIn(spans []*pb.TokenSpans_Span, startIdx int) int {
+func getNumSpansForContainedIn(spans []*pb.TokenSpans_Span, startIdx int) int {
 	size := len(spans)
 
 	// Case: "place1, place2".
@@ -207,23 +242,35 @@ func getNumTokensForContainedIn(spans []*pb.TokenSpans_Span, startIdx int) int {
 }
 
 func combineContainedInSingle(
-	spans []*pb.TokenSpans_Span, startIdx, numTokens int) *pb.TokenSpans_Span {
-	startToken := spans[startIdx]
-	endToken := spans[startIdx+numTokens-1]
-	for _, p1 := range startToken.GetPlaces() {
+	spans []*pb.TokenSpans_Span, startIdx, numSpans int) *pb.TokenSpans_Span {
+	startSpan := spans[startIdx]
+	endSpan := spans[startIdx+numSpans-1]
+
+	res := &pb.TokenSpans_Span{Tokens: startSpan.Tokens}
+	for i := 1; i < numSpans; i++ {
+		res.Tokens = append(res.Tokens, spans[startIdx+i].GetTokens()...)
+	}
+
+	// This map is used to collect all the places for the combined span, with dedup.
+	dcidToRecogPlaces := map[string]*pb.RecogPlace{}
+
+	for _, p1 := range startSpan.GetPlaces() {
 		for _, containingPlace := range p1.GetContainingPlaces() {
-			for _, p2 := range endToken.GetPlaces() {
+			for _, p2 := range endSpan.GetPlaces() {
 				if containingPlace == p2.GetDcid() {
-					res := startToken
-					for i := 1; i < numTokens; i++ {
-						res.Tokens = append(res.Tokens, spans[startIdx+i].GetTokens()...)
-						res.Places = append(res.Places, spans[startIdx+i].GetPlaces()...)
-					}
-					return res
+					dcidToRecogPlaces[p1.GetDcid()] = p1
 				}
 			}
 		}
 	}
+
+	if len(dcidToRecogPlaces) > 0 {
+		for _, p := range dcidToRecogPlaces {
+			res.Places = append(res.Places, p)
+		}
+		return res
+	}
+
 	return nil
 }
 
@@ -239,19 +286,19 @@ func combineContainedIn(tokenSpans *pb.TokenSpans) *pb.TokenSpans {
 			continue
 		}
 
-		numTokens := getNumTokensForContainedIn(spans, i)
-		if numTokens == 0 {
+		numSpans := getNumSpansForContainedIn(spans, i)
+		if numSpans == 0 {
 			i++
 			res.Spans = append(res.Spans, tokenSpan)
 			continue
 		}
 
-		collapsedTokenSpan := combineContainedInSingle(spans, i, numTokens)
+		collapsedTokenSpan := combineContainedInSingle(spans, i, numSpans)
 		if collapsedTokenSpan == nil {
 			i++
 			res.Spans = append(res.Spans, tokenSpan)
 		} else {
-			i += numTokens
+			i += numSpans
 			res.Spans = append(res.Spans, collapsedTokenSpan)
 		}
 	}
@@ -259,10 +306,20 @@ func combineContainedIn(tokenSpans *pb.TokenSpans) *pb.TokenSpans {
 	return res
 }
 
-func rankAndTrimCandidates(tokenSpans *pb.TokenSpans) *pb.TokenSpans {
+func (p *placeRecognition) rankAndTrimCandidates(
+	tokenSpans *pb.TokenSpans,
+	maxPlaceCandidates int) *pb.TokenSpans {
 	res := &pb.TokenSpans{}
 	for _, span := range tokenSpans.GetSpans() {
 		if len(span.GetPlaces()) == 0 {
+			res.Spans = append(res.Spans, span)
+			continue
+		}
+
+		// Deal with bogus name (not followed by an ancestor place).
+		spanStr := strings.ToLower(strings.Join(span.Tokens, " "))
+		if _, ok := p.recogPlaceStore.BogusPlaceNames[spanStr]; ok && !p.resolveBogusName {
+			span.Places = nil
 			res.Spans = append(res.Spans, span)
 			continue
 		}
@@ -271,8 +328,22 @@ func rankAndTrimCandidates(tokenSpans *pb.TokenSpans) *pb.TokenSpans {
 		sort.SliceStable(span.Places, func(i, j int) bool {
 			return span.Places[i].GetPopulation() > span.Places[j].GetPopulation()
 		})
+
 		if len(span.GetPlaces()) > maxPlaceCandidates {
-			span.Places = span.Places[:maxPlaceCandidates]
+			// Firstly, pick all place candidates with index < maxPlaceCandidates.
+			filteredPlaces := span.Places[:maxPlaceCandidates]
+
+			// For the rest, only pick the places with
+			// population >= minPopulationOverMaxPlaceCandidates.
+			for i := maxPlaceCandidates; i < len(span.Places); i++ {
+				thisPlace := span.Places[i]
+				if thisPlace.Population < minPopulationOverMaxPlaceCandidates {
+					break
+				}
+				filteredPlaces = append(filteredPlaces, thisPlace)
+			}
+
+			span.Places = filteredPlaces
 		}
 		res.Spans = append(res.Spans, span)
 	}

@@ -32,7 +32,7 @@ func TestSpecializationOf(t *testing.T) {
 	ctx := context.Background()
 
 	_, filename, _, _ := runtime.Caller(0)
-	goldenPath := path.Join(path.Dir(filename), "speicializationof")
+	goldenPath := path.Join(path.Dir(filename), "specializationof")
 
 	testSuite := func(mixer pbs.MixerClient, latencyTest bool) {
 		for _, c := range []struct {

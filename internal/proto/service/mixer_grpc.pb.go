@@ -1,4 +1,4 @@
-// Copyright 2019 Google LLC
+// Copyright 2023 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -67,7 +67,6 @@ const (
 	Mixer_GetEntityStatVarsUnionV1_FullMethodName     = "/datacommons.Mixer/GetEntityStatVarsUnionV1"
 	Mixer_GetPlaceStatDateWithinPlace_FullMethodName  = "/datacommons.Mixer/GetPlaceStatDateWithinPlace"
 	Mixer_GetStatDateWithinPlace_FullMethodName       = "/datacommons.Mixer/GetStatDateWithinPlace"
-	Mixer_SearchStatVar_FullMethodName                = "/datacommons.Mixer/SearchStatVar"
 	Mixer_QueryV1_FullMethodName                      = "/datacommons.Mixer/QueryV1"
 	Mixer_Properties_FullMethodName                   = "/datacommons.Mixer/Properties"
 	Mixer_BulkProperties_FullMethodName               = "/datacommons.Mixer/BulkProperties"
@@ -97,6 +96,7 @@ const (
 	Mixer_BioPage_FullMethodName                      = "/datacommons.Mixer/BioPage"
 	Mixer_PlacePage_FullMethodName                    = "/datacommons.Mixer/PlacePage"
 	Mixer_VariableAncestors_FullMethodName            = "/datacommons.Mixer/VariableAncestors"
+	Mixer_SearchStatVar_FullMethodName                = "/datacommons.Mixer/SearchStatVar"
 	Mixer_EventCollection_FullMethodName              = "/datacommons.Mixer/EventCollection"
 	Mixer_EventCollectionDate_FullMethodName          = "/datacommons.Mixer/EventCollectionDate"
 	Mixer_ResolveEntities_FullMethodName              = "/datacommons.Mixer/ResolveEntities"
@@ -105,6 +105,7 @@ const (
 	Mixer_FindEntities_FullMethodName                 = "/datacommons.Mixer/FindEntities"
 	Mixer_BulkFindEntities_FullMethodName             = "/datacommons.Mixer/BulkFindEntities"
 	Mixer_RecognizePlaces_FullMethodName              = "/datacommons.Mixer/RecognizePlaces"
+	Mixer_Import_FullMethodName                       = "/datacommons.Mixer/Import"
 )
 
 // MixerClient is the client API for Mixer service.
@@ -168,99 +169,63 @@ type MixerClient interface {
 	// Given ancestor place, child place type and stat vars, return the dates and
 	// place count for each source
 	GetStatDateWithinPlace(ctx context.Context, in *proto.GetStatDateWithinPlaceRequest, opts ...grpc.CallOption) (*proto.GetStatDateWithinPlaceResponse, error)
+	// Query DataCommons Graph with Sparql.
+	QueryV1(ctx context.Context, in *proto.QueryRequest, opts ...grpc.CallOption) (*proto.QueryResponse, error)
+	Properties(ctx context.Context, in *v1.PropertiesRequest, opts ...grpc.CallOption) (*v1.PropertiesResponse, error)
+	BulkProperties(ctx context.Context, in *v1.BulkPropertiesRequest, opts ...grpc.CallOption) (*v1.BulkPropertiesResponse, error)
+	PropertyValues(ctx context.Context, in *v1.PropertyValuesRequest, opts ...grpc.CallOption) (*v1.PropertyValuesResponse, error)
+	LinkedPropertyValues(ctx context.Context, in *v1.LinkedPropertyValuesRequest, opts ...grpc.CallOption) (*v1.PropertyValuesResponse, error)
+	BulkPropertyValues(ctx context.Context, in *v1.BulkPropertyValuesRequest, opts ...grpc.CallOption) (*v1.BulkPropertyValuesResponse, error)
+	BulkLinkedPropertyValues(ctx context.Context, in *v1.BulkLinkedPropertyValuesRequest, opts ...grpc.CallOption) (*v1.BulkPropertyValuesResponse, error)
+	Triples(ctx context.Context, in *v1.TriplesRequest, opts ...grpc.CallOption) (*v1.TriplesResponse, error)
+	BulkTriples(ctx context.Context, in *v1.BulkTriplesRequest, opts ...grpc.CallOption) (*v1.BulkTriplesResponse, error)
+	Variables(ctx context.Context, in *v1.VariablesRequest, opts ...grpc.CallOption) (*v1.VariablesResponse, error)
+	BulkVariables(ctx context.Context, in *v1.BulkVariablesRequest, opts ...grpc.CallOption) (*v1.BulkVariablesResponse, error)
+	PlaceInfo(ctx context.Context, in *v1.PlaceInfoRequest, opts ...grpc.CallOption) (*v1.PlaceInfoResponse, error)
+	BulkPlaceInfo(ctx context.Context, in *v1.BulkPlaceInfoRequest, opts ...grpc.CallOption) (*v1.BulkPlaceInfoResponse, error)
+	VariableInfo(ctx context.Context, in *v1.VariableInfoRequest, opts ...grpc.CallOption) (*v1.VariableInfoResponse, error)
+	BulkVariableInfo(ctx context.Context, in *v1.BulkVariableInfoRequest, opts ...grpc.CallOption) (*v1.BulkVariableInfoResponse, error)
+	VariableGroupInfo(ctx context.Context, in *v1.VariableGroupInfoRequest, opts ...grpc.CallOption) (*v1.VariableGroupInfoResponse, error)
+	BulkVariableGroupInfo(ctx context.Context, in *v1.BulkVariableGroupInfoRequest, opts ...grpc.CallOption) (*v1.BulkVariableGroupInfoResponse, error)
+	ObservationsPoint(ctx context.Context, in *v1.ObservationsPointRequest, opts ...grpc.CallOption) (*proto.PointStat, error)
+	BulkObservationsPoint(ctx context.Context, in *v1.BulkObservationsPointRequest, opts ...grpc.CallOption) (*v1.BulkObservationsPointResponse, error)
+	BulkObservationsPointLinked(ctx context.Context, in *v1.BulkObservationsPointLinkedRequest, opts ...grpc.CallOption) (*v1.BulkObservationsPointResponse, error)
+	ObservationsSeries(ctx context.Context, in *v1.ObservationsSeriesRequest, opts ...grpc.CallOption) (*v1.ObservationsSeriesResponse, error)
+	BulkObservationsSeries(ctx context.Context, in *v1.BulkObservationsSeriesRequest, opts ...grpc.CallOption) (*v1.BulkObservationsSeriesResponse, error)
+	BulkObservationsSeriesLinked(ctx context.Context, in *v1.BulkObservationsSeriesLinkedRequest, opts ...grpc.CallOption) (*v1.BulkObservationsSeriesResponse, error)
+	DerivedObservationsSeries(ctx context.Context, in *v1.DerivedObservationsSeriesRequest, opts ...grpc.CallOption) (*v1.DerivedObservationsSeriesResponse, error)
+	BulkObservationDatesLinked(ctx context.Context, in *v1.BulkObservationDatesLinkedRequest, opts ...grpc.CallOption) (*v1.BulkObservationDatesLinkedResponse, error)
+	BulkObservationExistence(ctx context.Context, in *v1.BulkObservationExistenceRequest, opts ...grpc.CallOption) (*v1.BulkObservationExistenceResponse, error)
+	BioPage(ctx context.Context, in *v1.BioPageRequest, opts ...grpc.CallOption) (*proto.GraphNodes, error)
+	PlacePage(ctx context.Context, in *v1.PlacePageRequest, opts ...grpc.CallOption) (*v1.PlacePageResponse, error)
+	VariableAncestors(ctx context.Context, in *v1.VariableAncestorsRequest, opts ...grpc.CallOption) (*v1.VariableAncestorsResponse, error)
 	// Search stat var and stat var groups.
 	SearchStatVar(ctx context.Context, in *proto.SearchStatVarRequest, opts ...grpc.CallOption) (*proto.SearchStatVarResponse, error)
-	// Query DataCommons Graph with Sparql.
-	// V2 [DONE]
-	QueryV1(ctx context.Context, in *proto.QueryRequest, opts ...grpc.CallOption) (*proto.QueryResponse, error)
-	// V2 [DONE]
-	Properties(ctx context.Context, in *v1.PropertiesRequest, opts ...grpc.CallOption) (*v1.PropertiesResponse, error)
-	// V2 [DONE]
-	BulkProperties(ctx context.Context, in *v1.BulkPropertiesRequest, opts ...grpc.CallOption) (*v1.BulkPropertiesResponse, error)
-	// V2 [DONE]
-	PropertyValues(ctx context.Context, in *v1.PropertyValuesRequest, opts ...grpc.CallOption) (*v1.PropertyValuesResponse, error)
-	// V2 [DONE]
-	LinkedPropertyValues(ctx context.Context, in *v1.LinkedPropertyValuesRequest, opts ...grpc.CallOption) (*v1.PropertyValuesResponse, error)
-	// V2 [DONE]
-	BulkPropertyValues(ctx context.Context, in *v1.BulkPropertyValuesRequest, opts ...grpc.CallOption) (*v1.BulkPropertyValuesResponse, error)
-	// V2 [DONE]
-	BulkLinkedPropertyValues(ctx context.Context, in *v1.BulkLinkedPropertyValuesRequest, opts ...grpc.CallOption) (*v1.BulkPropertyValuesResponse, error)
-	// V2 [NA]
-	Triples(ctx context.Context, in *v1.TriplesRequest, opts ...grpc.CallOption) (*v1.TriplesResponse, error)
-	// V2 [NA]
-	BulkTriples(ctx context.Context, in *v1.BulkTriplesRequest, opts ...grpc.CallOption) (*v1.BulkTriplesResponse, error)
-	// V2 [DONE]
-	Variables(ctx context.Context, in *v1.VariablesRequest, opts ...grpc.CallOption) (*v1.VariablesResponse, error)
-	// V2 [DONE]
-	BulkVariables(ctx context.Context, in *v1.BulkVariablesRequest, opts ...grpc.CallOption) (*v1.BulkVariablesResponse, error)
-	// V2 [TODO]
-	PlaceInfo(ctx context.Context, in *v1.PlaceInfoRequest, opts ...grpc.CallOption) (*v1.PlaceInfoResponse, error)
-	// V2 [TODO]
-	BulkPlaceInfo(ctx context.Context, in *v1.BulkPlaceInfoRequest, opts ...grpc.CallOption) (*v1.BulkPlaceInfoResponse, error)
-	// V2 [TODO]
-	VariableInfo(ctx context.Context, in *v1.VariableInfoRequest, opts ...grpc.CallOption) (*v1.VariableInfoResponse, error)
-	// V2 [TODO]
-	BulkVariableInfo(ctx context.Context, in *v1.BulkVariableInfoRequest, opts ...grpc.CallOption) (*v1.BulkVariableInfoResponse, error)
-	// V2 [TODO]
-	VariableGroupInfo(ctx context.Context, in *v1.VariableGroupInfoRequest, opts ...grpc.CallOption) (*v1.VariableGroupInfoResponse, error)
-	// V2 [TODO]
-	BulkVariableGroupInfo(ctx context.Context, in *v1.BulkVariableGroupInfoRequest, opts ...grpc.CallOption) (*v1.BulkVariableGroupInfoResponse, error)
-	// V2 [DONE]
-	ObservationsPoint(ctx context.Context, in *v1.ObservationsPointRequest, opts ...grpc.CallOption) (*proto.PointStat, error)
-	// V2 [DONE]
-	BulkObservationsPoint(ctx context.Context, in *v1.BulkObservationsPointRequest, opts ...grpc.CallOption) (*v1.BulkObservationsPointResponse, error)
-	// V2 [DONE]
-	BulkObservationsPointLinked(ctx context.Context, in *v1.BulkObservationsPointLinkedRequest, opts ...grpc.CallOption) (*v1.BulkObservationsPointResponse, error)
-	// V2 [DONE]
-	ObservationsSeries(ctx context.Context, in *v1.ObservationsSeriesRequest, opts ...grpc.CallOption) (*v1.ObservationsSeriesResponse, error)
-	// V2 [DONE]
-	BulkObservationsSeries(ctx context.Context, in *v1.BulkObservationsSeriesRequest, opts ...grpc.CallOption) (*v1.BulkObservationsSeriesResponse, error)
-	// V2 [DONE]
-	BulkObservationsSeriesLinked(ctx context.Context, in *v1.BulkObservationsSeriesLinkedRequest, opts ...grpc.CallOption) (*v1.BulkObservationsSeriesResponse, error)
-	// V2 [TODO]
-	DerivedObservationsSeries(ctx context.Context, in *v1.DerivedObservationsSeriesRequest, opts ...grpc.CallOption) (*v1.DerivedObservationsSeriesResponse, error)
-	// V2 [DONE]
-	BulkObservationDatesLinked(ctx context.Context, in *v1.BulkObservationDatesLinkedRequest, opts ...grpc.CallOption) (*v1.BulkObservationDatesLinkedResponse, error)
-	// V2 [DONE]
-	BulkObservationExistence(ctx context.Context, in *v1.BulkObservationExistenceRequest, opts ...grpc.CallOption) (*v1.BulkObservationExistenceResponse, error)
-	// V2 [NA]
-	BioPage(ctx context.Context, in *v1.BioPageRequest, opts ...grpc.CallOption) (*proto.GraphNodes, error)
-	// V2 [NA]
-	PlacePage(ctx context.Context, in *v1.PlacePageRequest, opts ...grpc.CallOption) (*v1.PlacePageResponse, error)
-	// V2 [DONE]
-	VariableAncestors(ctx context.Context, in *v1.VariableAncestorsRequest, opts ...grpc.CallOption) (*v1.VariableAncestorsResponse, error)
-	// V2 [DONE]
 	// Get event collection for {eventType, affectedPlaceDcid, date}.
 	// NOTE:
 	//   - The affectedPlaceDcid is only for top-level places:
 	//     Earth, continent, country, state, adminArea1.
 	//   - The date format should be: YYYY-MM.
 	EventCollection(ctx context.Context, in *v1.EventCollectionRequest, opts ...grpc.CallOption) (*v1.EventCollectionResponse, error)
-	// V2 [DONE]
 	// Get all dates for event collection for {eventType, affectedPlaceDcid}.
 	//   - The affectedPlaceDcid is only for top-level places:
 	//     Earth, continent, country, state, adminArea1.
 	//   - The date format should be: YYYY-MM.
 	//     The dates in the response are sorted from earliest to latest.
 	EventCollectionDate(ctx context.Context, in *v1.EventCollectionDateRequest, opts ...grpc.CallOption) (*v1.EventCollectionDateResponse, error)
-	// V2 [DONE]
 	// Resolve a list of entities, given their descriptions.
 	ResolveEntities(ctx context.Context, in *proto.ResolveEntitiesRequest, opts ...grpc.CallOption) (*proto.ResolveEntitiesResponse, error)
-	// V2 [DONE]
 	// Resolve a list of places, given their latitude and longitude coordinates.
 	ResolveCoordinates(ctx context.Context, in *proto.ResolveCoordinatesRequest, opts ...grpc.CallOption) (*proto.ResolveCoordinatesResponse, error)
-	// V2 [DONE]
 	// Resolve a list of IDs, given the input prop and output prop.
 	ResolveIds(ctx context.Context, in *proto.ResolveIdsRequest, opts ...grpc.CallOption) (*proto.ResolveIdsResponse, error)
-	// V2 [TODO]
 	// Find entities from a description, with an optional filter on type.
 	FindEntities(ctx context.Context, in *proto.FindEntitiesRequest, opts ...grpc.CallOption) (*proto.FindEntitiesResponse, error)
-	// V2 [TODO]
 	// Find entities from descriptions, with optional filters on types.
 	BulkFindEntities(ctx context.Context, in *proto.BulkFindEntitiesRequest, opts ...grpc.CallOption) (*proto.BulkFindEntitiesResponse, error)
-	// V2 [TODO]
 	// Recognize places from a NL query.
 	RecognizePlaces(ctx context.Context, in *proto.RecognizePlacesRequest, opts ...grpc.CallOption) (*proto.RecognizePlacesResponse, error)
+	Import(ctx context.Context, in *proto.ImportRequest, opts ...grpc.CallOption) (*proto.ImportResponse, error)
 }
 
 type mixerClient struct {
@@ -481,15 +446,6 @@ func (c *mixerClient) GetPlaceStatDateWithinPlace(ctx context.Context, in *proto
 func (c *mixerClient) GetStatDateWithinPlace(ctx context.Context, in *proto.GetStatDateWithinPlaceRequest, opts ...grpc.CallOption) (*proto.GetStatDateWithinPlaceResponse, error) {
 	out := new(proto.GetStatDateWithinPlaceResponse)
 	err := c.cc.Invoke(ctx, Mixer_GetStatDateWithinPlace_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *mixerClient) SearchStatVar(ctx context.Context, in *proto.SearchStatVarRequest, opts ...grpc.CallOption) (*proto.SearchStatVarResponse, error) {
-	out := new(proto.SearchStatVarResponse)
-	err := c.cc.Invoke(ctx, Mixer_SearchStatVar_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -757,6 +713,15 @@ func (c *mixerClient) VariableAncestors(ctx context.Context, in *v1.VariableAnce
 	return out, nil
 }
 
+func (c *mixerClient) SearchStatVar(ctx context.Context, in *proto.SearchStatVarRequest, opts ...grpc.CallOption) (*proto.SearchStatVarResponse, error) {
+	out := new(proto.SearchStatVarResponse)
+	err := c.cc.Invoke(ctx, Mixer_SearchStatVar_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *mixerClient) EventCollection(ctx context.Context, in *v1.EventCollectionRequest, opts ...grpc.CallOption) (*v1.EventCollectionResponse, error) {
 	out := new(v1.EventCollectionResponse)
 	err := c.cc.Invoke(ctx, Mixer_EventCollection_FullMethodName, in, out, opts...)
@@ -829,6 +794,15 @@ func (c *mixerClient) RecognizePlaces(ctx context.Context, in *proto.RecognizePl
 	return out, nil
 }
 
+func (c *mixerClient) Import(ctx context.Context, in *proto.ImportRequest, opts ...grpc.CallOption) (*proto.ImportResponse, error) {
+	out := new(proto.ImportResponse)
+	err := c.cc.Invoke(ctx, Mixer_Import_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // MixerServer is the server API for Mixer service.
 // All implementations should embed UnimplementedMixerServer
 // for forward compatibility
@@ -890,99 +864,63 @@ type MixerServer interface {
 	// Given ancestor place, child place type and stat vars, return the dates and
 	// place count for each source
 	GetStatDateWithinPlace(context.Context, *proto.GetStatDateWithinPlaceRequest) (*proto.GetStatDateWithinPlaceResponse, error)
+	// Query DataCommons Graph with Sparql.
+	QueryV1(context.Context, *proto.QueryRequest) (*proto.QueryResponse, error)
+	Properties(context.Context, *v1.PropertiesRequest) (*v1.PropertiesResponse, error)
+	BulkProperties(context.Context, *v1.BulkPropertiesRequest) (*v1.BulkPropertiesResponse, error)
+	PropertyValues(context.Context, *v1.PropertyValuesRequest) (*v1.PropertyValuesResponse, error)
+	LinkedPropertyValues(context.Context, *v1.LinkedPropertyValuesRequest) (*v1.PropertyValuesResponse, error)
+	BulkPropertyValues(context.Context, *v1.BulkPropertyValuesRequest) (*v1.BulkPropertyValuesResponse, error)
+	BulkLinkedPropertyValues(context.Context, *v1.BulkLinkedPropertyValuesRequest) (*v1.BulkPropertyValuesResponse, error)
+	Triples(context.Context, *v1.TriplesRequest) (*v1.TriplesResponse, error)
+	BulkTriples(context.Context, *v1.BulkTriplesRequest) (*v1.BulkTriplesResponse, error)
+	Variables(context.Context, *v1.VariablesRequest) (*v1.VariablesResponse, error)
+	BulkVariables(context.Context, *v1.BulkVariablesRequest) (*v1.BulkVariablesResponse, error)
+	PlaceInfo(context.Context, *v1.PlaceInfoRequest) (*v1.PlaceInfoResponse, error)
+	BulkPlaceInfo(context.Context, *v1.BulkPlaceInfoRequest) (*v1.BulkPlaceInfoResponse, error)
+	VariableInfo(context.Context, *v1.VariableInfoRequest) (*v1.VariableInfoResponse, error)
+	BulkVariableInfo(context.Context, *v1.BulkVariableInfoRequest) (*v1.BulkVariableInfoResponse, error)
+	VariableGroupInfo(context.Context, *v1.VariableGroupInfoRequest) (*v1.VariableGroupInfoResponse, error)
+	BulkVariableGroupInfo(context.Context, *v1.BulkVariableGroupInfoRequest) (*v1.BulkVariableGroupInfoResponse, error)
+	ObservationsPoint(context.Context, *v1.ObservationsPointRequest) (*proto.PointStat, error)
+	BulkObservationsPoint(context.Context, *v1.BulkObservationsPointRequest) (*v1.BulkObservationsPointResponse, error)
+	BulkObservationsPointLinked(context.Context, *v1.BulkObservationsPointLinkedRequest) (*v1.BulkObservationsPointResponse, error)
+	ObservationsSeries(context.Context, *v1.ObservationsSeriesRequest) (*v1.ObservationsSeriesResponse, error)
+	BulkObservationsSeries(context.Context, *v1.BulkObservationsSeriesRequest) (*v1.BulkObservationsSeriesResponse, error)
+	BulkObservationsSeriesLinked(context.Context, *v1.BulkObservationsSeriesLinkedRequest) (*v1.BulkObservationsSeriesResponse, error)
+	DerivedObservationsSeries(context.Context, *v1.DerivedObservationsSeriesRequest) (*v1.DerivedObservationsSeriesResponse, error)
+	BulkObservationDatesLinked(context.Context, *v1.BulkObservationDatesLinkedRequest) (*v1.BulkObservationDatesLinkedResponse, error)
+	BulkObservationExistence(context.Context, *v1.BulkObservationExistenceRequest) (*v1.BulkObservationExistenceResponse, error)
+	BioPage(context.Context, *v1.BioPageRequest) (*proto.GraphNodes, error)
+	PlacePage(context.Context, *v1.PlacePageRequest) (*v1.PlacePageResponse, error)
+	VariableAncestors(context.Context, *v1.VariableAncestorsRequest) (*v1.VariableAncestorsResponse, error)
 	// Search stat var and stat var groups.
 	SearchStatVar(context.Context, *proto.SearchStatVarRequest) (*proto.SearchStatVarResponse, error)
-	// Query DataCommons Graph with Sparql.
-	// V2 [DONE]
-	QueryV1(context.Context, *proto.QueryRequest) (*proto.QueryResponse, error)
-	// V2 [DONE]
-	Properties(context.Context, *v1.PropertiesRequest) (*v1.PropertiesResponse, error)
-	// V2 [DONE]
-	BulkProperties(context.Context, *v1.BulkPropertiesRequest) (*v1.BulkPropertiesResponse, error)
-	// V2 [DONE]
-	PropertyValues(context.Context, *v1.PropertyValuesRequest) (*v1.PropertyValuesResponse, error)
-	// V2 [DONE]
-	LinkedPropertyValues(context.Context, *v1.LinkedPropertyValuesRequest) (*v1.PropertyValuesResponse, error)
-	// V2 [DONE]
-	BulkPropertyValues(context.Context, *v1.BulkPropertyValuesRequest) (*v1.BulkPropertyValuesResponse, error)
-	// V2 [DONE]
-	BulkLinkedPropertyValues(context.Context, *v1.BulkLinkedPropertyValuesRequest) (*v1.BulkPropertyValuesResponse, error)
-	// V2 [NA]
-	Triples(context.Context, *v1.TriplesRequest) (*v1.TriplesResponse, error)
-	// V2 [NA]
-	BulkTriples(context.Context, *v1.BulkTriplesRequest) (*v1.BulkTriplesResponse, error)
-	// V2 [DONE]
-	Variables(context.Context, *v1.VariablesRequest) (*v1.VariablesResponse, error)
-	// V2 [DONE]
-	BulkVariables(context.Context, *v1.BulkVariablesRequest) (*v1.BulkVariablesResponse, error)
-	// V2 [TODO]
-	PlaceInfo(context.Context, *v1.PlaceInfoRequest) (*v1.PlaceInfoResponse, error)
-	// V2 [TODO]
-	BulkPlaceInfo(context.Context, *v1.BulkPlaceInfoRequest) (*v1.BulkPlaceInfoResponse, error)
-	// V2 [TODO]
-	VariableInfo(context.Context, *v1.VariableInfoRequest) (*v1.VariableInfoResponse, error)
-	// V2 [TODO]
-	BulkVariableInfo(context.Context, *v1.BulkVariableInfoRequest) (*v1.BulkVariableInfoResponse, error)
-	// V2 [TODO]
-	VariableGroupInfo(context.Context, *v1.VariableGroupInfoRequest) (*v1.VariableGroupInfoResponse, error)
-	// V2 [TODO]
-	BulkVariableGroupInfo(context.Context, *v1.BulkVariableGroupInfoRequest) (*v1.BulkVariableGroupInfoResponse, error)
-	// V2 [DONE]
-	ObservationsPoint(context.Context, *v1.ObservationsPointRequest) (*proto.PointStat, error)
-	// V2 [DONE]
-	BulkObservationsPoint(context.Context, *v1.BulkObservationsPointRequest) (*v1.BulkObservationsPointResponse, error)
-	// V2 [DONE]
-	BulkObservationsPointLinked(context.Context, *v1.BulkObservationsPointLinkedRequest) (*v1.BulkObservationsPointResponse, error)
-	// V2 [DONE]
-	ObservationsSeries(context.Context, *v1.ObservationsSeriesRequest) (*v1.ObservationsSeriesResponse, error)
-	// V2 [DONE]
-	BulkObservationsSeries(context.Context, *v1.BulkObservationsSeriesRequest) (*v1.BulkObservationsSeriesResponse, error)
-	// V2 [DONE]
-	BulkObservationsSeriesLinked(context.Context, *v1.BulkObservationsSeriesLinkedRequest) (*v1.BulkObservationsSeriesResponse, error)
-	// V2 [TODO]
-	DerivedObservationsSeries(context.Context, *v1.DerivedObservationsSeriesRequest) (*v1.DerivedObservationsSeriesResponse, error)
-	// V2 [DONE]
-	BulkObservationDatesLinked(context.Context, *v1.BulkObservationDatesLinkedRequest) (*v1.BulkObservationDatesLinkedResponse, error)
-	// V2 [DONE]
-	BulkObservationExistence(context.Context, *v1.BulkObservationExistenceRequest) (*v1.BulkObservationExistenceResponse, error)
-	// V2 [NA]
-	BioPage(context.Context, *v1.BioPageRequest) (*proto.GraphNodes, error)
-	// V2 [NA]
-	PlacePage(context.Context, *v1.PlacePageRequest) (*v1.PlacePageResponse, error)
-	// V2 [DONE]
-	VariableAncestors(context.Context, *v1.VariableAncestorsRequest) (*v1.VariableAncestorsResponse, error)
-	// V2 [DONE]
 	// Get event collection for {eventType, affectedPlaceDcid, date}.
 	// NOTE:
 	//   - The affectedPlaceDcid is only for top-level places:
 	//     Earth, continent, country, state, adminArea1.
 	//   - The date format should be: YYYY-MM.
 	EventCollection(context.Context, *v1.EventCollectionRequest) (*v1.EventCollectionResponse, error)
-	// V2 [DONE]
 	// Get all dates for event collection for {eventType, affectedPlaceDcid}.
 	//   - The affectedPlaceDcid is only for top-level places:
 	//     Earth, continent, country, state, adminArea1.
 	//   - The date format should be: YYYY-MM.
 	//     The dates in the response are sorted from earliest to latest.
 	EventCollectionDate(context.Context, *v1.EventCollectionDateRequest) (*v1.EventCollectionDateResponse, error)
-	// V2 [DONE]
 	// Resolve a list of entities, given their descriptions.
 	ResolveEntities(context.Context, *proto.ResolveEntitiesRequest) (*proto.ResolveEntitiesResponse, error)
-	// V2 [DONE]
 	// Resolve a list of places, given their latitude and longitude coordinates.
 	ResolveCoordinates(context.Context, *proto.ResolveCoordinatesRequest) (*proto.ResolveCoordinatesResponse, error)
-	// V2 [DONE]
 	// Resolve a list of IDs, given the input prop and output prop.
 	ResolveIds(context.Context, *proto.ResolveIdsRequest) (*proto.ResolveIdsResponse, error)
-	// V2 [TODO]
 	// Find entities from a description, with an optional filter on type.
 	FindEntities(context.Context, *proto.FindEntitiesRequest) (*proto.FindEntitiesResponse, error)
-	// V2 [TODO]
 	// Find entities from descriptions, with optional filters on types.
 	BulkFindEntities(context.Context, *proto.BulkFindEntitiesRequest) (*proto.BulkFindEntitiesResponse, error)
-	// V2 [TODO]
 	// Recognize places from a NL query.
 	RecognizePlaces(context.Context, *proto.RecognizePlacesRequest) (*proto.RecognizePlacesResponse, error)
+	Import(context.Context, *proto.ImportRequest) (*proto.ImportResponse, error)
 }
 
 // UnimplementedMixerServer should be embedded to have forward compatible implementations.
@@ -1060,9 +998,6 @@ func (UnimplementedMixerServer) GetPlaceStatDateWithinPlace(context.Context, *pr
 }
 func (UnimplementedMixerServer) GetStatDateWithinPlace(context.Context, *proto.GetStatDateWithinPlaceRequest) (*proto.GetStatDateWithinPlaceResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetStatDateWithinPlace not implemented")
-}
-func (UnimplementedMixerServer) SearchStatVar(context.Context, *proto.SearchStatVarRequest) (*proto.SearchStatVarResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method SearchStatVar not implemented")
 }
 func (UnimplementedMixerServer) QueryV1(context.Context, *proto.QueryRequest) (*proto.QueryResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method QueryV1 not implemented")
@@ -1151,6 +1086,9 @@ func (UnimplementedMixerServer) PlacePage(context.Context, *v1.PlacePageRequest)
 func (UnimplementedMixerServer) VariableAncestors(context.Context, *v1.VariableAncestorsRequest) (*v1.VariableAncestorsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method VariableAncestors not implemented")
 }
+func (UnimplementedMixerServer) SearchStatVar(context.Context, *proto.SearchStatVarRequest) (*proto.SearchStatVarResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SearchStatVar not implemented")
+}
 func (UnimplementedMixerServer) EventCollection(context.Context, *v1.EventCollectionRequest) (*v1.EventCollectionResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method EventCollection not implemented")
 }
@@ -1174,6 +1112,9 @@ func (UnimplementedMixerServer) BulkFindEntities(context.Context, *proto.BulkFin
 }
 func (UnimplementedMixerServer) RecognizePlaces(context.Context, *proto.RecognizePlacesRequest) (*proto.RecognizePlacesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RecognizePlaces not implemented")
+}
+func (UnimplementedMixerServer) Import(context.Context, *proto.ImportRequest) (*proto.ImportResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Import not implemented")
 }
 
 // UnsafeMixerServer may be embedded to opt out of forward compatibility for this service.
@@ -1615,24 +1556,6 @@ func _Mixer_GetStatDateWithinPlace_Handler(srv interface{}, ctx context.Context,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(MixerServer).GetStatDateWithinPlace(ctx, req.(*proto.GetStatDateWithinPlaceRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Mixer_SearchStatVar_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(proto.SearchStatVarRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(MixerServer).SearchStatVar(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: Mixer_SearchStatVar_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).SearchStatVar(ctx, req.(*proto.SearchStatVarRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -2159,6 +2082,24 @@ func _Mixer_VariableAncestors_Handler(srv interface{}, ctx context.Context, dec 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Mixer_SearchStatVar_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(proto.SearchStatVarRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MixerServer).SearchStatVar(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Mixer_SearchStatVar_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MixerServer).SearchStatVar(ctx, req.(*proto.SearchStatVarRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _Mixer_EventCollection_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(v1.EventCollectionRequest)
 	if err := dec(in); err != nil {
@@ -2303,6 +2244,24 @@ func _Mixer_RecognizePlaces_Handler(srv interface{}, ctx context.Context, dec fu
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Mixer_Import_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(proto.ImportRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MixerServer).Import(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Mixer_Import_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MixerServer).Import(ctx, req.(*proto.ImportRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Mixer_ServiceDesc is the grpc.ServiceDesc for Mixer service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -2405,10 +2364,6 @@ var Mixer_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetStatDateWithinPlace",
 			Handler:    _Mixer_GetStatDateWithinPlace_Handler,
-		},
-		{
-			MethodName: "SearchStatVar",
-			Handler:    _Mixer_SearchStatVar_Handler,
 		},
 		{
 			MethodName: "QueryV1",
@@ -2527,6 +2482,10 @@ var Mixer_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _Mixer_VariableAncestors_Handler,
 		},
 		{
+			MethodName: "SearchStatVar",
+			Handler:    _Mixer_SearchStatVar_Handler,
+		},
+		{
 			MethodName: "EventCollection",
 			Handler:    _Mixer_EventCollection_Handler,
 		},
@@ -2557,6 +2516,10 @@ var Mixer_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "RecognizePlaces",
 			Handler:    _Mixer_RecognizePlaces_Handler,
+		},
+		{
+			MethodName: "Import",
+			Handler:    _Mixer_Import_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

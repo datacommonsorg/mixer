@@ -1,5 +1,12 @@
 {
   "data": {
+    "NewCity": {
+      "properties": [
+        "name",
+        "subClassOf",
+        "typeOf"
+      ]
+    },
     "bio/hs": {
       "properties": [
         "alternateName",
@@ -67,6 +74,15 @@
         "whosOnFirstId",
         "wikidataId",
         "worldcatIdentitiesId"
+      ]
+    },
+    "test_stat_var": {
+      "properties": [
+        "measured_prop",
+        "name",
+        "num_constraints",
+        "population_type",
+        "stat_type"
       ]
     }
   }

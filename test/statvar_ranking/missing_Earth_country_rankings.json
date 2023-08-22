@@ -735,6 +735,7 @@
       "indianCensus/Count_Person_Religion_Jain",
       "indianCensus/Count_Person_Religion_Muslim",
       "indianCensus/Count_Person_Religion_OtherReligionsAndPersuasions",
+      "indianCensus/Count_Person_Religion_ReligionNotStated",
       "indianCensus/Count_Person_Religion_Sikh"
     ],
     "relatedChart": {
@@ -746,6 +747,7 @@
         "indianCensus/Count_Person_Religion_Jain",
         "indianCensus/Count_Person_Religion_Muslim",
         "indianCensus/Count_Person_Religion_OtherReligionsAndPersuasions",
+        "indianCensus/Count_Person_Religion_ReligionNotStated",
         "indianCensus/Count_Person_Religion_Sikh"
       ]
     }

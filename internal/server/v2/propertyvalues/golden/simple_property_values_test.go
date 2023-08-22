@@ -44,7 +44,7 @@ func TestSimplePropertyValues(t *testing.T) {
 		}{
 			{
 				"name.json",
-				[]string{"geoId/06", "bio/hs"},
+				[]string{"geoId/06", "bio/hs", "NewCity", "test_stat_var"},
 				"->name",
 				0,
 				"",
@@ -82,26 +82,47 @@ func TestSimplePropertyValues(t *testing.T) {
 				[]string{"geoId/0649670"},
 				"->geoOverlaps",
 				0,
-				"H4sIAAAAAAAA/+IK5OJNT833TNE3MDOxNDM34OJOT833L0stykksKOaSdk7NKy4tjsoscM5PSQ1JTCrNSSzJzM9zLEpNFGIQYuJgFGLiYBJi4mAWYuJgEWLhYJVgBQAAAP//AQAA//+kZzeJUwAAAA==",
+				"H4sIAAAAAAAA/wTAsQqCUBgF4DppnW60nCnoIXIIozGcmlqa2v7wRwTxirfb8/sFC8fO47O9VPX1Xt+qcOg8vv4+DzalcG58TDl9+qmJrb/tmwf79XF8zG5aCVwLhMCNwEJgKXArcCeQKrg/lQsAAAD//wEAAP//WUv+X2MAAAA=",
 			},
 			{
 				"containedIn1.json",
-				[]string{"geoId/06"},
+				[]string{"geoId/06", "test_stat_var"},
 				"<-containedInPlace",
 				502,
 				"",
 			},
 			{
 				"containedIn2.json",
-				[]string{"geoId/06"},
+				[]string{"geoId/06", "test_stat_var"},
 				"<-containedInPlace",
 				500,
-				"H4sIAAAAAAAA/5ySXUoDMRSFnTitMf4NeZpdWH3wyQd1rFhQGRhdQEwu7YVrApm00gW4Pdck2jfp3EAXcD6+czjqVsk5hJk7n1ypygafDHpwM9+SsaCOGvD9sn+Nxia9p4UstJBCC7mvhSx1KUdVoa5ZRNlgWm/Jjn+z9aF6YNPVlOADfDJx3dlFCDRo8cJy6v+ce+xTRKbVDctTjzhfZIzuWMLxMzpHkGFkLNrwCbEl44d78PuetBFXJg1rHMhRJeqvQk35Nu3yndCymKL+FqrJ6Pxh3hLS9tdsOmUg3WUDRE+wArqY7DjMafYmmwOPM8OcdWCDd9n//gAAAP//AQAA//+e6uq5iQMAAA==",
+				"H4sIAAAAAAAA/6zTT07zMBAF8C/+Sjsx/4JXuQWFBRcIRVQqkiEUdkiuPWosDbaUuEU9ANfjTKh0x8KJJS7w8/PTPP7IYY1+bi6nN7zQ3gVlHZq5k6Q08uMKXbfpnlulg/gnGGSCARMM/gsGI8HgSDAYCwYTwQDECPIi44soOaps2A2wxnurzPlLVCtmhO/ogmp3tW68p8Ep36Ju+du9tV1obUILr1H/4s57M+uCWpHtmv1Lg2EZhfm9XTeJVTxFxZMHawxhotmTUvoPbCWphH/HD+FUtnarwvCYE8gLVn5mfBn/vdysyOokNiu/GK974v6wy2Bp2BwOHfSg9XWFRAvcIl1N/6jYs+T7Pyx33FPseY3aO5M83G8AAAD//wEAAP//BWcvpLIEAAA=",
 			},
 			{
 				"obs.json",
 				[]string{"dc/o/vs51dzghn79eg"},
 				"->[observationAbout, variableMeasured, value, observationDate, observationPeriod, measurementMethod, unit]",
+				0,
+				"",
+			},
+			{
+				"topic.json",
+				[]string{"dc/topic/Health"},
+				"->[relevantVariable]",
+				0,
+				"",
+			},
+			{
+				"locationEnum.json",
+				[]string{"LocationClassificationEnum"},
+				"<-typeOf",
+				500,
+				"",
+			},
+			{
+				"test_var_2.json",
+				[]string{"test_var_2"},
+				"->*",
 				0,
 				"",
 			},
@@ -136,7 +157,9 @@ func TestSimplePropertyValues(t *testing.T) {
 		}
 	}
 	if err := test.TestDriver(
-		"TestSimplePropertyValues", &test.TestOption{}, testSuite); err != nil {
+		"TestSimplePropertyValues",
+		&test.TestOption{UseSQLite: true}, testSuite,
+	); err != nil {
 		t.Errorf("TestDriver() = %s", err)
 	}
 }

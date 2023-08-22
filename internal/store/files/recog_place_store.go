@@ -29,11 +29,22 @@ import (
 
 //go:embed "WorldGeosForPlaceRecognition.csv"
 var recogPlaceMapCSVContent []byte // Embed CSV as []byte.
+//go:embed "WorldGeosForPlaceRecognitionAbbreviatedNames.csv"
+var recogPlaceAbbreviatedNamesCSVContent []byte // Embed CSV as []byte.
+//go:embed "WorldGeosForPlaceRecognitionAlternateNames.csv"
+var recogPlaceAlternateNamesCSVContent []byte // Embed CSV as []byte.
+//go:embed "BogusPlaceNames.csv"
+var recogPlaceBogusPlaceNamesCSVContent []byte // Embed CSV as []byte.
 
 // RecogPlaceStore contains data for recongizing places.
 type RecogPlaceStore struct {
-	// The key is the first token/word of each place.
+	// The key is the first token/word (lower case) of each place.
 	RecogPlaceMap map[string]*pb.RecogPlaces
+	// The key is abbreviated name of each place.
+	AbbreviatedNameToPlaces map[string]*pb.RecogPlaces
+	// If |resolve_description| is not set in RecognizePlacesRequest, bogus place names will not be
+	// recognized unless they are followed by a containedInPlace.
+	BogusPlaceNames map[string]struct{}
 	// Place DCID to all possible names.
 	DcidToNames map[string][]string
 }
@@ -46,7 +57,23 @@ func LoadRecogPlaceStore() (*RecogPlaceStore, error) {
 		return nil, err
 	}
 
+	dcidToAbbreviatedNames, err := loadAuxNames(recogPlaceAbbreviatedNamesCSVContent, false)
+	if err != nil {
+		return nil, err
+	}
+
+	dcidToAlternateNames, err := loadAuxNames(recogPlaceAlternateNamesCSVContent, true)
+	if err != nil {
+		return nil, err
+	}
+
+	bogusPlaceNames, err := loadBogusPlaceNames()
+	if err != nil {
+		return nil, err
+	}
+
 	recogPlaceMap := map[string]*pb.RecogPlaces{}
+	abbreviatedNameToPlaces := map[string]*pb.RecogPlaces{}
 	dcidToNames := map[string][]string{}
 	expandedDcidToNames := map[string][]string{}
 	dcidToContainingPlaces := map[string][]string{}
@@ -61,7 +88,7 @@ func LoadRecogPlaceStore() (*RecogPlaceStore, error) {
 		// Columns: dcid, mainType, name, linkedContainedInPlace, population.
 		if len(record) != 5 {
 			return nil, status.Errorf(codes.FailedPrecondition,
-				"Wrong RecogPlaces CSV record: %v", record)
+				"Wrong WorldGeosForPlaceRecognition CSV record: %v", record)
 		}
 
 		// DCID.
@@ -83,6 +110,13 @@ func LoadRecogPlaceStore() (*RecogPlaceStore, error) {
 				"Empty names for CSV record: %v", record)
 		}
 		names := strings.Split(strings.TrimSpace(record[2]), ",")
+
+		// Add alternate names if any.
+		altNames, ok := dcidToAlternateNames[dcid]
+		if ok {
+			names = append(names, altNames...)
+		}
+
 		dcidToNames[dcid] = names
 		expandedDcidToNames[dcid] = names
 		for _, name := range names {
@@ -107,12 +141,29 @@ func LoadRecogPlaceStore() (*RecogPlaceStore, error) {
 		}
 		recogPlace.Population = population
 
+		keySet := map[string]struct{}{} // Unique keys for recogPlaceMap.
 		for _, name := range recogPlace.Names {
-			key := name.Parts[0]
+			keySet[name.Parts[0]] = struct{}{}
+		}
+		for key := range keySet {
 			if _, ok := recogPlaceMap[key]; !ok {
 				recogPlaceMap[key] = &pb.RecogPlaces{}
 			}
 			recogPlaceMap[key].Places = append(recogPlaceMap[key].Places, recogPlace)
+		}
+
+		// Abbreviated names.
+		if abbreviatedNames, ok := dcidToAbbreviatedNames[dcid]; ok {
+			for _, aName := range abbreviatedNames {
+				if _, ok := abbreviatedNameToPlaces[aName]; !ok {
+					abbreviatedNameToPlaces[aName] = &pb.RecogPlaces{}
+				}
+				abbreviatedNameToPlaces[aName].Places = append(abbreviatedNameToPlaces[aName].Places,
+					recogPlace)
+
+				dcidToNames[dcid] = append(dcidToNames[dcid], aName)
+				expandedDcidToNames[dcid] = append(expandedDcidToNames[dcid], aName)
+			}
 		}
 	}
 
@@ -137,7 +188,75 @@ func LoadRecogPlaceStore() (*RecogPlaceStore, error) {
 	}
 
 	return &RecogPlaceStore{
-		RecogPlaceMap: recogPlaceMap,
-		DcidToNames:   expandedDcidToNames,
+		RecogPlaceMap:           recogPlaceMap,
+		AbbreviatedNameToPlaces: abbreviatedNameToPlaces,
+		BogusPlaceNames:         bogusPlaceNames,
+		DcidToNames:             expandedDcidToNames,
 	}, nil
+}
+
+func loadAuxNames(content []byte, toLower bool) (map[string][]string, error) {
+	reader := csv.NewReader(strings.NewReader(string(content)))
+	records, err := reader.ReadAll()
+	if err != nil {
+		return nil, err
+	}
+
+	res := map[string][]string{}
+
+	isFirst := true
+	for _, record := range records {
+		// Skip header.
+		if isFirst {
+			isFirst = false
+			continue
+		}
+
+		// Columns: dcid, abbreviatedNames.
+		if len(record) != 2 {
+			return nil, status.Errorf(codes.FailedPrecondition,
+				"Wrong WorldGeosForPlaceRecognitionAbbreviatedNames CSV record: %v", record)
+		}
+
+		dcid := record[0]
+		names := strings.Split(record[1], ",")
+		if len(names) == 0 {
+			return nil, status.Errorf(codes.FailedPrecondition, "No names: %v", record[1])
+		}
+
+		if _, ok := res[dcid]; !ok {
+			res[dcid] = []string{}
+		}
+		var tmpStr string
+		for _, name := range names {
+			if toLower {
+				tmpStr = strings.ToLower(strings.TrimSpace(name))
+			} else {
+				tmpStr = strings.TrimSpace(name)
+			}
+			res[dcid] = append(res[dcid], tmpStr)
+		}
+	}
+
+	return res, nil
+}
+
+func loadBogusPlaceNames() (map[string]struct{}, error) {
+	reader := csv.NewReader(strings.NewReader(string(recogPlaceBogusPlaceNamesCSVContent)))
+	records, err := reader.ReadAll()
+	if err != nil {
+		return nil, err
+	}
+
+	res := map[string]struct{}{}
+
+	for _, record := range records {
+		if len(record) != 1 {
+			return nil, status.Errorf(codes.FailedPrecondition,
+				"Wrong BogusPlaceNames CSV record: %v", record)
+		}
+		res[strings.ToLower(strings.TrimSpace(record[0]))] = struct{}{}
+	}
+
+	return res, nil
 }

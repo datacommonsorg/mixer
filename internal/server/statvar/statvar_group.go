@@ -1,4 +1,4 @@
-// Copyright 2021 Google LLC
+// Copyright 2023 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -170,6 +170,22 @@ func mergeSVGNodes(node1, node2 *pb.StatVarGroupNode) {
 	}
 }
 
+// getAllDescendentSV get all the descendent stat var for an svg.
+func getAllDescendentSV(svgMap map[string]*pb.StatVarGroupNode, svgDcid string) []string {
+	res := []string{}
+	if _, ok := svgMap[svgDcid]; !ok {
+		return res
+	}
+	node := svgMap[svgDcid]
+	for _, childSVG := range node.ChildStatVarGroups {
+		res = append(res, getAllDescendentSV(svgMap, childSVG.Id)...)
+	}
+	for _, sv := range node.ChildStatVars {
+		res = append(res, sv.Id)
+	}
+	return util.MergeDedupe(res)
+}
+
 // GetStatVarGroup implements API for Mixer.GetStatVarGroup.
 func GetStatVarGroup(
 	ctx context.Context,
@@ -184,85 +200,159 @@ func GetStatVarGroup(
 	// User can provide any arbitrary dcid, which might not be associated with
 	// stat vars. In this case, an empty response is returned.
 	if len(entities) > 0 {
-		svUnionResp, err := GetEntityStatVarsUnionV1(
-			ctx,
-			&pb.GetEntityStatVarsUnionRequest{Dcids: entities},
-			store,
-		)
+		entityToStatVars, err := GetEntityStatVarsHelper(ctx, store, entities)
 		if err != nil {
 			return nil, err
 		}
-		statVars = svUnionResp.StatVars
+		for _, sv := range entityToStatVars {
+			statVars = util.MergeDedupe(statVars, sv.StatVars)
+		}
 	}
-
 	result := &pb.StatVarGroups{StatVarGroups: map[string]*pb.StatVarGroupNode{}}
 	if cache == nil {
-		// Read stat var group cache from the allowed import group table.
-		btDataList, err := bigtable.ReadWithFilter(
-			ctx,
-			store.BtGroup,
-			bigtable.BtStatVarGroup,
-			[][]string{{""}},
-			func(jsonRaw []byte) (interface{}, error) {
-				var svgResp pb.StatVarGroups
-				if err := proto.Unmarshal(jsonRaw, &svgResp); err != nil {
-					return nil, err
-				}
-				return &svgResp, nil
-			},
-			// Only use svg from "frequent", "experimental" and custom import groups.
-			// These two import groups have the latest and wanted sv/svgs. We don't
-			// want to include those in "infrequent" etc that may have stale sv/svg.
-			func(t *bigtable.Table) bool {
-				return (strings.HasPrefix(t.Name(), "frequent") ||
-					strings.HasPrefix(t.Name(), "experimental") ||
-					t.IsCustom())
-			},
-		)
-		if err != nil {
-			return nil, err
-		}
-		// Loop through import group by order. The stat var group is preferred from
-		// a higher ranked import group.
-		var customRootNode *pb.StatVarGroupNode
-		for _, btData := range btDataList {
-			for _, row := range btData {
-				svgData, ok := row.Data.(*pb.StatVarGroups)
-				if ok && len(svgData.StatVarGroups) > 0 {
-					for k, v := range svgData.StatVarGroups {
-						if k == customSvgRoot && customRootNode == nil {
-							customRootNode = v
-						}
-						if _, ok := result.StatVarGroups[k]; !ok {
-							result.StatVarGroups[k] = v
-						} else {
-							// Merge all SVGs regardless of the import group rank as one SVG
-							// can exist in multiple import group.
-							mergeSVGNodes(result.StatVarGroups[k], v)
+		if store.BtGroup != nil {
+			// Read stat var group cache from the allowed import group table.
+			btDataList, err := bigtable.ReadWithFilter(
+				ctx,
+				store.BtGroup,
+				bigtable.BtStatVarGroup,
+				[][]string{{""}},
+				func(jsonRaw []byte) (interface{}, error) {
+					var svgResp pb.StatVarGroups
+					if err := proto.Unmarshal(jsonRaw, &svgResp); err != nil {
+						return nil, err
+					}
+					return &svgResp, nil
+				},
+				// Only use svg from "frequent", "experimental" and custom import groups.
+				// These two import groups have the latest and wanted sv/svgs. We don't
+				// want to include those in "infrequent" etc that may have stale sv/svg.
+				func(t *bigtable.Table) bool {
+					return (strings.HasPrefix(t.Name(), "frequent") ||
+						strings.HasPrefix(t.Name(), "experimental") ||
+						t.IsCustom())
+				},
+			)
+			if err != nil {
+				return nil, err
+			}
+			// Loop through import group by order. The stat var group is preferred from
+			// a higher ranked import group.
+			var customRootNode *pb.StatVarGroupNode
+			for _, btData := range btDataList {
+				for _, row := range btData {
+					svgData, ok := row.Data.(*pb.StatVarGroups)
+					if ok && len(svgData.StatVarGroups) > 0 {
+						for k, v := range svgData.StatVarGroups {
+							if k == customSvgRoot && customRootNode == nil {
+								customRootNode = v
+							}
+							if _, ok := result.StatVarGroups[k]; !ok {
+								result.StatVarGroups[k] = v
+							} else {
+								// Merge all SVGs regardless of the import group rank as one SVG
+								// can exist in multiple import group.
+								mergeSVGNodes(result.StatVarGroups[k], v)
+							}
 						}
 					}
 				}
 			}
-		}
-		if customRootNode != nil {
-			customRootExist := false
-			// If custom schema is built together with base schema, then it is
-			// already in the child stat var group of "dc/g/Root".
-			for _, x := range result.StatVarGroups[SvgRoot].ChildStatVarGroups {
-				if x.Id == customSvgRoot {
-					customRootExist = true
-					break
+			if customRootNode != nil {
+				customRootExist := false
+				// If custom schema is built together with base schema, then it is
+				// already in the child stat var group of "dc/g/Root".
+				for _, x := range result.StatVarGroups[SvgRoot].ChildStatVarGroups {
+					if x.Id == customSvgRoot {
+						customRootExist = true
+						break
+					}
+				}
+				// Populate dc/g/Custom_Root as children of dc/g/Root
+				if !customRootExist {
+					result.StatVarGroups[SvgRoot].ChildStatVarGroups = append(
+						result.StatVarGroups[SvgRoot].ChildStatVarGroups,
+						&pb.StatVarGroupNode_ChildSVG{
+							Id:                customSvgRoot,
+							SpecializedEntity: customRootNode.AbsoluteName,
+						},
+					)
 				}
 			}
-			// Populate dc/g/Custom_Root as children of dc/g/Root
-			if !customRootExist {
-				result.StatVarGroups[SvgRoot].ChildStatVarGroups = append(
-					result.StatVarGroups[SvgRoot].ChildStatVarGroups,
+		}
+		if store.SQLiteClient != nil {
+			// Query for all the stat var group node
+			query :=
+				`
+					SELECT t1.subject_id, t2.object_value, t3.object_id
+					FROM triples t1 JOIN triples t2 ON t1.subject_id = t2.subject_id
+					JOIN triples t3 ON t1.subject_id = t3.subject_id
+					WHERE t1.predicate="typeOf"
+					AND t1.object_id="StatVarGroup"
+					AND t2.predicate="name"
+					AND t3.predicate="specializationOf";
+				`
+			rows, err := store.SQLiteClient.Query(query)
+			if err != nil {
+				return nil, err
+			}
+			defer rows.Close()
+			if err != nil {
+				return nil, err
+			}
+			for rows.Next() {
+				var self, name, parent string
+				err = rows.Scan(&self, &name, &parent)
+				if err != nil {
+					return nil, err
+				}
+				result.StatVarGroups[self] = &pb.StatVarGroupNode{
+					AbsoluteName: name,
+				}
+				if _, ok := result.StatVarGroups[parent]; !ok {
+					result.StatVarGroups[parent] = &pb.StatVarGroupNode{}
+				}
+				result.StatVarGroups[parent].ChildStatVarGroups = append(
+					result.StatVarGroups[parent].ChildStatVarGroups,
 					&pb.StatVarGroupNode_ChildSVG{
-						Id:                customSvgRoot,
-						SpecializedEntity: customRootNode.AbsoluteName,
+						Id:                self,
+						SpecializedEntity: name,
 					},
 				)
+			}
+			// Query for all the stat var node
+			query =
+				`
+					SELECT t1.subject_id, t2.object_value, t3.object_id
+					FROM triples t1 JOIN triples t2 ON t1.subject_id = t2.subject_id
+					JOIN triples t3 ON t1.subject_id = t3.subject_id
+					WHERE t1.predicate="typeOf"
+					AND t1.object_id="StatisticalVariable"
+					AND t2.predicate="description"
+					AND t3.predicate="memberOf";
+				`
+			rows, err = store.SQLiteClient.Query(query)
+			if err != nil {
+				return nil, err
+			}
+			defer rows.Close()
+			if err != nil {
+				return nil, err
+			}
+			for rows.Next() {
+				var sv, name, svg string
+				err = rows.Scan(&sv, &name, &svg)
+				if err != nil {
+					return nil, err
+				}
+				if _, ok := result.StatVarGroups[svg]; !ok {
+					result.StatVarGroups[svg] = &pb.StatVarGroupNode{}
+				}
+				result.StatVarGroups[svg].ChildStatVars = append(
+					result.StatVarGroups[svg].ChildStatVars,
+					&pb.StatVarGroupNode_ChildSV{Id: sv, DisplayName: name},
+				)
+				result.StatVarGroups[svg].DescendentStatVarCount += 1
 			}
 		}
 	} else {
@@ -322,9 +412,8 @@ func GetStatVarGroupNode(
 		for _, item := range result.ChildStatVars {
 			allIDs = append(allIDs, item.Id)
 		}
-		allIDs = append(allIDs, result.ParentStatVarGroups...)
 		// Check if stat data exists for given entities
-		statVarCount, err := Count(ctx, store, allIDs, entities)
+		statVarCount, err := Count(ctx, store, cache, allIDs, entities)
 		if err != nil {
 			return nil, err
 		}

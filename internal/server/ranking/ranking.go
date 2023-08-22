@@ -429,3 +429,44 @@ func (a ByRank) Less(i, j int) bool {
 	}
 	return true
 }
+
+// FacetByRank implements sort.Interface for []*Facet based on
+// the rank score.
+type FacetByRank []*pb.Facet
+
+func (a FacetByRank) Len() int {
+	return len(a)
+}
+
+func (a FacetByRank) Swap(i, j int) {
+	a[i], a[j] = a[j], a[i]
+}
+
+func (a FacetByRank) Less(i, j int) bool {
+	oi := a[i]
+	scorei := GetFacetScore(oi)
+	oj := a[j]
+	scorej := GetFacetScore(oj)
+	// Higher score value means lower rank.
+	if scorei != scorej {
+		return scorei < scorej
+	}
+
+	// Compare other fields to get consistent ranking.
+	if oi.MeasurementMethod != oj.MeasurementMethod {
+		return oi.MeasurementMethod < oj.MeasurementMethod
+	}
+	if oi.ObservationPeriod != oj.ObservationPeriod {
+		return oi.ObservationPeriod < oj.ObservationPeriod
+	}
+	if oi.ScalingFactor != oj.ScalingFactor {
+		return oi.ScalingFactor < oj.ScalingFactor
+	}
+	if oi.Unit != oj.Unit {
+		return oi.Unit < oj.Unit
+	}
+	if oi.ProvenanceUrl != oj.ProvenanceUrl {
+		return oi.ProvenanceUrl < oj.ProvenanceUrl
+	}
+	return true
+}

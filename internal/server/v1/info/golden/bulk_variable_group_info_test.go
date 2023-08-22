@@ -1,4 +1,4 @@
-// Copyright 2022 Google LLC
+// Copyright 2023 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -58,6 +58,12 @@ func TestBulkVariableGroupInfo(t *testing.T) {
 				1,
 				"crime_1.json",
 			},
+			{
+				[]string{"dc/g/Root", "dc/g/SQLite", "dc/g/SQL"},
+				[]string{"geoId/06"},
+				0,
+				"sqlite.json",
+			},
 		} {
 			resp, err := mixer.BulkVariableGroupInfo(ctx, &pbv1.BulkVariableGroupInfoRequest{
 				Nodes:                c.nodes,
@@ -93,7 +99,7 @@ func TestBulkVariableGroupInfo(t *testing.T) {
 
 	if err := test.TestDriver(
 		"BulkVariableGroupInfo",
-		&test.TestOption{UseCache: true},
+		&test.TestOption{UseCache: true, UseSQLite: true},
 		testSuite,
 	); err != nil {
 		t.Errorf("TestDriver() = %s", err)

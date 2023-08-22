@@ -1,4 +1,5 @@
-# Copyright 2019 Google LLC
+#!/bin/bash
+# Copyright 2023 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,11 +13,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-apiVersion: kustomize.config.k8s.io/v1beta1
-kind: Kustomization
+# Script to import csv files into sqlite database file.
 
-configMapGenerator:
-  - name: schema-mapping
-    files:
-      - base.mcf
-      - encode.mcf
+sqlite3 datacommons.db <<EOF
+DROP TABLE IF EXISTS observations;
+DROP TABLE IF EXISTS triples;
+.headers on
+.mode csv
+.import observations.csv observations
+.import triples.csv triples
+EOF

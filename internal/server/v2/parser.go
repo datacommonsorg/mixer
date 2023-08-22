@@ -27,6 +27,11 @@ var (
 	squareBracketReplacer = strings.NewReplacer("[", "", "]", "")
 )
 
+type ContainedInPlace struct {
+	Ancestor       string
+	ChildPlaceType string
+}
+
 // splitWithDelim splits a graph expression by "->" and "<-"
 func splitWithDelim(expr string, delim string) []string {
 	res := []string{}
@@ -184,4 +189,30 @@ func ParseLinkedNodes(expr string) (*LinkedNodes, error) {
 		g.Arcs = append(g.Arcs, arc)
 	}
 	return g, nil
+}
+
+// Gets the contained in place from an expression.
+func ParseContainedInPlace(expr string) (*ContainedInPlace, error) {
+	g, err := ParseLinkedNodes(expr)
+	if err != nil {
+		return nil, err
+	}
+	if len(g.Arcs) != 1 {
+		return nil, status.Errorf(
+			codes.InvalidArgument, "invalid expression string: %s", expr)
+	}
+	arc := g.Arcs[0]
+	typeOfs, typeOfsOK := arc.Filter["typeOf"]
+	if arc.SingleProp != "containedInPlace" ||
+		arc.Decorator != "+" ||
+		arc.Filter == nil ||
+		!typeOfsOK || len(typeOfs) != 1 {
+		return nil, status.Errorf(
+			codes.InvalidArgument, "invalid expression string: %s", expr)
+	}
+	if len(typeOfs) < 1 {
+		return nil, status.Errorf(
+			codes.InvalidArgument, "invalid expression string: %s", expr)
+	}
+	return &ContainedInPlace{Ancestor: g.Subject, ChildPlaceType: typeOfs[0]}, nil
 }

@@ -19,6 +19,7 @@ import (
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	"github.com/datacommonsorg/mixer/internal/store/files"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/testing/protocmp"
 )
@@ -50,7 +51,9 @@ func newPlaceRecognition() *placeRecognition {
 		},
 	}
 	return &placeRecognition{
-		recogPlaceMap: recogPlaceMap,
+		recogPlaceStore: &files.RecogPlaceStore{
+			RecogPlaceMap: recogPlaceMap,
+		},
 	}
 }
 
@@ -66,6 +69,10 @@ func TestTokenize(t *testing.T) {
 		{
 			" alpha  ,beta,Gamma,  delta eta",
 			[]string{"alpha", ",", "beta", ",", "Gamma", ",", "delta", "eta"},
+		},
+		{
+			"alpha , beta,Gamma",
+			[]string{"alpha", ",", "beta", ",", "Gamma"},
 		},
 	} {
 		got := tokenize(c.query)
@@ -92,16 +99,15 @@ func TestFindPlaceCandidates(t *testing.T) {
 			nil,
 		},
 		{
-			[]string{"Los", "Altos", "is", "a", "city", ",", "wow", "!"},
-			2,
+			[]string{"Los", "Altos", "hills", "is", "a", "city", ",", "wow", "!"},
+			3,
 			&pb.RecogPlaces{
 				Places: []*pb.RecogPlace{
 					{
 						Names: []*pb.RecogPlace_Name{
-							{Parts: []string{"los", "altos"}},
-							{Parts: []string{"los", "altos", "city"}},
+							{Parts: []string{"los", "altos", "hills"}},
 						},
-						Dcid: "geoId/Los_Altos",
+						Dcid: "geoId/Los_Altos_Hills",
 					},
 				},
 			},
@@ -225,7 +231,6 @@ func TestCombineContainedIn(t *testing.T) {
 								Dcid:             "geoId/Moutain_View",
 								ContainingPlaces: []string{"geoId/Santa_Clara", "geoId/CA"},
 							},
-							{Dcid: "geoId/Santa_Clara"},
 						},
 					},
 					{Tokens: []string{"!?"}},
@@ -267,8 +272,6 @@ func TestCombineContainedIn(t *testing.T) {
 								Dcid:             "geoId/Moutain_View",
 								ContainingPlaces: []string{"geoId/Santa_Clara", "geoId/CA"},
 							},
-							{Dcid: "geoId/Santa_Clara"},
-							{Dcid: "wikidataId/Santa_Clara"},
 						},
 					},
 					{Tokens: []string{"!?"}},
@@ -317,6 +320,8 @@ func TestCombineContainedIn(t *testing.T) {
 }
 
 func TestRankAndTrimCandidates(t *testing.T) {
+	pr := newPlaceRecognition()
+
 	cmpOpts := cmp.Options{
 		protocmp.Transform(),
 	}
@@ -332,10 +337,10 @@ func TestRankAndTrimCandidates(t *testing.T) {
 					{
 						Tokens: []string{"Mountain", "View"},
 						Places: []*pb.RecogPlace{
-							{Dcid: "geoId/MTV2", Population: 102},
-							{Dcid: "geoId/MTV3", Population: 103},
-							{Dcid: "geoId/MTV1", Population: 101},
-							{Dcid: "geoId/MTV4", Population: 104},
+							{Dcid: "geoId/MTV2", Population: 2102},
+							{Dcid: "geoId/MTV3", Population: 9103},
+							{Dcid: "geoId/MTV1", Population: 1101},
+							{Dcid: "geoId/MTV4", Population: 9104},
 						},
 					},
 				},
@@ -346,9 +351,9 @@ func TestRankAndTrimCandidates(t *testing.T) {
 					{
 						Tokens: []string{"Mountain", "View"},
 						Places: []*pb.RecogPlace{
-							{Dcid: "geoId/MTV4", Population: 104},
-							{Dcid: "geoId/MTV3", Population: 103},
-							{Dcid: "geoId/MTV2", Population: 102},
+							{Dcid: "geoId/MTV4", Population: 9104},
+							{Dcid: "geoId/MTV3", Population: 9103},
+							{Dcid: "geoId/MTV2", Population: 2102},
 						},
 					},
 				},
@@ -360,8 +365,8 @@ func TestRankAndTrimCandidates(t *testing.T) {
 					{
 						Tokens: []string{"Mountain", "View"},
 						Places: []*pb.RecogPlace{
-							{Dcid: "geoId/MTV1", Population: 101},
-							{Dcid: "geoId/MTV2", Population: 102},
+							{Dcid: "geoId/MTV1", Population: 9101},
+							{Dcid: "geoId/MTV2", Population: 9102},
 						},
 					},
 				},
@@ -371,15 +376,15 @@ func TestRankAndTrimCandidates(t *testing.T) {
 					{
 						Tokens: []string{"Mountain", "View"},
 						Places: []*pb.RecogPlace{
-							{Dcid: "geoId/MTV2", Population: 102},
-							{Dcid: "geoId/MTV1", Population: 101},
+							{Dcid: "geoId/MTV2", Population: 9102},
+							{Dcid: "geoId/MTV1", Population: 9101},
 						},
 					},
 				},
 			},
 		},
 	} {
-		got := rankAndTrimCandidates(c.tokenSpans)
+		got := pr.rankAndTrimCandidates(c.tokenSpans, 2)
 		if diff := cmp.Diff(got, c.want, cmpOpts); diff != "" {
 			t.Errorf("rankAndTrimCandidates(%v) got diff: %s", c.tokenSpans, diff)
 		}

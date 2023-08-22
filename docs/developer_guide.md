@@ -47,6 +47,7 @@ protoc \
   --go-grpc_opt=require_unimplemented_servers=false \
   --experimental_allow_proto3_optional \
   --include_imports \
+  --include_source_info \
   --descriptor_set_out mixer-grpc.pb \
   proto/*.proto proto/**/*.proto
 ```
@@ -67,35 +68,32 @@ go run cmd/main.go \
     --use_custom_bigtable=true \
     --use_branch_bigtable=false
 
-go run examples/main.go
+go run examples/api/main.go
 ```
 
-## Start Mixer as a gRPC server backed by TMCF + CSV files
+## Start Mixer as a gRPC server backed by SQLite Database
 
-Mixer can load and serve TMCF + CSV files. This is used for a private Data Commons
-instance. This requires to set the following flag
+Mixer can load data stored in SQLite database. This requires to set the
+following flag:
 
-- `--use_tmcf_csv_data=true`
-- `--tmcf_csv_bucket=<bucket-name>`
-- `--tmcf_csv_folder=<folder-name>`
+- `--use_sqlite=true`
 
 Prerequists:
 
-- Create a GCS bucket <BUCKET_NAME>
-- Create a folder in the bucket <FOLDER_NAME> to host all the data files
+- Create a sqlite database `datacommons.db` in the root of repo.
 
-Run the following code to start mixer gRPC server with TMCF + CSV files stored in GCS
+Run the following code to start mixer
 
 ```bash
 # In repo root directory
 go run cmd/main.go \
-    --host_project=datcom-mixer-dev-316822 \
-    --tmcf_csv_bucket=datcom-mixer-dev-resources \
-    --tmcf_csv_folder=test \
-    --use_tmcf_csv_data=true \
+    --use_sqlite=true \
     --use_bigquery=false \
     --use_base_bigtable=false \
-    --use_branch_bigtable=false
+    --use_branch_bigtable=false \
+    --use_maps_api=false \
+    --sqlite_path=$PWD/data \
+    --remote_mixer_domain=https://api.datacommons.org
 ```
 
 ## Running ESP locally
@@ -119,9 +117,11 @@ protoc --proto_path=proto \
   proto/*.proto proto/**/*.proto
 ```
 
-Assuming mixer gRPC server is at `localhost:12345`, run the following from repo
-root to spin up envoy proxy. This exposes the http mixer service at
-`localhost:8081`.
+Start mixer gRPC server (running at `localhost:12345`) by following `go run
+cmd/main.go` as instructed in the previous section.
+
+In a new shell, run the following from repo root to spin up envoy proxy. This
+exposes the http mixer service at `localhost:8081`.
 
 ```sh
 envoy --config-path esp/envoy-config.yaml
@@ -202,8 +202,6 @@ with an HTTP handler at that port serving memory and CPU profiles of the running
 server.
 
 ```bash
-# Command from ### Start Mixer as a gRPC server backed by TMCF + CSV files
-# In repo root directory
 go run cmd/main.go \
     --host_project=datcom-mixer-dev-316822 \
     --bq_dataset=$(head -1 deploy/storage/bigquery.version) \

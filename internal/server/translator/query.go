@@ -36,6 +36,10 @@ func Query(
 	metadata *resource.Metadata,
 	store *store.Store,
 ) (*pb.QueryResponse, error) {
+	var out pb.QueryResponse
+	if store.BqClient == nil {
+		return &out, nil
+	}
 	nodes, queries, opts, err := sparql.ParseQuery(in.GetSparql())
 	if err != nil {
 		return nil, err
@@ -47,7 +51,6 @@ func Query(
 		return nil, err
 	}
 
-	var out pb.QueryResponse
 	for _, node := range translation.Nodes {
 		out.Header = append(out.Header, node.Alias)
 	}

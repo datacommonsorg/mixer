@@ -17,17 +17,22 @@ package test
 import (
 	"bytes"
 	"context"
+	"database/sql"
 	"encoding/json"
 	"log"
 	"net"
 	"os"
 	"path"
+	"path/filepath"
 	"runtime"
 	"strings"
+
+	_ "github.com/mattn/go-sqlite3" // import the sqlite3 driver
 
 	"cloud.google.com/go/bigquery"
 	pbs "github.com/datacommonsorg/mixer/internal/proto/service"
 	"github.com/datacommonsorg/mixer/internal/server"
+	"github.com/datacommonsorg/mixer/internal/server/cache"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
@@ -44,7 +49,8 @@ import (
 type TestOption struct {
 	UseCache          bool
 	UseCustomTable    bool
-	SearchOptions     server.SearchOptions
+	UseSQLite         bool
+	SearchOptions     cache.SearchOptions
 	RemoteMixerDomain string
 }
 
@@ -68,11 +74,12 @@ const (
 
 // Setup creates local server and client.
 func Setup(option ...*TestOption) (pbs.MixerClient, error) {
-	useCache, useCustomTable, remoteMixerDomain := false, false, ""
-	var searchOptions server.SearchOptions
+	useCache, useCustomTable, useSQLite, remoteMixerDomain := false, false, false, ""
+	var searchOptions cache.SearchOptions
 	if len(option) == 1 {
 		useCache = option[0].UseCache
 		useCustomTable = option[0].UseCustomTable
+		useSQLite = option[0].UseSQLite
 		searchOptions = option[0].SearchOptions
 		remoteMixerDomain = option[0].RemoteMixerDomain
 	}
@@ -83,6 +90,7 @@ func Setup(option ...*TestOption) (pbs.MixerClient, error) {
 		"../deploy/mapping",
 		useCache,
 		useCustomTable,
+		useSQLite,
 		searchOptions,
 		remoteMixerDomain,
 	)
@@ -90,7 +98,7 @@ func Setup(option ...*TestOption) (pbs.MixerClient, error) {
 
 func setupInternal(
 	bigqueryVersionFile, baseBigtableInfoYaml, testBigtableInfoYaml, mcfPath string,
-	useCache, useCustomTable bool, searchOptions server.SearchOptions,
+	useCache, useCustomTable, useSQLite bool, searchOptions cache.SearchOptions,
 	remoteMixerDomain string,
 ) (pbs.MixerClient, error) {
 	ctx := context.Background()
@@ -116,24 +124,39 @@ func setupInternal(
 	if err != nil {
 		log.Fatalf("failed to create Bigquery client: %v", err)
 	}
+	// SQLite
+	var sqlClient *sql.DB
+	if useSQLite {
+		sqlClient, err = sql.Open("sqlite3", filepath.Join(path.Dir(filename), "../internal/sqlite/datacommons.db"))
+		if err != nil {
+			log.Fatalf("Failed to read sqlite3 database: %v", err)
+		}
+	}
 
 	metadata, err := server.NewMetadata(
-		hostProject, strings.TrimSpace(string(bqTableID)), schemaPath, remoteMixerDomain, false)
+		ctx,
+		hostProject,
+		strings.TrimSpace(string(bqTableID)),
+		schemaPath,
+		remoteMixerDomain,
+		false,
+		"",
+	)
 	if err != nil {
 		return nil, err
 	}
-	st, err := store.NewStore(bqClient, tables, "", metadata)
+	st, err := store.NewStore(bqClient, sqlClient, tables, "", metadata)
 	if err != nil {
 		log.Fatalf("Failed to create a new store: %s", err)
 	}
-	var cache *resource.Cache
+	var c *resource.Cache
 	if useCache {
-		cache, err = server.NewCache(ctx, st, searchOptions)
+		c, err = cache.NewCache(ctx, st, searchOptions)
 		if err != nil {
 			return nil, err
 		}
 	} else {
-		cache = &resource.Cache{}
+		c = &resource.Cache{}
 	}
 
 	mapsClient, err := util.MapsClient(ctx, metadata.HostProject)
@@ -141,7 +164,7 @@ func setupInternal(
 		return nil, err
 	}
 
-	return newClient(st, tables, metadata, cache, mapsClient)
+	return newClient(st, tables, metadata, c, mapsClient)
 }
 
 // SetupBqOnly creates local server and client with access to BigQuery only.
@@ -158,16 +181,18 @@ func SetupBqOnly() (pbs.MixerClient, error) {
 		log.Fatalf("failed to create Bigquery client: %v", err)
 	}
 	metadata, err := server.NewMetadata(
+		ctx,
 		"",
 		strings.TrimSpace(string(bqTableID)),
 		schemaPath,
 		"",
 		false,
+		"",
 	)
 	if err != nil {
 		return nil, err
 	}
-	st, err := store.NewStore(bqClient, nil, "", nil)
+	st, err := store.NewStore(bqClient, nil, nil, "", nil)
 	if err != nil {
 		return nil, err
 	}

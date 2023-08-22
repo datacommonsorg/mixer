@@ -50,7 +50,6 @@ gke/config.yaml
 gke/endpoints.yaml
 endpoints.yaml
 
-mixer-grpc.pb
 mixer-grpc.*.pb
 
 deploy/git/mixer_hash.txt
@@ -60,3 +59,6 @@ scripts/tmp*.sh
 
 # Memory profiling output
 http_memprof_out
+
+# custom dc data
+/data

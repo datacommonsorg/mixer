@@ -1,0 +1,27 @@
+{
+  "by_variable": {
+    "test_var_1": {
+      "by_entity": {
+        "geoId/06": {
+          "ordered_facets": [
+            {
+              "facet_id": "local",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 42
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  },
+  "facets": {
+    "local": {
+      "import_name": "local",
+      "provenance_url": "local"
+    }
+  }
+}

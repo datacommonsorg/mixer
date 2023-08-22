@@ -23,7 +23,7 @@ import (
 	"google.golang.org/protobuf/testing/protocmp"
 )
 
-func TestRecogPlaceMap(t *testing.T) {
+func TestLoadRecogPlaceStore(t *testing.T) {
 	recogPlaceStore, err := LoadRecogPlaceStore()
 	if err != nil {
 		t.Fatalf("LoadRecogPlaceStore() = %s", err)
@@ -72,6 +72,70 @@ func TestRecogPlaceMap(t *testing.T) {
 		got, ok := recogPlaceStore.RecogPlaceMap[c.key]
 		if !ok {
 			t.Errorf("Cannot find in RecogPlaceMap: %s", c.key)
+			continue
+		}
+
+		if diff := cmp.Diff(got, c.want, cmpOpts); diff != "" {
+			t.Errorf("Key %s got diff: %v", c.key, diff)
+		}
+	}
+
+	for _, c := range []struct {
+		key  string
+		want *pb.RecogPlaces
+	}{
+		{
+			"US",
+			&pb.RecogPlaces{
+				Places: []*pb.RecogPlace{
+					{
+						Names: []*pb.RecogPlace_Name{
+							{
+								Parts: []string{"united", "states"},
+							},
+							{
+								Parts: []string{"america"},
+							},
+						},
+						Dcid:             "country/USA",
+						ContainingPlaces: []string{"Earth", "northamerica"},
+						Population:       331893745,
+					},
+				},
+			},
+		},
+		{
+			"ME",
+			&pb.RecogPlaces{
+				Places: []*pb.RecogPlace{
+					{
+						Names: []*pb.RecogPlace_Name{
+							{
+								Parts: []string{"montenegro"},
+							},
+						},
+						Dcid:             "country/MNE",
+						ContainingPlaces: []string{"Earth", "europe"},
+						Population:       619211,
+					},
+					{
+						Names: []*pb.RecogPlace_Name{
+							{
+								Parts: []string{"maine"},
+							},
+						},
+						Dcid: "geoId/23",
+						ContainingPlaces: []string{"Earth", "country/USA", "northamerica",
+							"usc/NewEnglandDivision", "usc/NortheastRegion"},
+						Population: 1372247,
+					},
+				},
+			},
+		},
+	} {
+		got, ok := recogPlaceStore.AbbreviatedNameToPlaces[c.key]
+		if !ok {
+			t.Errorf("Cannot find in AbbreviatedNameToPlaces: %s", c.key)
 			continue
 		}
 

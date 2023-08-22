@@ -16,14 +16,9 @@
 package server
 
 import (
-	"bytes"
 	"context"
-	"fmt"
-	"io"
-	"net/http"
 
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
-	"github.com/datacommonsorg/mixer/internal/server/resource"
 	v1e "github.com/datacommonsorg/mixer/internal/server/v1/event"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	v2e "github.com/datacommonsorg/mixer/internal/server/v2/event"
@@ -34,45 +29,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
-	"google.golang.org/protobuf/encoding/protojson"
-	"google.golang.org/protobuf/proto"
 )
-
-func fetchRemote(
-	metadata *resource.Metadata,
-	httpClient *http.Client,
-	apiPath string,
-	in proto.Message,
-	out proto.Message,
-) error {
-	url := metadata.RemoteMixerDomain + apiPath
-	jsonValue, err := protojson.Marshal(in)
-	if err != nil {
-		return err
-	}
-	request, err := http.NewRequest("POST", url, bytes.NewBuffer(jsonValue))
-	if err != nil {
-		return err
-	}
-	request.Header.Set("Content-Type", "application/json")
-	request.Header.Set("X-API-Key", metadata.RemoteMixerAPIKey)
-	response, err := httpClient.Do(request)
-	if err != nil {
-		return err
-	}
-	defer response.Body.Close()
-	// Read response body
-	var responseBodyBytes []byte
-	if response.StatusCode != http.StatusOK {
-		return fmt.Errorf("remote mixer response not ok: %s", response.Status)
-	}
-	responseBodyBytes, err = io.ReadAll(response.Body)
-	if err != nil {
-		return err
-	}
-	// Convert response body to string
-	return protojson.Unmarshal(responseBodyBytes, out)
-}
 
 // V2ResolveCore gets resolve results from Cloud Bigtable and Maps API.
 func (s *Server) V2ResolveCore(
@@ -172,7 +129,7 @@ func (s *Server) V2NodeCore(
 			// Examples:
 			//   ->*
 			//   <-*
-			return v2pv.API(
+			return v2pv.PropertyValues(
 				ctx,
 				s.store,
 				s.metadata,
@@ -199,7 +156,7 @@ func (s *Server) V2NodeCore(
 		}
 
 		if len(properties) > 0 {
-			return v2pv.API(
+			return v2pv.PropertyValues(
 				ctx,
 				s.store,
 				s.metadata,
@@ -300,7 +257,7 @@ func (s *Server) V2ObservationCore(
 	ctx context.Context, in *pbv2.ObservationRequest,
 ) (*pbv2.ObservationResponse, error) {
 	// (TODO): The routing logic here is very rough. This needs more work.
-	var queryDate, queryValue, queryVariable, queryEntity bool
+	var queryDate, queryValue, queryVariable, queryEntity, queryFacet bool
 	for _, item := range in.GetSelect() {
 		if item == "date" {
 			queryDate = true
@@ -310,6 +267,8 @@ func (s *Server) V2ObservationCore(
 			queryVariable = true
 		} else if item == "entity" {
 			queryEntity = true
+		} else if item == "facet" {
+			queryFacet = true
 		}
 	}
 	if !queryVariable || !queryEntity {
@@ -330,6 +289,7 @@ func (s *Server) V2ObservationCore(
 				variable.GetDcids(),
 				entity.GetDcids(),
 				in.GetDate(),
+				in.GetFilter(),
 			)
 		}
 
@@ -338,30 +298,21 @@ func (s *Server) V2ObservationCore(
 			// Example of expression
 			// "geoId/06<-containedInPlace+{typeOf: City}"
 			expr := entity.GetExpression()
-			g, err := v2.ParseLinkedNodes(expr)
+			containedInPlace, err := v2.ParseContainedInPlace(expr)
 			if err != nil {
 				return nil, err
-			}
-			if len(g.Arcs) != 1 {
-				return nil, status.Errorf(
-					codes.InvalidArgument, "invalid expression string: %s", expr)
-			}
-			arc := g.Arcs[0]
-			typeOfs, typeOfsOK := arc.Filter["typeOf"]
-			if arc.SingleProp != "containedInPlace" ||
-				arc.Decorator != "+" ||
-				arc.Filter == nil ||
-				!typeOfsOK || len(typeOfs) != 1 {
-				return nil, status.Errorf(
-					codes.InvalidArgument, "invalid expression string: %s", expr)
 			}
 			return v2observation.FetchContainedIn(
 				ctx,
 				s.store,
+				s.metadata,
+				s.httpClient,
+				s.metadata.RemoteMixerDomain,
 				variable.GetDcids(),
-				g.Subject,
-				typeOfs[0],
+				containedInPlace.Ancestor,
+				containedInPlace.ChildPlaceType,
 				in.GetDate(),
+				in.GetFilter(),
 			)
 		}
 
@@ -376,13 +327,47 @@ func (s *Server) V2ObservationCore(
 		}
 	}
 
+	// Get facet information for <variable, entity> pair.
+	if !queryDate && !queryValue && queryFacet {
+		// Series
+		if len(variable.GetDcids()) > 0 && len(entity.GetDcids()) > 0 {
+			return v2observation.SeriesFacet(
+				ctx,
+				s.store,
+				s.cache,
+				variable.GetDcids(),
+				entity.GetDcids(),
+			)
+		}
+		// Collection
+		if len(variable.GetDcids()) > 0 && entity.GetExpression() != "" {
+			expr := entity.GetExpression()
+			containedInPlace, err := v2.ParseContainedInPlace(expr)
+			if err != nil {
+				return nil, err
+			}
+			return v2observation.ContainedInFacet(
+				ctx,
+				s.store,
+				s.cache,
+				s.metadata,
+				s.httpClient,
+				s.metadata.RemoteMixerDomain,
+				variable.GetDcids(),
+				containedInPlace.Ancestor,
+				containedInPlace.ChildPlaceType,
+				in.GetDate(),
+			)
+		}
+	}
+
 	// Get existence of <variable, entity> pair.
 	if !queryDate && !queryValue {
 		if len(entity.GetDcids()) > 0 {
 			if len(variable.GetDcids()) > 0 {
 				// Have both entity.dcids and variable.dcids. Check existence cache.
 				return v2observation.Existence(
-					ctx, s.store, variable.GetDcids(), entity.GetDcids())
+					ctx, s.store, s.cache, variable.GetDcids(), entity.GetDcids())
 			}
 			// TODO: Support appending entities from entity.expression
 			// Only have entity.dcids, fetch variables for each entity.

@@ -133,9 +133,6 @@ func BulkFindEntities(
 			}
 		}
 
-		// Sort to make results determistic.
-		sort.Strings(entity.Dcids)
-
 		resp.Entities = append(resp.Entities, entity)
 	}
 
@@ -167,7 +164,7 @@ func resolveDCIDs(
 	error,
 ) {
 	// First try to resolve DCIDs by RecognizePlaces.
-	entityInfoToDCIDSet, dcidSet, err := resolveWithRecognizePlaces(
+	entityInfoToDCIDs, dcidSet, err := resolveWithRecognizePlaces(
 		ctx, store, entityInfoSet)
 	if err != nil {
 		return nil, nil, err
@@ -176,7 +173,7 @@ func resolveDCIDs(
 	// See if there are any entities that cannot be resolved by RecognizePlaces.
 	missingEntityInfoSet := map[entityInfo]struct{}{}
 	for entityInfo := range entityInfoSet {
-		if dcidSet, ok := entityInfoToDCIDSet[entityInfo]; !ok || len(dcidSet) == 0 {
+		if dcids, ok := entityInfoToDCIDs[entityInfo]; !ok || len(dcids) == 0 {
 			missingEntityInfoSet[entityInfo] = struct{}{}
 		}
 	}
@@ -190,7 +187,9 @@ func resolveDCIDs(
 
 		// Add the newly resolved entities.
 		for e, dSet := range missingEntityInfoToDCIDSet {
-			entityInfoToDCIDSet[e] = dSet
+			for dcid := range dSet {
+				entityInfoToDCIDs[e] = append(entityInfoToDCIDs[e], dcid)
+			}
 		}
 		for dcid := range missingDcidSet {
 			dcidSet[dcid] = struct{}{}
@@ -199,12 +198,10 @@ func resolveDCIDs(
 
 	// Format the result, transform DCID set to DCID list.
 	res := map[entityInfo][]string{}
-	for e, dSet := range entityInfoToDCIDSet {
-		res[e] = []string{}
-		for dcid := range dSet {
-			res[e] = append(res[e], dcid)
-		}
+	for e, dcids := range entityInfoToDCIDs {
+		res[e] = append(res[e], dcids...)
 	}
+
 	return res, dcidSet, nil
 }
 
@@ -213,8 +210,8 @@ func resolveWithRecognizePlaces(
 	store *store.Store,
 	entityInfoSet map[entityInfo]struct{},
 ) (
-	map[entityInfo]map[string]struct{}, /* entityInfo -> DCID set */
-	map[string]struct{}, /* [DCID] for all entities */
+	map[entityInfo][]string, /* entityInfo -> [DCID] */
+	map[string]struct{}, /* DCID set for all entities */
 	error,
 ) {
 	// Check if the query fully matches any place names.
@@ -236,36 +233,38 @@ func resolveWithRecognizePlaces(
 		return false
 	}
 
-	req := &pb.RecognizePlacesRequest{Queries: []string{}}
+	req := &pb.RecognizePlacesRequest{
+		Queries: []string{},
+	}
 	descriptionToType := map[string]string{}
 	for e := range entityInfoSet {
 		req.Queries = append(req.Queries, e.description)
 		descriptionToType[e.description] = e.typeOf
 	}
 
-	resp, err := RecognizePlaces(ctx, req, store)
+	resp, err := RecognizePlaces(ctx, req, store, true)
 	if err != nil {
 		return nil, nil, err
 	}
 
-	entityInfoToDCIDSet := map[entityInfo]map[string]struct{}{}
+	entityInfoToDCIDs := map[entityInfo][]string{}
 	dcidSet := map[string]struct{}{}
 
 	for query, items := range resp.GetQueryItems() {
 		e := entityInfo{description: query, typeOf: descriptionToType[query]}
-		entityInfoToDCIDSet[e] = map[string]struct{}{}
+		entityInfoToDCIDs[e] = []string{}
 		for _, item := range items.GetItems() {
 			for _, place := range item.GetPlaces() {
 				dcid := place.GetDcid()
 				if hasQueryNameMatch(dcid, query) {
-					entityInfoToDCIDSet[e][dcid] = struct{}{}
+					entityInfoToDCIDs[e] = append(entityInfoToDCIDs[e], dcid)
 					dcidSet[dcid] = struct{}{}
 				}
 			}
 		}
 	}
 
-	return entityInfoToDCIDSet, dcidSet, nil
+	return entityInfoToDCIDs, dcidSet, nil
 }
 
 func resolveWithMapsAPI(

@@ -18,7 +18,6 @@ package bigtable
 
 import (
 	"context"
-	"log"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 
@@ -49,13 +48,8 @@ func (t *Table) IsCustom() bool {
 }
 
 // NewBtTable creates a new cbt.Table instance.
-func NewBtTable(ctx context.Context, projectID, instanceID, tableID string) (
-	*cbt.Table, error) {
-	btClient, err := cbt.NewClient(ctx, projectID, instanceID)
-	if err != nil {
-		return nil, err
-	}
-	return btClient.Open(tableID), nil
+func NewBtTable(btClient *cbt.Client, tableID string) *cbt.Table {
+	return btClient.Open(tableID)
 }
 
 func parseTableInfo(s string) (*pb.BigtableInfo, error) {
@@ -68,18 +62,23 @@ func parseTableInfo(s string) (*pb.BigtableInfo, error) {
 }
 
 // CreateBigtables creates a list of Bigtable from a yaml config file.
-func CreateBigtables(ctx context.Context, s string, isCustom bool) ([]*Table, error) {
+func CreateBigtables(
+	ctx context.Context,
+	s string,
+	isCustom bool,
+) ([]*Table, error) {
 	bigtableInfo, err := parseTableInfo(s)
 	if err != nil {
 		return nil, err
 	}
+	btClient, err := cbt.NewClient(ctx, bigtableInfo.Project, bigtableInfo.Instance)
+	if err != nil {
+		return nil, err
+	}
+
 	var tables []*Table
 	for _, name := range bigtableInfo.Tables {
-		t, err := NewBtTable(
-			ctx, bigtableInfo.Project, bigtableInfo.Instance, name)
-		if err != nil {
-			log.Fatalf("Failed to create BigTable client: %v", err)
-		}
+		t := NewBtTable(btClient, name)
 		tables = append(tables, NewTable(name, t, isCustom))
 	}
 	return tables, nil

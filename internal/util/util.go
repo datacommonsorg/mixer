@@ -1,4 +1,4 @@
-// Copyright 2019 Google LLC
+// Copyright 2023 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -26,6 +26,7 @@ import (
 	"log"
 	"math"
 	"math/rand"
+	"net/http"
 	"os"
 	"regexp"
 	"runtime"
@@ -36,10 +37,12 @@ import (
 	secretmanager "cloud.google.com/go/secretmanager/apiv1"
 	"cloud.google.com/go/secretmanager/apiv1/secretmanagerpb"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"golang.org/x/text/cases"
 	"golang.org/x/text/language"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
+	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/proto"
 	"google.golang.org/protobuf/reflect/protoreflect"
 	"googlemaps.github.io/maps"
@@ -55,8 +58,10 @@ const (
 	DirectionIn = "in"
 	// String to represent out arc direction
 	DirectionOut = "out"
-	// Pattern of the Maps API key secret version.
-	mapsAPIKeySecretVersion = "projects/%s/secrets/maps-api-key/versions/latest"
+	// Maps API key ID
+	MapsAPIKeyID = "maps-api-key"
+	// Mixer API key
+	MixerAPIKeyID = "mixer-api-key"
 )
 
 // PlaceStatVar holds a place and a stat var dcid.
@@ -503,23 +508,44 @@ func StringListIntersection(list [][]string) []string {
 	return res
 }
 
+func ReadLatestSecret(ctx context.Context, projectID, secretID string) (string, error) {
+
+	// Environment variables can not have "-". Since these key ids are used in
+	// GCP secret manager already, change "-" to "-" here.
+	secret := os.Getenv(strings.Replace(secretID, "-", "_", -1))
+	if secret != "" {
+		return secret, nil
+	}
+
+	// Create the context and the client.
+	client, err := secretmanager.NewClient(ctx)
+	if err != nil {
+		return "", fmt.Errorf("failed to create secret manager client: %v", err)
+	}
+	defer client.Close()
+
+	// Build the request to access the latest secret version.
+	req := &secretmanagerpb.AccessSecretVersionRequest{
+		Name: fmt.Sprintf("projects/%s/secrets/%s/versions/latest", projectID, secretID),
+	}
+
+	// Access the secret version.
+	result, err := client.AccessSecretVersion(ctx, req)
+	if err != nil {
+		return "", fmt.Errorf("failed to access latest secret version: %v", err)
+	}
+
+	// Return the secret payload as a string.
+	return string(result.Payload.Data), nil
+}
+
 // MapsClient gets the client for Maps API.
 func MapsClient(ctx context.Context, projectID string) (*maps.Client, error) {
-	secretClient, err := secretmanager.NewClient(ctx)
+	apiKey, err := ReadLatestSecret(ctx, projectID, MapsAPIKeyID)
 	if err != nil {
 		return nil, err
 	}
-	defer secretClient.Close()
-
-	secret, err := secretClient.AccessSecretVersion(ctx,
-		&secretmanagerpb.AccessSecretVersionRequest{
-			Name: fmt.Sprintf(mapsAPIKeySecretVersion, projectID),
-		})
-	if err != nil {
-		return nil, err
-	}
-
-	return maps.NewClient(maps.WithAPIKey(string(secret.Payload.Data)))
+	return maps.NewClient(maps.WithAPIKey(apiKey))
 }
 
 // StringSetToSlice is a helper to convert a string set to a string slice.
@@ -529,4 +555,58 @@ func StringSetToSlice(s map[string]struct{}) []string {
 		res = append(res, k)
 	}
 	return res
+}
+
+// Convert args to be usable in SQL query function.
+func ConvertArgs(args []string) []interface{} {
+	newArgs := make([]interface{}, len(args))
+	for i, v := range args {
+		newArgs[i] = v
+	}
+	return newArgs
+}
+
+func SQLInParam(n int) string {
+	return strings.Join(strings.Split(strings.Repeat("?", n), ""), ", ")
+}
+
+func SQLValuesParam(n int) string {
+	str := strings.Repeat("(?),", n)
+	return str[:len(str)-1]
+}
+
+func FetchRemote(
+	metadata *resource.Metadata,
+	httpClient *http.Client,
+	apiPath string,
+	in proto.Message,
+	out proto.Message,
+) error {
+	url := metadata.RemoteMixerDomain + apiPath
+	jsonValue, err := protojson.Marshal(in)
+	if err != nil {
+		return err
+	}
+	request, err := http.NewRequest("POST", url, bytes.NewBuffer(jsonValue))
+	if err != nil {
+		return err
+	}
+	request.Header.Set("Content-Type", "application/json")
+	request.Header.Set("X-API-Key", metadata.RemoteMixerAPIKey)
+	response, err := httpClient.Do(request)
+	if err != nil {
+		return err
+	}
+	defer response.Body.Close()
+	// Read response body
+	var responseBodyBytes []byte
+	if response.StatusCode != http.StatusOK {
+		return fmt.Errorf("remote mixer response not ok: %s", response.Status)
+	}
+	responseBodyBytes, err = io.ReadAll(response.Body)
+	if err != nil {
+		return err
+	}
+	// Convert response body to string
+	return protojson.Unmarshal(responseBodyBytes, out)
 }

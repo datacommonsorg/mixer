@@ -2080,7 +2080,9 @@
                 "2023-02": 3.6,
                 "2023-03": 3.5,
                 "2023-04": 3.4,
-                "2023-05": 3.7
+                "2023-05": 3.7,
+                "2023-06": 3.6,
+                "2023-07": 3.5
               },
               "measurementMethod": "BLSSeasonallyAdjusted",
               "observationPeriod": "P1M",
@@ -2390,7 +2392,8 @@
                 "2022-06": 3.6,
                 "2022-09": 3.5,
                 "2022-12": 3.6,
-                "2023-03": 3.5
+                "2023-03": 3.5,
+                "2023-06": 3.5
               },
               "measurementMethod": "BLSSeasonallyAdjusted",
               "observationPeriod": "P3M",
@@ -4600,7 +4603,9 @@
                 "2023-01": 4.6,
                 "2023-02": 4.8,
                 "2023-03": 4.8,
-                "2023-04": 4.3
+                "2023-04": 4.3,
+                "2023-05": 4.5,
+                "2023-06": 4.9
               },
               "measurementMethod": "BLSSeasonallyUnadjusted",
               "observationPeriod": "P1M",
@@ -5233,7 +5238,9 @@
                 "2023-01": 4.2,
                 "2023-02": 4.4,
                 "2023-03": 4.4,
-                "2023-04": 4.5
+                "2023-04": 4.5,
+                "2023-05": 4.5,
+                "2023-06": 4.6
               },
               "measurementMethod": "BLSSeasonallyAdjusted",
               "observationPeriod": "P1M",

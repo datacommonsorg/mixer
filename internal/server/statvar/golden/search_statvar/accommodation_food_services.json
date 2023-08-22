@@ -429,6 +429,16 @@
       ]
     },
     {
+      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Industry-NAICS/72_LaborForceStatus-InLaborForce_MilitaryStatus-Civilian",
+      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Labor Force Status = in Labor Force, Industry = Accommodation And Food Services (NAICS/72)",
+      "statVars": [
+        {
+          "name": "Population: 16 Years or More, Civilian, Employed, in Labor Force, Accommodation And Food Services (NAICS/72)",
+          "dcid": "Count_Person_16OrMoreYears_Civilian_Employed_InLaborForce_NAICSAccommodationFoodServices"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/EconomicActivity_Industry-NAICS/72",
       "name": "Economic Activity With Industry = Accommodation And Food Services (NAICS/72)"
     },
@@ -1063,10 +1073,6 @@
     {
       "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Industry-NAICS/7172_MilitaryStatus-Civilian_PlaceOfBirth",
       "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72), Place of Birth"
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Industry-NAICS/72_LaborForceStatus-InLaborForce_MilitaryStatus-Civilian",
-      "name": "Person With Age = 16 Years or More, Military Status = Civilian, Employment Status = Employed, Labor Force Status = in Labor Force, Industry = Accommodation And Food Services (NAICS/72)"
     },
     {
       "dcid": "dc/g/Person_Age-Years16Onwards_EmploymentStatus-Employed_Industry-NAICS/72_LaborForceStatus_MilitaryStatus-Civilian",

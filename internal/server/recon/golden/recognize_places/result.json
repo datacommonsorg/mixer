@@ -13,6 +13,12 @@
             },
             {
               "dcid": "geoId/4210768"
+            },
+            {
+              "dcid": "geoId/2910468"
+            },
+            {
+              "dcid": "geoId/2111872"
             }
           ]
         },
@@ -30,6 +36,75 @@
             },
             {
               "dcid": "wikidataId/Q842472"
+            },
+            {
+              "dcid": "wikidataId/Q4711417"
+            },
+            {
+              "dcid": "geoId/72054"
+            },
+            {
+              "dcid": "geoId/3626319"
+            },
+            {
+              "dcid": "wikidataId/Q5027600"
+            },
+            {
+              "dcid": "geoId/2524120"
+            },
+            {
+              "dcid": "geoId/3927538"
+            },
+            {
+              "dcid": "geoId/2924760"
+            }
+          ]
+        }
+      ]
+    },
+    "I want to find the Middle Point of a line": {
+      "items": [
+        {
+          "span": "I want to find the Middle Point of a line"
+        }
+      ]
+    },
+    "I went to Half Moon Bay California and California, Washington County": {
+      "items": [
+        {
+          "span": "I went to"
+        },
+        {
+          "span": "Half Moon Bay California",
+          "places": [
+            {
+              "dcid": "geoId/0631708"
+            }
+          ]
+        },
+        {
+          "span": "and"
+        },
+        {
+          "span": "California , Washington County",
+          "places": [
+            {
+              "dcid": "geoId/4210768"
+            }
+          ]
+        }
+      ]
+    },
+    "I went to Middle Point, USA": {
+      "items": [
+        {
+          "span": "I went to"
+        },
+        {
+          "span": "Middle Point , USA",
+          "places": [
+            {
+              "dcid": "geoId/3949728"
             }
           ]
         }
@@ -41,18 +116,12 @@
           "span": "crime in"
         },
         {
-          "span": "new york",
+          "span": "new york state",
           "places": [
             {
               "dcid": "geoId/36"
-            },
-            {
-              "dcid": "geoId/3651000"
             }
           ]
-        },
-        {
-          "span": "state"
         }
       ]
     },
@@ -103,18 +172,15 @@
           "span": "life expectancy in"
         },
         {
-          "span": "New York",
+          "span": "New York city",
           "places": [
-            {
-              "dcid": "geoId/36"
-            },
             {
               "dcid": "geoId/3651000"
             }
           ]
         },
         {
-          "span": "city and"
+          "span": "and"
         },
         {
           "span": "Alabama",
@@ -171,12 +237,41 @@
               "dcid": "geoId/0655282"
             },
             {
-              "dcid": "geoId/1961230"
-            },
-            {
               "dcid": "geoId/4257752"
             }
           ]
+        }
+      ]
+    },
+    "the birds in ME and USA are chirpy, according to me": {
+      "items": [
+        {
+          "span": "the birds in"
+        },
+        {
+          "span": "ME",
+          "places": [
+            {
+              "dcid": "geoId/23"
+            },
+            {
+              "dcid": "country/MNE"
+            }
+          ]
+        },
+        {
+          "span": "and"
+        },
+        {
+          "span": "USA",
+          "places": [
+            {
+              "dcid": "country/USA"
+            }
+          ]
+        },
+        {
+          "span": "are chirpy , according to me"
         }
       ]
     },
@@ -189,13 +284,7 @@
           "span": "San Jose California",
           "places": [
             {
-              "dcid": "geoId/06"
-            },
-            {
               "dcid": "geoId/0668000"
-            },
-            {
-              "dcid": "wikidataId/Q55599"
             }
           ]
         },
@@ -220,6 +309,15 @@
             },
             {
               "dcid": "geoId/3568430"
+            },
+            {
+              "dcid": "geoId/0463260"
+            },
+            {
+              "dcid": "geoId/1767613"
+            },
+            {
+              "dcid": "geoId/3568500"
             }
           ]
         },
@@ -237,13 +335,7 @@
           "span": "San Jose , California",
           "places": [
             {
-              "dcid": "geoId/06"
-            },
-            {
               "dcid": "geoId/0668000"
-            },
-            {
-              "dcid": "wikidataId/Q55599"
             }
           ]
         },
@@ -268,6 +360,15 @@
             },
             {
               "dcid": "geoId/3568430"
+            },
+            {
+              "dcid": "geoId/0463260"
+            },
+            {
+              "dcid": "geoId/1767613"
+            },
+            {
+              "dcid": "geoId/3568500"
             }
           ]
         },
@@ -285,6 +386,33 @@
             },
             {
               "dcid": "geoId/1553300"
+            },
+            {
+              "dcid": "geoId/0547540"
+            },
+            {
+              "dcid": "geoId/2950438"
+            },
+            {
+              "dcid": "geoId/0649651"
+            },
+            {
+              "dcid": "geoId/5655345"
+            },
+            {
+              "dcid": "geoId/4049650"
+            },
+            {
+              "dcid": "geoId/0852350"
+            },
+            {
+              "dcid": "wikidataId/Q950305"
+            },
+            {
+              "dcid": "geoId/3550515"
+            },
+            {
+              "dcid": "geoId/5655200"
             }
           ]
         },
@@ -323,6 +451,33 @@
             },
             {
               "dcid": "geoId/1553300"
+            },
+            {
+              "dcid": "geoId/0547540"
+            },
+            {
+              "dcid": "geoId/2950438"
+            },
+            {
+              "dcid": "geoId/0649651"
+            },
+            {
+              "dcid": "geoId/5655345"
+            },
+            {
+              "dcid": "geoId/4049650"
+            },
+            {
+              "dcid": "geoId/0852350"
+            },
+            {
+              "dcid": "wikidataId/Q950305"
+            },
+            {
+              "dcid": "geoId/3550515"
+            },
+            {
+              "dcid": "geoId/5655200"
             }
           ]
         }

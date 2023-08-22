@@ -1,12 +1,7 @@
 {
   "data": [
     {
-      "node": "earth",
-      "info": {
-        "self": {
-          "dcid": "earth"
-        }
-      }
+      "node": "earth"
     },
     {
       "node": "geoId/02158000100",

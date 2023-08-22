@@ -1,4 +1,5 @@
-# Copyright 2022 Google LLC
+#!/bin/bash
+# Copyright 2023 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,15 +13,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Reads in storage versions in current folder.
-# This makes this `kustomization` sharable by other apps (like website) too.
+/go/bin/mixer \
+    --use_bigquery=false \
+    --use_base_bigtable=false \
+    --use_custom_bigtable=false \
+    --use_branch_bigtable=false \
+    --remote_mixer_domain=https://api.datacommons.org &
 
-apiVersion: kustomize.config.k8s.io/v1beta1
-kind: Kustomization
+/usr/local/bin/envoy --config-path /mixer/esp/envoy-config.yaml &
 
-configMapGenerator:
-  - name: store-configmap
-    behavior: create
-    files:
-      - bigquery.version
-      - base_bigtable_info.yaml
+# Wait for any process to exit
+wait -n
+
+# Exit with status of process that exited first
+exit $?

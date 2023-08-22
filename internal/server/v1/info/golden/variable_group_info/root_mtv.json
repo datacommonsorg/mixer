@@ -12,13 +12,13 @@
         "id": "dc/g/Demographics",
         "specializedEntity": "Demographics",
         "displayName": "Demographics",
-        "descendentStatVarCount": 8593
+        "descendentStatVarCount": 8567
       },
       {
         "id": "dc/g/Economy",
         "specializedEntity": "Economy",
         "displayName": "Economy",
-        "descendentStatVarCount": 8635
+        "descendentStatVarCount": 8609
       },
       {
         "id": "dc/g/Education",
@@ -41,7 +41,7 @@
         "id": "dc/g/Health",
         "specializedEntity": "Health",
         "displayName": "Health",
-        "descendentStatVarCount": 760
+        "descendentStatVarCount": 739
       },
       {
         "id": "dc/g/Housing",
@@ -67,6 +67,6 @@
         "displayName": "Sustainable Development Goals"
       }
     ],
-    "descendentStatVarCount": 11326
+    "descendentStatVarCount": 11303
   }
 }

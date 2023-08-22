@@ -1,4 +1,66 @@
 {
+  "statVars": [
+    {
+      "name": "Account, income, poorest 40% (% ages 15+)",
+      "dcid": "worldBank/account_t_d_7"
+    },
+    {
+      "name": "Borrowed from family or friends, income, poorest 40% (% ages 15+)",
+      "dcid": "worldBank/fin22b_t_d_7"
+    },
+    {
+      "name": "Financial institution account, income, poorest 40% (% ages 15+)",
+      "dcid": "worldBank/fin1_t_d_7"
+    },
+    {
+      "name": "Owns a credit card, income, poorest 40% (% ages 15+)",
+      "dcid": "worldBank/fin7_t_d_7"
+    },
+    {
+      "name": "Owns a debit card, income, poorest 40% (% ages 15+)",
+      "dcid": "worldBank/fin2_t_d_7"
+    },
+    {
+      "name": "Saved at a financial institution, income, poorest 40% (% ages 15+)",
+      "dcid": "worldBank/fin17a_t_d_7"
+    },
+    {
+      "name": "Account ownership at a financial institution or with a mobile-money-service provider, poorest 40% (% of population ages 15+)",
+      "dcid": "worldBank/FX_OWN_TOTL_40_ZS"
+    },
+    {
+      "name": "Benefit incidence of social protection and labor programs to poorest quintile (% of total SPL benefits)",
+      "dcid": "worldBank/per_allsp_ben_q1_tot"
+    },
+    {
+      "name": "Borrowed from a formal financial institution, income, poorest 40% (% ages 15+)",
+      "dcid": "worldBank/fin22a_c_t_d_7"
+    },
+    {
+      "name": "Owns a debit or credit card, income, poorest 40% (% ages 15+)",
+      "dcid": "worldBank/fin2_7_t_d_7"
+    },
+    {
+      "name": "Benefit incidence of social insurance programs to poorest quintile (% of total social insurance benefits)",
+      "dcid": "worldBank/per_si_allsi_ben_q1_tot"
+    },
+    {
+      "name": "Benefit incidence of social safety net programs to poorest quintile (% of total safety net benefits)",
+      "dcid": "worldBank/per_sa_allsa_ben_q1_tot"
+    },
+    {
+      "name": "Coverage of social insurance programs in poorest quintile (% of population)",
+      "dcid": "worldBank/per_si_allsi_cov_q1_tot"
+    },
+    {
+      "name": "Coverage of social safety net programs in poorest quintile (% of population)",
+      "dcid": "worldBank/per_sa_allsa_cov_q1_tot"
+    },
+    {
+      "name": "Coverage of unemployment benefits and ALMP in poorest quintile (% of population)",
+      "dcid": "worldBank/per_lm_alllm_cov_q1_tot"
+    }
+  ],
   "statVarGroups": [
     {
       "dcid": "dc/g/Household_BenefitsStatus-WithFoodStampsInThePast12Months_PlaceOfBirth",
@@ -1773,6 +1835,24 @@
       ]
     },
     {
+      "dcid": "dc/g/Person_MedicalCondition-PoorGeneralHealth",
+      "name": "Person With Medical Condition = Poor General Health",
+      "statVars": [
+        {
+          "name": "Percentage of Population With Poor General Health",
+          "dcid": "Percent_Person_18OrMoreYears_WithPoorGeneralHealth"
+        },
+        {
+          "name": "Lower Confidence Interval Limit, Prevalence of Physical Health Not Good",
+          "dcid": "LowerConfidenceIntervalLimit_Percent_Person_18OrMoreYears_WithPoorGeneralHealth"
+        },
+        {
+          "name": "Upper Confidence Interval Limit, Prevalence of Physical Health Not Good",
+          "dcid": "UpperConfidenceIntervalLimit_Percent_Person_18OrMoreYears_WithPoorGeneralHealth"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/Household_BenefitsStatus-WithFoodStampsInThePast12Months_RecentWorkStatus",
       "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Recent Work Status",
       "statVars": [
@@ -2007,16 +2087,16 @@
       ]
     },
     {
-      "dcid": "dc/g/SDGSDMDPANDI_sdglocation",
-      "name": "Average Proportion of Deprivations for People Multidimensionally Poor by Location",
+      "dcid": "dc/g/SDGSDMDPANDI_sdgurbanisation",
+      "name": "Average Proportion of Deprivations for People Multidimensionally Poor by Urbanisation",
       "statVars": [
         {
-          "name": "Average proportion of deprivations for people multidimensionally poor: Rural",
-          "dcid": "sdg/SD_MDP_ANDI_RURAL"
+          "name": "Average proportion of deprivations for people multidimensionally poor [Location = Rural]",
+          "dcid": "sdg/SD_MDP_ANDI.URBANISATION--R"
         },
         {
-          "name": "Average proportion of deprivations for people multidimensionally poor: Urban",
-          "dcid": "sdg/SD_MDP_ANDI_URBAN"
+          "name": "Average proportion of deprivations for people multidimensionally poor [Location = Urban]",
+          "dcid": "sdg/SD_MDP_ANDI.URBANISATION--U"
         }
       ]
     },
@@ -2045,6 +2125,20 @@
         {
           "name": "Population: Below Poverty Level in The Past 12 Months (Per Capita)",
           "dcid": "Count_Person_BelowPovertyLevelInThePast12Months_AsFractionOf_Count_Person"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/SDGSICOVPOOR_gender",
+      "name": "Proportion of Poor Population Receiving Social Assistance Cash Benefit by Gender",
+      "statVars": [
+        {
+          "name": "Proportion of poor population receiving social assistance cash benefit [Sex = Female]",
+          "dcid": "sdg/SI_COV_POOR.SEX--F"
+        },
+        {
+          "name": "Proportion of poor population receiving social assistance cash benefit [Sex = Male]",
+          "dcid": "sdg/SI_COV_POOR.SEX--M"
         }
       ]
     },
@@ -2395,16 +2489,6 @@
         {
           "name": "Male Population Below Poverty Status in the Last Year Who Were Married in the Last Year",
           "dcid": "Count_Person_Male_MarriedInThePast12Months_BelowPovertyLevelInThePast12Months"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/SDG_1.3.1",
-      "name": "1.3.1: Proportion of population covered by social protection floors/systems, by sex, distinguishing children, unemployed persons, older persons, persons with disabilities, pregnant women, newborns, work-injury victims and the poor and the vulnerable",
-      "statVars": [
-        {
-          "name": "Proportion of poor population receiving social assistance cash benefit",
-          "dcid": "sdg/SI_COV_POOR"
         }
       ]
     },
@@ -3297,6 +3381,20 @@
           "dcid": "sdg/SD_MDP_ANDI"
         }
       ]
+    },
+    {
+      "dcid": "dc/g/SDGSICOVPOOR",
+      "name": "Proportion of Poor Population Receiving Social Assistance Cash Benefit",
+      "statVars": [
+        {
+          "name": "Proportion of poor population receiving social assistance cash benefit",
+          "dcid": "sdg/SI_COV_POOR"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/SDG_1.3.1",
+      "name": "1.3.1: Proportion of population covered by social protection floors/systems, by sex, distinguishing children, unemployed persons, older persons, persons with disabilities, pregnant women, newborns, work-injury victims and the poor and the vulnerable"
     },
     {
       "dcid": "dc/g/SDG_1.3",
@@ -5126,6 +5224,7 @@
   "matches": [
     "below poverty",
     "poor",
+    "poorest",
     "with food stamps"
   ]
 }

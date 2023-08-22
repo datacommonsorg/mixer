@@ -15946,7 +15946,9 @@
             "2023-01": 1539657,
             "2023-02": 1552537,
             "2023-03": 1555717,
-            "2023-04": 1546764
+            "2023-04": 1548074,
+            "2023-05": 1542962,
+            "2023-06": 1525252
           },
           "metadata": {
             "importName": "BLS_LAUS",
@@ -16375,7 +16377,9 @@
             "2023-01": 1593371,
             "2023-02": 1607657,
             "2023-03": 1610312,
-            "2023-04": 1595306
+            "2023-04": 1596707,
+            "2023-05": 1594170,
+            "2023-06": 1583644
           },
           "metadata": {
             "importName": "BLS_LAUS",
@@ -18509,7 +18513,9 @@
         },
         "Percent_Person_BingeDrinking": {
           "val": {
-            "2018": 17.4
+            "2018": 17.4,
+            "2020": 16,
+            "2021": 15.8
           },
           "metadata": {
             "importName": "CDC500",
@@ -18520,7 +18526,9 @@
         },
         "Percent_Person_Obesity": {
           "val": {
-            "2018": 21.6
+            "2018": 21.6,
+            "2020": 23,
+            "2021": 25.3
           },
           "metadata": {
             "importName": "CDC500",
@@ -18531,7 +18539,9 @@
         },
         "Percent_Person_PhysicalInactivity": {
           "val": {
-            "2018": 18.7
+            "2018": 18.7,
+            "2020": 20.5,
+            "2021": 17
           },
           "metadata": {
             "importName": "CDC500",
@@ -18542,7 +18552,8 @@
         },
         "Percent_Person_SleepLessThan7Hours": {
           "val": {
-            "2018": 34.3
+            "2018": 34.3,
+            "2020": 32.1
           },
           "metadata": {
             "importName": "CDC500",
@@ -18553,7 +18564,9 @@
         },
         "Percent_Person_Smoking": {
           "val": {
-            "2018": 10.9
+            "2018": 10.9,
+            "2020": 10.5,
+            "2021": 9.7
           },
           "metadata": {
             "importName": "CDC500",
@@ -18564,7 +18577,9 @@
         },
         "Percent_Person_WithArthritis": {
           "val": {
-            "2018": 18.8
+            "2018": 18.8,
+            "2020": 18.7,
+            "2021": 17.7
           },
           "metadata": {
             "importName": "CDC500",
@@ -18575,7 +18590,9 @@
         },
         "Percent_Person_WithHighBloodPressure": {
           "val": {
-            "2017": 26.8
+            "2017": 26.8,
+            "2019": 25.2,
+            "2021": 25.5
           },
           "metadata": {
             "importName": "CDC500",
@@ -18586,7 +18603,9 @@
         },
         "Percent_Person_WithHighCholesterol": {
           "val": {
-            "2017": 30.6
+            "2017": 30.6,
+            "2019": 29.6,
+            "2021": 31.6
           },
           "metadata": {
             "importName": "CDC500",
@@ -18597,7 +18616,9 @@
         },
         "Percent_Person_WithMentalHealthNotGood": {
           "val": {
-            "2018": 11.7
+            "2018": 11.7,
+            "2020": 12.8,
+            "2021": 14
           },
           "metadata": {
             "importName": "CDC500",
@@ -18608,7 +18629,9 @@
         },
         "Percent_Person_WithPhysicalHealthNotGood": {
           "val": {
-            "2018": 11.5
+            "2018": 11.5,
+            "2020": 8.9,
+            "2021": 9.5
           },
           "metadata": {
             "importName": "CDC500",
@@ -19308,7 +19331,9 @@
             "2023-01": 3.4,
             "2023-02": 3.4,
             "2023-03": 3.4,
-            "2023-04": 3
+            "2023-04": 3,
+            "2023-05": 3.2,
+            "2023-06": 3.7
           },
           "metadata": {
             "importName": "BLS_LAUS",
@@ -19466,6 +19491,66 @@
             "importName": "FBIHateCrimePublications",
             "provenanceUrl": "https://www.fbi.gov/services/cjis/ucr/hate-crime",
             "observationPeriod": "P1Y"
+          }
+        },
+        "Count_Death_DiseasesOfTheCirculatorySystem": {
+          "val": {
+            "1999": 15617,
+            "2000": 15037,
+            "2001": 15012,
+            "2002": 14708,
+            "2003": 15033,
+            "2004": 14247,
+            "2005": 14455,
+            "2006": 13064,
+            "2007": 12949,
+            "2008": 13219,
+            "2009": 12957,
+            "2010": 13053,
+            "2011": 12589,
+            "2012": 12853,
+            "2013": 13260,
+            "2014": 13612,
+            "2015": 13627,
+            "2016": 13978,
+            "2017": 14376,
+            "2018": 14458,
+            "2019": 14279,
+            "2020": 15535
+          },
+          "metadata": {
+            "importName": "CDC_Mortality_UnderlyingCause_State",
+            "provenanceUrl": "https://wonder.cdc.gov/ucd-icd10.html"
+          }
+        },
+        "Count_Death_Neoplasms": {
+          "val": {
+            "1999": 9412,
+            "2000": 9400,
+            "2001": 9517,
+            "2002": 9441,
+            "2003": 9533,
+            "2004": 9434,
+            "2005": 9249,
+            "2006": 8853,
+            "2007": 8736,
+            "2008": 9197,
+            "2009": 9098,
+            "2010": 9203,
+            "2011": 9233,
+            "2012": 9308,
+            "2013": 9419,
+            "2014": 9455,
+            "2015": 9397,
+            "2016": 9149,
+            "2017": 9513,
+            "2018": 9382,
+            "2019": 9485,
+            "2020": 9195
+          },
+          "metadata": {
+            "importName": "CDC_Mortality_UnderlyingCause_State",
+            "provenanceUrl": "https://wonder.cdc.gov/ucd-icd10.html"
           }
         },
         "Count_HousingUnit": {
@@ -20525,7 +20610,9 @@
             "2023-01": 2006906,
             "2023-02": 2026459,
             "2023-03": 2046124,
-            "2023-04": 2043806
+            "2023-04": 2043460,
+            "2023-05": 2024392,
+            "2023-06": 2020568
           },
           "metadata": {
             "importName": "BLS_LAUS",
@@ -21122,7 +21209,9 @@
             "2023-01": 2082630,
             "2023-02": 2100421,
             "2023-03": 2115620,
-            "2023-04": 2111483
+            "2023-04": 2111151,
+            "2023-05": 2106545,
+            "2023-06": 2114025
           },
           "metadata": {
             "importName": "BLS_LAUS",
@@ -23275,7 +23364,18 @@
             "2023-05-06": 12852,
             "2023-05-13": 13330,
             "2023-05-20": 13554,
-            "2023-05-27": 14539
+            "2023-05-27": 14539,
+            "2023-06-03": 15220,
+            "2023-06-10": 16152,
+            "2023-06-17": 16369,
+            "2023-06-24": 16830,
+            "2023-07-01": 17128,
+            "2023-07-08": 17155,
+            "2023-07-15": 17850,
+            "2023-07-22": 17921,
+            "2023-07-29": 17784,
+            "2023-08-05": 17555,
+            "2023-08-12": 17065
           },
           "metadata": {
             "importName": "USDOL_ETA539",
@@ -25829,6 +25929,160 @@
             "observationPeriod": "P1Y"
           }
         },
+        "Percent_Person_BingeDrinking": {
+          "val": {
+            "2014": 16.5953688504363,
+            "2015": 16.0509947426319,
+            "2016": 17.2130038698494,
+            "2017": 18.6926914830109,
+            "2018": 18.2359875693636,
+            "2020": 19.5079606641
+          },
+          "metadata": {
+            "importName": "CDC500_States",
+            "provenanceUrl": "https://www.cdc.gov/places/index.html",
+            "measurementMethod": "AgeAdjustedPrevalence",
+            "observationPeriod": "P1Y"
+          }
+        },
+        "Percent_Person_Obesity": {
+          "val": {
+            "2014": 35.5851563533233,
+            "2015": 36.6964844827439,
+            "2016": 36.6474683826381,
+            "2017": 37.1623240109044,
+            "2018": 37.6627900455946,
+            "2020": 38.5719704686372
+          },
+          "metadata": {
+            "importName": "CDC500_States",
+            "provenanceUrl": "https://www.cdc.gov/places/index.html",
+            "measurementMethod": "AgeAdjustedPrevalence",
+            "observationPeriod": "P1Y"
+          }
+        },
+        "Percent_Person_PhysicalInactivity": {
+          "val": {
+            "2014": 29.5054569135541,
+            "2015": 32.9907196016587,
+            "2016": 28.9993788706791,
+            "2017": 32.6340453181108,
+            "2018": 29.9737710011424,
+            "2020": 30.6146500265549
+          },
+          "metadata": {
+            "importName": "CDC500_States",
+            "provenanceUrl": "https://www.cdc.gov/places/index.html",
+            "measurementMethod": "AgeAdjustedPrevalence",
+            "observationPeriod": "P1Y"
+          }
+        },
+        "Percent_Person_SleepLessThan7Hours": {
+          "val": {
+            "2014": 38.1076642922934,
+            "2016": 39.5073704842669,
+            "2018": 39.4113879837871,
+            "2020": 38.0253587768275
+          },
+          "metadata": {
+            "importName": "CDC500_States",
+            "provenanceUrl": "https://www.cdc.gov/places/index.html",
+            "measurementMethod": "AgeAdjustedPrevalence",
+            "observationPeriod": "P1Y"
+          }
+        },
+        "Percent_Person_Smoking": {
+          "val": {
+            "2014": 23.9864707728603,
+            "2015": 21.0861167137606,
+            "2016": 21.407112292011,
+            "2017": 22.585168548845,
+            "2018": 22.5989822874784,
+            "2020": 20.6425651427982
+          },
+          "metadata": {
+            "importName": "CDC500_States",
+            "provenanceUrl": "https://www.cdc.gov/places/index.html",
+            "measurementMethod": "AgeAdjustedPrevalence",
+            "observationPeriod": "P1Y"
+          }
+        },
+        "Percent_Person_WithArthritis": {
+          "val": {
+            "2014": 25.2777298188421,
+            "2015": 24.9430698701272,
+            "2016": 25.5320436996178,
+            "2017": 24.9420664140018,
+            "2018": 26.720635461782,
+            "2020": 24.5519141428583
+          },
+          "metadata": {
+            "importName": "CDC500_States",
+            "provenanceUrl": "https://www.cdc.gov/places/index.html",
+            "measurementMethod": "AgeAdjustedPrevalence",
+            "observationPeriod": "P1Y"
+          }
+        },
+        "Percent_Person_WithHighBloodPressure": {
+          "val": {
+            "2013": 40.926260092254,
+            "2015": 39.6055995383311,
+            "2017": 38.7247724931913,
+            "2019": 37.9055088275069
+          },
+          "metadata": {
+            "importName": "CDC500_States",
+            "provenanceUrl": "https://www.cdc.gov/places/index.html",
+            "measurementMethod": "AgeAdjustedPrevalence",
+            "observationPeriod": "P1Y"
+          }
+        },
+        "Percent_Person_WithHighCholesterol": {
+          "val": {
+            "2013": 33.5192711295054,
+            "2015": 33.0793155075747,
+            "2017": 32.2941403899247,
+            "2019": 31.8851692646145
+          },
+          "metadata": {
+            "importName": "CDC500_States",
+            "provenanceUrl": "https://www.cdc.gov/places/index.html",
+            "measurementMethod": "AgeAdjustedPrevalence",
+            "observationPeriod": "P1Y"
+          }
+        },
+        "Percent_Person_WithMentalHealthNotGood": {
+          "val": {
+            "2014": 13.5917255880008,
+            "2015": 14.6167037564697,
+            "2016": 13.5928790408918,
+            "2017": 16.1690391133689,
+            "2018": 16.470624305463,
+            "2020": 17.7678833964773
+          },
+          "metadata": {
+            "importName": "CDC500_States",
+            "provenanceUrl": "https://www.cdc.gov/places/index.html",
+            "measurementMethod": "AgeAdjustedPrevalence",
+            "observationPeriod": "P1Y"
+          }
+        },
+        "Percent_Person_WithPhysicalHealthNotGood": {
+          "val": {
+            "2014": 14.683887229128,
+            "2015": 14.4201532125566,
+            "2016": 13.5230532647172,
+            "2017": 15.4734513897071,
+            "2018": 14.2008656244871,
+            "2020": 12.2011138658998
+          },
+          "metadata": {
+            "importName": "CDC500_States",
+            "provenanceUrl": "https://www.cdc.gov/places/index.html",
+            "measurementMethod": "AgeAdjustedPrevalence",
+            "observationPeriod": "P1Y"
+          }
+        },
         "RetailDrugDistribution_DrugDistribution_Amphetamine": {
           "val": {
             "2006-01": 52952.33,
@@ -26688,7 +26942,9 @@
             "2023-01": 3.6,
             "2023-02": 3.5,
             "2023-03": 3.3,
-            "2023-04": 3.2
+            "2023-04": 3.2,
+            "2023-05": 3.9,
+            "2023-06": 4.4
           },
           "metadata": {
             "importName": "BLS_LAUS",
@@ -27645,7 +27901,9 @@
             "2023-01": 1147049,
             "2023-02": 1134535,
             "2023-03": 1123435,
-            "2023-04": 1110870
+            "2023-04": 1110870,
+            "2023-05": 1095348,
+            "2023-06": 1090078
           },
           "metadata": {
             "importName": "BLS_LAUS",
@@ -28240,7 +28498,9 @@
             "2023-01": 1215801,
             "2023-02": 1206059,
             "2023-03": 1192916,
-            "2023-04": 1177329
+            "2023-04": 1177329,
+            "2023-05": 1166614,
+            "2023-06": 1161964
           },
           "metadata": {
             "importName": "BLS_LAUS",
@@ -30288,7 +30548,18 @@
             "2023-05-06": 14500,
             "2023-05-13": 14452,
             "2023-05-20": 15284,
-            "2023-05-27": 15039
+            "2023-05-27": 15039,
+            "2023-06-03": 15363,
+            "2023-06-10": 16236,
+            "2023-06-17": 19153,
+            "2023-06-24": 21266,
+            "2023-07-01": 21602,
+            "2023-07-08": 23475,
+            "2023-07-15": 23532,
+            "2023-07-22": 25867,
+            "2023-07-29": 21327,
+            "2023-08-05": 25206,
+            "2023-08-12": 23752
           },
           "metadata": {
             "importName": "USDOL_ETA539",
@@ -33575,7 +33846,9 @@
             "2023-01": 5.7,
             "2023-02": 5.9,
             "2023-03": 5.8,
-            "2023-04": 5.6
+            "2023-04": 5.6,
+            "2023-05": 6.1,
+            "2023-06": 6.2
           },
           "metadata": {
             "importName": "BLS_LAUS",

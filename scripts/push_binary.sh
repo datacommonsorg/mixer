@@ -1,5 +1,5 @@
 #!/bin/bash
-# Copyright 2021 Google LLC
+# Copyright 2023 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -30,5 +30,5 @@ fi
 gcloud builds submit \
     --project=datcom-ci \
     --config=build/ci/cloudbuild.push.yaml \
-    --substitutions SHORT_SHA="$TAG" \
+    --substitutions SHORT_SHA="$TAG",_SKIP_AUTOPUSH_UPDATE=true \
     .

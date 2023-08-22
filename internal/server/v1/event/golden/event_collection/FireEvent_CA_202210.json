@@ -62,6 +62,100 @@
         "places": [
           "country/USA",
           "geoId/06",
+          "geoId/06007"
+        ],
+        "geoLocations": [
+          {
+            "point": {
+              "latitude": 39.50208,
+              "longitude": -121.85133
+            }
+          }
+        ],
+        "dates": [
+          "2022-10-08"
+        ],
+        "propVals": {
+          "area": {
+            "vals": [
+              "SquareKilometer 0.12140580000000001"
+            ]
+          },
+          "containmentDate": {
+            "vals": [
+              "2022-10-08"
+            ]
+          },
+          "controlledDate": {
+            "vals": [
+              "2022-10-08"
+            ]
+          },
+          "name": {
+            "vals": [
+              "Vale Fire"
+            ]
+          },
+          "wfigsFireID": {
+            "vals": [
+              "2022-CABTU-018201"
+            ]
+          }
+        },
+        "dcid": "fire/irwinId/347bb8de-0ee8-445f-9b96-7fb7f1968c53",
+        "provenanceId": "dc/base/FireWFIGS"
+      },
+      {
+        "places": [
+          "country/USA",
+          "geoId/06",
+          "geoId/06061"
+        ],
+        "geoLocations": [
+          {
+            "point": {
+              "latitude": 38.73611,
+              "longitude": -121.39253
+            }
+          }
+        ],
+        "dates": [
+          "2022-10-15"
+        ],
+        "propVals": {
+          "area": {
+            "vals": [
+              "SquareKilometer 0.17077749200000003"
+            ]
+          },
+          "containmentDate": {
+            "vals": [
+              "2022-10-15"
+            ]
+          },
+          "controlledDate": {
+            "vals": [
+              "2022-10-21"
+            ]
+          },
+          "name": {
+            "vals": [
+              "Watt Fire"
+            ]
+          },
+          "wfigsFireID": {
+            "vals": [
+              "2022-CANEU-028369"
+            ]
+          }
+        },
+        "dcid": "fire/irwinId/9cd579d3-d5f7-4bf0-b328-a7f1a665a730",
+        "provenanceId": "dc/base/FireWFIGS"
+      },
+      {
+        "places": [
+          "country/USA",
+          "geoId/06",
           "geoId/06099"
         ],
         "geoLocations": [
@@ -187,100 +281,6 @@
           }
         },
         "dcid": "fire/irwinId/cea4951c-23a4-4ac2-98f3-715e531a4862",
-        "provenanceId": "dc/base/FireWFIGS"
-      },
-      {
-        "places": [
-          "country/USA",
-          "geoId/06",
-          "geoId/06061"
-        ],
-        "geoLocations": [
-          {
-            "point": {
-              "latitude": 38.73611,
-              "longitude": -121.39253
-            }
-          }
-        ],
-        "dates": [
-          "2022-10-15"
-        ],
-        "propVals": {
-          "area": {
-            "vals": [
-              "SquareKilometer 0.17077749200000003"
-            ]
-          },
-          "containmentDate": {
-            "vals": [
-              "2022-10-15"
-            ]
-          },
-          "controlledDate": {
-            "vals": [
-              "2022-10-21"
-            ]
-          },
-          "name": {
-            "vals": [
-              "Watt Fire"
-            ]
-          },
-          "wfigsFireID": {
-            "vals": [
-              "2022-CANEU-028369"
-            ]
-          }
-        },
-        "dcid": "fire/irwinId/9cd579d3-d5f7-4bf0-b328-a7f1a665a730",
-        "provenanceId": "dc/base/FireWFIGS"
-      },
-      {
-        "places": [
-          "country/USA",
-          "geoId/06",
-          "geoId/06007"
-        ],
-        "geoLocations": [
-          {
-            "point": {
-              "latitude": 39.50208,
-              "longitude": -121.85133
-            }
-          }
-        ],
-        "dates": [
-          "2022-10-08"
-        ],
-        "propVals": {
-          "area": {
-            "vals": [
-              "SquareKilometer 0.12140580000000001"
-            ]
-          },
-          "containmentDate": {
-            "vals": [
-              "2022-10-08"
-            ]
-          },
-          "controlledDate": {
-            "vals": [
-              "2022-10-08"
-            ]
-          },
-          "name": {
-            "vals": [
-              "Vale Fire"
-            ]
-          },
-          "wfigsFireID": {
-            "vals": [
-              "2022-CABTU-018201"
-            ]
-          }
-        },
-        "dcid": "fire/irwinId/347bb8de-0ee8-445f-9b96-7fb7f1968c53",
         "provenanceId": "dc/base/FireWFIGS"
       }
     ],

@@ -16,6 +16,7 @@ package main
 
 import (
 	"context"
+	"database/sql"
 	"flag"
 	"fmt"
 	"log"
@@ -23,23 +24,31 @@ import (
 	"net/http"
 	_ "net/http/pprof"
 	"os"
+	"path/filepath"
 	"runtime"
 	"runtime/pprof"
 
+	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbs "github.com/datacommonsorg/mixer/internal/proto/service"
 	"github.com/datacommonsorg/mixer/internal/server"
+	"github.com/datacommonsorg/mixer/internal/server/cache"
+	"github.com/datacommonsorg/mixer/internal/server/data"
 	"github.com/datacommonsorg/mixer/internal/server/healthcheck"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"golang.org/x/oauth2/google"
+	"googlemaps.github.io/maps"
 
 	"cloud.google.com/go/bigquery"
 	"cloud.google.com/go/profiler"
 	"google.golang.org/api/compute/v1"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/health/grpc_health_v1"
+
+	cbt "cloud.google.com/go/bigtable"
+	_ "github.com/mattn/go-sqlite3" // import the sqlite3 driver
 )
 
 var (
@@ -48,7 +57,7 @@ var (
 	hostProject = flag.String("host_project", "", "The GCP project to run the mixer instance.")
 	// BigQuery (Sparql)
 	useBigquery      = flag.Bool("use_bigquery", true, "Use Bigquery to serve Sparql Query.")
-	bqDataset        = flag.String("bq_dataset", "", "DataCommons BigQuery dataset.")
+	bigQueryDataset  = flag.String("bq_dataset", "", "DataCommons BigQuery dataset.")
 	schemaPath       = flag.String("schema_path", "", "The directory that contains the schema mapping files")
 	bqBillingProject = flag.String("bq_billing_project", "", "The bigquery client project. Query is billed to this project.")
 	// Base Bigtable Cache
@@ -59,8 +68,13 @@ var (
 	customBigtableInfo = flag.String("custom_bigtable_info", "", "Yaml formatted text containing information for custom Bigtable")
 	// Branch Bigtable Cache
 	useBranchBigtable = flag.Bool("use_branch_bigtable", true, "Use branch bigtable cache")
+	// SQLite database
+	useSQLite  = flag.Bool("use_sqlite", false, "Use SQLite as database.")
+	sqlitePath = flag.String("sqlite_path", "", "SQLite DB file path.")
 	// Stat-var search cache
 	useSearch = flag.Bool("use_search", true, "Uses stat var search. Will build search indexes.")
+	// Include maps client
+	useMapsApi = flag.Bool("use_maps_api", true, "Uses maps API for place recognition.")
 	// Remote mixer url. The API serves merged data from local and remote mixer
 	remoteMixerDomain = flag.String("remote_mixer_domain", "", "Remote mixer domain to fetch and merge data for API response.")
 	// Profile startup memory instead of listening for requests
@@ -133,10 +147,17 @@ func main() {
 		if err != nil {
 			log.Fatalf("Failed to read branch cache folder: %v", err)
 		}
-		branchTable, err := bigtable.NewBtTable(
+		btClient, err := cbt.NewClient(
 			ctx,
 			bigtable.BranchBigtableProject,
 			bigtable.BranchBigtableInstance,
+		)
+		if err != nil {
+			log.Fatalf("Failed to create branch bigtable client: %v", err)
+
+		}
+		branchTable := bigtable.NewBtTable(
+			btClient,
 			branchTableName,
 		)
 		if err != nil {
@@ -147,31 +168,50 @@ func main() {
 
 	// Metadata.
 	metadata, err := server.NewMetadata(
+		ctx,
 		*hostProject,
-		*bqDataset,
+		*bigQueryDataset,
 		*schemaPath,
 		*remoteMixerDomain,
 		*foldRemoteRootSvg,
+		*sqlitePath,
 	)
 	if err != nil {
 		log.Fatalf("Failed to create metadata: %v", err)
 	}
 
-	// Store
-	if len(tables) == 0 && *remoteMixerDomain == "" {
-		log.Fatal("No bigtables or remote mixer domain are provided")
+	// SQLite DB
+	var sqlClient *sql.DB
+	if *useSQLite {
+		_, err := os.Stat(filepath.Join(*sqlitePath, "datacommons.db"))
+		if os.IsNotExist(err) {
+			if _, err := data.Import(ctx, &pb.ImportRequest{}, nil, metadata, false); err != nil {
+				log.Fatalf("Can not write csv file to sqlite: %v", err)
+			}
+		}
+		sqlClient, err = sql.Open("sqlite3", filepath.Join(*sqlitePath, "datacommons.db"))
+		if err != nil {
+			log.Fatalf("Can not open sqlite3 database from: %s", *sqlitePath)
+		}
+		defer sqlClient.Close()
 	}
-	store, err := store.NewStore(bqClient, tables, branchTableName, metadata)
+
+	// Store
+	if len(tables) == 0 && *remoteMixerDomain == "" && sqlClient == nil {
+		log.Fatal("No bigtables or remote mixer domain or sql database are provided")
+	}
+	store, err := store.NewStore(
+		bqClient, sqlClient, tables, branchTableName, metadata)
 	if err != nil {
 		log.Fatalf("Failed to create a new store: %s", err)
 	}
 	// Build the cache that includes stat var group info and stat var search
 	// Index.
-	var cache *resource.Cache
+	var c *resource.Cache
 	if *useSearch {
-		cache, err = server.NewCache(
+		c, err = cache.NewCache(
 			ctx, store,
-			server.SearchOptions{
+			cache.SearchOptions{
 				UseSearch:           true,
 				BuildSvgSearchIndex: true,
 			},
@@ -182,13 +222,16 @@ func main() {
 	}
 
 	// Maps client
-	mapsClient, err := util.MapsClient(ctx, metadata.HostProject)
-	if err != nil {
-		log.Fatalf("Failed to create Maps client: %v", err)
+	var mapsClient *maps.Client
+	if *useMapsApi {
+		mapsClient, err = util.MapsClient(ctx, metadata.HostProject)
+		if err != nil {
+			log.Fatalf("Failed to create Maps client: %v", err)
+		}
 	}
 
 	// Create server object
-	mixerServer := server.NewMixerServer(store, metadata, cache, mapsClient)
+	mixerServer := server.NewMixerServer(store, metadata, c, mapsClient)
 	pbs.RegisterMixerServer(srv, mixerServer)
 
 	// Subscribe to branch cache update

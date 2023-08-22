@@ -97,6 +97,27 @@ func TestResolveDescription(t *testing.T) {
 				"<-description->dcid",
 				"harvard.json",
 			},
+			{
+				[]string{
+					"California, USA",
+					"Mountain View, US",
+					"Sunnyvale CA",
+					"CA US",
+					"ME",
+				},
+				"<-description->dcid",
+				"abbreviated_names.json",
+			},
+			{
+				[]string{
+					"Cash",
+					"cash",
+					"Middle Point",
+					"Middle Point, USA",
+				},
+				"<-description->dcid",
+				"bogus_names.json",
+			},
 		} {
 			resp, err := mixer.V2Resolve(ctx, &pbv2.ResolveRequest{
 				Nodes:    c.nodes,

@@ -41,32 +41,45 @@ func TestMergeResolve(t *testing.T) {
 			&pbv2.ResolveResponse{
 				Entities: []*pbv2.ResolveResponse_Entity{
 					{
-						Node:        "node1",
-						ResolvedIds: []string{"id1.1", "id1.3"},
+						Node: "node1",
+						Candidates: []*pbv2.ResolveResponse_Entity_Candidate{
+							{Dcid: "id1.1"},
+							{Dcid: "id1.3"},
+						},
 					},
 				},
 			},
 			&pbv2.ResolveResponse{
 				Entities: []*pbv2.ResolveResponse_Entity{
 					{
-						Node:        "node1",
-						ResolvedIds: []string{"id1.2"},
+						Node: "node1",
+						Candidates: []*pbv2.ResolveResponse_Entity_Candidate{
+							{Dcid: "id1.2"},
+						},
 					},
 					{
-						Node:        "node2",
-						ResolvedIds: []string{"id2.1"},
+						Node: "node2",
+						Candidates: []*pbv2.ResolveResponse_Entity_Candidate{
+							{Dcid: "id2.1"},
+						},
 					},
 				},
 			},
 			&pbv2.ResolveResponse{
 				Entities: []*pbv2.ResolveResponse_Entity{
 					{
-						Node:        "node1",
-						ResolvedIds: []string{"id1.1", "id1.2", "id1.3"},
+						Node: "node1",
+						Candidates: []*pbv2.ResolveResponse_Entity_Candidate{
+							{Dcid: "id1.1"},
+							{Dcid: "id1.2"},
+							{Dcid: "id1.3"},
+						},
 					},
 					{
-						Node:        "node2",
-						ResolvedIds: []string{"id2.1"},
+						Node: "node2",
+						Candidates: []*pbv2.ResolveResponse_Entity_Candidate{
+							{Dcid: "id2.1"},
+						},
 					},
 				},
 			},

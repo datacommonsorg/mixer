@@ -37,7 +37,7 @@ func Variables(
 	if err := util.CheckValidDCIDs([]string{entity}); err != nil {
 		return nil, err
 	}
-	entityToStatVars, err := statvar.GetEntityStatVarsHelper(ctx, []string{entity}, store)
+	entityToStatVars, err := statvar.GetEntityStatVarsHelper(ctx, store, []string{entity})
 	if err != nil {
 		return nil, err
 	}
@@ -65,7 +65,7 @@ func BulkVariables(
 	if err := util.CheckValidDCIDs(entities); err != nil {
 		return nil, err
 	}
-	entityToStatVars, err := statvar.GetEntityStatVarsHelper(ctx, entities, store)
+	entityToStatVars, err := statvar.GetEntityStatVarsHelper(ctx, store, entities)
 	if err != nil {
 		return nil, err
 	}

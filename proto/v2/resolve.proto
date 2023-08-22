@@ -38,8 +38,15 @@ message ResolveRequest{
 
 message ResolveResponse{
     message Entity {
+        message Candidate {
+            string dcid = 1;
+            string dominant_type = 2;
+        }
         string node = 1;
+        // TODO(ws): Deprecate this field once not used in website:
+        // https://github.com/search?q=repo%3Adatacommonsorg%2Fwebsite%20v2%2Fresolve&type=code
         repeated string resolved_ids = 2;
+        repeated Candidate candidates = 3;
     }
     repeated Entity entities = 1;
 }

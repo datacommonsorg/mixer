@@ -40,17 +40,52 @@ func TestFetchContainIn(t *testing.T) {
 		for _, c := range []struct {
 			variables        []string
 			entityExpression string
+			filter           *pbv2.FacetFilter
 			goldenFile       string
 		}{
 			{
+				[]string{
+					"test_var_1",
+				},
+				"country/USA<-containedInPlace+{typeOf:State}",
+				nil,
+				"US_State.json",
+			},
+			{
 				[]string{"Count_Person", "Median_Age_Person"},
 				"geoId/06<-containedInPlace+{typeOf:County}",
+				nil,
 				"CA_County.json",
 			},
 			{
 				[]string{"Count_Person"},
 				"country/FRA<-containedInPlace+{typeOf:AdministrativeArea2}",
+				nil,
 				"FRA_AA2.json",
+			},
+			{
+				[]string{"Count_Person"},
+				"country/USA<-containedInPlace+{typeOf:State}",
+				&pbv2.FacetFilter{Domains: []string{"census.gov"}},
+				"filter.json",
+			},
+			{
+				[]string{"Count_Person"},
+				"country/USA<-containedInPlace+{typeOf:State}",
+				&pbv2.FacetFilter{Domains: []string{"census.gov", "cdc.gov"}},
+				"multi_filter.json",
+			},
+			{
+				[]string{"Count_Person", "Median_Age_Person"},
+				"country/USA<-containedInPlace+{typeOf:State}",
+				&pbv2.FacetFilter{FacetIds: []string{"2176550201"}},
+				"US_State_Facet_Id.json",
+			},
+			{
+				[]string{"Count_Person", "Median_Age_Person"},
+				"country/USA<-containedInPlace+{typeOf:State}",
+				&pbv2.FacetFilter{FacetIds: []string{"2176550201", "10983471"}},
+				"US_State_Multi_Facet_Id.json",
 			},
 		} {
 			goldenFile := c.goldenFile
@@ -59,6 +94,7 @@ func TestFetchContainIn(t *testing.T) {
 				Variable: &pbv2.DcidOrExpression{Dcids: c.variables},
 				Entity:   &pbv2.DcidOrExpression{Expression: c.entityExpression},
 				Date:     date,
+				Filter:   c.filter,
 			})
 			if err != nil {
 				t.Errorf("could not run V2Observation (contained_in): %s", err)
@@ -84,7 +120,7 @@ func TestFetchContainIn(t *testing.T) {
 	}
 	if err := test.TestDriver(
 		"FetchContainIn",
-		&test.TestOption{},
+		&test.TestOption{UseSQLite: true},
 		testSuite,
 	); err != nil {
 		t.Errorf("TestDriver() = %s", err)

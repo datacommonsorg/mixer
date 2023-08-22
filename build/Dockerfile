@@ -1,4 +1,4 @@
-# Copyright 2019 Google LLC
+# Copyright 2023 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -18,22 +18,15 @@
 # go-protoc: image with Golang, protoc and protoc-go pluggin
 # base: image with Go modules download and protobuf built
 # server: image for mixer server
-# test: image to run all the tests
-# golden-update: image to update golden files
 
-# =========  protoc stage ==========
 
-FROM golang:1.20.2 AS go-protoc
+FROM golang:1.20.7-alpine3.17 AS go-protoc
+
 WORKDIR /mixer
-# Install protoc
-RUN apt-get update && \
-    apt-get upgrade -y && \
-    apt-get install -y unzip
 
-RUN curl -LO https://github.com/protocolbuffers/protobuf/releases/download/v3.19.4/protoc-3.19.4-linux-x86_64.zip
-RUN unzip protoc-3.19.4-linux-x86_64.zip
-RUN chmod +x /mixer/bin/protoc
-ENV PATH="${PATH}:/mixer/bin/"
+# Install protoc
+RUN apk update
+RUN apk add bash protobuf-dev
 
 # Install protobuf go plugin
 ENV GO111MODULE=on
@@ -41,10 +34,8 @@ RUN go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.30.0
 RUN go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.3.0
 
 
-# =========  base stage ==========
 # Use pre-built go-protoc image from last step.
-
-FROM gcr.io/datcom-ci/go-protoc:latest AS base
+FROM gcr.io/datcom-ci/go-protoc:latest AS server
 WORKDIR /mixer
 # Docker cache: Download modules
 COPY go.mod go.sum /mixer/
@@ -53,38 +44,25 @@ RUN go mod download -x
 # Copy files
 COPY proto/ proto
 COPY internal/ internal
+
 # Build protobuf
 RUN protoc \
+    --include_source_info \
+    --include_imports \
     --proto_path=proto \
     --go_out=paths=source_relative:internal/proto \
     --go-grpc_out=paths=source_relative:internal/proto \
     --go-grpc_opt=require_unimplemented_servers=false \
     --experimental_allow_proto3_optional \
+    --descriptor_set_out mixer-grpc.pb \
     proto/*.proto proto/**/*.proto
 
-
-# =========  server stage ==========
-
-FROM base as server
-WORKDIR /mixer
 # Adding the grpc_health_probe
 RUN GRPC_HEALTH_PROBE_VERSION=v0.4.7 && \
     wget -qO/bin/grpc_health_probe https://github.com/grpc-ecosystem/grpc-health-probe/releases/download/${GRPC_HEALTH_PROBE_VERSION}/grpc_health_probe-linux-amd64 && \
     chmod +x /bin/grpc_health_probe
 # Build binary
 COPY cmd/ cmd
+COPY esp/ esp
 RUN go build -o /go/bin/mixer cmd/main.go
 ENTRYPOINT ["/go/bin/mixer"]
-
-
-# =========  test stage ==========
-
-FROM base as test
-WORKDIR /mixer
-# Golint
-RUN wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s v1.52.2
-RUN ./bin/golangci-lint run --timeout=600s --skip-dirs='internal/proto'
-# Test
-COPY test/ test
-COPY deploy/ deploy
-CMD ["go", "test", "./..."]

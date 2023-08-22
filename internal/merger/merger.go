@@ -18,6 +18,7 @@ package merger
 import (
 	"sort"
 
+	"github.com/datacommonsorg/mixer/internal/proto"
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/pagination"
@@ -32,17 +33,17 @@ func MergeResolve(r1, r2 *pbv2.ResolveResponse) *pbv2.ResolveResponse {
 		return r1
 	}
 
-	// Maps are used to dedup.
-	nodeToResolvedIDSet := map[string]map[string]struct{}{}
+	// Maps are used to dedup: node -> resolved ID -> candidate.
+	store := map[string]map[string]*pbv2.ResolveResponse_Entity_Candidate{}
 
 	collectEntities := func(r *pbv2.ResolveResponse) {
 		for _, e := range r.GetEntities() {
 			node := e.GetNode()
-			if _, ok := nodeToResolvedIDSet[node]; !ok {
-				nodeToResolvedIDSet[node] = map[string]struct{}{}
+			if _, ok := store[node]; !ok {
+				store[node] = map[string]*pbv2.ResolveResponse_Entity_Candidate{}
 			}
-			for _, id := range e.GetResolvedIds() {
-				nodeToResolvedIDSet[node][id] = struct{}{}
+			for _, candidate := range e.GetCandidates() {
+				store[node][candidate.GetDcid()] = candidate
 			}
 		}
 	}
@@ -51,18 +52,20 @@ func MergeResolve(r1, r2 *pbv2.ResolveResponse) *pbv2.ResolveResponse {
 	collectEntities(r2)
 
 	res := &pbv2.ResolveResponse{}
-	for node, resolvedIDSet := range nodeToResolvedIDSet {
-		var resolvedIDs []string
-		for id := range resolvedIDSet {
-			resolvedIDs = append(resolvedIDs, id)
+	for node, idToCandidate := range store {
+		candidates := []*pbv2.ResolveResponse_Entity_Candidate{}
+		for _, candidate := range idToCandidate {
+			candidates = append(candidates, candidate)
 		}
 
 		// Sort to make result deterministic.
-		sort.Strings(resolvedIDs)
+		sort.Slice(candidates, func(i, j int) bool {
+			return candidates[i].GetDcid() < candidates[j].GetDcid()
+		})
 
 		res.Entities = append(res.Entities, &pbv2.ResolveResponse_Entity{
-			Node:        node,
-			ResolvedIds: resolvedIDs,
+			Node:       node,
+			Candidates: candidates,
 		})
 	}
 
@@ -267,6 +270,9 @@ func MergeObservation(o1, o2 *pbv2.ObservationResponse) *pbv2.ObservationRespons
 				ByEntity: map[string]*pbv2.EntityObservation{},
 			}
 		}
+		if o1.ByVariable[v].ByEntity == nil {
+			o1.ByVariable[v].ByEntity = map[string]*pbv2.EntityObservation{}
+		}
 		for e, eData := range vData.ByEntity {
 			if _, ok := o1.ByVariable[v].ByEntity[e]; !ok {
 				o1.ByVariable[v].ByEntity[e] = &pbv2.EntityObservation{
@@ -278,6 +284,9 @@ func MergeObservation(o1, o2 *pbv2.ObservationResponse) *pbv2.ObservationRespons
 				eData.OrderedFacets...,
 			)
 		}
+	}
+	if o1.Facets == nil {
+		o1.Facets = map[string]*proto.Facet{}
 	}
 	for facetID, facet := range o2.Facets {
 		o1.Facets[facetID] = facet
