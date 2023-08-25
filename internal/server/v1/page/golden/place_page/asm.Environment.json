@@ -8399,12 +8399,11 @@
       }
     },
     "country/NZL": {
-      "date": "2021",
-      "value": 5111400,
+      "date": "2022",
+      "value": 5151600,
       "metadata": {
-        "importName": "WorldDevelopmentIndicators",
-        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
-        "observationPeriod": "P1Y"
+        "importName": "New_Zealand_Census",
+        "provenanceUrl": "https://www.stats.govt.nz/"
       }
     },
     "country/USA": {

@@ -757,6 +757,11 @@
               "facet": "3748004783"
             },
             {
+              "date": "2023-03",
+              "value": 215046000,
+              "facet": "366707399"
+            },
+            {
               "date": "2018",
               "value": 208495000,
               "facet": "1151455814"
@@ -2542,6 +2547,11 @@
               "facet": "3981252704"
             },
             {
+              "date": "2022",
+              "value": 5149139,
+              "facet": "2855734950"
+            },
+            {
               "date": "2019",
               "value": 4904240,
               "facet": "1151455814"
@@ -4127,6 +4137,11 @@
               "facet": "3981252704"
             },
             {
+              "date": "2022",
+              "value": 5151600,
+              "facet": "1446742247"
+            },
+            {
               "date": "2019",
               "value": 4917000,
               "facet": "1151455814"
@@ -4695,6 +4710,11 @@
               "date": "2021",
               "value": 5453566,
               "facet": "3981252704"
+            },
+            {
+              "date": "2022",
+              "value": 5637022,
+              "facet": "1250580925"
             },
             {
               "date": "2019",
@@ -5582,8 +5602,8 @@
               "facet": "2176550201"
             },
             {
-              "date": "2020",
-              "value": 329824950,
+              "date": "2021",
+              "value": 333036755,
               "facet": "1273233945"
             },
             {
@@ -6021,10 +6041,18 @@
       "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
       "measurement_method": "CensusACS1yrSurvey"
     },
+    "1250580925": {
+      "import_name": "Singapore_Census",
+      "provenance_url": "https://www.singstat.gov.sg/"
+    },
     "1273233945": {
       "import_name": "CensusACS5YearSurvey_AggCountry",
       "provenance_url": "https://www.census.gov/",
       "measurement_method": "CensusACS5yrSurvey"
+    },
+    "1446742247": {
+      "import_name": "New_Zealand_Census",
+      "provenance_url": "https://www.stats.govt.nz/"
     },
     "1456184638": {
       "import_name": "WikipediaStatsData",
@@ -6111,6 +6139,10 @@
       "import_name": "Japan_Census",
       "provenance_url": "https://www.e-stat.go.jp/"
     },
+    "2855734950": {
+      "import_name": "Ireland_Census",
+      "provenance_url": "https://www.cso.ie/en/index.html"
+    },
     "290530767": {
       "import_name": "LatviaCSB",
       "provenance_url": "https://www.csb.gov.lv/en",
@@ -6147,6 +6179,11 @@
     "3614729857": {
       "import_name": "MexicoCensus",
       "provenance_url": "https://www.inegi.org.mx/temas/"
+    },
+    "366707399": {
+      "import_name": "Brazil_SIDRA_IBGE",
+      "provenance_url": "https://sidra.ibge.gov.br/home/pnadct",
+      "observation_period": "P3M"
     },
     "3698737791": {
       "import_name": "StatisticsNorway",

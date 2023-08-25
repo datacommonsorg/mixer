@@ -8036,14 +8036,6 @@
               ],
               "dcid": "dc/topic/Demographics",
               "provenanceId": "dc/base/HumanReadableStatVars"
-            },
-            {
-              "name": "Population",
-              "types": [
-                "Topic"
-              ],
-              "dcid": "dc/topic/Population",
-              "provenanceId": "dc/base/HumanReadableStatVars"
             }
           ]
         }
@@ -8165,6 +8157,13 @@
               ],
               "dcid": "country/AIA",
               "provenanceId": "dc/base/WikidataOtherIdGeos"
+            },
+            {
+              "types": [
+                "Country"
+              ],
+              "dcid": "country/ALA",
+              "provenanceId": "dc/base/BaseGeos"
             },
             {
               "name": "Albania",
@@ -9846,7 +9845,7 @@
                 "Country"
               ],
               "dcid": "country/SJM",
-              "provenanceId": "dc/base/WikidataOtherIdGeos"
+              "provenanceId": "dc/base/BaseGeos"
             },
             {
               "name": "Solomon Islands",

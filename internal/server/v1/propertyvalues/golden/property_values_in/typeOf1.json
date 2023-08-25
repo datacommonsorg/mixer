@@ -42,6 +42,13 @@
       "provenanceId": "dc/base/WikidataOtherIdGeos"
     },
     {
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/ALA",
+      "provenanceId": "dc/base/BaseGeos"
+    },
+    {
       "name": "Albania",
       "types": [
         "Country"
@@ -435,14 +442,6 @@
         "Country"
       ],
       "dcid": "country/COL",
-      "provenanceId": "dc/base/WikidataOtherIdGeos"
-    },
-    {
-      "name": "Comoros",
-      "types": [
-        "Country"
-      ],
-      "dcid": "country/COM",
       "provenanceId": "dc/base/WikidataOtherIdGeos"
     },
     {

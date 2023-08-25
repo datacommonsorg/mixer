@@ -432,7 +432,7 @@ func (a ByRank) Less(i, j int) bool {
 
 // FacetByRank implements sort.Interface for []*Facet based on
 // the rank score.
-type FacetByRank []*pb.Facet
+type FacetByRank []*pb.PlaceVariableFacet
 
 func (a FacetByRank) Len() int {
 	return len(a)
@@ -444,29 +444,37 @@ func (a FacetByRank) Swap(i, j int) {
 
 func (a FacetByRank) Less(i, j int) bool {
 	oi := a[i]
-	scorei := GetFacetScore(oi)
+	scorei := GetFacetScore(oi.Facet)
 	oj := a[j]
-	scorej := GetFacetScore(oj)
+	scorej := GetFacetScore(oj.Facet)
 	// Higher score value means lower rank.
 	if scorei != scorej {
 		return scorei < scorej
 	}
 
+	if oi.LatestDate != oj.LatestDate {
+		return oi.LatestDate > oj.LatestDate
+	}
+
+	if oi.ObsCount != oj.ObsCount {
+		return oi.ObsCount > oj.ObsCount
+	}
+
 	// Compare other fields to get consistent ranking.
-	if oi.MeasurementMethod != oj.MeasurementMethod {
-		return oi.MeasurementMethod < oj.MeasurementMethod
+	if oi.Facet.MeasurementMethod != oj.Facet.MeasurementMethod {
+		return oi.Facet.MeasurementMethod < oj.Facet.MeasurementMethod
 	}
-	if oi.ObservationPeriod != oj.ObservationPeriod {
-		return oi.ObservationPeriod < oj.ObservationPeriod
+	if oi.Facet.ObservationPeriod != oj.Facet.ObservationPeriod {
+		return oi.Facet.ObservationPeriod < oj.Facet.ObservationPeriod
 	}
-	if oi.ScalingFactor != oj.ScalingFactor {
-		return oi.ScalingFactor < oj.ScalingFactor
+	if oi.Facet.ScalingFactor != oj.Facet.ScalingFactor {
+		return oi.Facet.ScalingFactor < oj.Facet.ScalingFactor
 	}
-	if oi.Unit != oj.Unit {
-		return oi.Unit < oj.Unit
+	if oi.Facet.Unit != oj.Facet.Unit {
+		return oi.Facet.Unit < oj.Facet.Unit
 	}
-	if oi.ProvenanceUrl != oj.ProvenanceUrl {
-		return oi.ProvenanceUrl < oj.ProvenanceUrl
+	if oi.Facet.ProvenanceUrl != oj.Facet.ProvenanceUrl {
+		return oi.Facet.ProvenanceUrl < oj.Facet.ProvenanceUrl
 	}
 	return true
 }

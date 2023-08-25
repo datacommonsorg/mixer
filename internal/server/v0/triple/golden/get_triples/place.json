@@ -179,8 +179,8 @@
         "CensusZipCodeTabulationArea"
       ],
       "predicate": "landArea",
-      "objectId": "SquareMeter81887185",
-      "objectName": "SquareMeter 81887185",
+      "objectId": "SquareMeter88980551",
+      "objectName": "SquareMeter 88980551",
       "objectTypes": [
         "Quantity"
       ],
@@ -193,7 +193,7 @@
         "CensusZipCodeTabulationArea"
       ],
       "predicate": "latitude",
-      "objectValue": "18.455183",
+      "objectValue": "18.457399",
       "provenanceId": "dc/base/BaseGeos"
     },
     {
@@ -203,7 +203,7 @@
         "CensusZipCodeTabulationArea"
       ],
       "predicate": "longitude",
-      "objectValue": "-67.119887",
+      "objectValue": "-67.124867",
       "provenanceId": "dc/base/BaseGeos"
     },
     {
@@ -251,8 +251,8 @@
         "CensusZipCodeTabulationArea"
       ],
       "predicate": "waterArea",
-      "objectId": "SquareMeter181411",
-      "objectName": "SquareMeter 181411",
+      "objectId": "SquareMeter6253316",
+      "objectName": "SquareMeter 6253316",
       "objectTypes": [
         "Quantity"
       ],

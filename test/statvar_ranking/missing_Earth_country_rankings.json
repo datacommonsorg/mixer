@@ -420,7 +420,6 @@
     "title": "Marital status",
     "statsVars": [
       "Count_Person_MarriedAndNotSeparated",
-      "Count_Person_Divorced",
       "Count_Person_NeverMarried",
       "Count_Person_Widowed",
       "Count_Person_Separated"
@@ -454,13 +453,6 @@
     "title": "Mean ozone concentration",
     "statsVars": [
       "Mean_Concentration_AirPollutant_Ozone"
-    ],
-    "relatedChart": {}
-  },
-  {
-    "title": "Median Age",
-    "statsVars": [
-      "Median_Age_Person"
     ],
     "relatedChart": {}
   },
@@ -735,7 +727,6 @@
       "indianCensus/Count_Person_Religion_Jain",
       "indianCensus/Count_Person_Religion_Muslim",
       "indianCensus/Count_Person_Religion_OtherReligionsAndPersuasions",
-      "indianCensus/Count_Person_Religion_ReligionNotStated",
       "indianCensus/Count_Person_Religion_Sikh"
     ],
     "relatedChart": {
@@ -747,7 +738,6 @@
         "indianCensus/Count_Person_Religion_Jain",
         "indianCensus/Count_Person_Religion_Muslim",
         "indianCensus/Count_Person_Religion_OtherReligionsAndPersuasions",
-        "indianCensus/Count_Person_Religion_ReligionNotStated",
         "indianCensus/Count_Person_Religion_Sikh"
       ]
     }

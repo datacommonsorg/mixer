@@ -1,6 +1,59 @@
 {
   "values": [
     {
+      "name": "Fremont Union High",
+      "types": [
+        "HighSchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0614430",
+      "provenanceId": "dc/base/NCES_SchoolDistrict"
+    },
+    {
+      "name": "Los Altos Elementary",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0622650",
+      "provenanceId": "dc/base/NCES_SchoolDistrict"
+    },
+    {
+      "name": "Mountain View Whisman",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0626280",
+      "provenanceId": "dc/base/NCES_SchoolDistrict"
+    },
+    {
+      "name": "Mountain View-Los Altos Union High",
+      "types": [
+        "HighSchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0626310",
+      "provenanceId": "dc/base/NCES_SchoolDistrict"
+    },
+    {
+      "name": "Palo Alto Unified",
+      "types": [
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0629610",
+      "provenanceId": "dc/base/NCES_SchoolDistrict"
+    },
+    {
+      "name": "Sunnyvale",
+      "types": [
+        "ElementarySchoolDistrict",
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0638460",
+      "provenanceId": "dc/base/NCES_SchoolDistrict"
+    },
+    {
       "name": "94024",
       "types": [
         "CensusZipCodeTabulationArea"

@@ -10,6 +10,14 @@
           ],
           "dcid": "northamerica",
           "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Organisation for Economic Co-operation and Development (OECD)",
+          "types": [
+            "GeoRegion"
+          ],
+          "dcid": "undata-geo/G00406000",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         }
       ]
     },

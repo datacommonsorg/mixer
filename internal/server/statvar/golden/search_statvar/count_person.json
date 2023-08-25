@@ -973,12 +973,20 @@
       "dcid": "Count_Person_Citizen"
     },
     {
+      "name": "Population: Citizen Outside EU27",
+      "dcid": "Count_Person_CitizenOutsideEU27"
+    },
+    {
       "name": "Population: Citizen Outside EU28",
       "dcid": "Count_Person_CitizenOutsideEU28"
     },
     {
       "name": "Population: Civilian",
       "dcid": "Count_Person_Civilian"
+    },
+    {
+      "name": "Population: College Graduate",
+      "dcid": "Count_Person_EducationalAttainmentCollegeGraduate"
     },
     {
       "name": "Population: College or University Student Housing",
@@ -1125,8 +1133,16 @@
       "dcid": "Count_Person_ForeignBorn"
     },
     {
+      "name": "Population: Foreign Born Outside EU27",
+      "dcid": "Count_Person_ForeignBornOutsideEU27"
+    },
+    {
       "name": "Population: Foreign Born Outside EU28",
       "dcid": "Count_Person_ForeignBornOutsideEU28"
+    },
+    {
+      "name": "Population: Foreign Born Within EU27",
+      "dcid": "Count_Person_ForeignBornWithinEU27"
     },
     {
       "name": "Population: Foreign Born Within EU28",
@@ -1787,6 +1803,10 @@
     {
       "name": "Population: With Public Health Insurance Coverage",
       "dcid": "Count_Person_WithPublicCoverage"
+    },
+    {
+      "name": "Population: Within EU27 And Not A Citizen",
+      "dcid": "Count_Person_WithinEU27AndNotACitizen"
     },
     {
       "name": "Population: Within EU28 And Not A Citizen",
@@ -3979,26 +3999,6 @@
     {
       "name": "Population: 10 - 14 Years, Stroke",
       "dcid": "Count_Person_10To14Years_ConditionStroke"
-    },
-    {
-      "name": "Population: 10 - 14 Years, Two or More Races",
-      "dcid": "Count_Person_10To14Years_TwoOrMoreRaces"
-    },
-    {
-      "name": "Population: 10 - 14 Years, Urban",
-      "dcid": "Count_Person_10To14Years_Urban"
-    },
-    {
-      "name": "Population: 10 - 14 Years, White Alone",
-      "dcid": "Count_Person_10To14Years_WhiteAlone"
-    },
-    {
-      "name": "Population: 10 - 14 Years, White Alone Not Hispanic or Latino",
-      "dcid": "Count_Person_10To14Years_WhiteAloneNotHispanicOrLatino"
-    },
-    {
-      "name": "Population: 10 - 14 Years, White Alone or In Combination With One or More Other Races",
-      "dcid": "Count_Person_10To14Years_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
     }
   ],
   "matches": [
