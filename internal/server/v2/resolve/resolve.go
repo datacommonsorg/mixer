@@ -17,7 +17,6 @@ package resolve
 
 import (
 	"context"
-	"fmt"
 	"sort"
 	"strconv"
 	"strings"
@@ -89,7 +88,13 @@ func Coordinate(
 	store *store.Store,
 	nodes []string,
 ) (*pbv2.ResolveResponse, error) {
+	type latLng struct {
+		lat float64
+		lng float64
+	}
+
 	coordinates := []*pb.ResolveCoordinatesRequest_Coordinate{}
+	latLngToNode := map[latLng]string{}
 	for _, node := range nodes {
 		lat, lng, err := parseCoordinate(node)
 		if err != nil {
@@ -100,6 +105,7 @@ func Coordinate(
 				Latitude:  lat,
 				Longitude: lng,
 			})
+		latLngToNode[latLng{lat: lat, lng: lng}] = node
 	}
 	data, err := recon.ResolveCoordinates(ctx,
 		&pb.ResolveCoordinatesRequest{Coordinates: coordinates},
@@ -109,9 +115,13 @@ func Coordinate(
 	}
 	resp := &pbv2.ResolveResponse{}
 	for _, e := range data.GetPlaceCoordinates() {
+		node, ok := latLngToNode[latLng{lat: e.GetLatitude(), lng: e.GetLongitude()}]
+		if !ok {
+			continue
+		}
 		resp.Entities = append(resp.Entities,
 			&pbv2.ResolveResponse_Entity{
-				Node:        formatLatLng(e.GetLatitude(), e.GetLongitude()),
+				Node:        node,
 				ResolvedIds: e.GetPlaceDcids(),
 				Candidates:  getSortedResolvedPlaceCandidates(e.GetPlaces()),
 			})
@@ -226,11 +236,4 @@ func getSortedResolvedPlaceCandidates(
 	candidates = append(candidates, leftoverCandidates...)
 
 	return candidates
-}
-
-func formatLatLng(lat, lng float64) string {
-	// Keep effective precision of lat/lng.
-	latStr := strconv.FormatFloat(lat, 'f', -1, 64)
-	lngStr := strconv.FormatFloat(lng, 'f', -1, 64)
-	return fmt.Sprintf("%s#%s", latStr, lngStr)
 }

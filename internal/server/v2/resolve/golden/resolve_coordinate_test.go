@@ -42,7 +42,7 @@ func TestResolveCoordinate(t *testing.T) {
 			goldenFile string
 		}{
 			{
-				[]string{"37.42#-122.08", "32.41#-102.11"},
+				[]string{"37.42#-122.08", "32.41#-102.11", "36.0#-119.4"},
 				"<-geoCoordinate->dcid",
 				"result.json",
 			},
