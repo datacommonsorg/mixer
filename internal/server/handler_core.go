@@ -338,7 +338,6 @@ func (s *Server) V2ObservationCore(
 				s.cache,
 				variable.GetDcids(),
 				entity.GetDcids(),
-				false,
 			)
 		}
 		// Collection

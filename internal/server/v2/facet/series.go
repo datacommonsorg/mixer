@@ -36,7 +36,6 @@ func SeriesFacet(
 	cache *resource.Cache,
 	variables []string,
 	entities []string,
-	mergeEntities bool,
 ) (*pbv2.ObservationResponse, error) {
 	result := &pbv2.ObservationResponse{
 		ByVariable: map[string]*pbv2.VariableObservation{},
@@ -90,26 +89,6 @@ func SeriesFacet(
 					)
 					result.Facets[facetID] = placeVarFacet.Facet
 				}
-			}
-		}
-	}
-	if mergeEntities {
-		for _, variableObservation := range result.ByVariable {
-			seen := map[string]struct{}{}
-			orderedFacets := []*pbv2.FacetObservation{}
-			for _, entityObservation := range variableObservation.ByEntity {
-				for _, facet := range entityObservation.OrderedFacets {
-					if _, ok := seen[facet.FacetId]; ok {
-						continue
-					}
-					seen[facet.FacetId] = struct{}{}
-					// Clear the observation count, since facet are merged across entities.
-					facet.Observations = nil
-					orderedFacets = append(orderedFacets, facet)
-				}
-			}
-			variableObservation.ByEntity = map[string]*pbv2.EntityObservation{
-				"": {OrderedFacets: orderedFacets},
 			}
 		}
 	}
