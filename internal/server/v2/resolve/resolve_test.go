@@ -46,3 +46,19 @@ func TestParseCoordinate(t *testing.T) {
 		}
 	}
 }
+
+func TestFormatLatLng(t *testing.T) {
+	for _, c := range []struct {
+		lat  float64
+		lng  float64
+		want string
+	}{
+		{0.123, -4.567, "0.123#-4.567"},
+		{0.123456789, -33, "0.123456789#-33"},
+	} {
+		if got := formatLatLng(c.lat, c.lng); got != c.want {
+			t.Errorf("formatLatLng(%f, %f) = %s, want %s",
+				c.lat, c.lng, got, c.want)
+		}
+	}
+}

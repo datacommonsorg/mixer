@@ -111,7 +111,7 @@ func Coordinate(
 	for _, e := range data.GetPlaceCoordinates() {
 		resp.Entities = append(resp.Entities,
 			&pbv2.ResolveResponse_Entity{
-				Node:        fmt.Sprintf("%f#%f", e.GetLatitude(), e.GetLongitude()),
+				Node:        formatLatLng(e.GetLatitude(), e.GetLongitude()),
 				ResolvedIds: e.GetPlaceDcids(),
 				Candidates:  getSortedResolvedPlaceCandidates(e.GetPlaces()),
 			})
@@ -226,4 +226,11 @@ func getSortedResolvedPlaceCandidates(
 	candidates = append(candidates, leftoverCandidates...)
 
 	return candidates
+}
+
+func formatLatLng(lat, lng float64) string {
+	// Keep effective precision of lat/lng.
+	latStr := strconv.FormatFloat(lat, 'f', -1, 64)
+	lngStr := strconv.FormatFloat(lng, 'f', -1, 64)
+	return fmt.Sprintf("%s#%s", latStr, lngStr)
 }
