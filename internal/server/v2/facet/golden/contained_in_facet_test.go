@@ -41,48 +41,48 @@ func TestContainedInFacet(t *testing.T) {
 			date             string
 			goldenFile       string
 		}{
-			// {
-			// 	[]string{"Count_Person", "Median_Age_Person"},
-			// 	"geoId/06<-containedInPlace+{typeOf:County}",
-			// 	"LATEST",
-			// 	"CA_County_latest.json",
-			// },
-			// {
-			// 	[]string{"Count_Person", "Median_Age_Person"},
-			// 	"geoId/06<-containedInPlace+{typeOf:County}",
-			// 	"2015",
-			// 	"CA_County_2015.json",
-			// },
+			{
+				[]string{"Count_Person", "Median_Age_Person"},
+				"geoId/06<-containedInPlace+{typeOf:County}",
+				"LATEST",
+				"CA_County_latest.json",
+			},
+			{
+				[]string{"Count_Person", "Median_Age_Person"},
+				"geoId/06<-containedInPlace+{typeOf:County}",
+				"2015",
+				"CA_County_2015.json",
+			},
 			{
 				[]string{"Count_Person", "Median_Age_Person"},
 				"geoId/06<-containedInPlace+{typeOf:County}",
 				"",
 				"CA_County_all.json",
 			},
-			// {
-			// 	[]string{"Count_Person", "Median_Age_Person"},
-			// 	"country/USA<-containedInPlace+{typeOf:State}",
-			// 	"LATEST",
-			// 	"US_State.json",
-			// },
-			// {
-			// 	[]string{"Count_Person", "Median_Age_Person"},
-			// 	"country/IND<-containedInPlace+{typeOf:AdministrativeArea1}",
-			// 	"LATEST",
-			// 	"IND_AA1.json",
-			// },
-			// {
-			// 	[]string{"Count_Person", "Median_Age_Person"},
-			// 	"Earth<-containedInPlace+{typeOf:Country}",
-			// 	"LATEST",
-			// 	"country.json",
-			// },
-			// {
-			// 	[]string{"Count_Person", "Median_Age_Person"},
-			// 	"nuts/FR412<-containedInPlace+{typeOf:AdministrativeArea4}",
-			// 	"2015",
-			// 	"Meuse_AA4_2015.json",
-			// },
+			{
+				[]string{"Count_Person", "Median_Age_Person"},
+				"country/USA<-containedInPlace+{typeOf:State}",
+				"LATEST",
+				"US_State.json",
+			},
+			{
+				[]string{"Count_Person", "Median_Age_Person"},
+				"country/IND<-containedInPlace+{typeOf:AdministrativeArea1}",
+				"LATEST",
+				"IND_AA1.json",
+			},
+			{
+				[]string{"Count_Person", "Median_Age_Person"},
+				"Earth<-containedInPlace+{typeOf:Country}",
+				"LATEST",
+				"country.json",
+			},
+			{
+				[]string{"Count_Person", "Median_Age_Person"},
+				"nuts/FR412<-containedInPlace+{typeOf:AdministrativeArea4}",
+				"2015",
+				"Meuse_AA4_2015.json",
+			},
 		} {
 			goldenFile := c.goldenFile
 			resp, err := mixer.V2Observation(ctx, &pbv2.ObservationRequest{
