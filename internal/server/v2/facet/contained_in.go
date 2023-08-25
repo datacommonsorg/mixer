@@ -129,7 +129,7 @@ func ContainedInFacet(
 			// When date doesn't matter, use SeriesFacet to get the facets for the
 			// child places
 			if queryDate == "" || queryDate == observation.LATEST {
-				return SeriesFacet(ctx, store, cache, variables, childPlaces)
+				return SeriesFacet(ctx, store, cache, variables, childPlaces, true)
 			}
 			// Otherwise, get all source series and process them to get the facets
 			btData, err := stat.ReadStatsPb(ctx, store.BtGroup, childPlaces, variables)
