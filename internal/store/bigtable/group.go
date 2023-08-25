@@ -27,6 +27,7 @@ import (
 
 var groupRank = map[string]int{
 	"dcbranch":   0, // Used for the latest proto branch cache
+	"schema":     0,
 	"country":    0,
 	"auto1d":     1,
 	"frequent":   2,
