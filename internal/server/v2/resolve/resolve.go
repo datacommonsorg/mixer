@@ -229,8 +229,8 @@ func getSortedResolvedPlaceCandidates(
 }
 
 func formatLatLng(lat, lng float64) string {
-	// Keep effective precision of lat/lng.
-	latStr := strconv.FormatFloat(lat, 'f', -1, 64)
-	lngStr := strconv.FormatFloat(lng, 'f', -1, 64)
+	// Always use 6 digit precision to format lat/lng.
+	latStr := strconv.FormatFloat(lat, 'f', 6, 64)
+	lngStr := strconv.FormatFloat(lng, 'f', 6, 64)
 	return fmt.Sprintf("%s#%s", latStr, lngStr)
 }
