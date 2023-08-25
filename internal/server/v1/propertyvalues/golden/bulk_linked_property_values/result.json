@@ -117,6 +117,10 @@
         },
         {
           "name": "Alta Sierra",
+          "dcid": "geoId/0601358"
+        },
+        {
+          "name": "Alta Sierra",
           "dcid": "geoId/0601360"
         },
         {
@@ -138,6 +142,10 @@
         {
           "name": "Amador City",
           "dcid": "geoId/0601514"
+        },
+        {
+          "name": "Amador Pines",
+          "dcid": "geoId/0601518"
         },
         {
           "name": "Amboy",
@@ -320,6 +328,10 @@
           "dcid": "geoId/0603526"
         },
         {
+          "name": "Bakersfield Country Club",
+          "dcid": "geoId/0603546"
+        },
+        {
           "name": "Baldwin Park",
           "dcid": "geoId/0603666"
         },
@@ -370,6 +382,10 @@
         {
           "name": "Baywood-Los Osos",
           "dcid": "geoId/0604541"
+        },
+        {
+          "name": "Baywood Park",
+          "dcid": "geoId/0604549"
         },
         {
           "name": "Beale AFB",
@@ -450,6 +466,10 @@
         {
           "name": "Benton",
           "dcid": "geoId/0605346"
+        },
+        {
+          "name": "Benton Park",
+          "dcid": "geoId/0605356"
         },
         {
           "name": "Berkeley",
@@ -584,6 +604,10 @@
           "dcid": "geoId/0607372"
         },
         {
+          "name": "Bonadelle Ranchos",
+          "dcid": "geoId/0607378"
+        },
+        {
           "name": "Bonadelle Ranchos-Madera Ranchos",
           "dcid": "geoId/0607379"
         },
@@ -682,6 +706,10 @@
         {
           "name": "Brookdale",
           "dcid": "geoId/0608478"
+        },
+        {
+          "name": "Brooks",
+          "dcid": "geoId/0608506"
         },
         {
           "name": "Brooktrails",
@@ -788,6 +816,10 @@
           "dcid": "geoId/0609834"
         },
         {
+          "name": "California Polytechnic State University",
+          "dcid": "geoId/0609835"
+        },
+        {
           "name": "Calimesa",
           "dcid": "geoId/0609864"
         },
@@ -861,6 +893,10 @@
         {
           "name": "Campo",
           "dcid": "geoId/0610508"
+        },
+        {
+          "name": "Camp Pendleton Mainside",
+          "dcid": "geoId/0610554"
         },
         {
           "name": "Camp Pendleton North",
@@ -959,6 +995,10 @@
           "dcid": "geoId/0611691"
         },
         {
+          "name": "Casa Loma",
+          "dcid": "geoId/0611696"
+        },
+        {
           "name": "Casmalia",
           "dcid": "geoId/0611754"
         },
@@ -973,6 +1013,10 @@
         {
           "name": "Castaic",
           "dcid": "geoId/0611796"
+        },
+        {
+          "name": "Castella",
+          "dcid": "geoId/0611824"
         },
         {
           "name": "Castle Hill",
@@ -1003,6 +1047,10 @@
           "dcid": "geoId/0612146"
         },
         {
+          "name": "Cedar Flat",
+          "dcid": "geoId/0612216"
+        },
+        {
           "name": "Cedar Ridge",
           "dcid": "geoId/0612300"
         },
@@ -1017,6 +1065,10 @@
         {
           "name": "Centerville",
           "dcid": "geoId/0612412"
+        },
+        {
+          "name": "Centerville",
+          "dcid": "geoId/0612415"
         },
         {
           "name": "Ceres",
@@ -1041,6 +1093,10 @@
         {
           "name": "Channel Islands Beach",
           "dcid": "geoId/0612669"
+        },
+        {
+          "name": "Charleston View",
+          "dcid": "geoId/0612730"
         },
         {
           "name": "Charter Oak",
@@ -1093,6 +1149,10 @@
         {
           "name": "Chino Hills",
           "dcid": "geoId/0613214"
+        },
+        {
+          "name": "Choctaw Valley",
+          "dcid": "geoId/0613278"
         },
         {
           "name": "Cholame",
@@ -1320,6 +1380,10 @@
         },
         {
           "name": "Cottonwood",
+          "dcid": "geoId/0616623"
+        },
+        {
+          "name": "Cottonwood",
           "dcid": "geoId/0616630"
         },
         {
@@ -1423,6 +1487,10 @@
           "dcid": "geoId/0617750"
         },
         {
+          "name": "Dales",
+          "dcid": "geoId/0617876"
+        },
+        {
           "name": "Daly City",
           "dcid": "geoId/0617918"
         },
@@ -1465,6 +1533,10 @@
         {
           "name": "Delano",
           "dcid": "geoId/0618394"
+        },
+        {
+          "name": "Del Dios",
+          "dcid": "geoId/0618422"
         },
         {
           "name": "Delft Colony",
@@ -1555,6 +1627,10 @@
           "dcid": "geoId/0619220"
         },
         {
+          "name": "Di Giorgio",
+          "dcid": "geoId/0619248"
+        },
+        {
           "name": "Dillon Beach",
           "dcid": "geoId/0619262"
         },
@@ -1571,7 +1647,7 @@
           "dcid": "geoId/0619402"
         },
         {
-          "name": "Dixon Lane-Meadow Creek",
+          "name": "Dixon Lane-MeadowCreek",
           "dcid": "geoId/0619406"
         },
         {
@@ -1663,12 +1739,20 @@
           "dcid": "geoId/0620438"
         },
         {
+          "name": "East Bakersfield",
+          "dcid": "geoId/0620515"
+        },
+        {
           "name": "East Blythe",
           "dcid": "geoId/0620536"
         },
         {
           "name": "East Rancho Dominguez",
           "dcid": "geoId/0620550"
+        },
+        {
+          "name": "Eastern Goleta Valley",
+          "dcid": "geoId/0620574"
         },
         {
           "name": "East Foothills",
@@ -1689,6 +1773,10 @@
         {
           "name": "East Nicolaus",
           "dcid": "geoId/0620900"
+        },
+        {
+          "name": "East Niles",
+          "dcid": "geoId/0620903"
         },
         {
           "name": "East Oakdale",
@@ -1755,6 +1843,10 @@
           "dcid": "geoId/0621530"
         },
         {
+          "name": "Edison",
+          "dcid": "geoId/0621544"
+        },
+        {
           "name": "Edmundson Acres",
           "dcid": "geoId/0621558"
         },
@@ -1767,12 +1859,20 @@
           "dcid": "geoId/0621600"
         },
         {
+          "name": "El Adobe",
+          "dcid": "geoId/0621691"
+        },
+        {
           "name": "El Cajon",
           "dcid": "geoId/0621712"
         },
         {
           "name": "El Centro",
           "dcid": "geoId/0621782"
+        },
+        {
+          "name": "El Centro Naval Air Facility",
+          "dcid": "geoId/0621788"
         },
         {
           "name": "El Cerrito",
@@ -1789,6 +1889,10 @@
         {
           "name": "Eldridge",
           "dcid": "geoId/0621894"
+        },
+        {
+          "name": "Elfin Forest",
+          "dcid": "geoId/0621916"
         },
         {
           "name": "El Granada",
@@ -1811,12 +1915,20 @@
           "dcid": "geoId/0622034"
         },
         {
+          "name": "El Macero",
+          "dcid": "geoId/0622104"
+        },
+        {
           "name": "Elmira",
           "dcid": "geoId/0622146"
         },
         {
           "name": "El Monte",
           "dcid": "geoId/0622230"
+        },
+        {
+          "name": "El Monte Mobile Village",
+          "dcid": "geoId/0622235"
         },
         {
           "name": "El Nido",
@@ -1909,6 +2021,10 @@
         {
           "name": "Fairbanks Ranch",
           "dcid": "geoId/0623150"
+        },
+        {
+          "name": "Fairfax",
+          "dcid": "geoId/0623158"
         },
         {
           "name": "Fairfax",
@@ -2035,6 +2151,10 @@
           "dcid": "geoId/0624778"
         },
         {
+          "name": "Foresta",
+          "dcid": "geoId/0624792"
+        },
+        {
           "name": "Foresthill",
           "dcid": "geoId/0624834"
         },
@@ -2061,6 +2181,10 @@
         {
           "name": "Fort Dick",
           "dcid": "geoId/0625086"
+        },
+        {
+          "name": "Fort Hunter Liggett",
+          "dcid": "geoId/0625093"
         },
         {
           "name": "Fort Irwin National Training Center",
@@ -2231,6 +2355,10 @@
           "dcid": "geoId/0630028"
         },
         {
+          "name": "Glennville",
+          "dcid": "geoId/0630126"
+        },
+        {
           "name": "Goffs",
           "dcid": "geoId/0630266"
         },
@@ -2257,6 +2385,10 @@
         {
           "name": "Good Hope",
           "dcid": "geoId/0630410"
+        },
+        {
+          "name": "Goodmanville",
+          "dcid": "geoId/0630412"
         },
         {
           "name": "Goodyears Bar",
@@ -2411,12 +2543,20 @@
           "dcid": "geoId/0632030"
         },
         {
+          "name": "Happy Valley",
+          "dcid": "geoId/0632036"
+        },
+        {
           "name": "Harbison Canyon",
           "dcid": "geoId/0632044"
         },
         {
           "name": "Hardwick",
           "dcid": "geoId/0632156"
+        },
+        {
+          "name": "Harmony Grove",
+          "dcid": "geoId/0632212"
         },
         {
           "name": "Hartland",
@@ -2507,8 +2647,16 @@
           "dcid": "geoId/0633588"
         },
         {
+          "name": "Highlands",
+          "dcid": "geoId/0633632"
+        },
+        {
           "name": "Highlands-Baywood Park",
           "dcid": "geoId/0633633"
+        },
+        {
+          "name": "Hillcrest",
+          "dcid": "geoId/0633689"
         },
         {
           "name": "Hillsborough",
@@ -2603,12 +2751,20 @@
           "dcid": "geoId/0636126"
         },
         {
+          "name": "Hypericum",
+          "dcid": "geoId/0636135"
+        },
+        {
           "name": "Idlewild",
           "dcid": "geoId/0636168"
         },
         {
           "name": "Idyllwild-Pine Cove",
           "dcid": "geoId/0636203"
+        },
+        {
+          "name": "Igo",
+          "dcid": "geoId/0636252"
         },
         {
           "name": "Imperial",
@@ -2719,6 +2875,10 @@
           "dcid": "geoId/0637400"
         },
         {
+          "name": "Johnson Park",
+          "dcid": "geoId/0637442"
+        },
+        {
           "name": "Johnstonville",
           "dcid": "geoId/0637484"
         },
@@ -2727,8 +2887,16 @@
           "dcid": "geoId/0637512"
         },
         {
+          "name": "Jones Valley",
+          "dcid": "geoId/0637533"
+        },
+        {
           "name": "Joshua Tree",
           "dcid": "geoId/0637554"
+        },
+        {
+          "name": "Jovista",
+          "dcid": "geoId/0637568"
         },
         {
           "name": "Julian",
@@ -2787,6 +2955,10 @@
           "dcid": "geoId/0638156"
         },
         {
+          "name": "Kep'el",
+          "dcid": "geoId/0638177"
+        },
+        {
           "name": "Kerman",
           "dcid": "geoId/0638226"
         },
@@ -2835,6 +3007,10 @@
           "dcid": "geoId/0638772"
         },
         {
+          "name": "Knights Ferry",
+          "dcid": "geoId/0638786"
+        },
+        {
           "name": "Knights Landing",
           "dcid": "geoId/0638800"
         },
@@ -2845,6 +3021,10 @@
         {
           "name": "La Crescenta-Montrose",
           "dcid": "geoId/0639045"
+        },
+        {
+          "name": "La Cresta",
+          "dcid": "geoId/0639052"
         },
         {
           "name": "Ladera",
@@ -2861,6 +3041,10 @@
         {
           "name": "Lafayette",
           "dcid": "geoId/0639122"
+        },
+        {
+          "name": "La Grange",
+          "dcid": "geoId/0639164"
         },
         {
           "name": "Laguna",
@@ -2987,8 +3171,16 @@
           "dcid": "geoId/0639724"
         },
         {
+          "name": "Lake Shastina",
+          "dcid": "geoId/0639728"
+        },
+        {
           "name": "Lake Sherwood",
           "dcid": "geoId/0639735"
+        },
+        {
+          "name": "Lakeside",
+          "dcid": "geoId/0639759"
         },
         {
           "name": "Lakeside",
@@ -3232,6 +3424,10 @@
         },
         {
           "name": "Lockwood",
+          "dcid": "geoId/0642142"
+        },
+        {
+          "name": "Lockwood",
           "dcid": "geoId/0642146"
         },
         {
@@ -3427,12 +3623,20 @@
           "dcid": "geoId/0645006"
         },
         {
+          "name": "Madeline",
+          "dcid": "geoId/0645008"
+        },
+        {
           "name": "Madera",
           "dcid": "geoId/0645022"
         },
         {
           "name": "Madera Acres",
           "dcid": "geoId/0645050"
+        },
+        {
+          "name": "Madera Ranchos",
+          "dcid": "geoId/0645054"
         },
         {
           "name": "Madison",
@@ -3623,6 +3827,10 @@
           "dcid": "geoId/0647192"
         },
         {
+          "name": "Meyers",
+          "dcid": "geoId/0647206"
+        },
+        {
           "name": "Middletown",
           "dcid": "geoId/0647332"
         },
@@ -3641,6 +3849,10 @@
         {
           "name": "Millbrae",
           "dcid": "geoId/0647486"
+        },
+        {
+          "name": "Millerton",
+          "dcid": "geoId/0647592"
         },
         {
           "name": "Mill Valley",
@@ -3693,6 +3905,10 @@
         {
           "name": "Modesto",
           "dcid": "geoId/0648354"
+        },
+        {
+          "name": "Modjeska",
+          "dcid": "geoId/0648410"
         },
         {
           "name": "Mohawk Vista",
@@ -3835,6 +4051,10 @@
           "dcid": "geoId/0649582"
         },
         {
+          "name": "Mountain Meadows",
+          "dcid": "geoId/0649592"
+        },
+        {
           "name": "Mountain Mesa",
           "dcid": "geoId/0649600"
         },
@@ -3853,6 +4073,10 @@
         {
           "name": "Mountain View Acres",
           "dcid": "geoId/0649684"
+        },
+        {
+          "name": "Mt. Bullion",
+          "dcid": "geoId/0649726"
         },
         {
           "name": "Mount Hebron",
@@ -4011,6 +4235,10 @@
           "dcid": "geoId/0651840"
         },
         {
+          "name": "North Fork",
+          "dcid": "geoId/0651868"
+        },
+        {
           "name": "North Gate",
           "dcid": "geoId/0651890"
         },
@@ -4083,6 +4311,10 @@
           "dcid": "geoId/0653116"
         },
         {
+          "name": "Oak Run",
+          "dcid": "geoId/0653140"
+        },
+        {
           "name": "Oak Shores",
           "dcid": "geoId/0653160"
         },
@@ -4131,16 +4363,32 @@
           "dcid": "geoId/0653490"
         },
         {
+          "name": "Olde Stockdale",
+          "dcid": "geoId/0653503"
+        },
+        {
           "name": "Old Fig Garden",
           "dcid": "geoId/0653505"
+        },
+        {
+          "name": "Old River",
+          "dcid": "geoId/0653574"
         },
         {
           "name": "Old Station",
           "dcid": "geoId/0653602"
         },
         {
+          "name": "Old Stine",
+          "dcid": "geoId/0653603"
+        },
+        {
           "name": "Olivehurst",
           "dcid": "geoId/0653714"
+        },
+        {
+          "name": "Ono",
+          "dcid": "geoId/0653882"
         },
         {
           "name": "Ontario",
@@ -4156,6 +4404,10 @@
         {
           "name": "Orange",
           "dcid": "geoId/0653980"
+        },
+        {
+          "name": "Orange Blossom",
+          "dcid": "geoId/0653987"
         },
         {
           "name": "Orange Cove",
@@ -4366,6 +4618,10 @@
           "dcid": "geoId/0656546"
         },
         {
+          "name": "Pepperdine University",
+          "dcid": "geoId/0656598"
+        },
+        {
           "name": "Perris",
           "dcid": "geoId/0656700"
         },
@@ -4376,6 +4632,10 @@
         {
           "name": "Petaluma",
           "dcid": "geoId/0656784"
+        },
+        {
+          "name": "Petaluma Center",
+          "dcid": "geoId/0656786"
         },
         {
           "name": "Peters",
@@ -4486,6 +4746,10 @@
           "dcid": "geoId/0657582"
         },
         {
+          "name": "Platina",
+          "dcid": "geoId/0657666"
+        },
+        {
           "name": "Pleasant Hill",
           "dcid": "geoId/0657764"
         },
@@ -4562,6 +4826,14 @@
           "dcid": "geoId/0658436"
         },
         {
+          "name": "Post Mountain",
+          "dcid": "geoId/0658456"
+        },
+        {
+          "name": "Potomac Park",
+          "dcid": "geoId/0658471"
+        },
+        {
           "name": "Potrero",
           "dcid": "geoId/0658478"
         },
@@ -4588,6 +4860,10 @@
         {
           "name": "Prunedale",
           "dcid": "geoId/0658870"
+        },
+        {
+          "name": "Pumpkin Center",
+          "dcid": "geoId/0658940"
         },
         {
           "name": "La Conchita",
@@ -4640,6 +4916,10 @@
         {
           "name": "Rancho Mirage",
           "dcid": "geoId/0659500"
+        },
+        {
+          "name": "Rancho Mission Viejo",
+          "dcid": "geoId/0659503"
         },
         {
           "name": "Rancho Murieta",
@@ -4714,6 +4994,10 @@
           "dcid": "geoId/0660279"
         },
         {
+          "name": "Rexland Acres",
+          "dcid": "geoId/0660370"
+        },
+        {
           "name": "Reedley",
           "dcid": "geoId/0660424"
         },
@@ -4740,6 +5024,10 @@
         {
           "name": "Ridgecrest",
           "dcid": "geoId/0660704"
+        },
+        {
+          "name": "Ridgecrest Heights",
+          "dcid": "geoId/0660705"
         },
         {
           "name": "Ridgemark",
@@ -4788,6 +5076,10 @@
         {
           "name": "Riverdale Park",
           "dcid": "geoId/0661106"
+        },
+        {
+          "name": "Rivergrove",
+          "dcid": "geoId/0661108"
         },
         {
           "name": "River Pines",
@@ -4910,6 +5202,10 @@
           "dcid": "geoId/0663260"
         },
         {
+          "name": "Rumsey",
+          "dcid": "geoId/0663302"
+        },
+        {
           "name": "Running Springs",
           "dcid": "geoId/0663316"
         },
@@ -4924,6 +5220,10 @@
         {
           "name": "Sacramento",
           "dcid": "geoId/0664000"
+        },
+        {
+          "name": "Sage",
+          "dcid": "geoId/0664056"
         },
         {
           "name": "St. Helena",
@@ -4948,6 +5248,10 @@
         {
           "name": "Salton Sea Beach",
           "dcid": "geoId/0664308"
+        },
+        {
+          "name": "Salyer",
+          "dcid": "geoId/0664378"
         },
         {
           "name": "Samoa",
@@ -5346,6 +5650,10 @@
           "dcid": "geoId/0671876"
         },
         {
+          "name": "Silverado",
+          "dcid": "geoId/0671918"
+        },
+        {
           "name": "Silverado Resort",
           "dcid": "geoId/0671927"
         },
@@ -5410,8 +5718,16 @@
           "dcid": "geoId/0672576"
         },
         {
+          "name": "Somis",
+          "dcid": "geoId/0672632"
+        },
+        {
           "name": "Sonoma",
           "dcid": "geoId/0672646"
+        },
+        {
+          "name": "Sonoma State University",
+          "dcid": "geoId/0672654"
         },
         {
           "name": "Sonora",
@@ -5526,6 +5842,10 @@
           "dcid": "geoId/0673962"
         },
         {
+          "name": "Stebbins",
+          "dcid": "geoId/0674021"
+        },
+        {
           "name": "Stevenson Ranch",
           "dcid": "geoId/0674130"
         },
@@ -5544,6 +5864,10 @@
         {
           "name": "Stockton",
           "dcid": "geoId/0675000"
+        },
+        {
+          "name": "Stones Landing",
+          "dcid": "geoId/0675122"
         },
         {
           "name": "Stonyford",
@@ -5666,8 +5990,16 @@
           "dcid": "geoId/0677805"
         },
         {
+          "name": "Tancred",
+          "dcid": "geoId/0677860"
+        },
+        {
           "name": "Tara Hills",
           "dcid": "geoId/0677924"
+        },
+        {
+          "name": "Tarina",
+          "dcid": "geoId/0677934"
         },
         {
           "name": "Tarpey Village",
@@ -5802,6 +6134,10 @@
           "dcid": "geoId/0680000"
         },
         {
+          "name": "Trabuco Canyon",
+          "dcid": "geoId/0680210"
+        },
+        {
           "name": "Tracy",
           "dcid": "geoId/0680238"
         },
@@ -5895,6 +6231,10 @@
         },
         {
           "name": "Twin Lakes",
+          "dcid": "geoId/0681048"
+        },
+        {
+          "name": "Twin Lakes",
           "dcid": "geoId/0681050"
         },
         {
@@ -5916,6 +6256,10 @@
         {
           "name": "University of California-Merced",
           "dcid": "geoId/0681312"
+        },
+        {
+          "name": "University of California-Santa Barbara",
+          "dcid": "geoId/0681316"
         },
         {
           "name": "Upland",
@@ -6046,6 +6390,10 @@
           "dcid": "geoId/0682852"
         },
         {
+          "name": "Virginia Lakes",
+          "dcid": "geoId/0682929"
+        },
+        {
           "name": "Visalia",
           "dcid": "geoId/0682954"
         },
@@ -6126,6 +6474,10 @@
           "dcid": "geoId/0683724"
         },
         {
+          "name": "Wautec",
+          "dcid": "geoId/0683730"
+        },
+        {
           "name": "Wawona",
           "dcid": "geoId/0683766"
         },
@@ -6140,6 +6492,10 @@
         {
           "name": "Weedpatch",
           "dcid": "geoId/0683863"
+        },
+        {
+          "name": "Weitchpec",
+          "dcid": "geoId/0683906"
         },
         {
           "name": "Weldon",
@@ -6262,6 +6618,10 @@
           "dcid": "geoId/0685222"
         },
         {
+          "name": "Whitmore",
+          "dcid": "geoId/0685250"
+        },
+        {
           "name": "Whittier",
           "dcid": "geoId/0685292"
         },
@@ -6276,6 +6636,10 @@
         {
           "name": "Williams",
           "dcid": "geoId/0685586"
+        },
+        {
+          "name": "Williams Canyon",
+          "dcid": "geoId/0685587"
         },
         {
           "name": "Willits",
@@ -6362,12 +6726,24 @@
           "dcid": "geoId/0686482"
         },
         {
+          "name": "Woodville Farm Labor Camp",
+          "dcid": "geoId/0686489"
+        },
+        {
+          "name": "Woody",
+          "dcid": "geoId/0686496"
+        },
+        {
           "name": "Wrightwood",
           "dcid": "geoId/0686594"
         },
         {
           "name": "Yankee Hill",
           "dcid": "geoId/0686678"
+        },
+        {
+          "name": "Yermo",
+          "dcid": "geoId/0686720"
         },
         {
           "name": "Yettem",
@@ -6392,6 +6768,10 @@
         {
           "name": "Yosemite Village",
           "dcid": "geoId/0686913"
+        },
+        {
+          "name": "Yosemite West",
+          "dcid": "geoId/0686916"
         },
         {
           "name": "Yountville",

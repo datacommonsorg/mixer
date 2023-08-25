@@ -45,6 +45,13 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
+          "types": [
+            "Country"
+          ],
+          "dcid": "country/ALA",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
           "name": "Albania",
           "types": [
             "Country"
@@ -958,14 +965,6 @@
             "Country"
           ],
           "dcid": "country/IOT",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
-        },
-        {
-          "name": "Ireland",
-          "types": [
-            "Country"
-          ],
-          "dcid": "country/IRL",
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
@@ -2633,6 +2632,15 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
+          "name": "Berlin",
+          "types": [
+            "City",
+            "Town"
+          ],
+          "dcid": "geoId/0105812",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
           "name": "Berry",
           "types": [
             "City",
@@ -3783,15 +3791,6 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Geiger",
-          "types": [
-            "City",
-            "Town"
-          ],
-          "dcid": "geoId/0129392",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
           "name": "Mountainboro",
           "types": [
             "City",
@@ -4898,7 +4897,7 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Alvan",
+          "name": "Alvan (Alvin)",
           "types": [
             "City",
             "Village"
@@ -6663,7 +6662,7 @@
             "Neighborhood"
           ],
           "dcid": "geoId/3440990",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Loveladies",
@@ -11795,5 +11794,5 @@
       ]
     }
   ],
-  "nextToken": "H4sIAAAAAAAA/5zQv4rCQBDH8ctc/kyWq+aavMad2imSxE7QRuwj2SSLMavrJpLH8I0FsZCtBstd+H34MmIt/FzZUYR2PMttJX7T8qQ6dbWmsGqQqZHFH30RoEeAQIDfBOgTYECAIQFGBIjkY5wcOdg/E7twsAkTKznYlIlVHGzGLls6WJRpo/u6YQMLB3i+GOsA4+TuiZUz/9lIVTcHbRqtS3bE3I3Y6Vv3+Q32qm2LWrKBTES57jtr3ozXB9MYHgAAAP//AQAA//9f+jYmCgMAAA=="
+  "nextToken": "H4sIAAAAAAAA/5zQv4rCQBDH8ctc/kyWq+aavMad2imSxE7QRuwj2SSLMavrJpLX8IkFsZCtBstd+H34MmIt/FzZUYR2PMttJX7T8qQ6dbWmsGqQqZHFH30RoEeAQIDfBOgTYECAIQFGBIjkY5wcOdg/E7twsAkTKznYlIlVHGzGLls6WJRpo/u6YQMLB3i+GOsA4+TuiZUz/9lIVTcHbRqtS3bE3I3Y6Vv3+Q32qm2LWrKBTES57jtr3ozXB9MYHgAAAP//AQAA//+eyfPZCgMAAA=="
 }

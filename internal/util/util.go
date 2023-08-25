@@ -64,6 +64,30 @@ const (
 	MixerAPIKeyID = "mixer-api-key"
 )
 
+var childTypeDenyList = map[string]struct{}{
+	"Place":               {},
+	"CensusBlockGroup":    {},
+	"CensusTract":         {},
+	"AdministrativeArea":  {},
+	"AdministrativeArea4": {},
+	"AdministrativeArea5": {},
+	"S2CellLevel7":        {},
+	"S2CellLevel8":        {},
+	"S2CellLevel9":        {},
+	"S2CellLevel10":       {},
+	"S2CellLevel11":       {},
+	"S2CellLevel13":       {},
+}
+
+var childTypeAllowListForEarth = map[string]struct{}{
+	"Continent":           {},
+	"Country":             {},
+	"AdministrativeArea1": {},
+	"State":               {},
+	"AdministrativeArea2": {},
+	"County":              {},
+}
+
 // PlaceStatVar holds a place and a stat var dcid.
 type PlaceStatVar struct {
 	Place   string
@@ -609,4 +633,21 @@ func FetchRemote(
 	}
 	// Convert response body to string
 	return protojson.Unmarshal(responseBodyBytes, out)
+}
+
+// HasCollectionCache decides whether the Bigtable collection cache exists
+// for given ancestor and child type.
+func HasCollectionCache(ancestor string, childType string) bool {
+	if ancestor == "Earth" {
+		_, ok := childTypeAllowListForEarth[childType]
+		return ok
+	}
+	if strings.HasPrefix(ancestor, "geoId/") &&
+		(len(ancestor) == 8 /* US State DCID size */ ||
+			len(ancestor) == 13 /* US City DCID size */) &&
+		childType == "CensusTract" {
+		return true
+	}
+	_, ok := childTypeDenyList[childType]
+	return !ok
 }

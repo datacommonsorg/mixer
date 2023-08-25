@@ -375,7 +375,8 @@
             "2017": 2185472,
             "2018": 2218674,
             "2019": 2233024,
-            "2020": 2269331
+            "2020": 2269331,
+            "2021": 2250756
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
@@ -394,7 +395,8 @@
             "2017": 1790886,
             "2018": 1832690,
             "2019": 1859233,
-            "2020": 1915167
+            "2020": 1915167,
+            "2021": 1900368
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
@@ -413,7 +415,8 @@
             "2017": 5736821,
             "2018": 5893388,
             "2019": 6046185,
-            "2020": 6229586
+            "2020": 6229586,
+            "2021": 6345757
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
@@ -432,7 +435,8 @@
             "2017": 4909693,
             "2018": 5078862,
             "2019": 5257342,
-            "2020": 5449154
+            "2020": 5449154,
+            "2021": 5536971
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
@@ -451,7 +455,8 @@
             "2017": 2732153,
             "2018": 2812096,
             "2019": 2887192,
-            "2020": 2994545
+            "2020": 2994545,
+            "2021": 3070884
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
@@ -470,7 +475,8 @@
             "2017": 1912604,
             "2018": 1974923,
             "2019": 2027032,
-            "2020": 2099105
+            "2020": 2099105,
+            "2021": 2135502
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
@@ -489,7 +495,8 @@
             "2017": 22011410,
             "2018": 22233800,
             "2019": 22430348,
-            "2020": 22618584
+            "2020": 22618584,
+            "2021": 22616848
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
@@ -508,7 +515,8 @@
             "2017": 22466891,
             "2018": 22756228,
             "2019": 23013263,
-            "2020": 23274728
+            "2020": 23274728,
+            "2021": 23163306
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
@@ -527,7 +535,8 @@
             "2017": 2642951,
             "2018": 2707577,
             "2019": 2756981,
-            "2020": 2694311
+            "2020": 2694311,
+            "2021": 2728068
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
@@ -546,7 +555,8 @@
             "2017": 17194109,
             "2018": 17581234,
             "2019": 17930446,
-            "2020": 18427519
+            "2020": 18427519,
+            "2021": 18789187
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
@@ -565,7 +575,8 @@
             "2017": 686509,
             "2018": 677541,
             "2019": 663719,
-            "2020": 629434
+            "2020": 629434,
+            "2021": 617828
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
@@ -584,7 +595,8 @@
             "2017": 2015330,
             "2018": 1993041,
             "2019": 1925171,
-            "2020": 1919904
+            "2020": 1919904,
+            "2021": 1903156
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
@@ -603,7 +615,8 @@
             "2017": 9961140,
             "2018": 9656177,
             "2019": 9290559,
-            "2020": 8891908
+            "2020": 8891908,
+            "2021": 8775279
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
@@ -622,7 +635,8 @@
             "2017": 13799847,
             "2018": 13331195,
             "2019": 12689771,
-            "2020": 12028803
+            "2020": 12028803,
+            "2021": 11947618
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
@@ -641,7 +655,8 @@
             "2017": 105019,
             "2018": 103535,
             "2019": 102052,
-            "2020": 99857
+            "2020": 99857,
+            "2021": 99799
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
@@ -660,7 +675,8 @@
             "2017": 28634132,
             "2018": 27697544,
             "2019": 26564761,
-            "2020": 24623002
+            "2020": 24623002,
+            "2021": 23313519
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
@@ -679,7 +695,8 @@
             "2017": 40949754,
             "2018": 41281123,
             "2019": 41621318,
-            "2020": 41595290
+            "2020": 41595290,
+            "2021": 41722663
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
@@ -698,7 +715,8 @@
             "2017": 164800620,
             "2018": 165692916,
             "2019": 166551005,
-            "2020": 167459830
+            "2020": 167459830,
+            "2021": 168258279
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
@@ -717,7 +735,8 @@
             "2017": 26081778,
             "2018": 25336327,
             "2019": 24394352,
-            "2020": 23506246
+            "2020": 23506246,
+            "2021": 23296207
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
@@ -736,7 +755,8 @@
             "2017": 59943182,
             "2018": 60867275,
             "2019": 61755289,
-            "2020": 62573645
+            "2020": 62573645,
+            "2021": 64077330
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
@@ -755,7 +775,8 @@
             "2017": 159672750,
             "2018": 160597055,
             "2019": 161465237,
-            "2020": 162365120
+            "2020": 162365120,
+            "2021": 164778476
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
@@ -774,7 +795,8 @@
             "2017": 21111787,
             "2018": 20416812,
             "2019": 19565582,
-            "2020": 18805038
+            "2020": 18805038,
+            "2021": 18766426
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
@@ -793,7 +815,8 @@
             "2017": 570252,
             "2018": 583021,
             "2019": 600137,
-            "2020": 611662
+            "2020": 611662,
+            "2021": 615802
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
@@ -812,7 +835,8 @@
             "2017": 236759648,
             "2018": 237188538,
             "2019": 237565676,
-            "2020": 231913264
+            "2020": 231913264,
+            "2021": 226482760
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
@@ -1961,12 +1985,11 @@
       }
     },
     "country/NZL": {
-      "date": "2021",
-      "value": 5111400,
+      "date": "2022",
+      "value": 5151600,
       "metadata": {
-        "importName": "WorldDevelopmentIndicators",
-        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
-        "observationPeriod": "P1Y"
+        "importName": "New_Zealand_Census",
+        "provenanceUrl": "https://www.stats.govt.nz/"
       }
     },
     "country/USA": {

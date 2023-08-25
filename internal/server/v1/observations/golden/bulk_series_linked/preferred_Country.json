@@ -16,6 +16,9 @@
           "entity": "country/AIA"
         },
         {
+          "entity": "country/ALA"
+        },
+        {
           "entity": "country/ALB"
         },
         {
@@ -557,7 +560,142 @@
           "entity": "country/NRU"
         },
         {
-          "entity": "country/NZL"
+          "entity": "country/NZL",
+          "series_by_facet": [
+            {
+              "series": [
+                {
+                  "date": "1991",
+                  "value": 31.5
+                },
+                {
+                  "date": "1992",
+                  "value": 31.8
+                },
+                {
+                  "date": "1993",
+                  "value": 32.1
+                },
+                {
+                  "date": "1994",
+                  "value": 32.5
+                },
+                {
+                  "date": "1995",
+                  "value": 32.7
+                },
+                {
+                  "date": "1996",
+                  "value": 33.1
+                },
+                {
+                  "date": "1997",
+                  "value": 33.4
+                },
+                {
+                  "date": "1998",
+                  "value": 33.8
+                },
+                {
+                  "date": "1999",
+                  "value": 34.2
+                },
+                {
+                  "date": "2000",
+                  "value": 34.5
+                },
+                {
+                  "date": "2001",
+                  "value": 34.8
+                },
+                {
+                  "date": "2002",
+                  "value": 34.9
+                },
+                {
+                  "date": "2003",
+                  "value": 35.1
+                },
+                {
+                  "date": "2004",
+                  "value": 35.4
+                },
+                {
+                  "date": "2005",
+                  "value": 35.7
+                },
+                {
+                  "date": "2006",
+                  "value": 36
+                },
+                {
+                  "date": "2007",
+                  "value": 36.3
+                },
+                {
+                  "date": "2008",
+                  "value": 36.6
+                },
+                {
+                  "date": "2009",
+                  "value": 36.8
+                },
+                {
+                  "date": "2010",
+                  "value": 37
+                },
+                {
+                  "date": "2011",
+                  "value": 37.2
+                },
+                {
+                  "date": "2012",
+                  "value": 37.5
+                },
+                {
+                  "date": "2013",
+                  "value": 37.6
+                },
+                {
+                  "date": "2014",
+                  "value": 37.5
+                },
+                {
+                  "date": "2015",
+                  "value": 37.3
+                },
+                {
+                  "date": "2016",
+                  "value": 37.2
+                },
+                {
+                  "date": "2017",
+                  "value": 37.1
+                },
+                {
+                  "date": "2018",
+                  "value": 37.2
+                },
+                {
+                  "date": "2019",
+                  "value": 37.3
+                },
+                {
+                  "date": "2020",
+                  "value": 37.6
+                },
+                {
+                  "date": "2021",
+                  "value": 37.9
+                },
+                {
+                  "date": "2022",
+                  "value": 38.2
+                }
+              ],
+              "facet": "1565963938"
+            }
+          ]
         },
         {
           "entity": "country/OMN"
@@ -846,6 +984,11 @@
     }
   ],
   "facets": {
+    "1565963938": {
+      "import_name": "New_Zealand_Census",
+      "provenance_url": "https://www.stats.govt.nz/",
+      "unit": "Year"
+    },
     "3357919774": {
       "import_name": "CensusUSAMedianAgeIncome",
       "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",

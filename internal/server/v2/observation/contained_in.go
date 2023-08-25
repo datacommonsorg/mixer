@@ -21,7 +21,6 @@ import (
 	"log"
 	"net/http"
 	"sort"
-	"strings"
 
 	"github.com/datacommonsorg/mixer/internal/merger"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
@@ -40,46 +39,7 @@ import (
 )
 
 // Num of concurrent series to read at a time. Set this to prevent OOM issue.
-const maxSeries = 5000
-
-var childTypeDenyList = map[string]struct{}{
-	"Place":               {},
-	"CensusBlockGroup":    {},
-	"CensusTract":         {},
-	"AdministrativeArea":  {},
-	"AdministrativeArea4": {},
-	"AdministrativeArea5": {},
-	"S2CellLevel7":        {},
-	"S2CellLevel8":        {},
-	"S2CellLevel9":        {},
-	"S2CellLevel10":       {},
-	"S2CellLevel11":       {},
-	"S2CellLevel13":       {},
-}
-
-var childTypeAllowListForEarth = map[string]struct{}{
-	"Continent":           {},
-	"Country":             {},
-	"AdministrativeArea1": {},
-	"State":               {},
-	"AdministrativeArea2": {},
-	"County":              {},
-}
-
-func hasCollectionCache(ancestor string, childType string) bool {
-	if ancestor == "Earth" {
-		_, ok := childTypeAllowListForEarth[childType]
-		return ok
-	}
-	if strings.HasPrefix(ancestor, "geoId/") &&
-		(len(ancestor) == 8 /* US State DCID size */ ||
-			len(ancestor) == 13 /* US City DCID size */) &&
-		childType == "CensusTract" {
-		return true
-	}
-	_, ok := childTypeDenyList[childType]
-	return !ok
-}
+const MaxSeries = 5000
 
 // Direct response are from child entities list. No need to have an entity in
 // the response if it has no observation.
@@ -102,8 +62,8 @@ func trimDirectResp(resp *pbv2.ObservationResponse) *pbv2.ObservationResponse {
 	return result
 }
 
-// fetch child places
-func fetchChildPlaces(
+// FetchChildPlaces fetches child places
+func FetchChildPlaces(
 	ctx context.Context,
 	store *store.Store,
 	metadata *resource.Metadata,
@@ -163,7 +123,7 @@ func FetchContainedIn(
 				ByVariable: map[string]*pbv2.VariableObservation{},
 				Facets:     map[string]*pb.Facet{},
 			}
-			readCollectionCache = hasCollectionCache(ancestor, childType)
+			readCollectionCache = util.HasCollectionCache(ancestor, childType)
 			if readCollectionCache {
 				var btData map[string]*pb.ObsCollection
 				var err error
@@ -229,13 +189,13 @@ func FetchContainedIn(
 			}
 		}
 		if !readCollectionCache {
-			childPlaces, err = fetchChildPlaces(
+			childPlaces, err = FetchChildPlaces(
 				ctx, store, metadata, httpClient, remoteMixer, ancestor, childType)
 			if err != nil {
 				return nil, err
 			}
 			totalSeries := len(variables) * len(childPlaces)
-			if totalSeries > maxSeries {
+			if totalSeries > MaxSeries {
 				return nil, status.Errorf(
 					codes.Internal,
 					"Stop processing large number of concurrent observation series: %d",
@@ -261,7 +221,7 @@ func FetchContainedIn(
 	// Fetch Data from SQLite database.
 	if store.SQLiteClient != nil {
 		if len(childPlaces) == 0 {
-			childPlaces, err = fetchChildPlaces(
+			childPlaces, err = FetchChildPlaces(
 				ctx, store, metadata, httpClient, remoteMixer, ancestor, childType)
 			if err != nil {
 				return nil, err

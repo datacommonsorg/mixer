@@ -208,6 +208,19 @@
       "provenanceId": "dc/base/WikidataOtherIdGeos"
     },
     {
+      "subjectId": "country/ALA",
+      "subjectTypes": [
+        "Country"
+      ],
+      "predicate": "typeOf",
+      "objectId": "Country",
+      "objectName": "Country",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/base/BaseGeos"
+    },
+    {
       "subjectId": "country/ALB",
       "subjectName": "Albania",
       "subjectTypes": [
@@ -3123,7 +3136,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/base/WikidataOtherIdGeos"
+      "provenanceId": "dc/base/BaseGeos"
     },
     {
       "subjectId": "country/SLB",

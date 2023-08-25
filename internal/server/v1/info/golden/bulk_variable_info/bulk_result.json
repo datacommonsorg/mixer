@@ -24,26 +24,26 @@
             "maxValue": 36986320
           },
           "AdministrativeArea1": {
-            "placeCount": 330,
+            "placeCount": 334,
             "topPlaces": [
               {
-                "dcid": "wikidataId/Q15175",
-                "name": "Guangdong"
+                "dcid": "wikidataId/Q3724",
+                "name": "West Java"
               },
               {
-                "dcid": "wikidataId/Q43407",
-                "name": "Shandong"
+                "dcid": "wikidataId/Q175",
+                "name": "São Paulo"
               },
               {
-                "dcid": "wikidataId/Q43684",
-                "name": "Henan"
+                "dcid": "wikidataId/Q3586",
+                "name": "East Java"
               }
             ],
-            "minValue": 3325,
-            "maxValue": 50483000
+            "minValue": 0,
+            "maxValue": 24354012
           },
           "AdministrativeArea2": {
-            "placeCount": 6311,
+            "placeCount": 6314,
             "topPlaces": [
               {
                 "dcid": "wikidataId/Q1143712",
@@ -96,7 +96,7 @@
             "maxValue": 1210
           },
           "CensusBlockGroup": {
-            "placeCount": 220333,
+            "placeCount": 289083,
             "topPlaces": [
               {
                 "dcid": "geoId/481576729001",
@@ -134,7 +134,7 @@
             "maxValue": 10429184
           },
           "CensusCountyDivision": {
-            "placeCount": 36798,
+            "placeCount": 36851,
             "topPlaces": [
               {
                 "dcid": "geoId/4820191835",
@@ -153,7 +153,7 @@
             "maxValue": 5785680
           },
           "CensusTract": {
-            "placeCount": 74014,
+            "placeCount": 96777,
             "topPlaces": [
               {
                 "dcid": "geoId/48157673101",
@@ -172,7 +172,7 @@
             "maxValue": 37626
           },
           "CensusZipCodeTabulationArea": {
-            "placeCount": 32989,
+            "placeCount": 33838,
             "topPlaces": [
               {
                 "dcid": "zip/77449",
@@ -191,7 +191,7 @@
             "maxValue": 67003
           },
           "City": {
-            "placeCount": 29988,
+            "placeCount": 32379,
             "topPlaces": [
               {
                 "dcid": "wikidataId/Q8686",
@@ -248,7 +248,7 @@
             "maxValue": 660361000
           },
           "County": {
-            "placeCount": 3223,
+            "placeCount": 3225,
             "topPlaces": [
               {
                 "dcid": "geoId/06037",
@@ -359,7 +359,7 @@
               }
             ],
             "minValue": 0,
-            "maxValue": 72821
+            "maxValue": 77489
           },
           "Place": {
             "placeCount": 71,
@@ -381,7 +381,7 @@
             "maxValue": 190144
           },
           "SchoolDistrict": {
-            "placeCount": 13813,
+            "placeCount": 13823,
             "topPlaces": [
               {
                 "dcid": "geoId/sch3620580",
@@ -397,7 +397,7 @@
               }
             ],
             "minValue": 0,
-            "maxValue": 4480165
+            "maxValue": 4543807
           },
           "State": {
             "placeCount": 87,
@@ -968,10 +968,10 @@
                   "measurementMethod": "CensusACS5yrSurvey"
                 },
                 "earliestDate": "2011",
-                "latestDate": "2020",
+                "latestDate": "2021",
                 "placeTypeSummary": {
                   "CensusBlockGroup": {
-                    "placeCount": 220333,
+                    "placeCount": 289083,
                     "topPlaces": [
                       {
                         "dcid": "geoId/481576729001",
@@ -1009,7 +1009,7 @@
                     "maxValue": 10429184
                   },
                   "CensusCountyDivision": {
-                    "placeCount": 36798,
+                    "placeCount": 36851,
                     "topPlaces": [
                       {
                         "dcid": "geoId/4820191835",
@@ -1028,7 +1028,7 @@
                     "maxValue": 1731694
                   },
                   "CensusTract": {
-                    "placeCount": 74014,
+                    "placeCount": 96777,
                     "topPlaces": [
                       {
                         "dcid": "geoId/48157673101",
@@ -1047,7 +1047,7 @@
                     "maxValue": 37626
                   },
                   "CensusZipCodeTabulationArea": {
-                    "placeCount": 32989,
+                    "placeCount": 33838,
                     "topPlaces": [
                       {
                         "dcid": "zip/77449",
@@ -1066,7 +1066,7 @@
                     "maxValue": 67003
                   },
                   "City": {
-                    "placeCount": 29714,
+                    "placeCount": 32105,
                     "topPlaces": [
                       {
                         "dcid": "geoId/3651000",
@@ -1082,7 +1082,7 @@
                       }
                     ],
                     "minValue": 0,
-                    "maxValue": 4480165
+                    "maxValue": 4543807
                   },
                   "CongressionalDistrict": {
                     "placeCount": 452,
@@ -1104,7 +1104,7 @@
                     "maxValue": 1949033
                   },
                   "County": {
-                    "placeCount": 3222,
+                    "placeCount": 3224,
                     "topPlaces": [
                       {
                         "dcid": "geoId/06037",
@@ -1158,10 +1158,10 @@
                       }
                     ],
                     "minValue": 0,
-                    "maxValue": 72821
+                    "maxValue": 77489
                   },
                   "SchoolDistrict": {
-                    "placeCount": 13813,
+                    "placeCount": 13823,
                     "topPlaces": [
                       {
                         "dcid": "geoId/sch3620580",
@@ -1177,7 +1177,7 @@
                       }
                     ],
                     "minValue": 0,
-                    "maxValue": 4480165
+                    "maxValue": 4543807
                   },
                   "State": {
                     "placeCount": 52,
@@ -1220,12 +1220,12 @@
                 },
                 "minValue": 0,
                 "maxValue": 19783141,
-                "observationCount": 4062727,
-                "timeSeriesCount": 412961
+                "observationCount": 4604867,
+                "timeSeriesCount": 507779
               }
             ],
-            "observationCount": 4062727,
-            "timeSeriesCount": 412961
+            "observationCount": 4604867,
+            "timeSeriesCount": 507779
           },
           "dc/base/CensusACS5YearSurvey_AggCountry": {
             "importName": "CensusACS5YearSurvey_AggCountry",
@@ -1236,7 +1236,7 @@
                   "isDcAggregate": true
                 },
                 "earliestDate": "2011",
-                "latestDate": "2020",
+                "latestDate": "2021",
                 "placeTypeSummary": {
                   "Country": {
                     "placeCount": 1,
@@ -1247,16 +1247,16 @@
                       }
                     ],
                     "minValue": 157812589,
-                    "maxValue": 167459830
+                    "maxValue": 168258279
                   }
                 },
                 "minValue": 157812589,
-                "maxValue": 167459830,
-                "observationCount": 10,
+                "maxValue": 168258279,
+                "observationCount": 11,
                 "timeSeriesCount": 1
               }
             ],
-            "observationCount": 10,
+            "observationCount": 11,
             "timeSeriesCount": 1
           },
           "dc/base/CensusACS5YearSurvey_SubjectTables_S2601A": {
@@ -1764,6 +1764,89 @@
             ],
             "observationCount": 180,
             "timeSeriesCount": 33
+          },
+          "dc/base/Ireland_Census": {
+            "importName": "Ireland_Census",
+            "releaseFrequency": "P5Y",
+            "seriesSummary": [
+              {
+                "seriesKey": {},
+                "earliestDate": "1841",
+                "latestDate": "2022",
+                "placeTypeSummary": {
+                  "AdministrativeArea1": {
+                    "placeCount": 26,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q4169280",
+                        "name": "Dublin City"
+                      },
+                      {
+                        "dcid": "wikidataId/Q162475",
+                        "name": "County Cork"
+                      },
+                      {
+                        "dcid": "wikidataId/Q169923",
+                        "name": "County Galway"
+                      }
+                    ],
+                    "minValue": 12013,
+                    "maxValue": 433567
+                  },
+                  "AdministrativeArea2": {
+                    "placeCount": 3,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q520000",
+                        "name": "County Fingal"
+                      },
+                      {
+                        "dcid": "wikidataId/Q822865",
+                        "name": "South Dublin"
+                      },
+                      {
+                        "dcid": "wikidataId/Q538417",
+                        "name": "Dún Laoghaire–Rathdown"
+                      }
+                    ],
+                    "minValue": 101139,
+                    "maxValue": 167974
+                  },
+                  "City": {
+                    "placeCount": 2,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q1761",
+                        "name": "Dublin"
+                      },
+                      {
+                        "dcid": "wikidataId/Q129610",
+                        "name": "Galway"
+                      }
+                    ],
+                    "minValue": 37566,
+                    "maxValue": 744548
+                  },
+                  "Country": {
+                    "placeCount": 1,
+                    "topPlaces": [
+                      {
+                        "dcid": "country/IRL",
+                        "name": "Ireland"
+                      }
+                    ],
+                    "minValue": 1401792,
+                    "maxValue": 3306314
+                  }
+                },
+                "minValue": 12013,
+                "maxValue": 3306314,
+                "observationCount": 721,
+                "timeSeriesCount": 32
+              }
+            ],
+            "observationCount": 721,
+            "timeSeriesCount": 32
           },
           "dc/base/Israel_Census": {
             "importName": "Israel_Census",
@@ -2298,6 +2381,36 @@
             "observationCount": 2358,
             "timeSeriesCount": 2358
           },
+          "dc/base/New_Zealand_Census": {
+            "importName": "New_Zealand_Census",
+            "releaseFrequency": "P1Y",
+            "seriesSummary": [
+              {
+                "seriesKey": {},
+                "earliestDate": "1991",
+                "latestDate": "2022",
+                "placeTypeSummary": {
+                  "Country": {
+                    "placeCount": 1,
+                    "topPlaces": [
+                      {
+                        "dcid": "country/NZL",
+                        "name": "New Zealand"
+                      }
+                    ],
+                    "minValue": 1786000,
+                    "maxValue": 2595500
+                  }
+                },
+                "minValue": 1786000,
+                "maxValue": 2595500,
+                "observationCount": 32,
+                "timeSeriesCount": 1
+              }
+            ],
+            "observationCount": 32,
+            "timeSeriesCount": 1
+          },
           "dc/base/NigeriaStatistics": {
             "importName": "NigeriaStatistics",
             "seriesSummary": [
@@ -2678,7 +2791,7 @@
                 "latestDate": "2021",
                 "placeTypeSummary": {
                   "County": {
-                    "placeCount": 3145,
+                    "placeCount": 3147,
                     "topPlaces": [
                       {
                         "dcid": "geoId/06037",
@@ -2699,8 +2812,8 @@
                 },
                 "minValue": 0,
                 "maxValue": 5119774,
-                "observationCount": 163032,
-                "timeSeriesCount": 3145
+                "observationCount": 163056,
+                "timeSeriesCount": 3147
               },
               {
                 "seriesKey": {
@@ -2748,8 +2861,8 @@
                 "timeSeriesCount": 52
               }
             ],
-            "observationCount": 165806,
-            "timeSeriesCount": 3197
+            "observationCount": 165830,
+            "timeSeriesCount": 3199
           }
         }
       }
@@ -3029,6 +3142,38 @@
             ],
             "observationCount": 48,
             "timeSeriesCount": 48
+          },
+          "dc/base/New_Zealand_Census": {
+            "importName": "New_Zealand_Census",
+            "releaseFrequency": "P1Y",
+            "seriesSummary": [
+              {
+                "seriesKey": {
+                  "unit": "Percent"
+                },
+                "earliestDate": "1991",
+                "latestDate": "2022",
+                "placeTypeSummary": {
+                  "Country": {
+                    "placeCount": 1,
+                    "topPlaces": [
+                      {
+                        "dcid": "country/NZL",
+                        "name": "New Zealand"
+                      }
+                    ],
+                    "minValue": 1.61,
+                    "maxValue": 2.19
+                  }
+                },
+                "minValue": 1.61,
+                "maxValue": 2.19,
+                "observationCount": 32,
+                "timeSeriesCount": 1
+              }
+            ],
+            "observationCount": 32,
+            "timeSeriesCount": 1
           },
           "dc/base/SouthAfrica_Census": {
             "importName": "SouthAfrica_Census",
