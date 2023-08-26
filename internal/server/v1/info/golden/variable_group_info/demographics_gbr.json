@@ -92,10 +92,25 @@
     ],
     "childStatVarGroups": [
       {
+        "id": "worldBank/g/Access",
+        "displayName": "Access",
+        "descendentStatVarCount": 50
+      },
+      {
+        "id": "worldBank/g/Access_to_energy",
+        "displayName": "Access to energy",
+        "descendentStatVarCount": 3
+      },
+      {
         "id": "dc/g/Person_Age",
         "specializedEntity": "Age",
         "displayName": "Person by Age",
         "descendentStatVarCount": 653
+      },
+      {
+        "id": "worldBank/g/Assets",
+        "displayName": "Assets",
+        "descendentStatVarCount": 60
       },
       {
         "id": "dc/g/Household_BenefitsStatus",
@@ -134,14 +149,84 @@
         "displayName": "Person by Disability Status"
       },
       {
+        "id": "worldBank/g/Early_Childhood_Education",
+        "displayName": "Early Childhood Education",
+        "descendentStatVarCount": 11
+      },
+      {
         "id": "dc/g/Person_Earnings",
         "specializedEntity": "Earnings",
         "displayName": "Person by Earnings"
       },
       {
+        "id": "worldBank/g/Education",
+        "displayName": "Education",
+        "descendentStatVarCount": 12
+      },
+      {
+        "id": "worldBank/g/Education__Outcomes",
+        "displayName": "Education: Outcomes",
+        "descendentStatVarCount": 25
+      },
+      {
+        "id": "worldBank/g/Education__Participation",
+        "displayName": "Education: Participation",
+        "descendentStatVarCount": 7
+      },
+      {
+        "id": "worldBank/g/Employment",
+        "displayName": "Employment",
+        "descendentStatVarCount": 106
+      },
+      {
+        "id": "worldBank/g/Employment_and_Time_Use",
+        "displayName": "Employment and Time Use",
+        "descendentStatVarCount": 5
+      },
+      {
+        "id": "worldBank/g/Entrepreneurship",
+        "displayName": "Entrepreneurship",
+        "descendentStatVarCount": 6
+      },
+      {
+        "id": "worldBank/g/Environment__Biodiversity___protected_areas",
+        "displayName": "Environment: Biodiversity \u0026 protected areas",
+        "descendentStatVarCount": 3
+      },
+      {
+        "id": "worldBank/g/Environment__Density___urbanization",
+        "displayName": "Environment: Density \u0026 urbanization",
+        "descendentStatVarCount": 6
+      },
+      {
+        "id": "worldBank/g/Environment__Environment/climate_risk___resilience",
+        "displayName": "Environment: Environment/climate risk \u0026 resilience",
+        "descendentStatVarCount": 6
+      },
+      {
+        "id": "worldBank/g/Environment__Land_use",
+        "displayName": "Environment: Land use",
+        "descendentStatVarCount": 22
+      },
+      {
+        "id": "worldBank/g/Environment__Natural_capital_endowment_and_management",
+        "displayName": "Environment: Natural capital endowment and management",
+        "descendentStatVarCount": 5
+      },
+      {
         "id": "dc/g/Person_Ethnicity",
         "specializedEntity": "Ethnicity",
         "displayName": "Person by Ethnicity"
+      },
+      {
+        "id": "worldBank/g/Expenditures",
+        "displayName": "Expenditures",
+        "descendentStatVarCount": 69
+      },
+      {
+        "id": "worldBank/g/Financial_Sector__Access",
+        "displayName": "Financial Sector: Access",
+        "descendentStatVarCount": 12
       },
       {
         "id": "dc/g/Person_Gender",
@@ -150,9 +235,79 @@
         "descendentStatVarCount": 2426
       },
       {
+        "id": "worldBank/g/Gender__Agency",
+        "displayName": "Gender: Agency",
+        "descendentStatVarCount": 1
+      },
+      {
+        "id": "worldBank/g/Gender__Participation___access",
+        "displayName": "Gender: Participation \u0026 access",
+        "descendentStatVarCount": 2
+      },
+      {
+        "id": "worldBank/g/Governance__Economic_Environment",
+        "displayName": "Governance: Economic Environment",
+        "descendentStatVarCount": 2
+      },
+      {
+        "id": "worldBank/g/Governance__Gender",
+        "displayName": "Governance: Gender",
+        "descendentStatVarCount": 1
+      },
+      {
+        "id": "worldBank/g/Governance__Human_Rights",
+        "displayName": "Governance: Human Rights",
+        "descendentStatVarCount": 1
+      },
+      {
+        "id": "worldBank/g/Health",
+        "displayName": "Health",
+        "descendentStatVarCount": 8
+      },
+      {
+        "id": "worldBank/g/Health_Equity_and_Financial_Protection_Indicators__HEFPI_",
+        "displayName": "Health Equity and Financial Protection Indicators (HEFPI)",
+        "descendentStatVarCount": 14
+      },
+      {
         "id": "dc/g/Person_HealthInsurance",
         "specializedEntity": "Health Insurance (Individual)",
         "displayName": "Person by Health Insurance"
+      },
+      {
+        "id": "worldBank/g/Health__Disease_prevention",
+        "displayName": "Health: Disease prevention",
+        "descendentStatVarCount": 2
+      },
+      {
+        "id": "worldBank/g/Health__Mortality",
+        "displayName": "Health: Mortality",
+        "descendentStatVarCount": 38
+      },
+      {
+        "id": "worldBank/g/Health__Nutrition",
+        "displayName": "Health: Nutrition",
+        "descendentStatVarCount": 10
+      },
+      {
+        "id": "worldBank/g/Health__Population__Dynamics",
+        "displayName": "Health: Population: Dynamics",
+        "descendentStatVarCount": 8
+      },
+      {
+        "id": "worldBank/g/Health__Population__Structure",
+        "displayName": "Health: Population: Structure",
+        "descendentStatVarCount": 65
+      },
+      {
+        "id": "worldBank/g/Health__Reproductive_health",
+        "displayName": "Health: Reproductive health",
+        "descendentStatVarCount": 11
+      },
+      {
+        "id": "worldBank/g/Health__Risk_factors",
+        "displayName": "Health: Risk factors",
+        "descendentStatVarCount": 55
       },
       {
         "id": "dc/g/Household",
@@ -187,14 +342,42 @@
         "displayName": "Person by Income Status"
       },
       {
+        "id": "worldBank/g/Infrastructure__Communications",
+        "displayName": "Infrastructure: Communications",
+        "descendentStatVarCount": 13
+      },
+      {
+        "id": "worldBank/g/Infrastructure__Transportation",
+        "displayName": "Infrastructure: Transportation",
+        "descendentStatVarCount": 9
+      },
+      {
+        "id": "worldBank/g/Laber",
+        "displayName": "Laber",
+        "descendentStatVarCount": 3
+      },
+      {
         "id": "dc/g/Language",
         "specializedEntity": "Language",
         "displayName": "Language"
       },
       {
+        "id": "worldBank/g/Leadership",
+        "displayName": "Leadership",
+        "descendentStatVarCount": 1
+      },
+      {
+        "id": "worldBank/g/Literacy",
+        "displayName": "Literacy"
+      },
+      {
         "id": "dc/g/Person_LiteracyStatus",
         "specializedEntity": "Literacy Status",
         "displayName": "Person by Literacy Status"
+      },
+      {
+        "id": "worldBank/g/Macroeconomic_forecasts",
+        "displayName": "Macroeconomic forecasts"
       },
       {
         "id": "dc/g/Person_MaritalStatus",
@@ -217,6 +400,11 @@
         "displayName": "Household by Nativity"
       },
       {
+        "id": "worldBank/g/Physical_Points_of_Service",
+        "displayName": "Physical Points of Service",
+        "descendentStatVarCount": 2
+      },
+      {
         "id": "dc/g/Household_PlaceOfBirth",
         "specializedEntity": "Place of Birth",
         "displayName": "Household by Place of Birth"
@@ -233,9 +421,54 @@
         "descendentStatVarCount": 549
       },
       {
+        "id": "worldBank/g/Population",
+        "displayName": "Population",
+        "descendentStatVarCount": 13
+      },
+      {
+        "id": "worldBank/g/Post-Secondary/Non-Tertiary",
+        "displayName": "Post-Secondary/Non-Tertiary",
+        "descendentStatVarCount": 14
+      },
+      {
         "id": "dc/g/Person_PovertyStatus",
         "specializedEntity": "Poverty Status",
         "displayName": "Person by Poverty Status"
+      },
+      {
+        "id": "worldBank/g/Poverty__Poverty_rates",
+        "displayName": "Poverty: Poverty rates",
+        "descendentStatVarCount": 2
+      },
+      {
+        "id": "worldBank/g/Pre-Primary",
+        "displayName": "Pre-Primary",
+        "descendentStatVarCount": 9
+      },
+      {
+        "id": "worldBank/g/Primary",
+        "displayName": "Primary",
+        "descendentStatVarCount": 59
+      },
+      {
+        "id": "worldBank/g/Private_Sector___Trade__Business_environment",
+        "displayName": "Private Sector \u0026 Trade: Business environment",
+        "descendentStatVarCount": 9
+      },
+      {
+        "id": "worldBank/g/Private_Sector___Trade__Trade_facilitation",
+        "displayName": "Private Sector \u0026 Trade: Trade facilitation",
+        "descendentStatVarCount": 3
+      },
+      {
+        "id": "worldBank/g/Public_Sector__Conflict___fragility",
+        "displayName": "Public Sector: Conflict \u0026 fragility",
+        "descendentStatVarCount": 5
+      },
+      {
+        "id": "worldBank/g/Public_Sector__Policy___institutions",
+        "displayName": "Public Sector: Policy \u0026 institutions",
+        "descendentStatVarCount": 24
       },
       {
         "id": "dc/g/Person_Race",
@@ -259,385 +492,89 @@
         "displayName": "Person by Resident Status"
       },
       {
+        "id": "worldBank/g/Secondary",
+        "displayName": "Secondary",
+        "descendentStatVarCount": 117
+      },
+      {
+        "id": "worldBank/g/Social_Protection___Labor__Economic_activity",
+        "displayName": "Social Protection \u0026 Labor: Economic activity",
+        "descendentStatVarCount": 39
+      },
+      {
+        "id": "worldBank/g/Social_Protection___Labor__Labor_force_structure",
+        "displayName": "Social Protection \u0026 Labor: Labor force structure",
+        "descendentStatVarCount": 28
+      },
+      {
+        "id": "worldBank/g/Social_Protection___Labor__Migration",
+        "displayName": "Social Protection \u0026 Labor: Migration",
+        "descendentStatVarCount": 1
+      },
+      {
+        "id": "worldBank/g/Social_Protection___Labor__Performance",
+        "displayName": "Social Protection \u0026 Labor: Performance"
+      },
+      {
+        "id": "worldBank/g/Social_Protection___Labor__Unemployment",
+        "displayName": "Social Protection \u0026 Labor: Unemployment",
+        "descendentStatVarCount": 22
+      },
+      {
+        "id": "worldBank/g/Social__Demography",
+        "displayName": "Social: Demography",
+        "descendentStatVarCount": 1
+      },
+      {
+        "id": "worldBank/g/Social__Education___skills",
+        "displayName": "Social: Education \u0026 skills",
+        "descendentStatVarCount": 1
+      },
+      {
+        "id": "worldBank/g/Social__Employment",
+        "displayName": "Social: Employment",
+        "descendentStatVarCount": 2
+      },
+      {
+        "id": "worldBank/g/Social__Health___Nutrition",
+        "displayName": "Social: Health \u0026 Nutrition",
+        "descendentStatVarCount": 2
+      },
+      {
+        "id": "worldBank/g/Statistical_Capacity_Indicator__SCI_",
+        "displayName": "Statistical Capacity Indicator (SCI)"
+      },
+      {
+        "id": "worldBank/g/Teachers",
+        "displayName": "Teachers",
+        "descendentStatVarCount": 18
+      },
+      {
+        "id": "worldBank/g/Technology",
+        "displayName": "Technology",
+        "descendentStatVarCount": 13
+      },
+      {
+        "id": "worldBank/g/Tertiary",
+        "displayName": "Tertiary",
+        "descendentStatVarCount": 103
+      },
+      {
         "id": "dc/g/Household_TransportationType",
         "specializedEntity": "Transportation Type",
         "displayName": "Household by Transportation Type"
       },
       {
-        "id": "dc/g/WorldBank/Access",
-        "specializedEntity": "World Bank/Access",
-        "displayName": "Access",
-        "descendentStatVarCount": 50
-      },
-      {
-        "id": "dc/g/WorldBank/Access_to_energy",
-        "specializedEntity": "World Bank/Access, To, Energy",
-        "displayName": "Access to energy",
-        "descendentStatVarCount": 3
-      },
-      {
-        "id": "dc/g/WorldBank/Assets",
-        "specializedEntity": "World Bank/Assets",
-        "displayName": "Assets",
-        "descendentStatVarCount": 60
-      },
-      {
-        "id": "dc/g/WorldBank/Early_Childhood_Education",
-        "specializedEntity": "World Bank/Early, Childhood, Education",
-        "displayName": "Early Childhood Education",
-        "descendentStatVarCount": 11
-      },
-      {
-        "id": "dc/g/WorldBank/Education",
-        "specializedEntity": "World Bank/Education",
-        "displayName": "Education",
-        "descendentStatVarCount": 12
-      },
-      {
-        "id": "dc/g/WorldBank/Education__Outcomes",
-        "specializedEntity": "World Bank/Education, , Outcomes",
-        "displayName": "Education: Outcomes",
-        "descendentStatVarCount": 25
-      },
-      {
-        "id": "dc/g/WorldBank/Education__Participation",
-        "specializedEntity": "World Bank/Education, , Participation",
-        "displayName": "Education: Participation",
-        "descendentStatVarCount": 7
-      },
-      {
-        "id": "dc/g/WorldBank/Employment",
-        "specializedEntity": "World Bank/Employment",
-        "displayName": "Employment",
-        "descendentStatVarCount": 106
-      },
-      {
-        "id": "dc/g/WorldBank/Employment_and_Time_Use",
-        "specializedEntity": "World Bank/Employment, And, Time, Use",
-        "displayName": "Employment and Time Use",
-        "descendentStatVarCount": 5
-      },
-      {
-        "id": "dc/g/WorldBank/Entrepreneurship",
-        "specializedEntity": "World Bank/Entrepreneurship",
-        "displayName": "Entrepreneurship",
-        "descendentStatVarCount": 6
-      },
-      {
-        "id": "dc/g/WorldBank/Environment__Biodiversity___protected_areas",
-        "specializedEntity": "World Bank/Environment, , Biodiversity, , , Protected, Areas",
-        "displayName": "Environment: Biodiversity \u0026 protected areas",
-        "descendentStatVarCount": 3
-      },
-      {
-        "id": "dc/g/WorldBank/Environment__Density___urbanization",
-        "specializedEntity": "World Bank/Environment, , Density, , , Urbanization",
-        "displayName": "Environment: Density \u0026 urbanization",
-        "descendentStatVarCount": 6
-      },
-      {
-        "id": "dc/g/WorldBank/Environment__Environment/climate_risk___resilience",
-        "specializedEntity": "World Bank/Environment, , Environment/climate, Risk, , , Resilience",
-        "displayName": "Environment: Environment/climate risk \u0026 resilience",
-        "descendentStatVarCount": 6
-      },
-      {
-        "id": "dc/g/WorldBank/Environment__Land_use",
-        "specializedEntity": "World Bank/Environment, , Land, Use",
-        "displayName": "Environment: Land use",
-        "descendentStatVarCount": 22
-      },
-      {
-        "id": "dc/g/WorldBank/Environment__Natural_capital_endowment_and_management",
-        "specializedEntity": "World Bank/Environment, , Natural, Capital, Endowment, And, Management",
-        "displayName": "Environment: Natural capital endowment and management",
-        "descendentStatVarCount": 5
-      },
-      {
-        "id": "dc/g/WorldBank/Expenditures",
-        "specializedEntity": "World Bank/Expenditures",
-        "displayName": "Expenditures",
-        "descendentStatVarCount": 69
-      },
-      {
-        "id": "dc/g/WorldBank/Financial_Sector__Access",
-        "specializedEntity": "World Bank/Financial, Sector, , Access",
-        "displayName": "Financial Sector: Access",
-        "descendentStatVarCount": 12
-      },
-      {
-        "id": "dc/g/WorldBank/Gender__Agency",
-        "specializedEntity": "World Bank/Gender, , Agency",
-        "displayName": "Gender: Agency",
-        "descendentStatVarCount": 1
-      },
-      {
-        "id": "dc/g/WorldBank/Gender__Participation___access",
-        "specializedEntity": "World Bank/Gender, , Participation, , , Access",
-        "displayName": "Gender: Participation \u0026 access",
-        "descendentStatVarCount": 2
-      },
-      {
-        "id": "dc/g/WorldBank/Governance__Economic_Environment",
-        "specializedEntity": "World Bank/Governance, , Economic, Environment",
-        "displayName": "Governance: Economic Environment",
-        "descendentStatVarCount": 2
-      },
-      {
-        "id": "dc/g/WorldBank/Governance__Gender",
-        "specializedEntity": "World Bank/Governance, , Gender",
-        "displayName": "Governance: Gender",
-        "descendentStatVarCount": 1
-      },
-      {
-        "id": "dc/g/WorldBank/Governance__Human_Rights",
-        "specializedEntity": "World Bank/Governance, , Human, Rights",
-        "displayName": "Governance: Human Rights",
-        "descendentStatVarCount": 1
-      },
-      {
-        "id": "dc/g/WorldBank/Health",
-        "specializedEntity": "World Bank/Health",
-        "displayName": "Health",
-        "descendentStatVarCount": 8
-      },
-      {
-        "id": "dc/g/WorldBank/Health__Disease_prevention",
-        "specializedEntity": "World Bank/Health, , Disease, Prevention",
-        "displayName": "Health: Disease prevention",
-        "descendentStatVarCount": 2
-      },
-      {
-        "id": "dc/g/WorldBank/Health__Mortality",
-        "specializedEntity": "World Bank/Health, , Mortality",
-        "displayName": "Health: Mortality",
-        "descendentStatVarCount": 38
-      },
-      {
-        "id": "dc/g/WorldBank/Health__Nutrition",
-        "specializedEntity": "World Bank/Health, , Nutrition",
-        "displayName": "Health: Nutrition",
-        "descendentStatVarCount": 10
-      },
-      {
-        "id": "dc/g/WorldBank/Health__Population__Dynamics",
-        "specializedEntity": "World Bank/Health, , Population, , Dynamics",
-        "displayName": "Health: Population: Dynamics",
-        "descendentStatVarCount": 8
-      },
-      {
-        "id": "dc/g/WorldBank/Health__Population__Structure",
-        "specializedEntity": "World Bank/Health, , Population, , Structure",
-        "displayName": "Health: Population: Structure",
-        "descendentStatVarCount": 65
-      },
-      {
-        "id": "dc/g/WorldBank/Health__Reproductive_health",
-        "specializedEntity": "World Bank/Health, , Reproductive, Health",
-        "displayName": "Health: Reproductive health",
-        "descendentStatVarCount": 11
-      },
-      {
-        "id": "dc/g/WorldBank/Health__Risk_factors",
-        "specializedEntity": "World Bank/Health, , Risk, Factors",
-        "displayName": "Health: Risk factors",
-        "descendentStatVarCount": 55
-      },
-      {
-        "id": "dc/g/WorldBank/Health_Equity_and_Financial_Protection_Indicators__HEFPI_",
-        "specializedEntity": "World Bank/Health, Equity, And, Financial, Protection, Indicators, , HEFPI, ",
-        "displayName": "Health Equity and Financial Protection Indicators (HEFPI)",
-        "descendentStatVarCount": 14
-      },
-      {
-        "id": "dc/g/WorldBank/Infrastructure__Communications",
-        "specializedEntity": "World Bank/Infrastructure, , Communications",
-        "displayName": "Infrastructure: Communications",
-        "descendentStatVarCount": 13
-      },
-      {
-        "id": "dc/g/WorldBank/Infrastructure__Transportation",
-        "specializedEntity": "World Bank/Infrastructure, , Transportation",
-        "displayName": "Infrastructure: Transportation",
-        "descendentStatVarCount": 9
-      },
-      {
-        "id": "dc/g/WorldBank/Laber",
-        "specializedEntity": "World Bank/Laber",
-        "displayName": "Laber",
-        "descendentStatVarCount": 3
-      },
-      {
-        "id": "dc/g/WorldBank/Leadership",
-        "specializedEntity": "World Bank/Leadership",
-        "displayName": "Leadership",
-        "descendentStatVarCount": 1
-      },
-      {
-        "id": "dc/g/WorldBank/Literacy",
-        "specializedEntity": "World Bank/Literacy",
-        "displayName": "Literacy"
-      },
-      {
-        "id": "dc/g/WorldBank/Macroeconomic_forecasts",
-        "specializedEntity": "World Bank/Macroeconomic, Forecasts",
-        "displayName": "Macroeconomic forecasts"
-      },
-      {
-        "id": "dc/g/WorldBank/Physical_Points_of_Service",
-        "specializedEntity": "World Bank/Physical, Points, Of, Service",
-        "displayName": "Physical Points of Service",
-        "descendentStatVarCount": 2
-      },
-      {
-        "id": "dc/g/WorldBank/Population",
-        "specializedEntity": "World Bank/Population",
-        "displayName": "Population",
-        "descendentStatVarCount": 13
-      },
-      {
-        "id": "dc/g/WorldBank/Post-Secondary/Non-Tertiary",
-        "specializedEntity": "World Bank/Post, Secondary/Non, Tertiary",
-        "displayName": "Post-Secondary/Non-Tertiary",
-        "descendentStatVarCount": 14
-      },
-      {
-        "id": "dc/g/WorldBank/Poverty__Poverty_rates",
-        "specializedEntity": "World Bank/Poverty, , Poverty, Rates",
-        "displayName": "Poverty: Poverty rates",
-        "descendentStatVarCount": 2
-      },
-      {
-        "id": "dc/g/WorldBank/Pre-Primary",
-        "specializedEntity": "World Bank/Pre, Primary",
-        "displayName": "Pre-Primary",
-        "descendentStatVarCount": 9
-      },
-      {
-        "id": "dc/g/WorldBank/Primary",
-        "specializedEntity": "World Bank/Primary",
-        "displayName": "Primary",
-        "descendentStatVarCount": 59
-      },
-      {
-        "id": "dc/g/WorldBank/Private_Sector___Trade__Business_environment",
-        "specializedEntity": "World Bank/Private, Sector, , , Trade, , Business, Environment",
-        "displayName": "Private Sector \u0026 Trade: Business environment",
-        "descendentStatVarCount": 9
-      },
-      {
-        "id": "dc/g/WorldBank/Private_Sector___Trade__Trade_facilitation",
-        "specializedEntity": "World Bank/Private, Sector, , , Trade, , Trade, Facilitation",
-        "displayName": "Private Sector \u0026 Trade: Trade facilitation",
-        "descendentStatVarCount": 3
-      },
-      {
-        "id": "dc/g/WorldBank/Public_Sector__Conflict___fragility",
-        "specializedEntity": "World Bank/Public, Sector, , Conflict, , , Fragility",
-        "displayName": "Public Sector: Conflict \u0026 fragility",
-        "descendentStatVarCount": 5
-      },
-      {
-        "id": "dc/g/WorldBank/Public_Sector__Policy___institutions",
-        "specializedEntity": "World Bank/Public, Sector, , Policy, , , Institutions",
-        "displayName": "Public Sector: Policy \u0026 institutions",
-        "descendentStatVarCount": 24
-      },
-      {
-        "id": "dc/g/WorldBank/Secondary",
-        "specializedEntity": "World Bank/Secondary",
-        "displayName": "Secondary",
-        "descendentStatVarCount": 117
-      },
-      {
-        "id": "dc/g/WorldBank/Social__Demography",
-        "specializedEntity": "World Bank/Social, , Demography",
-        "displayName": "Social: Demography",
-        "descendentStatVarCount": 1
-      },
-      {
-        "id": "dc/g/WorldBank/Social__Education___skills",
-        "specializedEntity": "World Bank/Social, , Education, , , Skills",
-        "displayName": "Social: Education \u0026 skills",
-        "descendentStatVarCount": 1
-      },
-      {
-        "id": "dc/g/WorldBank/Social__Employment",
-        "specializedEntity": "World Bank/Social, , Employment",
-        "displayName": "Social: Employment",
-        "descendentStatVarCount": 2
-      },
-      {
-        "id": "dc/g/WorldBank/Social__Health___Nutrition",
-        "specializedEntity": "World Bank/Social, , Health, , , Nutrition",
-        "displayName": "Social: Health \u0026 Nutrition",
-        "descendentStatVarCount": 2
-      },
-      {
-        "id": "dc/g/WorldBank/Social_Protection___Labor__Economic_activity",
-        "specializedEntity": "World Bank/Social, Protection, , , Labor, , Economic, Activity",
-        "displayName": "Social Protection \u0026 Labor: Economic activity",
-        "descendentStatVarCount": 39
-      },
-      {
-        "id": "dc/g/WorldBank/Social_Protection___Labor__Labor_force_structure",
-        "specializedEntity": "World Bank/Social, Protection, , , Labor, , Labor, Force, Structure",
-        "displayName": "Social Protection \u0026 Labor: Labor force structure",
-        "descendentStatVarCount": 28
-      },
-      {
-        "id": "dc/g/WorldBank/Social_Protection___Labor__Migration",
-        "specializedEntity": "World Bank/Social, Protection, , , Labor, , Migration",
-        "displayName": "Social Protection \u0026 Labor: Migration",
-        "descendentStatVarCount": 1
-      },
-      {
-        "id": "dc/g/WorldBank/Social_Protection___Labor__Performance",
-        "specializedEntity": "World Bank/Social, Protection, , , Labor, , Performance",
-        "displayName": "Social Protection \u0026 Labor: Performance"
-      },
-      {
-        "id": "dc/g/WorldBank/Social_Protection___Labor__Unemployment",
-        "specializedEntity": "World Bank/Social, Protection, , , Labor, , Unemployment",
-        "displayName": "Social Protection \u0026 Labor: Unemployment",
-        "descendentStatVarCount": 22
-      },
-      {
-        "id": "dc/g/WorldBank/Statistical_Capacity_Indicator__SCI_",
-        "specializedEntity": "World Bank/Statistical, Capacity, Indicator, , SCI, ",
-        "displayName": "Statistical Capacity Indicator (SCI)"
-      },
-      {
-        "id": "dc/g/WorldBank/Teachers",
-        "specializedEntity": "World Bank/Teachers",
-        "displayName": "Teachers",
-        "descendentStatVarCount": 18
-      },
-      {
-        "id": "dc/g/WorldBank/Technology",
-        "specializedEntity": "World Bank/Technology",
-        "displayName": "Technology",
-        "descendentStatVarCount": 13
-      },
-      {
-        "id": "dc/g/WorldBank/Tertiary",
-        "specializedEntity": "World Bank/Tertiary",
-        "displayName": "Tertiary",
-        "descendentStatVarCount": 103
-      },
-      {
-        "id": "dc/g/WorldBank/Usage",
-        "specializedEntity": "World Bank/Usage",
+        "id": "worldBank/g/Usage",
         "displayName": "Usage",
         "descendentStatVarCount": 24
       },
       {
-        "id": "dc/g/WorldBank/Usage_of_Financial_Services",
-        "specializedEntity": "World Bank/Usage, Of, Financial, Services",
+        "id": "worldBank/g/Usage_of_Financial_Services",
         "displayName": "Usage of Financial Services"
       }
     ],
-    "descendentStatVarCount": 3318,
+    "descendentStatVarCount": 4481,
     "parentStatVarGroups": [
       "dc/g/Root"
     ]

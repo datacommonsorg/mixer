@@ -959,6 +959,34 @@
       "provenanceId": "dc/base/WikidataOtherIdGeos"
     },
     {
+      "subjectId": "geoId/02063",
+      "subjectName": "Chugach Census Area",
+      "subjectTypes": [
+        "County"
+      ],
+      "predicate": "typeOf",
+      "objectId": "County",
+      "objectName": "County",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/base/BaseGeos"
+    },
+    {
+      "subjectId": "geoId/02066",
+      "subjectName": "Copper River Census Area",
+      "subjectTypes": [
+        "County"
+      ],
+      "predicate": "typeOf",
+      "objectId": "County",
+      "objectName": "County",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/base/BaseGeos"
+    },
+    {
       "subjectId": "geoId/02195",
       "subjectName": "Petersburg Borough",
       "subjectTypes": [
@@ -1016,6 +1044,34 @@
         "Class"
       ],
       "provenanceId": "dc/base/WikidataOtherIdGeos"
+    },
+    {
+      "subjectId": "geoId/09110",
+      "subjectName": "Capitol Planning Region",
+      "subjectTypes": [
+        "County"
+      ],
+      "predicate": "typeOf",
+      "objectId": "County",
+      "objectName": "County",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/base/BaseGeos"
+    },
+    {
+      "subjectId": "geoId/09120",
+      "subjectName": "Greater Bridgeport Planning Region",
+      "subjectTypes": [
+        "County"
+      ],
+      "predicate": "typeOf",
+      "objectId": "County",
+      "objectName": "County",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/base/BaseGeos"
     },
     {
       "subjectId": "geoId/11001",

@@ -517,10 +517,6 @@
           "dcid": "Count_Person_25OrMoreYears_EducationalAttainment9ThGrade_Female"
         },
         {
-          "name": "Population: Masters Degree, Female",
-          "dcid": "Count_Person_25OrMoreYears_EducationalAttainmentMastersDegree_Female"
-        },
-        {
           "name": "Population: No Schooling Completed, Female",
           "dcid": "Count_Person_25OrMoreYears_EducationalAttainmentNoSchoolingCompleted_Female"
         },
@@ -627,36 +623,6 @@
       ]
     },
     {
-      "dcid": "dc/g/Person_Gender-Female",
-      "name": "Person With Gender = Female",
-      "statVars": [
-        {
-          "name": "Female Life Expectancy",
-          "dcid": "LifeExpectancy_Person_Female"
-        },
-        {
-          "name": "Female Population",
-          "dcid": "Count_Person_Female"
-        },
-        {
-          "name": "Unemployment Rate of the Female Population",
-          "dcid": "UnemploymentRate_Person_Female"
-        },
-        {
-          "name": "Median Age of Female Population",
-          "dcid": "Median_Age_Person_Female"
-        },
-        {
-          "name": "Median Income of Women (15 Years or Older) With Income",
-          "dcid": "Median_Income_Person_15OrMoreYears_Female_WithIncome"
-        },
-        {
-          "name": "Female Population With Disabilities",
-          "dcid": "Count_Person_WithDisability_Female"
-        }
-      ]
-    },
-    {
       "dcid": "dc/g/Person_Age_Gender-Female",
       "name": "Person With Age, Gender = Female",
       "statVars": [
@@ -713,6 +679,32 @@
         {
           "name": "Non Hispanic Female Population Identifying as Native Hawaiian/Other Pacific Islander Alone",
           "dcid": "Count_Person_Female_NotHispanicOrLatino_NativeHawaiianOrOtherPacificIslanderAlone"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female",
+      "name": "Person With Gender = Female",
+      "statVars": [
+        {
+          "name": "Female Life Expectancy",
+          "dcid": "LifeExpectancy_Person_Female"
+        },
+        {
+          "name": "Female Population",
+          "dcid": "Count_Person_Female"
+        },
+        {
+          "name": "Unemployment Rate of the Female Population",
+          "dcid": "UnemploymentRate_Person_Female"
+        },
+        {
+          "name": "Median Age of Female Population",
+          "dcid": "Median_Age_Person_Female"
+        },
+        {
+          "name": "Median Income of Women (15 Years or Older) With Income",
+          "dcid": "Median_Income_Person_15OrMoreYears_Female_WithIncome"
         }
       ]
     },
@@ -907,6 +899,24 @@
         {
           "name": "Number of new HIV infections per 1,000 uninfected population [Age = 50 years old and over | Sex = Female]",
           "dcid": "sdg/SH_HIV_INCD.AGE--Y_GE50__SEX--F"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_EducationalAttainment-DoctorateDegree_Gender-Female",
+      "name": "Person With Educational Attainment = Doctorate Degree, Gender = Female",
+      "statVars": [
+        {
+          "name": "Population: Doctorate Degree, Female",
+          "dcid": "Count_Person_25OrMoreYears_EducationalAttainmentDoctorateDegree_Female"
+        },
+        {
+          "name": "Population: Doctorate Degree, Female",
+          "dcid": "Count_Person_EducationalAttainmentDoctorateDegree_Female"
+        },
+        {
+          "name": "Population: Doctorate Degree, Female (As Fraction of Count Person 25 or More Years Female)",
+          "dcid": "Count_Person_25OrMoreYears_Female_DoctorateDegree_AsFractionOf_Count_Person_25OrMoreYears_Female"
         }
       ]
     },
@@ -3051,16 +3061,16 @@
       ]
     },
     {
-      "dcid": "dc/g/Person_EducationalAttainment-DoctorateDegree_Gender-Female",
-      "name": "Person With Educational Attainment = Doctorate Degree, Gender = Female",
+      "dcid": "dc/g/Person_EducationalAttainment-BachelorsDegree_Gender-Female",
+      "name": "Person With Educational Attainment = Bachelors Degree, Gender = Female",
       "statVars": [
         {
-          "name": "Population: Doctorate Degree, Female",
-          "dcid": "Count_Person_25OrMoreYears_EducationalAttainmentDoctorateDegree_Female"
+          "name": "Population: Bachelors Degree, Female",
+          "dcid": "Count_Person_25OrMoreYears_EducationalAttainmentBachelorsDegree_Female"
         },
         {
-          "name": "Population: Doctorate Degree, Female (As Fraction of Count Person 25 or More Years Female)",
-          "dcid": "Count_Person_25OrMoreYears_Female_DoctorateDegree_AsFractionOf_Count_Person_25OrMoreYears_Female"
+          "name": "Population: Bachelors Degree, Female",
+          "dcid": "Count_Person_EducationalAttainmentBachelorsDegree_Female"
         }
       ]
     },
@@ -5325,22 +5335,22 @@
       ]
     },
     {
+      "dcid": "dc/g/Person_DisabilityStatus-WithDisability_Gender-Female",
+      "name": "Person With Disability Status = With Disability, Gender = Female",
+      "statVars": [
+        {
+          "name": "Female Population With Disabilities",
+          "dcid": "Count_Person_WithDisability_Female"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/Person_EducationalAttainment-AssociatesDegree_Gender-Female",
       "name": "Person With Educational Attainment = Associates Degree, Gender = Female",
       "statVars": [
         {
           "name": "Population: Associates Degree, Female",
           "dcid": "Count_Person_25OrMoreYears_EducationalAttainmentAssociatesDegree_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_EducationalAttainment-BachelorsDegree_Gender-Female",
-      "name": "Person With Educational Attainment = Bachelors Degree, Gender = Female",
-      "statVars": [
-        {
-          "name": "Population: Bachelors Degree, Female",
-          "dcid": "Count_Person_25OrMoreYears_EducationalAttainmentBachelorsDegree_Female"
         }
       ]
     },
@@ -5361,6 +5371,16 @@
         {
           "name": "Population: High School Graduate Includes Equivalency, Female",
           "dcid": "Count_Person_25OrMoreYears_EducationalAttainmentHighSchoolGraduateIncludesEquivalency_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_EducationalAttainment-MastersDegree_Gender-Female",
+      "name": "Person With Educational Attainment = Masters Degree, Gender = Female",
+      "statVars": [
+        {
+          "name": "Population: Masters Degree, Female",
+          "dcid": "Count_Person_25OrMoreYears_EducationalAttainmentMastersDegree_Female"
         }
       ]
     },
@@ -7455,8 +7475,16 @@
       "name": "Person With Age = 26 - 34 Years, Gender = Female"
     },
     {
+      "dcid": "dc/g/Person_Age-YearsUpto29_Gender-Female",
+      "name": "Person With Age = 29 Years or Less, Gender = Female"
+    },
+    {
       "dcid": "dc/g/Person_Age-Years3To4_Gender-Female",
       "name": "Person With Age = 3 - 4 Years, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years30To39_Gender-Female",
+      "name": "Person With Age = 30 - 39 Years, Gender = Female"
     },
     {
       "dcid": "dc/g/Person_Age-Years35To54_Gender-Female",
@@ -7465,6 +7493,14 @@
     {
       "dcid": "dc/g/Person_Age-Years35Onwards_Gender-Female",
       "name": "Person With Age = 35 Years or More, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years40To49_Gender-Female",
+      "name": "Person With Age = 40 - 49 Years, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years50To75_Gender-Female",
+      "name": "Person With Age = 50 - 75 Years, Gender = Female"
     },
     {
       "dcid": "dc/g/Person_Age-Years6To11_Gender-Female",
@@ -7491,12 +7527,148 @@
       "name": "Person With Age = 75 - 84 Years, Gender = Female"
     },
     {
+      "dcid": "dc/g/Person_BachelorsDegreeMajor-AgricultureAndNaturalResourcesMajor_Gender-Female",
+      "name": "Person With Bachelors Degree Major = Agriculture And Natural Resources Major, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Person_BachelorsDegreeMajor-ArchitectureAndRelatedServicesMajor_Gender-Female",
+      "name": "Person With Bachelors Degree Major = Architecture And Related Services Major, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Person_BachelorsDegreeMajor-BiologicalAndBiomedicalSciencesMajor_Gender-Female",
+      "name": "Person With Bachelors Degree Major = Biological And Biomedical Sciences Major, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Person_BachelorsDegreeMajor-CommunicationJournalismAndRelatedMajor_Gender-Female",
+      "name": "Person With Bachelors Degree Major = Communication Journalism And Related Major, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Person_BachelorsDegreeMajor-CommunicationsTechnologiesMajor_Gender-Female",
+      "name": "Person With Bachelors Degree Major = Communications Technologies Major, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Person_BachelorsDegreeMajor-ComputerAndITMajor_Gender-Female",
+      "name": "Person With Bachelors Degree Major = Computer And ITMajor, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Person_BachelorsDegreeMajor-EngineeringMajor_Gender-Female",
+      "name": "Person With Bachelors Degree Major = Engineering Major, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Person_BachelorsDegreeMajor-EngineeringTechnologiesMajor_Gender-Female",
+      "name": "Person With Bachelors Degree Major = Engineering Technologies Major, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Person_BachelorsDegreeMajor-EnglishAndLiteratureMajor_Gender-Female",
+      "name": "Person With Bachelors Degree Major = English And Literature Major, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Person_BachelorsDegreeMajor-EthnicCulturalGenderGroupStudiesMajor_Gender-Female",
+      "name": "Person With Bachelors Degree Major = Ethnic Cultural Gender Group Studies Major, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Person_BachelorsDegreeMajor-FamilyAndConsumerSciencesMajor_Gender-Female",
+      "name": "Person With Bachelors Degree Major = Family And Consumer Sciences Major, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Person_BachelorsDegreeMajor-ForeignLanguagesAndLinguisticsMajor_Gender-Female",
+      "name": "Person With Bachelors Degree Major = Foreign Languages And Linguistics Major, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Person_BachelorsDegreeMajor-HealthRelatedMajor_Gender-Female",
+      "name": "Person With Bachelors Degree Major = Health Related Major, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Person_BachelorsDegreeMajor-HistoryMajor_Gender-Female",
+      "name": "Person With Bachelors Degree Major = History Major, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Person_BachelorsDegreeMajor-HomelandSecurityLawEnforcementFirefightingMajor_Gender-Female",
+      "name": "Person With Bachelors Degree Major = Homeland Security Law Enforcement Firefighting Major, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Person_BachelorsDegreeMajor-InterdisciplinaryStudiesMajor_Gender-Female",
+      "name": "Person With Bachelors Degree Major = Interdisciplinary Studies Major, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Person_BachelorsDegreeMajor-LegalProfessionsAndStudiesMajor_Gender-Female",
+      "name": "Person With Bachelors Degree Major = Legal Professions And Studies Major, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Person_BachelorsDegreeMajor-LibraryScienceMajor_Gender-Female",
+      "name": "Person With Bachelors Degree Major = Library Science Major, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Person_BachelorsDegreeMajor-MathAndStatisticsMajor_Gender-Female",
+      "name": "Person With Bachelors Degree Major = Math And Statistics Major, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Person_BachelorsDegreeMajor-MilitaryTechnologiesMajor_Gender-Female",
+      "name": "Person With Bachelors Degree Major = Military Technologies Major, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Person_BachelorsDegreeMajor-OtherMajor_Gender-Female",
+      "name": "Person With Bachelors Degree Major = Other Major, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Person_BachelorsDegreeMajor-ParksRecFitnessKinesiologyMajor_Gender-Female",
+      "name": "Person With Bachelors Degree Major = Parks Rec Fitness Kinesiology Major, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Person_BachelorsDegreeMajor-PhilosophyReligiousStudiesMajor_Gender-Female",
+      "name": "Person With Bachelors Degree Major = Philosophy Religious Studies Major, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Person_BachelorsDegreeMajor-PhysicalSciencesAndTechnologiesMajor_Gender-Female",
+      "name": "Person With Bachelors Degree Major = Physical Sciences And Technologies Major, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Person_BachelorsDegreeMajor-PrecisionProductionMajor_Gender-Female",
+      "name": "Person With Bachelors Degree Major = Precision Production Major, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Person_BachelorsDegreeMajor-PsychologyMajor_Gender-Female",
+      "name": "Person With Bachelors Degree Major = Psychology Major, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Person_BachelorsDegreeMajor-PublicAdminSocialServicesMajor_Gender-Female",
+      "name": "Person With Bachelors Degree Major = Public Admin Social Services Major, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Person_BachelorsDegreeMajor-ScienceTechnologyEngineeringMathematics_Gender-Female",
+      "name": "Person With Bachelors Degree Major = Science \u0026 Technology \u0026 Engineering \u0026 Mathematics, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Person_BachelorsDegreeMajor-SocialSciencesMajor_Gender-Female",
+      "name": "Person With Bachelors Degree Major = Social Sciences Major, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Person_BachelorsDegreeMajor-TheologyAndReligionMajor_Gender-Female",
+      "name": "Person With Bachelors Degree Major = Theology And Religion Major, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Person_BachelorsDegreeMajor-TransportationAndMaterialsMovingMajor_Gender-Female",
+      "name": "Person With Bachelors Degree Major = Transportation And Materials Moving Major, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Person_BachelorsDegreeMajor-VisualAndPerformingArtsMajor_Gender-Female",
+      "name": "Person With Bachelors Degree Major = Visual And Performing Arts Major, Gender = Female"
+    },
+    {
       "dcid": "dc/g/Person_BachelorsDegreeMajor_Gender-Female",
       "name": "Person With Bachelors Degree Major, Gender = Female"
     },
     {
       "dcid": "dc/g/Person_ChildrenStatus_Gender-Female",
       "name": "Person With Children Status, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Person_CitizenshipStatus-Citizen_Gender-Female",
+      "name": "Person With Citizenship Status = Citizen, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Person_CitizenshipStatus-CitizenshipUnknown_Gender-Female",
+      "name": "Person With Citizenship Status = Citizenship Unknown, Gender = Female"
     },
     {
       "dcid": "dc/g/Person_CitizenshipStatus-NotAUSCitizen_Gender-Female",
@@ -7511,8 +7683,32 @@
       "name": "Person With Citizenship Status = US Citizen by Naturalization, Gender = Female"
     },
     {
+      "dcid": "dc/g/Person_CitizenshipStatus-VisaHolder_Gender-Female",
+      "name": "Person With Citizenship Status = Visa Holder, Gender = Female"
+    },
+    {
       "dcid": "dc/g/Person_CitizenshipStatus_Gender-Female",
       "name": "Person With Citizenship Status, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Person_CollegeOrUniversityLevel-FourYear_Gender-Female",
+      "name": "Person With College or University Level = Four Year, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Person_CollegeOrUniversityLevel-TwoYear_Gender-Female",
+      "name": "Person With College or University Level = Two Year, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Person_CollegeOrUniversityLevel_Gender-Female",
+      "name": "Person With College or University Level, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Person_DisabilityStatus-NoDisability_Gender-Female",
+      "name": "Person With Disability Status = No Disability, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Person_DisabilityStatus_Gender-Female",
+      "name": "Person With Disability Status, Gender = Female"
     },
     {
       "dcid": "dc/g/Person_DoctorateDegreeMajor-ScienceAndEngineeringRelatedMajor_Gender-Female",
@@ -7525,6 +7721,10 @@
     {
       "dcid": "dc/g/Person_EducationalAttainment-9ThTo12ThGradeNoDiploma_Gender-Female",
       "name": "Person With Educational Attainment = 9th To 12th Grade No Diploma, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Person_EducationalAttainment-CollegeGraduate_Gender-Female",
+      "name": "Person With Educational Attainment = College Graduate, Gender = Female"
     },
     {
       "dcid": "dc/g/Person_EducationalAttainment-GraduateOrProfessionalDegree_Gender-Female",
@@ -7551,6 +7751,14 @@
       "name": "Person With Educational Attainment = Some College or Associates Degree, Gender = Female"
     },
     {
+      "dcid": "dc/g/Person_EducationalDegree-ScienceEngineeringHealth_Gender-Female",
+      "name": "Person With Educational Degree = Science \u0026 Engineering \u0026 Health, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Person_EducationalDegree_Gender-Female",
+      "name": "Person With Educational Degree, Gender = Female"
+    },
+    {
       "dcid": "dc/g/Person_EmploymentStatus-Employed_Gender-Female",
       "name": "Person With Employment Status = Employed, Gender = Female"
     },
@@ -7561,6 +7769,10 @@
     {
       "dcid": "dc/g/Person_EmploymentStatus_Gender-Female",
       "name": "Person With Employment Status, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Person_EnrollmentLevel-EnrolledInCollegeOrGraduateSchool_Gender-Female",
+      "name": "Person With Enrollment Level = Enrolled in College or Graduate School, Gender = Female"
     },
     {
       "dcid": "dc/g/Person_EnrollmentLevel-EnrolledInPrivateCollegeOrGraduateSchool_Gender-Female",
@@ -7609,6 +7821,14 @@
     {
       "dcid": "dc/g/Person_Ethnicity-HispanicOrLatino_Gender-Female",
       "name": "Person With Ethnicity = Hispanic or Latino, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Person_Ethnicity-NotHispanicOrLatino_Gender-Female",
+      "name": "Person With Ethnicity = Not Hispanic or Latino, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Person_Ethnicity-UnknownEthnicity_Gender-Female",
+      "name": "Person With Ethnicity = Unknown Ethnicity, Gender = Female"
     },
     {
       "dcid": "dc/g/Person_Ethnicity_Gender-Female",
@@ -7799,6 +8019,14 @@
       "name": "Person With Gender = Female, Marital Status = Unmarried"
     },
     {
+      "dcid": "dc/g/Person_Gender-Female_MinorityServingInstitutionType",
+      "name": "Person With Gender = Female, Minority Serving Institution Type"
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_MinorityServingInstitutionType-HBCU",
+      "name": "Person With Gender = Female, Minority Serving Institution Type = HBCU"
+    },
+    {
       "dcid": "dc/g/Person_Gender-Female_Nativity",
       "name": "Person With Gender = Female, Nativity"
     },
@@ -7837,6 +8065,10 @@
     {
       "dcid": "dc/g/Person_Gender-Female_Occupation-SOCv2018/270000",
       "name": "Person With Gender = Female, Occupation = Arts, Design, Entertainment, Sports, And Media Occupations"
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_Occupation-SOCv2018/191029",
+      "name": "Person With Gender = Female, Occupation = Biological Scientists, All Other"
     },
     {
       "dcid": "dc/g/Person_Gender-Female_Occupation-SOCv2018/370000",
@@ -7935,6 +8167,10 @@
       "name": "Person With Gender = Female, Occupation = Non Science And Engineering"
     },
     {
+      "dcid": "dc/g/Person_Gender-Female_Occupation-NonFacultyResearcher",
+      "name": "Person With Gender = Female, Occupation = NonFaculty Researcher"
+    },
+    {
       "dcid": "dc/g/Person_Gender-Female_Occupation-SOCv2018/430000",
       "name": "Person With Gender = Female, Occupation = Office And Administrative Support Occupations"
     },
@@ -7945,6 +8181,10 @@
     {
       "dcid": "dc/g/Person_Gender-Female_Occupation-SOCv2018/192000",
       "name": "Person With Gender = Female, Occupation = Physical Scientists"
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_Occupation-PostDoctoralAppointee",
+      "name": "Person With Gender = Female, Occupation = PostDoctoral Appointee"
     },
     {
       "dcid": "dc/g/Person_Gender-Female_Occupation-SOCv2018/510000",
@@ -8135,6 +8375,10 @@
       "name": "Person With Gender = Female, Race = Black"
     },
     {
+      "dcid": "dc/g/Person_Gender-Female_Race-HawaiianNativeOrPacificIslander",
+      "name": "Person With Gender = Female, Race = Hawaiian Native or Pacific Islander"
+    },
+    {
       "dcid": "dc/g/Person_Gender-Female_Race-HispanicOrLatinoAmericanIndianAndAlaskaNativeAlone",
       "name": "Person With Gender = Female, Race = Hispanic or Latino \u0026 American Indian or Alaska Native Alone"
     },
@@ -8157,6 +8401,10 @@
     {
       "dcid": "dc/g/Person_Gender-Female_Race-OtherPacificIslander",
       "name": "Person With Gender = Female, Race = Other Pacific Islander"
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_Race-UnknownRace",
+      "name": "Person With Gender = Female, Race = Unknown Race"
     },
     {
       "dcid": "dc/g/Person_Gender-Female_RecentWorkStatus",
@@ -8185,6 +8433,10 @@
     {
       "dcid": "dc/g/Person_Gender-Female_ResidentStatus",
       "name": "Person With Gender = Female, Resident Status"
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_ResidentStatus-NonUSResident",
+      "name": "Person With Gender = Female, Resident Status = Non USResident"
     },
     {
       "dcid": "dc/g/Person_Gender-Female_SpouseAbsentReason",
@@ -8279,6 +8531,10 @@
       "name": "Person With Income Relative To Poverty Line, Gender = Female"
     },
     {
+      "dcid": "dc/g/Person_Gender-Female_LaborForceStatus-Employed",
+      "name": "Person With Labor Force Status = Employed, Gender = Female"
+    },
+    {
       "dcid": "dc/g/Person_Gender-Female_LaborForceStatus-NotInLaborForce",
       "name": "Person With Labor Force Status = Not in Labor Force, Gender = Female"
     },
@@ -8339,6 +8595,18 @@
       "name": "Proportion of Population Achieving At Least A Fixed Level of Proficiency in Functional Skills With Gender = Female, Type of Skill"
     },
     {
+      "dcid": "dc/g/Student_CitizenshipStatus-Citizen_Gender-Female",
+      "name": "Student With Citizenship Status = Citizen, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Student_CitizenshipStatus-VisaHolder_Gender-Female",
+      "name": "Student With Citizenship Status = Visa Holder, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Student_CitizenshipStatus_Gender-Female",
+      "name": "Student With Citizenship Status, Gender = Female"
+    },
+    {
       "dcid": "dc/g/Student_EducationalAchievementLevel-NAEPCumulativeAtAdvanced_Gender-Female",
       "name": "Student With Educational Achievement Level = NAEP_Cumulative At Advanced, Gender = Female"
     },
@@ -8371,6 +8639,78 @@
       "name": "Student With Educational Achievement Level, Gender = Female"
     },
     {
+      "dcid": "dc/g/Student_EducationalDegree-ScienceEngineeringHealth_Gender-Female",
+      "name": "Student With Educational Degree = Science \u0026 Engineering \u0026 Health, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Student_EducationalDegree_Gender-Female",
+      "name": "Student With Educational Degree, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Student_EducationalProgram-DoctorateDegree_Gender-Female",
+      "name": "Student With Educational Program = Doctorate Degree, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Student_EducationalProgram-MastersDegreeDoctorateDegree_Gender-Female",
+      "name": "Student With Educational Program = Masters Degree \u0026 Doctorate Degree, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Student_EducationalProgram-MastersDegree_Gender-Female",
+      "name": "Student With Educational Program = Masters Degree, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Student_EducationalProgram_Gender-Female",
+      "name": "Student With Educational Program, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Student_Ethnicity-HispanicOrLatino_Gender-Female",
+      "name": "Student With Ethnicity = Hispanic or Latino, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Student_Ethnicity-NotHispanicOrLatino_Gender-Female",
+      "name": "Student With Ethnicity = Not Hispanic or Latino, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Student_Ethnicity-UnknownEthnicity_Gender-Female",
+      "name": "Student With Ethnicity = Unknown Ethnicity, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Student_Ethnicity_Gender-Female",
+      "name": "Student With Ethnicity, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Student_Gender-Female_Race",
+      "name": "Student With Gender = Female, Race"
+    },
+    {
+      "dcid": "dc/g/Student_Gender-Female_Race-AmericanIndianOrAlaskaNativeAlone",
+      "name": "Student With Gender = Female, Race = American Indian or Alaska Native Alone"
+    },
+    {
+      "dcid": "dc/g/Student_Gender-Female_Race-Asian",
+      "name": "Student With Gender = Female, Race = Asian"
+    },
+    {
+      "dcid": "dc/g/Student_Gender-Female_Race-Black",
+      "name": "Student With Gender = Female, Race = Black"
+    },
+    {
+      "dcid": "dc/g/Student_Gender-Female_Race-NativeHawaiianOrOtherPacificIslanderAlone",
+      "name": "Student With Gender = Female, Race = Native Hawaiian or Other Pacific Islander Alone"
+    },
+    {
+      "dcid": "dc/g/Student_Gender-Female_Race-TwoOrMoreRaces",
+      "name": "Student With Gender = Female, Race = Two or More Races"
+    },
+    {
+      "dcid": "dc/g/Student_Gender-Female_Race-UnknownRace",
+      "name": "Student With Gender = Female, Race = Unknown Race"
+    },
+    {
+      "dcid": "dc/g/Student_Gender-Female_Race-WhiteAlone",
+      "name": "Student With Gender = Female, Race = White Alone"
+    },
+    {
       "dcid": "dc/g/Student_Gender-Female_SchoolGradeLevel",
       "name": "Student With Gender = Female, School Grade Level"
     },
@@ -8393,334 +8733,6 @@
     {
       "dcid": "dc/g/Student_Gender-Female_SchoolSubject-Civics",
       "name": "Student With Gender = Female, School Subject = Civics"
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_SchoolSubject-Economics",
-      "name": "Student With Gender = Female, School Subject = Economics"
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_SchoolSubject-Geography",
-      "name": "Student With Gender = Female, School Subject = Geography"
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_SchoolSubject-Mathematics",
-      "name": "Student With Gender = Female, School Subject = Mathematics"
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_SchoolSubject-Music",
-      "name": "Student With Gender = Female, School Subject = Music"
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_SchoolSubject-Reading",
-      "name": "Student With Gender = Female, School Subject = Reading"
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_SchoolSubject-Science",
-      "name": "Student With Gender = Female, School Subject = Science"
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_SchoolSubject-TechnologyAndEngineeringLiteracy",
-      "name": "Student With Gender = Female, School Subject = Technology And Engineering Literacy"
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_SchoolSubject-USHistory",
-      "name": "Student With Gender = Female, School Subject = USHistory"
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_SchoolSubject-VisualArts",
-      "name": "Student With Gender = Female, School Subject = Visual Arts"
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_SchoolSubject-Writing",
-      "name": "Student With Gender = Female, School Subject = Writing"
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_SchoolType",
-      "name": "Student With Gender = Female, School Type"
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_SchoolType-PrivateSchool",
-      "name": "Student With Gender = Female, School Type = Private School"
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_SchoolType-PublicSchool",
-      "name": "Student With Gender = Female, School Type = Public School"
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_SubjectAssessmentScale",
-      "name": "Student With Gender = Female, Subject Assessment Scale"
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_SubjectAssessmentScale-AlgebraScale",
-      "name": "Student With Gender = Female, Subject Assessment Scale = Algebra Scale"
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_SubjectAssessmentScale-CommunicatingAndCollaboratingPracticeScale",
-      "name": "Student With Gender = Female, Subject Assessment Scale = Communicating And Collaborating Practice Scale"
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_SubjectAssessmentScale-CulturesScale",
-      "name": "Student With Gender = Female, Subject Assessment Scale = Cultures Scale"
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_SubjectAssessmentScale-DataAnalysisStatisticsAndProbabilityScale",
-      "name": "Student With Gender = Female, Subject Assessment Scale = Data Analysis Statistics And Probability Scale"
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_SubjectAssessmentScale-DemocracyScale",
-      "name": "Student With Gender = Female, Subject Assessment Scale = Democracy Scale"
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_SubjectAssessmentScale-DevelopingSolutionsAndAchievingGoalsPracticeScale",
-      "name": "Student With Gender = Female, Subject Assessment Scale = Developing Solutions And Achieving Goals Practice Scale"
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_SubjectAssessmentScale-EarthScienceScale",
-      "name": "Student With Gender = Female, Subject Assessment Scale = Earth Science Scale"
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_SubjectAssessmentScale-EnvironmentAndSocietyScale",
-      "name": "Student With Gender = Female, Subject Assessment Scale = Environment And Society Scale"
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_SubjectAssessmentScale-GainAndUseInformationScale",
-      "name": "Student With Gender = Female, Subject Assessment Scale = Gain And Use Information Scale"
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_SubjectAssessmentScale-GainInformationEvaluationScale",
-      "name": "Student With Gender = Female, Subject Assessment Scale = Gain Information Evaluation Scale"
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_SubjectAssessmentScale-GeometryScale",
-      "name": "Student With Gender = Female, Subject Assessment Scale = Geometry Scale"
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_SubjectAssessmentScale-InternationalScale",
-      "name": "Student With Gender = Female, Subject Assessment Scale = International Scale"
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_SubjectAssessmentScale-LifeScienceScale",
-      "name": "Student With Gender = Female, Subject Assessment Scale = Life Science Scale"
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_SubjectAssessmentScale-LiteraryExperienceScale",
-      "name": "Student With Gender = Female, Subject Assessment Scale = Literary Experience Scale"
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_SubjectAssessmentScale-MarketEvaluationScale",
-      "name": "Student With Gender = Female, Subject Assessment Scale = Market Evaluation Scale"
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_SubjectAssessmentScale-MeasurementScale",
-      "name": "Student With Gender = Female, Subject Assessment Scale = Measurement Scale"
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_SubjectAssessmentScale-NationalEvaluationScale",
-      "name": "Student With Gender = Female, Subject Assessment Scale = National Evaluation Scale"
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_SubjectAssessmentScale-NumberPropertiesAndOperationsScale",
-      "name": "Student With Gender = Female, Subject Assessment Scale = Number Properties And Operations Scale"
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_SubjectAssessmentScale-PhysicalScienceScale",
-      "name": "Student With Gender = Female, Subject Assessment Scale = Physical Science Scale"
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_SubjectAssessmentScale-SpaceAndPlaceScale",
-      "name": "Student With Gender = Female, Subject Assessment Scale = Space And Place Scale"
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_SubjectAssessmentScale-SpatialDynamicsScale",
-      "name": "Student With Gender = Female, Subject Assessment Scale = Spatial Dynamics Scale"
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_SubjectAssessmentScale-TechnologyScale",
-      "name": "Student With Gender = Female, Subject Assessment Scale = Technology Scale"
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_SubjectAssessmentScale-UnderstandingTechnologicalPrinciplesPracticeScale",
-      "name": "Student With Gender = Female, Subject Assessment Scale = Understanding Technological Principles Practice Scale"
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_SubjectAssessmentScale-WorldRoleScale",
-      "name": "Student With Gender = Female, Subject Assessment Scale = World Role Scale"
-    },
-    {
-      "dcid": "dc/g/SDGSETOTCPLR_educationalAttainment-SDGEducationLevEnumISCED112_gender-SDGSexEnumF_sdgincomeWealthQuantile",
-      "name": "Completion Rate With Educational Attainment = Lower Secondary, Gender = Female, Income Wealth Quantile"
-    },
-    {
-      "dcid": "dc/g/SDGSETOTCPLR_educationalAttainment-SDGEducationLevEnumISCED111_gender-SDGSexEnumF_sdgincomeWealthQuantile",
-      "name": "Completion Rate With Educational Attainment = Primary, Gender = Female, Income Wealth Quantile"
-    },
-    {
-      "dcid": "dc/g/SDGSETOTCPLR_educationalAttainment-SDGEducationLevEnumISCED113_gender-SDGSexEnumF_sdgincomeWealthQuantile",
-      "name": "Completion Rate With Educational Attainment = Upper Secondary, Gender = Female, Income Wealth Quantile"
-    },
-    {
-      "dcid": "dc/g/SDGSETOTCPLR_educationalAttainment_gender-SDGSexEnumF_sdgincomeWealthQuantile-SDGIncomeWealthQuantileEnumQ1",
-      "name": "Completion Rate With Educational Attainment, Gender = Female, Income Wealth Quantile = Quantile 1 (poorest)"
-    },
-    {
-      "dcid": "dc/g/SDGSETOTCPLR_educationalAttainment_gender-SDGSexEnumF_sdgincomeWealthQuantile-SDGIncomeWealthQuantileEnumQ2",
-      "name": "Completion Rate With Educational Attainment, Gender = Female, Income Wealth Quantile = Quantile 2"
-    },
-    {
-      "dcid": "dc/g/SDGSETOTCPLR_educationalAttainment_gender-SDGSexEnumF_sdgincomeWealthQuantile-SDGIncomeWealthQuantileEnumQ3",
-      "name": "Completion Rate With Educational Attainment, Gender = Female, Income Wealth Quantile = Quantile 3"
-    },
-    {
-      "dcid": "dc/g/SDGSETOTCPLR_educationalAttainment_gender-SDGSexEnumF_sdgincomeWealthQuantile-SDGIncomeWealthQuantileEnumQ4",
-      "name": "Completion Rate With Educational Attainment, Gender = Female, Income Wealth Quantile = Quantile 4"
-    },
-    {
-      "dcid": "dc/g/SDGSETOTCPLR_educationalAttainment_gender-SDGSexEnumF_sdgincomeWealthQuantile-SDGIncomeWealthQuantileEnumQ5",
-      "name": "Completion Rate With Educational Attainment, Gender = Female, Income Wealth Quantile = Quantile 5 (richest)"
-    },
-    {
-      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_CrimeType-ForcibleRape_TargetedGender-Female",
-      "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Forcible Rape, Targeted Gender = Female"
-    },
-    {
-      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_CrimeType-HumanTraffickingCommercialSexActs_TargetedGender-Female",
-      "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Human Trafficking_Commercial Sex Acts, Targeted Gender = Female"
-    },
-    {
-      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_CrimeType-LarcenyTheft_TargetedGender-Female",
-      "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Larceny Theft, Targeted Gender = Female"
-    },
-    {
-      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_CrimeType-OtherCrimesAgainstPerson_TargetedGender-Female",
-      "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Other Crimes Against Person, Targeted Gender = Female"
-    },
-    {
-      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_CrimeType-OtherCrimesAgainstProperty_TargetedGender-Female",
-      "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type = Other Crimes Against Property, Targeted Gender = Female"
-    },
-    {
-      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_CrimeType_TargetedGender-Female",
-      "name": "Hate Crime Incidents With Bias Motivation = Gender, Crime Type, Targeted Gender = Female"
-    },
-    {
-      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_OffenderEthnicity-HispanicOrLatino_TargetedGender-Female",
-      "name": "Hate Crime Incidents With Bias Motivation = Gender, Offender Ethnicity = Hispanic or Latino, Targeted Gender = Female"
-    },
-    {
-      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_OffenderEthnicity-NotHispanicOrLatino_TargetedGender-Female",
-      "name": "Hate Crime Incidents With Bias Motivation = Gender, Offender Ethnicity = Not Hispanic or Latino, Targeted Gender = Female"
-    },
-    {
-      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_OffenderEthnicity_TargetedGender-Female",
-      "name": "Hate Crime Incidents With Bias Motivation = Gender, Offender Ethnicity, Targeted Gender = Female"
-    },
-    {
-      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_OffenderRace-AmericanIndianOrAlaskaNativeAlone_TargetedGender-Female",
-      "name": "Hate Crime Incidents With Bias Motivation = Gender, Offender Race = American Indian or Alaska Native Alone, Targeted Gender = Female"
-    },
-    {
-      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_OffenderRace-AsianAlone_TargetedGender-Female",
-      "name": "Hate Crime Incidents With Bias Motivation = Gender, Offender Race = Asian Alone, Targeted Gender = Female"
-    },
-    {
-      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_OffenderRace-BlackOrAfricanAmericanAlone_TargetedGender-Female",
-      "name": "Hate Crime Incidents With Bias Motivation = Gender, Offender Race = Black or African American Alone, Targeted Gender = Female"
-    },
-    {
-      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_OffenderRace-TwoOrMoreRaces_TargetedGender-Female",
-      "name": "Hate Crime Incidents With Bias Motivation = Gender, Offender Race = Two or More Races, Targeted Gender = Female"
-    },
-    {
-      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_OffenderRace-WhiteAlone_TargetedGender-Female",
-      "name": "Hate Crime Incidents With Bias Motivation = Gender, Offender Race = White Alone, Targeted Gender = Female"
-    },
-    {
-      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_OffenderRace_TargetedGender-Female",
-      "name": "Hate Crime Incidents With Bias Motivation = Gender, Offender Race, Targeted Gender = Female"
-    },
-    {
-      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_OffenderType-OffenderAttributesKnown_TargetedGender-Female",
-      "name": "Hate Crime Incidents With Bias Motivation = Gender, Offender Type = Offender Attributes Known, Targeted Gender = Female"
-    },
-    {
-      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_OffenderType-OffenderEthnicityKnown_TargetedGender-Female",
-      "name": "Hate Crime Incidents With Bias Motivation = Gender, Offender Type = Offender Ethnicity Known, Targeted Gender = Female"
-    },
-    {
-      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_OffenderType-OffenderRaceKnown_TargetedGender-Female",
-      "name": "Hate Crime Incidents With Bias Motivation = Gender, Offender Type = Offender Race Known, Targeted Gender = Female"
-    },
-    {
-      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_OffenderType_TargetedGender-Female",
-      "name": "Hate Crime Incidents With Bias Motivation = Gender, Offender Type, Targeted Gender = Female"
-    },
-    {
-      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_TargetedGender-Female_VictimAge",
-      "name": "Hate Crime Incidents With Bias Motivation = Gender, Targeted Gender = Female, Victim Age"
-    },
-    {
-      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_TargetedGender-Female_VictimType",
-      "name": "Hate Crime Incidents With Bias Motivation = Gender, Targeted Gender = Female, Victim Type"
-    },
-    {
-      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation_CrimeType-AggravatedAssault_TargetedGender-Female",
-      "name": "Hate Crime Incidents With Bias Motivation, Crime Type = Aggravated Assault, Targeted Gender = Female"
-    },
-    {
-      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation_CrimeType-AllOtherLarceny_TargetedGender-Female",
-      "name": "Hate Crime Incidents With Bias Motivation, Crime Type = All Other Larceny, Targeted Gender = Female"
-    },
-    {
-      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation_CrimeType-Arson_TargetedGender-Female",
-      "name": "Hate Crime Incidents With Bias Motivation, Crime Type = Arson, Targeted Gender = Female"
-    },
-    {
-      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation_CrimeType-Burglary_TargetedGender-Female",
-      "name": "Hate Crime Incidents With Bias Motivation, Crime Type = Burglary, Targeted Gender = Female"
-    },
-    {
-      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation_CrimeType-CounterfeitingOrForgery_TargetedGender-Female",
-      "name": "Hate Crime Incidents With Bias Motivation, Crime Type = Counterfeiting or Forgery, Targeted Gender = Female"
-    },
-    {
-      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation_CrimeType-CreditCardOrAutomatedTellerMachineFraud_TargetedGender-Female",
-      "name": "Hate Crime Incidents With Bias Motivation, Crime Type = Credit Card or Automated Teller Machine Fraud, Targeted Gender = Female"
-    },
-    {
-      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation_CrimeType-CrimeAgainstPerson_TargetedGender-Female",
-      "name": "Hate Crime Incidents With Bias Motivation, Crime Type = Crime Against Person, Targeted Gender = Female"
-    },
-    {
-      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation_CrimeType-CrimeAgainstProperty_TargetedGender-Female",
-      "name": "Hate Crime Incidents With Bias Motivation, Crime Type = Crime Against Property, Targeted Gender = Female"
-    },
-    {
-      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation_CrimeType-CrimeAgainstSociety_TargetedGender-Female",
-      "name": "Hate Crime Incidents With Bias Motivation, Crime Type = Crime Against Society, Targeted Gender = Female"
-    },
-    {
-      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation_CrimeType-DestructionOrDamageOrVandalismOfProperty_TargetedGender-Female",
-      "name": "Hate Crime Incidents With Bias Motivation, Crime Type = Destruction or Damage or Vandalism of Property, Targeted Gender = Female"
-    },
-    {
-      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation_CrimeType-DrugEquipmentViolations_TargetedGender-Female",
-      "name": "Hate Crime Incidents With Bias Motivation, Crime Type = Drug Equipment Violations, Targeted Gender = Female"
-    },
-    {
-      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation_CrimeType-DrugOrNarcoticViolations_TargetedGender-Female",
-      "name": "Hate Crime Incidents With Bias Motivation, Crime Type = Drug or Narcotic Violations, Targeted Gender = Female"
-    },
-    {
-      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation_CrimeType-FalsePretenseOrSwindleOrConfidenceGame_TargetedGender-Female",
-      "name": "Hate Crime Incidents With Bias Motivation, Crime Type = False Pretense or Swindle or Confidence Game, Targeted Gender = Female"
-    },
-    {
-      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation_CrimeType-Fondling_TargetedGender-Female",
-      "name": "Hate Crime Incidents With Bias Motivation, Crime Type = Fondling, Targeted Gender = Female"
-    },
-    {
-      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation_CrimeType-ForcibleRape_TargetedGender-Female",
-      "name": "Hate Crime Incidents With Bias Motivation, Crime Type = Forcible Rape, Targeted Gender = Female"
     }
   ],
   "matches": [

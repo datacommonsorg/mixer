@@ -1,6 +1,14 @@
 {
   "values": [
     {
+      "name": "Comoros",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/COM",
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
+    },
+    {
       "name": "Cape Verde",
       "types": [
         "Country"
@@ -1062,7 +1070,7 @@
         "Country"
       ],
       "dcid": "country/SJM",
-      "provenanceId": "dc/base/WikidataOtherIdGeos"
+      "provenanceId": "dc/base/BaseGeos"
     },
     {
       "name": "Solomon Islands",
