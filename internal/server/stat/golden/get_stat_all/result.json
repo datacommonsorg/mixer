@@ -287,7 +287,8 @@
                 "2017": 324473370,
                 "2018": 326289971,
                 "2019": 328016242,
-                "2020": 329824950
+                "2020": 329824950,
+                "2021": 333036755
               },
               "measurementMethod": "CensusACS5yrSurvey",
               "importName": "CensusACS5YearSurvey_AggCountry",
@@ -894,7 +895,8 @@
                 "2017": 38982847,
                 "2018": 39148760,
                 "2019": 39283497,
-                "2020": 39346023
+                "2020": 39346023,
+                "2021": 39455353
               },
               "measurementMethod": "CensusACS5yrSurvey",
               "importName": "CensusACS5YearSurvey",
@@ -1290,7 +1292,8 @@
                 "2017": 80076,
                 "2018": 80993,
                 "2019": 81656,
-                "2020": 80104
+                "2020": 80104,
+                "2021": 82409
               },
               "measurementMethod": "CensusACS5yrSurvey",
               "importName": "CensusACS5YearSurvey",

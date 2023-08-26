@@ -22,6 +22,7 @@ import (
 	v1e "github.com/datacommonsorg/mixer/internal/server/v1/event"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	v2e "github.com/datacommonsorg/mixer/internal/server/v2/event"
+	v2facet "github.com/datacommonsorg/mixer/internal/server/v2/facet"
 	v2observation "github.com/datacommonsorg/mixer/internal/server/v2/observation"
 	v2p "github.com/datacommonsorg/mixer/internal/server/v2/properties"
 	v2pv "github.com/datacommonsorg/mixer/internal/server/v2/propertyvalues"
@@ -331,7 +332,7 @@ func (s *Server) V2ObservationCore(
 	if !queryDate && !queryValue && queryFacet {
 		// Series
 		if len(variable.GetDcids()) > 0 && len(entity.GetDcids()) > 0 {
-			return v2observation.SeriesFacet(
+			return v2facet.SeriesFacet(
 				ctx,
 				s.store,
 				s.cache,
@@ -346,7 +347,7 @@ func (s *Server) V2ObservationCore(
 			if err != nil {
 				return nil, err
 			}
-			return v2observation.ContainedInFacet(
+			return v2facet.ContainedInFacet(
 				ctx,
 				s.store,
 				s.cache,

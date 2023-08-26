@@ -50,11 +50,11 @@ message Facets {
 // PlaceVariableFacet contains the source and measurement information for a set
 // of statistical observations about a place and variable.
 message PlaceVariableFacet {
-  optional Facet facet = 1;
+  Facet facet = 1;
   // Number of observations for given place + variable + Facet.
-  optional int32 obs_count = 2;
+  int32 obs_count = 2;
   // Latest observation date.
-  optional string latest_date = 3;
+  string latest_date = 3;
 }
 
 message PlaceVariableFacets {

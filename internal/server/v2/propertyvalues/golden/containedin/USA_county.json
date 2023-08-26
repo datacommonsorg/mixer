@@ -293,6 +293,14 @@
               "dcid": "geoId/02060"
             },
             {
+              "name": "Chugach Census Area",
+              "dcid": "geoId/02063"
+            },
+            {
+              "name": "Copper River Census Area",
+              "dcid": "geoId/02066"
+            },
+            {
               "name": "Denali Borough",
               "dcid": "geoId/02068"
             },
@@ -1271,6 +1279,42 @@
             {
               "name": "Windham County",
               "dcid": "geoId/09015"
+            },
+            {
+              "name": "Capitol Planning Region",
+              "dcid": "geoId/09110"
+            },
+            {
+              "name": "Greater Bridgeport Planning Region",
+              "dcid": "geoId/09120"
+            },
+            {
+              "name": "Lower Connecticut River Valley Planning Region",
+              "dcid": "geoId/09130"
+            },
+            {
+              "name": "Naugatuck Valley Planning Region",
+              "dcid": "geoId/09140"
+            },
+            {
+              "name": "Northeastern Connecticut Planning Region",
+              "dcid": "geoId/09150"
+            },
+            {
+              "name": "Northwest Hills Planning Region",
+              "dcid": "geoId/09160"
+            },
+            {
+              "name": "South Central Connecticut Planning Region",
+              "dcid": "geoId/09170"
+            },
+            {
+              "name": "Southeastern Connecticut Planning Region",
+              "dcid": "geoId/09180"
+            },
+            {
+              "name": "Western Connecticut Planning Region",
+              "dcid": "geoId/09190"
             },
             {
               "name": "Kent County",

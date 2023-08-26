@@ -22812,6 +22812,622 @@
           "provenanceId": "dc/base/California_FoodResources"
         },
         {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013302013",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013302014",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Census Tract 3031.02, Contra Costa County, California",
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013303102",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Census Tract 3031.03, Contra Costa County, California",
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013303103",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013303104",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013303105",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013303106",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013303107",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Census Tract 3032.01, Contra Costa County, California",
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013303201",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Census Tract 3032.02, Contra Costa County, California",
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013303202",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Census Tract 3032.03, Contra Costa County, California",
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013303203",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Census Tract 3032.04, Contra Costa County, California",
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013303204",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Census Tract 3032.05, Contra Costa County, California",
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013303205",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013303206",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013303207",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013303208",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013303209",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013303210",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013303211",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Census Tract 3040.01, Contra Costa County, California",
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013304001",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Census Tract 3040.02, Contra Costa County, California",
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013304002",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Census Tract 3040.03, Contra Costa County, California",
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013304003",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Census Tract 3040.04, Contra Costa County, California",
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013304004",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Census Tract 3040.05, Contra Costa County, California",
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013304005",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013304006",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013304007",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Census Tract 3050, Contra Costa County, California",
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013305000",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Census Tract 3060.02, Contra Costa County, California",
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013306002",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Census Tract 3060.03, Contra Costa County, California",
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013306003",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Census Tract 3060.04, Contra Costa County, California",
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013306004",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Census Tract 3071.01, Contra Costa County, California",
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013307101",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Census Tract 3071.02, Contra Costa County, California",
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013307102",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Census Tract 3072.01, Contra Costa County, California",
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013307201",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Census Tract 3072.02, Contra Costa County, California",
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013307202",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Census Tract 3072.04, Contra Costa County, California",
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013307204",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Census Tract 3072.05, Contra Costa County, California",
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013307205",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Census Tract 3080.01, Contra Costa County, California",
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013308001",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Census Tract 3080.02, Contra Costa County, California",
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013308002",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Census Tract 3090, Contra Costa County, California",
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013309000",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Census Tract 3100, Contra Costa County, California",
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013310000",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Census Tract 3110, Contra Costa County, California",
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013311000",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Census Tract 3120, Contra Costa County, California",
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013312000",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Census Tract 3131.01, Contra Costa County, California",
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013313101",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Census Tract 3131.02, Contra Costa County, California",
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013313102",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Census Tract 3131.03, Contra Costa County, California",
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013313103",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013313104",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013313105",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013313106",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013313107",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Census Tract 3132.03, Contra Costa County, California",
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013313203",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Census Tract 3132.04, Contra Costa County, California",
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013313204",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Census Tract 3132.05, Contra Costa County, California",
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013313205",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Census Tract 3132.06, Contra Costa County, California",
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013313206",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Census Tract 3141.02, Contra Costa County, California",
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013314102",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Census Tract 3141.03, Contra Costa County, California",
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013314103",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Census Tract 3141.04, Contra Costa County, California",
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013314104",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013314105",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013314106",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Census Tract 3142, Contra Costa County, California",
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013314200",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Census Tract 3150, Contra Costa County, California",
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013315000",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Census Tract 3160, Contra Costa County, California",
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013316000",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Census Tract 3170, Contra Costa County, California",
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013317000",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Census Tract 3180, Contra Costa County, California",
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013318000",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Census Tract 3190, Contra Costa County, California",
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013319000",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013319001",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013319002",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Census Tract 3200.01, Contra Costa County, California",
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013320001",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Census Tract 3200.03, Contra Costa County, California",
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013320003",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Census Tract 3200.04, Contra Costa County, California",
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013320004",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Census Tract 3211.01, Contra Costa County, California",
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013321101",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Census Tract 3211.02, Contra Costa County, California",
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013321102",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Census Tract 3211.03, Contra Costa County, California",
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013321103",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Census Tract 3212, Contra Costa County, California",
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013321200",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Census Tract 3220, Contra Costa County, California",
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013322000",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Census Tract 3230, Contra Costa County, California",
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013323000",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Census Tract 3240.01, Contra Costa County, California",
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013324001",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Census Tract 3240.02, Contra Costa County, California",
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013324002",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013324003",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013324004",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Census Tract 3250, Contra Costa County, California",
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013325000",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
           "name": "Census Tract 3260, Contra Costa County, California",
           "types": [
             "CensusTract"
@@ -22825,6 +23441,20 @@
             "CensusTract"
           ],
           "dcid": "geoId/06013327000",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013327001",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013327002",
           "provenanceId": "dc/base/BaseGeos"
         },
         {
@@ -22916,6 +23546,20 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013334007",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013334008",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
           "name": "Census Tract 3342, Contra Costa County, California",
           "types": [
             "CensusTract"
@@ -22948,6 +23592,20 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013336103",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013336104",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
           "name": "Census Tract 3362.01, Contra Costa County, California",
           "types": [
             "CensusTract"
@@ -22977,6 +23635,20 @@
             "CensusTract"
           ],
           "dcid": "geoId/06013337200",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013337201",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013337202",
           "provenanceId": "dc/base/BaseGeos"
         },
         {
@@ -23060,6 +23732,20 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013339003",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013339004",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
           "name": "Census Tract 3400.01, Contra Costa County, California",
           "types": [
             "CensusTract"
@@ -23073,6 +23759,20 @@
             "CensusTract"
           ],
           "dcid": "geoId/06013340002",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013340003",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013340004",
           "provenanceId": "dc/base/BaseGeos"
         },
         {
@@ -23196,6 +23896,20 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013345117",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013345118",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
           "name": "Census Tract 3452.02, Contra Costa County, California",
           "types": [
             "CensusTract"
@@ -23217,6 +23931,20 @@
             "CensusTract"
           ],
           "dcid": "geoId/06013345204",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013345205",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013345206",
           "provenanceId": "dc/base/BaseGeos"
         },
         {
@@ -23257,6 +23985,20 @@
             "CensusTract"
           ],
           "dcid": "geoId/06013346204",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013346205",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013346206",
           "provenanceId": "dc/base/BaseGeos"
         },
         {
@@ -23313,6 +24055,20 @@
             "CensusTract"
           ],
           "dcid": "geoId/06013351103",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013351104",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013351105",
           "provenanceId": "dc/base/BaseGeos"
         },
         {
@@ -23476,11 +24232,88 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013355118",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013355119",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013355120",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013355121",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013355122",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013355123",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013355124",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013355125",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013355126",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
           "name": "Census Tract 3552, Contra Costa County, California",
           "types": [
             "CensusTract"
           ],
           "dcid": "geoId/06013355200",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013355201",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013355202",
           "provenanceId": "dc/base/BaseGeos"
         },
         {
@@ -23513,6 +24346,34 @@
             "CensusTract"
           ],
           "dcid": "geoId/06013355306",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013355307",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013355308",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013355309",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013355310",
           "provenanceId": "dc/base/BaseGeos"
         },
         {
@@ -23828,6 +24689,20 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013380001",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013380002",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
           "name": "Census Tract 3810, Contra Costa County, California",
           "types": [
             "CensusTract"
@@ -23956,11 +24831,32 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013392201",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013392202",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
           "name": "Census Tract 3923, Contra Costa County, California",
           "types": [
             "CensusTract"
           ],
           "dcid": "geoId/06013392300",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06013980000",
           "provenanceId": "dc/base/BaseGeos"
         },
         {
@@ -24004,6 +24900,20 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06015000106",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06015000107",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
           "name": "Census Tract 2.01, Del Norte County, California",
           "types": [
             "CensusTract"
@@ -24044,6 +24954,20 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06017030201",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06017030202",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
           "name": "Census Tract 303.01, El Dorado County, California",
           "types": [
             "CensusTract"
@@ -24076,6 +25000,20 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06017030403",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06017030404",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
           "name": "Census Tract 305.02, El Dorado County, California",
           "types": [
             "CensusTract"
@@ -24100,6 +25038,20 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06017030506",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06017030507",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
           "name": "Census Tract 306.01, El Dorado County, California",
           "types": [
             "CensusTract"
@@ -24121,6 +25073,27 @@
             "CensusTract"
           ],
           "dcid": "geoId/06017030603",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06017030604",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06017030605",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06017030606",
           "provenanceId": "dc/base/BaseGeos"
         },
         {
@@ -24161,6 +25134,20 @@
             "CensusTract"
           ],
           "dcid": "geoId/06017030710",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06017030711",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06017030712",
           "provenanceId": "dc/base/BaseGeos"
         },
         {
@@ -24217,6 +25204,20 @@
             "CensusTract"
           ],
           "dcid": "geoId/06017030810",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06017030811",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06017030812",
           "provenanceId": "dc/base/BaseGeos"
         },
         {
@@ -24308,6 +25309,27 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06017031407",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06017031408",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06017031409",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
           "name": "Census Tract 315.02, El Dorado County, California",
           "types": [
             "CensusTract"
@@ -24332,11 +25354,39 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06017031505",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06017031506",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
           "name": "Census Tract 316, El Dorado County, California",
           "types": [
             "CensusTract"
           ],
           "dcid": "geoId/06017031600",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06017031601",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06017031602",
           "provenanceId": "dc/base/BaseGeos"
         },
         {
@@ -24369,6 +25419,20 @@
             "CensusTract"
           ],
           "dcid": "geoId/06017032000",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06017032001",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06017032002",
           "provenanceId": "dc/base/BaseGeos"
         },
         {
@@ -24436,11 +25500,39 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06019000601",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06019000602",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
           "name": "Census Tract 7, Fresno County, California",
           "types": [
             "CensusTract"
           ],
           "dcid": "geoId/06019000700",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06019000701",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06019000702",
           "provenanceId": "dc/base/BaseGeos"
         },
         {
@@ -24585,6 +25677,34 @@
             "CensusTract"
           ],
           "dcid": "geoId/06019001414",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06019001415",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06019001416",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06019001417",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06019001418",
           "provenanceId": "dc/base/BaseGeos"
         },
         {
@@ -24844,6 +25964,20 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06019003401",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06019003402",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
           "name": "Census Tract 35, Fresno County, California",
           "types": [
             "CensusTract"
@@ -24932,6 +26066,20 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06019003811",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06019003812",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
           "name": "Census Tract 39, Fresno County, California",
           "types": [
             "CensusTract"
@@ -24953,6 +26101,34 @@
             "CensusTract"
           ],
           "dcid": "geoId/06019004002",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06019004003",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06019004004",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06019004005",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06019004006",
           "provenanceId": "dc/base/BaseGeos"
         },
         {
@@ -25044,6 +26220,20 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06019004217",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06019004218",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
           "name": "Census Tract 43.01, Fresno County, California",
           "types": [
             "CensusTract"
@@ -25105,6 +26295,20 @@
             "CensusTract"
           ],
           "dcid": "geoId/06019004409",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06019004410",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06019004411",
           "provenanceId": "dc/base/BaseGeos"
         },
         {
@@ -25177,6 +26381,20 @@
             "CensusTract"
           ],
           "dcid": "geoId/06019004704",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06019004705",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "types": [
+            "CensusTract"
+          ],
+          "dcid": "geoId/06019004706",
           "provenanceId": "dc/base/BaseGeos"
         },
         {
@@ -25484,1331 +26702,251 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Census Tract 56.02, Fresno County, California",
+          "name": "Ford City",
           "types": [
-            "CensusTract"
+            "City"
           ],
-          "dcid": "geoId/06019005602",
+          "dcid": "geoId/0624764",
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Census Tract 56.05, Fresno County, California",
+          "name": "Foresta",
           "types": [
-            "CensusTract"
+            "City"
           ],
-          "dcid": "geoId/06019005605",
+          "dcid": "geoId/0624792",
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Census Tract 56.06, Fresno County, California",
+          "name": "Foresthill",
           "types": [
-            "CensusTract"
+            "City"
           ],
-          "dcid": "geoId/06019005606",
+          "dcid": "geoId/0624834",
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Census Tract 56.07, Fresno County, California",
+          "name": "Forest Meadows",
           "types": [
-            "CensusTract"
+            "City"
           ],
-          "dcid": "geoId/06019005607",
+          "dcid": "geoId/0624897",
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Census Tract 56.08, Fresno County, California",
+          "name": "Forest Ranch",
           "types": [
-            "CensusTract"
+            "City"
           ],
-          "dcid": "geoId/06019005608",
+          "dcid": "geoId/0624918",
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Census Tract 57.01, Fresno County, California",
+          "name": "Forestville",
           "types": [
-            "CensusTract"
+            "City"
           ],
-          "dcid": "geoId/06019005701",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 57.02, Fresno County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06019005702",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 57.03, Fresno County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06019005703",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 57.04, Fresno County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06019005704",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 58.01, Fresno County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06019005801",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 58.02, Fresno County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06019005802",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 58.04, Fresno County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06019005804",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 58.05, Fresno County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06019005805",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 59.04, Fresno County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06019005904",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 59.05, Fresno County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06019005905",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 59.06, Fresno County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06019005906",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 59.07, Fresno County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06019005907",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 59.09, Fresno County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06019005909",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 59.11, Fresno County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06019005911",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 59.12, Fresno County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06019005912",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 60, Fresno County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06019006000",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 61, Fresno County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06019006100",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 62.01, Fresno County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06019006201",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 62.02, Fresno County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06019006202",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 63, Fresno County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06019006300",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 64.02, Fresno County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06019006402",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 64.03, Fresno County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06019006403",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 64.04, Fresno County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06019006404",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 64.05, Fresno County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06019006405",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 65.01, Fresno County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06019006501",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 65.02, Fresno County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06019006502",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 66.02, Fresno County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06019006602",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 66.03, Fresno County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06019006603",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 66.04, Fresno County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06019006604",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 67, Fresno County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06019006700",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 68.02, Fresno County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06019006802",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 69, Fresno County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06019006900",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 70.02, Fresno County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06019007002",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 70.03, Fresno County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06019007003",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 70.04, Fresno County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06019007004",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 71, Fresno County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06019007100",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 72.01, Fresno County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06019007201",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 72.02, Fresno County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06019007202",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 73, Fresno County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06019007300",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 74, Fresno County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06019007400",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 75, Fresno County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06019007500",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 76, Fresno County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06019007600",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 77, Fresno County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06019007700",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 78.01, Fresno County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06019007801",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 78.02, Fresno County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06019007802",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 79.01, Fresno County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06019007901",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 79.02, Fresno County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06019007902",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 80, Fresno County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06019008000",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 81, Fresno County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06019008100",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 82, Fresno County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06019008200",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 83.01, Fresno County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06019008301",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 83.02, Fresno County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06019008302",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 84.01, Fresno County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06019008401",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 84.02, Fresno County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06019008402",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 85.01, Fresno County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06019008501",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 85.02, Fresno County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06019008502",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 101, Glenn County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06021010100",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 102, Glenn County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06021010200",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 103, Glenn County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06021010300",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 104, Glenn County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06021010400",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 105.01, Glenn County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06021010501",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 105.02, Glenn County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06021010502",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 1, Humboldt County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06023000100",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 2, Humboldt County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06023000200",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 3, Humboldt County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06023000300",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 4, Humboldt County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06023000400",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 5, Humboldt County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06023000500",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 6, Humboldt County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06023000600",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 7, Humboldt County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06023000700",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 8, Humboldt County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06023000800",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 9, Humboldt County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06023000900",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 10, Humboldt County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06023001000",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 11.01, Humboldt County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06023001101",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 12, Humboldt County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06023001200",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 13, Humboldt County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06023001300",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 101.02, Humboldt County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06023010102",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 102, Humboldt County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06023010200",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 103, Humboldt County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06023010300",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 104, Humboldt County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06023010400",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 105.01, Humboldt County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06023010501",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 105.02, Humboldt County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06023010502",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 106, Humboldt County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06023010600",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 107, Humboldt County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06023010700",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 108, Humboldt County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06023010800",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 109.01, Humboldt County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06023010901",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 109.02, Humboldt County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06023010902",
-          "provenanceId": "dc/base/BaseGeos"
+          "dcid": "geoId/0624960",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
-          "name": "Census Tract 110, Humboldt County, California",
+          "name": "Fort Bidwell",
           "types": [
-            "CensusTract"
+            "City"
           ],
-          "dcid": "geoId/06023011000",
+          "dcid": "geoId/0625030",
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Census Tract 111, Humboldt County, California",
+          "name": "Fort Bragg",
           "types": [
-            "CensusTract"
+            "City"
           ],
-          "dcid": "geoId/06023011100",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 112, Humboldt County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06023011200",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 115, Humboldt County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06023011500",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 116, Humboldt County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06023011600",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 9400, Humboldt County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06023940000",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 9901, Humboldt County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06023990100",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 101.01, Imperial County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06025010101",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 101.02, Imperial County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06025010102",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 102, Imperial County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06025010200",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 103, Imperial County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06025010300",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 104, Imperial County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06025010400",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 105, Imperial County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06025010500",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 106, Imperial County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06025010600",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 107, Imperial County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06025010700",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 108, Imperial County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06025010800",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 109, Imperial County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06025010900",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 110, Imperial County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06025011000",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 111, Imperial County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06025011100",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 112.01, Imperial County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06025011201",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 112.02, Imperial County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06025011202",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 113, Imperial County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06025011300",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 114, Imperial County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06025011400",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 115, Imperial County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06025011500",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 116, Imperial County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06025011600",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 117, Imperial County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06025011700",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 118.01, Imperial County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06025011801",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 118.02, Imperial County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06025011802",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 118.03, Imperial County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06025011803",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 119, Imperial County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06025011900",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 120.01, Imperial County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06025012001",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 120.02, Imperial County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06025012002",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 121, Imperial County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06025012100",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 122, Imperial County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06025012200",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 123.01, Imperial County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06025012301",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 123.02, Imperial County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06025012302",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 124, Imperial County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06025012400",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 9400, Imperial County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06025940000",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 1, Inyo County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06027000100",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 2, Inyo County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06027000200",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 3, Inyo County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06027000300",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 4, Inyo County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06027000400",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 5, Inyo County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06027000500",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 8, Inyo County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06027000800",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 1.01, Kern County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06029000101",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 1.02, Kern County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06029000102",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 2, Kern County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06029000200",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 3, Kern County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06029000300",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 4, Kern County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06029000400",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 5.03, Kern County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06029000503",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 5.04, Kern County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06029000504",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Census Tract 5.05, Kern County, California",
-          "types": [
-            "CensusTract"
-          ],
-          "dcid": "geoId/06029000505",
-          "provenanceId": "dc/base/BaseGeos"
+          "dcid": "geoId/0625058",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
-          "name": "Census Tract 5.06, Kern County, California",
+          "name": "Fort Dick",
           "types": [
-            "CensusTract"
+            "City"
           ],
-          "dcid": "geoId/06029000506",
+          "dcid": "geoId/0625086",
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Census Tract 5.07, Kern County, California",
+          "name": "Fort Hunter Liggett",
           "types": [
-            "CensusTract"
+            "City"
           ],
-          "dcid": "geoId/06029000507",
+          "dcid": "geoId/0625093",
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Census Tract 6, Kern County, California",
+          "name": "Fort Irwin",
           "types": [
-            "CensusTract"
+            "City"
           ],
-          "dcid": "geoId/06029000600",
-          "provenanceId": "dc/base/BaseGeos"
+          "dcid": "geoId/0625114",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
-          "name": "Census Tract 7, Kern County, California",
+          "name": "Fort Jones",
           "types": [
-            "CensusTract"
+            "City"
           ],
-          "dcid": "geoId/06029000700",
+          "dcid": "geoId/0625128",
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Census Tract 8, Kern County, California",
+          "name": "Fortuna",
           "types": [
-            "CensusTract"
+            "City"
           ],
-          "dcid": "geoId/06029000800",
-          "provenanceId": "dc/base/BaseGeos"
+          "dcid": "geoId/0625296",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
-          "name": "Census Tract 9.02, Kern County, California",
+          "name": "Fort Washington",
           "types": [
-            "CensusTract"
+            "City"
           ],
-          "dcid": "geoId/06029000902",
+          "dcid": "geoId/0625300",
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Census Tract 9.03, Kern County, California",
+          "name": "Foster City",
           "types": [
-            "CensusTract"
+            "City"
           ],
-          "dcid": "geoId/06029000903",
-          "provenanceId": "dc/base/BaseGeos"
+          "dcid": "geoId/0625338",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
-          "name": "Census Tract 9.04, Kern County, California",
+          "name": "Fountain Valley",
           "types": [
-            "CensusTract"
+            "City"
           ],
-          "dcid": "geoId/06029000904",
+          "dcid": "geoId/0625380",
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Census Tract 9.05, Kern County, California",
+          "name": "Fowler",
           "types": [
-            "CensusTract"
+            "City"
           ],
-          "dcid": "geoId/06029000905",
-          "provenanceId": "dc/base/BaseGeos"
+          "dcid": "geoId/0625436",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
-          "name": "Census Tract 9.06, Kern County, California",
+          "name": "Franklin",
           "types": [
-            "CensusTract"
+            "City"
           ],
-          "dcid": "geoId/06029000906",
+          "dcid": "geoId/0625488",
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Census Tract 9.07, Kern County, California",
+          "name": "Franklin",
           "types": [
-            "CensusTract"
+            "City"
           ],
-          "dcid": "geoId/06029000907",
+          "dcid": "geoId/0625506",
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Census Tract 9.08, Kern County, California",
+          "name": "Frazier Park",
           "types": [
-            "CensusTract"
+            "City"
           ],
-          "dcid": "geoId/06029000908",
+          "dcid": "geoId/0625534",
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Census Tract 9.09, Kern County, California",
+          "name": "Freedom",
           "types": [
-            "CensusTract"
+            "City"
           ],
-          "dcid": "geoId/06029000909",
+          "dcid": "geoId/0625576",
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Census Tract 9.10, Kern County, California",
+          "name": "Freeport",
           "types": [
-            "CensusTract"
+            "City"
           ],
-          "dcid": "geoId/06029000910",
+          "dcid": "geoId/0625590",
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Census Tract 10, Kern County, California",
+          "name": "Fremont",
           "types": [
-            "CensusTract"
+            "City"
           ],
-          "dcid": "geoId/06029001000",
-          "provenanceId": "dc/base/BaseGeos"
+          "dcid": "geoId/0626000",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
-          "name": "Census Tract 11.01, Kern County, California",
+          "name": "French Camp",
           "types": [
-            "CensusTract"
+            "City"
           ],
-          "dcid": "geoId/06029001101",
+          "dcid": "geoId/0626028",
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Census Tract 11.02, Kern County, California",
+          "name": "French Gulch",
           "types": [
-            "CensusTract"
+            "City"
           ],
-          "dcid": "geoId/06029001102",
+          "dcid": "geoId/0626056",
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Census Tract 11.03, Kern County, California",
+          "name": "French Valley",
           "types": [
-            "CensusTract"
+            "City"
           ],
-          "dcid": "geoId/06029001103",
+          "dcid": "geoId/0626067",
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Census Tract 12.01, Kern County, California",
+          "name": "Fresno",
           "types": [
-            "CensusTract"
+            "City"
           ],
-          "dcid": "geoId/06029001201",
-          "provenanceId": "dc/base/BaseGeos"
+          "dcid": "geoId/0627000",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
-          "name": "Census Tract 12.02, Kern County, California",
+          "name": "Friant",
           "types": [
-            "CensusTract"
+            "City"
           ],
-          "dcid": "geoId/06029001202",
+          "dcid": "geoId/0627014",
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Census Tract 13, Kern County, California",
+          "name": "Fruitdale",
           "types": [
-            "CensusTract"
+            "City"
           ],
-          "dcid": "geoId/06029001300",
+          "dcid": "geoId/0627080",
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Census Tract 14, Kern County, California",
+          "name": "Fruitridge Pocket",
           "types": [
-            "CensusTract"
+            "City"
           ],
-          "dcid": "geoId/06029001400",
+          "dcid": "geoId/0627130",
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Census Tract 15, Kern County, California",
+          "name": "Fuller Acres",
           "types": [
-            "CensusTract"
+            "City"
           ],
-          "dcid": "geoId/06029001500",
+          "dcid": "geoId/0627190",
           "provenanceId": "dc/base/BaseGeos"
         },
         {
@@ -26972,6 +27110,14 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
+          "name": "Glennville",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/0630126",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
           "name": "Golden Hills",
           "types": [
             "City"
@@ -27017,6 +27163,14 @@
             "City"
           ],
           "dcid": "geoId/0630410",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Goodmanville",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/0630412",
           "provenanceId": "dc/base/BaseGeos"
         },
         {
@@ -27308,6 +27462,14 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
+          "name": "Happy Valley",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/0632036",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
           "name": "Harbison Canyon",
           "types": [
             "City"
@@ -27321,6 +27483,14 @@
             "City"
           ],
           "dcid": "geoId/0632156",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Harmony Grove",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/0632212",
           "provenanceId": "dc/base/BaseGeos"
         },
         {
@@ -27500,11 +27670,27 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
+          "name": "Highlands",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/0633632",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
           "name": "Highlands-Baywood Park",
           "types": [
             "City"
           ],
           "dcid": "geoId/0633633",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Hillcrest",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/0633689",
           "provenanceId": "dc/base/BaseGeos"
         },
         {
@@ -27684,6 +27870,14 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
+          "name": "Hypericum",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/0636135",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
           "name": "Idlewild",
           "types": [
             "City"
@@ -27697,6 +27891,14 @@
             "City"
           ],
           "dcid": "geoId/0636203",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Igo",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/0636252",
           "provenanceId": "dc/base/BaseGeos"
         },
         {
@@ -27916,6 +28118,14 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
+          "name": "Johnson Park",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/0637442",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
           "name": "Johnstonville",
           "types": [
             "City"
@@ -27932,12 +28142,28 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
+          "name": "Jones Valley",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/0637533",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
           "name": "Joshua Tree",
           "types": [
             "City"
           ],
           "dcid": "geoId/0637554",
           "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Jovista",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/0637568",
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Julian",
@@ -28052,6 +28278,14 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
+          "name": "Kep'el",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/0638177",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
           "name": "Kerman",
           "types": [
             "City"
@@ -28148,6 +28382,14 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
+          "name": "Knights Ferry",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/0638786",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
           "name": "Knights Landing",
           "types": [
             "City"
@@ -28169,6 +28411,14 @@
             "City"
           ],
           "dcid": "geoId/0639045",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "La Cresta",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/0639052",
           "provenanceId": "dc/base/BaseGeos"
         },
         {
@@ -28202,6 +28452,14 @@
           ],
           "dcid": "geoId/0639122",
           "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "La Grange",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/0639164",
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Laguna Beach",
@@ -28444,11 +28702,27 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
+          "name": "Lake Shastina",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/0639728",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
           "name": "Lake Sherwood",
           "types": [
             "City"
           ],
           "dcid": "geoId/0639735",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Lakeside",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/0639759",
           "provenanceId": "dc/base/BaseGeos"
         },
         {
@@ -28928,6 +29202,14 @@
           "types": [
             "City"
           ],
+          "dcid": "geoId/0642142",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Lockwood",
+          "types": [
+            "City"
+          ],
           "dcid": "geoId/0642146",
           "provenanceId": "dc/base/BaseGeos"
         },
@@ -29284,6 +29566,14 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
+          "name": "Madeline",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/0645008",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
           "name": "Madera",
           "types": [
             "City"
@@ -29297,6 +29587,14 @@
             "City"
           ],
           "dcid": "geoId/0645050",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Madera Ranchos",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/0645054",
           "provenanceId": "dc/base/BaseGeos"
         },
         {
@@ -29652,6 +29950,14 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
+          "name": "Meyers",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/0647206",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
           "name": "Middletown",
           "types": [
             "City"
@@ -29690,6 +29996,14 @@
           ],
           "dcid": "geoId/0647486",
           "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Millerton",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/0647592",
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Mill Valley",
@@ -29786,6 +30100,14 @@
           ],
           "dcid": "geoId/0648354",
           "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Modjeska",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/0648410",
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Mohawk Vista",
@@ -30052,6 +30374,14 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
+          "name": "Mountain Meadows",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/0649592",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
           "name": "Mountain Mesa",
           "types": [
             "City"
@@ -30089,6 +30419,14 @@
             "City"
           ],
           "dcid": "geoId/0649684",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Mt. Bullion",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/0649726",
           "provenanceId": "dc/base/BaseGeos"
         },
         {
@@ -30361,454 +30699,6 @@
             "City"
           ],
           "dcid": "geoId/0651840",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "North Gate",
-          "types": [
-            "City"
-          ],
-          "dcid": "geoId/0651890",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "North Highlands",
-          "types": [
-            "City"
-          ],
-          "dcid": "geoId/0651924",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "North Lakeport",
-          "types": [
-            "City"
-          ],
-          "dcid": "geoId/0651990",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "North Richmond",
-          "types": [
-            "City"
-          ],
-          "dcid": "geoId/0652162",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "North San Juan",
-          "types": [
-            "City"
-          ],
-          "dcid": "geoId/0652246",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
-        },
-        {
-          "name": "North Shore",
-          "types": [
-            "City"
-          ],
-          "dcid": "geoId/0652302",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "North Tustin",
-          "types": [
-            "City"
-          ],
-          "dcid": "geoId/0652379",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Norwalk",
-          "types": [
-            "City"
-          ],
-          "dcid": "geoId/0652526",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
-        },
-        {
-          "name": "Novato",
-          "types": [
-            "City"
-          ],
-          "dcid": "geoId/0652582",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
-        },
-        {
-          "name": "Nubieber",
-          "types": [
-            "City"
-          ],
-          "dcid": "geoId/0652610",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Nuevo",
-          "types": [
-            "City"
-          ],
-          "dcid": "geoId/0652624",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Oakdale",
-          "types": [
-            "City"
-          ],
-          "dcid": "geoId/0652694",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
-        },
-        {
-          "name": "Oak Glen",
-          "types": [
-            "City"
-          ],
-          "dcid": "geoId/0652715",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Oak Hills",
-          "types": [
-            "City"
-          ],
-          "dcid": "geoId/0652760",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Oakhurst",
-          "types": [
-            "City"
-          ],
-          "dcid": "geoId/0652764",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Oakland",
-          "types": [
-            "City"
-          ],
-          "dcid": "geoId/0653000",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
-        },
-        {
-          "name": "Oakley",
-          "types": [
-            "City"
-          ],
-          "dcid": "geoId/0653070",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Oak Park",
-          "types": [
-            "City"
-          ],
-          "dcid": "geoId/0653116",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Oak Shores",
-          "types": [
-            "City"
-          ],
-          "dcid": "geoId/0653160",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Oak View",
-          "types": [
-            "City"
-          ],
-          "dcid": "geoId/0653182",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Oakville",
-          "types": [
-            "City"
-          ],
-          "dcid": "geoId/0653196",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Oasis",
-          "types": [
-            "City"
-          ],
-          "dcid": "geoId/0653224",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Occidental",
-          "types": [
-            "City"
-          ],
-          "dcid": "geoId/0653266",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Oceano",
-          "types": [
-            "City"
-          ],
-          "dcid": "geoId/0653294",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Oceanside",
-          "types": [
-            "City"
-          ],
-          "dcid": "geoId/0653322",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
-        },
-        {
-          "name": "Ocotillo",
-          "types": [
-            "City"
-          ],
-          "dcid": "geoId/0653378",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Oildale",
-          "types": [
-            "City"
-          ],
-          "dcid": "geoId/0653448",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
-        },
-        {
-          "name": "Ojai",
-          "types": [
-            "City"
-          ],
-          "dcid": "geoId/0653476",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
-        },
-        {
-          "name": "Olancha",
-          "types": [
-            "City"
-          ],
-          "dcid": "geoId/0653490",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Old Fig Garden",
-          "types": [
-            "City"
-          ],
-          "dcid": "geoId/0653505",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Old Station",
-          "types": [
-            "City"
-          ],
-          "dcid": "geoId/0653602",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Olivehurst",
-          "types": [
-            "City"
-          ],
-          "dcid": "geoId/0653714",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Ontario",
-          "types": [
-            "City"
-          ],
-          "dcid": "geoId/0653896",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
-        },
-        {
-          "name": "Onyx",
-          "types": [
-            "City"
-          ],
-          "dcid": "geoId/0653910",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Orange",
-          "types": [
-            "City"
-          ],
-          "dcid": "geoId/0653980",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
-        },
-        {
-          "name": "Orange Cove",
-          "types": [
-            "City"
-          ],
-          "dcid": "geoId/0654008",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
-        },
-        {
-          "name": "Orangevale",
-          "types": [
-            "City"
-          ],
-          "dcid": "geoId/0654092",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
-        },
-        {
-          "name": "Orcutt",
-          "types": [
-            "City"
-          ],
-          "dcid": "geoId/0654120",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Orick",
-          "types": [
-            "City"
-          ],
-          "dcid": "geoId/0654218",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
-        },
-        {
-          "name": "Orinda",
-          "types": [
-            "City"
-          ],
-          "dcid": "geoId/0654232",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
-        },
-        {
-          "name": "Orland",
-          "types": [
-            "City"
-          ],
-          "dcid": "geoId/0654274",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
-        },
-        {
-          "name": "Orosi",
-          "types": [
-            "City"
-          ],
-          "dcid": "geoId/0654372",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
-        },
-        {
-          "name": "Oroville",
-          "types": [
-            "City"
-          ],
-          "dcid": "geoId/0654386",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
-        },
-        {
-          "name": "Oroville East",
-          "types": [
-            "City"
-          ],
-          "dcid": "geoId/0654388",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Oxnard",
-          "types": [
-            "City"
-          ],
-          "dcid": "geoId/0654652",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
-        },
-        {
-          "name": "Pacheco",
-          "types": [
-            "City"
-          ],
-          "dcid": "geoId/0654764",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Pacifica",
-          "types": [
-            "City"
-          ],
-          "dcid": "geoId/0654806",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
-        },
-        {
-          "name": "Pacific Grove",
-          "types": [
-            "City"
-          ],
-          "dcid": "geoId/0654848",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
-        },
-        {
-          "name": "Pajaro",
-          "types": [
-            "City"
-          ],
-          "dcid": "geoId/0655044",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Pajaro Dunes",
-          "types": [
-            "City"
-          ],
-          "dcid": "geoId/0655048",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Pala",
-          "types": [
-            "City"
-          ],
-          "dcid": "geoId/0655058",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Palermo",
-          "types": [
-            "City"
-          ],
-          "dcid": "geoId/0655086",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Palmdale",
-          "types": [
-            "City"
-          ],
-          "dcid": "geoId/0655156",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
-        },
-        {
-          "name": "Palm Desert",
-          "types": [
-            "City"
-          ],
-          "dcid": "geoId/0655184",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
-        },
-        {
-          "name": "Palo Alto",
-          "types": [
-            "City"
-          ],
-          "dcid": "geoId/0655282",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
-        },
-        {
-          "name": "Palo Cedro",
-          "types": [
-            "City"
-          ],
-          "dcid": "geoId/0655296",
           "provenanceId": "dc/base/BaseGeos"
         },
         {
@@ -62938,5 +62828,5 @@
       ]
     }
   ],
-  "nextToken": "H4sIAAAAAAAA/5zSwU4yMRQF4J8yP1wKmLEr3gIw0b0ZDJJgUh0h0Y2pnRtoUtuk08HMg/gSPp5PYHC2plNcdvPl3NNDn+lQ2sp4V083+TVNpTVeKIPFynAtJNLzJdqlU8XP62W+wB37xwh0GAHCCHQZgYQR+M8I9BiBPiMALIFBSuimzR6teJY18OUsmt22seP8IkOt13hAPY937yns0K6K6ezqF3SYoSmr8tEJ6aPJdZBMMuXrCKt3tCaMPgW19EbjGxovXJ3LvbU6Qu7DIE0mX4TyIE1v1W4fjTanPwTF0Z0qCo0nmi0puX1Hx7Uw8R+0DYpj7tRB+PiYxz67k88O3YSv59WrVvJE9qND83Dcv+0+3MFZk3KhSu9U1PSbuY6+AQAA//8BAAD///PQ5oZbBAAA"
+  "nextToken": "H4sIAAAAAAAA/5zT0UoCQRQG4DxuejpqrHPlW6hB3ccaJhQMqIVCxbZ70IFpBsbR8EF6iR6vJwjb2xjdvZybj59/zk+v1Mrs1ni378+ntxRn1vhUGc4nRuo0Y+qO2Y6dyv9eb8MRr8SZAKwJQBCAdQEYCcBzAdgQgE0BiALwQkRIMdDimN+eyCQp8OtBKXp5jO5MrxLW+oF3rIfl7Dnhiu0k7w9u/oFbCZvNdjNzaeZLsTLIRony+xO9xsHrdeklKMZ3mj/Y+NTtp9naWn2i3kSKo94P0CzI071arUvBRQ1PQbX9qPJccwX3SFppP9lJnZpyn7YMqh3p1C715eIe+q33vmu0CDcht+9aZRXorxo9h2NX30a4j8si7UhtvFMnz6M45/YvAAAA//8BAAD///YOQM6PBAAA"
 }

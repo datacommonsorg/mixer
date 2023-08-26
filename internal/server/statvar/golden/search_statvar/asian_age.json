@@ -451,6 +451,20 @@
       ]
     },
     {
+      "dcid": "dc/g/Person_Age-Years25Onwards_Race-AsianAlone",
+      "name": "Person With Age = 25 Years or More, Race = Asian Alone",
+      "statVars": [
+        {
+          "name": "Population: 25 Years or More, Asian Alone",
+          "dcid": "Count_Person_25OrMoreYears_AsianAlone"
+        },
+        {
+          "name": "Population: 25 Years or More, Some College or Associates Degree, Asian Alone",
+          "dcid": "Count_Person_25OrMoreYears_SomeCollegeOrAssociatesDegree_AsianAlone"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/Person_Age_Race-AsianAlone",
       "name": "Person With Age, Race = Asian Alone",
       "statVars": [
@@ -8363,16 +8377,6 @@
         {
           "name": "Population: 25 - 29 Years, Not Hispanic or Latino \u0026 Asian Alone",
           "dcid": "Count_Person_25To29Years_NotHispanicOrLatino_AsianAlone"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years25Onwards_Race-AsianAlone",
-      "name": "Person With Age = 25 Years or More, Race = Asian Alone",
-      "statVars": [
-        {
-          "name": "Population: 25 Years or More, Asian Alone",
-          "dcid": "Count_Person_25OrMoreYears_AsianAlone"
         }
       ]
     },
