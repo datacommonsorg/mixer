@@ -35,7 +35,6 @@ country/DZA,dza
 country/EGY,egy
 country/ERI,eri
 country/ESH,esh
-country/ESP,es
 country/FJI,"fji,fj"
 country/FLK,flk
 country/FRA,"fra,fr"
@@ -116,13 +115,12 @@ country/PRT,prt
 country/PSE,pse
 country/PYF,pyf
 country/RWA,rwa
-country/SAU,"sau,sa"
+country/SAU,sau
 country/SCG,scg
 country/SDN,sdn
 country/SGP,sgp
 country/SGS,sgs
 country/SHN,shn
-country/SLV,sv
 country/SRB,srb
 country/SVK,svk
 country/SVN,svn
@@ -154,6 +152,6 @@ country/VUT,vut
 country/WLF,wlf
 country/WSM,wsm
 country/XKS,xks
-country/ZAF,"zaf,za"
+country/ZAF,zaf
 country/ZMB,zmb
 country/ZWE,"zwe,zw"
