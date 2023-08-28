@@ -1125,6 +1125,10 @@
       "dcid": "Count_Person_Employed_NACE/K-N"
     },
     {
+      "name": "Population: Food Insecure People",
+      "dcid": "Count_Person_FoodInsecure"
+    },
+    {
       "name": "Population: Foreign Born",
       "dcid": "Count_Person_5OrMoreYears_ForeignBorn"
     },
@@ -2569,6 +2573,18 @@
       "dcid": "Count_Person_Female_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
     },
     {
+      "name": "Food Insecure People Eligible for All Federal Benefits",
+      "dcid": "Count_Person_FoodInsecure_EligibleForAllFederalBenefits"
+    },
+    {
+      "name": "Food Insecure People Eligible for Some Federal Benefits",
+      "dcid": "Count_Person_FoodInsecure_EligibleForSomeFederalBenefits"
+    },
+    {
+      "name": "Food Insecure People Ineligible for Federal Benefits",
+      "dcid": "Count_Person_FoodInsecure_IneligibleForFederalBenefits"
+    },
+    {
       "name": "Foreign Born Female Population",
       "dcid": "Count_Person_Female_ForeignBorn"
     },
@@ -3983,22 +3999,6 @@
     {
       "name": "Population: 10 - 14 Years, Now Married",
       "dcid": "Count_Person_10To14Years_NowMarried"
-    },
-    {
-      "name": "Population: 10 - 14 Years, Resident",
-      "dcid": "Count_Person_10To14Years_Resident"
-    },
-    {
-      "name": "Population: 10 - 14 Years, Rural",
-      "dcid": "Count_Person_10To14Years_Rural"
-    },
-    {
-      "name": "Population: 10 - 14 Years, Separated",
-      "dcid": "Count_Person_10To14Years_Separated"
-    },
-    {
-      "name": "Population: 10 - 14 Years, Stroke",
-      "dcid": "Count_Person_10To14Years_ConditionStroke"
     }
   ],
   "matches": [

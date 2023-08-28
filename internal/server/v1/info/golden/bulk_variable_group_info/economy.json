@@ -38,17 +38,9 @@
             "displayName": "Employment and Business"
           },
           {
-            "id": "worldBank/g/Access",
-            "displayName": "Access"
-          },
-          {
             "id": "dc/g/Person_Age",
             "specializedEntity": "Age",
             "displayName": "Person by Age"
-          },
-          {
-            "id": "worldBank/g/Assets",
-            "displayName": "Assets"
           },
           {
             "id": "dc/g/ConsumerGoodsAndServices",
@@ -66,238 +58,15 @@
             "displayName": "Debt"
           },
           {
-            "id": "worldBank/g/Depth",
-            "displayName": "Depth"
-          },
-          {
             "id": "dc/g/EconomicActivity",
             "specializedEntity": "Economic Activity",
             "displayName": "Economic Activity",
             "descendentStatVarCount": 5
           },
           {
-            "id": "worldBank/g/Economic_Policy___Debt",
-            "displayName": "Economic Policy \u0026 Debt"
-          },
-          {
-            "id": "worldBank/g/Economic_Policy___Debt__Balance_of_payments__Capital___financial_account",
-            "displayName": "Economic Policy \u0026 Debt: Balance of payments: Capital \u0026 financial account"
-          },
-          {
-            "id": "worldBank/g/Economic_Policy___Debt__Balance_of_payments__Current_account__Balances",
-            "displayName": "Economic Policy \u0026 Debt: Balance of payments: Current account: Balances"
-          },
-          {
-            "id": "worldBank/g/Economic_Policy___Debt__Balance_of_payments__Current_account__Goods__services___income",
-            "displayName": "Economic Policy \u0026 Debt: Balance of payments: Current account: Goods, services \u0026 income"
-          },
-          {
-            "id": "worldBank/g/Economic_Policy___Debt__Balance_of_payments__Current_account__Transfers",
-            "displayName": "Economic Policy \u0026 Debt: Balance of payments: Current account: Transfers"
-          },
-          {
-            "id": "worldBank/g/Economic_Policy___Debt__Balance_of_payments__Reserves___other_items",
-            "displayName": "Economic Policy \u0026 Debt: Balance of payments: Reserves \u0026 other items"
-          },
-          {
-            "id": "worldBank/g/Economic_Policy___Debt__External_debt__Debt_outstanding",
-            "displayName": "Economic Policy \u0026 Debt: External debt: Debt outstanding"
-          },
-          {
-            "id": "worldBank/g/Economic_Policy___Debt__External_debt__Debt_ratios___other_items",
-            "displayName": "Economic Policy \u0026 Debt: External debt: Debt ratios \u0026 other items"
-          },
-          {
-            "id": "worldBank/g/Economic_Policy___Debt__External_debt__Debt_service",
-            "displayName": "Economic Policy \u0026 Debt: External debt: Debt service"
-          },
-          {
-            "id": "worldBank/g/Economic_Policy___Debt__External_debt__Net_flows",
-            "displayName": "Economic Policy \u0026 Debt: External debt: Net flows"
-          },
-          {
-            "id": "worldBank/g/Economic_Policy___Debt__National_accounts__Adjusted_savings___income",
-            "displayName": "Economic Policy \u0026 Debt: National accounts: Adjusted savings \u0026 income",
-            "descendentStatVarCount": 8
-          },
-          {
-            "id": "worldBank/g/Economic_Policy___Debt__National_accounts__Atlas_GNI___GNI_per_capita",
-            "displayName": "Economic Policy \u0026 Debt: National accounts: Atlas GNI \u0026 GNI per capita"
-          },
-          {
-            "id": "worldBank/g/Economic_Policy___Debt__National_accounts__Growth_rates",
-            "displayName": "Economic Policy \u0026 Debt: National accounts: Growth rates",
-            "descendentStatVarCount": 7
-          },
-          {
-            "id": "worldBank/g/Economic_Policy___Debt__National_accounts__Local_currency_at_constant_prices__Aggregate_indicators",
-            "displayName": "Economic Policy \u0026 Debt: National accounts: Local currency at constant prices: Aggregate indicators",
-            "descendentStatVarCount": 2
-          },
-          {
-            "id": "worldBank/g/Economic_Policy___Debt__National_accounts__Local_currency_at_constant_prices__Expenditure_on_GDP",
-            "displayName": "Economic Policy \u0026 Debt: National accounts: Local currency at constant prices: Expenditure on GDP",
-            "descendentStatVarCount": 5
-          },
-          {
-            "id": "worldBank/g/Economic_Policy___Debt__National_accounts__Local_currency_at_constant_prices__Other_items",
-            "displayName": "Economic Policy \u0026 Debt: National accounts: Local currency at constant prices: Other items",
-            "descendentStatVarCount": 3
-          },
-          {
-            "id": "worldBank/g/Economic_Policy___Debt__National_accounts__Local_currency_at_constant_prices__Value_added",
-            "displayName": "Economic Policy \u0026 Debt: National accounts: Local currency at constant prices: Value added",
-            "descendentStatVarCount": 1
-          },
-          {
-            "id": "worldBank/g/Economic_Policy___Debt__National_accounts__Local_currency_at_current_prices__Aggregate_indicators",
-            "displayName": "Economic Policy \u0026 Debt: National accounts: Local currency at current prices: Aggregate indicators",
-            "descendentStatVarCount": 5
-          },
-          {
-            "id": "worldBank/g/Economic_Policy___Debt__National_accounts__Local_currency_at_current_prices__Expenditure_on_GDP",
-            "displayName": "Economic Policy \u0026 Debt: National accounts: Local currency at current prices: Expenditure on GDP",
-            "descendentStatVarCount": 7
-          },
-          {
-            "id": "worldBank/g/Economic_Policy___Debt__National_accounts__Local_currency_at_current_prices__Value_added",
-            "displayName": "Economic Policy \u0026 Debt: National accounts: Local currency at current prices: Value added",
-            "descendentStatVarCount": 1
-          },
-          {
-            "id": "worldBank/g/Economic_Policy___Debt__National_accounts__Shares_of_GDP___other",
-            "displayName": "Economic Policy \u0026 Debt: National accounts: Shares of GDP \u0026 other",
-            "descendentStatVarCount": 7
-          },
-          {
-            "id": "worldBank/g/Economic_Policy___Debt__National_accounts__US__at_constant_2010_prices__Aggregate_indicators",
-            "displayName": "Economic Policy \u0026 Debt: National accounts: US$ at constant 2010 prices: Aggregate indicators",
-            "descendentStatVarCount": 2
-          },
-          {
-            "id": "worldBank/g/Economic_Policy___Debt__National_accounts__US__at_constant_2015_prices__Aggregate_indicators",
-            "displayName": "Economic Policy \u0026 Debt: National accounts: US$ at constant 2015 prices: Aggregate indicators"
-          },
-          {
-            "id": "worldBank/g/Economic_Policy___Debt__National_accounts__US__at_constant_2015_prices__Expenditure_on_GDP",
-            "displayName": "Economic Policy \u0026 Debt: National accounts: US$ at constant 2015 prices: Expenditure on GDP",
-            "descendentStatVarCount": 4
-          },
-          {
-            "id": "worldBank/g/Economic_Policy___Debt__National_accounts__US__at_constant_2015_prices__Value_added",
-            "displayName": "Economic Policy \u0026 Debt: National accounts: US$ at constant 2015 prices: Value added",
-            "descendentStatVarCount": 1
-          },
-          {
-            "id": "worldBank/g/Economic_Policy___Debt__National_accounts__US__at_current_prices__Aggregate_indicators",
-            "displayName": "Economic Policy \u0026 Debt: National accounts: US$ at current prices: Aggregate indicators",
-            "descendentStatVarCount": 3
-          },
-          {
-            "id": "worldBank/g/Economic_Policy___Debt__National_accounts__US__at_current_prices__Expenditure_on_GDP",
-            "displayName": "Economic Policy \u0026 Debt: National accounts: US$ at current prices: Expenditure on GDP",
-            "descendentStatVarCount": 5
-          },
-          {
-            "id": "worldBank/g/Economic_Policy___Debt__National_accounts__US__at_current_prices__Value_added",
-            "displayName": "Economic Policy \u0026 Debt: National accounts: US$ at current prices: Value added",
-            "descendentStatVarCount": 1
-          },
-          {
-            "id": "worldBank/g/Economic_Policy___Debt__Official_development_assistance",
-            "displayName": "Economic Policy \u0026 Debt: Official development assistance"
-          },
-          {
-            "id": "worldBank/g/Economic_Policy___Debt__Purchasing_power_parity",
-            "displayName": "Economic Policy \u0026 Debt: Purchasing power parity",
-            "descendentStatVarCount": 2
-          },
-          {
             "id": "dc/g/Person_EconomicSector",
             "specializedEntity": "Economic Sector",
             "displayName": "Person by Economic Sector"
-          },
-          {
-            "id": "worldBank/g/Efficiency",
-            "displayName": "Efficiency"
-          },
-          {
-            "id": "worldBank/g/Employment",
-            "displayName": "Employment"
-          },
-          {
-            "id": "worldBank/g/Enforcing_contracts",
-            "displayName": "Enforcing contracts"
-          },
-          {
-            "id": "worldBank/g/Environment__Agricultural_production",
-            "displayName": "Environment: Agricultural production",
-            "descendentStatVarCount": 5
-          },
-          {
-            "id": "worldBank/g/Environment__Food_Security",
-            "displayName": "Environment: Food Security",
-            "descendentStatVarCount": 1
-          },
-          {
-            "id": "worldBank/g/Environment__Natural_capital_endowment_and_management",
-            "displayName": "Environment: Natural capital endowment and management",
-            "descendentStatVarCount": 1
-          },
-          {
-            "id": "worldBank/g/Environment__Natural_resources_contribution_to_GDP",
-            "displayName": "Environment: Natural resources contribution to GDP",
-            "descendentStatVarCount": 6
-          },
-          {
-            "id": "worldBank/g/Expenditures",
-            "displayName": "Expenditures",
-            "descendentStatVarCount": 2
-          },
-          {
-            "id": "worldBank/g/Financial_Sector__Access",
-            "displayName": "Financial Sector: Access"
-          },
-          {
-            "id": "worldBank/g/Financial_Sector__Assets",
-            "displayName": "Financial Sector: Assets"
-          },
-          {
-            "id": "worldBank/g/Financial_Sector__Capital_markets",
-            "displayName": "Financial Sector: Capital markets"
-          },
-          {
-            "id": "worldBank/g/Financial_Sector__Exchange_rates___prices",
-            "displayName": "Financial Sector: Exchange rates \u0026 prices",
-            "descendentStatVarCount": 6
-          },
-          {
-            "id": "worldBank/g/Financial_Sector__Interest_rates",
-            "displayName": "Financial Sector: Interest rates"
-          },
-          {
-            "id": "worldBank/g/Financial_Sector__Monetary_holdings__liabilities_",
-            "displayName": "Financial Sector: Monetary holdings (liabilities)"
-          },
-          {
-            "id": "worldBank/g/Governance__Economic_Environment",
-            "displayName": "Governance: Economic Environment",
-            "descendentStatVarCount": 2
-          },
-          {
-            "id": "worldBank/g/Governance__Government_Effectiveness",
-            "displayName": "Governance: Government Effectiveness",
-            "descendentStatVarCount": 1
-          },
-          {
-            "id": "worldBank/g/Governance__Innovation",
-            "displayName": "Governance: Innovation",
-            "descendentStatVarCount": 1
-          },
-          {
-            "id": "worldBank/g/Governance__Stability___Rule_of_Law",
-            "displayName": "Governance: Stability \u0026 Rule of Law",
-            "descendentStatVarCount": 1
           },
           {
             "id": "dc/g/Household_HouseholdType",
@@ -335,23 +104,15 @@
             "displayName": "Person by Income Type"
           },
           {
-            "id": "worldBank/g/Infrastructure__Communications",
-            "displayName": "Infrastructure: Communications",
-            "descendentStatVarCount": 7
-          },
-          {
-            "id": "worldBank/g/Infrastructure__Technology",
-            "displayName": "Infrastructure: Technology"
-          },
-          {
-            "id": "worldBank/g/Infrastructure__Transportation",
-            "displayName": "Infrastructure: Transportation",
-            "descendentStatVarCount": 4
-          },
-          {
             "id": "dc/g/Person_LaborForceStatus",
             "specializedEntity": "Labor Force Status",
             "displayName": "Person by Labor Force Status"
+          },
+          {
+            "id": "dc/g/Economy_Miscellaneous",
+            "specializedEntity": "Miscellaneous",
+            "displayName": "Miscellaneous",
+            "descendentStatVarCount": 133
           },
           {
             "id": "dc/g/NetworkSubscriber",
@@ -359,94 +120,9 @@
             "displayName": "Network Subscriber"
           },
           {
-            "id": "worldBank/g/Other",
-            "displayName": "Other"
-          },
-          {
-            "id": "worldBank/g/Paying_taxes",
-            "displayName": "Paying taxes"
-          },
-          {
-            "id": "worldBank/g/Private_Sector___Trade__Business_environment",
-            "displayName": "Private Sector \u0026 Trade: Business environment"
-          },
-          {
-            "id": "worldBank/g/Private_Sector___Trade__Exports",
-            "displayName": "Private Sector \u0026 Trade: Exports",
-            "descendentStatVarCount": 13
-          },
-          {
-            "id": "worldBank/g/Private_Sector___Trade__Private_infrastructure_investment",
-            "displayName": "Private Sector \u0026 Trade: Private infrastructure investment"
-          },
-          {
-            "id": "worldBank/g/Private_Sector___Trade__Trade_facilitation",
-            "displayName": "Private Sector \u0026 Trade: Trade facilitation"
-          },
-          {
-            "id": "worldBank/g/Private_Sector___Trade__Trade_indexes",
-            "displayName": "Private Sector \u0026 Trade: Trade indexes",
-            "descendentStatVarCount": 3
-          },
-          {
-            "id": "worldBank/g/Private_Sector___Trade__Trade_price_indices",
-            "displayName": "Private Sector \u0026 Trade: Trade price indices",
-            "descendentStatVarCount": 1
-          },
-          {
-            "id": "worldBank/g/Public_Sector__Defense___arms_trade",
-            "displayName": "Public Sector: Defense \u0026 arms trade"
-          },
-          {
-            "id": "worldBank/g/Public_Sector__Government_finance",
-            "displayName": "Public Sector: Government finance"
-          },
-          {
-            "id": "worldBank/g/Public_Sector__Government_finance__Deficit___financing",
-            "displayName": "Public Sector: Government finance: Deficit \u0026 financing"
-          },
-          {
-            "id": "worldBank/g/Public_Sector__Government_finance__Expense",
-            "displayName": "Public Sector: Government finance: Expense"
-          },
-          {
-            "id": "worldBank/g/Public_Sector__Government_finance__Revenue",
-            "displayName": "Public Sector: Government finance: Revenue"
-          },
-          {
-            "id": "worldBank/g/Public_Sector__Policy___institutions",
-            "displayName": "Public Sector: Policy \u0026 institutions",
-            "descendentStatVarCount": 15
-          },
-          {
-            "id": "worldBank/g/Quality_of_Financial_Services",
-            "displayName": "Quality of Financial Services"
-          },
-          {
             "id": "dc/g/Remittance",
             "specializedEntity": "Remittance",
             "displayName": "Remittance"
-          },
-          {
-            "id": "worldBank/g/Renewable_Energy",
-            "displayName": "Renewable Energy",
-            "descendentStatVarCount": 6
-          },
-          {
-            "id": "worldBank/g/Resolving_insolvency",
-            "displayName": "Resolving insolvency"
-          },
-          {
-            "id": "worldBank/g/Social__Poverty___Inequality",
-            "displayName": "Social: Poverty \u0026 Inequality"
-          },
-          {
-            "id": "worldBank/g/Stability",
-            "displayName": "Stability"
-          },
-          {
-            "id": "worldBank/g/Statistical_Capacity_Indicator__SCI_",
-            "displayName": "Statistical Capacity Indicator (SCI)"
           },
           {
             "id": "dc/g/Stock",
@@ -469,7 +145,7 @@
             "displayName": "Treasury Note"
           }
         ],
-        "descendentStatVarCount": 145,
+        "descendentStatVarCount": 139,
         "parentStatVarGroups": [
           "dc/g/Root"
         ]

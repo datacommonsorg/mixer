@@ -3949,56 +3949,56 @@
       "dcid": "worldBank/SP_POP_0014_FE_IN"
     },
     {
+      "name": "Population ages 0-14, female (% of female population)",
+      "dcid": "worldBank/SP_POP_0014_FE_ZS"
+    },
+    {
+      "name": "Population ages 10-14, female (% of female population)",
+      "dcid": "worldBank/SP_POP_1014_FE_5Y"
+    },
+    {
+      "name": "Population ages 15-19, female (% of female population)",
+      "dcid": "worldBank/SP_POP_1519_FE_5Y"
+    },
+    {
       "name": "Population ages 15-64, female",
       "dcid": "worldBank/SP_POP_1564_FE_IN"
     },
     {
-      "name": "Population ages 65 and above, female",
-      "dcid": "worldBank/SP_POP_65UP_FE_IN"
+      "name": "Population ages 20-24, female (% of female population)",
+      "dcid": "worldBank/SP_POP_2024_FE_5Y"
     },
     {
-      "name": "Population of the official entrance age to primary education, female (number)",
-      "dcid": "worldBank/UIS_SAP_1_G1_F"
+      "name": "Population ages 25-29, female (% of female population)",
+      "dcid": "worldBank/SP_POP_2529_FE_5Y"
     },
     {
-      "name": "Population, female",
-      "dcid": "worldBank/SP_POP_TOTL_FE_IN"
+      "name": "Population ages 30-34, female (% of female population)",
+      "dcid": "worldBank/SP_POP_3034_FE_5Y"
     },
     {
-      "name": "Population, female (% of total)",
-      "dcid": "worldBank/SP_POP_TOTL_FE_ZS"
+      "name": "Population ages 35-39, female (% of female population)",
+      "dcid": "worldBank/SP_POP_3539_FE_5Y"
     },
     {
-      "name": "Prevalence Of Anaemia In Pregnant Women (Aged 15-49) (%), Female",
-      "dcid": "WHO/NUTRITION_ANAEMIA_PREGNANT_PREV_Female"
+      "name": "Population ages 40-44, female (% of female population)",
+      "dcid": "worldBank/SP_POP_4044_FE_5Y"
     },
     {
-      "name": "Prevalence Of Anaemia In Women Of Reproductive Age (Aged 15-49) (%), Female",
-      "dcid": "WHO/NUTRITION_ANAEMIA_REPRODUCTIVEAGE_PREV_Female"
+      "name": "Population ages 45-49, female (% of female population)",
+      "dcid": "worldBank/SP_POP_4549_FE_5Y"
     },
     {
-      "name": "Prevalence Of Current Cigarette Smoking Among Adolescents (%), Female",
-      "dcid": "WHO/Yth_curr_cig_smoking_Female"
+      "name": "Population ages 50-54, female (% of female population)",
+      "dcid": "worldBank/SP_POP_5054_FE_5Y"
     },
     {
-      "name": "Prevalence Of Current Cigarette Smoking Among Adults (%), Female",
-      "dcid": "WHO/Adult_curr_cig_smoking_Female"
+      "name": "Population ages 55-59, female (% of female population)",
+      "dcid": "worldBank/SP_POP_5559_FE_5Y"
     },
     {
-      "name": "Prevalence Of Current Tobacco Smoking Among Adolescents (%), Female",
-      "dcid": "WHO/Yth_curr_tob_smoking_Female"
-    },
-    {
-      "name": "Prevalence Of Current Tobacco Smoking Among Adults (%), Female",
-      "dcid": "WHO/Adult_curr_tob_smoking_Female"
-    },
-    {
-      "name": "Prevalence Of Current Tobacco Use Among Adolescents (%), Female",
-      "dcid": "WHO/Yth_curr_tob_use_Female"
-    },
-    {
-      "name": "Prevalence Of Current Tobacco Use Among Adults (%), Female",
-      "dcid": "WHO/Adult_curr_tob_use_Female"
+      "name": "Population ages 60-64, female (% of female population)",
+      "dcid": "worldBank/SP_POP_6064_FE_5Y"
     }
   ],
   "statVarGroups": [
