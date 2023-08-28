@@ -46,6 +46,7 @@ func TestExistence(t *testing.T) {
 					"geoId/06",
 					"country/CAN",
 					"test_entity",
+					"country/BRA",
 				},
 				[]string{
 					"Count_Person",
@@ -53,6 +54,7 @@ func TestExistence(t *testing.T) {
 					"dummy",
 					"test_var_1",
 					"dc/g/SQL",
+					"dc/topic/Businesses",
 				},
 				"existence.json",
 			},
