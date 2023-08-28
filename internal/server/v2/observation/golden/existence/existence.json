@@ -2,6 +2,7 @@
   "by_variable": {
     "Count_Person": {
       "by_entity": {
+        "country/BRA": {},
         "country/CAN": {},
         "geoId/06": {},
         "geoId/0647766": {},
@@ -18,6 +19,11 @@
       "by_entity": {
         "geoId/06": {},
         "test_entity": {}
+      }
+    },
+    "dc/topic/Businesses": {
+      "by_entity": {
+        "geoId/06": {}
       }
     },
     "dummy": {},
