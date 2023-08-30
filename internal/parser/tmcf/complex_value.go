@@ -27,15 +27,15 @@ import (
 // [!!]This has minimal validation check, assuming the input has been checked
 // by the import tool.
 //
-// 1. a Quantity/QuantityRange value, coded as one of:
-//  [<unit> <val>]
-//  [<unit> <startval> <endval>]
-//  [<unit> - <endval>]
-//  [<unit> <startval> -]
+//  1. a Quantity/QuantityRange value, coded as one of:
+//     [<unit> <val>]
+//     [<unit> <startval> <endval>]
+//     [<unit> - <endval>]
+//     [<unit> <startval> -]
 //
-// 2. a GeoCoordinates type, coded as one of:
-//  [LatLong <lat_value> <long_value>]
-//  [<lat_value> <long_value> LatLong]
+//  2. a GeoCoordinates type, coded as one of:
+//     [LatLong <lat_value> <long_value>]
+//     [<lat_value> <long_value> LatLong]
 func ParseComplexValue(val string) string {
 	trimmed := strings.Trim(val, "[]")
 	fields := strings.Fields(trimmed)

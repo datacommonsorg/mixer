@@ -33,8 +33,32 @@ var recogPlaceMapCSVContent []byte // Embed CSV as []byte.
 var recogPlaceAbbreviatedNamesCSVContent []byte // Embed CSV as []byte.
 //go:embed "WorldGeosForPlaceRecognitionAlternateNames.csv"
 var recogPlaceAlternateNamesCSVContent []byte // Embed CSV as []byte.
+//go:embed "WorldGeosForPlaceRecognitionAdjectivalNames.csv"
+var recogPlaceAdjectivalNamesCSVContent []byte // Embed CSV as []byte.
 //go:embed "BogusPlaceNames.csv"
 var recogPlaceBogusPlaceNamesCSVContent []byte // Embed CSV as []byte.
+
+var (
+	// These are suffixes one of which needs to exist when dealing with adjectival place
+	// names like american, indian, african, etc.  This is is to avoid misinterpreting
+	// "african american", "chinese speakers", etc as places.
+	adjectivalSuffixes = [...]string{
+		"city",
+		"cities",
+		"county",
+		"counties",
+		"country",
+		"countries",
+		"district",
+		"districts",
+		"province",
+		"provinces",
+		"region",
+		"regions",
+		"state",
+		"states",
+	}
+)
 
 // RecogPlaceStore contains data for recongizing places.
 type RecogPlaceStore struct {
@@ -47,6 +71,8 @@ type RecogPlaceStore struct {
 	BogusPlaceNames map[string]struct{}
 	// Place DCID to all possible names.
 	DcidToNames map[string][]string
+	// Adjectival names with suffix.
+	AdjectivalNamesWithSuffix map[string]bool
 }
 
 // LoadRecogPlaceStore loads RecogPlaceStore.
@@ -65,6 +91,23 @@ func LoadRecogPlaceStore() (*RecogPlaceStore, error) {
 	dcidToAlternateNames, err := loadAuxNames(recogPlaceAlternateNamesCSVContent, true)
 	if err != nil {
 		return nil, err
+	}
+
+	dcidToAdjectivalNames, err := loadAuxNames(recogPlaceAdjectivalNamesCSVContent, true)
+	if err != nil {
+		return nil, err
+	}
+	adjectivalNamesWithSuffix := map[string]bool{}
+	for dcid, adjs := range dcidToAdjectivalNames {
+		for _, adj := range adjs {
+			parts := []string{}
+			for _, suffix := range adjectivalSuffixes {
+				n := adj + " " + suffix
+				parts = append(parts, n)
+				adjectivalNamesWithSuffix[n] = true
+			}
+			dcidToAdjectivalNames[dcid] = parts
+		}
 	}
 
 	bogusPlaceNames, err := loadBogusPlaceNames()
@@ -115,6 +158,12 @@ func LoadRecogPlaceStore() (*RecogPlaceStore, error) {
 		altNames, ok := dcidToAlternateNames[dcid]
 		if ok {
 			names = append(names, altNames...)
+		}
+
+		// Add adjectival names with suffix.
+		adjNames, ok := dcidToAdjectivalNames[dcid]
+		if ok {
+			names = append(names, adjNames...)
 		}
 
 		dcidToNames[dcid] = names
@@ -188,10 +237,11 @@ func LoadRecogPlaceStore() (*RecogPlaceStore, error) {
 	}
 
 	return &RecogPlaceStore{
-		RecogPlaceMap:           recogPlaceMap,
-		AbbreviatedNameToPlaces: abbreviatedNameToPlaces,
-		BogusPlaceNames:         bogusPlaceNames,
-		DcidToNames:             expandedDcidToNames,
+		RecogPlaceMap:             recogPlaceMap,
+		AbbreviatedNameToPlaces:   abbreviatedNameToPlaces,
+		BogusPlaceNames:           bogusPlaceNames,
+		DcidToNames:               expandedDcidToNames,
+		AdjectivalNamesWithSuffix: adjectivalNamesWithSuffix,
 	}, nil
 }
 

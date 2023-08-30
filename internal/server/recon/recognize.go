@@ -324,6 +324,21 @@ func (p *placeRecognition) rankAndTrimCandidates(
 			continue
 		}
 
+		// Deal with places that are adjectival and have suffixes.
+		if _, ok := p.recogPlaceStore.AdjectivalNamesWithSuffix[spanStr]; ok && len(span.Tokens) > 1 && len(span.GetPlaces()) == 1 {
+			// Create a new span with the suffix token
+			newSpan := &pb.TokenSpans_Span{}
+			newSpan.Tokens = span.Tokens[len(span.Tokens)-1:]
+
+			// Drop the last token from the current span
+			span.Tokens = span.Tokens[:len(span.Tokens)-1]
+
+			// Add both to the result.
+			res.Spans = append(res.Spans, span)
+			res.Spans = append(res.Spans, newSpan)
+			continue
+		}
+
 		// Rank by descending population.
 		sort.SliceStable(span.Places, func(i, j int) bool {
 			return span.Places[i].GetPopulation() > span.Places[j].GetPopulation()

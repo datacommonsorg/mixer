@@ -62,6 +62,51 @@
         }
       ]
     },
+    "Chinese speakers in California": {
+      "items": [
+        {
+          "span": "Chinese speakers in"
+        },
+        {
+          "span": "California",
+          "places": [
+            {
+              "dcid": "geoId/06"
+            },
+            {
+              "dcid": "geoId/2412150"
+            },
+            {
+              "dcid": "geoId/4210768"
+            },
+            {
+              "dcid": "geoId/2910468"
+            },
+            {
+              "dcid": "geoId/2111872"
+            }
+          ]
+        }
+      ]
+    },
+    "Compare literacy among Chinese provinces": {
+      "items": [
+        {
+          "span": "Compare literacy among"
+        },
+        {
+          "span": "Chinese",
+          "places": [
+            {
+              "dcid": "country/CHN"
+            }
+          ]
+        },
+        {
+          "span": "provinces"
+        }
+      ]
+    },
     "I want to find the Middle Point of a line": {
       "items": [
         {
@@ -107,6 +152,24 @@
               "dcid": "geoId/3949728"
             }
           ]
+        }
+      ]
+    },
+    "What is the electricity access in african countries": {
+      "items": [
+        {
+          "span": "What is the electricity access in"
+        },
+        {
+          "span": "african",
+          "places": [
+            {
+              "dcid": "africa"
+            }
+          ]
+        },
+        {
+          "span": "countries"
         }
       ]
     },
