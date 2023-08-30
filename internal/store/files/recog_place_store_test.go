@@ -99,6 +99,48 @@ func TestLoadRecogPlaceStore(t *testing.T) {
 							{
 								Parts: []string{"usa"},
 							},
+							{
+								Parts: []string{"american", "city"},
+							},
+							{
+								Parts: []string{"american", "cities"},
+							},
+							{
+								Parts: []string{"american", "county"},
+							},
+							{
+								Parts: []string{"american", "counties"},
+							},
+							{
+								Parts: []string{"american", "country"},
+							},
+							{
+								Parts: []string{"american", "countries"},
+							},
+							{
+								Parts: []string{"american", "district"},
+							},
+							{
+								Parts: []string{"american", "districts"},
+							},
+							{
+								Parts: []string{"american", "province"},
+							},
+							{
+								Parts: []string{"american", "provinces"},
+							},
+							{
+								Parts: []string{"american", "region"},
+							},
+							{
+								Parts: []string{"american", "regions"},
+							},
+							{
+								Parts: []string{"american", "state"},
+							},
+							{
+								Parts: []string{"american", "states"},
+							},
 						},
 						Dcid:             "country/USA",
 						ContainingPlaces: []string{"Earth", "northamerica"},
@@ -115,6 +157,48 @@ func TestLoadRecogPlaceStore(t *testing.T) {
 						Names: []*pb.RecogPlace_Name{
 							{
 								Parts: []string{"montenegro"},
+							},
+							{
+								Parts: []string{"montenegrin", "city"},
+							},
+							{
+								Parts: []string{"montenegrin", "cities"},
+							},
+							{
+								Parts: []string{"montenegrin", "county"},
+							},
+							{
+								Parts: []string{"montenegrin", "counties"},
+							},
+							{
+								Parts: []string{"montenegrin", "country"},
+							},
+							{
+								Parts: []string{"montenegrin", "countries"},
+							},
+							{
+								Parts: []string{"montenegrin", "district"},
+							},
+							{
+								Parts: []string{"montenegrin", "districts"},
+							},
+							{
+								Parts: []string{"montenegrin", "province"},
+							},
+							{
+								Parts: []string{"montenegrin", "provinces"},
+							},
+							{
+								Parts: []string{"montenegrin", "region"},
+							},
+							{
+								Parts: []string{"montenegrin", "regions"},
+							},
+							{
+								Parts: []string{"montenegrin", "state"},
+							},
+							{
+								Parts: []string{"montenegrin", "states"},
 							},
 						},
 						Dcid:             "country/MNE",
