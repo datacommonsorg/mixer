@@ -1943,42 +1943,6 @@
       ]
     },
     {
-      "dcid": "dc/g/Person_PlaceOfResidenceClassification-Rural_PovertyStatus-BelowPovertyLevelInThePast12Months",
-      "name": "Person With Place of Residence Classification = Rural, Poverty Status = Below Poverty Level in The Past 12 Months",
-      "statVars": [
-        {
-          "name": "Population: Rural, Below Poverty Level in The Past 12 Months",
-          "dcid": "Count_Person_Rural_BelowPovertyLevelInThePast12Months"
-        },
-        {
-          "name": "Population: Rural, Below Poverty Level in The Past 12 Months (As Fraction of Count Person Rural)",
-          "dcid": "Count_Person_Rural_BelowPovertyLevelInThePast12Months_AsFractionOf_Count_Person_Rural"
-        },
-        {
-          "name": "Population: Rural, Below Poverty Level in The Past 12 Months (Per Capita)",
-          "dcid": "Count_Person_Rural_BelowPovertyLevelInThePast12Months_AsAFractionOf_Count_Person"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_PlaceOfResidenceClassification-Urban_PovertyStatus-BelowPovertyLevelInThePast12Months",
-      "name": "Person With Place of Residence Classification = Urban, Poverty Status = Below Poverty Level in The Past 12 Months",
-      "statVars": [
-        {
-          "name": "Population: Urban, Below Poverty Level in The Past 12 Months",
-          "dcid": "Count_Person_Urban_BelowPovertyLevelInThePast12Months"
-        },
-        {
-          "name": "Population: Urban, Below Poverty Level in The Past 12 Months (As Fraction of Count Person Urban)",
-          "dcid": "Count_Person_Urban_BelowPovertyLevelInThePast12Months_AsFractionOf_Count_Person_Urban"
-        },
-        {
-          "name": "Population: Urban, Below Poverty Level in The Past 12 Months (Per Capita)",
-          "dcid": "Count_Person_Urban_BelowPovertyLevelInThePast12Months_AsAFractionOf_Count_Person"
-        }
-      ]
-    },
-    {
       "dcid": "dc/g/Household_BenefitsStatus-WithSSIAndOrCashAssistanceInThePast12Months_HouseholdType_PovertyStatus-BelowPovertyLevelInThePast12Months",
       "name": "Household With Benefits Status = With SSIAnd or Cash Assistance in The Past 12 Months, Household Type, Poverty Status = Below Poverty Level in The Past 12 Months",
       "statVars": [
@@ -2249,6 +2213,34 @@
       ]
     },
     {
+      "dcid": "dc/g/Person_PlaceOfResidenceClassification-Rural_PovertyStatus-BelowPovertyLevelInThePast12Months",
+      "name": "Person With Place of Residence Classification = Rural, Poverty Status = Below Poverty Level in The Past 12 Months",
+      "statVars": [
+        {
+          "name": "Population: Rural, Below Poverty Level in The Past 12 Months",
+          "dcid": "Count_Person_Rural_BelowPovertyLevelInThePast12Months"
+        },
+        {
+          "name": "Population: Rural, Below Poverty Level in The Past 12 Months (As Fraction of Count Person Rural)",
+          "dcid": "Count_Person_Rural_BelowPovertyLevelInThePast12Months_AsFractionOf_Count_Person_Rural"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_PlaceOfResidenceClassification-Urban_PovertyStatus-BelowPovertyLevelInThePast12Months",
+      "name": "Person With Place of Residence Classification = Urban, Poverty Status = Below Poverty Level in The Past 12 Months",
+      "statVars": [
+        {
+          "name": "Population: Urban, Below Poverty Level in The Past 12 Months",
+          "dcid": "Count_Person_Urban_BelowPovertyLevelInThePast12Months"
+        },
+        {
+          "name": "Population: Urban, Below Poverty Level in The Past 12 Months (As Fraction of Count Person Urban)",
+          "dcid": "Count_Person_Urban_BelowPovertyLevelInThePast12Months_AsFractionOf_Count_Person_Urban"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/Household_BenefitsStatus-WithFoodStampsInThePast12Months_ChildSchoolEnrollment-PublicSchool_MemberStatus-WithACSEDChild",
       "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Child School Enrollment = Public School, Member Status = With ACSEDChild",
       "statVars": [
@@ -2497,34 +2489,6 @@
         {
           "name": "Male Population Below Poverty Status in the Last Year Who Were Married in the Last Year",
           "dcid": "Count_Person_Male_MarriedInThePast12Months_BelowPovertyLevelInThePast12Months"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_PlaceOfResidenceClassification-Rural_PovertyStatus-BelowPovertyLevelInThePast12Months_SocialCategory",
-      "name": "Person With Place of Residence Classification = Rural, Poverty Status = Below Poverty Level in The Past 12 Months, Social Category",
-      "statVars": [
-        {
-          "name": "Population: Rural, Below Poverty Level in The Past 12 Months, Other Backward Class (Per Capita)",
-          "dcid": "Count_Person_Rural_BelowPovertyLevelInThePast12Months_OtherBackwardClass_AsAFractionOf_Count_Person"
-        },
-        {
-          "name": "Population: Rural, Below Poverty Level in The Past 12 Months, Scheduled Caste (Per Capita)",
-          "dcid": "Count_Person_Rural_BelowPovertyLevelInThePast12Months_ScheduledCaste_AsAFractionOf_Count_Person"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_PlaceOfResidenceClassification-Urban_PovertyStatus-BelowPovertyLevelInThePast12Months_SocialCategory",
-      "name": "Person With Place of Residence Classification = Urban, Poverty Status = Below Poverty Level in The Past 12 Months, Social Category",
-      "statVars": [
-        {
-          "name": "Population: Urban, Below Poverty Level in The Past 12 Months, Other Backward Class (Per Capita)",
-          "dcid": "Count_Person_Urban_BelowPovertyLevelInThePast12Months_OtherBackwardClass_AsAFractionOf_Count_Person"
-        },
-        {
-          "name": "Population: Urban, Below Poverty Level in The Past 12 Months, Scheduled Caste (Per Capita)",
-          "dcid": "Count_Person_Urban_BelowPovertyLevelInThePast12Months_ScheduledCaste_AsAFractionOf_Count_Person"
         }
       ]
     },
@@ -3781,18 +3745,6 @@
       "name": "Person With Poverty Status = Below Poverty Level in The Past 12 Months, Race"
     },
     {
-      "dcid": "dc/g/Person_PovertyStatus-BelowPovertyLevelInThePast12Months_SocialCategory",
-      "name": "Person With Poverty Status = Below Poverty Level in The Past 12 Months, Social Category"
-    },
-    {
-      "dcid": "dc/g/Person_PovertyStatus-BelowPovertyLevelInThePast12Months_SocialCategory-OtherBackwardClass",
-      "name": "Person With Poverty Status = Below Poverty Level in The Past 12 Months, Social Category = Other Backward Class"
-    },
-    {
-      "dcid": "dc/g/Person_PovertyStatus-BelowPovertyLevelInThePast12Months_SocialCategory-ScheduledCaste",
-      "name": "Person With Poverty Status = Below Poverty Level in The Past 12 Months, Social Category = Scheduled Caste"
-    },
-    {
       "dcid": "dc/g/Household_BenefitsStatus-WithFoodStampsInThePast12Months_ChildSchoolEnrollment-PublicSchool_MemberStatus",
       "name": "Household With Benefits Status = With Food Stamps in The Past 12 Months, Child School Enrollment = Public School, Member Status"
     },
@@ -4715,14 +4667,6 @@
     {
       "dcid": "dc/g/Person_Gender_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-WhiteAloneNotHispanicOrLatino",
       "name": "Person With Gender, Poverty Status = Below Poverty Level in The Past 12 Months, Race = White Alone Not Hispanic or Latino"
-    },
-    {
-      "dcid": "dc/g/Person_PlaceOfResidenceClassification_PovertyStatus-BelowPovertyLevelInThePast12Months_SocialCategory-OtherBackwardClass",
-      "name": "Person With Place of Residence Classification, Poverty Status = Below Poverty Level in The Past 12 Months, Social Category = Other Backward Class"
-    },
-    {
-      "dcid": "dc/g/Person_PlaceOfResidenceClassification_PovertyStatus-BelowPovertyLevelInThePast12Months_SocialCategory-ScheduledCaste",
-      "name": "Person With Place of Residence Classification, Poverty Status = Below Poverty Level in The Past 12 Months, Social Category = Scheduled Caste"
     },
     {
       "dcid": "dc/g/Person_Age-Years12To14_Gender_PovertyStatus-BelowPovertyLevelInThePast12Months_Race-AmericanIndianOrAlaskaNativeAlone",
