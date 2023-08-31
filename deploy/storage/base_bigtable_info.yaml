@@ -2,9 +2,9 @@ project: datcom-store
 instance: prophet-cache
 tables:
   - auto2w_2023_08_25_17_18_46
-  - auto1d_2023_08_30_02_17_51
+  - auto1d_2023_08_31_02_19_46
   - auto1w_2023_08_27_21_02_21
-  - frequent_2023_08_30_11_21_31
+  - frequent_2023_08_31_05_18_59
   - ipcc_2023_08_25_17_17_04
   - biomedical_2023_08_25_17_18_26
   - disaster_2023_08_25_17_18_38
