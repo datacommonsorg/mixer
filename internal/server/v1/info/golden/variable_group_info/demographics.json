@@ -4,15 +4,6 @@
     "absoluteName": "Demographics",
     "childStatVars": [
       {
-        "id": "Annual_FoodBudgetShortfall",
-        "searchNames": [
-          "Annual Budget Shortfall of Food"
-        ],
-        "displayName": "Annual Food Budget Shortfall",
-        "definition": "mq=Annual,mp=budgetShortfall,pt=Food",
-        "hasData": true
-      },
-      {
         "id": "Mean_MealCost_Person_FoodSecure",
         "searchNames": [
           "Mean Cost of Person With Food Security Status is Food Secure, Food Type is Meal"
@@ -132,6 +123,12 @@
         "descendentStatVarCount": 11
       },
       {
+        "id": "dc/g/Child",
+        "specializedEntity": "Child",
+        "displayName": "Child",
+        "descendentStatVarCount": 19
+      },
+      {
         "id": "dc/g/Person_ChildrenStatus",
         "specializedEntity": "Children Status",
         "displayName": "Person by Children Status",
@@ -171,13 +168,19 @@
         "id": "dc/g/Person_Ethnicity",
         "specializedEntity": "Ethnicity",
         "displayName": "Person by Ethnicity",
-        "descendentStatVarCount": 1650
+        "descendentStatVarCount": 1653
+      },
+      {
+        "id": "dc/g/Food",
+        "specializedEntity": "Food",
+        "displayName": "Food",
+        "descendentStatVarCount": 2
       },
       {
         "id": "dc/g/Person_FoodSecurityStatus",
         "specializedEntity": "Food Security Status",
         "displayName": "Person by Food Security Status",
-        "descendentStatVarCount": 5
+        "descendentStatVarCount": 15
       },
       {
         "id": "dc/g/Person_Gender",
@@ -201,7 +204,7 @@
         "id": "dc/g/Person_HouseholdIncome",
         "specializedEntity": "Household Income",
         "displayName": "Person by Household Income",
-        "descendentStatVarCount": 40
+        "descendentStatVarCount": 44
       },
       {
         "id": "dc/g/Person_HouseholdType",
@@ -285,19 +288,19 @@
         "id": "dc/g/Person_PlaceOfResidenceClassification",
         "specializedEntity": "Place of Residence Classification",
         "displayName": "Person by Place of Residence Classification",
-        "descendentStatVarCount": 3117
+        "descendentStatVarCount": 3123
       },
       {
         "id": "dc/g/Person_PovertyStatus",
         "specializedEntity": "Poverty Status",
         "displayName": "Person by Poverty Status",
-        "descendentStatVarCount": 918
+        "descendentStatVarCount": 924
       },
       {
         "id": "dc/g/Person_Race",
         "specializedEntity": "Race",
         "displayName": "Person by Race",
-        "descendentStatVarCount": 19580
+        "descendentStatVarCount": 19583
       },
       {
         "id": "dc/g/Person_Religion",
@@ -309,7 +312,7 @@
         "id": "dc/g/Residence",
         "specializedEntity": "Residence",
         "displayName": "Residence",
-        "descendentStatVarCount": 4755
+        "descendentStatVarCount": 4761
       },
       {
         "id": "dc/g/Person_ResidentStatus",
@@ -324,7 +327,7 @@
         "descendentStatVarCount": 104
       }
     ],
-    "descendentStatVarCount": 40831,
+    "descendentStatVarCount": 40868,
     "parentStatVarGroups": [
       "dc/g/Root"
     ]
