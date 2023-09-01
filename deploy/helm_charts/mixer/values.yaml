@@ -97,7 +97,6 @@ kgStoreConfig:
   baseBigtableInfo: ""
   customBigtableInfo: ""
 
-
 # To overwrite any portion of serviceGroups, please copy and paste
 # the entire serviceGroups below into the custom values yaml file,
 # and make changes to it.
@@ -122,8 +121,8 @@ serviceGroups:
       - "/v2/resolve"
     replicas: 1
     resources:
-      memoryRequest: "400M"
-      memoryLimit: "400M"
+      memoryRequest: "1G"
+      memoryLimit: "1G"
   observation:
     urlPaths:
       - "/bulk/stats"
