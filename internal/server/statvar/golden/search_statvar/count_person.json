@@ -2297,6 +2297,10 @@
       "dcid": "Count_Person_Employed_AsAFractionOf_Count_Person"
     },
     {
+      "name": "Population: Food in Secure (Per Capita)",
+      "dcid": "Count_Person_FoodInsecure_AsAFractionOf_Count_Person"
+    },
+    {
       "name": "Population: Illiterate (Per Capita)",
       "dcid": "Count_Person_Illiterate_AsAFractionOf_Count_Person"
     },
@@ -3995,10 +3999,6 @@
     {
       "name": "Population: 10 - 14 Years, Not Hispanic or Latino \u0026 White Alone or In Combination With One or More Other Races",
       "dcid": "Count_Person_10To14Years_NotHispanicOrLatino_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Population: 10 - 14 Years, Now Married",
-      "dcid": "Count_Person_10To14Years_NowMarried"
     }
   ],
   "matches": [

@@ -4,14 +4,6 @@
     "absoluteName": "Demographics",
     "childStatVars": [
       {
-        "id": "Annual_FoodBudgetShortfall",
-        "searchNames": [
-          "Annual Budget Shortfall of Food"
-        ],
-        "displayName": "Annual Food Budget Shortfall",
-        "definition": "mq=Annual,mp=budgetShortfall,pt=Food"
-      },
-      {
         "id": "Mean_MealCost_Person_FoodSecure",
         "searchNames": [
           "Mean Cost of Person With Food Security Status is Food Secure, Food Type is Meal"
@@ -124,6 +116,11 @@
         "displayName": "Person by Benefits Status"
       },
       {
+        "id": "dc/g/Child",
+        "specializedEntity": "Child",
+        "displayName": "Child"
+      },
+      {
         "id": "dc/g/Person_ChildrenStatus",
         "specializedEntity": "Children Status",
         "displayName": "Person by Children Status"
@@ -158,6 +155,11 @@
         "id": "dc/g/Person_Ethnicity",
         "specializedEntity": "Ethnicity",
         "displayName": "Person by Ethnicity"
+      },
+      {
+        "id": "dc/g/Food",
+        "specializedEntity": "Food",
+        "displayName": "Food"
       },
       {
         "id": "dc/g/Person_FoodSecurityStatus",
