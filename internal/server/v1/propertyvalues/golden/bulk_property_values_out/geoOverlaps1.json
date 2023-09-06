@@ -7,6 +7,22 @@
       "node": "geoId/06053",
       "values": [
         {
+          "name": "Congressional District 18 (113th Congress), California",
+          "types": [
+            "CongressionalDistrict"
+          ],
+          "dcid": "geoId/0618",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Congressional District 19 (113th Congress), California",
+          "types": [
+            "CongressionalDistrict"
+          ],
+          "dcid": "geoId/0619",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
           "name": "93210",
           "types": [
             "CensusZipCodeTabulationArea"
