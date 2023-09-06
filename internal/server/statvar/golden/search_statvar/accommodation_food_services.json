@@ -1,4 +1,10 @@
 {
+  "statVars": [
+    {
+      "name": "Amount of Economic Activity (Real Value): Gross Domestic Production, Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)",
+      "dcid": "Amount_EconomicActivity_GrossDomesticProduction_NAICSArtsEntertainmentRecreationAccommodationFoodServices_RealValue"
+    }
+  ],
   "statVarGroups": [
     {
       "dcid": "dc/g/Person_Industry-NAICS/7172_PlaceOfBirth",

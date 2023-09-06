@@ -3912,6 +3912,34 @@
       "provenanceId": "dc/base/BaseSchema"
     },
     {
+      "subjectId": "exportDestination",
+      "subjectName": "exportDestination",
+      "subjectTypes": [
+        "Property"
+      ],
+      "predicate": "rangeIncludes",
+      "objectId": "Country",
+      "objectName": "Country",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/base/BaseSchema"
+    },
+    {
+      "subjectId": "importSource",
+      "subjectName": "importSource",
+      "subjectTypes": [
+        "Property"
+      ],
+      "predicate": "rangeIncludes",
+      "objectId": "Country",
+      "objectName": "Country",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/base/BaseSchema"
+    },
+    {
       "subjectId": "nationality",
       "subjectName": "nationality",
       "subjectTypes": [
