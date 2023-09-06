@@ -8106,6 +8106,22 @@
               "provenanceId": "dc/base/BaseSchema"
             },
             {
+              "name": "exportDestination",
+              "types": [
+                "Property"
+              ],
+              "dcid": "exportDestination",
+              "provenanceId": "dc/base/BaseSchema"
+            },
+            {
+              "name": "importSource",
+              "types": [
+                "Property"
+              ],
+              "dcid": "importSource",
+              "provenanceId": "dc/base/BaseSchema"
+            },
+            {
               "name": "nationality",
               "types": [
                 "Property"
