@@ -25246,6 +25246,7 @@
         "Median_NumberOfRooms_HousingUnit_ForeignBorn_OccupiedHousingUnit_PlaceOfBirthSouthernEasternEurope",
         "Median_NumberOfRooms_HousingUnit_ForeignBorn_OccupiedHousingUnit_PlaceOfBirthWesternAsia",
         "Min_Temperature",
+        "MinimumWage_Person",
         "MonetaryValue_Farm_GovernmentPayment",
         "Monthly_AshContent_Fuel_ForElectricityGeneration_BituminousCoal",
         "Monthly_AshContent_Fuel_ForElectricityGeneration_BituminousCoal_Industrial",

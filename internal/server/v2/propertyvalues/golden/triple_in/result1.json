@@ -8122,6 +8122,14 @@
               "provenanceId": "dc/base/BaseSchema"
             },
             {
+              "name": "lendingEntity",
+              "types": [
+                "Property"
+              ],
+              "dcid": "lendingEntity",
+              "provenanceId": "dc/base/BaseSchema"
+            },
+            {
               "name": "nationality",
               "types": [
                 "Property"

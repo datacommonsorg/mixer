@@ -69,6 +69,11 @@
             "displayName": "Person by Economic Sector"
           },
           {
+            "id": "dc/g/FinancialInstrument",
+            "specializedEntity": "Financial Instrument",
+            "displayName": "Financial Instrument"
+          },
+          {
             "id": "dc/g/Household_HouseholdType",
             "specializedEntity": "Household Type",
             "displayName": "Household by Household Type"
@@ -143,6 +148,11 @@
             "id": "dc/g/TreasuryNote",
             "specializedEntity": "Treasury Note",
             "displayName": "Treasury Note"
+          },
+          {
+            "id": "dc/g/TreasurySecurity",
+            "specializedEntity": "Treasury Security",
+            "displayName": "Treasury Security"
           }
         ],
         "descendentStatVarCount": 139,

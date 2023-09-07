@@ -189,6 +189,20 @@
         },
         {
           "date_place_count": {
+            "2017": 1,
+            "2018": 1,
+            "2019": 1,
+            "2020": 1,
+            "2021": 1
+          },
+          "metadata": {
+            "import_name": "CensusACS5YearSurvey_SubjectTables_S2602PR",
+            "provenance_url": "https://data.census.gov/cedsci/table?q=S2602PR&tid=ACSST5Y2019.S2602PR",
+            "measurement_method": "CensusACS5yrSurveySubjectTable"
+          }
+        },
+        {
+          "date_place_count": {
             "1999": 51,
             "2000": 51,
             "2001": 51,
@@ -433,18 +447,6 @@
         },
         {
           "date_place_count": {
-            "2017": 2,
-            "2018": 2,
-            "2019": 2
-          },
-          "metadata": {
-            "import_name": "CensusACS5YearSurvey_SubjectTables_S2602PR",
-            "provenance_url": "https://data.census.gov/cedsci/table?q=S2602PR&tid=ACSST5Y2019.S2602PR",
-            "measurement_method": "CensusACS5yrSurveySubjectTable"
-          }
-        },
-        {
-          "date_place_count": {
             "2011": 41,
             "2012": 1,
             "2013-07-01": 1,
@@ -672,6 +674,20 @@
         },
         {
           "date_place_count": {
+            "2017": 1,
+            "2018": 1,
+            "2019": 1,
+            "2020": 1,
+            "2021": 1
+          },
+          "metadata": {
+            "import_name": "CensusACS5YearSurvey_SubjectTables_S2602PR",
+            "provenance_url": "https://data.census.gov/cedsci/table?q=S2602PR&tid=ACSST5Y2019.S2602PR",
+            "measurement_method": "CensusACS5yrSurveySubjectTable"
+          }
+        },
+        {
+          "date_place_count": {
             "1999": 51,
             "2000": 51,
             "2001": 51,
@@ -747,18 +763,6 @@
           "metadata": {
             "import_name": "CensusACS5YearSurvey_SubjectTables_S2602",
             "provenance_url": "https://data.census.gov/cedsci/table?q=S2602&tid=ACSST5Y2019.S2602",
-            "measurement_method": "CensusACS5yrSurveySubjectTable"
-          }
-        },
-        {
-          "date_place_count": {
-            "2017": 1,
-            "2018": 1,
-            "2019": 1
-          },
-          "metadata": {
-            "import_name": "CensusACS5YearSurvey_SubjectTables_S2602PR",
-            "provenance_url": "https://data.census.gov/cedsci/table?q=S2602PR&tid=ACSST5Y2019.S2602PR",
             "measurement_method": "CensusACS5yrSurveySubjectTable"
           }
         },
