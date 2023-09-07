@@ -3940,6 +3940,20 @@
       "provenanceId": "dc/base/BaseSchema"
     },
     {
+      "subjectId": "lendingEntity",
+      "subjectName": "lendingEntity",
+      "subjectTypes": [
+        "Property"
+      ],
+      "predicate": "rangeIncludes",
+      "objectId": "Country",
+      "objectName": "Country",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/base/BaseSchema"
+    },
+    {
       "subjectId": "nationality",
       "subjectName": "nationality",
       "subjectTypes": [
