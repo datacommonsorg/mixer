@@ -41,18 +41,18 @@ func TestContainedInFacet(t *testing.T) {
 			date             string
 			goldenFile       string
 		}{
-			// {
-			// 	[]string{"Count_Person", "Median_Age_Person"},
-			// 	"geoId/06<-containedInPlace+{typeOf:County}",
-			// 	"LATEST",
-			// 	"CA_County_latest.json",
-			// },
-			// {
-			// 	[]string{"Count_Person", "Median_Age_Person"},
-			// 	"geoId/06<-containedInPlace+{typeOf:County}",
-			// 	"2015",
-			// 	"CA_County_2015.json",
-			// },
+			{
+				[]string{"Count_Person", "Median_Age_Person"},
+				"geoId/06<-containedInPlace+{typeOf:County}",
+				"LATEST",
+				"CA_County_latest.json",
+			},
+			{
+				[]string{"Count_Person", "Median_Age_Person"},
+				"geoId/06<-containedInPlace+{typeOf:County}",
+				"2015",
+				"CA_County_2015.json",
+			},
 			{
 				[]string{"Count_Person", "Median_Age_Person"},
 				"geoId/06<-containedInPlace+{typeOf:County}",
