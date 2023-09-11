@@ -14,6 +14,9 @@
               "facet_id": "1541763368"
             },
             {
+              "facet_id": "1226172227"
+            },
+            {
               "facet_id": "2517965213"
             },
             {
@@ -43,6 +46,11 @@
       "import_name": "CensusACS5YearSurvey",
       "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
       "measurement_method": "CensusACS5yrSurvey"
+    },
+    "1226172227": {
+      "import_name": "CensusACS1YearSurvey",
+      "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+      "measurement_method": "CensusACS1yrSurvey"
     },
     "1541763368": {
       "import_name": "USDecennialCensus_RedistrictingRelease",
