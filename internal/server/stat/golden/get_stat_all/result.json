@@ -379,6 +379,19 @@
             },
             {
               "val": {
+                "2017": 321004407,
+                "2018": 322903030,
+                "2019": 324697795,
+                "2020": 326569308,
+                "2021": 329725481
+              },
+              "measurementMethod": "CensusACS5yrSurveySubjectTable",
+              "importName": "CensusACS5YearSurvey_SubjectTables_S2603",
+              "provenanceDomain": "census.gov",
+              "provenanceUrl": "https://data.census.gov/cedsci/table?q=S2603\u0026tid=ACSST5Y2019.S2603"
+            },
+            {
+              "val": {
                 "1999": 279040168,
                 "2000": 281421906,
                 "2001": 284968955,
@@ -614,17 +627,6 @@
               "importName": "CensusACS5YearSurvey_SubjectTables_S2602",
               "provenanceDomain": "census.gov",
               "provenanceUrl": "https://data.census.gov/cedsci/table?q=S2602\u0026tid=ACSST5Y2019.S2602"
-            },
-            {
-              "val": {
-                "2017": 321004407,
-                "2018": 322903030,
-                "2019": 324697795
-              },
-              "measurementMethod": "CensusACS5yrSurveySubjectTable",
-              "importName": "CensusACS5YearSurvey_SubjectTables_S2603",
-              "provenanceDomain": "census.gov",
-              "provenanceUrl": "https://data.census.gov/cedsci/table?q=S2603\u0026tid=ACSST5Y2019.S2603"
             },
             {
               "val": {

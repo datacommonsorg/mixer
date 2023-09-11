@@ -22514,6 +22514,110 @@
           "provenanceId": "dc/base/S2Cells"
         },
         {
+          "name": "Sampling station Cha ba",
+          "types": [
+            "SamplingStation"
+          ],
+          "dcid": "undata-geo/S00005430",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Sampling station Gray's Reef",
+          "types": [
+            "SamplingStation"
+          ],
+          "dcid": "undata-geo/S00005440",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Sampling station Gulf of Maine",
+          "types": [
+            "SamplingStation"
+          ],
+          "dcid": "undata-geo/S00005450",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Sampling station Cheeca Rocks",
+          "types": [
+            "SamplingStation"
+          ],
+          "dcid": "undata-geo/S00005460",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Sampling station Coastal MS",
+          "types": [
+            "SamplingStation"
+          ],
+          "dcid": "undata-geo/S00005470",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Sampling station Kaneohe",
+          "types": [
+            "SamplingStation"
+          ],
+          "dcid": "undata-geo/S00005480",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Sampling station CCE2",
+          "types": [
+            "SamplingStation"
+          ],
+          "dcid": "undata-geo/S00005490",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Sampling station La Parguera",
+          "types": [
+            "SamplingStation"
+          ],
+          "dcid": "undata-geo/S00005500",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Sampling station CCE1",
+          "types": [
+            "SamplingStation"
+          ],
+          "dcid": "undata-geo/S00005510",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Sampling station NH-10",
+          "types": [
+            "SamplingStation"
+          ],
+          "dcid": "undata-geo/S00005520",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Sampling station First Landing",
+          "types": [
+            "SamplingStation"
+          ],
+          "dcid": "undata-geo/S00005530",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Sampling station Cape Arago",
+          "types": [
+            "SamplingStation"
+          ],
+          "dcid": "undata-geo/S00005540",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Sampling station Coastal Louisiana",
+          "types": [
+            "SamplingStation"
+          ],
+          "dcid": "undata-geo/S00005550",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
           "name": "Midwest Region",
           "types": [
             "CensusRegion"

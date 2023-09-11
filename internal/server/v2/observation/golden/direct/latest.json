@@ -243,6 +243,15 @@
               ]
             },
             {
+              "facet_id": "217147238",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 329725481
+                }
+              ]
+            },
+            {
               "facet_id": "1152061738",
               "observations": [
                 {
@@ -289,15 +298,6 @@
             },
             {
               "facet_id": "196790193",
-              "observations": [
-                {
-                  "date": "2019",
-                  "value": 324697795
-                }
-              ]
-            },
-            {
-              "facet_id": "217147238",
               "observations": [
                 {
                   "date": "2019",

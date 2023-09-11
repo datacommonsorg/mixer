@@ -209,6 +209,7 @@
     },
     {
       "subjectId": "country/ALA",
+      "subjectName": "Åland Islands",
       "subjectTypes": [
         "Country"
       ],
