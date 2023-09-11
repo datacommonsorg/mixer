@@ -38,6 +38,16 @@
         "type": "GeoRegion"
       },
       {
+        "dcid": "undata-geo/G00136000",
+        "name": "Northern America",
+        "type": "GeoRegion"
+      },
+      {
+        "dcid": "undata-geo/G00134000",
+        "name": "Americas",
+        "type": "GeoRegion"
+      },
+      {
         "dcid": "northamerica",
         "name": "North America",
         "type": "Continent"
@@ -46,11 +56,6 @@
         "dcid": "Earth",
         "name": "World",
         "type": "Place"
-      },
-      {
-        "dcid": "undata-geo/G00134000",
-        "name": "Americas",
-        "type": "GeoRegion"
       }
     ]
   }

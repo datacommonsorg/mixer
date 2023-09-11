@@ -237,8 +237,7 @@
       {
         "id": "dc/g/Demographics_Miscellaneous",
         "specializedEntity": "Miscellaneous",
-        "displayName": "Miscellaneous",
-        "descendentStatVarCount": 1160
+        "displayName": "Miscellaneous"
       },
       {
         "id": "dc/g/Household_Nativity",

@@ -116,8 +116,7 @@
           {
             "id": "dc/g/Economy_Miscellaneous",
             "specializedEntity": "Miscellaneous",
-            "displayName": "Miscellaneous",
-            "descendentStatVarCount": 133
+            "displayName": "Miscellaneous"
           },
           {
             "id": "dc/g/NetworkSubscriber",
