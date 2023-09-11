@@ -129,7 +129,34 @@ func ContainedInFacet(
 			// When date doesn't matter, use SeriesFacet to get the facets for the
 			// child places
 			if queryDate == "" || queryDate == observation.LATEST {
-				return SeriesFacet(ctx, store, cache, variables, childPlaces)
+				resp, err := SeriesFacet(ctx, store, cache, variables, childPlaces)
+				if err != nil {
+					return nil, err
+				}
+				for _, entityData := range resp.ByVariable {
+					seenFacetId := map[string]struct{}{}
+					mergedFacetData := &pbv2.EntityObservation{
+						OrderedFacets: []*pbv2.FacetObservation{},
+					}
+					// Note there are no perfect facet order for all the entities.
+					// The order here is only an approximate.
+					for _, facetData := range entityData.ByEntity {
+						for _, item := range facetData.OrderedFacets {
+							if _, ok := seenFacetId[item.FacetId]; !ok {
+								seenFacetId[item.FacetId] = struct{}{}
+								mergedFacetData.OrderedFacets = append(
+									mergedFacetData.OrderedFacets,
+									&pbv2.FacetObservation{
+										FacetId: item.FacetId,
+									})
+							}
+						}
+					}
+					entityData.ByEntity = map[string]*pbv2.EntityObservation{
+						"": mergedFacetData,
+					}
+				}
+				return resp, nil
 			}
 			// Otherwise, get all source series and process them to get the facets
 			btData, err := stat.ReadStatsPb(ctx, store.BtGroup, childPlaces, variables)
