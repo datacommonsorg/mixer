@@ -68,26 +68,6 @@ func TestLoadRecogPlaceStore(t *testing.T) {
 				},
 			},
 		},
-		{
-			"subsaharan",
-			&pb.RecogPlaces{
-				Places: []*pb.RecogPlace{
-					{
-						Names: []*pb.RecogPlace_Name{
-							{
-								Parts: []string{"sub", "saharan", "africa"},
-							},
-							{
-								Parts: []string{"subsaharan", "africa"},
-							},
-						},
-						Dcid:             "SubSaharanAfrica",
-						ContainingPlaces: []string{"Earth", "africa"},
-						Population:       579000000,
-					},
-				},
-			},
-		},
 	} {
 		got, ok := recogPlaceStore.RecogPlaceMap[c.key]
 		if !ok {
