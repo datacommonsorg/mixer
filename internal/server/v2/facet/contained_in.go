@@ -140,15 +140,19 @@ func ContainedInFacet(
 					}
 					// Note there are no perfect facet order for all the entities.
 					// The order here is only an approximate.
-					for _, facetData := range entityData.ByEntity {
-						for _, item := range facetData.OrderedFacets {
-							if _, ok := seenFacetId[item.FacetId]; !ok {
+					for _, entity := range childPlaces {
+						if facetData, ok := entityData.ByEntity[entity]; ok {
+							for _, item := range facetData.OrderedFacets {
+								if _, ok := seenFacetId[item.FacetId]; ok {
+									continue
+								}
 								seenFacetId[item.FacetId] = struct{}{}
 								mergedFacetData.OrderedFacets = append(
 									mergedFacetData.OrderedFacets,
 									&pbv2.FacetObservation{
 										FacetId: item.FacetId,
-									})
+									},
+								)
 							}
 						}
 					}
