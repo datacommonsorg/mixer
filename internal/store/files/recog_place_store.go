@@ -153,6 +153,9 @@ func LoadRecogPlaceStore() (*RecogPlaceStore, error) {
 				"Empty names for CSV record: %v", record)
 		}
 		names := strings.Split(strings.TrimSpace(record[2]), ",")
+		for i := range names {
+			names[i] = strings.TrimSpace(names[i])
+		}
 
 		// Add alternate names if any.
 		altNames, ok := dcidToAlternateNames[dcid]
