@@ -192,28 +192,35 @@ func ReadStatsPb(
 		return nil, err
 	}
 	result := map[string]map[string]*pb.ObsTimeSeries{}
+	hasData := map[string]map[string]bool{}
 	for _, p := range places {
 		if _, ok := result[p]; !ok {
 			result[p] = map[string]*pb.ObsTimeSeries{}
+			hasData[p] = map[string]bool{}
 		}
 		for _, sv := range statVars {
 			result[p][sv] = &pb.ObsTimeSeries{}
+			hasData[p][sv] = false
 		}
 	}
 	for i, btData := range btDataList {
+		isDcBranch := btGroup.TableNames()[i] == btGroup.BranchTableName()
 		for _, row := range btData {
 			place := row.Parts[0]
 			sv := row.Parts[1]
+			// Always prefer data from branch cache.
+			if hasData[place][sv] {
+				continue
+			}
+			if isDcBranch {
+				hasData[place][sv] = true
+			}
 			obs := row.Data.(*pb.ObsTimeSeries)
 			result[place][sv].SourceSeries = append(
 				result[place][sv].SourceSeries,
 				obs.SourceSeries...,
 			)
 			result[place][sv].PlaceName = obs.PlaceName
-		}
-		// Always prefer data from branch cache.
-		if len(btData) > 0 && btGroup.TableNames()[i] == btGroup.BranchTableName() {
-			break
 		}
 	}
 	// Same sources could be from different import groups. For example, NYT Covid
