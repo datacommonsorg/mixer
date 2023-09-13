@@ -193,7 +193,7 @@ func ReadStatsPb(
 	}
 	result := map[string]map[string]*pb.ObsTimeSeries{}
 	// Map from facet Id to boolean to record dcbranch cache data availability
-	hasData := map[string]struct{}{}
+	hasBranchData := map[string]struct{}{}
 	for _, p := range places {
 		if _, ok := result[p]; !ok {
 			result[p] = map[string]*pb.ObsTimeSeries{}
@@ -210,11 +210,11 @@ func ReadStatsPb(
 			obs := row.Data.(*pb.ObsTimeSeries)
 			for _, ss := range obs.SourceSeries {
 				facetId := getSourceSeriesFacetID(ss)
-				if _, ok := hasData[facetId]; ok {
+				if _, ok := hasBranchData[facetId]; ok {
 					continue
 				}
 				if isDcBranch {
-					hasData[facetId] = struct{}{}
+					hasBranchData[facetId] = struct{}{}
 				}
 				result[place][sv].SourceSeries = append(result[place][sv].SourceSeries, ss)
 			}
@@ -258,7 +258,7 @@ func ReadStatCollection(
 		result[sv] = &pb.ObsCollection{}
 	}
 	// Map from facet Id to boolean to record dcbranch cache data availability
-	hasData := map[string]struct{}{}
+	hasBranchData := map[string]struct{}{}
 	for i, btData := range btDataList {
 		isDcBranch := btGroup.TableNames()[i] == btGroup.BranchTableName()
 		for _, row := range btData {
@@ -269,11 +269,11 @@ func ReadStatCollection(
 			}
 			for _, sc := range obsCollection.SourceCohorts {
 				facetId := getSourceSeriesFacetID(sc)
-				if _, ok := hasData[facetId]; ok {
+				if _, ok := hasBranchData[facetId]; ok {
 					continue
 				}
 				if isDcBranch {
-					hasData[facetId] = struct{}{}
+					hasBranchData[facetId] = struct{}{}
 				}
 				result[sv].SourceCohorts = append(result[sv].SourceCohorts, sc)
 			}
