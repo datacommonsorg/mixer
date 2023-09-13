@@ -192,15 +192,14 @@ func ReadStatsPb(
 		return nil, err
 	}
 	result := map[string]map[string]*pb.ObsTimeSeries{}
-	hasData := map[string]map[string]bool{}
+	// Map from facet Id to boolean to record dcbranch cache data availability
+	hasData := map[string]struct{}{}
 	for _, p := range places {
 		if _, ok := result[p]; !ok {
 			result[p] = map[string]*pb.ObsTimeSeries{}
-			hasData[p] = map[string]bool{}
 		}
 		for _, sv := range statVars {
 			result[p][sv] = &pb.ObsTimeSeries{}
-			hasData[p][sv] = false
 		}
 	}
 	for i, btData := range btDataList {
@@ -208,18 +207,17 @@ func ReadStatsPb(
 		for _, row := range btData {
 			place := row.Parts[0]
 			sv := row.Parts[1]
-			// Always prefer data from branch cache.
-			if hasData[place][sv] {
-				continue
-			}
-			if isDcBranch {
-				hasData[place][sv] = true
-			}
 			obs := row.Data.(*pb.ObsTimeSeries)
-			result[place][sv].SourceSeries = append(
-				result[place][sv].SourceSeries,
-				obs.SourceSeries...,
-			)
+			for _, ss := range obs.SourceSeries {
+				facetId := getSourceSeriesFacetID(ss)
+				if _, ok := hasData[facetId]; ok {
+					continue
+				}
+				if isDcBranch {
+					hasData[facetId] = struct{}{}
+				}
+				result[place][sv].SourceSeries = append(result[place][sv].SourceSeries, ss)
+			}
 			result[place][sv].PlaceName = obs.PlaceName
 		}
 	}
@@ -259,16 +257,26 @@ func ReadStatCollection(
 	for _, sv := range statVars {
 		result[sv] = &pb.ObsCollection{}
 	}
-	// ss := result[token].SourceCohorts
-	for _, btData := range btDataList {
+	// Map from facet Id to boolean to record dcbranch cache data availability
+	hasData := map[string]struct{}{}
+	for i, btData := range btDataList {
+		isDcBranch := btGroup.TableNames()[i] == btGroup.BranchTableName()
 		for _, row := range btData {
 			sv := row.Parts[2]
 			obsCollection, ok := row.Data.(*pb.ObsCollection)
 			if !ok {
 				return nil, status.Errorf(codes.Internal, "invalid data for pb.ObsCollection")
 			}
-			result[sv].SourceCohorts = append(
-				result[sv].SourceCohorts, obsCollection.SourceCohorts...)
+			for _, sc := range obsCollection.SourceCohorts {
+				facetId := getSourceSeriesFacetID(sc)
+				if _, ok := hasData[facetId]; ok {
+					continue
+				}
+				if isDcBranch {
+					hasData[facetId] = struct{}{}
+				}
+				result[sv].SourceCohorts = append(result[sv].SourceCohorts, sc)
+			}
 		}
 	}
 	for sv := range result {
