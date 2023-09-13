@@ -200,7 +200,7 @@ func ReadStatsPb(
 			result[p][sv] = &pb.ObsTimeSeries{}
 		}
 	}
-	for _, btData := range btDataList {
+	for i, btData := range btDataList {
 		for _, row := range btData {
 			place := row.Parts[0]
 			sv := row.Parts[1]
@@ -210,6 +210,10 @@ func ReadStatsPb(
 				obs.SourceSeries...,
 			)
 			result[place][sv].PlaceName = obs.PlaceName
+		}
+		// Always prefer data from branch cache.
+		if len(btData) > 0 && btGroup.TableNames()[i] == btGroup.BranchTableName() {
+			break
 		}
 	}
 	// Same sources could be from different import groups. For example, NYT Covid

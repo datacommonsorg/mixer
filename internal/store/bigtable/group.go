@@ -26,7 +26,10 @@ import (
 )
 
 var groupRank = map[string]int{
-	"dcbranch":   0, // Used for the latest proto branch cache
+	// Used for the latest branch cache and stats override.
+	// If data is seen in dcbranch cache, data in other import groups will not
+	// be used. So it has the highest ranking.
+	"dcbranch":   -1,
 	"schema":     0,
 	"country":    0,
 	"auto1d":     1,
@@ -147,4 +150,8 @@ func (g *Group) UpdateBranchTable(branchTable *Table) {
 	g.branchTableName = branchTable.name
 	g.tables = tables
 	SortTables(g.tables)
+}
+
+func (g *Group) BranchTableName() string {
+	return g.branchTableName
 }
