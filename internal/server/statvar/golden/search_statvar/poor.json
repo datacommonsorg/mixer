@@ -2127,11 +2127,11 @@
       "name": "Average Proportion of Deprivations for People Multidimensionally Poor by Urbanisation",
       "statVars": [
         {
-          "name": "Average proportion of deprivations for people multidimensionally poor [Location = Rural]",
+          "name": "Average proportion of deprivations for people multidimensionally poor [Rural]",
           "dcid": "sdg/SD_MDP_ANDI.URBANISATION--R"
         },
         {
-          "name": "Average proportion of deprivations for people multidimensionally poor [Location = Urban]",
+          "name": "Average proportion of deprivations for people multidimensionally poor [Urban]",
           "dcid": "sdg/SD_MDP_ANDI.URBANISATION--U"
         }
       ]
@@ -2165,15 +2165,15 @@
       ]
     },
     {
-      "dcid": "dc/g/SDGSICOVPOOR_gender",
-      "name": "Proportion of Poor Population Receiving Social Assistance Cash Benefit by Gender",
+      "dcid": "dc/g/SDGSICOVPOOR_sdgsex",
+      "name": "Proportion of Poor Population Receiving Social Assistance Cash Benefit, by Sex by Sex",
       "statVars": [
         {
-          "name": "Proportion of poor population receiving social assistance cash benefit [Sex = Female]",
+          "name": "Proportion of poor population receiving social assistance cash benefit, by sex [Female]",
           "dcid": "sdg/SI_COV_POOR.SEX--F"
         },
         {
-          "name": "Proportion of poor population receiving social assistance cash benefit [Sex = Male]",
+          "name": "Proportion of poor population receiving social assistance cash benefit, by sex [Male]",
           "dcid": "sdg/SI_COV_POOR.SEX--M"
         }
       ]
@@ -3420,10 +3420,10 @@
     },
     {
       "dcid": "dc/g/SDGSICOVPOOR",
-      "name": "Proportion of Poor Population Receiving Social Assistance Cash Benefit",
+      "name": "Proportion of Poor Population Receiving Social Assistance Cash Benefit, by Sex",
       "statVars": [
         {
-          "name": "Proportion of poor population receiving social assistance cash benefit",
+          "name": "Proportion of poor population receiving social assistance cash benefit, by sex",
           "dcid": "sdg/SI_COV_POOR"
         }
       ]

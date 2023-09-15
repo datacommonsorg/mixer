@@ -116,7 +116,8 @@
           {
             "id": "dc/g/Economy_Miscellaneous",
             "specializedEntity": "Miscellaneous",
-            "displayName": "Miscellaneous"
+            "displayName": "Miscellaneous",
+            "descendentStatVarCount": 133
           },
           {
             "id": "dc/g/NetworkSubscriber",
@@ -154,7 +155,7 @@
             "displayName": "Treasury Security"
           }
         ],
-        "descendentStatVarCount": 139,
+        "descendentStatVarCount": 133,
         "parentStatVarGroups": [
           "dc/g/Root"
         ]

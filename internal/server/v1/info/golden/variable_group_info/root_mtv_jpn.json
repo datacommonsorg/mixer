@@ -31,7 +31,7 @@
         "id": "dc/g/Energy",
         "specializedEntity": "Energy",
         "displayName": "Energy",
-        "descendentStatVarCount": 1210
+        "descendentStatVarCount": 1213
       },
       {
         "id": "dc/g/Environment",
@@ -73,7 +73,7 @@
         "id": "dc/g/SDG",
         "specializedEntity": "Sustainable Development Goals",
         "displayName": "Sustainable Development Goals",
-        "descendentStatVarCount": 1139
+        "descendentStatVarCount": 1134
       }
     ],
     "descendentStatVarCount": 11299

@@ -210,7 +210,7 @@
             "maxValue": 11710000
           },
           "CongressionalDistrict": {
-            "placeCount": 452,
+            "placeCount": 440,
             "topPlaces": [
               {
                 "dcid": "geoId/7298",
@@ -1085,7 +1085,7 @@
                     "maxValue": 4543807
                   },
                   "CongressionalDistrict": {
-                    "placeCount": 452,
+                    "placeCount": 440,
                     "topPlaces": [
                       {
                         "dcid": "geoId/7298",
@@ -1220,12 +1220,12 @@
                 },
                 "minValue": 0,
                 "maxValue": 19783141,
-                "observationCount": 4604867,
-                "timeSeriesCount": 507779
+                "observationCount": 4604855,
+                "timeSeriesCount": 507767
               }
             ],
-            "observationCount": 4604867,
-            "timeSeriesCount": 507779
+            "observationCount": 4604855,
+            "timeSeriesCount": 507767
           },
           "dc/base/CensusACS5YearSurvey_AggCountry": {
             "importName": "CensusACS5YearSurvey_AggCountry",
