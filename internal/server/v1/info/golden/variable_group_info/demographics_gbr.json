@@ -237,7 +237,8 @@
       {
         "id": "dc/g/Demographics_Miscellaneous",
         "specializedEntity": "Miscellaneous",
-        "displayName": "Miscellaneous"
+        "displayName": "Miscellaneous",
+        "descendentStatVarCount": 1160
       },
       {
         "id": "dc/g/Household_Nativity",
@@ -292,7 +293,7 @@
         "displayName": "Household by Transportation Type"
       }
     ],
-    "descendentStatVarCount": 4481,
+    "descendentStatVarCount": 4478,
     "parentStatVarGroups": [
       "dc/g/Root"
     ]
