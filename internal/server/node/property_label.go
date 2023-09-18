@@ -77,7 +77,7 @@ func GetPropertiesHelper(
 		}
 	}
 	// Fetch data from SQLite
-	if store.SQLiteClient != nil {
+	if store.SQLClient != nil {
 		nodesStr := "'" + strings.Join(nodes, "', '") + "'"
 		var query string
 		if direction == util.DirectionOut {
@@ -94,7 +94,7 @@ func GetPropertiesHelper(
 			)
 		}
 		// Execute query
-		rows, err := store.SQLiteClient.Query(query)
+		rows, err := store.SQLClient.Query(query)
 		if err != nil {
 			return nil, err
 		}

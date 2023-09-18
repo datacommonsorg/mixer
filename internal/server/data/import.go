@@ -16,13 +16,11 @@ package data
 
 import (
 	"context"
-	"database/sql"
-	"path/filepath"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/cache"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
-	"github.com/datacommonsorg/mixer/internal/sqlite/writer"
+	"github.com/datacommonsorg/mixer/internal/sqldb"
 	"github.com/datacommonsorg/mixer/internal/store"
 )
 
@@ -32,36 +30,30 @@ func Import(
 	in *pb.ImportRequest,
 	st *store.Store,
 	metadata *resource.Metadata,
-	openSql bool,
 ) (*resource.Cache, error) {
-	var err error
-	if err = writer.Write(
+	// First clear the tables.
+	err := sqldb.ClearTables(st.SQLClient, metadata.SQLitePath)
+	if err != nil {
+		return nil, err
+	}
+	// Write data.
+	if err = sqldb.Write(
+		st.SQLClient,
 		metadata,
 	); err != nil {
 		return nil, err
 	}
-	var c *resource.Cache
-	if openSql {
-		if st.SQLiteClient != nil {
-			st.SQLiteClient.Close()
-		}
-		sqlClient, err := sql.Open(
-			"sqlite3", filepath.Join(metadata.SQLitePath, "datacommons.db"))
-		if err != nil {
-			return nil, err
-		}
-		st.SQLiteClient = sqlClient
-		c, err = cache.NewCache(
-			ctx,
-			st,
-			cache.SearchOptions{
-				UseSearch:           true,
-				BuildSvgSearchIndex: true,
-			},
-		)
-		if err != nil {
-			return nil, err
-		}
+	// Build in-memory cache.
+	c, err := cache.NewCache(
+		ctx,
+		st,
+		cache.SearchOptions{
+			UseSearch:           true,
+			BuildSvgSearchIndex: true,
+		},
+	)
+	if err != nil {
+		return nil, err
 	}
 	return c, nil
 }

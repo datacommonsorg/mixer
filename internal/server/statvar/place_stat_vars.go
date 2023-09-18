@@ -102,8 +102,8 @@ func GetEntityStatVarsHelper(
 			resp[entity].StatVars = util.MergeDedupe(allStatVars...)
 		}
 	}
-	// Fetch from SQLite
-	if store.SQLiteClient != nil {
+	// Fetch from SQL database
+	if store.SQLClient != nil {
 		query := fmt.Sprintf(
 			`
 				SELECT entity, GROUP_CONCAT(DISTINCT variable) AS variables
@@ -113,7 +113,7 @@ func GetEntityStatVarsHelper(
 			util.SQLInParam(len(entities)),
 		)
 		// Execute query
-		rows, err := store.SQLiteClient.Query(query, util.ConvertArgs(entities)...)
+		rows, err := store.SQLClient.Query(query, util.ConvertArgs(entities)...)
 		if err != nil {
 			return nil, err
 		}

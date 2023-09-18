@@ -28,7 +28,7 @@ type Store struct {
 	BqClient        *bigquery.Client
 	BtGroup         *bigtable.Group
 	RecogPlaceStore *files.RecogPlaceStore
-	SQLiteClient    *sql.DB
+	SQLClient       *sql.DB
 }
 
 // NewStore creates a new store.
@@ -56,7 +56,7 @@ func NewStore(
 	}
 	return &Store{
 		BqClient:        bqClient,
-		SQLiteClient:    sqlClient,
+		SQLClient:       sqlClient,
 		BtGroup:         btGroup,
 		RecogPlaceStore: recogPlaceStore,
 	}, nil

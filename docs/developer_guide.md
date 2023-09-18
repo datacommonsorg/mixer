@@ -73,19 +73,16 @@ go run examples/api/main.go
 
 ## Start Mixer as a gRPC server backed by SQLite Database
 
-Mixer can load data stored in SQLite database. This requires to set the
-following flag:
+Mixer can load data stored in SQLite database. This requires setting flag:
 
 - `--use_sqlite=true`
 
-Prerequists:
-
-- Create a sqlite database `datacommons.db` in the root of repo.
-
-Run the following code to start mixer
+Run the following code to start mixer, with CSV data under `data` folder in the
+root of this repo.
 
 ```bash
 # In repo root directory
+echo mixer_api_key=<YOUR API KEY>
 go run cmd/main.go \
     --use_sqlite=true \
     --use_bigquery=false \

@@ -1,24 +1,30 @@
 package main
 
 import (
+	"database/sql"
 	"flag"
 	"log"
 
 	_ "github.com/mattn/go-sqlite3" // SQLite driver
 
 	"github.com/datacommonsorg/mixer/internal/server/resource"
-	"github.com/datacommonsorg/mixer/internal/sqlite/writer"
+	"github.com/datacommonsorg/mixer/internal/sqldb"
 )
 
 var (
-	sqlite_dir = flag.String("sqlite_dir", "", "SQLite directory.")
+	sqliteDir = flag.String("sqlite_dir", "", "SQLite directory.")
 )
 
 func main() {
 	flag.Parse()
-	if err := writer.Write(
+	sqlClient, err := sql.Open("sqlite3", *sqliteDir)
+	if err != nil {
+		log.Fatalf("Can not open SQL client %v", err)
+	}
+	if err := sqldb.Write(
+		sqlClient,
 		&resource.Metadata{
-			SQLitePath:        *sqlite_dir,
+			SQLitePath:        *sqliteDir,
 			RemoteMixerDomain: "https://autopush.api.datacommons.org",
 			RemoteMixerAPIKey: "AIzaSyBCybF1COkc05kj5n5FHpXOnH3EdGBnUz0",
 		}); err != nil {

@@ -219,7 +219,7 @@ func FetchContainedIn(
 	}
 
 	// Fetch Data from SQLite database.
-	if store.SQLiteClient != nil {
+	if store.SQLClient != nil {
 		if len(childPlaces) == 0 {
 			childPlaces, err = FetchChildPlaces(
 				ctx, store, metadata, httpClient, remoteMixer, ancestor, childType)
@@ -229,7 +229,7 @@ func FetchContainedIn(
 		}
 		directResp, err := FetchDirectSQL(
 			ctx,
-			store.SQLiteClient,
+			store.SQLClient,
 			variables,
 			childPlaces,
 			queryDate,

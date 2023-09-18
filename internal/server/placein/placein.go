@@ -76,7 +76,7 @@ func GetPlacesIn(
 			}
 		}
 	}
-	if store.SQLiteClient != nil {
+	if store.SQLClient != nil {
 		// Only queries based on direct containedInPlace for now.
 		// This could extend to more hops and even link with BT cache data, but that
 		// might make it too complicated.
@@ -98,7 +98,7 @@ func GetPlacesIn(
 		args := []string{childPlaceType}
 		args = append(args, parentPlaces...)
 		// Execute query
-		rows, err := store.SQLiteClient.Query(query, util.ConvertArgs(args)...)
+		rows, err := store.SQLClient.Query(query, util.ConvertArgs(args)...)
 		if err != nil {
 			return nil, err
 		}

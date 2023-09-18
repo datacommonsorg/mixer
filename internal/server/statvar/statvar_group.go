@@ -280,7 +280,7 @@ func GetStatVarGroup(
 				}
 			}
 		}
-		if store.SQLiteClient != nil {
+		if store.SQLClient != nil {
 			// Query for all the stat var group node
 			query :=
 				`
@@ -292,7 +292,7 @@ func GetStatVarGroup(
 					AND t2.predicate="name"
 					AND t3.predicate="specializationOf";
 				`
-			rows, err := store.SQLiteClient.Query(query)
+			rows, err := store.SQLClient.Query(query)
 			if err != nil {
 				return nil, err
 			}
@@ -331,7 +331,7 @@ func GetStatVarGroup(
 					AND t2.predicate="description"
 					AND t3.predicate="memberOf";
 				`
-			rows, err = store.SQLiteClient.Query(query)
+			rows, err = store.SQLClient.Query(query)
 			if err != nil {
 				return nil, err
 			}

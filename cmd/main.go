@@ -24,17 +24,16 @@ import (
 	"net/http"
 	_ "net/http/pprof"
 	"os"
-	"path/filepath"
 	"runtime"
 	"runtime/pprof"
 
-	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbs "github.com/datacommonsorg/mixer/internal/proto/service"
 	"github.com/datacommonsorg/mixer/internal/server"
 	"github.com/datacommonsorg/mixer/internal/server/cache"
-	"github.com/datacommonsorg/mixer/internal/server/data"
 	"github.com/datacommonsorg/mixer/internal/server/healthcheck"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
+	"github.com/datacommonsorg/mixer/internal/sqldb/cloudsql"
+	"github.com/datacommonsorg/mixer/internal/sqldb/sqlite"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"github.com/datacommonsorg/mixer/internal/util"
@@ -71,6 +70,9 @@ var (
 	// SQLite database
 	useSQLite  = flag.Bool("use_sqlite", false, "Use SQLite as database.")
 	sqlitePath = flag.String("sqlite_path", "", "SQLite DB file path.")
+	// CloudSQL
+	useCloudSQL      = flag.Bool("use_cloudsql", false, "Use Google CloudSQL as database.")
+	cloudSQLInstance = flag.String("cloudsql_instance", "", "CloudSQL instance name: e.g. project:region:instance")
 	// Stat-var search cache
 	useSearch = flag.Bool("use_search", true, "Uses stat var search. Will build search indexes.")
 	// Include maps client
@@ -183,17 +185,23 @@ func main() {
 	// SQLite DB
 	var sqlClient *sql.DB
 	if *useSQLite {
-		_, err := os.Stat(filepath.Join(*sqlitePath, "datacommons.db"))
-		if os.IsNotExist(err) {
-			if _, err := data.Import(ctx, &pb.ImportRequest{}, nil, metadata, false); err != nil {
-				log.Fatalf("Can not write csv file to sqlite: %v", err)
-			}
-		}
-		sqlClient, err = sql.Open("sqlite3", filepath.Join(*sqlitePath, "datacommons.db"))
+		sqlClient, err = sqlite.CreateDB(*sqlitePath)
 		if err != nil {
 			log.Fatalf("Can not open sqlite3 database from: %s", *sqlitePath)
 		}
 		defer sqlClient.Close()
+	}
+
+	if *useCloudSQL {
+		if sqlClient != nil {
+			log.Printf("SQL client has already been created, will not use CloudSQL")
+		} else {
+			sqlClient, err = cloudsql.ConnectWithConnector(*cloudSQLInstance)
+			if err != nil {
+				log.Fatalf("Can not open cloud sql database from: %s", *cloudSQLInstance)
+			}
+			defer sqlClient.Close()
+		}
 	}
 
 	// Store
