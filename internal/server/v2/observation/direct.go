@@ -83,7 +83,7 @@ func FetchDirect(
 	if err != nil {
 		return nil, err
 	}
-	o2, err := FetchDirectSQL(ctx, store.SQLiteClient, variables, entities, queryDate, filter)
+	o2, err := FetchDirectSQL(ctx, store.SQLClient, variables, entities, queryDate, filter)
 	if err != nil {
 		return nil, err
 	}

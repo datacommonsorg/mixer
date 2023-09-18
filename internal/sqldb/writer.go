@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package writer
+package sqldb
 
 import (
 	"database/sql"
@@ -53,7 +53,7 @@ type triple struct {
 }
 
 // Write writes raw CSV files to SQLite CSV files.
-func Write(resourceMetadata *resource.Metadata) error {
+func Write(sqlClient *sql.DB, resourceMetadata *resource.Metadata) error {
 	fileDir := resourceMetadata.SQLitePath
 	csvFiles, err := listCSVFiles(fileDir)
 	if err != nil {
@@ -113,8 +113,7 @@ func Write(resourceMetadata *resource.Metadata) error {
 			},
 		)
 	}
-
-	return writeOutput(observationList, tripleList, fileDir)
+	return writeOutput(sqlClient, fileDir, observationList, tripleList)
 }
 
 func listCSVFiles(dir string) ([]string, error) {
@@ -231,7 +230,6 @@ func resolvePlaces(
 		return nil, err
 	}
 	for _, entity := range resp.GetEntities() {
-		fmt.Printf("aaa: %v\n", entity)
 		if _, ok := placeToDCID[entity.GetNode()]; ok {
 			continue
 		}
@@ -274,88 +272,24 @@ func validateLatLng(latLng string) error {
 	return nil
 }
 
-func prepareDatabase(fileDir string) error {
-	dbPath := filepath.Join(fileDir, "datacommons.db")
-	_, err := os.Stat(dbPath)
-	if os.IsNotExist(err) {
-		_, err := os.Create(dbPath)
-		if err != nil {
-			return err
-		}
-	}
-	db, err := sql.Open("sqlite3", dbPath)
-	if err != nil {
-		return err
-	}
-	defer db.Close()
-
-	_, err = db.Exec(
-		`
-			DROP TABLE IF EXISTS observations;
-			DROP TABLE IF EXISTS triples;
-		`,
-	)
-	if err != nil {
-		return err
-	}
-
-	tripleStatement := `
-	CREATE TABLE triples (
-		subject_id TEXT,
-		predicate TEXT,
-		object_id TEXT,
-		object_value TEXT
-	);
-	`
-	_, err = db.Exec(tripleStatement)
-	if err != nil {
-		return err
-	}
-
-	observationStatement := `
-	CREATE TABLE observations (
-		entity TEXT,
-		variable TEXT,
-		date TEXT,
-		value TEXT,
-		provenance TEXT
-	);
-	`
-	_, err = db.Exec(observationStatement)
-	if err != nil {
-		return err
-	}
-	return nil
-}
-
 func writeOutput(
+	sqlClient *sql.DB,
+	fileDir string,
 	observations []*observation,
 	triples []*triple,
-	fileDir string,
 ) error {
-	err := prepareDatabase(fileDir)
-	if err != nil {
-		return err
-	}
-	db, err := sql.Open("sqlite3", filepath.Join(fileDir, "datacommons.db"))
-	if err != nil {
-		return err
-	}
-	defer db.Close()
-
 	// Observations.
 	for _, o := range observations {
 		sqlStmt := `INSERT INTO observations(entity,variable,date,value,provenance) VALUES (?, ?, ?, ?, ?)`
-		_, err = db.Exec(sqlStmt, o.entity, o.variable, o.date, o.value, o.provenance)
+		_, err := sqlClient.Exec(sqlStmt, o.entity, o.variable, o.date, o.value, o.provenance)
 		if err != nil {
 			return err
 		}
 	}
-
 	// Triples.
 	for _, t := range triples {
 		sqlStmt := `INSERT INTO triples(subject_id,predicate,object_id,object_value) VALUES (?, ?, ?, ?)`
-		_, err = db.Exec(sqlStmt, t.subjectID, t.predicate, t.objectID, t.objectValue)
+		_, err := sqlClient.Exec(sqlStmt, t.subjectID, t.predicate, t.objectID, t.objectValue)
 		if err != nil {
 			return err
 		}

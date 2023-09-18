@@ -80,7 +80,7 @@ func Count(
 			}
 		}
 	}
-	if st.SQLiteClient != nil {
+	if st.SQLClient != nil {
 		allSV := []string{}
 		querySV := map[string]struct{}{}
 		// Find all the sv that are in the sqlite database
@@ -92,7 +92,7 @@ func Count(
 			util.SQLInParam(len(svOrSvgs)),
 		)
 		// Execute query
-		rows, err := st.SQLiteClient.Query(
+		rows, err := st.SQLClient.Query(
 			query,
 			util.ConvertArgs(svOrSvgs)...,
 		)
@@ -123,7 +123,7 @@ func Count(
 			`,
 			util.SQLInParam(len(svOrSvgs)),
 		)
-		rows, err = st.SQLiteClient.Query(
+		rows, err = st.SQLClient.Query(
 			query,
 			util.ConvertArgs(svOrSvgs)...,
 		)
@@ -179,7 +179,7 @@ func Count(
 		args = append(args, allSV...)
 
 		// Execute query
-		rows, err = st.SQLiteClient.Query(query, util.ConvertArgs(args)...)
+		rows, err = st.SQLClient.Query(query, util.ConvertArgs(args)...)
 		if err != nil {
 			return nil, err
 		}
