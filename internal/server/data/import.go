@@ -32,7 +32,7 @@ func Import(
 	metadata *resource.Metadata,
 ) (*resource.Cache, error) {
 	// First clear the tables.
-	err := sqldb.ClearTables(st.SQLClient, metadata.SQLitePath)
+	err := sqldb.ClearTables(st.SQLClient)
 	if err != nil {
 		return nil, err
 	}

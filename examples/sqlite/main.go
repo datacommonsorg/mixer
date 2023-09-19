@@ -24,7 +24,7 @@ func main() {
 	if err := sqldb.Write(
 		sqlClient,
 		&resource.Metadata{
-			SQLitePath:        *sqliteDir,
+			SQLDataPath:       *sqliteDir,
 			RemoteMixerDomain: "https://autopush.api.datacommons.org",
 			RemoteMixerAPIKey: "AIzaSyBCybF1COkc05kj5n5FHpXOnH3EdGBnUz0",
 		}); err != nil {

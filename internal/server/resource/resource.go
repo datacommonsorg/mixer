@@ -60,7 +60,7 @@ type Metadata struct {
 	RemoteMixerDomain string
 	RemoteMixerAPIKey string
 	FoldRemoteRootSvg bool
-	SQLitePath        string
+	SQLDataPath       string
 }
 
 // SearchIndex holds the index for searching stat var (group).

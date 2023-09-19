@@ -37,36 +37,5 @@ func CreateDB(fileDir string) (*sql.DB, error) {
 	if err != nil {
 		return nil, err
 	}
-	sqlClient, err := sql.Open("sqlite3", dbPath)
-	if err != nil {
-		return nil, err
-	}
-
-	tripleStatement := `
-	CREATE TABLE triples (
-		subject_id TEXT,
-		predicate TEXT,
-		object_id TEXT,
-		object_value TEXT
-	);
-	`
-	_, err = sqlClient.Exec(tripleStatement)
-	if err != nil {
-		return nil, err
-	}
-
-	observationStatement := `
-	CREATE TABLE observations (
-		entity TEXT,
-		variable TEXT,
-		date TEXT,
-		value TEXT,
-		provenance TEXT
-	);
-	`
-	_, err = sqlClient.Exec(observationStatement)
-	if err != nil {
-		return nil, err
-	}
-	return sqlClient, nil
+	return sql.Open("sqlite3", dbPath)
 }

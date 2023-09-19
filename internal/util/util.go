@@ -18,8 +18,10 @@ import (
 	"bytes"
 	"compress/gzip"
 	"context"
+	"database/sql"
 	"encoding/base64"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"hash/fnv"
 	"io"
@@ -38,6 +40,8 @@ import (
 	"cloud.google.com/go/secretmanager/apiv1/secretmanagerpb"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
+	"github.com/go-sql-driver/mysql"
+	"github.com/mattn/go-sqlite3"
 	"golang.org/x/text/cases"
 	"golang.org/x/text/language"
 	"google.golang.org/grpc/codes"
@@ -594,9 +598,22 @@ func SQLInParam(n int) string {
 	return strings.Join(strings.Split(strings.Repeat("?", n), ""), ", ")
 }
 
-func SQLValuesParam(n int) string {
-	str := strings.Repeat("(?),", n)
-	return str[:len(str)-1]
+func SQLListParam(sqlClient *sql.DB, n int) (string, error) {
+	switch sqlClient.Driver().(type) {
+	case *sqlite3.SQLiteDriver:
+		str := "VALUES " + strings.Repeat("(?),", n)
+		return str[:len(str)-1], nil
+	case *mysql.MySQLDriver:
+		result := ""
+		for i := 0; i < n-1; i++ {
+			result += "SELECT ? UNION ALL "
+		}
+		result += "SELECT ?"
+		return result, nil
+	default:
+		// This should not happen.
+		return "", errors.New("invalid sql driver")
+	}
 }
 
 func FetchRemote(

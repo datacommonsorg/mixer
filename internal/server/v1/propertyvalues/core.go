@@ -66,7 +66,7 @@ func Fetch(
 	// No pagination for sqlite query, so if there is a pagination token, meaning
 	// the data has already been queried and returned in previous query.
 	if store.SQLClient != nil && token == "" {
-		sqlResp, err := fetchSQLite(ctx, store.SQLClient, nodes, properties, direction)
+		sqlResp, err := fetchSQL(ctx, store.SQLClient, nodes, properties, direction)
 		if err != nil {
 			return nil, nil, err
 		}
@@ -93,9 +93,9 @@ func Fetch(
 	return resp, pg, err
 }
 
-func fetchSQLite(
+func fetchSQL(
 	ctx context.Context,
-	sqliteClient *sql.DB,
+	sqlClient *sql.DB,
 	nodes []string,
 	properties []string,
 	direction string,
@@ -103,7 +103,7 @@ func fetchSQLite(
 	map[string]map[string]map[string][]*pb.EntityInfo,
 	error,
 ) {
-	if sqliteClient == nil {
+	if sqlClient == nil {
 		return nil, nil
 	}
 	var matchColumn string
@@ -112,13 +112,23 @@ func fetchSQLite(
 	} else {
 		matchColumn = "object_id"
 	}
+
+	nodeParam, err := util.SQLListParam(sqlClient, len(nodes))
+	if err != nil {
+		return nil, err
+	}
+	propertyParam, err := util.SQLListParam(sqlClient, len(properties))
+	if err != nil {
+		return nil, err
+	}
+
 	query := fmt.Sprintf(
 		`
 			WITH node_list(node) AS (
-					VALUES %s
+					%s
 			),
 			prop_list(prop) AS (
-					VALUES %s
+					%s
 			),
 			all_pairs AS (
 					SELECT n.node, p.prop
@@ -128,17 +138,17 @@ func fetchSQLite(
 			SELECT subject_id, predicate, object_id, object_value
 			FROM all_pairs a
 			INNER JOIN triples t ON a.node = t.%s AND a.prop = t.predicate
-			GROUP BY a.node, a.prop;
+			GROUP BY a.node, a.prop, subject_id, predicate, object_id, object_value;
 		`,
-		util.SQLValuesParam(len(nodes)),
-		util.SQLValuesParam(len(properties)),
+		nodeParam,
+		propertyParam,
 		matchColumn,
 	)
 	args := []string{}
 	args = append(args, nodes...)
 	args = append(args, properties...)
 	// Execute query
-	rows, err := sqliteClient.Query(query, util.ConvertArgs(args)...)
+	rows, err := sqlClient.Query(query, util.ConvertArgs(args)...)
 	if err != nil {
 		return nil, err
 	}

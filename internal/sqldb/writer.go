@@ -54,7 +54,7 @@ type triple struct {
 
 // Write writes raw CSV files to SQLite CSV files.
 func Write(sqlClient *sql.DB, resourceMetadata *resource.Metadata) error {
-	fileDir := resourceMetadata.SQLitePath
+	fileDir := resourceMetadata.SQLDataPath
 	csvFiles, err := listCSVFiles(fileDir)
 	if err != nil {
 		return err
@@ -113,7 +113,7 @@ func Write(sqlClient *sql.DB, resourceMetadata *resource.Metadata) error {
 			},
 		)
 	}
-	return writeOutput(sqlClient, fileDir, observationList, tripleList)
+	return writeOutput(sqlClient, observationList, tripleList)
 }
 
 func listCSVFiles(dir string) ([]string, error) {
@@ -274,7 +274,6 @@ func validateLatLng(latLng string) error {
 
 func writeOutput(
 	sqlClient *sql.DB,
-	fileDir string,
 	observations []*observation,
 	triples []*triple,
 ) error {

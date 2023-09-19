@@ -10308,6 +10308,9 @@
               "provenanceId": "dc/base/WikidataOtherIdGeos"
             },
             {
+              "dcid": "fire_country"
+            },
+            {
               "dcid": "water_country"
             },
             {

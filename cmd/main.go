@@ -32,6 +32,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/cache"
 	"github.com/datacommonsorg/mixer/internal/server/healthcheck"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
+	"github.com/datacommonsorg/mixer/internal/sqldb"
 	"github.com/datacommonsorg/mixer/internal/sqldb/cloudsql"
 	"github.com/datacommonsorg/mixer/internal/sqldb/sqlite"
 	"github.com/datacommonsorg/mixer/internal/store"
@@ -68,11 +69,12 @@ var (
 	// Branch Bigtable Cache
 	useBranchBigtable = flag.Bool("use_branch_bigtable", true, "Use branch bigtable cache")
 	// SQLite database
-	useSQLite  = flag.Bool("use_sqlite", false, "Use SQLite as database.")
-	sqlitePath = flag.String("sqlite_path", "", "SQLite DB file path.")
+	useSQLite = flag.Bool("use_sqlite", false, "Use SQLite as database.")
 	// CloudSQL
 	useCloudSQL      = flag.Bool("use_cloudsql", false, "Use Google CloudSQL as database.")
 	cloudSQLInstance = flag.String("cloudsql_instance", "", "CloudSQL instance name: e.g. project:region:instance")
+	// SQL data path
+	sqlDataPath = flag.String("sql_data_path", "", "SQL Data path.")
 	// Stat-var search cache
 	useSearch = flag.Bool("use_search", true, "Uses stat var search. Will build search indexes.")
 	// Include maps client
@@ -176,7 +178,7 @@ func main() {
 		*schemaPath,
 		*remoteMixerDomain,
 		*foldRemoteRootSvg,
-		*sqlitePath,
+		*sqlDataPath,
 	)
 	if err != nil {
 		log.Fatalf("Failed to create metadata: %v", err)
@@ -185,9 +187,13 @@ func main() {
 	// SQLite DB
 	var sqlClient *sql.DB
 	if *useSQLite {
-		sqlClient, err = sqlite.CreateDB(*sqlitePath)
+		sqlClient, err = sqlite.CreateDB(*sqlDataPath)
 		if err != nil {
-			log.Fatalf("Can not open sqlite3 database from: %s", *sqlitePath)
+			log.Fatalf("Can not open sqlite3 database from: %s", *sqlDataPath)
+		}
+		err := sqldb.CreateTables(sqlClient)
+		if err != nil {
+			log.Fatalf("Can not create tables %v", err)
 		}
 		defer sqlClient.Close()
 	}
@@ -199,6 +205,10 @@ func main() {
 			sqlClient, err = cloudsql.ConnectWithConnector(*cloudSQLInstance)
 			if err != nil {
 				log.Fatalf("Can not open cloud sql database from: %s", *cloudSQLInstance)
+			}
+			err := sqldb.CreateTables(sqlClient)
+			if err != nil {
+				log.Fatalf("Can not create tables %v", err)
 			}
 			defer sqlClient.Close()
 		}
