@@ -112,6 +112,16 @@ func fetchSQL(
 	} else {
 		matchColumn = "object_id"
 	}
+
+	nodeParam, err := util.SQLListParam(sqlClient, len(nodes))
+	if err != nil {
+		return nil, err
+	}
+	propertyParam, err := util.SQLListParam(sqlClient, len(properties))
+	if err != nil {
+		return nil, err
+	}
+
 	query := fmt.Sprintf(
 		`
 			WITH node_list(node) AS (
@@ -130,8 +140,8 @@ func fetchSQL(
 			INNER JOIN triples t ON a.node = t.%s AND a.prop = t.predicate
 			GROUP BY a.node, a.prop, subject_id, predicate, object_id, object_value;
 		`,
-		util.SQLListParam(sqlClient, len(nodes)),
-		util.SQLListParam(sqlClient, len(properties)),
+		nodeParam,
+		propertyParam,
 		matchColumn,
 	)
 	args := []string{}

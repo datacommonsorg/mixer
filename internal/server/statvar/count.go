@@ -153,6 +153,15 @@ func Count(
 		}
 		allSV = util.MergeDedupe(allSV, []string{})
 
+		entityParam, err := util.SQLListParam(st.SQLClient, len(entities))
+		if err != nil {
+			return nil, err
+		}
+		svParam, err := util.SQLListParam(st.SQLClient, len(allSV))
+		if err != nil {
+			return nil, err
+		}
+
 		// Query the count for entity, variable pairs
 		query = fmt.Sprintf(
 			`
@@ -172,8 +181,8 @@ func Count(
 				LEFT JOIN observations o ON a.entity = o.entity AND a.variable = o.variable
 				GROUP BY a.entity, a.variable;
 			`,
-			util.SQLListParam(st.SQLClient, len(entities)),
-			util.SQLListParam(st.SQLClient, len(allSV)),
+			entityParam,
+			svParam,
 		)
 		args := entities
 		args = append(args, allSV...)

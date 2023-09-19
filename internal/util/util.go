@@ -21,6 +21,7 @@ import (
 	"database/sql"
 	"encoding/base64"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"hash/fnv"
 	"io"
@@ -597,22 +598,21 @@ func SQLInParam(n int) string {
 	return strings.Join(strings.Split(strings.Repeat("?", n), ""), ", ")
 }
 
-func SQLListParam(sqlClient *sql.DB, n int) string {
+func SQLListParam(sqlClient *sql.DB, n int) (string, error) {
 	switch sqlClient.Driver().(type) {
 	case *sqlite3.SQLiteDriver:
 		str := "VALUES " + strings.Repeat("(?),", n)
-		return str[:len(str)-1]
+		return str[:len(str)-1], nil
 	case *mysql.MySQLDriver:
 		result := ""
 		for i := 0; i < n-1; i++ {
 			result += "SELECT ? UNION ALL "
 		}
 		result += "SELECT ?"
-		return result
+		return result, nil
 	default:
 		// This should not happen.
-		log.Println("Invalid sql driver")
-		return ""
+		return "", errors.New("invalid sql driver")
 	}
 }
 
