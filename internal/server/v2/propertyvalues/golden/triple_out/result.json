@@ -217,6 +217,12 @@
                 "Thing"
               ],
               "dcid": "Class"
+            },
+            {
+              "types": [
+                "Thing"
+              ],
+              "dcid": "LocationClassificationEnum"
             }
           ]
         }

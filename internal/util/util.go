@@ -600,7 +600,7 @@ func SQLInParam(n int) string {
 func SQLListParam(sqlClient *sql.DB, n int) string {
 	switch sqlClient.Driver().(type) {
 	case *sqlite3.SQLiteDriver:
-		str := strings.Repeat("(?),", n)
+		str := "VALUES " + strings.Repeat("(?),", n)
 		return str[:len(str)-1]
 	case *mysql.MySQLDriver:
 		result := ""
