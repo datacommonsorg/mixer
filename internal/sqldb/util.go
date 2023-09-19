@@ -46,7 +46,7 @@ func CreateTables(sqlClient *sql.DB) error {
 	return nil
 }
 
-func ClearTables(sqlClient *sql.DB, fileDir string) error {
+func ClearTables(sqlClient *sql.DB) error {
 	_, err := sqlClient.Exec(
 		`
 			DELETE FROM observations;
