@@ -191,7 +191,7 @@ func main() {
 		if err != nil {
 			log.Fatalf("Can not open sqlite3 database from: %s", *sqlDataPath)
 		}
-		sqldb.CreateTables(sqlClient)
+		err := sqldb.CreateTables(sqlClient)
 		if err != nil {
 			log.Fatalf("Can not create tables %v", err)
 		}
@@ -206,7 +206,7 @@ func main() {
 			if err != nil {
 				log.Fatalf("Can not open cloud sql database from: %s", *cloudSQLInstance)
 			}
-			sqldb.CreateTables(sqlClient)
+			err := sqldb.CreateTables(sqlClient)
 			if err != nil {
 				log.Fatalf("Can not create tables %v", err)
 			}
