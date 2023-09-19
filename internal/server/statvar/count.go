@@ -157,10 +157,10 @@ func Count(
 		query = fmt.Sprintf(
 			`
 				WITH entity_list(entity) AS (
-						VALUES %s
+						%s
 				),
 				variable_list(variable) AS (
-						VALUES %s
+						%s
 				),
 				all_pairs AS (
 						SELECT e.entity, v.variable
@@ -172,8 +172,8 @@ func Count(
 				LEFT JOIN observations o ON a.entity = o.entity AND a.variable = o.variable
 				GROUP BY a.entity, a.variable;
 			`,
-			util.SQLValuesParam(len(entities)),
-			util.SQLValuesParam(len(allSV)),
+			util.SQLListParam(st.SQLClient, len(entities)),
+			util.SQLListParam(st.SQLClient, len(allSV)),
 		)
 		args := entities
 		args = append(args, allSV...)

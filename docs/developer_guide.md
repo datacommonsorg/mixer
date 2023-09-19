@@ -82,14 +82,37 @@ root of this repo.
 
 ```bash
 # In repo root directory
-echo mixer_api_key=<YOUR API KEY>
+export mixer_api_key=<YOUR API KEY>
 go run cmd/main.go \
     --use_sqlite=true \
     --use_bigquery=false \
     --use_base_bigtable=false \
     --use_branch_bigtable=false \
     --use_maps_api=false \
-    --sqlite_path=$PWD/data \
+    --sql_data_path=$PWD/data \
+    --remote_mixer_domain=https://api.datacommons.org
+```
+
+## Start Mixer as a gRPC server backed by CloudSQL Database
+
+Mixer can load data stored from Google CloudSQL. This requires setting flag:
+
+- `--use_cloudsql=true`
+
+Run the following code to start mixer, with CSV data under `data` folder in the
+root of this repo.
+
+```bash
+# In repo root directory
+export mixer_api_key=<YOUR API KEY>
+go run cmd/main.go \
+    --use_cloudsql=true \
+    --use_bigquery=false \
+    --use_base_bigtable=false \
+    --use_branch_bigtable=false \
+    --use_maps_api=false \
+    --cloudsql_instance=datcom-website-dev:us-central1:dc-graph \
+    --sql_data_path=$PWD/data \
     --remote_mixer_domain=https://api.datacommons.org
 ```
 

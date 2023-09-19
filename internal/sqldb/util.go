@@ -16,10 +16,47 @@ package sqldb
 
 import "database/sql"
 
+func CreateTables(sqlClient *sql.DB) error {
+	tripleStatement := `
+	CREATE TABLE IF NOT EXISTS triples (
+		subject_id TEXT,
+		predicate TEXT,
+		object_id TEXT,
+		object_value TEXT
+	);
+	`
+	_, err := sqlClient.Exec(tripleStatement)
+	if err != nil {
+		return err
+	}
+
+	observationStatement := `
+	CREATE TABLE IF NOT EXISTS observations (
+		entity TEXT,
+		variable TEXT,
+		date TEXT,
+		value TEXT,
+		provenance TEXT
+	);
+	`
+	_, err = sqlClient.Exec(observationStatement)
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
 func ClearTables(sqlClient *sql.DB, fileDir string) error {
 	_, err := sqlClient.Exec(
 		`
 			DELETE FROM observations;
+		`,
+	)
+	if err != nil {
+		return err
+	}
+	_, err = sqlClient.Exec(
+		`
 			DELETE FROM triples;
 		`,
 	)
