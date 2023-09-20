@@ -82,7 +82,7 @@ root of this repo.
 
 ```bash
 # In repo root directory
-export mixer_api_key=<YOUR API KEY>
+export MIXER_API_KEY=<YOUR API KEY>
 go run cmd/main.go \
     --use_sqlite=true \
     --use_bigquery=false \
@@ -104,14 +104,16 @@ root of this repo.
 
 ```bash
 # In repo root directory
-export mixer_api_key=<YOUR API KEY>
+export MIXER_API_KEY=<YOUR API KEY>
+export DB_USER=<user>
+export DB_PASS=<password>
 go run cmd/main.go \
     --use_cloudsql=true \
     --use_bigquery=false \
     --use_base_bigtable=false \
     --use_branch_bigtable=false \
     --use_maps_api=false \
-    --cloudsql_instance=datcom-website-dev:us-central1:dc-graph \
+    --cloudsql_instance=<project:region:dc-graph> \
     --sql_data_path=$PWD/data \
     --remote_mixer_domain=https://api.datacommons.org
 ```
