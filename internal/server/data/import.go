@@ -16,6 +16,7 @@ package data
 
 import (
 	"context"
+	"log"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/cache"
@@ -31,6 +32,7 @@ func Import(
 	st *store.Store,
 	metadata *resource.Metadata,
 ) (*resource.Cache, error) {
+	log.Printf("Import data from %s to SQL database", metadata.SQLDataPath)
 	// First clear the tables.
 	err := sqldb.ClearTables(st.SQLClient)
 	if err != nil {

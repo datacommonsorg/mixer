@@ -38,6 +38,7 @@ static_resources:
                             prefix: "/"
                           route:
                             cluster: grpcserver
+                            timeout: 60s
                 http_filters:
                   - name: envoy.filters.http.grpc_json_transcoder
                     typed_config:

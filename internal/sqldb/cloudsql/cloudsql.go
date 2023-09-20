@@ -26,6 +26,10 @@ import (
 	"github.com/go-sql-driver/mysql"
 )
 
+const (
+	dbName = "datacommons"
+)
+
 func ConnectWithConnector(instanceName string) (*sql.DB, error) {
 	mustGetenv := func(k string) string {
 		v := os.Getenv(k)
@@ -41,7 +45,6 @@ func ConnectWithConnector(instanceName string) (*sql.DB, error) {
 	var (
 		dbUser = mustGetenv("DB_USER") // e.g. 'my-db-user'
 		dbPwd  = mustGetenv("DB_PASS") // e.g. 'my-db-password'
-		dbName = mustGetenv("DB_NAME") // e.g. 'my-database'
 	)
 
 	d, err := cloudsqlconn.NewDialer(context.Background())
