@@ -111,7 +111,7 @@ repo. In this case, use:
 Or CSV data can could be saved in Google Cloud Storage. In this case: use:
 
 ```bash
---sql_data_path=gcs://<bucket>/folder/.../
+--sql_data_path=gs://<bucket>/folder/.../
 ```
 
 ```bash
