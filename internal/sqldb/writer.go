@@ -290,6 +290,13 @@ func resolvePlaces(
 	placeHeader string,
 ) (map[string]string, error) {
 	var property string
+	placeToDCID := map[string]string{}
+	if placeHeader == "dcid" {
+		for _, place := range places {
+			placeToDCID[place] = place
+		}
+		return placeToDCID, nil
+	}
 	if placeHeader == "lat#lng" {
 		for _, place := range places {
 			if err := validateLatLng(place); err != nil {
@@ -302,8 +309,6 @@ func resolvePlaces(
 	} else {
 		property = fmt.Sprintf("<-%s->dcid", placeHeader)
 	}
-
-	placeToDCID := map[string]string{}
 	resp := &pbv2.ResolveResponse{}
 	if err := util.FetchRemote(metadata, &http.Client{}, "/v2/resolve",
 		&pbv2.ResolveRequest{
@@ -321,7 +326,6 @@ func resolvePlaces(
 			placeToDCID[entity.GetNode()] = entity.GetCandidates()[0].GetDcid()
 		}
 	}
-
 	return placeToDCID, nil
 }
 

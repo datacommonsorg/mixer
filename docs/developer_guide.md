@@ -158,7 +158,7 @@ In a new shell, run the following from repo root to spin up envoy proxy. This
 exposes the http mixer service at `localhost:8081`.
 
 ```sh
-envoy --config-path esp/envoy-config.yaml
+envoy -l warning --config-path esp/envoy-config.yaml
 ```
 
 ## Update Go package dependencies
