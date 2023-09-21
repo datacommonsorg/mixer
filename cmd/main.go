@@ -204,7 +204,7 @@ func main() {
 		} else {
 			sqlClient, err = cloudsql.ConnectWithConnector(*cloudSQLInstance)
 			if err != nil {
-				log.Fatalf("Can not open cloud sql database from: %s", *cloudSQLInstance)
+				log.Fatalf("Can not open cloud sql database from %s: %v", *cloudSQLInstance, err)
 			}
 			err := sqldb.CreateTables(sqlClient)
 			if err != nil {
