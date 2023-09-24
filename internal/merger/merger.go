@@ -265,6 +265,9 @@ func MergeObservation(o1, o2 *pbv2.ObservationResponse) *pbv2.ObservationRespons
 	}
 
 	for v, vData := range o2.ByVariable {
+		if o1.ByVariable == nil {
+			o1.ByVariable = map[string]*pbv2.VariableObservation{}
+		}
 		if _, ok := o1.ByVariable[v]; !ok {
 			o1.ByVariable[v] = &pbv2.VariableObservation{
 				ByEntity: map[string]*pbv2.EntityObservation{},
