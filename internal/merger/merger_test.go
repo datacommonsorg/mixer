@@ -225,6 +225,67 @@ func TestMergeNode(t *testing.T) {
 				},
 			},
 		},
+		{
+			&pbv2.NodeResponse{},
+			&pbv2.NodeResponse{
+				Data: map[string]*pbv2.LinkedGraph{
+					"dcid1": {
+						Arcs: map[string]*pbv2.Nodes{
+							"prop1.2": {
+								Nodes: []*pb.EntityInfo{
+									{Value: "val1.2"},
+								},
+							},
+						},
+					},
+				},
+			},
+			&pbv2.NodeResponse{
+				Data: map[string]*pbv2.LinkedGraph{
+					"dcid1": {
+						Arcs: map[string]*pbv2.Nodes{
+							"prop1.2": {
+								Nodes: []*pb.EntityInfo{
+									{Value: "val1.2"},
+								},
+							},
+						},
+					},
+				},
+			},
+			&pbv1.PaginationInfo{},
+			&pbv1.PaginationInfo{
+				CursorGroups: []*pbv1.CursorGroup{
+					{
+						Keys: []string{"key2"},
+						Cursors: []*pbv1.Cursor{
+							{
+								ImportGroup: 2,
+								Page:        2,
+								Item:        10,
+							},
+						},
+					},
+				},
+			},
+			&pbv1.PaginationInfo{
+				CursorGroups: []*pbv1.CursorGroup{},
+				RemotePaginationInfo: &pbv1.PaginationInfo{
+					CursorGroups: []*pbv1.CursorGroup{
+						{
+							Keys: []string{"key2"},
+							Cursors: []*pbv1.Cursor{
+								{
+									ImportGroup: 2,
+									Page:        2,
+									Item:        10,
+								},
+							},
+						},
+					},
+				},
+			},
+		},
 	} {
 		var err error
 
@@ -332,6 +393,19 @@ func TestMergeEvent(t *testing.T) {
 				},
 			},
 		},
+		{
+			&pbv2.EventResponse{},
+			&pbv2.EventResponse{
+				EventCollectionDate: &pbv1.EventCollectionDate{
+					Dates: []string{"2022", "2023", "2024"},
+				},
+			},
+			&pbv2.EventResponse{
+				EventCollectionDate: &pbv1.EventCollectionDate{
+					Dates: []string{"2022", "2023", "2024"},
+				},
+			},
+		},
 	} {
 		got := MergeEvent(c.e1, c.e2)
 		if diff := cmp.Diff(got, c.want, cmpOpts); diff != "" {
@@ -426,6 +500,51 @@ func TestMergeObservation(t *testing.T) {
 											},
 										},
 									},
+									{
+										FacetId: "facet3",
+										Observations: []*pb.PointStat{
+											{
+												Date:  "2023",
+												Value: proto.Float64(66.4),
+											},
+										},
+									},
+								},
+							},
+						},
+					},
+				},
+			},
+		},
+		{
+			&pbv2.ObservationResponse{},
+			&pbv2.ObservationResponse{
+				ByVariable: map[string]*pbv2.VariableObservation{
+					"var1": {
+						ByEntity: map[string]*pbv2.EntityObservation{
+							"entity1": {
+								OrderedFacets: []*pbv2.FacetObservation{
+									{
+										FacetId: "facet3",
+										Observations: []*pb.PointStat{
+											{
+												Date:  "2023",
+												Value: proto.Float64(66.4),
+											},
+										},
+									},
+								},
+							},
+						},
+					},
+				},
+			},
+			&pbv2.ObservationResponse{
+				ByVariable: map[string]*pbv2.VariableObservation{
+					"var1": {
+						ByEntity: map[string]*pbv2.EntityObservation{
+							"entity1": {
+								OrderedFacets: []*pbv2.FacetObservation{
 									{
 										FacetId: "facet3",
 										Observations: []*pb.PointStat{
