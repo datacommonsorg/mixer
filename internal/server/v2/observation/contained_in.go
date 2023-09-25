@@ -41,6 +41,9 @@ import (
 // Num of concurrent series to read at a time. Set this to prevent OOM issue.
 const MaxSeries = 5000
 
+// Max number of nodes to be requested
+const MaxNodes = 5000
+
 // Direct response are from child entities list. No need to have an entity in
 // the response if it has no observation.
 func trimDirectResp(resp *pbv2.ObservationResponse) *pbv2.ObservationResponse {
@@ -79,10 +82,20 @@ func FetchChildPlaces(
 	// V2 API should always ensure data merging.
 	// Here needs to fetch both local PlacesIn and remote PlacesIn data
 	if remoteMixer != "" {
-		remoteReq := &pbv2.NodeRequest{
-			Nodes:    []string{ancestor},
-			Property: fmt.Sprintf("<-containedInPlace+{typeOf:%s}", childType),
+		var remoteReq *pbv2.NodeRequest
+		if ancestor == childType {
+			remoteReq = &pbv2.NodeRequest{
+				Nodes:    []string{ancestor},
+				Property: "<-typeOf",
+				Limit:    MaxNodes,
+			}
+		} else {
+			remoteReq = &pbv2.NodeRequest{
+				Nodes:    []string{ancestor},
+				Property: fmt.Sprintf("<-containedInPlace+{typeOf:%s}", childType),
+			}
 		}
+
 		remoteResp := &pbv2.NodeResponse{}
 		err := util.FetchRemote(metadata, httpClient, "/v2/node", remoteReq, remoteResp)
 		if err != nil {

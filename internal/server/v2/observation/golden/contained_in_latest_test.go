@@ -97,6 +97,11 @@ func TestFetchContainInLatest(t *testing.T) {
 				"country/FRA<-containedInPlace+{typeOf:DummyType}",
 				"dummy_type.json",
 			},
+			{
+				[]string{"test_var_3"},
+				"Company<-containedInPlace+{typeOf:Company}",
+				"companies.json",
+			},
 		} {
 			goldenFile := c.goldenFile
 			resp, err := mixer.V2Observation(ctx, &pbv2.ObservationRequest{
