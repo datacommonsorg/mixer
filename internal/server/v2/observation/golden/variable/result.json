@@ -732,6 +732,11 @@
         "wikidataId/Q1951": {}
       }
     },
+    "Count_Death_AsAFractionOf_Count_Person": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
     "Count_Death_Female": {
       "by_entity": {
         "wikidataId/Q1951": {}

@@ -2813,7 +2813,8 @@
             "2023-04": 2043460,
             "2023-05": 2024392,
             "2023-06": 2020260,
-            "2023-07": 2022679
+            "2023-07": 2023052,
+            "2023-08": 2006019
           },
           "metadata": {
             "importName": "BLS_LAUS",
@@ -3394,7 +3395,8 @@
             "2023-04": 2111151,
             "2023-05": 2106545,
             "2023-06": 2113654,
-            "2023-07": 2092407
+            "2023-07": 2092738,
+            "2023-08": 2077487
           },
           "metadata": {
             "importName": "BLS_LAUS",
@@ -5522,7 +5524,8 @@
             "2023-08-19": 16726,
             "2023-08-26": 15850,
             "2023-09-02": 15080,
-            "2023-09-09": 14500
+            "2023-09-09": 14500,
+            "2023-09-16": 14780
           },
           "metadata": {
             "importName": "USDOL_ETA539",
@@ -6145,7 +6148,8 @@
             "2023-04": 3.2,
             "2023-05": 3.9,
             "2023-06": 4.4,
-            "2023-07": 3.3
+            "2023-07": 3.3,
+            "2023-08": 3.4
           },
           "metadata": {
             "importName": "BLS_LAUS",
@@ -7049,7 +7053,8 @@
             "2023-04": 1110870,
             "2023-05": 1095348,
             "2023-06": 1090078,
-            "2023-07": 1105009
+            "2023-07": 1105009,
+            "2023-08": 1122393
           },
           "metadata": {
             "importName": "BLS_LAUS",
@@ -7628,7 +7633,8 @@
             "2023-04": 1177329,
             "2023-05": 1166614,
             "2023-06": 1161964,
-            "2023-07": 1185535
+            "2023-07": 1185535,
+            "2023-08": 1194766
           },
           "metadata": {
             "importName": "BLS_LAUS",
@@ -7648,7 +7654,9 @@
             "2016": 359326,
             "2017": 360985,
             "2018": 360407,
-            "2019": 354841
+            "2019": 354841,
+            "2020": 353874,
+            "2021": 369394
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey_SubjectTables_S0701PR",
@@ -7667,7 +7675,9 @@
             "2016": 440928,
             "2017": 440921,
             "2018": 444625,
-            "2019": 451816
+            "2019": 451816,
+            "2020": 458196,
+            "2021": 476621
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey_SubjectTables_S0701PR",
@@ -7686,7 +7696,9 @@
             "2016": 198367,
             "2017": 196607,
             "2018": 203893,
-            "2019": 202681
+            "2019": 202681,
+            "2020": 207526,
+            "2021": 230697
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey_SubjectTables_S0701PR",
@@ -7705,7 +7717,9 @@
             "2016": 133759,
             "2017": 136340,
             "2018": 136183,
-            "2019": 137919
+            "2019": 137919,
+            "2020": 138487,
+            "2021": 146012
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey_SubjectTables_S0701PR",
@@ -7724,7 +7738,9 @@
             "2016": 57578,
             "2017": 59361,
             "2018": 61443,
-            "2019": 63193
+            "2019": 63193,
+            "2020": 62740,
+            "2021": 66861
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey_SubjectTables_S0701PR",
@@ -7743,7 +7759,9 @@
             "2016": 20841,
             "2017": 21075,
             "2018": 19828,
-            "2019": 20339
+            "2019": 20339,
+            "2020": 21498,
+            "2021": 24783
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey_SubjectTables_S0701PR",
@@ -7762,7 +7780,9 @@
             "2016": 56168,
             "2017": 58333,
             "2018": 59804,
-            "2019": 62386
+            "2019": 62386,
+            "2020": 64864,
+            "2021": 73451
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey_SubjectTables_S0701PR",
@@ -7781,7 +7801,9 @@
             "2016": 854187,
             "2017": 834379,
             "2018": 799540,
-            "2019": 775365
+            "2019": 775365,
+            "2020": 756105,
+            "2021": 733958
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey_SubjectTables_S0701PR",
@@ -9748,7 +9770,8 @@
             "2023-08-19": 21228,
             "2023-08-26": 19909,
             "2023-09-02": 18673,
-            "2023-09-09": 18369
+            "2023-09-09": 18369,
+            "2023-09-16": 18138
           },
           "metadata": {
             "importName": "USDOL_ETA539",
@@ -10369,7 +10392,8 @@
             "2023-04": 5.6,
             "2023-05": 6.1,
             "2023-06": 6.2,
-            "2023-07": 6.8
+            "2023-07": 6.8,
+            "2023-08": 6.1
           },
           "metadata": {
             "importName": "BLS_LAUS",
@@ -10679,32 +10703,32 @@
   },
   "latestPopulation": {
     "country/USA": {
-      "date": "2021",
-      "value": 331893745,
+      "date": "2022",
+      "value": 333288000,
       "metadata": {
-        "importName": "USCensusPEP_Annual_Population",
-        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
-        "measurementMethod": "CensusPEPSurvey",
+        "importName": "OECDRegionalDemography",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#",
+        "measurementMethod": "OECDRegionalStatistics",
         "observationPeriod": "P1Y"
       }
     },
     "geoId/04": {
-      "date": "2021",
-      "value": 7276316,
+      "date": "2022",
+      "value": 7359200,
       "metadata": {
-        "importName": "USCensusPEP_Annual_Population",
-        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
-        "measurementMethod": "CensusPEPSurvey",
+        "importName": "OECDRegionalDemography",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#",
+        "measurementMethod": "OECDRegionalStatistics",
         "observationPeriod": "P1Y"
       }
     },
     "geoId/06": {
-      "date": "2021",
-      "value": 39237836,
+      "date": "2022",
+      "value": 39029300,
       "metadata": {
-        "importName": "USCensusPEP_Annual_Population",
-        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
-        "measurementMethod": "CensusPEPSurvey",
+        "importName": "OECDRegionalDemography",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#",
+        "measurementMethod": "OECDRegionalStatistics",
         "observationPeriod": "P1Y"
       }
     },
@@ -10759,82 +10783,82 @@
       }
     },
     "geoId/08": {
-      "date": "2021",
-      "value": 5812069,
+      "date": "2022",
+      "value": 5839930,
       "metadata": {
-        "importName": "USCensusPEP_Annual_Population",
-        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
-        "measurementMethod": "CensusPEPSurvey",
+        "importName": "OECDRegionalDemography",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#",
+        "measurementMethod": "OECDRegionalStatistics",
         "observationPeriod": "P1Y"
       }
     },
     "geoId/18": {
-      "date": "2021",
-      "value": 6805985,
+      "date": "2022",
+      "value": 6833040,
       "metadata": {
-        "importName": "USCensusPEP_Annual_Population",
-        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
-        "measurementMethod": "CensusPEPSurvey",
+        "importName": "OECDRegionalDemography",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#",
+        "measurementMethod": "OECDRegionalStatistics",
         "observationPeriod": "P1Y"
       }
     },
     "geoId/22": {
-      "date": "2021",
-      "value": 4624047,
+      "date": "2022",
+      "value": 4590240,
       "metadata": {
-        "importName": "USCensusPEP_Annual_Population",
-        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
-        "measurementMethod": "CensusPEPSurvey",
+        "importName": "OECDRegionalDemography",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#",
+        "measurementMethod": "OECDRegionalStatistics",
         "observationPeriod": "P1Y"
       }
     },
     "geoId/29": {
-      "date": "2021",
-      "value": 6168187,
+      "date": "2022",
+      "value": 6177960,
       "metadata": {
-        "importName": "USCensusPEP_Annual_Population",
-        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
-        "measurementMethod": "CensusPEPSurvey",
+        "importName": "OECDRegionalDemography",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#",
+        "measurementMethod": "OECDRegionalStatistics",
         "observationPeriod": "P1Y"
       }
     },
     "geoId/38": {
-      "date": "2021",
-      "value": 774948,
+      "date": "2022",
+      "value": 779261,
       "metadata": {
-        "importName": "USCensusPEP_Annual_Population",
-        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
-        "measurementMethod": "CensusPEPSurvey",
+        "importName": "OECDRegionalDemography",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#",
+        "measurementMethod": "OECDRegionalStatistics",
         "observationPeriod": "P1Y"
       }
     },
     "geoId/47": {
-      "date": "2021",
-      "value": 6975218,
+      "date": "2022",
+      "value": 7051340,
       "metadata": {
-        "importName": "USCensusPEP_Annual_Population",
-        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
-        "measurementMethod": "CensusPEPSurvey",
+        "importName": "OECDRegionalDemography",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#",
+        "measurementMethod": "OECDRegionalStatistics",
         "observationPeriod": "P1Y"
       }
     },
     "geoId/48": {
-      "date": "2021",
-      "value": 29527941,
+      "date": "2022",
+      "value": 30029600,
       "metadata": {
-        "importName": "USCensusPEP_Annual_Population",
-        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
-        "measurementMethod": "CensusPEPSurvey",
+        "importName": "OECDRegionalDemography",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#",
+        "measurementMethod": "OECDRegionalStatistics",
         "observationPeriod": "P1Y"
       }
     },
     "geoId/53": {
-      "date": "2021",
-      "value": 7738692,
+      "date": "2022",
+      "value": 7785790,
       "metadata": {
-        "importName": "USCensusPEP_Annual_Population",
-        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
-        "measurementMethod": "CensusPEPSurvey",
+        "importName": "OECDRegionalDemography",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#",
+        "measurementMethod": "OECDRegionalStatistics",
         "observationPeriod": "P1Y"
       }
     },

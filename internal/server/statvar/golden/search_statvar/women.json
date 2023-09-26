@@ -29789,8 +29789,16 @@
           "dcid": "Count_Person_Upto14Years_Female"
         },
         {
+          "name": "Population: 15 - 44 Years, Female",
+          "dcid": "Count_Person_15To44Years_Female"
+        },
+        {
           "name": "Population: 15 - 59 Years, Female",
           "dcid": "Count_Person_15To59Years_Female"
+        },
+        {
+          "name": "Population: 21 Years or More, Female",
+          "dcid": "Count_Person_21OrMoreYears_Female"
         },
         {
           "name": "Population: 25 - 44 Years, Female",
@@ -29801,8 +29809,16 @@
           "dcid": "Count_Person_3OrMoreYears_Female"
         },
         {
+          "name": "Population: 5 - 14 Years, Female",
+          "dcid": "Count_Person_Years5To14_Female"
+        },
+        {
           "name": "Population: 60 Years or More, Female",
           "dcid": "Count_Person_60OrMoreYears_Female"
+        },
+        {
+          "name": "Population: 62 Years or More, Female",
+          "dcid": "Count_Person_62OrMoreYears_Female"
         },
         {
           "name": "Population: 65 - 66 Years, Female",
@@ -29839,6 +29855,10 @@
         {
           "name": "Unemployment Rate: 25 Years or Less, Female",
           "dcid": "UnemploymentRate_Person_Upto25Years_Female"
+        },
+        {
+          "name": "Population: 15 Years or Less, Female (As Fraction of Count Person 15 To 64 Years With Income)",
+          "dcid": "Count_Person_15OrLessYears_Female_AsAFractionOf_Count_Person_15To64Years_Female_WithIncome"
         },
         {
           "name": "Population: 5 Years or More, Female (As Fraction of Count Person Female)",
@@ -33153,6 +33173,88 @@
       ]
     },
     {
+      "dcid": "dc/g/Person_EducationalAttainment_Gender-Female",
+      "name": "Person With Educational Attainment, Gender = Female",
+      "statVars": [
+        {
+          "name": "Percentage: Bachelor Degree or Higher, Female",
+          "dcid": "dc/648tvf392fz0c"
+        },
+        {
+          "name": "Population: 10th Grade, Female",
+          "dcid": "Count_Person_25OrMoreYears_EducationalAttainment10ThGrade_Female"
+        },
+        {
+          "name": "Population: 11th Grade, Female",
+          "dcid": "Count_Person_25OrMoreYears_EducationalAttainment11ThGrade_Female"
+        },
+        {
+          "name": "Population: 12th Grade No Diploma, Female",
+          "dcid": "Count_Person_25OrMoreYears_EducationalAttainment12ThGradeNoDiploma_Female"
+        },
+        {
+          "name": "Population: 5th And 6th Grade, Female",
+          "dcid": "Count_Person_25OrMoreYears_EducationalAttainment5ThAnd6ThGrade_Female"
+        },
+        {
+          "name": "Population: 7th And 8th Grade, Female",
+          "dcid": "Count_Person_25OrMoreYears_EducationalAttainment7ThAnd8ThGrade_Female"
+        },
+        {
+          "name": "Population: 9th Grade, Female",
+          "dcid": "Count_Person_25OrMoreYears_EducationalAttainment9ThGrade_Female"
+        },
+        {
+          "name": "Population: Nursery To 4th Grade, Female",
+          "dcid": "Count_Person_25OrMoreYears_EducationalAttainmentNurseryTo4ThGrade_Female"
+        },
+        {
+          "name": "Population: Professional School Degree, Female",
+          "dcid": "Count_Person_25OrMoreYears_EducationalAttainmentProfessionalSchoolDegree_Female"
+        },
+        {
+          "name": "Population: Some College 1 or More Years No Degree, Female",
+          "dcid": "Count_Person_25OrMoreYears_EducationalAttainmentSomeCollege1OrMoreYearsNoDegree_Female"
+        },
+        {
+          "name": "Population: Some College Less Than 1 Year, Female",
+          "dcid": "Count_Person_25OrMoreYears_EducationalAttainmentSomeCollegeLessThan1Year_Female"
+        },
+        {
+          "name": "Population: Masters Degree or Higher, Female (As Fraction of Count Person 25 or More Years Female)",
+          "dcid": "Count_Person_25OrMoreYears_Female_MastersDegreeOrHigher_AsFractionOf_Count_Person_25OrMoreYears_Female"
+        },
+        {
+          "name": "Population: 25 - 64 Years, Less Than Primary Education \u0026 Primary Education \u0026 Lower Secondary Education, Female (As Fraction of Count Person 25 To 64 Years Female)",
+          "dcid": "Count_Person_25To64Years_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_Female_AsAFractionOfCount_Person_25To64Years_Female"
+        },
+        {
+          "name": "Population: 25 - 64 Years, Upper Secondary Education \u0026 Post Secondary Non Tertiary Education, Female (As Fraction of Count Person 25 To 64 Years Female)",
+          "dcid": "Count_Person_25To64Years_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female_AsAFractionOfCount_Person_25To64Years_Female"
+        },
+        {
+          "name": "Population: 25 - 64 Years, Upper Secondary Education or Higher, Female (As Fraction of Count Person 25 To 64 Years Female)",
+          "dcid": "Count_Person_25To64Years_UpperSecondaryEducationOrHigher_Female_AsAFractionOfCount_Person_25To64Years_Female"
+        },
+        {
+          "name": "Population: 7 Years or More, Diploma, Female (As Fraction of Count Person 7 or More Years Female)",
+          "dcid": "Count_Person_7OrMoreYears_Diploma_Female_AsAFractionOf_Count_Person_7OrMoreYears_Female"
+        },
+        {
+          "name": "Population: 7 Years or More, Graduate, Female (As Fraction of Count Person 7 or More Years Female)",
+          "dcid": "Count_Person_7OrMoreYears_Graduate_Female_AsAFractionOf_Count_Person_7OrMoreYears_Female"
+        },
+        {
+          "name": "Population: 7 Years or More, Less Than Primary Education, Female (As Fraction of Count Person 7 or More Years Female)",
+          "dcid": "Count_Person_7OrMoreYears_LessThanPrimaryEducation_Female_AsAFractionOf_Count_Person_7OrMoreYears_Female"
+        },
+        {
+          "name": "Population: 7 Years or More, Post Graduate or Higher, Female (As Fraction of Count Person 7 or More Years Female)",
+          "dcid": "Count_Person_7OrMoreYears_PostGraduateOrHigher_Female_AsAFractionOf_Count_Person_7OrMoreYears_Female"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/SDG_5.6.2",
       "name": "5.6.2: Number of countries with laws and regulations that guarantee full and equal access to women and men aged 15 years and older to sexual and reproductive health care, information and education",
       "statVars": [
@@ -33979,76 +34081,6 @@
         {
           "name": "Population: 85 Years or More, Female, Widowed",
           "dcid": "Count_Person_85OrMoreYears_Female_Widowed"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_EducationalAttainment_Gender-Female",
-      "name": "Person With Educational Attainment, Gender = Female",
-      "statVars": [
-        {
-          "name": "Percentage: Bachelor Degree or Higher, Female",
-          "dcid": "dc/648tvf392fz0c"
-        },
-        {
-          "name": "Population: 10th Grade, Female",
-          "dcid": "Count_Person_25OrMoreYears_EducationalAttainment10ThGrade_Female"
-        },
-        {
-          "name": "Population: 11th Grade, Female",
-          "dcid": "Count_Person_25OrMoreYears_EducationalAttainment11ThGrade_Female"
-        },
-        {
-          "name": "Population: 12th Grade No Diploma, Female",
-          "dcid": "Count_Person_25OrMoreYears_EducationalAttainment12ThGradeNoDiploma_Female"
-        },
-        {
-          "name": "Population: 5th And 6th Grade, Female",
-          "dcid": "Count_Person_25OrMoreYears_EducationalAttainment5ThAnd6ThGrade_Female"
-        },
-        {
-          "name": "Population: 7th And 8th Grade, Female",
-          "dcid": "Count_Person_25OrMoreYears_EducationalAttainment7ThAnd8ThGrade_Female"
-        },
-        {
-          "name": "Population: 9th Grade, Female",
-          "dcid": "Count_Person_25OrMoreYears_EducationalAttainment9ThGrade_Female"
-        },
-        {
-          "name": "Population: No Schooling Completed, Female",
-          "dcid": "Count_Person_25OrMoreYears_EducationalAttainmentNoSchoolingCompleted_Female"
-        },
-        {
-          "name": "Population: Nursery To 4th Grade, Female",
-          "dcid": "Count_Person_25OrMoreYears_EducationalAttainmentNurseryTo4ThGrade_Female"
-        },
-        {
-          "name": "Population: Professional School Degree, Female",
-          "dcid": "Count_Person_25OrMoreYears_EducationalAttainmentProfessionalSchoolDegree_Female"
-        },
-        {
-          "name": "Population: Some College 1 or More Years No Degree, Female",
-          "dcid": "Count_Person_25OrMoreYears_EducationalAttainmentSomeCollege1OrMoreYearsNoDegree_Female"
-        },
-        {
-          "name": "Population: Some College Less Than 1 Year, Female",
-          "dcid": "Count_Person_25OrMoreYears_EducationalAttainmentSomeCollegeLessThan1Year_Female"
-        },
-        {
-          "name": "Population: Masters Degree or Higher, Female (As Fraction of Count Person 25 or More Years Female)",
-          "dcid": "Count_Person_25OrMoreYears_Female_MastersDegreeOrHigher_AsFractionOf_Count_Person_25OrMoreYears_Female"
-        },
-        {
-          "name": "Population: 25 - 64 Years, Less Than Primary Education \u0026 Primary Education \u0026 Lower Secondary Education, Female (As Fraction of Count Person 25 To 64 Years Female)",
-          "dcid": "Count_Person_25To64Years_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_Female_AsAFractionOfCount_Person_25To64Years_Female"
-        },
-        {
-          "name": "Population: 25 - 64 Years, Upper Secondary Education \u0026 Post Secondary Non Tertiary Education, Female (As Fraction of Count Person 25 To 64 Years Female)",
-          "dcid": "Count_Person_25To64Years_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female_AsAFractionOfCount_Person_25To64Years_Female"
-        },
-        {
-          "name": "Population: 25 - 64 Years, Upper Secondary Education or Higher, Female (As Fraction of Count Person 25 To 64 Years Female)",
-          "dcid": "Count_Person_25To64Years_UpperSecondaryEducationOrHigher_Female_AsAFractionOfCount_Person_25To64Years_Female"
         }
       ]
     },
@@ -51231,6 +51263,28 @@
       ]
     },
     {
+      "dcid": "dc/g/Person_Age-Years7Onwards_EducationalAttainment_Gender-Female",
+      "name": "Person With Age = 7 Years or More, Educational Attainment, Gender = Female",
+      "statVars": [
+        {
+          "name": "Population: 7 Years or More, Higher Secondary Education, Female (As Fraction of Count Person 7 or More Years Female)",
+          "dcid": "Count_Person_7OrMoreYears_HigherSecondaryEducation_Female_AsAFractionOf_Count_Person_7OrMoreYears_Female"
+        },
+        {
+          "name": "Population: 7 Years or More, Middle School, Female (As Fraction of Count Person 7 or More Years Female)",
+          "dcid": "Count_Person_7OrMoreYears_MiddleSchool_Female_AsAFractionOf_Count_Person_7OrMoreYears_Female"
+        },
+        {
+          "name": "Population: 7 Years or More, Primary Education, Female (As Fraction of Count Person 7 or More Years Female)",
+          "dcid": "Count_Person_7OrMoreYears_PrimaryEducation_Female_AsAFractionOf_Count_Person_7OrMoreYears_Female"
+        },
+        {
+          "name": "Population: 7 Years or More, Secondary Education, Female (As Fraction of Count Person 7 or More Years Female)",
+          "dcid": "Count_Person_7OrMoreYears_SecondaryEducation_Female_AsAFractionOf_Count_Person_7OrMoreYears_Female"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/Person_Age-Years80Onwards_Gender-Female_Race",
       "name": "Person With Age = 80 Years or More, Gender = Female, Race",
       "statVars": [
@@ -55155,20 +55209,20 @@
       ]
     },
     {
-      "dcid": "dc/g/Person_Age-Years15Onwards_Gender-Female",
-      "name": "Person With Age = 15 Years or More, Gender = Female",
+      "dcid": "dc/g/Person_Age-Years15To64_Gender-Female",
+      "name": "Person With Age = 15 - 64 Years, Gender = Female",
       "statVars": [
         {
-          "name": "Population: 15 Years or More, Female",
-          "dcid": "Count_Person_15OrMoreYears_Female"
+          "name": "Population: 15 - 64 Years, Female",
+          "dcid": "Count_Person_15To64Years_Female"
         },
         {
-          "name": "Population: 15 Years or More, Female, Literate (As Fraction of Count Person 15 or More Years Female)",
-          "dcid": "Count_Person_15OrMoreYears_Female_Literate_AsAFractionOf_Count_Person_15OrMoreYears_Female"
+          "name": "Population: 15 - 64 Years, Female, With Income",
+          "dcid": "Count_Person_15To64Years_Female_WithIncome"
         },
         {
-          "name": "Population: 15 Years or More, Female, Smoking (As Fraction of Count Person 15 or More Years Female)",
-          "dcid": "Count_Person_15OrMoreYears_Female_Smoking_AsFractionOf_Count_Person_15OrMoreYears_Female"
+          "name": "Population: 15 - 64 Years, in Labor Force, Female (As Fraction of Count Person 15 To 64 Years Female)",
+          "dcid": "Count_Person_15To64Years_Female_InLaborForce_AsFractionOf_Count_Person_15To64Years_Female"
         }
       ]
     },
@@ -57257,24 +57311,6 @@
         {
           "name": "Population: 80 - 84 Years, Female, Irreligion",
           "dcid": "Count_Person_80To84Years_Female_Irreligion"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years85Onwards_Gender-Female_Religion",
-      "name": "Person With Age = 85 Years or More, Gender = Female, Religion",
-      "statVars": [
-        {
-          "name": "Population: 85 Years or More, Female, Catholicism",
-          "dcid": "Count_Person_85OrMoreYears_Female_Catholicism"
-        },
-        {
-          "name": "Population: 85 Years or More, Female, INEGI_Religion Other Than Catholicism",
-          "dcid": "Count_Person_85OrMoreYears_Female_INEGIReligionOtherThanCatholicism"
-        },
-        {
-          "name": "Population: 85 Years or More, Female, Irreligion",
-          "dcid": "Count_Person_85OrMoreYears_Female_Irreligion"
         }
       ]
     }

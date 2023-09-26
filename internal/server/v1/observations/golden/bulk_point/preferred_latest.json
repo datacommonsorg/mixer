@@ -30,9 +30,9 @@
           "entity": "country/FRA",
           "points_by_facet": [
             {
-              "date": "2021",
-              "value": 67749632,
-              "facet": "3981252704"
+              "date": "2022",
+              "value": 67871900,
+              "facet": "1151455814"
             }
           ]
         },
@@ -40,9 +40,9 @@
           "entity": "country/USA",
           "points_by_facet": [
             {
-              "date": "2021",
-              "value": 331893745,
-              "facet": "2176550201"
+              "date": "2022",
+              "value": 333288000,
+              "facet": "1151455814"
             }
           ]
         },
@@ -50,9 +50,9 @@
           "entity": "geoId/06",
           "points_by_facet": [
             {
-              "date": "2021",
-              "value": 39237836,
-              "facet": "2176550201"
+              "date": "2022",
+              "value": 39029300,
+              "facet": "1151455814"
             }
           ]
         },
@@ -200,8 +200,8 @@
           "entity": "geoId/06",
           "points_by_facet": [
             {
-              "date": "2023-07",
-              "value": 931239,
+              "date": "2023-08",
+              "value": 993596,
               "facet": "324358135"
             }
           ]

@@ -750,32 +750,32 @@
   },
   "latestPopulation": {
     "country/USA": {
-      "date": "2021",
-      "value": 331893745,
+      "date": "2022",
+      "value": 333288000,
       "metadata": {
-        "importName": "USCensusPEP_Annual_Population",
-        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
-        "measurementMethod": "CensusPEPSurvey",
+        "importName": "OECDRegionalDemography",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#",
+        "measurementMethod": "OECDRegionalStatistics",
         "observationPeriod": "P1Y"
       }
     },
     "geoId/04": {
-      "date": "2021",
-      "value": 7276316,
+      "date": "2022",
+      "value": 7359200,
       "metadata": {
-        "importName": "USCensusPEP_Annual_Population",
-        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
-        "measurementMethod": "CensusPEPSurvey",
+        "importName": "OECDRegionalDemography",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#",
+        "measurementMethod": "OECDRegionalStatistics",
         "observationPeriod": "P1Y"
       }
     },
     "geoId/06": {
-      "date": "2021",
-      "value": 39237836,
+      "date": "2022",
+      "value": 39029300,
       "metadata": {
-        "importName": "USCensusPEP_Annual_Population",
-        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
-        "measurementMethod": "CensusPEPSurvey",
+        "importName": "OECDRegionalDemography",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#",
+        "measurementMethod": "OECDRegionalStatistics",
         "observationPeriod": "P1Y"
       }
     },
@@ -830,82 +830,82 @@
       }
     },
     "geoId/08": {
-      "date": "2021",
-      "value": 5812069,
+      "date": "2022",
+      "value": 5839930,
       "metadata": {
-        "importName": "USCensusPEP_Annual_Population",
-        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
-        "measurementMethod": "CensusPEPSurvey",
+        "importName": "OECDRegionalDemography",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#",
+        "measurementMethod": "OECDRegionalStatistics",
         "observationPeriod": "P1Y"
       }
     },
     "geoId/18": {
-      "date": "2021",
-      "value": 6805985,
+      "date": "2022",
+      "value": 6833040,
       "metadata": {
-        "importName": "USCensusPEP_Annual_Population",
-        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
-        "measurementMethod": "CensusPEPSurvey",
+        "importName": "OECDRegionalDemography",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#",
+        "measurementMethod": "OECDRegionalStatistics",
         "observationPeriod": "P1Y"
       }
     },
     "geoId/22": {
-      "date": "2021",
-      "value": 4624047,
+      "date": "2022",
+      "value": 4590240,
       "metadata": {
-        "importName": "USCensusPEP_Annual_Population",
-        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
-        "measurementMethod": "CensusPEPSurvey",
+        "importName": "OECDRegionalDemography",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#",
+        "measurementMethod": "OECDRegionalStatistics",
         "observationPeriod": "P1Y"
       }
     },
     "geoId/29": {
-      "date": "2021",
-      "value": 6168187,
+      "date": "2022",
+      "value": 6177960,
       "metadata": {
-        "importName": "USCensusPEP_Annual_Population",
-        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
-        "measurementMethod": "CensusPEPSurvey",
+        "importName": "OECDRegionalDemography",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#",
+        "measurementMethod": "OECDRegionalStatistics",
         "observationPeriod": "P1Y"
       }
     },
     "geoId/38": {
-      "date": "2021",
-      "value": 774948,
+      "date": "2022",
+      "value": 779261,
       "metadata": {
-        "importName": "USCensusPEP_Annual_Population",
-        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
-        "measurementMethod": "CensusPEPSurvey",
+        "importName": "OECDRegionalDemography",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#",
+        "measurementMethod": "OECDRegionalStatistics",
         "observationPeriod": "P1Y"
       }
     },
     "geoId/47": {
-      "date": "2021",
-      "value": 6975218,
+      "date": "2022",
+      "value": 7051340,
       "metadata": {
-        "importName": "USCensusPEP_Annual_Population",
-        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
-        "measurementMethod": "CensusPEPSurvey",
+        "importName": "OECDRegionalDemography",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#",
+        "measurementMethod": "OECDRegionalStatistics",
         "observationPeriod": "P1Y"
       }
     },
     "geoId/48": {
-      "date": "2021",
-      "value": 29527941,
+      "date": "2022",
+      "value": 30029600,
       "metadata": {
-        "importName": "USCensusPEP_Annual_Population",
-        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
-        "measurementMethod": "CensusPEPSurvey",
+        "importName": "OECDRegionalDemography",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#",
+        "measurementMethod": "OECDRegionalStatistics",
         "observationPeriod": "P1Y"
       }
     },
     "geoId/53": {
-      "date": "2021",
-      "value": 7738692,
+      "date": "2022",
+      "value": 7785790,
       "metadata": {
-        "importName": "USCensusPEP_Annual_Population",
-        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
-        "measurementMethod": "CensusPEPSurvey",
+        "importName": "OECDRegionalDemography",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#",
+        "measurementMethod": "OECDRegionalStatistics",
         "observationPeriod": "P1Y"
       }
     },

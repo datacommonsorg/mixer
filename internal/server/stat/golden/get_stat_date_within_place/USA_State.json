@@ -168,6 +168,44 @@
         },
         {
           "date_place_count": {
+            "1995": 51,
+            "1996": 51,
+            "1997": 51,
+            "1998": 51,
+            "1999": 51,
+            "2000": 51,
+            "2001": 51,
+            "2002": 51,
+            "2003": 51,
+            "2004": 51,
+            "2005": 51,
+            "2006": 51,
+            "2007": 51,
+            "2008": 51,
+            "2009": 51,
+            "2010": 51,
+            "2011": 51,
+            "2012": 51,
+            "2013": 51,
+            "2014": 51,
+            "2015": 51,
+            "2016": 51,
+            "2017": 51,
+            "2018": 51,
+            "2019": 51,
+            "2020": 51,
+            "2021": 51,
+            "2022": 51
+          },
+          "metadata": {
+            "import_name": "OECDRegionalDemography",
+            "provenance_url": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#",
+            "measurement_method": "OECDRegionalStatistics",
+            "observation_period": "P1Y"
+          }
+        },
+        {
+          "date_place_count": {
             "2010": 1,
             "2011": 1,
             "2012": 1,
@@ -358,41 +396,6 @@
             "import_name": "CensusPEP",
             "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
             "measurement_method": "CensusPEPSurvey"
-          }
-        },
-        {
-          "date_place_count": {
-            "1995": 51,
-            "1996": 51,
-            "1997": 51,
-            "1998": 51,
-            "1999": 51,
-            "2000": 51,
-            "2001": 51,
-            "2002": 51,
-            "2003": 51,
-            "2004": 51,
-            "2005": 51,
-            "2006": 51,
-            "2007": 51,
-            "2008": 51,
-            "2009": 51,
-            "2010": 51,
-            "2011": 51,
-            "2012": 51,
-            "2013": 51,
-            "2014": 51,
-            "2015": 51,
-            "2016": 51,
-            "2017": 51,
-            "2018": 51,
-            "2019": 51
-          },
-          "metadata": {
-            "import_name": "OECDRegionalDemography",
-            "provenance_url": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#",
-            "measurement_method": "OECDRegionalStatistics",
-            "observation_period": "P1Y"
           }
         },
         {
@@ -653,6 +656,43 @@
         },
         {
           "date_place_count": {
+            "1995": 51,
+            "1996": 51,
+            "1997": 51,
+            "1998": 51,
+            "1999": 51,
+            "2000": 51,
+            "2001": 51,
+            "2002": 51,
+            "2003": 51,
+            "2004": 51,
+            "2005": 51,
+            "2006": 51,
+            "2007": 51,
+            "2008": 51,
+            "2009": 51,
+            "2010": 51,
+            "2011": 51,
+            "2012": 51,
+            "2013": 51,
+            "2014": 51,
+            "2015": 51,
+            "2016": 51,
+            "2017": 51,
+            "2018": 51,
+            "2019": 51,
+            "2020": 51,
+            "2021": 51
+          },
+          "metadata": {
+            "import_name": "OECDRegionalDemography",
+            "provenance_url": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#",
+            "measurement_method": "OECDRegionalStatistics",
+            "observation_period": "P1Y"
+          }
+        },
+        {
+          "date_place_count": {
             "2010": 1,
             "2011": 1,
             "2012": 1,
@@ -764,40 +804,6 @@
             "import_name": "CensusACS5YearSurvey_SubjectTables_S2602",
             "provenance_url": "https://data.census.gov/cedsci/table?q=S2602&tid=ACSST5Y2019.S2602",
             "measurement_method": "CensusACS5yrSurveySubjectTable"
-          }
-        },
-        {
-          "date_place_count": {
-            "1995": 51,
-            "1996": 51,
-            "1997": 51,
-            "1998": 51,
-            "1999": 51,
-            "2000": 51,
-            "2001": 51,
-            "2002": 51,
-            "2003": 51,
-            "2004": 51,
-            "2005": 51,
-            "2006": 51,
-            "2007": 51,
-            "2008": 51,
-            "2009": 51,
-            "2010": 51,
-            "2011": 51,
-            "2012": 51,
-            "2013": 51,
-            "2014": 51,
-            "2015": 51,
-            "2016": 51,
-            "2017": 51,
-            "2018": 51
-          },
-          "metadata": {
-            "import_name": "OECDRegionalDemography",
-            "provenance_url": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#",
-            "measurement_method": "OECDRegionalStatistics",
-            "observation_period": "P1Y"
           }
         }
       ]

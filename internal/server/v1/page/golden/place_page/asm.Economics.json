@@ -6589,7 +6589,8 @@
             "2023-08-19": 1995895,
             "2023-08-26": 1977501,
             "2023-09-02": 1933348,
-            "2023-09-09": 1826060
+            "2023-09-09": 1826068,
+            "2023-09-16": 1817453
           },
           "metadata": {
             "importName": "USDOL_ETA539",
@@ -8570,11 +8571,12 @@
       }
     },
     "country/DEU": {
-      "date": "2021",
-      "value": 83196078,
+      "date": "2022",
+      "value": 83237100,
       "metadata": {
-        "importName": "WorldDevelopmentIndicators",
-        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+        "importName": "OECDRegionalDemography",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#",
+        "measurementMethod": "OECDRegionalStatistics",
         "observationPeriod": "P1Y"
       }
     },
@@ -8596,12 +8598,12 @@
       }
     },
     "country/USA": {
-      "date": "2021",
-      "value": 331893745,
+      "date": "2022",
+      "value": 333288000,
       "metadata": {
-        "importName": "USCensusPEP_Annual_Population",
-        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
-        "measurementMethod": "CensusPEPSurvey",
+        "importName": "OECDRegionalDemography",
+        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#",
+        "measurementMethod": "OECDRegionalStatistics",
         "observationPeriod": "P1Y"
       }
     }

@@ -605,6 +605,10 @@
       "dcid": "Count_Person_15To24Years"
     },
     {
+      "name": "Population: 15 - 44 Years",
+      "dcid": "Count_Person_15To44Years"
+    },
+    {
       "name": "Population: 15 - 59 Years",
       "dcid": "Count_Person_15To59Years"
     },
@@ -655,6 +659,10 @@
     {
       "name": "Population: 21 - 64 Years",
       "dcid": "Count_Person_21To64Years"
+    },
+    {
+      "name": "Population: 21 Years or More",
+      "dcid": "Count_Person_21OrMoreYears"
     },
     {
       "name": "Population: 25 - 44 Years",
@@ -769,6 +777,10 @@
       "dcid": "Count_Person_60OrMoreYears"
     },
     {
+      "name": "Population: 62 Years or More",
+      "dcid": "Count_Person_62OrMoreYears"
+    },
+    {
       "name": "Population: 64 Years or Less",
       "dcid": "Count_Person_Upto64Years"
     },
@@ -783,6 +795,10 @@
     {
       "name": "Population: 7 - 14 Years",
       "dcid": "Count_Person_7To14Years"
+    },
+    {
+      "name": "Population: 7 Years or More",
+      "dcid": "Count_Person_7OrMoreYears"
     },
     {
       "name": "Population: 70 Years or More",
@@ -2281,6 +2297,10 @@
       "dcid": "Count_Person_ResidingLessThan5MetersAboveSeaLevel_AsFractionOf_Count_Person"
     },
     {
+      "name": "Population: 15 Years or Less (As Fraction of Count Person 15 To 64 Years With Income)",
+      "dcid": "Count_Person_15OrLessYears_AsAFractionOf_Count_Person_15To64Years_WithIncome"
+    },
+    {
       "name": "Population: Bachelors Degree or Higher (As Fraction of Count Person 25 or More Years)",
       "dcid": "Count_Person_25OrMoreYears_BachelorsDegreeOrHigher_AsFractionOf_Count_Person_25OrMoreYears"
     },
@@ -2315,6 +2335,10 @@
     {
       "name": "Population: Masters Degree or Higher (As Fraction of Count Person 25 or More Years)",
       "dcid": "Count_Person_25OrMoreYears_MastersDegreeOrHigher_AsFractionOf_Count_Person_25OrMoreYears"
+    },
+    {
+      "name": "Population: Not in Labor Force (As Fraction of Count Person in Labor Force)",
+      "dcid": "Count_Person_NotInLaborForce_AsAFractionOf_Count_Person_InLaborForce"
     },
     {
       "name": "Population: Tertiary Education (As Fraction of Count Person 25 or More Years)",
@@ -3975,30 +3999,6 @@
     {
       "name": "Population: 10 - 14 Years, Not Hispanic or Latino \u0026 Asian Alone or In Combination With One or More Other Races",
       "dcid": "Count_Person_10To14Years_NotHispanicOrLatino_AsianAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Population: 10 - 14 Years, Not Hispanic or Latino \u0026 Black or African American Alone",
-      "dcid": "Count_Person_10To14Years_NotHispanicOrLatino_BlackOrAfricanAmericanAlone"
-    },
-    {
-      "name": "Population: 10 - 14 Years, Not Hispanic or Latino \u0026 Black or African American Alone or In Combination With One or More Other Races",
-      "dcid": "Count_Person_10To14Years_NotHispanicOrLatino_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Population: 10 - 14 Years, Not Hispanic or Latino \u0026 Native Hawaiian And Other Pacific Islander Alone or In Combination With One or More Other Races",
-      "dcid": "Count_Person_10To14Years_NotHispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Population: 10 - 14 Years, Not Hispanic or Latino \u0026 Native Hawaiian or Other Pacific Islander Alone",
-      "dcid": "Count_Person_10To14Years_NotHispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAlone"
-    },
-    {
-      "name": "Population: 10 - 14 Years, Not Hispanic or Latino \u0026 Two or More Races",
-      "dcid": "Count_Person_10To14Years_NotHispanicOrLatino_TwoOrMoreRaces"
-    },
-    {
-      "name": "Population: 10 - 14 Years, Not Hispanic or Latino \u0026 White Alone or In Combination With One or More Other Races",
-      "dcid": "Count_Person_10To14Years_NotHispanicOrLatino_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
     }
   ],
   "matches": [

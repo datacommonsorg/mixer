@@ -1,33 +1,53 @@
 {
-  "byVariable": {
+  "by_variable": {
     "test_var_3": {
-      "byEntity": {
+      "by_entity": {
         "ein/1": {
-          "orderedFacets": [
+          "ordered_facets": [
             {
-              "facetId": "local",
-              "observations": [{ "date": "2023", "value": 100 }]
+              "facet_id": "local",
+              "observations": [
+                {
+                  "date": "2023",
+                  "value": 100
+                }
+              ]
             }
           ]
         },
         "ein/2": {
-          "orderedFacets": [
+          "ordered_facets": [
             {
-              "facetId": "local",
-              "observations": [{ "date": "2023", "value": 200 }]
+              "facet_id": "local",
+              "observations": [
+                {
+                  "date": "2023",
+                  "value": 200
+                }
+              ]
             }
           ]
         },
         "ein/3": {
-          "orderedFacets": [
+          "ordered_facets": [
             {
-              "facetId": "local",
-              "observations": [{ "date": "2023", "value": 300 }]
+              "facet_id": "local",
+              "observations": [
+                {
+                  "date": "2023",
+                  "value": 300
+                }
+              ]
             }
           ]
         }
       }
     }
   },
-  "facets": { "local": { "importName": "local", "provenanceUrl": "local" } }
+  "facets": {
+    "local": {
+      "import_name": "local",
+      "provenance_url": "local"
+    }
+  }
 }

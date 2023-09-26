@@ -143,20 +143,20 @@
               ]
             },
             {
-              "facet_id": "738965619",
-              "observations": [
-                {
-                  "date": "2015",
-                  "value": 66422469
-                }
-              ]
-            },
-            {
               "facet_id": "1151455814",
               "observations": [
                 {
                   "date": "2015",
                   "value": 66458200
+                }
+              ]
+            },
+            {
+              "facet_id": "738965619",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 66422469
                 }
               ]
             },
@@ -201,6 +201,15 @@
               ]
             },
             {
+              "facet_id": "1151455814",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 320635000
+                }
+              ]
+            },
+            {
               "facet_id": "1152061738",
               "observations": [
                 {
@@ -215,15 +224,6 @@
                 {
                   "date": "2015",
                   "value": 320742673
-                }
-              ]
-            },
-            {
-              "facet_id": "1151455814",
-              "observations": [
-                {
-                  "date": "2015",
-                  "value": 320635000
                 }
               ]
             },
@@ -269,6 +269,15 @@
               ]
             },
             {
+              "facet_id": "1151455814",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 38918000
+                }
+              ]
+            },
+            {
               "facet_id": "1152061738",
               "observations": [
                 {
@@ -283,15 +292,6 @@
                 {
                   "date": "2015",
                   "value": 38918045
-                }
-              ]
-            },
-            {
-              "facet_id": "1151455814",
-              "observations": [
-                {
-                  "date": "2015",
-                  "value": 38918000
                 }
               ]
             },
