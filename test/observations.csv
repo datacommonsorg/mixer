@@ -70,3 +70,6 @@ geoId/05,test_var_2,2020,6000,custom
 test_entity,Count_Person,2022,100,custom
 test_entity,test_var_1,2022,200,custom
 wikidataId/Q506877,test_var_1,2023,50,custom
+ein/1,test_var_3,2023,100,custom
+ein/2,test_var_3,2023,200,custom
+ein/3,test_var_3,2023,300,custom

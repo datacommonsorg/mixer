@@ -77,13 +77,26 @@ func GetPlacesIn(
 		}
 	}
 	if store.SQLClient != nil {
-		// Only queries based on direct containedInPlace for now.
-		// This could extend to more hops and even link with BT cache data, but that
-		// might make it too complicated.
-		// In custom DC, it's reasonable to ask user to provide direct containment
-		// relation.
-		query := fmt.Sprintf(
+		var query string
+		var args []string
+		if len(parentPlaces) == 1 && parentPlaces[0] == childPlaceType {
+			// When ancestor == child (typically requested for non-place entities), get all entities of that type.
+			query =
+				`
+				SELECT subject_id, object_id
+				FROM triples
+				WHERE predicate = 'typeOf'
+				AND object_id = ?;
 			`
+			args = []string{childPlaceType}
+		} else {
+			// Only queries based on direct containedInPlace for now.
+			// This could extend to more hops and even link with BT cache data, but that
+			// might make it too complicated.
+			// In custom DC, it's reasonable to ask user to provide direct containment
+			// relation.
+			query = fmt.Sprintf(
+				`
 				SELECT t1.subject_id, t2.object_id
 				FROM triples t1
 				JOIN triples t2
@@ -93,10 +106,12 @@ func GetPlacesIn(
 				AND t2.predicate = 'containedInPlace'
 				AND t2.object_id IN (%s);
 			`,
-			util.SQLInParam(len(parentPlaces)),
-		)
-		args := []string{childPlaceType}
-		args = append(args, parentPlaces...)
+				util.SQLInParam(len(parentPlaces)),
+			)
+			args = []string{childPlaceType}
+			args = append(args, parentPlaces...)
+		}
+
 		// Execute query
 		rows, err := store.SQLClient.Query(query, util.ConvertArgs(args)...)
 		if err != nil {

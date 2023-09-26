@@ -29,3 +29,10 @@ test_var_2,measuredProperty,test_var_2,
 test_var_2,statType,measuredValue,
 test_var_2,description,,"total number of sql joins"
 test_var_2,memberOf,dc/g/SQLite,
+ein/1,typeOf,Company,
+ein/2,typeOf,Company,
+ein/3,typeOf,Company,
+test_var_3,typeOf,StatisticalVariable,
+test_var_3,measuredProperty,test_var_3,
+test_var_3,statType,measuredValue,
+test_var_3,description,,"non-place entity variable"

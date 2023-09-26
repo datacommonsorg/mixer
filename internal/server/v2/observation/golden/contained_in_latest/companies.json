@@ -1,0 +1,33 @@
+{
+  "byVariable": {
+    "test_var_3": {
+      "byEntity": {
+        "ein/1": {
+          "orderedFacets": [
+            {
+              "facetId": "local",
+              "observations": [{ "date": "2023", "value": 100 }]
+            }
+          ]
+        },
+        "ein/2": {
+          "orderedFacets": [
+            {
+              "facetId": "local",
+              "observations": [{ "date": "2023", "value": 200 }]
+            }
+          ]
+        },
+        "ein/3": {
+          "orderedFacets": [
+            {
+              "facetId": "local",
+              "observations": [{ "date": "2023", "value": 300 }]
+            }
+          ]
+        }
+      }
+    }
+  },
+  "facets": { "local": { "importName": "local", "provenanceUrl": "local" } }
+}
