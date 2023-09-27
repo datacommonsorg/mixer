@@ -327,20 +327,23 @@ func fetchBtData(
 		for statVar, obsTimeSeries := range data.Data {
 			series, _ := stat.GetBestSeries(obsTimeSeries, "", false /* useLatest */)
 			finalData.Data[statVar] = series
-			if statVar == "Count_Person" {
-				popSeries, latestDate := stat.GetBestSeries(obsTimeSeries, "", true /* useLatest */)
-				if popSeries != nil {
-					if conversion, ok := convert.UnitMapping[popSeries.Metadata.Unit]; ok {
-						popSeries.Metadata.Unit = conversion.Unit
-						for date := range popSeries.Val {
-							popSeries.Val[date] *= conversion.Scaling
-						}
+			if statVar == "Count_Person" && series != nil {
+				if conversion, ok := convert.UnitMapping[series.Metadata.Unit]; ok {
+					series.Metadata.Unit = conversion.Unit
+					for date := range series.Val {
+						series.Val[date] *= conversion.Scaling
 					}
-					popData[place] = &pb.PointStat{
-						Date:     *latestDate,
-						Value:    proto.Float64(popSeries.Val[*latestDate]),
-						Metadata: popSeries.Metadata,
+				}
+				latestDate := ""
+				for date := range series.Val {
+					if date > latestDate {
+						latestDate = date
 					}
+				}
+				popData[place] = &pb.PointStat{
+					Date:     latestDate,
+					Value:    proto.Float64(series.Val[latestDate]),
+					Metadata: series.Metadata,
 				}
 			}
 		}

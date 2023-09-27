@@ -1971,13 +1971,12 @@
       }
     },
     "country/DEU": {
-      "date": "2022",
-      "value": 83237100,
+      "date": "2019",
+      "value": 83019213,
       "metadata": {
-        "importName": "OECDRegionalDemography",
-        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#",
-        "measurementMethod": "OECDRegionalStatistics",
-        "observationPeriod": "P1Y"
+        "importName": "EurostatData",
+        "provenanceUrl": "https://ec.europa.eu/eurostat/data/database",
+        "measurementMethod": "EurostatRegionalPopulationData"
       }
     },
     "country/NGA": {
@@ -1990,11 +1989,12 @@
       }
     },
     "country/NZL": {
-      "date": "2022",
-      "value": 5151600,
+      "date": "2021",
+      "value": 5111400,
       "metadata": {
-        "importName": "New_Zealand_Census",
-        "provenanceUrl": "https://www.stats.govt.nz/"
+        "importName": "WorldDevelopmentIndicators",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+        "observationPeriod": "P1Y"
       }
     },
     "country/USA": {
