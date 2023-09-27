@@ -509,12 +509,12 @@
       }
     },
     "country/USA": {
-      "date": "2022",
-      "value": 333288000,
+      "date": "2021",
+      "value": 331893745,
       "metadata": {
-        "importName": "OECDRegionalDemography",
-        "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#",
-        "measurementMethod": "OECDRegionalStatistics",
+        "importName": "USCensusPEP_Annual_Population",
+        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "measurementMethod": "CensusPEPSurvey",
         "observationPeriod": "P1Y"
       }
     }
