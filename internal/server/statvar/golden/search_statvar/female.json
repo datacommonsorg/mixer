@@ -125,6 +125,10 @@
       "dcid": "sdg/AG_PRD_FIESSN.AGE--Y_GE15__SEX--F"
     },
     {
+      "name": "Population: No Schooling Completed, Female",
+      "dcid": "Count_Person_25OrMoreYears_EducationalAttainmentNoSchoolingCompleted_Female"
+    },
+    {
       "name": "Prevalence of moderate or severe food insecurity [15 years old and over, Female]",
       "dcid": "sdg/AG_PRD_FIESMS.AGE--Y_GE15__SEX--F"
     },
@@ -515,10 +519,6 @@
         {
           "name": "Population: 9th Grade, Female",
           "dcid": "Count_Person_25OrMoreYears_EducationalAttainment9ThGrade_Female"
-        },
-        {
-          "name": "Population: No Schooling Completed, Female",
-          "dcid": "Count_Person_25OrMoreYears_EducationalAttainmentNoSchoolingCompleted_Female"
         },
         {
           "name": "Population: Nursery To 4th Grade, Female",

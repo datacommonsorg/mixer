@@ -1096,7 +1096,10 @@
             "2015": 304799,
             "2016": 304099,
             "2017": 306024,
-            "2018": 307358
+            "2018": 307358,
+            "2019": 308857,
+            "2020": 316915,
+            "2021": 311821
           },
           "metadata": {
             "importName": "OECDRegionalDemography",
@@ -1150,7 +1153,10 @@
             "2015": 300364,
             "2016": 301251,
             "2017": 298729,
-            "2018": 296013
+            "2018": 296013,
+            "2019": 300322,
+            "2020": 298195,
+            "2021": 297612
           },
           "metadata": {
             "importName": "OECDRegionalDemography",
@@ -1204,7 +1210,10 @@
             "2015": 340482,
             "2016": 327442,
             "2017": 317020,
-            "2018": 309308
+            "2018": 309308,
+            "2019": 318090,
+            "2020": 300147,
+            "2021": 300583
           },
           "metadata": {
             "importName": "OECDRegionalDemography",
@@ -1238,7 +1247,10 @@
             "2015": 344682,
             "2016": 349435,
             "2017": 348231,
-            "2018": 343819
+            "2018": 343819,
+            "2019": 342951,
+            "2020": 317374,
+            "2021": 304177
           },
           "metadata": {
             "importName": "OECDRegionalDemography",
@@ -1292,7 +1304,10 @@
             "2015": 330967,
             "2016": 330833,
             "2017": 327191,
-            "2018": 323363
+            "2018": 323363,
+            "2019": 326262,
+            "2020": 323370,
+            "2021": 322320
           },
           "metadata": {
             "importName": "OECDRegionalDemography",
@@ -1326,7 +1341,10 @@
             "2015": 294549,
             "2016": 303790,
             "2017": 308904,
-            "2018": 313687
+            "2018": 313687,
+            "2019": 310895,
+            "2020": 318775,
+            "2021": 315660
           },
           "metadata": {
             "importName": "OECDRegionalDemography",
@@ -1380,7 +1398,10 @@
             "2015": 273409,
             "2016": 268394,
             "2017": 267560,
-            "2018": 269839
+            "2018": 269839,
+            "2019": 270659,
+            "2020": 286235,
+            "2021": 293442
           },
           "metadata": {
             "importName": "OECDRegionalDemography",
@@ -1414,7 +1435,10 @@
             "2015": 284129,
             "2016": 283301,
             "2017": 280552,
-            "2018": 275446
+            "2018": 275446,
+            "2019": 277474,
+            "2020": 267019,
+            "2021": 259788
           },
           "metadata": {
             "importName": "OECDRegionalDemography",
@@ -1468,7 +1492,10 @@
             "2015": 316301,
             "2016": 307129,
             "2017": 297406,
-            "2018": 287860
+            "2018": 287860,
+            "2019": 296797,
+            "2020": 277340,
+            "2021": 274969
           },
           "metadata": {
             "importName": "OECDRegionalDemography",
@@ -1542,7 +1569,10 @@
             "2015": 312562,
             "2016": 311007,
             "2017": 305780,
-            "2018": 301567
+            "2018": 301567,
+            "2019": 304505,
+            "2020": 301965,
+            "2021": 301326
           },
           "metadata": {
             "importName": "OECDRegionalDemography",
@@ -1596,7 +1626,10 @@
             "2015": 278388,
             "2016": 284373,
             "2017": 290165,
-            "2018": 293933
+            "2018": 293933,
+            "2019": 294505,
+            "2020": 299565,
+            "2021": 298805
           },
           "metadata": {
             "importName": "OECDRegionalDemography",
@@ -1650,7 +1683,10 @@
             "2015": 227106,
             "2016": 239186,
             "2017": 239043,
-            "2018": 242885
+            "2018": 242885,
+            "2019": 239974,
+            "2020": 256103,
+            "2021": 260931
           },
           "metadata": {
             "importName": "OECDRegionalDemography",
@@ -1704,7 +1740,10 @@
             "2015": 159769,
             "2016": 163393,
             "2017": 177206,
-            "2018": 185061
+            "2018": 185061,
+            "2019": 176747,
+            "2020": 200704,
+            "2021": 210478
           },
           "metadata": {
             "importName": "OECDRegionalDemography",
@@ -1758,7 +1797,10 @@
             "2015": 113058,
             "2016": 116567,
             "2017": 120772,
-            "2018": 126634
+            "2018": 126634,
+            "2019": 123597,
+            "2020": 129913,
+            "2021": 132050
           },
           "metadata": {
             "importName": "OECDRegionalDemography",
@@ -1792,7 +1834,10 @@
             "2015": 155112,
             "2016": 158041,
             "2017": 160349,
-            "2018": 163853
+            "2018": 163853,
+            "2019": 157700,
+            "2020": 157458,
+            "2021": 158351
           },
           "metadata": {
             "importName": "OECDRegionalDemography",
@@ -2041,7 +2086,10 @@
             "2016": 41.46,
             "2017": 41.4,
             "2018": 41.3,
-            "2019": 41.2
+            "2019": 41.2,
+            "2020": 41.22,
+            "2021": 41.01,
+            "2022": 40.68
           },
           "metadata": {
             "importName": "OECDRegionalDemography",
@@ -2195,7 +2243,10 @@
             "2015": 311618,
             "2016": 312177,
             "2017": 310679,
-            "2018": 307019
+            "2018": 307019,
+            "2019": 307435,
+            "2020": 293699,
+            "2021": 285149
           },
           "metadata": {
             "importName": "OECDRegionalDemography",
@@ -2542,85 +2593,85 @@
         },
         "Count_Person_18To24Years": {
           "val": {
-            "2010": 383756.844,
-            "2011": 381743.772,
-            "2012": 379106.154,
-            "2013": 375662.532,
-            "2014": 371174.43,
-            "2015": 365473.446,
-            "2016": 356467.885,
-            "2017": 346896.3,
-            "2018": 335307.159,
-            "2019": 325207.806,
-            "2020": 312541.632,
-            "2021": 314571.03
+            "2010": 385339,
+            "2011": 381617,
+            "2012": 378601,
+            "2013": 375455,
+            "2014": 371200,
+            "2015": 364351,
+            "2016": 356894,
+            "2017": 346845,
+            "2018": 334598,
+            "2019": 324142,
+            "2020": 313188,
+            "2021": 314885
           },
           "metadata": {
-            "importName": "CensusACS5YearSurvey_SubjectTables_S2601APR",
-            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S2601APR\u0026tid=ACSST5Y2019.S2601APR",
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0701PR",
+            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S0701PR\u0026tid=ACSST5Y2019.S0701PR",
             "measurementMethod": "CensusACS5yrSurveySubjectTable"
           }
         },
         "Count_Person_25To34Years": {
           "val": {
-            "2010": 504151.148,
-            "2011": 497763.938,
-            "2012": 486891.237,
-            "2013": 478785.58,
-            "2014": 469426.485,
-            "2015": 455050.271,
-            "2016": 444702.51,
-            "2017": 433620.375,
-            "2018": 423367.625,
-            "2019": 414805.875,
-            "2020": 406955.25,
-            "2021": 420531.798
+            "2010": 503068,
+            "2011": 496635,
+            "2012": 488542,
+            "2013": 479212,
+            "2014": 468088,
+            "2015": 454454,
+            "2016": 444100,
+            "2017": 434128,
+            "2018": 422052,
+            "2019": 413196,
+            "2020": 408147,
+            "2021": 419212
           },
           "metadata": {
-            "importName": "CensusACS5YearSurvey_SubjectTables_S2601APR",
-            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S2601APR\u0026tid=ACSST5Y2019.S2601APR",
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0701PR",
+            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S0701PR\u0026tid=ACSST5Y2019.S0701PR",
             "measurementMethod": "CensusACS5yrSurveySubjectTable"
           }
         },
         "Count_Person_35To44Years": {
           "val": {
-            "2010": 492864.182,
-            "2011": 490278.766,
-            "2012": 483174.51,
-            "2013": 475102.614,
-            "2014": 465787.52,
-            "2015": 458633.344,
-            "2016": 448231.895,
-            "2017": 437089.338,
-            "2018": 423367.625,
-            "2019": 411487.428,
-            "2020": 400443.966,
-            "2021": 403975.428
+            "2010": 494581,
+            "2011": 488539,
+            "2012": 482169,
+            "2013": 474809,
+            "2014": 466706,
+            "2015": 457802,
+            "2016": 448616,
+            "2017": 438751,
+            "2018": 424657,
+            "2019": 412531,
+            "2020": 400845,
+            "2021": 403558
           },
           "metadata": {
-            "importName": "CensusACS5YearSurvey_SubjectTables_S2601APR",
-            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S2601APR\u0026tid=ACSST5Y2019.S2601APR",
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0701PR",
+            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S0701PR\u0026tid=ACSST5Y2019.S0701PR",
             "measurementMethod": "CensusACS5yrSurveySubjectTable"
           }
         },
         "Count_Person_45To54Years": {
           "val": {
-            "2010": 481577.216,
-            "2011": 486536.18,
-            "2012": 483174.51,
-            "2013": 482468.546,
-            "2014": 476704.415,
-            "2015": 472965.636,
-            "2016": 462349.435,
-            "2017": 454434.153,
-            "2018": 447076.212,
-            "2019": 434716.557,
-            "2020": 426489.102,
-            "2021": 430465.62
+            "2010": 482889,
+            "2011": 484690,
+            "2012": 484448,
+            "2013": 481802,
+            "2014": 476691,
+            "2015": 471291,
+            "2016": 463546,
+            "2017": 455380,
+            "2018": 445694,
+            "2019": 436270,
+            "2020": 425955,
+            "2021": 430651
           },
           "metadata": {
-            "importName": "CensusACS5YearSurvey_SubjectTables_S2601APR",
-            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S2601APR\u0026tid=ACSST5Y2019.S2601APR",
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0701PR",
+            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S0701PR\u0026tid=ACSST5Y2019.S0701PR",
             "measurementMethod": "CensusACS5yrSurveySubjectTable"
           }
         },
@@ -2646,22 +2697,22 @@
         },
         "Count_Person_65To74Years": {
           "val": {
-            "2010": 297223.438,
-            "2011": 306892.052,
-            "2012": 315921.795,
-            "2013": 324101.008,
-            "2014": 334784.78,
-            "2015": 343975.008,
-            "2016": 352938.5,
-            "2017": 357303.189,
-            "2018": 359015.746,
-            "2019": 361710.723,
-            "2020": 364631.904,
-            "2021": 377485.236
+            "2010": 297143,
+            "2011": 306053,
+            "2012": 315346,
+            "2013": 325094,
+            "2014": 334971,
+            "2015": 342338,
+            "2016": 351317,
+            "2017": 357631,
+            "2018": 359600,
+            "2019": 362515,
+            "2020": 364751,
+            "2021": 378237
           },
           "metadata": {
-            "importName": "CensusACS5YearSurvey_SubjectTables_S2601APR",
-            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S2601APR\u0026tid=ACSST5Y2019.S2601APR",
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0701PR",
+            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S0701PR\u0026tid=ACSST5Y2019.S0701PR",
             "measurementMethod": "CensusACS5yrSurveySubjectTable"
           }
         },
@@ -2676,7 +2727,9 @@
             "2016": 262915,
             "2017": 271990,
             "2018": 281023,
-            "2019": 291221
+            "2019": 291221,
+            "2020": 302455,
+            "2021": 325688
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey_SubjectTables_S0701PR",
@@ -2827,22 +2880,22 @@
         },
         "Count_Person_MarriedAndNotSeparated": {
           "val": {
-            "2010": 1219653.168,
-            "2011": 1187392.858,
-            "2012": 1153144.506,
-            "2013": 1140805.715,
-            "2014": 1128480.09,
-            "2015": 1108765.476,
-            "2016": 1085845.522,
-            "2017": 1066081,
-            "2018": 1035009.695,
-            "2019": 1008039.24,
-            "2020": 999323.088,
-            "2021": 978571.8
+            "2010": 1219954,
+            "2011": 1188527,
+            "2012": 1152206,
+            "2013": 1142050,
+            "2014": 1127100,
+            "2015": 1107414,
+            "2016": 1087119,
+            "2017": 1065709,
+            "2018": 1034930,
+            "2019": 1007671,
+            "2020": 998644,
+            "2021": 978686
           },
           "metadata": {
-            "importName": "CensusACS5YearSurvey_SubjectTables_S2601APR",
-            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S2601APR\u0026tid=ACSST5Y2019.S2601APR",
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0701PR",
+            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S0701PR\u0026tid=ACSST5Y2019.S0701PR",
             "measurementMethod": "CensusACS5yrSurveySubjectTable"
           }
         },
@@ -2868,22 +2921,22 @@
         },
         "Count_Person_NeverMarried": {
           "val": {
-            "2010": 1085132.598,
-            "2011": 1106638.18,
-            "2012": 1135219.98,
-            "2013": 1134848.505,
-            "2014": 1134403.87,
-            "2015": 1129298.17,
-            "2016": 1132423.346,
-            "2017": 1132350.9,
-            "2018": 1128585.914,
-            "2019": 1131244.036,
-            "2020": 1121124.24,
-            "2021": 1185631.92
+            "2010": 1084403,
+            "2011": 1107828,
+            "2012": 1134524,
+            "2013": 1135227,
+            "2014": 1133700,
+            "2015": 1129207,
+            "2016": 1132328,
+            "2017": 1131500,
+            "2018": 1129502,
+            "2019": 1130088,
+            "2020": 1121256,
+            "2021": 1185212
           },
           "metadata": {
-            "importName": "CensusACS5YearSurvey_SubjectTables_S2601APR",
-            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S2601APR\u0026tid=ACSST5Y2019.S2601APR",
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0701PR",
+            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S0701PR\u0026tid=ACSST5Y2019.S0701PR",
             "measurementMethod": "CensusACS5yrSurveySubjectTable"
           }
         },
@@ -2970,22 +3023,22 @@
         },
         "Count_Person_Widowed": {
           "val": {
-            "2010": 212243.566,
-            "2011": 212354.894,
-            "2012": 209119.47,
-            "2013": 211480.955,
-            "2014": 210294.19,
-            "2015": 208260.182,
-            "2016": 206689.094,
-            "2017": 210334.9,
-            "2018": 207001.939,
-            "2019": 210008.175,
-            "2020": 210383.808,
-            "2021": 221242.32
+            "2010": 213242,
+            "2011": 212210,
+            "2012": 210347,
+            "2013": 211360,
+            "2014": 210455,
+            "2015": 207452,
+            "2016": 207395,
+            "2017": 208997,
+            "2018": 206720,
+            "2019": 209356,
+            "2020": 210156,
+            "2021": 220379
           },
           "metadata": {
-            "importName": "CensusACS5YearSurvey_SubjectTables_S2601APR",
-            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S2601APR\u0026tid=ACSST5Y2019.S2601APR",
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0701PR",
+            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S0701PR\u0026tid=ACSST5Y2019.S0701PR",
             "measurementMethod": "CensusACS5yrSurveySubjectTable"
           }
         },

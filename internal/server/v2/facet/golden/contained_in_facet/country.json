@@ -35,6 +35,9 @@
               "facet_id": "1897073702"
             },
             {
+              "facet_id": "2882445785"
+            },
+            {
               "facet_id": "1152061738"
             },
             {
@@ -337,6 +340,10 @@
     "2855734950": {
       "import_name": "Ireland_Census",
       "provenance_url": "https://www.cso.ie/en/index.html"
+    },
+    "2882445785": {
+      "import_name": "Uganda_Census",
+      "provenance_url": "https://uganda.opendataforafrica.org/"
     },
     "290530767": {
       "import_name": "LatviaCSB",

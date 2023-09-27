@@ -4757,7 +4757,10 @@
         },
         "LifeExpectancy_Person": {
           "val": {
-            "2010": 75.7
+            "2010": 75.7,
+            "2018": 75.6,
+            "2019": 75.7,
+            "2020": 73.1
           },
           "metadata": {
             "importName": "OECDRegionalDemography",

@@ -13,19 +13,19 @@
         "id": "dc/g/Demographics",
         "specializedEntity": "Demographics",
         "displayName": "Demographics",
-        "descendentStatVarCount": 40868
+        "descendentStatVarCount": 40993
       },
       {
         "id": "dc/g/Economy",
         "specializedEntity": "Economy",
         "displayName": "Economy",
-        "descendentStatVarCount": 105397
+        "descendentStatVarCount": 105523
       },
       {
         "id": "dc/g/Education",
         "specializedEntity": "Education",
         "displayName": "Education",
-        "descendentStatVarCount": 67767
+        "descendentStatVarCount": 67840
       },
       {
         "id": "dc/g/Energy",
@@ -76,6 +76,6 @@
         "descendentStatVarCount": 3797
       }
     ],
-    "descendentStatVarCount": 202565
+    "descendentStatVarCount": 202691
   }
 }

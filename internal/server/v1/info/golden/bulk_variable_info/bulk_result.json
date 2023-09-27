@@ -2480,7 +2480,7 @@
                   "observationPeriod": "P1Y"
                 },
                 "earliestDate": "1995",
-                "latestDate": "2019",
+                "latestDate": "2022",
                 "placeTypeSummary": {
                   "AdministrativeArea": {
                     "placeCount": 46,
@@ -2499,7 +2499,7 @@
                       }
                     ],
                     "minValue": 1565,
-                    "maxValue": 244600
+                    "maxValue": 258400
                   },
                   "AdministrativeArea1": {
                     "placeCount": 330,
@@ -2521,7 +2521,7 @@
                     "maxValue": 50483000
                   },
                   "AdministrativeArea2": {
-                    "placeCount": 132,
+                    "placeCount": 133,
                     "topPlaces": [
                       {
                         "dcid": "wikidataId/Q1143712",
@@ -2537,7 +2537,7 @@
                       }
                     ],
                     "minValue": 1668,
-                    "maxValue": 4601000
+                    "maxValue": 4653000
                   },
                   "AdministrativeArea3": {
                     "placeCount": 26,
@@ -2555,8 +2555,8 @@
                         "name": "Maule"
                       }
                     ],
-                    "minValue": 2329,
-                    "maxValue": 772602
+                    "minValue": 2351,
+                    "maxValue": 797557
                   },
                   "CensusCountyDivision": {
                     "placeCount": 1,
@@ -2570,7 +2570,7 @@
                     "maxValue": 5785680
                   },
                   "City": {
-                    "placeCount": 270,
+                    "placeCount": 273,
                     "topPlaces": [
                       {
                         "dcid": "wikidataId/Q8686",
@@ -2627,7 +2627,7 @@
                     "maxValue": 9277680
                   },
                   "EurostatNUTS2": {
-                    "placeCount": 200,
+                    "placeCount": 207,
                     "topPlaces": [
                       {
                         "dcid": "nuts/TR10",
@@ -2643,10 +2643,10 @@
                       }
                     ],
                     "minValue": 12793,
-                    "maxValue": 7525490
+                    "maxValue": 7907210
                   },
                   "EurostatNUTS3": {
-                    "placeCount": 1274,
+                    "placeCount": 1359,
                     "topPlaces": [
                       {
                         "dcid": "nuts/TR100",
@@ -2662,24 +2662,24 @@
                       }
                     ],
                     "minValue": 4313,
-                    "maxValue": 7525490
+                    "maxValue": 7907210
                   },
                   "Place": {
-                    "placeCount": 8,
+                    "placeCount": 9,
                     "topPlaces": [
                       {
                         "dcid": "wikidataId/Q1180"
                       },
                       {
-                        "dcid": "wikidataId/Q2760659",
-                        "name": "Dadra"
+                        "dcid": "wikidataId/Q721755"
                       },
                       {
-                        "dcid": "wikidataId/Q3235"
+                        "dcid": "wikidataId/Q2760659",
+                        "name": "Dadra"
                       }
                     ],
-                    "minValue": 296,
-                    "maxValue": 5883370
+                    "minValue": 290,
+                    "maxValue": 6293000
                   },
                   "State": {
                     "placeCount": 84,
@@ -2698,17 +2698,17 @@
                       }
                     ],
                     "minValue": 29519,
-                    "maxValue": 101563000
+                    "maxValue": 112568000
                   }
                 },
-                "minValue": 296,
+                "minValue": 290,
                 "maxValue": 660361000,
-                "observationCount": 56654,
-                "timeSeriesCount": 2463
+                "observationCount": 65623,
+                "timeSeriesCount": 2560
               }
             ],
-            "observationCount": 56654,
-            "timeSeriesCount": 2463
+            "observationCount": 65623,
+            "timeSeriesCount": 2560
           },
           "dc/base/SouthAfrica_Census": {
             "importName": "SouthAfrica_Census",
