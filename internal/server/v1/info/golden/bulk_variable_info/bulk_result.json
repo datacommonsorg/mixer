@@ -1267,7 +1267,7 @@
                   "measurementMethod": "CensusACS5yrSurveySubjectTable"
                 },
                 "earliestDate": "2010",
-                "latestDate": "2019",
+                "latestDate": "2021",
                 "placeTypeSummary": {
                   "Country": {
                     "placeCount": 1,
@@ -1278,7 +1278,7 @@
                       }
                     ],
                     "minValue": 154718323.448,
-                    "maxValue": 164946479.86
+                    "maxValue": 166511367.905
                   },
                   "State": {
                     "placeCount": 51,
@@ -1297,16 +1297,16 @@
                       }
                     ],
                     "minValue": 267879.289,
-                    "maxValue": 19759598.991
+                    "maxValue": 19791049.569
                   }
                 },
                 "minValue": 267879.289,
-                "maxValue": 164946479.86,
-                "observationCount": 520,
+                "maxValue": 166511367.905,
+                "observationCount": 624,
                 "timeSeriesCount": 52
               }
             ],
-            "observationCount": 520,
+            "observationCount": 624,
             "timeSeriesCount": 52
           },
           "dc/base/CensusACS5YearSurvey_SubjectTables_S2601APR": {

@@ -138,7 +138,7 @@
         "id": "dc/g/Person_CitizenshipStatus",
         "specializedEntity": "Citizenship Status",
         "displayName": "Person by Citizenship Status",
-        "descendentStatVarCount": 1549
+        "descendentStatVarCount": 1557
       },
       {
         "id": "dc/g/Commute",
@@ -168,7 +168,7 @@
         "id": "dc/g/Person_Ethnicity",
         "specializedEntity": "Ethnicity",
         "displayName": "Person by Ethnicity",
-        "descendentStatVarCount": 1653
+        "descendentStatVarCount": 1673
       },
       {
         "id": "dc/g/Food",
@@ -186,7 +186,7 @@
         "id": "dc/g/Person_Gender",
         "specializedEntity": "Gender",
         "displayName": "Person by Gender",
-        "descendentStatVarCount": 24156
+        "descendentStatVarCount": 24266
       },
       {
         "id": "dc/g/Person_HealthInsurance",
@@ -216,7 +216,7 @@
         "id": "dc/g/ImmigrationAndCitizenship",
         "specializedEntity": "Immigration and Citizenship",
         "displayName": "Immigration and Citizenship",
-        "descendentStatVarCount": 3949
+        "descendentStatVarCount": 3957
       },
       {
         "id": "dc/g/Person_Income",
@@ -300,7 +300,7 @@
         "id": "dc/g/Person_Race",
         "specializedEntity": "Race",
         "displayName": "Person by Race",
-        "descendentStatVarCount": 19583
+        "descendentStatVarCount": 19675
       },
       {
         "id": "dc/g/Person_Religion",
@@ -327,7 +327,7 @@
         "descendentStatVarCount": 104
       }
     ],
-    "descendentStatVarCount": 40993,
+    "descendentStatVarCount": 41105,
     "parentStatVarGroups": [
       "dc/g/Root"
     ]

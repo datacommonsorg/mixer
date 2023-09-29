@@ -206,6 +206,27 @@
         },
         {
           "date_place_count": {
+            "2010": 51,
+            "2011": 51,
+            "2012": 51,
+            "2013": 51,
+            "2014": 51,
+            "2015": 51,
+            "2016": 51,
+            "2017": 51,
+            "2018": 51,
+            "2019": 51,
+            "2020": 51,
+            "2021": 51
+          },
+          "metadata": {
+            "import_name": "CensusACS5YearSurvey_SubjectTables_S2601A",
+            "provenance_url": "https://data.census.gov/cedsci/table?q=S2601A&tid=ACSST5Y2019.S2601A",
+            "measurement_method": "CensusACS5yrSurveySubjectTable"
+          }
+        },
+        {
+          "date_place_count": {
             "2010": 1,
             "2011": 1,
             "2012": 1,
@@ -415,25 +436,6 @@
             "import_name": "CensusACS1YearSurvey",
             "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
             "measurement_method": "CensusACS1yrSurvey"
-          }
-        },
-        {
-          "date_place_count": {
-            "2010": 51,
-            "2011": 51,
-            "2012": 51,
-            "2013": 51,
-            "2014": 51,
-            "2015": 51,
-            "2016": 51,
-            "2017": 51,
-            "2018": 51,
-            "2019": 51
-          },
-          "metadata": {
-            "import_name": "CensusACS5YearSurvey_SubjectTables_S2601A",
-            "provenance_url": "https://data.census.gov/cedsci/table?q=S2601A&tid=ACSST5Y2019.S2601A",
-            "measurement_method": "CensusACS5yrSurveySubjectTable"
           }
         },
         {
@@ -693,6 +695,27 @@
         },
         {
           "date_place_count": {
+            "2010": 51,
+            "2011": 51,
+            "2012": 51,
+            "2013": 51,
+            "2014": 51,
+            "2015": 51,
+            "2016": 51,
+            "2017": 51,
+            "2018": 51,
+            "2019": 51,
+            "2020": 51,
+            "2021": 51
+          },
+          "metadata": {
+            "import_name": "CensusACS5YearSurvey_SubjectTables_S2601A",
+            "provenance_url": "https://data.census.gov/cedsci/table?q=S2601A&tid=ACSST5Y2019.S2601A",
+            "measurement_method": "CensusACS5yrSurveySubjectTable"
+          }
+        },
+        {
+          "date_place_count": {
             "2010": 1,
             "2011": 1,
             "2012": 1,
@@ -773,25 +796,6 @@
             "import_name": "CensusACS1YearSurvey",
             "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
             "measurement_method": "CensusACS1yrSurvey"
-          }
-        },
-        {
-          "date_place_count": {
-            "2010": 51,
-            "2011": 51,
-            "2012": 51,
-            "2013": 51,
-            "2014": 51,
-            "2015": 51,
-            "2016": 51,
-            "2017": 51,
-            "2018": 51,
-            "2019": 51
-          },
-          "metadata": {
-            "import_name": "CensusACS5YearSurvey_SubjectTables_S2601A",
-            "provenance_url": "https://data.census.gov/cedsci/table?q=S2601A&tid=ACSST5Y2019.S2601A",
-            "measurement_method": "CensusACS5yrSurveySubjectTable"
           }
         },
         {
