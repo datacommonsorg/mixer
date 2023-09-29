@@ -47811,32 +47811,6 @@
       ]
     },
     {
-      "dcid": "dc/g/Person_Gender-Female_Race-NativeHawaiianOrOtherPacificIslanderAlone",
-      "name": "Person With Gender = Female, Race = Native Hawaiian or Other Pacific Islander Alone",
-      "statVars": [
-        {
-          "name": "Female Population Identifying as Native Hawaiian/Other Pacific Islander Alone",
-          "dcid": "Count_Person_Female_NativeHawaiianAndOtherPacificIslanderAlone"
-        },
-        {
-          "name": "Female Population Identifying as Native Hawaiian/Other Pacific Islander Alone",
-          "dcid": "Count_Person_Female_NativeHawaiianOrOtherPacificIslanderAlone"
-        },
-        {
-          "name": "Median Age of Native Hawaiian or Other Pacific Islander Female Population",
-          "dcid": "Median_Age_Person_Female_NativeHawaiianOrOtherPacificIslanderAlone"
-        },
-        {
-          "name": "Population (Measured Based on Jurisdiction): Female, Incarcerated, Native Hawaiian or Other Pacific Islander Alone",
-          "dcid": "dc/6xg0t3qjdtqn5"
-        },
-        {
-          "name": "Population: Citizen, Doctorate Degree, Science \u0026 Engineering \u0026 Health, Not Hispanic or Latino, Female, PostDoctoral Appointee, Native Hawaiian or Other Pacific Islander Alone",
-          "dcid": "Count_Person_Citizen_EducationalAttainmentDoctorateDegree_ScienceOrEngineeringOrHealth_NotHispanicOrLatino_Female_PostDoctoralAppointeeOccupation_NativeHawaiianOrOtherPacificIslanderAlone"
-        }
-      ]
-    },
-    {
       "dcid": "dc/g/SDGSLTLFCHLDEC_age_sdgsex-SDGSexEnumF",
       "name": "Proportion of Children Engaged in Economic Activity And Household Chores, by Sex And Age With Age, Sex = Female",
       "statVars": [
@@ -50225,6 +50199,28 @@
         {
           "name": "Mean Wages Monthly: Female, Urban",
           "dcid": "Mean_WagesMonthly_Worker_Urban_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_Race-NativeHawaiianOrOtherPacificIslanderAlone",
+      "name": "Person With Gender = Female, Race = Native Hawaiian or Other Pacific Islander Alone",
+      "statVars": [
+        {
+          "name": "Female Population Identifying as Native Hawaiian/Other Pacific Islander Alone",
+          "dcid": "Count_Person_Female_NativeHawaiianAndOtherPacificIslanderAlone"
+        },
+        {
+          "name": "Female Population Identifying as Native Hawaiian/Other Pacific Islander Alone",
+          "dcid": "Count_Person_Female_NativeHawaiianOrOtherPacificIslanderAlone"
+        },
+        {
+          "name": "Median Age of Native Hawaiian or Other Pacific Islander Female Population",
+          "dcid": "Median_Age_Person_Female_NativeHawaiianOrOtherPacificIslanderAlone"
+        },
+        {
+          "name": "Population (Measured Based on Jurisdiction): Female, Incarcerated, Native Hawaiian or Other Pacific Islander Alone",
+          "dcid": "dc/6xg0t3qjdtqn5"
         }
       ]
     },
@@ -54629,6 +54625,24 @@
       ]
     },
     {
+      "dcid": "dc/g/Person_EducationalAttainment-AssociatesDegree_Gender-Female",
+      "name": "Person With Educational Attainment = Associates Degree, Gender = Female",
+      "statVars": [
+        {
+          "name": "Population: Associates Degree, Female",
+          "dcid": "Count_Person_25OrMoreYears_EducationalAttainmentAssociatesDegree_Female"
+        },
+        {
+          "name": "Population: Associates Degree, Female",
+          "dcid": "Count_Person_EducationalAttainmentAssociatesDegree_Female"
+        },
+        {
+          "name": "Population: Science \u0026 Technology \u0026 Engineering \u0026 Mathematics, Associates Degree, Female, Non USResident",
+          "dcid": "Count_Person_BachelorOfScienceOrTechnologyOrEngineeringOrMathematics_EducationalAttainmentAssociatesDegree_Female_NonUSResident"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/Person_EducationalAttainment-GraduateOrProfessionalDegree_Gender-Female",
       "name": "Person With Educational Attainment = Graduate or Professional Degree, Gender = Female",
       "statVars": [
@@ -54661,6 +54675,24 @@
         {
           "name": "Population: 15 - 50 Years, Birth in The Past 12 Months, Less Than High School Graduate, Female, Unmarried",
           "dcid": "Count_Person_15To50Years_BirthInThePast12Months_EducationalAttainmentLessThanHighSchoolGraduate_Female_Unmarried"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_EducationalAttainment-MastersDegree_Gender-Female",
+      "name": "Person With Educational Attainment = Masters Degree, Gender = Female",
+      "statVars": [
+        {
+          "name": "Population: Masters Degree, Female",
+          "dcid": "Count_Person_25OrMoreYears_EducationalAttainmentMastersDegree_Female"
+        },
+        {
+          "name": "Population: Masters Degree, Female",
+          "dcid": "Count_Person_EducationalAttainmentMastersDegree_Female"
+        },
+        {
+          "name": "Population: Science \u0026 Technology \u0026 Engineering \u0026 Mathematics, Masters Degree, Female, Non USResident",
+          "dcid": "Count_Person_BachelorOfScienceOrTechnologyOrEngineeringOrMathematics_EducationalAttainmentMastersDegree_Female_NonUSResident"
         }
       ]
     },
@@ -57091,42 +57123,6 @@
         {
           "name": "Percentage Daily, 0 Portions, Consumption Of Fruits Or Consumption Of Vegetables Among Upper Secondary Education Or Post Secondary Non Tertiary Education, Female Population",
           "dcid": "Percent_Daily_0Portion_ConsumptionOfFruitsOrConsumptionOfVegetables_In_Count_Person_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_ConsumptionQuantity-Portion0_Gender-Female_PlaceOfResidenceClassification",
-      "name": "Person With Consumption Quantity = Portion 0, Gender = Female, Place of Residence Classification",
-      "statVars": [
-        {
-          "name": "Percentage Daily, 0 Portions, Consumption Of Fruits Or Consumption Of Vegetables Among Rural, Female Population",
-          "dcid": "Percent_Daily_0Portion_ConsumptionOfFruitsOrConsumptionOfVegetables_In_Count_Person_Rural_Female"
-        },
-        {
-          "name": "Percentage Daily, 0 Portions, Consumption Of Fruits Or Consumption Of Vegetables Among Semi Urban, Female Population",
-          "dcid": "Percent_Daily_0Portion_ConsumptionOfFruitsOrConsumptionOfVegetables_In_Count_Person_SemiUrban_Female"
-        },
-        {
-          "name": "Percentage Daily, 0 Portions, Consumption Of Fruits Or Consumption Of Vegetables Among Urban, Female Population",
-          "dcid": "Percent_Daily_0Portion_ConsumptionOfFruitsOrConsumptionOfVegetables_In_Count_Person_Urban_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_EducationalAttainment-LessThanPrimaryEducationPrimaryEducationLowerSecondaryEducation_Gender-Female_SocialSupportLevel",
-      "name": "Person With Educational Attainment = Less Than Primary Education \u0026 Primary Education \u0026 Lower Secondary Education, Gender = Female, Social Support Level",
-      "statVars": [
-        {
-          "name": "Percentage Receiving Intermediate Social Support Among Less Than Primary Education Or Primary Education Or Lower Secondary Education, Female Population",
-          "dcid": "Percent_ReceivingIntermediateSocialSupport_In_Count_Person_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_Female"
-        },
-        {
-          "name": "Percentage Receiving Poor Social Support Among Less Than Primary Education Or Primary Education Or Lower Secondary Education, Female Population",
-          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_Female"
-        },
-        {
-          "name": "Percentage Receiving Strong Social Support Among Less Than Primary Education Or Primary Education Or Lower Secondary Education, Female Population",
-          "dcid": "Percent_ReceivingStrongSocialSupport_In_Count_Person_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_Female"
         }
       ]
     }

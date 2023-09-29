@@ -7755,6 +7755,10 @@
       "name": "Person With Educational Degree = Science \u0026 Engineering \u0026 Health, Gender = Female"
     },
     {
+      "dcid": "dc/g/Person_EducationalDegree-ScienceOrEngineeringOrHealth_Gender-Female",
+      "name": "Person With Educational Degree = Science or Engineering or Health, Gender = Female"
+    },
+    {
       "dcid": "dc/g/Person_EducationalDegree_Gender-Female",
       "name": "Person With Educational Degree, Gender = Female"
     },
@@ -8643,6 +8647,10 @@
       "name": "Student With Educational Degree = Science \u0026 Engineering \u0026 Health, Gender = Female"
     },
     {
+      "dcid": "dc/g/Student_EducationalDegree-ScienceOrEngineeringOrHealth_Gender-Female",
+      "name": "Student With Educational Degree = Science or Engineering or Health, Gender = Female"
+    },
+    {
       "dcid": "dc/g/Student_EducationalDegree_Gender-Female",
       "name": "Student With Educational Degree, Gender = Female"
     },
@@ -8695,6 +8703,10 @@
       "name": "Student With Gender = Female, Race = Black"
     },
     {
+      "dcid": "dc/g/Student_Gender-Female_Race-BlackOrAfricanAmericanAlone",
+      "name": "Student With Gender = Female, Race = Black or African American Alone"
+    },
+    {
       "dcid": "dc/g/Student_Gender-Female_Race-NativeHawaiianOrOtherPacificIslanderAlone",
       "name": "Student With Gender = Female, Race = Native Hawaiian or Other Pacific Islander Alone"
     },
@@ -8721,18 +8733,6 @@
     {
       "dcid": "dc/g/Student_Gender-Female_SchoolGradeLevel-SchoolGrade4",
       "name": "Student With Gender = Female, School Grade Level = School Grade 4"
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_SchoolGradeLevel-SchoolGrade8",
-      "name": "Student With Gender = Female, School Grade Level = School Grade 8"
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_SchoolSubject",
-      "name": "Student With Gender = Female, School Subject"
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_SchoolSubject-Civics",
-      "name": "Student With Gender = Female, School Subject = Civics"
     }
   ],
   "matches": [

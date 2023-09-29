@@ -48141,32 +48141,6 @@
       ]
     },
     {
-      "dcid": "dc/g/Person_Gender-Female_Race-NativeHawaiianOrOtherPacificIslanderAlone",
-      "name": "Person With Gender = Female, Race = Native Hawaiian or Other Pacific Islander Alone",
-      "statVars": [
-        {
-          "name": "Female Population Identifying as Native Hawaiian/Other Pacific Islander Alone",
-          "dcid": "Count_Person_Female_NativeHawaiianAndOtherPacificIslanderAlone"
-        },
-        {
-          "name": "Female Population Identifying as Native Hawaiian/Other Pacific Islander Alone",
-          "dcid": "Count_Person_Female_NativeHawaiianOrOtherPacificIslanderAlone"
-        },
-        {
-          "name": "Median Age of Native Hawaiian or Other Pacific Islander Female Population",
-          "dcid": "Median_Age_Person_Female_NativeHawaiianOrOtherPacificIslanderAlone"
-        },
-        {
-          "name": "Population (Measured Based on Jurisdiction): Female, Incarcerated, Native Hawaiian or Other Pacific Islander Alone",
-          "dcid": "dc/6xg0t3qjdtqn5"
-        },
-        {
-          "name": "Population: Citizen, Doctorate Degree, Science \u0026 Engineering \u0026 Health, Not Hispanic or Latino, Female, PostDoctoral Appointee, Native Hawaiian or Other Pacific Islander Alone",
-          "dcid": "Count_Person_Citizen_EducationalAttainmentDoctorateDegree_ScienceOrEngineeringOrHealth_NotHispanicOrLatino_Female_PostDoctoralAppointeeOccupation_NativeHawaiianOrOtherPacificIslanderAlone"
-        }
-      ]
-    },
-    {
       "dcid": "dc/g/SDGSLTLFCHLDEC_age_sdgsex-SDGSexEnumF",
       "name": "Proportion of Children Engaged in Economic Activity And Household Chores, by Sex And Age With Age, Sex = Female",
       "statVars": [
@@ -50841,6 +50815,28 @@
         {
           "name": "Mean Wages Monthly: Female, Urban",
           "dcid": "Mean_WagesMonthly_Worker_Urban_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_Race-NativeHawaiianOrOtherPacificIslanderAlone",
+      "name": "Person With Gender = Female, Race = Native Hawaiian or Other Pacific Islander Alone",
+      "statVars": [
+        {
+          "name": "Female Population Identifying as Native Hawaiian/Other Pacific Islander Alone",
+          "dcid": "Count_Person_Female_NativeHawaiianAndOtherPacificIslanderAlone"
+        },
+        {
+          "name": "Female Population Identifying as Native Hawaiian/Other Pacific Islander Alone",
+          "dcid": "Count_Person_Female_NativeHawaiianOrOtherPacificIslanderAlone"
+        },
+        {
+          "name": "Median Age of Native Hawaiian or Other Pacific Islander Female Population",
+          "dcid": "Median_Age_Person_Female_NativeHawaiianOrOtherPacificIslanderAlone"
+        },
+        {
+          "name": "Population (Measured Based on Jurisdiction): Female, Incarcerated, Native Hawaiian or Other Pacific Islander Alone",
+          "dcid": "dc/6xg0t3qjdtqn5"
         }
       ]
     },
@@ -55245,6 +55241,24 @@
       ]
     },
     {
+      "dcid": "dc/g/Person_EducationalAttainment-AssociatesDegree_Gender-Female",
+      "name": "Person With Educational Attainment = Associates Degree, Gender = Female",
+      "statVars": [
+        {
+          "name": "Population: Associates Degree, Female",
+          "dcid": "Count_Person_25OrMoreYears_EducationalAttainmentAssociatesDegree_Female"
+        },
+        {
+          "name": "Population: Associates Degree, Female",
+          "dcid": "Count_Person_EducationalAttainmentAssociatesDegree_Female"
+        },
+        {
+          "name": "Population: Science \u0026 Technology \u0026 Engineering \u0026 Mathematics, Associates Degree, Female, Non USResident",
+          "dcid": "Count_Person_BachelorOfScienceOrTechnologyOrEngineeringOrMathematics_EducationalAttainmentAssociatesDegree_Female_NonUSResident"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/Person_EducationalAttainment-GraduateOrProfessionalDegree_Gender-Female",
       "name": "Person With Educational Attainment = Graduate or Professional Degree, Gender = Female",
       "statVars": [
@@ -55277,6 +55291,24 @@
         {
           "name": "Population: 15 - 50 Years, Birth in The Past 12 Months, Less Than High School Graduate, Female, Unmarried",
           "dcid": "Count_Person_15To50Years_BirthInThePast12Months_EducationalAttainmentLessThanHighSchoolGraduate_Female_Unmarried"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_EducationalAttainment-MastersDegree_Gender-Female",
+      "name": "Person With Educational Attainment = Masters Degree, Gender = Female",
+      "statVars": [
+        {
+          "name": "Population: Masters Degree, Female",
+          "dcid": "Count_Person_25OrMoreYears_EducationalAttainmentMastersDegree_Female"
+        },
+        {
+          "name": "Population: Masters Degree, Female",
+          "dcid": "Count_Person_EducationalAttainmentMastersDegree_Female"
+        },
+        {
+          "name": "Population: Science \u0026 Technology \u0026 Engineering \u0026 Mathematics, Masters Degree, Female, Non USResident",
+          "dcid": "Count_Person_BachelorOfScienceOrTechnologyOrEngineeringOrMathematics_EducationalAttainmentMastersDegree_Female_NonUSResident"
         }
       ]
     },
@@ -57275,42 +57307,6 @@
         {
           "name": "Population: 70 - 74 Years, Female, Irreligion",
           "dcid": "Count_Person_70To74Years_Female_Irreligion"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years75To79_Gender-Female_Religion",
-      "name": "Person With Age = 75 - 79 Years, Gender = Female, Religion",
-      "statVars": [
-        {
-          "name": "Population: 75 - 79 Years, Female, Catholicism",
-          "dcid": "Count_Person_75To79Years_Female_Catholicism"
-        },
-        {
-          "name": "Population: 75 - 79 Years, Female, INEGI_Religion Other Than Catholicism",
-          "dcid": "Count_Person_75To79Years_Female_INEGIReligionOtherThanCatholicism"
-        },
-        {
-          "name": "Population: 75 - 79 Years, Female, Irreligion",
-          "dcid": "Count_Person_75To79Years_Female_Irreligion"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years80To84_Gender-Female_Religion",
-      "name": "Person With Age = 80 - 84 Years, Gender = Female, Religion",
-      "statVars": [
-        {
-          "name": "Population: 80 - 84 Years, Female, Catholicism",
-          "dcid": "Count_Person_80To84Years_Female_Catholicism"
-        },
-        {
-          "name": "Population: 80 - 84 Years, Female, INEGI_Religion Other Than Catholicism",
-          "dcid": "Count_Person_80To84Years_Female_INEGIReligionOtherThanCatholicism"
-        },
-        {
-          "name": "Population: 80 - 84 Years, Female, Irreligion",
-          "dcid": "Count_Person_80To84Years_Female_Irreligion"
         }
       ]
     }
