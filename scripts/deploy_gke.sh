@@ -101,7 +101,7 @@ gcloud container clusters get-credentials $CLUSTER_NAME --region $REGION
 # https://cloud.google.com/endpoints/docs/grpc/get-started-kubernetes-engine-espv2#deploying_the_sample_api_and_esp_to_the_cluster
 curl -o "/tmp/service_config.json" -H "Authorization: Bearer $(gcloud auth print-access-token)" \
   "https://servicemanagement.googleapis.com/v1/services/$DOMAIN/configs/$CONFIG_ID?view=FULL"
-kubectl delete configmap service-config-configmap -n mixer
+kubectl delete configmap service-config-configmap -n mixer  --ignore-not-found
 kubectl create configmap service-config-configmap -n mixer \
   --from-file=service_config.json=/tmp/service_config.json
 
