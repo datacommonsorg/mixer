@@ -67,8 +67,6 @@ var (
 // provide service account credential when running on GCP.
 const (
 	bigqueryBillingProject = "datcom-store"
-	tmcfCsvBucket          = "datcom-public"
-	tmcfCsvPrefix          = "food"
 	hostProject            = "datcom-ci"
 )
 
