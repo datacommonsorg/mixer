@@ -82,9 +82,28 @@ export DOMAIN=$(yq eval '.mixer.serviceName' deploy/helm_charts/envs/$ENV.yaml)
 export API_TITLE=$(yq eval '.api_title' deploy/helm_charts/envs/$ENV.yaml)
 export CLUSTER_NAME=mixer-$REGION
 
+# Deploy Cloud Endpoints
+cp $ROOT/esp/endpoints.yaml.tmpl endpoints.yaml
+yq eval -i '.name = env(DOMAIN)' endpoints.yaml
+yq eval -i '.title = env(API_TITLE)' endpoints.yaml
+yq eval -i '.endpoints[0].target = env(IP)' endpoints.yaml
+yq eval -i '.endpoints[0].name = env(DOMAIN)' endpoints.yaml
+echo "endpoints.yaml content:"
+cat endpoints.yaml
+gsutil cp gs://datcom-mixer-grpc/mixer-grpc/mixer-grpc.$TAG.pb .
+CONFIG_ID=$(gcloud endpoints services deploy mixer-grpc.$TAG.pb endpoints.yaml --project $PROJECT_ID 2>&1 | awk -F'[][]' '/Service Configuration/ {print $2}')
+
 # Deploy to GKE
 gcloud config set project $PROJECT_ID
 gcloud container clusters get-credentials $CLUSTER_NAME --region $REGION
+
+# Mount the service config for the container
+# https://cloud.google.com/endpoints/docs/grpc/get-started-kubernetes-engine-espv2#deploying_the_sample_api_and_esp_to_the_cluster
+curl -o "/tmp/service_config.json" -H "Authorization: Bearer $(gcloud auth print-access-token)" \
+  "https://servicemanagement.googleapis.com/v1/services/$DOMAIN/configs/$CONFIG_ID?view=FULL"
+kubectl delete configmap service-config-configmap -n mixer
+kubectl create configmap service-config-configmap -n mixer \
+  --from-file=service_config.json=/tmp/service_config.json
 
 # Change "mixer_prod" for example, to "mixer-prod"
 RELEASE=${ENV//_/-}
@@ -106,15 +125,3 @@ helm upgrade --install "$RELEASE" deploy/helm_charts/mixer \
   --set-file mixer.schemaConfigs."encode\.mcf"=deploy/mapping/encode.mcf \
   --set-file kgStoreConfig.bigqueryVersion=deploy/storage/bigquery.version \
   --set-file kgStoreConfig.baseBigtableInfo=deploy/storage/base_bigtable_info.yaml
-
-# Deploy Cloud Endpoints
-cp $ROOT/esp/endpoints.yaml.tmpl endpoints.yaml
-yq eval -i '.name = env(DOMAIN)' endpoints.yaml
-yq eval -i '.title = env(API_TITLE)' endpoints.yaml
-yq eval -i '.endpoints[0].target = env(IP)' endpoints.yaml
-yq eval -i '.endpoints[0].name = env(DOMAIN)' endpoints.yaml
-echo "endpoints.yaml content:"
-cat endpoints.yaml
-
-gsutil cp gs://datcom-mixer-grpc/mixer-grpc/mixer-grpc.$TAG.pb .
-gcloud endpoints services deploy mixer-grpc.$TAG.pb endpoints.yaml --project $PROJECT_ID

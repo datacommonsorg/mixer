@@ -3,10 +3,6 @@ mixer:
   hostProject: datcom-mixer-statvar
   serviceName: mixer.endpoints.datcom-mixer-statvar.cloud.goog
 
-  useTMCFCSVData: true
-  tmcfCSVBucket: datcom-public
-  tmcfCSVFolder: food
-
 ingress:
   enabled: true
   name: mixer-ingress-private

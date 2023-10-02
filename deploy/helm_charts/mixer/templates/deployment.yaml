@@ -1,4 +1,4 @@
-# Copyright 2022 Google LLC
+# Copyright 2023 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -64,6 +64,10 @@ spec:
           configMap:
             name: blocklist-svg
             optional: true
+        - name: service-config-volume
+          configMap:
+            defaultMode: 420
+            name: service-config-configmap
       containers:
         - name: mixer
           image:  "{{ $.Values.mixer.image.repository }}:{{ $.Values.mixer.image.tag | default $.Chart.AppVersion }}"
@@ -85,11 +89,6 @@ spec:
             - --use_branch_bigtable={{ $.Values.mixer.useBranchBigtable }}
             {{- if eq $.Values.mixer.bigqueryOnly true }}
             - --bigquery_only=true
-            {{- end }}
-            {{- if eq $.Values.mixer.useTMCFCSVData true }}
-            - --use_tmcf_csv_data=true
-            - --tmcf_csv_bucket={{ $.Values.mixer.tmcfCSVBucket }}
-            - --tmcf_csv_folder={{ $.Values.mixer.tmcfCSVFolder }}
             {{- end }}
             - --use_search={{ default false $group.useSearch }}
             {{- if eq $.Values.mixer.foldRemoteRootSvg true }}
@@ -154,13 +153,15 @@ spec:
               memory: "300M"
             requests:
               memory: "300M"
+          volumeMounts:
+            - mountPath: /etc/espv2_config
+              name: service-config-volume
           args:
-            - --service=$(SERVICE_NAME)
-            - --rollout_strategy=managed
-            - --http_port=8081
+            - --listener_port=8081
             - --backend=grpc://127.0.0.1:12345
             - --cors_preset=basic
             - --healthz=healthz
+            - --service_json_path=/etc/espv2_config/service_config.json
           env:
             - name: SERVICE_NAME
               valueFrom:
