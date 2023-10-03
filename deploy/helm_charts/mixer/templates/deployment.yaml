@@ -162,6 +162,7 @@ spec:
             - --cors_preset=basic
             - --healthz=healthz
             - --service_json_path=/etc/espv2_config/service_config.json
+            - --envoy_connection_buffer_limit_bytes=209715200 # 200Mb
           env:
             - name: SERVICE_NAME
               valueFrom:
