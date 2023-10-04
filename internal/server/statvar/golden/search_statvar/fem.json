@@ -197,10 +197,6 @@
       "dcid": "sdg/SP_LGL_LNDDOC.SEX--F"
     },
     {
-      "name": "Proportion of people with ownership or secure rights over agricultural land, by sex [Female]",
-      "dcid": "sdg/SP_LGL_LNDAGSEC.SEX--F"
-    },
-    {
       "name": "Proportion of people with secure tenure rights to land out of total adult population, by sex [Female]",
       "dcid": "sdg/SP_LGL_LNDSTR.SEX--F"
     },
@@ -279,6 +275,10 @@
     {
       "name": "Proportion of the population who have experienced a dispute in the past two years who accessed a formal or informal dispute resolution mechanism [Female]",
       "dcid": "sdg/SP_DISP_RESOL.SEX--F"
+    },
+    {
+      "name": "Proportion of total agricultural population with ownership or secure rights over agricultural land, by sex [Female]",
+      "dcid": "sdg/SP_LGL_LNDAGSEC.SEX--F"
     },
     {
       "name": "Proportion of unemployed persons receiving unemployment cash benefit, by sex [Female]",
