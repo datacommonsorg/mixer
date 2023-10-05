@@ -189,7 +189,7 @@ func main() {
 	if *useSQLite {
 		sqlClient, err = sqlite.CreateDB(*sqlDataPath)
 		if err != nil {
-			log.Fatalf("Can not open sqlite3 database from: %s", *sqlDataPath)
+			log.Fatalf("Can not open sqlite3 database from: %s: %v", *sqlDataPath, err)
 		}
 		err := sqldb.CreateTables(sqlClient)
 		if err != nil {
