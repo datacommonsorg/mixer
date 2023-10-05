@@ -21,6 +21,10 @@ import (
 )
 
 func CreateDB(fileDir string) (*sql.DB, error) {
+	// Create all intermediate directories.
+	if err := os.MkdirAll(fileDir, 0755); err != nil {
+		return nil, err
+	}
 	dbPath := filepath.Join(fileDir, "datacommons.db")
 	_, err := os.Stat(dbPath)
 	if err == nil {
