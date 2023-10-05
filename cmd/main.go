@@ -189,11 +189,11 @@ func main() {
 	if *useSQLite {
 		sqlClient, err = sqlite.CreateDB(*sqlDataPath)
 		if err != nil {
-			log.Fatalf("Can not open sqlite3 database from: %s: %v", *sqlDataPath, err)
+			log.Fatalf("Cannot open sqlite3 database from: %s: %v", *sqlDataPath, err)
 		}
 		err := sqldb.CreateTables(sqlClient)
 		if err != nil {
-			log.Fatalf("Can not create tables %v", err)
+			log.Fatalf("Cannot create tables %v", err)
 		}
 		defer sqlClient.Close()
 	}
@@ -204,11 +204,11 @@ func main() {
 		} else {
 			sqlClient, err = cloudsql.ConnectWithConnector(*cloudSQLInstance)
 			if err != nil {
-				log.Fatalf("Can not open cloud sql database from %s: %v", *cloudSQLInstance, err)
+				log.Fatalf("Cannot open cloud sql database from %s: %v", *cloudSQLInstance, err)
 			}
 			err := sqldb.CreateTables(sqlClient)
 			if err != nil {
-				log.Fatalf("Can not create tables %v", err)
+				log.Fatalf("Cannot create tables %v", err)
 			}
 			defer sqlClient.Close()
 		}
