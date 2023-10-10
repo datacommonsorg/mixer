@@ -21,16 +21,12 @@ import (
 	"fmt"
 	"io"
 	"log"
-	"net/http"
 	"os"
 	"path/filepath"
-	"strconv"
 	"strings"
 
 	"cloud.google.com/go/storage"
-	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
-	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/api/iterator"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
@@ -249,32 +245,15 @@ func processCSVFile(
 	}
 	numColumns := len(header)
 
-	// Resolve places.
-	places := []string{}
-	for i := 1; i < numRecords; i++ {
-		places = append(places, records[i][0])
-	}
-	resolvedPlaceMap, err := resolvePlaces(medatata, places, header[0])
-	if err != nil {
-		return nil, nil, err
-	}
-
 	// Generate observations.
 	observations := []*observation{}
 	for i := 1; i < numRecords; i++ {
 		record := records[i]
-
-		resolvedPlace, ok := resolvedPlaceMap[record[0]]
-		if !ok {
-			// If a place cannot be resolved, simply ignore it.
-			continue
-		}
-
 		for j := 2; j < numColumns; j++ {
 			observations = append(observations, &observation{
-				entity:     resolvedPlace,
-				variable:   header[j],
+				entity:     record[0],
 				date:       record[1],
+				variable:   header[j],
 				value:      record[j],
 				provenance: provID,
 			})
@@ -282,81 +261,6 @@ func processCSVFile(
 	}
 
 	return observations, header[2:], nil
-}
-
-func resolvePlaces(
-	metadata *resource.Metadata,
-	places []string,
-	placeHeader string,
-) (map[string]string, error) {
-	var property string
-	placeToDCID := map[string]string{}
-	if placeHeader == "dcid" {
-		for _, place := range places {
-			placeToDCID[place] = place
-		}
-		return placeToDCID, nil
-	}
-	if placeHeader == "lat#lng" {
-		for _, place := range places {
-			if err := validateLatLng(place); err != nil {
-				return nil, err
-			}
-		}
-		property = "<-geoCoordinate->dcid"
-	} else if placeHeader == "name" {
-		property = "<-description->dcid"
-	} else {
-		property = fmt.Sprintf("<-%s->dcid", placeHeader)
-	}
-	resp := &pbv2.ResolveResponse{}
-	if err := util.FetchRemote(metadata, &http.Client{}, "/v2/resolve",
-		&pbv2.ResolveRequest{
-			Nodes:    places,
-			Property: property,
-		}, resp); err != nil {
-		return nil, err
-	}
-	for _, entity := range resp.GetEntities() {
-		if _, ok := placeToDCID[entity.GetNode()]; ok {
-			continue
-		}
-		if len(entity.GetCandidates()) > 0 {
-			// The resolve API sorts candidates already, so we pick the first one.
-			placeToDCID[entity.GetNode()] = entity.GetCandidates()[0].GetDcid()
-		}
-	}
-	return placeToDCID, nil
-}
-
-func validateLatLng(latLng string) error {
-	parts := strings.Split(latLng, "#")
-	if len(parts) != 2 {
-		return status.Errorf(codes.InvalidArgument,
-			"Wrong coordinate argument %s, should be latitude#longitude.", latLng)
-	}
-
-	latStr, lngStr := parts[0], parts[1]
-
-	lat, err := strconv.ParseFloat(latStr, 64)
-	if err != nil {
-		return err
-	}
-	if lat > 90 || lat < -90 {
-		return status.Errorf(codes.InvalidArgument,
-			"Wrong latitude for %s", latLng)
-	}
-
-	lng, err := strconv.ParseFloat(lngStr, 64)
-	if err != nil {
-		return err
-	}
-	if lng > 180 || lng < -180 {
-		return status.Errorf(codes.InvalidArgument,
-			"Wrong longitude for %s", latLng)
-	}
-
-	return nil
 }
 
 func writeObservations(
