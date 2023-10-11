@@ -1348,7 +1348,7 @@
                   "measurementMethod": "CensusACS5yrSurveySubjectTable"
                 },
                 "earliestDate": "2017",
-                "latestDate": "2019",
+                "latestDate": "2021",
                 "placeTypeSummary": {
                   "Country": {
                     "placeCount": 1,
@@ -1359,7 +1359,7 @@
                       }
                     ],
                     "minValue": 163070238.756,
-                    "maxValue": 164946479.86
+                    "maxValue": 166511367.905
                   },
                   "State": {
                     "placeCount": 51,
@@ -1377,17 +1377,17 @@
                         "name": "Florida"
                       }
                     ],
-                    "minValue": 284701.76,
-                    "maxValue": 19759598.991
+                    "minValue": 281400.808,
+                    "maxValue": 19791049.569
                   }
                 },
-                "minValue": 284701.76,
-                "maxValue": 164946479.86,
-                "observationCount": 156,
+                "minValue": 281400.808,
+                "maxValue": 166511367.905,
+                "observationCount": 260,
                 "timeSeriesCount": 52
               }
             ],
-            "observationCount": 156,
+            "observationCount": 260,
             "timeSeriesCount": 52
           },
           "dc/base/CensusACS5YearSurvey_SubjectTables_S2602PR": {
