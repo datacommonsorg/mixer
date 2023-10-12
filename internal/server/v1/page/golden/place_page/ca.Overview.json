@@ -24009,7 +24009,8 @@
             "2023-09-02": 15080,
             "2023-09-09": 14500,
             "2023-09-16": 14780,
-            "2023-09-23": 14499
+            "2023-09-23": 14499,
+            "2023-09-30": 14330
           },
           "metadata": {
             "importName": "USDOL_ETA539",
@@ -27912,8 +27913,8 @@
             "2021": 385755.84
           },
           "metadata": {
-            "importName": "CensusACS5YearSurvey_SubjectTables_S2601APR",
-            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S2601APR\u0026tid=ACSST5Y2019.S2601APR",
+            "importName": "CensusACS5YearSurvey_SubjectTables_S1201",
+            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S1201\u0026tid=ACSST5Y2019.S1201",
             "measurementMethod": "CensusACS5yrSurveySubjectTable"
           }
         },
@@ -29270,8 +29271,8 @@
             "2021": 65238.12
           },
           "metadata": {
-            "importName": "CensusACS5YearSurvey_SubjectTables_S2601APR",
-            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S2601APR\u0026tid=ACSST5Y2019.S2601APR",
+            "importName": "CensusACS5YearSurvey_SubjectTables_S1201",
+            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S1201\u0026tid=ACSST5Y2019.S1201",
             "measurementMethod": "CensusACS5yrSurveySubjectTable"
           }
         },
@@ -31257,7 +31258,8 @@
             "2023-09-02": 18673,
             "2023-09-09": 18369,
             "2023-09-16": 18138,
-            "2023-09-23": 18073
+            "2023-09-23": 18073,
+            "2023-09-30": 18397
           },
           "metadata": {
             "importName": "USDOL_ETA539",
