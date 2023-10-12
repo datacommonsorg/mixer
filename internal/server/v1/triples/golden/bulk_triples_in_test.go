@@ -48,7 +48,7 @@ func TestBulkTriplesIn(t *testing.T) {
 			{
 				"result2.json",
 				[]string{"Country", "BiologicalSpecimen", "Count_Person", "dummy"},
-				"H4sIAAAAAAAA/2zNsQrCMBDGcXtN6/VwKCf4QOquUHASJJZTAk1S0ivi20sjbi4/PviGP12J9y4O8el6O3Sj9M5LoFrfo5we/z5eMWDBgMCAJQMaBqwYsGaD63Z5kAEbBiR60eYQ56C3s6QpBtp5sdOcxEvQo4ToXbAaE207teomXUIXm5y9D8LQFmywyH53mTXZKltnf1mDTV70AQAA//8BAAD//yQ0GY/XAAAA",
+				"H4sIAAAAAAAA/2zOwQrCMAzGcZd1WxY8jAg+kHpXGHgSpI4ohbUdXXfY28vi1cuPwP+Qjx7EJxfH+HGDHftJBuclUJ3XSa7vf413DFgwIDBgyYCGASsGrNlg020FGbBlQKKV9ue4hPy8SZpjoKMXOy9JvIR8kRC9CzbHRIc+2+zmvD262+TsaxSGrmCDhfq7S9WolVqrjYpqqxPoCwAA//8BAAD//yvpAtjZAAAA",
 			},
 		} {
 			req := &pbv1.BulkTriplesRequest{

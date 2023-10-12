@@ -2813,8 +2813,8 @@
             "2021": 385755.84
           },
           "metadata": {
-            "importName": "CensusACS5YearSurvey_SubjectTables_S2601APR",
-            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S2601APR\u0026tid=ACSST5Y2019.S2601APR",
+            "importName": "CensusACS5YearSurvey_SubjectTables_S1201",
+            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S1201\u0026tid=ACSST5Y2019.S1201",
             "measurementMethod": "CensusACS5yrSurveySubjectTable"
           }
         },
@@ -2956,8 +2956,8 @@
             "2021": 65238.12
           },
           "metadata": {
-            "importName": "CensusACS5YearSurvey_SubjectTables_S2601APR",
-            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S2601APR\u0026tid=ACSST5Y2019.S2601APR",
+            "importName": "CensusACS5YearSurvey_SubjectTables_S1201",
+            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S1201\u0026tid=ACSST5Y2019.S1201",
             "measurementMethod": "CensusACS5yrSurveySubjectTable"
           }
         },
