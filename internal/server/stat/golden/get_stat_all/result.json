@@ -416,26 +416,6 @@
             },
             {
               "val": {
-                "2010": 303965272,
-                "2011": 306603772,
-                "2012": 309138711,
-                "2013": 311536594,
-                "2014": 314107084,
-                "2015": 316515021,
-                "2016": 318558162,
-                "2017": 321004407,
-                "2018": 322903030,
-                "2019": 324697795,
-                "2020": 326569308,
-                "2021": 329725481
-              },
-              "measurementMethod": "CensusACS5yrSurveySubjectTable",
-              "importName": "CensusACS5YearSurvey_SubjectTables_S2601A",
-              "provenanceDomain": "census.gov",
-              "provenanceUrl": "https://data.census.gov/cedsci/table?q=S2601A\u0026tid=ACSST5Y2019.S2601A"
-            },
-            {
-              "val": {
                 "2017": 321004407,
                 "2018": 322903030,
                 "2019": 324697795,
@@ -634,6 +614,24 @@
               "importName": "CensusACS1YearSurvey",
               "provenanceDomain": "census.gov",
               "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html"
+            },
+            {
+              "val": {
+                "2010": 303965272,
+                "2011": 306603772,
+                "2012": 309138711,
+                "2013": 311536594,
+                "2014": 314107084,
+                "2015": 316515021,
+                "2016": 318558162,
+                "2017": 321004407,
+                "2018": 322903030,
+                "2019": 324697795
+              },
+              "measurementMethod": "CensusACS5yrSurveySubjectTable",
+              "importName": "CensusACS5YearSurvey_SubjectTables_S2601A",
+              "provenanceDomain": "census.gov",
+              "provenanceUrl": "https://data.census.gov/cedsci/table?q=S2601A\u0026tid=ACSST5Y2019.S2601A"
             },
             {
               "val": {
@@ -962,26 +960,6 @@
             },
             {
               "val": {
-                "2010": 36637290,
-                "2011": 36969200,
-                "2012": 37325068,
-                "2013": 37659181,
-                "2014": 38066920,
-                "2015": 38421464,
-                "2016": 38654206,
-                "2017": 38982847,
-                "2018": 39148760,
-                "2019": 39283497,
-                "2020": 39346023,
-                "2021": 39455353
-              },
-              "measurementMethod": "CensusACS5yrSurveySubjectTable",
-              "importName": "CensusACS5YearSurvey_SubjectTables_S2601A",
-              "provenanceDomain": "census.gov",
-              "provenanceUrl": "https://data.census.gov/cedsci/table?q=S2601A\u0026tid=ACSST5Y2019.S2601A"
-            },
-            {
-              "val": {
                 "2017": 38982847,
                 "2018": 39148760,
                 "2019": 39283497,
@@ -1167,6 +1145,24 @@
               "importName": "CensusACS1YearSurvey",
               "provenanceDomain": "census.gov",
               "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html"
+            },
+            {
+              "val": {
+                "2010": 36637290,
+                "2011": 36969200,
+                "2012": 37325068,
+                "2013": 37659181,
+                "2014": 38066920,
+                "2015": 38421464,
+                "2016": 38654206,
+                "2017": 38982847,
+                "2018": 39148760,
+                "2019": 39283497
+              },
+              "measurementMethod": "CensusACS5yrSurveySubjectTable",
+              "importName": "CensusACS5YearSurvey_SubjectTables_S2601A",
+              "provenanceDomain": "census.gov",
+              "provenanceUrl": "https://data.census.gov/cedsci/table?q=S2601A\u0026tid=ACSST5Y2019.S2601A"
             },
             {
               "val": {
