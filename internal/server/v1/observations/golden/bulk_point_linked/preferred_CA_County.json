@@ -1975,6 +1975,11 @@
       "measurement_method": "NASA_Mean_CESM1-CAM5",
       "observation_period": "P1Y"
     },
+    "1964317807": {
+      "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",
+      "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2022.S0101",
+      "measurement_method": "CensusACS5yrSurveySubjectTable"
+    },
     "209512024": {
       "import_name": "NASA_WetBulbComputation_Aggregation",
       "provenance_url": "https://datacommons.org/",
@@ -2037,6 +2042,12 @@
       "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
       "measurement_method": "CensusACS5yrSurvey",
       "unit": "Year"
+    },
+    "815809675": {
+      "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",
+      "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2022.S0101",
+      "measurement_method": "CensusACS5yrSurveySubjectTable",
+      "unit": "Years"
     }
   }
 }

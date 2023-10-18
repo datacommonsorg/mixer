@@ -416,6 +416,26 @@
             },
             {
               "val": {
+                "2010": 303965272,
+                "2011": 306603772,
+                "2012": 309138711,
+                "2013": 311536594,
+                "2014": 314107084,
+                "2015": 316515021,
+                "2016": 318558162,
+                "2017": 321004407,
+                "2018": 322903030,
+                "2019": 324697795,
+                "2020": 326569308,
+                "2021": 329725481
+              },
+              "measurementMethod": "CensusACS5yrSurveySubjectTable",
+              "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
+              "provenanceDomain": "census.gov",
+              "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2022.S0101"
+            },
+            {
+              "val": {
                 "2017": 321004407,
                 "2018": 322903030,
                 "2019": 324697795,
@@ -960,6 +980,26 @@
             },
             {
               "val": {
+                "2010": 36637290,
+                "2011": 36969200,
+                "2012": 37325068,
+                "2013": 37659181,
+                "2014": 38066920,
+                "2015": 38421464,
+                "2016": 38654206,
+                "2017": 38982847,
+                "2018": 39148760,
+                "2019": 39283497,
+                "2020": 39346023,
+                "2021": 39455353
+              },
+              "measurementMethod": "CensusACS5yrSurveySubjectTable",
+              "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
+              "provenanceDomain": "census.gov",
+              "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2022.S0101"
+            },
+            {
+              "val": {
                 "2017": 38982847,
                 "2018": 39148760,
                 "2019": 39283497,
@@ -1322,6 +1362,26 @@
               "importName": "USDecennialCensus_RedistrictingRelease",
               "provenanceDomain": "census.gov",
               "provenanceUrl": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html"
+            },
+            {
+              "val": {
+                "2010": 72510,
+                "2011": 73394,
+                "2012": 74447,
+                "2013": 75477,
+                "2014": 76741,
+                "2015": 77973,
+                "2016": 78827,
+                "2017": 80076,
+                "2018": 80993,
+                "2019": 81656,
+                "2020": 80104,
+                "2021": 82409
+              },
+              "measurementMethod": "CensusACS5yrSurveySubjectTable",
+              "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
+              "provenanceDomain": "census.gov",
+              "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2022.S0101"
             },
             {
               "val": {

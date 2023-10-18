@@ -1872,6 +1872,59 @@
             {
               "series": [
                 {
+                  "date": "2010",
+                  "value": 303965272
+                },
+                {
+                  "date": "2011",
+                  "value": 306603772
+                },
+                {
+                  "date": "2012",
+                  "value": 309138711
+                },
+                {
+                  "date": "2013",
+                  "value": 311536594
+                },
+                {
+                  "date": "2014",
+                  "value": 314107084
+                },
+                {
+                  "date": "2015",
+                  "value": 316515021
+                },
+                {
+                  "date": "2016",
+                  "value": 318558162
+                },
+                {
+                  "date": "2017",
+                  "value": 321004407
+                },
+                {
+                  "date": "2018",
+                  "value": 322903030
+                },
+                {
+                  "date": "2019",
+                  "value": 324697795
+                },
+                {
+                  "date": "2020",
+                  "value": 326569308
+                },
+                {
+                  "date": "2021",
+                  "value": 329725481
+                }
+              ],
+              "facet": "1964317807"
+            },
+            {
+              "series": [
+                {
                   "date": "2017",
                   "value": 321004407
                 },
@@ -3465,6 +3518,59 @@
             {
               "series": [
                 {
+                  "date": "2010",
+                  "value": 36637290
+                },
+                {
+                  "date": "2011",
+                  "value": 36969200
+                },
+                {
+                  "date": "2012",
+                  "value": 37325068
+                },
+                {
+                  "date": "2013",
+                  "value": 37659181
+                },
+                {
+                  "date": "2014",
+                  "value": 38066920
+                },
+                {
+                  "date": "2015",
+                  "value": 38421464
+                },
+                {
+                  "date": "2016",
+                  "value": 38654206
+                },
+                {
+                  "date": "2017",
+                  "value": 38982847
+                },
+                {
+                  "date": "2018",
+                  "value": 39148760
+                },
+                {
+                  "date": "2019",
+                  "value": 39283497
+                },
+                {
+                  "date": "2020",
+                  "value": 39346023
+                },
+                {
+                  "date": "2021",
+                  "value": 39455353
+                }
+              ],
+              "facet": "1964317807"
+            },
+            {
+              "series": [
+                {
                   "date": "2017",
                   "value": 38982847
                 },
@@ -4520,6 +4626,59 @@
                 }
               ],
               "facet": "1541763368"
+            },
+            {
+              "series": [
+                {
+                  "date": "2010",
+                  "value": 72510
+                },
+                {
+                  "date": "2011",
+                  "value": 73394
+                },
+                {
+                  "date": "2012",
+                  "value": 74447
+                },
+                {
+                  "date": "2013",
+                  "value": 75477
+                },
+                {
+                  "date": "2014",
+                  "value": 76741
+                },
+                {
+                  "date": "2015",
+                  "value": 77973
+                },
+                {
+                  "date": "2016",
+                  "value": 78827
+                },
+                {
+                  "date": "2017",
+                  "value": 80076
+                },
+                {
+                  "date": "2018",
+                  "value": 80993
+                },
+                {
+                  "date": "2019",
+                  "value": 81656
+                },
+                {
+                  "date": "2020",
+                  "value": 80104
+                },
+                {
+                  "date": "2021",
+                  "value": 82409
+                }
+              ],
+              "facet": "1964317807"
             },
             {
               "series": [
@@ -17073,6 +17232,11 @@
       "provenance_url": "https://www.bls.gov/cps/",
       "measurement_method": "BLSSeasonallyAdjusted",
       "observation_period": "P3M"
+    },
+    "1964317807": {
+      "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",
+      "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2022.S0101",
+      "measurement_method": "CensusACS5yrSurveySubjectTable"
     },
     "196790193": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2602",

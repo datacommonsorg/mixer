@@ -2612,6 +2612,59 @@
               ]
             },
             {
+              "facet_id": "1964317807",
+              "observations": [
+                {
+                  "date": "2010",
+                  "value": 303965272
+                },
+                {
+                  "date": "2011",
+                  "value": 306603772
+                },
+                {
+                  "date": "2012",
+                  "value": 309138711
+                },
+                {
+                  "date": "2013",
+                  "value": 311536594
+                },
+                {
+                  "date": "2014",
+                  "value": 314107084
+                },
+                {
+                  "date": "2015",
+                  "value": 316515021
+                },
+                {
+                  "date": "2016",
+                  "value": 318558162
+                },
+                {
+                  "date": "2017",
+                  "value": 321004407
+                },
+                {
+                  "date": "2018",
+                  "value": 322903030
+                },
+                {
+                  "date": "2019",
+                  "value": 324697795
+                },
+                {
+                  "date": "2020",
+                  "value": 326569308
+                },
+                {
+                  "date": "2021",
+                  "value": 329725481
+                }
+              ]
+            },
+            {
               "facet_id": "196790193",
               "observations": [
                 {
@@ -4205,6 +4258,59 @@
               ]
             },
             {
+              "facet_id": "1964317807",
+              "observations": [
+                {
+                  "date": "2010",
+                  "value": 36637290
+                },
+                {
+                  "date": "2011",
+                  "value": 36969200
+                },
+                {
+                  "date": "2012",
+                  "value": 37325068
+                },
+                {
+                  "date": "2013",
+                  "value": 37659181
+                },
+                {
+                  "date": "2014",
+                  "value": 38066920
+                },
+                {
+                  "date": "2015",
+                  "value": 38421464
+                },
+                {
+                  "date": "2016",
+                  "value": 38654206
+                },
+                {
+                  "date": "2017",
+                  "value": 38982847
+                },
+                {
+                  "date": "2018",
+                  "value": 39148760
+                },
+                {
+                  "date": "2019",
+                  "value": 39283497
+                },
+                {
+                  "date": "2020",
+                  "value": 39346023
+                },
+                {
+                  "date": "2021",
+                  "value": 39455353
+                }
+              ]
+            },
+            {
               "facet_id": "196790193",
               "observations": [
                 {
@@ -5259,6 +5365,59 @@
                 {
                   "date": "2020",
                   "value": 82376
+                }
+              ]
+            },
+            {
+              "facet_id": "1964317807",
+              "observations": [
+                {
+                  "date": "2010",
+                  "value": 72510
+                },
+                {
+                  "date": "2011",
+                  "value": 73394
+                },
+                {
+                  "date": "2012",
+                  "value": 74447
+                },
+                {
+                  "date": "2013",
+                  "value": 75477
+                },
+                {
+                  "date": "2014",
+                  "value": 76741
+                },
+                {
+                  "date": "2015",
+                  "value": 77973
+                },
+                {
+                  "date": "2016",
+                  "value": 78827
+                },
+                {
+                  "date": "2017",
+                  "value": 80076
+                },
+                {
+                  "date": "2018",
+                  "value": 80993
+                },
+                {
+                  "date": "2019",
+                  "value": 81656
+                },
+                {
+                  "date": "2020",
+                  "value": 80104
+                },
+                {
+                  "date": "2021",
+                  "value": 82409
                 }
               ]
             },
@@ -16918,6 +17077,59 @@
               ]
             },
             {
+              "facet_id": "815809675",
+              "observations": [
+                {
+                  "date": "2010",
+                  "value": 36.9
+                },
+                {
+                  "date": "2011",
+                  "value": 37
+                },
+                {
+                  "date": "2012",
+                  "value": 37.2
+                },
+                {
+                  "date": "2013",
+                  "value": 37.3
+                },
+                {
+                  "date": "2014",
+                  "value": 37.4
+                },
+                {
+                  "date": "2015",
+                  "value": 37.6
+                },
+                {
+                  "date": "2016",
+                  "value": 37.7
+                },
+                {
+                  "date": "2017",
+                  "value": 37.8
+                },
+                {
+                  "date": "2018",
+                  "value": 37.9
+                },
+                {
+                  "date": "2019",
+                  "value": 38.1
+                },
+                {
+                  "date": "2020",
+                  "value": 38.2
+                },
+                {
+                  "date": "2021",
+                  "value": 38.4
+                }
+              ]
+            },
+            {
               "facet_id": "3690003977",
               "observations": [
                 {
@@ -17067,6 +17279,59 @@
               ]
             },
             {
+              "facet_id": "815809675",
+              "observations": [
+                {
+                  "date": "2010",
+                  "value": 34.9
+                },
+                {
+                  "date": "2011",
+                  "value": 35.1
+                },
+                {
+                  "date": "2012",
+                  "value": 35.2
+                },
+                {
+                  "date": "2013",
+                  "value": 35.4
+                },
+                {
+                  "date": "2014",
+                  "value": 35.6
+                },
+                {
+                  "date": "2015",
+                  "value": 35.8
+                },
+                {
+                  "date": "2016",
+                  "value": 36
+                },
+                {
+                  "date": "2017",
+                  "value": 36.1
+                },
+                {
+                  "date": "2018",
+                  "value": 36.3
+                },
+                {
+                  "date": "2019",
+                  "value": 36.5
+                },
+                {
+                  "date": "2020",
+                  "value": 36.7
+                },
+                {
+                  "date": "2021",
+                  "value": 37
+                }
+              ]
+            },
+            {
               "facet_id": "3690003977",
               "observations": [
                 {
@@ -17143,6 +17408,59 @@
             {
               "facet_id": "3795540742",
               "observations": [
+                {
+                  "date": "2011",
+                  "value": 36
+                },
+                {
+                  "date": "2012",
+                  "value": 35.9
+                },
+                {
+                  "date": "2013",
+                  "value": 35.8
+                },
+                {
+                  "date": "2014",
+                  "value": 35.9
+                },
+                {
+                  "date": "2015",
+                  "value": 35.4
+                },
+                {
+                  "date": "2016",
+                  "value": 35
+                },
+                {
+                  "date": "2017",
+                  "value": 35
+                },
+                {
+                  "date": "2018",
+                  "value": 34.9
+                },
+                {
+                  "date": "2019",
+                  "value": 34.8
+                },
+                {
+                  "date": "2020",
+                  "value": 35.2
+                },
+                {
+                  "date": "2021",
+                  "value": 35.4
+                }
+              ]
+            },
+            {
+              "facet_id": "815809675",
+              "observations": [
+                {
+                  "date": "2010",
+                  "value": 35.9
+                },
                 {
                   "date": "2011",
                   "value": 36
@@ -17400,6 +17718,11 @@
       "measurement_method": "BLSSeasonallyAdjusted",
       "observation_period": "P3M"
     },
+    "1964317807": {
+      "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",
+      "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2022.S0101",
+      "measurement_method": "CensusACS5yrSurveySubjectTable"
+    },
     "196790193": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2602",
       "provenance_url": "https://data.census.gov/cedsci/table?q=S2602&tid=ACSST5Y2019.S2602",
@@ -17515,6 +17838,12 @@
       "import_name": "FranceINSEE",
       "provenance_url": "https://www.insee.fr/en/metadonnees/source/indicateur/p1667/description",
       "measurement_method": "FranceINSEE"
+    },
+    "815809675": {
+      "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",
+      "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2022.S0101",
+      "measurement_method": "CensusACS5yrSurveySubjectTable",
+      "unit": "Years"
     },
     "858679853": {
       "import_name": "EurostatData",

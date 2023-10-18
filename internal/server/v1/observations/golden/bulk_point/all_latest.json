@@ -92,6 +92,11 @@
             {
               "date": "2021",
               "value": 329725481,
+              "facet": "1964317807"
+            },
+            {
+              "date": "2021",
+              "value": 329725481,
               "facet": "196790193"
             },
             {
@@ -157,6 +162,11 @@
             {
               "date": "2021",
               "value": 39455353,
+              "facet": "1964317807"
+            },
+            {
+              "date": "2021",
+              "value": 39455353,
               "facet": "196790193"
             },
             {
@@ -208,6 +218,11 @@
               "date": "2020",
               "value": 82376,
               "facet": "1541763368"
+            },
+            {
+              "date": "2021",
+              "value": 82409,
+              "facet": "1964317807"
             },
             {
               "date": "2019",
@@ -467,6 +482,11 @@
       "provenance_url": "https://www.bls.gov/cps/",
       "measurement_method": "BLSSeasonallyAdjusted",
       "observation_period": "P3M"
+    },
+    "1964317807": {
+      "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",
+      "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2022.S0101",
+      "measurement_method": "CensusACS5yrSurveySubjectTable"
     },
     "196790193": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2602",

@@ -84,6 +84,27 @@
             "observationPeriod": "P1Y"
           }
         },
+        "Count_Person_10To14Years": {
+          "val": {
+            "2010": 210552.275,
+            "2011": 209296.36,
+            "2012": 208506.96,
+            "2013": 207520.428,
+            "2014": 206784.177,
+            "2015": 205660.554,
+            "2016": 206725.926,
+            "2017": 207692,
+            "2018": 206380,
+            "2019": 205390,
+            "2020": 206033,
+            "2021": 209332
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
+            "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2022.S0101",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
+          }
+        },
         "Count_Person_15OrMoreYears": {
           "val": {
             "2011": 2387555,
@@ -102,6 +123,27 @@
             "importName": "CensusACS5YearSurvey",
             "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
             "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_15To19Years": {
+          "val": {
+            "2010": 222414.375,
+            "2011": 224246.1,
+            "2012": 223616.16,
+            "2013": 222779.283,
+            "2014": 219129.501,
+            "2015": 215008.761,
+            "2016": 212990.348,
+            "2017": 211120,
+            "2018": 208793,
+            "2019": 206633,
+            "2020": 204457,
+            "2021": 206993
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
+            "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2022.S0101",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
           }
         },
         "Count_Person_18To24Years": {
@@ -124,6 +166,48 @@
             "measurementMethod": "CensusACS5yrSurvey"
           }
         },
+        "Count_Person_20To24Years": {
+          "val": {
+            "2010": 207586.75,
+            "2011": 212286.308,
+            "2012": 217572.48,
+            "2013": 222779.283,
+            "2014": 225302.163,
+            "2015": 227473.037,
+            "2016": 225519.192,
+            "2017": 223560,
+            "2018": 218993,
+            "2019": 213390,
+            "2020": 208955,
+            "2021": 204512
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
+            "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2022.S0101",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
+          }
+        },
+        "Count_Person_25To29Years": {
+          "val": {
+            "2010": 216483.325,
+            "2011": 215276.256,
+            "2012": 217572.48,
+            "2013": 216675.741,
+            "2014": 219129.501,
+            "2015": 224356.968,
+            "2016": 225519.192,
+            "2017": 232813,
+            "2018": 236848,
+            "2019": 239611,
+            "2020": 240373,
+            "2021": 234241
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
+            "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2022.S0101",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
+          }
+        },
         "Count_Person_25To34Years": {
           "val": {
             "2011": 413879,
@@ -142,6 +226,48 @@
             "importName": "CensusACS5YearSurvey",
             "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
             "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_30To34Years": {
+          "val": {
+            "2010": 198690.175,
+            "2011": 197336.568,
+            "2012": 199441.44,
+            "2013": 204468.657,
+            "2014": 206784.177,
+            "2015": 211892.692,
+            "2016": 212990.348,
+            "2017": 215807,
+            "2018": 216273,
+            "2019": 216450,
+            "2020": 218077,
+            "2021": 220230
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
+            "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2022.S0101",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
+          }
+        },
+        "Count_Person_35To39Years": {
+          "val": {
+            "2010": 225379.9,
+            "2011": 218266.204,
+            "2012": 214550.64,
+            "2013": 207520.428,
+            "2014": 206784.177,
+            "2015": 202544.485,
+            "2016": 203593.715,
+            "2017": 204152,
+            "2018": 206098,
+            "2019": 206919,
+            "2020": 209085,
+            "2021": 211712
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
+            "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2022.S0101",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
           }
         },
         "Count_Person_35To44Years": {
@@ -164,6 +290,48 @@
             "measurementMethod": "CensusACS5yrSurvey"
           }
         },
+        "Count_Person_40To44Years": {
+          "val": {
+            "2010": 225379.9,
+            "2011": 227236.048,
+            "2012": 226638,
+            "2013": 225831.054,
+            "2014": 225302.163,
+            "2015": 227473.037,
+            "2016": 222386.981,
+            "2017": 216503,
+            "2018": 209821,
+            "2019": 205532,
+            "2020": 201338,
+            "2021": 204437
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
+            "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2022.S0101",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
+          }
+        },
+        "Count_Person_45To49Years": {
+          "val": {
+            "2010": 228345.425,
+            "2011": 230225.996,
+            "2012": 229659.84,
+            "2013": 228882.825,
+            "2014": 228388.494,
+            "2015": 227473.037,
+            "2016": 228651.403,
+            "2017": 228732,
+            "2018": 227373,
+            "2019": 225137,
+            "2020": 221565,
+            "2021": 219357
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
+            "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2022.S0101",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
+          }
+        },
         "Count_Person_45To54Years": {
           "val": {
             "2011": 437740,
@@ -182,6 +350,27 @@
             "importName": "CensusACS5YearSurvey",
             "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
             "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_50To54Years": {
+          "val": {
+            "2010": 201655.7,
+            "2011": 209296.36,
+            "2012": 214550.64,
+            "2013": 219727.512,
+            "2014": 222215.832,
+            "2015": 227473.037,
+            "2016": 225519.192,
+            "2017": 227715,
+            "2018": 226235,
+            "2019": 223914,
+            "2020": 221839,
+            "2021": 223845
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
+            "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2022.S0101",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
           }
         },
         "Count_Person_55To59Years": {
@@ -224,6 +413,27 @@
             "measurementMethod": "CensusACS5yrSurvey"
           }
         },
+        "Count_Person_5To9Years": {
+          "val": {
+            "2010": 201655.7,
+            "2011": 200326.516,
+            "2012": 199441.44,
+            "2013": 198365.115,
+            "2014": 197525.184,
+            "2015": 196312.347,
+            "2016": 194197.082,
+            "2017": 192334,
+            "2018": 189548,
+            "2019": 186384,
+            "2020": 182256,
+            "2021": 182911
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
+            "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2022.S0101",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
+          }
+        },
         "Count_Person_60To61Years": {
           "val": {
             "2011": 62058,
@@ -242,6 +452,27 @@
             "importName": "CensusACS5YearSurvey",
             "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
             "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_60To64Years": {
+          "val": {
+            "2010": 136414.15,
+            "2011": 140527.556,
+            "2012": 145048.32,
+            "2013": 152588.55,
+            "2014": 157402.881,
+            "2015": 162035.588,
+            "2016": 166007.183,
+            "2017": 171585,
+            "2018": 176654,
+            "2019": 182777,
+            "2020": 187390,
+            "2021": 191693
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
+            "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2022.S0101",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
           }
         },
         "Count_Person_62To64Years": {
@@ -264,6 +495,27 @@
             "measurementMethod": "CensusACS5yrSurvey"
           }
         },
+        "Count_Person_65To69Years": {
+          "val": {
+            "2010": 97862.325,
+            "2011": 101658.232,
+            "2012": 108786.24,
+            "2013": 112915.527,
+            "2014": 120366.909,
+            "2015": 127758.829,
+            "2016": 134685.073,
+            "2017": 138825,
+            "2018": 141887,
+            "2019": 144175,
+            "2020": 147471,
+            "2021": 150646
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
+            "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2022.S0101",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
+          }
+        },
         "Count_Person_65To74Years": {
           "val": {
             "2011": 181623,
@@ -284,6 +536,27 @@
             "measurementMethod": "CensusACS5yrSurvey"
           }
         },
+        "Count_Person_70To74Years": {
+          "val": {
+            "2010": 77103.65,
+            "2011": 77738.648,
+            "2012": 81589.68,
+            "2013": 85449.588,
+            "2014": 89503.599,
+            "2015": 93482.07,
+            "2016": 97098.541,
+            "2017": 101896,
+            "2018": 107324,
+            "2019": 113443,
+            "2020": 117750,
+            "2021": 122824
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
+            "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2022.S0101",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
+          }
+        },
         "Count_Person_75OrMoreYears": {
           "val": {
             "2011": 160498,
@@ -302,6 +575,27 @@
             "importName": "CensusACS5YearSurvey",
             "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
             "measurementMethod": "CensusACS5yrSurvey"
+          }
+        },
+        "Count_Person_75To79Years": {
+          "val": {
+            "2010": 62276.025,
+            "2011": 62788.908,
+            "2012": 63458.64,
+            "2013": 64087.191,
+            "2014": 64812.951,
+            "2015": 68553.518,
+            "2016": 72040.853,
+            "2017": 73288,
+            "2018": 76321,
+            "2019": 79712,
+            "2020": 79932,
+            "2021": 79202
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
+            "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2022.S0101",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
           }
         },
         "Count_Person_AmericanIndianOrAlaskaNativeAlone": {
@@ -2571,6 +2865,27 @@
             "observationPeriod": "P1Y"
           }
         },
+        "Count_Person_10To14Years": {
+          "val": {
+            "2010": 285936.472,
+            "2011": 280693.95,
+            "2012": 271321.071,
+            "2013": 261490.586,
+            "2014": 251088.585,
+            "2015": 240065.891,
+            "2016": 229410.025,
+            "2017": 221135,
+            "2018": 207704,
+            "2019": 199508,
+            "2020": 193912,
+            "2021": 193155
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
+            "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2022.S0101",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
+          }
+        },
         "Count_Person_15OrMoreYears": {
           "val": {
             "2011": 2990914,
@@ -2591,15 +2906,36 @@
             "measurementMethod": "CensusACS5yrSurvey"
           }
         },
+        "Count_Person_15To19Years": {
+          "val": {
+            "2010": 289698.794,
+            "2011": 288179.122,
+            "2012": 282471.252,
+            "2013": 276222.45,
+            "2014": 269283.41,
+            "2015": 257981.256,
+            "2016": 250586.335,
+            "2017": 241731,
+            "2018": 230407,
+            "2019": 221586,
+            "2020": 211965,
+            "2021": 210295
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
+            "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2022.S0101",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
+          }
+        },
         "Count_Person_18To24Years": {
           "val": {
-            "2010": 385339,
-            "2011": 381617,
-            "2012": 378601,
-            "2013": 375455,
-            "2014": 371200,
-            "2015": 364351,
-            "2016": 356894,
+            "2010": 383756.844,
+            "2011": 381743.772,
+            "2012": 379106.154,
+            "2013": 375662.532,
+            "2014": 371174.43,
+            "2015": 365473.446,
+            "2016": 356467.885,
             "2017": 346845,
             "2018": 334598,
             "2019": 324142,
@@ -2607,71 +2943,218 @@
             "2021": 314885
           },
           "metadata": {
-            "importName": "CensusACS5YearSurvey_SubjectTables_S0701PR",
-            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S0701PR\u0026tid=ACSST5Y2019.S0701PR",
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
+            "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2022.S0101",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
+          }
+        },
+        "Count_Person_20To24Years": {
+          "val": {
+            "2010": 270887.184,
+            "2011": 265723.606,
+            "2012": 263887.617,
+            "2013": 265173.552,
+            "2014": 262005.48,
+            "2015": 257981.256,
+            "2016": 254115.72,
+            "2017": 248778,
+            "2018": 240838,
+            "2019": 232564,
+            "2020": 224949,
+            "2021": 227033
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
+            "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2022.S0101",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
+          }
+        },
+        "Count_Person_25To29Years": {
+          "val": {
+            "2010": 255837.896,
+            "2011": 250753.262,
+            "2012": 245303.982,
+            "2013": 235709.824,
+            "2014": 232893.76,
+            "2015": 225733.599,
+            "2016": 225880.64,
+            "2017": 224182,
+            "2018": 222881,
+            "2019": 221245,
+            "2020": 219540,
+            "2021": 224008
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
+            "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2022.S0101",
             "measurementMethod": "CensusACS5yrSurveySubjectTable"
           }
         },
         "Count_Person_25To34Years": {
           "val": {
-            "2010": 503068,
-            "2011": 496635,
-            "2012": 488542,
-            "2013": 479212,
-            "2014": 468088,
-            "2015": 454454,
-            "2016": 444100,
-            "2017": 434128,
-            "2018": 422052,
-            "2019": 413196,
-            "2020": 408147,
-            "2021": 419212
+            "2017": 433620.375,
+            "2018": 423367.625,
+            "2019": 414805.875,
+            "2020": 406955.25,
+            "2021": 420531.798
           },
           "metadata": {
-            "importName": "CensusACS5YearSurvey_SubjectTables_S0701PR",
-            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S0701PR\u0026tid=ACSST5Y2019.S0701PR",
+            "importName": "CensusACS5YearSurvey_SubjectTables_S2602PR",
+            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S2602PR\u0026tid=ACSST5Y2019.S2602PR",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
+          }
+        },
+        "Count_Person_30To34Years": {
+          "val": {
+            "2010": 244550.93,
+            "2011": 247010.676,
+            "2012": 245303.982,
+            "2013": 243075.756,
+            "2014": 236532.725,
+            "2015": 229316.672,
+            "2016": 218821.87,
+            "2017": 209946,
+            "2018": 199171,
+            "2019": 191951,
+            "2020": 188607,
+            "2021": 195204
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
+            "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2022.S0101",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
+          }
+        },
+        "Count_Person_35To39Years": {
+          "val": {
+            "2010": 240788.608,
+            "2011": 235782.918,
+            "2012": 234153.801,
+            "2013": 232026.858,
+            "2014": 229254.795,
+            "2015": 225733.599,
+            "2016": 222351.255,
+            "2017": 218378,
+            "2018": 209558,
+            "2019": 203084,
+            "2020": 194697,
+            "2021": 193109
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
+            "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2022.S0101",
             "measurementMethod": "CensusACS5yrSurveySubjectTable"
           }
         },
         "Count_Person_35To44Years": {
           "val": {
-            "2010": 494581,
-            "2011": 488539,
-            "2012": 482169,
-            "2013": 474809,
-            "2014": 466706,
-            "2015": 457802,
-            "2016": 448616,
-            "2017": 438751,
-            "2018": 424657,
-            "2019": 412531,
-            "2020": 400845,
-            "2021": 403558
+            "2017": 437089.338,
+            "2018": 423367.625,
+            "2019": 411487.428,
+            "2020": 400443.966,
+            "2021": 403975.428
           },
           "metadata": {
-            "importName": "CensusACS5YearSurvey_SubjectTables_S0701PR",
-            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S0701PR\u0026tid=ACSST5Y2019.S0701PR",
+            "importName": "CensusACS5YearSurvey_SubjectTables_S2602PR",
+            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S2602PR\u0026tid=ACSST5Y2019.S2602PR",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
+          }
+        },
+        "Count_Person_40To44Years": {
+          "val": {
+            "2010": 255837.896,
+            "2011": 250753.262,
+            "2012": 245303.982,
+            "2013": 243075.756,
+            "2014": 236532.725,
+            "2015": 232899.745,
+            "2016": 225880.64,
+            "2017": 220373,
+            "2018": 215099,
+            "2019": 209447,
+            "2020": 206148,
+            "2021": 210449
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
+            "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2022.S0101",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
+          }
+        },
+        "Count_Person_45To49Years": {
+          "val": {
+            "2010": 248313.252,
+            "2011": 247010.676,
+            "2012": 245303.982,
+            "2013": 243075.756,
+            "2014": 240171.69,
+            "2015": 236482.818,
+            "2016": 229410.025,
+            "2017": 224611,
+            "2018": 218156,
+            "2019": 213273,
+            "2020": 208003,
+            "2021": 210505
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
+            "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2022.S0101",
             "measurementMethod": "CensusACS5yrSurveySubjectTable"
           }
         },
         "Count_Person_45To54Years": {
           "val": {
-            "2010": 482889,
-            "2011": 484690,
-            "2012": 484448,
-            "2013": 481802,
-            "2014": 476691,
-            "2015": 471291,
-            "2016": 463546,
-            "2017": 455380,
-            "2018": 445694,
-            "2019": 436270,
-            "2020": 425955,
-            "2021": 430651
+            "2017": 454434.153,
+            "2018": 447076.212,
+            "2019": 434716.557,
+            "2020": 426489.102,
+            "2021": 430465.62
           },
           "metadata": {
-            "importName": "CensusACS5YearSurvey_SubjectTables_S0701PR",
-            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S0701PR\u0026tid=ACSST5Y2019.S0701PR",
+            "importName": "CensusACS5YearSurvey_SubjectTables_S2602PR",
+            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S2602PR\u0026tid=ACSST5Y2019.S2602PR",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
+          }
+        },
+        "Count_Person_50To54Years": {
+          "val": {
+            "2010": 237026.286,
+            "2011": 239525.504,
+            "2012": 237870.528,
+            "2013": 239392.79,
+            "2014": 236532.725,
+            "2015": 236482.818,
+            "2016": 232939.41,
+            "2017": 230769,
+            "2018": 227538,
+            "2019": 222997,
+            "2020": 217952,
+            "2021": 220146
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
+            "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2022.S0101",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
+          }
+        },
+        "Count_Person_55To59Years": {
+          "val": {
+            "2010": 218214.676,
+            "2011": 217069.988,
+            "2012": 219286.893,
+            "2013": 217294.994,
+            "2014": 218337.9,
+            "2015": 218567.453,
+            "2016": 218821.87,
+            "2017": 218703,
+            "2018": 217688,
+            "2019": 216952,
+            "2020": 215654,
+            "2021": 221214
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
+            "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2022.S0101",
             "measurementMethod": "CensusACS5yrSurveySubjectTable"
           }
         },
@@ -2695,36 +3178,113 @@
             "measurementMethod": "CensusACS5yrSurvey"
           }
         },
-        "Count_Person_65To74Years": {
+        "Count_Person_5To9Years": {
           "val": {
-            "2010": 297143,
-            "2011": 306053,
-            "2012": 315346,
-            "2013": 325094,
-            "2014": 334971,
-            "2015": 342338,
-            "2016": 351317,
-            "2017": 357631,
-            "2018": 359600,
-            "2019": 362515,
-            "2020": 364751,
-            "2021": 378237
+            "2010": 252075.574,
+            "2011": 243268.09,
+            "2012": 234153.801,
+            "2013": 228343.892,
+            "2014": 221976.865,
+            "2015": 214984.38,
+            "2016": 204704.33,
+            "2017": 194329,
+            "2018": 185956,
+            "2019": 175207,
+            "2020": 162558,
+            "2021": 159264
           },
           "metadata": {
-            "importName": "CensusACS5YearSurvey_SubjectTables_S0701PR",
-            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S0701PR\u0026tid=ACSST5Y2019.S0701PR",
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
+            "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2022.S0101",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
+          }
+        },
+        "Count_Person_60To64Years": {
+          "val": {
+            "2010": 210690.032,
+            "2011": 217069.988,
+            "2012": 219286.893,
+            "2013": 220977.96,
+            "2014": 218337.9,
+            "2015": 214984.38,
+            "2016": 215292.485,
+            "2017": 214208,
+            "2018": 213684,
+            "2019": 213274,
+            "2020": 213487,
+            "2021": 220552
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
+            "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2022.S0101",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
+          }
+        },
+        "Count_Person_65To69Years": {
+          "val": {
+            "2010": 165542.168,
+            "2011": 172158.956,
+            "2012": 174686.169,
+            "2013": 184148.3,
+            "2014": 189226.18,
+            "2015": 193485.942,
+            "2016": 197645.56,
+            "2017": 197763,
+            "2018": 195828,
+            "2019": 195415,
+            "2020": 191107,
+            "2021": 196759
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
+            "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2022.S0101",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
+          }
+        },
+        "Count_Person_65To74Years": {
+          "val": {
+            "2017": 357303.189,
+            "2018": 359015.746,
+            "2019": 361710.723,
+            "2020": 364631.904,
+            "2021": 377485.236
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_SubjectTables_S2602PR",
+            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S2602PR\u0026tid=ACSST5Y2019.S2602PR",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
+          }
+        },
+        "Count_Person_70To74Years": {
+          "val": {
+            "2010": 131681.27,
+            "2011": 134733.096,
+            "2012": 137518.899,
+            "2013": 143635.674,
+            "2014": 145558.6,
+            "2015": 150489.066,
+            "2016": 155292.94,
+            "2017": 159868,
+            "2018": 163772,
+            "2019": 167100,
+            "2020": 173644,
+            "2021": 181478
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
+            "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2022.S0101",
             "measurementMethod": "CensusACS5yrSurveySubjectTable"
           }
         },
         "Count_Person_75OrMoreYears": {
           "val": {
-            "2010": 220814,
-            "2011": 226639,
-            "2012": 232687,
-            "2013": 239570,
-            "2014": 247159,
-            "2015": 253942,
-            "2016": 262915,
+            "2010": 221976.998,
+            "2011": 228297.746,
+            "2012": 234153.801,
+            "2013": 239392.79,
+            "2014": 247449.62,
+            "2015": 254398.183,
+            "2016": 261174.49,
             "2017": 271990,
             "2018": 281023,
             "2019": 291221,
@@ -2732,8 +3292,29 @@
             "2021": 325688
           },
           "metadata": {
-            "importName": "CensusACS5YearSurvey_SubjectTables_S0701PR",
-            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S0701PR\u0026tid=ACSST5Y2019.S0701PR",
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
+            "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2022.S0101",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
+          }
+        },
+        "Count_Person_75To79Years": {
+          "val": {
+            "2010": 94058.05,
+            "2011": 97307.236,
+            "2012": 100351.629,
+            "2013": 103123.048,
+            "2014": 105529.985,
+            "2015": 111075.263,
+            "2016": 112940.32,
+            "2017": 118910,
+            "2018": 122154,
+            "2019": 125430,
+            "2020": 130673,
+            "2021": 138637
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
+            "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2022.S0101",
             "measurementMethod": "CensusACS5yrSurveySubjectTable"
           }
         },
@@ -2880,22 +3461,22 @@
         },
         "Count_Person_MarriedAndNotSeparated": {
           "val": {
-            "2010": 1219954,
-            "2011": 1188527,
-            "2012": 1152206,
-            "2013": 1142050,
-            "2014": 1127100,
-            "2015": 1107414,
-            "2016": 1087119,
-            "2017": 1065709,
-            "2018": 1034930,
-            "2019": 1007671,
-            "2020": 998644,
-            "2021": 978686
+            "2010": 1219653.168,
+            "2011": 1187392.858,
+            "2012": 1153144.506,
+            "2013": 1140805.715,
+            "2014": 1128480.09,
+            "2015": 1108765.476,
+            "2016": 1085845.522,
+            "2017": 1066081,
+            "2018": 1035009.695,
+            "2019": 1008039.24,
+            "2020": 999323.088,
+            "2021": 978571.8
           },
           "metadata": {
-            "importName": "CensusACS5YearSurvey_SubjectTables_S0701PR",
-            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S0701PR\u0026tid=ACSST5Y2019.S0701PR",
+            "importName": "CensusACS5YearSurvey_SubjectTables_S1201",
+            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S1201\u0026tid=ACSST5Y2019.S1201",
             "measurementMethod": "CensusACS5yrSurveySubjectTable"
           }
         },
@@ -2921,22 +3502,22 @@
         },
         "Count_Person_NeverMarried": {
           "val": {
-            "2010": 1084403,
-            "2011": 1107828,
-            "2012": 1134524,
-            "2013": 1135227,
-            "2014": 1133700,
-            "2015": 1129207,
-            "2016": 1132328,
-            "2017": 1131500,
-            "2018": 1129502,
-            "2019": 1130088,
-            "2020": 1121256,
-            "2021": 1185212
+            "2010": 1085132.598,
+            "2011": 1106638.18,
+            "2012": 1135219.98,
+            "2013": 1134848.505,
+            "2014": 1134403.87,
+            "2015": 1129298.17,
+            "2016": 1132423.346,
+            "2017": 1132350.9,
+            "2018": 1128585.914,
+            "2019": 1131244.036,
+            "2020": 1121124.24,
+            "2021": 1185631.92
           },
           "metadata": {
-            "importName": "CensusACS5YearSurvey_SubjectTables_S0701PR",
-            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S0701PR\u0026tid=ACSST5Y2019.S0701PR",
+            "importName": "CensusACS5YearSurvey_SubjectTables_S1201",
+            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S1201\u0026tid=ACSST5Y2019.S1201",
             "measurementMethod": "CensusACS5yrSurveySubjectTable"
           }
         },
@@ -3023,22 +3604,22 @@
         },
         "Count_Person_Widowed": {
           "val": {
-            "2010": 213242,
-            "2011": 212210,
-            "2012": 210347,
-            "2013": 211360,
-            "2014": 210455,
-            "2015": 207452,
-            "2016": 207395,
-            "2017": 208997,
-            "2018": 206720,
-            "2019": 209356,
-            "2020": 210156,
-            "2021": 220379
+            "2010": 212243.566,
+            "2011": 212354.894,
+            "2012": 209119.47,
+            "2013": 211480.955,
+            "2014": 210294.19,
+            "2015": 208260.182,
+            "2016": 206689.094,
+            "2017": 210334.9,
+            "2018": 207001.939,
+            "2019": 210008.175,
+            "2020": 210383.808,
+            "2021": 221242.32
           },
           "metadata": {
-            "importName": "CensusACS5YearSurvey_SubjectTables_S0701PR",
-            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S0701PR\u0026tid=ACSST5Y2019.S0701PR",
+            "importName": "CensusACS5YearSurvey_SubjectTables_S1201",
+            "provenanceUrl": "https://data.census.gov/cedsci/table?q=S1201\u0026tid=ACSST5Y2019.S1201",
             "measurementMethod": "CensusACS5yrSurveySubjectTable"
           }
         },

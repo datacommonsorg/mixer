@@ -210,6 +210,15 @@
               ]
             },
             {
+              "facet_id": "1964317807",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 316515021
+                }
+              ]
+            },
+            {
               "facet_id": "1152061738",
               "observations": [
                 {
@@ -278,6 +287,15 @@
               ]
             },
             {
+              "facet_id": "1964317807",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 38421464
+                }
+              ]
+            },
+            {
               "facet_id": "1152061738",
               "observations": [
                 {
@@ -337,6 +355,15 @@
             },
             {
               "facet_id": "1145703171",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 77973
+                }
+              ]
+            },
+            {
+              "facet_id": "1964317807",
               "observations": [
                 {
                   "date": "2015",
@@ -457,6 +484,11 @@
       "provenance_url": "https://unstats.un.org/unsd/energystats/data/",
       "observation_period": "P1Y",
       "unit": "KilowattHour"
+    },
+    "1964317807": {
+      "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",
+      "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2022.S0101",
+      "measurement_method": "CensusACS5yrSurveySubjectTable"
     },
     "2171028778": {
       "import_name": "WorldDevelopmentIndicators",
