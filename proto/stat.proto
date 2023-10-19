@@ -55,6 +55,8 @@ message PlaceVariableFacet {
   int32 obs_count = 2;
   // Latest observation date.
   string latest_date = 3;
+  // Earliest observation date.
+  string earliest_date = 4;
 }
 
 message PlaceVariableFacets {
