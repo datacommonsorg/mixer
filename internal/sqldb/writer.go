@@ -32,6 +32,8 @@ import (
 	"google.golang.org/grpc/status"
 )
 
+const batchSize = 1000
+
 var triplesInitData = []*triple{
 	{subjectID: "dc/g/New", predicate: "typeOf", objectID: "StatVarGroup"},
 	{subjectID: "dc/g/New", predicate: "name", objectValue: "New Variables"},
@@ -77,6 +79,7 @@ func Write(sqlClient *sql.DB, resourceMetadata *resource.Metadata) error {
 		if err != nil {
 			return err
 		}
+		log.Printf("Process: %s", csvFile.name)
 		err = writeObservations(sqlClient, observations)
 		if err != nil {
 			return err
@@ -267,12 +270,33 @@ func writeObservations(
 	sqlClient *sql.DB,
 	observations []*observation,
 ) error {
+	// TODO: abstract out the batch write logic into a helper function for both
+	// observations and triples (and future) tables.
+	valueStrings := make([]string, 0, batchSize)
+	valueArgs := make([]interface{}, 0, batchSize*5) // 5 columns to insert
 	for _, o := range observations {
-		sqlStmt := `INSERT INTO observations(entity,variable,date,value,provenance) VALUES (?, ?, ?, ?, ?)`
-		_, err := sqlClient.Exec(sqlStmt, o.entity, o.variable, o.date, o.value, o.provenance)
+		sqlValues := "(?, ?, ?, ?, ?)"
+		valueStrings = append(valueStrings, sqlValues)
+		valueArgs = append(valueArgs, o.entity, o.variable, o.date, o.value, o.provenance)
+		if len(valueStrings) >= batchSize {
+			sqlStmt := fmt.Sprintf(`INSERT INTO observations(entity,variable,date,value,provenance) VALUES %s`, strings.Join(valueStrings, ","))
+			_, err := sqlClient.Exec(sqlStmt, valueArgs...)
+			if err != nil {
+				return err
+			}
+			log.Printf("[INSERT] observations: %d entries", batchSize)
+			valueStrings = valueStrings[:0] // reset the slices for the next batch
+			valueArgs = valueArgs[:0]
+		}
+	}
+	// Insert remaining data that didn't make a full batch
+	if len(valueStrings) > 0 {
+		sqlStmt := fmt.Sprintf(`INSERT INTO observations(entity,variable,date,value,provenance) VALUES %s`, strings.Join(valueStrings, ","))
+		_, err := sqlClient.Exec(sqlStmt, valueArgs...)
 		if err != nil {
 			return err
 		}
+		log.Printf("[INSERT] observations: %d entries", len(valueStrings))
 	}
 	return nil
 }
@@ -281,12 +305,31 @@ func writeTriples(
 	sqlClient *sql.DB,
 	triples []*triple,
 ) error {
+	valueStrings := make([]string, 0, batchSize)
+	valueArgs := make([]interface{}, 0, batchSize*4) // 4 columns to insert
 	for _, t := range triples {
-		sqlStmt := `INSERT INTO triples(subject_id,predicate,object_id,object_value) VALUES (?, ?, ?, ?)`
-		_, err := sqlClient.Exec(sqlStmt, t.subjectID, t.predicate, t.objectID, t.objectValue)
+		sqlValues := "(?, ?, ?, ?)"
+		valueStrings = append(valueStrings, sqlValues)
+		valueArgs = append(valueArgs, t.subjectID, t.predicate, t.objectID, t.objectValue)
+		if len(valueStrings) >= batchSize {
+			sqlStmt := fmt.Sprintf(`INSERT INTO triples(subject_id,predicate,object_id,object_value) VALUES %s`, strings.Join(valueStrings, ","))
+			_, err := sqlClient.Exec(sqlStmt, valueArgs...)
+			if err != nil {
+				return err
+			}
+			log.Printf("[INSERT] triples: %d entries", batchSize)
+			valueStrings = valueStrings[:0] // reset the slices for the next batch
+			valueArgs = valueArgs[:0]
+		}
+	}
+	// Insert remaining data that didn't make a full batch
+	if len(valueStrings) > 0 {
+		sqlStmt := fmt.Sprintf(`INSERT INTO triples(subject_id,predicate,object_id,object_value) VALUES %s`, strings.Join(valueStrings, ","))
+		_, err := sqlClient.Exec(sqlStmt, valueArgs...)
 		if err != nil {
 			return err
 		}
+		log.Printf("[INSERT] triples: %d entries", len(valueStrings))
 	}
 	return nil
 }
