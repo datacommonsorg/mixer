@@ -18,6 +18,7 @@ import (
 	"context"
 	"encoding/csv"
 	"io"
+	"log"
 	"os"
 	"path/filepath"
 	"strings"
@@ -173,6 +174,10 @@ func processObservationCSV(
 	for i := 1; i < numRecords; i++ {
 		record := records[i]
 		for j := 2; j < numColumns; j++ {
+			if record[j] == "" {
+				log.Printf("Skip empty value record: %s", record)
+				continue
+			}
 			observations = append(observations, &observation{
 				entity:     record[0],
 				date:       record[1],
