@@ -51,6 +51,7 @@ gke/config.yaml
 gke/endpoints.yaml
 endpoints.yaml
 
+mixer-grpc.pb
 mixer-grpc.*.pb
 
 deploy/git/mixer_hash.txt
