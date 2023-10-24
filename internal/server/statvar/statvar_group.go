@@ -332,6 +332,7 @@ func GetStatVarGroup(
 			if err != nil {
 				return nil, err
 			}
+			defer svRows.Close()
 			for svRows.Next() {
 				var sv, name, svg string
 				err = svRows.Scan(&sv, &name, &svg)
