@@ -30,10 +30,10 @@ func Import(
 	ctx context.Context,
 	in *pb.ImportRequest,
 	st *store.Store,
-	metadata *resource.Metadata,
 ) (*resource.Cache, error) {
-	log.Printf("Import data from %s to SQL database", metadata.SQLDataPath)
+	log.Printf("Import data from %s to SQL database", in.DataPath)
 	// First clear the tables.
+	// TODO: should write to new tables, if successful, delete the old tables.
 	err := sqldb.ClearTables(st.SQLClient)
 	if err != nil {
 		return nil, err
@@ -41,7 +41,7 @@ func Import(
 	// Write data.
 	if err = sqldb.Write(
 		st.SQLClient,
-		metadata,
+		in.DataPath,
 	); err != nil {
 		return nil, err
 	}

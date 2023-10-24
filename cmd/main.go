@@ -178,7 +178,6 @@ func main() {
 		*schemaPath,
 		*remoteMixerDomain,
 		*foldRemoteRootSvg,
-		*sqlDataPath,
 	)
 	if err != nil {
 		log.Fatalf("Failed to create metadata: %v", err)

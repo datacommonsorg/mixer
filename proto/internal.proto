@@ -34,9 +34,10 @@ message GetBioPageDataRequest {
   string dcid = 1;
 }
 
-// Request to Import raw data files into database.
-// Currently only support import into SQLite database.
+// Request to import raw data files into database.
 message ImportRequest {
+  // Path of raw data csv path, could be a local folder or GCS folder path.
+  string data_path = 1;
 }
 
 // Response of import request.

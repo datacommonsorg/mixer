@@ -20,7 +20,6 @@ import (
 	"log"
 	"strings"
 
-	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )
@@ -28,18 +27,17 @@ import (
 const batchSize = 1000
 
 // Write writes raw CSV files to SQLite CSV files.
-func Write(sqlClient *sql.DB, resourceMetadata *resource.Metadata) error {
-	fileDir := resourceMetadata.SQLDataPath
-	obsFiles, tripleFiles, err := listCSVFiles(fileDir)
+func Write(sqlClient *sql.DB, dataDir string) error {
+	obsFiles, tripleFiles, err := listCSVFiles(dataDir)
 	if err != nil {
 		return err
 	}
 	if len(obsFiles) == 0 || len(tripleFiles) == 0 {
-		return status.Errorf(codes.FailedPrecondition, "No CSV files found in %s", fileDir)
+		return status.Errorf(codes.FailedPrecondition, "No CSV files found in %s", dataDir)
 	}
 	for _, csvFile := range obsFiles {
 		provID := fmt.Sprintf("dc/custom/%s", strings.TrimRight(csvFile.name, ".csv"))
-		observations, err := processObservationCSV(resourceMetadata, csvFile, provID)
+		observations, err := processObservationCSV(csvFile, provID)
 		csvFile.close()
 		if err != nil {
 			return err
@@ -52,7 +50,7 @@ func Write(sqlClient *sql.DB, resourceMetadata *resource.Metadata) error {
 	}
 	for _, csvFile := range tripleFiles {
 		provID := fmt.Sprintf("dc/custom/%s", strings.TrimRight(csvFile.name, ".csv"))
-		triples, err := processTripleCSV(resourceMetadata, csvFile, provID)
+		triples, err := processTripleCSV(csvFile, provID)
 		csvFile.close()
 		if err != nil {
 			return err
