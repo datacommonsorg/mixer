@@ -138,7 +138,6 @@ func setupInternal(
 		schemaPath,
 		remoteMixerDomain,
 		false,
-		"",
 	)
 	if err != nil {
 		return nil, err
@@ -185,7 +184,6 @@ func SetupBqOnly() (pbs.MixerClient, error) {
 		schemaPath,
 		"",
 		false,
-		"",
 	)
 	if err != nil {
 		return nil, err

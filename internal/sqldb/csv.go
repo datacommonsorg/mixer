@@ -24,7 +24,6 @@ import (
 	"strings"
 
 	"cloud.google.com/go/storage"
-	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"google.golang.org/api/iterator"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
@@ -144,7 +143,6 @@ func listCSVFiles(dir string) ([]*csvHandle, []*csvHandle, error) {
 }
 
 func processObservationCSV(
-	medatata *resource.Metadata,
 	ch *csvHandle,
 	provID string,
 ) (
@@ -191,7 +189,6 @@ func processObservationCSV(
 }
 
 func processTripleCSV(
-	medatata *resource.Metadata,
 	ch *csvHandle,
 	provID string,
 ) (

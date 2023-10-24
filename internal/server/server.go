@@ -72,7 +72,6 @@ func NewMetadata(
 	schemaPath,
 	remoteMixerDomain string,
 	foldRemoteRootSvg bool,
-	sqlDataPath string,
 ) (*resource.Metadata, error) {
 	_, filename, _, _ := runtime.Caller(0)
 	subTypeMap, err := solver.GetSubTypeMap(
@@ -121,7 +120,6 @@ func NewMetadata(
 			RemoteMixerDomain: remoteMixerDomain,
 			RemoteMixerAPIKey: apiKey,
 			FoldRemoteRootSvg: foldRemoteRootSvg,
-			SQLDataPath:       sqlDataPath,
 		},
 		nil
 }

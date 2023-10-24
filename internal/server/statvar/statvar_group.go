@@ -292,17 +292,14 @@ func GetStatVarGroup(
 					AND t2.predicate="name"
 					AND t3.predicate="specializationOf";
 				`
-			rows, err := store.SQLClient.Query(query)
+			svgRows, err := store.SQLClient.Query(query)
 			if err != nil {
 				return nil, err
 			}
-			defer rows.Close()
-			if err != nil {
-				return nil, err
-			}
-			for rows.Next() {
+			defer svgRows.Close()
+			for svgRows.Next() {
 				var self, name, parent string
-				err = rows.Scan(&self, &name, &parent)
+				err = svgRows.Scan(&self, &name, &parent)
 				if err != nil {
 					return nil, err
 				}
@@ -328,20 +325,16 @@ func GetStatVarGroup(
 					JOIN triples t3 ON t1.subject_id = t3.subject_id
 					WHERE t1.predicate="typeOf"
 					AND t1.object_id="StatisticalVariable"
-					AND t2.predicate="description"
+					AND t2.predicate="name"
 					AND t3.predicate="memberOf";
 				`
-			rows, err = store.SQLClient.Query(query)
+			svRows, err := store.SQLClient.Query(query)
 			if err != nil {
 				return nil, err
 			}
-			defer rows.Close()
-			if err != nil {
-				return nil, err
-			}
-			for rows.Next() {
+			for svRows.Next() {
 				var sv, name, svg string
-				err = rows.Scan(&sv, &name, &svg)
+				err = svRows.Scan(&sv, &name, &svg)
 				if err != nil {
 					return nil, err
 				}
