@@ -44,11 +44,11 @@ func NewCache(
 	// Read blocklisted svg from file.
 	file, err := os.ReadFile(blockListSvgJsonPath)
 	if err != nil {
-		log.Printf("Could not read blocklist svg file. Using empty blocklist svg list.")
+		log.Printf("Could not read blocklist svg file. Use empty blocklist svg list.")
 		blocklistSvg = []string{}
 	} else {
 		if err := json.Unmarshal(file, &blocklistSvg); err != nil {
-			log.Printf("Could not unmarshal blocklist svg file. Using empty blocklist svg list.")
+			log.Printf("Could not unmarshal blocklist svg file. Use empty blocklist svg list.")
 			blocklistSvg = []string{}
 		}
 	}
