@@ -21,6 +21,7 @@ import (
 	"log"
 	"net/http"
 	"sort"
+	"strings"
 
 	"github.com/datacommonsorg/mixer/internal/merger"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
@@ -82,20 +83,10 @@ func FetchChildPlaces(
 	// V2 API should always ensure data merging.
 	// Here needs to fetch both local PlacesIn and remote PlacesIn data
 	if remoteMixer != "" {
-		var remoteReq *pbv2.NodeRequest
-		if ancestor == childType {
-			remoteReq = &pbv2.NodeRequest{
-				Nodes:    []string{ancestor},
-				Property: "<-typeOf",
-				Limit:    MaxNodes,
-			}
-		} else {
-			remoteReq = &pbv2.NodeRequest{
-				Nodes:    []string{ancestor},
-				Property: fmt.Sprintf("<-containedInPlace+{typeOf:%s}", childType),
-			}
+		remoteReq := &pbv2.NodeRequest{
+			Nodes:    []string{ancestor},
+			Property: fmt.Sprintf("<-containedInPlace+{typeOf:%s}", childType),
 		}
-
 		remoteResp := &pbv2.NodeResponse{}
 		err := util.FetchRemote(metadata, httpClient, "/v2/node", remoteReq, remoteResp)
 		if err != nil {
@@ -232,26 +223,58 @@ func FetchContainedIn(
 	}
 
 	// Fetch Data from SQLite database.
+	var sqlResult *pbv2.ObservationResponse
 	if store.SQLClient != nil {
-		if len(childPlaces) == 0 {
-			childPlaces, err = FetchChildPlaces(
-				ctx, store, metadata, httpClient, remoteMixer, ancestor, childType)
+		if ancestor == childType {
+			sqlResult = initObservationResult(variables)
+			variablesStr := "'" + strings.Join(variables, "', '") + "'"
+			query := fmt.Sprintf(
+				`
+					SELECT entity, variable, date, value FROM observations as o
+					JOIN triples as t ON o.entity = t.subject_id
+					AND t.predicate = 'typeOf'
+					AND t.object_id = '%s'
+					AND o.value != ''
+					AND o.variable IN (%s)
+				`,
+				childType,
+				variablesStr,
+			)
+			if queryDate != "" && queryDate != LATEST {
+				query += fmt.Sprintf("AND date = (%s) ", queryDate)
+			}
+			query += "ORDER BY date ASC;"
+			rows, err := store.SQLClient.Query(query)
 			if err != nil {
 				return nil, err
 			}
+			defer rows.Close()
+			tmp, err := handleSQLRows(rows, variables, queryDate)
+			if err != nil {
+				return nil, err
+			}
+			sqlResult = processData(sqlResult, tmp, queryDate)
+		} else {
+			if len(childPlaces) == 0 {
+				childPlaces, err = FetchChildPlaces(
+					ctx, store, metadata, httpClient, remoteMixer, ancestor, childType)
+				if err != nil {
+					return nil, err
+				}
+			}
+			directResp, err := FetchDirectSQL(
+				ctx,
+				store.SQLClient,
+				variables,
+				childPlaces,
+				queryDate,
+				filter,
+			)
+			if err != nil {
+				return nil, err
+			}
+			sqlResult = trimDirectResp(directResp)
 		}
-		directResp, err := FetchDirectSQL(
-			ctx,
-			store.SQLClient,
-			variables,
-			childPlaces,
-			queryDate,
-			filter,
-		)
-		if err != nil {
-			return nil, err
-		}
-		sqlResult := trimDirectResp(directResp)
 		result = merger.MergeObservation(result, sqlResult)
 	}
 	return result, nil

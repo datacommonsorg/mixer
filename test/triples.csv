@@ -36,3 +36,6 @@ test_var_3,typeOf,StatisticalVariable,
 test_var_3,measuredProperty,test_var_3,
 test_var_3,statType,measuredValue,
 test_var_3,name,,"non-place entity variable"
+ein/1,typeOf,Company,
+ein/2,typeOf,Company,
+ein/3,typeOf,Company,
