@@ -22,6 +22,7 @@ import (
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbs "github.com/datacommonsorg/mixer/internal/proto/service"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
@@ -59,15 +60,64 @@ func main() {
 	}
 
 	{
+		// Get Triples
+		req := &pb.GetTriplesRequest{
+			Dcids: []string{"dc/p/7c8egrk3ypkl5"},
+		}
+		r, err := c.GetTriples(ctx, req)
+		if err != nil {
+			log.Fatalf("could not GetTriples: %s", err)
+		}
+		fmt.Printf("%s\n", r.GetPayload())
+	}
+
+	{
 		// Get Observations
 		req := &pbv2.ObservationRequest{
 			Select:   []string{"variable", "entity", "date", "value"},
-			Variable: &pbv2.DcidOrExpression{Dcids: []string{"sector_risk"}},
-			Entity:   &pbv2.DcidOrExpression{Expression: "NAICSEnum<-containedInPlace+{typeOf:NAICSEnum}"},
+			Variable: &pbv2.DcidOrExpression{Dcids: []string{"test_var_1"}},
+			Entity:   &pbv2.DcidOrExpression{Dcids: []string{"geoId/06"}},
 		}
 		r, err := c.V2Observation(ctx, req)
 		if err != nil {
 			log.Fatalf("could not run V2Observation: %s", err)
+		}
+		fmt.Printf("%v\n", r)
+	}
+
+	{
+		// Get Stats
+		req := &pb.GetStatsRequest{
+			StatsVar: "CumulativeCount_MedicalConditionIncident_COVID_19_PatientDeceased",
+			Place:    []string{"geoId/12"},
+		}
+		r, err := c.GetStats(ctx, req)
+		if err != nil {
+			log.Fatalf("could not GetStats: %s", err)
+		}
+		fmt.Printf("%s\n", r.GetPayload())
+	}
+
+	{
+		// Get variable info
+		req := &pbv1.BulkVariableInfoRequest{
+			Nodes: []string{"Mean_NetMeasure_Income_Farm"},
+		}
+		r, err := c.BulkVariableInfo(ctx, req)
+		if err != nil {
+			log.Fatalf("could not BulkVariableInfo: %s", err)
+		}
+		fmt.Printf("%v\n", r)
+	}
+
+	{
+		// Get variable ancestors
+		req := &pbv1.VariableAncestorsRequest{
+			Node: "WithdrawalRate_Water_Irrigation",
+		}
+		r, err := c.VariableAncestors(ctx, req)
+		if err != nil {
+			log.Fatalf("could not VariableAncestors: %s", err)
 		}
 		fmt.Printf("%v\n", r)
 	}
