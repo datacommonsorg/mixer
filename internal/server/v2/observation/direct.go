@@ -184,19 +184,7 @@ func FetchDirectSQL(
 	queryDate string,
 	filter *pbv2.FacetFilter,
 ) (*pbv2.ObservationResponse, error) {
-	result := &pbv2.ObservationResponse{
-		ByVariable: map[string]*pbv2.VariableObservation{},
-		Facets:     map[string]*pb.Facet{},
-	}
-	// Init result
-	for _, variable := range variables {
-		result.ByVariable[variable] = &pbv2.VariableObservation{
-			ByEntity: map[string]*pbv2.EntityObservation{},
-		}
-		for _, entity := range entities {
-			result.ByVariable[variable].ByEntity[entity] = &pbv2.EntityObservation{}
-		}
-	}
+	result := initObservationResult(variables)
 	if sqlClient == nil {
 		return result, nil
 	}
@@ -223,59 +211,9 @@ func FetchDirectSQL(
 		return nil, err
 	}
 	defer rows.Close()
+	tmp, err := handleSQLRows(rows, variables, queryDate)
 	if err != nil {
 		return nil, err
 	}
-
-	// Tmp result
-	tmp := map[string]map[string][]*pb.PointStat{}
-	for _, variable := range variables {
-		tmp[variable] = map[string][]*pb.PointStat{}
-		for _, entity := range entities {
-			tmp[variable][entity] = []*pb.PointStat{}
-		}
-	}
-	for rows.Next() {
-		var entity, variable, date string
-		var value float64
-		err = rows.Scan(&entity, &variable, &date, &value)
-		if err != nil {
-			return nil, err
-		}
-		tmp[variable][entity] = append(tmp[variable][entity], &pb.PointStat{
-			Date:  date,
-			Value: proto.Float64(value),
-		})
-	}
-	err = rows.Err()
-	if err != nil {
-		return nil, err
-	}
-	hasData := false
-	for variable := range tmp {
-		for entity := range tmp[variable] {
-			if len(tmp[variable][entity]) == 0 {
-				continue
-			}
-			hasData = true
-			obsList := tmp[variable][entity]
-			if queryDate == LATEST {
-				obsList = obsList[len(obsList)-1:]
-			}
-			result.ByVariable[variable].ByEntity[entity].OrderedFacets = append(
-				result.ByVariable[variable].ByEntity[entity].OrderedFacets,
-				&pbv2.FacetObservation{
-					FacetId:      "local",
-					Observations: obsList,
-				},
-			)
-		}
-	}
-	if hasData {
-		result.Facets["local"] = &pb.Facet{
-			ImportName:    "local",
-			ProvenanceUrl: "local",
-		}
-	}
-	return result, nil
+	return processData(result, tmp, queryDate), nil
 }
