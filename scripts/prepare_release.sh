@@ -7,24 +7,21 @@
 DIR=$(dirname "$0")
 
 cd "$DIR"/..
-VERSION=
 
 function update_version() {
   echo ""
   echo "==== Updating BT and BQ versions ===="
 
-  yq eval -i 'del(.tables)' deploy/storage/base_tables.yaml
-  yq eval -i '.tables = []' deploy/storage/base_tables.yaml
-  for src in $(gsutil ls gs://datcom-control/autopush/*_latest_base_cache_version.txt); do
+  yq eval -i 'del(.tables)' deploy/storage/base_bigtable_info.yaml
+  yq eval -i '.tables = []' deploy/storage/base_bigtable_info.yaml
+  for src in $(gsutil ls gs://datcom-control/autopush/*_latest_base_cache_version.txt | sort); do
     echo "Copying $src"
     export TABLE="$(gsutil cat "$src")"
-     yq eval -i '.tables += [env(TABLE)]' deploy/storage/base_tables.yaml
+     yq eval -i '.tables += [env(TABLE)]' deploy/storage/base_bigtable_info.yaml
   done
 
-  BQ=$(curl https://autopush.datacommons.org/version 2>/dev/null | awk '{ if ($1~/^datcom-store/) print $1; }')
+  BQ=$(gsutil cat gs://datcom-control/latest_base_bigquery_version.txt)
   printf "$BQ" > deploy/storage/bigquery.version
-
-  VERSION="${BT//borgcron_/}"
 }
 
 function update_proto() {
@@ -36,7 +33,11 @@ function update_proto() {
     --go-grpc_out=paths=source_relative:internal/proto \
     --go-grpc_opt=require_unimplemented_servers=false \
     --experimental_allow_proto3_optional \
+    --include_imports \
+    --include_source_info \
+    --descriptor_set_out mixer-grpc.pb \
     proto/*.proto proto/**/*.proto
+
   if [ $? -ne 0 ]; then
     echo "ERROR: Failed to update proto"
     exit 1
@@ -56,11 +57,11 @@ function update_golden() {
 function commit() {
   echo ""
   echo "==== Committing the change ===="
-  git commit -a -m "Data Release: $VERSION"
+  git commit -a -m "Data Release: $(date +%F)"
 }
 
-# update_version
-update_proto
+update_version
+# update_proto
 update_golden
 commit
 
