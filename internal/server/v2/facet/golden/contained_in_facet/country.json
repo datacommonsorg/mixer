@@ -98,6 +98,9 @@
               "facet_id": "217147238"
             },
             {
+              "facet_id": "1964317807"
+            },
+            {
               "facet_id": "2517965213"
             },
             {
@@ -191,6 +194,9 @@
             },
             {
               "facet_id": "4219092424"
+            },
+            {
+              "facet_id": "815809675"
             }
           ]
         }
@@ -278,6 +284,11 @@
       "import_name": "BulgariaPopulation",
       "provenance_url": "https://www.nsi.bg/en",
       "measurement_method": "BulgariaNSI"
+    },
+    "1964317807": {
+      "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",
+      "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2022.S0101",
+      "measurement_method": "CensusACS5yrSurveySubjectTable"
     },
     "196790193": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2602",
@@ -472,6 +483,12 @@
       "import_name": "FranceINSEE",
       "provenance_url": "https://www.insee.fr/en/metadonnees/source/indicateur/p1667/description",
       "measurement_method": "FranceINSEE"
+    },
+    "815809675": {
+      "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",
+      "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2022.S0101",
+      "measurement_method": "CensusACS5yrSurveySubjectTable",
+      "unit": "Years"
     },
     "858679853": {
       "import_name": "EurostatData",

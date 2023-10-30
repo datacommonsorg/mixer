@@ -210,6 +210,15 @@
               ]
             },
             {
+              "facet_id": "1964317807",
+              "observations": [
+                {
+                  "date": "2010",
+                  "value": 303965272
+                }
+              ]
+            },
+            {
               "facet_id": "1152061738",
               "observations": [
                 {
@@ -278,6 +287,15 @@
               ]
             },
             {
+              "facet_id": "1964317807",
+              "observations": [
+                {
+                  "date": "2010",
+                  "value": 36637290
+                }
+              ]
+            },
+            {
               "facet_id": "1152061738",
               "observations": [
                 {
@@ -332,6 +350,15 @@
                 {
                   "date": "2010",
                   "value": 74066
+                }
+              ]
+            },
+            {
+              "facet_id": "1964317807",
+              "observations": [
+                {
+                  "date": "2010",
+                  "value": 72510
                 }
               ]
             },
@@ -440,6 +467,11 @@
       "import_name": "USDecennialCensus_RedistrictingRelease",
       "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
       "measurement_method": "USDecennialCensus"
+    },
+    "1964317807": {
+      "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",
+      "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2022.S0101",
+      "measurement_method": "CensusACS5yrSurveySubjectTable"
     },
     "2171028778": {
       "import_name": "WorldDevelopmentIndicators",
