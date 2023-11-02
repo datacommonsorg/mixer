@@ -98,6 +98,27 @@
         },
         {
           "date_place_count": {
+            "2010": 58,
+            "2011": 58,
+            "2012": 58,
+            "2013": 58,
+            "2014": 58,
+            "2015": 58,
+            "2016": 58,
+            "2017": 58,
+            "2018": 58,
+            "2019": 58,
+            "2020": 58,
+            "2021": 58
+          },
+          "metadata": {
+            "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",
+            "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2022.S0101",
+            "measurement_method": "CensusACS5yrSurveySubjectTable"
+          }
+        },
+        {
+          "date_place_count": {
             "1980": 56,
             "1981": 56,
             "1982": 56,
@@ -221,6 +242,28 @@
             "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
             "measurement_method": "CensusACS5yrSurvey",
             "unit": "Year"
+          }
+        },
+        {
+          "date_place_count": {
+            "2010": 58,
+            "2011": 58,
+            "2012": 58,
+            "2013": 58,
+            "2014": 58,
+            "2015": 58,
+            "2016": 58,
+            "2017": 58,
+            "2018": 58,
+            "2019": 58,
+            "2020": 58,
+            "2021": 58
+          },
+          "metadata": {
+            "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",
+            "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2022.S0101",
+            "measurement_method": "CensusACS5yrSurveySubjectTable",
+            "unit": "Years"
           }
         }
       ]

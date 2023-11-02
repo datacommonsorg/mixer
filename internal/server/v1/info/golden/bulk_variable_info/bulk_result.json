@@ -5,7 +5,7 @@
       "info": {
         "placeTypeSummary": {
           "AdministrativeArea": {
-            "placeCount": 321,
+            "placeCount": 322,
             "topPlaces": [
               {
                 "dcid": "wikidataId/Q1088815",
@@ -43,7 +43,7 @@
             "maxValue": 24354012
           },
           "AdministrativeArea2": {
-            "placeCount": 6314,
+            "placeCount": 6313,
             "topPlaces": [
               {
                 "dcid": "wikidataId/Q1143712",
@@ -77,8 +77,8 @@
                 "name": "Maule"
               }
             ],
-            "minValue": 2329,
-            "maxValue": 772602
+            "minValue": 2351,
+            "maxValue": 797557
           },
           "AdministrativeArea4": {
             "placeCount": 2,
@@ -134,7 +134,7 @@
             "maxValue": 10429184
           },
           "CensusCountyDivision": {
-            "placeCount": 36851,
+            "placeCount": 36859,
             "topPlaces": [
               {
                 "dcid": "geoId/4820191835",
@@ -153,7 +153,7 @@
             "maxValue": 5785680
           },
           "CensusTract": {
-            "placeCount": 96777,
+            "placeCount": 96789,
             "topPlaces": [
               {
                 "dcid": "geoId/48157673101",
@@ -172,7 +172,7 @@
             "maxValue": 37626
           },
           "CensusZipCodeTabulationArea": {
-            "placeCount": 33838,
+            "placeCount": 33971,
             "topPlaces": [
               {
                 "dcid": "zip/77449",
@@ -191,7 +191,7 @@
             "maxValue": 67003
           },
           "City": {
-            "placeCount": 32379,
+            "placeCount": 32444,
             "topPlaces": [
               {
                 "dcid": "wikidataId/Q8686",
@@ -226,7 +226,7 @@
               }
             ],
             "minValue": 0,
-            "maxValue": 1949033
+            "maxValue": 1958404
           },
           "Country": {
             "placeCount": 66,
@@ -321,7 +321,7 @@
               }
             ],
             "minValue": 12331,
-            "maxValue": 7525493
+            "maxValue": 7907210
           },
           "EurostatNUTS3": {
             "placeCount": 1390,
@@ -340,7 +340,7 @@
               }
             ],
             "minValue": 4313,
-            "maxValue": 7525493
+            "maxValue": 7907210
           },
           "HighSchoolDistrict": {
             "placeCount": 82,
@@ -416,7 +416,7 @@
               }
             ],
             "minValue": 29519,
-            "maxValue": 101563000
+            "maxValue": 112568000
           },
           "StateComponent": {
             "placeCount": 550,
@@ -587,7 +587,7 @@
                 "latestDate": "2000",
                 "placeTypeSummary": {
                   "AdministrativeArea": {
-                    "placeCount": 5,
+                    "placeCount": 6,
                     "topPlaces": [
                       {
                         "dcid": "wikidataId/Q1088815",
@@ -602,7 +602,7 @@
                         "name": "Southern Brazil"
                       }
                     ],
-                    "minValue": 524680,
+                    "minValue": 816,
                     "maxValue": 36986320
                   },
                   "AdministrativeArea1": {
@@ -625,7 +625,7 @@
                     "maxValue": 18893040
                   },
                   "AdministrativeArea2": {
-                    "placeCount": 3860,
+                    "placeCount": 3859,
                     "topPlaces": [
                       {
                         "dcid": "wikidataId/Q83114",
@@ -1258,6 +1258,227 @@
             ],
             "observationCount": 11,
             "timeSeriesCount": 1
+          },
+          "dc/base/CensusACS5YearSurvey_SubjectTables_S0101": {
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
+            "seriesSummary": [
+              {
+                "seriesKey": {
+                  "measurementMethod": "CensusACS5yrSurveySubjectTable"
+                },
+                "earliestDate": "2010",
+                "latestDate": "2021",
+                "placeTypeSummary": {
+                  "CensusCountyDivision": {
+                    "placeCount": 36859,
+                    "topPlaces": [
+                      {
+                        "dcid": "geoId/4820191835",
+                        "name": "Houston CCD"
+                      },
+                      {
+                        "dcid": "geoId/0401392601",
+                        "name": "Phoenix CCD"
+                      },
+                      {
+                        "dcid": "geoId/1703114000",
+                        "name": "Chicago"
+                      }
+                    ],
+                    "minValue": 0,
+                    "maxValue": 1731694
+                  },
+                  "CensusTract": {
+                    "placeCount": 96789,
+                    "topPlaces": [
+                      {
+                        "dcid": "geoId/48157673101",
+                        "name": "Census Tract 6731.01, Fort Bend County, Texas"
+                      },
+                      {
+                        "dcid": "geoId/48157672900",
+                        "name": "Census Tract 6729, Fort Bend County, Texas"
+                      },
+                      {
+                        "dcid": "geoId/48039660602",
+                        "name": "Census Tract 6606.02, Brazoria County, Texas"
+                      }
+                    ],
+                    "minValue": 0,
+                    "maxValue": 37626
+                  },
+                  "CensusZipCodeTabulationArea": {
+                    "placeCount": 33971,
+                    "topPlaces": [
+                      {
+                        "dcid": "zip/77449",
+                        "name": "77449"
+                      },
+                      {
+                        "dcid": "zip/77494",
+                        "name": "77494"
+                      },
+                      {
+                        "dcid": "zip/11368",
+                        "name": "11368"
+                      }
+                    ],
+                    "minValue": 0,
+                    "maxValue": 67003
+                  },
+                  "City": {
+                    "placeCount": 32170,
+                    "topPlaces": [
+                      {
+                        "dcid": "geoId/3651000",
+                        "name": "New York"
+                      },
+                      {
+                        "dcid": "geoId/0644000",
+                        "name": "Los Angeles"
+                      },
+                      {
+                        "dcid": "geoId/1714000",
+                        "name": "Chicago"
+                      }
+                    ],
+                    "minValue": 0,
+                    "maxValue": 4543807
+                  },
+                  "CongressionalDistrict": {
+                    "placeCount": 440,
+                    "topPlaces": [
+                      {
+                        "dcid": "geoId/7298",
+                        "name": "Resident Commissioner District (at Large) (113th Congress), Puerto Rico"
+                      },
+                      {
+                        "dcid": "geoId/3000",
+                        "name": "Congressional District (at Large) (113th Congress), Montana"
+                      },
+                      {
+                        "dcid": "geoId/1000",
+                        "name": "Congressional District (at Large) (113th Congress), Delaware"
+                      }
+                    ],
+                    "minValue": 0,
+                    "maxValue": 1958404
+                  },
+                  "Country": {
+                    "placeCount": 1,
+                    "topPlaces": [
+                      {
+                        "dcid": "country/USA",
+                        "name": "United States"
+                      }
+                    ],
+                    "minValue": 154566548,
+                    "maxValue": 166518866
+                  },
+                  "County": {
+                    "placeCount": 3224,
+                    "topPlaces": [
+                      {
+                        "dcid": "geoId/06037",
+                        "name": "Los Angeles County"
+                      },
+                      {
+                        "dcid": "geoId/17031",
+                        "name": "Cook County"
+                      },
+                      {
+                        "dcid": "geoId/48201",
+                        "name": "Harris County"
+                      }
+                    ],
+                    "minValue": 15,
+                    "maxValue": 5126081
+                  },
+                  "ElementarySchoolDistrict": {
+                    "placeCount": 9,
+                    "topPlaces": [
+                      {
+                        "dcid": "geoId/sch1300002",
+                        "name": "Fort Benning Schools"
+                      },
+                      {
+                        "dcid": "geoId/sch4500005",
+                        "name": "Fort Jackson Schools"
+                      },
+                      {
+                        "dcid": "geoId/sch5050004",
+                        "name": "Chittenden Central Supervisory Union in Essex Junction (PK-8)"
+                      }
+                    ],
+                    "minValue": 2,
+                    "maxValue": 6349
+                  },
+                  "HighSchoolDistrict": {
+                    "placeCount": 82,
+                    "topPlaces": [
+                      {
+                        "dcid": "geoId/sch0606034",
+                        "name": "Perris Union High School District (9-12)"
+                      },
+                      {
+                        "dcid": "geoId/sch4747149",
+                        "name": "Rutherford County School District in Murfreesboro"
+                      },
+                      {
+                        "dcid": "geoId/sch0606019",
+                        "name": "Santa Barbara Unified School District (7-12)"
+                      }
+                    ],
+                    "minValue": 0,
+                    "maxValue": 77489
+                  },
+                  "SchoolDistrict": {
+                    "placeCount": 13823,
+                    "topPlaces": [
+                      {
+                        "dcid": "geoId/sch3620580",
+                        "name": "New York City Department Of Education"
+                      },
+                      {
+                        "dcid": "geoId/sch0622710",
+                        "name": "Los Angeles Unified"
+                      },
+                      {
+                        "dcid": "geoId/sch7200030",
+                        "name": "Puerto Rico Department Of Education"
+                      }
+                    ],
+                    "minValue": 0,
+                    "maxValue": 4543807
+                  },
+                  "State": {
+                    "placeCount": 52,
+                    "topPlaces": [
+                      {
+                        "dcid": "geoId/06",
+                        "name": "California"
+                      },
+                      {
+                        "dcid": "geoId/48",
+                        "name": "Texas"
+                      },
+                      {
+                        "dcid": "geoId/12",
+                        "name": "Florida"
+                      }
+                    ],
+                    "minValue": 267729,
+                    "maxValue": 19783141
+                  }
+                },
+                "minValue": 0,
+                "maxValue": 166518866,
+                "observationCount": 2280188,
+                "timeSeriesCount": 217420
+              }
+            ],
+            "observationCount": 2280188,
+            "timeSeriesCount": 217420
           },
           "dc/base/CensusACS5YearSurvey_SubjectTables_S2601A": {
             "importName": "CensusACS5YearSurvey_SubjectTables_S2601A",

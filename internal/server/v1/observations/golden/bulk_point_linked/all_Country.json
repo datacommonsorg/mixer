@@ -5647,6 +5647,11 @@
               "facet": "217147238"
             },
             {
+              "date": "2021",
+              "value": 329725481,
+              "facet": "1964317807"
+            },
+            {
               "date": "2019",
               "value": 328239523,
               "facet": "2517965213"
@@ -6091,6 +6096,11 @@
       "import_name": "BulgariaPopulation",
       "provenance_url": "https://www.nsi.bg/en",
       "measurement_method": "BulgariaNSI"
+    },
+    "1964317807": {
+      "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",
+      "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2022.S0101",
+      "measurement_method": "CensusACS5yrSurveySubjectTable"
     },
     "196790193": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2602",

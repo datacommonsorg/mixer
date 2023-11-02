@@ -65,6 +65,10 @@
       "dcid": "sdg/SH_STA_SCIDE.SEX--F"
     },
     {
+      "name": "Population: Male (As Fraction of Count Person Female)",
+      "dcid": "Count_Person_Male_AsAFractionOf_Count_Person_Female"
+    },
+    {
       "name": "Age-Standardized Prevalence Of Current Tobacco Smoking Among Persons Aged 15 Years And Older, Female",
       "dcid": "WHO/SDGTOBACCO_Female"
     },
@@ -123,10 +127,6 @@
     {
       "name": "Number of severely food insecure people [15 years old and over, Female]",
       "dcid": "sdg/AG_PRD_FIESSN.AGE--Y_GE15__SEX--F"
-    },
-    {
-      "name": "Population: No Schooling Completed, Female",
-      "dcid": "Count_Person_25OrMoreYears_EducationalAttainmentNoSchoolingCompleted_Female"
     },
     {
       "name": "Prevalence of moderate or severe food insecurity [15 years old and over, Female]",
@@ -493,6 +493,56 @@
       ]
     },
     {
+      "dcid": "dc/g/Person_Age_Gender-Female",
+      "name": "Person With Age, Gender = Female",
+      "statVars": [
+        {
+          "name": "Population: 14 Years or Less, Female",
+          "dcid": "Count_Person_Upto14Years_Female"
+        },
+        {
+          "name": "Population: 15 - 44 Years, Female",
+          "dcid": "Count_Person_15To44Years_Female"
+        },
+        {
+          "name": "Population: 21 Years or More, Female",
+          "dcid": "Count_Person_21OrMoreYears_Female"
+        },
+        {
+          "name": "Population: 3 Years or More, Female",
+          "dcid": "Count_Person_3OrMoreYears_Female"
+        },
+        {
+          "name": "Population: 5 - 14 Years, Female",
+          "dcid": "Count_Person_Years5To14_Female"
+        },
+        {
+          "name": "Population: 60 Years or More, Female",
+          "dcid": "Count_Person_60OrMoreYears_Female"
+        },
+        {
+          "name": "Population: 62 Years or More, Female",
+          "dcid": "Count_Person_62OrMoreYears_Female"
+        },
+        {
+          "name": "Population: 65 - 66 Years, Female",
+          "dcid": "Count_Person_65To66Years_Female"
+        },
+        {
+          "name": "Population: 67 - 69 Years, Female",
+          "dcid": "Count_Person_67To69Years_Female"
+        },
+        {
+          "name": "Unemployment Rate: 25 - 74 Years, Female",
+          "dcid": "UnemploymentRate_Person_25To74Years_Female"
+        },
+        {
+          "name": "Unemployment Rate: 25 Years or Less, Female",
+          "dcid": "UnemploymentRate_Person_Upto25Years_Female"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/Person_EducationalAttainment_Gender-Female",
       "name": "Person With Educational Attainment, Gender = Female",
       "statVars": [
@@ -619,36 +669,6 @@
         {
           "name": "Count of Hate Crime Incidents: Bias Against Gender, Female Victim, Society",
           "dcid": "Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_Female_VictimTypeSociety"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age_Gender-Female",
-      "name": "Person With Age, Gender = Female",
-      "statVars": [
-        {
-          "name": "Population: 14 Years or Less, Female",
-          "dcid": "Count_Person_Upto14Years_Female"
-        },
-        {
-          "name": "Population: 3 Years or More, Female",
-          "dcid": "Count_Person_3OrMoreYears_Female"
-        },
-        {
-          "name": "Population: 65 - 66 Years, Female",
-          "dcid": "Count_Person_65To66Years_Female"
-        },
-        {
-          "name": "Population: 67 - 69 Years, Female",
-          "dcid": "Count_Person_67To69Years_Female"
-        },
-        {
-          "name": "Unemployment Rate: 25 - 74 Years, Female",
-          "dcid": "UnemploymentRate_Person_25To74Years_Female"
-        },
-        {
-          "name": "Unemployment Rate: 25 Years or Less, Female",
-          "dcid": "UnemploymentRate_Person_Upto25Years_Female"
         }
       ]
     },
@@ -5385,6 +5405,16 @@
       ]
     },
     {
+      "dcid": "dc/g/Person_EducationalAttainment-NoSchoolingCompleted_Gender-Female",
+      "name": "Person With Educational Attainment = No Schooling Completed, Gender = Female",
+      "statVars": [
+        {
+          "name": "Population: No Schooling Completed, Female",
+          "dcid": "Count_Person_25OrMoreYears_EducationalAttainmentNoSchoolingCompleted_Female"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/Person_EducationalAttainment-TertiaryEducation_Gender-Female",
       "name": "Person With Educational Attainment = Tertiary Education, Gender = Female",
       "statVars": [
@@ -8697,10 +8727,6 @@
     {
       "dcid": "dc/g/Student_Gender-Female_Race-Asian",
       "name": "Student With Gender = Female, Race = Asian"
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_Race-Black",
-      "name": "Student With Gender = Female, Race = Black"
     },
     {
       "dcid": "dc/g/Student_Gender-Female_Race-BlackOrAfricanAmericanAlone",

@@ -200,8 +200,8 @@
           "entity": "geoId/06",
           "points_by_facet": [
             {
-              "date": "2023-08",
-              "value": 993596,
+              "date": "2023-09",
+              "value": 949574,
               "facet": "324358135"
             }
           ]
@@ -272,6 +272,11 @@
       "provenance_url": "https://www.bls.gov/cps/",
       "measurement_method": "BLSSeasonallyAdjusted",
       "observation_period": "P3M"
+    },
+    "1964317807": {
+      "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",
+      "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2022.S0101",
+      "measurement_method": "CensusACS5yrSurveySubjectTable"
     },
     "196790193": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2602",

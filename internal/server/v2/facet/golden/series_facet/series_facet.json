@@ -33,6 +33,30 @@
               ]
             },
             {
+              "facet_id": "1151455814",
+              "observations": [
+                {
+                  "value": 28
+                }
+              ]
+            },
+            {
+              "facet_id": "1964317807",
+              "observations": [
+                {
+                  "value": 12
+                }
+              ]
+            },
+            {
+              "facet_id": "196790193",
+              "observations": [
+                {
+                  "value": 5
+                }
+              ]
+            },
+            {
               "facet_id": "217147238",
               "observations": [
                 {
@@ -57,14 +81,6 @@
               ]
             },
             {
-              "facet_id": "1151455814",
-              "observations": [
-                {
-                  "value": 25
-                }
-              ]
-            },
-            {
               "facet_id": "1226172227",
               "observations": [
                 {
@@ -77,14 +93,6 @@
               "observations": [
                 {
                   "value": 10
-                }
-              ]
-            },
-            {
-              "facet_id": "196790193",
-              "observations": [
-                {
-                  "value": 3
                 }
               ]
             },
@@ -125,6 +133,30 @@
               ]
             },
             {
+              "facet_id": "1151455814",
+              "observations": [
+                {
+                  "value": 28
+                }
+              ]
+            },
+            {
+              "facet_id": "1964317807",
+              "observations": [
+                {
+                  "value": 12
+                }
+              ]
+            },
+            {
+              "facet_id": "196790193",
+              "observations": [
+                {
+                  "value": 5
+                }
+              ]
+            },
+            {
               "facet_id": "1152061738",
               "observations": [
                 {
@@ -141,14 +173,6 @@
               ]
             },
             {
-              "facet_id": "1151455814",
-              "observations": [
-                {
-                  "value": 25
-                }
-              ]
-            },
-            {
               "facet_id": "1226172227",
               "observations": [
                 {
@@ -161,14 +185,6 @@
               "observations": [
                 {
                   "value": 10
-                }
-              ]
-            },
-            {
-              "facet_id": "196790193",
-              "observations": [
-                {
-                  "value": 3
                 }
               ]
             },
@@ -205,6 +221,22 @@
               ]
             },
             {
+              "facet_id": "815809675",
+              "observations": [
+                {
+                  "value": 12
+                }
+              ]
+            },
+            {
+              "facet_id": "3690003977",
+              "observations": [
+                {
+                  "value": 5
+                }
+              ]
+            },
+            {
               "facet_id": "4219092424",
               "observations": [
                 {
@@ -217,14 +249,6 @@
               "observations": [
                 {
                   "value": 10
-                }
-              ]
-            },
-            {
-              "facet_id": "3690003977",
-              "observations": [
-                {
-                  "value": 3
                 }
               ]
             }
@@ -241,10 +265,10 @@
               ]
             },
             {
-              "facet_id": "2763329611",
+              "facet_id": "815809675",
               "observations": [
                 {
-                  "value": 10
+                  "value": 12
                 }
               ]
             },
@@ -252,7 +276,15 @@
               "facet_id": "3690003977",
               "observations": [
                 {
-                  "value": 3
+                  "value": 5
+                }
+              ]
+            },
+            {
+              "facet_id": "2763329611",
+              "observations": [
+                {
+                  "value": 10
                 }
               ]
             }
@@ -297,6 +329,11 @@
       "import_name": "USDecennialCensus_RedistrictingRelease",
       "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
       "measurement_method": "USDecennialCensus"
+    },
+    "1964317807": {
+      "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",
+      "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2022.S0101",
+      "measurement_method": "CensusACS5yrSurveySubjectTable"
     },
     "196790193": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2602",
@@ -361,6 +398,12 @@
     "4219092424": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2603",
       "provenance_url": "https://data.census.gov/cedsci/table?q=S2603&tid=ACSST5Y2019.S2603",
+      "measurement_method": "CensusACS5yrSurveySubjectTable",
+      "unit": "Years"
+    },
+    "815809675": {
+      "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",
+      "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2022.S0101",
       "measurement_method": "CensusACS5yrSurveySubjectTable",
       "unit": "Years"
     }
