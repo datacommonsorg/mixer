@@ -41,7 +41,7 @@ func TestSeriesFacet(t *testing.T) {
 			goldenFile string
 		}{
 			{
-				[]string{"Count_Person", "Median_Age_Person"},
+				[]string{"Count_Person", "Median_Age_Person", "test_var_1"},
 				[]string{"country/USA", "geoId/06", "Earth"},
 				"series_facet.json",
 			},
