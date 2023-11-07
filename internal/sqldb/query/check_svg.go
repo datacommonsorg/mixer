@@ -15,14 +15,14 @@
 package query
 
 import (
+	"database/sql"
 	"fmt"
 
-	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/util"
 )
 
 // CheckVariableGroups check and returns variable groups that in SQL database.
-func CheckVariableGroups(st *store.Store, variableGroups []string) ([]string, error) {
+func CheckVariableGroups(sqlClient *sql.DB, variableGroups []string) ([]string, error) {
 	result := []string{}
 	// Find all the sv that are in the sqlite database
 	query := fmt.Sprintf(
@@ -35,7 +35,7 @@ func CheckVariableGroups(st *store.Store, variableGroups []string) ([]string, er
 		util.SQLInParam(len(variableGroups)),
 	)
 	// Execute query
-	rows, err := st.SQLClient.Query(
+	rows, err := sqlClient.Query(
 		query,
 		util.ConvertArgs(variableGroups)...,
 	)

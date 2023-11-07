@@ -15,23 +15,23 @@
 package query
 
 import (
+	"database/sql"
 	"fmt"
 
-	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/util"
 )
 
 // CountObservation count observation for given entity and variable pair in SQL database.
 func CountObservation(
-	st *store.Store,
+	sqlClient *sql.DB,
 	entities []string,
 	variables []string,
 ) (map[string]map[string]int, error) {
-	entityParam, err := util.SQLListParam(st.SQLClient, len(entities))
+	entityParam, err := util.SQLListParam(sqlClient, len(entities))
 	if err != nil {
 		return nil, err
 	}
-	variableParam, err := util.SQLListParam(st.SQLClient, len(variables))
+	variableParam, err := util.SQLListParam(sqlClient, len(variables))
 	if err != nil {
 		return nil, err
 	}
@@ -60,7 +60,7 @@ func CountObservation(
 	args := entities
 	args = append(args, variables...)
 	// Execute query
-	rows, err := st.SQLClient.Query(query, util.ConvertArgs(args)...)
+	rows, err := sqlClient.Query(query, util.ConvertArgs(args)...)
 	if err != nil {
 		return nil, err
 	}

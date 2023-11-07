@@ -22,6 +22,7 @@ import (
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/ranking"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
+	"github.com/datacommonsorg/mixer/internal/sqldb/query"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"github.com/datacommonsorg/mixer/internal/util"
@@ -89,6 +90,43 @@ func SeriesFacet(
 					)
 					result.Facets[facetID] = placeVarFacet.Facet
 				}
+			}
+		}
+	}
+	if store.SQLClient != nil {
+		observationCount, err := query.CountObservation(store.SQLClient, entities, variables)
+		if err != nil {
+			return nil, err
+		}
+		hasData := false
+		for v, entityObsCount := range observationCount {
+			for e, count := range entityObsCount {
+				if count == 0 {
+					continue
+				}
+				hasData = true
+				if _, ok := result.ByVariable[v].ByEntity[e]; !ok {
+					result.ByVariable[v].ByEntity[e] = &pbv2.EntityObservation{
+						OrderedFacets: []*pbv2.FacetObservation{},
+					}
+				}
+				varEntityData := result.ByVariable[v].ByEntity[e]
+				varEntityData.OrderedFacets = append(varEntityData.OrderedFacets,
+					&pbv2.FacetObservation{
+						FacetId: "local",
+						Observations: []*pb.PointStat{
+							{
+								Value: proto.Float64(float64(count)),
+							},
+						},
+					},
+				)
+			}
+		}
+		if hasData {
+			result.Facets["local"] = &pb.Facet{
+				ImportName:    "local",
+				ProvenanceUrl: "local",
 			}
 		}
 	}

@@ -84,14 +84,14 @@ func Count(
 		// all SV contains the SV in the request and child SV in the request SVG.
 		var allSV []string
 		requestSV := map[string]struct{}{}
-		allSV, err := query.CheckVariables(st, svOrSvgs)
+		allSV, err := query.CheckVariables(st.SQLClient, svOrSvgs)
 		for _, sv := range allSV {
 			requestSV[sv] = struct{}{}
 		}
 		if err != nil {
 			return nil, err
 		}
-		requestSVG, err := query.CheckVariableGroups(st, svOrSvgs)
+		requestSVG, err := query.CheckVariableGroups(st.SQLClient, svOrSvgs)
 		if err != nil {
 			return nil, err
 		}
@@ -112,7 +112,7 @@ func Count(
 		// Remove duplicate from directly queried SV and SV under queried SVG
 		allSV = util.MergeDedupe(allSV, []string{})
 
-		observationCount, err := query.CountObservation(st, entities, allSV)
+		observationCount, err := query.CountObservation(st.SQLClient, entities, allSV)
 		if err != nil {
 			return nil, err
 		}

@@ -291,6 +291,22 @@
           ]
         }
       }
+    },
+    "test_var_1": {
+      "by_entity": {
+        "geoId/06": {
+          "ordered_facets": [
+            {
+              "facet_id": "local",
+              "observations": [
+                {
+                  "value": 10
+                }
+              ]
+            }
+          ]
+        }
+      }
     }
   },
   "facets": {
@@ -406,6 +422,10 @@
       "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2022.S0101",
       "measurement_method": "CensusACS5yrSurveySubjectTable",
       "unit": "Years"
+    },
+    "local": {
+      "import_name": "local",
+      "provenance_url": "local"
     }
   }
 }

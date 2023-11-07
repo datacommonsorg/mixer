@@ -15,14 +15,14 @@
 package query
 
 import (
+	"database/sql"
 	"fmt"
 
-	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/util"
 )
 
 // CheckVariables check and returns variables that have data in SQL database.
-func CheckVariables(st *store.Store, variables []string) ([]string, error) {
+func CheckVariables(sqlClient *sql.DB, variables []string) ([]string, error) {
 	result := []string{}
 	query := fmt.Sprintf(
 		`
@@ -32,7 +32,7 @@ func CheckVariables(st *store.Store, variables []string) ([]string, error) {
 		util.SQLInParam(len(variables)),
 	)
 	// Execute query
-	rows, err := st.SQLClient.Query(
+	rows, err := sqlClient.Query(
 		query,
 		util.ConvertArgs(variables)...,
 	)
