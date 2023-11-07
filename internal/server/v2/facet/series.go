@@ -98,11 +98,13 @@ func SeriesFacet(
 		if err != nil {
 			return nil, err
 		}
+		hasData := false
 		for v, entityObsCount := range observationCount {
 			for e, count := range entityObsCount {
 				if count == 0 {
 					continue
 				}
+				hasData = true
 				if _, ok := result.ByVariable[v].ByEntity[e]; !ok {
 					result.ByVariable[v].ByEntity[e] = &pbv2.EntityObservation{
 						OrderedFacets: []*pbv2.FacetObservation{},
@@ -121,7 +123,7 @@ func SeriesFacet(
 				)
 			}
 		}
-		if len(result.ByVariable) > 0 {
+		if hasData {
 			result.Facets["local"] = &pb.Facet{
 				ImportName:    "local",
 				ProvenanceUrl: "local",

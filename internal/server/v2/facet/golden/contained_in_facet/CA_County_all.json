@@ -97,10 +97,6 @@
       "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2022.S0101",
       "measurement_method": "CensusACS5yrSurveySubjectTable",
       "unit": "Years"
-    },
-    "local": {
-      "import_name": "local",
-      "provenance_url": "local"
     }
   }
 }
