@@ -16,10 +16,10 @@ package statvar
 
 import (
 	"context"
-	"fmt"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
+	"github.com/datacommonsorg/mixer/internal/sqldb/query"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"github.com/datacommonsorg/mixer/internal/util"
@@ -81,63 +81,22 @@ func Count(
 		}
 	}
 	if st.SQLClient != nil {
-		allSV := []string{}
-		querySV := map[string]struct{}{}
-		// Find all the sv that are in the sqlite database
-		query := fmt.Sprintf(
-			`
-				SELECT DISTINCT(variable) FROM observations o
-				WHERE o.variable IN (%s)
-			`,
-			util.SQLInParam(len(svOrSvgs)),
-		)
-		// Execute query
-		rows, err := st.SQLClient.Query(
-			query,
-			util.ConvertArgs(svOrSvgs)...,
-		)
+		// all SV contains the SV in the request and child SV in the request SVG.
+		var allSV []string
+		requestSV := map[string]struct{}{}
+		allSV, err := query.CheckVariables(st, svOrSvgs)
+		for _, sv := range allSV {
+			requestSV[sv] = struct{}{}
+		}
 		if err != nil {
 			return nil, err
 		}
-		defer rows.Close()
-		// Process the query result
-		for rows.Next() {
-			var sv string
-			err = rows.Scan(&sv)
-			if err != nil {
-				return nil, err
-			}
-			allSV = append(allSV, sv)
-			querySV[sv] = struct{}{}
+		requestSVG, err := query.CheckVariableGroups(st, svOrSvgs)
+		if err != nil {
+			return nil, err
 		}
-
-		// Find all the svg that are in the sqlite database
 		ancestorSVG := map[string][]string{}
-		// Execute query
-		query = fmt.Sprintf(
-			`
-				SELECT DISTINCT(subject_id) FROM triples
-				WHERE predicate = "typeOf"
-				AND subject_id IN (%s)
-				AND object_id = 'StatVarGroup';
-			`,
-			util.SQLInParam(len(svOrSvgs)),
-		)
-		rows, err = st.SQLClient.Query(
-			query,
-			util.ConvertArgs(svOrSvgs)...,
-		)
-		if err != nil {
-			return nil, err
-		}
-		defer rows.Close()
-		// Process the query result
-		for rows.Next() {
-			var svg string
-			err = rows.Scan(&svg)
-			if err != nil {
-				return nil, err
-			}
+		for _, svg := range requestSVG {
 			descendantSVs := getAllDescendentSV(cache.RawSvg, svg)
 			for _, sv := range descendantSVs {
 				allSV = append(allSV, sv)
@@ -147,78 +106,34 @@ func Count(
 				ancestorSVG[sv] = append(ancestorSVG[sv], svg)
 			}
 		}
-
 		if len(allSV) == 0 {
 			return result, nil
 		}
+		// Remove duplicate from directly queried SV and SV under queried SVG
 		allSV = util.MergeDedupe(allSV, []string{})
 
-		entityParam, err := util.SQLListParam(st.SQLClient, len(entities))
+		observationCount, err := query.CountObservation(st, entities, allSV)
 		if err != nil {
 			return nil, err
 		}
-		svParam, err := util.SQLListParam(st.SQLClient, len(allSV))
-		if err != nil {
-			return nil, err
-		}
-
-		// Query the count for entity, variable pairs
-		query = fmt.Sprintf(
-			`
-				WITH entity_list(entity) AS (
-						%s
-				),
-				variable_list(variable) AS (
-						%s
-				),
-				all_pairs AS (
-						SELECT e.entity, v.variable
-						FROM entity_list e
-						CROSS JOIN variable_list v
-				)
-				SELECT a.entity, a.variable, COUNT(o.entity)
-				FROM all_pairs a
-				LEFT JOIN observations o ON a.entity = o.entity AND a.variable = o.variable
-				GROUP BY a.entity, a.variable;
-			`,
-			entityParam,
-			svParam,
-		)
-		args := entities
-		args = append(args, allSV...)
-
-		// Execute query
-		rows, err = st.SQLClient.Query(query, util.ConvertArgs(args)...)
-		if err != nil {
-			return nil, err
-		}
-		defer rows.Close()
-		if err != nil {
-			return nil, err
-		}
-		for rows.Next() {
-			var e, v string
-			var count int
-			err = rows.Scan(&e, &v, &count)
-			if err != nil {
-				return nil, err
-			}
-			if count == 0 {
-				continue
-			}
-			// This is an sv in the original query variable list.
-			if _, ok := querySV[v]; ok {
-				result[v][e] = 0
-			}
-			// Add count for each SVG with descendants.
-			for _, ancestor := range ancestorSVG[v] {
-				if _, ok := result[ancestor]; !ok {
-					result[ancestor] = map[string]int32{}
+		for v, eCount := range observationCount {
+			for e, c := range eCount {
+				if c == 0 {
+					continue
 				}
-				result[ancestor][e] += 1
+				// This is an sv in the original query variable list.
+				if _, ok := requestSV[v]; ok {
+					result[v][e] = 0
+				}
+				// Add count for each SVG with descendants.
+				for _, ancestor := range ancestorSVG[v] {
+					if _, ok := result[ancestor]; !ok {
+						result[ancestor] = map[string]int32{}
+					}
+					result[ancestor][e] += 1
+				}
 			}
 		}
 	}
-
 	return result, nil
 }
