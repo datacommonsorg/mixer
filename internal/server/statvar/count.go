@@ -81,22 +81,22 @@ func Count(
 		}
 	}
 	if st.SQLClient != nil {
-		// query SV and child SV from query SVG
+		// all SV contains the SV in the request and child SV in the request SVG.
 		var allSV []string
-		querySV := map[string]struct{}{}
+		requestSV := map[string]struct{}{}
 		allSV, err := query.CheckVariables(st, svOrSvgs)
 		for _, sv := range allSV {
-			querySV[sv] = struct{}{}
+			requestSV[sv] = struct{}{}
 		}
 		if err != nil {
 			return nil, err
 		}
-		sqlSVG, err := query.CheckVariableGroups(st, svOrSvgs)
+		requestSVG, err := query.CheckVariableGroups(st, svOrSvgs)
 		if err != nil {
 			return nil, err
 		}
 		ancestorSVG := map[string][]string{}
-		for _, svg := range sqlSVG {
+		for _, svg := range requestSVG {
 			descendantSVs := getAllDescendentSV(cache.RawSvg, svg)
 			for _, sv := range descendantSVs {
 				allSV = append(allSV, sv)
@@ -122,7 +122,7 @@ func Count(
 					continue
 				}
 				// This is an sv in the original query variable list.
-				if _, ok := querySV[v]; ok {
+				if _, ok := requestSV[v]; ok {
 					result[v][e] = 0
 				}
 				// Add count for each SVG with descendants.

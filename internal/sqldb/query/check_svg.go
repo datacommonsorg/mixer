@@ -27,11 +27,11 @@ func CheckVariableGroups(st *store.Store, variableGroups []string) ([]string, er
 	// Find all the sv that are in the sqlite database
 	query := fmt.Sprintf(
 		`
-				SELECT DISTINCT(subject_id) FROM triples
-				WHERE predicate = "typeOf"
-				AND subject_id IN (%s)
-				AND object_id = 'StatVarGroup';
-			`,
+			SELECT DISTINCT(subject_id) FROM triples
+			WHERE predicate = "typeOf"
+			AND subject_id IN (%s)
+			AND object_id = 'StatVarGroup';
+		`,
 		util.SQLInParam(len(variableGroups)),
 	)
 	// Execute query
