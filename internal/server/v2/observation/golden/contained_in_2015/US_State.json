@@ -11,7 +11,10 @@
                   "date": "2015",
                   "value": 42
                 }
-              ]
+              ],
+              "obs_count": 1,
+              "earliest_date": "2015",
+              "latest_date": "2015"
             }
           ]
         }

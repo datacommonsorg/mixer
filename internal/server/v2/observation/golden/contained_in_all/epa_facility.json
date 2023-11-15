@@ -55,7 +55,10 @@
                   "date": "2021",
                   "value": 78060.732
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -104,7 +107,10 @@
                   "date": "2019",
                   "value": 0
                 }
-              ]
+              ],
+              "obs_count": 10,
+              "earliest_date": "2010",
+              "latest_date": "2019"
             }
           ]
         },
@@ -161,7 +167,10 @@
                   "date": "2021",
                   "value": 88809.25
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -210,7 +219,10 @@
                   "date": "2021",
                   "value": 50609.012
                 }
-              ]
+              ],
+              "obs_count": 10,
+              "earliest_date": "2012",
+              "latest_date": "2021"
             }
           ]
         },
@@ -231,7 +243,10 @@
                   "date": "2012",
                   "value": 6648.324
                 }
-              ]
+              ],
+              "obs_count": 3,
+              "earliest_date": "2010",
+              "latest_date": "2012"
             }
           ]
         },
@@ -288,7 +303,10 @@
                   "date": "2021",
                   "value": 35780.62
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -317,7 +335,10 @@
                   "date": "2014",
                   "value": 9132.516
                 }
-              ]
+              ],
+              "obs_count": 5,
+              "earliest_date": "2010",
+              "latest_date": "2014"
             }
           ]
         },
@@ -374,7 +395,10 @@
                   "date": "2021",
                   "value": 82511.84
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -411,7 +435,10 @@
                   "date": "2016",
                   "value": 4981.932
                 }
-              ]
+              ],
+              "obs_count": 7,
+              "earliest_date": "2010",
+              "latest_date": "2016"
             }
           ]
         },
@@ -468,7 +495,10 @@
                   "date": "2021",
                   "value": 1537823.352
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -521,7 +551,10 @@
                   "date": "2021",
                   "value": 22123.116
                 }
-              ]
+              ],
+              "obs_count": 11,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -578,7 +611,10 @@
                   "date": "2021",
                   "value": 4757.194
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -611,7 +647,10 @@
                   "date": "2015",
                   "value": 1389.396
                 }
-              ]
+              ],
+              "obs_count": 6,
+              "earliest_date": "2010",
+              "latest_date": "2015"
             }
           ]
         },
@@ -640,7 +679,10 @@
                   "date": "2014",
                   "value": 6638.076
                 }
-              ]
+              ],
+              "obs_count": 5,
+              "earliest_date": "2010",
+              "latest_date": "2014"
             }
           ]
         },
@@ -669,7 +711,10 @@
                   "date": "2014",
                   "value": 6722.424
                 }
-              ]
+              ],
+              "obs_count": 5,
+              "earliest_date": "2010",
+              "latest_date": "2014"
             }
           ]
         },
@@ -698,7 +743,10 @@
                   "date": "2014",
                   "value": 7003.624
                 }
-              ]
+              ],
+              "obs_count": 5,
+              "earliest_date": "2010",
+              "latest_date": "2014"
             }
           ]
         },
@@ -755,7 +803,10 @@
                   "date": "2021",
                   "value": 1020349.668
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -812,7 +863,10 @@
                   "date": "2021",
                   "value": 6479.128
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -869,7 +923,10 @@
                   "date": "2021",
                   "value": 53732.248
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -926,7 +983,10 @@
                   "date": "2021",
                   "value": 18839.78
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -983,7 +1043,10 @@
                   "date": "2021",
                   "value": 4689.784
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -1040,7 +1103,10 @@
                   "date": "2021",
                   "value": 1775142.816
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -1097,7 +1163,10 @@
                   "date": "2021",
                   "value": 16390.94
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -1154,7 +1223,10 @@
                   "date": "2021",
                   "value": 171016.816
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -1211,7 +1283,10 @@
                   "date": "2021",
                   "value": 138455.188
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -1248,7 +1323,10 @@
                   "date": "2016",
                   "value": 8767.968
                 }
-              ]
+              ],
+              "obs_count": 7,
+              "earliest_date": "2010",
+              "latest_date": "2016"
             }
           ]
         },
@@ -1281,7 +1359,10 @@
                   "date": "2021",
                   "value": 51140.164
                 }
-              ]
+              ],
+              "obs_count": 6,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -1310,7 +1391,10 @@
                   "date": "2014",
                   "value": 10964.36
                 }
-              ]
+              ],
+              "obs_count": 5,
+              "earliest_date": "2010",
+              "latest_date": "2014"
             }
           ]
         },
@@ -1367,7 +1451,10 @@
                   "date": "2021",
                   "value": 13562.1
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -1400,7 +1487,10 @@
                   "date": "2015",
                   "value": 410882.904
                 }
-              ]
+              ],
+              "obs_count": 6,
+              "earliest_date": "2010",
+              "latest_date": "2015"
             }
           ]
         },
@@ -1457,7 +1547,10 @@
                   "date": "2021",
                   "value": 13862.648
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -1514,7 +1607,10 @@
                   "date": "2021",
                   "value": 340474.488
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -1535,7 +1631,10 @@
                   "date": "2012",
                   "value": 0
                 }
-              ]
+              ],
+              "obs_count": 3,
+              "earliest_date": "2010",
+              "latest_date": "2012"
             }
           ]
         },
@@ -1564,7 +1663,10 @@
                   "date": "2014",
                   "value": 11468.908
                 }
-              ]
+              ],
+              "obs_count": 5,
+              "earliest_date": "2010",
+              "latest_date": "2014"
             }
           ]
         },
@@ -1621,7 +1723,10 @@
                   "date": "2021",
                   "value": 1511019.4
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -1650,7 +1755,10 @@
                   "date": "2014",
                   "value": 11367.75
                 }
-              ]
+              ],
+              "obs_count": 5,
+              "earliest_date": "2010",
+              "latest_date": "2014"
             }
           ]
         },
@@ -1671,7 +1779,10 @@
                   "date": "2012",
                   "value": 143749.51
                 }
-              ]
+              ],
+              "obs_count": 3,
+              "earliest_date": "2010",
+              "latest_date": "2012"
             }
           ]
         },
@@ -1700,7 +1811,10 @@
                   "date": "2014",
                   "value": 2377
                 }
-              ]
+              ],
+              "obs_count": 5,
+              "earliest_date": "2010",
+              "latest_date": "2014"
             }
           ]
         },
@@ -1729,7 +1843,10 @@
                   "date": "2014",
                   "value": 1374.75
                 }
-              ]
+              ],
+              "obs_count": 5,
+              "earliest_date": "2010",
+              "latest_date": "2014"
             }
           ]
         },
@@ -1762,7 +1879,10 @@
                   "date": "2015",
                   "value": 11650
                 }
-              ]
+              ],
+              "obs_count": 6,
+              "earliest_date": "2010",
+              "latest_date": "2015"
             }
           ]
         },
@@ -1791,7 +1911,10 @@
                   "date": "2014",
                   "value": 1197.5
                 }
-              ]
+              ],
+              "obs_count": 5,
+              "earliest_date": "2010",
+              "latest_date": "2014"
             }
           ]
         },
@@ -1848,7 +1971,10 @@
                   "date": "2021",
                   "value": 704747.788
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -1893,7 +2019,10 @@
                   "date": "2019",
                   "value": 4485.044
                 }
-              ]
+              ],
+              "obs_count": 9,
+              "earliest_date": "2010",
+              "latest_date": "2019"
             }
           ]
         },
@@ -1950,7 +2079,10 @@
                   "date": "2021",
                   "value": 7742.672
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -2007,7 +2139,10 @@
                   "date": "2021",
                   "value": 97234.34
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -2064,7 +2199,10 @@
                   "date": "2021",
                   "value": 20430.224
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -2117,7 +2255,10 @@
                   "date": "2021",
                   "value": 60826.332
                 }
-              ]
+              ],
+              "obs_count": 11,
+              "earliest_date": "2011",
+              "latest_date": "2021"
             }
           ]
         },
@@ -2174,7 +2315,10 @@
                   "date": "2021",
                   "value": 11278.808
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -2231,7 +2375,10 @@
                   "date": "2021",
                   "value": 50210.7
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -2288,7 +2435,10 @@
                   "date": "2021",
                   "value": 430634.004
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -2345,7 +2495,10 @@
                   "date": "2021",
                   "value": 13220.952
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -2402,7 +2555,10 @@
                   "date": "2021",
                   "value": 527392.996
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -2455,7 +2611,10 @@
                   "date": "2020",
                   "value": 0
                 }
-              ]
+              ],
+              "obs_count": 11,
+              "earliest_date": "2010",
+              "latest_date": "2020"
             }
           ]
         },
@@ -2512,7 +2671,10 @@
                   "date": "2021",
                   "value": 31761.78
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -2569,7 +2731,10 @@
                   "date": "2021",
                   "value": 231877.692
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -2626,7 +2791,10 @@
                   "date": "2021",
                   "value": 13954.448
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -2671,7 +2839,10 @@
                   "date": "2021",
                   "value": 139562.764
                 }
-              ]
+              ],
+              "obs_count": 9,
+              "earliest_date": "2013",
+              "latest_date": "2021"
             }
           ]
         },
@@ -2724,7 +2895,10 @@
                   "date": "2020",
                   "value": 0
                 }
-              ]
+              ],
+              "obs_count": 11,
+              "earliest_date": "2010",
+              "latest_date": "2020"
             }
           ]
         },
@@ -2781,7 +2955,10 @@
                   "date": "2021",
                   "value": 206412.436
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -2810,7 +2987,10 @@
                   "date": "2014",
                   "value": 8046.22
                 }
-              ]
+              ],
+              "obs_count": 5,
+              "earliest_date": "2010",
+              "latest_date": "2014"
             }
           ]
         },
@@ -2839,7 +3019,10 @@
                   "date": "2014",
                   "value": 9637.364
                 }
-              ]
+              ],
+              "obs_count": 5,
+              "earliest_date": "2010",
+              "latest_date": "2014"
             }
           ]
         },
@@ -2868,7 +3051,10 @@
                   "date": "2014",
                   "value": 16314.54
                 }
-              ]
+              ],
+              "obs_count": 5,
+              "earliest_date": "2010",
+              "latest_date": "2014"
             }
           ]
         },
@@ -2897,7 +3083,10 @@
                   "date": "2014",
                   "value": 10834.26
                 }
-              ]
+              ],
+              "obs_count": 5,
+              "earliest_date": "2010",
+              "latest_date": "2014"
             }
           ]
         },
@@ -2918,7 +3107,10 @@
                   "date": "2014",
                   "value": 14976.544
                 }
-              ]
+              ],
+              "obs_count": 3,
+              "earliest_date": "2012",
+              "latest_date": "2014"
             }
           ]
         },
@@ -2975,7 +3167,10 @@
                   "date": "2021",
                   "value": 47482.224
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -3032,7 +3227,10 @@
                   "date": "2021",
                   "value": 14889.844
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -3089,7 +3287,10 @@
                   "date": "2021",
                   "value": 336712.604
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -3146,7 +3347,10 @@
                   "date": "2021",
                   "value": 8787.016
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -3191,7 +3395,10 @@
                   "date": "2018",
                   "value": 17806.084
                 }
-              ]
+              ],
+              "obs_count": 9,
+              "earliest_date": "2010",
+              "latest_date": "2018"
             }
           ]
         },
@@ -3224,7 +3431,10 @@
                   "date": "2015",
                   "value": 9367.316
                 }
-              ]
+              ],
+              "obs_count": 6,
+              "earliest_date": "2010",
+              "latest_date": "2015"
             }
           ]
         },
@@ -3277,7 +3487,10 @@
                   "date": "2021",
                   "value": 38659.808
                 }
-              ]
+              ],
+              "obs_count": 11,
+              "earliest_date": "2011",
+              "latest_date": "2021"
             }
           ]
         },
@@ -3298,7 +3511,10 @@
                   "date": "2016",
                   "value": 9047.228
                 }
-              ]
+              ],
+              "obs_count": 3,
+              "earliest_date": "2014",
+              "latest_date": "2016"
             }
           ]
         },
@@ -3347,7 +3563,10 @@
                   "date": "2019",
                   "value": 3957.336
                 }
-              ]
+              ],
+              "obs_count": 10,
+              "earliest_date": "2010",
+              "latest_date": "2019"
             }
           ]
         },
@@ -3404,7 +3623,10 @@
                   "date": "2021",
                   "value": 55670.14
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -3461,7 +3683,10 @@
                   "date": "2021",
                   "value": 40326.048
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -3474,7 +3699,10 @@
                   "date": "2010",
                   "value": 30925.184
                 }
-              ]
+              ],
+              "obs_count": 1,
+              "earliest_date": "2010",
+              "latest_date": "2010"
             }
           ]
         },
@@ -3531,7 +3759,10 @@
                   "date": "2021",
                   "value": 829483.576
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -3588,7 +3819,10 @@
                   "date": "2021",
                   "value": 937325.344
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -3629,7 +3863,10 @@
                   "date": "2021",
                   "value": 30190.036
                 }
-              ]
+              ],
+              "obs_count": 8,
+              "earliest_date": "2014",
+              "latest_date": "2021"
             }
           ]
         },
@@ -3686,7 +3923,10 @@
                   "date": "2021",
                   "value": 117205.608
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -3743,7 +3983,10 @@
                   "date": "2021",
                   "value": 128913.664
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -3800,7 +4043,10 @@
                   "date": "2021",
                   "value": 47327.572
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -3825,7 +4071,10 @@
                   "date": "2013",
                   "value": 0
                 }
-              ]
+              ],
+              "obs_count": 4,
+              "earliest_date": "2010",
+              "latest_date": "2013"
             }
           ]
         },
@@ -3882,7 +4131,10 @@
                   "date": "2021",
                   "value": 173947.604
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -3939,7 +4191,10 @@
                   "date": "2021",
                   "value": 118108.848
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -3996,7 +4251,10 @@
                   "date": "2021",
                   "value": 327002.188
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -4053,7 +4311,10 @@
                   "date": "2021",
                   "value": 281891.856
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -4102,7 +4363,10 @@
                   "date": "2019",
                   "value": 11409.908
                 }
-              ]
+              ],
+              "obs_count": 10,
+              "earliest_date": "2010",
+              "latest_date": "2019"
             }
           ]
         },
@@ -4159,7 +4423,10 @@
                   "date": "2021",
                   "value": 1717242.42
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -4216,7 +4483,10 @@
                   "date": "2021",
                   "value": 734286.368
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -4273,7 +4543,10 @@
                   "date": "2021",
                   "value": 534601.32
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -4330,7 +4603,10 @@
                   "date": "2021",
                   "value": 1398435.616
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -4387,7 +4663,10 @@
                   "date": "2021",
                   "value": 884770.62
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -4416,7 +4695,10 @@
                   "date": "2014",
                   "value": 16.3
                 }
-              ]
+              ],
+              "obs_count": 5,
+              "earliest_date": "2010",
+              "latest_date": "2014"
             }
           ]
         },
@@ -4473,7 +4755,10 @@
                   "date": "2021",
                   "value": 2000308.476
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -4518,7 +4803,10 @@
                   "date": "2018",
                   "value": 17.1
                 }
-              ]
+              ],
+              "obs_count": 9,
+              "earliest_date": "2010",
+              "latest_date": "2018"
             }
           ]
         },
@@ -4531,7 +4819,10 @@
                   "date": "2010",
                   "value": 48469.62
                 }
-              ]
+              ],
+              "obs_count": 1,
+              "earliest_date": "2010",
+              "latest_date": "2010"
             }
           ]
         },
@@ -4588,7 +4879,10 @@
                   "date": "2021",
                   "value": 1512393.796
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -4621,7 +4915,10 @@
                   "date": "2015",
                   "value": 0
                 }
-              ]
+              ],
+              "obs_count": 6,
+              "earliest_date": "2010",
+              "latest_date": "2015"
             }
           ]
         },
@@ -4666,7 +4963,10 @@
                   "date": "2018",
                   "value": 1.9
                 }
-              ]
+              ],
+              "obs_count": 9,
+              "earliest_date": "2010",
+              "latest_date": "2018"
             }
           ]
         },
@@ -4723,7 +5023,10 @@
                   "date": "2021",
                   "value": 1501324.036
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -4764,7 +5067,10 @@
                   "date": "2017",
                   "value": 96586.092
                 }
-              ]
+              ],
+              "obs_count": 8,
+              "earliest_date": "2010",
+              "latest_date": "2017"
             }
           ]
         },
@@ -4821,7 +5127,10 @@
                   "date": "2021",
                   "value": 280322.56
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -4878,7 +5187,10 @@
                   "date": "2021",
                   "value": 192627.088
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -4935,7 +5247,10 @@
                   "date": "2021",
                   "value": 824124.196
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -4992,7 +5307,10 @@
                   "date": "2021",
                   "value": 453298.62
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -5049,7 +5367,10 @@
                   "date": "2021",
                   "value": 57670.184
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -5106,7 +5427,10 @@
                   "date": "2021",
                   "value": 771073.336
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -5163,7 +5487,10 @@
                   "date": "2021",
                   "value": 458046.068
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -5204,7 +5531,10 @@
                   "date": "2017",
                   "value": 0
                 }
-              ]
+              ],
+              "obs_count": 8,
+              "earliest_date": "2010",
+              "latest_date": "2017"
             }
           ]
         },
@@ -5261,7 +5591,10 @@
                   "date": "2021",
                   "value": 11907.556
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -5318,7 +5651,10 @@
                   "date": "2021",
                   "value": 2388.792
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -5375,7 +5711,10 @@
                   "date": "2021",
                   "value": 650693.4
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -5432,7 +5771,10 @@
                   "date": "2021",
                   "value": 6782.524
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -5457,7 +5799,10 @@
                   "date": "2014",
                   "value": 1594.304
                 }
-              ]
+              ],
+              "obs_count": 4,
+              "earliest_date": "2011",
+              "latest_date": "2014"
             }
           ]
         },
@@ -5474,7 +5819,10 @@
                   "date": "2012",
                   "value": 2381.506
                 }
-              ]
+              ],
+              "obs_count": 2,
+              "earliest_date": "2011",
+              "latest_date": "2012"
             }
           ]
         },
@@ -5511,7 +5859,10 @@
                   "date": "2016",
                   "value": 10078.012
                 }
-              ]
+              ],
+              "obs_count": 7,
+              "earliest_date": "2010",
+              "latest_date": "2016"
             }
           ]
         },
@@ -5568,7 +5919,10 @@
                   "date": "2021",
                   "value": 172154.456
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -5605,7 +5959,10 @@
                   "date": "2018",
                   "value": 6653.732
                 }
-              ]
+              ],
+              "obs_count": 7,
+              "earliest_date": "2012",
+              "latest_date": "2018"
             }
           ]
         },
@@ -5662,7 +6019,10 @@
                   "date": "2021",
                   "value": 74619.842
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -5719,7 +6079,10 @@
                   "date": "2021",
                   "value": 2596720.662
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -5776,7 +6139,10 @@
                   "date": "2021",
                   "value": 65257.25
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -5833,7 +6199,10 @@
                   "date": "2021",
                   "value": 61736.32
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -5890,7 +6259,10 @@
                   "date": "2021",
                   "value": 938378.42
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -5947,7 +6319,10 @@
                   "date": "2021",
                   "value": 10513.512
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -5980,7 +6355,10 @@
                   "date": "2015",
                   "value": 38873.336
                 }
-              ]
+              ],
+              "obs_count": 6,
+              "earliest_date": "2010",
+              "latest_date": "2015"
             }
           ]
         },
@@ -6037,7 +6415,10 @@
                   "date": "2021",
                   "value": 29000.44
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -6094,7 +6475,10 @@
                   "date": "2021",
                   "value": 69297.14
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -6151,7 +6535,10 @@
                   "date": "2021",
                   "value": 88630
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -6184,7 +6571,10 @@
                   "date": "2015",
                   "value": 28148.896
                 }
-              ]
+              ],
+              "obs_count": 6,
+              "earliest_date": "2010",
+              "latest_date": "2015"
             }
           ]
         },
@@ -6241,7 +6631,10 @@
                   "date": "2021",
                   "value": 40041.25
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -6298,7 +6691,10 @@
                   "date": "2021",
                   "value": 121884.5
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -6355,7 +6751,10 @@
                   "date": "2021",
                   "value": 336677.75
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -6412,7 +6811,10 @@
                   "date": "2021",
                   "value": 664568.2
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -6469,7 +6871,10 @@
                   "date": "2021",
                   "value": 0
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -6526,7 +6931,10 @@
                   "date": "2021",
                   "value": 47413.7
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -6583,7 +6991,10 @@
                   "date": "2021",
                   "value": 126010
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -6640,7 +7051,10 @@
                   "date": "2021",
                   "value": 299987.02
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -6665,7 +7079,10 @@
                   "date": "2013",
                   "value": 12850.204
                 }
-              ]
+              ],
+              "obs_count": 4,
+              "earliest_date": "2010",
+              "latest_date": "2013"
             }
           ]
         },
@@ -6722,7 +7139,10 @@
                   "date": "2021",
                   "value": 105906.152
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -6775,7 +7195,10 @@
                   "date": "2020",
                   "value": 7670.92
                 }
-              ]
+              ],
+              "obs_count": 11,
+              "earliest_date": "2010",
+              "latest_date": "2020"
             }
           ]
         },
@@ -6832,7 +7255,10 @@
                   "date": "2021",
                   "value": 53140.7
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -6869,7 +7295,10 @@
                   "date": "2021",
                   "value": 24226.75
                 }
-              ]
+              ],
+              "obs_count": 7,
+              "earliest_date": "2015",
+              "latest_date": "2021"
             }
           ]
         },
@@ -6926,7 +7355,10 @@
                   "date": "2021",
                   "value": 65607.452
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -6983,7 +7415,10 @@
                   "date": "2021",
                   "value": 39745.492
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -7040,7 +7475,10 @@
                   "date": "2021",
                   "value": 56543.488
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -7097,7 +7535,10 @@
                   "date": "2021",
                   "value": 711592.7
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -7154,7 +7595,10 @@
                   "date": "2021",
                   "value": 40250.172
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -7211,7 +7655,10 @@
                   "date": "2021",
                   "value": 58832.078
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -7268,7 +7715,10 @@
                   "date": "2021",
                   "value": 37650.92
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -7325,7 +7775,10 @@
                   "date": "2021",
                   "value": 2062274.206
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -7382,7 +7835,10 @@
                   "date": "2021",
                   "value": 42868.088
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -7439,7 +7895,10 @@
                   "date": "2021",
                   "value": 73893.22
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -7496,7 +7955,10 @@
                   "date": "2021",
                   "value": 26575.632
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -7553,7 +8015,10 @@
                   "date": "2021",
                   "value": 440492.25
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -7578,7 +8043,10 @@
                   "date": "2013",
                   "value": 1468066.088
                 }
-              ]
+              ],
+              "obs_count": 4,
+              "earliest_date": "2010",
+              "latest_date": "2013"
             }
           ]
         },
@@ -7635,7 +8103,10 @@
                   "date": "2021",
                   "value": 0
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -7692,7 +8163,10 @@
                   "date": "2021",
                   "value": 50341.612
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -7749,7 +8223,10 @@
                   "date": "2021",
                   "value": 19.7
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -7806,7 +8283,10 @@
                   "date": "2021",
                   "value": 688241.452
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -7863,7 +8343,10 @@
                   "date": "2021",
                   "value": 840503.732
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -7920,7 +8403,10 @@
                   "date": "2021",
                   "value": 9465.364
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -7977,7 +8463,10 @@
                   "date": "2021",
                   "value": 8676.968
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -8034,7 +8523,10 @@
                   "date": "2021",
                   "value": 93904.336
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -8091,7 +8583,10 @@
                   "date": "2021",
                   "value": 691618.826
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -8148,7 +8643,10 @@
                   "date": "2021",
                   "value": 28656.84
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -8205,7 +8703,10 @@
                   "date": "2021",
                   "value": 9907.712
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -8262,7 +8763,10 @@
                   "date": "2021",
                   "value": 30743.25
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -8295,7 +8799,10 @@
                   "date": "2015",
                   "value": 19975.284
                 }
-              ]
+              ],
+              "obs_count": 6,
+              "earliest_date": "2010",
+              "latest_date": "2015"
             }
           ]
         },
@@ -8324,7 +8831,10 @@
                   "date": "2014",
                   "value": 0
                 }
-              ]
+              ],
+              "obs_count": 5,
+              "earliest_date": "2010",
+              "latest_date": "2014"
             }
           ]
         },
@@ -8345,7 +8855,10 @@
                   "date": "2012",
                   "value": 13607.75
                 }
-              ]
+              ],
+              "obs_count": 3,
+              "earliest_date": "2010",
+              "latest_date": "2012"
             }
           ]
         },
@@ -8370,7 +8883,10 @@
                   "date": "2013",
                   "value": 41660.47
                 }
-              ]
+              ],
+              "obs_count": 4,
+              "earliest_date": "2010",
+              "latest_date": "2013"
             }
           ]
         },
@@ -8427,7 +8943,10 @@
                   "date": "2021",
                   "value": 50945.85
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -8484,7 +9003,10 @@
                   "date": "2021",
                   "value": 7686.672
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -8521,7 +9043,10 @@
                   "date": "2016",
                   "value": 15140.906
                 }
-              ]
+              ],
+              "obs_count": 7,
+              "earliest_date": "2010",
+              "latest_date": "2016"
             }
           ]
         },
@@ -8578,7 +9103,10 @@
                   "date": "2021",
                   "value": 8694.568
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -8635,7 +9163,10 @@
                   "date": "2021",
                   "value": 10077.664
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -8692,7 +9223,10 @@
                   "date": "2021",
                   "value": 10944.36
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -8749,7 +9283,10 @@
                   "date": "2021",
                   "value": 31267.998
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -8806,7 +9343,10 @@
                   "date": "2021",
                   "value": 26076.87
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -8863,7 +9403,10 @@
                   "date": "2021",
                   "value": 62102.816
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -8896,7 +9439,10 @@
                   "date": "2015",
                   "value": 19401.5
                 }
-              ]
+              ],
+              "obs_count": 6,
+              "earliest_date": "2010",
+              "latest_date": "2015"
             }
           ]
         },
@@ -8953,7 +9499,10 @@
                   "date": "2021",
                   "value": 48483.5
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -8974,7 +9523,10 @@
                   "date": "2012",
                   "value": 3781.5
                 }
-              ]
+              ],
+              "obs_count": 3,
+              "earliest_date": "2010",
+              "latest_date": "2012"
             }
           ]
         },
@@ -9003,7 +9555,10 @@
                   "date": "2014",
                   "value": 11426.5
                 }
-              ]
+              ],
+              "obs_count": 5,
+              "earliest_date": "2010",
+              "latest_date": "2014"
             }
           ]
         },
@@ -9060,7 +9615,10 @@
                   "date": "2021",
                   "value": 68364.348
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -9093,7 +9651,10 @@
                   "date": "2015",
                   "value": 376730.944
                 }
-              ]
+              ],
+              "obs_count": 6,
+              "earliest_date": "2010",
+              "latest_date": "2015"
             }
           ]
         },
@@ -9126,7 +9687,10 @@
                   "date": "2015",
                   "value": 331054.508
                 }
-              ]
+              ],
+              "obs_count": 6,
+              "earliest_date": "2010",
+              "latest_date": "2015"
             }
           ]
         },
@@ -9159,7 +9723,10 @@
                   "date": "2015",
                   "value": 256717.768
                 }
-              ]
+              ],
+              "obs_count": 6,
+              "earliest_date": "2010",
+              "latest_date": "2015"
             }
           ]
         },
@@ -9216,7 +9783,10 @@
                   "date": "2021",
                   "value": 163207
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -9261,7 +9831,10 @@
                   "date": "2018",
                   "value": 3095.988
                 }
-              ]
+              ],
+              "obs_count": 9,
+              "earliest_date": "2010",
+              "latest_date": "2018"
             }
           ]
         },
@@ -9314,7 +9887,10 @@
                   "date": "2021",
                   "value": 39966.512
                 }
-              ]
+              ],
+              "obs_count": 11,
+              "earliest_date": "2011",
+              "latest_date": "2021"
             }
           ]
         },
@@ -9359,7 +9935,10 @@
                   "date": "2018",
                   "value": 0
                 }
-              ]
+              ],
+              "obs_count": 9,
+              "earliest_date": "2010",
+              "latest_date": "2018"
             }
           ]
         },
@@ -9404,7 +9983,10 @@
                   "date": "2018",
                   "value": 21386.21
                 }
-              ]
+              ],
+              "obs_count": 9,
+              "earliest_date": "2010",
+              "latest_date": "2018"
             }
           ]
         },
@@ -9461,7 +10043,10 @@
                   "date": "2021",
                   "value": 35746.416
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -9518,7 +10103,10 @@
                   "date": "2021",
                   "value": 100031.5
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -9575,7 +10163,10 @@
                   "date": "2021",
                   "value": 67764.744
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -9632,7 +10223,10 @@
                   "date": "2021",
                   "value": 101808.216
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -9689,7 +10283,10 @@
                   "date": "2021",
                   "value": 70853.5
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -9746,7 +10343,10 @@
                   "date": "2021",
                   "value": 20199.75
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -9803,7 +10403,10 @@
                   "date": "2021",
                   "value": 141838.848
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -9836,7 +10439,10 @@
                   "date": "2015",
                   "value": 52677.352
                 }
-              ]
+              ],
+              "obs_count": 6,
+              "earliest_date": "2010",
+              "latest_date": "2015"
             }
           ]
         },
@@ -9893,7 +10499,10 @@
                   "date": "2021",
                   "value": 19513
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -9918,7 +10527,10 @@
                   "date": "2013",
                   "value": 1067.88
                 }
-              ]
+              ],
+              "obs_count": 4,
+              "earliest_date": "2010",
+              "latest_date": "2013"
             }
           ]
         },
@@ -9975,7 +10587,10 @@
                   "date": "2021",
                   "value": 8233
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -10008,7 +10623,10 @@
                   "date": "2015",
                   "value": 108.2
                 }
-              ]
+              ],
+              "obs_count": 6,
+              "earliest_date": "2010",
+              "latest_date": "2015"
             }
           ]
         },
@@ -10065,7 +10683,10 @@
                   "date": "2021",
                   "value": 323043.984
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -10122,7 +10743,10 @@
                   "date": "2021",
                   "value": 56729.872
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -10179,7 +10803,10 @@
                   "date": "2021",
                   "value": 4335143.406
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -10232,7 +10859,10 @@
                   "date": "2020",
                   "value": 9.6
                 }
-              ]
+              ],
+              "obs_count": 11,
+              "earliest_date": "2010",
+              "latest_date": "2020"
             }
           ]
         },
@@ -10253,7 +10883,10 @@
                   "date": "2012",
                   "value": 24563.7
                 }
-              ]
+              ],
+              "obs_count": 3,
+              "earliest_date": "2010",
+              "latest_date": "2012"
             }
           ]
         },
@@ -10274,7 +10907,10 @@
                   "date": "2012",
                   "value": 189899.384
                 }
-              ]
+              ],
+              "obs_count": 3,
+              "earliest_date": "2010",
+              "latest_date": "2012"
             }
           ]
         },
@@ -10331,7 +10967,10 @@
                   "date": "2021",
                   "value": 17844.058
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -10352,7 +10991,10 @@
                   "date": "2012",
                   "value": 12154.2
                 }
-              ]
+              ],
+              "obs_count": 3,
+              "earliest_date": "2010",
+              "latest_date": "2012"
             }
           ]
         },
@@ -10373,7 +11015,10 @@
                   "date": "2012",
                   "value": 24296.1
                 }
-              ]
+              ],
+              "obs_count": 3,
+              "earliest_date": "2010",
+              "latest_date": "2012"
             }
           ]
         },
@@ -10394,7 +11039,10 @@
                   "date": "2012",
                   "value": 24314
                 }
-              ]
+              ],
+              "obs_count": 3,
+              "earliest_date": "2010",
+              "latest_date": "2012"
             }
           ]
         },
@@ -10415,7 +11063,10 @@
                   "date": "2012",
                   "value": 20196.396
                 }
-              ]
+              ],
+              "obs_count": 3,
+              "earliest_date": "2010",
+              "latest_date": "2012"
             }
           ]
         },
@@ -10436,7 +11087,10 @@
                   "date": "2012",
                   "value": 0
                 }
-              ]
+              ],
+              "obs_count": 3,
+              "earliest_date": "2010",
+              "latest_date": "2012"
             }
           ]
         },
@@ -10493,7 +11147,10 @@
                   "date": "2021",
                   "value": 31048.284
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -10550,7 +11207,10 @@
                   "date": "2021",
                   "value": 381572.25
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -10607,7 +11267,10 @@
                   "date": "2021",
                   "value": 107174.75
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -10664,7 +11327,10 @@
                   "date": "2021",
                   "value": 17355.484
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -10681,7 +11347,10 @@
                   "date": "2012",
                   "value": 0
                 }
-              ]
+              ],
+              "obs_count": 2,
+              "earliest_date": "2011",
+              "latest_date": "2012"
             }
           ]
         },
@@ -10738,7 +11407,10 @@
                   "date": "2021",
                   "value": 10345.812
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -10795,7 +11467,10 @@
                   "date": "2021",
                   "value": 815291.7
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -10840,7 +11515,10 @@
                   "date": "2019",
                   "value": 16767.788
                 }
-              ]
+              ],
+              "obs_count": 9,
+              "earliest_date": "2011",
+              "latest_date": "2019"
             }
           ]
         },
@@ -10897,7 +11575,10 @@
                   "date": "2021",
                   "value": 2402.946
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -10954,7 +11635,10 @@
                   "date": "2021",
                   "value": 12158.75
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -11011,7 +11695,10 @@
                   "date": "2021",
                   "value": 34100.5
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -11044,7 +11731,10 @@
                   "date": "2015",
                   "value": 569.746
                 }
-              ]
+              ],
+              "obs_count": 6,
+              "earliest_date": "2010",
+              "latest_date": "2015"
             }
           ]
         },
@@ -11101,7 +11791,10 @@
                   "date": "2021",
                   "value": 106841
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -11158,7 +11851,10 @@
                   "date": "2021",
                   "value": 53565.248
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -11215,7 +11911,10 @@
                   "date": "2021",
                   "value": 257400.68
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -11272,7 +11971,10 @@
                   "date": "2021",
                   "value": 726443.132
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -11329,7 +12031,10 @@
                   "date": "2021",
                   "value": 135270.292
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -11370,7 +12075,10 @@
                   "date": "2017",
                   "value": 0
                 }
-              ]
+              ],
+              "obs_count": 8,
+              "earliest_date": "2010",
+              "latest_date": "2017"
             }
           ]
         },
@@ -11427,7 +12135,10 @@
                   "date": "2021",
                   "value": 92908
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -11484,7 +12195,10 @@
                   "date": "2021",
                   "value": 125026
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -11541,7 +12255,10 @@
                   "date": "2021",
                   "value": 154436.942
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -11574,7 +12291,10 @@
                   "date": "2015",
                   "value": 457272.228
                 }
-              ]
+              ],
+              "obs_count": 6,
+              "earliest_date": "2010",
+              "latest_date": "2015"
             }
           ]
         },
@@ -11615,7 +12335,10 @@
                   "date": "2017",
                   "value": 3429.536
                 }
-              ]
+              ],
+              "obs_count": 8,
+              "earliest_date": "2010",
+              "latest_date": "2017"
             }
           ]
         },
@@ -11672,7 +12395,10 @@
                   "date": "2021",
                   "value": 19086.5
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -11709,7 +12435,10 @@
                   "date": "2016",
                   "value": 0
                 }
-              ]
+              ],
+              "obs_count": 7,
+              "earliest_date": "2010",
+              "latest_date": "2016"
             }
           ]
         },
@@ -11766,7 +12495,10 @@
                   "date": "2021",
                   "value": 19850.084
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -11823,7 +12555,10 @@
                   "date": "2021",
                   "value": 37276.176
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -11880,7 +12615,10 @@
                   "date": "2021",
                   "value": 53546.226
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -11913,7 +12651,10 @@
                   "date": "2015",
                   "value": 1207299.304
                 }
-              ]
+              ],
+              "obs_count": 6,
+              "earliest_date": "2010",
+              "latest_date": "2015"
             }
           ]
         },
@@ -11946,7 +12687,10 @@
                   "date": "2015",
                   "value": 421087.212
                 }
-              ]
+              ],
+              "obs_count": 6,
+              "earliest_date": "2010",
+              "latest_date": "2015"
             }
           ]
         },
@@ -12003,7 +12747,10 @@
                   "date": "2021",
                   "value": 39800.2
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -12060,7 +12807,10 @@
                   "date": "2021",
                   "value": 46846.262
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -12117,7 +12867,10 @@
                   "date": "2021",
                   "value": 138543.21
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -12174,7 +12927,10 @@
                   "date": "2021",
                   "value": 63136.236
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -12231,7 +12987,10 @@
                   "date": "2021",
                   "value": 47082.25
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -12272,7 +13031,10 @@
                   "date": "2017",
                   "value": 13507.432
                 }
-              ]
+              ],
+              "obs_count": 8,
+              "earliest_date": "2010",
+              "latest_date": "2017"
             }
           ]
         },
@@ -12329,7 +13091,10 @@
                   "date": "2021",
                   "value": 815.75
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -12386,7 +13151,10 @@
                   "date": "2021",
                   "value": 11911.75
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -12443,7 +13211,10 @@
                   "date": "2021",
                   "value": 4745.75
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -12500,7 +13271,10 @@
                   "date": "2021",
                   "value": 43847.3
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -12557,7 +13331,10 @@
                   "date": "2021",
                   "value": 110383.5
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -12586,7 +13363,10 @@
                   "date": "2014",
                   "value": 11009.25
                 }
-              ]
+              ],
+              "obs_count": 5,
+              "earliest_date": "2010",
+              "latest_date": "2014"
             }
           ]
         },
@@ -12639,7 +13419,10 @@
                   "date": "2021",
                   "value": 36795.96
                 }
-              ]
+              ],
+              "obs_count": 11,
+              "earliest_date": "2011",
+              "latest_date": "2021"
             }
           ]
         },
@@ -12696,7 +13479,10 @@
                   "date": "2021",
                   "value": 41859.75
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -12753,7 +13539,10 @@
                   "date": "2021",
                   "value": 37885.508
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -12810,7 +13599,10 @@
                   "date": "2021",
                   "value": 44112.284
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -12867,7 +13659,10 @@
                   "date": "2021",
                   "value": 16209.5
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -12900,7 +13695,10 @@
                   "date": "2015",
                   "value": 77644.096
                 }
-              ]
+              ],
+              "obs_count": 6,
+              "earliest_date": "2010",
+              "latest_date": "2015"
             }
           ]
         },
@@ -12957,7 +13755,10 @@
                   "date": "2021",
                   "value": 265776.266
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -12994,7 +13795,10 @@
                   "date": "2021",
                   "value": 30007.788
                 }
-              ]
+              ],
+              "obs_count": 7,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -13027,7 +13831,10 @@
                   "date": "2015",
                   "value": 18251.732
                 }
-              ]
+              ],
+              "obs_count": 6,
+              "earliest_date": "2010",
+              "latest_date": "2015"
             }
           ]
         },
@@ -13084,7 +13891,10 @@
                   "date": "2021",
                   "value": 336590.284
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -13141,7 +13951,10 @@
                   "date": "2021",
                   "value": 151177.684
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -13198,7 +14011,10 @@
                   "date": "2021",
                   "value": 45276.942
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -13255,7 +14071,10 @@
                   "date": "2021",
                   "value": 40786.464
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -13312,7 +14131,10 @@
                   "date": "2021",
                   "value": 21143.75
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -13369,7 +14191,10 @@
                   "date": "2021",
                   "value": 20272
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -13426,7 +14251,10 @@
                   "date": "2021",
                   "value": 37200.16
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -13483,7 +14311,10 @@
                   "date": "2021",
                   "value": 53926.5
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -13540,7 +14371,10 @@
                   "date": "2021",
                   "value": 88636
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -13597,7 +14431,10 @@
                   "date": "2021",
                   "value": 104923.804
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -13650,7 +14487,10 @@
                   "date": "2021",
                   "value": 52165.544
                 }
-              ]
+              ],
+              "obs_count": 11,
+              "earliest_date": "2011",
+              "latest_date": "2021"
             }
           ]
         },
@@ -13679,7 +14519,10 @@
                   "date": "2014",
                   "value": 22517.75
                 }
-              ]
+              ],
+              "obs_count": 5,
+              "earliest_date": "2010",
+              "latest_date": "2014"
             }
           ]
         },
@@ -13708,7 +14551,10 @@
                   "date": "2014",
                   "value": 368560.07
                 }
-              ]
+              ],
+              "obs_count": 5,
+              "earliest_date": "2010",
+              "latest_date": "2014"
             }
           ]
         },
@@ -13765,7 +14611,10 @@
                   "date": "2021",
                   "value": 28833.492
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -13822,7 +14671,10 @@
                   "date": "2021",
                   "value": 18679.5
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -13879,7 +14731,10 @@
                   "date": "2021",
                   "value": 6943.15
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -13936,7 +14791,10 @@
                   "date": "2021",
                   "value": 21438.72
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -13973,7 +14831,10 @@
                   "date": "2018",
                   "value": 2020.894
                 }
-              ]
+              ],
+              "obs_count": 7,
+              "earliest_date": "2012",
+              "latest_date": "2018"
             }
           ]
         },
@@ -14026,7 +14887,10 @@
                   "date": "2020",
                   "value": 10039.92
                 }
-              ]
+              ],
+              "obs_count": 11,
+              "earliest_date": "2010",
+              "latest_date": "2020"
             }
           ]
         },
@@ -14063,7 +14927,10 @@
                   "date": "2016",
                   "value": 12318.284
                 }
-              ]
+              ],
+              "obs_count": 7,
+              "earliest_date": "2010",
+              "latest_date": "2016"
             }
           ]
         },
@@ -14120,7 +14987,10 @@
                   "date": "2021",
                   "value": 37170.66
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -14157,7 +15027,10 @@
                   "date": "2016",
                   "value": 17542.25
                 }
-              ]
+              ],
+              "obs_count": 7,
+              "earliest_date": "2010",
+              "latest_date": "2016"
             }
           ]
         },
@@ -14214,7 +15087,10 @@
                   "date": "2021",
                   "value": 48901.16
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -14227,7 +15103,10 @@
                   "date": "2010",
                   "value": 195406.064
                 }
-              ]
+              ],
+              "obs_count": 1,
+              "earliest_date": "2010",
+              "latest_date": "2010"
             }
           ]
         },
@@ -14240,7 +15119,10 @@
                   "date": "2010",
                   "value": 162093.24
                 }
-              ]
+              ],
+              "obs_count": 1,
+              "earliest_date": "2010",
+              "latest_date": "2010"
             }
           ]
         },
@@ -14269,7 +15151,10 @@
                   "date": "2014",
                   "value": 7616
                 }
-              ]
+              ],
+              "obs_count": 5,
+              "earliest_date": "2010",
+              "latest_date": "2014"
             }
           ]
         },
@@ -14326,7 +15211,10 @@
                   "date": "2021",
                   "value": 54862.25
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -14383,7 +15271,10 @@
                   "date": "2021",
                   "value": 66763.256
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -14440,7 +15331,10 @@
                   "date": "2021",
                   "value": 152566
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -14497,7 +15391,10 @@
                   "date": "2021",
                   "value": 24396.566
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -14510,7 +15407,10 @@
                   "date": "2010",
                   "value": 191002.58
                 }
-              ]
+              ],
+              "obs_count": 1,
+              "earliest_date": "2010",
+              "latest_date": "2010"
             }
           ]
         },
@@ -14543,7 +15443,10 @@
                   "date": "2015",
                   "value": 0
                 }
-              ]
+              ],
+              "obs_count": 6,
+              "earliest_date": "2010",
+              "latest_date": "2015"
             }
           ]
         },
@@ -14576,7 +15479,10 @@
                   "date": "2015",
                   "value": 0
                 }
-              ]
+              ],
+              "obs_count": 6,
+              "earliest_date": "2010",
+              "latest_date": "2015"
             }
           ]
         },
@@ -14633,7 +15539,10 @@
                   "date": "2021",
                   "value": 3965.25
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -14666,7 +15575,10 @@
                   "date": "2015",
                   "value": 769310.252
                 }
-              ]
+              ],
+              "obs_count": 6,
+              "earliest_date": "2010",
+              "latest_date": "2015"
             }
           ]
         },
@@ -14711,7 +15623,10 @@
                   "date": "2018",
                   "value": 11457.156
                 }
-              ]
+              ],
+              "obs_count": 9,
+              "earliest_date": "2010",
+              "latest_date": "2018"
             }
           ]
         },
@@ -14768,7 +15683,10 @@
                   "date": "2021",
                   "value": 25946.652
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -14825,7 +15743,10 @@
                   "date": "2021",
                   "value": 1473037.4
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -14858,7 +15779,10 @@
                   "date": "2015",
                   "value": 7089.816
                 }
-              ]
+              ],
+              "obs_count": 6,
+              "earliest_date": "2010",
+              "latest_date": "2015"
             }
           ]
         },
@@ -14911,7 +15835,10 @@
                   "date": "2021",
                   "value": 1255796.9
                 }
-              ]
+              ],
+              "obs_count": 11,
+              "earliest_date": "2011",
+              "latest_date": "2021"
             }
           ]
         },
@@ -14964,7 +15891,10 @@
                   "date": "2021",
                   "value": 279593.6
                 }
-              ]
+              ],
+              "obs_count": 11,
+              "earliest_date": "2011",
+              "latest_date": "2021"
             }
           ]
         },
@@ -15021,7 +15951,10 @@
                   "date": "2021",
                   "value": 1643227.144
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -15078,7 +16011,10 @@
                   "date": "2021",
                   "value": 20429.784
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -15135,7 +16071,10 @@
                   "date": "2021",
                   "value": 25511.104
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -15192,7 +16131,10 @@
                   "date": "2021",
                   "value": 28806
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -15229,7 +16171,10 @@
                   "date": "2016",
                   "value": 21462.22
                 }
-              ]
+              ],
+              "obs_count": 7,
+              "earliest_date": "2010",
+              "latest_date": "2016"
             }
           ]
         },
@@ -15286,7 +16231,10 @@
                   "date": "2021",
                   "value": 28876.672
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -15343,7 +16291,10 @@
                   "date": "2021",
                   "value": 211595.204
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -15396,7 +16347,10 @@
                   "date": "2021",
                   "value": 54730.944
                 }
-              ]
+              ],
+              "obs_count": 11,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -15453,7 +16407,10 @@
                   "date": "2021",
                   "value": 1187.496
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -15510,7 +16467,10 @@
                   "date": "2021",
                   "value": 30071.936
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -15567,7 +16527,10 @@
                   "date": "2021",
                   "value": 22711.464
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -15612,7 +16575,10 @@
                   "date": "2018",
                   "value": 20169.124
                 }
-              ]
+              ],
+              "obs_count": 9,
+              "earliest_date": "2010",
+              "latest_date": "2018"
             }
           ]
         },
@@ -15669,7 +16635,10 @@
                   "date": "2021",
                   "value": 27563.95
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -15698,7 +16667,10 @@
                   "date": "2014",
                   "value": 2666.5
                 }
-              ]
+              ],
+              "obs_count": 5,
+              "earliest_date": "2010",
+              "latest_date": "2014"
             }
           ]
         },
@@ -15755,7 +16727,10 @@
                   "date": "2021",
                   "value": 45674.128
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -15812,7 +16787,10 @@
                   "date": "2021",
                   "value": 36048.264
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -15869,7 +16847,10 @@
                   "date": "2021",
                   "value": 67468.996
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -15926,7 +16907,10 @@
                   "date": "2021",
                   "value": 1126409.484
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -15983,7 +16967,10 @@
                   "date": "2021",
                   "value": 11103.5
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -16040,7 +17027,10 @@
                   "date": "2021",
                   "value": 130841.108
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -16097,7 +17087,10 @@
                   "date": "2021",
                   "value": 102.9
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -16146,7 +17139,10 @@
                   "date": "2019",
                   "value": 57.7
                 }
-              ]
+              ],
+              "obs_count": 10,
+              "earliest_date": "2010",
+              "latest_date": "2019"
             }
           ]
         },
@@ -16195,7 +17191,10 @@
                   "date": "2019",
                   "value": 9544.364
                 }
-              ]
+              ],
+              "obs_count": 10,
+              "earliest_date": "2010",
+              "latest_date": "2019"
             }
           ]
         },
@@ -16232,7 +17231,10 @@
                   "date": "2016",
                   "value": 124727.88
                 }
-              ]
+              ],
+              "obs_count": 7,
+              "earliest_date": "2010",
+              "latest_date": "2016"
             }
           ]
         },
@@ -16289,7 +17291,10 @@
                   "date": "2021",
                   "value": 84395.878
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -16346,7 +17351,10 @@
                   "date": "2021",
                   "value": 1090.75
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -16403,7 +17411,10 @@
                   "date": "2021",
                   "value": 54743.644
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -16448,7 +17459,10 @@
                   "date": "2018",
                   "value": 17235.434
                 }
-              ]
+              ],
+              "obs_count": 9,
+              "earliest_date": "2010",
+              "latest_date": "2018"
             }
           ]
         },
@@ -16505,7 +17519,10 @@
                   "date": "2021",
                   "value": 216173.336
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -16558,7 +17575,10 @@
                   "date": "2020",
                   "value": 16914.75
                 }
-              ]
+              ],
+              "obs_count": 11,
+              "earliest_date": "2010",
+              "latest_date": "2020"
             }
           ]
         },
@@ -16607,7 +17627,10 @@
                   "date": "2019",
                   "value": 3516.536
                 }
-              ]
+              ],
+              "obs_count": 10,
+              "earliest_date": "2010",
+              "latest_date": "2019"
             }
           ]
         },
@@ -16664,7 +17687,10 @@
                   "date": "2021",
                   "value": 116365.912
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -16693,7 +17719,10 @@
                   "date": "2014",
                   "value": 4381.25
                 }
-              ]
+              ],
+              "obs_count": 5,
+              "earliest_date": "2010",
+              "latest_date": "2014"
             }
           ]
         },
@@ -16742,7 +17771,10 @@
                   "date": "2019",
                   "value": 18233.3
                 }
-              ]
+              ],
+              "obs_count": 10,
+              "earliest_date": "2010",
+              "latest_date": "2019"
             }
           ]
         },
@@ -16799,7 +17831,10 @@
                   "date": "2021",
                   "value": 69847.25
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -16856,7 +17891,10 @@
                   "date": "2021",
                   "value": 1053474.768
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -16913,7 +17951,10 @@
                   "date": "2021",
                   "value": 150634.676
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -16970,7 +18011,10 @@
                   "date": "2021",
                   "value": 36833.912
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -17027,7 +18071,10 @@
                   "date": "2021",
                   "value": 120759.75
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -17060,7 +18107,10 @@
                   "date": "2015",
                   "value": 7433.572
                 }
-              ]
+              ],
+              "obs_count": 6,
+              "earliest_date": "2010",
+              "latest_date": "2015"
             }
           ]
         },
@@ -17073,7 +18123,10 @@
                   "date": "2010",
                   "value": 403.7
                 }
-              ]
+              ],
+              "obs_count": 1,
+              "earliest_date": "2010",
+              "latest_date": "2010"
             }
           ]
         },
@@ -17130,7 +18183,10 @@
                   "date": "2021",
                   "value": 25146.556
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -17159,7 +18215,10 @@
                   "date": "2014",
                   "value": 8388.5
                 }
-              ]
+              ],
+              "obs_count": 5,
+              "earliest_date": "2010",
+              "latest_date": "2014"
             }
           ]
         },
@@ -17216,7 +18275,10 @@
                   "date": "2021",
                   "value": 583.848
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -17273,7 +18335,10 @@
                   "date": "2021",
                   "value": 153206.75
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -17318,7 +18383,10 @@
                   "date": "2021",
                   "value": 26325.5
                 }
-              ]
+              ],
+              "obs_count": 9,
+              "earliest_date": "2013",
+              "latest_date": "2021"
             }
           ]
         },
@@ -17375,7 +18443,10 @@
                   "date": "2021",
                   "value": 3508.75
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -17432,7 +18503,10 @@
                   "date": "2021",
                   "value": 20565.5
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -17489,7 +18563,10 @@
                   "date": "2021",
                   "value": 40426.75
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -17546,7 +18623,10 @@
                   "date": "2021",
                   "value": 24957.25
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -17603,7 +18683,10 @@
                   "date": "2021",
                   "value": 54075.056
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -17660,7 +18743,10 @@
                   "date": "2021",
                   "value": 23295.75
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -17717,7 +18803,10 @@
                   "date": "2021",
                   "value": 32829
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -17774,7 +18863,10 @@
                   "date": "2021",
                   "value": 1273369.674
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -17795,7 +18887,10 @@
                   "date": "2012",
                   "value": 136.9
                 }
-              ]
+              ],
+              "obs_count": 3,
+              "earliest_date": "2010",
+              "latest_date": "2012"
             }
           ]
         },
@@ -17852,7 +18947,10 @@
                   "date": "2021",
                   "value": 167456.62
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -17889,7 +18987,10 @@
                   "date": "2016",
                   "value": 17
                 }
-              ]
+              ],
+              "obs_count": 7,
+              "earliest_date": "2010",
+              "latest_date": "2016"
             }
           ]
         },
@@ -17946,7 +19047,10 @@
                   "date": "2021",
                   "value": 532253.6
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -17979,7 +19083,10 @@
                   "date": "2015",
                   "value": 426549.944
                 }
-              ]
+              ],
+              "obs_count": 6,
+              "earliest_date": "2010",
+              "latest_date": "2015"
             }
           ]
         },
@@ -18036,7 +19143,10 @@
                   "date": "2021",
                   "value": 35267.226
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -18093,7 +19203,10 @@
                   "date": "2021",
                   "value": 73667.772
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -18150,7 +19263,10 @@
                   "date": "2021",
                   "value": 29594.588
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -18207,7 +19323,10 @@
                   "date": "2021",
                   "value": 38200
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -18244,7 +19363,10 @@
                   "date": "2016",
                   "value": 170.7
                 }
-              ]
+              ],
+              "obs_count": 7,
+              "earliest_date": "2010",
+              "latest_date": "2016"
             }
           ]
         },
@@ -18273,7 +19395,10 @@
                   "date": "2014",
                   "value": 12019.172
                 }
-              ]
+              ],
+              "obs_count": 5,
+              "earliest_date": "2010",
+              "latest_date": "2014"
             }
           ]
         },
@@ -18306,7 +19431,10 @@
                   "date": "2015",
                   "value": 0
                 }
-              ]
+              ],
+              "obs_count": 6,
+              "earliest_date": "2010",
+              "latest_date": "2015"
             }
           ]
         },
@@ -18363,7 +19491,10 @@
                   "date": "2021",
                   "value": 49978.112
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -18420,7 +19551,10 @@
                   "date": "2021",
                   "value": 6038424.346
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -18477,7 +19611,10 @@
                   "date": "2021",
                   "value": 111233.936
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -18502,7 +19639,10 @@
                   "date": "2014",
                   "value": 6250.75
                 }
-              ]
+              ],
+              "obs_count": 4,
+              "earliest_date": "2011",
+              "latest_date": "2014"
             }
           ]
         },
@@ -18559,7 +19699,10 @@
                   "date": "2021",
                   "value": 862052.158
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -18588,7 +19731,10 @@
                   "date": "2015",
                   "value": 3226.782
                 }
-              ]
+              ],
+              "obs_count": 5,
+              "earliest_date": "2011",
+              "latest_date": "2015"
             }
           ]
         },
@@ -18645,7 +19791,10 @@
                   "date": "2021",
                   "value": 69656.8
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -18686,7 +19835,10 @@
                   "date": "2017",
                   "value": 107595.544
                 }
-              ]
+              ],
+              "obs_count": 8,
+              "earliest_date": "2010",
+              "latest_date": "2017"
             }
           ]
         },
@@ -18707,7 +19859,10 @@
                   "date": "2012",
                   "value": 5305.88
                 }
-              ]
+              ],
+              "obs_count": 3,
+              "earliest_date": "2010",
+              "latest_date": "2012"
             }
           ]
         },
@@ -18764,7 +19919,10 @@
                   "date": "2021",
                   "value": 29996.39
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -18821,7 +19979,10 @@
                   "date": "2021",
                   "value": 167893.668
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -18850,7 +20011,10 @@
                   "date": "2014",
                   "value": 5707.914
                 }
-              ]
+              ],
+              "obs_count": 5,
+              "earliest_date": "2010",
+              "latest_date": "2014"
             }
           ]
         },
@@ -18887,7 +20051,10 @@
                   "date": "2021",
                   "value": 24263.308
                 }
-              ]
+              ],
+              "obs_count": 7,
+              "earliest_date": "2015",
+              "latest_date": "2021"
             }
           ]
         },
@@ -18944,7 +20111,10 @@
                   "date": "2021",
                   "value": 38059.656
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -19001,7 +20171,10 @@
                   "date": "2021",
                   "value": 1068989.018
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -19058,7 +20231,10 @@
                   "date": "2021",
                   "value": 1580205.138
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -19115,7 +20291,10 @@
                   "date": "2021",
                   "value": 223856.156
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -19172,7 +20351,10 @@
                   "date": "2021",
                   "value": 1459910.352
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -19229,7 +20411,10 @@
                   "date": "2021",
                   "value": 228775.488
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -19286,7 +20471,10 @@
                   "date": "2021",
                   "value": 16728.588
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -19343,7 +20531,10 @@
                   "date": "2021",
                   "value": 24730.856
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -19400,7 +20591,10 @@
                   "date": "2021",
                   "value": 127122.172
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -19433,7 +20627,10 @@
                   "date": "2015",
                   "value": 33914.072
                 }
-              ]
+              ],
+              "obs_count": 6,
+              "earliest_date": "2010",
+              "latest_date": "2015"
             }
           ]
         },
@@ -19462,7 +20659,10 @@
                   "date": "2014",
                   "value": 3643.5
                 }
-              ]
+              ],
+              "obs_count": 5,
+              "earliest_date": "2010",
+              "latest_date": "2014"
             }
           ]
         },
@@ -19503,7 +20703,10 @@
                   "date": "2021",
                   "value": 1949.5
                 }
-              ]
+              ],
+              "obs_count": 8,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -19560,7 +20763,10 @@
                   "date": "2021",
                   "value": 30595.5
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -19617,7 +20823,10 @@
                   "date": "2021",
                   "value": 60953.196
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -19674,7 +20883,10 @@
                   "date": "2021",
                   "value": 148918.5
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -19727,7 +20939,10 @@
                   "date": "2021",
                   "value": 54514.35
                 }
-              ]
+              ],
+              "obs_count": 11,
+              "earliest_date": "2011",
+              "latest_date": "2021"
             }
           ]
         },
@@ -19784,7 +20999,10 @@
                   "date": "2021",
                   "value": 82292.5
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -19841,7 +21059,10 @@
                   "date": "2021",
                   "value": 864937.544
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -19894,7 +21115,10 @@
                   "date": "2020",
                   "value": 93473
                 }
-              ]
+              ],
+              "obs_count": 11,
+              "earliest_date": "2010",
+              "latest_date": "2020"
             }
           ]
         },
@@ -19947,7 +21171,10 @@
                   "date": "2020",
                   "value": 126736
                 }
-              ]
+              ],
+              "obs_count": 11,
+              "earliest_date": "2010",
+              "latest_date": "2020"
             }
           ]
         },
@@ -20000,7 +21227,10 @@
                   "date": "2020",
                   "value": 0
                 }
-              ]
+              ],
+              "obs_count": 11,
+              "earliest_date": "2010",
+              "latest_date": "2020"
             }
           ]
         },
@@ -20029,7 +21259,10 @@
                   "date": "2014",
                   "value": 312830.872
                 }
-              ]
+              ],
+              "obs_count": 5,
+              "earliest_date": "2010",
+              "latest_date": "2014"
             }
           ]
         },
@@ -20086,7 +21319,10 @@
                   "date": "2021",
                   "value": 0.2
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -20099,7 +21335,10 @@
                   "date": "2010",
                   "value": 0
                 }
-              ]
+              ],
+              "obs_count": 1,
+              "earliest_date": "2010",
+              "latest_date": "2010"
             }
           ]
         },
@@ -20156,7 +21395,10 @@
                   "date": "2021",
                   "value": 362670.656
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -20181,7 +21423,10 @@
                   "date": "2013",
                   "value": 19778.276
                 }
-              ]
+              ],
+              "obs_count": 4,
+              "earliest_date": "2010",
+              "latest_date": "2013"
             }
           ]
         },
@@ -20238,7 +21483,10 @@
                   "date": "2021",
                   "value": 228459.504
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -20267,7 +21515,10 @@
                   "date": "2014",
                   "value": 10007.712
                 }
-              ]
+              ],
+              "obs_count": 5,
+              "earliest_date": "2010",
+              "latest_date": "2014"
             }
           ]
         },
@@ -20324,7 +21575,10 @@
                   "date": "2021",
                   "value": 265936.664
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -20381,7 +21635,10 @@
                   "date": "2021",
                   "value": 2754771.912
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -20438,7 +21695,10 @@
                   "date": "2021",
                   "value": 82891.5
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -20475,7 +21735,10 @@
                   "date": "2016",
                   "value": 4.5
                 }
-              ]
+              ],
+              "obs_count": 7,
+              "earliest_date": "2010",
+              "latest_date": "2016"
             }
           ]
         },
@@ -20488,7 +21751,10 @@
                   "date": "2010",
                   "value": 72243.576
                 }
-              ]
+              ],
+              "obs_count": 1,
+              "earliest_date": "2010",
+              "latest_date": "2010"
             }
           ]
         },
@@ -20545,7 +21811,10 @@
                   "date": "2021",
                   "value": 18730.924
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -20570,7 +21839,10 @@
                   "date": "2013",
                   "value": 194606.968
                 }
-              ]
+              ],
+              "obs_count": 4,
+              "earliest_date": "2010",
+              "latest_date": "2013"
             }
           ]
         },
@@ -20627,7 +21899,10 @@
                   "date": "2021",
                   "value": 257010.766
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -20684,7 +21959,10 @@
                   "date": "2021",
                   "value": 45197.5
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -20741,7 +22019,10 @@
                   "date": "2021",
                   "value": 52151.004
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -20798,7 +22079,10 @@
                   "date": "2021",
                   "value": 1363628.348
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -20847,7 +22131,10 @@
                   "date": "2021",
                   "value": 36353.568
                 }
-              ]
+              ],
+              "obs_count": 10,
+              "earliest_date": "2012",
+              "latest_date": "2021"
             }
           ]
         },
@@ -20904,7 +22191,10 @@
                   "date": "2021",
                   "value": 35488.416
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -20929,7 +22219,10 @@
                   "date": "2013",
                   "value": 3.3
                 }
-              ]
+              ],
+              "obs_count": 4,
+              "earliest_date": "2010",
+              "latest_date": "2013"
             }
           ]
         },
@@ -20986,7 +22279,10 @@
                   "date": "2021",
                   "value": 3419.75
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -21015,7 +22311,10 @@
                   "date": "2014",
                   "value": 13295.714
                 }
-              ]
+              ],
+              "obs_count": 5,
+              "earliest_date": "2010",
+              "latest_date": "2014"
             }
           ]
         },
@@ -21072,7 +22371,10 @@
                   "date": "2021",
                   "value": 45529.25
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -21097,7 +22399,10 @@
                   "date": "2013",
                   "value": 1.5
                 }
-              ]
+              ],
+              "obs_count": 4,
+              "earliest_date": "2010",
+              "latest_date": "2013"
             }
           ]
         },
@@ -21154,7 +22459,10 @@
                   "date": "2021",
                   "value": 29722.67
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -21187,7 +22495,10 @@
                   "date": "2015",
                   "value": 3563.5
                 }
-              ]
+              ],
+              "obs_count": 6,
+              "earliest_date": "2010",
+              "latest_date": "2015"
             }
           ]
         },
@@ -21244,7 +22555,10 @@
                   "date": "2021",
                   "value": 86373.942
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -21301,7 +22615,10 @@
                   "date": "2021",
                   "value": 116148.5
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -21358,7 +22675,10 @@
                   "date": "2021",
                   "value": 119081.15
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -21415,7 +22735,10 @@
                   "date": "2021",
                   "value": 153518.76
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -21472,7 +22795,10 @@
                   "date": "2021",
                   "value": 51915.25
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -21529,7 +22855,10 @@
                   "date": "2021",
                   "value": 12493
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -21586,7 +22915,10 @@
                   "date": "2021",
                   "value": 22617.916
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -21643,7 +22975,10 @@
                   "date": "2021",
                   "value": 13399.4
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -21700,7 +23035,10 @@
                   "date": "2021",
                   "value": 30230.2
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -21757,7 +23095,10 @@
                   "date": "2021",
                   "value": 33911.972
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -21814,7 +23155,10 @@
                   "date": "2021",
                   "value": 207721.996
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -21871,7 +23215,10 @@
                   "date": "2021",
                   "value": 89819.25
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -21928,7 +23275,10 @@
                   "date": "2021",
                   "value": 62255.524
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -21985,7 +23335,10 @@
                   "date": "2021",
                   "value": 5798.75
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -22042,7 +23395,10 @@
                   "date": "2021",
                   "value": 63721.45
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -22099,7 +23455,10 @@
                   "date": "2021",
                   "value": 37709.5
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -22156,7 +23515,10 @@
                   "date": "2021",
                   "value": 21722.8
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -22213,7 +23575,10 @@
                   "date": "2021",
                   "value": 122312.486
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -22270,7 +23635,10 @@
                   "date": "2021",
                   "value": 1423755.26
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -22327,7 +23695,10 @@
                   "date": "2021",
                   "value": 16119.596
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -22360,7 +23731,10 @@
                   "date": "2015",
                   "value": 870823.222
                 }
-              ]
+              ],
+              "obs_count": 6,
+              "earliest_date": "2010",
+              "latest_date": "2015"
             }
           ]
         },
@@ -22417,7 +23791,10 @@
                   "date": "2021",
                   "value": 3430789.864
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -22446,7 +23823,10 @@
                   "date": "2014",
                   "value": 10946
                 }
-              ]
+              ],
+              "obs_count": 5,
+              "earliest_date": "2010",
+              "latest_date": "2014"
             }
           ]
         },
@@ -22503,7 +23883,10 @@
                   "date": "2021",
                   "value": 121002
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -22532,7 +23915,10 @@
                   "date": "2014",
                   "value": 11271.05
                 }
-              ]
+              ],
+              "obs_count": 5,
+              "earliest_date": "2010",
+              "latest_date": "2014"
             }
           ]
         },
@@ -22557,7 +23943,10 @@
                   "date": "2015",
                   "value": 5996.85
                 }
-              ]
+              ],
+              "obs_count": 4,
+              "earliest_date": "2012",
+              "latest_date": "2015"
             }
           ]
         },
@@ -22602,7 +23991,10 @@
                   "date": "2021",
                   "value": 1104403.644
                 }
-              ]
+              ],
+              "obs_count": 9,
+              "earliest_date": "2011",
+              "latest_date": "2021"
             }
           ]
         },
@@ -22655,7 +24047,10 @@
                   "date": "2021",
                   "value": 42703
                 }
-              ]
+              ],
+              "obs_count": 11,
+              "earliest_date": "2011",
+              "latest_date": "2021"
             }
           ]
         },
@@ -22696,7 +24091,10 @@
                   "date": "2021",
                   "value": 140471.282
                 }
-              ]
+              ],
+              "obs_count": 8,
+              "earliest_date": "2014",
+              "latest_date": "2021"
             }
           ]
         },
@@ -22745,7 +24143,10 @@
                   "date": "2021",
                   "value": 14729.818
                 }
-              ]
+              ],
+              "obs_count": 10,
+              "earliest_date": "2012",
+              "latest_date": "2021"
             }
           ]
         },
@@ -22794,7 +24195,10 @@
                   "date": "2021",
                   "value": 14434.856
                 }
-              ]
+              ],
+              "obs_count": 10,
+              "earliest_date": "2012",
+              "latest_date": "2021"
             }
           ]
         },
@@ -22847,7 +24251,10 @@
                   "date": "2021",
                   "value": 3528.948
                 }
-              ]
+              ],
+              "obs_count": 11,
+              "earliest_date": "2011",
+              "latest_date": "2021"
             }
           ]
         },
@@ -22876,7 +24283,10 @@
                   "date": "2015",
                   "value": 22425.012
                 }
-              ]
+              ],
+              "obs_count": 5,
+              "earliest_date": "2011",
+              "latest_date": "2015"
             }
           ]
         },
@@ -22905,7 +24315,10 @@
                   "date": "2015",
                   "value": 210887.902
                 }
-              ]
+              ],
+              "obs_count": 5,
+              "earliest_date": "2011",
+              "latest_date": "2015"
             }
           ]
         },
@@ -22954,7 +24367,10 @@
                   "date": "2020",
                   "value": 12725.082
                 }
-              ]
+              ],
+              "obs_count": 10,
+              "earliest_date": "2011",
+              "latest_date": "2020"
             }
           ]
         },
@@ -23011,7 +24427,10 @@
                   "date": "2021",
                   "value": 2757315.65
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -23056,7 +24475,10 @@
                   "date": "2019",
                   "value": 1213.7
                 }
-              ]
+              ],
+              "obs_count": 9,
+              "earliest_date": "2011",
+              "latest_date": "2019"
             }
           ]
         },
@@ -23081,7 +24503,10 @@
                   "date": "2014",
                   "value": 37670.362
                 }
-              ]
+              ],
+              "obs_count": 4,
+              "earliest_date": "2011",
+              "latest_date": "2014"
             }
           ]
         },
@@ -23110,7 +24535,10 @@
                   "date": "2015",
                   "value": 3122.988
                 }
-              ]
+              ],
+              "obs_count": 5,
+              "earliest_date": "2011",
+              "latest_date": "2015"
             }
           ]
         },
@@ -23135,7 +24563,10 @@
                   "date": "2015",
                   "value": 14176.15
                 }
-              ]
+              ],
+              "obs_count": 4,
+              "earliest_date": "2012",
+              "latest_date": "2015"
             }
           ]
         },
@@ -23164,7 +24595,10 @@
                   "date": "2015",
                   "value": 93485.33
                 }
-              ]
+              ],
+              "obs_count": 5,
+              "earliest_date": "2011",
+              "latest_date": "2015"
             }
           ]
         },
@@ -23193,7 +24627,10 @@
                   "date": "2015",
                   "value": 27287.958
                 }
-              ]
+              ],
+              "obs_count": 5,
+              "earliest_date": "2011",
+              "latest_date": "2015"
             }
           ]
         },
@@ -23238,7 +24675,10 @@
                   "date": "2019",
                   "value": 18924.386
                 }
-              ]
+              ],
+              "obs_count": 9,
+              "earliest_date": "2011",
+              "latest_date": "2019"
             }
           ]
         },
@@ -23291,7 +24731,10 @@
                   "date": "2021",
                   "value": 276223.752
                 }
-              ]
+              ],
+              "obs_count": 11,
+              "earliest_date": "2011",
+              "latest_date": "2021"
             }
           ]
         },
@@ -23324,7 +24767,10 @@
                   "date": "2016",
                   "value": 17822.408
                 }
-              ]
+              ],
+              "obs_count": 6,
+              "earliest_date": "2011",
+              "latest_date": "2016"
             }
           ]
         },
@@ -23353,7 +24799,10 @@
                   "date": "2015",
                   "value": 45551.832
                 }
-              ]
+              ],
+              "obs_count": 5,
+              "earliest_date": "2011",
+              "latest_date": "2015"
             }
           ]
         },
@@ -23406,7 +24855,10 @@
                   "date": "2021",
                   "value": 9559.3332
                 }
-              ]
+              ],
+              "obs_count": 11,
+              "earliest_date": "2011",
+              "latest_date": "2021"
             }
           ]
         },
@@ -23459,7 +24911,10 @@
                   "date": "2021",
                   "value": 19493.2248
                 }
-              ]
+              ],
+              "obs_count": 11,
+              "earliest_date": "2011",
+              "latest_date": "2021"
             }
           ]
         },
@@ -23512,7 +24967,10 @@
                   "date": "2021",
                   "value": 30834.984
                 }
-              ]
+              ],
+              "obs_count": 11,
+              "earliest_date": "2011",
+              "latest_date": "2021"
             }
           ]
         },
@@ -23541,7 +24999,10 @@
                   "date": "2015",
                   "value": 8547.042
                 }
-              ]
+              ],
+              "obs_count": 5,
+              "earliest_date": "2011",
+              "latest_date": "2015"
             }
           ]
         },
@@ -23594,7 +25055,10 @@
                   "date": "2021",
                   "value": 45818.1276
                 }
-              ]
+              ],
+              "obs_count": 11,
+              "earliest_date": "2011",
+              "latest_date": "2021"
             }
           ]
         },
@@ -23623,7 +25087,10 @@
                   "date": "2015",
                   "value": 15645.36
                 }
-              ]
+              ],
+              "obs_count": 5,
+              "earliest_date": "2011",
+              "latest_date": "2015"
             }
           ]
         },
@@ -23676,7 +25143,10 @@
                   "date": "2021",
                   "value": 14492.756591
                 }
-              ]
+              ],
+              "obs_count": 11,
+              "earliest_date": "2011",
+              "latest_date": "2021"
             }
           ]
         },
@@ -23729,7 +25199,10 @@
                   "date": "2021",
                   "value": 26436
                 }
-              ]
+              ],
+              "obs_count": 11,
+              "earliest_date": "2011",
+              "latest_date": "2021"
             }
           ]
         },
@@ -23770,7 +25243,10 @@
                   "date": "2021",
                   "value": 57457.884
                 }
-              ]
+              ],
+              "obs_count": 8,
+              "earliest_date": "2011",
+              "latest_date": "2021"
             }
           ]
         },
@@ -23823,7 +25299,10 @@
                   "date": "2021",
                   "value": 20503.768182
                 }
-              ]
+              ],
+              "obs_count": 11,
+              "earliest_date": "2011",
+              "latest_date": "2021"
             }
           ]
         },
@@ -23852,7 +25331,10 @@
                   "date": "2015",
                   "value": 5342.33024
                 }
-              ]
+              ],
+              "obs_count": 5,
+              "earliest_date": "2011",
+              "latest_date": "2015"
             }
           ]
         },
@@ -23905,7 +25387,10 @@
                   "date": "2020",
                   "value": 62770.664
                 }
-              ]
+              ],
+              "obs_count": 11,
+              "earliest_date": "2010",
+              "latest_date": "2020"
             }
           ]
         },
@@ -23958,7 +25443,10 @@
                   "date": "2021",
                   "value": 1243.1016
                 }
-              ]
+              ],
+              "obs_count": 11,
+              "earliest_date": "2011",
+              "latest_date": "2021"
             }
           ]
         },
@@ -24011,7 +25499,10 @@
                   "date": "2021",
                   "value": 97337.0118229
                 }
-              ]
+              ],
+              "obs_count": 11,
+              "earliest_date": "2011",
+              "latest_date": "2021"
             }
           ]
         },
@@ -24028,7 +25519,10 @@
                   "date": "2014",
                   "value": 0
                 }
-              ]
+              ],
+              "obs_count": 2,
+              "earliest_date": "2011",
+              "latest_date": "2014"
             }
           ]
         },
@@ -24085,7 +25579,10 @@
                   "date": "2021",
                   "value": 7000
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -24122,7 +25619,10 @@
                   "date": "2017",
                   "value": 2995.92
                 }
-              ]
+              ],
+              "obs_count": 7,
+              "earliest_date": "2011",
+              "latest_date": "2017"
             }
           ]
         },
@@ -24147,7 +25647,10 @@
                   "date": "2014",
                   "value": 13351.230788
                 }
-              ]
+              ],
+              "obs_count": 4,
+              "earliest_date": "2011",
+              "latest_date": "2014"
             }
           ]
         },
@@ -24200,7 +25703,10 @@
                   "date": "2021",
                   "value": 514.748
                 }
-              ]
+              ],
+              "obs_count": 11,
+              "earliest_date": "2011",
+              "latest_date": "2021"
             }
           ]
         },
@@ -24249,7 +25755,10 @@
                   "date": "2020",
                   "value": 0.1
                 }
-              ]
+              ],
+              "obs_count": 10,
+              "earliest_date": "2011",
+              "latest_date": "2020"
             }
           ]
         },
@@ -24270,7 +25779,10 @@
                   "date": "2013",
                   "value": 1980.945
                 }
-              ]
+              ],
+              "obs_count": 3,
+              "earliest_date": "2011",
+              "latest_date": "2013"
             }
           ]
         },
@@ -24315,7 +25827,10 @@
                   "date": "2021",
                   "value": 126333.98
                 }
-              ]
+              ],
+              "obs_count": 9,
+              "earliest_date": "2013",
+              "latest_date": "2021"
             }
           ]
         },
@@ -24348,7 +25863,10 @@
                   "date": "2017",
                   "value": 7110.424
                 }
-              ]
+              ],
+              "obs_count": 6,
+              "earliest_date": "2012",
+              "latest_date": "2017"
             }
           ]
         },
@@ -24365,7 +25883,10 @@
                   "date": "2013",
                   "value": 45967.776
                 }
-              ]
+              ],
+              "obs_count": 2,
+              "earliest_date": "2012",
+              "latest_date": "2013"
             }
           ]
         },
@@ -24414,7 +25935,10 @@
                   "date": "2021",
                   "value": 27896.408
                 }
-              ]
+              ],
+              "obs_count": 10,
+              "earliest_date": "2012",
+              "latest_date": "2021"
             }
           ]
         },
@@ -24451,7 +25975,10 @@
                   "date": "2018",
                   "value": 82353.34
                 }
-              ]
+              ],
+              "obs_count": 7,
+              "earliest_date": "2012",
+              "latest_date": "2018"
             }
           ]
         },
@@ -24492,7 +26019,10 @@
                   "date": "2018",
                   "value": 16768.736
                 }
-              ]
+              ],
+              "obs_count": 8,
+              "earliest_date": "2011",
+              "latest_date": "2018"
             }
           ]
         },
@@ -24541,7 +26071,10 @@
                   "date": "2021",
                   "value": 145794.364
                 }
-              ]
+              ],
+              "obs_count": 10,
+              "earliest_date": "2012",
+              "latest_date": "2021"
             }
           ]
         },
@@ -24586,7 +26119,10 @@
                   "date": "2021",
                   "value": 62309.21
                 }
-              ]
+              ],
+              "obs_count": 9,
+              "earliest_date": "2013",
+              "latest_date": "2021"
             }
           ]
         },
@@ -24631,7 +26167,10 @@
                   "date": "2021",
                   "value": 653967.98
                 }
-              ]
+              ],
+              "obs_count": 9,
+              "earliest_date": "2013",
+              "latest_date": "2021"
             }
           ]
         },
@@ -24688,7 +26227,10 @@
                   "date": "2021",
                   "value": 14446.332
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -24717,7 +26259,10 @@
                   "date": "2016",
                   "value": 9465.986
                 }
-              ]
+              ],
+              "obs_count": 5,
+              "earliest_date": "2012",
+              "latest_date": "2016"
             }
           ]
         },
@@ -24762,7 +26307,10 @@
                   "date": "2021",
                   "value": 473029.144
                 }
-              ]
+              ],
+              "obs_count": 9,
+              "earliest_date": "2013",
+              "latest_date": "2021"
             }
           ]
         },
@@ -24807,7 +26355,10 @@
                   "date": "2021",
                   "value": 319547.764
                 }
-              ]
+              ],
+              "obs_count": 9,
+              "earliest_date": "2013",
+              "latest_date": "2021"
             }
           ]
         },
@@ -24852,7 +26403,10 @@
                   "date": "2021",
                   "value": 36737.512
                 }
-              ]
+              ],
+              "obs_count": 9,
+              "earliest_date": "2013",
+              "latest_date": "2021"
             }
           ]
         },
@@ -24873,7 +26427,10 @@
                   "date": "2015",
                   "value": 0
                 }
-              ]
+              ],
+              "obs_count": 3,
+              "earliest_date": "2013",
+              "latest_date": "2015"
             }
           ]
         },
@@ -24914,7 +26471,10 @@
                   "date": "2021",
                   "value": 262.7
                 }
-              ]
+              ],
+              "obs_count": 8,
+              "earliest_date": "2013",
+              "latest_date": "2021"
             }
           ]
         },
@@ -24959,7 +26519,10 @@
                   "date": "2021",
                   "value": 74613.772
                 }
-              ]
+              ],
+              "obs_count": 9,
+              "earliest_date": "2013",
+              "latest_date": "2021"
             }
           ]
         },
@@ -25004,7 +26567,10 @@
                   "date": "2021",
                   "value": 37214.76
                 }
-              ]
+              ],
+              "obs_count": 9,
+              "earliest_date": "2013",
+              "latest_date": "2021"
             }
           ]
         },
@@ -25029,7 +26595,10 @@
                   "date": "2016",
                   "value": 6991.224
                 }
-              ]
+              ],
+              "obs_count": 4,
+              "earliest_date": "2013",
+              "latest_date": "2016"
             }
           ]
         },
@@ -25074,7 +26643,10 @@
                   "date": "2021",
                   "value": 37113.86
                 }
-              ]
+              ],
+              "obs_count": 9,
+              "earliest_date": "2013",
+              "latest_date": "2021"
             }
           ]
         },
@@ -25111,7 +26683,10 @@
                   "date": "2021",
                   "value": 344824.926
                 }
-              ]
+              ],
+              "obs_count": 7,
+              "earliest_date": "2015",
+              "latest_date": "2021"
             }
           ]
         },
@@ -25156,7 +26731,10 @@
                   "date": "2021",
                   "value": 158607.612
                 }
-              ]
+              ],
+              "obs_count": 9,
+              "earliest_date": "2013",
+              "latest_date": "2021"
             }
           ]
         },
@@ -25209,7 +26787,10 @@
                   "date": "2020",
                   "value": 4036.084
                 }
-              ]
+              ],
+              "obs_count": 11,
+              "earliest_date": "2010",
+              "latest_date": "2020"
             }
           ]
         },
@@ -25242,7 +26823,10 @@
                   "date": "2016",
                   "value": 12670.152
                 }
-              ]
+              ],
+              "obs_count": 6,
+              "earliest_date": "2011",
+              "latest_date": "2016"
             }
           ]
         },
@@ -25299,7 +26883,10 @@
                   "date": "2021",
                   "value": 19333.5
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -25344,7 +26931,10 @@
                   "date": "2021",
                   "value": 17041.236
                 }
-              ]
+              ],
+              "obs_count": 9,
+              "earliest_date": "2013",
+              "latest_date": "2021"
             }
           ]
         },
@@ -25389,7 +26979,10 @@
                   "date": "2021",
                   "value": 40381.348
                 }
-              ]
+              ],
+              "obs_count": 9,
+              "earliest_date": "2013",
+              "latest_date": "2021"
             }
           ]
         },
@@ -25446,7 +27039,10 @@
                   "date": "2021",
                   "value": 293641.5
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -25487,7 +27083,10 @@
                   "date": "2021",
                   "value": 34094.372
                 }
-              ]
+              ],
+              "obs_count": 8,
+              "earliest_date": "2014",
+              "latest_date": "2021"
             }
           ]
         },
@@ -25528,7 +27127,10 @@
                   "date": "2021",
                   "value": 17030.436
                 }
-              ]
+              ],
+              "obs_count": 8,
+              "earliest_date": "2014",
+              "latest_date": "2021"
             }
           ]
         },
@@ -25581,7 +27183,10 @@
                   "date": "2021",
                   "value": 26188.31
                 }
-              ]
+              ],
+              "obs_count": 11,
+              "earliest_date": "2011",
+              "latest_date": "2021"
             }
           ]
         },
@@ -25594,7 +27199,10 @@
                   "date": "2014",
                   "value": 11.4
                 }
-              ]
+              ],
+              "obs_count": 1,
+              "earliest_date": "2014",
+              "latest_date": "2014"
             }
           ]
         },
@@ -25635,7 +27243,10 @@
                   "date": "2021",
                   "value": 0.8
                 }
-              ]
+              ],
+              "obs_count": 8,
+              "earliest_date": "2014",
+              "latest_date": "2021"
             }
           ]
         },
@@ -25676,7 +27287,10 @@
                   "date": "2021",
                   "value": 17272.5
                 }
-              ]
+              ],
+              "obs_count": 8,
+              "earliest_date": "2014",
+              "latest_date": "2021"
             }
           ]
         },
@@ -25717,7 +27331,10 @@
                   "date": "2021",
                   "value": 30281.062
                 }
-              ]
+              ],
+              "obs_count": 8,
+              "earliest_date": "2014",
+              "latest_date": "2021"
             }
           ]
         },
@@ -25774,7 +27391,10 @@
                   "date": "2021",
                   "value": 10852.75
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -25815,7 +27435,10 @@
                   "date": "2021",
                   "value": 3036
                 }
-              ]
+              ],
+              "obs_count": 8,
+              "earliest_date": "2014",
+              "latest_date": "2021"
             }
           ]
         },
@@ -25860,7 +27483,10 @@
                   "date": "2021",
                   "value": 39715.748
                 }
-              ]
+              ],
+              "obs_count": 9,
+              "earliest_date": "2013",
+              "latest_date": "2021"
             }
           ]
         },
@@ -25893,7 +27519,10 @@
                   "date": "2016",
                   "value": 13056.391482
                 }
-              ]
+              ],
+              "obs_count": 6,
+              "earliest_date": "2011",
+              "latest_date": "2016"
             }
           ]
         },
@@ -25934,7 +27563,10 @@
                   "date": "2021",
                   "value": 8037.772
                 }
-              ]
+              ],
+              "obs_count": 8,
+              "earliest_date": "2014",
+              "latest_date": "2021"
             }
           ]
         },
@@ -25967,7 +27599,10 @@
                   "date": "2016",
                   "value": 28428.488
                 }
-              ]
+              ],
+              "obs_count": 6,
+              "earliest_date": "2011",
+              "latest_date": "2016"
             }
           ]
         },
@@ -25996,7 +27631,10 @@
                   "date": "2015",
                   "value": 222.1902
                 }
-              ]
+              ],
+              "obs_count": 5,
+              "earliest_date": "2011",
+              "latest_date": "2015"
             }
           ]
         },
@@ -26045,7 +27683,10 @@
                   "date": "2021",
                   "value": 74282.456
                 }
-              ]
+              ],
+              "obs_count": 10,
+              "earliest_date": "2012",
+              "latest_date": "2021"
             }
           ]
         },
@@ -26098,7 +27739,10 @@
                   "date": "2021",
                   "value": 27550.796
                 }
-              ]
+              ],
+              "obs_count": 11,
+              "earliest_date": "2011",
+              "latest_date": "2021"
             }
           ]
         },
@@ -26155,7 +27799,10 @@
                   "date": "2021",
                   "value": 23874.56
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -26200,7 +27847,10 @@
                   "date": "2021",
                   "value": 22558.51
                 }
-              ]
+              ],
+              "obs_count": 9,
+              "earliest_date": "2013",
+              "latest_date": "2021"
             }
           ]
         },
@@ -26257,7 +27907,10 @@
                   "date": "2021",
                   "value": 31320.032
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         },
@@ -26290,7 +27943,10 @@
                   "date": "2021",
                   "value": 1909206.128
                 }
-              ]
+              ],
+              "obs_count": 6,
+              "earliest_date": "2016",
+              "latest_date": "2021"
             }
           ]
         },
@@ -26323,7 +27979,10 @@
                   "date": "2021",
                   "value": 131606.078
                 }
-              ]
+              ],
+              "obs_count": 6,
+              "earliest_date": "2016",
+              "latest_date": "2021"
             }
           ]
         },
@@ -26344,7 +28003,10 @@
                   "date": "2018",
                   "value": 3564.138
                 }
-              ]
+              ],
+              "obs_count": 3,
+              "earliest_date": "2016",
+              "latest_date": "2018"
             }
           ]
         },
@@ -26377,7 +28039,10 @@
                   "date": "2021",
                   "value": 24141.332
                 }
-              ]
+              ],
+              "obs_count": 6,
+              "earliest_date": "2016",
+              "latest_date": "2021"
             }
           ]
         },
@@ -26410,7 +28075,10 @@
                   "date": "2021",
                   "value": 28852.492
                 }
-              ]
+              ],
+              "obs_count": 6,
+              "earliest_date": "2016",
+              "latest_date": "2021"
             }
           ]
         },
@@ -26443,7 +28111,10 @@
                   "date": "2021",
                   "value": 840746.312
                 }
-              ]
+              ],
+              "obs_count": 6,
+              "earliest_date": "2016",
+              "latest_date": "2021"
             }
           ]
         },
@@ -26476,7 +28147,10 @@
                   "date": "2021",
                   "value": 22883.674
                 }
-              ]
+              ],
+              "obs_count": 6,
+              "earliest_date": "2016",
+              "latest_date": "2021"
             }
           ]
         },
@@ -26509,7 +28183,10 @@
                   "date": "2021",
                   "value": 216501.968
                 }
-              ]
+              ],
+              "obs_count": 6,
+              "earliest_date": "2016",
+              "latest_date": "2021"
             }
           ]
         },
@@ -26542,7 +28219,10 @@
                   "date": "2021",
                   "value": 56451.546
                 }
-              ]
+              ],
+              "obs_count": 6,
+              "earliest_date": "2016",
+              "latest_date": "2021"
             }
           ]
         },
@@ -26575,7 +28255,10 @@
                   "date": "2021",
                   "value": 2411.6
                 }
-              ]
+              ],
+              "obs_count": 6,
+              "earliest_date": "2016",
+              "latest_date": "2021"
             }
           ]
         },
@@ -26608,7 +28291,10 @@
                   "date": "2021",
                   "value": 58702.862
                 }
-              ]
+              ],
+              "obs_count": 6,
+              "earliest_date": "2016",
+              "latest_date": "2021"
             }
           ]
         },
@@ -26641,7 +28327,10 @@
                   "date": "2021",
                   "value": 1113776.736
                 }
-              ]
+              ],
+              "obs_count": 6,
+              "earliest_date": "2016",
+              "latest_date": "2021"
             }
           ]
         },
@@ -26674,7 +28363,10 @@
                   "date": "2021",
                   "value": 106613.108
                 }
-              ]
+              ],
+              "obs_count": 6,
+              "earliest_date": "2016",
+              "latest_date": "2021"
             }
           ]
         },
@@ -26707,7 +28399,10 @@
                   "date": "2021",
                   "value": 650214.51
                 }
-              ]
+              ],
+              "obs_count": 6,
+              "earliest_date": "2016",
+              "latest_date": "2021"
             }
           ]
         },
@@ -26740,7 +28435,10 @@
                   "date": "2021",
                   "value": 39889.952
                 }
-              ]
+              ],
+              "obs_count": 6,
+              "earliest_date": "2016",
+              "latest_date": "2021"
             }
           ]
         },
@@ -26773,7 +28471,10 @@
                   "date": "2021",
                   "value": 31542.332
                 }
-              ]
+              ],
+              "obs_count": 6,
+              "earliest_date": "2016",
+              "latest_date": "2021"
             }
           ]
         },
@@ -26806,7 +28507,10 @@
                   "date": "2021",
                   "value": 20957.372
                 }
-              ]
+              ],
+              "obs_count": 6,
+              "earliest_date": "2016",
+              "latest_date": "2021"
             }
           ]
         },
@@ -26839,7 +28543,10 @@
                   "date": "2021",
                   "value": 27182.68
                 }
-              ]
+              ],
+              "obs_count": 6,
+              "earliest_date": "2016",
+              "latest_date": "2021"
             }
           ]
         },
@@ -26872,7 +28579,10 @@
                   "date": "2021",
                   "value": 310600.178
                 }
-              ]
+              ],
+              "obs_count": 6,
+              "earliest_date": "2016",
+              "latest_date": "2021"
             }
           ]
         },
@@ -26901,7 +28611,10 @@
                   "date": "2021",
                   "value": 26681.8
                 }
-              ]
+              ],
+              "obs_count": 5,
+              "earliest_date": "2017",
+              "latest_date": "2021"
             }
           ]
         },
@@ -26922,7 +28635,10 @@
                   "date": "2019",
                   "value": 19423.076
                 }
-              ]
+              ],
+              "obs_count": 3,
+              "earliest_date": "2017",
+              "latest_date": "2019"
             }
           ]
         },
@@ -26951,7 +28667,10 @@
                   "date": "2021",
                   "value": 118447.404
                 }
-              ]
+              ],
+              "obs_count": 5,
+              "earliest_date": "2017",
+              "latest_date": "2021"
             }
           ]
         },
@@ -26980,7 +28699,10 @@
                   "date": "2021",
                   "value": 173.5
                 }
-              ]
+              ],
+              "obs_count": 5,
+              "earliest_date": "2017",
+              "latest_date": "2021"
             }
           ]
         },
@@ -27005,7 +28727,10 @@
                   "date": "2021",
                   "value": 39609.8
                 }
-              ]
+              ],
+              "obs_count": 4,
+              "earliest_date": "2018",
+              "latest_date": "2021"
             }
           ]
         },
@@ -27030,7 +28755,10 @@
                   "date": "2021",
                   "value": 241354.604
                 }
-              ]
+              ],
+              "obs_count": 4,
+              "earliest_date": "2018",
+              "latest_date": "2021"
             }
           ]
         },
@@ -27059,7 +28787,10 @@
                   "date": "2021",
                   "value": 26138.152
                 }
-              ]
+              ],
+              "obs_count": 5,
+              "earliest_date": "2017",
+              "latest_date": "2021"
             }
           ]
         },
@@ -27080,7 +28811,10 @@
                   "date": "2021",
                   "value": 56401.372
                 }
-              ]
+              ],
+              "obs_count": 3,
+              "earliest_date": "2019",
+              "latest_date": "2021"
             }
           ]
         }

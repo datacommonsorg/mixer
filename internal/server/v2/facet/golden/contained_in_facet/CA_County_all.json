@@ -5,25 +5,45 @@
         "": {
           "ordered_facets": [
             {
-              "facet_id": "1145703171"
+              "facet_id": "2176550201",
+              "obs_count": 58,
+              "earliest_date": "1970",
+              "latest_date": "2021"
             },
             {
-              "facet_id": "1541763368"
+              "facet_id": "1145703171",
+              "obs_count": 58,
+              "latest_date": "2021"
             },
             {
-              "facet_id": "1964317807"
+              "facet_id": "1541763368",
+              "obs_count": 58,
+              "latest_date": "2020"
             },
             {
-              "facet_id": "2517965213"
+              "facet_id": "1964317807",
+              "obs_count": 58,
+              "latest_date": "2021"
             },
             {
-              "facet_id": "1226172227"
+              "facet_id": "2517965213",
+              "obs_count": 56,
+              "latest_date": "2019"
             },
             {
-              "facet_id": "3114843463"
+              "facet_id": "1226172227",
+              "obs_count": 41,
+              "latest_date": "2019"
             },
             {
-              "facet_id": "2458695583"
+              "facet_id": "3114843463",
+              "obs_count": 57,
+              "latest_date": "2014"
+            },
+            {
+              "facet_id": "2458695583",
+              "obs_count": 58,
+              "latest_date": "2015"
             }
           ]
         }
@@ -34,10 +54,14 @@
         "": {
           "ordered_facets": [
             {
-              "facet_id": "3795540742"
+              "facet_id": "3795540742",
+              "obs_count": 58,
+              "latest_date": "2021"
             },
             {
-              "facet_id": "815809675"
+              "facet_id": "815809675",
+              "obs_count": 58,
+              "latest_date": "2021"
             }
           ]
         }

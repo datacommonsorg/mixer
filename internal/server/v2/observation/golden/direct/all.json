@@ -135,7 +135,10 @@
                   "date": "2021",
                   "value": 52880
                 }
-              ]
+              ],
+              "obs_count": 32,
+              "earliest_date": "1990",
+              "latest_date": "2021"
             }
           ]
         },
@@ -272,7 +275,10 @@
                   "date": "2021",
                   "value": 71130
                 }
-              ]
+              ],
+              "obs_count": 32,
+              "earliest_date": "1990",
+              "latest_date": "2021"
             }
           ]
         },
@@ -409,7 +415,10 @@
                   "date": "2019",
                   "value": 4405511000000
                 }
-              ]
+              ],
+              "obs_count": 30,
+              "earliest_date": "1990",
+              "latest_date": "2019"
             },
             {
               "facet_id": "2392525955",
@@ -494,7 +503,10 @@
                   "date": "2020",
                   "value": 4009084999080
                 }
-              ]
+              ],
+              "obs_count": 20,
+              "earliest_date": "2001",
+              "latest_date": "2020"
             }
           ]
         },
@@ -584,7 +596,10 @@
                   "date": "2020",
                   "value": 194110262920
                 }
-              ]
+              ],
+              "obs_count": 20,
+              "earliest_date": "2001",
+              "latest_date": "2020"
             }
           ]
         },
@@ -647,7 +662,10 @@
                   "date": "2019",
                   "value": 8132863
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2008",
+              "latest_date": "2019"
             }
           ]
         },
@@ -705,7 +723,10 @@
                   "date": "2019",
                   "value": 1095445
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2008",
+              "latest_date": "2019"
             }
           ]
         },
@@ -762,7 +783,10 @@
                   "date": "2019",
                   "value": 2634
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2008",
+              "latest_date": "2019"
             }
           ]
         }
@@ -895,7 +919,10 @@
                   "date": "2019",
                   "value": 67012883
                 }
-              ]
+              ],
+              "obs_count": 30,
+              "earliest_date": "1990",
+              "latest_date": "2019"
             },
             {
               "facet_id": "3981252704",
@@ -1148,7 +1175,10 @@
                   "date": "2021",
                   "value": 67749632
                 }
-              ]
+              ],
+              "obs_count": 62,
+              "earliest_date": "1960",
+              "latest_date": "2021"
             },
             {
               "facet_id": "1151455814",
@@ -1265,7 +1295,10 @@
                   "date": "2022",
                   "value": 67871900
                 }
-              ]
+              ],
+              "obs_count": 28,
+              "earliest_date": "1995",
+              "latest_date": "2022"
             },
             {
               "facet_id": "738965619",
@@ -1422,7 +1455,10 @@
                   "date": "2019",
                   "value": 66992699
                 }
-              ]
+              ],
+              "obs_count": 38,
+              "earliest_date": "1982",
+              "latest_date": "2019"
             },
             {
               "facet_id": "1456184638",
@@ -1431,7 +1467,10 @@
                   "date": "2021-02",
                   "value": 67399000
                 }
-              ]
+              ],
+              "obs_count": 1,
+              "earliest_date": "2021-02",
+              "latest_date": "2021-02"
             },
             {
               "facet_id": "2458695583",
@@ -1676,7 +1715,10 @@
                   "date": "2017",
                   "value": 67118648
                 }
-              ]
+              ],
+              "obs_count": 60,
+              "earliest_date": "1901",
+              "latest_date": "2017"
             }
           ]
         },
@@ -2173,7 +2215,10 @@
                   "date": "2021",
                   "value": 331893745
                 }
-              ]
+              ],
+              "obs_count": 122,
+              "earliest_date": "1900",
+              "latest_date": "2021"
             },
             {
               "facet_id": "1273233945",
@@ -2222,7 +2267,10 @@
                   "date": "2021",
                   "value": 333036755
                 }
-              ]
+              ],
+              "obs_count": 11,
+              "earliest_date": "2011",
+              "latest_date": "2021"
             },
             {
               "facet_id": "1541763368",
@@ -2239,7 +2287,10 @@
                   "date": "2020",
                   "value": 331449281
                 }
-              ]
+              ],
+              "obs_count": 3,
+              "earliest_date": "2000",
+              "latest_date": "2020"
             },
             {
               "facet_id": "3981252704",
@@ -2492,7 +2543,10 @@
                   "date": "2021",
                   "value": 332031554
                 }
-              ]
+              ],
+              "obs_count": 62,
+              "earliest_date": "1960",
+              "latest_date": "2021"
             },
             {
               "facet_id": "1151455814",
@@ -2609,7 +2663,10 @@
                   "date": "2022",
                   "value": 333288000
                 }
-              ]
+              ],
+              "obs_count": 28,
+              "earliest_date": "1995",
+              "latest_date": "2022"
             },
             {
               "facet_id": "1964317807",
@@ -2662,7 +2719,10 @@
                   "date": "2021",
                   "value": 329725481
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             },
             {
               "facet_id": "196790193",
@@ -2687,7 +2747,10 @@
                   "date": "2021",
                   "value": 329725481
                 }
-              ]
+              ],
+              "obs_count": 5,
+              "earliest_date": "2017",
+              "latest_date": "2021"
             },
             {
               "facet_id": "217147238",
@@ -2712,7 +2775,10 @@
                   "date": "2021",
                   "value": 329725481
                 }
-              ]
+              ],
+              "obs_count": 5,
+              "earliest_date": "2017",
+              "latest_date": "2021"
             },
             {
               "facet_id": "1152061738",
@@ -2805,7 +2871,10 @@
                   "date": "2020",
                   "value": 329484123
                 }
-              ]
+              ],
+              "obs_count": 22,
+              "earliest_date": "1999",
+              "latest_date": "2020"
             },
             {
               "facet_id": "2517965213",
@@ -3290,7 +3359,10 @@
                   "date": "2019",
                   "value": 328239523
                 }
-              ]
+              ],
+              "obs_count": 120,
+              "earliest_date": "1900",
+              "latest_date": "2019"
             },
             {
               "facet_id": "1226172227",
@@ -3335,7 +3407,10 @@
                   "date": "2019",
                   "value": 328239523
                 }
-              ]
+              ],
+              "obs_count": 10,
+              "earliest_date": "2010",
+              "latest_date": "2019"
             },
             {
               "facet_id": "10983471",
@@ -3380,7 +3455,10 @@
                   "date": "2019",
                   "value": 324697795
                 }
-              ]
+              ],
+              "obs_count": 10,
+              "earliest_date": "2010",
+              "latest_date": "2019"
             },
             {
               "facet_id": "3114843463",
@@ -3389,7 +3467,10 @@
                   "date": "2011",
                   "value": 311591917
                 }
-              ]
+              ],
+              "obs_count": 1,
+              "earliest_date": "2011",
+              "latest_date": "2011"
             },
             {
               "facet_id": "2458695583",
@@ -3574,7 +3655,10 @@
                   "date": "2017",
                   "value": 325145963
                 }
-              ]
+              ],
+              "obs_count": 45,
+              "earliest_date": "1790",
+              "latest_date": "2017"
             }
           ]
         },
@@ -4072,7 +4156,10 @@
                   "date": "2021",
                   "value": 39237836
                 }
-              ]
+              ],
+              "obs_count": 122,
+              "earliest_date": "1900",
+              "latest_date": "2021"
             },
             {
               "facet_id": "1145703171",
@@ -4121,7 +4208,10 @@
                   "date": "2021",
                   "value": 39455353
                 }
-              ]
+              ],
+              "obs_count": 11,
+              "earliest_date": "2011",
+              "latest_date": "2021"
             },
             {
               "facet_id": "1541763368",
@@ -4138,7 +4228,10 @@
                   "date": "2020",
                   "value": 39538223
                 }
-              ]
+              ],
+              "obs_count": 3,
+              "earliest_date": "2000",
+              "latest_date": "2020"
             },
             {
               "facet_id": "1151455814",
@@ -4255,7 +4348,10 @@
                   "date": "2022",
                   "value": 39029300
                 }
-              ]
+              ],
+              "obs_count": 28,
+              "earliest_date": "1995",
+              "latest_date": "2022"
             },
             {
               "facet_id": "1964317807",
@@ -4308,7 +4404,10 @@
                   "date": "2021",
                   "value": 39455353
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             },
             {
               "facet_id": "196790193",
@@ -4333,7 +4432,10 @@
                   "date": "2021",
                   "value": 39455353
                 }
-              ]
+              ],
+              "obs_count": 5,
+              "earliest_date": "2017",
+              "latest_date": "2021"
             },
             {
               "facet_id": "1152061738",
@@ -4426,7 +4528,10 @@
                   "date": "2020",
                   "value": 39368078
                 }
-              ]
+              ],
+              "obs_count": 22,
+              "earliest_date": "1999",
+              "latest_date": "2020"
             },
             {
               "facet_id": "2517965213",
@@ -4911,7 +5016,10 @@
                   "date": "2019",
                   "value": 39512223
                 }
-              ]
+              ],
+              "obs_count": 120,
+              "earliest_date": "1900",
+              "latest_date": "2019"
             },
             {
               "facet_id": "1226172227",
@@ -4956,7 +5064,10 @@
                   "date": "2019",
                   "value": 39512223
                 }
-              ]
+              ],
+              "obs_count": 10,
+              "earliest_date": "2010",
+              "latest_date": "2019"
             },
             {
               "facet_id": "10983471",
@@ -5001,7 +5112,10 @@
                   "date": "2019",
                   "value": 39283497
                 }
-              ]
+              ],
+              "obs_count": 10,
+              "earliest_date": "2010",
+              "latest_date": "2019"
             },
             {
               "facet_id": "3114843463",
@@ -5010,7 +5124,10 @@
                   "date": "2011",
                   "value": 37691912
                 }
-              ]
+              ],
+              "obs_count": 1,
+              "earliest_date": "2011",
+              "latest_date": "2011"
             },
             {
               "facet_id": "2458695583",
@@ -5163,7 +5280,10 @@
                   "date": "2016",
                   "value": 39250017
                 }
-              ]
+              ],
+              "obs_count": 37,
+              "earliest_date": "1850",
+              "latest_date": "2016"
             }
           ]
         },
@@ -5300,7 +5420,10 @@
                   "date": "2021",
                   "value": 81516
                 }
-              ]
+              ],
+              "obs_count": 32,
+              "earliest_date": "1990",
+              "latest_date": "2021"
             },
             {
               "facet_id": "1145703171",
@@ -5349,7 +5472,10 @@
                   "date": "2021",
                   "value": 82409
                 }
-              ]
+              ],
+              "obs_count": 11,
+              "earliest_date": "2011",
+              "latest_date": "2021"
             },
             {
               "facet_id": "1541763368",
@@ -5366,7 +5492,10 @@
                   "date": "2020",
                   "value": 82376
                 }
-              ]
+              ],
+              "obs_count": 3,
+              "earliest_date": "2000",
+              "latest_date": "2020"
             },
             {
               "facet_id": "1964317807",
@@ -5419,7 +5548,10 @@
                   "date": "2021",
                   "value": 82409
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             },
             {
               "facet_id": "1226172227",
@@ -5464,7 +5596,10 @@
                   "date": "2019",
                   "value": 82726
                 }
-              ]
+              ],
+              "obs_count": 10,
+              "earliest_date": "2010",
+              "latest_date": "2019"
             },
             {
               "facet_id": "2517965213",
@@ -5585,7 +5720,10 @@
                   "date": "2018",
                   "value": 83377
                 }
-              ]
+              ],
+              "obs_count": 29,
+              "earliest_date": "1990",
+              "latest_date": "2018"
             },
             {
               "facet_id": "3114843463",
@@ -5594,7 +5732,10 @@
                   "date": "2013",
                   "value": 77846
                 }
-              ]
+              ],
+              "obs_count": 1,
+              "earliest_date": "2013",
+              "latest_date": "2013"
             },
             {
               "facet_id": "2458695583",
@@ -5603,7 +5744,10 @@
                   "date": "2010",
                   "value": 74066
                 }
-              ]
+              ],
+              "obs_count": 1,
+              "earliest_date": "2010",
+              "latest_date": "2010"
             }
           ]
         }
@@ -9253,7 +9397,10 @@
                   "date": "2023-09",
                   "value": 6360000
                 }
-              ]
+              ],
+              "obs_count": 909,
+              "earliest_date": "1948-01",
+              "latest_date": "2023-09"
             },
             {
               "facet_id": "1714978719",
@@ -10470,7 +10617,10 @@
                   "date": "2023-09",
                   "value": 6185000
                 }
-              ]
+              ],
+              "obs_count": 303,
+              "earliest_date": "1948-03",
+              "latest_date": "2023-09"
             }
           ]
         },
@@ -12772,7 +12922,10 @@
                   "date": "2023-09",
                   "value": 949574
                 }
-              ]
+              ],
+              "obs_count": 573,
+              "earliest_date": "1976-01",
+              "latest_date": "2023-09"
             },
             {
               "facet_id": "2978659163",
@@ -12965,7 +13118,10 @@
                   "date": "2022",
                   "value": 811079
                 }
-              ]
+              ],
+              "obs_count": 47,
+              "earliest_date": "1976",
+              "latest_date": "2022"
             },
             {
               "facet_id": "1249140336",
@@ -15262,7 +15418,10 @@
                   "date": "2023-09",
                   "value": 913628
                 }
-              ]
+              ],
+              "obs_count": 573,
+              "earliest_date": "1976-01",
+              "latest_date": "2023-09"
             }
           ]
         },
@@ -16887,7 +17046,10 @@
                   "date": "2023-08",
                   "value": 1693
                 }
-              ]
+              ],
+              "obs_count": 404,
+              "earliest_date": "1990-01",
+              "latest_date": "2023-08"
             },
             {
               "facet_id": "2978659163",
@@ -17024,7 +17186,10 @@
                   "date": "2022",
                   "value": 1005
                 }
-              ]
+              ],
+              "obs_count": 33,
+              "earliest_date": "1990",
+              "latest_date": "2022"
             }
           ]
         }
@@ -17082,7 +17247,10 @@
                   "date": "2021",
                   "value": 38.4
                 }
-              ]
+              ],
+              "obs_count": 11,
+              "earliest_date": "2011",
+              "latest_date": "2021"
             },
             {
               "facet_id": "815809675",
@@ -17135,7 +17303,10 @@
                   "date": "2021",
                   "value": 38.4
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             },
             {
               "facet_id": "3690003977",
@@ -17160,7 +17331,10 @@
                   "date": "2021",
                   "value": 38.4
                 }
-              ]
+              ],
+              "obs_count": 5,
+              "earliest_date": "2017",
+              "latest_date": "2021"
             },
             {
               "facet_id": "4219092424",
@@ -17185,7 +17359,10 @@
                   "date": "2021",
                   "value": 38.4
                 }
-              ]
+              ],
+              "obs_count": 5,
+              "earliest_date": "2017",
+              "latest_date": "2021"
             },
             {
               "facet_id": "2763329611",
@@ -17230,7 +17407,10 @@
                   "date": "2019",
                   "value": 38.1
                 }
-              ]
+              ],
+              "obs_count": 10,
+              "earliest_date": "2010",
+              "latest_date": "2019"
             }
           ]
         },
@@ -17284,7 +17464,10 @@
                   "date": "2021",
                   "value": 37
                 }
-              ]
+              ],
+              "obs_count": 11,
+              "earliest_date": "2011",
+              "latest_date": "2021"
             },
             {
               "facet_id": "815809675",
@@ -17337,7 +17520,10 @@
                   "date": "2021",
                   "value": 37
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             },
             {
               "facet_id": "3690003977",
@@ -17362,7 +17548,10 @@
                   "date": "2021",
                   "value": 37
                 }
-              ]
+              ],
+              "obs_count": 5,
+              "earliest_date": "2017",
+              "latest_date": "2021"
             },
             {
               "facet_id": "2763329611",
@@ -17407,7 +17596,10 @@
                   "date": "2019",
                   "value": 36.5
                 }
-              ]
+              ],
+              "obs_count": 10,
+              "earliest_date": "2010",
+              "latest_date": "2019"
             }
           ]
         },
@@ -17460,7 +17652,10 @@
                   "date": "2021",
                   "value": 35.4
                 }
-              ]
+              ],
+              "obs_count": 11,
+              "earliest_date": "2011",
+              "latest_date": "2021"
             },
             {
               "facet_id": "815809675",
@@ -17513,7 +17708,10 @@
                   "date": "2021",
                   "value": 35.4
                 }
-              ]
+              ],
+              "obs_count": 12,
+              "earliest_date": "2010",
+              "latest_date": "2021"
             }
           ]
         }
@@ -17555,7 +17753,10 @@
                   "date": "2015",
                   "value": 7542.230000000022
                 }
-              ]
+              ],
+              "obs_count": 7,
+              "earliest_date": "1985",
+              "latest_date": "2015"
             }
           ]
         },
@@ -17593,7 +17794,10 @@
                   "date": "2015",
                   "value": 726.7499999999998
                 }
-              ]
+              ],
+              "obs_count": 7,
+              "earliest_date": "1985",
+              "latest_date": "2015"
             }
           ]
         },
@@ -17659,7 +17863,10 @@
                   "date": "2015",
                   "value": 42
                 }
-              ]
+              ],
+              "obs_count": 10,
+              "earliest_date": "2001",
+              "latest_date": "2015"
             }
           ]
         },

@@ -59,6 +59,12 @@ message FacetObservation {
   string facet_id = 1;
   // Observations are sorted by date
   repeated datacommons.PointStat observations = 2;
+  // Number of observations
+  int32 obs_count = 3;
+  // Earliest observation date
+  string earliest_date = 4;
+  // Latest observation date
+  string latest_date = 5;
 }
 
 message FacetFilter {

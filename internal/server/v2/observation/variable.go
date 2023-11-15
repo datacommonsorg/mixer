@@ -23,7 +23,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/store"
 )
 
-// Variable implements logic to fetch entity variabless.
+// Variable implements logic to fetch entity variables.
 func Variable(
 	ctx context.Context,
 	store *store.Store,

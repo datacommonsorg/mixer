@@ -64,25 +64,57 @@ func SeriesFacet(
 		if err != nil {
 			return nil, err
 		}
+		// map of variable to entity to facetId to facet info from all the bt tables
+		varEntityFacets := map[string]map[string]map[string]*pb.PlaceVariableFacet{}
 		for _, btData := range btDataList {
 			for _, row := range btData {
 				entity, variable := row.Parts[0], row.Parts[1]
+				if _, ok := varEntityFacets[variable]; !ok {
+					varEntityFacets[variable] = map[string]map[string]*pb.PlaceVariableFacet{}
+				}
+				if _, ok := varEntityFacets[variable][entity]; !ok {
+					varEntityFacets[variable][entity] = map[string]*pb.PlaceVariableFacet{}
+				}
+				facetList := row.Data.(*pb.PlaceVariableFacets).GetPlaceVariableFacets()
+				for _, placeVarFacet := range facetList {
+					facetID := util.GetFacetID(placeVarFacet.Facet)
+					seenPlaceVarFacet, ok := varEntityFacets[variable][entity][facetID]
+					// If we've seen this facet already and it has the EarliestDate field,
+					// don't override the mapped facet info.
+					// TODO: remove this logic after next data release where all bt caches
+					// should have EarliestDate field populated
+					if ok && seenPlaceVarFacet.EarliestDate != "" {
+						continue
+					}
+					varEntityFacets[variable][entity][facetID] = placeVarFacet
+				}
+			}
+		}
+		for _, variable := range variables {
+			for _, entity := range entities {
+				if _, ok := varEntityFacets[variable]; !ok {
+					continue
+				}
+				if _, ok := varEntityFacets[variable][entity]; !ok {
+					continue
+				}
 				result.ByVariable[variable].ByEntity[entity] = &pbv2.EntityObservation{
 					OrderedFacets: []*pbv2.FacetObservation{},
 				}
 				// Create a short alias
 				varEntityData := result.ByVariable[variable].ByEntity[entity]
-				facetList := row.Data.(*pb.PlaceVariableFacets).GetPlaceVariableFacets()
+				facetList := []*pb.PlaceVariableFacet{}
+				for _, facet := range varEntityFacets[variable][entity] {
+					facetList = append(facetList, facet)
+				}
 				sort.Sort(ranking.FacetByRank(facetList))
 				for _, placeVarFacet := range facetList {
 					facetID := util.GetFacetID(placeVarFacet.Facet)
 					facetObs := &pbv2.FacetObservation{
-						FacetId: facetID,
-						Observations: []*pb.PointStat{
-							{
-								Value: proto.Float64(float64(placeVarFacet.ObsCount)),
-							},
-						},
+						FacetId:      facetID,
+						EarliestDate: placeVarFacet.EarliestDate,
+						LatestDate:   placeVarFacet.LatestDate,
+						ObsCount:     placeVarFacet.ObsCount,
 					}
 					varEntityData.OrderedFacets = append(
 						varEntityData.OrderedFacets,

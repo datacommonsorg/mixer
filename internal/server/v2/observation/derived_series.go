@@ -51,9 +51,22 @@ func DerivedSeries(
 		if err != nil {
 			return nil, err
 		}
+		observations := data.GetObservations()
+		earliestDate := ""
+		latestDate := ""
+		obsCount := int32(len(observations))
+		if obsCount > 0 {
+			earliestDate = observations[0].Date
+			latestDate = observations[len(observations)-1].Date
+		}
 		resp.ByVariable[variable].ByEntity[entity] = &pbv2.EntityObservation{
 			OrderedFacets: []*pbv2.FacetObservation{
-				{Observations: data.GetObservations()},
+				{
+					Observations: data.GetObservations(),
+					ObsCount:     obsCount,
+					EarliestDate: earliestDate,
+					LatestDate:   latestDate,
+				},
 			},
 		}
 	}

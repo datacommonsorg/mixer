@@ -94,7 +94,10 @@
                   "date": "2020",
                   "value": 0.005413015082930897
                 }
-              ]
+              ],
+              "obs_count": 22,
+              "earliest_date": "1999",
+              "latest_date": "2020"
             }
           ]
         }

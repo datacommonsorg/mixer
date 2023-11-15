@@ -11,7 +11,10 @@
                   "date": "2022",
                   "value": 333288000
                 }
-              ]
+              ],
+              "obs_count": 1,
+              "earliest_date": "2022",
+              "latest_date": "2022"
             },
             {
               "facet_id": "1152061738",
@@ -20,7 +23,10 @@
                   "date": "2020",
                   "value": 329484123
                 }
-              ]
+              ],
+              "obs_count": 1,
+              "earliest_date": "2020",
+              "latest_date": "2020"
             }
           ]
         }
