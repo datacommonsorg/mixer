@@ -44,6 +44,18 @@ func TestContainedInFacet(t *testing.T) {
 			{
 				[]string{"Count_Person", "Median_Age_Person"},
 				"geoId/06<-containedInPlace+{typeOf:County}",
+				"LATEST",
+				"CA_County_latest.json",
+			},
+			{
+				[]string{"Count_Person", "Median_Age_Person"},
+				"geoId/06<-containedInPlace+{typeOf:County}",
+				"2015",
+				"CA_County_2015.json",
+			},
+			{
+				[]string{"Count_Person", "Median_Age_Person"},
+				"geoId/06<-containedInPlace+{typeOf:County}",
 				"",
 				"CA_County_all.json",
 			},

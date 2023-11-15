@@ -81,6 +81,8 @@ func SeriesFacet(
 					seenPlaceVarFacet, ok := varEntityFacets[variable][entity][facetID]
 					// If we've seen this facet already and it has the EarliestDate field,
 					// don't override the mapped facet info.
+					// TODO: remove this logic after next data release where all bt caches
+					// should have EarliestDate field populated
 					if ok && seenPlaceVarFacet.EarliestDate != "" {
 						continue
 					}
