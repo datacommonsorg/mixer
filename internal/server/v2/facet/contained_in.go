@@ -137,7 +137,7 @@ func ContainedInFacet(
 				}
 				for _, entityData := range resp.ByVariable {
 					seenFacet := map[string]*pbv2.FacetObservation{}
-					facetIdOrder := []string{}
+					orderedFacetId := []string{}
 					mergedFacetData := &pbv2.EntityObservation{
 						OrderedFacets: []*pbv2.FacetObservation{},
 					}
@@ -165,7 +165,7 @@ func ContainedInFacet(
 										latestDate = facetObs.LatestDate
 									}
 								} else {
-									facetIdOrder = append(facetIdOrder, item.FacetId)
+									orderedFacetId = append(orderedFacetId, item.FacetId)
 								}
 								seenFacet[item.FacetId] = &pbv2.FacetObservation{
 									FacetId:      item.FacetId,
@@ -176,7 +176,7 @@ func ContainedInFacet(
 							}
 						}
 					}
-					for _, facetId := range facetIdOrder {
+					for _, facetId := range orderedFacetId {
 						mergedFacetData.OrderedFacets = append(
 							mergedFacetData.OrderedFacets,
 							seenFacet[facetId],
