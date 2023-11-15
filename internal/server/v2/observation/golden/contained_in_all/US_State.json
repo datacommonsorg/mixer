@@ -11,7 +11,10 @@
                   "date": "2023",
                   "value": 1
                 }
-              ]
+              ],
+              "obs_count": 1,
+              "earliest_date": "2023",
+              "latest_date": "2023"
             }
           ]
         },
@@ -24,7 +27,10 @@
                   "date": "2023",
                   "value": 2
                 }
-              ]
+              ],
+              "obs_count": 1,
+              "earliest_date": "2023",
+              "latest_date": "2023"
             }
           ]
         },
@@ -37,7 +43,10 @@
                   "date": "2023",
                   "value": 4
                 }
-              ]
+              ],
+              "obs_count": 1,
+              "earliest_date": "2023",
+              "latest_date": "2023"
             }
           ]
         },
@@ -78,7 +87,10 @@
                   "date": "2008",
                   "value": 87
                 }
-              ]
+              ],
+              "obs_count": 8,
+              "earliest_date": "2001",
+              "latest_date": "2008"
             }
           ]
         },
@@ -127,7 +139,10 @@
                   "date": "2015",
                   "value": 42
                 }
-              ]
+              ],
+              "obs_count": 10,
+              "earliest_date": "2001",
+              "latest_date": "2015"
             }
           ]
         },
@@ -140,7 +155,10 @@
                   "date": "2023",
                   "value": 8
                 }
-              ]
+              ],
+              "obs_count": 1,
+              "earliest_date": "2023",
+              "latest_date": "2023"
             }
           ]
         },
@@ -153,7 +171,10 @@
                   "date": "2023",
                   "value": 9
                 }
-              ]
+              ],
+              "obs_count": 1,
+              "earliest_date": "2023",
+              "latest_date": "2023"
             }
           ]
         },
@@ -166,7 +187,10 @@
                   "date": "2023",
                   "value": 10
                 }
-              ]
+              ],
+              "obs_count": 1,
+              "earliest_date": "2023",
+              "latest_date": "2023"
             }
           ]
         },
@@ -179,7 +203,10 @@
                   "date": "2023",
                   "value": 11
                 }
-              ]
+              ],
+              "obs_count": 1,
+              "earliest_date": "2023",
+              "latest_date": "2023"
             }
           ]
         },
@@ -192,7 +219,10 @@
                   "date": "2023",
                   "value": 12
                 }
-              ]
+              ],
+              "obs_count": 1,
+              "earliest_date": "2023",
+              "latest_date": "2023"
             }
           ]
         },
@@ -205,7 +235,10 @@
                   "date": "2023",
                   "value": 13
                 }
-              ]
+              ],
+              "obs_count": 1,
+              "earliest_date": "2023",
+              "latest_date": "2023"
             }
           ]
         },
@@ -218,7 +251,10 @@
                   "date": "2023",
                   "value": 15
                 }
-              ]
+              ],
+              "obs_count": 1,
+              "earliest_date": "2023",
+              "latest_date": "2023"
             }
           ]
         },
@@ -231,7 +267,10 @@
                   "date": "2023",
                   "value": 16
                 }
-              ]
+              ],
+              "obs_count": 1,
+              "earliest_date": "2023",
+              "latest_date": "2023"
             }
           ]
         },
@@ -244,7 +283,10 @@
                   "date": "2023",
                   "value": 17
                 }
-              ]
+              ],
+              "obs_count": 1,
+              "earliest_date": "2023",
+              "latest_date": "2023"
             }
           ]
         },
@@ -257,7 +299,10 @@
                   "date": "2023",
                   "value": 18
                 }
-              ]
+              ],
+              "obs_count": 1,
+              "earliest_date": "2023",
+              "latest_date": "2023"
             }
           ]
         },
@@ -270,7 +315,10 @@
                   "date": "2023",
                   "value": 19
                 }
-              ]
+              ],
+              "obs_count": 1,
+              "earliest_date": "2023",
+              "latest_date": "2023"
             }
           ]
         },
@@ -283,7 +331,10 @@
                   "date": "2023",
                   "value": 20
                 }
-              ]
+              ],
+              "obs_count": 1,
+              "earliest_date": "2023",
+              "latest_date": "2023"
             }
           ]
         },
@@ -296,7 +347,10 @@
                   "date": "2023",
                   "value": 21
                 }
-              ]
+              ],
+              "obs_count": 1,
+              "earliest_date": "2023",
+              "latest_date": "2023"
             }
           ]
         },
@@ -309,7 +363,10 @@
                   "date": "2023",
                   "value": 22
                 }
-              ]
+              ],
+              "obs_count": 1,
+              "earliest_date": "2023",
+              "latest_date": "2023"
             }
           ]
         },
@@ -322,7 +379,10 @@
                   "date": "2023",
                   "value": 23
                 }
-              ]
+              ],
+              "obs_count": 1,
+              "earliest_date": "2023",
+              "latest_date": "2023"
             }
           ]
         },
@@ -335,7 +395,10 @@
                   "date": "2023",
                   "value": 24
                 }
-              ]
+              ],
+              "obs_count": 1,
+              "earliest_date": "2023",
+              "latest_date": "2023"
             }
           ]
         },
@@ -348,7 +411,10 @@
                   "date": "2023",
                   "value": 25
                 }
-              ]
+              ],
+              "obs_count": 1,
+              "earliest_date": "2023",
+              "latest_date": "2023"
             }
           ]
         },
@@ -361,7 +427,10 @@
                   "date": "2023",
                   "value": 26
                 }
-              ]
+              ],
+              "obs_count": 1,
+              "earliest_date": "2023",
+              "latest_date": "2023"
             }
           ]
         },
@@ -374,7 +443,10 @@
                   "date": "2023",
                   "value": 27
                 }
-              ]
+              ],
+              "obs_count": 1,
+              "earliest_date": "2023",
+              "latest_date": "2023"
             }
           ]
         },
@@ -387,7 +459,10 @@
                   "date": "2023",
                   "value": 28
                 }
-              ]
+              ],
+              "obs_count": 1,
+              "earliest_date": "2023",
+              "latest_date": "2023"
             }
           ]
         },
@@ -400,7 +475,10 @@
                   "date": "2023",
                   "value": 29
                 }
-              ]
+              ],
+              "obs_count": 1,
+              "earliest_date": "2023",
+              "latest_date": "2023"
             }
           ]
         },
@@ -413,7 +491,10 @@
                   "date": "2023",
                   "value": 30
                 }
-              ]
+              ],
+              "obs_count": 1,
+              "earliest_date": "2023",
+              "latest_date": "2023"
             }
           ]
         },
@@ -426,7 +507,10 @@
                   "date": "2023",
                   "value": 31
                 }
-              ]
+              ],
+              "obs_count": 1,
+              "earliest_date": "2023",
+              "latest_date": "2023"
             }
           ]
         },
@@ -439,7 +523,10 @@
                   "date": "2023",
                   "value": 32
                 }
-              ]
+              ],
+              "obs_count": 1,
+              "earliest_date": "2023",
+              "latest_date": "2023"
             }
           ]
         },
@@ -452,7 +539,10 @@
                   "date": "2023",
                   "value": 33
                 }
-              ]
+              ],
+              "obs_count": 1,
+              "earliest_date": "2023",
+              "latest_date": "2023"
             }
           ]
         },
@@ -465,7 +555,10 @@
                   "date": "2023",
                   "value": 34
                 }
-              ]
+              ],
+              "obs_count": 1,
+              "earliest_date": "2023",
+              "latest_date": "2023"
             }
           ]
         },
@@ -478,7 +571,10 @@
                   "date": "2023",
                   "value": 35
                 }
-              ]
+              ],
+              "obs_count": 1,
+              "earliest_date": "2023",
+              "latest_date": "2023"
             }
           ]
         },
@@ -491,7 +587,10 @@
                   "date": "2023",
                   "value": 36
                 }
-              ]
+              ],
+              "obs_count": 1,
+              "earliest_date": "2023",
+              "latest_date": "2023"
             }
           ]
         },
@@ -504,7 +603,10 @@
                   "date": "2023",
                   "value": 37
                 }
-              ]
+              ],
+              "obs_count": 1,
+              "earliest_date": "2023",
+              "latest_date": "2023"
             }
           ]
         },
@@ -517,7 +619,10 @@
                   "date": "2023",
                   "value": 38
                 }
-              ]
+              ],
+              "obs_count": 1,
+              "earliest_date": "2023",
+              "latest_date": "2023"
             }
           ]
         },
@@ -530,7 +635,10 @@
                   "date": "2023",
                   "value": 39
                 }
-              ]
+              ],
+              "obs_count": 1,
+              "earliest_date": "2023",
+              "latest_date": "2023"
             }
           ]
         },
@@ -543,7 +651,10 @@
                   "date": "2023",
                   "value": 40
                 }
-              ]
+              ],
+              "obs_count": 1,
+              "earliest_date": "2023",
+              "latest_date": "2023"
             }
           ]
         },
@@ -556,7 +667,10 @@
                   "date": "2023",
                   "value": 41
                 }
-              ]
+              ],
+              "obs_count": 1,
+              "earliest_date": "2023",
+              "latest_date": "2023"
             }
           ]
         },
@@ -569,7 +683,10 @@
                   "date": "2023",
                   "value": 42
                 }
-              ]
+              ],
+              "obs_count": 1,
+              "earliest_date": "2023",
+              "latest_date": "2023"
             }
           ]
         },
@@ -582,7 +699,10 @@
                   "date": "2023",
                   "value": 44
                 }
-              ]
+              ],
+              "obs_count": 1,
+              "earliest_date": "2023",
+              "latest_date": "2023"
             }
           ]
         },
@@ -595,7 +715,10 @@
                   "date": "2023",
                   "value": 45
                 }
-              ]
+              ],
+              "obs_count": 1,
+              "earliest_date": "2023",
+              "latest_date": "2023"
             }
           ]
         },
@@ -608,7 +731,10 @@
                   "date": "2023",
                   "value": 46
                 }
-              ]
+              ],
+              "obs_count": 1,
+              "earliest_date": "2023",
+              "latest_date": "2023"
             }
           ]
         },
@@ -621,7 +747,10 @@
                   "date": "2023",
                   "value": 47
                 }
-              ]
+              ],
+              "obs_count": 1,
+              "earliest_date": "2023",
+              "latest_date": "2023"
             }
           ]
         },
@@ -634,7 +763,10 @@
                   "date": "2023",
                   "value": 48
                 }
-              ]
+              ],
+              "obs_count": 1,
+              "earliest_date": "2023",
+              "latest_date": "2023"
             }
           ]
         }
