@@ -5,10 +5,16 @@
         "": {
           "ordered_facets": [
             {
-              "facet_id": "738965619"
+              "facet_id": "738965619",
+              "obs_count": 402,
+              "earliest_date": "2015",
+              "latest_date": "2015"
             },
             {
-              "facet_id": "2458695583"
+              "facet_id": "2458695583",
+              "obs_count": 275,
+              "earliest_date": "2015",
+              "latest_date": "2015"
             }
           ]
         }

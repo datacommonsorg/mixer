@@ -50,7 +50,10 @@
                   "date": "2021",
                   "value": 1.0013830242034563
                 }
-              ]
+              ],
+              "obs_count": 11,
+              "earliest_date": "2011",
+              "latest_date": "2021"
             }
           ]
         }

@@ -88,6 +88,9 @@ func processData(
 				&pbv2.FacetObservation{
 					FacetId:      "local",
 					Observations: obsList,
+					ObsCount:     int32(len(obsList)),
+					EarliestDate: obsList[0].Date,
+					LatestDate:   obsList[len(obsList)-1].Date,
 				},
 			)
 		}

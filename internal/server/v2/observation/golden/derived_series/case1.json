@@ -214,7 +214,10 @@
                   "date": "2021",
                   "value": 1.0001761720205595
                 }
-              ]
+              ],
+              "obs_count": 52,
+              "earliest_date": "1970",
+              "latest_date": "2021"
             }
           ]
         }

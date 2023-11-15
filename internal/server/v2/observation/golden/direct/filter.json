@@ -11,7 +11,10 @@
                   "date": "2022",
                   "value": 333288000
                 }
-              ]
+              ],
+              "obs_count": 1,
+              "earliest_date": "2022",
+              "latest_date": "2022"
             }
           ]
         }

@@ -103,6 +103,8 @@ func ContainedInFacet(
 						continue
 					}
 					seenFacets[facetID] = struct{}{}
+					// TODO: Add additional ObsCount, EarliestDate, LatestDate information.
+					// These fields need to be added to collection cache first.
 					entityObservation.OrderedFacets = append(
 						entityObservation.OrderedFacets,
 						&pbv2.FacetObservation{FacetId: facetID},
@@ -134,7 +136,8 @@ func ContainedInFacet(
 					return nil, err
 				}
 				for _, entityData := range resp.ByVariable {
-					seenFacetId := map[string]struct{}{}
+					seenFacet := map[string]*pbv2.FacetObservation{}
+					facetIdOrder := []string{}
 					mergedFacetData := &pbv2.EntityObservation{
 						OrderedFacets: []*pbv2.FacetObservation{},
 					}
@@ -143,18 +146,41 @@ func ContainedInFacet(
 					for _, entity := range childPlaces {
 						if facetData, ok := entityData.ByEntity[entity]; ok {
 							for _, item := range facetData.OrderedFacets {
-								if _, ok := seenFacetId[item.FacetId]; ok {
-									continue
+								// obsCount is the number of entities with data for this facet
+								obsCount := int32(1)
+								// earliest date is the earliest date any entities have data for
+								// this facet
+								earliestDate := item.EarliestDate
+								// latest date is the latest date any entities have data for
+								// this facet
+								latestDate := item.LatestDate
+								// if this facet has been seen before, update obsCount,
+								// earliestDate, and latestDate accordingly.
+								if facetObs, ok := seenFacet[item.FacetId]; ok {
+									obsCount += facetObs.ObsCount
+									if earliestDate == "" || (facetObs.EarliestDate != "" && facetObs.EarliestDate < earliestDate) {
+										earliestDate = facetObs.EarliestDate
+									}
+									if facetObs.LatestDate > latestDate {
+										latestDate = facetObs.LatestDate
+									}
+								} else {
+									facetIdOrder = append(facetIdOrder, item.FacetId)
 								}
-								seenFacetId[item.FacetId] = struct{}{}
-								mergedFacetData.OrderedFacets = append(
-									mergedFacetData.OrderedFacets,
-									&pbv2.FacetObservation{
-										FacetId: item.FacetId,
-									},
-								)
+								seenFacet[item.FacetId] = &pbv2.FacetObservation{
+									FacetId:      item.FacetId,
+									ObsCount:     obsCount,
+									EarliestDate: earliestDate,
+									LatestDate:   latestDate,
+								}
 							}
 						}
+					}
+					for _, facetId := range facetIdOrder {
+						mergedFacetData.OrderedFacets = append(
+							mergedFacetData.OrderedFacets,
+							seenFacet[facetId],
+						)
 					}
 					entityData.ByEntity = map[string]*pbv2.EntityObservation{
 						"": mergedFacetData,
@@ -171,33 +197,46 @@ func ContainedInFacet(
 				result.ByVariable[variable] = &pbv2.VariableObservation{
 					ByEntity: map[string]*pbv2.EntityObservation{},
 				}
-				seenFacets := map[string]struct{}{}
-				facetList := []*pb.PlaceVariableFacet{}
+				seenFacet := map[string]*pb.PlaceVariableFacet{}
 				for _, entity := range childPlaces {
 					series := btData[entity][variable].SourceSeries
 					for _, series := range series {
 						facet := util.GetFacet(series)
 						facetID := util.GetFacetID(facet)
-						if _, ok := seenFacets[facetID]; ok {
-							continue
-						}
 						for date := range series.Val {
 							if queryDate == date {
-								seenFacets[facetID] = struct{}{}
-								facetList = append(
-									facetList,
-									&pb.PlaceVariableFacet{Facet: facet, LatestDate: date},
-								)
+								// obsCount is the number of entities with data for this facet
+								// for this date.
+								obsCount := int32(1)
+								if _, ok := seenFacet[facetID]; ok {
+									obsCount += seenFacet[facetID].ObsCount
+								}
+								seenFacet[facetID] = &pb.PlaceVariableFacet{
+									Facet:        facet,
+									ObsCount:     obsCount,
+									EarliestDate: date,
+									LatestDate:   date,
+								}
 								break
 							}
 						}
 					}
 				}
+				facetList := []*pb.PlaceVariableFacet{}
+				for _, placeVarFacet := range seenFacet {
+					facetList = append(facetList, placeVarFacet)
+				}
 				sort.Sort(ranking.FacetByRank(facetList))
 				entityObservation := &pbv2.EntityObservation{}
 				for _, placeVarFacet := range facetList {
 					facetID := util.GetFacetID(placeVarFacet.Facet)
-					entityObservation.OrderedFacets = append(entityObservation.OrderedFacets, &pbv2.FacetObservation{FacetId: facetID})
+					entityObservation.OrderedFacets = append(entityObservation.OrderedFacets,
+						&pbv2.FacetObservation{
+							FacetId:      facetID,
+							ObsCount:     placeVarFacet.ObsCount,
+							EarliestDate: placeVarFacet.EarliestDate,
+							LatestDate:   placeVarFacet.LatestDate,
+						})
 					result.Facets[facetID] = placeVarFacet.Facet
 				}
 				// Use empty string entity to hold list of all facets available for the
