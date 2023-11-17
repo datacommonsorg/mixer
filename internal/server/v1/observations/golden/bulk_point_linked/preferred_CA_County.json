@@ -2008,6 +2008,10 @@
       "measurement_method": "NASA_Mean_GISS-E2-R",
       "observation_period": "P78Y"
     },
+    "2825511676": {
+      "import_name": "CDC_Mortality_UnderlyingCause",
+      "provenance_url": "https://wonder.cdc.gov/ucd-icd10.html"
+    },
     "3114843463": {
       "import_name": "HumanCuratedStats",
       "provenance_url": "https://google.com",

@@ -11,6 +11,9 @@
               "facet_id": "1145703171"
             },
             {
+              "facet_id": "2825511676"
+            },
+            {
               "facet_id": "1226172227"
             },
             {
@@ -72,6 +75,10 @@
       "import_name": "CensusPEP",
       "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
       "measurement_method": "CensusPEPSurvey"
+    },
+    "2825511676": {
+      "import_name": "CDC_Mortality_UnderlyingCause",
+      "provenance_url": "https://wonder.cdc.gov/ucd-icd10.html"
     },
     "3795540742": {
       "import_name": "CensusACS5YearSurvey",

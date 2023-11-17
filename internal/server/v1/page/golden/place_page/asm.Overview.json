@@ -5140,7 +5140,7 @@
             "2020": 923237
           },
           "metadata": {
-            "importName": "CDC_Mortality_UnderlyingCause_State",
+            "importName": "CDC_Mortality_UnderlyingCause",
             "provenanceUrl": "https://wonder.cdc.gov/ucd-icd10.html"
           }
         },
@@ -5170,7 +5170,7 @@
             "2020": 602350
           },
           "metadata": {
-            "importName": "CDC_Mortality_UnderlyingCause_State",
+            "importName": "CDC_Mortality_UnderlyingCause",
             "provenanceUrl": "https://wonder.cdc.gov/ucd-icd10.html"
           }
         },
@@ -5477,7 +5477,8 @@
             "2018": 326838199,
             "2019": 328329953,
             "2020": 329484123,
-            "2021": 331893745
+            "2021": 332031554,
+            "2022": 333287557
           },
           "metadata": {
             "importName": "USCensusPEP_Annual_Population",
@@ -15044,8 +15045,8 @@
       }
     },
     "country/USA": {
-      "date": "2021",
-      "value": 331893745,
+      "date": "2022",
+      "value": 333287557,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",

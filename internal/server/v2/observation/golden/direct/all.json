@@ -2213,12 +2213,16 @@
                 },
                 {
                   "date": "2021",
-                  "value": 331893745
+                  "value": 332031554
+                },
+                {
+                  "date": "2022",
+                  "value": 333287557
                 }
               ],
-              "obs_count": 122,
+              "obs_count": 123,
               "earliest_date": "1900",
-              "latest_date": "2021"
+              "latest_date": "2022"
             },
             {
               "facet_id": "1273233945",
@@ -2781,7 +2785,7 @@
               "latest_date": "2021"
             },
             {
-              "facet_id": "1152061738",
+              "facet_id": "2825511676",
               "observations": [
                 {
                   "date": "1999",
@@ -4155,11 +4159,15 @@
                 {
                   "date": "2021",
                   "value": 39237836
+                },
+                {
+                  "date": "2022",
+                  "value": 39029342
                 }
               ],
-              "obs_count": 122,
+              "obs_count": 123,
               "earliest_date": "1900",
-              "latest_date": "2021"
+              "latest_date": "2022"
             },
             {
               "facet_id": "1145703171",
@@ -4438,7 +4446,7 @@
               "latest_date": "2021"
             },
             {
-              "facet_id": "1152061738",
+              "facet_id": "2825511676",
               "observations": [
                 {
                   "date": "1999",
@@ -5419,11 +5427,15 @@
                 {
                   "date": "2021",
                   "value": 81516
+                },
+                {
+                  "date": "2022",
+                  "value": 81059
                 }
               ],
-              "obs_count": 32,
+              "obs_count": 33,
               "earliest_date": "1990",
-              "latest_date": "2021"
+              "latest_date": "2022"
             },
             {
               "facet_id": "1145703171",
@@ -17891,10 +17903,6 @@
       "measurement_method": "OECDRegionalStatistics",
       "observation_period": "P1Y"
     },
-    "1152061738": {
-      "import_name": "CDC_Mortality_UnderlyingCause_State",
-      "provenance_url": "https://wonder.cdc.gov/ucd-icd10.html"
-    },
     "1226172227": {
       "import_name": "CensusACS1YearSurvey",
       "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
@@ -17991,6 +17999,10 @@
       "provenance_url": "https://data.census.gov/cedsci/table?q=S2601A&tid=ACSST5Y2019.S2601A",
       "measurement_method": "CensusACS5yrSurveySubjectTable",
       "unit": "Years"
+    },
+    "2825511676": {
+      "import_name": "CDC_Mortality_UnderlyingCause",
+      "provenance_url": "https://wonder.cdc.gov/ucd-icd10.html"
     },
     "2978659163": {
       "import_name": "BLS_LAUS",

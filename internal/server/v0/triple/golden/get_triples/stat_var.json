@@ -123,6 +123,20 @@
       "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
+      "subjectId": "Annual_Count_MedicalConditionIncident_ConditionTuberculosis_AsAFractionOf_Count_Person",
+      "subjectName": "Annual notification of Tuberculosis cases per 1 lakh population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectName": "Total Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
       "subjectId": "Count_BirthEvent_AsAFractionOfCount_Person",
       "subjectName": "Count of Birth Event (Per Capita)",
       "subjectTypes": [
@@ -151,8 +165,50 @@
       "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
+      "subjectId": "Count_Courthouse_AsAFractionOf_Count_Person",
+      "subjectName": "Estimated number of courts per 10 Lakh persons",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectName": "Total Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
       "subjectId": "Count_CriminalActivities_MurderAndNonNegligentManslaughter_AsFractionOf_Count_Person",
       "subjectName": "Murder and Non Negligent Manslaughter Cases Per Capita",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectName": "Total Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_CriminalIncidents_CorruptionCrime_AsAFractionOf_Count_Person",
+      "subjectName": "Estimated reported corruption crimes per 1 crore population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectName": "Total Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_CriminalIncidents_CrimeAgainstChildren_AsAFractionOf_Count_Person",
+      "subjectName": "Reported cognizable crimes against children per 1 lakh population",
       "subjectTypes": [
         "StatisticalVariable"
       ],
@@ -7027,62 +7083,6 @@
     {
       "subjectId": "Count_MedicalConditionIncident_45To59Years_ConditionInjury_AsAFractionOf_Count_Person",
       "subjectName": "Count of Medical Condition Incident: 45 - 59 Years, Injury (Per Capita)",
-      "subjectTypes": [
-        "StatisticalVariable"
-      ],
-      "predicate": "measurementDenominator",
-      "objectId": "Count_Person",
-      "objectName": "Total Population",
-      "objectTypes": [
-        "StatisticalVariable"
-      ],
-      "provenanceId": "dc/base/HumanReadableStatVars"
-    },
-    {
-      "subjectId": "Count_MedicalConditionIncident_45To59Years_ConditionInjury_Rural_AsAFractionOf_Count_Person",
-      "subjectName": "Count of Medical Condition Incident: 45 - 59 Years, Injury, Rural (Per Capita)",
-      "subjectTypes": [
-        "StatisticalVariable"
-      ],
-      "predicate": "measurementDenominator",
-      "objectId": "Count_Person",
-      "objectName": "Total Population",
-      "objectTypes": [
-        "StatisticalVariable"
-      ],
-      "provenanceId": "dc/base/HumanReadableStatVars"
-    },
-    {
-      "subjectId": "Count_MedicalConditionIncident_45To59Years_ConditionInjury_Urban_AsAFractionOf_Count_Person",
-      "subjectName": "Count of Medical Condition Incident: 45 - 59 Years, Injury, Urban (Per Capita)",
-      "subjectTypes": [
-        "StatisticalVariable"
-      ],
-      "predicate": "measurementDenominator",
-      "objectId": "Count_Person",
-      "objectName": "Total Population",
-      "objectTypes": [
-        "StatisticalVariable"
-      ],
-      "provenanceId": "dc/base/HumanReadableStatVars"
-    },
-    {
-      "subjectId": "Count_MedicalConditionIncident_45To59Years_ConditionMusculoSkeletalCondition_AsAFractionOf_Count_Person",
-      "subjectName": "Count of Medical Condition Incident: 45 - 59 Years, Musculo Skeletal Condition (Per Capita)",
-      "subjectTypes": [
-        "StatisticalVariable"
-      ],
-      "predicate": "measurementDenominator",
-      "objectId": "Count_Person",
-      "objectName": "Total Population",
-      "objectTypes": [
-        "StatisticalVariable"
-      ],
-      "provenanceId": "dc/base/HumanReadableStatVars"
-    },
-    {
-      "subjectId": "Count_MedicalConditionIncident_45To59Years_ConditionMusculoSkeletalCondition_Rural_AsAFractionOf_Count_Person",
-      "subjectName": "Count of Medical Condition Incident: 45 - 59 Years, Musculo Skeletal Condition, Rural (Per Capita)",
       "subjectTypes": [
         "StatisticalVariable"
       ],

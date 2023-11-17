@@ -125,7 +125,8 @@
             "2018": 51,
             "2019": 51,
             "2020": 51,
-            "2021": 52
+            "2021": 52,
+            "2022": 52
           },
           "metadata": {
             "import_name": "USCensusPEP_Annual_Population",
@@ -279,7 +280,7 @@
             "2020": 51
           },
           "metadata": {
-            "import_name": "CDC_Mortality_UnderlyingCause_State",
+            "import_name": "CDC_Mortality_UnderlyingCause",
             "provenance_url": "https://wonder.cdc.gov/ucd-icd10.html"
           }
         },
@@ -666,7 +667,8 @@
             "2018": 51,
             "2019": 51,
             "2020": 51,
-            "2021": 51
+            "2021": 51,
+            "2022": 51
           },
           "metadata": {
             "import_name": "USCensusPEP_Sex",
@@ -787,7 +789,7 @@
             "2020": 51
           },
           "metadata": {
-            "import_name": "CDC_Mortality_UnderlyingCause_State",
+            "import_name": "CDC_Mortality_UnderlyingCause",
             "provenance_url": "https://wonder.cdc.gov/ucd-icd10.html"
           }
         },

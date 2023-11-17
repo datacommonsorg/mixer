@@ -13,36 +13,49 @@
             {
               "facet_id": "1145703171",
               "obs_count": 58,
+              "earliest_date": "2011",
               "latest_date": "2021"
             },
             {
               "facet_id": "1541763368",
               "obs_count": 58,
+              "earliest_date": "2000",
               "latest_date": "2020"
             },
             {
               "facet_id": "1964317807",
               "obs_count": 58,
+              "earliest_date": "2010",
               "latest_date": "2021"
+            },
+            {
+              "facet_id": "2825511676",
+              "obs_count": 58,
+              "earliest_date": "1999",
+              "latest_date": "2020"
             },
             {
               "facet_id": "2517965213",
               "obs_count": 56,
+              "earliest_date": "1980",
               "latest_date": "2019"
             },
             {
               "facet_id": "1226172227",
               "obs_count": 41,
+              "earliest_date": "2010",
               "latest_date": "2019"
             },
             {
               "facet_id": "3114843463",
               "obs_count": 57,
+              "earliest_date": "2011",
               "latest_date": "2014"
             },
             {
               "facet_id": "2458695583",
               "obs_count": 58,
+              "earliest_date": "1850",
               "latest_date": "2015"
             }
           ]
@@ -56,11 +69,13 @@
             {
               "facet_id": "3795540742",
               "obs_count": 58,
+              "earliest_date": "2011",
               "latest_date": "2021"
             },
             {
               "facet_id": "815809675",
               "obs_count": 58,
+              "earliest_date": "2010",
               "latest_date": "2021"
             }
           ]
@@ -104,6 +119,10 @@
       "import_name": "CensusPEP",
       "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
       "measurement_method": "CensusPEPSurvey"
+    },
+    "2825511676": {
+      "import_name": "CDC_Mortality_UnderlyingCause",
+      "provenance_url": "https://wonder.cdc.gov/ucd-icd10.html"
     },
     "3114843463": {
       "import_name": "HumanCuratedStats",

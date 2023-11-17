@@ -17,7 +17,7 @@
               "latest_date": "2022"
             },
             {
-              "facet_id": "1152061738",
+              "facet_id": "2825511676",
               "observations": [
                 {
                   "date": "2020",
@@ -40,8 +40,8 @@
       "measurement_method": "OECDRegionalStatistics",
       "observation_period": "P1Y"
     },
-    "1152061738": {
-      "import_name": "CDC_Mortality_UnderlyingCause_State",
+    "2825511676": {
+      "import_name": "CDC_Mortality_UnderlyingCause",
       "provenance_url": "https://wonder.cdc.gov/ucd-icd10.html"
     }
   }

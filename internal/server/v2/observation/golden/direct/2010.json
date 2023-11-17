@@ -273,7 +273,7 @@
               "latest_date": "2010"
             },
             {
-              "facet_id": "1152061738",
+              "facet_id": "2825511676",
               "observations": [
                 {
                   "date": "2010",
@@ -374,7 +374,7 @@
               "latest_date": "2010"
             },
             {
-              "facet_id": "1152061738",
+              "facet_id": "2825511676",
               "observations": [
                 {
                   "date": "2010",
@@ -562,10 +562,6 @@
       "measurement_method": "OECDRegionalStatistics",
       "observation_period": "P1Y"
     },
-    "1152061738": {
-      "import_name": "CDC_Mortality_UnderlyingCause_State",
-      "provenance_url": "https://wonder.cdc.gov/ucd-icd10.html"
-    },
     "1226172227": {
       "import_name": "CensusACS1YearSurvey",
       "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
@@ -618,6 +614,10 @@
       "import_name": "CensusPEP",
       "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
       "measurement_method": "CensusPEPSurvey"
+    },
+    "2825511676": {
+      "import_name": "CDC_Mortality_UnderlyingCause",
+      "provenance_url": "https://wonder.cdc.gov/ucd-icd10.html"
     },
     "2978659163": {
       "import_name": "BLS_LAUS",

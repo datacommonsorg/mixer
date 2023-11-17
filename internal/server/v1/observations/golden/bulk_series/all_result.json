@@ -1428,7 +1428,11 @@
                 },
                 {
                   "date": "2021",
-                  "value": 331893745
+                  "value": 332031554
+                },
+                {
+                  "date": "2022",
+                  "value": 333287557
                 }
               ],
               "facet": "2176550201"
@@ -2063,7 +2067,7 @@
                   "value": 329484123
                 }
               ],
-              "facet": "1152061738"
+              "facet": "2825511676"
             },
             {
               "series": [
@@ -3328,6 +3332,10 @@
                 {
                   "date": "2021",
                   "value": 39237836
+                },
+                {
+                  "date": "2022",
+                  "value": 39029342
                 }
               ],
               "facet": "2176550201"
@@ -3684,7 +3692,7 @@
                   "value": 39368078
                 }
               ],
-              "facet": "1152061738"
+              "facet": "2825511676"
             },
             {
               "series": [
@@ -4557,6 +4565,10 @@
                 {
                   "date": "2021",
                   "value": 81516
+                },
+                {
+                  "date": "2022",
+                  "value": 81059
                 }
               ],
               "facet": "2176550201"
@@ -17199,10 +17211,6 @@
       "measurement_method": "OECDRegionalStatistics",
       "observation_period": "P1Y"
     },
-    "1152061738": {
-      "import_name": "CDC_Mortality_UnderlyingCause_State",
-      "provenance_url": "https://wonder.cdc.gov/ucd-icd10.html"
-    },
     "1226172227": {
       "import_name": "CensusACS1YearSurvey",
       "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
@@ -17293,6 +17301,10 @@
       "import_name": "CensusPEP",
       "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
       "measurement_method": "CensusPEPSurvey"
+    },
+    "2825511676": {
+      "import_name": "CDC_Mortality_UnderlyingCause",
+      "provenance_url": "https://wonder.cdc.gov/ucd-icd10.html"
     },
     "2978659163": {
       "import_name": "BLS_LAUS",
