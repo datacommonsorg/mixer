@@ -55,7 +55,8 @@
             "2018": 58,
             "2019": 58,
             "2020": 58,
-            "2021": 58
+            "2021": 58,
+            "2022": 58
           },
           "metadata": {
             "import_name": "USCensusPEP_Annual_Population",
@@ -115,6 +116,36 @@
             "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",
             "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2022.S0101",
             "measurement_method": "CensusACS5yrSurveySubjectTable"
+          }
+        },
+        {
+          "date_place_count": {
+            "1999": 57,
+            "2000": 57,
+            "2001": 57,
+            "2002": 57,
+            "2003": 57,
+            "2004": 57,
+            "2005": 57,
+            "2006": 57,
+            "2007": 57,
+            "2008": 57,
+            "2009": 57,
+            "2010": 57,
+            "2011": 57,
+            "2012": 57,
+            "2013": 57,
+            "2014": 57,
+            "2015": 56,
+            "2016": 57,
+            "2017": 58,
+            "2018": 57,
+            "2019": 57,
+            "2020": 58
+          },
+          "metadata": {
+            "import_name": "CDC_Mortality_UnderlyingCause",
+            "provenance_url": "https://wonder.cdc.gov/ucd-icd10.html"
           }
         },
         {

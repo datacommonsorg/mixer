@@ -4042,6 +4042,14 @@
               "provenanceId": "dc/base/HumanReadableStatVars"
             },
             {
+              "name": "Annual notification of Tuberculosis cases per 1 lakh population",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "Annual_Count_MedicalConditionIncident_ConditionTuberculosis_AsAFractionOf_Count_Person",
+              "provenanceId": "dc/base/HumanReadableStatVars"
+            },
+            {
               "name": "Count of Birth Event (Per Capita)",
               "types": [
                 "StatisticalVariable"
@@ -4058,11 +4066,35 @@
               "provenanceId": "dc/base/HumanReadableStatVars"
             },
             {
+              "name": "Estimated number of courts per 10 Lakh persons",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "Count_Courthouse_AsAFractionOf_Count_Person",
+              "provenanceId": "dc/base/HumanReadableStatVars"
+            },
+            {
               "name": "Murder and Non Negligent Manslaughter Cases Per Capita",
               "types": [
                 "StatisticalVariable"
               ],
               "dcid": "Count_CriminalActivities_MurderAndNonNegligentManslaughter_AsFractionOf_Count_Person",
+              "provenanceId": "dc/base/HumanReadableStatVars"
+            },
+            {
+              "name": "Estimated reported corruption crimes per 1 crore population",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "Count_CriminalIncidents_CorruptionCrime_AsAFractionOf_Count_Person",
+              "provenanceId": "dc/base/HumanReadableStatVars"
+            },
+            {
+              "name": "Reported cognizable crimes against children per 1 lakh population",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "Count_CriminalIncidents_CrimeAgainstChildren_AsAFractionOf_Count_Person",
               "provenanceId": "dc/base/HumanReadableStatVars"
             },
             {
@@ -7992,38 +8024,6 @@
               ],
               "dcid": "Count_MedicalConditionIncident_45To59Years_ConditionInjury_AsAFractionOf_Count_Person",
               "provenanceId": "dc/base/HumanReadableStatVars"
-            },
-            {
-              "name": "Count of Medical Condition Incident: 45 - 59 Years, Injury, Rural (Per Capita)",
-              "types": [
-                "StatisticalVariable"
-              ],
-              "dcid": "Count_MedicalConditionIncident_45To59Years_ConditionInjury_Rural_AsAFractionOf_Count_Person",
-              "provenanceId": "dc/base/HumanReadableStatVars"
-            },
-            {
-              "name": "Count of Medical Condition Incident: 45 - 59 Years, Injury, Urban (Per Capita)",
-              "types": [
-                "StatisticalVariable"
-              ],
-              "dcid": "Count_MedicalConditionIncident_45To59Years_ConditionInjury_Urban_AsAFractionOf_Count_Person",
-              "provenanceId": "dc/base/HumanReadableStatVars"
-            },
-            {
-              "name": "Count of Medical Condition Incident: 45 - 59 Years, Musculo Skeletal Condition (Per Capita)",
-              "types": [
-                "StatisticalVariable"
-              ],
-              "dcid": "Count_MedicalConditionIncident_45To59Years_ConditionMusculoSkeletalCondition_AsAFractionOf_Count_Person",
-              "provenanceId": "dc/base/HumanReadableStatVars"
-            },
-            {
-              "name": "Count of Medical Condition Incident: 45 - 59 Years, Musculo Skeletal Condition, Rural (Per Capita)",
-              "types": [
-                "StatisticalVariable"
-              ],
-              "dcid": "Count_MedicalConditionIncident_45To59Years_ConditionMusculoSkeletalCondition_Rural_AsAFractionOf_Count_Person",
-              "provenanceId": "dc/base/HumanReadableStatVars"
             }
           ]
         },
@@ -10378,5 +10378,5 @@
     },
     "dummy": {}
   },
-  "nextToken": "H4sIAAAAAAAA/2zOwQrCMAzGcZd1WxY8jAg+kHpXGHgSpI4ohbUdXXfY28vi1cuPwP+Qjx7EJxfH+HGDHftJBuclUJ3XSa7vf413DFgwIDBgyYCGASsGrNlg020FGbBlQKKV9ue4hPy8SZpjoKMXOy9JvIR8kRC9CzbHRIc+2+zmvD262+TsaxSGrmCDhfq7S9WolVqrjYpqqxPoCwAA//8BAAD//yvpAtjZAAAA"
+  "nextToken": "H4sIAAAAAAAA/2zOwYrCMBDG8c00aafDHsosLPs8q3eFgidBYhkl0CQlTQ8efWMfQWo8evrB9z/M0JH438UxXt1gx36SwXkJVOfbJLvLp8ZfDKgYEBiwYkDNgIYBa9bYdGtBBmwZkOiu6HsTl5BPe0lzDPTrxc5LEi8hbyVE74LNMdFPn212c14vHWxy9jwKV3+Pig2qAhTeo17RaDrFBuuyNQUsqX39Qk8AAAD//wEAAP//wJfh3eIAAAA="
 }

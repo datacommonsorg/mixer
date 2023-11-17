@@ -14,7 +14,7 @@
               "facet_id": "1541763368"
             },
             {
-              "facet_id": "1152061738"
+              "facet_id": "2825511676"
             },
             {
               "facet_id": "1226172227"
@@ -94,10 +94,6 @@
       "measurement_method": "OECDRegionalStatistics",
       "observation_period": "P1Y"
     },
-    "1152061738": {
-      "import_name": "CDC_Mortality_UnderlyingCause_State",
-      "provenance_url": "https://wonder.cdc.gov/ucd-icd10.html"
-    },
     "1226172227": {
       "import_name": "CensusACS1YearSurvey",
       "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
@@ -145,6 +141,10 @@
       "provenance_url": "https://data.census.gov/cedsci/table?q=S2601A&tid=ACSST5Y2019.S2601A",
       "measurement_method": "CensusACS5yrSurveySubjectTable",
       "unit": "Years"
+    },
+    "2825511676": {
+      "import_name": "CDC_Mortality_UnderlyingCause",
+      "provenance_url": "https://wonder.cdc.gov/ucd-icd10.html"
     },
     "3114843463": {
       "import_name": "HumanCuratedStats",

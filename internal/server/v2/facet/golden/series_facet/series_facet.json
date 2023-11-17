@@ -13,6 +13,7 @@
             {
               "facet_id": "3114843463",
               "obs_count": 1,
+              "earliest_date": "2012",
               "latest_date": "2012"
             }
           ]
@@ -28,11 +29,13 @@
             {
               "facet_id": "1273233945",
               "obs_count": 11,
+              "earliest_date": "2011",
               "latest_date": "2021"
             },
             {
               "facet_id": "1541763368",
               "obs_count": 3,
+              "earliest_date": "2000",
               "latest_date": "2020"
             },
             {
@@ -50,6 +53,7 @@
             {
               "facet_id": "1964317807",
               "obs_count": 12,
+              "earliest_date": "2010",
               "latest_date": "2021"
             },
             {
@@ -65,18 +69,21 @@
               "latest_date": "2021"
             },
             {
-              "facet_id": "1152061738",
+              "facet_id": "2825511676",
               "obs_count": 22,
+              "earliest_date": "1999",
               "latest_date": "2020"
             },
             {
               "facet_id": "2517965213",
               "obs_count": 120,
+              "earliest_date": "1900",
               "latest_date": "2019"
             },
             {
               "facet_id": "1226172227",
               "obs_count": 10,
+              "earliest_date": "2010",
               "latest_date": "2019"
             },
             {
@@ -88,11 +95,13 @@
             {
               "facet_id": "3114843463",
               "obs_count": 1,
+              "earliest_date": "2011",
               "latest_date": "2011"
             },
             {
               "facet_id": "2458695583",
               "obs_count": 45,
+              "earliest_date": "1790",
               "latest_date": "2017"
             }
           ]
@@ -108,11 +117,13 @@
             {
               "facet_id": "1145703171",
               "obs_count": 11,
+              "earliest_date": "2011",
               "latest_date": "2021"
             },
             {
               "facet_id": "1541763368",
               "obs_count": 3,
+              "earliest_date": "2000",
               "latest_date": "2020"
             },
             {
@@ -124,6 +135,7 @@
             {
               "facet_id": "1964317807",
               "obs_count": 12,
+              "earliest_date": "2010",
               "latest_date": "2021"
             },
             {
@@ -133,18 +145,21 @@
               "latest_date": "2021"
             },
             {
-              "facet_id": "1152061738",
+              "facet_id": "2825511676",
               "obs_count": 22,
+              "earliest_date": "1999",
               "latest_date": "2020"
             },
             {
               "facet_id": "2517965213",
               "obs_count": 120,
+              "earliest_date": "1900",
               "latest_date": "2019"
             },
             {
               "facet_id": "1226172227",
               "obs_count": 10,
+              "earliest_date": "2010",
               "latest_date": "2019"
             },
             {
@@ -156,11 +171,13 @@
             {
               "facet_id": "3114843463",
               "obs_count": 1,
+              "earliest_date": "2011",
               "latest_date": "2011"
             },
             {
               "facet_id": "2458695583",
               "obs_count": 37,
+              "earliest_date": "1850",
               "latest_date": "2016"
             }
           ]
@@ -180,6 +197,7 @@
             {
               "facet_id": "815809675",
               "obs_count": 12,
+              "earliest_date": "2010",
               "latest_date": "2021"
             },
             {
@@ -207,11 +225,13 @@
             {
               "facet_id": "3795540742",
               "obs_count": 11,
+              "earliest_date": "2011",
               "latest_date": "2021"
             },
             {
               "facet_id": "815809675",
               "obs_count": 12,
+              "earliest_date": "2010",
               "latest_date": "2021"
             },
             {
@@ -263,10 +283,6 @@
       "provenance_url": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#",
       "measurement_method": "OECDRegionalStatistics",
       "observation_period": "P1Y"
-    },
-    "1152061738": {
-      "import_name": "CDC_Mortality_UnderlyingCause_State",
-      "provenance_url": "https://wonder.cdc.gov/ucd-icd10.html"
     },
     "1226172227": {
       "import_name": "CensusACS1YearSurvey",
@@ -320,6 +336,10 @@
       "provenance_url": "https://data.census.gov/cedsci/table?q=S2601A&tid=ACSST5Y2019.S2601A",
       "measurement_method": "CensusACS5yrSurveySubjectTable",
       "unit": "Years"
+    },
+    "2825511676": {
+      "import_name": "CDC_Mortality_UnderlyingCause",
+      "provenance_url": "https://wonder.cdc.gov/ucd-icd10.html"
     },
     "3114843463": {
       "import_name": "HumanCuratedStats",

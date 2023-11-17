@@ -683,8 +683,8 @@
             "observationCount": 4577,
             "timeSeriesCount": 4516
           },
-          "dc/base/CDC_Mortality_UnderlyingCause_State": {
-            "importName": "CDC_Mortality_UnderlyingCause_State",
+          "dc/base/CDC_Mortality_UnderlyingCause": {
+            "importName": "CDC_Mortality_UnderlyingCause",
             "seriesSummary": [
               {
                 "seriesKey": {},
@@ -701,6 +701,25 @@
                     ],
                     "minValue": 142237295,
                     "maxValue": 167227921
+                  },
+                  "County": {
+                    "placeCount": 3009,
+                    "topPlaces": [
+                      {
+                        "dcid": "geoId/06037",
+                        "name": "Los Angeles County"
+                      },
+                      {
+                        "dcid": "geoId/17031",
+                        "name": "Cook County"
+                      },
+                      {
+                        "dcid": "geoId/48201",
+                        "name": "Harris County"
+                      }
+                    ],
+                    "minValue": 694,
+                    "maxValue": 5160069
                   },
                   "State": {
                     "placeCount": 51,
@@ -722,14 +741,14 @@
                     "maxValue": 19893468
                   }
                 },
-                "minValue": 244518,
+                "minValue": 694,
                 "maxValue": 167227921,
-                "observationCount": 1144,
-                "timeSeriesCount": 52
+                "observationCount": 60879,
+                "timeSeriesCount": 3061
               }
             ],
-            "observationCount": 1144,
-            "timeSeriesCount": 52
+            "observationCount": 60879,
+            "timeSeriesCount": 3061
           },
           "dc/base/CanadaStatistics": {
             "importName": "CanadaStatistics",
@@ -3043,7 +3062,7 @@
                   "isDcAggregate": true
                 },
                 "earliestDate": "1900",
-                "latestDate": "2021",
+                "latestDate": "2022",
                 "placeTypeSummary": {
                   "Country": {
                     "placeCount": 1,
@@ -3054,7 +3073,7 @@
                       }
                     ],
                     "minValue": 37227000,
-                    "maxValue": 167509003
+                    "maxValue": 168004004
                   },
                   "State": {
                     "placeCount": 51,
@@ -3077,12 +3096,12 @@
                   }
                 },
                 "minValue": 138616,
-                "maxValue": 167509003,
-                "observationCount": 2774,
+                "maxValue": 168004004,
+                "observationCount": 2826,
                 "timeSeriesCount": 52
               }
             ],
-            "observationCount": 165830,
+            "observationCount": 165882,
             "timeSeriesCount": 3199
           }
         }

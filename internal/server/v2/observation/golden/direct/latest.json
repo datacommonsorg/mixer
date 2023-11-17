@@ -252,13 +252,13 @@
               "facet_id": "2176550201",
               "observations": [
                 {
-                  "date": "2021",
-                  "value": 331893745
+                  "date": "2022",
+                  "value": 333287557
                 }
               ],
               "obs_count": 1,
-              "earliest_date": "2021",
-              "latest_date": "2021"
+              "earliest_date": "2022",
+              "latest_date": "2022"
             },
             {
               "facet_id": "1273233945",
@@ -345,7 +345,7 @@
               "latest_date": "2021"
             },
             {
-              "facet_id": "1152061738",
+              "facet_id": "2825511676",
               "observations": [
                 {
                   "date": "2020",
@@ -401,13 +401,13 @@
               "facet_id": "2176550201",
               "observations": [
                 {
-                  "date": "2021",
-                  "value": 39237836
+                  "date": "2022",
+                  "value": 39029342
                 }
               ],
               "obs_count": 1,
-              "earliest_date": "2021",
-              "latest_date": "2021"
+              "earliest_date": "2022",
+              "latest_date": "2022"
             },
             {
               "facet_id": "1145703171",
@@ -470,7 +470,7 @@
               "latest_date": "2021"
             },
             {
-              "facet_id": "1152061738",
+              "facet_id": "2825511676",
               "observations": [
                 {
                   "date": "2020",
@@ -525,13 +525,13 @@
               "facet_id": "2176550201",
               "observations": [
                 {
-                  "date": "2021",
-                  "value": 81516
+                  "date": "2022",
+                  "value": 81059
                 }
               ],
               "obs_count": 1,
-              "earliest_date": "2021",
-              "latest_date": "2021"
+              "earliest_date": "2022",
+              "latest_date": "2022"
             },
             {
               "facet_id": "1145703171",
@@ -741,10 +741,6 @@
       "measurement_method": "OECDRegionalStatistics",
       "observation_period": "P1Y"
     },
-    "1152061738": {
-      "import_name": "CDC_Mortality_UnderlyingCause_State",
-      "provenance_url": "https://wonder.cdc.gov/ucd-icd10.html"
-    },
     "1226172227": {
       "import_name": "CensusACS1YearSurvey",
       "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
@@ -825,6 +821,10 @@
       "provenance_url": "https://www.nass.usda.gov/AgCensus/",
       "observation_period": "P5Y",
       "unit": "Acre"
+    },
+    "2825511676": {
+      "import_name": "CDC_Mortality_UnderlyingCause",
+      "provenance_url": "https://wonder.cdc.gov/ucd-icd10.html"
     },
     "2978659163": {
       "import_name": "BLS_LAUS",

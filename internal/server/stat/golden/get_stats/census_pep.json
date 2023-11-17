@@ -122,7 +122,8 @@
       "2018": 326838199,
       "2019": 328329953,
       "2020": 329484123,
-      "2021": 331893745
+      "2021": 332031554,
+      "2022": 333287557
     },
     "placeName": "United States",
     "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables"
@@ -250,7 +251,8 @@
       "2018": 39437463,
       "2019": 39437610,
       "2020": 39368078,
-      "2021": 39237836
+      "2021": 39237836,
+      "2022": 39029342
     },
     "placeName": "California",
     "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables"
@@ -308,7 +310,8 @@
       "2018": 1931985,
       "2019": 1922411,
       "2020": 1907105,
-      "2021": 1885508
+      "2021": 1885508,
+      "2022": 1870945
     },
     "placeName": "Santa Clara County",
     "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables"
@@ -346,7 +349,8 @@
       "2018": 80298,
       "2019": 80516,
       "2020": 82455,
-      "2021": 81516
+      "2021": 81516,
+      "2022": 81059
     },
     "placeName": "Mountain View",
     "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables"

@@ -268,7 +268,8 @@
                 "2018": 326838199,
                 "2019": 328329953,
                 "2020": 329484123,
-                "2021": 331893745
+                "2021": 332031554,
+                "2022": 333287557
               },
               "measurementMethod": "CensusPEPSurvey",
               "observationPeriod": "P1Y",
@@ -485,7 +486,7 @@
                 "2019": 328239523,
                 "2020": 329484123
               },
-              "importName": "CDC_Mortality_UnderlyingCause_State",
+              "importName": "CDC_Mortality_UnderlyingCause",
               "provenanceDomain": "cdc.gov",
               "provenanceUrl": "https://wonder.cdc.gov/ucd-icd10.html"
             },
@@ -903,7 +904,8 @@
                 "2018": 39437463,
                 "2019": 39437610,
                 "2020": 39368078,
-                "2021": 39237836
+                "2021": 39237836,
+                "2022": 39029342
               },
               "measurementMethod": "CensusPEPSurvey",
               "observationPeriod": "P1Y",
@@ -1036,7 +1038,7 @@
                 "2019": 39512223,
                 "2020": 39368078
               },
-              "importName": "CDC_Mortality_UnderlyingCause_State",
+              "importName": "CDC_Mortality_UnderlyingCause",
               "provenanceDomain": "cdc.gov",
               "provenanceUrl": "https://wonder.cdc.gov/ucd-icd10.html"
             },
@@ -1325,7 +1327,8 @@
                 "2018": 80298,
                 "2019": 80516,
                 "2020": 82455,
-                "2021": 81516
+                "2021": 81516,
+                "2022": 81059
               },
               "measurementMethod": "CensusPEPSurvey",
               "observationPeriod": "P1Y",
