@@ -51,7 +51,7 @@ func TestTripleIn(t *testing.T) {
 				"result2.json",
 				[]string{"Country", "BiologicalSpecimen", "Count_Person", "dummy"},
 				"<-*",
-				"H4sIAAAAAAAA/2zOwQrCMAzGcZd1WxY8jAg+kHpXGHgSpI4ohbUdXXfY28vi1cuPwP+Qjx7EJxfH+HGDHftJBuclUJ3XSa7vf413DFgwIDBgyYCGASsGrNlg020FGbBlQKKV9ue4hPy8SZpjoKMXOy9JvIR8kRC9CzbHRIc+2+zmvD262+TsaxSGrmCDhfq7S9WolVqrjYpqqxPoCwAA//8BAAD//yvpAtjZAAAA",
+				"H4sIAAAAAAAA/2zOwYrCMBDG8c00aafDHsosLPs8q3eFgidBYhkl0CQlTQ8efWMfQWo8evrB9z/M0JH438UxXt1gx36SwXkJVOfbJLvLp8ZfDKgYEBiwYkDNgIYBa9bYdGtBBmwZkOiu6HsTl5BPe0lzDPTrxc5LEi8hbyVE74LNMdFPn212c14vHWxy9jwKV3+Pig2qAhTeo17RaDrFBuuyNQUsqX39Qk8AAAD//wEAAP//wJfh3eIAAAA=",
 			},
 		} {
 			req := &pbv2.NodeRequest{

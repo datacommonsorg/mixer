@@ -39,3 +39,6 @@ test_var_3,name,,"non-place entity variable"
 ein/1,typeOf,Company,
 ein/2,typeOf,Company,
 ein/3,typeOf,Company,
+custom,typeOf,Provenance,
+custom,name,,Custom Prov
+custom,url,,custom.datacommons.org

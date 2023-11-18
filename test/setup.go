@@ -34,6 +34,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server"
 	"github.com/datacommonsorg/mixer/internal/server/cache"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
+	"github.com/datacommonsorg/mixer/internal/sqldb/query"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"github.com/datacommonsorg/mixer/internal/util"
@@ -154,6 +155,13 @@ func setupInternal(
 		}
 	} else {
 		c = &resource.Cache{}
+		if useSQLite {
+			customProvenance, err := query.GetProvenance(st.SQLClient)
+			if err != nil {
+				return nil, err
+			}
+			c.CustomProvenance = customProvenance
+		}
 	}
 
 	mapsClient, err := util.MapsClient(ctx, metadata.HostProject)
