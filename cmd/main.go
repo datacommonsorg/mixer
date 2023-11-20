@@ -34,6 +34,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/sqldb"
 	"github.com/datacommonsorg/mixer/internal/sqldb/cloudsql"
+	"github.com/datacommonsorg/mixer/internal/sqldb/query"
 	"github.com/datacommonsorg/mixer/internal/sqldb/sqlite"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
@@ -224,7 +225,7 @@ func main() {
 	}
 	// Build the cache that includes stat var group info and stat var search
 	// Index.
-	var c *resource.Cache
+	c := &resource.Cache{}
 	if *useSearch {
 		c, err = cache.NewCache(
 			ctx, store,
@@ -236,6 +237,13 @@ func main() {
 		if err != nil {
 			log.Fatalf("Failed to create cache: %v", err)
 		}
+	}
+	if store.SQLClient != nil {
+		customProv, err := query.GetProvenances(store.SQLClient)
+		if err != nil {
+			log.Fatalf("Failed to get provenance from SQL database: %s", err)
+		}
+		c.CustomProvenances = customProv
 	}
 
 	// Maps client
