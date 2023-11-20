@@ -73,12 +73,11 @@ func NewCache(
 		}
 	}
 	if store.SQLClient != nil {
-		customProv, err := query.GetProvenance(store.SQLClient)
+		customProv, err := query.GetProvenances(store.SQLClient)
 		if err != nil {
 			return nil, err
 		}
-		log.Println(customProv)
-		result.CustomProvenance = customProv
+		result.CustomProvenances = customProv
 	}
 	return result, nil
 }

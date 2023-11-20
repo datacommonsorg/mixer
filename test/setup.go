@@ -156,11 +156,11 @@ func setupInternal(
 	} else {
 		c = &resource.Cache{}
 		if useSQLite {
-			customProvenance, err := query.GetProvenance(st.SQLClient)
+			customProvenances, err := query.GetProvenances(st.SQLClient)
 			if err != nil {
 				return nil, err
 			}
-			c.CustomProvenance = customProvenance
+			c.CustomProvenances = customProvenances
 		}
 	}
 

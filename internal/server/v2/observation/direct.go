@@ -74,7 +74,7 @@ func shouldKeepSourceSeries(filter *pbv2.FacetFilter, facet *pb.Facet) bool {
 func FetchDirect(
 	ctx context.Context,
 	store *store.Store,
-	customProvenance map[string]*pb.Facet,
+	customProvenances map[string]*pb.Facet,
 	variables []string,
 	entities []string,
 	queryDate string,
@@ -94,7 +94,7 @@ func FetchDirect(
 	o2, err := FetchDirectSQL(
 		ctx,
 		store.SQLClient,
-		customProvenance,
+		customProvenances,
 		variables,
 		entities,
 		queryDate,
@@ -198,7 +198,7 @@ func FetchDirectBT(
 func FetchDirectSQL(
 	ctx context.Context,
 	sqlClient *sql.DB,
-	customProvenance map[string]*pb.Facet,
+	customProvenances map[string]*pb.Facet,
 	variables []string,
 	entities []string,
 	queryDate string,
@@ -235,5 +235,5 @@ func FetchDirectSQL(
 	if err != nil {
 		return nil, err
 	}
-	return processSqlData(result, tmp, queryDate, customProvenance), nil
+	return processSqlData(result, tmp, queryDate, customProvenances), nil
 }

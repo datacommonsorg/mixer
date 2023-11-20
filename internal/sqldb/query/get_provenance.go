@@ -20,8 +20,8 @@ import (
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 )
 
-// GetProvenance returns all the provenance name and url in SQL database.
-func GetProvenance(sqlClient *sql.DB) (map[string]*pb.Facet, error) {
+// GetProvenances returns all the provenance name and url in SQL database.
+func GetProvenances(sqlClient *sql.DB) (map[string]*pb.Facet, error) {
 	result := map[string]*pb.Facet{}
 	query :=
 		`

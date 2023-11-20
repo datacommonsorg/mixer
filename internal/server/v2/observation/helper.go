@@ -73,7 +73,7 @@ func processSqlData(
 	result *pbv2.ObservationResponse,
 	mapData map[string]map[string]map[string][]*pb.PointStat,
 	date string,
-	customProvenance map[string]*pb.Facet,
+	customProvenances map[string]*pb.Facet,
 ) *pbv2.ObservationResponse {
 	for variable := range mapData {
 		for entity := range mapData[variable] {
@@ -100,7 +100,7 @@ func processSqlData(
 						LatestDate:   obsList[len(obsList)-1].Date,
 					},
 				)
-				result.Facets[provID] = customProvenance[provID]
+				result.Facets[provID] = customProvenances[provID]
 			}
 		}
 	}
