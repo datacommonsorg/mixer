@@ -23,7 +23,6 @@ import (
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/server/statvar"
-	"github.com/datacommonsorg/mixer/internal/sqldb/query"
 	"github.com/datacommonsorg/mixer/internal/store"
 )
 
@@ -73,13 +72,6 @@ func NewCache(
 		if searchOptions.BuildSvgSearchIndex {
 			result.SvgSearchIndex = statvar.BuildStatVarSearchIndex(rawSvg, parentSvgMap, blocklistSvg)
 		}
-	}
-	if store.SQLClient != nil {
-		customProv, err := query.GetProvenances(store.SQLClient)
-		if err != nil {
-			return nil, err
-		}
-		result.CustomProvenances = customProv
 	}
 	return result, nil
 }
