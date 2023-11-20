@@ -20,6 +20,7 @@ import (
 	"log"
 	"os"
 
+	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/server/statvar"
 	"github.com/datacommonsorg/mixer/internal/sqldb/query"
@@ -59,9 +60,10 @@ func NewCache(
 	}
 	parentSvgMap := statvar.BuildParentSvgMap(rawSvg)
 	result := &resource.Cache{
-		RawSvg:       rawSvg,
-		ParentSvg:    parentSvgMap,
-		BlockListSvg: map[string]struct{}{},
+		RawSvg:            rawSvg,
+		ParentSvg:         parentSvgMap,
+		BlockListSvg:      map[string]struct{}{},
+		CustomProvenances: map[string]*pb.Facet{},
 	}
 	for _, svg := range blocklistSvg {
 		statvar.RemoveSvg(rawSvg, parentSvgMap, svg)
