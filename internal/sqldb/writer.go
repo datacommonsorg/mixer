@@ -36,8 +36,7 @@ func Write(sqlClient *sql.DB, dataDir string) error {
 		return status.Errorf(codes.FailedPrecondition, "No CSV files found in %s", dataDir)
 	}
 	for _, csvFile := range obsFiles {
-		provID := fmt.Sprintf("dc/custom/%s", strings.TrimRight(csvFile.name, ".csv"))
-		observations, err := processObservationCSV(csvFile, provID)
+		observations, err := processObservationCSV(csvFile)
 		csvFile.close()
 		if err != nil {
 			return err
@@ -49,8 +48,7 @@ func Write(sqlClient *sql.DB, dataDir string) error {
 		}
 	}
 	for _, csvFile := range tripleFiles {
-		provID := fmt.Sprintf("dc/custom/%s", strings.TrimRight(csvFile.name, ".csv"))
-		triples, err := processTripleCSV(csvFile, provID)
+		triples, err := processTripleCSV(csvFile)
 		csvFile.close()
 		if err != nil {
 			return err

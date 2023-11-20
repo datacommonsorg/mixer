@@ -707,7 +707,7 @@
         "geoId/06": {
           "ordered_facets": [
             {
-              "facet_id": "local",
+              "facet_id": "custom",
               "observations": [
                 {
                   "date": "2015",
@@ -864,9 +864,9 @@
       "provenance_url": "https://ec.europa.eu/eurostat/data/database",
       "measurement_method": "EurostatRegionalPopulationData"
     },
-    "local": {
-      "import_name": "local",
-      "provenance_url": "local"
+    "custom": {
+      "import_name": "Custom Prov",
+      "provenance_url": "custom.datacommons.org"
     }
   }
 }

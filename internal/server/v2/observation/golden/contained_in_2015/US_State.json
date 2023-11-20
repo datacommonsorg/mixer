@@ -5,7 +5,7 @@
         "geoId/06": {
           "ordered_facets": [
             {
-              "facet_id": "local",
+              "facet_id": "custom",
               "observations": [
                 {
                   "date": "2015",
@@ -22,9 +22,9 @@
     }
   },
   "facets": {
-    "local": {
-      "import_name": "local",
-      "provenance_url": "local"
+    "custom": {
+      "import_name": "Custom Prov",
+      "provenance_url": "custom.datacommons.org"
     }
   }
 }

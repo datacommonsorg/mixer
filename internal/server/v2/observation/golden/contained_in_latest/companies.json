@@ -5,7 +5,7 @@
         "ein/1": {
           "ordered_facets": [
             {
-              "facet_id": "local",
+              "facet_id": "custom",
               "observations": [
                 {
                   "date": "2023",
@@ -21,7 +21,7 @@
         "ein/2": {
           "ordered_facets": [
             {
-              "facet_id": "local",
+              "facet_id": "custom",
               "observations": [
                 {
                   "date": "2023",
@@ -37,7 +37,7 @@
         "ein/3": {
           "ordered_facets": [
             {
-              "facet_id": "local",
+              "facet_id": "custom",
               "observations": [
                 {
                   "date": "2023",
@@ -54,9 +54,9 @@
     }
   },
   "facets": {
-    "local": {
-      "import_name": "local",
-      "provenance_url": "local"
+    "custom": {
+      "import_name": "Custom Prov",
+      "provenance_url": "custom.datacommons.org"
     }
   }
 }

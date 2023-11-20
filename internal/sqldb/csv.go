@@ -142,28 +142,25 @@ func listCSVFiles(dir string) ([]*csvHandle, []*csvHandle, error) {
 	return obsCSVs, tripleCSVs, nil
 }
 
-func processObservationCSV(
-	ch *csvHandle,
-	provID string,
-) (
-	[]*observation,
-	error,
-) {
+func processObservationCSV(ch *csvHandle) ([]*observation, error) {
 	records, err := csv.NewReader(ch.f).ReadAll()
 	if err != nil {
 		return nil, err
 	}
 	numRecords := len(records)
 	if numRecords < 2 {
-		return nil, status.Errorf(codes.FailedPrecondition,
-			"Empty CSV file %s", provID)
+		return nil, status.Errorf(codes.FailedPrecondition, "Empty CSV file %s", ch.name)
 	}
 
 	// Load header.
 	header := records[0]
-	if len(header) < 3 {
+	if len(header) < 4 {
 		return nil, status.Errorf(codes.FailedPrecondition,
-			"Less than 3 columns in CSV file %s", provID)
+			"less than 4 columns in %s", ch.name)
+	}
+	if header[len(header)-1] != "provenance" {
+		return nil, status.Errorf(codes.FailedPrecondition,
+			"last column in %s is not 'provenance'", ch.name)
 	}
 	numColumns := len(header)
 
@@ -171,7 +168,8 @@ func processObservationCSV(
 	observations := []*observation{}
 	for i := 1; i < numRecords; i++ {
 		record := records[i]
-		for j := 2; j < numColumns; j++ {
+		provID := record[numColumns-1]
+		for j := 2; j < numColumns-1; j++ {
 			if record[j] == "" {
 				log.Printf("Skip empty value record: %s", record)
 				continue
@@ -188,25 +186,19 @@ func processObservationCSV(
 	return observations, nil
 }
 
-func processTripleCSV(
-	ch *csvHandle,
-	provID string,
-) (
-	[]*triple,
-	error,
-) {
+func processTripleCSV(ch *csvHandle) ([]*triple, error) {
 	records, err := csv.NewReader(ch.f).ReadAll()
 	if err != nil {
 		return nil, err
 	}
 	numRecords := len(records)
 	if numRecords < 2 {
-		return nil, status.Errorf(codes.FailedPrecondition, "Empty triple CSV file %s", provID)
+		return nil, status.Errorf(codes.FailedPrecondition, "empty triple file: %s", ch.name)
 	}
 	header := records[0]
 	if len(header) != 4 {
 		return nil, status.Errorf(codes.FailedPrecondition,
-			"should have 4 columns in Triple CSV file %s", provID)
+			"should have 4 columns in: %s", ch.name)
 	}
 	triples := []*triple{}
 	for i := 1; i < numRecords; i++ {

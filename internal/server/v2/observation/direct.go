@@ -74,16 +74,32 @@ func shouldKeepSourceSeries(filter *pbv2.FacetFilter, facet *pb.Facet) bool {
 func FetchDirect(
 	ctx context.Context,
 	store *store.Store,
+	customProvenances map[string]*pb.Facet,
 	variables []string,
 	entities []string,
 	queryDate string,
 	filter *pbv2.FacetFilter,
 ) (*pbv2.ObservationResponse, error) {
-	o1, err := FetchDirectBT(ctx, store.BtGroup, variables, entities, queryDate, filter)
+	o1, err := FetchDirectBT(
+		ctx,
+		store.BtGroup,
+		variables,
+		entities,
+		queryDate,
+		filter,
+	)
 	if err != nil {
 		return nil, err
 	}
-	o2, err := FetchDirectSQL(ctx, store.SQLClient, variables, entities, queryDate, filter)
+	o2, err := FetchDirectSQL(
+		ctx,
+		store.SQLClient,
+		customProvenances,
+		variables,
+		entities,
+		queryDate,
+		filter,
+	)
 	if err != nil {
 		return nil, err
 	}
@@ -182,6 +198,7 @@ func FetchDirectBT(
 func FetchDirectSQL(
 	ctx context.Context,
 	sqlClient *sql.DB,
+	customProvenances map[string]*pb.Facet,
 	variables []string,
 	entities []string,
 	queryDate string,
@@ -196,7 +213,7 @@ func FetchDirectSQL(
 	variablesStr := "'" + strings.Join(variables, "', '") + "'"
 	query := fmt.Sprintf(
 		`
-			SELECT entity, variable, date, value FROM observations
+			SELECT entity, variable, date, value, provenance FROM observations
 			WHERE entity IN (%s)
 			AND variable IN (%s)
 			AND value != ''
@@ -218,5 +235,5 @@ func FetchDirectSQL(
 	if err != nil {
 		return nil, err
 	}
-	return processData(result, tmp, queryDate), nil
+	return processSqlData(result, tmp, queryDate, customProvenances), nil
 }

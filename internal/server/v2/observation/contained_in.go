@@ -108,6 +108,7 @@ func FetchContainedIn(
 	ctx context.Context,
 	store *store.Store,
 	metadata *resource.Metadata,
+	customProvenances map[string]*pb.Facet,
 	httpClient *http.Client,
 	remoteMixer string,
 	variables []string,
@@ -230,7 +231,7 @@ func FetchContainedIn(
 			variablesStr := "'" + strings.Join(variables, "', '") + "'"
 			query := fmt.Sprintf(
 				`
-					SELECT entity, variable, date, value FROM observations as o
+					SELECT entity, variable, date, value, provenance FROM observations as o
 					JOIN triples as t ON o.entity = t.subject_id
 					AND t.predicate = 'typeOf'
 					AND t.object_id = '%s'
@@ -253,7 +254,7 @@ func FetchContainedIn(
 			if err != nil {
 				return nil, err
 			}
-			sqlResult = processData(sqlResult, tmp, queryDate)
+			sqlResult = processSqlData(sqlResult, tmp, queryDate, customProvenances)
 		} else {
 			if len(childPlaces) == 0 {
 				childPlaces, err = FetchChildPlaces(
@@ -265,6 +266,7 @@ func FetchContainedIn(
 			directResp, err := FetchDirectSQL(
 				ctx,
 				store.SQLClient,
+				customProvenances,
 				variables,
 				childPlaces,
 				queryDate,

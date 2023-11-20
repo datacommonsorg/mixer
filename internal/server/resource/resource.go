@@ -47,6 +47,8 @@ type Cache struct {
 	BlockListSvg map[string]struct{}
 	// SVG search index
 	SvgSearchIndex *SearchIndex
+	// Custom provenance from SQL storage
+	CustomProvenances map[string]*pb.Facet
 }
 
 // Metadata represents the metadata used by the server.
