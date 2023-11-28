@@ -41,42 +41,42 @@ func TestSearchStatVar(t *testing.T) {
 			svOnly     bool
 			goldenFile string
 		}{
-			// {
-			// 	"Asian , age",
-			// 	[]string{"geoId/06"},
-			// 	false,
-			// 	"asian_age.json",
-			// },
-			// {
-			// 	"crime",
-			// 	[]string{},
-			// 	false,
-			// 	"crime.json",
-			// },
-			// {
-			// 	"female",
-			// 	[]string{"country/USA"},
-			// 	false,
-			// 	"female.json",
-			// },
-			// {
-			// 	"accommodation food services",
-			// 	[]string{"country/USA"},
-			// 	false,
-			// 	"accommodation_food_services.json",
-			// },
-			// {
-			// 	"food stamp",
-			// 	[]string{},
-			// 	false,
-			// 	"food_stamp.json",
-			// },
-			// {
-			// 	"fem",
-			// 	[]string{},
-			// 	false,
-			// 	"fem.json",
-			// },
+			{
+				"Asian , age",
+				[]string{"geoId/06"},
+				false,
+				"asian_age.json",
+			},
+			{
+				"crime",
+				[]string{},
+				false,
+				"crime.json",
+			},
+			{
+				"female",
+				[]string{"country/USA"},
+				false,
+				"female.json",
+			},
+			{
+				"accommodation food services",
+				[]string{"country/USA"},
+				false,
+				"accommodation_food_services.json",
+			},
+			{
+				"food stamp",
+				[]string{},
+				false,
+				"food_stamp.json",
+			},
+			{
+				"fem",
+				[]string{},
+				false,
+				"fem.json",
+			},
 			{
 				"women",
 				[]string{},

@@ -316,8 +316,10 @@ func (s *Server) UpdateCache(
 		return nil, err
 	}
 	s.cachedata.UpdateStatVarSearchIndex()
-	if err := s.cachedata.UpdateCustomCache(s.store.SQLClient); err != nil {
-		return nil, err
+	if s.store.SQLClient != nil {
+		if err := s.cachedata.UpdateCustomCache(s.store.SQLClient); err != nil {
+			return nil, err
+		}
 	}
 	return &pb.UpdateCacheResponse{Success: true}, nil
 }
