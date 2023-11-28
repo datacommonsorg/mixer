@@ -18,8 +18,8 @@ import (
 	"context"
 
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
-	"github.com/datacommonsorg/mixer/internal/server/resource"
-	"github.com/datacommonsorg/mixer/internal/server/statvar"
+	"github.com/datacommonsorg/mixer/internal/server/cache"
+	"github.com/datacommonsorg/mixer/internal/server/count"
 	"github.com/datacommonsorg/mixer/internal/store"
 )
 
@@ -28,14 +28,14 @@ import (
 func Existence(
 	ctx context.Context,
 	store *store.Store,
-	cache *resource.Cache,
+	cachedata *cache.Cache,
 	variables []string,
 	entities []string,
 ) (*pbv2.ObservationResponse, error) {
 	result := &pbv2.ObservationResponse{
 		ByVariable: map[string]*pbv2.VariableObservation{},
 	}
-	countMap, err := statvar.Count(ctx, store, cache, variables, entities)
+	countMap, err := count.Count(ctx, store, cachedata, variables, entities)
 	if err != nil {
 		return nil, err
 	}

@@ -17,7 +17,6 @@ package resource
 import (
 	"strings"
 
-	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/translator/types"
 )
 
@@ -36,20 +35,6 @@ var knownPVDefPrefixes = map[string]struct{}{
 
 // length of prefixes for known property definitions
 const knownPVDefPrefixLength = 3
-
-// Cache holds cached data for the mixer server.
-type Cache struct {
-	// ParentSvg is a map of sv/svg id to a list of its parent svgs sorted alphabetically.
-	ParentSvg map[string][]string
-	// SvgInfo is a map of svg id to its information.
-	RawSvg map[string]*pb.StatVarGroupNode
-	// A list of blocked top level svg.
-	BlockListSvg map[string]struct{}
-	// SVG search index
-	SvgSearchIndex *SearchIndex
-	// Custom provenance from SQL storage
-	CustomProvenances map[string]*pb.Facet
-}
 
 // Metadata represents the metadata used by the server.
 type Metadata struct {

@@ -94,18 +94,15 @@ func (x *GetBioPageDataRequest) GetDcid() string {
 	return ""
 }
 
-// Request to import raw data files into database.
-type ImportRequest struct {
+// Request to update cache for server based on SQL storage.
+type UpdateCacheRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
-
-	// Path of raw data csv path, could be a local folder or GCS folder path.
-	DataPath string `protobuf:"bytes,1,opt,name=data_path,json=dataPath,proto3" json:"data_path,omitempty"`
 }
 
-func (x *ImportRequest) Reset() {
-	*x = ImportRequest{}
+func (x *UpdateCacheRequest) Reset() {
+	*x = UpdateCacheRequest{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_internal_proto_msgTypes[1]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -113,13 +110,13 @@ func (x *ImportRequest) Reset() {
 	}
 }
 
-func (x *ImportRequest) String() string {
+func (x *UpdateCacheRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ImportRequest) ProtoMessage() {}
+func (*UpdateCacheRequest) ProtoMessage() {}
 
-func (x *ImportRequest) ProtoReflect() protoreflect.Message {
+func (x *UpdateCacheRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_internal_proto_msgTypes[1]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -131,30 +128,23 @@ func (x *ImportRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ImportRequest.ProtoReflect.Descriptor instead.
-func (*ImportRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use UpdateCacheRequest.ProtoReflect.Descriptor instead.
+func (*UpdateCacheRequest) Descriptor() ([]byte, []int) {
 	return file_internal_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *ImportRequest) GetDataPath() string {
-	if x != nil {
-		return x.DataPath
-	}
-	return ""
-}
-
-// Response of import request.
-type ImportResponse struct {
+// Response of UpdateCache request.
+type UpdateCacheResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Whether the import is successful.
+	// Whether the cache update is successful.
 	Success bool `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
 }
 
-func (x *ImportResponse) Reset() {
-	*x = ImportResponse{}
+func (x *UpdateCacheResponse) Reset() {
+	*x = UpdateCacheResponse{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_internal_proto_msgTypes[2]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -162,13 +152,13 @@ func (x *ImportResponse) Reset() {
 	}
 }
 
-func (x *ImportResponse) String() string {
+func (x *UpdateCacheResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ImportResponse) ProtoMessage() {}
+func (*UpdateCacheResponse) ProtoMessage() {}
 
-func (x *ImportResponse) ProtoReflect() protoreflect.Message {
+func (x *UpdateCacheResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_internal_proto_msgTypes[2]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -180,12 +170,12 @@ func (x *ImportResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ImportResponse.ProtoReflect.Descriptor instead.
-func (*ImportResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use UpdateCacheResponse.ProtoReflect.Descriptor instead.
+func (*UpdateCacheResponse) Descriptor() ([]byte, []int) {
 	return file_internal_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *ImportResponse) GetSuccess() bool {
+func (x *UpdateCacheResponse) GetSuccess() bool {
 	if x != nil {
 		return x.Success
 	}
@@ -199,16 +189,15 @@ var file_internal_proto_rawDesc = []byte{
 	0x12, 0x0b, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x22, 0x2b, 0x0a,
 	0x15, 0x47, 0x65, 0x74, 0x42, 0x69, 0x6f, 0x50, 0x61, 0x67, 0x65, 0x44, 0x61, 0x74, 0x61, 0x52,
 	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x12, 0x0a, 0x04, 0x64, 0x63, 0x69, 0x64, 0x18, 0x01,
-	0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x64, 0x63, 0x69, 0x64, 0x22, 0x2c, 0x0a, 0x0d, 0x49, 0x6d,
-	0x70, 0x6f, 0x72, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x1b, 0x0a, 0x09, 0x64,
-	0x61, 0x74, 0x61, 0x5f, 0x70, 0x61, 0x74, 0x68, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08,
-	0x64, 0x61, 0x74, 0x61, 0x50, 0x61, 0x74, 0x68, 0x22, 0x2a, 0x0a, 0x0e, 0x49, 0x6d, 0x70, 0x6f,
-	0x72, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x18, 0x0a, 0x07, 0x73, 0x75,
-	0x63, 0x63, 0x65, 0x73, 0x73, 0x18, 0x01, 0x20, 0x01, 0x28, 0x08, 0x52, 0x07, 0x73, 0x75, 0x63,
-	0x63, 0x65, 0x73, 0x73, 0x42, 0x30, 0x5a, 0x2e, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63,
-	0x6f, 0x6d, 0x2f, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x6f, 0x72,
-	0x67, 0x2f, 0x6d, 0x69, 0x78, 0x65, 0x72, 0x2f, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x6e, 0x61, 0x6c,
-	0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x64, 0x63, 0x69, 0x64, 0x22, 0x14, 0x0a, 0x12, 0x55, 0x70,
+	0x64, 0x61, 0x74, 0x65, 0x43, 0x61, 0x63, 0x68, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
+	0x22, 0x2f, 0x0a, 0x13, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x43, 0x61, 0x63, 0x68, 0x65, 0x52,
+	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x18, 0x0a, 0x07, 0x73, 0x75, 0x63, 0x63, 0x65,
+	0x73, 0x73, 0x18, 0x01, 0x20, 0x01, 0x28, 0x08, 0x52, 0x07, 0x73, 0x75, 0x63, 0x63, 0x65, 0x73,
+	0x73, 0x42, 0x30, 0x5a, 0x2e, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f,
+	0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x6f, 0x72, 0x67, 0x2f, 0x6d,
+	0x69, 0x78, 0x65, 0x72, 0x2f, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x6e, 0x61, 0x6c, 0x2f, 0x70, 0x72,
+	0x6f, 0x74, 0x6f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -226,8 +215,8 @@ func file_internal_proto_rawDescGZIP() []byte {
 var file_internal_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
 var file_internal_proto_goTypes = []interface{}{
 	(*GetBioPageDataRequest)(nil), // 0: datacommons.GetBioPageDataRequest
-	(*ImportRequest)(nil),         // 1: datacommons.ImportRequest
-	(*ImportResponse)(nil),        // 2: datacommons.ImportResponse
+	(*UpdateCacheRequest)(nil),    // 1: datacommons.UpdateCacheRequest
+	(*UpdateCacheResponse)(nil),   // 2: datacommons.UpdateCacheResponse
 }
 var file_internal_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for method output_type
@@ -256,7 +245,7 @@ func file_internal_proto_init() {
 			}
 		}
 		file_internal_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ImportRequest); i {
+			switch v := v.(*UpdateCacheRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -268,7 +257,7 @@ func file_internal_proto_init() {
 			}
 		}
 		file_internal_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ImportResponse); i {
+			switch v := v.(*UpdateCacheResponse); i {
 			case 0:
 				return &v.state
 			case 1:

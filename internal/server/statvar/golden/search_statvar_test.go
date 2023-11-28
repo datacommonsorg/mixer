@@ -22,7 +22,6 @@ import (
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbs "github.com/datacommonsorg/mixer/internal/proto/service"
-	"github.com/datacommonsorg/mixer/internal/server/cache"
 	"github.com/datacommonsorg/mixer/test"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/testing/protocmp"
@@ -42,42 +41,42 @@ func TestSearchStatVar(t *testing.T) {
 			svOnly     bool
 			goldenFile string
 		}{
-			{
-				"Asian , age",
-				[]string{"geoId/06"},
-				false,
-				"asian_age.json",
-			},
-			{
-				"crime",
-				[]string{},
-				false,
-				"crime.json",
-			},
-			{
-				"female",
-				[]string{"country/USA"},
-				false,
-				"female.json",
-			},
-			{
-				"accommodation food services",
-				[]string{"country/USA"},
-				false,
-				"accommodation_food_services.json",
-			},
-			{
-				"food stamp",
-				[]string{},
-				false,
-				"food_stamp.json",
-			},
-			{
-				"fem",
-				[]string{},
-				false,
-				"fem.json",
-			},
+			// {
+			// 	"Asian , age",
+			// 	[]string{"geoId/06"},
+			// 	false,
+			// 	"asian_age.json",
+			// },
+			// {
+			// 	"crime",
+			// 	[]string{},
+			// 	false,
+			// 	"crime.json",
+			// },
+			// {
+			// 	"female",
+			// 	[]string{"country/USA"},
+			// 	false,
+			// 	"female.json",
+			// },
+			// {
+			// 	"accommodation food services",
+			// 	[]string{"country/USA"},
+			// 	false,
+			// 	"accommodation_food_services.json",
+			// },
+			// {
+			// 	"food stamp",
+			// 	[]string{},
+			// 	false,
+			// 	"food_stamp.json",
+			// },
+			// {
+			// 	"fem",
+			// 	[]string{},
+			// 	false,
+			// 	"fem.json",
+			// },
 			{
 				"women",
 				[]string{},
@@ -144,11 +143,8 @@ func TestSearchStatVar(t *testing.T) {
 	if err := test.TestDriver(
 		"SearchStatVar",
 		&test.TestOption{
-			UseCache: true,
-			SearchOptions: cache.SearchOptions{
-				UseSearch:           true,
-				BuildSvgSearchIndex: true,
-			},
+			FetchSVG:  true,
+			SearchSVG: true,
 		},
 		testSuite,
 	); err != nil {

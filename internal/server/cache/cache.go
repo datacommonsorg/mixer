@@ -16,12 +16,17 @@ package cache
 
 import (
 	"context"
+	"database/sql"
 	"encoding/json"
 	"log"
 	"os"
+	"sync"
 
+	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
-	"github.com/datacommonsorg/mixer/internal/server/statvar"
+	"github.com/datacommonsorg/mixer/internal/server/statvar/fetcher"
+	"github.com/datacommonsorg/mixer/internal/server/statvar/hierarchy"
+	"github.com/datacommonsorg/mixer/internal/sqldb/query"
 	"github.com/datacommonsorg/mixer/internal/store"
 )
 
@@ -29,17 +34,60 @@ const (
 	blockListSvgJsonPath = "/datacommons/svg/blocklist_svg.json"
 )
 
-type SearchOptions struct {
-	UseSearch           bool
-	BuildSvgSearchIndex bool
+// Options for using the Cache object
+type Options struct {
+	FetchSVG   bool
+	SearchSVG  bool
+	CustomProv bool
 }
 
-// NewCache initializes the cache for stat var hierarchy.
-func NewCache(
-	ctx context.Context,
-	store *store.Store,
-	searchOptions SearchOptions,
-) (*resource.Cache, error) {
+// Cache holds cached data for the mixer server.
+type Cache struct {
+	// ParentSvg is a map of sv/svg id to a list of its parent svgs sorted alphabetically.
+	parentSvg map[string][]string
+	// SvgInfo is a map of svg id to its information.
+	rawSvg map[string]*pb.StatVarGroupNode
+	// A list of blocked top level svg.
+	blockListSvg map[string]struct{}
+	// SVG search index
+	svgSearchIndex *resource.SearchIndex
+	// Custom provenance from SQL storage
+	customProvenances map[string]*pb.Facet
+	// Lock for updating cache
+	mu sync.RWMutex
+}
+
+func (cache *Cache) ParentSvg() map[string][]string {
+	cache.mu.RLock()
+	defer cache.mu.RUnlock()
+	return cache.parentSvg
+}
+
+func (cache *Cache) RawSvg() map[string]*pb.StatVarGroupNode {
+	cache.mu.RLock()
+	defer cache.mu.RUnlock()
+	return cache.rawSvg
+}
+
+func (cache *Cache) BlockListSvg() map[string]struct{} {
+	cache.mu.RLock()
+	defer cache.mu.RUnlock()
+	return cache.blockListSvg
+}
+
+func (cache *Cache) SvgSearchIndex() *resource.SearchIndex {
+	cache.mu.RLock()
+	defer cache.mu.RUnlock()
+	return cache.svgSearchIndex
+}
+
+func (cache *Cache) CustomProvenances() map[string]*pb.Facet {
+	cache.mu.RLock()
+	defer cache.mu.RUnlock()
+	return cache.customProvenances
+}
+
+func (cache *Cache) UpdateSVGCache(ctx context.Context, store *store.Store) error {
 	var blocklistSvg []string
 	// Read blocklisted svg from file.
 	file, err := os.ReadFile(blockListSvgJsonPath)
@@ -52,23 +100,59 @@ func NewCache(
 			blocklistSvg = []string{}
 		}
 	}
-	rawSvg, err := statvar.GetRawSvg(ctx, store)
+	rawSvg, err := fetcher.FetchAllSVG(ctx, store)
 	if err != nil {
-		return nil, err
+		return err
 	}
-	parentSvgMap := statvar.BuildParentSvgMap(rawSvg)
-	result := &resource.Cache{
-		RawSvg:       rawSvg,
-		ParentSvg:    parentSvgMap,
-		BlockListSvg: map[string]struct{}{},
-	}
+	parentSvgMap := hierarchy.BuildParentSvgMap(rawSvg)
+	// Lock and update the cache.
+	cache.mu.Lock()
+	cache.rawSvg = rawSvg
+	cache.parentSvg = parentSvgMap
+	cache.blockListSvg = map[string]struct{}{}
 	for _, svg := range blocklistSvg {
-		statvar.RemoveSvg(rawSvg, parentSvgMap, svg)
-		result.BlockListSvg[svg] = struct{}{}
+		hierarchy.RemoveSvg(rawSvg, parentSvgMap, svg)
+		cache.blockListSvg[svg] = struct{}{}
 	}
-	if searchOptions.UseSearch {
-		if searchOptions.BuildSvgSearchIndex {
-			result.SvgSearchIndex = statvar.BuildStatVarSearchIndex(rawSvg, parentSvgMap, blocklistSvg)
+	cache.mu.Unlock()
+	return nil
+}
+
+func (cache *Cache) UpdateStatVarSearchIndex() {
+	cache.mu.Lock()
+	cache.svgSearchIndex = hierarchy.BuildStatVarSearchIndex(cache.rawSvg, cache.parentSvg, cache.blockListSvg)
+	cache.mu.Unlock()
+}
+
+func (cache *Cache) UpdateCustomCache(sqlClient *sql.DB) error {
+	customProv, err := query.GetProvenances(sqlClient)
+	if err != nil {
+		return err
+	}
+	cache.mu.Lock()
+	cache.customProvenances = customProv
+	cache.mu.Unlock()
+	return nil
+}
+
+// NewCache initializes the cache for stat var hierarchy.
+func NewCache(
+	ctx context.Context,
+	store *store.Store,
+	options Options,
+) (*Cache, error) {
+	result := &Cache{}
+	if options.FetchSVG {
+		if err := result.UpdateSVGCache(ctx, store); err != nil {
+			return nil, err
+		}
+	}
+	if options.SearchSVG {
+		result.UpdateStatVarSearchIndex()
+	}
+	if options.CustomProv {
+		if err := result.UpdateCustomCache(store.SQLClient); err != nil {
+			return nil, err
 		}
 	}
 	return result, nil

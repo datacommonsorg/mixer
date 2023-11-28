@@ -20,8 +20,8 @@ import (
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	"github.com/datacommonsorg/mixer/internal/server/cache"
 	"github.com/datacommonsorg/mixer/internal/server/ranking"
-	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/sqldb/query"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
@@ -34,7 +34,7 @@ import (
 func SeriesFacet(
 	ctx context.Context,
 	store *store.Store,
-	cache *resource.Cache,
+	cachedata *cache.Cache,
 	variables []string,
 	entities []string,
 ) (*pbv2.ObservationResponse, error) {

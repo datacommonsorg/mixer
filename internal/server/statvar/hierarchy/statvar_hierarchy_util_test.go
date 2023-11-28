@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package statvar
+package hierarchy
 
 import (
 	"testing"
@@ -204,7 +204,7 @@ func TestRemoveSvg(t *testing.T) {
 	}
 }
 
-func TestBuildSearchIndex(t *testing.T) {
+func TestBuildStatVarSearchIndex(t *testing.T) {
 	token1 := resource.TrieNode{
 		ChildrenNodes: nil,
 		SvgIds:        map[string]struct{}{"g_1": {}},
@@ -394,7 +394,7 @@ func TestBuildSearchIndex(t *testing.T) {
 	for _, c := range []struct {
 		inputSvg   map[string]*pb.StatVarGroupNode
 		parentSvg  map[string][]string
-		ignoredSvg []string
+		ignoredSvg map[string]struct{}
 		want       *resource.SearchIndex
 	}{
 		{
@@ -451,7 +451,7 @@ func TestBuildSearchIndex(t *testing.T) {
 				"sv_3":   {"g_3_1"},
 				"sv3":    {"g_3_1"},
 			},
-			[]string{},
+			map[string]struct{}{},
 			&resource.SearchIndex{
 				RootTrieNode: &resource.TrieNode{
 					ChildrenNodes: map[rune]*resource.TrieNode{
@@ -579,7 +579,10 @@ func TestBuildSearchIndex(t *testing.T) {
 				"sv_ignored_1":  {"svg_ignored_1"},
 				"sv_ignored_2":  {"svg_ignored_2"},
 			},
-			[]string{"svg_ignored_1", "svg_ignored_2"},
+			map[string]struct{}{
+				"svg_ignored_1": {},
+				"svg_ignored_2": {},
+			},
 			&resource.SearchIndex{
 				RootTrieNode: &resource.TrieNode{
 					ChildrenNodes: map[rune]*resource.TrieNode{
@@ -631,6 +634,315 @@ func TestBuildSearchIndex(t *testing.T) {
 		got := BuildStatVarSearchIndex(c.inputSvg, c.parentSvg, c.ignoredSvg)
 		if diff := deep.Equal(got, c.want); diff != nil {
 			t.Errorf("GetStatVarSearchIndex got diff %v", diff)
+		}
+	}
+}
+
+func TestFilter(t *testing.T) {
+	for _, c := range []struct {
+		input map[string]*pb.StatVarGroupNode
+		want  map[string]*pb.StatVarGroupNode
+		svs   []string
+	}{
+		{
+			map[string]*pb.StatVarGroupNode{
+				"svgX": {
+					ChildStatVarGroups: []*pb.StatVarGroupNode_ChildSVG{
+						{Id: "svgY"},
+					},
+				},
+				"svgY": {
+					ChildStatVarGroups: []*pb.StatVarGroupNode_ChildSVG{
+						{Id: "svgZ"},
+					},
+				},
+				"svgZ": {
+					ChildStatVars: []*pb.StatVarGroupNode_ChildSV{
+						{
+							Id:         "sv1",
+							SearchName: "Name 1",
+						},
+						{
+							Id:         "sv2",
+							SearchName: "Name 2",
+						},
+					},
+				},
+			},
+			map[string]*pb.StatVarGroupNode{
+				"svgX": {
+					ChildStatVarGroups: []*pb.StatVarGroupNode_ChildSVG{
+						{Id: "svgY"},
+					},
+				},
+				"svgY": {
+					ChildStatVarGroups: []*pb.StatVarGroupNode_ChildSVG{
+						{Id: "svgZ"},
+					},
+				},
+				"svgZ": {
+					ChildStatVars: []*pb.StatVarGroupNode_ChildSV{
+						{
+							Id:         "sv1",
+							SearchName: "Name 1",
+						},
+						{
+							Id:         "sv2",
+							SearchName: "Name 2",
+						},
+					},
+				},
+			},
+			[]string{"sv1", "sv2"},
+		},
+		{
+			map[string]*pb.StatVarGroupNode{
+				"svg1": {
+					ChildStatVars: []*pb.StatVarGroupNode_ChildSV{
+						{
+							Id:         "sv1",
+							SearchName: "Name 1",
+						},
+						{
+							Id:         "sv2",
+							SearchName: "Name 2",
+						},
+					},
+					ChildStatVarGroups: []*pb.StatVarGroupNode_ChildSVG{
+						{Id: "svg2"},
+						{Id: "svg3"},
+					},
+				},
+				"svg2": {
+					ChildStatVars: []*pb.StatVarGroupNode_ChildSV{
+						{
+							Id:         "sv21",
+							SearchName: "Name 21",
+						},
+						{
+							Id:         "sv22",
+							SearchName: "Name 22",
+						},
+					},
+					ChildStatVarGroups: []*pb.StatVarGroupNode_ChildSVG{
+						{Id: "svg5"},
+						{Id: "svg6"},
+					},
+				},
+				"svg8": {
+					ChildStatVarGroups: []*pb.StatVarGroupNode_ChildSVG{
+						{Id: "svg9"},
+					},
+				},
+				"svg9": {
+					ChildStatVars: []*pb.StatVarGroupNode_ChildSV{
+						{
+							Id:         "sv91",
+							SearchName: "Name 91",
+						},
+						{
+							Id:         "sv92",
+							SearchName: "Name 92",
+						},
+					},
+				},
+			},
+			map[string]*pb.StatVarGroupNode{
+				"svg1": {
+					ChildStatVars: []*pb.StatVarGroupNode_ChildSV{
+						{
+							Id:         "sv1",
+							SearchName: "Name 1",
+						},
+					},
+					ChildStatVarGroups: []*pb.StatVarGroupNode_ChildSVG{
+						{Id: "svg2"},
+					},
+				},
+				"svg2": {
+					ChildStatVars: []*pb.StatVarGroupNode_ChildSV{
+						{
+							Id:         "sv21",
+							SearchName: "Name 21",
+						},
+					},
+				},
+				"svg8": {
+					ChildStatVarGroups: []*pb.StatVarGroupNode_ChildSVG{
+						{Id: "svg9"},
+					},
+				},
+				"svg9": {
+					ChildStatVars: []*pb.StatVarGroupNode_ChildSV{
+						{
+							Id:         "sv91",
+							SearchName: "Name 91",
+						},
+					},
+				},
+			},
+			[]string{"sv1", "sv21", "sv91"},
+		},
+	} {
+		got := FilterSVG(c.input, c.svs)
+		if diff := cmp.Diff(got, c.want, protocmp.Transform()); diff != "" {
+			t.Errorf("filterSVG() got diff %v", diff)
+		}
+	}
+}
+
+func TestMergeCustomSVG(t *testing.T) {
+	for _, c := range []struct {
+		input []*pb.StatVarGroups
+		want  *pb.StatVarGroups
+	}{
+		{
+			// input
+			[]*pb.StatVarGroups{
+				// Sample svg groups from cache 1
+				{
+					StatVarGroups: map[string]*pb.StatVarGroupNode{
+						"dc/g/Custom_Root": {
+							ChildStatVars: []*pb.StatVarGroupNode_ChildSV{},
+							ChildStatVarGroups: []*pb.StatVarGroupNode_ChildSVG{
+								{Id: "dc/g/Custom_Environment", DescendentStatVarCount: 1},
+								{Id: "dc/g/Custom_Energy", DescendentStatVarCount: 3},
+							},
+							DescendentStatVarCount: 3,
+						},
+						"dc/g/Custom_Environment": {
+							ChildStatVars: []*pb.StatVarGroupNode_ChildSV{
+								{Id: "Count_SV_Environment_And_Energy"},
+							},
+							ChildStatVarGroups:     []*pb.StatVarGroupNode_ChildSVG{},
+							DescendentStatVarCount: 1,
+						},
+						"dc/g/Custom_Energy": {
+							ChildStatVars: []*pb.StatVarGroupNode_ChildSV{
+								{Id: "Count_SV_Environment_And_Energy"},
+							},
+							ChildStatVarGroups: []*pb.StatVarGroupNode_ChildSVG{
+								{Id: "dc/g/Custom_DeepSolar", DescendentStatVarCount: 2},
+							},
+							DescendentStatVarCount: 3,
+						},
+						"dc/g/Custom_DeepSolar": {
+							ChildStatVars: []*pb.StatVarGroupNode_ChildSV{
+								{Id: "Count_SolarInstallation_Commercial"},
+								{Id: "Mean_CoverageArea_SolarInstallation_Commercial"},
+							},
+							ChildStatVarGroups:     []*pb.StatVarGroupNode_ChildSVG{},
+							DescendentStatVarCount: 2,
+						},
+					},
+				},
+				// Sample svg groups from cache 2
+				{
+					StatVarGroups: map[string]*pb.StatVarGroupNode{
+						"dc/g/Custom_Root": {
+							ChildStatVars: []*pb.StatVarGroupNode_ChildSV{},
+							ChildStatVarGroups: []*pb.StatVarGroupNode_ChildSVG{
+								{Id: "dc/g/Custom_Environment", DescendentStatVarCount: 3},
+								{Id: "dc/g/Custom_Energy", DescendentStatVarCount: 0},
+							},
+							DescendentStatVarCount: 3,
+						},
+						"dc/g/Custom_Environment": {
+							ChildStatVars: []*pb.StatVarGroupNode_ChildSV{},
+							ChildStatVarGroups: []*pb.StatVarGroupNode_ChildSVG{
+								{Id: "dc/g/Custom_Atmosphere", DescendentStatVarCount: 3},
+							},
+							DescendentStatVarCount: 3,
+						},
+						"dc/g/Custom_Energy": {
+							ChildStatVars:          []*pb.StatVarGroupNode_ChildSV{},
+							ChildStatVarGroups:     []*pb.StatVarGroupNode_ChildSVG{},
+							DescendentStatVarCount: 0,
+						},
+						"dc/g/Custom_Atmosphere": {
+							ChildStatVars: []*pb.StatVarGroupNode_ChildSV{
+								{Id: "Max_Concentration_AirPollutant_Ozone"},
+								{Id: "Median_Concentration_AirPollutant_Ozone"},
+								{Id: "Min_Concentration_AirPollutant_Ozone"},
+							},
+							ChildStatVarGroups:     []*pb.StatVarGroupNode_ChildSVG{},
+							DescendentStatVarCount: 3,
+						},
+					},
+				},
+			},
+			// want
+			&pb.StatVarGroups{
+				// merged svg groups
+				StatVarGroups: map[string]*pb.StatVarGroupNode{
+					"dc/g/Custom_Root": {
+						ChildStatVars: []*pb.StatVarGroupNode_ChildSV{},
+						ChildStatVarGroups: []*pb.StatVarGroupNode_ChildSVG{
+							{Id: "dc/g/Custom_Environment", DescendentStatVarCount: 4},
+							{Id: "dc/g/Custom_Energy", DescendentStatVarCount: 3},
+						},
+						DescendentStatVarCount: 6,
+					},
+					"dc/g/Custom_Environment": {
+						ChildStatVars: []*pb.StatVarGroupNode_ChildSV{
+							{Id: "Count_SV_Environment_And_Energy"},
+						},
+						ChildStatVarGroups: []*pb.StatVarGroupNode_ChildSVG{
+							{Id: "dc/g/Custom_Atmosphere", DescendentStatVarCount: 3},
+						},
+						DescendentStatVarCount: 4,
+					},
+					"dc/g/Custom_Energy": {
+						ChildStatVars: []*pb.StatVarGroupNode_ChildSV{
+							{Id: "Count_SV_Environment_And_Energy"},
+						},
+						ChildStatVarGroups: []*pb.StatVarGroupNode_ChildSVG{
+							{Id: "dc/g/Custom_DeepSolar", DescendentStatVarCount: 2},
+						},
+						DescendentStatVarCount: 3,
+					},
+					"dc/g/Custom_DeepSolar": {
+						ChildStatVars: []*pb.StatVarGroupNode_ChildSV{
+							{Id: "Count_SolarInstallation_Commercial"},
+							{Id: "Mean_CoverageArea_SolarInstallation_Commercial"},
+						},
+						ChildStatVarGroups:     []*pb.StatVarGroupNode_ChildSVG{},
+						DescendentStatVarCount: 2,
+					},
+					"dc/g/Custom_Atmosphere": {
+						ChildStatVars: []*pb.StatVarGroupNode_ChildSV{
+							{Id: "Max_Concentration_AirPollutant_Ozone"},
+							{Id: "Median_Concentration_AirPollutant_Ozone"},
+							{Id: "Min_Concentration_AirPollutant_Ozone"},
+						},
+						ChildStatVarGroups:     []*pb.StatVarGroupNode_ChildSVG{},
+						DescendentStatVarCount: 3,
+					},
+				},
+			},
+		},
+	} {
+		// Mimick the logic in GetStatVarGroup.
+		got := &pb.StatVarGroups{StatVarGroups: map[string]*pb.StatVarGroupNode{}}
+		for _, importGroupSVGs := range c.input {
+			for k, v := range importGroupSVGs.GetStatVarGroups() {
+				if _, ok := got.StatVarGroups[k]; !ok {
+					got.StatVarGroups[k] = v
+				} else {
+					MergeSVGNodes(got.StatVarGroups[k], v)
+				}
+			}
+		}
+		AdjustDescendentSVCount(got.StatVarGroups, CustomSvgRoot)
+
+		for k, svgWant := range c.want.GetStatVarGroups() {
+			svgGot, ok := got.StatVarGroups[k]
+			if !ok {
+				t.Errorf("MergeCustomSVG result missing svg %s", k)
+			}
+			if diff := cmp.Diff(svgGot, svgWant, protocmp.Transform()); diff != "" {
+				t.Errorf("MergeCustomSVG result[%s] got diff %v", k, diff)
+			}
 		}
 	}
 }

@@ -1,10 +1,6 @@
 {
   "statVars": [
     {
-      "name": "Legal frameworks that promote, enforce and monitor gender equality -- Area 2: violence against women",
-      "dcid": "sdg/SG_LGL_GENEQVAW"
-    },
-    {
       "name": "Ratio for female members of parliaments, Lower Chamber or Unicameral",
       "dcid": "sdg/SG_DMK_PARLMP_LC"
     },
@@ -27,6 +23,10 @@
     {
       "name": "Number of deaths attributed to suicide, by sex [Female]",
       "dcid": "sdg/SH_STA_SCIDEN.SEX--F"
+    },
+    {
+      "name": "Number of seats held by women in national parliaments [Female]",
+      "dcid": "sdg/SG_GEN_PARLN.SEX--F"
     },
     {
       "name": "Number of victims of intentional homicide per 100K population, by sex [Female]",
@@ -59,6 +59,26 @@
     {
       "name": "Proportion of population with severe disabilities receiving disability cash benefit, by sex [Female]",
       "dcid": "sdg/SI_COV_DISAB.SEX--F"
+    },
+    {
+      "name": "Proportion of seats held by women in national parliaments [Female]",
+      "dcid": "sdg/SG_GEN_PARL.SEX--F"
+    },
+    {
+      "name": "Proportion of women in managerial positions - 13th ICLS [Female]",
+      "dcid": "sdg/IC_GEN_MGTL.SEX--F"
+    },
+    {
+      "name": "Proportion of women in managerial positions - 19th ICLS [Female]",
+      "dcid": "sdg/IC_GEN_MGTL_19ICLS.SEX--F"
+    },
+    {
+      "name": "Proportion of women in senior and middle management positions - 13th ICLS [Female]",
+      "dcid": "sdg/IC_GEN_MGTN.SEX--F"
+    },
+    {
+      "name": "Proportion of women in senior and middle management positions - 19th ICLS [Female]",
+      "dcid": "sdg/IC_GEN_MGTN_19ICLS.SEX--F"
     },
     {
       "name": "Suicide mortality rate, by sex [Female]",
@@ -143,6 +163,22 @@
     {
       "name": "Proportion of adults with an account at a financial institution or mobile-money-service provider, by sex [15 years old and over, Female]",
       "dcid": "sdg/FB_BNK_ACCSS.AGE--Y_GE15__SEX--F"
+    },
+    {
+      "name": "Proportion of women aged 15-49 years with anaemia [15 to 49 years old, Female]",
+      "dcid": "sdg/SH_STA_ANEM.AGE--Y15T49__SEX--F"
+    },
+    {
+      "name": "Proportion of women aged 15-49 years with anaemia, non-pregnant [15 to 49 years old, Female]",
+      "dcid": "sdg/SH_STA_ANEM_NPRG.AGE--Y15T49__SEX--F"
+    },
+    {
+      "name": "Proportion of women aged 15-49 years with anaemia, pregnant [15 to 49 years old, Female]",
+      "dcid": "sdg/SH_STA_ANEM_PREG.AGE--Y15T49__SEX--F"
+    },
+    {
+      "name": "Proportion of women of reproductive age who have their need for family planning satisfied with modern methods [15 to 49 years old, Female]",
+      "dcid": "sdg/SH_FPL_MTMM.AGE--Y15T49__SEX--F"
     },
     {
       "name": "Proportion of youth not in education, employment or training, by sex and age - 13th ICLS [15 to 24 years old, Female]",
@@ -781,28 +817,6 @@
       ]
     },
     {
-      "dcid": "dc/g/SDG_5.5.2",
-      "name": "5.5.2: Proportion of women in managerial positions",
-      "statVars": [
-        {
-          "name": "Proportion of women in managerial positions - 13th ICLS [Female]",
-          "dcid": "sdg/IC_GEN_MGTL.SEX--F"
-        },
-        {
-          "name": "Proportion of women in managerial positions - 19th ICLS [Female]",
-          "dcid": "sdg/IC_GEN_MGTL_19ICLS.SEX--F"
-        },
-        {
-          "name": "Proportion of women in senior and middle management positions - 13th ICLS [Female]",
-          "dcid": "sdg/IC_GEN_MGTN.SEX--F"
-        },
-        {
-          "name": "Proportion of women in senior and middle management positions - 19th ICLS [Female]",
-          "dcid": "sdg/IC_GEN_MGTN_19ICLS.SEX--F"
-        }
-      ]
-    },
-    {
       "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_TargetedGender-Female",
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Targeted Gender = Female",
       "statVars": [
@@ -865,24 +879,6 @@
         {
           "name": "Participation rate in formal and non-formal education and training, by sex [55 to 64 years old, Female]",
           "dcid": "sdg/SE_ADT_EDUCTRN.AGE--Y55T64__SEX--F"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/SDG_2.2.3",
-      "name": "2.2.3: Prevalence of anaemia in women aged 15 to 49 years, by pregnancy status (percentage)",
-      "statVars": [
-        {
-          "name": "Proportion of women aged 15-49 years with anaemia [15 to 49 years old, Female]",
-          "dcid": "sdg/SH_STA_ANEM.AGE--Y15T49__SEX--F"
-        },
-        {
-          "name": "Proportion of women aged 15-49 years with anaemia, non-pregnant [15 to 49 years old, Female]",
-          "dcid": "sdg/SH_STA_ANEM_NPRG.AGE--Y15T49__SEX--F"
-        },
-        {
-          "name": "Proportion of women aged 15-49 years with anaemia, pregnant [15 to 49 years old, Female]",
-          "dcid": "sdg/SH_STA_ANEM_PREG.AGE--Y15T49__SEX--F"
         }
       ]
     },
@@ -995,20 +991,6 @@
       ]
     },
     {
-      "dcid": "dc/g/SDG_5.5.1",
-      "name": "5.5.1: Proportion of seats held by women in (a) national parliaments and (b) local governments",
-      "statVars": [
-        {
-          "name": "Number of seats held by women in national parliaments [Female]",
-          "dcid": "sdg/SG_GEN_PARLN.SEX--F"
-        },
-        {
-          "name": "Proportion of seats held by women in national parliaments [Female]",
-          "dcid": "sdg/SG_GEN_PARL.SEX--F"
-        }
-      ]
-    },
-    {
       "dcid": "dc/g/MortalityEvent_CauseOfDeath-InflammatoryDiseasesOfFemalePelvicOrgans",
       "name": "Mortality Event With Cause of Death = Inflammatory Diseases of Female Pelvic Organs",
       "statVars": [
@@ -1019,20 +1001,6 @@
         {
           "name": "Count of Mortality Event: Inflammatory Diseases of Female Pelvic Organs (Per Capita)",
           "dcid": "Count_MortalityEvent_InflammatoryDiseasesOfFemalePelvicOrgans_AsAFractionOf_Count_Person"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/SDGVCVAWMARR_age",
-      "name": "Proportion of Ever-partnered Women And Girls Subjected To Physical And/or Sexual Violence by A Current or Former Intimate Partner in The Previous 12 Months, by Age by Age",
-      "statVars": [
-        {
-          "name": "Proportion of ever-partnered women and girls subjected to physical and/or sexual violence by a current or former intimate partner in the previous 12 months, by age [15 to 49 years old, Female]",
-          "dcid": "sdg/VC_VAW_MARR.AGE--Y15T49__SEX--F"
-        },
-        {
-          "name": "Proportion of ever-partnered women and girls subjected to physical and/or sexual violence by a current or former intimate partner in the previous 12 months, by age [15 years old and over, Female]",
-          "dcid": "sdg/VC_VAW_MARR.AGE--Y_GE15__SEX--F"
         }
       ]
     },
@@ -3137,6 +3105,20 @@
       ]
     },
     {
+      "dcid": "dc/g/SDGVCVAWMARR_age_sdgsex-SDGSexEnumF",
+      "name": "Proportion of Ever-partnered Women And Girls Subjected To Physical And/or Sexual Violence by A Current or Former Intimate Partner in The Previous 12 Months, by Age With Age, Sex = Female",
+      "statVars": [
+        {
+          "name": "Proportion of ever-partnered women and girls subjected to physical and/or sexual violence by a current or former intimate partner in the previous 12 months, by age [15 to 49 years old, Female]",
+          "dcid": "sdg/VC_VAW_MARR.AGE--Y15T49__SEX--F"
+        },
+        {
+          "name": "Proportion of ever-partnered women and girls subjected to physical and/or sexual violence by a current or former intimate partner in the previous 12 months, by age [15 years old and over, Female]",
+          "dcid": "sdg/VC_VAW_MARR.AGE--Y_GE15__SEX--F"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/SDGSLDOMTSPDCW_age_sdgsex-SDGSexEnumF",
       "name": "Proportion of Time Spent on Unpaid Care Work, by Sex, Age And Location With Age, Sex = Female",
       "statVars": [
@@ -3301,16 +3283,6 @@
         {
           "name": "Count of Probable, Female Vibriosis except cholera incidents",
           "dcid": "Count_MedicalConditionIncident_Female_ConditionVibriosisExcludingCholera_ProbableCase"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/SDG_3.7.1",
-      "name": "3.7.1: Proportion of women of reproductive age (aged 15-49 years) who have their need for family planning satisfied with modern methods",
-      "statVars": [
-        {
-          "name": "Proportion of women of reproductive age who have their need for family planning satisfied with modern methods [15 to 49 years old, Female]",
-          "dcid": "sdg/SH_FPL_MTMM.AGE--Y15T49__SEX--F"
         }
       ]
     },
@@ -6965,54 +6937,6 @@
       ]
     },
     {
-      "dcid": "dc/g/SDG_1.3.1",
-      "name": "1.3.1: Proportion of population covered by social protection floors/systems, by sex, distinguishing children, unemployed persons, older persons, persons with disabilities, pregnant women, newborns, work-injury victims and the poor and the vulnerable"
-    },
-    {
-      "dcid": "dc/g/SDG_1.4",
-      "name": "1.4: By 2030, ensure that all men and women, in particular the poor and the vulnerable, have equal rights to economic resources, as well as access to basic services, ownership and control over land and other forms of property, inheritance, natural resources, appropriate new technology and financial services, including microfinance"
-    },
-    {
-      "dcid": "dc/g/SDG_2.2",
-      "name": "2.2: By 2030, end all forms of malnutrition, including achieving, by 2025, the internationally agreed targets on stunting and wasting in children under 5 years of age, and address the nutritional needs of adolescent girls, pregnant and lactating women and older persons"
-    },
-    {
-      "dcid": "dc/g/SDG_3.7.2",
-      "name": "3.7.2: Adolescent birth rate (aged 10-14 years; aged 15-19 years) per 1,000 women in that age group"
-    },
-    {
-      "dcid": "dc/g/SDG_4.3",
-      "name": "4.3: By 2030, ensure equal access for all women and men to affordable and quality technical, vocational and tertiary education, including university"
-    },
-    {
-      "dcid": "dc/g/SDG_4.6",
-      "name": "4.6: By 2030, ensure that all youth and a substantial proportion of adults, both men and women, achieve literacy and numeracy"
-    },
-    {
-      "dcid": "dc/g/SDG_5.1",
-      "name": "5.1: End all forms of discrimination against all women and girls everywhere"
-    },
-    {
-      "dcid": "dc/g/SDG_5.2.1",
-      "name": "5.2.1: Proportion of ever-partnered women and girls aged 15 years and older subjected to physical, sexual or psychological violence by a current or former intimate partner in the previous 12 months, by form of violence and by age"
-    },
-    {
-      "dcid": "dc/g/SDG_5.2",
-      "name": "5.2: Eliminate all forms of violence against all women and girls in the public and private spheres, including trafficking and sexual and other types of exploitation"
-    },
-    {
-      "dcid": "dc/g/SDG_6.2",
-      "name": "6.2: By 2030, achieve access to adequate and equitable sanitation and hygiene for all and end open defecation, paying special attention to the needs of women and girls and those in vulnerable situations"
-    },
-    {
-      "dcid": "dc/g/SDG_8.5",
-      "name": "8.5: By 2030, achieve full and productive employment and decent work for all women and men, including for young people and persons with disabilities, and equal pay for work of equal value"
-    },
-    {
-      "dcid": "dc/g/SDG_8.8",
-      "name": "8.8: Protect labour rights and promote safe and secure working environments for all workers, including migrant workers, in particular women migrants, and those in precarious employment"
-    },
-    {
       "dcid": "dc/g/SDGSPDYNADKL_sdgsex-SDGSexEnumF",
       "name": "Adolescent Birth Rate With Sex = Female"
     },
@@ -7083,10 +7007,6 @@
     {
       "dcid": "dc/g/SDGVCVAWMARR_sdgsex-SDGSexEnumF",
       "name": "Proportion of Ever-partnered Women And Girls Subjected To Physical And/or Sexual Violence by A Current or Former Intimate Partner in The Previous 12 Months, by Age With Sex = Female"
-    },
-    {
-      "dcid": "dc/g/SDGVCVAWMARR_sdgsex",
-      "name": "Proportion of Ever-partnered Women And Girls Subjected To Physical And/or Sexual Violence by A Current or Former Intimate Partner in The Previous 12 Months, by Age by Sex"
     },
     {
       "dcid": "dc/g/SDGSEADTFUNS_sdgsex-SDGSexEnumF",
@@ -8613,10 +8533,6 @@
       "name": "Proportion of Children And Young People Achieving A Minimum Proficiency Level in Reading And Mathematics With Sex = Female, Type of Skill = Skill: Minimum Proficiency in Reading"
     },
     {
-      "dcid": "dc/g/SDGVCVAWMARR_age_sdgsex-SDGSexEnumF",
-      "name": "Proportion of Ever-partnered Women And Girls Subjected To Physical And/or Sexual Violence by A Current or Former Intimate Partner in The Previous 12 Months, by Age With Age, Sex = Female"
-    },
-    {
       "dcid": "dc/g/SDGSEADTFUNS_age-SDGAgeEnumY16T65_sdgsex-SDGSexEnumF",
       "name": "Proportion of Population Achieving At Least A Fixed Level of Proficiency in Functional Skills, by Sex, Age And Type of Skill With Age = 16 To 65 Years Old, Sex = Female"
     },
@@ -8759,12 +8675,83 @@
     {
       "dcid": "dc/g/Student_Gender-Female_SchoolGradeLevel-SchoolGrade4",
       "name": "Student With Gender = Female, School Grade Level = School Grade 4"
+    },
+    {
+      "dcid": "dc/g/Student_Gender-Female_SchoolGradeLevel-SchoolGrade8",
+      "name": "Student With Gender = Female, School Grade Level = School Grade 8"
+    },
+    {
+      "dcid": "dc/g/Student_Gender-Female_SchoolSubject",
+      "name": "Student With Gender = Female, School Subject"
+    },
+    {
+      "dcid": "dc/g/Student_Gender-Female_SchoolSubject-Civics",
+      "name": "Student With Gender = Female, School Subject = Civics"
+    },
+    {
+      "dcid": "dc/g/Student_Gender-Female_SchoolSubject-Economics",
+      "name": "Student With Gender = Female, School Subject = Economics"
+    },
+    {
+      "dcid": "dc/g/Student_Gender-Female_SchoolSubject-Geography",
+      "name": "Student With Gender = Female, School Subject = Geography"
+    },
+    {
+      "dcid": "dc/g/Student_Gender-Female_SchoolSubject-Mathematics",
+      "name": "Student With Gender = Female, School Subject = Mathematics"
+    },
+    {
+      "dcid": "dc/g/Student_Gender-Female_SchoolSubject-Music",
+      "name": "Student With Gender = Female, School Subject = Music"
+    },
+    {
+      "dcid": "dc/g/Student_Gender-Female_SchoolSubject-Reading",
+      "name": "Student With Gender = Female, School Subject = Reading"
+    },
+    {
+      "dcid": "dc/g/Student_Gender-Female_SchoolSubject-Science",
+      "name": "Student With Gender = Female, School Subject = Science"
+    },
+    {
+      "dcid": "dc/g/Student_Gender-Female_SchoolSubject-TechnologyAndEngineeringLiteracy",
+      "name": "Student With Gender = Female, School Subject = Technology And Engineering Literacy"
+    },
+    {
+      "dcid": "dc/g/Student_Gender-Female_SchoolSubject-USHistory",
+      "name": "Student With Gender = Female, School Subject = USHistory"
+    },
+    {
+      "dcid": "dc/g/Student_Gender-Female_SchoolSubject-VisualArts",
+      "name": "Student With Gender = Female, School Subject = Visual Arts"
+    },
+    {
+      "dcid": "dc/g/Student_Gender-Female_SchoolSubject-Writing",
+      "name": "Student With Gender = Female, School Subject = Writing"
+    },
+    {
+      "dcid": "dc/g/Student_Gender-Female_SchoolType",
+      "name": "Student With Gender = Female, School Type"
+    },
+    {
+      "dcid": "dc/g/Student_Gender-Female_SchoolType-PrivateSchool",
+      "name": "Student With Gender = Female, School Type = Private School"
+    },
+    {
+      "dcid": "dc/g/Student_Gender-Female_SchoolType-PublicSchool",
+      "name": "Student With Gender = Female, School Type = Public School"
+    },
+    {
+      "dcid": "dc/g/Student_Gender-Female_SubjectAssessmentScale",
+      "name": "Student With Gender = Female, Subject Assessment Scale"
+    },
+    {
+      "dcid": "dc/g/Student_Gender-Female_SubjectAssessmentScale-AlgebraScale",
+      "name": "Student With Gender = Female, Subject Assessment Scale = Algebra Scale"
     }
   ],
   "matches": [
     "female",
     "female)",
-    "females",
-    "women"
+    "females"
   ]
 }

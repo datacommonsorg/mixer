@@ -19,8 +19,8 @@ import (
 	"strings"
 
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
-	"github.com/datacommonsorg/mixer/internal/server/resource"
-	"github.com/datacommonsorg/mixer/internal/server/statvar"
+	"github.com/datacommonsorg/mixer/internal/server/cache"
+	"github.com/datacommonsorg/mixer/internal/server/statvar/hierarchy"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
@@ -31,7 +31,7 @@ func Ancestors(
 	ctx context.Context,
 	in *pbv1.VariableAncestorsRequest,
 	store *store.Store,
-	cache *resource.Cache,
+	cachedata *cache.Cache,
 ) (*pbv1.VariableAncestorsResponse, error) {
 	node := in.GetNode()
 	if node == "" {
@@ -41,7 +41,7 @@ func Ancestors(
 	ancestors := []string{}
 	curr := node
 	for {
-		if parents, ok := cache.ParentSvg[curr]; ok {
+		if parents, ok := cachedata.ParentSvg()[curr]; ok {
 			curr = parents[0]
 			for _, parent := range parents {
 				// Prefer parent from custom import group
@@ -50,7 +50,7 @@ func Ancestors(
 					break
 				}
 			}
-			if curr == statvar.SvgRoot {
+			if curr == hierarchy.SvgRoot {
 				break
 			}
 			ancestors = append(ancestors, curr)

@@ -18,7 +18,7 @@ import (
 	"context"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
-	"github.com/datacommonsorg/mixer/internal/server/statvar"
+	"github.com/datacommonsorg/mixer/internal/server/statvar/fetcher"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/codes"
@@ -36,7 +36,7 @@ func GetPlaceStatVars(
 	if err := util.CheckValidDCIDs(dcids); err != nil {
 		return nil, err
 	}
-	entityToStatVars, err := statvar.GetEntityStatVarsHelper(ctx, store, dcids)
+	entityToStatVars, err := fetcher.FetchEntityVariables(ctx, store, dcids)
 	if err != nil {
 		return nil, err
 	}

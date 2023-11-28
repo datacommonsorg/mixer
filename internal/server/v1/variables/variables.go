@@ -19,7 +19,7 @@ import (
 	"sort"
 
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
-	"github.com/datacommonsorg/mixer/internal/server/statvar"
+	"github.com/datacommonsorg/mixer/internal/server/statvar/fetcher"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
@@ -37,7 +37,7 @@ func Variables(
 	if err := util.CheckValidDCIDs([]string{entity}); err != nil {
 		return nil, err
 	}
-	entityToStatVars, err := statvar.GetEntityStatVarsHelper(ctx, store, []string{entity})
+	entityToStatVars, err := fetcher.FetchEntityVariables(ctx, store, []string{entity})
 	if err != nil {
 		return nil, err
 	}
@@ -65,7 +65,7 @@ func BulkVariables(
 	if err := util.CheckValidDCIDs(entities); err != nil {
 		return nil, err
 	}
-	entityToStatVars, err := statvar.GetEntityStatVarsHelper(ctx, store, entities)
+	entityToStatVars, err := fetcher.FetchEntityVariables(ctx, store, entities)
 	if err != nil {
 		return nil, err
 	}

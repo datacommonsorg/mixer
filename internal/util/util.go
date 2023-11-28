@@ -667,3 +667,19 @@ func HasCollectionCache(ancestor string, childType string) bool {
 	_, ok := childTypeDenyList[childType]
 	return !ok
 }
+
+// GetAllDescendentSV get all the descendent stat var for an svg.
+func GetAllDescendentSV(svgMap map[string]*pb.StatVarGroupNode, svgDcid string) []string {
+	res := []string{}
+	if _, ok := svgMap[svgDcid]; !ok {
+		return res
+	}
+	node := svgMap[svgDcid]
+	for _, childSVG := range node.ChildStatVarGroups {
+		res = append(res, GetAllDescendentSV(svgMap, childSVG.Id)...)
+	}
+	for _, sv := range node.ChildStatVars {
+		res = append(res, sv.Id)
+	}
+	return MergeDedupe(res)
+}

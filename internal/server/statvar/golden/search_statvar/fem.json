@@ -13,10 +13,6 @@
       "dcid": "FemaSocialVulnerability_NaturalHazardImpact"
     },
     {
-      "name": "Legal frameworks that promote, enforce and monitor gender equality -- Area 2: violence against women",
-      "dcid": "sdg/SG_LGL_GENEQVAW"
-    },
-    {
       "name": "Ratio for female members of parliaments, Lower Chamber or Unicameral",
       "dcid": "sdg/SG_DMK_PARLMP_LC"
     },
@@ -137,6 +133,10 @@
       "dcid": "sdg/SH_STA_SCIDEN.SEX--F"
     },
     {
+      "name": "Number of seats held by women in national parliaments [Female]",
+      "dcid": "sdg/SG_GEN_PARLN.SEX--F"
+    },
+    {
       "name": "Number of total conflict-related deaths, by sex, age and cause of death [Female]",
       "dcid": "sdg/VC_DTH_TOTN.SEX--F"
     },
@@ -181,6 +181,10 @@
       "dcid": "sdg/SI_COV_CHLD.SEX--F"
     },
     {
+      "name": "Proportion of elected seats held by women in deliberative bodies of local government [Female]",
+      "dcid": "sdg/SG_GEN_LOCGELS.SEX--F"
+    },
+    {
       "name": "Proportion of employed population covered in the event of work injury, by sex [Female]",
       "dcid": "sdg/SI_COV_WKINJRY.SEX--F"
     },
@@ -191,6 +195,10 @@
     {
       "name": "Proportion of individuals who own a mobile telephone, by sex [Female]",
       "dcid": "sdg/IT_MOB_OWN.SEX--F"
+    },
+    {
+      "name": "Proportion of mothers with newborns receiving maternity cash benefit [Female]",
+      "dcid": "sdg/SI_COV_MATNL.SEX--F"
     },
     {
       "name": "Proportion of people with legally recognized documentation of their rights to land out of total adult population, by sex [Female]",
@@ -273,6 +281,10 @@
       "dcid": "sdg/SI_COV_DISAB.SEX--F"
     },
     {
+      "name": "Proportion of seats held by women in national parliaments [Female]",
+      "dcid": "sdg/SG_GEN_PARL.SEX--F"
+    },
+    {
       "name": "Proportion of the population who have experienced a dispute in the past two years who accessed a formal or informal dispute resolution mechanism [Female]",
       "dcid": "sdg/SP_DISP_RESOL.SEX--F"
     },
@@ -287,6 +299,22 @@
     {
       "name": "Proportion of vulnerable population receiving social assistance cash benefit, by sex [Female]",
       "dcid": "sdg/SI_COV_VULN.SEX--F"
+    },
+    {
+      "name": "Proportion of women in managerial positions - 13th ICLS [Female]",
+      "dcid": "sdg/IC_GEN_MGTL.SEX--F"
+    },
+    {
+      "name": "Proportion of women in managerial positions - 19th ICLS [Female]",
+      "dcid": "sdg/IC_GEN_MGTL_19ICLS.SEX--F"
+    },
+    {
+      "name": "Proportion of women in senior and middle management positions - 13th ICLS [Female]",
+      "dcid": "sdg/IC_GEN_MGTN.SEX--F"
+    },
+    {
+      "name": "Proportion of women in senior and middle management positions - 19th ICLS [Female]",
+      "dcid": "sdg/IC_GEN_MGTN_19ICLS.SEX--F"
     },
     {
       "name": "Suicide mortality rate, by sex [Female]",
@@ -341,10 +369,6 @@
       "dcid": "WHO/ort_Female"
     },
     {
-      "name": "Counselling To Pregnant Women With Alcohol Problems",
-      "dcid": "WHO/SA_0000001716"
-    },
-    {
       "name": "Crude Suicide Rates (Per 100 000 Population), Female",
       "dcid": "WHO/SDGSUICIDE_Female"
     },
@@ -371,10 +395,6 @@
     {
       "name": "Effective Cataract Surgical Coverage Of Adults Aged 50 And Over (%), Female",
       "dcid": "WHO/CATARACTSURGICALEFFECTIVE_Female"
-    },
-    {
-      "name": "Estimated Number Of Pregnant Women Living With Hiv Needing Antiretrovirals For Preventing Mother-To-Child Transmission Based On Who Methods",
-      "dcid": "WHO/HIV_0000000021"
     },
     {
       "name": "Full Immunization Coverage Among One-Year-Olds (%) (fullv), Female",
@@ -425,46 +445,6 @@
       "dcid": "sdg/AG_PRD_FIESSN.AGE--Y_GE15__SEX--F"
     },
     {
-      "name": "Obesity Prevalence In Non-Pregnant Women Aged 15-49 Years, Bmi \u003e= 30 (%) (obesewm), No Schooling Completed",
-      "dcid": "WHO/obesewm_NoSchoolingCompleted"
-    },
-    {
-      "name": "Obesity Prevalence In Non-Pregnant Women Aged 15-49 Years, Bmi \u003e= 30 (%) (obesewm), Primary",
-      "dcid": "WHO/obesewm_Primary"
-    },
-    {
-      "name": "Obesity Prevalence In Non-Pregnant Women Aged 15-49 Years, Bmi \u003e= 30 (%) (obesewm), Quintile1",
-      "dcid": "WHO/obesewm_Quintile1"
-    },
-    {
-      "name": "Obesity Prevalence In Non-Pregnant Women Aged 15-49 Years, Bmi \u003e= 30 (%) (obesewm), Quintile2",
-      "dcid": "WHO/obesewm_Quintile2"
-    },
-    {
-      "name": "Obesity Prevalence In Non-Pregnant Women Aged 15-49 Years, Bmi \u003e= 30 (%) (obesewm), Quintile3",
-      "dcid": "WHO/obesewm_Quintile3"
-    },
-    {
-      "name": "Obesity Prevalence In Non-Pregnant Women Aged 15-49 Years, Bmi \u003e= 30 (%) (obesewm), Quintile4",
-      "dcid": "WHO/obesewm_Quintile4"
-    },
-    {
-      "name": "Obesity Prevalence In Non-Pregnant Women Aged 15-49 Years, Bmi \u003e= 30 (%) (obesewm), Quintile5",
-      "dcid": "WHO/obesewm_Quintile5"
-    },
-    {
-      "name": "Obesity Prevalence In Non-Pregnant Women Aged 15-49 Years, Bmi \u003e= 30 (%) (obesewm), Rural",
-      "dcid": "WHO/obesewm_Rural"
-    },
-    {
-      "name": "Obesity Prevalence In Non-Pregnant Women Aged 15-49 Years, Bmi \u003e= 30 (%) (obesewm), Secondary Or Higher",
-      "dcid": "WHO/obesewm_SecondaryOrHigher"
-    },
-    {
-      "name": "Obesity Prevalence In Non-Pregnant Women Aged 15-49 Years, Bmi \u003e= 30 (%) (obesewm), Urban",
-      "dcid": "WHO/obesewm_Urban"
-    },
-    {
       "name": "Overweight Prevalence In Children Aged \u003cFive Years (%), Female",
       "dcid": "WHO/overwgt5_Female"
     },
@@ -489,78 +469,6 @@
       "dcid": "WHO/pnchome3_Female"
     },
     {
-      "name": "Pregnant Women Sleeping Under Insecticide-Treated Nets (%), Decile1",
-      "dcid": "WHO/itnwm_Decile1"
-    },
-    {
-      "name": "Pregnant Women Sleeping Under Insecticide-Treated Nets (%), Decile10",
-      "dcid": "WHO/itnwm_Decile10"
-    },
-    {
-      "name": "Pregnant Women Sleeping Under Insecticide-Treated Nets (%), Decile2",
-      "dcid": "WHO/itnwm_Decile2"
-    },
-    {
-      "name": "Pregnant Women Sleeping Under Insecticide-Treated Nets (%), Decile3",
-      "dcid": "WHO/itnwm_Decile3"
-    },
-    {
-      "name": "Pregnant Women Sleeping Under Insecticide-Treated Nets (%), Decile4",
-      "dcid": "WHO/itnwm_Decile4"
-    },
-    {
-      "name": "Pregnant Women Sleeping Under Insecticide-Treated Nets (%), Decile5",
-      "dcid": "WHO/itnwm_Decile5"
-    },
-    {
-      "name": "Pregnant Women Sleeping Under Insecticide-Treated Nets (%), Decile6",
-      "dcid": "WHO/itnwm_Decile6"
-    },
-    {
-      "name": "Pregnant Women Sleeping Under Insecticide-Treated Nets (%), Decile7",
-      "dcid": "WHO/itnwm_Decile7"
-    },
-    {
-      "name": "Pregnant Women Sleeping Under Insecticide-Treated Nets (%), Decile8",
-      "dcid": "WHO/itnwm_Decile8"
-    },
-    {
-      "name": "Pregnant Women Sleeping Under Insecticide-Treated Nets (%), Decile9",
-      "dcid": "WHO/itnwm_Decile9"
-    },
-    {
-      "name": "Pregnant Women Sleeping Under Insecticide-Treated Nets (%), No Schooling Completed",
-      "dcid": "WHO/itnwm_NoSchoolingCompleted"
-    },
-    {
-      "name": "Pregnant Women Sleeping Under Insecticide-Treated Nets (%), Primary",
-      "dcid": "WHO/itnwm_Primary"
-    },
-    {
-      "name": "Pregnant Women Sleeping Under Insecticide-Treated Nets (%), Quintile1",
-      "dcid": "WHO/itnwm_Quintile1"
-    },
-    {
-      "name": "Pregnant Women Sleeping Under Insecticide-Treated Nets (%), Quintile2",
-      "dcid": "WHO/itnwm_Quintile2"
-    },
-    {
-      "name": "Pregnant Women Sleeping Under Insecticide-Treated Nets (%), Quintile3",
-      "dcid": "WHO/itnwm_Quintile3"
-    },
-    {
-      "name": "Pregnant Women Sleeping Under Insecticide-Treated Nets (%), Quintile4",
-      "dcid": "WHO/itnwm_Quintile4"
-    },
-    {
-      "name": "Pregnant Women Sleeping Under Insecticide-Treated Nets (%), Quintile5",
-      "dcid": "WHO/itnwm_Quintile5"
-    },
-    {
-      "name": "Pregnant Women Sleeping Under Insecticide-Treated Nets (%), Secondary Or Higher",
-      "dcid": "WHO/itnwm_SecondaryOrHigher"
-    },
-    {
       "name": "Prevalence of moderate or severe food insecurity [15 years old and over, Female]",
       "dcid": "sdg/AG_PRD_FIESMS.AGE--Y_GE15__SEX--F"
     },
@@ -575,6 +483,46 @@
     {
       "name": "Proportion of adults with an account at a financial institution or mobile-money-service provider, by sex [15 years old and over, Female]",
       "dcid": "sdg/FB_BNK_ACCSS.AGE--Y_GE15__SEX--F"
+    },
+    {
+      "name": "Proportion of women aged 15-49 years with anaemia [15 to 49 years old, Female]",
+      "dcid": "sdg/SH_STA_ANEM.AGE--Y15T49__SEX--F"
+    },
+    {
+      "name": "Proportion of women aged 15-49 years with anaemia, non-pregnant [15 to 49 years old, Female]",
+      "dcid": "sdg/SH_STA_ANEM_NPRG.AGE--Y15T49__SEX--F"
+    },
+    {
+      "name": "Proportion of women aged 15-49 years with anaemia, pregnant [15 to 49 years old, Female]",
+      "dcid": "sdg/SH_STA_ANEM_PREG.AGE--Y15T49__SEX--F"
+    },
+    {
+      "name": "Proportion of women aged 20-24 years who were married or in a union before age 15 [20 to 24 years old, Female]",
+      "dcid": "sdg/SP_DYN_MRBF15.AGE--Y20T24__SEX--F"
+    },
+    {
+      "name": "Proportion of women aged 20-24 years who were married or in a union before age 18 [20 to 24 years old, Female]",
+      "dcid": "sdg/SP_DYN_MRBF18.AGE--Y20T24__SEX--F"
+    },
+    {
+      "name": "Proportion of women of reproductive age who have their need for family planning satisfied with modern methods [15 to 49 years old, Female]",
+      "dcid": "sdg/SH_FPL_MTMM.AGE--Y15T49__SEX--F"
+    },
+    {
+      "name": "Proportion of women who make their own informed decisions regarding contraceptive use [15 to 49 years old, Female]",
+      "dcid": "sdg/SH_FPL_INFMCU.AGE--Y15T49__SEX--F"
+    },
+    {
+      "name": "Proportion of women who make their own informed decisions regarding reproductive health care [15 to 49 years old, Female]",
+      "dcid": "sdg/SH_FPL_INFMRH.AGE--Y15T49__SEX--F"
+    },
+    {
+      "name": "Proportion of women who make their own informed decisions regarding sexual relations [15 to 49 years old, Female]",
+      "dcid": "sdg/SH_FPL_INFMSR.AGE--Y15T49__SEX--F"
+    },
+    {
+      "name": "Proportion of women who make their own informed decisions regarding sexual relations, contraceptive use and reproductive health care [15 to 49 years old, Female]",
+      "dcid": "sdg/SH_FPL_INFM.AGE--Y15T49__SEX--F"
     },
     {
       "name": "Proportion of youth not in education, employment or training, by sex and age - 13th ICLS [15 to 24 years old, Female]",
@@ -617,28 +565,12 @@
       "dcid": "WHO/uwgt5_Female"
     },
     {
-      "name": "Use Of Mosquito Nets - Percentage Of All Women Age 15-49 Who Slept Under An Ever Treated Net Last Night",
-      "dcid": "WHO/MALARIA_30557"
-    },
-    {
-      "name": "Use Of Mosquito Nets - Percentage Of All Women Age 15-49 Who Slept Under An Itn Last Night",
-      "dcid": "WHO/MALARIA_30558"
-    },
-    {
-      "name": "Use Of Mosquito Nets - Percentage Of All Women Age 15-49 Who Slept Under Any Net Last Night",
-      "dcid": "WHO/MALARIA_30556"
-    },
-    {
       "name": "Wasting Prevalence In Children Aged \u003c 3 Years (%), Female",
       "dcid": "WHO/wast3_Female"
     },
     {
       "name": "Wasting Prevalence In Children Aged \u003c 5 Years (%), Female",
       "dcid": "WHO/wast5_Female"
-    },
-    {
-      "name": "Women Age 15-49 Years Who Received A Health Check Within 2 Days After Delivery Of Their Most Recent Live Birth In The Last 2 Years (%)",
-      "dcid": "WHO/UNICEF_PNCMOTHER"
     },
     {
       "name": "Murder and Non Negligent Manslaughter Crimes Committed Per Capita for the Female Population",
@@ -699,10 +631,6 @@
     {
       "name": "Abstainers (15-19 Years), Past 12 Months (%), Female",
       "dcid": "WHO/SA_0000001412_Female"
-    },
-    {
-      "name": "Adolescent fertility rate (births per 1,000 women ages 15-19)",
-      "dcid": "worldBank/SP_ADO_TFRT"
     },
     {
       "name": "Adults Aged \u0026#8805; 20 Years Who Are Obese (%), Female",
@@ -1161,10 +1089,6 @@
       "dcid": "WHO/CM_01_Female"
     },
     {
-      "name": "Number of pregnant women registered for Antenatal Care within first trimester",
-      "dcid": "Count_PregnantWomen_RegisteredForAntenatalCareWithinFirstTrimester"
-    },
-    {
       "name": "Nursing Personnel (%), Female",
       "dcid": "WHO/HWF_0026_Female"
     },
@@ -1253,32 +1177,8 @@
       "dcid": "WHO/TOBACCO_0000000192_Female"
     },
     {
-      "name": "Prevalence of anemia among pregnant women (%)",
-      "dcid": "worldBank/SH_PRG_ANEM"
-    },
-    {
-      "name": "Prevention Programmes For Specific Populations For Alcohol, Pregnant Women",
-      "dcid": "WHO/RSUD_590_PregnantWomen"
-    },
-    {
-      "name": "Prevention Programmes For Specific Populations For Drugs, Pregnant Women",
-      "dcid": "WHO/RSUD_610_PregnantWomen"
-    },
-    {
-      "name": "Programmes For The Prevention Of Substance Use Disorders For Special Populations, Pregnant Women",
-      "dcid": "WHO/RSUD_77_PregnantWomen"
-    },
-    {
       "name": "Proportion Of Girls And Women Aged 15-49 Years Who Have Undergone Female Genital Mutilation/Cutting (Fmg/C) (%)",
       "dcid": "WHO/SH_STA_FGMS"
-    },
-    {
-      "name": "Proportion Of Women Aged 20-24 Years Who Were Married Or In A Union By Age 15 (%)",
-      "dcid": "WHO/SP_DYN_MRBF15"
-    },
-    {
-      "name": "Proportion Of Women Aged 20-24 Years Who Were Married Or In A Union By Age 18 (%)",
-      "dcid": "WHO/SP_DYN_MRBF18"
     },
     {
       "name": "Road Traffic Crash Deaths, Age-Standardized Death Rates (15+), Per 100,000 Population (SA_0000001459), Female",
@@ -1293,52 +1193,8 @@
       "dcid": "Count_Death_BirthControlSterilisation"
     },
     {
-      "name": "Total number of pregnant women registered for Antenatal Care",
-      "dcid": "Count_PregnantWomen_RegisteredForAntenatalCare"
-    },
-    {
-      "name": "Treatment Programmes For Women With Alcohol Use Disorders, Capital City",
-      "dcid": "WHO/RSUD_660_CapitalCity"
-    },
-    {
-      "name": "Treatment Programmes For Women With Alcohol Use Disorders, Other Areas",
-      "dcid": "WHO/RSUD_660_OtherAreas"
-    },
-    {
-      "name": "Treatment Programmes For Women With Alcohol Use Disorders, Other Major Cities",
-      "dcid": "WHO/RSUD_660_OtherMajorCities"
-    },
-    {
-      "name": "Treatment Programmes For Women With Drug Use Disorders, Capital City",
-      "dcid": "WHO/RSUD_670_CapitalCity"
-    },
-    {
-      "name": "Treatment Programmes For Women With Drug Use Disorders, Other Areas",
-      "dcid": "WHO/RSUD_670_OtherAreas"
-    },
-    {
-      "name": "Treatment Programmes For Women With Drug Use Disorders, Other Major Cities",
-      "dcid": "WHO/RSUD_670_OtherMajorCities"
-    },
-    {
       "name": "Under-Five Mortality Rate (Probability Of Dying By Age 5 Per 1000 Live Births), Female",
       "dcid": "WHO/MDG_0000000007_Female"
-    },
-    {
-      "name": "Unmet need for contraception (% of married women ages 15-49)",
-      "dcid": "worldBank/SP_UWT_TFRT"
-    },
-    {
-      "name": "Use Of Mosquito Nets - Percentage Of All Women Age 15-49 Who Slept Under An Ever Treated Net Last Night, Rural",
-      "dcid": "WHO/MALARIA_30557_Rural"
-    },
-    {
-      "name": "Use Of Mosquito Nets - Percentage Of All Women Age 15-49 Who Slept Under An Itn Last Night, Rural",
-      "dcid": "WHO/MALARIA_30558_Rural"
-    },
-    {
-      "name": "Use Of Mosquito Nets - Percentage Of All Women Age 15-49 Who Slept Under Any Net Last Night, Rural",
-      "dcid": "WHO/MALARIA_30556_Rural"
     },
     {
       "name": "Youth illiterate population, 15-24 years, % female",
@@ -1685,10 +1541,6 @@
       "dcid": "WHO/AIR_45_Female_TracheaBronchusLungCancers"
     },
     {
-      "name": "Antiretroviral therapy coverage for PMTCT (% of pregnant women living with HIV)",
-      "dcid": "worldBank/SH_HIV_PMTC_ZS"
-    },
-    {
       "name": "Barro-Lee: Average years of total schooling, age 15+, female",
       "dcid": "worldBank/BAR_SCHL_15UP_FE"
     },
@@ -1815,22 +1667,6 @@
     {
       "name": "Borrowed from family or friends, female (% age 15+)",
       "dcid": "worldBank/fin22b_t_d_1"
-    },
-    {
-      "name": "Contraceptive prevalence, any methods (% of women ages 15-49)",
-      "dcid": "worldBank/SP_DYN_CONU_ZS"
-    },
-    {
-      "name": "Contraceptive prevalence, modern methods (% of women ages 15-49)",
-      "dcid": "worldBank/SP_DYN_CONM_ZS"
-    },
-    {
-      "name": "Demand for family planning satisfied by any methods (% of married women with demand for family planning)",
-      "dcid": "worldBank/SH_FPL_SATI_ZS"
-    },
-    {
-      "name": "Demand for family planning satisfied by modern methods (% of married women with demand for family planning)",
-      "dcid": "worldBank/SH_FPL_SATM_ZS"
     },
     {
       "name": "Early school leavers from primary education, female (number)",
@@ -2873,14 +2709,6 @@
       "dcid": "worldBank/UIS_SAP_4_F"
     },
     {
-      "name": "Pregnant women receiving prenatal care (%)",
-      "dcid": "worldBank/SH_STA_ANVC_ZS"
-    },
-    {
-      "name": "Pregnant women receiving prenatal care of at least four visits (% of pregnant women)",
-      "dcid": "worldBank/SH_STA_ANV4_ZS"
-    },
-    {
       "name": "Premature Deaths Due To Noncommunicable Diseases (Ncd) As A Proportion Of All Ncd Deaths, Female, Noncommunicable Diseases",
       "dcid": "WHO/NCD_UNDER70_Female_NoncommunicableDiseases"
     },
@@ -2929,20 +2757,8 @@
       "dcid": "WHO/NCD_BMI_18A_Female"
     },
     {
-      "name": "Prevalence of anemia among non-pregnant women (% of women ages 15-49)",
-      "dcid": "worldBank/SH_ANM_NPRG_ZS"
-    },
-    {
-      "name": "Prevalence of anemia among women of reproductive age (% of women ages 15-49)",
-      "dcid": "worldBank/SH_ANM_ALLW_ZS"
-    },
-    {
       "name": "Prevalence of current tobacco use, females (% of female adults)",
       "dcid": "worldBank/SH_PRV_SMOK_FE"
-    },
-    {
-      "name": "Prevalence of syphilis (% of women attending antenatal care)",
-      "dcid": "worldBank/SH_PRG_SYPH_ZS"
     },
     {
       "name": "Probability of Survival to Age 5, Female",
@@ -3051,10 +2867,6 @@
     {
       "name": "Proportion of time spent on unpaid domestic and care work, female (% of 24 hour day)",
       "dcid": "worldBank/SG_TIM_UWRK_FE"
-    },
-    {
-      "name": "Proportion of women in ministerial level positions (%)",
-      "dcid": "worldBank/SG_GEN_MNST_ZS"
     },
     {
       "name": "Raised Blood Pressure (Sbp\u003e=140 Or Dbp\u003e=90) (Age-Standardized Estimate), Female, Years18Plus",
@@ -3179,10 +2991,6 @@
     {
       "name": "Teachers in upper secondary education, female (number)",
       "dcid": "worldBank/UIS_T_3_F"
-    },
-    {
-      "name": "Teenage mothers (% of women ages 15-19 who have had children or are currently pregnant)",
-      "dcid": "worldBank/SP_MTR_1519_ZS"
     },
     {
       "name": "Time required to start a business, female (days)",
@@ -3999,6 +3807,198 @@
     {
       "name": "Percentage of female students in upper secondary education enrolled in vocational programmes, female (%)",
       "dcid": "worldBank/UIS_GTVP_3_V_F"
+    },
+    {
+      "name": "Percentage of repeaters in Grade 1 of primary education, female (%)",
+      "dcid": "worldBank/UIS_REPP_1_G1_F"
+    },
+    {
+      "name": "Percentage of repeaters in Grade 2 of primary education, female (%)",
+      "dcid": "worldBank/UIS_REPP_1_G2_F"
+    },
+    {
+      "name": "Percentage of repeaters in Grade 3 of primary education, female (%)",
+      "dcid": "worldBank/UIS_REPP_1_G3_F"
+    },
+    {
+      "name": "Percentage of repeaters in Grade 4 of primary education, female (%)",
+      "dcid": "worldBank/UIS_REPP_1_G4_F"
+    },
+    {
+      "name": "Percentage of repeaters in Grade 5 of primary education, female (%)",
+      "dcid": "worldBank/UIS_REPP_1_G5_F"
+    },
+    {
+      "name": "Percentage of repeaters in Grade 6 of primary education, female (%)",
+      "dcid": "worldBank/UIS_REPP_1_G6_F"
+    },
+    {
+      "name": "Percentage of repeaters in lower secondary general education, all grades, female (%)",
+      "dcid": "worldBank/UIS_REPP_2_GPV_F"
+    },
+    {
+      "name": "Percentage of students in primary education who are female (%)",
+      "dcid": "worldBank/SE_PRM_ENRL_FE_ZS"
+    },
+    {
+      "name": "Percentage of students in secondary education who are female (%)",
+      "dcid": "worldBank/SE_SEC_ENRL_FE_ZS"
+    },
+    {
+      "name": "Percentage of teachers in primary education who are female (%)",
+      "dcid": "worldBank/SE_PRM_TCHR_FE_ZS"
+    },
+    {
+      "name": "Percentage of teachers in secondary education who are female (%)",
+      "dcid": "worldBank/SE_SEC_TCHR_FE_ZS"
+    },
+    {
+      "name": "Percentage of teachers in tertiary education who are female (%)",
+      "dcid": "worldBank/SE_TER_TCHR_FE_ZS"
+    },
+    {
+      "name": "Persistence To Last Grade Of Primary (% Of Cohort), Female",
+      "dcid": "WHO/SE_PRM_PRSL_ZS_Female"
+    },
+    {
+      "name": "Population ages 0-14, female",
+      "dcid": "worldBank/SP_POP_0014_FE_IN"
+    },
+    {
+      "name": "Population ages 0-14, female (% of female population)",
+      "dcid": "worldBank/SP_POP_0014_FE_ZS"
+    },
+    {
+      "name": "Population ages 10-14, female (% of female population)",
+      "dcid": "worldBank/SP_POP_1014_FE_5Y"
+    },
+    {
+      "name": "Population ages 15-19, female (% of female population)",
+      "dcid": "worldBank/SP_POP_1519_FE_5Y"
+    },
+    {
+      "name": "Population ages 15-64, female",
+      "dcid": "worldBank/SP_POP_1564_FE_IN"
+    },
+    {
+      "name": "Population ages 20-24, female (% of female population)",
+      "dcid": "worldBank/SP_POP_2024_FE_5Y"
+    },
+    {
+      "name": "Population ages 25-29, female (% of female population)",
+      "dcid": "worldBank/SP_POP_2529_FE_5Y"
+    },
+    {
+      "name": "Population ages 30-34, female (% of female population)",
+      "dcid": "worldBank/SP_POP_3034_FE_5Y"
+    },
+    {
+      "name": "Population ages 35-39, female (% of female population)",
+      "dcid": "worldBank/SP_POP_3539_FE_5Y"
+    },
+    {
+      "name": "Population ages 40-44, female (% of female population)",
+      "dcid": "worldBank/SP_POP_4044_FE_5Y"
+    },
+    {
+      "name": "Population ages 45-49, female (% of female population)",
+      "dcid": "worldBank/SP_POP_4549_FE_5Y"
+    },
+    {
+      "name": "Population ages 50-54, female (% of female population)",
+      "dcid": "worldBank/SP_POP_5054_FE_5Y"
+    },
+    {
+      "name": "Population ages 55-59, female (% of female population)",
+      "dcid": "worldBank/SP_POP_5559_FE_5Y"
+    },
+    {
+      "name": "Population ages 60-64, female (% of female population)",
+      "dcid": "worldBank/SP_POP_6064_FE_5Y"
+    },
+    {
+      "name": "Population ages 65 and above, female",
+      "dcid": "worldBank/SP_POP_65UP_FE_IN"
+    },
+    {
+      "name": "Population ages 65 and above, female (% of female population)",
+      "dcid": "worldBank/SP_POP_65UP_FE_ZS"
+    },
+    {
+      "name": "Population of the official entrance age to primary education, female (number)",
+      "dcid": "worldBank/UIS_SAP_1_G1_F"
+    },
+    {
+      "name": "Population, female",
+      "dcid": "worldBank/SP_POP_TOTL_FE_IN"
+    },
+    {
+      "name": "Population, female (% of total)",
+      "dcid": "worldBank/SP_POP_TOTL_FE_ZS"
+    },
+    {
+      "name": "Prevalence Of Anaemia In Pregnant Women (Aged 15-49) (%), Female",
+      "dcid": "WHO/NUTRITION_ANAEMIA_PREGNANT_PREV_Female"
+    },
+    {
+      "name": "Prevalence Of Anaemia In Women Of Reproductive Age (Aged 15-49) (%), Female",
+      "dcid": "WHO/NUTRITION_ANAEMIA_REPRODUCTIVEAGE_PREV_Female"
+    },
+    {
+      "name": "Prevalence Of Current Cigarette Smoking Among Adolescents (%), Female",
+      "dcid": "WHO/Yth_curr_cig_smoking_Female"
+    },
+    {
+      "name": "Prevalence Of Current Cigarette Smoking Among Adults (%), Female",
+      "dcid": "WHO/Adult_curr_cig_smoking_Female"
+    },
+    {
+      "name": "Prevalence Of Current Tobacco Smoking Among Adolescents (%), Female",
+      "dcid": "WHO/Yth_curr_tob_smoking_Female"
+    },
+    {
+      "name": "Prevalence Of Current Tobacco Smoking Among Adults (%), Female",
+      "dcid": "WHO/Adult_curr_tob_smoking_Female"
+    },
+    {
+      "name": "Prevalence Of Current Tobacco Use Among Adolescents (%), Female",
+      "dcid": "WHO/Yth_curr_tob_use_Female"
+    },
+    {
+      "name": "Prevalence Of Current Tobacco Use Among Adults (%), Female",
+      "dcid": "WHO/Adult_curr_tob_use_Female"
+    },
+    {
+      "name": "Prevalence Of Daily Cigarette Smoking Among Adolescents (%), Female",
+      "dcid": "WHO/Yth_daily_cig_smoking_Female"
+    },
+    {
+      "name": "Prevalence Of Daily Cigarette Smoking Among Adults (%), Female",
+      "dcid": "WHO/Adult_daily_cig_smoking_Female"
+    },
+    {
+      "name": "Prevalence Of Daily Tobacco Smoking Among Adolescents (%), Female",
+      "dcid": "WHO/Yth_daily_tob_smoking_Female"
+    },
+    {
+      "name": "Prevalence Of Daily Tobacco Smoking Among Adults (%), Female",
+      "dcid": "WHO/Adult_daily_tob_smoking_Female"
+    },
+    {
+      "name": "Prevalence Of Daily Tobacco Use Among Adolescents (%), Female",
+      "dcid": "WHO/Yth_daily_tob_use_Female"
+    },
+    {
+      "name": "Prevalence Of Daily Tobacco Use Among Adults (%), Female",
+      "dcid": "WHO/Adult_daily_tob_use_Female"
+    },
+    {
+      "name": "Prevalence of HIV, female (% ages 15-24)",
+      "dcid": "worldBank/SH_HIV_1524_FE_ZS"
+    },
+    {
+      "name": "Prevalence of obesity, female (% of female population ages 18+)",
+      "dcid": "worldBank/SH_STA_OB18_FE_ZS"
     }
   ],
   "statVarGroups": [
@@ -33255,84 +33255,6 @@
       ]
     },
     {
-      "dcid": "dc/g/SDG_5.6.2",
-      "name": "5.6.2: Number of countries with laws and regulations that guarantee full and equal access to women and men aged 15 years and older to sexual and reproductive health care, information and education",
-      "statVars": [
-        {
-          "name": "Extent to which countries have laws and regulations that guarantee full and equal access to women and men aged 15 years and older to sexual and reproductive health care, information and education",
-          "dcid": "sdg/SH_LGR_ACSRHE"
-        },
-        {
-          "name": "Extent to which countries have laws and regulations that guarantee full and equal access to women and men aged 15 years and older to sexual and reproductive health care, information and education: Component 10: HIV Counselling and Test Services",
-          "dcid": "sdg/SH_LGR_ACSRHEC10"
-        },
-        {
-          "name": "Extent to which countries have laws and regulations that guarantee full and equal access to women and men aged 15 years and older to sexual and reproductive health care, information and education: Component 11: HIV Treatment and Care Services",
-          "dcid": "sdg/SH_LGR_ACSRHEC11"
-        },
-        {
-          "name": "Extent to which countries have laws and regulations that guarantee full and equal access to women and men aged 15 years and older to sexual and reproductive health care, information and education: Component 12: HIV Confidentiality",
-          "dcid": "sdg/SH_LGR_ACSRHEC12"
-        },
-        {
-          "name": "Extent to which countries have laws and regulations that guarantee full and equal access to women and men aged 15 years and older to sexual and reproductive health care, information and education: Component 13: HPV Vaccine",
-          "dcid": "sdg/SH_LGR_ACSRHEC13"
-        },
-        {
-          "name": "Extent to which countries have laws and regulations that guarantee full and equal access to women and men aged 15 years and older to sexual and reproductive health care, information and education: Component 1: Maternity Care",
-          "dcid": "sdg/SH_LGR_ACSRHEC1"
-        },
-        {
-          "name": "Extent to which countries have laws and regulations that guarantee full and equal access to women and men aged 15 years and older to sexual and reproductive health care, information and education: Component 2: Life Saving Commodities",
-          "dcid": "sdg/SH_LGR_ACSRHEC2"
-        },
-        {
-          "name": "Extent to which countries have laws and regulations that guarantee full and equal access to women and men aged 15 years and older to sexual and reproductive health care, information and education: Component 3: Abortion",
-          "dcid": "sdg/SH_LGR_ACSRHEC3"
-        },
-        {
-          "name": "Extent to which countries have laws and regulations that guarantee full and equal access to women and men aged 15 years and older to sexual and reproductive health care, information and education: Component 4: Post-Abortion Care",
-          "dcid": "sdg/SH_LGR_ACSRHEC4"
-        },
-        {
-          "name": "Extent to which countries have laws and regulations that guarantee full and equal access to women and men aged 15 years and older to sexual and reproductive health care, information and education: Component 5: Contraceptive Services",
-          "dcid": "sdg/SH_LGR_ACSRHEC5"
-        },
-        {
-          "name": "Extent to which countries have laws and regulations that guarantee full and equal access to women and men aged 15 years and older to sexual and reproductive health care, information and education: Component 6: Contraceptive Consent",
-          "dcid": "sdg/SH_LGR_ACSRHEC6"
-        },
-        {
-          "name": "Extent to which countries have laws and regulations that guarantee full and equal access to women and men aged 15 years and older to sexual and reproductive health care, information and education: Component 7: Emergency Contraception",
-          "dcid": "sdg/SH_LGR_ACSRHEC7"
-        },
-        {
-          "name": "Extent to which countries have laws and regulations that guarantee full and equal access to women and men aged 15 years and older to sexual and reproductive health care, information and education: Component 8: Sexuality Education Curriculum Laws",
-          "dcid": "sdg/SH_LGR_ACSRHEC8"
-        },
-        {
-          "name": "Extent to which countries have laws and regulations that guarantee full and equal access to women and men aged 15 years and older to sexual and reproductive health care, information and education: Component 9: Sexuality Education Curriculum Topics",
-          "dcid": "sdg/SH_LGR_ACSRHEC9"
-        },
-        {
-          "name": "Extent to which countries have laws and regulations that guarantee full and equal access to women and men aged 15 years and older to sexual and reproductive health care, information and education: Section 1: Maternity Care",
-          "dcid": "sdg/SH_LGR_ACSRHES1"
-        },
-        {
-          "name": "Extent to which countries have laws and regulations that guarantee full and equal access to women and men aged 15 years and older to sexual and reproductive health care, information and education: Section 2: Contraceptive and Family Planning",
-          "dcid": "sdg/SH_LGR_ACSRHES2"
-        },
-        {
-          "name": "Extent to which countries have laws and regulations that guarantee full and equal access to women and men aged 15 years and older to sexual and reproductive health care, information and education: Section 3: Sexuality Education",
-          "dcid": "sdg/SH_LGR_ACSRHES3"
-        },
-        {
-          "name": "Extent to which countries have laws and regulations that guarantee full and equal access to women and men aged 15 years and older to sexual and reproductive health care, information and education: Section 4: HIV and HPV",
-          "dcid": "sdg/SH_LGR_ACSRHES4"
-        }
-      ]
-    },
-    {
       "dcid": "dc/g/Person_Age-Years15To19_Gender-Female_MaritalStatus",
       "name": "Person With Age = 15 - 19 Years, Gender = Female, Marital Status",
       "statVars": [
@@ -49917,50 +49839,6 @@
       ]
     },
     {
-      "dcid": "dc/g/SDG_5.5.2",
-      "name": "5.5.2: Proportion of women in managerial positions",
-      "statVars": [
-        {
-          "name": "Proportion of women in managerial positions - 13th ICLS [Female]",
-          "dcid": "sdg/IC_GEN_MGTL.SEX--F"
-        },
-        {
-          "name": "Proportion of women in managerial positions - 19th ICLS [Female]",
-          "dcid": "sdg/IC_GEN_MGTL_19ICLS.SEX--F"
-        },
-        {
-          "name": "Proportion of women in senior and middle management positions - 13th ICLS [Female]",
-          "dcid": "sdg/IC_GEN_MGTN.SEX--F"
-        },
-        {
-          "name": "Proportion of women in senior and middle management positions - 19th ICLS [Female]",
-          "dcid": "sdg/IC_GEN_MGTN_19ICLS.SEX--F"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/SDG_5.6.1",
-      "name": "5.6.1: Proportion of women aged 15-49 years who make their own informed decisions regarding sexual relations, contraceptive use and reproductive health care",
-      "statVars": [
-        {
-          "name": "Proportion of women who make their own informed decisions regarding contraceptive use [15 to 49 years old, Female]",
-          "dcid": "sdg/SH_FPL_INFMCU.AGE--Y15T49__SEX--F"
-        },
-        {
-          "name": "Proportion of women who make their own informed decisions regarding reproductive health care [15 to 49 years old, Female]",
-          "dcid": "sdg/SH_FPL_INFMRH.AGE--Y15T49__SEX--F"
-        },
-        {
-          "name": "Proportion of women who make their own informed decisions regarding sexual relations [15 to 49 years old, Female]",
-          "dcid": "sdg/SH_FPL_INFMSR.AGE--Y15T49__SEX--F"
-        },
-        {
-          "name": "Proportion of women who make their own informed decisions regarding sexual relations, contraceptive use and reproductive health care [15 to 49 years old, Female]",
-          "dcid": "sdg/SH_FPL_INFM.AGE--Y15T49__SEX--F"
-        }
-      ]
-    },
-    {
       "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-gender_TargetedGender-Female",
       "name": "Hate Crime Incidents With Bias Motivation = Gender, Targeted Gender = Female",
       "statVars": [
@@ -54031,42 +53909,6 @@
       ]
     },
     {
-      "dcid": "dc/g/SDG_2.2.3",
-      "name": "2.2.3: Prevalence of anaemia in women aged 15 to 49 years, by pregnancy status (percentage)",
-      "statVars": [
-        {
-          "name": "Proportion of women aged 15-49 years with anaemia [15 to 49 years old, Female]",
-          "dcid": "sdg/SH_STA_ANEM.AGE--Y15T49__SEX--F"
-        },
-        {
-          "name": "Proportion of women aged 15-49 years with anaemia, non-pregnant [15 to 49 years old, Female]",
-          "dcid": "sdg/SH_STA_ANEM_NPRG.AGE--Y15T49__SEX--F"
-        },
-        {
-          "name": "Proportion of women aged 15-49 years with anaemia, pregnant [15 to 49 years old, Female]",
-          "dcid": "sdg/SH_STA_ANEM_PREG.AGE--Y15T49__SEX--F"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/SDG_5.5.1",
-      "name": "5.5.1: Proportion of seats held by women in (a) national parliaments and (b) local governments",
-      "statVars": [
-        {
-          "name": "Number of seats held by women in national parliaments [Female]",
-          "dcid": "sdg/SG_GEN_PARLN.SEX--F"
-        },
-        {
-          "name": "Proportion of elected seats held by women in deliberative bodies of local government [Female]",
-          "dcid": "sdg/SG_GEN_LOCGELS.SEX--F"
-        },
-        {
-          "name": "Proportion of seats held by women in national parliaments [Female]",
-          "dcid": "sdg/SG_GEN_PARL.SEX--F"
-        }
-      ]
-    },
-    {
       "dcid": "dc/g/LiveBirthPregnancyEvent_PostpartumFamilyPlanning-MaleOrFemaleSterilization",
       "name": "Live Birth Pregnancy Event With Postpartum Family Planning = Male or Female Sterilization",
       "statVars": [
@@ -57125,13 +56967,102 @@
           "dcid": "Percent_Daily_0Portion_ConsumptionOfFruitsOrConsumptionOfVegetables_In_Count_Person_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female"
         }
       ]
+    },
+    {
+      "dcid": "dc/g/Person_ConsumptionQuantity-Portion0_Gender-Female_PlaceOfResidenceClassification",
+      "name": "Person With Consumption Quantity = Portion 0, Gender = Female, Place of Residence Classification",
+      "statVars": [
+        {
+          "name": "Percentage Daily, 0 Portions, Consumption Of Fruits Or Consumption Of Vegetables Among Rural, Female Population",
+          "dcid": "Percent_Daily_0Portion_ConsumptionOfFruitsOrConsumptionOfVegetables_In_Count_Person_Rural_Female"
+        },
+        {
+          "name": "Percentage Daily, 0 Portions, Consumption Of Fruits Or Consumption Of Vegetables Among Semi Urban, Female Population",
+          "dcid": "Percent_Daily_0Portion_ConsumptionOfFruitsOrConsumptionOfVegetables_In_Count_Person_SemiUrban_Female"
+        },
+        {
+          "name": "Percentage Daily, 0 Portions, Consumption Of Fruits Or Consumption Of Vegetables Among Urban, Female Population",
+          "dcid": "Percent_Daily_0Portion_ConsumptionOfFruitsOrConsumptionOfVegetables_In_Count_Person_Urban_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_EducationalAttainment-LessThanPrimaryEducationPrimaryEducationLowerSecondaryEducation_Gender-Female_SocialSupportLevel",
+      "name": "Person With Educational Attainment = Less Than Primary Education \u0026 Primary Education \u0026 Lower Secondary Education, Gender = Female, Social Support Level",
+      "statVars": [
+        {
+          "name": "Percentage Receiving Intermediate Social Support Among Less Than Primary Education Or Primary Education Or Lower Secondary Education, Female Population",
+          "dcid": "Percent_ReceivingIntermediateSocialSupport_In_Count_Person_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_Female"
+        },
+        {
+          "name": "Percentage Receiving Poor Social Support Among Less Than Primary Education Or Primary Education Or Lower Secondary Education, Female Population",
+          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_Female"
+        },
+        {
+          "name": "Percentage Receiving Strong Social Support Among Less Than Primary Education Or Primary Education Or Lower Secondary Education, Female Population",
+          "dcid": "Percent_ReceivingStrongSocialSupport_In_Count_Person_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_EducationalAttainment-TertiaryEducation_Gender-Female_SocialSupportLevel",
+      "name": "Person With Educational Attainment = Tertiary Education, Gender = Female, Social Support Level",
+      "statVars": [
+        {
+          "name": "Percentage Receiving Intermediate Social Support Among Tertiary Education, Female Population",
+          "dcid": "Percent_ReceivingIntermediateSocialSupport_In_Count_Person_TertiaryEducation_Female"
+        },
+        {
+          "name": "Percentage Receiving Poor Social Support Among Tertiary Education, Female Population",
+          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_TertiaryEducation_Female"
+        },
+        {
+          "name": "Percentage Receiving Strong Social Support Among Tertiary Education, Female Population",
+          "dcid": "Percent_ReceivingStrongSocialSupport_In_Count_Person_TertiaryEducation_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_EducationalAttainment-UpperSecondaryEducationPostSecondaryNonTertiaryEducation_Gender-Female_SocialSupportLevel",
+      "name": "Person With Educational Attainment = Upper Secondary Education \u0026 Post Secondary Non Tertiary Education, Gender = Female, Social Support Level",
+      "statVars": [
+        {
+          "name": "Percentage Receiving Intermediate Social Support Among Upper Secondary Education Or Post Secondary Non Tertiary Education, Female Population",
+          "dcid": "Percent_ReceivingIntermediateSocialSupport_In_Count_Person_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female"
+        },
+        {
+          "name": "Percentage Receiving Poor Social Support Among Upper Secondary Education Or Post Secondary Non Tertiary Education, Female Population",
+          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female"
+        },
+        {
+          "name": "Percentage Receiving Strong Social Support Among Upper Secondary Education Or Post Secondary Non Tertiary Education, Female Population",
+          "dcid": "Percent_ReceivingStrongSocialSupport_In_Count_Person_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_ExerciseType-AerobicMuscleStrengthening_Gender-Female_PlaceOfResidenceClassification",
+      "name": "Person With Exercise Type = Aerobic \u0026 Muscle Strengthening, Gender = Female, Place of Residence Classification",
+      "statVars": [
+        {
+          "name": "Percentage Aerobic Or Muscle Strengthening, Health Enhancing Physical Activity Among Rural, Female Population",
+          "dcid": "Percent_AerobicOrMuscleStrengthening_HealthEnhancingPhysicalActivity_In_Count_Person_Rural_Female"
+        },
+        {
+          "name": "Percentage Aerobic Or Muscle Strengthening, Health Enhancing Physical Activity Among Semi Urban, Female Population",
+          "dcid": "Percent_AerobicOrMuscleStrengthening_HealthEnhancingPhysicalActivity_In_Count_Person_SemiUrban_Female"
+        },
+        {
+          "name": "Percentage Aerobic Or Muscle Strengthening, Health Enhancing Physical Activity Among Urban, Female Population",
+          "dcid": "Percent_AerobicOrMuscleStrengthening_HealthEnhancingPhysicalActivity_In_Count_Person_Urban_Female"
+        }
+      ]
     }
   ],
   "matches": [
     "",
     "female",
     "female)",
-    "females",
-    "women"
+    "females"
   ]
 }

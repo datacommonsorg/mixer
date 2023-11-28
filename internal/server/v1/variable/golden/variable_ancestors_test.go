@@ -83,7 +83,7 @@ func TestVariableAncestors(t *testing.T) {
 
 	if err := test.TestDriver(
 		"VariableAncestors",
-		&test.TestOption{UseCache: true, UseCustomTable: true},
+		&test.TestOption{FetchSVG: true, UseCustomTable: true},
 		testSuite,
 	); err != nil {
 		t.Errorf("TestDriver() = %s", err)
