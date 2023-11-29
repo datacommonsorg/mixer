@@ -232,14 +232,14 @@ func (s *Server) BulkVariableInfo(
 func (s *Server) VariableGroupInfo(
 	ctx context.Context, in *pbv1.VariableGroupInfoRequest,
 ) (*pbv1.VariableGroupInfoResponse, error) {
-	return info.VariableGroupInfo(ctx, in, s.store, s.cachedata)
+	return info.VariableGroupInfo(ctx, in, s.store, s.cachedata.Load())
 }
 
 // BulkVariableGroupInfo implements API for mixer.BulkVariableGroupInfo.
 func (s *Server) BulkVariableGroupInfo(
 	ctx context.Context, in *pbv1.BulkVariableGroupInfoRequest,
 ) (*pbv1.BulkVariableGroupInfoResponse, error) {
-	localResp, err := info.BulkVariableGroupInfo(ctx, in, s.store, s.cachedata)
+	localResp, err := info.BulkVariableGroupInfo(ctx, in, s.store, s.cachedata.Load())
 	if err != nil {
 		return nil, err
 	}
@@ -287,7 +287,7 @@ func (s *Server) BulkVariableGroupInfo(
 					}
 					// Decrease the count from block list svg.
 					for _, child := range remoteItem.Info.ChildStatVarGroups {
-						if _, ok := s.cachedata.BlocklistSvgs()[child.Id]; ok {
+						if _, ok := s.cachedata.Load().BlocklistSvgs()[child.Id]; ok {
 							foldedSvg.DescendentStatVarCount -= child.DescendentStatVarCount
 						}
 					}
@@ -318,7 +318,7 @@ func (s *Server) BulkVariableGroupInfo(
 			// Remove all the block list svg from child svg.
 			childSvg := []*pb.StatVarGroupNode_ChildSVG{}
 			for _, child := range keyedInfo[n].Info.ChildStatVarGroups {
-				_, ok := s.cachedata.BlocklistSvgs()[child.Id]
+				_, ok := s.cachedata.Load().BlocklistSvgs()[child.Id]
 				if ok {
 					keyedInfo[n].Info.DescendentStatVarCount -= child.DescendentStatVarCount
 				} else {
@@ -433,7 +433,7 @@ func (s *Server) PlacePage(ctx context.Context, in *pbv1.PlacePageRequest) (
 func (s *Server) VariableAncestors(
 	ctx context.Context, in *pbv1.VariableAncestorsRequest,
 ) (*pbv1.VariableAncestorsResponse, error) {
-	localResp, err := variable.Ancestors(ctx, in, s.store, s.cachedata)
+	localResp, err := variable.Ancestors(ctx, in, s.store, s.cachedata.Load())
 	if err != nil {
 		return nil, err
 	}
@@ -488,7 +488,7 @@ func (s *Server) RecognizePlaces(
 func (s *Server) SearchStatVar(
 	ctx context.Context, in *pb.SearchStatVarRequest,
 ) (*pb.SearchStatVarResponse, error) {
-	localResp, err := search.SearchStatVar(ctx, in, s.store, s.cachedata)
+	localResp, err := search.SearchStatVar(ctx, in, s.store, s.cachedata.Load())
 	if err != nil {
 		return nil, err
 	}

@@ -221,17 +221,15 @@ func main() {
 	if err != nil {
 		log.Fatalf("Failed to create a new store: %s", err)
 	}
+
 	// Build the cache that includes stat var group info, stat var search index
 	// and custom provenance.
-	c, err := cache.NewCache(
-		ctx,
-		store,
-		cache.CacheOptions{
-			FetchSVG:   *cacheSVG,
-			SearchSVG:  *cacheSVG,
-			CustomProv: store.SQLClient != nil,
-		},
-	)
+	cacheOptions := cache.CacheOptions{
+		FetchSVG:   *cacheSVG,
+		SearchSVG:  *cacheSVG,
+		CustomProv: store.SQLClient != nil,
+	}
+	c, err := cache.NewCache(ctx, store, cacheOptions)
 	if err != nil {
 		log.Fatalf("Failed to create cache: %v", err)
 	}

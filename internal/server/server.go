@@ -23,6 +23,7 @@ import (
 	"path/filepath"
 	"runtime"
 	"strings"
+	"sync/atomic"
 
 	cbt "cloud.google.com/go/bigtable"
 	pubsub "cloud.google.com/go/pubsub"
@@ -42,7 +43,7 @@ import (
 type Server struct {
 	store      *store.Store
 	metadata   *resource.Metadata
-	cachedata  *cache.Cache
+	cachedata  atomic.Pointer[cache.Cache]
 	mapsClient *maps.Client
 	httpClient *http.Client
 }
@@ -147,11 +148,13 @@ func NewMixerServer(
 	cachedata *cache.Cache,
 	mapsClient *maps.Client,
 ) *Server {
-	return &Server{
+	s := &Server{
 		store:      store,
 		metadata:   metadata,
-		cachedata:  cachedata,
+		cachedata:  atomic.Pointer[cache.Cache]{},
 		mapsClient: mapsClient,
 		httpClient: &http.Client{},
 	}
+	s.cachedata.Store(cachedata)
+	return s
 }

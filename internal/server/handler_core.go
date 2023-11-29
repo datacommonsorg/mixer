@@ -111,7 +111,7 @@ func (s *Server) V2NodeCore(
 			return v2pv.LinkedPropertyValues(
 				ctx,
 				s.store,
-				s.cachedata,
+				s.cachedata.Load(),
 				in.GetNodes(),
 				arc.SingleProp,
 				direction,
@@ -287,7 +287,7 @@ func (s *Server) V2ObservationCore(
 			return v2observation.FetchDirect(
 				ctx,
 				s.store,
-				s.cachedata.CustomProvenances(),
+				s.cachedata.Load().CustomProvenances(),
 				variable.GetDcids(),
 				entity.GetDcids(),
 				in.GetDate(),
@@ -308,7 +308,7 @@ func (s *Server) V2ObservationCore(
 				ctx,
 				s.store,
 				s.metadata,
-				s.cachedata.CustomProvenances(),
+				s.cachedata.Load().CustomProvenances(),
 				s.httpClient,
 				s.metadata.RemoteMixerDomain,
 				variable.GetDcids(),
@@ -337,7 +337,7 @@ func (s *Server) V2ObservationCore(
 			return v2facet.SeriesFacet(
 				ctx,
 				s.store,
-				s.cachedata,
+				s.cachedata.Load(),
 				variable.GetDcids(),
 				entity.GetDcids(),
 			)
@@ -352,7 +352,7 @@ func (s *Server) V2ObservationCore(
 			return v2facet.ContainedInFacet(
 				ctx,
 				s.store,
-				s.cachedata,
+				s.cachedata.Load(),
 				s.metadata,
 				s.httpClient,
 				s.metadata.RemoteMixerDomain,
@@ -370,7 +370,7 @@ func (s *Server) V2ObservationCore(
 			if len(variable.GetDcids()) > 0 {
 				// Have both entity.dcids and variable.dcids. Check existence cache.
 				return v2observation.Existence(
-					ctx, s.store, s.cachedata, variable.GetDcids(), entity.GetDcids())
+					ctx, s.store, s.cachedata.Load(), variable.GetDcids(), entity.GetDcids())
 			}
 			// TODO: Support appending entities from entity.expression
 			// Only have entity.dcids, fetch variables for each entity.
