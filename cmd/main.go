@@ -226,7 +226,7 @@ func main() {
 	c, err := cache.NewCache(
 		ctx,
 		store,
-		cache.Options{
+		cache.CacheOptions{
 			FetchSVG:   *cacheSVG,
 			SearchSVG:  *cacheSVG,
 			CustomProv: store.SQLClient != nil,

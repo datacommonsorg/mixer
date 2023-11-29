@@ -312,14 +312,6 @@ func (s *Server) BulkFindEntities(
 func (s *Server) UpdateCache(
 	ctx context.Context, in *pb.UpdateCacheRequest,
 ) (*pb.UpdateCacheResponse, error) {
-	if err := s.cachedata.UpdateSVGCache(ctx, s.store); err != nil {
-		return nil, err
-	}
-	s.cachedata.UpdateStatVarSearchIndex()
-	if s.store.SQLClient != nil {
-		if err := s.cachedata.UpdateCustomCache(s.store.SQLClient); err != nil {
-			return nil, err
-		}
-	}
-	return &pb.UpdateCacheResponse{Success: true}, nil
+	err := s.cachedata.Update(ctx, s.store)
+	return &pb.UpdateCacheResponse{}, err
 }

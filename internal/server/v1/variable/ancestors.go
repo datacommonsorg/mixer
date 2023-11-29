@@ -41,7 +41,7 @@ func Ancestors(
 	ancestors := []string{}
 	curr := node
 	for {
-		if parents, ok := cachedata.ParentSvg()[curr]; ok {
+		if parents, ok := cachedata.ParentSvgs()[curr]; ok {
 			curr = parents[0]
 			for _, parent := range parents {
 				// Prefer parent from custom import group

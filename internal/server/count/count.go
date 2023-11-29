@@ -97,7 +97,7 @@ func Count(
 		}
 		ancestorSVG := map[string][]string{}
 		for _, svg := range requestSVG {
-			descendantSVs := util.GetAllDescendentSV(cachedata.RawSvg(), svg)
+			descendantSVs := util.GetAllDescendentSV(cachedata.RawSvgs(), svg)
 			for _, sv := range descendantSVs {
 				allSV = append(allSV, sv)
 				if _, ok := ancestorSVG[sv]; !ok {

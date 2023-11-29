@@ -287,7 +287,7 @@ func (s *Server) BulkVariableGroupInfo(
 					}
 					// Decrease the count from block list svg.
 					for _, child := range remoteItem.Info.ChildStatVarGroups {
-						if _, ok := s.cachedata.BlockListSvg()[child.Id]; ok {
+						if _, ok := s.cachedata.BlocklistSvgs()[child.Id]; ok {
 							foldedSvg.DescendentStatVarCount -= child.DescendentStatVarCount
 						}
 					}
@@ -318,7 +318,7 @@ func (s *Server) BulkVariableGroupInfo(
 			// Remove all the block list svg from child svg.
 			childSvg := []*pb.StatVarGroupNode_ChildSVG{}
 			for _, child := range keyedInfo[n].Info.ChildStatVarGroups {
-				_, ok := s.cachedata.BlockListSvg()[child.Id]
+				_, ok := s.cachedata.BlocklistSvgs()[child.Id]
 				if ok {
 					keyedInfo[n].Info.DescendentStatVarCount -= child.DescendentStatVarCount
 				} else {

@@ -81,7 +81,7 @@ func SearchStatVar(
 		svgList = filter(svgList, statVarCount, len(places))
 	}
 	svResult, svgResult := groupStatVars(
-		svList, svgList, cachedata.ParentSvg(), cachedata.SvgSearchIndex().Ranking)
+		svList, svgList, cachedata.ParentSvgs(), cachedata.SvgSearchIndex().Ranking)
 	// TODO(shifucun): return the total number of result for client to consume.
 	if len(svResult) > maxResult {
 		svResult = svResult[0:maxResult]

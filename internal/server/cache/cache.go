@@ -31,11 +31,11 @@ import (
 )
 
 const (
-	blockListSvgJsonPath = "/datacommons/svg/blocklist_svg.json"
+	blocklistSvgJsonPath = "/datacommons/svg/blocklist_svg.json"
 )
 
 // Options for using the Cache object
-type Options struct {
+type CacheOptions struct {
 	FetchSVG   bool
 	SearchSVG  bool
 	CustomProv bool
@@ -43,12 +43,12 @@ type Options struct {
 
 // Cache holds cached data for the mixer server.
 type Cache struct {
-	// ParentSvg is a map of sv/svg id to a list of its parent svgs sorted alphabetically.
-	parentSvg map[string][]string
-	// SvgInfo is a map of svg id to its information.
-	rawSvg map[string]*pb.StatVarGroupNode
+	// parentSvgs is a map of sv/svg id to a list of its parent svgs sorted alphabetically.
+	parentSvgs map[string][]string
+	// rawSvgs is a map of svg id to its information.
+	rawSvgs map[string]*pb.StatVarGroupNode
 	// A list of blocked top level svg.
-	blockListSvg map[string]struct{}
+	blocklistSvgs map[string]struct{}
 	// SVG search index
 	svgSearchIndex *resource.SearchIndex
 	// Custom provenance from SQL storage
@@ -57,40 +57,40 @@ type Cache struct {
 	mu sync.RWMutex
 }
 
-func (cache *Cache) ParentSvg() map[string][]string {
-	cache.mu.RLock()
-	defer cache.mu.RUnlock()
-	return cache.parentSvg
+func (c *Cache) ParentSvgs() map[string][]string {
+	c.mu.RLock()
+	defer c.mu.RUnlock()
+	return c.parentSvgs
 }
 
-func (cache *Cache) RawSvg() map[string]*pb.StatVarGroupNode {
-	cache.mu.RLock()
-	defer cache.mu.RUnlock()
-	return cache.rawSvg
+func (c *Cache) RawSvgs() map[string]*pb.StatVarGroupNode {
+	c.mu.RLock()
+	defer c.mu.RUnlock()
+	return c.rawSvgs
 }
 
-func (cache *Cache) BlockListSvg() map[string]struct{} {
-	cache.mu.RLock()
-	defer cache.mu.RUnlock()
-	return cache.blockListSvg
+func (c *Cache) BlocklistSvgs() map[string]struct{} {
+	c.mu.RLock()
+	defer c.mu.RUnlock()
+	return c.blocklistSvgs
 }
 
-func (cache *Cache) SvgSearchIndex() *resource.SearchIndex {
-	cache.mu.RLock()
-	defer cache.mu.RUnlock()
-	return cache.svgSearchIndex
+func (c *Cache) SvgSearchIndex() *resource.SearchIndex {
+	c.mu.RLock()
+	defer c.mu.RUnlock()
+	return c.svgSearchIndex
 }
 
-func (cache *Cache) CustomProvenances() map[string]*pb.Facet {
-	cache.mu.RLock()
-	defer cache.mu.RUnlock()
-	return cache.customProvenances
+func (c *Cache) CustomProvenances() map[string]*pb.Facet {
+	c.mu.RLock()
+	defer c.mu.RUnlock()
+	return c.customProvenances
 }
 
-func (cache *Cache) UpdateSVGCache(ctx context.Context, store *store.Store) error {
+func (c *Cache) UpdateSVGCache(ctx context.Context, store *store.Store) error {
 	var blocklistSvg []string
 	// Read blocklisted svg from file.
-	file, err := os.ReadFile(blockListSvgJsonPath)
+	file, err := os.ReadFile(blocklistSvgJsonPath)
 	if err != nil {
 		log.Printf("Could not read blocklist svg file. Use empty blocklist svg list.")
 		blocklistSvg = []string{}
@@ -100,38 +100,51 @@ func (cache *Cache) UpdateSVGCache(ctx context.Context, store *store.Store) erro
 			blocklistSvg = []string{}
 		}
 	}
-	rawSvg, err := fetcher.FetchAllSVG(ctx, store)
+	rawSvgs, err := fetcher.FetchAllSVG(ctx, store)
 	if err != nil {
 		return err
 	}
-	parentSvgMap := hierarchy.BuildParentSvgMap(rawSvg)
-	// Lock and update the cache.
-	cache.mu.Lock()
-	cache.rawSvg = rawSvg
-	cache.parentSvg = parentSvgMap
-	cache.blockListSvg = map[string]struct{}{}
+	parentSvgs := hierarchy.BuildParentSvgMap(rawSvgs)
+	// Lock and update the c.
+	c.mu.Lock()
+	c.rawSvgs = rawSvgs
+	c.parentSvgs = parentSvgs
+	c.blocklistSvgs = map[string]struct{}{}
 	for _, svg := range blocklistSvg {
-		hierarchy.RemoveSvg(rawSvg, parentSvgMap, svg)
-		cache.blockListSvg[svg] = struct{}{}
+		hierarchy.RemoveSvg(rawSvgs, parentSvgs, svg)
+		c.blocklistSvgs[svg] = struct{}{}
 	}
-	cache.mu.Unlock()
+	c.mu.Unlock()
 	return nil
 }
 
-func (cache *Cache) UpdateStatVarSearchIndex() {
-	cache.mu.Lock()
-	cache.svgSearchIndex = hierarchy.BuildStatVarSearchIndex(cache.rawSvg, cache.parentSvg, cache.blockListSvg)
-	cache.mu.Unlock()
+func (c *Cache) UpdateStatVarSearchIndex() {
+	c.mu.Lock()
+	c.svgSearchIndex = hierarchy.BuildStatVarSearchIndex(c.rawSvgs, c.parentSvgs, c.blocklistSvgs)
+	c.mu.Unlock()
 }
 
-func (cache *Cache) UpdateCustomCache(sqlClient *sql.DB) error {
+func (c *Cache) UpdateCustomCache(sqlClient *sql.DB) error {
 	customProv, err := query.GetProvenances(sqlClient)
 	if err != nil {
 		return err
 	}
-	cache.mu.Lock()
-	cache.customProvenances = customProv
-	cache.mu.Unlock()
+	c.mu.Lock()
+	c.customProvenances = customProv
+	c.mu.Unlock()
+	return nil
+}
+
+func (c *Cache) Update(ctx context.Context, store *store.Store) error {
+	if err := c.UpdateSVGCache(ctx, store); err != nil {
+		return err
+	}
+	c.UpdateStatVarSearchIndex()
+	if store.SQLClient != nil {
+		if err := c.UpdateCustomCache(store.SQLClient); err != nil {
+			return err
+		}
+	}
 	return nil
 }
 
@@ -139,7 +152,7 @@ func (cache *Cache) UpdateCustomCache(sqlClient *sql.DB) error {
 func NewCache(
 	ctx context.Context,
 	store *store.Store,
-	options Options,
+	options CacheOptions,
 ) (*Cache, error) {
 	result := &Cache{}
 	if options.FetchSVG {

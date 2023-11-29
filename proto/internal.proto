@@ -40,6 +40,4 @@ message UpdateCacheRequest {
 
 // Response of UpdateCache request.
 message UpdateCacheResponse {
-  // Whether the cache update is successful.
-  bool success = 1;
 }

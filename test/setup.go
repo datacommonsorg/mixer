@@ -73,7 +73,7 @@ const (
 // Setup creates local server and client.
 func Setup(option ...*TestOption) (pbs.MixerClient, error) {
 	fetchSVG, searchSVG, useCustomTable, useSQLite, remoteMixerDomain := false, false, false, false, ""
-	var cacheOptions cache.Options
+	var cacheOptions cache.CacheOptions
 	if len(option) == 1 {
 		fetchSVG = option[0].FetchSVG
 		searchSVG = option[0].SearchSVG
@@ -99,7 +99,7 @@ func Setup(option ...*TestOption) (pbs.MixerClient, error) {
 func setupInternal(
 	bigqueryVersionFile, baseBigtableInfoYaml, testBigtableInfoYaml, mcfPath string,
 	useCustomTable, useSQLite bool,
-	cacheOptions cache.Options,
+	cacheOptions cache.CacheOptions,
 	remoteMixerDomain string,
 ) (pbs.MixerClient, error) {
 	ctx := context.Background()
