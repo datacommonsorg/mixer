@@ -77,19 +77,19 @@ Mixer can load data stored in SQLite database. This requires setting flag:
 
 - `--use_sqlite=true`
 
-Run the following code to start mixer, with CSV data under `data` folder in the
-root of this repo.
+Run the following code to start mixer, with sqlite database `datacommons.db` in
+the root of this repo.
 
 ```bash
 # In repo root directory
 export MIXER_API_KEY=<YOUR API KEY>
 go run cmd/main.go \
-    --use_sqlite=true \
     --use_bigquery=false \
     --use_base_bigtable=false \
     --use_branch_bigtable=false \
     --use_maps_api=false \
-    --sql_data_path=$PWD/data \
+    --use_sqlite=true \
+    --sqlite_path=$PWD/datacommons.db \
     --remote_mixer_domain=https://api.datacommons.org
 ```
 
@@ -99,34 +99,18 @@ Mixer can load data stored from Google CloudSQL. This requires setting flag:
 
 - `--use_cloudsql=true`
 
-Run the following code to start mixer.
-
-Note, the CSV data can be stored locally like `data` folder in the root of this
-repo. In this case, use:
-
-```bash
---sql_data_path=$PWD/data
-```
-
-Or CSV data can could be saved in Google Cloud Storage. In this case: use:
-
-```bash
---sql_data_path=gs://<bucket>/folder/.../
-```
-
 ```bash
 # In repo root directory
 export MIXER_API_KEY=<YOUR API KEY>
 export DB_USER=<user>
 export DB_PASS=<password>
 go run cmd/main.go \
-    --use_cloudsql=true \
     --use_bigquery=false \
     --use_base_bigtable=false \
     --use_branch_bigtable=false \
     --use_maps_api=false \
+    --use_cloudsql=true \
     --cloudsql_instance=<project>:<region>:dc-graph \
-    --sql_data_path=$PWD/data \
     --remote_mixer_domain=https://api.datacommons.org
 ```
 

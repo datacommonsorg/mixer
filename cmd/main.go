@@ -67,12 +67,12 @@ var (
 	// Branch Bigtable Cache
 	useBranchBigtable = flag.Bool("use_branch_bigtable", true, "Use branch bigtable cache")
 	// SQLite database
-	useSQLite = flag.Bool("use_sqlite", false, "Use SQLite as database.")
+	useSQLite  = flag.Bool("use_sqlite", false, "Use SQLite as database.")
+	sqlitePath = flag.String("sqlite_path", "", "SQLite database file path.")
 	// CloudSQL
 	useCloudSQL      = flag.Bool("use_cloudsql", false, "Use Google CloudSQL as database.")
 	cloudSQLInstance = flag.String("cloudsql_instance", "", "CloudSQL instance name: e.g. project:region:instance")
 	// SQL data path
-	sqlDataPath = flag.String("sql_data_path", "", "SQL Data path.")
 	// Cache SV/SVG data
 	cacheSVG = flag.Bool("cache_svg", true, "Whether to cache stat var (group) info and search index")
 	// Include maps client
@@ -184,9 +184,9 @@ func main() {
 	// SQLite DB
 	var sqlClient *sql.DB
 	if *useSQLite {
-		sqlClient, err = sqlite.ConnectDB(*sqlDataPath)
+		sqlClient, err = sqlite.ConnectDB(*sqlitePath)
 		if err != nil {
-			log.Fatalf("Cannot open sqlite3 database from: %s: %v", *sqlDataPath, err)
+			log.Fatalf("Cannot open sqlite3 database from: %s: %v", *sqlitePath, err)
 		}
 		defer sqlClient.Close()
 	}

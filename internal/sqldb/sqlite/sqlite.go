@@ -20,15 +20,25 @@ import (
 	"path/filepath"
 )
 
-func ConnectDB(fileDir string) (*sql.DB, error) {
-	dbPath := filepath.Join(fileDir, "datacommons.db")
+func ConnectDB(dbPath string) (*sql.DB, error) {
+	// Create all intermediate directories.
+	if err := os.MkdirAll(filepath.Dir(dbPath), 0755); err != nil {
+		return nil, err
+	}
 	_, err := os.Stat(dbPath)
+	if err == nil {
+		sqlClient, err := sql.Open("sqlite3", dbPath)
+		if err != nil {
+			return nil, err
+		}
+		return sqlClient, nil
+	}
+	if !os.IsNotExist(err) {
+		return nil, err
+	}
+	_, err = os.Create(dbPath)
 	if err != nil {
 		return nil, err
 	}
-	sqlClient, err := sql.Open("sqlite3", dbPath)
-	if err != nil {
-		return nil, err
-	}
-	return sqlClient, nil
+	return sql.Open("sqlite3", dbPath)
 }
