@@ -20,6 +20,36 @@ import (
 	"path/filepath"
 )
 
+func createTables(sqlClient *sql.DB) error {
+	tripleStatement := `
+	CREATE TABLE IF NOT EXISTS triples (
+		subject_id TEXT,
+		predicate TEXT,
+		object_id TEXT,
+		object_value TEXT
+	);
+	`
+	_, err := sqlClient.Exec(tripleStatement)
+	if err != nil {
+		return err
+	}
+
+	observationStatement := `
+	CREATE TABLE IF NOT EXISTS observations (
+		entity TEXT,
+		variable TEXT,
+		date TEXT,
+		value TEXT,
+		provenance TEXT
+	);
+	`
+	_, err = sqlClient.Exec(observationStatement)
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
 func ConnectDB(dbPath string) (*sql.DB, error) {
 	// Create all intermediate directories.
 	if err := os.MkdirAll(filepath.Dir(dbPath), 0755); err != nil {
@@ -40,5 +70,13 @@ func ConnectDB(dbPath string) (*sql.DB, error) {
 	if err != nil {
 		return nil, err
 	}
-	return sql.Open("sqlite3", dbPath)
+	sqlClient, err := sql.Open("sqlite3", dbPath)
+	if err != nil {
+		return nil, err
+	}
+	err = createTables(sqlClient)
+	if err != nil {
+		return nil, err
+	}
+	return sqlClient, err
 }
