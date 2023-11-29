@@ -31,7 +31,6 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server"
 	"github.com/datacommonsorg/mixer/internal/server/cache"
 	"github.com/datacommonsorg/mixer/internal/server/healthcheck"
-	"github.com/datacommonsorg/mixer/internal/sqldb"
 	"github.com/datacommonsorg/mixer/internal/sqldb/cloudsql"
 	"github.com/datacommonsorg/mixer/internal/sqldb/sqlite"
 	"github.com/datacommonsorg/mixer/internal/store"
@@ -185,13 +184,9 @@ func main() {
 	// SQLite DB
 	var sqlClient *sql.DB
 	if *useSQLite {
-		sqlClient, err = sqlite.CreateDB(*sqlDataPath)
+		sqlClient, err = sqlite.ConnectDB(*sqlDataPath)
 		if err != nil {
 			log.Fatalf("Cannot open sqlite3 database from: %s: %v", *sqlDataPath, err)
-		}
-		err := sqldb.CreateTables(sqlClient)
-		if err != nil {
-			log.Fatalf("Cannot create tables %v", err)
 		}
 		defer sqlClient.Close()
 	}
@@ -203,10 +198,6 @@ func main() {
 			sqlClient, err = cloudsql.ConnectWithConnector(*cloudSQLInstance)
 			if err != nil {
 				log.Fatalf("Cannot open cloud sql database from %s: %v", *cloudSQLInstance, err)
-			}
-			err := sqldb.CreateTables(sqlClient)
-			if err != nil {
-				log.Fatalf("Cannot create tables %v", err)
 			}
 			defer sqlClient.Close()
 		}

@@ -24,7 +24,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/server/statvar/fetcher"
 	"github.com/datacommonsorg/mixer/internal/server/statvar/hierarchy"
-	"github.com/datacommonsorg/mixer/internal/sqldb/query"
+	"github.com/datacommonsorg/mixer/internal/sqldb/sqlquery"
 	"github.com/datacommonsorg/mixer/internal/store"
 )
 
@@ -118,7 +118,7 @@ func NewCache(
 	}
 
 	if options.CustomProv {
-		customProv, err := query.GetProvenances(store.SQLClient)
+		customProv, err := sqlquery.GetProvenances(store.SQLClient)
 		if err != nil {
 			return nil, err
 		}

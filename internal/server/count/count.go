@@ -19,7 +19,7 @@ import (
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/cache"
-	"github.com/datacommonsorg/mixer/internal/sqldb/query"
+	"github.com/datacommonsorg/mixer/internal/sqldb/sqlquery"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"github.com/datacommonsorg/mixer/internal/util"
@@ -84,14 +84,14 @@ func Count(
 		// all SV contains the SV in the request and child SV in the request SVG.
 		var allSV []string
 		requestSV := map[string]struct{}{}
-		allSV, err := query.CheckVariables(st.SQLClient, svOrSvgs)
+		allSV, err := sqlquery.CheckVariables(st.SQLClient, svOrSvgs)
 		for _, sv := range allSV {
 			requestSV[sv] = struct{}{}
 		}
 		if err != nil {
 			return nil, err
 		}
-		requestSVG, err := query.CheckVariableGroups(st.SQLClient, svOrSvgs)
+		requestSVG, err := sqlquery.CheckVariableGroups(st.SQLClient, svOrSvgs)
 		if err != nil {
 			return nil, err
 		}
@@ -112,7 +112,7 @@ func Count(
 		// Remove duplicate from directly queried SV and SV under queried SVG
 		allSV = util.MergeDedupe(allSV, []string{})
 
-		observationCount, err := query.CountObservation(st.SQLClient, entities, allSV)
+		observationCount, err := sqlquery.CountObservation(st.SQLClient, entities, allSV)
 		if err != nil {
 			return nil, err
 		}
