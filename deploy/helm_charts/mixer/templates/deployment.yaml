@@ -90,7 +90,7 @@ spec:
             {{- if eq $.Values.mixer.bigqueryOnly true }}
             - --bigquery_only=true
             {{- end }}
-            - --use_search={{ default false $group.useSearch }}
+            - --cache_svg={{ default false $group.cacheSVG }}
             {{- if eq $.Values.mixer.foldRemoteRootSvg true }}
             - --fold_remote_root_svg=true
             {{- end }}
