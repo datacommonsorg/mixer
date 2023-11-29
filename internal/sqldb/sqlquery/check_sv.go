@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package query
+package sqlquery
 
 import (
 	"database/sql"
@@ -21,23 +21,20 @@ import (
 	"github.com/datacommonsorg/mixer/internal/util"
 )
 
-// CheckVariableGroups check and returns variable groups that in SQL database.
-func CheckVariableGroups(sqlClient *sql.DB, variableGroups []string) ([]string, error) {
+// CheckVariables check and returns variables that have data in SQL database.
+func CheckVariables(sqlClient *sql.DB, variables []string) ([]string, error) {
 	result := []string{}
-	// Find all the sv that are in the sqlite database
 	query := fmt.Sprintf(
 		`
-			SELECT DISTINCT(subject_id) FROM triples
-			WHERE predicate = "typeOf"
-			AND subject_id IN (%s)
-			AND object_id = 'StatVarGroup';
+			SELECT DISTINCT(variable) FROM observations o
+			WHERE o.variable IN (%s)
 		`,
-		util.SQLInParam(len(variableGroups)),
+		util.SQLInParam(len(variables)),
 	)
 	// Execute query
 	rows, err := sqlClient.Query(
 		query,
-		util.ConvertArgs(variableGroups)...,
+		util.ConvertArgs(variables)...,
 	)
 	if err != nil {
 		return nil, err
@@ -45,12 +42,12 @@ func CheckVariableGroups(sqlClient *sql.DB, variableGroups []string) ([]string, 
 	defer rows.Close()
 	// Process the query result
 	for rows.Next() {
-		var svg string
-		err = rows.Scan(&svg)
+		var sv string
+		err = rows.Scan(&sv)
 		if err != nil {
 			return nil, err
 		}
-		result = append(result, svg)
+		result = append(result, sv)
 	}
 	return result, nil
 }

@@ -12,29 +12,31 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package query
+package sqlquery
 
 import (
 	"database/sql"
-	"fmt"
 
-	"github.com/datacommonsorg/mixer/internal/util"
+	pb "github.com/datacommonsorg/mixer/internal/proto"
 )
 
-// CheckVariables check and returns variables that have data in SQL database.
-func CheckVariables(sqlClient *sql.DB, variables []string) ([]string, error) {
-	result := []string{}
-	query := fmt.Sprintf(
+// GetProvenances returns all the provenance name and url in SQL database.
+func GetProvenances(sqlClient *sql.DB) (map[string]*pb.Facet, error) {
+	result := map[string]*pb.Facet{}
+	query :=
 		`
-			SELECT DISTINCT(variable) FROM observations o
-			WHERE o.variable IN (%s)
-		`,
-		util.SQLInParam(len(variables)),
-	)
+			SELECT t1.subject_id, t2.object_value, t3.object_value
+			FROM triples AS t1
+			JOIN triples AS t2 ON t1.subject_id = t2.subject_id
+			JOIN triples AS t3 ON t1.subject_id = t3.subject_id
+			WHERE t1.predicate = "typeOf"
+			AND t1.object_id = "Provenance"
+			AND t2.predicate = "name"
+			AND t3.predicate = "url"
+		`
 	// Execute query
 	rows, err := sqlClient.Query(
 		query,
-		util.ConvertArgs(variables)...,
 	)
 	if err != nil {
 		return nil, err
@@ -42,12 +44,15 @@ func CheckVariables(sqlClient *sql.DB, variables []string) ([]string, error) {
 	defer rows.Close()
 	// Process the query result
 	for rows.Next() {
-		var sv string
-		err = rows.Scan(&sv)
+		var id, name, url string
+		err = rows.Scan(&id, &name, &url)
 		if err != nil {
 			return nil, err
 		}
-		result = append(result, sv)
+		result[id] = &pb.Facet{
+			ImportName:    name,
+			ProvenanceUrl: url,
+		}
 	}
 	return result, nil
 }

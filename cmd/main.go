@@ -31,7 +31,6 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server"
 	"github.com/datacommonsorg/mixer/internal/server/cache"
 	"github.com/datacommonsorg/mixer/internal/server/healthcheck"
-	"github.com/datacommonsorg/mixer/internal/sqldb"
 	"github.com/datacommonsorg/mixer/internal/sqldb/cloudsql"
 	"github.com/datacommonsorg/mixer/internal/sqldb/sqlite"
 	"github.com/datacommonsorg/mixer/internal/store"
@@ -68,12 +67,12 @@ var (
 	// Branch Bigtable Cache
 	useBranchBigtable = flag.Bool("use_branch_bigtable", true, "Use branch bigtable cache")
 	// SQLite database
-	useSQLite = flag.Bool("use_sqlite", false, "Use SQLite as database.")
+	useSQLite  = flag.Bool("use_sqlite", false, "Use SQLite as database.")
+	sqlitePath = flag.String("sqlite_path", "", "SQLite database file path.")
 	// CloudSQL
 	useCloudSQL      = flag.Bool("use_cloudsql", false, "Use Google CloudSQL as database.")
 	cloudSQLInstance = flag.String("cloudsql_instance", "", "CloudSQL instance name: e.g. project:region:instance")
 	// SQL data path
-	sqlDataPath = flag.String("sql_data_path", "", "SQL Data path.")
 	// Cache SV/SVG data
 	cacheSVG = flag.Bool("cache_svg", true, "Whether to cache stat var (group) info and search index")
 	// Include maps client
@@ -185,13 +184,9 @@ func main() {
 	// SQLite DB
 	var sqlClient *sql.DB
 	if *useSQLite {
-		sqlClient, err = sqlite.CreateDB(*sqlDataPath)
+		sqlClient, err = sqlite.ConnectDB(*sqlitePath)
 		if err != nil {
-			log.Fatalf("Cannot open sqlite3 database from: %s: %v", *sqlDataPath, err)
-		}
-		err := sqldb.CreateTables(sqlClient)
-		if err != nil {
-			log.Fatalf("Cannot create tables %v", err)
+			log.Fatalf("Cannot open sqlite3 database from: %s: %v", *sqlitePath, err)
 		}
 		defer sqlClient.Close()
 	}
@@ -203,10 +198,6 @@ func main() {
 			sqlClient, err = cloudsql.ConnectWithConnector(*cloudSQLInstance)
 			if err != nil {
 				log.Fatalf("Cannot open cloud sql database from %s: %v", *cloudSQLInstance, err)
-			}
-			err := sqldb.CreateTables(sqlClient)
-			if err != nil {
-				log.Fatalf("Cannot create tables %v", err)
 			}
 			defer sqlClient.Close()
 		}
