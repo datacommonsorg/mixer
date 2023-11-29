@@ -78,7 +78,7 @@ func TestSpecializationOf(t *testing.T) {
 	}
 	if err := test.TestDriver(
 		"TestSpecializationOf",
-		&test.TestOption{UseCache: true},
+		&test.TestOption{FetchSVG: true},
 		testSuite,
 	); err != nil {
 		t.Errorf("TestDriver() = %s", err)

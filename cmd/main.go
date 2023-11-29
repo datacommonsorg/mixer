@@ -31,10 +31,8 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server"
 	"github.com/datacommonsorg/mixer/internal/server/cache"
 	"github.com/datacommonsorg/mixer/internal/server/healthcheck"
-	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/sqldb"
 	"github.com/datacommonsorg/mixer/internal/sqldb/cloudsql"
-	"github.com/datacommonsorg/mixer/internal/sqldb/query"
 	"github.com/datacommonsorg/mixer/internal/sqldb/sqlite"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
@@ -76,8 +74,8 @@ var (
 	cloudSQLInstance = flag.String("cloudsql_instance", "", "CloudSQL instance name: e.g. project:region:instance")
 	// SQL data path
 	sqlDataPath = flag.String("sql_data_path", "", "SQL Data path.")
-	// Stat-var search cache
-	useSearch = flag.Bool("use_search", true, "Uses stat var search. Will build search indexes.")
+	// Cache SV/SVG data
+	cacheSVG = flag.Bool("cache_svg", true, "Whether to cache stat var (group) info and search index")
 	// Include maps client
 	useMapsApi = flag.Bool("use_maps_api", true, "Uses maps API for place recognition.")
 	// Remote mixer url. The API serves merged data from local and remote mixer
@@ -223,27 +221,17 @@ func main() {
 	if err != nil {
 		log.Fatalf("Failed to create a new store: %s", err)
 	}
-	// Build the cache that includes stat var group info and stat var search
-	// Index.
-	c := &resource.Cache{}
-	if *useSearch {
-		c, err = cache.NewCache(
-			ctx, store,
-			cache.SearchOptions{
-				UseSearch:           true,
-				BuildSvgSearchIndex: true,
-			},
-		)
-		if err != nil {
-			log.Fatalf("Failed to create cache: %v", err)
-		}
+
+	// Build the cache that includes stat var group info, stat var search index
+	// and custom provenance.
+	cacheOptions := cache.CacheOptions{
+		FetchSVG:   *cacheSVG,
+		SearchSVG:  *cacheSVG,
+		CustomProv: store.SQLClient != nil,
 	}
-	if store.SQLClient != nil {
-		customProv, err := query.GetProvenances(store.SQLClient)
-		if err != nil {
-			log.Fatalf("Failed to get provenance from SQL database: %s", err)
-		}
-		c.CustomProvenances = customProv
+	c, err := cache.NewCache(ctx, store, cacheOptions)
+	if err != nil {
+		log.Fatalf("Failed to create cache: %v", err)
 	}
 
 	// Maps client

@@ -34,7 +34,6 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server"
 	"github.com/datacommonsorg/mixer/internal/server/cache"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
-	"github.com/datacommonsorg/mixer/internal/sqldb/query"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"github.com/datacommonsorg/mixer/internal/util"
@@ -48,10 +47,10 @@ import (
 
 // TestOption holds the options for integration test.
 type TestOption struct {
-	UseCache          bool
+	FetchSVG          bool
+	SearchSVG         bool
 	UseCustomTable    bool
 	UseSQLite         bool
-	SearchOptions     cache.SearchOptions
 	RemoteMixerDomain string
 }
 
@@ -73,13 +72,16 @@ const (
 
 // Setup creates local server and client.
 func Setup(option ...*TestOption) (pbs.MixerClient, error) {
-	useCache, useCustomTable, useSQLite, remoteMixerDomain := false, false, false, ""
-	var searchOptions cache.SearchOptions
+	fetchSVG, searchSVG, useCustomTable, useSQLite, remoteMixerDomain := false, false, false, false, ""
+	var cacheOptions cache.CacheOptions
 	if len(option) == 1 {
-		useCache = option[0].UseCache
+		fetchSVG = option[0].FetchSVG
+		searchSVG = option[0].SearchSVG
 		useCustomTable = option[0].UseCustomTable
 		useSQLite = option[0].UseSQLite
-		searchOptions = option[0].SearchOptions
+		cacheOptions.CustomProv = useSQLite
+		cacheOptions.FetchSVG = fetchSVG
+		cacheOptions.SearchSVG = searchSVG
 		remoteMixerDomain = option[0].RemoteMixerDomain
 	}
 	return setupInternal(
@@ -87,17 +89,17 @@ func Setup(option ...*TestOption) (pbs.MixerClient, error) {
 		"../deploy/storage/base_bigtable_info.yaml",
 		"./custom_bigtable_info.yaml",
 		"../deploy/mapping",
-		useCache,
 		useCustomTable,
 		useSQLite,
-		searchOptions,
+		cacheOptions,
 		remoteMixerDomain,
 	)
 }
 
 func setupInternal(
 	bigqueryVersionFile, baseBigtableInfoYaml, testBigtableInfoYaml, mcfPath string,
-	useCache, useCustomTable, useSQLite bool, searchOptions cache.SearchOptions,
+	useCustomTable, useSQLite bool,
+	cacheOptions cache.CacheOptions,
 	remoteMixerDomain string,
 ) (pbs.MixerClient, error) {
 	ctx := context.Background()
@@ -147,23 +149,10 @@ func setupInternal(
 	if err != nil {
 		log.Fatalf("Failed to create a new store: %s", err)
 	}
-	var c *resource.Cache
-	if useCache {
-		c, err = cache.NewCache(ctx, st, searchOptions)
-		if err != nil {
-			return nil, err
-		}
-	} else {
-		c = &resource.Cache{}
-		if useSQLite {
-			customProvenances, err := query.GetProvenances(st.SQLClient)
-			if err != nil {
-				return nil, err
-			}
-			c.CustomProvenances = customProvenances
-		}
+	c, err := cache.NewCache(ctx, st, cacheOptions)
+	if err != nil {
+		return nil, err
 	}
-
 	mapsClient, err := util.MapsClient(ctx, metadata.HostProject)
 	if err != nil {
 		return nil, err
@@ -207,10 +196,10 @@ func newClient(
 	mixerStore *store.Store,
 	tables []*bigtable.Table,
 	metadata *resource.Metadata,
-	cache *resource.Cache,
+	cachedata *cache.Cache,
 	mapsClient *maps.Client,
 ) (pbs.MixerClient, error) {
-	mixerServer := server.NewMixerServer(mixerStore, metadata, cache, mapsClient)
+	mixerServer := server.NewMixerServer(mixerStore, metadata, cachedata, mapsClient)
 	srv := grpc.NewServer()
 	pbs.RegisterMixerServer(srv, mixerServer)
 	reflection.Register(srv)

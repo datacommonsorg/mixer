@@ -20,7 +20,7 @@ import (
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
-	"github.com/datacommonsorg/mixer/internal/server/resource"
+	"github.com/datacommonsorg/mixer/internal/server/cache"
 	"github.com/datacommonsorg/mixer/internal/server/statvar"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"golang.org/x/sync/errgroup"
@@ -31,7 +31,7 @@ func VariableGroupInfo(
 	ctx context.Context,
 	in *pbv1.VariableGroupInfoRequest,
 	store *store.Store,
-	cache *resource.Cache,
+	cachedata *cache.Cache,
 ) (*pbv1.VariableGroupInfoResponse, error) {
 	data, err := statvar.GetStatVarGroupNode(
 		ctx,
@@ -41,7 +41,7 @@ func VariableGroupInfo(
 			NumEntitiesExistence: in.GetNumEntitiesExistence(),
 		},
 		store,
-		cache,
+		cachedata,
 	)
 	if err != nil {
 		return nil, err
@@ -54,7 +54,7 @@ func BulkVariableGroupInfo(
 	ctx context.Context,
 	in *pbv1.BulkVariableGroupInfoRequest,
 	store *store.Store,
-	cache *resource.Cache,
+	cachedata *cache.Cache,
 ) (*pbv1.BulkVariableGroupInfoResponse, error) {
 	// TODO (shifucun):
 	// Ideally, both APIs need to filter out the child variable (group) that has
@@ -69,10 +69,10 @@ func BulkVariableGroupInfo(
 		result := &pbv1.BulkVariableGroupInfoResponse{
 			Data: []*pbv1.VariableGroupInfoResponse{},
 		}
-		for svg := range cache.RawSvg {
+		for svg := range cachedata.RawSvgs() {
 			result.Data = append(result.Data, &pbv1.VariableGroupInfoResponse{
 				Node: svg,
-				Info: cache.RawSvg[svg],
+				Info: cachedata.RawSvgs()[svg],
 			})
 		}
 		sort.SliceStable(result.Data, func(i, j int) bool {
@@ -94,7 +94,7 @@ func BulkVariableGroupInfo(
 					NumEntitiesExistence: numEntitiesExistence,
 				},
 				store,
-				cache,
+				cachedata,
 			)
 			dataChan <- data
 			return err
@@ -115,6 +115,5 @@ func BulkVariableGroupInfo(
 	sort.Slice(resp.Data, func(i, j int) bool {
 		return resp.Data[i].Node < resp.Data[j].Node
 	})
-
 	return resp, nil
 }

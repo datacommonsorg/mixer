@@ -99,7 +99,7 @@ func TestBulkVariableGroupInfo(t *testing.T) {
 
 	if err := test.TestDriver(
 		"BulkVariableGroupInfo",
-		&test.TestOption{UseCache: true, UseSQLite: true},
+		&test.TestOption{FetchSVG: true, UseSQLite: true},
 		testSuite,
 	); err != nil {
 		t.Errorf("TestDriver() = %s", err)

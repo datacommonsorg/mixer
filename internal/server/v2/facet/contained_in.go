@@ -22,6 +22,7 @@ import (
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	"github.com/datacommonsorg/mixer/internal/server/cache"
 	"github.com/datacommonsorg/mixer/internal/server/ranking"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/server/stat"
@@ -39,7 +40,7 @@ import (
 func ContainedInFacet(
 	ctx context.Context,
 	store *store.Store,
-	cache *resource.Cache,
+	cachedata *cache.Cache,
 	metadata *resource.Metadata,
 	httpClient *http.Client,
 	remoteMixer string,
@@ -131,7 +132,7 @@ func ContainedInFacet(
 			// When date doesn't matter, use SeriesFacet to get the facets for the
 			// child places
 			if queryDate == "" || queryDate == observation.LATEST {
-				resp, err := SeriesFacet(ctx, store, cache, variables, childPlaces)
+				resp, err := SeriesFacet(ctx, store, cachedata, variables, childPlaces)
 				if err != nil {
 					return nil, err
 				}

@@ -20,56 +20,110 @@ import (
 	"log"
 	"os"
 
+	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
-	"github.com/datacommonsorg/mixer/internal/server/statvar"
+	"github.com/datacommonsorg/mixer/internal/server/statvar/fetcher"
+	"github.com/datacommonsorg/mixer/internal/server/statvar/hierarchy"
+	"github.com/datacommonsorg/mixer/internal/sqldb/query"
 	"github.com/datacommonsorg/mixer/internal/store"
 )
 
 const (
-	blockListSvgJsonPath = "/datacommons/svg/blocklist_svg.json"
+	blocklistSvgJsonPath = "/datacommons/svg/blocklist_svg.json"
 )
 
-type SearchOptions struct {
-	UseSearch           bool
-	BuildSvgSearchIndex bool
+// Options for using the Cache object
+type CacheOptions struct {
+	FetchSVG   bool
+	SearchSVG  bool
+	CustomProv bool
+}
+
+// Cache holds cached data for the mixer server.
+type Cache struct {
+	// parentSvgs is a map of sv/svg id to a list of its parent svgs sorted alphabetically.
+	parentSvgs map[string][]string
+	// rawSvgs is a map of svg id to its information.
+	rawSvgs map[string]*pb.StatVarGroupNode
+	// A list of blocked top level svg.
+	blocklistSvgs map[string]struct{}
+	// SVG search index
+	svgSearchIndex *resource.SearchIndex
+	// Custom provenance from SQL storage
+	customProvenances map[string]*pb.Facet
+	// CacheOption for this Cache object
+	options CacheOptions
+}
+
+func (c *Cache) ParentSvgs() map[string][]string {
+	return c.parentSvgs
+}
+
+func (c *Cache) RawSvgs() map[string]*pb.StatVarGroupNode {
+	return c.rawSvgs
+}
+
+func (c *Cache) BlocklistSvgs() map[string]struct{} {
+	return c.blocklistSvgs
+}
+
+func (c *Cache) SvgSearchIndex() *resource.SearchIndex {
+	return c.svgSearchIndex
+}
+
+func (c *Cache) CustomProvenances() map[string]*pb.Facet {
+	return c.customProvenances
+}
+
+func (c *Cache) Options() *CacheOptions {
+	return &c.options
 }
 
 // NewCache initializes the cache for stat var hierarchy.
 func NewCache(
 	ctx context.Context,
 	store *store.Store,
-	searchOptions SearchOptions,
-) (*resource.Cache, error) {
-	var blocklistSvg []string
-	// Read blocklisted svg from file.
-	file, err := os.ReadFile(blockListSvgJsonPath)
-	if err != nil {
-		log.Printf("Could not read blocklist svg file. Use empty blocklist svg list.")
-		blocklistSvg = []string{}
-	} else {
-		if err := json.Unmarshal(file, &blocklistSvg); err != nil {
-			log.Printf("Could not unmarshal blocklist svg file. Use empty blocklist svg list.")
+	options CacheOptions,
+) (*Cache, error) {
+	c := &Cache{options: options}
+	if options.FetchSVG {
+		var blocklistSvg []string
+		// Read blocklisted svg from file.
+		file, err := os.ReadFile(blocklistSvgJsonPath)
+		if err != nil {
+			log.Printf("Could not read blocklist svg file. Use empty blocklist svg list.")
 			blocklistSvg = []string{}
+		} else {
+			if err := json.Unmarshal(file, &blocklistSvg); err != nil {
+				log.Printf("Could not unmarshal blocklist svg file. Use empty blocklist svg list.")
+				blocklistSvg = []string{}
+			}
+		}
+		rawSvgs, err := fetcher.FetchAllSVG(ctx, store)
+		if err != nil {
+			return nil, err
+		}
+		parentSvgs := hierarchy.BuildParentSvgMap(rawSvgs)
+		c.rawSvgs = rawSvgs
+		c.parentSvgs = parentSvgs
+		c.blocklistSvgs = map[string]struct{}{}
+		for _, svg := range blocklistSvg {
+			hierarchy.RemoveSvg(rawSvgs, parentSvgs, svg)
+			c.blocklistSvgs[svg] = struct{}{}
 		}
 	}
-	rawSvg, err := statvar.GetRawSvg(ctx, store)
-	if err != nil {
-		return nil, err
+
+	if options.SearchSVG {
+		c.svgSearchIndex = hierarchy.BuildStatVarSearchIndex(c.rawSvgs, c.parentSvgs, c.blocklistSvgs)
 	}
-	parentSvgMap := statvar.BuildParentSvgMap(rawSvg)
-	result := &resource.Cache{
-		RawSvg:       rawSvg,
-		ParentSvg:    parentSvgMap,
-		BlockListSvg: map[string]struct{}{},
-	}
-	for _, svg := range blocklistSvg {
-		statvar.RemoveSvg(rawSvg, parentSvgMap, svg)
-		result.BlockListSvg[svg] = struct{}{}
-	}
-	if searchOptions.UseSearch {
-		if searchOptions.BuildSvgSearchIndex {
-			result.SvgSearchIndex = statvar.BuildStatVarSearchIndex(rawSvg, parentSvgMap, blocklistSvg)
+
+	if options.CustomProv {
+		customProv, err := query.GetProvenances(store.SQLClient)
+		if err != nil {
+			return nil, err
 		}
+		c.customProvenances = customProv
 	}
-	return result, nil
+
+	return c, nil
 }

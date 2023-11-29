@@ -21,8 +21,8 @@ import (
 	"sort"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	"github.com/datacommonsorg/mixer/internal/server/cache"
 	"github.com/datacommonsorg/mixer/internal/server/convert"
-	"github.com/datacommonsorg/mixer/internal/server/data"
 	"github.com/datacommonsorg/mixer/internal/server/place"
 	"github.com/datacommonsorg/mixer/internal/server/placein"
 	"github.com/datacommonsorg/mixer/internal/server/recon"
@@ -189,7 +189,7 @@ func (s *Server) GetPlaceStatVars(
 func (s *Server) GetEntityStatVarsUnionV1(
 	ctx context.Context, in *pb.GetEntityStatVarsUnionRequest,
 ) (*pb.GetEntityStatVarsUnionResponse, error) {
-	return statvar.GetEntityStatVarsUnionV1(ctx, in, s.store, s.cache)
+	return statvar.GetEntityStatVarsUnionV1(ctx, in, s.store, s.cachedata.Load())
 }
 
 // GetPropertyLabels implements API for Mixer.GetPropertyLabels.
@@ -309,14 +309,14 @@ func (s *Server) BulkFindEntities(
 	return recon.BulkFindEntities(ctx, in, s.store, s.mapsClient)
 }
 
-// Import implements API for Mixer.Import
-func (s *Server) Import(
-	ctx context.Context, in *pb.ImportRequest,
-) (*pb.ImportResponse, error) {
-	cache, err := data.Import(ctx, in, s.store)
+// UpdateCache implements API for Mixer.UpdateCache
+func (s *Server) UpdateCache(
+	ctx context.Context, in *pb.UpdateCacheRequest,
+) (*pb.UpdateCacheResponse, error) {
+	newCache, err := cache.NewCache(ctx, s.store, *s.cachedata.Load().Options())
 	if err != nil {
 		return nil, err
 	}
-	s.cache = cache
-	return &pb.ImportResponse{Success: true}, nil
+	s.cachedata.Swap(newCache)
+	return &pb.UpdateCacheResponse{}, err
 }

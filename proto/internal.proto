@@ -34,14 +34,10 @@ message GetBioPageDataRequest {
   string dcid = 1;
 }
 
-// Request to import raw data files into database.
-message ImportRequest {
-  // Path of raw data csv path, could be a local folder or GCS folder path.
-  string data_path = 1;
+// Request to update cache for server based on SQL storage.
+message UpdateCacheRequest {
 }
 
-// Response of import request.
-message ImportResponse {
-  // Whether the import is successful.
-  bool success = 1;
+// Response of UpdateCache request.
+message UpdateCacheResponse {
 }

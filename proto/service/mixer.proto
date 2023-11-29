@@ -601,9 +601,9 @@ service Mixer {
     };
   }
 
-  rpc Import(ImportRequest) returns (ImportResponse) {
+  rpc UpdateCache(UpdateCacheRequest) returns (UpdateCacheResponse) {
     option (google.api.http) = {
-      post: "/import"
+      post: "/update-cache"
       body: "*"
     };
   }

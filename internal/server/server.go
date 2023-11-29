@@ -23,11 +23,13 @@ import (
 	"path/filepath"
 	"runtime"
 	"strings"
+	"sync/atomic"
 
 	cbt "cloud.google.com/go/bigtable"
 	pubsub "cloud.google.com/go/pubsub"
 	"github.com/datacommonsorg/mixer/internal/parser/mcf"
 	dcpubsub "github.com/datacommonsorg/mixer/internal/pubsub"
+	"github.com/datacommonsorg/mixer/internal/server/cache"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
@@ -41,7 +43,7 @@ import (
 type Server struct {
 	store      *store.Store
 	metadata   *resource.Metadata
-	cache      *resource.Cache
+	cachedata  atomic.Pointer[cache.Cache]
 	mapsClient *maps.Client
 	httpClient *http.Client
 }
@@ -143,14 +145,16 @@ func (s *Server) SubscribeBranchCacheUpdate(ctx context.Context) error {
 func NewMixerServer(
 	store *store.Store,
 	metadata *resource.Metadata,
-	cache *resource.Cache,
+	cachedata *cache.Cache,
 	mapsClient *maps.Client,
 ) *Server {
-	return &Server{
+	s := &Server{
 		store:      store,
 		metadata:   metadata,
-		cache:      cache,
+		cachedata:  atomic.Pointer[cache.Cache]{},
 		mapsClient: mapsClient,
 		httpClient: &http.Client{},
 	}
+	s.cachedata.Store(cachedata)
+	return s
 }

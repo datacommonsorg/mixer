@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package statvar
+package search
 
 import (
 	"context"
@@ -20,6 +20,8 @@ import (
 	"strings"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	"github.com/datacommonsorg/mixer/internal/server/cache"
+	"github.com/datacommonsorg/mixer/internal/server/count"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/store"
 )
@@ -34,7 +36,7 @@ func SearchStatVar(
 	ctx context.Context,
 	in *pb.SearchStatVarRequest,
 	store *store.Store,
-	cache *resource.Cache,
+	cachedata *cache.Cache,
 ) (
 	*pb.SearchStatVarResponse, error,
 ) {
@@ -52,7 +54,7 @@ func SearchStatVar(
 	}
 	tokens := strings.Fields(
 		strings.Replace(strings.ToLower(query), ",", " ", -1))
-	searchIndex := cache.SvgSearchIndex
+	searchIndex := cachedata.SvgSearchIndex()
 	svList, svgList, matches := searchTokens(tokens, searchIndex, svOnly)
 
 	// Filter the stat var and stat var group by places.
@@ -71,14 +73,15 @@ func SearchStatVar(
 			ids = append(ids, item.Dcid)
 		}
 
-		statVarCount, err := Count(ctx, store, cache, ids, places)
+		statVarCount, err := count.Count(ctx, store, cachedata, ids, places)
 		if err != nil {
 			return nil, err
 		}
 		svList = filter(svList, statVarCount, len(places))
 		svgList = filter(svgList, statVarCount, len(places))
 	}
-	svResult, svgResult := groupStatVars(svList, svgList, cache.ParentSvg, cache.SvgSearchIndex.Ranking)
+	svResult, svgResult := groupStatVars(
+		svList, svgList, cachedata.ParentSvgs(), cachedata.SvgSearchIndex().Ranking)
 	// TODO(shifucun): return the total number of result for client to consume.
 	if len(svResult) > maxResult {
 		svResult = svResult[0:maxResult]

@@ -19,7 +19,7 @@ import (
 	"context"
 
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
-	"github.com/datacommonsorg/mixer/internal/server/statvar"
+	"github.com/datacommonsorg/mixer/internal/server/statvar/fetcher"
 	"github.com/datacommonsorg/mixer/internal/store"
 )
 
@@ -29,7 +29,7 @@ func Variable(
 	store *store.Store,
 	entities []string,
 ) (*pbv2.ObservationResponse, error) {
-	entityToStatVars, err := statvar.GetEntityStatVarsHelper(ctx, store, entities)
+	entityToStatVars, err := fetcher.FetchEntityVariables(ctx, store, entities)
 	if err != nil {
 		return nil, err
 	}

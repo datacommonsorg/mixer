@@ -21,7 +21,8 @@ import (
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"github.com/datacommonsorg/mixer/internal/server/recon"
-	"github.com/datacommonsorg/mixer/internal/server/statvar"
+	"github.com/datacommonsorg/mixer/internal/server/statvar/hierarchy"
+	"github.com/datacommonsorg/mixer/internal/server/statvar/search"
 	"github.com/datacommonsorg/mixer/internal/server/translator"
 	"github.com/datacommonsorg/mixer/internal/server/v1/event"
 	"github.com/datacommonsorg/mixer/internal/server/v1/info"
@@ -231,14 +232,14 @@ func (s *Server) BulkVariableInfo(
 func (s *Server) VariableGroupInfo(
 	ctx context.Context, in *pbv1.VariableGroupInfoRequest,
 ) (*pbv1.VariableGroupInfoResponse, error) {
-	return info.VariableGroupInfo(ctx, in, s.store, s.cache)
+	return info.VariableGroupInfo(ctx, in, s.store, s.cachedata.Load())
 }
 
 // BulkVariableGroupInfo implements API for mixer.BulkVariableGroupInfo.
 func (s *Server) BulkVariableGroupInfo(
 	ctx context.Context, in *pbv1.BulkVariableGroupInfoRequest,
 ) (*pbv1.BulkVariableGroupInfoResponse, error) {
-	localResp, err := info.BulkVariableGroupInfo(ctx, in, s.store, s.cache)
+	localResp, err := info.BulkVariableGroupInfo(ctx, in, s.store, s.cachedata.Load())
 	if err != nil {
 		return nil, err
 	}
@@ -251,7 +252,7 @@ func (s *Server) BulkVariableGroupInfo(
 		for i := range in.Nodes {
 			if in.Nodes[i] == foldedSvgRoot {
 				queryFoldedRoot = true
-				in.Nodes[i] = statvar.SvgRoot
+				in.Nodes[i] = hierarchy.SvgRoot
 				break
 			}
 		}
@@ -268,7 +269,7 @@ func (s *Server) BulkVariableGroupInfo(
 
 		for _, remoteItem := range remoteResp.Data {
 			n := remoteItem.GetNode()
-			if s.metadata.FoldRemoteRootSvg && n == statvar.SvgRoot {
+			if s.metadata.FoldRemoteRootSvg && n == hierarchy.SvgRoot {
 				if queryFoldedRoot {
 					n = foldedSvgRoot
 				} else {
@@ -286,7 +287,7 @@ func (s *Server) BulkVariableGroupInfo(
 					}
 					// Decrease the count from block list svg.
 					for _, child := range remoteItem.Info.ChildStatVarGroups {
-						if _, ok := s.cache.BlockListSvg[child.Id]; ok {
+						if _, ok := s.cachedata.Load().BlocklistSvgs()[child.Id]; ok {
 							foldedSvg.DescendentStatVarCount -= child.DescendentStatVarCount
 						}
 					}
@@ -301,7 +302,7 @@ func (s *Server) BulkVariableGroupInfo(
 					keyedInfo[n].Info.ChildStatVarGroups,
 					remoteItem.Info.ChildStatVarGroups...,
 				)
-				if s.metadata.FoldRemoteRootSvg && n == statvar.SvgRoot {
+				if s.metadata.FoldRemoteRootSvg && n == hierarchy.SvgRoot {
 					for _, item := range keyedInfo[n].Info.ChildStatVarGroups {
 						item.SpecializedEntity = "Imported by " + item.SpecializedEntity
 					}
@@ -317,7 +318,7 @@ func (s *Server) BulkVariableGroupInfo(
 			// Remove all the block list svg from child svg.
 			childSvg := []*pb.StatVarGroupNode_ChildSVG{}
 			for _, child := range keyedInfo[n].Info.ChildStatVarGroups {
-				_, ok := s.cache.BlockListSvg[child.Id]
+				_, ok := s.cachedata.Load().BlocklistSvgs()[child.Id]
 				if ok {
 					keyedInfo[n].Info.DescendentStatVarCount -= child.DescendentStatVarCount
 				} else {
@@ -432,7 +433,7 @@ func (s *Server) PlacePage(ctx context.Context, in *pbv1.PlacePageRequest) (
 func (s *Server) VariableAncestors(
 	ctx context.Context, in *pbv1.VariableAncestorsRequest,
 ) (*pbv1.VariableAncestorsResponse, error) {
-	localResp, err := variable.Ancestors(ctx, in, s.store, s.cache)
+	localResp, err := variable.Ancestors(ctx, in, s.store, s.cachedata.Load())
 	if err != nil {
 		return nil, err
 	}
@@ -487,7 +488,7 @@ func (s *Server) RecognizePlaces(
 func (s *Server) SearchStatVar(
 	ctx context.Context, in *pb.SearchStatVarRequest,
 ) (*pb.SearchStatVarResponse, error) {
-	localResp, err := statvar.SearchStatVar(ctx, in, s.store, s.cache)
+	localResp, err := search.SearchStatVar(ctx, in, s.store, s.cachedata.Load())
 	if err != nil {
 		return nil, err
 	}

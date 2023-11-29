@@ -105,7 +105,7 @@ const (
 	Mixer_FindEntities_FullMethodName                 = "/datacommons.Mixer/FindEntities"
 	Mixer_BulkFindEntities_FullMethodName             = "/datacommons.Mixer/BulkFindEntities"
 	Mixer_RecognizePlaces_FullMethodName              = "/datacommons.Mixer/RecognizePlaces"
-	Mixer_Import_FullMethodName                       = "/datacommons.Mixer/Import"
+	Mixer_UpdateCache_FullMethodName                  = "/datacommons.Mixer/UpdateCache"
 )
 
 // MixerClient is the client API for Mixer service.
@@ -225,7 +225,7 @@ type MixerClient interface {
 	BulkFindEntities(ctx context.Context, in *proto.BulkFindEntitiesRequest, opts ...grpc.CallOption) (*proto.BulkFindEntitiesResponse, error)
 	// Recognize places from a NL query.
 	RecognizePlaces(ctx context.Context, in *proto.RecognizePlacesRequest, opts ...grpc.CallOption) (*proto.RecognizePlacesResponse, error)
-	Import(ctx context.Context, in *proto.ImportRequest, opts ...grpc.CallOption) (*proto.ImportResponse, error)
+	UpdateCache(ctx context.Context, in *proto.UpdateCacheRequest, opts ...grpc.CallOption) (*proto.UpdateCacheResponse, error)
 }
 
 type mixerClient struct {
@@ -794,9 +794,9 @@ func (c *mixerClient) RecognizePlaces(ctx context.Context, in *proto.RecognizePl
 	return out, nil
 }
 
-func (c *mixerClient) Import(ctx context.Context, in *proto.ImportRequest, opts ...grpc.CallOption) (*proto.ImportResponse, error) {
-	out := new(proto.ImportResponse)
-	err := c.cc.Invoke(ctx, Mixer_Import_FullMethodName, in, out, opts...)
+func (c *mixerClient) UpdateCache(ctx context.Context, in *proto.UpdateCacheRequest, opts ...grpc.CallOption) (*proto.UpdateCacheResponse, error) {
+	out := new(proto.UpdateCacheResponse)
+	err := c.cc.Invoke(ctx, Mixer_UpdateCache_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -920,7 +920,7 @@ type MixerServer interface {
 	BulkFindEntities(context.Context, *proto.BulkFindEntitiesRequest) (*proto.BulkFindEntitiesResponse, error)
 	// Recognize places from a NL query.
 	RecognizePlaces(context.Context, *proto.RecognizePlacesRequest) (*proto.RecognizePlacesResponse, error)
-	Import(context.Context, *proto.ImportRequest) (*proto.ImportResponse, error)
+	UpdateCache(context.Context, *proto.UpdateCacheRequest) (*proto.UpdateCacheResponse, error)
 }
 
 // UnimplementedMixerServer should be embedded to have forward compatible implementations.
@@ -1113,8 +1113,8 @@ func (UnimplementedMixerServer) BulkFindEntities(context.Context, *proto.BulkFin
 func (UnimplementedMixerServer) RecognizePlaces(context.Context, *proto.RecognizePlacesRequest) (*proto.RecognizePlacesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RecognizePlaces not implemented")
 }
-func (UnimplementedMixerServer) Import(context.Context, *proto.ImportRequest) (*proto.ImportResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Import not implemented")
+func (UnimplementedMixerServer) UpdateCache(context.Context, *proto.UpdateCacheRequest) (*proto.UpdateCacheResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateCache not implemented")
 }
 
 // UnsafeMixerServer may be embedded to opt out of forward compatibility for this service.
@@ -2244,20 +2244,20 @@ func _Mixer_RecognizePlaces_Handler(srv interface{}, ctx context.Context, dec fu
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Mixer_Import_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(proto.ImportRequest)
+func _Mixer_UpdateCache_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(proto.UpdateCacheRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(MixerServer).Import(ctx, in)
+		return srv.(MixerServer).UpdateCache(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: Mixer_Import_FullMethodName,
+		FullMethod: Mixer_UpdateCache_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).Import(ctx, req.(*proto.ImportRequest))
+		return srv.(MixerServer).UpdateCache(ctx, req.(*proto.UpdateCacheRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -2518,8 +2518,8 @@ var Mixer_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _Mixer_RecognizePlaces_Handler,
 		},
 		{
-			MethodName: "Import",
-			Handler:    _Mixer_Import_Handler,
+			MethodName: "UpdateCache",
+			Handler:    _Mixer_UpdateCache_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

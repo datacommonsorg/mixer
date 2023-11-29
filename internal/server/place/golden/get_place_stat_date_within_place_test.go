@@ -88,7 +88,7 @@ func TestGetPlaceStatDateWithinPlace(t *testing.T) {
 
 	if err := test.TestDriver(
 		"GetPlaceStatDateWithinPlace",
-		&test.TestOption{UseCache: false},
+		&test.TestOption{},
 		testSuite,
 	); err != nil {
 		t.Errorf("TestDriver() = %s", err)

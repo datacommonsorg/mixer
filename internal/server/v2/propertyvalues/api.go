@@ -21,10 +21,11 @@ import (
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	"github.com/datacommonsorg/mixer/internal/server/cache"
 	"github.com/datacommonsorg/mixer/internal/server/node"
 	"github.com/datacommonsorg/mixer/internal/server/placein"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
-	"github.com/datacommonsorg/mixer/internal/server/statvar"
+	"github.com/datacommonsorg/mixer/internal/server/statvar/hierarchy"
 	v1pv "github.com/datacommonsorg/mixer/internal/server/v1/propertyvalues"
 	v2p "github.com/datacommonsorg/mixer/internal/server/v2/properties"
 	"github.com/datacommonsorg/mixer/internal/util"
@@ -138,7 +139,7 @@ func PropertyValues(
 func LinkedPropertyValues(
 	ctx context.Context,
 	store *store.Store,
-	cache *resource.Cache,
+	cachedata *cache.Cache,
 	nodes []string,
 	linkedProperty string,
 	direction string,
@@ -208,7 +209,7 @@ func LinkedPropertyValues(
 			g := res.Data[node]
 			curr := node
 			for {
-				if parents, ok := cache.ParentSvg[curr]; ok {
+				if parents, ok := cachedata.ParentSvgs()[curr]; ok {
 					curr = parents[0]
 					for _, parent := range parents {
 						// Prefer parent from custom import group
@@ -217,7 +218,7 @@ func LinkedPropertyValues(
 							break
 						}
 					}
-					if curr == statvar.SvgRoot {
+					if curr == hierarchy.SvgRoot {
 						break
 					}
 					g.Neighbor[curr] = &pbv2.LinkedGraph{

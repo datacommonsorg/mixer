@@ -12,13 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package statvar
+package count
 
 import (
 	"context"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
-	"github.com/datacommonsorg/mixer/internal/server/resource"
+	"github.com/datacommonsorg/mixer/internal/server/cache"
 	"github.com/datacommonsorg/mixer/internal/sqldb/query"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
@@ -34,7 +34,7 @@ import (
 func Count(
 	ctx context.Context,
 	st *store.Store,
-	cache *resource.Cache,
+	cachedata *cache.Cache,
 	svOrSvgs []string,
 	entities []string,
 ) (map[string]map[string]int32, error) {
@@ -97,7 +97,7 @@ func Count(
 		}
 		ancestorSVG := map[string][]string{}
 		for _, svg := range requestSVG {
-			descendantSVs := getAllDescendentSV(cache.RawSvg, svg)
+			descendantSVs := util.GetAllDescendentSV(cachedata.RawSvgs(), svg)
 			for _, sv := range descendantSVs {
 				allSV = append(allSV, sv)
 				if _, ok := ancestorSVG[sv]; !ok {
