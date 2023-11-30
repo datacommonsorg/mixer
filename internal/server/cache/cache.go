@@ -26,6 +26,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/statvar/hierarchy"
 	"github.com/datacommonsorg/mixer/internal/sqldb/sqlquery"
 	"github.com/datacommonsorg/mixer/internal/store"
+	"github.com/datacommonsorg/mixer/internal/util"
 )
 
 const (
@@ -52,7 +53,7 @@ type Cache struct {
 	// Provenance from SQL storage
 	sqlProvenances map[string]*pb.Facet
 	// SQL database entity, variable existence pairs
-	sqlEntityVariable map[string]map[string]struct{}
+	sqlExistenceMap map[util.EntityVariable]struct{}
 	// CacheOption for this Cache object
 	options CacheOptions
 }
@@ -77,8 +78,8 @@ func (c *Cache) SQLProvenances() map[string]*pb.Facet {
 	return c.sqlProvenances
 }
 
-func (c *Cache) SQLEntityVariable() map[string]map[string]struct{} {
-	return c.sqlEntityVariable
+func (c *Cache) SQLExistenceMap() map[util.EntityVariable]struct{} {
+	return c.sqlExistenceMap
 }
 
 func (c *Cache) Options() *CacheOptions {
@@ -129,11 +130,11 @@ func NewCache(
 			return nil, err
 		}
 		c.sqlProvenances = sqlProv
-		sqlExistenceMap, err := sqlquery.EntityVariable(store.SQLClient)
+		sqlExistenceMap, err := sqlquery.EntityVariableExistence(store.SQLClient)
 		if err != nil {
 			return nil, err
 		}
-		c.sqlEntityVariable = sqlExistenceMap
+		c.sqlExistenceMap = sqlExistenceMap
 	}
 	return c, nil
 }

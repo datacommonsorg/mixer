@@ -113,19 +113,17 @@ func Count(
 		allSV = util.MergeDedupe(allSV, []string{})
 		for _, e := range entities {
 			for _, v := range allSV {
-				if _, ok := cachedata.SQLEntityVariable()[e]; ok {
-					if _, ok := cachedata.SQLEntityVariable()[e][v]; ok {
-						// This is an sv in the original query variable list.
-						if _, ok := requestSV[v]; ok {
-							result[v][e] = 0
+				if _, ok := cachedata.SQLExistenceMap()[util.EntityVariable{E: e, V: v}]; ok {
+					// This is an sv in the original query variable list.
+					if _, ok := requestSV[v]; ok {
+						result[v][e] = 0
+					}
+					// Add count for each SVG with descendants.
+					for _, ancestor := range ancestorSVG[v] {
+						if _, ok := result[ancestor]; !ok {
+							result[ancestor] = map[string]int32{}
 						}
-						// Add count for each SVG with descendants.
-						for _, ancestor := range ancestorSVG[v] {
-							if _, ok := result[ancestor]; !ok {
-								result[ancestor] = map[string]int32{}
-							}
-							result[ancestor][e] += 1
-						}
+						result[ancestor][e] += 1
 					}
 				}
 			}

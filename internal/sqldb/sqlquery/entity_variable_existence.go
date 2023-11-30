@@ -21,8 +21,8 @@ import (
 	"github.com/datacommonsorg/mixer/internal/util"
 )
 
-// EntityVariable returns all existent entity, variable pairs
-func EntityVariable(sqlClient *sql.DB) (map[string]map[string]struct{}, error) {
+// EntityVariableExistence returns all existent entity, variable pairs
+func EntityVariableExistence(sqlClient *sql.DB) (map[util.EntityVariable]struct{}, error) {
 	defer util.TimeTrack(time.Now(), "SQL: EntityVariable")
 	query := "SELECT DISTINCT entity, variable FROM observations o"
 	// Execute query
@@ -32,17 +32,14 @@ func EntityVariable(sqlClient *sql.DB) (map[string]map[string]struct{}, error) {
 	}
 	defer rows.Close()
 	// Process the query result
-	result := map[string]map[string]struct{}{}
+	result := map[util.EntityVariable]struct{}{}
 	for rows.Next() {
 		var e, v string
 		err = rows.Scan(&e, &v)
 		if err != nil {
 			return nil, err
 		}
-		if _, ok := result[e]; !ok {
-			result[e] = map[string]struct{}{}
-		}
-		result[e][v] = struct{}{}
+		result[util.EntityVariable{E: v, V: v}] = struct{}{}
 	}
 	return result, nil
 }

@@ -110,6 +110,11 @@ type TypePair struct {
 	Parent string
 }
 
+type EntityVariable struct {
+	E string
+	V string
+}
+
 // SamplingStrategy represents the strategy to sample a JSON object.
 //
 // Sampling is performed uniform acroos the items for list, or the keys for
