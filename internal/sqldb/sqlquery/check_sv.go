@@ -17,12 +17,14 @@ package sqlquery
 import (
 	"database/sql"
 	"fmt"
+	"time"
 
 	"github.com/datacommonsorg/mixer/internal/util"
 )
 
 // CheckVariables check and returns variables that have data in SQL database.
 func CheckVariables(sqlClient *sql.DB, variables []string) ([]string, error) {
+	defer util.TimeTrack(time.Now(), "SQL: CheckVariables")
 	result := []string{}
 	query := fmt.Sprintf(
 		`

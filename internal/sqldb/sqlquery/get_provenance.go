@@ -16,12 +16,15 @@ package sqlquery
 
 import (
 	"database/sql"
+	"time"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	"github.com/datacommonsorg/mixer/internal/util"
 )
 
 // GetProvenances returns all the provenance name and url in SQL database.
 func GetProvenances(sqlClient *sql.DB) (map[string]*pb.Facet, error) {
+	defer util.TimeTrack(time.Now(), "SQL: GetProvenances")
 	result := map[string]*pb.Facet{}
 	query :=
 		`

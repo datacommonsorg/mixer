@@ -108,7 +108,7 @@ func FetchContainedIn(
 	ctx context.Context,
 	store *store.Store,
 	metadata *resource.Metadata,
-	customProvenances map[string]*pb.Facet,
+	sqlProvenances map[string]*pb.Facet,
 	httpClient *http.Client,
 	remoteMixer string,
 	variables []string,
@@ -254,7 +254,7 @@ func FetchContainedIn(
 			if err != nil {
 				return nil, err
 			}
-			sqlResult = processSqlData(sqlResult, tmp, queryDate, customProvenances)
+			sqlResult = processSqlData(sqlResult, tmp, queryDate, sqlProvenances)
 		} else {
 			if len(childPlaces) == 0 {
 				childPlaces, err = FetchChildPlaces(
@@ -266,7 +266,7 @@ func FetchContainedIn(
 			directResp, err := FetchDirectSQL(
 				ctx,
 				store.SQLClient,
-				customProvenances,
+				sqlProvenances,
 				variables,
 				childPlaces,
 				queryDate,

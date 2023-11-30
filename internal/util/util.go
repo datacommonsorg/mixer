@@ -322,23 +322,13 @@ func bToMb(b uint64) uint64 {
 
 // MergeDedupe merges a list of string lists and remove duplicate elements.
 func MergeDedupe(strLists ...[]string) []string {
-	if l := len(strLists); l == 0 {
-		return []string{}
-	} else if l == 1 {
-		return strLists[0]
-	}
 	m := map[string]struct{}{}
-	result := strLists[0]
-	for i, strList := range strLists {
+	result := []string{}
+	for _, strList := range strLists {
 		for _, str := range strList {
-			if i == 0 {
-				// Initialize the set map.
+			if _, ok := m[str]; !ok {
+				result = append(result, str)
 				m[str] = struct{}{}
-			} else {
-				if _, ok := m[str]; !ok {
-					result = append(result, str)
-					m[str] = struct{}{}
-				}
 			}
 		}
 	}
@@ -454,7 +444,7 @@ func Sample(m proto.Message, strategy *SamplingStrategy) proto.Message {
 // TimeTrack is used to track function execution time.
 func TimeTrack(start time.Time, name string) {
 	elapsed := time.Since(start)
-	log.Printf("%s took %s", name, elapsed)
+	log.Printf("%s: %s", name, elapsed)
 }
 
 // KeysToSlice stores the keys of a map in a slice.
