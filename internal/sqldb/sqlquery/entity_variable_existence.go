@@ -16,43 +16,30 @@ package sqlquery
 
 import (
 	"database/sql"
-	"fmt"
 	"time"
 
 	"github.com/datacommonsorg/mixer/internal/util"
 )
 
-// CheckVariableGroups check and returns variable groups that in SQL database.
-func CheckVariableGroups(sqlClient *sql.DB, variableGroups []string) ([]string, error) {
-	defer util.TimeTrack(time.Now(), "SQL: CheckVariableGroups")
-	result := []string{}
-	// Find all the sv that are in the sqlite database
-	query := fmt.Sprintf(
-		`
-			SELECT DISTINCT(subject_id) FROM triples
-			WHERE predicate = "typeOf"
-			AND subject_id IN (%s)
-			AND object_id = 'StatVarGroup';
-		`,
-		util.SQLInParam(len(variableGroups)),
-	)
+// EntityVariableExistence returns all existent entity, variable pairs
+func EntityVariableExistence(sqlClient *sql.DB) (map[util.EntityVariable]struct{}, error) {
+	defer util.TimeTrack(time.Now(), "SQL: EntityVariable")
+	query := "SELECT DISTINCT entity, variable FROM observations o"
 	// Execute query
-	rows, err := sqlClient.Query(
-		query,
-		util.ConvertArgs(variableGroups)...,
-	)
+	rows, err := sqlClient.Query(query)
 	if err != nil {
 		return nil, err
 	}
 	defer rows.Close()
 	// Process the query result
+	result := map[util.EntityVariable]struct{}{}
 	for rows.Next() {
-		var svg string
-		err = rows.Scan(&svg)
+		var e, v string
+		err = rows.Scan(&e, &v)
 		if err != nil {
 			return nil, err
 		}
-		result = append(result, svg)
+		result[util.EntityVariable{E: e, V: v}] = struct{}{}
 	}
 	return result, nil
 }

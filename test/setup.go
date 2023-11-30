@@ -79,7 +79,7 @@ func Setup(option ...*TestOption) (pbs.MixerClient, error) {
 		searchSVG = option[0].SearchSVG
 		useCustomTable = option[0].UseCustomTable
 		useSQLite = option[0].UseSQLite
-		cacheOptions.CustomProv = useSQLite
+		cacheOptions.CacheSQL = useSQLite
 		cacheOptions.FetchSVG = fetchSVG
 		cacheOptions.SearchSVG = searchSVG
 		remoteMixerDomain = option[0].RemoteMixerDomain

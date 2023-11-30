@@ -26,6 +26,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/statvar/hierarchy"
 	"github.com/datacommonsorg/mixer/internal/sqldb/sqlquery"
 	"github.com/datacommonsorg/mixer/internal/store"
+	"github.com/datacommonsorg/mixer/internal/util"
 )
 
 const (
@@ -34,9 +35,9 @@ const (
 
 // Options for using the Cache object
 type CacheOptions struct {
-	FetchSVG   bool
-	SearchSVG  bool
-	CustomProv bool
+	FetchSVG  bool
+	SearchSVG bool
+	CacheSQL  bool
 }
 
 // Cache holds cached data for the mixer server.
@@ -49,8 +50,10 @@ type Cache struct {
 	blocklistSvgs map[string]struct{}
 	// SVG search index
 	svgSearchIndex *resource.SearchIndex
-	// Custom provenance from SQL storage
-	customProvenances map[string]*pb.Facet
+	// Provenance from SQL storage
+	sqlProvenances map[string]*pb.Facet
+	// SQL database entity, variable existence pairs
+	sqlExistenceMap map[util.EntityVariable]struct{}
 	// CacheOption for this Cache object
 	options CacheOptions
 }
@@ -71,8 +74,12 @@ func (c *Cache) SvgSearchIndex() *resource.SearchIndex {
 	return c.svgSearchIndex
 }
 
-func (c *Cache) CustomProvenances() map[string]*pb.Facet {
-	return c.customProvenances
+func (c *Cache) SQLProvenances() map[string]*pb.Facet {
+	return c.sqlProvenances
+}
+
+func (c *Cache) SQLExistenceMap() map[util.EntityVariable]struct{} {
+	return c.sqlExistenceMap
 }
 
 func (c *Cache) Options() *CacheOptions {
@@ -117,13 +124,17 @@ func NewCache(
 		c.svgSearchIndex = hierarchy.BuildStatVarSearchIndex(c.rawSvgs, c.parentSvgs, c.blocklistSvgs)
 	}
 
-	if options.CustomProv {
-		customProv, err := sqlquery.GetProvenances(store.SQLClient)
+	if options.CacheSQL {
+		sqlProv, err := sqlquery.GetProvenances(store.SQLClient)
 		if err != nil {
 			return nil, err
 		}
-		c.customProvenances = customProv
+		c.sqlProvenances = sqlProv
+		sqlExistenceMap, err := sqlquery.EntityVariableExistence(store.SQLClient)
+		if err != nil {
+			return nil, err
+		}
+		c.sqlExistenceMap = sqlExistenceMap
 	}
-
 	return c, nil
 }

@@ -89,6 +89,7 @@ func TestMergeDedupe(t *testing.T) {
 		{[][]string{{"abc", "geoId/12"}, {"abc"}}, []string{"abc", "geoId/12"}},
 		{[][]string{{"a", "bc"}, {"a", "bc", "d"}, {"f"}}, []string{"a", "bc", "d", "f"}},
 		{[][]string{{"abc"}, {"ef"}}, []string{"abc", "ef"}},
+		{[][]string{{"a", "a"}, {"b"}}, []string{"a", "b"}},
 	} {
 		got := MergeDedupe(c.strLists...)
 		if diff := cmp.Diff(got, c.want); diff != "" {

@@ -287,7 +287,7 @@ func (s *Server) V2ObservationCore(
 			return v2observation.FetchDirect(
 				ctx,
 				s.store,
-				s.cachedata.Load().CustomProvenances(),
+				s.cachedata.Load().SQLProvenances(),
 				variable.GetDcids(),
 				entity.GetDcids(),
 				in.GetDate(),
@@ -308,7 +308,7 @@ func (s *Server) V2ObservationCore(
 				ctx,
 				s.store,
 				s.metadata,
-				s.cachedata.Load().CustomProvenances(),
+				s.cachedata.Load().SQLProvenances(),
 				s.httpClient,
 				s.metadata.RemoteMixerDomain,
 				variable.GetDcids(),

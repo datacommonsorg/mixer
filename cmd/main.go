@@ -216,9 +216,9 @@ func main() {
 	// Build the cache that includes stat var group info, stat var search index
 	// and custom provenance.
 	cacheOptions := cache.CacheOptions{
-		FetchSVG:   *cacheSVG,
-		SearchSVG:  *cacheSVG,
-		CustomProv: store.SQLClient != nil,
+		FetchSVG:  *cacheSVG,
+		SearchSVG: *cacheSVG,
+		CacheSQL:  store.SQLClient != nil,
 	}
 	c, err := cache.NewCache(ctx, store, cacheOptions)
 	if err != nil {

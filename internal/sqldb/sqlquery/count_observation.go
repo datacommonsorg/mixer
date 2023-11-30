@@ -17,6 +17,7 @@ package sqlquery
 import (
 	"database/sql"
 	"fmt"
+	"time"
 
 	"github.com/datacommonsorg/mixer/internal/util"
 )
@@ -27,6 +28,7 @@ func CountObservation(
 	entities []string,
 	variables []string,
 ) (map[string]map[string]int, error) {
+	defer util.TimeTrack(time.Now(), "SQL: CountObservation")
 	entityParam, err := util.SQLListParam(sqlClient, len(entities))
 	if err != nil {
 		return nil, err

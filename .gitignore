@@ -62,5 +62,5 @@ scripts/tmp*.sh
 # Memory profiling output
 http_memprof_out
 
-# custom dc data
-/data
+# custom dc sqlite database
+sqlite

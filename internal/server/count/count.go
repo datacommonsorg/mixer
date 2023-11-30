@@ -111,26 +111,20 @@ func Count(
 		}
 		// Remove duplicate from directly queried SV and SV under queried SVG
 		allSV = util.MergeDedupe(allSV, []string{})
-
-		observationCount, err := sqlquery.CountObservation(st.SQLClient, entities, allSV)
-		if err != nil {
-			return nil, err
-		}
-		for v, eCount := range observationCount {
-			for e, c := range eCount {
-				if c == 0 {
-					continue
-				}
-				// This is an sv in the original query variable list.
-				if _, ok := requestSV[v]; ok {
-					result[v][e] = 0
-				}
-				// Add count for each SVG with descendants.
-				for _, ancestor := range ancestorSVG[v] {
-					if _, ok := result[ancestor]; !ok {
-						result[ancestor] = map[string]int32{}
+		for _, e := range entities {
+			for _, v := range allSV {
+				if _, ok := cachedata.SQLExistenceMap()[util.EntityVariable{E: e, V: v}]; ok {
+					// This is an sv in the original query variable list.
+					if _, ok := requestSV[v]; ok {
+						result[v][e] = 0
 					}
-					result[ancestor][e] += 1
+					// Add count for each SVG with descendants.
+					for _, ancestor := range ancestorSVG[v] {
+						if _, ok := result[ancestor]; !ok {
+							result[ancestor] = map[string]int32{}
+						}
+						result[ancestor][e] += 1
+					}
 				}
 			}
 		}
