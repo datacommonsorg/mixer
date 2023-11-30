@@ -40,6 +40,8 @@ func EntityVariableExistence(sqlClient *sql.DB) (map[util.EntityVariable]struct{
 			return nil, err
 		}
 		result[util.EntityVariable{E: e, V: v}] = struct{}{}
+		// Also track which variables (across all entities) have data.
+		result[util.EntityVariable{V: v}] = struct{}{}
 	}
 	return result, nil
 }

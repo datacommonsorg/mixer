@@ -82,14 +82,15 @@ func Count(
 	}
 	if st.SQLClient != nil {
 		// all SV contains the SV in the request and child SV in the request SVG.
-		var allSV []string
+		allSV := []string{}
+		for _, svOrSvg := range svOrSvgs {
+			if _, ok := cachedata.SQLExistenceMap()[util.EntityVariable{V: svOrSvg}]; ok {
+				allSV = append(allSV, svOrSvg)
+			}
+		}
 		requestSV := map[string]struct{}{}
-		allSV, err := sqlquery.CheckVariables(st.SQLClient, svOrSvgs)
 		for _, sv := range allSV {
 			requestSV[sv] = struct{}{}
-		}
-		if err != nil {
-			return nil, err
 		}
 		requestSVG, err := sqlquery.CheckVariableGroups(st.SQLClient, svOrSvgs)
 		if err != nil {
