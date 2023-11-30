@@ -39,7 +39,7 @@ func EntityVariableExistence(sqlClient *sql.DB) (map[util.EntityVariable]struct{
 		if err != nil {
 			return nil, err
 		}
-		result[util.EntityVariable{E: v, V: v}] = struct{}{}
+		result[util.EntityVariable{E: e, V: v}] = struct{}{}
 	}
 	return result, nil
 }
