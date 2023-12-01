@@ -207,66 +207,42 @@ func GetPlaceMetadataHelper(
 		return nil, err
 	}
 	result := map[string]*pb.PlaceMetadata{}
-	metaMap := map[string]*pb.PlaceMetadataCache_PlaceInfo{}
+	infoMap := map[string]*pb.PlaceMetadata_PlaceInfo{}
+	parentMap := map[string]map[string]struct{}{}
 	for _, btData := range btDataList {
 		for _, row := range btData {
 			raw, ok := row.Data.(*pb.PlaceMetadataCache)
 			if !ok {
 				continue
 			}
-			for _, info := range raw.Places {
-				if currInfo, ok := metaMap[info.Dcid]; !ok {
-					metaMap[info.Dcid] = info
+			currPlace := row.Parts[0]
+			if _, ok := result[currPlace]; !ok {
+				result[currPlace] = &pb.PlaceMetadata{}
+			}
+			if _, ok := parentMap[currPlace]; !ok {
+				parentMap[currPlace] = map[string]struct{}{}
+			}
+			for _, place := range raw.Places {
+				if _, ok := infoMap[place.Dcid]; !ok {
+					infoMap[place.Dcid] = &pb.PlaceMetadata_PlaceInfo{
+						Dcid: place.Dcid,
+						Name: place.Name,
+						Type: place.Type,
+					}
+				}
+				if place.Dcid == currPlace {
+					result[currPlace].Self = infoMap[currPlace]
 				} else {
-					// Merge place info from new import group.
-					if currInfo.Name == "" {
-						currInfo.Name = info.Name
+					if _, ok := parentMap[currPlace][place.Dcid]; !ok {
+						result[currPlace].Parents = append(
+							result[currPlace].Parents,
+							infoMap[place.Dcid],
+						)
+						parentMap[currPlace][place.Dcid] = struct{}{}
 					}
-					if currInfo.Type == "" {
-						currInfo.Type = info.Type
-					}
-					currInfo.Parents = append(currInfo.Parents, info.Parents...)
 				}
 			}
 		}
-	}
-	for _, entity := range entities {
-		entInfo, ok := metaMap[entity]
-		if !ok {
-			continue
-		}
-		processed := pb.PlaceMetadata{}
-		processed.Self = &pb.PlaceMetadata_PlaceInfo{
-			Dcid: entInfo.Dcid,
-			Name: entInfo.Name,
-			Type: entInfo.Type,
-		}
-		visited := map[string]struct{}{}
-		parents := entInfo.Parents
-		for {
-			if len(parents) == 0 {
-				break
-			}
-			curr := parents[0]
-			parents = parents[1:]
-			if _, ok := visited[curr]; ok {
-				continue
-			}
-			// To handle potential data issue in the cache, where parent node
-			// is not in the PlaceInfo.Places field.
-			info, ok := metaMap[curr]
-			if !ok {
-				continue
-			}
-			processed.Parents = append(processed.Parents, &pb.PlaceMetadata_PlaceInfo{
-				Dcid: curr,
-				Name: info.Name,
-				Type: info.Type,
-			})
-			visited[curr] = struct{}{}
-			parents = append(parents, info.Parents...)
-		}
-		result[entity] = &processed
 	}
 	return result, nil
 }

@@ -12,24 +12,14 @@
         },
         "parents": [
           {
-            "dcid": "geoId/02",
-            "name": "Alaska",
-            "type": "State"
+            "dcid": "usc/WestRegion",
+            "name": "West Region",
+            "type": "CensusRegion"
           },
           {
             "dcid": "usc/PacificDivision",
             "name": "Pacific Division",
             "type": "CensusDivision"
-          },
-          {
-            "dcid": "country/USA",
-            "name": "United States",
-            "type": "Country"
-          },
-          {
-            "dcid": "usc/WestRegion",
-            "name": "West Region",
-            "type": "CensusRegion"
           },
           {
             "dcid": "undata-geo/G00406000",
@@ -50,6 +40,16 @@
             "dcid": "northamerica",
             "name": "North America",
             "type": "Continent"
+          },
+          {
+            "dcid": "geoId/02",
+            "name": "Alaska",
+            "type": "State"
+          },
+          {
+            "dcid": "country/USA",
+            "name": "United States",
+            "type": "Country"
           },
           {
             "dcid": "Earth",
@@ -69,19 +69,14 @@
         },
         "parents": [
           {
-            "dcid": "usc/PacificDivision",
-            "name": "Pacific Division",
-            "type": "CensusDivision"
-          },
-          {
-            "dcid": "country/USA",
-            "name": "United States",
-            "type": "Country"
-          },
-          {
             "dcid": "usc/WestRegion",
             "name": "West Region",
             "type": "CensusRegion"
+          },
+          {
+            "dcid": "usc/PacificDivision",
+            "name": "Pacific Division",
+            "type": "CensusDivision"
           },
           {
             "dcid": "undata-geo/G00406000",
@@ -102,6 +97,11 @@
             "dcid": "northamerica",
             "name": "North America",
             "type": "Continent"
+          },
+          {
+            "dcid": "country/USA",
+            "name": "United States",
+            "type": "Country"
           },
           {
             "dcid": "Earth",
