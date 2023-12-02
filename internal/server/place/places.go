@@ -16,6 +16,7 @@ package place
 
 import (
 	"context"
+	"time"
 
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"google.golang.org/protobuf/proto"
@@ -189,6 +190,7 @@ func GetPlaceMetadataHelper(
 	entities []string,
 	store *store.Store,
 ) (map[string]*pb.PlaceMetadata, error) {
+	defer util.TimeTrack(time.Now(), "GetPlaceMetadataHelper")
 	// Place metadata are from base geo imports. Only trust the base cache.
 	btDataList, err := bigtable.Read(
 		ctx,
@@ -242,19 +244,20 @@ func GetPlaceMetadataHelper(
 	}
 	for dcid, allParents := range parentMap {
 		// Order direct parents at the beginning of the list.
-		for _, parent := range directParents[dcid] {
-			result[dcid].Parents = append(result[dcid].Parents, infoMap[parent])
-			delete(allParents, parent)
-		}
-		// Order grand parents after direct parents.
-		for _, parent := range directParents[dcid] {
-			for _, grandParent := range directParents[parent] {
-				if _, ok := allParents[grandParent]; !ok {
-					continue
+		childPlaces := []string{dcid}
+		for len(childPlaces) > 0 {
+			newChildPlaces := []string{}
+			for _, child := range childPlaces {
+				for _, parent := range directParents[child] {
+					if _, ok := allParents[parent]; !ok {
+						continue
+					}
+					result[dcid].Parents = append(result[dcid].Parents, infoMap[parent])
+					newChildPlaces = append(newChildPlaces, parent)
+					delete(allParents, parent)
 				}
-				result[dcid].Parents = append(result[dcid].Parents, infoMap[grandParent])
-				delete(allParents, grandParent)
 			}
+			childPlaces = newChildPlaces
 		}
 		for parent := range allParents {
 			result[dcid].Parents = append(result[dcid].Parents, infoMap[parent])

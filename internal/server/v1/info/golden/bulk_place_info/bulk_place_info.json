@@ -27,8 +27,23 @@
             "type": "Country"
           },
           {
+            "dcid": "usc/WestRegion",
+            "name": "West Region",
+            "type": "CensusRegion"
+          },
+          {
             "dcid": "undata-geo/G00406000",
             "name": "Organisation for Economic Co-operation and Development (OECD)",
+            "type": "GeoRegion"
+          },
+          {
+            "dcid": "undata-geo/G00136000",
+            "name": "Northern America",
+            "type": "GeoRegion"
+          },
+          {
+            "dcid": "undata-geo/G00134000",
+            "name": "Americas",
             "type": "GeoRegion"
           },
           {
@@ -40,21 +55,6 @@
             "dcid": "Earth",
             "name": "World",
             "type": "Place"
-          },
-          {
-            "dcid": "usc/WestRegion",
-            "name": "West Region",
-            "type": "CensusRegion"
-          },
-          {
-            "dcid": "undata-geo/G00136000",
-            "name": "Northern America",
-            "type": "GeoRegion"
-          },
-          {
-            "dcid": "undata-geo/G00134000",
-            "name": "Americas",
-            "type": "GeoRegion"
           }
         ]
       }
