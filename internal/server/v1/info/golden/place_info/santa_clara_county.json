@@ -28,6 +28,16 @@
         "type": "Country"
       },
       {
+        "dcid": "undata-geo/G00134000",
+        "name": "Americas",
+        "type": "GeoRegion"
+      },
+      {
+        "dcid": "Earth",
+        "name": "World",
+        "type": "Place"
+      },
+      {
         "dcid": "usc/WestRegion",
         "name": "West Region",
         "type": "CensusRegion"
@@ -43,19 +53,9 @@
         "type": "GeoRegion"
       },
       {
-        "dcid": "undata-geo/G00134000",
-        "name": "Americas",
-        "type": "GeoRegion"
-      },
-      {
         "dcid": "northamerica",
         "name": "North America",
         "type": "Continent"
-      },
-      {
-        "dcid": "Earth",
-        "name": "World",
-        "type": "Place"
       }
     ]
   }

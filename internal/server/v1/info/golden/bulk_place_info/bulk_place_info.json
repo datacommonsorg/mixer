@@ -12,9 +12,9 @@
         },
         "parents": [
           {
-            "dcid": "usc/WestRegion",
-            "name": "West Region",
-            "type": "CensusRegion"
+            "dcid": "geoId/02",
+            "name": "Alaska",
+            "type": "State"
           },
           {
             "dcid": "usc/PacificDivision",
@@ -22,9 +22,29 @@
             "type": "CensusDivision"
           },
           {
+            "dcid": "country/USA",
+            "name": "United States",
+            "type": "Country"
+          },
+          {
             "dcid": "undata-geo/G00406000",
             "name": "Organisation for Economic Co-operation and Development (OECD)",
             "type": "GeoRegion"
+          },
+          {
+            "dcid": "northamerica",
+            "name": "North America",
+            "type": "Continent"
+          },
+          {
+            "dcid": "Earth",
+            "name": "World",
+            "type": "Place"
+          },
+          {
+            "dcid": "usc/WestRegion",
+            "name": "West Region",
+            "type": "CensusRegion"
           },
           {
             "dcid": "undata-geo/G00136000",
@@ -35,26 +55,6 @@
             "dcid": "undata-geo/G00134000",
             "name": "Americas",
             "type": "GeoRegion"
-          },
-          {
-            "dcid": "northamerica",
-            "name": "North America",
-            "type": "Continent"
-          },
-          {
-            "dcid": "geoId/02",
-            "name": "Alaska",
-            "type": "State"
-          },
-          {
-            "dcid": "country/USA",
-            "name": "United States",
-            "type": "Country"
-          },
-          {
-            "dcid": "Earth",
-            "name": "World",
-            "type": "Place"
           }
         ]
       }
@@ -69,14 +69,19 @@
         },
         "parents": [
           {
-            "dcid": "usc/WestRegion",
-            "name": "West Region",
-            "type": "CensusRegion"
-          },
-          {
             "dcid": "usc/PacificDivision",
             "name": "Pacific Division",
             "type": "CensusDivision"
+          },
+          {
+            "dcid": "country/USA",
+            "name": "United States",
+            "type": "Country"
+          },
+          {
+            "dcid": "usc/WestRegion",
+            "name": "West Region",
+            "type": "CensusRegion"
           },
           {
             "dcid": "undata-geo/G00406000",
@@ -97,11 +102,6 @@
             "dcid": "northamerica",
             "name": "North America",
             "type": "Continent"
-          },
-          {
-            "dcid": "country/USA",
-            "name": "United States",
-            "type": "Country"
           },
           {
             "dcid": "Earth",

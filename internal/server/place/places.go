@@ -209,6 +209,7 @@ func GetPlaceMetadataHelper(
 	result := map[string]*pb.PlaceMetadata{}
 	infoMap := map[string]*pb.PlaceMetadata_PlaceInfo{}
 	parentMap := map[string]map[string]struct{}{}
+	directParents := map[string][]string{}
 	for _, btData := range btDataList {
 		for _, row := range btData {
 			raw, ok := row.Data.(*pb.PlaceMetadataCache)
@@ -230,18 +231,33 @@ func GetPlaceMetadataHelper(
 						Type: place.Type,
 					}
 				}
+				directParents[place.Dcid] = place.Parents
 				if place.Dcid == currPlace {
 					result[currPlace].Self = infoMap[currPlace]
 				} else {
-					if _, ok := parentMap[currPlace][place.Dcid]; !ok {
-						result[currPlace].Parents = append(
-							result[currPlace].Parents,
-							infoMap[place.Dcid],
-						)
-						parentMap[currPlace][place.Dcid] = struct{}{}
-					}
+					parentMap[currPlace][place.Dcid] = struct{}{}
 				}
 			}
+		}
+	}
+	for dcid, allParents := range parentMap {
+		// Order direct parents at the beginning of the list.
+		for _, parent := range directParents[dcid] {
+			result[dcid].Parents = append(result[dcid].Parents, infoMap[parent])
+			delete(allParents, parent)
+		}
+		// Order grand parents after direct parents.
+		for _, parent := range directParents[dcid] {
+			for _, grandParent := range directParents[parent] {
+				if _, ok := allParents[grandParent]; !ok {
+					continue
+				}
+				result[dcid].Parents = append(result[dcid].Parents, infoMap[grandParent])
+				delete(allParents, grandParent)
+			}
+		}
+		for parent := range allParents {
+			result[dcid].Parents = append(result[dcid].Parents, infoMap[parent])
 		}
 	}
 	return result, nil
