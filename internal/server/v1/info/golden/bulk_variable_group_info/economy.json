@@ -125,6 +125,11 @@
             "displayName": "Network Subscriber"
           },
           {
+            "id": "dc/g/Person_PovertyStatus",
+            "specializedEntity": "Poverty Status",
+            "displayName": "Person by Poverty Status"
+          },
+          {
             "id": "dc/g/Remittance",
             "specializedEntity": "Remittance",
             "displayName": "Remittance"

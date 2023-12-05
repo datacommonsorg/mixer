@@ -4013,6 +4013,38 @@
         "measurementDenominator": {
           "nodes": [
             {
+              "name": "Count of Medical Condition Incident: 45 - 59 Years, Infection (Per Capita)",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "Count_MedicalConditionIncident_45To59Years_ConditionInfection_AsAFractionOf_Count_Person",
+              "provenanceId": "dc/base/HumanReadableStatVars"
+            },
+            {
+              "name": "Count of Medical Condition Incident: 45 - 59 Years, Infection, Rural (Per Capita)",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "Count_MedicalConditionIncident_45To59Years_ConditionInfection_Rural_AsAFractionOf_Count_Person",
+              "provenanceId": "dc/base/HumanReadableStatVars"
+            },
+            {
+              "name": "Count of Medical Condition Incident: 45 - 59 Years, Infection, Urban (Per Capita)",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "Count_MedicalConditionIncident_45To59Years_ConditionInfection_Urban_AsAFractionOf_Count_Person",
+              "provenanceId": "dc/base/HumanReadableStatVars"
+            },
+            {
+              "name": "Count of Medical Condition Incident: 45 - 59 Years, Injury (Per Capita)",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "Count_MedicalConditionIncident_45To59Years_ConditionInjury_AsAFractionOf_Count_Person",
+              "provenanceId": "dc/base/HumanReadableStatVars"
+            },
+            {
               "name": "Count of Medical Condition Incident: 45 - 59 Years, Injury, Rural (Per Capita)",
               "types": [
                 "StatisticalVariable"
@@ -7979,38 +8011,6 @@
               ],
               "dcid": "Count_MedicalConditionIncident_60To69Years_Female_ConditionEyeCondition_AsAFractionOf_Count_Person",
               "provenanceId": "dc/base/HumanReadableStatVars"
-            },
-            {
-              "name": "Count of Medical Condition Incident: 60 - 69 Years, Female, Eye Condition, Rural (Per Capita)",
-              "types": [
-                "StatisticalVariable"
-              ],
-              "dcid": "Count_MedicalConditionIncident_60To69Years_Female_ConditionEyeCondition_Rural_AsAFractionOf_Count_Person",
-              "provenanceId": "dc/base/HumanReadableStatVars"
-            },
-            {
-              "name": "Count of Medical Condition Incident: 60 - 69 Years, Female, Eye Condition, Urban (Per Capita)",
-              "types": [
-                "StatisticalVariable"
-              ],
-              "dcid": "Count_MedicalConditionIncident_60To69Years_Female_ConditionEyeCondition_Urban_AsAFractionOf_Count_Person",
-              "provenanceId": "dc/base/HumanReadableStatVars"
-            },
-            {
-              "name": "Count of Medical Condition Incident: 60 - 69 Years, Female, Gastro Intestinal Condition (Per Capita)",
-              "types": [
-                "StatisticalVariable"
-              ],
-              "dcid": "Count_MedicalConditionIncident_60To69Years_Female_ConditionGastroIntestinalCondition_AsAFractionOf_Count_Person",
-              "provenanceId": "dc/base/HumanReadableStatVars"
-            },
-            {
-              "name": "Count of Medical Condition Incident: 60 - 69 Years, Female, Gastro Intestinal Condition, Rural (Per Capita)",
-              "types": [
-                "StatisticalVariable"
-              ],
-              "dcid": "Count_MedicalConditionIncident_60To69Years_Female_ConditionGastroIntestinalCondition_Rural_AsAFractionOf_Count_Person",
-              "provenanceId": "dc/base/HumanReadableStatVars"
             }
           ]
         }
@@ -8019,5 +8019,5 @@
     "Country": {},
     "dummy": {}
   },
-  "nextToken": "H4sIAAAAAAAA/2zOwYrCMBCA4c00babDHsosLPs8q3eFgidBYhkl0CQlTQ8+hm/qI0iV3Lx9/DMwQ0fifxfHeHWDHftJBuclUJNvk+wun2b8xYCKAYEBKwbUDFgzYMMaTbdWZMCWAYnuir43cQn5tJc0x0C/Xuy8JPES8lZC9C7YHBP99NlmN+f10sEmZ8+jcN2pv0fFBlUBFFQF+g2NdQdssCndFGBZaF+/0RMAAP//AQAA//8cv5d68gAAAA=="
+  "nextToken": "H4sIAAAAAAAA/2zNTYrCQBAF4OnKX6WYRaiBYc4zulcIuBKkDaU0pLtDp7PwJF7TI0iQcuXu470Hj47E/y6O8eoGO/aTDM5LoDrfJtldPnX8xYCGAYEBCwYsGbBiwJpLbLo1RQZsGZDobuh7E5eQT3tJcwz068XOSxIvIW8lRO+CzTHRT59tdnNenw42OXsehavO/D0KbtAoQFEoSsV7XCsaBSraFwDpCQAA//8BAAD//9kElbj4AAAA"
 }

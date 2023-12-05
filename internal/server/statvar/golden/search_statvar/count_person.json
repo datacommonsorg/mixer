@@ -537,6 +537,10 @@
       "dcid": "Count_Person_0To4Years"
     },
     {
+      "name": "Population: 1 - 2 Years",
+      "dcid": "Count_Person_1To2Year"
+    },
+    {
       "name": "Population: 1 - 4 Years",
       "dcid": "Count_Person_1To4Years"
     },
@@ -757,8 +761,16 @@
       "dcid": "Count_Person_EducationalAttainment5ThGrade"
     },
     {
+      "name": "Population: 6 - 13 Years",
+      "dcid": "Count_Person_6To13Year"
+    },
+    {
       "name": "Population: 6 - 14 Years",
       "dcid": "Count_Person_6To14Years"
+    },
+    {
+      "name": "Population: 6 - 59 Years",
+      "dcid": "Count_Person_6To59Year"
     },
     {
       "name": "Population: 6 - 9 Years",
@@ -1031,6 +1043,10 @@
     {
       "name": "Population: Education Major",
       "dcid": "Count_Person_BachelorOfEducationMajor"
+    },
+    {
+      "name": "Population: Eligible Social Protection Benefit Under Maternity Benefit",
+      "dcid": "Count_Person_EligibleSocialProtectionBenefitUnderMaternityBenefit"
     },
     {
       "name": "Population: Employed",
@@ -1345,6 +1361,10 @@
       "dcid": "Count_Person_5OrMoreYears_LaotianSpokenAtHome"
     },
     {
+      "name": "Population: Legislator",
+      "dcid": "Count_Person_LegislatorOccupation"
+    },
+    {
       "name": "Population: Less Than High School Graduate",
       "dcid": "Count_Person_EducationalAttainmentLessThanHighSchoolGraduate"
     },
@@ -1383,6 +1403,10 @@
     {
       "name": "Population: Lung Condition",
       "dcid": "Count_Person_ConditionLungCondition"
+    },
+    {
+      "name": "Population: MGNREGA_Unemployed",
+      "dcid": "Count_Person_MGNREGAUnemployed"
     },
     {
       "name": "Population: Main Worker",
@@ -2289,12 +2313,32 @@
       "dcid": "Count_Person_Widowed"
     },
     {
+      "name": "Number of ATMs per 1,00,000 population",
+      "dcid": "Count_Person_ATM_AsAFractionOf_Count_Person"
+    },
+    {
+      "name": "Number of Internet Subscribers per 100 population",
+      "dcid": "Count_Person_WithInternetSubscription_AsAFractionOf_Count_Person"
+    },
+    {
+      "name": "Number of mobile connections per 100 persons in rural and urban area (Mobile Tele density)",
+      "dcid": "Count_Person_MobileConnection_AsAFractionOf_Count_Person"
+    },
+    {
       "name": "Percent of Internet Users",
       "dcid": "Count_Person_IsInternetUser_PerCapita"
     },
     {
       "name": "Percent of Population Living in Areas Below 5 Meters Elevation",
       "dcid": "Count_Person_ResidingLessThan5MetersAboveSeaLevel_AsFractionOf_Count_Person"
+    },
+    {
+      "name": "Persons provided employment as a percentage of persons who demanded employment under MGNREGA (%)",
+      "dcid": "Count_Person_Employed_AsAFractionOf_Count_Person_MGNREGAUnemployed"
+    },
+    {
+      "name": "Population covered under Aadhaar (%)",
+      "dcid": "Count_Person_Aadhaar_AsAFractionOf_Count_Person"
     },
     {
       "name": "Population: 15 Years or Less (As Fraction of Count Person 15 To 64 Years With Income)",
@@ -2355,6 +2399,10 @@
     {
       "name": "Population: in Labor Force (As Fraction of Count Person 14 Years or More)",
       "dcid": "Count_Person_Years14Onwards_InLaborForce_AsAFractionOf_Count_Person_Years14Onwards"
+    },
+    {
+      "name": "Proportion of the population (out of total eligible population) receiving social protection benefits under Maternity Benefit",
+      "dcid": "Count_Person_ReceivingSocialProtectionBenefitUnderMaternityBenefit_AsAFractionOf_Count_Person_EligibleSocialProtectionBenefitUnderMaternityBenefit"
     },
     {
       "name": "African American Farmers",
@@ -2761,6 +2809,10 @@
       "dcid": "Count_Person_WithDisability_HispanicOrLatino"
     },
     {
+      "name": "Household Reference Person in Universe: Non-Institutional",
+      "dcid": "Count_Person_NonInstitutionalized_ResidesInHousehold"
+    },
+    {
       "name": "Male Population Above Poverty Level in the Past Year",
       "dcid": "Count_Person_Male_AbovePovertyLevelInThePast12Months"
     },
@@ -3107,6 +3159,34 @@
     {
       "name": "People employed in the private sector without a formal contract",
       "dcid": "Count_Person_Years14Onwards_PrivateSectorNoFormalContract_Employed"
+    },
+    {
+      "name": "Person Aged 15 and above",
+      "dcid": "Count_Person_15OrMoreYears_Civilian"
+    },
+    {
+      "name": "Person Aged 3 and above,Not Active-Duty Military",
+      "dcid": "Count_Person_3OrMoreYears_Civilian"
+    },
+    {
+      "name": "Person Aged 3 and above,Not Active-Duty Military, age 65 years and above",
+      "dcid": "Count_Person_65OrMoreYears_Civilian"
+    },
+    {
+      "name": "Person Aged 3 and above,Not Active-Duty Military, age between 15 and 24 years",
+      "dcid": "Count_Person_15To24Years_Civilian"
+    },
+    {
+      "name": "Person Aged 3 and above,Not Active-Duty Military, age between 25 and 44 years",
+      "dcid": "Count_Person_25To44Years_Civilian"
+    },
+    {
+      "name": "Person Aged 3 and above,Not Active-Duty Military, age between 3 and 14 years",
+      "dcid": "Count_Person_3To14Years_Civilian"
+    },
+    {
+      "name": "Person Aged 3 and above,Not Active-Duty Military, age between 45 and 64 years",
+      "dcid": "Count_Person_45To64Years_Civilian"
     },
     {
       "name": "Person employed as a domestic worker",
@@ -3569,6 +3649,10 @@
       "dcid": "Count_Person_0To4Years_TwoOrMoreRaces"
     },
     {
+      "name": "Population: 0 - 4 Years, Underweight",
+      "dcid": "Count_Person_0To4Year_Underweight"
+    },
+    {
       "name": "Population: 0 - 4 Years, Urban",
       "dcid": "Count_Person_0To4Years_Urban"
     },
@@ -3915,90 +3999,6 @@
     {
       "name": "Population: 10 - 14 Years, Hispanic or Latino \u0026 Asian Alone or In Combination With One or More Other Races",
       "dcid": "Count_Person_10To14Years_HispanicOrLatino_AsianAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Population: 10 - 14 Years, Hispanic or Latino \u0026 Black or African American Alone",
-      "dcid": "Count_Person_10To14Years_HispanicOrLatino_BlackOrAfricanAmericanAlone"
-    },
-    {
-      "name": "Population: 10 - 14 Years, Hispanic or Latino \u0026 Black or African American Alone or In Combination With One or More Other Races",
-      "dcid": "Count_Person_10To14Years_HispanicOrLatino_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Population: 10 - 14 Years, Hispanic or Latino \u0026 Native Hawaiian And Other Pacific Islander Alone or In Combination With One or More Other Races",
-      "dcid": "Count_Person_10To14Years_HispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Population: 10 - 14 Years, Hispanic or Latino \u0026 Native Hawaiian or Other Pacific Islander Alone",
-      "dcid": "Count_Person_10To14Years_HispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAlone"
-    },
-    {
-      "name": "Population: 10 - 14 Years, Hispanic or Latino \u0026 Two or More Races",
-      "dcid": "Count_Person_10To14Years_HispanicOrLatino_TwoOrMoreRaces"
-    },
-    {
-      "name": "Population: 10 - 14 Years, Hispanic or Latino \u0026 White Alone",
-      "dcid": "Count_Person_10To14Years_HispanicOrLatino_WhiteAlone"
-    },
-    {
-      "name": "Population: 10 - 14 Years, Hispanic or Latino \u0026 White Alone or In Combination With One or More Other Races",
-      "dcid": "Count_Person_10To14Years_HispanicOrLatino_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Population: 10 - 14 Years, INEGI_Religion Other Than Catholicism",
-      "dcid": "Count_Person_10To14Years_INEGIReligionOtherThanCatholicism"
-    },
-    {
-      "name": "Population: 10 - 14 Years, Irreligion",
-      "dcid": "Count_Person_10To14Years_Irreligion"
-    },
-    {
-      "name": "Population: 10 - 14 Years, Kidney Disease",
-      "dcid": "Count_Person_10To14Years_ConditionKidneyDisease"
-    },
-    {
-      "name": "Population: 10 - 14 Years, Literate",
-      "dcid": "Count_Person_10To14Years_Literate"
-    },
-    {
-      "name": "Population: 10 - 14 Years, Lung Condition",
-      "dcid": "Count_Person_10To14Years_ConditionLungCondition"
-    },
-    {
-      "name": "Population: 10 - 14 Years, Male",
-      "dcid": "Count_Person_10To14Years_Male"
-    },
-    {
-      "name": "Population: 10 - 14 Years, Mental Health Not Good",
-      "dcid": "Count_Person_10To14Years_ConditionMentalHealthNotGood"
-    },
-    {
-      "name": "Population: 10 - 14 Years, Native Hawaiian or Other Pacific Islander Alone",
-      "dcid": "Count_Person_10To14Years_NativeHawaiianAndOtherPacificIslanderAlone"
-    },
-    {
-      "name": "Population: 10 - 14 Years, Never Married",
-      "dcid": "Count_Person_10To14Years_NeverMarried"
-    },
-    {
-      "name": "Population: 10 - 14 Years, Not Hispanic or Latino",
-      "dcid": "Count_Person_10To14Years_NotHispanicOrLatino"
-    },
-    {
-      "name": "Population: 10 - 14 Years, Not Hispanic or Latino \u0026 American Indian And Alaska Native Alone or In Combination With One or More Other Races",
-      "dcid": "Count_Person_10To14Years_NotHispanicOrLatino_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Population: 10 - 14 Years, Not Hispanic or Latino \u0026 American Indian or Alaska Native Alone",
-      "dcid": "Count_Person_10To14Years_NotHispanicOrLatino_AmericanIndianAndAlaskaNativeAlone"
-    },
-    {
-      "name": "Population: 10 - 14 Years, Not Hispanic or Latino \u0026 Asian Alone",
-      "dcid": "Count_Person_10To14Years_NotHispanicOrLatino_AsianAlone"
-    },
-    {
-      "name": "Population: 10 - 14 Years, Not Hispanic or Latino \u0026 Asian Alone or In Combination With One or More Other Races",
-      "dcid": "Count_Person_10To14Years_NotHispanicOrLatino_AsianAloneOrInCombinationWithOneOrMoreOtherRaces"
     }
   ],
   "matches": [

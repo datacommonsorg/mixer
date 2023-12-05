@@ -1335,6 +1335,20 @@
       ]
     },
     {
+      "dcid": "dc/g/WHO/PregnantWomen_Age-Year15To49",
+      "name": "WHO/Pregnant Women With Age = 15 - 49 Years",
+      "statVars": [
+        {
+          "name": "Count of WHO/Pregnant Women: 15 - 49 Years",
+          "dcid": "Count_WHO/PregnantWomen_15To49Year"
+        },
+        {
+          "name": "Pregnant women aged 15-49 yrs who are anaemic (11.0g/dl) (%)",
+          "dcid": "Count_WHO/PregnantWomen_15To49Year_ConditionAnaemia_AsAFractionOf_Count_WHO/PregnantWomen_15To49Year"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/Establishment_BusinessOperationType-ManufacturerSalesBranchesAndOffices_Industry-NAICS/42433",
       "name": "Establishment With Business Operation Type = Manufacturer Sales Branches And Offices, Industry = Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
       "statVars": [
@@ -1553,6 +1567,10 @@
       "name": "Proportion of Girls And Women Aged 15-49 Years Who Have Undergone Female Genital Mutilation, by Age by Sex"
     },
     {
+      "dcid": "dc/g/WHO/PregnantWomen_Age",
+      "name": "WHO/Pregnant Women by Age"
+    },
+    {
       "dcid": "dc/g/Establishment_BusinessOperationType_Industry-NAICS/42433",
       "name": "Establishment With Business Operation Type, Industry = Women's And Children's Clothing Merch. Whls. (NAICS/42433)"
     },
@@ -1627,6 +1645,10 @@
     {
       "dcid": "dc/g/SDGSHSTAFGMS",
       "name": "Proportion of Girls And Women Aged 15-49 Years Who Have Undergone Female Genital Mutilation, by Age"
+    },
+    {
+      "dcid": "dc/g/WHO/PregnantWomen",
+      "name": "WHO/Pregnant Women"
     }
   ],
   "matches": [

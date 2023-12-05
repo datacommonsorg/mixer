@@ -29429,6 +29429,156 @@
       ]
     },
     {
+      "dcid": "dc/g/Person_Age_Gender-Female",
+      "name": "Person With Age, Gender = Female",
+      "statVars": [
+        {
+          "name": "Life Expectancy: 1 Years or Less, Female",
+          "dcid": "LifeExpectancy_Person_Upto1Years_Female"
+        },
+        {
+          "name": "Life Expectancy: Years 101, Female",
+          "dcid": "LifeExpectancy_Person_101Years_Female"
+        },
+        {
+          "name": "Life Expectancy: Years 102, Female",
+          "dcid": "LifeExpectancy_Person_102Years_Female"
+        },
+        {
+          "name": "Life Expectancy: Years 103, Female",
+          "dcid": "LifeExpectancy_Person_103Years_Female"
+        },
+        {
+          "name": "Life Expectancy: Years 104, Female",
+          "dcid": "LifeExpectancy_Person_104Years_Female"
+        },
+        {
+          "name": "Life Expectancy: Years 105, Female",
+          "dcid": "LifeExpectancy_Person_105Years_Female"
+        },
+        {
+          "name": "Life Expectancy: Years 106, Female",
+          "dcid": "LifeExpectancy_Person_106Years_Female"
+        },
+        {
+          "name": "Life Expectancy: Years 107, Female",
+          "dcid": "LifeExpectancy_Person_107Years_Female"
+        },
+        {
+          "name": "Life Expectancy: Years 108, Female",
+          "dcid": "LifeExpectancy_Person_108Years_Female"
+        },
+        {
+          "name": "Life Expectancy: Years 109, Female",
+          "dcid": "LifeExpectancy_Person_109Years_Female"
+        },
+        {
+          "name": "Population: 0 - 14 Years, Female",
+          "dcid": "Count_Person_0To14Years_Female"
+        },
+        {
+          "name": "Population: 100 - 104 Years, Female",
+          "dcid": "Count_Person_100To104Years_Female"
+        },
+        {
+          "name": "Population: 105 - 109 Years, Female",
+          "dcid": "Count_Person_105To109Years_Female"
+        },
+        {
+          "name": "Population: 14 Years or Less, Female",
+          "dcid": "Count_Person_Upto14Years_Female"
+        },
+        {
+          "name": "Population: 15 - 44 Years, Female",
+          "dcid": "Count_Person_15To44Years_Female"
+        },
+        {
+          "name": "Population: 15 - 59 Years, Female",
+          "dcid": "Count_Person_15To59Years_Female"
+        },
+        {
+          "name": "Population: 21 Years or More, Female",
+          "dcid": "Count_Person_21OrMoreYears_Female"
+        },
+        {
+          "name": "Population: 25 - 44 Years, Female",
+          "dcid": "Count_Person_25To44Years_Female"
+        },
+        {
+          "name": "Population: 5 - 14 Years, Female",
+          "dcid": "Count_Person_Years5To14_Female"
+        },
+        {
+          "name": "Population: 60 Years or More, Female",
+          "dcid": "Count_Person_60OrMoreYears_Female"
+        },
+        {
+          "name": "Population: 62 Years or More, Female",
+          "dcid": "Count_Person_62OrMoreYears_Female"
+        },
+        {
+          "name": "Population: 65 - 66 Years, Female",
+          "dcid": "Count_Person_65To66Years_Female"
+        },
+        {
+          "name": "Population: 67 - 69 Years, Female",
+          "dcid": "Count_Person_67To69Years_Female"
+        },
+        {
+          "name": "Population: 90 - 94 Years, Female",
+          "dcid": "Count_Person_90To94Years_Female"
+        },
+        {
+          "name": "Population: 95 - 99 Years, Female",
+          "dcid": "Count_Person_95To99Years_Female"
+        },
+        {
+          "name": "Population: 95 Years or More, Female",
+          "dcid": "Count_Person_95OrMoreYears_Female"
+        },
+        {
+          "name": "Population: 99 Years or More, Female",
+          "dcid": "Count_Person_99OrMoreYears_Female"
+        },
+        {
+          "name": "Unemployment Rate: 15 - 65 Years, Female",
+          "dcid": "UnemploymentRate_Person_15To65Years_Female"
+        },
+        {
+          "name": "Unemployment Rate: 25 - 74 Years, Female",
+          "dcid": "UnemploymentRate_Person_25To74Years_Female"
+        },
+        {
+          "name": "Unemployment Rate: 25 Years or Less, Female",
+          "dcid": "UnemploymentRate_Person_Upto25Years_Female"
+        },
+        {
+          "name": "Average female to male ratio of average wages/salaries received per day by regular wage/salaried employees of age 15-59 for rural and urban",
+          "dcid": "WagesDaily_Person_15To59Year_Female_AsAFractionOf_WagesDaily_Person_15To59Year_Male"
+        },
+        {
+          "name": "Population: 15 Years or Less, Female (As Fraction of Count Person 15 To 64 Years With Income)",
+          "dcid": "Count_Person_15OrLessYears_Female_AsAFractionOf_Count_Person_15To64Years_Female_WithIncome"
+        },
+        {
+          "name": "Population: 5 Years or More, Female (As Fraction of Count Person Female)",
+          "dcid": "Count_Person_5OrMoreYears_Female_AsAFractionOf_Count_Person_Female"
+        },
+        {
+          "name": "Prevalence: 50 - 74 Years, Female, Mammography",
+          "dcid": "Percent_Person_50To74Years_Female_ReceivedMammography"
+        },
+        {
+          "name": "Population (Measured Based on Custody): 0 - 17 Years, Female, Incarcerated",
+          "dcid": "dc/c17kzp0zrfkq9"
+        },
+        {
+          "name": "Ratio of female to male Labour Force Participation Rate (LFPR) (15-59 years)",
+          "dcid": "Count_Person_15To19Year_InLaborForce_Female_AsAFractionOf_Count_Person_15To19Year_InLaborForce_Male"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/Person_Age-Years80To84_Gender-Female_Race",
       "name": "Person With Age = 80 - 84 Years, Gender = Female, Race",
       "statVars": [
@@ -29725,152 +29875,6 @@
         {
           "name": "Population: 85 Years or More, Female, White Alone or In Combination With One or More Other Races",
           "dcid": "Count_Person_85OrMoreYears_Female_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age_Gender-Female",
-      "name": "Person With Age, Gender = Female",
-      "statVars": [
-        {
-          "name": "Life Expectancy: 1 Years or Less, Female",
-          "dcid": "LifeExpectancy_Person_Upto1Years_Female"
-        },
-        {
-          "name": "Life Expectancy: Years 101, Female",
-          "dcid": "LifeExpectancy_Person_101Years_Female"
-        },
-        {
-          "name": "Life Expectancy: Years 102, Female",
-          "dcid": "LifeExpectancy_Person_102Years_Female"
-        },
-        {
-          "name": "Life Expectancy: Years 103, Female",
-          "dcid": "LifeExpectancy_Person_103Years_Female"
-        },
-        {
-          "name": "Life Expectancy: Years 104, Female",
-          "dcid": "LifeExpectancy_Person_104Years_Female"
-        },
-        {
-          "name": "Life Expectancy: Years 105, Female",
-          "dcid": "LifeExpectancy_Person_105Years_Female"
-        },
-        {
-          "name": "Life Expectancy: Years 106, Female",
-          "dcid": "LifeExpectancy_Person_106Years_Female"
-        },
-        {
-          "name": "Life Expectancy: Years 107, Female",
-          "dcid": "LifeExpectancy_Person_107Years_Female"
-        },
-        {
-          "name": "Life Expectancy: Years 108, Female",
-          "dcid": "LifeExpectancy_Person_108Years_Female"
-        },
-        {
-          "name": "Life Expectancy: Years 109, Female",
-          "dcid": "LifeExpectancy_Person_109Years_Female"
-        },
-        {
-          "name": "Population: 0 - 14 Years, Female",
-          "dcid": "Count_Person_0To14Years_Female"
-        },
-        {
-          "name": "Population: 100 - 104 Years, Female",
-          "dcid": "Count_Person_100To104Years_Female"
-        },
-        {
-          "name": "Population: 105 - 109 Years, Female",
-          "dcid": "Count_Person_105To109Years_Female"
-        },
-        {
-          "name": "Population: 14 Years or Less, Female",
-          "dcid": "Count_Person_Upto14Years_Female"
-        },
-        {
-          "name": "Population: 15 - 44 Years, Female",
-          "dcid": "Count_Person_15To44Years_Female"
-        },
-        {
-          "name": "Population: 15 - 59 Years, Female",
-          "dcid": "Count_Person_15To59Years_Female"
-        },
-        {
-          "name": "Population: 21 Years or More, Female",
-          "dcid": "Count_Person_21OrMoreYears_Female"
-        },
-        {
-          "name": "Population: 25 - 44 Years, Female",
-          "dcid": "Count_Person_25To44Years_Female"
-        },
-        {
-          "name": "Population: 3 Years or More, Female",
-          "dcid": "Count_Person_3OrMoreYears_Female"
-        },
-        {
-          "name": "Population: 5 - 14 Years, Female",
-          "dcid": "Count_Person_Years5To14_Female"
-        },
-        {
-          "name": "Population: 60 Years or More, Female",
-          "dcid": "Count_Person_60OrMoreYears_Female"
-        },
-        {
-          "name": "Population: 62 Years or More, Female",
-          "dcid": "Count_Person_62OrMoreYears_Female"
-        },
-        {
-          "name": "Population: 65 - 66 Years, Female",
-          "dcid": "Count_Person_65To66Years_Female"
-        },
-        {
-          "name": "Population: 67 - 69 Years, Female",
-          "dcid": "Count_Person_67To69Years_Female"
-        },
-        {
-          "name": "Population: 90 - 94 Years, Female",
-          "dcid": "Count_Person_90To94Years_Female"
-        },
-        {
-          "name": "Population: 95 - 99 Years, Female",
-          "dcid": "Count_Person_95To99Years_Female"
-        },
-        {
-          "name": "Population: 95 Years or More, Female",
-          "dcid": "Count_Person_95OrMoreYears_Female"
-        },
-        {
-          "name": "Population: 99 Years or More, Female",
-          "dcid": "Count_Person_99OrMoreYears_Female"
-        },
-        {
-          "name": "Unemployment Rate: 15 - 65 Years, Female",
-          "dcid": "UnemploymentRate_Person_15To65Years_Female"
-        },
-        {
-          "name": "Unemployment Rate: 25 - 74 Years, Female",
-          "dcid": "UnemploymentRate_Person_25To74Years_Female"
-        },
-        {
-          "name": "Unemployment Rate: 25 Years or Less, Female",
-          "dcid": "UnemploymentRate_Person_Upto25Years_Female"
-        },
-        {
-          "name": "Population: 15 Years or Less, Female (As Fraction of Count Person 15 To 64 Years With Income)",
-          "dcid": "Count_Person_15OrLessYears_Female_AsAFractionOf_Count_Person_15To64Years_Female_WithIncome"
-        },
-        {
-          "name": "Population: 5 Years or More, Female (As Fraction of Count Person Female)",
-          "dcid": "Count_Person_5OrMoreYears_Female_AsAFractionOf_Count_Person_Female"
-        },
-        {
-          "name": "Prevalence: 50 - 74 Years, Female, Mammography",
-          "dcid": "Percent_Person_50To74Years_Female_ReceivedMammography"
-        },
-        {
-          "name": "Population (Measured Based on Custody): 0 - 17 Years, Female, Incarcerated",
-          "dcid": "dc/c17kzp0zrfkq9"
         }
       ]
     },
@@ -32119,6 +32123,112 @@
       ]
     },
     {
+      "dcid": "dc/g/MortalityEvent_CauseOfDeath_Gender-Female",
+      "name": "Mortality Event With Cause of Death, Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Mortality Event: Arthropod-Borne Viral Encephalitis, Female",
+          "dcid": "Count_MortalityEvent_Arthropod-BorneViralEncephalitis_Female"
+        },
+        {
+          "name": "Count of Mortality Event: Hyperplasia of Prostate, Female",
+          "dcid": "Count_MortalityEvent_HyperplasiaOfProstate_Female"
+        },
+        {
+          "name": "Count of Mortality Event: Malignant Neoplasm of Prostate, Female",
+          "dcid": "Count_MortalityEvent_MalignantNeoplasmOfProstate_Female"
+        },
+        {
+          "name": "Count of Mortality Event: Operations of War And Their Sequelae, Female",
+          "dcid": "Count_MortalityEvent_OperationsOfWarAndTheirSequelae_Female"
+        },
+        {
+          "name": "Count of Mortality Event: Shigellosis And Amebiasis, Female",
+          "dcid": "Count_MortalityEvent_ShigellosisAndAmebiasis_Female"
+        },
+        {
+          "name": "Count of Mortality Event: Acute Flaccid Paralysis, Female (As Fraction of Count Medical Condition Incident Female Condition Acute Flaccid Paralysis)",
+          "dcid": "Count_MortalityEvent_AcuteFlaccidParalysis_Female_AsAFractionOf_Count_MedicalConditionIncident_Female_ConditionAcuteFlaccidParalysis"
+        },
+        {
+          "name": "Count of Mortality Event: Cholera, Female (As Fraction of Count Medical Condition Incident Female Condition Cholera)",
+          "dcid": "Count_MortalityEvent_Cholera_Female_AsAFractionOf_Count_MedicalConditionIncident_Female_ConditionCholera"
+        },
+        {
+          "name": "Count of Mortality Event: Diarrhea Water With Blood, Female (As Fraction of Count Medical Condition Incident Female Condition Diarrhea Water With Blood)",
+          "dcid": "Count_MortalityEvent_DiarrheaWaterWithBlood_Female_AsAFractionOf_Count_MedicalConditionIncident_Female_ConditionDiarrheaWaterWithBlood"
+        },
+        {
+          "name": "Count of Mortality Event: Diarrhea Water Without Blood, Female (As Fraction of Count Medical Condition Incident Female Condition Diarrhea Water Without Blood)",
+          "dcid": "Count_MortalityEvent_DiarrheaWaterWithoutBlood_Female_AsAFractionOf_Count_MedicalConditionIncident_Female_ConditionDiarrheaWaterWithoutBlood"
+        },
+        {
+          "name": "Count of Mortality Event: Filariasis, Female (As Fraction of Count Medical Condition Incident Female Condition Filariasis)",
+          "dcid": "Count_MortalityEvent_Filariasis_Female_AsAFractionOf_Count_MedicalConditionIncident_Female_ConditionFilariasis"
+        },
+        {
+          "name": "Count of Mortality Event: Genital Ulcer, Female (As Fraction of Count Medical Condition Incident Female Condition Genital Ulcer)",
+          "dcid": "Count_MortalityEvent_GenitalUlcer_Female_AsAFractionOf_Count_MedicalConditionIncident_Female_ConditionGenitalUlcer"
+        },
+        {
+          "name": "Count of Mortality Event: Hepatitis B, Female (As Fraction of Count Medical Condition Incident Female Condition Hepatitis B)",
+          "dcid": "Count_MortalityEvent_HepatitisB_Female_AsAFractionOf_Count_MedicalConditionIncident_Female_ConditionHepatitisB"
+        },
+        {
+          "name": "Count of Mortality Event: Lymphatic Disorder, Female (As Fraction of Count Medical Condition Incident Female Condition Lymphatic Disorder)",
+          "dcid": "Count_MortalityEvent_LymphaticDisorder_Female_AsAFractionOf_Count_MedicalConditionIncident_Female_ConditionLymphaticDisorder"
+        },
+        {
+          "name": "Count of Mortality Event: Male Urethral Discharge, Female (As Fraction of Count Medical Condition Incident Female Condition Male Urethral Discharge)",
+          "dcid": "Count_MortalityEvent_MaleUrethralDischarge_Female_AsAFractionOf_Count_MedicalConditionIncident_Female_ConditionMaleUrethralDischarge"
+        },
+        {
+          "name": "Count of Mortality Event: Measles, Female (As Fraction of Count Medical Condition Incident Female Condition Measles)",
+          "dcid": "Count_MortalityEvent_Measles_Female_AsAFractionOf_Count_MedicalConditionIncident_Female_ConditionMeasles"
+        },
+        {
+          "name": "Count of Mortality Event: Onchocerciasis, Female (As Fraction of Count Medical Condition Incident Female Condition Onchocerciasis)",
+          "dcid": "Count_MortalityEvent_Onchocerciasis_Female_AsAFractionOf_Count_MedicalConditionIncident_Female_ConditionOnchocerciasis"
+        },
+        {
+          "name": "Count of Mortality Event: Plague, Female (As Fraction of Count Medical Condition Incident Female Condition Plague)",
+          "dcid": "Count_MortalityEvent_Plague_Female_AsAFractionOf_Count_MedicalConditionIncident_Female_ConditionPlague"
+        },
+        {
+          "name": "Count of Mortality Event: Polio, Female (As Fraction of Count Medical Condition Incident Female Condition Polio)",
+          "dcid": "Count_MortalityEvent_Polio_Female_AsAFractionOf_Count_MedicalConditionIncident_Female_ConditionPolio"
+        },
+        {
+          "name": "Count of Mortality Event: Vaginal Discharge, Female (As Fraction of Count Medical Condition Incident Female Condition Vaginal Discharge)",
+          "dcid": "Count_MortalityEvent_VaginalDischarge_Female_AsAFractionOf_Count_MedicalConditionIncident_Female_ConditionVaginalDischarge"
+        },
+        {
+          "name": "Count of Mortality Event: X60-X84 (Intentional Self-harm), Female (As Fraction of Count Person Female)",
+          "dcid": "Count_Death_IntentionalSelfHarm_Female_AsFractionOf_Count_Person_Female"
+        },
+        {
+          "name": "Count of Mortality Event: Yellow Fever, Female (As Fraction of Count Medical Condition Incident Female Condition Yellow Fever)",
+          "dcid": "Count_MortalityEvent_YellowFever_Female_AsAFractionOf_Count_MedicalConditionIncident_Female_ConditionYellowFever"
+        },
+        {
+          "name": "Count of Mortality Event (Measured Based on Jurisdiction): Death Due To Another Person, Female, Incarcerated",
+          "dcid": "dc/59k03h1hvxp89"
+        },
+        {
+          "name": "Count of Mortality Event (Measured Based on Jurisdiction): Illness or Natural Cause, Female, Incarcerated",
+          "dcid": "dc/mjqlm4q2efmvh"
+        },
+        {
+          "name": "Count of Mortality Event (Measured Based on Jurisdiction): Judicial Execution, Female, Incarcerated",
+          "dcid": "dc/jh0nks36n1jc1"
+        },
+        {
+          "name": "Count of Mortality Event (Measured Based on Jurisdiction): NPSOther Cause of Death, Female, Incarcerated",
+          "dcid": "dc/pwpgqvlz3zxtc"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/SDGVCVOVGDSD_sdggroundsOfDiscrimination_sdgsex-SDGSexEnumF",
       "name": "Proportion of Population Reporting Having Felt Discriminated Against, by Grounds of Discrimination, Sex And Disability With Grounds of Discrimination, Sex = Female",
       "statVars": [
@@ -32993,96 +33103,6 @@
         {
           "name": "Average hourly earnings of employees by sex and occupation [Female, Type of occupation = Technicians and associate professionals]",
           "dcid": "sdg/SL_EMP_EARN.SEX--F__OCCUPATION--ISCO88_3"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/MortalityEvent_CauseOfDeath_Gender-Female",
-      "name": "Mortality Event With Cause of Death, Gender = Female",
-      "statVars": [
-        {
-          "name": "Count of Mortality Event: Acute Flaccid Paralysis, Female (As Fraction of Count Medical Condition Incident Female Condition Acute Flaccid Paralysis)",
-          "dcid": "Count_MortalityEvent_AcuteFlaccidParalysis_Female_AsAFractionOf_Count_MedicalConditionIncident_Female_ConditionAcuteFlaccidParalysis"
-        },
-        {
-          "name": "Count of Mortality Event: Cholera, Female (As Fraction of Count Medical Condition Incident Female Condition Cholera)",
-          "dcid": "Count_MortalityEvent_Cholera_Female_AsAFractionOf_Count_MedicalConditionIncident_Female_ConditionCholera"
-        },
-        {
-          "name": "Count of Mortality Event: Diarrhea Water With Blood, Female (As Fraction of Count Medical Condition Incident Female Condition Diarrhea Water With Blood)",
-          "dcid": "Count_MortalityEvent_DiarrheaWaterWithBlood_Female_AsAFractionOf_Count_MedicalConditionIncident_Female_ConditionDiarrheaWaterWithBlood"
-        },
-        {
-          "name": "Count of Mortality Event: Diarrhea Water Without Blood, Female (As Fraction of Count Medical Condition Incident Female Condition Diarrhea Water Without Blood)",
-          "dcid": "Count_MortalityEvent_DiarrheaWaterWithoutBlood_Female_AsAFractionOf_Count_MedicalConditionIncident_Female_ConditionDiarrheaWaterWithoutBlood"
-        },
-        {
-          "name": "Count of Mortality Event: Filariasis, Female (As Fraction of Count Medical Condition Incident Female Condition Filariasis)",
-          "dcid": "Count_MortalityEvent_Filariasis_Female_AsAFractionOf_Count_MedicalConditionIncident_Female_ConditionFilariasis"
-        },
-        {
-          "name": "Count of Mortality Event: Genital Ulcer, Female (As Fraction of Count Medical Condition Incident Female Condition Genital Ulcer)",
-          "dcid": "Count_MortalityEvent_GenitalUlcer_Female_AsAFractionOf_Count_MedicalConditionIncident_Female_ConditionGenitalUlcer"
-        },
-        {
-          "name": "Count of Mortality Event: Hepatitis B, Female (As Fraction of Count Medical Condition Incident Female Condition Hepatitis B)",
-          "dcid": "Count_MortalityEvent_HepatitisB_Female_AsAFractionOf_Count_MedicalConditionIncident_Female_ConditionHepatitisB"
-        },
-        {
-          "name": "Count of Mortality Event: Lymphatic Disorder, Female (As Fraction of Count Medical Condition Incident Female Condition Lymphatic Disorder)",
-          "dcid": "Count_MortalityEvent_LymphaticDisorder_Female_AsAFractionOf_Count_MedicalConditionIncident_Female_ConditionLymphaticDisorder"
-        },
-        {
-          "name": "Count of Mortality Event: Malaria, Female (As Fraction of Count Medical Condition Incident Female Condition Malaria)",
-          "dcid": "Count_MortalityEvent_Malaria_Female_AsAFractionOf_Count_MedicalConditionIncident_Female_ConditionMalaria"
-        },
-        {
-          "name": "Count of Mortality Event: Male Urethral Discharge, Female (As Fraction of Count Medical Condition Incident Female Condition Male Urethral Discharge)",
-          "dcid": "Count_MortalityEvent_MaleUrethralDischarge_Female_AsAFractionOf_Count_MedicalConditionIncident_Female_ConditionMaleUrethralDischarge"
-        },
-        {
-          "name": "Count of Mortality Event: Measles, Female (As Fraction of Count Medical Condition Incident Female Condition Measles)",
-          "dcid": "Count_MortalityEvent_Measles_Female_AsAFractionOf_Count_MedicalConditionIncident_Female_ConditionMeasles"
-        },
-        {
-          "name": "Count of Mortality Event: Onchocerciasis, Female (As Fraction of Count Medical Condition Incident Female Condition Onchocerciasis)",
-          "dcid": "Count_MortalityEvent_Onchocerciasis_Female_AsAFractionOf_Count_MedicalConditionIncident_Female_ConditionOnchocerciasis"
-        },
-        {
-          "name": "Count of Mortality Event: Plague, Female (As Fraction of Count Medical Condition Incident Female Condition Plague)",
-          "dcid": "Count_MortalityEvent_Plague_Female_AsAFractionOf_Count_MedicalConditionIncident_Female_ConditionPlague"
-        },
-        {
-          "name": "Count of Mortality Event: Polio, Female (As Fraction of Count Medical Condition Incident Female Condition Polio)",
-          "dcid": "Count_MortalityEvent_Polio_Female_AsAFractionOf_Count_MedicalConditionIncident_Female_ConditionPolio"
-        },
-        {
-          "name": "Count of Mortality Event: Vaginal Discharge, Female (As Fraction of Count Medical Condition Incident Female Condition Vaginal Discharge)",
-          "dcid": "Count_MortalityEvent_VaginalDischarge_Female_AsAFractionOf_Count_MedicalConditionIncident_Female_ConditionVaginalDischarge"
-        },
-        {
-          "name": "Count of Mortality Event: X60-X84 (Intentional Self-harm), Female (As Fraction of Count Person Female)",
-          "dcid": "Count_Death_IntentionalSelfHarm_Female_AsFractionOf_Count_Person_Female"
-        },
-        {
-          "name": "Count of Mortality Event: Yellow Fever, Female (As Fraction of Count Medical Condition Incident Female Condition Yellow Fever)",
-          "dcid": "Count_MortalityEvent_YellowFever_Female_AsAFractionOf_Count_MedicalConditionIncident_Female_ConditionYellowFever"
-        },
-        {
-          "name": "Count of Mortality Event (Measured Based on Jurisdiction): Death Due To Another Person, Female, Incarcerated",
-          "dcid": "dc/59k03h1hvxp89"
-        },
-        {
-          "name": "Count of Mortality Event (Measured Based on Jurisdiction): Illness or Natural Cause, Female, Incarcerated",
-          "dcid": "dc/mjqlm4q2efmvh"
-        },
-        {
-          "name": "Count of Mortality Event (Measured Based on Jurisdiction): Judicial Execution, Female, Incarcerated",
-          "dcid": "dc/jh0nks36n1jc1"
-        },
-        {
-          "name": "Count of Mortality Event (Measured Based on Jurisdiction): NPSOther Cause of Death, Female, Incarcerated",
-          "dcid": "dc/pwpgqvlz3zxtc"
         }
       ]
     },
@@ -34003,6 +34023,76 @@
         {
           "name": "Population: 85 Years or More, Female, Widowed",
           "dcid": "Count_Person_85OrMoreYears_Female_Widowed"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_InternetUsagePurpose",
+      "name": "Person With Gender = Female, Internet Usage Purpose",
+      "statVars": [
+        {
+          "name": "Browses the Web, female",
+          "dcid": "Count_Person_15OrMoreYears_Female_WebBrowsingUsage_IsInternetUser"
+        },
+        {
+          "name": "Offers Services for Sale via the Internet, female",
+          "dcid": "Count_Person_15OrMoreYears_Female_ServiceForSaleUsage_IsInternetUser"
+        },
+        {
+          "name": "Participates in Online Video or Voice Calls or Conferencing, female",
+          "dcid": "Count_Person_15OrMoreYears_Female_VideoCallsUsageOrAudioCallsUsageOrConferencingUsage_IsInternetUser"
+        },
+        {
+          "name": "Posts or Uploads Blog Posts, Videos, or Other Original Content, female",
+          "dcid": "Count_Person_15OrMoreYears_Female_UploadMediaUsage_IsInternetUser"
+        },
+        {
+          "name": "Researches Health Information Online, female",
+          "dcid": "Count_Person_15OrMoreYears_Female_HealthDataResearchUsage_IsInternetUser"
+        },
+        {
+          "name": "Searches for a Job Online, female",
+          "dcid": "Count_Person_15OrMoreYears_Female_JobSearchUsage_IsInternetUser"
+        },
+        {
+          "name": "Streams or Downloads Music, Radio, Podcasts, etc., female",
+          "dcid": "Count_Person_15OrMoreYears_Female_StreamingUsageOrMediaDownloadUsage_IsInternetUser"
+        },
+        {
+          "name": "Takes Class or Participates in Job Training Online, female",
+          "dcid": "Count_Person_15OrMoreYears_Female_OnlineClassUsageOrJobTrainningUsage_IsInternetUser"
+        },
+        {
+          "name": "Telecommutes Using the Internet, female",
+          "dcid": "Count_Person_15OrMoreYears_Female_TelecommutesUsage_IsInternetUser"
+        },
+        {
+          "name": "Uses Email, female",
+          "dcid": "Count_Person_15OrMoreYears_Female_EmailUsage_IsInternetUser"
+        },
+        {
+          "name": "Uses Health Monitoring Service that Connects to the Internet, female",
+          "dcid": "Count_Person_15OrMoreYears_Female_HealthMonitoringServicesUsage_IsInternetUser"
+        },
+        {
+          "name": "Uses Online Financial Services Like Banking, Investing, Paying Bills, female",
+          "dcid": "Count_Person_15OrMoreYears_Female_FinancialServicesUsage_IsInternetUser"
+        },
+        {
+          "name": "Uses Online Social Networks, female",
+          "dcid": "Count_Person_15OrMoreYears_Female_SocialNetworksUsage_IsInternetUser"
+        },
+        {
+          "name": "Uses Text Messaging or Instant Messaging, female",
+          "dcid": "Count_Person_15OrMoreYears_Female_TextMessagingUsage_IsInternetUser"
+        },
+        {
+          "name": "Uses the Internet to Sell Goods, female",
+          "dcid": "Count_Person_15OrMoreYears_Female_GoodsSellingUsage_IsInternetUser"
+        },
+        {
+          "name": "Watches Videos Online, female",
+          "dcid": "Count_Person_15OrMoreYears_Female_WatchingVideosUsage_IsInternetUser"
         }
       ]
     },
@@ -35715,6 +35805,48 @@
         {
           "name": "Population: 85 Years or More, Female, Stroke",
           "dcid": "Count_Person_85OrMoreYears_Female_ConditionStroke"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female",
+      "name": "Person With Gender = Female",
+      "statVars": [
+        {
+          "name": "Female Life Expectancy",
+          "dcid": "LifeExpectancy_Person_Female"
+        },
+        {
+          "name": "Female Population",
+          "dcid": "Count_Person_Female"
+        },
+        {
+          "name": "Unemployment Rate of the Female Population",
+          "dcid": "UnemploymentRate_Person_Female"
+        },
+        {
+          "name": "Growth Rate Population: Female",
+          "dcid": "GrowthRate_Count_Person_Female"
+        },
+        {
+          "name": "Mean Wages Daily: Female",
+          "dcid": "Mean_WagesDaily_Worker_Female"
+        },
+        {
+          "name": "Mean Wages Monthly: Female",
+          "dcid": "Mean_WagesMonthly_Worker_Female"
+        },
+        {
+          "name": "Median Age of Female Population",
+          "dcid": "Median_Age_Person_Female"
+        },
+        {
+          "name": "Median Income of Women (15 Years or Older) With Income",
+          "dcid": "Median_Income_Person_15OrMoreYears_Female_WithIncome"
+        },
+        {
+          "name": "Anyone in Household Uses a Desktop, Laptop, or Tablet at Home, female",
+          "dcid": "Count_Person_ComputerUsageAtHome_Female_HasComputer_NonInstitutionalized_ResidesInHousehold"
         }
       ]
     },
@@ -37815,44 +37947,6 @@
         {
           "name": "Population: Years 5, Female, Below Poverty Level in The Past 12 Months, White Alone Not Hispanic or Latino",
           "dcid": "dc/382kknm8yfeph"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female",
-      "name": "Person With Gender = Female",
-      "statVars": [
-        {
-          "name": "Female Life Expectancy",
-          "dcid": "LifeExpectancy_Person_Female"
-        },
-        {
-          "name": "Female Population",
-          "dcid": "Count_Person_Female"
-        },
-        {
-          "name": "Unemployment Rate of the Female Population",
-          "dcid": "UnemploymentRate_Person_Female"
-        },
-        {
-          "name": "Growth Rate Population: Female",
-          "dcid": "GrowthRate_Count_Person_Female"
-        },
-        {
-          "name": "Mean Wages Daily: Female",
-          "dcid": "Mean_WagesDaily_Worker_Female"
-        },
-        {
-          "name": "Mean Wages Monthly: Female",
-          "dcid": "Mean_WagesMonthly_Worker_Female"
-        },
-        {
-          "name": "Median Age of Female Population",
-          "dcid": "Median_Age_Person_Female"
-        },
-        {
-          "name": "Median Income of Women (15 Years or Older) With Income",
-          "dcid": "Median_Income_Person_15OrMoreYears_Female_WithIncome"
         }
       ]
     },
@@ -41945,6 +42039,74 @@
         {
           "name": "Number of chairs of permanent committees, by age sex and focus of the committee, Lower Chamber or Unicameral [under 46 years old, Female, Parliamentary committees = Human Rights]",
           "dcid": "sdg/SG_DMK_PARLCC_LC.AGE--Y0T45__SEX--F__PARLIAMENTARY_COMMITTEES--PC_HUM_RIGH"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years15Onwards_ElectronicGadgetUsed_Gender-Female",
+      "name": "Person With Age = 15 Years or More, Electronic Gadget Used, Gender = Female",
+      "statVars": [
+        {
+          "name": "Uses a Desktop Computer, female",
+          "dcid": "Count_Person_15OrMoreYears_DesktopUser_Female"
+        },
+        {
+          "name": "Uses a Desktop, Laptop, or Tablet Computer, female",
+          "dcid": "Count_Person_15OrMoreYears_DesktopUserOrLaptopUserOrTabletUser_Female"
+        },
+        {
+          "name": "Uses a Laptop Computer, female",
+          "dcid": "Count_Person_15OrMoreYears_LaptopUser_Female"
+        },
+        {
+          "name": "Uses a Mobile Phone, female",
+          "dcid": "Count_Person_15OrMoreYears_MobileUser_Female"
+        },
+        {
+          "name": "Uses a Smart TV or Connected Device, female",
+          "dcid": "Count_Person_15OrMoreYears_SmartTelivisionUser_Female"
+        },
+        {
+          "name": "Uses a Tablet or e-Book Reader, female",
+          "dcid": "Count_Person_15OrMoreYears_TabletUserOrEbookReaderUser_Female"
+        },
+        {
+          "name": "Uses a Wearable Device, female",
+          "dcid": "Count_Person_15OrMoreYears_WearableDeviceUser_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years15Onwards_Gender-Female_InternetUsageLocation",
+      "name": "Person With Age = 15 Years or More, Gender = Female, Internet Usage Location",
+      "statVars": [
+        {
+          "name": "Uses the Internet (Any Location), female",
+          "dcid": "Count_Person_15OrMoreYears_Female_InternetUsageAtAnyLocation_IsInternetUser"
+        },
+        {
+          "name": "Uses the Internet While Traveling Between Places, female",
+          "dcid": "Count_Person_15OrMoreYears_Female_InternetUsageAtTraveling_IsInternetUser"
+        },
+        {
+          "name": "Uses the Internet at Home, female",
+          "dcid": "Count_Person_15OrMoreYears_Female_InternetUsageAtHome_IsInternetUser"
+        },
+        {
+          "name": "Uses the Internet at School, female",
+          "dcid": "Count_Person_15OrMoreYears_Female_InternetUsageAtSchool_IsInternetUser"
+        },
+        {
+          "name": "Uses the Internet at Work, female",
+          "dcid": "Count_Person_15OrMoreYears_Female_InternetUsageAtWork_IsInternetUser"
+        },
+        {
+          "name": "Uses the Internet at a Coffee Shop or Other Business, female",
+          "dcid": "Count_Person_15OrMoreYears_Female_InternetUsageAtCafeteria_IsInternetUser"
+        },
+        {
+          "name": "Uses the Internet at a Public Place Like the Library, Community Center, Park, female",
+          "dcid": "Count_Person_15OrMoreYears_Female_InternetUsageAtPublicPlace_IsInternetUser"
         }
       ]
     },
@@ -46331,6 +46493,36 @@
         {
           "name": "Percentile 90 Assessment Score of Student: Female, School Grade 8, USHistory, Public School, World Role Scale",
           "dcid": "Percentile90_AssessmentScore_Student_Female_SchoolGrade8_USHistory_PublicSchool_WorldRoleScale"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_FactorForInternetService_Gender-Female",
+      "name": "Person With Factor for Internet Service, Gender = Female",
+      "statVars": [
+        {
+          "name": "Affordability is Most Important Factor for Home Internet Service, female",
+          "dcid": "Count_Person_FactorForHomeInternetAffordability_Female_InternetUsageAtHome_IsInternetUser"
+        },
+        {
+          "name": "Customer Service is Most Important Factor for Home Internet Service, female",
+          "dcid": "Count_Person_FactorForHomeInternetCustomerService_Female_InternetUsageAtHome_IsInternetUser"
+        },
+        {
+          "name": "Data Cap is Most Important Factor for Home Internet Service, female",
+          "dcid": "Count_Person_FactorForHomeInternetDataLimit_Female_InternetUsageAtHome_IsInternetUser"
+        },
+        {
+          "name": "Mobility is Most Important Factor for Home Internet Service, female",
+          "dcid": "Count_Person_FactorForHomeInternetMobility_Female_InternetUsageAtHome_IsInternetUser"
+        },
+        {
+          "name": "Reliability is Most Important Factor for Home Internet Service, female",
+          "dcid": "Count_Person_FactorForHomeInternetReliability_Female_InternetUsageAtHome_IsInternetUser"
+        },
+        {
+          "name": "Service Speed is Most Important Factor for Home Internet Service, female",
+          "dcid": "Count_Person_FactorForHomeInternetServiceSpeed_Female_InternetUsageAtHome_IsInternetUser"
         }
       ]
     },
@@ -54449,6 +54641,24 @@
       ]
     },
     {
+      "dcid": "dc/g/Person_Age-Years15Onwards_Gender-Female",
+      "name": "Person With Age = 15 Years or More, Gender = Female",
+      "statVars": [
+        {
+          "name": "Population: 15 Years or More, Female",
+          "dcid": "Count_Person_15OrMoreYears_Female"
+        },
+        {
+          "name": "Person Aged 15 and above, female",
+          "dcid": "Count_Person_15OrMoreYears_Civilian_Female"
+        },
+        {
+          "name": "Population: 15 Years or More, Female, Smoking (As Fraction of Count Person 15 or More Years Female)",
+          "dcid": "Count_Person_15OrMoreYears_Female_Smoking_AsFractionOf_Count_Person_15OrMoreYears_Female"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/Person_Age-Years65_Gender-Female",
       "name": "Person With Age = Years 65, Gender = Female",
       "statVars": [
@@ -56965,96 +57175,6 @@
         {
           "name": "Percentage Daily, 0 Portions, Consumption Of Fruits Or Consumption Of Vegetables Among Upper Secondary Education Or Post Secondary Non Tertiary Education, Female Population",
           "dcid": "Percent_Daily_0Portion_ConsumptionOfFruitsOrConsumptionOfVegetables_In_Count_Person_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_ConsumptionQuantity-Portion0_Gender-Female_PlaceOfResidenceClassification",
-      "name": "Person With Consumption Quantity = Portion 0, Gender = Female, Place of Residence Classification",
-      "statVars": [
-        {
-          "name": "Percentage Daily, 0 Portions, Consumption Of Fruits Or Consumption Of Vegetables Among Rural, Female Population",
-          "dcid": "Percent_Daily_0Portion_ConsumptionOfFruitsOrConsumptionOfVegetables_In_Count_Person_Rural_Female"
-        },
-        {
-          "name": "Percentage Daily, 0 Portions, Consumption Of Fruits Or Consumption Of Vegetables Among Semi Urban, Female Population",
-          "dcid": "Percent_Daily_0Portion_ConsumptionOfFruitsOrConsumptionOfVegetables_In_Count_Person_SemiUrban_Female"
-        },
-        {
-          "name": "Percentage Daily, 0 Portions, Consumption Of Fruits Or Consumption Of Vegetables Among Urban, Female Population",
-          "dcid": "Percent_Daily_0Portion_ConsumptionOfFruitsOrConsumptionOfVegetables_In_Count_Person_Urban_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_EducationalAttainment-LessThanPrimaryEducationPrimaryEducationLowerSecondaryEducation_Gender-Female_SocialSupportLevel",
-      "name": "Person With Educational Attainment = Less Than Primary Education \u0026 Primary Education \u0026 Lower Secondary Education, Gender = Female, Social Support Level",
-      "statVars": [
-        {
-          "name": "Percentage Receiving Intermediate Social Support Among Less Than Primary Education Or Primary Education Or Lower Secondary Education, Female Population",
-          "dcid": "Percent_ReceivingIntermediateSocialSupport_In_Count_Person_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_Female"
-        },
-        {
-          "name": "Percentage Receiving Poor Social Support Among Less Than Primary Education Or Primary Education Or Lower Secondary Education, Female Population",
-          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_Female"
-        },
-        {
-          "name": "Percentage Receiving Strong Social Support Among Less Than Primary Education Or Primary Education Or Lower Secondary Education, Female Population",
-          "dcid": "Percent_ReceivingStrongSocialSupport_In_Count_Person_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_EducationalAttainment-TertiaryEducation_Gender-Female_SocialSupportLevel",
-      "name": "Person With Educational Attainment = Tertiary Education, Gender = Female, Social Support Level",
-      "statVars": [
-        {
-          "name": "Percentage Receiving Intermediate Social Support Among Tertiary Education, Female Population",
-          "dcid": "Percent_ReceivingIntermediateSocialSupport_In_Count_Person_TertiaryEducation_Female"
-        },
-        {
-          "name": "Percentage Receiving Poor Social Support Among Tertiary Education, Female Population",
-          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_TertiaryEducation_Female"
-        },
-        {
-          "name": "Percentage Receiving Strong Social Support Among Tertiary Education, Female Population",
-          "dcid": "Percent_ReceivingStrongSocialSupport_In_Count_Person_TertiaryEducation_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_EducationalAttainment-UpperSecondaryEducationPostSecondaryNonTertiaryEducation_Gender-Female_SocialSupportLevel",
-      "name": "Person With Educational Attainment = Upper Secondary Education \u0026 Post Secondary Non Tertiary Education, Gender = Female, Social Support Level",
-      "statVars": [
-        {
-          "name": "Percentage Receiving Intermediate Social Support Among Upper Secondary Education Or Post Secondary Non Tertiary Education, Female Population",
-          "dcid": "Percent_ReceivingIntermediateSocialSupport_In_Count_Person_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female"
-        },
-        {
-          "name": "Percentage Receiving Poor Social Support Among Upper Secondary Education Or Post Secondary Non Tertiary Education, Female Population",
-          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female"
-        },
-        {
-          "name": "Percentage Receiving Strong Social Support Among Upper Secondary Education Or Post Secondary Non Tertiary Education, Female Population",
-          "dcid": "Percent_ReceivingStrongSocialSupport_In_Count_Person_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_ExerciseType-AerobicMuscleStrengthening_Gender-Female_PlaceOfResidenceClassification",
-      "name": "Person With Exercise Type = Aerobic \u0026 Muscle Strengthening, Gender = Female, Place of Residence Classification",
-      "statVars": [
-        {
-          "name": "Percentage Aerobic Or Muscle Strengthening, Health Enhancing Physical Activity Among Rural, Female Population",
-          "dcid": "Percent_AerobicOrMuscleStrengthening_HealthEnhancingPhysicalActivity_In_Count_Person_Rural_Female"
-        },
-        {
-          "name": "Percentage Aerobic Or Muscle Strengthening, Health Enhancing Physical Activity Among Semi Urban, Female Population",
-          "dcid": "Percent_AerobicOrMuscleStrengthening_HealthEnhancingPhysicalActivity_In_Count_Person_SemiUrban_Female"
-        },
-        {
-          "name": "Percentage Aerobic Or Muscle Strengthening, Health Enhancing Physical Activity Among Urban, Female Population",
-          "dcid": "Percent_AerobicOrMuscleStrengthening_HealthEnhancingPhysicalActivity_In_Count_Person_Urban_Female"
         }
       ]
     }
