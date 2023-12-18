@@ -267,6 +267,16 @@ service Mixer {
     };
   }
 
+  // Get data from the imports table, used to populate import history table
+  // of the admin page for custom DCs
+  rpc GetImportTableData(GetImportTableDataRequest)
+    returns (GetImportTableDataResponse) {
+      option (google.api.http) = {
+        get: "/internal/import-table"
+        additional_bindings : {post : "/internal/import-table" body : "*"}
+      };
+    }
+
   // ======================  V1   V1   V1   V1  ======================
 
   // Query DataCommons Graph with Sparql.
