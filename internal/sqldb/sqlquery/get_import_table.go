@@ -25,8 +25,8 @@ import (
 
 // Represents "metadata" column of import table
 type ImportMetadata struct {
-	NumObs  int32
-	NumVars int32
+	NumObs  *int32
+	NumVars *int32
 }
 
 // GetImportTableData gets rows of import table

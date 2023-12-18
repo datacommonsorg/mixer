@@ -51,8 +51,8 @@ message GetImportTableDataRequest {
 message GetImportTableDataResponse{
   message ImportData {
     message ImportMetadata{
-      int32 num_obs = 5;
-      int32 num_vars = 6;
+      optional int32 num_obs = 5;
+      optional int32 num_vars = 6;
     }
   
     string imported_at = 2;

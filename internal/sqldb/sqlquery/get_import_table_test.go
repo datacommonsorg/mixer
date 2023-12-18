@@ -28,6 +28,7 @@ func TestGetImportTableData(t *testing.T) {
 		t.Fatalf("Could not open testing database: %s", err)
 	}
 
+	var numObs, numVars int32 = 58, 4
 	for _, c := range []struct {
 		want *pb.GetImportTableDataResponse
 	}{
@@ -38,8 +39,8 @@ func TestGetImportTableData(t *testing.T) {
 						ImportedAt: "2023-12-12T14:06:18.036077Z",
 						Status:     "SUCCESS",
 						Metadata: &pb.GetImportTableDataResponse_ImportData_ImportMetadata{
-							NumObs:  58,
-							NumVars: 4,
+							NumObs:  &numObs,
+							NumVars: &numVars,
 						},
 					},
 				},
