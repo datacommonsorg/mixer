@@ -36,6 +36,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/v0/propertyvalue"
 	"github.com/datacommonsorg/mixer/internal/server/v0/statpoint"
 	"github.com/datacommonsorg/mixer/internal/server/v0/triple"
+	"github.com/datacommonsorg/mixer/internal/sqldb/sqlquery"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/protobuf/encoding/protojson"
 )
@@ -319,4 +320,12 @@ func (s *Server) UpdateCache(
 	}
 	s.cachedata.Swap(newCache)
 	return &pb.UpdateCacheResponse{}, err
+}
+
+// GetImportTableData implements API for Mixer.GetImportTableData
+func (s *Server) GetImportTableData(
+	ctx context.Context, in *pb.GetImportTableDataRequest,
+) (*pb.GetImportTableDataResponse, error) {
+	response, err := sqlquery.GetImportTableData(s.store.SQLClient)
+	return response, err
 }
