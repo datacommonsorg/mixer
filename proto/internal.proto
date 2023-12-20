@@ -21,6 +21,7 @@
 // ========================================
 //    /internal/place (/landing-page)
 //    /internal/bio
+//    /internal/import-table
 // ========================================
 
 syntax = "proto3";
@@ -40,4 +41,23 @@ message UpdateCacheRequest {
 
 // Response of UpdateCache request.
 message UpdateCacheResponse {
+}
+
+// Request to get data in the import table
+message GetImportTableDataRequest {
+}
+
+// Response of GetImportTableDataRequest
+message GetImportTableDataResponse{
+  message ImportData {
+    message ImportMetadata{
+      optional int32 num_obs = 5;
+      optional int32 num_vars = 6;
+    }
+  
+    string imported_at = 2;
+    string status = 3;
+    ImportMetadata metadata = 4;
+  }
+  repeated ImportData data = 1;
 }
