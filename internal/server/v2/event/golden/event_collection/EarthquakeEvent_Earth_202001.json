@@ -471,57 +471,6 @@
       },
       {
         "places": [
-          "geoId/02",
-          "geoId/0200",
-          "geoId/02261",
-          "geoId/02261000300",
-          "geoId/0226114420",
-          "geoId/sch0200800",
-          "zip/99686"
-        ],
-        "geoLocations": [
-          {
-            "point": {
-              "latitude": 60.8709,
-              "longitude": -146.1862
-            }
-          }
-        ],
-        "dates": [
-          "2020-01-27T13:25:20"
-        ],
-        "propVals": {
-          "depth": {
-            "vals": [
-              "Kilometer17.4"
-            ]
-          },
-          "depthError": {
-            "vals": [
-              "Kilometer0.2"
-            ]
-          },
-          "magnitude": {
-            "vals": [
-              "3.3"
-            ]
-          },
-          "magnitudeType": {
-            "vals": [
-              "MagnitudeMl"
-            ]
-          },
-          "name": {
-            "vals": [
-              "26 km E of Tatitlek, Alaska"
-            ]
-          }
-        },
-        "dcid": "earthquake/ak02018veek9",
-        "provenanceId": "dc/base/EarthquakeUSGS"
-      },
-      {
-        "places": [
           "country/USA",
           "geoId/02",
           "geoId/0200",
@@ -2291,56 +2240,6 @@
           }
         },
         "dcid": "earthquake/ak020vg3fbr",
-        "provenanceId": "dc/base/EarthquakeUSGS"
-      },
-      {
-        "places": [
-          "geoId/02",
-          "geoId/0200",
-          "geoId/02282",
-          "geoId/02282000100",
-          "geoId/0228286498",
-          "geoId/sch0200840"
-        ],
-        "geoLocations": [
-          {
-            "point": {
-              "latitude": 59.1891,
-              "longitude": -138.4487
-            }
-          }
-        ],
-        "dates": [
-          "2020-01-20T01:48:19"
-        ],
-        "propVals": {
-          "depth": {
-            "vals": [
-              "Kilometer13.9"
-            ]
-          },
-          "depthError": {
-            "vals": [
-              "Kilometer1"
-            ]
-          },
-          "magnitude": {
-            "vals": [
-              "3"
-            ]
-          },
-          "magnitudeType": {
-            "vals": [
-              "MagnitudeMl"
-            ]
-          },
-          "name": {
-            "vals": [
-              "82 km ESE of Yakutat, Alaska"
-            ]
-          }
-        },
-        "dcid": "earthquake/ak020x3mpcb",
         "provenanceId": "dc/base/EarthquakeUSGS"
       },
       {
@@ -4872,118 +4771,6 @@
       },
       {
         "places": [
-          "geoId/72",
-          "geoId/72055",
-          "geoId/7205554022",
-          "geoId/72055961500",
-          "geoId/7298",
-          "geoId/sch7200030",
-          "zip/00647"
-        ],
-        "geoLocations": [
-          {
-            "point": {
-              "latitude": 17.9315,
-              "longitude": -66.927
-            }
-          }
-        ],
-        "dates": [
-          "2020-01-07T12:54:42"
-        ],
-        "propVals": {
-          "depth": {
-            "vals": [
-              "Kilometer8"
-            ]
-          },
-          "depthError": {
-            "vals": [
-              "Kilometer1.53"
-            ]
-          },
-          "magnitude": {
-            "vals": [
-              "4.7"
-            ]
-          },
-          "magnitudeError": {
-            "vals": [
-              "0"
-            ]
-          },
-          "magnitudeType": {
-            "vals": [
-              "MagnitudeMl"
-            ]
-          },
-          "name": {
-            "vals": [
-              "4 km SSW of Guánica, Puerto Rico"
-            ]
-          }
-        },
-        "dcid": "earthquake/pr2020007054",
-        "provenanceId": "dc/base/EarthquakeUSGS"
-      },
-      {
-        "places": [
-          "geoId/72",
-          "geoId/72059",
-          "geoId/7205936220",
-          "geoId/72059740400",
-          "geoId/7298",
-          "geoId/sch7200030",
-          "zip/00656"
-        ],
-        "geoLocations": [
-          {
-            "point": {
-              "latitude": 17.989,
-              "longitude": -66.7893
-            }
-          }
-        ],
-        "dates": [
-          "2020-01-07T22:16:04"
-        ],
-        "propVals": {
-          "depth": {
-            "vals": [
-              "Kilometer13"
-            ]
-          },
-          "depthError": {
-            "vals": [
-              "Kilometer1.25"
-            ]
-          },
-          "magnitude": {
-            "vals": [
-              "3.12"
-            ]
-          },
-          "magnitudeError": {
-            "vals": [
-              "0.14"
-            ]
-          },
-          "magnitudeType": {
-            "vals": [
-              "MagnitudeMd"
-            ]
-          },
-          "name": {
-            "vals": [
-              "3 km E of Indios, Puerto Rico"
-            ]
-          }
-        },
-        "dcid": "earthquake/pr2020007067",
-        "provenanceId": "dc/base/EarthquakeUSGS"
-      },
-      {
-        "places": [
           "country/PRI",
           "geoId/72",
           "geoId/72153",
@@ -5503,61 +5290,6 @@
           }
         },
         "dcid": "earthquake/pr2020008045",
-        "provenanceId": "dc/base/EarthquakeUSGS"
-      },
-      {
-        "places": [
-          "geoId/72",
-          "geoId/72111",
-          "geoId/72111730800",
-          "geoId/7211181585",
-          "geoId/7298",
-          "geoId/sch7200030"
-        ],
-        "geoLocations": [
-          {
-            "point": {
-              "latitude": 17.9831,
-              "longitude": -66.7621
-            }
-          }
-        ],
-        "dates": [
-          "2020-01-08T11:49:10"
-        ],
-        "propVals": {
-          "depth": {
-            "vals": [
-              "Kilometer9"
-            ]
-          },
-          "depthError": {
-            "vals": [
-              "Kilometer1.31"
-            ]
-          },
-          "magnitude": {
-            "vals": [
-              "3.5"
-            ]
-          },
-          "magnitudeError": {
-            "vals": [
-              "0.08"
-            ]
-          },
-          "magnitudeType": {
-            "vals": [
-              "MagnitudeMl"
-            ]
-          },
-          "name": {
-            "vals": [
-              "3 km S of Magas Arriba, Puerto Rico"
-            ]
-          }
-        },
-        "dcid": "earthquake/pr2020008047",
         "provenanceId": "dc/base/EarthquakeUSGS"
       },
       {
@@ -6606,62 +6338,6 @@
       },
       {
         "places": [
-          "geoId/72",
-          "geoId/72059",
-          "geoId/7205972813",
-          "geoId/72059740400",
-          "geoId/7298",
-          "geoId/sch7200030",
-          "zip/00656"
-        ],
-        "geoLocations": [
-          {
-            "point": {
-              "latitude": 17.9923,
-              "longitude": -66.7946
-            }
-          }
-        ],
-        "dates": [
-          "2020-01-11T02:28:21"
-        ],
-        "propVals": {
-          "depth": {
-            "vals": [
-              "Kilometer4"
-            ]
-          },
-          "depthError": {
-            "vals": [
-              "Kilometer1.13"
-            ]
-          },
-          "magnitude": {
-            "vals": [
-              "4.8"
-            ]
-          },
-          "magnitudeError": {
-            "vals": [
-              "0.09"
-            ]
-          },
-          "magnitudeType": {
-            "vals": [
-              "MagnitudeMl"
-            ]
-          },
-          "name": {
-            "vals": [
-              "3 km E of Indios, Puerto Rico"
-            ]
-          }
-        },
-        "dcid": "earthquake/pr2020011001",
-        "provenanceId": "dc/base/EarthquakeUSGS"
-      },
-      {
-        "places": [
           "country/PRI",
           "geoId/72",
           "geoId/72055",
@@ -7527,62 +7203,6 @@
           }
         },
         "dcid": "earthquake/pr2020012083",
-        "provenanceId": "dc/base/EarthquakeUSGS"
-      },
-      {
-        "places": [
-          "geoId/72",
-          "geoId/72059",
-          "geoId/7205907840",
-          "geoId/72059740400",
-          "geoId/7298",
-          "geoId/sch7200030",
-          "zip/00698"
-        ],
-        "geoLocations": [
-          {
-            "point": {
-              "latitude": 17.973,
-              "longitude": -66.7905
-            }
-          }
-        ],
-        "dates": [
-          "2020-01-12T11:31:05"
-        ],
-        "propVals": {
-          "depth": {
-            "vals": [
-              "Kilometer2"
-            ]
-          },
-          "depthError": {
-            "vals": [
-              "Kilometer0.74"
-            ]
-          },
-          "magnitude": {
-            "vals": [
-              "3.22"
-            ]
-          },
-          "magnitudeError": {
-            "vals": [
-              "0.37"
-            ]
-          },
-          "magnitudeType": {
-            "vals": [
-              "MagnitudeMd"
-            ]
-          },
-          "name": {
-            "vals": [
-              "3 km SE of Indios, Puerto Rico"
-            ]
-          }
-        },
-        "dcid": "earthquake/pr2020012087",
         "provenanceId": "dc/base/EarthquakeUSGS"
       },
       {
@@ -9190,62 +8810,6 @@
       },
       {
         "places": [
-          "geoId/72",
-          "geoId/72079",
-          "geoId/7207921041",
-          "geoId/72079850101",
-          "geoId/7298",
-          "geoId/sch7200030",
-          "zip/00667"
-        ],
-        "geoLocations": [
-          {
-            "point": {
-              "latitude": 17.9561,
-              "longitude": -66.9816
-            }
-          }
-        ],
-        "dates": [
-          "2020-01-17T03:19:27"
-        ],
-        "propVals": {
-          "depth": {
-            "vals": [
-              "Kilometer5"
-            ]
-          },
-          "depthError": {
-            "vals": [
-              "Kilometer0.39"
-            ]
-          },
-          "magnitude": {
-            "vals": [
-              "3.22"
-            ]
-          },
-          "magnitudeError": {
-            "vals": [
-              "0.14"
-            ]
-          },
-          "magnitudeType": {
-            "vals": [
-              "MagnitudeMd"
-            ]
-          },
-          "name": {
-            "vals": [
-              "7 km ESE of La Parguera, Puerto Rico"
-            ]
-          }
-        },
-        "dcid": "earthquake/pr2020017022",
-        "provenanceId": "dc/base/EarthquakeUSGS"
-      },
-      {
-        "places": [
           "country/PRI",
           "geoId/72",
           "geoId/72111",
@@ -9812,62 +9376,6 @@
           }
         },
         "dcid": "earthquake/pr2020019005",
-        "provenanceId": "dc/base/EarthquakeUSGS"
-      },
-      {
-        "places": [
-          "geoId/72",
-          "geoId/72059",
-          "geoId/7205907840",
-          "geoId/72059740400",
-          "geoId/7298",
-          "geoId/sch7200030",
-          "zip/00698"
-        ],
-        "geoLocations": [
-          {
-            "point": {
-              "latitude": 17.955,
-              "longitude": -66.8245
-            }
-          }
-        ],
-        "dates": [
-          "2020-01-19T06:07:41"
-        ],
-        "propVals": {
-          "depth": {
-            "vals": [
-              "Kilometer9"
-            ]
-          },
-          "depthError": {
-            "vals": [
-              "Kilometer0.41"
-            ]
-          },
-          "magnitude": {
-            "vals": [
-              "3.08"
-            ]
-          },
-          "magnitudeError": {
-            "vals": [
-              "0.24"
-            ]
-          },
-          "magnitudeType": {
-            "vals": [
-              "MagnitudeMd"
-            ]
-          },
-          "name": {
-            "vals": [
-              "4 km S of Indios, Puerto Rico"
-            ]
-          }
-        },
-        "dcid": "earthquake/pr2020019020",
         "provenanceId": "dc/base/EarthquakeUSGS"
       },
       {
@@ -11068,117 +10576,6 @@
           }
         },
         "dcid": "earthquake/pr2020026015",
-        "provenanceId": "dc/base/EarthquakeUSGS"
-      },
-      {
-        "places": [
-          "geoId/72",
-          "geoId/72059",
-          "geoId/7205936220",
-          "geoId/72059740400",
-          "geoId/7298",
-          "geoId/sch7200030",
-          "zip/00656"
-        ],
-        "geoLocations": [
-          {
-            "point": {
-              "latitude": 17.9906,
-              "longitude": -66.7981
-            }
-          }
-        ],
-        "dates": [
-          "2020-01-27T03:49:52"
-        ],
-        "propVals": {
-          "depth": {
-            "vals": [
-              "Kilometer17"
-            ]
-          },
-          "depthError": {
-            "vals": [
-              "Kilometer0.9"
-            ]
-          },
-          "magnitude": {
-            "vals": [
-              "3"
-            ]
-          },
-          "magnitudeError": {
-            "vals": [
-              "0.16"
-            ]
-          },
-          "magnitudeType": {
-            "vals": [
-              "MagnitudeMd"
-            ]
-          },
-          "name": {
-            "vals": [
-              "2 km E of Indios, Puerto Rico"
-            ]
-          }
-        },
-        "dcid": "earthquake/pr2020027020",
-        "provenanceId": "dc/base/EarthquakeUSGS"
-      },
-      {
-        "places": [
-          "geoId/72",
-          "geoId/72111",
-          "geoId/72111730800",
-          "geoId/7211181585",
-          "geoId/7298",
-          "geoId/sch7200030"
-        ],
-        "geoLocations": [
-          {
-            "point": {
-              "latitude": 17.979,
-              "longitude": -66.7558
-            }
-          }
-        ],
-        "dates": [
-          "2020-01-28T00:04:29"
-        ],
-        "propVals": {
-          "depth": {
-            "vals": [
-              "Kilometer12"
-            ]
-          },
-          "depthError": {
-            "vals": [
-              "Kilometer0.51"
-            ]
-          },
-          "magnitude": {
-            "vals": [
-              "3.34"
-            ]
-          },
-          "magnitudeError": {
-            "vals": [
-              "0.17"
-            ]
-          },
-          "magnitudeType": {
-            "vals": [
-              "MagnitudeMd"
-            ]
-          },
-          "name": {
-            "vals": [
-              "4 km SSE of Magas Arriba, Puerto Rico"
-            ]
-          }
-        },
-        "dcid": "earthquake/pr2020028001",
         "provenanceId": "dc/base/EarthquakeUSGS"
       },
       {
@@ -27880,61 +27277,6 @@
       },
       {
         "places": [
-          "geoId/02",
-          "geoId/0200",
-          "geoId/02013",
-          "geoId/02013000100",
-          "geoId/0201301598",
-          "geoId/sch0200007"
-        ],
-        "geoLocations": [
-          {
-            "point": {
-              "latitude": 54.8337,
-              "longitude": -162.3073
-            }
-          }
-        ],
-        "dates": [
-          "2020-01-04T11:10:54"
-        ],
-        "propVals": {
-          "depth": {
-            "vals": [
-              "Kilometer83.49"
-            ]
-          },
-          "depthError": {
-            "vals": [
-              "Kilometer8.5"
-            ]
-          },
-          "magnitude": {
-            "vals": [
-              "3.5"
-            ]
-          },
-          "magnitudeError": {
-            "vals": [
-              "0.187"
-            ]
-          },
-          "magnitudeType": {
-            "vals": [
-              "MagnitudeMb"
-            ]
-          },
-          "name": {
-            "vals": [
-              "25 km S of King Cove, Alaska"
-            ]
-          }
-        },
-        "dcid": "earthquake/us70006umx",
-        "provenanceId": "dc/base/EarthquakeUSGS"
-      },
-      {
-        "places": [
           "country/COL",
           "ipcc_50/6.75_-72.75_COL"
         ],
@@ -28910,62 +28252,6 @@
           }
         },
         "dcid": "earthquake/us70006vps",
-        "provenanceId": "dc/base/EarthquakeUSGS"
-      },
-      {
-        "places": [
-          "geoId/72",
-          "geoId/72113",
-          "geoId/72113073002",
-          "geoId/7211312312",
-          "geoId/7298",
-          "geoId/sch7200030",
-          "zip/00728"
-        ],
-        "geoLocations": [
-          {
-            "point": {
-              "latitude": 17.9727,
-              "longitude": -66.6678
-            }
-          }
-        ],
-        "dates": [
-          "2020-01-07T13:00:22"
-        ],
-        "propVals": {
-          "depth": {
-            "vals": [
-              "Kilometer10"
-            ]
-          },
-          "depthError": {
-            "vals": [
-              "Kilometer1.7"
-            ]
-          },
-          "magnitude": {
-            "vals": [
-              "4.4"
-            ]
-          },
-          "magnitudeError": {
-            "vals": [
-              "0.065"
-            ]
-          },
-          "magnitudeType": {
-            "vals": [
-              "MagnitudeMwr"
-            ]
-          },
-          "name": {
-            "vals": [
-              "5 km ESE of Tallaboa, Puerto Rico"
-            ]
-          }
-        },
-        "dcid": "earthquake/us70006vq3",
         "provenanceId": "dc/base/EarthquakeUSGS"
       },
       {
@@ -35260,62 +34546,6 @@
       },
       {
         "places": [
-          "geoId/72",
-          "geoId/72055",
-          "geoId/7205554022",
-          "geoId/72055961500",
-          "geoId/7298",
-          "geoId/sch7200030",
-          "zip/00647"
-        ],
-        "geoLocations": [
-          {
-            "point": {
-              "latitude": 17.9313,
-              "longitude": -66.9274
-            }
-          }
-        ],
-        "dates": [
-          "2020-01-07T09:40:07"
-        ],
-        "propVals": {
-          "depth": {
-            "vals": [
-              "Kilometer10"
-            ]
-          },
-          "depthError": {
-            "vals": [
-              "Kilometer1.9"
-            ]
-          },
-          "magnitude": {
-            "vals": [
-              "3"
-            ]
-          },
-          "magnitudeError": {
-            "vals": [
-              "0.076"
-            ]
-          },
-          "magnitudeType": {
-            "vals": [
-              "MagnitudeMl"
-            ]
-          },
-          "name": {
-            "vals": [
-              "4 km SSW of Guánica, Puerto Rico"
-            ]
-          }
-        },
-        "dcid": "earthquake/usa0006bmb",
-        "provenanceId": "dc/base/EarthquakeUSGS"
-      },
-      {
-        "places": [
           "country/PRI",
           "geoId/72",
           "geoId/72059",
@@ -35428,62 +34658,6 @@
           }
         },
         "dcid": "earthquake/usa0006bmp",
-        "provenanceId": "dc/base/EarthquakeUSGS"
-      },
-      {
-        "places": [
-          "geoId/72",
-          "geoId/72055",
-          "geoId/7205554022",
-          "geoId/72055961500",
-          "geoId/7298",
-          "geoId/sch7200030",
-          "zip/00647"
-        ],
-        "geoLocations": [
-          {
-            "point": {
-              "latitude": 17.9466,
-              "longitude": -66.9153
-            }
-          }
-        ],
-        "dates": [
-          "2020-01-07T11:04:47"
-        ],
-        "propVals": {
-          "depth": {
-            "vals": [
-              "Kilometer10"
-            ]
-          },
-          "depthError": {
-            "vals": [
-              "Kilometer2"
-            ]
-          },
-          "magnitude": {
-            "vals": [
-              "3.2"
-            ]
-          },
-          "magnitudeError": {
-            "vals": [
-              "0.077"
-            ]
-          },
-          "magnitudeType": {
-            "vals": [
-              "MagnitudeMl"
-            ]
-          },
-          "name": {
-            "vals": [
-              "2 km SSW of Guánica, Puerto Rico"
-            ]
-          }
-        },
-        "dcid": "earthquake/usa0006bn0",
         "provenanceId": "dc/base/EarthquakeUSGS"
       },
       {
@@ -36116,61 +35290,6 @@
           }
         },
         "dcid": "earthquake/usa0006c4z",
-        "provenanceId": "dc/base/EarthquakeUSGS"
-      },
-      {
-        "places": [
-          "geoId/72",
-          "geoId/72111",
-          "geoId/72111730800",
-          "geoId/7211181585",
-          "geoId/7298",
-          "geoId/sch7200030"
-        ],
-        "geoLocations": [
-          {
-            "point": {
-              "latitude": 17.9778,
-              "longitude": -66.7579
-            }
-          }
-        ],
-        "dates": [
-          "2020-01-09T20:23:41"
-        ],
-        "propVals": {
-          "depth": {
-            "vals": [
-              "Kilometer10"
-            ]
-          },
-          "depthError": {
-            "vals": [
-              "Kilometer1.9"
-            ]
-          },
-          "magnitude": {
-            "vals": [
-              "3"
-            ]
-          },
-          "magnitudeError": {
-            "vals": [
-              "0.081"
-            ]
-          },
-          "magnitudeType": {
-            "vals": [
-              "MagnitudeMl"
-            ]
-          },
-          "name": {
-            "vals": [
-              "4 km SSE of Magas Arriba, Puerto Rico"
-            ]
-          }
-        },
-        "dcid": "earthquake/usa0006c91",
         "provenanceId": "dc/base/EarthquakeUSGS"
       },
       {

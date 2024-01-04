@@ -553,6 +553,22 @@
       "dcid": "Count_Person_1OrMoreYears"
     },
     {
+      "name": "Population: 10 - 15 Years",
+      "dcid": "Count_Person_10To15Years"
+    },
+    {
+      "name": "Population: 10 - 16 Years",
+      "dcid": "Count_Person_10To16Years"
+    },
+    {
+      "name": "Population: 10 - 17 Years",
+      "dcid": "Count_Person_10To17Years"
+    },
+    {
+      "name": "Population: 10 - 18 Years",
+      "dcid": "Count_Person_10To18Years"
+    },
+    {
       "name": "Population: 10 - 19 Years",
       "dcid": "Count_Person_10To19Years"
     },
@@ -581,6 +597,22 @@
       "dcid": "Count_Person_EducationalAttainment10ThGrade"
     },
     {
+      "name": "Population: 11 - 15 Years",
+      "dcid": "Count_Person_11To15Years"
+    },
+    {
+      "name": "Population: 11 - 16 Years",
+      "dcid": "Count_Person_11To16Years"
+    },
+    {
+      "name": "Population: 11 - 17 Years",
+      "dcid": "Count_Person_11To17Years"
+    },
+    {
+      "name": "Population: 11 - 18 Years",
+      "dcid": "Count_Person_11To18Years"
+    },
+    {
       "name": "Population: 110 Years or More",
       "dcid": "Count_Person_110OrMoreYears"
     },
@@ -589,8 +621,48 @@
       "dcid": "Count_Person_EducationalAttainment11ThGrade"
     },
     {
+      "name": "Population: 12 - 15 Years",
+      "dcid": "Count_Person_12To15Years"
+    },
+    {
+      "name": "Population: 12 - 16 Years",
+      "dcid": "Count_Person_12To16Years"
+    },
+    {
+      "name": "Population: 12 - 17 Years",
+      "dcid": "Count_Person_12To17Years"
+    },
+    {
+      "name": "Population: 12 - 18 Years",
+      "dcid": "Count_Person_12To18Years"
+    },
+    {
       "name": "Population: 12th Grade No Diploma",
       "dcid": "Count_Person_EducationalAttainment12ThGradeNoDiploma"
+    },
+    {
+      "name": "Population: 13 - 16 Years",
+      "dcid": "Count_Person_13To16Years"
+    },
+    {
+      "name": "Population: 13 - 17 Years",
+      "dcid": "Count_Person_13To17Years"
+    },
+    {
+      "name": "Population: 13 - 18 Years",
+      "dcid": "Count_Person_13To18Years"
+    },
+    {
+      "name": "Population: 13 - 19 Years",
+      "dcid": "Count_Person_13To19Years"
+    },
+    {
+      "name": "Population: 14 - 18 Years",
+      "dcid": "Count_Person_14To18Years"
+    },
+    {
+      "name": "Population: 14 - 19 Years",
+      "dcid": "Count_Person_14To19Years"
     },
     {
       "name": "Population: 14 Years or Less",
@@ -689,6 +761,10 @@
       "dcid": "Count_Person_EducationalAttainment2NdGrade"
     },
     {
+      "name": "Population: 3 - 5 Years",
+      "dcid": "Count_Person_3To5Years"
+    },
+    {
       "name": "Population: 3 - 6 Month",
       "dcid": "Count_Person_MarginalWorker_Worked3To6Months"
     },
@@ -705,6 +781,14 @@
       "dcid": "Count_Person_EducationalAttainment3RdGrade"
     },
     {
+      "name": "Population: 4 - 6 Years",
+      "dcid": "Count_Person_4To6Years"
+    },
+    {
+      "name": "Population: 4 Years or More",
+      "dcid": "Count_Person_4OrMoreYears"
+    },
+    {
       "name": "Population: 40 - 49 Years",
       "dcid": "Count_Person_40To49Years"
     },
@@ -719,6 +803,14 @@
     {
       "name": "Population: 4th Grade",
       "dcid": "Count_Person_EducationalAttainment4ThGrade"
+    },
+    {
+      "name": "Population: 5 - 10 Years",
+      "dcid": "Count_Person_5To10Years"
+    },
+    {
+      "name": "Population: 5 - 11 Years",
+      "dcid": "Count_Person_5To11Years"
     },
     {
       "name": "Population: 5 - 14 Years",
@@ -759,6 +851,18 @@
     {
       "name": "Population: 5th Grade",
       "dcid": "Count_Person_EducationalAttainment5ThGrade"
+    },
+    {
+      "name": "Population: 6 - 10 Years",
+      "dcid": "Count_Person_6To10Years"
+    },
+    {
+      "name": "Population: 6 - 11 Years",
+      "dcid": "Count_Person_6To11Years"
+    },
+    {
+      "name": "Population: 6 - 12 Years",
+      "dcid": "Count_Person_6To12Years"
     },
     {
       "name": "Population: 6 - 13 Years",
@@ -805,8 +909,28 @@
       "dcid": "Count_Person_EducationalAttainment6ThGrade"
     },
     {
+      "name": "Population: 7 - 10 Years",
+      "dcid": "Count_Person_7To10Years"
+    },
+    {
+      "name": "Population: 7 - 11 Years",
+      "dcid": "Count_Person_7To11Years"
+    },
+    {
+      "name": "Population: 7 - 12 Years",
+      "dcid": "Count_Person_7To12Years"
+    },
+    {
+      "name": "Population: 7 - 13 Years",
+      "dcid": "Count_Person_7To13Years"
+    },
+    {
       "name": "Population: 7 - 14 Years",
       "dcid": "Count_Person_7To14Years"
+    },
+    {
+      "name": "Population: 7 - 9 Years",
+      "dcid": "Count_Person_7To9Years"
     },
     {
       "name": "Population: 7 Years or More",
@@ -1401,6 +1525,10 @@
       "dcid": "Count_Person_LivingTogetherOrWidowed"
     },
     {
+      "name": "Population: Lower Secondary Education",
+      "dcid": "Count_Person_LowerSecondaryEducation"
+    },
+    {
       "name": "Population: Lung Condition",
       "dcid": "Count_Person_ConditionLungCondition"
     },
@@ -1609,12 +1737,24 @@
       "dcid": "Count_Person_5OrMoreYears_PortugueseOrPortugueseCreoleSpokenAtHome"
     },
     {
+      "name": "Population: Post Secondary Non Tertiary Education",
+      "dcid": "Count_Person_PostSecondaryNonTertiaryEducation"
+    },
+    {
       "name": "Population: Pre Obese",
       "dcid": "Count_Person_PreObese"
     },
     {
+      "name": "Population: Pre Primary Education",
+      "dcid": "Count_Person_PrePrimaryEducation"
+    },
+    {
       "name": "Population: Presbyterian",
       "dcid": "Count_Person_Presbyterian"
+    },
+    {
+      "name": "Population: Primary Education",
+      "dcid": "Count_Person_PrimaryEducation"
     },
     {
       "name": "Population: Primary School",
@@ -1675,6 +1815,10 @@
     {
       "name": "Population: Science And Engineering Related Major",
       "dcid": "Count_Person_BachelorOfScienceAndEngineeringRelatedMajor"
+    },
+    {
+      "name": "Population: Secondary Education",
+      "dcid": "Count_Person_EducationalAttainmentSecondaryEducation"
     },
     {
       "name": "Population: Semi Urban",
@@ -1807,6 +1951,10 @@
     {
       "name": "Population: Unmarried \u0026 Not Living Together",
       "dcid": "Count_Person_UnmarriedOrNotLivingTogether"
+    },
+    {
+      "name": "Population: Upper Secondary Education",
+      "dcid": "Count_Person_UpperSecondaryEducation"
     },
     {
       "name": "Population: Upper Secondary Education Or Post Secondary Non Tertiary Education",
@@ -2385,6 +2533,14 @@
       "dcid": "Count_Person_NotInLaborForce_AsAFractionOf_Count_Person_InLaborForce"
     },
     {
+      "name": "Population: Poverty Status Determined (Per Capita)",
+      "dcid": "Count_Person_PovertyStatusDetermined_AsAFractionOf_Count_Person"
+    },
+    {
+      "name": "Population: Rural (Per Capita)",
+      "dcid": "Count_Person_Rural_AsAFractionOf_Count_Person"
+    },
+    {
       "name": "Population: Tertiary Education (As Fraction of Count Person 25 or More Years)",
       "dcid": "Count_Person_25OrMoreYears_TertiaryEducation_AsFractionOf_Count_Person_25OrMoreYears"
     },
@@ -2809,10 +2965,6 @@
       "dcid": "Count_Person_WithDisability_HispanicOrLatino"
     },
     {
-      "name": "Household Reference Person in Universe: Non-Institutional",
-      "dcid": "Count_Person_NonInstitutionalized_ResidesInHousehold"
-    },
-    {
       "name": "Male Population Above Poverty Level in the Past Year",
       "dcid": "Count_Person_Male_AbovePovertyLevelInThePast12Months"
     },
@@ -3187,6 +3339,26 @@
     {
       "name": "Person Aged 3 and above,Not Active-Duty Military, age between 45 and 64 years",
       "dcid": "Count_Person_45To64Years_Civilian"
+    },
+    {
+      "name": "Person Aged 3 and above,Not Active-Duty Military, education up to Higher Secondary Graduate",
+      "dcid": "Count_Person_Civilian_EducationalAttainmentHighSchoolGraduate"
+    },
+    {
+      "name": "Person Aged 3 and above,Not Active-Duty Military, education up to college Graduate",
+      "dcid": "Count_Person_Civilian_EducationalAttainmentCollegeGraduate"
+    },
+    {
+      "name": "Person Aged 3 and above,Not Active-Duty Military, education up to some college",
+      "dcid": "Count_Person_Civilian_EducationalAttainmentSomeCollegeOrAssociatesDegree"
+    },
+    {
+      "name": "Person Aged 3 and above,Not Active-Duty Military, education without Diploma",
+      "dcid": "Count_Person_Civilian_EducationalAttainmentNoDiploma"
+    },
+    {
+      "name": "Person Aged 3 and above,Not Active-Duty Military, not in Labour Force",
+      "dcid": "Count_Person_Civilian_NotInLaborForce"
     },
     {
       "name": "Person employed as a domestic worker",
@@ -3827,178 +3999,6 @@
     {
       "name": "Population: 1 Years or More, Different House in Same County",
       "dcid": "Count_Person_1OrMoreYears_DifferentHouseInSameCounty"
-    },
-    {
-      "name": "Population: 1 Years or More, Different House in The US",
-      "dcid": "Count_Person_1OrMoreYears_DifferentHouseInTheUS"
-    },
-    {
-      "name": "Population: 1 Years or More, Female",
-      "dcid": "Count_Person_1OrMoreYears_Female"
-    },
-    {
-      "name": "Population: 1 Years or More, Foreign Born",
-      "dcid": "Count_Person_1OrMoreYears_ForeignBorn"
-    },
-    {
-      "name": "Population: 1 Years or More, Group Quarters",
-      "dcid": "Count_Person_1OrMoreYears_ResidesInGroupQuarters"
-    },
-    {
-      "name": "Population: 1 Years or More, Hispanic or Latino",
-      "dcid": "Count_Person_1OrMoreYears_HispanicOrLatino"
-    },
-    {
-      "name": "Population: 1 Years or More, Housing Unit",
-      "dcid": "Count_Person_1OrMoreYears_ResidesInHousingUnit"
-    },
-    {
-      "name": "Population: 1 Years or More, Institutionalized Group Quarters",
-      "dcid": "Count_Person_1OrMoreYears_ResidesInInstitutionalizedGroupQuarters"
-    },
-    {
-      "name": "Population: 1 Years or More, Juvenile Facilities",
-      "dcid": "Count_Person_1OrMoreYears_ResidesInJuvenileFacilities"
-    },
-    {
-      "name": "Population: 1 Years or More, Male",
-      "dcid": "Count_Person_1OrMoreYears_Male"
-    },
-    {
-      "name": "Population: 1 Years or More, Military Quarters or Military Ships",
-      "dcid": "Count_Person_1OrMoreYears_ResidesInMilitaryQuartersOrMilitaryShips"
-    },
-    {
-      "name": "Population: 1 Years or More, Native Hawaiian or Other Pacific Islander Alone",
-      "dcid": "Count_Person_1OrMoreYears_NativeHawaiianOrOtherPacificIslanderAlone"
-    },
-    {
-      "name": "Population: 1 Years or More, Noninstitutionalized Group Quarters",
-      "dcid": "Count_Person_1OrMoreYears_ResidesInNoninstitutionalizedGroupQuarters"
-    },
-    {
-      "name": "Population: 1 Years or More, Nursing Facilities",
-      "dcid": "Count_Person_1OrMoreYears_ResidesInNursingFacilities"
-    },
-    {
-      "name": "Population: 1 Years or More, One Race",
-      "dcid": "Count_Person_1OrMoreYears_OneRace"
-    },
-    {
-      "name": "Population: 1 Years or More, Poverty Status Determined",
-      "dcid": "Count_Person_1OrMoreYears_PovertyStatusDetermined"
-    },
-    {
-      "name": "Population: 1 Years or More, Same House 1 Year Ago",
-      "dcid": "Count_Person_1OrMoreYears_SameHouse1YearAgo"
-    },
-    {
-      "name": "Population: 1 Years or More, Some Other Race Alone",
-      "dcid": "Count_Person_1OrMoreYears_SomeOtherRaceAlone"
-    },
-    {
-      "name": "Population: 1 Years or More, Two or More Races",
-      "dcid": "Count_Person_1OrMoreYears_TwoOrMoreRaces"
-    },
-    {
-      "name": "Population: 1 Years or More, White Alone",
-      "dcid": "Count_Person_1OrMoreYears_WhiteAlone"
-    },
-    {
-      "name": "Population: 1 Years or More, White Alone Not Hispanic or Latino",
-      "dcid": "Count_Person_1OrMoreYears_WhiteAloneNotHispanicOrLatino"
-    },
-    {
-      "name": "Population: 10 - 12 Years, Rural",
-      "dcid": "Count_Person_10To12Years_Rural"
-    },
-    {
-      "name": "Population: 10 - 12 Years, Urban",
-      "dcid": "Count_Person_10To12Years_Urban"
-    },
-    {
-      "name": "Population: 10 - 14 Years, American Indian And Alaska Native Alone or In Combination With One or More Other Races",
-      "dcid": "Count_Person_10To14Years_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Population: 10 - 14 Years, American Indian or Alaska Native Alone",
-      "dcid": "Count_Person_10To14Years_AmericanIndianAndAlaskaNativeAlone"
-    },
-    {
-      "name": "Population: 10 - 14 Years, Arthritis",
-      "dcid": "Count_Person_10To14Years_ConditionArthritis"
-    },
-    {
-      "name": "Population: 10 - 14 Years, Asian Alone",
-      "dcid": "Count_Person_10To14Years_AsianAlone"
-    },
-    {
-      "name": "Population: 10 - 14 Years, Asian or Pacific Islander",
-      "dcid": "Count_Person_10To14Years_AsianOrPacificIslander"
-    },
-    {
-      "name": "Population: 10 - 14 Years, Asthma",
-      "dcid": "Count_Person_10To14Years_ConditionAsthma"
-    },
-    {
-      "name": "Population: 10 - 14 Years, Black or African American Alone",
-      "dcid": "Count_Person_10To14Years_BlackOrAfricanAmericanAlone"
-    },
-    {
-      "name": "Population: 10 - 14 Years, Black or African American Alone or In Combination With One or More Other Races",
-      "dcid": "Count_Person_10To14Years_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Population: 10 - 14 Years, Cancer",
-      "dcid": "Count_Person_10To14Years_ConditionCancer"
-    },
-    {
-      "name": "Population: 10 - 14 Years, Catholicism",
-      "dcid": "Count_Person_10To14Years_Catholicism"
-    },
-    {
-      "name": "Population: 10 - 14 Years, Citizen",
-      "dcid": "Count_Person_10To14Years_Citizen"
-    },
-    {
-      "name": "Population: 10 - 14 Years, Dementia",
-      "dcid": "Count_Person_10To14Years_ConditionDementia"
-    },
-    {
-      "name": "Population: 10 - 14 Years, Diabetes",
-      "dcid": "Count_Person_10To14Years_ConditionDiabetes"
-    },
-    {
-      "name": "Population: 10 - 14 Years, Diseases of Heart",
-      "dcid": "Count_Person_10To14Years_ConditionDiseasesOfHeart"
-    },
-    {
-      "name": "Population: 10 - 14 Years, Divorced",
-      "dcid": "Count_Person_10To14Years_Divorced"
-    },
-    {
-      "name": "Population: 10 - 14 Years, Female",
-      "dcid": "Count_Person_10To14Years_Female"
-    },
-    {
-      "name": "Population: 10 - 14 Years, Hispanic or Latino",
-      "dcid": "Count_Person_10To14Years_HispanicOrLatino"
-    },
-    {
-      "name": "Population: 10 - 14 Years, Hispanic or Latino \u0026 American Indian And Alaska Native Alone or In Combination With One or More Other Races",
-      "dcid": "Count_Person_10To14Years_HispanicOrLatino_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Population: 10 - 14 Years, Hispanic or Latino \u0026 American Indian or Alaska Native Alone",
-      "dcid": "Count_Person_10To14Years_HispanicOrLatino_AmericanIndianAndAlaskaNativeAlone"
-    },
-    {
-      "name": "Population: 10 - 14 Years, Hispanic or Latino \u0026 Asian Alone",
-      "dcid": "Count_Person_10To14Years_HispanicOrLatino_AsianAlone"
-    },
-    {
-      "name": "Population: 10 - 14 Years, Hispanic or Latino \u0026 Asian Alone or In Combination With One or More Other Races",
-      "dcid": "Count_Person_10To14Years_HispanicOrLatino_AsianAloneOrInCombinationWithOneOrMoreOtherRaces"
     }
   ],
   "matches": [

@@ -7,7 +7,7 @@
         "id": "dc/g/ObservationalWeather",
         "specializedEntity": "Observational",
         "displayName": "Observational",
-        "descendentStatVarCount": 52
+        "descendentStatVarCount": 55
       },
       {
         "id": "dc/g/ProjectedWeather",
@@ -16,7 +16,7 @@
         "descendentStatVarCount": 1552
       }
     ],
-    "descendentStatVarCount": 1604,
+    "descendentStatVarCount": 1607,
     "parentStatVarGroups": [
       "dc/g/Environment"
     ]

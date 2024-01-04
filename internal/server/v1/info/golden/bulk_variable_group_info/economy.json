@@ -64,11 +64,6 @@
             "descendentStatVarCount": 5
           },
           {
-            "id": "dc/g/Person_EconomicSector",
-            "specializedEntity": "Economic Sector",
-            "displayName": "Person by Economic Sector"
-          },
-          {
             "id": "dc/g/FinancialInstrument",
             "specializedEntity": "Financial Instrument",
             "displayName": "Financial Instrument"
@@ -107,6 +102,16 @@
             "id": "dc/g/Person_IncomeType",
             "specializedEntity": "Income Type",
             "displayName": "Person by Income Type"
+          },
+          {
+            "id": "dc/g/Investment",
+            "specializedEntity": "Investment",
+            "displayName": "Investment"
+          },
+          {
+            "id": "dc/g/Jobs",
+            "specializedEntity": "Jobs",
+            "displayName": "Jobs"
           },
           {
             "id": "dc/g/Person_LaborForceStatus",

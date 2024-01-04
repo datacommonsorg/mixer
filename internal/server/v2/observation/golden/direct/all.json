@@ -9412,11 +9412,15 @@
                 {
                   "date": "2023-10",
                   "value": 6506000
+                },
+                {
+                  "date": "2023-11",
+                  "value": 6291000
                 }
               ],
-              "obs_count": 910,
+              "obs_count": 911,
               "earliest_date": "1948-01",
-              "latest_date": "2023-10"
+              "latest_date": "2023-11"
             },
             {
               "facet_id": "1714978719",
@@ -12940,12 +12944,16 @@
                 },
                 {
                   "date": "2023-10",
-                  "value": 927891
+                  "value": 929225
+                },
+                {
+                  "date": "2023-11",
+                  "value": 946265
                 }
               ],
-              "obs_count": 574,
+              "obs_count": 575,
               "earliest_date": "1976-01",
-              "latest_date": "2023-10"
+              "latest_date": "2023-11"
             },
             {
               "facet_id": "2978659163",
@@ -15440,12 +15448,16 @@
                 },
                 {
                   "date": "2023-10",
-                  "value": 931250
+                  "value": 931500
+                },
+                {
+                  "date": "2023-11",
+                  "value": 953802
                 }
               ],
-              "obs_count": 574,
+              "obs_count": 575,
               "earliest_date": "1976-01",
-              "latest_date": "2023-10"
+              "latest_date": "2023-11"
             }
           ]
         },

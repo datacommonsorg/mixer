@@ -107,11 +107,6 @@
     ],
     "childStatVarGroups": [
       {
-        "id": "dc/g/Household_Age",
-        "specializedEntity": "Age",
-        "displayName": "Household by Age"
-      },
-      {
         "id": "dc/g/Person_Age",
         "specializedEntity": "Age",
         "displayName": "Person by Age",
@@ -164,11 +159,6 @@
         "displayName": "Commute"
       },
       {
-        "id": "dc/g/Person_ComputerUsageLocation",
-        "specializedEntity": "Computer Usage Location",
-        "displayName": "Person by Computer Usage Location"
-      },
-      {
         "id": "dc/g/Courthouse",
         "specializedEntity": "Courthouse",
         "displayName": "Courthouse"
@@ -187,11 +177,6 @@
         "id": "dc/g/Person_Earnings",
         "specializedEntity": "Earnings",
         "displayName": "Person by Earnings"
-      },
-      {
-        "id": "dc/g/Household_EducationalAttainment",
-        "specializedEntity": "Educational Attainment",
-        "displayName": "Household by Educational Attainment"
       },
       {
         "id": "dc/g/Person_ElectronicGadgetUsed",
@@ -229,11 +214,6 @@
         "displayName": "Place by Facilities"
       },
       {
-        "id": "dc/g/Person_FactorForInternetService",
-        "specializedEntity": "Factor for Internet Service",
-        "displayName": "Person by Factor for Internet Service"
-      },
-      {
         "id": "dc/g/Food",
         "specializedEntity": "Food",
         "displayName": "Food"
@@ -242,11 +222,6 @@
         "id": "dc/g/Person_FoodSecurityStatus",
         "specializedEntity": "Food Security Status",
         "displayName": "Person by Food Security Status"
-      },
-      {
-        "id": "dc/g/Household_Gender",
-        "specializedEntity": "Gender",
-        "displayName": "Household by Gender"
       },
       {
         "id": "dc/g/Person_Gender",
@@ -258,11 +233,6 @@
         "id": "dc/g/Person_GovernmentId",
         "specializedEntity": "Government Id",
         "displayName": "Person by Government Id"
-      },
-      {
-        "id": "dc/g/Person_HasComputer",
-        "specializedEntity": "Has Computer",
-        "displayName": "Person by Has Computer"
       },
       {
         "id": "dc/g/Household_HealthInsurance",
@@ -327,11 +297,6 @@
         "displayName": "Household by Institutionalization"
       },
       {
-        "id": "dc/g/Person_InternetSubscriptionType",
-        "specializedEntity": "Internet Subscription Type",
-        "displayName": "Person by Internet Subscription Type"
-      },
-      {
         "id": "dc/g/Household_InternetUsageLocation",
         "specializedEntity": "Internet Usage Location",
         "displayName": "Household by Internet Usage Location"
@@ -340,11 +305,6 @@
         "id": "dc/g/Person_InternetUsageLocation",
         "specializedEntity": "Internet Usage Location",
         "displayName": "Person by Internet Usage Location"
-      },
-      {
-        "id": "dc/g/Person_InternetUsagePurpose",
-        "specializedEntity": "Internet Usage Purpose",
-        "displayName": "Person by Internet Usage Purpose"
       },
       {
         "id": "dc/g/Household_IsInternetUser",
@@ -356,11 +316,6 @@
         "specializedEntity": "Is Internet User",
         "displayName": "Person by Is Internet User",
         "descendentStatVarCount": 1
-      },
-      {
-        "id": "dc/g/Household_LaborForceStatus",
-        "specializedEntity": "Labor Force Status",
-        "displayName": "Household by Labor Force Status"
       },
       {
         "id": "dc/g/Language",
@@ -450,19 +405,9 @@
         "displayName": "Person by Poverty Status"
       },
       {
-        "id": "dc/g/Household_Race",
-        "specializedEntity": "Race",
-        "displayName": "Household by Race"
-      },
-      {
         "id": "dc/g/Person_Race",
         "specializedEntity": "Race",
         "displayName": "Person by Race"
-      },
-      {
-        "id": "dc/g/Person_ReasonNotUsingInternetAtHome",
-        "specializedEntity": "Reason Not Using Internet At Home",
-        "displayName": "Person by Reason Not Using Internet At Home"
       },
       {
         "id": "dc/g/Person_Religion",

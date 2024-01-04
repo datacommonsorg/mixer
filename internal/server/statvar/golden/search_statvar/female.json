@@ -113,6 +113,10 @@
       "dcid": "WHO/SDGSUICIDE_Female"
     },
     {
+      "name": "Hpv Immunization Coverage Estimates Among Primary Target Cohort (9-14 Years Old Girls) (%), Female",
+      "dcid": "WHO/SDGHPVRECEIVED_Female"
+    },
+    {
       "name": "Infant deaths [under 1 year old, Female]",
       "dcid": "sdg/SH_DYN_IMRTN.AGE--Y0__SEX--F"
     },
@@ -131,6 +135,10 @@
     {
       "name": "Mortality Rate Attributed To Unintentional Poisoning (Per 100 000 Population), Female",
       "dcid": "WHO/SDGPOISON_Female"
+    },
+    {
+      "name": "Mortality Rate For 5-14 Year-Olds (Probability Of Dying Per 1000 Children Aged 5-14 Years), Female",
+      "dcid": "WHO/CHILDMORT5TO14_Female"
     },
     {
       "name": "Mortality rate attributed to cardiovascular disease, cancer, diabetes or chronic respiratory disease [30 to 70 years old, Female]",
@@ -3379,6 +3387,26 @@
         {
           "name": "Completion rate, by sex, location, wealth quintile and education level [Female, Upper secondary education]",
           "dcid": "sdg/SE_TOT_CPLR.SEX--F__EDUCATION_LEV--ISCED11_3"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Household_HouseholderGender-Female_Institutionalization-NonInstitutionalized",
+      "name": "Household With Householder Gender = Female, Institutionalization = Non Institutionalized",
+      "statVars": [
+        {
+          "name": "Household Reference Person in Universe: Non-Institutional, female",
+          "dcid": "Count_Household_Female_NonInstitutionalized"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Household_HouseholderGender-Female_InternetUsagePurpose",
+      "name": "Household With Householder Gender = Female, Internet Usage Purpose",
+      "statVars": [
+        {
+          "name": "Browses the Web, female",
+          "dcid": "Count_Household_Female_WebBrowsingUsage_IsInternetUser"
         }
       ]
     },
@@ -6983,8 +7011,8 @@
       "name": "Health Worker Distribution, by Sex And Type of Occupation With Sex = Female"
     },
     {
-      "dcid": "dc/g/Household_Gender-Female",
-      "name": "Household With Gender = Female"
+      "dcid": "dc/g/Household_HouseholderGender-Female",
+      "name": "Household With Householder Gender = Female"
     },
     {
       "dcid": "dc/g/MedicalConditionIncident_Gender-Female",
@@ -7291,44 +7319,76 @@
       "name": "Hate Crime Incidents With Targeted Gender = Female, Victim Age"
     },
     {
-      "dcid": "dc/g/Household_Gender-Female_Institutionalization",
-      "name": "Household With Gender = Female, Institutionalization"
+      "dcid": "dc/g/Household_FactorForInternetService_HouseholderGender-Female",
+      "name": "Household With Factor for Internet Service, Householder Gender = Female"
     },
     {
-      "dcid": "dc/g/Household_Gender-Female_Institutionalization-NonInstitutionalized",
-      "name": "Household With Gender = Female, Institutionalization = Non Institutionalized"
+      "dcid": "dc/g/Household_HouseholderGender-Female_Institutionalization",
+      "name": "Household With Householder Gender = Female, Institutionalization"
     },
     {
-      "dcid": "dc/g/Household_Gender-Female_InternetSubscriptionType",
-      "name": "Household With Gender = Female, Internet Subscription Type"
+      "dcid": "dc/g/Household_HouseholderGender-Female_InternetSubscriptionType",
+      "name": "Household With Householder Gender = Female, Internet Subscription Type"
     },
     {
-      "dcid": "dc/g/Household_Gender-Female_InternetSubscriptionType-BroadbandInternetSuchAsCableFiberOpticOrDslSatelliteInternetService",
-      "name": "Household With Gender = Female, Internet Subscription Type = Broadband Internet Such as Cable Fiber Optic or Dsl \u0026 Satellite Internet Service"
+      "dcid": "dc/g/Household_HouseholderGender-Female_InternetSubscriptionType-BroadbandInternetSuchAsCableFiberOpticOrDslSatelliteInternetService",
+      "name": "Household With Householder Gender = Female, Internet Subscription Type = Broadband Internet Such as Cable Fiber Optic or Dsl \u0026 Satellite Internet Service"
     },
     {
-      "dcid": "dc/g/Household_Gender-Female_InternetUsageLocation",
-      "name": "Household With Gender = Female, Internet Usage Location"
+      "dcid": "dc/g/Household_HouseholderGender-Female_InternetSubscriptionType-CellularDataPlan",
+      "name": "Household With Householder Gender = Female, Internet Subscription Type = Cellular Data Plan"
     },
     {
-      "dcid": "dc/g/Household_Gender-Female_InternetUsageLocation-Home",
-      "name": "Household With Gender = Female, Internet Usage Location = Home"
+      "dcid": "dc/g/Household_HouseholderGender-Female_InternetSubscriptionType-SatelliteInternetService",
+      "name": "Household With Householder Gender = Female, Internet Subscription Type = Satellite Internet Service"
     },
     {
-      "dcid": "dc/g/Household_Gender-Female_ResidenceType",
-      "name": "Household With Gender = Female, Residence Type"
+      "dcid": "dc/g/Household_HouseholderGender-Female_InternetUsageLocation",
+      "name": "Household With Householder Gender = Female, Internet Usage Location"
     },
     {
-      "dcid": "dc/g/Household_Gender-Female_ResidenceType-Household",
-      "name": "Household With Gender = Female, Residence Type = Household"
+      "dcid": "dc/g/Household_HouseholderGender-Female_InternetUsageLocation-AnyLocation",
+      "name": "Household With Householder Gender = Female, Internet Usage Location = Any Location"
     },
     {
-      "dcid": "dc/g/Household_Gender-Female_IsInternetUser",
-      "name": "Household With Gender = Female, is Internet User"
+      "dcid": "dc/g/Household_HouseholderGender-Female_InternetUsageLocation-Home",
+      "name": "Household With Householder Gender = Female, Internet Usage Location = Home"
     },
     {
-      "dcid": "dc/g/Household_Gender-Female_IsInternetUser-True",
-      "name": "Household With Gender = Female, is Internet User = True"
+      "dcid": "dc/g/Household_HouseholderGender-Female_ReasonNotUsingInternetAtHome",
+      "name": "Household With Householder Gender = Female, Reason Not Using Internet At Home"
+    },
+    {
+      "dcid": "dc/g/Household_HouseholderGender-Female_ReasonNotUsingInternetAtHome-InternetExpensive",
+      "name": "Household With Householder Gender = Female, Reason Not Using Internet At Home = Internet Expensive"
+    },
+    {
+      "dcid": "dc/g/Household_HouseholderGender-Female_ReasonNotUsingInternetAtHome-InternetInadequateComputer",
+      "name": "Household With Householder Gender = Female, Reason Not Using Internet At Home = Internet Inadequate Computer"
+    },
+    {
+      "dcid": "dc/g/Household_HouseholderGender-Female_ReasonNotUsingInternetAtHome-InternetNotNeededInternetNotInterested",
+      "name": "Household With Householder Gender = Female, Reason Not Using Internet At Home = Internet Not Needed \u0026 Internet Not Interested"
+    },
+    {
+      "dcid": "dc/g/Household_HouseholderGender-Female_ReasonNotUsingInternetAtHome-InternetPrivacyConcernsInternetSecurityConcerns",
+      "name": "Household With Householder Gender = Female, Reason Not Using Internet At Home = Internet Privacy Concerns \u0026 Internet Security Concerns"
+    },
+    {
+      "dcid": "dc/g/Household_HouseholderGender-Female_ReasonNotUsingInternetAtHome-InternetUnavailableInArea",
+      "name": "Household With Householder Gender = Female, Reason Not Using Internet At Home = Internet Unavailable in Area"
+    },
+    {
+      "dcid": "dc/g/Household_HouseholderGender-Female_ReasonNotUsingInternetAtHome-InternetUseElsewhere",
+      "name": "Household With Householder Gender = Female, Reason Not Using Internet At Home = Internet Use Elsewhere"
+    },
+    {
+      "dcid": "dc/g/Household_HouseholderGender-Female_IsInternetUser",
+      "name": "Household With Householder Gender = Female, is Internet User"
+    },
+    {
+      "dcid": "dc/g/Household_HouseholderGender-Female_IsInternetUser-True",
+      "name": "Household With Householder Gender = Female, is Internet User = True"
     },
     {
       "dcid": "dc/g/MedicalConditionIncident_Age-Years0To4_Gender-Female",
@@ -7779,8 +7839,8 @@
       "name": "Person With Electronic Gadget Used = Mobile User, Gender = Female"
     },
     {
-      "dcid": "dc/g/Person_ElectronicGadgetUsed-SmartTelivisionUser_Gender-Female",
-      "name": "Person With Electronic Gadget Used = Smart Telivision User, Gender = Female"
+      "dcid": "dc/g/Person_ElectronicGadgetUsed-SmartTelevisionUser_Gender-Female",
+      "name": "Person With Electronic Gadget Used = Smart Television User, Gender = Female"
     },
     {
       "dcid": "dc/g/Person_ElectronicGadgetUsed-TabletUserEbookReaderUser_Gender-Female",
@@ -7869,10 +7929,6 @@
     {
       "dcid": "dc/g/Person_Ethnicity_Gender-Female",
       "name": "Person With Ethnicity, Gender = Female"
-    },
-    {
-      "dcid": "dc/g/Person_FactorForInternetService_Gender-Female",
-      "name": "Person With Factor for Internet Service, Gender = Female"
     },
     {
       "dcid": "dc/g/Person_FacultyType-UniversityAndCollegeTeacher_Gender-Female",
@@ -8047,18 +8103,6 @@
       "name": "Person With Gender = Female, Institutionalization = Non Institutionalized"
     },
     {
-      "dcid": "dc/g/Person_Gender-Female_InternetSubscriptionType",
-      "name": "Person With Gender = Female, Internet Subscription Type"
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_InternetSubscriptionType-CellularDataPlan",
-      "name": "Person With Gender = Female, Internet Subscription Type = Cellular Data Plan"
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_InternetSubscriptionType-SatelliteInternetService",
-      "name": "Person With Gender = Female, Internet Subscription Type = Satellite Internet Service"
-    },
-    {
       "dcid": "dc/g/Person_Gender-Female_InternetUsageLocation",
       "name": "Person With Gender = Female, Internet Usage Location"
     },
@@ -8089,10 +8133,6 @@
     {
       "dcid": "dc/g/Person_Gender-Female_InternetUsageLocation-Work",
       "name": "Person With Gender = Female, Internet Usage Location = Work"
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_InternetUsagePurpose",
-      "name": "Person With Gender = Female, Internet Usage Purpose"
     },
     {
       "dcid": "dc/g/Person_Gender-Female_MaritalStatus",
@@ -8495,34 +8535,6 @@
       "name": "Person With Gender = Female, Race = Unknown Race"
     },
     {
-      "dcid": "dc/g/Person_Gender-Female_ReasonNotUsingInternetAtHome",
-      "name": "Person With Gender = Female, Reason Not Using Internet At Home"
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_ReasonNotUsingInternetAtHome-InternetExpensive",
-      "name": "Person With Gender = Female, Reason Not Using Internet At Home = Internet Expensive"
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_ReasonNotUsingInternetAtHome-InternetInadequateComputer",
-      "name": "Person With Gender = Female, Reason Not Using Internet At Home = Internet Inadequate Computer"
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_ReasonNotUsingInternetAtHome-InternetNotNeededInternetNotInterested",
-      "name": "Person With Gender = Female, Reason Not Using Internet At Home = Internet Not Needed \u0026 Internet Not Interested"
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_ReasonNotUsingInternetAtHome-InternetPrivacyConcernsInternetSecurityConcerns",
-      "name": "Person With Gender = Female, Reason Not Using Internet At Home = Internet Privacy Concerns \u0026 Internet Security Concerns"
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_ReasonNotUsingInternetAtHome-InternetUnavailableInArea",
-      "name": "Person With Gender = Female, Reason Not Using Internet At Home = Internet Unavailable in Area"
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_ReasonNotUsingInternetAtHome-InternetUseElsewhere",
-      "name": "Person With Gender = Female, Reason Not Using Internet At Home = Internet Use Elsewhere"
-    },
-    {
       "dcid": "dc/g/Person_Gender-Female_RecentWorkStatus",
       "name": "Person With Gender = Female, Recent Work Status"
     },
@@ -8749,6 +8761,14 @@
     {
       "dcid": "dc/g/Student_EducationalAchievementLevel-NAEPDiscreteAtBasic_Gender-Female",
       "name": "Student With Educational Achievement Level = NAEP_Discrete At Basic, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Student_EducationalAchievementLevel-NAEPDiscreteAtProficient_Gender-Female",
+      "name": "Student With Educational Achievement Level = NAEP_Discrete At Proficient, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Student_EducationalAchievementLevel_Gender-Female",
+      "name": "Student With Educational Achievement Level, Gender = Female"
     }
   ],
   "matches": [
