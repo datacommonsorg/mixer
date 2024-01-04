@@ -64,11 +64,6 @@
             "descendentStatVarCount": 5
           },
           {
-            "id": "dc/g/Person_EconomicSector",
-            "specializedEntity": "Economic Sector",
-            "displayName": "Person by Economic Sector"
-          },
-          {
             "id": "dc/g/FinancialInstrument",
             "specializedEntity": "Financial Instrument",
             "displayName": "Financial Instrument"
@@ -109,6 +104,16 @@
             "displayName": "Person by Income Type"
           },
           {
+            "id": "dc/g/Investment",
+            "specializedEntity": "Investment",
+            "displayName": "Investment"
+          },
+          {
+            "id": "dc/g/Jobs",
+            "specializedEntity": "Jobs",
+            "displayName": "Jobs"
+          },
+          {
             "id": "dc/g/Person_LaborForceStatus",
             "specializedEntity": "Labor Force Status",
             "displayName": "Person by Labor Force Status"
@@ -123,6 +128,11 @@
             "id": "dc/g/NetworkSubscriber",
             "specializedEntity": "Network Subscriber",
             "displayName": "Network Subscriber"
+          },
+          {
+            "id": "dc/g/Person_PovertyStatus",
+            "specializedEntity": "Poverty Status",
+            "displayName": "Person by Poverty Status"
           },
           {
             "id": "dc/g/Remittance",

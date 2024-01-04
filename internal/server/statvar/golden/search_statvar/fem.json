@@ -365,8 +365,20 @@
       "dcid": "WHO/vita_Female"
     },
     {
+      "name": "Children Aged \u003c 5 Years Sleeping Under Insecticide-Treated Nets (%), Female",
+      "dcid": "WHO/itnch_Female"
+    },
+    {
+      "name": "Children Aged \u003c 5 Years With Diarrhoea Receiving Oral Rehydration Salts (%), Female",
+      "dcid": "WHO/ors_Female"
+    },
+    {
       "name": "Children Aged \u003c 5 Years With Diarrhoea Receiving Oral Rehydration Therapy And Continued Feeding (%), Female",
       "dcid": "WHO/ort_Female"
+    },
+    {
+      "name": "Children Aged \u003c 5 Years With Pneumonia Symptoms Taken To A Health Facility (%), Female",
+      "dcid": "WHO/carep_Female"
     },
     {
       "name": "Crude Suicide Rates (Per 100 000 Population), Female",
@@ -385,6 +397,10 @@
       "dcid": "WHO/dptv_Female"
     },
     {
+      "name": "Dtp3 Immunization Coverage Among One-Year-Olds (%), Female",
+      "dcid": "WHO/vdpt_Female"
+    },
+    {
       "name": "Early Initiation Of Breastfeeding (In The Five Years Preceding The Survey) (%), Female",
       "dcid": "WHO/ebreast5_Female"
     },
@@ -393,12 +409,28 @@
       "dcid": "WHO/ebreast_Female"
     },
     {
+      "name": "Early Initiation Of Breastfeeding (In The Two Years Preceding The Survey) (%), Female",
+      "dcid": "WHO/bfearly_Female"
+    },
+    {
       "name": "Effective Cataract Surgical Coverage Of Adults Aged 50 And Over (%), Female",
       "dcid": "WHO/CATARACTSURGICALEFFECTIVE_Female"
     },
     {
       "name": "Full Immunization Coverage Among One-Year-Olds (%) (fullv), Female",
       "dcid": "WHO/fullv_Female"
+    },
+    {
+      "name": "Full Immunization Coverage Among One-Year-Olds (%), Female",
+      "dcid": "WHO/vfull_Female"
+    },
+    {
+      "name": "Hpv Immunization Coverage Estimates Among Primary Target Cohort (9-14 Years Old Girls) (%), Female",
+      "dcid": "WHO/SDGHPVRECEIVED_Female"
+    },
+    {
+      "name": "Infant Mortality Rate (Deaths Per 1000 Live Births), Female",
+      "dcid": "WHO/imr_Female"
     },
     {
       "name": "Infant deaths [under 1 year old, Female]",
@@ -417,6 +449,10 @@
       "dcid": "WHO/mslv_Female"
     },
     {
+      "name": "Measles Immunization Coverage Among One-Year-Olds (%), Female",
+      "dcid": "WHO/vmsl_Female"
+    },
+    {
       "name": "Migrant recruitment costs [Female, Migratory status = Migrants]",
       "dcid": "sdg/SL_EMP_RCOST_MO.SEX--F__MIGRATORY_STATUS--MS_MIGRANT"
     },
@@ -429,8 +465,16 @@
       "dcid": "WHO/SDGPOISON_Female"
     },
     {
+      "name": "Mortality Rate For 5-14 Year-Olds (Probability Of Dying Per 1000 Children Aged 5-14 Years), Female",
+      "dcid": "WHO/CHILDMORT5TO14_Female"
+    },
+    {
       "name": "Mortality rate attributed to cardiovascular disease, cancer, diabetes or chronic respiratory disease [30 to 70 years old, Female]",
       "dcid": "sdg/SH_DTH_NCOM.AGE--Y30T70__SEX--F"
+    },
+    {
+      "name": "Neonatal Mortality Rate (Deaths Per 1000 Live Births), Female",
+      "dcid": "WHO/nmr_Female"
     },
     {
       "name": "New Hiv Infections (Per 1000 Uninfected Population), Female",
@@ -445,12 +489,20 @@
       "dcid": "sdg/AG_PRD_FIESSN.AGE--Y_GE15__SEX--F"
     },
     {
+      "name": "One-Year-Old Children Who Have Not Received Any Doses Of The Dtp Vaccine (%), Female",
+      "dcid": "WHO/vzdpt_Female"
+    },
+    {
       "name": "Overweight Prevalence In Children Aged \u003cFive Years (%), Female",
       "dcid": "WHO/overwgt5_Female"
     },
     {
       "name": "Polio Immunization Coverage Among One-Year-Olds (%) (poliov), Female",
       "dcid": "WHO/poliov_Female"
+    },
+    {
+      "name": "Polio Immunization Coverage Among One-Year-Olds (%), Female",
+      "dcid": "WHO/vpolio_Female"
     },
     {
       "name": "Postnatal Care Visit Within Two Days Of Birth (In The Five Years Preceding The Survey) (%), Female",
@@ -545,6 +597,10 @@
       "dcid": "WHO/stunt5_Female"
     },
     {
+      "name": "Under-Five Mortality Rate (Deaths Per 1000 Live Births), Female",
+      "dcid": "WHO/u5mr_Female"
+    },
+    {
       "name": "Under-five deaths [under 5 years old, Female]",
       "dcid": "sdg/SH_DYN_MORTN.AGE--Y0T4__SEX--F"
     },
@@ -557,12 +613,12 @@
       "dcid": "WHO/uweight3_Female"
     },
     {
-      "name": "Underweight Prevalence In Children Aged \u003c 5 Years (%) (uweight5), Female",
-      "dcid": "WHO/uweight5_Female"
+      "name": "Underweight Prevalence In Children Aged \u003c 5 Years (%) (Health Inequality Monitor), Female",
+      "dcid": "WHO/uwgt5_Female"
     },
     {
-      "name": "Underweight Prevalence In Children Aged \u003c 5 Years (%) (uwgt5), Female",
-      "dcid": "WHO/uwgt5_Female"
+      "name": "Underweight Prevalence In Children Aged \u003c 5 Years (%) (uweight5), Female",
+      "dcid": "WHO/uweight5_Female"
     },
     {
       "name": "Wasting Prevalence In Children Aged \u003c 3 Years (%), Female",
@@ -631,6 +687,22 @@
     {
       "name": "Abstainers (15-19 Years), Past 12 Months (%), Female",
       "dcid": "WHO/SA_0000001412_Female"
+    },
+    {
+      "name": "Adolescent Mortality Rate (Per 1 000 Age Specific Cohort), Female,10 To14 Years",
+      "dcid": "WHO/CHILDMORT10TO19_Female_10To14Years"
+    },
+    {
+      "name": "Adolescent Mortality Rate (Per 1 000 Age Specific Cohort), Female,10 To19 Years",
+      "dcid": "WHO/CHILDMORT10TO19_Female_10To19Years"
+    },
+    {
+      "name": "Adolescent Mortality Rate (Per 1 000 Age Specific Cohort), Female,15 To19 Years",
+      "dcid": "WHO/CHILDMORT10TO19_Female_15To19Years"
+    },
+    {
+      "name": "Adult Mortality Rate (Probability Of Dying Between 15 And 60 Years Per 1000 Population), Female",
+      "dcid": "WHO/WHOSIS_000004_Female"
     },
     {
       "name": "Adults Aged \u0026#8805; 20 Years Who Are Obese (%), Female",
@@ -805,6 +877,10 @@
       "dcid": "WHO/WHS2_131_Female"
     },
     {
+      "name": "Age-Standardized Suicide Rates (Per 100 000 Population), Female",
+      "dcid": "WHO/MH_12_Female"
+    },
+    {
       "name": "Alcohol Dependence (15+ ), 12-Month Prevalence (%) With 95%Ci (SA_0000001461), Female",
       "dcid": "WHO/SA_0000001461_Female"
     },
@@ -855,6 +931,10 @@
     {
       "name": "Alcohol, Total (Recorded 3 Year Average + Unrecorded) Per Capita (15+) Consumption (In Litres Of Pure Alcohol) With 95%Ci (SA_0000001749), Female",
       "dcid": "WHO/SA_0000001749_Female"
+    },
+    {
+      "name": "Alcohol, Total Per Capita (15+) Consumption (In Litres Of Pure Alcohol) (Sdg Indicator 3.5.2), Female",
+      "dcid": "WHO/SA_0000001688_Female"
     },
     {
       "name": "Alcohol, Total Per Capita (15+) Consumption (In Litres Of Pure Alcohol) With 95%Ci (SA_0000001822), Female",
@@ -945,7 +1025,7 @@
       "dcid": "WHO/SA_0000001807_Female"
     },
     {
-      "name": "Children Aged \u003c 5 Years With Pneumonia Symptoms Taken To A Healthcare Provider (%), Female",
+      "name": "Care-Seeking For Children With Symptoms Of Acute Respiratory Infection (%), Female",
       "dcid": "WHO/WHS4_106_Female"
     },
     {
@@ -965,6 +1045,50 @@
       "dcid": "WHO/NUTRITION_564_Female"
     },
     {
+      "name": "Crude Suicide Rates (Per 100 000 Population), Female,15 To19 Years",
+      "dcid": "WHO/SDGSUICIDE_Female_15To19Years"
+    },
+    {
+      "name": "Crude Suicide Rates (Per 100 000 Population), Female,15 To24 Years",
+      "dcid": "WHO/SDGSUICIDE_Female_15To24Years"
+    },
+    {
+      "name": "Crude Suicide Rates (Per 100 000 Population), Female,15 To29 Years",
+      "dcid": "WHO/SDGSUICIDE_Female_15To29Years"
+    },
+    {
+      "name": "Crude Suicide Rates (Per 100 000 Population), Female,25 To34 Years",
+      "dcid": "WHO/SDGSUICIDE_Female_25To34Years"
+    },
+    {
+      "name": "Crude Suicide Rates (Per 100 000 Population), Female,30 To49 Years",
+      "dcid": "WHO/SDGSUICIDE_Female_30To49Years"
+    },
+    {
+      "name": "Crude Suicide Rates (Per 100 000 Population), Female,35 To44 Years",
+      "dcid": "WHO/SDGSUICIDE_Female_35To44Years"
+    },
+    {
+      "name": "Crude Suicide Rates (Per 100 000 Population), Female,45 To54 Years",
+      "dcid": "WHO/SDGSUICIDE_Female_45To54Years"
+    },
+    {
+      "name": "Crude Suicide Rates (Per 100 000 Population), Female,55 To64 Years",
+      "dcid": "WHO/SDGSUICIDE_Female_55To64Years"
+    },
+    {
+      "name": "Crude Suicide Rates (Per 100 000 Population), Female,65 To74 Years",
+      "dcid": "WHO/SDGSUICIDE_Female_65To74Years"
+    },
+    {
+      "name": "Crude Suicide Rates (Per 100 000 Population), Female,75 To84 Years",
+      "dcid": "WHO/SDGSUICIDE_Female_75To84Years"
+    },
+    {
+      "name": "Crude Suicide Rates (Per 100 000 Population), Female,85 Plus Years",
+      "dcid": "WHO/SDGSUICIDE_Female_85PlusYears"
+    },
+    {
       "name": "Current Smokers Of Cigarettes (Youth Rate), Female",
       "dcid": "WHO/TOBACCO_0000000345_Female"
     },
@@ -979,6 +1103,10 @@
     {
       "name": "Estimated Road Traffic Death Rate (Per 100 000 Population), Female",
       "dcid": "WHO/RS_198_Female"
+    },
+    {
+      "name": "Estimates Of Number Of Homicides, Female",
+      "dcid": "WHO/VIOLENCE_HOMICIDENUM_Female"
     },
     {
       "name": "Estimates Of Rates Of Homicides Per 100 000 Population, Female",
@@ -1033,12 +1161,20 @@
       "dcid": "WHO/HWF_0025_Female"
     },
     {
+      "name": "Mortality Rate Among Children Ages 5 To 9 Years (Per 1000 Children Aged 5), Female",
+      "dcid": "WHO/WHOSIS_000016_Female"
+    },
+    {
       "name": "Net Primary School Enrolment Ratio (%), Female",
       "dcid": "WHO/WHS9_87_Female"
     },
     {
       "name": "New entrants to Grade 1 of primary education, percentage female (%)",
       "dcid": "worldBank/UIS_FNP_1"
+    },
+    {
+      "name": "Number Of Deaths Among Children Ages 5 To 9 Years, Female",
+      "dcid": "WHO/CM_04_Female"
     },
     {
       "name": "Number Of Dentists, Female",
@@ -1063,6 +1199,10 @@
     {
       "name": "Number Of Midwifery Personnel, Female",
       "dcid": "WHO/HRH_03_Female"
+    },
+    {
+      "name": "Number Of New Hiv Infections, Female",
+      "dcid": "WHO/HIV_0000000026_Female"
     },
     {
       "name": "Number Of Nursing And Midwifery Personnel (HRH_24), Female",
@@ -1153,6 +1293,10 @@
       "dcid": "dc/10d542rs75l3g"
     },
     {
+      "name": "Population Aged 15-24 Years With Comprehensive Correct Knowledge Of Hiv/Aids (%), Female",
+      "dcid": "WHO/MDG_0000000021_Female"
+    },
+    {
       "name": "Prevalence Of Condom Use By Adults During Higher-Risk Sex (15-49) (%), Female",
       "dcid": "WHO/MDG_0000000015_Female"
     },
@@ -1163,6 +1307,10 @@
     {
       "name": "Prevalence Of Current Tobacco Use Among Adolescents Aged 13-15 Years, Female",
       "dcid": "WHO/TOBACCO_0000000344_Female"
+    },
+    {
+      "name": "Prevalence Of Insufficient Physical Activity Among Adults Aged 18+ Years (Age-Standardized Estimate) (%), Female",
+      "dcid": "WHO/NCD_PAA_Female"
     },
     {
       "name": "Prevalence Of Insufficient Physical Activity Among Adults Aged 18+ Years (Crude Estimate) (%), Female",
@@ -1177,6 +1325,90 @@
       "dcid": "WHO/TOBACCO_0000000192_Female"
     },
     {
+      "name": "Proportion Of Ever-Partnered Women And Girls Aged 15-49 Years Subjected To Physical And/Or Sexual Violence By A Current Or Former Intimate Partner In The Previous 12 Months (SDGIPV), Female,15 To19 Years",
+      "dcid": "WHO/SDGIPV_Female_15To19Years"
+    },
+    {
+      "name": "Proportion Of Ever-Partnered Women And Girls Aged 15-49 Years Subjected To Physical And/Or Sexual Violence By A Current Or Former Intimate Partner In The Previous 12 Months (SDGIPV), Female,15 To24 Years",
+      "dcid": "WHO/SDGIPV_Female_15To24Years"
+    },
+    {
+      "name": "Proportion Of Ever-Partnered Women And Girls Aged 15-49 Years Subjected To Physical And/Or Sexual Violence By A Current Or Former Intimate Partner In The Previous 12 Months (SDGIPV), Female,15 To44 Years",
+      "dcid": "WHO/SDGIPV_Female_15To44Years"
+    },
+    {
+      "name": "Proportion Of Ever-Partnered Women And Girls Aged 15-49 Years Subjected To Physical And/Or Sexual Violence By A Current Or Former Intimate Partner In The Previous 12 Months (SDGIPV), Female,15 To49 Years",
+      "dcid": "WHO/SDGIPV_Female_15To49Years"
+    },
+    {
+      "name": "Proportion Of Ever-Partnered Women And Girls Aged 15-49 Years Subjected To Physical And/Or Sexual Violence By A Current Or Former Intimate Partner In The Previous 12 Months (SDGIPV), Female,18 To19 Years",
+      "dcid": "WHO/SDGIPV_Female_18To19Years"
+    },
+    {
+      "name": "Proportion Of Ever-Partnered Women And Girls Aged 15-49 Years Subjected To Physical And/Or Sexual Violence By A Current Or Former Intimate Partner In The Previous 12 Months (SDGIPV), Female,18 To24 Years",
+      "dcid": "WHO/SDGIPV_Female_18To24Years"
+    },
+    {
+      "name": "Proportion Of Ever-Partnered Women And Girls Aged 15-49 Years Subjected To Physical And/Or Sexual Violence By A Current Or Former Intimate Partner In The Previous 12 Months (SDGIPV), Female,18 To49 Years",
+      "dcid": "WHO/SDGIPV_Female_18To49Years"
+    },
+    {
+      "name": "Proportion Of Ever-Partnered Women And Girls Aged 15-49 Years Subjected To Physical And/Or Sexual Violence By A Current Or Former Intimate Partner In The Previous 12 Months (SDGIPV), Female,18 To50 Years",
+      "dcid": "WHO/SDGIPV_Female_18To50Years"
+    },
+    {
+      "name": "Proportion Of Ever-Partnered Women And Girls Aged 15-49 Years Subjected To Physical And/Or Sexual Violence By A Current Or Former Intimate Partner In The Previous 12 Months (SDGIPV), Female,20 To24 Years",
+      "dcid": "WHO/SDGIPV_Female_20To24Years"
+    },
+    {
+      "name": "Proportion Of Ever-Partnered Women And Girls Aged 15-49 Years Subjected To Physical And/Or Sexual Violence By A Current Or Former Intimate Partner In The Previous 12 Months (SDGIPV), Female,20 To29 Years",
+      "dcid": "WHO/SDGIPV_Female_20To29Years"
+    },
+    {
+      "name": "Proportion Of Ever-Partnered Women And Girls Aged 15-49 Years Subjected To Physical And/Or Sexual Violence By A Current Or Former Intimate Partner In The Previous 12 Months (SDGIPV), Female,25 To29 Years",
+      "dcid": "WHO/SDGIPV_Female_25To29Years"
+    },
+    {
+      "name": "Proportion Of Ever-Partnered Women And Girls Aged 15-49 Years Subjected To Physical And/Or Sexual Violence By A Current Or Former Intimate Partner In The Previous 12 Months (SDGIPV), Female,25 To34 Years",
+      "dcid": "WHO/SDGIPV_Female_25To34Years"
+    },
+    {
+      "name": "Proportion Of Ever-Partnered Women And Girls Aged 15-49 Years Subjected To Physical And/Or Sexual Violence By A Current Or Former Intimate Partner In The Previous 12 Months (SDGIPV), Female,30 To34 Years",
+      "dcid": "WHO/SDGIPV_Female_30To34Years"
+    },
+    {
+      "name": "Proportion Of Ever-Partnered Women And Girls Aged 15-49 Years Subjected To Physical And/Or Sexual Violence By A Current Or Former Intimate Partner In The Previous 12 Months (SDGIPV), Female,30 To35 Years",
+      "dcid": "WHO/SDGIPV_Female_30To35Years"
+    },
+    {
+      "name": "Proportion Of Ever-Partnered Women And Girls Aged 15-49 Years Subjected To Physical And/Or Sexual Violence By A Current Or Former Intimate Partner In The Previous 12 Months (SDGIPV), Female,30 To39 Years",
+      "dcid": "WHO/SDGIPV_Female_30To39Years"
+    },
+    {
+      "name": "Proportion Of Ever-Partnered Women And Girls Aged 15-49 Years Subjected To Physical And/Or Sexual Violence By A Current Or Former Intimate Partner In The Previous 12 Months (SDGIPV), Female,35 To39 Years",
+      "dcid": "WHO/SDGIPV_Female_35To39Years"
+    },
+    {
+      "name": "Proportion Of Ever-Partnered Women And Girls Aged 15-49 Years Subjected To Physical And/Or Sexual Violence By A Current Or Former Intimate Partner In The Previous 12 Months (SDGIPV), Female,35 To44 Years",
+      "dcid": "WHO/SDGIPV_Female_35To44Years"
+    },
+    {
+      "name": "Proportion Of Ever-Partnered Women And Girls Aged 15-49 Years Subjected To Physical And/Or Sexual Violence By A Current Or Former Intimate Partner In The Previous 12 Months (SDGIPV), Female,40 To44 Years",
+      "dcid": "WHO/SDGIPV_Female_40To44Years"
+    },
+    {
+      "name": "Proportion Of Ever-Partnered Women And Girls Aged 15-49 Years Subjected To Physical And/Or Sexual Violence By A Current Or Former Intimate Partner In The Previous 12 Months (SDGIPV), Female,40 To49 Years",
+      "dcid": "WHO/SDGIPV_Female_40To49Years"
+    },
+    {
+      "name": "Proportion Of Ever-Partnered Women And Girls Aged 15-49 Years Subjected To Physical And/Or Sexual Violence By A Current Or Former Intimate Partner In The Previous 12 Months (SDGIPV), Female,45 To49 Years",
+      "dcid": "WHO/SDGIPV_Female_45To49Years"
+    },
+    {
+      "name": "Proportion Of Ever-Partnered Women And Girls Aged 15-49 Years Subjected To Physical And/Or Sexual Violence By A Current Or Former Intimate Partner In The Previous 12 Months (SDGIPV), Female,45 To59 Years",
+      "dcid": "WHO/SDGIPV_Female_45To59Years"
+    },
+    {
       "name": "Proportion Of Girls And Women Aged 15-49 Years Who Have Undergone Female Genital Mutilation/Cutting (Fmg/C) (%)",
       "dcid": "WHO/SH_STA_FGMS"
     },
@@ -1189,12 +1421,24 @@
       "dcid": "worldBank/save_any_1"
     },
     {
+      "name": "Sdg 3.9.2 Wash Deaths, Female",
+      "dcid": "WHO/WSH_1_Female"
+    },
+    {
       "name": "Total cases of deaths following Sterilisation (Male and Female)",
       "dcid": "Count_Death_BirthControlSterilisation"
     },
     {
+      "name": "Total cases of deaths following Sterilization (Male and Female)",
+      "dcid": "Count_Death_BirthControlSterilization"
+    },
+    {
       "name": "Under-Five Mortality Rate (Probability Of Dying By Age 5 Per 1000 Live Births), Female",
       "dcid": "WHO/MDG_0000000007_Female"
+    },
+    {
+      "name": "Women Of Reproductive Age (Aged 15-49 Years) Who Have Their Need For Family Planning Satisfied With Modern Methods (%), Female,15 To49 Years",
+      "dcid": "WHO/SDGFPALL_Female_15To49Years"
     },
     {
       "name": "Youth illiterate population, 15-24 years, % female",
@@ -1341,6 +1585,14 @@
       "dcid": "WHO/SA_0000001743_ARCHIVED_Female"
     },
     {
+      "name": "Ambient Air Pollution  Attributable Dalys Per 100'000 Children Under 5 Years, Female, Lower Respiratory Infections",
+      "dcid": "WHO/AIR_10_Female_LowerRespiratoryInfections"
+    },
+    {
+      "name": "Ambient Air Pollution  Attributable Deaths Per 100'000 Children Under 5 Years, Female, Lower Respiratory Infections",
+      "dcid": "WHO/AIR_6_Female_LowerRespiratoryInfections"
+    },
+    {
       "name": "Ambient Air Pollution Attributable DALYs  (Per 100 000 Population), Female, All Causes",
       "dcid": "WHO/AIR_9_Female_AllCauses"
     },
@@ -1441,6 +1693,10 @@
       "dcid": "WHO/AIR_7_Female_TracheaBronchusLungCancers"
     },
     {
+      "name": "Ambient Air Pollution Attributable Dalys In Children Under 15 Years, Female, Lower Respiratory Infections",
+      "dcid": "WHO/AIR_71_Female_LowerRespiratoryInfections"
+    },
+    {
       "name": "Ambient Air Pollution Attributable Death Rate (Per 100 000 Population), Female, All Causes",
       "dcid": "WHO/AIR_5_Female_AllCauses"
     },
@@ -1513,8 +1769,16 @@
       "dcid": "WHO/AIR_41_Female_TracheaBronchusLungCancers"
     },
     {
+      "name": "Ambient Air Pollution Attributable Deaths In Children Under 15 Years, Female, Lower Respiratory Infections",
+      "dcid": "WHO/AIR_72_Female_LowerRespiratoryInfections"
+    },
+    {
       "name": "Ambient Air Pollution Attributable Deaths In Children Under 5 Years, Female, Lower Respiratory Infections",
       "dcid": "WHO/AIR_4_Female_LowerRespiratoryInfections"
+    },
+    {
+      "name": "Ambient Air Pollution Attributable Yll In Children Under 15 Years, Female, Lower Respiratory Infections",
+      "dcid": "WHO/AIR_73_Female_LowerRespiratoryInfections"
     },
     {
       "name": "Ambient Air Pollution Attributable Ylls, Female, All Causes",
@@ -1669,8 +1933,20 @@
       "dcid": "worldBank/fin22b_t_d_1"
     },
     {
+      "name": "Continued Breastfeeding 12-23 Months, Female",
+      "dcid": "WHO/NUT_BF_CBF_Female"
+    },
+    {
+      "name": "Early Initiation Of Breastfeeding, Children Born In The Last 24 Months, Female",
+      "dcid": "WHO/NUT_BF_EIBF_Female"
+    },
+    {
       "name": "Early school leavers from primary education, female (number)",
       "dcid": "worldBank/UIS_ESL_1_F"
+    },
+    {
+      "name": "Egg And/Or Flesh Food Consumption 6-23 Months, Female",
+      "dcid": "WHO/NUT_CF_EFF_Female"
     },
     {
       "name": "Elderly illiterate population, 65+ years, female (number)",
@@ -1695,6 +1971,10 @@
     {
       "name": "Enrolment in upper secondary education, female (number)",
       "dcid": "worldBank/UIS_E_3_F"
+    },
+    {
+      "name": "Ever Breastfed, Female",
+      "dcid": "WHO/NUT_BF_EVBF_Female"
     },
     {
       "name": "Ex - Expectation Of Life At Age X, Female, Age10To14",
@@ -1771,6 +2051,90 @@
     {
       "name": "Ex - Expectation Of Life At Age X, Female, Agelessthan1",
       "dcid": "WHO/LIFE_0000000035_Female_AGELT1"
+    },
+    {
+      "name": "Ex - Expectation Of Life At Age X, Female, Years0",
+      "dcid": "WHO/LIFE_0000000035_Female_Years0"
+    },
+    {
+      "name": "Ex - Expectation Of Life At Age X, Female,1 To4 Years",
+      "dcid": "WHO/LIFE_0000000035_Female_1To4Years"
+    },
+    {
+      "name": "Ex - Expectation Of Life At Age X, Female,10 To14 Years",
+      "dcid": "WHO/LIFE_0000000035_Female_10To14Years"
+    },
+    {
+      "name": "Ex - Expectation Of Life At Age X, Female,15 To19 Years",
+      "dcid": "WHO/LIFE_0000000035_Female_15To19Years"
+    },
+    {
+      "name": "Ex - Expectation Of Life At Age X, Female,20 To24 Years",
+      "dcid": "WHO/LIFE_0000000035_Female_20To24Years"
+    },
+    {
+      "name": "Ex - Expectation Of Life At Age X, Female,25 To29 Years",
+      "dcid": "WHO/LIFE_0000000035_Female_25To29Years"
+    },
+    {
+      "name": "Ex - Expectation Of Life At Age X, Female,30 To34 Years",
+      "dcid": "WHO/LIFE_0000000035_Female_30To34Years"
+    },
+    {
+      "name": "Ex - Expectation Of Life At Age X, Female,35 To39 Years",
+      "dcid": "WHO/LIFE_0000000035_Female_35To39Years"
+    },
+    {
+      "name": "Ex - Expectation Of Life At Age X, Female,40 To44 Years",
+      "dcid": "WHO/LIFE_0000000035_Female_40To44Years"
+    },
+    {
+      "name": "Ex - Expectation Of Life At Age X, Female,45 To49 Years",
+      "dcid": "WHO/LIFE_0000000035_Female_45To49Years"
+    },
+    {
+      "name": "Ex - Expectation Of Life At Age X, Female,5 To9 Years",
+      "dcid": "WHO/LIFE_0000000035_Female_5To9Years"
+    },
+    {
+      "name": "Ex - Expectation Of Life At Age X, Female,50 To54 Years",
+      "dcid": "WHO/LIFE_0000000035_Female_50To54Years"
+    },
+    {
+      "name": "Ex - Expectation Of Life At Age X, Female,55 To59 Years",
+      "dcid": "WHO/LIFE_0000000035_Female_55To59Years"
+    },
+    {
+      "name": "Ex - Expectation Of Life At Age X, Female,60 To64 Years",
+      "dcid": "WHO/LIFE_0000000035_Female_60To64Years"
+    },
+    {
+      "name": "Ex - Expectation Of Life At Age X, Female,65 To69 Years",
+      "dcid": "WHO/LIFE_0000000035_Female_65To69Years"
+    },
+    {
+      "name": "Ex - Expectation Of Life At Age X, Female,70 To74 Years",
+      "dcid": "WHO/LIFE_0000000035_Female_70To74Years"
+    },
+    {
+      "name": "Ex - Expectation Of Life At Age X, Female,75 To79 Years",
+      "dcid": "WHO/LIFE_0000000035_Female_75To79Years"
+    },
+    {
+      "name": "Ex - Expectation Of Life At Age X, Female,80 To84 Years",
+      "dcid": "WHO/LIFE_0000000035_Female_80To84Years"
+    },
+    {
+      "name": "Ex - Expectation Of Life At Age X, Female,85 Plus Years",
+      "dcid": "WHO/LIFE_0000000035_Female_85PlusYears"
+    },
+    {
+      "name": "Exclusive Breastfeeding Under Six Months, Female",
+      "dcid": "WHO/NUT_BF_EBF_Female"
+    },
+    {
+      "name": "Exclusively Breastfed For The First Two Days After Birth, Female",
+      "dcid": "WHO/NUT_BF_EBF2D_Female"
     },
     {
       "name": "Expected Years of School, Female",
@@ -1933,6 +2297,10 @@
       "dcid": "WHO/AIR_15_Female_TracheaBronchusLungCancers"
     },
     {
+      "name": "Household Air Pollution Attributable Dalys In Children Under 15 Years, Female, Lower Respiratory Infections",
+      "dcid": "WHO/AIR_75_Female_LowerRespiratoryInfections"
+    },
+    {
       "name": "Household Air Pollution Attributable Death Rate (Per 100 000 Population), Female, All Causes",
       "dcid": "WHO/AIR_51_Female_AllCauses"
     },
@@ -1981,6 +2349,10 @@
       "dcid": "WHO/AIR_52_Female_TracheaBronchusLungCancers"
     },
     {
+      "name": "Household Air Pollution Attributable Deaths In Children Under 15 Years, Female, Lower Respiratory Infections",
+      "dcid": "WHO/AIR_74_Female_LowerRespiratoryInfections"
+    },
+    {
       "name": "Household Air Pollution Attributable Deaths In Children Under 5 Years, Female, Lower Respiratory Infections",
       "dcid": "WHO/AIR_12_Female_LowerRespiratoryInfections"
     },
@@ -2023,6 +2395,10 @@
     {
       "name": "Insufficiently Active (Crude Estimate), Female",
       "dcid": "WHO/NCD_PAC_ADO_Female"
+    },
+    {
+      "name": "Introduction Of Solid, Semi-Solid Or Soft Foods 6-8 Months, Female",
+      "dcid": "WHO/NUT_CF_ISSSF_Female"
     },
     {
       "name": "Learning-Adjusted Years of School, Female",
@@ -2113,6 +2489,82 @@
       "dcid": "WHO/LIFE_0000000031_Female_AGELT1"
     },
     {
+      "name": "Lx - Number Of People Left Alive At Age X, Female, Years0",
+      "dcid": "WHO/LIFE_0000000031_Female_Years0"
+    },
+    {
+      "name": "Lx - Number Of People Left Alive At Age X, Female,1 To4 Years",
+      "dcid": "WHO/LIFE_0000000031_Female_1To4Years"
+    },
+    {
+      "name": "Lx - Number Of People Left Alive At Age X, Female,10 To14 Years",
+      "dcid": "WHO/LIFE_0000000031_Female_10To14Years"
+    },
+    {
+      "name": "Lx - Number Of People Left Alive At Age X, Female,15 To19 Years",
+      "dcid": "WHO/LIFE_0000000031_Female_15To19Years"
+    },
+    {
+      "name": "Lx - Number Of People Left Alive At Age X, Female,20 To24 Years",
+      "dcid": "WHO/LIFE_0000000031_Female_20To24Years"
+    },
+    {
+      "name": "Lx - Number Of People Left Alive At Age X, Female,25 To29 Years",
+      "dcid": "WHO/LIFE_0000000031_Female_25To29Years"
+    },
+    {
+      "name": "Lx - Number Of People Left Alive At Age X, Female,30 To34 Years",
+      "dcid": "WHO/LIFE_0000000031_Female_30To34Years"
+    },
+    {
+      "name": "Lx - Number Of People Left Alive At Age X, Female,35 To39 Years",
+      "dcid": "WHO/LIFE_0000000031_Female_35To39Years"
+    },
+    {
+      "name": "Lx - Number Of People Left Alive At Age X, Female,40 To44 Years",
+      "dcid": "WHO/LIFE_0000000031_Female_40To44Years"
+    },
+    {
+      "name": "Lx - Number Of People Left Alive At Age X, Female,45 To49 Years",
+      "dcid": "WHO/LIFE_0000000031_Female_45To49Years"
+    },
+    {
+      "name": "Lx - Number Of People Left Alive At Age X, Female,5 To9 Years",
+      "dcid": "WHO/LIFE_0000000031_Female_5To9Years"
+    },
+    {
+      "name": "Lx - Number Of People Left Alive At Age X, Female,50 To54 Years",
+      "dcid": "WHO/LIFE_0000000031_Female_50To54Years"
+    },
+    {
+      "name": "Lx - Number Of People Left Alive At Age X, Female,55 To59 Years",
+      "dcid": "WHO/LIFE_0000000031_Female_55To59Years"
+    },
+    {
+      "name": "Lx - Number Of People Left Alive At Age X, Female,60 To64 Years",
+      "dcid": "WHO/LIFE_0000000031_Female_60To64Years"
+    },
+    {
+      "name": "Lx - Number Of People Left Alive At Age X, Female,65 To69 Years",
+      "dcid": "WHO/LIFE_0000000031_Female_65To69Years"
+    },
+    {
+      "name": "Lx - Number Of People Left Alive At Age X, Female,70 To74 Years",
+      "dcid": "WHO/LIFE_0000000031_Female_70To74Years"
+    },
+    {
+      "name": "Lx - Number Of People Left Alive At Age X, Female,75 To79 Years",
+      "dcid": "WHO/LIFE_0000000031_Female_75To79Years"
+    },
+    {
+      "name": "Lx - Number Of People Left Alive At Age X, Female,80 To84 Years",
+      "dcid": "WHO/LIFE_0000000031_Female_80To84Years"
+    },
+    {
+      "name": "Lx - Number Of People Left Alive At Age X, Female,85 Plus Years",
+      "dcid": "WHO/LIFE_0000000031_Female_85PlusYears"
+    },
+    {
       "name": "Made a utility payment, female (% age 15+)",
       "dcid": "worldBank/fin30_t_d_1"
     },
@@ -2129,12 +2581,32 @@
       "dcid": "WHO/BP_06_Female_YEARS18PLUS"
     },
     {
+      "name": "Mean Systolic Blood Pressure (Age-Standardized Estimate), Female,18 Plus Years",
+      "dcid": "WHO/BP_06_Female_18PlusYears"
+    },
+    {
       "name": "Mean Systolic Blood Pressure (Crude Estimate), Female, Age25Plus",
       "dcid": "WHO/BP_05_Female_AGE25PLUS"
     },
     {
+      "name": "Mean Systolic Blood Pressure (Crude Estimate), Female,25 Plus Years",
+      "dcid": "WHO/BP_05_Female_25PlusYears"
+    },
+    {
       "name": "Mean age at first marriage, female",
       "dcid": "worldBank/SP_DYN_SMAM_FE"
+    },
+    {
+      "name": "Minimum Acceptable Diet 6-23 Months, Female",
+      "dcid": "WHO/NUT_CF_MAD_Female"
+    },
+    {
+      "name": "Minimum Dietary Diversity 6-23 Months, Female",
+      "dcid": "WHO/NUT_CF_MDD_Female"
+    },
+    {
+      "name": "Minimum Meal Frequency 6-23 Months, Female",
+      "dcid": "WHO/NUT_CF_MMF_Female"
     },
     {
       "name": "Mobile money account, female (% age 15+)",
@@ -2223,6 +2695,82 @@
     {
       "name": "Ndx - Number Of People Dying Between Ages X And X+N, Female, Agelessthan1",
       "dcid": "WHO/LIFE_0000000032_Female_AGELT1"
+    },
+    {
+      "name": "Ndx - Number Of People Dying Between Ages X And X+N, Female, Years0",
+      "dcid": "WHO/LIFE_0000000032_Female_Years0"
+    },
+    {
+      "name": "Ndx - Number Of People Dying Between Ages X And X+N, Female,1 To4 Years",
+      "dcid": "WHO/LIFE_0000000032_Female_1To4Years"
+    },
+    {
+      "name": "Ndx - Number Of People Dying Between Ages X And X+N, Female,10 To14 Years",
+      "dcid": "WHO/LIFE_0000000032_Female_10To14Years"
+    },
+    {
+      "name": "Ndx - Number Of People Dying Between Ages X And X+N, Female,15 To19 Years",
+      "dcid": "WHO/LIFE_0000000032_Female_15To19Years"
+    },
+    {
+      "name": "Ndx - Number Of People Dying Between Ages X And X+N, Female,20 To24 Years",
+      "dcid": "WHO/LIFE_0000000032_Female_20To24Years"
+    },
+    {
+      "name": "Ndx - Number Of People Dying Between Ages X And X+N, Female,25 To29 Years",
+      "dcid": "WHO/LIFE_0000000032_Female_25To29Years"
+    },
+    {
+      "name": "Ndx - Number Of People Dying Between Ages X And X+N, Female,30 To34 Years",
+      "dcid": "WHO/LIFE_0000000032_Female_30To34Years"
+    },
+    {
+      "name": "Ndx - Number Of People Dying Between Ages X And X+N, Female,35 To39 Years",
+      "dcid": "WHO/LIFE_0000000032_Female_35To39Years"
+    },
+    {
+      "name": "Ndx - Number Of People Dying Between Ages X And X+N, Female,40 To44 Years",
+      "dcid": "WHO/LIFE_0000000032_Female_40To44Years"
+    },
+    {
+      "name": "Ndx - Number Of People Dying Between Ages X And X+N, Female,45 To49 Years",
+      "dcid": "WHO/LIFE_0000000032_Female_45To49Years"
+    },
+    {
+      "name": "Ndx - Number Of People Dying Between Ages X And X+N, Female,5 To9 Years",
+      "dcid": "WHO/LIFE_0000000032_Female_5To9Years"
+    },
+    {
+      "name": "Ndx - Number Of People Dying Between Ages X And X+N, Female,50 To54 Years",
+      "dcid": "WHO/LIFE_0000000032_Female_50To54Years"
+    },
+    {
+      "name": "Ndx - Number Of People Dying Between Ages X And X+N, Female,55 To59 Years",
+      "dcid": "WHO/LIFE_0000000032_Female_55To59Years"
+    },
+    {
+      "name": "Ndx - Number Of People Dying Between Ages X And X+N, Female,60 To64 Years",
+      "dcid": "WHO/LIFE_0000000032_Female_60To64Years"
+    },
+    {
+      "name": "Ndx - Number Of People Dying Between Ages X And X+N, Female,65 To69 Years",
+      "dcid": "WHO/LIFE_0000000032_Female_65To69Years"
+    },
+    {
+      "name": "Ndx - Number Of People Dying Between Ages X And X+N, Female,70 To74 Years",
+      "dcid": "WHO/LIFE_0000000032_Female_70To74Years"
+    },
+    {
+      "name": "Ndx - Number Of People Dying Between Ages X And X+N, Female,75 To79 Years",
+      "dcid": "WHO/LIFE_0000000032_Female_75To79Years"
+    },
+    {
+      "name": "Ndx - Number Of People Dying Between Ages X And X+N, Female,80 To84 Years",
+      "dcid": "WHO/LIFE_0000000032_Female_80To84Years"
+    },
+    {
+      "name": "Ndx - Number Of People Dying Between Ages X And X+N, Female,85 Plus Years",
+      "dcid": "WHO/LIFE_0000000032_Female_85PlusYears"
     },
     {
       "name": "Net enrolment rate, lower secondary, female (%)",
@@ -2317,6 +2865,82 @@
       "dcid": "WHO/LIFE_0000000033_Female_AGELT1"
     },
     {
+      "name": "Nlx - Person-Years Lived Between Ages X And X+N, Female, Years0",
+      "dcid": "WHO/LIFE_0000000033_Female_Years0"
+    },
+    {
+      "name": "Nlx - Person-Years Lived Between Ages X And X+N, Female,1 To4 Years",
+      "dcid": "WHO/LIFE_0000000033_Female_1To4Years"
+    },
+    {
+      "name": "Nlx - Person-Years Lived Between Ages X And X+N, Female,10 To14 Years",
+      "dcid": "WHO/LIFE_0000000033_Female_10To14Years"
+    },
+    {
+      "name": "Nlx - Person-Years Lived Between Ages X And X+N, Female,15 To19 Years",
+      "dcid": "WHO/LIFE_0000000033_Female_15To19Years"
+    },
+    {
+      "name": "Nlx - Person-Years Lived Between Ages X And X+N, Female,20 To24 Years",
+      "dcid": "WHO/LIFE_0000000033_Female_20To24Years"
+    },
+    {
+      "name": "Nlx - Person-Years Lived Between Ages X And X+N, Female,25 To29 Years",
+      "dcid": "WHO/LIFE_0000000033_Female_25To29Years"
+    },
+    {
+      "name": "Nlx - Person-Years Lived Between Ages X And X+N, Female,30 To34 Years",
+      "dcid": "WHO/LIFE_0000000033_Female_30To34Years"
+    },
+    {
+      "name": "Nlx - Person-Years Lived Between Ages X And X+N, Female,35 To39 Years",
+      "dcid": "WHO/LIFE_0000000033_Female_35To39Years"
+    },
+    {
+      "name": "Nlx - Person-Years Lived Between Ages X And X+N, Female,40 To44 Years",
+      "dcid": "WHO/LIFE_0000000033_Female_40To44Years"
+    },
+    {
+      "name": "Nlx - Person-Years Lived Between Ages X And X+N, Female,45 To49 Years",
+      "dcid": "WHO/LIFE_0000000033_Female_45To49Years"
+    },
+    {
+      "name": "Nlx - Person-Years Lived Between Ages X And X+N, Female,5 To9 Years",
+      "dcid": "WHO/LIFE_0000000033_Female_5To9Years"
+    },
+    {
+      "name": "Nlx - Person-Years Lived Between Ages X And X+N, Female,50 To54 Years",
+      "dcid": "WHO/LIFE_0000000033_Female_50To54Years"
+    },
+    {
+      "name": "Nlx - Person-Years Lived Between Ages X And X+N, Female,55 To59 Years",
+      "dcid": "WHO/LIFE_0000000033_Female_55To59Years"
+    },
+    {
+      "name": "Nlx - Person-Years Lived Between Ages X And X+N, Female,60 To64 Years",
+      "dcid": "WHO/LIFE_0000000033_Female_60To64Years"
+    },
+    {
+      "name": "Nlx - Person-Years Lived Between Ages X And X+N, Female,65 To69 Years",
+      "dcid": "WHO/LIFE_0000000033_Female_65To69Years"
+    },
+    {
+      "name": "Nlx - Person-Years Lived Between Ages X And X+N, Female,70 To74 Years",
+      "dcid": "WHO/LIFE_0000000033_Female_70To74Years"
+    },
+    {
+      "name": "Nlx - Person-Years Lived Between Ages X And X+N, Female,75 To79 Years",
+      "dcid": "WHO/LIFE_0000000033_Female_75To79Years"
+    },
+    {
+      "name": "Nlx - Person-Years Lived Between Ages X And X+N, Female,80 To84 Years",
+      "dcid": "WHO/LIFE_0000000033_Female_80To84Years"
+    },
+    {
+      "name": "Nlx - Person-Years Lived Between Ages X And X+N, Female,85 Plus Years",
+      "dcid": "WHO/LIFE_0000000033_Female_85PlusYears"
+    },
+    {
       "name": "Nmx - Age-Specific Death Rate Between Ages X And X+N, Female, Age10To14",
       "dcid": "WHO/LIFE_0000000029_Female_AGE10TO14"
     },
@@ -2393,6 +3017,82 @@
       "dcid": "WHO/LIFE_0000000029_Female_AGELT1"
     },
     {
+      "name": "Nmx - Age-Specific Death Rate Between Ages X And X+N, Female, Years0",
+      "dcid": "WHO/LIFE_0000000029_Female_Years0"
+    },
+    {
+      "name": "Nmx - Age-Specific Death Rate Between Ages X And X+N, Female,1 To4 Years",
+      "dcid": "WHO/LIFE_0000000029_Female_1To4Years"
+    },
+    {
+      "name": "Nmx - Age-Specific Death Rate Between Ages X And X+N, Female,10 To14 Years",
+      "dcid": "WHO/LIFE_0000000029_Female_10To14Years"
+    },
+    {
+      "name": "Nmx - Age-Specific Death Rate Between Ages X And X+N, Female,15 To19 Years",
+      "dcid": "WHO/LIFE_0000000029_Female_15To19Years"
+    },
+    {
+      "name": "Nmx - Age-Specific Death Rate Between Ages X And X+N, Female,20 To24 Years",
+      "dcid": "WHO/LIFE_0000000029_Female_20To24Years"
+    },
+    {
+      "name": "Nmx - Age-Specific Death Rate Between Ages X And X+N, Female,25 To29 Years",
+      "dcid": "WHO/LIFE_0000000029_Female_25To29Years"
+    },
+    {
+      "name": "Nmx - Age-Specific Death Rate Between Ages X And X+N, Female,30 To34 Years",
+      "dcid": "WHO/LIFE_0000000029_Female_30To34Years"
+    },
+    {
+      "name": "Nmx - Age-Specific Death Rate Between Ages X And X+N, Female,35 To39 Years",
+      "dcid": "WHO/LIFE_0000000029_Female_35To39Years"
+    },
+    {
+      "name": "Nmx - Age-Specific Death Rate Between Ages X And X+N, Female,40 To44 Years",
+      "dcid": "WHO/LIFE_0000000029_Female_40To44Years"
+    },
+    {
+      "name": "Nmx - Age-Specific Death Rate Between Ages X And X+N, Female,45 To49 Years",
+      "dcid": "WHO/LIFE_0000000029_Female_45To49Years"
+    },
+    {
+      "name": "Nmx - Age-Specific Death Rate Between Ages X And X+N, Female,5 To9 Years",
+      "dcid": "WHO/LIFE_0000000029_Female_5To9Years"
+    },
+    {
+      "name": "Nmx - Age-Specific Death Rate Between Ages X And X+N, Female,50 To54 Years",
+      "dcid": "WHO/LIFE_0000000029_Female_50To54Years"
+    },
+    {
+      "name": "Nmx - Age-Specific Death Rate Between Ages X And X+N, Female,55 To59 Years",
+      "dcid": "WHO/LIFE_0000000029_Female_55To59Years"
+    },
+    {
+      "name": "Nmx - Age-Specific Death Rate Between Ages X And X+N, Female,60 To64 Years",
+      "dcid": "WHO/LIFE_0000000029_Female_60To64Years"
+    },
+    {
+      "name": "Nmx - Age-Specific Death Rate Between Ages X And X+N, Female,65 To69 Years",
+      "dcid": "WHO/LIFE_0000000029_Female_65To69Years"
+    },
+    {
+      "name": "Nmx - Age-Specific Death Rate Between Ages X And X+N, Female,70 To74 Years",
+      "dcid": "WHO/LIFE_0000000029_Female_70To74Years"
+    },
+    {
+      "name": "Nmx - Age-Specific Death Rate Between Ages X And X+N, Female,75 To79 Years",
+      "dcid": "WHO/LIFE_0000000029_Female_75To79Years"
+    },
+    {
+      "name": "Nmx - Age-Specific Death Rate Between Ages X And X+N, Female,80 To84 Years",
+      "dcid": "WHO/LIFE_0000000029_Female_80To84Years"
+    },
+    {
+      "name": "Nmx - Age-Specific Death Rate Between Ages X And X+N, Female,85 Plus Years",
+      "dcid": "WHO/LIFE_0000000029_Female_85PlusYears"
+    },
+    {
       "name": "Nqx - Probability Of Dying Between Ages X And X+N, Female, Age10To14",
       "dcid": "WHO/LIFE_0000000030_Female_AGE10TO14"
     },
@@ -2467,6 +3167,86 @@
     {
       "name": "Nqx - Probability Of Dying Between Ages X And X+N, Female, Agelessthan1",
       "dcid": "WHO/LIFE_0000000030_Female_AGELT1"
+    },
+    {
+      "name": "Nqx - Probability Of Dying Between Ages X And X+N, Female, Years0",
+      "dcid": "WHO/LIFE_0000000030_Female_Years0"
+    },
+    {
+      "name": "Nqx - Probability Of Dying Between Ages X And X+N, Female,1 To4 Years",
+      "dcid": "WHO/LIFE_0000000030_Female_1To4Years"
+    },
+    {
+      "name": "Nqx - Probability Of Dying Between Ages X And X+N, Female,10 To14 Years",
+      "dcid": "WHO/LIFE_0000000030_Female_10To14Years"
+    },
+    {
+      "name": "Nqx - Probability Of Dying Between Ages X And X+N, Female,15 To19 Years",
+      "dcid": "WHO/LIFE_0000000030_Female_15To19Years"
+    },
+    {
+      "name": "Nqx - Probability Of Dying Between Ages X And X+N, Female,20 To24 Years",
+      "dcid": "WHO/LIFE_0000000030_Female_20To24Years"
+    },
+    {
+      "name": "Nqx - Probability Of Dying Between Ages X And X+N, Female,25 To29 Years",
+      "dcid": "WHO/LIFE_0000000030_Female_25To29Years"
+    },
+    {
+      "name": "Nqx - Probability Of Dying Between Ages X And X+N, Female,30 To34 Years",
+      "dcid": "WHO/LIFE_0000000030_Female_30To34Years"
+    },
+    {
+      "name": "Nqx - Probability Of Dying Between Ages X And X+N, Female,35 To39 Years",
+      "dcid": "WHO/LIFE_0000000030_Female_35To39Years"
+    },
+    {
+      "name": "Nqx - Probability Of Dying Between Ages X And X+N, Female,40 To44 Years",
+      "dcid": "WHO/LIFE_0000000030_Female_40To44Years"
+    },
+    {
+      "name": "Nqx - Probability Of Dying Between Ages X And X+N, Female,45 To49 Years",
+      "dcid": "WHO/LIFE_0000000030_Female_45To49Years"
+    },
+    {
+      "name": "Nqx - Probability Of Dying Between Ages X And X+N, Female,5 To9 Years",
+      "dcid": "WHO/LIFE_0000000030_Female_5To9Years"
+    },
+    {
+      "name": "Nqx - Probability Of Dying Between Ages X And X+N, Female,50 To54 Years",
+      "dcid": "WHO/LIFE_0000000030_Female_50To54Years"
+    },
+    {
+      "name": "Nqx - Probability Of Dying Between Ages X And X+N, Female,55 To59 Years",
+      "dcid": "WHO/LIFE_0000000030_Female_55To59Years"
+    },
+    {
+      "name": "Nqx - Probability Of Dying Between Ages X And X+N, Female,60 To64 Years",
+      "dcid": "WHO/LIFE_0000000030_Female_60To64Years"
+    },
+    {
+      "name": "Nqx - Probability Of Dying Between Ages X And X+N, Female,65 To69 Years",
+      "dcid": "WHO/LIFE_0000000030_Female_65To69Years"
+    },
+    {
+      "name": "Nqx - Probability Of Dying Between Ages X And X+N, Female,70 To74 Years",
+      "dcid": "WHO/LIFE_0000000030_Female_70To74Years"
+    },
+    {
+      "name": "Nqx - Probability Of Dying Between Ages X And X+N, Female,75 To79 Years",
+      "dcid": "WHO/LIFE_0000000030_Female_75To79Years"
+    },
+    {
+      "name": "Nqx - Probability Of Dying Between Ages X And X+N, Female,80 To84 Years",
+      "dcid": "WHO/LIFE_0000000030_Female_80To84Years"
+    },
+    {
+      "name": "Nqx - Probability Of Dying Between Ages X And X+N, Female,85 Plus Years",
+      "dcid": "WHO/LIFE_0000000030_Female_85PlusYears"
+    },
+    {
+      "name": "Number Of Deaths Among Children Ages 10 To 14 Years, Female",
+      "dcid": "WHO/CHILDMORT_DEATHS_10TO14_Female"
     },
     {
       "name": "Number Of Diarrhoea DALYs From Inadequate Hygiene, Female",
@@ -2745,16 +3525,52 @@
       "dcid": "WHO/Adult_daily_smokeless_Female"
     },
     {
+      "name": "Prevalence Of Met Need Of Assistive Products (%), Female, Total",
+      "dcid": "WHO/ASSISTIVETECH_METNEED_Female_Total"
+    },
+    {
+      "name": "Prevalence Of Met Need Of Assistive Products (%), Female, Total Excluding Spectacles",
+      "dcid": "WHO/ASSISTIVETECH_METNEED_Female_TotalExcludingSpectacles"
+    },
+    {
+      "name": "Prevalence Of Need Of Assistive Products (%), Female, Total",
+      "dcid": "WHO/ASSISTIVETECH_TOTALNEED_Female_Total"
+    },
+    {
+      "name": "Prevalence Of Need Of Assistive Products (%), Female, Total Excluding Spectacles",
+      "dcid": "WHO/ASSISTIVETECH_TOTALNEED_Female_TotalExcludingSpectacles"
+    },
+    {
       "name": "Prevalence Of Obesity Among Adults, Bmi \u0026Greaterequal; 30 (Age-Standardized Estimate) (%), Female",
       "dcid": "WHO/NCD_BMI_30A_Female"
+    },
+    {
+      "name": "Prevalence Of Obesity Among Adults, Bmi \u0026Greaterequal; 30 (Crude Estimate) (%), Female",
+      "dcid": "WHO/NCD_BMI_30C_Female"
     },
     {
       "name": "Prevalence Of Overweight Among Adults, Bmi \u0026Greaterequal; 25 (Age-Standardized Estimate) (%), Female",
       "dcid": "WHO/NCD_BMI_25A_Female"
     },
     {
+      "name": "Prevalence Of Overweight Among Adults, Bmi \u0026Greaterequal; 25 (Crude Estimate) (%), Female",
+      "dcid": "WHO/NCD_BMI_25C_Female"
+    },
+    {
       "name": "Prevalence Of Underweight Among Adults, Bmi \u003c 18 (Age-Standardized Estimate) (%), Female",
       "dcid": "WHO/NCD_BMI_18A_Female"
+    },
+    {
+      "name": "Prevalence Of Underweight Among Adults, Bmi \u003c 18 (Crude Estimate) (%), Female",
+      "dcid": "WHO/NCD_BMI_18C_Female"
+    },
+    {
+      "name": "Prevalence Of Use Of Assistive Products (%), Female, Total",
+      "dcid": "WHO/ASSISTIVETECH_USEPREVALENCE_Female_Total"
+    },
+    {
+      "name": "Prevalence Of Use Of Assistive Products (%), Female, Total Excluding Spectacles",
+      "dcid": "WHO/ASSISTIVETECH_USEPREVALENCE_Female_TotalExcludingSpectacles"
     },
     {
       "name": "Prevalence of current tobacco use, females (% of female adults)",
@@ -2873,8 +3689,16 @@
       "dcid": "WHO/BP_04_Female_YEARS18PLUS"
     },
     {
+      "name": "Raised Blood Pressure (Sbp\u003e=140 Or Dbp\u003e=90) (Age-Standardized Estimate), Female,18 Plus Years",
+      "dcid": "WHO/BP_04_Female_18PlusYears"
+    },
+    {
       "name": "Raised Blood Pressure (Sbp\u003e=140 Or Dbp\u003e=90) (Crude Estimate), Female, Years18Plus",
       "dcid": "WHO/BP_03_Female_YEARS18PLUS"
+    },
+    {
+      "name": "Raised Blood Pressure (Sbp\u003e=140 Or Dbp\u003e=90) (Crude Estimate), Female,18 Plus Years",
+      "dcid": "WHO/BP_03_Female_18PlusYears"
     },
     {
       "name": "Rate of out-of-school adolescents of lower secondary school age, female (%)",
@@ -3089,6 +3913,82 @@
       "dcid": "WHO/LIFE_0000000034_Female_AGELT1"
     },
     {
+      "name": "Tx - Person-Years Lived Above Age X, Female, Years0",
+      "dcid": "WHO/LIFE_0000000034_Female_Years0"
+    },
+    {
+      "name": "Tx - Person-Years Lived Above Age X, Female,1 To4 Years",
+      "dcid": "WHO/LIFE_0000000034_Female_1To4Years"
+    },
+    {
+      "name": "Tx - Person-Years Lived Above Age X, Female,10 To14 Years",
+      "dcid": "WHO/LIFE_0000000034_Female_10To14Years"
+    },
+    {
+      "name": "Tx - Person-Years Lived Above Age X, Female,15 To19 Years",
+      "dcid": "WHO/LIFE_0000000034_Female_15To19Years"
+    },
+    {
+      "name": "Tx - Person-Years Lived Above Age X, Female,20 To24 Years",
+      "dcid": "WHO/LIFE_0000000034_Female_20To24Years"
+    },
+    {
+      "name": "Tx - Person-Years Lived Above Age X, Female,25 To29 Years",
+      "dcid": "WHO/LIFE_0000000034_Female_25To29Years"
+    },
+    {
+      "name": "Tx - Person-Years Lived Above Age X, Female,30 To34 Years",
+      "dcid": "WHO/LIFE_0000000034_Female_30To34Years"
+    },
+    {
+      "name": "Tx - Person-Years Lived Above Age X, Female,35 To39 Years",
+      "dcid": "WHO/LIFE_0000000034_Female_35To39Years"
+    },
+    {
+      "name": "Tx - Person-Years Lived Above Age X, Female,40 To44 Years",
+      "dcid": "WHO/LIFE_0000000034_Female_40To44Years"
+    },
+    {
+      "name": "Tx - Person-Years Lived Above Age X, Female,45 To49 Years",
+      "dcid": "WHO/LIFE_0000000034_Female_45To49Years"
+    },
+    {
+      "name": "Tx - Person-Years Lived Above Age X, Female,5 To9 Years",
+      "dcid": "WHO/LIFE_0000000034_Female_5To9Years"
+    },
+    {
+      "name": "Tx - Person-Years Lived Above Age X, Female,50 To54 Years",
+      "dcid": "WHO/LIFE_0000000034_Female_50To54Years"
+    },
+    {
+      "name": "Tx - Person-Years Lived Above Age X, Female,55 To59 Years",
+      "dcid": "WHO/LIFE_0000000034_Female_55To59Years"
+    },
+    {
+      "name": "Tx - Person-Years Lived Above Age X, Female,60 To64 Years",
+      "dcid": "WHO/LIFE_0000000034_Female_60To64Years"
+    },
+    {
+      "name": "Tx - Person-Years Lived Above Age X, Female,65 To69 Years",
+      "dcid": "WHO/LIFE_0000000034_Female_65To69Years"
+    },
+    {
+      "name": "Tx - Person-Years Lived Above Age X, Female,70 To74 Years",
+      "dcid": "WHO/LIFE_0000000034_Female_70To74Years"
+    },
+    {
+      "name": "Tx - Person-Years Lived Above Age X, Female,75 To79 Years",
+      "dcid": "WHO/LIFE_0000000034_Female_75To79Years"
+    },
+    {
+      "name": "Tx - Person-Years Lived Above Age X, Female,80 To84 Years",
+      "dcid": "WHO/LIFE_0000000034_Female_80To84Years"
+    },
+    {
+      "name": "Tx - Person-Years Lived Above Age X, Female,85 Plus Years",
+      "dcid": "WHO/LIFE_0000000034_Female_85PlusYears"
+    },
+    {
       "name": "Under-age enrolment ratio in primary education, female (%)",
       "dcid": "worldBank/UIS_UAPP_1_F"
     },
@@ -3099,906 +3999,6 @@
     {
       "name": "Used a mobile phone or the internet to buy something online, female (% age 15+)",
       "dcid": "worldBank/fin14b_t_d_1"
-    },
-    {
-      "name": "Used a mobile phone or the internet to pay bills, female (% age 15+)",
-      "dcid": "worldBank/fin14a_t_d_1"
-    },
-    {
-      "name": "Youth illiterate population, 15-24 years, female (number)",
-      "dcid": "worldBank/UIS_LP_AG15T24_F"
-    },
-    {
-      "name": "% of females ages 15-49 having comprehensive correct knowledge about HIV (2 prevent ways and reject 3 misconceptions)",
-      "dcid": "worldBank/SH_HIV_KNOW_FE_ZS"
-    },
-    {
-      "name": "Account ownership at a financial institution or with a mobile-money-service provider, female (% of population ages 15+)",
-      "dcid": "worldBank/FX_OWN_TOTL_FE_ZS"
-    },
-    {
-      "name": "Adult literacy rate, population 15+ years, female (%)",
-      "dcid": "worldBank/SE_ADT_LITR_FE_ZS"
-    },
-    {
-      "name": "Age population, age 00, female, interpolated",
-      "dcid": "worldBank/SP_POP_AG00_FE_IN"
-    },
-    {
-      "name": "Age population, age 01, female, interpolated",
-      "dcid": "worldBank/SP_POP_AG01_FE_IN"
-    },
-    {
-      "name": "Age population, age 02, female, interpolated",
-      "dcid": "worldBank/SP_POP_AG02_FE_IN"
-    },
-    {
-      "name": "Age population, age 03, female, interpolated",
-      "dcid": "worldBank/SP_POP_AG03_FE_IN"
-    },
-    {
-      "name": "Age population, age 04, female, interpolated",
-      "dcid": "worldBank/SP_POP_AG04_FE_IN"
-    },
-    {
-      "name": "Age population, age 05, female, interpolated",
-      "dcid": "worldBank/SP_POP_AG05_FE_IN"
-    },
-    {
-      "name": "Alcohol, Total Per Capita (15+) Consumption (In Litres Of Pure Alcohol) With 95%Ci (SA_0000001822_ARCHIVED), Female,2019-12",
-      "dcid": "WHO/SA_0000001822_ARCHIVED_Female_2019-12"
-    },
-    {
-      "name": "Antiretroviral therapy coverage (% of adult females living with HIV)",
-      "dcid": "worldBank/SH_HIV_ARTC_FE_ZS"
-    },
-    {
-      "name": "Barro-Lee: Average years of primary schooling, age 15+, female",
-      "dcid": "worldBank/BAR_PRM_SCHL_15UP_FE"
-    },
-    {
-      "name": "Barro-Lee: Average years of primary schooling, age 15-19, female",
-      "dcid": "worldBank/BAR_PRM_SCHL_1519_FE"
-    },
-    {
-      "name": "Barro-Lee: Average years of primary schooling, age 20-24, female",
-      "dcid": "worldBank/BAR_PRM_SCHL_2024_FE"
-    },
-    {
-      "name": "Barro-Lee: Average years of primary schooling, age 25+, female",
-      "dcid": "worldBank/BAR_PRM_SCHL_25UP_FE"
-    },
-    {
-      "name": "Barro-Lee: Average years of primary schooling, age 25-29, female",
-      "dcid": "worldBank/BAR_PRM_SCHL_2529_FE"
-    },
-    {
-      "name": "Barro-Lee: Average years of primary schooling, age 30-34, female",
-      "dcid": "worldBank/BAR_PRM_SCHL_3034_FE"
-    },
-    {
-      "name": "Barro-Lee: Average years of primary schooling, age 35-39, female",
-      "dcid": "worldBank/BAR_PRM_SCHL_3539_FE"
-    },
-    {
-      "name": "Barro-Lee: Average years of primary schooling, age 40-44, female",
-      "dcid": "worldBank/BAR_PRM_SCHL_4044_FE"
-    },
-    {
-      "name": "Barro-Lee: Average years of primary schooling, age 45-49, female",
-      "dcid": "worldBank/BAR_PRM_SCHL_4549_FE"
-    },
-    {
-      "name": "Barro-Lee: Average years of primary schooling, age 50-54, female",
-      "dcid": "worldBank/BAR_PRM_SCHL_5054_FE"
-    },
-    {
-      "name": "Barro-Lee: Average years of primary schooling, age 55-59, female",
-      "dcid": "worldBank/BAR_PRM_SCHL_5559_FE"
-    },
-    {
-      "name": "Barro-Lee: Average years of primary schooling, age 60-64, female",
-      "dcid": "worldBank/BAR_PRM_SCHL_6064_FE"
-    },
-    {
-      "name": "Barro-Lee: Average years of primary schooling, age 65-69, female",
-      "dcid": "worldBank/BAR_PRM_SCHL_6569_FE"
-    },
-    {
-      "name": "Barro-Lee: Average years of primary schooling, age 70-74, female",
-      "dcid": "worldBank/BAR_PRM_SCHL_7074_FE"
-    },
-    {
-      "name": "Barro-Lee: Average years of primary schooling, age 75+, female",
-      "dcid": "worldBank/BAR_PRM_SCHL_75UP_FE"
-    },
-    {
-      "name": "Barro-Lee: Average years of secondary schooling, age 15+, female",
-      "dcid": "worldBank/BAR_SEC_SCHL_15UP_FE"
-    },
-    {
-      "name": "Barro-Lee: Average years of secondary schooling, age 15-19, female",
-      "dcid": "worldBank/BAR_SEC_SCHL_1519_FE"
-    },
-    {
-      "name": "Barro-Lee: Average years of secondary schooling, age 20-24, female",
-      "dcid": "worldBank/BAR_SEC_SCHL_2024_FE"
-    },
-    {
-      "name": "Barro-Lee: Average years of secondary schooling, age 25+, female",
-      "dcid": "worldBank/BAR_SEC_SCHL_25UP_FE"
-    },
-    {
-      "name": "Barro-Lee: Average years of secondary schooling, age 25-29, female",
-      "dcid": "worldBank/BAR_SEC_SCHL_2529_FE"
-    },
-    {
-      "name": "Barro-Lee: Average years of secondary schooling, age 30-34, female",
-      "dcid": "worldBank/BAR_SEC_SCHL_3034_FE"
-    },
-    {
-      "name": "Barro-Lee: Average years of secondary schooling, age 35-39, female",
-      "dcid": "worldBank/BAR_SEC_SCHL_3539_FE"
-    },
-    {
-      "name": "Barro-Lee: Average years of secondary schooling, age 40-44, female",
-      "dcid": "worldBank/BAR_SEC_SCHL_4044_FE"
-    },
-    {
-      "name": "Barro-Lee: Average years of secondary schooling, age 45-49, female",
-      "dcid": "worldBank/BAR_SEC_SCHL_4549_FE"
-    },
-    {
-      "name": "Barro-Lee: Average years of secondary schooling, age 50-54, female",
-      "dcid": "worldBank/BAR_SEC_SCHL_5054_FE"
-    },
-    {
-      "name": "Barro-Lee: Average years of secondary schooling, age 55-59, female",
-      "dcid": "worldBank/BAR_SEC_SCHL_5559_FE"
-    },
-    {
-      "name": "Barro-Lee: Average years of secondary schooling, age 60-64, female",
-      "dcid": "worldBank/BAR_SEC_SCHL_6064_FE"
-    },
-    {
-      "name": "Barro-Lee: Average years of secondary schooling, age 65-69, female",
-      "dcid": "worldBank/BAR_SEC_SCHL_6569_FE"
-    },
-    {
-      "name": "Barro-Lee: Average years of secondary schooling, age 70-74, female",
-      "dcid": "worldBank/BAR_SEC_SCHL_7074_FE"
-    },
-    {
-      "name": "Barro-Lee: Average years of secondary schooling, age 75+, female",
-      "dcid": "worldBank/BAR_SEC_SCHL_75UP_FE"
-    },
-    {
-      "name": "Barro-Lee: Average years of tertiary schooling, age 15+, female",
-      "dcid": "worldBank/BAR_TER_SCHL_15UP_FE"
-    },
-    {
-      "name": "Barro-Lee: Average years of tertiary schooling, age 15-19, female",
-      "dcid": "worldBank/BAR_TER_SCHL_1519_FE"
-    },
-    {
-      "name": "Barro-Lee: Average years of tertiary schooling, age 20-24, female",
-      "dcid": "worldBank/BAR_TER_SCHL_2024_FE"
-    },
-    {
-      "name": "Barro-Lee: Average years of tertiary schooling, age 25+, female",
-      "dcid": "worldBank/BAR_TER_SCHL_25UP_FE"
-    },
-    {
-      "name": "Barro-Lee: Average years of tertiary schooling, age 25-29, female",
-      "dcid": "worldBank/BAR_TER_SCHL_2529_FE"
-    },
-    {
-      "name": "Barro-Lee: Average years of tertiary schooling, age 30-34, female",
-      "dcid": "worldBank/BAR_TER_SCHL_3034_FE"
-    },
-    {
-      "name": "Barro-Lee: Average years of tertiary schooling, age 35-39, female",
-      "dcid": "worldBank/BAR_TER_SCHL_3539_FE"
-    },
-    {
-      "name": "Barro-Lee: Average years of tertiary schooling, age 40-44, female",
-      "dcid": "worldBank/BAR_TER_SCHL_4044_FE"
-    },
-    {
-      "name": "Barro-Lee: Average years of tertiary schooling, age 45-49, female",
-      "dcid": "worldBank/BAR_TER_SCHL_4549_FE"
-    },
-    {
-      "name": "Barro-Lee: Average years of tertiary schooling, age 50-54, female",
-      "dcid": "worldBank/BAR_TER_SCHL_5054_FE"
-    },
-    {
-      "name": "Barro-Lee: Average years of tertiary schooling, age 55-59, female",
-      "dcid": "worldBank/BAR_TER_SCHL_5559_FE"
-    },
-    {
-      "name": "Barro-Lee: Average years of tertiary schooling, age 60-64, female",
-      "dcid": "worldBank/BAR_TER_SCHL_6064_FE"
-    },
-    {
-      "name": "Barro-Lee: Average years of tertiary schooling, age 65-69, female",
-      "dcid": "worldBank/BAR_TER_SCHL_6569_FE"
-    },
-    {
-      "name": "Barro-Lee: Average years of tertiary schooling, age 70-74, female",
-      "dcid": "worldBank/BAR_TER_SCHL_7074_FE"
-    },
-    {
-      "name": "Barro-Lee: Average years of tertiary schooling, age 75+, female",
-      "dcid": "worldBank/BAR_TER_SCHL_75UP_FE"
-    },
-    {
-      "name": "Barro-Lee: Percentage of female population age 15+ with no education",
-      "dcid": "worldBank/BAR_NOED_15UP_FE_ZS"
-    },
-    {
-      "name": "Barro-Lee: Percentage of female population age 15-19 with no education",
-      "dcid": "worldBank/BAR_NOED_1519_FE_ZS"
-    },
-    {
-      "name": "Barro-Lee: Percentage of female population age 20-24 with no education",
-      "dcid": "worldBank/BAR_NOED_2024_FE_ZS"
-    },
-    {
-      "name": "Barro-Lee: Percentage of female population age 25+ with no education",
-      "dcid": "worldBank/BAR_NOED_25UP_FE_ZS"
-    },
-    {
-      "name": "Barro-Lee: Percentage of female population age 25-29 with no education",
-      "dcid": "worldBank/BAR_NOED_2529_FE_ZS"
-    },
-    {
-      "name": "Barro-Lee: Percentage of female population age 30-34 with no education",
-      "dcid": "worldBank/BAR_NOED_3034_FE_ZS"
-    },
-    {
-      "name": "Barro-Lee: Percentage of female population age 35-39 with no education",
-      "dcid": "worldBank/BAR_NOED_3539_FE_ZS"
-    },
-    {
-      "name": "Barro-Lee: Percentage of female population age 40-44 with no education",
-      "dcid": "worldBank/BAR_NOED_4044_FE_ZS"
-    },
-    {
-      "name": "Barro-Lee: Percentage of female population age 45-49 with no education",
-      "dcid": "worldBank/BAR_NOED_4549_FE_ZS"
-    },
-    {
-      "name": "Barro-Lee: Percentage of female population age 50-54 with no education",
-      "dcid": "worldBank/BAR_NOED_5054_FE_ZS"
-    },
-    {
-      "name": "Barro-Lee: Percentage of female population age 55-59 with no education",
-      "dcid": "worldBank/BAR_NOED_5559_FE_ZS"
-    },
-    {
-      "name": "Barro-Lee: Percentage of female population age 60-64 with no education",
-      "dcid": "worldBank/BAR_NOED_6064_FE_ZS"
-    },
-    {
-      "name": "Barro-Lee: Percentage of female population age 65-69 with no education",
-      "dcid": "worldBank/BAR_NOED_6569_FE_ZS"
-    },
-    {
-      "name": "Barro-Lee: Percentage of female population age 70-74 with no education",
-      "dcid": "worldBank/BAR_NOED_7074_FE_ZS"
-    },
-    {
-      "name": "Barro-Lee: Percentage of female population age 75+ with no education",
-      "dcid": "worldBank/BAR_NOED_75UP_FE_ZS"
-    },
-    {
-      "name": "Borrowed from a formal financial institution, female (% age 15+)",
-      "dcid": "worldBank/fin22a_c_t_d_1"
-    },
-    {
-      "name": "Borrowed to start, operate, or expand a farm or business, female (% age 15+)",
-      "dcid": "worldBank/fin21_t_d_2017_1"
-    },
-    {
-      "name": "Cause of death, by communicable diseases and maternal, prenatal and nutrition conditions, female (% of female population)",
-      "dcid": "worldBank/SH_DTH_COMM_FE_ZS"
-    },
-    {
-      "name": "Cause of death, by injury, female (% of female population)",
-      "dcid": "worldBank/SH_DTH_INJR_FE_ZS"
-    },
-    {
-      "name": "Cause of death, by non-communicable diseases, female (% of female population)",
-      "dcid": "worldBank/SH_DTH_NCOM_FE_ZS"
-    },
-    {
-      "name": "Children in employment, female (% of female children ages 7-14)",
-      "dcid": "worldBank/SL_TLF_0714_FE_ZS"
-    },
-    {
-      "name": "Completeness of birth registration, female (%)",
-      "dcid": "worldBank/SP_REG_BRTH_FE_ZS"
-    },
-    {
-      "name": "Condom use at last high-risk sex, adult female (% ages 15-49)",
-      "dcid": "worldBank/SH_CON_AIDS_FE_ZS"
-    },
-    {
-      "name": "Cumulative drop-out rate to the last grade of lower secondary general education, female (%)",
-      "dcid": "worldBank/UIS_DR_2_GPV_F"
-    },
-    {
-      "name": "Drop-out rate from Grade 1 of primary education, female (%)",
-      "dcid": "worldBank/UIS_DR_1_G1_F"
-    },
-    {
-      "name": "Drop-out rate from Grade 2 of primary education, female (%)",
-      "dcid": "worldBank/UIS_DR_1_G2_F"
-    },
-    {
-      "name": "Drop-out rate from Grade 3 of primary education, female (%)",
-      "dcid": "worldBank/UIS_DR_1_G3_F"
-    },
-    {
-      "name": "Drop-out rate from Grade 4 of primary education, female (%)",
-      "dcid": "worldBank/UIS_DR_1_G4_F"
-    },
-    {
-      "name": "Drop-out rate from Grade 5 of primary education, female (%)",
-      "dcid": "worldBank/UIS_DR_1_G5_F"
-    },
-    {
-      "name": "Educational attainment, at least completed primary, population 25+ years, female (%) (cumulative)",
-      "dcid": "worldBank/SE_PRM_CUAT_FE_ZS"
-    },
-    {
-      "name": "Effective transition rate from primary to lower secondary general education, female (%)",
-      "dcid": "worldBank/SE_SEC_PROG_FE_ZS"
-    },
-    {
-      "name": "Employers, female (% of female employment) (modeled ILO estimate)",
-      "dcid": "worldBank/SL_EMP_MPYR_FE_ZS"
-    },
-    {
-      "name": "Employment in agriculture, female (% of female employment) (modeled ILO estimate)",
-      "dcid": "worldBank/SL_AGR_EMPL_FE_ZS"
-    },
-    {
-      "name": "Employment in industry, female (% of female employment) (modeled ILO estimate)",
-      "dcid": "worldBank/SL_IND_EMPL_FE_ZS"
-    },
-    {
-      "name": "Employment in services, female (% of female employment) (modeled ILO estimate)",
-      "dcid": "worldBank/SL_SRV_EMPL_FE_ZS"
-    },
-    {
-      "name": "Enrolment in Grade 1 of primary education, female (number)",
-      "dcid": "worldBank/UIS_E_1_G1_F"
-    },
-    {
-      "name": "Enrolment in Grade 2 of primary education, female (number)",
-      "dcid": "worldBank/UIS_E_1_G2_F"
-    },
-    {
-      "name": "Enrolment in Grade 3 of primary education, female (number)",
-      "dcid": "worldBank/UIS_E_1_G3_F"
-    },
-    {
-      "name": "Enrolment in Grade 4 of primary education, female (number)",
-      "dcid": "worldBank/UIS_E_1_G4_F"
-    },
-    {
-      "name": "Enrolment in Grade 5 of primary education, female (number)",
-      "dcid": "worldBank/UIS_E_1_G5_F"
-    },
-    {
-      "name": "Enrolment in Grade 6 of primary education, female (number)",
-      "dcid": "worldBank/UIS_E_1_G6_F"
-    },
-    {
-      "name": "Enrolment in Grade 7 of primary education, female (number)",
-      "dcid": "worldBank/UIS_E_1_G7_F"
-    },
-    {
-      "name": "Enrolment in early childhood education, private institutions, female (number)",
-      "dcid": "worldBank/UIS_E_0_PR_F"
-    },
-    {
-      "name": "Enrolment in lower secondary education, private institutions, female (number)",
-      "dcid": "worldBank/UIS_E_2_PR_F"
-    },
-    {
-      "name": "Enrolment in lower secondary general, female (number)",
-      "dcid": "worldBank/UIS_E_2_GPV_F"
-    },
-    {
-      "name": "Enrolment in lower secondary vocational, female (number)",
-      "dcid": "worldBank/UIS_E_2_V_F"
-    },
-    {
-      "name": "Enrolment in pre-primary education, private institutions, female (number)",
-      "dcid": "worldBank/UIS_E_02_PR_F"
-    },
-    {
-      "name": "Enrolment in pre-primary education, public institutions, female (number)",
-      "dcid": "worldBank/UIS_E_02_PU_F"
-    },
-    {
-      "name": "Enrolment in primary education, private institutions, female (number)",
-      "dcid": "worldBank/UIS_E_1_PR_F"
-    },
-    {
-      "name": "Enrolment in secondary education, private institutions, female (number)",
-      "dcid": "worldBank/UIS_E_23_PR_F"
-    },
-    {
-      "name": "Enrolment in tertiary education per 100,000 inhabitants, female",
-      "dcid": "worldBank/UIS_TE_100000_56_F"
-    },
-    {
-      "name": "Enrolment in tertiary education, ISCED 5 programmes, female (number)",
-      "dcid": "worldBank/UIS_E_5_B_F"
-    },
-    {
-      "name": "Enrolment in upper secondary education, private institutions, female (number)",
-      "dcid": "worldBank/UIS_E_3_PR_F"
-    },
-    {
-      "name": "Enrolment in upper secondary general, female (number)",
-      "dcid": "worldBank/UIS_E_3_GPV_F"
-    },
-    {
-      "name": "Enrolment in upper secondary vocational, female (number)",
-      "dcid": "worldBank/UIS_E_3_V_F"
-    },
-    {
-      "name": "Estimate Of Daily Tobacco Smoking Prevalence (%), Female",
-      "dcid": "WHO/M_Est_smk_daily_Female"
-    },
-    {
-      "name": "Female migrants (% of international migrant stock)",
-      "dcid": "worldBank/SG_POP_MIGR_FE_ZS"
-    },
-    {
-      "name": "Female share of employment in senior and middle management (%)",
-      "dcid": "worldBank/SL_EMP_SMGT_FE_ZS"
-    },
-    {
-      "name": "Female to male wage ratio in the private sector (using mean)",
-      "dcid": "worldBank/BI_WAG_PRVS_FM_SM"
-    },
-    {
-      "name": "Female to male wage ratio in the private sector (using median)",
-      "dcid": "worldBank/BI_WAG_PRVS_FM_MD"
-    },
-    {
-      "name": "Female to male wage ratio in the public sector (using mean)",
-      "dcid": "worldBank/BI_WAG_PUBS_FM_SM"
-    },
-    {
-      "name": "Female to male wage ratio in the public sector (using median)",
-      "dcid": "worldBank/BI_WAG_PUBS_FM_MD"
-    },
-    {
-      "name": "Females, as a share of private paid employees",
-      "dcid": "worldBank/BI_PWK_PRVS_FE_ZS"
-    },
-    {
-      "name": "Females, as a share of public paid employees",
-      "dcid": "worldBank/BI_PWK_PUBS_FE_ZS"
-    },
-    {
-      "name": "Graduates from ISCED 5 programmes in tertiary education, female (number)",
-      "dcid": "worldBank/UIS_G_5_B_F"
-    },
-    {
-      "name": "Gross graduation ratio from first degree programmes (ISCED 6 and 7) in tertiary education, female (%)",
-      "dcid": "worldBank/SE_TER_CMPL_FE_ZS"
-    },
-    {
-      "name": "Gross graduation ratio from primary education, female (%)",
-      "dcid": "worldBank/SE_PRM_CMPL_FE_ZS"
-    },
-    {
-      "name": "Gross intake ratio to Grade 1 of lower secondary general education, female (%)",
-      "dcid": "worldBank/UIS_AIR_2_GPV_F"
-    },
-    {
-      "name": "Has an inactive account, female (% age 15+)",
-      "dcid": "worldBank/fin9N_10N_t_d_1"
-    },
-    {
-      "name": "Human capital index (HCI), female, lower bound (scale 0-1)",
-      "dcid": "worldBank/HD_HCI_OVRL_LB_FE"
-    },
-    {
-      "name": "Human capital index (HCI), female, upper bound (scale 0-1)",
-      "dcid": "worldBank/HD_HCI_OVRL_UB_FE"
-    },
-    {
-      "name": "Incidence of HIV, ages 15-49, female (per 1,000 uninfected female population ages 15-49)",
-      "dcid": "worldBank/SH_HIV_INCD_FE_P3"
-    },
-    {
-      "name": "Informal employment, female (% of total non-agricultural employment)",
-      "dcid": "worldBank/SL_ISV_IFRM_FE_ZS"
-    },
-    {
-      "name": "Intentional homicides, female (per 100,000 female)",
-      "dcid": "worldBank/VC_IHR_PSRC_FE_P5"
-    },
-    {
-      "name": "Labor force participation rate, female (% of female population ages 15+) (modeled ILO estimate)",
-      "dcid": "worldBank/SL_TLF_CACT_FE_ZS"
-    },
-    {
-      "name": "Labor force participation rate, female (% of female population ages 15-64) (modeled ILO estimate)",
-      "dcid": "worldBank/SL_TLF_ACTI_FE_ZS"
-    },
-    {
-      "name": "Labor force with advanced education, female (% of female working-age population with advanced education)",
-      "dcid": "worldBank/SL_TLF_ADVN_FE_ZS"
-    },
-    {
-      "name": "Labor force with basic education, female (% of female working-age population with basic education)",
-      "dcid": "worldBank/SL_TLF_BASC_FE_ZS"
-    },
-    {
-      "name": "Labor force with intermediate education, female (% of female working-age population with intermediate education)",
-      "dcid": "worldBank/SL_TLF_INTM_FE_ZS"
-    },
-    {
-      "name": "Labor force, female",
-      "dcid": "worldBank/SL_TLF_TOTL_FE_IN"
-    },
-    {
-      "name": "Labor force, female (% of total labor force)",
-      "dcid": "worldBank/SL_TLF_TOTL_FE_ZS"
-    },
-    {
-      "name": "Life expectancy at age 60, female",
-      "dcid": "worldBank/SP_DYN_LE60_FE_IN"
-    },
-    {
-      "name": "Life expectancy at birth, female (years)",
-      "dcid": "worldBank/SP_DYN_LE00_FE_IN"
-    },
-    {
-      "name": "Made a digital payment, female (% age 15+)",
-      "dcid": "worldBank/g20_made_t_d_1"
-    },
-    {
-      "name": "Mean Bmi (Kg/M\u0026#Xb2;) (Crude Estimate), Female, Age20Plus",
-      "dcid": "WHO/NCD_BMI_MEANC_Female_AGE20PLUS"
-    },
-    {
-      "name": "Mean Bmi (Kg/Square Metre) (Age-Standardized Estimate), Female, Years18Plus",
-      "dcid": "WHO/NCD_BMI_MEAN_Female_YEARS18PLUS"
-    },
-    {
-      "name": "Mean Fasting Blood Glucose (Mmol/L) (Crude Estimate), Female, Age25Plus",
-      "dcid": "WHO/NCD_GLUC_02_Female_AGE25PLUS"
-    },
-    {
-      "name": "Mean Non-Hdl Cholesterol, Age-Standardized, Female",
-      "dcid": "WHO/NCD_CHOL_MEANNONHDL_A_Female"
-    },
-    {
-      "name": "Mean Total Cholesterol,  Crude, Female",
-      "dcid": "WHO/NCD_CHOL_MEANTOTALCHOL_C_Female"
-    },
-    {
-      "name": "Mortality caused by road traffic injury, female (per 100,000 female population)",
-      "dcid": "worldBank/SH_STA_TRAF_FE_P5"
-    },
-    {
-      "name": "Mortality from CVD, cancer, diabetes or CRD between exact ages 30 and 70, female (%)",
-      "dcid": "worldBank/SH_DYN_NCOM_FE_ZS"
-    },
-    {
-      "name": "Mortality rate attributed to household and ambient air pollution, age-standardized, female (per 100,000 female population)",
-      "dcid": "worldBank/SH_STA_AIRP_FE_P5"
-    },
-    {
-      "name": "Mortality rate attributed to unintentional poisoning, female (per 100,000 female population)",
-      "dcid": "worldBank/SH_STA_POIS_P5_FE"
-    },
-    {
-      "name": "Mortality rate, infant, female (per 1,000 live births)",
-      "dcid": "worldBank/SP_DYN_IMRT_FE_IN"
-    },
-    {
-      "name": "Net intake rate to Grade 1 of primary education, female (%)",
-      "dcid": "worldBank/SE_PRM_NINT_FE_ZS"
-    },
-    {
-      "name": "New entrants to Grade 1 of primary education with early childhood education experience, female (number)",
-      "dcid": "worldBank/UIS_NE_1_ECD_F"
-    },
-    {
-      "name": "New entrants to Grade 1 of primary education, female (number)",
-      "dcid": "worldBank/UIS_NE_1_G1_F"
-    },
-    {
-      "name": "Number Of Non-Pregnant Women (Aged 15-49 Years) With Anaemia (Thousands), Female",
-      "dcid": "WHO/NUTRITION_ANAEMIA_NONPREGNANT_NUM_Female"
-    },
-    {
-      "name": "Number Of Pregnant Women (Aged 15-49 Years) With Anaemia (Thousands), Female",
-      "dcid": "WHO/NUTRITION_ANAEMIA_PREGNANT_NUM_Female"
-    },
-    {
-      "name": "Number Of Women Of Reproductive Age (Aged 15-49 Years) With Anaemia (Thousands), Female",
-      "dcid": "WHO/NUTRITION_ANAEMIA_REPRODUCTIVEAGE_NUM_Female"
-    },
-    {
-      "name": "Out-of-school youth of upper secondary school age, female (number)",
-      "dcid": "worldBank/UIS_OFST_3_F_CP"
-    },
-    {
-      "name": "Owns a debit or credit card, female (% age 15+)",
-      "dcid": "worldBank/fin2_7_t_d_1"
-    },
-    {
-      "name": "Part time employment, female (% of total female employment)",
-      "dcid": "worldBank/SL_TLF_PART_FE_ZS"
-    },
-    {
-      "name": "Percentage of female students in lower secondary education enrolled in general programmes, female (%)",
-      "dcid": "worldBank/UIS_GTVP_2_GPV_F"
-    },
-    {
-      "name": "Percentage of female students in lower secondary education enrolled in vocational programmes, female (%)",
-      "dcid": "worldBank/UIS_GTVP_2_V_F"
-    },
-    {
-      "name": "Percentage of female students in post-secondary non-tertiary education enrolled in general programmes, female (%)",
-      "dcid": "worldBank/UIS_GTVP_4_GPV_F"
-    },
-    {
-      "name": "Percentage of female students in post-secondary non-tertiary education enrolled in vocational programmes, female (%)",
-      "dcid": "worldBank/UIS_GTVP_4_V_F"
-    },
-    {
-      "name": "Percentage of female students in secondary education enrolled in general programmes, female (%)",
-      "dcid": "worldBank/UIS_GTVP_23_GPV_F"
-    },
-    {
-      "name": "Percentage of female students in tertiary education enrolled in Agriculture programmes, female (%)",
-      "dcid": "worldBank/UIS_FOSEP_56_F600_F"
-    },
-    {
-      "name": "Percentage of female students in tertiary education enrolled in Education programmes, female (%)",
-      "dcid": "worldBank/UIS_FOSEP_56_F140_F"
-    },
-    {
-      "name": "Percentage of female students in tertiary education enrolled in Engineering, Manufacturing and Construction programmes, female (%)",
-      "dcid": "worldBank/UIS_FOSEP_56_F500_F"
-    },
-    {
-      "name": "Percentage of female students in tertiary education enrolled in Health and Welfare programmes, female (%)",
-      "dcid": "worldBank/UIS_FOSEP_56_F700_F"
-    },
-    {
-      "name": "Percentage of female students in tertiary education enrolled in Humanities and Arts programmes, female (%)",
-      "dcid": "worldBank/UIS_FOSEP_56_F200_F"
-    },
-    {
-      "name": "Percentage of female students in tertiary education enrolled in ISCED 5",
-      "dcid": "worldBank/UIS_TEP_5_B_F"
-    },
-    {
-      "name": "Percentage of female students in tertiary education enrolled in Science programmes, female (%)",
-      "dcid": "worldBank/UIS_FOSEP_56_F400_F"
-    },
-    {
-      "name": "Percentage of female students in tertiary education enrolled in Services programmes, female (%)",
-      "dcid": "worldBank/UIS_FOSEP_56_F800_F"
-    },
-    {
-      "name": "Percentage of female students in tertiary education enrolled in Social Sciences, Business and Law programmes, female (%)",
-      "dcid": "worldBank/UIS_FOSEP_56_F300_F"
-    },
-    {
-      "name": "Percentage of female students in upper secondary education enrolled in general programmes, female (%)",
-      "dcid": "worldBank/UIS_GTVP_3_GPV_F"
-    },
-    {
-      "name": "Percentage of female students in upper secondary education enrolled in vocational programmes, female (%)",
-      "dcid": "worldBank/UIS_GTVP_3_V_F"
-    },
-    {
-      "name": "Percentage of repeaters in Grade 1 of primary education, female (%)",
-      "dcid": "worldBank/UIS_REPP_1_G1_F"
-    },
-    {
-      "name": "Percentage of repeaters in Grade 2 of primary education, female (%)",
-      "dcid": "worldBank/UIS_REPP_1_G2_F"
-    },
-    {
-      "name": "Percentage of repeaters in Grade 3 of primary education, female (%)",
-      "dcid": "worldBank/UIS_REPP_1_G3_F"
-    },
-    {
-      "name": "Percentage of repeaters in Grade 4 of primary education, female (%)",
-      "dcid": "worldBank/UIS_REPP_1_G4_F"
-    },
-    {
-      "name": "Percentage of repeaters in Grade 5 of primary education, female (%)",
-      "dcid": "worldBank/UIS_REPP_1_G5_F"
-    },
-    {
-      "name": "Percentage of repeaters in Grade 6 of primary education, female (%)",
-      "dcid": "worldBank/UIS_REPP_1_G6_F"
-    },
-    {
-      "name": "Percentage of repeaters in lower secondary general education, all grades, female (%)",
-      "dcid": "worldBank/UIS_REPP_2_GPV_F"
-    },
-    {
-      "name": "Percentage of students in primary education who are female (%)",
-      "dcid": "worldBank/SE_PRM_ENRL_FE_ZS"
-    },
-    {
-      "name": "Percentage of students in secondary education who are female (%)",
-      "dcid": "worldBank/SE_SEC_ENRL_FE_ZS"
-    },
-    {
-      "name": "Percentage of teachers in primary education who are female (%)",
-      "dcid": "worldBank/SE_PRM_TCHR_FE_ZS"
-    },
-    {
-      "name": "Percentage of teachers in secondary education who are female (%)",
-      "dcid": "worldBank/SE_SEC_TCHR_FE_ZS"
-    },
-    {
-      "name": "Percentage of teachers in tertiary education who are female (%)",
-      "dcid": "worldBank/SE_TER_TCHR_FE_ZS"
-    },
-    {
-      "name": "Persistence To Last Grade Of Primary (% Of Cohort), Female",
-      "dcid": "WHO/SE_PRM_PRSL_ZS_Female"
-    },
-    {
-      "name": "Population ages 0-14, female",
-      "dcid": "worldBank/SP_POP_0014_FE_IN"
-    },
-    {
-      "name": "Population ages 0-14, female (% of female population)",
-      "dcid": "worldBank/SP_POP_0014_FE_ZS"
-    },
-    {
-      "name": "Population ages 10-14, female (% of female population)",
-      "dcid": "worldBank/SP_POP_1014_FE_5Y"
-    },
-    {
-      "name": "Population ages 15-19, female (% of female population)",
-      "dcid": "worldBank/SP_POP_1519_FE_5Y"
-    },
-    {
-      "name": "Population ages 15-64, female",
-      "dcid": "worldBank/SP_POP_1564_FE_IN"
-    },
-    {
-      "name": "Population ages 20-24, female (% of female population)",
-      "dcid": "worldBank/SP_POP_2024_FE_5Y"
-    },
-    {
-      "name": "Population ages 25-29, female (% of female population)",
-      "dcid": "worldBank/SP_POP_2529_FE_5Y"
-    },
-    {
-      "name": "Population ages 30-34, female (% of female population)",
-      "dcid": "worldBank/SP_POP_3034_FE_5Y"
-    },
-    {
-      "name": "Population ages 35-39, female (% of female population)",
-      "dcid": "worldBank/SP_POP_3539_FE_5Y"
-    },
-    {
-      "name": "Population ages 40-44, female (% of female population)",
-      "dcid": "worldBank/SP_POP_4044_FE_5Y"
-    },
-    {
-      "name": "Population ages 45-49, female (% of female population)",
-      "dcid": "worldBank/SP_POP_4549_FE_5Y"
-    },
-    {
-      "name": "Population ages 50-54, female (% of female population)",
-      "dcid": "worldBank/SP_POP_5054_FE_5Y"
-    },
-    {
-      "name": "Population ages 55-59, female (% of female population)",
-      "dcid": "worldBank/SP_POP_5559_FE_5Y"
-    },
-    {
-      "name": "Population ages 60-64, female (% of female population)",
-      "dcid": "worldBank/SP_POP_6064_FE_5Y"
-    },
-    {
-      "name": "Population ages 65 and above, female",
-      "dcid": "worldBank/SP_POP_65UP_FE_IN"
-    },
-    {
-      "name": "Population ages 65 and above, female (% of female population)",
-      "dcid": "worldBank/SP_POP_65UP_FE_ZS"
-    },
-    {
-      "name": "Population of the official entrance age to primary education, female (number)",
-      "dcid": "worldBank/UIS_SAP_1_G1_F"
-    },
-    {
-      "name": "Population, female",
-      "dcid": "worldBank/SP_POP_TOTL_FE_IN"
-    },
-    {
-      "name": "Population, female (% of total)",
-      "dcid": "worldBank/SP_POP_TOTL_FE_ZS"
-    },
-    {
-      "name": "Prevalence Of Anaemia In Pregnant Women (Aged 15-49) (%), Female",
-      "dcid": "WHO/NUTRITION_ANAEMIA_PREGNANT_PREV_Female"
-    },
-    {
-      "name": "Prevalence Of Anaemia In Women Of Reproductive Age (Aged 15-49) (%), Female",
-      "dcid": "WHO/NUTRITION_ANAEMIA_REPRODUCTIVEAGE_PREV_Female"
-    },
-    {
-      "name": "Prevalence Of Current Cigarette Smoking Among Adolescents (%), Female",
-      "dcid": "WHO/Yth_curr_cig_smoking_Female"
-    },
-    {
-      "name": "Prevalence Of Current Cigarette Smoking Among Adults (%), Female",
-      "dcid": "WHO/Adult_curr_cig_smoking_Female"
-    },
-    {
-      "name": "Prevalence Of Current Tobacco Smoking Among Adolescents (%), Female",
-      "dcid": "WHO/Yth_curr_tob_smoking_Female"
-    },
-    {
-      "name": "Prevalence Of Current Tobacco Smoking Among Adults (%), Female",
-      "dcid": "WHO/Adult_curr_tob_smoking_Female"
-    },
-    {
-      "name": "Prevalence Of Current Tobacco Use Among Adolescents (%), Female",
-      "dcid": "WHO/Yth_curr_tob_use_Female"
-    },
-    {
-      "name": "Prevalence Of Current Tobacco Use Among Adults (%), Female",
-      "dcid": "WHO/Adult_curr_tob_use_Female"
-    },
-    {
-      "name": "Prevalence Of Daily Cigarette Smoking Among Adolescents (%), Female",
-      "dcid": "WHO/Yth_daily_cig_smoking_Female"
-    },
-    {
-      "name": "Prevalence Of Daily Cigarette Smoking Among Adults (%), Female",
-      "dcid": "WHO/Adult_daily_cig_smoking_Female"
-    },
-    {
-      "name": "Prevalence Of Daily Tobacco Smoking Among Adolescents (%), Female",
-      "dcid": "WHO/Yth_daily_tob_smoking_Female"
-    },
-    {
-      "name": "Prevalence Of Daily Tobacco Smoking Among Adults (%), Female",
-      "dcid": "WHO/Adult_daily_tob_smoking_Female"
-    },
-    {
-      "name": "Prevalence Of Daily Tobacco Use Among Adolescents (%), Female",
-      "dcid": "WHO/Yth_daily_tob_use_Female"
-    },
-    {
-      "name": "Prevalence Of Daily Tobacco Use Among Adults (%), Female",
-      "dcid": "WHO/Adult_daily_tob_use_Female"
-    },
-    {
-      "name": "Prevalence of HIV, female (% ages 15-24)",
-      "dcid": "worldBank/SH_HIV_1524_FE_ZS"
-    },
-    {
-      "name": "Prevalence of obesity, female (% of female population ages 18+)",
-      "dcid": "worldBank/SH_STA_OB18_FE_ZS"
     }
   ],
   "statVarGroups": [
@@ -4381,6 +4381,272 @@
         {
           "name": "Count of pediatric mortality, Female Influenza incidents",
           "dcid": "Count_MedicalConditionIncident_Female_ConditionInfluenza_PediatricMortality"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age_Gender-Female",
+      "name": "Person With Age, Gender = Female",
+      "statVars": [
+        {
+          "name": "Life Expectancy: 1 Years or Less, Female",
+          "dcid": "LifeExpectancy_Person_Upto1Years_Female"
+        },
+        {
+          "name": "Life Expectancy: Years 101, Female",
+          "dcid": "LifeExpectancy_Person_101Years_Female"
+        },
+        {
+          "name": "Life Expectancy: Years 102, Female",
+          "dcid": "LifeExpectancy_Person_102Years_Female"
+        },
+        {
+          "name": "Life Expectancy: Years 103, Female",
+          "dcid": "LifeExpectancy_Person_103Years_Female"
+        },
+        {
+          "name": "Life Expectancy: Years 104, Female",
+          "dcid": "LifeExpectancy_Person_104Years_Female"
+        },
+        {
+          "name": "Life Expectancy: Years 105, Female",
+          "dcid": "LifeExpectancy_Person_105Years_Female"
+        },
+        {
+          "name": "Life Expectancy: Years 106, Female",
+          "dcid": "LifeExpectancy_Person_106Years_Female"
+        },
+        {
+          "name": "Life Expectancy: Years 107, Female",
+          "dcid": "LifeExpectancy_Person_107Years_Female"
+        },
+        {
+          "name": "Life Expectancy: Years 108, Female",
+          "dcid": "LifeExpectancy_Person_108Years_Female"
+        },
+        {
+          "name": "Life Expectancy: Years 109, Female",
+          "dcid": "LifeExpectancy_Person_109Years_Female"
+        },
+        {
+          "name": "Population: 0 - 14 Years, Female",
+          "dcid": "Count_Person_0To14Years_Female"
+        },
+        {
+          "name": "Population: 10 - 15 Years, Female",
+          "dcid": "Count_Person_10To15Years_Female"
+        },
+        {
+          "name": "Population: 10 - 16 Years, Female",
+          "dcid": "Count_Person_10To16Years_Female"
+        },
+        {
+          "name": "Population: 10 - 17 Years, Female",
+          "dcid": "Count_Person_10To17Years_Female"
+        },
+        {
+          "name": "Population: 10 - 18 Years, Female",
+          "dcid": "Count_Person_10To18Years_Female"
+        },
+        {
+          "name": "Population: 100 - 104 Years, Female",
+          "dcid": "Count_Person_100To104Years_Female"
+        },
+        {
+          "name": "Population: 105 - 109 Years, Female",
+          "dcid": "Count_Person_105To109Years_Female"
+        },
+        {
+          "name": "Population: 11 - 15 Years, Female",
+          "dcid": "Count_Person_11To15Years_Female"
+        },
+        {
+          "name": "Population: 11 - 16 Years, Female",
+          "dcid": "Count_Person_11To16Years_Female"
+        },
+        {
+          "name": "Population: 11 - 17 Years, Female",
+          "dcid": "Count_Person_11To17Years_Female"
+        },
+        {
+          "name": "Population: 11 - 18 Years, Female",
+          "dcid": "Count_Person_11To18Years_Female"
+        },
+        {
+          "name": "Population: 12 - 15 Years, Female",
+          "dcid": "Count_Person_12To15Years_Female"
+        },
+        {
+          "name": "Population: 12 - 16 Years, Female",
+          "dcid": "Count_Person_12To16Years_Female"
+        },
+        {
+          "name": "Population: 12 - 17 Years, Female",
+          "dcid": "Count_Person_12To17Years_Female"
+        },
+        {
+          "name": "Population: 12 - 18 Years, Female",
+          "dcid": "Count_Person_12To18Years_Female"
+        },
+        {
+          "name": "Population: 13 - 16 Years, Female",
+          "dcid": "Count_Person_13To16Years_Female"
+        },
+        {
+          "name": "Population: 13 - 17 Years, Female",
+          "dcid": "Count_Person_13To17Years_Female"
+        },
+        {
+          "name": "Population: 13 - 18 Years, Female",
+          "dcid": "Count_Person_13To18Years_Female"
+        },
+        {
+          "name": "Population: 13 - 19 Years, Female",
+          "dcid": "Count_Person_13To19Years_Female"
+        },
+        {
+          "name": "Population: 14 - 18 Years, Female",
+          "dcid": "Count_Person_14To18Years_Female"
+        },
+        {
+          "name": "Population: 14 - 19 Years, Female",
+          "dcid": "Count_Person_14To19Years_Female"
+        },
+        {
+          "name": "Population: 14 Years or Less, Female",
+          "dcid": "Count_Person_Upto14Years_Female"
+        },
+        {
+          "name": "Population: 15 - 44 Years, Female",
+          "dcid": "Count_Person_15To44Years_Female"
+        },
+        {
+          "name": "Population: 15 - 59 Years, Female",
+          "dcid": "Count_Person_15To59Years_Female"
+        },
+        {
+          "name": "Population: 21 Years or More, Female",
+          "dcid": "Count_Person_21OrMoreYears_Female"
+        },
+        {
+          "name": "Population: 25 - 44 Years, Female",
+          "dcid": "Count_Person_25To44Years_Female"
+        },
+        {
+          "name": "Population: 3 - 5 Years, Female",
+          "dcid": "Count_Person_3To5Years_Female"
+        },
+        {
+          "name": "Population: 4 - 6 Years, Female",
+          "dcid": "Count_Person_4To6Years_Female"
+        },
+        {
+          "name": "Population: 5 - 10 Years, Female",
+          "dcid": "Count_Person_5To10Years_Female"
+        },
+        {
+          "name": "Population: 5 - 11 Years, Female",
+          "dcid": "Count_Person_5To11Years_Female"
+        },
+        {
+          "name": "Population: 5 - 14 Years, Female",
+          "dcid": "Count_Person_Years5To14_Female"
+        },
+        {
+          "name": "Population: 6 - 10 Years, Female",
+          "dcid": "Count_Person_6To10Years_Female"
+        },
+        {
+          "name": "Population: 6 - 12 Years, Female",
+          "dcid": "Count_Person_6To12Years_Female"
+        },
+        {
+          "name": "Population: 60 Years or More, Female",
+          "dcid": "Count_Person_60OrMoreYears_Female"
+        },
+        {
+          "name": "Population: 62 Years or More, Female",
+          "dcid": "Count_Person_62OrMoreYears_Female"
+        },
+        {
+          "name": "Population: 65 - 66 Years, Female",
+          "dcid": "Count_Person_65To66Years_Female"
+        },
+        {
+          "name": "Population: 67 - 69 Years, Female",
+          "dcid": "Count_Person_67To69Years_Female"
+        },
+        {
+          "name": "Population: 7 - 10 Years, Female",
+          "dcid": "Count_Person_7To10Years_Female"
+        },
+        {
+          "name": "Population: 7 - 11 Years, Female",
+          "dcid": "Count_Person_7To11Years_Female"
+        },
+        {
+          "name": "Population: 7 - 12 Years, Female",
+          "dcid": "Count_Person_7To12Years_Female"
+        },
+        {
+          "name": "Population: 7 - 13 Years, Female",
+          "dcid": "Count_Person_7To13Years_Female"
+        },
+        {
+          "name": "Population: 7 - 9 Years, Female",
+          "dcid": "Count_Person_7To9Years_Female"
+        },
+        {
+          "name": "Population: 90 - 94 Years, Female",
+          "dcid": "Count_Person_90To94Years_Female"
+        },
+        {
+          "name": "Population: 95 - 99 Years, Female",
+          "dcid": "Count_Person_95To99Years_Female"
+        },
+        {
+          "name": "Population: 95 Years or More, Female",
+          "dcid": "Count_Person_95OrMoreYears_Female"
+        },
+        {
+          "name": "Population: 99 Years or More, Female",
+          "dcid": "Count_Person_99OrMoreYears_Female"
+        },
+        {
+          "name": "Unemployment Rate: 15 - 65 Years, Female",
+          "dcid": "UnemploymentRate_Person_15To65Years_Female"
+        },
+        {
+          "name": "Unemployment Rate: 25 - 74 Years, Female",
+          "dcid": "UnemploymentRate_Person_25To74Years_Female"
+        },
+        {
+          "name": "Unemployment Rate: 25 Years or Less, Female",
+          "dcid": "UnemploymentRate_Person_Upto25Years_Female"
+        },
+        {
+          "name": "Average female to male ratio of average wages/salaries received per day by regular wage/salaried employees of age 15-59 for rural and urban",
+          "dcid": "WagesDaily_Person_15To59Year_Female_AsAFractionOf_WagesDaily_Person_15To59Year_Male"
+        },
+        {
+          "name": "Population: 15 Years or Less, Female (As Fraction of Count Person 15 To 64 Years With Income)",
+          "dcid": "Count_Person_15OrLessYears_Female_AsAFractionOf_Count_Person_15To64Years_Female_WithIncome"
+        },
+        {
+          "name": "Population: 5 Years or More, Female (As Fraction of Count Person Female)",
+          "dcid": "Count_Person_5OrMoreYears_Female_AsAFractionOf_Count_Person_Female"
+        },
+        {
+          "name": "Prevalence: 50 - 74 Years, Female, Mammography",
+          "dcid": "Percent_Person_50To74Years_Female_ReceivedMammography"
+        },
+        {
+          "name": "Population (Measured Based on Custody): 0 - 17 Years, Female, Incarcerated",
+          "dcid": "dc/c17kzp0zrfkq9"
+        },
+        {
+          "name": "Ratio of female to male Labour Force Participation Rate (LFPR) (15-59 years)",
+          "dcid": "Count_Person_15To19Year_InLaborForce_Female_AsAFractionOf_Count_Person_15To19Year_InLaborForce_Male"
         }
       ]
     },
@@ -29729,152 +29995,6 @@
       ]
     },
     {
-      "dcid": "dc/g/Person_Age_Gender-Female",
-      "name": "Person With Age, Gender = Female",
-      "statVars": [
-        {
-          "name": "Life Expectancy: 1 Years or Less, Female",
-          "dcid": "LifeExpectancy_Person_Upto1Years_Female"
-        },
-        {
-          "name": "Life Expectancy: Years 101, Female",
-          "dcid": "LifeExpectancy_Person_101Years_Female"
-        },
-        {
-          "name": "Life Expectancy: Years 102, Female",
-          "dcid": "LifeExpectancy_Person_102Years_Female"
-        },
-        {
-          "name": "Life Expectancy: Years 103, Female",
-          "dcid": "LifeExpectancy_Person_103Years_Female"
-        },
-        {
-          "name": "Life Expectancy: Years 104, Female",
-          "dcid": "LifeExpectancy_Person_104Years_Female"
-        },
-        {
-          "name": "Life Expectancy: Years 105, Female",
-          "dcid": "LifeExpectancy_Person_105Years_Female"
-        },
-        {
-          "name": "Life Expectancy: Years 106, Female",
-          "dcid": "LifeExpectancy_Person_106Years_Female"
-        },
-        {
-          "name": "Life Expectancy: Years 107, Female",
-          "dcid": "LifeExpectancy_Person_107Years_Female"
-        },
-        {
-          "name": "Life Expectancy: Years 108, Female",
-          "dcid": "LifeExpectancy_Person_108Years_Female"
-        },
-        {
-          "name": "Life Expectancy: Years 109, Female",
-          "dcid": "LifeExpectancy_Person_109Years_Female"
-        },
-        {
-          "name": "Population: 0 - 14 Years, Female",
-          "dcid": "Count_Person_0To14Years_Female"
-        },
-        {
-          "name": "Population: 100 - 104 Years, Female",
-          "dcid": "Count_Person_100To104Years_Female"
-        },
-        {
-          "name": "Population: 105 - 109 Years, Female",
-          "dcid": "Count_Person_105To109Years_Female"
-        },
-        {
-          "name": "Population: 14 Years or Less, Female",
-          "dcid": "Count_Person_Upto14Years_Female"
-        },
-        {
-          "name": "Population: 15 - 44 Years, Female",
-          "dcid": "Count_Person_15To44Years_Female"
-        },
-        {
-          "name": "Population: 15 - 59 Years, Female",
-          "dcid": "Count_Person_15To59Years_Female"
-        },
-        {
-          "name": "Population: 21 Years or More, Female",
-          "dcid": "Count_Person_21OrMoreYears_Female"
-        },
-        {
-          "name": "Population: 25 - 44 Years, Female",
-          "dcid": "Count_Person_25To44Years_Female"
-        },
-        {
-          "name": "Population: 3 Years or More, Female",
-          "dcid": "Count_Person_3OrMoreYears_Female"
-        },
-        {
-          "name": "Population: 5 - 14 Years, Female",
-          "dcid": "Count_Person_Years5To14_Female"
-        },
-        {
-          "name": "Population: 60 Years or More, Female",
-          "dcid": "Count_Person_60OrMoreYears_Female"
-        },
-        {
-          "name": "Population: 62 Years or More, Female",
-          "dcid": "Count_Person_62OrMoreYears_Female"
-        },
-        {
-          "name": "Population: 65 - 66 Years, Female",
-          "dcid": "Count_Person_65To66Years_Female"
-        },
-        {
-          "name": "Population: 67 - 69 Years, Female",
-          "dcid": "Count_Person_67To69Years_Female"
-        },
-        {
-          "name": "Population: 90 - 94 Years, Female",
-          "dcid": "Count_Person_90To94Years_Female"
-        },
-        {
-          "name": "Population: 95 - 99 Years, Female",
-          "dcid": "Count_Person_95To99Years_Female"
-        },
-        {
-          "name": "Population: 95 Years or More, Female",
-          "dcid": "Count_Person_95OrMoreYears_Female"
-        },
-        {
-          "name": "Population: 99 Years or More, Female",
-          "dcid": "Count_Person_99OrMoreYears_Female"
-        },
-        {
-          "name": "Unemployment Rate: 15 - 65 Years, Female",
-          "dcid": "UnemploymentRate_Person_15To65Years_Female"
-        },
-        {
-          "name": "Unemployment Rate: 25 - 74 Years, Female",
-          "dcid": "UnemploymentRate_Person_25To74Years_Female"
-        },
-        {
-          "name": "Unemployment Rate: 25 Years or Less, Female",
-          "dcid": "UnemploymentRate_Person_Upto25Years_Female"
-        },
-        {
-          "name": "Population: 15 Years or Less, Female (As Fraction of Count Person 15 To 64 Years With Income)",
-          "dcid": "Count_Person_15OrLessYears_Female_AsAFractionOf_Count_Person_15To64Years_Female_WithIncome"
-        },
-        {
-          "name": "Population: 5 Years or More, Female (As Fraction of Count Person Female)",
-          "dcid": "Count_Person_5OrMoreYears_Female_AsAFractionOf_Count_Person_Female"
-        },
-        {
-          "name": "Prevalence: 50 - 74 Years, Female, Mammography",
-          "dcid": "Percent_Person_50To74Years_Female_ReceivedMammography"
-        },
-        {
-          "name": "Population (Measured Based on Custody): 0 - 17 Years, Female, Incarcerated",
-          "dcid": "dc/c17kzp0zrfkq9"
-        }
-      ]
-    },
-    {
       "dcid": "dc/g/Person_Age-Years85_Gender-Female_Race",
       "name": "Person With Age = Years 85, Gender = Female, Race",
       "statVars": [
@@ -32119,6 +32239,112 @@
       ]
     },
     {
+      "dcid": "dc/g/MortalityEvent_CauseOfDeath_Gender-Female",
+      "name": "Mortality Event With Cause of Death, Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Mortality Event: Arthropod-Borne Viral Encephalitis, Female",
+          "dcid": "Count_MortalityEvent_Arthropod-BorneViralEncephalitis_Female"
+        },
+        {
+          "name": "Count of Mortality Event: Hyperplasia of Prostate, Female",
+          "dcid": "Count_MortalityEvent_HyperplasiaOfProstate_Female"
+        },
+        {
+          "name": "Count of Mortality Event: Malignant Neoplasm of Prostate, Female",
+          "dcid": "Count_MortalityEvent_MalignantNeoplasmOfProstate_Female"
+        },
+        {
+          "name": "Count of Mortality Event: Operations of War And Their Sequelae, Female",
+          "dcid": "Count_MortalityEvent_OperationsOfWarAndTheirSequelae_Female"
+        },
+        {
+          "name": "Count of Mortality Event: Shigellosis And Amebiasis, Female",
+          "dcid": "Count_MortalityEvent_ShigellosisAndAmebiasis_Female"
+        },
+        {
+          "name": "Count of Mortality Event: Acute Flaccid Paralysis, Female (As Fraction of Count Medical Condition Incident Female Condition Acute Flaccid Paralysis)",
+          "dcid": "Count_MortalityEvent_AcuteFlaccidParalysis_Female_AsAFractionOf_Count_MedicalConditionIncident_Female_ConditionAcuteFlaccidParalysis"
+        },
+        {
+          "name": "Count of Mortality Event: Cholera, Female (As Fraction of Count Medical Condition Incident Female Condition Cholera)",
+          "dcid": "Count_MortalityEvent_Cholera_Female_AsAFractionOf_Count_MedicalConditionIncident_Female_ConditionCholera"
+        },
+        {
+          "name": "Count of Mortality Event: Diarrhea Water With Blood, Female (As Fraction of Count Medical Condition Incident Female Condition Diarrhea Water With Blood)",
+          "dcid": "Count_MortalityEvent_DiarrheaWaterWithBlood_Female_AsAFractionOf_Count_MedicalConditionIncident_Female_ConditionDiarrheaWaterWithBlood"
+        },
+        {
+          "name": "Count of Mortality Event: Diarrhea Water Without Blood, Female (As Fraction of Count Medical Condition Incident Female Condition Diarrhea Water Without Blood)",
+          "dcid": "Count_MortalityEvent_DiarrheaWaterWithoutBlood_Female_AsAFractionOf_Count_MedicalConditionIncident_Female_ConditionDiarrheaWaterWithoutBlood"
+        },
+        {
+          "name": "Count of Mortality Event: Filariasis, Female (As Fraction of Count Medical Condition Incident Female Condition Filariasis)",
+          "dcid": "Count_MortalityEvent_Filariasis_Female_AsAFractionOf_Count_MedicalConditionIncident_Female_ConditionFilariasis"
+        },
+        {
+          "name": "Count of Mortality Event: Genital Ulcer, Female (As Fraction of Count Medical Condition Incident Female Condition Genital Ulcer)",
+          "dcid": "Count_MortalityEvent_GenitalUlcer_Female_AsAFractionOf_Count_MedicalConditionIncident_Female_ConditionGenitalUlcer"
+        },
+        {
+          "name": "Count of Mortality Event: Hepatitis B, Female (As Fraction of Count Medical Condition Incident Female Condition Hepatitis B)",
+          "dcid": "Count_MortalityEvent_HepatitisB_Female_AsAFractionOf_Count_MedicalConditionIncident_Female_ConditionHepatitisB"
+        },
+        {
+          "name": "Count of Mortality Event: Lymphatic Disorder, Female (As Fraction of Count Medical Condition Incident Female Condition Lymphatic Disorder)",
+          "dcid": "Count_MortalityEvent_LymphaticDisorder_Female_AsAFractionOf_Count_MedicalConditionIncident_Female_ConditionLymphaticDisorder"
+        },
+        {
+          "name": "Count of Mortality Event: Male Urethral Discharge, Female (As Fraction of Count Medical Condition Incident Female Condition Male Urethral Discharge)",
+          "dcid": "Count_MortalityEvent_MaleUrethralDischarge_Female_AsAFractionOf_Count_MedicalConditionIncident_Female_ConditionMaleUrethralDischarge"
+        },
+        {
+          "name": "Count of Mortality Event: Measles, Female (As Fraction of Count Medical Condition Incident Female Condition Measles)",
+          "dcid": "Count_MortalityEvent_Measles_Female_AsAFractionOf_Count_MedicalConditionIncident_Female_ConditionMeasles"
+        },
+        {
+          "name": "Count of Mortality Event: Onchocerciasis, Female (As Fraction of Count Medical Condition Incident Female Condition Onchocerciasis)",
+          "dcid": "Count_MortalityEvent_Onchocerciasis_Female_AsAFractionOf_Count_MedicalConditionIncident_Female_ConditionOnchocerciasis"
+        },
+        {
+          "name": "Count of Mortality Event: Plague, Female (As Fraction of Count Medical Condition Incident Female Condition Plague)",
+          "dcid": "Count_MortalityEvent_Plague_Female_AsAFractionOf_Count_MedicalConditionIncident_Female_ConditionPlague"
+        },
+        {
+          "name": "Count of Mortality Event: Polio, Female (As Fraction of Count Medical Condition Incident Female Condition Polio)",
+          "dcid": "Count_MortalityEvent_Polio_Female_AsAFractionOf_Count_MedicalConditionIncident_Female_ConditionPolio"
+        },
+        {
+          "name": "Count of Mortality Event: Vaginal Discharge, Female (As Fraction of Count Medical Condition Incident Female Condition Vaginal Discharge)",
+          "dcid": "Count_MortalityEvent_VaginalDischarge_Female_AsAFractionOf_Count_MedicalConditionIncident_Female_ConditionVaginalDischarge"
+        },
+        {
+          "name": "Count of Mortality Event: X60-X84 (Intentional Self-harm), Female (As Fraction of Count Person Female)",
+          "dcid": "Count_Death_IntentionalSelfHarm_Female_AsFractionOf_Count_Person_Female"
+        },
+        {
+          "name": "Count of Mortality Event: Yellow Fever, Female (As Fraction of Count Medical Condition Incident Female Condition Yellow Fever)",
+          "dcid": "Count_MortalityEvent_YellowFever_Female_AsAFractionOf_Count_MedicalConditionIncident_Female_ConditionYellowFever"
+        },
+        {
+          "name": "Count of Mortality Event (Measured Based on Jurisdiction): Death Due To Another Person, Female, Incarcerated",
+          "dcid": "dc/59k03h1hvxp89"
+        },
+        {
+          "name": "Count of Mortality Event (Measured Based on Jurisdiction): Illness or Natural Cause, Female, Incarcerated",
+          "dcid": "dc/mjqlm4q2efmvh"
+        },
+        {
+          "name": "Count of Mortality Event (Measured Based on Jurisdiction): Judicial Execution, Female, Incarcerated",
+          "dcid": "dc/jh0nks36n1jc1"
+        },
+        {
+          "name": "Count of Mortality Event (Measured Based on Jurisdiction): NPSOther Cause of Death, Female, Incarcerated",
+          "dcid": "dc/pwpgqvlz3zxtc"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/SDGVCVOVGDSD_sdggroundsOfDiscrimination_sdgsex-SDGSexEnumF",
       "name": "Proportion of Population Reporting Having Felt Discriminated Against, by Grounds of Discrimination, Sex And Disability With Grounds of Discrimination, Sex = Female",
       "statVars": [
@@ -32993,96 +33219,6 @@
         {
           "name": "Average hourly earnings of employees by sex and occupation [Female, Type of occupation = Technicians and associate professionals]",
           "dcid": "sdg/SL_EMP_EARN.SEX--F__OCCUPATION--ISCO88_3"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/MortalityEvent_CauseOfDeath_Gender-Female",
-      "name": "Mortality Event With Cause of Death, Gender = Female",
-      "statVars": [
-        {
-          "name": "Count of Mortality Event: Acute Flaccid Paralysis, Female (As Fraction of Count Medical Condition Incident Female Condition Acute Flaccid Paralysis)",
-          "dcid": "Count_MortalityEvent_AcuteFlaccidParalysis_Female_AsAFractionOf_Count_MedicalConditionIncident_Female_ConditionAcuteFlaccidParalysis"
-        },
-        {
-          "name": "Count of Mortality Event: Cholera, Female (As Fraction of Count Medical Condition Incident Female Condition Cholera)",
-          "dcid": "Count_MortalityEvent_Cholera_Female_AsAFractionOf_Count_MedicalConditionIncident_Female_ConditionCholera"
-        },
-        {
-          "name": "Count of Mortality Event: Diarrhea Water With Blood, Female (As Fraction of Count Medical Condition Incident Female Condition Diarrhea Water With Blood)",
-          "dcid": "Count_MortalityEvent_DiarrheaWaterWithBlood_Female_AsAFractionOf_Count_MedicalConditionIncident_Female_ConditionDiarrheaWaterWithBlood"
-        },
-        {
-          "name": "Count of Mortality Event: Diarrhea Water Without Blood, Female (As Fraction of Count Medical Condition Incident Female Condition Diarrhea Water Without Blood)",
-          "dcid": "Count_MortalityEvent_DiarrheaWaterWithoutBlood_Female_AsAFractionOf_Count_MedicalConditionIncident_Female_ConditionDiarrheaWaterWithoutBlood"
-        },
-        {
-          "name": "Count of Mortality Event: Filariasis, Female (As Fraction of Count Medical Condition Incident Female Condition Filariasis)",
-          "dcid": "Count_MortalityEvent_Filariasis_Female_AsAFractionOf_Count_MedicalConditionIncident_Female_ConditionFilariasis"
-        },
-        {
-          "name": "Count of Mortality Event: Genital Ulcer, Female (As Fraction of Count Medical Condition Incident Female Condition Genital Ulcer)",
-          "dcid": "Count_MortalityEvent_GenitalUlcer_Female_AsAFractionOf_Count_MedicalConditionIncident_Female_ConditionGenitalUlcer"
-        },
-        {
-          "name": "Count of Mortality Event: Hepatitis B, Female (As Fraction of Count Medical Condition Incident Female Condition Hepatitis B)",
-          "dcid": "Count_MortalityEvent_HepatitisB_Female_AsAFractionOf_Count_MedicalConditionIncident_Female_ConditionHepatitisB"
-        },
-        {
-          "name": "Count of Mortality Event: Lymphatic Disorder, Female (As Fraction of Count Medical Condition Incident Female Condition Lymphatic Disorder)",
-          "dcid": "Count_MortalityEvent_LymphaticDisorder_Female_AsAFractionOf_Count_MedicalConditionIncident_Female_ConditionLymphaticDisorder"
-        },
-        {
-          "name": "Count of Mortality Event: Malaria, Female (As Fraction of Count Medical Condition Incident Female Condition Malaria)",
-          "dcid": "Count_MortalityEvent_Malaria_Female_AsAFractionOf_Count_MedicalConditionIncident_Female_ConditionMalaria"
-        },
-        {
-          "name": "Count of Mortality Event: Male Urethral Discharge, Female (As Fraction of Count Medical Condition Incident Female Condition Male Urethral Discharge)",
-          "dcid": "Count_MortalityEvent_MaleUrethralDischarge_Female_AsAFractionOf_Count_MedicalConditionIncident_Female_ConditionMaleUrethralDischarge"
-        },
-        {
-          "name": "Count of Mortality Event: Measles, Female (As Fraction of Count Medical Condition Incident Female Condition Measles)",
-          "dcid": "Count_MortalityEvent_Measles_Female_AsAFractionOf_Count_MedicalConditionIncident_Female_ConditionMeasles"
-        },
-        {
-          "name": "Count of Mortality Event: Onchocerciasis, Female (As Fraction of Count Medical Condition Incident Female Condition Onchocerciasis)",
-          "dcid": "Count_MortalityEvent_Onchocerciasis_Female_AsAFractionOf_Count_MedicalConditionIncident_Female_ConditionOnchocerciasis"
-        },
-        {
-          "name": "Count of Mortality Event: Plague, Female (As Fraction of Count Medical Condition Incident Female Condition Plague)",
-          "dcid": "Count_MortalityEvent_Plague_Female_AsAFractionOf_Count_MedicalConditionIncident_Female_ConditionPlague"
-        },
-        {
-          "name": "Count of Mortality Event: Polio, Female (As Fraction of Count Medical Condition Incident Female Condition Polio)",
-          "dcid": "Count_MortalityEvent_Polio_Female_AsAFractionOf_Count_MedicalConditionIncident_Female_ConditionPolio"
-        },
-        {
-          "name": "Count of Mortality Event: Vaginal Discharge, Female (As Fraction of Count Medical Condition Incident Female Condition Vaginal Discharge)",
-          "dcid": "Count_MortalityEvent_VaginalDischarge_Female_AsAFractionOf_Count_MedicalConditionIncident_Female_ConditionVaginalDischarge"
-        },
-        {
-          "name": "Count of Mortality Event: X60-X84 (Intentional Self-harm), Female (As Fraction of Count Person Female)",
-          "dcid": "Count_Death_IntentionalSelfHarm_Female_AsFractionOf_Count_Person_Female"
-        },
-        {
-          "name": "Count of Mortality Event: Yellow Fever, Female (As Fraction of Count Medical Condition Incident Female Condition Yellow Fever)",
-          "dcid": "Count_MortalityEvent_YellowFever_Female_AsAFractionOf_Count_MedicalConditionIncident_Female_ConditionYellowFever"
-        },
-        {
-          "name": "Count of Mortality Event (Measured Based on Jurisdiction): Death Due To Another Person, Female, Incarcerated",
-          "dcid": "dc/59k03h1hvxp89"
-        },
-        {
-          "name": "Count of Mortality Event (Measured Based on Jurisdiction): Illness or Natural Cause, Female, Incarcerated",
-          "dcid": "dc/mjqlm4q2efmvh"
-        },
-        {
-          "name": "Count of Mortality Event (Measured Based on Jurisdiction): Judicial Execution, Female, Incarcerated",
-          "dcid": "dc/jh0nks36n1jc1"
-        },
-        {
-          "name": "Count of Mortality Event (Measured Based on Jurisdiction): NPSOther Cause of Death, Female, Incarcerated",
-          "dcid": "dc/pwpgqvlz3zxtc"
         }
       ]
     },
@@ -34003,6 +34139,76 @@
         {
           "name": "Population: 85 Years or More, Female, Widowed",
           "dcid": "Count_Person_85OrMoreYears_Female_Widowed"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Household_HouseholderGender-Female_InternetUsagePurpose",
+      "name": "Household With Householder Gender = Female, Internet Usage Purpose",
+      "statVars": [
+        {
+          "name": "Browses the Web, female",
+          "dcid": "Count_Household_Female_WebBrowsingUsage_IsInternetUser"
+        },
+        {
+          "name": "Offers Services for Sale via the Internet, female",
+          "dcid": "Count_Household_Female_ServiceForSaleUsage_IsInternetUser"
+        },
+        {
+          "name": "Participates in Online Video or Voice Calls or Conferencing, female",
+          "dcid": "Count_Household_Female_VideoCallsUsageOrAudioCallsUsageOrConferencingUsage_IsInternetUser"
+        },
+        {
+          "name": "Posts or Uploads Blog Posts, Videos, or Other Original Content, female",
+          "dcid": "Count_Household_Female_UploadMediaUsage_IsInternetUser"
+        },
+        {
+          "name": "Researches Health Information Online, female",
+          "dcid": "Count_Household_Female_HealthDataResearchUsage_IsInternetUser"
+        },
+        {
+          "name": "Searches for a Job Online, female",
+          "dcid": "Count_Household_Female_JobSearchUsage_IsInternetUser"
+        },
+        {
+          "name": "Streams or Downloads Music, Radio, Podcasts, etc., female",
+          "dcid": "Count_Household_Female_StreamingUsageOrMediaDownloadUsage_IsInternetUser"
+        },
+        {
+          "name": "Takes Class or Participates in Job Training Online, female",
+          "dcid": "Count_Household_Female_OnlineClassUsageOrJobTrainningUsage_IsInternetUser"
+        },
+        {
+          "name": "Telecommutes Using the Internet, female",
+          "dcid": "Count_Household_Female_TelecommutesUsage_IsInternetUser"
+        },
+        {
+          "name": "Uses Email, female",
+          "dcid": "Count_Household_Female_EmailUsage_IsInternetUser"
+        },
+        {
+          "name": "Uses Health Monitoring Service that Connects to the Internet, female",
+          "dcid": "Count_Household_Female_HealthMonitoringServicesUsage_IsInternetUser"
+        },
+        {
+          "name": "Uses Online Financial Services Like Banking, Investing, Paying Bills, female",
+          "dcid": "Count_Household_Female_FinancialServicesUsage_IsInternetUser"
+        },
+        {
+          "name": "Uses Online Social Networks, female",
+          "dcid": "Count_Household_Female_SocialNetworksUsage_IsInternetUser"
+        },
+        {
+          "name": "Uses Text Messaging or Instant Messaging, female",
+          "dcid": "Count_Household_Female_TextMessagingUsage_IsInternetUser"
+        },
+        {
+          "name": "Uses the Internet to Sell Goods, female",
+          "dcid": "Count_Household_Female_GoodsSellingUsage_IsInternetUser"
+        },
+        {
+          "name": "Watches Videos Online, female",
+          "dcid": "Count_Household_Female_WatchingVideosUsage_IsInternetUser"
         }
       ]
     },
@@ -35757,6 +35963,48 @@
         {
           "name": "Population: 16 Years or More, 9,999 Inflation Adjusted USD_Current Year or Less, Female, With Earnings, Full Time Year Round Worker",
           "dcid": "Count_Person_9999OrLessInflationAdjustedUSDCurrentYear_Female_WithEarnings_FullTimeYearRoundWorker"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Student_EnrollmentLevel_Gender-Female",
+      "name": "Student With Enrollment Level, Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Student: Bachelors Degree or Higher, Female",
+          "dcid": "Count_Student_BachelorsDegreeOrHigher_Female"
+        },
+        {
+          "name": "Count of Student: Doctorate Degree, Female",
+          "dcid": "Count_Student_DoctorateDegree_Female"
+        },
+        {
+          "name": "Count of Student: Masters Degree or Higher, Female",
+          "dcid": "Count_Student_MastersDegreeOrHigher_Female"
+        },
+        {
+          "name": "Count of Student: Post Secondary Non Tertiary Education, Female",
+          "dcid": "Count_Student_PostSecondaryNonTertiaryEducation_Female"
+        },
+        {
+          "name": "Count of Student: Pre Primary Education, Female",
+          "dcid": "Count_Student_PrePrimaryEducation_Female"
+        },
+        {
+          "name": "Count of Student: Secondary Education, Female",
+          "dcid": "Count_Student_SecondaryEducation_Female"
+        },
+        {
+          "name": "Count of Student: South Africa_Grade R, Female",
+          "dcid": "Count_Student_SouthAfricaGradeR_Female"
+        },
+        {
+          "name": "Count of Student: Tertiary Education, Female",
+          "dcid": "Count_Student_TertiaryEducation_Female"
+        },
+        {
+          "name": "Count of Student: Upper Secondary Education or Higher, Female",
+          "dcid": "Count_Student_UpperSecondaryEducationOrHigher_Female"
         }
       ]
     },
@@ -41949,6 +42197,142 @@
       ]
     },
     {
+      "dcid": "dc/g/Person_Age-Years15Onwards_ElectronicGadgetUsed_Gender-Female",
+      "name": "Person With Age = 15 Years or More, Electronic Gadget Used, Gender = Female",
+      "statVars": [
+        {
+          "name": "Uses a Desktop Computer, female",
+          "dcid": "Count_Person_15OrMoreYears_Civilian_DesktopUser_Female"
+        },
+        {
+          "name": "Uses a Desktop, Laptop, or Tablet Computer, female",
+          "dcid": "Count_Person_15OrMoreYears_Civilian_DesktopUserOrLaptopUserOrTabletUser_Female"
+        },
+        {
+          "name": "Uses a Laptop Computer, female",
+          "dcid": "Count_Person_15OrMoreYears_Civilian_LaptopUser_Female"
+        },
+        {
+          "name": "Uses a Mobile Phone, female",
+          "dcid": "Count_Person_15OrMoreYears_Civilian_MobileUser_Female"
+        },
+        {
+          "name": "Uses a Smart TV or Connected Device, female",
+          "dcid": "Count_Person_15OrMoreYears_Civilian_SmartTelevisionUser_Female"
+        },
+        {
+          "name": "Uses a Tablet or e-Book Reader, female",
+          "dcid": "Count_Person_15OrMoreYears_Civilian_TabletUserOrEbookReaderUser_Female"
+        },
+        {
+          "name": "Uses a Wearable Device, female",
+          "dcid": "Count_Person_15OrMoreYears_Civilian_WearableDeviceUser_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years15Onwards_Gender-Female_InternetUsageLocation",
+      "name": "Person With Age = 15 Years or More, Gender = Female, Internet Usage Location",
+      "statVars": [
+        {
+          "name": "Uses the Internet (Any Location), female",
+          "dcid": "Count_Person_15OrMoreYears_Civilian_Female_InternetUsageAtAnyLocation_IsInternetUser"
+        },
+        {
+          "name": "Uses the Internet While Traveling Between Places, female",
+          "dcid": "Count_Person_15OrMoreYears_Civilian_Female_InternetUsageAtTraveling_IsInternetUser"
+        },
+        {
+          "name": "Uses the Internet at Home, female",
+          "dcid": "Count_Person_15OrMoreYears_Civilian_Female_InternetUsageAtHome_IsInternetUser"
+        },
+        {
+          "name": "Uses the Internet at School, female",
+          "dcid": "Count_Person_15OrMoreYears_Civilian_Female_InternetUsageAtSchool_IsInternetUser"
+        },
+        {
+          "name": "Uses the Internet at Work, female",
+          "dcid": "Count_Person_15OrMoreYears_Civilian_Female_InternetUsageAtWork_IsInternetUser"
+        },
+        {
+          "name": "Uses the Internet at a Coffee Shop or Other Business, female",
+          "dcid": "Count_Person_15OrMoreYears_Civilian_Female_InternetUsageAtCafeteria_IsInternetUser"
+        },
+        {
+          "name": "Uses the Internet at a Public Place Like the Library, Community Center, Park, female",
+          "dcid": "Count_Person_15OrMoreYears_Civilian_Female_InternetUsageAtPublicPlace_IsInternetUser"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years3Onwards_ElectronicGadgetUsed_Gender-Female",
+      "name": "Person With Age = 3 Years or More, Electronic Gadget Used, Gender = Female",
+      "statVars": [
+        {
+          "name": "Uses a Desktop Computer, female",
+          "dcid": "Count_Person_3OrMoreYears_Civilian_DesktopUser_Female"
+        },
+        {
+          "name": "Uses a Desktop, Laptop, or Tablet Computer, female",
+          "dcid": "Count_Person_3OrMoreYears_Civilian_DesktopUserOrLaptopUserOrTabletUser_Female"
+        },
+        {
+          "name": "Uses a Laptop Computer, female",
+          "dcid": "Count_Person_3OrMoreYears_Civilian_LaptopUser_Female"
+        },
+        {
+          "name": "Uses a Mobile Phone, female",
+          "dcid": "Count_Person_3OrMoreYears_Civilian_MobileUser_Female"
+        },
+        {
+          "name": "Uses a Smart TV or Connected Device, female",
+          "dcid": "Count_Person_3OrMoreYears_Civilian_SmartTelevisionUser_Female"
+        },
+        {
+          "name": "Uses a Tablet or e-Book Reader, female",
+          "dcid": "Count_Person_3OrMoreYears_Civilian_TabletUserOrEbookReaderUser_Female"
+        },
+        {
+          "name": "Uses a Wearable Device, female",
+          "dcid": "Count_Person_3OrMoreYears_Civilian_WearableDeviceUser_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years3Onwards_Gender-Female_InternetUsageLocation",
+      "name": "Person With Age = 3 Years or More, Gender = Female, Internet Usage Location",
+      "statVars": [
+        {
+          "name": "Uses the Internet (Any Location), female",
+          "dcid": "Count_Person_3OrMoreYears_Civilian_Female_InternetUsageAtAnyLocation_IsInternetUser"
+        },
+        {
+          "name": "Uses the Internet While Traveling Between Places, female",
+          "dcid": "Count_Person_3OrMoreYears_Civilian_Female_InternetUsageAtTraveling_IsInternetUser"
+        },
+        {
+          "name": "Uses the Internet at Home, female",
+          "dcid": "Count_Person_3OrMoreYears_Civilian_Female_InternetUsageAtHome_IsInternetUser"
+        },
+        {
+          "name": "Uses the Internet at School, female",
+          "dcid": "Count_Person_3OrMoreYears_Civilian_Female_InternetUsageAtSchool_IsInternetUser"
+        },
+        {
+          "name": "Uses the Internet at Work, female",
+          "dcid": "Count_Person_3OrMoreYears_Civilian_Female_InternetUsageAtWork_IsInternetUser"
+        },
+        {
+          "name": "Uses the Internet at a Coffee Shop or Other Business, female",
+          "dcid": "Count_Person_3OrMoreYears_Civilian_Female_InternetUsageAtCafeteria_IsInternetUser"
+        },
+        {
+          "name": "Uses the Internet at a Public Place Like the Library, Community Center, Park, female",
+          "dcid": "Count_Person_3OrMoreYears_Civilian_Female_InternetUsageAtPublicPlace_IsInternetUser"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/Person_EducationalAttainment-LessThanPrimaryEducationPrimaryEducationLowerSecondaryEducation_Gender-Female_HealthBehavior",
       "name": "Person With Educational Attainment = Less Than Primary Education \u0026 Primary Education \u0026 Lower Secondary Education, Gender = Female, Health Behavior",
       "statVars": [
@@ -46335,6 +46719,36 @@
       ]
     },
     {
+      "dcid": "dc/g/Household_FactorForInternetService_HouseholderGender-Female",
+      "name": "Household With Factor for Internet Service, Householder Gender = Female",
+      "statVars": [
+        {
+          "name": "Affordability is Most Important Factor for Home Internet Service, female",
+          "dcid": "Count_Household_FactorForHomeInternetAffordability_Female_InternetUsageAtHome_IsInternetUser"
+        },
+        {
+          "name": "Customer Service is Most Important Factor for Home Internet Service, female",
+          "dcid": "Count_Household_FactorForHomeInternetCustomerService_Female_InternetUsageAtHome_IsInternetUser"
+        },
+        {
+          "name": "Data Cap is Most Important Factor for Home Internet Service, female",
+          "dcid": "Count_Household_FactorForHomeInternetDataLimit_Female_InternetUsageAtHome_IsInternetUser"
+        },
+        {
+          "name": "Mobility is Most Important Factor for Home Internet Service, female",
+          "dcid": "Count_Household_FactorForHomeInternetMobility_Female_InternetUsageAtHome_IsInternetUser"
+        },
+        {
+          "name": "Reliability is Most Important Factor for Home Internet Service, female",
+          "dcid": "Count_Household_FactorForHomeInternetReliability_Female_InternetUsageAtHome_IsInternetUser"
+        },
+        {
+          "name": "Service Speed is Most Important Factor for Home Internet Service, female",
+          "dcid": "Count_Household_FactorForHomeInternetServiceSpeed_Female_InternetUsageAtHome_IsInternetUser"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/Person_Gender-Female_PlaceOfBirth",
       "name": "Person With Gender = Female, Place of Birth",
       "statVars": [
@@ -47681,32 +48095,6 @@
       ]
     },
     {
-      "dcid": "dc/g/Student_Gender-Female",
-      "name": "Student With Gender = Female",
-      "statVars": [
-        {
-          "name": "Count of Student: Female",
-          "dcid": "Count_Student_Female"
-        },
-        {
-          "name": "Mean Cohort Scale Achievement of Student: Female",
-          "dcid": "dc/1kp45lprzkreb"
-        },
-        {
-          "name": "Mean Grade Cohort Scale Achievement of Student: Female",
-          "dcid": "dc/dnymkydllff48"
-        },
-        {
-          "name": "Count of Student: Graduate or Professional Degree, Female",
-          "dcid": "Count_Student_EducationalAttainmentGraduateOrProfessionalDegree_Female"
-        },
-        {
-          "name": "Count of Student: 6 - 12 Years, Female, Primary Education",
-          "dcid": "Count_Student_6To12Years_Female_PrimaryEducation"
-        }
-      ]
-    },
-    {
       "dcid": "dc/g/SDGSGDMKPARLCCUC_sdgparliamentaryCommittees_sdgsex-SDGSexEnumF",
       "name": "Number of Chairs of Permanent Committees, by Age Sex And Focus of The Committee, Upper Chamber With Parliamentary Committees, Sex = Female",
       "statVars": [
@@ -47807,6 +48195,32 @@
         {
           "name": "Proportion of teachers with the minimum required qualifications, by education level and sex [Female, Upper secondary education]",
           "dcid": "sdg/SE_TRA_GRDL.SEX--F__EDUCATION_LEV--ISCED11_3"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Teacher_Gender-Female_SchoolGradeLevel",
+      "name": "Teacher With Gender = Female, School Grade Level",
+      "statVars": [
+        {
+          "name": "Count of Teacher: Female, Lower Secondary Education",
+          "dcid": "Count_Teacher_Female_LowerSecondaryEducation"
+        },
+        {
+          "name": "Count of Teacher: Female, Post Secondary Non Tertiary Education",
+          "dcid": "Count_Teacher_Female_PostSecondaryNonTertiaryEducation"
+        },
+        {
+          "name": "Count of Teacher: Female, Tertiary Education",
+          "dcid": "Count_Teacher_Female_TertiaryEducation"
+        },
+        {
+          "name": "Count of Teacher: Female, Upper Secondary Education",
+          "dcid": "Count_Teacher_Female_UpperSecondaryEducation"
+        },
+        {
+          "name": "Count of Teacher: Graduate or Professional Degree, Female, Secondary Education",
+          "dcid": "Count_Teacher_EducationalAttainmentGraduateOrProfessionalDegree_Female_SecondaryEducation"
         }
       ]
     },
@@ -50015,6 +50429,28 @@
       ]
     },
     {
+      "dcid": "dc/g/Person_EnrollmentLevel_Gender-Female",
+      "name": "Person With Enrollment Level, Gender = Female",
+      "statVars": [
+        {
+          "name": "Population: Lower Secondary Education, Female",
+          "dcid": "Count_Person_LowerSecondaryEducation_Female"
+        },
+        {
+          "name": "Population: Post Secondary Non Tertiary Education, Female",
+          "dcid": "Count_Person_PostSecondaryNonTertiaryEducation_Female"
+        },
+        {
+          "name": "Population: Pre Primary Education, Female",
+          "dcid": "Count_Person_PrePrimaryEducation_Female"
+        },
+        {
+          "name": "Population: Upper Secondary Education, Female",
+          "dcid": "Count_Person_UpperSecondaryEducation_Female"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/Person_Gender-Female_PhysicalActivityEffortLevel",
       "name": "Person With Gender = Female, Physical Activity Effort Level",
       "statVars": [
@@ -50121,28 +50557,6 @@
         {
           "name": "Population: 1 Years or More, Female, Different House in Same County",
           "dcid": "Count_Person_1OrMoreYears_Female_DifferentHouseInSameCounty"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Student_EnrollmentLevel_Gender-Female",
-      "name": "Student With Enrollment Level, Gender = Female",
-      "statVars": [
-        {
-          "name": "Count of Student: Secondary Education, Female",
-          "dcid": "Count_Student_SecondaryEducation_Female"
-        },
-        {
-          "name": "Count of Student: South Africa_Grade R, Female",
-          "dcid": "Count_Student_SouthAfricaGradeR_Female"
-        },
-        {
-          "name": "Count of Student: Tertiary Education, Female",
-          "dcid": "Count_Student_TertiaryEducation_Female"
-        },
-        {
-          "name": "Count of Student: Upper Secondary Education or Higher, Female",
-          "dcid": "Count_Student_UpperSecondaryEducationOrHigher_Female"
         }
       ]
     },
@@ -50521,6 +50935,226 @@
       ]
     },
     {
+      "dcid": "dc/g/Person_Age-Years15To19_EducationalAttainment_Gender-Female",
+      "name": "Person With Age = 15 - 19 Years, Educational Attainment, Gender = Female",
+      "statVars": [
+        {
+          "name": "Population: 15 - 19 Years, No Education, Female (As Fraction of Count Person 15 To 19 Years Female)",
+          "dcid": "Count_Person_15To19Years_EducationalAttainmentNoEducation_Female_AsAFractionOf_Count_Person_15To19Years_Female"
+        },
+        {
+          "name": "Population: 15 - 19 Years, Primary Education, Female (As Fraction of Count Person 15 To 19 Years Female)",
+          "dcid": "Count_Person_15To19Years_EducationalAttainmentPrimaryEducation_Female_AsAFractionOf_Count_Person_15To19Years_Female"
+        },
+        {
+          "name": "Population: 15 - 19 Years, Secondary Education, Female (As Fraction of Count Person 15 To 19 Years Female)",
+          "dcid": "Count_Person_15To19Years_EducationalAttainmentSecondaryEducation_Female_AsAFractionOf_Count_Person_15To19Years_Female"
+        },
+        {
+          "name": "Population: 15 - 19 Years, Tertiary Education, Female (As Fraction of Count Person 15 To 19 Years Female)",
+          "dcid": "Count_Person_15To19Years_EducationalAttainmentTertiaryEducation_Female_AsAFractionOf_Count_Person_15To19Years_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years20To24_EducationalAttainment_Gender-Female",
+      "name": "Person With Age = 20 - 24 Years, Educational Attainment, Gender = Female",
+      "statVars": [
+        {
+          "name": "Population: 20 - 24 Years, No Education, Female (As Fraction of Count Person 20 To 24 Years Female)",
+          "dcid": "Count_Person_20To24Years_EducationalAttainmentNoEducation_Female_AsAFractionOf_Count_Person_20To24Years_Female"
+        },
+        {
+          "name": "Population: 20 - 24 Years, Primary Education, Female (As Fraction of Count Person 20 To 24 Years Female)",
+          "dcid": "Count_Person_20To24Years_EducationalAttainmentPrimaryEducation_Female_AsAFractionOf_Count_Person_20To24Years_Female"
+        },
+        {
+          "name": "Population: 20 - 24 Years, Secondary Education, Female (As Fraction of Count Person 20 To 24 Years Female)",
+          "dcid": "Count_Person_20To24Years_EducationalAttainmentSecondaryEducation_Female_AsAFractionOf_Count_Person_20To24Years_Female"
+        },
+        {
+          "name": "Population: 20 - 24 Years, Tertiary Education, Female (As Fraction of Count Person 20 To 24 Years Female)",
+          "dcid": "Count_Person_20To24Years_EducationalAttainmentTertiaryEducation_Female_AsAFractionOf_Count_Person_20To24Years_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years25To29_EducationalAttainment_Gender-Female",
+      "name": "Person With Age = 25 - 29 Years, Educational Attainment, Gender = Female",
+      "statVars": [
+        {
+          "name": "Population: 25 - 29 Years, No Education, Female (As Fraction of Count Person 25 To 29 Years Female)",
+          "dcid": "Count_Person_25To29Years_EducationalAttainmentNoEducation_Female_AsAFractionOf_Count_Person_25To29Years_Female"
+        },
+        {
+          "name": "Population: 25 - 29 Years, Primary Education, Female (As Fraction of Count Person 25 To 29 Years Female)",
+          "dcid": "Count_Person_25To29Years_EducationalAttainmentPrimaryEducation_Female_AsAFractionOf_Count_Person_25To29Years_Female"
+        },
+        {
+          "name": "Population: 25 - 29 Years, Secondary Education, Female (As Fraction of Count Person 25 To 29 Years Female)",
+          "dcid": "Count_Person_25To29Years_EducationalAttainmentSecondaryEducation_Female_AsAFractionOf_Count_Person_25To29Years_Female"
+        },
+        {
+          "name": "Population: 25 - 29 Years, Tertiary Education, Female (As Fraction of Count Person 25 To 29 Years Female)",
+          "dcid": "Count_Person_25To29Years_EducationalAttainmentTertiaryEducation_Female_AsAFractionOf_Count_Person_25To29Years_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years30To34_EducationalAttainment_Gender-Female",
+      "name": "Person With Age = 30 - 34 Years, Educational Attainment, Gender = Female",
+      "statVars": [
+        {
+          "name": "Population: 30 - 34 Years, No Education, Female (As Fraction of Count Person 30 To 34 Years Female)",
+          "dcid": "Count_Person_30To34Years_EducationalAttainmentNoEducation_Female_AsAFractionOf_Count_Person_30To34Years_Female"
+        },
+        {
+          "name": "Population: 30 - 34 Years, Primary Education, Female (As Fraction of Count Person 30 To 34 Years Female)",
+          "dcid": "Count_Person_30To34Years_EducationalAttainmentPrimaryEducation_Female_AsAFractionOf_Count_Person_30To34Years_Female"
+        },
+        {
+          "name": "Population: 30 - 34 Years, Secondary Education, Female (As Fraction of Count Person 30 To 34 Years Female)",
+          "dcid": "Count_Person_30To34Years_EducationalAttainmentSecondaryEducation_Female_AsAFractionOf_Count_Person_30To34Years_Female"
+        },
+        {
+          "name": "Population: 30 - 34 Years, Tertiary Education, Female (As Fraction of Count Person 30 To 34 Years Female)",
+          "dcid": "Count_Person_30To34Years_EducationalAttainmentTertiaryEducation_Female_AsAFractionOf_Count_Person_30To34Years_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years35To39_EducationalAttainment_Gender-Female",
+      "name": "Person With Age = 35 - 39 Years, Educational Attainment, Gender = Female",
+      "statVars": [
+        {
+          "name": "Population: 35 - 39 Years, No Education, Female (As Fraction of Count Person 35 To 39 Years Female)",
+          "dcid": "Count_Person_35To39Years_EducationalAttainmentNoEducation_Female_AsAFractionOf_Count_Person_35To39Years_Female"
+        },
+        {
+          "name": "Population: 35 - 39 Years, Primary Education, Female (As Fraction of Count Person 35 To 39 Years Female)",
+          "dcid": "Count_Person_35To39Years_EducationalAttainmentPrimaryEducation_Female_AsAFractionOf_Count_Person_35To39Years_Female"
+        },
+        {
+          "name": "Population: 35 - 39 Years, Secondary Education, Female (As Fraction of Count Person 35 To 39 Years Female)",
+          "dcid": "Count_Person_35To39Years_EducationalAttainmentSecondaryEducation_Female_AsAFractionOf_Count_Person_35To39Years_Female"
+        },
+        {
+          "name": "Population: 35 - 39 Years, Tertiary Education, Female (As Fraction of Count Person 35 To 39 Years Female)",
+          "dcid": "Count_Person_35To39Years_EducationalAttainmentTertiaryEducation_Female_AsAFractionOf_Count_Person_35To39Years_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years40To44_EducationalAttainment_Gender-Female",
+      "name": "Person With Age = 40 - 44 Years, Educational Attainment, Gender = Female",
+      "statVars": [
+        {
+          "name": "Population: 40 - 44 Years, No Education, Female (As Fraction of Count Person 40 To 44 Years Female)",
+          "dcid": "Count_Person_40To44Years_EducationalAttainmentNoEducation_Female_AsAFractionOf_Count_Person_40To44Years_Female"
+        },
+        {
+          "name": "Population: 40 - 44 Years, Primary Education, Female (As Fraction of Count Person 40 To 44 Years Female)",
+          "dcid": "Count_Person_40To44Years_EducationalAttainmentPrimaryEducation_Female_AsAFractionOf_Count_Person_40To44Years_Female"
+        },
+        {
+          "name": "Population: 40 - 44 Years, Secondary Education, Female (As Fraction of Count Person 40 To 44 Years Female)",
+          "dcid": "Count_Person_40To44Years_EducationalAttainmentSecondaryEducation_Female_AsAFractionOf_Count_Person_40To44Years_Female"
+        },
+        {
+          "name": "Population: 40 - 44 Years, Tertiary Education, Female (As Fraction of Count Person 40 To 44 Years Female)",
+          "dcid": "Count_Person_40To44Years_EducationalAttainmentTertiaryEducation_Female_AsAFractionOf_Count_Person_40To44Years_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years45To49_EducationalAttainment_Gender-Female",
+      "name": "Person With Age = 45 - 49 Years, Educational Attainment, Gender = Female",
+      "statVars": [
+        {
+          "name": "Population: 45 - 49 Years, No Education, Female (As Fraction of Count Person 45 To 49 Years Female)",
+          "dcid": "Count_Person_45To49Years_EducationalAttainmentNoEducation_Female_AsAFractionOf_Count_Person_45To49Years_Female"
+        },
+        {
+          "name": "Population: 45 - 49 Years, Primary Education, Female (As Fraction of Count Person 45 To 49 Years Female)",
+          "dcid": "Count_Person_45To49Years_EducationalAttainmentPrimaryEducation_Female_AsAFractionOf_Count_Person_45To49Years_Female"
+        },
+        {
+          "name": "Population: 45 - 49 Years, Secondary Education, Female (As Fraction of Count Person 45 To 49 Years Female)",
+          "dcid": "Count_Person_45To49Years_EducationalAttainmentSecondaryEducation_Female_AsAFractionOf_Count_Person_45To49Years_Female"
+        },
+        {
+          "name": "Population: 45 - 49 Years, Tertiary Education, Female (As Fraction of Count Person 45 To 49 Years Female)",
+          "dcid": "Count_Person_45To49Years_EducationalAttainmentTertiaryEducation_Female_AsAFractionOf_Count_Person_45To49Years_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years50To54_EducationalAttainment_Gender-Female",
+      "name": "Person With Age = 50 - 54 Years, Educational Attainment, Gender = Female",
+      "statVars": [
+        {
+          "name": "Population: 50 - 54 Years, No Education, Female (As Fraction of Count Person 50 To 54 Years Female)",
+          "dcid": "Count_Person_50To54Years_EducationalAttainmentNoEducation_Female_AsAFractionOf_Count_Person_50To54Years_Female"
+        },
+        {
+          "name": "Population: 50 - 54 Years, Primary Education, Female (As Fraction of Count Person 50 To 54 Years Female)",
+          "dcid": "Count_Person_50To54Years_EducationalAttainmentPrimaryEducation_Female_AsAFractionOf_Count_Person_50To54Years_Female"
+        },
+        {
+          "name": "Population: 50 - 54 Years, Secondary Education, Female (As Fraction of Count Person 50 To 54 Years Female)",
+          "dcid": "Count_Person_50To54Years_EducationalAttainmentSecondaryEducation_Female_AsAFractionOf_Count_Person_50To54Years_Female"
+        },
+        {
+          "name": "Population: 50 - 54 Years, Tertiary Education, Female (As Fraction of Count Person 50 To 54 Years Female)",
+          "dcid": "Count_Person_50To54Years_EducationalAttainmentTertiaryEducation_Female_AsAFractionOf_Count_Person_50To54Years_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years55To59_EducationalAttainment_Gender-Female",
+      "name": "Person With Age = 55 - 59 Years, Educational Attainment, Gender = Female",
+      "statVars": [
+        {
+          "name": "Population: 55 - 59 Years, No Education, Female (As Fraction of Count Person 55 To 59 Years Female)",
+          "dcid": "Count_Person_55To59Years_EducationalAttainmentNoEducation_Female_AsAFractionOf_Count_Person_55To59Years_Female"
+        },
+        {
+          "name": "Population: 55 - 59 Years, Primary Education, Female (As Fraction of Count Person 55 To 59 Years Female)",
+          "dcid": "Count_Person_55To59Years_EducationalAttainmentPrimaryEducation_Female_AsAFractionOf_Count_Person_55To59Years_Female"
+        },
+        {
+          "name": "Population: 55 - 59 Years, Secondary Education, Female (As Fraction of Count Person 55 To 59 Years Female)",
+          "dcid": "Count_Person_55To59Years_EducationalAttainmentSecondaryEducation_Female_AsAFractionOf_Count_Person_55To59Years_Female"
+        },
+        {
+          "name": "Population: 55 - 59 Years, Tertiary Education, Female (As Fraction of Count Person 55 To 59 Years Female)",
+          "dcid": "Count_Person_55To59Years_EducationalAttainmentTertiaryEducation_Female_AsAFractionOf_Count_Person_55To59Years_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years60To64_EducationalAttainment_Gender-Female",
+      "name": "Person With Age = 60 - 64 Years, Educational Attainment, Gender = Female",
+      "statVars": [
+        {
+          "name": "Population: 60 - 64 Years, No Education, Female (As Fraction of Count Person 60 To 64 Years Female)",
+          "dcid": "Count_Person_60To64Years_EducationalAttainmentNoEducation_Female_AsAFractionOf_Count_Person_60To64Years_Female"
+        },
+        {
+          "name": "Population: 60 - 64 Years, Primary Education, Female (As Fraction of Count Person 60 To 64 Years Female)",
+          "dcid": "Count_Person_60To64Years_EducationalAttainmentPrimaryEducation_Female_AsAFractionOf_Count_Person_60To64Years_Female"
+        },
+        {
+          "name": "Population: 60 - 64 Years, Secondary Education, Female (As Fraction of Count Person 60 To 64 Years Female)",
+          "dcid": "Count_Person_60To64Years_EducationalAttainmentSecondaryEducation_Female_AsAFractionOf_Count_Person_60To64Years_Female"
+        },
+        {
+          "name": "Population: 60 - 64 Years, Tertiary Education, Female (As Fraction of Count Person 60 To 64 Years Female)",
+          "dcid": "Count_Person_60To64Years_EducationalAttainmentTertiaryEducation_Female_AsAFractionOf_Count_Person_60To64Years_Female"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/Person_Age-Years7Onwards_EducationalAttainment_Gender-Female",
       "name": "Person With Age = 7 Years or More, Educational Attainment, Gender = Female",
       "statVars": [
@@ -50583,6 +51217,50 @@
         {
           "name": "Population: Years 100, Female, White Alone or In Combination With One or More Other Races",
           "dcid": "Count_Person_100Years_Female_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years15_EducationalAttainment_Gender-Female",
+      "name": "Person With Age = Years 15, Educational Attainment, Gender = Female",
+      "statVars": [
+        {
+          "name": "Population: Years 15, No Education, Female (As Fraction of Count Person 15 Years Female)",
+          "dcid": "Count_Person_15Years_EducationalAttainmentNoEducation_Female_AsAFractionOf_Count_Person_15Years_Female"
+        },
+        {
+          "name": "Population: Years 15, Primary Education, Female (As Fraction of Count Person 15 Years Female)",
+          "dcid": "Count_Person_15Years_EducationalAttainmentPrimaryEducation_Female_AsAFractionOf_Count_Person_15Years_Female"
+        },
+        {
+          "name": "Population: Years 15, Secondary Education, Female (As Fraction of Count Person 15 Years Female)",
+          "dcid": "Count_Person_15Years_EducationalAttainmentSecondaryEducation_Female_AsAFractionOf_Count_Person_15Years_Female"
+        },
+        {
+          "name": "Population: Years 15, Tertiary Education, Female (As Fraction of Count Person 15 Years Female)",
+          "dcid": "Count_Person_15Years_EducationalAttainmentTertiaryEducation_Female_AsAFractionOf_Count_Person_15Years_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years25_EducationalAttainment_Gender-Female",
+      "name": "Person With Age = Years 25, Educational Attainment, Gender = Female",
+      "statVars": [
+        {
+          "name": "Population: Years 25, No Education, Female (As Fraction of Count Person 25 Years Female)",
+          "dcid": "Count_Person_25Years_EducationalAttainmentNoEducation_Female_AsAFractionOf_Count_Person_25Years_Female"
+        },
+        {
+          "name": "Population: Years 25, Primary Education, Female (As Fraction of Count Person 25 Years Female)",
+          "dcid": "Count_Person_25Years_EducationalAttainmentPrimaryEducation_Female_AsAFractionOf_Count_Person_25Years_Female"
+        },
+        {
+          "name": "Population: Years 25, Secondary Education, Female (As Fraction of Count Person 25 Years Female)",
+          "dcid": "Count_Person_25Years_EducationalAttainmentSecondaryEducation_Female_AsAFractionOf_Count_Person_25Years_Female"
+        },
+        {
+          "name": "Population: Years 25, Tertiary Education, Female (As Fraction of Count Person 25 Years Female)",
+          "dcid": "Count_Person_25Years_EducationalAttainmentTertiaryEducation_Female_AsAFractionOf_Count_Person_25Years_Female"
         }
       ]
     },
@@ -53927,6 +54605,24 @@
       ]
     },
     {
+      "dcid": "dc/g/Student_Gender-Female",
+      "name": "Student With Gender = Female",
+      "statVars": [
+        {
+          "name": "Count of Student: Female",
+          "dcid": "Count_Student_Female"
+        },
+        {
+          "name": "Mean Cohort Scale Achievement of Student: Female",
+          "dcid": "dc/1kp45lprzkreb"
+        },
+        {
+          "name": "Mean Grade Cohort Scale Achievement of Student: Female",
+          "dcid": "dc/dnymkydllff48"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/SDGSIPOVEMP1_age_sdgsex-SDGSexEnumF",
       "name": "Employed Population Below International Poverty Line, by Sex And Age With Age, Sex = Female",
       "statVars": [
@@ -53941,6 +54637,24 @@
         {
           "name": "Employed population below international poverty line, by sex and age [25 years old and over, Female]",
           "dcid": "sdg/SI_POV_EMP1.AGE--Y_GE25__SEX--F"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Household_HouseholderGender-Female_InternetSubscriptionType",
+      "name": "Household With Householder Gender = Female, Internet Subscription Type",
+      "statVars": [
+        {
+          "name": "Home Internet is Part of a Bundle, female",
+          "dcid": "Count_Household_Female_InternetBundle_InternetUsageAtHome_IsInternetUser"
+        },
+        {
+          "name": "Mobile Internet Service Used at Home, female",
+          "dcid": "Count_Household_Female_BroadbandOfAnyType_InternetUsageAtHome_IsInternetUser"
+        },
+        {
+          "name": "Publicly-Available Free Internet Service at Home, female",
+          "dcid": "Count_Household_Female_FreeInternet_InternetUsageAtHome_IsInternetUser"
         }
       ]
     },
@@ -54553,24 +55267,6 @@
         {
           "name": "Population: 15 - 50 Years, Birth in The Past 12 Months, Some College or Associates Degree, Female, Unmarried",
           "dcid": "Count_Person_15To50Years_BirthInThePast12Months_EducationalAttainmentSomeCollegeOrAssociatesDegree_Female_Unmarried"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_EducationalAttainment-TertiaryEducation_Gender-Female",
-      "name": "Person With Educational Attainment = Tertiary Education, Gender = Female",
-      "statVars": [
-        {
-          "name": "Population: Tertiary Education, Female",
-          "dcid": "Count_Person_TertiaryEducation_Female"
-        },
-        {
-          "name": "Population: Tertiary Education, Female (As Fraction of Count Person 25 or More Years Female)",
-          "dcid": "Count_Person_25OrMoreYears_Female_TertiaryEducation_AsFractionOf_Count_Person_25OrMoreYears_Female"
-        },
-        {
-          "name": "Population: 25 - 64 Years, Tertiary Education, Female (As Fraction of Count Person 25 To 64 Years Female)",
-          "dcid": "Count_Person_25To64Years_TertiaryEducation_Female_AsAFractionOfCount_Person_25To64Years_Female"
         }
       ]
     },
@@ -55997,6 +56693,24 @@
       ]
     },
     {
+      "dcid": "dc/g/Person_Age-Years15To19_EnrollmentLevel_Gender-Female",
+      "name": "Person With Age = 15 - 19 Years, Enrollment Level, Gender = Female",
+      "statVars": [
+        {
+          "name": "Population: 15 - 19 Years, Primary Education, Female (As Fraction of Count Person 15 To 19 Years Female)",
+          "dcid": "Count_Person_15To19Years_PrimaryEducation_Female_AsAFractionOf_Count_Person_15To19Years_Female"
+        },
+        {
+          "name": "Population: 15 - 19 Years, Secondary Education, Female (As Fraction of Count Person 15 To 19 Years Female)",
+          "dcid": "Count_Person_15To19Years_SecondaryEducation_Female_AsAFractionOf_Count_Person_15To19Years_Female"
+        },
+        {
+          "name": "Population: 15 - 19 Years, Tertiary Education, Female (As Fraction of Count Person 15 To 19 Years Female)",
+          "dcid": "Count_Person_15To19Years_TertiaryEducation_Female_AsAFractionOf_Count_Person_15To19Years_Female"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/Person_Age-Years15To19_Gender-Female_Race-BlackOrAfricanAmericanAlone",
       "name": "Person With Age = 15 - 19 Years, Gender = Female, Race = Black or African American Alone",
       "statVars": [
@@ -56141,6 +56855,24 @@
       ]
     },
     {
+      "dcid": "dc/g/Person_Age-Years20To24_EnrollmentLevel_Gender-Female",
+      "name": "Person With Age = 20 - 24 Years, Enrollment Level, Gender = Female",
+      "statVars": [
+        {
+          "name": "Population: 20 - 24 Years, Primary Education, Female (As Fraction of Count Person 20 To 24 Years Female)",
+          "dcid": "Count_Person_20To24Years_PrimaryEducation_Female_AsAFractionOf_Count_Person_20To24Years_Female"
+        },
+        {
+          "name": "Population: 20 - 24 Years, Secondary Education, Female (As Fraction of Count Person 20 To 24 Years Female)",
+          "dcid": "Count_Person_20To24Years_SecondaryEducation_Female_AsAFractionOf_Count_Person_20To24Years_Female"
+        },
+        {
+          "name": "Population: 20 - 24 Years, Tertiary Education, Female (As Fraction of Count Person 20 To 24 Years Female)",
+          "dcid": "Count_Person_20To24Years_TertiaryEducation_Female_AsAFractionOf_Count_Person_20To24Years_Female"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/Person_Age-Years20To24_Gender-Female_Religion",
       "name": "Person With Age = 20 - 24 Years, Gender = Female, Religion",
       "statVars": [
@@ -56209,6 +56941,24 @@
         {
           "name": "Upper Confidence Interval Limit, Prevalence of 21 - 65 Years, Female, Received Cervical Cancer Screening",
           "dcid": "UpperConfidenceIntervalLimit_Percent_Person_21To65Years_Female_ReceivedCervicalCancerScreening"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years25To29_EnrollmentLevel_Gender-Female",
+      "name": "Person With Age = 25 - 29 Years, Enrollment Level, Gender = Female",
+      "statVars": [
+        {
+          "name": "Population: 25 - 29 Years, Primary Education, Female (As Fraction of Count Person 25 To 29 Years Female)",
+          "dcid": "Count_Person_25To29Years_PrimaryEducation_Female_AsAFractionOf_Count_Person_25To29Years_Female"
+        },
+        {
+          "name": "Population: 25 - 29 Years, Secondary Education, Female (As Fraction of Count Person 25 To 29 Years Female)",
+          "dcid": "Count_Person_25To29Years_SecondaryEducation_Female_AsAFractionOf_Count_Person_25To29Years_Female"
+        },
+        {
+          "name": "Population: 25 - 29 Years, Tertiary Education, Female (As Fraction of Count Person 25 To 29 Years Female)",
+          "dcid": "Count_Person_25To29Years_TertiaryEducation_Female_AsAFractionOf_Count_Person_25To29Years_Female"
         }
       ]
     },
@@ -56285,6 +57035,24 @@
       ]
     },
     {
+      "dcid": "dc/g/Person_Age-Years30To34_EnrollmentLevel_Gender-Female",
+      "name": "Person With Age = 30 - 34 Years, Enrollment Level, Gender = Female",
+      "statVars": [
+        {
+          "name": "Population: 30 - 34 Years, Primary Education, Female (As Fraction of Count Person 30 To 34 Years Female)",
+          "dcid": "Count_Person_30To34Years_PrimaryEducation_Female_AsAFractionOf_Count_Person_30To34Years_Female"
+        },
+        {
+          "name": "Population: 30 - 34 Years, Secondary Education, Female (As Fraction of Count Person 30 To 34 Years Female)",
+          "dcid": "Count_Person_30To34Years_SecondaryEducation_Female_AsAFractionOf_Count_Person_30To34Years_Female"
+        },
+        {
+          "name": "Population: 30 - 34 Years, Tertiary Education, Female (As Fraction of Count Person 30 To 34 Years Female)",
+          "dcid": "Count_Person_30To34Years_TertiaryEducation_Female_AsAFractionOf_Count_Person_30To34Years_Female"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/Person_Age-Years30To34_Gender-Female_Religion",
       "name": "Person With Age = 30 - 34 Years, Gender = Female, Religion",
       "statVars": [
@@ -56299,6 +57067,24 @@
         {
           "name": "Population: 30 - 34 Years, Female, Irreligion",
           "dcid": "Count_Person_30To34Years_Female_Irreligion"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years35To39_EnrollmentLevel_Gender-Female",
+      "name": "Person With Age = 35 - 39 Years, Enrollment Level, Gender = Female",
+      "statVars": [
+        {
+          "name": "Population: 35 - 39 Years, Primary Education, Female (As Fraction of Count Person 35 To 39 Years Female)",
+          "dcid": "Count_Person_35To39Years_PrimaryEducation_Female_AsAFractionOf_Count_Person_35To39Years_Female"
+        },
+        {
+          "name": "Population: 35 - 39 Years, Secondary Education, Female (As Fraction of Count Person 35 To 39 Years Female)",
+          "dcid": "Count_Person_35To39Years_SecondaryEducation_Female_AsAFractionOf_Count_Person_35To39Years_Female"
+        },
+        {
+          "name": "Population: 35 - 39 Years, Tertiary Education, Female (As Fraction of Count Person 35 To 39 Years Female)",
+          "dcid": "Count_Person_35To39Years_TertiaryEducation_Female_AsAFractionOf_Count_Person_35To39Years_Female"
         }
       ]
     },
@@ -56357,6 +57143,24 @@
       ]
     },
     {
+      "dcid": "dc/g/Person_Age-Years40To44_EnrollmentLevel_Gender-Female",
+      "name": "Person With Age = 40 - 44 Years, Enrollment Level, Gender = Female",
+      "statVars": [
+        {
+          "name": "Population: 40 - 44 Years, Primary Education, Female (As Fraction of Count Person 40 To 44 Years Female)",
+          "dcid": "Count_Person_40To44Years_PrimaryEducation_Female_AsAFractionOf_Count_Person_40To44Years_Female"
+        },
+        {
+          "name": "Population: 40 - 44 Years, Secondary Education, Female (As Fraction of Count Person 40 To 44 Years Female)",
+          "dcid": "Count_Person_40To44Years_SecondaryEducation_Female_AsAFractionOf_Count_Person_40To44Years_Female"
+        },
+        {
+          "name": "Population: 40 - 44 Years, Tertiary Education, Female (As Fraction of Count Person 40 To 44 Years Female)",
+          "dcid": "Count_Person_40To44Years_TertiaryEducation_Female_AsAFractionOf_Count_Person_40To44Years_Female"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/Person_Age-Years40To44_Gender-Female_Religion",
       "name": "Person With Age = 40 - 44 Years, Gender = Female, Religion",
       "statVars": [
@@ -56371,6 +57175,24 @@
         {
           "name": "Population: 40 - 44 Years, Female, Irreligion",
           "dcid": "Count_Person_40To44Years_Female_Irreligion"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years45To49_EnrollmentLevel_Gender-Female",
+      "name": "Person With Age = 45 - 49 Years, Enrollment Level, Gender = Female",
+      "statVars": [
+        {
+          "name": "Population: 45 - 49 Years, Primary Education, Female (As Fraction of Count Person 45 To 49 Years Female)",
+          "dcid": "Count_Person_45To49Years_PrimaryEducation_Female_AsAFractionOf_Count_Person_45To49Years_Female"
+        },
+        {
+          "name": "Population: 45 - 49 Years, Secondary Education, Female (As Fraction of Count Person 45 To 49 Years Female)",
+          "dcid": "Count_Person_45To49Years_SecondaryEducation_Female_AsAFractionOf_Count_Person_45To49Years_Female"
+        },
+        {
+          "name": "Population: 45 - 49 Years, Tertiary Education, Female (As Fraction of Count Person 45 To 49 Years Female)",
+          "dcid": "Count_Person_45To49Years_TertiaryEducation_Female_AsAFractionOf_Count_Person_45To49Years_Female"
         }
       ]
     },
@@ -56429,6 +57251,24 @@
       ]
     },
     {
+      "dcid": "dc/g/Person_Age-Years50To54_EnrollmentLevel_Gender-Female",
+      "name": "Person With Age = 50 - 54 Years, Enrollment Level, Gender = Female",
+      "statVars": [
+        {
+          "name": "Population: 50 - 54 Years, Primary Education, Female (As Fraction of Count Person 50 To 54 Years Female)",
+          "dcid": "Count_Person_50To54Years_PrimaryEducation_Female_AsAFractionOf_Count_Person_50To54Years_Female"
+        },
+        {
+          "name": "Population: 50 - 54 Years, Secondary Education, Female (As Fraction of Count Person 50 To 54 Years Female)",
+          "dcid": "Count_Person_50To54Years_SecondaryEducation_Female_AsAFractionOf_Count_Person_50To54Years_Female"
+        },
+        {
+          "name": "Population: 50 - 54 Years, Tertiary Education, Female (As Fraction of Count Person 50 To 54 Years Female)",
+          "dcid": "Count_Person_50To54Years_TertiaryEducation_Female_AsAFractionOf_Count_Person_50To54Years_Female"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/Person_Age-Years50To54_Gender-Female_Religion",
       "name": "Person With Age = 50 - 54 Years, Gender = Female, Religion",
       "statVars": [
@@ -56447,6 +57287,24 @@
       ]
     },
     {
+      "dcid": "dc/g/Person_Age-Years55To59_EnrollmentLevel_Gender-Female",
+      "name": "Person With Age = 55 - 59 Years, Enrollment Level, Gender = Female",
+      "statVars": [
+        {
+          "name": "Population: 55 - 59 Years, Primary Education, Female (As Fraction of Count Person 55 To 59 Years Female)",
+          "dcid": "Count_Person_55To59Years_PrimaryEducation_Female_AsAFractionOf_Count_Person_55To59Years_Female"
+        },
+        {
+          "name": "Population: 55 - 59 Years, Secondary Education, Female (As Fraction of Count Person 55 To 59 Years Female)",
+          "dcid": "Count_Person_55To59Years_SecondaryEducation_Female_AsAFractionOf_Count_Person_55To59Years_Female"
+        },
+        {
+          "name": "Population: 55 - 59 Years, Tertiary Education, Female (As Fraction of Count Person 55 To 59 Years Female)",
+          "dcid": "Count_Person_55To59Years_TertiaryEducation_Female_AsAFractionOf_Count_Person_55To59Years_Female"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/Person_Age-Years55To59_Gender-Female_Religion",
       "name": "Person With Age = 55 - 59 Years, Gender = Female, Religion",
       "statVars": [
@@ -56461,6 +57319,24 @@
         {
           "name": "Population: 55 - 59 Years, Female, Irreligion",
           "dcid": "Count_Person_55To59Years_Female_Irreligion"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years60To64_EnrollmentLevel_Gender-Female",
+      "name": "Person With Age = 60 - 64 Years, Enrollment Level, Gender = Female",
+      "statVars": [
+        {
+          "name": "Population: 60 - 64 Years, Primary Education, Female (As Fraction of Count Person 60 To 64 Years Female)",
+          "dcid": "Count_Person_60To64Years_PrimaryEducation_Female_AsAFractionOf_Count_Person_60To64Years_Female"
+        },
+        {
+          "name": "Population: 60 - 64 Years, Secondary Education, Female (As Fraction of Count Person 60 To 64 Years Female)",
+          "dcid": "Count_Person_60To64Years_SecondaryEducation_Female_AsAFractionOf_Count_Person_60To64Years_Female"
+        },
+        {
+          "name": "Population: 60 - 64 Years, Tertiary Education, Female (As Fraction of Count Person 60 To 64 Years Female)",
+          "dcid": "Count_Person_60To64Years_TertiaryEducation_Female_AsAFractionOf_Count_Person_60To64Years_Female"
         }
       ]
     },
@@ -56515,546 +57391,6 @@
         {
           "name": "Upper Confidence Interval Limit, Prevalence of 65 Years or More, Female, Core Preventive Services",
           "dcid": "UpperConfidenceIntervalLimit_Percent_Person_65OrMoreYears_Female_ReceivedCorePreventiveServices"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years70To74_Gender-Female_Religion",
-      "name": "Person With Age = 70 - 74 Years, Gender = Female, Religion",
-      "statVars": [
-        {
-          "name": "Population: 70 - 74 Years, Female, Catholicism",
-          "dcid": "Count_Person_70To74Years_Female_Catholicism"
-        },
-        {
-          "name": "Population: 70 - 74 Years, Female, INEGI_Religion Other Than Catholicism",
-          "dcid": "Count_Person_70To74Years_Female_INEGIReligionOtherThanCatholicism"
-        },
-        {
-          "name": "Population: 70 - 74 Years, Female, Irreligion",
-          "dcid": "Count_Person_70To74Years_Female_Irreligion"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years75To79_Gender-Female_Religion",
-      "name": "Person With Age = 75 - 79 Years, Gender = Female, Religion",
-      "statVars": [
-        {
-          "name": "Population: 75 - 79 Years, Female, Catholicism",
-          "dcid": "Count_Person_75To79Years_Female_Catholicism"
-        },
-        {
-          "name": "Population: 75 - 79 Years, Female, INEGI_Religion Other Than Catholicism",
-          "dcid": "Count_Person_75To79Years_Female_INEGIReligionOtherThanCatholicism"
-        },
-        {
-          "name": "Population: 75 - 79 Years, Female, Irreligion",
-          "dcid": "Count_Person_75To79Years_Female_Irreligion"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years80To84_Gender-Female_Religion",
-      "name": "Person With Age = 80 - 84 Years, Gender = Female, Religion",
-      "statVars": [
-        {
-          "name": "Population: 80 - 84 Years, Female, Catholicism",
-          "dcid": "Count_Person_80To84Years_Female_Catholicism"
-        },
-        {
-          "name": "Population: 80 - 84 Years, Female, INEGI_Religion Other Than Catholicism",
-          "dcid": "Count_Person_80To84Years_Female_INEGIReligionOtherThanCatholicism"
-        },
-        {
-          "name": "Population: 80 - 84 Years, Female, Irreligion",
-          "dcid": "Count_Person_80To84Years_Female_Irreligion"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years85Onwards_Gender-Female_Religion",
-      "name": "Person With Age = 85 Years or More, Gender = Female, Religion",
-      "statVars": [
-        {
-          "name": "Population: 85 Years or More, Female, Catholicism",
-          "dcid": "Count_Person_85OrMoreYears_Female_Catholicism"
-        },
-        {
-          "name": "Population: 85 Years or More, Female, INEGI_Religion Other Than Catholicism",
-          "dcid": "Count_Person_85OrMoreYears_Female_INEGIReligionOtherThanCatholicism"
-        },
-        {
-          "name": "Population: 85 Years or More, Female, Irreligion",
-          "dcid": "Count_Person_85OrMoreYears_Female_Irreligion"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_CitizenshipStatus-CitizenOutsideEU27_ExerciseType_Gender-Female",
-      "name": "Person With Citizenship Status = Citizen Outside EU 27, Exercise Type, Gender = Female",
-      "statVars": [
-        {
-          "name": "Population: Citizen Outside EU 27, Aerobic \u0026 Muscle Strengthening, Female, Health Enhancing Physical Activity (As Fraction of Count Person Citizen Outside EU 27 Female)",
-          "dcid": "Percent_AerobicOrMuscleStrengthening_HealthEnhancingPhysicalActivity_In_Count_Person_CitizenOutsideEU27_Female"
-        },
-        {
-          "name": "Population: Citizen Outside EU 27, Aerobic, Female, Health Enhancing Physical Activity (As Fraction of Count Person Citizen Outside EU 27 Female)",
-          "dcid": "Percent_Aerobic_HealthEnhancingPhysicalActivity_In_Count_Person_CitizenOutsideEU27_Female"
-        },
-        {
-          "name": "Population: Citizen Outside EU 27, Muscle Strengthening, Female, Health Enhancing Physical Activity (As Fraction of Count Person Citizen Outside EU 27 Female)",
-          "dcid": "Percent_MuscleStrengthening_HealthEnhancingPhysicalActivity_In_Count_Person_CitizenOutsideEU27_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_CitizenshipStatus-CitizenOutsideEU28_ConsumptionQuantity_Gender-Female",
-      "name": "Person With Citizenship Status = Citizen Outside EU 28, Consumption Quantity, Gender = Female",
-      "statVars": [
-        {
-          "name": "Percentage Daily, 0 Portions, Consumption Of Fruits Or Consumption Of Vegetables Among Citizen Outside EU28, Female Population",
-          "dcid": "Percent_Daily_0Portion_ConsumptionOfFruitsOrConsumptionOfVegetables_In_Count_Person_CitizenOutsideEU28_Female"
-        },
-        {
-          "name": "Percentage Daily, 5 Portions Or More, Consumption Of Fruits Or Consumption Of Vegetables Among Citizen Outside EU28, Female Population",
-          "dcid": "Percent_Daily_5PortionOrMore_ConsumptionOfFruitsOrConsumptionOfVegetables_In_Count_Person_CitizenOutsideEU28_Female"
-        },
-        {
-          "name": "Percentage Daily, From 1 To 4 Portions, Consumption Of Fruits Or Consumption Of Vegetables Among Citizen Outside EU28, Female Population",
-          "dcid": "Percent_Daily_From1To4Portion_ConsumptionOfFruitsOrConsumptionOfVegetables_In_Count_Person_CitizenOutsideEU28_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_CitizenshipStatus-CitizenOutsideEU28_ExerciseType_Gender-Female",
-      "name": "Person With Citizenship Status = Citizen Outside EU 28, Exercise Type, Gender = Female",
-      "statVars": [
-        {
-          "name": "Percentage Aerobic Or Muscle Strengthening, Health Enhancing Physical Activity Among Citizen Outside EU28, Female Population",
-          "dcid": "Percent_AerobicOrMuscleStrengthening_HealthEnhancingPhysicalActivity_In_Count_Person_CitizenOutsideEU28_Female"
-        },
-        {
-          "name": "Percentage Aerobic, Health Enhancing Physical Activity Among Citizen Outside EU28, Female Population",
-          "dcid": "Percent_Aerobic_HealthEnhancingPhysicalActivity_In_Count_Person_CitizenOutsideEU28_Female"
-        },
-        {
-          "name": "Percentage Muscle Strengthening, Health Enhancing Physical Activity Among Citizen Outside EU28, Female Population",
-          "dcid": "Percent_MuscleStrengthening_HealthEnhancingPhysicalActivity_In_Count_Person_CitizenOutsideEU28_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_CitizenshipStatus-CitizenOutsideEU28_Gender-Female_SocialSupportLevel",
-      "name": "Person With Citizenship Status = Citizen Outside EU 28, Gender = Female, Social Support Level",
-      "statVars": [
-        {
-          "name": "Percentage Receiving Intermediate Social Support Among Citizen Outside EU28, Female Population",
-          "dcid": "Percent_ReceivingIntermediateSocialSupport_In_Count_Person_CitizenOutsideEU28_Female"
-        },
-        {
-          "name": "Percentage Receiving Poor Social Support Among Citizen Outside EU28, Female Population",
-          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_CitizenOutsideEU28_Female"
-        },
-        {
-          "name": "Percentage Receiving Strong Social Support Among Citizen Outside EU28, Female Population",
-          "dcid": "Percent_ReceivingStrongSocialSupport_In_Count_Person_CitizenOutsideEU28_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_CitizenshipStatus-Citizen_ConsumptionQuantity_Gender-Female",
-      "name": "Person With Citizenship Status = Citizen, Consumption Quantity, Gender = Female",
-      "statVars": [
-        {
-          "name": "Percentage Daily, 0 Portions, Consumption Of Fruits Or Consumption Of Vegetables Among Citizen, Female Population",
-          "dcid": "Percent_Daily_0Portion_ConsumptionOfFruitsOrConsumptionOfVegetables_In_Count_Person_Citizen_Female"
-        },
-        {
-          "name": "Percentage Daily, 5 Portions Or More, Consumption Of Fruits Or Consumption Of Vegetables Among Citizen, Female Population",
-          "dcid": "Percent_Daily_5PortionOrMore_ConsumptionOfFruitsOrConsumptionOfVegetables_In_Count_Person_Citizen_Female"
-        },
-        {
-          "name": "Percentage Daily, From 1 To 4 Portions, Consumption Of Fruits Or Consumption Of Vegetables Among Citizen, Female Population",
-          "dcid": "Percent_Daily_From1To4Portion_ConsumptionOfFruitsOrConsumptionOfVegetables_In_Count_Person_Citizen_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_CitizenshipStatus-Citizen_ExerciseType_Gender-Female",
-      "name": "Person With Citizenship Status = Citizen, Exercise Type, Gender = Female",
-      "statVars": [
-        {
-          "name": "Percentage Aerobic Or Muscle Strengthening, Health Enhancing Physical Activity Among Citizen, Female Population",
-          "dcid": "Percent_AerobicOrMuscleStrengthening_HealthEnhancingPhysicalActivity_In_Count_Person_Citizen_Female"
-        },
-        {
-          "name": "Percentage Aerobic, Health Enhancing Physical Activity Among Citizen, Female Population",
-          "dcid": "Percent_Aerobic_HealthEnhancingPhysicalActivity_In_Count_Person_Citizen_Female"
-        },
-        {
-          "name": "Percentage Muscle Strengthening, Health Enhancing Physical Activity Among Citizen, Female Population",
-          "dcid": "Percent_MuscleStrengthening_HealthEnhancingPhysicalActivity_In_Count_Person_Citizen_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_CitizenshipStatus-Citizen_Gender-Female_SocialSupportLevel",
-      "name": "Person With Citizenship Status = Citizen, Gender = Female, Social Support Level",
-      "statVars": [
-        {
-          "name": "Percentage Receiving Intermediate Social Support Among Citizen, Female Population",
-          "dcid": "Percent_ReceivingIntermediateSocialSupport_In_Count_Person_Citizen_Female"
-        },
-        {
-          "name": "Percentage Receiving Poor Social Support Among Citizen, Female Population",
-          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Citizen_Female"
-        },
-        {
-          "name": "Percentage Receiving Strong Social Support Among Citizen, Female Population",
-          "dcid": "Percent_ReceivingStrongSocialSupport_In_Count_Person_Citizen_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_CitizenshipStatus-NotACitizen_ConsumptionQuantity_Gender-Female",
-      "name": "Person With Citizenship Status = Not ACitizen, Consumption Quantity, Gender = Female",
-      "statVars": [
-        {
-          "name": "Percentage Daily, 0 Portions, Consumption Of Fruits Or Consumption Of Vegetables Among Not a Citizen, Female Population",
-          "dcid": "Percent_Daily_0Portion_ConsumptionOfFruitsOrConsumptionOfVegetables_In_Count_Person_NotACitizen_Female"
-        },
-        {
-          "name": "Percentage Daily, 5 Portions Or More, Consumption Of Fruits Or Consumption Of Vegetables Among Not a Citizen, Female Population",
-          "dcid": "Percent_Daily_5PortionOrMore_ConsumptionOfFruitsOrConsumptionOfVegetables_In_Count_Person_NotACitizen_Female"
-        },
-        {
-          "name": "Percentage Daily, From 1 To 4 Portions, Consumption Of Fruits Or Consumption Of Vegetables Among Not a Citizen, Female Population",
-          "dcid": "Percent_Daily_From1To4Portion_ConsumptionOfFruitsOrConsumptionOfVegetables_In_Count_Person_NotACitizen_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_CitizenshipStatus-NotACitizen_ExerciseType_Gender-Female",
-      "name": "Person With Citizenship Status = Not ACitizen, Exercise Type, Gender = Female",
-      "statVars": [
-        {
-          "name": "Percentage Aerobic Or Muscle Strengthening, Health Enhancing Physical Activity Among Not A Citizen, Female Population",
-          "dcid": "Percent_AerobicOrMuscleStrengthening_HealthEnhancingPhysicalActivity_In_Count_Person_NotACitizen_Female"
-        },
-        {
-          "name": "Percentage Aerobic, Health Enhancing Physical Activity Among Not A Citizen, Female Population",
-          "dcid": "Percent_Aerobic_HealthEnhancingPhysicalActivity_In_Count_Person_NotACitizen_Female"
-        },
-        {
-          "name": "Percentage Muscle Strengthening, Health Enhancing Physical Activity Among Not A Citizen, Female Population",
-          "dcid": "Percent_MuscleStrengthening_HealthEnhancingPhysicalActivity_In_Count_Person_NotACitizen_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_CitizenshipStatus-NotACitizen_Gender-Female_SocialSupportLevel",
-      "name": "Person With Citizenship Status = Not ACitizen, Gender = Female, Social Support Level",
-      "statVars": [
-        {
-          "name": "Percentage Receiving Intermediate Social Support Among Not A Citizen, Female Population",
-          "dcid": "Percent_ReceivingIntermediateSocialSupport_In_Count_Person_NotACitizen_Female"
-        },
-        {
-          "name": "Percentage Receiving Poor Social Support Among Not A Citizen, Female Population",
-          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_NotACitizen_Female"
-        },
-        {
-          "name": "Percentage Receiving Strong Social Support Among Not A Citizen, Female Population",
-          "dcid": "Percent_ReceivingStrongSocialSupport_In_Count_Person_NotACitizen_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_CitizenshipStatus-WithinEU27AndNotACitizen_ExerciseType_Gender-Female",
-      "name": "Person With Citizenship Status = Within EU 27 And Not ACitizen, Exercise Type, Gender = Female",
-      "statVars": [
-        {
-          "name": "Population: Within EU 27 And Not ACitizen, Aerobic \u0026 Muscle Strengthening, Female, Health Enhancing Physical Activity (As Fraction of Count Person Within EU 27 And Not ACitizen Female)",
-          "dcid": "Percent_AerobicOrMuscleStrengthening_HealthEnhancingPhysicalActivity_In_Count_Person_WithinEU27AndNotACitizen_Female"
-        },
-        {
-          "name": "Population: Within EU 27 And Not ACitizen, Aerobic, Female, Health Enhancing Physical Activity (As Fraction of Count Person Within EU 27 And Not ACitizen Female)",
-          "dcid": "Percent_Aerobic_HealthEnhancingPhysicalActivity_In_Count_Person_WithinEU27AndNotACitizen_Female"
-        },
-        {
-          "name": "Population: Within EU 27 And Not ACitizen, Muscle Strengthening, Female, Health Enhancing Physical Activity (As Fraction of Count Person Within EU 27 And Not ACitizen Female)",
-          "dcid": "Percent_MuscleStrengthening_HealthEnhancingPhysicalActivity_In_Count_Person_WithinEU27AndNotACitizen_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_CitizenshipStatus-WithinEU28AndNotACitizen_ConsumptionQuantity_Gender-Female",
-      "name": "Person With Citizenship Status = Within EU 28 And Not ACitizen, Consumption Quantity, Gender = Female",
-      "statVars": [
-        {
-          "name": "Percentage Daily, 0 Portions, Consumption Of Fruits Or Consumption Of Vegetables Among Within EU28 And Not a Citizen, Female Population",
-          "dcid": "Percent_Daily_0Portion_ConsumptionOfFruitsOrConsumptionOfVegetables_In_Count_Person_WithinEU28AndNotACitizen_Female"
-        },
-        {
-          "name": "Percentage Daily, 5 Portions Or More, Consumption Of Fruits Or Consumption Of Vegetables Among Within EU28 And Not a Citizen, Female Population",
-          "dcid": "Percent_Daily_5PortionOrMore_ConsumptionOfFruitsOrConsumptionOfVegetables_In_Count_Person_WithinEU28AndNotACitizen_Female"
-        },
-        {
-          "name": "Percentage Daily, From 1 To 4 Portions, Consumption Of Fruits Or Consumption Of Vegetables Among Within EU28 And Not a Citizen, Female Population",
-          "dcid": "Percent_Daily_From1To4Portion_ConsumptionOfFruitsOrConsumptionOfVegetables_In_Count_Person_WithinEU28AndNotACitizen_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_CitizenshipStatus-WithinEU28AndNotACitizen_ExerciseType_Gender-Female",
-      "name": "Person With Citizenship Status = Within EU 28 And Not ACitizen, Exercise Type, Gender = Female",
-      "statVars": [
-        {
-          "name": "Percentage Aerobic Or Muscle Strengthening, Health Enhancing Physical Activity Among Within EU28 And Not A Citizen, Female Population",
-          "dcid": "Percent_AerobicOrMuscleStrengthening_HealthEnhancingPhysicalActivity_In_Count_Person_WithinEU28AndNotACitizen_Female"
-        },
-        {
-          "name": "Percentage Aerobic, Health Enhancing Physical Activity Among Within EU28 And Not A Citizen, Female Population",
-          "dcid": "Percent_Aerobic_HealthEnhancingPhysicalActivity_In_Count_Person_WithinEU28AndNotACitizen_Female"
-        },
-        {
-          "name": "Percentage Muscle Strengthening, Health Enhancing Physical Activity Among Within EU28 And Not A Citizen, Female Population",
-          "dcid": "Percent_MuscleStrengthening_HealthEnhancingPhysicalActivity_In_Count_Person_WithinEU28AndNotACitizen_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_CitizenshipStatus-WithinEU28AndNotACitizen_Gender-Female_SocialSupportLevel",
-      "name": "Person With Citizenship Status = Within EU 28 And Not ACitizen, Gender = Female, Social Support Level",
-      "statVars": [
-        {
-          "name": "Percentage Receiving Intermediate Social Support Among Within EU28 And Not A Citizen, Female Population",
-          "dcid": "Percent_ReceivingIntermediateSocialSupport_In_Count_Person_WithinEU28AndNotACitizen_Female"
-        },
-        {
-          "name": "Percentage Receiving Poor Social Support Among Within EU28 And Not A Citizen, Female Population",
-          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_WithinEU28AndNotACitizen_Female"
-        },
-        {
-          "name": "Percentage Receiving Strong Social Support Among Within EU28 And Not A Citizen, Female Population",
-          "dcid": "Percent_ReceivingStrongSocialSupport_In_Count_Person_WithinEU28AndNotACitizen_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_ConsumptionQuantity-Portion1To4_EducationalAttainment_Gender-Female",
-      "name": "Person With Consumption Quantity = 1 - 4 Portion, Educational Attainment, Gender = Female",
-      "statVars": [
-        {
-          "name": "Percentage Daily, From 1 To 4 Portions, Consumption Of Fruits Or Consumption Of Vegetables Among Less Than Primary Education Or Primary Education Or Lower Secondary Education, Female Population",
-          "dcid": "Percent_Daily_From1To4Portion_ConsumptionOfFruitsOrConsumptionOfVegetables_In_Count_Person_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_Female"
-        },
-        {
-          "name": "Percentage Daily, From 1 To 4 Portions, Consumption Of Fruits Or Consumption Of Vegetables Among Tertiary Education, Female Population",
-          "dcid": "Percent_Daily_From1To4Portion_ConsumptionOfFruitsOrConsumptionOfVegetables_In_Count_Person_TertiaryEducation_Female"
-        },
-        {
-          "name": "Percentage Daily, From 1 To 4 Portions, Consumption Of Fruits Or Consumption Of Vegetables Among Upper Secondary Education Or Post Secondary Non Tertiary Education, Female Population",
-          "dcid": "Percent_Daily_From1To4Portion_ConsumptionOfFruitsOrConsumptionOfVegetables_In_Count_Person_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_ConsumptionQuantity-Portion1To4_Gender-Female_PlaceOfResidenceClassification",
-      "name": "Person With Consumption Quantity = 1 - 4 Portion, Gender = Female, Place of Residence Classification",
-      "statVars": [
-        {
-          "name": "Percentage Daily, From 1 To 4 Portions, Consumption Of Fruits Or Consumption Of Vegetables Among Rural, Female Population",
-          "dcid": "Percent_Daily_From1To4Portion_ConsumptionOfFruitsOrConsumptionOfVegetables_In_Count_Person_Rural_Female"
-        },
-        {
-          "name": "Percentage Daily, From 1 To 4 Portions, Consumption Of Fruits Or Consumption Of Vegetables Among Semi Urban, Female Population",
-          "dcid": "Percent_Daily_From1To4Portion_ConsumptionOfFruitsOrConsumptionOfVegetables_In_Count_Person_SemiUrban_Female"
-        },
-        {
-          "name": "Percentage Daily, From 1 To 4 Portions, Consumption Of Fruits Or Consumption Of Vegetables Among Urban, Female Population",
-          "dcid": "Percent_Daily_From1To4Portion_ConsumptionOfFruitsOrConsumptionOfVegetables_In_Count_Person_Urban_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_ConsumptionQuantity-CigarettesUpto20_Gender-Female_PlaceOfResidenceClassification",
-      "name": "Person With Consumption Quantity = 20 Cigarettes or Less, Gender = Female, Place of Residence Classification",
-      "statVars": [
-        {
-          "name": "Percentage Daily, Less Than 20 Cigarettes Per Day, Tobacco Smoking, Cigarettes Among Rural, Female Population",
-          "dcid": "Percent_Daily_LessThan20CigarettesPerDay_TobaccoSmoking_Cigarettes_In_Count_Person_Rural_Female"
-        },
-        {
-          "name": "Percentage Daily, Less Than 20 Cigarettes Per Day, Tobacco Smoking, Cigarettes Among Semi Urban, Female Population",
-          "dcid": "Percent_Daily_LessThan20CigarettesPerDay_TobaccoSmoking_Cigarettes_In_Count_Person_SemiUrban_Female"
-        },
-        {
-          "name": "Percentage Daily, Less Than 20 Cigarettes Per Day, Tobacco Smoking, Cigarettes Among Urban, Female Population",
-          "dcid": "Percent_Daily_LessThan20CigarettesPerDay_TobaccoSmoking_Cigarettes_In_Count_Person_Urban_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_ConsumptionQuantity-Cigarettes20Onwards_Gender-Female_PlaceOfResidenceClassification",
-      "name": "Person With Consumption Quantity = 20 Cigarettes or More, Gender = Female, Place of Residence Classification",
-      "statVars": [
-        {
-          "name": "Percentage Daily, 20 Or More Cigarettes Per Day, Tobacco Smoking, Cigarettes Among Rural, Female Population",
-          "dcid": "Percent_Daily_20OrMoreCigarettesPerDay_TobaccoSmoking_Cigarettes_In_Count_Person_Rural_Female"
-        },
-        {
-          "name": "Percentage Daily, 20 Or More Cigarettes Per Day, Tobacco Smoking, Cigarettes Among Semi Urban, Female Population",
-          "dcid": "Percent_Daily_20OrMoreCigarettesPerDay_TobaccoSmoking_Cigarettes_In_Count_Person_SemiUrban_Female"
-        },
-        {
-          "name": "Percentage Daily, 20 Or More Cigarettes Per Day, Tobacco Smoking, Cigarettes Among Urban, Female Population",
-          "dcid": "Percent_Daily_20OrMoreCigarettesPerDay_TobaccoSmoking_Cigarettes_In_Count_Person_Urban_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_ConsumptionQuantity-Portion5Onwards_EducationalAttainment_Gender-Female",
-      "name": "Person With Consumption Quantity = 5 Portion or More, Educational Attainment, Gender = Female",
-      "statVars": [
-        {
-          "name": "Percentage Daily, 5 Portions Or More, Consumption Of Fruits Or Consumption Of Vegetables Among Less Than Primary Education Or Primary Education Or Lower Secondary Education, Female Population",
-          "dcid": "Percent_Daily_5PortionOrMore_ConsumptionOfFruitsOrConsumptionOfVegetables_In_Count_Person_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_Female"
-        },
-        {
-          "name": "Percentage Daily, 5 Portions Or More, Consumption Of Fruits Or Consumption Of Vegetables Among Tertiary Education, Female Population",
-          "dcid": "Percent_Daily_5PortionOrMore_ConsumptionOfFruitsOrConsumptionOfVegetables_In_Count_Person_TertiaryEducation_Female"
-        },
-        {
-          "name": "Percentage Daily, 5 Portions Or More, Consumption Of Fruits Or Consumption Of Vegetables Among Upper Secondary Education Or Post Secondary Non Tertiary Education, Female Population",
-          "dcid": "Percent_Daily_5PortionOrMore_ConsumptionOfFruitsOrConsumptionOfVegetables_In_Count_Person_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_ConsumptionQuantity-Portion5Onwards_Gender-Female_PlaceOfResidenceClassification",
-      "name": "Person With Consumption Quantity = 5 Portion or More, Gender = Female, Place of Residence Classification",
-      "statVars": [
-        {
-          "name": "Percentage Daily, 5 Portions Or More, Consumption Of Fruits Or Consumption Of Vegetables Among Rural, Female Population",
-          "dcid": "Percent_Daily_5PortionOrMore_ConsumptionOfFruitsOrConsumptionOfVegetables_In_Count_Person_Rural_Female"
-        },
-        {
-          "name": "Percentage Daily, 5 Portions Or More, Consumption Of Fruits Or Consumption Of Vegetables Among Semi Urban, Female Population",
-          "dcid": "Percent_Daily_5PortionOrMore_ConsumptionOfFruitsOrConsumptionOfVegetables_In_Count_Person_SemiUrban_Female"
-        },
-        {
-          "name": "Percentage Daily, 5 Portions Or More, Consumption Of Fruits Or Consumption Of Vegetables Among Urban, Female Population",
-          "dcid": "Percent_Daily_5PortionOrMore_ConsumptionOfFruitsOrConsumptionOfVegetables_In_Count_Person_Urban_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_ConsumptionQuantity-Portion0_EducationalAttainment_Gender-Female",
-      "name": "Person With Consumption Quantity = Portion 0, Educational Attainment, Gender = Female",
-      "statVars": [
-        {
-          "name": "Percentage Daily, 0 Portions, Consumption Of Fruits Or Consumption Of Vegetables Among Less Than Primary Education Or Primary Education Or Lower Secondary Education, Female Population",
-          "dcid": "Percent_Daily_0Portion_ConsumptionOfFruitsOrConsumptionOfVegetables_In_Count_Person_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_Female"
-        },
-        {
-          "name": "Percentage Daily, 0 Portions, Consumption Of Fruits Or Consumption Of Vegetables Among Tertiary Education, Female Population",
-          "dcid": "Percent_Daily_0Portion_ConsumptionOfFruitsOrConsumptionOfVegetables_In_Count_Person_TertiaryEducation_Female"
-        },
-        {
-          "name": "Percentage Daily, 0 Portions, Consumption Of Fruits Or Consumption Of Vegetables Among Upper Secondary Education Or Post Secondary Non Tertiary Education, Female Population",
-          "dcid": "Percent_Daily_0Portion_ConsumptionOfFruitsOrConsumptionOfVegetables_In_Count_Person_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_ConsumptionQuantity-Portion0_Gender-Female_PlaceOfResidenceClassification",
-      "name": "Person With Consumption Quantity = Portion 0, Gender = Female, Place of Residence Classification",
-      "statVars": [
-        {
-          "name": "Percentage Daily, 0 Portions, Consumption Of Fruits Or Consumption Of Vegetables Among Rural, Female Population",
-          "dcid": "Percent_Daily_0Portion_ConsumptionOfFruitsOrConsumptionOfVegetables_In_Count_Person_Rural_Female"
-        },
-        {
-          "name": "Percentage Daily, 0 Portions, Consumption Of Fruits Or Consumption Of Vegetables Among Semi Urban, Female Population",
-          "dcid": "Percent_Daily_0Portion_ConsumptionOfFruitsOrConsumptionOfVegetables_In_Count_Person_SemiUrban_Female"
-        },
-        {
-          "name": "Percentage Daily, 0 Portions, Consumption Of Fruits Or Consumption Of Vegetables Among Urban, Female Population",
-          "dcid": "Percent_Daily_0Portion_ConsumptionOfFruitsOrConsumptionOfVegetables_In_Count_Person_Urban_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_EducationalAttainment-LessThanPrimaryEducationPrimaryEducationLowerSecondaryEducation_Gender-Female_SocialSupportLevel",
-      "name": "Person With Educational Attainment = Less Than Primary Education \u0026 Primary Education \u0026 Lower Secondary Education, Gender = Female, Social Support Level",
-      "statVars": [
-        {
-          "name": "Percentage Receiving Intermediate Social Support Among Less Than Primary Education Or Primary Education Or Lower Secondary Education, Female Population",
-          "dcid": "Percent_ReceivingIntermediateSocialSupport_In_Count_Person_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_Female"
-        },
-        {
-          "name": "Percentage Receiving Poor Social Support Among Less Than Primary Education Or Primary Education Or Lower Secondary Education, Female Population",
-          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_Female"
-        },
-        {
-          "name": "Percentage Receiving Strong Social Support Among Less Than Primary Education Or Primary Education Or Lower Secondary Education, Female Population",
-          "dcid": "Percent_ReceivingStrongSocialSupport_In_Count_Person_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_EducationalAttainment-TertiaryEducation_Gender-Female_SocialSupportLevel",
-      "name": "Person With Educational Attainment = Tertiary Education, Gender = Female, Social Support Level",
-      "statVars": [
-        {
-          "name": "Percentage Receiving Intermediate Social Support Among Tertiary Education, Female Population",
-          "dcid": "Percent_ReceivingIntermediateSocialSupport_In_Count_Person_TertiaryEducation_Female"
-        },
-        {
-          "name": "Percentage Receiving Poor Social Support Among Tertiary Education, Female Population",
-          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_TertiaryEducation_Female"
-        },
-        {
-          "name": "Percentage Receiving Strong Social Support Among Tertiary Education, Female Population",
-          "dcid": "Percent_ReceivingStrongSocialSupport_In_Count_Person_TertiaryEducation_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_EducationalAttainment-UpperSecondaryEducationPostSecondaryNonTertiaryEducation_Gender-Female_SocialSupportLevel",
-      "name": "Person With Educational Attainment = Upper Secondary Education \u0026 Post Secondary Non Tertiary Education, Gender = Female, Social Support Level",
-      "statVars": [
-        {
-          "name": "Percentage Receiving Intermediate Social Support Among Upper Secondary Education Or Post Secondary Non Tertiary Education, Female Population",
-          "dcid": "Percent_ReceivingIntermediateSocialSupport_In_Count_Person_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female"
-        },
-        {
-          "name": "Percentage Receiving Poor Social Support Among Upper Secondary Education Or Post Secondary Non Tertiary Education, Female Population",
-          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female"
-        },
-        {
-          "name": "Percentage Receiving Strong Social Support Among Upper Secondary Education Or Post Secondary Non Tertiary Education, Female Population",
-          "dcid": "Percent_ReceivingStrongSocialSupport_In_Count_Person_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_ExerciseType-AerobicMuscleStrengthening_Gender-Female_PlaceOfResidenceClassification",
-      "name": "Person With Exercise Type = Aerobic \u0026 Muscle Strengthening, Gender = Female, Place of Residence Classification",
-      "statVars": [
-        {
-          "name": "Percentage Aerobic Or Muscle Strengthening, Health Enhancing Physical Activity Among Rural, Female Population",
-          "dcid": "Percent_AerobicOrMuscleStrengthening_HealthEnhancingPhysicalActivity_In_Count_Person_Rural_Female"
-        },
-        {
-          "name": "Percentage Aerobic Or Muscle Strengthening, Health Enhancing Physical Activity Among Semi Urban, Female Population",
-          "dcid": "Percent_AerobicOrMuscleStrengthening_HealthEnhancingPhysicalActivity_In_Count_Person_SemiUrban_Female"
-        },
-        {
-          "name": "Percentage Aerobic Or Muscle Strengthening, Health Enhancing Physical Activity Among Urban, Female Population",
-          "dcid": "Percent_AerobicOrMuscleStrengthening_HealthEnhancingPhysicalActivity_In_Count_Person_Urban_Female"
         }
       ]
     }
