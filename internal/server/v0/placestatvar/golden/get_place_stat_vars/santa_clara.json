@@ -8957,6 +8957,7 @@
         "Count_Person_BachelorOfScienceAndEngineeringRelatedMajor_Male",
         "Count_Person_BelowPovertyLevelInThePast12Months",
         "Count_Person_BelowPovertyLevelInThePast12Months_AmericanIndianOrAlaskaNativeAlone",
+        "Count_Person_BelowPovertyLevelInThePast12Months_AsFractionOf_Count_Person",
         "Count_Person_BelowPovertyLevelInThePast12Months_AsianAlone",
         "Count_Person_BelowPovertyLevelInThePast12Months_BlackOrAfricanAmericanAlone",
         "Count_Person_BelowPovertyLevelInThePast12Months_HispanicOrLatino",
