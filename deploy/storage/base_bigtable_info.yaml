@@ -1,7 +1,7 @@
 project: datcom-store
 instance: prophet-cache
 tables:
-  - auto1d_2024_01_04_02_24_07
+  - auto1d_2023_11_27_02_20_33
   - auto1w_2023_12_17_21_04_54
   - auto2w_2023_12_12_09_41_21
   - biomedical_2024_01_02_03_52_26
