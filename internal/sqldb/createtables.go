@@ -12,37 +12,39 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package sqlite
+package sqldb
 
 import (
 	"database/sql"
-	"os"
-	"path/filepath"
 )
 
-func ConnectDB(dbPath string) (*sql.DB, error) {
-	// Create all intermediate directories.
-	if err := os.MkdirAll(filepath.Dir(dbPath), 0755); err != nil {
-		return nil, err
-	}
-	_, err := os.Stat(dbPath)
-	if err == nil {
-		sqlClient, err := sql.Open("sqlite3", dbPath)
-		if err != nil {
-			return nil, err
-		}
-		return sqlClient, nil
-	}
-	if !os.IsNotExist(err) {
-		return nil, err
-	}
-	_, err = os.Create(dbPath)
+// CreateTables creates tables in MySQL database if they are not present.
+func CreateTables(sqlClient *sql.DB) error {
+	tripleStatement := `
+	CREATE TABLE IF NOT EXISTS triples (
+		subject_id TEXT,
+		predicate TEXT,
+		object_id TEXT,
+		object_value TEXT
+	);
+	`
+	_, err := sqlClient.Exec(tripleStatement)
 	if err != nil {
-		return nil, err
+		return err
 	}
-	sqlClient, err := sql.Open("sqlite3", dbPath)
+
+	observationStatement := `
+	CREATE TABLE IF NOT EXISTS observations (
+		entity TEXT,
+		variable TEXT,
+		date TEXT,
+		value TEXT,
+		provenance TEXT
+	);
+	`
+	_, err = sqlClient.Exec(observationStatement)
 	if err != nil {
-		return nil, err
+		return err
 	}
-	return sqlClient, err
+	return nil
 }
