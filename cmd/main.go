@@ -31,6 +31,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server"
 	"github.com/datacommonsorg/mixer/internal/server/cache"
 	"github.com/datacommonsorg/mixer/internal/server/healthcheck"
+	"github.com/datacommonsorg/mixer/internal/sqldb"
 	"github.com/datacommonsorg/mixer/internal/sqldb/cloudsql"
 	"github.com/datacommonsorg/mixer/internal/sqldb/sqlite"
 	"github.com/datacommonsorg/mixer/internal/store"
@@ -200,6 +201,13 @@ func main() {
 				log.Fatalf("Cannot open cloud sql database from %s: %v", *cloudSQLInstance, err)
 			}
 			defer sqlClient.Close()
+		}
+	}
+
+	// Create tables for new database.
+	if *useSQLite || *useCloudSQL {
+		if err := sqldb.CreateTables(sqlClient); err != nil {
+			log.Fatalf("Can not create tables in database: %v", err)
 		}
 	}
 
