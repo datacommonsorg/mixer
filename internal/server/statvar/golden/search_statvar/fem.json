@@ -32319,12 +32319,12 @@
           "dcid": "Count_MortalityEvent_VaginalDischarge_Female_AsAFractionOf_Count_MedicalConditionIncident_Female_ConditionVaginalDischarge"
         },
         {
-          "name": "Count of Mortality Event: X60-X84 (Intentional Self-harm), Female (As Fraction of Count Person Female)",
-          "dcid": "Count_Death_IntentionalSelfHarm_Female_AsFractionOf_Count_Person_Female"
-        },
-        {
           "name": "Count of Mortality Event: Yellow Fever, Female (As Fraction of Count Medical Condition Incident Female Condition Yellow Fever)",
           "dcid": "Count_MortalityEvent_YellowFever_Female_AsAFractionOf_Count_MedicalConditionIncident_Female_ConditionYellowFever"
+        },
+        {
+          "name": "Female Suicide Mortality Rate",
+          "dcid": "Count_Death_IntentionalSelfHarm_Female_AsFractionOf_Count_Person_Female"
         },
         {
           "name": "Count of Mortality Event (Measured Based on Jurisdiction): Death Due To Another Person, Female, Incarcerated",
@@ -33357,7 +33357,7 @@
           "dcid": "Count_Person_25OrMoreYears_EducationalAttainmentSomeCollegeLessThan1Year_Female"
         },
         {
-          "name": "Population: Masters Degree or Higher, Female (As Fraction of Count Person 25 or More Years Female)",
+          "name": "Fraction of 25+ Years Old Females with Masters Degree or Higher",
           "dcid": "Count_Person_25OrMoreYears_Female_MastersDegreeOrHigher_AsFractionOf_Count_Person_25OrMoreYears_Female"
         },
         {
@@ -50397,7 +50397,7 @@
           "dcid": "Count_Person_EducationalAttainmentDoctorateDegree_Female"
         },
         {
-          "name": "Population: Doctorate Degree, Female (As Fraction of Count Person 25 or More Years Female)",
+          "name": "Fraction of 25+ Years Old Females with Doctorate Degree",
           "dcid": "Count_Person_25OrMoreYears_Female_DoctorateDegree_AsFractionOf_Count_Person_25OrMoreYears_Female"
         },
         {
@@ -55157,7 +55157,7 @@
           "dcid": "Count_Person_15To64Years_Female_WithIncome"
         },
         {
-          "name": "Population: 15 - 64 Years, in Labor Force, Female (As Fraction of Count Person 15 To 64 Years Female)",
+          "name": "Percent of Females Working Age Population in the Labor Force",
           "dcid": "Count_Person_15To64Years_Female_InLaborForce_AsFractionOf_Count_Person_15To64Years_Female"
         }
       ]

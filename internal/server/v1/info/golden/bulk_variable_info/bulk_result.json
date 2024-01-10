@@ -1557,7 +1557,7 @@
                   "measurementMethod": "CensusACS5yrSurveySubjectTable"
                 },
                 "earliestDate": "2010",
-                "latestDate": "2019",
+                "latestDate": "2021",
                 "placeTypeSummary": {
                   "State": {
                     "placeCount": 1,
@@ -1567,17 +1567,17 @@
                         "name": "Puerto Rico"
                       }
                     ],
-                    "minValue": 1738866.228,
+                    "minValue": 1709212.05,
                     "maxValue": 1960169.762
                   }
                 },
-                "minValue": 1738866.228,
+                "minValue": 1709212.05,
                 "maxValue": 1960169.762,
-                "observationCount": 10,
+                "observationCount": 12,
                 "timeSeriesCount": 1
               }
             ],
-            "observationCount": 10,
+            "observationCount": 12,
             "timeSeriesCount": 1
           },
           "dc/base/CensusACS5YearSurvey_SubjectTables_S2602": {

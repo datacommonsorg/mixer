@@ -2461,6 +2461,22 @@
       "dcid": "Count_Person_Widowed"
     },
     {
+      "name": "Fraction of 25+ Years Old People with Bachelors Degree or Higher",
+      "dcid": "Count_Person_25OrMoreYears_BachelorsDegreeOrHigher_AsFractionOf_Count_Person_25OrMoreYears"
+    },
+    {
+      "name": "Fraction of 25+ Years Old People with Doctorate Degree",
+      "dcid": "Count_Person_25OrMoreYears_DoctorateDegree_AsFractionOf_Count_Person_25OrMoreYears"
+    },
+    {
+      "name": "Fraction of 25+ Years Old People with Masters Degree or Higher",
+      "dcid": "Count_Person_25OrMoreYears_MastersDegreeOrHigher_AsFractionOf_Count_Person_25OrMoreYears"
+    },
+    {
+      "name": "Fraction of 25+ Years Old People with Tertiary Education",
+      "dcid": "Count_Person_25OrMoreYears_TertiaryEducation_AsFractionOf_Count_Person_25OrMoreYears"
+    },
+    {
       "name": "Number of ATMs per 1,00,000 population",
       "dcid": "Count_Person_ATM_AsAFractionOf_Count_Person"
     },
@@ -2493,16 +2509,8 @@
       "dcid": "Count_Person_15OrLessYears_AsAFractionOf_Count_Person_15To64Years_WithIncome"
     },
     {
-      "name": "Population: Bachelors Degree or Higher (As Fraction of Count Person 25 or More Years)",
-      "dcid": "Count_Person_25OrMoreYears_BachelorsDegreeOrHigher_AsFractionOf_Count_Person_25OrMoreYears"
-    },
-    {
       "name": "Population: Below Poverty Level in The Past 12 Months (Per Capita)",
       "dcid": "Count_Person_BelowPovertyLevelInThePast12Months_AsFractionOf_Count_Person"
-    },
-    {
-      "name": "Population: Doctorate Degree (As Fraction of Count Person 25 or More Years)",
-      "dcid": "Count_Person_25OrMoreYears_DoctorateDegree_AsFractionOf_Count_Person_25OrMoreYears"
     },
     {
       "name": "Population: Employed (Per Capita)",
@@ -2525,10 +2533,6 @@
       "dcid": "Count_Person_Male_AsAFractionOf_Count_Person_Female"
     },
     {
-      "name": "Population: Masters Degree or Higher (As Fraction of Count Person 25 or More Years)",
-      "dcid": "Count_Person_25OrMoreYears_MastersDegreeOrHigher_AsFractionOf_Count_Person_25OrMoreYears"
-    },
-    {
       "name": "Population: Not in Labor Force (As Fraction of Count Person in Labor Force)",
       "dcid": "Count_Person_NotInLaborForce_AsAFractionOf_Count_Person_InLaborForce"
     },
@@ -2539,10 +2543,6 @@
     {
       "name": "Population: Rural (Per Capita)",
       "dcid": "Count_Person_Rural_AsAFractionOf_Count_Person"
-    },
-    {
-      "name": "Population: Tertiary Education (As Fraction of Count Person 25 or More Years)",
-      "dcid": "Count_Person_25OrMoreYears_TertiaryEducation_AsFractionOf_Count_Person_25OrMoreYears"
     },
     {
       "name": "Population: Unemployed (As Fraction of Count Person 14 Years or More)",

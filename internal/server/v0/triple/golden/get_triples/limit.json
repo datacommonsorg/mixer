@@ -448,7 +448,7 @@
         "Class",
         "LocationClassificationEnum"
       ],
-      "provenanceId": "dc/base/WikidataOtherIdGeos"
+      "provenanceId": "dc/base/BaseGeos"
     },
     {
       "subjectId": "geoId/3601923921",
@@ -480,7 +480,7 @@
         "Class",
         "LocationClassificationEnum"
       ],
-      "provenanceId": "dc/base/WikidataOtherIdGeos"
+      "provenanceId": "dc/base/BaseGeos"
     },
     {
       "subjectId": "geoId/3603313992",
