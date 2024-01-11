@@ -43,7 +43,7 @@
         "id": "dc/g/Health",
         "specializedEntity": "Health",
         "displayName": "Health",
-        "descendentStatVarCount": 3137
+        "descendentStatVarCount": 3303
       },
       {
         "id": "dc/g/Housing",

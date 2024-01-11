@@ -26787,7 +26787,7 @@
             "City"
           ],
           "dcid": "geoId/0625114",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Fort Jones",
@@ -26835,7 +26835,7 @@
             "City"
           ],
           "dcid": "geoId/0625436",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Franklin",
@@ -26971,7 +26971,7 @@
             "City"
           ],
           "dcid": "geoId/0628021",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Galt",
@@ -26995,7 +26995,7 @@
             "City"
           ],
           "dcid": "geoId/0628168",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Garden Acres",
@@ -27075,7 +27075,7 @@
             "City"
           ],
           "dcid": "geoId/0629420",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Gilroy",
@@ -27107,7 +27107,7 @@
             "City"
           ],
           "dcid": "geoId/0630028",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Glennville",
@@ -27203,7 +27203,7 @@
             "City"
           ],
           "dcid": "geoId/0630658",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Grangeville",
@@ -27411,7 +27411,7 @@
             "City"
           ],
           "dcid": "geoId/0631568",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Hacienda Heights",
@@ -27539,7 +27539,7 @@
             "City"
           ],
           "dcid": "geoId/0632548",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Hayfork",
@@ -27619,7 +27619,7 @@
             "City"
           ],
           "dcid": "geoId/0633434",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Hickman",
@@ -27723,7 +27723,7 @@
             "City"
           ],
           "dcid": "geoId/0634246",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Home Garden",
@@ -27819,7 +27819,7 @@
             "City"
           ],
           "dcid": "geoId/0634904",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Humboldt Hill",
@@ -27907,7 +27907,7 @@
             "City"
           ],
           "dcid": "geoId/0636280",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Imperial Beach",
@@ -28035,7 +28035,7 @@
             "City"
           ],
           "dcid": "geoId/0636826",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Isla Vista",
@@ -28347,7 +28347,7 @@
             "City"
           ],
           "dcid": "geoId/0638562",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Kingvale",
@@ -28451,7 +28451,7 @@
             "City"
           ],
           "dcid": "geoId/0639122",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "La Grange",
@@ -28475,7 +28475,7 @@
             "City"
           ],
           "dcid": "geoId/0639220",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Laguna Niguel",
@@ -28803,7 +28803,7 @@
             "City"
           ],
           "dcid": "geoId/0640256",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "La Porte",
@@ -28987,7 +28987,7 @@
             "City"
           ],
           "dcid": "geoId/0641124",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Lemon Hill",
@@ -29003,7 +29003,7 @@
             "City"
           ],
           "dcid": "geoId/0641152",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Lemoore Station",
@@ -29067,7 +29067,7 @@
             "City"
           ],
           "dcid": "geoId/0641474",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Lincoln Village",
@@ -29219,7 +29219,7 @@
             "City"
           ],
           "dcid": "geoId/0642202",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Lodoga",
@@ -29299,7 +29299,7 @@
             "City"
           ],
           "dcid": "geoId/0642580",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Long Barn",
@@ -29379,7 +29379,7 @@
             "City"
           ],
           "dcid": "geoId/0644140",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Los Olivos",
@@ -29419,7 +29419,7 @@
             "City"
           ],
           "dcid": "geoId/0644350",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Loyalton",
@@ -29531,7 +29531,7 @@
             "City"
           ],
           "dcid": "geoId/0644826",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "McGee Creek",
@@ -29667,7 +29667,7 @@
             "City"
           ],
           "dcid": "geoId/0645484",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Manton",
@@ -29707,7 +29707,7 @@
             "City"
           ],
           "dcid": "geoId/0645806",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Marin City",
@@ -29731,7 +29731,7 @@
             "City"
           ],
           "dcid": "geoId/0645988",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Martell",
@@ -29755,7 +29755,7 @@
             "City"
           ],
           "dcid": "geoId/0646170",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Matheny",
@@ -30179,7 +30179,7 @@
             "City"
           ],
           "dcid": "geoId/0648690",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Montalvin Manor",
@@ -30203,7 +30203,7 @@
             "City"
           ],
           "dcid": "geoId/0648788",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Montebello",
@@ -30347,7 +30347,7 @@
             "City"
           ],
           "dcid": "geoId/0649488",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Mountain Center",
@@ -30475,7 +30475,7 @@
             "City"
           ],
           "dcid": "geoId/0650034",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Murrieta",
@@ -30579,7 +30579,7 @@
             "City"
           ],
           "dcid": "geoId/0651140",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "New Pine Creek",

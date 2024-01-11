@@ -40,6 +40,10 @@
               "val": "Q208459"
             },
             {
+              "prop": "usCensusGeoId",
+              "val": "1600000US0677000"
+            },
+            {
               "prop": "placeId",
               "val": "ChIJO13QqUW2j4ARosN83Sb7jXY"
             },
@@ -57,6 +61,10 @@
       "resolvedIds": [
         {
           "ids": [
+            {
+              "prop": "usCensusGeoId",
+              "val": "0500000US06085"
+            },
             {
               "prop": "placeId",
               "val": "ChIJd_Y0eVIvkIARuQyDN0F1LBA"

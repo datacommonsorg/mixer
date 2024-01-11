@@ -40,7 +40,8 @@
           {
             "id": "dc/g/Person_Age",
             "specializedEntity": "Age",
-            "displayName": "Person by Age"
+            "displayName": "Person by Age",
+            "descendentStatVarCount": 1
           },
           {
             "id": "dc/g/ConsumerGoodsAndServices",
