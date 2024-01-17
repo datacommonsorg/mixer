@@ -89,7 +89,7 @@ go run cmd/main.go \
     --use_branch_bigtable=false \
     --use_maps_api=false \
     --use_sqlite=true \
-    --sqlite_path=$PWD/sqlite/datacommons.db \
+    --sqlite_path=$PWD/test/datacommons.db \
     --remote_mixer_domain=https://api.datacommons.org
 ```
 

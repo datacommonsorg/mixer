@@ -165,7 +165,11 @@ func FetchAllSVG(
 			}
 			result[svg].ChildStatVars = append(
 				result[svg].ChildStatVars,
-				&pb.StatVarGroupNode_ChildSV{Id: sv, DisplayName: name},
+				&pb.StatVarGroupNode_ChildSV{
+					Id:          sv,
+					DisplayName: name,
+					SearchNames: []string{name},
+				},
 			)
 			result[svg].DescendentStatVarCount += 1
 		}
