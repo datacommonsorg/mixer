@@ -23,6 +23,7 @@ test_var_1,typeOf,StatisticalVariable,
 test_var_1,measuredProperty,test_var_1,
 test_var_1,statType,measuredValue,
 test_var_1,name,,"total number of sql query used"
+test_var_1,description,,"this is the count of sql query for the entire database"
 test_var_1,memberOf,dc/g/SQLite,
 test_var_2,typeOf,StatisticalVariable,
 test_var_2,measuredProperty,test_var_2,
