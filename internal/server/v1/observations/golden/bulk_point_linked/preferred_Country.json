@@ -1287,9 +1287,9 @@
           "entity": "country/LKA",
           "points_by_facet": [
             {
-              "date": "2021",
-              "value": 22156000,
-              "facet": "3981252704"
+              "date": "2022",
+              "value": 22159510,
+              "facet": "3956865500"
             }
           ]
         },
@@ -2318,8 +2318,8 @@
           "points_by_facet": [
             {
               "date": "2022",
-              "value": 333288000,
-              "facet": "1151455814"
+              "value": 333287557,
+              "facet": "2176550201"
             }
           ]
         },
@@ -2683,6 +2683,10 @@
       "import_name": "ItalyNIS",
       "provenance_url": "http://demo.istat.it/index_e.html",
       "measurement_method": "ItalyNIS"
+    },
+    "3956865500": {
+      "import_name": "Srilanka_Census",
+      "provenance_url": "https://data.humdata.org/"
     },
     "3981252704": {
       "import_name": "WorldDevelopmentIndicators",

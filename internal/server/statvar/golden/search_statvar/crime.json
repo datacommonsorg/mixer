@@ -7937,6 +7937,24 @@
       ]
     },
     {
+      "dcid": "dc/g/CriminalActivities_CrimeType-MurderAndNonNegligentManslaughter",
+      "name": "Criminal Activities With Crime Type = Murder And Non Negligent Manslaughter",
+      "statVars": [
+        {
+          "name": "Index Score of Criminal Activities: Murder And Non Negligent Manslaughter",
+          "dcid": "IndexScore_CriminalActivities_MurderAndNonNegligentManslaughter"
+        },
+        {
+          "name": "Murder and Non Negligent Manslaughter Cases",
+          "dcid": "Count_CriminalActivities_MurderAndNonNegligentManslaughter"
+        },
+        {
+          "name": "Murder and Non Negligent Manslaughter Cases Per Capita",
+          "dcid": "Count_CriminalActivities_MurderAndNonNegligentManslaughter_AsFractionOf_Count_Person"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-RaceOrEthnicity",
       "name": "Hate Crime Incidents With Bias Motivation = Race or Ethnicity",
       "statVars": [
@@ -21757,24 +21775,6 @@
         {
           "name": "Count of Hate Crime Incidents (Victim): Bias Against Race, Crime Against Society, Black or African American Alone Victim",
           "dcid": "Victim_Count_CriminalIncidents_BiasMotivationRace_CrimeAgainstSociety_IsHateCrime_BlackOrAfricanAmericanAlone"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-race_CrimeType-CrimeAgainstSociety_TargetedRace-NativeHawaiianOrOtherPacificIslanderAlone",
-      "name": "Hate Crime Incidents With Bias Motivation = Race, Crime Type = Crime Against Society, Targeted Race = Native Hawaiian or Other Pacific Islander Alone",
-      "statVars": [
-        {
-          "name": "Count of Hate Crime Incidents: Bias Against Race, Crime Against Society, Native Hawaiian or Other Pacific Islander Alone Victim",
-          "dcid": "Count_CriminalIncidents_BiasMotivationRace_CrimeAgainstSociety_IsHateCrime_NativeHawaiianOrOtherPacificIslanderAlone"
-        },
-        {
-          "name": "Count of Hate Crime Incidents (Offense): Bias Against Race, Crime Against Society, Native Hawaiian or Other Pacific Islander Alone Victim",
-          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationRace_CrimeAgainstSociety_IsHateCrime_NativeHawaiianOrOtherPacificIslanderAlone"
-        },
-        {
-          "name": "Count of Hate Crime Incidents (Victim): Bias Against Race, Crime Against Society, Native Hawaiian or Other Pacific Islander Alone Victim",
-          "dcid": "Victim_Count_CriminalIncidents_BiasMotivationRace_CrimeAgainstSociety_IsHateCrime_NativeHawaiianOrOtherPacificIslanderAlone"
         }
       ]
     }

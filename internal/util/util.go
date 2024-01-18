@@ -643,7 +643,8 @@ func FetchRemote(
 		return err
 	}
 	// Convert response body to string
-	return protojson.Unmarshal(responseBodyBytes, out)
+	unmarshaler := protojson.UnmarshalOptions{DiscardUnknown: true}
+	return unmarshaler.Unmarshal(responseBodyBytes, out)
 }
 
 // HasCollectionCache decides whether the Bigtable collection cache exists

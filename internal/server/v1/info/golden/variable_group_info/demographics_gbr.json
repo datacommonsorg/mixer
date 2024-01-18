@@ -54,13 +54,20 @@
         "definition": "st=medianValue,mp=income,pt=Person"
       },
       {
-        "id": "Count_Person_IsInternetUser_PerCapita",
+        "id": "Count_Person_WithInternetSubscription_AsAFractionOf_Count_Person",
         "searchNames": [
-          "Population Count of Person With is Internet User is True (As Fraction of Per Capita)"
+          "Population Count of Person With Internet Access Status is With Internet Subscription (Per Capita)"
         ],
-        "displayName": "Percent of Internet Users",
-        "definition": "md=PerCapita,mp=count,pt=Person,isInternetUser=True",
-        "hasData": true
+        "displayName": "Number of Internet Subscribers per 100 population",
+        "definition": "md=Count_Person,mp=count,pt=Person,internetAccessStatus=WithInternetSubscription"
+      },
+      {
+        "id": "Count_Household_Homeless",
+        "searchNames": [
+          "Count of Household With Social Vulnerability Status is Homeless"
+        ],
+        "displayName": "Number of homeless households per 10,000 households",
+        "definition": "mp=count,pt=Household,socialVulnerabilityStatus=Homeless"
       },
       {
         "id": "IncrementalCount_Person",
@@ -103,7 +110,22 @@
         "id": "dc/g/Person_Age",
         "specializedEntity": "Age",
         "displayName": "Person by Age",
-        "descendentStatVarCount": 653
+        "descendentStatVarCount": 656
+      },
+      {
+        "id": "dc/g/Person_AgeGroupClassification",
+        "specializedEntity": "Age Group Classification",
+        "displayName": "Person by Age Group Classification"
+      },
+      {
+        "id": "dc/g/Household_BenefitStatus",
+        "specializedEntity": "Benefit Status",
+        "displayName": "Household by Benefit Status"
+      },
+      {
+        "id": "dc/g/Person_BenefitStatus",
+        "specializedEntity": "Benefit Status",
+        "displayName": "Person by Benefit Status"
       },
       {
         "id": "dc/g/Household_BenefitsStatus",
@@ -137,6 +159,11 @@
         "displayName": "Commute"
       },
       {
+        "id": "dc/g/Courthouse",
+        "specializedEntity": "Courthouse",
+        "displayName": "Courthouse"
+      },
+      {
         "id": "dc/g/Person_DateOfEntry",
         "specializedEntity": "Date of Entry",
         "displayName": "Person by Date of Entry"
@@ -152,9 +179,39 @@
         "displayName": "Person by Earnings"
       },
       {
+        "id": "dc/g/Person_ElectronicGadgetUsed",
+        "specializedEntity": "Electronic Gadget Used",
+        "displayName": "Person by Electronic Gadget Used"
+      },
+      {
+        "id": "dc/g/Person_Employer",
+        "specializedEntity": "Employer",
+        "displayName": "Person by Employer"
+      },
+      {
+        "id": "dc/g/Household_Ethnicity",
+        "specializedEntity": "Ethnicity",
+        "displayName": "Household by Ethnicity"
+      },
+      {
         "id": "dc/g/Person_Ethnicity",
         "specializedEntity": "Ethnicity",
         "displayName": "Person by Ethnicity"
+      },
+      {
+        "id": "dc/g/Household_Facilities",
+        "specializedEntity": "Facilities",
+        "displayName": "Household by Facilities"
+      },
+      {
+        "id": "dc/g/Person_Facilities",
+        "specializedEntity": "Facilities",
+        "displayName": "Person by Facilities"
+      },
+      {
+        "id": "dc/g/Place_Facilities",
+        "specializedEntity": "Facilities",
+        "displayName": "Place by Facilities"
       },
       {
         "id": "dc/g/Food",
@@ -170,12 +227,27 @@
         "id": "dc/g/Person_Gender",
         "specializedEntity": "Gender",
         "displayName": "Person by Gender",
-        "descendentStatVarCount": 2426
+        "descendentStatVarCount": 2428
+      },
+      {
+        "id": "dc/g/Person_GovernmentId",
+        "specializedEntity": "Government Id",
+        "displayName": "Person by Government Id"
+      },
+      {
+        "id": "dc/g/Household_HealthInsurance",
+        "specializedEntity": "Health Insurance (Household)",
+        "displayName": "Household by Health Insurance"
       },
       {
         "id": "dc/g/Person_HealthInsurance",
         "specializedEntity": "Health Insurance (Individual)",
         "displayName": "Person by Health Insurance"
+      },
+      {
+        "id": "dc/g/House",
+        "specializedEntity": "House",
+        "displayName": "House"
       },
       {
         "id": "dc/g/Household",
@@ -193,10 +265,20 @@
         "displayName": "Person by Household Type"
       },
       {
+        "id": "dc/g/Households",
+        "specializedEntity": "Households",
+        "displayName": "Households"
+      },
+      {
         "id": "dc/g/ImmigrationAndCitizenship",
         "specializedEntity": "Immigration and Citizenship",
         "displayName": "Immigration and Citizenship",
         "descendentStatVarCount": 792
+      },
+      {
+        "id": "dc/g/Household_Income",
+        "specializedEntity": "Income (Household)",
+        "displayName": "Household by Income"
       },
       {
         "id": "dc/g/Person_Income",
@@ -208,6 +290,32 @@
         "id": "dc/g/Person_IncomeStatus",
         "specializedEntity": "Income Status",
         "displayName": "Person by Income Status"
+      },
+      {
+        "id": "dc/g/Household_Institutionalization",
+        "specializedEntity": "Institutionalization",
+        "displayName": "Household by Institutionalization"
+      },
+      {
+        "id": "dc/g/Household_InternetUsageLocation",
+        "specializedEntity": "Internet Usage Location",
+        "displayName": "Household by Internet Usage Location"
+      },
+      {
+        "id": "dc/g/Person_InternetUsageLocation",
+        "specializedEntity": "Internet Usage Location",
+        "displayName": "Person by Internet Usage Location"
+      },
+      {
+        "id": "dc/g/Household_IsInternetUser",
+        "specializedEntity": "Is Internet User",
+        "displayName": "Household by Is Internet User"
+      },
+      {
+        "id": "dc/g/Person_IsInternetUser",
+        "specializedEntity": "Is Internet User",
+        "displayName": "Person by Is Internet User",
+        "descendentStatVarCount": 1
       },
       {
         "id": "dc/g/Language",
@@ -223,6 +331,11 @@
         "id": "dc/g/Person_MaritalStatus",
         "specializedEntity": "Marital Status",
         "displayName": "Person by Marital Status"
+      },
+      {
+        "id": "dc/g/MaternalMortalityEvent",
+        "specializedEntity": "Maternal Mortality Event",
+        "displayName": "Maternal Mortality Event"
       },
       {
         "id": "dc/g/Person_MemberStatus",
@@ -241,9 +354,24 @@
         "descendentStatVarCount": 1160
       },
       {
+        "id": "dc/g/MunicipalWard",
+        "specializedEntity": "Municipal Ward",
+        "displayName": "Municipal Ward"
+      },
+      {
         "id": "dc/g/Household_Nativity",
         "specializedEntity": "Nativity",
         "displayName": "Household by Nativity"
+      },
+      {
+        "id": "dc/g/Person_Occupation",
+        "specializedEntity": "Occupation",
+        "displayName": "Person by Occupation"
+      },
+      {
+        "id": "dc/g/Place_PlaceType",
+        "specializedEntity": "Place Type",
+        "displayName": "Place by Place Type"
       },
       {
         "id": "dc/g/Household_PlaceOfBirth",
@@ -256,10 +384,20 @@
         "displayName": "Person by Place of Birth"
       },
       {
+        "id": "dc/g/Household_PlaceOfResidenceClassification",
+        "specializedEntity": "Place of Residence Classification",
+        "displayName": "Household by Place of Residence Classification"
+      },
+      {
         "id": "dc/g/Person_PlaceOfResidenceClassification",
         "specializedEntity": "Place of Residence Classification",
         "displayName": "Person by Place of Residence Classification",
         "descendentStatVarCount": 549
+      },
+      {
+        "id": "dc/g/Place_PlaceOfResidenceClassification",
+        "specializedEntity": "Place of Residence Classification",
+        "displayName": "Place by Place of Residence Classification"
       },
       {
         "id": "dc/g/Person_PovertyStatus",
@@ -283,17 +421,42 @@
         "descendentStatVarCount": 549
       },
       {
+        "id": "dc/g/Household_ResidenceType",
+        "specializedEntity": "Residence Type",
+        "displayName": "Household by Residence Type"
+      },
+      {
         "id": "dc/g/Person_ResidentStatus",
         "specializedEntity": "Resident Status",
         "displayName": "Person by Resident Status"
       },
       {
+        "id": "dc/g/Place_SocialCondition",
+        "specializedEntity": "Social Condition",
+        "displayName": "Place by Social Condition"
+      },
+      {
         "id": "dc/g/Household_TransportationType",
         "specializedEntity": "Transportation Type",
         "displayName": "Household by Transportation Type"
+      },
+      {
+        "id": "dc/g/Household_TypeOfSchool",
+        "specializedEntity": "Type of School",
+        "displayName": "Household by Type of School"
+      },
+      {
+        "id": "dc/g/Household_VeteranStatus",
+        "specializedEntity": "Veteran Status",
+        "displayName": "Household by Veteran Status"
+      },
+      {
+        "id": "dc/g/Village",
+        "specializedEntity": "Village",
+        "displayName": "Village"
       }
     ],
-    "descendentStatVarCount": 4478,
+    "descendentStatVarCount": 4481,
     "parentStatVarGroups": [
       "dc/g/Root"
     ]

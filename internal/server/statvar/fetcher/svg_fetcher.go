@@ -141,9 +141,11 @@ func FetchAllSVG(
 		// Query for all the stat var node
 		query =
 			`
-					SELECT t1.subject_id, t2.object_value, t3.object_id
-					FROM triples t1 JOIN triples t2 ON t1.subject_id = t2.subject_id
+					SELECT t1.subject_id, t2.object_value, t3.object_id, COALESCE(t4.object_value, '')
+					FROM triples t1
+					JOIN triples t2 ON t1.subject_id = t2.subject_id
 					JOIN triples t3 ON t1.subject_id = t3.subject_id
+					LEFT JOIN triples t4 ON t1.subject_id = t4.subject_id AND t4.predicate = "description"
 					WHERE t1.predicate="typeOf"
 					AND t1.object_id="StatisticalVariable"
 					AND t2.predicate="name"
@@ -155,17 +157,28 @@ func FetchAllSVG(
 		}
 		defer svRows.Close()
 		for svRows.Next() {
-			var sv, name, svg string
-			err = svRows.Scan(&sv, &name, &svg)
+			var sv, name, svg, description string
+			err = svRows.Scan(&sv, &name, &svg, &description)
 			if err != nil {
 				return nil, err
 			}
 			if _, ok := result[svg]; !ok {
 				result[svg] = &pb.StatVarGroupNode{}
 			}
+			searchNames := []string{}
+			if len(name) > 0 {
+				searchNames = append(searchNames, name)
+			}
+			if len(description) > 0 {
+				searchNames = append(searchNames, description)
+			}
 			result[svg].ChildStatVars = append(
 				result[svg].ChildStatVars,
-				&pb.StatVarGroupNode_ChildSV{Id: sv, DisplayName: name},
+				&pb.StatVarGroupNode_ChildSV{
+					Id:          sv,
+					DisplayName: name,
+					SearchNames: searchNames,
+				},
 			)
 			result[svg].DescendentStatVarCount += 1
 		}

@@ -107,6 +107,12 @@ func TestSearchStatVar(t *testing.T) {
 				true,
 				"food_stamp_sv.json",
 			},
+			{
+				"sql query",
+				[]string{},
+				false,
+				"sqlite.json",
+			},
 		} {
 			resp, err := mixer.SearchStatVar(ctx, &pb.SearchStatVarRequest{
 				Query:  c.query,
@@ -145,6 +151,7 @@ func TestSearchStatVar(t *testing.T) {
 		&test.TestOption{
 			FetchSVG:  true,
 			SearchSVG: true,
+			UseSQLite: true,
 		},
 		testSuite,
 	); err != nil {

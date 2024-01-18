@@ -15,19 +15,19 @@
             "id": "dc/g/Demographics",
             "specializedEntity": "Demographics",
             "displayName": "Demographics",
-            "descendentStatVarCount": 19018
+            "descendentStatVarCount": 19100
           },
           {
             "id": "dc/g/Economy",
             "specializedEntity": "Economy",
             "displayName": "Economy",
-            "descendentStatVarCount": 42024
+            "descendentStatVarCount": 42066
           },
           {
             "id": "dc/g/Education",
             "specializedEntity": "Education",
             "displayName": "Education",
-            "descendentStatVarCount": 24164
+            "descendentStatVarCount": 24163
           },
           {
             "id": "dc/g/Energy",
@@ -68,7 +68,7 @@
             "id": "dc/g/Uncategorized",
             "specializedEntity": "Uncategorized",
             "displayName": "Uncategorized",
-            "descendentStatVarCount": 501
+            "descendentStatVarCount": 536
           },
           {
             "id": "dc/g/SDG",
@@ -82,7 +82,7 @@
             "descendentStatVarCount": 2
           }
         ],
-        "descendentStatVarCount": 66491
+        "descendentStatVarCount": 66585
       }
     },
     {
@@ -110,11 +110,18 @@
         "childStatVars": [
           {
             "id": "test_var_1",
+            "searchNames": [
+              "total number of sql query used",
+              "this is the count of sql query for the entire database"
+            ],
             "displayName": "total number of sql query used",
             "hasData": true
           },
           {
             "id": "test_var_2",
+            "searchNames": [
+              "total number of sql joins"
+            ],
             "displayName": "total number of sql joins",
             "hasData": true
           }

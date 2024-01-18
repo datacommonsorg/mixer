@@ -7,6 +7,20 @@
         "CensusZipCodeTabulationArea"
       ],
       "predicate": "containedInPlace",
+      "objectId": "country/USA",
+      "objectName": "United States",
+      "objectTypes": [
+        "Country"
+      ],
+      "provenanceId": "dc/base/BaseGeos"
+    },
+    {
+      "subjectId": "zip/00603",
+      "subjectName": "00603",
+      "subjectTypes": [
+        "CensusZipCodeTabulationArea"
+      ],
+      "predicate": "containedInPlace",
       "objectId": "geoId/72005",
       "objectName": "Aguadilla",
       "objectTypes": [
@@ -242,6 +256,16 @@
       "objectTypes": [
         "Class"
       ],
+      "provenanceId": "dc/base/BaseGeos"
+    },
+    {
+      "subjectId": "zip/00603",
+      "subjectName": "00603",
+      "subjectTypes": [
+        "CensusZipCodeTabulationArea"
+      ],
+      "predicate": "usCensusGeoId",
+      "objectValue": "860Z200US00603",
       "provenanceId": "dc/base/BaseGeos"
     },
     {

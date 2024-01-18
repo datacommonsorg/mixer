@@ -1,0 +1,12 @@
+{
+  "statVars": [
+    {
+      "name": "total number of sql query used",
+      "dcid": "test_var_1"
+    }
+  ],
+  "matches": [
+    "query",
+    "sql"
+  ]
+}

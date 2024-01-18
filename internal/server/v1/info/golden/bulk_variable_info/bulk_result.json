@@ -24,7 +24,7 @@
             "maxValue": 36986320
           },
           "AdministrativeArea1": {
-            "placeCount": 334,
+            "placeCount": 343,
             "topPlaces": [
               {
                 "dcid": "wikidataId/Q3724",
@@ -43,7 +43,7 @@
             "maxValue": 24354012
           },
           "AdministrativeArea2": {
-            "placeCount": 6313,
+            "placeCount": 6338,
             "topPlaces": [
               {
                 "dcid": "wikidataId/Q1143712",
@@ -1557,7 +1557,7 @@
                   "measurementMethod": "CensusACS5yrSurveySubjectTable"
                 },
                 "earliestDate": "2010",
-                "latestDate": "2019",
+                "latestDate": "2021",
                 "placeTypeSummary": {
                   "State": {
                     "placeCount": 1,
@@ -1567,17 +1567,17 @@
                         "name": "Puerto Rico"
                       }
                     ],
-                    "minValue": 1738866.228,
+                    "minValue": 1709212.05,
                     "maxValue": 1960169.762
                   }
                 },
-                "minValue": 1738866.228,
+                "minValue": 1709212.05,
                 "maxValue": 1960169.762,
-                "observationCount": 10,
+                "observationCount": 12,
                 "timeSeriesCount": 1
               }
             ],
-            "observationCount": 10,
+            "observationCount": 12,
             "timeSeriesCount": 1
           },
           "dc/base/CensusACS5YearSurvey_SubjectTables_S2602": {
@@ -3017,6 +3017,74 @@
             ],
             "observationCount": 194,
             "timeSeriesCount": 61
+          },
+          "dc/base/Srilanka_Census": {
+            "importName": "Srilanka_Census",
+            "releaseFrequency": "P1Y",
+            "seriesSummary": [
+              {
+                "seriesKey": {},
+                "earliestDate": "2022",
+                "latestDate": "2022",
+                "placeTypeSummary": {
+                  "AdministrativeArea1": {
+                    "placeCount": 9,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q856686",
+                        "name": "Western Province"
+                      },
+                      {
+                        "dcid": "wikidataId/Q190716",
+                        "name": "Central Province"
+                      },
+                      {
+                        "dcid": "wikidataId/Q876308",
+                        "name": "Southern Province"
+                      }
+                    ],
+                    "minValue": 320379,
+                    "maxValue": 1469716
+                  },
+                  "AdministrativeArea2": {
+                    "placeCount": 25,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q606287",
+                        "name": "Colombo District"
+                      },
+                      {
+                        "dcid": "wikidataId/Q206344",
+                        "name": "Gampaha District"
+                      },
+                      {
+                        "dcid": "wikidataId/Q745073",
+                        "name": "Kurunegala District"
+                      }
+                    ],
+                    "minValue": 49630,
+                    "maxValue": 1266125
+                  },
+                  "Country": {
+                    "placeCount": 1,
+                    "topPlaces": [
+                      {
+                        "dcid": "country/LKA",
+                        "name": "Sri Lanka"
+                      }
+                    ],
+                    "minValue": 11451825,
+                    "maxValue": 11451825
+                  }
+                },
+                "minValue": 49630,
+                "maxValue": 11451825,
+                "observationCount": 35,
+                "timeSeriesCount": 35
+              }
+            ],
+            "observationCount": 35,
+            "timeSeriesCount": 35
           },
           "dc/base/USCensusPEP_Sex": {
             "importName": "USCensusPEP_Sex",

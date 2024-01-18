@@ -113,6 +113,10 @@
       "dcid": "WHO/SDGSUICIDE_Female"
     },
     {
+      "name": "Hpv Immunization Coverage Estimates Among Primary Target Cohort (9-14 Years Old Girls) (%), Female",
+      "dcid": "WHO/SDGHPVRECEIVED_Female"
+    },
+    {
       "name": "Infant deaths [under 1 year old, Female]",
       "dcid": "sdg/SH_DYN_IMRTN.AGE--Y0__SEX--F"
     },
@@ -133,12 +137,12 @@
       "dcid": "WHO/SDGPOISON_Female"
     },
     {
-      "name": "Mortality rate attributed to cardiovascular disease, cancer, diabetes or chronic respiratory disease [30 to 70 years old, Female]",
-      "dcid": "sdg/SH_DTH_NCOM.AGE--Y30T70__SEX--F"
+      "name": "Mortality Rate For 5-14 Year-Olds (Probability Of Dying Per 1000 Children Aged 5-14 Years), Female",
+      "dcid": "WHO/CHILDMORT5TO14_Female"
     },
     {
-      "name": "New Hiv Infections (Per 1000 Uninfected Population), Female",
-      "dcid": "WHO/SDGHIV_Female"
+      "name": "Mortality rate attributed to cardiovascular disease, cancer, diabetes or chronic respiratory disease [30 to 70 years old, Female]",
+      "dcid": "sdg/SH_DTH_NCOM.AGE--Y30T70__SEX--F"
     },
     {
       "name": "Number of moderately or severely food insecure people [15 years old and over, Female]",
@@ -529,56 +533,6 @@
       ]
     },
     {
-      "dcid": "dc/g/Person_Age_Gender-Female",
-      "name": "Person With Age, Gender = Female",
-      "statVars": [
-        {
-          "name": "Population: 14 Years or Less, Female",
-          "dcid": "Count_Person_Upto14Years_Female"
-        },
-        {
-          "name": "Population: 15 - 44 Years, Female",
-          "dcid": "Count_Person_15To44Years_Female"
-        },
-        {
-          "name": "Population: 21 Years or More, Female",
-          "dcid": "Count_Person_21OrMoreYears_Female"
-        },
-        {
-          "name": "Population: 3 Years or More, Female",
-          "dcid": "Count_Person_3OrMoreYears_Female"
-        },
-        {
-          "name": "Population: 5 - 14 Years, Female",
-          "dcid": "Count_Person_Years5To14_Female"
-        },
-        {
-          "name": "Population: 60 Years or More, Female",
-          "dcid": "Count_Person_60OrMoreYears_Female"
-        },
-        {
-          "name": "Population: 62 Years or More, Female",
-          "dcid": "Count_Person_62OrMoreYears_Female"
-        },
-        {
-          "name": "Population: 65 - 66 Years, Female",
-          "dcid": "Count_Person_65To66Years_Female"
-        },
-        {
-          "name": "Population: 67 - 69 Years, Female",
-          "dcid": "Count_Person_67To69Years_Female"
-        },
-        {
-          "name": "Unemployment Rate: 25 - 74 Years, Female",
-          "dcid": "UnemploymentRate_Person_25To74Years_Female"
-        },
-        {
-          "name": "Unemployment Rate: 25 Years or Less, Female",
-          "dcid": "UnemploymentRate_Person_Upto25Years_Female"
-        }
-      ]
-    },
-    {
       "dcid": "dc/g/Person_EducationalAttainment_Gender-Female",
       "name": "Person With Educational Attainment, Gender = Female",
       "statVars": [
@@ -623,8 +577,54 @@
           "dcid": "Count_Person_25OrMoreYears_EducationalAttainmentSomeCollegeLessThan1Year_Female"
         },
         {
-          "name": "Population: Masters Degree or Higher, Female (As Fraction of Count Person 25 or More Years Female)",
+          "name": "Fraction of 25+ Years Old Females with Masters Degree or Higher",
           "dcid": "Count_Person_25OrMoreYears_Female_MastersDegreeOrHigher_AsFractionOf_Count_Person_25OrMoreYears_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age_Gender-Female",
+      "name": "Person With Age, Gender = Female",
+      "statVars": [
+        {
+          "name": "Population: 14 Years or Less, Female",
+          "dcid": "Count_Person_Upto14Years_Female"
+        },
+        {
+          "name": "Population: 15 - 44 Years, Female",
+          "dcid": "Count_Person_15To44Years_Female"
+        },
+        {
+          "name": "Population: 21 Years or More, Female",
+          "dcid": "Count_Person_21OrMoreYears_Female"
+        },
+        {
+          "name": "Population: 5 - 14 Years, Female",
+          "dcid": "Count_Person_Years5To14_Female"
+        },
+        {
+          "name": "Population: 60 Years or More, Female",
+          "dcid": "Count_Person_60OrMoreYears_Female"
+        },
+        {
+          "name": "Population: 62 Years or More, Female",
+          "dcid": "Count_Person_62OrMoreYears_Female"
+        },
+        {
+          "name": "Population: 65 - 66 Years, Female",
+          "dcid": "Count_Person_65To66Years_Female"
+        },
+        {
+          "name": "Population: 67 - 69 Years, Female",
+          "dcid": "Count_Person_67To69Years_Female"
+        },
+        {
+          "name": "Unemployment Rate: 25 - 74 Years, Female",
+          "dcid": "UnemploymentRate_Person_25To74Years_Female"
+        },
+        {
+          "name": "Unemployment Rate: 25 Years or Less, Female",
+          "dcid": "UnemploymentRate_Person_Upto25Years_Female"
         }
       ]
     },
@@ -931,7 +931,7 @@
           "dcid": "Count_Person_EducationalAttainmentDoctorateDegree_Female"
         },
         {
-          "name": "Population: Doctorate Degree, Female (As Fraction of Count Person 25 or More Years Female)",
+          "name": "Fraction of 25+ Years Old Females with Doctorate Degree",
           "dcid": "Count_Person_25OrMoreYears_Female_DoctorateDegree_AsFractionOf_Count_Person_25OrMoreYears_Female"
         }
       ]
@@ -3043,7 +3043,7 @@
           "dcid": "Count_Person_25OrMoreYears_EducationalAttainmentBachelorsDegreeOrHigher_Female"
         },
         {
-          "name": "Population: Bachelors Degree or Higher, Female (As Fraction of Count Person 25 or More Years Female)",
+          "name": "Fraction of 25+ Years Old Females with Bachelors Degree or Higher",
           "dcid": "Count_Person_25OrMoreYears_Female_BachelorsDegreeOrHigher_AsFractionOf_Count_Person_25OrMoreYears_Female"
         }
       ]
@@ -3387,6 +3387,26 @@
       ]
     },
     {
+      "dcid": "dc/g/Household_HouseholderGender-Female_Institutionalization-NonInstitutionalized",
+      "name": "Household With Householder Gender = Female, Institutionalization = Non Institutionalized",
+      "statVars": [
+        {
+          "name": "Household Reference Person in Universe: Non-Institutional, female",
+          "dcid": "Count_Household_Female_NonInstitutionalized"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Household_HouseholderGender-Female_InternetUsagePurpose",
+      "name": "Household With Householder Gender = Female, Internet Usage Purpose",
+      "statVars": [
+        {
+          "name": "Browses the Web, female",
+          "dcid": "Count_Household_Female_WebBrowsingUsage_IsInternetUser"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/MedicalConditionIncident_Gender-Female_MedicalCondition-AcuteConditionHepatitisC",
       "name": "Medical Condition Incident With Gender = Female, Medical Condition = Acute Condition \u0026 Hepatitis C",
       "statVars": [
@@ -3701,7 +3721,7 @@
       "name": "Mortality Event With Cause of Death, Gender = Female",
       "statVars": [
         {
-          "name": "Count of Mortality Event: X60-X84 (Intentional Self-harm), Female (As Fraction of Count Person Female)",
+          "name": "Female Suicide Mortality Rate",
           "dcid": "Count_Death_IntentionalSelfHarm_Female_AsFractionOf_Count_Person_Female"
         }
       ]
@@ -3973,6 +3993,16 @@
         {
           "name": "Population: 25 Years or More, Female",
           "dcid": "Count_Person_25OrMoreYears_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years3Onwards_Gender-Female",
+      "name": "Person With Age = 3 Years or More, Gender = Female",
+      "statVars": [
+        {
+          "name": "Population: 3 Years or More, Female",
+          "dcid": "Count_Person_3OrMoreYears_Female"
         }
       ]
     },
@@ -5391,7 +5421,7 @@
       "name": "Person With Educational Attainment = Tertiary Education, Gender = Female",
       "statVars": [
         {
-          "name": "Population: Tertiary Education, Female (As Fraction of Count Person 25 or More Years Female)",
+          "name": "Fraction of 25+ Years Old Females with Tertiary Education",
           "dcid": "Count_Person_25OrMoreYears_Female_TertiaryEducation_AsFractionOf_Count_Person_25OrMoreYears_Female"
         }
       ]
@@ -6977,6 +7007,10 @@
       "name": "Health Worker Distribution, by Sex And Type of Occupation With Sex = Female"
     },
     {
+      "dcid": "dc/g/Household_HouseholderGender-Female",
+      "name": "Household With Householder Gender = Female"
+    },
+    {
       "dcid": "dc/g/MedicalConditionIncident_Gender-Female",
       "name": "Medical Condition Incident With Gender = Female"
     },
@@ -7279,6 +7313,78 @@
     {
       "dcid": "dc/g/HateCrimeIncidents_TargetedGender-Female_VictimAge",
       "name": "Hate Crime Incidents With Targeted Gender = Female, Victim Age"
+    },
+    {
+      "dcid": "dc/g/Household_FactorForInternetService_HouseholderGender-Female",
+      "name": "Household With Factor for Internet Service, Householder Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Household_HouseholderGender-Female_Institutionalization",
+      "name": "Household With Householder Gender = Female, Institutionalization"
+    },
+    {
+      "dcid": "dc/g/Household_HouseholderGender-Female_InternetSubscriptionType",
+      "name": "Household With Householder Gender = Female, Internet Subscription Type"
+    },
+    {
+      "dcid": "dc/g/Household_HouseholderGender-Female_InternetSubscriptionType-BroadbandInternetSuchAsCableFiberOpticOrDslSatelliteInternetService",
+      "name": "Household With Householder Gender = Female, Internet Subscription Type = Broadband Internet Such as Cable Fiber Optic or Dsl \u0026 Satellite Internet Service"
+    },
+    {
+      "dcid": "dc/g/Household_HouseholderGender-Female_InternetSubscriptionType-CellularDataPlan",
+      "name": "Household With Householder Gender = Female, Internet Subscription Type = Cellular Data Plan"
+    },
+    {
+      "dcid": "dc/g/Household_HouseholderGender-Female_InternetSubscriptionType-SatelliteInternetService",
+      "name": "Household With Householder Gender = Female, Internet Subscription Type = Satellite Internet Service"
+    },
+    {
+      "dcid": "dc/g/Household_HouseholderGender-Female_InternetUsageLocation",
+      "name": "Household With Householder Gender = Female, Internet Usage Location"
+    },
+    {
+      "dcid": "dc/g/Household_HouseholderGender-Female_InternetUsageLocation-AnyLocation",
+      "name": "Household With Householder Gender = Female, Internet Usage Location = Any Location"
+    },
+    {
+      "dcid": "dc/g/Household_HouseholderGender-Female_InternetUsageLocation-Home",
+      "name": "Household With Householder Gender = Female, Internet Usage Location = Home"
+    },
+    {
+      "dcid": "dc/g/Household_HouseholderGender-Female_ReasonNotUsingInternetAtHome",
+      "name": "Household With Householder Gender = Female, Reason Not Using Internet At Home"
+    },
+    {
+      "dcid": "dc/g/Household_HouseholderGender-Female_ReasonNotUsingInternetAtHome-InternetExpensive",
+      "name": "Household With Householder Gender = Female, Reason Not Using Internet At Home = Internet Expensive"
+    },
+    {
+      "dcid": "dc/g/Household_HouseholderGender-Female_ReasonNotUsingInternetAtHome-InternetInadequateComputer",
+      "name": "Household With Householder Gender = Female, Reason Not Using Internet At Home = Internet Inadequate Computer"
+    },
+    {
+      "dcid": "dc/g/Household_HouseholderGender-Female_ReasonNotUsingInternetAtHome-InternetNotNeededInternetNotInterested",
+      "name": "Household With Householder Gender = Female, Reason Not Using Internet At Home = Internet Not Needed \u0026 Internet Not Interested"
+    },
+    {
+      "dcid": "dc/g/Household_HouseholderGender-Female_ReasonNotUsingInternetAtHome-InternetPrivacyConcernsInternetSecurityConcerns",
+      "name": "Household With Householder Gender = Female, Reason Not Using Internet At Home = Internet Privacy Concerns \u0026 Internet Security Concerns"
+    },
+    {
+      "dcid": "dc/g/Household_HouseholderGender-Female_ReasonNotUsingInternetAtHome-InternetUnavailableInArea",
+      "name": "Household With Householder Gender = Female, Reason Not Using Internet At Home = Internet Unavailable in Area"
+    },
+    {
+      "dcid": "dc/g/Household_HouseholderGender-Female_ReasonNotUsingInternetAtHome-InternetUseElsewhere",
+      "name": "Household With Householder Gender = Female, Reason Not Using Internet At Home = Internet Use Elsewhere"
+    },
+    {
+      "dcid": "dc/g/Household_HouseholderGender-Female_IsInternetUser",
+      "name": "Household With Householder Gender = Female, is Internet User"
+    },
+    {
+      "dcid": "dc/g/Household_HouseholderGender-Female_IsInternetUser-True",
+      "name": "Household With Householder Gender = Female, is Internet User = True"
     },
     {
       "dcid": "dc/g/MedicalConditionIncident_Age-Years0To4_Gender-Female",
@@ -7713,6 +7819,38 @@
       "name": "Person With Educational Degree, Gender = Female"
     },
     {
+      "dcid": "dc/g/Person_ElectronicGadgetUsed-DesktopUserLaptopUserTabletUser_Gender-Female",
+      "name": "Person With Electronic Gadget Used = Desktop User \u0026 Laptop User \u0026 Tablet User, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Person_ElectronicGadgetUsed-DesktopUser_Gender-Female",
+      "name": "Person With Electronic Gadget Used = Desktop User, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Person_ElectronicGadgetUsed-LaptopUser_Gender-Female",
+      "name": "Person With Electronic Gadget Used = Laptop User, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Person_ElectronicGadgetUsed-MobileUser_Gender-Female",
+      "name": "Person With Electronic Gadget Used = Mobile User, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Person_ElectronicGadgetUsed-SmartTelevisionUser_Gender-Female",
+      "name": "Person With Electronic Gadget Used = Smart Television User, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Person_ElectronicGadgetUsed-TabletUserEbookReaderUser_Gender-Female",
+      "name": "Person With Electronic Gadget Used = Tablet User \u0026 Ebook Reader User, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Person_ElectronicGadgetUsed-WearableDeviceUser_Gender-Female",
+      "name": "Person With Electronic Gadget Used = Wearable Device User, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Person_ElectronicGadgetUsed_Gender-Female",
+      "name": "Person With Electronic Gadget Used, Gender = Female"
+    },
+    {
       "dcid": "dc/g/Person_EmploymentStatus-Employed_Gender-Female",
       "name": "Person With Employment Status = Employed, Gender = Female"
     },
@@ -7823,6 +7961,10 @@
     {
       "dcid": "dc/g/Person_Gender-Female_HealthBehavior",
       "name": "Person With Gender = Female, Health Behavior"
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_HealthBehavior-Overweight",
+      "name": "Person With Gender = Female, Health Behavior = Overweight"
     },
     {
       "dcid": "dc/g/Person_Gender-Female_HealthInsurance",
@@ -7961,6 +8103,38 @@
       "name": "Person With Gender = Female, Institutionalization = Non Institutionalized"
     },
     {
+      "dcid": "dc/g/Person_Gender-Female_InternetUsageLocation",
+      "name": "Person With Gender = Female, Internet Usage Location"
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_InternetUsageLocation-AnyLocation",
+      "name": "Person With Gender = Female, Internet Usage Location = Any Location"
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_InternetUsageLocation-Cafeteria",
+      "name": "Person With Gender = Female, Internet Usage Location = Cafeteria"
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_InternetUsageLocation-Home",
+      "name": "Person With Gender = Female, Internet Usage Location = Home"
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_InternetUsageLocation-PublicPlace",
+      "name": "Person With Gender = Female, Internet Usage Location = Public Place"
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_InternetUsageLocation-School",
+      "name": "Person With Gender = Female, Internet Usage Location = School"
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_InternetUsageLocation-Traveling",
+      "name": "Person With Gender = Female, Internet Usage Location = Traveling"
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_InternetUsageLocation-Work",
+      "name": "Person With Gender = Female, Internet Usage Location = Work"
+    },
+    {
       "dcid": "dc/g/Person_Gender-Female_MaritalStatus",
       "name": "Person With Gender = Female, Marital Status"
     },
@@ -7971,6 +8145,10 @@
     {
       "dcid": "dc/g/Person_Gender-Female_MaritalStatus-Unmarried",
       "name": "Person With Gender = Female, Marital Status = Unmarried"
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_MedicalCondition",
+      "name": "Person With Gender = Female, Medical Condition"
     },
     {
       "dcid": "dc/g/Person_Gender-Female_MinorityServingInstitutionType",
@@ -8461,6 +8639,14 @@
       "name": "Person With Gender = Female, Veteran Status = Veteran"
     },
     {
+      "dcid": "dc/g/Person_Gender-Female_IsInternetUser",
+      "name": "Person With Gender = Female, is Internet User"
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_IsInternetUser-True",
+      "name": "Person With Gender = Female, is Internet User = True"
+    },
+    {
       "dcid": "dc/g/Person_Gender-Female_IncomeRelativeToPovertyLine-RatioToPovertyLine1.38To4",
       "name": "Person With Income Relative To Poverty Line = 1.4 - 4 Ratio To Poverty Line, Gender = Female"
     },
@@ -8579,174 +8765,6 @@
     {
       "dcid": "dc/g/Student_EducationalAchievementLevel-NAEPDiscreteAtBasic_Gender-Female",
       "name": "Student With Educational Achievement Level = NAEP_Discrete At Basic, Gender = Female"
-    },
-    {
-      "dcid": "dc/g/Student_EducationalAchievementLevel-NAEPDiscreteAtProficient_Gender-Female",
-      "name": "Student With Educational Achievement Level = NAEP_Discrete At Proficient, Gender = Female"
-    },
-    {
-      "dcid": "dc/g/Student_EducationalAchievementLevel_Gender-Female",
-      "name": "Student With Educational Achievement Level, Gender = Female"
-    },
-    {
-      "dcid": "dc/g/Student_EducationalDegree-ScienceEngineeringHealth_Gender-Female",
-      "name": "Student With Educational Degree = Science \u0026 Engineering \u0026 Health, Gender = Female"
-    },
-    {
-      "dcid": "dc/g/Student_EducationalDegree-ScienceOrEngineeringOrHealth_Gender-Female",
-      "name": "Student With Educational Degree = Science or Engineering or Health, Gender = Female"
-    },
-    {
-      "dcid": "dc/g/Student_EducationalDegree_Gender-Female",
-      "name": "Student With Educational Degree, Gender = Female"
-    },
-    {
-      "dcid": "dc/g/Student_EducationalProgram-DoctorateDegree_Gender-Female",
-      "name": "Student With Educational Program = Doctorate Degree, Gender = Female"
-    },
-    {
-      "dcid": "dc/g/Student_EducationalProgram-MastersDegreeDoctorateDegree_Gender-Female",
-      "name": "Student With Educational Program = Masters Degree \u0026 Doctorate Degree, Gender = Female"
-    },
-    {
-      "dcid": "dc/g/Student_EducationalProgram-MastersDegree_Gender-Female",
-      "name": "Student With Educational Program = Masters Degree, Gender = Female"
-    },
-    {
-      "dcid": "dc/g/Student_EducationalProgram_Gender-Female",
-      "name": "Student With Educational Program, Gender = Female"
-    },
-    {
-      "dcid": "dc/g/Student_Ethnicity-HispanicOrLatino_Gender-Female",
-      "name": "Student With Ethnicity = Hispanic or Latino, Gender = Female"
-    },
-    {
-      "dcid": "dc/g/Student_Ethnicity-NotHispanicOrLatino_Gender-Female",
-      "name": "Student With Ethnicity = Not Hispanic or Latino, Gender = Female"
-    },
-    {
-      "dcid": "dc/g/Student_Ethnicity-UnknownEthnicity_Gender-Female",
-      "name": "Student With Ethnicity = Unknown Ethnicity, Gender = Female"
-    },
-    {
-      "dcid": "dc/g/Student_Ethnicity_Gender-Female",
-      "name": "Student With Ethnicity, Gender = Female"
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_Race",
-      "name": "Student With Gender = Female, Race"
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_Race-AmericanIndianOrAlaskaNativeAlone",
-      "name": "Student With Gender = Female, Race = American Indian or Alaska Native Alone"
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_Race-Asian",
-      "name": "Student With Gender = Female, Race = Asian"
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_Race-BlackOrAfricanAmericanAlone",
-      "name": "Student With Gender = Female, Race = Black or African American Alone"
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_Race-NativeHawaiianOrOtherPacificIslanderAlone",
-      "name": "Student With Gender = Female, Race = Native Hawaiian or Other Pacific Islander Alone"
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_Race-TwoOrMoreRaces",
-      "name": "Student With Gender = Female, Race = Two or More Races"
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_Race-UnknownRace",
-      "name": "Student With Gender = Female, Race = Unknown Race"
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_Race-WhiteAlone",
-      "name": "Student With Gender = Female, Race = White Alone"
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_SchoolGradeLevel",
-      "name": "Student With Gender = Female, School Grade Level"
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_SchoolGradeLevel-SchoolGrade12",
-      "name": "Student With Gender = Female, School Grade Level = School Grade 12"
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_SchoolGradeLevel-SchoolGrade4",
-      "name": "Student With Gender = Female, School Grade Level = School Grade 4"
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_SchoolGradeLevel-SchoolGrade8",
-      "name": "Student With Gender = Female, School Grade Level = School Grade 8"
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_SchoolSubject",
-      "name": "Student With Gender = Female, School Subject"
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_SchoolSubject-Civics",
-      "name": "Student With Gender = Female, School Subject = Civics"
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_SchoolSubject-Economics",
-      "name": "Student With Gender = Female, School Subject = Economics"
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_SchoolSubject-Geography",
-      "name": "Student With Gender = Female, School Subject = Geography"
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_SchoolSubject-Mathematics",
-      "name": "Student With Gender = Female, School Subject = Mathematics"
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_SchoolSubject-Music",
-      "name": "Student With Gender = Female, School Subject = Music"
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_SchoolSubject-Reading",
-      "name": "Student With Gender = Female, School Subject = Reading"
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_SchoolSubject-Science",
-      "name": "Student With Gender = Female, School Subject = Science"
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_SchoolSubject-TechnologyAndEngineeringLiteracy",
-      "name": "Student With Gender = Female, School Subject = Technology And Engineering Literacy"
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_SchoolSubject-USHistory",
-      "name": "Student With Gender = Female, School Subject = USHistory"
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_SchoolSubject-VisualArts",
-      "name": "Student With Gender = Female, School Subject = Visual Arts"
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_SchoolSubject-Writing",
-      "name": "Student With Gender = Female, School Subject = Writing"
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_SchoolType",
-      "name": "Student With Gender = Female, School Type"
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_SchoolType-PrivateSchool",
-      "name": "Student With Gender = Female, School Type = Private School"
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_SchoolType-PublicSchool",
-      "name": "Student With Gender = Female, School Type = Public School"
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_SubjectAssessmentScale",
-      "name": "Student With Gender = Female, Subject Assessment Scale"
-    },
-    {
-      "dcid": "dc/g/Student_Gender-Female_SubjectAssessmentScale-AlgebraScale",
-      "name": "Student With Gender = Female, Subject Assessment Scale = Algebra Scale"
     }
   ],
   "matches": [

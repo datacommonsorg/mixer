@@ -2911,6 +2911,15 @@
               ]
             },
             {
+              "facet_id": "3956865500",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 22159510
+                }
+              ]
+            },
+            {
               "facet_id": "473499523",
               "observations": [
                 {
@@ -5081,8 +5090,8 @@
               "facet_id": "2176550201",
               "observations": [
                 {
-                  "date": "2021",
-                  "value": 331893745
+                  "date": "2022",
+                  "value": 333287557
                 }
               ]
             },
@@ -5676,6 +5685,10 @@
       "import_name": "ItalyNIS",
       "provenance_url": "http://demo.istat.it/index_e.html",
       "measurement_method": "ItalyNIS"
+    },
+    "3956865500": {
+      "import_name": "Srilanka_Census",
+      "provenance_url": "https://data.humdata.org/"
     },
     "3981252704": {
       "import_name": "WorldDevelopmentIndicators",

@@ -1,4 +1,4 @@
-// Copyright 2023 Google LLC
+// Copyright 2024 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -19,36 +19,6 @@ import (
 	"os"
 	"path/filepath"
 )
-
-func createTables(sqlClient *sql.DB) error {
-	tripleStatement := `
-	CREATE TABLE IF NOT EXISTS triples (
-		subject_id TEXT,
-		predicate TEXT,
-		object_id TEXT,
-		object_value TEXT
-	);
-	`
-	_, err := sqlClient.Exec(tripleStatement)
-	if err != nil {
-		return err
-	}
-
-	observationStatement := `
-	CREATE TABLE IF NOT EXISTS observations (
-		entity TEXT,
-		variable TEXT,
-		date TEXT,
-		value TEXT,
-		provenance TEXT
-	);
-	`
-	_, err = sqlClient.Exec(observationStatement)
-	if err != nil {
-		return err
-	}
-	return nil
-}
 
 func ConnectDB(dbPath string) (*sql.DB, error) {
 	// Create all intermediate directories.
@@ -71,10 +41,6 @@ func ConnectDB(dbPath string) (*sql.DB, error) {
 		return nil, err
 	}
 	sqlClient, err := sql.Open("sqlite3", dbPath)
-	if err != nil {
-		return nil, err
-	}
-	err = createTables(sqlClient)
 	if err != nil {
 		return nil, err
 	}
