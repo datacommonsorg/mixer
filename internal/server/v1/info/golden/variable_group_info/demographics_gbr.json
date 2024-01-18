@@ -110,7 +110,7 @@
         "id": "dc/g/Person_Age",
         "specializedEntity": "Age",
         "displayName": "Person by Age",
-        "descendentStatVarCount": 653
+        "descendentStatVarCount": 656
       },
       {
         "id": "dc/g/Person_AgeGroupClassification",
@@ -227,7 +227,7 @@
         "id": "dc/g/Person_Gender",
         "specializedEntity": "Gender",
         "displayName": "Person by Gender",
-        "descendentStatVarCount": 2426
+        "descendentStatVarCount": 2428
       },
       {
         "id": "dc/g/Person_GovernmentId",
@@ -456,7 +456,7 @@
         "displayName": "Village"
       }
     ],
-    "descendentStatVarCount": 4478,
+    "descendentStatVarCount": 4481,
     "parentStatVarGroups": [
       "dc/g/Root"
     ]

@@ -16135,7 +16135,7 @@
                 "City"
               ],
               "dcid": "geoId/0600212",
-              "provenanceId": "dc/base/WikidataOtherIdGeos"
+              "provenanceId": "dc/base/BaseGeos"
             },
             {
               "name": "Adelanto",
@@ -16367,7 +16367,7 @@
                 "City"
               ],
               "dcid": "geoId/0600674",
-              "provenanceId": "dc/base/WikidataOtherIdGeos"
+              "provenanceId": "dc/base/BaseGeos"
             },
             {
               "name": "Butte County",
@@ -17816,7 +17816,7 @@
                 "Town"
               ],
               "dcid": "geoId/0602364",
-              "provenanceId": "dc/base/WikidataOtherIdGeos"
+              "provenanceId": "dc/base/BaseGeos"
             },
             {
               "name": "Aptos",
@@ -17896,7 +17896,7 @@
                 "City"
               ],
               "dcid": "geoId/0602420",
-              "provenanceId": "dc/base/WikidataOtherIdGeos"
+              "provenanceId": "dc/base/BaseGeos"
             },
             {
               "name": "Arcadia",
@@ -18074,7 +18074,7 @@
                 "City"
               ],
               "dcid": "geoId/0602868",
-              "provenanceId": "dc/base/WikidataOtherIdGeos"
+              "provenanceId": "dc/base/BaseGeos"
             },
             {
               "name": "Artesia",
@@ -18235,7 +18235,7 @@
                 "City"
               ],
               "dcid": "geoId/0603064",
-              "provenanceId": "dc/base/WikidataOtherIdGeos"
+              "provenanceId": "dc/base/BaseGeos"
             },
             {
               "name": "Atherton",
@@ -18374,7 +18374,7 @@
                 "City"
               ],
               "dcid": "geoId/0603302",
-              "provenanceId": "dc/base/WikidataOtherIdGeos"
+              "provenanceId": "dc/base/BaseGeos"
             },
             {
               "name": "Avery",
@@ -18559,7 +18559,7 @@
                 "City"
               ],
               "dcid": "geoId/0603666",
-              "provenanceId": "dc/base/WikidataOtherIdGeos"
+              "provenanceId": "dc/base/BaseGeos"
             },
             {
               "name": "Ballard",
@@ -19197,7 +19197,7 @@
                 "City"
               ],
               "dcid": "geoId/0604870",
-              "provenanceId": "dc/base/WikidataOtherIdGeos"
+              "provenanceId": "dc/base/BaseGeos"
             },
             {
               "name": "Modoc County",
@@ -19230,7 +19230,7 @@
                 "City"
               ],
               "dcid": "geoId/0604982",
-              "provenanceId": "dc/base/WikidataOtherIdGeos"
+              "provenanceId": "dc/base/BaseGeos"
             },
             {
               "name": "Adin-Lookout CCD",
@@ -19270,7 +19270,7 @@
                 "City"
               ],
               "dcid": "geoId/0604996",
-              "provenanceId": "dc/base/WikidataOtherIdGeos"
+              "provenanceId": "dc/base/BaseGeos"
             },
             {
               "name": "Congressional District 5 (113th Congress), California",
@@ -19862,7 +19862,7 @@
                 "City"
               ],
               "dcid": "geoId/0606560",
-              "provenanceId": "dc/base/WikidataOtherIdGeos"
+              "provenanceId": "dc/base/BaseGeos"
             },
             {
               "name": "Big Lagoon",
@@ -20773,7 +20773,7 @@
                 "City"
               ],
               "dcid": "geoId/0607946",
-              "provenanceId": "dc/base/WikidataOtherIdGeos"
+              "provenanceId": "dc/base/BaseGeos"
             },
             {
               "name": "Bradley",
@@ -21260,7 +21260,7 @@
                 "City"
               ],
               "dcid": "geoId/0609122",
-              "provenanceId": "dc/base/WikidataOtherIdGeos"
+              "provenanceId": "dc/base/BaseGeos"
             },
             {
               "name": "Burnt Ranch",
@@ -22229,7 +22229,7 @@
                 "City"
               ],
               "dcid": "geoId/0611040",
-              "provenanceId": "dc/base/WikidataOtherIdGeos"
+              "provenanceId": "dc/base/BaseGeos"
             },
             {
               "name": "Ventura County",
@@ -22616,7 +22616,7 @@
                 "City"
               ],
               "dcid": "geoId/0611796",
-              "provenanceId": "dc/base/WikidataOtherIdGeos"
+              "provenanceId": "dc/base/BaseGeos"
             },
             {
               "name": "Castella",
@@ -22640,7 +22640,7 @@
                 "City"
               ],
               "dcid": "geoId/0611964",
-              "provenanceId": "dc/base/WikidataOtherIdGeos"
+              "provenanceId": "dc/base/BaseGeos"
             },
             {
               "name": "Castroville",
@@ -22744,7 +22744,7 @@
                 "City"
               ],
               "dcid": "geoId/0612524",
-              "provenanceId": "dc/base/WikidataOtherIdGeos"
+              "provenanceId": "dc/base/BaseGeos"
             },
             {
               "name": "Cerritos",
@@ -23048,7 +23048,7 @@
                 "City"
               ],
               "dcid": "geoId/0614218",
-              "provenanceId": "dc/base/WikidataOtherIdGeos"
+              "provenanceId": "dc/base/BaseGeos"
             },
             {
               "name": "Clyde",
@@ -23201,7 +23201,7 @@
                 "City"
               ],
               "dcid": "geoId/0614974",
-              "provenanceId": "dc/base/WikidataOtherIdGeos"
+              "provenanceId": "dc/base/BaseGeos"
             },
             {
               "name": "Congressional District 15 (113th Congress), California",
@@ -23370,7 +23370,7 @@
                 "City"
               ],
               "dcid": "geoId/0616644",
-              "provenanceId": "dc/base/WikidataOtherIdGeos"
+              "provenanceId": "dc/base/BaseGeos"
             },
             {
               "name": "Country Club",
@@ -23562,7 +23562,7 @@
                 "City"
               ],
               "dcid": "geoId/0617750",
-              "provenanceId": "dc/base/WikidataOtherIdGeos"
+              "provenanceId": "dc/base/BaseGeos"
             },
             {
               "name": "Dales",
@@ -23595,7 +23595,7 @@
                 "Town"
               ],
               "dcid": "geoId/0617988",
-              "provenanceId": "dc/base/WikidataOtherIdGeos"
+              "provenanceId": "dc/base/BaseGeos"
             },
             {
               "name": "Daphnedale Park",
@@ -23891,7 +23891,7 @@
                 "City"
               ],
               "dcid": "geoId/0619402",
-              "provenanceId": "dc/base/WikidataOtherIdGeos"
+              "provenanceId": "dc/base/BaseGeos"
             },
             {
               "name": "Dixon Lane-MeadowCreek",
@@ -24388,7 +24388,7 @@
                 "City"
               ],
               "dcid": "geoId/0621936",
-              "provenanceId": "dc/base/WikidataOtherIdGeos"
+              "provenanceId": "dc/base/BaseGeos"
             },
             {
               "name": "Elizabeth Lake",
@@ -24420,7 +24420,7 @@
                 "City"
               ],
               "dcid": "geoId/0622020",
-              "provenanceId": "dc/base/WikidataOtherIdGeos"
+              "provenanceId": "dc/base/BaseGeos"
             },
             {
               "name": "Elkhorn",
@@ -24580,7 +24580,7 @@
                 "City"
               ],
               "dcid": "geoId/0622790",
-              "provenanceId": "dc/base/WikidataOtherIdGeos"
+              "provenanceId": "dc/base/BaseGeos"
             },
             {
               "name": "Escondido",
@@ -24661,7 +24661,7 @@
                 "Town"
               ],
               "dcid": "geoId/0623168",
-              "provenanceId": "dc/base/WikidataOtherIdGeos"
+              "provenanceId": "dc/base/BaseGeos"
             },
             {
               "name": "Fairfield",
@@ -24983,7 +24983,7 @@
                 "Town"
               ],
               "dcid": "geoId/0633798",
-              "provenanceId": "dc/base/WikidataOtherIdGeos"
+              "provenanceId": "dc/base/BaseGeos"
             },
             {
               "name": "Congressional District 34 (113th Congress), California",
@@ -25215,7 +25215,7 @@
                 "Town"
               ],
               "dcid": "geoId/0655520",
-              "provenanceId": "dc/base/WikidataOtherIdGeos"
+              "provenanceId": "dc/base/BaseGeos"
             },
             {
               "name": "Portola Valley",
@@ -25314,7 +25314,7 @@
                 "Town"
               ],
               "dcid": "geoId/0687056",
-              "provenanceId": "dc/base/WikidataOtherIdGeos"
+              "provenanceId": "dc/base/BaseGeos"
             },
             {
               "name": "California -- In metropolitan or micropolitan statistical area",
@@ -29983,7 +29983,8 @@
             {
               "name": "Yosemite Unified School District (9-12)",
               "types": [
-                "HighSchoolDistrict"
+                "HighSchoolDistrict",
+                "SchoolDistrict"
               ],
               "dcid": "geoId/sch0606001",
               "provenanceId": "dc/base/BaseGeos"
@@ -29991,7 +29992,8 @@
             {
               "name": "Twin Rivers Unified School District (9-12)",
               "types": [
-                "HighSchoolDistrict"
+                "HighSchoolDistrict",
+                "SchoolDistrict"
               ],
               "dcid": "geoId/sch0606003",
               "provenanceId": "dc/base/BaseGeos"
@@ -29999,7 +30001,8 @@
             {
               "name": "Twin Rivers Unified School District (7-12)",
               "types": [
-                "HighSchoolDistrict"
+                "HighSchoolDistrict",
+                "SchoolDistrict"
               ],
               "dcid": "geoId/sch0606004",
               "provenanceId": "dc/base/BaseGeos"
@@ -30007,7 +30010,8 @@
             {
               "name": "Scott Valley Unified School District (9-12)",
               "types": [
-                "HighSchoolDistrict"
+                "HighSchoolDistrict",
+                "SchoolDistrict"
               ],
               "dcid": "geoId/sch0606005",
               "provenanceId": "dc/base/BaseGeos"
@@ -30015,7 +30019,8 @@
             {
               "name": "Trinity Alps Unified School District (9-12)",
               "types": [
-                "HighSchoolDistrict"
+                "HighSchoolDistrict",
+                "SchoolDistrict"
               ],
               "dcid": "geoId/sch0606006",
               "provenanceId": "dc/base/BaseGeos"
@@ -30023,7 +30028,8 @@
             {
               "name": "Turlock Unified School District (9-12)",
               "types": [
-                "HighSchoolDistrict"
+                "HighSchoolDistrict",
+                "SchoolDistrict"
               ],
               "dcid": "geoId/sch0606013",
               "provenanceId": "dc/base/BaseGeos"
@@ -30031,7 +30037,8 @@
             {
               "name": "Santa Cruz City High School District (9-12)",
               "types": [
-                "HighSchoolDistrict"
+                "HighSchoolDistrict",
+                "SchoolDistrict"
               ],
               "dcid": "geoId/sch0606015",
               "provenanceId": "dc/base/BaseGeos"
@@ -30039,7 +30046,8 @@
             {
               "name": "Dinuba Unified School District (9-12)",
               "types": [
-                "HighSchoolDistrict"
+                "HighSchoolDistrict",
+                "SchoolDistrict"
               ],
               "dcid": "geoId/sch0606016",
               "provenanceId": "dc/base/BaseGeos"
@@ -30047,7 +30055,8 @@
             {
               "name": "Washington Unified School District (9-12)",
               "types": [
-                "HighSchoolDistrict"
+                "HighSchoolDistrict",
+                "SchoolDistrict"
               ],
               "dcid": "geoId/sch0606018",
               "provenanceId": "dc/base/BaseGeos"
@@ -30055,7 +30064,8 @@
             {
               "name": "Santa Barbara Unified School District (7-12)",
               "types": [
-                "HighSchoolDistrict"
+                "HighSchoolDistrict",
+                "SchoolDistrict"
               ],
               "dcid": "geoId/sch0606019",
               "provenanceId": "dc/base/BaseGeos"
@@ -30063,7 +30073,8 @@
             {
               "name": "Lammersville Joint Unified School District (9-12)",
               "types": [
-                "HighSchoolDistrict"
+                "HighSchoolDistrict",
+                "SchoolDistrict"
               ],
               "dcid": "geoId/sch0606020",
               "provenanceId": "dc/base/BaseGeos"
@@ -30071,7 +30082,8 @@
             {
               "name": "Bishop Unified School District (9-12)",
               "types": [
-                "HighSchoolDistrict"
+                "HighSchoolDistrict",
+                "SchoolDistrict"
               ],
               "dcid": "geoId/sch0606021",
               "provenanceId": "dc/base/BaseGeos"
@@ -30079,7 +30091,8 @@
             {
               "name": "Santa Paula Unified School District (9-12)",
               "types": [
-                "HighSchoolDistrict"
+                "HighSchoolDistrict",
+                "SchoolDistrict"
               ],
               "dcid": "geoId/sch0606022",
               "provenanceId": "dc/base/BaseGeos"
@@ -30087,7 +30100,8 @@
             {
               "name": "Hamilton Unified School District (9-12)",
               "types": [
-                "HighSchoolDistrict"
+                "HighSchoolDistrict",
+                "SchoolDistrict"
               ],
               "dcid": "geoId/sch0606025",
               "provenanceId": "dc/base/BaseGeos"
@@ -30095,7 +30109,8 @@
             {
               "name": "Woodlake Unified School District (9-12)",
               "types": [
-                "HighSchoolDistrict"
+                "HighSchoolDistrict",
+                "SchoolDistrict"
               ],
               "dcid": "geoId/sch0606026",
               "provenanceId": "dc/base/BaseGeos"
@@ -30103,7 +30118,8 @@
             {
               "name": "Exeter Unified School District (9-12)",
               "types": [
-                "HighSchoolDistrict"
+                "HighSchoolDistrict",
+                "SchoolDistrict"
               ],
               "dcid": "geoId/sch0606028",
               "provenanceId": "dc/base/BaseGeos"
@@ -30120,7 +30136,8 @@
             {
               "name": "Tracy Unified School District (9-12)",
               "types": [
-                "HighSchoolDistrict"
+                "HighSchoolDistrict",
+                "SchoolDistrict"
               ],
               "dcid": "geoId/sch0606031",
               "provenanceId": "dc/base/BaseGeos"
@@ -30128,7 +30145,8 @@
             {
               "name": "Perris Union High School District (9-12)",
               "types": [
-                "HighSchoolDistrict"
+                "HighSchoolDistrict",
+                "SchoolDistrict"
               ],
               "dcid": "geoId/sch0606034",
               "provenanceId": "dc/base/BaseGeos"
@@ -30136,7 +30154,8 @@
             {
               "name": "Alhambra Unified School District (9-12)",
               "types": [
-                "HighSchoolDistrict"
+                "HighSchoolDistrict",
+                "SchoolDistrict"
               ],
               "dcid": "geoId/sch0606037",
               "provenanceId": "dc/base/BaseGeos"
@@ -30144,7 +30163,8 @@
             {
               "name": "Healdsburg Unified School District (7-12)",
               "types": [
-                "HighSchoolDistrict"
+                "HighSchoolDistrict",
+                "SchoolDistrict"
               ],
               "dcid": "geoId/sch0606038",
               "provenanceId": "dc/base/BaseGeos"
@@ -30152,7 +30172,8 @@
             {
               "name": "Gonzales Unified School District (9-12)",
               "types": [
-                "HighSchoolDistrict"
+                "HighSchoolDistrict",
+                "SchoolDistrict"
               ],
               "dcid": "geoId/sch0606053",
               "provenanceId": "dc/base/BaseGeos"
@@ -30187,7 +30208,8 @@
             {
               "name": "Porterville Unified School District (9-12)",
               "types": [
-                "HighSchoolDistrict"
+                "HighSchoolDistrict",
+                "SchoolDistrict"
               ],
               "dcid": "geoId/sch0606107",
               "provenanceId": "dc/base/BaseGeos"
@@ -34767,7 +34789,8 @@
             {
               "name": "Gridley Unified School District (9-12)",
               "types": [
-                "HighSchoolDistrict"
+                "HighSchoolDistrict",
+                "SchoolDistrict"
               ],
               "dcid": "geoId/sch0699001",
               "provenanceId": "dc/base/BaseGeos"
@@ -34775,7 +34798,8 @@
             {
               "name": "Caruthers Unified School District (9-12)",
               "types": [
-                "HighSchoolDistrict"
+                "HighSchoolDistrict",
+                "SchoolDistrict"
               ],
               "dcid": "geoId/sch0699002",
               "provenanceId": "dc/base/BaseGeos"
@@ -34783,7 +34807,8 @@
             {
               "name": "Riverdale Joint Unified School District (9-12)",
               "types": [
-                "HighSchoolDistrict"
+                "HighSchoolDistrict",
+                "SchoolDistrict"
               ],
               "dcid": "geoId/sch0699003",
               "provenanceId": "dc/base/BaseGeos"
@@ -34791,7 +34816,8 @@
             {
               "name": "Sierra Unified School District (9-12)",
               "types": [
-                "HighSchoolDistrict"
+                "HighSchoolDistrict",
+                "SchoolDistrict"
               ],
               "dcid": "geoId/sch0699004",
               "provenanceId": "dc/base/BaseGeos"
@@ -34799,7 +34825,8 @@
             {
               "name": "Orland Joint Unified School District (9-12)",
               "types": [
-                "HighSchoolDistrict"
+                "HighSchoolDistrict",
+                "SchoolDistrict"
               ],
               "dcid": "geoId/sch0699005",
               "provenanceId": "dc/base/BaseGeos"
@@ -34807,7 +34834,8 @@
             {
               "name": "Eureka City Unified School District (7-12)",
               "types": [
-                "HighSchoolDistrict"
+                "HighSchoolDistrict",
+                "SchoolDistrict"
               ],
               "dcid": "geoId/sch0699006",
               "provenanceId": "dc/base/BaseGeos"
@@ -34815,7 +34843,8 @@
             {
               "name": "Eureka City Unified School District (9-12)",
               "types": [
-                "HighSchoolDistrict"
+                "HighSchoolDistrict",
+                "SchoolDistrict"
               ],
               "dcid": "geoId/sch0699007",
               "provenanceId": "dc/base/BaseGeos"
@@ -34823,7 +34852,8 @@
             {
               "name": "Upper Lake Unified School District (9-12)",
               "types": [
-                "HighSchoolDistrict"
+                "HighSchoolDistrict",
+                "SchoolDistrict"
               ],
               "dcid": "geoId/sch0699008",
               "provenanceId": "dc/base/BaseGeos"
@@ -34831,7 +34861,8 @@
             {
               "name": "Coast Unified School District (9-12)",
               "types": [
-                "HighSchoolDistrict"
+                "HighSchoolDistrict",
+                "SchoolDistrict"
               ],
               "dcid": "geoId/sch0699009",
               "provenanceId": "dc/base/BaseGeos"
@@ -34839,7 +34870,8 @@
             {
               "name": "Paso Robles Joint Unified School District (9-12)",
               "types": [
-                "HighSchoolDistrict"
+                "HighSchoolDistrict",
+                "SchoolDistrict"
               ],
               "dcid": "geoId/sch0699010",
               "provenanceId": "dc/base/BaseGeos"
@@ -34847,7 +34879,8 @@
             {
               "name": "Santa Cruz City High School District (6-12)",
               "types": [
-                "HighSchoolDistrict"
+                "HighSchoolDistrict",
+                "SchoolDistrict"
               ],
               "dcid": "geoId/sch0699011",
               "provenanceId": "dc/base/BaseGeos"
@@ -34855,7 +34888,8 @@
             {
               "name": "Hughson Unified School District (9-12)",
               "types": [
-                "HighSchoolDistrict"
+                "HighSchoolDistrict",
+                "SchoolDistrict"
               ],
               "dcid": "geoId/sch0699012",
               "provenanceId": "dc/base/BaseGeos"
@@ -34863,7 +34897,8 @@
             {
               "name": "Oakdale Joint Unified School District (9-12)",
               "types": [
-                "HighSchoolDistrict"
+                "HighSchoolDistrict",
+                "SchoolDistrict"
               ],
               "dcid": "geoId/sch0699013",
               "provenanceId": "dc/base/BaseGeos"
@@ -34871,7 +34906,8 @@
             {
               "name": "Nevada Joint Union High School District (9-12)",
               "types": [
-                "HighSchoolDistrict"
+                "HighSchoolDistrict",
+                "SchoolDistrict"
               ],
               "dcid": "geoId/sch0699014",
               "provenanceId": "dc/base/BaseGeos"

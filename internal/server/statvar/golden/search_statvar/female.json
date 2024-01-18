@@ -145,10 +145,6 @@
       "dcid": "sdg/SH_DTH_NCOM.AGE--Y30T70__SEX--F"
     },
     {
-      "name": "New Hiv Infections (Per 1000 Uninfected Population), Female",
-      "dcid": "WHO/SDGHIV_Female"
-    },
-    {
       "name": "Number of moderately or severely food insecure people [15 years old and over, Female]",
       "dcid": "sdg/AG_PRD_FIESMSN.AGE--Y_GE15__SEX--F"
     },
@@ -581,7 +577,7 @@
           "dcid": "Count_Person_25OrMoreYears_EducationalAttainmentSomeCollegeLessThan1Year_Female"
         },
         {
-          "name": "Population: Masters Degree or Higher, Female (As Fraction of Count Person 25 or More Years Female)",
+          "name": "Fraction of 25+ Years Old Females with Masters Degree or Higher",
           "dcid": "Count_Person_25OrMoreYears_Female_MastersDegreeOrHigher_AsFractionOf_Count_Person_25OrMoreYears_Female"
         }
       ]
@@ -935,7 +931,7 @@
           "dcid": "Count_Person_EducationalAttainmentDoctorateDegree_Female"
         },
         {
-          "name": "Population: Doctorate Degree, Female (As Fraction of Count Person 25 or More Years Female)",
+          "name": "Fraction of 25+ Years Old Females with Doctorate Degree",
           "dcid": "Count_Person_25OrMoreYears_Female_DoctorateDegree_AsFractionOf_Count_Person_25OrMoreYears_Female"
         }
       ]
@@ -3047,7 +3043,7 @@
           "dcid": "Count_Person_25OrMoreYears_EducationalAttainmentBachelorsDegreeOrHigher_Female"
         },
         {
-          "name": "Population: Bachelors Degree or Higher, Female (As Fraction of Count Person 25 or More Years Female)",
+          "name": "Fraction of 25+ Years Old Females with Bachelors Degree or Higher",
           "dcid": "Count_Person_25OrMoreYears_Female_BachelorsDegreeOrHigher_AsFractionOf_Count_Person_25OrMoreYears_Female"
         }
       ]
@@ -3725,7 +3721,7 @@
       "name": "Mortality Event With Cause of Death, Gender = Female",
       "statVars": [
         {
-          "name": "Count of Mortality Event: X60-X84 (Intentional Self-harm), Female (As Fraction of Count Person Female)",
+          "name": "Female Suicide Mortality Rate",
           "dcid": "Count_Death_IntentionalSelfHarm_Female_AsFractionOf_Count_Person_Female"
         }
       ]
@@ -5425,7 +5421,7 @@
       "name": "Person With Educational Attainment = Tertiary Education, Gender = Female",
       "statVars": [
         {
-          "name": "Population: Tertiary Education, Female (As Fraction of Count Person 25 or More Years Female)",
+          "name": "Fraction of 25+ Years Old Females with Tertiary Education",
           "dcid": "Count_Person_25OrMoreYears_Female_TertiaryEducation_AsFractionOf_Count_Person_25OrMoreYears_Female"
         }
       ]
@@ -7967,6 +7963,10 @@
       "name": "Person With Gender = Female, Health Behavior"
     },
     {
+      "dcid": "dc/g/Person_Gender-Female_HealthBehavior-Overweight",
+      "name": "Person With Gender = Female, Health Behavior = Overweight"
+    },
+    {
       "dcid": "dc/g/Person_Gender-Female_HealthInsurance",
       "name": "Person With Gender = Female, Health Insurance"
     },
@@ -8145,6 +8145,10 @@
     {
       "dcid": "dc/g/Person_Gender-Female_MaritalStatus-Unmarried",
       "name": "Person With Gender = Female, Marital Status = Unmarried"
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_MedicalCondition",
+      "name": "Person With Gender = Female, Medical Condition"
     },
     {
       "dcid": "dc/g/Person_Gender-Female_MinorityServingInstitutionType",
@@ -8761,14 +8765,6 @@
     {
       "dcid": "dc/g/Student_EducationalAchievementLevel-NAEPDiscreteAtBasic_Gender-Female",
       "name": "Student With Educational Achievement Level = NAEP_Discrete At Basic, Gender = Female"
-    },
-    {
-      "dcid": "dc/g/Student_EducationalAchievementLevel-NAEPDiscreteAtProficient_Gender-Female",
-      "name": "Student With Educational Achievement Level = NAEP_Discrete At Proficient, Gender = Female"
-    },
-    {
-      "dcid": "dc/g/Student_EducationalAchievementLevel_Gender-Female",
-      "name": "Student With Educational Achievement Level, Gender = Female"
     }
   ],
   "matches": [
