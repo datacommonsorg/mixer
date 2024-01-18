@@ -110,11 +110,18 @@
         "childStatVars": [
           {
             "id": "test_var_1",
+            "searchNames": [
+              "total number of sql query used",
+              "this is the count of sql query for the entire database"
+            ],
             "displayName": "total number of sql query used",
             "hasData": true
           },
           {
             "id": "test_var_2",
+            "searchNames": [
+              "total number of sql joins"
+            ],
             "displayName": "total number of sql joins",
             "hasData": true
           }
