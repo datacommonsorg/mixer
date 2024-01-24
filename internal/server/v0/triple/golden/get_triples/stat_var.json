@@ -152,7 +152,7 @@
     },
     {
       "subjectId": "Count_BirthEvent_LiveBirth_AsFractionOf_Count_Person",
-      "subjectName": "Count of Birth Event: Live Birth (Per Capita)",
+      "subjectName": "Crude Birth Rate",
       "subjectTypes": [
         "StatisticalVariable"
       ],
@@ -250,7 +250,7 @@
     },
     {
       "subjectId": "Count_Death_IntentionalSelfHarm_AsFractionOf_Count_Person",
-      "subjectName": "Count of Mortality Event: X60-X84 (Intentional Self-harm) (Per Capita)",
+      "subjectName": "Suicide Mortality Rate",
       "subjectTypes": [
         "StatisticalVariable"
       ],
@@ -7276,7 +7276,7 @@
     },
     {
       "subjectId": "Count_Death_IntentionalSelfHarm_Female_AsFractionOf_Count_Person_Female",
-      "subjectName": "Count of Mortality Event: X60-X84 (Intentional Self-harm), Female (As Fraction of Count Person Female)",
+      "subjectName": "Female Suicide Mortality Rate",
       "subjectTypes": [
         "StatisticalVariable"
       ],

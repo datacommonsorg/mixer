@@ -7715,6 +7715,10 @@
       "name": "Person With Bachelors Degree Major, Gender = Female"
     },
     {
+      "dcid": "dc/g/Person_CarpoolOccupancy_Gender-Female",
+      "name": "Person With Carpool Occupancy, Gender = Female"
+    },
+    {
       "dcid": "dc/g/Person_ChildrenStatus_Gender-Female",
       "name": "Person With Children Status, Gender = Female"
     },
@@ -7757,6 +7761,34 @@
     {
       "dcid": "dc/g/Person_CollegeOrUniversityLevel_Gender-Female",
       "name": "Person With College or University Level, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Person_CommuteMode-CarTruckOrVanCarpooled_Gender-Female",
+      "name": "Person With Commute Mode = Car Truck or Van Carpooled, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Person_CommuteMode-PublicTransportationExcludingTaxicab_Gender-Female",
+      "name": "Person With Commute Mode = Public Transportation Excluding Taxicab, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Person_CommuteMode_Gender-Female",
+      "name": "Person With Commute Mode, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Person_CommuteStartTime_Gender-Female",
+      "name": "Person With Commute Start Time, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Person_CommuteTime_Gender-Female",
+      "name": "Person With Commute Time, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Person_CommuteType-WorkCommute_Gender-Female",
+      "name": "Person With Commute Type = Work Commute, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/Person_CommuteType_Gender-Female",
+      "name": "Person With Commute Type, Gender = Female"
     },
     {
       "dcid": "dc/g/Person_DisabilityStatus-NoDisability_Gender-Female",
@@ -8167,6 +8199,10 @@
       "name": "Person With Gender = Female, Nativity = Native"
     },
     {
+      "dcid": "dc/g/Person_Gender-Female_NumberOfVehiclesInHousehold",
+      "name": "Person With Gender = Female, Number of Vehicles in Household"
+    },
+    {
       "dcid": "dc/g/Person_Gender-Female_OccupancyStatus",
       "name": "Person With Gender = Female, Occupancy Status"
     },
@@ -8429,6 +8465,14 @@
     {
       "dcid": "dc/g/Person_Gender-Female_PlaceOfBirth-WesternAsia",
       "name": "Person With Gender = Female, Place of Birth = Western Asia"
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_PlaceOfWork",
+      "name": "Person With Gender = Female, Place of Work"
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_PlaceOfWork-WorkedOutsideOfHome",
+      "name": "Person With Gender = Female, Place of Work = Worked Outside of Home"
     },
     {
       "dcid": "dc/g/Person_Gender-Female_PovertyStatus",
@@ -8721,50 +8765,6 @@
     {
       "dcid": "dc/g/SDGSEADTFUNS_age-SDGAgeEnumY16T65_sdgsex-SDGSexEnumF",
       "name": "Proportion of Population Achieving At Least A Fixed Level of Proficiency in Functional Skills, by Sex, Age And Type of Skill With Age = 16 To 65 Years Old, Sex = Female"
-    },
-    {
-      "dcid": "dc/g/SDGSEADTFUNS_age_sdgsex-SDGSexEnumF",
-      "name": "Proportion of Population Achieving At Least A Fixed Level of Proficiency in Functional Skills, by Sex, Age And Type of Skill With Age, Sex = Female"
-    },
-    {
-      "dcid": "dc/g/SDGSEADTFUNS_sdgsex-SDGSexEnumF_sdgtypeOfSkill",
-      "name": "Proportion of Population Achieving At Least A Fixed Level of Proficiency in Functional Skills, by Sex, Age And Type of Skill With Sex = Female, Type of Skill"
-    },
-    {
-      "dcid": "dc/g/Student_CitizenshipStatus-Citizen_Gender-Female",
-      "name": "Student With Citizenship Status = Citizen, Gender = Female"
-    },
-    {
-      "dcid": "dc/g/Student_CitizenshipStatus-VisaHolder_Gender-Female",
-      "name": "Student With Citizenship Status = Visa Holder, Gender = Female"
-    },
-    {
-      "dcid": "dc/g/Student_CitizenshipStatus_Gender-Female",
-      "name": "Student With Citizenship Status, Gender = Female"
-    },
-    {
-      "dcid": "dc/g/Student_EducationalAchievementLevel-NAEPCumulativeAtAdvanced_Gender-Female",
-      "name": "Student With Educational Achievement Level = NAEP_Cumulative At Advanced, Gender = Female"
-    },
-    {
-      "dcid": "dc/g/Student_EducationalAchievementLevel-NAEPCumulativeAtOrAboveBasic_Gender-Female",
-      "name": "Student With Educational Achievement Level = NAEP_Cumulative At or Above Basic, Gender = Female"
-    },
-    {
-      "dcid": "dc/g/Student_EducationalAchievementLevel-NAEPCumulativeAtOrAboveProficient_Gender-Female",
-      "name": "Student With Educational Achievement Level = NAEP_Cumulative At or Above Proficient, Gender = Female"
-    },
-    {
-      "dcid": "dc/g/Student_EducationalAchievementLevel-NAEPCumulativeBelowBasic_Gender-Female",
-      "name": "Student With Educational Achievement Level = NAEP_Cumulative Below Basic, Gender = Female"
-    },
-    {
-      "dcid": "dc/g/Student_EducationalAchievementLevel-NAEPDiscreteAtAdvanced_Gender-Female",
-      "name": "Student With Educational Achievement Level = NAEP_Discrete At Advanced, Gender = Female"
-    },
-    {
-      "dcid": "dc/g/Student_EducationalAchievementLevel-NAEPDiscreteAtBasic_Gender-Female",
-      "name": "Student With Educational Achievement Level = NAEP_Discrete At Basic, Gender = Female"
     }
   ],
   "matches": [

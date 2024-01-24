@@ -101,46 +101,5 @@
       "objectName": "Total Population",
       "provenanceId": "dc/base/WorldDevelopmentIndicators"
     }
-  ],
-  "dc/o/w2z8nx9y43k97": [
-    {
-      "subjectId": "dc/o/w2z8nx9y43k97",
-      "predicate": "observationAbout",
-      "objectId": "Earth",
-      "objectName": "World",
-      "provenanceId": "dc/base/WorldDevelopmentIndicators"
-    },
-    {
-      "subjectId": "dc/o/w2z8nx9y43k97",
-      "predicate": "observationDate",
-      "objectValue": "2006",
-      "provenanceId": "dc/base/WorldDevelopmentIndicators"
-    },
-    {
-      "subjectId": "dc/o/w2z8nx9y43k97",
-      "predicate": "observationPeriod",
-      "objectValue": "P1Y",
-      "provenanceId": "dc/base/WorldDevelopmentIndicators"
-    },
-    {
-      "subjectId": "dc/o/w2z8nx9y43k97",
-      "predicate": "unit",
-      "objectId": "Year",
-      "objectName": "Year",
-      "provenanceId": "dc/base/WorldDevelopmentIndicators"
-    },
-    {
-      "subjectId": "dc/o/w2z8nx9y43k97",
-      "predicate": "value",
-      "objectValue": "71.5062059465",
-      "provenanceId": "dc/base/WorldDevelopmentIndicators"
-    },
-    {
-      "subjectId": "dc/o/w2z8nx9y43k97",
-      "predicate": "variableMeasured",
-      "objectId": "LifeExpectancy_Person_Female",
-      "objectName": "Female Life Expectancy",
-      "provenanceId": "dc/base/WorldDevelopmentIndicators"
-    }
   ]
 }

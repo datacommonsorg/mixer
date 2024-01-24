@@ -15875,6 +15875,24 @@
       ]
     },
     {
+      "dcid": "dc/g/Person_ComparisonRegion-wikidataId/Q21_DeprivationDomain-CrimeDeprivation",
+      "name": "Person With Comparison Region = Wikidata Id/Q 21, Deprivation Domain = Crime Deprivation",
+      "statVars": [
+        {
+          "name": "Deprivation Score: England, IMD 2019, Crime Deprivation",
+          "dcid": "Deprivation_Person_England_Crime"
+        },
+        {
+          "name": "Deprivation Decile: England, IMD 2019, Crime Deprivation",
+          "dcid": "Decile_Deprivation_Person_England_Crime"
+        },
+        {
+          "name": "Deprivation Rank: England, IMD 2019, Crime Deprivation",
+          "dcid": "Rank_Deprivation_Person_England_Crime"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-disabilityStatus_CrimeType-AggravatedAssault_TargetedDisabilityStatus-MentalDisability",
       "name": "Hate Crime Incidents With Bias Motivation = Disability Status, Crime Type = Aggravated Assault, Targeted Disability Status = Mental Disability",
       "statVars": [
@@ -21757,24 +21775,6 @@
         {
           "name": "Count of Hate Crime Incidents (Victim): Bias Against Race, Crime Against Society, Asian Alone Victim",
           "dcid": "Victim_Count_CriminalIncidents_BiasMotivationRace_CrimeAgainstSociety_IsHateCrime_AsianAlone"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/HateCrimeIncidents_BiasMotivation-race_CrimeType-CrimeAgainstSociety_TargetedRace-BlackOrAfricanAmericanAlone",
-      "name": "Hate Crime Incidents With Bias Motivation = Race, Crime Type = Crime Against Society, Targeted Race = Black or African American Alone",
-      "statVars": [
-        {
-          "name": "Count of Hate Crime Incidents: Bias Against Race, Crime Against Society, Black or African American Alone Victim",
-          "dcid": "Count_CriminalIncidents_BiasMotivationRace_CrimeAgainstSociety_IsHateCrime_BlackOrAfricanAmericanAlone"
-        },
-        {
-          "name": "Count of Hate Crime Incidents (Offense): Bias Against Race, Crime Against Society, Black or African American Alone Victim",
-          "dcid": "Offense_Count_CriminalIncidents_BiasMotivationRace_CrimeAgainstSociety_IsHateCrime_BlackOrAfricanAmericanAlone"
-        },
-        {
-          "name": "Count of Hate Crime Incidents (Victim): Bias Against Race, Crime Against Society, Black or African American Alone Victim",
-          "dcid": "Victim_Count_CriminalIncidents_BiasMotivationRace_CrimeAgainstSociety_IsHateCrime_BlackOrAfricanAmericanAlone"
         }
       ]
     }
