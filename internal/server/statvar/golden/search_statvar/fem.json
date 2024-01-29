@@ -35097,6 +35097,52 @@
       ]
     },
     {
+      "dcid": "dc/g/Person_CommuteStartTime_Gender-Female",
+      "name": "Person With Commute Start Time, Gender = Female",
+      "statVars": [
+        {
+          "name": "Population: 16 Years or More, 0 - 459 Hour, Work Commute, Employed, Female, Worked Outside of Home",
+          "dcid": "Count_Person_Years16Onwards_StartTimeHour0000To0459_WorkCommute_Employed_Female_WorkedOutsideOfHome"
+        },
+        {
+          "name": "Population: 16 Years or More, 500 - 529 Hour, Work Commute, Employed, Female, Worked Outside of Home",
+          "dcid": "Count_Person_Years16Onwards_StartTimeHour0500To0529_WorkCommute_Employed_Female_WorkedOutsideOfHome"
+        },
+        {
+          "name": "Population: 16 Years or More, 530 - 559 Hour, Work Commute, Employed, Female, Worked Outside of Home",
+          "dcid": "Count_Person_Years16Onwards_StartTimeHour0530To0559_WorkCommute_Employed_Female_WorkedOutsideOfHome"
+        },
+        {
+          "name": "Population: 16 Years or More, 600 - 629 Hour, Work Commute, Employed, Female, Worked Outside of Home",
+          "dcid": "Count_Person_Years16Onwards_StartTimeHour0600To0629_WorkCommute_Employed_Female_WorkedOutsideOfHome"
+        },
+        {
+          "name": "Population: 16 Years or More, 630 - 659 Hour, Work Commute, Employed, Female, Worked Outside of Home",
+          "dcid": "Count_Person_Years16Onwards_StartTimeHour0630To0659_WorkCommute_Employed_Female_WorkedOutsideOfHome"
+        },
+        {
+          "name": "Population: 16 Years or More, 700 - 729 Hour, Work Commute, Employed, Female, Worked Outside of Home",
+          "dcid": "Count_Person_Years16Onwards_StartTimeHour0700To0729_WorkCommute_Employed_Female_WorkedOutsideOfHome"
+        },
+        {
+          "name": "Population: 16 Years or More, 730 - 759 Hour, Work Commute, Employed, Female, Worked Outside of Home",
+          "dcid": "Count_Person_Years16Onwards_StartTimeHour0730To0759_WorkCommute_Employed_Female_WorkedOutsideOfHome"
+        },
+        {
+          "name": "Population: 16 Years or More, 800 - 829 Hour, Work Commute, Employed, Female, Worked Outside of Home",
+          "dcid": "Count_Person_Years16Onwards_StartTimeHour0800To0829_WorkCommute_Employed_Female_WorkedOutsideOfHome"
+        },
+        {
+          "name": "Population: 16 Years or More, 830 - 859 Hour, Work Commute, Employed, Female, Worked Outside of Home",
+          "dcid": "Count_Person_Years16Onwards_StartTimeHour0830To0859_WorkCommute_Employed_Female_WorkedOutsideOfHome"
+        },
+        {
+          "name": "Population: 16 Years or More, 900 - 2,359 Hour, Work Commute, Employed, Female, Worked Outside of Home",
+          "dcid": "Count_Person_Years16Onwards_StartTimeHour0900To2359_WorkCommute_Employed_Female_WorkedOutsideOfHome"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/Person_Age-Years0To4_Gender-Female_MedicalCondition",
       "name": "Person With Age = 0 - 4 Years, Gender = Female, Medical Condition",
       "statVars": [
@@ -35921,6 +35967,48 @@
         {
           "name": "Population: 85 Years or More, Female, Stroke",
           "dcid": "Count_Person_85OrMoreYears_Female_ConditionStroke"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_CommuteTime_Gender-Female",
+      "name": "Person With Commute Time, Gender = Female",
+      "statVars": [
+        {
+          "name": "Population: 16 Years or More, 10 - 14 Minute, Work Commute, Employed, Female, Worked Outside of Home",
+          "dcid": "Count_Person_Years16Onwards_10To14Minute_WorkCommute_Employed_Female_WorkedOutsideOfHome"
+        },
+        {
+          "name": "Population: 16 Years or More, 10 Minute or Less, Work Commute, Employed, Female, Worked Outside of Home",
+          "dcid": "Count_Person_Years16Onwards_10OrLessMinute_WorkCommute_Employed_Female_WorkedOutsideOfHome"
+        },
+        {
+          "name": "Population: 16 Years or More, 15 - 19 Minute, Work Commute, Employed, Female, Worked Outside of Home",
+          "dcid": "Count_Person_Years16Onwards_15To19Minute_WorkCommute_Employed_Female_WorkedOutsideOfHome"
+        },
+        {
+          "name": "Population: 16 Years or More, 20 - 24 Minute, Work Commute, Employed, Female, Worked Outside of Home",
+          "dcid": "Count_Person_Years16Onwards_20To24Minute_WorkCommute_Employed_Female_WorkedOutsideOfHome"
+        },
+        {
+          "name": "Population: 16 Years or More, 25 - 29 Minute, Work Commute, Employed, Female, Worked Outside of Home",
+          "dcid": "Count_Person_Years16Onwards_25To29Minute_WorkCommute_Employed_Female_WorkedOutsideOfHome"
+        },
+        {
+          "name": "Population: 16 Years or More, 30 - 34 Minute, Work Commute, Employed, Female, Worked Outside of Home",
+          "dcid": "Count_Person_Years16Onwards_30To34Minute_WorkCommute_Employed_Female_WorkedOutsideOfHome"
+        },
+        {
+          "name": "Population: 16 Years or More, 35 - 44 Minute, Work Commute, Employed, Female, Worked Outside of Home",
+          "dcid": "Count_Person_Years16Onwards_35To44Minute_WorkCommute_Employed_Female_WorkedOutsideOfHome"
+        },
+        {
+          "name": "Population: 16 Years or More, 45 - 59 Minute, Work Commute, Employed, Female, Worked Outside of Home",
+          "dcid": "Count_Person_Years16Onwards_45To59Minute_WorkCommute_Employed_Female_WorkedOutsideOfHome"
+        },
+        {
+          "name": "Population: 16 Years or More, 60 Minute or More, Work Commute, Employed, Female, Worked Outside of Home",
+          "dcid": "Count_Person_Years16Onwards_60OrMoreMinute_WorkCommute_Employed_Female_WorkedOutsideOfHome"
         }
       ]
     },
@@ -38177,6 +38265,82 @@
         {
           "name": "Count of Mortality Event: 5 Years or Less, Female, Resident (As Fraction of Count Birth Event 5 or Less Years Female Live Birth Resident)",
           "dcid": "Count_MortalityEvent_5OrLessYears_Female_Resident_AsAFractionOf_Count_BirthEvent_5OrLessYears_Female_LiveBirth_Resident"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_CommuteMode_Gender-Female",
+      "name": "Person With Commute Mode, Gender = Female",
+      "statVars": [
+        {
+          "name": "Population: 16 Years or More, Car Truck or Van Drove Alone, Employed, Female",
+          "dcid": "Count_Person_Years16Onwards_CarTruckOrVanDroveAlone_Employed_Female"
+        },
+        {
+          "name": "Population: 16 Years or More, Bicycle, Work Commute, Employed, Female",
+          "dcid": "Count_Person_Years16Onwards_Bicycle_WorkCommute_Employed_Female"
+        },
+        {
+          "name": "Population: 16 Years or More, Car Truck or Van, Work Commute, Employed, Female",
+          "dcid": "Count_Person_Years16Onwards_CarTruckOrVan_WorkCommute_Employed_Female"
+        },
+        {
+          "name": "Population: 16 Years or More, Drove Alone, Work Commute, Employed, Female",
+          "dcid": "Count_Person_Years16Onwards_DroveAlone_WorkCommute_Employed_Female"
+        },
+        {
+          "name": "Population: 16 Years or More, Taxicab Motorcycle Bicycle or Other Means, Work Commute, Employed, Female",
+          "dcid": "Count_Person_Years16Onwards_TaxicabMotorcycleBicycleOrOtherMeans_WorkCommute_Employed_Female"
+        },
+        {
+          "name": "Population: 16 Years or More, Walked, Work Commute, Employed, Female",
+          "dcid": "Count_Person_Years16Onwards_Walked_WorkCommute_Employed_Female"
+        },
+        {
+          "name": "Population: 16 Years or More, Worked At Home, Work Commute, Employed, Female",
+          "dcid": "Count_Person_Years16Onwards_WorkedAtHome_WorkCommute_Employed_Female"
+        },
+        {
+          "name": "Population: 16 Years or More, Worked From Home, Work Commute, Employed, Female",
+          "dcid": "Count_Person_Years16Onwards_WorkedFromHome_WorkCommute_Employed_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_PlaceOfWork",
+      "name": "Person With Gender = Female, Place of Work",
+      "statVars": [
+        {
+          "name": "Population: 16 Years or More, Employed, Female, Living in APlace",
+          "dcid": "Count_Person_Years16Onwards_Employed_Female_LivingInAPlace"
+        },
+        {
+          "name": "Population: 16 Years or More, Employed, Female, Not Living in APlace",
+          "dcid": "Count_Person_Years16Onwards_Employed_Female_NotLivingInAPlace"
+        },
+        {
+          "name": "Population: 16 Years or More, Employed, Female, Worked Outside County of Residence",
+          "dcid": "Count_Person_Years16Onwards_Employed_Female_WorkedOutsideCountyOfResidence"
+        },
+        {
+          "name": "Population: 16 Years or More, Employed, Female, Worked Outside Place of Residence",
+          "dcid": "Count_Person_Years16Onwards_Employed_Female_WorkedOutsidePlaceOfResidence"
+        },
+        {
+          "name": "Population: 16 Years or More, Employed, Female, Worked Outside State of Residence",
+          "dcid": "Count_Person_Years16Onwards_Employed_Female_WorkedOutsideStateOfResidence"
+        },
+        {
+          "name": "Population: 16 Years or More, Employed, Female, Worked Within County of Residence",
+          "dcid": "Count_Person_Years16Onwards_Employed_Female_WorkedWithinCountyOfResidence"
+        },
+        {
+          "name": "Population: 16 Years or More, Employed, Female, Worked Within Place of Residence",
+          "dcid": "Count_Person_Years16Onwards_Employed_Female_WorkedWithinPlaceOfResidence"
+        },
+        {
+          "name": "Population: 16 Years or More, Employed, Female, Worked Within State of Residence",
+          "dcid": "Count_Person_Years16Onwards_Employed_Female_WorkedWithinStateOfResidence"
         }
       ]
     },
@@ -50451,6 +50615,28 @@
       ]
     },
     {
+      "dcid": "dc/g/Person_Gender-Female_NumberOfVehiclesInHousehold",
+      "name": "Person With Gender = Female, Number of Vehicles in Household",
+      "statVars": [
+        {
+          "name": "Population: 16 Years or More, Employed, Female, 0 Available Vehicles, Household",
+          "dcid": "Count_Person_Years16Onwards_Employed_Female_AvailableVehicles0_ResidesInHousehold"
+        },
+        {
+          "name": "Population: 16 Years or More, Employed, Female, 1 Available Vehicles, Household",
+          "dcid": "Count_Person_Years16Onwards_Employed_Female_AvailableVehicles1_ResidesInHousehold"
+        },
+        {
+          "name": "Population: 16 Years or More, Employed, Female, 2 Available Vehicles, Household",
+          "dcid": "Count_Person_Years16Onwards_Employed_Female_AvailableVehicles2_ResidesInHousehold"
+        },
+        {
+          "name": "Population: 16 Years or More, Employed, Female, 3 Available Vehicles or More, Household",
+          "dcid": "Count_Person_Years16Onwards_Employed_Female_3OrMoreAvailableVehicles_ResidesInHousehold"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/Person_Gender-Female_PhysicalActivityEffortLevel",
       "name": "Person With Gender = Female, Physical Activity Effort Level",
       "statVars": [
@@ -55181,6 +55367,24 @@
       ]
     },
     {
+      "dcid": "dc/g/Person_CarpoolOccupancy_Gender-Female",
+      "name": "Person With Carpool Occupancy, Gender = Female",
+      "statVars": [
+        {
+          "name": "Population: 16 Years or More, 4 Person or More, Car Truck or Van Carpooled, Work Commute, Employed, Female",
+          "dcid": "Count_Person_Years16Onwards_CarpoolOccupancy4OrMorePerson_CarTruckOrVanCarpooled_WorkCommute_Employed_Female"
+        },
+        {
+          "name": "Population: 16 Years or More, Person 2, Car Truck or Van Carpooled, Work Commute, Employed, Female",
+          "dcid": "Count_Person_Years16Onwards_CarpoolOccupancy2Person_CarTruckOrVanCarpooled_WorkCommute_Employed_Female"
+        },
+        {
+          "name": "Population: 16 Years or More, Person 3, Car Truck or Van Carpooled, Work Commute, Employed, Female",
+          "dcid": "Count_Person_Years16Onwards_CarpoolOccupancy3Person_CarTruckOrVanCarpooled_WorkCommute_Employed_Female"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/Person_EducationalAttainment-AssociatesDegree_Gender-Female",
       "name": "Person With Educational Attainment = Associates Degree, Gender = Female",
       "statVars": [
@@ -57283,114 +57487,6 @@
         {
           "name": "Population: 50 - 54 Years, Female, Irreligion",
           "dcid": "Count_Person_50To54Years_Female_Irreligion"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years55To59_EnrollmentLevel_Gender-Female",
-      "name": "Person With Age = 55 - 59 Years, Enrollment Level, Gender = Female",
-      "statVars": [
-        {
-          "name": "Population: 55 - 59 Years, Primary Education, Female (As Fraction of Count Person 55 To 59 Years Female)",
-          "dcid": "Count_Person_55To59Years_PrimaryEducation_Female_AsAFractionOf_Count_Person_55To59Years_Female"
-        },
-        {
-          "name": "Population: 55 - 59 Years, Secondary Education, Female (As Fraction of Count Person 55 To 59 Years Female)",
-          "dcid": "Count_Person_55To59Years_SecondaryEducation_Female_AsAFractionOf_Count_Person_55To59Years_Female"
-        },
-        {
-          "name": "Population: 55 - 59 Years, Tertiary Education, Female (As Fraction of Count Person 55 To 59 Years Female)",
-          "dcid": "Count_Person_55To59Years_TertiaryEducation_Female_AsAFractionOf_Count_Person_55To59Years_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years55To59_Gender-Female_Religion",
-      "name": "Person With Age = 55 - 59 Years, Gender = Female, Religion",
-      "statVars": [
-        {
-          "name": "Population: 55 - 59 Years, Female, Catholicism",
-          "dcid": "Count_Person_55To59Years_Female_Catholicism"
-        },
-        {
-          "name": "Population: 55 - 59 Years, Female, INEGI_Religion Other Than Catholicism",
-          "dcid": "Count_Person_55To59Years_Female_INEGIReligionOtherThanCatholicism"
-        },
-        {
-          "name": "Population: 55 - 59 Years, Female, Irreligion",
-          "dcid": "Count_Person_55To59Years_Female_Irreligion"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years60To64_EnrollmentLevel_Gender-Female",
-      "name": "Person With Age = 60 - 64 Years, Enrollment Level, Gender = Female",
-      "statVars": [
-        {
-          "name": "Population: 60 - 64 Years, Primary Education, Female (As Fraction of Count Person 60 To 64 Years Female)",
-          "dcid": "Count_Person_60To64Years_PrimaryEducation_Female_AsAFractionOf_Count_Person_60To64Years_Female"
-        },
-        {
-          "name": "Population: 60 - 64 Years, Secondary Education, Female (As Fraction of Count Person 60 To 64 Years Female)",
-          "dcid": "Count_Person_60To64Years_SecondaryEducation_Female_AsAFractionOf_Count_Person_60To64Years_Female"
-        },
-        {
-          "name": "Population: 60 - 64 Years, Tertiary Education, Female (As Fraction of Count Person 60 To 64 Years Female)",
-          "dcid": "Count_Person_60To64Years_TertiaryEducation_Female_AsAFractionOf_Count_Person_60To64Years_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years60To64_Gender-Female_Religion",
-      "name": "Person With Age = 60 - 64 Years, Gender = Female, Religion",
-      "statVars": [
-        {
-          "name": "Population: 60 - 64 Years, Female, Catholicism",
-          "dcid": "Count_Person_60To64Years_Female_Catholicism"
-        },
-        {
-          "name": "Population: 60 - 64 Years, Female, INEGI_Religion Other Than Catholicism",
-          "dcid": "Count_Person_60To64Years_Female_INEGIReligionOtherThanCatholicism"
-        },
-        {
-          "name": "Population: 60 - 64 Years, Female, Irreligion",
-          "dcid": "Count_Person_60To64Years_Female_Irreligion"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years65To69_Gender-Female_Religion",
-      "name": "Person With Age = 65 - 69 Years, Gender = Female, Religion",
-      "statVars": [
-        {
-          "name": "Population: 65 - 69 Years, Female, Catholicism",
-          "dcid": "Count_Person_65To69Years_Female_Catholicism"
-        },
-        {
-          "name": "Population: 65 - 69 Years, Female, INEGI_Religion Other Than Catholicism",
-          "dcid": "Count_Person_65To69Years_Female_INEGIReligionOtherThanCatholicism"
-        },
-        {
-          "name": "Population: 65 - 69 Years, Female, Irreligion",
-          "dcid": "Count_Person_65To69Years_Female_Irreligion"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years65Onwards_Gender-Female_PreventiveHealth-CorePreventiveServices",
-      "name": "Person With Age = 65 Years or More, Gender = Female, Preventive Health = Core Preventive Services",
-      "statVars": [
-        {
-          "name": "Prevalence: 65 Years or More, Female, Core Preventive Services",
-          "dcid": "Percent_Person_65OrMoreYears_Female_ReceivedCorePreventiveServices"
-        },
-        {
-          "name": "Lower Confidence Interval Limit, Prevalence of 65 Years or More, Female, Core Preventive Services",
-          "dcid": "LowerConfidenceIntervalLimit_Percent_Person_65OrMoreYears_Female_ReceivedCorePreventiveServices"
-        },
-        {
-          "name": "Upper Confidence Interval Limit, Prevalence of 65 Years or More, Female, Core Preventive Services",
-          "dcid": "UpperConfidenceIntervalLimit_Percent_Person_65OrMoreYears_Female_ReceivedCorePreventiveServices"
         }
       ]
     }

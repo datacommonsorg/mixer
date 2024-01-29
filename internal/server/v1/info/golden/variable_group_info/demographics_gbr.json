@@ -138,6 +138,11 @@
         "displayName": "Person by Benefits Status"
       },
       {
+        "id": "dc/g/Person_CarpoolOccupancy",
+        "specializedEntity": "Carpool Occupancy",
+        "displayName": "Person by Carpool Occupancy"
+      },
+      {
         "id": "dc/g/Child",
         "specializedEntity": "Child",
         "displayName": "Child"
@@ -159,6 +164,21 @@
         "displayName": "Commute"
       },
       {
+        "id": "dc/g/Person_CommuteStartTime",
+        "specializedEntity": "Commute Start Time",
+        "displayName": "Person by Commute Start Time"
+      },
+      {
+        "id": "dc/g/Person_CommuteType",
+        "specializedEntity": "Commute Type",
+        "displayName": "Person by Commute Type"
+      },
+      {
+        "id": "dc/g/Person_ComparisonRegion",
+        "specializedEntity": "Comparison Region",
+        "displayName": "Person by Comparison Region"
+      },
+      {
         "id": "dc/g/Courthouse",
         "specializedEntity": "Courthouse",
         "displayName": "Courthouse"
@@ -167,6 +187,11 @@
         "id": "dc/g/Person_DateOfEntry",
         "specializedEntity": "Date of Entry",
         "displayName": "Person by Date of Entry"
+      },
+      {
+        "id": "dc/g/Person_DeprivationDomain",
+        "specializedEntity": "Deprivation Domain",
+        "displayName": "Person by Deprivation Domain"
       },
       {
         "id": "dc/g/Person_DisabilityStatus",
@@ -318,6 +343,12 @@
         "descendentStatVarCount": 1
       },
       {
+        "id": "dc/g/Person_LaborForceStatus",
+        "specializedEntity": "Labor Force Status",
+        "displayName": "Person by Labor Force Status",
+        "descendentStatVarCount": 5
+      },
+      {
         "id": "dc/g/Language",
         "specializedEntity": "Language",
         "displayName": "Language"
@@ -362,6 +393,11 @@
         "id": "dc/g/Household_Nativity",
         "specializedEntity": "Nativity",
         "displayName": "Household by Nativity"
+      },
+      {
+        "id": "dc/g/Person_NumberOfVehiclesInHousehold",
+        "specializedEntity": "Number of Vehicles in Household",
+        "displayName": "Person by Number of Vehicles in Household"
       },
       {
         "id": "dc/g/Person_Occupation",
@@ -444,6 +480,11 @@
         "id": "dc/g/Household_TypeOfSchool",
         "specializedEntity": "Type of School",
         "displayName": "Household by Type of School"
+      },
+      {
+        "id": "dc/g/Vehicle",
+        "specializedEntity": "Vehicle",
+        "displayName": "Vehicle"
       },
       {
         "id": "dc/g/Household_VeteranStatus",

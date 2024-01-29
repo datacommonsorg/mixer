@@ -6379,7 +6379,7 @@
               "provenanceId": "dc/base/HumanReadableStatVars"
             },
             {
-              "name": "Count of Birth Event: Live Birth (Per Capita)",
+              "name": "Crude Birth Rate",
               "types": [
                 "StatisticalVariable"
               ],
@@ -6435,7 +6435,7 @@
               "provenanceId": "dc/base/HumanReadableStatVars"
             },
             {
-              "name": "Count of Mortality Event: X60-X84 (Intentional Self-harm) (Per Capita)",
+              "name": "Suicide Mortality Rate",
               "types": [
                 "StatisticalVariable"
               ],
@@ -10366,5 +10366,5 @@
       "node": "dummy"
     }
   ],
-  "nextToken": "H4sIAAAAAAAA/2zOwQrCMAyAYZt1WxY8jAji86h3hYEnQeqIUljb0XUHfWofQVavXj5C/kNCV+K9DUN42t4M3Si9deKpSq9RTo9/jVcMqBgQGLBgQM2AJQNWrLFul4IM2DAg0ZvWhzD7dDtLnIKnrRMzzVGc+HQUH5z1JoVImy6ZZKe0HLqYaM19EIZWsUaV/c1FVmfLbNUqLrHefQrWiHnV5B/oCwAA//8BAAD//0LbYVbaAAAA"
+  "nextToken": "H4sIAAAAAAAA/2zOwQrCMAzGcZd1WxY8jAg+kHpXGHgSpI4ohbUdXXfY28vi1cuPwP+Qjx7EJxfH+HGDHftJBuclUJ3XSa7vf413DFgwIDBgyYCGASsGrNlg020FGbBlQKKV9ue4hPy8SZpjoKMXOy9JvIR8kRC9CzbHRIc+2+zmvD262+TsaxSGrmCDhfq7S9WolVqrjYpqqxPoCwAA//8BAAD//yvpAtjZAAAA"
 }

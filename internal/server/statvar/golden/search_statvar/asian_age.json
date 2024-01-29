@@ -8123,20 +8123,6 @@
       ]
     },
     {
-      "dcid": "dc/g/Person_Age-Years77_Gender_Race-HispanicOrLatinoAsianAlone",
-      "name": "Person With Age = Years 77, Gender, Race = Hispanic or Latino \u0026 Asian Alone",
-      "statVars": [
-        {
-          "name": "Population: Years 77, Female, Hispanic or Latino \u0026 Asian Alone",
-          "dcid": "Count_Person_77Years_Female_HispanicOrLatino_AsianAlone"
-        },
-        {
-          "name": "Population: Years 77, Male, Hispanic or Latino \u0026 Asian Alone",
-          "dcid": "Count_Person_77Years_Male_HispanicOrLatino_AsianAlone"
-        }
-      ]
-    },
-    {
       "dcid": "dc/g/Household_HouseholderAge-Years25To44_HouseholderRace-AsianAlone",
       "name": "Household With Householder Age = 25 - 44 Years, Householder Race = Asian Alone",
       "statVars": [
@@ -12543,6 +12529,16 @@
         {
           "name": "Population: Years 65, Asian or Pacific Islander",
           "dcid": "Count_Person_65Years_AsianOrPacificIslander"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years65_Race-HispanicOrLatinoAsianAlone",
+      "name": "Person With Age = Years 65, Race = Hispanic or Latino \u0026 Asian Alone",
+      "statVars": [
+        {
+          "name": "Population: Years 65, Hispanic or Latino \u0026 Asian Alone",
+          "dcid": "Count_Person_65Years_HispanicOrLatino_AsianAlone"
         }
       ]
     }
