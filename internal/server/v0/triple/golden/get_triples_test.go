@@ -60,7 +60,7 @@ func TestGetTriples(t *testing.T) {
 			},
 			{
 				[]string{
-					"dc/o/w2z8nx9y43k97", // LifeExpectancy_Person_Female
+					"dc/o/em7gh269k7s2", // LifeExpectancy_Person_Female
 					"dc/o/88cs3xqnmpp55", // Count_Person<CensusPEPSurvey>
 					"dc/o/23gt9k7fql176", // Count_Person<dcAggregate/CensusACS5yrSurvey>
 					"dc/o/kyv7dxe4s18eh", // Count_Person<>
