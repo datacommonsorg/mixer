@@ -2087,7 +2087,8 @@
                 "2023-09": 3.8,
                 "2023-10": 3.8,
                 "2023-11": 3.7,
-                "2023-12": 3.7
+                "2023-12": 3.7,
+                "2024-01": 3.7
               },
               "measurementMethod": "BLSSeasonallyAdjusted",
               "observationPeriod": "P1M",
