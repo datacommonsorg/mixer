@@ -606,13 +606,13 @@
               "facet_id": "3707913853",
               "observations": [
                 {
-                  "date": "2023-12",
-                  "value": 6268000
+                  "date": "2024-01",
+                  "value": 6124000
                 }
               ],
               "obs_count": 1,
-              "earliest_date": "2023-12",
-              "latest_date": "2023-12"
+              "earliest_date": "2024-01",
+              "latest_date": "2024-01"
             },
             {
               "facet_id": "1714978719",

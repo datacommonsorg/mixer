@@ -9420,11 +9420,15 @@
                 {
                   "date": "2023-12",
                   "value": 6268000
+                },
+                {
+                  "date": "2024-01",
+                  "value": 6124000
                 }
               ],
-              "obs_count": 912,
+              "obs_count": 913,
               "earliest_date": "1948-01",
-              "latest_date": "2023-12"
+              "latest_date": "2024-01"
             },
             {
               "facet_id": "1714978719",
