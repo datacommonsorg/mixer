@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# K8s services create hosts for deployments. Meaning that 
+# K8s services create hosts for deployments. Meaning that
 # other containers in the cluster can refer to a set of deployments
 # using the host: <full-name>-<service-name>:<port> (ex: mixer-dev-svg:80)
 
@@ -53,6 +53,7 @@ metadata:
   name: {{ include "mixer.fullname" . }}-backendconfig
   namespace: {{ .Values.namespace.name }}
 spec:
-  timeoutSec: 600
+  # Timeout for load balancer and the GKE pod connection
+  timeoutSec: 60
   connectionDraining:
-    drainingTimeoutSec: 600
+    drainingTimeoutSec: 60

@@ -38,7 +38,7 @@ static_resources:
                             prefix: "/"
                           route:
                             cluster: grpcserver
-                            timeout: 600s
+                            timeout: 60s
                 http_filters:
                   - name: envoy.filters.http.grpc_json_transcoder
                     typed_config:
@@ -55,7 +55,7 @@ static_resources:
 
   clusters:
     - name: grpcserver
-      connect_timeout: 600s
+      connect_timeout: 60s
       # Response buffer size limit
       per_connection_buffer_limit_bytes: 1073741824 # 1GB
       type: logical_dns
