@@ -33,6 +33,12 @@ endpoints:
 - target:
   name:
 
+backend:
+  rules:
+    - selector: "datacommons.Mixer.*"
+      # Timeout for the ESP and mixer GRPC server.
+      deadline: 60
+
 usage:
   rules:
   # V0 APIs can be called without an API Key.
