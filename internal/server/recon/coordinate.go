@@ -41,7 +41,6 @@ func ResolveCoordinates(
 	normCoordinateMap := map[string]string{}
 	coordinateLookupKeys := map[string]struct{}{}
 
-	// Set: filteredTypes
 	filteredTypes := map[string]struct{}{}
 	for _, t := range in.GetPlaceTypes() {
 		filteredTypes[t] = struct{}{}
