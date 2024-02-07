@@ -51,6 +51,27 @@ func TestResolveCoordinate(t *testing.T) {
 				"<-geoCoordinate->dcid",
 				"result.json",
 			},
+			{
+				[]string{
+					"37.42#-122.08",
+					"32.41#-102.11",
+					"36.0#-119.4",
+					"+36#-119.5000000",
+				},
+				"<-geoCoordinate{typeOf:County}->dcid",
+				"result_with_type.json",
+			},
+			{
+				[]string{
+					"37.42#-122.08",
+					"32.41#-102.11",
+					"36.0#-119.4",
+					"+36#-119.5000000",
+				},
+				// We don't have any boundary info for Continent.
+				"<-geoCoordinate{typeOf:Continent}->dcid",
+				"empty_result.json",
+			},
 		} {
 			resp, err := mixer.V2Resolve(ctx, &pbv2.ResolveRequest{
 				Nodes:    c.nodes,

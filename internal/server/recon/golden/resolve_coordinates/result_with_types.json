@@ -1,0 +1,40 @@
+{
+  "placeCoordinates": [
+    {
+      "latitude": 37.42,
+      "longitude": -122.08,
+      "placeDcids": [
+        "geoId/06085",
+        "country/USA"
+      ],
+      "places": [
+        {
+          "dcid": "geoId/06085",
+          "dominantType": "County"
+        },
+        {
+          "dcid": "country/USA",
+          "dominantType": "Country"
+        }
+      ]
+    },
+    {
+      "latitude": 32.41,
+      "longitude": -102.11,
+      "placeDcids": [
+        "geoId/48317",
+        "country/USA"
+      ],
+      "places": [
+        {
+          "dcid": "geoId/48317",
+          "dominantType": "County"
+        },
+        {
+          "dcid": "country/USA",
+          "dominantType": "Country"
+        }
+      ]
+    }
+  ]
+}

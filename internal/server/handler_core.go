@@ -57,7 +57,8 @@ func (s *Server) V2ResolveCore(
 		// Coordinate to ID:
 		// Example:
 		//   <-geoCoordinate->dcid
-		return resolve.Coordinate(ctx, s.store, in.GetNodes())
+		return resolve.Coordinate(ctx, s.store, in.GetNodes(),
+			inArc.Filter["typeOf"])
 	}
 
 	if inArc.SingleProp == "description" && outArc.SingleProp == "dcid" {
