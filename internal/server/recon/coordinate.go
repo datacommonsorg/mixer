@@ -41,6 +41,12 @@ func ResolveCoordinates(
 	normCoordinateMap := map[string]string{}
 	coordinateLookupKeys := map[string]struct{}{}
 
+	// Set: filteredTypes
+	filteredTypes := map[string]struct{}{}
+	for _, t := range in.GetPlaceTypes() {
+		filteredTypes[t] = struct{}{}
+	}
+
 	// Read request.
 	for _, coordinate := range in.GetCoordinates() {
 		nKey := normalizedCoordinateKey(coordinate)
@@ -75,6 +81,12 @@ func ResolveCoordinates(
 	for _, reconData := range reconDataList {
 		for _, row := range reconData {
 			for _, place := range row.Data.(*pb.CoordinateRecon).GetPlaces() {
+				if len(filteredTypes) > 0 {
+					_, keep := filteredTypes[place.GetDominantType()]
+					if !keep {
+						continue
+					}
+				}
 				if _, ok := questionablePlaces[place.GetDcid()]; !ok && !place.GetFull() {
 					questionablePlaces[place.GetDcid()] = struct{}{}
 				}
@@ -121,6 +133,12 @@ func ResolveCoordinates(
 					continue
 				}
 				for _, place := range row.Data.(*pb.CoordinateRecon).GetPlaces() {
+					if len(filteredTypes) > 0 {
+						_, keep := filteredTypes[place.GetDominantType()]
+						if !keep {
+							continue
+						}
+					}
 					if place.GetFull() {
 						placeCoordinates.PlaceDcids = append(
 							placeCoordinates.PlaceDcids,

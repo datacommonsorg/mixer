@@ -54,6 +54,22 @@ func TestResolveCoordinates(t *testing.T) {
 				},
 				"result.json",
 			},
+			{
+				&pb.ResolveCoordinatesRequest{
+					Coordinates: []*pb.ResolveCoordinatesRequest_Coordinate{
+						{
+							Latitude:  37.42,
+							Longitude: -122.08,
+						},
+						{
+							Latitude:  32.41,
+							Longitude: -102.11,
+						},
+					},
+					PlaceTypes: []string{"County", "Country"},
+				},
+				"result_with_types.json",
+			},
 		} {
 			resp, err := mixer.ResolveCoordinates(ctx, c.req)
 			if err != nil {

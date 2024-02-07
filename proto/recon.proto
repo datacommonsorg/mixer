@@ -75,6 +75,8 @@ message ResolveCoordinatesRequest {
     double longitude = 2;
   }
   repeated Coordinate coordinates = 1;
+  // If set only these place types are returned.
+  repeated string place_types = 2;
 }
 
 message ResolveCoordinatesResponse {

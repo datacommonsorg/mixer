@@ -87,6 +87,7 @@ func Coordinate(
 	ctx context.Context,
 	store *store.Store,
 	nodes []string,
+	typeOfs []string,
 ) (*pbv2.ResolveResponse, error) {
 	type latLng struct {
 		lat float64
@@ -108,7 +109,8 @@ func Coordinate(
 		latLngToNode[latLng{lat: lat, lng: lng}] = node
 	}
 	data, err := recon.ResolveCoordinates(ctx,
-		&pb.ResolveCoordinatesRequest{Coordinates: coordinates},
+		&pb.ResolveCoordinatesRequest{Coordinates: coordinates,
+			PlaceTypes: typeOfs},
 		store)
 	if err != nil {
 		return nil, err
