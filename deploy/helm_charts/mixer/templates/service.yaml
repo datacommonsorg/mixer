@@ -31,7 +31,7 @@ metadata:
     {{- include "mixer.labels" $ | nindent 4 }}
   annotations:
     # This is to get longer timeout for the Cloud Load Balancer.
-    cloud.google.com/backend-config: '{"ports": {"8081":"{{ include "mixer.fullname" $ }}-backendconfig"}}'
+    cloud.google.com/backend-config: '{"ports": {"80":"{{ include "mixer.fullname" $ }}-backendconfig"}}'
 spec:
   type: NodePort
   ports:
@@ -54,6 +54,6 @@ metadata:
   namespace: {{ .Values.namespace.name }}
 spec:
   # Timeout for load balancer and the GKE pod connection
-  timeoutSec: 60
+  timeoutSec: 300
   connectionDraining:
-    drainingTimeoutSec: 60
+    drainingTimeoutSec: 300

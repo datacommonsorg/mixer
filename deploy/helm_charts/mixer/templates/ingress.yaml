@@ -36,6 +36,11 @@ metadata:
     {{- toYaml . | nindent 4 }}
   {{- end }}
 spec:
+  defaultBackend:
+    service:
+      name: {{ include "mixer.fullname" $ }}-default
+      port:
+        number: 80
   rules:
     - http:
         paths:
@@ -45,7 +50,7 @@ spec:
             pathType: ImplementationSpecific
             backend:
               service:
-                name: {{ include "mixer.fullname" $ }}-{{ $serviceName }} 
+                name: {{ include "mixer.fullname" $ }}-{{ $serviceName }}
                 port:
                   number: 80
           {{- end }}

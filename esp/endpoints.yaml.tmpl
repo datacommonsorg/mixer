@@ -35,9 +35,12 @@ endpoints:
 
 backend:
   rules:
+    # Default timeout for the ESP and mixer GRPC server.
     - selector: "datacommons.Mixer.*"
-      # Timeout for the ESP and mixer GRPC server.
       deadline: 60
+    # Longer timeout for the Sparql endpoint.
+    - selector: "datacommons.Mixer.Query"
+      deadline: 300
 
 usage:
   rules:
