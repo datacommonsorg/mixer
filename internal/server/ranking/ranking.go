@@ -88,7 +88,11 @@ var StatsRanking = map[string]map[RankKey]int{
 	"WikidataPopulation": {{MM: s("WikidataPopulation")}: 1003},
 
 	// Unemployment Rate
-	"BLS_LAUS": {{MM: s("BLSSeasonallyUnadjusted"), OP: s("P1Y")}: 0, {MM: s("BLSSeasonallyUnadjusted")}: 1},
+	"BLS_LAUS": {
+		// Prefer P1Y
+		{MM: s("BLSSeasonallyUnadjusted"), OP: s("P1Y")}: 0,
+		{MM: s("BLSSeasonallyUnadjusted")}:               1,
+	},
 
 	// Labor Force data ranked higher than WDI (above)}, or Eurostat
 	"BLS_CPS": {{MM: s("BLSSeasonallyAdjusted")}: 1},
