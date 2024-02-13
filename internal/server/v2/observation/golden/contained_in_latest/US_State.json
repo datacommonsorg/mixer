@@ -672,20 +672,20 @@
         "geoId/01": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 2267432
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 2226670
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 2267432
                 }
               ]
             },
@@ -703,20 +703,20 @@
         "geoId/02": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 337654
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 342400
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 337654
                 }
               ]
             },
@@ -734,20 +734,20 @@
         "geoId/04": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 3585781
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 3477033
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 3585781
                 }
               ]
             },
@@ -765,20 +765,20 @@
         "geoId/05": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 1325615
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 1323949
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 1325615
                 }
               ]
             },
@@ -796,20 +796,20 @@
         "geoId/06": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 18235729
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 18440895
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 18235729
                 }
               ]
             },
@@ -827,20 +827,20 @@
         "geoId/08": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 3130327
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 3103531
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 3130327
                 }
               ]
             },
@@ -858,20 +858,20 @@
         "geoId/09": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 1813049
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 1851993
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 1813049
                 }
               ]
             },
@@ -889,20 +889,20 @@
         "geoId/10": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 491859
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 474258
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 491859
                 }
               ]
             },
@@ -920,20 +920,20 @@
         "geoId/11": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 382899
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 370229
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 382899
                 }
               ]
             },
@@ -951,20 +951,20 @@
         "geoId/12": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 10799851
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 10449041
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 10799851
                 }
               ]
             },
@@ -982,20 +982,20 @@
         "geoId/13": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 5183182
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 5075093
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 5183182
                 }
               ]
             },
@@ -1013,20 +1013,20 @@
         "geoId/15": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 653741
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 652677
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 653741
                 }
               ]
             },
@@ -1044,20 +1044,20 @@
         "geoId/16": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 941071
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 925358
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 941071
                 }
               ]
             },
@@ -1075,20 +1075,20 @@
         "geoId/17": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 6134248
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 6176876
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 6134248
                 }
               ]
             },
@@ -1106,20 +1106,20 @@
         "geoId/18": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 3288572
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 3302632
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 3288572
                 }
               ]
             },
@@ -1137,20 +1137,20 @@
         "geoId/19": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 1642672
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 1669933
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 1642672
                 }
               ]
             },
@@ -1168,20 +1168,20 @@
         "geoId/20": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 1471221
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 1464834
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 1471221
                 }
               ]
             },
@@ -1199,20 +1199,20 @@
         "geoId/21": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 1942066
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 1968121
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 1942066
                 }
               ]
             },
@@ -1230,20 +1230,20 @@
         "geoId/22": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 1992725
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 2011867
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 1992725
                 }
               ]
             },
@@ -1261,20 +1261,20 @@
         "geoId/23": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 662496
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 654965
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 662496
                 }
               ]
             },
@@ -1292,20 +1292,20 @@
         "geoId/24": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 3111217
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 3068700
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 3111217
                 }
               ]
             },
@@ -1323,20 +1323,20 @@
         "geoId/25": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 3617396
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 3603172
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 3617396
                 }
               ]
             },
@@ -1354,20 +1354,20 @@
         "geoId/26": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 4830684
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 4632539
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 4830684
                 }
               ]
             },
@@ -1385,20 +1385,20 @@
         "geoId/27": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 2998064
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 2994920
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 2998064
                 }
               ]
             },
@@ -1416,20 +1416,20 @@
         "geoId/28": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 1193720
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 1201880
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 1193720
                 }
               ]
             },
@@ -1447,20 +1447,20 @@
         "geoId/29": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 2995453
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 2984340
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 2995453
                 }
               ]
             },
@@ -1478,20 +1478,20 @@
         "geoId/30": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 556666
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 552842
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 556666
                 }
               ]
             },
@@ -1509,20 +1509,20 @@
         "geoId/31": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 1025437
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 1034091
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 1025437
                 }
               ]
             },
@@ -1540,20 +1540,20 @@
         "geoId/32": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 1538561
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 1466213
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 1538561
                 }
               ]
             },
@@ -1571,20 +1571,20 @@
         "geoId/33": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 740580
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 747339
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 740580
                 }
               ]
             },
@@ -1602,20 +1602,20 @@
         "geoId/34": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 4604116
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 4564113
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 4604116
                 }
               ]
             },
@@ -1633,20 +1633,20 @@
         "geoId/35": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 935195
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 908870
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 935195
                 }
               ]
             },
@@ -1664,20 +1664,20 @@
         "geoId/36": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 9219272
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 9205821
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 9219272
                 }
               ]
             },
@@ -1695,20 +1695,20 @@
         "geoId/37": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 5058871
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 4970998
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 5058871
                 }
               ]
             },
@@ -1726,20 +1726,20 @@
         "geoId/38": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 402128
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 405580
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 402128
                 }
               ]
             },
@@ -1757,20 +1757,20 @@
         "geoId/39": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 5562639
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 5510327
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 5562639
                 }
               ]
             },
@@ -1788,20 +1788,20 @@
         "geoId/40": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 1914603
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 1830061
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 1914603
                 }
               ]
             },
@@ -1819,20 +1819,20 @@
         "geoId/41": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 2075916
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 2085939
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 2075916
                 }
               ]
             },
@@ -1850,20 +1850,20 @@
         "geoId/42": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 6302607
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 6196385
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 6302607
                 }
               ]
             },
@@ -1881,20 +1881,20 @@
         "geoId/44": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 555182
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 551220
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 555182
                 }
               ]
             },
@@ -1912,20 +1912,20 @@
         "geoId/45": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 2388300
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 2297927
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 2388300
                 }
               ]
             },
@@ -1943,20 +1943,20 @@
         "geoId/46": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 469780
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 465250
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 469780
                 }
               ]
             },
@@ -1974,20 +1974,20 @@
         "geoId/47": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 3289618
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 3238559
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 3289618
                 }
               ]
             },
@@ -2005,20 +2005,20 @@
         "geoId/48": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 14619352
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 14092833
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 14619352
                 }
               ]
             },
@@ -2036,20 +2036,20 @@
         "geoId/49": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 1763443
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 1702674
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 1763443
                 }
               ]
             },
@@ -2067,20 +2067,20 @@
         "geoId/50": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 344241
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 333081
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 344241
                 }
               ]
             },
@@ -2098,20 +2098,20 @@
         "geoId/51": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 4424565
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 4308805
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 4424565
                 }
               ]
             },
@@ -2129,20 +2129,20 @@
         "geoId/53": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 3857621
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 3822319
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 3857621
                 }
               ]
             },
@@ -2160,20 +2160,20 @@
         "geoId/54": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 752535
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 754453
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 752535
                 }
               ]
             },
@@ -2191,20 +2191,20 @@
         "geoId/55": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 3039182
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 2992049
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 3039182
                 }
               ]
             },
@@ -2222,20 +2222,20 @@
         "geoId/56": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 284848
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 281343
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 284848
                 }
               ]
             },
@@ -2253,20 +2253,20 @@
         "geoId/72": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 1147635
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 1117651
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 1147635
                 }
               ]
             },
@@ -2288,19 +2288,19 @@
         "geoId/01": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
+              "facet_id": "2978659163",
               "observations": [
                 {
-                  "date": "2023-12",
+                  "date": "2022",
                   "value": 2.6
                 }
               ]
             },
             {
-              "facet_id": "2978659163",
+              "facet_id": "324358135",
               "observations": [
                 {
-                  "date": "2022",
+                  "date": "2023-12",
                   "value": 2.6
                 }
               ]
@@ -2319,20 +2319,20 @@
         "geoId/02": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 4.6
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 4
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 4.6
                 }
               ]
             },
@@ -2350,19 +2350,19 @@
         "geoId/04": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
+              "facet_id": "2978659163",
               "observations": [
                 {
-                  "date": "2023-12",
+                  "date": "2022",
                   "value": 3.8
                 }
               ]
             },
             {
-              "facet_id": "2978659163",
+              "facet_id": "324358135",
               "observations": [
                 {
-                  "date": "2022",
+                  "date": "2023-12",
                   "value": 3.8
                 }
               ]
@@ -2381,20 +2381,20 @@
         "geoId/05": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 3.4
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 3.3
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 3.4
                 }
               ]
             },
@@ -2412,20 +2412,20 @@
         "geoId/06": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 5.1
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 4.2
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 5.1
                 }
               ]
             },
@@ -2443,20 +2443,20 @@
         "geoId/08": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 3.2
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 3
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 3.2
                 }
               ]
             },
@@ -2474,20 +2474,20 @@
         "geoId/09": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 3.9
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 4.2
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 3.9
                 }
               ]
             },
@@ -2505,20 +2505,20 @@
         "geoId/10": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 3.7
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 4.5
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 3.7
                 }
               ]
             },
@@ -2536,20 +2536,20 @@
         "geoId/11": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 4.8
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 4.7
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 4.8
                 }
               ]
             },
@@ -2567,19 +2567,19 @@
         "geoId/12": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
+              "facet_id": "2978659163",
               "observations": [
                 {
-                  "date": "2023-12",
+                  "date": "2022",
                   "value": 2.9
                 }
               ]
             },
             {
-              "facet_id": "2978659163",
+              "facet_id": "324358135",
               "observations": [
                 {
-                  "date": "2022",
+                  "date": "2023-12",
                   "value": 2.9
                 }
               ]
@@ -2598,20 +2598,20 @@
         "geoId/13": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 2.9
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 3
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 2.9
                 }
               ]
             },
@@ -2629,20 +2629,20 @@
         "geoId/15": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 2.9
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 3.5
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 2.9
                 }
               ]
             },
@@ -2660,20 +2660,20 @@
         "geoId/16": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 3.1
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 2.7
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 3.1
                 }
               ]
             },
@@ -2691,20 +2691,20 @@
         "geoId/17": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 4.2
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 4.6
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 4.2
                 }
               ]
             },
@@ -2722,20 +2722,20 @@
         "geoId/18": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 2.8
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 3
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 2.8
                 }
               ]
             },
@@ -2753,19 +2753,19 @@
         "geoId/19": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
+              "facet_id": "2978659163",
               "observations": [
                 {
-                  "date": "2023-12",
+                  "date": "2022",
                   "value": 2.7
                 }
               ]
             },
             {
-              "facet_id": "2978659163",
+              "facet_id": "324358135",
               "observations": [
                 {
-                  "date": "2022",
+                  "date": "2023-12",
                   "value": 2.7
                 }
               ]
@@ -2784,20 +2784,20 @@
         "geoId/20": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 2
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 2.7
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 2
                 }
               ]
             },
@@ -2815,20 +2815,20 @@
         "geoId/21": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 3.8
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 3.9
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 3.8
                 }
               ]
             },
@@ -2846,20 +2846,20 @@
         "geoId/22": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 3.8
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 3.7
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 3.8
                 }
               ]
             },
@@ -2877,20 +2877,20 @@
         "geoId/23": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 3.4
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 3
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 3.4
                 }
               ]
             },
@@ -2908,20 +2908,20 @@
         "geoId/24": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 2
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 3.2
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 2
                 }
               ]
             },
@@ -2939,20 +2939,20 @@
         "geoId/25": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 3.5
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 3.8
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 3.5
                 }
               ]
             },
@@ -2970,20 +2970,20 @@
         "geoId/26": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 3.5
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 4.2
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 3.5
                 }
               ]
             },
@@ -3001,20 +3001,20 @@
         "geoId/27": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 2.6
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 2.7
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 2.6
                 }
               ]
             },
@@ -3032,20 +3032,20 @@
         "geoId/28": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 2.6
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 3.9
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 2.6
                 }
               ]
             },
@@ -3063,20 +3063,20 @@
         "geoId/29": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 2.8
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 2.5
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 2.8
                 }
               ]
             },
@@ -3094,20 +3094,20 @@
         "geoId/30": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 3.8
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 2.6
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 3.8
                 }
               ]
             },
@@ -3125,20 +3125,20 @@
         "geoId/31": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 2.2
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 2.3
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 2.2
                 }
               ]
             },
@@ -3156,20 +3156,20 @@
         "geoId/32": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 5
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 5.4
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 5
                 }
               ]
             },
@@ -3187,19 +3187,19 @@
         "geoId/33": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
+              "facet_id": "2978659163",
               "observations": [
                 {
-                  "date": "2023-12",
+                  "date": "2022",
                   "value": 2.5
                 }
               ]
             },
             {
-              "facet_id": "2978659163",
+              "facet_id": "324358135",
               "observations": [
                 {
-                  "date": "2022",
+                  "date": "2023-12",
                   "value": 2.5
                 }
               ]
@@ -3218,20 +3218,20 @@
         "geoId/34": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 4.5
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 3.7
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 4.5
                 }
               ]
             },
@@ -3249,20 +3249,20 @@
         "geoId/35": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 3.6
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 4
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 3.6
                 }
               ]
             },
@@ -3280,20 +3280,20 @@
         "geoId/36": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 4.4
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 4.3
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 4.4
                 }
               ]
             },
@@ -3311,20 +3311,20 @@
         "geoId/37": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 3.2
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 3.7
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 3.2
                 }
               ]
             },
@@ -3342,20 +3342,20 @@
         "geoId/38": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 1.7
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 2.1
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 1.7
                 }
               ]
             },
@@ -3373,20 +3373,20 @@
         "geoId/39": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 3.1
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 4
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 3.1
                 }
               ]
             },
@@ -3404,20 +3404,20 @@
         "geoId/40": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 3.2
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 3
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 3.2
                 }
               ]
             },
@@ -3435,20 +3435,20 @@
         "geoId/41": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 3.9
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 4.2
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 3.9
                 }
               ]
             },
@@ -3466,20 +3466,20 @@
         "geoId/42": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 2.9
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 4.4
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 2.9
                 }
               ]
             },
@@ -3497,20 +3497,20 @@
         "geoId/44": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 3.3
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 3.2
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 3.3
                 }
               ]
             },
@@ -3528,20 +3528,20 @@
         "geoId/45": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 3.1
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 3.2
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 3.1
                 }
               ]
             },
@@ -3559,20 +3559,20 @@
         "geoId/46": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 2
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 2.1
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 2
                 }
               ]
             },
@@ -3590,20 +3590,20 @@
         "geoId/47": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 3
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 3.4
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 3
                 }
               ]
             },
@@ -3621,20 +3621,20 @@
         "geoId/48": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 3.5
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 3.9
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 3.5
                 }
               ]
             },
@@ -3652,20 +3652,20 @@
         "geoId/49": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 2.5
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 2.3
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 2.5
                 }
               ]
             },
@@ -3683,20 +3683,20 @@
         "geoId/50": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 2
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 2.6
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 2
                 }
               ]
             },
@@ -3714,20 +3714,20 @@
         "geoId/51": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 2.7
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 2.9
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 2.7
                 }
               ]
             },
@@ -3745,20 +3745,20 @@
         "geoId/53": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 4.6
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 4.2
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 4.6
                 }
               ]
             },
@@ -3776,20 +3776,20 @@
         "geoId/54": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 4
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 3.9
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 4
                 }
               ]
             },
@@ -3807,20 +3807,20 @@
         "geoId/55": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 2.7
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 2.9
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 2.7
                 }
               ]
             },
@@ -3838,20 +3838,20 @@
         "geoId/56": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 2.5
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 3.6
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 2.5
                 }
               ]
             },
@@ -3869,20 +3869,20 @@
         "geoId/72": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 5.8
-                }
-              ]
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
                   "date": "2022",
                   "value": 6
+                }
+              ]
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 5.8
                 }
               ]
             },

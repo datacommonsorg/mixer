@@ -632,18 +632,6 @@
         "geoId/06": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-12",
-                  "value": 972262
-                }
-              ],
-              "obs_count": 1,
-              "earliest_date": "2023-12",
-              "latest_date": "2023-12"
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
@@ -654,6 +642,18 @@
               "obs_count": 1,
               "earliest_date": "2022",
               "latest_date": "2022"
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-12",
+                  "value": 972262
+                }
+              ],
+              "obs_count": 1,
+              "earliest_date": "2023-12",
+              "latest_date": "2023-12"
             },
             {
               "facet_id": "1249140336",
@@ -672,18 +672,6 @@
         "geoId/0649670": {
           "ordered_facets": [
             {
-              "facet_id": "324358135",
-              "observations": [
-                {
-                  "date": "2023-11",
-                  "value": 1567
-                }
-              ],
-              "obs_count": 1,
-              "earliest_date": "2023-11",
-              "latest_date": "2023-11"
-            },
-            {
               "facet_id": "2978659163",
               "observations": [
                 {
@@ -694,6 +682,18 @@
               "obs_count": 1,
               "earliest_date": "2022",
               "latest_date": "2022"
+            },
+            {
+              "facet_id": "324358135",
+              "observations": [
+                {
+                  "date": "2023-11",
+                  "value": 1567
+                }
+              ],
+              "obs_count": 1,
+              "earliest_date": "2023-11",
+              "latest_date": "2023-11"
             }
           ]
         }
