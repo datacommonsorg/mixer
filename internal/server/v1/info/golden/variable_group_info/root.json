@@ -19,13 +19,13 @@
         "id": "dc/g/Economy",
         "specializedEntity": "Economy",
         "displayName": "Economy",
-        "descendentStatVarCount": 107923
+        "descendentStatVarCount": 108376
       },
       {
         "id": "dc/g/Education",
         "specializedEntity": "Education",
         "displayName": "Education",
-        "descendentStatVarCount": 69247
+        "descendentStatVarCount": 69274
       },
       {
         "id": "dc/g/Energy",
@@ -76,6 +76,6 @@
         "descendentStatVarCount": 3807
       }
     ],
-    "descendentStatVarCount": 208898
+    "descendentStatVarCount": 209351
   }
 }

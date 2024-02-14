@@ -883,6 +883,24 @@
       ]
     },
     {
+      "dcid": "dc/g/LiveBirthPregnancyEvent_PostpartumFamilyPlanning-MaleOrFemaleSterilization",
+      "name": "Live Birth Pregnancy Event With Postpartum Family Planning = Male or Female Sterilization",
+      "statVars": [
+        {
+          "name": "Count of Live Birth Pregnancy Event: Male or Female Sterilization (As Fraction of Count Birth Event Live Birth)",
+          "dcid": "Percent_LiveBirthPregnancyEvent_MaleOrFemaleSterilization_AsAFractionOf_Count_BirthEvent_LiveBirth"
+        },
+        {
+          "name": "Confidence Interval Lower Limit Count of Live Birth Pregnancy Event: Male or Female Sterilization (As Fraction of Count Birth Event Live Birth)",
+          "dcid": "ConfidenceIntervalLowerLimit_Percent_LiveBirthPregnancyEvent_MaleOrFemaleSterilization_AsAFractionOf_Count_BirthEvent_LiveBirth"
+        },
+        {
+          "name": "Confidence Interval Upper Limit Count of Live Birth Pregnancy Event: Male or Female Sterilization (As Fraction of Count Birth Event Live Birth)",
+          "dcid": "ConfidenceIntervalUpperLimit_Percent_LiveBirthPregnancyEvent_MaleOrFemaleSterilization_AsAFractionOf_Count_BirthEvent_LiveBirth"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/MortalityEvent_Gender-Female",
       "name": "Mortality Event With Gender = Female",
       "statVars": [
@@ -919,6 +937,24 @@
       ]
     },
     {
+      "dcid": "dc/g/Person_EducationalAttainment-BachelorsDegree_Gender-Female",
+      "name": "Person With Educational Attainment = Bachelors Degree, Gender = Female",
+      "statVars": [
+        {
+          "name": "Population: Bachelors Degree, Female",
+          "dcid": "Count_Person_25OrMoreYears_EducationalAttainmentBachelorsDegree_Female"
+        },
+        {
+          "name": "Population: Bachelors Degree, Female",
+          "dcid": "Count_Person_EducationalAttainmentBachelorsDegree_Female"
+        },
+        {
+          "name": "Median Income: Bachelors Degree, Female",
+          "dcid": "dc/ys49z0lqtj9g3"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/Person_EducationalAttainment-DoctorateDegree_Gender-Female",
       "name": "Person With Educational Attainment = Doctorate Degree, Gender = Female",
       "statVars": [
@@ -951,6 +987,24 @@
         {
           "name": "Median Earnings for Female Population",
           "dcid": "Median_Earnings_Person_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_Race-NativeHawaiianOrOtherPacificIslanderAlone",
+      "name": "Person With Gender = Female, Race = Native Hawaiian or Other Pacific Islander Alone",
+      "statVars": [
+        {
+          "name": "Female Population Identifying as Native Hawaiian/Other Pacific Islander Alone",
+          "dcid": "Count_Person_Female_NativeHawaiianAndOtherPacificIslanderAlone"
+        },
+        {
+          "name": "Female Population Identifying as Native Hawaiian/Other Pacific Islander Alone",
+          "dcid": "Count_Person_Female_NativeHawaiianOrOtherPacificIslanderAlone"
+        },
+        {
+          "name": "Median Age of Native Hawaiian or Other Pacific Islander Female Population",
+          "dcid": "Median_Age_Person_Female_NativeHawaiianOrOtherPacificIslanderAlone"
         }
       ]
     },
@@ -3049,16 +3103,16 @@
       ]
     },
     {
-      "dcid": "dc/g/Person_EducationalAttainment-BachelorsDegree_Gender-Female",
-      "name": "Person With Educational Attainment = Bachelors Degree, Gender = Female",
+      "dcid": "dc/g/Person_EducationalAttainment-HighSchoolGraduateIncludesEquivalency_Gender-Female",
+      "name": "Person With Educational Attainment = High School Graduate Includes Equivalency, Gender = Female",
       "statVars": [
         {
-          "name": "Population: Bachelors Degree, Female",
-          "dcid": "Count_Person_25OrMoreYears_EducationalAttainmentBachelorsDegree_Female"
+          "name": "Population: High School Graduate Includes Equivalency, Female",
+          "dcid": "Count_Person_25OrMoreYears_EducationalAttainmentHighSchoolGraduateIncludesEquivalency_Female"
         },
         {
-          "name": "Population: Bachelors Degree, Female",
-          "dcid": "Count_Person_EducationalAttainmentBachelorsDegree_Female"
+          "name": "Median Income: High School Graduate Includes Equivalency, Female",
+          "dcid": "dc/syxm9nnsl3wcc"
         }
       ]
     },
@@ -3091,16 +3145,156 @@
       ]
     },
     {
-      "dcid": "dc/g/Person_Gender-Female_Race-NativeHawaiianOrOtherPacificIslanderAlone",
-      "name": "Person With Gender = Female, Race = Native Hawaiian or Other Pacific Islander Alone",
+      "dcid": "dc/g/Person_Gender-Female_Nativity-ForeignBorn",
+      "name": "Person With Gender = Female, Nativity = Foreign Born",
       "statVars": [
         {
-          "name": "Female Population Identifying as Native Hawaiian/Other Pacific Islander Alone",
-          "dcid": "Count_Person_Female_NativeHawaiianAndOtherPacificIslanderAlone"
+          "name": "Foreign Born Female Population",
+          "dcid": "Count_Person_Female_ForeignBorn"
         },
         {
-          "name": "Female Population Identifying as Native Hawaiian/Other Pacific Islander Alone",
-          "dcid": "Count_Person_Female_NativeHawaiianOrOtherPacificIslanderAlone"
+          "name": "Median Age of Foreign-Born Female Population",
+          "dcid": "Median_Age_Person_Female_ForeignBorn"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_Race-AmericanIndianOrAlaskaNativeAlone",
+      "name": "Person With Gender = Female, Race = American Indian or Alaska Native Alone",
+      "statVars": [
+        {
+          "name": "American Indian or Alaska Native Monoracial Female Population",
+          "dcid": "Count_Person_Female_AmericanIndianOrAlaskaNativeAlone"
+        },
+        {
+          "name": "Median Age of American Indian or Alaska Native Female Population",
+          "dcid": "Median_Age_Person_Female_AmericanIndianOrAlaskaNativeAlone"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_Race-AsianAlone",
+      "name": "Person With Gender = Female, Race = Asian Alone",
+      "statVars": [
+        {
+          "name": "Asian Monoracial Female Population",
+          "dcid": "Count_Person_Female_AsianAlone"
+        },
+        {
+          "name": "Median Age of Asian Female Population",
+          "dcid": "Median_Age_Person_Female_AsianAlone"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_Race-BlackOrAfricanAmericanAlone",
+      "name": "Person With Gender = Female, Race = Black or African American Alone",
+      "statVars": [
+        {
+          "name": "Black or African American Monoracial Female Population",
+          "dcid": "Count_Person_Female_BlackOrAfricanAmericanAlone"
+        },
+        {
+          "name": "Median Age of Black or African American Female Population",
+          "dcid": "Median_Age_Person_Female_BlackOrAfricanAmericanAlone"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_Race-HispanicOrLatino",
+      "name": "Person With Gender = Female, Race = Hispanic or Latino",
+      "statVars": [
+        {
+          "name": "Hispanic Female Population",
+          "dcid": "Count_Person_Female_HispanicOrLatino"
+        },
+        {
+          "name": "Median Age of Hispanic or Latino Female Population",
+          "dcid": "Median_Age_Person_Female_HispanicOrLatino"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_Race-SomeOtherRaceAlone",
+      "name": "Person With Gender = Female, Race = Some Other Race Alone",
+      "statVars": [
+        {
+          "name": "Female Population Identifying as Some Other Race Alone",
+          "dcid": "Count_Person_Female_SomeOtherRaceAlone"
+        },
+        {
+          "name": "Median Age of Female Population of Some Other Race",
+          "dcid": "Median_Age_Person_Female_SomeOtherRaceAlone"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_Race-TwoOrMoreRaces",
+      "name": "Person With Gender = Female, Race = Two or More Races",
+      "statVars": [
+        {
+          "name": "Female Population Identifying as Multiracial",
+          "dcid": "Count_Person_Female_TwoOrMoreRaces"
+        },
+        {
+          "name": "Median Age of Multiracial Female Population",
+          "dcid": "Median_Age_Person_Female_TwoOrMoreRaces"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_Race-WhiteAlone",
+      "name": "Person With Gender = Female, Race = White Alone",
+      "statVars": [
+        {
+          "name": "Female Population Identifying as White Alone",
+          "dcid": "Count_Person_Female_WhiteAlone"
+        },
+        {
+          "name": "Median Age of White Female Population",
+          "dcid": "Median_Age_Person_Female_WhiteAlone"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_Race-WhiteAloneNotHispanicOrLatino",
+      "name": "Person With Gender = Female, Race = White Alone Not Hispanic or Latino",
+      "statVars": [
+        {
+          "name": "White Non Hispanic Female Population",
+          "dcid": "Count_Person_Female_WhiteAloneNotHispanicOrLatino"
+        },
+        {
+          "name": "Median Age of Non Hispanic or Latino White Female Population",
+          "dcid": "Median_Age_Person_Female_WhiteAloneNotHispanicOrLatino"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_RecentWorkStatus-NotWorkedFullTime",
+      "name": "Person With Gender = Female, Recent Work Status = Not Worked Full Time",
+      "statVars": [
+        {
+          "name": "Population: Female, Not Worked Full Time",
+          "dcid": "Count_Person_NotWorkedFullTime"
+        },
+        {
+          "name": "Median Income: Female, Not Worked Full Time",
+          "dcid": "dc/n0bp6h6zcgm74"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_RecentWorkStatus-WorkedFullTime",
+      "name": "Person With Gender = Female, Recent Work Status = Worked Full Time",
+      "statVars": [
+        {
+          "name": "Population: Female, Worked Full Time",
+          "dcid": "dc/q779fwy6k8skd"
+        },
+        {
+          "name": "Median Income: Female, Worked Full Time",
+          "dcid": "dc/kebe2wtgsej37"
         }
       ]
     },
@@ -3313,16 +3507,6 @@
         {
           "name": "Detected victims of human trafficking, by age and sex [Female]",
           "dcid": "sdg/VC_HTF_DETV.SEX--F"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/LiveBirthPregnancyEvent_PostpartumFamilyPlanning-MaleOrFemaleSterilization",
-      "name": "Live Birth Pregnancy Event With Postpartum Family Planning = Male or Female Sterilization",
-      "statVars": [
-        {
-          "name": "Count of Live Birth Pregnancy Event: Male or Female Sterilization (As Fraction of Count Birth Event Live Birth)",
-          "dcid": "Percent_LiveBirthPregnancyEvent_MaleOrFemaleSterilization_AsAFractionOf_Count_BirthEvent_LiveBirth"
         }
       ]
     },
@@ -5377,6 +5561,16 @@
       ]
     },
     {
+      "dcid": "dc/g/Person_EducationalAttainment-GraduateOrProfessionalDegree_Gender-Female",
+      "name": "Person With Educational Attainment = Graduate or Professional Degree, Gender = Female",
+      "statVars": [
+        {
+          "name": "Median Income: Graduate or Professional Degree, Female",
+          "dcid": "dc/zqjml3mcrpsgd"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/Person_EducationalAttainment-HighSchoolGraduateGedOrAlternative_Gender-Female",
       "name": "Person With Educational Attainment = High School Graduate Ged or Alternative, Gender = Female",
       "statVars": [
@@ -5387,12 +5581,12 @@
       ]
     },
     {
-      "dcid": "dc/g/Person_EducationalAttainment-HighSchoolGraduateIncludesEquivalency_Gender-Female",
-      "name": "Person With Educational Attainment = High School Graduate Includes Equivalency, Gender = Female",
+      "dcid": "dc/g/Person_EducationalAttainment-LessThanHighSchoolGraduate_Gender-Female",
+      "name": "Person With Educational Attainment = Less Than High School Graduate, Gender = Female",
       "statVars": [
         {
-          "name": "Population: High School Graduate Includes Equivalency, Female",
-          "dcid": "Count_Person_25OrMoreYears_EducationalAttainmentHighSchoolGraduateIncludesEquivalency_Female"
+          "name": "Median Income: Less Than High School Graduate, Female",
+          "dcid": "dc/8qkkf1vx7cmh"
         }
       ]
     },
@@ -5413,6 +5607,16 @@
         {
           "name": "Population: No Schooling Completed, Female",
           "dcid": "Count_Person_25OrMoreYears_EducationalAttainmentNoSchoolingCompleted_Female"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_EducationalAttainment-SomeCollegeOrAssociatesDegree_Gender-Female",
+      "name": "Person With Educational Attainment = Some College or Associates Degree, Gender = Female",
+      "statVars": [
+        {
+          "name": "Median Income: Some College or Associates Degree, Female",
+          "dcid": "dc/hep54bd4vbysh"
         }
       ]
     },
@@ -5737,6 +5941,206 @@
       ]
     },
     {
+      "dcid": "dc/g/Person_Gender-Female_Industry-NAICS/72",
+      "name": "Person With Gender = Female, Industry = Accommodation And Food Services (NAICS/72)",
+      "statVars": [
+        {
+          "name": "Median Income (Real Individual Earnings Before Deductions): Female, Accommodation And Food Services (NAICS/72)",
+          "dcid": "dc/g04fk03pg87f6"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_Industry-NAICS/56",
+      "name": "Person With Gender = Female, Industry = Administrative And Support And Waste Management Services (NAICS/56)",
+      "statVars": [
+        {
+          "name": "Median Income (Real Individual Earnings Before Deductions): Female, Administrative And Support And Waste Management Services (NAICS/56)",
+          "dcid": "dc/435mm79mp4cbd"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_Industry-NAICS/11",
+      "name": "Person With Gender = Female, Industry = Agriculture, Forestry, Fishing And Hunting (NAICS/11)",
+      "statVars": [
+        {
+          "name": "Median Income (Real Individual Earnings Before Deductions): Female, Agriculture, Forestry, Fishing And Hunting (NAICS/11)",
+          "dcid": "dc/h155394bf6ejc"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_Industry-NAICS/71",
+      "name": "Person With Gender = Female, Industry = Arts, Entertainment, And Recreation (NAICS/71)",
+      "statVars": [
+        {
+          "name": "Median Income (Real Individual Earnings Before Deductions): Female, Arts, Entertainment, And Recreation (NAICS/71)",
+          "dcid": "dc/2hnzy512xdph1"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_Industry-NAICS/23",
+      "name": "Person With Gender = Female, Industry = Construction (NAICS/23)",
+      "statVars": [
+        {
+          "name": "Median Income (Real Individual Earnings Before Deductions): Female, Construction (NAICS/23)",
+          "dcid": "dc/3swffkdvtn801"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_Industry-NAICS/61",
+      "name": "Person With Gender = Female, Industry = Educational Services (NAICS/61)",
+      "statVars": [
+        {
+          "name": "Median Income (Real Individual Earnings Before Deductions): Female, Educational Services (NAICS/61)",
+          "dcid": "dc/6yc1ftqxf0phb"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_Industry-NAICS/52",
+      "name": "Person With Gender = Female, Industry = Finance And Insurance (NAICS/52)",
+      "statVars": [
+        {
+          "name": "Median Income (Real Individual Earnings Before Deductions): Female, Finance And Insurance (NAICS/52)",
+          "dcid": "dc/57xsltbxnqzx5"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_Industry-NAICS/62",
+      "name": "Person With Gender = Female, Industry = Health Care And Social Assistance (NAICS/62)",
+      "statVars": [
+        {
+          "name": "Median Income (Real Individual Earnings Before Deductions): Female, Health Care And Social Assistance (NAICS/62)",
+          "dcid": "dc/7l5y4bjbp8fdh"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_Industry-NAICS/51",
+      "name": "Person With Gender = Female, Industry = Information (NAICS/51)",
+      "statVars": [
+        {
+          "name": "Median Income (Real Individual Earnings Before Deductions): Female, Information (NAICS/51)",
+          "dcid": "dc/276ednqpnbxv5"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_Industry-NAICS/55",
+      "name": "Person With Gender = Female, Industry = Management of Companies And Enterprises (NAICS/55)",
+      "statVars": [
+        {
+          "name": "Median Income (Real Individual Earnings Before Deductions): Female, Management of Companies And Enterprises (NAICS/55)",
+          "dcid": "dc/xy2kgs8nh7tcg"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_Industry-NAICS/3133",
+      "name": "Person With Gender = Female, Industry = Manufacturing (NAICS/31-33)",
+      "statVars": [
+        {
+          "name": "Median Income (Real Individual Earnings Before Deductions): Female, Manufacturing (NAICS/31-33)",
+          "dcid": "dc/8r4gp7whzx0tc"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_Industry-NAICS/21",
+      "name": "Person With Gender = Female, Industry = Mining, Quarrying, And Oil And Gas Extraction (NAICS/21)",
+      "statVars": [
+        {
+          "name": "Median Income (Real Individual Earnings Before Deductions): Female, Mining, Quarrying, And Oil And Gas Extraction (NAICS/21)",
+          "dcid": "dc/fnmdx8chexsw3"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_Industry-NAICS/81",
+      "name": "Person With Gender = Female, Industry = Other Services, Except Public Administration (NAICS/81)",
+      "statVars": [
+        {
+          "name": "Median Income (Real Individual Earnings Before Deductions): Female, Other Services, Except Public Administration (NAICS/81)",
+          "dcid": "dc/yg21f8t5f8hsc"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_Industry-NAICS/54",
+      "name": "Person With Gender = Female, Industry = Professional, Scientific, And Technical Services (NAICS/54)",
+      "statVars": [
+        {
+          "name": "Median Income (Real Individual Earnings Before Deductions): Female, Professional, Scientific, And Technical Services (NAICS/54)",
+          "dcid": "dc/6e0d3tw0lb0n8"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_Industry-NAICS/92",
+      "name": "Person With Gender = Female, Industry = Public Administration (NAICS/92)",
+      "statVars": [
+        {
+          "name": "Median Income (Real Individual Earnings Before Deductions): Female, Public Administration (NAICS/92)",
+          "dcid": "dc/hpfct8bpln8t4"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_Industry-NAICS/53",
+      "name": "Person With Gender = Female, Industry = Real Estate And Rental And Leasing (NAICS/53)",
+      "statVars": [
+        {
+          "name": "Median Income (Real Individual Earnings Before Deductions): Female, Real Estate And Rental And Leasing (NAICS/53)",
+          "dcid": "dc/vzckpb26q7fzh"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_Industry-NAICS/4445",
+      "name": "Person With Gender = Female, Industry = Retail Trade (NAICS/44-45)",
+      "statVars": [
+        {
+          "name": "Median Income (Real Individual Earnings Before Deductions): Female, Retail Trade (NAICS/44-45)",
+          "dcid": "dc/1w1zyzs1cwwc2"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_Industry-NAICS/4849",
+      "name": "Person With Gender = Female, Industry = Transportation And Warehousing (NAICS/48-49)",
+      "statVars": [
+        {
+          "name": "Median Income (Real Individual Earnings Before Deductions): Female, Transportation And Warehousing (NAICS/48-49)",
+          "dcid": "dc/hy16j80c3yrfd"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_Industry-NAICS/22",
+      "name": "Person With Gender = Female, Industry = Utilities (NAICS/22)",
+      "statVars": [
+        {
+          "name": "Median Income (Real Individual Earnings Before Deductions): Female, Utilities (NAICS/22)",
+          "dcid": "dc/p01zfmqydk5b3"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Female_Industry-NAICS/42",
+      "name": "Person With Gender = Female, Industry = Wholesale Trade (NAICS/42)",
+      "statVars": [
+        {
+          "name": "Median Income (Real Individual Earnings Before Deductions): Female, Wholesale Trade (NAICS/42)",
+          "dcid": "dc/snz7t95m7wj7b"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/Person_Gender-Female_MaritalStatus-Divorced",
       "name": "Person With Gender = Female, Marital Status = Divorced",
       "statVars": [
@@ -5797,12 +6201,12 @@
       ]
     },
     {
-      "dcid": "dc/g/Person_Gender-Female_Nativity-ForeignBorn",
-      "name": "Person With Gender = Female, Nativity = Foreign Born",
+      "dcid": "dc/g/Person_Gender-Female_Nativity-Native",
+      "name": "Person With Gender = Female, Nativity = Native",
       "statVars": [
         {
-          "name": "Foreign Born Female Population",
-          "dcid": "Count_Person_Female_ForeignBorn"
+          "name": "Median Age of US Born Female Population",
+          "dcid": "Median_Age_Person_Female_Native"
         }
       ]
     },
@@ -5837,26 +6241,6 @@
       ]
     },
     {
-      "dcid": "dc/g/Person_Gender-Female_Race-AmericanIndianOrAlaskaNativeAlone",
-      "name": "Person With Gender = Female, Race = American Indian or Alaska Native Alone",
-      "statVars": [
-        {
-          "name": "American Indian or Alaska Native Monoracial Female Population",
-          "dcid": "Count_Person_Female_AmericanIndianOrAlaskaNativeAlone"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_Race-AsianAlone",
-      "name": "Person With Gender = Female, Race = Asian Alone",
-      "statVars": [
-        {
-          "name": "Asian Monoracial Female Population",
-          "dcid": "Count_Person_Female_AsianAlone"
-        }
-      ]
-    },
-    {
       "dcid": "dc/g/Person_Gender-Female_Race-AsianOrPacificIslander",
       "name": "Person With Gender = Female, Race = Asian or Pacific Islander",
       "statVars": [
@@ -5867,32 +6251,12 @@
       ]
     },
     {
-      "dcid": "dc/g/Person_Gender-Female_Race-BlackOrAfricanAmericanAlone",
-      "name": "Person With Gender = Female, Race = Black or African American Alone",
-      "statVars": [
-        {
-          "name": "Black or African American Monoracial Female Population",
-          "dcid": "Count_Person_Female_BlackOrAfricanAmericanAlone"
-        }
-      ]
-    },
-    {
       "dcid": "dc/g/Person_Gender-Female_Race-BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces",
       "name": "Person With Gender = Female, Race = Black or African American Alone or In Combination With One or More Other Races",
       "statVars": [
         {
           "name": "Black or African American Female Population, Monoracial or Multiracial",
           "dcid": "Count_Person_Female_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_Race-HispanicOrLatino",
-      "name": "Person With Gender = Female, Race = Hispanic or Latino",
-      "statVars": [
-        {
-          "name": "Hispanic Female Population",
-          "dcid": "Count_Person_Female_HispanicOrLatino"
         }
       ]
     },
@@ -6107,72 +6471,12 @@
       ]
     },
     {
-      "dcid": "dc/g/Person_Gender-Female_Race-SomeOtherRaceAlone",
-      "name": "Person With Gender = Female, Race = Some Other Race Alone",
-      "statVars": [
-        {
-          "name": "Female Population Identifying as Some Other Race Alone",
-          "dcid": "Count_Person_Female_SomeOtherRaceAlone"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_Race-TwoOrMoreRaces",
-      "name": "Person With Gender = Female, Race = Two or More Races",
-      "statVars": [
-        {
-          "name": "Female Population Identifying as Multiracial",
-          "dcid": "Count_Person_Female_TwoOrMoreRaces"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_Race-WhiteAlone",
-      "name": "Person With Gender = Female, Race = White Alone",
-      "statVars": [
-        {
-          "name": "Female Population Identifying as White Alone",
-          "dcid": "Count_Person_Female_WhiteAlone"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_Race-WhiteAloneNotHispanicOrLatino",
-      "name": "Person With Gender = Female, Race = White Alone Not Hispanic or Latino",
-      "statVars": [
-        {
-          "name": "White Non Hispanic Female Population",
-          "dcid": "Count_Person_Female_WhiteAloneNotHispanicOrLatino"
-        }
-      ]
-    },
-    {
       "dcid": "dc/g/Person_Gender-Female_Race-WhiteAloneOrInCombinationWithOneOrMoreOtherRaces",
       "name": "Person With Gender = Female, Race = White Alone or In Combination With One or More Other Races",
       "statVars": [
         {
           "name": "Female White Population, Monoracial/Multiracial",
           "dcid": "Count_Person_Female_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_RecentWorkStatus-NotWorkedFullTime",
-      "name": "Person With Gender = Female, Recent Work Status = Not Worked Full Time",
-      "statVars": [
-        {
-          "name": "Population: Female, Not Worked Full Time",
-          "dcid": "Count_Person_NotWorkedFullTime"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_RecentWorkStatus-WorkedFullTime",
-      "name": "Person With Gender = Female, Recent Work Status = Worked Full Time",
-      "statVars": [
-        {
-          "name": "Population: Female, Worked Full Time",
-          "dcid": "dc/q779fwy6k8skd"
         }
       ]
     },
@@ -7815,10 +8119,6 @@
       "name": "Person With Educational Attainment = College Graduate, Gender = Female"
     },
     {
-      "dcid": "dc/g/Person_EducationalAttainment-GraduateOrProfessionalDegree_Gender-Female",
-      "name": "Person With Educational Attainment = Graduate or Professional Degree, Gender = Female"
-    },
-    {
       "dcid": "dc/g/Person_EducationalAttainment-LessThan9ThGrade_Gender-Female",
       "name": "Person With Educational Attainment = Less Than 9th Grade, Gender = Female"
     },
@@ -7827,16 +8127,8 @@
       "name": "Person With Educational Attainment = Less Than High School Diploma, Gender = Female"
     },
     {
-      "dcid": "dc/g/Person_EducationalAttainment-LessThanHighSchoolGraduate_Gender-Female",
-      "name": "Person With Educational Attainment = Less Than High School Graduate, Gender = Female"
-    },
-    {
       "dcid": "dc/g/Person_EducationalAttainment-SomeCollegeNoDegree_Gender-Female",
       "name": "Person With Educational Attainment = Some College No Degree, Gender = Female"
-    },
-    {
-      "dcid": "dc/g/Person_EducationalAttainment-SomeCollegeOrAssociatesDegree_Gender-Female",
-      "name": "Person With Educational Attainment = Some College or Associates Degree, Gender = Female"
     },
     {
       "dcid": "dc/g/Person_EducationalDegree-ScienceEngineeringHealth_Gender-Female",
@@ -8047,86 +8339,6 @@
       "name": "Person With Gender = Female, Industry"
     },
     {
-      "dcid": "dc/g/Person_Gender-Female_Industry-NAICS/72",
-      "name": "Person With Gender = Female, Industry = Accommodation And Food Services (NAICS/72)"
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_Industry-NAICS/56",
-      "name": "Person With Gender = Female, Industry = Administrative And Support And Waste Management Services (NAICS/56)"
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_Industry-NAICS/11",
-      "name": "Person With Gender = Female, Industry = Agriculture, Forestry, Fishing And Hunting (NAICS/11)"
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_Industry-NAICS/71",
-      "name": "Person With Gender = Female, Industry = Arts, Entertainment, And Recreation (NAICS/71)"
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_Industry-NAICS/23",
-      "name": "Person With Gender = Female, Industry = Construction (NAICS/23)"
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_Industry-NAICS/61",
-      "name": "Person With Gender = Female, Industry = Educational Services (NAICS/61)"
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_Industry-NAICS/52",
-      "name": "Person With Gender = Female, Industry = Finance And Insurance (NAICS/52)"
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_Industry-NAICS/62",
-      "name": "Person With Gender = Female, Industry = Health Care And Social Assistance (NAICS/62)"
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_Industry-NAICS/51",
-      "name": "Person With Gender = Female, Industry = Information (NAICS/51)"
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_Industry-NAICS/55",
-      "name": "Person With Gender = Female, Industry = Management of Companies And Enterprises (NAICS/55)"
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_Industry-NAICS/3133",
-      "name": "Person With Gender = Female, Industry = Manufacturing (NAICS/31-33)"
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_Industry-NAICS/21",
-      "name": "Person With Gender = Female, Industry = Mining, Quarrying, And Oil And Gas Extraction (NAICS/21)"
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_Industry-NAICS/81",
-      "name": "Person With Gender = Female, Industry = Other Services, Except Public Administration (NAICS/81)"
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_Industry-NAICS/54",
-      "name": "Person With Gender = Female, Industry = Professional, Scientific, And Technical Services (NAICS/54)"
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_Industry-NAICS/92",
-      "name": "Person With Gender = Female, Industry = Public Administration (NAICS/92)"
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_Industry-NAICS/53",
-      "name": "Person With Gender = Female, Industry = Real Estate And Rental And Leasing (NAICS/53)"
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_Industry-NAICS/4445",
-      "name": "Person With Gender = Female, Industry = Retail Trade (NAICS/44-45)"
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_Industry-NAICS/4849",
-      "name": "Person With Gender = Female, Industry = Transportation And Warehousing (NAICS/48-49)"
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_Industry-NAICS/22",
-      "name": "Person With Gender = Female, Industry = Utilities (NAICS/22)"
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_Industry-NAICS/42",
-      "name": "Person With Gender = Female, Industry = Wholesale Trade (NAICS/42)"
-    },
-    {
       "dcid": "dc/g/Person_Gender-Female_Institutionalization",
       "name": "Person With Gender = Female, Institutionalization"
     },
@@ -8193,10 +8405,6 @@
     {
       "dcid": "dc/g/Person_Gender-Female_Nativity",
       "name": "Person With Gender = Female, Nativity"
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_Nativity-Native",
-      "name": "Person With Gender = Female, Nativity = Native"
     },
     {
       "dcid": "dc/g/Person_Gender-Female_NumberOfVehiclesInHousehold",

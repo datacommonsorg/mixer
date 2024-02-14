@@ -333,6 +333,38 @@
       "dcid": "WHO/UNICEF_PNCMOTHER"
     },
     {
+      "name": "Consumer Price Index of Consumer Goods And Services (Seasonally Unadjusted): Urban Consumer, Womens And Girls Apparel",
+      "dcid": "SeasonallyUnadjusted_ConsumerPriceIndex_ConsumerGoodsAndServices_UrbanConsumer_WomensAndGirlsApparel"
+    },
+    {
+      "name": "Consumer Price Index of Consumer Goods And Services (Seasonally Unadjusted): Urban Consumer, Womens Apparel",
+      "dcid": "SeasonallyUnadjusted_ConsumerPriceIndex_ConsumerGoodsAndServices_UrbanConsumer_WomensApparel"
+    },
+    {
+      "name": "Consumer Price Index of Consumer Goods And Services (Seasonally Unadjusted): Urban Consumer, Womens Dresses",
+      "dcid": "SeasonallyUnadjusted_ConsumerPriceIndex_ConsumerGoodsAndServices_UrbanConsumer_WomensDresses"
+    },
+    {
+      "name": "Consumer Price Index of Consumer Goods And Services (Seasonally Unadjusted): Urban Consumer, Womens Footwear",
+      "dcid": "SeasonallyUnadjusted_ConsumerPriceIndex_ConsumerGoodsAndServices_UrbanConsumer_WomensFootwear"
+    },
+    {
+      "name": "Consumer Price Index of Consumer Goods And Services (Seasonally Unadjusted): Urban Consumer, Womens Outerwear",
+      "dcid": "SeasonallyUnadjusted_ConsumerPriceIndex_ConsumerGoodsAndServices_UrbanConsumer_WomensOuterwear"
+    },
+    {
+      "name": "Consumer Price Index of Consumer Goods And Services (Seasonally Unadjusted): Urban Consumer, Womens Suits And Separates",
+      "dcid": "SeasonallyUnadjusted_ConsumerPriceIndex_ConsumerGoodsAndServices_UrbanConsumer_WomensSuitsAndSeparates"
+    },
+    {
+      "name": "Consumer Price Index of Consumer Goods And Services (Seasonally Unadjusted): Urban Consumer, Womens Underwear Nightwear Sportswear And Accessories",
+      "dcid": "SeasonallyUnadjusted_ConsumerPriceIndex_ConsumerGoodsAndServices_UrbanConsumer_WomensUnderwearNightwearSportswearAndAccessories"
+    },
+    {
+      "name": "Consumer Price Index of Consumer Goods And Services (Seasonally Unadjusted): Urban Consumer, Womens Underwear Nightwear Swimwear And Accessories",
+      "dcid": "SeasonallyUnadjusted_ConsumerPriceIndex_ConsumerGoodsAndServices_UrbanConsumer_WomensUnderwearNightwearSwimwearAndAccessories"
+    },
+    {
       "name": "Adolescent Birth Rate (Per 1000 Women Aged 15-19 Years),10 To14 Years",
       "dcid": "WHO/MDG_0000000003_10To14Years"
     },
@@ -2075,6 +2107,7 @@
     "women",
     "women's",
     "women)",
+    "womens",
     "women’s"
   ]
 }

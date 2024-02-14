@@ -191,6 +191,24 @@
       ]
     },
     {
+      "dcid": "dc/g/Person_Industry-NAICS/72",
+      "name": "Person With Industry = Accommodation And Food Services (NAICS/72)",
+      "statVars": [
+        {
+          "name": "Population Working in the Accommodation and Food Services Industry",
+          "dcid": "Count_Worker_NAICSAccommodationFoodServices"
+        },
+        {
+          "name": "Total Wages Earned by Population Working in the Accommodation and Food Services Industry",
+          "dcid": "WagesTotal_Worker_NAICSAccommodationFoodServices"
+        },
+        {
+          "name": "Median Income (Real Individual Earnings Before Deductions): Accommodation And Food Services (NAICS/72)",
+          "dcid": "dc/9pmyhk89dj3pf"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/Person_EstablishmentOwnership_Industry-NAICS/7172",
       "name": "Person With Establishment Ownership, Industry = Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)",
       "statVars": [
@@ -237,16 +255,30 @@
       ]
     },
     {
-      "dcid": "dc/g/Person_Industry-NAICS/72",
-      "name": "Person With Industry = Accommodation And Food Services (NAICS/72)",
+      "dcid": "dc/g/Person_Gender-Female_Industry-NAICS/72",
+      "name": "Person With Gender = Female, Industry = Accommodation And Food Services (NAICS/72)",
       "statVars": [
         {
-          "name": "Population Working in the Accommodation and Food Services Industry",
-          "dcid": "Count_Worker_NAICSAccommodationFoodServices"
+          "name": "Median Income (Real Individual Earnings Before Deductions): Female, Accommodation And Food Services (NAICS/72)",
+          "dcid": "dc/g04fk03pg87f6"
         },
         {
-          "name": "Total Wages Earned by Population Working in the Accommodation and Food Services Industry",
-          "dcid": "WagesTotal_Worker_NAICSAccommodationFoodServices"
+          "name": "Population: 16 Years or More, Civilian, Employed, in Labor Force, Female, Accommodation And Food Services (NAICS/72)",
+          "dcid": "dc/rydmsxhz7pxh1"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Gender-Male_Industry-NAICS/72",
+      "name": "Person With Gender = Male, Industry = Accommodation And Food Services (NAICS/72)",
+      "statVars": [
+        {
+          "name": "Median Income (Real Individual Earnings Before Deductions): Male, Accommodation And Food Services (NAICS/72)",
+          "dcid": "dc/xg791ejgz86nb"
+        },
+        {
+          "name": "Population: 16 Years or More, Civilian, Employed, in Labor Force, Male, Accommodation And Food Services (NAICS/72)",
+          "dcid": "dc/pn22zf92qr31f"
         }
       ]
     },
@@ -401,26 +433,6 @@
         {
           "name": "Sales of Establishment: Accommodation And Food Services (NAICS/72), With Payroll",
           "dcid": "Sales_Establishment_NAICSAccommodationFoodServices_WithPayroll"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_Industry-NAICS/72",
-      "name": "Person With Gender = Female, Industry = Accommodation And Food Services (NAICS/72)",
-      "statVars": [
-        {
-          "name": "Population: 16 Years or More, Civilian, Employed, in Labor Force, Female, Accommodation And Food Services (NAICS/72)",
-          "dcid": "dc/rydmsxhz7pxh1"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Male_Industry-NAICS/72",
-      "name": "Person With Gender = Male, Industry = Accommodation And Food Services (NAICS/72)",
-      "statVars": [
-        {
-          "name": "Population: 16 Years or More, Civilian, Employed, in Labor Force, Male, Accommodation And Food Services (NAICS/72)",
-          "dcid": "dc/pn22zf92qr31f"
         }
       ]
     },

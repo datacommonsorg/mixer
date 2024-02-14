@@ -11,7 +11,8 @@
       "2018": 36.3,
       "2019": 36.5,
       "2020": 36.7,
-      "2021": 37
+      "2021": 37,
+      "2022": 37.3
     },
     "placeName": "California",
     "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html"
@@ -28,7 +29,8 @@
       "2018": 37,
       "2019": 37.1,
       "2020": 37.2,
-      "2021": 37.5
+      "2021": 37.5,
+      "2022": 37.7
     },
     "placeName": "Santa Clara County",
     "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html"
@@ -45,7 +47,8 @@
       "2018": 34.9,
       "2019": 34.8,
       "2020": 35.2,
-      "2021": 35.4
+      "2021": 35.4,
+      "2022": 35.5
     },
     "placeName": "Mountain View",
     "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html"

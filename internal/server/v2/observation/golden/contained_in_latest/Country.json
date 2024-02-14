@@ -5099,8 +5099,17 @@
               "facet_id": "1273233945",
               "observations": [
                 {
-                  "date": "2021",
-                  "value": 333036755
+                  "date": "2022",
+                  "value": 334369975
+                }
+              ]
+            },
+            {
+              "facet_id": "1145703171",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 331097593
                 }
               ]
             },
@@ -5498,6 +5507,11 @@
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2601A",
       "provenance_url": "https://data.census.gov/cedsci/table?q=S2601A&tid=ACSST5Y2019.S2601A",
       "measurement_method": "CensusACS5yrSurveySubjectTable"
+    },
+    "1145703171": {
+      "import_name": "CensusACS5YearSurvey",
+      "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+      "measurement_method": "CensusACS5yrSurvey"
     },
     "1151455814": {
       "import_name": "OECDRegionalDemography",

@@ -264,13 +264,25 @@
               "facet_id": "1273233945",
               "observations": [
                 {
-                  "date": "2021",
-                  "value": 333036755
+                  "date": "2022",
+                  "value": 334369975
                 }
               ],
               "obs_count": 1,
-              "earliest_date": "2021",
-              "latest_date": "2021"
+              "earliest_date": "2022",
+              "latest_date": "2022"
+            },
+            {
+              "facet_id": "1145703171",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 331097593
+                }
+              ],
+              "obs_count": 1,
+              "earliest_date": "2022",
+              "latest_date": "2022"
             },
             {
               "facet_id": "1541763368",
@@ -413,13 +425,13 @@
               "facet_id": "1145703171",
               "observations": [
                 {
-                  "date": "2021",
-                  "value": 39455353
+                  "date": "2022",
+                  "value": 39356104
                 }
               ],
               "obs_count": 1,
-              "earliest_date": "2021",
-              "latest_date": "2021"
+              "earliest_date": "2022",
+              "latest_date": "2022"
             },
             {
               "facet_id": "1541763368",
@@ -537,13 +549,13 @@
               "facet_id": "1145703171",
               "observations": [
                 {
-                  "date": "2021",
-                  "value": 82409
+                  "date": "2022",
+                  "value": 82132
                 }
               ],
               "obs_count": 1,
-              "earliest_date": "2021",
-              "latest_date": "2021"
+              "earliest_date": "2022",
+              "latest_date": "2022"
             },
             {
               "facet_id": "1541763368",
@@ -675,13 +687,13 @@
               "facet_id": "324358135",
               "observations": [
                 {
-                  "date": "2023-11",
-                  "value": 1567
+                  "date": "2023-12",
+                  "value": 1506
                 }
               ],
               "obs_count": 1,
-              "earliest_date": "2023-11",
-              "latest_date": "2023-11"
+              "earliest_date": "2023-12",
+              "latest_date": "2023-12"
             },
             {
               "facet_id": "2978659163",

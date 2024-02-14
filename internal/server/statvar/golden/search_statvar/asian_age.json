@@ -619,6 +619,20 @@
       ]
     },
     {
+      "dcid": "dc/g/Person_Age-Years12To17_PovertyStatus_Race-AsianAlone",
+      "name": "Person With Age = 12 - 17 Years, Poverty Status, Race = Asian Alone",
+      "statVars": [
+        {
+          "name": "Population: 12 - 17 Years, Above Poverty Level in The Past 12 Months, Asian Alone",
+          "dcid": "Count_Person_12To17Years_AbovePovertyLevelInThePast12Months_AsianAlone"
+        },
+        {
+          "name": "Population: 12 - 17 Years, Below Poverty Level in The Past 12 Months, Asian Alone",
+          "dcid": "Count_Person_12To17Years_BelowPovertyLevelInThePast12Months_AsianAlone"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/Person_Age-Years15To17_Gender_Race-AsianAlone",
       "name": "Person With Age = 15 - 17 Years, Gender, Race = Asian Alone",
       "statVars": [
@@ -727,6 +741,20 @@
         {
           "name": "Population: 18 - 19 Years, Male, Asian Alone",
           "dcid": "Count_Person_18To19Years_Male_AsianAlone"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years18To59_PovertyStatus_Race-AsianAlone",
+      "name": "Person With Age = 18 - 59 Years, Poverty Status, Race = Asian Alone",
+      "statVars": [
+        {
+          "name": "Population: 18 - 59 Years, Above Poverty Level in The Past 12 Months, Asian Alone",
+          "dcid": "Count_Person_18To59Years_AbovePovertyLevelInThePast12Months_AsianAlone"
+        },
+        {
+          "name": "Population: 18 - 59 Years, Below Poverty Level in The Past 12 Months, Asian Alone",
+          "dcid": "Count_Person_18To59Years_BelowPovertyLevelInThePast12Months_AsianAlone"
         }
       ]
     },
@@ -1375,6 +1403,20 @@
       ]
     },
     {
+      "dcid": "dc/g/Person_Age-YearsUpto6_PovertyStatus_Race-AsianAlone",
+      "name": "Person With Age = 6 Years or Less, Poverty Status, Race = Asian Alone",
+      "statVars": [
+        {
+          "name": "Population: 6 Years or Less, Above Poverty Level in The Past 12 Months, Asian Alone",
+          "dcid": "Count_Person_6OrLessYears_AbovePovertyLevelInThePast12Months_AsianAlone"
+        },
+        {
+          "name": "Population: 6 Years or Less, Below Poverty Level in The Past 12 Months, Asian Alone",
+          "dcid": "Count_Person_6OrLessYears_BelowPovertyLevelInThePast12Months_AsianAlone"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/Person_Age-Years60To64_Gender_Race-AsianAlone",
       "name": "Person With Age = 60 - 64 Years, Gender, Race = Asian Alone",
       "statVars": [
@@ -1441,6 +1483,20 @@
         {
           "name": "Population: 60 - 64 Years, Male, Not Hispanic or Latino \u0026 Asian or Pacific Islander",
           "dcid": "Count_Person_60To64Years_Male_NotHispanicOrLatino_AsianOrPacificIslander"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years60To74_PovertyStatus_Race-AsianAlone",
+      "name": "Person With Age = 60 - 74 Years, Poverty Status, Race = Asian Alone",
+      "statVars": [
+        {
+          "name": "Population: 60 - 74 Years, Above Poverty Level in The Past 12 Months, Asian Alone",
+          "dcid": "Count_Person_60To74Years_AbovePovertyLevelInThePast12Months_AsianAlone"
+        },
+        {
+          "name": "Population: 60 - 74 Years, Below Poverty Level in The Past 12 Months, Asian Alone",
+          "dcid": "Count_Person_60To74Years_BelowPovertyLevelInThePast12Months_AsianAlone"
         }
       ]
     },
@@ -1669,6 +1725,20 @@
       ]
     },
     {
+      "dcid": "dc/g/Person_Age-Years75To84_PovertyStatus_Race-AsianAlone",
+      "name": "Person With Age = 75 - 84 Years, Poverty Status, Race = Asian Alone",
+      "statVars": [
+        {
+          "name": "Population: 75 - 84 Years, Above Poverty Level in The Past 12 Months, Asian Alone",
+          "dcid": "Count_Person_75To84Years_AbovePovertyLevelInThePast12Months_AsianAlone"
+        },
+        {
+          "name": "Population: 75 - 84 Years, Below Poverty Level in The Past 12 Months, Asian Alone",
+          "dcid": "Count_Person_75To84Years_BelowPovertyLevelInThePast12Months_AsianAlone"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/Person_Age-Years80To84_Gender_Race-AsianAlone",
       "name": "Person With Age = 80 - 84 Years, Gender, Race = Asian Alone",
       "statVars": [
@@ -1819,6 +1889,20 @@
         {
           "name": "Population: 85 Years or More, Male, Not Hispanic or Latino \u0026 Asian or Pacific Islander",
           "dcid": "Count_Person_85OrMoreYears_Male_NotHispanicOrLatino_AsianOrPacificIslander"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age-Years85Onwards_PovertyStatus_Race-AsianAlone",
+      "name": "Person With Age = 85 Years or More, Poverty Status, Race = Asian Alone",
+      "statVars": [
+        {
+          "name": "Population: 85 Years or More, Above Poverty Level in The Past 12 Months, Asian Alone",
+          "dcid": "Count_Person_85OrMoreYears_AbovePovertyLevelInThePast12Months_AsianAlone"
+        },
+        {
+          "name": "Population: 85 Years or More, Below Poverty Level in The Past 12 Months, Asian Alone",
+          "dcid": "Count_Person_85OrMoreYears_BelowPovertyLevelInThePast12Months_AsianAlone"
         }
       ]
     },
@@ -12459,66 +12543,6 @@
         {
           "name": "Population: Years 65, Asian or Pacific Islander",
           "dcid": "Count_Person_65Years_AsianOrPacificIslander"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years65_Race-HispanicOrLatinoAsianAlone",
-      "name": "Person With Age = Years 65, Race = Hispanic or Latino \u0026 Asian Alone",
-      "statVars": [
-        {
-          "name": "Population: Years 65, Hispanic or Latino \u0026 Asian Alone",
-          "dcid": "Count_Person_65Years_HispanicOrLatino_AsianAlone"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years65_Race-HispanicOrLatinoAsianOrPacificIslander",
-      "name": "Person With Age = Years 65, Race = Hispanic or Latino \u0026 Asian or Pacific Islander",
-      "statVars": [
-        {
-          "name": "Population: Years 65, Hispanic or Latino \u0026 Asian or Pacific Islander",
-          "dcid": "Count_Person_65Years_HispanicOrLatino_AsianOrPacificIslander"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years65_Race-NotHispanicOrLatinoAsianAlone",
-      "name": "Person With Age = Years 65, Race = Not Hispanic or Latino \u0026 Asian Alone",
-      "statVars": [
-        {
-          "name": "Population: Years 65, Not Hispanic or Latino \u0026 Asian Alone",
-          "dcid": "Count_Person_65Years_NotHispanicOrLatino_AsianAlone"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years65_Race-NotHispanicOrLatinoAsianOrPacificIslander",
-      "name": "Person With Age = Years 65, Race = Not Hispanic or Latino \u0026 Asian or Pacific Islander",
-      "statVars": [
-        {
-          "name": "Population: Years 65, Not Hispanic or Latino \u0026 Asian or Pacific Islander",
-          "dcid": "Count_Person_65Years_NotHispanicOrLatino_AsianOrPacificIslander"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years66_Race-AsianAlone",
-      "name": "Person With Age = Years 66, Race = Asian Alone",
-      "statVars": [
-        {
-          "name": "Population: Years 66, Asian Alone",
-          "dcid": "Count_Person_66Years_AsianAlone"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Age-Years66_Race-AsianOrPacificIslander",
-      "name": "Person With Age = Years 66, Race = Asian or Pacific Islander",
-      "statVars": [
-        {
-          "name": "Population: Years 66, Asian or Pacific Islander",
-          "dcid": "Count_Person_66Years_AsianOrPacificIslander"
         }
       ]
     }

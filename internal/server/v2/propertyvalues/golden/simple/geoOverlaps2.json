@@ -1,36 +1,5 @@
 {
   "data": {
-    "geoId/0649670": {
-      "arcs": {
-        "geoOverlaps": {
-          "nodes": [
-            {
-              "name": "94087",
-              "types": [
-                "CensusZipCodeTabulationArea"
-              ],
-              "dcid": "zip/94087",
-              "provenanceId": "dc/base/WikidataOtherIdGeos"
-            },
-            {
-              "name": "94303",
-              "types": [
-                "CensusZipCodeTabulationArea"
-              ],
-              "dcid": "zip/94303",
-              "provenanceId": "dc/base/WikidataOtherIdGeos"
-            },
-            {
-              "name": "94306",
-              "types": [
-                "CensusZipCodeTabulationArea"
-              ],
-              "dcid": "zip/94306",
-              "provenanceId": "dc/base/WikidataOtherIdGeos"
-            }
-          ]
-        }
-      }
-    }
+    "geoId/0649670": {}
   }
 }

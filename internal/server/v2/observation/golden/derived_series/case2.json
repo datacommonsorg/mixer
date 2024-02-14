@@ -49,11 +49,15 @@
                 {
                   "date": "2021",
                   "value": 1.0013830242034563
+                },
+                {
+                  "date": "2022",
+                  "value": 0.9968648756323715
                 }
               ],
-              "obs_count": 11,
+              "obs_count": 12,
               "earliest_date": "2011",
-              "latest_date": "2021"
+              "latest_date": "2022"
             }
           ]
         }
