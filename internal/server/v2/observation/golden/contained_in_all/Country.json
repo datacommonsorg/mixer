@@ -226,11 +226,27 @@
                 {
                   "date": "2021",
                   "value": 38.4
+                },
+                {
+                  "date": "2022",
+                  "value": 38.5
                 }
               ],
-              "obs_count": 11,
+              "obs_count": 12,
               "earliest_date": "2011",
-              "latest_date": "2021"
+              "latest_date": "2022"
+            },
+            {
+              "facet_id": "3795540742",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 38.5
+                }
+              ],
+              "obs_count": 1,
+              "earliest_date": "2022",
+              "latest_date": "2022"
             },
             {
               "facet_id": "815809675",
@@ -424,6 +440,12 @@
       "provenance_url": "https://data.census.gov/cedsci/table?q=S2602&tid=ACSST5Y2019.S2602",
       "measurement_method": "CensusACS5yrSurveySubjectTable",
       "unit": "Years"
+    },
+    "3795540742": {
+      "import_name": "CensusACS5YearSurvey",
+      "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+      "measurement_method": "CensusACS5yrSurvey",
+      "unit": "Year"
     },
     "4219092424": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2603",

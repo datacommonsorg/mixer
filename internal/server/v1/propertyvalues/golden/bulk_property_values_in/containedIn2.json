@@ -17490,6 +17490,4006 @@
           ],
           "dcid": "s2CellId/0x4cb4b10000000000",
           "provenanceId": "dc/base/S2Cells"
+        },
+        {
+          "name": "02133",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02133",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02134",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02134",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02135",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02135",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02136",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02136",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02138",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02138",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02139",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02139",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02140",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02140",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02141",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02141",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02142",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02142",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02143",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02143",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02144",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02144",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02145",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02145",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02148",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02148",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02149",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02149",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02150",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02150",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02151",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02151",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02152",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02152",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02155",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02155",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02163",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02163",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02169",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02169",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02170",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02170",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02171",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02171",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02176",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02176",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02180",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02180",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02184",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02184",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02186",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02186",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02188",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02188",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02189",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02189",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02190",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02190",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02191",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02191",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02199",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02199",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02203",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02203",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02205",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02205",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02210",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02210",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02215",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02215",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02301",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02301",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02302",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02302",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02322",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02322",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02324",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02324",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02325",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02325",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02330",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02330",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02332",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02332",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02333",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02333",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02338",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02338",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02339",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02339",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02341",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02341",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02343",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02343",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02346",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02346",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02347",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02347",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02350",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02350",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02351",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02351",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02356",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02356",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02357",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02357",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02359",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02359",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02360",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02360",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02364",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02364",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02366",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02366",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02367",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02367",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02368",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02368",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02370",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02370",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02375",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02375",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02379",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02379",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02382",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02382",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02420",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02420",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02421",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02421",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02445",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02445",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02446",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02446",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02451",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02451",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02452",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02452",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02453",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02453",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02457",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02457",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02458",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02458",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02459",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02459",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02460",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02460",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02461",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02461",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02462",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02462",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02464",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02464",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02465",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02465",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02466",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02466",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02467",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02467",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02468",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02468",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02472",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02472",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02474",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02474",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02476",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02476",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02478",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02478",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02481",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02481",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02482",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02482",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02492",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02492",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02493",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02493",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02494",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02494",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02532",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02532",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02534",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02534",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02535",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02535",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02536",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02536",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02537",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02537",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02538",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02538",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02539",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02539",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02540",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02540",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02542",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02542",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02543",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02543",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02553",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02553",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02554",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02554",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02556",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02556",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02557",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02557",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02558",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02558",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02559",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02559",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02561",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02561",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02562",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02562",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02563",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02563",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02564",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02564",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02568",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02568",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02571",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02571",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02575",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02575",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02576",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02576",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02584",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02584",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02601",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02601",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02630",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02630",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02631",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02631",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02632",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02632",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02633",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02633",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02635",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02635",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02637",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02637",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02638",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02638",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02639",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02639",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02641",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02641",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02642",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02642",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02643",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02643",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02644",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02644",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02645",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02645",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02646",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02646",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02647",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02647",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02648",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02648",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02649",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02649",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02650",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02650",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02651",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02651",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02652",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02652",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02653",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02653",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02655",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02655",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02657",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02657",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02659",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02659",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02660",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02660",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02663",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02663",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02664",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02664",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02666",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02666",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02667",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02667",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02668",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02668",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02669",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02669",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02670",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02670",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02671",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02671",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02672",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02672",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02673",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02673",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02675",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02675",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02702",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02702",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02703",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02703",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02713",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02713",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02715",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02715",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02717",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02717",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02718",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02718",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02719",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02719",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02720",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02720",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02721",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02721",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02723",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02723",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02724",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02724",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02725",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02725",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02726",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02726",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02738",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02738",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02739",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02739",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02740",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02740",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02743",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02743",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02744",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02744",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02745",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02745",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02746",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02746",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02747",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02747",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02748",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02748",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02760",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02760",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02762",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02762",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02763",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02763",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02764",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02764",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02766",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02766",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02767",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02767",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02769",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02769",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02770",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02770",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02771",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02771",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02777",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02777",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02779",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02779",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02780",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02780",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02790",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02790",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02791",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02791",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02802",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02802",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02804",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02804",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02806",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02806",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02807",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02807",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02808",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02808",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02809",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02809",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02812",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02812",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02813",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02813",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02814",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02814",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02815",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02815",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02816",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02816",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02817",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02817",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02818",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02818",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02822",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02822",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02823",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02823",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02824",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02824",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02825",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02825",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02826",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02826",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02827",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02827",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02828",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02828",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02829",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02829",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02830",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02830",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02831",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02831",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02832",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02832",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02833",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02833",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02835",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02835",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02836",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02836",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02837",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02837",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02838",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02838",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02839",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02839",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02840",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02840",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02841",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02841",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02842",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02842",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02852",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02852",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02857",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02857",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02858",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02858",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02859",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02859",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02860",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02860",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02861",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02861",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02863",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02863",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02864",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02864",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02865",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02865",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02871",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02871",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02872",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02872",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02873",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02873",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02874",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02874",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02875",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02875",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02876",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02876",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02878",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02878",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02879",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02879",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02881",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02881",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02882",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02882",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02885",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02885",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02886",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02886",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02888",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02888",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02889",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02889",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02891",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02891",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02892",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02892",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02893",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02893",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02894",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02894",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02895",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02895",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02896",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02896",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02898",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02898",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02903",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02903",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02904",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02904",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02905",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02905",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02906",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02906",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02907",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02907",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02908",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02908",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02909",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02909",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02910",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02910",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02911",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02911",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02912",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02912",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02914",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02914",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02915",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02915",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02916",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02916",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02917",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02917",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02918",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02918",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02919",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02919",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02920",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02920",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "02921",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/02921",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03031",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03031",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03032",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03032",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03033",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03033",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03034",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03034",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03036",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03036",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03037",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03037",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03038",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03038",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03042",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03042",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03043",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03043",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03044",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03044",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03045",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03045",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03046",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03046",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03047",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03047",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03048",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03048",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03049",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03049",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03051",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03051",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03052",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03052",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03053",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03053",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03054",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03054",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03055",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03055",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03057",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03057",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03060",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03060",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03062",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03062",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03063",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03063",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03064",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03064",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03070",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03070",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03071",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03071",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03076",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03076",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03077",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03077",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03079",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03079",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03082",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03082",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03084",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03084",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03086",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03086",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03087",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03087",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03101",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03101",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03102",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03102",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03103",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03103",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03104",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03104",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03106",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03106",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03109",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03109",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03110",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03110",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03215",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03215",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03216",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03216",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03217",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03217",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03218",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03218",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03220",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03220",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03221",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03221",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03222",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03222",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03223",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03223",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03224",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03224",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03225",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03225",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03226",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03226",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03227",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03227",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03229",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03229",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03230",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03230",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03231",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03231",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03233",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03233",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03234",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03234",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03235",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03235",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03237",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03237",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03238",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03238",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03240",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03240",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03241",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03241",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03242",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03242",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03243",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03243",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03244",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03244",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03245",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03245",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03246",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03246",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03249",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03249",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03251",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03251",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03253",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03253",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03254",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03254",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03255",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03255",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03256",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03256",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03257",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03257",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03258",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03258",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03259",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03259",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03260",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03260",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03261",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03261",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03262",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03262",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03263",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03263",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03264",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03264",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03266",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03266",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03268",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03268",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03269",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03269",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03273",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03273",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03275",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03275",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03276",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03276",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03278",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03278",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03279",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03279",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03280",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03280",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03281",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03281",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03282",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03282",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03284",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03284",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03285",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03285",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03287",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03287",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03290",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03290",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03291",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03291",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03293",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03293",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03301",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03301",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03303",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03303",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03304",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03304",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03307",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03307",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03431",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03431",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03440",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03440",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03441",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03441",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03442",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03442",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03443",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03443",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03444",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03444",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03445",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03445",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03446",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03446",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03447",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03447",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03448",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03448",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03449",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03449",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03450",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03450",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03451",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03451",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03452",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03452",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03455",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03455",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03456",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03456",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03457",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03457",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03458",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03458",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03461",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03461",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03462",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03462",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03464",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03464",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03465",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03465",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03466",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03466",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03467",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03467",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03470",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03470",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03561",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03561",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03570",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03570",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03574",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03574",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03575",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03575",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03576",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03576",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03579",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03579",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03580",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03580",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03581",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03581",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03582",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03582",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03583",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03583",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03584",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03584",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03585",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03585",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03586",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03586",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03588",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03588",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03590",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03590",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03592",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03592",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03593",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03593",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03595",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03595",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03597",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03597",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03598",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03598",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03601",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03601",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03602",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03602",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03603",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03603",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03604",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03604",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03605",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03605",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03607",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03607",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03608",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03608",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03609",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03609",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03740",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03740",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03741",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03741",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03743",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03743",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03745",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03745",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03746",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03746",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03748",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03748",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03750",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03750",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03751",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03751",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03752",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03752",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03753",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03753",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03754",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03754",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03755",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03755",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03765",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03765",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03766",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03766",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03768",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03768",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03770",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03770",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03771",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03771",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03773",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03773",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03774",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03774",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03777",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03777",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03779",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03779",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03780",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03780",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03781",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03781",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03782",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03782",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03784",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03784",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03785",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03785",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03801",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03801",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03809",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03809",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03810",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03810",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03811",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03811",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03812",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03812",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03813",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03813",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03814",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03814",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03816",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03816",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03817",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03817",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03818",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03818",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03819",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03819",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03820",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03820",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03823",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03823",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03824",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03824",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03825",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03825",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03826",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03826",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03827",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03827",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03830",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03830",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03832",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03832",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03833",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03833",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03835",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03835",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03836",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03836",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03837",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03837",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03838",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03838",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03839",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03839",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03840",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03840",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03841",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03841",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03842",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03842",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03844",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03844",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03845",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03845",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03846",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03846",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03847",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03847",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03848",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03848",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03849",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03849",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03850",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03850",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03851",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03851",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03852",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03852",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03853",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03853",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03854",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03854",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03855",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03855",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03856",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03856",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03857",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03857",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03858",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03858",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03860",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03860",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03861",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03861",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03862",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03862",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03864",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03864",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03865",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03865",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "03867",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/03867",
+          "provenanceId": "dc/base/BaseGeos"
         }
       ]
     },
@@ -62828,5 +66828,5 @@
       ]
     }
   ],
-  "nextToken": "H4sIAAAAAAAA/5zT0UoCQRQG4DxuejpqrHPlW6hB3ccaJhQMqIVCxbZ70IFpBsbR8EF6iR6vJwjb2xjdvZybj59/zk+v1Mrs1ni378+ntxRn1vhUGc4nRuo0Y+qO2Y6dyv9eb8MRr8SZAKwJQBCAdQEYCcBzAdgQgE0BiALwQkRIMdDimN+eyCQp8OtBKXp5jO5MrxLW+oF3rIfl7Dnhiu0k7w9u/oFbCZvNdjNzaeZLsTLIRony+xO9xsHrdeklKMZ3mj/Y+NTtp9naWn2i3kSKo94P0CzI071arUvBRQ1PQbX9qPJccwX3SFppP9lJnZpyn7YMqh3p1C715eIe+q33vmu0CDcht+9aZRXorxo9h2NX30a4j8si7UhtvFMnz6M45/YvAAAA//8BAAD///YOQM6PBAAA"
+  "nextToken": "H4sIAAAAAAAA/6TT0WriQBQG4PWY1bMTXeJcCfsQ6kJ7L7FYoYWAFlqLljE56MB0powTiw/Sl+jj9QmKzW2ZMPYyN9//808OUyzOTamdPQ7u5mOW5EY7ITUVM50pkRP7l5Lel/ulfElNQQuxKZVw0uixJcF/ccAGBwQO2OSAEQf8zQFbHLDNAZED/uGAjEcYJ8A2dWm9KZmplcXX19NoQtvgjFVdRmeWpWkVcDEM5td1fHf+PyWlbuhAahTuPzDckpkVg+HlN3hcvcbCitwF0wsvHaXSHQPM1sns95jwqsmVomfSTtjjPN8ZowIS2hgnUf8D2L03gl3L7S4YryZZeuXOrSwKRWfaNa0z80o2U0KHP+TaK3czKw/Chdc+7d3svzfYyr9KVm6UzM/k3xrs0V//Z/fj3+Zv1Xoi987KoBOqfvfOJwAAAP//AQAA//9NVSf4MQUAAA=="
 }

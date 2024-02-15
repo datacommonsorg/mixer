@@ -934,9 +934,22 @@
                 {
                   "date": "2021",
                   "value": 38.4
+                },
+                {
+                  "date": "2022",
+                  "value": 38.5
                 }
               ],
               "facet": "3357919774"
+            },
+            {
+              "series": [
+                {
+                  "date": "2022",
+                  "value": 38.5
+                }
+              ],
+              "facet": "3795540742"
             },
             {
               "series": [
@@ -1166,6 +1179,12 @@
       "provenance_url": "https://data.census.gov/cedsci/table?q=S2602&tid=ACSST5Y2019.S2602",
       "measurement_method": "CensusACS5yrSurveySubjectTable",
       "unit": "Years"
+    },
+    "3795540742": {
+      "import_name": "CensusACS5YearSurvey",
+      "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+      "measurement_method": "CensusACS5yrSurvey",
+      "unit": "Year"
     },
     "4219092424": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2603",

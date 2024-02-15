@@ -96,7 +96,7 @@
             "maxValue": 1210
           },
           "CensusBlockGroup": {
-            "placeCount": 289083,
+            "placeCount": 291800,
             "topPlaces": [
               {
                 "dcid": "geoId/481576729001",
@@ -115,7 +115,7 @@
             "maxValue": 31011
           },
           "CensusCoreBasedStatisticalArea": {
-            "placeCount": 933,
+            "placeCount": 960,
             "topPlaces": [
               {
                 "dcid": "geoId/C35620",
@@ -130,11 +130,11 @@
                 "name": "Chicago-Naperville-Elgin, IL-IN-WI Metro Area"
               }
             ],
-            "minValue": 5429,
+            "minValue": 5392,
             "maxValue": 10429184
           },
           "CensusCountyDivision": {
-            "placeCount": 36859,
+            "placeCount": 37078,
             "topPlaces": [
               {
                 "dcid": "geoId/4820191835",
@@ -150,10 +150,29 @@
               }
             ],
             "minValue": 0,
-            "maxValue": 5785680
+            "maxValue": 1731694
+          },
+          "CensusDivision": {
+            "placeCount": 9,
+            "topPlaces": [
+              {
+                "dcid": "usc/SouthAtlanticDivision",
+                "name": "South Atlantic Division"
+              },
+              {
+                "dcid": "usc/PacificDivision",
+                "name": "Pacific Division"
+              },
+              {
+                "dcid": "usc/EastNorthCentralDivision",
+                "name": "East North Central Division"
+              }
+            ],
+            "minValue": 7670097,
+            "maxValue": 33710425
           },
           "CensusTract": {
-            "placeCount": 96789,
+            "placeCount": 97783,
             "topPlaces": [
               {
                 "dcid": "geoId/48157673101",
@@ -188,29 +207,29 @@
               }
             ],
             "minValue": 0,
-            "maxValue": 67003
+            "maxValue": 67216
           },
           "City": {
-            "placeCount": 32444,
+            "placeCount": 32463,
             "topPlaces": [
               {
-                "dcid": "wikidataId/Q8686",
-                "name": "Shanghai"
+                "dcid": "geoId/3651000",
+                "name": "New York"
               },
               {
-                "dcid": "wikidataId/Q987",
-                "name": "New Delhi"
+                "dcid": "geoId/0644000",
+                "name": "Los Angeles"
               },
               {
-                "dcid": "wikidataId/Q11736",
-                "name": "Tianjin"
+                "dcid": "geoId/1714000",
+                "name": "Chicago"
               }
             ],
             "minValue": 0,
-            "maxValue": 11710000
+            "maxValue": 4543807
           },
           "CongressionalDistrict": {
-            "placeCount": 440,
+            "placeCount": 449,
             "topPlaces": [
               {
                 "dcid": "geoId/7298",
@@ -248,7 +267,7 @@
             "maxValue": 660361000
           },
           "County": {
-            "placeCount": 3225,
+            "placeCount": 3234,
             "topPlaces": [
               {
                 "dcid": "geoId/06037",
@@ -267,23 +286,15 @@
             "maxValue": 5160965
           },
           "ElementarySchoolDistrict": {
-            "placeCount": 9,
+            "placeCount": 1,
             "topPlaces": [
-              {
-                "dcid": "geoId/sch1300002",
-                "name": "Fort Benning Schools"
-              },
-              {
-                "dcid": "geoId/sch4500005",
-                "name": "Fort Jackson Schools"
-              },
               {
                 "dcid": "geoId/sch5050004",
                 "name": "Chittenden Central Supervisory Union in Essex Junction (PK-8)"
               }
             ],
-            "minValue": 2,
-            "maxValue": 6349
+            "minValue": 5077,
+            "maxValue": 5387
           },
           "EurostatNUTS1": {
             "placeCount": 123,
@@ -343,23 +354,23 @@
             "maxValue": 7907210
           },
           "HighSchoolDistrict": {
-            "placeCount": 82,
+            "placeCount": 11,
             "topPlaces": [
               {
-                "dcid": "geoId/sch0606034",
-                "name": "Perris Union High School District (9-12)"
+                "dcid": "geoId/sch2727006",
+                "name": "Heron Lake-Okabena-Fulda-Worthington in Round Lake-Brewster (9-12)"
               },
               {
-                "dcid": "geoId/sch4747149",
-                "name": "Rutherford County School District in Murfreesboro"
+                "dcid": "geoId/sch2727003",
+                "name": "Minneota-Ivanhoe Public School Districts in Ivanhoe (7-12)"
               },
               {
-                "dcid": "geoId/sch0606019",
-                "name": "Santa Barbara Unified School District (7-12)"
+                "dcid": "geoId/sch2799001",
+                "name": "Elkton School District 05-3 in Lake Benton (7-12)"
               }
             ],
-            "minValue": 0,
-            "maxValue": 77489
+            "minValue": 207,
+            "maxValue": 840
           },
           "Place": {
             "placeCount": 71,
@@ -381,7 +392,7 @@
             "maxValue": 190144
           },
           "SchoolDistrict": {
-            "placeCount": 13823,
+            "placeCount": 13959,
             "topPlaces": [
               {
                 "dcid": "geoId/sch3620580",
@@ -400,7 +411,7 @@
             "maxValue": 4543807
           },
           "State": {
-            "placeCount": 87,
+            "placeCount": 86,
             "topPlaces": [
               {
                 "dcid": "wikidataId/Q1498",
@@ -987,10 +998,10 @@
                   "measurementMethod": "CensusACS5yrSurvey"
                 },
                 "earliestDate": "2011",
-                "latestDate": "2021",
+                "latestDate": "2022",
                 "placeTypeSummary": {
                   "CensusBlockGroup": {
-                    "placeCount": 289083,
+                    "placeCount": 291800,
                     "topPlaces": [
                       {
                         "dcid": "geoId/481576729001",
@@ -1009,7 +1020,7 @@
                     "maxValue": 31011
                   },
                   "CensusCoreBasedStatisticalArea": {
-                    "placeCount": 933,
+                    "placeCount": 960,
                     "topPlaces": [
                       {
                         "dcid": "geoId/C35620",
@@ -1024,11 +1035,11 @@
                         "name": "Chicago-Naperville-Elgin, IL-IN-WI Metro Area"
                       }
                     ],
-                    "minValue": 5429,
+                    "minValue": 5392,
                     "maxValue": 10429184
                   },
                   "CensusCountyDivision": {
-                    "placeCount": 36851,
+                    "placeCount": 37070,
                     "topPlaces": [
                       {
                         "dcid": "geoId/4820191835",
@@ -1046,8 +1057,27 @@
                     "minValue": 0,
                     "maxValue": 1731694
                   },
+                  "CensusDivision": {
+                    "placeCount": 9,
+                    "topPlaces": [
+                      {
+                        "dcid": "usc/SouthAtlanticDivision",
+                        "name": "South Atlantic Division"
+                      },
+                      {
+                        "dcid": "usc/PacificDivision",
+                        "name": "Pacific Division"
+                      },
+                      {
+                        "dcid": "usc/EastNorthCentralDivision",
+                        "name": "East North Central Division"
+                      }
+                    ],
+                    "minValue": 7670097,
+                    "maxValue": 33710425
+                  },
                   "CensusTract": {
-                    "placeCount": 96777,
+                    "placeCount": 97771,
                     "topPlaces": [
                       {
                         "dcid": "geoId/48157673101",
@@ -1066,7 +1096,7 @@
                     "maxValue": 37626
                   },
                   "CensusZipCodeTabulationArea": {
-                    "placeCount": 33838,
+                    "placeCount": 33970,
                     "topPlaces": [
                       {
                         "dcid": "zip/77449",
@@ -1082,10 +1112,10 @@
                       }
                     ],
                     "minValue": 0,
-                    "maxValue": 67003
+                    "maxValue": 67216
                   },
                   "City": {
-                    "placeCount": 32105,
+                    "placeCount": 32398,
                     "topPlaces": [
                       {
                         "dcid": "geoId/3651000",
@@ -1104,7 +1134,7 @@
                     "maxValue": 4543807
                   },
                   "CongressionalDistrict": {
-                    "placeCount": 440,
+                    "placeCount": 449,
                     "topPlaces": [
                       {
                         "dcid": "geoId/7298",
@@ -1122,8 +1152,19 @@
                     "minValue": 0,
                     "maxValue": 1949033
                   },
+                  "Country": {
+                    "placeCount": 1,
+                    "topPlaces": [
+                      {
+                        "dcid": "country/USA",
+                        "name": "United States"
+                      }
+                    ],
+                    "minValue": 166897295,
+                    "maxValue": 166897295
+                  },
                   "County": {
-                    "placeCount": 3224,
+                    "placeCount": 3233,
                     "topPlaces": [
                       {
                         "dcid": "geoId/06037",
@@ -1142,45 +1183,53 @@
                     "maxValue": 5126081
                   },
                   "ElementarySchoolDistrict": {
-                    "placeCount": 9,
+                    "placeCount": 1,
                     "topPlaces": [
-                      {
-                        "dcid": "geoId/sch1300002",
-                        "name": "Fort Benning Schools"
-                      },
-                      {
-                        "dcid": "geoId/sch4500005",
-                        "name": "Fort Jackson Schools"
-                      },
                       {
                         "dcid": "geoId/sch5050004",
                         "name": "Chittenden Central Supervisory Union in Essex Junction (PK-8)"
                       }
                     ],
-                    "minValue": 2,
-                    "maxValue": 6349
+                    "minValue": 5077,
+                    "maxValue": 5387
                   },
                   "HighSchoolDistrict": {
-                    "placeCount": 82,
+                    "placeCount": 11,
                     "topPlaces": [
                       {
-                        "dcid": "geoId/sch0606034",
-                        "name": "Perris Union High School District (9-12)"
+                        "dcid": "geoId/sch2727006",
+                        "name": "Heron Lake-Okabena-Fulda-Worthington in Round Lake-Brewster (9-12)"
                       },
                       {
-                        "dcid": "geoId/sch4747149",
-                        "name": "Rutherford County School District in Murfreesboro"
+                        "dcid": "geoId/sch2727003",
+                        "name": "Minneota-Ivanhoe Public School Districts in Ivanhoe (7-12)"
                       },
                       {
-                        "dcid": "geoId/sch0606019",
-                        "name": "Santa Barbara Unified School District (7-12)"
+                        "dcid": "geoId/sch2799001",
+                        "name": "Elkton School District 05-3 in Lake Benton (7-12)"
+                      }
+                    ],
+                    "minValue": 207,
+                    "maxValue": 840
+                  },
+                  "Place": {
+                    "placeCount": 4,
+                    "topPlaces": [
+                      {
+                        "dcid": "geoId/2858600"
+                      },
+                      {
+                        "dcid": "geoId/0908910"
+                      },
+                      {
+                        "dcid": "geoId/0616886"
                       }
                     ],
                     "minValue": 0,
-                    "maxValue": 77489
+                    "maxValue": 793
                   },
                   "SchoolDistrict": {
-                    "placeCount": 13823,
+                    "placeCount": 13959,
                     "topPlaces": [
                       {
                         "dcid": "geoId/sch3620580",
@@ -1238,13 +1287,13 @@
                   }
                 },
                 "minValue": 0,
-                "maxValue": 19783141,
-                "observationCount": 4604855,
-                "timeSeriesCount": 507767
+                "maxValue": 166897295,
+                "observationCount": 5053362,
+                "timeSeriesCount": 512238
               }
             ],
-            "observationCount": 4604855,
-            "timeSeriesCount": 507767
+            "observationCount": 5053362,
+            "timeSeriesCount": 512238
           },
           "dc/base/CensusACS5YearSurvey_AggCountry": {
             "importName": "CensusACS5YearSurvey_AggCountry",
@@ -1255,7 +1304,7 @@
                   "isDcAggregate": true
                 },
                 "earliestDate": "2011",
-                "latestDate": "2021",
+                "latestDate": "2022",
                 "placeTypeSummary": {
                   "Country": {
                     "placeCount": 1,
@@ -1266,16 +1315,16 @@
                       }
                     ],
                     "minValue": 157812589,
-                    "maxValue": 168258279
+                    "maxValue": 168618009
                   }
                 },
                 "minValue": 157812589,
-                "maxValue": 168258279,
-                "observationCount": 11,
+                "maxValue": 168618009,
+                "observationCount": 12,
                 "timeSeriesCount": 1
               }
             ],
-            "observationCount": 11,
+            "observationCount": 12,
             "timeSeriesCount": 1
           },
           "dc/base/CensusACS5YearSurvey_SubjectTables_S0101": {
@@ -1289,7 +1338,7 @@
                 "latestDate": "2021",
                 "placeTypeSummary": {
                   "CensusCountyDivision": {
-                    "placeCount": 36859,
+                    "placeCount": 36864,
                     "topPlaces": [
                       {
                         "dcid": "geoId/4820191835",
@@ -1308,7 +1357,7 @@
                     "maxValue": 1731694
                   },
                   "CensusTract": {
-                    "placeCount": 96789,
+                    "placeCount": 96899,
                     "topPlaces": [
                       {
                         "dcid": "geoId/48157673101",
@@ -1414,45 +1463,53 @@
                     "maxValue": 5126081
                   },
                   "ElementarySchoolDistrict": {
-                    "placeCount": 9,
+                    "placeCount": 1,
                     "topPlaces": [
-                      {
-                        "dcid": "geoId/sch1300002",
-                        "name": "Fort Benning Schools"
-                      },
-                      {
-                        "dcid": "geoId/sch4500005",
-                        "name": "Fort Jackson Schools"
-                      },
                       {
                         "dcid": "geoId/sch5050004",
                         "name": "Chittenden Central Supervisory Union in Essex Junction (PK-8)"
                       }
                     ],
-                    "minValue": 2,
-                    "maxValue": 6349
+                    "minValue": 5077,
+                    "maxValue": 5387
                   },
                   "HighSchoolDistrict": {
-                    "placeCount": 82,
+                    "placeCount": 11,
                     "topPlaces": [
                       {
-                        "dcid": "geoId/sch0606034",
-                        "name": "Perris Union High School District (9-12)"
+                        "dcid": "geoId/sch2727006",
+                        "name": "Heron Lake-Okabena-Fulda-Worthington in Round Lake-Brewster (9-12)"
                       },
                       {
-                        "dcid": "geoId/sch4747149",
-                        "name": "Rutherford County School District in Murfreesboro"
+                        "dcid": "geoId/sch2727003",
+                        "name": "Minneota-Ivanhoe Public School Districts in Ivanhoe (7-12)"
                       },
                       {
-                        "dcid": "geoId/sch0606019",
-                        "name": "Santa Barbara Unified School District (7-12)"
+                        "dcid": "geoId/sch2799001",
+                        "name": "Elkton School District 05-3 in Lake Benton (7-12)"
+                      }
+                    ],
+                    "minValue": 207,
+                    "maxValue": 840
+                  },
+                  "Place": {
+                    "placeCount": 4,
+                    "topPlaces": [
+                      {
+                        "dcid": "geoId/2858600"
+                      },
+                      {
+                        "dcid": "geoId/0908910"
+                      },
+                      {
+                        "dcid": "geoId/0616886"
                       }
                     ],
                     "minValue": 0,
-                    "maxValue": 77489
+                    "maxValue": 793
                   },
                   "SchoolDistrict": {
-                    "placeCount": 13823,
+                    "placeCount": 13902,
                     "topPlaces": [
                       {
                         "dcid": "geoId/sch3620580",
@@ -1492,12 +1549,12 @@
                 },
                 "minValue": 0,
                 "maxValue": 166518866,
-                "observationCount": 2280188,
-                "timeSeriesCount": 217420
+                "observationCount": 2280426,
+                "timeSeriesCount": 217539
               }
             ],
-            "observationCount": 2280188,
-            "timeSeriesCount": 217420
+            "observationCount": 2280426,
+            "timeSeriesCount": 217539
           },
           "dc/base/CensusACS5YearSurvey_SubjectTables_S2601A": {
             "importName": "CensusACS5YearSurvey_SubjectTables_S2601A",

@@ -15,19 +15,19 @@
             "id": "dc/g/Demographics",
             "specializedEntity": "Demographics",
             "displayName": "Demographics",
-            "descendentStatVarCount": 19100
+            "descendentStatVarCount": 19535
           },
           {
             "id": "dc/g/Economy",
             "specializedEntity": "Economy",
             "displayName": "Economy",
-            "descendentStatVarCount": 42066
+            "descendentStatVarCount": 23396
           },
           {
             "id": "dc/g/Education",
             "specializedEntity": "Education",
             "displayName": "Education",
-            "descendentStatVarCount": 24163
+            "descendentStatVarCount": 13821
           },
           {
             "id": "dc/g/Energy",
@@ -39,25 +39,25 @@
             "id": "dc/g/Environment",
             "specializedEntity": "Environment",
             "displayName": "Environment",
-            "descendentStatVarCount": 508
+            "descendentStatVarCount": 483
           },
           {
             "id": "dc/g/Health",
             "specializedEntity": "Health",
             "displayName": "Health",
-            "descendentStatVarCount": 7121
+            "descendentStatVarCount": 4603
           },
           {
             "id": "dc/g/Housing",
             "specializedEntity": "Housing",
             "displayName": "Housing",
-            "descendentStatVarCount": 481
+            "descendentStatVarCount": 498
           },
           {
             "id": "dc/g/Crime",
             "specializedEntity": "Crime",
             "displayName": "Crime",
-            "descendentStatVarCount": 3422
+            "descendentStatVarCount": 3187
           },
           {
             "id": "dc/g/AboutDataCommons",
@@ -68,7 +68,7 @@
             "id": "dc/g/Uncategorized",
             "specializedEntity": "Uncategorized",
             "displayName": "Uncategorized",
-            "descendentStatVarCount": 536
+            "descendentStatVarCount": 443
           },
           {
             "id": "dc/g/SDG",
@@ -82,7 +82,7 @@
             "descendentStatVarCount": 2
           }
         ],
-        "descendentStatVarCount": 66585
+        "descendentStatVarCount": 41382
       }
     },
     {

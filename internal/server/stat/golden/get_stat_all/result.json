@@ -289,13 +289,23 @@
                 "2018": 326289971,
                 "2019": 328016242,
                 "2020": 329824950,
-                "2021": 333036755
+                "2021": 333036755,
+                "2022": 334369975
               },
               "measurementMethod": "CensusACS5yrSurvey",
               "importName": "CensusACS5YearSurvey_AggCountry",
               "provenanceDomain": "census.gov",
               "isDcAggregate": true,
               "provenanceUrl": "https://www.census.gov/"
+            },
+            {
+              "val": {
+                "2022": 331097593
+              },
+              "measurementMethod": "CensusACS5yrSurvey",
+              "importName": "CensusACS5YearSurvey",
+              "provenanceDomain": "census.gov",
+              "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html"
             },
             {
               "val": {
@@ -925,7 +935,8 @@
                 "2018": 39148760,
                 "2019": 39283497,
                 "2020": 39346023,
-                "2021": 39455353
+                "2021": 39455353,
+                "2022": 39356104
               },
               "measurementMethod": "CensusACS5yrSurvey",
               "importName": "CensusACS5YearSurvey",
@@ -1348,7 +1359,8 @@
                 "2018": 80993,
                 "2019": 81656,
                 "2020": 80104,
-                "2021": 82409
+                "2021": 82409,
+                "2022": 82132
               },
               "measurementMethod": "CensusACS5yrSurvey",
               "importName": "CensusACS5YearSurvey",

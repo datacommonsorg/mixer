@@ -11,6 +11,9 @@
               "facet_id": "1273233945"
             },
             {
+              "facet_id": "1145703171"
+            },
+            {
               "facet_id": "1541763368"
             },
             {
@@ -181,6 +184,9 @@
         "": {
           "ordered_facets": [
             {
+              "facet_id": "3795540742"
+            },
+            {
               "facet_id": "3357919774"
             },
             {
@@ -216,6 +222,11 @@
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2601A",
       "provenance_url": "https://data.census.gov/cedsci/table?q=S2601A&tid=ACSST5Y2019.S2601A",
       "measurement_method": "CensusACS5yrSurveySubjectTable"
+    },
+    "1145703171": {
+      "import_name": "CensusACS5YearSurvey",
+      "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+      "measurement_method": "CensusACS5yrSurvey"
     },
     "1151455814": {
       "import_name": "OECDRegionalDemography",
@@ -422,6 +433,12 @@
       "import_name": "Brazil_Census",
       "provenance_url": "https://www.ibge.gov.br/en/statistics/social/population.html",
       "observation_period": "P1Y"
+    },
+    "3795540742": {
+      "import_name": "CensusACS5YearSurvey",
+      "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+      "measurement_method": "CensusACS5yrSurvey",
+      "unit": "Year"
     },
     "3893789967": {
       "import_name": "ItalyNIS",
