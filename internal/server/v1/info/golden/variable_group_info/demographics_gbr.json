@@ -159,6 +159,11 @@
         "descendentStatVarCount": 396
       },
       {
+        "id": "dc/g/CivicStructure",
+        "specializedEntity": "Civic Structure",
+        "displayName": "Civic Structure"
+      },
+      {
         "id": "dc/g/Commute",
         "specializedEntity": "Commute",
         "displayName": "Commute"

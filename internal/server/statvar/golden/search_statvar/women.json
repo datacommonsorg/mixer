@@ -1,8 +1,40 @@
 {
   "statVars": [
     {
+      "name": "Estimated number of pregnant women living with HIV",
+      "dcid": "who/HIV_0000000020"
+    },
+    {
+      "name": "Estimated number of pregnant women living with HIV needing antiretrovirals for preventing mother-to-child transmission",
+      "dcid": "who/HIV_0000000021"
+    },
+    {
       "name": "Legal frameworks that promote, enforce and monitor gender equality -- Area 2: violence against women",
       "dcid": "sdg/SG_LGL_GENEQVAW"
+    },
+    {
+      "name": "Mean hemoglobin level of non-pregnant women",
+      "dcid": "who/HEMOGLOBINLEVEL_NONPREGNANT_MEAN"
+    },
+    {
+      "name": "Mean hemoglobin level of pregnant women",
+      "dcid": "who/HEMOGLOBINLEVEL_PREGNANT_MEAN"
+    },
+    {
+      "name": "Mean hemoglobin level of women of reproductive age",
+      "dcid": "who/HEMOGLOBINLEVEL_REPRODUCTIVEAGE_MEAN"
+    },
+    {
+      "name": "Number of pregnant women living with HIV who received antiretrovirals for preventing mother-to-child transmission",
+      "dcid": "who/HIV_0000000015"
+    },
+    {
+      "name": "Pregnant women attending antenatal care  at least once and receiving at least 3 doses of Intermittent Preventive Treatment of Malaria for Pregnant Women",
+      "dcid": "who/MALARIA_IPTP3_COVERAGE"
+    },
+    {
+      "name": "Women of reproductive age who are married or in-union who have their need for family planning satisfied with modern methods, UNPD",
+      "dcid": "who/FAMILYPLANNINGUNPDUHC"
     },
     {
       "name": "Adolescent Fertility Rate (Per 1000 Women Aged 15-19 Years), Decile1",
@@ -881,6 +913,98 @@
       ]
     },
     {
+      "dcid": "dc/g/WHObmi30wm_whowealthdecile",
+      "name": "Obesity Prevalence in Non-pregnant Women Aged 15-49 Years, BMI \u003e= 30 by Wealthdecile",
+      "statVars": [
+        {
+          "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [Decile 1 (poorest)]",
+          "dcid": "who/bmi30wm.WEALTHDECILE--WEALTHDECILE01"
+        },
+        {
+          "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [Decile 10 (richest)]",
+          "dcid": "who/bmi30wm.WEALTHDECILE--WEALTHDECILE10"
+        },
+        {
+          "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [Decile 2]",
+          "dcid": "who/bmi30wm.WEALTHDECILE--WEALTHDECILE02"
+        },
+        {
+          "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [Decile 3]",
+          "dcid": "who/bmi30wm.WEALTHDECILE--WEALTHDECILE03"
+        },
+        {
+          "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [Decile 4]",
+          "dcid": "who/bmi30wm.WEALTHDECILE--WEALTHDECILE04"
+        },
+        {
+          "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [Decile 5]",
+          "dcid": "who/bmi30wm.WEALTHDECILE--WEALTHDECILE05"
+        },
+        {
+          "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [Decile 6]",
+          "dcid": "who/bmi30wm.WEALTHDECILE--WEALTHDECILE06"
+        },
+        {
+          "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [Decile 7]",
+          "dcid": "who/bmi30wm.WEALTHDECILE--WEALTHDECILE07"
+        },
+        {
+          "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [Decile 8]",
+          "dcid": "who/bmi30wm.WEALTHDECILE--WEALTHDECILE08"
+        },
+        {
+          "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [Decile 9]",
+          "dcid": "who/bmi30wm.WEALTHDECILE--WEALTHDECILE09"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/WHOitnwm_whowealthdecile",
+      "name": "Pregnant Women Sleeping Under Insecticide-treated Nets by Wealthdecile",
+      "statVars": [
+        {
+          "name": "Pregnant women sleeping under insecticide-treated nets [Decile 1 (poorest)]",
+          "dcid": "who/itnwm.WEALTHDECILE--WEALTHDECILE01"
+        },
+        {
+          "name": "Pregnant women sleeping under insecticide-treated nets [Decile 10 (richest)]",
+          "dcid": "who/itnwm.WEALTHDECILE--WEALTHDECILE10"
+        },
+        {
+          "name": "Pregnant women sleeping under insecticide-treated nets [Decile 2]",
+          "dcid": "who/itnwm.WEALTHDECILE--WEALTHDECILE02"
+        },
+        {
+          "name": "Pregnant women sleeping under insecticide-treated nets [Decile 3]",
+          "dcid": "who/itnwm.WEALTHDECILE--WEALTHDECILE03"
+        },
+        {
+          "name": "Pregnant women sleeping under insecticide-treated nets [Decile 4]",
+          "dcid": "who/itnwm.WEALTHDECILE--WEALTHDECILE04"
+        },
+        {
+          "name": "Pregnant women sleeping under insecticide-treated nets [Decile 5]",
+          "dcid": "who/itnwm.WEALTHDECILE--WEALTHDECILE05"
+        },
+        {
+          "name": "Pregnant women sleeping under insecticide-treated nets [Decile 6]",
+          "dcid": "who/itnwm.WEALTHDECILE--WEALTHDECILE06"
+        },
+        {
+          "name": "Pregnant women sleeping under insecticide-treated nets [Decile 7]",
+          "dcid": "who/itnwm.WEALTHDECILE--WEALTHDECILE07"
+        },
+        {
+          "name": "Pregnant women sleeping under insecticide-treated nets [Decile 8]",
+          "dcid": "who/itnwm.WEALTHDECILE--WEALTHDECILE08"
+        },
+        {
+          "name": "Pregnant women sleeping under insecticide-treated nets [Decile 9]",
+          "dcid": "who/itnwm.WEALTHDECILE--WEALTHDECILE09"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/Establishment_Industry-NAICS/315239",
       "name": "Establishment With Industry = Other Women's And Girls' Outerwear Mfg (NAICS/315239)",
       "statVars": [
@@ -1211,6 +1335,58 @@
       ]
     },
     {
+      "dcid": "dc/g/WHObmi30wm_whowealthquintile",
+      "name": "Obesity Prevalence in Non-pregnant Women Aged 15-49 Years, BMI \u003e= 30 by Wealthquintile",
+      "statVars": [
+        {
+          "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [Q1 (Poorest)]",
+          "dcid": "who/bmi30wm.WEALTHQUINTILE--WQ1"
+        },
+        {
+          "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [Q2]",
+          "dcid": "who/bmi30wm.WEALTHQUINTILE--WQ2"
+        },
+        {
+          "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [Q3]",
+          "dcid": "who/bmi30wm.WEALTHQUINTILE--WQ3"
+        },
+        {
+          "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [Q4]",
+          "dcid": "who/bmi30wm.WEALTHQUINTILE--WQ4"
+        },
+        {
+          "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [Q5 (Richest)]",
+          "dcid": "who/bmi30wm.WEALTHQUINTILE--WQ5"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/WHOitnwm_whowealthquintile",
+      "name": "Pregnant Women Sleeping Under Insecticide-treated Nets by Wealthquintile",
+      "statVars": [
+        {
+          "name": "Pregnant women sleeping under insecticide-treated nets [Q1 (Poorest)]",
+          "dcid": "who/itnwm.WEALTHQUINTILE--WQ1"
+        },
+        {
+          "name": "Pregnant women sleeping under insecticide-treated nets [Q2]",
+          "dcid": "who/itnwm.WEALTHQUINTILE--WQ2"
+        },
+        {
+          "name": "Pregnant women sleeping under insecticide-treated nets [Q3]",
+          "dcid": "who/itnwm.WEALTHQUINTILE--WQ3"
+        },
+        {
+          "name": "Pregnant women sleeping under insecticide-treated nets [Q4]",
+          "dcid": "who/itnwm.WEALTHQUINTILE--WQ4"
+        },
+        {
+          "name": "Pregnant women sleeping under insecticide-treated nets [Q5 (Richest)]",
+          "dcid": "who/itnwm.WEALTHQUINTILE--WQ5"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/SDG_5.5.2",
       "name": "5.5.2: Proportion of women in managerial positions",
       "statVars": [
@@ -1273,6 +1449,28 @@
         {
           "name": "Wages Annual of Establishment: Women's And Girls' Cut And Sew Apparel Mfg (NAICS/31523)",
           "dcid": "dc/1gb40x8252jj7"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/WHONCDCXCASCREENEDWITHINTIMEPERIOD_whotimeperiod",
+      "name": "Prevalence of Cervical Cancer Screening Among Women Aged 30-49 Years by Timeperiod",
+      "statVars": [
+        {
+          "name": "Prevalence of cervical cancer screening among women aged 30-49 years [30-49 years of age, Female, in lifetime]",
+          "dcid": "who/NCD_CXCA_SCREENED_WITHIN_TIMEPERIOD.AGE--Y30T49__SEX--F__TIMEPERIOD--TIMEPERIOD_EVER_LIFETIME"
+        },
+        {
+          "name": "Prevalence of cervical cancer screening among women aged 30-49 years [30-49 years of age, Female, in the last five years]",
+          "dcid": "who/NCD_CXCA_SCREENED_WITHIN_TIMEPERIOD.AGE--Y30T49__SEX--F__TIMEPERIOD--TIMEPERIOD_LAST05YEARS"
+        },
+        {
+          "name": "Prevalence of cervical cancer screening among women aged 30-49 years [30-49 years of age, Female, in the last three years]",
+          "dcid": "who/NCD_CXCA_SCREENED_WITHIN_TIMEPERIOD.AGE--Y30T49__SEX--F__TIMEPERIOD--TIMEPERIOD_LAST03YEARS"
+        },
+        {
+          "name": "Prevalence of cervical cancer screening among women aged 30-49 years [30-49 years of age, Female, in the last year]",
+          "dcid": "who/NCD_CXCA_SCREENED_WITHIN_TIMEPERIOD.AGE--Y30T49__SEX--F__TIMEPERIOD--TIMEPERIOD_LAST01YEAR"
         }
       ]
     },
@@ -1577,6 +1775,42 @@
       ]
     },
     {
+      "dcid": "dc/g/WHObmi30wm_whoeducationlevel",
+      "name": "Obesity Prevalence in Non-pregnant Women Aged 15-49 Years, BMI \u003e= 30 by Educationlevel",
+      "statVars": [
+        {
+          "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [Primary]",
+          "dcid": "who/bmi30wm.EDUCATIONLEVEL--PRLM"
+        },
+        {
+          "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [Secondary or higher]",
+          "dcid": "who/bmi30wm.EDUCATIONLEVEL--SHLM"
+        },
+        {
+          "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [nan]",
+          "dcid": "who/bmi30wm.EDUCATIONLEVEL--NHLM"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/WHOitnwm_whoeducationlevel",
+      "name": "Pregnant Women Sleeping Under Insecticide-treated Nets by Educationlevel",
+      "statVars": [
+        {
+          "name": "Pregnant women sleeping under insecticide-treated nets [Primary]",
+          "dcid": "who/itnwm.EDUCATIONLEVEL--PRLM"
+        },
+        {
+          "name": "Pregnant women sleeping under insecticide-treated nets [Secondary or higher]",
+          "dcid": "who/itnwm.EDUCATIONLEVEL--SHLM"
+        },
+        {
+          "name": "Pregnant women sleeping under insecticide-treated nets [nan]",
+          "dcid": "who/itnwm.EDUCATIONLEVEL--NHLM"
+        }
+      ]
+    },
+    {
       "dcid": "dc/g/SDG_5.3.1",
       "name": "5.3.1: Proportion of women aged 20-24 years who were married or in a union before age 15 and before age 18",
       "statVars": [
@@ -1587,6 +1821,34 @@
         {
           "name": "Proportion of women aged 20-24 years who were married or in a union before age 18 [20 to 24 years old, Female]",
           "dcid": "sdg/SP_DYN_MRBF18.AGE--Y20T24__SEX--F"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/WHObmi30wm_age",
+      "name": "Obesity Prevalence in Non-pregnant Women Aged 15-49 Years, BMI \u003e= 30 by Age",
+      "statVars": [
+        {
+          "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [15-19  years]",
+          "dcid": "who/bmi30wm.AGE--Y15T19"
+        },
+        {
+          "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [20-49 years]",
+          "dcid": "who/bmi30wm.AGE--Y20T49"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/WHObmi30wm_whoresidenceareatype",
+      "name": "Obesity Prevalence in Non-pregnant Women Aged 15-49 Years, BMI \u003e= 30 by Residenceareatype",
+      "statVars": [
+        {
+          "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [Rural]",
+          "dcid": "who/bmi30wm.RESIDENCEAREATYPE--RUR"
+        },
+        {
+          "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [Urban]",
+          "dcid": "who/bmi30wm.RESIDENCEAREATYPE--URB"
         }
       ]
     },
@@ -1755,6 +2017,34 @@
         {
           "name": "Wages Total of Person: Women's, Girls', Infants' Cut-sew Apparel Mfg (NAICS/31524)",
           "dcid": "dc/flfk1szeerbd7"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/WHOitnwm_age",
+      "name": "Pregnant Women Sleeping Under Insecticide-treated Nets by Age",
+      "statVars": [
+        {
+          "name": "Pregnant women sleeping under insecticide-treated nets [15-19  years]",
+          "dcid": "who/itnwm.AGE--Y15T19"
+        },
+        {
+          "name": "Pregnant women sleeping under insecticide-treated nets [20-49 years]",
+          "dcid": "who/itnwm.AGE--Y20T49"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/WHOitnwm_whoresidenceareatype",
+      "name": "Pregnant Women Sleeping Under Insecticide-treated Nets by Residenceareatype",
+      "statVars": [
+        {
+          "name": "Pregnant women sleeping under insecticide-treated nets [Rural]",
+          "dcid": "who/itnwm.RESIDENCEAREATYPE--RUR"
+        },
+        {
+          "name": "Pregnant women sleeping under insecticide-treated nets [Urban]",
+          "dcid": "who/itnwm.RESIDENCEAREATYPE--URB"
         }
       ]
     },
@@ -2003,6 +2293,22 @@
       "name": "8.8: Protect labour rights and promote safe and secure working environments for all workers, including migrant workers, in particular women migrants, and those in precarious employment"
     },
     {
+      "dcid": "dc/g/WHONCDCXCASCREENEDWITHINTIMEPERIOD_age-WHOAgeEnumY30T49",
+      "name": "Prevalence of Cervical Cancer Screening Among Women Aged 30-49 Years With Age = 30-49 Years of Age"
+    },
+    {
+      "dcid": "dc/g/WHONCDCXCASCREENEDWITHINTIMEPERIOD_whosex-WHOSexEnumF",
+      "name": "Prevalence of Cervical Cancer Screening Among Women Aged 30-49 Years With Sex = Female"
+    },
+    {
+      "dcid": "dc/g/WHONCDCXCASCREENEDWITHINTIMEPERIOD_age",
+      "name": "Prevalence of Cervical Cancer Screening Among Women Aged 30-49 Years by Age"
+    },
+    {
+      "dcid": "dc/g/WHONCDCXCASCREENEDWITHINTIMEPERIOD_whosex",
+      "name": "Prevalence of Cervical Cancer Screening Among Women Aged 30-49 Years by Sex"
+    },
+    {
       "dcid": "dc/g/SDGVCVAWMARR_sdgsex-SDGSexEnumF",
       "name": "Proportion of Ever-partnered Women And Girls Subjected To Physical And/or Sexual Violence by A Current or Former Intimate Partner in The Previous 12 Months, by Age With Sex = Female"
     },
@@ -2083,12 +2389,48 @@
       "name": "Person With Establishment Ownership, Industry = Women's, Girls', Infants' Cut-sew Apparel Mfg (NAICS/31524)"
     },
     {
+      "dcid": "dc/g/WHONCDCXCASCREENEDWITHINTIMEPERIOD_age-WHOAgeEnumY30T49_whosex",
+      "name": "Prevalence of Cervical Cancer Screening Among Women Aged 30-49 Years With Age = 30-49 Years of Age, Sex"
+    },
+    {
+      "dcid": "dc/g/WHONCDCXCASCREENEDWITHINTIMEPERIOD_age-WHOAgeEnumY30T49_whosex-WHOSexEnumF",
+      "name": "Prevalence of Cervical Cancer Screening Among Women Aged 30-49 Years With Age = 30-49 Years of Age, Sex = Female"
+    },
+    {
+      "dcid": "dc/g/WHONCDCXCASCREENEDWITHINTIMEPERIOD_age-WHOAgeEnumY30T49_whotimeperiod",
+      "name": "Prevalence of Cervical Cancer Screening Among Women Aged 30-49 Years With Age = 30-49 Years of Age, Timeperiod"
+    },
+    {
+      "dcid": "dc/g/WHONCDCXCASCREENEDWITHINTIMEPERIOD_age_whosex-WHOSexEnumF",
+      "name": "Prevalence of Cervical Cancer Screening Among Women Aged 30-49 Years With Age, Sex = Female"
+    },
+    {
+      "dcid": "dc/g/WHONCDCXCASCREENEDWITHINTIMEPERIOD_whosex-WHOSexEnumF_whotimeperiod",
+      "name": "Prevalence of Cervical Cancer Screening Among Women Aged 30-49 Years With Sex = Female, Timeperiod"
+    },
+    {
       "dcid": "dc/g/SDGVCVAWMARR_age_sdgsex-SDGSexEnumF",
       "name": "Proportion of Ever-partnered Women And Girls Subjected To Physical And/or Sexual Violence by A Current or Former Intimate Partner in The Previous 12 Months, by Age With Age, Sex = Female"
     },
     {
       "dcid": "dc/g/SDGSHSTAFGMS_age_sdgsex-SDGSexEnumF",
       "name": "Proportion of Girls And Women Aged 15-49 Years Who Have Undergone Female Genital Mutilation, by Age With Age, Sex = Female"
+    },
+    {
+      "dcid": "dc/g/WHONCDCXCASCREENEDWITHINTIMEPERIOD_age-WHOAgeEnumY30T49_whosex-WHOSexEnumF_whotimeperiod",
+      "name": "Prevalence of Cervical Cancer Screening Among Women Aged 30-49 Years With Age = 30-49 Years of Age, Sex = Female, Timeperiod"
+    },
+    {
+      "dcid": "dc/g/WHObmi30wm",
+      "name": "Obesity Prevalence in Non-pregnant Women Aged 15-49 Years, BMI \u003e= 30"
+    },
+    {
+      "dcid": "dc/g/WHOitnwm",
+      "name": "Pregnant Women Sleeping Under Insecticide-treated Nets"
+    },
+    {
+      "dcid": "dc/g/WHONCDCXCASCREENEDWITHINTIMEPERIOD",
+      "name": "Prevalence of Cervical Cancer Screening Among Women Aged 30-49 Years"
     },
     {
       "dcid": "dc/g/SDGVCVAWMARR",

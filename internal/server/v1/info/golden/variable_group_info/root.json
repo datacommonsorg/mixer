@@ -13,7 +13,7 @@
         "id": "dc/g/Demographics",
         "specializedEntity": "Demographics",
         "displayName": "Demographics",
-        "descendentStatVarCount": 44955
+        "descendentStatVarCount": 44959
       },
       {
         "id": "dc/g/Economy",
@@ -70,12 +70,18 @@
         "descendentStatVarCount": 9326
       },
       {
+        "id": "dc/g/UN",
+        "specializedEntity": "12 UN Data Thematic Areas",
+        "displayName": "12 UN Data Thematic Areas",
+        "descendentStatVarCount": 21441
+      },
+      {
         "id": "dc/g/SDG",
         "specializedEntity": "Sustainable Development Goals",
         "displayName": "Sustainable Development Goals",
         "descendentStatVarCount": 3807
       }
     ],
-    "descendentStatVarCount": 209351
+    "descendentStatVarCount": 230796
   }
 }
