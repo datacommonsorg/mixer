@@ -45,11 +45,11 @@ func FetchAllSVG(
 				}
 				return &svgResp, nil
 			},
-			// Only use svg from "frequent", "experimental" and custom import groups.
+			// Only use svg from "schema", "experimental" and custom import groups.
 			// These two import groups have the latest and wanted sv/svgs. We don't
 			// want to include those in "infrequent" etc that may have stale sv/svg.
 			func(t *bigtable.Table) bool {
-				return (strings.HasPrefix(t.Name(), "frequent") ||
+				return (strings.HasPrefix(t.Name(), "schema") ||
 					strings.HasPrefix(t.Name(), "experimental") ||
 					t.IsCustom())
 			},
@@ -57,8 +57,8 @@ func FetchAllSVG(
 		if err != nil {
 			return nil, err
 		}
-		// Loop through import group by order. The stat var group is preferred from
-		// a higher ranked import group.
+		// Merge all SVGs regardless of the import group rank as one SVG
+		// can exist in multiple import group.
 		var customRootNode *pb.StatVarGroupNode
 		for _, btData := range btDataList {
 			for _, row := range btData {
@@ -71,8 +71,6 @@ func FetchAllSVG(
 						if _, ok := result[k]; !ok {
 							result[k] = v
 						} else {
-							// Merge all SVGs regardless of the import group rank as one SVG
-							// can exist in multiple import group.
 							hierarchy.MergeSVGNodes(result[k], v)
 						}
 					}

@@ -70,6 +70,12 @@
         "descendentStatVarCount": 264
       },
       {
+        "id": "dc/g/UN",
+        "specializedEntity": "12 UN Data Thematic Areas",
+        "displayName": "12 UN Data Thematic Areas",
+        "descendentStatVarCount": 986
+      },
+      {
         "id": "dc/g/SDG",
         "specializedEntity": "Sustainable Development Goals",
         "displayName": "Sustainable Development Goals",
