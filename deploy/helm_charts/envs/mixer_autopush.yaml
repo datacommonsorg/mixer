@@ -8,7 +8,7 @@ ingress:
   name: mixer-ingress-autopush
   annotations:
     {
-      ingress.gcp.kubernetes.io/pre-shared-cert: "mixer-certificate,multi-domain-2022",
+      ingress.gcp.kubernetes.io/pre-shared-cert: "mixer-certificate,multi-domain-2024",
     }
 
 # GCP level config.
