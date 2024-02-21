@@ -58,10 +58,9 @@ type SearchIndex struct {
 // TrieNode represents a node in the sv hierarchy search Trie.
 type TrieNode struct {
 	ChildrenNodes map[rune]*TrieNode
-	// SvgIds and SvIds are sets where Ids are keys and each key is mapped to an
+	// SvIds are sets where Ids are keys and each key is mapped to an
 	// empty struct
-	SvgIds map[string]struct{}
-	SvIds  map[string]struct{}
+	SvIds map[string]struct{}
 	// Matches is a set of strings that match the token ending at the current
 	// trienode
 	Matches map[string]struct{}
@@ -81,7 +80,7 @@ type RankingInfo struct {
 
 // Update search index, given a stat var (group) node ID and string.
 func (index *SearchIndex) Update(
-	nodeID string, nodeString string, displayName string, isSvg bool, synonymMap map[string][]string, svDefinition string) {
+	nodeID string, nodeString string, displayName string, synonymMap map[string][]string, svDefinition string) {
 	processedNodeString := strings.ToLower(nodeString)
 	processedNodeString = strings.ReplaceAll(processedNodeString, ",", " ")
 	tokenList := strings.Fields(processedNodeString)
@@ -157,17 +156,10 @@ func (index *SearchIndex) Update(
 			}
 			currNode = currNode.ChildrenNodes[c]
 		}
-		if isSvg {
-			if currNode.SvgIds == nil {
-				currNode.SvgIds = map[string]struct{}{}
-			}
-			currNode.SvgIds[nodeID] = struct{}{}
-		} else {
-			if currNode.SvIds == nil {
-				currNode.SvIds = map[string]struct{}{}
-			}
-			currNode.SvIds[nodeID] = struct{}{}
+		if currNode.SvIds == nil {
+			currNode.SvIds = map[string]struct{}{}
 		}
+		currNode.SvIds[nodeID] = struct{}{}
 		if currNode.Matches == nil {
 			currNode.Matches = map[string]struct{}{}
 		}
