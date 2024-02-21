@@ -47,9 +47,8 @@ func SearchStatVar(
 	svOnly := in.GetSvOnly()
 
 	result := &pb.SearchStatVarResponse{
-		StatVars:      []*pb.EntityInfo{},
-		StatVarGroups: []*pb.SearchResultSVG{},
-		Matches:       []string{},
+		StatVars: []*pb.EntityInfo{},
+		Matches:  []string{},
 	}
 	if query == "" {
 		return result, nil
@@ -85,7 +84,6 @@ func SearchStatVar(
 		svList = svList[0:maxResult]
 	}
 	result.StatVars = svList
-	result.StatVarGroups = []*pb.SearchResultSVG{}
 	result.Matches = matches
 	return result, nil
 }
