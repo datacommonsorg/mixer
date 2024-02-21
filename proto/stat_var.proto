@@ -230,6 +230,8 @@ message SearchStatVarResponse {
   // A ranked list of stat vars that aren't included in any of the returned stat
   // var groups.
   repeated EntityInfo stat_vars = 1;
+  // Deprecated "stat_var_groups"
+  reserved 2;
   // A list of unique strings in the names of the results that match the search
   // tokens
   repeated string matches = 3;

@@ -16,7 +16,6 @@ package hierarchy
 
 import (
 	"encoding/json"
-	"fmt"
 	"os"
 	"path"
 	"runtime"
@@ -147,7 +146,6 @@ func RemoveSvg(
 // BuildParentSvgMap gets the mapping of svg/sv id to the parent svg for that
 // svg/sv. Only gets the parent svg that have a path to the root node.
 func BuildParentSvgMap(rawSvg map[string]*pb.StatVarGroupNode) map[string][]string {
-	fmt.Println("in build parent svg map")
 	parentSvgMap := map[string][]string{}
 	// Do breadth first search starting at the root to find all the svg that have
 	// a path to the root. Only add those as parents.
@@ -179,11 +177,9 @@ func BuildParentSvgMap(rawSvg map[string]*pb.StatVarGroupNode) map[string][]stri
 			}
 		}
 	}
-	fmt.Println("finished for loop")
 	for _, parentSvgList := range parentSvgMap {
 		sort.Strings(parentSvgList)
 	}
-	fmt.Println("finished next for loop")
 	return parentSvgMap
 }
 
@@ -246,7 +242,6 @@ func BuildStatVarSearchIndex(
 	}
 	synonymMap := getSynonymMap()
 	seenSV := map[string]struct{}{}
-	fmt.Println("starting build search index for loop")
 	for svgID, svgData := range rawSvg {
 		if _, ok := ignoredSVG[svgID]; ok {
 			continue
@@ -264,7 +259,6 @@ func BuildStatVarSearchIndex(
 			searchIndex.Update(svData.Id, svTokenString, svData.DisplayName, synonymMap, svData.Definition)
 		}
 	}
-	fmt.Println("finished build search index for loop")
 	return searchIndex
 }
 

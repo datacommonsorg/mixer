@@ -16,7 +16,6 @@ package search
 
 import (
 	"context"
-	"fmt"
 	"sort"
 	"strings"
 
@@ -41,7 +40,6 @@ func SearchStatVar(
 ) (
 	*pb.SearchStatVarResponse, error,
 ) {
-	fmt.Println("HERE")
 	query := in.GetQuery()
 	places := in.GetPlaces()
 	svOnly := in.GetSvOnly()
@@ -56,9 +54,7 @@ func SearchStatVar(
 	tokens := strings.Fields(
 		strings.Replace(strings.ToLower(query), ",", " ", -1))
 	searchIndex := cachedata.SvgSearchIndex()
-	fmt.Println("GOT SEARCH INDEX")
 	svList, matches := searchTokens(tokens, searchIndex, svOnly)
-	fmt.Println("GOT SV LIST")
 
 	// Filter the stat var by places.
 	if len(places) > 0 {
