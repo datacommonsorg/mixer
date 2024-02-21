@@ -268,45 +268,6 @@ func TestBuildStatVarSearchIndex(t *testing.T) {
 		SvIds:   nil,
 		Matches: nil,
 	}
-	token1a := resource.TrieNode{
-		ChildrenNodes: nil,
-		SvIds:         nil,
-		Matches:       map[string]struct{}{"": {}},
-	}
-	token1b := resource.TrieNode{
-		ChildrenNodes: nil,
-		SvIds:         nil,
-		Matches:       map[string]struct{}{"": {}},
-	}
-	tokenUnderscore := resource.TrieNode{
-		ChildrenNodes: map[rune]*resource.TrieNode{
-			'1': &token1b,
-		},
-		SvIds:   nil,
-		Matches: nil,
-	}
-	token3a := resource.TrieNode{
-		ChildrenNodes: map[rune]*resource.TrieNode{
-			'_': &tokenUnderscore,
-		},
-		SvIds:   nil,
-		Matches: nil,
-	}
-	tokenUnderscore1 := resource.TrieNode{
-		ChildrenNodes: map[rune]*resource.TrieNode{
-			'1': &token1a,
-			'3': &token3a,
-		},
-		SvIds:   nil,
-		Matches: nil,
-	}
-	tokenG := resource.TrieNode{
-		ChildrenNodes: map[rune]*resource.TrieNode{
-			'_': &tokenUnderscore1,
-		},
-		SvIds:   nil,
-		Matches: nil,
-	}
 	token1c := resource.TrieNode{
 		ChildrenNodes: nil,
 		SvIds:         map[string]struct{}{"sv_1_1": {}},
@@ -433,27 +394,16 @@ func TestBuildStatVarSearchIndex(t *testing.T) {
 						'a': &tokenA,
 						'z': &tokenZ,
 						'b': &tokenB1,
-						'g': &tokenG,
 						's': &tokenS,
 					},
 					SvIds:   nil,
 					Matches: nil,
 				},
 				Ranking: map[string]*resource.RankingInfo{
-					"g_1": {
-						ApproxNumPv: 2,
-						NumKnownPv:  2,
-						RankingName: "ab1 zDx",
-					},
 					"sv_1_1": {
 						ApproxNumPv: 3,
 						NumKnownPv:  3,
 						RankingName: "sv1",
-					},
-					"g_3_1": {
-						ApproxNumPv: 3,
-						NumKnownPv:  3,
-						RankingName: "zdx, bd",
 					},
 					"sv_3": {
 						ApproxNumPv: 2,
@@ -563,27 +513,16 @@ func TestBuildStatVarSearchIndex(t *testing.T) {
 						'a': &tokenA,
 						'z': &tokenZ,
 						'b': &tokenB1,
-						'g': &tokenG,
 						's': &tokenS,
 					},
 					SvIds:   nil,
 					Matches: nil,
 				},
 				Ranking: map[string]*resource.RankingInfo{
-					"g_1": {
-						ApproxNumPv: 2,
-						NumKnownPv:  2,
-						RankingName: "ab1 zDx",
-					},
 					"sv_1_1": {
 						ApproxNumPv: 3,
 						NumKnownPv:  3,
 						RankingName: "sv1",
-					},
-					"g_3_1": {
-						ApproxNumPv: 3,
-						NumKnownPv:  3,
-						RankingName: "zdx, bd",
 					},
 					"sv_3": {
 						ApproxNumPv: 2,
